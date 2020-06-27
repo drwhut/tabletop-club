@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://CameraController.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Die.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="ConcavePolygonShape" id=2]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.34902, 1, 0.435294, 1 )
+
+[node name="Room" type="Spatial"]
+
+[node name="Table" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, -0.2, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Table"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Table/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="CameraController" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
+
+[node name="Die" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.0963797, -0.852564, -0.513659, -0.573318, 0.469405, -0.67154, 0.813645, 0.229767, -0.534031, 0, 1.19229, 0 )
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15527, 2.72278, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
