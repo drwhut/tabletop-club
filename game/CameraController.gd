@@ -74,6 +74,7 @@ func _physics_process(delta):
 		
 		var space_state = get_world().direct_space_state
 		var result = space_state.intersect_ray(from, to)
+		
 		# Was the thing that collided a game piece? If so, we should grab it.
 		if result.has("collider"):
 			if result.collider is Piece:

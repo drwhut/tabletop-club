@@ -33,6 +33,9 @@ var _is_hovering = false
 func start_hovering():
 	_is_hovering = true
 	custom_integrator = true
+	
+	# Make sure _integrate_forces runs.
+	sleeping = false
 
 func stop_hovering():
 	_is_hovering = false
