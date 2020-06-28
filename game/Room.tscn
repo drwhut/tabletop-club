@@ -12,7 +12,7 @@ data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1
 [node name="Room" type="Spatial"]
 
 [node name="Table" type="MeshInstance" parent="."]
-transform = Transform( 2, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, -0.2, 0 )
+transform = Transform( 20, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, -0.2, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
@@ -25,7 +25,7 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
 
 [node name="Die" parent="." instance=ExtResource( 2 )]
-transform = Transform( -0.0963797, -0.852564, -0.513659, -0.573318, 0.469405, -0.67154, 0.813645, 0.229767, -0.534031, 0, 1.19229, 0 )
+transform = Transform( -0.0963797, -0.852564, -0.513659, -0.573318, 0.469405, -0.67154, 0.813645, 0.229767, -0.534031, 0.0949595, 1.03532, 0.00658989 )
 
 [node name="Card" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64058, 0 )

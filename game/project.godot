@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Piece",
+"class": "Die",
+"language": "GDScript",
+"path": "res://Die.gd"
+}, {
 "base": "RigidBody",
 "class": "Piece",
 "language": "GDScript",
 "path": "res://Piece.gd"
 } ]
 _global_script_class_icons={
+"Die": "",
 "Piece": ""
 }
 

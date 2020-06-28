@@ -23,14 +23,23 @@ extends RigidBody
 
 class_name Piece
 
-const LINEAR_FORCE_SCALAR  = 10.0
 const ANGULAR_FORCE_SCALAR = 10.0
+const LINEAR_FORCE_SCALAR  = 10.0
+const SHAKING_BOUND = 50.0
 
 var hover_position = Vector3()
 var hover_up = Vector3.UP
 var hover_forward = Vector3.FORWARD
 
 var _is_hovering = false
+var _last_velocity = Vector3()
+var _new_velocity = Vector3()
+
+func is_being_shaked():
+	return (_new_velocity - _last_velocity).length_squared() > SHAKING_BOUND
+
+func is_hovering():
+	return _is_hovering
 
 func start_hovering():
 	_is_hovering = true
@@ -43,8 +52,9 @@ func stop_hovering():
 	_is_hovering = false
 	custom_integrator = false
 
-func is_hovering():
-	return _is_hovering
+func _physics_process(delta):
+	_last_velocity = _new_velocity
+	_new_velocity  = linear_velocity
 
 func _integrate_forces(state):
 	if _is_hovering:
