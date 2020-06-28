@@ -26,19 +26,32 @@ class_name Piece
 const LINEAR_FORCE_SCALAR  = 5.0
 const ANGULAR_FORCE_SCALAR = 5.0
 
-func _integrate_forces(state):
-	# Force the piece to the given location.
-	state.apply_central_impulse(Vector3(0, LINEAR_FORCE_SCALAR * (3 - translation.y), 0))
-	# Stops linear harmonic motion.
-	state.apply_central_impulse(-linear_velocity * mass)
-	
-	# TODO: Are the following cross products worth optimising?
-	
-	# Torque the piece to the upright position on two axes.
-	state.add_torque(ANGULAR_FORCE_SCALAR * (Vector3.UP - transform.basis.y).cross(transform.basis.y))
-	state.add_torque(ANGULAR_FORCE_SCALAR * (Vector3.FORWARD - transform.basis.z).cross(transform.basis.z))
-	# Stops angular harmonic motion.
-	state.add_torque(-angular_velocity)
+var hover_position = Vector3()
 
-func _ready():
+var _is_hovering = false
+
+func start_hovering():
+	_is_hovering = true
 	custom_integrator = true
+
+func stop_hovering():
+	_is_hovering = false
+	custom_integrator = false
+
+func is_hovering():
+	return _is_hovering
+
+func _integrate_forces(state):
+	if _is_hovering:
+		# Force the piece to the given location.
+		state.apply_central_impulse(LINEAR_FORCE_SCALAR * (hover_position - translation))
+		# Stops linear harmonic motion.
+		state.apply_central_impulse(-linear_velocity * mass)
+		
+		# TODO: Are the following cross products worth optimising?
+		
+		# Torque the piece to the upright position on two axes.
+		state.add_torque(ANGULAR_FORCE_SCALAR * (Vector3.UP - transform.basis.y).cross(transform.basis.y))
+		state.add_torque(ANGULAR_FORCE_SCALAR * (Vector3.FORWARD - transform.basis.z).cross(transform.basis.z))
+		# Stops angular harmonic motion.
+		state.add_torque(-angular_velocity)

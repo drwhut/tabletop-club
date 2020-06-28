@@ -34,7 +34,7 @@ transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0
 transform = Transform( -0.0963797, -0.852564, -0.513659, -0.573318, 0.469405, -0.67154, 0.813645, 0.229767, -0.534031, 0, 1.19229, 0 )
 
 [node name="RigidBody" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15527, 2.72278, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0511662, 2.72278, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
