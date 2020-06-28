@@ -62,6 +62,10 @@ func _ready():
 	# no matter how the camera is initially positioned.
 	_rotation = Vector2(rotation.y, rotation.x)
 
+func _process(delta):
+	if Input.is_action_just_pressed("game_flip") and _piece_grabbed:
+		_piece_grabbed.hover_up = -_piece_grabbed.hover_up
+
 func _physics_process(delta):
 	_process_input(delta)
 	_process_movement(delta)
