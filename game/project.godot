@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="OpenTabletop"
 config/description="An open-source platform for playing tabletop games in a 3D environment, made with the Godot Engine!"
-run/main_scene="res://Room.tscn"
+run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
 [input]

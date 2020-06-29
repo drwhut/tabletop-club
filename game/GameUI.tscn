@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GameUI.gd" type="Script" id=1]
+
+[node name="GameUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopPanel" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ObjectsButton" type="Button" parent="TopPanel"]
+margin_right = 62.0
+margin_bottom = 20.0
+text = "Objects"
+
+[node name="ObjectsDialog" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -100.0
+margin_right = 150.0
+margin_bottom = 100.0
+window_title = "Objects"
+resizable = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ObjectsTree" type="Tree" parent="ObjectsDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
+[connection signal="item_activated" from="ObjectsDialog/ObjectsTree" to="." method="_on_ObjectsTree_item_activated"]
