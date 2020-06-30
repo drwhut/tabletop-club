@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Piece",
 "language": "GDScript",
 "path": "res://Piece.gd"
+}, {
+"base": "Reference",
+"class": "PieceDBEntry",
+"language": "GDScript",
+"path": "res://PieceDBEntry.gd"
 } ]
 _global_script_class_icons={
 "Die": "",
-"Piece": ""
+"Piece": "",
+"PieceDBEntry": ""
 }
 
 [application]

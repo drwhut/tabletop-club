@@ -25,9 +25,8 @@ const PIECE_SPAWN_HEIGHT = 1.0
 
 onready var _pieces = $Pieces
 
-func add_piece(path):
-	# TODO: Determine the piece to use using the file path.
-	var d6 = load("res://Die.tscn").instance()
+func add_piece(piece_entry: PieceDBEntry) -> void:
+	var d6 = load(piece_entry.model_path).instance()
 	
 	# Spawn the piece at a height.
 	d6.translation.y = PIECE_SPAWN_HEIGHT
@@ -35,7 +34,7 @@ func add_piece(path):
 	_pieces.add_child(d6)
 	
 	# Apply a generic texture to the die.
-	var texture = load(path)
+	var texture = load(piece_entry.texture_path)
 	texture.set_flags(0)
 	
 	d6.apply_texture(texture)

@@ -19,42 +19,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Piece
+extends Reference
 
-class_name Die
+class_name PieceDBEntry
 
-onready var _meshInstance = $MeshInstance
+var model_path: String
+var name: String
+var texture_path: String
 
-var _rng = RandomNumberGenerator.new()
-
-func apply_texture(texture: Texture) -> void:
-	var material = SpatialMaterial.new()
-	material.albedo_texture = texture
-	
-	_meshInstance.set_surface_material(0, material)
-
-func _ready():
-	_rng.randomize()
-
-func _physics_process(delta):
-	
-	# If the dice is being shaked, set the up and forward directions randomly,
-	# as if one were actually shaking a die.
-	if is_being_shaked():
-		
-		var vec_list = [Vector3.LEFT, Vector3.RIGHT, Vector3.UP, Vector3.DOWN,
-			Vector3.FORWARD, Vector3.BACK]
-		
-		var up_index = _rng.randi() % vec_list.size()
-		var up_vec = vec_list[up_index]
-		vec_list.remove(up_index)
-		
-		# Remove the opposite direction, as for the forward direction, we need
-		# to pick one that is at a right angle to the one we just picked out.
-		vec_list.remove(up_index - (up_index % 2))
-		
-		var forward_index = _rng.randi() % vec_list.size()
-		var forward_vec = vec_list[forward_index]
-		
-		hover_up = up_vec
-		hover_forward = forward_vec
+func _init(name: String, model_path: String, texture_path: String):
+	self.name = name
+	self.model_path = model_path
+	self.texture_path = texture_path

@@ -35,20 +35,20 @@ var _is_hovering = false
 var _last_velocity = Vector3()
 var _new_velocity = Vector3()
 
-func is_being_shaked():
+func is_being_shaked() -> bool:
 	return (_new_velocity - _last_velocity).length_squared() > SHAKING_BOUND
 
-func is_hovering():
+func is_hovering() -> bool:
 	return _is_hovering
 
-func start_hovering():
+func start_hovering() -> void:
 	_is_hovering = true
 	custom_integrator = true
 	
 	# Make sure _integrate_forces runs.
 	sleeping = false
 
-func stop_hovering():
+func stop_hovering() -> void:
 	_is_hovering = false
 	custom_integrator = false
 

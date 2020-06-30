@@ -21,43 +21,14 @@
 
 extends Node
 
-const VALID_TEXTURE_EXTENSIONS = ["png"]
-
+onready var _piece_db = $PieceDB
 onready var _room = $Room
 onready var _ui = $GameUI
 
 func _ready():
-	var path = "res://OpenTabletop"
+	_piece_db.import_all()
 	
-	var dir = Directory.new()
-	
-	if dir.open(path) == OK:
-		
-		if dir.dir_exists("dice"):
-			dir.change_dir("dice")
-			
-			if dir.dir_exists("d6"):
-				dir.change_dir("d6")
-				
-				# Get the list of d6 textures.
-				dir.list_dir_begin(true, true)
-				
-				var file = dir.get_next()
-				while file:
-					if VALID_TEXTURE_EXTENSIONS.has(file.get_extension()):
-						var name = file.substr(0, file.length() - file.get_extension().length() - 1)
-						var full_path = dir.get_current_dir() + "/" + file
-						
-						_ui.add_d6(name, full_path)
-						
-					file = dir.get_next()
-				
-				dir.change_dir("..")
-			
-			dir.change_dir("..")
-		
-	else:
-		push_error("Error reading " + path)
+	_ui.set_piece_tree_from_db(_piece_db.get_db())
 
-func _on_GameUI_piece_requested(path):
-	_room.add_piece(path)
+func _on_GameUI_piece_requested(piece_entry):
+	_room.add_piece(piece_entry)

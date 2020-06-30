@@ -21,36 +21,58 @@
 
 extends Control
 
-signal piece_requested(path)
+signal piece_requested(piece_entry)
 
-onready var _objectsDialog = $ObjectsDialog
-onready var _objectsTree = $ObjectsDialog/ObjectsTree
+onready var _objects_dialog = $ObjectsDialog
+onready var _objects_tree = $ObjectsDialog/ObjectsTree
 
-var _d6_node: TreeItem = null
-
-func add_d6(name, path):
-	var node = _objectsTree.create_item(_d6_node)
-	node.set_text(0, name)
-	node.set_metadata(0, path)
-
-func _ready():
-	var root = _objectsTree.create_item()
-	_objectsTree.set_hide_root(true)
+func set_piece_tree_from_db(pieces: Dictionary) -> void:
+	var root = _objects_tree.create_item()
+	_objects_tree.set_hide_root(true)
 	
-	var ott_node = _objectsTree.create_item(root)
-	ott_node.set_text(0, "OpenTabletop")
+	for game in pieces:
+		_add_game_to_tree(game, pieces[game])
+
+func _add_game_to_tree(game_name: String, game_pieces: Dictionary) -> void:
+	var game_node = _objects_tree.create_item(_objects_tree.get_root())
+	game_node.set_text(0, game_name)
 	
-	var dice_node = _objectsTree.create_item(ott_node)
+	var dice_node = _objects_tree.create_item(game_node)
 	dice_node.set_text(0, "Dice")
 	
-	_d6_node = _objectsTree.create_item(dice_node)
-	_d6_node.set_text(0, "D6")
+	_add_type_to_tree(dice_node, game_pieces, "d6", "d6")
+	
+	# If there are no dice in this game, delete the dice node.
+	if not dice_node.get_children():
+		dice_node.free()
+
+func _add_piece_to_tree(parent: TreeItem, piece: PieceDBEntry) -> TreeItem:
+	var node = _objects_tree.create_item(parent)
+	node.set_text(0, piece.name)
+	
+	# Keep the piece entry in the node so we can use it later.
+	node.set_metadata(0, piece)
+	
+	return node
+
+func _add_type_to_tree(parent: TreeItem, game_pieces: Dictionary,
+	type_name: String, display_name: String) -> void:
+	
+	if game_pieces.has(type_name):
+			
+		var node = _objects_tree.create_item(parent)
+		node.set_text(0, display_name)
+		
+		var array: Array = game_pieces[type_name]
+		
+		for piece in array:
+			_add_piece_to_tree(node, piece)
 
 func _on_ObjectsButton_pressed():
-	_objectsDialog.popup_centered()
+	_objects_dialog.popup_centered()
 
 func _on_ObjectsTree_item_activated():
-	var selected = _objectsTree.get_selected()
+	var selected = _objects_tree.get_selected()
 	
 	# Check the selected item has metadata.
 	if selected.get_metadata(0):
