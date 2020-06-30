@@ -28,7 +28,10 @@ onready var _meshInstance = $MeshInstance
 var _rng = RandomNumberGenerator.new()
 
 func apply_texture(texture: Texture):
-	_meshInstance.get_surface_material(0).albedo_texture = texture
+	var material = SpatialMaterial.new()
+	material.albedo_texture = texture
+	
+	_meshInstance.set_surface_material(0, material)
 
 func _ready():
 	_rng.randomize()
