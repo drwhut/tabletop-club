@@ -1,7 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://CameraController.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Room.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/CameraController.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Room.gd" type="Script" id=3]
+
+
+
 
 [sub_resource type="CubeMesh" id=1]
 

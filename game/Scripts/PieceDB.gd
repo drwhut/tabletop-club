@@ -51,14 +51,17 @@ func import_game_dir(dir_path: String) -> void:
 			if dir.dir_exists("d6"):
 				dir.change_dir("d6")
 				
-				_db[game_name]["d6"] = _get_dir_entry_array_with_model(dir, "res://Die.tscn")
+				_db[game_name]["d6"] = _get_dir_entry_array_with_model(dir,
+					"res://Pieces/Dice/d6.tscn")
 				dir.change_dir("..")
 			
 			dir.change_dir("..")
 	else:
 		push_error("Cannot scan " + dir_path + " to import assets!")
 
-func _add_entry_to_array(array: Array, dir: Directory, file: String, model_path: String) -> void:
+func _add_entry_to_array(array: Array, dir: Directory, file: String,
+	model_path: String) -> void:
+	
 	var name = file.substr(0, file.length() - file.get_extension().length() - 1)
 	var texture_path = dir.get_current_dir() + "/" + file
 	

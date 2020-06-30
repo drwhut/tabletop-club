@@ -10,22 +10,22 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Piece",
-"class": "Die",
+"class": "Dice",
 "language": "GDScript",
-"path": "res://Die.gd"
+"path": "res://Scripts/Dice.gd"
 }, {
 "base": "RigidBody",
 "class": "Piece",
 "language": "GDScript",
-"path": "res://Piece.gd"
+"path": "res://Scripts/Piece.gd"
 }, {
 "base": "Reference",
 "class": "PieceDBEntry",
 "language": "GDScript",
-"path": "res://PieceDBEntry.gd"
+"path": "res://Scripts/PieceDBEntry.gd"
 } ]
 _global_script_class_icons={
-"Die": "",
+"Dice": "",
 "Piece": "",
 "PieceDBEntry": ""
 }
@@ -34,7 +34,7 @@ _global_script_class_icons={
 
 config/name="OpenTabletop"
 config/description="An open-source platform for playing tabletop games in a 3D environment, made with the Godot Engine!"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://Scenes/Game.tscn"
 config/icon="res://icon.png"
 
 [input]

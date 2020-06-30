@@ -21,7 +21,7 @@
 
 extends Piece
 
-class_name Die
+class_name Dice
 
 onready var _meshInstance = $MeshInstance
 
