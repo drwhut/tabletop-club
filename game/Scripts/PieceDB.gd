@@ -48,16 +48,34 @@ func import_game_dir(dir_path: String) -> void:
 		if dir.dir_exists("dice"):
 			dir.change_dir("dice")
 			
-			if dir.dir_exists("d6"):
-				dir.change_dir("d6")
-				
-				_db[game_name]["d6"] = _get_dir_entry_array_with_model(dir,
-					"res://Pieces/Dice/d6.tscn")
-				dir.change_dir("..")
+			_add_dir_if_exists(dir, game_name, "d4", "res://Pieces/Dice/d4.tscn")
+			_add_dir_if_exists(dir, game_name, "d6", "res://Pieces/Dice/d6.tscn")
+			_add_dir_if_exists(dir, game_name, "d8", "res://Pieces/Dice/d8.tscn")
 			
 			dir.change_dir("..")
 	else:
 		push_error("Cannot scan " + dir_path + " to import assets!")
+
+func _add_dir_if_exists(current_dir: Directory, game_name: String, dir: String,
+	model: String) -> void:
+	
+	if current_dir.dir_exists(dir):
+		current_dir.change_dir(dir)
+		
+		var array = []
+	
+		current_dir.list_dir_begin(true, true)
+		
+		var file = current_dir.get_next()
+		while file:
+			if VALID_TEXTURE_EXTENSIONS.has(file.get_extension()):
+				_add_entry_to_array(array, current_dir, file, model)
+				
+			file = current_dir.get_next()
+		
+		_db[game_name][dir] = array
+		
+		current_dir.change_dir("..")
 
 func _add_entry_to_array(array: Array, dir: Directory, file: String,
 	model_path: String) -> void:
@@ -66,17 +84,3 @@ func _add_entry_to_array(array: Array, dir: Directory, file: String,
 	var texture_path = dir.get_current_dir() + "/" + file
 	
 	array.push_back(PieceDBEntry.new(name, model_path, texture_path))
-
-func _get_dir_entry_array_with_model(dir: Directory, model: String) -> Array:
-	var out = []
-	
-	dir.list_dir_begin(true, true)
-	
-	var file = dir.get_next()
-	while file:
-		if VALID_TEXTURE_EXTENSIONS.has(file.get_extension()):
-			_add_entry_to_array(out, dir, file, model)
-			
-		file = dir.get_next()
-	
-	return out

@@ -40,7 +40,9 @@ func _add_game_to_tree(game_name: String, game_pieces: Dictionary) -> void:
 	var dice_node = _objects_tree.create_item(game_node)
 	dice_node.set_text(0, "Dice")
 	
+	_add_type_to_tree(dice_node, game_pieces, "d4", "d4")
 	_add_type_to_tree(dice_node, game_pieces, "d6", "d6")
+	_add_type_to_tree(dice_node, game_pieces, "d8", "d8")
 	
 	# If there are no dice in this game, delete the dice node.
 	if not dice_node.get_children():
