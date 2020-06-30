@@ -23,7 +23,12 @@ extends Piece
 
 class_name Die
 
+onready var _meshInstance = $MeshInstance
+
 var _rng = RandomNumberGenerator.new()
+
+func apply_texture(texture: Texture):
+	_meshInstance.get_surface_material(0).albedo_texture = texture
 
 func _ready():
 	_rng.randomize()

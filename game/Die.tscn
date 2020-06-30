@@ -7,7 +7,6 @@
 [sub_resource type="CubeMesh" id=2]
 
 [sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 1, 0, 0, 1 )
 
 [node name="Die" type="RigidBody"]
 continuous_cd = true

@@ -21,10 +21,17 @@
 
 extends Control
 
-signal piece_requested()
+signal piece_requested(path)
 
 onready var _objectsDialog = $ObjectsDialog
 onready var _objectsTree = $ObjectsDialog/ObjectsTree
+
+var _d6_node: TreeItem = null
+
+func add_d6(name, path):
+	var node = _objectsTree.create_item(_d6_node)
+	node.set_text(0, name)
+	node.set_metadata(0, path)
 
 func _ready():
 	var root = _objectsTree.create_item()
@@ -36,8 +43,8 @@ func _ready():
 	var dice_node = _objectsTree.create_item(ott_node)
 	dice_node.set_text(0, "Dice")
 	
-	var d6_node = _objectsTree.create_item(dice_node)
-	d6_node.set_text(0, "D6")
+	_d6_node = _objectsTree.create_item(dice_node)
+	_d6_node.set_text(0, "D6")
 
 func _on_ObjectsButton_pressed():
 	_objectsDialog.popup_centered()
@@ -45,6 +52,6 @@ func _on_ObjectsButton_pressed():
 func _on_ObjectsTree_item_activated():
 	var selected = _objectsTree.get_selected()
 	
-	# Check the selected item has no children.
-	if not selected.get_children():
-		emit_signal("piece_requested")
+	# Check the selected item has metadata.
+	if selected.get_metadata(0):
+		emit_signal("piece_requested", selected.get_metadata(0))
