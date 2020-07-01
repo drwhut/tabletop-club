@@ -23,8 +23,8 @@ extends RigidBody
 
 class_name Piece
 
-const ANGULAR_FORCE_SCALAR = 10.0
-const LINEAR_FORCE_SCALAR  = 10.0
+const ANGULAR_FORCE_SCALAR = 20.0
+const LINEAR_FORCE_SCALAR  = 20.0
 const SHAKING_BOUND = 50.0
 
 var hover_position = Vector3()

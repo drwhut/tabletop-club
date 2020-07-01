@@ -23,17 +23,17 @@ extends Spatial
 
 onready var _camera = $Camera
 
-const HOVER_Y_LEVEL = 1.0
-const MOVEMENT_ACCEL = 0.1
-const MOVEMENT_DECEL = 0.3
-const MOVEMENT_MAX_SPEED = 3.0
+const HOVER_Y_LEVEL = 2.0
+const MOVEMENT_ACCEL = 1.0
+const MOVEMENT_DECEL = 3.0
+const MOVEMENT_MAX_SPEED = 30.0
 const RAY_LENGTH = 1000
 const ROTATION_SENSITIVITY = -0.01
-const ROTATION_Y_MAX = -0.1
+const ROTATION_Y_MAX = -0.2
 const ROTATION_Y_MIN = -1.3
-const ZOOM_AMOUNT = 0.25
-const ZOOM_DISTANCE_MIN = 0.1
-const ZOOM_DISTANCE_MAX = 10.0
+const ZOOM_AMOUNT = 2.0
+const ZOOM_DISTANCE_MIN = 2.0
+const ZOOM_DISTANCE_MAX = 80.0
 
 var _grab_piece_screen_position = null
 var _last_non_zero_movement_dir = Vector3()

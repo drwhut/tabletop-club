@@ -21,7 +21,7 @@
 
 extends Spatial
 
-const PIECE_SPAWN_HEIGHT = 1.0
+const PIECE_SPAWN_HEIGHT = 2.0
 
 onready var _pieces = $Pieces
 
