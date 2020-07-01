@@ -1,4 +1,4 @@
-# OpenTabletop
+# open-tabletop
 # Copyright (c) 2020 drwhut
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
