@@ -27,6 +27,8 @@ const ANGULAR_FORCE_SCALAR = 20.0
 const LINEAR_FORCE_SCALAR  = 20.0
 const SHAKING_BOUND = 50.0
 
+var piece_entry: Dictionary = {}
+
 var _hover_forward = Vector3.FORWARD
 var _hover_player = 0
 var _hover_position = Vector3()

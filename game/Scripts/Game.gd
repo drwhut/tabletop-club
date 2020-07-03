@@ -42,7 +42,7 @@ func init_singleplayer() -> void:
 
 master func request_game_piece(piece_entry: Dictionary) -> void:
 	# Generate a unique name for the piece.
-	var name = str(_room.pieces_count())
+	var name = str(_room.get_pieces_count())
 	
 	# Send the call to create the piece to everyone.
 	_room.rpc("add_piece", name, piece_entry)
@@ -74,6 +74,12 @@ func _ready():
 
 func _player_connected(id: int) -> void:
 	print("Player ", id, " connected!")
+	
+	# If a player has connected to the server, let them know of every piece on
+	# the board so far.
+	if get_tree().is_network_server():
+		for piece in _room.get_pieces():
+			_room.rpc_id(id, "add_piece", str(piece.name), piece.piece_entry)
 
 func _player_disconnected(id: int) -> void:
 	print("Player ", id, " disconnected!")
