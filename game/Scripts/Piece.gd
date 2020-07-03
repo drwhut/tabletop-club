@@ -28,7 +28,7 @@ const LINEAR_FORCE_SCALAR  = 20.0
 const SHAKING_BOUND = 50.0
 
 var _hover_forward = Vector3.FORWARD
-remotesync var _hover_player = 0
+var _hover_player = 0
 var _hover_position = Vector3()
 var _hover_up = Vector3.UP
 
@@ -48,6 +48,9 @@ func is_being_shaked() -> bool:
 func is_hovering() -> bool:
 	return _hover_player > 0
 
+puppet func set_hover_player(player: int) -> void:
+	_hover_player = player
+
 master func set_hover_position(hover_position: Vector3) -> void:
 	# Only allow the hover position to be set if the request is coming from the
 	# player that is hovering the piece.
@@ -65,14 +68,16 @@ puppet func set_latest_server_physics_state(state: Dictionary) -> void:
 
 master func start_hovering() -> void:
 	if not is_hovering():
-		rset("_hover_player", get_tree().get_rpc_sender_id())
+		_hover_player = get_tree().get_rpc_sender_id()
+		rpc("set_hover_player", _hover_player)
 		custom_integrator = true
 		
 		# Make sure _integrate_forces runs.
 		sleeping = false
 
 master func stop_hovering() -> void:
-	rset("_hover_player", 0)
+	_hover_player = 0
+	rpc("set_hover_player", 0)
 	custom_integrator = false
 
 func _ready():
