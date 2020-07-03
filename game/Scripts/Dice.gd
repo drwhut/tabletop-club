@@ -53,8 +53,8 @@ func _physics_process(delta):
 		# to pick one that is at a right angle to the one we just picked out.
 		vec_list.remove(up_index - (up_index % 2))
 		
-		var forward_index = _rng.randi() % vec_list.size()
-		var forward_vec = vec_list[forward_index]
+		var back_index = _rng.randi() % vec_list.size()
+		var back_vec = vec_list[back_index]
 		
 		_hover_up = up_vec
-		_hover_forward = forward_vec
+		_hover_back = back_vec

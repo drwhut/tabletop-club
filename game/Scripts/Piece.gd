@@ -29,7 +29,7 @@ const SHAKING_BOUND = 50.0
 
 var piece_entry: Dictionary = {}
 
-var _hover_forward = Vector3.FORWARD
+var _hover_back = Vector3.BACK
 var _hover_player = 0
 var _hover_position = Vector3()
 var _hover_up = Vector3.UP
@@ -133,15 +133,15 @@ func _apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Stops linear harmonic motion.
 	state.apply_central_impulse(-linear_velocity * mass)
 	
-	# TODO: Are the following cross products worth optimising?
-	
 	# Add some bias so that the pieces get to their desired state quicker,
 	# but don't overshoot when they are at their desired state.
-	var y_bias = abs(transform.basis.y.dot(_hover_up) - 1)
-	var z_bias = abs(transform.basis.z.dot(-_hover_forward) - 1)
+	var y_bias = sqrt(abs(_hover_up.dot(transform.basis.y) - 1) / 2)
+	var z_bias = sqrt(abs(_hover_back.dot(transform.basis.z) - 1) / 2)
+	
+	# TODO: Are the following cross products worth optimising?
 	
 	# Torque the piece to the upright position on two axes.
-	state.add_torque(Vector3.FORWARD * y_bias + ANGULAR_FORCE_SCALAR * (-_hover_up - transform.basis.y).cross(transform.basis.y))
-	state.add_torque(Vector3.UP * z_bias + ANGULAR_FORCE_SCALAR * (_hover_forward - transform.basis.z).cross(transform.basis.z))
+	state.add_torque(y_bias * ANGULAR_FORCE_SCALAR * (transform.basis.y).cross(_hover_up - transform.basis.y).normalized())
+	state.add_torque(z_bias * ANGULAR_FORCE_SCALAR * (transform.basis.z).cross(_hover_back - transform.basis.z).normalized())
 	# Stops angular harmonic motion.
 	state.add_torque(-angular_velocity)
