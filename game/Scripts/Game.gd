@@ -88,4 +88,4 @@ func _server_disconnected() -> void:
 	print("Server disconnected!")
 
 func _on_GameUI_piece_requested(piece_entry: Dictionary):
-	rpc("request_game_piece", piece_entry)
+	rpc_id(1, "request_game_piece", piece_entry)
