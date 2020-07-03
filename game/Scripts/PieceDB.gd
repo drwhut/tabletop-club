@@ -107,4 +107,8 @@ func _add_entry_to_array(array: Array, game: String, type: String, file: String,
 	# This is where the texture should be copied to with the TabletopImporter.
 	var texture_path = "user://" + game + "/" + type + "/" + file
 	
-	array.push_back(PieceDBEntry.new(name, model_path, texture_path))
+	array.push_back({
+		"name": name,
+		"model_path": model_path,
+		"texture_path": texture_path
+	})

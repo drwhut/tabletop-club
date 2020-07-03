@@ -48,9 +48,9 @@ func _add_game_to_tree(game_name: String, game_pieces: Dictionary) -> void:
 	if not dice_node.get_children():
 		dice_node.free()
 
-func _add_piece_to_tree(parent: TreeItem, piece: PieceDBEntry) -> TreeItem:
+func _add_piece_to_tree(parent: TreeItem, piece: Dictionary) -> TreeItem:
 	var node = _objects_tree.create_item(parent)
-	node.set_text(0, piece.name)
+	node.set_text(0, piece["name"])
 	
 	# Keep the piece entry in the node so we can use it later.
 	node.set_metadata(0, piece)

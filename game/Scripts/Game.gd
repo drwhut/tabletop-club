@@ -25,10 +25,16 @@ onready var _piece_db = $PieceDB
 onready var _room = $Room
 onready var _ui = $GameUI
 
+master func request_game_piece(piece_entry: Dictionary) -> void:
+	# Generate a unique name for the piece.
+	var name = str(_room.pieces_count())
+	
+	# Send the call to create the piece to everyone.
+	_room.rpc("add_piece", name, piece_entry)
+
 func _ready():
 	_piece_db.import_all()
-	
 	_ui.set_piece_tree_from_db(_piece_db.get_db())
 
-func _on_GameUI_piece_requested(piece_entry):
-	_room.add_piece(piece_entry)
+func _on_GameUI_piece_requested(piece_entry: Dictionary):
+	rpc("request_game_piece", piece_entry)

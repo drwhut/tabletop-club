@@ -40,7 +40,7 @@ func _physics_process(delta):
 	
 	# If the dice is being shaked, set the up and forward directions randomly,
 	# as if one were actually shaking a die.
-	if is_being_shaked():
+	if get_tree().is_network_server() and is_being_shaked():
 		
 		var vec_list = [Vector3.LEFT, Vector3.RIGHT, Vector3.UP, Vector3.DOWN,
 			Vector3.FORWARD, Vector3.BACK]
@@ -56,5 +56,5 @@ func _physics_process(delta):
 		var forward_index = _rng.randi() % vec_list.size()
 		var forward_vec = vec_list[forward_index]
 		
-		hover_up = up_vec
-		hover_forward = forward_vec
+		_hover_up = up_vec
+		_hover_forward = forward_vec

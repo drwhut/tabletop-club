@@ -25,8 +25,9 @@ const PIECE_SPAWN_HEIGHT = 2.0
 
 onready var _pieces = $Pieces
 
-func add_piece(piece_entry: PieceDBEntry) -> void:
-	var d6 = load(piece_entry.model_path).instance()
+remotesync func add_piece(name: String, piece_entry: Dictionary) -> void:
+	var d6 = load(piece_entry["model_path"]).instance()
+	d6.name = name
 	
 	# Spawn the piece at a height.
 	d6.translation.y = PIECE_SPAWN_HEIGHT
@@ -34,7 +35,10 @@ func add_piece(piece_entry: PieceDBEntry) -> void:
 	_pieces.add_child(d6)
 	
 	# Apply a generic texture to the die.
-	var texture = load(piece_entry.texture_path)
+	var texture = load(piece_entry["texture_path"])
 	texture.set_flags(0)
 	
 	d6.apply_texture(texture)
+
+func pieces_count() -> int:
+	return _pieces.get_child_count()

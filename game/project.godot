@@ -18,23 +18,17 @@ _global_script_classes=[ {
 "class": "Piece",
 "language": "GDScript",
 "path": "res://Scripts/Piece.gd"
-}, {
-"base": "Reference",
-"class": "PieceDBEntry",
-"language": "GDScript",
-"path": "res://Scripts/PieceDBEntry.gd"
 } ]
 _global_script_class_icons={
 "Dice": "",
-"Piece": "",
-"PieceDBEntry": ""
+"Piece": ""
 }
 
 [application]
 
 config/name="OpenTabletop"
 config/description="An open-source platform for playing tabletop games in a 3D environment, made with the Godot Engine!"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://Scenes/Lobby.tscn"
 config/icon="res://icon.png"
 
 [input]

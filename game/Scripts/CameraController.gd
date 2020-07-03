@@ -64,7 +64,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("game_flip") and _piece_grabbed:
-		_piece_grabbed.hover_up = -_piece_grabbed.hover_up
+		_piece_grabbed.rpc("flip_vertically")
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -83,8 +83,13 @@ func _physics_process(delta):
 		if result.has("collider"):
 			if result.collider is Piece:
 				_piece_grabbed = result.collider
-				_piece_grabbed.start_hovering()
-				_piece_grabbed.hover_position = _calculate_hover_position(_grab_piece_screen_position)
+				
+				# Someone else could be holding the piece!
+				if not _piece_grabbed.is_hovering():
+					_piece_grabbed.rpc("start_hovering")
+					_piece_grabbed.rpc_unreliable("set_hover_position", _calculate_hover_position(_grab_piece_screen_position))
+				else:
+					_piece_grabbed = null
 		
 		# Set back to null so we don't do the same calculation the next frame.
 		_grab_piece_screen_position = null
@@ -144,7 +149,7 @@ func _process_movement(delta):
 	# hover position.
 	if translation != old_translation and _piece_grabbed:
 		var mouse_position = get_viewport().get_mouse_position()
-		_piece_grabbed.hover_position = _calculate_hover_position(mouse_position)
+		_piece_grabbed.rpc_unreliable("set_hover_position", _calculate_hover_position(mouse_position))
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -153,7 +158,7 @@ func _unhandled_input(event):
 			if event.is_pressed():
 				_grab_piece_screen_position = event.position
 			elif _piece_grabbed:
-				_piece_grabbed.stop_hovering()
+				_piece_grabbed.rpc("stop_hovering")
 				_piece_grabbed = null
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
@@ -186,7 +191,7 @@ func _unhandled_input(event):
 			# Set the hover position of the piece based on where the mouse is
 			# pointed, such that it is hovering at a particular Y-level in
 			# front of the mouse.
-			_piece_grabbed.hover_position = _calculate_hover_position(event.position)
+			_piece_grabbed.rpc_unreliable("set_hover_position", _calculate_hover_position(event.position))
 		
 		elif Input.is_action_pressed("game_rotate"):
 		
