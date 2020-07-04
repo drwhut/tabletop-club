@@ -23,7 +23,7 @@ extends Spatial
 
 onready var _camera = $Camera
 
-const HOVER_Y_LEVEL = 2.0
+const HOVER_Y_LEVEL = 4.0
 const MOVEMENT_ACCEL = 1.0
 const MOVEMENT_DECEL = 3.0
 const MOVEMENT_MAX_SPEED = 30.0

@@ -70,6 +70,8 @@ func import_game_dir(dir: Directory) -> void:
 		_import_dir_if_exists(dir, game_name, "d8", "res://Pieces/Dice/d8.tscn")
 		
 		dir.change_dir("..")
+	
+	_import_dir_if_exists(dir, game_name, "cards", "res://Pieces/Cards/PokerCard.tscn")
 
 func _import_dir_if_exists(current_dir: Directory, game_name: String, dir: String,
 	model: String) -> void:

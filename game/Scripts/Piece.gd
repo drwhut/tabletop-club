@@ -32,6 +32,8 @@ const TRANSFORM_LERP_ALPHA = 0.5
 
 var piece_entry: Dictionary = {}
 
+var _meshInstance: MeshInstance = null
+
 var _hover_back = Vector3.BACK
 var _hover_player = 0
 var _hover_position = Vector3()
@@ -41,6 +43,13 @@ var _last_server_state = {}
 
 var _last_velocity = Vector3()
 var _new_velocity = Vector3()
+
+func apply_texture(texture: Texture) -> void:
+	if _meshInstance != null:
+		var material = SpatialMaterial.new()
+		material.albedo_texture = texture
+		
+		_meshInstance.set_surface_material(0, material)
 
 master func flip_vertically() -> void:
 	if get_tree().get_rpc_sender_id() == _hover_player:
@@ -215,8 +224,8 @@ func _apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	
 	# Add some bias so that the pieces get to their desired state quicker,
 	# but don't overshoot when they are at their desired state.
-	var y_bias = sqrt(abs(_hover_up.dot(transform.basis.y) - 1) / 2)
-	var z_bias = sqrt(abs(_hover_back.dot(transform.basis.z) - 1) / 2)
+	var y_bias = 1#sqrt(abs(_hover_up.dot(transform.basis.y) - 1) / 2)
+	var z_bias = 1#sqrt(abs(_hover_back.dot(transform.basis.z) - 1) / 2)
 	
 	# TODO: Are the following cross products worth optimising?
 	

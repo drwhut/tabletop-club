@@ -47,6 +47,8 @@ func _add_game_to_tree(game_name: String, game_pieces: Dictionary) -> void:
 	# If there are no dice in this game, delete the dice node.
 	if not dice_node.get_children():
 		dice_node.free()
+	
+	_add_type_to_tree(game_node, game_pieces, "cards", "Cards")
 
 func _add_piece_to_tree(parent: TreeItem, piece: Dictionary) -> TreeItem:
 	var node = _objects_tree.create_item(parent)
@@ -67,8 +69,11 @@ func _add_type_to_tree(parent: TreeItem, game_pieces: Dictionary,
 		
 		var array: Array = game_pieces[type_name]
 		
-		for piece in array:
-			_add_piece_to_tree(node, piece)
+		if array.size() > 0:
+			for piece in array:
+				_add_piece_to_tree(node, piece)
+		else:
+			node.free()
 
 func _on_ObjectsButton_pressed():
 	_objects_dialog.popup_centered()
