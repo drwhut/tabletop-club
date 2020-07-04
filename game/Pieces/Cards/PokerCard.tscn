@@ -7,7 +7,6 @@
 extents = Vector3( 3.175, 0.05, 4.445 )
 
 [node name="PokerCard" type="RigidBody"]
-angular_damp = 0.65
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

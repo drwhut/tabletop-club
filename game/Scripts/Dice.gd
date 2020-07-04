@@ -52,3 +52,4 @@ func _physics_process(delta):
 		
 		_hover_up = up_vec
 		_hover_back = back_vec
+		set_angular_lock(false)

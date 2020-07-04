@@ -26,6 +26,7 @@ class_name Piece
 const ANGULAR_FORCE_SCALAR = 20.0
 const HELL_HEIGHT = -50.0
 const LINEAR_FORCE_SCALAR  = 20.0
+const ROTATION_LOCK_AT = 0.001
 const SHAKING_BOUND = 50.0
 const SPAWN_HEIGHT = 2.0
 const TRANSFORM_LERP_ALPHA = 0.5
@@ -34,10 +35,13 @@ var piece_entry: Dictionary = {}
 
 var _meshInstance: MeshInstance = null
 
+# When setting these vectors, make sure you call set_angular_lock(false),
+# otherwise the piece won't rotate towards the orientation!
 var _hover_back = Vector3.BACK
+var _hover_up = Vector3.UP
+
 var _hover_player = 0
 var _hover_position = Vector3()
-var _hover_up = Vector3.UP
 
 var _last_server_state = {}
 
@@ -54,6 +58,7 @@ func apply_texture(texture: Texture) -> void:
 master func flip_vertically() -> void:
 	if get_tree().get_rpc_sender_id() == _hover_player:
 		_hover_up = -_hover_up
+		set_angular_lock(false)
 
 func is_being_shaked() -> bool:
 	return (_new_velocity - _last_velocity).length_squared() > SHAKING_BOUND
@@ -64,6 +69,12 @@ func is_hovering() -> bool:
 master func reset_orientation() -> void:
 	_hover_up = Vector3.UP
 	_hover_back = Vector3.BACK
+	set_angular_lock(false)
+
+master func set_angular_lock(lock: bool) -> void:
+	axis_lock_angular_x = lock
+	axis_lock_angular_y = lock
+	axis_lock_angular_z = lock
 
 puppet func set_hover_player(player: int) -> void:
 	_hover_player = player
@@ -90,6 +101,8 @@ master func start_hovering() -> void:
 		
 		# Make sure _integrate_forces runs.
 		sleeping = false
+		
+		set_angular_lock(false)
 		
 		# Determine which basis is closest to "up" and "back", and set it so
 		# that the piece doesn't dance around trying to get back to the
@@ -150,6 +163,8 @@ master func stop_hovering() -> void:
 	_hover_player = 0
 	rpc("set_hover_player", 0)
 	custom_integrator = false
+	
+	set_angular_lock(false)
 
 func _ready():
 	if not get_tree().is_network_server():
@@ -222,15 +237,19 @@ func _apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Stops linear harmonic motion.
 	state.apply_central_impulse(-linear_velocity * mass)
 	
-	# Add some bias so that the pieces get to their desired state quicker,
-	# but don't overshoot when they are at their desired state.
-	var y_bias = 1#sqrt(abs(_hover_up.dot(transform.basis.y) - 1) / 2)
-	var z_bias = 1#sqrt(abs(_hover_back.dot(transform.basis.z) - 1) / 2)
+	# Figure out how far away we are from the orientation we're supposed to be
+	# at.
+	var y_diff = (-(_hover_up.dot(transform.basis.y) - 1)) / 2
+	var z_diff = (-(_hover_back.dot(transform.basis.z) - 1)) / 2
 	
-	# TODO: Are the following cross products worth optimising?
-	
-	# Torque the piece to the upright position on two axes.
-	state.add_torque(y_bias * ANGULAR_FORCE_SCALAR * (transform.basis.y).cross(_hover_up - transform.basis.y).normalized())
-	state.add_torque(z_bias * ANGULAR_FORCE_SCALAR * (transform.basis.z).cross(_hover_back - transform.basis.z).normalized())
-	# Stops angular harmonic motion.
-	state.add_torque(-angular_velocity)
+	# If we're close enough to the orientation, lock our angular axes.
+	if y_diff < ROTATION_LOCK_AT and z_diff < ROTATION_LOCK_AT:
+		# transform.basis = Basis(_hover_up.cross(_hover_back), _hover_up, _hover_back)
+		set_angular_lock(true)
+	else:
+		# TODO: Are the following cross products worth optimising?
+		# Torque the piece to the upright position on two axes.
+		state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.y).cross(_hover_up - transform.basis.y).normalized())
+		state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.z).cross(_hover_back - transform.basis.z).normalized())
+		# Stops angular harmonic motion.
+		state.add_torque(-angular_velocity)
