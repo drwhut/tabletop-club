@@ -76,6 +76,61 @@ master func start_hovering() -> void:
 		
 		# Make sure _integrate_forces runs.
 		sleeping = false
+		
+		# Determine which basis is closest to "up" and "back", and set it so
+		# that the piece doesn't dance around trying to get back to the
+		# direction it was in before it was dropped.
+		var y_right_dot = transform.basis.y.dot(Vector3.RIGHT)
+		var y_up_dot    = transform.basis.y.dot(Vector3.UP)
+		var y_back_dot  = transform.basis.y.dot(Vector3.BACK)
+		
+		if abs(y_right_dot) > abs(y_up_dot):
+			if abs(y_right_dot) > abs(y_back_dot):
+				if y_right_dot > 0:
+					_hover_up = Vector3.RIGHT
+				else:
+					_hover_up = Vector3.LEFT
+			else:
+				if y_back_dot > 0:
+					_hover_up = Vector3.BACK
+				else:
+					_hover_up = Vector3.FORWARD
+		elif abs(y_up_dot) > abs(y_back_dot):
+			if y_up_dot > 0:
+				_hover_up = Vector3.UP
+			else:
+				_hover_up = Vector3.DOWN
+		else:
+			if y_back_dot > 0:
+				_hover_up = Vector3.BACK
+			else:
+				_hover_up = Vector3.FORWARD
+		
+		var z_right_dot = transform.basis.z.dot(Vector3.RIGHT)
+		var z_up_dot    = transform.basis.z.dot(Vector3.UP)
+		var z_back_dot  = transform.basis.z.dot(Vector3.BACK)
+		
+		if abs(z_right_dot) > abs(z_up_dot):
+			if abs(z_right_dot) > abs(z_back_dot):
+				if z_right_dot > 0:
+					_hover_back = Vector3.RIGHT
+				else:
+					_hover_back = Vector3.LEFT
+			else:
+				if z_back_dot > 0:
+					_hover_back = Vector3.BACK
+				else:
+					_hover_back = Vector3.FORWARD
+		elif abs(z_up_dot) > abs(z_back_dot):
+			if z_up_dot > 0:
+				_hover_back = Vector3.UP
+			else:
+				_hover_back = Vector3.DOWN
+		else:
+			if z_back_dot > 0:
+				_hover_back = Vector3.BACK
+			else:
+				_hover_back = Vector3.FORWARD
 
 master func stop_hovering() -> void:
 	_hover_player = 0
