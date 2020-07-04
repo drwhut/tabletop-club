@@ -24,8 +24,10 @@ extends RigidBody
 class_name Piece
 
 const ANGULAR_FORCE_SCALAR = 20.0
+const HELL_HEIGHT = -50.0
 const LINEAR_FORCE_SCALAR  = 20.0
 const SHAKING_BOUND = 50.0
+const SPAWN_HEIGHT = 2.0
 const TRANSFORM_LERP_ALPHA = 0.5
 
 var piece_entry: Dictionary = {}
@@ -161,6 +163,17 @@ func _integrate_forces(state):
 		# Only the server can apply what happens when a piece is hovered.
 		if is_hovering():
 			_apply_hover_to_state(state)
+		
+		# If the piece has fallen off the table and decended into hell, recover
+		# it so the devil doesn't tickle it to death.
+		elif state.transform.origin.y < HELL_HEIGHT:
+			state.transform.basis.x = Vector3.RIGHT
+			state.transform.basis.y = Vector3.UP
+			state.transform.basis.z = Vector3.BACK
+			state.transform.origin = Vector3(0, SPAWN_HEIGHT, 0)
+			
+			state.angular_velocity = Vector3.ZERO
+			state.linear_velocity = Vector3.ZERO
 		
 		# The server piece needs to keep track of its physics properties in
 		# order to send it to the client.

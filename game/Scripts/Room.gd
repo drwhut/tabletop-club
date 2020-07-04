@@ -23,15 +23,13 @@ extends Spatial
 
 onready var _pieces = $Pieces
 
-const PIECE_SPAWN_HEIGHT = 2.0
-
 remotesync func add_piece(name: String, piece_entry: Dictionary) -> void:
 	var d6 = load(piece_entry["model_path"]).instance()
 	d6.name = name
 	d6.piece_entry = piece_entry
 	
 	# Spawn the piece at a height.
-	d6.translation.y = PIECE_SPAWN_HEIGHT
+	d6.translation.y = Piece.SPAWN_HEIGHT
 	
 	_pieces.add_child(d6)
 	
