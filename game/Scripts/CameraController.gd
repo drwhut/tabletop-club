@@ -63,8 +63,11 @@ func _ready():
 	_rotation = Vector2(rotation.y, rotation.x)
 
 func _process(delta):
-	if Input.is_action_just_pressed("game_flip") and _piece_grabbed:
-		_piece_grabbed.rpc_id(1, "flip_vertically")
+	if _piece_grabbed:
+		if Input.is_action_just_pressed("game_flip"):
+			_piece_grabbed.rpc_id(1, "flip_vertically")
+		elif Input.is_action_just_pressed("game_reset"):
+			_piece_grabbed.rpc_id(1, "reset_orientation")
 
 func _physics_process(delta):
 	_process_input(delta)

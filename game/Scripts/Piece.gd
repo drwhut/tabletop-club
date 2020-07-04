@@ -50,6 +50,10 @@ func is_being_shaked() -> bool:
 func is_hovering() -> bool:
 	return _hover_player > 0
 
+master func reset_orientation() -> void:
+	_hover_up = Vector3.UP
+	_hover_back = Vector3.BACK
+
 puppet func set_hover_player(player: int) -> void:
 	_hover_player = player
 
