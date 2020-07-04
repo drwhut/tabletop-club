@@ -26,6 +26,7 @@ class_name Piece
 const ANGULAR_FORCE_SCALAR = 20.0
 const LINEAR_FORCE_SCALAR  = 20.0
 const SHAKING_BOUND = 50.0
+const TRANSFORM_LERP_ALPHA = 0.5
 
 var piece_entry: Dictionary = {}
 
@@ -35,7 +36,6 @@ var _hover_position = Vector3()
 var _hover_up = Vector3.UP
 
 var _last_server_state = {}
-var _new_server_state = false
 
 var _last_velocity = Vector3()
 var _new_velocity = Vector3()
@@ -65,7 +65,6 @@ master func set_hover_position(hover_position: Vector3) -> void:
 
 puppet func set_latest_server_physics_state(state: Dictionary) -> void:
 	_last_server_state = state
-	_new_server_state = true
 	
 	# Similarly to in start_hovering(), we want to make sure _integrate_forces
 	# runs, even when we're not hovering anything.
@@ -172,7 +171,7 @@ func _integrate_forces(state):
 			"transform": state.transform
 		}
 	
-	elif _new_server_state:
+	else:
 		# The client, if it has received a new physics state from the
 		# server, needs to update it here.
 		if _last_server_state.has("angular_velocity"):
@@ -182,9 +181,18 @@ func _integrate_forces(state):
 		if _last_server_state.has("sleeping"):
 			state.sleeping = _last_server_state["sleeping"]
 		if _last_server_state.has("transform"):
-			state.transform = _last_server_state["transform"]
-		
-		_new_server_state = false
+			
+			# For the transform, we want to lerp into the new state to make it
+			# as smooth as possible, even if the server fails to send the state.
+			var server_transform = _last_server_state["transform"]
+			var origin = transform.origin.linear_interpolate(server_transform.origin, TRANSFORM_LERP_ALPHA)
+			var client_quat = Quat(transform.basis)
+			var server_quat = Quat(server_transform.basis)
+			var lerp_quat = client_quat.slerp(server_quat, TRANSFORM_LERP_ALPHA).normalized()
+			
+			var new_transform = Transform(lerp_quat)
+			new_transform.origin = origin
+			state.transform = new_transform
 
 func _apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Force the piece to the given location.
