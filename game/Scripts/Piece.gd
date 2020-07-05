@@ -27,7 +27,7 @@ const ANGULAR_FORCE_SCALAR = 20.0
 const HELL_HEIGHT = -50.0
 const LINEAR_FORCE_SCALAR  = 20.0
 const ROTATION_LOCK_AT = 0.001
-const SHAKING_BOUND = 50.0
+const SHAKING_THRESHOLD = 50.0
 const SPAWN_HEIGHT = 2.0
 const TRANSFORM_LERP_ALPHA = 0.5
 
@@ -61,7 +61,7 @@ master func flip_vertically() -> void:
 		set_angular_lock(false)
 
 func is_being_shaked() -> bool:
-	return (_new_velocity - _last_velocity).length_squared() > SHAKING_BOUND
+	return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD
 
 func is_hovering() -> bool:
 	return _hover_player > 0
@@ -178,8 +178,11 @@ func _physics_process(delta):
 	# If we are the server ...
 	if get_tree().is_network_server():
 		
-		# ... then send this piece's physics state to the clients.
-		rpc_unreliable("set_latest_server_physics_state", _last_server_state)
+		# ... and the piece is moving ...
+		if linear_velocity.length_squared() > 0 or angular_velocity.length_squared() > 0:
+		
+			# ... then send this piece's physics state to the clients.
+			rpc_unreliable("set_latest_server_physics_state", _last_server_state)
 
 func _integrate_forces(state):
 	if get_tree().is_network_server():
@@ -239,12 +242,11 @@ func _apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	
 	# Figure out how far away we are from the orientation we're supposed to be
 	# at.
-	var y_diff = (-(_hover_up.dot(transform.basis.y) - 1)) / 2
-	var z_diff = (-(_hover_back.dot(transform.basis.z) - 1)) / 2
+	var y_diff = (1 - _hover_up.dot(transform.basis.y)) / 2
+	var z_diff = (1 - _hover_back.dot(transform.basis.z)) / 2
 	
 	# If we're close enough to the orientation, lock our angular axes.
 	if y_diff < ROTATION_LOCK_AT and z_diff < ROTATION_LOCK_AT:
-		# transform.basis = Basis(_hover_up.cross(_hover_back), _hover_up, _hover_back)
 		set_angular_lock(true)
 	else:
 		# TODO: Are the following cross products worth optimising?

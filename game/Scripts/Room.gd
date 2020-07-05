@@ -24,20 +24,20 @@ extends Spatial
 onready var _pieces = $Pieces
 
 remotesync func add_piece(name: String, piece_entry: Dictionary) -> void:
-	var d6 = load(piece_entry["model_path"]).instance()
-	d6.name = name
-	d6.piece_entry = piece_entry
+	var piece = load(piece_entry["model_path"]).instance()
+	piece.name = name
+	piece.piece_entry = piece_entry
 	
 	# Spawn the piece at a height.
-	d6.translation.y = Piece.SPAWN_HEIGHT
+	piece.translation.y = Piece.SPAWN_HEIGHT
 	
-	_pieces.add_child(d6)
+	_pieces.add_child(piece)
 	
 	# Apply a generic texture to the die.
 	var texture: Texture = load(piece_entry["texture_path"])
 	texture.set_flags(0)
 	
-	d6.apply_texture(texture)
+	piece.apply_texture(texture)
 
 func get_pieces() -> Array:
 	return _pieces.get_children()
