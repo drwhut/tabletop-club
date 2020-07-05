@@ -33,7 +33,7 @@ const TRANSFORM_LERP_ALPHA = 0.5
 
 var piece_entry: Dictionary = {}
 
-var _meshInstance: MeshInstance = null
+var _mesh_instance: MeshInstance = null
 
 # When setting these vectors, make sure you call set_angular_lock(false),
 # otherwise the piece won't rotate towards the orientation!
@@ -49,11 +49,11 @@ var _last_velocity = Vector3()
 var _new_velocity = Vector3()
 
 func apply_texture(texture: Texture) -> void:
-	if _meshInstance != null:
+	if _mesh_instance != null:
 		var material = SpatialMaterial.new()
 		material.albedo_texture = texture
 		
-		_meshInstance.set_surface_material(0, material)
+		_mesh_instance.set_surface_material(0, material)
 
 master func flip_vertically() -> void:
 	if get_tree().get_rpc_sender_id() == _hover_player:

@@ -22,4 +22,4 @@
 extends Piece
 
 func _ready():
-	_meshInstance = $MeshInstance
+	_mesh_instance = $MeshInstance
