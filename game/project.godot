@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Piece",
 "language": "GDScript",
 "path": "res://Scripts/Piece.gd"
+}, {
+"base": "Piece",
+"class": "StackablePiece",
+"language": "GDScript",
+"path": "res://Scripts/StackablePiece.gd"
 } ]
 _global_script_class_icons={
 "Dice": "",
-"Piece": ""
+"Piece": "",
+"StackablePiece": ""
 }
 
 [application]
