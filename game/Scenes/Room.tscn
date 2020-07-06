@@ -22,6 +22,11 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="Table/StaticBody"]
 shape = SubResource( 2 )
 
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 30, 0 )
+light_energy = 0.5
+shadow_enabled = true
+
 [node name="CameraController" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
 
