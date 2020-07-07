@@ -23,6 +23,8 @@ extends Piece
 
 class_name StackablePiece
 
+signal stack_requested(piece1, piece2)
+
 const DISTANCE_THRESHOLD = 1.0
 const DOT_STACK_THRESHOLD = 0.9
 
@@ -40,15 +42,18 @@ func _can_stack(body) -> bool:
 	
 	return false
 
-func _on_body_entered(body):
-	if get_tree().is_network_server():
-		
-		# We can't write "if body is StackablePiece", since according to Godot
-		# that would cause a cyclic reference. So instead, we'll check to see
-		# if it is a generic Piece, then check if the model used for the piece
-		# is the same as ours, since we only want to stack items of the same
-		# shape.
-		if body is Piece:
-			if body.piece_entry.model_path == piece_entry.model_path:
-				if _can_stack(body):
-					print("Stacking!")
+func _on_body_entered(body) -> void:
+	# This check is needed, as stackable pieces can move in and out of the
+	# scene tree when they are being moved in and out of stacks.
+	if get_tree() != null:
+		if get_tree().is_network_server():
+			
+			# We can't write "if body is StackablePiece", since according to
+			# Godot that would cause a cyclic reference. So instead, we'll check
+			# to see if it is a generic Piece, then check if the model used for
+			# the piece is the same as ours, since we only want to stack items
+			# of the same shape.
+			if body is Piece:
+				if body.piece_entry.model_path == piece_entry.model_path:
+					if _can_stack(body):
+						emit_signal("stack_requested", self, body)
