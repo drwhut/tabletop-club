@@ -30,45 +30,31 @@ var _pieces: Spatial = null
 
 var _collision_unit_height = 0
 
-func add_piece_bottom(piece: StackablePiece) -> void:
+func add_piece_bottom(piece: StackPieceInstance, shape: Shape) -> void:
 	_collision_shape = $CollisionShape
 	_pieces = $Pieces
-	_add_piece_at_pos(piece, 0)
+	_add_piece_at_pos(piece, shape, 0)
 
-func add_piece_top(piece: StackablePiece) -> void:
+func add_piece_top(piece: StackPieceInstance, shape: Shape) -> void:
 	_collision_shape = $CollisionShape
 	_pieces = $Pieces
-	_add_piece_at_pos(piece, _pieces.get_child_count())
+	_add_piece_at_pos(piece, shape, _pieces.get_child_count())
 
-func _add_piece_at_pos(piece: StackablePiece, pos: int) -> void:
+func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int) -> void:
 	_pieces.add_child(piece)
 	_pieces.move_child(piece, pos)
-	
-	# Set the piece to static mode so it doesn't move on its own.
-	piece.mode = RigidBody.MODE_STATIC
-	
-	# Set the layer and mask to 0 so it doesn't affect the collisions of any
-	# other piece.
-	piece.collision_layer = 0
-	piece.collision_mask = 0
 	
 	if _pieces.get_child_count() == 1:
 		piece_entry = piece.piece_entry
 		
-		var piece_collision_shape = piece.get_node("CollisionShape")
-		if piece_collision_shape:
-			var piece_shape = piece_collision_shape.shape
+		if shape is BoxShape:
+			var new_shape = BoxShape.new()
+			new_shape.extents = shape.extents
+			_collision_unit_height = shape.extents.y * 2
 			
-			if piece_shape is BoxShape:
-				var new_shape = BoxShape.new()
-				new_shape.extents = piece_shape.extents
-				_collision_unit_height = piece_shape.extents.y * 2
-				
-				_collision_shape.shape = new_shape
-			else:
-				push_error("Piece " + piece.name + " has an unsupported collision shape!")
+			_collision_shape.shape = new_shape
 		else:
-			push_error("Piece " + piece.name + " does not have a child CollisionShape!")
+			push_error("Piece " + piece.name + " has an unsupported collision shape!")
 	else:
 		if _collision_shape.shape is BoxShape:
 			_collision_shape.shape.extents.y += (_collision_unit_height / 2)
@@ -79,5 +65,5 @@ func _add_piece_at_pos(piece: StackablePiece, pos: int) -> void:
 	piece.transform = Transform(Basis.IDENTITY, Vector3(0, y_pos, 0))
 	
 	# Adjust the collision shape's translation to match up with the pieces.
-	# = Sum(Y-position of pieces) / #Pieces
+	# Avg(Y-position of pieces) = Sum(Y-position of pieces) / #Pieces
 	_collision_shape.translation.y = _collision_unit_height * (n - 1) / 2
