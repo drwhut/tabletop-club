@@ -151,6 +151,7 @@ func get_pieces_count() -> int:
 func _get_stack_piece_mesh(piece: StackablePiece) -> StackPieceInstance:
 	var piece_mesh = StackPieceInstance.new()
 	piece_mesh.name = piece.name
+	piece_mesh.transform = piece.transform
 	piece_mesh.piece_entry = piece.piece_entry
 	
 	var piece_mesh_inst = piece.get_node("MeshInstance")

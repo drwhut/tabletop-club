@@ -61,9 +61,19 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int) -> voi
 	
 	var n = _pieces.get_child_count()
 	
-	var y_pos = _collision_unit_height * (n - 1)
-	piece.transform = Transform(Basis.IDENTITY, Vector3(0, y_pos, 0))
+	var basis = Basis.IDENTITY
+	if transform.basis.y.dot(piece.transform.basis.y) < 0:
+		basis = Basis.FLIP_Y
+	
+	piece.transform = Transform(basis, Vector3.ZERO)
+	_set_piece_heights()
 	
 	# Adjust the collision shape's translation to match up with the pieces.
 	# Avg(Y-position of pieces) = Sum(Y-position of pieces) / #Pieces
 	_collision_shape.translation.y = _collision_unit_height * (n - 1) / 2
+
+func _set_piece_heights() -> void:
+	var i = 0
+	for piece in _pieces.get_children():
+		piece.transform.origin.y = _collision_unit_height * i
+		i += 1
