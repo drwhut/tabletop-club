@@ -35,7 +35,14 @@ func _can_stack(body) -> bool:
 	var me = transform
 	var you = body.transform
 	
-	if (me.origin - you.origin).length() < DISTANCE_THRESHOLD:
+	# Ignore the y-axis when determining the distance, as stacks can get
+	# physically bigger.
+	var me_xz = me.origin
+	var you_xz = you.origin
+	me_xz.y = 0
+	you_xz.y = 0
+	
+	if (me_xz - you_xz).length() < DISTANCE_THRESHOLD:
 		if abs(me.basis.y.dot(you.basis.y)) > DOT_STACK_THRESHOLD:
 			if abs(me.basis.z.dot(you.basis.z)) > DOT_STACK_THRESHOLD:
 				return true

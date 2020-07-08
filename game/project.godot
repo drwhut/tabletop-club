@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Piece.gd"
 }, {
+"base": "Spatial",
+"class": "Room",
+"language": "GDScript",
+"path": "res://Scripts/Room.gd"
+}, {
 "base": "StackablePiece",
 "class": "Stack",
 "language": "GDScript",
@@ -37,6 +42,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Dice": "",
 "Piece": "",
+"Room": "",
 "Stack": "",
 "StackPieceInstance": "",
 "StackablePiece": ""

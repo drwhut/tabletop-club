@@ -42,7 +42,11 @@ func init_singleplayer() -> void:
 
 master func request_game_piece(piece_entry: Dictionary) -> void:
 	# Send the call to create the piece to everyone.
-	_room.rpc("add_piece", _room.get_next_piece_name(), piece_entry)
+	_room.rpc("add_piece",
+		_room.get_next_piece_name(),
+		Transform(Basis.IDENTITY, Vector3(0, Piece.SPAWN_HEIGHT, 0)),
+		piece_entry
+	)
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
@@ -75,8 +79,7 @@ func _player_connected(id: int) -> void:
 	# If a player has connected to the server, let them know of every piece on
 	# the board so far.
 	if get_tree().is_network_server():
-		for piece in _room.get_pieces():
-			_room.rpc_id(id, "add_piece", piece.name, piece.piece_entry)
+		_room.rpc_id(id, "set_state", _room.get_state())
 
 func _player_disconnected(id: int) -> void:
 	print("Player ", id, " disconnected!")

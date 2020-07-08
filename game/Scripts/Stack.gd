@@ -23,24 +23,59 @@ extends StackablePiece
 
 class_name Stack
 
+enum {
+	STACK_AUTO,
+	STACK_BOTTOM,
+	STACK_TOP
+}
+
+enum {
+	FLIP_AUTO,
+	FLIP_NO,
+	FLIP_YES
+}
+
 # Usually, these would be onready variables, but since this object is always
 # made in code, we set these variables before we need them.
-var _collision_shape: CollisionShape = null
-var _pieces: Spatial = null
+onready var _collision_shape = $CollisionShape
+onready var _pieces = $Pieces
 
 var _collision_unit_height = 0
 
-func add_piece_bottom(piece: StackPieceInstance, shape: Shape) -> void:
-	_collision_shape = $CollisionShape
-	_pieces = $Pieces
-	_add_piece_at_pos(piece, shape, 0)
+func add_piece(piece: StackPieceInstance, shape: Shape, on: int = STACK_AUTO,
+	flip: int = FLIP_AUTO) -> void:
+	
+	var on_top = false
+	
+	if on == STACK_AUTO:
+		if transform.origin.y < piece.transform.origin.y:
+			on_top = transform.basis.y.dot(Vector3.UP) > 0
+		else:
+			on_top = transform.basis.y.dot(Vector3.UP) < 0
+	elif on == STACK_BOTTOM:
+		on_top = false
+	elif on == STACK_TOP:
+		on_top = true
+	else:
+		push_error("Invalid stack option " + str(on) + "!")
+		return
+	
+	var pos = 0
+	if on_top:
+		pos = _pieces.get_child_count()
+	
+	_add_piece_at_pos(piece, shape, pos, flip)
 
-func add_piece_top(piece: StackPieceInstance, shape: Shape) -> void:
-	_collision_shape = $CollisionShape
-	_pieces = $Pieces
-	_add_piece_at_pos(piece, shape, _pieces.get_child_count())
+func get_pieces() -> Array:
+	return _pieces.get_children()
 
-func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int) -> void:
+func get_pieces_count() -> int:
+	return _pieces.get_child_count()
+
+func is_piece_flipped(piece: StackPieceInstance) -> bool:
+	return transform.basis.y.dot(piece.transform.basis.y) < 0
+
+func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int, flip: int) -> void:
 	_pieces.add_child(piece)
 	_pieces.move_child(piece, pos)
 	
@@ -60,10 +95,20 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int) -> voi
 			_collision_shape.shape.extents.y += (_collision_unit_height / 2)
 	
 	var n = _pieces.get_child_count()
-	
 	var basis = Basis.IDENTITY
-	if transform.basis.y.dot(piece.transform.basis.y) < 0:
+	
+	if flip == FLIP_AUTO:
+		if is_piece_flipped(piece):
+			basis = Basis.FLIP_Y
+		else:
+			basis = Basis.IDENTITY
+	elif flip == FLIP_NO:
+		basis = Basis.IDENTITY
+	elif flip == FLIP_YES:
 		basis = Basis.FLIP_Y
+	else:
+		push_error("Invalid flip option " + str(flip) + "!")
+		return
 	
 	piece.transform = Transform(basis, Vector3.ZERO)
 	_set_piece_heights()
