@@ -21,8 +21,6 @@
 
 extends Spatial
 
-class_name Room
-
 onready var _pieces = $Pieces
 
 var _next_piece_name = 0
