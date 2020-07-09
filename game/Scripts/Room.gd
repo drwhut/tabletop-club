@@ -132,6 +132,75 @@ puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
 	
 	return stack
 
+remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> void:
+	
+	var stack1 = _pieces.get_node(stack1_name)
+	var stack2 = _pieces.get_node(stack2_name)
+	
+	if not stack1:
+		push_error("Stack " + stack1_name + " does not exist!")
+		return
+	
+	if not stack2:
+		push_error("Stack " + stack2_name + " does not exist!")
+		return
+	
+	if not stack1 is Stack:
+		push_error("Piece " + stack1_name + " is not a stack!")
+		return
+	
+	if not stack2 is Stack:
+		push_error("Piece " + stack2_name + " is not a stack!")
+		return
+	
+	# If there are no children in the first stack, don't bother doing anything.
+	if stack1.get_pieces_count() == 0:
+		return
+	
+	# We need to determine in which order to add the children of the first stack
+	# to the second stack.
+	# NOTE: In stacks, children are stored bottom-first.
+	var reverse = false
+	
+	if stack1.transform.origin.y > stack2.transform.origin.y:
+		reverse = stack1.transform.basis.y.dot(Vector3.DOWN) > 0
+	else:
+		reverse = stack1.transform.basis.y.dot(Vector3.UP) > 0
+	
+	# Next we need to supply a unit collision shape to the second stack.
+	var shape = _get_stack_piece_shape(stack1)
+	var new_shape: Shape = null
+	
+	if shape is BoxShape:
+		new_shape = BoxShape.new()
+		new_shape.extents = shape.extents
+		new_shape.extents.y /= stack1.get_pieces_count()
+	else:
+		push_error("Stack " + stack1_name + " has an unsupported collision shape!")
+	
+	# Remove the children of the first stack, determine their transform, then
+	# add them to the second stack.
+	var pieces = stack1.get_pieces()
+	if reverse:
+		pieces.invert()
+	
+	for piece in pieces:
+		var basis = piece.transform.basis
+		var origin = piece.transform.origin
+		
+		stack1.remove_piece(piece)
+		
+		basis = stack1.transform.basis * basis
+		origin = stack1.transform.origin + origin
+		
+		piece.transform = Transform(basis, origin)
+		
+		stack2.add_piece(piece, new_shape)
+	
+	# Finally, delete the first stack.
+	_pieces.remove_child(stack1)
+	stack1.queue_free()
+
 func get_next_piece_name() -> String:
 	var next_name = str(_next_piece_name)
 	_next_piece_name += 1
@@ -297,7 +366,7 @@ func _get_stack_piece_shape(piece: StackablePiece) -> Shape:
 
 func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void:
 	if piece1 is Stack and piece2 is Stack:
-		pass
+		rpc("add_stack_to_stack", piece1.name, piece2.name)
 	elif piece1 is Stack:
 		rpc("add_piece_to_stack", piece2.name, piece1.name)
 	elif piece2 is Stack:

@@ -75,6 +75,9 @@ func get_pieces_count() -> int:
 func is_piece_flipped(piece: StackPieceInstance) -> bool:
 	return transform.basis.y.dot(piece.transform.basis.y) < 0
 
+func remove_piece(piece: StackPieceInstance) -> void:
+	_pieces.remove_child(piece)
+
 func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int, flip: int) -> void:
 	_pieces.add_child(piece)
 	_pieces.move_child(piece, pos)
