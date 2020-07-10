@@ -67,17 +67,15 @@ func is_hovering() -> bool:
 	return _hover_player > 0
 
 master func reset_orientation() -> void:
-	_hover_up = Vector3.UP
-	_hover_back = Vector3.BACK
-	set_angular_lock(false)
+	if get_tree().get_rpc_sender_id() == _hover_player:
+		_hover_up = Vector3.UP
+		_hover_back = Vector3.BACK
+		set_angular_lock(false)
 
-master func set_angular_lock(lock: bool) -> void:
+func set_angular_lock(lock: bool) -> void:
 	axis_lock_angular_x = lock
 	axis_lock_angular_y = lock
 	axis_lock_angular_z = lock
-
-puppet func set_hover_player(player: int) -> void:
-	_hover_player = player
 
 master func set_hover_position(hover_position: Vector3) -> void:
 	# Only allow the hover position to be set if the request is coming from the
@@ -93,10 +91,9 @@ puppet func set_latest_server_physics_state(state: Dictionary) -> void:
 	if state.has("sleeping"):
 		sleeping = state["sleeping"]
 
-master func start_hovering() -> void:
+func start_hovering(player_id: int) -> bool:
 	if not is_hovering():
-		_hover_player = get_tree().get_rpc_sender_id()
-		rpc("set_hover_player", _hover_player)
+		_hover_player = player_id
 		custom_integrator = true
 		
 		# Make sure _integrate_forces runs.
@@ -158,13 +155,17 @@ master func start_hovering() -> void:
 				_hover_back = Vector3.BACK
 			else:
 				_hover_back = Vector3.FORWARD
+		
+		return true
+	
+	return false
 
 master func stop_hovering() -> void:
-	_hover_player = 0
-	rpc("set_hover_player", 0)
-	custom_integrator = false
-	
-	set_angular_lock(false)
+	if get_tree().get_rpc_sender_id() == _hover_player:
+		_hover_player = 0
+		custom_integrator = false
+		
+		set_angular_lock(false)
 
 func _ready():
 	if not get_tree().is_network_server():

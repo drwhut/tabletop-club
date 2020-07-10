@@ -21,8 +21,10 @@
 
 extends Spatial
 
+onready var _camera_controller = $CameraController
 onready var _pieces = $Pieces
 
+var _hovering_piece: Piece = null
 var _next_piece_name = 0
 
 remotesync func add_piece(name: String, transform: Transform, piece_entry: Dictionary) -> void:
@@ -247,6 +249,42 @@ func get_state() -> Dictionary:
 	out["stacks"] = stack_dict
 	return out
 
+master func request_hover_piece(piece_name: String) -> void:
+	
+	var piece = _pieces.get_node(piece_name)
+	
+	if not piece:
+		push_error("Piece " + piece_name + " does not exist!")
+		return
+	
+	if not piece is Piece:
+		push_error("Object " + piece_name + " is not a piece!")
+		return
+	
+	var player_id = get_tree().get_rpc_sender_id()
+	
+	if piece.start_hovering(player_id):
+		rpc_id(player_id, "request_hover_piece_accepted", piece_name)
+	
+remotesync func request_hover_piece_accepted(piece_name: String) -> void:
+	
+	var piece = _pieces.get_node(piece_name)
+	
+	if not piece:
+		push_error("Piece " + piece_name + " does not exist!")
+		return
+	
+	if not piece is Piece:
+		push_error("Object " + piece_name + " is not a piece!")
+		return
+	
+	_camera_controller.set_is_hovering_piece(true)
+	_hovering_piece = piece
+	
+	# Ask the camera controller to send a new_hover_position signal, so the
+	# hover position is immediately updated upon acception.
+	_camera_controller.send_hover_position_signal()
+
 puppet func set_state(state: Dictionary) -> void:
 	# Delete all the pieces on the board currently before we begin.
 	for child in _pieces.get_children():
@@ -374,3 +412,23 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 	else:
 		rpc("add_stack", get_next_piece_name(), piece1.transform, piece1.name,
 			piece2.name)
+
+func _on_CameraController_flipped_piece():
+	if _hovering_piece:
+		_hovering_piece.rpc_id(1, "flip_vertically")
+
+func _on_CameraController_new_hover_position(position: Vector3):
+	if _hovering_piece:
+		_hovering_piece.rpc_unreliable_id(1, "set_hover_position", position)
+
+func _on_CameraController_reset_piece():
+	if _hovering_piece:
+		_hovering_piece.rpc_id(1, "reset_orientation")
+
+func _on_CameraController_started_hovering(piece: Piece, fast: bool):
+	rpc_id(1, "request_hover_piece", piece.name)
+	
+func _on_CameraController_stopped_hovering():
+	if _hovering_piece:
+		_hovering_piece.rpc_id(1, "stop_hovering")
+		_hovering_piece = null

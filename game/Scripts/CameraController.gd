@@ -21,8 +21,15 @@
 
 extends Spatial
 
+signal flipped_piece()
+signal new_hover_position(position)
+signal reset_piece()
+signal started_hovering(piece, fast)
+signal stopped_hovering()
+
 onready var _camera = $Camera
 
+const GRABBING_SLOW_TIME = 0.25
 const HOVER_Y_LEVEL = 4.0
 const MOVEMENT_ACCEL = 1.0
 const MOVEMENT_DECEL = 3.0
@@ -36,11 +43,20 @@ const ZOOM_DISTANCE_MIN = 2.0
 const ZOOM_DISTANCE_MAX = 80.0
 
 var _grab_piece_screen_position = null
+var _grabbing_time = 0.0
+var _is_hovering_piece = false
 var _last_non_zero_movement_dir = Vector3()
 var _movement_dir = Vector3()
 var _movement_speed = 0.0
-var _piece_grabbed: Piece = null
+var _piece_grabbing: Piece = null
 var _rotation = Vector2()
+
+func send_hover_position_signal() -> void:
+	var mouse_position = get_viewport().get_mouse_position()
+	emit_signal("new_hover_position", _calculate_hover_position(mouse_position))
+
+func set_is_hovering_piece(is_hovering: bool) -> void:
+	_is_hovering_piece = is_hovering
 
 func _calculate_hover_position(mouse_position: Vector2) -> Vector3:
 	# Get vectors representing a raycast from the camera.
@@ -63,11 +79,18 @@ func _ready():
 	_rotation = Vector2(rotation.y, rotation.x)
 
 func _process(delta):
-	if _piece_grabbed:
+	if _piece_grabbing:
+		_grabbing_time += delta
+		
+		# Have we been grabbing this piece for a long time?
+		if _grabbing_time > GRABBING_SLOW_TIME:
+			_start_hovering_grabbed_piece(false)
+	
+	if _is_hovering_piece:
 		if Input.is_action_just_pressed("game_flip"):
-			_piece_grabbed.rpc_id(1, "flip_vertically")
+			emit_signal("flipped_piece")
 		elif Input.is_action_just_pressed("game_reset"):
-			_piece_grabbed.rpc_id(1, "reset_orientation")
+			emit_signal("reset_piece")
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -85,14 +108,8 @@ func _physics_process(delta):
 		# Was the thing that collided a game piece? If so, we should grab it.
 		if result.has("collider"):
 			if result.collider is Piece:
-				_piece_grabbed = result.collider
-				
-				# Someone else could be holding the piece!
-				if not _piece_grabbed.is_hovering():
-					_piece_grabbed.rpc_id(1, "start_hovering")
-					_piece_grabbed.rpc_unreliable_id(1, "set_hover_position", _calculate_hover_position(_grab_piece_screen_position))
-				else:
-					_piece_grabbed = null
+				_piece_grabbing = result.collider
+				_grabbing_time = 0.0
 		
 		# Set back to null so we don't do the same calculation the next frame.
 		_grab_piece_screen_position = null
@@ -148,11 +165,9 @@ func _process_movement(delta):
 	var old_translation = translation
 	translation += _last_non_zero_movement_dir * _movement_speed * delta
 	
-	# If we ended up moving, and we are hovering a piece, move the pieces
-	# hover position.
-	if translation != old_translation and _piece_grabbed:
-		var mouse_position = get_viewport().get_mouse_position()
-		_piece_grabbed.rpc_unreliable_id(1, "set_hover_position", _calculate_hover_position(mouse_position))
+	# If we ended up moving...
+	if translation != old_translation:
+		_start_moving()
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -160,9 +175,12 @@ func _unhandled_input(event):
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
 				_grab_piece_screen_position = event.position
-			elif _piece_grabbed:
-				_piece_grabbed.rpc_id(1, "stop_hovering")
-				_piece_grabbed = null
+			else:
+				_piece_grabbing = null
+				
+				if _is_hovering_piece:
+					emit_signal("stopped_hovering")
+					_is_hovering_piece = false
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
@@ -189,12 +207,10 @@ func _unhandled_input(event):
 	
 	elif event is InputEventMouseMotion:
 		
-		if _piece_grabbed:
-			
-			# Set the hover position of the piece based on where the mouse is
-			# pointed, such that it is hovering at a particular Y-level in
-			# front of the mouse.
-			_piece_grabbed.rpc_unreliable_id(1, "set_hover_position", _calculate_hover_position(event.position))
+		# Check if by moving the mouse, we either started hovering a piece, or
+		# we have moved the hovered pieces position.
+		if _start_moving():
+			pass
 		
 		elif Input.is_action_pressed("game_rotate"):
 		
@@ -212,3 +228,25 @@ func _unhandled_input(event):
 			rotate_y(_rotation.x)
 			
 			get_tree().set_input_as_handled()
+
+func _start_hovering_grabbed_piece(fast: bool) -> void:
+	if _piece_grabbing:
+		emit_signal("started_hovering", _piece_grabbing, fast)
+		_piece_grabbing = null
+
+func _start_moving() -> bool:
+	# If we were grabbing a piece while moving...
+	if _piece_grabbing:
+		
+		# ... then send out a signal to start hovering the piece fast.
+		_start_hovering_grabbed_piece(true)
+		return true
+	
+	# Or if we were hovering a piece already...
+	if _is_hovering_piece:
+		
+		# ... then send out a signal with the new hover position.
+		send_hover_position_signal()
+		return true
+	
+	return false
