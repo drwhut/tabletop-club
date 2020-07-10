@@ -75,8 +75,43 @@ func get_pieces_count() -> int:
 func is_piece_flipped(piece: StackPieceInstance) -> bool:
 	return transform.basis.y.dot(piece.transform.basis.y) < 0
 
+func pop_piece(from: int = STACK_AUTO) -> StackPieceInstance:
+	if _pieces.get_child_count() == 0:
+		return null
+	
+	var pos = 0
+	
+	if from == STACK_AUTO:
+		if transform.basis.y.dot(Vector3.UP) > 0:
+			pos = _pieces.get_child_count() - 1
+		else:
+			pos = 0
+	elif from == STACK_BOTTOM:
+		pos = 0
+	elif from == STACK_TOP:
+		pos = _pieces.get_child_count() - 1
+	else:
+		push_error("Invalid from option " + str(from) + "!")
+		return null
+	
+	return _remove_piece_at_pos(pos)
+
 func remove_piece(piece: StackPieceInstance) -> void:
-	_pieces.remove_child(piece)
+	if _pieces.is_a_parent_of(piece):
+		_remove_piece_at_pos(piece.get_index())
+		piece.queue_free()
+	else:
+		push_error("Piece " + piece.name + " is not a child of this stack!")
+		return
+
+puppet func remove_piece_by_name(name: String) -> void:
+	var piece = _pieces.get_node(name)
+	
+	if not piece:
+		push_error("Piece " + name + " is not in the stack!")
+		return
+	
+	remove_piece(piece)
 
 func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int, flip: int) -> void:
 	_pieces.add_child(piece)
@@ -98,27 +133,54 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int, flip: 
 			_collision_shape.shape.extents.y += (_collision_unit_height / 2)
 	
 	var n = _pieces.get_child_count()
-	var basis = Basis.IDENTITY
+	var is_flipped = false
 	
 	if flip == FLIP_AUTO:
 		if is_piece_flipped(piece):
-			basis = Basis.FLIP_Y
+			is_flipped = true
 		else:
-			basis = Basis.IDENTITY
+			is_flipped = false
 	elif flip == FLIP_NO:
-		basis = Basis.IDENTITY
+		is_flipped = false
 	elif flip == FLIP_YES:
-		basis = Basis.FLIP_Y
+		is_flipped = true
 	else:
 		push_error("Invalid flip option " + str(flip) + "!")
 		return
 	
+	var basis = Basis.IDENTITY
+	if is_flipped:
+		basis = basis.rotated(Vector3.BACK, PI)
+	
 	piece.transform = Transform(basis, Vector3.ZERO)
 	_set_piece_heights()
 	
+	_adjust_collision_shape_translation()
+
+func _adjust_collision_shape_translation() -> void:
 	# Adjust the collision shape's translation to match up with the pieces.
 	# Avg(Y-position of pieces) = Sum(Y-position of pieces) / #Pieces
-	_collision_shape.translation.y = _collision_unit_height * (n - 1) / 2
+	_collision_shape.translation.y = _collision_unit_height * (_pieces.get_child_count() - 1) / 2
+
+func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
+	if pos < 0 or pos >= _pieces.get_child_count():
+		push_error("Cannot remove " + str(pos) + "th child from the stack!")
+		return null
+	
+	var piece = _pieces.get_child(pos)
+	_pieces.remove_child(piece)
+	
+	# Re-calculate the stacks collision shape.
+	if _collision_shape.shape is BoxShape:
+		_collision_shape.shape.extents.y -= _collision_unit_height
+	else:
+		push_error("Stack has an unsupported collision shape!")
+		return null
+	
+	_adjust_collision_shape_translation()
+	_set_piece_heights()
+	
+	return piece
 
 func _set_piece_heights() -> void:
 	var i = 0

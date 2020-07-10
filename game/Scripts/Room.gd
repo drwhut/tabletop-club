@@ -27,7 +27,9 @@ onready var _pieces = $Pieces
 var _hovering_piece: Piece = null
 var _next_piece_name = 0
 
-remotesync func add_piece(name: String, transform: Transform, piece_entry: Dictionary) -> void:
+remotesync func add_piece(name: String, transform: Transform,
+	piece_entry: Dictionary, hover_player: int = 0) -> void:
+	
 	var piece = load(piece_entry["model_path"]).instance()
 	piece.name = name
 	piece.transform = transform
@@ -45,6 +47,9 @@ remotesync func add_piece(name: String, transform: Transform, piece_entry: Dicti
 	texture.set_flags(0)
 	
 	piece.apply_texture(texture)
+	
+	if get_tree().is_network_server() and hover_player > 0:
+		piece.start_hovering(hover_player)
 
 remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 	on: int = Stack.FLIP_AUTO, flip: int = Stack.FLIP_AUTO) -> void:
@@ -285,6 +290,58 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	# hover position is immediately updated upon acception.
 	_camera_controller.send_hover_position_signal()
 
+master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
+	
+	var player_id = get_tree().get_rpc_sender_id()
+	var stack = _pieces.get_node(stack_name)
+	
+	if not stack:
+		push_error("Stack " + stack_name + " does not exist!")
+		return
+	
+	if not stack is Stack:
+		push_error("Object " + stack_name + " is not a stack!")
+		return
+	
+	var piece_instance = stack.pop_piece()
+	if piece_instance:
+		
+		stack.rpc("remove_piece_by_name", piece_instance.name)
+		
+		# Create the transform for the new piece.
+		var new_basis = stack.transform.basis * piece_instance.transform.basis
+		var new_origin = stack.transform.origin + piece_instance.transform.origin
+		
+		# If this piece will hover, get it away from the stack so it doesn't
+		# immediately collide with it again.
+		# TODO: Use the stack's unit height!
+		if hover:
+			new_origin.y += 1
+		var new_transform = Transform(new_basis, new_origin)
+		
+		if not hover:
+			player_id = 0
+		
+		rpc("add_piece", piece_instance.name, new_transform,
+			piece_instance.piece_entry, player_id)
+		
+		if hover:
+			rpc_id(player_id, "request_pop_stack_accepted", piece_instance.name)
+		
+		# Check to see if there is only one piece left in the stack - if there
+		# is, turn it into a normal piece with this method.
+		if stack.get_pieces_count() == 1:
+			request_pop_stack(stack_name, false)
+			_pieces.remove_child(stack)
+			stack.queue_free()
+		
+		piece_instance.queue_free()
+
+remotesync func request_pop_stack_accepted(piece_name: String) -> void:
+	# The server has allowed us to hover the piece that has just poped off the
+	# stack!
+	request_hover_piece_accepted(piece_name)
+
 puppet func set_state(state: Dictionary) -> void:
 	# Delete all the pieces on the board currently before we begin.
 	for child in _pieces.get_children():
@@ -426,7 +483,10 @@ func _on_CameraController_reset_piece():
 		_hovering_piece.rpc_id(1, "reset_orientation")
 
 func _on_CameraController_started_hovering(piece: Piece, fast: bool):
-	rpc_id(1, "request_hover_piece", piece.name)
+	if piece is Stack and fast:
+		rpc_id(1, "request_pop_stack", piece.name)
+	else:
+		rpc_id(1, "request_hover_piece", piece.name)
 	
 func _on_CameraController_stopped_hovering():
 	if _hovering_piece:
