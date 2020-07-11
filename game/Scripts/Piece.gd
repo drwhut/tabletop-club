@@ -66,6 +66,11 @@ func is_being_shaked() -> bool:
 func is_hovering() -> bool:
 	return _hover_player > 0
 
+remotesync func remove_self() -> void:
+	if get_parent():
+		get_parent().remove_child(self)
+		queue_free()
+
 master func reset_orientation() -> void:
 	if get_tree().get_rpc_sender_id() == _hover_player:
 		_hover_up = Vector3.UP

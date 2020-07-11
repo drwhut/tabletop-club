@@ -301,10 +301,18 @@ master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 		push_error("Object " + stack_name + " is not a stack!")
 		return
 	
-	var piece_instance = stack.pop_piece()
-	if piece_instance:
-		
+	var piece_instance: StackPieceInstance = null
+	
+	if stack.get_pieces_count() == 0:
+		return
+	elif stack.get_pieces_count() == 1:
+		piece_instance = stack.empty()[0]
+		stack.rpc("remove_self")
+	else:
+		piece_instance = stack.pop_piece()
 		stack.rpc("remove_piece_by_name", piece_instance.name)
+	
+	if piece_instance:
 		
 		# Create the transform for the new piece.
 		var new_basis = stack.transform.basis * piece_instance.transform.basis
@@ -326,14 +334,12 @@ master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 		if hover:
 			rpc_id(player_id, "request_pop_stack_accepted", piece_instance.name)
 		
-		# Check to see if there is only one piece left in the stack - if there
-		# is, turn it into a normal piece with this method.
-		if stack.get_pieces_count() == 1:
-			request_pop_stack(stack_name, false)
-			_pieces.remove_child(stack)
-			stack.queue_free()
-		
 		piece_instance.queue_free()
+		
+	# Check to see if there is only one piece left in the stack - if there is,
+	# turn it into a normal piece with this method.
+	if stack.get_pieces_count() == 1:
+		request_pop_stack(stack_name, false)
 
 remotesync func request_pop_stack_accepted(piece_name: String) -> void:
 	# The server has allowed us to hover the piece that has just poped off the
