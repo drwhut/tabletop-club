@@ -187,15 +187,13 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 	
 	# Remove the children of the first stack, determine their transform, then
 	# add them to the second stack.
-	var pieces = stack1.get_pieces()
+	var pieces = stack1.empty()
 	if reverse:
 		pieces.invert()
 	
 	for piece in pieces:
 		var basis = piece.transform.basis
 		var origin = piece.transform.origin
-		
-		stack1.remove_piece(piece)
 		
 		basis = stack1.transform.basis * basis
 		origin = stack1.transform.origin + origin

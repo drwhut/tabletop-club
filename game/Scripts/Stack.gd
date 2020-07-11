@@ -66,6 +66,21 @@ func add_piece(piece: StackPieceInstance, shape: Shape, on: int = STACK_AUTO,
 	
 	_add_piece_at_pos(piece, shape, pos, flip)
 
+# NOTE: If you plan to remove the stack, but get the pieces of the stack (e.g.
+# when putting one stack on top of another), use this function!
+# This function exists as a workaround to a bug where the engine crashes when
+# you change the collision shape of a rigidbody before removing it from the
+# tree.
+# See: https://github.com/godotengine/godot/issues/40283
+func empty() -> Array:
+	var out = []
+	
+	for piece in _pieces.get_children():
+		_pieces.remove_child(piece)
+		out.push_back(piece)
+	
+	return out
+
 func get_pieces() -> Array:
 	return _pieces.get_children()
 
@@ -99,7 +114,6 @@ func pop_piece(from: int = STACK_AUTO) -> StackPieceInstance:
 func remove_piece(piece: StackPieceInstance) -> void:
 	if _pieces.is_a_parent_of(piece):
 		_remove_piece_at_pos(piece.get_index())
-		piece.queue_free()
 	else:
 		push_error("Piece " + piece.name + " is not a child of this stack!")
 		return
