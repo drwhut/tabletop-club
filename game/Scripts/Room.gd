@@ -268,9 +268,8 @@ master func request_hover_piece(piece_name: String) -> void:
 	
 	if piece.start_hovering(player_id):
 		rpc_id(player_id, "request_hover_piece_accepted", piece_name)
-	
+
 remotesync func request_hover_piece_accepted(piece_name: String) -> void:
-	
 	var piece = _pieces.get_node(piece_name)
 	
 	if not piece:

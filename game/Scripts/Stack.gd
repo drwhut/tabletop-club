@@ -173,7 +173,6 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int, flip: 
 
 func _adjust_collision_shape_translation() -> void:
 	# Adjust the collision shape's translation to match up with the pieces.
-	# Avg(Y-position of pieces) = Sum(Y-position of pieces) / #Pieces
 	_collision_shape.translation.y = _collision_unit_height * (_pieces.get_child_count() - 1) / 2
 
 func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
@@ -186,7 +185,7 @@ func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	
 	# Re-calculate the stacks collision shape.
 	if _collision_shape.shape is BoxShape:
-		_collision_shape.shape.extents.y -= _collision_unit_height
+		_collision_shape.shape.extents.y -= (_collision_unit_height / 2)
 	else:
 		push_error("Stack has an unsupported collision shape!")
 		return null
