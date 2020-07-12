@@ -19,9 +19,34 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends StackablePiece
+extends Stack
 
-class_name Card
+class_name ShuffleableStack
 
-func _ready():
-	_mesh_instance = $MeshInstance
+remotesync func set_piece_order(order: Array) -> void:
+	var i = 0
+	for piece_name in order:
+		var node = _pieces.get_node(piece_name)
+		
+		if node:
+			_pieces.move_child(node, i)
+		
+		i += 1
+	
+	_set_piece_heights()
+
+func _physics_process(delta):
+	
+	# If the stack is being shaken, then get the server to send a list of
+	# shuffled names to each client (including itself).
+	if get_tree().is_network_server() and is_being_shaked():
+		
+		var names = []
+		
+		for piece in _pieces.get_children():
+			names.push_back(piece.name)
+		
+		randomize()
+		names.shuffle()
+		
+		rpc("set_piece_order", names)

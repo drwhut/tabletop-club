@@ -119,7 +119,13 @@ remotesync func add_stack(name: String, transform: Transform,
 	if not (piece1_mesh and piece2_mesh and piece1_shape and piece2_shape):
 		return
 	
-	var stack = add_stack_empty(name, transform)
+	# Should the stack be shuffleable?
+	var shuffleable = false
+	
+	if (piece1 is Card and piece2 is Card):
+		shuffleable = true
+	
+	var stack = add_stack_empty(name, transform, shuffleable)
 	
 	stack.add_piece(piece1_mesh, piece1_shape)
 	stack.add_piece(piece2_mesh, piece2_shape)
@@ -127,8 +133,15 @@ remotesync func add_stack(name: String, transform: Transform,
 	piece1.queue_free()
 	piece2.queue_free()
 
-puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
-	var stack = preload("res://Pieces/Stack.tscn").instance()
+puppet func add_stack_empty(name: String, transform: Transform,
+	shuffleable: bool = false) -> Stack:
+	
+	var stack: Stack = null
+	if shuffleable:
+		stack = preload("res://Pieces/ShuffleableStack.tscn").instance()
+	else:
+		stack = preload("res://Pieces/Stack.tscn").instance()
+	
 	stack.name = name
 	stack.transform = transform
 	
@@ -225,6 +238,7 @@ func get_state() -> Dictionary:
 	for piece in _pieces.get_children():
 		if piece is Stack:
 			var stack_meta = {
+				"is_shuffleable": piece is ShuffleableStack,
 				"transform": piece.transform
 			}
 			
@@ -376,6 +390,14 @@ puppet func set_state(state: Dictionary) -> void:
 		for stack_name in state["stacks"]:
 			var stack_meta = state["stacks"][stack_name]
 			
+			if not stack_meta.has("is_shuffleable"):
+				push_error("Stack " + stack_name + " in new state has no is shuffleable value!")
+				return
+			
+			if not stack_meta["is_shuffleable"] is bool:
+				push_error("Stack " + stack_name + " is shuffleable value is not a boolean!")
+				return
+			
 			if not stack_meta.has("transform"):
 				push_error("Stack " + stack_name + " in new state has no transform!")
 				return
@@ -392,7 +414,8 @@ puppet func set_state(state: Dictionary) -> void:
 				push_error("Stack " + stack_name + " piece array is not an array!")
 				return
 			
-			var stack = add_stack_empty(stack_name, stack_meta["transform"])
+			var stack = add_stack_empty(stack_name, stack_meta["transform"],
+				stack_meta["is_shuffleable"])
 			
 			for stack_piece_meta in stack_meta["pieces"]:
 				

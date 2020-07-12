@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "StackablePiece",
+"class": "Card",
+"language": "GDScript",
+"path": "res://Scripts/Card.gd"
+}, {
 "base": "Piece",
 "class": "Dice",
 "language": "GDScript",
@@ -18,6 +23,11 @@ _global_script_classes=[ {
 "class": "Piece",
 "language": "GDScript",
 "path": "res://Scripts/Piece.gd"
+}, {
+"base": "Stack",
+"class": "ShuffleableStack",
+"language": "GDScript",
+"path": "res://Scripts/ShuffleableStack.gd"
 }, {
 "base": "StackablePiece",
 "class": "Stack",
@@ -35,8 +45,10 @@ _global_script_classes=[ {
 "path": "res://Scripts/StackablePiece.gd"
 } ]
 _global_script_class_icons={
+"Card": "",
 "Dice": "",
 "Piece": "",
+"ShuffleableStack": "",
 "Stack": "",
 "StackPieceInstance": "",
 "StackablePiece": ""

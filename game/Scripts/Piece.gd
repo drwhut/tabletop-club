@@ -27,7 +27,7 @@ const ANGULAR_FORCE_SCALAR = 20.0
 const HELL_HEIGHT = -50.0
 const LINEAR_FORCE_SCALAR  = 20.0
 const ROTATION_LOCK_AT = 0.001
-const SHAKING_THRESHOLD = 50.0
+const SHAKING_THRESHOLD = 1000.0
 const SPAWN_HEIGHT = 2.0
 const TRANSFORM_LERP_ALPHA = 0.5
 
@@ -61,7 +61,9 @@ master func flip_vertically() -> void:
 		set_angular_lock(false)
 
 func is_being_shaked() -> bool:
-	return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD
+	if _new_velocity.dot(_last_velocity) < 0:
+		return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD
+	return false
 
 func is_hovering() -> bool:
 	return _hover_player > 0
