@@ -61,6 +61,6 @@ func _on_body_entered(body) -> void:
 			# the piece is the same as ours, since we only want to stack items
 			# of the same shape.
 			if body is Piece:
-				if body.piece_entry.model_path == piece_entry.model_path:
+				if body.piece_entry.scene_path == piece_entry.scene_path:
 					if _can_stack(body):
 						emit_signal("stack_requested", self, body)
