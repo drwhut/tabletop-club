@@ -23,6 +23,8 @@ extends Node
 
 const ASSET_DIR_PATHS = ["./assets", "../assets"]
 
+const VALID_SCENE_EXTENSIONS = ["glb", "gltf"]
+
 # List taken from:
 # https://docs.godotengine.org/en/3.2/getting_started/workflow/assets/importing_images.html
 const VALID_TEXTURE_EXTENSIONS = ["bmp", "dds", "exr", "hdr", "jpeg", "jpg",
@@ -58,59 +60,102 @@ func import_all() -> void:
 				entry = dir.get_next()
 
 func import_game_dir(dir: Directory) -> void:
-	var game_name = dir.get_current_dir().get_file()
+	var game = dir.get_current_dir().get_file()
 	
-	_db[game_name] = {}
+	_db[game] = {}
 	
 	if dir.dir_exists("dice"):
 		dir.change_dir("dice")
 		
-		_import_dir_if_exists(dir, game_name, "d4", "res://Pieces/Dice/d4.tscn")
-		_import_dir_if_exists(dir, game_name, "d6", "res://Pieces/Dice/d6.tscn")
-		_import_dir_if_exists(dir, game_name, "d8", "res://Pieces/Dice/d8.tscn")
+		_import_dir_if_exists(dir, game, "d4", "res://Pieces/Dice/d4.tscn")
+		_import_dir_if_exists(dir, game, "d6", "res://Pieces/Dice/d6.tscn")
+		_import_dir_if_exists(dir, game, "d8", "res://Pieces/Dice/d8.tscn")
 		
 		dir.change_dir("..")
 	
-	_import_dir_if_exists(dir, game_name, "cards", "res://Pieces/Cards/PokerCard.tscn")
+	_import_dir_if_exists(dir, game, "cards", "res://Pieces/Cards/PokerCard.tscn")
+	_import_dir_if_exists(dir, game, "pieces", "")
 
-func _import_dir_if_exists(current_dir: Directory, game_name: String, dir: String,
-	model: String) -> void:
+func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
+	scene: String) -> void:
 	
-	if current_dir.dir_exists(dir):
-		current_dir.change_dir(dir)
-		
-		var array = []
+	if current_dir.dir_exists(type):
+		current_dir.change_dir(type)
 	
 		current_dir.list_dir_begin(true, true)
 		
 		var file = current_dir.get_next()
 		while file:
-			if VALID_TEXTURE_EXTENSIONS.has(file.get_extension()):
-				var texture_path = current_dir.get_current_dir() + "/" + file
-				
-				var error = _importer.import_texture(texture_path, game_name, dir)
-				
-				if error == OK:
-					_add_entry_to_array(array, game_name, dir, file, model)
-				else:
-					print("Failed to import ", texture_path)
+			var file_path = current_dir.get_current_dir() + "/" + file
+			var import_err = _import_asset(file_path, game, type, scene)
+			
+			if import_err:
+				push_error("Failed to import " + file_path)
 				
 			file = current_dir.get_next()
 		
-		_db[game_name][dir] = array
-		
 		current_dir.change_dir("..")
 
-func _add_entry_to_array(array: Array, game: String, type: String, file: String,
-	model_path: String) -> void:
+func _add_entry_to_db(game: String, type: String, entry: Dictionary) -> void:
+	if not _db.has(game):
+		_db[game] = {}
 	
-	var name = file.substr(0, file.length() - file.get_extension().length() - 1)
+	if not _db[game].has(type):
+		_db[game][type] = []
 	
-	# This is where the texture should be copied to with the TabletopImporter.
-	var texture_path = "user://" + game + "/" + type + "/" + file
+	_db[game][type].push_back(entry)
+
+func _get_asset_dir(game: String, type: String) -> Directory:
+	var dir = Directory.new()
 	
-	array.push_back({
-		"name": name,
-		"model_path": model_path,
-		"texture_path": texture_path
-	})
+	if dir.open("user://") == OK:
+		var path = game + "/" + type
+		dir.make_dir_recursive(path)
+		dir.change_dir(path)
+	else:
+		push_error("Cannot open user:// directory!")
+	
+	return dir
+
+func _get_file_without_ext(file_path: String) -> String:
+	var file = file_path.get_file()
+	return file.substr(0, file.length() - file.get_extension().length() - 1)
+
+func _import_asset(from: String, game: String, type: String, scene: String) -> int:
+	var dir = _get_asset_dir(game, type)
+	
+	var to = dir.get_current_dir() + "/" + from.get_file()
+	var import_err = _import_file(from, to)
+	
+	if not (import_err == OK or import_err == ERR_ALREADY_EXISTS):
+		return import_err
+	
+	if VALID_SCENE_EXTENSIONS.has(to.get_extension()):
+		var entry = {
+			"name": _get_file_without_ext(to),
+			"scene_path": to,
+			"texture_path": null
+		}
+		_add_entry_to_db(game, type, entry)
+	elif scene and VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
+		var entry = {
+			"name": _get_file_without_ext(to),
+			"scene_path": scene,
+			"texture_path": to
+		}
+		_add_entry_to_db(game, type, entry)
+	
+	return OK
+
+func _import_file(from: String, to: String) -> int:
+	var copy_err = _importer.copy_file(from, to)
+	
+	if copy_err:
+		return copy_err
+	
+	if VALID_SCENE_EXTENSIONS.has(from.get_extension()):
+		return _importer.import_scene(to)
+	elif VALID_TEXTURE_EXTENSIONS.has(from.get_extension()):
+		return _importer.import_texture(to)
+	else:
+		return OK

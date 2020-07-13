@@ -30,7 +30,13 @@ var _next_piece_name = 0
 remotesync func add_piece(name: String, transform: Transform,
 	piece_entry: Dictionary, hover_player: int = 0) -> void:
 	
-	var piece = load(piece_entry["model_path"]).instance()
+	var piece = load(piece_entry["scene_path"]).instance()
+	
+	# If the scene is not a piece (e.g. when importing a scene from the assets
+	# folder), make it a piece so it can interact with other objects.
+	if not piece is Piece:
+		piece = _build_piece(piece)
+	
 	piece.name = name
 	piece.transform = transform
 	piece.piece_entry = piece_entry
@@ -43,10 +49,11 @@ remotesync func add_piece(name: String, transform: Transform,
 		piece.connect("stack_requested", self, "_on_stack_requested")
 	
 	# Apply a generic texture to the die.
-	var texture: Texture = load(piece_entry["texture_path"])
-	texture.set_flags(0)
-	
-	piece.apply_texture(texture)
+	if piece_entry["texture_path"]:
+		var texture: Texture = load(piece_entry["texture_path"])
+		texture.set_flags(0)
+		
+		piece.apply_texture(texture)
 	
 	if get_tree().is_network_server() and hover_player > 0:
 		piece.start_hovering(hover_player)
@@ -460,6 +467,33 @@ puppet func set_state(state: Dictionary) -> void:
 					flip = Stack.FLIP_YES
 				
 				add_piece_to_stack(stack_piece_name, stack_name, Stack.STACK_TOP, flip)
+
+func _build_piece(piece: Spatial) -> Piece:
+	var out = Piece.new()
+	out.add_child(piece)
+	
+	# Find the first MeshInstance in the piece scene, so we can get it's mesh
+	# data to create a collision shape.
+	var mesh_instance = _find_first_mesh_instance(piece)
+	if mesh_instance:
+		var collision_shape = CollisionShape.new()
+		collision_shape.shape = mesh_instance.mesh.create_convex_shape()
+		out.add_child(collision_shape)
+	else:
+		push_error(piece.name + " does not have a mesh instance!")
+	
+	return out
+
+func _find_first_mesh_instance(piece: Spatial):
+	if piece is MeshInstance:
+		return piece
+	
+	for child in piece.get_children():
+		var found = _find_first_mesh_instance(child)
+		if found is MeshInstance:
+			return found
+	
+	return null
 
 func _get_stack_piece_mesh(piece: StackablePiece) -> StackPieceInstance:
 	var piece_mesh = StackPieceInstance.new()
