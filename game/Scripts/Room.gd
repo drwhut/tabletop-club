@@ -21,6 +21,9 @@
 
 extends Spatial
 
+signal started_hovering_card(card)
+signal stopped_hovering_card(card)
+
 onready var _camera_controller = $CameraController
 onready var _pieces = $Pieces
 
@@ -307,6 +310,9 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	# Ask the camera controller to send a new_hover_position signal, so the
 	# hover position is immediately updated upon acception.
 	_camera_controller.send_hover_position_signal()
+	
+	if piece is Card:
+		emit_signal("started_hovering_card", piece)
 
 master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 	
@@ -550,5 +556,8 @@ func _on_CameraController_started_hovering(piece: Piece, fast: bool):
 	
 func _on_CameraController_stopped_hovering():
 	if _hovering_piece:
+		if _hovering_piece is Card:
+			emit_signal("stopped_hovering_card", _hovering_piece)
+		
 		_hovering_piece.rpc_id(1, "stop_hovering")
 		_hovering_piece = null

@@ -23,8 +23,12 @@ extends Control
 
 signal piece_requested(piece_entry)
 
+onready var _hand = $Hand
 onready var _objects_dialog = $ObjectsDialog
 onready var _objects_tree = $ObjectsDialog/ObjectsTree
+
+var _holding_card = false
+var _mouse_in_hand = false
 
 func set_piece_tree_from_db(pieces: Dictionary) -> void:
 	var root = _objects_tree.create_item()
@@ -85,3 +89,19 @@ func _on_ObjectsTree_item_activated():
 	# Check the selected item has metadata.
 	if selected.get_metadata(0):
 		emit_signal("piece_requested", selected.get_metadata(0))
+
+func _on_Room_started_hovering_card(card):
+	_holding_card = true
+	_mouse_in_hand = false
+	_hand.mouse_filter = Control.MOUSE_FILTER_PASS
+
+func _on_Room_stopped_hovering_card(card):
+	_holding_card = false
+	_mouse_in_hand = false
+	_hand.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func _on_Hand_mouse_entered():
+	_mouse_in_hand = true
+
+func _on_Hand_mouse_exited():
+	_mouse_in_hand = false
