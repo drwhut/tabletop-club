@@ -28,10 +28,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -100.0
 mouse_filter = 2
-alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HandHighlight" type="ColorRect" parent="Hand"]
+margin_right = 62.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 62, 100 )
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
 
 [node name="ObjectsDialog" type="WindowDialog" parent="."]
 anchor_left = 0.5

@@ -60,6 +60,9 @@ master func flip_vertically() -> void:
 		_hover_up = -_hover_up
 		set_angular_lock(false)
 
+func get_hovering_player() -> int:
+	return _hover_player
+
 func is_being_shaked() -> bool:
 	if _new_velocity.dot(_last_velocity) < 0:
 		return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD

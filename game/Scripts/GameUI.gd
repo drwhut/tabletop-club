@@ -21,14 +21,22 @@
 
 extends Control
 
+signal card_in_hand_requested(card)
 signal piece_requested(piece_entry)
 
+const HIGHLIGHT_COLOUR = Color(0.25, 1.0, 1.0, 0.5)
+
 onready var _hand = $Hand
+onready var _hand_highlight = $Hand/HandHighlight
 onready var _objects_dialog = $ObjectsDialog
 onready var _objects_tree = $ObjectsDialog/ObjectsTree
 
 var _holding_card = false
 var _mouse_in_hand = false
+
+func add_card_to_hand(card_entry: Dictionary, front_face: bool) -> void:
+	var texture_rect = _create_card_half_texture(card_entry, front_face)
+	_hand.add_child(texture_rect)
 
 func set_piece_tree_from_db(pieces: Dictionary) -> void:
 	var root = _objects_tree.create_item()
@@ -80,6 +88,19 @@ func _add_type_to_tree(parent: TreeItem, game_pieces: Dictionary,
 		else:
 			node.free()
 
+func _create_card_half_texture(card_entry: Dictionary, front_face: bool) -> HalfTextureRect:
+	var texture = load(card_entry["texture_path"])
+	texture.flags = 0
+	
+	var texture_rect = HalfTextureRect.new()
+	texture_rect.rect_min_size = Vector2(62, 100)
+	
+	texture_rect.texture = texture
+	
+	texture_rect.front_face = front_face
+	
+	return texture_rect
+
 func _on_ObjectsButton_pressed():
 	_objects_dialog.popup_centered()
 
@@ -96,6 +117,9 @@ func _on_Room_started_hovering_card(card):
 	_hand.mouse_filter = Control.MOUSE_FILTER_PASS
 
 func _on_Room_stopped_hovering_card(card):
+	if _mouse_in_hand:
+		emit_signal("card_in_hand_requested", card)
+	
 	_holding_card = false
 	_mouse_in_hand = false
 	_hand.mouse_filter = Control.MOUSE_FILTER_IGNORE
