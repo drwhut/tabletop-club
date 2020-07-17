@@ -58,6 +58,9 @@ master func request_card_in_hand(card_name: String) -> void:
 		rpc_id(get_tree().get_rpc_sender_id(), "request_card_in_hand_accepted", card_name)
 
 remotesync func request_card_in_hand_accepted(card_name: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	var card = _room.get_piece_with_name(card_name)
 	
 	if not card:
@@ -87,6 +90,9 @@ master func request_card_out_hand(card_name: String, transform: Transform) -> vo
 	rpc_id(get_tree().get_rpc_sender_id(), "request_card_out_hand_accepted", card.name)
 
 remotesync func request_card_out_hand_accepted(card_name: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	var card = _room.get_piece_with_name(card_name)
 	
 	if not card:

@@ -24,6 +24,9 @@ extends StackablePiece
 class_name Card
 
 remotesync func bring_back(new_transform: Transform) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	transform = new_transform
 	mode = MODE_RIGID
 	
@@ -32,6 +35,9 @@ remotesync func bring_back(new_transform: Transform) -> void:
 	_last_server_state = {}
 
 remotesync func place_aside() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	transform.origin = Vector3(9999, 9999, 9999)
 	mode = MODE_STATIC
 

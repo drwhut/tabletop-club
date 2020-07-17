@@ -72,6 +72,9 @@ func is_hovering() -> bool:
 	return _hover_player > 0
 
 remotesync func remove_self() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	if get_parent():
 		get_parent().remove_child(self)
 		queue_free()
@@ -94,6 +97,9 @@ master func set_hover_position(hover_position: Vector3) -> void:
 		_hover_position = hover_position
 
 puppet func set_latest_server_physics_state(state: Dictionary) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	_last_server_state = state
 	
 	# Similarly to in start_hovering(), we want to make sure _integrate_forces

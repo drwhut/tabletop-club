@@ -33,6 +33,9 @@ var _next_piece_name = 0
 remotesync func add_piece(name: String, transform: Transform,
 	piece_entry: Dictionary, hover_player: int = 0) -> void:
 	
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	var piece = load(piece_entry["scene_path"]).instance()
 	
 	# If the scene is not a piece (e.g. when importing a scene from the assets
@@ -63,6 +66,9 @@ remotesync func add_piece(name: String, transform: Transform,
 
 remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 	on: int = Stack.FLIP_AUTO, flip: int = Stack.FLIP_AUTO) -> void:
+	
+	if get_tree().get_rpc_sender_id() != 1:
+		return
 	
 	var piece = _pieces.get_node(piece_name)
 	var stack = _pieces.get_node(stack_name)
@@ -97,6 +103,9 @@ remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 
 remotesync func add_stack(name: String, transform: Transform,
 	piece1_name: String, piece2_name: String) -> void:
+	
+	if get_tree().get_rpc_sender_id() != 1:
+		return
 	
 	var piece1 = _pieces.get_node(piece1_name)
 	var piece2 = _pieces.get_node(piece2_name)
@@ -146,6 +155,9 @@ remotesync func add_stack(name: String, transform: Transform,
 puppet func add_stack_empty(name: String, transform: Transform,
 	shuffleable: bool = false) -> Stack:
 	
+	if get_tree().get_rpc_sender_id() != 1:
+		return null
+	
 	var stack: Stack = null
 	if shuffleable:
 		stack = preload("res://Pieces/ShuffleableStack.tscn").instance()
@@ -163,6 +175,9 @@ puppet func add_stack_empty(name: String, transform: Transform,
 	return stack
 
 remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> void:
+	
+	if get_tree().get_rpc_sender_id() != 1:
+		return
 	
 	var stack1 = _pieces.get_node(stack1_name)
 	var stack2 = _pieces.get_node(stack2_name)
@@ -300,6 +315,9 @@ master func request_hover_piece(piece_name: String) -> void:
 		rpc_id(player_id, "request_hover_piece_accepted", piece_name)
 
 remotesync func request_hover_piece_accepted(piece_name: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	var piece = _pieces.get_node(piece_name)
 	
 	if not piece:
@@ -373,11 +391,17 @@ master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 		request_pop_stack(stack_name, false)
 
 remotesync func request_pop_stack_accepted(piece_name: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	# The server has allowed us to hover the piece that has just poped off the
 	# stack!
 	request_hover_piece_accepted(piece_name)
 
 puppet func set_state(state: Dictionary) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	# Delete all the pieces on the board currently before we begin.
 	for child in _pieces.get_children():
 		remove_child(child)
@@ -531,15 +555,16 @@ func _get_stack_piece_shape(piece: StackablePiece) -> Shape:
 	return piece_collision_shape.shape
 
 func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void:
-	if piece1 is Stack and piece2 is Stack:
-		rpc("add_stack_to_stack", piece1.name, piece2.name)
-	elif piece1 is Stack:
-		rpc("add_piece_to_stack", piece2.name, piece1.name)
-	elif piece2 is Stack:
-		rpc("add_piece_to_stack", piece1.name, piece2.name)
-	else:
-		rpc("add_stack", get_next_piece_name(), piece1.transform, piece1.name,
-			piece2.name)
+	if get_tree().is_network_server():
+		if piece1 is Stack and piece2 is Stack:
+			rpc("add_stack_to_stack", piece1.name, piece2.name)
+		elif piece1 is Stack:
+			rpc("add_piece_to_stack", piece2.name, piece1.name)
+		elif piece2 is Stack:
+			rpc("add_piece_to_stack", piece1.name, piece2.name)
+		else:
+			rpc("add_stack", get_next_piece_name(), piece1.transform, piece1.name,
+				piece2.name)
 
 func _on_CameraController_flipped_piece():
 	if _hovering_piece:

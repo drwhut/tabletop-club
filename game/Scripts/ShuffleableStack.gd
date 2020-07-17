@@ -24,6 +24,9 @@ extends Stack
 class_name ShuffleableStack
 
 remotesync func set_piece_order(order: Array) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	var i = 0
 	for piece_name in order:
 		var node = _pieces.get_node(piece_name)

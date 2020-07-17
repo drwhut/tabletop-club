@@ -119,6 +119,9 @@ func remove_piece(piece: StackPieceInstance) -> void:
 		return
 
 puppet func remove_piece_by_name(name: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
 	var piece = _pieces.get_node(name)
 	
 	if not piece:
