@@ -46,6 +46,10 @@ func remove_card_from_hand(card: Card) -> void:
 			if card_texture.card == card:
 				_hand.remove_child(card_texture)
 				card_texture.queue_free()
+	
+	# If we were holding the card, stop holding it.
+	if _grabbed_card_from_hand.card == card:
+		_grabbed_card_from_hand = null
 
 func set_piece_tree_from_db(pieces: Dictionary) -> void:
 	var root = _objects_tree.create_item()
