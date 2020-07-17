@@ -40,15 +40,63 @@ func init_server(max_players: int) -> void:
 func init_singleplayer() -> void:
 	init_server(0)
 
-master func request_card_in_hand(card: Card) -> void:
+master func request_card_in_hand(card_name: String) -> void:
+	var card = _room.get_piece_with_name(card_name)
+	
+	if not card:
+		push_error("Card " + card_name + " does not exist!")
+		return
+	
+	if not card is Card:
+		push_error("Piece " + card_name + " is not a card!")
+		return
+	
 	# Only accept the request if the card is not being hovered, or the player
 	# that is requesting is the one hovering the card.
 	if (not card.is_hovering()) or (card.get_hovering_player() == get_tree().get_rpc_sender_id()):
-		# TODO: Place card aside for all players.
-		rpc_id(get_tree().get_rpc_sender_id(), "request_card_in_hand_accepted", card)
+		card.rpc("place_aside")
+		rpc_id(get_tree().get_rpc_sender_id(), "request_card_in_hand_accepted", card_name)
 
-remotesync func request_card_in_hand_accepted(card: Card) -> void:
-	_ui.add_card_to_hand(card.piece_entry, card.transform.basis.y.dot(Vector3.UP) > 0)
+remotesync func request_card_in_hand_accepted(card_name: String) -> void:
+	var card = _room.get_piece_with_name(card_name)
+	
+	if not card:
+		push_error("Card " + card_name + " does not exist!")
+		return
+	
+	if not card is Card:
+		push_error("Piece " + card_name + " is not a card!")
+		return
+	
+	_ui.add_card_to_hand(card, card.transform.basis.y.dot(Vector3.UP) > 0)
+
+master func request_card_out_hand(card_name: String, transform: Transform) -> void:
+	var card = _room.get_piece_with_name(card_name)
+	
+	if not card:
+		push_error("Card " + card_name + " does not exist!")
+		return
+	
+	if not card is Card:
+		push_error("Piece " + card_name + " is not a card!")
+		return
+	
+	# TODO: Ensure the player requesting is the one that set the card aside.
+	card.rpc("bring_back", transform)
+	rpc_id(get_tree().get_rpc_sender_id(), "request_card_out_hand_accepted", card.name)
+
+remotesync func request_card_out_hand_accepted(card_name: String) -> void:
+	var card = _room.get_piece_with_name(card_name)
+	
+	if not card:
+		push_error("Card " + card_name + " does not exist!")
+		return
+	
+	if not card is Card:
+		push_error("Piece " + card_name + " is not a card!")
+		return
+	
+	_ui.remove_card_from_hand(card)
 
 master func request_game_piece(piece_entry: Dictionary) -> void:
 	# Send the call to create the piece to everyone.
@@ -103,8 +151,18 @@ func _connected_fail() -> void:
 func _server_disconnected() -> void:
 	print("Server disconnected!")
 
+func _on_GameUI_card_in_hand_requested(card: Card):
+	rpc_id(1, "request_card_in_hand", card.name)
+
+func _on_GameUI_card_out_hand_requested(card_texture: CardTextureRect):
+	var basis = Basis.IDENTITY
+	if not card_texture.front_face:
+		basis = basis.rotated(Vector3.BACK, PI)
+	
+	# TODO: Use the camera controller to get the correct transform.
+	var transform = Transform(basis, Vector3(0, Piece.SPAWN_HEIGHT, 0))
+	
+	rpc_id(1, "request_card_out_hand", card_texture.card.name, transform)
+
 func _on_GameUI_piece_requested(piece_entry: Dictionary):
 	rpc_id(1, "request_game_piece", piece_entry)
-
-func _on_GameUI_card_in_hand_requested(card: Card):
-	rpc_id(1, "request_card_in_hand", card)

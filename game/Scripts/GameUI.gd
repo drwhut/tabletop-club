@@ -22,6 +22,7 @@
 extends Control
 
 signal card_in_hand_requested(card)
+signal card_out_hand_requested(card_texture)
 signal piece_requested(piece_entry)
 
 const HIGHLIGHT_COLOUR = Color(0.25, 1.0, 1.0, 0.5)
@@ -31,12 +32,20 @@ onready var _hand_highlight = $Hand/HandHighlight
 onready var _objects_dialog = $ObjectsDialog
 onready var _objects_tree = $ObjectsDialog/ObjectsTree
 
+var _grabbed_card_from_hand: CardTextureRect = null
 var _holding_card = false
 var _mouse_in_hand = false
 
-func add_card_to_hand(card_entry: Dictionary, front_face: bool) -> void:
-	var texture_rect = _create_card_half_texture(card_entry, front_face)
+func add_card_to_hand(card: Card, front_face: bool) -> void:
+	var texture_rect = _create_card_half_texture(card, front_face)
 	_hand.add_child(texture_rect)
+
+func remove_card_from_hand(card: Card) -> void:
+	for card_texture in _hand.get_children():
+		if card_texture is CardTextureRect:
+			if card_texture.card == card:
+				_hand.remove_child(card_texture)
+				card_texture.queue_free()
 
 func set_piece_tree_from_db(pieces: Dictionary) -> void:
 	var root = _objects_tree.create_item()
@@ -44,6 +53,18 @@ func set_piece_tree_from_db(pieces: Dictionary) -> void:
 	
 	for game in pieces:
 		_add_game_to_tree(game, pieces[game])
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT:
+			if (not event.is_pressed()) and _grabbed_card_from_hand:
+				_grabbed_card_from_hand = null
+	
+	elif event is InputEventMouseMotion:
+		if _grabbed_card_from_hand:
+			var hand_rect = Rect2(_hand.rect_position, _hand.rect_size)
+			if not hand_rect.has_point(event.global_position):
+				emit_signal("card_out_hand_requested", _grabbed_card_from_hand)
 
 func _add_game_to_tree(game_name: String, game_pieces: Dictionary) -> void:
 	var game_node = _objects_tree.create_item(_objects_tree.get_root())
@@ -88,18 +109,25 @@ func _add_type_to_tree(parent: TreeItem, game_pieces: Dictionary,
 		else:
 			node.free()
 
-func _create_card_half_texture(card_entry: Dictionary, front_face: bool) -> HalfTextureRect:
+func _create_card_half_texture(card: Card, front_face: bool) -> CardTextureRect:
+	var card_entry = card.piece_entry
+	
 	var texture = load(card_entry["texture_path"])
 	texture.flags = 0
 	
-	var texture_rect = HalfTextureRect.new()
+	var texture_rect = CardTextureRect.new()
+	texture_rect.card = card
+	texture_rect.front_face = front_face
 	texture_rect.rect_min_size = Vector2(62, 100)
-	
 	texture_rect.texture = texture
 	
-	texture_rect.front_face = front_face
+	texture_rect.connect("clicked_on", self, "_on_card_texture_clicked")
 	
 	return texture_rect
+
+func _on_card_texture_clicked(card_texture: CardTextureRect) -> void:
+	_grabbed_card_from_hand = card_texture
+	_hand.mouse_filter = Control.MOUSE_FILTER_PASS
 
 func _on_ObjectsButton_pressed():
 	_objects_dialog.popup_centered()

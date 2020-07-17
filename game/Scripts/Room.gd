@@ -234,6 +234,9 @@ func get_next_piece_name() -> String:
 	_next_piece_name += 1
 	return next_name
 
+func get_piece_with_name(name: String) -> Piece:
+	return _pieces.get_node(name)
+
 func get_pieces() -> Array:
 	return _pieces.get_children()
 

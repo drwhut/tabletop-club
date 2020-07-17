@@ -14,15 +14,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Card.gd"
 }, {
+"base": "TextureRect",
+"class": "CardTextureRect",
+"language": "GDScript",
+"path": "res://Scripts/CardTextureRect.gd"
+}, {
 "base": "Piece",
 "class": "Dice",
 "language": "GDScript",
 "path": "res://Scripts/Dice.gd"
-}, {
-"base": "TextureRect",
-"class": "HalfTextureRect",
-"language": "GDScript",
-"path": "res://Scripts/HalfTextureRect.gd"
 }, {
 "base": "RigidBody",
 "class": "Piece",
@@ -51,8 +51,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Card": "",
+"CardTextureRect": "",
 "Dice": "",
-"HalfTextureRect": "",
 "Piece": "",
 "ShuffleableStack": "",
 "Stack": "",

@@ -17,4 +17,5 @@ script = ExtResource( 4 )
 [connection signal="started_hovering_card" from="Room" to="GameUI" method="_on_Room_started_hovering_card"]
 [connection signal="stopped_hovering_card" from="Room" to="GameUI" method="_on_Room_stopped_hovering_card"]
 [connection signal="card_in_hand_requested" from="GameUI" to="." method="_on_GameUI_card_in_hand_requested"]
+[connection signal="card_out_hand_requested" from="GameUI" to="." method="_on_GameUI_card_out_hand_requested"]
 [connection signal="piece_requested" from="GameUI" to="." method="_on_GameUI_piece_requested"]

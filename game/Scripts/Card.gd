@@ -23,5 +23,13 @@ extends StackablePiece
 
 class_name Card
 
+remotesync func bring_back(new_transform: Transform) -> void:
+	transform = new_transform
+	mode = MODE_RIGID
+
+remotesync func place_aside() -> void:
+	transform.origin = Vector3(9999, 9999, 9999)
+	mode = MODE_STATIC
+
 func _ready():
 	_mesh_instance = $MeshInstance

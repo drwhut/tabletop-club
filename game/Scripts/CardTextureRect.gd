@@ -21,9 +21,18 @@
 
 extends TextureRect
 
-class_name HalfTextureRect
+class_name CardTextureRect
 
+signal clicked_on(card_texture)
+
+var card: Card = null
 var front_face: bool = true
+
+var _mouse_over: bool = false
+
+func _ready():
+	connect("mouse_entered", self, "_on_mouse_entered")
+	connect("mouse_exited", self, "_on_mouse_exited")
 
 func _draw():
 	if not texture:
@@ -34,3 +43,15 @@ func _draw():
 		src_rect.position.x += texture.get_width()
 	
 	draw_texture_rect_region(texture, Rect2(Vector2.ZERO, rect_size), src_rect)
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT:
+			if event.is_pressed() and _mouse_over:
+				emit_signal("clicked_on", self)
+
+func _on_mouse_entered() -> void:
+	_mouse_over = true
+
+func _on_mouse_exited() -> void:
+	_mouse_over = false
