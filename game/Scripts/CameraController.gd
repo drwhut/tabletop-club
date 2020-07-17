@@ -51,9 +51,8 @@ var _movement_speed = 0.0
 var _piece_grabbing: Piece = null
 var _rotation = Vector2()
 
-func send_hover_position_signal() -> void:
-	var mouse_position = get_viewport().get_mouse_position()
-	emit_signal("new_hover_position", _calculate_hover_position(mouse_position))
+func get_hover_position() -> Vector3:
+	return _calculate_hover_position(get_viewport().get_mouse_position())
 
 func set_is_hovering_piece(is_hovering: bool) -> void:
 	_is_hovering_piece = is_hovering
@@ -246,7 +245,7 @@ func _start_moving() -> bool:
 	if _is_hovering_piece:
 		
 		# ... then send out a signal with the new hover position.
-		send_hover_position_signal()
+		emit_signal("new_hover_position", get_hover_position())
 		return true
 	
 	return false

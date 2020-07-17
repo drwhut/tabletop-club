@@ -26,6 +26,10 @@ class_name Card
 remotesync func bring_back(new_transform: Transform) -> void:
 	transform = new_transform
 	mode = MODE_RIGID
+	
+	# Delete the last saved server state, otherwise the card will lerp to the
+	# new position.
+	_last_server_state = {}
 
 remotesync func place_aside() -> void:
 	transform.origin = Vector3(9999, 9999, 9999)

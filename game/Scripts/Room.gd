@@ -229,6 +229,9 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 	_pieces.remove_child(stack1)
 	stack1.queue_free()
 
+func get_camera_hover_position() -> Vector3:
+	return _camera_controller.get_hover_position()
+
 func get_next_piece_name() -> String:
 	var next_name = str(_next_piece_name)
 	_next_piece_name += 1
@@ -310,9 +313,8 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	_camera_controller.set_is_hovering_piece(true)
 	_hovering_piece = piece
 	
-	# Ask the camera controller to send a new_hover_position signal, so the
-	# hover position is immediately updated upon acception.
-	_camera_controller.send_hover_position_signal()
+	# Immediately set the piece's hover position.
+	piece.rpc_unreliable_id(1, "set_hover_position", _camera_controller.get_hover_position())
 	
 	if piece is Card:
 		emit_signal("started_hovering_card", piece)

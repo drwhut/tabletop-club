@@ -83,6 +83,7 @@ master func request_card_out_hand(card_name: String, transform: Transform) -> vo
 	
 	# TODO: Ensure the player requesting is the one that set the card aside.
 	card.rpc("bring_back", transform)
+	
 	rpc_id(get_tree().get_rpc_sender_id(), "request_card_out_hand_accepted", card.name)
 
 remotesync func request_card_out_hand_accepted(card_name: String) -> void:
@@ -95,6 +96,9 @@ remotesync func request_card_out_hand_accepted(card_name: String) -> void:
 	if not card is Card:
 		push_error("Piece " + card_name + " is not a card!")
 		return
+	
+	# Kindly ask the server if we can start hovering the piece.
+	_room.rpc_id(1, "request_hover_piece", card_name)
 	
 	_ui.remove_card_from_hand(card)
 
@@ -159,8 +163,8 @@ func _on_GameUI_card_out_hand_requested(card_texture: CardTextureRect):
 	if not card_texture.front_face:
 		basis = basis.rotated(Vector3.BACK, PI)
 	
-	# TODO: Use the camera controller to get the correct transform.
-	var transform = Transform(basis, Vector3(0, Piece.SPAWN_HEIGHT, 0))
+	# Use the camera controller to get the correct transform.
+	var transform = Transform(basis, _room.get_camera_hover_position())
 	
 	rpc_id(1, "request_card_out_hand", card_texture.card.name, transform)
 
