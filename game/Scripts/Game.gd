@@ -42,6 +42,7 @@ func init_singleplayer() -> void:
 
 master func request_card_in_hand(card_name: String) -> void:
 	var card = _room.get_piece_with_name(card_name)
+	var player_id = get_tree().get_rpc_sender_id()
 	
 	if not card:
 		push_error("Card " + card_name + " does not exist!")
@@ -51,11 +52,13 @@ master func request_card_in_hand(card_name: String) -> void:
 		push_error("Piece " + card_name + " is not a card!")
 		return
 	
-	# Only accept the request if the card is not being hovered, or the player
-	# that is requesting is the one hovering the card.
-	if (not card.srv_is_hovering()) or (card.srv_get_hovering_player() == get_tree().get_rpc_sender_id()):
-		card.rpc("place_aside")
-		rpc_id(get_tree().get_rpc_sender_id(), "request_card_in_hand_accepted", card_name)
+	var placed_aside = card.srv_is_placed_aside()
+	var hovering = card.srv_is_hovering()
+	var player_is_hovering = card.srv_get_hovering_player() == player_id
+	
+	if (not placed_aside) and ((not hovering) or player_is_hovering):
+		card.rpc("place_aside", player_id)
+		rpc_id(player_id, "request_card_in_hand_accepted", card_name)
 
 remotesync func request_card_in_hand_accepted(card_name: String) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
@@ -75,6 +78,7 @@ remotesync func request_card_in_hand_accepted(card_name: String) -> void:
 
 master func request_card_out_hand(card_name: String, transform: Transform) -> void:
 	var card = _room.get_piece_with_name(card_name)
+	var player_id = get_tree().get_rpc_sender_id()
 	
 	if not card:
 		push_error("Card " + card_name + " does not exist!")
@@ -84,10 +88,13 @@ master func request_card_out_hand(card_name: String, transform: Transform) -> vo
 		push_error("Piece " + card_name + " is not a card!")
 		return
 	
-	# TODO: Ensure the player requesting is the one that set the card aside.
+	# Ensure the player requesting is the one that set the card aside.
+	if card.srv_get_place_aside_player() != player_id:
+		return
+	
 	card.rpc("bring_back", transform)
 	
-	rpc_id(get_tree().get_rpc_sender_id(), "request_card_out_hand_accepted", card.name)
+	rpc_id(player_id, "request_card_out_hand_accepted", card.name)
 
 remotesync func request_card_out_hand_accepted(card_name: String) -> void:
 	if get_tree().get_rpc_sender_id() != 1:

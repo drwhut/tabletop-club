@@ -23,9 +23,13 @@ extends StackablePiece
 
 class_name Card
 
+var _srv_place_aside_player: int = 0
+
 remotesync func bring_back(new_transform: Transform) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
+	
+	_srv_place_aside_player = 0
 	
 	transform = new_transform
 	mode = MODE_RIGID
@@ -34,12 +38,21 @@ remotesync func bring_back(new_transform: Transform) -> void:
 	# new position.
 	_last_server_state = {}
 
-remotesync func place_aside() -> void:
+remotesync func place_aside(player_id: int) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
+	if get_tree().is_network_server():
+		_srv_place_aside_player = player_id
+	
 	transform.origin = Vector3(9999, 9999, 9999)
 	mode = MODE_STATIC
+
+func srv_get_place_aside_player() -> int:
+	return _srv_place_aside_player
+
+func srv_is_placed_aside() -> bool:
+	return _srv_place_aside_player > 0
 
 func _ready():
 	_mesh_instance = $MeshInstance
