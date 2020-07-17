@@ -53,7 +53,7 @@ master func request_card_in_hand(card_name: String) -> void:
 	
 	# Only accept the request if the card is not being hovered, or the player
 	# that is requesting is the one hovering the card.
-	if (not card.is_hovering()) or (card.get_hovering_player() == get_tree().get_rpc_sender_id()):
+	if (not card.srv_is_hovering()) or (card.srv_get_hovering_player() == get_tree().get_rpc_sender_id()):
 		card.rpc("place_aside")
 		rpc_id(get_tree().get_rpc_sender_id(), "request_card_in_hand_accepted", card_name)
 
@@ -111,7 +111,7 @@ remotesync func request_card_out_hand_accepted(card_name: String) -> void:
 master func request_game_piece(piece_entry: Dictionary) -> void:
 	# Send the call to create the piece to everyone.
 	_room.rpc("add_piece",
-		_room.get_next_piece_name(),
+		_room.srv_get_next_piece_name(),
 		Transform(Basis.IDENTITY, Vector3(0, Piece.SPAWN_HEIGHT, 0)),
 		piece_entry
 	)

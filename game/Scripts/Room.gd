@@ -28,7 +28,7 @@ onready var _camera_controller = $CameraController
 onready var _pieces = $Pieces
 
 var _hovering_piece: Piece = null
-var _next_piece_name = 0
+var _srv_next_piece_name = 0
 
 remotesync func add_piece(name: String, transform: Transform,
 	piece_entry: Dictionary, hover_player: int = 0) -> void:
@@ -62,7 +62,7 @@ remotesync func add_piece(name: String, transform: Transform,
 		piece.apply_texture(texture)
 	
 	if get_tree().is_network_server() and hover_player > 0:
-		piece.start_hovering(hover_player)
+		piece.srv_start_hovering(hover_player)
 
 remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 	on: int = Stack.FLIP_AUTO, flip: int = Stack.FLIP_AUTO) -> void:
@@ -247,18 +247,13 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 func get_camera_hover_position() -> Vector3:
 	return _camera_controller.get_hover_position()
 
-func get_next_piece_name() -> String:
-	var next_name = str(_next_piece_name)
-	_next_piece_name += 1
-	return next_name
-
 func get_piece_with_name(name: String) -> Piece:
 	return _pieces.get_node(name)
 
 func get_pieces() -> Array:
 	return _pieces.get_children()
 
-func get_pieces_count() -> int:
+func get_piece_count() -> int:
 	return _pieces.get_child_count()
 
 func get_state() -> Dictionary:
@@ -311,7 +306,7 @@ master func request_hover_piece(piece_name: String) -> void:
 	
 	var player_id = get_tree().get_rpc_sender_id()
 	
-	if piece.start_hovering(player_id):
+	if piece.srv_start_hovering(player_id):
 		rpc_id(player_id, "request_hover_piece_accepted", piece_name)
 
 remotesync func request_hover_piece_accepted(piece_name: String) -> void:
@@ -503,6 +498,11 @@ puppet func set_state(state: Dictionary) -> void:
 				
 				add_piece_to_stack(stack_piece_name, stack_name, Stack.STACK_TOP, flip)
 
+func srv_get_next_piece_name() -> String:
+	var next_name = str(_srv_next_piece_name)
+	_srv_next_piece_name += 1
+	return next_name
+
 func _build_piece(piece: Spatial) -> Piece:
 	var out = Piece.new()
 	out.add_child(piece)
@@ -563,7 +563,7 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 		elif piece2 is Stack:
 			rpc("add_piece_to_stack", piece1.name, piece2.name)
 		else:
-			rpc("add_stack", get_next_piece_name(), piece1.transform, piece1.name,
+			rpc("add_stack", srv_get_next_piece_name(), piece1.transform, piece1.name,
 				piece2.name)
 
 func _on_CameraController_flipped_piece():

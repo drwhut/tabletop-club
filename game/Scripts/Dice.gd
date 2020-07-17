@@ -50,6 +50,6 @@ func _physics_process(delta):
 		var back_index = _rng.randi() % vec_list.size()
 		var back_vec = vec_list[back_index]
 		
-		_hover_up = up_vec
-		_hover_back = back_vec
+		_srv_hover_up = up_vec
+		_srv_hover_back = back_vec
 		set_angular_lock(false)
