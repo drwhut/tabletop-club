@@ -371,7 +371,7 @@ master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 		# immediately collide with it again.
 		# TODO: Use the stack's unit height!
 		if hover:
-			new_origin.y += 1
+			new_origin.y += 2
 		var new_transform = Transform(new_basis, new_origin)
 		
 		if not hover:
