@@ -49,6 +49,8 @@ remotesync func add_piece(name: String, transform: Transform,
 	
 	# Scale the piece by changing the scale of all collision shapes and mesh
 	# instances.
+	if piece is Card:
+		piece_entry["scale"].y = 1
 	_scale_piece(piece, piece_entry["scale"])
 	
 	_pieces.add_child(piece)
@@ -363,7 +365,9 @@ master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 	if piece_instance:
 		
 		# Create the transform for the new piece.
-		var new_basis = stack.transform.basis * piece_instance.transform.basis
+		# NOTE: We normalise the basis here to reset the piece's scale, because
+		# add_piece will use the piece entry to scale the piece again.
+		var new_basis = (stack.transform.basis * piece_instance.transform.basis).orthonormalized()
 		var new_origin = stack.transform.origin + piece_instance.transform.origin
 		
 		# If this piece will hover, get it away from the stack so it doesn't
@@ -545,6 +549,10 @@ func _get_stack_piece_mesh(piece: StackablePiece) -> StackPieceInstance:
 		push_error("Piece " + piece.name + " does not have a MeshInstance child!")
 		return null
 	
+	# Get the scale from the mesh instance (since the rigid body itself won't be
+	# scaled).
+	piece_mesh.scale = piece_mesh_inst.scale
+	
 	piece_mesh.mesh = piece_mesh_inst.mesh
 	piece_mesh.set_surface_material(0, piece_mesh_inst.get_surface_material(0))
 	
@@ -594,7 +602,7 @@ func _on_CameraController_started_hovering(piece: Piece, fast: bool):
 		rpc_id(1, "request_pop_stack", piece.name)
 	else:
 		rpc_id(1, "request_hover_piece", piece.name)
-	
+
 func _on_CameraController_stopped_hovering():
 	if _hovering_piece:
 		if _hovering_piece is Card:

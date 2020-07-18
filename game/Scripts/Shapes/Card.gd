@@ -27,32 +27,32 @@ func _ready():
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	
 	st.add_uv(Vector2(0.5, 1))
-	st.add_vertex(Vector3(3.175, 0.0001, 4.445)) # +x+y+z
+	st.add_vertex(Vector3(0.5, 0.0001, 0.5)) # +x+y+z
 	st.add_uv(Vector2(0, 1))
-	st.add_vertex(Vector3(-3.175, 0.0001, 4.445)) # -x+y+z
+	st.add_vertex(Vector3(-0.5, 0.0001, 0.5)) # -x+y+z
 	st.add_uv(Vector2(0, 0))
-	st.add_vertex(Vector3(-3.175, 0.0001, -4.445)) # -x+y-z
+	st.add_vertex(Vector3(-0.5, 0.0001, -0.5)) # -x+y-z
 	
 	st.add_uv(Vector2(0, 0))
-	st.add_vertex(Vector3(-3.175, 0.0001, -4.445)) # -x+y-z
+	st.add_vertex(Vector3(-0.5, 0.0001, -0.5)) # -x+y-z
 	st.add_uv(Vector2(0.5, 0))
-	st.add_vertex(Vector3(3.175, 0.0001, -4.445)) # +x+y-z
+	st.add_vertex(Vector3(0.5, 0.0001, -0.5)) # +x+y-z
 	st.add_uv(Vector2(0.5, 1))
-	st.add_vertex(Vector3(3.175, 0.0001, 4.445)) # +x+y+z
+	st.add_vertex(Vector3(0.5, 0.0001, 0.5)) # +x+y+z
 	
 	st.add_uv(Vector2(1, 1))
-	st.add_vertex(Vector3(-3.175, -0.0001, 4.445)) # -x-y+z
+	st.add_vertex(Vector3(-0.5, -0.0001, 0.5)) # -x-y+z
 	st.add_uv(Vector2(0.5, 1))
-	st.add_vertex(Vector3(3.175, -0.0001, 4.445)) # +x-y+z
+	st.add_vertex(Vector3(0.5, -0.0001, 0.5)) # +x-y+z
 	st.add_uv(Vector2(0.5, 0))
-	st.add_vertex(Vector3(3.175, -0.0001, -4.445)) # +x-y-z
+	st.add_vertex(Vector3(0.5, -0.0001, -0.5)) # +x-y-z
 	
 	st.add_uv(Vector2(0.5, 0))
-	st.add_vertex(Vector3(3.175, -0.0001, -4.445)) # +x-y-z
+	st.add_vertex(Vector3(0.5, -0.0001, -0.5)) # +x-y-z
 	st.add_uv(Vector2(1, 0))
-	st.add_vertex(Vector3(-3.175, -0.0001, -4.445)) # -x-y-z
+	st.add_vertex(Vector3(-0.5, -0.0001, -0.5)) # -x-y-z
 	st.add_uv(Vector2(1, 1))
-	st.add_vertex(Vector3(-3.175, -0.0001, 4.445)) # -x-y+z
+	st.add_vertex(Vector3(-0.5, -0.0001, 0.5)) # -x-y+z
 	
 	st.generate_normals()
 	

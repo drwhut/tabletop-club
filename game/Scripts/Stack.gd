@@ -143,6 +143,7 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int, flip: 
 			_collision_unit_height = shape.extents.y * 2
 			
 			_collision_shape.shape = new_shape
+			_collision_shape.scale = piece.scale
 		else:
 			push_error("Piece " + piece.name + " has an unsupported collision shape!")
 	else:
@@ -169,9 +170,11 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int, flip: 
 	if is_flipped:
 		basis = basis.rotated(Vector3.BACK, PI)
 	
+	var piece_scale = piece.scale
 	piece.transform = Transform(basis, Vector3.ZERO)
-	_set_piece_heights()
+	piece.scale = piece_scale
 	
+	_set_piece_heights()
 	_adjust_collision_shape_translation()
 
 func _adjust_collision_shape_translation() -> void:

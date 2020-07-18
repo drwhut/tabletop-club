@@ -10,9 +10,7 @@ points = PoolVector3Array( 0.943, -0.333, 0, -0.471, -0.333, 0.816, -0.471, -0.3
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, 0, 0 )
 script = ExtResource( 2 )

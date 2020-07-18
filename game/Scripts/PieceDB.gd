@@ -73,7 +73,7 @@ func import_game_dir(dir: Directory) -> void:
 		
 		dir.change_dir("..")
 	
-	_import_dir_if_exists(dir, game, "cards", "res://Pieces/Cards/PokerCard.tscn")
+	_import_dir_if_exists(dir, game, "cards", "res://Pieces/Card.tscn")
 	_import_dir_if_exists(dir, game, "pieces", "")
 
 func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
