@@ -81,13 +81,20 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 	
 	if current_dir.dir_exists(type):
 		current_dir.change_dir(type)
-	
+		
+		# If the configuration file exists for this directory, try and load it.
+		var config_path = current_dir.get_current_dir() + "/" + type + ".cfg"
+		var config = ConfigFile.new()
+		
+		if config.load(config_path) != OK:
+			push_warning("Could not load " + config_path)
+		
 		current_dir.list_dir_begin(true, true)
 		
 		var file = current_dir.get_next()
 		while file:
 			var file_path = current_dir.get_current_dir() + "/" + file
-			var import_err = _import_asset(file_path, game, type, scene)
+			var import_err = _import_asset(file_path, game, type, scene, config)
 			
 			if import_err:
 				push_error("Failed to import " + file_path)
@@ -117,11 +124,31 @@ func _get_asset_dir(game: String, type: String) -> Directory:
 	
 	return dir
 
+func _get_file_config_value(config: ConfigFile, section: String, key: String, default):
+	var next_section = section
+	
+	if section.length() == 0:
+		return default
+	
+	var take_away = 1
+	if section.ends_with("*"):
+		take_away += 1
+	
+	var new_len = max(section.length() - take_away, 0)
+	
+	next_section = section.substr(0, new_len)
+	if section != "*":
+		next_section += "*"
+	
+	return config.get_value(section, key, _get_file_config_value(config, next_section, key, default))
+
 func _get_file_without_ext(file_path: String) -> String:
 	var file = file_path.get_file()
 	return file.substr(0, file.length() - file.get_extension().length() - 1)
 
-func _import_asset(from: String, game: String, type: String, scene: String) -> int:
+func _import_asset(from: String, game: String, type: String, scene: String,
+	config: ConfigFile) -> int:
+	
 	var dir = _get_asset_dir(game, type)
 	
 	var to = dir.get_current_dir() + "/" + from.get_file()
@@ -133,6 +160,7 @@ func _import_asset(from: String, game: String, type: String, scene: String) -> i
 	if VALID_SCENE_EXTENSIONS.has(to.get_extension()):
 		var entry = {
 			"name": _get_file_without_ext(to),
+			"scale": _get_file_config_value(config, from.get_file(), "scale", Vector3(1, 1, 1)),
 			"scene_path": to,
 			"texture_path": null
 		}
@@ -140,6 +168,7 @@ func _import_asset(from: String, game: String, type: String, scene: String) -> i
 	elif scene and VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
 		var entry = {
 			"name": _get_file_without_ext(to),
+			"scale": _get_file_config_value(config, from.get_file(), "scale", Vector3(1, 1, 1)),
 			"scene_path": scene,
 			"texture_path": to
 		}

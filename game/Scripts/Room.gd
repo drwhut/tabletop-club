@@ -47,6 +47,10 @@ remotesync func add_piece(name: String, transform: Transform,
 	piece.transform = transform
 	piece.piece_entry = piece_entry
 	
+	# Scale the piece by changing the scale of all collision shapes and mesh
+	# instances.
+	_scale_piece(piece, piece_entry["scale"])
+	
 	_pieces.add_child(piece)
 	
 	# If it is a stackable piece, make sure we attach the signal it emits when
@@ -565,6 +569,13 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 		else:
 			rpc("add_stack", srv_get_next_piece_name(), piece1.transform, piece1.name,
 				piece2.name)
+
+func _scale_piece(piece: Spatial, scale: Vector3) -> void:
+	if piece is CollisionShape or piece is MeshInstance:
+		piece.scale = scale
+	
+	for child in piece.get_children():
+		_scale_piece(child, scale)
 
 func _on_CameraController_flipped_piece():
 	if _hovering_piece:
