@@ -267,7 +267,19 @@ func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	else:
 		# TODO: Are the following cross products worth optimising?
 		# Torque the piece to the upright position on two axes.
-		state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.y).cross(_srv_hover_up - transform.basis.y).normalized())
-		state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.z).cross(_srv_hover_back - transform.basis.z).normalized())
+		
+		# If the basis is the exact opposite of where we need it, the normal
+		# cross product calculations will just be 0 - so we will need to give
+		# the piece a nudge!
+		if y_diff == 1:
+			state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.y.cross(transform.basis.z)).cross(_srv_hover_up).normalized())
+		else:
+			state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.y).cross(_srv_hover_up - transform.basis.y).normalized())
+		
+		if z_diff == 1:
+			state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.z.cross(transform.basis.y)).cross(_srv_hover_back).normalized())
+		else:
+			state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.z).cross(_srv_hover_back - transform.basis.z).normalized())
+		
 		# Stops angular harmonic motion.
 		state.add_torque(-angular_velocity)
