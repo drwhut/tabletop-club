@@ -21,7 +21,7 @@
 
 extends MeshInstance
 
-func _ready():
+func _init():
 	
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)

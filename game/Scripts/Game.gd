@@ -116,12 +116,16 @@ remotesync func request_card_out_hand_accepted(card_name: String) -> void:
 	_ui.remove_card_from_hand(card)
 
 master func request_game_piece(piece_entry: Dictionary) -> void:
-	# Send the call to create the piece to everyone.
-	_room.rpc("add_piece",
-		_room.srv_get_next_piece_name(),
-		Transform(Basis.IDENTITY, Vector3(0, Piece.SPAWN_HEIGHT, 0)),
-		piece_entry
-	)
+	# Is the piece a pre-filled stack?
+	if piece_entry.has("texture_paths") and (not piece_entry.has("texture_path")):
+		_room.rpc_id(1, "request_add_stack_filled", piece_entry)
+	else:
+		# Send the call to create the piece to everyone.
+		_room.rpc("add_piece",
+			_room.srv_get_next_piece_name(),
+			Transform(Basis.IDENTITY, Vector3(0, Piece.SPAWN_HEIGHT, 0)),
+			piece_entry
+		)
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")

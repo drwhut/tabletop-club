@@ -88,6 +88,7 @@ func _add_game_to_tree(game_name: String, game_pieces: Dictionary) -> void:
 	
 	_add_type_to_tree(game_node, game_pieces, "cards", "Cards")
 	_add_type_to_tree(game_node, game_pieces, "pieces", "Pieces")
+	_add_type_to_tree(game_node, game_pieces, "stacks", "Stacks")
 
 func _add_piece_to_tree(parent: TreeItem, piece: Dictionary) -> TreeItem:
 	var node = _objects_tree.create_item(parent)

@@ -36,6 +36,12 @@ remotesync func add_piece(name: String, transform: Transform,
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
+	# Firstly, check to see if the piece entry does not represent a pre-filled
+	# stack.
+	if piece_entry.has("texture_paths") and (not piece_entry.has("texture_path")):
+		push_error("Cannot add " + piece_entry.name + " as a piece, since it is a pre-filled stack!")
+		return
+	
 	var piece = load(piece_entry["scene_path"]).instance()
 	
 	# If the scene is not a piece (e.g. when importing a scene from the assets
@@ -61,7 +67,7 @@ remotesync func add_piece(name: String, transform: Transform,
 		piece.connect("stack_requested", self, "_on_stack_requested")
 	
 	# Apply a generic texture to the die.
-	if piece_entry["texture_path"]:
+	if piece_entry.has("texture_path") and piece_entry["texture_path"]:
 		var texture: Texture = load(piece_entry["texture_path"])
 		texture.set_flags(0)
 		
@@ -180,6 +186,45 @@ puppet func add_stack_empty(name: String, transform: Transform,
 	
 	return stack
 
+remotesync func add_stack_filled(name: String, transform: Transform,
+	stack_entry: Dictionary, piece_names: Array) -> void:
+	
+	var single_piece = load(stack_entry["scene_path"]).instance()
+	
+	var stack = add_stack_empty(name, transform, single_piece is Card)
+	
+	var i = 0
+	for texture_path in stack_entry["texture_paths"]:
+		var mesh = _get_stack_piece_mesh(single_piece)
+		var shape = _get_stack_piece_shape(single_piece)
+		
+		# Create a new piece entry based on the stack entry.
+		mesh.name = piece_names[i]
+		mesh.piece_entry = {
+			"name": stack_entry.name,
+			"scale": stack_entry.scale,
+			"scene_path": stack_entry.scene_path,
+			"texture_path": texture_path
+		}
+		
+		# TODO: Make sure StackPieceInstances do the exact same thing as Pieces
+		# when it comes to applying textures.
+		var texture: Texture = load(texture_path)
+		texture.flags = 0
+		
+		var new_material = SpatialMaterial.new()
+		new_material.albedo_texture = texture
+		
+		mesh.set_surface_material(0, new_material)
+		
+		stack.add_piece(mesh, shape, Stack.STACK_BOTTOM, Stack.FLIP_NO)
+		
+		i += 1
+	
+	_scale_piece(stack, stack_entry["scale"])
+	
+	single_piece.queue_free()
+
 remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> void:
 	
 	if get_tree().get_rpc_sender_id() != 1:
@@ -297,6 +342,19 @@ func get_state() -> Dictionary:
 	out["pieces"] = piece_dict
 	out["stacks"] = stack_dict
 	return out
+
+master func request_add_stack_filled(stack_entry: Dictionary) -> void:
+	# Before we can get everyone to add the stack, we need to come up with names
+	# for the stack and it's items.
+	var stack_name = srv_get_next_piece_name()
+	var piece_names = []
+	
+	for texture_path in stack_entry["texture_paths"]:
+		piece_names.push_back(srv_get_next_piece_name())
+	
+	var transform = Transform(Basis.IDENTITY, Vector3(0, Piece.SPAWN_HEIGHT, 0))
+	
+	rpc("add_stack_filled", stack_name, transform, stack_entry, piece_names)
 
 master func request_hover_piece(piece_name: String) -> void:
 	

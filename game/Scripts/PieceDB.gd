@@ -101,6 +101,15 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 				
 			file = current_dir.get_next()
 		
+		if scene:
+			var stack_config_path = current_dir.get_current_dir() + "/stacks.cfg"
+			var stack_config = ConfigFile.new()
+			
+			if stack_config.load(stack_config_path) == OK:
+				_import_stack_config(stack_config, game, type, scene)
+			else:
+				push_warning("Could not load " + stack_config_path)
+		
 		current_dir.change_dir("..")
 
 func _add_entry_to_db(game: String, type: String, entry: Dictionary) -> void:
@@ -188,3 +197,48 @@ func _import_file(from: String, to: String) -> int:
 		return _importer.import_texture(to)
 	else:
 		return OK
+
+func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
+	scene: String) -> void:
+	
+	for stack_name in stack_config.get_sections():
+		var items = stack_config.get_value(stack_name, "items")
+		if items and items is Array:
+			
+			var texture_paths = []
+			var scale = null
+			for item in items:
+			
+				# We know everything but the scale of the piece at this point.
+				# So, we need to scan through the DB to find the texture, then
+				# see what the scale of that texture's piece is.
+				if not scale:
+					if _db.has(game):
+						if _db[game].has(type) and _db[game][type] is Array:
+							var piece_entry = null
+							
+							for piece in _db[game][type]:
+								if piece.has("texture_path") and piece.texture_path is String:
+									if piece.texture_path.ends_with(item):
+										piece_entry = piece
+										break
+							
+							if piece_entry and piece_entry.has("scale"):
+								scale = piece_entry.scale
+							else:
+								push_error("Could not determine scale of " + item)
+				
+				# TODO: Check the file exists.
+				var texture_path = "user://" + game + "/" + type + "/" + item
+				texture_paths.push_back(texture_path)
+			
+			if scale:
+				var stack_entry = {
+					"name": stack_name,
+					"scale": scale,
+					"scene_path": scene,
+					"texture_paths": texture_paths
+				}
+				_add_entry_to_db(game, "stacks", stack_entry)
+			else:
+				push_error("Could not determine scale of stack " + stack_name)
