@@ -39,6 +39,9 @@ var _mouse_in_hand = false
 func add_card_to_hand(card: Card, front_face: bool) -> void:
 	var texture_rect = _create_card_half_texture(card, front_face)
 	_hand.add_child(texture_rect)
+	
+	_hand.move_child(_hand_highlight, _hand.get_child_count() - 1)
+	_hand_highlight.color = Color(0, 0, 0, 0)
 
 func remove_card_from_hand(card: Card) -> void:
 	for card_texture in _hand.get_children():
@@ -121,10 +124,20 @@ func _create_card_half_texture(card: Card, front_face: bool) -> CardTextureRect:
 	var texture = load(card_entry["texture_path"])
 	texture.flags = 0
 	
+	var card_aspect_ratio = 1.0
+	
+	var card_mesh = card.get_node("MeshInstance")
+	if card_mesh:
+		card_aspect_ratio = card_mesh.scale.x / card_mesh.scale.z
+	else:
+		push_error("Card " + card.name + " does not have a MeshInstance child!")
+	
+	var card_min_size = Vector2(_hand.rect_size.y * card_aspect_ratio, _hand.rect_size.y)
+	
 	var texture_rect = CardTextureRect.new()
 	texture_rect.card = card
 	texture_rect.front_face = front_face
-	texture_rect.rect_min_size = Vector2(62, 100)
+	texture_rect.rect_min_size = card_min_size
 	texture_rect.texture = texture
 	
 	texture_rect.connect("clicked_on", self, "_on_card_texture_clicked")
@@ -160,6 +173,11 @@ func _on_Room_stopped_hovering_card(card):
 
 func _on_Hand_mouse_entered():
 	_mouse_in_hand = true
+	
+	if _holding_card:
+		_hand_highlight.color = HIGHLIGHT_COLOUR
 
 func _on_Hand_mouse_exited():
 	_mouse_in_hand = false
+	
+	_hand_highlight.color = Color(0, 0, 0, 0)
