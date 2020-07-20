@@ -60,3 +60,9 @@ func _input(event):
 				_sent_mouse_over_signal = true
 		else:
 			_sent_mouse_over_signal = false
+
+func _process(delta):
+	if _mouse_over:
+		if Input.is_action_just_pressed("game_flip"):
+			front_face = !front_face
+			update()
