@@ -24,15 +24,13 @@ extends TextureRect
 class_name CardTextureRect
 
 signal clicked_on(card_texture)
+signal mouse_over(card_texture)
 
 var card: Card = null
 var front_face: bool = true
 
 var _mouse_over: bool = false
-
-func _ready():
-	connect("mouse_entered", self, "_on_mouse_entered")
-	connect("mouse_exited", self, "_on_mouse_exited")
+var _sent_mouse_over_signal = false
 
 func _draw():
 	if not texture:
@@ -49,9 +47,16 @@ func _input(event):
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed() and _mouse_over:
 				emit_signal("clicked_on", self)
-
-func _on_mouse_entered() -> void:
-	_mouse_over = true
-
-func _on_mouse_exited() -> void:
-	_mouse_over = false
+	
+	# Would usually use the signals for this, but we also need to know if the
+	# mouse is over the card while holding down the LMB.
+	elif event is InputEventMouseMotion:
+		var rect = Rect2(rect_global_position, rect_size)
+		_mouse_over = rect.has_point(get_viewport().get_mouse_position())
+		
+		if _mouse_over:
+			if not _sent_mouse_over_signal:
+				emit_signal("mouse_over", self)
+				_sent_mouse_over_signal = true
+		else:
+			_sent_mouse_over_signal = false

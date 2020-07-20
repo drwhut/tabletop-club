@@ -141,12 +141,21 @@ func _create_card_half_texture(card: Card, front_face: bool) -> CardTextureRect:
 	texture_rect.texture = texture
 	
 	texture_rect.connect("clicked_on", self, "_on_card_texture_clicked")
+	texture_rect.connect("mouse_over", self, "_on_card_texture_mouse_over")
 	
 	return texture_rect
 
 func _on_card_texture_clicked(card_texture: CardTextureRect) -> void:
 	_grabbed_card_from_hand = card_texture
 	_hand.mouse_filter = Control.MOUSE_FILTER_PASS
+
+func _on_card_texture_mouse_over(card_texture: CardTextureRect) -> void:
+	# If we are grabbing a card from our hand, and we hover over another card,
+	# then swap the positions of the cards.
+	if _grabbed_card_from_hand and card_texture != _grabbed_card_from_hand:
+		var old_index = card_texture.get_index()
+		_hand.move_child(card_texture, _grabbed_card_from_hand.get_index())
+		_hand.move_child(_grabbed_card_from_hand, old_index)
 
 func _on_ObjectsButton_pressed():
 	_objects_dialog.popup_centered()
