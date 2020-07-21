@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/GameUI.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/HandContainer.gd" type="Script" id=2]
 
 [node name="GameUI" type="Control"]
 anchor_right = 1.0
@@ -22,15 +23,13 @@ margin_right = 62.0
 margin_bottom = 20.0
 text = "Objects"
 
-[node name="Hand" type="HBoxContainer" parent="."]
+[node name="Hand" type="Container" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -100.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 2 )
 
 [node name="HandHighlight" type="ColorRect" parent="Hand"]
 margin_right = 62.0
