@@ -28,11 +28,11 @@ signal piece_requested(piece_entry)
 const HIGHLIGHT_COLOUR = Color(0.25, 1.0, 1.0, 0.5)
 
 onready var _hand = $Hand
-onready var _hand_highlight = $Hand/HandHighlight
 onready var _objects_dialog = $ObjectsDialog
 onready var _objects_tree = $ObjectsDialog/ObjectsTree
 
 var _grabbed_card_from_hand: CardTextureRect = null
+var _hand_highlight: ColorRect = ColorRect.new()
 var _holding_card = false
 var _mouse_in_hand = false
 
@@ -40,8 +40,8 @@ func add_card_to_hand(card: Card, front_face: bool) -> void:
 	var texture_rect = _create_card_half_texture(card, front_face)
 	_hand.add_child(texture_rect)
 	
-	_hand.move_child(_hand_highlight, _hand.get_child_count() - 1)
-	_hand_highlight.color = Color(0, 0, 0, 0)
+	if _hand.is_a_parent_of(_hand_highlight):
+		_hand.remove_child(_hand_highlight)
 
 func remove_card_from_hand(card: Card) -> void:
 	for card_texture in _hand.get_children():
@@ -61,6 +61,12 @@ func set_piece_tree_from_db(pieces: Dictionary) -> void:
 	
 	for game in pieces:
 		_add_game_to_tree(game, pieces[game])
+
+func _ready():
+	var hand_height = _hand.rect_size.y
+	_hand_highlight.color = HIGHLIGHT_COLOUR
+	_hand_highlight.mouse_filter = MOUSE_FILTER_IGNORE
+	_hand_highlight.rect_min_size = Vector2(hand_height / 1.618, hand_height)
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -184,9 +190,12 @@ func _on_Hand_mouse_entered():
 	_mouse_in_hand = true
 	
 	if _holding_card:
-		_hand_highlight.color = HIGHLIGHT_COLOUR
+		if not _hand.is_a_parent_of(_hand_highlight):
+			_hand.add_child(_hand_highlight)
 
 func _on_Hand_mouse_exited():
 	_mouse_in_hand = false
 	
-	_hand_highlight.color = Color(0, 0, 0, 0)
+	if _holding_card:
+		if _hand.is_a_parent_of(_hand_highlight):
+			_hand.remove_child(_hand_highlight)

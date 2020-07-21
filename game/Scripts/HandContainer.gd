@@ -39,12 +39,12 @@ func _notification(what):
 		var first_child = get_child(0)
 		
 		if first_child is Control:
-			cumulative_width = first_child.rect_size.x
-			first_child.rect_position.x = offset_begin
+			cumulative_width = floor(first_child.rect_size.x)
+			first_child.rect_position.x = floor(offset_begin)
 		
 		for i in range(1, get_child_count()):
 			var child = get_child(i)
 			if child is Control:
 				var width = child.rect_size.x
-				child.rect_position.x = offset_begin + cumulative_width + offset_other
-				cumulative_width += (width + offset_other)
+				child.rect_position.x = floor(offset_begin + cumulative_width + offset_other)
+				cumulative_width += floor(width + offset_other)
