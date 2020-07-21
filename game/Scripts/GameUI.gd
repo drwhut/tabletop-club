@@ -31,10 +31,12 @@ onready var _hand = $Hand
 onready var _objects_dialog = $ObjectsDialog
 onready var _objects_tree = $ObjectsDialog/ObjectsTree
 
+var _candidate_card: CardTextureRect = null
 var _grabbed_card_from_hand: CardTextureRect = null
 var _hand_highlight: ColorRect = ColorRect.new()
 var _holding_card = false
 var _mouse_in_hand = false
+var _mouse_over_cards = []
 
 func add_card_to_hand(card: Card, front_face: bool) -> void:
 	var texture_rect = _create_card_half_texture(card, front_face)
@@ -79,6 +81,12 @@ func _input(event):
 			var hand_rect = Rect2(_hand.rect_position, _hand.rect_size)
 			if not hand_rect.has_point(event.global_position):
 				emit_signal("card_out_hand_requested", _grabbed_card_from_hand)
+
+func _process(delta):
+	if _candidate_card and not _holding_card:
+		if Input.is_action_just_pressed("game_flip"):
+			_candidate_card.front_face = !_candidate_card.front_face
+			_candidate_card.update()
 
 func _add_game_to_tree(game_name: String, game_pieces: Dictionary) -> void:
 	var game_node = _objects_tree.create_item(_objects_tree.get_root())
@@ -152,16 +160,39 @@ func _create_card_half_texture(card: Card, front_face: bool) -> CardTextureRect:
 	return texture_rect
 
 func _on_card_texture_clicked(card_texture: CardTextureRect) -> void:
-	_grabbed_card_from_hand = card_texture
+	# We might get multiple signals if the cards overlap each other.
+	if (not _grabbed_card_from_hand) or (card_texture.get_index() > _grabbed_card_from_hand.get_index()):
+		_grabbed_card_from_hand = card_texture
 	_hand.mouse_filter = Control.MOUSE_FILTER_PASS
 
-func _on_card_texture_mouse_over(card_texture: CardTextureRect) -> void:
-	# If we are grabbing a card from our hand, and we hover over another card,
-	# then swap the positions of the cards.
-	if _grabbed_card_from_hand and card_texture != _grabbed_card_from_hand:
-		var old_index = card_texture.get_index()
-		_hand.move_child(card_texture, _grabbed_card_from_hand.get_index())
-		_hand.move_child(_grabbed_card_from_hand, old_index)
+func _on_card_texture_mouse_over(card_texture: CardTextureRect, is_over: bool) -> void:
+	# We might be mousing over multiple cards if they overlap each other, so
+	# keep track of which ones we are mousing over, and use the right-most one
+	# as the candidate.
+	if is_over and not _mouse_over_cards.has(card_texture):
+		_mouse_over_cards.push_back(card_texture)
+	
+	if not is_over and _mouse_over_cards.has(card_texture):
+		_mouse_over_cards.erase(card_texture)
+	
+	if _mouse_over_cards.size() > 0:
+		
+		_candidate_card = _mouse_over_cards[0]
+		
+		for i in range(1, _mouse_over_cards.size()):
+			var opponent = _mouse_over_cards[i]
+			if opponent.get_index() > _candidate_card.get_index():
+				_candidate_card = opponent
+	else:
+		_candidate_card = null
+	
+	# If we are grabbing a card from our hand, and we hover over another
+	# card, then swap the positions of the cards.
+	if _grabbed_card_from_hand and _candidate_card:
+		if _candidate_card != _grabbed_card_from_hand:
+			var old_index = _candidate_card.get_index()
+			_hand.move_child(_candidate_card, _grabbed_card_from_hand.get_index())
+			_hand.move_child(_grabbed_card_from_hand, old_index)
 
 func _on_ObjectsButton_pressed():
 	_objects_dialog.popup_centered()

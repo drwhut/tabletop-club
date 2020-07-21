@@ -24,13 +24,14 @@ extends TextureRect
 class_name CardTextureRect
 
 signal clicked_on(card_texture)
-signal mouse_over(card_texture)
+signal mouse_over(card_texture, is_over)
 
 var card: Card = null
 var front_face: bool = true
 
 var _mouse_over: bool = false
-var _sent_mouse_over_signal = false
+var _sent_mouse_over_signal_true = false
+var _sent_mouse_over_signal_false = false
 
 func _draw():
 	if not texture:
@@ -55,14 +56,15 @@ func _input(event):
 		_mouse_over = rect.has_point(get_viewport().get_mouse_position())
 		
 		if _mouse_over:
-			if not _sent_mouse_over_signal:
-				emit_signal("mouse_over", self)
-				_sent_mouse_over_signal = true
+			if not _sent_mouse_over_signal_true:
+				emit_signal("mouse_over", self, true)
+				_sent_mouse_over_signal_true = true
 		else:
-			_sent_mouse_over_signal = false
-
-func _process(delta):
-	if _mouse_over:
-		if Input.is_action_just_pressed("game_flip"):
-			front_face = !front_face
-			update()
+			_sent_mouse_over_signal_true = false
+		
+		if not _mouse_over:
+			if not _sent_mouse_over_signal_false:
+				emit_signal("mouse_over", self, false)
+				_sent_mouse_over_signal_false = true
+		else:
+			_sent_mouse_over_signal_false = false
