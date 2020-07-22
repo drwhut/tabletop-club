@@ -56,6 +56,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
-[connection signal="mouse_entered" from="Hand" to="." method="_on_Hand_mouse_entered"]
-[connection signal="mouse_exited" from="Hand" to="." method="_on_Hand_mouse_exited"]
 [connection signal="item_activated" from="ObjectsDialog/ObjectsTree" to="." method="_on_ObjectsTree_item_activated"]

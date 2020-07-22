@@ -42,6 +42,12 @@ func add_card_to_hand(card: Card, front_face: bool) -> void:
 	var texture_rect = _create_card_half_texture(card, front_face)
 	_hand.add_child(texture_rect)
 	
+	var index = _hand.get_child_count() - 1
+	if _hand.is_a_parent_of(_hand_highlight):
+		index = _hand_highlight.get_index()
+	
+	_hand.move_child(texture_rect, index)
+	
 	if _hand.is_a_parent_of(_hand_highlight):
 		_hand.remove_child(_hand_highlight)
 
@@ -76,11 +82,31 @@ func _input(event):
 			if (not event.is_pressed()) and _grabbed_card_from_hand:
 				_grabbed_card_from_hand = null
 	
+	# Would usually use the signals for this, but we also need to know if the
+	# mouse is over the hand when it is also over the cards.
 	elif event is InputEventMouseMotion:
-		if _grabbed_card_from_hand:
-			var hand_rect = Rect2(_hand.rect_position, _hand.rect_size)
-			if not hand_rect.has_point(event.global_position):
-				emit_signal("card_out_hand_requested", _grabbed_card_from_hand)
+		var hand_rect = Rect2(_hand.rect_position, _hand.rect_size)
+		_mouse_in_hand = hand_rect.has_point(get_viewport().get_mouse_position())
+		
+		# Dragging a card from the hand to the room.
+		if _grabbed_card_from_hand and not _mouse_in_hand:
+			emit_signal("card_out_hand_requested", _grabbed_card_from_hand)
+		
+		# Dragging a card from the room in and out of the hand.
+		elif _holding_card:
+			if _mouse_in_hand:
+				if not _hand.is_a_parent_of(_hand_highlight):
+					_hand.add_child(_hand_highlight)
+				if _candidate_card:
+					_hand.move_child(_hand_highlight, _candidate_card.get_index())
+					
+					# Reset the list of cards the mouse is hovering over, as
+					# the mouse would now be hovering over the highlighting
+					# card.
+					_candidate_card = null
+					_mouse_over_cards = []
+			elif not _mouse_in_hand and _hand.is_a_parent_of(_hand_highlight):
+				_hand.remove_child(_hand_highlight)
 
 func _process(delta):
 	if _candidate_card and not _holding_card:
@@ -193,6 +219,11 @@ func _on_card_texture_mouse_over(card_texture: CardTextureRect, is_over: bool) -
 			var old_index = _candidate_card.get_index()
 			_hand.move_child(_candidate_card, _grabbed_card_from_hand.get_index())
 			_hand.move_child(_grabbed_card_from_hand, old_index)
+			
+			# Reset the list of cards the mouse is over, since we have moved
+			# the cards.
+			_candidate_card = _grabbed_card_from_hand
+			_mouse_over_cards = [_grabbed_card_from_hand]
 
 func _on_ObjectsButton_pressed():
 	_objects_dialog.popup_centered()
@@ -216,17 +247,3 @@ func _on_Room_stopped_hovering_card(card):
 	_holding_card = false
 	_mouse_in_hand = false
 	_hand.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-func _on_Hand_mouse_entered():
-	_mouse_in_hand = true
-	
-	if _holding_card:
-		if not _hand.is_a_parent_of(_hand_highlight):
-			_hand.add_child(_hand_highlight)
-
-func _on_Hand_mouse_exited():
-	_mouse_in_hand = false
-	
-	if _holding_card:
-		if _hand.is_a_parent_of(_hand_highlight):
-			_hand.remove_child(_hand_highlight)
