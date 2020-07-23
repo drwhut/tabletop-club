@@ -23,6 +23,8 @@ extends RigidBody
 
 class_name Piece
 
+signal removing_self(piece)
+
 const ANGULAR_FORCE_SCALAR = 20.0
 const HELL_HEIGHT = -50.0
 const LINEAR_FORCE_SCALAR  = 20.0
@@ -48,6 +50,12 @@ var _last_server_state = {}
 var _last_velocity = Vector3()
 var _new_velocity = Vector3()
 
+func add_context_to_control(control: Control) -> void:
+	var delete_button = Button.new()
+	delete_button.text = "Delete"
+	delete_button.connect("pressed", self, "_on_delete_pressed")
+	control.add_child(delete_button)
+
 func apply_texture(texture: Texture) -> void:
 	if _mesh_instance != null:
 		var material = SpatialMaterial.new()
@@ -70,8 +78,12 @@ remotesync func remove_self() -> void:
 		return
 	
 	if get_parent():
+		emit_signal("removing_self", self)
 		get_parent().remove_child(self)
 		queue_free()
+
+master func request_remove_self() -> void:
+	rpc("remove_self")
 
 master func reset_orientation() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
@@ -249,6 +261,9 @@ func _integrate_forces(state):
 			var new_transform = Transform(lerp_quat)
 			new_transform.origin = origin
 			state.transform = new_transform
+
+func _on_delete_pressed() -> void:
+	rpc_id(1, "request_remove_self")
 
 func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Force the piece to the given location.

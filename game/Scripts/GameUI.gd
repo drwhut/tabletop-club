@@ -30,11 +30,14 @@ const HIGHLIGHT_COLOUR = Color(0.25, 1.0, 1.0, 0.5)
 onready var _hand = $Hand
 onready var _objects_dialog = $ObjectsDialog
 onready var _objects_tree = $ObjectsDialog/ObjectsTree
+onready var _piece_context_menu = $PieceContextMenu
+onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 
 var _candidate_card: CardTextureRect = null
 var _grabbed_card_from_hand: CardTextureRect = null
 var _hand_highlight: ColorRect = ColorRect.new()
 var _holding_card = false
+var _last_context_menu_piece: Piece = null
 var _mouse_in_hand = false
 var _mouse_over_cards = []
 
@@ -235,6 +238,28 @@ func _on_ObjectsTree_item_activated():
 	if selected.get_metadata(0):
 		emit_signal("piece_requested", selected.get_metadata(0))
 
+func _on_Room_piece_context_menu_requested(piece: Piece):
+	for child in _piece_context_menu_container.get_children():
+		_piece_context_menu_container.remove_child(child)
+		child.queue_free()
+	
+	piece.add_context_to_control(_piece_context_menu_container)
+	
+	# We've connected a signal elsewhere that will change the size of the popup
+	# to match the container.
+	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
+	_piece_context_menu.popup()
+	
+	_last_context_menu_piece = piece
+
+func _on_Room_piece_removed(piece):
+	if _last_context_menu_piece:
+		if piece == _last_context_menu_piece:
+			# If a piece got removed, but the pieces context menu was showing,
+			# then stop showing the context menu.
+			_piece_context_menu.visible = false
+			_last_context_menu_piece = null
+
 func _on_Room_started_hovering_card(card):
 	_holding_card = true
 	_mouse_in_hand = false
@@ -247,3 +272,12 @@ func _on_Room_stopped_hovering_card(card):
 	_holding_card = false
 	_mouse_in_hand = false
 	_hand.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func _on_VBoxContainer_item_rect_changed():
+	if _piece_context_menu and _piece_context_menu_container:
+		var size = _piece_context_menu_container.rect_size
+		size.x += _piece_context_menu_container.margin_left
+		size.y += _piece_context_menu_container.margin_top
+		size.x -= _piece_context_menu_container.margin_right
+		size.y -= _piece_context_menu_container.margin_bottom
+		_piece_context_menu.rect_min_size = size

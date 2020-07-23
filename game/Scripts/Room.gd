@@ -21,6 +21,8 @@
 
 extends Spatial
 
+signal piece_context_menu_requested(piece)
+signal piece_removed(piece)
 signal started_hovering_card(card)
 signal stopped_hovering_card(card)
 
@@ -60,6 +62,8 @@ remotesync func add_piece(name: String, transform: Transform,
 	_scale_piece(piece, piece_entry["scale"])
 	
 	_pieces.add_child(piece)
+	
+	piece.connect("removing_self", self, "_on_piece_removed")
 	
 	# If it is a stackable piece, make sure we attach the signal it emits when
 	# it wants to create a stack.
@@ -180,6 +184,8 @@ puppet func add_stack_empty(name: String, transform: Transform,
 	stack.transform = transform
 	
 	_pieces.add_child(stack)
+	
+	stack.connect("removing_self", self, "_on_piece_removed")
 	
 	# Attach the signal for when it wants to stack with another piece.
 	stack.connect("stack_requested", self, "_on_stack_requested")
@@ -624,6 +630,9 @@ func _get_stack_piece_shape(piece: StackablePiece) -> Shape:
 	
 	return piece_collision_shape.shape
 
+func _on_piece_removed(piece: Piece) -> void:
+	emit_signal("piece_removed", piece)
+
 func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void:
 	if get_tree().is_network_server():
 		if piece1 is Stack and piece2 is Stack:
@@ -650,6 +659,9 @@ func _on_CameraController_flipped_piece():
 func _on_CameraController_new_hover_position(position: Vector3):
 	if _hovering_piece:
 		_hovering_piece.rpc_unreliable_id(1, "set_hover_position", position)
+
+func _on_CameraController_piece_context_menu_requested(piece: Piece):
+	emit_signal("piece_context_menu_requested", piece)
 
 func _on_CameraController_reset_piece():
 	if _hovering_piece:

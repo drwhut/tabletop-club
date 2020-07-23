@@ -23,6 +23,7 @@ extends Spatial
 
 signal flipped_piece()
 signal new_hover_position(position)
+signal piece_context_menu_requested(piece)
 signal reset_piece()
 signal started_hovering(piece, fast)
 signal stopped_hovering()
@@ -46,9 +47,11 @@ var _grab_piece_screen_position = null
 var _grabbing_time = 0.0
 var _is_hovering_piece = false
 var _last_non_zero_movement_dir = Vector3()
+var _left_click = false
 var _movement_dir = Vector3()
 var _movement_speed = 0.0
 var _piece_grabbing: Piece = null
+var _right_click_pos = Vector2()
 var _rotation = Vector2()
 
 func get_hover_position() -> Vector3:
@@ -104,11 +107,15 @@ func _physics_process(delta):
 		var space_state = get_world().direct_space_state
 		var result = space_state.intersect_ray(from, to)
 		
-		# Was the thing that collided a game piece? If so, we should grab it.
+		# Was the thing that collided a game piece? If so, we should either
+		# grab it or bring up its context menu.
 		if result.has("collider"):
 			if result.collider is Piece:
-				_piece_grabbing = result.collider
-				_grabbing_time = 0.0
+				if _left_click:
+					_piece_grabbing = result.collider
+					_grabbing_time = 0.0
+				else:
+					emit_signal("piece_context_menu_requested", result.collider)
 		
 		# Set back to null so we don't do the same calculation the next frame.
 		_grab_piece_screen_position = null
@@ -174,12 +181,21 @@ func _unhandled_input(event):
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
 				_grab_piece_screen_position = event.position
+				_left_click = true
 			else:
 				_piece_grabbing = null
 				
 				if _is_hovering_piece:
 					emit_signal("stopped_hovering")
 					_is_hovering_piece = false
+		
+		elif event.button_index == BUTTON_RIGHT:
+			if event.is_pressed():
+				_right_click_pos = event.position
+			else:
+				if event.position == _right_click_pos:
+					_grab_piece_screen_position = event.position
+					_left_click = false
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
