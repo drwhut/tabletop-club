@@ -28,16 +28,19 @@ onready var _room = $Room
 onready var _ui = $GameUI
 
 func init_client(server: String) -> void:
+	print("Connecting to ", server, ":", PORT, " ...")
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_client(server, PORT)
 	get_tree().network_peer = peer
 
 func init_server(max_players: int) -> void:
+	print("Starting server on port ", PORT, " with ", max_players, " max players...")
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_server(PORT, max_players + 1)
 	get_tree().network_peer = peer
 
 func init_singleplayer() -> void:
+	print("Starting singleplayer...")
 	init_server(0)
 
 master func request_card_in_hand(card_name: String) -> void:
@@ -146,14 +149,12 @@ func _ready():
 			break
 	
 	if is_server:
-		print("Initializing server peer...")
 		init_server(10)
 	else:
-		print("Initializing client peer...")
 		init_client("127.0.0.1")
 
 func _player_connected(id: int) -> void:
-	print("Player ", id, " connected!")
+	print("Player with ID ", id, " connected!")
 	
 	# If a player has connected to the server, let them know of every piece on
 	# the board so far.
@@ -161,16 +162,16 @@ func _player_connected(id: int) -> void:
 		_room.rpc_id(id, "set_state", _room.get_state())
 
 func _player_disconnected(id: int) -> void:
-	print("Player ", id, " disconnected!")
+	print("Player with ID ", id, " disconnected!")
 
 func _connected_ok() -> void:
-	print("Connected OK!")
+	print("Successfully connected to the server!")
 
 func _connected_fail() -> void:
-	print("Connected FAIL!")
+	print("Failed to connect to the server!")
 
 func _server_disconnected() -> void:
-	print("Server disconnected!")
+	print("Lost connection to the server!")
 
 func _on_GameUI_card_in_hand_requested(card: Card):
 	rpc_id(1, "request_card_in_hand", card.name)

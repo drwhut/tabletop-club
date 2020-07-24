@@ -24,6 +24,9 @@ extends Container
 func _notification(what):
 	if what == NOTIFICATION_SORT_CHILDREN:
 		
+		if get_child_count() == 0:
+			return
+		
 		var total_width = 0
 		
 		for child in get_children():

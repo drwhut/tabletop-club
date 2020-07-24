@@ -62,6 +62,8 @@ func import_all() -> void:
 func import_game_dir(dir: Directory) -> void:
 	var game = dir.get_current_dir().get_file()
 	
+	print("Importing ", game, " ...")
+	
 	_db[game] = {}
 	
 	if dir.dir_exists("dice"):
@@ -85,9 +87,14 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 		# If the configuration file exists for this directory, try and load it.
 		var config_path = current_dir.get_current_dir() + "/" + type + ".cfg"
 		var config = ConfigFile.new()
+		var config_err = config.load(config_path)
 		
-		if config.load(config_path) != OK:
-			push_warning("Could not load " + config_path)
+		if config_err == OK:
+			print("Loaded: " + config_path)
+		elif config_err == ERR_FILE_NOT_FOUND:
+			pass
+		else:
+			push_warning("Failed to load: " + config_path + " (error " + str(config_err) + ")")
 		
 		current_dir.list_dir_begin(true, true)
 		
@@ -97,18 +104,22 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 			var import_err = _import_asset(file_path, game, type, scene, config)
 			
 			if import_err:
-				push_error("Failed to import " + file_path)
+				push_error("Failed to import: " + file_path + " (error " + str(import_err) + ")")
 				
 			file = current_dir.get_next()
 		
 		if scene:
 			var stack_config_path = current_dir.get_current_dir() + "/stacks.cfg"
 			var stack_config = ConfigFile.new()
+			var stack_config_err = stack_config.load(stack_config_path)
 			
-			if stack_config.load(stack_config_path) == OK:
+			if stack_config_err == OK:
 				_import_stack_config(stack_config, game, type, scene)
+				print("Loaded: " + stack_config_path)
+			elif stack_config_err == ERR_FILE_NOT_FOUND:
+				pass
 			else:
-				push_warning("Could not load " + stack_config_path)
+				push_warning("Failed to load: " + stack_config_path + " (error " + str(stack_config_err) + ")")
 		
 		current_dir.change_dir("..")
 
@@ -120,16 +131,19 @@ func _add_entry_to_db(game: String, type: String, entry: Dictionary) -> void:
 		_db[game][type] = []
 	
 	_db[game][type].push_back(entry)
+	
+	print("Added: ", game, "/", type, "/", entry.name)
 
 func _get_asset_dir(game: String, type: String) -> Directory:
 	var dir = Directory.new()
+	var dir_error = dir.open("user://")
 	
-	if dir.open("user://") == OK:
+	if dir_error == OK:
 		var path = game + "/" + type
 		dir.make_dir_recursive(path)
 		dir.change_dir(path)
 	else:
-		push_error("Cannot open user:// directory!")
+		push_error("Cannot open user:// directory! (error " + str(dir_error) + ")")
 	
 	return dir
 
