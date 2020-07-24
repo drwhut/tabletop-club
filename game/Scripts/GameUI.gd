@@ -228,6 +228,9 @@ func _on_card_texture_mouse_over(card_texture: CardTextureRect, is_over: bool) -
 			_candidate_card = _grabbed_card_from_hand
 			_mouse_over_cards = [_grabbed_card_from_hand]
 
+func _on_GameUI_tree_exited():
+	_hand_highlight.free()
+
 func _on_ObjectsButton_pressed():
 	_objects_dialog.popup_centered()
 
