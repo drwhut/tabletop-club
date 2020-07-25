@@ -57,8 +57,6 @@ remotesync func add_piece(name: String, transform: Transform,
 	
 	# Scale the piece by changing the scale of all collision shapes and mesh
 	# instances.
-	if piece is Card:
-		piece_entry["scale"].y = 1
 	_scale_piece(piece, piece_entry["scale"])
 	
 	_pieces.add_child(piece)
@@ -415,9 +413,9 @@ master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 	
 	var piece_instance: StackPieceInstance = null
 	
-	if stack.get_pieces_count() == 0:
+	if stack.get_piece_count() == 0:
 		return
-	elif stack.get_pieces_count() == 1:
+	elif stack.get_piece_count() == 1:
 		piece_instance = stack.empty()[0]
 		stack.rpc("remove_self")
 	else:
@@ -451,7 +449,7 @@ master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 		
 	# Check to see if there is only one piece left in the stack - if there is,
 	# turn it into a normal piece with this method.
-	if stack.get_pieces_count() == 1:
+	if stack.get_piece_count() == 1:
 		request_pop_stack(stack_name, false)
 
 remotesync func request_pop_stack_accepted(piece_name: String) -> void:
@@ -619,13 +617,18 @@ func _get_stack_piece_mesh(piece: StackablePiece) -> StackPieceInstance:
 	
 	return piece_mesh
 
-func _get_stack_piece_shape(piece: StackablePiece) -> Shape:
+func _get_stack_piece_shape(piece: StackablePiece) -> CollisionShape:
+	var piece_shape = CollisionShape.new()
+	
 	var piece_collision_shape = piece.get_node("CollisionShape")
 	if not piece_collision_shape:
 		push_error("Piece " + piece.name + " does not have a CollisionShape child!")
 		return null
 	
-	return piece_collision_shape.shape
+	piece_shape.scale = piece_collision_shape.scale
+	piece_shape.shape = piece_collision_shape.shape
+	
+	return piece_shape
 
 func _on_piece_removed(piece: Piece) -> void:
 	emit_signal("piece_removed", piece)

@@ -43,8 +43,8 @@ onready var _pieces = $Pieces
 var _collision_unit_height = 0
 var _mesh_unit_height = 0
 
-func add_piece(piece: StackPieceInstance, shape: Shape, on: int = STACK_AUTO,
-	flip: int = FLIP_AUTO) -> void:
+func add_piece(piece: StackPieceInstance, shape: CollisionShape,
+	on: int = STACK_AUTO, flip: int = FLIP_AUTO) -> void:
 	
 	var on_top = false
 	
@@ -85,11 +85,14 @@ func empty() -> Array:
 func get_pieces() -> Array:
 	return _pieces.get_children()
 
-func get_pieces_count() -> int:
+func get_piece_count() -> int:
 	return _pieces.get_child_count()
 
 func get_total_height() -> float:
-	return get_unit_height() * get_pieces_count()
+	if _collision_shape.shape is BoxShape:
+		return _collision_shape.shape.extents.y * 2
+	
+	return 0.0
 
 func get_unit_height() -> float:
 	return _collision_unit_height
@@ -137,7 +140,9 @@ puppet func remove_piece_by_name(name: String) -> void:
 	
 	remove_piece(piece)
 
-func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int, flip: int) -> void:
+func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
+	pos: int, flip: int) -> void:
+	
 	_pieces.add_child(piece)
 	_pieces.move_child(piece, pos)
 	
@@ -146,20 +151,22 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int, flip: 
 		
 		_mesh_unit_height = piece.scale.y
 		
-		if shape is BoxShape:
+		if shape.shape is BoxShape:
 			var new_shape = BoxShape.new()
-			new_shape.extents = shape.extents
-			_collision_unit_height = shape.extents.y * 2
+			new_shape.extents = shape.shape.extents
+			new_shape.extents.y *= shape.scale.y
+			_collision_unit_height = new_shape.extents.y * 2
 			
 			_collision_shape.shape = new_shape
-			_collision_shape.scale = Vector3(piece.scale.x, 1, piece.scale.z)
+			_collision_shape.scale = Vector3(shape.scale.x, 1, shape.scale.z)
 		else:
 			push_error("Piece " + piece.name + " has an unsupported collision shape!")
 	else:
+		var current_height = get_total_height()
+		var new_height = _mesh_unit_height * (_pieces.get_child_count() + 1)
+		var extra_height = max(new_height - current_height, 0)
+		
 		if _collision_shape.shape is BoxShape:
-			var current_height = _collision_shape.shape.extents.y * 2
-			var new_height = _mesh_unit_height * (_pieces.get_child_count() + 1)
-			var extra_height = max(new_height - current_height, 0)
 			_collision_shape.shape.extents.y += (extra_height / 2)
 	
 	var n = _pieces.get_child_count()
@@ -197,10 +204,11 @@ func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	_pieces.remove_child(piece)
 	
 	# Re-calculate the stacks collision shape.
+	var current_height = get_total_height()
+	var new_height = max(_mesh_unit_height * _pieces.get_child_count(), _collision_unit_height)
+	var height_lost = max(current_height - new_height, 0)
+	
 	if _collision_shape.shape is BoxShape:
-		var current_height = _collision_shape.shape.extents.y * 2
-		var new_height = max(_mesh_unit_height * _pieces.get_child_count(), _collision_unit_height)
-		var height_lost = max(current_height - new_height, 0)
 		_collision_shape.shape.extents.y -= (height_lost / 2)
 	else:
 		push_error("Stack has an unsupported collision shape!")
