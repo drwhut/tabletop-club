@@ -73,7 +73,6 @@ remotesync func add_piece(name: String, transform: Transform,
 	# Apply a generic texture to the die.
 	if piece_entry.has("texture_path") and piece_entry["texture_path"]:
 		var texture: Texture = load(piece_entry["texture_path"])
-		texture.set_flags(0)
 		
 		piece.apply_texture(texture)
 	
@@ -216,7 +215,6 @@ remotesync func add_stack_filled(name: String, transform: Transform,
 		# TODO: Make sure StackPieceInstances do the exact same thing as Pieces
 		# when it comes to applying textures.
 		var texture: Texture = load(texture_path)
-		texture.flags = 0
 		
 		var new_material = SpatialMaterial.new()
 		new_material.albedo_texture = texture
