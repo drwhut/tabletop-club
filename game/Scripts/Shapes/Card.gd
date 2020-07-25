@@ -21,38 +21,96 @@
 
 extends MeshInstance
 
+const UV_MARGIN = 0.01
+
 func _init():
 	
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	
 	st.add_uv(Vector2(0.5, 1))
-	st.add_vertex(Vector3(0.5, 0.0001, 0.5)) # +x+y+z
+	st.add_vertex(Vector3(0.5, 0.5, 0.5)) # +x+y+z
 	st.add_uv(Vector2(0, 1))
-	st.add_vertex(Vector3(-0.5, 0.0001, 0.5)) # -x+y+z
+	st.add_vertex(Vector3(-0.5, 0.5, 0.5)) # -x+y+z
 	st.add_uv(Vector2(0, 0))
-	st.add_vertex(Vector3(-0.5, 0.0001, -0.5)) # -x+y-z
+	st.add_vertex(Vector3(-0.5, 0.5, -0.5)) # -x+y-z
 	
 	st.add_uv(Vector2(0, 0))
-	st.add_vertex(Vector3(-0.5, 0.0001, -0.5)) # -x+y-z
+	st.add_vertex(Vector3(-0.5, 0.5, -0.5)) # -x+y-z
 	st.add_uv(Vector2(0.5, 0))
-	st.add_vertex(Vector3(0.5, 0.0001, -0.5)) # +x+y-z
+	st.add_vertex(Vector3(0.5, 0.5, -0.5)) # +x+y-z
 	st.add_uv(Vector2(0.5, 1))
-	st.add_vertex(Vector3(0.5, 0.0001, 0.5)) # +x+y+z
+	st.add_vertex(Vector3(0.5, 0.5, 0.5)) # +x+y+z
 	
 	st.add_uv(Vector2(1, 1))
-	st.add_vertex(Vector3(-0.5, -0.0001, 0.5)) # -x-y+z
+	st.add_vertex(Vector3(-0.5, -0.5, 0.5)) # -x-y+z
 	st.add_uv(Vector2(0.5, 1))
-	st.add_vertex(Vector3(0.5, -0.0001, 0.5)) # +x-y+z
+	st.add_vertex(Vector3(0.5, -0.5, 0.5)) # +x-y+z
 	st.add_uv(Vector2(0.5, 0))
-	st.add_vertex(Vector3(0.5, -0.0001, -0.5)) # +x-y-z
+	st.add_vertex(Vector3(0.5, -0.5, -0.5)) # +x-y-z
 	
 	st.add_uv(Vector2(0.5, 0))
-	st.add_vertex(Vector3(0.5, -0.0001, -0.5)) # +x-y-z
+	st.add_vertex(Vector3(0.5, -0.5, -0.5)) # +x-y-z
 	st.add_uv(Vector2(1, 0))
-	st.add_vertex(Vector3(-0.5, -0.0001, -0.5)) # -x-y-z
+	st.add_vertex(Vector3(-0.5, -0.5, -0.5)) # -x-y-z
 	st.add_uv(Vector2(1, 1))
-	st.add_vertex(Vector3(-0.5, -0.0001, 0.5)) # -x-y+z
+	st.add_vertex(Vector3(-0.5, -0.5, 0.5)) # -x-y+z
+	
+	st.add_uv(Vector2(0, 1-UV_MARGIN))
+	st.add_vertex(Vector3(-0.5, 0.5, 0.5)) # -x+y+z
+	st.add_uv(Vector2(0.5, 1-UV_MARGIN))
+	st.add_vertex(Vector3(0.5, 0.5, 0.5)) # +x+y+z
+	st.add_uv(Vector2(0, 1))
+	st.add_vertex(Vector3(-0.5, -0.5, 0.5)) # -x-y+z
+	
+	st.add_uv(Vector2(0.5, 1))
+	st.add_vertex(Vector3(0.5, -0.5, 0.5)) # +x-y+z
+	st.add_uv(Vector2(0, 1))
+	st.add_vertex(Vector3(-0.5, -0.5, 0.5)) # -x-y+z
+	st.add_uv(Vector2(0.5, 1-UV_MARGIN))
+	st.add_vertex(Vector3(0.5, 0.5, 0.5)) # +x+y+z
+	
+	st.add_uv(Vector2(0.5, UV_MARGIN))
+	st.add_vertex(Vector3(0.5, 0.5, -0.5)) # +x+y-z
+	st.add_uv(Vector2(0, UV_MARGIN))
+	st.add_vertex(Vector3(-0.5, 0.5, -0.5)) # -x+y-z
+	st.add_uv(Vector2(0.5, 0))
+	st.add_vertex(Vector3(0.5, -0.5, -0.5)) # +x-y-z
+	
+	st.add_uv(Vector2(0, 0))
+	st.add_vertex(Vector3(-0.5, -0.5, -0.5)) # -x-y-z
+	st.add_uv(Vector2(0.5, 0))
+	st.add_vertex(Vector3(0.5, -0.5, -0.5)) # +x-y-z
+	st.add_uv(Vector2(0, UV_MARGIN))
+	st.add_vertex(Vector3(-0.5, 0.5, -0.5)) # -x+y-z
+	
+	st.add_uv(Vector2(UV_MARGIN, 0))
+	st.add_vertex(Vector3(-0.5, 0.5, -0.5)) # -x+y-z
+	st.add_uv(Vector2(UV_MARGIN, 1))
+	st.add_vertex(Vector3(-0.5, 0.5, 0.5)) # -x+y+z
+	st.add_uv(Vector2(0, 0))
+	st.add_vertex(Vector3(-0.5, -0.5, -0.5)) # -x-y-z
+	
+	st.add_uv(Vector2(0, 1))
+	st.add_vertex(Vector3(-0.5, -0.5, 0.5)) # -x-y+z
+	st.add_uv(Vector2(0, 0))
+	st.add_vertex(Vector3(-0.5, -0.5, -0.5)) # -x-y-z
+	st.add_uv(Vector2(UV_MARGIN, 1))
+	st.add_vertex(Vector3(-0.5, 0.5, 0.5)) # -x+y+z
+	
+	st.add_uv(Vector2(0.5-UV_MARGIN, 1))
+	st.add_vertex(Vector3(0.5, 0.5, 0.5)) # +x+y+z
+	st.add_uv(Vector2(0.5-UV_MARGIN, 0))
+	st.add_vertex(Vector3(0.5, 0.5, -0.5)) # +x+y-z
+	st.add_uv(Vector2(0.5, 1))
+	st.add_vertex(Vector3(0.5, -0.5, 0.5)) # +x-y+z
+	
+	st.add_uv(Vector2(0.5, 0))
+	st.add_vertex(Vector3(0.5, -0.5, -0.5)) # +x-y-z
+	st.add_uv(Vector2(0.5, 1))
+	st.add_vertex(Vector3(0.5, -0.5, 0.5)) # +x-y+z
+	st.add_uv(Vector2(0.5-UV_MARGIN, 0))
+	st.add_vertex(Vector3(0.5, 0.5, -0.5)) # +x+y-z
 	
 	st.generate_normals()
 	

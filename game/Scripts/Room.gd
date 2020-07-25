@@ -644,7 +644,7 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 
 func _scale_piece(piece: Spatial, scale: Vector3) -> void:
 	if piece is CollisionShape or piece is MeshInstance:
-		piece.scale = scale
+		piece.scale_object_local(scale)
 	
 	for child in piece.get_children():
 		_scale_piece(child, scale)
