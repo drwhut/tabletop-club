@@ -41,6 +41,7 @@ onready var _collision_shape = $CollisionShape
 onready var _pieces = $Pieces
 
 var _collision_unit_height = 0
+var _mesh_unit_height = 0
 
 func add_piece(piece: StackPieceInstance, shape: Shape, on: int = STACK_AUTO,
 	flip: int = FLIP_AUTO) -> void:
@@ -143,18 +144,23 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int, flip: 
 	if _pieces.get_child_count() == 1:
 		piece_entry = piece.piece_entry
 		
+		_mesh_unit_height = piece.scale.y
+		
 		if shape is BoxShape:
 			var new_shape = BoxShape.new()
 			new_shape.extents = shape.extents
 			_collision_unit_height = shape.extents.y * 2
 			
 			_collision_shape.shape = new_shape
-			_collision_shape.scale = piece.scale
+			_collision_shape.scale = Vector3(piece.scale.x, 1, piece.scale.z)
 		else:
 			push_error("Piece " + piece.name + " has an unsupported collision shape!")
 	else:
 		if _collision_shape.shape is BoxShape:
-			_collision_shape.shape.extents.y += (_collision_unit_height / 2)
+			var current_height = _collision_shape.shape.extents.y * 2
+			var new_height = _mesh_unit_height * (_pieces.get_child_count() + 1)
+			var extra_height = max(new_height - current_height, 0)
+			_collision_shape.shape.extents.y += (extra_height / 2)
 	
 	var n = _pieces.get_child_count()
 	var is_flipped = false
@@ -192,7 +198,10 @@ func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	
 	# Re-calculate the stacks collision shape.
 	if _collision_shape.shape is BoxShape:
-		_collision_shape.shape.extents.y -= (_collision_unit_height / 2)
+		var current_height = _collision_shape.shape.extents.y * 2
+		var new_height = max(_mesh_unit_height * _pieces.get_child_count(), _collision_unit_height)
+		var height_lost = max(current_height - new_height, 0)
+		_collision_shape.shape.extents.y -= (height_lost / 2)
 	else:
 		push_error("Stack has an unsupported collision shape!")
 		return null
@@ -202,8 +211,8 @@ func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	return piece
 
 func _set_piece_heights() -> void:
-	var height = _collision_unit_height * _pieces.get_child_count()
+	var height = _mesh_unit_height * _pieces.get_child_count()
 	var i = 0
 	for piece in _pieces.get_children():
-		piece.transform.origin.y = (_collision_unit_height * (i + 0.5)) - (height / 2)
+		piece.transform.origin.y = (_mesh_unit_height * (i + 0.5)) - (height / 2)
 		i += 1
