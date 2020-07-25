@@ -618,17 +618,12 @@ func _get_stack_piece_mesh(piece: StackablePiece) -> StackPieceInstance:
 	return piece_mesh
 
 func _get_stack_piece_shape(piece: StackablePiece) -> CollisionShape:
-	var piece_shape = CollisionShape.new()
-	
 	var piece_collision_shape = piece.get_node("CollisionShape")
 	if not piece_collision_shape:
 		push_error("Piece " + piece.name + " does not have a CollisionShape child!")
 		return null
 	
-	piece_shape.scale = piece_collision_shape.scale
-	piece_shape.shape = piece_collision_shape.shape
-	
-	return piece_shape
+	return piece_collision_shape
 
 func _on_piece_removed(piece: Piece) -> void:
 	emit_signal("piece_removed", piece)
