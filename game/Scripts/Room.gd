@@ -430,13 +430,12 @@ master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 		# NOTE: We normalise the basis here to reset the piece's scale, because
 		# add_piece will use the piece entry to scale the piece again.
 		var new_basis = (stack.transform.basis * piece_instance.transform.basis).orthonormalized()
-		var new_origin = stack.transform.origin + piece_instance.transform.origin
+		var new_origin = stack.transform.origin + Vector3(0, stack.get_total_height() / 2, 0)
 		
 		# If this piece will hover, get it away from the stack so it doesn't
 		# immediately collide with it again.
-		# TODO: Use the stack's unit height!
 		if hover:
-			new_origin.y += 2
+			new_origin.y += stack.get_unit_height() * 2
 		var new_transform = Transform(new_basis, new_origin)
 		
 		if not hover:

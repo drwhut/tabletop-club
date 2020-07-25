@@ -87,6 +87,12 @@ func get_pieces() -> Array:
 func get_pieces_count() -> int:
 	return _pieces.get_child_count()
 
+func get_total_height() -> float:
+	return get_unit_height() * get_pieces_count()
+
+func get_unit_height() -> float:
+	return _collision_unit_height
+
 func is_piece_flipped(piece: StackPieceInstance) -> bool:
 	return transform.basis.y.dot(piece.transform.basis.y) < 0
 
@@ -175,11 +181,6 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: Shape, pos: int, flip: 
 	piece.scale = piece_scale
 	
 	_set_piece_heights()
-	_adjust_collision_shape_translation()
-
-func _adjust_collision_shape_translation() -> void:
-	# Adjust the collision shape's translation to match up with the pieces.
-	_collision_shape.translation.y = _collision_unit_height * (_pieces.get_child_count() - 1) / 2
 
 func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	if pos < 0 or pos >= _pieces.get_child_count():
@@ -196,13 +197,13 @@ func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 		push_error("Stack has an unsupported collision shape!")
 		return null
 	
-	_adjust_collision_shape_translation()
 	_set_piece_heights()
 	
 	return piece
 
 func _set_piece_heights() -> void:
+	var height = _collision_unit_height * _pieces.get_child_count()
 	var i = 0
 	for piece in _pieces.get_children():
-		piece.transform.origin.y = _collision_unit_height * i
+		piece.transform.origin.y = (_collision_unit_height * (i + 0.5)) - (height / 2)
 		i += 1
