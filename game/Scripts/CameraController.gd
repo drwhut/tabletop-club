@@ -31,7 +31,7 @@ signal stopped_hovering()
 onready var _camera = $Camera
 
 const GRABBING_SLOW_TIME = 0.25
-const HOVER_Y_LEVEL = 4.0
+const HOVER_Y_LEVEL = 6.0
 const MOVEMENT_ACCEL = 1.0
 const MOVEMENT_DECEL = 3.0
 const MOVEMENT_MAX_SPEED = 30.0
