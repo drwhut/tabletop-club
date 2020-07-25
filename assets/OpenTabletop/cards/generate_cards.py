@@ -8,6 +8,7 @@ FONT_SIZE_LARGE = 100
 FONT_SIZE_SMALL = 50
 MARGIN = 10
 SIZE = (250, 350)
+VERTICAL_CORRECTION = -15
 
 LONG_NAMES = {
     "A": "Ace",
@@ -48,7 +49,7 @@ def create_card_image(number, suit, large_font, small_font):
     draw = ImageDraw.Draw(image)
 
     size = draw.textsize(suit, font=large_font)
-    draw.text(((SIZE[0]-size[0])/2, (SIZE[1]-size[1])/2), suit, fill=color, font=large_font)
+    draw.text(((SIZE[0]-size[0])/2, (SIZE[1]-size[1])/2 + VERTICAL_CORRECTION), suit, fill=color, font=large_font)
 
     image = ImageOps.pad(image, (SIZE[0]*2, SIZE[1]), color="#ff0000ff", centering=(0, 0.5))
 
@@ -74,7 +75,7 @@ for suit in ["♠", "♥", "♦", "♣"]:
             number = "Q"
         elif number == "13":
             number = "K"
-        
+
         create_card_image(number, suit, large_font, small_font)
 
 print("]")
