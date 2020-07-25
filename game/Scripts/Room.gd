@@ -252,7 +252,7 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 		return
 	
 	# If there are no children in the first stack, don't bother doing anything.
-	if stack1.get_pieces_count() == 0:
+	if stack1.get_piece_count() == 0:
 		return
 	
 	# We need to determine in which order to add the children of the first stack
@@ -272,7 +272,7 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 	if shape is BoxShape:
 		new_shape = BoxShape.new()
 		new_shape.extents = shape.extents
-		new_shape.extents.y /= stack1.get_pieces_count()
+		new_shape.extents.y /= stack1.get_piece_count()
 	else:
 		push_error("Stack " + stack1_name + " has an unsupported collision shape!")
 	
