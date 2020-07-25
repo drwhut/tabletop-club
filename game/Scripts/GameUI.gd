@@ -179,6 +179,7 @@ func _create_card_half_texture(card: Card, front_face: bool) -> CardTextureRect:
 	
 	var texture_rect = CardTextureRect.new()
 	texture_rect.card = card
+	texture_rect.expand = true
 	texture_rect.front_face = front_face
 	texture_rect.rect_min_size = card_min_size
 	texture_rect.texture = texture
