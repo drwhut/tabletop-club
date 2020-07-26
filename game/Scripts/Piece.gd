@@ -216,6 +216,7 @@ master func stop_hovering() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		_srv_hover_player = 0
 		custom_integrator = false
+		sleeping = false
 		
 		set_angular_lock(false)
 
@@ -237,8 +238,8 @@ func _physics_process(delta):
 	# If we are the server ...
 	if get_tree().is_network_server():
 		
-		# ... and the piece is moving ...
-		if linear_velocity.length_squared() > 0 or angular_velocity.length_squared() > 0:
+		# ... and the piece isn't sleeping ...
+		if not sleeping:
 		
 			# ... then send this piece's physics state to the clients.
 			rpc_unreliable("set_latest_server_physics_state", _last_server_state)
