@@ -28,10 +28,17 @@ signal stack_requested(piece1, piece2)
 const DISTANCE_THRESHOLD = 1.0
 const DOT_STACK_THRESHOLD = 0.9
 
+func matches(body: Piece) -> bool:
+	if body.piece_entry.scene_path == piece_entry.scene_path:
+		if body.piece_entry.scale == piece_entry.scale:
+			return true
+	
+	return false
+
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
 
-func _can_stack(body) -> bool:
+func _can_stack(body: Spatial) -> bool:
 	var me = transform
 	var you = body.transform
 	
@@ -62,6 +69,5 @@ func _on_body_entered(body) -> void:
 			# of the same shape.
 			if body is Piece:
 				if not (srv_is_hovering() or body.srv_is_hovering()):
-					if body.piece_entry.scene_path == piece_entry.scene_path:
-						if _can_stack(body):
-							emit_signal("stack_requested", self, body)
+					if matches(body) and _can_stack(body):
+						emit_signal("stack_requested", self, body)

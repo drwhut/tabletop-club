@@ -179,7 +179,7 @@ puppet func add_stack_empty(name: String, transform: Transform,
 	
 	_pieces.add_child(stack)
 	
-	# Attach the signal for when it wants to stack with another piece.
+	stack.connect("collect_all_requested", self, "_on_stack_collect_all_requested")
 	stack.connect("stack_requested", self, "_on_stack_requested")
 	
 	return stack
@@ -457,6 +457,27 @@ remotesync func request_pop_stack_accepted(piece_name: String) -> void:
 	# stack!
 	request_hover_piece_accepted(piece_name)
 
+master func request_stack_collect_all(stack_name: String) -> void:
+	var stack = _pieces.get_node(stack_name)
+	
+	if not stack:
+		push_error("Stack " + stack_name + " does not exist!")
+		return
+	
+	if not stack is Stack:
+		push_error("Object " + stack_name + " is not a stack!")
+		return
+	
+	for piece in get_pieces():
+		if piece is StackablePiece and piece.name != stack_name:
+			if stack.matches(piece):
+				if piece is Stack:
+					rpc("add_stack_to_stack", piece.name, stack_name)
+				else:
+					if piece is Card and piece.srv_is_placed_aside():
+						continue
+					rpc("add_piece_to_stack", piece.name, stack_name, Stack.STACK_TOP)
+
 puppet func set_state(state: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -645,6 +666,9 @@ func _get_stack_piece_shape(piece: StackablePiece) -> CollisionShape:
 		return null
 	
 	return piece_collision_shape
+
+func _on_stack_collect_all_requested(stack: Stack) -> void:
+	rpc_id(1, "request_stack_collect_all", stack.name)
 
 func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void:
 	if get_tree().is_network_server():
