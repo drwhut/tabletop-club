@@ -37,7 +37,6 @@ var _candidate_card: CardTextureRect = null
 var _grabbed_card_from_hand: CardTextureRect = null
 var _hand_highlight: ColorRect = ColorRect.new()
 var _holding_card = false
-var _last_context_menu_piece: Piece = null
 var _mouse_in_hand = false
 var _mouse_over_cards = []
 
@@ -189,6 +188,9 @@ func _create_card_half_texture(card: Card, front_face: bool) -> CardTextureRect:
 	
 	return texture_rect
 
+func _hide_context_menu():
+	_piece_context_menu.visible = false
+
 func _on_card_texture_clicked(card_texture: CardTextureRect) -> void:
 	# We might get multiple signals if the cards overlap each other.
 	if (not _grabbed_card_from_hand) or (card_texture.get_index() > _grabbed_card_from_hand.get_index()):
@@ -249,20 +251,15 @@ func _on_Room_piece_context_menu_requested(piece: Piece):
 	
 	piece.add_context_to_control(_piece_context_menu_container)
 	
+	# If a button in the context menu is clicked, stop showing the context menu.
+	for child in _piece_context_menu_container.get_children():
+		if child is Button:
+			child.connect("pressed", self, "_hide_context_menu")
+	
 	# We've connected a signal elsewhere that will change the size of the popup
 	# to match the container.
 	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
 	_piece_context_menu.popup()
-	
-	_last_context_menu_piece = piece
-
-func _on_Room_piece_removed(piece):
-	if _last_context_menu_piece:
-		if piece == _last_context_menu_piece:
-			# If a piece got removed, but the pieces context menu was showing,
-			# then stop showing the context menu.
-			_piece_context_menu.visible = false
-			_last_context_menu_piece = null
 
 func _on_Room_started_hovering_card(card):
 	_holding_card = true

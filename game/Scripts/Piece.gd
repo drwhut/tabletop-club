@@ -23,8 +23,6 @@ extends RigidBody
 
 class_name Piece
 
-signal removing_self(piece)
-
 const ANGULAR_FORCE_SCALAR = 20.0
 const HELL_HEIGHT = -50.0
 const LINEAR_FORCE_SCALAR  = 20.0
@@ -100,7 +98,6 @@ remotesync func remove_self() -> void:
 		return
 	
 	if get_parent():
-		emit_signal("removing_self", self)
 		get_parent().remove_child(self)
 		queue_free()
 

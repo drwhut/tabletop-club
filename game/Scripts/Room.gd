@@ -22,7 +22,6 @@
 extends Spatial
 
 signal piece_context_menu_requested(piece)
-signal piece_removed(piece)
 signal started_hovering_card(card)
 signal stopped_hovering_card(card)
 
@@ -60,8 +59,6 @@ remotesync func add_piece(name: String, transform: Transform,
 	_scale_piece(piece, piece_entry["scale"])
 	
 	_pieces.add_child(piece)
-	
-	piece.connect("removing_self", self, "_on_piece_removed")
 	
 	# If it is a stackable piece, make sure we attach the signal it emits when
 	# it wants to create a stack.
@@ -181,8 +178,6 @@ puppet func add_stack_empty(name: String, transform: Transform,
 	stack.transform = transform
 	
 	_pieces.add_child(stack)
-	
-	stack.connect("removing_self", self, "_on_piece_removed")
 	
 	# Attach the signal for when it wants to stack with another piece.
 	stack.connect("stack_requested", self, "_on_stack_requested")
@@ -624,9 +619,6 @@ func _get_stack_piece_shape(piece: StackablePiece) -> CollisionShape:
 		return null
 	
 	return piece_collision_shape
-
-func _on_piece_removed(piece: Piece) -> void:
-	emit_signal("piece_removed", piece)
 
 func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void:
 	if get_tree().is_network_server():
