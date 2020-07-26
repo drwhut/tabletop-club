@@ -51,6 +51,17 @@ var _last_velocity = Vector3()
 var _new_velocity = Vector3()
 
 func add_context_to_control(control: Control) -> void:
+	if mode == RigidBody.MODE_RIGID:
+		var lock_button = Button.new()
+		lock_button.text = "Lock"
+		lock_button.connect("pressed", self, "_on_lock_pressed")
+		control.add_child(lock_button)
+	elif mode == RigidBody.MODE_STATIC:
+		var unlock_button = Button.new()
+		unlock_button.text = "Unlock"
+		unlock_button.connect("pressed", self, "_on_unlock_pressed")
+		control.add_child(unlock_button)
+	
 	var delete_button = Button.new()
 	delete_button.text = "Delete"
 	delete_button.connect("pressed", self, "_on_delete_pressed")
@@ -73,6 +84,17 @@ func is_being_shaked() -> bool:
 		return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD
 	return false
 
+master func lock() -> void:
+	mode = RigidBody.MODE_STATIC
+	rpc("lock_client", transform)
+
+puppet func lock_client(locked_transform: Transform) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	mode = RigidBody.MODE_STATIC
+	transform = locked_transform
+
 remotesync func remove_self() -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -82,8 +104,14 @@ remotesync func remove_self() -> void:
 		get_parent().remove_child(self)
 		queue_free()
 
+master func request_lock() -> void:
+	lock()
+
 master func request_remove_self() -> void:
 	rpc("remove_self")
+
+master func request_unlock() -> void:
+	rpc("unlock")
 
 master func reset_orientation() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
@@ -119,7 +147,7 @@ func srv_is_hovering() -> bool:
 	return _srv_hover_player > 0
 
 func srv_start_hovering(player_id: int) -> bool:
-	if not srv_is_hovering():
+	if not srv_is_hovering() and mode == RigidBody.MODE_RIGID:
 		_srv_hover_player = player_id
 		custom_integrator = true
 		
@@ -194,6 +222,12 @@ master func stop_hovering() -> void:
 		
 		set_angular_lock(false)
 
+remotesync func unlock() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	mode = RigidBody.MODE_RIGID
+
 func _ready():
 	if not get_tree().is_network_server():
 		# The clients are at the mercy of the server.
@@ -264,6 +298,12 @@ func _integrate_forces(state):
 
 func _on_delete_pressed() -> void:
 	rpc_id(1, "request_remove_self")
+
+func _on_lock_pressed() -> void:
+	rpc_id(1, "request_lock")
+
+func _on_unlock_pressed() -> void:
+	rpc_id(1, "request_unlock")
 
 func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Force the piece to the given location.
