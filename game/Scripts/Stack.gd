@@ -51,6 +51,16 @@ func add_context_to_control(control: Control) -> void:
 	collect_all_button.connect("pressed", self, "_on_collect_all_pressed")
 	control.add_child(collect_all_button)
 	
+	var orient_up_button = Button.new()
+	orient_up_button.text = "Orient all up"
+	orient_up_button.connect("pressed", self, "_on_orient_up_pressed")
+	control.add_child(orient_up_button)
+	
+	var orient_down_button = Button.new()
+	orient_down_button.text = "Orient all down"
+	orient_down_button.connect("pressed", self, "_on_orient_down_pressed")
+	control.add_child(orient_down_button)
+	
 	.add_context_to_control(control)
 
 func add_piece(piece: StackPieceInstance, shape: CollisionShape,
@@ -110,6 +120,16 @@ func get_unit_height() -> float:
 func is_piece_flipped(piece: StackPieceInstance) -> bool:
 	return transform.basis.y.dot(piece.transform.basis.y) < 0
 
+remotesync func orient_pieces(up: bool) -> void:
+	for piece in get_pieces():
+		var current_basis = piece.transform.basis
+		
+		if up and current_basis.y.dot(Vector3.UP) < 0:
+			piece.transform.basis = current_basis.rotated(Vector3.BACK, PI)
+		
+		elif not up and current_basis.y.dot(Vector3.UP) > 0:
+			piece.transform.basis = current_basis.rotated(Vector3.BACK, PI)
+
 func pop_piece(from: int = STACK_AUTO) -> StackPieceInstance:
 	if _pieces.get_child_count() == 0:
 		return null
@@ -149,6 +169,13 @@ puppet func remove_piece_by_name(name: String) -> void:
 		return
 	
 	remove_piece(piece)
+
+master func request_orient_pieces(up: bool) -> void:
+	# If the stack is upside down, orient the opposite direction.
+	if transform.basis.y.dot(Vector3.UP) < 0:
+		up = !up
+	
+	rpc("orient_pieces", up)
 
 func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	pos: int, flip: int) -> void:
@@ -207,6 +234,12 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 
 func _on_collect_all_pressed() -> void:
 	emit_signal("collect_all_requested", self)
+
+func _on_orient_down_pressed() -> void:
+	rpc_id(1, "request_orient_pieces", false)
+
+func _on_orient_up_pressed() -> void:
+	rpc_id(1, "request_orient_pieces", true)
 
 func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	if pos < 0 or pos >= _pieces.get_child_count():
