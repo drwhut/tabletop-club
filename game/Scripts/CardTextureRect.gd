@@ -39,7 +39,7 @@ func _draw():
 	
 	var src_rect = Rect2(0, 0, texture.get_width() / 2, texture.get_height())
 	if not front_face:
-		src_rect.position.x += texture.get_width()
+		src_rect.position.x += texture.get_width() / 2
 	
 	draw_texture_rect_region(texture, Rect2(Vector2.ZERO, rect_size), src_rect)
 

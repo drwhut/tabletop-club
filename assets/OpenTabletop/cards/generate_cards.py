@@ -3,11 +3,12 @@
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
+BACK_MARGIN = 10
 FONT = "NotoSerifCJKjp-Black.otf"
 FONT_SIZE_LARGE = 100
 FONT_SIZE_SMALL = 50
-MARGIN = 10
 SIZE = (250, 350)
+TEXT_MARGIN = 10
 VERTICAL_CORRECTION = -15
 
 LONG_NAMES = {
@@ -41,7 +42,7 @@ def create_card_image(number, suit, large_font, small_font):
     if suit == "♥" or suit == "♦":
         color = "#ff0000ff"
 
-    draw.text((MARGIN, MARGIN), number + "\n" + suit, align="center", fill=color, font=small_font)
+    draw.text((TEXT_MARGIN, TEXT_MARGIN), number + "\n" + suit, align="center", fill=color, font=small_font)
 
     flipped = ImageOps.flip(image)
     flipped = ImageOps.mirror(flipped)
@@ -51,7 +52,10 @@ def create_card_image(number, suit, large_font, small_font):
     size = draw.textsize(suit, font=large_font)
     draw.text(((SIZE[0]-size[0])/2, (SIZE[1]-size[1])/2 + VERTICAL_CORRECTION), suit, fill=color, font=large_font)
 
-    image = ImageOps.pad(image, (SIZE[0]*2, SIZE[1]), color="#ff0000ff", centering=(0, 0.5))
+    image = ImageOps.pad(image, (SIZE[0]*2, SIZE[1]), color="#ffffffff", centering=(0, 0.5))
+    draw = ImageDraw.Draw(image)
+
+    draw.rectangle([(SIZE[0] + BACK_MARGIN, BACK_MARGIN), (SIZE[0] * 2 - BACK_MARGIN, SIZE[1] - BACK_MARGIN)], fill="#ff0000ff")
 
     file_name = LONG_NAMES[number] + " of " + LONG_NAMES[suit] + ".png"
     print("    \"" + file_name + "\",")
