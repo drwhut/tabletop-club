@@ -111,6 +111,8 @@ func get_piece_count() -> int:
 func get_total_height() -> float:
 	if _collision_shape.shape is BoxShape:
 		return _collision_shape.shape.extents.y * 2
+	elif _collision_shape.shape is CylinderShape:
+		return _collision_shape.shape.height
 	
 	return 0.0
 
@@ -188,23 +190,35 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 		
 		_mesh_unit_height = piece.scale.y
 		
+		var new_shape: Shape = null
+		
 		if shape.shape is BoxShape:
-			var new_shape = BoxShape.new()
+			new_shape = BoxShape.new()
 			new_shape.extents = shape.shape.extents
 			new_shape.extents.y *= shape.scale.y
-			_collision_unit_height = new_shape.extents.y * 2
 			
-			_collision_shape.shape = new_shape
-			_collision_shape.scale = Vector3(shape.scale.x, 1, shape.scale.z)
+			_collision_unit_height = new_shape.extents.y * 2
+		elif shape.shape is CylinderShape:
+			new_shape = CylinderShape.new()
+			new_shape.height = shape.shape.height * shape.scale.y
+			new_shape.radius = shape.shape.radius
+			
+			_collision_unit_height = new_shape.height
 		else:
 			push_error("Piece " + piece.name + " has an unsupported collision shape!")
+		
+		if new_shape:
+			_collision_shape.shape = new_shape
+			_collision_shape.scale = Vector3(shape.scale.x, 1, shape.scale.z)
 	else:
 		var current_height = get_total_height()
-		var new_height = _mesh_unit_height * (_pieces.get_child_count() + 1)
+		var new_height = _mesh_unit_height * _pieces.get_child_count()
 		var extra_height = max(new_height - current_height, 0)
 		
 		if _collision_shape.shape is BoxShape:
 			_collision_shape.shape.extents.y += (extra_height / 2)
+		elif _collision_shape.shape is CylinderShape:
+			_collision_shape.shape.height += extra_height
 	
 	var n = _pieces.get_child_count()
 	var is_flipped = false
@@ -256,6 +270,8 @@ func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	
 	if _collision_shape.shape is BoxShape:
 		_collision_shape.shape.extents.y -= (height_lost / 2)
+	elif _collision_shape.shape is CylinderShape:
+		_collision_shape.shape.height -= height_lost
 	else:
 		push_error("Stack has an unsupported collision shape!")
 		return null
