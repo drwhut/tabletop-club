@@ -23,6 +23,25 @@ extends Stack
 
 class_name ShuffleableStack
 
+func add_context_to_control(control: Control) -> void:
+	var shuffle_button = Button.new()
+	shuffle_button.text = "Shuffle"
+	shuffle_button.connect("pressed", self, "_on_shuffle_pressed")
+	control.add_child(shuffle_button)
+	
+	.add_context_to_control(control)
+
+master func request_shuffle() -> void:
+	var names = []
+	
+	for piece in _pieces.get_children():
+		names.push_back(piece.name)
+	
+	randomize()
+	names.shuffle()
+	
+	rpc("set_piece_order", names)
+
 remotesync func set_piece_order(order: Array) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -43,13 +62,7 @@ func _physics_process(delta):
 	# If the stack is being shaken, then get the server to send a list of
 	# shuffled names to each client (including itself).
 	if get_tree().is_network_server() and is_being_shaked():
-		
-		var names = []
-		
-		for piece in _pieces.get_children():
-			names.push_back(piece.name)
-		
-		randomize()
-		names.shuffle()
-		
-		rpc("set_piece_order", names)
+		request_shuffle()
+
+func _on_shuffle_pressed() -> void:
+	rpc_id(1, "request_shuffle")
