@@ -517,7 +517,7 @@ puppet func set_state(state: Dictionary) -> void:
 			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
 			
 			if piece_meta["is_locked"]:
-				var piece: Piece = _pieces.get_child(piece_name)
+				var piece: Piece = _pieces.get_node(piece_name)
 				piece.lock_client(piece_meta["transform"])
 	
 	if state.has("stacks"):

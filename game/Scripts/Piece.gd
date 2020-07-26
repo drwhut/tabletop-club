@@ -49,12 +49,12 @@ var _last_velocity = Vector3()
 var _new_velocity = Vector3()
 
 func add_context_to_control(control: Control) -> void:
-	if mode == RigidBody.MODE_RIGID:
+	if mode == MODE_RIGID:
 		var lock_button = Button.new()
 		lock_button.text = "Lock"
 		lock_button.connect("pressed", self, "_on_lock_pressed")
 		control.add_child(lock_button)
-	elif mode == RigidBody.MODE_STATIC:
+	elif mode == MODE_STATIC:
 		var unlock_button = Button.new()
 		unlock_button.text = "Unlock"
 		unlock_button.connect("pressed", self, "_on_unlock_pressed")
@@ -83,14 +83,14 @@ func is_being_shaked() -> bool:
 	return false
 
 master func lock() -> void:
-	mode = RigidBody.MODE_STATIC
+	mode = MODE_STATIC
 	rpc("lock_client", transform)
 
 puppet func lock_client(locked_transform: Transform) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	mode = RigidBody.MODE_STATIC
+	mode = MODE_STATIC
 	transform = locked_transform
 
 remotesync func remove_self() -> void:
@@ -144,7 +144,7 @@ func srv_is_hovering() -> bool:
 	return _srv_hover_player > 0
 
 func srv_start_hovering(player_id: int) -> bool:
-	if not srv_is_hovering() and mode == RigidBody.MODE_RIGID:
+	if not srv_is_hovering() and mode == MODE_RIGID:
 		_srv_hover_player = player_id
 		custom_integrator = true
 		
@@ -223,7 +223,7 @@ remotesync func unlock() -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	mode = RigidBody.MODE_RIGID
+	mode = MODE_RIGID
 
 func _ready():
 	if not get_tree().is_network_server():
