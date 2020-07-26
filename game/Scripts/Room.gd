@@ -312,6 +312,7 @@ func get_state() -> Dictionary:
 	for piece in _pieces.get_children():
 		if piece is Stack:
 			var stack_meta = {
+				"is_locked": piece.mode == RigidBody.MODE_STATIC,
 				"is_shuffleable": piece is ShuffleableStack,
 				"transform": piece.transform
 			}
@@ -330,6 +331,7 @@ func get_state() -> Dictionary:
 			stack_dict[piece.name] = stack_meta
 		else:
 			var piece_meta = {
+				"is_locked": piece.mode == RigidBody.MODE_STATIC,
 				"piece_entry": piece.piece_entry,
 				"transform": piece.transform
 			}
@@ -467,12 +469,12 @@ puppet func set_state(state: Dictionary) -> void:
 		for piece_name in state["pieces"]:
 			var piece_meta = state["pieces"][piece_name]
 			
-			if not piece_meta.has("transform"):
-				push_error("Piece " + piece_name + " in new state has no transform!")
+			if not piece_meta.has("is_locked"):
+				push_error("Piece " + piece_name + " in new state has no is locked value!")
 				return
 			
-			if not piece_meta["transform"] is Transform:
-				push_error("Piece " + piece_name + " transform is not a transform!")
+			if not piece_meta["is_locked"] is bool:
+				push_error("Piece " + piece_name + " is locked value is not a boolean!")
 				return
 			
 			if not piece_meta.has("piece_entry"):
@@ -483,11 +485,31 @@ puppet func set_state(state: Dictionary) -> void:
 				push_error("Piece " + piece_name + " entry is not a dictionary!")
 				return
 			
+			if not piece_meta.has("transform"):
+				push_error("Piece " + piece_name + " in new state has no transform!")
+				return
+			
+			if not piece_meta["transform"] is Transform:
+				push_error("Piece " + piece_name + " transform is not a transform!")
+				return
+			
 			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
+			
+			if piece_meta["is_locked"]:
+				var piece: Piece = _pieces.get_child(piece_name)
+				piece.lock_client(piece_meta["transform"])
 	
 	if state.has("stacks"):
 		for stack_name in state["stacks"]:
 			var stack_meta = state["stacks"][stack_name]
+			
+			if not stack_meta.has("is_locked"):
+				push_error("Stack " + stack_name + " in new state has no is locked value!")
+				return
+			
+			if not stack_meta["is_locked"] is bool:
+				push_error("Stack " + stack_name + " is locked value is not a boolean!")
+				return
 			
 			if not stack_meta.has("is_shuffleable"):
 				push_error("Stack " + stack_name + " in new state has no is shuffleable value!")
@@ -515,6 +537,10 @@ puppet func set_state(state: Dictionary) -> void:
 			
 			var stack = add_stack_empty(stack_name, stack_meta["transform"],
 				stack_meta["is_shuffleable"])
+			
+			if stack_meta["is_locked"]:
+				var stack_node: Stack = _pieces.get_node(stack_name)
+				stack_node.lock_client(stack_meta["transform"])
 			
 			for stack_piece_meta in stack_meta["pieces"]:
 				
