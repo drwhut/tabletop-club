@@ -457,7 +457,7 @@ remotesync func request_pop_stack_accepted(piece_name: String) -> void:
 	# stack!
 	request_hover_piece_accepted(piece_name)
 
-master func request_stack_collect_all(stack_name: String) -> void:
+master func request_stack_collect_all(stack_name: String, collect_stacks: bool) -> void:
 	var stack = _pieces.get_node(stack_name)
 	
 	if not stack:
@@ -472,7 +472,10 @@ master func request_stack_collect_all(stack_name: String) -> void:
 		if piece is StackablePiece and piece.name != stack_name:
 			if stack.matches(piece):
 				if piece is Stack:
-					rpc("add_stack_to_stack", piece.name, stack_name)
+					if collect_stacks:
+						rpc("add_stack_to_stack", piece.name, stack_name)
+					else:
+						continue
 				else:
 					if piece is Card and piece.srv_is_placed_aside():
 						continue
@@ -667,8 +670,8 @@ func _get_stack_piece_shape(piece: StackablePiece) -> CollisionShape:
 	
 	return piece_collision_shape
 
-func _on_stack_collect_all_requested(stack: Stack) -> void:
-	rpc_id(1, "request_stack_collect_all", stack.name)
+func _on_stack_collect_all_requested(stack: Stack, collect_stacks: bool) -> void:
+	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
 
 func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void:
 	if get_tree().is_network_server():

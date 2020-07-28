@@ -23,7 +23,7 @@ extends StackablePiece
 
 class_name Stack
 
-signal collect_all_requested(stack)
+signal collect_all_requested(stack, collect_stacks)
 
 enum {
 	STACK_AUTO,
@@ -46,6 +46,11 @@ var _collision_unit_height = 0
 var _mesh_unit_height = 0
 
 func add_context_to_control(control: Control) -> void:
+	var collect_individuals_button = Button.new()
+	collect_individuals_button.text = "Collect individuals"
+	collect_individuals_button.connect("pressed", self, "_on_collect_individuals_pressed")
+	control.add_child(collect_individuals_button)
+	
 	var collect_all_button = Button.new()
 	collect_all_button.text = "Collect all"
 	collect_all_button.connect("pressed", self, "_on_collect_all_pressed")
@@ -247,7 +252,10 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	_set_piece_heights()
 
 func _on_collect_all_pressed() -> void:
-	emit_signal("collect_all_requested", self)
+	emit_signal("collect_all_requested", self, true)
+
+func _on_collect_individuals_pressed() -> void:
+	emit_signal("collect_all_requested", self, false)
 
 func _on_orient_down_pressed() -> void:
 	rpc_id(1, "request_orient_pieces", false)
