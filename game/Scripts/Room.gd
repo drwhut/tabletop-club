@@ -268,6 +268,10 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 		new_shape = BoxShape.new()
 		new_shape.extents = shape.extents
 		new_shape.extents.y /= stack1.get_piece_count()
+	elif shape is CylinderShape:
+		new_shape = CylinderShape.new()
+		new_shape.radius = shape.radius
+		new_shape.height = shape.height / stack1.get_piece_count()
 	else:
 		push_error("Stack " + stack1_name + " has an unsupported collision shape!")
 	
