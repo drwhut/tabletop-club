@@ -43,14 +43,13 @@ const ZOOM_AMOUNT = 2.0
 const ZOOM_DISTANCE_MIN = 2.0
 const ZOOM_DISTANCE_MAX = 80.0
 
-var _grab_piece_screen_position = null
 var _grabbing_time = 0.0
+var _is_grabbing_piece = false
 var _is_hovering_piece = false
 var _last_non_zero_movement_dir = Vector3()
-var _left_click = false
 var _movement_dir = Vector3()
 var _movement_speed = 0.0
-var _piece_grabbing: Piece = null
+var _piece_mouse_is_over: Piece = null
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
 
@@ -81,7 +80,7 @@ func _ready():
 	_rotation = Vector2(rotation.y, rotation.x)
 
 func _process(delta):
-	if _piece_grabbing:
+	if _is_grabbing_piece:
 		_grabbing_time += delta
 		
 		# Have we been grabbing this piece for a long time?
@@ -98,27 +97,20 @@ func _physics_process(delta):
 	_process_input(delta)
 	_process_movement(delta)
 	
-	if _grab_piece_screen_position:
-		
-		# Perform a raycast out into the world from the camera.
-		var from = _camera.project_ray_origin(_grab_piece_screen_position)
-		var to = from + _camera.project_ray_normal(_grab_piece_screen_position) * RAY_LENGTH
-		
-		var space_state = get_world().direct_space_state
-		var result = space_state.intersect_ray(from, to)
-		
-		# Was the thing that collided a game piece? If so, we should either
-		# grab it or bring up its context menu.
-		if result.has("collider"):
-			if result.collider is Piece:
-				if _left_click:
-					_piece_grabbing = result.collider
-					_grabbing_time = 0.0
-				else:
-					emit_signal("piece_context_menu_requested", result.collider)
-		
-		# Set back to null so we don't do the same calculation the next frame.
-		_grab_piece_screen_position = null
+	# Perform a raycast out into the world from the camera.
+	var mouse_pos = get_viewport().get_mouse_position()
+	var from = _camera.project_ray_origin(mouse_pos)
+	var to = from + _camera.project_ray_normal(mouse_pos) * RAY_LENGTH
+	
+	var space_state = get_world().direct_space_state
+	var result = space_state.intersect_ray(from, to)
+	
+	_piece_mouse_is_over = null
+	
+	# Was the thing that collided a game piece?
+	if result.has("collider"):
+		if result.collider is Piece:
+			_piece_mouse_is_over = result.collider
 
 func _process_input(delta):
 	
@@ -180,22 +172,23 @@ func _unhandled_input(event):
 		
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
-				_grab_piece_screen_position = event.position
-				_left_click = true
+				_is_grabbing_piece = true
+				_grabbing_time = 0.0
 			else:
-				_piece_grabbing = null
+				_is_grabbing_piece = false
 				
 				if _is_hovering_piece:
 					emit_signal("stopped_hovering")
 					_is_hovering_piece = false
 		
 		elif event.button_index == BUTTON_RIGHT:
+			# Only bring up the context menu if the mouse didn't move between
+			# the press and the release of the RMB.
 			if event.is_pressed():
 				_right_click_pos = event.position
 			else:
-				if event.position == _right_click_pos:
-					_grab_piece_screen_position = event.position
-					_left_click = false
+				if _piece_mouse_is_over and event.position == _right_click_pos:
+					emit_signal("piece_context_menu_requested", _piece_mouse_is_over)
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
@@ -208,7 +201,7 @@ func _unhandled_input(event):
 				offset = -ZOOM_AMOUNT
 			else:
 				offset = ZOOM_AMOUNT
-				
+			
 			var distance = _camera.translation.z
 			
 			if distance + offset > ZOOM_DISTANCE_MAX:
@@ -245,13 +238,13 @@ func _unhandled_input(event):
 			get_tree().set_input_as_handled()
 
 func _start_hovering_grabbed_piece(fast: bool) -> void:
-	if _piece_grabbing:
-		emit_signal("started_hovering", _piece_grabbing, fast)
-		_piece_grabbing = null
+	if _piece_mouse_is_over and _is_grabbing_piece:
+		emit_signal("started_hovering", _piece_mouse_is_over, fast)
+		_is_grabbing_piece = false
 
 func _start_moving() -> bool:
 	# If we were grabbing a piece while moving...
-	if _piece_grabbing:
+	if _is_grabbing_piece:
 		
 		# ... then send out a signal to start hovering the piece fast.
 		_start_hovering_grabbed_piece(true)
