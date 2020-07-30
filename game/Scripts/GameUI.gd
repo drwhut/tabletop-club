@@ -283,3 +283,4 @@ func _on_VBoxContainer_item_rect_changed():
 		size.x -= _piece_context_menu_container.margin_right
 		size.y -= _piece_context_menu_container.margin_bottom
 		_piece_context_menu.rect_min_size = size
+		_piece_context_menu.rect_size = size
