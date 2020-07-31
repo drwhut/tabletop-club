@@ -28,8 +28,6 @@ signal stopped_hovering_card(card)
 onready var _camera_controller = $CameraController
 onready var _pieces = $Pieces
 
-var _is_hovering_selected = false
-var _selected_pieces = []
 var _srv_next_piece_name = 0
 
 remotesync func add_piece(name: String, transform: Transform,
@@ -394,13 +392,8 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 		push_error("Object " + piece_name + " is not a piece!")
 		return
 	
-	_camera_controller.set_is_hovering_piece(true)
-	
-	if not _selected_pieces.has(piece):
-		_selected_pieces.append(piece)
-		piece.set_appear_selected(true)
-	
-	_is_hovering_selected = true
+	_camera_controller.append_selected_pieces([piece])
+	_camera_controller.set_is_hovering(true)
 	
 	# Immediately set the piece's hover position.
 	piece.rpc_unreliable_id(1, "set_hover_position", _camera_controller.get_hover_position())
@@ -684,8 +677,7 @@ func _get_stack_piece_shape(piece: StackablePiece) -> CollisionShape:
 	return piece_collision_shape
 
 func _on_piece_exiting_tree(piece: Piece) -> void:
-	if _selected_pieces.has(piece):
-		_selected_pieces.erase(piece)
+	_camera_controller.erase_selected_pieces(piece)
 
 func _on_stack_collect_all_requested(stack: Stack, collect_stacks: bool) -> void:
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
@@ -709,58 +701,19 @@ func _scale_piece(piece: Spatial, scale: Vector3) -> void:
 	for child in piece.get_children():
 		_scale_piece(child, scale)
 
-func _on_CameraController_flipped_pieces():
-	if _is_hovering_selected:
-		for piece in _selected_pieces:
-			piece.rpc_id(1, "flip_vertically")
+func _on_CameraController_hover_piece_requested(piece: Piece):
+	rpc_id(1, "request_hover_piece", piece.name)
 
-func _on_CameraController_new_hover_position(position: Vector3):
-	if _is_hovering_selected:
-		for piece in _selected_pieces:
-			piece.rpc_unreliable_id(1, "set_hover_position", position)
+func _on_CameraController_pieces_context_menu_requested(pieces: Array):
+	if pieces.size() == 1:
+		emit_signal("piece_context_menu_requested", pieces[0])
 
-func _on_CameraController_pieces_context_menu_requested():
-	if _selected_pieces.size() == 1:
-		emit_signal("piece_context_menu_requested", _selected_pieces[0])
+func _on_CameraController_pop_stack_requested(stack: Stack):
+	rpc_id(1, "request_pop_stack", stack.name)
 
-func _on_CameraController_pieces_selected(pieces: Array):
-	for piece in _selected_pieces:
-		piece.set_appear_selected(false)
-	
-	_selected_pieces = pieces
-	
-	for piece in _selected_pieces:
-		piece.set_appear_selected(true)
+func _on_CameraController_started_hovering_card(card: Card):
+	emit_signal("started_hovering_card", card)
 
-func _on_CameraController_reset_pieces():
-	if _is_hovering_selected:
-		for piece in _selected_pieces:
-			piece.rpc_id(1, "reset_orientation")
+func _on_CameraController_stopped_hovering_card(card: Card):
+	emit_signal("stopped_hovering_card", card)
 
-func _on_CameraController_started_hovering(fast: bool):
-	# NOTE: The server might not accept our request to hover a particular piece,
-	# so we'll clear the list of selected pieces, and add the pieces that are
-	# accepted back in to the list. For this reason, we'll need to make a copy
-	# of the list.
-	var selected = []
-	for piece in _selected_pieces:
-		piece.set_appear_selected(false)
-		selected.append(piece)
-		
-	_selected_pieces.clear()
-	
-	for piece in selected:
-		if selected.size() == 1 and piece is Stack and fast:
-			rpc_id(1, "request_pop_stack", piece.name)
-		else:
-			rpc_id(1, "request_hover_piece", piece.name)
-
-func _on_CameraController_stopped_hovering():
-	if _is_hovering_selected:
-		for piece in _selected_pieces:
-			if piece is Card:
-				emit_signal("stopped_hovering_card", piece)
-			
-			piece.rpc_id(1, "stop_hovering")
-		
-		_is_hovering_selected = false

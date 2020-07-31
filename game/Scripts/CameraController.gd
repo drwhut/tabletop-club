@@ -21,13 +21,11 @@
 
 extends Spatial
 
-signal flipped_pieces()
-signal new_hover_position(position)
-signal pieces_context_menu_requested()
-signal pieces_selected(pieces)
-signal reset_pieces()
-signal started_hovering(fast)
-signal stopped_hovering()
+signal hover_piece_requested(piece)
+signal pieces_context_menu_requested(pieces)
+signal pop_stack_requested(stack)
+signal started_hovering_card(card)
+signal stopped_hovering_card(card)
 
 onready var _camera = $Camera
 
@@ -45,34 +43,45 @@ const ZOOM_DISTANCE_MIN = 2.0
 const ZOOM_DISTANCE_MAX = 80.0
 
 var _grabbing_time = 0.0
-var _is_grabbing_piece = false
-var _is_hovering_piece = false
+var _is_grabbing_selected = false
+var _is_hovering_selected = false
 var _last_non_zero_movement_dir = Vector3()
 var _movement_dir = Vector3()
 var _movement_speed = 0.0
 var _piece_mouse_is_over: Piece = null
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
+var _selected_pieces = []
+
+func append_selected_pieces(pieces: Array) -> void:
+	for piece in pieces:
+		if piece is Piece and (not piece in _selected_pieces):
+			_selected_pieces.append(piece)
+			piece.set_appear_selected(true)
+
+func clear_selected_pieces() -> void:
+	for piece in _selected_pieces:
+		piece.set_appear_selected(false)
+	
+	_selected_pieces.clear()
+
+func erase_selected_pieces(piece: Piece) -> void:
+	if _selected_pieces.has(piece):
+		_selected_pieces.erase(piece)
+		piece.set_appear_selected(false)
 
 func get_hover_position() -> Vector3:
 	return _calculate_hover_position(get_viewport().get_mouse_position())
 
-func set_is_hovering_piece(is_hovering: bool) -> void:
-	_is_hovering_piece = is_hovering
+func get_selected_pieces() -> Array:
+	return _selected_pieces
 
-func _calculate_hover_position(mouse_position: Vector2) -> Vector3:
-	# Get vectors representing a raycast from the camera.
-	var from = _camera.project_ray_origin(mouse_position)
-	var to = from + _camera.project_ray_normal(mouse_position) * RAY_LENGTH
-	
-	# Figure out at which point along this line the piece should hover at,
-	# given we want it to hover at a particular Y-level.
-	var lambda = (HOVER_Y_LEVEL - from.y) / (to.y - from.y)
-	
-	var x = from.x + lambda * (to.x - from.x)
-	var z = from.z + lambda * (to.z - from.z)
-	
-	return Vector3(x, HOVER_Y_LEVEL, z)
+func set_is_hovering(is_hovering: bool) -> void:
+	_is_hovering_selected = is_hovering
+
+func set_selected_pieces(pieces: Array) -> void:
+	clear_selected_pieces()
+	append_selected_pieces(pieces)
 
 func _ready():
 	
@@ -81,18 +90,20 @@ func _ready():
 	_rotation = Vector2(rotation.y, rotation.x)
 
 func _process(delta):
-	if _is_grabbing_piece:
+	if _is_grabbing_selected:
 		_grabbing_time += delta
 		
 		# Have we been grabbing this piece for a long time?
 		if _grabbing_time > GRABBING_SLOW_TIME:
 			_start_hovering_grabbed_piece(false)
 	
-	if _is_hovering_piece:
+	if _is_hovering_selected:
 		if Input.is_action_just_pressed("game_flip"):
-			emit_signal("flipped_pieces")
+			for piece in _selected_pieces:
+				piece.rpc_id(1, "flip_vertically")
 		elif Input.is_action_just_pressed("game_reset"):
-			emit_signal("reset_pieces")
+			for piece in _selected_pieces:
+				piece.rpc_id(1, "reset_orientation")
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -174,30 +185,38 @@ func _unhandled_input(event):
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
 				if _piece_mouse_is_over:
-					emit_signal("pieces_selected", [_piece_mouse_is_over])
-					_is_grabbing_piece = true
-					_grabbing_time = 0.0
+					if event.control:
+						append_selected_pieces([_piece_mouse_is_over])
+					else:
+						set_selected_pieces([_piece_mouse_is_over])
+						_is_grabbing_selected = true
+						_grabbing_time = 0.0
 				else:
-					emit_signal("pieces_selected", [])
+					clear_selected_pieces()
 			else:
-				_is_grabbing_piece = false
+				_is_grabbing_selected = false
 				
-				if _is_hovering_piece:
-					emit_signal("stopped_hovering")
-					_is_hovering_piece = false
+				if _is_hovering_selected:
+					for piece in _selected_pieces:
+						piece.rpc_id(1, "stop_hovering")
+						
+						if piece is Card:
+							emit_signal("stopped_hovering_card", piece)
+					
+					_is_hovering_selected = false
 		
 		elif event.button_index == BUTTON_RIGHT:
 			# Only bring up the context menu if the mouse didn't move between
 			# the press and the release of the RMB.
 			if event.is_pressed():
 				if _piece_mouse_is_over:
-					emit_signal("pieces_selected", [_piece_mouse_is_over])
+					set_selected_pieces([_piece_mouse_is_over])
 				else:
-					emit_signal("pieces_selected", [])
+					clear_selected_pieces()
 				_right_click_pos = event.position
 			else:
 				if event.position == _right_click_pos:
-					emit_signal("pieces_context_menu_requested")
+					emit_signal("pieces_context_menu_requested", _selected_pieces)
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
@@ -246,24 +265,54 @@ func _unhandled_input(event):
 			
 			get_tree().set_input_as_handled()
 
+func _calculate_hover_position(mouse_position: Vector2) -> Vector3:
+	# Get vectors representing a raycast from the camera.
+	var from = _camera.project_ray_origin(mouse_position)
+	var to = from + _camera.project_ray_normal(mouse_position) * RAY_LENGTH
+	
+	# Figure out at which point along this line the piece should hover at,
+	# given we want it to hover at a particular Y-level.
+	var lambda = (HOVER_Y_LEVEL - from.y) / (to.y - from.y)
+	
+	var x = from.x + lambda * (to.x - from.x)
+	var z = from.z + lambda * (to.z - from.z)
+	
+	return Vector3(x, HOVER_Y_LEVEL, z)
+
 func _start_hovering_grabbed_piece(fast: bool) -> void:
-	if _is_grabbing_piece:
-		emit_signal("started_hovering", fast)
-		_is_grabbing_piece = false
+	if _is_grabbing_selected:
+		# NOTE: The server might not accept our request to hover a particular
+		# piece, so we'll clear the list of selected pieces, and add the pieces
+		# that are accepted back in to the list. For this reason, we'll need to
+		# make a copy of the list.
+		var selected = []
+		for piece in _selected_pieces:
+			selected.append(piece)
+		
+		clear_selected_pieces()
+		
+		for piece in selected:
+			if selected.size() == 1 and piece is Stack and fast:
+				emit_signal("pop_stack_requested", piece)
+			else:
+				emit_signal("hover_piece_requested", piece)
+		
+		_is_grabbing_selected = false
 
 func _start_moving() -> bool:
 	# If we were grabbing a piece while moving...
-	if _is_grabbing_piece:
+	if _is_grabbing_selected:
 		
 		# ... then send out a signal to start hovering the piece fast.
 		_start_hovering_grabbed_piece(true)
 		return true
 	
 	# Or if we were hovering a piece already...
-	if _is_hovering_piece:
+	if _is_hovering_selected:
 		
 		# ... then send out a signal with the new hover position.
-		emit_signal("new_hover_position", get_hover_position())
+		for piece in _selected_pieces:
+			piece.rpc_unreliable_id(1, "set_hover_position", get_hover_position())
 		return true
 	
 	return false

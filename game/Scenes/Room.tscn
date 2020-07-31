@@ -34,10 +34,8 @@ shadow_enabled = true
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
 
 [node name="Pieces" type="Spatial" parent="."]
-[connection signal="flipped_pieces" from="CameraController" to="." method="_on_CameraController_flipped_pieces"]
-[connection signal="new_hover_position" from="CameraController" to="." method="_on_CameraController_new_hover_position"]
+[connection signal="hover_piece_requested" from="CameraController" to="." method="_on_CameraController_hover_piece_requested"]
 [connection signal="pieces_context_menu_requested" from="CameraController" to="." method="_on_CameraController_pieces_context_menu_requested"]
-[connection signal="pieces_selected" from="CameraController" to="." method="_on_CameraController_pieces_selected"]
-[connection signal="reset_pieces" from="CameraController" to="." method="_on_CameraController_reset_pieces"]
-[connection signal="started_hovering" from="CameraController" to="." method="_on_CameraController_started_hovering"]
-[connection signal="stopped_hovering" from="CameraController" to="." method="_on_CameraController_stopped_hovering"]
+[connection signal="pop_stack_requested" from="CameraController" to="." method="_on_CameraController_pop_stack_requested"]
+[connection signal="started_hovering_card" from="CameraController" to="." method="_on_CameraController_started_hovering_card"]
+[connection signal="stopped_hovering_card" from="CameraController" to="." method="_on_CameraController_stopped_hovering_card"]
