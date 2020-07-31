@@ -184,6 +184,10 @@ master func request_orient_pieces(up: bool) -> void:
 	
 	rpc("orient_pieces", up)
 
+func set_appear_selected(selected: bool) -> void:
+	for piece in get_pieces():
+		piece.set_appear_selected(selected)
+
 func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	pos: int, flip: int) -> void:
 	

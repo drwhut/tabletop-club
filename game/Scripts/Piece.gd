@@ -23,10 +23,14 @@ extends RigidBody
 
 class_name Piece
 
+signal piece_exiting_tree(piece)
+
 const ANGULAR_FORCE_SCALAR = 20.0
 const HELL_HEIGHT = -50.0
 const LINEAR_FORCE_SCALAR  = 20.0
 const ROTATION_LOCK_AT = 0.001
+const SELECTED_COLOUR = Color.cyan
+const SELECTED_ENERGY = 0.25
 const SHAKING_THRESHOLD = 1000.0
 const SPAWN_HEIGHT = 2.0
 const TRANSFORM_LERP_ALPHA = 0.5
@@ -119,6 +123,15 @@ func set_angular_lock(lock: bool) -> void:
 	axis_lock_angular_x = lock
 	axis_lock_angular_y = lock
 	axis_lock_angular_z = lock
+
+func set_appear_selected(selected: bool) -> void:
+	if _mesh_instance:
+		var material = _mesh_instance.get_surface_material(0)
+		if material is SpatialMaterial:
+			material.emission = SELECTED_COLOUR
+			material.emission_energy = SELECTED_ENERGY
+			
+			material.emission_enabled = selected
 
 master func set_hover_position(hover_position: Vector3) -> void:
 	# Only allow the hover position to be set if the request is coming from the
@@ -230,6 +243,8 @@ func _ready():
 	if not get_tree().is_network_server():
 		# The clients are at the mercy of the server.
 		custom_integrator = true
+	
+	connect("tree_exiting", self, "_on_tree_exiting")
 
 func _physics_process(delta):
 	_last_velocity = _new_velocity
@@ -299,6 +314,9 @@ func _on_delete_pressed() -> void:
 
 func _on_lock_pressed() -> void:
 	rpc_id(1, "request_lock")
+
+func _on_tree_exiting() -> void:
+	emit_signal("piece_exiting_tree", self)
 
 func _on_unlock_pressed() -> void:
 	rpc_id(1, "request_unlock")

@@ -21,11 +21,12 @@
 
 extends Spatial
 
-signal flipped_piece()
+signal flipped_pieces()
 signal new_hover_position(position)
-signal piece_context_menu_requested(piece)
-signal reset_piece()
-signal started_hovering(piece, fast)
+signal pieces_context_menu_requested()
+signal pieces_selected(pieces)
+signal reset_pieces()
+signal started_hovering(fast)
 signal stopped_hovering()
 
 onready var _camera = $Camera
@@ -89,9 +90,9 @@ func _process(delta):
 	
 	if _is_hovering_piece:
 		if Input.is_action_just_pressed("game_flip"):
-			emit_signal("flipped_piece")
+			emit_signal("flipped_pieces")
 		elif Input.is_action_just_pressed("game_reset"):
-			emit_signal("reset_piece")
+			emit_signal("reset_pieces")
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -172,8 +173,12 @@ func _unhandled_input(event):
 		
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
-				_is_grabbing_piece = true
-				_grabbing_time = 0.0
+				if _piece_mouse_is_over:
+					emit_signal("pieces_selected", [_piece_mouse_is_over])
+					_is_grabbing_piece = true
+					_grabbing_time = 0.0
+				else:
+					emit_signal("pieces_selected", [])
 			else:
 				_is_grabbing_piece = false
 				
@@ -185,10 +190,14 @@ func _unhandled_input(event):
 			# Only bring up the context menu if the mouse didn't move between
 			# the press and the release of the RMB.
 			if event.is_pressed():
+				if _piece_mouse_is_over:
+					emit_signal("pieces_selected", [_piece_mouse_is_over])
+				else:
+					emit_signal("pieces_selected", [])
 				_right_click_pos = event.position
 			else:
-				if _piece_mouse_is_over and event.position == _right_click_pos:
-					emit_signal("piece_context_menu_requested", _piece_mouse_is_over)
+				if event.position == _right_click_pos:
+					emit_signal("pieces_context_menu_requested")
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
@@ -238,8 +247,8 @@ func _unhandled_input(event):
 			get_tree().set_input_as_handled()
 
 func _start_hovering_grabbed_piece(fast: bool) -> void:
-	if _piece_mouse_is_over and _is_grabbing_piece:
-		emit_signal("started_hovering", _piece_mouse_is_over, fast)
+	if _is_grabbing_piece:
+		emit_signal("started_hovering", fast)
 		_is_grabbing_piece = false
 
 func _start_moving() -> bool:

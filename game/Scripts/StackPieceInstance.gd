@@ -24,3 +24,12 @@ extends MeshInstance
 class_name StackPieceInstance
 
 var piece_entry: Dictionary = {}
+
+func set_appear_selected(selected: bool) -> void:
+	# NOTE: This should be nearly identical to Piece.set_appear_selected!
+	var material = get_surface_material(0)
+	if material is SpatialMaterial:
+		material.emission = Piece.SELECTED_COLOUR
+		material.emission_energy = Piece.SELECTED_ENERGY
+		
+		material.emission_enabled = selected
