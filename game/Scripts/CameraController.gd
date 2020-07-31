@@ -188,7 +188,8 @@ func _unhandled_input(event):
 					if event.control:
 						append_selected_pieces([_piece_mouse_is_over])
 					else:
-						set_selected_pieces([_piece_mouse_is_over])
+						if not _selected_pieces.has(_piece_mouse_is_over):
+							set_selected_pieces([_piece_mouse_is_over])
 						_is_grabbing_selected = true
 						_grabbing_time = 0.0
 				else:
