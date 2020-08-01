@@ -190,6 +190,7 @@ remotesync func add_stack_filled(name: String, transform: Transform,
 	stack_entry: Dictionary, piece_names: Array) -> void:
 	
 	var single_piece = load(stack_entry["scene_path"]).instance()
+	_scale_piece(single_piece, stack_entry["scale"])
 	
 	var stack = add_stack_empty(name, transform, single_piece is Card)
 	
@@ -219,8 +220,6 @@ remotesync func add_stack_filled(name: String, transform: Transform,
 		stack.add_piece(mesh, shape, Stack.STACK_BOTTOM, Stack.FLIP_NO)
 		
 		i += 1
-	
-	_scale_piece(stack, stack_entry["scale"])
 	
 	single_piece.queue_free()
 

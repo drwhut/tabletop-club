@@ -4,7 +4,7 @@
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 BACK_MARGIN = 10
-FONT = "NotoSerifCJKjp-Black.otf"
+FONT = "../NotoSerifCJKjp-Black.otf"
 FONT_SIZE_LARGE = 100
 FONT_SIZE_SMALL = 50
 SIZE = (250, 350)
