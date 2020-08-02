@@ -229,6 +229,9 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 		elif _collision_shape.shape is CylinderShape:
 			_collision_shape.shape.height += extra_height
 	
+	# We just changed the collision shape, so make sure the stack is awake.
+	sleeping = false
+	
 	var n = _pieces.get_child_count()
 	var is_flipped = false
 	
@@ -287,6 +290,9 @@ func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	else:
 		push_error("Stack has an unsupported collision shape!")
 		return null
+	
+	# We just changed the collision shape, so make sure the stack is awake.
+	sleeping = false
 	
 	_set_piece_heights()
 	
