@@ -282,19 +282,18 @@ func _integrate_forces(state):
 		_last_server_state = {
 			"angular_velocity": state.angular_velocity,
 			"linear_velocity": state.linear_velocity,
-			"sleeping": state.sleeping,
 			"transform": state.transform
 		}
 	
 	else:
 		# The client, if it has received a new physics state from the
 		# server, needs to update it here.
+		state.sleeping = false
+		
 		if _last_server_state.has("angular_velocity"):
 			state.angular_velocity = _last_server_state["angular_velocity"]
 		if _last_server_state.has("linear_velocity"):
 			state.linear_velocity = _last_server_state["linear_velocity"]
-		if _last_server_state.has("sleeping"):
-			state.sleeping = _last_server_state["sleeping"]
 		if _last_server_state.has("transform"):
 			
 			# For the transform, we want to lerp into the new state to make it
