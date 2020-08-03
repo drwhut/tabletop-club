@@ -23,6 +23,7 @@ extends Spatial
 
 signal hover_piece_requested(piece)
 signal pop_stack_requested(stack)
+signal stack_collect_all_requested(stack, collect_stacks)
 signal started_hovering_card(card)
 signal stopped_hovering_card(card)
 
@@ -301,6 +302,50 @@ func _inheritance_has(inheritance: Array, query: String) -> bool:
 			return true
 	return false
 
+func _on_context_collect_all_pressed() -> void:
+	if _selected_pieces.size() == 1:
+		var piece = _selected_pieces[0]
+		if piece is Stack:
+			emit_signal("stack_collect_all_requested", piece, true)
+
+func _on_context_collect_individuals_pressed() -> void:
+	if _selected_pieces.size() == 1:
+		var piece = _selected_pieces[0]
+		if piece is Stack:
+			emit_signal("stack_collect_all_requested", piece, false)
+
+func _on_context_delete_pressed() -> void:
+	# Go in reverse order, as we are removing the pieces as we go.
+	for i in range(_selected_pieces.size() - 1, -1, -1):
+		var piece = _selected_pieces[i]
+		if piece is Piece:
+			piece.rpc_id(1, "request_remove_self")
+
+func _on_context_lock_pressed() -> void:
+	for piece in _selected_pieces:
+		if piece is Piece:
+			piece.rpc_id(1, "lock")
+
+func _on_context_orient_down_pressed() -> void:
+	for piece in _selected_pieces:
+		if piece is Stack:
+			piece.rpc_id(1, "request_orient_pieces", false)
+
+func _on_context_orient_up_pressed() -> void:
+	for piece in _selected_pieces:
+		if piece is Stack:
+			piece.rpc_id(1, "request_orient_pieces", true)
+
+func _on_context_shuffle_pressed() -> void:
+	for piece in _selected_pieces:
+		if piece is ShuffleableStack:
+			piece.rpc_id(1, "request_shuffle")
+
+func _on_context_unlock_pressed() -> void:
+	for piece in _selected_pieces:
+		if piece is Piece:
+			piece.rpc("unlock")
+
 func _popup_piece_context_menu() -> void:
 	if _selected_pieces.size() == 0:
 		return
@@ -327,9 +372,75 @@ func _popup_piece_context_menu() -> void:
 		_piece_context_menu_container.remove_child(child)
 		child.queue_free()
 	
+	###########
+	# LEVEL 3 #
+	###########
+	
+	if _inheritance_has(inheritance, "ShuffleableStack"):
+		var shuffle_button = Button.new()
+		shuffle_button.text = "Shuffle"
+		shuffle_button.connect("pressed", self, "_on_context_shuffle_pressed")
+		_piece_context_menu_container.add_child(shuffle_button)
+	
+	###########
+	# LEVEL 2 #
+	###########
+	
+	if _inheritance_has(inheritance, "Stack"):
+		if _selected_pieces.size() == 1:
+			var collect_individuals_button = Button.new()
+			collect_individuals_button.text = "Collect individuals"
+			collect_individuals_button.connect("pressed", self, "_on_context_collect_individuals_pressed")
+			_piece_context_menu_container.add_child(collect_individuals_button)
+			
+			var collect_all_button = Button.new()
+			collect_all_button.text = "Collect all"
+			collect_all_button.connect("pressed", self, "_on_context_collect_all_pressed")
+			_piece_context_menu_container.add_child(collect_all_button)
+		
+		var orient_up_button = Button.new()
+		orient_up_button.text = "Orient all up"
+		orient_up_button.connect("pressed", self, "_on_context_orient_up_pressed")
+		_piece_context_menu_container.add_child(orient_up_button)
+		
+		var orient_down_button = Button.new()
+		orient_down_button.text = "Orient all down"
+		orient_down_button.connect("pressed", self, "_on_context_orient_down_pressed")
+		_piece_context_menu_container.add_child(orient_down_button)
+	
+	###########
+	# LEVEL 1 #
+	###########
+	
+	###########
+	# LEVEL 0 #
+	###########
+	
 	if _inheritance_has(inheritance, "Piece"):
+		var num_locked = 0
+		var num_unlocked = 0
+		
+		for piece in _selected_pieces:
+			if piece.is_locked():
+				num_locked += 1
+			else:
+				num_unlocked += 1
+		
+		if num_unlocked == _selected_pieces.size():
+			var lock_button = Button.new()
+			lock_button.text = "Lock"
+			lock_button.connect("pressed", self, "_on_context_lock_pressed")
+			_piece_context_menu_container.add_child(lock_button)
+		
+		if num_locked == _selected_pieces.size():
+			var unlock_button = Button.new()
+			unlock_button.text = "Unlock"
+			unlock_button.connect("pressed", self, "_on_context_unlock_pressed")
+			_piece_context_menu_container.add_child(unlock_button)
+		
 		var delete_button = Button.new()
 		delete_button.text = "Delete"
+		delete_button.connect("pressed", self, "_on_context_delete_pressed")
 		_piece_context_menu_container.add_child(delete_button)
 	
 	# If a button in the context menu is clicked, stop showing the context menu.

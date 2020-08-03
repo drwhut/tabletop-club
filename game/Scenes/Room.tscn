@@ -36,5 +36,6 @@ transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0
 [node name="Pieces" type="Spatial" parent="."]
 [connection signal="hover_piece_requested" from="CameraController" to="." method="_on_CameraController_hover_piece_requested"]
 [connection signal="pop_stack_requested" from="CameraController" to="." method="_on_CameraController_pop_stack_requested"]
+[connection signal="stack_collect_all_requested" from="CameraController" to="." method="_on_CameraController_stack_collect_all_requested"]
 [connection signal="started_hovering_card" from="CameraController" to="." method="_on_CameraController_started_hovering_card"]
 [connection signal="stopped_hovering_card" from="CameraController" to="." method="_on_CameraController_stopped_hovering_card"]

@@ -52,23 +52,6 @@ var _last_server_state = {}
 var _last_velocity = Vector3()
 var _new_velocity = Vector3()
 
-func add_context_to_control(control: Control) -> void:
-	if mode == MODE_RIGID:
-		var lock_button = Button.new()
-		lock_button.text = "Lock"
-		lock_button.connect("pressed", self, "_on_lock_pressed")
-		control.add_child(lock_button)
-	elif mode == MODE_STATIC:
-		var unlock_button = Button.new()
-		unlock_button.text = "Unlock"
-		unlock_button.connect("pressed", self, "_on_unlock_pressed")
-		control.add_child(unlock_button)
-	
-	var delete_button = Button.new()
-	delete_button.text = "Delete"
-	delete_button.connect("pressed", self, "_on_delete_pressed")
-	control.add_child(delete_button)
-
 func apply_texture(texture: Texture) -> void:
 	if _mesh_instance != null:
 		var material = SpatialMaterial.new()
@@ -85,6 +68,9 @@ func is_being_shaked() -> bool:
 	if _new_velocity.dot(_last_velocity) < 0:
 		return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD
 	return false
+
+func is_locked() -> bool:
+	return mode == MODE_STATIC
 
 master func lock() -> void:
 	mode = MODE_STATIC
@@ -308,17 +294,8 @@ func _integrate_forces(state):
 			new_transform.origin = origin
 			state.transform = new_transform
 
-func _on_delete_pressed() -> void:
-	rpc_id(1, "request_remove_self")
-
-func _on_lock_pressed() -> void:
-	rpc_id(1, "request_lock")
-
 func _on_tree_exiting() -> void:
 	emit_signal("piece_exiting_tree", self)
-
-func _on_unlock_pressed() -> void:
-	rpc_id(1, "request_unlock")
 
 func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Force the piece to the given location.

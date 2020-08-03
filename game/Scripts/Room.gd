@@ -179,7 +179,6 @@ puppet func add_stack_empty(name: String, transform: Transform,
 	
 	_pieces.add_child(stack)
 	
-	stack.connect("collect_all_requested", self, "_on_stack_collect_all_requested")
 	stack.connect("piece_exiting_tree", self, "_on_piece_exiting_tree")
 	stack.connect("stack_requested", self, "_on_stack_requested")
 	
@@ -677,9 +676,6 @@ func _get_stack_piece_shape(piece: StackablePiece) -> CollisionShape:
 func _on_piece_exiting_tree(piece: Piece) -> void:
 	_camera_controller.erase_selected_pieces(piece)
 
-func _on_stack_collect_all_requested(stack: Stack, collect_stacks: bool) -> void:
-	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
-
 func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void:
 	if get_tree().is_network_server():
 		if piece1 is Stack and piece2 is Stack:
@@ -705,9 +701,11 @@ func _on_CameraController_hover_piece_requested(piece: Piece):
 func _on_CameraController_pop_stack_requested(stack: Stack):
 	rpc_id(1, "request_pop_stack", stack.name)
 
+func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stacks: bool):
+	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
+
 func _on_CameraController_started_hovering_card(card: Card):
 	emit_signal("started_hovering_card", card)
 
 func _on_CameraController_stopped_hovering_card(card: Card):
 	emit_signal("stopped_hovering_card", card)
-

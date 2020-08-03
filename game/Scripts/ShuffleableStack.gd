@@ -23,14 +23,6 @@ extends Stack
 
 class_name ShuffleableStack
 
-func add_context_to_control(control: Control) -> void:
-	var shuffle_button = Button.new()
-	shuffle_button.text = "Shuffle"
-	shuffle_button.connect("pressed", self, "_on_shuffle_pressed")
-	control.add_child(shuffle_button)
-	
-	.add_context_to_control(control)
-
 master func request_shuffle() -> void:
 	var names = []
 	
@@ -63,6 +55,3 @@ func _physics_process(delta):
 	# shuffled names to each client (including itself).
 	if get_tree().is_network_server() and is_being_shaked():
 		request_shuffle()
-
-func _on_shuffle_pressed() -> void:
-	rpc_id(1, "request_shuffle")

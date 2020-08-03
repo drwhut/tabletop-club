@@ -23,8 +23,6 @@ extends StackablePiece
 
 class_name Stack
 
-signal collect_all_requested(stack, collect_stacks)
-
 enum {
 	STACK_AUTO,
 	STACK_BOTTOM,
@@ -44,29 +42,6 @@ onready var _pieces = $Pieces
 
 var _collision_unit_height = 0
 var _mesh_unit_height = 0
-
-func add_context_to_control(control: Control) -> void:
-	var collect_individuals_button = Button.new()
-	collect_individuals_button.text = "Collect individuals"
-	collect_individuals_button.connect("pressed", self, "_on_collect_individuals_pressed")
-	control.add_child(collect_individuals_button)
-	
-	var collect_all_button = Button.new()
-	collect_all_button.text = "Collect all"
-	collect_all_button.connect("pressed", self, "_on_collect_all_pressed")
-	control.add_child(collect_all_button)
-	
-	var orient_up_button = Button.new()
-	orient_up_button.text = "Orient all up"
-	orient_up_button.connect("pressed", self, "_on_orient_up_pressed")
-	control.add_child(orient_up_button)
-	
-	var orient_down_button = Button.new()
-	orient_down_button.text = "Orient all down"
-	orient_down_button.connect("pressed", self, "_on_orient_down_pressed")
-	control.add_child(orient_down_button)
-	
-	.add_context_to_control(control)
 
 func add_piece(piece: StackPieceInstance, shape: CollisionShape,
 	on: int = STACK_AUTO, flip: int = FLIP_AUTO) -> void:
@@ -257,18 +232,6 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	piece.scale = piece_scale
 	
 	_set_piece_heights()
-
-func _on_collect_all_pressed() -> void:
-	emit_signal("collect_all_requested", self, true)
-
-func _on_collect_individuals_pressed() -> void:
-	emit_signal("collect_all_requested", self, false)
-
-func _on_orient_down_pressed() -> void:
-	rpc_id(1, "request_orient_pieces", false)
-
-func _on_orient_up_pressed() -> void:
-	rpc_id(1, "request_orient_pieces", true)
 
 func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	if pos < 0 or pos >= _pieces.get_child_count():
