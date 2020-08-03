@@ -21,7 +21,6 @@
 
 extends Spatial
 
-signal piece_context_menu_requested(piece)
 signal started_hovering_card(card)
 signal stopped_hovering_card(card)
 
@@ -702,10 +701,6 @@ func _scale_piece(piece: Spatial, scale: Vector3) -> void:
 
 func _on_CameraController_hover_piece_requested(piece: Piece):
 	rpc_id(1, "request_hover_piece", piece.name)
-
-func _on_CameraController_pieces_context_menu_requested(pieces: Array):
-	if pieces.size() == 1:
-		emit_signal("piece_context_menu_requested", pieces[0])
 
 func _on_CameraController_pop_stack_requested(stack: Stack):
 	rpc_id(1, "request_pop_stack", stack.name)

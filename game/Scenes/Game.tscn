@@ -14,7 +14,6 @@ script = ExtResource( 3 )
 
 [node name="PieceDB" type="Node" parent="."]
 script = ExtResource( 4 )
-[connection signal="piece_context_menu_requested" from="Room" to="GameUI" method="_on_Room_piece_context_menu_requested"]
 [connection signal="started_hovering_card" from="Room" to="GameUI" method="_on_Room_started_hovering_card"]
 [connection signal="stopped_hovering_card" from="Room" to="GameUI" method="_on_Room_stopped_hovering_card"]
 [connection signal="card_in_hand_requested" from="GameUI" to="." method="_on_GameUI_card_in_hand_requested"]

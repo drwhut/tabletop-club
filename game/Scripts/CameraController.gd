@@ -22,12 +22,13 @@
 extends Spatial
 
 signal hover_piece_requested(piece)
-signal pieces_context_menu_requested(pieces)
 signal pop_stack_requested(stack)
 signal started_hovering_card(card)
 signal stopped_hovering_card(card)
 
 onready var _camera = $Camera
+onready var _piece_context_menu = $PieceContextMenu
+onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 
 const GRABBING_SLOW_TIME = 0.25
 const HOVER_Y_LEVEL = 4.5
@@ -211,13 +212,14 @@ func _unhandled_input(event):
 			# the press and the release of the RMB.
 			if event.is_pressed():
 				if _piece_mouse_is_over:
-					set_selected_pieces([_piece_mouse_is_over])
+					if not _selected_pieces.has(_piece_mouse_is_over):
+						set_selected_pieces([_piece_mouse_is_over])
 				else:
 					clear_selected_pieces()
 				_right_click_pos = event.position
 			else:
 				if event.position == _right_click_pos:
-					emit_signal("pieces_context_menu_requested", _selected_pieces)
+					_popup_piece_context_menu()
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
@@ -280,6 +282,67 @@ func _calculate_hover_position(mouse_position: Vector2) -> Vector3:
 	
 	return Vector3(x, HOVER_Y_LEVEL, z)
 
+func _get_piece_inheritance(piece: Piece) -> Array:
+	var inheritance = []
+	var script = piece.get_script()
+	
+	while script:
+		inheritance.append(script.resource_path)
+		script = script.get_base_script()
+	
+	return inheritance
+
+func _hide_context_menu():
+	_piece_context_menu.visible = false
+
+func _inheritance_has(inheritance: Array, query: String) -> bool:
+	for piece_class in inheritance:
+		if piece_class.ends_with("/" + query + ".gd"):
+			return true
+	return false
+
+func _popup_piece_context_menu() -> void:
+	if _selected_pieces.size() == 0:
+		return
+	
+	# Get the inheritance (e.g. Dice <- Piece) of the first piece in the array,
+	# then reduce the inheritance down to the most common inheritance of all of
+	# the pieces in the array.
+	var inheritance = _get_piece_inheritance(_selected_pieces[0])
+	
+	for i in range(1, _selected_pieces.size()):
+		if inheritance.size() <= 1:
+			break
+		
+		var other_inheritance = _get_piece_inheritance(_selected_pieces[i])
+		var cut_off = 0
+		for piece_class in inheritance:
+			if other_inheritance.has(piece_class):
+				break
+			cut_off += 1
+		inheritance = inheritance.slice(cut_off, inheritance.size() - 1)
+	
+	# Populate the context menu, given the inheritance.
+	for child in _piece_context_menu_container.get_children():
+		_piece_context_menu_container.remove_child(child)
+		child.queue_free()
+	
+	if _inheritance_has(inheritance, "Piece"):
+		var delete_button = Button.new()
+		delete_button.text = "Delete"
+		_piece_context_menu_container.add_child(delete_button)
+	
+	# If a button in the context menu is clicked, stop showing the context menu.
+	# TODO: Apply to sub-children?
+	for child in _piece_context_menu_container.get_children():
+		if child is Button:
+			child.connect("pressed", self, "_hide_context_menu")
+	
+	# We've connected a signal elsewhere that will change the size of the popup
+	# to match the container.
+	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
+	_piece_context_menu.popup()
+
 func _start_hovering_grabbed_piece(fast: bool) -> void:
 	if _is_grabbing_selected:
 		# NOTE: The server might not accept our request to hover a particular
@@ -317,3 +380,13 @@ func _start_moving() -> bool:
 		return true
 	
 	return false
+
+func _on_VBoxContainer_item_rect_changed():
+	if _piece_context_menu and _piece_context_menu_container:
+		var size = _piece_context_menu_container.rect_size
+		size.x += _piece_context_menu_container.margin_left
+		size.y += _piece_context_menu_container.margin_top
+		size.x -= _piece_context_menu_container.margin_right
+		size.y -= _piece_context_menu_container.margin_bottom
+		_piece_context_menu.rect_min_size = size
+		_piece_context_menu.rect_size = size
