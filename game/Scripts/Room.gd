@@ -306,7 +306,7 @@ func get_state() -> Dictionary:
 	for piece in _pieces.get_children():
 		if piece is Stack:
 			var stack_meta = {
-				"is_locked": piece.mode == RigidBody.MODE_STATIC,
+				"is_locked": piece.is_locked(),
 				"transform": piece.transform
 			}
 			
@@ -324,7 +324,7 @@ func get_state() -> Dictionary:
 			stack_dict[piece.name] = stack_meta
 		else:
 			var piece_meta = {
-				"is_locked": piece.mode == RigidBody.MODE_STATIC,
+				"is_locked": piece.is_locked(),
 				"piece_entry": piece.piece_entry,
 				"transform": piece.transform
 			}

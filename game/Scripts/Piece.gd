@@ -143,7 +143,7 @@ func srv_is_hovering() -> bool:
 	return _srv_hover_player > 0
 
 func srv_start_hovering(player_id: int) -> bool:
-	if not srv_is_hovering() and mode == MODE_RIGID:
+	if not (srv_is_hovering() or is_locked()):
 		_srv_hover_player = player_id
 		custom_integrator = true
 		

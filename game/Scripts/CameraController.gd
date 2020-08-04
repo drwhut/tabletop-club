@@ -349,7 +349,7 @@ func _on_context_sort_pressed() -> void:
 func _on_context_unlock_pressed() -> void:
 	for piece in _selected_pieces:
 		if piece is Piece:
-			piece.rpc("unlock")
+			piece.rpc_id(1, "request_unlock")
 
 func _popup_piece_context_menu() -> void:
 	if _selected_pieces.size() == 0:
