@@ -372,6 +372,21 @@ func _popup_piece_context_menu() -> void:
 		_piece_context_menu_container.remove_child(child)
 		child.queue_free()
 	
+	########
+	# INFO #
+	########
+	
+	if _inheritance_has(inheritance, "Stack"):
+		
+		# TODO: Figure out a way to update this label if the count changes.
+		var count = 0
+		for stack in _selected_pieces:
+			count += stack.get_piece_count()
+		
+		var count_label = Label.new()
+		count_label.text = "Count: %d" % count
+		_piece_context_menu_container.add_child(count_label)
+	
 	###########
 	# LEVEL 3 #
 	###########
