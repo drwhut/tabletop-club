@@ -105,6 +105,10 @@ game_reset={
  ]
 }
 
+[physics]
+
+3d/default_gravity=98.1
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
