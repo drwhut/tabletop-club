@@ -169,12 +169,20 @@ master func request_shuffle() -> void:
 	
 	rpc("set_piece_order", names)
 
-master func request_sort_pieces() -> void:
-	_sort_pieces_merge(0, get_piece_count())
+master func request_sort() -> void:
+	var items = []
+	for piece in get_pieces():
+		items.append({
+			"name": piece.name,
+			"texture_path": piece.piece_entry.texture_path
+		})
+	var items2 = items.duplicate()
+	
+	_merge_sort(items, items2, 0, items.size())
 	
 	var names = []
-	for piece in get_pieces():
-		names.push_back(piece.name)
+	for item in items:
+		names.push_back(item.name)
 	
 	rpc("set_piece_order", names)
 
@@ -308,24 +316,23 @@ func _set_piece_heights() -> void:
 		piece.transform.origin.y = (_mesh_unit_height * (i + 0.5)) - (height / 2)
 		i += 1
 
-func _sort_pieces_merge(begin: int, end: int) -> void:
+func _merge_sort(array: Array, copy: Array, begin: int, end: int) -> void:
 	if end - begin <= 1:
 		return
 	
 	var middle = int(float(begin + end) / 2)
 	
-	_sort_pieces_merge(begin, middle)
-	_sort_pieces_merge(middle, end)
+	_merge_sort(copy, array, begin, middle)
+	_merge_sort(copy, array, middle, end)
 	
-	var copy = get_pieces().slice(begin, end - 1)
 	var i = begin
 	var j = middle
 	
 	for k in range(begin, end):
 		# Sort the children by their texture paths.
-		if i < middle and (j >= end or copy[i - begin].piece_entry.texture_path <= copy[j - begin].piece_entry.texture_path):
-			_pieces.move_child(copy[i - begin], k)
+		if i < middle and (j >= end or copy[i].texture_path <= copy[j].texture_path):
+			array[k] = copy[i]
 			i += 1
 		else:
-			_pieces.move_child(copy[j - begin], k)
+			array[k] = copy[j]
 			j += 1

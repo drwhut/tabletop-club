@@ -344,7 +344,7 @@ func _on_context_shuffle_pressed() -> void:
 func _on_context_sort_pressed() -> void:
 	for piece in _selected_pieces:
 		if piece is Stack:
-			piece.rpc_id(1, "request_sort_pieces")
+			piece.rpc_id(1, "request_sort")
 
 func _on_context_unlock_pressed() -> void:
 	for piece in _selected_pieces:
