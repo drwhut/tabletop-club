@@ -252,6 +252,8 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 	
 	# Next we need to supply a unit collision shape to the second stack.
 	var shape = _get_stack_piece_shape(stack1)
+	shape = shape.shape
+	
 	var new_shape: Shape = null
 	
 	if shape is BoxShape:
