@@ -341,6 +341,11 @@ func _on_context_shuffle_pressed() -> void:
 		if piece is ShuffleableStack:
 			piece.rpc_id(1, "request_shuffle")
 
+func _on_context_sort_pressed() -> void:
+	for piece in _selected_pieces:
+		if piece is Stack:
+			piece.rpc_id(1, "request_sort_pieces")
+
 func _on_context_unlock_pressed() -> void:
 	for piece in _selected_pieces:
 		if piece is Piece:
@@ -422,6 +427,11 @@ func _popup_piece_context_menu() -> void:
 		orient_down_button.text = "Orient all down"
 		orient_down_button.connect("pressed", self, "_on_context_orient_down_pressed")
 		_piece_context_menu_container.add_child(orient_down_button)
+		
+		var sort_button = Button.new()
+		sort_button.text = "Sort"
+		sort_button.connect("pressed", self, "_on_context_sort_pressed")
+		_piece_context_menu_container.add_child(sort_button)
 	
 	###########
 	# LEVEL 1 #

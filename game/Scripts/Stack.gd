@@ -159,9 +159,19 @@ master func request_orient_pieces(up: bool) -> void:
 	
 	rpc("orient_pieces", up)
 
+master func request_sort_pieces() -> void:
+	rpc("sort_pieces")
+
 func set_appear_selected(selected: bool) -> void:
 	for piece in get_pieces():
 		piece.set_appear_selected(selected)
+
+remotesync func sort_pieces() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_sort_pieces_merge(0, get_piece_count())
+	_set_piece_heights()
 
 func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	pos: int, flip: int) -> void:
@@ -267,3 +277,25 @@ func _set_piece_heights() -> void:
 	for piece in _pieces.get_children():
 		piece.transform.origin.y = (_mesh_unit_height * (i + 0.5)) - (height / 2)
 		i += 1
+
+func _sort_pieces_merge(begin: int, end: int) -> void:
+	if end - begin <= 1:
+		return
+	
+	var middle = int(float(begin + end) / 2)
+	
+	_sort_pieces_merge(begin, middle)
+	_sort_pieces_merge(middle, end)
+	
+	var copy = get_pieces().slice(begin, end - 1)
+	var i = begin
+	var j = middle
+	
+	for k in range(begin, end):
+		# Sort the children by their texture paths.
+		if i < middle and (j >= end or copy[i - begin].piece_entry.texture_path <= copy[j - begin].piece_entry.texture_path):
+			_pieces.move_child(copy[i - begin], k)
+			i += 1
+		else:
+			_pieces.move_child(copy[j - begin], k)
+			j += 1
