@@ -24,6 +24,8 @@ extends Spatial
 signal started_hovering_card(card)
 signal stopped_hovering_card(card)
 
+const STACK_SPLIT_DISTANCE = 1.0
+
 onready var _camera_controller = $CameraController
 onready var _pieces = $Pieces
 
@@ -433,7 +435,7 @@ master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 		# If this piece will hover, get it away from the stack so it doesn't
 		# immediately collide with it again.
 		if hover:
-			new_origin.y += stack.get_unit_height() * 2
+			new_origin.y += STACK_SPLIT_DISTANCE + stack.get_unit_height() / 2
 		var new_transform = Transform(new_basis, new_origin)
 		
 		if not hover:

@@ -32,7 +32,7 @@ onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 
 const GRABBING_SLOW_TIME = 0.25
-const HOVER_Y_LEVEL = 4.5
+const HOVER_Y_LEVEL = 5.0
 const MOVEMENT_ACCEL = 1.0
 const MOVEMENT_DECEL = 3.0
 const MOVEMENT_MAX_SPEED = 30.0
