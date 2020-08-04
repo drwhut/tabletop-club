@@ -150,13 +150,7 @@ remotesync func add_stack(name: String, transform: Transform,
 	if not (piece1_mesh and piece2_mesh and piece1_shape and piece2_shape):
 		return
 	
-	# Should the stack be shuffleable?
-	var shuffleable = false
-	
-	if (piece1 is Card and piece2 is Card):
-		shuffleable = true
-	
-	var stack = add_stack_empty(name, transform, shuffleable)
+	var stack = add_stack_empty(name, transform)
 	
 	stack.add_piece(piece1_mesh, piece1_shape)
 	stack.add_piece(piece2_mesh, piece2_shape)
@@ -164,17 +158,12 @@ remotesync func add_stack(name: String, transform: Transform,
 	piece1.queue_free()
 	piece2.queue_free()
 
-puppet func add_stack_empty(name: String, transform: Transform,
-	shuffleable: bool = false) -> Stack:
+puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
 	
 	if get_tree().get_rpc_sender_id() != 1:
 		return null
 	
-	var stack: Stack = null
-	if shuffleable:
-		stack = preload("res://Pieces/ShuffleableStack.tscn").instance()
-	else:
-		stack = preload("res://Pieces/Stack.tscn").instance()
+	var stack: Stack = preload("res://Pieces/Stack.tscn").instance()
 	
 	stack.name = name
 	stack.transform = transform
@@ -192,7 +181,7 @@ remotesync func add_stack_filled(name: String, transform: Transform,
 	var single_piece = load(stack_entry["scene_path"]).instance()
 	_scale_piece(single_piece, stack_entry["scale"])
 	
-	var stack = add_stack_empty(name, transform, single_piece is Card)
+	var stack = add_stack_empty(name, transform)
 	
 	var i = 0
 	for texture_path in stack_entry["texture_paths"]:
@@ -318,7 +307,6 @@ func get_state() -> Dictionary:
 		if piece is Stack:
 			var stack_meta = {
 				"is_locked": piece.mode == RigidBody.MODE_STATIC,
-				"is_shuffleable": piece is ShuffleableStack,
 				"transform": piece.transform
 			}
 			
@@ -540,14 +528,6 @@ puppet func set_state(state: Dictionary) -> void:
 				push_error("Stack " + stack_name + " is locked value is not a boolean!")
 				return
 			
-			if not stack_meta.has("is_shuffleable"):
-				push_error("Stack " + stack_name + " in new state has no is shuffleable value!")
-				return
-			
-			if not stack_meta["is_shuffleable"] is bool:
-				push_error("Stack " + stack_name + " is shuffleable value is not a boolean!")
-				return
-			
 			if not stack_meta.has("transform"):
 				push_error("Stack " + stack_name + " in new state has no transform!")
 				return
@@ -564,8 +544,7 @@ puppet func set_state(state: Dictionary) -> void:
 				push_error("Stack " + stack_name + " piece array is not an array!")
 				return
 			
-			var stack = add_stack_empty(stack_name, stack_meta["transform"],
-				stack_meta["is_shuffleable"])
+			var stack = add_stack_empty(stack_name, stack_meta["transform"])
 			
 			if stack_meta["is_locked"]:
 				var stack_node: Stack = _pieces.get_node(stack_name)

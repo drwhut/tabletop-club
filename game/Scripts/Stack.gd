@@ -159,19 +159,49 @@ master func request_orient_pieces(up: bool) -> void:
 	
 	rpc("orient_pieces", up)
 
+master func request_shuffle() -> void:
+	var names = []
+	for piece in get_pieces():
+		names.push_back(piece.name)
+	
+	randomize()
+	names.shuffle()
+	
+	rpc("set_piece_order", names)
+
 master func request_sort_pieces() -> void:
-	rpc("sort_pieces")
+	_sort_pieces_merge(0, get_piece_count())
+	
+	var names = []
+	for piece in get_pieces():
+		names.push_back(piece.name)
+	
+	rpc("set_piece_order", names)
 
 func set_appear_selected(selected: bool) -> void:
 	for piece in get_pieces():
 		piece.set_appear_selected(selected)
 
-remotesync func sort_pieces() -> void:
+remotesync func set_piece_order(order: Array) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	_sort_pieces_merge(0, get_piece_count())
+	var i = 0
+	for piece_name in order:
+		var node = _pieces.get_node(piece_name)
+		
+		if node:
+			_pieces.move_child(node, i)
+		
+		i += 1
+	
 	_set_piece_heights()
+
+func _physics_process(delta):
+	# If the stack is being shaken, then get the server to send a list of
+	# shuffled names to each client (including itself).
+	if get_tree().is_network_server() and is_being_shaked():
+		request_shuffle()
 
 func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	pos: int, flip: int) -> void:
