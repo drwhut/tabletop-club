@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/CameraController.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/OutlineColorRect.gd" type="Script" id=2]
 
 [node name="CameraController" type="Spatial"]
 script = ExtResource( 1 )
@@ -18,4 +19,14 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
+
+[node name="BoxSelectionRect" type="ColorRect" parent="."]
+visible = false
+mouse_filter = 2
+color = Color( 0, 1, 1, 0.392157 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+outline_color = Color( 0, 1, 1, 0.588235 )
 [connection signal="item_rect_changed" from="PieceContextMenu/VBoxContainer" to="." method="_on_VBoxContainer_item_rect_changed"]

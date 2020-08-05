@@ -29,6 +29,7 @@ signal stack_collect_all_requested(stack, collect_stacks)
 signal started_hovering_card(card)
 signal stopped_hovering_card(card)
 
+onready var _box_selection_rect = $BoxSelectionRect
 onready var _camera = $Camera
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
@@ -46,12 +47,15 @@ const ZOOM_AMOUNT = 2.0
 const ZOOM_DISTANCE_MIN = 2.0
 const ZOOM_DISTANCE_MAX = 80.0
 
+var _box_select_init_pos = Vector2()
 var _grabbing_time = 0.0
+var _is_box_selecting = false
 var _is_grabbing_selected = false
 var _is_hovering_selected = false
 var _last_non_zero_movement_dir = Vector3()
 var _movement_dir = Vector3()
 var _movement_speed = 0.0
+var _perform_box_select = false
 var _piece_mouse_is_over: Piece = null
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
@@ -127,6 +131,39 @@ func _physics_process(delta):
 	if result.has("collider"):
 		if result.collider is Piece:
 			_piece_mouse_is_over = result.collider
+	
+	# Do we need to perform a box select?
+	if _perform_box_select:
+		var query_params = PhysicsShapeQueryParameters.new()
+		
+		var box_rect = Rect2(_box_selection_rect.rect_position, _box_selection_rect.rect_size)
+		
+		# Create a frustum from the box position and size.
+		var shape = ConvexPolygonShape.new()
+		var points = []
+		
+		var middle = box_rect.position + box_rect.size / 2
+		var box_from = _camera.project_ray_origin(middle)
+		points.append(box_from)
+		
+		for dx in [0, 1]:
+			for dy in [0, 1]:
+				var size = Vector2(box_rect.size.x * dx, box_rect.size.y * dy)
+				var box_pos = box_rect.position + size
+				var box_to = box_from + _camera.project_ray_normal(box_pos) * RAY_LENGTH
+				points.append(box_to)
+		
+		shape.points = points
+		query_params.set_shape(shape)
+		
+		var results = space_state.intersect_shape(query_params, 1024)
+		
+		for box_result in results:
+			if box_result.has("collider"):
+				if box_result.collider is Piece:
+					append_selected_pieces([box_result.collider])
+		
+		_perform_box_select = false
 
 func _process_input(delta):
 	
@@ -197,7 +234,16 @@ func _unhandled_input(event):
 						_is_grabbing_selected = true
 						_grabbing_time = 0.0
 				else:
-					clear_selected_pieces()
+					if not event.control:
+						clear_selected_pieces()
+					
+					# Start box selecting.
+					_box_select_init_pos = event.position
+					_is_box_selecting = true
+					
+					_box_selection_rect.rect_position = _box_select_init_pos
+					_box_selection_rect.rect_size = Vector2()
+					_box_selection_rect.visible = true
 			else:
 				_is_grabbing_selected = false
 				
@@ -209,6 +255,12 @@ func _unhandled_input(event):
 							emit_signal("stopped_hovering_card", piece)
 					
 					_is_hovering_selected = false
+				
+				# Stop box selecting.
+				if _is_box_selecting:
+					_box_selection_rect.visible = false
+					_is_box_selecting = false
+					_perform_box_select = true
 		
 		elif event.button_index == BUTTON_RIGHT:
 			# Only bring up the context menu if the mouse didn't move between
@@ -268,6 +320,24 @@ func _unhandled_input(event):
 			transform.basis = Basis()
 			rotate_x(_rotation.y)
 			rotate_y(_rotation.x)
+			
+			get_tree().set_input_as_handled()
+		
+		elif _is_box_selecting:
+			
+			var pos = _box_select_init_pos
+			var size = event.position - _box_select_init_pos
+			
+			if size.x < 0:
+				pos.x += size.x
+				size.x = -size.x
+			
+			if size.y < 0:
+				pos.y += size.y
+				size.y = -size.y
+			
+			_box_selection_rect.rect_position = pos
+			_box_selection_rect.rect_size = size
 			
 			get_tree().set_input_as_handled()
 

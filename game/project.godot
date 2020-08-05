@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Dice.gd"
 }, {
+"base": "ColorRect",
+"class": "OutlineColorRect",
+"language": "GDScript",
+"path": "res://Scripts/OutlineColorRect.gd"
+}, {
 "base": "RigidBody",
 "class": "Piece",
 "language": "GDScript",
@@ -54,6 +59,7 @@ _global_script_class_icons={
 "CardTextureRect": "",
 "Chip": "",
 "Dice": "",
+"OutlineColorRect": "",
 "Piece": "",
 "Stack": "",
 "StackPieceInstance": "",
