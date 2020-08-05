@@ -21,6 +21,7 @@
 
 extends Spatial
 
+signal collect_pieces_requested(pieces)
 signal hover_piece_requested(piece)
 signal pop_stack_requested(stack)
 signal stack_collect_all_requested(stack, collect_stacks)
@@ -314,6 +315,10 @@ func _on_context_collect_individuals_pressed() -> void:
 		if piece is Stack:
 			emit_signal("stack_collect_all_requested", piece, false)
 
+func _on_context_collect_selected_pressed() -> void:
+	if _selected_pieces.size() > 1:
+		emit_signal("collect_pieces_requested", _selected_pieces)
+
 func _on_context_delete_pressed() -> void:
 	# Go in reverse order, as we are removing the pieces as we go.
 	for i in range(_selected_pieces.size() - 1, -1, -1):
@@ -431,6 +436,13 @@ func _popup_piece_context_menu() -> void:
 	###########
 	# LEVEL 1 #
 	###########
+	
+	if _inheritance_has(inheritance, "StackablePiece"):
+		if _selected_pieces.size() > 1:
+			var collect_selected_button = Button.new()
+			collect_selected_button.text = "Collect selected"
+			collect_selected_button.connect("pressed", self, "_on_context_collect_selected_pressed")
+			_piece_context_menu_container.add_child(collect_selected_button)
 	
 	###########
 	# LEVEL 0 #

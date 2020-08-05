@@ -350,6 +350,45 @@ master func request_add_stack_filled(stack_entry: Dictionary) -> void:
 	
 	rpc("add_stack_filled", stack_name, transform, stack_entry, piece_names)
 
+master func request_collect_pieces(piece_names: Array) -> void:
+	var pieces = []
+	for piece_name in piece_names:
+		var piece = _pieces.get_node(piece_name)
+		if piece and piece is StackablePiece:
+			pieces.append(piece)
+	
+	if pieces.size() <= 1:
+		return
+	
+	var add_to = pieces.pop_front()
+	
+	while add_to:
+		for i in range(pieces.size() - 1, -1, -1):
+			var add_from = pieces[i]
+			
+			if add_to.matches(add_from):
+				if add_to is Stack:
+					if add_from is Stack:
+						rpc("add_stack_to_stack", add_to.name, add_from.name)
+					else:
+						rpc("add_piece_to_stack", add_from.name, add_to.name)
+				else:
+					if add_from is Stack:
+						rpc("add_piece_to_stack", add_to.name, add_from.name)
+						
+						# add_to (Piece) has been added to add_from (Stack), so
+						# in future, we need to add pieces to add_from.
+						add_to = add_from
+					else:
+						var new_stack_name = srv_get_next_piece_name()
+						rpc("add_stack", new_stack_name, add_to.transform,
+							add_to.name, add_from.name)
+						add_to = _pieces.get_node(new_stack_name)
+				
+				pieces.remove(i)
+		
+		add_to = pieces.pop_front()
+
 master func request_hover_piece(piece_name: String) -> void:
 	
 	var piece = _pieces.get_node(piece_name)
@@ -677,6 +716,13 @@ func _scale_piece(piece: Spatial, scale: Vector3) -> void:
 	
 	for child in piece.get_children():
 		_scale_piece(child, scale)
+
+func _on_CameraController_collect_pieces_requested(pieces: Array):
+	var names = []
+	for piece in pieces:
+		if piece is StackablePiece:
+			names.append(piece.name)
+	rpc_id(1, "request_collect_pieces", names)
 
 func _on_CameraController_hover_piece_requested(piece: Piece):
 	rpc_id(1, "request_hover_piece", piece.name)
