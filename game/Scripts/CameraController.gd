@@ -21,6 +21,7 @@
 
 extends Spatial
 
+signal cards_in_hand_requested(cards)
 signal collect_pieces_requested(pieces)
 signal hover_piece_requested(piece)
 signal pop_stack_requested(stack)
@@ -341,6 +342,9 @@ func _on_context_orient_up_pressed() -> void:
 		if piece is Stack:
 			piece.rpc_id(1, "request_orient_pieces", true)
 
+func _on_context_put_in_hand_pressed() -> void:
+	emit_signal("cards_in_hand_requested", _selected_pieces)
+
 func _on_context_shuffle_pressed() -> void:
 	for piece in _selected_pieces:
 		if piece is Stack:
@@ -400,6 +404,12 @@ func _popup_piece_context_menu() -> void:
 	###########
 	# LEVEL 2 #
 	###########
+	
+	if _inheritance_has(inheritance, "Card"):
+		var put_in_hand_button = Button.new()
+		put_in_hand_button.text = "Put in hand"
+		put_in_hand_button.connect("pressed", self, "_on_context_put_in_hand_pressed")
+		_piece_context_menu_container.add_child(put_in_hand_button)
 	
 	if _inheritance_has(inheritance, "Stack"):
 		if _selected_pieces.size() == 1:

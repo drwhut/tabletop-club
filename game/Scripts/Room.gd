@@ -21,6 +21,7 @@
 
 extends Spatial
 
+signal cards_in_hand_requested(cards)
 signal started_hovering_card(card)
 signal stopped_hovering_card(card)
 
@@ -716,6 +717,9 @@ func _scale_piece(piece: Spatial, scale: Vector3) -> void:
 	
 	for child in piece.get_children():
 		_scale_piece(child, scale)
+
+func _on_CameraController_cards_in_hand_requested(cards: Array):
+	emit_signal("cards_in_hand_requested", cards)
 
 func _on_CameraController_collect_pieces_requested(pieces: Array):
 	var names = []

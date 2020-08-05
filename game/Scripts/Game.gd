@@ -188,3 +188,9 @@ func _on_GameUI_card_out_hand_requested(card_texture: CardTextureRect):
 
 func _on_GameUI_piece_requested(piece_entry: Dictionary):
 	rpc_id(1, "request_game_piece", piece_entry)
+
+func _on_Room_cards_in_hand_requested(cards: Array):
+	# TODO: Send the entire array over the network at once.
+	for card in cards:
+		if card is Card:
+			rpc_id(1, "request_card_in_hand", card.name)
