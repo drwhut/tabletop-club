@@ -30,6 +30,13 @@ margin_right = 233.0
 margin_bottom = 20.0
 text = "Singleplayer"
 
+[node name="ServerButton" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
+margin_top = 24.0
+margin_right = 233.0
+margin_bottom = 44.0
+text = "Debug: Start Dedicated Server"
+
 [node name="JoinContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 233.0
@@ -80,5 +87,6 @@ grow_horizontal = 0
 align = 2
 script = ExtResource( 2 )
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SingleplayerButton" to="." method="_on_SingleplayerButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ServerButton" to="." method="_on_ServerButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/JoinContainer/JoinButton" to="." method="_on_JoinButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
