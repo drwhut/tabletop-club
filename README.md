@@ -49,6 +49,20 @@ python generate_chips.py
 
 5. Open the built editor, and import the project at `open-tabletop/game`!
 
+## Running a dedicated server
+
+For the multiplayer, this game uses a dedicated server/client model, meaning
+the server isn't displayed as a player in the game, and the first client that
+connects to the server is set as the host of the game.
+
+If you want to host a dedicated server, and you haven't got a Server build of
+the game (which is only available on Linux), then you can make your version of
+the game a dedicated server by copying the [game/server.cfg](game/server.cfg)
+file into the directory where the executable is. Then, if you have a Release
+build of the game, launching the game will launch a dedicated server
+automatically, and if you have a Debug build of the game, a button will appear
+on the main menu allowing you to launch a dedicated server.
+
 ## Contributing
 
 Want to help contribute to the project? Have a look at
