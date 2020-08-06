@@ -1,0 +1,143 @@
+# open-tabletop
+# Copyright (c) 2020 drwhut
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+extends Node
+
+enum {
+	MODE_NONE,
+	MODE_ERROR,
+	MODE_CLIENT,
+	MODE_SERVER,
+	MODE_SINGLEPLAYER
+}
+
+var _current_scene: Node = null
+
+func start_game_as_client(server: String, port: int) -> void:
+	call_deferred("_goto_scene", "res://Scenes/Game.tscn", {
+		"mode": MODE_CLIENT,
+		"server": server,
+		"port": port
+	})
+
+func start_game_as_server(max_players: int, port: int) -> void:
+	call_deferred("_goto_scene", "res://Scenes/Game.tscn", {
+		"mode": MODE_SERVER,
+		"max_players": max_players,
+		"port": port
+	})
+
+func start_game_singleplayer() -> void:
+	call_deferred("_goto_scene", "res://Scenes/Game.tscn", {
+		"mode": MODE_SINGLEPLAYER
+	})
+
+func start_main_menu() -> void:
+	call_deferred("_goto_scene", "res://Scenes/MainMenu.tscn", {
+		"mode": MODE_NONE
+	})
+
+func start_main_menu_with_error(error: String) -> void:
+	call_deferred("_goto_scene", "res://Scenes/MainMenu.tscn", {
+		"mode": MODE_ERROR,
+		"error": error
+	})
+
+func _ready():
+	var root = get_tree().get_root()
+	_current_scene = root.get_child(root.get_child_count() - 1)
+
+func _goto_scene(path: String, args: Dictionary) -> void:
+	if not args.has("mode"):
+		push_error("Scene argument 'mode' is missing!")
+		return
+	
+	if not args["mode"] is int:
+		push_error("Scene argument 'mode' is not an integer!")
+		return
+	
+	if args["mode"] == MODE_NONE:
+		pass
+	elif args["mode"] == MODE_ERROR:
+		if not args.has("error"):
+			push_error("Scene argument 'error' is missing!")
+			return
+		
+		if not args["error"] is String:
+			push_error("Scene argument 'error' is not a string!")
+			return
+	elif args["mode"] == MODE_CLIENT:
+		if not args.has("server"):
+			push_error("Scene argument 'server' is missing!")
+			return
+		
+		if not args["server"] is String:
+			push_error("Scene argument 'server' is not a string!")
+			return
+		
+		if not args.has("port"):
+			push_error("Scene argument 'port' is missing!")
+			return
+		
+		if not args["port"] is int:
+			push_error("Scene argument 'port' is not an integer!")
+			return
+	elif args["mode"] == MODE_SERVER:
+		if not args.has("max_players"):
+			push_error("Scene argument 'max_players' is missing!")
+			return
+		
+		if not args["max_players"] is int:
+			push_error("Scene argument 'max_players' is not an integer!")
+			return
+		
+		if not args.has("port"):
+			push_error("Scene argument 'port' is missing!")
+			return
+		
+		if not args["port"] is int:
+			push_error("Scene argument 'port' is not an integer!")
+			return
+	elif args["mode"] == MODE_SINGLEPLAYER:
+		pass
+	else:
+		push_error("Invalid mode " + str(args["mode"]) + "!")
+		return
+	
+	# Since this function should be called via call_deferred, it should be safe
+	# to free the current scene now.
+	var root = get_tree().get_root()
+	root.remove_child(_current_scene)
+	_current_scene.free()
+	
+	_current_scene = load(path).instance()
+	
+	root.add_child(_current_scene)
+	get_tree().set_current_scene(_current_scene)
+	
+	if args["mode"] == MODE_ERROR:
+		_current_scene.display_error(args["error"])
+	elif args["mode"] == MODE_CLIENT:
+		_current_scene.init_client(args["server"], args["port"])
+	elif args["mode"] == MODE_SERVER:
+		_current_scene.init_server(args["max_players"], args["port"])
+	elif args["mode"] == MODE_SINGLEPLAYER:
+		_current_scene.init_singleplayer()

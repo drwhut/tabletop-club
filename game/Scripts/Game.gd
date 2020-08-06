@@ -21,27 +21,30 @@
 
 extends Node
 
-const PORT = 26271
-
+onready var _connecting_dialog = $ConnectingDialog
 onready var _piece_db = $PieceDB
 onready var _room = $Room
 onready var _ui = $GameUI
 
-func init_client(server: String) -> void:
-	print("Connecting to ", server, ":", PORT, " ...")
+func init_client(server: String, port: int) -> void:
+	print("Connecting to ", server, ":", port, " ...")
 	var peer = NetworkedMultiplayerENet.new()
-	peer.create_client(server, PORT)
+	peer.create_client(server, port)
 	get_tree().network_peer = peer
+	
+	_connecting_dialog.popup_centered()
 
-func init_server(max_players: int) -> void:
-	print("Starting server on port ", PORT, " with ", max_players, " max players...")
+func init_server(max_players: int, port: int) -> void:
+	print("Starting server on port ", port, " with ", max_players, " max players...")
 	var peer = NetworkedMultiplayerENet.new()
-	peer.create_server(PORT, max_players + 1)
+	peer.create_server(port, max_players + 1)
 	get_tree().network_peer = peer
 
 func init_singleplayer() -> void:
 	print("Starting singleplayer...")
-	init_server(0)
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	init_server(0, rng.randi_range(10000, 65535))
 
 master func request_card_in_hand(card_name: String) -> void:
 	var card = _room.get_piece_with_name(card_name)
@@ -140,18 +143,6 @@ func _ready():
 	# Import game assets.
 	_piece_db.import_all()
 	_ui.set_piece_tree_from_db(_piece_db.get_db())
-	
-	var is_server = true
-	
-	for arg in OS.get_cmdline_args():
-		if arg == "--client":
-			is_server = false
-			break
-	
-	if is_server:
-		init_server(10)
-	else:
-		init_client("127.0.0.1")
 
 func _player_connected(id: int) -> void:
 	print("Player with ID ", id, " connected!")
@@ -166,12 +157,15 @@ func _player_disconnected(id: int) -> void:
 
 func _connected_ok() -> void:
 	print("Successfully connected to the server!")
+	_connecting_dialog.visible = false
 
 func _connected_fail() -> void:
 	print("Failed to connect to the server!")
+	Global.start_main_menu_with_error("Failed to connect to the server!")
 
 func _server_disconnected() -> void:
 	print("Lost connection to the server!")
+	Global.start_main_menu_with_error("Lost connection to the server!")
 
 func _on_GameUI_card_in_hand_requested(card: Card):
 	rpc_id(1, "request_card_in_hand", card.name)

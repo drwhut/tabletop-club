@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/VersionLabel.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CopyrightLabel.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=3]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 395.0
+margin_top = 264.0
+margin_right = 628.0
+margin_bottom = 336.0
+
+[node name="SingleplayerButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_right = 233.0
+margin_bottom = 20.0
+text = "Singleplayer"
+
+[node name="JoinContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 233.0
+margin_bottom = 48.0
+
+[node name="JoinServerEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/JoinContainer"]
+margin_right = 150.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 150, 0 )
+align = 1
+placeholder_text = "127.0.0.1:26271"
+
+[node name="JoinButton" type="Button" parent="CenterContainer/VBoxContainer/JoinContainer"]
+margin_left = 154.0
+margin_right = 233.0
+margin_bottom = 24.0
+text = "Join Server"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 233.0
+margin_bottom = 72.0
+text = "Quit"
+
+[node name="ErrorDialog" type="AcceptDialog" parent="."]
+margin_right = 243.0
+margin_bottom = 150.0
+window_title = "Error"
+
+[node name="VersionLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+margin_right = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CopyrightLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -14.0
+grow_horizontal = 0
+align = 2
+script = ExtResource( 2 )
+[connection signal="pressed" from="CenterContainer/VBoxContainer/SingleplayerButton" to="." method="_on_SingleplayerButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/JoinContainer/JoinButton" to="." method="_on_JoinButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
