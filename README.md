@@ -2,7 +2,7 @@
 An open-source platform for playing tabletop games in a 3D environment, made
 with the Godot Engine!
 
-# Compiling
+## Compiling
 
 To build the game from source, you'll need to download and compile a slightly
 modified version of the Godot Engine - the reason is because the game needs the
@@ -48,3 +48,8 @@ python generate_chips.py
 ```
 
 5. Open the built editor, and import the project at `open-tabletop/game`!
+
+## Contributing
+
+Want to help contribute to the project? Have a look at
+[the contributing guide](CONTRIBUTING.md)!
