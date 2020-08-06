@@ -13,7 +13,7 @@ it would also help us a lot if you include any error messages that come up.
 
 Got an idea of how to make OpenTabletop better? If it hasn't already been
 suggested, don't hesitate to open up an issue on the Github page with the
-feature proposal template - we want to make the game as good and as accessible
+feature request template - we want to make the game as good and as accessible
 as possible, and you might have an idea that we haven't thought of yet!
 
 ## Creating a pull request
@@ -28,6 +28,13 @@ use tabs instead of spaces (this is the default setting).
 
 * If you are creating a script in the editor, make sure you use the "Copyright
 Notice" template.
+
+* If you are adding functions that aren't built-in functions (e.g. `_ready()`),
+then please add a comment above the function that describes what it does, what
+it returns and what the arguments are!
+
+* If you are adding scenes, then make sure to write editor descriptions for the
+nodes!
 
 * When creating a fork or a pull request, make sure it is from and to the
 `master` branch! Everything is merged onto the `master` branch, which is always
