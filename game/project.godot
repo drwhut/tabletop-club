@@ -73,6 +73,10 @@ config/description="An open-source platform for playing tabletop games in a 3D e
 run/main_scene="res://Scenes/Game.tscn"
 config/icon="res://icon.png"
 
+[editor]
+
+script_templates_search_path="res://Scripts/Templates"
+
 [input]
 
 game_left={
