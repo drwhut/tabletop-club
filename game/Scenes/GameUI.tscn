@@ -9,7 +9,8 @@ anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "The UI of the game."
 }
 
 [node name="TopPanel" type="HBoxContainer" parent="."]
@@ -46,7 +47,10 @@ margin_bottom = 100.0
 window_title = "Objects"
 resizable = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "Displays the pieces that are available to spawn.
+
+The tree is filled once all of the assets have been imported."
 }
 
 [node name="ObjectsTree" type="Tree" parent="ObjectsDialog"]

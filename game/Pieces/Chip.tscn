@@ -15,6 +15,11 @@ height = 1.0
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "A chip is a stackable cylinder-shaped piece.
+
+The diameter and height of the cylinder is 1."
+}
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

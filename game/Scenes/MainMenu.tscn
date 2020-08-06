@@ -9,7 +9,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "The main menu of the game."
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -36,6 +37,9 @@ margin_top = 24.0
 margin_right = 233.0
 margin_bottom = 44.0
 text = "Debug: Start Dedicated Server"
+__meta__ = {
+"_editor_description_": "Only displayed if the game is running in Debug mode, and a server.cfg file exists in the working directory."
+}
 
 [node name="JoinContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 24.0
@@ -73,7 +77,8 @@ margin_top = -14.0
 margin_right = 40.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "Automatically displays the name and version of the game based on the project settings."
 }
 
 [node name="CopyrightLabel" type="Label" parent="."]
@@ -86,6 +91,10 @@ margin_top = -14.0
 grow_horizontal = 0
 align = 2
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "Automatically displays the first line of the description of the game in the project settings."
+}
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SingleplayerButton" to="." method="_on_SingleplayerButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ServerButton" to="." method="_on_ServerButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/JoinContainer/JoinButton" to="." method="_on_JoinButton_pressed"]

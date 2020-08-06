@@ -6,10 +6,15 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 0.05, 0.5 )
 
-[node name="PokerCard" type="RigidBody"]
+[node name="Card" type="RigidBody"]
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "A card is a stackable cube-shaped piece that can be put in one's hand.
+
+The length and width are 1, but the height is constant and small."
+}
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

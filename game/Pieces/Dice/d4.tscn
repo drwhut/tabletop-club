@@ -8,6 +8,11 @@ points = PoolVector3Array( 0.943, -0.333, 0, -0.471, -0.333, 0.816, -0.471, -0.3
 
 [node name="d4" type="RigidBody"]
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "A 4-sided dice.
+
+The shape is based on the unit sphere, i.e. each vertex lies on a sphere with radius 1."
+}
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

@@ -7,6 +7,9 @@
 
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": "The game scene connects the room and the UI together, and handles the connection and disconnection of multiplayer peers."
+}
 
 [node name="Room" parent="." instance=ExtResource( 1 )]
 
@@ -14,6 +17,9 @@ script = ExtResource( 3 )
 
 [node name="PieceDB" type="Node" parent="."]
 script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": "The DB is responsible for importing the assets when the game starts, and storing references to the assets in piece entries."
+}
 
 [node name="ConnectingDialog" type="PopupDialog" parent="."]
 margin_right = 200.0

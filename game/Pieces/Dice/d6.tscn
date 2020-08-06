@@ -10,6 +10,11 @@ size = Vector3( 1, 1, 1 )
 
 [node name="d6" type="RigidBody"]
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "A 6-sided dice.
+
+The shape is based on the unit cube, i.e. each vertex lies on a cube with a length, width and height of 1."
+}
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

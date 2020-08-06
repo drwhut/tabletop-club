@@ -14,6 +14,9 @@ extents = Vector3( 76.2, 0.5, 45.72 )
 
 [node name="Room" type="Spatial"]
 script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": "The room handles all of the 3D elements of the game, including the camera and the pieces in the game."
+}
 
 [node name="Table" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
@@ -34,6 +37,9 @@ shadow_enabled = true
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
 
 [node name="Pieces" type="Spatial" parent="."]
+__meta__ = {
+"_editor_description_": "Pieces that are spawned are put as children of this node, and are given a unique name."
+}
 [connection signal="cards_in_hand_requested" from="CameraController" to="." method="_on_CameraController_cards_in_hand_requested"]
 [connection signal="collect_pieces_requested" from="CameraController" to="." method="_on_CameraController_collect_pieces_requested"]
 [connection signal="hover_piece_requested" from="CameraController" to="." method="_on_CameraController_hover_piece_requested"]
