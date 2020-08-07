@@ -61,32 +61,46 @@ var _right_click_pos = Vector2()
 var _rotation = Vector2()
 var _selected_pieces = []
 
+# Append an array of pieces to the list of selected pieces.
+# pieces: The array of pieces to now be selected.
 func append_selected_pieces(pieces: Array) -> void:
 	for piece in pieces:
 		if piece is Piece and (not piece in _selected_pieces):
 			_selected_pieces.append(piece)
 			piece.set_appear_selected(true)
 
+# Clear the list of selected pieces.
 func clear_selected_pieces() -> void:
 	for piece in _selected_pieces:
 		piece.set_appear_selected(false)
 	
 	_selected_pieces.clear()
 
+# Erase a piece from the list of selected pieces.
+# piece: The piece to erase from the list.
 func erase_selected_pieces(piece: Piece) -> void:
 	if _selected_pieces.has(piece):
 		_selected_pieces.erase(piece)
 		piece.set_appear_selected(false)
 
+# Get the current position that pieces should hover at, given the camera and
+# mouse positions.
+# Returns: The position that hovering pieces should hover at.
 func get_hover_position() -> Vector3:
 	return _calculate_hover_position(get_viewport().get_mouse_position())
 
+# Get the list of selected pieces.
+# Returns: The list of selected pieces.
 func get_selected_pieces() -> Array:
 	return _selected_pieces
 
+# Set if the camera is hovering it's selected pieces.
+# is_hovering: If the camera is hovering it's selected pieces.
 func set_is_hovering(is_hovering: bool) -> void:
 	_is_hovering_selected = is_hovering
 
+# Set the list of selected pieces.
+# pieces: The new list of selected pieces.
 func set_selected_pieces(pieces: Array) -> void:
 	clear_selected_pieces()
 	append_selected_pieces(pieces)
@@ -341,6 +355,9 @@ func _unhandled_input(event):
 			
 			get_tree().set_input_as_handled()
 
+# Calculate the hover position of a piece, given a mouse position on the screen.
+# Returns: The hover position of a piece, based on the given mouse position.
+# mouse_position: The mouse position on the screen.
 func _calculate_hover_position(mouse_position: Vector2) -> Vector3:
 	# Get vectors representing a raycast from the camera.
 	var from = _camera.project_ray_origin(mouse_position)
@@ -355,6 +372,11 @@ func _calculate_hover_position(mouse_position: Vector2) -> Vector3:
 	
 	return Vector3(x, HOVER_Y_LEVEL, z)
 
+# Get the inheritance of a piece, which is the array of classes represented as
+# strings, that the piece is based on. The last element of the array should
+# always represent the Piece class.
+# Returns: The array of inheritance of the piece.
+# piece: The piece to get the inheritance of.
 func _get_piece_inheritance(piece: Piece) -> Array:
 	var inheritance = []
 	var script = piece.get_script()
@@ -365,9 +387,15 @@ func _get_piece_inheritance(piece: Piece) -> Array:
 	
 	return inheritance
 
+# Hide the context menu.
 func _hide_context_menu():
 	_piece_context_menu.visible = false
 
+# Check if an inheritance array has a particular class.
+# Returns: If the queried class is in the inheritance array.
+# inheritance: The inheritance array to check. Generated with
+# _get_piece_inheritance.
+# query: The class to query, as a string.
 func _inheritance_has(inheritance: Array, query: String) -> bool:
 	for piece_class in inheritance:
 		if piece_class.ends_with("/" + query + ".gd"):
@@ -400,7 +428,7 @@ func _on_context_delete_pressed() -> void:
 func _on_context_lock_pressed() -> void:
 	for piece in _selected_pieces:
 		if piece is Piece:
-			piece.rpc_id(1, "lock")
+			piece.rpc_id(1, "request_lock")
 
 func _on_context_orient_down_pressed() -> void:
 	for piece in _selected_pieces:
@@ -430,6 +458,7 @@ func _on_context_unlock_pressed() -> void:
 		if piece is Piece:
 			piece.rpc_id(1, "request_unlock")
 
+# Popup the context menu.
 func _popup_piece_context_menu() -> void:
 	if _selected_pieces.size() == 0:
 		return
@@ -566,6 +595,9 @@ func _popup_piece_context_menu() -> void:
 	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
 	_piece_context_menu.popup()
 
+# Start hovering the grabbed pieces.
+# fast: Did the user hover them quickly after grabbing them? If so, this may
+# have differing behaviour, e.g. if the piece is a stack.
 func _start_hovering_grabbed_piece(fast: bool) -> void:
 	if _is_grabbing_selected:
 		# NOTE: The server might not accept our request to hover a particular
@@ -586,6 +618,7 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 		
 		_is_grabbing_selected = false
 
+# Called when the camera starts moving either positionally or rotationally.
 func _start_moving() -> bool:
 	# If we were grabbing a piece while moving...
 	if _is_grabbing_selected:

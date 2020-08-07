@@ -52,30 +52,35 @@ var _last_server_state = {}
 var _last_velocity = Vector3()
 var _new_velocity = Vector3()
 
+# Apply a texture to the piece.
+# texture: The texture to apply.
 func apply_texture(texture: Texture) -> void:
-	if _mesh_instance != null:
+	if _mesh_instance:
 		var material = SpatialMaterial.new()
 		material.albedo_texture = texture
 		
 		_mesh_instance.set_surface_material(0, material)
 
+# If you are hovering this piece, ask the server to flip the piece vertically.
 master func flip_vertically() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		_srv_hover_up = -_srv_hover_up
 		set_angular_lock(false)
 
+# Determines if the piece is being shaked.
+# Returns: If the piece is being shaked.
 func is_being_shaked() -> bool:
 	if _new_velocity.dot(_last_velocity) < 0:
 		return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD
 	return false
 
+# Is the piece locked, i.e. unable to move?
+# Returns: If the piece is locked.
 func is_locked() -> bool:
 	return mode == MODE_STATIC
 
-master func lock() -> void:
-	mode = MODE_STATIC
-	rpc("lock_client", transform)
-
+# Called by the server to lock the piece on all clients, with the given
+# transform.
 puppet func lock_client(locked_transform: Transform) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -83,6 +88,7 @@ puppet func lock_client(locked_transform: Transform) -> void:
 	mode = MODE_STATIC
 	transform = locked_transform
 
+# Called by the server to remove the piece from the game.
 remotesync func remove_self() -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -91,25 +97,35 @@ remotesync func remove_self() -> void:
 		get_parent().remove_child(self)
 		queue_free()
 
+# Request the server to lock the piece.
 master func request_lock() -> void:
-	lock()
+	srv_lock()
 
+# Request the server to remove the piece.
 master func request_remove_self() -> void:
 	rpc("remove_self")
 
+# Request the server to unlock the piece.
 master func request_unlock() -> void:
 	rpc("unlock")
 
+# If you are hovering the piece, ask the server to reset the orientation of the
+# piece.
 master func reset_orientation() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		_srv_hover_up = Vector3.UP
 		set_angular_lock(false)
 
+# Set the angular lock on all 3 rotational axis.
+# lock: If the rotational axis are locked.
 func set_angular_lock(lock: bool) -> void:
+	# It's.. it's Kurt Angle! He's got the Angle Lock in on The Rock!!!
 	axis_lock_angular_x = lock
 	axis_lock_angular_y = lock
 	axis_lock_angular_z = lock
 
+# Set the piece to appear like it is selected.
+# selected: Should the piece appear selected?
 func set_appear_selected(selected: bool) -> void:
 	if _mesh_instance:
 		var material = _mesh_instance.get_surface_material(0)
@@ -119,29 +135,43 @@ func set_appear_selected(selected: bool) -> void:
 			
 			material.emission_enabled = selected
 
+# If you are hovering the piece, ask the server to set the hover position of the
+# piece.
+# hover_position: The position the hovering piece will go towards.
 master func set_hover_position(hover_position: Vector3) -> void:
 	# Only allow the hover position to be set if the request is coming from the
 	# player that is hovering the piece.
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		_srv_hover_position = hover_position
 
+# Called by the server to store the server's physics state locally.
+# state: The server's physics state for this piece.
 puppet func set_latest_server_physics_state(state: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
 	_last_server_state = state
-	
-	# Similarly to in start_hovering(), we want to make sure _integrate_forces
-	# runs, even when we're not hovering anything.
-	if state.has("sleeping"):
-		sleeping = state["sleeping"]
+	sleeping = false
 
+# Get the ID of the player that is hovering the piece.
+# Returns: The ID of the player hovering the piece. 0 if the piece is not being
+# hovered.
 func srv_get_hovering_player() -> int:
 	return _srv_hover_player
 
+# Is the piece being hovered?
+# Returns: If the piece is being hovered.
 func srv_is_hovering() -> bool:
 	return _srv_hover_player > 0
 
+# Lock the piece server-side.
+func srv_lock() -> void:
+	mode = MODE_STATIC
+	rpc("lock_client", transform)
+
+# Start hovering the piece server-side.
+# Returns: If the piece started hovering.
+# player_id: The ID of the player hovering the piece.
 func srv_start_hovering(player_id: int) -> bool:
 	if not (srv_is_hovering() or is_locked()):
 		_srv_hover_player = player_id
@@ -211,6 +241,7 @@ func srv_start_hovering(player_id: int) -> bool:
 	
 	return false
 
+# If you are hovering the piece, ask the server to stop hovering it.
 master func stop_hovering() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		_srv_hover_player = 0
@@ -219,6 +250,7 @@ master func stop_hovering() -> void:
 		
 		set_angular_lock(false)
 
+# Called by the server to unlock the piece.
 remotesync func unlock() -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -274,7 +306,6 @@ func _integrate_forces(state):
 	else:
 		# The client, if it has received a new physics state from the
 		# server, needs to update it here.
-		state.sleeping = false
 		
 		if _last_server_state.has("angular_velocity"):
 			state.angular_velocity = _last_server_state["angular_velocity"]
@@ -297,6 +328,9 @@ func _integrate_forces(state):
 func _on_tree_exiting() -> void:
 	emit_signal("piece_exiting_tree", self)
 
+# Apply forces to the piece to get it to the desired hover position and
+# orientation.
+# state: The direct physics state of the piece.
 func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Force the piece to the given location.
 	state.apply_central_impulse(LINEAR_FORCE_SCALAR * (_srv_hover_position - translation))

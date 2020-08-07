@@ -31,6 +31,9 @@ enum {
 
 var _current_scene: Node = null
 
+# Start the game as a client.
+# server: The server to connect to.
+# port: The port to connect to.
 func start_game_as_client(server: String, port: int) -> void:
 	call_deferred("_goto_scene", "res://Scenes/Game.tscn", {
 		"mode": MODE_CLIENT,
@@ -38,6 +41,9 @@ func start_game_as_client(server: String, port: int) -> void:
 		"port": port
 	})
 
+# Start the game as a server.
+# max_players: The maximum number of allowed players.
+# port: The port to host the server on.
 func start_game_as_server(max_players: int, port: int) -> void:
 	call_deferred("_goto_scene", "res://Scenes/Game.tscn", {
 		"mode": MODE_SERVER,
@@ -45,16 +51,20 @@ func start_game_as_server(max_players: int, port: int) -> void:
 		"port": port
 	})
 
+# Start the game in singleplayer mode.
 func start_game_singleplayer() -> void:
 	call_deferred("_goto_scene", "res://Scenes/Game.tscn", {
 		"mode": MODE_SINGLEPLAYER
 	})
 
+# Start the main menu.
 func start_main_menu() -> void:
 	call_deferred("_goto_scene", "res://Scenes/MainMenu.tscn", {
 		"mode": MODE_NONE
 	})
 
+# Start the main menu, and display an error message.
+# error: The error message to display.
 func start_main_menu_with_error(error: String) -> void:
 	call_deferred("_goto_scene", "res://Scenes/MainMenu.tscn", {
 		"mode": MODE_ERROR,
@@ -65,6 +75,9 @@ func _ready():
 	var root = get_tree().get_root()
 	_current_scene = root.get_child(root.get_child_count() - 1)
 
+# Go to a given scene, with a set of arguments.
+# path: The file path of the scene to load.
+# args: The arguments for the scene to use after it has loaded.
 func _goto_scene(path: String, args: Dictionary) -> void:
 	if not args.has("mode"):
 		push_error("Scene argument 'mode' is missing!")

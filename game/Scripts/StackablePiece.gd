@@ -30,6 +30,9 @@ const DOT_STACK_THRESHOLD = 0.9
 
 var _ignore_y_rotation = false
 
+# Check if another piece has a matching shape and scale.
+# Returns: If the other piece has a matching shape and scale.
+# body: The piece to check against.
 func matches(body: Piece) -> bool:
 	if body.piece_entry.scene_path == piece_entry.scene_path:
 		if body.piece_entry.scale == piece_entry.scale:
@@ -40,6 +43,9 @@ func matches(body: Piece) -> bool:
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
 
+# Can this piece stack with another piece?
+# Returns: If the piece can stack with the other piece.
+# body: The piece to check against.
 func _can_stack(body: Spatial) -> bool:
 	var me = transform
 	var you = body.transform

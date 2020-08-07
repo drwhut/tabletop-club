@@ -32,6 +32,12 @@ onready var _pieces = $Pieces
 
 var _srv_next_piece_name = 0
 
+# Called by the server to add a piece to the room.
+# name: The name of the new piece.
+# transform: The initial transform of the new piece.
+# piece_entry: The piece's entry in the PieceDB.
+# hover_player: If set to > 0, it will initially be in a hover state by the
+# player with the given ID.
 remotesync func add_piece(name: String, transform: Transform,
 	piece_entry: Dictionary, hover_player: int = 0) -> void:
 	
@@ -77,8 +83,13 @@ remotesync func add_piece(name: String, transform: Transform,
 	if get_tree().is_network_server() and hover_player > 0:
 		piece.srv_start_hovering(hover_player)
 
+# Called by the server to add a piece to a stack.
+# piece_name: The name of the piece.
+# stack_name: The name of the stack.
+# on: Where to add the piece to in the stack.
+# flip: Should the piece be flipped upon entering the stack?
 remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
-	on: int = Stack.FLIP_AUTO, flip: int = Stack.FLIP_AUTO) -> void:
+	on: int = Stack.STACK_AUTO, flip: int = Stack.FLIP_AUTO) -> void:
 	
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -114,6 +125,11 @@ remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 	
 	piece.queue_free()
 
+# Called by the server to add a stack to the room with 2 initial pieces.
+# name: The name of the new stack.
+# transform: The initial transform of the new stack.
+# piece1_name: The name of the first piece to add to the stack.
+# piece2_name: The name of the second piece to add to the stack.
 remotesync func add_stack(name: String, transform: Transform,
 	piece1_name: String, piece2_name: String) -> void:
 	
@@ -159,6 +175,9 @@ remotesync func add_stack(name: String, transform: Transform,
 	piece1.queue_free()
 	piece2.queue_free()
 
+# Called by the server to add an empty stack to the room.
+# name: The name of the new stack.
+# transform: The initial transform of the new stack.
 puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
 	
 	if get_tree().get_rpc_sender_id() != 1:
@@ -176,6 +195,11 @@ puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
 	
 	return stack
 
+# Called by the server to add a pre-filled stack to the room.
+# name: The name of the new stack.
+# transform: The initial transform of the new stack.
+# stack_entry: The stack's entry in the PieceDB.
+# piece_names: The names of the pieces in the newly filled stack.
 remotesync func add_stack_filled(name: String, transform: Transform,
 	stack_entry: Dictionary, piece_names: Array) -> void:
 	
@@ -213,6 +237,9 @@ remotesync func add_stack_filled(name: String, transform: Transform,
 	
 	single_piece.queue_free()
 
+# Called by the server to merge the contents of one stack into another stack.
+# stack1_name: The name of the stack to merge contents from.
+# stack2_name: The name of the stack to merge contents to.
 remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> void:
 	
 	if get_tree().get_rpc_sender_id() != 1:
@@ -289,18 +316,29 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 	_pieces.remove_child(stack1)
 	stack1.queue_free()
 
+# Get the player camera's hover position.
+# Returns: The current hover position.
 func get_camera_hover_position() -> Vector3:
 	return _camera_controller.get_hover_position()
 
+# Get a piece in the room with a given name.
+# Returns: The piece with the given name.
+# name: The name of the piece.
 func get_piece_with_name(name: String) -> Piece:
 	return _pieces.get_node(name)
 
+# Get the list of pieces in the room.
+# Returns: The list of pieces in the room.
 func get_pieces() -> Array:
 	return _pieces.get_children()
 
+# Get the number of pieces in the room.
+# Returns: The number of pieces in the room.
 func get_piece_count() -> int:
 	return _pieces.get_child_count()
 
+# Get the current room state.
+# Returns: The current room state.
 func get_state() -> Dictionary:
 	var out = {}
 	
@@ -338,6 +376,8 @@ func get_state() -> Dictionary:
 	out["stacks"] = stack_dict
 	return out
 
+# Request the server to add a pre-filled stack.
+# stack_entry: The stack's entry in the PieceDB.
 master func request_add_stack_filled(stack_entry: Dictionary) -> void:
 	# Before we can get everyone to add the stack, we need to come up with names
 	# for the stack and it's items.
@@ -351,6 +391,9 @@ master func request_add_stack_filled(stack_entry: Dictionary) -> void:
 	
 	rpc("add_stack_filled", stack_name, transform, stack_entry, piece_names)
 
+# Request the server to collect a set of pieces and, if possible, put them into
+# stacks.
+# piece_names: The names of the pieces to try and collect.
 master func request_collect_pieces(piece_names: Array) -> void:
 	var pieces = []
 	for piece_name in piece_names:
@@ -390,6 +433,8 @@ master func request_collect_pieces(piece_names: Array) -> void:
 		
 		add_to = pieces.pop_front()
 
+# Request the server to hover a piece.
+# piece_name: The name of the piece to hover.
 master func request_hover_piece(piece_name: String) -> void:
 	
 	var piece = _pieces.get_node(piece_name)
@@ -407,6 +452,8 @@ master func request_hover_piece(piece_name: String) -> void:
 	if piece.srv_start_hovering(player_id):
 		rpc_id(player_id, "request_hover_piece_accepted", piece_name)
 
+# Called by the server if the request to hover a piece was accepted.
+# piece_name: The name of the piece we are now hovering.
 remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -430,6 +477,9 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	if piece is Card:
 		emit_signal("started_hovering_card", piece)
 
+# Request the server to pop the piece at the top of a stack.
+# stack_name: The name of the stack to pop.
+# hover: Do we want to start hovering the piece afterwards?
 master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 	
 	var player_id = get_tree().get_rpc_sender_id()
@@ -484,6 +534,9 @@ master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 	if stack.get_piece_count() == 1:
 		request_pop_stack(stack_name, false)
 
+# Called by the server if the request to pop a stack was accepted, and we are
+# now hovering the new piece.
+# piece_name: The name of the piece that is now hovering.
 remotesync func request_pop_stack_accepted(piece_name: String) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -492,6 +545,11 @@ remotesync func request_pop_stack_accepted(piece_name: String) -> void:
 	# stack!
 	request_hover_piece_accepted(piece_name)
 
+# Request the server to get a stack to collect all of the pieces that it can
+# stack.
+# stack_name: The name of the collecting stack.
+# collect_stacks: Do we want to collect other stacks? If false, it only collects
+# individual pieces.
 master func request_stack_collect_all(stack_name: String, collect_stacks: bool) -> void:
 	var stack = _pieces.get_node(stack_name)
 	
@@ -516,6 +574,8 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 						continue
 					rpc("add_piece_to_stack", piece.name, stack_name, Stack.STACK_TOP)
 
+# Set the room state.
+# state: The new room state.
 puppet func set_state(state: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -523,6 +583,7 @@ puppet func set_state(state: Dictionary) -> void:
 	# Delete all the pieces on the board currently before we begin.
 	for child in _pieces.get_children():
 		remove_child(child)
+		child.queue_free()
 	
 	if state.has("pieces"):
 		for piece_name in state["pieces"]:
@@ -636,11 +697,16 @@ puppet func set_state(state: Dictionary) -> void:
 				
 				add_piece_to_stack(stack_piece_name, stack_name, Stack.STACK_TOP, flip)
 
+# Get the next piece name.
+# Returns: The next piece name.
 func srv_get_next_piece_name() -> String:
 	var next_name = str(_srv_next_piece_name)
 	_srv_next_piece_name += 1
 	return next_name
 
+# Create a Piece object out of a generic Spatial object.
+# Returns: A Piece.
+# piece: The Spatial object.
 func _build_piece(piece: Spatial) -> Piece:
 	var out = Piece.new()
 	out.add_child(piece)
@@ -657,6 +723,9 @@ func _build_piece(piece: Spatial) -> Piece:
 	
 	return out
 
+# Find the first mesh instance node in a Spatial.
+# Returns: The first mesh instance if it exists, null otherwise.
+# piece: The Spatial to query.
 func _find_first_mesh_instance(piece: Spatial):
 	if piece is MeshInstance:
 		return piece
@@ -668,6 +737,10 @@ func _find_first_mesh_instance(piece: Spatial):
 	
 	return null
 
+# Create a StackPieceInstance from a stackable piece, which can be put into a
+# stack.
+# Returns: A StackPieceInstance representing the piece's mesh instance.
+# piece: The piece to use.
 func _get_stack_piece_mesh(piece: StackablePiece) -> StackPieceInstance:
 	var piece_mesh = StackPieceInstance.new()
 	piece_mesh.name = piece.name
@@ -688,6 +761,9 @@ func _get_stack_piece_mesh(piece: StackablePiece) -> StackPieceInstance:
 	
 	return piece_mesh
 
+# Get the collision shape of a stackable piece.
+# Returns: The piece's collision shape.
+# piece: The piece to query.
 func _get_stack_piece_shape(piece: StackablePiece) -> CollisionShape:
 	var piece_collision_shape = piece.get_node("CollisionShape")
 	if not piece_collision_shape:
@@ -711,6 +787,9 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 			rpc("add_stack", srv_get_next_piece_name(), piece1.transform, piece1.name,
 				piece2.name)
 
+# Scale a piece and all of it's collision shapes and mesh instances.
+# piece: The Spatial to scale.
+# scale: How much to scale the piece by.
 func _scale_piece(piece: Spatial, scale: Vector3) -> void:
 	if piece is CollisionShape or piece is MeshInstance:
 		piece.scale_object_local(scale)

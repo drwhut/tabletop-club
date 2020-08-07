@@ -39,9 +39,12 @@ var _db = {}
 # https://github.com/drwhut/open_tabletop_import_module
 var _importer = TabletopImporter.new()
 
+# Get the piece database.
+# Returns: The piece database.
 func get_db() -> Dictionary:
 	return _db
 
+# Import assets from all directories.
 func import_all() -> void:
 	var dir = Directory.new()
 	
@@ -59,6 +62,8 @@ func import_all() -> void:
 				
 				entry = dir.get_next()
 
+# Import assets from a given game directory.
+# dir: The directory to import assets from.
 func import_game_dir(dir: Directory) -> void:
 	var game = dir.get_current_dir().get_file()
 	
@@ -79,6 +84,12 @@ func import_game_dir(dir: Directory) -> void:
 	_import_dir_if_exists(dir, game, "chips", "res://Pieces/Chip.tscn")
 	_import_dir_if_exists(dir, game, "pieces", "")
 
+# Import a directory of assets, but only if the directory exists.
+# current_dir: The current working directory.
+# game: The name of the game.
+# type: The name of the type of asset.
+# scene: The path of the scene to use for the asset. If blank, it is assumed
+# we are importing scenes.
 func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 	scene: String) -> void:
 	
@@ -124,6 +135,10 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 		
 		current_dir.change_dir("..")
 
+# Add a piece entry to the database.
+# game: The name of the game.
+# type: The type of the assets.
+# entry: The entry to add.
 func _add_entry_to_db(game: String, type: String, entry: Dictionary) -> void:
 	if not _db.has(game):
 		_db[game] = {}
@@ -135,6 +150,10 @@ func _add_entry_to_db(game: String, type: String, entry: Dictionary) -> void:
 	
 	print("Added: ", game, "/", type, "/", entry.name)
 
+# Get the directory of a game's type in the user:// directory.
+# Returns: The directory as a Directory object.
+# game: The name of the game.
+# type: The type of the asset.
 func _get_asset_dir(game: String, type: String) -> Directory:
 	var dir = Directory.new()
 	var dir_error = dir.open("user://")
@@ -148,6 +167,13 @@ func _get_asset_dir(game: String, type: String) -> Directory:
 	
 	return dir
 
+# Get an asset's config value. It will search the config file with wildcards
+# from right to left (e.g. Card -> Car* -> Ca* -> C* -> *).
+# Returns: The config value. If it doesn' exists, returns default.
+# config: The config file to query.
+# section: The section to query (this is the value that is wildcarded).
+# key: The key to query.
+# default: The default value to return if the value doesn't exist.
 func _get_file_config_value(config: ConfigFile, section: String, key: String, default):
 	var next_section = section
 	
@@ -166,10 +192,23 @@ func _get_file_config_value(config: ConfigFile, section: String, key: String, de
 	
 	return config.get_value(section, key, _get_file_config_value(config, next_section, key, default))
 
+# Given a file path, get the file name without the extension.
+# Returns: The file name of file_path without the extension.
+# file_path: The file path.
 func _get_file_without_ext(file_path: String) -> String:
 	var file = file_path.get_file()
 	return file.substr(0, file.length() - file.get_extension().length() - 1)
 
+# Import an asset. If it has already been imported before, and it's contents
+# have not changed, it is not reimported, but the piece entry is still added to
+# the database.
+# Returns: An Error.
+# from: The file path of the asset.
+# game: The name of the game to import the asset to.
+# type: The type of the asset to import to.
+# scene: The scene path to associate with the asset. If blank, it is assumed
+# the asset is a scene.
+# config: The configuration file for the asset's directory.
 func _import_asset(from: String, game: String, type: String, scene: String,
 	config: ConfigFile) -> int:
 	
@@ -200,6 +239,10 @@ func _import_asset(from: String, game: String, type: String, scene: String,
 	
 	return OK
 
+# Import a generic file.
+# Returns: An Error.
+# from: The file path of the file to import.
+# to: The path of where to copy the file to.
 func _import_file(from: String, to: String) -> int:
 	var copy_err = _importer.copy_file(from, to)
 	
@@ -213,6 +256,11 @@ func _import_file(from: String, to: String) -> int:
 	else:
 		return OK
 
+# Import a stack configuration file.
+# stack_config: The stack config file.
+# game: The name of the game.
+# type: The type of the assets.
+# scene: The scene to associate with the assets.
 func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 	scene: String) -> void:
 	

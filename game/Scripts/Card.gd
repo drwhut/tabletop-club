@@ -25,6 +25,8 @@ class_name Card
 
 var _srv_place_aside_player: int = 0
 
+# Bring back the card if it has been set aside.
+# new_transform: The transform of the card once it has been brought back.
 remotesync func bring_back(new_transform: Transform) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -38,6 +40,9 @@ remotesync func bring_back(new_transform: Transform) -> void:
 	# new position.
 	_last_server_state = {}
 
+# Place aside the card so that it is out of sight, and it will not move.
+# player_id: The ID of the player setting aside the card. The card can only be
+# brought back by the player with the same ID.
 remotesync func place_aside(player_id: int) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -48,9 +53,14 @@ remotesync func place_aside(player_id: int) -> void:
 	transform.origin = Vector3(9999, 9999, 9999)
 	mode = MODE_STATIC
 
+# Get the player that set aside the card.
+# Returns: The player that set aside the card. 0 if the card has not been set
+# aside.
 func srv_get_place_aside_player() -> int:
 	return _srv_place_aside_player
 
+# Has the card been set aside?
+# Returns: If the card has been set aside.
 func srv_is_placed_aside() -> bool:
 	return _srv_place_aside_player > 0
 

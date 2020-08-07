@@ -43,6 +43,11 @@ onready var _pieces = $Pieces
 var _collision_unit_height = 0
 var _mesh_unit_height = 0
 
+# Add a piece to the stack.
+# piece: The stack piece instance to add.
+# shape: The shape of the piece.
+# on: Where to add the piece in the stack.
+# flip: Whether the piece should be flipped when entering the stack.
 func add_piece(piece: StackPieceInstance, shape: CollisionShape,
 	on: int = STACK_AUTO, flip: int = FLIP_AUTO) -> void:
 	
@@ -67,12 +72,14 @@ func add_piece(piece: StackPieceInstance, shape: CollisionShape,
 	
 	_add_piece_at_pos(piece, shape, pos, flip)
 
+# Empty the stack.
 # NOTE: If you plan to remove the stack, but get the pieces of the stack (e.g.
 # when putting one stack on top of another), use this function!
 # This function exists as a workaround to a bug where the engine crashes when
 # you change the collision shape of a rigidbody before removing it from the
 # tree.
 # See: https://github.com/godotengine/godot/issues/40283
+# Returns: The stack piece instances.
 func empty() -> Array:
 	var out = []
 	
@@ -82,12 +89,18 @@ func empty() -> Array:
 	
 	return out
 
+# Get the pieces in the stack.
+# Returns: The pieces in the stack.
 func get_pieces() -> Array:
 	return _pieces.get_children()
 
+# Get the number of pieces in the stack.
+# Returns: The number of pieces in the stack.
 func get_piece_count() -> int:
 	return _pieces.get_child_count()
 
+# Get the height of the collision shape.
+# Returns: The height of the collision shape.
 func get_total_height() -> float:
 	if _collision_shape.shape is BoxShape:
 		return _collision_shape.shape.extents.y * 2
@@ -96,12 +109,21 @@ func get_total_height() -> float:
 	
 	return 0.0
 
+# Get the unit height of the collision shape, i.e. how much height one piece
+# contributes to the total height.
+# Returns: The unit collision height.
 func get_unit_height() -> float:
 	return _collision_unit_height
 
+# Is the piece's orientation flipped relative to the stack's orientation?
+# Returns: If the piece's orientation if flipped.
+# piece: The stack piece instance to query.
 func is_piece_flipped(piece: StackPieceInstance) -> bool:
 	return transform.basis.y.dot(piece.transform.basis.y) < 0
 
+# Called by the server to orient all of the pieces in the stack in a particular
+# direction.
+# up: Should all of the pieces be facing up?
 remotesync func orient_pieces(up: bool) -> void:
 	for piece in get_pieces():
 		var current_basis = piece.transform.basis
@@ -112,6 +134,9 @@ remotesync func orient_pieces(up: bool) -> void:
 		elif not up and current_basis.y.dot(Vector3.UP) > 0:
 			piece.transform.basis = current_basis.rotated(Vector3.BACK, PI)
 
+# Pop a piece from the stack.
+# Returns: The stack piece instance that was poped.
+# from: Where to pop the stack from.
 func pop_piece(from: int = STACK_AUTO) -> StackPieceInstance:
 	if _pieces.get_child_count() == 0:
 		return null
@@ -133,6 +158,8 @@ func pop_piece(from: int = STACK_AUTO) -> StackPieceInstance:
 	
 	return _remove_piece_at_pos(pos)
 
+# Remove a piece from the stack.
+# piece: The stack piece instance to remove.
 func remove_piece(piece: StackPieceInstance) -> void:
 	if _pieces.is_a_parent_of(piece):
 		_remove_piece_at_pos(piece.get_index())
@@ -140,6 +167,8 @@ func remove_piece(piece: StackPieceInstance) -> void:
 		push_error("Piece " + piece.name + " is not a child of this stack!")
 		return
 
+# Called by the server to remove a piece from the stack by it's name.
+# name: The name of the stack piece instance to remove.
 puppet func remove_piece_by_name(name: String) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -152,6 +181,9 @@ puppet func remove_piece_by_name(name: String) -> void:
 	
 	remove_piece(piece)
 
+# Request the server to orient all of the pieces in the stack in a particular
+# direction.
+# up: Should all of the pieces be facing up?
 master func request_orient_pieces(up: bool) -> void:
 	# If the stack is upside down, orient the opposite direction.
 	if transform.basis.y.dot(Vector3.UP) < 0:
@@ -159,6 +191,7 @@ master func request_orient_pieces(up: bool) -> void:
 	
 	rpc("orient_pieces", up)
 
+# Request the server to shuffle the stack.
 master func request_shuffle() -> void:
 	var names = []
 	for piece in get_pieces():
@@ -169,6 +202,7 @@ master func request_shuffle() -> void:
 	
 	rpc("set_piece_order", names)
 
+# Request the server to sort the stack by texture path.
 master func request_sort() -> void:
 	var items = []
 	for piece in get_pieces():
@@ -186,10 +220,14 @@ master func request_sort() -> void:
 	
 	rpc("set_piece_order", names)
 
+# Set the stack to appear like it is selected.
+# selected: Should the stack appear like it is selected?
 func set_appear_selected(selected: bool) -> void:
 	for piece in get_pieces():
 		piece.set_appear_selected(selected)
 
+# Called by the server to set the order of the pieces in the stack.
+# order: The piece names in their new order.
 remotesync func set_piece_order(order: Array) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -211,6 +249,11 @@ func _physics_process(delta):
 	if get_tree().is_network_server() and is_being_shaked():
 		request_shuffle()
 
+# Add a piece to the stack at a given position.
+# piece: The stack piece instance to add.
+# shape: The piece's collision shape.
+# pos: The position of the new piece in the stack.
+# flip: Whether the piece should be flipped or not.
 func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	pos: int, flip: int) -> void:
 	
@@ -281,6 +324,9 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	
 	_set_piece_heights()
 
+# Remove the piece at the given position.
+# Returns: The stack piece instance at the given position.
+# pos: The position to remove from.
 func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	if pos < 0 or pos >= _pieces.get_child_count():
 		push_error("Cannot remove " + str(pos) + "th child from the stack!")
@@ -309,6 +355,7 @@ func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	
 	return piece
 
+# Set the y-position of the pieces in the stack.
 func _set_piece_heights() -> void:
 	var height = _mesh_unit_height * _pieces.get_child_count()
 	var i = 0
@@ -316,6 +363,11 @@ func _set_piece_heights() -> void:
 		piece.transform.origin.y = (_mesh_unit_height * (i + 0.5)) - (height / 2)
 		i += 1
 
+# Use the merge sort algorithm to sort the pieces by their texture paths.
+# array: The array to sort.
+# copy: A copy of the original array.
+# begin: The beginning of the merge sort (inclusive).
+# end: The end of the merge sort (exclusive).
 func _merge_sort(array: Array, copy: Array, begin: int, end: int) -> void:
 	if end - begin <= 1:
 		return

@@ -30,8 +30,9 @@ use tabs instead of spaces (this is the default setting).
 Notice" template.
 
 * If you are adding functions that aren't built-in functions (e.g. `_ready()`),
-then please add a comment above the function that describes what it does, what
-it returns and what the arguments are!
+or functions that are called by signals (e.g. `_on_*`) then please add a
+comment above the function that describes what it does, what it returns and
+what the arguments are!
 
 * If you are adding scenes, then make sure to write editor descriptions for the
 nodes!

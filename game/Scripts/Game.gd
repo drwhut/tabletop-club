@@ -26,6 +26,9 @@ onready var _piece_db = $PieceDB
 onready var _room = $Room
 onready var _ui = $GameUI
 
+# Initialise a client peer.
+# server: The server to connect to.
+# port: The port number to connect to.
 func init_client(server: String, port: int) -> void:
 	print("Connecting to ", server, ":", port, " ...")
 	var peer = NetworkedMultiplayerENet.new()
@@ -34,18 +37,25 @@ func init_client(server: String, port: int) -> void:
 	
 	_connecting_dialog.popup_centered()
 
+# Initialise a server peer.
+# max_players: The maximum number of peers (excluding the server) that can
+# connect to the server.
+# port: The port number to host the server on.
 func init_server(max_players: int, port: int) -> void:
 	print("Starting server on port ", port, " with ", max_players, " max players...")
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_server(port, max_players + 1)
 	get_tree().network_peer = peer
 
+# Initialise a singleplayer game, which is a server that refuses connections.
 func init_singleplayer() -> void:
 	print("Starting singleplayer...")
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	init_server(0, rng.randi_range(10000, 65535))
 
+# Request the server to put a card in the game into your hand.
+# card_name: The name of the card.
 master func request_card_in_hand(card_name: String) -> void:
 	var card = _room.get_piece_with_name(card_name)
 	var player_id = get_tree().get_rpc_sender_id()
@@ -66,6 +76,8 @@ master func request_card_in_hand(card_name: String) -> void:
 		card.rpc("place_aside", player_id)
 		rpc_id(player_id, "request_card_in_hand_accepted", card_name)
 
+# Called if the server accepted our request to put a card in our hand.
+# card_name: The name of the card.
 remotesync func request_card_in_hand_accepted(card_name: String) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -82,6 +94,10 @@ remotesync func request_card_in_hand_accepted(card_name: String) -> void:
 	
 	_ui.add_card_to_hand(card, card.transform.basis.y.dot(Vector3.UP) > 0)
 
+# Request the server to remove a card that is in our hand, and put it back into
+# the game.
+# card_name: The name of the card to put back into the game.
+# transform: The transform the card should have once it is back in the game.
 master func request_card_out_hand(card_name: String, transform: Transform) -> void:
 	var card = _room.get_piece_with_name(card_name)
 	var player_id = get_tree().get_rpc_sender_id()
@@ -102,6 +118,8 @@ master func request_card_out_hand(card_name: String, transform: Transform) -> vo
 	
 	rpc_id(player_id, "request_card_out_hand_accepted", card.name)
 
+# Called if the server accepted our request to take a card out of our hand.
+# card_name: The name of the card.
 remotesync func request_card_out_hand_accepted(card_name: String) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -121,6 +139,8 @@ remotesync func request_card_out_hand_accepted(card_name: String) -> void:
 	
 	_ui.remove_card_from_hand(card)
 
+# Request the server to add a piece to the game.
+# piece_entry: The piece's entry in the PieceDB.
 master func request_game_piece(piece_entry: Dictionary) -> void:
 	# Is the piece a pre-filled stack?
 	if piece_entry.has("texture_paths") and (not piece_entry.has("texture_path")):

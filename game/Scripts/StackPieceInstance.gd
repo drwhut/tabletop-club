@@ -25,6 +25,8 @@ class_name StackPieceInstance
 
 var piece_entry: Dictionary = {}
 
+# Set the piece to appear like it has been selected.
+# selected: Should the piece appear selected?
 func set_appear_selected(selected: bool) -> void:
 	# NOTE: This should be nearly identical to Piece.set_appear_selected!
 	var material = get_surface_material(0)

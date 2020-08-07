@@ -25,6 +25,8 @@ onready var _error_dialog = $ErrorDialog
 onready var _join_server_edit = $CenterContainer/VBoxContainer/JoinContainer/JoinServerEdit
 onready var _server_button = $CenterContainer/VBoxContainer/ServerButton
 
+# Display an error.
+# error: The error to display.
 func display_error(error: String) -> void:
 	_error_dialog.dialog_text = error
 	_error_dialog.popup_centered()
@@ -37,6 +39,8 @@ func _ready():
 		else:
 			_start_dedicated_server()
 
+# Start a dedicated server using the values in the server.cfg file in the
+# current working directory.
 func _start_dedicated_server():
 	var server_config = ConfigFile.new()
 	var server_config_err = server_config.load("server.cfg")

@@ -38,6 +38,9 @@ var _holding_card = false
 var _mouse_in_hand = false
 var _mouse_over_cards = []
 
+# Add a card to the hand.
+# card: The card to add to the hand.
+# front_face: Is the card's front face being shown?
 func add_card_to_hand(card: Card, front_face: bool) -> void:
 	var texture_rect = _create_card_half_texture(card, front_face)
 	_hand.add_child(texture_rect)
@@ -51,6 +54,8 @@ func add_card_to_hand(card: Card, front_face: bool) -> void:
 	if _hand.is_a_parent_of(_hand_highlight):
 		_hand.remove_child(_hand_highlight)
 
+# Remove a card from our hand.
+# card: The card to remove.
 func remove_card_from_hand(card: Card) -> void:
 	for card_texture in _hand.get_children():
 		if card_texture is CardTextureRect:
@@ -63,6 +68,8 @@ func remove_card_from_hand(card: Card) -> void:
 		if _grabbed_card_from_hand.card == card:
 			_grabbed_card_from_hand = null
 
+# Set the piece tree contents, based on the piece database given.
+# pieces: The database from the PieceDB.
 func set_piece_tree_from_db(pieces: Dictionary) -> void:
 	var root = _objects_tree.create_item()
 	_objects_tree.set_hide_root(true)
@@ -114,6 +121,9 @@ func _process(delta):
 			_candidate_card.front_face = !_candidate_card.front_face
 			_candidate_card.update()
 
+# Add a game's piece entries to the piece tree.
+# game_name: The name of the game.
+# game_pieces: The game's piece entries.
 func _add_game_to_tree(game_name: String, game_pieces: Dictionary) -> void:
 	var game_node = _objects_tree.create_item(_objects_tree.get_root())
 	game_node.set_text(0, game_name)
@@ -134,6 +144,9 @@ func _add_game_to_tree(game_name: String, game_pieces: Dictionary) -> void:
 	_add_type_to_tree(game_node, game_pieces, "pieces", "Pieces")
 	_add_type_to_tree(game_node, game_pieces, "stacks", "Stacks")
 
+# Add a piece to the piece tree.
+# parent: The parent node of the piece's node in the tree.
+# piece: The piece entry of the piece to add.
 func _add_piece_to_tree(parent: TreeItem, piece: Dictionary) -> TreeItem:
 	var node = _objects_tree.create_item(parent)
 	node.set_text(0, piece["name"])
@@ -143,6 +156,11 @@ func _add_piece_to_tree(parent: TreeItem, piece: Dictionary) -> TreeItem:
 	
 	return node
 
+# Add a type of piece to the piece tree.
+# parent: The parent node to add the type node to.
+# game_pieces: The game's piece entries.
+# type_name: The name pf the type in the dictionary.
+# display_name: The name of the type in the piece tree.
 func _add_type_to_tree(parent: TreeItem, game_pieces: Dictionary,
 	type_name: String, display_name: String) -> void:
 	
@@ -159,6 +177,9 @@ func _add_type_to_tree(parent: TreeItem, game_pieces: Dictionary,
 		else:
 			node.free()
 
+# Create a half-texture based on a given card.
+# card: The card to create the half-texture from.
+# front_face: Is the front face of the card showing?
 func _create_card_half_texture(card: Card, front_face: bool) -> CardTextureRect:
 	var card_entry = card.piece_entry
 	
