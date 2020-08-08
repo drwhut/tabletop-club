@@ -139,17 +139,25 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 		else:
 			push_warning("Failed to load: " + config_path + " (error " + str(config_err) + ")")
 		
+		var files = []
+		
 		current_dir.list_dir_begin(true, true)
 		
 		var file = current_dir.get_next()
 		while file:
 			var file_path = current_dir.get_current_dir() + "/" + file
+			files.append(file_path)
+			
+			file = current_dir.get_next()
+		
+		# Sort the array of file paths such that textures are before scenes.
+		files.sort_custom(self, "_sort_files")
+		
+		for file_path in files:
 			var import_err = _import_asset(file_path, game, type, scene, config)
 			
 			if import_err:
 				push_error("Failed to import: " + file_path + " (error " + str(import_err) + ")")
-				
-			file = current_dir.get_next()
 		
 		if scene:
 			var stack_config_path = current_dir.get_current_dir() + "/stacks.cfg"
@@ -350,6 +358,15 @@ func _send_import_signal(file: String) -> void:
 	_import_file = file
 	_import_send_signal = true
 	_import_mutex.unlock()
+
+# Sort files such that texture resources are before scene resources.
+# Returns: If the order of the files is correct.
+# file1: The first file path.
+# file2: The second file path.
+func _sort_files(file1: String, file2: String) -> bool:
+	if VALID_TEXTURE_EXTENSIONS.has(file1.get_extension()) and VALID_SCENE_EXTENSIONS.has(file2.get_extension()):
+		return true
+	return false
 
 func _on_exiting_tree() -> void:
 	_import_thread.wait_to_finish()
