@@ -118,14 +118,6 @@ func _process(delta):
 		# Have we been grabbing this piece for a long time?
 		if _grabbing_time > GRABBING_SLOW_TIME:
 			_start_hovering_grabbed_piece(false)
-	
-	if _is_hovering_selected:
-		if Input.is_action_just_pressed("game_flip"):
-			for piece in _selected_pieces:
-				piece.rpc_id(1, "flip_vertically")
-		elif Input.is_action_just_pressed("game_reset"):
-			for piece in _selected_pieces:
-				piece.rpc_id(1, "reset_orientation")
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -235,6 +227,14 @@ func _process_movement(delta):
 		_start_moving()
 
 func _unhandled_input(event):
+	if _is_hovering_selected:
+		if event.is_action_pressed("game_flip"):
+			for piece in _selected_pieces:
+				piece.rpc_id(1, "flip_vertically")
+		elif event.is_action_pressed("game_reset"):
+			for piece in _selected_pieces:
+				piece.rpc_id(1, "reset_orientation")
+	
 	if event is InputEventMouseButton:
 		
 		if event.button_index == BUTTON_LEFT:

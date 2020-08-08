@@ -116,13 +116,13 @@ func _input(event):
 			elif not _mouse_in_hand and _hand.is_a_parent_of(_hand_highlight):
 				_hand.remove_child(_hand_highlight)
 
-func _process(delta):
+func _unhandled_input(event):
 	if _candidate_card and not _holding_card:
-		if Input.is_action_just_pressed("game_flip"):
-			_candidate_card.front_face = !_candidate_card.front_face
+		if event.is_action_pressed("game_flip"):
+			_candidate_card.front_face = not _candidate_card.front_face
 			_candidate_card.update()
 	
-	if not _game_menu_background.visible and Input.is_action_just_pressed("game_menu"):
+	if not _game_menu_background.visible and event.is_action_pressed("game_menu"):
 		_game_menu_background.visible = true
 
 # Add a game's piece entries to the piece tree.
