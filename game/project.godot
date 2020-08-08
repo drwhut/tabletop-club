@@ -79,6 +79,7 @@ config/version="master"
 [autoload]
 
 Global="*res://Scripts/Global.gd"
+PieceDB="*res://Scripts/PieceDB.gd"
 
 [editor]
 

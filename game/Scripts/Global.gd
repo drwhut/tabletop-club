@@ -77,11 +77,6 @@ func _ready():
 	var root = get_tree().get_root()
 	_current_scene = root.get_child(root.get_child_count() - 1)
 
-# Terminate the network peer if it exists.
-func _terminate_peer() -> void:
-	# TODO: Send a message to say we are leaving first.
-	get_tree().network_peer = null
-
 # Go to a given scene, with a set of arguments.
 # path: The file path of the scene to load.
 # args: The arguments for the scene to use after it has loaded.
@@ -161,3 +156,8 @@ func _goto_scene(path: String, args: Dictionary) -> void:
 		_current_scene.init_server(args["max_players"], args["port"])
 	elif args["mode"] == MODE_SINGLEPLAYER:
 		_current_scene.init_singleplayer()
+
+# Terminate the network peer if it exists.
+func _terminate_peer() -> void:
+	# TODO: Send a message to say we are leaving first.
+	get_tree().network_peer = null

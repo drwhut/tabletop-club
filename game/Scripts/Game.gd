@@ -22,7 +22,6 @@
 extends Node
 
 onready var _connecting_dialog = $ConnectingDialog
-onready var _piece_db = $PieceDB
 onready var _room = $Room
 onready var _ui = $GameUI
 
@@ -161,8 +160,8 @@ func _ready():
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
 	
 	# Import game assets.
-	_piece_db.import_all()
-	_ui.set_piece_tree_from_db(_piece_db.get_db())
+	PieceDB.import_all()
+	_ui.set_piece_tree_from_db(PieceDB.get_db())
 
 func _player_connected(id: int) -> void:
 	print("Player with ID ", id, " connected!")

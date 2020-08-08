@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/GameUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/PieceDB.gd" type="Script" id=4]
 
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
@@ -14,12 +13,6 @@ __meta__ = {
 [node name="Room" parent="." instance=ExtResource( 1 )]
 
 [node name="GameUI" parent="." instance=ExtResource( 2 )]
-
-[node name="PieceDB" type="Node" parent="."]
-script = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": "The DB is responsible for importing the assets when the game starts, and storing references to the assets in piece entries."
-}
 
 [node name="ConnectingDialog" type="PopupDialog" parent="."]
 margin_right = 200.0
