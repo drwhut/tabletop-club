@@ -27,6 +27,7 @@ signal piece_requested(piece_entry)
 
 const HIGHLIGHT_COLOUR = Color(0.25, 1.0, 1.0, 0.5)
 
+onready var _game_menu_background = $GameMenuBackground
 onready var _hand = $Hand
 onready var _objects_dialog = $ObjectsDialog
 onready var _objects_tree = $ObjectsDialog/ObjectsTree
@@ -120,6 +121,9 @@ func _process(delta):
 		if Input.is_action_just_pressed("game_flip"):
 			_candidate_card.front_face = !_candidate_card.front_face
 			_candidate_card.update()
+	
+	if not _game_menu_background.visible and Input.is_action_just_pressed("game_menu"):
+		_game_menu_background.visible = true
 
 # Add a game's piece entries to the piece tree.
 # game_name: The name of the game.
@@ -248,8 +252,20 @@ func _on_card_texture_mouse_over(card_texture: CardTextureRect, is_over: bool) -
 			_candidate_card = _grabbed_card_from_hand
 			_mouse_over_cards = [_grabbed_card_from_hand]
 
+func _on_BackToGameButton_pressed():
+	_game_menu_background.visible = false
+
+func _on_DesktopButton_pressed():
+	get_tree().quit()
+
+func _on_GameMenuButton_pressed():
+	_game_menu_background.visible = true
+
 func _on_GameUI_tree_exited():
 	_hand_highlight.free()
+
+func _on_MainMenuButton_pressed():
+	Global.start_main_menu()
 
 func _on_ObjectsButton_pressed():
 	_objects_dialog.popup_centered()

@@ -24,6 +24,12 @@ margin_right = 62.0
 margin_bottom = 20.0
 text = "Objects"
 
+[node name="GameMenuButton" type="Button" parent="TopPanel"]
+margin_left = 66.0
+margin_right = 114.0
+margin_bottom = 20.0
+text = "Menu"
+
 [node name="Hand" type="Container" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -59,6 +65,49 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GameMenuBackground" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.313726 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="GameMenuBackground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenuBackground/CenterContainer"]
+margin_left = 445.0
+margin_top = 266.0
+margin_right = 579.0
+margin_bottom = 334.0
+
+[node name="BackToGameButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
+margin_right = 134.0
+margin_bottom = 20.0
+text = "Back to game"
+
+[node name="MainMenuButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 134.0
+margin_bottom = 44.0
+text = "Quit to main menu"
+
+[node name="DesktopButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 134.0
+margin_bottom = 68.0
+text = "Quit to desktop"
 [connection signal="tree_exited" from="." to="." method="_on_GameUI_tree_exited"]
 [connection signal="pressed" from="TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
+[connection signal="pressed" from="TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
 [connection signal="item_activated" from="ObjectsDialog/ObjectsTree" to="." method="_on_ObjectsTree_item_activated"]
+[connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]
+[connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/DesktopButton" to="." method="_on_DesktopButton_pressed"]
