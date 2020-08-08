@@ -192,7 +192,7 @@ func _add_entry_to_db(game: String, type: String, entry: Dictionary) -> void:
 	
 	print("Added: ", game, "/", type, "/", entry.name)
 
-# Get the directory of a game's type in the user:// directory.
+# Get the directory of a game's type in the user://assets directory.
 # Returns: The directory as a Directory object.
 # game: The name of the game.
 # type: The type of the asset.
@@ -201,7 +201,7 @@ func _get_asset_dir(game: String, type: String) -> Directory:
 	var dir_error = dir.open("user://")
 	
 	if dir_error == OK:
-		var path = game + "/" + type
+		var path = "assets/" + game + "/" + type
 		dir.make_dir_recursive(path)
 		dir.change_dir(path)
 	else:
@@ -336,7 +336,7 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 								push_error("Could not determine scale of " + item)
 				
 				# TODO: Check the file exists.
-				var texture_path = "user://" + game + "/" + type + "/" + item
+				var texture_path = "user://assets/" + game + "/" + type + "/" + item
 				texture_paths.push_back(texture_path)
 			
 			if scale:
