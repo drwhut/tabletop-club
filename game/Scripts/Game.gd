@@ -159,8 +159,7 @@ func _ready():
 	get_tree().connect("connection_failed", self, "_connected_fail")
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
 	
-	# Import game assets.
-	PieceDB.import_all()
+	# The assets should have been imported at the start of the game.
 	_ui.set_piece_tree_from_db(PieceDB.get_db())
 
 func _player_connected(id: int) -> void:

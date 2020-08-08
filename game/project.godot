@@ -72,7 +72,7 @@ config/name="OpenTabletop"
 config/description="Copyright (c) 2020 drwhut
 
 An open-source platform for playing tabletop games in a 3D environment, made with the Godot Engine!"
-run/main_scene="res://Scenes/MainMenu.tscn"
+run/main_scene="res://Scenes/ImportAssets.tscn"
 config/icon="res://icon.png"
 config/version="master"
 

@@ -21,6 +21,9 @@
 
 extends Node
 
+signal completed()
+signal importing_file(file)
+
 const ASSET_DIR_PATHS = ["./assets", "../assets"]
 
 const VALID_SCENE_EXTENSIONS = ["glb", "gltf"]
@@ -34,6 +37,12 @@ const VALID_TEXTURE_EXTENSIONS = ["bmp", "dds", "exr", "hdr", "jpeg", "jpg",
 # types are direct children of the game, i.e. "OpenTabletop/dice/d6" in the
 # game directory is _db["OpenTabletop"]["d6"] here.
 var _db = {}
+var _db_mutex = Mutex.new()
+
+var _import_file = ""
+var _import_mutex = Mutex.new()
+var _import_send_signal = false
+var _import_thread = Thread.new()
 
 # From the open_tabletop_import_module:
 # https://github.com/drwhut/open_tabletop_import_module
@@ -44,8 +53,26 @@ var _importer = TabletopImporter.new()
 func get_db() -> Dictionary:
 	return _db
 
+# Start the importing thread.
+func start_importing() -> void:
+	_import_thread.start(self, "_import_all")
+
+func _ready():
+	connect("tree_exiting", self, "_on_exiting_tree")
+
+func _process(delta):
+	_import_mutex.lock()
+	if _import_send_signal:
+		if _import_file.empty():
+			emit_signal("completed")
+		else:
+			emit_signal("importing_file", _import_file)
+		_import_send_signal = false
+	_import_mutex.unlock()
+
 # Import assets from all directories.
-func import_all() -> void:
+# userdata: Ignored, required for it to be run by a thread.
+func _import_all(userdata) -> void:
 	var dir = Directory.new()
 	
 	for asset_dir in ASSET_DIR_PATHS:
@@ -57,19 +84,23 @@ func import_all() -> void:
 				
 				if dir.current_is_dir():
 					dir.change_dir(entry)
-					import_game_dir(dir)
+					_import_game_dir(dir)
 					dir.change_dir("..")
 				
 				entry = dir.get_next()
+	
+	_send_import_signal("")
 
 # Import assets from a given game directory.
 # dir: The directory to import assets from.
-func import_game_dir(dir: Directory) -> void:
+func _import_game_dir(dir: Directory) -> void:
 	var game = dir.get_current_dir().get_file()
 	
 	print("Importing ", game, " ...")
 	
+	_db_mutex.lock()
 	_db[game] = {}
+	_db_mutex.unlock()
 	
 	if dir.dir_exists("dice"):
 		dir.change_dir("dice")
@@ -140,6 +171,8 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 # type: The type of the assets.
 # entry: The entry to add.
 func _add_entry_to_db(game: String, type: String, entry: Dictionary) -> void:
+	_db_mutex.lock()
+	
 	if not _db.has(game):
 		_db[game] = {}
 	
@@ -147,6 +180,7 @@ func _add_entry_to_db(game: String, type: String, entry: Dictionary) -> void:
 		_db[game][type] = []
 	
 	_db[game][type].push_back(entry)
+	_db_mutex.unlock()
 	
 	print("Added: ", game, "/", type, "/", entry.name)
 
@@ -211,6 +245,8 @@ func _get_file_without_ext(file_path: String) -> String:
 # config: The configuration file for the asset's directory.
 func _import_asset(from: String, game: String, type: String, scene: String,
 	config: ConfigFile) -> int:
+	
+	_send_import_signal(from)
 	
 	var dir = _get_asset_dir(game, type)
 	
@@ -305,3 +341,15 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 				_add_entry_to_db(game, "stacks", stack_entry)
 			else:
 				push_error("Could not determine scale of stack " + stack_name)
+
+# Send a signal from the importing thread.
+# file: The file we are currently importing - if blank, send the completed
+# signal.
+func _send_import_signal(file: String) -> void:
+	_import_mutex.lock()
+	_import_file = file
+	_import_send_signal = true
+	_import_mutex.unlock()
+
+func _on_exiting_tree() -> void:
+	_import_thread.wait_to_finish()
