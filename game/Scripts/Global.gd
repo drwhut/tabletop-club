@@ -59,6 +59,7 @@ func start_game_singleplayer() -> void:
 
 # Start the main menu.
 func start_main_menu() -> void:
+	call_deferred("_terminate_peer")
 	call_deferred("_goto_scene", "res://Scenes/MainMenu.tscn", {
 		"mode": MODE_NONE
 	})
@@ -66,6 +67,7 @@ func start_main_menu() -> void:
 # Start the main menu, and display an error message.
 # error: The error message to display.
 func start_main_menu_with_error(error: String) -> void:
+	call_deferred("_terminate_peer")
 	call_deferred("_goto_scene", "res://Scenes/MainMenu.tscn", {
 		"mode": MODE_ERROR,
 		"error": error
@@ -74,6 +76,11 @@ func start_main_menu_with_error(error: String) -> void:
 func _ready():
 	var root = get_tree().get_root()
 	_current_scene = root.get_child(root.get_child_count() - 1)
+
+# Terminate the network peer if it exists.
+func _terminate_peer() -> void:
+	# TODO: Send a message to say we are leaving first.
+	get_tree().network_peer = null
 
 # Go to a given scene, with a set of arguments.
 # path: The file path of the scene to load.
