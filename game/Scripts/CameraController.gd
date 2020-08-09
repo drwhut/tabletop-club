@@ -98,6 +98,15 @@ func get_selected_pieces() -> Array:
 # is_hovering: If the camera is hovering it's selected pieces.
 func set_is_hovering(is_hovering: bool) -> void:
 	_is_hovering_selected = is_hovering
+	
+	var cursor = Input.CURSOR_ARROW
+	if is_hovering:
+		cursor = Input.CURSOR_DRAG
+		
+		# If we have started hovering, we have stopped grabbing.
+		_is_grabbing_selected = false
+	
+	Input.set_default_cursor_shape(cursor)
 
 # Set the list of selected pieces.
 # pieces: The new list of selected pieces.
@@ -268,7 +277,7 @@ func _unhandled_input(event):
 						if piece is Card:
 							emit_signal("stopped_hovering_card", piece)
 					
-					_is_hovering_selected = false
+					set_is_hovering(false)
 				
 				# Stop box selecting.
 				if _is_box_selecting:
@@ -314,7 +323,6 @@ func _unhandled_input(event):
 			get_tree().set_input_as_handled()
 	
 	elif event is InputEventMouseMotion:
-		
 		# Check if by moving the mouse, we either started hovering a piece, or
 		# we have moved the hovered pieces position.
 		if _start_moving():
