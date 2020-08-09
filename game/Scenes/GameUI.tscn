@@ -122,3 +122,4 @@ visible = false
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/DesktopButton" to="." method="_on_DesktopButton_pressed"]
+[connection signal="applying_options" from="OptionsMenu" to="." method="_on_OptionsMenu_applying_options"]

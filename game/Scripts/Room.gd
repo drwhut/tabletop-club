@@ -299,6 +299,11 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 	_pieces.remove_child(stack1)
 	stack1.queue_free()
 
+# Apply options from the options menu.
+# config: The options to apply.
+func apply_options(config: ConfigFile) -> void:
+	_camera_controller.apply_options(config)
+
 # Get the player camera's hover position.
 # Returns: The current hover position.
 func get_camera_hover_position() -> Vector3:

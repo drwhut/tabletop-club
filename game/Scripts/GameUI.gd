@@ -21,6 +21,7 @@
 
 extends Control
 
+signal applying_options(config)
 signal card_in_hand_requested(card)
 signal card_out_hand_requested(card_texture)
 signal piece_requested(piece_entry)
@@ -55,6 +56,11 @@ func add_card_to_hand(card: Card, front_face: bool) -> void:
 	
 	if _hand.is_a_parent_of(_hand_highlight):
 		_hand.remove_child(_hand_highlight)
+
+# Apply options from the options menu.
+# config: The options to apply.
+func apply_options(config: ConfigFile) -> void:
+	pass
 
 # Remove a card from our hand.
 # card: The card to remove.
@@ -281,12 +287,15 @@ func _on_ObjectsTree_item_activated():
 func _on_OptionsButton_pressed():
 	_options_menu.visible = true
 
-func _on_Room_started_hovering_card(card):
+func _on_OptionsMenu_applying_options(config: ConfigFile):
+	emit_signal("applying_options", config)
+
+func _on_Room_started_hovering_card(card: Card):
 	_holding_card = true
 	_mouse_in_hand = false
 	_hand.mouse_filter = Control.MOUSE_FILTER_PASS
 
-func _on_Room_stopped_hovering_card(card):
+func _on_Room_stopped_hovering_card(card: Card):
 	if _mouse_in_hand:
 		emit_signal("card_in_hand_requested", card)
 	

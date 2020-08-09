@@ -25,6 +25,12 @@ onready var _connecting_dialog = $ConnectingDialog
 onready var _room = $Room
 onready var _ui = $GameUI
 
+# Apply options from the options menu.
+# config: The options to apply.
+func apply_options(config: ConfigFile) -> void:
+	_room.apply_options(config)
+	_ui.apply_options(config)
+
 # Initialise a client peer.
 # server: The server to connect to.
 # port: The port number to connect to.
@@ -184,6 +190,9 @@ func _connected_fail() -> void:
 func _server_disconnected() -> void:
 	print("Lost connection to the server!")
 	Global.start_main_menu_with_error("Lost connection to the server!")
+
+func _on_GameUI_applying_options(config: ConfigFile):
+	apply_options(config)
 
 func _on_GameUI_card_in_hand_requested(card: Card):
 	rpc_id(1, "request_card_in_hand", card.name)

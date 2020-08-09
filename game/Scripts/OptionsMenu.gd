@@ -32,7 +32,10 @@ func _ready():
 	var config = _create_config_from_current()
 	_load_file(config)
 	_set_current_with_config(config)
-	_apply_config(config)
+	
+	# Wait until the end of the frame to apply the changes, so that other nodes
+	# have called the ready function as well.
+	call_deferred("_apply_config", config)
  
 # Apply the changes made and save them in the options file.
 func _apply_changes() -> void:
@@ -50,7 +53,7 @@ func _apply_config(config: ConfigFile) -> void:
 	var window_mode_id = config.get_value("video", "window_mode")
 	var borderless = false
 	var fullscreen = false
-	var maximized = false
+	var maximized = OS.window_maximized
 	
 	if window_mode_id >= 1:
 		borderless = true
@@ -94,6 +97,8 @@ func _create_config_from_current() -> ConfigFile:
 				key_value = value.pressed
 			elif value is OptionButton:
 				key_value = value.selected
+			elif value is Slider:
+				key_value = value.value
 			else:
 				push_error(value.name + " is an unknown type!")
 			
@@ -110,6 +115,10 @@ func _keyify_string(string: String) -> String:
 # Load the options from the options file to the given config file.
 # config: The config to overwrite.
 func _load_file(config: ConfigFile) -> void:
+	var check = File.new()
+	if not check.file_exists(OPTIONS_FILE_PATH):
+		return
+	
 	var file = ConfigFile.new()
 	var err = file.load(OPTIONS_FILE_PATH)
 	
@@ -162,6 +171,8 @@ func _set_current_with_config(config: ConfigFile) -> void:
 					value.pressed = key_value
 				elif value is OptionButton:
 					value.selected = key_value
+				elif value is Slider:
+					value.value = key_value
 				else:
 					push_error(value.name + " is an unknown type!")
 

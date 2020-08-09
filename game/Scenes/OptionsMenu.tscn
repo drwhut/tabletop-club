@@ -105,6 +105,139 @@ margin_right = 976.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
 
+[node name="Controls" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controls"]
+margin_right = 976.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="MouseHorizontalSensitivity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 1.0
+margin_right = 486.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "Mouse Horizontal Sensitivity"
+align = 2
+
+[node name="MouseHorizontalSensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_right = 976.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.05
+
+[node name="MouseVerticalSensitivity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 21.0
+margin_right = 486.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "Mouse Vertical Sensitivity"
+align = 2
+
+[node name="MouseVerticalSensitivitySlider2" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 20.0
+margin_right = 976.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.05
+
+[node name="MouseHorizontalInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 45.0
+margin_right = 486.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+text = "Mouse Horizontal Invert"
+align = 2
+
+[node name="MouseHorizontalInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 40.0
+margin_right = 976.0
+margin_bottom = 64.0
+
+[node name="MouseVerticalInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 73.0
+margin_right = 486.0
+margin_bottom = 87.0
+size_flags_horizontal = 3
+text = "Mouse Vertical Invert"
+align = 2
+
+[node name="MouseVerticalInvertCheckbox2" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 68.0
+margin_right = 976.0
+margin_bottom = 92.0
+
+[node name="ZoomSensitivity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 97.0
+margin_right = 486.0
+margin_bottom = 111.0
+size_flags_horizontal = 3
+text = "Zoom Sensitivity"
+align = 2
+
+[node name="ZoomSensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 96.0
+margin_right = 976.0
+margin_bottom = 112.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.25
+
+[node name="ZoomInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 121.0
+margin_right = 486.0
+margin_bottom = 135.0
+size_flags_horizontal = 3
+text = "Zoom Invert"
+align = 2
+
+[node name="ZoomInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 116.0
+margin_right = 976.0
+margin_bottom = 140.0
+
+[node name="CameraMovementSpeed" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 145.0
+margin_right = 486.0
+margin_bottom = 159.0
+size_flags_horizontal = 3
+text = "Camera Movement Speed"
+align = 2
+
+[node name="CameraMovementSpeedSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 144.0
+margin_right = 976.0
+margin_bottom = 160.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.25
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 540.0
 margin_right = 984.0

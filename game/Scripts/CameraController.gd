@@ -36,17 +36,19 @@ onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 
 const GRABBING_SLOW_TIME = 0.25
 const HOVER_Y_LEVEL = 5.0
-const MOVEMENT_ACCEL = 5.0
-const MOVEMENT_DECEL = 10.0
-const MOVEMENT_MAX_SPEED = 60.0
+const MOVEMENT_ACCEL_SCALAR = 0.125
+const MOVEMENT_DECEL_SCALAR = 0.25
 const RAY_LENGTH = 1000
-const ROTATION_SENSITIVITY = -0.015
 const ROTATION_Y_MAX = -0.2
 const ROTATION_Y_MIN = -1.3
-const ZOOM_ACCEL = 10.0
-const ZOOM_AMOUNT = 4.0
+const ZOOM_ACCEL_SCALAR = 3.0
 const ZOOM_DISTANCE_MIN = 2.0
 const ZOOM_DISTANCE_MAX = 200.0
+
+export(float) var max_speed: float = 10.0
+export(float) var rotation_sensitivity_x: float = -0.01
+export(float) var rotation_sensitivity_y: float = -0.01
+export(float) var zoom_sensitivity: float = 1.0
 
 var _box_select_init_pos = Vector2()
 var _grabbing_time = 0.0
@@ -70,6 +72,30 @@ func append_selected_pieces(pieces: Array) -> void:
 		if piece is Piece and (not piece in _selected_pieces):
 			_selected_pieces.append(piece)
 			piece.set_appear_selected(true)
+
+# Apply options from the options menu.
+# config: The options to apply.
+func apply_options(config: ConfigFile) -> void:
+	var rotation_x_scale = -0.1
+	if config.get_value("controls", "mouse_horizontal_invert"):
+		rotation_x_scale *= -1
+	rotation_sensitivity_x = rotation_x_scale * config.get_value("controls", "mouse_horizontal_sensitivity")
+	
+	var rotation_y_scale = -0.1
+	if config.get_value("controls", "mouse_vertical_invert"):
+		rotation_y_scale *= -1
+	rotation_sensitivity_y = rotation_y_scale * config.get_value("controls", "mouse_vertical_sensitivity")
+	
+	var zoom_offset = 1.0
+	var zoom_scale = 15.0
+	if config.get_value("controls", "zoom_invert"):
+		zoom_scale *= -1
+		zoom_offset *= -1
+	zoom_sensitivity = zoom_offset + zoom_scale * config.get_value("controls", "zoom_sensitivity")
+	
+	var speed_offset = 10.0
+	var speed_scale = 190.0
+	max_speed = speed_offset + speed_scale * config.get_value("controls", "camera_movement_speed")
 
 # Clear the list of selected pieces.
 func clear_selected_pieces() -> void:
@@ -218,12 +244,14 @@ func _process_input(delta):
 	
 	var is_accelerating = _movement_dir.dot(_movement_vel) > 0
 	
-	_movement_accel = MOVEMENT_DECEL
+	_movement_accel = max_speed
 	if is_accelerating:
-		_movement_accel = MOVEMENT_ACCEL
+		_movement_accel *= MOVEMENT_ACCEL_SCALAR
+	else:
+		_movement_accel *= MOVEMENT_DECEL_SCALAR
 
 func _process_movement(delta):
-	var target_vel = _movement_dir * MOVEMENT_MAX_SPEED
+	var target_vel = _movement_dir * max_speed
 	_movement_vel = _movement_vel.linear_interpolate(target_vel, _movement_accel * delta)
 	
 	# A global translation, as we want to move on the plane parallel to the
@@ -237,7 +265,8 @@ func _process_movement(delta):
 	
 	# Go towards the target zoom level.
 	var target_offset = Vector3(0, 0, _target_zoom)
-	_camera.translation = _camera.translation.linear_interpolate(target_offset, ZOOM_ACCEL * delta)
+	var zoom_accel = zoom_sensitivity * ZOOM_ACCEL_SCALAR
+	_camera.translation = _camera.translation.linear_interpolate(target_offset, zoom_accel * delta)
 
 func _unhandled_input(event):
 	if _is_hovering_selected:
@@ -310,9 +339,9 @@ func _unhandled_input(event):
 			var offset = 0
 			
 			if event.button_index == BUTTON_WHEEL_UP:
-				offset = -ZOOM_AMOUNT
+				offset = -zoom_sensitivity
 			else:
-				offset = ZOOM_AMOUNT
+				offset = zoom_sensitivity
 			
 			var new_zoom = _target_zoom + offset
 			_target_zoom = max(min(new_zoom, ZOOM_DISTANCE_MAX), ZOOM_DISTANCE_MIN)
@@ -329,8 +358,8 @@ func _unhandled_input(event):
 		
 			# Rotating the controller-camera system to get the camera to rotate
 			# around a point, where the controller is.
-			_rotation.x += event.relative.x * ROTATION_SENSITIVITY
-			_rotation.y += event.relative.y * ROTATION_SENSITIVITY
+			_rotation.x += event.relative.x * rotation_sensitivity_x
+			_rotation.y += event.relative.y * rotation_sensitivity_y
 			
 			# Bound the rotation along the X axis.
 			_rotation.y = max(_rotation.y, ROTATION_Y_MIN)
