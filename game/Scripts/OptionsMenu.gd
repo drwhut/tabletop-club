@@ -67,6 +67,20 @@ func _apply_config(config: ConfigFile) -> void:
 	OS.window_maximized = maximized
 	
 	OS.vsync_enabled = config.get_value("video", "vsync")
+	
+	var msaa = Viewport.MSAA_DISABLED
+	var msaa_id = config.get_value("video", "msaa")
+	
+	if msaa_id == 1:
+		msaa = Viewport.MSAA_2X
+	elif msaa_id == 2:
+		msaa = Viewport.MSAA_4X
+	elif msaa_id == 3:
+		msaa = Viewport.MSAA_8X
+	elif msaa_id == 4:
+		msaa = Viewport.MSAA_16X
+	
+	get_viewport().msaa = msaa
 
 # Create a config file from the current options.
 # Returns: A config file whose values are based on the current options.
