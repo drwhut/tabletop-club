@@ -65,4 +65,4 @@ func srv_is_placed_aside() -> bool:
 	return _srv_place_aside_player > 0
 
 func _ready():
-	_mesh_instance = $MeshInstance
+	_mesh_instance = $CollisionShape/MeshInstance

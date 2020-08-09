@@ -19,6 +19,6 @@ The length and width are 1, but the height is constant and small."
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
 transform = Transform( 1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 2 )

@@ -14,7 +14,7 @@ The shape of the stack is determined by the first piece that enters the stack, a
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
-[node name="Pieces" type="Spatial" parent="."]
+[node name="Pieces" type="Spatial" parent="CollisionShape"]
 __meta__ = {
 "_editor_description_": "All of the pieces of the stack are put as children of this node, and are converted to StackPieceInstances (which are just MeshInstances)."
 }

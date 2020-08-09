@@ -278,23 +278,6 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 	else:
 		reverse = stack1.transform.basis.y.dot(Vector3.UP) > 0
 	
-	# Next we need to supply a unit collision shape to the second stack.
-	var shape = _get_stack_piece_shape(stack1)
-	shape = shape.shape
-	
-	var new_shape: Shape = null
-	
-	if shape is BoxShape:
-		new_shape = BoxShape.new()
-		new_shape.extents = shape.extents
-		new_shape.extents.y /= stack1.get_piece_count()
-	elif shape is CylinderShape:
-		new_shape = CylinderShape.new()
-		new_shape.radius = shape.radius
-		new_shape.height = shape.height / stack1.get_piece_count()
-	else:
-		push_error("Stack " + stack1_name + " has an unsupported collision shape!")
-	
 	# Remove the children of the first stack, determine their transform, then
 	# add them to the second stack.
 	var pieces = stack1.empty()
@@ -310,7 +293,7 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 		
 		piece.transform = Transform(basis, origin)
 		
-		stack2.add_piece(piece, new_shape)
+		stack2.add_piece(piece, null)
 	
 	# Finally, delete the first stack.
 	_pieces.remove_child(stack1)
@@ -709,7 +692,6 @@ func srv_get_next_piece_name() -> String:
 # piece: The Spatial object.
 func _build_piece(piece: Spatial) -> Piece:
 	var out = Piece.new()
-	out.add_child(piece)
 	
 	# Find the first MeshInstance in the piece scene, so we can get it's mesh
 	# data to create a collision shape.
@@ -717,6 +699,7 @@ func _build_piece(piece: Spatial) -> Piece:
 	if mesh_instance:
 		var collision_shape = CollisionShape.new()
 		collision_shape.shape = mesh_instance.mesh.create_convex_shape()
+		collision_shape.add_child(piece)
 		out.add_child(collision_shape)
 	else:
 		push_error(piece.name + " does not have a mesh instance!")
@@ -747,7 +730,7 @@ func _get_stack_piece_mesh(piece: StackablePiece) -> StackPieceInstance:
 	piece_mesh.transform = piece.transform
 	piece_mesh.piece_entry = piece.piece_entry
 	
-	var piece_mesh_inst = piece.get_node("MeshInstance")
+	var piece_mesh_inst = piece.get_node("CollisionShape/MeshInstance")
 	if not piece_mesh_inst:
 		push_error("Piece " + piece.name + " does not have a MeshInstance child!")
 		return null
@@ -772,6 +755,14 @@ func _get_stack_piece_shape(piece: StackablePiece) -> CollisionShape:
 	
 	return piece_collision_shape
 
+# Scale a piece by changing the scale of its children collision shapes.
+# piece: The Spatial to scale.
+# scale: How much to scale the piece by.
+func _scale_piece(piece: Spatial, scale: Vector3) -> void:
+	for child in piece.get_children():
+		if child is CollisionShape:
+			child.scale_object_local(scale)
+
 func _on_piece_exiting_tree(piece: Piece) -> void:
 	_camera_controller.erase_selected_pieces(piece)
 
@@ -786,16 +777,6 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 		else:
 			rpc("add_stack", srv_get_next_piece_name(), piece1.transform, piece1.name,
 				piece2.name)
-
-# Scale a piece and all of it's collision shapes and mesh instances.
-# piece: The Spatial to scale.
-# scale: How much to scale the piece by.
-func _scale_piece(piece: Spatial, scale: Vector3) -> void:
-	if piece is CollisionShape or piece is MeshInstance:
-		piece.scale_object_local(scale)
-	
-	for child in piece.get_children():
-		_scale_piece(child, scale)
 
 func _on_CameraController_cards_in_hand_requested(cards: Array):
 	emit_signal("cards_in_hand_requested", cards)

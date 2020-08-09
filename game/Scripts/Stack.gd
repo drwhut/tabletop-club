@@ -38,7 +38,7 @@ enum {
 # Usually, these would be onready variables, but since this object is always
 # made in code, we set these variables before we need them.
 onready var _collision_shape = $CollisionShape
-onready var _pieces = $Pieces
+onready var _pieces = $CollisionShape/Pieces
 
 var _collision_unit_height = 0
 var _mesh_unit_height = 0
@@ -263,8 +263,6 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	if _pieces.get_child_count() == 1:
 		piece_entry = piece.piece_entry
 		
-		_mesh_unit_height = piece.scale.y
-		
 		var new_shape: Shape = null
 		
 		if shape.shape is BoxShape:
@@ -285,6 +283,14 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 		if new_shape:
 			_collision_shape.shape = new_shape
 			_collision_shape.scale = Vector3(shape.scale.x, 1, shape.scale.z)
+			
+			# We want to keep the collision's shape y-scale at 1 so we can
+			# change the collision shape's height easily without having to deal
+			# with the scale, but we still need to scale the instances properly,
+			# so put the y-scale in the Pieces node.
+			_pieces.scale.y = shape.scale.y
+			
+			_mesh_unit_height = shape.scale.y * piece.scale.y
 	else:
 		var current_height = get_total_height()
 		var new_height = _mesh_unit_height * _pieces.get_child_count()
@@ -361,6 +367,11 @@ func _set_piece_heights() -> void:
 	var i = 0
 	for piece in _pieces.get_children():
 		piece.transform.origin.y = (_mesh_unit_height * (i + 0.5)) - (height / 2)
+		
+		# The Pieces node's scale will scale the translation here, so "undo"
+		# the scale.
+		if _pieces.scale.y != 0:
+			piece.transform.origin.y /= _pieces.scale.y
 		i += 1
 
 # Use the merge sort algorithm to sort the pieces by their texture paths.

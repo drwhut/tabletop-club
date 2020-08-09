@@ -17,5 +17,5 @@ The shape is based on the unit sphere, i.e. each vertex lies on a sphere with ra
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
 script = ExtResource( 2 )

@@ -19,6 +19,6 @@ The shape is based on the unit cube, i.e. each vertex lies on a cube with a leng
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
 mesh = SubResource( 2 )
 material/0 = null

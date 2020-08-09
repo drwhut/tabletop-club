@@ -26,7 +26,7 @@ class_name Dice
 var _rng = RandomNumberGenerator.new()
 
 func _ready():
-	_mesh_instance = $MeshInstance
+	_mesh_instance = $CollisionShape/MeshInstance
 	
 	_rng.randomize()
 

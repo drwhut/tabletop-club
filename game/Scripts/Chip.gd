@@ -24,6 +24,6 @@ extends StackablePiece
 class_name Chip
 
 func _ready():
-	_mesh_instance = $MeshInstance
+	_mesh_instance = $CollisionShape/MeshInstance
 	
 	_ignore_y_rotation = true

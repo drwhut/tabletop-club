@@ -192,11 +192,11 @@ func _create_card_half_texture(card: Card, front_face: bool) -> CardTextureRect:
 	
 	var card_aspect_ratio = 1.0
 	
-	var card_mesh = card.get_node("MeshInstance")
-	if card_mesh:
-		card_aspect_ratio = card_mesh.scale.x / card_mesh.scale.z
+	var card_shape = card.get_node("CollisionShape")
+	if card_shape:
+		card_aspect_ratio = card_shape.scale.x / card_shape.scale.z
 	else:
-		push_error("Card " + card.name + " does not have a MeshInstance child!")
+		push_error("Card " + card.name + " does not have a CollisionShape child!")
 	
 	var card_min_size = Vector2(_hand.rect_size.y * card_aspect_ratio, _hand.rect_size.y)
 	
