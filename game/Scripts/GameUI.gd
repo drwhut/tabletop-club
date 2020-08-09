@@ -129,8 +129,10 @@ func _unhandled_input(event):
 			_candidate_card.front_face = not _candidate_card.front_face
 			_candidate_card.update()
 	
-	if not _game_menu_background.visible and event.is_action_pressed("game_menu"):
-		_game_menu_background.visible = true
+	if event.is_action_pressed("game_menu"):
+		_game_menu_background.visible = not _game_menu_background.visible
+		if not _game_menu_background.visible:
+			_options_menu.visible = false
 
 # Add a game's piece entries to the piece tree.
 # game_name: The name of the game.
