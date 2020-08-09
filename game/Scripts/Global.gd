@@ -31,6 +31,13 @@ enum {
 
 var _current_scene: Node = null
 
+# Restart the game.
+func restart_game() -> void:
+	call_deferred("_terminate_peer")
+	call_deferred("_goto_scene", "res://Scenes/ImportAssets.tscn", {
+		"mode": MODE_NONE
+	})
+
 # Start the game as a client.
 # server: The server to connect to.
 # port: The port to connect to.

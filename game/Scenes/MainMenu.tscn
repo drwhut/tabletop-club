@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/VersionLabel.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/CopyrightLabel.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=4]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -22,9 +23,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 395.0
-margin_top = 264.0
+margin_top = 252.0
 margin_right = 628.0
-margin_bottom = 336.0
+margin_bottom = 348.0
 
 [node name="SingleplayerButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_right = 233.0
@@ -59,11 +60,20 @@ margin_right = 233.0
 margin_bottom = 24.0
 text = "Join Server"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 52.0
 margin_right = 233.0
 margin_bottom = 72.0
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 233.0
+margin_bottom = 96.0
 text = "Quit"
+
+[node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
+visible = false
 
 [node name="ErrorDialog" type="AcceptDialog" parent="."]
 margin_right = 243.0
@@ -98,4 +108,5 @@ __meta__ = {
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SingleplayerButton" to="." method="_on_SingleplayerButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ServerButton" to="." method="_on_ServerButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/JoinContainer/JoinButton" to="." method="_on_JoinButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

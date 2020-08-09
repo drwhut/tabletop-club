@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/GameUI.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/HandContainer.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=3]
 
 [node name="GameUI" type="Control"]
 anchor_right = 1.0
@@ -84,30 +85,40 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameMenuBackground/CenterContainer"]
 margin_left = 445.0
-margin_top = 266.0
+margin_top = 254.0
 margin_right = 579.0
-margin_bottom = 334.0
+margin_bottom = 346.0
 
 [node name="BackToGameButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
 margin_right = 134.0
 margin_bottom = 20.0
 text = "Back to game"
 
-[node name="MainMenuButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 134.0
 margin_bottom = 44.0
-text = "Quit to main menu"
+text = "Options"
 
-[node name="DesktopButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
 margin_top = 48.0
 margin_right = 134.0
 margin_bottom = 68.0
+text = "Quit to main menu"
+
+[node name="DesktopButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 134.0
+margin_bottom = 92.0
 text = "Quit to desktop"
+
+[node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
+visible = false
 [connection signal="tree_exited" from="." to="." method="_on_GameUI_tree_exited"]
 [connection signal="pressed" from="TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
 [connection signal="pressed" from="TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
 [connection signal="item_activated" from="ObjectsDialog/ObjectsTree" to="." method="_on_ObjectsTree_item_activated"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]
+[connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/DesktopButton" to="." method="_on_DesktopButton_pressed"]

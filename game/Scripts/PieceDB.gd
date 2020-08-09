@@ -55,6 +55,8 @@ func get_db() -> Dictionary:
 
 # Start the importing thread.
 func start_importing() -> void:
+	if _import_thread.is_active():
+		_import_thread.wait_to_finish()
 	_import_thread.start(self, "_import_all")
 
 func _ready():

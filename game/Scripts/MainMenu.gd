@@ -23,6 +23,7 @@ extends Control
 
 onready var _error_dialog = $ErrorDialog
 onready var _join_server_edit = $CenterContainer/VBoxContainer/JoinContainer/JoinServerEdit
+onready var _options_menu = $OptionsMenu
 onready var _server_button = $CenterContainer/VBoxContainer/ServerButton
 
 # Display an error.
@@ -64,6 +65,7 @@ func _on_JoinButton_pressed():
 	var server_port = _join_server_edit.text
 	
 	# TODO: Add validation.
+	# TODO: Use String.is_valid_ip_address()
 	var server = "127.0.0.1"
 	var port = 26271
 	var split = server_port.rsplit(":", false, 1)
@@ -75,6 +77,9 @@ func _on_JoinButton_pressed():
 			port = int(split[1])
 	
 	Global.start_game_as_client(server, port)
+
+func _on_OptionsButton_pressed():
+	_options_menu.visible = true
 
 func _on_QuitButton_pressed():
 	get_tree().quit()

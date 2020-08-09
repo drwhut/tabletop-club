@@ -1,0 +1,140 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/OptionsMenu.gd" type="Script" id=1]
+
+[node name="OptionsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 984.0
+margin_bottom = 560.0
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 984.0
+margin_bottom = 536.0
+size_flags_vertical = 3
+
+[node name="General" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/General"]
+margin_right = 976.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="ReimportSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_right = 486.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="ReimportButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_left = 490.0
+margin_right = 976.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Reimport Assets"
+
+[node name="Video" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video"]
+margin_right = 976.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="WindowModeLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_top = 3.0
+margin_right = 486.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Window Mode"
+align = 2
+
+[node name="WindowModeButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_left = 490.0
+margin_right = 976.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Windowed"
+items = [ "Windowed", null, false, 0, null, "Borderless Fullscreen", null, false, 1, null, "Fullscreen", null, false, 2, null ]
+selected = 0
+
+[node name="VSyncLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_top = 29.0
+margin_right = 486.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+text = "VSync"
+align = 2
+
+[node name="VSyncCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_left = 490.0
+margin_top = 24.0
+margin_right = 976.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 540.0
+margin_right = 984.0
+margin_bottom = 560.0
+
+[node name="OKButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 31.0
+margin_bottom = 20.0
+text = "OK"
+
+[node name="ApplyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 35.0
+margin_right = 83.0
+margin_bottom = 20.0
+text = "Apply"
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 87.0
+margin_right = 129.0
+margin_bottom = 20.0
+text = "Back"
+
+[node name="ReimportConfirm" type="ConfirmationDialog" parent="."]
+margin_right = 297.0
+margin_bottom = 109.0
+window_title = "Reimporting Assets"
+dialog_text = "Reimporting your assets will delete your import cache (not the original files) and restart the game. Are you sure you want to continue?"
+dialog_autowrap = true
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ReimportButton" to="." method="_on_ReimportButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/OKButton" to="." method="_on_OKButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="confirmed" from="ReimportConfirm" to="." method="_on_ReimportConfirm_confirmed"]

@@ -31,6 +31,7 @@ onready var _game_menu_background = $GameMenuBackground
 onready var _hand = $Hand
 onready var _objects_dialog = $ObjectsDialog
 onready var _objects_tree = $ObjectsDialog/ObjectsTree
+onready var _options_menu = $OptionsMenu
 
 var _candidate_card: CardTextureRect = null
 var _grabbed_card_from_hand: CardTextureRect = null
@@ -276,6 +277,9 @@ func _on_ObjectsTree_item_activated():
 	# Check the selected item has metadata.
 	if selected.get_metadata(0):
 		emit_signal("piece_requested", selected.get_metadata(0))
+
+func _on_OptionsButton_pressed():
+	_options_menu.visible = true
 
 func _on_Room_started_hovering_card(card):
 	_holding_card = true
