@@ -200,6 +200,38 @@ func _on_ApplyButton_pressed():
 func _on_BackButton_pressed():
 	visible = false
 
+func _on_OpenAssetsButton_pressed():
+	if PieceDB.ASSET_DIR_PATHS.size() == 0:
+		return
+	
+	var dir = Directory.new()
+	var found = false
+	for dir_path in PieceDB.ASSET_DIR_PATHS:
+		var err = dir.open(dir_path)
+		if err == OK:
+			found = true
+			break
+	
+	# If no asset directory exists, make the first one in the list.
+	if not found:
+		var err = dir.open(".")
+		if err == OK:
+			var path = PieceDB.ASSET_DIR_PATHS[0]
+			err = dir.make_dir_recursive(path)
+			if err == OK:
+				err = dir.open(path)
+				if err == OK:
+					found = true
+				else:
+					push_error("Failed to open directory at " + path + " (error " + str(err) + ")")
+			else:
+				push_error("Failed to create directory at " + path + " (error " + str(err) + ")")
+		else:
+			push_error("Failed to open current working directory (error " + str(err) + ")")
+	
+	if found:
+		OS.shell_open(dir.get_current_dir())
+
 func _on_ReimportButton_pressed():
 	_reimport_confirm.popup_centered()
 

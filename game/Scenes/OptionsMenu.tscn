@@ -48,15 +48,29 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="ReimportSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+[node name="OpenAssetsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_right = 486.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 
-[node name="ReimportButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+[node name="OpenAssetsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
 margin_right = 976.0
 margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Open Assets Folder"
+
+[node name="ReimportSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 24.0
+margin_right = 486.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+
+[node name="ReimportButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_left = 490.0
+margin_top = 24.0
+margin_right = 976.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "Reimport Assets"
 
@@ -287,6 +301,7 @@ margin_bottom = 109.0
 window_title = "Reimporting Assets"
 dialog_text = "Reimporting your assets will delete your import cache (not the original files) and restart the game. Are you sure you want to continue?"
 dialog_autowrap = true
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton" to="." method="_on_OpenAssetsButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ReimportButton" to="." method="_on_ReimportButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/OKButton" to="." method="_on_OKButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]
