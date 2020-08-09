@@ -43,9 +43,10 @@ const RAY_LENGTH = 1000
 const ROTATION_SENSITIVITY = -0.015
 const ROTATION_Y_MAX = -0.2
 const ROTATION_Y_MIN = -1.3
-const ZOOM_AMOUNT = 2.0
+const ZOOM_ACCEL = 10.0
+const ZOOM_AMOUNT = 4.0
 const ZOOM_DISTANCE_MIN = 2.0
-const ZOOM_DISTANCE_MAX = 80.0
+const ZOOM_DISTANCE_MAX = 200.0
 
 var _box_select_init_pos = Vector2()
 var _grabbing_time = 0.0
@@ -60,6 +61,7 @@ var _piece_mouse_is_over: Piece = null
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
 var _selected_pieces = []
+var _target_zoom = 0.0
 
 # Append an array of pieces to the list of selected pieces.
 # pieces: The array of pieces to now be selected.
@@ -119,6 +121,10 @@ func _ready():
 	# Get the current rotation so we can get our _rotation accumulator set up
 	# no matter how the camera is initially positioned.
 	_rotation = Vector2(rotation.y, rotation.x)
+	
+	# Get the current zoom so the camera doesn't try to go to another zoom
+	# level.
+	_target_zoom = _camera.translation.z
 
 func _process(delta):
 	if _is_grabbing_selected:
@@ -228,6 +234,10 @@ func _process_movement(delta):
 	# If we ended up moving...
 	if translation != old_translation:
 		_start_moving()
+	
+	# Go towards the target zoom level.
+	var target_offset = Vector3(0, 0, _target_zoom)
+	_camera.translation = _camera.translation.linear_interpolate(target_offset, ZOOM_ACCEL * delta)
 
 func _unhandled_input(event):
 	if _is_hovering_selected:
@@ -297,7 +307,6 @@ func _unhandled_input(event):
 			event.button_index == BUTTON_WHEEL_DOWN):
 		
 			# Zooming the camera in and away from the controller.
-			# TODO: Implement smooth zooming.
 			var offset = 0
 			
 			if event.button_index == BUTTON_WHEEL_UP:
@@ -305,14 +314,8 @@ func _unhandled_input(event):
 			else:
 				offset = ZOOM_AMOUNT
 			
-			var distance = _camera.translation.z
-			
-			if distance + offset > ZOOM_DISTANCE_MAX:
-				offset = ZOOM_DISTANCE_MAX - distance
-			if distance + offset < ZOOM_DISTANCE_MIN:
-				offset = ZOOM_DISTANCE_MIN - distance
-			
-			_camera.translate(Vector3(0, 0, offset))
+			var new_zoom = _target_zoom + offset
+			_target_zoom = max(min(new_zoom, ZOOM_DISTANCE_MAX), ZOOM_DISTANCE_MIN)
 			
 			get_tree().set_input_as_handled()
 	

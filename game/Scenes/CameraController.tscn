@@ -11,7 +11,7 @@ __meta__ = {
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50 )
-far = 200.0
+far = 500.0
 
 [node name="PieceContextMenu" type="PopupMenu" parent="."]
 margin_right = 20.0
