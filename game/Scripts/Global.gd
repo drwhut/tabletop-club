@@ -34,7 +34,7 @@ var _current_scene: Node = null
 # Restart the game.
 func restart_game() -> void:
 	call_deferred("_terminate_peer")
-	call_deferred("_goto_scene", "res://Scenes/ImportAssets.tscn", {
+	call_deferred("_goto_scene", ProjectSettings.get_setting("application/run/main_scene"), {
 		"mode": MODE_NONE
 	})
 
