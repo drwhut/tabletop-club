@@ -7,7 +7,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "The options menu displays a list of options to the user.
+
+The scene creates a ConfigFile full of values based on the nodes in the scene, and when the user applies the options, it gets sent around the game for nodes to apply the different options. The config file is also saved in the user:// directory so it can be loaded later."
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

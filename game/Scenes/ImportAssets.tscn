@@ -7,7 +7,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "This scene imports all of the assets that are in the user's directory, and displays the file paths of the assets as they are being imported.
+
+Once it is done importing, the scene goes to the main menu."
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
