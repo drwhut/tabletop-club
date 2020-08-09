@@ -36,11 +36,11 @@ onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 
 const GRABBING_SLOW_TIME = 0.25
 const HOVER_Y_LEVEL = 5.0
-const MOVEMENT_ACCEL = 1.0
-const MOVEMENT_DECEL = 3.0
-const MOVEMENT_MAX_SPEED = 30.0
+const MOVEMENT_ACCEL = 5.0
+const MOVEMENT_DECEL = 10.0
+const MOVEMENT_MAX_SPEED = 60.0
 const RAY_LENGTH = 1000
-const ROTATION_SENSITIVITY = -0.01
+const ROTATION_SENSITIVITY = -0.015
 const ROTATION_Y_MAX = -0.2
 const ROTATION_Y_MIN = -1.3
 const ZOOM_AMOUNT = 2.0
@@ -52,9 +52,9 @@ var _grabbing_time = 0.0
 var _is_box_selecting = false
 var _is_grabbing_selected = false
 var _is_hovering_selected = false
-var _last_non_zero_movement_dir = Vector3()
+var _movement_accel = 0.0
 var _movement_dir = Vector3()
-var _movement_speed = 0.0
+var _movement_vel = Vector3()
 var _perform_box_select = false
 var _piece_mouse_is_over: Piece = null
 var _right_click_pos = Vector2()
@@ -210,26 +210,20 @@ func _process_input(delta):
 	z_basis = z_basis.normalized()
 	_movement_dir += -z_basis * movement_input.y
 	
-	var is_accelerating = not (movement_input.x == 0 and movement_input.y == 0)
+	var is_accelerating = _movement_dir.dot(_movement_vel) > 0
 	
-	# Keep track of the latest non-zero movement direction so that if we slow
-	# down, we keep slowing down in the direction we were going.
+	_movement_accel = MOVEMENT_DECEL
 	if is_accelerating:
-		_last_non_zero_movement_dir = _movement_dir
-	
-	# Calculating the speed of the movement parallel to the table.
-	if is_accelerating:
-		_movement_speed += MOVEMENT_ACCEL
-		_movement_speed = min(_movement_speed, MOVEMENT_MAX_SPEED)
-	else:
-		_movement_speed -= MOVEMENT_DECEL
-		_movement_speed = max(_movement_speed, 0.0)
+		_movement_accel = MOVEMENT_ACCEL
 
 func _process_movement(delta):
+	var target_vel = _movement_dir * MOVEMENT_MAX_SPEED
+	_movement_vel = _movement_vel.linear_interpolate(target_vel, _movement_accel * delta)
+	
 	# A global translation, as we want to move on the plane parallel to the
 	# table, regardless of the direction we are facing.
 	var old_translation = translation
-	translation += _last_non_zero_movement_dir * _movement_speed * delta
+	translation += _movement_vel * delta
 	
 	# If we ended up moving...
 	if translation != old_translation:
