@@ -25,8 +25,12 @@ signal applying_options(config)
 
 const OPTIONS_FILE_PATH = "user://options.cfg"
 
+onready var _binding_background = $BindingBackground
+onready var _key_bindings_parent = $"MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"
 onready var _reimport_confirm = $ReimportConfirm
 onready var _tab_container = $MarginContainer/VBoxContainer/TabContainer
+
+var _action_to_bind = ""
 
 func _ready():
 	var config = _create_config_from_current()
@@ -36,7 +40,12 @@ func _ready():
 	# Wait until the end of the frame to apply the changes, so that other nodes
 	# have called the ready function as well.
 	call_deferred("_apply_config", config)
- 
+	
+	# Hook up the signal for rebinding an action from all of the BindButtons.
+	for node in _key_bindings_parent.get_children():
+		if node is BindButton:
+			node.connect("rebinding_action", self, "_on_rebinding_action")
+
 # Apply the changes made and save them in the options file.
 func _apply_changes() -> void:
 	var config = _create_config_from_current()
@@ -49,6 +58,8 @@ func _apply_changes() -> void:
 # config: The options to apply.
 func _apply_config(config: ConfigFile) -> void:
 	emit_signal("applying_options", config)
+	
+	# VIDEO
 	
 	var window_mode_id = config.get_value("video", "window_mode")
 	var borderless = false
@@ -71,16 +82,26 @@ func _apply_config(config: ConfigFile) -> void:
 	var msaa = Viewport.MSAA_DISABLED
 	var msaa_id = config.get_value("video", "msaa")
 	
-	if msaa_id == 1:
-		msaa = Viewport.MSAA_2X
-	elif msaa_id == 2:
-		msaa = Viewport.MSAA_4X
-	elif msaa_id == 3:
-		msaa = Viewport.MSAA_8X
-	elif msaa_id == 4:
-		msaa = Viewport.MSAA_16X
+	match msaa_id:
+		1:
+			msaa = Viewport.MSAA_2X
+		2:
+			msaa = Viewport.MSAA_4X
+		3:
+			msaa = Viewport.MSAA_8X
+		4:
+			msaa = Viewport.MSAA_16X
 	
 	get_viewport().msaa = msaa
+	
+	# KEY BINDINGS
+	
+	for action in config.get_section_keys("key_bindings"):
+		if InputMap.has_action(action):
+			InputMap.action_erase_events(action)
+			InputMap.action_add_event(action, config.get_value("key_bindings", action))
+		else:
+			push_error("Action " + action + " does not exist!")
 
 # Create a config file from the current options.
 # Returns: A config file whose values are based on the current options.
@@ -107,7 +128,13 @@ func _create_config_from_current() -> ConfigFile:
 			var key_name = _keyify_string(key.text)
 			var key_value = null
 			
-			if value is CheckBox:
+			if value is BindButton:
+				# Special case for key bindings: saving the action name as the
+				# key is more efficient, since we can just bind it on load
+				# straight away.
+				key_name = value.action
+				key_value = value.get_action_input_event()
+			elif value is CheckBox:
 				key_value = value.pressed
 			elif value is OptionButton:
 				key_value = value.selected
@@ -178,10 +205,20 @@ func _set_current_with_config(config: ConfigFile) -> void:
 			var value: Control = grid.get_child(i + 1)
 			
 			var key_name = _keyify_string(key.text)
+			# Special case for key bindings: the key is the name of the action
+			# that is being bound, not the label.
+			# TODO: If languages are ever implemented, the tab name will not be
+			# correct! Maybe have the tabs contain scripts with a consistent
+			# name across all languages?
+			if tab_name == "key_bindings" and value is BindButton:
+				key_name = value.action
 			var key_value = config.get_value(tab_name, key_name)
 			
 			if key_value:
-				if value is CheckBox:
+				if value is BindButton:
+					value.input_event = key_value
+					value.update_text()
+				elif value is CheckBox:
 					value.pressed = key_value
 				elif value is OptionButton:
 					value.selected = key_value
@@ -189,6 +226,10 @@ func _set_current_with_config(config: ConfigFile) -> void:
 					value.value = key_value
 				else:
 					push_error(value.name + " is an unknown type!")
+
+func _on_rebinding_action(action: String) -> void:
+	_action_to_bind = action
+	_binding_background.visible = true
 
 func _on_OKButton_pressed():
 	_apply_changes()
@@ -200,8 +241,29 @@ func _on_ApplyButton_pressed():
 func _on_BackButton_pressed():
 	visible = false
 
+func _on_BindingBackground_unhandled_input(event: InputEvent):
+	if not _action_to_bind.empty():
+		var valid = false
+		if event is InputEventKey:
+			valid = true
+		elif event is InputEventMouseButton:
+			valid = true
+		
+		if valid:
+			for node in _key_bindings_parent.get_children():
+				if node is BindButton:
+					if node.action == _action_to_bind:
+						node.input_event = event
+						node.update_text()
+			
+			_action_to_bind = ""
+			_binding_background.visible = false
+
+func _on_CancelBindButton_pressed():
+	_binding_background.visible = false
+
 func _on_OpenAssetsButton_pressed():
-	if PieceDB.ASSET_DIR_PATHS.size() == 0:
+	if PieceDB.ASSET_DIR_PATHS.empty():
 		return
 	
 	var dir = Directory.new()

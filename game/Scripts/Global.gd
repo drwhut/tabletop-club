@@ -96,53 +96,59 @@ func _goto_scene(path: String, args: Dictionary) -> void:
 		push_error("Scene argument 'mode' is not an integer!")
 		return
 	
-	if args["mode"] == MODE_NONE:
-		pass
-	elif args["mode"] == MODE_ERROR:
-		if not args.has("error"):
-			push_error("Scene argument 'error' is missing!")
-			return
+	match args["mode"]:
+		MODE_NONE:
+			pass
 		
-		if not args["error"] is String:
-			push_error("Scene argument 'error' is not a string!")
-			return
-	elif args["mode"] == MODE_CLIENT:
-		if not args.has("server"):
-			push_error("Scene argument 'server' is missing!")
-			return
+		MODE_ERROR:
+			if not args.has("error"):
+				push_error("Scene argument 'error' is missing!")
+				return
+			
+			if not args["error"] is String:
+				push_error("Scene argument 'error' is not a string!")
+				return
 		
-		if not args["server"] is String:
-			push_error("Scene argument 'server' is not a string!")
-			return
+		MODE_CLIENT:
+			if not args.has("server"):
+				push_error("Scene argument 'server' is missing!")
+				return
+			
+			if not args["server"] is String:
+				push_error("Scene argument 'server' is not a string!")
+				return
+			
+			if not args.has("port"):
+				push_error("Scene argument 'port' is missing!")
+				return
+			
+			if not args["port"] is int:
+				push_error("Scene argument 'port' is not an integer!")
+				return
 		
-		if not args.has("port"):
-			push_error("Scene argument 'port' is missing!")
-			return
+		MODE_SERVER:
+			if not args.has("max_players"):
+				push_error("Scene argument 'max_players' is missing!")
+				return
+			
+			if not args["max_players"] is int:
+				push_error("Scene argument 'max_players' is not an integer!")
+				return
+			
+			if not args.has("port"):
+				push_error("Scene argument 'port' is missing!")
+				return
+			
+			if not args["port"] is int:
+				push_error("Scene argument 'port' is not an integer!")
+				return
 		
-		if not args["port"] is int:
-			push_error("Scene argument 'port' is not an integer!")
-			return
-	elif args["mode"] == MODE_SERVER:
-		if not args.has("max_players"):
-			push_error("Scene argument 'max_players' is missing!")
-			return
+		MODE_SINGLEPLAYER:
+			pass
 		
-		if not args["max_players"] is int:
-			push_error("Scene argument 'max_players' is not an integer!")
+		_:
+			push_error("Invalid mode " + str(args["mode"]) + "!")
 			return
-		
-		if not args.has("port"):
-			push_error("Scene argument 'port' is missing!")
-			return
-		
-		if not args["port"] is int:
-			push_error("Scene argument 'port' is not an integer!")
-			return
-	elif args["mode"] == MODE_SINGLEPLAYER:
-		pass
-	else:
-		push_error("Invalid mode " + str(args["mode"]) + "!")
-		return
 	
 	# Since this function should be called via call_deferred, it should be safe
 	# to free the current scene now.
@@ -155,14 +161,15 @@ func _goto_scene(path: String, args: Dictionary) -> void:
 	root.add_child(_current_scene)
 	get_tree().set_current_scene(_current_scene)
 	
-	if args["mode"] == MODE_ERROR:
-		_current_scene.display_error(args["error"])
-	elif args["mode"] == MODE_CLIENT:
-		_current_scene.init_client(args["server"], args["port"])
-	elif args["mode"] == MODE_SERVER:
-		_current_scene.init_server(args["max_players"], args["port"])
-	elif args["mode"] == MODE_SINGLEPLAYER:
-		_current_scene.init_singleplayer()
+	match args["mode"]:
+		MODE_ERROR:
+			_current_scene.display_error(args["error"])
+		MODE_CLIENT:
+			_current_scene.init_client(args["server"], args["port"])
+		MODE_SERVER:
+			_current_scene.init_server(args["max_players"], args["port"])
+		MODE_SINGLEPLAYER:
+			_current_scene.init_singleplayer()
 
 # Terminate the network peer if it exists.
 func _terminate_peer() -> void:

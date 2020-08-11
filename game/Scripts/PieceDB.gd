@@ -371,4 +371,5 @@ func _sort_files(file1: String, file2: String) -> bool:
 	return false
 
 func _on_exiting_tree() -> void:
-	_import_thread.wait_to_finish()
+	if _import_thread.is_active():
+		_import_thread.wait_to_finish()

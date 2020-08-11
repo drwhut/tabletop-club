@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Button",
+"class": "BindButton",
+"language": "GDScript",
+"path": "res://Scripts/BindButton.gd"
+}, {
 "base": "StackablePiece",
 "class": "Card",
 "language": "GDScript",
@@ -55,6 +60,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/StackablePiece.gd"
 } ]
 _global_script_class_icons={
+"BindButton": "",
 "Card": "",
 "CardTextureRect": "",
 "Chip": "",

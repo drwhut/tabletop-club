@@ -53,18 +53,19 @@ func add_piece(piece: StackPieceInstance, shape: CollisionShape,
 	
 	var on_top = false
 	
-	if on == STACK_AUTO:
-		if transform.origin.y < piece.transform.origin.y:
-			on_top = transform.basis.y.dot(Vector3.UP) > 0
-		else:
-			on_top = transform.basis.y.dot(Vector3.UP) < 0
-	elif on == STACK_BOTTOM:
-		on_top = false
-	elif on == STACK_TOP:
-		on_top = true
-	else:
-		push_error("Invalid stack option " + str(on) + "!")
-		return
+	match on:
+		STACK_AUTO:
+			if transform.origin.y < piece.transform.origin.y:
+				on_top = transform.basis.y.dot(Vector3.UP) > 0
+			else:
+				on_top = transform.basis.y.dot(Vector3.UP) < 0
+		STACK_BOTTOM:
+			on_top = false
+		STACK_TOP:
+			on_top = true
+		_:
+			push_error("Invalid stack option " + str(on) + "!")
+			return
 	
 	var pos = 0
 	if on_top:
@@ -143,18 +144,19 @@ func pop_piece(from: int = STACK_AUTO) -> StackPieceInstance:
 	
 	var pos = 0
 	
-	if from == STACK_AUTO:
-		if transform.basis.y.dot(Vector3.UP) > 0:
-			pos = _pieces.get_child_count() - 1
-		else:
+	match from:
+		STACK_AUTO:
+			if transform.basis.y.dot(Vector3.UP) > 0:
+				pos = _pieces.get_child_count() - 1
+			else:
+				pos = 0
+		STACK_BOTTOM:
 			pos = 0
-	elif from == STACK_BOTTOM:
-		pos = 0
-	elif from == STACK_TOP:
-		pos = _pieces.get_child_count() - 1
-	else:
-		push_error("Invalid from option " + str(from) + "!")
-		return null
+		STACK_TOP:
+			pos = _pieces.get_child_count() - 1
+		_:
+			push_error("Invalid from option " + str(from) + "!")
+			return null
 	
 	return _remove_piece_at_pos(pos)
 
@@ -307,18 +309,19 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	var n = _pieces.get_child_count()
 	var is_flipped = false
 	
-	if flip == FLIP_AUTO:
-		if is_piece_flipped(piece):
-			is_flipped = true
-		else:
+	match flip:
+		FLIP_AUTO:
+			if is_piece_flipped(piece):
+				is_flipped = true
+			else:
+				is_flipped = false
+		FLIP_NO:
 			is_flipped = false
-	elif flip == FLIP_NO:
-		is_flipped = false
-	elif flip == FLIP_YES:
-		is_flipped = true
-	else:
-		push_error("Invalid flip option " + str(flip) + "!")
-		return
+		FLIP_YES:
+			is_flipped = true
+		_:
+			push_error("Invalid flip option " + str(flip) + "!")
+			return
 	
 	var basis = Basis.IDENTITY
 	if is_flipped:
