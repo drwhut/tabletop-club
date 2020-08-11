@@ -37,7 +37,6 @@ margin_bottom = 536.0
 size_flags_vertical = 3
 
 [node name="Controls" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -216,6 +215,7 @@ size_flags_horizontal = 3
 text = "Reimport Assets"
 
 [node name="Key Bindings" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -378,6 +378,57 @@ margin_top = 192.0
 margin_right = 976.0
 margin_bottom = 212.0
 text = "Reset Bindings"
+
+[node name="Multiplayer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 4 )
+section_name = "multiplayer"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer"]
+margin_right = 976.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_top = 5.0
+margin_right = 486.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Name"
+align = 2
+
+[node name="NameEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_left = 490.0
+margin_right = 976.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Player"
+
+[node name="Colour" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_top = 227.0
+margin_right = 486.0
+margin_bottom = 241.0
+size_flags_horizontal = 3
+text = "Colour"
+align = 2
+
+[node name="ColourPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_left = 490.0
+margin_top = 28.0
+margin_right = 976.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+edit_alpha = false
+presets_enabled = false
+presets_visible = false
 
 [node name="Video" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false

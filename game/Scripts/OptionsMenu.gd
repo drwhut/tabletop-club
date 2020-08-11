@@ -60,7 +60,20 @@ func _apply_changes() -> void:
 func _apply_config(config: ConfigFile) -> void:
 	emit_signal("applying_options", config)
 	
-	# VIDEO
+	################
+	# KEY BINDINGS #
+	################
+	
+	for action in config.get_section_keys("key_bindings"):
+		if InputMap.has_action(action):
+			InputMap.action_erase_events(action)
+			InputMap.action_add_event(action, config.get_value("key_bindings", action))
+		else:
+			push_error("Action " + action + " does not exist!")
+	
+	#########
+	# VIDEO #
+	#########
 	
 	var window_mode_id = config.get_value("video", "window_mode")
 	var borderless = false
@@ -94,15 +107,6 @@ func _apply_config(config: ConfigFile) -> void:
 			msaa = Viewport.MSAA_16X
 	
 	get_viewport().msaa = msaa
-	
-	# KEY BINDINGS
-	
-	for action in config.get_section_keys("key_bindings"):
-		if InputMap.has_action(action):
-			InputMap.action_erase_events(action)
-			InputMap.action_add_event(action, config.get_value("key_bindings", action))
-		else:
-			push_error("Action " + action + " does not exist!")
 
 # Create a config file from the current options.
 # Returns: A config file whose values are based on the current options.
@@ -138,6 +142,10 @@ func _create_config_from_current() -> ConfigFile:
 					key_value = value.get_action_input_event()
 				elif value is CheckBox:
 					key_value = value.pressed
+				elif value is ColorPicker:
+					key_value = value.color
+				elif value is LineEdit:
+					key_value = value.text
 				elif value is OptionButton:
 					key_value = value.selected
 				elif value is Slider:
@@ -237,6 +245,10 @@ func _set_current_with_config(config: ConfigFile) -> void:
 						value.update_text()
 					elif value is CheckBox:
 						value.pressed = key_value
+					elif value is ColorPicker:
+						value.color = key_value
+					elif value is LineEdit:
+						value.text = key_value
 					elif value is OptionButton:
 						value.selected = key_value
 					elif value is Slider:
