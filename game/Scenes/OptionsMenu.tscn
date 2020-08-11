@@ -232,15 +232,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="Forward" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="MoveForward" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 3.0
 margin_right = 486.0
 margin_bottom = 17.0
 size_flags_horizontal = 3
-text = "Forward"
+text = "Move Forward"
 align = 2
 
-[node name="ForwardButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="MoveForwardButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_right = 976.0
 margin_bottom = 20.0
@@ -248,15 +248,15 @@ size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_up"
 
-[node name="Back" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="MoveBack" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 27.0
 margin_right = 486.0
 margin_bottom = 41.0
 size_flags_horizontal = 3
-text = "Back"
+text = "Move Back"
 align = 2
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="MoveBackButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 24.0
 margin_right = 976.0
@@ -265,15 +265,15 @@ size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_down"
 
-[node name="Left" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="MoveLeft" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 51.0
 margin_right = 486.0
 margin_bottom = 65.0
 size_flags_horizontal = 3
-text = "Left"
+text = "Move Left"
 align = 2
 
-[node name="LeftButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="MoveLeftButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 48.0
 margin_right = 976.0
@@ -282,15 +282,15 @@ size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_left"
 
-[node name="Right" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="MoveRight" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 75.0
 margin_right = 486.0
 margin_bottom = 89.0
 size_flags_horizontal = 3
-text = "Right"
+text = "Move Right"
 align = 2
 
-[node name="RightButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="MoveRightButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 72.0
 margin_right = 976.0
@@ -299,16 +299,84 @@ size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_right"
 
-[node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 96.0
+[node name="RotateCamera" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 99.0
 margin_right = 486.0
-margin_bottom = 116.0
+margin_bottom = 113.0
+size_flags_horizontal = 3
+text = "Rotate Camera"
+align = 2
 
-[node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="RotateCameraButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 96.0
 margin_right = 976.0
 margin_bottom = 116.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+action = "game_rotate"
+
+[node name="FlipPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 123.0
+margin_right = 486.0
+margin_bottom = 137.0
+size_flags_horizontal = 3
+text = "Flip Piece Orientation"
+align = 2
+
+[node name="FlipPieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 490.0
+margin_top = 120.0
+margin_right = 976.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+action = "game_flip"
+
+[node name="ResetPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 147.0
+margin_right = 486.0
+margin_bottom = 161.0
+size_flags_horizontal = 3
+text = "Reset Piece Orientation"
+align = 2
+
+[node name="ResetPieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 490.0
+margin_top = 144.0
+margin_right = 976.0
+margin_bottom = 164.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+action = "game_reset"
+
+[node name="GameMenu" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 171.0
+margin_right = 486.0
+margin_bottom = 185.0
+size_flags_horizontal = 3
+text = "Game Menu"
+align = 2
+
+[node name="GameMenuButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 490.0
+margin_top = 168.0
+margin_right = 976.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+action = "game_menu"
+
+[node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 192.0
+margin_right = 486.0
+margin_bottom = 212.0
+
+[node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 490.0
+margin_top = 192.0
+margin_right = 976.0
+margin_bottom = 212.0
 text = "Reset Bindings"
 
 [node name="Video" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
