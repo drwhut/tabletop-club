@@ -37,6 +37,7 @@ margin_bottom = 536.0
 size_flags_vertical = 3
 
 [node name="Controls" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -215,7 +216,6 @@ size_flags_horizontal = 3
 text = "Reimport Assets"
 
 [node name="Key Bindings" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -298,6 +298,18 @@ margin_bottom = 92.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_right"
+
+[node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 96.0
+margin_right = 486.0
+margin_bottom = 116.0
+
+[node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 490.0
+margin_top = 96.0
+margin_right = 976.0
+margin_bottom = 116.0
+text = "Reset Bindings"
 
 [node name="Video" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -462,11 +474,23 @@ margin_bottom = 109.0
 window_title = "Reimporting Assets"
 dialog_text = "Reimporting your assets will delete your import cache (not the original files) and restart the game. Are you sure you want to continue?"
 dialog_autowrap = true
+
+[node name="ResetBindingsConfirm" type="ConfirmationDialog" parent="."]
+margin_right = 297.0
+margin_bottom = 109.0
+window_title = "Reset Bindings"
+dialog_text = "Are you sure you want to reset your key bindings to their default value?"
+dialog_autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton" to="." method="_on_OpenAssetsButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ReimportButton" to="." method="_on_ReimportButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer/ResetBindingsButton" to="." method="_on_ResetBindingsButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/OKButton" to="." method="_on_OKButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="unhandled_input" from="BindingBackground" to="." method="_on_BindingBackground_unhandled_input"]
 [connection signal="pressed" from="BindingBackground/Panel/MarginContainer/VBoxContainer/HBoxContainer/CancelBindButton" to="." method="_on_CancelBindButton_pressed"]
 [connection signal="confirmed" from="ReimportConfirm" to="." method="_on_ReimportConfirm_confirmed"]
+[connection signal="confirmed" from="ResetBindingsConfirm" to="." method="_on_ResetBindingsConfirm_confirmed"]

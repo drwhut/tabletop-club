@@ -28,6 +28,7 @@ const OPTIONS_FILE_PATH = "user://options.cfg"
 onready var _binding_background = $BindingBackground
 onready var _key_bindings_parent = $"MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"
 onready var _reimport_confirm = $ReimportConfirm
+onready var _reset_bindings_confirm = $ResetBindingsConfirm
 onready var _tab_container = $MarginContainer/VBoxContainer/TabContainer
 
 var _action_to_bind = ""
@@ -330,3 +331,18 @@ func _on_ReimportConfirm_confirmed():
 		Global.restart_game()
 	else:
 		push_error("Failed to open the import cache directory (error " + str(err) + ")")
+
+func _on_ResetBindingsButton_pressed():
+	_reset_bindings_confirm.popup_centered()
+
+func _on_ResetBindingsConfirm_confirmed():
+	for node in _key_bindings_parent.get_children():
+		if node is BindButton:
+			var project_setting = ProjectSettings.get_setting("input/" + node.action)
+			if project_setting:
+				var events = project_setting.events
+				var event = null
+				if not events.empty():
+					event = events[0]
+				node.input_event = event
+				node.update_text()
