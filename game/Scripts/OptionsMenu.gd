@@ -109,41 +109,42 @@ func _create_config_from_current() -> ConfigFile:
 	var config = ConfigFile.new()
 	
 	for tab in _tab_container.get_children():
-		var tab_name = _keyify_string(tab.name)
-		
-		var grid = tab.get_node("GridContainer")
-		
-		if not grid:
-			push_error("Tab " + tab.name + " has no GridContainer child!")
-			continue
-		
-		for i in range(0, grid.get_child_count(), 2):
-			# Skip over children that aren't actually options.
-			if not grid.get_child(i) is Label:
+		if tab is OptionsTab:
+			var section_name = tab.section_name
+			
+			var grid = tab.get_node("GridContainer")
+			
+			if not grid:
+				push_error("Tab " + tab.name + " has no GridContainer child!")
 				continue
 			
-			var key: Label = grid.get_child(i)
-			var value: Control = grid.get_child(i + 1)
-			
-			var key_name = _keyify_string(key.text)
-			var key_value = null
-			
-			if value is BindButton:
-				# Special case for key bindings: saving the action name as the
-				# key is more efficient, since we can just bind it on load
-				# straight away.
-				key_name = value.action
-				key_value = value.get_action_input_event()
-			elif value is CheckBox:
-				key_value = value.pressed
-			elif value is OptionButton:
-				key_value = value.selected
-			elif value is Slider:
-				key_value = value.value
-			else:
-				push_error(value.name + " is an unknown type!")
-			
-			config.set_value(tab_name, key_name, key_value)
+			for i in range(0, grid.get_child_count(), 2):
+				# Skip over children that aren't actually options.
+				if not grid.get_child(i) is Label:
+					continue
+				
+				var key: Label = grid.get_child(i)
+				var value: Control = grid.get_child(i + 1)
+				
+				var key_name = _keyify_string(key.text)
+				var key_value = null
+				
+				if value is BindButton:
+					# Special case for key bindings: saving the action name as
+					# the key is more efficient, since we can just bind it on
+					# load straight away.
+					key_name = value.action
+					key_value = value.get_action_input_event()
+				elif value is CheckBox:
+					key_value = value.pressed
+				elif value is OptionButton:
+					key_value = value.selected
+				elif value is Slider:
+					key_value = value.value
+				else:
+					push_error(value.name + " is an unknown type!")
+				
+				config.set_value(section_name, key_name, key_value)
 	
 	return config
 
@@ -188,44 +189,42 @@ func _save_file(config: ConfigFile) -> void:
 # config: The values to set.
 func _set_current_with_config(config: ConfigFile) -> void:
 	for tab in _tab_container.get_children():
-		var tab_name = _keyify_string(tab.name)
-		
-		var grid = tab.get_node("GridContainer")
-		
-		if not grid:
-			push_error("Tab " + tab.name + " has no GridContainer child!")
-			continue
-		
-		for i in range(0, grid.get_child_count(), 2):
-			# Skip over children that aren't actually options.
-			if not grid.get_child(i) is Label:
+		if tab is OptionsTab:
+			var section_name = tab.section_name
+			
+			var grid = tab.get_node("GridContainer")
+			
+			if not grid:
+				push_error("Tab " + tab.name + " has no GridContainer child!")
 				continue
 			
-			var key: Label = grid.get_child(i)
-			var value: Control = grid.get_child(i + 1)
-			
-			var key_name = _keyify_string(key.text)
-			# Special case for key bindings: the key is the name of the action
-			# that is being bound, not the label.
-			# TODO: If languages are ever implemented, the tab name will not be
-			# correct! Maybe have the tabs contain scripts with a consistent
-			# name across all languages?
-			if tab_name == "key_bindings" and value is BindButton:
-				key_name = value.action
-			var key_value = config.get_value(tab_name, key_name)
-			
-			if key_value:
-				if value is BindButton:
-					value.input_event = key_value
-					value.update_text()
-				elif value is CheckBox:
-					value.pressed = key_value
-				elif value is OptionButton:
-					value.selected = key_value
-				elif value is Slider:
-					value.value = key_value
-				else:
-					push_error(value.name + " is an unknown type!")
+			for i in range(0, grid.get_child_count(), 2):
+				# Skip over children that aren't actually options.
+				if not grid.get_child(i) is Label:
+					continue
+				
+				var key: Label = grid.get_child(i)
+				var value: Control = grid.get_child(i + 1)
+				
+				var key_name = _keyify_string(key.text)
+				# Special case for key bindings: the key is the name of the
+				# action that is being bound, not the label.
+				if section_name == "key_bindings" and value is BindButton:
+					key_name = value.action
+				var key_value = config.get_value(section_name, key_name)
+				
+				if key_value:
+					if value is BindButton:
+						value.input_event = key_value
+						value.update_text()
+					elif value is CheckBox:
+						value.pressed = key_value
+					elif value is OptionButton:
+						value.selected = key_value
+					elif value is Slider:
+						value.value = key_value
+					else:
+						push_error(value.name + " is an unknown type!")
 
 func _on_rebinding_action(action: String) -> void:
 	_action_to_bind = action
