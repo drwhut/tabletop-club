@@ -126,7 +126,7 @@ func _create_config_from_current() -> ConfigFile:
 				var key: Label = grid.get_child(i)
 				var value: Control = grid.get_child(i + 1)
 				
-				var key_name = _keyify_string(key.text)
+				var key_name = _keyify_string(key.name)
 				var key_value = null
 				
 				if value is BindButton:
@@ -152,7 +152,24 @@ func _create_config_from_current() -> ConfigFile:
 # Returns: A key-string.
 # string: The string to keyify.
 func _keyify_string(string: String) -> String:
-	return string.strip_edges().to_lower().replace(" ", "_")
+	var from = string.strip_edges()
+	var out = ""
+	
+	var hit_lower = false
+	
+	for i in range(from.length()):
+		var ch = from.substr(i, 1)
+		var lower = ch.to_lower()
+		
+		if lower == ch:
+			hit_lower = true
+		else:
+			if hit_lower and (not out.ends_with("_")):
+				out += "_"
+		
+		out += lower
+	
+	return out
 
 # Load the options from the options file to the given config file.
 # config: The config to overwrite.
@@ -206,7 +223,7 @@ func _set_current_with_config(config: ConfigFile) -> void:
 				var key: Label = grid.get_child(i)
 				var value: Control = grid.get_child(i + 1)
 				
-				var key_name = _keyify_string(key.text)
+				var key_name = _keyify_string(key.name)
 				# Special case for key bindings: the key is the name of the
 				# action that is being bound, not the label.
 				if section_name == "key_bindings" and value is BindButton:

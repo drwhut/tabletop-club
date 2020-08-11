@@ -79,7 +79,7 @@ size_flags_horizontal = 3
 text = "Mouse Vertical Sensitivity"
 align = 2
 
-[node name="MouseVerticalSensitivitySlider2" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+[node name="MouseVerticalSensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
 margin_top = 20.0
 margin_right = 976.0
@@ -112,7 +112,7 @@ size_flags_horizontal = 3
 text = "Mouse Vertical Invert"
 align = 2
 
-[node name="MouseVerticalInvertCheckbox2" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+[node name="MouseVerticalInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
 margin_top = 68.0
 margin_right = 976.0
@@ -317,7 +317,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="WindowModeLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+[node name="WindowMode" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
 margin_top = 3.0
 margin_right = 486.0
 margin_bottom = 17.0
@@ -334,7 +334,7 @@ text = "Windowed"
 items = [ "Windowed", null, false, 0, null, "Borderless Fullscreen", null, false, 1, null, "Fullscreen", null, false, 2, null ]
 selected = 0
 
-[node name="VSyncLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+[node name="VSync" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
 margin_top = 29.0
 margin_right = 486.0
 margin_bottom = 43.0
