@@ -412,15 +412,15 @@ margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Player"
 
-[node name="Colour" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+[node name="Color" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
 margin_top = 227.0
 margin_right = 486.0
 margin_bottom = 241.0
 size_flags_horizontal = 3
-text = "Colour"
+text = "Color"
 align = 2
 
-[node name="ColourPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
 margin_left = 490.0
 margin_top = 28.0
 margin_right = 976.0

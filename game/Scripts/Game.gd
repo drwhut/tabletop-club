@@ -25,11 +25,21 @@ onready var _connecting_dialog = $ConnectingDialog
 onready var _room = $Room
 onready var _ui = $GameUI
 
+var _player_name: String
+var _player_color: Color
+
 # Apply options from the options menu.
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
 	_room.apply_options(config)
 	_ui.apply_options(config)
+	
+	_player_name = config.get_value("multiplayer", "name")
+	_player_color = config.get_value("multiplayer", "color")
+	
+	if not get_tree().is_network_server():
+		if not _connecting_dialog.visible:
+			Lobby.rpc_id(1, "request_modify_self", _player_name, _player_color)
 
 # Initialise a client peer.
 # server: The server to connect to.
@@ -165,6 +175,10 @@ func _ready():
 	get_tree().connect("connection_failed", self, "_connected_fail")
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
 	
+	Lobby.connect("players_synced", self, "_on_Lobby_players_synced")
+	
+	Lobby.clear_players()
+	
 	# The assets should have been imported at the start of the game.
 	_ui.set_piece_tree_from_db(PieceDB.get_db())
 
@@ -178,10 +192,15 @@ func _player_connected(id: int) -> void:
 
 func _player_disconnected(id: int) -> void:
 	print("Player with ID ", id, " disconnected!")
+	
+	if get_tree().is_network_server():
+		Lobby.rpc("remove_self", id)
 
 func _connected_ok() -> void:
 	print("Successfully connected to the server!")
 	_connecting_dialog.visible = false
+	
+	Lobby.rpc_id(1, "request_sync_players")
 
 func _connected_fail() -> void:
 	print("Failed to connect to the server!")
@@ -209,6 +228,10 @@ func _on_GameUI_card_out_hand_requested(card_texture: CardTextureRect):
 
 func _on_GameUI_piece_requested(piece_entry: Dictionary):
 	rpc_id(1, "request_game_piece", piece_entry)
+
+func _on_Lobby_players_synced():
+	if not get_tree().is_network_server():
+		Lobby.rpc_id(1, "request_add_self", _player_name, _player_color)
 
 func _on_Room_cards_in_hand_requested(cards: Array):
 	# TODO: Send the entire array over the network at once.

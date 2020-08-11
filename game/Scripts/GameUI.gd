@@ -33,6 +33,7 @@ onready var _hand = $Hand
 onready var _objects_dialog = $ObjectsDialog
 onready var _objects_tree = $ObjectsDialog/ObjectsTree
 onready var _options_menu = $OptionsMenu
+onready var _player_list = $PlayerList
 
 var _candidate_card: CardTextureRect = null
 var _grabbed_card_from_hand: CardTextureRect = null
@@ -86,6 +87,10 @@ func set_piece_tree_from_db(pieces: Dictionary) -> void:
 		_add_game_to_tree(game, pieces[game])
 
 func _ready():
+	Lobby.connect("player_added", self, "_on_Lobby_player_added")
+	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
+	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
+	
 	var hand_height = _hand.rect_size.y
 	_hand_highlight.color = HIGHLIGHT_COLOUR
 	_hand_highlight.mouse_filter = MOUSE_FILTER_IGNORE
@@ -221,6 +226,35 @@ func _create_card_half_texture(card: Card, front_face: bool) -> CardTextureRect:
 	
 	return texture_rect
 
+# Update the player list based on what is in the Lobby.
+func _update_player_list() -> void:
+	var code = "[right][table=1]"
+	
+	for id in Lobby.get_player_list():
+		var player = Lobby.get_player(id)
+		code += "[cell]"
+		
+		var player_color = "ffffff"
+		if player.has("color"):
+			player_color = player["color"].to_html(false)
+		code += "[color=#" + player_color + "]"
+		
+		var player_name = "<No Name>"
+		if player.has("name"):
+			player_name = player["name"]
+		player_name = player_name.strip_edges()
+		if player_name.empty():
+			player_name = "<No Name>"
+		player_name = player_name.replace("[", "") # For security!
+		code += player_name
+		
+		code += "[/color]"
+		code += "[/cell]"
+	
+	code += "[/table][/right]"
+	
+	_player_list.bbcode_text = code
+
 func _on_card_texture_clicked(card_texture: CardTextureRect) -> void:
 	# We might get multiple signals if the cards overlap each other.
 	if (not _grabbed_card_from_hand) or (card_texture.get_index() > _grabbed_card_from_hand.get_index()):
@@ -272,6 +306,15 @@ func _on_GameMenuButton_pressed():
 
 func _on_GameUI_tree_exited():
 	_hand_highlight.free()
+
+func _on_Lobby_player_added(id: int):
+	_update_player_list()
+
+func _on_Lobby_player_modified(id: int):
+	_update_player_list()
+
+func _on_Lobby_player_removed(id: int):
+	_update_player_list()
 
 func _on_MainMenuButton_pressed():
 	Global.start_main_menu()
