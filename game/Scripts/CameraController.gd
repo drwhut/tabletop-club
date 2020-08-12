@@ -69,6 +69,7 @@ var _right_click_pos = Vector2()
 var _rotation = Vector2()
 var _selected_pieces = []
 var _target_zoom = 0.0
+var _viewport_size_original = Vector2()
 
 # Append an array of pieces to the list of selected pieces.
 # pieces: The array of pieces to now be selected.
@@ -180,6 +181,10 @@ func set_selected_pieces(pieces: Array) -> void:
 	append_selected_pieces(pieces)
 
 func _ready():
+	_viewport_size_original.x = ProjectSettings.get_setting("display/window/size/width")
+	_viewport_size_original.y = ProjectSettings.get_setting("display/window/size/height")
+	get_viewport().connect("size_changed", self, "_on_Viewport_size_changed")
+	
 	Lobby.connect("player_added", self, "_on_Lobby_player_added")
 	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
 	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
@@ -517,6 +522,17 @@ func _create_player_cursor_texture(id: int) -> ImageTexture:
 	new_texture.create_from_image(clone_image)
 	return new_texture
 
+# Get the scale nessesary to make cursors appear the same size regardless of
+# resolution.
+# Returns: The scale.
+func _get_cursor_scale() -> Vector2:
+	var from = get_viewport().size
+	var to = _viewport_size_original
+	
+	var out = Vector2(to.x / from.x, to.y / from.y)
+	
+	return out
+
 # Get the inheritance of a piece, which is the array of classes represented as
 # strings, that the piece is based on. The last element of the array should
 # always represent the Piece class.
@@ -795,6 +811,7 @@ func _on_Lobby_player_added(id: int) -> void:
 	var cursor = TextureRect.new()
 	cursor.name = str(id)
 	cursor.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	cursor.rect_scale = _get_cursor_scale()
 	cursor.texture = _create_player_cursor_texture(id)
 	
 	cursor.set_meta("cursor_position", Vector3())
@@ -838,3 +855,10 @@ func _on_VBoxContainer_item_rect_changed():
 		size.y -= _piece_context_menu_container.margin_bottom
 		_piece_context_menu.rect_min_size = size
 		_piece_context_menu.rect_size = size
+
+func _on_Viewport_size_changed():
+	# Scale the cursors so they always appear the same size, regardless of the
+	# window resolution.
+	for cursor in _cursors.get_children():
+		if cursor is TextureRect:
+			cursor.rect_scale = _get_cursor_scale()
