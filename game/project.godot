@@ -49,11 +49,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Piece.gd"
 }, {
-"base": "TextureRect",
-"class": "PlayerCursor",
-"language": "GDScript",
-"path": "res://Scripts/PlayerCursor.gd"
-}, {
 "base": "StackablePiece",
 "class": "Stack",
 "language": "GDScript",
@@ -78,7 +73,6 @@ _global_script_class_icons={
 "OptionsTab": "",
 "OutlineColorRect": "",
 "Piece": "",
-"PlayerCursor": "",
 "Stack": "",
 "StackPieceInstance": "",
 "StackablePiece": ""

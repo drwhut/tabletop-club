@@ -37,6 +37,7 @@ onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 
 const GRABBING_SLOW_TIME = 0.25
 const HOVER_Y_LEVEL = 5.0
+const CURSOR_LERP_SCALE = 100.0
 const MOVEMENT_ACCEL_SCALAR = 0.125
 const MOVEMENT_DECEL_SCALAR = 0.25
 const RAY_LENGTH = 1000
@@ -164,11 +165,10 @@ puppet func set_player_cursor_position(id: int, position: Vector3) -> void:
 	var cursor = _cursors.get_node(str(id))
 	if not cursor:
 		return
-	if not cursor is PlayerCursor:
+	if not cursor is TextureRect:
 		return
 	
-	var screen_position = _camera.unproject_position(position)
-	cursor.lerp_position = screen_position
+	cursor.set_meta("cursor_position", position)
 
 # Set the list of selected pieces.
 # pieces: The new list of selected pieces.
@@ -196,6 +196,13 @@ func _process(delta):
 		# Have we been grabbing this piece for a long time?
 		if _grabbing_time > GRABBING_SLOW_TIME:
 			_start_hovering_grabbed_piece(false)
+	
+	for cursor in _cursors.get_children():
+		if cursor is TextureRect:
+			if cursor.has_meta("cursor_position"):
+				var current_position = cursor.rect_position
+				var target_position = _camera.unproject_position(cursor.get_meta("cursor_position"))
+				cursor.rect_position = current_position.linear_interpolate(target_position, CURSOR_LERP_SCALE * delta)
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -312,7 +319,7 @@ func _process_movement(delta):
 	
 	# If we ended up moving...
 	if translation != old_translation:
-		_start_moving()
+		_on_moving()
 	
 	# Go towards the target zoom level.
 	var target_offset = Vector3(0, 0, _target_zoom)
@@ -402,7 +409,7 @@ func _unhandled_input(event):
 	elif event is InputEventMouseMotion:
 		# Check if by moving the mouse, we either started hovering a piece, or
 		# we have moved the hovered pieces position.
-		if _start_moving():
+		if _on_moving():
 			pass
 		
 		elif Input.is_action_pressed("game_rotate"):
@@ -456,6 +463,40 @@ func _calculate_hover_position(mouse_position: Vector2) -> Vector3:
 	var z = from.z + lambda * (to.z - from.z)
 	
 	return Vector3(x, HOVER_Y_LEVEL, z)
+
+# Create a cursor texture representing a given player.
+# Returns: A cursor texture representing a given player.
+# id: The ID of the player.
+func _create_player_cursor_texture(id: int) -> ImageTexture:
+	var cursor_image: Image = preload("res://Cursors/Arrow.png")
+	
+	# Create a clone of the image, so we don't modify the original.
+	var clone_image = Image.new()
+	cursor_image.lock()
+	clone_image.create_from_data(cursor_image.get_width(),
+		cursor_image.get_height(), false, cursor_image.get_format(),
+		cursor_image.get_data())
+	cursor_image.unlock()
+	
+	# Get the player's color.
+	var mask_color = Color.white
+	if Lobby.player_exists(id):
+		var player = Lobby.get_player(id)
+		if player.has("color"):
+			mask_color = player["color"]
+			mask_color.a = 1.0
+	
+	# Perform a multiply operation on the image.
+	clone_image.lock()
+	for x in range(clone_image.get_width()):
+		for y in range(clone_image.get_height()):
+			var pixel = clone_image.get_pixel(x, y)
+			clone_image.set_pixel(x, y, pixel * mask_color)
+	clone_image.unlock()
+	
+	var new_texture = ImageTexture.new()
+	new_texture.create_from_image(clone_image)
+	return new_texture
 
 # Get the inheritance of a piece, which is the array of classes represented as
 # strings, that the piece is based on. The last element of the array should
@@ -704,7 +745,7 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 		_is_grabbing_selected = false
 
 # Called when the camera starts moving either positionally or rotationally.
-func _start_moving() -> bool:
+func _on_moving() -> bool:
 	# If we were grabbing a piece while moving...
 	if _is_grabbing_selected:
 		
@@ -729,9 +770,12 @@ func _on_Lobby_player_added(id: int) -> void:
 	if _cursors.has_node(str(id)):
 		return
 	
-	var cursor = PlayerCursor.new()
+	var cursor = TextureRect.new()
 	cursor.name = str(id)
-	cursor.set_player_cursor_texture(id)
+	cursor.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	cursor.texture = _create_player_cursor_texture(id)
+	
+	cursor.set_meta("cursor_position", Vector3())
 	
 	_cursors.add_child(cursor)
 
@@ -745,10 +789,10 @@ func _on_Lobby_player_modified(id: int) -> void:
 	var cursor = _cursors.get_node(str(id))
 	if not cursor:
 		return
-	if not cursor is PlayerCursor:
+	if not cursor is TextureRect:
 		return
 	
-	cursor.set_player_cursor_texture(id)
+	cursor.texture = _create_player_cursor_texture(id)
 
 func _on_Lobby_player_removed(id: int) -> void:
 	if id == get_tree().get_network_unique_id():
