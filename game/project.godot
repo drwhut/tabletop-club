@@ -87,7 +87,7 @@ _global_script_class_icons={
 [application]
 
 config/name="OpenTabletop"
-config/description="Copyright (c) 2020 drwhut
+config/description="Copyright (c) 2020 Benjamin 'drwhut' Beddows
 
 An open-source platform for playing tabletop games in a 3D environment, made with the Godot Engine!"
 run/main_scene="res://Scenes/ImportAssets.tscn"
