@@ -151,6 +151,8 @@ func _create_config_from_current() -> ConfigFile:
 					key_value = value.selected
 				elif value is Slider:
 					key_value = value.value
+				elif value is SpinBox:
+					key_value = value.value
 				else:
 					push_error(value.name + " is an unknown type!")
 				
@@ -253,6 +255,8 @@ func _set_current_with_config(config: ConfigFile) -> void:
 					elif value is OptionButton:
 						value.selected = key_value
 					elif value is Slider:
+						value.value = key_value
+					elif value is SpinBox:
 						value.value = key_value
 					else:
 						push_error(value.name + " is an unknown type!")

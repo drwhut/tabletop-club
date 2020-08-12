@@ -479,34 +479,54 @@ text = "Windowed"
 items = [ "Windowed", null, false, 0, null, "Borderless Fullscreen", null, false, 1, null, "Fullscreen", null, false, 2, null ]
 selected = 0
 
-[node name="VSync" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+[node name="FOV" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
 margin_top = 29.0
 margin_right = 486.0
 margin_bottom = 43.0
+size_flags_horizontal = 3
+text = "Field of View"
+align = 2
+
+[node name="FOVSpin" type="SpinBox" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_left = 490.0
+margin_top = 24.0
+margin_right = 976.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+min_value = 50.0
+max_value = 130.0
+step = 5.0
+value = 70.0
+suffix = "º"
+
+[node name="VSync" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_top = 57.0
+margin_right = 486.0
+margin_bottom = 71.0
 size_flags_horizontal = 3
 text = "VSync"
 align = 2
 
 [node name="VSyncCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
 margin_left = 490.0
-margin_top = 24.0
+margin_top = 52.0
 margin_right = 976.0
-margin_bottom = 48.0
+margin_bottom = 76.0
 size_flags_horizontal = 3
 
 [node name="MSAA" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
-margin_top = 55.0
+margin_top = 83.0
 margin_right = 486.0
-margin_bottom = 69.0
+margin_bottom = 97.0
 size_flags_horizontal = 3
 text = "MSAA"
 align = 2
 
 [node name="MSAAButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
 margin_left = 490.0
-margin_top = 52.0
+margin_top = 80.0
 margin_right = 976.0
-margin_bottom = 72.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 text = "None"
 items = [ "None", null, false, 0, null, "2X", null, false, 1, null, "4X", null, false, 2, null, "8X", null, false, 3, null, "16X", null, false, 4, null ]

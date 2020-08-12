@@ -80,6 +80,8 @@ func append_selected_pieces(pieces: Array) -> void:
 # Apply options from the options menu.
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
+	_camera.fov = config.get_value("video", "fov")
+	
 	var rotation_x_scale = -0.1
 	if config.get_value("controls", "mouse_horizontal_invert"):
 		rotation_x_scale *= -1
