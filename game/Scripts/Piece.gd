@@ -268,13 +268,8 @@ func _physics_process(delta):
 	_last_velocity = _new_velocity
 	_new_velocity  = linear_velocity
 	
-	# If we are the server ...
 	if get_tree().is_network_server():
-		
-		# ... and the piece isn't sleeping ...
-		if not sleeping:
-		
-			# ... then send this piece's physics state to the clients.
+		if not (sleeping or is_locked()):
 			rpc_unreliable("set_latest_server_physics_state", _last_server_state)
 
 func _integrate_forces(state):
