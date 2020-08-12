@@ -28,6 +28,7 @@ const OPTIONS_FILE_PATH = "user://options.cfg"
 onready var _binding_background = $BindingBackground
 onready var _key_bindings_parent = $"MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"
 onready var _license_dialog = $LicenseDialog
+onready var _open_assets_button = $MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton
 onready var _reimport_confirm = $ReimportConfirm
 onready var _reset_bindings_confirm = $ResetBindingsConfirm
 onready var _tab_container = $MarginContainer/VBoxContainer/TabContainer
@@ -47,6 +48,10 @@ func _ready():
 	for node in _key_bindings_parent.get_children():
 		if node is BindButton:
 			node.connect("rebinding_action", self, "_on_rebinding_action")
+	
+	# Opening folders is not supported on OSX.
+	if OS.get_name() == "OSX":
+		_open_assets_button.disabled = true
 
 # Apply the changes made and save them in the options file.
 func _apply_changes() -> void:
@@ -298,6 +303,10 @@ func _on_CancelBindButton_pressed():
 
 func _on_OpenAssetsButton_pressed():
 	if PieceDB.ASSET_DIR_PATHS.empty():
+		return
+	
+	# Opening folders is not supported on OSX.
+	if OS.get_name() == "OSX":
 		return
 	
 	var dir = Directory.new()

@@ -24,7 +24,8 @@ extends Node
 signal completed()
 signal importing_file(file)
 
-const ASSET_DIR_PATHS = ["./assets", "../assets"]
+#                        DEFAULT     EDITOR       OSX
+const ASSET_DIR_PATHS = ["./assets", "../assets", "../../../assets"]
 
 const VALID_SCENE_EXTENSIONS = ["glb", "gltf"]
 
