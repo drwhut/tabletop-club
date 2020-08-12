@@ -104,6 +104,8 @@ func apply_options(config: ConfigFile) -> void:
 	var speed_offset = 10.0
 	var speed_scale = 190.0
 	max_speed = speed_offset + speed_scale * config.get_value("controls", "camera_movement_speed")
+	
+	_cursors.visible = not config.get_value("multiplayer", "hide_cursors")
 
 # Clear the list of selected pieces.
 func clear_selected_pieces() -> void:

@@ -435,14 +435,29 @@ text = "Color"
 align = 2
 
 [node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_left = 494.0
-margin_top = 32.0
-margin_right = 980.0
-margin_bottom = 444.0
+margin_left = 490.0
+margin_top = 28.0
+margin_right = 976.0
+margin_bottom = 440.0
 size_flags_horizontal = 3
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
+
+[node name="HideCursors" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_top = 449.0
+margin_right = 486.0
+margin_bottom = 463.0
+size_flags_horizontal = 3
+text = "Hide Player Cursors"
+align = 2
+
+[node name="HideCursorsCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_left = 490.0
+margin_top = 444.0
+margin_right = 976.0
+margin_bottom = 468.0
+size_flags_horizontal = 3
 
 [node name="Video" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
