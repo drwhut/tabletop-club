@@ -131,9 +131,10 @@ func get_selected_pieces() -> Array:
 
 # Request the server to set your 3D cursor position to all other players.
 # position: Your new 3D cursor position.
-master func request_set_cursor_position(position: Vector3) -> void:
+# x_basis: The x-basis of your camera.
+master func request_set_cursor_position(position: Vector3, x_basis: Vector3) -> void:
 	var id = get_tree().get_rpc_sender_id()
-	rpc_unreliable("set_player_cursor_position", id, position)
+	rpc_unreliable("set_player_cursor_position", id, position, x_basis)
 
 # Set if the camera is hovering it's selected pieces.
 # is_hovering: If the camera is hovering it's selected pieces.
@@ -152,7 +153,8 @@ func set_is_hovering(is_hovering: bool) -> void:
 # Called by the server when a player updates their 3D cursor position.
 # id: The ID of the player.
 # position: The position of the player's 3D cursor.
-puppet func set_player_cursor_position(id: int, position: Vector3) -> void:
+# x_basis: The x-basis of the player's camera.
+puppet func set_player_cursor_position(id: int, position: Vector3, x_basis: Vector3) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
@@ -169,6 +171,7 @@ puppet func set_player_cursor_position(id: int, position: Vector3) -> void:
 		return
 	
 	cursor.set_meta("cursor_position", position)
+	cursor.set_meta("x_basis", x_basis)
 
 # Set the list of selected pieces.
 # pieces: The new list of selected pieces.
@@ -199,10 +202,25 @@ func _process(delta):
 	
 	for cursor in _cursors.get_children():
 		if cursor is TextureRect:
-			if cursor.has_meta("cursor_position"):
+			if cursor.has_meta("cursor_position") and cursor.has_meta("x_basis"):
 				var current_position = cursor.rect_position
 				var target_position = _camera.unproject_position(cursor.get_meta("cursor_position"))
 				cursor.rect_position = current_position.linear_interpolate(target_position, CURSOR_LERP_SCALE * delta)
+				
+				var our_basis = transform.basis.x.normalized()
+				var their_basis = cursor.get_meta("x_basis").normalized()
+				var cos_theta = our_basis.dot(their_basis)
+				var cross = our_basis.cross(their_basis)
+				var sin_theta = cross.length()
+				if cross.y < 0:
+					sin_theta = -sin_theta
+				var target_theta = acos(cos_theta)
+				# If the camera goes one way, the cursor needs to go the other
+				# way. This is why the if statement isn't < 0.
+				if sin_theta > 0:
+					target_theta = -target_theta
+				var current_theta = deg2rad(cursor.rect_rotation)
+				cursor.rect_rotation = rad2deg(lerp_angle(current_theta, target_theta, CURSOR_LERP_SCALE * delta))
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -235,7 +253,8 @@ func _physics_process(delta):
 					for piece in _selected_pieces:
 						total += piece.transform.origin
 					cursor_position = total / _selected_pieces.size()
-			rpc_unreliable_id(1, "request_set_cursor_position", cursor_position)
+			rpc_unreliable_id(1, "request_set_cursor_position", cursor_position,
+				transform.basis.x)
 			_last_sent_cursor_position = cursor_position
 	
 	if _perform_box_select:
@@ -776,6 +795,7 @@ func _on_Lobby_player_added(id: int) -> void:
 	cursor.texture = _create_player_cursor_texture(id)
 	
 	cursor.set_meta("cursor_position", Vector3())
+	cursor.set_meta("x_basis", Vector3.RIGHT)
 	
 	_cursors.add_child(cursor)
 
