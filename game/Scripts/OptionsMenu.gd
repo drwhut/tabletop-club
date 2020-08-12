@@ -27,6 +27,7 @@ const OPTIONS_FILE_PATH = "user://options.cfg"
 
 onready var _binding_background = $BindingBackground
 onready var _key_bindings_parent = $"MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"
+onready var _license_dialog = $LicenseDialog
 onready var _reimport_confirm = $ReimportConfirm
 onready var _reset_bindings_confirm = $ResetBindingsConfirm
 onready var _tab_container = $MarginContainer/VBoxContainer/TabContainer
@@ -358,3 +359,6 @@ func _on_ResetBindingsConfirm_confirmed():
 					event = events[0]
 				node.input_event = event
 				node.update_text()
+
+func _on_ViewLicenseButton_pressed():
+	_license_dialog.popup_centered()
