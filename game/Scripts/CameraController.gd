@@ -31,6 +31,7 @@ signal stopped_hovering_card(card)
 
 onready var _box_selection_rect = $BoxSelectionRect
 onready var _camera = $Camera
+onready var _cursors = $Cursors
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 
@@ -50,11 +51,14 @@ export(float) var rotation_sensitivity_x: float = -0.01
 export(float) var rotation_sensitivity_y: float = -0.01
 export(float) var zoom_sensitivity: float = 1.0
 
+var send_cursor_position: bool = false
+
 var _box_select_init_pos = Vector2()
 var _grabbing_time = 0.0
 var _is_box_selecting = false
 var _is_grabbing_selected = false
 var _is_hovering_selected = false
+var _last_sent_cursor_position = Vector3()
 var _movement_accel = 0.0
 var _movement_dir = Vector3()
 var _movement_vel = Vector3()
@@ -122,6 +126,12 @@ func get_hover_position() -> Vector3:
 func get_selected_pieces() -> Array:
 	return _selected_pieces
 
+# Request the server to set your 3D cursor position to all other players.
+# position: Your new 3D cursor position.
+master func request_set_cursor_position(position: Vector3) -> void:
+	var id = get_tree().get_rpc_sender_id()
+	rpc_unreliable("set_player_cursor_position", id, position)
+
 # Set if the camera is hovering it's selected pieces.
 # is_hovering: If the camera is hovering it's selected pieces.
 func set_is_hovering(is_hovering: bool) -> void:
@@ -136,6 +146,28 @@ func set_is_hovering(is_hovering: bool) -> void:
 	
 	Input.set_default_cursor_shape(cursor)
 
+# Called by the server when a player updates their 3D cursor position.
+# id: The ID of the player.
+# position: The position of the player's 3D cursor.
+puppet func set_player_cursor_position(id: int, position: Vector3) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if id == get_tree().get_network_unique_id():
+		return
+	
+	if not _cursors.has_node(str(id)):
+		return
+	
+	var cursor = _cursors.get_node(str(id))
+	if not cursor:
+		return
+	if not cursor is PlayerCursor:
+		return
+	
+	var screen_position = _camera.unproject_position(position)
+	cursor.lerp_position = screen_position
+
 # Set the list of selected pieces.
 # pieces: The new list of selected pieces.
 func set_selected_pieces(pieces: Array) -> void:
@@ -143,6 +175,9 @@ func set_selected_pieces(pieces: Array) -> void:
 	append_selected_pieces(pieces)
 
 func _ready():
+	Lobby.connect("player_added", self, "_on_Lobby_player_added")
+	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
+	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
 	
 	# Get the current rotation so we can get our _rotation accumulator set up
 	# no matter how the camera is initially positioned.
@@ -174,12 +209,26 @@ func _physics_process(delta):
 	
 	_piece_mouse_is_over = null
 	
-	# Was the thing that collided a game piece?
+	var cursor_position = Vector3()
+	
 	if result.has("collider"):
+		cursor_position = result["position"]
 		if result.collider is Piece:
 			_piece_mouse_is_over = result.collider
 	
-	# Do we need to perform a box select?
+	if send_cursor_position and cursor_position:
+		if cursor_position != _last_sent_cursor_position:
+			if _is_hovering_selected and (not _selected_pieces.empty()):
+				if _piece_mouse_is_over and _selected_pieces.has(_piece_mouse_is_over):
+					cursor_position = _piece_mouse_is_over.transform.origin
+				else:
+					var total = Vector3()
+					for piece in _selected_pieces:
+						total += piece.transform.origin
+					cursor_position = total / _selected_pieces.size()
+			rpc_unreliable_id(1, "request_set_cursor_position", cursor_position)
+			_last_sent_cursor_position = cursor_position
+	
 	if _perform_box_select:
 		var query_params = PhysicsShapeQueryParameters.new()
 		
@@ -670,6 +719,46 @@ func _start_moving() -> bool:
 		return true
 	
 	return false
+
+func _on_Lobby_player_added(id: int) -> void:
+	if id == get_tree().get_network_unique_id():
+		return
+	
+	if _cursors.has_node(str(id)):
+		return
+	
+	var cursor = PlayerCursor.new()
+	cursor.name = str(id)
+	cursor.set_player_cursor_texture(id)
+	
+	_cursors.add_child(cursor)
+
+func _on_Lobby_player_modified(id: int) -> void:
+	if id == get_tree().get_network_unique_id():
+		return
+	
+	if not _cursors.has_node(str(id)):
+		return
+	
+	var cursor = _cursors.get_node(str(id))
+	if not cursor:
+		return
+	if not cursor is PlayerCursor:
+		return
+	
+	cursor.set_player_cursor_texture(id)
+
+func _on_Lobby_player_removed(id: int) -> void:
+	if id == get_tree().get_network_unique_id():
+		return
+	
+	if not _cursors.has_node(str(id)):
+		return
+	
+	var cursor = _cursors.get_node(str(id))
+	if cursor:
+		_cursors.remove_child(cursor)
+		cursor.queue_free()
 
 func _on_VBoxContainer_item_rect_changed():
 	if _piece_context_menu and _piece_context_menu_container:

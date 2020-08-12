@@ -117,7 +117,12 @@ remotesync func request_sync_players_accepted(players: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	_players = players
+	_players = {}
+	for id in players.keys():
+		var name: String = players[id]["name"]
+		var color: Color = players[id]["color"]
+		add_self(id, name, color)
+	
 	emit_signal("players_synced")
 
 # Create a player dictionary to be added to the list of players.

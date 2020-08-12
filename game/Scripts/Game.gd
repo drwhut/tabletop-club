@@ -201,6 +201,8 @@ func _connected_ok() -> void:
 	_connecting_dialog.visible = false
 	
 	Lobby.rpc_id(1, "request_sync_players")
+	
+	_room.start_sending_cursor_position()
 
 func _connected_fail() -> void:
 	print("Failed to connect to the server!")

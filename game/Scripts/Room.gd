@@ -692,6 +692,10 @@ func srv_get_next_piece_name() -> String:
 	_srv_next_piece_name += 1
 	return next_name
 
+# Start sending the player's 3D cursor position to the server.
+func start_sending_cursor_position() -> void:
+	_camera_controller.send_cursor_position = true
+
 # Create a Piece object out of a generic Spatial object.
 # Returns: A Piece.
 # piece: The Spatial object.
