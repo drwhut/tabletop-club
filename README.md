@@ -1,6 +1,6 @@
 # OpenTabletop
-An open-source platform for playing tabletop games in a 3D environment, made
-with the Godot Engine!
+An open-source platform for playing tabletop games in a physics-based 3D
+environment for Windows, macOS and Linux! Made with the Godot Engine.
 
 ## Compiling
 
