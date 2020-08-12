@@ -783,6 +783,9 @@ func _on_moving() -> bool:
 	return false
 
 func _on_Lobby_player_added(id: int) -> void:
+	if get_tree().is_network_server():
+		return
+	
 	if id == get_tree().get_network_unique_id():
 		return
 	
