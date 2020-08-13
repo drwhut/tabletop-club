@@ -32,24 +32,8 @@ func _ready():
 
 func _physics_process(delta):
 	
-	# If the dice is being shaked, set the up and forward directions randomly,
-	# as if one were actually shaking a die.
+	# If the dice is being shaked, randomize the basis.
 	if get_tree().is_network_server() and is_being_shaked():
-		
-		var vec_list = [Vector3.LEFT, Vector3.RIGHT, Vector3.UP, Vector3.DOWN,
-			Vector3.FORWARD, Vector3.BACK]
-		
-		var up_index = _rng.randi() % vec_list.size()
-		var up_vec = vec_list[up_index]
-		vec_list.remove(up_index)
-		
-		# Remove the opposite direction, as for the forward direction, we need
-		# to pick one that is at a right angle to the one we just picked out.
-		vec_list.remove(up_index - (up_index % 2))
-		
-		var back_index = _rng.randi() % vec_list.size()
-		var back_vec = vec_list[back_index]
-		
-		_srv_hover_up = up_vec
-		_srv_hover_back = back_vec
-		set_angular_lock(false)
+		_srv_hover_basis = _srv_hover_basis.rotated(Vector3.RIGHT, 2 * PI * _rng.randf())
+		_srv_hover_basis = _srv_hover_basis.rotated(Vector3.UP, 2 * PI * _rng.randf())
+		_srv_hover_basis = _srv_hover_basis.rotated(Vector3.BACK, 2 * PI * _rng.randf())

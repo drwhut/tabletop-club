@@ -25,9 +25,10 @@ class_name Piece
 
 signal piece_exiting_tree(piece)
 
-const ANGULAR_FORCE_SCALAR = 20.0
+const ANGULAR_FORCE_SCALAR = 3.0
+const ANGULAR_HARMONIC_DAMP = 0.5
 const HELL_HEIGHT = -50.0
-const LINEAR_FORCE_SCALAR  = 20.0
+const LINEAR_FORCE_SCALAR = 50.0
 const ROTATION_LOCK_AT = 0.001
 const SELECTED_COLOUR = Color.cyan
 const SELECTED_ENERGY = 0.25
@@ -41,8 +42,7 @@ var _mesh_instance: MeshInstance = null
 
 # When setting these vectors, make sure you call set_angular_lock(false),
 # otherwise the piece won't rotate towards the orientation!
-var _srv_hover_back = Vector3.BACK
-var _srv_hover_up = Vector3.UP
+var _srv_hover_basis = Basis.IDENTITY
 
 var _srv_hover_player = 0
 var _srv_hover_position = Vector3()
@@ -64,8 +64,7 @@ func apply_texture(texture: Texture) -> void:
 # If you are hovering this piece, ask the server to flip the piece vertically.
 master func flip_vertically() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
-		_srv_hover_up = -_srv_hover_up
-		set_angular_lock(false)
+		_srv_hover_basis = _srv_hover_basis.rotated(transform.basis.z, PI)
 
 # Determines if the piece is being shaked.
 # Returns: If the piece is being shaked.
@@ -113,16 +112,7 @@ master func request_unlock() -> void:
 # piece.
 master func reset_orientation() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
-		_srv_hover_up = Vector3.UP
-		set_angular_lock(false)
-
-# Set the angular lock on all 3 rotational axis.
-# lock: If the rotational axis are locked.
-func set_angular_lock(lock: bool) -> void:
-	# It's.. it's Kurt Angle! He's got the Angle Lock in on The Rock!!!
-	axis_lock_angular_x = lock
-	axis_lock_angular_y = lock
-	axis_lock_angular_z = lock
+		_srv_hover_basis = Basis.IDENTITY
 
 # Set the piece to appear like it is selected.
 # selected: Should the piece appear selected?
@@ -180,62 +170,7 @@ func srv_start_hovering(player_id: int) -> bool:
 		# Make sure _integrate_forces runs.
 		sleeping = false
 		
-		set_angular_lock(false)
-		
-		# Determine which basis is closest to "up" and "back", and set it so
-		# that the piece doesn't dance around trying to get back to the
-		# direction it was in before it was dropped.
-		var y_right_dot = transform.basis.y.dot(Vector3.RIGHT)
-		var y_up_dot    = transform.basis.y.dot(Vector3.UP)
-		var y_back_dot  = transform.basis.y.dot(Vector3.BACK)
-		
-		if abs(y_right_dot) > abs(y_up_dot):
-			if abs(y_right_dot) > abs(y_back_dot):
-				if y_right_dot > 0:
-					_srv_hover_up = Vector3.RIGHT
-				else:
-					_srv_hover_up = Vector3.LEFT
-			else:
-				if y_back_dot > 0:
-					_srv_hover_up = Vector3.BACK
-				else:
-					_srv_hover_up = Vector3.FORWARD
-		elif abs(y_up_dot) > abs(y_back_dot):
-			if y_up_dot > 0:
-				_srv_hover_up = Vector3.UP
-			else:
-				_srv_hover_up = Vector3.DOWN
-		else:
-			if y_back_dot > 0:
-				_srv_hover_up = Vector3.BACK
-			else:
-				_srv_hover_up = Vector3.FORWARD
-		
-		var z_right_dot = transform.basis.z.dot(Vector3.RIGHT)
-		var z_up_dot    = transform.basis.z.dot(Vector3.UP)
-		var z_back_dot  = transform.basis.z.dot(Vector3.BACK)
-		
-		if abs(z_right_dot) > abs(z_up_dot):
-			if abs(z_right_dot) > abs(z_back_dot):
-				if z_right_dot > 0:
-					_srv_hover_back = Vector3.RIGHT
-				else:
-					_srv_hover_back = Vector3.LEFT
-			else:
-				if z_back_dot > 0:
-					_srv_hover_back = Vector3.BACK
-				else:
-					_srv_hover_back = Vector3.FORWARD
-		elif abs(z_up_dot) > abs(z_back_dot):
-			if z_up_dot > 0:
-				_srv_hover_back = Vector3.UP
-			else:
-				_srv_hover_back = Vector3.DOWN
-		else:
-			if z_back_dot > 0:
-				_srv_hover_back = Vector3.BACK
-			else:
-				_srv_hover_back = Vector3.FORWARD
+		_srv_hover_basis = transform.basis
 		
 		return true
 	
@@ -247,8 +182,6 @@ master func stop_hovering() -> void:
 		_srv_hover_player = 0
 		custom_integrator = false
 		sleeping = false
-		
-		set_angular_lock(false)
 
 # Called by the server to unlock the piece.
 remotesync func unlock() -> void:
@@ -330,32 +263,14 @@ func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Force the piece to the given location.
 	state.apply_central_impulse(LINEAR_FORCE_SCALAR * (_srv_hover_position - translation))
 	# Stops linear harmonic motion.
-	state.apply_central_impulse(-linear_velocity * mass)
+	state.apply_central_impulse(-mass * linear_velocity)
 	
-	# Figure out how far away we are from the orientation we're supposed to be
-	# at.
-	var y_diff = (1 - _srv_hover_up.dot(transform.basis.y)) / 2
-	var z_diff = (1 - _srv_hover_back.dot(transform.basis.z)) / 2
+	# Force the piece to the given basis.
+	var current_basis = transform.basis.orthonormalized()
+	var target_basis = _srv_hover_basis.orthonormalized()
+	var rotation_basis = target_basis * current_basis.inverse()
+	var rotation_euler = rotation_basis.get_euler()
+	state.apply_torque_impulse(ANGULAR_FORCE_SCALAR * rotation_euler)
 	
-	# If we're close enough to the orientation, lock our angular axes.
-	if y_diff < ROTATION_LOCK_AT and z_diff < ROTATION_LOCK_AT:
-		set_angular_lock(true)
-	else:
-		# TODO: Are the following cross products worth optimising?
-		# Torque the piece to the upright position on two axes.
-		
-		# If the basis is the exact opposite of where we need it, the normal
-		# cross product calculations will just be 0 - so we will need to give
-		# the piece a nudge!
-		if y_diff == 1:
-			state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.y.cross(transform.basis.z)).cross(_srv_hover_up).normalized())
-		else:
-			state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.y).cross(_srv_hover_up - transform.basis.y).normalized())
-		
-		if z_diff == 1:
-			state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.z.cross(transform.basis.y)).cross(_srv_hover_back).normalized())
-		else:
-			state.add_torque(ANGULAR_FORCE_SCALAR * (transform.basis.z).cross(_srv_hover_back - transform.basis.z).normalized())
-		
-		# Stops angular harmonic motion.
-		state.add_torque(-angular_velocity)
+	# Stops angular harmonic motion.
+	state.apply_torque_impulse(-ANGULAR_HARMONIC_DAMP * mass * angular_velocity)
