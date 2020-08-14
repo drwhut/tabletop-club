@@ -132,6 +132,13 @@ func get_hover_position() -> Vector3:
 func get_selected_pieces() -> Array:
 	return _selected_pieces
 
+# Request the server to set your cursor to the "grabbing" cursor on all other
+# clients.
+# grabbing: Whether the cursor should be the "grabbing" cursor.
+master func request_set_cursor_grabbing(grabbing: bool) -> void:
+	var id = get_tree().get_rpc_sender_id()
+	rpc("set_player_cursor_grabbing", id, grabbing)
+
 # Request the server to set your 3D cursor position to all other players.
 # position: Your new 3D cursor position.
 # x_basis: The x-basis of your camera.
@@ -152,6 +159,29 @@ func set_is_hovering(is_hovering: bool) -> void:
 		_is_grabbing_selected = false
 	
 	Input.set_default_cursor_shape(cursor)
+	
+	rpc_id(1, "request_set_cursor_grabbing", is_hovering)
+
+# Called by the server when a player updates their hovering state.
+# id: The ID of the player.
+# grabbing: Whether the cursor should be the "grabbing" shape.
+puppet func set_player_cursor_grabbing(id: int, grabbing: bool) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if id == get_tree().get_network_unique_id():
+		return
+	
+	if not _cursors.has_node(str(id)):
+		return
+	
+	var cursor = _cursors.get_node(str(id))
+	if not cursor:
+		return
+	if not cursor is TextureRect:
+		return
+	
+	cursor.texture = _create_player_cursor_texture(id, grabbing)
 
 # Called by the server when a player updates their 3D cursor position.
 # id: The ID of the player.
@@ -493,8 +523,13 @@ func _calculate_hover_position(mouse_position: Vector2) -> Vector3:
 # Create a cursor texture representing a given player.
 # Returns: A cursor texture representing a given player.
 # id: The ID of the player.
-func _create_player_cursor_texture(id: int) -> ImageTexture:
-	var cursor_image: Image = preload("res://Images/ArrowCursor.png")
+# grabbing: If the cursor should be the "grabbing" cursor.
+func _create_player_cursor_texture(id: int, grabbing: bool) -> ImageTexture:
+	var cursor_image: Image = null
+	if grabbing:
+		cursor_image = preload("res://Images/GrabbingCursor.png")
+	else:
+		cursor_image = preload("res://Images/ArrowCursor.png")
 	
 	# Create a clone of the image, so we don't modify the original.
 	var clone_image = Image.new()
@@ -814,7 +849,7 @@ func _on_Lobby_player_added(id: int) -> void:
 	cursor.name = str(id)
 	cursor.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	cursor.rect_scale = _get_cursor_scale()
-	cursor.texture = _create_player_cursor_texture(id)
+	cursor.texture = _create_player_cursor_texture(id, false)
 	
 	cursor.set_meta("cursor_position", Vector3())
 	cursor.set_meta("x_basis", Vector3.RIGHT)
@@ -834,7 +869,7 @@ func _on_Lobby_player_modified(id: int) -> void:
 	if not cursor is TextureRect:
 		return
 	
-	cursor.texture = _create_player_cursor_texture(id)
+	cursor.texture = _create_player_cursor_texture(id, false)
 
 func _on_Lobby_player_removed(id: int) -> void:
 	if id == get_tree().get_network_unique_id():
