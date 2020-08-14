@@ -5,6 +5,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 FONT = "../NotoSerifCJKjp-Black.otf"
 FONT_SIZE = 80
+NUM_SIDE_RECTS = 20
 SIZE = (200, 200)
 VERTICAL_CORRECTION = -16
 
@@ -43,6 +44,17 @@ def create_chip_image(amount, font):
     draw = ImageDraw.Draw(image)
 
     draw.rectangle([(0, 0), (SIZE[0]*2, SIZE[1])], fill=BACKGROUND_COLOURS[amount])
+
+    side_rect_width = SIZE[0] * 2.0 / NUM_SIDE_RECTS
+    side_rect_height = SIZE[1] / 2.0
+
+    for i in range(NUM_SIDE_RECTS):
+        side_rect_x = side_rect_width * i
+        side_rect_y = 0
+        if i % 2 != 0:
+            side_rect_y = side_rect_height
+
+        draw.rectangle([(side_rect_x, side_rect_y), (side_rect_x + side_rect_width, side_rect_y + side_rect_height)], fill=FOREGROUND_COLOURS[amount])
 
     image.save(str(amount) + ".png")
 
