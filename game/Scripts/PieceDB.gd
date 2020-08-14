@@ -21,11 +21,16 @@
 
 extends Node
 
-signal completed()
+signal completed(dir_found)
 signal importing_file(file)
 
-#                        DEFAULT     EDITOR       OSX
-const ASSET_DIR_PATHS = ["./assets", "../assets", "../../../assets"]
+const ASSET_DIR_PREFIXES = [
+	".",
+	"..",
+	"{DOWNLOADS}/OpenTabletop",
+	"{DOCUMENTS}/OpenTabletop",
+	"{DESKTOP}/OpenTabletop"
+]
 
 const VALID_SCENE_EXTENSIONS = ["glb", "gltf"]
 
@@ -40,6 +45,7 @@ const VALID_TEXTURE_EXTENSIONS = ["bmp", "dds", "exr", "hdr", "jpeg", "jpg",
 var _db = {}
 var _db_mutex = Mutex.new()
 
+var _import_dir_found = false
 var _import_file = ""
 var _import_mutex = Mutex.new()
 var _import_send_signal = false
@@ -48,6 +54,18 @@ var _import_thread = Thread.new()
 # From the open_tabletop_import_module:
 # https://github.com/drwhut/open_tabletop_import_module
 var _importer = TabletopImporter.new()
+
+# Get the list of asset directory paths the game will scan.
+# Returns: The list of asset directory paths.
+func get_asset_paths() -> Array:
+	var out = []
+	for prefix in ASSET_DIR_PREFIXES:
+		var path = prefix + "/assets"
+		path = path.replace("{DOWNLOADS}", OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS))
+		path = path.replace("{DOCUMENTS}", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
+		path = path.replace("{DESKTOP}", OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP))
+		out.append(path)
+	return out
 
 # Get the piece database.
 # Returns: The piece database.
@@ -67,7 +85,7 @@ func _process(delta):
 	_import_mutex.lock()
 	if _import_send_signal:
 		if _import_file.empty():
-			emit_signal("completed")
+			emit_signal("completed", _import_dir_found)
 		else:
 			emit_signal("importing_file", _import_file)
 		_import_send_signal = false
@@ -78,8 +96,10 @@ func _process(delta):
 func _import_all(userdata) -> void:
 	var dir = Directory.new()
 	
-	for asset_dir in ASSET_DIR_PATHS:
+	var dir_found = false
+	for asset_dir in get_asset_paths():
 		if dir.open(asset_dir) == OK:
+			dir_found = true
 			dir.list_dir_begin(true, true)
 			
 			var entry = dir.get_next()
@@ -92,14 +112,14 @@ func _import_all(userdata) -> void:
 				
 				entry = dir.get_next()
 	
-	_send_import_signal("")
+	_send_import_signal("", dir_found)
 
 # Import assets from a given game directory.
 # dir: The directory to import assets from.
 func _import_game_dir(dir: Directory) -> void:
 	var game = dir.get_current_dir().get_file()
 	
-	print("Importing ", game, " ...")
+	print("Importing ", game, " from ", dir.get_current_dir(), " ...")
 	
 	_db_mutex.lock()
 	_db[game] = {}
@@ -258,7 +278,7 @@ func _get_file_without_ext(file_path: String) -> String:
 func _import_asset(from: String, game: String, type: String, scene: String,
 	config: ConfigFile) -> int:
 	
-	_send_import_signal(from)
+	_send_import_signal(from, true)
 	
 	var dir = _get_asset_dir(game, type)
 	
@@ -357,8 +377,10 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 # Send a signal from the importing thread.
 # file: The file we are currently importing - if blank, send the completed
 # signal.
-func _send_import_signal(file: String) -> void:
+# dir_found: Whether an asset directory was found.
+func _send_import_signal(file: String, dir_found: bool) -> void:
 	_import_mutex.lock()
+	_import_dir_found = dir_found
 	_import_file = file
 	_import_send_signal = true
 	_import_mutex.unlock()

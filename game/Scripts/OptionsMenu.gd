@@ -302,7 +302,8 @@ func _on_CancelBindButton_pressed():
 	_binding_background.visible = false
 
 func _on_OpenAssetsButton_pressed():
-	if PieceDB.ASSET_DIR_PATHS.empty():
+	var asset_paths = PieceDB.get_asset_paths()
+	if asset_paths.empty():
 		return
 	
 	# Opening folders is not supported on OSX.
@@ -311,7 +312,7 @@ func _on_OpenAssetsButton_pressed():
 	
 	var dir = Directory.new()
 	var found = false
-	for dir_path in PieceDB.ASSET_DIR_PATHS:
+	for dir_path in asset_paths:
 		var err = dir.open(dir_path)
 		if err == OK:
 			found = true
@@ -321,7 +322,7 @@ func _on_OpenAssetsButton_pressed():
 	if not found:
 		var err = dir.open(".")
 		if err == OK:
-			var path = PieceDB.ASSET_DIR_PATHS[0]
+			var path = asset_paths[0]
 			err = dir.make_dir_recursive(path)
 			if err == OK:
 				err = dir.open(path)

@@ -34,3 +34,12 @@ margin_top = 18.0
 margin_right = 120.0
 margin_bottom = 32.0
 align = 1
+
+[node name="MissingAssetsPopup" type="AcceptDialog" parent="."]
+visible = true
+margin_right = 500.0
+margin_bottom = 200.0
+popup_exclusive = true
+window_title = "Missing Asset Folder"
+dialog_autowrap = true
+[connection signal="popup_hide" from="MissingAssetsPopup" to="." method="_on_MissingAssetsPopup_popup_hide"]
