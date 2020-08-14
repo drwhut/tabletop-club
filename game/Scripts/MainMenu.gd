@@ -21,6 +21,8 @@
 
 extends Control
 
+onready var _credits_dialog = $CreditsDialog
+onready var _credits_label = $CreditsDialog/CreditsLabel
 onready var _error_dialog = $ErrorDialog
 onready var _join_server_edit = $CenterContainer/VBoxContainer/JoinContainer/JoinServerEdit
 onready var _options_menu = $OptionsMenu
@@ -33,6 +35,23 @@ func display_error(error: String) -> void:
 	_error_dialog.popup_centered()
 
 func _ready():
+	var credits_file = preload("res://CREDITS.tres")
+	var credits_lines = credits_file.text.split("\n")
+	
+	for i in range(credits_lines.size() - 1, -1, -1):
+		var line = credits_lines[i]
+		if line.begins_with("-"):
+			credits_lines[i - 1] = "[i]" + credits_lines[i - 1] + "[/i]"
+			credits_lines.remove(i)
+		elif line.begins_with("="):
+			credits_lines[i - 1] = "[u]" + credits_lines[i - 1] + "[/u]"
+			credits_lines.remove(i)
+	
+	_credits_label.bbcode_text = "[center]"
+	for line in credits_lines:
+		_credits_label.bbcode_text += line + "\n"
+	_credits_label.bbcode_text += "[/center]"
+	
 	var file = File.new()
 	if file.file_exists("server.cfg"):
 		if OS.is_debug_build():
@@ -80,6 +99,9 @@ func _on_JoinButton_pressed():
 
 func _on_OptionsButton_pressed():
 	_options_menu.visible = true
+
+func _on_CreditsButton_pressed():
+	_credits_dialog.popup_centered()
 
 func _on_QuitButton_pressed():
 	get_tree().quit()

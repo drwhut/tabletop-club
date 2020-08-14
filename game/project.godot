@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "ActualTextFile",
+"language": "GDScript",
+"path": "res://Scripts/ActualTextFile.gd"
+}, {
 "base": "Button",
 "class": "BindButton",
 "language": "GDScript",
@@ -65,6 +70,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/StackablePiece.gd"
 } ]
 _global_script_class_icons={
+"ActualTextFile": "",
 "BindButton": "",
 "Card": "",
 "CardTextureRect": "",
@@ -96,6 +102,7 @@ PieceDB="*res://Scripts/PieceDB.gd"
 
 [display]
 
+mouse_cursor/custom_image="res://Images/ArrowCursor.png"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 

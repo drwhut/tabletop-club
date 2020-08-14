@@ -23,9 +23,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 395.0
-margin_top = 252.0
+margin_top = 240.0
 margin_right = 628.0
-margin_bottom = 348.0
+margin_bottom = 360.0
 
 [node name="SingleplayerButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_right = 233.0
@@ -66,14 +66,36 @@ margin_right = 233.0
 margin_bottom = 72.0
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 76.0
 margin_right = 233.0
 margin_bottom = 96.0
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 233.0
+margin_bottom = 120.0
 text = "Quit"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
 visible = false
+
+[node name="CreditsDialog" type="WindowDialog" parent="."]
+margin_right = 512.0
+margin_bottom = 300.0
+window_title = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsLabel" type="RichTextLabel" parent="CreditsDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ErrorDialog" type="AcceptDialog" parent="."]
 margin_right = 243.0
@@ -109,4 +131,5 @@ __meta__ = {
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ServerButton" to="." method="_on_ServerButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/JoinContainer/JoinButton" to="." method="_on_JoinButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

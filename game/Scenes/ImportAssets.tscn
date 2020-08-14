@@ -36,7 +36,6 @@ margin_bottom = 32.0
 align = 1
 
 [node name="MissingAssetsPopup" type="AcceptDialog" parent="."]
-visible = true
 margin_right = 500.0
 margin_bottom = 200.0
 popup_exclusive = true

@@ -494,7 +494,7 @@ func _calculate_hover_position(mouse_position: Vector2) -> Vector3:
 # Returns: A cursor texture representing a given player.
 # id: The ID of the player.
 func _create_player_cursor_texture(id: int) -> ImageTexture:
-	var cursor_image: Image = preload("res://Cursors/Arrow.png")
+	var cursor_image: Image = preload("res://Images/ArrowCursor.png")
 	
 	# Create a clone of the image, so we don't modify the original.
 	var clone_image = Image.new()

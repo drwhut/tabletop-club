@@ -435,10 +435,10 @@ text = "Color"
 align = 2
 
 [node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_left = 490.0
-margin_top = 28.0
-margin_right = 976.0
-margin_bottom = 440.0
+margin_left = 494.0
+margin_top = 32.0
+margin_right = 980.0
+margin_bottom = 444.0
 size_flags_horizontal = 3
 edit_alpha = false
 presets_enabled = false
@@ -657,7 +657,9 @@ __meta__ = {
 margin_right = 83.0
 margin_bottom = 58.0
 window_title = "MIT License"
-dialog_text = "Permission is hereby granted, free of charge, to any person obtaining a copy
+dialog_text = "Copyright (c) 2020 Benjamin 'drwhut' Beddows
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \"Software\"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
