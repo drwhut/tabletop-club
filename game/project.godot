@@ -102,7 +102,6 @@ PieceDB="*res://Scripts/PieceDB.gd"
 
 [display]
 
-mouse_cursor/custom_image="res://Images/ArrowCursor.png"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
