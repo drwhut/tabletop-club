@@ -150,7 +150,7 @@ remotesync func request_card_out_hand_accepted(card_name: String) -> void:
 		return
 	
 	# Kindly ask the server if we can start hovering the piece.
-	_room.rpc_id(1, "request_hover_piece", card_name)
+	_room.rpc_id(1, "request_hover_piece", card_name, card.transform.origin, Vector3())
 	
 	_ui.remove_card_from_hand(card)
 

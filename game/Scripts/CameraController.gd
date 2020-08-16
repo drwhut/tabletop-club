@@ -23,7 +23,7 @@ extends Spatial
 
 signal cards_in_hand_requested(cards)
 signal collect_pieces_requested(pieces)
-signal hover_piece_requested(piece)
+signal hover_piece_requested(piece, offset)
 signal pop_stack_requested(stack)
 signal stack_collect_all_requested(stack, collect_stacks)
 signal started_hovering_card(card)
@@ -808,11 +808,19 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 		
 		clear_selected_pieces()
 		
-		for piece in selected:
-			if selected.size() == 1 and piece is Stack and fast:
-				emit_signal("pop_stack_requested", piece)
-			else:
-				emit_signal("hover_piece_requested", piece)
+		if not selected.empty():
+			var origin_piece = selected[0]
+			if _piece_mouse_is_over:
+				if selected.has(_piece_mouse_is_over):
+					origin_piece = _piece_mouse_is_over
+			var origin = origin_piece.transform.origin
+			
+			for piece in selected:
+				if selected.size() == 1 and piece is Stack and fast:
+					emit_signal("pop_stack_requested", piece)
+				else:
+					var offset = piece.transform.origin - origin
+					emit_signal("hover_piece_requested", piece, offset)
 		
 		_is_grabbing_selected = false
 

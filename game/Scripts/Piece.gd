@@ -44,6 +44,7 @@ var _mesh_instance: MeshInstance = null
 # otherwise the piece won't rotate towards the orientation!
 var _srv_hover_basis = Basis.IDENTITY
 
+var _srv_hover_offset = Vector3()
 var _srv_hover_player = 0
 var _srv_hover_position = Vector3()
 
@@ -162,15 +163,19 @@ func srv_lock() -> void:
 # Start hovering the piece server-side.
 # Returns: If the piece started hovering.
 # player_id: The ID of the player hovering the piece.
-func srv_start_hovering(player_id: int) -> bool:
+# init_pos: The initial hover position.
+# offset_pos: The hover position offset.
+func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) -> bool:
 	if not (srv_is_hovering() or is_locked()):
+		_srv_hover_basis = transform.basis
+		_srv_hover_offset = offset_pos
 		_srv_hover_player = player_id
+		_srv_hover_position = init_pos
+		
 		custom_integrator = true
 		
 		# Make sure _integrate_forces runs.
 		sleeping = false
-		
-		_srv_hover_basis = transform.basis
 		
 		return true
 	
@@ -261,7 +266,8 @@ func _on_tree_exiting() -> void:
 # state: The direct physics state of the piece.
 func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Force the piece to the given location.
-	state.apply_central_impulse(LINEAR_FORCE_SCALAR * (_srv_hover_position - translation))
+	var linear_dir = _srv_hover_position + _srv_hover_offset - translation
+	state.apply_central_impulse(LINEAR_FORCE_SCALAR * linear_dir)
 	# Stops linear harmonic motion.
 	state.apply_central_impulse(-mass * linear_velocity)
 	

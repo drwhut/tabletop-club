@@ -81,7 +81,7 @@ remotesync func add_piece(name: String, transform: Transform,
 		piece.apply_texture(texture)
 	
 	if get_tree().is_network_server() and hover_player > 0:
-		piece.srv_start_hovering(hover_player)
+		piece.srv_start_hovering(hover_player, transform.origin, Vector3())
 
 # Called by the server to add a piece to a stack.
 # piece_name: The name of the piece.
@@ -423,7 +423,10 @@ master func request_collect_pieces(piece_names: Array) -> void:
 
 # Request the server to hover a piece.
 # piece_name: The name of the piece to hover.
-master func request_hover_piece(piece_name: String) -> void:
+# init_pos: The initial hover position.
+# offset_pos: The hover position offset.
+master func request_hover_piece(piece_name: String, init_pos: Vector3,
+	offset_pos: Vector3) -> void:
 	
 	var piece = _pieces.get_node(piece_name)
 	
@@ -437,7 +440,7 @@ master func request_hover_piece(piece_name: String) -> void:
 	
 	var player_id = get_tree().get_rpc_sender_id()
 	
-	if piece.srv_start_hovering(player_id):
+	if piece.srv_start_hovering(player_id, init_pos, offset_pos):
 		rpc_id(player_id, "request_hover_piece_accepted", piece_name)
 
 # Called by the server if the request to hover a piece was accepted.
@@ -458,9 +461,6 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	
 	_camera_controller.append_selected_pieces([piece])
 	_camera_controller.set_is_hovering(true)
-	
-	# Immediately set the piece's hover position.
-	piece.rpc_unreliable_id(1, "set_hover_position", _camera_controller.get_hover_position())
 	
 	if piece is Card:
 		emit_signal("started_hovering_card", piece)
@@ -797,8 +797,9 @@ func _on_CameraController_collect_pieces_requested(pieces: Array):
 			names.append(piece.name)
 	rpc_id(1, "request_collect_pieces", names)
 
-func _on_CameraController_hover_piece_requested(piece: Piece):
-	rpc_id(1, "request_hover_piece", piece.name)
+func _on_CameraController_hover_piece_requested(piece: Piece, offset: Vector3):
+	rpc_id(1, "request_hover_piece", piece.name,
+		_camera_controller.get_hover_position(), offset)
 
 func _on_CameraController_pop_stack_requested(stack: Stack):
 	rpc_id(1, "request_pop_stack", stack.name)
