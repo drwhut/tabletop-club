@@ -24,7 +24,7 @@ extends Spatial
 signal cards_in_hand_requested(cards)
 signal collect_pieces_requested(pieces)
 signal hover_piece_requested(piece, offset)
-signal pop_stack_requested(stack)
+signal pop_stack_requested(stack, n)
 signal stack_collect_all_requested(stack, collect_stacks)
 signal started_hovering_card(card)
 signal stopped_hovering_card(card)
@@ -601,22 +601,26 @@ func _inheritance_has(inheritance: Array, query: String) -> bool:
 	return false
 
 func _on_context_collect_all_pressed() -> void:
+	_hide_context_menu()
 	if _selected_pieces.size() == 1:
 		var piece = _selected_pieces[0]
 		if piece is Stack:
 			emit_signal("stack_collect_all_requested", piece, true)
 
 func _on_context_collect_individuals_pressed() -> void:
+	_hide_context_menu()
 	if _selected_pieces.size() == 1:
 		var piece = _selected_pieces[0]
 		if piece is Stack:
 			emit_signal("stack_collect_all_requested", piece, false)
 
 func _on_context_collect_selected_pressed() -> void:
+	_hide_context_menu()
 	if _selected_pieces.size() > 1:
 		emit_signal("collect_pieces_requested", _selected_pieces)
 
 func _on_context_delete_pressed() -> void:
+	_hide_context_menu()
 	# Go in reverse order, as we are removing the pieces as we go.
 	for i in range(_selected_pieces.size() - 1, -1, -1):
 		var piece = _selected_pieces[i]
@@ -624,34 +628,49 @@ func _on_context_delete_pressed() -> void:
 			piece.rpc_id(1, "request_remove_self")
 
 func _on_context_lock_pressed() -> void:
+	_hide_context_menu()
 	for piece in _selected_pieces:
 		if piece is Piece:
 			piece.rpc_id(1, "request_lock")
 
 func _on_context_orient_down_pressed() -> void:
+	_hide_context_menu()
 	for piece in _selected_pieces:
 		if piece is Stack:
 			piece.rpc_id(1, "request_orient_pieces", false)
 
 func _on_context_orient_up_pressed() -> void:
+	_hide_context_menu()
 	for piece in _selected_pieces:
 		if piece is Stack:
 			piece.rpc_id(1, "request_orient_pieces", true)
 
 func _on_context_put_in_hand_pressed() -> void:
+	_hide_context_menu()
 	emit_signal("cards_in_hand_requested", _selected_pieces)
 
 func _on_context_shuffle_pressed() -> void:
+	_hide_context_menu()
 	for piece in _selected_pieces:
 		if piece is Stack:
 			piece.rpc_id(1, "request_shuffle")
 
 func _on_context_sort_pressed() -> void:
+	_hide_context_menu()
 	for piece in _selected_pieces:
 		if piece is Stack:
 			piece.rpc_id(1, "request_sort")
 
+func _on_context_take_top_pressed(n: int) -> void:
+	_hide_context_menu()
+	if _selected_pieces.size() == 1:
+		var piece = _selected_pieces[0]
+		if piece is Stack:
+			clear_selected_pieces()
+			emit_signal("pop_stack_requested", piece, n)
+
 func _on_context_unlock_pressed() -> void:
+	_hide_context_menu()
 	for piece in _selected_pieces:
 		if piece is Piece:
 			piece.rpc_id(1, "request_unlock")
@@ -719,6 +738,14 @@ func _popup_piece_context_menu() -> void:
 			collect_all_button.text = "Collect all"
 			collect_all_button.connect("pressed", self, "_on_context_collect_all_pressed")
 			_piece_context_menu_container.add_child(collect_all_button)
+			
+			var take_top_button = SpinBoxButton.new()
+			take_top_button.button.text = "Take X off top"
+			take_top_button.spin_box.prefix = "X ="
+			take_top_button.spin_box.min_value = 1
+			take_top_button.spin_box.max_value = _selected_pieces[0].get_piece_count()
+			take_top_button.connect("pressed", self, "_on_context_take_top_pressed")
+			_piece_context_menu_container.add_child(take_top_button)
 		
 		var orient_up_button = Button.new()
 		orient_up_button.text = "Orient all up"
@@ -782,12 +809,6 @@ func _popup_piece_context_menu() -> void:
 		delete_button.connect("pressed", self, "_on_context_delete_pressed")
 		_piece_context_menu_container.add_child(delete_button)
 	
-	# If a button in the context menu is clicked, stop showing the context menu.
-	# TODO: Apply to sub-children?
-	for child in _piece_context_menu_container.get_children():
-		if child is Button:
-			child.connect("pressed", self, "_hide_context_menu")
-	
 	# We've connected a signal elsewhere that will change the size of the popup
 	# to match the container.
 	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
@@ -817,7 +838,7 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 			
 			for piece in selected:
 				if selected.size() == 1 and piece is Stack and fast:
-					emit_signal("pop_stack_requested", piece)
+					emit_signal("pop_stack_requested", piece, 1)
 				else:
 					var offset = piece.transform.origin - origin
 					emit_signal("hover_piece_requested", piece, offset)

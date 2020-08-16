@@ -39,7 +39,7 @@ var _srv_next_piece_name = 0
 # hover_player: If set to > 0, it will initially be in a hover state by the
 # player with the given ID.
 remotesync func add_piece(name: String, transform: Transform,
-	piece_entry: Dictionary, hover_player: int = 0) -> void:
+	piece_entry: Dictionary) -> void:
 	
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -79,9 +79,6 @@ remotesync func add_piece(name: String, transform: Transform,
 		var texture: Texture = load(piece_entry["texture_path"])
 		
 		piece.apply_texture(texture)
-	
-	if get_tree().is_network_server() and hover_player > 0:
-		piece.srv_start_hovering(hover_player, transform.origin, Vector3())
 
 # Called by the server to add a piece to a stack.
 # piece_name: The name of the piece.
@@ -180,7 +177,9 @@ remotesync func add_stack(name: String, transform: Transform,
 # transform: The initial transform of the new stack.
 puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
 	
-	if get_tree().get_rpc_sender_id() != 1:
+	# Special case here, where we don't want the RPC to be sent to the server,
+	# but the server needs the stack to be returned.
+	if not (get_tree().is_network_server() or get_tree().get_rpc_sender_id() == 1):
 		return null
 	
 	var stack: Stack = preload("res://Pieces/Stack.tscn").instance()
@@ -467,8 +466,9 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 
 # Request the server to pop the piece at the top of a stack.
 # stack_name: The name of the stack to pop.
+# n: The number of pieces to pop from the stack.
 # hover: Do we want to start hovering the piece afterwards?
-master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
+master func request_pop_stack(stack_name: String, n: int) -> void:
 	
 	var player_id = get_tree().get_rpc_sender_id()
 	var stack = _pieces.get_node(stack_name)
@@ -481,46 +481,65 @@ master func request_pop_stack(stack_name: String, hover: bool = true) -> void:
 		push_error("Object " + stack_name + " is not a stack!")
 		return
 	
-	var piece_instance: StackPieceInstance = null
+	var new_piece: Piece = null
 	
-	if stack.get_piece_count() == 0:
+	if n < 1:
 		return
-	elif stack.get_piece_count() == 1:
-		piece_instance = stack.empty()[0]
-		stack.rpc("remove_self")
-	else:
-		piece_instance = stack.pop_piece()
-		stack.rpc("remove_piece_by_name", piece_instance.name)
-	
-	if piece_instance:
+	elif n < stack.get_piece_count():
+		var unit_height = stack.get_unit_height()
+		var total_height = stack.get_total_height()
+		var removed_height = unit_height * n
 		
-		# Create the transform for the new piece.
 		# NOTE: We normalise the basis here to reset the piece's scale, because
 		# add_piece will use the piece entry to scale the piece again.
-		var new_basis = (stack.transform.basis * piece_instance.transform.basis).orthonormalized()
-		var new_origin = stack.transform.origin + Vector3(0, stack.get_total_height() / 2, 0)
+		var new_basis = stack.transform.basis.orthonormalized()
+		var new_origin = stack.transform.origin
+		new_origin.y += total_height / 2
+		# Get the new piece away from the stack so it doesn't collide with it
+		# again.
+		new_origin.y += STACK_SPLIT_DISTANCE + removed_height / 2
 		
-		# If this piece will hover, get it away from the stack so it doesn't
-		# immediately collide with it again.
-		if hover:
-			new_origin.y += STACK_SPLIT_DISTANCE + stack.get_unit_height() / 2
-		var new_transform = Transform(new_basis, new_origin)
+		if n == 1:
+			var piece_instance = stack.pop_piece()
+			stack.rpc("remove_piece_by_name", piece_instance.name)
+			
+			new_basis = (stack.transform.basis * piece_instance.transform.basis).orthonormalized()
+			rpc("add_piece", piece_instance.name, Transform(new_basis, new_origin),
+				piece_instance.piece_entry)
+			new_piece = _pieces.get_node(piece_instance.name)
+			
+			piece_instance.queue_free()
+		else:
+			var new_name = srv_get_next_piece_name()
+			var new_transform = Transform(new_basis, new_origin)
+			
+			new_piece = add_stack_empty(new_name, new_transform)
+			rpc("add_stack_empty", new_name, new_transform)
+			
+			rpc("transfer_stack_contents", stack_name, new_name, n)
 		
-		if not hover:
-			player_id = 0
+		# Move the stack down to it's new location.
+		var new_stack_translation = stack.translation
+		new_stack_translation.y -= removed_height / 2
+		stack.rpc("set_translation", new_stack_translation)
 		
-		rpc("add_piece", piece_instance.name, new_transform,
-			piece_instance.piece_entry, player_id)
-		
-		if hover:
-			rpc_id(player_id, "request_pop_stack_accepted", piece_instance.name)
-		
-		piece_instance.queue_free()
-		
-	# Check to see if there is only one piece left in the stack - if there is,
-	# turn it into a normal piece with this method.
-	if stack.get_piece_count() == 1:
-		request_pop_stack(stack_name, false)
+		# If there is only one piece left in the stack, turn it into a normal
+		# piece.
+		if stack.get_piece_count() == 1:
+			var piece_instance = stack.empty()[0]
+			stack.rpc("remove_self")
+			
+			rpc("add_piece", piece_instance.name,
+				Transform(new_basis, new_stack_translation),
+				piece_instance.piece_entry)
+			
+			piece_instance.queue_free()
+	else:
+		new_piece = stack
+	
+	if new_piece:
+		if new_piece.srv_start_hovering(player_id, new_piece.transform.origin, Vector3()):
+			rpc_id(player_id, "request_pop_stack_accepted", new_piece.name)
 
 # Called by the server if the request to pop a stack was accepted, and we are
 # now hovering the new piece.
@@ -696,6 +715,53 @@ func srv_get_next_piece_name() -> String:
 func start_sending_cursor_position() -> void:
 	_camera_controller.send_cursor_position = true
 
+# Transfer the contents at the top of one stack to the top of another.
+# stack1_name: The name of the stack to transfer contents from.
+# stack2_name: The name of the stack to transfer contents to.
+# n: The number of contents to transfer.
+remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String,
+	n: int) -> void:
+	
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var stack1 = _pieces.get_node(stack1_name)
+	var stack2 = _pieces.get_node(stack2_name)
+	
+	if not stack1:
+		push_error("Stack " + stack1_name + " does not exist!")
+		return
+	
+	if not stack2:
+		push_error("Stack " + stack2_name + " does not exist!")
+		return
+	
+	if not stack1 is Stack:
+		push_error("Piece " + stack1_name + " is not a stack!")
+		return
+	
+	if not stack2 is Stack:
+		push_error("Piece " + stack2_name + " is not a stack!")
+		return
+	
+	n = min(n, stack1.get_piece_count())
+	if n < 1:
+		return
+	
+	var contents = []
+	for i in range(n):
+		contents.push_back(stack1.pop_piece())
+	
+	var test_piece = load(contents[0].piece_entry["scene_path"]).instance()
+	_scale_piece(test_piece, contents[0].piece_entry["scale"])
+	var shape = _get_stack_piece_shape(test_piece)
+	
+	while not contents.empty():
+		var piece = contents.pop_back()
+		stack2.add_piece(piece, shape, Stack.STACK_TOP)
+	
+	test_piece.queue_free()
+
 # Create a Piece object out of a generic Spatial object.
 # Returns: A Piece.
 # piece: The Spatial object.
@@ -801,8 +867,8 @@ func _on_CameraController_hover_piece_requested(piece: Piece, offset: Vector3):
 	rpc_id(1, "request_hover_piece", piece.name,
 		_camera_controller.get_hover_position(), offset)
 
-func _on_CameraController_pop_stack_requested(stack: Stack):
-	rpc_id(1, "request_pop_stack", stack.name)
+func _on_CameraController_pop_stack_requested(stack: Stack, n: int):
+	rpc_id(1, "request_pop_stack", stack.name, n)
 
 func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stacks: bool):
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)

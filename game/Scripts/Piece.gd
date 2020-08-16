@@ -144,6 +144,15 @@ puppet func set_latest_server_physics_state(state: Dictionary) -> void:
 	_last_server_state = state
 	sleeping = false
 
+# Called by the server to set the translation of the piece.
+# new_translation: The new translation.
+remotesync func set_translation(new_translation: Vector3) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	translation = new_translation
+	sleeping = false
+
 # Get the ID of the player that is hovering the piece.
 # Returns: The ID of the player hovering the piece. 0 if the piece is not being
 # hovered.
