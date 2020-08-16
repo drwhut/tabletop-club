@@ -400,7 +400,7 @@ master func request_collect_pieces(piece_names: Array) -> void:
 			if add_to.matches(add_from):
 				if add_to is Stack:
 					if add_from is Stack:
-						rpc("add_stack_to_stack", add_to.name, add_from.name)
+						rpc("add_stack_to_stack", add_from.name, add_to.name)
 					else:
 						rpc("add_piece_to_stack", add_from.name, add_to.name)
 				else:
