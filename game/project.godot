@@ -158,6 +158,10 @@ game_menu={
  ]
 }
 
+[logging]
+
+file_logging/enable_file_logging=true
+
 [physics]
 
 3d/default_gravity=98.1

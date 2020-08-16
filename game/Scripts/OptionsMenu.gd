@@ -74,8 +74,6 @@ func _apply_config(config: ConfigFile) -> void:
 		if InputMap.has_action(action):
 			InputMap.action_erase_events(action)
 			InputMap.action_add_event(action, config.get_value("key_bindings", action))
-		else:
-			push_error("Action " + action + " does not exist!")
 	
 	#########
 	# VIDEO #
@@ -211,7 +209,7 @@ func _load_file(config: ConfigFile) -> void:
 						else:
 							push_warning("Option " + section + "/" + key + " is the wrong type, ignoring.")
 	else:
-		push_error("Failed to load options (error " + str(err) + ")")
+		print("Failed to load options (error ", err, ")")
 
 # Save the given options to the option file.
 # config: The options to save.
@@ -329,11 +327,11 @@ func _on_OpenAssetsButton_pressed():
 				if err == OK:
 					found = true
 				else:
-					push_error("Failed to open directory at " + path + " (error " + str(err) + ")")
+					print("Failed to open directory at ", path, " (error ", err, ")")
 			else:
-				push_error("Failed to create directory at " + path + " (error " + str(err) + ")")
+				print("Failed to create directory at ", path, " (error ", err, ")")
 		else:
-			push_error("Failed to open current working directory (error " + str(err) + ")")
+			print("Failed to open current working directory (error ", err, ")")
 	
 	if found:
 		OS.shell_open(dir.get_current_dir())
@@ -352,12 +350,12 @@ func _on_ReimportConfirm_confirmed():
 		while file:
 			err = dir.remove(file)
 			if err:
-				push_error("Failed to remove " + file + " (error " + str(err) + ")")
+				print("Failed to remove ", file, " (error ", err, ")")
 			file = dir.get_next()
 		
 		Global.restart_game()
 	else:
-		push_error("Failed to open the import cache directory (error " + str(err) + ")")
+		print("Failed to open the import cache directory (error ", err, ")")
 
 func _on_ResetBindingsButton_pressed():
 	_reset_bindings_confirm.popup_centered()

@@ -181,7 +181,7 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 			var import_err = _import_asset(file_path, game, type, scene, config)
 			
 			if import_err:
-				push_error("Failed to import: " + file_path + " (error " + str(import_err) + ")")
+				print("Failed to import: ", file_path, " (error ", import_err, ")")
 		
 		if scene:
 			var stack_config_path = current_dir.get_current_dir() + "/stacks.cfg"
@@ -229,7 +229,7 @@ func _get_asset_dir(game: String, type: String) -> Directory:
 		dir.make_dir_recursive(path)
 		dir.change_dir(path)
 	else:
-		push_error("Cannot open user:// directory! (error " + str(dir_error) + ")")
+		print("Cannot open user:// directory (error ", dir_error, ")")
 	
 	return dir
 
@@ -357,7 +357,7 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 							if piece_entry and piece_entry.has("scale"):
 								scale = piece_entry.scale
 							else:
-								push_error("Could not determine scale of " + item)
+								print("Could not determine scale of ", item)
 				
 				# TODO: Check the file exists.
 				var texture_path = "user://assets/" + game + "/" + type + "/" + item
@@ -372,7 +372,7 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 				}
 				_add_entry_to_db(game, "stacks", stack_entry)
 			else:
-				push_error("Could not determine scale of stack " + stack_name)
+				print("Could not determine scale of stack ", stack_name)
 
 # Send a signal from the importing thread.
 # file: The file we are currently importing - if blank, send the completed

@@ -71,7 +71,7 @@ func _start_dedicated_server():
 		
 		Global.start_game_as_server(max_players, port)
 	else:
-		push_error("Failed to read server.cfg (error " + str(server_config_err) + ")")
+		print("Failed to read server.cfg (error ", server_config_err, ")")
 		return
 
 func _on_SingleplayerButton_pressed():
