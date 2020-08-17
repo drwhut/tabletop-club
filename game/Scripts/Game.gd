@@ -236,9 +236,15 @@ func _on_GameUI_card_in_hand_requested(card: Card):
 	rpc_id(1, "request_card_in_hand", card.name)
 
 func _on_GameUI_card_out_hand_requested(card_texture: CardTextureRect):
+	var camera_basis = _room.get_camera_transform().basis
+	# Ensure the basis is parallel to the table.
 	var basis = Basis.IDENTITY
+	basis.x = camera_basis.x
+	basis.y = Vector3.UP
+	basis.z = basis.x.cross(basis.y)
+	basis = basis.orthonormalized()
 	if not card_texture.front_face:
-		basis = basis.rotated(Vector3.BACK, PI)
+		basis = basis.rotated(basis.z, PI)
 	
 	# Use the camera controller to get the correct transform.
 	var transform = Transform(basis, _room.get_camera_hover_position())

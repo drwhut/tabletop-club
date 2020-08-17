@@ -308,6 +308,11 @@ func apply_options(config: ConfigFile) -> void:
 func get_camera_hover_position() -> Vector3:
 	return _camera_controller.get_hover_position()
 
+# Get the camera controller's transform.
+# Returns: The camera controller's transform.
+func get_camera_transform() -> Transform:
+	return _camera_controller.transform
+
 # Get a piece in the room with a given name.
 # Returns: The piece with the given name.
 # name: The name of the piece.
