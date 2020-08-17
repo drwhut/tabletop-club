@@ -433,18 +433,23 @@ func _unhandled_input(event):
 					_perform_box_select = true
 		
 		elif event.button_index == BUTTON_RIGHT:
-			# Only bring up the context menu if the mouse didn't move between
-			# the press and the release of the RMB.
-			if event.is_pressed():
-				if _piece_mouse_is_over:
-					if not _selected_pieces.has(_piece_mouse_is_over):
-						set_selected_pieces([_piece_mouse_is_over])
-				else:
-					clear_selected_pieces()
-				_right_click_pos = event.position
+			if _is_hovering_selected:
+				# TODO: Consider doing something here, like randomizing dice
+				# or shuffling stacks?
+				pass
 			else:
-				if event.position == _right_click_pos:
-					_popup_piece_context_menu()
+				# Only bring up the context menu if the mouse didn't move
+				# between the press and the release of the RMB.
+				if event.is_pressed():
+					if _piece_mouse_is_over:
+						if not _selected_pieces.has(_piece_mouse_is_over):
+							set_selected_pieces([_piece_mouse_is_over])
+					else:
+						clear_selected_pieces()
+					_right_click_pos = event.position
+				else:
+					if event.position == _right_click_pos:
+						_popup_piece_context_menu()
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
