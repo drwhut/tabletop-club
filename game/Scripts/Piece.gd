@@ -25,8 +25,7 @@ class_name Piece
 
 signal piece_exiting_tree(piece)
 
-const ANGULAR_FORCE_SCALAR = 3.0
-const ANGULAR_HARMONIC_DAMP = 0.5
+const ANGULAR_FORCE_SCALAR = 25.0
 const HELL_HEIGHT = -50.0
 const LINEAR_FORCE_SCALAR = 50.0
 const ROTATION_LOCK_AT = 0.001
@@ -305,7 +304,21 @@ func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	var target_basis = _srv_hover_basis.orthonormalized()
 	var rotation_basis = target_basis * current_basis.inverse()
 	var rotation_euler = rotation_basis.get_euler()
-	state.apply_torque_impulse(ANGULAR_FORCE_SCALAR * mass * rotation_euler)
+	
+	# For rigid bodies, applied torque is multiplied with the inverse of the
+	# inertia tensor (a 3x3 matrix) to get the angular acceleration. But here
+	# we want all pieces to rotate the same way, so we get the non-inverted
+	# inertia tensor and multiply the torque by it to pretend all pieces have
+	# the same inertia tensor.
+	var inertia_tensor = get_inverse_inertia_tensor()
+	if inertia_tensor.determinant() == 0:
+		inertia_tensor = Basis.IDENTITY
+	else:
+		inertia_tensor = inertia_tensor.inverse()
+	
+	var applied_torque = inertia_tensor * rotation_euler
+	state.apply_torque_impulse(ANGULAR_FORCE_SCALAR * applied_torque)
 	
 	# Stops angular harmonic motion.
-	state.apply_torque_impulse(-ANGULAR_HARMONIC_DAMP * mass * angular_velocity)
+	var angular_torque = inertia_tensor * angular_velocity
+	state.apply_torque_impulse(-angular_torque)

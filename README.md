@@ -12,7 +12,7 @@ available in GDScript, and secondly, isn't available outside of the editor.
 1. Download the modified version of Godot:
 
 ```bash
-git clone https://github.com/drwhut/godot.git -b tabletop-3.2.2
+git clone https://github.com/drwhut/godot.git -b tabletop-3.2.3-rc3
 cd godot
 git submodule update --init
 ```
