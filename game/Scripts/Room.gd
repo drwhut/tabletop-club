@@ -346,7 +346,7 @@ func get_state() -> Dictionary:
 			var child_pieces = []
 			for child_piece in piece.get_pieces():
 				var child_piece_meta = {
-					"flip_y": piece.is_piece_flipped(child_piece),
+					"flip_y": child_piece.transform.basis.y.dot(Vector3.UP) < 0,
 					"name": child_piece.name,
 					"piece_entry": child_piece.piece_entry
 				}
