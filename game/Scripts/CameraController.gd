@@ -49,6 +49,8 @@ const ZOOM_DISTANCE_MAX = 200.0
 
 export(float) var lift_sensitivity: float = 1.0
 export(float) var max_speed: float = 10.0
+export(bool) var piece_rotate_invert: bool = false
+export(bool) var piece_rotate_alt: bool = true
 export(float) var rotation_sensitivity_x: float = -0.01
 export(float) var rotation_sensitivity_y: float = -0.01
 export(float) var zoom_sensitivity: float = 1.0
@@ -67,6 +69,7 @@ var _movement_dir = Vector3()
 var _movement_vel = Vector3()
 var _perform_box_select = false
 var _piece_mouse_is_over: Piece = null
+var _piece_rotation_amount = 1.0
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
 var _selected_pieces = []
@@ -86,33 +89,26 @@ func append_selected_pieces(pieces: Array) -> void:
 func apply_options(config: ConfigFile) -> void:
 	_camera.fov = config.get_value("video", "fov")
 	
-	var rotation_x_scale = -0.1
+	rotation_sensitivity_x = -0.1 * config.get_value("controls", "mouse_horizontal_sensitivity")
 	if config.get_value("controls", "mouse_horizontal_invert"):
-		rotation_x_scale *= -1
-	rotation_sensitivity_x = rotation_x_scale * config.get_value("controls", "mouse_horizontal_sensitivity")
+		rotation_sensitivity_x *= -1
 	
-	var rotation_y_scale = -0.1
+	rotation_sensitivity_y = -0.1 * config.get_value("controls", "mouse_vertical_sensitivity")
 	if config.get_value("controls", "mouse_vertical_invert"):
-		rotation_y_scale *= -1
-	rotation_sensitivity_y = rotation_y_scale * config.get_value("controls", "mouse_vertical_sensitivity")
+		rotation_sensitivity_y *= -1
 	
-	var zoom_offset = 1.0
-	var zoom_scale = 15.0
+	max_speed = 10.0 + 190.0 * config.get_value("controls", "camera_movement_speed")
+	
+	zoom_sensitivity = 1.0 + 15.0 * config.get_value("controls", "zoom_sensitivity")
 	if config.get_value("controls", "zoom_invert"):
-		zoom_offset *= -1
-		zoom_scale *= -1
-	zoom_sensitivity = zoom_offset + zoom_scale * config.get_value("controls", "zoom_sensitivity")
+		zoom_sensitivity *= -1
 	
-	var lift_offset = 0.5
-	var lift_scale = 4.5
+	lift_sensitivity = 0.5 + 4.5 * config.get_value("controls", "piece_lift_sensitivity")
 	if config.get_value("controls", "piece_lift_invert"):
-		lift_offset *= -1
-		lift_scale *= -1
-	lift_sensitivity = lift_offset + lift_scale * config.get_value("controls", "piece_lift_sensitivity")
+		lift_sensitivity *= -1
 	
-	var speed_offset = 10.0
-	var speed_scale = 190.0
-	max_speed = speed_offset + speed_scale * config.get_value("controls", "camera_movement_speed")
+	piece_rotate_invert = config.get_value("controls", "piece_rotation_invert")
+	piece_rotate_alt = config.get_value("controls", "alt_to_rotate")
 	
 	_cursors.visible = not config.get_value("multiplayer", "hide_cursors")
 
@@ -214,6 +210,11 @@ puppet func set_player_cursor_position(id: int, position: Vector3, x_basis: Vect
 	
 	cursor.set_meta("cursor_position", position)
 	cursor.set_meta("x_basis", x_basis)
+
+# Set the controller's piece rotation amount.
+# rotation_amount: The piece rotation amount in radians.
+func set_piece_rotation_amount(rotation_amount: float) -> void:
+	_piece_rotation_amount = min(max(rotation_amount, 0.0), 2 * PI)
 
 # Set the list of selected pieces.
 # pieces: The new list of selected pieces.
@@ -464,19 +465,30 @@ func _unhandled_input(event):
 			event.button_index == BUTTON_WHEEL_DOWN):
 			
 			if _is_hovering_selected:
-				# Changing the y-position of hovered pieces.
-				
-				var offset = 0
-				
-				if event.button_index == BUTTON_WHEEL_UP:
-					offset = -lift_sensitivity
+				var option1 = piece_rotate_alt and (not event.alt)
+				var option2 = (not piece_rotate_alt) and event.alt
+				if option1 or option2:
+					# Changing the y-position of hovered pieces.
+					var offset = 0
+					
+					if event.button_index == BUTTON_WHEEL_UP:
+						offset = -lift_sensitivity
+					else:
+						offset = lift_sensitivity
+					
+					var new_y = _hover_y_pos + offset
+					_hover_y_pos = max(new_y, HOVER_Y_MIN)
+					
+					_on_moving()
 				else:
-					offset = lift_sensitivity
-				
-				var new_y = _hover_y_pos + offset
-				_hover_y_pos = max(new_y, HOVER_Y_MIN)
-				
-				_on_moving()
+					# Changing the rotation of the hovered pieces.
+					var amount = _piece_rotation_amount
+					if event.button_index == BUTTON_WHEEL_DOWN:
+						amount *= -1
+					if piece_rotate_invert:
+						amount *= -1
+					for piece in _selected_pieces:
+						piece.rpc_id(1, "rotate_y", amount)
 			else:
 				# Zooming the camera in and away from the controller.
 				var offset = 0

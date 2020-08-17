@@ -115,6 +115,26 @@ master func reset_orientation() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		_srv_hover_basis = Basis.IDENTITY
 
+# If you are hovering the piece, rotate it on the y-axis.
+# rot: The amount to rotate it by in radians.
+master func rotate_y(rot: float) -> void:
+	if get_tree().get_rpc_sender_id() == _srv_hover_player:
+		if rot == 0.0:
+			return
+		
+		var current_euler = _srv_hover_basis.get_euler()
+		var current_y_scale = current_euler.y / abs(rot)
+		# The .001 is to avoid floating point errors.
+		var offset = 1.001
+		var target_y_scale = current_y_scale
+		if rot > 0.0:
+			target_y_scale = floor(current_y_scale + offset)
+		else:
+			target_y_scale = ceil(current_y_scale - offset)
+		var target_y_euler = current_euler
+		target_y_euler.y = wrapf(target_y_scale * abs(rot), -PI, PI)
+		_srv_hover_basis = Basis(target_y_euler)
+
 # Set the piece to appear like it is selected.
 # selected: Should the piece appear selected?
 func set_appear_selected(selected: bool) -> void:

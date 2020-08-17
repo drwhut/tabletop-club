@@ -888,3 +888,6 @@ func _on_CameraController_started_hovering_card(card: Card):
 
 func _on_CameraController_stopped_hovering_card(card: Card):
 	emit_signal("stopped_hovering_card", card)
+
+func _on_GameUI_rotation_amount_updated(rotation_amount: float):
+	_camera_controller.set_piece_rotation_amount(rotation_amount)

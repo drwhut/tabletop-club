@@ -25,6 +25,7 @@ signal applying_options(config)
 signal card_in_hand_requested(card)
 signal card_out_hand_requested(card_texture)
 signal piece_requested(piece_entry)
+signal rotation_amount_updated(rotation_amount)
 
 const HIGHLIGHT_COLOUR = Color(0.25, 1.0, 1.0, 0.5)
 
@@ -34,6 +35,7 @@ onready var _objects_dialog = $ObjectsDialog
 onready var _objects_tree = $ObjectsDialog/ObjectsTree
 onready var _options_menu = $OptionsMenu
 onready var _player_list = $PlayerList
+onready var _rotation_option = $TopPanel/RotationOption
 
 var _candidate_card: CardTextureRect = null
 var _grabbed_card_from_hand: CardTextureRect = null
@@ -95,6 +97,9 @@ func _ready():
 	_hand_highlight.color = HIGHLIGHT_COLOUR
 	_hand_highlight.mouse_filter = MOUSE_FILTER_IGNORE
 	_hand_highlight.rect_min_size = Vector2(hand_height / 1.618, hand_height)
+	
+	# Make sure we emit the signal when all of the nodes are ready:
+	call_deferred("_set_rotation_amount")
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -226,6 +231,14 @@ func _create_card_half_texture(card: Card, front_face: bool) -> CardTextureRect:
 	
 	return texture_rect
 
+# Call to emit a signal for the camera to set it's piece rotation amount.
+func _set_rotation_amount() -> void:
+	if _rotation_option.selected >= 0:
+		var deg_id = _rotation_option.get_item_id(_rotation_option.selected)
+		var deg_text = _rotation_option.get_item_text(deg_id)
+		var rad = deg2rad(float(deg_text))
+		emit_signal("rotation_amount_updated", rad)
+
 # Update the player list based on what is in the Lobby.
 func _update_player_list() -> void:
 	var code = "[right][table=1]"
@@ -347,3 +360,6 @@ func _on_Room_stopped_hovering_card(card: Card):
 	_holding_card = false
 	_mouse_in_hand = false
 	_hand.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func _on_RotationOption_item_selected(index: int):
+	_set_rotation_amount()
