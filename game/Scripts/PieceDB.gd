@@ -288,18 +288,24 @@ func _import_asset(from: String, game: String, type: String, scene: String,
 	if not (import_err == OK or import_err == ERR_ALREADY_EXISTS):
 		return import_err
 	
+	# Converting from g -> kg -> (Ns^2/cm, since game units are in cm) = x10.
+	var mass = 10 * _get_file_config_value(config, from.get_file(), "mass", 1.0)
+	var scale = _get_file_config_value(config, from.get_file(), "scale", Vector3(1, 1, 1))
+	
 	if VALID_SCENE_EXTENSIONS.has(to.get_extension()):
 		var entry = {
+			"mass": mass,
 			"name": _get_file_without_ext(to),
-			"scale": _get_file_config_value(config, from.get_file(), "scale", Vector3(1, 1, 1)),
+			"scale": scale,
 			"scene_path": to,
 			"texture_path": null
 		}
 		_add_entry_to_db(game, type, entry)
 	elif scene and VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
 		var entry = {
+			"mass": mass,
 			"name": _get_file_without_ext(to),
-			"scale": _get_file_config_value(config, from.get_file(), "scale", Vector3(1, 1, 1)),
+			"scale": scale,
 			"scene_path": scene,
 			"texture_path": to
 		}
@@ -336,9 +342,11 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 		var items = stack_config.get_value(stack_name, "items")
 		if items and items is Array:
 			
+			var masses = []
 			var texture_paths = []
 			var scale = null
 			for item in items:
+				var mass = 1.0
 			
 				# We know everything but the scale of the piece at this point.
 				# So, we need to scan through the DB to find the texture, then
@@ -356,15 +364,19 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 							
 							if piece_entry and piece_entry.has("scale"):
 								scale = piece_entry.scale
+								if piece_entry.has("mass"):
+									mass = piece_entry["mass"]
 							else:
 								print("Could not determine scale of ", item)
 				
 				# TODO: Check the file exists.
+				masses.push_back(mass)
 				var texture_path = "user://assets/" + game + "/" + type + "/" + item
 				texture_paths.push_back(texture_path)
 			
 			if scale:
 				var stack_entry = {
+					"masses": masses,
 					"name": stack_name,
 					"scale": scale,
 					"scene_path": scene,

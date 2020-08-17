@@ -276,7 +276,7 @@ func _on_tree_exiting() -> void:
 func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Force the piece to the given location.
 	var linear_dir = _srv_hover_position + _srv_hover_offset - translation
-	state.apply_central_impulse(LINEAR_FORCE_SCALAR * linear_dir)
+	state.apply_central_impulse(LINEAR_FORCE_SCALAR * mass * linear_dir)
 	# Stops linear harmonic motion.
 	state.apply_central_impulse(-mass * linear_velocity)
 	
@@ -285,7 +285,7 @@ func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	var target_basis = _srv_hover_basis.orthonormalized()
 	var rotation_basis = target_basis * current_basis.inverse()
 	var rotation_euler = rotation_basis.get_euler()
-	state.apply_torque_impulse(ANGULAR_FORCE_SCALAR * rotation_euler)
+	state.apply_torque_impulse(ANGULAR_FORCE_SCALAR * mass * rotation_euler)
 	
 	# Stops angular harmonic motion.
 	state.apply_torque_impulse(-ANGULAR_HARMONIC_DAMP * mass * angular_velocity)

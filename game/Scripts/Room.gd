@@ -61,6 +61,8 @@ remotesync func add_piece(name: String, transform: Transform,
 	piece.transform = transform
 	piece.piece_entry = piece_entry
 	
+	piece.mass = piece_entry["mass"]
+	
 	# Scale the piece by changing the scale of all collision shapes and mesh
 	# instances.
 	_scale_piece(piece, piece_entry["scale"])
@@ -202,19 +204,24 @@ puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
 remotesync func add_stack_filled(name: String, transform: Transform,
 	stack_entry: Dictionary, piece_names: Array) -> void:
 	
+	if stack_entry["masses"].size() != stack_entry["texture_paths"].size():
+		push_error("Stack entry arrays do not match size!")
+	
 	var single_piece = load(stack_entry["scene_path"]).instance()
 	_scale_piece(single_piece, stack_entry["scale"])
 	
 	var stack = add_stack_empty(name, transform)
 	
-	var i = 0
-	for texture_path in stack_entry["texture_paths"]:
+	for i in range(stack_entry["texture_paths"].size()):
 		var mesh = _get_stack_piece_mesh(single_piece)
 		var shape = _get_stack_piece_shape(single_piece)
+		
+		var texture_path = stack_entry.texture_paths[i]
 		
 		# Create a new piece entry based on the stack entry.
 		mesh.name = piece_names[i]
 		mesh.piece_entry = {
+			"mass": stack_entry.masses[i],
 			"name": stack_entry.name,
 			"scale": stack_entry.scale,
 			"scene_path": stack_entry.scene_path,
@@ -231,8 +238,6 @@ remotesync func add_stack_filled(name: String, transform: Transform,
 		mesh.set_surface_material(0, new_material)
 		
 		stack.add_piece(mesh, shape, Stack.STACK_BOTTOM, Stack.FLIP_NO)
-		
-		i += 1
 	
 	single_piece.queue_free()
 

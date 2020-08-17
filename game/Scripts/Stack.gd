@@ -306,9 +306,9 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	# We just changed the collision shape, so make sure the stack is awake.
 	sleeping = false
 	
-	var n = _pieces.get_child_count()
-	var is_flipped = false
+	mass += piece.piece_entry["mass"]
 	
+	var is_flipped = false
 	match flip:
 		FLIP_AUTO:
 			if is_piece_flipped(piece):
@@ -359,6 +359,8 @@ func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	
 	# We just changed the collision shape, so make sure the stack is awake.
 	sleeping = false
+	
+	mass -= piece.piece_entry["mass"]
 	
 	_set_piece_heights()
 	
