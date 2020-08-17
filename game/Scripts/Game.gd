@@ -195,6 +195,23 @@ func _player_disconnected(id: int) -> void:
 	
 	if get_tree().is_network_server():
 		Lobby.rpc("remove_self", id)
+		
+		# If the player had set aside any cards, then we need to get them back,
+		# otherwise they're going to be lost in the ether forever.
+		var cards = []
+		for piece in _room.get_pieces():
+			if piece is Card:
+				if piece.srv_get_place_aside_player() == id:
+					cards.append(piece)
+		
+		var transform = Transform(Basis.IDENTITY, Vector3(0, Piece.SPAWN_HEIGHT, 0))
+		if cards.size() > 1:
+			var stack_name = _room.srv_get_next_piece_name()
+			_room.rpc("add_stack", stack_name, transform, cards[0].name, cards[1].name)
+			for i in range(2, cards.size()):
+				_room.rpc("add_piece_to_stack", cards[i].name, stack_name)
+		elif cards.size() == 1:
+			cards[0].rpc("bring_back", transform)
 
 func _connected_ok() -> void:
 	print("Successfully connected to the server!")
