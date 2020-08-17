@@ -35,9 +35,9 @@ onready var _cursors = $Cursors
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 
-const GRABBING_SLOW_TIME = 0.25
-const HOVER_Y_LEVEL = 5.0
 const CURSOR_LERP_SCALE = 100.0
+const GRABBING_SLOW_TIME = 0.25
+const HOVER_Y_MIN = 1.0
 const MOVEMENT_ACCEL_SCALAR = 0.125
 const MOVEMENT_DECEL_SCALAR = 0.25
 const RAY_LENGTH = 1000
@@ -47,6 +47,7 @@ const ZOOM_ACCEL_SCALAR = 3.0
 const ZOOM_DISTANCE_MIN = 2.0
 const ZOOM_DISTANCE_MAX = 200.0
 
+export(float) var lift_sensitivity: float = 1.0
 export(float) var max_speed: float = 10.0
 export(float) var rotation_sensitivity_x: float = -0.01
 export(float) var rotation_sensitivity_y: float = -0.01
@@ -56,6 +57,7 @@ var send_cursor_position: bool = false
 
 var _box_select_init_pos = Vector2()
 var _grabbing_time = 0.0
+var _hover_y_pos = 10.0
 var _is_box_selecting = false
 var _is_grabbing_selected = false
 var _is_hovering_selected = false
@@ -97,9 +99,16 @@ func apply_options(config: ConfigFile) -> void:
 	var zoom_offset = 1.0
 	var zoom_scale = 15.0
 	if config.get_value("controls", "zoom_invert"):
-		zoom_scale *= -1
 		zoom_offset *= -1
+		zoom_scale *= -1
 	zoom_sensitivity = zoom_offset + zoom_scale * config.get_value("controls", "zoom_sensitivity")
+	
+	var lift_offset = 0.5
+	var lift_scale = 4.5
+	if config.get_value("controls", "piece_lift_invert"):
+		lift_offset *= -1
+		lift_scale *= -1
+	lift_sensitivity = lift_offset + lift_scale * config.get_value("controls", "piece_lift_sensitivity")
 	
 	var speed_offset = 10.0
 	var speed_scale = 190.0
@@ -125,7 +134,7 @@ func erase_selected_pieces(piece: Piece) -> void:
 # mouse positions.
 # Returns: The position that hovering pieces should hover at.
 func get_hover_position() -> Vector3:
-	return _calculate_hover_position(get_viewport().get_mouse_position())
+	return _calculate_hover_position(get_viewport().get_mouse_position(), _hover_y_pos)
 
 # Get the list of selected pieces.
 # Returns: The list of selected pieces.
@@ -453,17 +462,32 @@ func _unhandled_input(event):
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
-		
-			# Zooming the camera in and away from the controller.
-			var offset = 0
 			
-			if event.button_index == BUTTON_WHEEL_UP:
-				offset = -zoom_sensitivity
+			if _is_hovering_selected:
+				# Changing the y-position of hovered pieces.
+				
+				var offset = 0
+				
+				if event.button_index == BUTTON_WHEEL_UP:
+					offset = -lift_sensitivity
+				else:
+					offset = lift_sensitivity
+				
+				var new_y = _hover_y_pos + offset
+				_hover_y_pos = max(new_y, HOVER_Y_MIN)
+				
+				_on_moving()
 			else:
-				offset = zoom_sensitivity
-			
-			var new_zoom = _target_zoom + offset
-			_target_zoom = max(min(new_zoom, ZOOM_DISTANCE_MAX), ZOOM_DISTANCE_MIN)
+				# Zooming the camera in and away from the controller.
+				var offset = 0
+				
+				if event.button_index == BUTTON_WHEEL_UP:
+					offset = -zoom_sensitivity
+				else:
+					offset = zoom_sensitivity
+				
+				var new_zoom = _target_zoom + offset
+				_target_zoom = max(min(new_zoom, ZOOM_DISTANCE_MAX), ZOOM_DISTANCE_MIN)
 			
 			get_tree().set_input_as_handled()
 	
@@ -511,19 +535,20 @@ func _unhandled_input(event):
 # Calculate the hover position of a piece, given a mouse position on the screen.
 # Returns: The hover position of a piece, based on the given mouse position.
 # mouse_position: The mouse position on the screen.
-func _calculate_hover_position(mouse_position: Vector2) -> Vector3:
+# y_position: The y-position of the hover position.
+func _calculate_hover_position(mouse_position: Vector2, y_position: float) -> Vector3:
 	# Get vectors representing a raycast from the camera.
 	var from = _camera.project_ray_origin(mouse_position)
 	var to = from + _camera.project_ray_normal(mouse_position) * RAY_LENGTH
 	
 	# Figure out at which point along this line the piece should hover at,
 	# given we want it to hover at a particular Y-level.
-	var lambda = (HOVER_Y_LEVEL - from.y) / (to.y - from.y)
+	var lambda = (y_position - from.y) / (to.y - from.y)
 	
 	var x = from.x + lambda * (to.x - from.x)
 	var z = from.z + lambda * (to.z - from.z)
 	
-	return Vector3(x, HOVER_Y_LEVEL, z)
+	return Vector3(x, y_position, z)
 
 # Create a cursor texture representing a given player.
 # Returns: A cursor texture representing a given player.
@@ -861,6 +886,11 @@ func _on_moving() -> bool:
 	
 	# Or if we were hovering a piece already...
 	if _is_hovering_selected:
+		
+		# Set the maximum hover y-position so the pieces don't go above and
+		# behind the camera.
+		var max_y_pos = _camera.global_transform.origin.y - HOVER_Y_MIN
+		_hover_y_pos = min(_hover_y_pos, max_y_pos)
 		
 		# ... then send out a signal with the new hover position.
 		for piece in _selected_pieces:

@@ -151,19 +151,52 @@ margin_top = 116.0
 margin_right = 976.0
 margin_bottom = 140.0
 
-[node name="CameraMovementSpeed" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+[node name="PieceLiftSensitivity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_top = 145.0
 margin_right = 486.0
 margin_bottom = 159.0
+size_flags_horizontal = 3
+text = "Piece Lift Sensitivity"
+align = 2
+
+[node name="PieceLiftSensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 144.0
+margin_right = 976.0
+margin_bottom = 160.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.15
+
+[node name="PieceLiftInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 169.0
+margin_right = 486.0
+margin_bottom = 183.0
+size_flags_horizontal = 3
+text = "Piece Lift Invert"
+align = 2
+
+[node name="PieceLiftInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 164.0
+margin_right = 976.0
+margin_bottom = 188.0
+
+[node name="CameraMovementSpeed" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 193.0
+margin_right = 486.0
+margin_bottom = 207.0
 size_flags_horizontal = 3
 text = "Camera Movement Speed"
 align = 2
 
 [node name="CameraMovementSpeedSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 144.0
+margin_top = 192.0
 margin_right = 976.0
-margin_bottom = 160.0
+margin_bottom = 208.0
 size_flags_horizontal = 3
 min_value = 0.01
 max_value = 1.0
@@ -435,10 +468,10 @@ text = "Color"
 align = 2
 
 [node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_left = 494.0
-margin_top = 32.0
-margin_right = 980.0
-margin_bottom = 444.0
+margin_left = 490.0
+margin_top = 28.0
+margin_right = 976.0
+margin_bottom = 440.0
 size_flags_horizontal = 3
 edit_alpha = false
 presets_enabled = false
