@@ -780,7 +780,7 @@ func _build_piece(piece: Spatial) -> Piece:
 	
 	# Find the first MeshInstance in the piece scene, so we can get it's mesh
 	# data to create a collision shape.
-	var mesh_instance = _find_first_mesh_instance(piece)
+	var mesh_instance = Piece.find_first_mesh_instance(piece)
 	if mesh_instance:
 		var collision_shape = CollisionShape.new()
 		collision_shape.shape = mesh_instance.mesh.create_convex_shape()
@@ -790,20 +790,6 @@ func _build_piece(piece: Spatial) -> Piece:
 		push_error(piece.name + " does not have a mesh instance!")
 	
 	return out
-
-# Find the first mesh instance node in a Spatial.
-# Returns: The first mesh instance if it exists, null otherwise.
-# piece: The Spatial to query.
-func _find_first_mesh_instance(piece: Spatial):
-	if piece is MeshInstance:
-		return piece
-	
-	for child in piece.get_children():
-		var found = _find_first_mesh_instance(child)
-		if found is MeshInstance:
-			return found
-	
-	return null
 
 # Create a StackPieceInstance from a stackable piece, which can be put into a
 # stack.

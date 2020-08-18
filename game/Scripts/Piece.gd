@@ -37,6 +37,8 @@ const TRANSFORM_LERP_ALPHA = 0.5
 
 var piece_entry: Dictionary = {}
 
+# Set if you know where the mesh instance is. Otherwise, the game will try and
+# find it automatically when it needs it (e.g. when using a custom piece).
 var _mesh_instance: MeshInstance = null
 
 # When setting these vectors, make sure you call set_angular_lock(false),
@@ -55,16 +57,38 @@ var _new_velocity = Vector3()
 # Apply a texture to the piece.
 # texture: The texture to apply.
 func apply_texture(texture: Texture) -> void:
-	if _mesh_instance:
+	var mesh_instance = get_mesh_instance()
+	if mesh_instance:
 		var material = SpatialMaterial.new()
 		material.albedo_texture = texture
 		
-		_mesh_instance.set_surface_material(0, material)
+		mesh_instance.set_surface_material(0, material)
+
+# Find the first mesh instance child of a node recursively.
+# Returns: The first mesh instance found.
+# node: The node to scan the children of for mesh instances.
+static func find_first_mesh_instance(node: Node) -> MeshInstance:
+	if node is MeshInstance:
+		return node as MeshInstance
+	
+	for child in node.get_children():
+		var mesh_instance = find_first_mesh_instance(child)
+		if mesh_instance:
+			return mesh_instance
+	
+	return null
 
 # If you are hovering this piece, ask the server to flip the piece vertically.
 master func flip_vertically() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		_srv_hover_basis = _srv_hover_basis.rotated(transform.basis.z, PI)
+
+# Get the piece's mesh instance.
+# Returns: The piece's mesh instance, null if it does not exist.
+func get_mesh_instance() -> MeshInstance:
+	if _mesh_instance:
+		return _mesh_instance
+	return find_first_mesh_instance(self)
 
 # Determines if the piece is being shaked.
 # Returns: If the piece is being shaked.
@@ -137,9 +161,15 @@ master func rotate_y(rot: float) -> void:
 # Set the piece to appear like it is selected.
 # selected: Should the piece appear selected?
 func set_appear_selected(selected: bool) -> void:
-	if _mesh_instance:
-		var material = _mesh_instance.get_surface_material(0)
-		if material is SpatialMaterial:
+	var mesh_instance = get_mesh_instance()
+	if mesh_instance:
+		var material = mesh_instance.get_surface_material(0)
+		if not material:
+			var mesh = mesh_instance.mesh
+			if mesh:
+				material = mesh.surface_get_material(0)
+		
+		if material and material is SpatialMaterial:
 			material.emission = SELECTED_COLOUR
 			material.emission_energy = SELECTED_ENERGY
 			
