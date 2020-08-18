@@ -393,13 +393,17 @@ func _process_movement(delta):
 	_camera.translation = _camera.translation.linear_interpolate(target_offset, zoom_accel * delta)
 
 func _unhandled_input(event):
-	if _is_hovering_selected:
+	if event.is_action_pressed("game_delete"):
+		_delete_selected_pieces()
+	elif _is_hovering_selected:
 		if event.is_action_pressed("game_flip"):
 			for piece in _selected_pieces:
-				piece.rpc_id(1, "flip_vertically")
+				if piece is Piece:
+					piece.rpc_id(1, "flip_vertically")
 		elif event.is_action_pressed("game_reset"):
 			for piece in _selected_pieces:
-				piece.rpc_id(1, "reset_orientation")
+				if piece is Piece:
+					piece.rpc_id(1, "reset_orientation")
 	
 	if event is InputEventMouseButton:
 		
@@ -601,6 +605,15 @@ func _create_player_cursor_texture(id: int, grabbing: bool) -> ImageTexture:
 	new_texture.create_from_image(clone_image)
 	return new_texture
 
+# Delete the currently selected pieces from the game.
+func _delete_selected_pieces() -> void:
+	_hide_context_menu()
+	# Go in reverse order, as we are removing the pieces as we go.
+	for i in range(_selected_pieces.size() - 1, -1, -1):
+		var piece = _selected_pieces[i]
+		if piece is Piece:
+			piece.rpc_id(1, "request_remove_self")
+
 # Get the scale nessesary to make cursors appear the same size regardless of
 # resolution.
 # Returns: The scale.
@@ -662,12 +675,7 @@ func _on_context_collect_selected_pressed() -> void:
 		emit_signal("collect_pieces_requested", _selected_pieces)
 
 func _on_context_delete_pressed() -> void:
-	_hide_context_menu()
-	# Go in reverse order, as we are removing the pieces as we go.
-	for i in range(_selected_pieces.size() - 1, -1, -1):
-		var piece = _selected_pieces[i]
-		if piece is Piece:
-			piece.rpc_id(1, "request_remove_self")
+	_delete_selected_pieces()
 
 func _on_context_lock_pressed() -> void:
 	_hide_context_menu()
