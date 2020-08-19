@@ -23,7 +23,7 @@ extends StackablePiece
 
 class_name Card
 
-var _srv_place_aside_player: int = 0
+var _place_aside_player: int = 0
 
 # Bring back the card if it has been set aside.
 # new_transform: The transform of the card once it has been brought back.
@@ -31,7 +31,7 @@ remotesync func bring_back(new_transform: Transform) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	_srv_place_aside_player = 0
+	_place_aside_player = 0
 	
 	transform = new_transform
 	mode = MODE_RIGID
@@ -48,7 +48,10 @@ remotesync func place_aside(player_id: int) -> void:
 		return
 	
 	if get_tree().is_network_server():
-		_srv_place_aside_player = player_id
+		_place_aside_player = player_id
+	else:
+		# The players don't need to know which card belongs to who.
+		_place_aside_player = 1
 	
 	transform.origin = Vector3(9999, 9999, 9999)
 	mode = MODE_STATIC
@@ -57,12 +60,12 @@ remotesync func place_aside(player_id: int) -> void:
 # Returns: The player that set aside the card. 0 if the card has not been set
 # aside.
 func srv_get_place_aside_player() -> int:
-	return _srv_place_aside_player
+	return _place_aside_player
 
 # Has the card been set aside?
 # Returns: If the card has been set aside.
-func srv_is_placed_aside() -> bool:
-	return _srv_place_aside_player > 0
+func is_placed_aside() -> bool:
+	return _place_aside_player > 0
 
 func _ready():
 	_mesh_instance = $CollisionShape/MeshInstance

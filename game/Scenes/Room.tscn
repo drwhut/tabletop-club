@@ -111,6 +111,7 @@ __meta__ = {
 [connection signal="collect_pieces_requested" from="CameraController" to="." method="_on_CameraController_collect_pieces_requested"]
 [connection signal="hover_piece_requested" from="CameraController" to="." method="_on_CameraController_hover_piece_requested"]
 [connection signal="pop_stack_requested" from="CameraController" to="." method="_on_CameraController_pop_stack_requested"]
+[connection signal="selecting_all_pieces" from="CameraController" to="." method="_on_CameraController_selecting_all_pieces"]
 [connection signal="stack_collect_all_requested" from="CameraController" to="." method="_on_CameraController_stack_collect_all_requested"]
 [connection signal="started_hovering_card" from="CameraController" to="." method="_on_CameraController_started_hovering_card"]
 [connection signal="stopped_hovering_card" from="CameraController" to="." method="_on_CameraController_stopped_hovering_card"]

@@ -83,7 +83,7 @@ master func request_card_in_hand(card_name: String) -> void:
 		push_error("Piece " + card_name + " is not a card!")
 		return
 	
-	var placed_aside = card.srv_is_placed_aside()
+	var placed_aside = card.is_placed_aside()
 	var hovering = card.srv_is_hovering()
 	var player_is_hovering = card.srv_get_hovering_player() == player_id
 	

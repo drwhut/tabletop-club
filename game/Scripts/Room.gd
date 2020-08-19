@@ -587,7 +587,7 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 					else:
 						continue
 				else:
-					if piece is Card and piece.srv_is_placed_aside():
+					if piece is Card and piece.is_placed_aside():
 						continue
 					rpc("add_piece_to_stack", piece.name, stack_name, Stack.STACK_TOP)
 
@@ -865,6 +865,14 @@ func _on_CameraController_hover_piece_requested(piece: Piece, offset: Vector3):
 
 func _on_CameraController_pop_stack_requested(stack: Stack, n: int):
 	rpc_id(1, "request_pop_stack", stack.name, n)
+
+func _on_CameraController_selecting_all_pieces():
+	var pieces = _pieces.get_children()
+	for i in range(pieces.size() - 1, -1, -1):
+		var piece = pieces[i]
+		if piece is Card and piece.is_placed_aside():
+			pieces.remove(i)
+	_camera_controller.append_selected_pieces(pieces)
 
 func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stacks: bool):
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)

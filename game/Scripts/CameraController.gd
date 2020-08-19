@@ -25,6 +25,7 @@ signal cards_in_hand_requested(cards)
 signal collect_pieces_requested(pieces)
 signal hover_piece_requested(piece, offset)
 signal pop_stack_requested(stack, n)
+signal selecting_all_pieces()
 signal stack_collect_all_requested(stack, collect_stacks)
 signal started_hovering_card(card)
 signal stopped_hovering_card(card)
@@ -341,14 +342,15 @@ func _process_input(delta):
 	# Calculating the direction the user wants to move parallel to the table.
 	var movement_input = Vector2()
 	
-	if Input.is_action_pressed("game_left"):
-		movement_input.x -= 1
-	if Input.is_action_pressed("game_right"):
-		movement_input.x += 1
-	if Input.is_action_pressed("game_up"):
-		movement_input.y += 1
-	if Input.is_action_pressed("game_down"):
-		movement_input.y -= 1
+	if not Input.is_key_pressed(KEY_CONTROL):
+		if Input.is_action_pressed("game_left"):
+			movement_input.x -= 1
+		if Input.is_action_pressed("game_right"):
+			movement_input.x += 1
+		if Input.is_action_pressed("game_up"):
+			movement_input.y += 1
+		if Input.is_action_pressed("game_down"):
+			movement_input.y -= 1
 	
 	movement_input = movement_input.normalized()
 	
@@ -416,7 +418,13 @@ func _unhandled_input(event):
 				if piece is Piece:
 					piece.rpc_id(1, "reset_orientation")
 	
-	if event is InputEventMouseButton:
+	if event is InputEventKey:
+		if event.scancode == KEY_A and event.control:
+			if event.is_pressed():
+				# Select all of the pieces on the table.
+				emit_signal("selecting_all_pieces")
+	
+	elif event is InputEventMouseButton:
 		
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
