@@ -395,6 +395,17 @@ func _process_movement(delta):
 func _unhandled_input(event):
 	if event.is_action_pressed("game_delete"):
 		_delete_selected_pieces()
+	elif event.is_action_pressed("game_lock"):
+		var all_locked = true
+		for piece in _selected_pieces:
+			if piece is Piece:
+				if not piece.is_locked():
+					all_locked = false
+					break
+		if all_locked:
+			_unlock_selected_pieces()
+		else:
+			_lock_selected_pieces()
 	elif _is_hovering_selected:
 		if event.is_action_pressed("game_flip"):
 			for piece in _selected_pieces:
@@ -655,6 +666,13 @@ func _inheritance_has(inheritance: Array, query: String) -> bool:
 			return true
 	return false
 
+# Lock the currently selected pieces.
+func _lock_selected_pieces() -> void:
+	_hide_context_menu()
+	for piece in _selected_pieces:
+		if piece is Piece:
+			piece.rpc_id(1, "request_lock")
+
 func _on_context_collect_all_pressed() -> void:
 	_hide_context_menu()
 	if _selected_pieces.size() == 1:
@@ -678,10 +696,7 @@ func _on_context_delete_pressed() -> void:
 	_delete_selected_pieces()
 
 func _on_context_lock_pressed() -> void:
-	_hide_context_menu()
-	for piece in _selected_pieces:
-		if piece is Piece:
-			piece.rpc_id(1, "request_lock")
+	_lock_selected_pieces()
 
 func _on_context_orient_down_pressed() -> void:
 	_hide_context_menu()
@@ -720,10 +735,7 @@ func _on_context_take_top_pressed(n: int) -> void:
 			emit_signal("pop_stack_requested", piece, n)
 
 func _on_context_unlock_pressed() -> void:
-	_hide_context_menu()
-	for piece in _selected_pieces:
-		if piece is Piece:
-			piece.rpc_id(1, "request_unlock")
+	_unlock_selected_pieces()
 
 # Popup the context menu.
 func _popup_piece_context_menu() -> void:
@@ -894,6 +906,13 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 					emit_signal("hover_piece_requested", piece, offset)
 		
 		_is_grabbing_selected = false
+
+# Unlock the currently selected pieces.
+func _unlock_selected_pieces() -> void:
+	_hide_context_menu()
+	for piece in _selected_pieces:
+		if piece is Piece:
+			piece.rpc_id(1, "request_unlock")
 
 # Called when the camera starts moving either positionally or rotationally.
 func _on_moving() -> bool:

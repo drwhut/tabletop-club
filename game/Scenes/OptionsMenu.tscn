@@ -426,50 +426,67 @@ size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_reset"
 
-[node name="DeletePiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="LockPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 171.0
 margin_right = 486.0
 margin_bottom = 185.0
 size_flags_horizontal = 3
-text = "Delete Piece"
+text = "Lock/Unlock Piece"
 align = 2
 
-[node name="DeletePieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="LockPieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 168.0
 margin_right = 976.0
 margin_bottom = 188.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
-action = "game_delete"
+action = "game_lock"
 
-[node name="GameMenu" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="DeletePiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 195.0
 margin_right = 486.0
 margin_bottom = 209.0
 size_flags_horizontal = 3
-text = "Game Menu"
+text = "Delete Piece"
 align = 2
 
-[node name="GameMenuButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="DeletePieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 192.0
 margin_right = 976.0
 margin_bottom = 212.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
-action = "game_menu"
+action = "game_delete"
 
-[node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 216.0
+[node name="GameMenu" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 219.0
 margin_right = 486.0
-margin_bottom = 236.0
+margin_bottom = 233.0
+size_flags_horizontal = 3
+text = "Game Menu"
+align = 2
 
-[node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="GameMenuButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 216.0
 margin_right = 976.0
 margin_bottom = 236.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+action = "game_menu"
+
+[node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 240.0
+margin_right = 486.0
+margin_bottom = 260.0
+
+[node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 490.0
+margin_top = 240.0
+margin_right = 976.0
+margin_bottom = 260.0
 text = "Reset Bindings"
 
 [node name="Multiplayer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
