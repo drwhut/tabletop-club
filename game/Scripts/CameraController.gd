@@ -48,6 +48,7 @@ const ZOOM_ACCEL_SCALAR = 3.0
 const ZOOM_DISTANCE_MIN = 2.0
 const ZOOM_DISTANCE_MAX = 200.0
 
+export(bool) var hold_left_click_to_move: bool = false
 export(float) var lift_sensitivity: float = 1.0
 export(float) var max_speed: float = 10.0
 export(bool) var piece_rotate_invert: bool = false
@@ -59,11 +60,13 @@ export(float) var zoom_sensitivity: float = 1.0
 var send_cursor_position: bool = false
 
 var _box_select_init_pos = Vector2()
+var _drag_camera_anchor = Vector3()
 var _grabbing_time = 0.0
 var _hover_y_pos = 10.0
 var _initial_transform = Transform.IDENTITY
 var _initial_zoom = 0.0
 var _is_box_selecting = false
+var _is_dragging_camera = false
 var _is_grabbing_selected = false
 var _is_hovering_selected = false
 var _last_sent_cursor_position = Vector3()
@@ -101,6 +104,8 @@ func apply_options(config: ConfigFile) -> void:
 		rotation_sensitivity_y *= -1
 	
 	max_speed = 10.0 + 190.0 * config.get_value("controls", "camera_movement_speed")
+	
+	hold_left_click_to_move = config.get_value("controls", "left_click_to_move")
 	
 	zoom_sensitivity = 1.0 + 15.0 * config.get_value("controls", "zoom_sensitivity")
 	if config.get_value("controls", "zoom_invert"):
@@ -442,14 +447,20 @@ func _unhandled_input(event):
 					if not event.control:
 						clear_selected_pieces()
 					
-					# Start box selecting.
-					_box_select_init_pos = event.position
-					_is_box_selecting = true
-					
-					_box_selection_rect.rect_position = _box_select_init_pos
-					_box_selection_rect.rect_size = Vector2()
-					_box_selection_rect.visible = true
+					if hold_left_click_to_move:
+						# Start dragging the camera with the mouse.
+						_drag_camera_anchor = _calculate_hover_position(event.position, 0.0)
+						_is_dragging_camera = true
+					else:
+						# Start box selecting.
+						_box_select_init_pos = event.position
+						_is_box_selecting = true
+						
+						_box_selection_rect.rect_position = _box_select_init_pos
+						_box_selection_rect.rect_size = Vector2()
+						_box_selection_rect.visible = true
 			else:
+				_is_dragging_camera = false
 				_is_grabbing_selected = false
 				
 				if _is_hovering_selected:
@@ -550,6 +561,11 @@ func _unhandled_input(event):
 			rotate_y(_rotation.x)
 			
 			get_tree().set_input_as_handled()
+		
+		elif _is_dragging_camera:
+			var new_anchor = _calculate_hover_position(event.position, 0.0)
+			var diff_anchor = new_anchor - _drag_camera_anchor
+			translation -= diff_anchor
 		
 		elif _is_box_selecting:
 			

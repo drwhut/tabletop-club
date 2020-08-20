@@ -137,19 +137,33 @@ max_value = 1.0
 step = 0.01
 value = 0.25
 
-[node name="ZoomSensitivity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 117.0
+[node name="LeftClickToMove" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 121.0
 margin_right = 486.0
-margin_bottom = 131.0
+margin_bottom = 135.0
+size_flags_horizontal = 3
+text = "Hold Left Click to Move Camera"
+align = 2
+
+[node name="LeftClickToMoveCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 116.0
+margin_right = 976.0
+margin_bottom = 140.0
+
+[node name="ZoomSensitivity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 145.0
+margin_right = 486.0
+margin_bottom = 159.0
 size_flags_horizontal = 3
 text = "Zoom Sensitivity"
 align = 2
 
 [node name="ZoomSensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 116.0
+margin_top = 144.0
 margin_right = 976.0
-margin_bottom = 132.0
+margin_bottom = 160.0
 size_flags_horizontal = 3
 min_value = 0.01
 max_value = 1.0
@@ -157,32 +171,32 @@ step = 0.01
 value = 0.25
 
 [node name="ZoomInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 141.0
+margin_top = 169.0
 margin_right = 486.0
-margin_bottom = 155.0
+margin_bottom = 183.0
 size_flags_horizontal = 3
 text = "Zoom Invert"
 align = 2
 
 [node name="ZoomInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 136.0
+margin_top = 164.0
 margin_right = 976.0
-margin_bottom = 160.0
+margin_bottom = 188.0
 
 [node name="PieceLiftSensitivity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 165.0
+margin_top = 193.0
 margin_right = 486.0
-margin_bottom = 179.0
+margin_bottom = 207.0
 size_flags_horizontal = 3
 text = "Piece Lift Sensitivity"
 align = 2
 
 [node name="PieceLiftSensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 164.0
+margin_top = 192.0
 margin_right = 976.0
-margin_bottom = 180.0
+margin_bottom = 208.0
 size_flags_horizontal = 3
 min_value = 0.01
 max_value = 1.0
@@ -190,46 +204,46 @@ step = 0.01
 value = 0.15
 
 [node name="PieceLiftInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 189.0
+margin_top = 217.0
 margin_right = 486.0
-margin_bottom = 203.0
+margin_bottom = 231.0
 size_flags_horizontal = 3
 text = "Piece Lift Invert"
 align = 2
 
 [node name="PieceLiftInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 184.0
+margin_top = 212.0
 margin_right = 976.0
-margin_bottom = 208.0
+margin_bottom = 236.0
 
 [node name="PieceRotationInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 217.0
+margin_top = 245.0
 margin_right = 486.0
-margin_bottom = 231.0
+margin_bottom = 259.0
 size_flags_horizontal = 3
 text = "Piece Rotation Invert"
 align = 2
 
 [node name="PieceRotationInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 212.0
+margin_top = 240.0
 margin_right = 976.0
-margin_bottom = 236.0
+margin_bottom = 264.0
 
 [node name="AltToRotate" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 245.0
+margin_top = 273.0
 margin_right = 486.0
-margin_bottom = 259.0
+margin_bottom = 287.0
 size_flags_horizontal = 3
 text = "Press Alt to Rotate Piece"
 align = 2
 
 [node name="AltToRotateCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 240.0
+margin_top = 268.0
 margin_right = 976.0
-margin_bottom = 264.0
+margin_bottom = 292.0
 pressed = true
 
 [node name="General" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
