@@ -135,7 +135,7 @@ func _input(event):
 
 func _unhandled_input(event):
 	if _candidate_card and not _holding_card:
-		if event.is_action_pressed("game_flip"):
+		if event.is_action_pressed("game_flip_piece"):
 			_candidate_card.front_face = not _candidate_card.front_face
 			_candidate_card.update()
 	

@@ -395,9 +395,9 @@ func _process_movement(delta):
 	_camera.translation = _camera.translation.linear_interpolate(target_offset, zoom_accel * delta)
 
 func _unhandled_input(event):
-	if event.is_action_pressed("game_delete"):
+	if event.is_action_pressed("game_delete_piece"):
 		_delete_selected_pieces()
-	elif event.is_action_pressed("game_lock"):
+	elif event.is_action_pressed("game_lock_piece"):
 		var all_locked = true
 		for piece in _selected_pieces:
 			if piece is Piece:
@@ -409,11 +409,11 @@ func _unhandled_input(event):
 		else:
 			_lock_selected_pieces()
 	elif _is_hovering_selected:
-		if event.is_action_pressed("game_flip"):
+		if event.is_action_pressed("game_flip_piece"):
 			for piece in _selected_pieces:
 				if piece is Piece:
 					piece.rpc_id(1, "flip_vertically")
-		elif event.is_action_pressed("game_reset"):
+		elif event.is_action_pressed("game_reset_piece"):
 			for piece in _selected_pieces:
 				if piece is Piece:
 					piece.rpc_id(1, "reset_orientation")

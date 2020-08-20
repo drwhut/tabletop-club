@@ -407,7 +407,7 @@ margin_right = 976.0
 margin_bottom = 140.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
-action = "game_flip"
+action = "game_flip_piece"
 
 [node name="ResetPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 147.0
@@ -424,7 +424,7 @@ margin_right = 976.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
-action = "game_reset"
+action = "game_reset_piece"
 
 [node name="LockPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 171.0
@@ -441,7 +441,7 @@ margin_right = 976.0
 margin_bottom = 188.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
-action = "game_lock"
+action = "game_lock_piece"
 
 [node name="DeletePiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 195.0
@@ -458,7 +458,7 @@ margin_right = 976.0
 margin_bottom = 212.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
-action = "game_delete"
+action = "game_delete_piece"
 
 [node name="GameMenu" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 219.0
