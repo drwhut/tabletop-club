@@ -61,6 +61,8 @@ var send_cursor_position: bool = false
 var _box_select_init_pos = Vector2()
 var _grabbing_time = 0.0
 var _hover_y_pos = 10.0
+var _initial_transform = Transform.IDENTITY
+var _initial_zoom = 0.0
 var _is_box_selecting = false
 var _is_grabbing_selected = false
 var _is_hovering_selected = false
@@ -232,13 +234,11 @@ func _ready():
 	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
 	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
 	
-	# Get the current rotation so we can get our _rotation accumulator set up
-	# no matter how the camera is initially positioned.
-	_rotation = Vector2(rotation.y, rotation.x)
-	
-	# Get the current zoom so the camera doesn't try to go to another zoom
-	# level.
-	_target_zoom = _camera.translation.z
+	# Get the initial transform and zoom of the camera so we can set it back
+	# to these values later.
+	_initial_transform = transform
+	_initial_zoom = _camera.translation.z
+	_reset_camera()
 
 func _process(delta):
 	if _is_grabbing_selected:
@@ -395,7 +395,9 @@ func _process_movement(delta):
 	_camera.translation = _camera.translation.linear_interpolate(target_offset, zoom_accel * delta)
 
 func _unhandled_input(event):
-	if event.is_action_pressed("game_delete_piece"):
+	if event.is_action_pressed("game_reset_camera"):
+		_reset_camera()
+	elif event.is_action_pressed("game_delete_piece"):
 		_delete_selected_pieces()
 	elif event.is_action_pressed("game_lock_piece"):
 		var all_locked = true
@@ -883,6 +885,15 @@ func _popup_piece_context_menu() -> void:
 	# to match the container.
 	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
 	_piece_context_menu.popup()
+
+# Reset the camera transform and zoom to their initial states.
+func _reset_camera() -> void:
+	transform = _initial_transform
+	var euler = transform.basis.get_euler()
+	_rotation = Vector2(euler.y, euler.x)
+	
+	_camera.translation.z = _initial_zoom
+	_target_zoom = _initial_zoom
 
 # Start hovering the grabbed pieces.
 # fast: Did the user hover them quickly after grabbing them? If so, this may
