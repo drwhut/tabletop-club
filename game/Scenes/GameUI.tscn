@@ -42,9 +42,10 @@ text = "Menu"
 [node name="PlayerList" type="RichTextLabel" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -100.0
+margin_left = -200.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 100, 300 )
+mouse_filter = 2
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -37,12 +37,18 @@ onready var _options_menu = $OptionsMenu
 onready var _player_list = $PlayerList
 onready var _rotation_option = $TopPanel/RotationOption
 
+export(bool) var show_player_hand_sizes: bool = true
+
 var _candidate_card: CardTextureRect = null
 var _grabbed_card_from_hand: CardTextureRect = null
 var _hand_highlight: ColorRect = ColorRect.new()
 var _holding_card = false
 var _mouse_in_hand = false
 var _mouse_over_cards = []
+
+# If a player is not in this dictionary, it can be assumed that they do not
+# have any cards in their hand.
+var _player_hand_sizes = {}
 
 # Add a card to the hand.
 # card: The card to add to the hand.
@@ -63,7 +69,7 @@ func add_card_to_hand(card: Card, front_face: bool) -> void:
 # Apply options from the options menu.
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
-	pass
+	show_player_hand_sizes = not config.get_value("multiplayer", "hide_hand_sizes")
 
 # Remove a card from our hand.
 # card: The card to remove.
@@ -87,6 +93,16 @@ func set_piece_tree_from_db(pieces: Dictionary) -> void:
 	
 	for game in pieces:
 		_add_game_to_tree(game, pieces[game])
+
+# Called by the server to set the size of a player's hand.
+# id: The ID of the player.
+# size: The size of the hand.
+remotesync func set_player_hand_size(id: int, size: int) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_player_hand_sizes[id] = size
+	_update_player_list()
 
 func _ready():
 	Lobby.connect("player_added", self, "_on_Lobby_player_added")
@@ -241,7 +257,11 @@ func _set_rotation_amount() -> void:
 
 # Update the player list based on what is in the Lobby.
 func _update_player_list() -> void:
-	var code = "[right][table=1]"
+	var columns = 1
+	if show_player_hand_sizes:
+		columns += 1
+	
+	var code = "[right][table=" + str(columns) + "]"
 	
 	for id in Lobby.get_player_list():
 		var player = Lobby.get_player(id)
@@ -263,6 +283,14 @@ func _update_player_list() -> void:
 		
 		code += "[/color]"
 		code += "[/cell]"
+		
+		if show_player_hand_sizes:
+			code += "[cell]"
+			var hand_size = 0
+			if _player_hand_sizes.has(id):
+				hand_size = _player_hand_sizes[id]
+			code += "(Hand: " + str(hand_size) + ")"
+			code += "[/cell]"
 	
 	code += "[/table][/right]"
 	

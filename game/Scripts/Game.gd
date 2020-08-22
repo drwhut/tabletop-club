@@ -28,6 +28,8 @@ onready var _ui = $GameUI
 var _player_name: String
 var _player_color: Color
 
+var _srv_player_hand_sizes = {}
+
 # Apply options from the options menu.
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
@@ -88,6 +90,9 @@ master func request_card_in_hand(card_name: String) -> void:
 	var player_is_hovering = card.srv_get_hovering_player() == player_id
 	
 	if (not placed_aside) and ((not hovering) or player_is_hovering):
+		if player_id != 1:
+			_srv_player_hand_sizes[player_id] += 1
+			_ui.rpc("set_player_hand_size", player_id, _srv_player_hand_sizes[player_id])
 		card.rpc("place_aside", player_id)
 		rpc_id(player_id, "request_card_in_hand_accepted", card_name)
 
@@ -129,8 +134,10 @@ master func request_card_out_hand(card_name: String, transform: Transform) -> vo
 	if card.srv_get_place_aside_player() != player_id:
 		return
 	
+	if player_id != 1:
+		_srv_player_hand_sizes[player_id] -= 1
+		_ui.rpc("set_player_hand_size", player_id, _srv_player_hand_sizes[player_id])
 	card.rpc("bring_back", transform)
-	
 	rpc_id(player_id, "request_card_out_hand_accepted", card.name)
 
 # Called if the server accepted our request to take a card out of our hand.
@@ -189,6 +196,13 @@ func _player_connected(id: int) -> void:
 	# the board so far.
 	if get_tree().is_network_server():
 		_room.rpc_id(id, "set_state", _room.get_state())
+		
+		_srv_player_hand_sizes[id] = 0
+		_ui.rpc("set_player_hand_size", id, 0)
+		for player_id in _srv_player_hand_sizes:
+			var hand_size = _srv_player_hand_sizes[player_id]
+			if hand_size > 0:
+				_ui.rpc_id(id, "set_player_hand_size", player_id, hand_size)
 
 func _player_disconnected(id: int) -> void:
 	print("Player with ID ", id, " disconnected!")

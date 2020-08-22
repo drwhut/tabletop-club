@@ -586,6 +586,21 @@ margin_right = 976.0
 margin_bottom = 468.0
 size_flags_horizontal = 3
 
+[node name="HideHandSizes" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_top = 477.0
+margin_right = 486.0
+margin_bottom = 491.0
+size_flags_horizontal = 3
+text = "Hide Player Hand Sizes"
+align = 2
+
+[node name="HideHandSizesCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_left = 490.0
+margin_top = 472.0
+margin_right = 976.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+
 [node name="Video" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
 anchor_right = 1.0
