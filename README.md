@@ -19,15 +19,7 @@ git submodule update --init
 
 2. Compile Godot for your platform (see
 [the Godot documentation](https://docs.godotengine.org/en/stable/development/compiling/index.html)
-for more information):
-
-```bash
-# For the Editor + Debug Export Template, use:
-scons -j8 platform=windows/osx/x11/server target=release_debug
-
-# For the Release Export Template, use:
-scons -j8 platform=windows/osx/x11/server target=release
-```
+for more information).
 
 3. Download the game:
 
