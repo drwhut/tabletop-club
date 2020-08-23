@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/Dice.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Piece.gd" type="Script" id=1]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 0.5, 0.5 )
@@ -8,12 +8,12 @@ extents = Vector3( 0.5, 0.5, 0.5 )
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 1, 1, 1 )
 
-[node name="d6" type="RigidBody"]
+[node name="Cube" type="RigidBody"]
 script = ExtResource( 1 )
 __meta__ = {
-"_editor_description_": "A 6-sided dice.
+"_editor_description_": "A vanilla cube-shaped piece.
 
-The shape is based on the unit cube, i.e. each vertex lies on a cube with a length, width and height of 1."
+The shape is based on the unit cube, i.e. the length, width and height of the cube is 1."
 }
 mesh_instance_path = NodePath("CollisionShape/MeshInstance")
 

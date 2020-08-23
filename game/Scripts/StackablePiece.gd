@@ -28,7 +28,7 @@ signal stack_requested(piece1, piece2)
 const DISTANCE_THRESHOLD = 1.0
 const DOT_STACK_THRESHOLD = 0.9
 
-var _ignore_y_rotation = false
+export(bool) var stack_ignore_y_rotation: bool = false
 
 # Check if another piece has a matching shape and scale.
 # Returns: If the other piece has a matching shape and scale.
@@ -59,7 +59,7 @@ func _can_stack(body: Spatial) -> bool:
 	
 	if (me_xz - you_xz).length() < DISTANCE_THRESHOLD:
 		if abs(me.basis.y.dot(you.basis.y)) > DOT_STACK_THRESHOLD:
-			if _ignore_y_rotation or abs(me.basis.z.dot(you.basis.z)) > DOT_STACK_THRESHOLD:
+			if stack_ignore_y_rotation or abs(me.basis.z.dot(you.basis.z)) > DOT_STACK_THRESHOLD:
 				return true
 	
 	return false

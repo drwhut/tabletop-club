@@ -3,7 +3,7 @@
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
-FONT = "../NotoSerifCJKjp-Black.otf"
+FONT = "../../NotoSerifCJKjp-Black.otf"
 FONT_SIZE = 80
 NUM_SIDE_RECTS = 20
 SIZE = (200, 200)

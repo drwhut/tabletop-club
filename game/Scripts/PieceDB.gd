@@ -41,7 +41,7 @@ const VALID_TEXTURE_EXTENSIONS = ["bmp", "dds", "exr", "hdr", "jpeg", "jpg",
 
 # NOTE: Pieces are stored similarly to the directory structures, but all piece
 # types are direct children of the game, i.e. "OpenTabletop/dice/d6" in the
-# game directory is _db["OpenTabletop"]["d6"] here.
+# game directory is _db["OpenTabletop"]["dice/d6"] here.
 var _db = {}
 var _db_mutex = Mutex.new()
 
@@ -125,33 +125,33 @@ func _import_game_dir(dir: Directory) -> void:
 	_db[game] = {}
 	_db_mutex.unlock()
 	
-	if dir.dir_exists("dice"):
-		dir.change_dir("dice")
-		
-		_import_dir_if_exists(dir, game, "d4", "res://Pieces/Dice/d4.tscn")
-		_import_dir_if_exists(dir, game, "d6", "res://Pieces/Dice/d6.tscn")
-		_import_dir_if_exists(dir, game, "d8", "res://Pieces/Dice/d8.tscn")
-		
-		dir.change_dir("..")
-	
 	_import_dir_if_exists(dir, game, "cards", "res://Pieces/Card.tscn")
-	_import_dir_if_exists(dir, game, "chips", "res://Pieces/Chip.tscn")
-	_import_dir_if_exists(dir, game, "pieces", "")
+	
+	_import_dir_if_exists(dir, game, "dice/d4", "res://Pieces/Dice/d4.tscn")
+	_import_dir_if_exists(dir, game, "dice/d6", "res://Pieces/Dice/d6.tscn")
+	_import_dir_if_exists(dir, game, "dice/d8", "res://Pieces/Dice/d8.tscn")
+	
+	_import_dir_if_exists(dir, game, "pieces/cube", "res://Pieces/Pieces/Cube.tscn")
+	_import_dir_if_exists(dir, game, "pieces/custom", "")
+	_import_dir_if_exists(dir, game, "pieces/cylinder", "res://Pieces/Pieces/Cylinder.tscn")
+	
+	_import_dir_if_exists(dir, game, "tokens/cube", "res://Pieces/Tokens/Cube.tscn")
+	_import_dir_if_exists(dir, game, "tokens/cylinder", "res://Pieces/Tokens/Cylinder.tscn")
 
 # Import a directory of assets, but only if the directory exists.
 # current_dir: The current working directory.
 # game: The name of the game.
-# type: The name of the type of asset.
+# type: The type of the asset.
 # scene: The path of the scene to use for the asset. If blank, it is assumed
 # we are importing scenes.
 func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 	scene: String) -> void:
 	
-	if current_dir.dir_exists(type):
-		current_dir.change_dir(type)
+	var new_dir = Directory.new()
+	if new_dir.open(current_dir.get_current_dir() + "/" + type) == OK:
 		
 		# If the configuration file exists for this directory, try and load it.
-		var config_path = current_dir.get_current_dir() + "/" + type + ".cfg"
+		var config_path = new_dir.get_current_dir() + "/config.cfg"
 		var config = ConfigFile.new()
 		var config_err = config.load(config_path)
 		
@@ -164,15 +164,15 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 		
 		var files = []
 		
-		current_dir.list_dir_begin(true, true)
+		new_dir.list_dir_begin(true, true)
 		
-		var file = current_dir.get_next()
+		var file = new_dir.get_next()
 		while file:
 			if not _get_file_config_value(config, file, "ignore", false):
-				var file_path = current_dir.get_current_dir() + "/" + file
+				var file_path = new_dir.get_current_dir() + "/" + file
 				files.append(file_path)
 			
-			file = current_dir.get_next()
+			file = new_dir.get_next()
 		
 		# Sort the array of file paths such that textures are before scenes.
 		files.sort_custom(self, "_sort_files")
@@ -184,7 +184,7 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 				print("Failed to import: ", file_path, " (error ", import_err, ")")
 		
 		if scene:
-			var stack_config_path = current_dir.get_current_dir() + "/stacks.cfg"
+			var stack_config_path = new_dir.get_current_dir() + "/stacks.cfg"
 			var stack_config = ConfigFile.new()
 			var stack_config_err = stack_config.load(stack_config_path)
 			
@@ -195,8 +195,6 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 				pass
 			else:
 				push_warning("Failed to load: " + stack_config_path + " (error " + str(stack_config_err) + ")")
-		
-		current_dir.change_dir("..")
 
 # Add a piece entry to the database.
 # game: The name of the game.

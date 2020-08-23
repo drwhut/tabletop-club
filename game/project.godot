@@ -29,11 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/CardTextureRect.gd"
 }, {
-"base": "StackablePiece",
-"class": "Chip",
-"language": "GDScript",
-"path": "res://Scripts/Chip.gd"
-}, {
 "base": "Piece",
 "class": "Dice",
 "language": "GDScript",
@@ -79,7 +74,6 @@ _global_script_class_icons={
 "BindButton": "",
 "Card": "",
 "CardTextureRect": "",
-"Chip": "",
 "Dice": "",
 "OptionsTab": "",
 "OutlineColorRect": "",

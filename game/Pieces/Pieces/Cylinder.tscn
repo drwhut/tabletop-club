@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/Chip.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Piece.gd" type="Script" id=1]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.5
@@ -11,15 +11,14 @@ top_radius = 0.5
 bottom_radius = 0.5
 height = 1.0
 
-[node name="Chip" type="RigidBody"]
-contacts_reported = 1
-contact_monitor = true
+[node name="Cylinder" type="RigidBody"]
 script = ExtResource( 1 )
 __meta__ = {
-"_editor_description_": "A chip is a stackable cylinder-shaped piece.
+"_editor_description_": "A vanilla cylinder-shaped piece.
 
-The diameter and height of the cylinder is 1."
+The shape is based on the unit cylinder, i.e. the diameter and the height of the cylinder is 1."
 }
+mesh_instance_path = NodePath("CollisionShape/MeshInstance")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

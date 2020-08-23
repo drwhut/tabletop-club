@@ -66,6 +66,3 @@ func srv_get_place_aside_player() -> int:
 # Returns: If the card has been set aside.
 func is_placed_aside() -> bool:
 	return _place_aside_player > 0
-
-func _ready():
-	_mesh_instance = $CollisionShape/MeshInstance

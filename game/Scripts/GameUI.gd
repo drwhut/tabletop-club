@@ -167,21 +167,30 @@ func _add_game_to_tree(game_name: String, game_pieces: Dictionary) -> void:
 	var game_node = _objects_tree.create_item(_objects_tree.get_root())
 	game_node.set_text(0, game_name)
 	
+	_add_type_to_tree(game_node, game_pieces, ["cards"], "Cards")
+	
 	var dice_node = _objects_tree.create_item(game_node)
 	dice_node.set_text(0, "Dice")
 	
-	_add_type_to_tree(dice_node, game_pieces, "d4", "d4")
-	_add_type_to_tree(dice_node, game_pieces, "d6", "d6")
-	_add_type_to_tree(dice_node, game_pieces, "d8", "d8")
+	_add_type_to_tree(dice_node, game_pieces, ["dice/d4"], "d4")
+	_add_type_to_tree(dice_node, game_pieces, ["dice/d6"], "d6")
+	_add_type_to_tree(dice_node, game_pieces, ["dice/d8"], "d8")
 	
-	# If there are no dice in this game, delete the dice node.
 	if not dice_node.get_children():
 		dice_node.free()
 	
-	_add_type_to_tree(game_node, game_pieces, "cards", "Cards")
-	_add_type_to_tree(game_node, game_pieces, "chips", "Chips")
-	_add_type_to_tree(game_node, game_pieces, "pieces", "Pieces")
-	_add_type_to_tree(game_node, game_pieces, "stacks", "Stacks")
+	_add_type_to_tree(game_node, game_pieces, [
+		"pieces/cube",
+		"pieces/custom",
+		"pieces/cylinder"
+	], "Pieces")
+	
+	_add_type_to_tree(game_node, game_pieces, ["stacks"], "Stacks")
+	
+	_add_type_to_tree(game_node, game_pieces, [
+		"tokens/cube",
+		"tokens/cylinder"
+	], "Tokens")
 
 # Add a piece to the piece tree.
 # parent: The parent node of the piece's node in the tree.
@@ -198,23 +207,22 @@ func _add_piece_to_tree(parent: TreeItem, piece: Dictionary) -> TreeItem:
 # Add a type of piece to the piece tree.
 # parent: The parent node to add the type node to.
 # game_pieces: The game's piece entries.
-# type_name: The name pf the type in the dictionary.
+# type_names: The names of the type in the dictionary.
 # display_name: The name of the type in the piece tree.
 func _add_type_to_tree(parent: TreeItem, game_pieces: Dictionary,
-	type_name: String, display_name: String) -> void:
+	type_names: Array, display_name: String) -> void:
 	
-	if game_pieces.has(type_name):
-			
-		var node = _objects_tree.create_item(parent)
-		node.set_text(0, display_name)
-		
-		var array: Array = game_pieces[type_name]
-		
-		if array.size() > 0:
+	var node = _objects_tree.create_item(parent)
+	node.set_text(0, display_name)
+	
+	for type_name in type_names:
+		if game_pieces.has(type_name):
+			var array: Array = game_pieces[type_name]
 			for piece in array:
 				_add_piece_to_tree(node, piece)
-		else:
-			node.free()
+	
+	if not node.get_children():
+		node.free()
 
 # Create a half-texture based on a given card.
 # card: The card to create the half-texture from.

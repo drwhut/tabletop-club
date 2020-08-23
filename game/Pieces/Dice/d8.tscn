@@ -13,6 +13,7 @@ __meta__ = {
 
 The shape is based on the unit sphere, i.e. each vertex lies on a sphere with radius 1."
 }
+mesh_instance_path = NodePath("CollisionShape/MeshInstance")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

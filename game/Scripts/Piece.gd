@@ -35,11 +35,11 @@ const SHAKING_THRESHOLD = 1000.0
 const SPAWN_HEIGHT = 2.0
 const TRANSFORM_LERP_ALPHA = 0.5
 
-var piece_entry: Dictionary = {}
-
 # Set if you know where the mesh instance is. Otherwise, the game will try and
 # find it automatically when it needs it (e.g. when using a custom piece).
-var _mesh_instance: MeshInstance = null
+export(NodePath) var mesh_instance_path: String
+
+var piece_entry: Dictionary = {}
 
 # When setting these vectors, make sure you call set_angular_lock(false),
 # otherwise the piece won't rotate towards the orientation!
@@ -86,8 +86,8 @@ master func flip_vertically() -> void:
 # Get the piece's mesh instance.
 # Returns: The piece's mesh instance, null if it does not exist.
 func get_mesh_instance() -> MeshInstance:
-	if _mesh_instance:
-		return _mesh_instance
+	if mesh_instance_path:
+		return get_node(mesh_instance_path) as MeshInstance
 	return find_first_mesh_instance(self)
 
 # Determines if the piece is being shaked.
