@@ -2,6 +2,12 @@
 An open-source platform for playing tabletop games in a physics-based 3D
 environment for Windows, macOS and Linux! Made with the Godot Engine.
 
+## Custom Assets
+
+While the game has some of the most common tabletop pieces included, this game
+allows you to create and play with your own custom assets! See
+[the assets guide](assets/README.md) for more information.
+
 ## Compiling
 
 To build the game from source, you'll need to download and compile a slightly
@@ -35,7 +41,7 @@ cd open-tabletop
 pip install Pillow
 cd assets/OpenTabletop/cards
 python generate_cards.py
-cd ../chips
+cd ../tokens/cylinder
 python generate_chips.py
 ```
 
