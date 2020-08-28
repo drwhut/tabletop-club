@@ -530,7 +530,10 @@ master func request_pop_stack(stack_name: String, n: int) -> void:
 		
 		# Move the stack down to it's new location.
 		var new_stack_translation = stack.translation
-		new_stack_translation.y -= removed_height / 2
+		var offset = stack.transform.basis.y.normalized()
+		if offset.y > 0:
+			offset = -offset
+		new_stack_translation += offset * (removed_height / 2)
 		stack.rpc("set_translation", new_stack_translation)
 		
 		# If there is only one piece left in the stack, turn it into a normal
