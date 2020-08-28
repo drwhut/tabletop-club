@@ -537,6 +537,7 @@ master func request_pop_stack(stack_name: String, n: int) -> void:
 		# piece.
 		if stack.get_piece_count() == 1:
 			var piece_instance = stack.empty()[0]
+			new_basis = (stack.transform.basis * piece_instance.transform.basis).orthonormalized()
 			stack.rpc("remove_self")
 			
 			rpc("add_piece", piece_instance.name,
