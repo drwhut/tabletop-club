@@ -112,7 +112,7 @@ remotesync func request_card_in_hand_accepted(card_name: String) -> void:
 		push_error("Piece " + card_name + " is not a card!")
 		return
 	
-	_ui.add_card_to_hand(card, card.transform.basis.y.dot(Vector3.UP) > 0)
+	_ui.add_card_to_hand(card, card.transform.basis.y.y > 0)
 
 # Request the server to remove a card that is in our hand, and put it back into
 # the game.

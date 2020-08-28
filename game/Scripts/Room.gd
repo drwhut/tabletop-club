@@ -278,9 +278,9 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 	var reverse = false
 	
 	if stack1.transform.origin.y > stack2.transform.origin.y:
-		reverse = stack1.transform.basis.y.dot(Vector3.DOWN) > 0
+		reverse = stack1.transform.basis.y.y < 0
 	else:
-		reverse = stack1.transform.basis.y.dot(Vector3.UP) > 0
+		reverse = stack1.transform.basis.y.y > 0
 	
 	# Remove the children of the first stack, determine their transform, then
 	# add them to the second stack.
@@ -351,7 +351,7 @@ func get_state() -> Dictionary:
 			var child_pieces = []
 			for child_piece in piece.get_pieces():
 				var child_piece_meta = {
-					"flip_y": child_piece.transform.basis.y.dot(Vector3.UP) < 0,
+					"flip_y": child_piece.transform.basis.y.y < 0,
 					"name": child_piece.name,
 					"piece_entry": child_piece.piece_entry
 				}

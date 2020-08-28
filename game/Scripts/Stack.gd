@@ -56,9 +56,9 @@ func add_piece(piece: StackPieceInstance, shape: CollisionShape,
 	match on:
 		STACK_AUTO:
 			if transform.origin.y < piece.transform.origin.y:
-				on_top = transform.basis.y.dot(Vector3.UP) > 0
+				on_top = transform.basis.y.y > 0
 			else:
-				on_top = transform.basis.y.dot(Vector3.UP) < 0
+				on_top = transform.basis.y.y < 0
 		STACK_BOTTOM:
 			on_top = false
 		STACK_TOP:
@@ -129,10 +129,10 @@ remotesync func orient_pieces(up: bool) -> void:
 	for piece in get_pieces():
 		var current_basis = piece.transform.basis
 		
-		if up and current_basis.y.dot(Vector3.UP) < 0:
+		if up and current_basis.y.y < 0:
 			piece.transform.basis = current_basis.rotated(Vector3.BACK, PI)
 		
-		elif not up and current_basis.y.dot(Vector3.UP) > 0:
+		elif not up and current_basis.y.y > 0:
 			piece.transform.basis = current_basis.rotated(Vector3.BACK, PI)
 
 # Pop a piece from the stack.
@@ -146,7 +146,7 @@ func pop_piece(from: int = STACK_AUTO) -> StackPieceInstance:
 	
 	match from:
 		STACK_AUTO:
-			if transform.basis.y.dot(Vector3.UP) > 0:
+			if transform.basis.y.y > 0:
 				pos = _pieces.get_child_count() - 1
 			else:
 				pos = 0
@@ -188,7 +188,7 @@ puppet func remove_piece_by_name(name: String) -> void:
 # up: Should all of the pieces be facing up?
 master func request_orient_pieces(up: bool) -> void:
 	# If the stack is upside down, orient the opposite direction.
-	if transform.basis.y.dot(Vector3.UP) < 0:
+	if transform.basis.y.y < 0:
 		up = !up
 	
 	rpc("orient_pieces", up)
