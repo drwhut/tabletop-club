@@ -183,7 +183,14 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 			if import_err:
 				print("Failed to import: ", file_path, " (error ", import_err, ")")
 		
+		var is_stackable = false
 		if scene:
+			var piece: Piece = load(scene).instance()
+			if piece is StackablePiece:
+				is_stackable = true
+			piece.free()
+		
+		if is_stackable:
 			var stack_config_path = new_dir.get_current_dir() + "/stacks.cfg"
 			var stack_config = ConfigFile.new()
 			var stack_config_err = stack_config.load(stack_config_path)
