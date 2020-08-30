@@ -64,15 +64,18 @@ The textures for cylinder-shaped pieces use the following UV mapping:
 
 Tokens are objects that are stackable.
 
+**NOTE:** Tokens stack vertically, so the top and bottom faces will be
+connected end-to-end when they are stacked.
+
 #### tokens/cube
 
-The textures for cube-shaped tokens use the following UV mapping:
-![Cube Token UV Mapping](OpenTabletop/tokens/cube/Template.svg)
+The textures for cube-shaped tokens use the same UV mapping as cube-shaped
+pieces (see pieces/cube/).
 
 #### tokens/cylinder
 
-The textures for cylinder-shaped tokens use the following UV mapping:
-![Cylinder Token UV Mapping](OpenTabletop/tokens/cylinder/Template.svg)
+The textures for cylinder-shaped tokens use the same UV mapping as
+cylinder-shaped pieces (see pieces/cylinder/).
 
 ### config.cfg
 
