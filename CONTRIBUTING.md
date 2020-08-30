@@ -3,18 +3,21 @@
 ## Reporting a bug
 
 If you've found a problem with the game, or the game crashes when you try to do
-something, then if there isn't already an issue posted for it, please post an
-issue on the project's GitHub page with the bug report template - make sure you
-fill in the template with as much information as you can, including how to
-reproduce the bug or crash, so we can identify what is going wrong! If possible,
-it would also help us a lot if you include any error messages that come up.
+something, then if there isn't already an issue posted for it, please
+[post an issue](https://github.com/drwhut/open-tabletop/issues/new/choose) on
+the project's GitHub page with the bug report template - make sure you fill in
+the template with as much information as you can, including how to reproduce the
+bug or crash, so we can identify what is going wrong! If possible, it would
+also help us a lot if you include any error messages that come up.
 
 ## Suggesting a feature
 
 Got an idea of how to make OpenTabletop better? If it hasn't already been
-suggested, don't hesitate to open up an issue on the GitHub page with the
-feature request template - we want to make the game as good and as accessible
-as possible, and you might have an idea that we haven't thought of yet!
+suggested, don't hesitate to
+[open an issue](https://github.com/drwhut/open-tabletop/issues/new/choose) on
+the GitHub page with the feature request template - we want to make the game as
+good and as accessible as possible, and you might have an idea that we haven't
+thought of yet!
 
 ## Creating a pull request
 
@@ -57,9 +60,11 @@ Have you made, or found, assets that OpenTabletop would benefit from, like:
 * Sound Effects
 * Music
 
-If so, then post an issue on the GitHub page with the asset submission template,
-and fill in all of the details such as the author's name and the asset license.
-Note that we will only accept assets with standard, open licenses, like the
+If so, then
+[post an issue](https://github.com/drwhut/open-tabletop/issues/new/choose) on
+the GitHub page with the asset submission template, and fill in all of the
+details such as the author's name and the asset license. Note that we will only
+accept assets with standard, open licenses, like the
 [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) license, for
 example.
 
