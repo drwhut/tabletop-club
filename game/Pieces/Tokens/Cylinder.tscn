@@ -2,16 +2,18 @@
 
 [ext_resource path="res://Scripts/StackablePiece.gd" type="Script" id=1]
 
-[sub_resource type="CylinderShape" id=5]
+[sub_resource type="CylinderShape" id=1]
 radius = 0.5
 height = 1.0
 
-[sub_resource type="CylinderMesh" id=4]
+[sub_resource type="CylinderMesh" id=2]
 top_radius = 0.5
 bottom_radius = 0.5
 height = 1.0
 
 [node name="Cylinder" type="RigidBody"]
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "A stackable cylinder-shaped piece.
@@ -22,8 +24,8 @@ mesh_instance_path = NodePath("CollisionShape/MeshInstance")
 stack_ignore_y_rotation = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
-mesh = SubResource( 4 )
+mesh = SubResource( 2 )
 material/0 = null
