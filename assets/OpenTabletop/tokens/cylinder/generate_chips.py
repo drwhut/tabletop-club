@@ -10,19 +10,21 @@ SIZE = (200, 200)
 VERTICAL_CORRECTION = -16
 
 BACKGROUND_COLOURS = {
-    1: "#ffffffff",
-    5: "#ff0000ff",
-    10: "#0000ffff",
-    25: "#00ff00ff",
-    100: "#000000ff"
+    "1": "#ffffffff",
+    "5": "#ff0000ff",
+    "10": "#0000ffff",
+    "25": "#00ff00ff",
+    "100": "#000000ff",
+    "D": "#ffff00ff"
 }
 
 FOREGROUND_COLOURS = {
-    1: "#000000ff",
-    5: "#ffffffff",
-    10: "#ffffffff",
-    25: "#000000ff",
-    100: "#ffffffff",
+    "1": "#000000ff",
+    "5": "#ffffffff",
+    "10": "#ffffffff",
+    "25": "#000000ff",
+    "100": "#ffffffff",
+    "D": "#000000ff"
 }
 
 def create_chip_image(amount, font):
@@ -32,7 +34,7 @@ def create_chip_image(amount, font):
 
     draw.ellipse([(0, 0), SIZE], fill=BACKGROUND_COLOURS[amount])
     
-    size = draw.textsize(str(amount), font=font)
+    size = draw.textsize(amount, font=font)
     draw.text(((SIZE[0] - size[0])/2, (SIZE[1] - size[1])/2 + VERTICAL_CORRECTION), str(amount), fill=FOREGROUND_COLOURS[amount], font=font)
 
     opposite = image.copy()
@@ -56,9 +58,9 @@ def create_chip_image(amount, font):
 
         draw.rectangle([(side_rect_x, side_rect_y), (side_rect_x + side_rect_width, side_rect_y + side_rect_height)], fill=FOREGROUND_COLOURS[amount])
 
-    image.save(str(amount) + ".png")
+    image.save(amount + ".png")
 
 font = ImageFont.truetype(FONT, FONT_SIZE)
 
-for amount in [1, 5, 10, 25, 100]:
+for amount in ["1", "5", "10", "25", "100", "D"]:
     create_chip_image(amount, font)
