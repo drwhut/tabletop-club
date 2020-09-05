@@ -99,6 +99,7 @@ material/0 = SubResource( 8 )
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 30, 0 )
 light_energy = 0.5
 shadow_enabled = true
+directional_shadow_max_distance = 250.0
 
 [node name="CameraController" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
