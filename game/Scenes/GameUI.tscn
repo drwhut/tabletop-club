@@ -71,6 +71,7 @@ margin_left = -150.0
 margin_top = -100.0
 margin_right = 150.0
 margin_bottom = 100.0
+popup_exclusive = true
 window_title = "Objects"
 resizable = true
 __meta__ = {
