@@ -693,23 +693,25 @@ selected = 0
 margin_top = 540.0
 margin_right = 984.0
 margin_bottom = 560.0
+alignment = 2
 
-[node name="OKButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 31.0
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 855.0
+margin_right = 897.0
 margin_bottom = 20.0
-text = "OK"
+text = "Back"
 
 [node name="ApplyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 35.0
-margin_right = 83.0
+margin_left = 901.0
+margin_right = 949.0
 margin_bottom = 20.0
 text = "Apply"
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 87.0
-margin_right = 129.0
+[node name="OKButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 953.0
+margin_right = 984.0
 margin_bottom = 20.0
-text = "Back"
+text = "OK"
 
 [node name="BindingBackground" type="ColorRect" parent="."]
 visible = false
@@ -825,9 +827,9 @@ __meta__ = {
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ReimportButton" to="." method="_on_ReimportButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ViewLicenseButton" to="." method="_on_ViewLicenseButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer/ResetBindingsButton" to="." method="_on_ResetBindingsButton_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/OKButton" to="." method="_on_OKButton_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/OKButton" to="." method="_on_OKButton_pressed"]
 [connection signal="unhandled_input" from="BindingBackground" to="." method="_on_BindingBackground_unhandled_input"]
 [connection signal="pressed" from="BindingBackground/Panel/MarginContainer/VBoxContainer/HBoxContainer/CancelBindButton" to="." method="_on_CancelBindButton_pressed"]
 [connection signal="confirmed" from="ReimportConfirm" to="." method="_on_ReimportConfirm_confirmed"]
