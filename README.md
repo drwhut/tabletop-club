@@ -2,6 +2,8 @@
 An open-source platform for playing tabletop games in a physics-based 3D
 environment for Windows, macOS and Linux! Made with the Godot Engine.
 
+![Screenshot of gameplay](screenshot.png)
+
 ## Custom Assets
 
 While the game has some of the most common tabletop pieces included, this game
