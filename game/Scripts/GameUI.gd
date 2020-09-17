@@ -166,6 +166,7 @@ func _unhandled_input(event):
 func _add_game_to_tree(game_name: String, game_pieces: Dictionary) -> void:
 	var game_node = _objects_tree.create_item(_objects_tree.get_root())
 	game_node.set_text(0, game_name)
+	game_node.collapsed = true
 	
 	_add_type_to_tree(game_node, game_pieces, ["cards"], "Cards")
 	
@@ -214,6 +215,7 @@ func _add_type_to_tree(parent: TreeItem, game_pieces: Dictionary,
 	
 	var node = _objects_tree.create_item(parent)
 	node.set_text(0, display_name)
+	node.collapsed = true
 	
 	for type_name in type_names:
 		if game_pieces.has(type_name):
