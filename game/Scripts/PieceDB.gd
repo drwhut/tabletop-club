@@ -170,12 +170,12 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 		while file:
 			if not _get_file_config_value(config, file, "ignore", false):
 				var file_path = new_dir.get_current_dir() + "/" + file
-				# Make sure that textures are imported before scenes, since
-				# scenes can depend on the textures.
-				if VALID_TEXTURE_EXTENSIONS.has(file_path.get_extension()):
-					files.push_front(file_path)
-				else:
+				# Make sure that scenes are imported last, since they can
+				# depend on other files like textures and binary files.
+				if VALID_SCENE_EXTENSIONS.has(file_path.get_extension()):
 					files.push_back(file_path)
+				else:
+					files.push_front(file_path)
 			
 			file = new_dir.get_next()
 		
