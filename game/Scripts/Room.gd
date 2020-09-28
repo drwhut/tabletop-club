@@ -21,10 +21,6 @@
 
 extends Spatial
 
-signal cards_in_hand_requested(cards)
-signal started_hovering_card(card)
-signal stopped_hovering_card(card)
-
 const STACK_SPLIT_DISTANCE = 1.0
 
 onready var _camera_controller = $CameraController
@@ -470,9 +466,6 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	
 	_camera_controller.append_selected_pieces([piece])
 	_camera_controller.set_is_hovering(true)
-	
-	if piece is Card:
-		emit_signal("started_hovering_card", piece)
 
 # Request the server to pop the piece at the top of a stack.
 # stack_name: The name of the stack to pop.
@@ -591,8 +584,6 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 					else:
 						continue
 				else:
-					if piece is Card and piece.is_placed_aside():
-						continue
 					rpc("add_piece_to_stack", piece.name, stack_name, Stack.STACK_TOP)
 
 # Set the room state.
@@ -864,9 +855,6 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 			rpc("add_stack", srv_get_next_piece_name(), piece1.transform, piece1.name,
 				piece2.name)
 
-func _on_CameraController_cards_in_hand_requested(cards: Array):
-	emit_signal("cards_in_hand_requested", cards)
-
 func _on_CameraController_collect_pieces_requested(pieces: Array):
 	var names = []
 	for piece in pieces:
@@ -883,20 +871,10 @@ func _on_CameraController_pop_stack_requested(stack: Stack, n: int):
 
 func _on_CameraController_selecting_all_pieces():
 	var pieces = _pieces.get_children()
-	for i in range(pieces.size() - 1, -1, -1):
-		var piece = pieces[i]
-		if piece is Card and piece.is_placed_aside():
-			pieces.remove(i)
 	_camera_controller.append_selected_pieces(pieces)
 
 func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stacks: bool):
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
-
-func _on_CameraController_started_hovering_card(card: Card):
-	emit_signal("started_hovering_card", card)
-
-func _on_CameraController_stopped_hovering_card(card: Card):
-	emit_signal("stopped_hovering_card", card)
 
 func _on_GameUI_rotation_amount_updated(rotation_amount: float):
 	_camera_controller.set_piece_rotation_amount(rotation_amount)

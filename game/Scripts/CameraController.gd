@@ -21,14 +21,11 @@
 
 extends Spatial
 
-signal cards_in_hand_requested(cards)
 signal collect_pieces_requested(pieces)
 signal hover_piece_requested(piece, offset)
 signal pop_stack_requested(stack, n)
 signal selecting_all_pieces()
 signal stack_collect_all_requested(stack, collect_stacks)
-signal started_hovering_card(card)
-signal stopped_hovering_card(card)
 
 onready var _box_selection_rect = $BoxSelectionRect
 onready var _camera = $Camera
@@ -466,9 +463,6 @@ func _unhandled_input(event):
 				if _is_hovering_selected:
 					for piece in _selected_pieces:
 						piece.rpc_id(1, "stop_hovering")
-						
-						if piece is Card:
-							emit_signal("stopped_hovering_card", piece)
 					
 					set_is_hovering(false)
 				
@@ -738,7 +732,7 @@ func _on_context_orient_up_pressed() -> void:
 
 func _on_context_put_in_hand_pressed() -> void:
 	_hide_context_menu()
-	emit_signal("cards_in_hand_requested", _selected_pieces)
+	pass
 
 func _on_context_shuffle_pressed() -> void:
 	_hide_context_menu()
