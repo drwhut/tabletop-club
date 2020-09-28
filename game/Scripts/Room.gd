@@ -790,6 +790,17 @@ func _build_piece(piece: Spatial) -> Piece:
 		collision_shape.shape = mesh_instance.mesh.create_convex_shape()
 		collision_shape.add_child(piece)
 		out.add_child(collision_shape)
+		
+		# We also want to make sure that the mesh instance has it's own unique
+		# material that isn't shared with the other instances, so when e.g. the
+		# instance is being selected, not all of the instances look like they
+		# are selected (see #20).
+		var material = mesh_instance.get_surface_material(0)
+		if not material:
+			material = mesh_instance.mesh.surface_get_material(0)
+			if material:
+				material = material.duplicate()
+				mesh_instance.set_surface_material(0, material)
 	else:
 		push_error(piece.name + " does not have a mesh instance!")
 	

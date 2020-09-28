@@ -164,11 +164,6 @@ func set_appear_selected(selected: bool) -> void:
 	var mesh_instance = get_mesh_instance()
 	if mesh_instance:
 		var material = mesh_instance.get_surface_material(0)
-		if not material:
-			var mesh = mesh_instance.mesh
-			if mesh:
-				material = mesh.surface_get_material(0)
-		
 		if material and material is SpatialMaterial:
 			material.emission = SELECTED_COLOUR
 			material.emission_energy = SELECTED_ENERGY
