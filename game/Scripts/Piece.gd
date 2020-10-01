@@ -23,6 +23,7 @@ extends RigidBody
 
 class_name Piece
 
+signal client_set_hover_position(piece)
 signal piece_exiting_tree(piece)
 
 const ANGULAR_FORCE_SCALAR = 25.0
@@ -43,11 +44,11 @@ var piece_entry: Dictionary = {}
 
 # When setting these vectors, make sure you call set_angular_lock(false),
 # otherwise the piece won't rotate towards the orientation!
-var _srv_hover_basis = Basis.IDENTITY
+var srv_hover_basis = Basis.IDENTITY
+var srv_hover_position = Vector3()
 
 var _srv_hover_offset = Vector3()
 var _srv_hover_player = 0
-var _srv_hover_position = Vector3()
 
 var _last_server_state = {}
 
@@ -81,7 +82,7 @@ static func find_first_mesh_instance(node: Node) -> MeshInstance:
 # If you are hovering this piece, ask the server to flip the piece vertically.
 master func flip_vertically() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
-		_srv_hover_basis = _srv_hover_basis.rotated(transform.basis.z, PI)
+		srv_hover_basis = srv_hover_basis.rotated(transform.basis.z, PI)
 
 # Get the piece's mesh instance.
 # Returns: The piece's mesh instance, null if it does not exist.
@@ -136,7 +137,7 @@ master func request_unlock() -> void:
 # piece.
 master func reset_orientation() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
-		_srv_hover_basis = Basis.IDENTITY
+		srv_hover_basis = Basis.IDENTITY
 
 # If you are hovering the piece, rotate it on the y-axis.
 # rot: The amount to rotate it by in radians.
@@ -145,7 +146,7 @@ master func rotate_y(rot: float) -> void:
 		if rot == 0.0:
 			return
 		
-		var current_euler = _srv_hover_basis.get_euler()
+		var current_euler = srv_hover_basis.get_euler()
 		var current_y_scale = current_euler.y / abs(rot)
 		# The .001 is to avoid floating point errors.
 		var offset = 1.001
@@ -156,7 +157,7 @@ master func rotate_y(rot: float) -> void:
 			target_y_scale = ceil(current_y_scale - offset)
 		var target_y_euler = current_euler
 		target_y_euler.y = wrapf(target_y_scale * abs(rot), -PI, PI)
-		_srv_hover_basis = Basis(target_y_euler)
+		srv_hover_basis = Basis(target_y_euler)
 
 # Set the piece to appear like it is selected.
 # selected: Should the piece appear selected?
@@ -177,7 +178,8 @@ master func set_hover_position(hover_position: Vector3) -> void:
 	# Only allow the hover position to be set if the request is coming from the
 	# player that is hovering the piece.
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
-		_srv_hover_position = hover_position
+		srv_hover_position = hover_position
+		emit_signal("client_set_hover_position", self)
 
 # Called by the server to store the server's physics state locally.
 # state: The server's physics state for this piece.
@@ -225,10 +227,11 @@ func srv_lock() -> void:
 # offset_pos: The hover position offset.
 func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) -> bool:
 	if not (srv_is_hovering() or is_locked()):
-		_srv_hover_basis = transform.basis
+		srv_hover_basis = transform.basis
+		srv_hover_position = init_pos
+		
 		_srv_hover_offset = offset_pos
 		_srv_hover_player = player_id
-		_srv_hover_position = init_pos
 		
 		custom_integrator = true
 		
@@ -330,14 +333,14 @@ func _on_tree_exiting() -> void:
 # state: The direct physics state of the piece.
 func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Force the piece to the given location.
-	var linear_dir = _srv_hover_position + _srv_hover_offset - translation
+	var linear_dir = srv_hover_position + _srv_hover_offset - translation
 	state.apply_central_impulse(LINEAR_FORCE_SCALAR * mass * linear_dir)
 	# Stops linear harmonic motion.
 	state.apply_central_impulse(-mass * linear_velocity)
 	
 	# Force the piece to the given basis.
 	var current_basis = transform.basis.orthonormalized()
-	var target_basis = _srv_hover_basis.orthonormalized()
+	var target_basis = srv_hover_basis.orthonormalized()
 	var rotation_basis = target_basis * current_basis.inverse()
 	var rotation_euler = rotation_basis.get_euler()
 	

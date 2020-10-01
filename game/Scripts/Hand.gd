@@ -21,6 +21,34 @@
 
 extends Spatial
 
+onready var _area = $Area
+
+var _srv_cards = []
+
+# Add a card to the hand. The card must not be hovering, as the operation makes
+# the card hover.
+# Returns: If the operation was successful.
+# card: The card to add to the hand.
+func srv_add_card(card: Card) -> bool:
+	var init_pos = _area.global_transform.origin
+	var success = card.srv_start_hovering(owner_id(), init_pos, Vector3.ZERO)
+	if success:
+		_srv_cards.append(card)
+		card.connect("client_set_hover_position", self, "_on_client_set_card_position")
+		
+		# Set the rotation of the card to be in line with the hand.
+		var new_basis = transform.basis
+		if card.transform.basis.y.y < 0:
+			new_basis = new_basis.rotated(transform.basis.z, PI)
+		card.srv_hover_basis = new_basis
+	return success
+
+# Remove a card from the hand. This does not stop the card from hovering.
+# card: The card to remove from the hand.
+func srv_remove_card(card: Card) -> void:
+	_srv_cards.erase(card)
+	card.disconnect("client_set_hover_position", self, "_on_client_set_card_position")
+
 # Get the ID of the player who owns this hand. The ID is based of the name of
 # the node.
 # Returns: The player's ID.
@@ -34,3 +62,6 @@ func _on_Area_body_entered(body: Node):
 func _on_Area_body_exited(body: Node):
 	if body.get("over_hand") != null:
 		body.over_hand = 0
+
+func _on_client_set_card_position(card: Card):
+	srv_remove_card(card)

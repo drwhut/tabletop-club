@@ -394,8 +394,6 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 			push_error("Piece " + card_name + " does not have the over_hand property!")
 			continue
 		
-		var piece_dist = piece.srv_get_hover_offset().length()
-		
 		if piece is Card:
 			cards.append(piece)
 		elif piece is Stack:
@@ -406,6 +404,7 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 			continue
 		
 		if piece.over_hand > 0:
+			var piece_dist = piece.srv_get_hover_offset().length()
 			if (min_dist == null) or (piece_dist < min_dist):
 				hand_id = piece.over_hand
 				min_dist = piece_dist
@@ -414,8 +413,15 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 		push_error("No pieces were over a hand!")
 		return
 	
+	var hand_name = str(hand_id)
+	var hand = _hands.get_node(str(hand_id))
+	
+	if not hand:
+		push_error("Hand " + hand_name + " does not exist!")
+		return
+	
 	for card in cards:
-		var success = card.srv_start_hovering(hand_id, Vector3(0, 10, 0), Vector3.ZERO)
+		var success = hand.srv_add_card(card)
 		if not success:
 			push_error("Card " + card.name + " could not be hovered!")
 
