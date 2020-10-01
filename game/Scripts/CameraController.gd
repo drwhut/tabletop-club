@@ -21,6 +21,7 @@
 
 extends Spatial
 
+signal adding_cards_to_hand(cards)
 signal collect_pieces_requested(pieces)
 signal hover_piece_requested(piece, offset)
 signal pop_stack_requested(stack, n)
@@ -461,10 +462,19 @@ func _unhandled_input(event):
 				_is_grabbing_selected = false
 				
 				if _is_hovering_selected:
+					var cards = []
+					var adding_card_to_hand = false
 					for piece in _selected_pieces:
+						if piece.get("over_hand") != null:
+							cards.append(piece)
+							if piece.over_hand > 0:
+								adding_card_to_hand = true
 						piece.rpc_id(1, "stop_hovering")
 					
 					set_is_hovering(false)
+					
+					if adding_card_to_hand:
+						emit_signal("adding_cards_to_hand", cards)
 				
 				# Stop box selecting.
 				if _is_box_selecting:

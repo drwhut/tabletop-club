@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/CameraController.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Hand.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Room.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]
@@ -108,6 +109,12 @@ transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0
 __meta__ = {
 "_editor_description_": "Pieces that are spawned are put as children of this node, and are given a unique name."
 }
+
+[node name="Hands" type="Spatial" parent="."]
+
+[node name="1" parent="Hands" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.45441, 49.2931 )
+[connection signal="adding_cards_to_hand" from="CameraController" to="." method="_on_CameraController_adding_cards_to_hand"]
 [connection signal="collect_pieces_requested" from="CameraController" to="." method="_on_CameraController_collect_pieces_requested"]
 [connection signal="hover_piece_requested" from="CameraController" to="." method="_on_CameraController_hover_piece_requested"]
 [connection signal="pop_stack_requested" from="CameraController" to="." method="_on_CameraController_pop_stack_requested"]

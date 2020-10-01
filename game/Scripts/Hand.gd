@@ -19,8 +19,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends StackablePiece
+extends Spatial
 
-class_name Card
+# Get the ID of the player who owns this hand. The ID is based of the name of
+# the node.
+# Returns: The player's ID.
+func owner_id() -> int:
+	return int(name)
 
-var over_hand: int = 0
+func _on_Area_body_entered(body: Node):
+	if body.get("over_hand") != null:
+		body.over_hand = owner_id()
+
+func _on_Area_body_exited(body: Node):
+	if body.get("over_hand") != null:
+		body.over_hand = 0

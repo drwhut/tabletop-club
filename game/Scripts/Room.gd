@@ -24,6 +24,7 @@ extends Spatial
 const STACK_SPLIT_DISTANCE = 1.0
 
 onready var _camera_controller = $CameraController
+onready var _hands = $Hands
 onready var _pieces = $Pieces
 
 var _srv_next_piece_name = 0
@@ -368,6 +369,55 @@ func get_state() -> Dictionary:
 	out["pieces"] = piece_dict
 	out["stacks"] = stack_dict
 	return out
+
+# Request the server to add cards to the nearest hand. The hand is decided
+# based on the card's hover offsets.
+# card_names: The names of the cards to add to the hand. Note that the names
+# of stacks of cards are also allowed.
+master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
+	var cards = []
+	var hand_id = 0
+	var min_dist = null
+	
+	for card_name in card_names:
+		var piece = _pieces.get_node(card_name)
+		
+		if not piece:
+			push_error("Piece " + card_name + " does not exist!")
+			continue
+		
+		if not piece is Piece:
+			push_error("Object " + card_name + " is not a piece!")
+			continue
+		
+		if piece.get("over_hand") == null:
+			push_error("Piece " + card_name + " does not have the over_hand property!")
+			continue
+		
+		var piece_dist = piece.srv_get_hover_offset().length()
+		
+		if piece is Card:
+			cards.append(piece)
+		elif piece is Stack:
+			# TODO.
+			pass
+		else:
+			push_error("Piece " + card_name + " is not a card or a stack!")
+			continue
+		
+		if piece.over_hand > 0:
+			if (min_dist == null) or (piece_dist < min_dist):
+				hand_id = piece.over_hand
+				min_dist = piece_dist
+	
+	if hand_id <= 0:
+		push_error("No pieces were over a hand!")
+		return
+	
+	for card in cards:
+		var success = card.srv_start_hovering(hand_id, Vector3(0, 10, 0), Vector3.ZERO)
+		if not success:
+			push_error("Card " + card.name + " could not be hovered!")
 
 # Request the server to add a pre-filled stack.
 # stack_entry: The stack's entry in the PieceDB.
@@ -854,6 +904,13 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 		else:
 			rpc("add_stack", srv_get_next_piece_name(), piece1.transform, piece1.name,
 				piece2.name)
+
+func _on_CameraController_adding_cards_to_hand(cards: Array):
+	var names = []
+	for card in cards:
+		if card.get("over_hand") != null:
+			names.append(card.name)
+	rpc_id(1, "request_add_cards_to_nearest_hand", names)
 
 func _on_CameraController_collect_pieces_requested(pieces: Array):
 	var names = []

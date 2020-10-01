@@ -197,10 +197,15 @@ remotesync func set_translation(new_translation: Vector3) -> void:
 	translation = new_translation
 	sleeping = false
 
+# Get the hover offset of the piece.
+# Returns: The hover offset of the piece.
+func srv_get_hover_offset() -> Vector3:
+	return _srv_hover_offset
+
 # Get the ID of the player that is hovering the piece.
 # Returns: The ID of the player hovering the piece. 0 if the piece is not being
 # hovered.
-func srv_get_hovering_player() -> int:
+func srv_get_hover_player() -> int:
 	return _srv_hover_player
 
 # Is the piece being hovered?
@@ -231,6 +236,12 @@ func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) 
 		sleeping = false
 		
 		return true
+	
+	# If the piece is hovering, and it's the client that is hovering the piece,
+	# send them the all clear, since they are already in control.
+	if not is_locked():
+		if player_id == _srv_hover_player:
+			return true
 	
 	return false
 

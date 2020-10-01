@@ -40,6 +40,9 @@ enum {
 onready var _collision_shape = $CollisionShape
 onready var _pieces = $CollisionShape/Pieces
 
+# This should only be useful for stacks of cards.
+var over_hand: int = 0
+
 var _collision_unit_height = 0
 var _mesh_unit_height = 0
 
