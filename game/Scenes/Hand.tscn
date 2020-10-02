@@ -29,5 +29,6 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="Area/CollisionShape"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
+[connection signal="tree_exiting" from="." to="." method="_on_Hand_tree_exiting"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

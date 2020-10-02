@@ -139,3 +139,6 @@ func _on_card_exiting_tree(card: Card):
 
 func _on_client_set_card_position(card: Card):
 	srv_remove_card(card)
+
+func _on_Hand_tree_exiting():
+	_srv_cards.clear()
