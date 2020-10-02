@@ -21,7 +21,7 @@
 
 extends Spatial
 
-signal adding_cards_to_hand(cards)
+signal adding_cards_to_hand(cards, id) # If id is 0, add to nearest hand.
 signal collect_pieces_requested(pieces)
 signal hover_piece_requested(piece, offset)
 signal pop_stack_requested(stack, n)
@@ -474,7 +474,7 @@ func _unhandled_input(event):
 					set_is_hovering(false)
 					
 					if adding_card_to_hand:
-						emit_signal("adding_cards_to_hand", cards)
+						emit_signal("adding_cards_to_hand", cards, 0)
 				
 				# Stop box selecting.
 				if _is_box_selecting:
@@ -742,7 +742,7 @@ func _on_context_orient_up_pressed() -> void:
 
 func _on_context_put_in_hand_pressed() -> void:
 	_hide_context_menu()
-	pass
+	emit_signal("adding_cards_to_hand", _selected_pieces, get_tree().get_network_unique_id())
 
 func _on_context_shuffle_pressed() -> void:
 	_hide_context_menu()

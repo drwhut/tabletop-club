@@ -373,12 +373,52 @@ func get_state() -> Dictionary:
 	out["stacks"] = stack_dict
 	return out
 
+# Request the server to add cards to the given hand.
+# card_names: The names of the cards to add to the hand. Note that the names
+# of stacks are also allowed.
+# hand_id: The player ID of the hand to add the cards to.
+master func request_add_cards_to_hand(card_names: Array, hand_id: int) -> void:
+	var hand_name = str(hand_id)
+	if hand_id <= 0:
+		push_error("Hand ID " + hand_name + " is invalid!")
+		return
+	
+	var hand = _hands.get_node(str(hand_id))
+	if not hand:
+		push_error("Hand " + hand_name + " does not exist!")
+		return
+	
+	var cards = []
+	for card_name in card_names:
+		var piece = _pieces.get_node(card_name)
+		
+		if not piece:
+			push_error("Piece " + card_name + " does not exist!")
+			continue
+		
+		if not piece is Piece:
+			push_error("Object " + card_name + " is not a piece!")
+			continue
+		
+		if piece is Card:
+			cards.append(piece)
+		elif piece is Stack:
+			# TODO.
+			pass
+		else:
+			push_error("Piece " + card_name + " is not a card or a stack!")
+			continue
+	
+	for card in cards:
+		var success = hand.srv_add_card(card)
+		if not success:
+			push_error("Card " + card.name + " could not be hovered!")
+
 # Request the server to add cards to the nearest hand. The hand is decided
 # based on the card's hover offsets.
 # card_names: The names of the cards to add to the hand. Note that the names
 # of stacks of cards are also allowed.
 master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
-	var cards = []
 	var hand_id = 0
 	var min_dist = null
 	
@@ -397,15 +437,6 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 			push_error("Piece " + card_name + " does not have the over_hand property!")
 			continue
 		
-		if piece is Card:
-			cards.append(piece)
-		elif piece is Stack:
-			# TODO.
-			pass
-		else:
-			push_error("Piece " + card_name + " is not a card or a stack!")
-			continue
-		
 		if piece.over_hand > 0:
 			var piece_dist = piece.srv_get_hover_offset().length()
 			if (min_dist == null) or (piece_dist < min_dist):
@@ -413,20 +444,10 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 				min_dist = piece_dist
 	
 	if hand_id <= 0:
-		push_error("No pieces were over a hand!")
+		push_error("None of the cards were over a hand!")
 		return
 	
-	var hand_name = str(hand_id)
-	var hand = _hands.get_node(str(hand_id))
-	
-	if not hand:
-		push_error("Hand " + hand_name + " does not exist!")
-		return
-	
-	for card in cards:
-		var success = hand.srv_add_card(card)
-		if not success:
-			push_error("Card " + card.name + " could not be hovered!")
+	request_add_cards_to_hand(card_names, hand_id)
 
 # Request the server to add a pre-filled stack.
 # stack_entry: The stack's entry in the PieceDB.
@@ -925,12 +946,16 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 			rpc("add_stack", srv_get_next_piece_name(), piece1.transform, piece1.name,
 				piece2.name)
 
-func _on_CameraController_adding_cards_to_hand(cards: Array):
+func _on_CameraController_adding_cards_to_hand(cards: Array, id: int):
 	var names = []
 	for card in cards:
 		if card.get("over_hand") != null:
 			names.append(card.name)
-	rpc_id(1, "request_add_cards_to_nearest_hand", names)
+	
+	if id > 0:
+		rpc_id(1, "request_add_cards_to_hand", names, id)
+	else:
+		rpc_id(1, "request_add_cards_to_nearest_hand", names)
 
 func _on_CameraController_collect_pieces_requested(pieces: Array):
 	var names = []

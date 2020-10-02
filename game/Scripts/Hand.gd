@@ -33,6 +33,9 @@ var _srv_cards = []
 # Returns: If the operation was successful.
 # card: The card to add to the hand.
 func srv_add_card(card: Card) -> bool:
+	if _srv_cards.has(card):
+		return true
+	
 	var init_pos = _area.global_transform.origin
 	var success = card.srv_start_hovering(owner_id(), init_pos, Vector3.ZERO)
 	if success:
