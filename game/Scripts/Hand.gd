@@ -43,8 +43,7 @@ func srv_add_card(card: Card) -> bool:
 		
 		card.connect("client_set_hover_position", self, "_on_client_set_card_position")
 		
-		# Make sure the cards in the hand don't collide with each other.
-		card.collision_mask = 2
+		card.rpc("set_collisions_on", false)
 		
 		# Set the rotation of the card to be in line with the hand.
 		var new_basis = transform.basis
@@ -66,7 +65,7 @@ func srv_remove_card(card: Card) -> void:
 	
 	card.disconnect("client_set_hover_position", self, "_on_client_set_card_position")
 	
-	card.collision_mask = 1
+	card.rpc("set_collisions_on", true)
 
 # Get the ID of the player who owns this hand. The ID is based of the name of
 # the node.

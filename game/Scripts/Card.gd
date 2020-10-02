@@ -24,3 +24,19 @@ extends StackablePiece
 class_name Card
 
 var over_hand: int = 0
+
+# Check if the card will collide with other pieces.
+# Returns: If the card will collide with other pieces.
+func is_collisions_on() -> bool:
+	return collision_mask == 1
+
+# Called by the server to set whether the card will collide with other pieces.
+# on: If the card will collide with other pieces.
+remotesync func set_collisions_on(on: bool) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var mask = 2
+	if on:
+		mask = 1
+	collision_mask = mask
