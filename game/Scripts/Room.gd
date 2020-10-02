@@ -21,8 +21,6 @@
 
 extends Spatial
 
-const STACK_SPLIT_DISTANCE = 1.0
-
 onready var _camera_controller = $CameraController
 onready var _hands = $Hands
 onready var _pieces = $Pieces
@@ -403,8 +401,25 @@ master func request_add_cards_to_hand(card_names: Array, hand_id: int) -> void:
 		if piece is Card:
 			cards.append(piece)
 		elif piece is Stack:
-			# TODO.
-			pass
+			var scene_path = piece.piece_entry["scene_path"]
+			var test_piece = load(scene_path).instance()
+			var is_card = test_piece is Card
+			test_piece.free()
+			
+			if not is_card:
+				push_error("Stack " + card_name + " does not contain cards!")
+				continue
+			
+			var stack_names = []
+			for inst in piece.get_pieces():
+				stack_names.append(inst.name)
+			
+			for i in range(piece.get_piece_count() - 1):
+				request_pop_stack(card_name, 1, false, i + 1.0)
+			
+			for name in stack_names:
+				var card: Card = _pieces.get_node(name)
+				cards.append(card)
 		else:
 			push_error("Piece " + card_name + " is not a card or a stack!")
 			continue
@@ -551,7 +566,9 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 # stack_name: The name of the stack to pop.
 # n: The number of pieces to pop from the stack.
 # hover: Do we want to start hovering the piece afterwards?
-master func request_pop_stack(stack_name: String, n: int) -> void:
+# split_dist: How far away do we want the piece from the stack when it is poped?
+master func request_pop_stack(stack_name: String, n: int, hover: bool,
+	split_dist: float) -> void:
 	
 	var player_id = get_tree().get_rpc_sender_id()
 	var stack = _pieces.get_node(stack_name)
@@ -580,7 +597,7 @@ master func request_pop_stack(stack_name: String, n: int) -> void:
 		new_origin.y += total_height / 2
 		# Get the new piece away from the stack so it doesn't collide with it
 		# again.
-		new_origin.y += STACK_SPLIT_DISTANCE + removed_height / 2
+		new_origin.y += split_dist + removed_height / 2
 		
 		if n == 1:
 			var piece_instance = stack.pop_piece()
@@ -624,7 +641,7 @@ master func request_pop_stack(stack_name: String, n: int) -> void:
 	else:
 		new_piece = stack
 	
-	if new_piece:
+	if new_piece and hover:
 		if new_piece.srv_start_hovering(player_id, new_piece.transform.origin, Vector3()):
 			rpc_id(player_id, "request_pop_stack_accepted", new_piece.name)
 
@@ -969,7 +986,7 @@ func _on_CameraController_hover_piece_requested(piece: Piece, offset: Vector3):
 		_camera_controller.get_hover_position(), offset)
 
 func _on_CameraController_pop_stack_requested(stack: Stack, n: int):
-	rpc_id(1, "request_pop_stack", stack.name, n)
+	rpc_id(1, "request_pop_stack", stack.name, n, true, 1.0)
 
 func _on_CameraController_selecting_all_pieces():
 	var pieces = _pieces.get_children()
