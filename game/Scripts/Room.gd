@@ -364,6 +364,9 @@ func get_state() -> Dictionary:
 				"transform": piece.transform
 			}
 			
+			if piece is Card:
+				piece_meta["is_collisions_on"] = piece.is_collisions_on()
+			
 			piece_dict[piece.name] = piece_meta
 	
 	out["pieces"] = piece_dict
@@ -682,10 +685,21 @@ puppet func set_state(state: Dictionary) -> void:
 				return
 			
 			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
+			var piece: Piece = _pieces.get_node(piece_name)
 			
 			if piece_meta["is_locked"]:
-				var piece: Piece = _pieces.get_node(piece_name)
 				piece.lock_client(piece_meta["transform"])
+			
+			if piece is Card:
+				if not piece_meta.has("is_collisions_on"):
+					push_error("Card " + piece_name + " in new state has no is collisions on value!")
+					return
+				
+				if not piece_meta["is_collisions_on"] is bool:
+					push_error("Card " + piece_name + " collisions on is not a boolean!")
+					return
+				
+				piece.set_collisions_on(piece_meta["is_collisions_on"])
 	
 	if state.has("stacks"):
 		for stack_name in state["stacks"]:
