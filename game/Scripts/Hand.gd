@@ -36,9 +36,15 @@ func srv_add_card(card: Card) -> bool:
 	var init_pos = _area.global_transform.origin
 	var success = card.srv_start_hovering(owner_id(), init_pos, Vector3.ZERO)
 	if success:
-		# TODO: Figure out which position the card should be in based on its
-		# position.
-		_srv_cards.append(card)
+		var new_lambda = _right_angle_displacement(card)
+		var pos = 0
+		for hand_card in _srv_cards:
+			var card_lambda = _right_angle_displacement(hand_card)
+			if card_lambda > new_lambda:
+				break
+			pos += 1
+		
+		_srv_cards.insert(pos, card)
 		_srv_set_card_positions()
 		
 		card.connect("client_set_hover_position", self, "_on_client_set_card_position")
@@ -72,6 +78,15 @@ func srv_remove_card(card: Card) -> void:
 # Returns: The player's ID.
 func owner_id() -> int:
 	return int(name)
+
+# Get the displacement along the hand's "line" to the point where it is closest
+# to the given card.
+# Returns: The displacement.
+# card: The card to get as close as possible to.
+func _right_angle_displacement(card: Card) -> float:
+	var card_dist = card.transform.origin - _area.global_transform.origin
+	var hand_right = transform.basis.x
+	return card_dist.dot(hand_right)
 
 # Set the hover positions of the hand's cards.
 func _srv_set_card_positions() -> void:
