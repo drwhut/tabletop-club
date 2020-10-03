@@ -413,15 +413,14 @@ func _unhandled_input(event):
 			_unlock_selected_pieces()
 		else:
 			_lock_selected_pieces()
-	elif _is_hovering_selected:
-		if event.is_action_pressed("game_flip_piece"):
-			for piece in _selected_pieces:
-				if piece is Piece:
-					piece.rpc_id(1, "flip_vertically")
-		elif event.is_action_pressed("game_reset_piece"):
-			for piece in _selected_pieces:
-				if piece is Piece:
-					piece.rpc_id(1, "reset_orientation")
+	elif event.is_action_pressed("game_flip_piece"):
+		for piece in _selected_pieces:
+			if piece is Piece:
+				piece.rpc_id(1, "flip_vertically")
+	elif event.is_action_pressed("game_reset_piece"):
+		for piece in _selected_pieces:
+			if piece is Piece:
+				piece.rpc_id(1, "reset_orientation")
 	
 	if event is InputEventKey:
 		if event.scancode == KEY_A and event.control:
