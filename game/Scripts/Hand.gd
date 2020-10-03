@@ -93,6 +93,28 @@ func _right_angle_displacement(card: Card) -> float:
 	var hand_right = transform.basis.x
 	return card_dist.dot(hand_right)
 
+# Recursively set the front face visibility of a node by scanning the children
+# for mesh instances.
+# body: The node to start from.
+# visible: Whether the front face should be visible or not.
+func _set_front_face_visible_recursive(node: Node, visible: bool) -> void:
+	if node is MeshInstance:
+		var material = node.get_surface_material(0)
+		if material is SpatialMaterial:
+			var uv_offset = Vector3(0, 0, 0)
+			var uv_scale = Vector3(1, 1, 1)
+			
+			if not visible:
+				uv_offset.x = 1.5
+				uv_scale.x = -1
+				uv_scale.z = -1
+			
+			material.uv1_offset = uv_offset
+			material.uv1_scale = uv_scale
+	
+	for child in node.get_children():
+		_set_front_face_visible_recursive(child, visible)
+
 # Set the hover positions of the hand's cards.
 func _srv_set_card_positions() -> void:
 	if _srv_cards.size() == 0:
@@ -126,13 +148,37 @@ func _srv_set_card_positions() -> void:
 		
 		cumulative_width += widths[i] + offset_other
 
+# Try and set a node's front face visibility.
+# body: The node to try and set the front face visibility of.
+# visible: Whether the front face should be visible or not.
+func _try_set_front_face_visible(body: Node, visible: bool) -> void:
+	# We don't want to hide the front face if this is our hand!
+	if get_tree().get_network_unique_id() == owner_id():
+		return
+	
+	var valid = false
+	if body is Card:
+		valid = true
+	elif body is Stack:
+		var scene_path = body.piece_entry["scene_path"]
+		var test_piece = load(scene_path).instance()
+		valid = test_piece is Card
+		test_piece.free()
+	
+	if valid:
+		_set_front_face_visible_recursive(body, visible)
+
 func _on_Area_body_entered(body: Node):
 	if body.get("over_hand") != null:
 		body.over_hand = owner_id()
+	
+	_try_set_front_face_visible(body, false)
 
 func _on_Area_body_exited(body: Node):
 	if body.get("over_hand") != null:
 		body.over_hand = 0
+	
+	_try_set_front_face_visible(body, true)
 
 func _on_card_exiting_tree(card: Card):
 	srv_remove_card(card)
