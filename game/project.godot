@@ -103,6 +103,10 @@ window/stretch/aspect="expand"
 
 script_templates_search_path="res://Scripts/Templates"
 
+[gui]
+
+theme/custom_font="res://Fonts/Cabin-Medium.tres"
+
 [input]
 
 game_left={

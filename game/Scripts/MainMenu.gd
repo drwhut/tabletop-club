@@ -41,7 +41,7 @@ func _ready():
 	for i in range(credits_lines.size() - 1, -1, -1):
 		var line = credits_lines[i]
 		if line.begins_with("-"):
-			credits_lines[i - 1] = "[i]" + credits_lines[i - 1] + "[/i]"
+			credits_lines[i - 1] = "[font=res://Fonts/Cabin-Italic.tres]" + credits_lines[i - 1] + "[/font]"
 			credits_lines.remove(i)
 		elif line.begins_with("="):
 			credits_lines[i - 1] = "[u]" + credits_lines[i - 1] + "[/u]"
