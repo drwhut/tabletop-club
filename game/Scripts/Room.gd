@@ -38,6 +38,8 @@ remotesync func add_hand(player: int, transform: Transform) -> void:
 	var hand = preload("res://Scenes/Hand.tscn").instance()
 	hand.name = str(player)
 	hand.transform = transform
+	
+	hand.update_owner_display()
 	_hands.add_child(hand)
 
 # Called by the server to add a piece to the room.

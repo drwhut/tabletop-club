@@ -23,10 +23,17 @@ extends Spatial
 
 onready var _area = $Area
 onready var _area_collision_shape = $Area/CollisionShape
+onready var _mesh_instance = $Area/CollisionShape/MeshInstance
 
 const CARD_HEIGHT_DIFF = 0.01
 
 var _srv_cards = []
+
+# Get the ID of the player who owns this hand. The ID is based of the name of
+# the node.
+# Returns: The player's ID.
+func owner_id() -> int:
+	return int(name)
 
 # Add a card to the hand. The card must not be hovering, as the operation makes
 # the card hover.
@@ -78,11 +85,28 @@ func srv_remove_card(card: Card) -> void:
 	
 	card.rpc("set_collisions_on", true)
 
-# Get the ID of the player who owns this hand. The ID is based of the name of
-# the node.
-# Returns: The player's ID.
-func owner_id() -> int:
-	return int(name)
+# Update the display of the hand to reflect the owner's properties, such as
+# their colour.
+func update_owner_display() -> void:
+	var player = Lobby.get_player(owner_id())
+	if player.size() == 0:
+		return
+	
+	var material = _mesh_instance.get_surface_material(0)
+	if material:
+		var a = material.albedo_color.a
+		material.albedo_color = player["color"]
+		material.albedo_color.a = a
+
+func _ready():
+	# Each hand should have a different material since they will probably have
+	# different albedo colours because of the players ability to pick different
+	# colours.
+	var material = _mesh_instance.get_surface_material(0)
+	if material:
+		_mesh_instance.set_surface_material(0, material.duplicate())
+	
+	Lobby.connect("player_modified", self, "_on_player_modified")
 
 # Get the displacement along the hand's "line" to the point where it is closest
 # to the given card.
@@ -188,3 +212,7 @@ func _on_client_set_card_position(card: Card):
 
 func _on_Hand_tree_exiting():
 	_srv_cards.clear()
+
+func _on_player_modified(id: int):
+	if id == owner_id():
+		update_owner_display()
