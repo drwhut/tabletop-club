@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/CameraController.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Hand.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Room.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]
@@ -34,67 +33,101 @@ __meta__ = {
 "_editor_description_": "The room handles all of the 3D elements of the game, including the camera and the pieces in the game."
 }
 
-[node name="Table" type="StaticBody" parent="."]
+[node name="Table" type="Spatial" parent="."]
 
-[node name="Base" type="CollisionShape" parent="Table"]
+[node name="Body" type="StaticBody" parent="Table"]
+
+[node name="Base" type="CollisionShape" parent="Table/Body"]
 transform = Transform( 152.4, 0, 0, 0, 5.715, 0, 0, 0, 91.44, 0, -2.8629, 0 )
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Table/Base"]
+[node name="MeshInstance" type="MeshInstance" parent="Table/Body/Base"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
-[node name="Side1" type="CollisionShape" parent="Table"]
+[node name="Side1" type="CollisionShape" parent="Table/Body"]
 transform = Transform( 152.4, 0, 0, 0, 11.43, 0, 0, 0, 7.112, 0, 0, 49.264 )
 shape = SubResource( 4 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Table/Side1"]
+[node name="MeshInstance" type="MeshInstance" parent="Table/Body/Side1"]
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
-[node name="Side2" type="CollisionShape" parent="Table"]
+[node name="Side2" type="CollisionShape" parent="Table/Body"]
 transform = Transform( 152.4, 0, 0, 0, 11.43, 0, 0, 0, 7.112, 0, 0, -49.27 )
 shape = SubResource( 4 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Table/Side2"]
+[node name="MeshInstance" type="MeshInstance" parent="Table/Body/Side2"]
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
-[node name="Side3" type="CollisionShape" parent="Table"]
+[node name="Side3" type="CollisionShape" parent="Table/Body"]
 transform = Transform( 7.112, 0, 0, 0, 11.43, 0, 0, 0, 105.664, 79.766, 0, 0 )
 shape = SubResource( 4 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Table/Side3"]
+[node name="MeshInstance" type="MeshInstance" parent="Table/Body/Side3"]
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
-[node name="Side4" type="CollisionShape" parent="Table"]
+[node name="Side4" type="CollisionShape" parent="Table/Body"]
 transform = Transform( 7.112, 0, 0, 0, 11.43, 0, 0, 0, 105.664, -79.766, 0, 0 )
 shape = SubResource( 4 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Table/Side4"]
+[node name="MeshInstance" type="MeshInstance" parent="Table/Body/Side4"]
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
-[node name="Leg1" type="MeshInstance" parent="Table"]
+[node name="Leg1" type="MeshInstance" parent="Table/Body"]
 transform = Transform( 7, 0, 0, 0, 75.692, 0, 0, 0, 7, -79.7068, -32.5083, 49.2123 )
 mesh = SubResource( 7 )
 material/0 = SubResource( 8 )
 
-[node name="Leg2" type="MeshInstance" parent="Table"]
+[node name="Leg2" type="MeshInstance" parent="Table/Body"]
 transform = Transform( 7, 0, 0, 0, 75.692, 0, 0, 0, 7, 79.707, -32.508, 49.212 )
 mesh = SubResource( 7 )
 material/0 = SubResource( 8 )
 
-[node name="Leg3" type="MeshInstance" parent="Table"]
+[node name="Leg3" type="MeshInstance" parent="Table/Body"]
 transform = Transform( 7, 0, 0, 0, 75.692, 0, 0, 0, 7, 79.707, -32.508, -49.212 )
 mesh = SubResource( 7 )
 material/0 = SubResource( 8 )
 
-[node name="Leg4" type="MeshInstance" parent="Table"]
+[node name="Leg4" type="MeshInstance" parent="Table/Body"]
 transform = Transform( 7, 0, 0, 0, 75.692, 0, 0, 0, 7, -79.707, -32.508, -49.212 )
 mesh = SubResource( 7 )
 material/0 = SubResource( 8 )
+
+[node name="HandPositions" type="Spatial" parent="Table"]
+
+[node name="0" type="Spatial" parent="Table/HandPositions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 50 )
+
+[node name="1" type="Spatial" parent="Table/HandPositions"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 8, -50 )
+
+[node name="2" type="Spatial" parent="Table/HandPositions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 8, 50 )
+
+[node name="3" type="Spatial" parent="Table/HandPositions"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -40, 8, -50 )
+
+[node name="4" type="Spatial" parent="Table/HandPositions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 8, 50 )
+
+[node name="5" type="Spatial" parent="Table/HandPositions"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 40, 8, -50 )
+
+[node name="6" type="Spatial" parent="Table/HandPositions"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 80, 8, -28 )
+
+[node name="7" type="Spatial" parent="Table/HandPositions"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 80, 8, 28 )
+
+[node name="8" type="Spatial" parent="Table/HandPositions"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -80, 8, -28 )
+
+[node name="9" type="Spatial" parent="Table/HandPositions"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -80, 8, 28 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 30, 0 )
@@ -111,9 +144,6 @@ __meta__ = {
 }
 
 [node name="Hands" type="Spatial" parent="."]
-
-[node name="1" parent="Hands" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.45441, 49.2931 )
 [connection signal="adding_cards_to_hand" from="CameraController" to="." method="_on_CameraController_adding_cards_to_hand"]
 [connection signal="collect_pieces_requested" from="CameraController" to="." method="_on_CameraController_collect_pieces_requested"]
 [connection signal="hover_piece_requested" from="CameraController" to="." method="_on_CameraController_hover_piece_requested"]

@@ -22,10 +22,23 @@
 extends Spatial
 
 onready var _camera_controller = $CameraController
+onready var _hand_positions = $Table/HandPositions
 onready var _hands = $Hands
 onready var _pieces = $Pieces
 
 var _srv_next_piece_name = 0
+
+# Add a hand to the game for a given player.
+# player: The ID of the player the hand should belong to.
+# transform: The transform of the new hand.
+remotesync func add_hand(player: int, transform: Transform) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var hand = preload("res://Scenes/Hand.tscn").instance()
+	hand.name = str(player)
+	hand.transform = transform
+	_hands.add_child(hand)
 
 # Called by the server to add a piece to the room.
 # name: The name of the new piece.
@@ -334,8 +347,17 @@ func get_piece_count() -> int:
 func get_state() -> Dictionary:
 	var out = {}
 	
+	var hand_dict = {}
 	var piece_dict = {}
 	var stack_dict = {}
+	
+	for hand in _hands.get_children():
+		var hand_meta = {
+			"transform": hand.transform
+		}
+		
+		hand_dict[hand.owner_id()] = hand_meta
+	
 	for piece in _pieces.get_children():
 		if piece is Stack:
 			var stack_meta = {
@@ -367,9 +389,21 @@ func get_state() -> Dictionary:
 			
 			piece_dict[piece.name] = piece_meta
 	
+	out["hands"] = hand_dict
 	out["pieces"] = piece_dict
 	out["stacks"] = stack_dict
 	return out
+
+# Remove a player's hand from the room.
+# player: The ID of the player whose hand to remove.
+remotesync func remove_hand(player: int) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var hand = _hands.get_node(str(player))
+	if hand:
+		_hands.remove_child(hand)
+		hand.queue_free()
 
 # Request the server to add cards to the given hand.
 # card_names: The names of the cards to add to the hand. Note that the names
@@ -690,9 +724,27 @@ puppet func set_state(state: Dictionary) -> void:
 		return
 	
 	# Delete all the pieces on the board currently before we begin.
+	for hand in _hands.get_children():
+		remove_child(hand)
+		hand.queue_free()
 	for child in _pieces.get_children():
 		remove_child(child)
 		child.queue_free()
+	
+	if state.has("hands"):
+		for hand_id in state["hands"]:
+			var hand_name = str(hand_id)
+			var hand_meta = state["hands"][hand_id]
+			
+			if not hand_meta.has("transform"):
+				push_error("Hand " + hand_name + " in new state has no transform!")
+				return
+			
+			if not hand_meta["transform"] is Transform:
+				push_error("Hand " + hand_name + " transform is not a transform!")
+				return
+			
+			add_hand(hand_id, hand_meta["transform"])
 	
 	if state.has("pieces"):
 		for piece_name in state["pieces"]:
@@ -817,12 +869,37 @@ puppet func set_state(state: Dictionary) -> void:
 				
 				add_piece_to_stack(stack_piece_name, stack_name, Stack.STACK_TOP, flip)
 
+# Get the next hand transform. Note that there may not be a next transform, in
+# which case the function returns the identity transform.
+# Returns: The next hand transform.
+func srv_get_next_hand_transform() -> Transform:
+	var potential = []
+	
+	for position in _hand_positions.get_children():
+		potential.append(position.transform)
+	
+	for hand in _hands.get_children():
+		if potential.has(hand.transform):
+			potential.erase(hand.transform)
+	
+	if potential.empty():
+		return Transform.IDENTITY
+	else:
+		return potential[0]
+
 # Get the next piece name.
 # Returns: The next piece name.
 func srv_get_next_piece_name() -> String:
 	var next_name = str(_srv_next_piece_name)
 	_srv_next_piece_name += 1
 	return next_name
+
+# Stop a player from currently hovering any pieces.
+# player: The player to stop from hovering.
+func srv_stop_player_hovering(player: int) -> void:
+	for piece in _pieces.get_children():
+		if piece.srv_get_hover_player() == player:
+			piece.rpc_id(1, "stop_hovering")
 
 # Start sending the player's 3D cursor position to the server.
 func start_sending_cursor_position() -> void:

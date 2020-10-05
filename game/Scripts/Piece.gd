@@ -248,9 +248,11 @@ func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) 
 	
 	return false
 
-# If you are hovering the piece, ask the server to stop hovering it.
+# If you are hovering the piece, ask the server to stop hovering it. The server
+# can also stop hovering the piece regardless of who is currently hovering it.
 master func stop_hovering() -> void:
-	if get_tree().get_rpc_sender_id() == _srv_hover_player:
+	var id = get_tree().get_rpc_sender_id()
+	if id == _srv_hover_player or id == 1:
 		_srv_hover_player = 0
 		custom_integrator = false
 		sleeping = false

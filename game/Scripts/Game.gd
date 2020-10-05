@@ -68,6 +68,12 @@ func init_singleplayer() -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	init_server(0, rng.randi_range(10000, 65535))
+	
+	var hand_transform = _room.srv_get_next_hand_transform()
+	if hand_transform == Transform.IDENTITY:
+		push_error("Player hand not added, no available hand positions!")
+	else:
+		_room.rpc_id(1, "add_hand", 1, hand_transform)
 
 # Request the server to add a piece to the game.
 # piece_entry: The piece's entry in the PieceDB.
@@ -104,12 +110,20 @@ func _player_connected(id: int) -> void:
 	# the board so far.
 	if get_tree().is_network_server():
 		_room.rpc_id(id, "set_state", _room.get_state())
+		
+		# If there is space, also give them a hand on the table.
+		var hand_transform = _room.srv_get_next_hand_transform()
+		if hand_transform != Transform.IDENTITY:
+			_room.rpc("add_hand", id, hand_transform)
 
 func _player_disconnected(id: int) -> void:
 	print("Player with ID ", id, " disconnected!")
 	
 	if get_tree().is_network_server():
 		Lobby.rpc("remove_self", id)
+		
+		_room.rpc("remove_hand", id)
+		_room.srv_stop_player_hovering(id)
 
 func _connected_ok() -> void:
 	print("Successfully connected to the server!")
