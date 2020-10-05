@@ -24,6 +24,7 @@ extends Spatial
 onready var _area = $Area
 onready var _area_collision_shape = $Area/CollisionShape
 onready var _mesh_instance = $Area/CollisionShape/MeshInstance
+onready var _name_label = $NamePlate/Viewport/MarginContainer/NameLabel
 
 const CARD_HEIGHT_DIFF = 0.01
 
@@ -97,6 +98,8 @@ func update_owner_display() -> void:
 		var a = material.albedo_color.a
 		material.albedo_color = player["color"]
 		material.albedo_color.a = a
+	
+	_name_label.bbcode_text = "[center]" + Lobby.get_name_bb_code(owner_id()) + "[/center]"
 
 func _ready():
 	# Each hand should have a different material since they will probably have

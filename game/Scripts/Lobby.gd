@@ -45,6 +45,29 @@ remotesync func add_self(id: int, name: String, color: Color) -> void:
 func clear_players() -> void:
 	_players.clear()
 
+# Get a BBCode representation of a player's name.
+# Returns: The player's name in BBCode.
+# id: The ID of the player.
+func get_name_bb_code(id: int) -> String:
+	var player = Lobby.get_player(id)
+	
+	var player_color = "ffffff"
+	if player.has("color"):
+		player_color = player["color"].to_html(false)
+	var code = "[color=#" + player_color + "]"
+	
+	var player_name = "<No Name>"
+	if player.has("name"):
+		player_name = player["name"]
+	player_name = player_name.strip_edges()
+	if player_name.empty():
+		player_name = "<No Name>"
+	player_name = player_name.replace("[", "") # For security!
+	code += player_name
+	
+	code += "[/color]"
+	return code
+
 # Get the properties of the player with the given ID.
 # Returns: The player's properties, empty if the player does not exist.
 # id: The ID of the player.

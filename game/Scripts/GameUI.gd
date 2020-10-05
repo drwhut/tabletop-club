@@ -139,25 +139,7 @@ func _update_player_list() -> void:
 	var code = "[right][table=1]"
 	
 	for id in Lobby.get_player_list():
-		var player = Lobby.get_player(id)
-		code += "[cell]"
-		
-		var player_color = "ffffff"
-		if player.has("color"):
-			player_color = player["color"].to_html(false)
-		code += "[color=#" + player_color + "]"
-		
-		var player_name = "<No Name>"
-		if player.has("name"):
-			player_name = player["name"]
-		player_name = player_name.strip_edges()
-		if player_name.empty():
-			player_name = "<No Name>"
-		player_name = player_name.replace("[", "") # For security!
-		code += player_name
-		
-		code += "[/color]"
-		code += "[/cell]"
+		code += "[cell]" + Lobby.get_name_bb_code(id) + "[/cell]"
 	
 	code += "[/table][/right]"
 	_player_list.bbcode_text = code
