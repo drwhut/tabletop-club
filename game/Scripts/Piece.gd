@@ -28,6 +28,7 @@ signal piece_exiting_tree(piece)
 
 const ANGULAR_FORCE_SCALAR = 25.0
 const HELL_HEIGHT = -50.0
+const HOVER_INACTIVE_DURATION = 5.0
 const LINEAR_FORCE_SCALAR = 50.0
 const ROTATION_LOCK_AT = 0.001
 const SELECTED_COLOUR = Color.cyan
@@ -49,6 +50,8 @@ var srv_hover_position = Vector3()
 
 var _srv_hover_offset = Vector3()
 var _srv_hover_player = 0
+
+var _srv_hover_time_since_update = 0.0
 
 var _last_server_state = {}
 
@@ -83,6 +86,7 @@ static func find_first_mesh_instance(node: Node) -> MeshInstance:
 master func flip_vertically() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		srv_hover_basis = srv_hover_basis.rotated(transform.basis.z, PI)
+		_srv_hover_time_since_update = 0.0
 
 # Get the piece's mesh instance.
 # Returns: The piece's mesh instance, null if it does not exist.
@@ -138,6 +142,7 @@ master func request_unlock() -> void:
 master func reset_orientation() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		srv_hover_basis = Basis.IDENTITY
+		_srv_hover_time_since_update = 0.0
 
 # If you are hovering the piece, rotate it on the y-axis.
 # rot: The amount to rotate it by in radians.
@@ -158,6 +163,8 @@ master func rotate_y(rot: float) -> void:
 		var target_y_euler = current_euler
 		target_y_euler.y = wrapf(target_y_scale * abs(rot), -PI, PI)
 		srv_hover_basis = Basis(target_y_euler)
+		
+		_srv_hover_time_since_update = 0.0
 
 # Set the piece to appear like it is selected.
 # selected: Should the piece appear selected?
@@ -179,6 +186,7 @@ master func set_hover_position(hover_position: Vector3) -> void:
 	# player that is hovering the piece.
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		srv_hover_position = hover_position
+		_srv_hover_time_since_update = 0.0
 		emit_signal("client_set_hover_position", self)
 
 # Called by the server to store the server's physics state locally.
@@ -233,6 +241,8 @@ func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) 
 		_srv_hover_offset = offset_pos
 		_srv_hover_player = player_id
 		
+		_srv_hover_time_since_update = 0.0
+		
 		collision_layer = 2
 		custom_integrator = true
 		
@@ -272,6 +282,17 @@ func _ready():
 		custom_integrator = true
 	
 	connect("tree_exiting", self, "_on_tree_exiting")
+
+func _process(delta):
+	if get_tree().is_network_server():
+		if srv_is_hovering() and not sleeping:
+			_srv_hover_time_since_update += delta
+			
+			# If the hovering piece has not had a transform update in a certain
+			# amount of time, put it to sleep so it doesn't send unnessesary
+			# updates to all the clients.
+			if _srv_hover_time_since_update > HOVER_INACTIVE_DURATION:
+				sleeping = true
 
 func _physics_process(delta):
 	_last_velocity = _new_velocity
