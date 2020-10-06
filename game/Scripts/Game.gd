@@ -48,7 +48,7 @@ func apply_options(config: ConfigFile) -> void:
 # port: The port number to connect to.
 func init_client(server: String, port: int) -> void:
 	print("Connecting to ", server, ":", port, " ...")
-	var peer = NetworkedMultiplayerENet.new()
+	var peer = _create_network_peer()
 	peer.create_client(server, port)
 	get_tree().network_peer = peer
 	
@@ -60,7 +60,7 @@ func init_client(server: String, port: int) -> void:
 # port: The port number to host the server on.
 func init_server(max_players: int, port: int) -> void:
 	print("Starting server on port ", port, " with ", max_players, " max players...")
-	var peer = NetworkedMultiplayerENet.new()
+	var peer = _create_network_peer()
 	peer.create_server(port, max_players + 1)
 	get_tree().network_peer = peer
 
@@ -188,6 +188,13 @@ func _ready():
 	
 	# The assets should have been imported at the start of the game.
 	_ui.set_piece_tree_from_db(PieceDB.get_db())
+
+# Create a network peer object.
+# Returns: A new network peer object.
+func _create_network_peer() -> NetworkedMultiplayerENet:
+	var peer = NetworkedMultiplayerENet.new()
+	peer.compression_mode = NetworkedMultiplayerENet.COMPRESS_FASTLZ
+	return peer
 
 func _player_connected(id: int) -> void:
 	print("Player with ID ", id, " connected!")
