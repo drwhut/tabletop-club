@@ -157,7 +157,9 @@ master func request_set_cursor_grabbing(grabbing: bool) -> void:
 # x_basis: The x-basis of your camera.
 master func request_set_cursor_position(position: Vector3, x_basis: Vector3) -> void:
 	var id = get_tree().get_rpc_sender_id()
-	rpc_unreliable("set_player_cursor_position", id, position, x_basis)
+	for other_id in Lobby.get_player_list():
+		if other_id != id:
+			rpc_unreliable_id(other_id, "set_player_cursor_position", id, position, x_basis)
 
 # Set if the camera is hovering it's selected pieces.
 # is_hovering: If the camera is hovering it's selected pieces.
