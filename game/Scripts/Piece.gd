@@ -233,6 +233,7 @@ func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) 
 		_srv_hover_offset = offset_pos
 		_srv_hover_player = player_id
 		
+		collision_layer = 2
 		custom_integrator = true
 		
 		# Make sure _integrate_forces runs.
@@ -254,6 +255,7 @@ master func stop_hovering() -> void:
 	var id = get_tree().get_rpc_sender_id()
 	if id == _srv_hover_player or id == 1:
 		_srv_hover_player = 0
+		collision_layer = 1
 		custom_integrator = false
 		sleeping = false
 

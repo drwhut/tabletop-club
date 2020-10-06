@@ -36,7 +36,7 @@ remotesync func set_collisions_on(on: bool) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	var mask = 2
+	var mask = 4
 	if on:
 		mask = 1
 	collision_mask = mask
