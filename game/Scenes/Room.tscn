@@ -1,30 +1,33 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/CameraController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Room.gd" type="Script" id=3]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.4
+
+[sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="CubeMesh" id=3]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0, 0.329412, 0.137255, 1 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=6]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="CubeMesh" id=8]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=9]
 albedo_color = Color( 0, 0, 0, 1 )
 
 [node name="Room" type="Spatial"]
@@ -34,66 +37,67 @@ __meta__ = {
 }
 
 [node name="Table" type="StaticBody" parent="."]
+physics_material_override = SubResource( 1 )
 
 [node name="Base" type="CollisionShape" parent="Table"]
 transform = Transform( 152.4, 0, 0, 0, 5.715, 0, 0, 0, 91.44, 0, -2.8629, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Table/Base"]
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
 
 [node name="Side1" type="CollisionShape" parent="Table"]
 transform = Transform( 152.4, 0, 0, 0, 11.43, 0, 0, 0, 7.112, 0, 0, 49.264 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Table/Side1"]
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
 
 [node name="Side2" type="CollisionShape" parent="Table"]
 transform = Transform( 152.4, 0, 0, 0, 11.43, 0, 0, 0, 7.112, 0, 0, -49.27 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Table/Side2"]
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
 
 [node name="Side3" type="CollisionShape" parent="Table"]
 transform = Transform( 7.112, 0, 0, 0, 11.43, 0, 0, 0, 105.664, 79.766, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Table/Side3"]
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
 
 [node name="Side4" type="CollisionShape" parent="Table"]
 transform = Transform( 7.112, 0, 0, 0, 11.43, 0, 0, 0, 105.664, -79.766, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Table/Side4"]
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
 
 [node name="Leg1" type="MeshInstance" parent="Table"]
 transform = Transform( 7, 0, 0, 0, 75.692, 0, 0, 0, 7, -79.7068, -32.5083, 49.2123 )
-mesh = SubResource( 7 )
-material/0 = SubResource( 8 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
 
 [node name="Leg2" type="MeshInstance" parent="Table"]
 transform = Transform( 7, 0, 0, 0, 75.692, 0, 0, 0, 7, 79.707, -32.508, 49.212 )
-mesh = SubResource( 7 )
-material/0 = SubResource( 8 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
 
 [node name="Leg3" type="MeshInstance" parent="Table"]
 transform = Transform( 7, 0, 0, 0, 75.692, 0, 0, 0, 7, 79.707, -32.508, -49.212 )
-mesh = SubResource( 7 )
-material/0 = SubResource( 8 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
 
 [node name="Leg4" type="MeshInstance" parent="Table"]
 transform = Transform( 7, 0, 0, 0, 75.692, 0, 0, 0, 7, -79.707, -32.508, -49.212 )
-mesh = SubResource( 7 )
-material/0 = SubResource( 8 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 30, 0 )
