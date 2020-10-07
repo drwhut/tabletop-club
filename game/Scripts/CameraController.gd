@@ -21,14 +21,12 @@
 
 extends Spatial
 
-signal cards_in_hand_requested(cards)
+signal adding_cards_to_hand(cards, id) # If id is 0, add to nearest hand.
 signal collect_pieces_requested(pieces)
 signal hover_piece_requested(piece, offset)
 signal pop_stack_requested(stack, n)
 signal selecting_all_pieces()
 signal stack_collect_all_requested(stack, collect_stacks)
-signal started_hovering_card(card)
-signal stopped_hovering_card(card)
 
 onready var _box_selection_rect = $BoxSelectionRect
 onready var _camera = $Camera
@@ -417,15 +415,14 @@ func _unhandled_input(event):
 			_unlock_selected_pieces()
 		else:
 			_lock_selected_pieces()
-	elif _is_hovering_selected:
-		if event.is_action_pressed("game_flip_piece"):
-			for piece in _selected_pieces:
-				if piece is Piece:
-					piece.rpc_id(1, "flip_vertically")
-		elif event.is_action_pressed("game_reset_piece"):
-			for piece in _selected_pieces:
-				if piece is Piece:
-					piece.rpc_id(1, "reset_orientation")
+	elif event.is_action_pressed("game_flip_piece"):
+		for piece in _selected_pieces:
+			if piece is Piece:
+				piece.rpc_id(1, "flip_vertically")
+	elif event.is_action_pressed("game_reset_piece"):
+		for piece in _selected_pieces:
+			if piece is Piece:
+				piece.rpc_id(1, "reset_orientation")
 	
 	if event is InputEventKey:
 		if event.scancode == KEY_A and event.control:
@@ -466,13 +463,19 @@ func _unhandled_input(event):
 				_is_grabbing_selected = false
 				
 				if _is_hovering_selected:
+					var cards = []
+					var adding_card_to_hand = false
 					for piece in _selected_pieces:
+						if piece.get("over_hand") != null:
+							cards.append(piece)
+							if piece.over_hand > 0:
+								adding_card_to_hand = true
 						piece.rpc_id(1, "stop_hovering")
-						
-						if piece is Card:
-							emit_signal("stopped_hovering_card", piece)
 					
 					set_is_hovering(false)
+					
+					if adding_card_to_hand:
+						emit_signal("adding_cards_to_hand", cards, 0)
 				
 				# Stop box selecting.
 				if _is_box_selecting:
@@ -740,7 +743,7 @@ func _on_context_orient_up_pressed() -> void:
 
 func _on_context_put_in_hand_pressed() -> void:
 	_hide_context_menu()
-	emit_signal("cards_in_hand_requested", _selected_pieces)
+	emit_signal("adding_cards_to_hand", _selected_pieces, get_tree().get_network_unique_id())
 
 func _on_context_shuffle_pressed() -> void:
 	_hide_context_menu()

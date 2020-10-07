@@ -22,68 +22,20 @@
 extends Control
 
 signal applying_options(config)
-signal card_in_hand_requested(card)
-signal card_out_hand_requested(card_texture)
 signal piece_requested(piece_entry)
 signal rotation_amount_updated(rotation_amount)
 
-const HIGHLIGHT_COLOUR = Color(0.25, 1.0, 1.0, 0.5)
-
 onready var _game_menu_background = $GameMenuBackground
-onready var _hand = $Hand
 onready var _objects_dialog = $ObjectsDialog
 onready var _objects_tree = $ObjectsDialog/ObjectsTree
 onready var _options_menu = $OptionsMenu
 onready var _player_list = $PlayerList
 onready var _rotation_option = $TopPanel/RotationOption
 
-export(bool) var show_player_hand_sizes: bool = true
-
-var _candidate_card: CardTextureRect = null
-var _grabbed_card_from_hand: CardTextureRect = null
-var _hand_highlight: ColorRect = ColorRect.new()
-var _holding_card = false
-var _mouse_in_hand = false
-var _mouse_over_cards = []
-
-# If a player is not in this dictionary, it can be assumed that they do not
-# have any cards in their hand.
-var _player_hand_sizes = {}
-
-# Add a card to the hand.
-# card: The card to add to the hand.
-# front_face: Is the card's front face being shown?
-func add_card_to_hand(card: Card, front_face: bool) -> void:
-	var texture_rect = _create_card_half_texture(card, front_face)
-	_hand.add_child(texture_rect)
-	
-	var index = _hand.get_child_count() - 1
-	if _hand.is_a_parent_of(_hand_highlight):
-		index = _hand_highlight.get_index()
-	
-	_hand.move_child(texture_rect, index)
-	
-	if _hand.is_a_parent_of(_hand_highlight):
-		_hand.remove_child(_hand_highlight)
-
 # Apply options from the options menu.
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
-	show_player_hand_sizes = not config.get_value("multiplayer", "hide_hand_sizes")
-
-# Remove a card from our hand.
-# card: The card to remove.
-func remove_card_from_hand(card: Card) -> void:
-	for card_texture in _hand.get_children():
-		if card_texture is CardTextureRect:
-			if card_texture.card == card:
-				_hand.remove_child(card_texture)
-				card_texture.queue_free()
-	
-	# If we were holding the card, stop holding it.
-	if _grabbed_card_from_hand:
-		if _grabbed_card_from_hand.card == card:
-			_grabbed_card_from_hand = null
+	pass
 
 # Set the piece tree contents, based on the piece database given.
 # pieces: The database from the PieceDB.
@@ -94,67 +46,15 @@ func set_piece_tree_from_db(pieces: Dictionary) -> void:
 	for game in pieces:
 		_add_game_to_tree(game, pieces[game])
 
-# Called by the server to set the size of a player's hand.
-# id: The ID of the player.
-# size: The size of the hand.
-remotesync func set_player_hand_size(id: int, size: int) -> void:
-	if get_tree().get_rpc_sender_id() != 1:
-		return
-	
-	_player_hand_sizes[id] = size
-	_update_player_list()
-
 func _ready():
 	Lobby.connect("player_added", self, "_on_Lobby_player_added")
 	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
 	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
 	
-	var hand_height = _hand.rect_size.y
-	_hand_highlight.color = HIGHLIGHT_COLOUR
-	_hand_highlight.mouse_filter = MOUSE_FILTER_IGNORE
-	_hand_highlight.rect_min_size = Vector2(hand_height / 1.618, hand_height)
-	
 	# Make sure we emit the signal when all of the nodes are ready:
 	call_deferred("_set_rotation_amount")
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT:
-			if (not event.is_pressed()) and _grabbed_card_from_hand:
-				_grabbed_card_from_hand = null
-	
-	# Would usually use the signals for this, but we also need to know if the
-	# mouse is over the hand when it is also over the cards.
-	elif event is InputEventMouseMotion:
-		var hand_rect = Rect2(_hand.rect_position, _hand.rect_size)
-		_mouse_in_hand = hand_rect.has_point(get_viewport().get_mouse_position())
-		
-		# Dragging a card from the hand to the room.
-		if _grabbed_card_from_hand and not _mouse_in_hand:
-			emit_signal("card_out_hand_requested", _grabbed_card_from_hand)
-		
-		# Dragging a card from the room in and out of the hand.
-		elif _holding_card:
-			if _mouse_in_hand:
-				if not _hand.is_a_parent_of(_hand_highlight):
-					_hand.add_child(_hand_highlight)
-				if _candidate_card:
-					_hand.move_child(_hand_highlight, _candidate_card.get_index())
-					
-					# Reset the list of cards the mouse is hovering over, as
-					# the mouse would now be hovering over the highlighting
-					# card.
-					_candidate_card = null
-					_mouse_over_cards = []
-			elif not _mouse_in_hand and _hand.is_a_parent_of(_hand_highlight):
-				_hand.remove_child(_hand_highlight)
-
 func _unhandled_input(event):
-	if _candidate_card and not _holding_card:
-		if event.is_action_pressed("game_flip_piece"):
-			_candidate_card.front_face = not _candidate_card.front_face
-			_candidate_card.update()
-	
 	if event.is_action_pressed("game_menu"):
 		_game_menu_background.visible = not _game_menu_background.visible
 		if not _game_menu_background.visible:
@@ -226,37 +126,6 @@ func _add_type_to_tree(parent: TreeItem, game_pieces: Dictionary,
 	if not node.get_children():
 		node.free()
 
-# Create a half-texture based on a given card.
-# card: The card to create the half-texture from.
-# front_face: Is the front face of the card showing?
-func _create_card_half_texture(card: Card, front_face: bool) -> CardTextureRect:
-	var card_entry = card.piece_entry
-	
-	var texture = load(card_entry["texture_path"])
-	texture.flags = 0
-	
-	var card_aspect_ratio = 1.0
-	
-	var card_shape = card.get_node("CollisionShape")
-	if card_shape:
-		card_aspect_ratio = card_shape.scale.x / card_shape.scale.z
-	else:
-		push_error("Card " + card.name + " does not have a CollisionShape child!")
-	
-	var card_min_size = Vector2(_hand.rect_size.y * card_aspect_ratio, _hand.rect_size.y)
-	
-	var texture_rect = CardTextureRect.new()
-	texture_rect.card = card
-	texture_rect.expand = true
-	texture_rect.front_face = front_face
-	texture_rect.rect_min_size = card_min_size
-	texture_rect.texture = texture
-	
-	texture_rect.connect("clicked_on", self, "_on_card_texture_clicked")
-	texture_rect.connect("mouse_over", self, "_on_card_texture_mouse_over")
-	
-	return texture_rect
-
 # Call to emit a signal for the camera to set it's piece rotation amount.
 func _set_rotation_amount() -> void:
 	if _rotation_option.selected >= 0:
@@ -267,84 +136,13 @@ func _set_rotation_amount() -> void:
 
 # Update the player list based on what is in the Lobby.
 func _update_player_list() -> void:
-	var columns = 1
-	if show_player_hand_sizes:
-		columns += 1
-	
-	var code = "[right][table=" + str(columns) + "]"
+	var code = "[right][table=1]"
 	
 	for id in Lobby.get_player_list():
-		var player = Lobby.get_player(id)
-		code += "[cell]"
-		
-		var player_color = "ffffff"
-		if player.has("color"):
-			player_color = player["color"].to_html(false)
-		code += "[color=#" + player_color + "]"
-		
-		var player_name = "<No Name>"
-		if player.has("name"):
-			player_name = player["name"]
-		player_name = player_name.strip_edges()
-		if player_name.empty():
-			player_name = "<No Name>"
-		player_name = player_name.replace("[", "") # For security!
-		code += player_name
-		
-		code += "[/color]"
-		code += "[/cell]"
-		
-		if show_player_hand_sizes:
-			code += "[cell]"
-			var hand_size = 0
-			if _player_hand_sizes.has(id):
-				hand_size = _player_hand_sizes[id]
-			code += "(Hand: " + str(hand_size) + ")"
-			code += "[/cell]"
+		code += "[cell]" + Lobby.get_name_bb_code(id) + "[/cell]"
 	
 	code += "[/table][/right]"
-	
 	_player_list.bbcode_text = code
-
-func _on_card_texture_clicked(card_texture: CardTextureRect) -> void:
-	# We might get multiple signals if the cards overlap each other.
-	if (not _grabbed_card_from_hand) or (card_texture.get_index() > _grabbed_card_from_hand.get_index()):
-		_grabbed_card_from_hand = card_texture
-	_hand.mouse_filter = Control.MOUSE_FILTER_PASS
-
-func _on_card_texture_mouse_over(card_texture: CardTextureRect, is_over: bool) -> void:
-	# We might be mousing over multiple cards if they overlap each other, so
-	# keep track of which ones we are mousing over, and use the right-most one
-	# as the candidate.
-	if is_over and not _mouse_over_cards.has(card_texture):
-		_mouse_over_cards.push_back(card_texture)
-	
-	if not is_over and _mouse_over_cards.has(card_texture):
-		_mouse_over_cards.erase(card_texture)
-	
-	if _mouse_over_cards.size() > 0:
-		
-		_candidate_card = _mouse_over_cards[0]
-		
-		for i in range(1, _mouse_over_cards.size()):
-			var opponent = _mouse_over_cards[i]
-			if opponent.get_index() > _candidate_card.get_index():
-				_candidate_card = opponent
-	else:
-		_candidate_card = null
-	
-	# If we are grabbing a card from our hand, and we hover over another
-	# card, then swap the positions of the cards.
-	if _grabbed_card_from_hand and _candidate_card:
-		if _candidate_card != _grabbed_card_from_hand:
-			var old_index = _candidate_card.get_index()
-			_hand.move_child(_candidate_card, _grabbed_card_from_hand.get_index())
-			_hand.move_child(_grabbed_card_from_hand, old_index)
-			
-			# Reset the list of cards the mouse is over, since we have moved
-			# the cards.
-			_candidate_card = _grabbed_card_from_hand
-			_mouse_over_cards = [_grabbed_card_from_hand]
 
 func _on_BackToGameButton_pressed():
 	_game_menu_background.visible = false
@@ -354,9 +152,6 @@ func _on_DesktopButton_pressed():
 
 func _on_GameMenuButton_pressed():
 	_game_menu_background.visible = true
-
-func _on_GameUI_tree_exited():
-	_hand_highlight.free()
 
 func _on_Lobby_player_added(id: int):
 	_update_player_list()
@@ -385,19 +180,6 @@ func _on_OptionsButton_pressed():
 
 func _on_OptionsMenu_applying_options(config: ConfigFile):
 	emit_signal("applying_options", config)
-
-func _on_Room_started_hovering_card(card: Card):
-	_holding_card = true
-	_mouse_in_hand = false
-	_hand.mouse_filter = Control.MOUSE_FILTER_PASS
-
-func _on_Room_stopped_hovering_card(card: Card):
-	if _mouse_in_hand:
-		emit_signal("card_in_hand_requested", card)
-	
-	_holding_card = false
-	_mouse_in_hand = false
-	_hand.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func _on_RotationOption_item_selected(index: int):
 	_set_rotation_amount()

@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Card.gd"
 }, {
-"base": "TextureRect",
-"class": "CardTextureRect",
-"language": "GDScript",
-"path": "res://Scripts/CardTextureRect.gd"
-}, {
 "base": "Piece",
 "class": "Dice",
 "language": "GDScript",
@@ -73,7 +68,6 @@ _global_script_class_icons={
 "ActualTextFile": "",
 "BindButton": "",
 "Card": "",
-"CardTextureRect": "",
 "Dice": "",
 "OptionsTab": "",
 "OutlineColorRect": "",
@@ -108,6 +102,10 @@ window/stretch/aspect="expand"
 [editor]
 
 script_templates_search_path="res://Scripts/Templates"
+
+[gui]
+
+theme/custom_font="res://Fonts/Cabin-Medium.tres"
 
 [input]
 

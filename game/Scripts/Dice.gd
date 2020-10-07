@@ -32,6 +32,6 @@ func _physics_process(delta):
 	
 	# If the dice is being shaked, randomize the basis.
 	if get_tree().is_network_server() and is_being_shaked():
-		_srv_hover_basis = _srv_hover_basis.rotated(Vector3.RIGHT, 2 * PI * _rng.randf())
-		_srv_hover_basis = _srv_hover_basis.rotated(Vector3.UP, 2 * PI * _rng.randf())
-		_srv_hover_basis = _srv_hover_basis.rotated(Vector3.BACK, 2 * PI * _rng.randf())
+		srv_hover_basis = srv_hover_basis.rotated(Vector3.RIGHT, 2 * PI * _rng.randf())
+		srv_hover_basis = srv_hover_basis.rotated(Vector3.UP, 2 * PI * _rng.randf())
+		srv_hover_basis = srv_hover_basis.rotated(Vector3.BACK, 2 * PI * _rng.randf())

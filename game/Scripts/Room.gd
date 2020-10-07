@@ -21,16 +21,26 @@
 
 extends Spatial
 
-signal cards_in_hand_requested(cards)
-signal started_hovering_card(card)
-signal stopped_hovering_card(card)
-
-const STACK_SPLIT_DISTANCE = 1.0
-
 onready var _camera_controller = $CameraController
+onready var _hand_positions = $Table/HandPositions
+onready var _hands = $Hands
 onready var _pieces = $Pieces
 
 var _srv_next_piece_name = 0
+
+# Add a hand to the game for a given player.
+# player: The ID of the player the hand should belong to.
+# transform: The transform of the new hand.
+remotesync func add_hand(player: int, transform: Transform) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var hand = preload("res://Scenes/Hand.tscn").instance()
+	hand.name = str(player)
+	hand.transform = transform
+	
+	hand.update_owner_display()
+	_hands.add_child(hand)
 
 # Called by the server to add a piece to the room.
 # name: The name of the new piece.
@@ -339,8 +349,17 @@ func get_piece_count() -> int:
 func get_state() -> Dictionary:
 	var out = {}
 	
+	var hand_dict = {}
 	var piece_dict = {}
 	var stack_dict = {}
+	
+	for hand in _hands.get_children():
+		var hand_meta = {
+			"transform": hand.transform
+		}
+		
+		hand_dict[hand.owner_id()] = hand_meta
+	
 	for piece in _pieces.get_children():
 		if piece is Stack:
 			var stack_meta = {
@@ -367,11 +386,119 @@ func get_state() -> Dictionary:
 				"transform": piece.transform
 			}
 			
+			if piece is Card:
+				piece_meta["is_collisions_on"] = piece.is_collisions_on()
+			
 			piece_dict[piece.name] = piece_meta
 	
+	out["hands"] = hand_dict
 	out["pieces"] = piece_dict
 	out["stacks"] = stack_dict
 	return out
+
+# Remove a player's hand from the room.
+# player: The ID of the player whose hand to remove.
+remotesync func remove_hand(player: int) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var hand = _hands.get_node(str(player))
+	if hand:
+		_hands.remove_child(hand)
+		hand.queue_free()
+
+# Request the server to add cards to the given hand.
+# card_names: The names of the cards to add to the hand. Note that the names
+# of stacks are also allowed.
+# hand_id: The player ID of the hand to add the cards to.
+master func request_add_cards_to_hand(card_names: Array, hand_id: int) -> void:
+	var hand_name = str(hand_id)
+	if hand_id <= 0:
+		push_error("Hand ID " + hand_name + " is invalid!")
+		return
+	
+	var hand = _hands.get_node(str(hand_id))
+	if not hand:
+		push_error("Hand " + hand_name + " does not exist!")
+		return
+	
+	var cards = []
+	for card_name in card_names:
+		var piece = _pieces.get_node(card_name)
+		
+		if not piece:
+			push_error("Piece " + card_name + " does not exist!")
+			continue
+		
+		if not piece is Piece:
+			push_error("Object " + card_name + " is not a piece!")
+			continue
+		
+		if piece is Card:
+			cards.append(piece)
+		elif piece is Stack:
+			var scene_path = piece.piece_entry["scene_path"]
+			var test_piece = load(scene_path).instance()
+			var is_card = test_piece is Card
+			test_piece.free()
+			
+			if not is_card:
+				push_error("Stack " + card_name + " does not contain cards!")
+				continue
+			
+			var stack_names = []
+			for inst in piece.get_pieces():
+				stack_names.append(inst.name)
+			
+			for i in range(piece.get_piece_count() - 1):
+				request_pop_stack(card_name, 1, false, i + 1.0)
+			
+			for name in stack_names:
+				var card: Card = _pieces.get_node(name)
+				cards.append(card)
+		else:
+			push_error("Piece " + card_name + " is not a card or a stack!")
+			continue
+	
+	for card in cards:
+		var success = hand.srv_add_card(card)
+		if not success:
+			push_error("Card " + card.name + " could not be hovered!")
+
+# Request the server to add cards to the nearest hand. The hand is decided
+# based on the card's hover offsets.
+# card_names: The names of the cards to add to the hand. Note that the names
+# of stacks of cards are also allowed.
+master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
+	var hand_id = 0
+	var min_dist = null
+	
+	for card_name in card_names:
+		var piece = _pieces.get_node(card_name)
+		
+		if not piece:
+			push_error("Piece " + card_name + " does not exist!")
+			continue
+		
+		if not piece is Piece:
+			push_error("Object " + card_name + " is not a piece!")
+			continue
+		
+		if piece.get("over_hand") == null:
+			push_error("Piece " + card_name + " does not have the over_hand property!")
+			continue
+		
+		if piece.over_hand > 0:
+			var piece_dist = piece.srv_get_hover_offset().length()
+			if (min_dist == null) or (piece_dist < min_dist):
+				hand_id = piece.over_hand
+				min_dist = piece_dist
+	
+	if hand_id <= 0:
+		push_error("None of the cards were over a hand!")
+		return
+	
+	request_add_cards_to_hand(card_names, hand_id)
 
 # Request the server to add a pre-filled stack.
 # stack_entry: The stack's entry in the PieceDB.
@@ -470,15 +597,14 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	
 	_camera_controller.append_selected_pieces([piece])
 	_camera_controller.set_is_hovering(true)
-	
-	if piece is Card:
-		emit_signal("started_hovering_card", piece)
 
 # Request the server to pop the piece at the top of a stack.
 # stack_name: The name of the stack to pop.
 # n: The number of pieces to pop from the stack.
 # hover: Do we want to start hovering the piece afterwards?
-master func request_pop_stack(stack_name: String, n: int) -> void:
+# split_dist: How far away do we want the piece from the stack when it is poped?
+master func request_pop_stack(stack_name: String, n: int, hover: bool,
+	split_dist: float) -> void:
 	
 	var player_id = get_tree().get_rpc_sender_id()
 	var stack = _pieces.get_node(stack_name)
@@ -507,7 +633,7 @@ master func request_pop_stack(stack_name: String, n: int) -> void:
 		new_origin.y += total_height / 2
 		# Get the new piece away from the stack so it doesn't collide with it
 		# again.
-		new_origin.y += STACK_SPLIT_DISTANCE + removed_height / 2
+		new_origin.y += split_dist + removed_height / 2
 		
 		if n == 1:
 			var piece_instance = stack.pop_piece()
@@ -551,7 +677,7 @@ master func request_pop_stack(stack_name: String, n: int) -> void:
 	else:
 		new_piece = stack
 	
-	if new_piece:
+	if new_piece and hover:
 		if new_piece.srv_start_hovering(player_id, new_piece.transform.origin, Vector3()):
 			rpc_id(player_id, "request_pop_stack_accepted", new_piece.name)
 
@@ -591,8 +717,6 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 					else:
 						continue
 				else:
-					if piece is Card and piece.is_placed_aside():
-						continue
 					rpc("add_piece_to_stack", piece.name, stack_name, Stack.STACK_TOP)
 
 # Set the room state.
@@ -602,9 +726,27 @@ puppet func set_state(state: Dictionary) -> void:
 		return
 	
 	# Delete all the pieces on the board currently before we begin.
+	for hand in _hands.get_children():
+		remove_child(hand)
+		hand.queue_free()
 	for child in _pieces.get_children():
 		remove_child(child)
 		child.queue_free()
+	
+	if state.has("hands"):
+		for hand_id in state["hands"]:
+			var hand_name = str(hand_id)
+			var hand_meta = state["hands"][hand_id]
+			
+			if not hand_meta.has("transform"):
+				push_error("Hand " + hand_name + " in new state has no transform!")
+				return
+			
+			if not hand_meta["transform"] is Transform:
+				push_error("Hand " + hand_name + " transform is not a transform!")
+				return
+			
+			add_hand(hand_id, hand_meta["transform"])
 	
 	if state.has("pieces"):
 		for piece_name in state["pieces"]:
@@ -635,10 +777,21 @@ puppet func set_state(state: Dictionary) -> void:
 				return
 			
 			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
+			var piece: Piece = _pieces.get_node(piece_name)
 			
 			if piece_meta["is_locked"]:
-				var piece: Piece = _pieces.get_node(piece_name)
 				piece.lock_client(piece_meta["transform"])
+			
+			if piece is Card:
+				if not piece_meta.has("is_collisions_on"):
+					push_error("Card " + piece_name + " in new state has no is collisions on value!")
+					return
+				
+				if not piece_meta["is_collisions_on"] is bool:
+					push_error("Card " + piece_name + " collisions on is not a boolean!")
+					return
+				
+				piece.set_collisions_on(piece_meta["is_collisions_on"])
 	
 	if state.has("stacks"):
 		for stack_name in state["stacks"]:
@@ -718,12 +871,37 @@ puppet func set_state(state: Dictionary) -> void:
 				
 				add_piece_to_stack(stack_piece_name, stack_name, Stack.STACK_TOP, flip)
 
+# Get the next hand transform. Note that there may not be a next transform, in
+# which case the function returns the identity transform.
+# Returns: The next hand transform.
+func srv_get_next_hand_transform() -> Transform:
+	var potential = []
+	
+	for position in _hand_positions.get_children():
+		potential.append(position.transform)
+	
+	for hand in _hands.get_children():
+		if potential.has(hand.transform):
+			potential.erase(hand.transform)
+	
+	if potential.empty():
+		return Transform.IDENTITY
+	else:
+		return potential[0]
+
 # Get the next piece name.
 # Returns: The next piece name.
 func srv_get_next_piece_name() -> String:
 	var next_name = str(_srv_next_piece_name)
 	_srv_next_piece_name += 1
 	return next_name
+
+# Stop a player from currently hovering any pieces.
+# player: The player to stop from hovering.
+func srv_stop_player_hovering(player: int) -> void:
+	for piece in _pieces.get_children():
+		if piece.srv_get_hover_player() == player:
+			piece.rpc_id(1, "stop_hovering")
 
 # Start sending the player's 3D cursor position to the server.
 func start_sending_cursor_position() -> void:
@@ -864,8 +1042,16 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 			rpc("add_stack", srv_get_next_piece_name(), piece1.transform, piece1.name,
 				piece2.name)
 
-func _on_CameraController_cards_in_hand_requested(cards: Array):
-	emit_signal("cards_in_hand_requested", cards)
+func _on_CameraController_adding_cards_to_hand(cards: Array, id: int):
+	var names = []
+	for card in cards:
+		if card.get("over_hand") != null:
+			names.append(card.name)
+	
+	if id > 0:
+		rpc_id(1, "request_add_cards_to_hand", names, id)
+	else:
+		rpc_id(1, "request_add_cards_to_nearest_hand", names)
 
 func _on_CameraController_collect_pieces_requested(pieces: Array):
 	var names = []
@@ -879,24 +1065,14 @@ func _on_CameraController_hover_piece_requested(piece: Piece, offset: Vector3):
 		_camera_controller.get_hover_position(), offset)
 
 func _on_CameraController_pop_stack_requested(stack: Stack, n: int):
-	rpc_id(1, "request_pop_stack", stack.name, n)
+	rpc_id(1, "request_pop_stack", stack.name, n, true, 1.0)
 
 func _on_CameraController_selecting_all_pieces():
 	var pieces = _pieces.get_children()
-	for i in range(pieces.size() - 1, -1, -1):
-		var piece = pieces[i]
-		if piece is Card and piece.is_placed_aside():
-			pieces.remove(i)
 	_camera_controller.append_selected_pieces(pieces)
 
 func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stacks: bool):
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
-
-func _on_CameraController_started_hovering_card(card: Card):
-	emit_signal("started_hovering_card", card)
-
-func _on_CameraController_stopped_hovering_card(card: Card):
-	emit_signal("stopped_hovering_card", card)
 
 func _on_GameUI_rotation_amount_updated(rotation_amount: float):
 	_camera_controller.set_piece_rotation_amount(rotation_amount)

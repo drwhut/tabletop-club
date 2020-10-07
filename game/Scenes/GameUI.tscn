@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/GameUI.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/HandContainer.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=3]
 
 [node name="GameUI" type="Control"]
@@ -47,17 +46,6 @@ margin_bottom = 300.0
 rect_min_size = Vector2( 100, 300 )
 mouse_filter = 2
 bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Hand" type="Container" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -100.0
-mouse_filter = 2
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -135,7 +123,6 @@ text = "Quit to desktop"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
 visible = false
-[connection signal="tree_exited" from="." to="." method="_on_GameUI_tree_exited"]
 [connection signal="pressed" from="TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
 [connection signal="item_selected" from="TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
 [connection signal="pressed" from="TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]

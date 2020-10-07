@@ -33,14 +33,14 @@ margin_bottom = 560.0
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
 margin_right = 984.0
-margin_bottom = 536.0
+margin_bottom = 530.0
 size_flags_vertical = 3
 
 [node name="Controls" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
@@ -48,15 +48,14 @@ section_name = "controls"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controls"]
 margin_right = 976.0
-margin_bottom = 500.0
+margin_bottom = 488.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
 [node name="MouseHorizontalSensitivity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 1.0
 margin_right = 486.0
-margin_bottom = 15.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "Mouse Horizontal Sensitivity"
 align = 2
@@ -72,18 +71,18 @@ step = 0.01
 value = 0.05
 
 [node name="MouseVerticalSensitivity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 21.0
+margin_top = 24.0
 margin_right = 486.0
-margin_bottom = 35.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "Mouse Vertical Sensitivity"
 align = 2
 
 [node name="MouseVerticalSensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 20.0
+margin_top = 24.0
 margin_right = 976.0
-margin_bottom = 36.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 min_value = 0.01
 max_value = 1.0
@@ -91,46 +90,46 @@ step = 0.01
 value = 0.05
 
 [node name="MouseHorizontalInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 45.0
+margin_top = 52.0
 margin_right = 486.0
-margin_bottom = 59.0
+margin_bottom = 72.0
 size_flags_horizontal = 3
 text = "Mouse Horizontal Invert"
 align = 2
 
 [node name="MouseHorizontalInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 40.0
+margin_top = 48.0
 margin_right = 976.0
-margin_bottom = 64.0
+margin_bottom = 76.0
 
 [node name="MouseVerticalInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 73.0
+margin_top = 84.0
 margin_right = 486.0
-margin_bottom = 87.0
+margin_bottom = 104.0
 size_flags_horizontal = 3
 text = "Mouse Vertical Invert"
 align = 2
 
 [node name="MouseVerticalInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 68.0
+margin_top = 80.0
 margin_right = 976.0
-margin_bottom = 92.0
+margin_bottom = 108.0
 
 [node name="CameraMovementSpeed" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 97.0
+margin_top = 112.0
 margin_right = 486.0
-margin_bottom = 111.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 text = "Camera Movement Speed"
 align = 2
 
 [node name="CameraMovementSpeedSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 96.0
+margin_top = 112.0
 margin_right = 976.0
-margin_bottom = 112.0
+margin_bottom = 128.0
 size_flags_horizontal = 3
 min_value = 0.01
 max_value = 1.0
@@ -138,32 +137,32 @@ step = 0.01
 value = 0.25
 
 [node name="LeftClickToMove" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 121.0
+margin_top = 140.0
 margin_right = 486.0
-margin_bottom = 135.0
+margin_bottom = 160.0
 size_flags_horizontal = 3
 text = "Hold Left Click to Move Camera"
 align = 2
 
 [node name="LeftClickToMoveCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 116.0
+margin_top = 136.0
 margin_right = 976.0
-margin_bottom = 140.0
+margin_bottom = 164.0
 
 [node name="ZoomSensitivity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 145.0
+margin_top = 168.0
 margin_right = 486.0
-margin_bottom = 159.0
+margin_bottom = 188.0
 size_flags_horizontal = 3
 text = "Zoom Sensitivity"
 align = 2
 
 [node name="ZoomSensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 144.0
+margin_top = 168.0
 margin_right = 976.0
-margin_bottom = 160.0
+margin_bottom = 184.0
 size_flags_horizontal = 3
 min_value = 0.01
 max_value = 1.0
@@ -171,32 +170,32 @@ step = 0.01
 value = 0.25
 
 [node name="ZoomInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 169.0
+margin_top = 196.0
 margin_right = 486.0
-margin_bottom = 183.0
+margin_bottom = 216.0
 size_flags_horizontal = 3
 text = "Zoom Invert"
 align = 2
 
 [node name="ZoomInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 164.0
+margin_top = 192.0
 margin_right = 976.0
-margin_bottom = 188.0
+margin_bottom = 220.0
 
 [node name="PieceLiftSensitivity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 193.0
+margin_top = 224.0
 margin_right = 486.0
-margin_bottom = 207.0
+margin_bottom = 244.0
 size_flags_horizontal = 3
 text = "Piece Lift Sensitivity"
 align = 2
 
 [node name="PieceLiftSensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 192.0
+margin_top = 224.0
 margin_right = 976.0
-margin_bottom = 208.0
+margin_bottom = 240.0
 size_flags_horizontal = 3
 min_value = 0.01
 max_value = 1.0
@@ -204,46 +203,46 @@ step = 0.01
 value = 0.15
 
 [node name="PieceLiftInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 217.0
+margin_top = 252.0
 margin_right = 486.0
-margin_bottom = 231.0
+margin_bottom = 272.0
 size_flags_horizontal = 3
 text = "Piece Lift Invert"
 align = 2
 
 [node name="PieceLiftInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 212.0
+margin_top = 248.0
 margin_right = 976.0
-margin_bottom = 236.0
+margin_bottom = 276.0
 
 [node name="PieceRotationInvert" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 245.0
+margin_top = 284.0
 margin_right = 486.0
-margin_bottom = 259.0
+margin_bottom = 304.0
 size_flags_horizontal = 3
 text = "Piece Rotation Invert"
 align = 2
 
 [node name="PieceRotationInvertCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 240.0
+margin_top = 280.0
 margin_right = 976.0
-margin_bottom = 264.0
+margin_bottom = 308.0
 
 [node name="AltToRotate" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 273.0
+margin_top = 316.0
 margin_right = 486.0
-margin_bottom = 287.0
+margin_bottom = 336.0
 size_flags_horizontal = 3
 text = "Press Alt to Rotate Piece"
 align = 2
 
 [node name="AltToRotateCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 268.0
+margin_top = 312.0
 margin_right = 976.0
-margin_bottom = 292.0
+margin_bottom = 340.0
 pressed = true
 
 [node name="General" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
@@ -251,7 +250,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
@@ -259,7 +258,7 @@ section_name = "general"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/General"]
 margin_right = 976.0
-margin_bottom = 500.0
+margin_bottom = 488.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -309,7 +308,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
@@ -317,7 +316,7 @@ section_name = "key_bindings"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings"]
 margin_right = 976.0
-margin_bottom = 500.0
+margin_bottom = 488.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -525,7 +524,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
@@ -540,65 +539,50 @@ columns = 2
 
 [node name="Name" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
 margin_top = 5.0
-margin_right = 486.0
-margin_bottom = 19.0
+margin_right = 480.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 text = "Name"
 align = 2
 
 [node name="NameEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_left = 490.0
-margin_right = 976.0
-margin_bottom = 24.0
+margin_left = 484.0
+margin_right = 964.0
+margin_bottom = 30.0
 size_flags_horizontal = 3
 text = "Player"
 
 [node name="Color" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_top = 227.0
-margin_right = 486.0
-margin_bottom = 241.0
+margin_top = 241.0
+margin_right = 480.0
+margin_bottom = 261.0
 size_flags_horizontal = 3
 text = "Color"
 align = 2
 
 [node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_left = 494.0
-margin_top = 32.0
-margin_right = 980.0
-margin_bottom = 444.0
+margin_left = 492.0
+margin_top = 42.0
+margin_right = 972.0
+margin_bottom = 476.0
 size_flags_horizontal = 3
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
 
 [node name="HideCursors" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_top = 449.0
-margin_right = 486.0
-margin_bottom = 463.0
+margin_top = 476.0
+margin_right = 480.0
+margin_bottom = 496.0
 size_flags_horizontal = 3
 text = "Hide Player Cursors"
 align = 2
 
 [node name="HideCursorsCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_left = 490.0
-margin_top = 444.0
-margin_right = 976.0
-margin_bottom = 468.0
-size_flags_horizontal = 3
-
-[node name="HideHandSizes" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_top = 477.0
-margin_right = 486.0
-margin_bottom = 491.0
-size_flags_horizontal = 3
-text = "Hide Player Hand Sizes"
-align = 2
-
-[node name="HideHandSizesCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_left = 490.0
+margin_left = 484.0
 margin_top = 472.0
-margin_right = 976.0
-margin_bottom = 496.0
+margin_right = 964.0
+margin_bottom = 500.0
 size_flags_horizontal = 3
 
 [node name="Video" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
@@ -606,7 +590,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
@@ -614,7 +598,7 @@ section_name = "video"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video"]
 margin_right = 976.0
-margin_bottom = 500.0
+margin_bottom = 488.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -690,27 +674,27 @@ items = [ "None", null, false, 0, null, "2X", null, false, 1, null, "4X", null, 
 selected = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 540.0
+margin_top = 534.0
 margin_right = 984.0
 margin_bottom = 560.0
 alignment = 2
 
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 855.0
-margin_right = 897.0
-margin_bottom = 20.0
+margin_left = 847.0
+margin_right = 891.0
+margin_bottom = 26.0
 text = "Back"
 
 [node name="ApplyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 901.0
-margin_right = 949.0
-margin_bottom = 20.0
+margin_left = 895.0
+margin_right = 947.0
+margin_bottom = 26.0
 text = "Apply"
 
 [node name="OKButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 953.0
+margin_left = 951.0
 margin_right = 984.0
-margin_bottom = 20.0
+margin_bottom = 26.0
 text = "OK"
 
 [node name="BindingBackground" type="ColorRect" parent="."]
