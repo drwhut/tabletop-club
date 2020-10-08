@@ -86,7 +86,7 @@ static func find_first_mesh_instance(node: Node) -> MeshInstance:
 master func flip_vertically() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		srv_hover_basis = srv_hover_basis.rotated(transform.basis.z, PI)
-		_srv_wake_up()
+		srv_wake_up()
 
 # Get the piece's mesh instance.
 # Returns: The piece's mesh instance, null if it does not exist.
@@ -142,7 +142,7 @@ master func request_unlock() -> void:
 master func reset_orientation() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		srv_hover_basis = Basis.IDENTITY
-		_srv_wake_up()
+		srv_wake_up()
 
 # If you are hovering the piece, rotate it on the y-axis.
 # rot: The amount to rotate it by in radians.
@@ -164,7 +164,7 @@ master func rotate_y(rot: float) -> void:
 		target_y_euler.y = wrapf(target_y_scale * abs(rot), -PI, PI)
 		srv_hover_basis = Basis(target_y_euler)
 		
-		_srv_wake_up()
+		srv_wake_up()
 
 # Set the piece to appear like it is selected.
 # selected: Should the piece appear selected?
@@ -186,7 +186,7 @@ master func set_hover_position(hover_position: Vector3) -> void:
 	# player that is hovering the piece.
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		srv_hover_position = hover_position
-		_srv_wake_up()
+		srv_wake_up()
 		emit_signal("client_set_hover_position", self)
 
 # Called by the server to store the server's physics state locally.
@@ -241,7 +241,7 @@ func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) 
 		_srv_hover_offset = offset_pos
 		_srv_hover_player = player_id
 		
-		_srv_wake_up()
+		srv_wake_up()
 		
 		collision_layer = 2
 		custom_integrator = true
@@ -255,6 +255,11 @@ func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) 
 			return true
 	
 	return false
+
+# Wake the piece up if it is sleeping.
+func srv_wake_up() -> void:
+	sleeping = false
+	_srv_hover_time_since_update = 0.0
 
 # If you are hovering the piece, ask the server to stop hovering it. The server
 # can also stop hovering the piece regardless of who is currently hovering it.
@@ -383,8 +388,3 @@ func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Stops angular harmonic motion.
 	var angular_torque = inertia_tensor * angular_velocity
 	state.apply_torque_impulse(-angular_torque)
-
-# Wake the piece up if it is sleeping.
-func _srv_wake_up() -> void:
-	sleeping = false
-	_srv_hover_time_since_update = 0.0

@@ -167,11 +167,13 @@ func _srv_set_card_positions() -> void:
 	var origin = _area.global_transform.origin - dir * (hand_width / 2)
 	
 	_srv_cards[0].srv_hover_position = origin + dir * offset_begin
+	_srv_cards[0].srv_wake_up()
 	
 	var cumulative_width = widths[0]
 	for i in range(1, _srv_cards.size()):
 		var k = offset_begin + cumulative_width + offset_other
 		_srv_cards[i].srv_hover_position = origin + dir * k
+		_srv_cards[i].srv_wake_up()
 		
 		cumulative_width += widths[i] + offset_other
 
