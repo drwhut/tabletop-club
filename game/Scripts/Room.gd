@@ -557,6 +557,45 @@ master func request_collect_pieces(piece_names: Array) -> void:
 		
 		add_to = pieces.pop_front()
 
+# Request the server to deal cards from a stack to all players.
+# stack_name: The name of the stack of cards.
+# n: The number of cards to deal to each player.
+master func request_deal_cards(stack_name: String, n: int) -> void:
+	if n < 1:
+		return
+	
+	var stack = _pieces.get_node(stack_name)
+	
+	if not stack:
+		push_error("Piece " + stack_name + " does not exist!")
+		return
+	
+	if not stack is Stack:
+		push_error("Piece " + stack_name + " is not a stack!")
+		return
+	
+	var test_piece = load(stack.piece_entry["scene_path"]).instance()
+	var is_card_stack = test_piece is Card
+	test_piece.free()
+	
+	if not is_card_stack:
+		push_error("Stack " + stack_name + " does not contain cards!")
+		return
+	
+	for i in range(n):
+		if stack.get_piece_count() < 1:
+			break
+		
+		for hand in _hands.get_children():
+			if stack.get_piece_count() < 1:
+				break
+			
+			var card_name = request_pop_stack(stack_name, 1, false, 1.0)
+			if card_name == "":
+				break
+			
+			request_add_cards_to_hand([card_name], hand.owner_id())
+
 # Request the server to hover a piece.
 # piece_name: The name of the piece to hover.
 # init_pos: The initial hover position.
@@ -599,28 +638,29 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	_camera_controller.set_is_hovering(true)
 
 # Request the server to pop the piece at the top of a stack.
+# Returns: The name of the new piece.
 # stack_name: The name of the stack to pop.
 # n: The number of pieces to pop from the stack.
 # hover: Do we want to start hovering the piece afterwards?
 # split_dist: How far away do we want the piece from the stack when it is poped?
 master func request_pop_stack(stack_name: String, n: int, hover: bool,
-	split_dist: float) -> void:
+	split_dist: float) -> String:
 	
 	var player_id = get_tree().get_rpc_sender_id()
 	var stack = _pieces.get_node(stack_name)
 	
 	if not stack:
 		push_error("Stack " + stack_name + " does not exist!")
-		return
+		return ""
 	
 	if not stack is Stack:
 		push_error("Object " + stack_name + " is not a stack!")
-		return
+		return ""
 	
 	var new_piece: Piece = null
 	
 	if n < 1:
-		return
+		return ""
 	elif n < stack.get_piece_count():
 		var unit_height = stack.get_unit_height()
 		var total_height = stack.get_total_height()
@@ -680,6 +720,8 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 	if new_piece and hover:
 		if new_piece.srv_start_hovering(player_id, new_piece.transform.origin, Vector3()):
 			rpc_id(player_id, "request_pop_stack_accepted", new_piece.name)
+	
+	return new_piece.name
 
 # Called by the server if the request to pop a stack was accepted, and we are
 # now hovering the new piece.
@@ -1059,6 +1101,9 @@ func _on_CameraController_collect_pieces_requested(pieces: Array):
 		if piece is StackablePiece:
 			names.append(piece.name)
 	rpc_id(1, "request_collect_pieces", names)
+
+func _on_CameraController_dealing_cards(stack: Stack, n: int):
+	rpc_id(1, "request_deal_cards", stack.name, n)
 
 func _on_CameraController_hover_piece_requested(piece: Piece, offset: Vector3):
 	rpc_id(1, "request_hover_piece", piece.name,

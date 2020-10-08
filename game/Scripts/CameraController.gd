@@ -23,6 +23,7 @@ extends Spatial
 
 signal adding_cards_to_hand(cards, id) # If id is 0, add to nearest hand.
 signal collect_pieces_requested(pieces)
+signal dealing_cards(stack, n)
 signal hover_piece_requested(piece, offset)
 signal pop_stack_requested(stack, n)
 signal selecting_all_pieces()
@@ -723,6 +724,10 @@ func _on_context_collect_selected_pressed() -> void:
 	if _selected_pieces.size() > 1:
 		emit_signal("collect_pieces_requested", _selected_pieces)
 
+func _on_context_deal_cards_pressed(n: int) -> void:
+	_hide_context_menu()
+	emit_signal("dealing_cards", _selected_pieces[0], n)
+
 func _on_context_delete_pressed() -> void:
 	_delete_selected_pieces()
 
@@ -832,11 +837,25 @@ func _popup_piece_context_menu() -> void:
 			collect_all_button.connect("pressed", self, "_on_context_collect_all_pressed")
 			_piece_context_menu_container.add_child(collect_all_button)
 			
+			var stack = _selected_pieces[0]
+			var test_piece = load(stack.piece_entry["scene_path"]).instance()
+			var is_card_stack = test_piece is Card
+			test_piece.free()
+			
+			if is_card_stack:
+				var deal_button = SpinBoxButton.new()
+				deal_button.button.text = "Deal X cards"
+				deal_button.spin_box.prefix = "X ="
+				deal_button.spin_box.min_value = 1
+				deal_button.spin_box.max_value = stack.get_piece_count()
+				deal_button.connect("pressed", self, "_on_context_deal_cards_pressed")
+				_piece_context_menu_container.add_child(deal_button)
+			
 			var take_top_button = SpinBoxButton.new()
 			take_top_button.button.text = "Take X off top"
 			take_top_button.spin_box.prefix = "X ="
 			take_top_button.spin_box.min_value = 1
-			take_top_button.spin_box.max_value = _selected_pieces[0].get_piece_count()
+			take_top_button.spin_box.max_value = stack.get_piece_count()
 			take_top_button.connect("pressed", self, "_on_context_take_top_pressed")
 			_piece_context_menu_container.add_child(take_top_button)
 		
