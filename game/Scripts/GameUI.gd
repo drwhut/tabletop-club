@@ -202,6 +202,13 @@ func _update_object_content(pack_name: String) -> void:
 		"tokens/cube",
 		"tokens/cylinder"
 		], "Tokens")
+	
+	# A dirty workaround for a bug where closing the objects dialog while there
+	# was content means that when loading new content afterwards the vertical
+	# scrollbar disappears... for some reason.
+	var v_scrollbar = _objects_content_container.get_v_scrollbar()
+	if v_scrollbar.max_value > 0:
+		v_scrollbar.visible = true
 
 # Update the pack list in the objects menu.
 func _update_object_packs() -> void:
