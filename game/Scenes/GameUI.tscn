@@ -92,16 +92,40 @@ scroll_horizontal_enabled = false
 
 [node name="Packs" type="VBoxContainer" parent="ObjectsDialog/HBoxContainer/VBoxContainer/ScrollContainer"]
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ObjectsDialog/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="ObjectsDialog/HBoxContainer"]
 margin_left = 45.0
 margin_right = 540.0
 margin_bottom = 300.0
 size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ObjectsDialog/HBoxContainer/VBoxContainer2"]
+margin_right = 495.0
+margin_bottom = 270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="Content" type="VBoxContainer" parent="ObjectsDialog/HBoxContainer/ScrollContainer"]
+[node name="Content" type="VBoxContainer" parent="ObjectsDialog/HBoxContainer/VBoxContainer2/ScrollContainer"]
 margin_right = 495.0
 size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ObjectsDialog/HBoxContainer/VBoxContainer2"]
+margin_top = 274.0
+margin_right = 495.0
+margin_bottom = 300.0
+
+[node name="StatusLabel" type="Label" parent="ObjectsDialog/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_top = 3.0
+margin_right = 451.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+
+[node name="AddButton" type="Button" parent="ObjectsDialog/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 455.0
+margin_right = 495.0
+margin_bottom = 26.0
+disabled = true
+text = "Add"
 
 [node name="GameMenuBackground" type="ColorRect" parent="."]
 visible = false
@@ -155,6 +179,7 @@ visible = false
 [connection signal="item_selected" from="TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
 [connection signal="pressed" from="TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
 [connection signal="popup_hide" from="ObjectsDialog" to="." method="_on_ObjectsDialog_popup_hide"]
+[connection signal="pressed" from="ObjectsDialog/HBoxContainer/VBoxContainer2/HBoxContainer/AddButton" to="." method="_on_AddButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]

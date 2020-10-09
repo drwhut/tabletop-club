@@ -26,10 +26,12 @@ signal piece_requested(piece_entry)
 signal rotation_amount_updated(rotation_amount)
 
 onready var _game_menu_background = $GameMenuBackground
+onready var _objects_add_button = $ObjectsDialog/HBoxContainer/VBoxContainer2/HBoxContainer/AddButton
+onready var _objects_content = $ObjectsDialog/HBoxContainer/VBoxContainer2/ScrollContainer/Content
+onready var _objects_content_container = $ObjectsDialog/HBoxContainer/VBoxContainer2/ScrollContainer
 onready var _objects_dialog = $ObjectsDialog
 onready var _objects_packs = $ObjectsDialog/HBoxContainer/VBoxContainer/ScrollContainer/Packs
-onready var _objects_content = $ObjectsDialog/HBoxContainer/ScrollContainer/Content
-onready var _objects_content_container = $ObjectsDialog/HBoxContainer/ScrollContainer
+onready var _objects_status = $ObjectsDialog/HBoxContainer/VBoxContainer2/HBoxContainer/StatusLabel
 onready var _options_menu = $OptionsMenu
 onready var _player_list = $PlayerList
 onready var _rotation_option = $TopPanel/RotationOption
@@ -96,6 +98,8 @@ func _add_content_object(parent: Control, piece_entry: Dictionary) -> void:
 	
 	parent.add_child(preview)
 	preview.set_piece(piece_entry)
+	
+	preview.connect("clicked", self, "_on_preview_clicked")
 
 # Add a set of objects of a given type to a control node, if it exists in the
 # piece database.
@@ -144,6 +148,9 @@ func _get_num_content_columns() -> int:
 # Retrieve all of the previews currently in the scene tree, and place them back
 # in the available list.
 func _retrieve_previews() -> void:
+	get_tree().call_group("preview_selected", "set_selected", false)
+	_objects_add_button.disabled = true
+	
 	_retrieve_previews_recursive(_objects_content)
 
 # Recursively retrieve all previews from a given parent.
@@ -169,6 +176,8 @@ func _set_rotation_amount() -> void:
 # pack_name: The name of the pack whose content to display. If the pack doesn't
 # exist, then nothing is displayed.
 func _update_object_content(pack_name: String) -> void:
+	_objects_status.text = ""
+	
 	_retrieve_previews()
 	
 	for child in _objects_content.get_children():
@@ -219,6 +228,28 @@ func _update_player_list() -> void:
 	
 	code += "[/table][/right]"
 	_player_list.bbcode_text = code
+
+func _on_AddButton_pressed():
+	var previews_selected = get_tree().get_nodes_in_group("preview_selected")
+	
+	var num_pieces = 0
+	var piece_name = ""
+	for preview in previews_selected:
+		if preview is ObjectPreview:
+			var piece_entry = preview.get_piece_entry()
+			
+			num_pieces += 1
+			if piece_name.empty():
+				piece_name = piece_entry["name"]
+			
+			emit_signal("piece_requested", piece_entry)
+	
+	if num_pieces == 0:
+		pass
+	elif num_pieces == 1:
+		_objects_status.text = "Added %s." % piece_name
+	else:
+		_objects_status.text = "Added %d objects." % previews_selected.size()
 
 func _on_BackToGameButton_pressed():
 	_game_menu_background.visible = false
@@ -275,6 +306,16 @@ func _on_pack_button_toggled(pressed: bool):
 		_toggled_pack = ""
 		
 	_update_object_content(_toggled_pack)
+
+func _on_preview_clicked(preview: ObjectPreview, event: InputEventMouseButton):
+	if event.pressed:
+		if event.button_index == BUTTON_LEFT:
+			if not event.control:
+				get_tree().call_group("preview_selected", "set_selected", false)
+			preview.set_selected(not preview.is_selected())
+	
+	var none_selected = get_tree().get_nodes_in_group("preview_selected").empty()
+	_objects_add_button.disabled = none_selected
 
 func _on_RotationOption_item_selected(index: int):
 	_set_rotation_amount()

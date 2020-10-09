@@ -23,6 +23,8 @@ extends Control
 
 class_name ObjectPreview
 
+signal clicked(preview, button_event)
+
 onready var _camera = $CenterContainer/ViewportContainer/Viewport/Camera
 onready var _label = $Label
 onready var _viewport = $CenterContainer/ViewportContainer/Viewport
@@ -30,18 +32,33 @@ onready var _viewport = $CenterContainer/ViewportContainer/Viewport
 const REVOLUTIONS_PER_SECOND = 0.25
 const X_ROTATION = PI / 4
 
+var _last_piece_entry: Dictionary = {}
 var _piece: Piece = null
 
 # Remove the piece from the display if there is one.
 func clear_piece() -> void:
+	_last_piece_entry = {}
+	
 	if _piece:
 		_viewport.remove_child(_piece)
 		_piece.queue_free()
 		_piece = null
 
+# Get the piece entry this preview represents.
+# Returns: The piece entry, empty if no piece has been set.
+func get_piece_entry() -> Dictionary:
+	return _last_piece_entry
+
+# Does the preview appear selected?
+# Returns: If the preview appears selected.
+func is_selected() -> bool:
+	return not _viewport.transparent_bg
+
 # Set the preview to display the given piece.
 # piece_entry: The entry of the piece to display.
 func set_piece(piece_entry: Dictionary) -> void:
+	_last_piece_entry = piece_entry
+	
 	_label.text = piece_entry["name"]
 	
 	if piece_entry.has("texture_paths"):
@@ -61,6 +78,8 @@ func set_piece(piece_entry: Dictionary) -> void:
 		PieceBuilder.fill_stack(_piece, piece_entry)
 	
 	# Adjust the camera's position so it can see the entire piece.
+	# TODO: If it is a custom piece, find an efficient way to get it's radius
+	# and height.
 	var scale = piece_entry["scale"]
 	var piece_height = scale.y
 	
@@ -86,7 +105,20 @@ func set_piece(piece_entry: Dictionary) -> void:
 	var dist = 1 + display_radius + (display_height / (2 * tan(theta / 2)))
 	_camera.translation.z = dist
 
+# Set the preview to appear selected.
+# selected: Whether the preview should be selected.
+func set_selected(selected: bool) -> void:
+	_viewport.transparent_bg = not selected
+	if selected:
+		add_to_group("preview_selected")
+	else:
+		remove_from_group("preview_selected")
+
 func _process(delta):
 	if _piece:
 		var delta_theta = 2 * PI * REVOLUTIONS_PER_SECOND * delta
 		_piece.rotate_object_local(Vector3.UP, delta_theta)
+
+func _on_ViewportContainer_gui_input(event):
+	if event is InputEventMouseButton:
+		emit_signal("clicked", self, event)
