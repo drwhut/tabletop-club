@@ -1,0 +1,83 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ObjectsDialog.gd" type="Script" id=1]
+
+[node name="ObjectsDialog" type="WindowDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 28.0
+rect_min_size = Vector2( 540, 300 )
+popup_exclusive = true
+window_title = "Objects"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "Displays the pieces that are available to spawn."
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 41.0
+margin_bottom = 300.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 41.0
+margin_bottom = 20.0
+text = "Packs:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 41.0
+margin_bottom = 300.0
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="Packs" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/ScrollContainer"]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 45.0
+margin_right = 540.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer2"]
+margin_right = 495.0
+margin_bottom = 270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="Content" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/ScrollContainer"]
+margin_right = 495.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+margin_top = 274.0
+margin_right = 495.0
+margin_bottom = 300.0
+
+[node name="StatusLabel" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_top = 3.0
+margin_right = 451.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+
+[node name="AddButton" type="Button" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 455.0
+margin_right = 495.0
+margin_bottom = 26.0
+disabled = true
+text = "Add"
+[connection signal="popup_hide" from="." to="." method="_on_ObjectsDialog_popup_hide"]
+[connection signal="tree_exited" from="." to="." method="_on_ObjectsDialog_tree_exited"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/HBoxContainer/AddButton" to="." method="_on_AddButton_pressed"]
