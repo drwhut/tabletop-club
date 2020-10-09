@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/Dice.gd"
 }, {
 "base": "Control",
+"class": "ObjectPreview",
+"language": "GDScript",
+"path": "res://Scripts/ObjectPreview.gd"
+}, {
+"base": "Control",
 "class": "OptionsTab",
 "language": "GDScript",
 "path": "res://Scripts/OptionsTab.gd"
@@ -74,6 +79,7 @@ _global_script_class_icons={
 "BindButton": "",
 "Card": "",
 "Dice": "",
+"ObjectPreview": "",
 "OptionsTab": "",
 "OutlineColorRect": "",
 "Piece": "",

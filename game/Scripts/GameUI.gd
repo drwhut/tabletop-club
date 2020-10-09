@@ -34,6 +34,8 @@ onready var _options_menu = $OptionsMenu
 onready var _player_list = $PlayerList
 onready var _rotation_option = $TopPanel/RotationOption
 
+var _available_previews = []
+var _object_preview = preload("res://Scenes/ObjectPreview.tscn")
 var _piece_db = {}
 var _preview_width = 0
 var _toggled_pack = ""
@@ -48,6 +50,21 @@ func apply_options(config: ConfigFile) -> void:
 func set_piece_db(pieces: Dictionary) -> void:
 	_piece_db = pieces
 	_update_object_packs()
+	
+	# The object previews take some time to instance (this is mostly due to the
+	# rendering engine creating the buffers needed to render the object), so
+	# we'll instance all of the previews now while the user is loading in, so
+	# we can just add them to the scene tree when needed.
+	var max_needed = 0
+	for pack in pieces:
+		var pack_num = 0
+		for type in pieces[pack]:
+			pack_num += pieces[pack][type].size()
+		if pack_num > max_needed:
+			max_needed = pack_num
+	
+	while _available_previews.size() < max_needed:
+		_available_previews.push_back(_object_preview.instance())
 
 func _ready():
 	Lobby.connect("player_added", self, "_on_Lobby_player_added")
@@ -57,7 +74,7 @@ func _ready():
 	# Make sure we emit the signal when all of the nodes are ready:
 	call_deferred("_set_rotation_amount")
 	
-	var preview_test = preload("res://Scenes/ObjectPreview.tscn").instance()
+	var preview_test = _object_preview.instance()
 	add_child(preview_test)
 	_preview_width = preview_test.rect_size.x
 	remove_child(preview_test)
@@ -73,7 +90,10 @@ func _unhandled_input(event):
 # parent: The control node to add the object to.
 # piece_entry: The entry representing the piece.
 func _add_content_object(parent: Control, piece_entry: Dictionary) -> void:
-	var preview = preload("res://Scenes/ObjectPreview.tscn").instance()
+	var preview = _available_previews.pop_back()
+	if not preview:
+		return
+	
 	parent.add_child(preview)
 	preview.set_piece(piece_entry)
 
@@ -121,6 +141,22 @@ func _get_num_content_columns() -> int:
 		return 1
 	return int(_objects_content_container.rect_size.x / _preview_width)
 
+# Retrieve all of the previews currently in the scene tree, and place them back
+# in the available list.
+func _retrieve_previews() -> void:
+	_retrieve_previews_recursive(_objects_content)
+
+# Recursively retrieve all previews from a given parent.
+# node: The node to start from.
+func _retrieve_previews_recursive(node: Node) -> void:
+	if node is ObjectPreview:
+		node.get_parent().remove_child(node)
+		node.clear_piece()
+		_available_previews.push_back(node)
+	else:
+		for child in node.get_children():
+			_retrieve_previews_recursive(child)
+
 # Call to emit a signal for the camera to set it's piece rotation amount.
 func _set_rotation_amount() -> void:
 	if _rotation_option.selected >= 0:
@@ -133,6 +169,8 @@ func _set_rotation_amount() -> void:
 # pack_name: The name of the pack whose content to display. If the pack doesn't
 # exist, then nothing is displayed.
 func _update_object_content(pack_name: String) -> void:
+	_retrieve_previews()
+	
 	for child in _objects_content.get_children():
 		_objects_content.remove_child(child)
 		child.queue_free()
@@ -190,6 +228,10 @@ func _on_DesktopButton_pressed():
 
 func _on_GameMenuButton_pressed():
 	_game_menu_background.visible = true
+
+func _on_GameUI_tree_exited():
+	for preview in _available_previews:
+		preview.free()
 
 func _on_Lobby_player_added(id: int):
 	_update_player_list()

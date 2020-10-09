@@ -21,6 +21,8 @@
 
 extends Control
 
+class_name ObjectPreview
+
 onready var _camera = $CenterContainer/ViewportContainer/Viewport/Camera
 onready var _label = $Label
 onready var _viewport = $CenterContainer/ViewportContainer/Viewport
@@ -29,6 +31,13 @@ const REVOLUTIONS_PER_SECOND = 0.25
 const X_ROTATION = PI / 4
 
 var _piece: Piece = null
+
+# Remove the piece from the display if there is one.
+func clear_piece() -> void:
+	if _piece:
+		_viewport.remove_child(_piece)
+		_piece.queue_free()
+		_piece = null
 
 # Set the preview to display the given piece.
 # piece_entry: The entry of the piece to display.
