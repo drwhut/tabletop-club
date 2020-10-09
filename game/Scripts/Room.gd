@@ -54,30 +54,10 @@ remotesync func add_piece(name: String, transform: Transform,
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	# Firstly, check to see if the piece entry does not represent a pre-filled
-	# stack.
-	if piece_entry.has("texture_paths") and (not piece_entry.has("texture_path")):
-		push_error("Cannot add " + piece_entry.name + " as a piece, since it is a pre-filled stack!")
-		return
-	
-	var piece = load(piece_entry["scene_path"]).instance()
-	
-	# If the scene is not a piece (e.g. when importing a scene from the assets
-	# folder), make it a piece so it can interact with other objects.
-	if not piece is Piece:
-		piece = _build_piece(piece)
+	var piece = PieceBuilder.build_piece(piece_entry)
 	
 	piece.name = name
 	piece.transform = transform
-	piece.piece_entry = piece_entry
-	
-	piece.mass = piece_entry["mass"]
-	
-	# Scale the piece by changing the scale of all collision shapes and mesh
-	# instances.
-	_scale_piece(piece, piece_entry["scale"])
-	
-	_pieces.add_child(piece)
 	
 	piece.connect("piece_exiting_tree", self, "_on_piece_exiting_tree")
 	
@@ -86,11 +66,7 @@ remotesync func add_piece(name: String, transform: Transform,
 	if piece is StackablePiece:
 		piece.connect("stack_requested", self, "_on_stack_requested")
 	
-	# Apply a generic texture to the die.
-	if piece_entry.has("texture_path") and piece_entry["texture_path"]:
-		var texture: Texture = load(piece_entry["texture_path"])
-		
-		piece.apply_texture(texture)
+	_pieces.add_child(piece)
 
 # Called by the server to add a piece to a stack.
 # piece_name: The name of the piece.
@@ -124,8 +100,8 @@ remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 	
 	_pieces.remove_child(piece)
 	
-	var piece_mesh = _get_stack_piece_mesh(piece)
-	var piece_shape = _get_stack_piece_shape(piece)
+	var piece_mesh = PieceBuilder.get_piece_mesh(piece)
+	var piece_shape = PieceBuilder.get_piece_shape(piece)
 	
 	if not (piece_mesh and piece_shape):
 		return
@@ -167,11 +143,11 @@ remotesync func add_stack(name: String, transform: Transform,
 	_pieces.remove_child(piece1)
 	_pieces.remove_child(piece2)
 	
-	var piece1_mesh = _get_stack_piece_mesh(piece1)
-	var piece2_mesh = _get_stack_piece_mesh(piece2)
+	var piece1_mesh = PieceBuilder.get_piece_mesh(piece1)
+	var piece2_mesh = PieceBuilder.get_piece_mesh(piece2)
 	
-	var piece1_shape = _get_stack_piece_shape(piece1)
-	var piece2_shape = _get_stack_piece_shape(piece2)
+	var piece1_shape = PieceBuilder.get_piece_shape(piece1)
+	var piece2_shape = PieceBuilder.get_piece_shape(piece2)
 	
 	if not (piece1_mesh and piece2_mesh and piece1_shape and piece2_shape):
 		return
@@ -214,42 +190,14 @@ puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
 remotesync func add_stack_filled(name: String, transform: Transform,
 	stack_entry: Dictionary, piece_names: Array) -> void:
 	
-	if stack_entry["masses"].size() != stack_entry["texture_paths"].size():
-		push_error("Stack entry arrays do not match size!")
-	
-	var single_piece = load(stack_entry["scene_path"]).instance()
-	_scale_piece(single_piece, stack_entry["scale"])
-	
 	var stack = add_stack_empty(name, transform)
+	PieceBuilder.fill_stack(stack, stack_entry)
 	
-	for i in range(stack_entry["texture_paths"].size()):
-		var mesh = _get_stack_piece_mesh(single_piece)
-		var shape = _get_stack_piece_shape(single_piece)
+	for i in range(stack.get_piece_count()):
+		if i >= piece_names.size():
+			break
 		
-		var texture_path = stack_entry.texture_paths[i]
-		
-		# Create a new piece entry based on the stack entry.
-		mesh.name = piece_names[i]
-		mesh.piece_entry = {
-			"mass": stack_entry.masses[i],
-			"name": stack_entry.name,
-			"scale": stack_entry.scale,
-			"scene_path": stack_entry.scene_path,
-			"texture_path": texture_path
-		}
-		
-		# TODO: Make sure StackPieceInstances do the exact same thing as Pieces
-		# when it comes to applying textures.
-		var texture: Texture = load(texture_path)
-		
-		var new_material = SpatialMaterial.new()
-		new_material.albedo_texture = texture
-		
-		mesh.set_surface_material(0, new_material)
-		
-		stack.add_piece(mesh, shape, Stack.STACK_BOTTOM, Stack.FLIP_NO)
-	
-	single_piece.queue_free()
+		stack.get_pieces()[i].name = piece_names[i]
 
 # Called by the server to merge the contents of one stack into another stack.
 # stack1_name: The name of the stack to merge contents from.
@@ -987,87 +935,14 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 		contents.push_back(stack1.pop_piece())
 	
 	var test_piece = load(contents[0].piece_entry["scene_path"]).instance()
-	_scale_piece(test_piece, contents[0].piece_entry["scale"])
-	var shape = _get_stack_piece_shape(test_piece)
+	PieceBuilder.scale_piece(test_piece, contents[0].piece_entry["scale"])
+	var shape = PieceBuilder.get_piece_shape(test_piece)
 	
 	while not contents.empty():
 		var piece = contents.pop_back()
 		stack2.add_piece(piece, shape, Stack.STACK_TOP)
 	
 	test_piece.queue_free()
-
-# Create a Piece object out of a generic Spatial object.
-# Returns: A Piece.
-# piece: The Spatial object.
-func _build_piece(piece: Spatial) -> Piece:
-	var out = Piece.new()
-	
-	# Find the first MeshInstance in the piece scene, so we can get it's mesh
-	# data to create a collision shape.
-	var mesh_instance = Piece.find_first_mesh_instance(piece)
-	if mesh_instance:
-		var collision_shape = CollisionShape.new()
-		collision_shape.shape = mesh_instance.mesh.create_convex_shape()
-		collision_shape.add_child(piece)
-		out.add_child(collision_shape)
-		
-		# We also want to make sure that the mesh instance has it's own unique
-		# material that isn't shared with the other instances, so when e.g. the
-		# instance is being selected, not all of the instances look like they
-		# are selected (see #20).
-		var material = mesh_instance.get_surface_material(0)
-		if not material:
-			material = mesh_instance.mesh.surface_get_material(0)
-			if material:
-				material = material.duplicate()
-				mesh_instance.set_surface_material(0, material)
-	else:
-		push_error(piece.name + " does not have a mesh instance!")
-	
-	return out
-
-# Create a StackPieceInstance from a stackable piece, which can be put into a
-# stack.
-# Returns: A StackPieceInstance representing the piece's mesh instance.
-# piece: The piece to use.
-func _get_stack_piece_mesh(piece: StackablePiece) -> StackPieceInstance:
-	var piece_mesh = StackPieceInstance.new()
-	piece_mesh.name = piece.name
-	piece_mesh.transform = piece.transform
-	piece_mesh.piece_entry = piece.piece_entry
-	
-	var piece_mesh_inst = piece.get_node("CollisionShape/MeshInstance")
-	if not piece_mesh_inst:
-		push_error("Piece " + piece.name + " does not have a MeshInstance child!")
-		return null
-	
-	# Get the scale from the mesh instance (since the rigid body itself won't be
-	# scaled).
-	piece_mesh.scale = piece_mesh_inst.scale
-	
-	piece_mesh.mesh = piece_mesh_inst.mesh
-	piece_mesh.set_surface_material(0, piece_mesh_inst.get_surface_material(0))
-	
-	return piece_mesh
-
-# Get the collision shape of a stackable piece.
-# Returns: The piece's collision shape.
-# piece: The piece to query.
-func _get_stack_piece_shape(piece: StackablePiece) -> CollisionShape:
-	var piece_collision_shape = piece.get_node("CollisionShape")
-	if not piece_collision_shape:
-		push_error("Piece " + piece.name + " does not have a CollisionShape child!")
-		return null
-	
-	return piece_collision_shape
-
-# Scale a piece by changing the scale of its children collision shapes.
-# piece: The Spatial to scale.
-# scale: How much to scale the piece by.
-func _scale_piece(piece: Spatial, scale: Vector3) -> void:
-	for child in piece.get_children():
-		if child is CollisionShape:
-			child.scale_object_local(scale)
 
 func _on_piece_exiting_tree(piece: Piece) -> void:
 	_camera_controller.erase_selected_pieces(piece)

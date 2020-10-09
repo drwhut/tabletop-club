@@ -101,7 +101,7 @@ func _ready():
 	Lobby.clear_players()
 	
 	# The assets should have been imported at the start of the game.
-	_ui.set_piece_tree_from_db(PieceDB.get_db())
+	_ui.set_piece_db(PieceDB.get_db())
 
 # Create a network peer object.
 # Returns: A new network peer object.

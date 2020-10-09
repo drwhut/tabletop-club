@@ -20,22 +20,22 @@ __meta__ = {
 }
 
 [node name="ObjectsButton" type="Button" parent="TopPanel"]
-margin_right = 62.0
-margin_bottom = 20.0
+margin_right = 64.0
+margin_bottom = 26.0
 text = "Objects"
 
 [node name="RotationOption" type="OptionButton" parent="TopPanel"]
-margin_left = 66.0
-margin_right = 111.0
-margin_bottom = 20.0
+margin_left = 68.0
+margin_right = 115.0
+margin_bottom = 26.0
 text = "45"
 items = [ "15", null, false, 0, null, "30", null, false, 1, null, "45", null, false, 2, null, "60", null, false, 3, null, "90", null, false, 4, null, "180", null, false, 5, null ]
 selected = 2
 
 [node name="GameMenuButton" type="Button" parent="TopPanel"]
-margin_left = 115.0
-margin_right = 163.0
-margin_bottom = 20.0
+margin_left = 119.0
+margin_right = 170.0
+margin_bottom = 26.0
 text = "Menu"
 
 [node name="PlayerList" type="RichTextLabel" parent="."]
@@ -55,26 +55,77 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -150.0
-margin_top = -100.0
-margin_right = 150.0
-margin_bottom = 100.0
+margin_left = -225.0
+margin_top = -150.0
+margin_right = 315.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 540, 300 )
 popup_exclusive = true
 window_title = "Objects"
-resizable = true
 __meta__ = {
 "_edit_use_anchors_": false,
-"_editor_description_": "Displays the pieces that are available to spawn.
-
-The tree is filled once all of the assets have been imported."
+"_editor_description_": "Displays the pieces that are available to spawn."
 }
 
-[node name="ObjectsTree" type="Tree" parent="ObjectsDialog"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ObjectsDialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ObjectsDialog/HBoxContainer"]
+margin_right = 41.0
+margin_bottom = 300.0
+
+[node name="Label" type="Label" parent="ObjectsDialog/HBoxContainer/VBoxContainer"]
+margin_right = 41.0
+margin_bottom = 20.0
+text = "Packs:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ObjectsDialog/HBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 41.0
+margin_bottom = 300.0
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="Packs" type="VBoxContainer" parent="ObjectsDialog/HBoxContainer/VBoxContainer/ScrollContainer"]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ObjectsDialog/HBoxContainer"]
+margin_left = 45.0
+margin_right = 540.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ObjectsDialog/HBoxContainer/VBoxContainer2"]
+margin_right = 495.0
+margin_bottom = 270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="Content" type="VBoxContainer" parent="ObjectsDialog/HBoxContainer/VBoxContainer2/ScrollContainer"]
+margin_right = 495.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ObjectsDialog/HBoxContainer/VBoxContainer2"]
+margin_top = 274.0
+margin_right = 495.0
+margin_bottom = 300.0
+
+[node name="StatusLabel" type="Label" parent="ObjectsDialog/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_top = 3.0
+margin_right = 451.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+
+[node name="AddButton" type="Button" parent="ObjectsDialog/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 455.0
+margin_right = 495.0
+margin_bottom = 26.0
+disabled = true
+text = "Add"
 
 [node name="GameMenuBackground" type="ColorRect" parent="."]
 visible = false
@@ -93,10 +144,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameMenuBackground/CenterContainer"]
-margin_left = 445.0
-margin_top = 254.0
-margin_right = 579.0
-margin_bottom = 346.0
+margin_left = 440.0
+margin_top = 242.0
+margin_right = 583.0
+margin_bottom = 358.0
 
 [node name="BackToGameButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
 margin_right = 134.0
@@ -123,10 +174,12 @@ text = "Quit to desktop"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
 visible = false
+[connection signal="tree_exited" from="." to="." method="_on_GameUI_tree_exited"]
 [connection signal="pressed" from="TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
 [connection signal="item_selected" from="TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
 [connection signal="pressed" from="TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
-[connection signal="item_activated" from="ObjectsDialog/ObjectsTree" to="." method="_on_ObjectsTree_item_activated"]
+[connection signal="popup_hide" from="ObjectsDialog" to="." method="_on_ObjectsDialog_popup_hide"]
+[connection signal="pressed" from="ObjectsDialog/HBoxContainer/VBoxContainer2/HBoxContainer/AddButton" to="." method="_on_AddButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]

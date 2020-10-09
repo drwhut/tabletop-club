@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/ObjectPreview.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_color = Color( 0.545098, 0.733333, 0.780392, 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="World" id=2]
+environment = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+font_data = ExtResource( 2 )
+
+[node name="ObjectPreview" type="VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 100.0
+margin_bottom = 100.0
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CenterContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="CenterContainer/ViewportContainer"]
+size = Vector2( 256, 256 )
+own_world = true
+world = SubResource( 2 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="CenterContainer/ViewportContainer/Viewport"]
+
+[node name="Label" type="Label" parent="."]
+margin_top = 104.0
+margin_right = 100.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 3 )
+align = 1
+autowrap = true
+[connection signal="gui_input" from="CenterContainer/ViewportContainer" to="." method="_on_ViewportContainer_gui_input"]

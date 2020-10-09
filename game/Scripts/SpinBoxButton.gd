@@ -34,7 +34,7 @@ func _init():
 	add_child(button)
 	
 	spin_box = SpinBox.new()
-	spin_box.size_flags_horizontal = SIZE_FILL | SIZE_EXPAND
+	spin_box.size_flags_horizontal = SIZE_EXPAND_FILL
 	add_child(spin_box)
 
 func _on_button_pressed() -> void:
