@@ -181,9 +181,13 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 		
 		for file_path in files:
 			var import_err = _import_asset(file_path, game, type, scene, config)
-			
 			if import_err:
 				print("Failed to import: ", file_path, " (error ", import_err, ")")
+		
+		if _db.has(game):
+			if _db[game].has(type):
+				var array: Array = _db[game][type]
+				array.sort_custom(self, "_sort_pieces")
 		
 		var is_stackable = false
 		if scene:
@@ -403,6 +407,10 @@ func _send_import_signal(file: String, dir_found: bool) -> void:
 	_import_file = file
 	_import_send_signal = true
 	_import_mutex.unlock()
+
+# Function used to sort an array of piece entries.
+func _sort_pieces(a: Dictionary, b: Dictionary) -> bool:
+	return a["name"] < b["name"]
 
 func _on_exiting_tree() -> void:
 	if _import_thread.is_active():
