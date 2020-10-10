@@ -532,7 +532,7 @@ section_name = "multiplayer"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer"]
 margin_right = 976.0
-margin_bottom = 500.0
+margin_bottom = 532.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -561,10 +561,10 @@ text = "Color"
 align = 2
 
 [node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_left = 492.0
-margin_top = 42.0
-margin_right = 972.0
-margin_bottom = 476.0
+margin_left = 484.0
+margin_top = 34.0
+margin_right = 964.0
+margin_bottom = 468.0
 size_flags_horizontal = 3
 edit_alpha = false
 presets_enabled = false
@@ -584,6 +584,22 @@ margin_top = 472.0
 margin_right = 964.0
 margin_bottom = 500.0
 size_flags_horizontal = 3
+
+[node name="CensorProfanity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_top = 508.0
+margin_right = 480.0
+margin_bottom = 528.0
+size_flags_horizontal = 3
+text = "Censor Profanity"
+align = 2
+
+[node name="CensorProfanityCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_left = 484.0
+margin_top = 504.0
+margin_right = 964.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+pressed = true
 
 [node name="Video" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false

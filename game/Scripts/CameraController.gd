@@ -1018,7 +1018,7 @@ func _on_Lobby_player_added(id: int) -> void:
 	
 	_cursors.add_child(cursor)
 
-func _on_Lobby_player_modified(id: int) -> void:
+func _on_Lobby_player_modified(id: int, old: Dictionary) -> void:
 	if id == get_tree().get_network_unique_id():
 		return
 	

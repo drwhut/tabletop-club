@@ -25,6 +25,7 @@ signal applying_options(config)
 signal piece_requested(piece_entry)
 signal rotation_amount_updated(rotation_amount)
 
+onready var _chat_box = $ChatBox
 onready var _game_menu_background = $GameMenuBackground
 onready var _objects_dialog = $ObjectsDialog
 onready var _options_menu = $OptionsMenu
@@ -34,7 +35,11 @@ onready var _rotation_option = $TopPanel/RotationOption
 # Apply options from the options menu.
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
-	pass
+	_chat_box.apply_options(config)
+
+# Hide the chat box from the UI.
+func hide_chat_box() -> void:
+	_chat_box.visible = false
 
 # Set the piece database contents, based on the piece database given.
 # pieces: The database from the PieceDB.
@@ -85,7 +90,7 @@ func _on_GameMenuButton_pressed():
 func _on_Lobby_player_added(id: int):
 	_update_player_list()
 
-func _on_Lobby_player_modified(id: int):
+func _on_Lobby_player_modified(id: int, old: Dictionary):
 	_update_player_list()
 
 func _on_Lobby_player_removed(id: int):

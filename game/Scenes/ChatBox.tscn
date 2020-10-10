@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/ChatBox.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Cabin-Bold.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/Cabin-Italic.tres" type="DynamicFont" id=3]
+
+[node name="ChatBox" type="HBoxContainer"]
+margin_right = 380.0
+margin_bottom = 200.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "The chat box is used in multiplayer games so players can communicate to each other via text."
+}
+
+[node name="ToggleButton" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 200.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_right = 380.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+
+[node name="ChatText" type="RichTextLabel" parent="VBoxContainer"]
+margin_right = 364.0
+margin_bottom = 166.0
+focus_mode = 2
+size_flags_vertical = 3
+custom_fonts/italics_font = ExtResource( 3 )
+custom_fonts/bold_font = ExtResource( 2 )
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 170.0
+margin_right = 364.0
+margin_bottom = 200.0
+
+[node name="MessageEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+margin_right = 313.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+placeholder_text = "Type a message here..."
+
+[node name="SendButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 317.0
+margin_right = 364.0
+margin_bottom = 30.0
+text = "Send"
+[connection signal="pressed" from="ToggleButton" to="." method="_on_ToggleButton_pressed"]
+[connection signal="text_entered" from="VBoxContainer/HBoxContainer/MessageEdit" to="." method="_on_MessageEdit_text_entered"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SendButton" to="." method="_on_SendButton_pressed"]

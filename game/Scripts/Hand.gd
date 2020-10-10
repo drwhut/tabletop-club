@@ -109,7 +109,7 @@ func _ready():
 	if material:
 		_mesh_instance.set_surface_material(0, material.duplicate())
 	
-	Lobby.connect("player_modified", self, "_on_player_modified")
+	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
 
 # Get the displacement along the hand's "line" to the point where it is closest
 # to the given card.
@@ -218,6 +218,6 @@ func _on_client_set_card_position(card: Card):
 func _on_Hand_tree_exiting():
 	_srv_cards.clear()
 
-func _on_player_modified(id: int):
+func _on_Lobby_player_modified(id: int, old: Dictionary):
 	if id == owner_id():
 		update_owner_display()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/GameUI.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/ObjectsDialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/ChatBox.tscn" type="PackedScene" id=4]
 
 [node name="GameUI" type="Control"]
 anchor_right = 1.0
@@ -53,6 +54,12 @@ __meta__ = {
 
 [node name="ObjectsDialog" parent="." instance=ExtResource( 2 )]
 
+[node name="ChatBox" parent="." instance=ExtResource( 4 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -250.0
+margin_bottom = -50.0
+
 [node name="GameMenuBackground" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
@@ -100,7 +107,6 @@ text = "Quit to desktop"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
 visible = false
-[connection signal="tree_exited" from="." to="." method="_on_GameUI_tree_exited"]
 [connection signal="pressed" from="TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
 [connection signal="item_selected" from="TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
 [connection signal="pressed" from="TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]

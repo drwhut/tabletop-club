@@ -74,6 +74,8 @@ func init_singleplayer() -> void:
 		push_error("Player hand not added, no available hand positions!")
 	else:
 		_room.rpc_id(1, "add_hand", 1, hand_transform)
+	
+	_ui.hide_chat_box()
 
 # Request the server to add a piece to the game.
 # piece_entry: The piece's entry in the PieceDB.

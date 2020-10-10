@@ -37,9 +37,8 @@ remotesync func add_self(id: int, name: String, color: Color) -> void:
 		return
 	
 	_players[id] = {}
-	emit_signal("player_added", id)
-	
 	modify_self(id, name, color)
+	emit_signal("player_added", id)
 
 # Clear the list of players in the lobby.
 func clear_players() -> void:
@@ -50,7 +49,12 @@ func clear_players() -> void:
 # id: The ID of the player.
 func get_name_bb_code(id: int) -> String:
 	var player = Lobby.get_player(id)
-	
+	return get_name_bb_code_custom(player)
+
+# Get the BBCode representation of a player with custom data.
+# Returns: The player's name in BBCode.
+# player: The custom player data.
+func get_name_bb_code_custom(player: Dictionary) -> String:
 	var player_color = "ffffff"
 	if player.has("color"):
 		player_color = player["color"].to_html(false)
@@ -59,10 +63,10 @@ func get_name_bb_code(id: int) -> String:
 	var player_name = "<No Name>"
 	if player.has("name"):
 		player_name = player["name"]
-	player_name = player_name.strip_edges()
+	# Security!
+	player_name = player_name.strip_edges().strip_escapes().replace("[", "[ ")
 	if player_name.empty():
 		player_name = "<No Name>"
-	player_name = player_name.replace("[", "") # For security!
 	code += player_name
 	
 	code += "[/color]"
@@ -90,9 +94,11 @@ remotesync func modify_self(id: int, name: String, color: Color) -> void:
 		return
 	
 	if _players.has(id):
+		var old = _players[id]
 		var dict = _create_player_dict(name, color)
 		_players[id] = dict
-		emit_signal("player_modified", id)
+		
+		emit_signal("player_modified", id, old)
 
 # Does the player with the given ID exist?
 # Returns: If the player exists.
@@ -107,8 +113,8 @@ remotesync func remove_self(id: int) -> void:
 		return
 	
 	if _players.has(id):
-		_players.erase(id)
 		emit_signal("player_removed", id)
+		_players.erase(id)
 
 # Request the server to add you to the network lobby.
 # name: Your name.
