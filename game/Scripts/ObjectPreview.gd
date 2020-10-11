@@ -59,6 +59,8 @@ func is_selected() -> bool:
 func set_piece(piece_entry: Dictionary) -> void:
 	_last_piece_entry = piece_entry
 	
+	if not piece_entry["description"].empty():
+		hint_tooltip = piece_entry["description"]
 	_label.text = piece_entry["name"]
 	
 	if piece_entry.has("texture_paths"):

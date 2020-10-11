@@ -88,6 +88,9 @@ Here is an example of a `config.cfg` file:
 ; The following properties are applied to every object in the subfolder.
 [*]
 
+; Setting the description of an object.
+desc = "This is an object you can spawn!"
+
 ; Setting the mass of an object in grams (g).
 mass = 5.0
 
@@ -120,6 +123,9 @@ Here is an example of a `stacks.cfg` file:
 ; This is the name of the stack.
 [My Stack]
 
+; You can also give stacks descriptions.
+desc = "This is my stack. It's awesome!"
+
 ; You then specify which objects are in the stack.
 ; Note that all of the objects need to be the same size.
 items = [
@@ -131,6 +137,8 @@ items = [
 ; This is the name of another stack.
 [My Friends Stack]
 
+desc = "My friend's stack isn't as good as my stack!"
+
 ; It doesn't matter if each object is on a new line.
-items = ["Trap Card 1.jpg", "Trap Card 2.jpg"]
+items = ["Trading Card 1.jpg", "Trading Card 2.jpg"]
 ```

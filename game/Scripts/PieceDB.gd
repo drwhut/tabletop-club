@@ -300,11 +300,13 @@ func _import_asset(from: String, game: String, type: String, scene: String,
 		return import_err
 	
 	# Converting from g -> kg -> (Ns^2/cm, since game units are in cm) = x10.
+	var desc = _get_file_config_value(config, from.get_file(), "desc", "")
 	var mass = 10 * _get_file_config_value(config, from.get_file(), "mass", 1.0)
 	var scale = _get_file_config_value(config, from.get_file(), "scale", Vector3(1, 1, 1))
 	
 	if VALID_SCENE_EXTENSIONS.has(to.get_extension()):
 		var entry = {
+			"description": desc,
 			"mass": mass,
 			"name": _get_file_without_ext(to),
 			"scale": scale,
@@ -314,6 +316,7 @@ func _import_asset(from: String, game: String, type: String, scene: String,
 		_add_entry_to_db(game, type, entry)
 	elif scene and VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
 		var entry = {
+			"description": desc,
 			"mass": mass,
 			"name": _get_file_without_ext(to),
 			"scale": scale,
@@ -350,6 +353,7 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 	scene: String) -> void:
 	
 	for stack_name in stack_config.get_sections():
+		var desc = stack_config.get_value(stack_name, "desc", "")
 		var items = stack_config.get_value(stack_name, "items")
 		if items and items is Array:
 			
@@ -387,6 +391,7 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 			
 			if scale:
 				var stack_entry = {
+					"description": desc,
 					"masses": masses,
 					"name": stack_name,
 					"scale": scale,

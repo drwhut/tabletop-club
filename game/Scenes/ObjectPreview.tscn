@@ -26,11 +26,13 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 100.0
 margin_bottom = 100.0
+mouse_filter = 1
 
 [node name="ViewportContainer" type="ViewportContainer" parent="CenterContainer"]
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
+mouse_filter = 1
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="CenterContainer/ViewportContainer"]
