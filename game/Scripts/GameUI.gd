@@ -30,6 +30,7 @@ signal save_table(path)
 onready var _chat_box = $ChatBox
 onready var _file_dialog = $GameMenuBackground/FileDialog
 onready var _game_menu_background = $GameMenuBackground
+onready var _games_dialog = $GamesDialog
 onready var _objects_dialog = $ObjectsDialog
 onready var _options_menu = $OptionsMenu
 onready var _player_list = $PlayerList
@@ -47,6 +48,7 @@ func hide_chat_box() -> void:
 # Set the piece database contents, based on the piece database given.
 # pieces: The database from the PieceDB.
 func set_piece_db(pieces: Dictionary) -> void:
+	_games_dialog.set_piece_db(pieces)
 	_objects_dialog.set_piece_db(pieces)
 
 func _ready():
@@ -104,6 +106,13 @@ func _on_FileDialog_file_selected(path: String):
 
 func _on_GameMenuButton_pressed():
 	_game_menu_background.visible = true
+
+func _on_GamesButton_pressed():
+	_games_dialog.popup_centered()
+
+func _on_GamesDialog_loading_game(game_entry: Dictionary):
+	_games_dialog.visible = false
+	emit_signal("load_table", game_entry["table_path"])
 
 func _on_LoadGameButton_pressed():
 	_popup_file_dialog(FileDialog.MODE_OPEN_FILE)

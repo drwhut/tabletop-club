@@ -33,6 +33,7 @@ const ASSET_DIR_PREFIXES = [
 ]
 
 const VALID_SCENE_EXTENSIONS = ["glb", "gltf"]
+const VALID_TABLE_EXTENSIONS = ["table"]
 
 # List taken from:
 # https://docs.godotengine.org/en/3.2/getting_started/workflow/assets/importing_images.html
@@ -130,6 +131,8 @@ func _import_game_dir(dir: Directory) -> void:
 	_import_dir_if_exists(dir, game, "dice/d4", "res://Pieces/Dice/d4.tscn")
 	_import_dir_if_exists(dir, game, "dice/d6", "res://Pieces/Dice/d6.tscn")
 	_import_dir_if_exists(dir, game, "dice/d8", "res://Pieces/Dice/d8.tscn")
+	
+	_import_dir_if_exists(dir, game, "games", "")
 	
 	_import_dir_if_exists(dir, game, "pieces/cube", "res://Pieces/Pieces/Cube.tscn")
 	_import_dir_if_exists(dir, game, "pieces/custom", "")
@@ -322,6 +325,13 @@ func _import_asset(from: String, game: String, type: String, scene: String,
 			"scale": scale,
 			"scene_path": scene,
 			"texture_path": to
+		}
+		_add_entry_to_db(game, type, entry)
+	elif VALID_TABLE_EXTENSIONS.has(to.get_extension()):
+		var entry = {
+			"description": desc,
+			"name": _get_file_without_ext(to),
+			"table_path": to
 		}
 		_add_entry_to_db(game, type, entry)
 	

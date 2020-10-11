@@ -39,6 +39,15 @@ The textures for d6 dice use the following UV mapping:
 The textures for d8 dice use the following UV mapping:
 ![D8 UV Mapping](OpenTabletop/dice/d8/Template.svg)
 
+### games/
+
+Games are table files that are used to setup the table automatically in order
+to start playing a game.
+
+You can create table files by setting up the table the way you want in
+singleplayer, then by going to the menu and saving the game into this
+directory.
+
 ### pieces/
 
 Pieces are generic objects with no special features.
