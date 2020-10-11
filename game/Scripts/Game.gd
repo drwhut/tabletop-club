@@ -23,10 +23,14 @@ extends Node
 
 onready var _connecting_dialog = $ConnectingDialog
 onready var _room = $Room
+onready var _table_state_error_dialog = $TableStateErrorDialog
+onready var _table_state_version_dialog = $TableStateVersionDialog
 onready var _ui = $GameUI
 
 var _player_name: String
 var _player_color: Color
+
+var _state_version_save: Dictionary = {}
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -91,6 +95,11 @@ master func request_game_piece(piece_entry: Dictionary) -> void:
 			piece_entry
 		)
 
+# Request the server to load a table state.
+# state: The state to load.
+master func request_load_table_state(state: Dictionary) -> void:
+	_room.rpc("set_state", state)
+
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
@@ -112,13 +121,42 @@ func _create_network_peer() -> NetworkedMultiplayerENet:
 	peer.compression_mode = NetworkedMultiplayerENet.COMPRESS_FASTLZ
 	return peer
 
+# Open a table state (.table) file in the given mode.
+# Returns: A file object for the given path, null if it failed to open.
+# path: The file path to open.
+# mode: The mode to open the file with.
+func _open_table_state_file(path: String, mode: int) -> File:
+	var file = File.new()
+	var open_err = file.open_compressed(path, mode, File.COMPRESSION_ZSTD)
+	if open_err == OK:
+		return file
+	else:
+		_popup_table_state_error("Could not open the file at path '%s' (error %d)." % [path, open_err])
+		return null
+
+# Show the table state popup dialog with the given error.
+# error: The error message to show.
+func _popup_table_state_error(error: String) -> void:
+	_table_state_error_dialog.dialog_text = error
+	_table_state_error_dialog.popup_centered()
+	
+	push_error(error)
+
+# Show the table state version popup with the given message.
+# message: The message to show.
+func _popup_table_state_version(message: String) -> void:
+	_table_state_version_dialog.dialog_text = message
+	_table_state_version_dialog.popup_centered()
+	
+	push_warning(message)
+
 func _player_connected(id: int) -> void:
 	print("Player with ID ", id, " connected!")
 	
 	# If a player has connected to the server, let them know of every piece on
 	# the board so far.
 	if get_tree().is_network_server():
-		_room.rpc_id(id, "set_state", _room.get_state())
+		_room.rpc_id(id, "set_state", _room.get_state(true, true))
 		
 		# If there is space, also give them a hand on the table.
 		var hand_transform = _room.srv_get_next_hand_transform()
@@ -153,9 +191,37 @@ func _server_disconnected() -> void:
 func _on_GameUI_applying_options(config: ConfigFile):
 	apply_options(config)
 
+func _on_GameUI_load_table(path: String):
+	var file = _open_table_state_file(path, File.READ)
+	if file:
+		var state = file.get_var()
+		file.close()
+		
+		if state is Dictionary:
+			var our_version = ProjectSettings.get_setting("application/config/version")
+			if state.has("version") and state["version"] == our_version:
+				rpc_id(1, "request_load_table_state", state)
+			else:
+				_state_version_save = state
+				if not state.has("version"):
+					_popup_table_state_version("Loaded table has no version information. Load anyway?")
+				else:
+					_popup_table_state_version("Loaded table was saved with a different version of the game (Current: %s, Table: %s). Load anyway?" % [our_version, state["version"]])
+		else:
+			_popup_table_state_error("Loaded table is not in the correct format.")
+
 func _on_GameUI_piece_requested(piece_entry: Dictionary):
 	rpc_id(1, "request_game_piece", piece_entry)
+
+func _on_GameUI_save_table(path: String):
+	var file = _open_table_state_file(path, File.WRITE)
+	if file:
+		file.store_var(_room.get_state())
+		file.close()
 
 func _on_Lobby_players_synced():
 	if not get_tree().is_network_server():
 		Lobby.rpc_id(1, "request_add_self", _player_name, _player_color)
+
+func _on_TableStateVersionDialog_confirmed():
+	rpc_id(1, "request_load_table_state", _state_version_save)

@@ -294,19 +294,23 @@ func get_piece_count() -> int:
 
 # Get the current room state.
 # Returns: The current room state.
-func get_state() -> Dictionary:
+# hands: Should the hand states be included?
+# collisions: Should collision data be included?
+func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	var out = {}
+	out["version"] = ProjectSettings.get_setting("application/config/version")
 	
 	var hand_dict = {}
 	var piece_dict = {}
 	var stack_dict = {}
 	
-	for hand in _hands.get_children():
-		var hand_meta = {
-			"transform": hand.transform
-		}
-		
-		hand_dict[hand.owner_id()] = hand_meta
+	if hands:
+		for hand in _hands.get_children():
+			var hand_meta = {
+				"transform": hand.transform
+			}
+			
+			hand_dict[hand.owner_id()] = hand_meta
 	
 	for piece in _pieces.get_children():
 		if piece is Stack:
@@ -334,12 +338,14 @@ func get_state() -> Dictionary:
 				"transform": piece.transform
 			}
 			
-			if piece is Card:
-				piece_meta["is_collisions_on"] = piece.is_collisions_on()
+			if collisions:
+				if piece is Card:
+					piece_meta["is_collisions_on"] = piece.is_collisions_on()
 			
 			piece_dict[piece.name] = piece_meta
 	
-	out["hands"] = hand_dict
+	if hands:
+		out["hands"] = hand_dict
 	out["pieces"] = piece_dict
 	out["stacks"] = stack_dict
 	return out
@@ -711,19 +717,15 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 
 # Set the room state.
 # state: The new room state.
-puppet func set_state(state: Dictionary) -> void:
+remotesync func set_state(state: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	# Delete all the pieces on the board currently before we begin.
-	for hand in _hands.get_children():
-		remove_child(hand)
-		hand.queue_free()
-	for child in _pieces.get_children():
-		remove_child(child)
-		child.queue_free()
-	
 	if state.has("hands"):
+		for hand in _hands.get_children():
+			_hands.remove_child(hand)
+			hand.queue_free()
+		
 		for hand_id in state["hands"]:
 			var hand_name = str(hand_id)
 			var hand_meta = state["hands"][hand_id]
@@ -738,8 +740,18 @@ puppet func set_state(state: Dictionary) -> void:
 			
 			add_hand(hand_id, hand_meta["transform"])
 	
+	if state.has("pieces") or state.has("stacks"):
+		for child in _pieces.get_children():
+			_pieces.remove_child(child)
+			child.queue_free()
+	
 	if state.has("pieces"):
 		for piece_name in state["pieces"]:
+			if get_tree().is_network_server():
+				var name_int = int(piece_name)
+				if name_int >= _srv_next_piece_name:
+					_srv_next_piece_name = name_int + 1
+			
 			var piece_meta = state["pieces"][piece_name]
 			
 			if not piece_meta.has("is_locked"):
@@ -773,18 +785,21 @@ puppet func set_state(state: Dictionary) -> void:
 				piece.lock_client(piece_meta["transform"])
 			
 			if piece is Card:
-				if not piece_meta.has("is_collisions_on"):
-					push_error("Card " + piece_name + " in new state has no is collisions on value!")
-					return
-				
-				if not piece_meta["is_collisions_on"] is bool:
-					push_error("Card " + piece_name + " collisions on is not a boolean!")
-					return
-				
-				piece.set_collisions_on(piece_meta["is_collisions_on"])
+				# The state can choose not to have this data.
+				if piece_meta.has("is_collisions_on"):
+					if not piece_meta["is_collisions_on"] is bool:
+						push_error("Card " + piece_name + " collisions on is not a boolean!")
+						return
+					
+					piece.set_collisions_on(piece_meta["is_collisions_on"])
 	
 	if state.has("stacks"):
 		for stack_name in state["stacks"]:
+			if get_tree().is_network_server():
+				var name_int = int(stack_name)
+				if name_int >= _srv_next_piece_name:
+					_srv_next_piece_name = name_int + 1
+			
 			var stack_meta = state["stacks"][stack_name]
 			
 			if not stack_meta.has("is_locked"):
@@ -832,6 +847,11 @@ puppet func set_state(state: Dictionary) -> void:
 					return
 				
 				var stack_piece_name = stack_piece_meta["name"]
+				
+				if get_tree().is_network_server():
+					var name_int = int(stack_piece_name)
+					if name_int >= _srv_next_piece_name:
+						_srv_next_piece_name = name_int + 1
 				
 				if not stack_piece_meta.has("flip_y"):
 					push_error("Stack piece" + stack_piece_name + " does not have a flip value!")

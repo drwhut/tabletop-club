@@ -25,6 +25,22 @@ anchor_bottom = 1.0
 text = "Connecting to the server..."
 align = 1
 valign = 1
+
+[node name="TableStateErrorDialog" type="AcceptDialog" parent="."]
+margin_right = 300.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 300, 180 )
+window_title = "Error!"
+dialog_autowrap = true
+
+[node name="TableStateVersionDialog" type="ConfirmationDialog" parent="."]
+margin_right = 300.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 300, 180 )
+dialog_autowrap = true
 [connection signal="applying_options" from="GameUI" to="." method="_on_GameUI_applying_options"]
+[connection signal="load_table" from="GameUI" to="." method="_on_GameUI_load_table"]
 [connection signal="piece_requested" from="GameUI" to="." method="_on_GameUI_piece_requested"]
 [connection signal="rotation_amount_updated" from="GameUI" to="Room" method="_on_GameUI_rotation_amount_updated"]
+[connection signal="save_table" from="GameUI" to="." method="_on_GameUI_save_table"]
+[connection signal="confirmed" from="TableStateVersionDialog" to="." method="_on_TableStateVersionDialog_confirmed"]

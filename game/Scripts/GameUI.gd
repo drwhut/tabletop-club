@@ -22,10 +22,13 @@
 extends Control
 
 signal applying_options(config)
+signal load_table(path)
 signal piece_requested(piece_entry)
 signal rotation_amount_updated(rotation_amount)
+signal save_table(path)
 
 onready var _chat_box = $ChatBox
+onready var _file_dialog = $GameMenuBackground/FileDialog
 onready var _game_menu_background = $GameMenuBackground
 onready var _objects_dialog = $ObjectsDialog
 onready var _options_menu = $OptionsMenu
@@ -60,6 +63,13 @@ func _unhandled_input(event):
 		if not _game_menu_background.visible:
 			_options_menu.visible = false
 
+# Popup the file dialog in the given mode.
+# mode: The mode to open the file dialog in.
+func _popup_file_dialog(mode: int) -> void:
+	_file_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
+	_file_dialog.mode = mode
+	_file_dialog.popup_centered()
+
 # Call to emit a signal for the camera to set it's piece rotation amount.
 func _set_rotation_amount() -> void:
 	if _rotation_option.selected >= 0:
@@ -84,8 +94,19 @@ func _on_BackToGameButton_pressed():
 func _on_DesktopButton_pressed():
 	get_tree().quit()
 
+func _on_FileDialog_file_selected(path: String):
+	if _file_dialog.mode == FileDialog.MODE_OPEN_FILE:
+		emit_signal("load_table", path)
+	elif _file_dialog.mode == FileDialog.MODE_SAVE_FILE:
+		emit_signal("save_table", path)
+	
+	_game_menu_background.visible = false
+
 func _on_GameMenuButton_pressed():
 	_game_menu_background.visible = true
+
+func _on_LoadGameButton_pressed():
+	_popup_file_dialog(FileDialog.MODE_OPEN_FILE)
 
 func _on_Lobby_player_added(id: int):
 	_update_player_list()
@@ -113,3 +134,6 @@ func _on_OptionsMenu_applying_options(config: ConfigFile):
 
 func _on_RotationOption_item_selected(index: int):
 	_set_rotation_amount()
+
+func _on_SaveGameButton_pressed():
+	_popup_file_dialog(FileDialog.MODE_SAVE_FILE)

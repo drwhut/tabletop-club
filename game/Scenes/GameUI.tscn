@@ -78,32 +78,52 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameMenuBackground/CenterContainer"]
 margin_left = 440.0
-margin_top = 242.0
+margin_top = 212.0
 margin_right = 583.0
-margin_bottom = 358.0
+margin_bottom = 388.0
 
 [node name="BackToGameButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
-margin_right = 134.0
-margin_bottom = 20.0
+margin_right = 143.0
+margin_bottom = 26.0
 text = "Back to game"
 
+[node name="SaveGameButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 143.0
+margin_bottom = 56.0
+text = "Save game"
+
+[node name="LoadGameButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
+margin_top = 60.0
+margin_right = 143.0
+margin_bottom = 86.0
+text = "Load game"
+
 [node name="OptionsButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
-margin_top = 24.0
-margin_right = 134.0
-margin_bottom = 44.0
+margin_top = 90.0
+margin_right = 143.0
+margin_bottom = 116.0
 text = "Options"
 
 [node name="MainMenuButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
-margin_top = 48.0
-margin_right = 134.0
-margin_bottom = 68.0
+margin_top = 120.0
+margin_right = 143.0
+margin_bottom = 146.0
 text = "Quit to main menu"
 
 [node name="DesktopButton" type="Button" parent="GameMenuBackground/CenterContainer/VBoxContainer"]
-margin_top = 72.0
-margin_right = 134.0
-margin_bottom = 92.0
+margin_top = 150.0
+margin_right = 143.0
+margin_bottom = 176.0
 text = "Quit to desktop"
+
+[node name="FileDialog" type="FileDialog" parent="GameMenuBackground"]
+margin_right = 600.0
+margin_bottom = 350.0
+access = 2
+filters = PoolStringArray( "*.table ; OpenTabletop Table" )
+current_dir = "/"
+current_path = "/"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -112,7 +132,10 @@ visible = false
 [connection signal="pressed" from="TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
 [connection signal="piece_requested" from="ObjectsDialog" to="." method="_on_ObjectsDialog_piece_requested"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]
+[connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/SaveGameButton" to="." method="_on_SaveGameButton_pressed"]
+[connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/LoadGameButton" to="." method="_on_LoadGameButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/DesktopButton" to="." method="_on_DesktopButton_pressed"]
+[connection signal="file_selected" from="GameMenuBackground/FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="applying_options" from="OptionsMenu" to="." method="_on_OptionsMenu_applying_options"]
