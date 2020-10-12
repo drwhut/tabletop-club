@@ -104,7 +104,7 @@ config/version="master"
 
 Global="*res://Scripts/Global.gd"
 Lobby="*res://Scripts/Lobby.gd"
-PieceDB="*res://Scripts/PieceDB.gd"
+AssetDB="*res://Scripts/AssetDB.gd"
 
 [display]
 

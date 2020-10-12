@@ -82,7 +82,7 @@ func init_singleplayer() -> void:
 	_ui.hide_chat_box()
 
 # Request the server to add a piece to the game.
-# piece_entry: The piece's entry in the PieceDB.
+# piece_entry: The piece's entry in the AssetDB.
 master func request_game_piece(piece_entry: Dictionary) -> void:
 	# Is the piece a pre-filled stack?
 	if piece_entry.has("texture_paths") and (not piece_entry.has("texture_path")):
@@ -112,7 +112,7 @@ func _ready():
 	Lobby.clear_players()
 	
 	# The assets should have been imported at the start of the game.
-	_ui.set_piece_db(PieceDB.get_db())
+	_ui.set_piece_db(AssetDB.get_db())
 
 # Create a network peer object.
 # Returns: A new network peer object.

@@ -45,7 +45,7 @@ remotesync func add_hand(player: int, transform: Transform) -> void:
 # Called by the server to add a piece to the room.
 # name: The name of the new piece.
 # transform: The initial transform of the new piece.
-# piece_entry: The piece's entry in the PieceDB.
+# piece_entry: The piece's entry in the AssetDB.
 # hover_player: If set to > 0, it will initially be in a hover state by the
 # player with the given ID.
 remotesync func add_piece(name: String, transform: Transform,
@@ -185,7 +185,7 @@ puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
 # Called by the server to add a pre-filled stack to the room.
 # name: The name of the new stack.
 # transform: The initial transform of the new stack.
-# stack_entry: The stack's entry in the PieceDB.
+# stack_entry: The stack's entry in the AssetDB.
 # piece_names: The names of the pieces in the newly filled stack.
 remotesync func add_stack_filled(name: String, transform: Transform,
 	stack_entry: Dictionary, piece_names: Array) -> void:
@@ -455,7 +455,7 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 	request_add_cards_to_hand(card_names, hand_id)
 
 # Request the server to add a pre-filled stack.
-# stack_entry: The stack's entry in the PieceDB.
+# stack_entry: The stack's entry in the AssetDB.
 master func request_add_stack_filled(stack_entry: Dictionary) -> void:
 	# Before we can get everyone to add the stack, we need to come up with names
 	# for the stack and it's items.

@@ -29,7 +29,7 @@ onready var _pack = $HBoxContainer/VBoxContainer/Pack
 
 var _game_entry: Dictionary = {}
 
-# Set the game preview details using an entry from the PieceDB.
+# Set the game preview details using an entry from the AssetDB.
 # pack_name: The name of the pack the game belongs to.
 # game_entry: The game this preview should represent.
 func set_game(pack_name: String, game_entry: Dictionary) -> void:

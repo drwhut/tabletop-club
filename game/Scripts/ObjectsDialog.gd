@@ -35,10 +35,10 @@ var _piece_db = {}
 var _preview_width = 0
 var _toggled_pack = ""
 
-# Set the piece database contents, based on the piece database given.
-# pieces: The database from the PieceDB.
-func set_piece_db(pieces: Dictionary) -> void:
-	_piece_db = pieces
+# Set the asset database contents, based on the asset database given.
+# assets: The database from the AssetDB.
+func set_piece_db(assets: Dictionary) -> void:
+	_piece_db = assets
 	_update_object_packs()
 	
 	# The object previews take some time to instance (this is mostly due to the
@@ -46,10 +46,10 @@ func set_piece_db(pieces: Dictionary) -> void:
 	# we'll instance all of the previews now while the user is loading in, so
 	# we can just add them to the scene tree when needed.
 	var max_needed = 0
-	for pack in pieces:
+	for pack in assets:
 		var pack_num = 0
-		for type in pieces[pack]:
-			pack_num += pieces[pack][type].size()
+		for type in assets[pack]:
+			pack_num += assets[pack][type].size()
 		if pack_num > max_needed:
 			max_needed = pack_num
 	
@@ -77,7 +77,7 @@ func _add_content_object(parent: Control, piece_entry: Dictionary) -> void:
 	preview.connect("clicked", self, "_on_preview_clicked")
 
 # Add a set of objects of a given type to a control node, if it exists in the
-# piece database.
+# asset database.
 # parent: The control node to add the content to.
 # pack_name: The name of the pack to get the objects from.
 # type_names: The names of the types in the database.

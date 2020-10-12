@@ -300,7 +300,7 @@ func _on_CancelBindButton_pressed():
 	_binding_background.visible = false
 
 func _on_OpenAssetsButton_pressed():
-	var asset_paths = PieceDB.get_asset_paths()
+	var asset_paths = AssetDB.get_asset_paths()
 	if asset_paths.empty():
 		return
 	

@@ -24,6 +24,12 @@ extends Node
 signal completed(dir_found)
 signal importing_file(file)
 
+enum {
+	ASSET_SCENE,
+	ASSET_TABLE,
+	ASSET_TEXTURE
+}
+
 const ASSET_DIR_PREFIXES = [
 	".",
 	"..",
@@ -40,7 +46,7 @@ const VALID_TABLE_EXTENSIONS = ["table"]
 const VALID_TEXTURE_EXTENSIONS = ["bmp", "dds", "exr", "hdr", "jpeg", "jpg",
 	"png", "tga", "svg", "svgz", "webp"]
 
-# NOTE: Pieces are stored similarly to the directory structures, but all piece
+# NOTE: Assets are stored similarly to the directory structures, but all asset
 # types are direct children of the game, i.e. "OpenTabletop/dice/d6" in the
 # game directory is _db["OpenTabletop"]["dice/d6"] here.
 var _db = {}
@@ -52,8 +58,8 @@ var _import_mutex = Mutex.new()
 var _import_send_signal = false
 var _import_thread = Thread.new()
 
-# From the open_tabletop_import_module:
-# https://github.com/drwhut/open_tabletop_import_module
+# From the open_tabletop_godot_module:
+# https://github.com/drwhut/open_tabletop_godot_module
 var _importer = TabletopImporter.new()
 
 # Get the list of asset directory paths the game will scan.
@@ -68,8 +74,8 @@ func get_asset_paths() -> Array:
 		out.append(path)
 	return out
 
-# Get the piece database.
-# Returns: The piece database.
+# Get the asset database.
+# Returns: The asset database.
 func get_db() -> Dictionary:
 	return _db
 
@@ -108,50 +114,51 @@ func _import_all(userdata) -> void:
 				
 				if dir.current_is_dir():
 					dir.change_dir(entry)
-					_import_game_dir(dir)
+					_import_pack_dir(dir)
 					dir.change_dir("..")
 				
 				entry = dir.get_next()
 	
 	_send_import_signal("", dir_found)
 
-# Import assets from a given game directory.
+# Import assets from a given pack directory.
 # dir: The directory to import assets from.
-func _import_game_dir(dir: Directory) -> void:
-	var game = dir.get_current_dir().get_file()
+func _import_pack_dir(dir: Directory) -> void:
+	var pack = dir.get_current_dir().get_file()
 	
-	print("Importing ", game, " from ", dir.get_current_dir(), " ...")
+	print("Importing ", pack, " from ", dir.get_current_dir(), " ...")
 	
 	_db_mutex.lock()
-	_db[game] = {}
+	_db[pack] = {}
 	_db_mutex.unlock()
 	
-	_import_dir_if_exists(dir, game, "cards", "res://Pieces/Card.tscn")
+	_import_dir_if_exists(dir, pack, "cards", ASSET_TEXTURE, "res://Pieces/Card.tscn")
 	
-	_import_dir_if_exists(dir, game, "dice/d4", "res://Pieces/Dice/d4.tscn")
-	_import_dir_if_exists(dir, game, "dice/d6", "res://Pieces/Dice/d6.tscn")
-	_import_dir_if_exists(dir, game, "dice/d8", "res://Pieces/Dice/d8.tscn")
+	_import_dir_if_exists(dir, pack, "dice/d4", ASSET_TEXTURE, "res://Pieces/Dice/d4.tscn")
+	_import_dir_if_exists(dir, pack, "dice/d6", ASSET_TEXTURE, "res://Pieces/Dice/d6.tscn")
+	_import_dir_if_exists(dir, pack, "dice/d8", ASSET_TEXTURE, "res://Pieces/Dice/d8.tscn")
 	
-	_import_dir_if_exists(dir, game, "games", "")
+	_import_dir_if_exists(dir, pack, "games", ASSET_TABLE, "")
 	
-	_import_dir_if_exists(dir, game, "pieces/cube", "res://Pieces/Pieces/Cube.tscn")
-	_import_dir_if_exists(dir, game, "pieces/custom", "")
-	_import_dir_if_exists(dir, game, "pieces/cylinder", "res://Pieces/Pieces/Cylinder.tscn")
+	_import_dir_if_exists(dir, pack, "pieces/cube", ASSET_TEXTURE, "res://Pieces/Pieces/Cube.tscn")
+	_import_dir_if_exists(dir, pack, "pieces/custom", ASSET_SCENE, "")
+	_import_dir_if_exists(dir, pack, "pieces/cylinder", ASSET_TEXTURE, "res://Pieces/Pieces/Cylinder.tscn")
 	
-	_import_dir_if_exists(dir, game, "tokens/cube", "res://Pieces/Tokens/Cube.tscn")
-	_import_dir_if_exists(dir, game, "tokens/cylinder", "res://Pieces/Tokens/Cylinder.tscn")
+	_import_dir_if_exists(dir, pack, "tokens/cube", ASSET_TEXTURE, "res://Pieces/Tokens/Cube.tscn")
+	_import_dir_if_exists(dir, pack, "tokens/cylinder", ASSET_TEXTURE, "res://Pieces/Tokens/Cylinder.tscn")
 
 # Import a directory of assets, but only if the directory exists.
 # current_dir: The current working directory.
-# game: The name of the game.
-# type: The type of the asset.
-# scene: The path of the scene to use for the asset. If blank, it is assumed
-# we are importing scenes.
-func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
-	scene: String) -> void:
+# pack: The name of the asset pack.
+# type_dir: The relative directory of the asset type.
+# type_asset: The type of assets the directory should hold.
+# scene: The path of the scene to use for the asset if it is a texture asset.
+# Should be blank if it is not a texture asset.
+func _import_dir_if_exists(current_dir: Directory, pack: String,
+	type_dir: String, type_asset: int, scene: String) -> void:
 	
 	var new_dir = Directory.new()
-	if new_dir.open(current_dir.get_current_dir() + "/" + type) == OK:
+	if new_dir.open(current_dir.get_current_dir() + "/" + type_dir) == OK:
 		
 		# If the configuration file exists for this directory, try and load it.
 		var config_path = new_dir.get_current_dir() + "/config.cfg"
@@ -166,7 +173,6 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 			push_warning("Failed to load: " + config_path + " (error " + str(config_err) + ")")
 		
 		var files = []
-		
 		new_dir.list_dir_begin(true, true)
 		
 		var file = new_dir.get_next()
@@ -183,14 +189,14 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 			file = new_dir.get_next()
 		
 		for file_path in files:
-			var import_err = _import_asset(file_path, game, type, scene, config)
+			var import_err = _import_asset(file_path, pack, type_dir, type_asset, scene, config)
 			if import_err:
 				print("Failed to import: ", file_path, " (error ", import_err, ")")
 		
-		if _db.has(game):
-			if _db[game].has(type):
-				var array: Array = _db[game][type]
-				array.sort_custom(self, "_sort_pieces")
+		if _db.has(pack):
+			if _db[pack].has(type_dir):
+				var array: Array = _db[pack][type_dir]
+				array.sort_custom(self, "_sort_assets")
 		
 		var is_stackable = false
 		if scene:
@@ -205,41 +211,41 @@ func _import_dir_if_exists(current_dir: Directory, game: String, type: String,
 			var stack_config_err = stack_config.load(stack_config_path)
 			
 			if stack_config_err == OK:
-				_import_stack_config(stack_config, game, type, scene)
+				_import_stack_config(stack_config, pack, type_dir, scene)
 				print("Loaded: " + stack_config_path)
 			elif stack_config_err == ERR_FILE_NOT_FOUND:
 				pass
 			else:
 				push_warning("Failed to load: " + stack_config_path + " (error " + str(stack_config_err) + ")")
 
-# Add a piece entry to the database.
-# game: The name of the game.
-# type: The type of the assets.
+# Add an asset entry to the database.
+# pack: The name of the pack.
+# type: The type of the asset.
 # entry: The entry to add.
-func _add_entry_to_db(game: String, type: String, entry: Dictionary) -> void:
+func _add_entry_to_db(pack: String, type: String, entry: Dictionary) -> void:
 	_db_mutex.lock()
 	
-	if not _db.has(game):
-		_db[game] = {}
+	if not _db.has(pack):
+		_db[pack] = {}
 	
-	if not _db[game].has(type):
-		_db[game][type] = []
+	if not _db[pack].has(type):
+		_db[pack][type] = []
 	
-	_db[game][type].push_back(entry)
+	_db[pack][type].push_back(entry)
 	_db_mutex.unlock()
 	
-	print("Added: ", game, "/", type, "/", entry.name)
+	print("Added: ", pack, "/", type, "/", entry.name)
 
-# Get the directory of a game's type in the user://assets directory.
+# Get the directory of a pack's type in the user://assets directory.
 # Returns: The directory as a Directory object.
-# game: The name of the game.
-# type: The type of the asset.
-func _get_asset_dir(game: String, type: String) -> Directory:
+# pack: The name of the pack.
+# type_dir: The relative path from the pack directory.
+func _get_asset_dir(pack: String, type_dir: String) -> Directory:
 	var dir = Directory.new()
 	var dir_error = dir.open("user://")
 	
 	if dir_error == OK:
-		var path = "assets/" + game + "/" + type
+		var path = "assets/" + pack + "/" + type_dir
 		dir.make_dir_recursive(path)
 		dir.change_dir(path)
 	else:
@@ -284,17 +290,18 @@ func _get_file_without_ext(file_path: String) -> String:
 # the database.
 # Returns: An Error.
 # from: The file path of the asset.
-# game: The name of the game to import the asset to.
-# type: The type of the asset to import to.
+# pack: The name of the pack to import the asset to.
+# type_dir: The relative file path from the pack directory.
+# type_asset: The type of the asset.
 # scene: The scene path to associate with the asset. If blank, it is assumed
 # the asset is a scene.
 # config: The configuration file for the asset's directory.
-func _import_asset(from: String, game: String, type: String, scene: String,
-	config: ConfigFile) -> int:
+func _import_asset(from: String, pack: String, type_dir: String,
+	type_asset: int, scene: String, config: ConfigFile) -> int:
 	
 	_send_import_signal(from, true)
 	
-	var dir = _get_asset_dir(game, type)
+	var dir = _get_asset_dir(pack, type_dir)
 	
 	var to = dir.get_current_dir() + "/" + from.get_file()
 	var import_err = _import_file(from, to)
@@ -302,38 +309,41 @@ func _import_asset(from: String, game: String, type: String, scene: String,
 	if not (import_err == OK or import_err == ERR_ALREADY_EXISTS):
 		return import_err
 	
-	# Converting from g -> kg -> (Ns^2/cm, since game units are in cm) = x10.
 	var desc = _get_file_config_value(config, from.get_file(), "desc", "")
+	# Converting from g -> kg -> (Ns^2/cm, since game units are in cm) = x10.
 	var mass = 10 * _get_file_config_value(config, from.get_file(), "mass", 1.0)
 	var scale = _get_file_config_value(config, from.get_file(), "scale", Vector3(1, 1, 1))
 	
-	if VALID_SCENE_EXTENSIONS.has(to.get_extension()):
-		var entry = {
-			"description": desc,
-			"mass": mass,
-			"name": _get_file_without_ext(to),
-			"scale": scale,
-			"scene_path": to,
-			"texture_path": null
-		}
-		_add_entry_to_db(game, type, entry)
-	elif scene and VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
-		var entry = {
-			"description": desc,
-			"mass": mass,
-			"name": _get_file_without_ext(to),
-			"scale": scale,
-			"scene_path": scene,
-			"texture_path": to
-		}
-		_add_entry_to_db(game, type, entry)
-	elif VALID_TABLE_EXTENSIONS.has(to.get_extension()):
-		var entry = {
-			"description": desc,
-			"name": _get_file_without_ext(to),
-			"table_path": to
-		}
-		_add_entry_to_db(game, type, entry)
+	if type_asset == ASSET_SCENE:
+		if VALID_SCENE_EXTENSIONS.has(to.get_extension()):
+			var entry = {
+				"description": desc,
+				"mass": mass,
+				"name": _get_file_without_ext(to),
+				"scale": scale,
+				"scene_path": to,
+				"texture_path": null
+			}
+			_add_entry_to_db(pack, type_dir, entry)
+	elif type_asset == ASSET_TEXTURE:
+		if scene and VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
+			var entry = {
+				"description": desc,
+				"mass": mass,
+				"name": _get_file_without_ext(to),
+				"scale": scale,
+				"scene_path": scene,
+				"texture_path": to
+			}
+			_add_entry_to_db(pack, type_dir, entry)
+	elif type_asset == ASSET_TABLE:
+		if VALID_TABLE_EXTENSIONS.has(to.get_extension()):
+			var entry = {
+				"description": desc,
+				"name": _get_file_without_ext(to),
+				"table_path": to
+			}
+			_add_entry_to_db(pack, type_dir, entry)
 	
 	return OK
 
@@ -356,10 +366,10 @@ func _import_file(from: String, to: String) -> int:
 
 # Import a stack configuration file.
 # stack_config: The stack config file.
-# game: The name of the game.
+# pack: The name of the pack.
 # type: The type of the assets.
 # scene: The scene to associate with the assets.
-func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
+func _import_stack_config(stack_config: ConfigFile, pack: String, type: String,
 	scene: String) -> void:
 	
 	for stack_name in stack_config.get_sections():
@@ -377,11 +387,11 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 				# So, we need to scan through the DB to find the texture, then
 				# see what the scale of that texture's piece is.
 				if not scale:
-					if _db.has(game):
-						if _db[game].has(type) and _db[game][type] is Array:
+					if _db.has(pack):
+						if _db[pack].has(type) and _db[pack][type] is Array:
 							var piece_entry = null
 							
-							for piece in _db[game][type]:
+							for piece in _db[pack][type]:
 								if piece.has("texture_path") and piece.texture_path is String:
 									if piece.texture_path.ends_with(item):
 										piece_entry = piece
@@ -396,7 +406,7 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 				
 				# TODO: Check the file exists.
 				masses.push_back(mass)
-				var texture_path = "user://assets/" + game + "/" + type + "/" + item
+				var texture_path = "user://assets/" + pack + "/" + type + "/" + item
 				texture_paths.push_back(texture_path)
 			
 			if scale:
@@ -408,7 +418,7 @@ func _import_stack_config(stack_config: ConfigFile, game: String, type: String,
 					"scene_path": scene,
 					"texture_paths": texture_paths
 				}
-				_add_entry_to_db(game, "stacks", stack_entry)
+				_add_entry_to_db(pack, "stacks", stack_entry)
 			else:
 				print("Could not determine scale of stack ", stack_name)
 
@@ -423,8 +433,8 @@ func _send_import_signal(file: String, dir_found: bool) -> void:
 	_import_send_signal = true
 	_import_mutex.unlock()
 
-# Function used to sort an array of piece entries.
-func _sort_pieces(a: Dictionary, b: Dictionary) -> bool:
+# Function used to sort an array of asset entries.
+func _sort_assets(a: Dictionary, b: Dictionary) -> bool:
 	return a["name"] < b["name"]
 
 func _on_exiting_tree() -> void:

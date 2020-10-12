@@ -25,10 +25,10 @@ onready var _importing_label = $CenterContainer/VBoxContainer/ImportingLabel
 onready var _missing_assets_popup = $MissingAssetsPopup
 
 func _ready():
-	PieceDB.connect("completed", self, "_on_importing_completed")
-	PieceDB.connect("importing_file", self, "_on_importing_file")
+	AssetDB.connect("completed", self, "_on_importing_completed")
+	AssetDB.connect("importing_file", self, "_on_importing_file")
 	
-	PieceDB.start_importing()
+	AssetDB.start_importing()
 
 func _on_importing_completed(dir_found: bool) -> void:
 	if dir_found:
@@ -37,7 +37,7 @@ func _on_importing_completed(dir_found: bool) -> void:
 		var missing_text = ""
 		missing_text += "OpenTabletop couldn't find an assets folder in any of the following places:"
 		missing_text += "\n\n"
-		for asset_dir in PieceDB.get_asset_paths():
+		for asset_dir in AssetDB.get_asset_paths():
 			missing_text += asset_dir + "\n"
 		missing_text += "\n"
 		missing_text += "Please create one of these folders and restart the game."

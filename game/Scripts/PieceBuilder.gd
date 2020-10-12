@@ -23,7 +23,7 @@ extends Resource
 
 class_name PieceBuilder
 
-# Build a piece using an entry from the PieceDB.
+# Build a piece using an entry from the AssetDB.
 # Returns: The piece corresponding to the given entry.
 # piece_entry: The entry to create the piece with.
 static func build_piece(piece_entry: Dictionary) -> Piece:
@@ -70,7 +70,7 @@ static func build_piece(piece_entry: Dictionary) -> Piece:
 	
 	return piece
 
-# Fill a stack with pieces using an entry from the PieceDB.
+# Fill a stack with pieces using an entry from the AssetDB.
 # stack: The stack to fill.
 # stack_entry: The stack entry to use.
 static func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:

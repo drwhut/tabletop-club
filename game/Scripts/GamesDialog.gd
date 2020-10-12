@@ -26,15 +26,15 @@ signal loading_game(game_entry)
 onready var _games = $MarginContainer/ScrollContainer/Games
 
 # Set the game database contents, based on the database given.
-# pieces: The database from the PieceDB.
-func set_piece_db(pieces: Dictionary) -> void:
+# assets: The database from the AssetDB.
+func set_piece_db(assets: Dictionary) -> void:
 	for child in _games.get_children():
 		_games.remove_child(child)
 		child.queue_free()
 	
-	for pack_name in pieces:
-		if pieces[pack_name].has("games"):
-			for game_entry in pieces[pack_name]["games"]:
+	for pack_name in assets:
+		if assets[pack_name].has("games"):
+			for game_entry in assets[pack_name]["games"]:
 				var preview = preload("res://Scenes/GamePreview.tscn").instance()
 				_games.add_child(preview)
 				preview.set_game(pack_name, game_entry)

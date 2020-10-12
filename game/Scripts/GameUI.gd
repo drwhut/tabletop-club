@@ -45,11 +45,11 @@ func apply_options(config: ConfigFile) -> void:
 func hide_chat_box() -> void:
 	_chat_box.visible = false
 
-# Set the piece database contents, based on the piece database given.
-# pieces: The database from the PieceDB.
-func set_piece_db(pieces: Dictionary) -> void:
-	_games_dialog.set_piece_db(pieces)
-	_objects_dialog.set_piece_db(pieces)
+# Set the asset database contents, based on the asset database given.
+# assets: The database from the AssetDB.
+func set_piece_db(assets: Dictionary) -> void:
+	_games_dialog.set_piece_db(assets)
+	_objects_dialog.set_piece_db(assets)
 
 func _ready():
 	Lobby.connect("player_added", self, "_on_Lobby_player_added")
