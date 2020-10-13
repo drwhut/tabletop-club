@@ -41,6 +41,8 @@ dialog_autowrap = true
 [connection signal="applying_options" from="GameUI" to="." method="_on_GameUI_applying_options"]
 [connection signal="load_table" from="GameUI" to="." method="_on_GameUI_load_table"]
 [connection signal="piece_requested" from="GameUI" to="." method="_on_GameUI_piece_requested"]
+[connection signal="requesting_room_details" from="GameUI" to="." method="_on_GameUI_requesting_room_details"]
 [connection signal="rotation_amount_updated" from="GameUI" to="Room" method="_on_GameUI_rotation_amount_updated"]
 [connection signal="save_table" from="GameUI" to="." method="_on_GameUI_save_table"]
+[connection signal="skybox_requested" from="GameUI" to="." method="_on_GameUI_skybox_requested"]
 [connection signal="confirmed" from="TableStateVersionDialog" to="." method="_on_TableStateVersionDialog_confirmed"]

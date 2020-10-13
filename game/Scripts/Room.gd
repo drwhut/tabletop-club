@@ -25,6 +25,7 @@ onready var _camera_controller = $CameraController
 onready var _hand_positions = $Table/HandPositions
 onready var _hands = $Hands
 onready var _pieces = $Pieces
+onready var _world_environment = $WorldEnvironment
 
 var _srv_next_piece_name = 0
 
@@ -292,6 +293,15 @@ func get_pieces() -> Array:
 func get_piece_count() -> int:
 	return _pieces.get_child_count()
 
+# Get the current skybox texture path.
+# Returns: The current skybox texture path. Empty if it is the default skybox.
+func get_skybox() -> String:
+	var sky = _world_environment.environment.background_sky
+	if sky is PanoramaSky:
+		return sky.panorama.resource_path
+	else:
+		return ""
+
 # Get the current room state.
 # Returns: The current room state.
 # hands: Should the hand states be included?
@@ -299,6 +309,8 @@ func get_piece_count() -> int:
 func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	var out = {}
 	out["version"] = ProjectSettings.get_setting("application/config/version")
+	
+	out["skybox"] = get_skybox()
 	
 	var hand_dict = {}
 	var piece_dict = {}
@@ -591,6 +603,11 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	_camera_controller.append_selected_pieces([piece])
 	_camera_controller.set_is_hovering(true)
 
+# Request the server to load a table state.
+# state: The state to load.
+master func request_load_table_state(state: Dictionary) -> void:
+	rpc("set_state", state)
+
 # Request the server to pop the piece at the top of a stack.
 # Returns: The name of the new piece.
 # stack_name: The name of the stack to pop.
@@ -688,6 +705,11 @@ remotesync func request_pop_stack_accepted(piece_name: String) -> void:
 	# stack!
 	request_hover_piece_accepted(piece_name)
 
+# Request the server to set the room skybox.
+# texture_path: The texture path of the skybox.
+master func request_set_skybox(texture_path: String) -> void:
+	rpc("set_skybox", texture_path)
+
 # Request the server to get a stack to collect all of the pieces that it can
 # stack.
 # stack_name: The name of the collecting stack.
@@ -715,11 +737,30 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 				else:
 					rpc("add_piece_to_stack", piece.name, stack_name, Stack.STACK_TOP)
 
+# Set the room's skybox.
+# texture_path: The path of the skybox texture. If empty, the default
+# skybox is used.
+remotesync func set_skybox(texture_path: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if texture_path.empty():
+		_world_environment.environment.background_sky = ProceduralSky.new()
+	else:
+		var texture: Texture = load(texture_path)
+		var panorama = PanoramaSky.new()
+		panorama.panorama = texture
+		
+		_world_environment.environment.background_sky = panorama
+
 # Set the room state.
 # state: The new room state.
 remotesync func set_state(state: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
+	
+	if state.has("skybox"):
+		set_skybox(state["skybox"])
 	
 	if state.has("hands"):
 		for hand in _hands.get_children():

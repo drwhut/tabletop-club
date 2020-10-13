@@ -26,6 +26,7 @@ signal importing_file(file)
 
 enum {
 	ASSET_SCENE,
+	ASSET_SKYBOX,
 	ASSET_TABLE,
 	ASSET_TEXTURE
 }
@@ -143,6 +144,8 @@ func _import_pack_dir(dir: Directory) -> void:
 	_import_dir_if_exists(dir, pack, "pieces/cube", ASSET_TEXTURE, "res://Pieces/Pieces/Cube.tscn")
 	_import_dir_if_exists(dir, pack, "pieces/custom", ASSET_SCENE, "")
 	_import_dir_if_exists(dir, pack, "pieces/cylinder", ASSET_TEXTURE, "res://Pieces/Pieces/Cylinder.tscn")
+	
+	_import_dir_if_exists(dir, pack, "skyboxes", ASSET_SKYBOX, "")
 	
 	_import_dir_if_exists(dir, pack, "tokens/cube", ASSET_TEXTURE, "res://Pieces/Tokens/Cube.tscn")
 	_import_dir_if_exists(dir, pack, "tokens/cylinder", ASSET_TEXTURE, "res://Pieces/Tokens/Cylinder.tscn")
@@ -325,14 +328,11 @@ func _import_asset(from: String, pack: String, type_dir: String,
 				"texture_path": null
 			}
 			_add_entry_to_db(pack, type_dir, entry)
-	elif type_asset == ASSET_TEXTURE:
-		if scene and VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
+	elif type_asset == ASSET_SKYBOX:
+		if VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
 			var entry = {
 				"description": desc,
-				"mass": mass,
 				"name": _get_file_without_ext(to),
-				"scale": scale,
-				"scene_path": scene,
 				"texture_path": to
 			}
 			_add_entry_to_db(pack, type_dir, entry)
@@ -342,6 +342,17 @@ func _import_asset(from: String, pack: String, type_dir: String,
 				"description": desc,
 				"name": _get_file_without_ext(to),
 				"table_path": to
+			}
+			_add_entry_to_db(pack, type_dir, entry)
+	elif type_asset == ASSET_TEXTURE:
+		if scene and VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
+			var entry = {
+				"description": desc,
+				"mass": mass,
+				"name": _get_file_without_ext(to),
+				"scale": scale,
+				"scene_path": scene,
+				"texture_path": to
 			}
 			_add_entry_to_db(pack, type_dir, entry)
 	

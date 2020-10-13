@@ -24,8 +24,10 @@ extends Control
 signal applying_options(config)
 signal load_table(path)
 signal piece_requested(piece_entry)
+signal requesting_room_details()
 signal rotation_amount_updated(rotation_amount)
 signal save_table(path)
+signal skybox_requested(skybox_entry)
 
 onready var _chat_box = $ChatBox
 onready var _file_dialog = $GameMenuBackground/FileDialog
@@ -34,6 +36,7 @@ onready var _games_dialog = $GamesDialog
 onready var _objects_dialog = $ObjectsDialog
 onready var _options_menu = $OptionsMenu
 onready var _player_list = $PlayerList
+onready var _room_dialog = $RoomDialog
 onready var _rotation_option = $TopPanel/RotationOption
 
 # Apply options from the options menu.
@@ -50,6 +53,12 @@ func hide_chat_box() -> void:
 func set_piece_db(assets: Dictionary) -> void:
 	_games_dialog.set_piece_db(assets)
 	_objects_dialog.set_piece_db(assets)
+	_room_dialog.set_piece_db(assets)
+
+# Set the room details in the room dialog.
+# skybox_path: The texture path to the skybox texture.
+func set_room_details(skybox_path: String) -> void:
+	_room_dialog.set_room_details(skybox_path)
 
 func _ready():
 	Lobby.connect("player_added", self, "_on_Lobby_player_added")
@@ -140,6 +149,16 @@ func _on_OptionsButton_pressed():
 
 func _on_OptionsMenu_applying_options(config: ConfigFile):
 	emit_signal("applying_options", config)
+
+func _on_RoomButton_pressed():
+	_room_dialog.popup_centered()
+
+func _on_RoomDialog_requesting_room_details():
+	emit_signal("requesting_room_details")
+
+func _on_RoomDialog_setting_skybox(skybox_entry: Dictionary):
+	_room_dialog.visible = false
+	emit_signal("skybox_requested", skybox_entry)
 
 func _on_RotationOption_item_selected(index: int):
 	_set_rotation_amount()

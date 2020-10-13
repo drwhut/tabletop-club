@@ -69,6 +69,21 @@ like Blender or Maya.
 The textures for cylinder-shaped pieces use the following UV mapping:
 ![Cylinder Piece UV Mapping](OpenTabletop/pieces/cylinder/Template.svg)
 
+### skyboxes/
+
+Skyboxes are special textures that determine what the background looks like.
+
+Skybox textures need to have equirectangular mappings, instead of using cube
+mappings. Godot recommends using
+[this tool](https://danilw.github.io/GLSL-howto/cubemap_to_panorama_js/cubemap_to_panorama.html)
+to convert cube maps to equirectangular maps.
+
+For the best lighting quality, it is recommended to use a HDR panorama.
+OpenTabletop supports the Radiance HDR (`.hdr`) and OpenEXR (`.exr`) formats.
+
+Here is an example of a skybox texture:
+![Example skybox texture](OpenTabletop/skyboxes/Clouds.png)
+
 ### tokens/
 
 Tokens are objects that are stackable.
@@ -109,6 +124,11 @@ scale = Vector3(3.5, 0.5, 5.0)
 ; The following properties apply only to objects whose name start with
 ; "Heavy". These properties take precedence over the properties under [*].
 [Heavy*]
+
+; Descriptions can be on multiple lines.
+desc = "This is one line,
+
+and this is another!"
 
 ; This is equivalent to 100g.
 mass = 100.0

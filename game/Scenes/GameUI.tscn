@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/GameUI.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/ObjectsDialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/ChatBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/GamesDialog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/RoomDialog.tscn" type="PackedScene" id=6]
 
 [node name="GameUI" type="Control"]
 anchor_right = 1.0
@@ -33,17 +34,23 @@ margin_right = 128.0
 margin_bottom = 26.0
 text = "Games"
 
-[node name="RotationOption" type="OptionButton" parent="TopPanel"]
+[node name="RoomButton" type="Button" parent="TopPanel"]
 margin_left = 132.0
-margin_right = 179.0
+margin_right = 186.0
+margin_bottom = 26.0
+text = "Room"
+
+[node name="RotationOption" type="OptionButton" parent="TopPanel"]
+margin_left = 190.0
+margin_right = 237.0
 margin_bottom = 26.0
 text = "45"
 items = [ "15", null, false, 0, null, "30", null, false, 1, null, "45", null, false, 2, null, "60", null, false, 3, null, "90", null, false, 4, null, "180", null, false, 5, null ]
 selected = 2
 
 [node name="GameMenuButton" type="Button" parent="TopPanel"]
-margin_left = 183.0
-margin_right = 234.0
+margin_left = 241.0
+margin_right = 292.0
 margin_bottom = 26.0
 text = "Menu"
 
@@ -64,6 +71,8 @@ __meta__ = {
 [node name="GamesDialog" parent="." instance=ExtResource( 5 )]
 margin_right = 400.0
 margin_bottom = 250.0
+
+[node name="RoomDialog" parent="." instance=ExtResource( 6 )]
 
 [node name="ChatBox" parent="." instance=ExtResource( 4 )]
 anchor_top = 1.0
@@ -140,10 +149,13 @@ current_path = "/"
 visible = false
 [connection signal="pressed" from="TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
 [connection signal="pressed" from="TopPanel/GamesButton" to="." method="_on_GamesButton_pressed"]
+[connection signal="pressed" from="TopPanel/RoomButton" to="." method="_on_RoomButton_pressed"]
 [connection signal="item_selected" from="TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
 [connection signal="pressed" from="TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
 [connection signal="piece_requested" from="ObjectsDialog" to="." method="_on_ObjectsDialog_piece_requested"]
 [connection signal="loading_game" from="GamesDialog" to="." method="_on_GamesDialog_loading_game"]
+[connection signal="requesting_room_details" from="RoomDialog" to="." method="_on_RoomDialog_requesting_room_details"]
+[connection signal="setting_skybox" from="RoomDialog" to="." method="_on_RoomDialog_setting_skybox"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/SaveGameButton" to="." method="_on_SaveGameButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/LoadGameButton" to="." method="_on_LoadGameButton_pressed"]

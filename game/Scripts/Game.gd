@@ -95,11 +95,6 @@ master func request_game_piece(piece_entry: Dictionary) -> void:
 			piece_entry
 		)
 
-# Request the server to load a table state.
-# state: The state to load.
-master func request_load_table_state(state: Dictionary) -> void:
-	_room.rpc("set_state", state)
-
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
@@ -200,7 +195,7 @@ func _on_GameUI_load_table(path: String):
 		if state is Dictionary:
 			var our_version = ProjectSettings.get_setting("application/config/version")
 			if state.has("version") and state["version"] == our_version:
-				rpc_id(1, "request_load_table_state", state)
+				_room.rpc_id(1, "request_load_table_state", state)
 			else:
 				_state_version_save = state
 				if not state.has("version"):
@@ -213,15 +208,21 @@ func _on_GameUI_load_table(path: String):
 func _on_GameUI_piece_requested(piece_entry: Dictionary):
 	rpc_id(1, "request_game_piece", piece_entry)
 
+func _on_GameUI_requesting_room_details():
+	_ui.set_room_details(_room.get_skybox())
+
 func _on_GameUI_save_table(path: String):
 	var file = _open_table_state_file(path, File.WRITE)
 	if file:
 		file.store_var(_room.get_state())
 		file.close()
 
+func _on_GameUI_skybox_requested(skybox_entry: Dictionary):
+	_room.rpc_id(1, "request_set_skybox", skybox_entry["texture_path"])
+
 func _on_Lobby_players_synced():
 	if not get_tree().is_network_server():
 		Lobby.rpc_id(1, "request_add_self", _player_name, _player_color)
 
 func _on_TableStateVersionDialog_confirmed():
-	rpc_id(1, "request_load_table_state", _state_version_save)
+	_room.rpc_id(1, "request_load_table_state", _state_version_save)
