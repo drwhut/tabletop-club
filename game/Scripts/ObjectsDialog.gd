@@ -74,7 +74,8 @@ func _add_content_object(parent: Control, piece_entry: Dictionary) -> void:
 	parent.add_child(preview)
 	preview.set_piece(piece_entry)
 	
-	preview.connect("clicked", self, "_on_preview_clicked")
+	if not preview.is_connected("clicked", self, "_on_preview_clicked"):
+		preview.connect("clicked", self, "_on_preview_clicked")
 
 # Add a set of objects of a given type to a control node, if it exists in the
 # asset database.

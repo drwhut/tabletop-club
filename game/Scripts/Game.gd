@@ -83,17 +83,16 @@ func init_singleplayer() -> void:
 
 # Request the server to add a piece to the game.
 # piece_entry: The piece's entry in the AssetDB.
-master func request_game_piece(piece_entry: Dictionary) -> void:
+# position: The position to spawn the piece at.
+master func request_game_piece(piece_entry: Dictionary, position: Vector3) -> void:
+	var transform = Transform(Basis.IDENTITY, position)
+	
 	# Is the piece a pre-filled stack?
 	if piece_entry.has("texture_paths") and (not piece_entry.has("texture_path")):
-		_room.rpc_id(1, "request_add_stack_filled", piece_entry)
+		_room.rpc_id(1, "request_add_stack_filled", transform, piece_entry)
 	else:
 		# Send the call to create the piece to everyone.
-		_room.rpc("add_piece",
-			_room.srv_get_next_piece_name(),
-			Transform(Basis.IDENTITY, Vector3(0, Piece.SPAWN_HEIGHT, 0)),
-			piece_entry
-		)
+		_room.rpc("add_piece", _room.srv_get_next_piece_name(), transform, piece_entry)
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
@@ -205,8 +204,8 @@ func _on_GameUI_load_table(path: String):
 		else:
 			_popup_table_state_error("Loaded table is not in the correct format.")
 
-func _on_GameUI_piece_requested(piece_entry: Dictionary):
-	rpc_id(1, "request_game_piece", piece_entry)
+func _on_GameUI_piece_requested(piece_entry: Dictionary, position: Vector3):
+	rpc_id(1, "request_game_piece", piece_entry, position)
 
 func _on_GameUI_requesting_room_details():
 	_ui.set_room_details(_room.get_skybox())
@@ -223,6 +222,13 @@ func _on_GameUI_skybox_requested(skybox_entry: Dictionary):
 func _on_Lobby_players_synced():
 	if not get_tree().is_network_server():
 		Lobby.rpc_id(1, "request_add_self", _player_name, _player_color)
+
+func _on_Room_setting_spawn_point(position: Vector3):
+	_ui.spawn_point_origin = position
+
+func _on_Room_spawning_piece_at(position: Vector3):
+	_ui.spawn_point_temp_offset = position - _ui.spawn_point_origin
+	_ui.popup_objects_dialog()
 
 func _on_TableStateVersionDialog_confirmed():
 	_room.rpc_id(1, "request_load_table_state", _state_version_save)

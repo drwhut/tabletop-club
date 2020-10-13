@@ -27,6 +27,8 @@ signal dealing_cards(stack, n)
 signal hover_piece_requested(piece, offset)
 signal pop_stack_requested(stack, n)
 signal selecting_all_pieces()
+signal setting_spawn_point(position)
+signal spawning_piece_at(position)
 signal stack_collect_all_requested(stack, collect_stacks)
 
 onready var _box_selection_rect = $BoxSelectionRect
@@ -59,6 +61,7 @@ export(float) var zoom_sensitivity: float = 1.0
 var send_cursor_position: bool = false
 
 var _box_select_init_pos = Vector2()
+var _cursor_position = Vector3()
 var _drag_camera_anchor = Vector3()
 var _grabbing_time = 0.0
 var _hover_y_pos = 10.0
@@ -78,6 +81,7 @@ var _piece_rotation_amount = 1.0
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
 var _selected_pieces = []
+var _spawn_point_position = Vector3()
 var _target_zoom = 0.0
 var _viewport_size_original = Vector2()
 
@@ -290,26 +294,24 @@ func _physics_process(delta):
 	
 	_piece_mouse_is_over = null
 	
-	var cursor_position = Vector3()
-	
 	if result.has("collider"):
-		cursor_position = result["position"]
+		_cursor_position = result["position"]
 		if result.collider is Piece:
 			_piece_mouse_is_over = result.collider
 	
-	if send_cursor_position and cursor_position:
-		if cursor_position != _last_sent_cursor_position:
+	if send_cursor_position and _cursor_position:
+		if _cursor_position != _last_sent_cursor_position:
 			if _is_hovering_selected and (not _selected_pieces.empty()):
 				if _piece_mouse_is_over and _selected_pieces.has(_piece_mouse_is_over):
-					cursor_position = _piece_mouse_is_over.transform.origin
+					_cursor_position = _piece_mouse_is_over.transform.origin
 				else:
 					var total = Vector3()
 					for piece in _selected_pieces:
 						total += piece.transform.origin
-					cursor_position = total / _selected_pieces.size()
-			rpc_unreliable_id(1, "request_set_cursor_position", cursor_position,
+					_cursor_position = total / _selected_pieces.size()
+			rpc_unreliable_id(1, "request_set_cursor_position", _cursor_position,
 				transform.basis.x)
-			_last_sent_cursor_position = cursor_position
+			_last_sent_cursor_position = _cursor_position
 	
 	if _perform_box_select:
 		var query_params = PhysicsShapeQueryParameters.new()
@@ -501,7 +503,12 @@ func _unhandled_input(event):
 					_right_click_pos = event.position
 				else:
 					if event.position == _right_click_pos:
-						_popup_piece_context_menu()
+						if _selected_pieces.empty():
+							_popup_table_context_menu()
+							_spawn_point_position = _cursor_position
+							_spawn_point_position.y += Piece.SPAWN_HEIGHT
+						else:
+							_popup_piece_context_menu()
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
@@ -762,6 +769,14 @@ func _on_context_sort_pressed() -> void:
 		if piece is Stack:
 			piece.rpc_id(1, "request_sort")
 
+func _on_context_spawn_object_pressed() -> void:
+	_hide_context_menu()
+	emit_signal("spawning_piece_at", _spawn_point_position)
+
+func _on_context_spawn_point_pressed() -> void:
+	_hide_context_menu()
+	emit_signal("setting_spawn_point", _spawn_point_position)
+
 func _on_context_take_top_pressed(n: int) -> void:
 	_hide_context_menu()
 	if _selected_pieces.size() == 1:
@@ -773,7 +788,7 @@ func _on_context_take_top_pressed(n: int) -> void:
 func _on_context_unlock_pressed() -> void:
 	_unlock_selected_pieces()
 
-# Popup the context menu.
+# Popup the piece context menu.
 func _popup_piece_context_menu() -> void:
 	if _selected_pieces.size() == 0:
 		return
@@ -923,6 +938,25 @@ func _popup_piece_context_menu() -> void:
 	
 	# We've connected a signal elsewhere that will change the size of the popup
 	# to match the container.
+	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
+	_piece_context_menu.popup()
+
+# Popup the table context menu.
+func _popup_table_context_menu() -> void:
+	for child in _piece_context_menu_container.get_children():
+		_piece_context_menu_container.remove_child(child)
+		child.queue_free()
+	
+	var spawn_point_button = Button.new()
+	spawn_point_button.text = "Set spawn point here"
+	spawn_point_button.connect("pressed", self, "_on_context_spawn_point_pressed")
+	_piece_context_menu_container.add_child(spawn_point_button)
+	
+	var spawn_object_button = Button.new()
+	spawn_object_button.text = "Spawn object here"
+	spawn_object_button.connect("pressed", self, "_on_context_spawn_object_pressed")
+	_piece_context_menu_container.add_child(spawn_object_button)
+	
 	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
 	_piece_context_menu.popup()
 

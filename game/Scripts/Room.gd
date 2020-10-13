@@ -21,6 +21,9 @@
 
 extends Spatial
 
+signal setting_spawn_point(position)
+signal spawning_piece_at(position)
+
 onready var _camera_controller = $CameraController
 onready var _hand_positions = $Table/HandPositions
 onready var _hands = $Hands
@@ -467,8 +470,9 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 	request_add_cards_to_hand(card_names, hand_id)
 
 # Request the server to add a pre-filled stack.
+# stack_transform: The transform the new stack should have.
 # stack_entry: The stack's entry in the AssetDB.
-master func request_add_stack_filled(stack_entry: Dictionary) -> void:
+master func request_add_stack_filled(stack_transform: Transform, stack_entry: Dictionary) -> void:
 	# Before we can get everyone to add the stack, we need to come up with names
 	# for the stack and it's items.
 	var stack_name = srv_get_next_piece_name()
@@ -477,9 +481,7 @@ master func request_add_stack_filled(stack_entry: Dictionary) -> void:
 	for texture_path in stack_entry["texture_paths"]:
 		piece_names.push_back(srv_get_next_piece_name())
 	
-	var transform = Transform(Basis.IDENTITY, Vector3(0, Piece.SPAWN_HEIGHT, 0))
-	
-	rpc("add_stack_filled", stack_name, transform, stack_entry, piece_names)
+	rpc("add_stack_filled", stack_name, stack_transform, stack_entry, piece_names)
 
 # Request the server to collect a set of pieces and, if possible, put them into
 # stacks.
@@ -1051,6 +1053,12 @@ func _on_CameraController_pop_stack_requested(stack: Stack, n: int):
 func _on_CameraController_selecting_all_pieces():
 	var pieces = _pieces.get_children()
 	_camera_controller.append_selected_pieces(pieces)
+
+func _on_CameraController_setting_spawn_point(position: Vector3):
+	emit_signal("setting_spawn_point", position)
+
+func _on_CameraController_spawning_piece_at(position: Vector3):
+	emit_signal("spawning_piece_at", position)
 
 func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stacks: bool):
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)

@@ -23,11 +23,14 @@ extends Control
 
 signal applying_options(config)
 signal load_table(path)
-signal piece_requested(piece_entry)
+signal piece_requested(piece_entry, position)
 signal requesting_room_details()
 signal rotation_amount_updated(rotation_amount)
 signal save_table(path)
 signal skybox_requested(skybox_entry)
+
+var spawn_point_origin = Vector3(0, Piece.SPAWN_HEIGHT, 0)
+var spawn_point_temp_offset = Vector3()
 
 onready var _chat_box = $ChatBox
 onready var _file_dialog = $GameMenuBackground/FileDialog
@@ -47,6 +50,10 @@ func apply_options(config: ConfigFile) -> void:
 # Hide the chat box from the UI.
 func hide_chat_box() -> void:
 	_chat_box.visible = false
+
+# Popup the objects menu dialog.
+func popup_objects_dialog() -> void:
+	_objects_dialog.popup_centered()
 
 # Set the asset database contents, based on the asset database given.
 # assets: The database from the AssetDB.
@@ -139,10 +146,11 @@ func _on_MainMenuButton_pressed():
 	Global.start_main_menu()
 
 func _on_ObjectsButton_pressed():
-	_objects_dialog.popup_centered()
+	spawn_point_temp_offset = Vector3()
+	popup_objects_dialog()
 
 func _on_ObjectsDialog_piece_requested(piece_entry: Dictionary):
-	emit_signal("piece_requested", piece_entry)
+	emit_signal("piece_requested", piece_entry, spawn_point_origin + spawn_point_temp_offset)
 
 func _on_OptionsButton_pressed():
 	_options_menu.visible = true
