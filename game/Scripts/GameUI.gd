@@ -22,6 +22,7 @@
 extends Control
 
 signal applying_options(config)
+signal flipping_table(reset_table)
 signal load_table(path)
 signal piece_requested(piece_entry, position)
 signal requesting_room_details()
@@ -29,11 +30,9 @@ signal rotation_amount_updated(rotation_amount)
 signal save_table(path)
 signal skybox_requested(skybox_entry)
 
-var spawn_point_origin = Vector3(0, Piece.SPAWN_HEIGHT, 0)
-var spawn_point_temp_offset = Vector3()
-
 onready var _chat_box = $ChatBox
 onready var _file_dialog = $GameMenuBackground/FileDialog
+onready var _flip_table_button = $TopPanel/FlipTableButton
 onready var _game_menu_background = $GameMenuBackground
 onready var _games_dialog = $GamesDialog
 onready var _objects_dialog = $ObjectsDialog
@@ -41,6 +40,11 @@ onready var _options_menu = $OptionsMenu
 onready var _player_list = $PlayerList
 onready var _room_dialog = $RoomDialog
 onready var _rotation_option = $TopPanel/RotationOption
+
+var spawn_point_origin: Vector3 = Vector3(0, Piece.SPAWN_HEIGHT, 0)
+var spawn_point_temp_offset: Vector3 = Vector3()
+
+var _flip_table_status = false
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -66,6 +70,17 @@ func set_piece_db(assets: Dictionary) -> void:
 # skybox_path: The texture path to the skybox texture.
 func set_room_details(skybox_path: String) -> void:
 	_room_dialog.set_room_details(skybox_path)
+
+# Set the table flipped status, so the flip table button can be updated.
+# flip_table_status: If true, the button will represent resetting the table.
+# If false, the button will represent flipping the table.
+func set_flip_table_status(flip_table_status: bool) -> void:
+	_flip_table_status = flip_table_status
+	
+	if flip_table_status:
+		_flip_table_button.text = "Reset Table"
+	else:
+		_flip_table_button.text = "Flip Table"
 
 func _ready():
 	Lobby.connect("player_added", self, "_on_Lobby_player_added")
@@ -119,6 +134,9 @@ func _on_FileDialog_file_selected(path: String):
 		emit_signal("save_table", path)
 	
 	_game_menu_background.visible = false
+
+func _on_FlipTableButton_pressed():
+	emit_signal("flipping_table", _flip_table_status)
 
 func _on_GameMenuButton_pressed():
 	_game_menu_background.visible = true

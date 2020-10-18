@@ -48,6 +48,8 @@ var piece_entry: Dictionary = {}
 var srv_hover_basis = Basis.IDENTITY
 var srv_hover_position = Vector3()
 
+var srv_retrieve_from_hell: bool = true
+
 var _srv_hover_offset = Vector3()
 var _srv_hover_player = 0
 
@@ -313,11 +315,9 @@ func _integrate_forces(state):
 		
 		# If the piece has fallen off the table and decended into hell, recover
 		# it so the devil doesn't tickle it to death.
-		elif state.transform.origin.y < HELL_HEIGHT:
-			state.transform.basis.x = Vector3.RIGHT
-			state.transform.basis.y = Vector3.UP
-			state.transform.basis.z = Vector3.BACK
-			state.transform.origin = Vector3(0, SPAWN_HEIGHT, 0)
+		elif srv_retrieve_from_hell and state.transform.origin.y < HELL_HEIGHT:
+			state.transform = Transform.IDENTITY
+			state.transform.origin.y += SPAWN_HEIGHT
 			
 			state.angular_velocity = Vector3.ZERO
 			state.linear_velocity = Vector3.ZERO

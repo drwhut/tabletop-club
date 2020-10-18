@@ -185,6 +185,12 @@ func _server_disconnected() -> void:
 func _on_GameUI_applying_options(config: ConfigFile):
 	apply_options(config)
 
+func _on_GameUI_flipping_table(reset_table: bool):
+	if reset_table:
+		_room.rpc_id(1, "request_unflip_table")
+	else:
+		_room.rpc_id(1, "request_flip_table", _room.get_camera_transform().basis)
+
 func _on_GameUI_load_table(path: String):
 	var file = _open_table_state_file(path, File.READ)
 	if file:
@@ -229,6 +235,9 @@ func _on_Room_setting_spawn_point(position: Vector3):
 func _on_Room_spawning_piece_at(position: Vector3):
 	_ui.spawn_point_temp_offset = position - _ui.spawn_point_origin
 	_ui.popup_objects_dialog()
+
+func _on_Room_table_flipped(table_reset: bool):
+	_ui.set_flip_table_status(not table_reset)
 
 func _on_TableStateVersionDialog_confirmed():
 	_room.rpc_id(1, "request_load_table_state", _state_version_save)

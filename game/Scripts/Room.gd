@@ -23,14 +23,18 @@ extends Spatial
 
 signal setting_spawn_point(position)
 signal spawning_piece_at(position)
+signal table_flipped(table_reset)
 
 onready var _camera_controller = $CameraController
 onready var _hand_positions = $Table/HandPositions
 onready var _hands = $Hands
 onready var _pieces = $Pieces
+onready var _table_body = $Table/Body
 onready var _world_environment = $WorldEnvironment
 
 var _srv_next_piece_name = 0
+var _srv_retrieve_pieces_from_hell = true
+var _table_preflip_state: Dictionary = {}
 
 # Add a hand to the game for a given player.
 # player: The ID of the player the hand should belong to.
@@ -62,6 +66,9 @@ remotesync func add_piece(name: String, transform: Transform,
 	
 	piece.name = name
 	piece.transform = transform
+	
+	if get_tree().is_network_server():
+		piece.srv_retrieve_from_hell = _srv_retrieve_pieces_from_hell
 	
 	piece.connect("piece_exiting_tree", self, "_on_piece_exiting_tree")
 	
@@ -179,6 +186,9 @@ puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
 	stack.name = name
 	stack.transform = transform
 	
+	if get_tree().is_network_server():
+		stack.srv_retrieve_from_hell = _srv_retrieve_pieces_from_hell
+	
 	_pieces.add_child(stack)
 	
 	stack.connect("piece_exiting_tree", self, "_on_piece_exiting_tree")
@@ -270,6 +280,28 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 func apply_options(config: ConfigFile) -> void:
 	_camera_controller.apply_options(config)
 
+# Flip the table.
+# camera_basis: The basis matrix of the player flipping the table.
+remotesync func flip_table(camera_basis: Basis) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_table_preflip_state = get_state(false, false)
+	
+	_table_body.mode = RigidBody.MODE_RIGID
+	
+	var left = -camera_basis.x
+	var diagonal = -camera_basis.z
+	diagonal.y = 0.5
+	diagonal = diagonal.normalized()
+	_table_body.apply_central_impulse(_table_body.mass * 100 * diagonal)
+	_table_body.apply_torque_impulse(_table_body.mass * 1000 * left)
+	
+	if get_tree().is_network_server():
+		srv_set_retrieve_pieces_from_hell(false)
+	
+	emit_signal("table_flipped", false)
+
 # Get the player camera's hover position.
 # Returns: The current hover position.
 func get_camera_hover_position() -> Vector3:
@@ -314,6 +346,11 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	out["version"] = ProjectSettings.get_setting("application/config/version")
 	
 	out["skybox"] = get_skybox()
+	out["table"] = {
+		"is_rigid": _table_body.mode == RigidBody.MODE_RIGID,
+		"preflip_state": _table_preflip_state,
+		"transform": _table_body.transform
+	}
 	
 	var hand_dict = {}
 	var piece_dict = {}
@@ -564,6 +601,11 @@ master func request_deal_cards(stack_name: String, n: int) -> void:
 			
 			request_add_cards_to_hand([card_name], hand.owner_id())
 
+# Request the server to flip the table.
+# camera_basis: The basis matrix of the player flipping the table.
+master func request_flip_table(camera_basis: Basis) -> void:
+	rpc("flip_table", camera_basis)
+
 # Request the server to hover a piece.
 # piece_name: The name of the piece to hover.
 # init_pos: The initial hover position.
@@ -739,6 +781,10 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 				else:
 					rpc("add_piece_to_stack", piece.name, stack_name, Stack.STACK_TOP)
 
+# Request the server to unflip the table.
+master func request_unflip_table() -> void:
+	rpc("unflip_table")
+
 # Set the room's skybox.
 # texture_path: The path of the skybox texture. If empty, the default
 # skybox is used.
@@ -763,6 +809,21 @@ remotesync func set_state(state: Dictionary) -> void:
 	
 	if state.has("skybox"):
 		set_skybox(state["skybox"])
+	
+	if state.has("table"):
+		var table_meta = state["table"]
+		
+		if table_meta["is_rigid"]:
+			_table_body.mode = RigidBody.MODE_RIGID
+		else:
+			_table_body.mode = RigidBody.MODE_STATIC
+		emit_signal("table_flipped", not table_meta["is_rigid"])
+		
+		if get_tree().is_network_server():
+			srv_set_retrieve_pieces_from_hell(not table_meta["is_rigid"])
+		
+		_table_preflip_state = table_meta["preflip_state"]
+		_table_body.transform = table_meta["transform"]
 	
 	if state.has("hands"):
 		for hand in _hands.get_children():
@@ -949,6 +1010,15 @@ func srv_get_next_piece_name() -> String:
 	_srv_next_piece_name += 1
 	return next_name
 
+# Set whether the server should retrieve pieces from hell.
+# retrieve: If the server should retrieve pieces from hell.
+func srv_set_retrieve_pieces_from_hell(retrieve: bool) -> void:
+	_srv_retrieve_pieces_from_hell = retrieve
+	
+	for piece in _pieces.get_children():
+		if piece is Piece:
+			piece.srv_retrieve_from_hell = retrieve
+
 # Stop a player from currently hovering any pieces.
 # player: The player to stop from hovering.
 func srv_stop_player_hovering(player: int) -> void:
@@ -1006,6 +1076,23 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 		stack2.add_piece(piece, shape, Stack.STACK_TOP)
 	
 	test_piece.queue_free()
+
+# Unflip the table from it's flipped state.
+remotesync func unflip_table() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if not _table_preflip_state.empty():
+		set_state(_table_preflip_state)
+		_table_preflip_state = {}
+	
+	_table_body.mode = RigidBody.MODE_STATIC
+	_table_body.transform = Transform.IDENTITY
+	
+	if get_tree().is_network_server():
+		srv_set_retrieve_pieces_from_hell(true)
+	
+	emit_signal("table_flipped", true)
 
 func _on_piece_exiting_tree(piece: Piece) -> void:
 	_camera_controller.erase_selected_pieces(piece)
