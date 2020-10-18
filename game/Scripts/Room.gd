@@ -602,17 +602,28 @@ master func request_deal_cards(stack_name: String, n: int) -> void:
 		push_error("Stack " + stack_name + " does not contain cards!")
 		return
 	
+	var card_names = []
+	for card in stack.get_pieces():
+		card_names.append(card.name)
+	
 	for i in range(n):
-		if stack.get_piece_count() < 1:
+		if card_names.size() < 1:
 			break
 		
 		for hand in _hands.get_children():
-			if stack.get_piece_count() < 1:
-				break
+			var card_name = ""
 			
-			var card_name = request_pop_stack(stack_name, 1, false, 1.0)
+			if card_names.size() < 1:
+				break
+			elif card_names.size() == 1:
+				card_name = card_names[0]
+			else:
+				card_name = request_pop_stack(stack_name, 1, false, 1.0)
+			
 			if card_name == "":
 				break
+			else:
+				card_names.erase(card_name)
 			
 			request_add_cards_to_hand([card_name], hand.owner_id())
 

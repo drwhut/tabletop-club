@@ -151,7 +151,6 @@ static func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 		_extract_and_shape_mesh_instances(add_to, child, new_transform)
 	
 	if from is MeshInstance:
-		print("Before ", from.transform)
 		var parent = from.get_parent()
 		if parent:
 			parent.remove_child(from)
