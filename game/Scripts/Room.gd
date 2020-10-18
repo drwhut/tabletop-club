@@ -111,13 +111,17 @@ remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 	
 	_pieces.remove_child(piece)
 	
-	var piece_mesh = PieceBuilder.get_piece_mesh(piece)
-	var piece_shape = PieceBuilder.get_piece_shape(piece)
-	
-	if not (piece_mesh and piece_shape):
+	var piece_meshes = PieceBuilder.get_piece_meshes(piece)
+	if piece_meshes.size() != 1:
+		push_error("Piece " + piece_name + " does not have one mesh instance!")
 		return
 	
-	stack.add_piece(piece_mesh, piece_shape, on, flip)
+	var piece_shapes = piece.get_collision_shapes()
+	if piece_shapes.size() != 1:
+		push_error("Piece " + piece_name + " does not have one collision shape!")
+		return
+	
+	stack.add_piece(piece_meshes[0], piece_shapes[0], on, flip)
 	
 	piece.queue_free()
 
@@ -154,19 +158,30 @@ remotesync func add_stack(name: String, transform: Transform,
 	_pieces.remove_child(piece1)
 	_pieces.remove_child(piece2)
 	
-	var piece1_mesh = PieceBuilder.get_piece_mesh(piece1)
-	var piece2_mesh = PieceBuilder.get_piece_mesh(piece2)
+	var piece1_meshes = PieceBuilder.get_piece_meshes(piece1)
+	if piece1_meshes.size() != 1:
+		push_error("Piece " + piece1_name + " does not have one mesh instance!")
+		return
 	
-	var piece1_shape = PieceBuilder.get_piece_shape(piece1)
-	var piece2_shape = PieceBuilder.get_piece_shape(piece2)
+	var piece2_meshes = PieceBuilder.get_piece_meshes(piece2)
+	if piece2_meshes.size() != 1:
+		push_error("Piece " + piece2_name + " does not have one mesh instance!")
+		return
 	
-	if not (piece1_mesh and piece2_mesh and piece1_shape and piece2_shape):
+	var piece1_shapes = piece1.get_collision_shapes()
+	if piece1_shapes.size() != 1:
+		push_error("Piece " + piece1_name + " does not have one collision shape!")
+		return
+	
+	var piece2_shapes = piece2.get_collision_shapes()
+	if piece2_shapes.size() != 1:
+		push_error("Piece " + piece2_name + " does not have one collision shape!")
 		return
 	
 	var stack = add_stack_empty(name, transform)
 	
-	stack.add_piece(piece1_mesh, piece1_shape)
-	stack.add_piece(piece2_mesh, piece2_shape)
+	stack.add_piece(piece1_meshes[0], piece1_shapes[0])
+	stack.add_piece(piece2_meshes[0], piece2_shapes[0])
 	
 	piece1.queue_free()
 	piece2.queue_free()
@@ -1069,7 +1084,12 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 	
 	var test_piece = load(contents[0].piece_entry["scene_path"]).instance()
 	PieceBuilder.scale_piece(test_piece, contents[0].piece_entry["scale"])
-	var shape = PieceBuilder.get_piece_shape(test_piece)
+	
+	var shapes = test_piece.get_collision_shapes()
+	if shapes.size() != 1:
+		push_error("Piece does not have one collision shape!")
+		return
+	var shape = shapes[0]
 	
 	while not contents.empty():
 		var piece = contents.pop_back()

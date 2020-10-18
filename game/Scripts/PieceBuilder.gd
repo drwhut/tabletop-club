@@ -34,30 +34,11 @@ static func build_piece(piece_entry: Dictionary) -> Piece:
 	if not piece is Piece:
 		var build = Piece.new()
 		
-		# Find the first MeshInstance in the piece scene, so we can get it's
-		# mesh data to create a collision shape.
-		var mesh_instance = Piece.find_first_mesh_instance(piece)
-		if mesh_instance:
-			var collision_shape = CollisionShape.new()
-			collision_shape.shape = mesh_instance.mesh.create_convex_shape()
-			collision_shape.add_child(piece)
-			build.add_child(collision_shape)
-			
-			# We also want to make sure that the mesh instance has it's own
-			# unique material that isn't shared with the other instances, so
-			# when e.g. the instance is being selected, not all of the instances
-			# look like they are selected (see #20).
-			var material = mesh_instance.get_surface_material(0)
-			if not material:
-				material = mesh_instance.mesh.surface_get_material(0)
-				if material:
-					material = material.duplicate()
-					mesh_instance.set_surface_material(0, material)
-			
-			piece = build
-		else:
-			push_error(piece.name + " does not have a mesh instance!")
-			return null
+		_extract_and_shape_mesh_instances(build, piece, Transform.IDENTITY)
+		
+		if not piece.get_parent():
+			piece.free()
+		piece = build
 	
 	piece.mass = piece_entry["mass"]
 	piece.piece_entry = piece_entry
@@ -79,11 +60,21 @@ static func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 		return
 	
 	var single_piece = load(stack_entry["scene_path"]).instance()
+	if not single_piece is Piece:
+		push_error("Scene path does not point to a piece!")
+		return
+	if single_piece.get_collision_shapes().size() != 1:
+		push_error("Stackable pieces can only have one collision shape!")
+		return
+	if single_piece.get_mesh_instances().size() != 1:
+		push_error("Stackable pieces can only have one mesh instance!")
+		return
+	
 	scale_piece(single_piece, stack_entry["scale"])
 	
 	for i in range(stack_entry["texture_paths"].size()):
-		var mesh = get_piece_mesh(single_piece)
-		var shape = get_piece_shape(single_piece)
+		var mesh = get_piece_meshes(single_piece)[0]
+		var shape = single_piece.get_collision_shapes()[0]
 		
 		var mass = stack_entry.masses[i]
 		var texture_path = stack_entry.texture_paths[i]
@@ -109,45 +100,85 @@ static func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 	
 	single_piece.queue_free()
 
-# Create a StackPieceInstance from a piece, which acts as a mesh instance, but
-# can also be inserted into a stack.
-# Returns: A StackPieceInstance representing the piece's mesh instance.
-# piece: The piece to use.
-static func get_piece_mesh(piece: Piece) -> StackPieceInstance:
-	var piece_mesh = StackPieceInstance.new()
-	piece_mesh.name = piece.name
-	piece_mesh.transform = piece.transform
-	piece_mesh.piece_entry = piece.piece_entry
+# Create an array of StackPieceInstances from a piece, which act as mesh
+# instances, but can also be inserted into stacks.
+# Returns: An array of StackPieceInstances representing the piece's mesh
+# instances.
+# piece: The piece to get the mesh instances from.
+static func get_piece_meshes(piece: Piece) -> Array:
+	var out = []
+	for mesh_instance in piece.get_mesh_instances():
+		var piece_mesh = StackPieceInstance.new()
+		piece_mesh.name = piece.name
+		piece_mesh.transform = piece.transform
+		piece_mesh.piece_entry = piece.piece_entry
+		
+		# Get the scale from the mesh instance (since the rigid body itself
+		# won't be scaled).
+		piece_mesh.scale = mesh_instance.scale
+		
+		piece_mesh.mesh = mesh_instance.mesh
+		piece_mesh.set_surface_material(0, mesh_instance.get_surface_material(0))
+		
+		out.append(piece_mesh)
 	
-	var piece_mesh_inst = piece.get_node("CollisionShape/MeshInstance")
-	if not piece_mesh_inst:
-		push_error("Piece " + piece.name + " does not have a MeshInstance child!")
-		return null
-	
-	# Get the scale from the mesh instance (since the rigid body itself won't be
-	# scaled).
-	piece_mesh.scale = piece_mesh_inst.scale
-	
-	piece_mesh.mesh = piece_mesh_inst.mesh
-	piece_mesh.set_surface_material(0, piece_mesh_inst.get_surface_material(0))
-	
-	return piece_mesh
-
-# Get the collision shape of a piece.
-# Returns: The piece's collision shape.
-# piece: The piece to query.
-static func get_piece_shape(piece: Piece) -> CollisionShape:
-	var piece_collision_shape = piece.get_node("CollisionShape")
-	if not piece_collision_shape:
-		push_error("Piece " + piece.name + " does not have a CollisionShape child!")
-		return null
-	
-	return piece_collision_shape
+	return out
 
 # Scale a piece by changing the scale of its children collision shapes.
 # piece: The piece to scale.
 # scale: How much to scale the piece by.
 static func scale_piece(piece: Piece, scale: Vector3) -> void:
-	for child in piece.get_children():
-		if child is CollisionShape:
-			child.scale_object_local(scale)
+	for child in piece.get_collision_shapes():
+		child.scale_object_local(scale)
+
+# Extract mesh instances from a tree, define collision shapes for each mesh
+# instance, and add them to a node.
+# add_to: The node to add the collision shapes + mesh instances to.
+# from: Where to start recursing from.
+# transform: The transform up to that point in the recursion.
+static func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
+	transform: Transform) -> void:
+	
+	for child in from.get_children():
+		var new_basis = transform.basis
+		var new_origin = transform.origin
+		
+		if from is Spatial:
+			new_basis = from.transform.basis * new_basis
+			new_origin = from.transform.origin + new_origin
+		
+		var new_transform = Transform(new_basis, new_origin)
+		_extract_and_shape_mesh_instances(add_to, child, new_transform)
+	
+	if from is MeshInstance:
+		print("Before ", from.transform)
+		var parent = from.get_parent()
+		if parent:
+			parent.remove_child(from)
+		
+		# We also want to make sure that the mesh instance has it's own unique
+		# material that isn't shared with the other instances, so when e.g. the
+		# instance is being selected, not all of the instances look like they
+		# are selected (see #20).
+		var material = from.get_surface_material(0)
+		if not material:
+			material = from.mesh.surface_get_material(0)
+			if material:
+				material = material.duplicate()
+				from.set_surface_material(0, material)
+		
+		var collision_shape = CollisionShape.new()
+		collision_shape.shape = from.mesh.create_convex_shape()
+		
+		# The collision shape's transform needs to match up with the mesh
+		# instance's, but they can't both use the same transform, otherwise
+		# the transform of the mesh instance will be wrong.
+		var collision_transform = transform
+		collision_transform.basis = from.transform.basis * collision_transform.basis
+		collision_transform.origin = from.transform.origin + collision_transform.origin
+		
+		collision_shape.transform = collision_transform
+		from.transform = Transform.IDENTITY
+		
+		collision_shape.add_child(from)
+		add_to.add_child(collision_shape)

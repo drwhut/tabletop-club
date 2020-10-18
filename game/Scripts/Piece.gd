@@ -37,8 +37,9 @@ const SHAKING_THRESHOLD = 1000.0
 const SPAWN_HEIGHT = 2.0
 const TRANSFORM_LERP_ALPHA = 0.5
 
-# Set if you know where the mesh instance is. Otherwise, the game will try and
-# find it automatically when it needs it (e.g. when using a custom piece).
+# Set if you know where the mesh instance is, and if there is only one mesh
+# instance. Otherwise, the game will try and find it automatically when it
+# needs it (e.g. when using a custom piece).
 export(NodePath) var mesh_instance_path: String
 
 var piece_entry: Dictionary = {}
@@ -63,26 +64,11 @@ var _new_velocity = Vector3()
 # Apply a texture to the piece.
 # texture: The texture to apply.
 func apply_texture(texture: Texture) -> void:
-	var mesh_instance = get_mesh_instance()
-	if mesh_instance:
+	for mesh_instance in get_mesh_instances():
 		var material = SpatialMaterial.new()
 		material.albedo_texture = texture
 		
 		mesh_instance.set_surface_material(0, material)
-
-# Find the first mesh instance child of a node recursively.
-# Returns: The first mesh instance found.
-# node: The node to scan the children of for mesh instances.
-static func find_first_mesh_instance(node: Node) -> MeshInstance:
-	if node is MeshInstance:
-		return node as MeshInstance
-	
-	for child in node.get_children():
-		var mesh_instance = find_first_mesh_instance(child)
-		if mesh_instance:
-			return mesh_instance
-	
-	return null
 
 # If you are hovering this piece, ask the server to flip the piece vertically.
 master func flip_vertically() -> void:
@@ -90,12 +76,29 @@ master func flip_vertically() -> void:
 		srv_hover_basis = srv_hover_basis.rotated(transform.basis.z, PI)
 		srv_wake_up()
 
-# Get the piece's mesh instance.
-# Returns: The piece's mesh instance, null if it does not exist.
-func get_mesh_instance() -> MeshInstance:
+# Get the piece's collision shapes.
+# Returns: An array of the piece's collision shapes.
+func get_collision_shapes() -> Array:
+	var out = []
+	for child in get_children():
+		if child is CollisionShape:
+			out.append(child)
+	return out
+
+# Get the piece's mesh instances.
+# Returns: An array of the piece's mesh instances.
+func get_mesh_instances() -> Array:
 	if mesh_instance_path:
-		return get_node(mesh_instance_path) as MeshInstance
-	return find_first_mesh_instance(self)
+		var mesh_instance = get_node(mesh_instance_path)
+		if mesh_instance is MeshInstance:
+			return [mesh_instance as MeshInstance]
+	
+	var out = []
+	for collision_shape in get_collision_shapes():
+		for child in collision_shape.get_children():
+			if child is MeshInstance:
+				out.append(child)
+	return out
 
 # Determines if the piece is being shaked.
 # Returns: If the piece is being shaked.
@@ -171,8 +174,7 @@ master func rotate_y(rot: float) -> void:
 # Set the piece to appear like it is selected.
 # selected: Should the piece appear selected?
 func set_appear_selected(selected: bool) -> void:
-	var mesh_instance = get_mesh_instance()
-	if mesh_instance:
+	for mesh_instance in get_mesh_instances():
 		var material = mesh_instance.get_surface_material(0)
 		if material and material is SpatialMaterial:
 			material.emission = SELECTED_COLOUR
