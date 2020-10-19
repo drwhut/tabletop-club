@@ -62,7 +62,8 @@ The textures for cube-shaped pieces use the following UV mapping:
 This subfolder contains custom 3D models, which can be exported from programs
 like Blender or Maya.
 
-**NOTE:** Currently, the only accepted format is the glTF 2.0 format.
+**NOTE:** Currently, the only accepted formats are glTF 2.0 (.glb, .gltf), and
+Wavefront (.obj).
 
 #### pieces/cylinder/
 
