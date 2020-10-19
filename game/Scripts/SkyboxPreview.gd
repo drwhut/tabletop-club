@@ -60,8 +60,9 @@ func set_skybox(pack_name: String, skybox_entry: Dictionary) -> void:
 	_pack.text = "from " + pack_name
 	_description.text = skybox_entry["description"]
 	
-	var texture: Texture = load(skybox_entry["texture_path"])
-	_texture.texture = texture
+	if not skybox_entry["texture_path"].empty():
+		var texture: Texture = load(skybox_entry["texture_path"])
+		_texture.texture = texture
 
 func _on_SkyboxPreview_gui_input(event):
 	if event is InputEventMouseButton:

@@ -185,4 +185,5 @@ visible = false
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/DesktopButton" to="." method="_on_DesktopButton_pressed"]
 [connection signal="file_selected" from="GameMenuBackground/FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="popup_hide" from="GameMenuBackground/FileDialog" to="." method="_on_FileDialog_popup_hide"]
 [connection signal="applying_options" from="OptionsMenu" to="." method="_on_OptionsMenu_applying_options"]

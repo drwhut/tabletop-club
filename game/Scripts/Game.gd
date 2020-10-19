@@ -30,6 +30,7 @@ onready var _ui = $GameUI
 var _player_name: String
 var _player_color: Color
 
+var _room_state_saving: Dictionary = {}
 var _state_version_save: Dictionary = {}
 
 # Apply options from the options menu.
@@ -182,6 +183,9 @@ func _server_disconnected() -> void:
 	print("Lost connection to the server!")
 	Global.start_main_menu_with_error("Lost connection to the server!")
 
+func _on_GameUI_about_to_save_table():
+	_room_state_saving = _room.get_state(false, false)
+
 func _on_GameUI_applying_options(config: ConfigFile):
 	apply_options(config)
 
@@ -217,10 +221,17 @@ func _on_GameUI_requesting_room_details():
 	_ui.set_room_details(_room.get_skybox())
 
 func _on_GameUI_save_table(path: String):
+	if _room_state_saving.empty():
+		push_error("Room state to save is empty!")
+		return
+	
 	var file = _open_table_state_file(path, File.WRITE)
 	if file:
-		file.store_var(_room.get_state())
+		file.store_var(_room_state_saving)
 		file.close()
+
+func _on_GameUI_stopped_saving_table():
+	_room_state_saving = {}
 
 func _on_GameUI_skybox_requested(skybox_entry: Dictionary):
 	_room.rpc_id(1, "request_set_skybox", skybox_entry["texture_path"])

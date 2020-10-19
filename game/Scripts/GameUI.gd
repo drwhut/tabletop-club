@@ -21,6 +21,7 @@
 
 extends Control
 
+signal about_to_save_table()
 signal applying_options(config)
 signal clear_pieces()
 signal flipping_table(reset_table)
@@ -30,6 +31,7 @@ signal requesting_room_details()
 signal rotation_amount_updated(rotation_amount)
 signal save_table(path)
 signal skybox_requested(skybox_entry)
+signal stopped_saving_table()
 
 onready var _chat_box = $ChatBox
 onready var _clear_table_button = $TopPanel/ClearTableButton
@@ -108,6 +110,9 @@ func _popup_file_dialog(mode: int) -> void:
 		_file_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
 	_file_dialog.mode = mode
 	_file_dialog.popup_centered()
+	
+	if mode == FileDialog.MODE_SAVE_FILE:
+		emit_signal("about_to_save_table")
 
 # Call to emit a signal for the camera to set it's piece rotation amount.
 func _set_rotation_amount() -> void:
@@ -146,6 +151,10 @@ func _on_FileDialog_file_selected(path: String):
 		emit_signal("save_table", path)
 	
 	_game_menu_background.visible = false
+
+func _on_FileDialog_popup_hide():
+	if _file_dialog.mode == FileDialog.MODE_SAVE_FILE:
+		emit_signal("stopped_saving_table")
 
 func _on_FlipTableButton_pressed():
 	emit_signal("flipping_table", _flip_table_status)
