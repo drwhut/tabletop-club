@@ -344,7 +344,6 @@ func _on_ReimportConfirm_confirmed():
 	
 	var dir = Directory.new()
 	var err = dir.open("user://.import")
-	
 	if err == OK:
 		dir.list_dir_begin(true, true)
 		
@@ -352,12 +351,45 @@ func _on_ReimportConfirm_confirmed():
 		while file:
 			err = dir.remove(file)
 			if err:
-				print("Failed to remove ", file, " (error ", err, ")")
+				print("Failed to remove '", file, "' (error ", err, ")")
 			file = dir.get_next()
-		
-		Global.restart_game()
 	else:
 		print("Failed to open the import cache directory (error ", err, ")")
+	
+	err = dir.open("user://assets")
+	if err == OK:
+		dir.list_dir_begin(true, true)
+		
+		var pack_name = dir.get_next()
+		while pack_name:
+			if dir.dir_exists(pack_name):
+				var pack_dir = Directory.new()
+				err = pack_dir.open("user://assets/" + pack_name)
+				
+				if err == OK:
+					for subfolder in AssetDB.ASSET_PACK_SUBFOLDERS:
+						if pack_dir.dir_exists(subfolder):
+							var sub_dir = Directory.new()
+							err = sub_dir.open("user://assets/" + pack_name + "/" + subfolder)
+							
+							if err == OK:
+								sub_dir.list_dir_begin(true, true)
+								
+								var file = sub_dir.get_next()
+								while file:
+									err = sub_dir.remove(file)
+									if err:
+										print("Failed to remove '", pack_name, "/", subfolder, "/", file, "' (error ", err, ")")
+									file = sub_dir.get_next()
+							else:
+								print("Failed to open '", pack_name, "/", subfolder, "' imported directory (error ", err, ")")
+				else:
+					print("Failed to open '", pack_name, "' imported directory (error ", err, ")")
+			pack_name = dir.get_next()
+	else:
+		print("Failed to open the imported assets directory (error ", err, ")")
+	
+	Global.restart_game()
 
 func _on_ResetBindingsButton_pressed():
 	_reset_bindings_confirm.popup_centered()

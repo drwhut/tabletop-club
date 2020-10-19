@@ -39,7 +39,26 @@ const ASSET_DIR_PREFIXES = [
 	"{DESKTOP}/OpenTabletop"
 ]
 
-const VALID_SCENE_EXTENSIONS = ["glb", "gltf"]
+const ASSET_PACK_SUBFOLDERS = {
+	"cards": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Card.tscn" },
+	
+	"dice/d4": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Dice/d4.tscn" },
+	"dice/d6": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Dice/d6.tscn" },
+	"dice/d8": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Dice/d8.tscn" },
+	
+	"games": { "type": ASSET_TABLE, "scene": "" },
+	
+	"pieces/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Pieces/Cube.tscn" },
+	"pieces/custom": { "type": ASSET_SCENE, "scene": "" },
+	"pieces/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Pieces/Cylinder.tscn" },
+	
+	"skyboxes": { "type": ASSET_SKYBOX, "scene": "" },
+	
+	"tokens/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Tokens/Cube.tscn" },
+	"tokens/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Tokens/Cylinder.tscn" }
+}
+
+const VALID_SCENE_EXTENSIONS = ["glb", "gltf", "obj"]
 const VALID_TABLE_EXTENSIONS = ["table"]
 
 # List taken from:
@@ -147,22 +166,9 @@ func _import_pack_dir(dir: Directory) -> void:
 	_db[pack] = {}
 	_db_mutex.unlock()
 	
-	_import_dir_if_exists(dir, pack, "cards", ASSET_TEXTURE, "res://Pieces/Card.tscn")
-	
-	_import_dir_if_exists(dir, pack, "dice/d4", ASSET_TEXTURE, "res://Pieces/Dice/d4.tscn")
-	_import_dir_if_exists(dir, pack, "dice/d6", ASSET_TEXTURE, "res://Pieces/Dice/d6.tscn")
-	_import_dir_if_exists(dir, pack, "dice/d8", ASSET_TEXTURE, "res://Pieces/Dice/d8.tscn")
-	
-	_import_dir_if_exists(dir, pack, "games", ASSET_TABLE, "")
-	
-	_import_dir_if_exists(dir, pack, "pieces/cube", ASSET_TEXTURE, "res://Pieces/Pieces/Cube.tscn")
-	_import_dir_if_exists(dir, pack, "pieces/custom", ASSET_SCENE, "")
-	_import_dir_if_exists(dir, pack, "pieces/cylinder", ASSET_TEXTURE, "res://Pieces/Pieces/Cylinder.tscn")
-	
-	_import_dir_if_exists(dir, pack, "skyboxes", ASSET_SKYBOX, "")
-	
-	_import_dir_if_exists(dir, pack, "tokens/cube", ASSET_TEXTURE, "res://Pieces/Tokens/Cube.tscn")
-	_import_dir_if_exists(dir, pack, "tokens/cylinder", ASSET_TEXTURE, "res://Pieces/Tokens/Cylinder.tscn")
+	for subfolder in ASSET_PACK_SUBFOLDERS:
+		var details = ASSET_PACK_SUBFOLDERS[subfolder]
+		_import_dir_if_exists(dir, pack, subfolder, details["type"], details["scene"])
 
 # Import a directory of assets, but only if the directory exists.
 # current_dir: The current working directory.
@@ -381,6 +387,29 @@ func _import_file(from: String, to: String) -> int:
 	
 	if copy_err:
 		return copy_err
+	else:
+		# With Wavefront files, there's an annoying thing where it will only
+		# look for the material file relative to the current working directory.
+		# So, after we've copied it (the hash file should have been generated),
+		# we'll edit the .obj file such that the path to the .mtl file is
+		# an absolute path.
+		if to.get_extension() == "obj":
+			var obj_file = File.new()
+			var open_err = obj_file.open(to, File.READ)
+			if open_err == OK:
+				var obj_contents = obj_file.get_as_text()
+				obj_file.close()
+				
+				obj_contents = obj_contents.replace("mtllib ", "mtllib " + to.get_base_dir() + "/")
+				
+				open_err = obj_file.open(to, File.WRITE)
+				if open_err == OK:
+					obj_file.store_string(obj_contents)
+					obj_file.close()
+				else:
+					push_error("Could not write to file at '%s'." % to)
+			else:
+				push_error("Could not read file at '%s'." % to)
 	
 	if VALID_SCENE_EXTENSIONS.has(from.get_extension()):
 		return _importer.import_scene(to)
