@@ -104,7 +104,8 @@ func _unhandled_input(event):
 # Popup the file dialog in the given mode.
 # mode: The mode to open the file dialog in.
 func _popup_file_dialog(mode: int) -> void:
-	_file_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
+	if _file_dialog.current_dir == "/":
+		_file_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
 	_file_dialog.mode = mode
 	_file_dialog.popup_centered()
 
