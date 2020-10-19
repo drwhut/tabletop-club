@@ -76,7 +76,7 @@ func censor_profanity(string: String) -> String:
 				
 				if censor:
 					string.erase(j, profanity.length())
-					string = string.insert(j, "****")
+					string = string.insert(j, "*".repeat(profanity.length()))
 				lower_string = lower_string.substr(0, j)
 	
 	return string
