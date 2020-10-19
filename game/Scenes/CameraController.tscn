@@ -13,6 +13,14 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 80 )
 far = 500.0
 
+[node name="MouseGrab" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Cursors" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -45,4 +53,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 outline_color = Color( 0, 1, 1, 0.588235 )
+[connection signal="gui_input" from="MouseGrab" to="." method="_on_MouseGrab_gui_input"]
 [connection signal="item_rect_changed" from="PieceContextMenu/VBoxContainer" to="." method="_on_VBoxContainer_item_rect_changed"]

@@ -457,170 +457,8 @@ func _unhandled_input(event):
 				# Select all of the pieces on the table.
 				emit_signal("selecting_all_pieces")
 	
-	elif event is InputEventMouseButton:
-		
-		if event.button_index == BUTTON_LEFT:
-			if event.is_pressed():
-				if _piece_mouse_is_over:
-					if event.control:
-						append_selected_pieces([_piece_mouse_is_over])
-					else:
-						if not _selected_pieces.has(_piece_mouse_is_over):
-							set_selected_pieces([_piece_mouse_is_over])
-						_is_grabbing_selected = true
-						_grabbing_time = 0.0
-				else:
-					if not event.control:
-						clear_selected_pieces()
-					
-					if hold_left_click_to_move:
-						# Start dragging the camera with the mouse.
-						_drag_camera_anchor = _calculate_hover_position(event.position, 0.0)
-						_is_dragging_camera = true
-					else:
-						# Start box selecting.
-						_box_select_init_pos = event.position
-						_is_box_selecting = true
-						
-						_box_selection_rect.rect_position = _box_select_init_pos
-						_box_selection_rect.rect_size = Vector2()
-						_box_selection_rect.visible = true
-			else:
-				_is_dragging_camera = false
-				_is_grabbing_selected = false
-				
-				if _is_hovering_selected:
-					var cards = []
-					var adding_card_to_hand = false
-					for piece in _selected_pieces:
-						if piece.get("over_hand") != null:
-							cards.append(piece)
-							if piece.over_hand > 0:
-								adding_card_to_hand = true
-						piece.rpc_id(1, "stop_hovering")
-					
-					set_is_hovering(false)
-					
-					if adding_card_to_hand:
-						emit_signal("adding_cards_to_hand", cards, 0)
-				
-				# Stop box selecting.
-				if _is_box_selecting:
-					_box_selection_rect.visible = false
-					_is_box_selecting = false
-					_perform_box_select = true
-		
-		elif event.button_index == BUTTON_RIGHT:
-			if _is_hovering_selected:
-				# TODO: Consider doing something here, like randomizing dice
-				# or shuffling stacks?
-				pass
-			else:
-				# Only bring up the context menu if the mouse didn't move
-				# between the press and the release of the RMB.
-				if event.is_pressed():
-					if _piece_mouse_is_over:
-						if not _selected_pieces.has(_piece_mouse_is_over):
-							set_selected_pieces([_piece_mouse_is_over])
-					else:
-						clear_selected_pieces()
-					_right_click_pos = event.position
-				else:
-					if event.position == _right_click_pos:
-						if _selected_pieces.empty():
-							_popup_table_context_menu()
-							_spawn_point_position = _cursor_position
-							_spawn_point_position.y += Piece.SPAWN_HEIGHT
-						else:
-							_popup_piece_context_menu()
-		
-		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
-			event.button_index == BUTTON_WHEEL_DOWN):
-			
-			if _is_hovering_selected:
-				var option1 = piece_rotate_alt and (not event.alt)
-				var option2 = (not piece_rotate_alt) and event.alt
-				if option1 or option2:
-					# Changing the y-position of hovered pieces.
-					var offset = 0
-					
-					if event.button_index == BUTTON_WHEEL_UP:
-						offset = -lift_sensitivity
-					else:
-						offset = lift_sensitivity
-					
-					var new_y = _hover_y_pos + offset
-					_hover_y_pos = max(new_y, HOVER_Y_MIN)
-					
-					_on_moving()
-				else:
-					# Changing the rotation of the hovered pieces.
-					var amount = _piece_rotation_amount
-					if event.button_index == BUTTON_WHEEL_DOWN:
-						amount *= -1
-					if piece_rotate_invert:
-						amount *= -1
-					for piece in _selected_pieces:
-						piece.rpc_id(1, "rotate_y", amount)
-			else:
-				# Zooming the camera in and away from the controller.
-				var offset = 0
-				
-				if event.button_index == BUTTON_WHEEL_UP:
-					offset = -zoom_sensitivity
-				else:
-					offset = zoom_sensitivity
-				
-				var new_zoom = _target_zoom + offset
-				_target_zoom = max(min(new_zoom, ZOOM_DISTANCE_MAX), ZOOM_DISTANCE_MIN)
-			
-			get_tree().set_input_as_handled()
-	
-	elif event is InputEventMouseMotion:
-		# Check if by moving the mouse, we either started hovering a piece, or
-		# we have moved the hovered pieces position.
-		if _on_moving():
-			pass
-		
-		elif Input.is_action_pressed("game_rotate"):
-		
-			# Rotating the controller-camera system to get the camera to rotate
-			# around a point, where the controller is.
-			_rotation.x += event.relative.x * rotation_sensitivity_x
-			_rotation.y += event.relative.y * rotation_sensitivity_y
-			
-			# Bound the rotation along the X axis.
-			_rotation.y = max(_rotation.y, ROTATION_Y_MIN)
-			_rotation.y = min(_rotation.y, ROTATION_Y_MAX)
-			
-			transform.basis = Basis()
-			rotate_x(_rotation.y)
-			rotate_y(_rotation.x)
-			
-			get_tree().set_input_as_handled()
-		
-		elif _is_dragging_camera:
-			var new_anchor = _calculate_hover_position(event.position, 0.0)
-			var diff_anchor = new_anchor - _drag_camera_anchor
-			translation -= diff_anchor
-		
-		elif _is_box_selecting:
-			
-			var pos = _box_select_init_pos
-			var size = event.position - _box_select_init_pos
-			
-			if size.x < 0:
-				pos.x += size.x
-				size.x = -size.x
-			
-			if size.y < 0:
-				pos.y += size.y
-				size.y = -size.y
-			
-			_box_selection_rect.rect_position = pos
-			_box_selection_rect.rect_size = size
-			
-			get_tree().set_input_as_handled()
+	# NOTE: Mouse events are caught by the MouseGrab node, see
+	# _on_MouseGrab_gui_input().
 
 # Calculate the hover position of a piece, given a mouse position on the screen.
 # Returns: The hover position of a piece, based on the given mouse position.
@@ -1102,6 +940,171 @@ func _on_Lobby_player_removed(id: int) -> void:
 	if cursor:
 		_cursors.remove_child(cursor)
 		cursor.queue_free()
+
+func _on_MouseGrab_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT:
+			if event.is_pressed():
+				if _piece_mouse_is_over:
+					if event.control:
+						append_selected_pieces([_piece_mouse_is_over])
+					else:
+						if not _selected_pieces.has(_piece_mouse_is_over):
+							set_selected_pieces([_piece_mouse_is_over])
+						_is_grabbing_selected = true
+						_grabbing_time = 0.0
+				else:
+					if not event.control:
+						clear_selected_pieces()
+					
+					if hold_left_click_to_move:
+						# Start dragging the camera with the mouse.
+						_drag_camera_anchor = _calculate_hover_position(event.position, 0.0)
+						_is_dragging_camera = true
+					else:
+						# Start box selecting.
+						_box_select_init_pos = event.position
+						_is_box_selecting = true
+						
+						_box_selection_rect.rect_position = _box_select_init_pos
+						_box_selection_rect.rect_size = Vector2()
+						_box_selection_rect.visible = true
+			else:
+				_is_dragging_camera = false
+				_is_grabbing_selected = false
+				
+				if _is_hovering_selected:
+					var cards = []
+					var adding_card_to_hand = false
+					for piece in _selected_pieces:
+						if piece.get("over_hand") != null:
+							cards.append(piece)
+							if piece.over_hand > 0:
+								adding_card_to_hand = true
+						piece.rpc_id(1, "stop_hovering")
+					
+					set_is_hovering(false)
+					
+					if adding_card_to_hand:
+						emit_signal("adding_cards_to_hand", cards, 0)
+				
+				# Stop box selecting.
+				if _is_box_selecting:
+					_box_selection_rect.visible = false
+					_is_box_selecting = false
+					_perform_box_select = true
+		
+		elif event.button_index == BUTTON_RIGHT:
+			if _is_hovering_selected:
+				# TODO: Consider doing something here, like randomizing dice
+				# or shuffling stacks?
+				pass
+			else:
+				# Only bring up the context menu if the mouse didn't move
+				# between the press and the release of the RMB.
+				if event.is_pressed():
+					if _piece_mouse_is_over:
+						if not _selected_pieces.has(_piece_mouse_is_over):
+							set_selected_pieces([_piece_mouse_is_over])
+					else:
+						clear_selected_pieces()
+					_right_click_pos = event.position
+				else:
+					if event.position == _right_click_pos:
+						if _selected_pieces.empty():
+							_popup_table_context_menu()
+							_spawn_point_position = _cursor_position
+							_spawn_point_position.y += Piece.SPAWN_HEIGHT
+						else:
+							_popup_piece_context_menu()
+		
+		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
+			event.button_index == BUTTON_WHEEL_DOWN):
+			
+			if _is_hovering_selected:
+				var option1 = piece_rotate_alt and (not event.alt)
+				var option2 = (not piece_rotate_alt) and event.alt
+				if option1 or option2:
+					# Changing the y-position of hovered pieces.
+					var offset = 0
+					
+					if event.button_index == BUTTON_WHEEL_UP:
+						offset = -lift_sensitivity
+					else:
+						offset = lift_sensitivity
+					
+					var new_y = _hover_y_pos + offset
+					_hover_y_pos = max(new_y, HOVER_Y_MIN)
+					
+					_on_moving()
+				else:
+					# Changing the rotation of the hovered pieces.
+					var amount = _piece_rotation_amount
+					if event.button_index == BUTTON_WHEEL_DOWN:
+						amount *= -1
+					if piece_rotate_invert:
+						amount *= -1
+					for piece in _selected_pieces:
+						piece.rpc_id(1, "rotate_y", amount)
+			else:
+				# Zooming the camera in and away from the controller.
+				var offset = 0
+				
+				if event.button_index == BUTTON_WHEEL_UP:
+					offset = -zoom_sensitivity
+				else:
+					offset = zoom_sensitivity
+				
+				var new_zoom = _target_zoom + offset
+				_target_zoom = max(min(new_zoom, ZOOM_DISTANCE_MAX), ZOOM_DISTANCE_MIN)
+			
+			get_tree().set_input_as_handled()
+	
+	elif event is InputEventMouseMotion:
+		# Check if by moving the mouse, we either started hovering a piece, or
+		# we have moved the hovered pieces position.
+		if _on_moving():
+			pass
+		
+		elif Input.is_action_pressed("game_rotate"):
+		
+			# Rotating the controller-camera system to get the camera to rotate
+			# around a point, where the controller is.
+			_rotation.x += event.relative.x * rotation_sensitivity_x
+			_rotation.y += event.relative.y * rotation_sensitivity_y
+			
+			# Bound the rotation along the X axis.
+			_rotation.y = max(_rotation.y, ROTATION_Y_MIN)
+			_rotation.y = min(_rotation.y, ROTATION_Y_MAX)
+			
+			transform.basis = Basis()
+			rotate_x(_rotation.y)
+			rotate_y(_rotation.x)
+			
+			get_tree().set_input_as_handled()
+		
+		elif _is_dragging_camera:
+			var new_anchor = _calculate_hover_position(event.position, 0.0)
+			var diff_anchor = new_anchor - _drag_camera_anchor
+			translation -= diff_anchor
+		
+		elif _is_box_selecting:
+			
+			var pos = _box_select_init_pos
+			var size = event.position - _box_select_init_pos
+			
+			if size.x < 0:
+				pos.x += size.x
+				size.x = -size.x
+			
+			if size.y < 0:
+				pos.y += size.y
+				size.y = -size.y
+			
+			_box_selection_rect.rect_position = pos
+			_box_selection_rect.rect_size = size
+			
+			get_tree().set_input_as_handled()
 
 func _on_VBoxContainer_item_rect_changed():
 	if _piece_context_menu and _piece_context_menu_container:
