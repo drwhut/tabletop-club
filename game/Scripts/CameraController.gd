@@ -72,6 +72,10 @@ var _is_dragging_camera = false
 var _is_grabbing_selected = false
 var _is_hovering_selected = false
 var _last_sent_cursor_position = Vector3()
+var _move_down = false
+var _move_left = false
+var _move_right = false
+var _move_up = false
 var _movement_accel = 0.0
 var _movement_dir = Vector3()
 var _movement_vel = Vector3()
@@ -350,15 +354,14 @@ func _process_input(delta):
 	# Calculating the direction the user wants to move parallel to the table.
 	var movement_input = Vector2()
 	
-	if not Input.is_key_pressed(KEY_CONTROL):
-		if Input.is_action_pressed("game_left"):
-			movement_input.x -= 1
-		if Input.is_action_pressed("game_right"):
-			movement_input.x += 1
-		if Input.is_action_pressed("game_up"):
-			movement_input.y += 1
-		if Input.is_action_pressed("game_down"):
-			movement_input.y -= 1
+	if _move_left:
+		movement_input.x -= 1
+	if _move_right:
+		movement_input.x += 1
+	if _move_up:
+		movement_input.y += 1
+	if _move_down:
+		movement_input.y -= 1
 	
 	movement_input = movement_input.normalized()
 	
@@ -403,6 +406,27 @@ func _process_movement(delta):
 	_camera.translation = _camera.translation.linear_interpolate(target_offset, zoom_accel * delta)
 
 func _unhandled_input(event):
+	if not Input.is_key_pressed(KEY_CONTROL):
+		if event.is_action_pressed("game_left"):
+			_move_left = true
+		elif event.is_action_released("game_left"):
+			_move_left = false
+		
+		elif event.is_action_pressed("game_right"):
+			_move_right = true
+		elif event.is_action_released("game_right"):
+			_move_right = false
+		
+		elif event.is_action_pressed("game_up"):
+			_move_up = true
+		elif event.is_action_released("game_up"):
+			_move_up = false
+		
+		elif event.is_action_pressed("game_down"):
+			_move_down = true
+		elif event.is_action_released("game_down"):
+			_move_down = false
+	
 	if event.is_action_pressed("game_reset_camera"):
 		_reset_camera()
 	elif event.is_action_pressed("game_delete_piece"):
