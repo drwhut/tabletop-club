@@ -63,6 +63,12 @@ var _import_thread = Thread.new()
 # https://github.com/drwhut/open_tabletop_godot_module
 var _importer = TabletopImporter.new()
 
+# Clear the AssetDB.
+func clear_db() -> void:
+	_db_mutex.lock()
+	_db = {}
+	_db_mutex.unlock()
+
 # Get the list of asset directory paths the game will scan.
 # Returns: The list of asset directory paths.
 func get_asset_paths() -> Array:
@@ -130,6 +136,14 @@ func _import_pack_dir(dir: Directory) -> void:
 	print("Importing ", pack, " from ", dir.get_current_dir(), " ...")
 	
 	_db_mutex.lock()
+	if _db.has(pack):
+		var new_pack = pack
+		var i = 1
+		while _db.has(new_pack):
+			new_pack = pack + " (%d)" % i
+			i += 1
+		print("Pack ", pack, " already exists, renaming to ", new_pack, " ...")
+		pack = new_pack
 	_db[pack] = {}
 	_db_mutex.unlock()
 	

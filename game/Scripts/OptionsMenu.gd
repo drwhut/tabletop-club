@@ -340,6 +340,8 @@ func _on_ReimportButton_pressed():
 	_reimport_confirm.popup_centered()
 
 func _on_ReimportConfirm_confirmed():
+	AssetDB.clear_db()
+	
 	var dir = Directory.new()
 	var err = dir.open("user://.import")
 	

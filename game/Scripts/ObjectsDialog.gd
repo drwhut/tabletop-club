@@ -23,11 +23,11 @@ extends WindowDialog
 
 signal piece_requested(piece_entry)
 
-onready var _add_button = $HBoxContainer/VBoxContainer2/HBoxContainer/AddButton
-onready var _content = $HBoxContainer/VBoxContainer2/ScrollContainer/Content
-onready var _content_container = $HBoxContainer/VBoxContainer2/ScrollContainer
-onready var _packs = $HBoxContainer/VBoxContainer/ScrollContainer/Packs
-onready var _status = $HBoxContainer/VBoxContainer2/HBoxContainer/StatusLabel
+onready var _add_button = $MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/AddButton
+onready var _content = $MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Content
+onready var _content_container = $MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer
+onready var _packs = $MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/Packs
+onready var _status = $MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/StatusLabel
 
 var _available_previews = []
 var _object_preview = preload("res://Scenes/ObjectPreview.tscn")
