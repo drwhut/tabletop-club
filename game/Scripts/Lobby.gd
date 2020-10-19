@@ -98,7 +98,8 @@ remotesync func modify_self(id: int, name: String, color: Color) -> void:
 		var dict = _create_player_dict(name, color)
 		_players[id] = dict
 		
-		emit_signal("player_modified", id, old)
+		if hash(old) != hash(dict):
+			emit_signal("player_modified", id, old)
 
 # Does the player with the given ID exist?
 # Returns: If the player exists.
