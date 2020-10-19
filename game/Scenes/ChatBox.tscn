@@ -5,8 +5,9 @@
 [ext_resource path="res://Fonts/Cabin-Italic.tres" type="DynamicFont" id=3]
 
 [node name="ChatBox" type="HBoxContainer"]
-margin_right = 380.0
-margin_bottom = 200.0
+margin_right = 300.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 300, 160 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -15,17 +16,17 @@ __meta__ = {
 
 [node name="ToggleButton" type="Button" parent="."]
 margin_right = 12.0
-margin_bottom = 200.0
+margin_bottom = 160.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 16.0
-margin_right = 380.0
-margin_bottom = 200.0
+margin_right = 300.0
+margin_bottom = 160.0
 size_flags_horizontal = 3
 
 [node name="ChatText" type="RichTextLabel" parent="VBoxContainer"]
-margin_right = 364.0
-margin_bottom = 166.0
+margin_right = 284.0
+margin_bottom = 126.0
 focus_mode = 2
 size_flags_vertical = 3
 custom_fonts/italics_font = ExtResource( 3 )
@@ -35,19 +36,19 @@ scroll_following = true
 selection_enabled = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 170.0
-margin_right = 364.0
-margin_bottom = 200.0
+margin_top = 130.0
+margin_right = 284.0
+margin_bottom = 160.0
 
 [node name="MessageEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_right = 313.0
+margin_right = 233.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 placeholder_text = "Type a message here..."
 
 [node name="SendButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 317.0
-margin_right = 364.0
+margin_left = 237.0
+margin_right = 284.0
 margin_bottom = 30.0
 text = "Send"
 [connection signal="pressed" from="ToggleButton" to="." method="_on_ToggleButton_pressed"]

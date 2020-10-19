@@ -83,8 +83,8 @@ margin_bottom = 250.0
 [node name="ChatBox" parent="." instance=ExtResource( 4 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -250.0
-margin_bottom = -50.0
+margin_top = -200.0
+margin_bottom = -40.0
 
 [node name="GameMenuBackground" type="ColorRect" parent="."]
 visible = false
