@@ -46,17 +46,23 @@ margin_right = 269.0
 margin_bottom = 26.0
 text = "Flip Table"
 
-[node name="RotationOption" type="OptionButton" parent="TopPanel"]
+[node name="ClearTableButton" type="Button" parent="TopPanel"]
 margin_left = 273.0
-margin_right = 320.0
+margin_right = 362.0
+margin_bottom = 26.0
+text = "Clear Table"
+
+[node name="RotationOption" type="OptionButton" parent="TopPanel"]
+margin_left = 366.0
+margin_right = 413.0
 margin_bottom = 26.0
 text = "45"
 items = [ "15", null, false, 0, null, "30", null, false, 1, null, "45", null, false, 2, null, "60", null, false, 3, null, "90", null, false, 4, null, "180", null, false, 5, null ]
 selected = 2
 
 [node name="GameMenuButton" type="Button" parent="TopPanel"]
-margin_left = 324.0
-margin_right = 375.0
+margin_left = 417.0
+margin_right = 468.0
 margin_bottom = 26.0
 text = "Menu"
 
@@ -79,6 +85,13 @@ margin_right = 400.0
 margin_bottom = 250.0
 
 [node name="RoomDialog" parent="." instance=ExtResource( 6 )]
+
+[node name="ClearTableConfirmDialog" type="ConfirmationDialog" parent="."]
+margin_right = 250.0
+margin_bottom = 93.0
+rect_min_size = Vector2( 300, 100 )
+dialog_text = "Are you sure you want to clear all objects from the table?"
+dialog_autowrap = true
 
 [node name="ChatBox" parent="." instance=ExtResource( 4 )]
 anchor_top = 1.0
@@ -157,12 +170,14 @@ visible = false
 [connection signal="pressed" from="TopPanel/GamesButton" to="." method="_on_GamesButton_pressed"]
 [connection signal="pressed" from="TopPanel/RoomButton" to="." method="_on_RoomButton_pressed"]
 [connection signal="pressed" from="TopPanel/FlipTableButton" to="." method="_on_FlipTableButton_pressed"]
+[connection signal="pressed" from="TopPanel/ClearTableButton" to="." method="_on_ClearTableButton_pressed"]
 [connection signal="item_selected" from="TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
 [connection signal="pressed" from="TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
 [connection signal="piece_requested" from="ObjectsDialog" to="." method="_on_ObjectsDialog_piece_requested"]
 [connection signal="loading_game" from="GamesDialog" to="." method="_on_GamesDialog_loading_game"]
 [connection signal="requesting_room_details" from="RoomDialog" to="." method="_on_RoomDialog_requesting_room_details"]
 [connection signal="setting_skybox" from="RoomDialog" to="." method="_on_RoomDialog_setting_skybox"]
+[connection signal="confirmed" from="ClearTableConfirmDialog" to="." method="_on_ClearTableConfirmDialog_confirmed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/SaveGameButton" to="." method="_on_SaveGameButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/LoadGameButton" to="." method="_on_LoadGameButton_pressed"]

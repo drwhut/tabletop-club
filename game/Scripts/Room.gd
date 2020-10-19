@@ -1181,5 +1181,10 @@ func _on_CameraController_spawning_piece_at(position: Vector3):
 func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stacks: bool):
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
 
+func _on_GameUI_clear_pieces():
+	for piece in _pieces.get_children():
+		if piece is Piece:
+			piece.rpc_id(1, "request_remove_self")
+
 func _on_GameUI_rotation_amount_updated(rotation_amount: float):
 	_camera_controller.set_piece_rotation_amount(rotation_amount)

@@ -22,6 +22,7 @@
 extends Control
 
 signal applying_options(config)
+signal clear_pieces()
 signal flipping_table(reset_table)
 signal load_table(path)
 signal piece_requested(piece_entry, position)
@@ -31,6 +32,8 @@ signal save_table(path)
 signal skybox_requested(skybox_entry)
 
 onready var _chat_box = $ChatBox
+onready var _clear_table_button = $TopPanel/ClearTableButton
+onready var _clear_table_dialog = $ClearTableConfirmDialog
 onready var _file_dialog = $GameMenuBackground/FileDialog
 onready var _flip_table_button = $TopPanel/FlipTableButton
 onready var _game_menu_background = $GameMenuBackground
@@ -81,6 +84,8 @@ func set_flip_table_status(flip_table_status: bool) -> void:
 		_flip_table_button.text = "Reset Table"
 	else:
 		_flip_table_button.text = "Flip Table"
+	
+	_clear_table_button.disabled = flip_table_status
 
 func _ready():
 	Lobby.connect("player_added", self, "_on_Lobby_player_added")
@@ -123,6 +128,12 @@ func _update_player_list() -> void:
 
 func _on_BackToGameButton_pressed():
 	_game_menu_background.visible = false
+
+func _on_ClearTableButton_pressed():
+	_clear_table_dialog.popup_centered()
+
+func _on_ClearTableConfirmDialog_confirmed():
+	emit_signal("clear_pieces")
 
 func _on_DesktopButton_pressed():
 	get_tree().quit()
