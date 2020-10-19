@@ -310,7 +310,7 @@ remotesync func flip_table(camera_basis: Basis) -> void:
 	diagonal.y = 0.5
 	diagonal = diagonal.normalized()
 	_table_body.apply_central_impulse(_table_body.mass * 100 * diagonal)
-	_table_body.apply_torque_impulse(_table_body.mass * 1000 * left)
+	_table_body.apply_torque_impulse(_table_body.mass * 2000 * left)
 	
 	if get_tree().is_network_server():
 		srv_set_retrieve_pieces_from_hell(false)
