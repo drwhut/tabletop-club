@@ -41,8 +41,6 @@ cd open-tabletop
 
 ```bash
 pip install Pillow
-cd assets/OpenTabletop/cards
-python generate_cards.py
 cd ../tokens/cylinder
 python generate_chips.py
 ```

@@ -1,3 +1,20 @@
+cards/{Ace,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,Jack,Queen,King} of {Clubs,Diamonds,Hearts,Spades}.png
+cards/Joker {Black,Red}.png
+===========================
+
+Front
+-----
+Author: Unknown
+License: Public Domain
+Modified By: Benjamin "drwhut" Beddows
+URL: https://opengameart.org/content/playing-cards-vector-png
+
+Back
+----
+Author: jeffshee
+License: CC-BY 3.0
+URL: https://opengameart.org/content/colorful-poker-card-back
+
 skyboxes/Clouds.png
 ===================
 Author: Pieter 'Spiney' Verhoeven
