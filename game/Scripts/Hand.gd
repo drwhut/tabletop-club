@@ -189,10 +189,7 @@ func _try_set_front_face_visible(body: Node, visible: bool) -> void:
 	if body is Card:
 		valid = true
 	elif body is Stack:
-		var scene_path = body.piece_entry["scene_path"]
-		var test_piece = load(scene_path).instance()
-		valid = test_piece is Card
-		test_piece.free()
+		valid = body.is_card_stack()
 	
 	if valid:
 		_set_front_face_visible_recursive(body, visible)

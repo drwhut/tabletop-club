@@ -715,11 +715,7 @@ func _popup_piece_context_menu() -> void:
 			_piece_context_menu_container.add_child(collect_all_button)
 			
 			var stack = _selected_pieces[0]
-			var test_piece = load(stack.piece_entry["scene_path"]).instance()
-			var is_card_stack = test_piece is Card
-			test_piece.free()
-			
-			if is_card_stack:
+			if stack.is_card_stack():
 				var deal_button = SpinBoxButton.new()
 				deal_button.button.text = "Deal X cards"
 				deal_button.spin_box.prefix = "X ="

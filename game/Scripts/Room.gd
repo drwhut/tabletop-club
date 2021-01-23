@@ -458,10 +458,7 @@ master func request_add_cards_to_hand(card_names: Array, hand_id: int) -> void:
 		if piece is Card:
 			cards.append(piece)
 		elif piece is Stack:
-			var scene_path = piece.piece_entry["scene_path"]
-			var test_piece = load(scene_path).instance()
-			var is_card = test_piece is Card
-			test_piece.free()
+			var is_card = piece.is_card_stack()
 			
 			if not is_card:
 				push_error("Stack " + card_name + " does not contain cards!")
@@ -594,9 +591,7 @@ master func request_deal_cards(stack_name: String, n: int) -> void:
 		push_error("Piece " + stack_name + " is not a stack!")
 		return
 	
-	var test_piece = load(stack.piece_entry["scene_path"]).instance()
-	var is_card_stack = test_piece is Card
-	test_piece.free()
+	var is_card_stack = stack.is_card_stack()
 	
 	if not is_card_stack:
 		push_error("Stack " + stack_name + " does not contain cards!")

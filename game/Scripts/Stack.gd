@@ -119,6 +119,14 @@ func get_total_height() -> float:
 func get_unit_height() -> float:
 	return _collision_unit_height
 
+# Is the stack a stack of cards?
+# Returns: If the stack is a stack of cards.
+func is_card_stack() -> bool:
+	if get_piece_count() > 0:
+		return piece_entry["scene_path"] == "res://Pieces/Card.tscn"
+	
+	return false
+
 # Is the piece's orientation flipped relative to the stack's orientation?
 # Returns: If the piece's orientation if flipped.
 # piece: The stack piece instance to query.
