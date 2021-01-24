@@ -696,11 +696,20 @@ func _popup_piece_context_menu() -> void:
 	# LEVEL 2 #
 	###########
 	
-	if _inheritance_has(inheritance, "Card"):
-		var put_in_hand_button = Button.new()
-		put_in_hand_button.text = "Put in hand"
-		put_in_hand_button.connect("pressed", self, "_on_context_put_in_hand_pressed")
-		_piece_context_menu_container.add_child(put_in_hand_button)
+	# If the pieces consist of both cards and stacks of cards, then the
+	# inheritance should include the StackablePiece class.
+	if _inheritance_has(inheritance, "StackablePiece"):
+		var only_cards = true
+		for piece in _selected_pieces:
+			if not (piece is Card or (piece is Stack and piece.is_card_stack())):
+				only_cards = false
+				break
+		
+		if only_cards:
+			var put_in_hand_button = Button.new()
+			put_in_hand_button.text = "Put in hand"
+			put_in_hand_button.connect("pressed", self, "_on_context_put_in_hand_pressed")
+			_piece_context_menu_container.add_child(put_in_hand_button)
 	
 	if _inheritance_has(inheritance, "Stack"):
 		if _selected_pieces.size() == 1:
