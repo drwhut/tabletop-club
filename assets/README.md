@@ -20,6 +20,29 @@ the unique functionality to be able to be put in a player's hand.
 The textures for cards use the following UV mapping:
 ![Card UV Mapping](OpenTabletop/cards/Template.svg)
 
+### containers/
+
+Containers are special pieces that can hold an unlimited amount of other pieces
+(including other containers!) inside themselves. Pieces inside containers are
+invisible. Pieces can be placed inside containers by dropping them on top of
+the container, and pieces can be ramdomly removed from the container by quickly
+dragging from the container.
+
+### containers/cube/
+
+The textures for cube-shaped containers use the same UV mapping as cube-shaped
+pieces (see pieces/cube/).
+
+### containers/custom/
+
+The models for custom-shaped containers use the same formates as custom-shaped
+pieces (see pieces/custom/).
+
+### containers/cylinder/
+
+The textures for cylinder-shaped containers use the same UV mapping as
+cylinder-shaped pieces (see pieces/cylinder/).
+
 ### dice/
 
 Dice are objects that, when shaken, randomize their orientation.

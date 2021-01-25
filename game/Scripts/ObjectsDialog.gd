@@ -154,6 +154,12 @@ func _update_object_content(pack_name: String) -> void:
 	
 	_add_content_type(_content, pack_name, ["cards"], "Cards")
 	
+	_add_content_type(_content, pack_name, [
+		"containers/cube",
+		"containers/custom",
+		"containers/cylinder"
+		], "Containers")
+	
 	_add_content_type(_content, pack_name, ["dice/d4"], "Dice - D4")
 	_add_content_type(_content, pack_name, ["dice/d6"], "Dice - D6")
 	_add_content_type(_content, pack_name, ["dice/d8"], "Dice - D8")

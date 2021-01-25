@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/PieceBuilder.gd"
 }, {
+"base": "Piece",
+"class": "PieceContainer",
+"language": "GDScript",
+"path": "res://Scripts/PieceContainer.gd"
+}, {
 "base": "HBoxContainer",
 "class": "SpinBoxButton",
 "language": "GDScript",
@@ -84,6 +89,7 @@ _global_script_class_icons={
 "OutlineColorRect": "",
 "Piece": "",
 "PieceBuilder": "",
+"PieceContainer": "",
 "SpinBoxButton": "",
 "Stack": "",
 "StackPieceInstance": "",

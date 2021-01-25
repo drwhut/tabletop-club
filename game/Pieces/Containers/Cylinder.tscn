@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/PieceContainer.gd" type="Script" id=1]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="CylinderMesh" id=2]
+top_radius = 0.5
+bottom_radius = 0.5
+height = 1.0
+
+[node name="Cylinder" type="RigidBody"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "A cylinder-shaped container, which can be used to store other pieces."
+}
+mesh_instance_path = NodePath("CollisionShape/MeshInstance")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = null
