@@ -29,6 +29,9 @@ class_name PieceBuilder
 static func build_piece(piece_entry: Dictionary) -> Piece:
 	var piece = load(piece_entry["scene_path"]).instance()
 	
+	# The centre of mass of the piece.
+	var avg_points = Vector3.ZERO
+	
 	# If the scene is not a piece (e.g. when importing a scene from the assets
 	# folder), make it a piece so it can interact with other objects.
 	if not piece is Piece:
@@ -51,17 +54,9 @@ static func build_piece(piece_entry: Dictionary) -> Piece:
 						sum_points += child.transform * point
 						num_points += 1
 		
-		var avg_points = sum_points
+		avg_points = sum_points
 		if num_points > 1:
 			avg_points /= num_points
-		
-		# NOTE: The reason we offset all the collision shapes is because the
-		# Bullet physics engine defines the centre of mass as the origin of the
-		# rigidbody, and there is currently no way to manually define the
-		# centre of mass of a rigidbody in Godot. See:
-		# https://github.com/godotengine/godot-proposals/issues/945
-		for child in build.get_children():
-			child.transform.origin -= avg_points
 		
 		if not piece.get_parent():
 			piece.free()
@@ -71,6 +66,22 @@ static func build_piece(piece_entry: Dictionary) -> Piece:
 	piece.piece_entry = piece_entry
 	
 	scale_piece(piece, piece_entry["scale"])
+	
+	# Now the piece has been scaled, we can safely change the centre of mass!
+	# NOTE: The reason we offset all the collision shapes is because the
+	# Bullet physics engine defines the centre of mass as the origin of the
+	# rigidbody, and there is currently no way to manually define the
+	# centre of mass of a rigidbody in Godot. See:
+	# https://github.com/godotengine/godot-proposals/issues/945
+	if avg_points != Vector3.ZERO:
+		
+		# Adjust the centre of mass for the scale that just happened.
+		var scale = piece_entry["scale"]
+		avg_points = Vector3(avg_points.x * scale.x, avg_points.y * scale.y,
+			avg_points.z * scale.z)
+		
+		for child in piece.get_children():
+			child.transform.origin -= avg_points
 	
 	if piece_entry.has("texture_path") and piece_entry["texture_path"] is String:
 		var texture: Texture = load(piece_entry["texture_path"])
