@@ -36,6 +36,28 @@ static func build_piece(piece_entry: Dictionary) -> Piece:
 		
 		_extract_and_shape_mesh_instances(build, piece, Transform.IDENTITY)
 		
+		# We should take the time to make sure that the centre of mass of the
+		# piece is correct, i.e. the rigidbody node is positioned roughly at
+		# the centre of the piece. This might not be the case since the
+		# imported mesh could be translated to any position!
+		var sum_points = Vector3.ZERO
+		var num_points = 0
+		for child in build.get_children():
+			if child is CollisionShape:
+				var shape = child.shape
+				
+				if shape is ConvexPolygonShape:
+					for point in shape.points:
+						sum_points += child.transform * point
+						num_points += 1
+		
+		var avg_points = sum_points
+		if num_points > 1:
+			avg_points /= num_points
+		
+		for child in build.get_children():
+			child.transform.origin -= avg_points
+		
 		if not piece.get_parent():
 			piece.free()
 		piece = build
