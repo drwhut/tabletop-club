@@ -9,91 +9,96 @@ to edit the game or use Godot!
 
 To make the management and sharing of custom assets easier, the assets in this
 folder are split up into **packs**. Each pack has a set of assets within it
-that are divided into different sub-folders. The game comes with the default
-OpenTabletop asset pack included.
+that are divided into different sub-folders depending on what type of asset it
+is. The game comes with the default OpenTabletop asset pack included.
 
-### cards/
+### Sub-folders
 
-Cards are flat, rectangular-shaped objects that are stackable, and they have
-the unique functionality to be able to be put in a player's hand.
+| Sub-folder             | File Type  | Asset Type  | Object Type | Stackable? |
+| :--------------------- | :--------- | :---------- | :---------- | :--------- |
+| `cards/`               | Image      | Object      | Card        | Yes        |
+| `containers/cube/`     | Image      | Object      | Container   | No         |
+| `containers/custom/`   | 3D         | Object      | Container   | No         |
+| `containers/cylinder/` | Image      | Object      | Container   | No         |
+| `dice/d4/`             | Image      | Object      | Dice        | No         |
+| `dice/d6/`             | Image      | Object      | Dice        | No         |
+| `dice/d8/`             | Image      | Object      | Dice        | No         |
+| `games/`               | Table      | Game        | N/A         | N/A        |
+| `pieces/cube/`         | Image      | Object      | Piece       | No         |
+| `pieces/custom/`       | 3D         | Object      | Piece       | No         |
+| `pieces/cylinder/`     | Image      | Object      | Piece       | No         |
+| `skyboxes/`            | Image      | Skybox      | N/A         | N/A        |
+| `tokens/cube/`         | Image      | Object      | Token       | Yes        |
+| `tokens/cylinder/`     | Image      | Object      | Token       | Yes        |
 
-The textures for cards use the following UV mapping:
+## File Types
+
+### Image
+
+#### Supported Formats
+
+By default, OpenTabletop supports all of the image formats that Godot supports,
+the list of which can be found
+[here](https://docs.godotengine.org/en/3.2/getting_started/workflow/assets/importing_images.html).
+
+#### UV Mappings
+
+Every object that uses an image has something called a UV mapping, a way in
+which the image is "folded" onto the 3D object. Knowing these UV mappings is
+important if you want your object to look right in-game!
+
+**NOTE:** The width and height of the images doesn't matter, as long as the
+proportions are correct!
+
+**Card:**
 ![Card UV Mapping](OpenTabletop/cards/Template.svg)
 
-### containers/
+**Cube:**
+![Cube UV Mapping](OpenTabletop/pieces/cube/Template.svg)
 
-Containers are special pieces that can hold an unlimited amount of other pieces
-(including other containers!) inside themselves. Pieces inside containers are
-invisible. Pieces can be placed inside containers by dropping them on top of
-the container, and pieces can be ramdomly removed from the container by quickly
-dragging from the container.
+**Cylinder:**
+![Cylinder UV Mapping](OpenTabletop/pieces/cylinder/Template.svg)
 
-### containers/cube/
-
-The textures for cube-shaped containers use the same UV mapping as cube-shaped
-pieces (see pieces/cube/).
-
-### containers/custom/
-
-The models for custom-shaped containers use the same formates as custom-shaped
-pieces (see pieces/custom/).
-
-### containers/cylinder/
-
-The textures for cylinder-shaped containers use the same UV mapping as
-cylinder-shaped pieces (see pieces/cylinder/).
-
-### dice/
-
-Dice are objects that, when shaken, randomize their orientation.
-
-#### dice/d4/
-
-The textures for d4 dice use the following UV mapping:
+**D4:**
 ![D4 UV Mapping](OpenTabletop/dice/d4/Template.svg)
 
-#### dice/d6/
-
-The textures for d6 dice use the following UV mapping:
+**D6:**
 ![D6 UV Mapping](OpenTabletop/dice/d6/Template.svg)
 
-#### dice/d8/
-
-The textures for d8 dice use the following UV mapping:
+**D8:**
 ![D8 UV Mapping](OpenTabletop/dice/d8/Template.svg)
 
-### games/
+### 3D
 
-Games are table files that are used to setup the table automatically in order
-to start playing a game.
+3D models can be exported from almost any 3D modelling software, including
+Blender and Maya.
 
-You can create table files by setting up the table the way you want in
-singleplayer, then by going to the menu and saving the game into this
-directory.
+As of right now, OpenTabletop supports the following 3D file formats:
 
-### pieces/
+* glTF 2.0 (`.glb`, `.gltf`)
+* Wavefront (`.obj`)
 
-Pieces are generic objects with no special features.
+### Table
 
-#### pieces/cube/
+Table files (`.table`) are saved OpenTabletop table states, which can be loaded
+again later. You can create table files by playing the game, then by going to
+the menu and clicking "Save game". You can load the table state back by
+clicking the "Load game" button in the same menu.
 
-The textures for cube-shaped pieces use the following UV mapping:
-![Cube Piece UV Mapping](OpenTabletop/pieces/cube/Template.svg)
+## Asset Types
 
-#### pieces/custom/
+### Object
 
-This subfolder contains custom 3D models, which can be exported from programs
-like Blender or Maya.
+An object in OpenTabletop refers to anything that can be moved and is also
+physics-driven. There are many different types of objects, each with their own
+special functionality (see below).
 
-**NOTE:** Currently, the only accepted formats are glTF 2.0 (.glb, .gltf), and
-Wavefront (.obj).
+### Game
 
-#### pieces/cylinder/
+A game is a table file that has been pre-made such that players can instantly
+setup the table to play a particular game.
 
-The textures for cylinder-shaped pieces use the following UV mapping:
-![Cylinder Piece UV Mapping](OpenTabletop/pieces/cylinder/Template.svg)
-
-### skyboxes/
+### Skybox
 
 Skyboxes are special textures that determine what the background looks like.
 
@@ -108,27 +113,44 @@ OpenTabletop supports the Radiance HDR (`.hdr`) and OpenEXR (`.exr`) formats.
 Here is an example of a skybox texture:
 ![Example skybox texture](OpenTabletop/skyboxes/Clouds.png)
 
-### tokens/
+## Object Types
 
-Tokens are objects that are stackable.
+**TODO:** Add images of each of the different object types.
+
+### Card
+
+Cards are flat, rectangular-shaped objects that are stackable, and they have
+the unique functionality to be able to be put in a player's hand.
+
+### Container
+
+Containers are special objects that can hold an unlimited amount of other
+objects (including other containers!) inside themselves. Objects inside
+containers are invisible. Objects can be placed inside containers by dropping
+them on top of the container, and objects can be ramdomly removed from the
+container by quickly dragging from the container.
+
+### Dice
+
+Dice are objects that, when shaken, randomize their orientation.
+
+### Piece
+
+Pieces are generic objects that have no special functionality.
+
+### Token
+
+Tokens are objects that are stackable, similar to cards.
 
 **NOTE:** Tokens stack vertically, so the top and bottom faces will be
 connected end-to-end when they are stacked.
 
-#### tokens/cube
-
-The textures for cube-shaped tokens use the same UV mapping as cube-shaped
-pieces (see pieces/cube/).
-
-#### tokens/cylinder
-
-The textures for cylinder-shaped tokens use the same UV mapping as
-cylinder-shaped pieces (see pieces/cylinder/).
+## Configuration Files
 
 ### config.cfg
 
-Each subfolder has this special file for giving each object it's own
-properties.
+Every subfolder can have this file, which allows you to modify the properties
+of objects in the subfolder.
 
 Here is an example of a `config.cfg` file:
 
