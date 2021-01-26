@@ -50,22 +50,22 @@ important if you want your object to look right in-game!
 **NOTE:** The width and height of the images doesn't matter, as long as the
 proportions are correct!
 
-**Card:**
+##### Card
 ![Card UV Mapping](OpenTabletop/cards/Template.svg)
 
-**Cube:**
+##### Cube
 ![Cube UV Mapping](OpenTabletop/pieces/cube/Template.svg)
 
-**Cylinder:**
+##### Cylinder
 ![Cylinder UV Mapping](OpenTabletop/pieces/cylinder/Template.svg)
 
-**D4:**
+##### D4
 ![D4 UV Mapping](OpenTabletop/dice/d4/Template.svg)
 
-**D6:**
+##### D6
 ![D6 UV Mapping](OpenTabletop/dice/d6/Template.svg)
 
-**D8:**
+##### D8
 ![D8 UV Mapping](OpenTabletop/dice/d8/Template.svg)
 
 ### 3D
