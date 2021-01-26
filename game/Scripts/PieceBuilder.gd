@@ -55,6 +55,11 @@ static func build_piece(piece_entry: Dictionary) -> Piece:
 		if num_points > 1:
 			avg_points /= num_points
 		
+		# NOTE: The reason we offset all the collision shapes is because the
+		# Bullet physics engine defines the centre of mass as the origin of the
+		# rigidbody, and there is currently no way to manually define the
+		# centre of mass of a rigidbody in Godot. See:
+		# https://github.com/godotengine/godot-proposals/issues/945
 		for child in build.get_children():
 			child.transform.origin -= avg_points
 		
