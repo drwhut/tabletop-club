@@ -23,4 +23,26 @@ extends Piece
 
 class_name PieceContainer
 
+# TODO: Have this property be configurable.
+var opening_cone_angle: float = sin(deg2rad(30))
 
+func _ready():
+	connect("body_entered", self, "_on_body_entered")
+
+func _on_body_entered(body) -> void:
+	if get_tree().is_network_server():
+		
+		# If a piece has collided with this container, then figure out if the
+		# piece landed on top of us. If it did, then we can add it to the
+		# container!
+		if body is Piece:
+			var disp = body.transform.origin - transform.origin
+			
+			# Check if the piece is hitting the top side of the container...
+			if disp.dot(transform.basis.y) > 0:
+				disp = disp.normalized()
+				
+				# Check if the piece is within the opening cone...
+				if abs(disp.dot(transform.basis.x)) <= opening_cone_angle:
+					if abs(disp.dot(transform.basis.z)) <= opening_cone_angle:
+						print("Hit!")

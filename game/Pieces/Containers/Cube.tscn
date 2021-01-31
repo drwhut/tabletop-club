@@ -9,6 +9,8 @@ extents = Vector3( 0.5, 0.5, 0.5 )
 size = Vector3( 1, 1, 1 )
 
 [node name="Cube" type="RigidBody"]
+contacts_reported = 2
+contact_monitor = true
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "A cube-shaped container, which can be used to store other pieces.
