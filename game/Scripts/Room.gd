@@ -402,54 +402,19 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 		"transform": _table_body.transform
 	}
 	
-	var hand_dict = {}
-	var piece_dict = {}
-	var stack_dict = {}
-	
 	if hands:
+		var hand_dict = {}
 		for hand in _hands.get_children():
 			var hand_meta = {
 				"transform": hand.transform
 			}
 			
 			hand_dict[hand.owner_id()] = hand_meta
-	
-	for piece in _pieces.get_children():
-		if piece is Stack:
-			var stack_meta = {
-				"is_locked": piece.is_locked(),
-				"transform": piece.transform
-			}
-			
-			var child_pieces = []
-			for child_piece in piece.get_pieces():
-				var child_piece_meta = {
-					"flip_y": child_piece.transform.basis.y.y < 0,
-					"name": child_piece.name,
-					"piece_entry": child_piece.piece_entry
-				}
-				
-				child_pieces.push_back(child_piece_meta)
-			
-			stack_meta["pieces"] = child_pieces
-			stack_dict[piece.name] = stack_meta
-		else:
-			var piece_meta = {
-				"is_locked": piece.is_locked(),
-				"piece_entry": piece.piece_entry,
-				"transform": piece.transform
-			}
-			
-			if collisions:
-				if piece is Card:
-					piece_meta["is_collisions_on"] = piece.is_collisions_on()
-			
-			piece_dict[piece.name] = piece_meta
-	
-	if hands:
+		
 		out["hands"] = hand_dict
-	out["pieces"] = piece_dict
-	out["stacks"] = stack_dict
+	
+	_append_piece_states(out, _pieces, collisions)
+	
 	return out
 
 # Remove a player's hand from the room.
@@ -900,146 +865,11 @@ remotesync func set_state(state: Dictionary) -> void:
 			
 			add_hand(hand_id, hand_meta["transform"])
 	
-	if state.has("pieces") or state.has("stacks"):
-		for child in _pieces.get_children():
-			_pieces.remove_child(child)
-			child.queue_free()
+	for child in _pieces.get_children():
+		_pieces.remove_child(child)
+		child.queue_free()
 	
-	if state.has("pieces"):
-		for piece_name in state["pieces"]:
-			if get_tree().is_network_server():
-				var name_int = int(piece_name)
-				if name_int >= _srv_next_piece_name:
-					_srv_next_piece_name = name_int + 1
-			
-			var piece_meta = state["pieces"][piece_name]
-			
-			if not piece_meta.has("is_locked"):
-				push_error("Piece " + piece_name + " in new state has no is locked value!")
-				return
-			
-			if not piece_meta["is_locked"] is bool:
-				push_error("Piece " + piece_name + " is locked value is not a boolean!")
-				return
-			
-			if not piece_meta.has("piece_entry"):
-				push_error("Piece " + piece_name + " in new state has no piece entry!")
-				return
-			
-			if not piece_meta["piece_entry"] is Dictionary:
-				push_error("Piece " + piece_name + " entry is not a dictionary!")
-				return
-			
-			if not piece_meta.has("transform"):
-				push_error("Piece " + piece_name + " in new state has no transform!")
-				return
-			
-			if not piece_meta["transform"] is Transform:
-				push_error("Piece " + piece_name + " transform is not a transform!")
-				return
-			
-			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
-			var piece: Piece = _pieces.get_node(piece_name)
-			
-			if piece_meta["is_locked"]:
-				piece.lock_client(piece_meta["transform"])
-			
-			if piece is Card:
-				# The state can choose not to have this data.
-				if piece_meta.has("is_collisions_on"):
-					if not piece_meta["is_collisions_on"] is bool:
-						push_error("Card " + piece_name + " collisions on is not a boolean!")
-						return
-					
-					piece.set_collisions_on(piece_meta["is_collisions_on"])
-	
-	if state.has("stacks"):
-		for stack_name in state["stacks"]:
-			if get_tree().is_network_server():
-				var name_int = int(stack_name)
-				if name_int >= _srv_next_piece_name:
-					_srv_next_piece_name = name_int + 1
-			
-			var stack_meta = state["stacks"][stack_name]
-			
-			if not stack_meta.has("is_locked"):
-				push_error("Stack " + stack_name + " in new state has no is locked value!")
-				return
-			
-			if not stack_meta["is_locked"] is bool:
-				push_error("Stack " + stack_name + " is locked value is not a boolean!")
-				return
-			
-			if not stack_meta.has("transform"):
-				push_error("Stack " + stack_name + " in new state has no transform!")
-				return
-			
-			if not stack_meta["transform"] is Transform:
-				push_error("Stack " + stack_name + " transform is not a transform!")
-				return
-			
-			if not stack_meta.has("pieces"):
-				push_error("Stack " + stack_name + " in new state has no piece array!")
-				return
-			
-			if not stack_meta["pieces"] is Array:
-				push_error("Stack " + stack_name + " piece array is not an array!")
-				return
-			
-			var stack = add_stack_empty(stack_name, stack_meta["transform"])
-			
-			if stack_meta["is_locked"]:
-				var stack_node: Stack = _pieces.get_node(stack_name)
-				stack_node.lock_client(stack_meta["transform"])
-			
-			for stack_piece_meta in stack_meta["pieces"]:
-				
-				if not stack_piece_meta is Dictionary:
-					push_error("Stack piece is not a dictionary!")
-					return
-				
-				if not stack_piece_meta.has("name"):
-					push_error("Stack piece does not have a name!")
-					return
-				
-				if not stack_piece_meta["name"] is String:
-					push_error("Stack piece name is not a string!")
-					return
-				
-				var stack_piece_name = stack_piece_meta["name"]
-				
-				if get_tree().is_network_server():
-					var name_int = int(stack_piece_name)
-					if name_int >= _srv_next_piece_name:
-						_srv_next_piece_name = name_int + 1
-				
-				if not stack_piece_meta.has("flip_y"):
-					push_error("Stack piece" + stack_piece_name + " does not have a flip value!")
-					return
-				
-				if not stack_piece_meta["flip_y"] is bool:
-					push_error("Stack piece" + stack_piece_name + " flip value is not a boolean!")
-					return
-				
-				if not stack_piece_meta.has("piece_entry"):
-					push_error("Stack piece" + stack_piece_name + " does not have a piece entry!")
-					return
-				
-				if not stack_piece_meta["piece_entry"] is Dictionary:
-					push_error("Stack piece" + stack_piece_name + " entry is not a dictionary!")
-					return
-				
-				# Add the piece normally so we can extract the mesh instance and
-				# shape.
-				add_piece(stack_piece_name, Transform(), stack_piece_meta["piece_entry"])
-				
-				# Then add it to the stack at the top (since we're going through
-				# the list in order from bottom to top).
-				var flip = Stack.FLIP_NO
-				if stack_piece_meta["flip_y"]:
-					flip = Stack.FLIP_YES
-				
-				add_piece_to_stack(stack_piece_name, stack_name, Stack.STACK_TOP, flip)
+	_extract_piece_states(state, _pieces)
 
 # Get the next hand transform. Note that there may not be a next transform, in
 # which case the function returns the identity transform.
@@ -1154,6 +984,188 @@ remotesync func unflip_table() -> void:
 		srv_set_retrieve_pieces_from_hell(true)
 	
 	emit_signal("table_flipped", true)
+
+# Append the states of pieces to a given dictionary.
+# state: The dictionary to add the states to.
+# parent: The parent node to start scanning pieces from.
+# collisions: Should collision data be included in the state?
+func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> void:
+	state["containers"] = {}
+	state["pieces"] = {}
+	state["stacks"] = {}
+	
+	for piece in parent.get_children():
+		var piece_meta = {
+			"is_locked": piece.is_locked(),
+			"piece_entry": piece.piece_entry,
+			"transform": piece.transform
+		}
+		
+		if piece is PieceContainer:
+			var child_pieces = {}
+			_append_piece_states(child_pieces, piece.get_node("Pieces"), collisions)
+			
+			piece_meta["pieces"] = child_pieces
+			state["containers"][piece.name] = piece_meta
+		
+		elif piece is Stack:
+			# If the piece is a stack, we don't need to store the stack's piece
+			# entry, as it will figure it out itself once the first piece is
+			# added.
+			piece_meta.erase("piece_entry")
+			
+			var child_pieces = []
+			for child_piece in piece.get_pieces():
+				var child_piece_meta = {
+					"flip_y": child_piece.transform.basis.y.y < 0,
+					"name": child_piece.name,
+					"piece_entry": child_piece.piece_entry
+				}
+				
+				child_pieces.push_back(child_piece_meta)
+			
+			piece_meta["pieces"] = child_pieces
+			state["stacks"][piece.name] = piece_meta
+		
+		else:
+			if collisions:
+				if piece is Card:
+					piece_meta["is_collisions_on"] = piece.is_collisions_on()
+			
+			state["pieces"][piece.name] = piece_meta
+
+# Extract the pieces from a room state, and add them to the scene tree.
+# state: The state to extract the pieces from.
+# parent: The node to add the pieces to as children.
+func _extract_piece_states(state: Dictionary, parent: Node) -> void:
+	_extract_piece_states_type(state, parent, "containers")
+	_extract_piece_states_type(state, parent, "pieces")
+	_extract_piece_states_type(state, parent, "stacks")
+
+# A helper function when extracting piece states from a room state.
+# state: The state to extract the pieces from.
+# parent: The node to add the pieces to as children.
+# type_key: The key to extract from the state.
+func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: String) -> void:
+	if not state.has(type_key):
+		return
+	
+	for piece_name in state[type_key]:
+		var piece_meta = state[type_key][piece_name]
+		
+		# Make sure the server doesn't duplicate piece names!
+		if get_tree().is_network_server():
+			var name_int = int(piece_name)
+			if name_int >= _srv_next_piece_name:
+				_srv_next_piece_name = name_int + 1
+		
+		if not piece_meta.has("is_locked"):
+			push_error("Piece " + type_key + "/" + piece_name + " in new state has no is locked value!")
+			return
+		
+		if not piece_meta["is_locked"] is bool:
+			push_error("Piece " + type_key + "/" + piece_name + " is locked value is not a boolean!")
+			return
+		
+		if not piece_meta.has("transform"):
+			push_error("Piece " + type_key + "/" + piece_name + " in new state has no transform!")
+			return
+		
+		if not piece_meta["transform"] is Transform:
+			push_error("Piece " + type_key + "/" + piece_name + " transform is not a transform!")
+			return
+		
+		# Stacks don't include their piece entry, since they can figure it out
+		# themselves once the first piece is added.
+		if type_key != "stacks":
+			if not piece_meta.has("piece_entry"):
+				push_error("Piece " + type_key + "/" + piece_name + " in new state has no piece entry!")
+				return
+			
+			if not piece_meta["piece_entry"] is Dictionary:
+				push_error("Piece " + type_key + "/" + piece_name + " entry is not a dictionary!")
+				return
+		
+		if type_key == "stacks":
+			add_stack_empty(piece_name, piece_meta["transform"])
+		else:
+			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
+		
+		var piece: Piece = _pieces.get_node(piece_name)
+		if piece_meta["is_locked"]:
+			piece.lock_client(piece_meta["transform"])
+		
+		if type_key == "containers":
+			if not piece_meta.has("pieces"):
+				push_error("Container piece does not have a pieces entry!")
+				return
+			
+			if not piece_meta["pieces"] is Dictionary:
+				push_error("Container pieces entry is not a dictionary!")
+				return
+			
+			_extract_piece_states(piece_meta["pieces"], piece.get_node("Pieces"))
+		
+		elif type_key == "piece":
+			if piece is Card:
+				# The state can choose not to have this data.
+				if piece_meta.has("is_collisions_on"):
+					if not piece_meta["is_collisions_on"] is bool:
+						push_error("Card " + piece_name + " collisions on is not a boolean!")
+						return
+					
+					piece.set_collisions_on(piece_meta["is_collisions_on"])
+		
+		elif type_key == "stacks":
+			for stack_piece_meta in piece_meta["pieces"]:
+				
+				if not stack_piece_meta is Dictionary:
+					push_error("Stack piece is not a dictionary!")
+					return
+				
+				if not stack_piece_meta.has("name"):
+					push_error("Stack piece does not have a name!")
+					return
+				
+				if not stack_piece_meta["name"] is String:
+					push_error("Stack piece name is not a string!")
+					return
+				
+				var stack_piece_name = stack_piece_meta["name"]
+				
+				if not stack_piece_meta.has("flip_y"):
+					push_error("Stack piece" + stack_piece_name + " does not have a flip value!")
+					return
+				
+				if not stack_piece_meta["flip_y"] is bool:
+					push_error("Stack piece" + stack_piece_name + " flip value is not a boolean!")
+					return
+				
+				if not stack_piece_meta.has("piece_entry"):
+					push_error("Stack piece" + stack_piece_name + " does not have a piece entry!")
+					return
+				
+				if not stack_piece_meta["piece_entry"] is Dictionary:
+					push_error("Stack piece" + stack_piece_name + " entry is not a dictionary!")
+					return
+				
+				# Add the piece normally so we can extract the mesh instance and
+				# shape.
+				add_piece(stack_piece_name, Transform(), stack_piece_meta["piece_entry"])
+				
+				# Then add it to the stack at the top (since we're going through
+				# the list in order from bottom to top).
+				var flip = Stack.FLIP_NO
+				if stack_piece_meta["flip_y"]:
+					flip = Stack.FLIP_YES
+				
+				add_piece_to_stack(stack_piece_name, piece_name, Stack.STACK_TOP, flip)
+		
+		# Finally, we may need to move the piece in the scene tree so it has a
+		# different parent.
+		if parent != _pieces:
+			_pieces.remove_child(piece)
+			parent.add_child(piece)
 
 func _on_container_absorbing_piece(container: PieceContainer, piece: Piece) -> void:
 	rpc("add_piece_to_container", container.name, piece.name)
