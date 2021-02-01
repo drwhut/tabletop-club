@@ -77,7 +77,42 @@ remotesync func add_piece(name: String, transform: Transform,
 	if piece is StackablePiece:
 		piece.connect("stack_requested", self, "_on_stack_requested")
 	
+	# If it is a container, make sure we attach the signal it emits when it
+	# wants to absorb a piece.
+	if piece is PieceContainer:
+		piece.connect("absorbing_piece", self, "_on_container_absorbing_piece")
+	
 	_pieces.add_child(piece)
+
+# Called by the server to add a piece to a container, a.k.a. having the piece
+# be "absorbed" by the container.
+# container_name: The name of the container that is absorbing the piece.
+# piece_name: The name of the piece that the container is absorbing.
+remotesync func add_piece_to_container(container_name: String, piece_name: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var container = _pieces.get_node(container_name)
+	var piece     = _pieces.get_node(piece_name)
+	
+	if not container:
+		push_error("Container " + container_name + " does not exist!")
+		return
+	
+	if not piece:
+		push_error("Piece " + piece_name + " does not exist!")
+		return
+	
+	if not container is PieceContainer:
+		push_error("Piece " + container_name + " is not a container!")
+		return
+	
+	if not piece is Piece:
+		push_error("Object " + piece_name + " is not a piece!")
+		return
+	
+	_pieces.remove_child(piece)
+	container.add_piece(piece)
 
 # Called by the server to add a piece to a stack.
 # piece_name: The name of the piece.
@@ -1119,6 +1154,9 @@ remotesync func unflip_table() -> void:
 		srv_set_retrieve_pieces_from_hell(true)
 	
 	emit_signal("table_flipped", true)
+
+func _on_container_absorbing_piece(container: PieceContainer, piece: Piece) -> void:
+	rpc("add_piece_to_container", container.name, piece.name)
 
 func _on_piece_exiting_tree(piece: Piece) -> void:
 	_camera_controller.erase_selected_pieces(piece)

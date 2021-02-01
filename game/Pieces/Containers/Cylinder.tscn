@@ -26,3 +26,5 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
 mesh = SubResource( 2 )
 material/0 = null
+
+[node name="Pieces" type="Spatial" parent="."]

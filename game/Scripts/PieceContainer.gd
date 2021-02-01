@@ -23,8 +23,23 @@ extends Piece
 
 class_name PieceContainer
 
+signal absorbing_piece(container, piece)
+
+onready var _pieces = $Pieces
+
 # TODO: Have this property be configurable.
 var opening_cone_angle: float = sin(deg2rad(30))
+
+# Add a piece as a child to the container. Note that the piece cannot already
+# have a parent!
+# piece: The piece to add to the container.
+func add_piece(piece: Piece) -> void:
+	_pieces.add_child(piece)
+	
+	# Move the piece out of the way of the table so it is not visible, and make
+	# sure it cannot move.
+	piece.transform.origin = Vector3(9999, 9999, 9999)
+	piece.mode = MODE_STATIC
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
@@ -45,4 +60,4 @@ func _on_body_entered(body) -> void:
 				# Check if the piece is within the opening cone...
 				if abs(disp.dot(transform.basis.x)) <= opening_cone_angle:
 					if abs(disp.dot(transform.basis.z)) <= opening_cone_angle:
-						print("Hit!")
+						emit_signal("absorbing_piece", self, body)
