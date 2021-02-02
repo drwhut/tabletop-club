@@ -15,6 +15,27 @@ Author: jeffshee
 License: CC-BY 3.0
 URL: https://opengameart.org/content/colorful-poker-card-back
 
+pieces/custom/{Bishop,King,Knight,Pawn,Queen,Rook} {Black,White}.gltf
+pieces/custom/{Bishop,King,Knight,Pawn,Queen,Rook}.bin
+======================================================
+Author: rehcub
+License: Public Domain
+URL: https://opengameart.org/content/chess-set-1
+
+pieces/custom/Chess Board.{obj,mtl}
+pieces/custom/darkwood1_0.jpg
+===================================
+Author: Thane "pennomi" Brimhall
+License: CC-BY 3.0
+URL: https://opengameart.org/content/chess-board
+
+pieces/custom/grid.png
+======================
+Author: Tiziana
+License: LGPL 2.1, LGPL 3.0, CC-BY 3.0
+Modified By: Thane "pennomi" Brimhall
+URL: https://opengameart.org/node/6988
+
 skyboxes/Clouds.png
 ===================
 Author: Pieter 'Spiney' Verhoeven

@@ -37,15 +37,8 @@ git clone https://github.com/drwhut/open-tabletop.git
 cd open-tabletop
 ```
 
-4. Generate the OpenTabletop assets:
-
-```bash
-pip install Pillow
-cd ../tokens/cylinder
-python generate_chips.py
-```
-
-5. Open the built editor, and import the project at `open-tabletop/game`!
+4. Open the editor you built in step 2, and import the project at
+`open-tabletop/game`!
 
 ## Running a dedicated server
 
