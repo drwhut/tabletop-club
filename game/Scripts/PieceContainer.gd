@@ -24,6 +24,7 @@ extends Piece
 class_name PieceContainer
 
 signal absorbing_piece(container, piece)
+signal releasing_random_piece(container)
 
 onready var _pieces = $Pieces
 
@@ -84,6 +85,13 @@ func remove_piece(piece_name: String) -> Piece:
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
+
+func _physics_process(delta):
+	if get_tree().is_network_server():
+		# If the container is upside down, and it is being shaken, then randomly
+		# release a piece to simulate what would happen in reality.
+		if transform.basis.y.y < 0 and is_being_shaked():
+			emit_signal("releasing_random_piece", self)
 
 func _on_body_entered(body) -> void:
 	if get_tree().is_network_server():

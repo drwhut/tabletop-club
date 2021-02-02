@@ -78,9 +78,10 @@ remotesync func add_piece(name: String, transform: Transform,
 		piece.connect("stack_requested", self, "_on_stack_requested")
 	
 	# If it is a container, make sure we attach the signal it emits when it
-	# wants to absorb a piece.
+	# wants to absorb or release a piece.
 	if piece is PieceContainer:
 		piece.connect("absorbing_piece", self, "_on_container_absorbing_piece")
+		piece.connect("releasing_random_piece", self, "_on_container_releasing_random_piece")
 	
 	_pieces.add_child(piece)
 
@@ -614,7 +615,8 @@ remotesync func request_container_release_accepted(piece_name: String) -> void:
 # container.
 # container_name: The name of the container to release pieces from.
 # n: The number of pieces to release from the container.
-master func request_container_release_random(container_name: String, n: int) -> void:
+# hover: Do we want to start hovering the piece afterwards?
+master func request_container_release_random(container_name: String, n: int, hover: bool) -> void:
 	if n < 1:
 		return
 	
@@ -638,13 +640,16 @@ master func request_container_release_random(container_name: String, n: int) -> 
 		names.shuffle()
 		names = names.slice(0, n - 1)
 	
-	request_container_release_these(container_name, names)
+	request_container_release_these(container_name, names, hover)
 
 # Request the server to release a given set of pieces from a container.
 # container_name: The name of the container to release the pieces from.
 # release_names: The list of names of the pieces to be released from the
 # container.
-master func request_container_release_these(container_name: String, release_names: Array) -> void:
+# hover: Do we want to start hovering the piece afterwards?
+master func request_container_release_these(container_name: String,
+	release_names: Array, hover: bool) -> void:
+	
 	if release_names.size() == 0:
 		return
 	
@@ -663,9 +668,10 @@ master func request_container_release_these(container_name: String, release_name
 		if container.has_piece(piece_name):
 			rpc("remove_piece_from_container", container_name, piece_name)
 			
-			var piece = _pieces.get_node(piece_name)
-			if piece.srv_start_hovering(player_id, piece.transform.origin, Vector3()):
-				rpc_id(player_id, "request_container_release_accepted", piece_name)
+			if hover:
+				var piece = _pieces.get_node(piece_name)
+				if piece.srv_start_hovering(player_id, piece.transform.origin, Vector3()):
+					rpc_id(player_id, "request_container_release_accepted", piece_name)
 
 # Request the server to deal cards from a stack to all players.
 # stack_name: The name of the stack of cards.
@@ -1264,6 +1270,10 @@ func _on_container_absorbing_piece(container: PieceContainer, piece: Piece) -> v
 	if get_tree().is_network_server():
 		rpc("add_piece_to_container", container.name, piece.name)
 
+func _on_container_releasing_random_piece(container: PieceContainer) -> void:
+	if get_tree().is_network_server():
+		rpc_id(1, "request_container_release_random", container.name, 1, false)
+
 func _on_piece_exiting_tree(piece: Piece) -> void:
 	_camera_controller.erase_selected_pieces(piece)
 
@@ -1298,7 +1308,7 @@ func _on_CameraController_collect_pieces_requested(pieces: Array):
 	rpc_id(1, "request_collect_pieces", names)
 
 func _on_CameraController_container_release_random_requested(container: PieceContainer, n: int):
-	rpc_id(1, "request_container_release_random", container.name, n)
+	rpc_id(1, "request_container_release_random", container.name, n, true)
 
 func _on_CameraController_dealing_cards(stack: Stack, n: int):
 	rpc_id(1, "request_deal_cards", stack.name, n)
