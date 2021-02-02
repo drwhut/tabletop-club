@@ -32,7 +32,20 @@ static func build_piece(piece_entry: Dictionary) -> Piece:
 	# If the scene is not a piece (e.g. when importing a scene from the assets
 	# folder), make it a piece so it can interact with other objects.
 	if not piece is Piece:
-		var build = Piece.new()
+		var scene_dir = piece_entry["scene_path"].get_base_dir()
+		var build: Piece = null
+		
+		if scene_dir.ends_with("containers/custom"):
+			build = PieceContainer.new()
+			
+			build.contact_monitor = true
+			build.contacts_reported = 2
+			
+			var pieces_node = Spatial.new()
+			pieces_node.name = "Pieces"
+			build.add_child(pieces_node)
+		else:
+			build = Piece.new()
 		
 		_extract_and_shape_mesh_instances(build, piece, Transform.IDENTITY)
 		
