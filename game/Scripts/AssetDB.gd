@@ -419,25 +419,25 @@ func _import_asset(from: String, pack: String, type_dir: String,
 				bounding_box = _calculate_bounding_box(custom_scene)
 				custom_scene.free()
 				
-				# For convenience, we'll scale the bounding box here by the
-				# configured value so we don't have to do it every time we use
-				# it later on.
-				if scale != Vector3.ONE:
-					bounding_box[0] = Vector3(
-						bounding_box[0].x * scale.x,
-						bounding_box[0].y * scale.y,
-						bounding_box[0].z * scale.z
-					)
-					
-					bounding_box[1] = Vector3(
-						bounding_box[1].x * scale.x,
-						bounding_box[1].y * scale.y,
-						bounding_box[1].z * scale.z
-					)
-				
 				box_file.open(box_file_path, File.WRITE)
 				box_file.store_var(bounding_box)
 				box_file.close()
+			
+			# For convenience, we'll scale the bounding box here by the
+			# configured value so we don't have to do it every time we use it
+			# later on.
+			if scale != Vector3.ONE:
+				bounding_box[0] = Vector3(
+					bounding_box[0].x * scale.x,
+					bounding_box[0].y * scale.y,
+					bounding_box[0].z * scale.z
+				)
+				
+				bounding_box[1] = Vector3(
+					bounding_box[1].x * scale.x,
+					bounding_box[1].y * scale.y,
+					bounding_box[1].z * scale.z
+				)
 			
 			var entry = {
 				"bounding_box": bounding_box,
