@@ -23,6 +23,7 @@ extends Spatial
 
 signal adding_cards_to_hand(cards, id) # If id is 0, add to nearest hand.
 signal collect_pieces_requested(pieces)
+signal container_release_random_requested(container, n)
 signal dealing_cards(stack, n)
 signal hover_piece_requested(piece, offset)
 signal pop_stack_requested(stack, n)
@@ -861,6 +862,11 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 			for piece in selected:
 				if selected.size() == 1 and piece is Stack and fast:
 					emit_signal("pop_stack_requested", piece, 1)
+				elif selected.size() == 1 and piece is PieceContainer and fast:
+					if piece.get_piece_count() == 0:
+						emit_signal("hover_piece_requested", piece, Vector3())
+					else:
+						emit_signal("container_release_random_requested", piece, 1)
 				else:
 					var offset = piece.transform.origin - origin
 					emit_signal("hover_piece_requested", piece, offset)

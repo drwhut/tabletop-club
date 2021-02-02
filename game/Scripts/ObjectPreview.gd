@@ -82,25 +82,7 @@ func set_piece(piece_entry: Dictionary) -> void:
 		PieceBuilder.fill_stack(_piece, piece_entry)
 	
 	# Adjust the camera's position so it can see the entire piece.
-	var scale = piece_entry["scale"]
-	
-	# This means this is a custom piece.
-	if not piece_entry["scene_path"].begins_with("res://"):
-		var bounding_box = Vector3()
-		for child in _piece.get_children():
-			if child is CollisionShape:
-				var shape = child.shape
-				if shape is ConvexPolygonShape:
-					for point in shape.points:
-						if abs(point.x) > bounding_box.x:
-							bounding_box.x = abs(point.x)
-						if abs(point.y) > bounding_box.y:
-							bounding_box.y = abs(point.y)
-						if abs(point.z) > bounding_box.z:
-							bounding_box.z = abs(point.z)
-		
-		scale *= 2 * bounding_box
-	
+	var scale = _piece.get_size()
 	var piece_height = scale.y
 	
 	if _piece is Card:

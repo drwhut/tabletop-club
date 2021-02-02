@@ -34,12 +34,53 @@ var opening_cone_angle: float = sin(deg2rad(30))
 # have a parent!
 # piece: The piece to add to the container.
 func add_piece(piece: Piece) -> void:
-	_pieces.add_child(piece)
-	
 	# Move the piece out of the way of the table so it is not visible, and make
 	# sure it cannot move.
 	piece.transform.origin = Vector3(9999, 9999, 9999)
 	piece.mode = MODE_STATIC
+	
+	_pieces.add_child(piece)
+
+# Get the number of pieces that the container is holding.
+# Returns: The number of pieces inside the container.
+func get_piece_count() -> int:
+	return _pieces.get_child_count()
+
+# Get the names of the pieces that the container is holding.
+# Returns: An array of the names of the pieces.
+func get_piece_names() -> Array:
+	var out = []
+	for piece in _pieces.get_children():
+		out.append(piece.name)
+	return out
+
+# Does the container have the given piece?
+# Returns: If the container has the given piece inside of it.
+# piece_name: The name of the piece to check for.
+func has_piece(piece_name: String) -> bool:
+	return _pieces.has_node(piece_name)
+
+# Release the given piece from the container, and return it with a new
+# transform such that it is just above the top of the container.
+# Returns: The release piece as an orphan node, null if the piece isn't in the
+# container.
+# piece_name: The name of the piece to release.
+func remove_piece(piece_name: String) -> Piece:
+	if has_piece(piece_name):
+		var piece = _pieces.get_node(piece_name)
+		_pieces.remove_child(piece)
+		
+		# Reverse the modifications done to the piece when it was absorbed.
+		# NOTE: Rigidbodies themselves are not scaled, only their collision
+		# shapes are.
+		var distance = 0.5 * (get_size().y + piece.get_size().y) + 1.0
+		var new_origin = transform.origin + transform.basis.y * distance
+		piece.transform = Transform(transform.basis, new_origin)
+		piece.mode = MODE_RIGID
+		
+		return piece
+	
+	return null
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
