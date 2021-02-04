@@ -176,6 +176,7 @@ visible = false
 [connection signal="piece_requested" from="ObjectsDialog" to="." method="_on_ObjectsDialog_piece_requested"]
 [connection signal="loading_game" from="GamesDialog" to="." method="_on_GamesDialog_loading_game"]
 [connection signal="requesting_room_details" from="RoomDialog" to="." method="_on_RoomDialog_requesting_room_details"]
+[connection signal="setting_lighting" from="RoomDialog" to="." method="_on_RoomDialog_setting_lighting"]
 [connection signal="setting_skybox" from="RoomDialog" to="." method="_on_RoomDialog_setting_skybox"]
 [connection signal="confirmed" from="ClearTableConfirmDialog" to="." method="_on_ClearTableConfirmDialog_confirmed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]

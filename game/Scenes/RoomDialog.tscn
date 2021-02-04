@@ -3,10 +3,13 @@
 [ext_resource path="res://Scripts/RoomDialog.gd" type="Script" id=1]
 
 [node name="RoomDialog" type="WindowDialog"]
-margin_right = 400.0
+margin_right = 450.0
 margin_bottom = 350.0
 window_title = "Room"
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -16,42 +19,96 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 400.0
+margin_right = 450.0
 margin_bottom = 320.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_right = 400.0
+margin_right = 292.0
 margin_bottom = 320.0
 size_flags_horizontal = 3
 
 [node name="SkyboxLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 400.0
+margin_right = 292.0
 margin_bottom = 20.0
 text = "Skyboxes"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 24.0
-margin_right = 400.0
+margin_right = 292.0
 margin_bottom = 320.0
 size_flags_vertical = 3
 
 [node name="Skyboxes" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
-margin_right = 400.0
+margin_right = 292.0
 size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 296.0
+margin_right = 450.0
+margin_bottom = 320.0
+
+[node name="LightingLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 154.0
+margin_bottom = 43.0
+text = "Lighting
+"
+align = 1
+
+[node name="IntensityLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 47.0
+margin_right = 154.0
+margin_bottom = 67.0
+text = "Lamp Intensity"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 71.0
+margin_right = 154.0
+margin_bottom = 91.0
+
+[node name="IntensitySlider" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+max_value = 3.0
+step = 0.1
+value = 1.0
+
+[node name="IntensityValueLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 104.0
+margin_right = 154.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 50, 0 )
+text = "10%"
+
+[node name="ColorLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 95.0
+margin_right = 154.0
+margin_bottom = 115.0
+text = "Lamp Color"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 119.0
+margin_right = 154.0
+margin_bottom = 145.0
+color = Color( 1, 1, 1, 1 )
+edit_alpha = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 324.0
-margin_right = 400.0
+margin_right = 450.0
 margin_bottom = 350.0
 alignment = 2
 
 [node name="ApplyButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 348.0
-margin_right = 400.0
+margin_left = 398.0
+margin_right = 450.0
 margin_bottom = 26.0
 disabled = true
 text = "Apply"
 [connection signal="about_to_show" from="." to="." method="_on_RoomDialog_about_to_show"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/IntensitySlider" to="." method="_on_IntensitySlider_value_changed"]
+[connection signal="color_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/ApplyButton" to="." method="_on_ApplyButton_pressed"]

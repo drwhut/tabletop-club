@@ -195,6 +195,10 @@ func _on_GameUI_flipping_table(reset_table: bool):
 	else:
 		_room.rpc_id(1, "request_flip_table", _room.get_camera_transform().basis)
 
+func _on_GameUI_lighting_requested(lamp_color: Color, lamp_intensity: float):
+	_room.rpc_id(1, "request_set_lamp_color", lamp_color)
+	_room.rpc_id(1, "request_set_lamp_intensity", lamp_intensity)
+
 func _on_GameUI_load_table(path: String):
 	var file = _open_table_state_file(path, File.READ)
 	if file:
@@ -218,7 +222,8 @@ func _on_GameUI_piece_requested(piece_entry: Dictionary, position: Vector3):
 	rpc_id(1, "request_game_piece", piece_entry, position)
 
 func _on_GameUI_requesting_room_details():
-	_ui.set_room_details(_room.get_skybox())
+	_ui.set_room_details(_room.get_skybox(), _room.get_lamp_color(),
+		_room.get_lamp_intensity())
 
 func _on_GameUI_save_table(path: String):
 	if _room_state_saving.empty():

@@ -25,6 +25,7 @@ signal about_to_save_table()
 signal applying_options(config)
 signal clear_pieces()
 signal flipping_table(reset_table)
+signal lighting_requested(lamp_color, lamp_intensity)
 signal load_table(path)
 signal piece_requested(piece_entry, position)
 signal requesting_room_details()
@@ -73,8 +74,10 @@ func set_piece_db(assets: Dictionary) -> void:
 
 # Set the room details in the room dialog.
 # skybox_path: The texture path to the skybox texture.
-func set_room_details(skybox_path: String) -> void:
-	_room_dialog.set_room_details(skybox_path)
+# lamp_color: The color of the room lamp.
+# lamp_intensity: The intensity of the room lamp.
+func set_room_details(skybox_path: String, lamp_color: Color, lamp_intensity: float) -> void:
+	_room_dialog.set_room_details(skybox_path, lamp_color, lamp_intensity)
 
 # Set the table flipped status, so the flip table button can be updated.
 # flip_table_status: If true, the button will represent resetting the table.
@@ -202,6 +205,10 @@ func _on_RoomButton_pressed():
 
 func _on_RoomDialog_requesting_room_details():
 	emit_signal("requesting_room_details")
+
+func _on_RoomDialog_setting_lighting(lamp_color: Color, lamp_intensity: float):
+	_room_dialog.visible = false
+	emit_signal("lighting_requested", lamp_color, lamp_intensity)
 
 func _on_RoomDialog_setting_skybox(skybox_entry: Dictionary):
 	_room_dialog.visible = false

@@ -28,6 +28,7 @@ signal table_flipped(table_reset)
 onready var _camera_controller = $CameraController
 onready var _hand_positions = $Table/HandPositions
 onready var _hands = $Hands
+onready var _lamp = $Lamp
 onready var _pieces = $Pieces
 onready var _table_body = $Table/Body
 onready var _world_environment = $WorldEnvironment
@@ -327,6 +328,16 @@ func get_camera_hover_position() -> Vector3:
 func get_camera_transform() -> Transform:
 	return _camera_controller.transform
 
+# Get the color of the room lamp.
+# Returns: The color of the lamp.
+func get_lamp_color() -> Color:
+	return _lamp.light_color
+
+# Get the intensity of the room lamp.
+# Returns: The intensity of the lamp.
+func get_lamp_intensity() -> float:
+	return _lamp.light_energy
+
 # Get a piece in the room with a given name.
 # Returns: The piece with the given name.
 # name: The name of the piece.
@@ -360,6 +371,10 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	var out = {}
 	out["version"] = ProjectSettings.get_setting("application/config/version")
 	
+	out["lamp"] = {
+		"color": get_lamp_color(),
+		"intensity": get_lamp_intensity()
+	}
 	out["skybox"] = get_skybox()
 	out["table"] = {
 		"is_rigid": _table_body.mode == RigidBody.MODE_RIGID,
@@ -770,6 +785,16 @@ remotesync func request_pop_stack_accepted(piece_name: String) -> void:
 	# stack!
 	request_hover_piece_accepted(piece_name)
 
+# Request the server to set the lamp color.
+# color: The color to set the lamp to.
+master func request_set_lamp_color(color: Color) -> void:
+	rpc("set_lamp_color", color)
+
+# Request the server to set the lamp intensity.
+# intensity: The intensity to set the lamp to.
+master func request_set_lamp_intensity(intensity: float) -> void:
+	rpc("set_lamp_intensity", intensity)
+
 # Request the server to set the room skybox.
 # texture_path: The texture path of the skybox.
 master func request_set_skybox(texture_path: String) -> void:
@@ -806,6 +831,22 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 master func request_unflip_table() -> void:
 	rpc("unflip_table")
 
+# Set the color of the room lamp.
+# color: The color of the lamp.
+remotesync func set_lamp_color(color: Color) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_lamp.light_color = color
+
+# Set the intensity of the room lamp.
+# intensity: The new intensity of the lamp.
+remotesync func set_lamp_intensity(intensity: float) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_lamp.light_energy = intensity
+
 # Set the room's skybox.
 # texture_path: The path of the skybox texture. If empty, the default
 # skybox is used.
@@ -827,6 +868,11 @@ remotesync func set_skybox(texture_path: String) -> void:
 remotesync func set_state(state: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
+	
+	if state.has("lamp"):
+		var lamp_meta = state["lamp"]
+		set_lamp_color(lamp_meta["color"])
+		set_lamp_intensity(lamp_meta["intensity"])
 	
 	if state.has("skybox"):
 		set_skybox(state["skybox"])
