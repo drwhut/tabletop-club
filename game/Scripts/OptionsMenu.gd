@@ -148,6 +148,8 @@ func _create_config_from_current() -> ConfigFile:
 					key_value = value.pressed
 				elif value is ColorPicker:
 					key_value = value.color
+				elif value is ColorPickerButton:
+					key_value = value.color
 				elif value is LineEdit:
 					key_value = value.text
 				elif value is OptionButton:
@@ -252,6 +254,8 @@ func _set_current_with_config(config: ConfigFile) -> void:
 					elif value is CheckBox:
 						value.pressed = key_value
 					elif value is ColorPicker:
+						value.color = key_value
+					elif value is ColorPickerButton:
 						value.color = key_value
 					elif value is LineEdit:
 						value.text = key_value
