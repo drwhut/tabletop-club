@@ -648,6 +648,14 @@ func _on_context_take_top_pressed(n: int) -> void:
 			clear_selected_pieces()
 			emit_signal("pop_stack_requested", piece, n)
 
+func _on_context_take_out_pressed(n: int) -> void:
+	_hide_context_menu()
+	if _selected_pieces.size() == 1:
+		var piece = _selected_pieces[0]
+		if piece is PieceContainer:
+			clear_selected_pieces()
+			emit_signal("container_release_random_requested", piece, n)
+
 func _on_context_unlock_pressed() -> void:
 	_unlock_selected_pieces()
 
@@ -772,6 +780,17 @@ func _popup_piece_context_menu() -> void:
 			collect_selected_button.text = "Collect selected"
 			collect_selected_button.connect("pressed", self, "_on_context_collect_selected_pressed")
 			_piece_context_menu_container.add_child(collect_selected_button)
+	
+	elif _inheritance_has(inheritance, "PieceContainer"):
+		if _selected_pieces.size() == 1:
+			var take_button = SpinBoxButton.new()
+			take_button.button.text = "Take X out"
+			take_button.spin_box.prefix = "X ="
+			take_button.spin_box.min_value = 1
+			# We don't set the maximum value here, as we don't want the player
+			# knowing how many items are in the container.
+			take_button.connect("pressed", self, "_on_context_take_out_pressed")
+			_piece_context_menu_container.add_child(take_button)
 	
 	###########
 	# LEVEL 0 #
@@ -965,7 +984,7 @@ func _on_MouseGrab_gui_input(event):
 						_is_grabbing_selected = true
 						_grabbing_time = 0.0
 				else:
-					if not event.control:
+					if not (event.control or _is_hovering_selected):
 						clear_selected_pieces()
 					
 					if hold_left_click_to_move:

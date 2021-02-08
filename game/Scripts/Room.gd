@@ -664,13 +664,38 @@ master func request_container_release_these(container_name: String,
 		push_error("Piece " + container_name + " is not a container!")
 		return
 	
+	var hover_box_pos   = Vector3.ZERO
+	var hover_box_size  = Vector3.ZERO
+	var hover_direction = 0
+	
 	for piece_name in release_names:
 		if container.has_piece(piece_name):
 			rpc("remove_piece_from_container", container_name, piece_name)
 			
 			if hover:
 				var piece = _pieces.get_node(piece_name)
-				if piece.srv_start_hovering(player_id, piece.transform.origin, Vector3()):
+				var piece_size = piece.get_size()
+				var piece_offset = hover_box_pos
+				
+				if hover_direction == 0:
+					piece_offset.x += (hover_box_size.x + piece_size.x) / 2
+				elif hover_direction == 1:
+					piece_offset.z += (hover_box_size.z + piece_size.z) / 2
+				elif hover_direction == 2:
+					piece_offset.x -= (hover_box_size.x + piece_size.x) / 2
+				else:
+					piece_offset.z -= (hover_box_size.z + piece_size.z) / 2
+				
+				hover_box_pos = 0.5 * (hover_box_pos + piece_offset)
+				if hover_direction % 2 == 0:
+					hover_box_size.x += piece_size.x
+					hover_box_size.z = max(hover_box_size.z, piece_size.z)
+				else:
+					hover_box_size.x = max(hover_box_size.x, piece_size.x)
+					hover_box_size.z += piece_size.z
+				hover_direction = (hover_direction + 1) % 4
+				
+				if piece.srv_start_hovering(player_id, piece.transform.origin, piece_offset):
 					rpc_id(player_id, "request_container_release_accepted", piece_name)
 
 # Request the server to deal cards from a stack to all players.
