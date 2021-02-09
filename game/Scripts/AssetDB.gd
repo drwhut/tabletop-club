@@ -385,6 +385,18 @@ func _import_asset(from: String, pack: String, type_dir: String,
 	var mass = 10 * _get_file_config_value(config, from.get_file(), "mass", 1.0)
 	var scale = _get_file_config_value(config, from.get_file(), "scale", Vector3(1, 1, 1))
 	
+	var opening_angle = 0
+	if type_dir.begins_with("containers"):
+		opening_angle = _get_file_config_value(config, from.get_file(), "opening_angle", 30.0)
+		if opening_angle < 0.0:
+			push_warning("%s opening angle is less than 0 degrees, setting to 0." % from)
+			opening_angle = 0.0
+		elif opening_angle > 90.0:
+			push_warning("%s opening angle is more than 90 degress, setting to 90." % from)
+			opening_angle = 90.0
+		opening_angle = sin(deg2rad(opening_angle))
+	
+	var entry = {}
 	if type_asset == ASSET_SCENE:
 		if VALID_SCENE_EXTENSIONS.has(to.get_extension()):
 			# If the file has been imported before, check that the custom scene
@@ -439,7 +451,7 @@ func _import_asset(from: String, pack: String, type_dir: String,
 					bounding_box[1].z * scale.z
 				)
 			
-			var entry = {
+			entry = {
 				"bounding_box": bounding_box,
 				"description": desc,
 				"mass": mass,
@@ -448,26 +460,23 @@ func _import_asset(from: String, pack: String, type_dir: String,
 				"scene_path": to,
 				"texture_path": null
 			}
-			_add_entry_to_db(pack, type_dir, entry)
 	elif type_asset == ASSET_SKYBOX:
 		if VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
-			var entry = {
+			entry = {
 				"description": desc,
 				"name": _get_file_without_ext(to),
 				"texture_path": to
 			}
-			_add_entry_to_db(pack, type_dir, entry)
 	elif type_asset == ASSET_TABLE:
 		if VALID_TABLE_EXTENSIONS.has(to.get_extension()):
-			var entry = {
+			entry = {
 				"description": desc,
 				"name": _get_file_without_ext(to),
 				"table_path": to
 			}
-			_add_entry_to_db(pack, type_dir, entry)
 	elif type_asset == ASSET_TEXTURE:
 		if scene and VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
-			var entry = {
+			entry = {
 				"description": desc,
 				"mass": mass,
 				"name": _get_file_without_ext(to),
@@ -475,7 +484,12 @@ func _import_asset(from: String, pack: String, type_dir: String,
 				"scene_path": scene,
 				"texture_path": to
 			}
-			_add_entry_to_db(pack, type_dir, entry)
+	
+	if not entry.empty():
+		if type_dir.begins_with("containers"):
+			entry["opening_angle_sin"] = opening_angle
+		
+		_add_entry_to_db(pack, type_dir, entry)
 	
 	return OK
 

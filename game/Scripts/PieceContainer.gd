@@ -28,9 +28,6 @@ signal releasing_random_piece(container)
 
 onready var _pieces = $Pieces
 
-# TODO: Have this property be configurable.
-var opening_cone_angle: float = sin(deg2rad(30))
-
 # Add a piece as a child to the container. Note that the piece cannot already
 # have a parent!
 # piece: The piece to add to the container.
@@ -94,6 +91,12 @@ func _physics_process(delta):
 			emit_signal("releasing_random_piece", self)
 
 func _on_body_entered(body) -> void:
+	if not piece_entry.has("opening_angle_sin"):
+		push_error("Container " + name + " doesn't have opening_angle_sin in it's piece entry!")
+		return
+	
+	var opening_angle_sin: float = piece_entry["opening_angle_sin"]
+	
 	if get_tree().is_network_server():
 		
 		# If a piece has collided with this container, then figure out if the
@@ -107,6 +110,6 @@ func _on_body_entered(body) -> void:
 				disp = disp.normalized()
 				
 				# Check if the piece is within the opening cone...
-				if abs(disp.dot(transform.basis.x)) <= opening_cone_angle:
-					if abs(disp.dot(transform.basis.z)) <= opening_cone_angle:
+				if abs(disp.dot(transform.basis.x)) <= opening_angle_sin:
+					if abs(disp.dot(transform.basis.z)) <= opening_angle_sin:
 						emit_signal("absorbing_piece", self, body)
