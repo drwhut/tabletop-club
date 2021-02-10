@@ -1229,6 +1229,8 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 				return
 			
 			_extract_piece_states(piece_meta["pieces"], piece.get_node("Pieces"))
+			if piece is PieceContainer:
+				piece.recalculate_mass()
 		
 		elif type_key == "piece":
 			if piece is Card:

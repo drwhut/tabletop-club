@@ -38,6 +38,7 @@ func add_piece(piece: Piece) -> void:
 	piece.mode = MODE_STATIC
 	
 	_pieces.add_child(piece)
+	mass += piece.mass
 
 # Duplicate the given piece and return the duplicate.
 # Returns: A duplicate of the piece with the given name in the container, null
@@ -71,6 +72,16 @@ func get_piece_names() -> Array:
 func has_piece(piece_name: String) -> bool:
 	return _pieces.has_node(piece_name)
 
+# Recalculate the mass of the container, based on the items inside it.
+# You should use this if you added a piece to the container, but not via the
+# add_piece() function.
+func recalculate_mass() -> void:
+	mass = piece_entry["mass"]
+	
+	for piece in _pieces.get_children():
+		if piece is Piece:
+			mass += piece.mass
+
 # Release the given piece from the container, and return it with a new
 # transform such that it is just above the top of the container.
 # Returns: The release piece as an orphan node, null if the piece isn't in the
@@ -79,6 +90,7 @@ func has_piece(piece_name: String) -> bool:
 func remove_piece(piece_name: String) -> Piece:
 	if has_piece(piece_name):
 		var piece = _pieces.get_node(piece_name)
+		mass -= piece.mass
 		_pieces.remove_child(piece)
 		
 		# Reverse the modifications done to the piece when it was absorbed.
