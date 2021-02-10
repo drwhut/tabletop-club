@@ -72,7 +72,7 @@ func _add_content_object(parent: Control, piece_entry: Dictionary) -> void:
 		return
 	
 	parent.add_child(preview)
-	preview.set_piece(piece_entry)
+	preview.set_piece_with_entry(piece_entry)
 	
 	if not preview.is_connected("clicked", self, "_on_preview_clicked"):
 		preview.connect("clicked", self, "_on_preview_clicked")
@@ -153,6 +153,12 @@ func _update_object_content(pack_name: String) -> void:
 		child.queue_free()
 	
 	_add_content_type(_content, pack_name, ["cards"], "Cards")
+	
+	_add_content_type(_content, pack_name, [
+		"containers/cube",
+		"containers/custom",
+		"containers/cylinder"
+		], "Containers")
 	
 	_add_content_type(_content, pack_name, ["dice/d4"], "Dice - D4")
 	_add_content_type(_content, pack_name, ["dice/d6"], "Dice - D6")
@@ -243,11 +249,5 @@ func _on_pack_button_toggled(pressed: bool):
 	_update_object_content(_toggled_pack)
 
 func _on_preview_clicked(preview: ObjectPreview, event: InputEventMouseButton):
-	if event.pressed:
-		if event.button_index == BUTTON_LEFT:
-			if not event.control:
-				get_tree().call_group("preview_selected", "set_selected", false)
-			preview.set_selected(not preview.is_selected())
-	
 	var none_selected = get_tree().get_nodes_in_group("preview_selected").empty()
 	_add_button.disabled = none_selected

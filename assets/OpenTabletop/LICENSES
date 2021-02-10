@@ -15,6 +15,14 @@ Author: jeffshee
 License: CC-BY 3.0
 URL: https://opengameart.org/content/colorful-poker-card-back
 
+containers/custom/Purse.{bin,gltf}
+containers/custom/purse01{D,N}.png
+==================================
+Author: yd
+License: Public Domain
+Modified By: Benjamin "drwhut" Beddows
+URL: https://opengameart.org/content/bag-of-coins
+
 pieces/custom/{Bishop,King,Knight,Pawn,Queen,Rook} {Black,White}.gltf
 pieces/custom/{Bishop,King,Knight,Pawn,Queen,Rook}.bin
 ======================================================

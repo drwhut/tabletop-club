@@ -34,9 +34,10 @@ export(bool) var stack_ignore_y_rotation: bool = false
 # Returns: If the other piece has a matching shape and scale.
 # body: The piece to check against.
 func matches(body: Piece) -> bool:
-	if body.piece_entry.scene_path == piece_entry.scene_path:
-		if body.piece_entry.scale == piece_entry.scale:
-			return true
+	if not body.piece_entry.empty():
+		if body.piece_entry.scene_path == piece_entry.scene_path:
+			if body.piece_entry.scale == piece_entry.scale:
+				return true
 	
 	return false
 

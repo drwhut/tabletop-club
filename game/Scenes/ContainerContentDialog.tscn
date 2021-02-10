@@ -1,0 +1,156 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/ObjectPreview.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/ContainerContentDialog.gd" type="Script" id=2]
+
+[node name="ContainerContentDialog" type="WindowDialog"]
+margin_right = 310.0
+margin_bottom = 428.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmptyLabel" type="Label" parent="VBoxContainer"]
+visible = false
+margin_top = 174.0
+margin_right = 310.0
+margin_bottom = 194.0
+size_flags_vertical = 6
+align = 1
+
+[node name="PreviewGridContainer" type="GridContainer" parent="VBoxContainer"]
+margin_right = 310.0
+margin_bottom = 368.0
+size_flags_vertical = 3
+columns = 3
+
+[node name="ObjectPreview0" parent="VBoxContainer/PreviewGridContainer" instance=ExtResource( 1 )]
+margin_right = 100.0
+margin_bottom = 119.0
+size_flags_horizontal = 3
+
+[node name="ObjectPreview1" parent="VBoxContainer/PreviewGridContainer" instance=ExtResource( 1 )]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 119.0
+size_flags_horizontal = 3
+
+[node name="ObjectPreview2" parent="VBoxContainer/PreviewGridContainer" instance=ExtResource( 1 )]
+margin_left = 208.0
+margin_right = 308.0
+margin_bottom = 119.0
+size_flags_horizontal = 3
+
+[node name="ObjectPreview3" parent="VBoxContainer/PreviewGridContainer" instance=ExtResource( 1 )]
+margin_top = 123.0
+margin_right = 100.0
+margin_bottom = 242.0
+size_flags_horizontal = 3
+
+[node name="ObjectPreview4" parent="VBoxContainer/PreviewGridContainer" instance=ExtResource( 1 )]
+margin_left = 104.0
+margin_top = 123.0
+margin_right = 204.0
+margin_bottom = 242.0
+size_flags_horizontal = 3
+
+[node name="ObjectPreview5" parent="VBoxContainer/PreviewGridContainer" instance=ExtResource( 1 )]
+margin_left = 208.0
+margin_top = 123.0
+margin_right = 308.0
+margin_bottom = 242.0
+size_flags_horizontal = 3
+
+[node name="ObjectPreview6" parent="VBoxContainer/PreviewGridContainer" instance=ExtResource( 1 )]
+margin_top = 246.0
+margin_right = 100.0
+margin_bottom = 365.0
+size_flags_horizontal = 3
+
+[node name="ObjectPreview7" parent="VBoxContainer/PreviewGridContainer" instance=ExtResource( 1 )]
+margin_left = 104.0
+margin_top = 246.0
+margin_right = 204.0
+margin_bottom = 365.0
+size_flags_horizontal = 3
+
+[node name="ObjectPreview8" parent="VBoxContainer/PreviewGridContainer" instance=ExtResource( 1 )]
+margin_left = 208.0
+margin_top = 246.0
+margin_right = 308.0
+margin_bottom = 365.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 372.0
+margin_right = 310.0
+margin_bottom = 398.0
+
+[node name="FarLeftButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 26.0
+margin_bottom = 26.0
+disabled = true
+text = "<<"
+
+[node name="LeftButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 30.0
+margin_right = 49.0
+margin_bottom = 26.0
+disabled = true
+text = "<"
+
+[node name="PageLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 53.0
+margin_top = 3.0
+margin_right = 257.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="RightButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 261.0
+margin_right = 280.0
+margin_bottom = 26.0
+disabled = true
+text = ">"
+
+[node name="FarRightButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 284.0
+margin_right = 310.0
+margin_bottom = 26.0
+disabled = true
+text = ">>"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 402.0
+margin_right = 310.0
+margin_bottom = 428.0
+
+[node name="TakeButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 153.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+disabled = true
+text = "Take"
+
+[node name="TakeAllButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 157.0
+margin_right = 310.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+disabled = true
+text = "Take All"
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/FarLeftButton" to="." method="_on_FarLeftButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LeftButton" to="." method="_on_LeftButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightButton" to="." method="_on_RightButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/FarRightButton" to="." method="_on_FarRightButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/TakeButton" to="." method="_on_TakeButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/TakeAllButton" to="." method="_on_TakeAllButton_pressed"]

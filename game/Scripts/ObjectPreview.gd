@@ -38,6 +38,7 @@ var _piece: Piece = null
 # Remove the piece from the display if there is one.
 func clear_piece() -> void:
 	_last_piece_entry = {}
+	_label.text = ""
 	
 	if _piece:
 		_viewport.remove_child(_piece)
@@ -49,15 +50,34 @@ func clear_piece() -> void:
 func get_piece_entry() -> Dictionary:
 	return _last_piece_entry
 
+# Get the name of the piece node this preview is displaying.
+# Returns: The name of the piece node, an empty string if displaying nothing.
+func get_piece_name() -> String:
+	if _piece != null:
+		return _piece.name
+	
+	return ""
+
 # Does the preview appear selected?
 # Returns: If the preview appears selected.
 func is_selected() -> bool:
 	return not _viewport.transparent_bg
 
-# Set the preview to display the given piece.
-# piece_entry: The entry of the piece to display.
-func set_piece(piece_entry: Dictionary) -> void:
-	_last_piece_entry = piece_entry
+# Set the preview to display a given piece.
+# piece: The piece to display. Note that it must be an orphan node!
+# custom_entry: If you want to, you can separately override the piece entry
+# stored by the preview.
+func set_piece(piece: Piece, custom_entry: Dictionary = {}) -> void:
+	# Make sure that if we are already displaying a piece, we free it before
+	# we lose it!
+	clear_piece()
+	_piece = piece
+	
+	var piece_entry = _piece.piece_entry
+	if custom_entry.empty():
+		_last_piece_entry = piece_entry
+	else:
+		_last_piece_entry = custom_entry
 	
 	if piece_entry["description"].empty():
 		hint_tooltip = ""
@@ -65,54 +85,29 @@ func set_piece(piece_entry: Dictionary) -> void:
 		hint_tooltip = piece_entry["description"]
 	_label.text = piece_entry["name"]
 	
-	if piece_entry.has("texture_paths"):
-		_piece = preload("res://Pieces/Stack.tscn").instance()
-	else:
-		# This is a piece.
-		_piece = PieceBuilder.build_piece(piece_entry)
+	# Disable physics-related properties, there won't be any physicsing here!
+	_piece.contact_monitor = false
+	_piece.mode = RigidBody.MODE_STATIC
 	
+	_piece.transform.origin = Vector3.ZERO
+	# Make sure the piece is orientated upwards.
+	_piece.transform = _piece.transform.looking_at(Vector3.FORWARD, Vector3.UP)
 	# Adjust the angle so we can see the top face.
 	_piece.rotate_object_local(Vector3.RIGHT, X_ROTATION)
 	
-	_piece.mode = RigidBody.MODE_STATIC
-	
 	_viewport.add_child(_piece)
 	
-	if _piece is Stack:
-		PieceBuilder.fill_stack(_piece, piece_entry)
-	
 	# Adjust the camera's position so it can see the entire piece.
-	var scale = piece_entry["scale"]
-	
-	# This means this is a custom piece.
-	if not piece_entry["scene_path"].begins_with("res://"):
-		var bounding_box = Vector3()
-		for child in _piece.get_children():
-			if child is CollisionShape:
-				var shape = child.shape
-				if shape is ConvexPolygonShape:
-					for point in shape.points:
-						if abs(point.x) > bounding_box.x:
-							bounding_box.x = abs(point.x)
-						if abs(point.y) > bounding_box.y:
-							bounding_box.y = abs(point.y)
-						if abs(point.z) > bounding_box.z:
-							bounding_box.z = abs(point.z)
-		
-		scale *= 2 * bounding_box
-	
+	var scale = _piece.get_size()
 	var piece_height = scale.y
 	
 	if _piece is Card:
 		piece_height = 0
 	elif _piece is Stack:
-		var test_piece = load(piece_entry["scene_path"]).instance()
-		var is_card_stack = test_piece is Card
-		test_piece.free()
-		if is_card_stack:
+		if _piece.is_card_stack():
 			piece_height = 0
 		else:
-			piece_height *= piece_entry["texture_paths"].size()
+			piece_height *= _piece.get_piece_count()
 	
 	var piece_radius = max(scale.x, scale.z) / 2
 	
@@ -124,6 +119,24 @@ func set_piece(piece_entry: Dictionary) -> void:
 	var theta = deg2rad(_camera.fov)
 	var dist = 1 + display_radius + (display_height / (2 * tan(theta / 2)))
 	_camera.translation.z = dist
+
+# Set the preview to display a piece with the given piece entry.
+# piece_entry: The entry of the piece to display.
+func set_piece_with_entry(piece_entry: Dictionary) -> void:
+	var piece: Piece = null
+	var custom_entry: Dictionary = {}
+	
+	if piece_entry.has("texture_paths"):
+		# Override the piece entry for the preview to be the stack's entry,
+		# since the stack would overwrite it's own entry to be the entry of the
+		# first piece that is added.
+		custom_entry = piece_entry
+		piece = preload("res://Pieces/Stack.tscn").instance()
+		PieceBuilder.fill_stack(piece, piece_entry)
+	else:
+		piece = PieceBuilder.build_piece(piece_entry)
+	
+	set_piece(piece, custom_entry)
 
 # Set the preview to appear selected.
 # selected: Whether the preview should be selected.
@@ -140,5 +153,16 @@ func _process(delta):
 		_piece.rotate_object_local(Vector3.UP, delta_theta)
 
 func _on_ViewportContainer_gui_input(event):
+	# Completely ignore any events if the preview isn't displaying anything.
+	if _piece == null:
+		return
+	
 	if event is InputEventMouseButton:
 		emit_signal("clicked", self, event)
+		
+		# If the preview has been clicked, register it as selected.
+		if event.pressed:
+			if event.button_index == BUTTON_LEFT:
+				if not event.control:
+					get_tree().call_group("preview_selected", "set_selected", false)
+				set_selected(not is_selected())

@@ -29,34 +29,25 @@ class_name PieceBuilder
 static func build_piece(piece_entry: Dictionary) -> Piece:
 	var piece = load(piece_entry["scene_path"]).instance()
 	
-	# The centre of mass of the piece.
-	var avg_points = Vector3.ZERO
-	
 	# If the scene is not a piece (e.g. when importing a scene from the assets
 	# folder), make it a piece so it can interact with other objects.
 	if not piece is Piece:
-		var build = Piece.new()
+		var scene_dir = piece_entry["scene_path"].get_base_dir()
+		var build: Piece = null
+		
+		if scene_dir.ends_with("containers/custom"):
+			build = PieceContainer.new()
+			
+			build.contact_monitor = true
+			build.contacts_reported = 2
+			
+			var pieces_node = Spatial.new()
+			pieces_node.name = "Pieces"
+			build.add_child(pieces_node)
+		else:
+			build = Piece.new()
 		
 		_extract_and_shape_mesh_instances(build, piece, Transform.IDENTITY)
-		
-		# We should take the time to make sure that the centre of mass of the
-		# piece is correct, i.e. the rigidbody node is positioned roughly at
-		# the centre of the piece. This might not be the case since the
-		# imported mesh could be translated to any position!
-		var sum_points = Vector3.ZERO
-		var num_points = 0
-		for child in build.get_children():
-			if child is CollisionShape:
-				var shape = child.shape
-				
-				if shape is ConvexPolygonShape:
-					for point in shape.points:
-						sum_points += child.transform * point
-						num_points += 1
-		
-		avg_points = sum_points
-		if num_points > 1:
-			avg_points /= num_points
 		
 		if not piece.get_parent():
 			piece.free()
@@ -67,21 +58,21 @@ static func build_piece(piece_entry: Dictionary) -> Piece:
 	
 	scale_piece(piece, piece_entry["scale"])
 	
-	# Now the piece has been scaled, we can safely change the centre of mass!
+	# Now that the piece has been scaled, if the piece entry contains the
+	# bounding box of the piece, we should take the time to adjust the centre
+	# of mass of the object.
 	# NOTE: The reason we offset all the collision shapes is because the
 	# Bullet physics engine defines the centre of mass as the origin of the
 	# rigidbody, and there is currently no way to manually define the
 	# centre of mass of a rigidbody in Godot. See:
 	# https://github.com/godotengine/godot-proposals/issues/945
-	if avg_points != Vector3.ZERO:
+	if piece_entry.has("bounding_box"):
 		
-		# Adjust the centre of mass for the scale that just happened.
-		var scale = piece_entry["scale"]
-		avg_points = Vector3(avg_points.x * scale.x, avg_points.y * scale.y,
-			avg_points.z * scale.z)
+		var bounding_box = piece_entry["bounding_box"]
+		var centre_of_mass = 0.5 * (bounding_box[0] + bounding_box[1])
 		
 		for child in piece.get_children():
-			child.transform.origin -= avg_points
+			child.transform.origin -= centre_of_mass
 	
 	if piece_entry.has("texture_path") and piece_entry["texture_path"] is String:
 		var texture: Texture = load(piece_entry["texture_path"])
@@ -119,6 +110,7 @@ static func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 		
 		# Create a new piece entry based on the stack entry.
 		mesh.piece_entry = {
+			"description": stack_entry.description,
 			"mass": mass,
 			"name": stack_entry.name,
 			"scale": stack_entry.scale,

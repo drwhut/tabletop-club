@@ -100,6 +100,16 @@ func get_mesh_instances() -> Array:
 				out.append(child)
 	return out
 
+# Get the size of the piece.
+# NOTE: If you know the piece is not a custom piece, then you can just use the
+# "scale" key in the piece entry.
+# Returns: A Vector3 representing the size of the piece in all three axes.
+func get_size() -> Vector3:
+	if piece_entry.has("bounding_box"):
+		return piece_entry["bounding_box"][1] - piece_entry["bounding_box"][0]
+	
+	return piece_entry["scale"]
+
 # Determines if the piece is being shaked.
 # Returns: If the piece is being shaked.
 func is_being_shaked() -> bool:
@@ -287,6 +297,7 @@ func _ready():
 		# The clients are at the mercy of the server.
 		custom_integrator = true
 	
+	connect("tree_entered", self, "_on_tree_entered")
 	connect("tree_exiting", self, "_on_tree_exiting")
 
 func _process(delta):
@@ -353,6 +364,11 @@ func _integrate_forces(state):
 			var new_transform = Transform(lerp_quat)
 			new_transform.origin = origin
 			state.transform = new_transform
+
+func _on_tree_entered() -> void:
+	# If the piece just entered the tree, then reset the last server state,
+	# because it's very likely that it's wrong now.
+	_last_server_state = {}
 
 func _on_tree_exiting() -> void:
 	emit_signal("piece_exiting_tree", self)

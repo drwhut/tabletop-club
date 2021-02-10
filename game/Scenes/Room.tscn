@@ -160,6 +160,8 @@ __meta__ = {
 [node name="Hands" type="Spatial" parent="."]
 [connection signal="adding_cards_to_hand" from="CameraController" to="." method="_on_CameraController_adding_cards_to_hand"]
 [connection signal="collect_pieces_requested" from="CameraController" to="." method="_on_CameraController_collect_pieces_requested"]
+[connection signal="container_release_random_requested" from="CameraController" to="." method="_on_CameraController_container_release_random_requested"]
+[connection signal="container_release_these_requested" from="CameraController" to="." method="_on_CameraController_container_release_these_requested"]
 [connection signal="dealing_cards" from="CameraController" to="." method="_on_CameraController_dealing_cards"]
 [connection signal="hover_piece_requested" from="CameraController" to="." method="_on_CameraController_hover_piece_requested"]
 [connection signal="pop_stack_requested" from="CameraController" to="." method="_on_CameraController_pop_stack_requested"]

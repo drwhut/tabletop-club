@@ -23,6 +23,8 @@ extends Spatial
 
 signal adding_cards_to_hand(cards, id) # If id is 0, add to nearest hand.
 signal collect_pieces_requested(pieces)
+signal container_release_random_requested(container, n)
+signal container_release_these_requested(container, names)
 signal dealing_cards(stack, n)
 signal hover_piece_requested(piece, offset)
 signal pop_stack_requested(stack, n)
@@ -33,6 +35,7 @@ signal stack_collect_all_requested(stack, collect_stacks)
 
 onready var _box_selection_rect = $BoxSelectionRect
 onready var _camera = $Camera
+onready var _container_content_dialog = $ContainerContentDialog
 onready var _cursors = $Cursors
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
@@ -615,6 +618,14 @@ func _on_context_orient_up_pressed() -> void:
 		if piece is Stack:
 			piece.rpc_id(1, "request_orient_pieces", true)
 
+func _on_context_peek_inside_pressed() -> void:
+	_hide_context_menu()
+	if _selected_pieces.size() == 1:
+		var piece = _selected_pieces[0]
+		if piece is PieceContainer:
+			_container_content_dialog.display_contents(piece)
+			_container_content_dialog.popup_centered()
+
 func _on_context_put_in_hand_pressed() -> void:
 	_hide_context_menu()
 	emit_signal("adding_cards_to_hand", _selected_pieces, get_tree().get_network_unique_id())
@@ -646,6 +657,14 @@ func _on_context_take_top_pressed(n: int) -> void:
 		if piece is Stack:
 			clear_selected_pieces()
 			emit_signal("pop_stack_requested", piece, n)
+
+func _on_context_take_out_pressed(n: int) -> void:
+	_hide_context_menu()
+	if _selected_pieces.size() == 1:
+		var piece = _selected_pieces[0]
+		if piece is PieceContainer:
+			clear_selected_pieces()
+			emit_signal("container_release_random_requested", piece, n)
 
 func _on_context_unlock_pressed() -> void:
 	_unlock_selected_pieces()
@@ -772,6 +791,22 @@ func _popup_piece_context_menu() -> void:
 			collect_selected_button.connect("pressed", self, "_on_context_collect_selected_pressed")
 			_piece_context_menu_container.add_child(collect_selected_button)
 	
+	elif _inheritance_has(inheritance, "PieceContainer"):
+		if _selected_pieces.size() == 1:
+			var peek_button = Button.new()
+			peek_button.text = "Peek inside"
+			peek_button.connect("pressed", self, "_on_context_peek_inside_pressed")
+			_piece_context_menu_container.add_child(peek_button)
+			
+			var take_button = SpinBoxButton.new()
+			take_button.button.text = "Take X out"
+			take_button.spin_box.prefix = "X ="
+			take_button.spin_box.min_value = 1
+			# We don't set the maximum value here, as we don't want the player
+			# knowing how many items are in the container.
+			take_button.connect("pressed", self, "_on_context_take_out_pressed")
+			_piece_context_menu_container.add_child(take_button)
+	
 	###########
 	# LEVEL 0 #
 	###########
@@ -861,6 +896,11 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 			for piece in selected:
 				if selected.size() == 1 and piece is Stack and fast:
 					emit_signal("pop_stack_requested", piece, 1)
+				elif selected.size() == 1 and piece is PieceContainer and fast:
+					if piece.get_piece_count() == 0:
+						emit_signal("hover_piece_requested", piece, Vector3())
+					else:
+						emit_signal("container_release_random_requested", piece, 1)
 				else:
 					var offset = piece.transform.origin - origin
 					emit_signal("hover_piece_requested", piece, offset)
@@ -897,6 +937,16 @@ func _on_moving() -> bool:
 		return true
 	
 	return false
+
+func _on_ContainerContentDialog_take_all_from(container: PieceContainer):
+	_container_content_dialog.visible = false
+	clear_selected_pieces()
+	emit_signal("container_release_random_requested", container, container.get_piece_count())
+
+func _on_ContainerContentDialog_take_from(container: PieceContainer, names: Array):
+	_container_content_dialog.visible = false
+	clear_selected_pieces()
+	emit_signal("container_release_these_requested", container, names)
 
 func _on_Lobby_player_added(id: int) -> void:
 	if get_tree().is_network_server():
@@ -959,7 +1009,7 @@ func _on_MouseGrab_gui_input(event):
 						_is_grabbing_selected = true
 						_grabbing_time = 0.0
 				else:
-					if not event.control:
+					if not (event.control or _is_hovering_selected):
 						clear_selected_pieces()
 					
 					if hold_left_click_to_move:

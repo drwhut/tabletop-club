@@ -78,7 +78,43 @@ remotesync func add_piece(name: String, transform: Transform,
 	if piece is StackablePiece:
 		piece.connect("stack_requested", self, "_on_stack_requested")
 	
+	# If it is a container, make sure we attach the signal it emits when it
+	# wants to absorb or release a piece.
+	if piece is PieceContainer:
+		piece.connect("absorbing_piece", self, "_on_container_absorbing_piece")
+		piece.connect("releasing_random_piece", self, "_on_container_releasing_random_piece")
+	
 	_pieces.add_child(piece)
+
+# Called by the server to add a piece to a container, a.k.a. having the piece
+# be "absorbed" by the container.
+# container_name: The name of the container that is absorbing the piece.
+# piece_name: The name of the piece that the container is absorbing.
+remotesync func add_piece_to_container(container_name: String, piece_name: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var container = _pieces.get_node(container_name)
+	var piece     = _pieces.get_node(piece_name)
+	
+	if not container:
+		push_error("Container " + container_name + " does not exist!")
+		return
+	
+	if not piece:
+		push_error("Piece " + piece_name + " does not exist!")
+		return
+	
+	if not container is PieceContainer:
+		push_error("Piece " + container_name + " is not a container!")
+		return
+	
+	if not piece is Piece:
+		push_error("Object " + piece_name + " is not a piece!")
+		return
+	
+	_pieces.remove_child(piece)
+	container.add_piece(piece)
 
 # Called by the server to add a piece to a stack.
 # piece_name: The name of the piece.
@@ -382,54 +418,19 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 		"transform": _table_body.transform
 	}
 	
-	var hand_dict = {}
-	var piece_dict = {}
-	var stack_dict = {}
-	
 	if hands:
+		var hand_dict = {}
 		for hand in _hands.get_children():
 			var hand_meta = {
 				"transform": hand.transform
 			}
 			
 			hand_dict[hand.owner_id()] = hand_meta
-	
-	for piece in _pieces.get_children():
-		if piece is Stack:
-			var stack_meta = {
-				"is_locked": piece.is_locked(),
-				"transform": piece.transform
-			}
-			
-			var child_pieces = []
-			for child_piece in piece.get_pieces():
-				var child_piece_meta = {
-					"flip_y": child_piece.transform.basis.y.y < 0,
-					"name": child_piece.name,
-					"piece_entry": child_piece.piece_entry
-				}
-				
-				child_pieces.push_back(child_piece_meta)
-			
-			stack_meta["pieces"] = child_pieces
-			stack_dict[piece.name] = stack_meta
-		else:
-			var piece_meta = {
-				"is_locked": piece.is_locked(),
-				"piece_entry": piece.piece_entry,
-				"transform": piece.transform
-			}
-			
-			if collisions:
-				if piece is Card:
-					piece_meta["is_collisions_on"] = piece.is_collisions_on()
-			
-			piece_dict[piece.name] = piece_meta
-	
-	if hands:
+		
 		out["hands"] = hand_dict
-	out["pieces"] = piece_dict
-	out["stacks"] = stack_dict
+	
+	_append_piece_states(out, _pieces, collisions)
+	
 	return out
 
 # Remove a player's hand from the room.
@@ -442,6 +443,31 @@ remotesync func remove_hand(player: int) -> void:
 	if hand:
 		_hands.remove_child(hand)
 		hand.queue_free()
+
+# Called by the server to remove a piece from a container, a.k.a. having the
+# piece be "released" by the container.
+# container_name: The name of the container that is absorbing the piece.
+# piece_name: The name of the piece that the container is releasing.
+remotesync func remove_piece_from_container(container_name: String, piece_name: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var container = _pieces.get_node(container_name)
+	
+	if not container:
+		push_error("Container " + container_name + " does not exist!")
+		return
+	
+	if not container is PieceContainer:
+		push_error("Piece " + container_name + " is not a container!")
+		return
+	
+	if not container.has_piece(piece_name):
+		push_error("Container " + container_name + " does not contain piece " + piece_name)
+		return
+	
+	var piece = container.remove_piece(piece_name)
+	_pieces.add_child(piece)
 
 # Request the server to add cards to the given hand.
 # card_names: The names of the cards to add to the hand. Note that the names
@@ -588,6 +614,104 @@ master func request_collect_pieces(piece_names: Array) -> void:
 				pieces.remove(i)
 		
 		add_to = pieces.pop_front()
+
+# Called by the server when the request to release a piece from a container was
+# accepted.
+# piece_name: The name of the piece that was just released from a container.
+remotesync func request_container_release_accepted(piece_name: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	# The server has allowed us to hover the piece that has just poped off the
+	# stack!
+	request_hover_piece_accepted(piece_name)
+
+# Request the server to randomly release a set amount of pieces from a
+# container.
+# container_name: The name of the container to release pieces from.
+# n: The number of pieces to release from the container.
+# hover: Do we want to start hovering the piece afterwards?
+master func request_container_release_random(container_name: String, n: int, hover: bool) -> void:
+	if n < 1:
+		return
+	
+	var container = _pieces.get_node(container_name)
+	
+	if not container:
+		push_error("Container " + container_name + " does not exist!")
+		return
+	
+	if not container is PieceContainer:
+		push_error("Piece " + container_name + " is not a container!")
+		return
+	
+	var names = container.get_piece_names()
+	if names.size() == 0:
+		return
+	
+	# We want the selection to be random!
+	if n < names.size():
+		randomize()
+		names.shuffle()
+		names = names.slice(0, n - 1)
+	
+	request_container_release_these(container_name, names, hover)
+
+# Request the server to release a given set of pieces from a container.
+# container_name: The name of the container to release the pieces from.
+# release_names: The list of names of the pieces to be released from the
+# container.
+# hover: Do we want to start hovering the piece afterwards?
+master func request_container_release_these(container_name: String,
+	release_names: Array, hover: bool) -> void:
+	
+	if release_names.size() == 0:
+		return
+	
+	var player_id = get_tree().get_rpc_sender_id()
+	var container = _pieces.get_node(container_name)
+	
+	if not container:
+		push_error("Container " + container_name + " does not exist!")
+		return
+	
+	if not container is PieceContainer:
+		push_error("Piece " + container_name + " is not a container!")
+		return
+	
+	var hover_box_pos   = Vector3.ZERO
+	var hover_box_size  = Vector3.ZERO
+	var hover_direction = 0
+	
+	for piece_name in release_names:
+		if container.has_piece(piece_name):
+			rpc("remove_piece_from_container", container_name, piece_name)
+			
+			if hover:
+				var piece = _pieces.get_node(piece_name)
+				var piece_size = piece.get_size()
+				var piece_offset = hover_box_pos
+				
+				if hover_direction == 0:
+					piece_offset.x += (hover_box_size.x + piece_size.x) / 2
+				elif hover_direction == 1:
+					piece_offset.z += (hover_box_size.z + piece_size.z) / 2
+				elif hover_direction == 2:
+					piece_offset.x -= (hover_box_size.x + piece_size.x) / 2
+				else:
+					piece_offset.z -= (hover_box_size.z + piece_size.z) / 2
+				
+				hover_box_pos = 0.5 * (hover_box_pos + piece_offset)
+				if hover_direction % 2 == 0:
+					hover_box_size.x += piece_size.x
+					hover_box_size.z = max(hover_box_size.z, piece_size.z)
+				else:
+					hover_box_size.x = max(hover_box_size.x, piece_size.x)
+					hover_box_size.z += piece_size.z
+				hover_direction = (hover_direction + 1) % 4
+				
+				if piece.srv_start_hovering(player_id, piece.transform.origin, piece_offset):
+					rpc_id(player_id, "request_container_release_accepted", piece_name)
 
 # Request the server to deal cards from a stack to all players.
 # stack_name: The name of the stack of cards.
@@ -911,146 +1035,11 @@ remotesync func set_state(state: Dictionary) -> void:
 			
 			add_hand(hand_id, hand_meta["transform"])
 	
-	if state.has("pieces") or state.has("stacks"):
-		for child in _pieces.get_children():
-			_pieces.remove_child(child)
-			child.queue_free()
+	for child in _pieces.get_children():
+		_pieces.remove_child(child)
+		child.queue_free()
 	
-	if state.has("pieces"):
-		for piece_name in state["pieces"]:
-			if get_tree().is_network_server():
-				var name_int = int(piece_name)
-				if name_int >= _srv_next_piece_name:
-					_srv_next_piece_name = name_int + 1
-			
-			var piece_meta = state["pieces"][piece_name]
-			
-			if not piece_meta.has("is_locked"):
-				push_error("Piece " + piece_name + " in new state has no is locked value!")
-				return
-			
-			if not piece_meta["is_locked"] is bool:
-				push_error("Piece " + piece_name + " is locked value is not a boolean!")
-				return
-			
-			if not piece_meta.has("piece_entry"):
-				push_error("Piece " + piece_name + " in new state has no piece entry!")
-				return
-			
-			if not piece_meta["piece_entry"] is Dictionary:
-				push_error("Piece " + piece_name + " entry is not a dictionary!")
-				return
-			
-			if not piece_meta.has("transform"):
-				push_error("Piece " + piece_name + " in new state has no transform!")
-				return
-			
-			if not piece_meta["transform"] is Transform:
-				push_error("Piece " + piece_name + " transform is not a transform!")
-				return
-			
-			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
-			var piece: Piece = _pieces.get_node(piece_name)
-			
-			if piece_meta["is_locked"]:
-				piece.lock_client(piece_meta["transform"])
-			
-			if piece is Card:
-				# The state can choose not to have this data.
-				if piece_meta.has("is_collisions_on"):
-					if not piece_meta["is_collisions_on"] is bool:
-						push_error("Card " + piece_name + " collisions on is not a boolean!")
-						return
-					
-					piece.set_collisions_on(piece_meta["is_collisions_on"])
-	
-	if state.has("stacks"):
-		for stack_name in state["stacks"]:
-			if get_tree().is_network_server():
-				var name_int = int(stack_name)
-				if name_int >= _srv_next_piece_name:
-					_srv_next_piece_name = name_int + 1
-			
-			var stack_meta = state["stacks"][stack_name]
-			
-			if not stack_meta.has("is_locked"):
-				push_error("Stack " + stack_name + " in new state has no is locked value!")
-				return
-			
-			if not stack_meta["is_locked"] is bool:
-				push_error("Stack " + stack_name + " is locked value is not a boolean!")
-				return
-			
-			if not stack_meta.has("transform"):
-				push_error("Stack " + stack_name + " in new state has no transform!")
-				return
-			
-			if not stack_meta["transform"] is Transform:
-				push_error("Stack " + stack_name + " transform is not a transform!")
-				return
-			
-			if not stack_meta.has("pieces"):
-				push_error("Stack " + stack_name + " in new state has no piece array!")
-				return
-			
-			if not stack_meta["pieces"] is Array:
-				push_error("Stack " + stack_name + " piece array is not an array!")
-				return
-			
-			var stack = add_stack_empty(stack_name, stack_meta["transform"])
-			
-			if stack_meta["is_locked"]:
-				var stack_node: Stack = _pieces.get_node(stack_name)
-				stack_node.lock_client(stack_meta["transform"])
-			
-			for stack_piece_meta in stack_meta["pieces"]:
-				
-				if not stack_piece_meta is Dictionary:
-					push_error("Stack piece is not a dictionary!")
-					return
-				
-				if not stack_piece_meta.has("name"):
-					push_error("Stack piece does not have a name!")
-					return
-				
-				if not stack_piece_meta["name"] is String:
-					push_error("Stack piece name is not a string!")
-					return
-				
-				var stack_piece_name = stack_piece_meta["name"]
-				
-				if get_tree().is_network_server():
-					var name_int = int(stack_piece_name)
-					if name_int >= _srv_next_piece_name:
-						_srv_next_piece_name = name_int + 1
-				
-				if not stack_piece_meta.has("flip_y"):
-					push_error("Stack piece" + stack_piece_name + " does not have a flip value!")
-					return
-				
-				if not stack_piece_meta["flip_y"] is bool:
-					push_error("Stack piece" + stack_piece_name + " flip value is not a boolean!")
-					return
-				
-				if not stack_piece_meta.has("piece_entry"):
-					push_error("Stack piece" + stack_piece_name + " does not have a piece entry!")
-					return
-				
-				if not stack_piece_meta["piece_entry"] is Dictionary:
-					push_error("Stack piece" + stack_piece_name + " entry is not a dictionary!")
-					return
-				
-				# Add the piece normally so we can extract the mesh instance and
-				# shape.
-				add_piece(stack_piece_name, Transform(), stack_piece_meta["piece_entry"])
-				
-				# Then add it to the stack at the top (since we're going through
-				# the list in order from bottom to top).
-				var flip = Stack.FLIP_NO
-				if stack_piece_meta["flip_y"]:
-					flip = Stack.FLIP_YES
-				
-				add_piece_to_stack(stack_piece_name, stack_name, Stack.STACK_TOP, flip)
+	_extract_piece_states(state, _pieces)
 
 # Get the next hand transform. Note that there may not be a next transform, in
 # which case the function returns the identity transform.
@@ -1166,6 +1155,198 @@ remotesync func unflip_table() -> void:
 	
 	emit_signal("table_flipped", true)
 
+# Append the states of pieces to a given dictionary.
+# state: The dictionary to add the states to.
+# parent: The parent node to start scanning pieces from.
+# collisions: Should collision data be included in the state?
+func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> void:
+	state["containers"] = {}
+	state["pieces"] = {}
+	state["stacks"] = {}
+	
+	for piece in parent.get_children():
+		var piece_meta = {
+			"is_locked": piece.is_locked(),
+			"piece_entry": piece.piece_entry,
+			"transform": piece.transform
+		}
+		
+		if piece is PieceContainer:
+			var child_pieces = {}
+			_append_piece_states(child_pieces, piece.get_node("Pieces"), collisions)
+			
+			piece_meta["pieces"] = child_pieces
+			state["containers"][piece.name] = piece_meta
+		
+		elif piece is Stack:
+			# If the piece is a stack, we don't need to store the stack's piece
+			# entry, as it will figure it out itself once the first piece is
+			# added.
+			piece_meta.erase("piece_entry")
+			
+			var child_pieces = []
+			for child_piece in piece.get_pieces():
+				var child_piece_meta = {
+					"flip_y": child_piece.transform.basis.y.y < 0,
+					"name": child_piece.name,
+					"piece_entry": child_piece.piece_entry
+				}
+				
+				child_pieces.push_back(child_piece_meta)
+			
+			piece_meta["pieces"] = child_pieces
+			state["stacks"][piece.name] = piece_meta
+		
+		else:
+			if collisions:
+				if piece is Card:
+					piece_meta["is_collisions_on"] = piece.is_collisions_on()
+			
+			state["pieces"][piece.name] = piece_meta
+
+# Extract the pieces from a room state, and add them to the scene tree.
+# state: The state to extract the pieces from.
+# parent: The node to add the pieces to as children.
+func _extract_piece_states(state: Dictionary, parent: Node) -> void:
+	_extract_piece_states_type(state, parent, "containers")
+	_extract_piece_states_type(state, parent, "pieces")
+	_extract_piece_states_type(state, parent, "stacks")
+
+# A helper function when extracting piece states from a room state.
+# state: The state to extract the pieces from.
+# parent: The node to add the pieces to as children.
+# type_key: The key to extract from the state.
+func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: String) -> void:
+	if not state.has(type_key):
+		return
+	
+	for piece_name in state[type_key]:
+		var piece_meta = state[type_key][piece_name]
+		
+		# Make sure the server doesn't duplicate piece names!
+		if get_tree().is_network_server():
+			var name_int = int(piece_name)
+			if name_int >= _srv_next_piece_name:
+				_srv_next_piece_name = name_int + 1
+		
+		if not piece_meta.has("is_locked"):
+			push_error("Piece " + type_key + "/" + piece_name + " in new state has no is locked value!")
+			return
+		
+		if not piece_meta["is_locked"] is bool:
+			push_error("Piece " + type_key + "/" + piece_name + " is locked value is not a boolean!")
+			return
+		
+		if not piece_meta.has("transform"):
+			push_error("Piece " + type_key + "/" + piece_name + " in new state has no transform!")
+			return
+		
+		if not piece_meta["transform"] is Transform:
+			push_error("Piece " + type_key + "/" + piece_name + " transform is not a transform!")
+			return
+		
+		# Stacks don't include their piece entry, since they can figure it out
+		# themselves once the first piece is added.
+		if type_key != "stacks":
+			if not piece_meta.has("piece_entry"):
+				push_error("Piece " + type_key + "/" + piece_name + " in new state has no piece entry!")
+				return
+			
+			if not piece_meta["piece_entry"] is Dictionary:
+				push_error("Piece " + type_key + "/" + piece_name + " entry is not a dictionary!")
+				return
+		
+		if type_key == "stacks":
+			add_stack_empty(piece_name, piece_meta["transform"])
+		else:
+			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
+		
+		var piece: Piece = _pieces.get_node(piece_name)
+		if piece_meta["is_locked"]:
+			piece.lock_client(piece_meta["transform"])
+		
+		if type_key == "containers":
+			if not piece_meta.has("pieces"):
+				push_error("Container piece does not have a pieces entry!")
+				return
+			
+			if not piece_meta["pieces"] is Dictionary:
+				push_error("Container pieces entry is not a dictionary!")
+				return
+			
+			_extract_piece_states(piece_meta["pieces"], piece.get_node("Pieces"))
+			if piece is PieceContainer:
+				piece.recalculate_mass()
+		
+		elif type_key == "piece":
+			if piece is Card:
+				# The state can choose not to have this data.
+				if piece_meta.has("is_collisions_on"):
+					if not piece_meta["is_collisions_on"] is bool:
+						push_error("Card " + piece_name + " collisions on is not a boolean!")
+						return
+					
+					piece.set_collisions_on(piece_meta["is_collisions_on"])
+		
+		elif type_key == "stacks":
+			for stack_piece_meta in piece_meta["pieces"]:
+				
+				if not stack_piece_meta is Dictionary:
+					push_error("Stack piece is not a dictionary!")
+					return
+				
+				if not stack_piece_meta.has("name"):
+					push_error("Stack piece does not have a name!")
+					return
+				
+				if not stack_piece_meta["name"] is String:
+					push_error("Stack piece name is not a string!")
+					return
+				
+				var stack_piece_name = stack_piece_meta["name"]
+				
+				if not stack_piece_meta.has("flip_y"):
+					push_error("Stack piece" + stack_piece_name + " does not have a flip value!")
+					return
+				
+				if not stack_piece_meta["flip_y"] is bool:
+					push_error("Stack piece" + stack_piece_name + " flip value is not a boolean!")
+					return
+				
+				if not stack_piece_meta.has("piece_entry"):
+					push_error("Stack piece" + stack_piece_name + " does not have a piece entry!")
+					return
+				
+				if not stack_piece_meta["piece_entry"] is Dictionary:
+					push_error("Stack piece" + stack_piece_name + " entry is not a dictionary!")
+					return
+				
+				# Add the piece normally so we can extract the mesh instance and
+				# shape.
+				add_piece(stack_piece_name, Transform(), stack_piece_meta["piece_entry"])
+				
+				# Then add it to the stack at the top (since we're going through
+				# the list in order from bottom to top).
+				var flip = Stack.FLIP_NO
+				if stack_piece_meta["flip_y"]:
+					flip = Stack.FLIP_YES
+				
+				add_piece_to_stack(stack_piece_name, piece_name, Stack.STACK_TOP, flip)
+		
+		# Finally, we may need to move the piece in the scene tree so it has a
+		# different parent.
+		if parent != _pieces:
+			_pieces.remove_child(piece)
+			parent.add_child(piece)
+
+func _on_container_absorbing_piece(container: PieceContainer, piece: Piece) -> void:
+	if get_tree().is_network_server():
+		rpc("add_piece_to_container", container.name, piece.name)
+
+func _on_container_releasing_random_piece(container: PieceContainer) -> void:
+	if get_tree().is_network_server():
+		rpc_id(1, "request_container_release_random", container.name, 1, false)
+
 func _on_piece_exiting_tree(piece: Piece) -> void:
 	_camera_controller.erase_selected_pieces(piece)
 
@@ -1198,6 +1379,17 @@ func _on_CameraController_collect_pieces_requested(pieces: Array):
 		if piece is StackablePiece:
 			names.append(piece.name)
 	rpc_id(1, "request_collect_pieces", names)
+
+func _on_CameraController_container_release_random_requested(container: PieceContainer, n: int):
+	rpc_id(1, "request_container_release_random", container.name, n, true)
+
+func _on_CameraController_container_release_these_requested(container: PieceContainer, names: Array):
+	var good_names = []
+	for check_name in names:
+		if check_name is String:
+			if container.has_piece(check_name):
+				good_names.append(check_name)
+	rpc_id(1, "request_container_release_these", container.name, good_names, true)
 
 func _on_CameraController_dealing_cards(stack: Stack, n: int):
 	rpc_id(1, "request_deal_cards", stack.name, n)

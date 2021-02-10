@@ -42,6 +42,10 @@ const ASSET_DIR_PREFIXES = [
 const ASSET_PACK_SUBFOLDERS = {
 	"cards": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Card.tscn" },
 	
+	"containers/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Containers/Cube.tscn" },
+	"containers/custom": { "type": ASSET_SCENE, "scene": "" },
+	"containers/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Containers/Cylinder.tscn" },
+	
 	"dice/d4": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Dice/d4.tscn" },
 	"dice/d6": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Dice/d6.tscn" },
 	"dice/d8": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Dice/d8.tscn" },
@@ -259,6 +263,50 @@ func _add_entry_to_db(pack: String, type: String, entry: Dictionary) -> void:
 	
 	print("Added: ", pack, "/", type, "/", entry.name)
 
+# Calculate the bounding box of a 3D scene.
+# Returns: A 2-length array containing the min and max corners of the box.
+# scene: The scene to calculate the bounding box for.
+func _calculate_bounding_box(scene: Spatial) -> Array:
+	return _calculate_bounding_box_recursive(scene, Transform.IDENTITY)
+
+# A helper function for calculating the bounding box of a 3D scene.
+# Returns: A 2-length array containing the min and max corners of the box.
+# scene: The scene to calculate the bounding box for.
+# transform: The transform of the scene up to this point.
+func _calculate_bounding_box_recursive(scene: Spatial, transform: Transform) -> Array:
+	var new_basis     = transform.basis * scene.transform.basis
+	var new_origin    = transform.origin + scene.transform.origin
+	var new_transform = Transform(new_basis, new_origin)
+	
+	var bounding_box = [Vector3.ZERO, Vector3.ZERO]
+	
+	if scene is MeshInstance:
+		var mesh  = scene.mesh
+		var shape = mesh.create_convex_shape()
+		for point in shape.points:
+			var adj_point = new_transform * point
+			
+			bounding_box[0].x = min(bounding_box[0].x, adj_point.x)
+			bounding_box[0].y = min(bounding_box[0].y, adj_point.y)
+			bounding_box[0].z = min(bounding_box[0].z, adj_point.z)
+			
+			bounding_box[1].x = max(bounding_box[1].x, adj_point.x)
+			bounding_box[1].y = max(bounding_box[1].y, adj_point.y)
+			bounding_box[1].z = max(bounding_box[1].z, adj_point.z)
+	
+	for child in scene.get_children():
+		var child_box = _calculate_bounding_box_recursive(child, new_transform)
+		
+		bounding_box[0].x = min(bounding_box[0].x, child_box[0].x)
+		bounding_box[0].y = min(bounding_box[0].y, child_box[0].y)
+		bounding_box[0].z = min(bounding_box[0].z, child_box[0].z)
+		
+		bounding_box[1].x = max(bounding_box[1].x, child_box[1].x)
+		bounding_box[1].y = max(bounding_box[1].y, child_box[1].y)
+		bounding_box[1].z = max(bounding_box[1].z, child_box[1].z)
+	
+	return bounding_box
+
 # Get the directory of a pack's type in the user://assets directory.
 # Returns: The directory as a Directory object.
 # pack: The name of the pack.
@@ -337,9 +385,74 @@ func _import_asset(from: String, pack: String, type_dir: String,
 	var mass = 10 * _get_file_config_value(config, from.get_file(), "mass", 1.0)
 	var scale = _get_file_config_value(config, from.get_file(), "scale", Vector3(1, 1, 1))
 	
+	var opening_angle = 0
+	if type_dir.begins_with("containers"):
+		opening_angle = _get_file_config_value(config, from.get_file(), "opening_angle", 30.0)
+		if opening_angle < 0.0:
+			push_warning("%s opening angle is less than 0 degrees, setting to 0." % from)
+			opening_angle = 0.0
+		elif opening_angle > 90.0:
+			push_warning("%s opening angle is more than 90 degress, setting to 90." % from)
+			opening_angle = 90.0
+		opening_angle = sin(deg2rad(opening_angle))
+	
+	var entry = {}
 	if type_asset == ASSET_SCENE:
 		if VALID_SCENE_EXTENSIONS.has(to.get_extension()):
-			var entry = {
+			# If the file has been imported before, check that the custom scene
+			# has a cached bounding box (.box) file, so we don't have to go and
+			# calculate it again.
+			var box_file_path = to + ".box"
+			var box_file = File.new()
+			var bounding_box = []
+			
+			if import_err == ERR_ALREADY_EXISTS and box_file.file_exists(box_file_path):
+				box_file.open(box_file_path, File.READ)
+				var box = box_file.get_var()
+				box_file.close()
+				
+				if box is Array:
+					if box.size() == 2:
+						var box_min = box[0]
+						var box_max = box[1]
+						if box_min is Vector3 and box_max is Vector3:
+							bounding_box = box
+						else:
+							push_error("Elements in %s are not Vector3!" % box_file_path)
+					else:
+						push_error("Array in %s is not of size 2!" % box_file_path)
+				else:
+					push_error("%s does not contain an array!" % box_file_path)
+			
+			# If we couldn't read it for whatever reason, we should make a new
+			# one by doing the calculation now.
+			if bounding_box.size() != 2:
+				var custom_scene = load(to).instance()
+				bounding_box = _calculate_bounding_box(custom_scene)
+				custom_scene.free()
+				
+				box_file.open(box_file_path, File.WRITE)
+				box_file.store_var(bounding_box)
+				box_file.close()
+			
+			# For convenience, we'll scale the bounding box here by the
+			# configured value so we don't have to do it every time we use it
+			# later on.
+			if scale != Vector3.ONE:
+				bounding_box[0] = Vector3(
+					bounding_box[0].x * scale.x,
+					bounding_box[0].y * scale.y,
+					bounding_box[0].z * scale.z
+				)
+				
+				bounding_box[1] = Vector3(
+					bounding_box[1].x * scale.x,
+					bounding_box[1].y * scale.y,
+					bounding_box[1].z * scale.z
+				)
+			
+			entry = {
+				"bounding_box": bounding_box,
 				"description": desc,
 				"mass": mass,
 				"name": _get_file_without_ext(to),
@@ -347,26 +460,23 @@ func _import_asset(from: String, pack: String, type_dir: String,
 				"scene_path": to,
 				"texture_path": null
 			}
-			_add_entry_to_db(pack, type_dir, entry)
 	elif type_asset == ASSET_SKYBOX:
 		if VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
-			var entry = {
+			entry = {
 				"description": desc,
 				"name": _get_file_without_ext(to),
 				"texture_path": to
 			}
-			_add_entry_to_db(pack, type_dir, entry)
 	elif type_asset == ASSET_TABLE:
 		if VALID_TABLE_EXTENSIONS.has(to.get_extension()):
-			var entry = {
+			entry = {
 				"description": desc,
 				"name": _get_file_without_ext(to),
 				"table_path": to
 			}
-			_add_entry_to_db(pack, type_dir, entry)
 	elif type_asset == ASSET_TEXTURE:
 		if scene and VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
-			var entry = {
+			entry = {
 				"description": desc,
 				"mass": mass,
 				"name": _get_file_without_ext(to),
@@ -374,7 +484,12 @@ func _import_asset(from: String, pack: String, type_dir: String,
 				"scene_path": scene,
 				"texture_path": to
 			}
-			_add_entry_to_db(pack, type_dir, entry)
+	
+	if not entry.empty():
+		if type_dir.begins_with("containers"):
+			entry["opening_angle_sin"] = opening_angle
+		
+		_add_entry_to_db(pack, type_dir, entry)
 	
 	return OK
 
