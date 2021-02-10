@@ -65,14 +65,19 @@ func is_selected() -> bool:
 
 # Set the preview to display a given piece.
 # piece: The piece to display. Note that it must be an orphan node!
-func set_piece(piece: Piece) -> void:
+# custom_entry: If you want to, you can separately override the piece entry
+# stored by the preview.
+func set_piece(piece: Piece, custom_entry: Dictionary = {}) -> void:
 	# Make sure that if we are already displaying a piece, we free it before
 	# we lose it!
 	clear_piece()
 	_piece = piece
 	
 	var piece_entry = _piece.piece_entry
-	_last_piece_entry = piece_entry
+	if custom_entry.empty():
+		_last_piece_entry = piece_entry
+	else:
+		_last_piece_entry = custom_entry
 	
 	if piece_entry["description"].empty():
 		hint_tooltip = ""
@@ -80,13 +85,16 @@ func set_piece(piece: Piece) -> void:
 		hint_tooltip = piece_entry["description"]
 	_label.text = piece_entry["name"]
 	
+	# Disable physics-related properties, there won't be any physicsing here!
+	_piece.contact_monitor = false
+	_piece.mode = RigidBody.MODE_STATIC
+	
 	_piece.transform.origin = Vector3.ZERO
 	# Make sure the piece is orientated upwards.
 	_piece.transform = _piece.transform.looking_at(Vector3.FORWARD, Vector3.UP)
 	# Adjust the angle so we can see the top face.
 	_piece.rotate_object_local(Vector3.RIGHT, X_ROTATION)
 	
-	_piece.mode = RigidBody.MODE_STATIC
 	_viewport.add_child(_piece)
 	
 	# Adjust the camera's position so it can see the entire piece.
@@ -116,13 +124,19 @@ func set_piece(piece: Piece) -> void:
 # piece_entry: The entry of the piece to display.
 func set_piece_with_entry(piece_entry: Dictionary) -> void:
 	var piece: Piece = null
+	var custom_entry: Dictionary = {}
+	
 	if piece_entry.has("texture_paths"):
+		# Override the piece entry for the preview to be the stack's entry,
+		# since the stack would overwrite it's own entry to be the entry of the
+		# first piece that is added.
+		custom_entry = piece_entry
 		piece = preload("res://Pieces/Stack.tscn").instance()
 		PieceBuilder.fill_stack(piece, piece_entry)
 	else:
 		piece = PieceBuilder.build_piece(piece_entry)
 	
-	set_piece(piece)
+	set_piece(piece, custom_entry)
 
 # Set the preview to appear selected.
 # selected: Whether the preview should be selected.
