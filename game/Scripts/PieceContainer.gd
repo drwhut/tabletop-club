@@ -39,6 +39,19 @@ func add_piece(piece: Piece) -> void:
 	
 	_pieces.add_child(piece)
 
+# Duplicate the given piece and return the duplicate.
+# Returns: A duplicate of the piece with the given name in the container, null
+# if the piece doesn't exist.
+# piece_name: The name of the piece to duplicate.
+func duplicate_piece(piece_name: String) -> Piece:
+	if has_piece(piece_name):
+		var original: Piece = _pieces.get_node(piece_name)
+		var duplicate: Piece = original.duplicate(DUPLICATE_SCRIPTS)
+		duplicate.piece_entry = original.piece_entry
+		return duplicate
+	
+	return null
+
 # Get the number of pieces that the container is holding.
 # Returns: The number of pieces inside the container.
 func get_piece_count() -> int:

@@ -1335,6 +1335,14 @@ func _on_CameraController_collect_pieces_requested(pieces: Array):
 func _on_CameraController_container_release_random_requested(container: PieceContainer, n: int):
 	rpc_id(1, "request_container_release_random", container.name, n, true)
 
+func _on_CameraController_container_release_these_requested(container: PieceContainer, names: Array):
+	var good_names = []
+	for check_name in names:
+		if check_name is String:
+			if container.has_piece(check_name):
+				good_names.append(check_name)
+	rpc_id(1, "request_container_release_these", container.name, good_names, true)
+
 func _on_CameraController_dealing_cards(stack: Stack, n: int):
 	rpc_id(1, "request_deal_cards", stack.name, n)
 

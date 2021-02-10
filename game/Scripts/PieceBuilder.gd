@@ -110,6 +110,7 @@ static func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 		
 		# Create a new piece entry based on the stack entry.
 		mesh.piece_entry = {
+			"description": stack_entry.description,
 			"mass": mass,
 			"name": stack_entry.name,
 			"scale": stack_entry.scale,

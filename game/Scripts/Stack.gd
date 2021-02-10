@@ -270,6 +270,15 @@ func _physics_process(delta):
 func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	pos: int, flip: int) -> void:
 	
+	# Workaround for the event that this function is called, but the child node
+	# variables have not been defined yet because the stack is not ready.
+	# This can happen if adding pieces to the stack before the stack is added
+	# to the scene tree.
+	if _collision_shape == null:
+		_collision_shape = $CollisionShape
+	if _pieces == null:
+		_pieces = $CollisionShape/Pieces
+	
 	_pieces.add_child(piece)
 	_pieces.move_child(piece, pos)
 	
