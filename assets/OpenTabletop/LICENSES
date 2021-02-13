@@ -27,7 +27,7 @@ pieces/custom/{Bishop,King,Knight,Pawn,Queen,Rook} {Black,White}.gltf
 pieces/custom/{Bishop,King,Knight,Pawn,Queen,Rook}.bin
 ======================================================
 Author: rehcub
-License: Public Domain
+License: CC0
 URL: https://opengameart.org/content/chess-set-1
 
 pieces/custom/Chess Board.{obj,mtl}

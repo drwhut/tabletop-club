@@ -21,6 +21,11 @@
 
 extends Spatial
 
+enum {
+	TOOL_CURSOR,
+	TOOL_RULER
+}
+
 signal adding_cards_to_hand(cards, id) # If id is 0, add to nearest hand.
 signal collect_pieces_requested(pieces)
 signal container_release_random_requested(container, n)
@@ -39,6 +44,8 @@ onready var _container_content_dialog = $ContainerContentDialog
 onready var _cursors = $Cursors
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
+onready var _ruler_line_label = $RulerLineLabel
+onready var _ruler_line_texture = $RulerLineTexture
 
 const CURSOR_LERP_SCALE = 100.0
 const GRABBING_SLOW_TIME = 0.25
@@ -63,6 +70,7 @@ export(float) var zoom_sensitivity: float = 1.0
 var send_cursor_position: bool = false
 
 var _box_select_init_pos = Vector2()
+var _cursor_on_table = false
 var _cursor_position = Vector3()
 var _drag_camera_anchor = Vector3()
 var _grabbing_time = 0.0
@@ -87,9 +95,13 @@ var _piece_mouse_is_over: Piece = null
 var _piece_rotation_amount = 1.0
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
+var _ruler_placing_point2 = false
+var _ruler_point1 = Vector3()
+var _ruler_point2 = Vector3()
 var _selected_pieces = []
 var _spawn_point_position = Vector3()
 var _target_zoom = 0.0
+var _tool = TOOL_CURSOR
 var _viewport_size_original = Vector2()
 
 # Append an array of pieces to the list of selected pieces.
@@ -288,6 +300,34 @@ func _process(delta):
 					target_theta = -target_theta
 				var current_theta = deg2rad(cursor.rect_rotation)
 				cursor.rect_rotation = rad2deg(lerp_angle(current_theta, target_theta, CURSOR_LERP_SCALE * delta))
+	
+	if _ruler_placing_point2:
+		_ruler_point2 = _cursor_position
+	
+	if _ruler_line_texture.visible:
+		
+		var line_behind_camera = _camera.is_position_behind(_ruler_point1) or _camera.is_position_behind(_ruler_point2)
+		_ruler_line_label.visible = not line_behind_camera
+		if not line_behind_camera:
+			var point1 = _camera.unproject_position(_ruler_point1)
+			var point2 = _camera.unproject_position(_ruler_point2)
+			var line = point2 - point1
+			_ruler_line_texture.rect_position = point1
+			_ruler_line_texture.rect_size.x = line.length()
+			if line.x != 0:
+				var angle = atan(line.y / line.x)
+				if line.x < 0:
+					angle += PI
+				_ruler_line_texture.rect_rotation = rad2deg(angle)
+			
+			_ruler_line_label.rect_position = point2
+			var measure_cm = (_ruler_point2 - _ruler_point1).length()
+			var measure_in = 0.3937008 * measure_cm
+			_ruler_line_label.text = "%.1f cm\n%.1f in" % [measure_cm, measure_in]
+		else:
+			# Set the ruler width to 0 instead of setting visible to false, so
+			# we can keep running this code.
+			_ruler_line_texture.rect_size.x = 0
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -301,9 +341,10 @@ func _physics_process(delta):
 	var space_state = get_world().direct_space_state
 	var result = space_state.intersect_ray(from, to)
 	
+	_cursor_on_table = result.has("collider")
 	_piece_mouse_is_over = null
 	
-	if result.has("collider"):
+	if _cursor_on_table:
 		_cursor_position = result["position"]
 		if result.collider is Piece:
 			_piece_mouse_is_over = result.collider
@@ -873,6 +914,21 @@ func _reset_camera() -> void:
 	_camera.translation.z = _initial_zoom
 	_target_zoom = _initial_zoom
 
+# Set the tool used by the player.
+# new_tool: The tool to be used. See the TOOL_* enum for possible values.
+func _set_tool(new_tool: int) -> void:
+	if new_tool < TOOL_CURSOR or new_tool > TOOL_RULER:
+		push_error("Invalid argument for _set_tool!")
+		return
+	
+	clear_selected_pieces()
+	
+	_ruler_line_label.visible = false
+	_ruler_line_texture.visible = false
+	_ruler_placing_point2 = false
+	
+	_tool = new_tool
+
 # Start hovering the grabbed pieces.
 # fast: Did the user hover them quickly after grabbing them? If so, this may
 # have differing behaviour, e.g. if the piece is a stack.
@@ -952,6 +1008,9 @@ func _on_ContainerContentDialog_take_from(container: PieceContainer, names: Arra
 	clear_selected_pieces()
 	emit_signal("container_release_these_requested", container, names)
 
+func _on_CursorToolButton_pressed():
+	_set_tool(TOOL_CURSOR)
+
 func _on_Lobby_player_added(id: int) -> void:
 	if get_tree().is_network_server():
 		return
@@ -1003,55 +1062,68 @@ func _on_Lobby_player_removed(id: int) -> void:
 func _on_MouseGrab_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
-			if event.is_pressed():
-				if _piece_mouse_is_over:
-					if event.control:
-						append_selected_pieces([_piece_mouse_is_over])
+			
+			if _tool == TOOL_CURSOR:
+				if event.is_pressed():
+					if _piece_mouse_is_over:
+						if event.control:
+							append_selected_pieces([_piece_mouse_is_over])
+						else:
+							if not _selected_pieces.has(_piece_mouse_is_over):
+								set_selected_pieces([_piece_mouse_is_over])
+							_is_grabbing_selected = true
+							_grabbing_time = 0.0
 					else:
-						if not _selected_pieces.has(_piece_mouse_is_over):
-							set_selected_pieces([_piece_mouse_is_over])
-						_is_grabbing_selected = true
-						_grabbing_time = 0.0
-				else:
-					if not (event.control or _is_hovering_selected):
-						clear_selected_pieces()
-					
-					if hold_left_click_to_move:
-						# Start dragging the camera with the mouse.
-						_drag_camera_anchor = _calculate_hover_position(event.position, 0.0)
-						_is_dragging_camera = true
-					else:
-						# Start box selecting.
-						_box_select_init_pos = event.position
-						_is_box_selecting = true
+						if not (event.control or _is_hovering_selected):
+							clear_selected_pieces()
 						
-						_box_selection_rect.rect_position = _box_select_init_pos
-						_box_selection_rect.rect_size = Vector2()
-						_box_selection_rect.visible = true
-			else:
-				_is_dragging_camera = false
-				_is_grabbing_selected = false
-				
-				if _is_hovering_selected:
-					var cards = []
-					var adding_card_to_hand = false
-					for piece in _selected_pieces:
-						if piece.get("over_hand") != null:
-							cards.append(piece)
-							if piece.over_hand > 0:
-								adding_card_to_hand = true
-						piece.rpc_id(1, "stop_hovering")
+						if hold_left_click_to_move:
+							# Start dragging the camera with the mouse.
+							_drag_camera_anchor = _calculate_hover_position(event.position, 0.0)
+							_is_dragging_camera = true
+						else:
+							# Start box selecting.
+							_box_select_init_pos = event.position
+							_is_box_selecting = true
+							
+							_box_selection_rect.rect_position = _box_select_init_pos
+							_box_selection_rect.rect_size = Vector2()
+							_box_selection_rect.visible = true
+				else:
+					_is_dragging_camera = false
+					_is_grabbing_selected = false
 					
-					set_is_hovering(false)
+					if _is_hovering_selected:
+						var cards = []
+						var adding_card_to_hand = false
+						for piece in _selected_pieces:
+							if piece.get("over_hand") != null:
+								cards.append(piece)
+								if piece.over_hand > 0:
+									adding_card_to_hand = true
+							piece.rpc_id(1, "stop_hovering")
+						
+						set_is_hovering(false)
+						
+						if adding_card_to_hand:
+							emit_signal("adding_cards_to_hand", cards, 0)
 					
-					if adding_card_to_hand:
-						emit_signal("adding_cards_to_hand", cards, 0)
-				
-				# Stop box selecting.
-				if _is_box_selecting:
-					_box_selection_rect.visible = false
-					_is_box_selecting = false
-					_perform_box_select = true
+					# Stop box selecting.
+					if _is_box_selecting:
+						_box_selection_rect.visible = false
+						_is_box_selecting = false
+						_perform_box_select = true
+			
+			elif _tool == TOOL_RULER:
+				if event.is_pressed() and _cursor_on_table:
+					# This activates the relevant code in _process().
+					_ruler_line_texture.visible = true
+					
+					if not _ruler_placing_point2:
+						_ruler_point1 = _cursor_position
+						_ruler_point2 = _ruler_point1
+					
+					_ruler_placing_point2 = not _ruler_placing_point2
 		
 		elif event.button_index == BUTTON_RIGHT:
 			if _is_hovering_selected:
@@ -1062,20 +1134,23 @@ func _on_MouseGrab_gui_input(event):
 				# Only bring up the context menu if the mouse didn't move
 				# between the press and the release of the RMB.
 				if event.is_pressed():
-					if _piece_mouse_is_over:
-						if not _selected_pieces.has(_piece_mouse_is_over):
-							set_selected_pieces([_piece_mouse_is_over])
-					else:
-						clear_selected_pieces()
 					_right_click_pos = event.position
-				else:
-					if event.position == _right_click_pos:
-						if _selected_pieces.empty():
-							_popup_table_context_menu()
-							_spawn_point_position = _cursor_position
-							_spawn_point_position.y += Piece.SPAWN_HEIGHT
+					
+					if _tool == TOOL_CURSOR:
+						if _piece_mouse_is_over:
+							if not _selected_pieces.has(_piece_mouse_is_over):
+								set_selected_pieces([_piece_mouse_is_over])
 						else:
-							_popup_piece_context_menu()
+							clear_selected_pieces()
+				else:
+					if _tool == TOOL_CURSOR:
+						if event.position == _right_click_pos:
+							if _selected_pieces.empty():
+								_popup_table_context_menu()
+								_spawn_point_position = _cursor_position
+								_spawn_point_position.y += Piece.SPAWN_HEIGHT
+							else:
+								_popup_piece_context_menu()
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
@@ -1168,6 +1243,9 @@ func _on_MouseGrab_gui_input(event):
 			_box_selection_rect.rect_size = size
 			
 			get_tree().set_input_as_handled()
+
+func _on_RulerToolButton_pressed():
+	_set_tool(TOOL_RULER)
 
 func _on_VBoxContainer_item_rect_changed():
 	if _piece_context_menu and _piece_context_menu_container:
