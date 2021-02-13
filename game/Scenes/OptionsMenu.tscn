@@ -230,21 +230,6 @@ margin_top = 280.0
 margin_right = 976.0
 margin_bottom = 308.0
 
-[node name="AltToRotate" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_top = 316.0
-margin_right = 486.0
-margin_bottom = 336.0
-size_flags_horizontal = 3
-text = "Press Alt to Rotate Piece"
-align = 2
-
-[node name="AltToRotateCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
-margin_left = 490.0
-margin_top = 312.0
-margin_right = 976.0
-margin_bottom = 340.0
-pressed = true
-
 [node name="General" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
 anchor_right = 1.0

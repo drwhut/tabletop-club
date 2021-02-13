@@ -56,7 +56,6 @@ export(bool) var hold_left_click_to_move: bool = false
 export(float) var lift_sensitivity: float = 1.0
 export(float) var max_speed: float = 10.0
 export(bool) var piece_rotate_invert: bool = false
-export(bool) var piece_rotate_alt: bool = true
 export(float) var rotation_sensitivity_x: float = -0.01
 export(float) var rotation_sensitivity_y: float = -0.01
 export(float) var zoom_sensitivity: float = 1.0
@@ -67,6 +66,7 @@ var _box_select_init_pos = Vector2()
 var _cursor_position = Vector3()
 var _drag_camera_anchor = Vector3()
 var _grabbing_time = 0.0
+var _hover_y_offset = 0.0
 var _hover_y_pos = 10.0
 var _initial_transform = Transform.IDENTITY
 var _initial_zoom = 0.0
@@ -126,7 +126,6 @@ func apply_options(config: ConfigFile) -> void:
 		lift_sensitivity *= -1
 	
 	piece_rotate_invert = config.get_value("controls", "piece_rotation_invert")
-	piece_rotate_alt = config.get_value("controls", "alt_to_rotate")
 	
 	_cursors.visible = not config.get_value("multiplayer", "hide_cursors")
 
@@ -148,7 +147,10 @@ func erase_selected_pieces(piece: Piece) -> void:
 # mouse positions.
 # Returns: The position that hovering pieces should hover at.
 func get_hover_position() -> Vector3:
-	return _calculate_hover_position(get_viewport().get_mouse_position(), _hover_y_pos)
+	var mouse_pos = get_viewport().get_mouse_position()
+	var hover_pos = _calculate_hover_position(mouse_pos, _hover_y_pos)
+	hover_pos.y += _hover_y_offset
+	return hover_pos
 
 # Get the list of selected pieces.
 # Returns: The list of selected pieces.
@@ -887,6 +889,8 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 		clear_selected_pieces()
 		
 		if not selected.empty():
+			_hover_y_offset = 0
+			
 			var origin_piece = selected[0]
 			if _piece_mouse_is_over:
 				if selected.has(_piece_mouse_is_over):
@@ -1077,22 +1081,7 @@ func _on_MouseGrab_gui_input(event):
 			event.button_index == BUTTON_WHEEL_DOWN):
 			
 			if _is_hovering_selected:
-				var option1 = piece_rotate_alt and (not event.alt)
-				var option2 = (not piece_rotate_alt) and event.alt
-				if option1 or option2:
-					# Changing the y-position of hovered pieces.
-					var offset = 0
-					
-					if event.button_index == BUTTON_WHEEL_UP:
-						offset = -lift_sensitivity
-					else:
-						offset = lift_sensitivity
-					
-					var new_y = _hover_y_pos + offset
-					_hover_y_pos = max(new_y, HOVER_Y_MIN)
-					
-					_on_moving()
-				else:
+				if event.alt:
 					# Changing the rotation of the hovered pieces.
 					var amount = _piece_rotation_amount
 					if event.button_index == BUTTON_WHEEL_DOWN:
@@ -1101,6 +1090,25 @@ func _on_MouseGrab_gui_input(event):
 						amount *= -1
 					for piece in _selected_pieces:
 						piece.rpc_id(1, "rotate_y", amount)
+				else:
+					# Changing the y-position/offset of hovered pieces.
+					var offset = 0
+					
+					if event.button_index == BUTTON_WHEEL_UP:
+						offset = -lift_sensitivity
+					else:
+						offset = lift_sensitivity
+					
+					if event.control:
+						var new_y_offset = _hover_y_offset + offset
+						if _hover_y_pos + new_y_offset >= HOVER_Y_MIN:
+							_hover_y_offset = new_y_offset
+					else:
+						var new_y_pos = _hover_y_pos + offset
+						_hover_y_pos = max(new_y_pos, HOVER_Y_MIN)
+						_hover_y_offset = max(_hover_y_offset, HOVER_Y_MIN - _hover_y_pos)
+					
+					_on_moving()
 			else:
 				# Zooming the camera in and away from the controller.
 				var offset = 0
