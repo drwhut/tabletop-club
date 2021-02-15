@@ -75,6 +75,7 @@ Blender and Maya.
 
 As of right now, OpenTabletop supports the following 3D file formats:
 
+* Collada (`.dae`)
 * glTF 2.0 (`.glb`, `.gltf`)
 * Wavefront (`.obj`)
 

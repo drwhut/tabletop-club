@@ -62,13 +62,16 @@ const ASSET_PACK_SUBFOLDERS = {
 	"tokens/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Tokens/Cylinder.tscn" }
 }
 
-const VALID_SCENE_EXTENSIONS = ["glb", "gltf", "obj"]
+const VALID_SCENE_EXTENSIONS = ["dae", "glb", "gltf", "obj"]
 const VALID_TABLE_EXTENSIONS = ["table"]
 
 # List taken from:
 # https://docs.godotengine.org/en/3.2/getting_started/workflow/assets/importing_images.html
 const VALID_TEXTURE_EXTENSIONS = ["bmp", "dds", "exr", "hdr", "jpeg", "jpg",
 	"png", "tga", "svg", "svgz", "webp"]
+
+# The list of extensions that require us to use the TabletopImporter.
+const EXTENSIONS_TO_IMPORT = VALID_SCENE_EXTENSIONS + VALID_TEXTURE_EXTENSIONS
 
 # NOTE: Assets are stored similarly to the directory structures, but all asset
 # types are direct children of the game, i.e. "OpenTabletop/dice/d6" in the
@@ -295,15 +298,16 @@ func _calculate_bounding_box_recursive(scene: Spatial, transform: Transform) -> 
 			bounding_box[1].z = max(bounding_box[1].z, adj_point.z)
 	
 	for child in scene.get_children():
-		var child_box = _calculate_bounding_box_recursive(child, new_transform)
-		
-		bounding_box[0].x = min(bounding_box[0].x, child_box[0].x)
-		bounding_box[0].y = min(bounding_box[0].y, child_box[0].y)
-		bounding_box[0].z = min(bounding_box[0].z, child_box[0].z)
-		
-		bounding_box[1].x = max(bounding_box[1].x, child_box[1].x)
-		bounding_box[1].y = max(bounding_box[1].y, child_box[1].y)
-		bounding_box[1].z = max(bounding_box[1].z, child_box[1].z)
+		if child is Spatial:
+			var child_box = _calculate_bounding_box_recursive(child, new_transform)
+			
+			bounding_box[0].x = min(bounding_box[0].x, child_box[0].x)
+			bounding_box[0].y = min(bounding_box[0].y, child_box[0].y)
+			bounding_box[0].z = min(bounding_box[0].z, child_box[0].z)
+			
+			bounding_box[1].x = max(bounding_box[1].x, child_box[1].x)
+			bounding_box[1].y = max(bounding_box[1].y, child_box[1].y)
+			bounding_box[1].z = max(bounding_box[1].z, child_box[1].z)
 	
 	return bounding_box
 
@@ -526,10 +530,8 @@ func _import_file(from: String, to: String) -> int:
 			else:
 				push_error("Could not read file at '%s'." % to)
 	
-	if VALID_SCENE_EXTENSIONS.has(from.get_extension()):
-		return _importer.import_scene(to)
-	elif VALID_TEXTURE_EXTENSIONS.has(from.get_extension()):
-		return _importer.import_texture(to)
+	if EXTENSIONS_TO_IMPORT.has(from.get_extension()):
+		return _importer.import(to)
 	else:
 		return OK
 

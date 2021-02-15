@@ -41,4 +41,5 @@ margin_bottom = 200.0
 popup_exclusive = true
 window_title = "Missing Asset Folder"
 dialog_autowrap = true
+
 [connection signal="popup_hide" from="MissingAssetsPopup" to="." method="_on_MissingAssetsPopup_popup_hide"]
