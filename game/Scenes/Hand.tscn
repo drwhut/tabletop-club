@@ -71,6 +71,7 @@ margin_bottom = 240.0
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
 scroll_active = false
+
 [connection signal="tree_exiting" from="." to="." method="_on_Hand_tree_exiting"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

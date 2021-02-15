@@ -38,6 +38,7 @@ margin_right = 300.0
 margin_bottom = 180.0
 rect_min_size = Vector2( 300, 180 )
 dialog_autowrap = true
+
 [connection signal="setting_spawn_point" from="Room" to="." method="_on_Room_setting_spawn_point"]
 [connection signal="spawning_piece_at" from="Room" to="." method="_on_Room_spawning_piece_at"]
 [connection signal="table_flipped" from="Room" to="." method="_on_Room_table_flipped"]

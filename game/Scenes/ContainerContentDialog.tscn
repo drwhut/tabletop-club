@@ -8,7 +8,10 @@ margin_right = 310.0
 margin_bottom = 428.0
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "This dialog shows the contents of a container. It also allows the player to take out either specific objects, or all of them at once.
+
+The dialog can be accessed via the context menu of a container (by right-clicking a container object)."
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -148,6 +151,7 @@ margin_bottom = 26.0
 size_flags_horizontal = 3
 disabled = true
 text = "Take All"
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/FarLeftButton" to="." method="_on_FarLeftButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LeftButton" to="." method="_on_LeftButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/RightButton" to="." method="_on_RightButton_pressed"]

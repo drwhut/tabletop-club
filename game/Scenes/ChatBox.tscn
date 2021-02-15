@@ -51,6 +51,7 @@ margin_left = 237.0
 margin_right = 284.0
 margin_bottom = 30.0
 text = "Send"
+
 [connection signal="pressed" from="ToggleButton" to="." method="_on_ToggleButton_pressed"]
 [connection signal="text_entered" from="VBoxContainer/HBoxContainer/MessageEdit" to="." method="_on_MessageEdit_text_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/SendButton" to="." method="_on_SendButton_pressed"]

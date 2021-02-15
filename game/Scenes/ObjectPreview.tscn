@@ -20,7 +20,8 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "This scene is used to display objects in a 2D environment (even though the object is shown in a 3D viewport)."
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -53,4 +54,5 @@ margin_bottom = 119.0
 custom_fonts/font = SubResource( 3 )
 align = 1
 autowrap = true
+
 [connection signal="gui_input" from="CenterContainer/ViewportContainer" to="." method="_on_ViewportContainer_gui_input"]

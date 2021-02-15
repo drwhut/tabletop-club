@@ -807,6 +807,7 @@ SOFTWARE."
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton" to="." method="_on_OpenAssetsButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ReimportButton" to="." method="_on_ReimportButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ViewLicenseButton" to="." method="_on_ViewLicenseButton_pressed"]

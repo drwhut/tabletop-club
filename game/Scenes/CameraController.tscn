@@ -27,7 +27,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 focus_mode = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "Instead of processing mouse events in _unhandled_input(), the camera controller catches the mouse events in this control which spans the entire viewport."
 }
 
 [node name="Cursors" type="Control" parent="."]
@@ -35,7 +36,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "This control will be the parent of all of the cursors that are displayed in multiplayer games (showing the positions and rotations of every other player's cursor on the table)."
 }
 
 [node name="ToolContainer" type="VBoxContainer" parent="."]
@@ -129,6 +131,7 @@ margin_bottom = 20.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="gui_input" from="MouseGrab" to="." method="_on_MouseGrab_gui_input"]
 [connection signal="pressed" from="ToolContainer/CursorToolButton" to="." method="_on_CursorToolButton_pressed"]
 [connection signal="pressed" from="ToolContainer/RulerToolButton" to="." method="_on_RulerToolButton_pressed"]

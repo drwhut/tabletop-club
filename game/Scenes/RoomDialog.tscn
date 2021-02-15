@@ -8,7 +8,8 @@ margin_bottom = 350.0
 window_title = "Room"
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "This dialog shows settings relating to the room itself rather than the pieces, allowing the player to edit properties like the skybox."
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -108,6 +109,7 @@ margin_right = 450.0
 margin_bottom = 26.0
 disabled = true
 text = "Apply"
+
 [connection signal="about_to_show" from="." to="." method="_on_RoomDialog_about_to_show"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/IntensitySlider" to="." method="_on_IntensitySlider_value_changed"]
 [connection signal="color_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]

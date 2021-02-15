@@ -166,6 +166,7 @@ current_path = "/"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
 visible = false
+
 [connection signal="pressed" from="TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
 [connection signal="pressed" from="TopPanel/GamesButton" to="." method="_on_GamesButton_pressed"]
 [connection signal="pressed" from="TopPanel/RoomButton" to="." method="_on_RoomButton_pressed"]

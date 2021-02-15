@@ -9,7 +9,8 @@ rect_min_size = Vector2( 400, 250 )
 window_title = "Games"
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "This dialog is used to show \"games\" within asset packs."
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

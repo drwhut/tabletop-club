@@ -18,7 +18,10 @@ margin_bottom = 123.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "This scene is used to display \"games\", which are pre-made .table files that are stored in asset packs in order to make setting up games easier.
+
+Table files can be made by clicking the save game button in the in-game menu."
 }
 
 [node name="Name" type="Label" parent="."]
@@ -59,4 +62,5 @@ margin_top = 13.0
 margin_right = 46.0
 margin_bottom = 39.0
 text = "Load"
+
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/LoadButton" to="." method="_on_LoadButton_pressed"]

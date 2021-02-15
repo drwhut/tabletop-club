@@ -88,6 +88,7 @@ margin_right = 505.0
 margin_bottom = 26.0
 disabled = true
 text = "Add"
+
 [connection signal="popup_hide" from="." to="." method="_on_ObjectsDialog_popup_hide"]
 [connection signal="tree_exited" from="." to="." method="_on_ObjectsDialog_tree_exited"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/AddButton" to="." method="_on_AddButton_pressed"]

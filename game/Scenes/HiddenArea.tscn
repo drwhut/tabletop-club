@@ -13,6 +13,9 @@ albedo_color = Color( 1, 1, 1, 0.196078 )
 [node name="HiddenArea" type="Area"]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 5, 0 )
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "A hidden area is an area created by a player that, when objects enter the area, it hides the object from all of the players except for the player who placed the hidden area."
+}
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
@@ -20,5 +23,6 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
+
 [connection signal="body_entered" from="." to="." method="_on_HiddenArea_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_HiddenArea_body_exited"]

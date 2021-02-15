@@ -4,7 +4,7 @@
 [ext_resource path="res://Fonts/Cabin-Italic.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/SkyboxPreview.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 24
 font_data = ExtResource( 1 )
 
@@ -15,14 +15,15 @@ font_data = ExtResource( 2 )
 [node name="SkyboxPreview" type="VBoxContainer"]
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "This scene is used to display a preview for a given skybox."
 }
 
 [node name="Name" type="RichTextLabel" parent="."]
 margin_right = 105.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 scroll_active = false
 
@@ -54,4 +55,5 @@ margin_top = 19.0
 margin_right = 1.0
 margin_bottom = 39.0
 autowrap = true
+
 [connection signal="gui_input" from="." to="." method="_on_SkyboxPreview_gui_input"]
