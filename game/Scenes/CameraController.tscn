@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/OutlineColorRect.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Images/RulerIconPressed.svg" type="Texture" id=7]
 [ext_resource path="res://Images/CursorIconPressed.svg" type="Texture" id=8]
 [ext_resource path="res://Images/RulerLine.png" type="Texture" id=9]
+[ext_resource path="res://Images/HiddenAreaIconPressed.svg" type="Texture" id=10]
+[ext_resource path="res://Images/HiddenAreaIconNormal.svg" type="Texture" id=11]
 
 [node name="CameraController" type="Spatial"]
 script = ExtResource( 1 )
@@ -72,6 +74,17 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 7 )
 expand = true
 
+[node name="HiddenAreaToolButton" type="TextureButton" parent="ToolContainer"]
+margin_top = 72.0
+margin_right = 32.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 32, 32 )
+toggle_mode = true
+group = ExtResource( 6 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 10 )
+expand = true
+
 [node name="PieceContextMenu" type="PopupMenu" parent="."]
 margin_right = 20.0
 margin_bottom = 20.0
@@ -119,6 +132,7 @@ __meta__ = {
 [connection signal="gui_input" from="MouseGrab" to="." method="_on_MouseGrab_gui_input"]
 [connection signal="pressed" from="ToolContainer/CursorToolButton" to="." method="_on_CursorToolButton_pressed"]
 [connection signal="pressed" from="ToolContainer/RulerToolButton" to="." method="_on_RulerToolButton_pressed"]
+[connection signal="pressed" from="ToolContainer/HiddenAreaToolButton" to="." method="_on_HiddenAreaToolButton_pressed"]
 [connection signal="item_rect_changed" from="PieceContextMenu/VBoxContainer" to="." method="_on_VBoxContainer_item_rect_changed"]
 [connection signal="take_all_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_all_from"]
 [connection signal="take_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_from"]

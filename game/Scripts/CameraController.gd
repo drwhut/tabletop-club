@@ -23,7 +23,8 @@ extends Spatial
 
 enum {
 	TOOL_CURSOR,
-	TOOL_RULER
+	TOOL_RULER,
+	TOOL_HIDDEN_AREA
 }
 
 signal adding_cards_to_hand(cards, id) # If id is 0, add to nearest hand.
@@ -32,8 +33,12 @@ signal container_release_random_requested(container, n)
 signal container_release_these_requested(container, names)
 signal dealing_cards(stack, n)
 signal hover_piece_requested(piece, offset)
+signal placing_hidden_area(point1, point2)
 signal pop_stack_requested(stack, n)
+signal removing_hidden_area(hidden_area)
 signal selecting_all_pieces()
+signal setting_hidden_area_preview_points(point1, point2)
+signal setting_hidden_area_preview_visible(is_visible)
 signal setting_spawn_point(position)
 signal spawning_piece_at(position)
 signal stack_collect_all_requested(stack, collect_stacks)
@@ -74,6 +79,8 @@ var _cursor_on_table = false
 var _cursor_position = Vector3()
 var _drag_camera_anchor = Vector3()
 var _grabbing_time = 0.0
+var _hidden_area_mouse_is_over: HiddenArea = null
+var _hidden_area_placing_point2 = false
 var _hover_y_offset = 0.0
 var _hover_y_pos = 10.0
 var _initial_transform = Transform.IDENTITY
@@ -96,8 +103,8 @@ var _piece_rotation_amount = 1.0
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
 var _ruler_placing_point2 = false
-var _ruler_point1 = Vector3()
-var _ruler_point2 = Vector3()
+var _point1 = Vector3()
+var _point2 = Vector3()
 var _selected_pieces = []
 var _spawn_point_position = Vector3()
 var _target_zoom = 0.0
@@ -109,8 +116,12 @@ var _viewport_size_original = Vector2()
 func append_selected_pieces(pieces: Array) -> void:
 	for piece in pieces:
 		if piece is Piece and (not piece in _selected_pieces):
-			_selected_pieces.append(piece)
-			piece.set_appear_selected(true)
+			# If a piece is not visible (e.g. if it is in a hidden area), do
+			# not allow for it to be selected, otherwise players could just
+			# select it and drag it out of the hidden area.
+			if piece.visible:
+				_selected_pieces.append(piece)
+				piece.set_appear_selected(true)
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -301,16 +312,16 @@ func _process(delta):
 				var current_theta = deg2rad(cursor.rect_rotation)
 				cursor.rect_rotation = rad2deg(lerp_angle(current_theta, target_theta, CURSOR_LERP_SCALE * delta))
 	
-	if _ruler_placing_point2:
-		_ruler_point2 = _cursor_position
+	if _ruler_placing_point2 or _hidden_area_placing_point2:
+		_point2 = _cursor_position
 	
 	if _ruler_line_texture.visible:
 		
-		var line_behind_camera = _camera.is_position_behind(_ruler_point1) or _camera.is_position_behind(_ruler_point2)
+		var line_behind_camera = _camera.is_position_behind(_point1) or _camera.is_position_behind(_point2)
 		_ruler_line_label.visible = not line_behind_camera
 		if not line_behind_camera:
-			var point1 = _camera.unproject_position(_ruler_point1)
-			var point2 = _camera.unproject_position(_ruler_point2)
+			var point1 = _camera.unproject_position(_point1)
+			var point2 = _camera.unproject_position(_point2)
 			var line = point2 - point1
 			_ruler_line_texture.rect_position = point1
 			_ruler_line_texture.rect_size.x = line.length()
@@ -321,13 +332,18 @@ func _process(delta):
 				_ruler_line_texture.rect_rotation = rad2deg(angle)
 			
 			_ruler_line_label.rect_position = point2
-			var measure_cm = (_ruler_point2 - _ruler_point1).length()
+			var measure_cm = (_point2 - _point1).length()
 			var measure_in = 0.3937008 * measure_cm
 			_ruler_line_label.text = "%.1f cm\n%.1f in" % [measure_cm, measure_in]
 		else:
 			# Set the ruler width to 0 instead of setting visible to false, so
 			# we can keep running this code.
 			_ruler_line_texture.rect_size.x = 0
+	
+	if _hidden_area_placing_point2:
+		var point1_v2 = Vector2(_point1.x, _point1.z)
+		var point2_v2 = Vector2(_point2.x, _point2.z)
+		emit_signal("setting_hidden_area_preview_points", point1_v2, point2_v2)
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -342,12 +358,18 @@ func _physics_process(delta):
 	var result = space_state.intersect_ray(from, to)
 	
 	_cursor_on_table = result.has("collider")
+	_hidden_area_mouse_is_over = null
 	_piece_mouse_is_over = null
 	
 	if _cursor_on_table:
 		_cursor_position = result["position"]
 		if result.collider is Piece:
 			_piece_mouse_is_over = result.collider
+		
+		var area_result = space_state.intersect_ray(from, to, [], 1, false, true)
+		if area_result.has("collider"):
+			if area_result.collider is HiddenArea:
+				_hidden_area_mouse_is_over = area_result.collider
 	
 	if send_cursor_position and _cursor_position:
 		if _cursor_position != _last_sent_cursor_position:
@@ -917,7 +939,7 @@ func _reset_camera() -> void:
 # Set the tool used by the player.
 # new_tool: The tool to be used. See the TOOL_* enum for possible values.
 func _set_tool(new_tool: int) -> void:
-	if new_tool < TOOL_CURSOR or new_tool > TOOL_RULER:
+	if new_tool < TOOL_CURSOR or new_tool > TOOL_HIDDEN_AREA:
 		push_error("Invalid argument for _set_tool!")
 		return
 	
@@ -926,6 +948,9 @@ func _set_tool(new_tool: int) -> void:
 	_ruler_line_label.visible = false
 	_ruler_line_texture.visible = false
 	_ruler_placing_point2 = false
+	
+	emit_signal("setting_hidden_area_preview_visible", false)
+	_hidden_area_placing_point2 = false
 	
 	_tool = new_tool
 
@@ -1010,6 +1035,9 @@ func _on_ContainerContentDialog_take_from(container: PieceContainer, names: Arra
 
 func _on_CursorToolButton_pressed():
 	_set_tool(TOOL_CURSOR)
+
+func _on_HiddenAreaToolButton_pressed():
+	_set_tool(TOOL_HIDDEN_AREA)
 
 func _on_Lobby_player_added(id: int) -> void:
 	if get_tree().is_network_server():
@@ -1120,10 +1148,23 @@ func _on_MouseGrab_gui_input(event):
 					_ruler_line_texture.visible = true
 					
 					if not _ruler_placing_point2:
-						_ruler_point1 = _cursor_position
-						_ruler_point2 = _ruler_point1
+						_point1 = _cursor_position
+						_point2 = _point1
 					
 					_ruler_placing_point2 = not _ruler_placing_point2
+			
+			elif _tool == TOOL_HIDDEN_AREA:
+				if event.is_pressed() and _cursor_on_table:
+					if _hidden_area_placing_point2:
+						var point1_v2 = Vector2(_point1.x, _point1.z)
+						var point2_v2 = Vector2(_point2.x, _point2.z)
+						emit_signal("placing_hidden_area", point1_v2, point2_v2)
+					else:
+						_point1 = _cursor_position
+						_point2 = _point1
+					
+					_hidden_area_placing_point2 = not _hidden_area_placing_point2
+					emit_signal("setting_hidden_area_preview_visible", _hidden_area_placing_point2)
 		
 		elif event.button_index == BUTTON_RIGHT:
 			if _is_hovering_selected:
@@ -1151,6 +1192,11 @@ func _on_MouseGrab_gui_input(event):
 								_spawn_point_position.y += Piece.SPAWN_HEIGHT
 							else:
 								_popup_piece_context_menu()
+					
+					elif _tool == TOOL_HIDDEN_AREA:
+						if event.position == _right_click_pos:
+							if _hidden_area_mouse_is_over:
+								emit_signal("removing_hidden_area", _hidden_area_mouse_is_over)
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):

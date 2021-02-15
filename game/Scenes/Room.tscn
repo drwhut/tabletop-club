@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/CameraController.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/HiddenArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Room.gd" type="Script" id=3]
 
 [sub_resource type="ProceduralSky" id=1]
@@ -158,14 +159,25 @@ __meta__ = {
 }
 
 [node name="Hands" type="Spatial" parent="."]
+
+[node name="HiddenAreas" type="Spatial" parent="."]
+
+[node name="HiddenAreaPreview" parent="." instance=ExtResource( 2 )]
+visible = false
+monitoring = false
+collision_layer = 2
 [connection signal="adding_cards_to_hand" from="CameraController" to="." method="_on_CameraController_adding_cards_to_hand"]
 [connection signal="collect_pieces_requested" from="CameraController" to="." method="_on_CameraController_collect_pieces_requested"]
 [connection signal="container_release_random_requested" from="CameraController" to="." method="_on_CameraController_container_release_random_requested"]
 [connection signal="container_release_these_requested" from="CameraController" to="." method="_on_CameraController_container_release_these_requested"]
 [connection signal="dealing_cards" from="CameraController" to="." method="_on_CameraController_dealing_cards"]
 [connection signal="hover_piece_requested" from="CameraController" to="." method="_on_CameraController_hover_piece_requested"]
+[connection signal="placing_hidden_area" from="CameraController" to="." method="_on_CameraController_placing_hidden_area"]
 [connection signal="pop_stack_requested" from="CameraController" to="." method="_on_CameraController_pop_stack_requested"]
+[connection signal="removing_hidden_area" from="CameraController" to="." method="_on_CameraController_removing_hidden_area"]
 [connection signal="selecting_all_pieces" from="CameraController" to="." method="_on_CameraController_selecting_all_pieces"]
+[connection signal="setting_hidden_area_preview_points" from="CameraController" to="." method="_on_CameraController_setting_hidden_area_preview_points"]
+[connection signal="setting_hidden_area_preview_visible" from="CameraController" to="." method="_on_CameraController_setting_hidden_area_preview_visible"]
 [connection signal="setting_spawn_point" from="CameraController" to="." method="_on_CameraController_setting_spawn_point"]
 [connection signal="spawning_piece_at" from="CameraController" to="." method="_on_CameraController_spawning_piece_at"]
 [connection signal="stack_collect_all_requested" from="CameraController" to="." method="_on_CameraController_stack_collect_all_requested"]

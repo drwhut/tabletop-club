@@ -28,6 +28,8 @@ signal table_flipped(table_reset)
 onready var _camera_controller = $CameraController
 onready var _hand_positions = $Table/HandPositions
 onready var _hands = $Hands
+onready var _hidden_areas = $HiddenAreas
+onready var _hidden_area_preview = $HiddenAreaPreview
 onready var _lamp = $Lamp
 onready var _pieces = $Pieces
 onready var _table_body = $Table/Body
@@ -429,9 +431,48 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 		
 		out["hands"] = hand_dict
 	
+	var hidden_area_dict = {}
+	for hidden_area in _hidden_areas.get_children():
+		if hidden_area is HiddenArea:
+			# Convert the transform of the hidden area to corner points so the
+			# set_state() function can re-use the function that creates the
+			# hidden area.
+			var area_origin = hidden_area.transform.origin
+			var area_scale  = hidden_area.transform.basis.get_scale()
+			var point1_v3 = area_origin - area_scale
+			var point2_v3 = area_origin + area_scale
+			var hidden_area_meta = {
+				"player_id": hidden_area.player_id,
+				"point1": Vector2(point1_v3.x, point1_v3.z),
+				"point2": Vector2(point2_v3.x, point2_v3.z)
+			}
+			
+			hidden_area_dict[hidden_area.name] = hidden_area_meta
+	
+	out["hidden_areas"] = hidden_area_dict
+	
 	_append_piece_states(out, _pieces, collisions)
 	
 	return out
+
+# Called by the server to place a hidden area for a given player.
+# area_name: The name of the new hidden area.
+# player_id: The player the hidden area is registered to.
+# point1: One corner of the hidden area.
+# point2: The opposite corner of the hidden area.
+remotesync func place_hidden_area(area_name: String, player_id: int,
+	point1: Vector2, point2: Vector2) -> void:
+	
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var hidden_area: HiddenArea = preload("res://Scenes/HiddenArea.tscn").instance()
+	hidden_area.name = area_name
+	hidden_area.player_id = player_id
+	_set_hidden_area_transform(hidden_area, point1, point2)
+	
+	_hidden_areas.add_child(hidden_area)
+	hidden_area.update_player_color()
 
 # Remove a player's hand from the room.
 # player: The ID of the player whose hand to remove.
@@ -443,6 +484,22 @@ remotesync func remove_hand(player: int) -> void:
 	if hand:
 		_hands.remove_child(hand)
 		hand.queue_free()
+
+# Called by the server to remove a hidden area from the table.
+# area_name: The name of the hidden area to remove.
+remotesync func remove_hidden_area(area_name: String) -> void:
+	var hidden_area = _hidden_areas.get_node(area_name)
+	
+	if not hidden_area:
+		push_error("Hidden area " + area_name + " does not exist!")
+		return
+	
+	if not hidden_area is HiddenArea:
+		push_error("Node " + area_name + " is not a hidden area!")
+		return
+	
+	_hidden_areas.remove_child(hidden_area)
+	hidden_area.queue_free()
 
 # Called by the server to remove a piece from a container, a.k.a. having the
 # piece be "released" by the container.
@@ -812,6 +869,13 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 master func request_load_table_state(state: Dictionary) -> void:
 	rpc("set_state", state)
 
+# Request the server to place a hidden area registered to you.
+# point1: One corner of the new hidden area.
+# point2: The opposite corner of the new hidden area.
+master func request_place_hidden_area(point1: Vector2, point2: Vector2) -> void:
+	var player_id = get_tree().get_rpc_sender_id()
+	rpc("place_hidden_area", srv_get_next_piece_name(), player_id, point1, point2)
+
 # Request the server to pop the piece at the top of a stack.
 # Returns: The name of the new piece.
 # stack_name: The name of the stack to pop.
@@ -908,6 +972,21 @@ remotesync func request_pop_stack_accepted(piece_name: String) -> void:
 	# The server has allowed us to hover the piece that has just poped off the
 	# stack!
 	request_hover_piece_accepted(piece_name)
+
+# Request the server to remove a hidden area.
+# area_name: The name of the hidden area to remove.
+master func request_remove_hidden_area(area_name: String) -> void:
+	var hidden_area = _hidden_areas.get_node(area_name)
+	
+	if not hidden_area:
+		push_error("Hidden area " + area_name + " does not exist!")
+		return
+	
+	if not hidden_area is HiddenArea:
+		push_error("Node " + area_name + " is not a hidden area!")
+		return
+	
+	rpc("remove_hidden_area", area_name)
 
 # Request the server to set the lamp color.
 # color: The color to set the lamp to.
@@ -1034,6 +1113,50 @@ remotesync func set_state(state: Dictionary) -> void:
 				return
 			
 			add_hand(hand_id, hand_meta["transform"])
+	
+	if state.has("hidden_areas"):
+		for hidden_area in _hidden_areas.get_children():
+			_hidden_areas.remove_child(hidden_area)
+			hidden_area.queue_free()
+		
+		for hidden_area_name in state["hidden_areas"]:
+			# Make sure the server doesn't duplicate names! We need to do this
+			# because hidden areas use the same naming system as pieces do.
+			if get_tree().is_network_server():
+				var name_int = int(hidden_area_name)
+				if name_int >= _srv_next_piece_name:
+					_srv_next_piece_name = name_int + 1
+			
+			var hidden_area_meta = state["hidden_areas"][hidden_area_name]
+			
+			if not hidden_area_meta.has("player_id"):
+				push_error("Hidden area " + hidden_area_name + " in new state has no player ID!")
+				return
+			
+			if not hidden_area_meta["player_id"] is int:
+				push_error("Hidden area " + hidden_area_name + " player ID is not an integer!")
+				return
+			
+			if not hidden_area_meta.has("point1"):
+				push_error("Hidden area " + hidden_area_name + " in new state has no point 1!")
+				return
+			
+			if not hidden_area_meta["point1"] is Vector2:
+				push_error("Hidden area" + hidden_area_name + " point 1 is not a Vector2!")
+				return
+			
+			if not hidden_area_meta.has("point2"):
+				push_error("Hidden area " + hidden_area_name + " in new state has no point 2!")
+				return
+			
+			if not hidden_area_meta["point2"] is Vector2:
+				push_error("Hidden area" + hidden_area_name + " point 2 is not a Vector2!")
+				return
+			
+			var player_id = hidden_area_meta["player_id"]
+			var point1 = hidden_area_meta["point1"]
+			var point2 = hidden_area_meta["point2"]
+			place_hidden_area(hidden_area_name, player_id, point1, point2)
 	
 	for child in _pieces.get_children():
 		_pieces.remove_child(child)
@@ -1339,6 +1462,23 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 			_pieces.remove_child(piece)
 			parent.add_child(piece)
 
+# Set the transform of a hidden area based on two corner points.
+# hidden_area: The hidden area to set the transform of.
+# point1: One corner.
+# point2: The opposite corner.
+func _set_hidden_area_transform(hidden_area: HiddenArea, point1: Vector2, point2: Vector2) -> void:
+	var min_point = Vector2(min(point1.x, point2.x), min(point1.y, point2.y))
+	var max_point = Vector2(max(point1.x, point2.x), max(point1.y, point2.y))
+	var avg_point = 0.5 * (min_point + max_point)
+	var point_dif = max_point - min_point
+	
+	hidden_area.transform.origin.x = avg_point.x
+	hidden_area.transform.origin.z = avg_point.y
+	
+	# We're assuming here that the hidden area is never rotated.
+	hidden_area.transform.basis.x.x = point_dif.x / 2
+	hidden_area.transform.basis.z.z = point_dif.y / 2
+
 func _on_container_absorbing_piece(container: PieceContainer, piece: Piece) -> void:
 	if get_tree().is_network_server():
 		rpc("add_piece_to_container", container.name, piece.name)
@@ -1398,12 +1538,26 @@ func _on_CameraController_hover_piece_requested(piece: Piece, offset: Vector3):
 	rpc_id(1, "request_hover_piece", piece.name,
 		_camera_controller.get_hover_position(), offset)
 
+func _on_CameraController_placing_hidden_area(point1: Vector2, point2: Vector2):
+	rpc_id(1, "request_place_hidden_area", point1, point2)
+
 func _on_CameraController_pop_stack_requested(stack: Stack, n: int):
 	rpc_id(1, "request_pop_stack", stack.name, n, true, 1.0)
+
+func _on_CameraController_removing_hidden_area(hidden_area: HiddenArea):
+	if _hidden_areas.is_a_parent_of(hidden_area):
+		rpc_id(1, "request_remove_hidden_area", hidden_area.name)
 
 func _on_CameraController_selecting_all_pieces():
 	var pieces = _pieces.get_children()
 	_camera_controller.append_selected_pieces(pieces)
+
+func _on_CameraController_setting_hidden_area_preview_points(point1: Vector2, point2: Vector2):
+	_set_hidden_area_transform(_hidden_area_preview, point1, point2)
+
+func _on_CameraController_setting_hidden_area_preview_visible(is_visible: bool):
+	_hidden_area_preview.visible = is_visible
+	_hidden_area_preview.collision_layer = 1 if is_visible else 2
 
 func _on_CameraController_setting_spawn_point(position: Vector3):
 	emit_signal("setting_spawn_point", position)
