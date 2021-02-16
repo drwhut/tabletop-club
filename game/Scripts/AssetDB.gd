@@ -25,6 +25,7 @@ signal completed(dir_found)
 signal importing_file(file)
 
 enum {
+	ASSET_AUDIO,
 	ASSET_SCENE,
 	ASSET_SKYBOX,
 	ASSET_TABLE,
@@ -52,16 +53,21 @@ const ASSET_PACK_SUBFOLDERS = {
 	
 	"games": { "type": ASSET_TABLE, "scene": "" },
 	
+	"music": { "type": ASSET_AUDIO, "scene": "" },
+	
 	"pieces/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Pieces/Cube.tscn" },
 	"pieces/custom": { "type": ASSET_SCENE, "scene": "" },
 	"pieces/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Pieces/Cylinder.tscn" },
 	
 	"skyboxes": { "type": ASSET_SKYBOX, "scene": "" },
 	
+	"sounds": { "type": ASSET_AUDIO, "scene": "" },
+	
 	"tokens/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Tokens/Cube.tscn" },
 	"tokens/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Tokens/Cylinder.tscn" }
 }
 
+const VALID_AUDIO_EXTENSIONS = ["mp3", "ogg", "wav"]
 const VALID_SCENE_EXTENSIONS = ["dae", "glb", "gltf", "obj"]
 const VALID_TABLE_EXTENSIONS = ["table"]
 
@@ -71,7 +77,7 @@ const VALID_TEXTURE_EXTENSIONS = ["bmp", "dds", "exr", "hdr", "jpeg", "jpg",
 	"png", "tga", "svg", "svgz", "webp"]
 
 # The list of extensions that require us to use the TabletopImporter.
-const EXTENSIONS_TO_IMPORT = VALID_SCENE_EXTENSIONS + VALID_TEXTURE_EXTENSIONS
+const EXTENSIONS_TO_IMPORT = VALID_AUDIO_EXTENSIONS + VALID_SCENE_EXTENSIONS + VALID_TEXTURE_EXTENSIONS
 
 # NOTE: Assets are stored similarly to the directory structures, but all asset
 # types are direct children of the game, i.e. "OpenTabletop/dice/d6" in the
@@ -401,7 +407,17 @@ func _import_asset(from: String, pack: String, type_dir: String,
 		opening_angle = sin(deg2rad(opening_angle))
 	
 	var entry = {}
-	if type_asset == ASSET_SCENE:
+	if type_asset == ASSET_AUDIO:
+		if VALID_AUDIO_EXTENSIONS.has(to.get_extension()):
+			entry = {
+				"audio_path": to,
+				"description": desc,
+				"name": _get_file_without_ext(to)
+			}
+			
+			if type_dir.begins_with("music"):
+				entry["main_menu"] = _get_file_config_value(config, from.get_file(), "main_menu", false)
+	elif type_asset == ASSET_SCENE:
 		if VALID_SCENE_EXTENSIONS.has(to.get_extension()):
 			# If the file has been imported before, check that the custom scene
 			# has a cached bounding box (.box) file, so we don't have to go and

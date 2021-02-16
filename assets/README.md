@@ -24,10 +24,12 @@ is. The game comes with the default OpenTabletop asset pack included.
 | `dice/d6/`             | Image      | Object      | Dice        | No         |
 | `dice/d8/`             | Image      | Object      | Dice        | No         |
 | `games/`               | Table      | Game        | N/A         | N/A        |
+| `music/`               | Audio      | Music       | N/A         | N/A        |
 | `pieces/cube/`         | Image      | Object      | Piece       | No         |
 | `pieces/custom/`       | 3D         | Object      | Piece       | No         |
 | `pieces/cylinder/`     | Image      | Object      | Piece       | No         |
 | `skyboxes/`            | Image      | Skybox      | N/A         | N/A        |
+| `sounds/`              | Audio      | Sound       | N/A         | N/A        |
 | `tokens/cube/`         | Image      | Object      | Token       | Yes        |
 | `tokens/cylinder/`     | Image      | Object      | Token       | Yes        |
 
@@ -79,6 +81,14 @@ As of right now, OpenTabletop supports the following 3D file formats:
 * glTF 2.0 (`.glb`, `.gltf`)
 * Wavefront (`.obj`)
 
+### Audio
+
+As of right now, OpenTabletop supports the `.mp3`, `.ogg`, and `.wav` audio
+file formats. You can find more information about which format works best for
+you by looking at the
+[importing audio documentation](https://docs.godotengine.org/en/stable/getting_started/workflow/assets/importing_audio_samples.html)
+for Godot.
+
 ### Table
 
 Table files (`.table`) are saved OpenTabletop table states, which can be loaded
@@ -93,6 +103,11 @@ clicking the "Load game" button in the same menu.
 An object in OpenTabletop refers to anything that can be moved and is also
 physics-driven. There are many different types of objects, each with their own
 special functionality (see below).
+
+### Sound / Music
+
+Sounds and music can be played in-game with either speakers or timers.
+Music can also be set to play in the main menu (see `config.cfg` below).
 
 ### Game
 
@@ -158,6 +173,7 @@ of objects in the subfolder.
 | :-------------- | :-------- | :--------- | :----------------- | :---------- |
 | `desc`          | Text      | All        | `""`               | Describes the asset in more detail.
 | `ignore`        | Boolean   | All        | `false`            | If `true`, it tells the game to ignore this asset when importing the asset pack.
+| `main_menu`     | Boolean   | Music      | `false`            | If `true`, the music will have a chance of playing in the main menu.
 | `mass`          | Number    | Objects    | `1.0`              | The mass of the object in grams (g) when it is spawned in-game. It is recommended to set this value for more realistic physics collisions.
 | `opening_angle` | Number    | Containers | `30.0`             | The maximum angle in degrees at which objects can enter the top of the container. A lower value means the object needs to be directly on top of the container, and a higher value means the object can be further away and still be able to enter the container.
 | `scale`         | Vector3   | Objects    | `Vector3(1, 1, 1)` | Scales the object in the X, Y and Z axes in centimeters (cm). Note that for objects that use custom 3D models, this value most likely won't reflect the final size of the object.
