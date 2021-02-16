@@ -36,6 +36,16 @@ func next_track() -> void:
 	var track_name = track_entry["name"]
 	var track_stream = load(track_entry["audio_path"])
 	
+	# Make sure the track doesn't loop, no matter what format it is.
+	# NOTE: Why is looping a property of the stream and not the player??
+	# This literally makes NO sense. - an annoyed drwhut.
+	if track_stream is AudioStreamMP3:
+		track_stream.loop = false
+	elif track_stream is AudioStreamOGGVorbis:
+		track_stream.loop = false
+	elif track_stream is AudioStreamSample:
+		track_stream.loop_mode = AudioStreamSample.LOOP_DISABLED
+	
 	_audio_player.stream = track_stream
 	_audio_player.play()
 	
