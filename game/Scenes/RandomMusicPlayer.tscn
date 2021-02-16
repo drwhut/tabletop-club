@@ -11,6 +11,7 @@ By default, music is not configured to play in the main menu. To enable this, th
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Music"
 
 [node name="TrackLabel" type="Label" parent="."]
 anchor_left = 1.0

@@ -66,6 +66,20 @@ func _apply_changes() -> void:
 func _apply_config(config: ConfigFile) -> void:
 	emit_signal("applying_options", config)
 	
+	#########
+	# AUDIO #
+	#########
+	
+	for volume_key in config.get_section_keys("audio"):
+		var bus_name = volume_key.split("_")[0].capitalize()
+		var bus_index = AudioServer.get_bus_index(bus_name)
+		var bus_volume = config.get_value("audio", volume_key)
+		
+		AudioServer.set_bus_mute(bus_index, bus_volume == 0)
+		if bus_volume > 0:
+			var bus_db = _volume_to_db(bus_volume)
+			AudioServer.set_bus_volume_db(bus_index, bus_db)
+	
 	################
 	# KEY BINDINGS #
 	################
@@ -267,6 +281,12 @@ func _set_current_with_config(config: ConfigFile) -> void:
 						value.value = key_value
 					else:
 						push_error(value.name + " is an unknown type!")
+
+# Convert a volume value to a decibel value.
+# Returns: The associated decibel value.
+# volume: The volume to convert.
+func _volume_to_db(volume: float) -> float:
+	return 8.656170245 * log(volume)
 
 func _on_rebinding_action(action: String) -> void:
 	_action_to_bind = action
