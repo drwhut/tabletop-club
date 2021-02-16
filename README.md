@@ -20,7 +20,7 @@ available in GDScript, and secondly, isn't available outside of the editor.
 1. Download the modified version of Godot:
 
 ```bash
-git clone https://github.com/drwhut/godot.git -b tabletop-3.2.4-rc2
+git clone --depth 1 https://github.com/drwhut/godot.git -b tabletop-3.2.4-rc2
 cd godot
 git submodule update --init
 ```
@@ -33,7 +33,7 @@ for more information).
 
 ```bash
 cd ..
-git clone https://github.com/drwhut/open-tabletop.git
+git clone --depth 1 https://github.com/drwhut/open-tabletop.git
 cd open-tabletop
 ```
 
