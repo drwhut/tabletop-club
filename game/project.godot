@@ -65,9 +65,9 @@ _global_script_classes=[ {
 "path": "res://Scripts/PieceContainer.gd"
 }, {
 "base": "Piece",
-"class": "Speaker",
+"class": "SpeakerPiece",
 "language": "GDScript",
-"path": "res://Scripts/Speaker.gd"
+"path": "res://Scripts/SpeakerPiece.gd"
 }, {
 "base": "HBoxContainer",
 "class": "SpinBoxButton",
@@ -88,6 +88,11 @@ _global_script_classes=[ {
 "class": "StackablePiece",
 "language": "GDScript",
 "path": "res://Scripts/StackablePiece.gd"
+}, {
+"base": "SpeakerPiece",
+"class": "TimerPiece",
+"language": "GDScript",
+"path": "res://Scripts/TimerPiece.gd"
 } ]
 _global_script_class_icons={
 "ActualTextFile": "",
@@ -101,11 +106,12 @@ _global_script_class_icons={
 "Piece": "",
 "PieceBuilder": "",
 "PieceContainer": "",
-"Speaker": "",
+"SpeakerPiece": "",
 "SpinBoxButton": "",
 "Stack": "",
 "StackPieceInstance": "",
-"StackablePiece": ""
+"StackablePiece": "",
+"TimerPiece": ""
 }
 
 [application]

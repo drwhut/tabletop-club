@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/SpeakerPiece.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/TimerPiece.gd" type="Script" id=1]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.5
@@ -14,7 +14,7 @@ height = 1.0
 [node name="Cylinder" type="RigidBody"]
 script = ExtResource( 1 )
 __meta__ = {
-"_editor_description_": "A cylinder-shaped speaker, which can be used to play audio.
+"_editor_description_": "A cylinder-shaped timer, which can be used as a countdown, a stopwatch, or a system time displayer.
 
 The shape is based on the unit cylinder, i.e. the diameter and the height of the cylinder is 1."
 }

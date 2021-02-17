@@ -44,8 +44,11 @@ static func build_piece(piece_entry: Dictionary) -> Piece:
 			var pieces_node = Spatial.new()
 			pieces_node.name = "Pieces"
 			build.add_child(pieces_node)
-		elif scene_dir.ends_with("speakers/custom"):
-			build = Speaker.new()
+		elif scene_dir.ends_with("speakers/custom") or scene_dir.ends_with("timers/custom"):
+			if scene_dir.ends_with("speakers/custom"):
+				build = SpeakerPiece.new()
+			else:
+				build = TimerPiece.new()
 			
 			var audio_player_node = AudioStreamPlayer3D.new()
 			audio_player_node.name = "AudioStreamPlayer3D"

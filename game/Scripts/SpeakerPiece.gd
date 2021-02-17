@@ -21,7 +21,7 @@
 
 extends Piece
 
-class_name Speaker
+class_name SpeakerPiece
 
 signal started_playing()
 signal stopped_playing()

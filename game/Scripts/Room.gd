@@ -1321,7 +1321,7 @@ func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> 
 			piece_meta["pieces"] = child_pieces
 			state["stacks"][piece.name] = piece_meta
 		
-		elif piece is Speaker:
+		elif piece is SpeakerPiece:
 			piece_meta["is_music_track"] = piece.is_music_track()
 			piece_meta["is_playing"] = piece.is_playing()
 			piece_meta["playback_position"] = piece.get_playback_position()
@@ -1508,7 +1508,7 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 				push_error("Speaker " + piece_name + " unit size value is not a float!")
 				return
 			
-			if piece is Speaker:
+			if piece is SpeakerPiece:
 				piece.set_track(piece_meta["track_entry"], piece_meta["is_music_track"])
 				piece.set_unit_size(piece_meta["unit_size"])
 				

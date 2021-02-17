@@ -33,6 +33,9 @@ is. The game comes with the default OpenTabletop asset pack included.
 | `speakers/cube/`       | Image      | Object      | Speaker     | No         |
 | `speakers/custom/`     | 3D         | Object      | Speaker     | No         |
 | `speakers/cylinder/`   | Image      | Object      | Speaker     | No         |
+| `timers/cube/`         | Image      | Object      | Timer       | No         |
+| `timers/custom/`       | 3D         | Object      | Timer       | No         |
+| `timers/cylinder/`     | Image      | Object      | Timer       | No         |
 | `tokens/cube/`         | Image      | Object      | Token       | Yes        |
 | `tokens/cylinder/`     | Image      | Object      | Token       | Yes        |
 
@@ -162,6 +165,12 @@ Pieces are generic objects that have no special functionality.
 Speakers are objects that can play audio tracks. Note that the sound emits from
 the object itself, so the audio will vary depending on the position and movement
 of the object.
+
+### Timer
+
+Timers are objects that can be used as a countdown, a stopwatch, or to display
+the system time. They can also play an audio track when the countdown reaches
+0.
 
 ### Token
 

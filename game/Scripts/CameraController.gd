@@ -108,7 +108,7 @@ var _point1 = Vector3()
 var _point2 = Vector3()
 var _selected_pieces = []
 var _spawn_point_position = Vector3()
-var _speaker_connected: Speaker = null
+var _speaker_connected: SpeakerPiece = null
 var _speaker_track_label: Label = null
 var _speaker_play_stop_button: Button = null
 var _speaker_volume_awaiting_update = false
@@ -911,7 +911,7 @@ func _popup_piece_context_menu() -> void:
 			take_button.connect("pressed", self, "_on_context_take_out_pressed")
 			_piece_context_menu_container.add_child(take_button)
 	
-	elif _inheritance_has(inheritance, "Speaker"):
+	elif _inheritance_has(inheritance, "SpeakerPiece"):
 		if _selected_pieces.size() == 1:
 			_speaker_connected = _selected_pieces[0]
 			_speaker_connected.connect("started_playing", self, "_on_speaker_started_playing")

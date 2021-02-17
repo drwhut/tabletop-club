@@ -67,6 +67,10 @@ const ASSET_PACK_SUBFOLDERS = {
 	"speakers/custom": { "type": ASSET_SCENE, "scene": "" },
 	"speakers/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Speakers/Cylinder.tscn" },
 	
+	"timers/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Timers/Cube.tscn" },
+	"timers/custom": { "type": ASSET_SCENE, "scene": "" },
+	"timers/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Timers/Cylinder.tscn" },
+	
 	"tokens/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Tokens/Cube.tscn" },
 	"tokens/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Tokens/Cylinder.tscn" }
 }

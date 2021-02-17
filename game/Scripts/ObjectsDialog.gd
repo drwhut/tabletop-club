@@ -176,6 +176,12 @@ func _update_object_content(pack_name: String) -> void:
 		"speakers/cylinder"
 	], "Speakers")
 	
+	_add_content_type(_content, pack_name, [
+		"timers/cube",
+		"timers/custom",
+		"timers/cylinder"
+	], "Timers")
+	
 	_add_content_type(_content, pack_name, ["stacks"], "Stacks")
 	
 	_add_content_type(_content, pack_name, [
