@@ -1287,6 +1287,7 @@ func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> 
 	state["pieces"] = {}
 	state["speakers"] = {}
 	state["stacks"] = {}
+	state["timers"] = {}
 	
 	for piece in parent.get_children():
 		var piece_meta = {
@@ -1321,14 +1322,21 @@ func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> 
 			piece_meta["pieces"] = child_pieces
 			state["stacks"][piece.name] = piece_meta
 		
-		elif piece is SpeakerPiece:
+		elif piece is SpeakerPiece or piece is TimerPiece:
 			piece_meta["is_music_track"] = piece.is_music_track()
-			piece_meta["is_playing"] = piece.is_playing()
+			piece_meta["is_playing"] = piece.is_playing_track()
 			piece_meta["playback_position"] = piece.get_playback_position()
 			piece_meta["track_entry"] = piece.get_track()
 			piece_meta["unit_size"] = piece.get_unit_size()
 			
-			state["speakers"][piece.name] = piece_meta
+			if piece is TimerPiece:
+				piece_meta["is_timer_paused"] = piece.is_timer_paused()
+				piece_meta["mode"] = piece.get_mode()
+				piece_meta["time"] = piece.get_time()
+				
+				state["timers"][piece.name] = piece_meta
+			else:
+				state["speakers"][piece.name] = piece_meta
 		
 		else:
 			if collisions:
@@ -1345,6 +1353,7 @@ func _extract_piece_states(state: Dictionary, parent: Node) -> void:
 	_extract_piece_states_type(state, parent, "pieces")
 	_extract_piece_states_type(state, parent, "speakers")
 	_extract_piece_states_type(state, parent, "stacks")
+	_extract_piece_states_type(state, parent, "timers")
 
 # A helper function when extracting piece states from a room state.
 # state: The state to extract the pieces from.
@@ -1467,7 +1476,7 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 				
 				add_piece_to_stack(stack_piece_name, piece_name, Stack.STACK_TOP, flip)
 		
-		elif type_key == "speakers":
+		elif type_key == "speakers" or type_key == "timers":
 			if not piece_meta.has("is_music_track"):
 				push_error("Speaker " + piece_name + " does not have an is music track value!")
 				return
@@ -1513,7 +1522,39 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 				piece.set_unit_size(piece_meta["unit_size"])
 				
 				if piece_meta["is_playing"]:
-					piece.play(piece_meta["playback_position"])
+					piece.play_track(piece_meta["playback_position"])
+			
+			if type_key == "timers":
+				if not piece_meta.has("is_timer_paused"):
+					push_error("Timer " + piece_name + " does not have an is timer paused value!")
+					return
+				
+				if not piece_meta["is_timer_paused"] is bool:
+					push_error("Timer " + piece_name + " is timer paused value is not a boolean!")
+					return
+				
+				if not piece_meta.has("mode"):
+					push_error("Timer " + piece_name + " does not have a mode value!")
+					return
+				
+				if not piece_meta["mode"] is int:
+					push_error("Timer " + piece_name + " mode value is not an integer!")
+					return
+				
+				if not piece_meta.has("time"):
+					push_error("Timer " + piece_name + " does not have a time value!")
+					return
+				
+				if not piece_meta["time"] is float:
+					push_error("Timer " + piece_name + " time value is not a float!")
+					return
+				
+				if piece is TimerPiece:
+					piece.set_mode(piece_meta["mode"])
+					if piece_meta["is_timer_paused"]:
+						piece.pause_timer_at(piece_meta["time"])
+					else:
+						piece.set_time(piece_meta["time"])
 		
 		# Finally, we may need to move the piece in the scene tree so it has a
 		# different parent.

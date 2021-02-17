@@ -54,7 +54,7 @@ func is_music_track() -> bool:
 
 # Check if the speaker is currently playing a track.
 # Returns: If the speaker is playing a track.
-func is_playing() -> bool:
+func is_playing_track() -> bool:
 	return _audio_player.playing
 
 # Check if there is a track loaded in the player.
@@ -64,7 +64,7 @@ func is_track_loaded() -> bool:
 
 # Play the currently loaded track from a given position.
 # from: The number of seconds from the start to start playing from.
-remotesync func play(from: float = 0.0) -> void:
+remotesync func play_track(from: float = 0.0) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
@@ -73,8 +73,8 @@ remotesync func play(from: float = 0.0) -> void:
 
 # Request the server to start playing the loaded track.
 # from: The number of seconds from the start to start playing from.
-master func request_play(from: float = 0.0) -> void:
-	rpc("play", from)
+master func request_play_track(from: float = 0.0) -> void:
+	rpc("play_track", from)
 
 # Request the server to set the player's track.
 # track_entry: The next track's entry.
@@ -88,8 +88,8 @@ master func request_set_unit_size(unit_size: float) -> void:
 	rpc("set_unit_size", unit_size)
 
 # Request the server to stop playing the loaded track.
-master func request_stop() -> void:
-	rpc("stop")
+master func request_stop_track() -> void:
+	rpc("stop_track")
 
 # Set the track the player will play using it's entry in the AssetDB.
 # track_entry: The new track's entry.
@@ -129,7 +129,7 @@ remotesync func set_unit_size(unit_size: float) -> void:
 	emit_signal("unit_size_changed", unit_size)
 
 # Stop playing the currently loaded track.
-remotesync func stop() -> void:
+remotesync func stop_track() -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	

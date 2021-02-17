@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/StackablePiece.gd"
 }, {
+"base": "HBoxContainer",
+"class": "TimeEdit",
+"language": "GDScript",
+"path": "res://Scripts/TimeEdit.gd"
+}, {
 "base": "SpeakerPiece",
 "class": "TimerPiece",
 "language": "GDScript",
@@ -111,6 +116,7 @@ _global_script_class_icons={
 "Stack": "",
 "StackPieceInstance": "",
 "StackablePiece": "",
+"TimeEdit": "",
 "TimerPiece": ""
 }
 

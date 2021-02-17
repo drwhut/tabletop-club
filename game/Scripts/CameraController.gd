@@ -61,6 +61,7 @@ const MOVEMENT_DECEL_SCALAR = 0.25
 const RAY_LENGTH = 1000
 const ROTATION_Y_MAX = -0.2
 const ROTATION_Y_MIN = -1.5
+const TIMER_UPDATE_INTERVAL = 0.5
 const ZOOM_ACCEL_SCALAR = 3.0
 const ZOOM_DISTANCE_MIN = 2.0
 const ZOOM_DISTANCE_MAX = 200.0
@@ -114,6 +115,13 @@ var _speaker_play_stop_button: Button = null
 var _speaker_volume_awaiting_update = false
 var _speaker_volume_slider: Slider = null
 var _target_zoom = 0.0
+var _timer_connected: TimerPiece = null
+var _timer_countdown_time: TimeEdit = null
+var _timer_last_time_update = 0
+var _timer_pause_button: Button = null
+var _timer_start_stop_countdown_button: Button = null
+var _timer_start_stop_stopwatch_button: Button = null
+var _timer_time_label: Label = null
 var _tool = TOOL_CURSOR
 var _viewport_size_original = Vector2()
 
@@ -353,6 +361,13 @@ func _process(delta):
 		var point1_v2 = Vector2(_point1.x, _point1.z)
 		var point2_v2 = Vector2(_point2.x, _point2.z)
 		emit_signal("setting_hidden_area_preview_points", point1_v2, point2_v2)
+	
+	if _timer_connected:
+		if _timer_time_label:
+			_timer_last_time_update += delta
+			if _timer_last_time_update > TIMER_UPDATE_INTERVAL:
+				_timer_time_label.text = _timer_connected.get_time_string()
+				_timer_last_time_update -= TIMER_UPDATE_INTERVAL
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -726,10 +741,10 @@ func _on_context_spawn_point_pressed() -> void:
 
 func _on_context_speaker_play_stop_pressed() -> void:
 	if _speaker_connected:
-		if _speaker_connected.is_playing():
-			_speaker_connected.rpc_id(1, "request_stop")
+		if _speaker_connected.is_playing_track():
+			_speaker_connected.rpc_id(1, "request_stop_track")
 		else:
-			_speaker_connected.rpc_id(1, "request_play")
+			_speaker_connected.rpc_id(1, "request_play_track")
 
 func _on_context_speaker_select_track_pressed() -> void:
 	_track_dialog.popup_centered()
@@ -755,6 +770,28 @@ func _on_context_take_out_pressed(n: int) -> void:
 			clear_selected_pieces()
 			emit_signal("container_release_random_requested", piece, n)
 
+func _on_context_timer_pause_pressed() -> void:
+	if _timer_connected:
+		if _timer_connected.is_timer_paused():
+			_timer_connected.rpc_id(1, "request_resume_timer")
+		else:
+			_timer_connected.rpc_id(1, "request_pause_timer")
+
+func _on_context_timer_start_stop_countdown_pressed() -> void:
+	if _timer_connected:
+		if _timer_connected.get_mode() == TimerPiece.MODE_COUNTDOWN:
+			_timer_connected.rpc_id(1, "request_stop_timer")
+		else:
+			var time = _timer_countdown_time.get_seconds()
+			_timer_connected.rpc_id(1, "request_start_countdown", time)
+
+func _on_context_timer_start_stop_stopwatch_pressed() -> void:
+	if _timer_connected:
+		if _timer_connected.get_mode() == TimerPiece.MODE_STOPWATCH:
+			_timer_connected.rpc_id(1, "request_stop_timer")
+		else:
+			_timer_connected.rpc_id(1, "request_start_stopwatch")
+
 func _on_context_unlock_pressed() -> void:
 	_unlock_selected_pieces()
 
@@ -772,6 +809,15 @@ func _on_speaker_unit_size_changed(unit_size: float) -> void:
 		_set_speaker_controls()
 	
 	_speaker_volume_awaiting_update = false
+
+func _on_timer_mode_changed(new_mode: int) -> void:
+	_set_timer_controls()
+
+func _on_timer_paused() -> void:
+	_set_timer_controls()
+
+func _on_timer_resumed() -> void:
+	_set_timer_controls()
 
 # Popup the piece context menu.
 func _popup_piece_context_menu() -> void:
@@ -883,6 +929,41 @@ func _popup_piece_context_menu() -> void:
 		sort_button.text = "Sort"
 		sort_button.connect("pressed", self, "_on_context_sort_pressed")
 		_piece_context_menu_container.add_child(sort_button)
+	
+	elif _inheritance_has(inheritance, "TimerPiece"):
+		if _selected_pieces.size() == 1:
+			_timer_connected = _selected_pieces[0]
+			_timer_connected.connect("mode_changed", self, "_on_timer_mode_changed")
+			_timer_connected.connect("timer_paused", self, "_on_timer_paused")
+			_timer_connected.connect("timer_resumed", self, "_on_timer_resumed")
+			
+			_timer_time_label = Label.new()
+			_timer_time_label.align = Label.ALIGN_CENTER
+			_piece_context_menu_container.add_child(_timer_time_label)
+			
+			_timer_pause_button = Button.new()
+			_timer_pause_button.connect("pressed", self, "_on_context_timer_pause_pressed")
+			_piece_context_menu_container.add_child(_timer_pause_button)
+			
+			var countdown_container = HBoxContainer.new()
+			
+			_timer_countdown_time = TimeEdit.new()
+			countdown_container.add_child(_timer_countdown_time)
+			
+			_timer_start_stop_countdown_button = Button.new()
+			_timer_start_stop_countdown_button.connect("pressed", self, "_on_context_timer_start_stop_countdown_pressed")
+			countdown_container.add_child(_timer_start_stop_countdown_button)
+			
+			_piece_context_menu_container.add_child(countdown_container)
+			
+			_timer_start_stop_stopwatch_button = Button.new()
+			_timer_start_stop_stopwatch_button.connect("pressed", self, "_on_context_timer_start_stop_stopwatch_pressed")
+			_piece_context_menu_container.add_child(_timer_start_stop_stopwatch_button)
+			
+			_set_timer_controls()
+			
+			# Start updating the time label in _process().
+			_timer_last_time_update = 0
 	
 	###########
 	# LEVEL 1 #
@@ -1005,26 +1086,53 @@ func _reset_camera() -> void:
 	_camera.translation.z = _initial_zoom
 	_target_zoom = _initial_zoom
 
-# Set the properties of control relating to the selected speaker.
+# Set the properties of controls relating to the selected speaker.
 func _set_speaker_controls() -> void:
 	if _speaker_connected:
 		if _speaker_track_label:
 			var track_entry = _speaker_connected.get_track()
 			if track_entry.empty():
 				_speaker_track_label.text = "No track loaded"
-			elif _speaker_connected.is_playing():
+			elif _speaker_connected.is_playing_track():
 				_speaker_track_label.text = "Playing: %s" % track_entry["name"]
 			else:
 				_speaker_track_label.text = "Loaded: %s" % track_entry["name"]
 		
 		if _speaker_play_stop_button:
-			if _speaker_connected.is_playing():
-				_speaker_play_stop_button.text = "Stop"
+			if _speaker_connected.is_playing_track():
+				_speaker_play_stop_button.text = "Stop track"
 			else:
-				_speaker_play_stop_button.text = "Play"
+				_speaker_play_stop_button.text = "Play track"
 		
 		if _speaker_volume_slider:
 			_speaker_volume_slider.value = _speaker_connected.get_unit_size()
+
+# Set the properties of controls relating to the selected timer.
+func _set_timer_controls() -> void:
+	if _timer_connected:
+		if _timer_pause_button:
+			_timer_pause_button.disabled = false
+			_timer_pause_button.text = "Pause timer"
+			
+			if _timer_connected.get_mode() == TimerPiece.MODE_SYSTEM_TIME:
+				_timer_pause_button.disabled = true
+			elif _timer_connected.is_timer_paused():
+				_timer_pause_button.text = "Resume timer"
+		
+		if _timer_start_stop_countdown_button:
+			if _timer_connected.get_mode() == TimerPiece.MODE_COUNTDOWN:
+				_timer_start_stop_countdown_button.text = "Stop countdown"
+			else:
+				_timer_start_stop_countdown_button.text = "Start countdown"
+		
+		if _timer_start_stop_stopwatch_button:
+			if _timer_connected.get_mode() == TimerPiece.MODE_STOPWATCH:
+				_timer_start_stop_stopwatch_button.text = "Stop stopwatch"
+			else:
+				_timer_start_stop_stopwatch_button.text = "Start stopwatch"
+		
+		if _timer_time_label:
+			_timer_time_label.text = _timer_connected.get_time_string()
 
 # Set the tool used by the player.
 # new_tool: The tool to be used. See the TOOL_* enum for possible values.
@@ -1381,6 +1489,20 @@ func _on_MouseGrab_gui_input(event):
 			get_tree().set_input_as_handled()
 
 func _on_PieceContextMenu_popup_hide():
+	# Any variables that were potentially set if the object was a timer need
+	# to be reset.
+	if _timer_connected:
+		_timer_connected.disconnect("mode_changed", self, "_on_timer_mode_changed")
+		_timer_connected.disconnect("timer_paused", self, "_on_timer_paused")
+		_timer_connected.disconnect("timer_resumed", self, "_on_timer_resumed")
+	_timer_connected = null
+	
+	_timer_countdown_time = null
+	_timer_pause_button = null
+	_timer_start_stop_countdown_button = null
+	_timer_start_stop_stopwatch_button = null
+	_timer_time_label = null
+	
 	# Any variables that were potentially set if the object was a speaker need
 	# to be reset.
 	if _speaker_connected:
