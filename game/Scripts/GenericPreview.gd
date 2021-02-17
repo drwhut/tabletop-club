@@ -21,23 +21,23 @@
 
 extends Control
 
-signal load_game_pressed(game_entry)
+signal load_pressed(game_entry)
 
 onready var _description = $HBoxContainer/VBoxContainer/Description
 onready var _name = $Name
 onready var _pack = $HBoxContainer/VBoxContainer/Pack
 
-var _game_entry: Dictionary = {}
+var _entry: Dictionary = {}
 
-# Set the game preview details using an entry from the AssetDB.
-# pack_name: The name of the pack the game belongs to.
-# game_entry: The game this preview should represent.
-func set_game(pack_name: String, game_entry: Dictionary) -> void:
-	_game_entry = game_entry
+# Set the preview details using an entry from the AssetDB.
+# pack_name: The name of the pack the entry belongs to.
+# entry: The entry this preview should represent.
+func set_preview(pack_name: String, entry: Dictionary) -> void:
+	_entry = entry
 	
-	_name.text = game_entry["name"]
+	_name.text = entry["name"]
 	_pack.text = "from " + pack_name
-	_description.text = game_entry["description"]
+	_description.text = entry["description"]
 
 func _on_LoadButton_pressed():
-	emit_signal("load_game_pressed", _game_entry)
+	emit_signal("load_pressed", _entry)

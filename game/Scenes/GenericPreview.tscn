@@ -1,22 +1,22 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Fonts/Cabin-SemiBold.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/GamePreview.gd" type="Script" id=2]
-[ext_resource path="res://Fonts/Cabin-Italic.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Fonts/Cabin-Italic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/Cabin-SemiBold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/GenericPreview.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 12
-font_data = ExtResource( 3 )
+font_data = ExtResource( 1 )
 
-[node name="GamePreview" type="VBoxContainer"]
+[node name="GenericPreview" type="VBoxContainer"]
 margin_right = 109.0
 margin_bottom = 123.0
 size_flags_horizontal = 3
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": "This scene is used to display \"games\", which are pre-made .table files that are stored in asset packs in order to make setting up games easier.
@@ -28,6 +28,7 @@ Table files can be made by clicking the save game button in the in-game menu."
 margin_right = 109.0
 margin_bottom = 30.0
 custom_fonts/font = SubResource( 1 )
+autowrap = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 34.0
@@ -62,5 +63,11 @@ margin_top = 13.0
 margin_right = 46.0
 margin_bottom = 39.0
 text = "Load"
+
+[node name="Space" type="Control" parent="."]
+margin_top = 77.0
+margin_right = 109.0
+margin_bottom = 87.0
+rect_min_size = Vector2( 0, 10 )
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/LoadButton" to="." method="_on_LoadButton_pressed"]

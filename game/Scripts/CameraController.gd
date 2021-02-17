@@ -51,6 +51,7 @@ onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 onready var _ruler_line_label = $RulerLineLabel
 onready var _ruler_line_texture = $RulerLineTexture
+onready var _track_dialog = $TrackDialog
 
 const CURSOR_LERP_SCALE = 100.0
 const GRABBING_SLOW_TIME = 0.25
@@ -107,6 +108,11 @@ var _point1 = Vector3()
 var _point2 = Vector3()
 var _selected_pieces = []
 var _spawn_point_position = Vector3()
+var _speaker_connected: Speaker = null
+var _speaker_track_label: Label = null
+var _speaker_play_stop_button: Button = null
+var _speaker_volume_awaiting_update = false
+var _speaker_volume_slider: Slider = null
 var _target_zoom = 0.0
 var _tool = TOOL_CURSOR
 var _viewport_size_original = Vector2()
@@ -281,6 +287,9 @@ func _ready():
 	_initial_transform = transform
 	_initial_zoom = _camera.translation.z
 	_reset_camera()
+	
+	# The assets should have been imported at the start of the game.
+	_track_dialog.set_piece_db(AssetDB.get_db())
 
 func _process(delta):
 	if _is_grabbing_selected:
@@ -715,6 +724,21 @@ func _on_context_spawn_point_pressed() -> void:
 	_hide_context_menu()
 	emit_signal("setting_spawn_point", _spawn_point_position)
 
+func _on_context_speaker_play_stop_pressed() -> void:
+	if _speaker_connected:
+		if _speaker_connected.is_playing():
+			_speaker_connected.rpc_id(1, "request_stop")
+		else:
+			_speaker_connected.rpc_id(1, "request_play")
+
+func _on_context_speaker_select_track_pressed() -> void:
+	_track_dialog.popup_centered()
+
+func _on_context_speaker_volume_value_changed(value: float) -> void:
+	if _speaker_connected:
+		_speaker_volume_awaiting_update = true
+		_speaker_connected.rpc_id(1, "request_set_unit_size", value)
+
 func _on_context_take_top_pressed(n: int) -> void:
 	_hide_context_menu()
 	if _selected_pieces.size() == 1:
@@ -733,6 +757,21 @@ func _on_context_take_out_pressed(n: int) -> void:
 
 func _on_context_unlock_pressed() -> void:
 	_unlock_selected_pieces()
+
+func _on_speaker_started_playing() -> void:
+	_set_speaker_controls()
+
+func _on_speaker_stopped_playing() -> void:
+	_set_speaker_controls()
+
+func _on_speaker_track_changed(track_entry: Dictionary, music: bool) -> void:
+	_set_speaker_controls()
+
+func _on_speaker_unit_size_changed(unit_size: float) -> void:
+	if not _speaker_volume_awaiting_update:
+		_set_speaker_controls()
+	
+	_speaker_volume_awaiting_update = false
 
 # Popup the piece context menu.
 func _popup_piece_context_menu() -> void:
@@ -872,6 +911,36 @@ func _popup_piece_context_menu() -> void:
 			take_button.connect("pressed", self, "_on_context_take_out_pressed")
 			_piece_context_menu_container.add_child(take_button)
 	
+	elif _inheritance_has(inheritance, "Speaker"):
+		if _selected_pieces.size() == 1:
+			_speaker_connected = _selected_pieces[0]
+			_speaker_connected.connect("started_playing", self, "_on_speaker_started_playing")
+			_speaker_connected.connect("stopped_playing", self, "_on_speaker_stopped_playing")
+			_speaker_connected.connect("track_changed", self, "_on_speaker_track_changed")
+			_speaker_connected.connect("unit_size_changed", self, "_on_speaker_unit_size_changed")
+			
+			_speaker_track_label = Label.new()
+			_piece_context_menu_container.add_child(_speaker_track_label)
+			
+			var speaker_select_track_button = Button.new()
+			speaker_select_track_button.text = "Select track"
+			speaker_select_track_button.connect("pressed", self, "_on_context_speaker_select_track_pressed")
+			_piece_context_menu_container.add_child(speaker_select_track_button)
+			
+			_speaker_play_stop_button = Button.new()
+			_speaker_play_stop_button.connect("pressed", self, "_on_context_speaker_play_stop_pressed")
+			_piece_context_menu_container.add_child(_speaker_play_stop_button)
+			
+			var volume_label = Label.new()
+			volume_label.text = "Volume:"
+			_piece_context_menu_container.add_child(volume_label)
+			
+			_speaker_volume_slider = HSlider.new()
+			_speaker_volume_slider.connect("value_changed", self, "_on_context_speaker_volume_value_changed")
+			_piece_context_menu_container.add_child(_speaker_volume_slider)
+			
+			_set_speaker_controls()
+	
 	###########
 	# LEVEL 0 #
 	###########
@@ -935,6 +1004,27 @@ func _reset_camera() -> void:
 	
 	_camera.translation.z = _initial_zoom
 	_target_zoom = _initial_zoom
+
+# Set the properties of control relating to the selected speaker.
+func _set_speaker_controls() -> void:
+	if _speaker_connected:
+		if _speaker_track_label:
+			var track_entry = _speaker_connected.get_track()
+			if track_entry.empty():
+				_speaker_track_label.text = "No track loaded"
+			elif _speaker_connected.is_playing():
+				_speaker_track_label.text = "Playing: %s" % track_entry["name"]
+			else:
+				_speaker_track_label.text = "Loaded: %s" % track_entry["name"]
+		
+		if _speaker_play_stop_button:
+			if _speaker_connected.is_playing():
+				_speaker_play_stop_button.text = "Stop"
+			else:
+				_speaker_play_stop_button.text = "Play"
+		
+		if _speaker_volume_slider:
+			_speaker_volume_slider.value = _speaker_connected.get_unit_size()
 
 # Set the tool used by the player.
 # new_tool: The tool to be used. See the TOOL_* enum for possible values.
@@ -1290,8 +1380,29 @@ func _on_MouseGrab_gui_input(event):
 			
 			get_tree().set_input_as_handled()
 
+func _on_PieceContextMenu_popup_hide():
+	# Any variables that were potentially set if the object was a speaker need
+	# to be reset.
+	if _speaker_connected:
+		_speaker_connected.disconnect("started_playing", self, "_on_speaker_started_playing")
+		_speaker_connected.disconnect("stopped_playing", self, "_on_speaker_stopped_playing")
+		_speaker_connected.disconnect("track_changed", self, "_on_speaker_track_changed")
+		_speaker_connected.disconnect("unit_size_changed", self, "_on_speaker_unit_size_changed")
+	_speaker_connected = null
+	
+	_speaker_play_stop_button = null
+	_speaker_track_label = null
+	_speaker_volume_slider = null
+
 func _on_RulerToolButton_pressed():
 	_set_tool(TOOL_RULER)
+
+func _on_TrackDialog_loading_track(track_entry: Dictionary, music: bool):
+	_track_dialog.visible = false
+	if _speaker_connected:
+		_speaker_connected.rpc_id(1, "request_set_track", track_entry, music)
+	else:
+		push_warning("Don't know which speaker to set track for, doing nothing.")
 
 func _on_VBoxContainer_item_rect_changed():
 	if _piece_context_menu and _piece_context_menu_container:

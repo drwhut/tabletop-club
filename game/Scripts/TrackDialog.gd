@@ -21,25 +21,34 @@
 
 extends WindowDialog
 
-signal loading_game(game_entry)
+signal loading_track(track_entry, music)
 
-onready var _games = $MarginContainer/ScrollContainer/Games
+onready var _music = $TabContainer/Music/MusicContainer
+onready var _sounds = $TabContainer/Sounds/SoundContainer
+onready var _tab_container = $TabContainer
 
-# Set the game database contents, based on the database given.
+# Set the track database contents, based on the database given.
 # assets: The database from the AssetDB.
 func set_piece_db(assets: Dictionary) -> void:
-	for child in _games.get_children():
-		_games.remove_child(child)
+	for child in _music.get_children():
+		_music.remove_child(child)
+		child.queue_free()
+	for child in _sounds.get_children():
+		_sounds.remove_child(child)
 		child.queue_free()
 	
 	for pack_name in assets:
-		if assets[pack_name].has("games"):
-			for game_entry in assets[pack_name]["games"]:
-				var preview = preload("res://Scenes/GenericPreview.tscn").instance()
-				_games.add_child(preview)
-				preview.set_preview(pack_name, game_entry)
-				
-				preview.connect("load_pressed", self, "_on_load_pressed")
+		for type_name in ["music", "sounds"]:
+			if assets[pack_name].has(type_name):
+				for game_entry in assets[pack_name][type_name]:
+					var preview = preload("res://Scenes/GenericPreview.tscn").instance()
+					if type_name == "music":
+						_music.add_child(preview)
+					elif type_name == "sounds":
+						_sounds.add_child(preview)
+					preview.set_preview(pack_name, game_entry)
+					
+					preview.connect("load_pressed", self, "_on_load_pressed")
 
-func _on_load_pressed(game_entry: Dictionary):
-	emit_signal("loading_game", game_entry)
+func _on_load_pressed(track_entry: Dictionary):
+	emit_signal("loading_track", track_entry, _tab_container.current_tab == 0)

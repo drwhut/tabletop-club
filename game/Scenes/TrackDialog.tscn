@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/TrackDialog.gd" type="Script" id=1]
+
+[node name="TrackDialog" type="WindowDialog"]
+margin_right = 500.0
+margin_bottom = 300.0
+window_title = "Select a track..."
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "This dialog is used to show tracks (music and sounds) within asset packs."
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="ScrollContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 38.0
+margin_right = -4.0
+scroll_horizontal_enabled = false
+
+[node name="MusicContainer" type="VBoxContainer" parent="TabContainer/Music"]
+margin_right = 492.0
+size_flags_horizontal = 3
+
+[node name="Sounds" type="ScrollContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 38.0
+margin_right = -4.0
+margin_bottom = -4.0
+scroll_horizontal_enabled = false
+
+[node name="SoundContainer" type="VBoxContainer" parent="TabContainer/Sounds"]
+margin_right = 492.0
+size_flags_horizontal = 3

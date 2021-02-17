@@ -23,10 +23,124 @@ extends Piece
 
 class_name Speaker
 
+signal started_playing()
+signal stopped_playing()
+signal track_changed(track_entry, music)
+signal unit_size_changed(unit_size)
+
 onready var _audio_player = $AudioStreamPlayer3D
 
+var _track_entry: Dictionary = {}
+
+# Get the current playback position of the speaker.
+# Returns: The current playback position in seconds.
+func get_playback_position() -> float:
+	return _audio_player.get_playback_position()
+
+# Get the track entry of the track loaded in this speaker.
+# Returns: The currently loaded track, an empty dictionary if no track is loaded.
+func get_track() -> Dictionary:
+	return _track_entry
+
+# Get the unit size of the speaker.
+# Returns: The unit size of the speaker.
+func get_unit_size() -> float:
+	return _audio_player.unit_size
+
+# Check if the current track is a music track.
+# Returns: If the current track is a music track. Otherwise, it is a sound track.
+func is_music_track() -> bool:
+	return _audio_player.bus == "Music"
+
+# Check if the speaker is currently playing a track.
+# Returns: If the speaker is playing a track.
+func is_playing() -> bool:
+	return _audio_player.playing
+
+# Check if there is a track loaded in the player.
+# Returns: If there is a track loaded.
+func is_track_loaded() -> bool:
+	return not _track_entry.empty()
+
+# Play the currently loaded track from a given position.
+# from: The number of seconds from the start to start playing from.
+remotesync func play(from: float = 0.0) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_audio_player.play(from)
+	emit_signal("started_playing")
+
+# Request the server to start playing the loaded track.
+# from: The number of seconds from the start to start playing from.
+master func request_play(from: float = 0.0) -> void:
+	rpc("play", from)
+
+# Request the server to set the player's track.
+# track_entry: The next track's entry.
+# music: True if it is a music track, false if it is a sound track.
+master func request_set_track(track_entry: Dictionary, music: bool) -> void:
+	rpc("set_track", track_entry, music)
+
+# Request the server to set the unit size of the speaker.
+# unit_size: The new unit size.
+master func request_set_unit_size(unit_size: float) -> void:
+	rpc("set_unit_size", unit_size)
+
+# Request the server to stop playing the loaded track.
+master func request_stop() -> void:
+	rpc("stop")
+
+# Set the track the player will play using it's entry in the AssetDB.
+# track_entry: The new track's entry.
+# music: True if it is a music track, false if it is a sound track.
+remotesync func set_track(track_entry: Dictionary, music: bool) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if track_entry.empty():
+		_track_entry = {}
+	
+	elif track_entry.has("audio_path"):
+		var audio_stream = load(track_entry["audio_path"])
+		if audio_stream is AudioStream:
+			_track_entry = track_entry
+			
+			# Load the audio stream into the player ready to play!
+			_audio_player.stream = audio_stream
+			
+			# Change the bus the audio player outputs to depending on if the
+			# track is a music track or a sound track.
+			_audio_player.bus = "Music" if music else "Sounds"
+			
+			emit_signal("track_changed", track_entry, music)
+		else:
+			push_error("Audio path in track entry is not an audio file!")
+	else:
+		push_error("Entry is not a track entry!")
+
+# Set the unit size of the speaker.
+# unit_size: The new unit size.
+remotesync func set_unit_size(unit_size: float) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_audio_player.unit_size = unit_size
+	emit_signal("unit_size_changed", unit_size)
+
+# Stop playing the currently loaded track.
+remotesync func stop() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_audio_player.stop()
+	emit_signal("stopped_playing")
+
 func _ready():
-	var audio_stream = load("user://assets/OpenTabletop/music/In Your Arms - Kevin MacLeod.ogg")
-	_audio_player.stream = audio_stream
-	_audio_player.unit_size = 20
-	_audio_player.play()
+	# Make sure that initially the track can be heard from across the table.
+	_audio_player.unit_size = 50
+	
+	_audio_player.connect("finished", self, "_on_audio_player_finished")
+
+func _on_audio_player_finished():
+	emit_signal("stopped_playing")
