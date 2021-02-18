@@ -1538,6 +1538,8 @@ func _on_PieceContextMenu_popup_hide():
 		_speaker_connected.disconnect("started_playing", self, "_on_speaker_started_playing")
 		_speaker_connected.disconnect("stopped_playing", self, "_on_speaker_stopped_playing")
 		_speaker_connected.disconnect("track_changed", self, "_on_speaker_track_changed")
+		_speaker_connected.disconnect("track_paused", self, "_on_speaker_track_paused")
+		_speaker_connected.disconnect("track_resumed", self, "_on_speaker_track_resumed")
 		_speaker_connected.disconnect("unit_size_changed", self, "_on_speaker_unit_size_changed")
 	_speaker_connected = null
 	
