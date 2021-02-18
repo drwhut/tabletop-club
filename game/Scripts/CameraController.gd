@@ -111,6 +111,7 @@ var _selected_pieces = []
 var _spawn_point_position = Vector3()
 var _speaker_connected: SpeakerPiece = null
 var _speaker_track_label: Label = null
+var _speaker_pause_button: Button = null
 var _speaker_play_stop_button: Button = null
 var _speaker_volume_awaiting_update = false
 var _speaker_volume_slider: Slider = null
@@ -739,6 +740,13 @@ func _on_context_spawn_point_pressed() -> void:
 	_hide_context_menu()
 	emit_signal("setting_spawn_point", _spawn_point_position)
 
+func _on_context_speaker_pause_pressed() -> void:
+	if _speaker_connected:
+		if _speaker_connected.is_track_paused():
+			_speaker_connected.rpc_id(1, "request_resume_track")
+		else:
+			_speaker_connected.rpc_id(1, "request_pause_track")
+
 func _on_context_speaker_play_stop_pressed() -> void:
 	if _speaker_connected:
 		if _speaker_connected.is_playing_track():
@@ -802,6 +810,12 @@ func _on_speaker_stopped_playing() -> void:
 	_set_speaker_controls()
 
 func _on_speaker_track_changed(track_entry: Dictionary, music: bool) -> void:
+	_set_speaker_controls()
+
+func _on_speaker_track_paused() -> void:
+	_set_speaker_controls()
+
+func _on_speaker_track_resumed() -> void:
 	_set_speaker_controls()
 
 func _on_speaker_unit_size_changed(unit_size: float) -> void:
@@ -998,6 +1012,8 @@ func _popup_piece_context_menu() -> void:
 			_speaker_connected.connect("started_playing", self, "_on_speaker_started_playing")
 			_speaker_connected.connect("stopped_playing", self, "_on_speaker_stopped_playing")
 			_speaker_connected.connect("track_changed", self, "_on_speaker_track_changed")
+			_speaker_connected.connect("track_paused", self, "_on_speaker_track_paused")
+			_speaker_connected.connect("track_resumed", self, "_on_speaker_track_resumed")
 			_speaker_connected.connect("unit_size_changed", self, "_on_speaker_unit_size_changed")
 			
 			_speaker_track_label = Label.new()
@@ -1011,6 +1027,10 @@ func _popup_piece_context_menu() -> void:
 			_speaker_play_stop_button = Button.new()
 			_speaker_play_stop_button.connect("pressed", self, "_on_context_speaker_play_stop_pressed")
 			_piece_context_menu_container.add_child(_speaker_play_stop_button)
+			
+			_speaker_pause_button = Button.new()
+			_speaker_pause_button.connect("pressed", self, "_on_context_speaker_pause_pressed")
+			_piece_context_menu_container.add_child(_speaker_pause_button)
 			
 			var volume_label = Label.new()
 			volume_label.text = "Volume:"
@@ -1089,6 +1109,21 @@ func _reset_camera() -> void:
 # Set the properties of controls relating to the selected speaker.
 func _set_speaker_controls() -> void:
 	if _speaker_connected:
+		if _speaker_pause_button:
+			_speaker_pause_button.disabled = true
+			_speaker_pause_button.text = "Pause track"
+			
+			if _speaker_connected.is_playing_track():
+				_speaker_pause_button.disabled = false
+				if _speaker_connected.is_track_paused():
+					_speaker_pause_button.text = "Resume track"
+		
+		if _speaker_play_stop_button:
+			if _speaker_connected.is_playing_track():
+				_speaker_play_stop_button.text = "Stop track"
+			else:
+				_speaker_play_stop_button.text = "Play track"
+		
 		if _speaker_track_label:
 			var track_entry = _speaker_connected.get_track()
 			if track_entry.empty():
@@ -1097,12 +1132,6 @@ func _set_speaker_controls() -> void:
 				_speaker_track_label.text = "Playing: %s" % track_entry["name"]
 			else:
 				_speaker_track_label.text = "Loaded: %s" % track_entry["name"]
-		
-		if _speaker_play_stop_button:
-			if _speaker_connected.is_playing_track():
-				_speaker_play_stop_button.text = "Stop track"
-			else:
-				_speaker_play_stop_button.text = "Play track"
 		
 		if _speaker_volume_slider:
 			_speaker_volume_slider.value = _speaker_connected.get_unit_size()
@@ -1512,6 +1541,7 @@ func _on_PieceContextMenu_popup_hide():
 		_speaker_connected.disconnect("unit_size_changed", self, "_on_speaker_unit_size_changed")
 	_speaker_connected = null
 	
+	_speaker_pause_button = null
 	_speaker_play_stop_button = null
 	_speaker_track_label = null
 	_speaker_volume_slider = null

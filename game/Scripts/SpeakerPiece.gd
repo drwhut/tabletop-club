@@ -26,6 +26,8 @@ class_name SpeakerPiece
 signal started_playing()
 signal stopped_playing()
 signal track_changed(track_entry, music)
+signal track_paused()
+signal track_resumed()
 signal unit_size_changed(unit_size)
 
 onready var _audio_player = $AudioStreamPlayer3D
@@ -62,19 +64,44 @@ func is_playing_track() -> bool:
 func is_track_loaded() -> bool:
 	return not _track_entry.empty()
 
+# Check if the track is paused.
+# Returns: If the track is paused.
+func is_track_paused() -> bool:
+	return _audio_player.stream_paused
+
+# Pause the track at a given position.
+# at: The number of seconds into the track to pause at.
+remotesync func pause_track(at: float) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_audio_player.stream_paused = true
+	_audio_player.seek(at)
+	
+	emit_signal("track_paused")
+
 # Play the currently loaded track from a given position.
 # from: The number of seconds from the start to start playing from.
 remotesync func play_track(from: float = 0.0) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
+	_audio_player.stream_paused = false
 	_audio_player.play(from)
 	emit_signal("started_playing")
+
+# Request the server to pause the track.
+master func request_pause_track() -> void:
+	rpc("pause_track", get_playback_position())
 
 # Request the server to start playing the loaded track.
 # from: The number of seconds from the start to start playing from.
 master func request_play_track(from: float = 0.0) -> void:
 	rpc("play_track", from)
+
+# Request the server to resume the track.
+master func request_resume_track() -> void:
+	rpc("resume_track")
 
 # Request the server to set the player's track.
 # track_entry: The next track's entry.
@@ -90,6 +117,15 @@ master func request_set_unit_size(unit_size: float) -> void:
 # Request the server to stop playing the loaded track.
 master func request_stop_track() -> void:
 	rpc("stop_track")
+
+# Called by the server to resume playback of the track.
+remotesync func resume_track() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_audio_player.stream_paused = false
+	
+	emit_signal("track_resumed")
 
 # Set the track the player will play using it's entry in the AssetDB.
 # track_entry: The new track's entry.
@@ -134,6 +170,7 @@ remotesync func stop_track() -> void:
 		return
 	
 	_audio_player.stop()
+	_audio_player.stream_paused = false
 	emit_signal("stopped_playing")
 
 func _ready():
