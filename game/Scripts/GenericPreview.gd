@@ -19,27 +19,25 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends WindowDialog
+extends Control
 
-signal loading_game(game_entry)
+signal load_pressed(game_entry)
 
-onready var _games = $MarginContainer/ScrollContainer/Games
+onready var _description = $HBoxContainer/VBoxContainer/Description
+onready var _name = $Name
+onready var _pack = $HBoxContainer/VBoxContainer/Pack
 
-# Set the game database contents, based on the database given.
-# assets: The database from the AssetDB.
-func set_piece_db(assets: Dictionary) -> void:
-	for child in _games.get_children():
-		_games.remove_child(child)
-		child.queue_free()
+var _entry: Dictionary = {}
+
+# Set the preview details using an entry from the AssetDB.
+# pack_name: The name of the pack the entry belongs to.
+# entry: The entry this preview should represent.
+func set_preview(pack_name: String, entry: Dictionary) -> void:
+	_entry = entry
 	
-	for pack_name in assets:
-		if assets[pack_name].has("games"):
-			for game_entry in assets[pack_name]["games"]:
-				var preview = preload("res://Scenes/GenericPreview.tscn").instance()
-				_games.add_child(preview)
-				preview.set_preview(pack_name, game_entry)
-				
-				preview.connect("load_pressed", self, "_on_load_pressed")
+	_name.text = entry["name"]
+	_pack.text = "from " + pack_name
+	_description.text = entry["description"]
 
-func _on_load_pressed(game_entry: Dictionary):
-	emit_signal("loading_game", game_entry)
+func _on_LoadButton_pressed():
+	emit_signal("load_pressed", _entry)

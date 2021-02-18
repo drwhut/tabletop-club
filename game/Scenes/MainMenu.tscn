@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/VersionLabel.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/CopyrightLabel.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fonts/Cabin-Italic.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Scenes/RandomMusicPlayer.tscn" type="PackedScene" id=6]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -131,6 +132,8 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": "Automatically displays the first line of the description of the game in the project settings."
 }
+
+[node name="RandomMusicPlayer" parent="." instance=ExtResource( 6 )]
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SingleplayerButton" to="." method="_on_SingleplayerButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ServerButton" to="." method="_on_ServerButton_pressed"]

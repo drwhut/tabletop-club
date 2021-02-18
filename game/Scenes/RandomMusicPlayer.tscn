@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/RandomMusicPlayer.gd" type="Script" id=1]
+
+[node name="RandomMusicPlayer" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "When the scene starts, this node starts playing random music that has been imported from the asset packs.
+
+By default, music is not configured to play in the main menu. To enable this, the music's \"main_menu\" property needs to be set to true in the config.cfg file."
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Music"
+
+[node name="TrackLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_bottom = 20.0
+grow_horizontal = 0
+text = "Now Playing:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

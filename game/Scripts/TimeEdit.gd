@@ -19,25 +19,50 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Control
+extends HBoxContainer
 
-signal load_game_pressed(game_entry)
+class_name TimeEdit
 
-onready var _description = $HBoxContainer/VBoxContainer/Description
-onready var _name = $Name
-onready var _pack = $HBoxContainer/VBoxContainer/Pack
+var hour: SpinBox = null
+var minute: SpinBox = null
+var second: SpinBox = null
 
-var _game_entry: Dictionary = {}
+# Get the number of seconds this TimeEdit currently represents.
+# Returns: The current time in seconds.
+func get_seconds() -> float:
+	return 3600 * hour.value + 60 * minute.value + second.value
 
-# Set the game preview details using an entry from the AssetDB.
-# pack_name: The name of the pack the game belongs to.
-# game_entry: The game this preview should represent.
-func set_game(pack_name: String, game_entry: Dictionary) -> void:
-	_game_entry = game_entry
+func _init():
+	hour = SpinBox.new()
+	hour.align = LineEdit.ALIGN_CENTER
+	hour.max_value = 99
+	hour.min_value = 0
+	hour.step = 1
+	add_child(hour)
 	
-	_name.text = game_entry["name"]
-	_pack.text = "from " + pack_name
-	_description.text = game_entry["description"]
-
-func _on_LoadButton_pressed():
-	emit_signal("load_game_pressed", _game_entry)
+	var colon_label1 = Label.new()
+	colon_label1.text = ":"
+	add_child(colon_label1)
+	
+	minute = SpinBox.new()
+	minute.align = LineEdit.ALIGN_CENTER
+	minute.max_value = 59
+	minute.min_value = 0
+	minute.step = 1
+	add_child(minute)
+	
+	var colon_label2 = Label.new()
+	colon_label2.text = ":"
+	add_child(colon_label2)
+	
+	second = SpinBox.new()
+	second.align = LineEdit.ALIGN_CENTER
+	second.max_value = 59
+	second.min_value = 0
+	second.step = 1
+	add_child(second)
+	
+	# Set the default time to five minutes.
+	hour.value = 0
+	minute.value = 5
+	second.value = 0

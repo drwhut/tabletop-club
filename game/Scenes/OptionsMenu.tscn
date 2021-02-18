@@ -36,7 +36,77 @@ margin_right = 984.0
 margin_bottom = 530.0
 size_flags_vertical = 3
 
+[node name="Audio" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 38.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 4 )
+section_name = "audio"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio"]
+margin_right = 976.0
+margin_bottom = 488.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="MasterVolume" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
+margin_right = 486.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Master Volume"
+align = 2
+
+[node name="MasterVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
+margin_left = 490.0
+margin_right = 976.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="MusicVolume" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
+margin_top = 24.0
+margin_right = 486.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "Music Volume"
+align = 2
+
+[node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
+margin_left = 490.0
+margin_top = 24.0
+margin_right = 976.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="SoundsVolume" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
+margin_top = 48.0
+margin_right = 486.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+text = "Sounds Volume"
+align = 2
+
+[node name="SoundsVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
+margin_left = 490.0
+margin_top = 48.0
+margin_right = 976.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.5
+
 [node name="Controls" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0

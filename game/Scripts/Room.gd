@@ -1285,7 +1285,9 @@ remotesync func unflip_table() -> void:
 func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> void:
 	state["containers"] = {}
 	state["pieces"] = {}
+	state["speakers"] = {}
 	state["stacks"] = {}
+	state["timers"] = {}
 	
 	for piece in parent.get_children():
 		var piece_meta = {
@@ -1320,6 +1322,23 @@ func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> 
 			piece_meta["pieces"] = child_pieces
 			state["stacks"][piece.name] = piece_meta
 		
+		elif piece is SpeakerPiece or piece is TimerPiece:
+			piece_meta["is_music_track"] = piece.is_music_track()
+			piece_meta["is_playing"] = piece.is_playing_track()
+			piece_meta["is_track_paused"] = piece.is_track_paused()
+			piece_meta["playback_position"] = piece.get_playback_position()
+			piece_meta["track_entry"] = piece.get_track()
+			piece_meta["unit_size"] = piece.get_unit_size()
+			
+			if piece is TimerPiece:
+				piece_meta["is_timer_paused"] = piece.is_timer_paused()
+				piece_meta["mode"] = piece.get_mode()
+				piece_meta["time"] = piece.get_time()
+				
+				state["timers"][piece.name] = piece_meta
+			else:
+				state["speakers"][piece.name] = piece_meta
+		
 		else:
 			if collisions:
 				if piece is Card:
@@ -1333,7 +1352,9 @@ func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> 
 func _extract_piece_states(state: Dictionary, parent: Node) -> void:
 	_extract_piece_states_type(state, parent, "containers")
 	_extract_piece_states_type(state, parent, "pieces")
+	_extract_piece_states_type(state, parent, "speakers")
 	_extract_piece_states_type(state, parent, "stacks")
+	_extract_piece_states_type(state, parent, "timers")
 
 # A helper function when extracting piece states from a room state.
 # state: The state to extract the pieces from.
@@ -1455,6 +1476,97 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 					flip = Stack.FLIP_YES
 				
 				add_piece_to_stack(stack_piece_name, piece_name, Stack.STACK_TOP, flip)
+		
+		elif type_key == "speakers" or type_key == "timers":
+			if not piece_meta.has("is_music_track"):
+				push_error("Speaker " + piece_name + " does not have an is music track value!")
+				return
+			
+			if not piece_meta["is_music_track"] is bool:
+				push_error("Speaker " + piece_name + " is music track value is not a boolean!")
+				return
+				
+			if not piece_meta.has("is_playing"):
+				push_error("Speaker " + piece_name + " does not have an is playing value!")
+				return
+			
+			if not piece_meta["is_playing"] is bool:
+				push_error("Speaker " + piece_name + " is playing value is not a boolean!")
+				return
+				
+			if not piece_meta.has("is_track_paused"):
+				push_error("Speaker " + piece_name + " does not have an is track paused value!")
+				return
+			
+			if not piece_meta["is_track_paused"] is bool:
+				push_error("Speaker " + piece_name + " is track paused value is not a boolean!")
+				return
+				
+			if not piece_meta.has("playback_position"):
+				push_error("Speaker " + piece_name + " does not have a playback position value!")
+				return
+			
+			if not piece_meta["playback_position"] is float:
+				push_error("Speaker " + piece_name + " playback position value is not a float!")
+				return
+				
+			if not piece_meta.has("track_entry"):
+				push_error("Speaker " + piece_name + " does not have a track entry!")
+				return
+			
+			if not piece_meta["track_entry"] is Dictionary:
+				push_error("Speaker " + piece_name + " track entry is not a dictionary!")
+				return
+				
+			if not piece_meta.has("unit_size"):
+				push_error("Speaker " + piece_name + " does not have a unit size value!")
+				return
+			
+			if not piece_meta["unit_size"] is float:
+				push_error("Speaker " + piece_name + " unit size value is not a float!")
+				return
+			
+			if piece is SpeakerPiece:
+				piece.set_track(piece_meta["track_entry"], piece_meta["is_music_track"])
+				piece.set_unit_size(piece_meta["unit_size"])
+				
+				if piece_meta["is_playing"]:
+					piece.play_track(piece_meta["playback_position"])
+				
+				if piece_meta["is_track_paused"]:
+					piece.pause_track(piece_meta["playback_position"])
+			
+			if type_key == "timers":
+				if not piece_meta.has("is_timer_paused"):
+					push_error("Timer " + piece_name + " does not have an is timer paused value!")
+					return
+				
+				if not piece_meta["is_timer_paused"] is bool:
+					push_error("Timer " + piece_name + " is timer paused value is not a boolean!")
+					return
+				
+				if not piece_meta.has("mode"):
+					push_error("Timer " + piece_name + " does not have a mode value!")
+					return
+				
+				if not piece_meta["mode"] is int:
+					push_error("Timer " + piece_name + " mode value is not an integer!")
+					return
+				
+				if not piece_meta.has("time"):
+					push_error("Timer " + piece_name + " does not have a time value!")
+					return
+				
+				if not piece_meta["time"] is float:
+					push_error("Timer " + piece_name + " time value is not a float!")
+					return
+				
+				if piece is TimerPiece:
+					piece.set_mode(piece_meta["mode"])
+					if piece_meta["is_timer_paused"]:
+						piece.pause_timer_at(piece_meta["time"])
+					else:
+						piece.set_time(piece_meta["time"])
 		
 		# Finally, we may need to move the piece in the scene tree so it has a
 		# different parent.

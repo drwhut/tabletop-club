@@ -1,0 +1,67 @@
+# open-tabletop
+# Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+extends Node
+
+onready var _audio_player = $AudioStreamPlayer
+onready var _track_label = $TrackLabel
+
+var _music_queue = []
+
+# Play the next track in the queue.
+func next_track() -> void:
+	if _music_queue.empty():
+		_track_label.text = "Now Playing: Nothing :("
+		return
+	
+	var track_entry = _music_queue.pop_front()
+	var track_name = track_entry["name"]
+	var track_stream = load(track_entry["audio_path"])
+	
+	# Make sure the track doesn't loop, no matter what format it is.
+	# NOTE: Why is looping a property of the stream and not the player??
+	# This literally makes NO sense. - an annoyed drwhut.
+	if track_stream is AudioStreamMP3:
+		track_stream.loop = false
+	elif track_stream is AudioStreamOGGVorbis:
+		track_stream.loop = false
+	elif track_stream is AudioStreamSample:
+		track_stream.loop_mode = AudioStreamSample.LOOP_DISABLED
+	
+	_audio_player.stream = track_stream
+	_audio_player.play()
+	
+	_track_label.text = "Now Playing: %s" % track_name
+
+func _ready():
+	var asset_db = AssetDB.get_db()
+	for pack in asset_db:
+		if asset_db[pack].has("music"):
+			for music_entry in asset_db[pack]["music"]:
+				if music_entry["main_menu"]:
+					_music_queue.push_back(music_entry)
+	
+	randomize()
+	_music_queue.shuffle()
+	next_track()
+
+func _on_AudioStreamPlayer_finished():
+	next_track()
