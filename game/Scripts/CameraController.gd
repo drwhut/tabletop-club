@@ -1199,6 +1199,24 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 		if not selected.empty():
 			_hover_y_offset = 0
 			
+			# We can figure out if the selected pieces are about to be
+			# obstructed with the new hover y-position, and adjust it
+			# accordingly.
+			for piece in selected:
+				var from = piece.transform.origin
+				var to = Vector3(from.x, -10, from.z)
+				
+				var space_state = get_world().direct_space_state
+				var result = space_state.intersect_ray(from, to, [piece])
+				
+				if result.has("position"):
+					# Calculate the minimum y-position the piece has to be in
+					# in order to not be obstructed.
+					var collision_point = result["position"]
+					var min_y_pos = collision_point.y + (piece.get_size().y / 2)
+					
+					_hover_y_pos = max(_hover_y_pos, min_y_pos)
+			
 			var origin_piece = selected[0]
 			if _piece_mouse_is_over:
 				if selected.has(_piece_mouse_is_over):
