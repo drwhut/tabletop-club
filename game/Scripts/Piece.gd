@@ -185,12 +185,14 @@ master func rotate_y(rot: float) -> void:
 # selected: Should the piece appear selected?
 func set_appear_selected(selected: bool) -> void:
 	for mesh_instance in get_mesh_instances():
-		var material = mesh_instance.get_surface_material(0)
-		if material and material is SpatialMaterial:
-			material.emission = SELECTED_COLOUR
-			material.emission_energy = SELECTED_ENERGY
-			
-			material.emission_enabled = selected
+		if mesh_instance is MeshInstance:
+			for surface in range(mesh_instance.get_surface_material_count()):
+				var material = mesh_instance.get_surface_material(surface)
+				if material and material is SpatialMaterial:
+					material.emission = SELECTED_COLOUR
+					material.emission_energy = SELECTED_ENERGY
+					
+					material.emission_enabled = selected
 
 # If you are hovering the piece, ask the server to set the hover position of the
 # piece.

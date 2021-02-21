@@ -209,7 +209,7 @@ static func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 			var material = from.mesh.surface_get_material(surface)
 			if material:
 				material = material.duplicate()
-				from.set_surface_material(0, material)
+				from.set_surface_material(surface, material)
 		
 		var collision_shape = CollisionShape.new()
 		collision_shape.shape = from.mesh.create_convex_shape()
