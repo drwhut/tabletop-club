@@ -198,9 +198,15 @@ static func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 		# material that isn't shared with the other instances, so when e.g. the
 		# instance is being selected, not all of the instances look like they
 		# are selected (see #20).
-		var material = from.get_surface_material(0)
-		if not material:
-			material = from.mesh.surface_get_material(0)
+		var num_materials = from.get_surface_material_count()
+		var num_surfaces  = from.mesh.get_surface_count()
+		if num_materials < num_surfaces:
+			push_warning("Mesh '%s' has %d surfaces, but only %d materials!" %
+				[from.mesh.resource_path, num_surfaces, num_materials])
+		for surface in range(num_surfaces):
+			# NOTE: We always assume that imported meshes put their materials
+			# into the mesh itself, not the mesh instance.
+			var material = from.mesh.surface_get_material(surface)
 			if material:
 				material = material.duplicate()
 				from.set_surface_material(0, material)
