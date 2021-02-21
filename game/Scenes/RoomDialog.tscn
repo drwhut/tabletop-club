@@ -57,16 +57,30 @@ text = "Lighting
 "
 align = 1
 
-[node name="IntensityLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="TypeLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 47.0
 margin_right = 154.0
 margin_bottom = 67.0
+text = "Lamp Type"
+
+[node name="TypeButton" type="OptionButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 71.0
+margin_right = 154.0
+margin_bottom = 97.0
+text = "Sunlight"
+items = [ "Sunlight", null, false, 0, null, "Spotlight", null, false, 1, null ]
+selected = 0
+
+[node name="IntensityLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 101.0
+margin_right = 154.0
+margin_bottom = 121.0
 text = "Lamp Intensity"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 71.0
+margin_top = 125.0
 margin_right = 154.0
-margin_bottom = 91.0
+margin_bottom = 145.0
 
 [node name="IntensitySlider" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 margin_right = 100.0
@@ -85,15 +99,15 @@ rect_min_size = Vector2( 50, 0 )
 text = "10%"
 
 [node name="ColorLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 95.0
+margin_top = 149.0
 margin_right = 154.0
-margin_bottom = 115.0
+margin_bottom = 169.0
 text = "Lamp Color"
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 119.0
+margin_top = 173.0
 margin_right = 154.0
-margin_bottom = 145.0
+margin_bottom = 199.0
 color = Color( 1, 1, 1, 1 )
 edit_alpha = false
 
@@ -111,6 +125,7 @@ disabled = true
 text = "Apply"
 
 [connection signal="about_to_show" from="." to="." method="_on_RoomDialog_about_to_show"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/VBoxContainer2/TypeButton" to="." method="_on_TypeButton_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/IntensitySlider" to="." method="_on_IntensitySlider_value_changed"]
 [connection signal="color_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/ApplyButton" to="." method="_on_ApplyButton_pressed"]

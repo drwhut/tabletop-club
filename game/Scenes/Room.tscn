@@ -145,10 +145,17 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -80, 8,
 [node name="9" type="Spatial" parent="Table/HandPositions"]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -80, 8, 28 )
 
-[node name="Lamp" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 30, 0 )
+[node name="SunLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 50, 0 )
 shadow_enabled = true
 directional_shadow_max_distance = 250.0
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 50, 0 )
+visible = false
+shadow_enabled = true
+spot_range = 99.9685
+spot_angle = 60.0
 
 [node name="CameraController" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )

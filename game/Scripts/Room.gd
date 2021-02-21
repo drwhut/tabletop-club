@@ -30,8 +30,9 @@ onready var _hand_positions = $Table/HandPositions
 onready var _hands = $Hands
 onready var _hidden_areas = $HiddenAreas
 onready var _hidden_area_preview = $HiddenAreaPreview
-onready var _lamp = $Lamp
 onready var _pieces = $Pieces
+onready var _spot_light = $SpotLight
+onready var _sun_light = $SunLight
 onready var _table_body = $Table/Body
 onready var _world_environment = $WorldEnvironment
 
@@ -369,12 +370,23 @@ func get_camera_transform() -> Transform:
 # Get the color of the room lamp.
 # Returns: The color of the lamp.
 func get_lamp_color() -> Color:
-	return _lamp.light_color
+	if _sun_light.visible:
+		return _sun_light.light_color
+	else:
+		return _spot_light.light_color
 
 # Get the intensity of the room lamp.
 # Returns: The intensity of the lamp.
 func get_lamp_intensity() -> float:
-	return _lamp.light_energy
+	if _sun_light.visible:
+		return _sun_light.light_energy
+	else:
+		return _spot_light.light_energy
+
+# Get the type of light the room lamp is emitting.
+# Returns: True if the lamp is sunlight, false if it is a spotlight.
+func get_lamp_type() -> bool:
+	return _sun_light.visible
 
 # Get a piece in the room with a given name.
 # Returns: The piece with the given name.
@@ -411,7 +423,8 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	
 	out["lamp"] = {
 		"color": get_lamp_color(),
-		"intensity": get_lamp_intensity()
+		"intensity": get_lamp_intensity(),
+		"sunlight": get_lamp_type()
 	}
 	out["skybox"] = get_skybox()
 	out["table"] = {
@@ -998,6 +1011,11 @@ master func request_set_lamp_color(color: Color) -> void:
 master func request_set_lamp_intensity(intensity: float) -> void:
 	rpc("set_lamp_intensity", intensity)
 
+# Request the server to set the lamp type.
+# sunlight: True for sunlight, false for a spotlight.
+master func request_set_lamp_type(sunlight: bool) -> void:
+	rpc("set_lamp_type", sunlight)
+
 # Request the server to set the room skybox.
 # texture_path: The texture path of the skybox.
 master func request_set_skybox(texture_path: String) -> void:
@@ -1040,7 +1058,8 @@ remotesync func set_lamp_color(color: Color) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	_lamp.light_color = color
+	_spot_light.light_color = color
+	_sun_light.light_color = color
 
 # Set the intensity of the room lamp.
 # intensity: The new intensity of the lamp.
@@ -1048,7 +1067,14 @@ remotesync func set_lamp_intensity(intensity: float) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	_lamp.light_energy = intensity
+	_spot_light.light_energy = intensity
+	_sun_light.light_energy = intensity
+
+# Set the type of light the room lamp is emitting.
+# sunlight: True for sunlight, false for a spotlight.
+remotesync func set_lamp_type(sunlight: bool) -> void:
+	_spot_light.visible = not sunlight
+	_sun_light.visible = sunlight
 
 # Set the room's skybox.
 # texture_path: The path of the skybox texture. If empty, the default
@@ -1076,6 +1102,7 @@ remotesync func set_state(state: Dictionary) -> void:
 		var lamp_meta = state["lamp"]
 		set_lamp_color(lamp_meta["color"])
 		set_lamp_intensity(lamp_meta["intensity"])
+		set_lamp_type(lamp_meta["sunlight"])
 	
 	if state.has("skybox"):
 		set_skybox(state["skybox"])

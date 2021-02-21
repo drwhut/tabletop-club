@@ -22,13 +22,14 @@
 extends WindowDialog
 
 signal requesting_room_details()
-signal setting_lighting(lamp_color, lamp_intensity)
+signal setting_lighting(lamp_color, lamp_intensity, lamp_sunlight)
 signal setting_skybox(skybox_entry)
 
 onready var _apply_button = $VBoxContainer/HBoxContainer2/ApplyButton
 onready var _lamp_color_picker = $VBoxContainer/HBoxContainer/VBoxContainer2/ColorPickerButton
 onready var _lamp_intensity_slider = $VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/IntensitySlider
 onready var _lamp_intensity_value_label = $VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/IntensityValueLabel
+onready var _lamp_type_button = $VBoxContainer/HBoxContainer/VBoxContainer2/TypeButton
 onready var _skyboxes = $VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/Skyboxes
 
 # Set the room database contents, based on the database given.
@@ -54,7 +55,10 @@ func set_piece_db(assets: Dictionary) -> void:
 # skybox_path: The texture path to the skybox texture.
 # lamp_color: The color of the room lamp.
 # lamp_intensity: The intensity of the room lamp.
-func set_room_details(skybox_path: String, lamp_color: Color, lamp_intensity: float) -> void:
+# lamp_sunlight: If the room lamp is emitting sunlight.
+func set_room_details(skybox_path: String, lamp_color: Color,
+	lamp_intensity: float, lamp_sunlight: bool) -> void:
+	
 	for skybox in _skyboxes.get_children():
 		var texture_path = skybox.get_skybox_entry()["texture_path"]
 		skybox.set_selected(texture_path == skybox_path)
@@ -62,6 +66,7 @@ func set_room_details(skybox_path: String, lamp_color: Color, lamp_intensity: fl
 	_lamp_color_picker.color = lamp_color
 	_lamp_intensity_slider.value = lamp_intensity
 	_set_lamp_intensity_value_label(lamp_intensity)
+	_lamp_type_button.selected = 0 if lamp_sunlight else 1
 
 # Add a skybox preview to the list.
 # pack_name: The name of the pack the skybox belongs to.
@@ -86,7 +91,8 @@ func _on_ApplyButton_pressed():
 	if skyboxes_selected.size() > 0:
 		emit_signal("setting_skybox", skyboxes_selected[0].get_skybox_entry())
 	
-	emit_signal("setting_lighting", _lamp_color_picker.color, _lamp_intensity_slider.value)
+	emit_signal("setting_lighting", _lamp_color_picker.color,
+		_lamp_intensity_slider.value, _lamp_type_button.selected == 0)
 
 func _on_ColorPickerButton_color_changed(_color: Color):
 	_apply_button.disabled = false
@@ -101,3 +107,6 @@ func _on_RoomDialog_about_to_show():
 func _on_IntensitySlider_value_changed(value: float):
 	_apply_button.disabled = false
 	_set_lamp_intensity_value_label(value)
+
+func _on_TypeButton_item_selected(_index: int):
+	_apply_button.disabled = false
