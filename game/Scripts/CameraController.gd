@@ -1033,7 +1033,7 @@ func _popup_piece_context_menu() -> void:
 			_piece_context_menu_container.add_child(_speaker_pause_button)
 			
 			var volume_label = Label.new()
-			volume_label.text = "Volume:"
+			volume_label.text = "Range:"
 			_piece_context_menu_container.add_child(volume_label)
 			
 			_speaker_volume_slider = HSlider.new()
