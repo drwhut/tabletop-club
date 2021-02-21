@@ -167,7 +167,7 @@ func _on_Lobby_player_removed(id: int):
 	var name = Lobby.get_name_bb_code(id)
 	add_raw_message(name + " has left the game.")
 
-func _on_MessageEdit_text_entered(new_text: String):
+func _on_MessageEdit_text_entered(_new_text: String):
 	prepare_send_message()
 
 func _on_SendButton_pressed():

@@ -108,7 +108,7 @@ func remove_piece(piece_name: String) -> Piece:
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if get_tree().is_network_server():
 		# If the container is upside down, and it is being shaken, then randomly
 		# release a piece to simulate what would happen in reality.

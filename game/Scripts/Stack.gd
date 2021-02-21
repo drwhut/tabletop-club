@@ -256,7 +256,7 @@ remotesync func set_piece_order(order: Array) -> void:
 	
 	_set_piece_heights()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# If the stack is being shaken, then get the server to send a list of
 	# shuffled names to each client (including itself).
 	if get_tree().is_network_server() and is_being_shaked():

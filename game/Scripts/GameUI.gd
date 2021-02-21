@@ -175,13 +175,13 @@ func _on_GamesDialog_loading_game(game_entry: Dictionary):
 func _on_LoadGameButton_pressed():
 	_popup_file_dialog(FileDialog.MODE_OPEN_FILE)
 
-func _on_Lobby_player_added(id: int):
+func _on_Lobby_player_added(_id: int):
 	_update_player_list()
 
-func _on_Lobby_player_modified(id: int, old: Dictionary):
+func _on_Lobby_player_modified(_id: int, _old: Dictionary):
 	_update_player_list()
 
-func _on_Lobby_player_removed(id: int):
+func _on_Lobby_player_removed(_id: int):
 	_update_player_list()
 
 func _on_MainMenuButton_pressed():
@@ -214,7 +214,7 @@ func _on_RoomDialog_setting_skybox(skybox_entry: Dictionary):
 	_room_dialog.visible = false
 	emit_signal("skybox_requested", skybox_entry)
 
-func _on_RotationOption_item_selected(index: int):
+func _on_RotationOption_item_selected(_index: int):
 	_set_rotation_amount()
 
 func _on_SaveGameButton_pressed():

@@ -442,7 +442,7 @@ func _physics_process(delta):
 		
 		_perform_box_select = false
 
-func _process_input(delta):
+func _process_input(_delta):
 	
 	# Calculating the direction the user wants to move parallel to the table.
 	var movement_input = Vector2()
@@ -809,7 +809,7 @@ func _on_speaker_started_playing() -> void:
 func _on_speaker_stopped_playing() -> void:
 	_set_speaker_controls()
 
-func _on_speaker_track_changed(track_entry: Dictionary, music: bool) -> void:
+func _on_speaker_track_changed(_track_entry: Dictionary, _music: bool) -> void:
 	_set_speaker_controls()
 
 func _on_speaker_track_paused() -> void:
@@ -818,13 +818,13 @@ func _on_speaker_track_paused() -> void:
 func _on_speaker_track_resumed() -> void:
 	_set_speaker_controls()
 
-func _on_speaker_unit_size_changed(unit_size: float) -> void:
+func _on_speaker_unit_size_changed(_unit_size: float) -> void:
 	if not _speaker_volume_awaiting_update:
 		_set_speaker_controls()
 	
 	_speaker_volume_awaiting_update = false
 
-func _on_timer_mode_changed(new_mode: int) -> void:
+func _on_timer_mode_changed(_new_mode: int) -> void:
 	_set_timer_controls()
 
 func _on_timer_paused() -> void:
@@ -1305,7 +1305,7 @@ func _on_Lobby_player_added(id: int) -> void:
 	
 	_cursors.add_child(cursor)
 
-func _on_Lobby_player_modified(id: int, old: Dictionary) -> void:
+func _on_Lobby_player_modified(id: int, _old: Dictionary) -> void:
 	if id == get_tree().get_network_unique_id():
 		return
 	

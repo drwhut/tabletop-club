@@ -311,7 +311,7 @@ func _process(delta):
 			if _srv_hover_time_since_update > HOVER_INACTIVE_DURATION:
 				sleeping = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	_last_velocity = _new_velocity
 	_new_velocity  = linear_velocity
 	

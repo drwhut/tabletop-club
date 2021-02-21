@@ -94,7 +94,7 @@ var _db = {}
 var _db_mutex = Mutex.new()
 
 var _import_dir_found = false
-var _import_file = ""
+var _import_file_path = ""
 var _import_mutex = Mutex.new()
 var _import_send_signal = false
 var _import_thread = Thread.new()
@@ -135,19 +135,19 @@ func start_importing() -> void:
 func _ready():
 	connect("tree_exiting", self, "_on_exiting_tree")
 
-func _process(delta):
+func _process(_delta):
 	_import_mutex.lock()
 	if _import_send_signal:
-		if _import_file.empty():
+		if _import_file_path.empty():
 			emit_signal("completed", _import_dir_found)
 		else:
-			emit_signal("importing_file", _import_file)
+			emit_signal("importing_file", _import_file_path)
 		_import_send_signal = false
 	_import_mutex.unlock()
 
 # Import assets from all directories.
-# userdata: Ignored, required for it to be run by a thread.
-func _import_all(userdata) -> void:
+# _userdata: Ignored, required for it to be run by a thread.
+func _import_all(_userdata) -> void:
 	var dir = Directory.new()
 	
 	var dir_found = false
@@ -624,7 +624,7 @@ func _import_stack_config(stack_config: ConfigFile, pack: String, type: String,
 func _send_import_signal(file: String, dir_found: bool) -> void:
 	_import_mutex.lock()
 	_import_dir_found = dir_found
-	_import_file = file
+	_import_file_path = file
 	_import_send_signal = true
 	_import_mutex.unlock()
 

@@ -43,7 +43,7 @@ var _last_page: int = 0
 # container: The container to display the contents of.
 # page: The page number to display.
 func display_contents(container: PieceContainer, page: int = 0):
-	page = max(0, page)
+	page = int(max(0, page))
 	
 	var container_name = container.piece_entry["name"]
 	window_title = "Contents of %s" % container_name
@@ -62,7 +62,7 @@ func display_contents(container: PieceContainer, page: int = 0):
 	var container_count = container.get_piece_count()
 	var page_size = _preview_container.get_child_count()
 	var last_page = max(0, (container_count - 1) / page_size)
-	page = min(page, last_page)
+	page = int(min(page, last_page))
 	_page_label.text = "Page %d/%d" % [page+1, last_page+1]
 	
 	if page > 0:
@@ -114,7 +114,7 @@ func _on_LeftButton_pressed():
 func _on_RightButton_pressed():
 	display_contents(_last_container, _last_page + 1)
 
-func _on_preview_clicked(preview: ObjectPreview, event: InputEventMouseButton):
+func _on_preview_clicked(_preview: ObjectPreview, _event: InputEventMouseButton):
 	var none_selected = get_tree().get_nodes_in_group("preview_selected").empty()
 	_take_button.disabled = none_selected
 

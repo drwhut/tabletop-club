@@ -260,6 +260,6 @@ func _on_pack_button_toggled(pressed: bool):
 	
 	_update_object_content(_toggled_pack)
 
-func _on_preview_clicked(preview: ObjectPreview, event: InputEventMouseButton):
+func _on_preview_clicked(_preview: ObjectPreview, _event: InputEventMouseButton):
 	var none_selected = get_tree().get_nodes_in_group("preview_selected").empty()
 	_add_button.disabled = none_selected

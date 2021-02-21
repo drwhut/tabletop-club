@@ -797,7 +797,7 @@ master func request_deal_cards(stack_name: String, n: int) -> void:
 	for card in stack.get_pieces():
 		card_names.append(card.name)
 	
-	for i in range(n):
+	for _i in range(n):
 		if card_names.size() < 1:
 			break
 		
@@ -1238,12 +1238,12 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 		push_error("Piece " + stack2_name + " is not a stack!")
 		return
 	
-	n = min(n, stack1.get_piece_count())
+	n = int(min(n, stack1.get_piece_count()))
 	if n < 1:
 		return
 	
 	var contents = []
-	for i in range(n):
+	for _i in range(n):
 		contents.push_back(stack1.pop_piece())
 	
 	var test_piece = load(contents[0].piece_entry["scene_path"]).instance()

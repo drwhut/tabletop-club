@@ -28,7 +28,7 @@ var _rng = RandomNumberGenerator.new()
 func _ready():
 	_rng.randomize()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	# If the dice is being shaked, randomize the basis.
 	if get_tree().is_network_server() and is_being_shaked():

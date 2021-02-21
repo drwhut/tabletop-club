@@ -58,6 +58,6 @@ func _on_HiddenArea_body_exited(body):
 	if body is Piece:
 		body.visible = true
 
-func _on_Lobby_player_modified(id: int, old: Dictionary):
+func _on_Lobby_player_modified(id: int, _old: Dictionary):
 	if id == player_id:
 		update_player_color()

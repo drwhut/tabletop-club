@@ -215,6 +215,6 @@ func _on_client_set_card_position(card: Card):
 func _on_Hand_tree_exiting():
 	_srv_cards.clear()
 
-func _on_Lobby_player_modified(id: int, old: Dictionary):
+func _on_Lobby_player_modified(id: int, _old: Dictionary):
 	if id == owner_id():
 		update_owner_display()

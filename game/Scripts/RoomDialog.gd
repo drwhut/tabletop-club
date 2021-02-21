@@ -88,7 +88,7 @@ func _on_ApplyButton_pressed():
 	
 	emit_signal("setting_lighting", _lamp_color_picker.color, _lamp_intensity_slider.value)
 
-func _on_ColorPickerButton_color_changed(color: Color):
+func _on_ColorPickerButton_color_changed(_color: Color):
 	_apply_button.disabled = false
 
 func _on_preview_clicked():
