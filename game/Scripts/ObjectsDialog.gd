@@ -49,7 +49,12 @@ func set_piece_db(assets: Dictionary) -> void:
 	for pack in assets:
 		var pack_num = 0
 		for type in assets[pack]:
-			pack_num += assets[pack][type].size()
+			if type == "stacks":
+				pack_num += assets[pack][type].size()
+			else:
+				var file_type = AssetDB.ASSET_PACK_SUBFOLDERS[type]["type"]
+				if file_type == AssetDB.ASSET_SCENE or file_type == AssetDB.ASSET_TEXTURE:
+					pack_num += assets[pack][type].size()
 		if pack_num > max_needed:
 			max_needed = pack_num
 	
