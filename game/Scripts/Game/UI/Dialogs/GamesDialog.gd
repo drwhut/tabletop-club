@@ -35,7 +35,7 @@ func set_piece_db(assets: Dictionary) -> void:
 	for pack_name in assets:
 		if assets[pack_name].has("games"):
 			for game_entry in assets[pack_name]["games"]:
-				var preview = preload("res://Scenes/GenericPreview.tscn").instance()
+				var preview = preload("res://Scenes/Game/UI/Previews/GenericPreview.tscn").instance()
 				_games.add_child(preview)
 				preview.set_preview(pack_name, game_entry)
 				

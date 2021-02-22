@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/Dice.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game/Pieces/Dice.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Shapes/d8.gd" type="Script" id=2]
 
 [sub_resource type="ConvexPolygonShape" id=1]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/VersionLabel.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/CopyrightLabel.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Misc/VersionLabel.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Misc/CopyrightLabel.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fonts/Cabin-Italic.tres" type="DynamicFont" id=5]

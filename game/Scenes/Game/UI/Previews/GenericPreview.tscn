@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Fonts/Cabin-Italic.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Fonts/Cabin-SemiBold.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Scripts/GenericPreview.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/Cabin-SemiBold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/Cabin-Italic.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/Game/UI/Previews/GenericPreview.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
-font_data = ExtResource( 2 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 12
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [node name="GenericPreview" type="VBoxContainer"]
 margin_right = 109.0

@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/GameUI.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/ObjectsDialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Game/UI/GameUI.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Game/UI/Dialogs/ObjectsDialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/ChatBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/GamesDialog.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/RoomDialog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Game/UI/ChatBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Game/UI/Dialogs/GamesDialog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Game/UI/Dialogs/RoomDialog.tscn" type="PackedScene" id=6]
 
 [node name="GameUI" type="Control"]
 anchor_right = 1.0

@@ -42,7 +42,7 @@ func restart_game() -> void:
 # server: The server to connect to.
 # port: The port to connect to.
 func start_game_as_client(server: String, port: int) -> void:
-	call_deferred("_goto_scene", "res://Scenes/Game.tscn", {
+	call_deferred("_goto_scene", "res://Scenes/Game/Game.tscn", {
 		"mode": MODE_CLIENT,
 		"server": server,
 		"port": port
@@ -52,7 +52,7 @@ func start_game_as_client(server: String, port: int) -> void:
 # max_players: The maximum number of allowed players.
 # port: The port to host the server on.
 func start_game_as_server(max_players: int, port: int) -> void:
-	call_deferred("_goto_scene", "res://Scenes/Game.tscn", {
+	call_deferred("_goto_scene", "res://Scenes/Game/Game.tscn", {
 		"mode": MODE_SERVER,
 		"max_players": max_players,
 		"port": port
@@ -60,7 +60,7 @@ func start_game_as_server(max_players: int, port: int) -> void:
 
 # Start the game in singleplayer mode.
 func start_game_singleplayer() -> void:
-	call_deferred("_goto_scene", "res://Scenes/Game.tscn", {
+	call_deferred("_goto_scene", "res://Scenes/Game/Game.tscn", {
 		"mode": MODE_SINGLEPLAYER
 	})
 

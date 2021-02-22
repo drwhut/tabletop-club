@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Room.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/GameUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/Game.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Game/3D/Room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Game/UI/GameUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Game/Game.gd" type="Script" id=3]
 
 [node name="Game" type="Node"]
 script = ExtResource( 3 )

@@ -1,17 +1,17 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Scripts/CameraController.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/OutlineColorRect.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/ContainerContentDialog.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Game/CameraController.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Misc/OutlineColorRect.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Images/RulerIconNormal.svg" type="Texture" id=4]
 [ext_resource path="res://Images/CursorIconNormal.svg" type="Texture" id=5]
-[ext_resource path="res://Scenes/ToolButtonGroup.tres" type="ButtonGroup" id=6]
+[ext_resource path="res://Scenes/Game/ToolButtonGroup.tres" type="ButtonGroup" id=6]
 [ext_resource path="res://Images/RulerIconPressed.svg" type="Texture" id=7]
 [ext_resource path="res://Images/CursorIconPressed.svg" type="Texture" id=8]
 [ext_resource path="res://Images/RulerLine.png" type="Texture" id=9]
 [ext_resource path="res://Images/HiddenAreaIconPressed.svg" type="Texture" id=10]
 [ext_resource path="res://Images/HiddenAreaIconNormal.svg" type="Texture" id=11]
-[ext_resource path="res://Scenes/TrackDialog.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Game/UI/Dialogs/TrackDialog.tscn" type="PackedScene" id=12]
 
 [node name="CameraController" type="Spatial"]
 script = ExtResource( 1 )

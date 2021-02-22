@@ -47,7 +47,7 @@ remotesync func add_hand(player: int, transform: Transform) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	var hand = preload("res://Scenes/Hand.tscn").instance()
+	var hand = preload("res://Scenes/Game/3D/Hand.tscn").instance()
 	hand.name = str(player)
 	hand.transform = transform
 	
@@ -479,7 +479,7 @@ remotesync func place_hidden_area(area_name: String, player_id: int,
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	var hidden_area: HiddenArea = preload("res://Scenes/HiddenArea.tscn").instance()
+	var hidden_area: HiddenArea = preload("res://Scenes/Game/3D/HiddenArea.tscn").instance()
 	hidden_area.name = area_name
 	hidden_area.player_id = player_id
 	_set_hidden_area_transform(hidden_area, point1, point2)

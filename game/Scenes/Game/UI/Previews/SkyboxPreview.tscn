@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Fonts/Cabin-SemiBold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/Cabin-Italic.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Scripts/SkyboxPreview.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Game/UI/Previews/SkyboxPreview.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24

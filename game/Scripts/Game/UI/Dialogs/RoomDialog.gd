@@ -72,7 +72,7 @@ func set_room_details(skybox_path: String, lamp_color: Color,
 # pack_name: The name of the pack the skybox belongs to.
 # skybox_entry: The skybox's entry in the asset database.
 func _add_skybox_preview(pack_name: String, skybox_entry: Dictionary) -> void:
-	var preview = preload("res://Scenes/SkyboxPreview.tscn").instance()
+	var preview = preload("res://Scenes/Game/UI/Previews/SkyboxPreview.tscn").instance()
 	_skyboxes.add_child(preview)
 	
 	preview.set_skybox(pack_name, skybox_entry)

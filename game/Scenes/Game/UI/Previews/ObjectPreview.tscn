@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scripts/ObjectPreview.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Game/UI/Previews/ObjectPreview.gd" type="Script" id=2]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -13,12 +13,12 @@ environment = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 12
-font_data = ExtResource( 2 )
+font_data = ExtResource( 1 )
 
 [node name="ObjectPreview" type="VBoxContainer"]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": "This scene is used to display objects in a 2D environment (even though the object is shown in a 3D viewport)."

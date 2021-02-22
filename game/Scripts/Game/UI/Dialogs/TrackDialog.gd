@@ -41,7 +41,7 @@ func set_piece_db(assets: Dictionary) -> void:
 		for type_name in ["music", "sounds"]:
 			if assets[pack_name].has(type_name):
 				for game_entry in assets[pack_name][type_name]:
-					var preview = preload("res://Scenes/GenericPreview.tscn").instance()
+					var preview = preload("res://Scenes/Game/UI/Previews/GenericPreview.tscn").instance()
 					if type_name == "music":
 						_music.add_child(preview)
 					elif type_name == "sounds":

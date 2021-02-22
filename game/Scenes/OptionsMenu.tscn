@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/OptionsMenu.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/BindButton.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/BindingBackground.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Misc/BindButton.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Misc/BindingBackground.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/OptionsTab.gd" type="Script" id=4]
 
 [node name="OptionsMenu" type="Control"]

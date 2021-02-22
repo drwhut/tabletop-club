@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scripts/RoomDialog.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game/UI/Dialogs/RoomDialog.gd" type="Script" id=1]
 
 [node name="RoomDialog" type="WindowDialog"]
 margin_right = 450.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scripts/ObjectsDialog.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game/UI/Dialogs/ObjectsDialog.gd" type="Script" id=1]
 
 [node name="ObjectsDialog" type="WindowDialog"]
 anchor_left = 0.5

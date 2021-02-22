@@ -30,7 +30,7 @@ onready var _packs = $MarginContainer/HBoxContainer/VBoxContainer/ScrollContaine
 onready var _status = $MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/StatusLabel
 
 var _available_previews = []
-var _object_preview = preload("res://Scenes/ObjectPreview.tscn")
+var _object_preview = preload("res://Scenes/Game/UI/Previews/ObjectPreview.tscn")
 var _piece_db = {}
 var _preview_width = 0
 var _toggled_pack = ""
