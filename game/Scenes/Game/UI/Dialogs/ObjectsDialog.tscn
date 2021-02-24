@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Game/UI/Dialogs/ObjectsDialog.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Game/UI/Previews/PreviewFilter.tscn" type="PackedScene" id=2]
 
 [node name="ObjectsDialog" type="WindowDialog"]
 anchor_left = 0.5
@@ -9,8 +10,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -512.0
 margin_top = -300.0
-margin_right = 58.0
-margin_bottom = 50.0
+margin_right = 120.0
+margin_bottom = 174.0
 rect_min_size = Vector2( 570, 350 )
 popup_exclusive = true
 window_title = "Objects"
@@ -20,75 +21,47 @@ __meta__ = {
 "_editor_description_": "Displays the pieces that are available to spawn."
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_right = -10.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-margin_right = 550.0
-margin_bottom = 350.0
-__meta__ = {
-"_edit_use_anchors_": false
+[node name="PreviewFilter" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 632.0
+margin_bottom = 444.0
+size_flags_vertical = 3
+db_types = {
+"Cards": "cards",
+"Containers": [ "containers/cube", "containers/custom", "containers/cylinder" ],
+"Dice - d4": "dice/d4",
+"Dice - d6": "dice/d6",
+"Dice - d8": "dice/d8",
+"Pieces": [ "pieces/cube", "pieces/custom", "pieces/cylinder" ],
+"Speakers": [ "speakers/cube", "speakers/custom", "speakers/cylinder" ],
+"Stacks": "stacks",
+"Timers": [ "timers/cube", "timers/custom", "timers/cylinder" ],
+"Tokens": [ "tokens/cube", "tokens/cylinder" ]
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_right = 41.0
-margin_bottom = 350.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 448.0
+margin_right = 632.0
+margin_bottom = 474.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 41.0
-margin_bottom = 20.0
-text = "Packs:"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 24.0
-margin_right = 41.0
-margin_bottom = 350.0
-size_flags_vertical = 3
-scroll_horizontal_enabled = false
-
-[node name="Packs" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 45.0
-margin_right = 550.0
-margin_bottom = 350.0
-size_flags_horizontal = 3
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 505.0
-margin_bottom = 320.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-scroll_horizontal_enabled = false
-
-[node name="Content" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
-margin_right = 505.0
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 324.0
-margin_right = 505.0
-margin_bottom = 350.0
-
-[node name="StatusLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="StatusLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
 margin_top = 3.0
-margin_right = 461.0
+margin_right = 588.0
 margin_bottom = 23.0
 size_flags_horizontal = 3
 
-[node name="AddButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_left = 465.0
-margin_right = 505.0
+[node name="AddButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 592.0
+margin_right = 632.0
 margin_bottom = 26.0
 disabled = true
 text = "Add"
 
-[connection signal="popup_hide" from="." to="." method="_on_ObjectsDialog_popup_hide"]
-[connection signal="tree_exited" from="." to="." method="_on_ObjectsDialog_tree_exited"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/AddButton" to="." method="_on_AddButton_pressed"]
+[connection signal="preview_clicked" from="VBoxContainer/PreviewFilter" to="." method="_on_PreviewFilter_preview_clicked"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddButton" to="." method="_on_AddButton_pressed"]

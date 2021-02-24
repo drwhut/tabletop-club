@@ -69,7 +69,6 @@ func popup_objects_dialog() -> void:
 # assets: The database from the AssetDB.
 func set_piece_db(assets: Dictionary) -> void:
 	_games_dialog.set_piece_db(assets)
-	_objects_dialog.set_piece_db(assets)
 	_room_dialog.set_piece_db(assets)
 
 # Set the room details in the room dialog.

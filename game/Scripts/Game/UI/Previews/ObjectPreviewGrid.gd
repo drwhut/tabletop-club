@@ -81,6 +81,9 @@ func provide_objects(objects: Array, after: int) -> void:
 	_empty_label.visible = objects.empty()
 	_preview_container.visible = not objects.empty()
 	
+	# Make sure none of the previews are selected.
+	get_tree().call_group("preview_selected", "set_selected", false)
+	
 	for i in range(get_preview_count()):
 		var preview: ObjectPreview = _preview_container.get_child(i)
 		if i < objects.size():
@@ -120,9 +123,6 @@ func reset() -> void:
 	if Engine.editor_hint:
 		return
 	
-	# Make sure none of the previews look selected.
-	get_tree().call_group("preview_selected", "set_selected", false)
-	
 	_request_objects(0)
 
 # Set the number of columns in the grid.
@@ -153,6 +153,7 @@ func _init():
 		child.queue_free()
 	
 	_empty_label = Label.new()
+	_empty_label.visible = false
 	_empty_label.align = Label.ALIGN_CENTER
 	_empty_label.valign = Label.VALIGN_CENTER
 	_empty_label.size_flags_horizontal = SIZE_EXPAND_FILL
@@ -160,7 +161,6 @@ func _init():
 	add_child(_empty_label)
 	
 	_preview_container = GridContainer.new()
-	_preview_container.visible = false
 	_preview_container.size_flags_horizontal = SIZE_EXPAND_FILL
 	_preview_container.size_flags_vertical = SIZE_EXPAND_FILL
 	add_child(_preview_container)
@@ -194,6 +194,9 @@ func _init():
 	_last_button.connect("pressed", self, "_on_last_button_pressed")
 	hbox.add_child(_last_button)
 
+func _ready():
+	connect("visibility_changed", self, "_on_visibility_changed")
+
 # Request objects from a given start index.
 # start: The start index to request.
 func _request_objects(start: int) -> void:
@@ -225,11 +228,11 @@ func _on_first_button_pressed():
 	_request_objects(0)
 
 func _on_previous_button_pressed():
-	_request_objects(max(0, _start - get_preview_count()))
+	_request_objects(int(max(0, _start - get_preview_count())))
 
 func _on_next_button_pressed():
 	var max_start = _page_last * get_preview_count()
-	_request_objects(min(_start + get_preview_count(), max_start))
+	_request_objects(int(min(_start + get_preview_count(), max_start)))
 
 func _on_last_button_pressed():
 	_request_objects(_page_last * get_preview_count())
@@ -237,3 +240,7 @@ func _on_last_button_pressed():
 func _on_preview_clicked(preview: ObjectPreview, event: InputEventMouseButton):
 	# Forward the signal outside the grid.
 	emit_signal("preview_clicked", preview, event)
+
+func _on_visibility_changed():
+	# Make sure none of the previews are selected.
+	get_tree().call_group("preview_selected", "set_selected", false)
