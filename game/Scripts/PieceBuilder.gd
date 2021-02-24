@@ -137,7 +137,7 @@ static func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 		
 		stack.add_piece(mesh, shape, Stack.STACK_BOTTOM, Stack.FLIP_NO)
 	
-	single_piece.queue_free()
+	single_piece.free()
 
 # Create an array of StackPieceInstances from a piece, which act as mesh
 # instances, but can also be inserted into stacks.

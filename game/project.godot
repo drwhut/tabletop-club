@@ -141,6 +141,7 @@ config/version="master"
 Global="*res://Scripts/Global.gd"
 Lobby="*res://Scripts/Lobby.gd"
 AssetDB="*res://Scripts/AssetDB.gd"
+ObjectPreviewFactory="*res://Scripts/Game/UI/Previews/ObjectPreviewFactory.gd"
 
 [debug]
 

@@ -36,9 +36,13 @@ var _last_piece_entry: Dictionary = {}
 var _piece: Piece = null
 
 # Remove the piece from the display if there is one.
-func clear_piece() -> void:
+# details: Should the details (like the name) be cleared too?
+func clear_piece(details: bool = true) -> void:
 	_last_piece_entry = {}
-	_label.text = ""
+	
+	if details:
+		hint_tooltip = ""
+		_label.text = ""
 	
 	if _piece:
 		_viewport.remove_child(_piece)
@@ -65,25 +69,28 @@ func is_selected() -> bool:
 
 # Set the preview to display a given piece.
 # piece: The piece to display. Note that it must be an orphan node!
-# custom_entry: If you want to, you can separately override the piece entry
-# stored by the preview.
-func set_piece(piece: Piece, custom_entry: Dictionary = {}) -> void:
-	# Make sure that if we are already displaying a piece, we free it before
-	# we lose it!
-	clear_piece()
-	_piece = piece
-	
-	var piece_entry = _piece.piece_entry
-	if custom_entry.empty():
-		_last_piece_entry = piece_entry
-	else:
-		_last_piece_entry = custom_entry
+func set_piece(piece: Piece) -> void:
+	set_piece_details(piece.piece_entry)
+	set_piece_display(piece)
+
+# Set the preview's details with a piece entry.
+# piece_entry: The entry used to populate the details.
+func set_piece_details(piece_entry: Dictionary) -> void:
+	_last_piece_entry = piece_entry
 	
 	if piece_entry["description"].empty():
 		hint_tooltip = ""
 	else:
 		hint_tooltip = piece_entry["description"]
 	_label.text = piece_entry["name"]
+
+# Set the piece to be displayed in the viewport.
+# piece: The piece to display. Note that it must be an orphan node!
+func set_piece_display(piece: Piece) -> void:
+	# Make sure that if we are already displaying a piece, we free it before
+	# we lose it!
+	clear_piece(false)
+	_piece = piece
 	
 	# Disable physics-related properties, there won't be any physicsing here!
 	_piece.contact_monitor = false
@@ -123,20 +130,12 @@ func set_piece(piece: Piece, custom_entry: Dictionary = {}) -> void:
 # Set the preview to display a piece with the given piece entry.
 # piece_entry: The entry of the piece to display.
 func set_piece_with_entry(piece_entry: Dictionary) -> void:
-	var piece: Piece = null
-	var custom_entry: Dictionary = {}
+	set_piece_details(piece_entry)
 	
-	if piece_entry.has("texture_paths"):
-		# Override the piece entry for the preview to be the stack's entry,
-		# since the stack would overwrite it's own entry to be the entry of the
-		# first piece that is added.
-		custom_entry = piece_entry
-		piece = preload("res://Pieces/Stack.tscn").instance()
-		PieceBuilder.fill_stack(piece, piece_entry)
-	else:
-		piece = PieceBuilder.build_piece(piece_entry)
-	
-	set_piece(piece, custom_entry)
+	# Ask the ObjectPreviewFactory to build the piece for us to display in
+	# another thread.
+	clear_piece(false)
+	ObjectPreviewFactory.add_to_queue(self, piece_entry)
 
 # Set the preview to appear selected.
 # selected: Whether the preview should be selected.
@@ -147,10 +146,21 @@ func set_selected(selected: bool) -> void:
 	else:
 		remove_from_group("preview_selected")
 
+func _ready():
+	# We connect the signal here because we don't want the editor to connect
+	# the signal when this is inside an ObjectPreviewGrid (which is an editor
+	# script).
+	connect("tree_exiting", self, "_on_tree_exiting")
+
 func _process(delta):
 	if _piece:
 		var delta_theta = 2 * PI * REVOLUTIONS_PER_SECOND * delta
 		_piece.rotate_object_local(Vector3.UP, delta_theta)
+
+func _on_tree_exiting():
+	# Wait for the ObjectPreviewFactory's build thread to finish in the event
+	# it is still building a piece for us.
+	ObjectPreviewFactory.flush_queue()
 
 func _on_ViewportContainer_gui_input(event):
 	# Completely ignore any events if the preview isn't displaying anything.

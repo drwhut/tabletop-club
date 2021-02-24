@@ -84,6 +84,9 @@ func provide_objects(objects: Array, after: int) -> void:
 	# Make sure none of the previews are selected.
 	get_tree().call_group("preview_selected", "set_selected", false)
 	
+	# Make sure the ObjectPreviewFactory is ready to build pieces.
+	ObjectPreviewFactory.flush_queue()
+	
 	for i in range(get_preview_count()):
 		var preview: ObjectPreview = _preview_container.get_child(i)
 		if i < objects.size():
