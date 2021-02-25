@@ -42,8 +42,7 @@ func add_to_queue(preview: ObjectPreview, piece_entry: Dictionary) -> void:
 		_build_thread.start(self, "_build")
 
 # Wait for the building thread to finish it's current jobs. This should be
-# called if we're about to start adding jobs to the queue, or if a preview is
-# about to leave the scene tree.
+# called if a preview is about to leave the scene tree.
 func flush_queue() -> void:
 	if _build_thread.is_active():
 		_build_thread.wait_to_finish()
@@ -55,6 +54,15 @@ func _process(_delta):
 			var piece = _finished_pieces[preview]
 			if piece is Piece:
 				preview.set_piece_display(piece)
+				
+				# If the piece is not parented now, it means the preview
+				# rejected it (now that I'm writing this it actually sounds
+				# really sad, orphans should never be rejected). This is most
+				# likely because the preview was cleared earlier while we were
+				# still building the piece for the preview.
+				if not piece.is_inside_tree():
+					piece.free()
+	
 	_finished_pieces.clear()
 	_finished_pieces_mutex.unlock()
 
@@ -94,3 +102,9 @@ func _build(_userdata) -> void:
 			piece_entry = _entry_list[preview]
 			_entry_list.erase(preview)
 		_entry_list_mutex.unlock()
+	
+	# When threads reach the end of their function, Godot still flags them as
+	# "active" until they are joined back into the main thread. This line
+	# ensures the thread is properly de-allocated when there are no more pieces
+	# to build.
+	_build_thread.call_deferred("wait_to_finish")

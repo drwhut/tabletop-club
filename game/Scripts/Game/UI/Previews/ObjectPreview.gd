@@ -35,6 +35,8 @@ const X_ROTATION = PI / 4
 var _last_piece_entry: Dictionary = {}
 var _piece: Piece = null
 
+var _reject_factory_output = false
+
 # Remove the piece from the display if there is one.
 # details: Should the details (like the name) be cleared too?
 func clear_piece(details: bool = true) -> void:
@@ -43,6 +45,12 @@ func clear_piece(details: bool = true) -> void:
 	if details:
 		hint_tooltip = ""
 		_label.text = ""
+		
+		# If the ObjectPreviewFactory is still building a piece for this
+		# preview, we don't want it to appear after we've cleared the preview,
+		# so turn it away when it does eventually come knocking on the front
+		# door.
+		_reject_factory_output = true
 	
 	if _piece:
 		_viewport.remove_child(_piece)
@@ -83,10 +91,18 @@ func set_piece_details(piece_entry: Dictionary) -> void:
 	else:
 		hint_tooltip = piece_entry["description"]
 	_label.text = piece_entry["name"]
+	
+	# If we've just set the details of a piece, then we're bound to have our
+	# display set as well, so welcome any pieces built by the
+	# ObjectPreviewFactory with open arms!
+	_reject_factory_output = false
 
 # Set the piece to be displayed in the viewport.
 # piece: The piece to display. Note that it must be an orphan node!
 func set_piece_display(piece: Piece) -> void:
+	if _reject_factory_output:
+		return
+	
 	# Make sure that if we are already displaying a piece, we free it before
 	# we lose it!
 	clear_piece(false)
