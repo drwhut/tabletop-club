@@ -1079,26 +1079,27 @@ remotesync func set_lamp_type(sunlight: bool) -> void:
 	_sun_light.visible = sunlight
 
 # Set the room's skybox.
-# skybox_entry: The skybox's entry in the asset DB. If the texture path is
-# empty, the default skybox is used.
+# skybox_entry: The skybox's entry in the asset DB. If either the texture path
+# or the entry are empty, the default skybox is used.
 remotesync func set_skybox(skybox_entry: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	if not skybox_entry.has("texture_path"):
-		push_error("Skybox entry does not point to a texture!")
-		return
+	var default_skybox = true
+	if not skybox_entry.empty():
+		if skybox_entry.has("texture_path"):
+			var texture_path = skybox_entry["texture_path"]
+			if not texture_path.empty():
+				var texture: Texture = load(texture_path)
+				var panorama = PanoramaSky.new()
+				panorama.panorama = texture
+				
+				_world_environment.environment.background_sky = panorama
+				
+				default_skybox = false
 	
-	var texture_path = skybox_entry["texture_path"]
-	
-	if texture_path.empty():
+	if default_skybox:
 		_world_environment.environment.background_sky = ProceduralSky.new()
-	else:
-		var texture: Texture = load(texture_path)
-		var panorama = PanoramaSky.new()
-		panorama.panorama = texture
-		
-		_world_environment.environment.background_sky = panorama
 	
 	_world_environment.set_meta("skybox_entry", skybox_entry)
 
