@@ -91,12 +91,16 @@ db_types = {
 "Timers": [ "timers/cube", "timers/custom", "timers/cylinder" ],
 "Tokens": [ "tokens/cube", "tokens/cylinder" ]
 }
+load_button_text = "Add"
+status_text_one = "Added %s."
+status_text_multiple = "Added %d objects."
 
 [node name="GamesDialog" parent="." instance=ExtResource( 2 )]
 window_title = "Games"
 db_types = {
 "Games": "games"
 }
+status_text_multiple = "Loaded %d games."
 
 [node name="RoomDialog" parent="." instance=ExtResource( 6 )]
 

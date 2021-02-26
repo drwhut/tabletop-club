@@ -28,9 +28,13 @@ onready var _preview_filter = $VBoxContainer/PreviewFilter
 onready var _status = $VBoxContainer/HBoxContainer/StatusLabel
 
 export(Dictionary) var db_types = {}
+export(String) var load_button_text = "Load"
+export(String) var status_text_one = "Loaded %s."
+export(String) var status_text_multiple = "Loaded %d assets."
 
 func _ready():
 	_preview_filter.db_types = db_types
+	_load_button.text = load_button_text
 
 func _on_LoadButton_pressed():
 	var previews_selected = get_tree().get_nodes_in_group("preview_selected")
@@ -52,9 +56,9 @@ func _on_LoadButton_pressed():
 	if num_pieces == 0:
 		pass
 	elif num_pieces == 1:
-		_status.text = "Loaded %s." % entry_name
+		_status.text = status_text_one % entry_name
 	else:
-		_status.text = "Loaded %d objects." % previews_selected.size()
+		_status.text = status_text_multiple % previews_selected.size()
 
 func _on_PreviewFilter_preview_clicked(_preview: ObjectPreview, _event: InputEventMouseButton):
 	var none_selected = get_tree().get_nodes_in_group("preview_selected").empty()

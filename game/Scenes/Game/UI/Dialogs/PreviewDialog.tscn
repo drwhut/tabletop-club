@@ -50,7 +50,6 @@ margin_left = 586.0
 margin_right = 632.0
 margin_bottom = 26.0
 disabled = true
-text = "Load"
 
 [connection signal="preview_clicked" from="VBoxContainer/PreviewFilter" to="." method="_on_PreviewFilter_preview_clicked"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]

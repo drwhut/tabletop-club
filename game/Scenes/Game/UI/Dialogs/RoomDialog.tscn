@@ -138,6 +138,7 @@ window_title = "Select a skybox..."
 db_types = {
 "Skyboxes": "skyboxes"
 }
+status_text_multiple = "Loaded %d skyboxes."
 
 [connection signal="about_to_show" from="." to="." method="_on_RoomDialog_about_to_show"]
 [connection signal="pressed" from="VBoxContainer/TabContainer/Skybox/ChangeSkyboxButton" to="." method="_on_ChangeSkyboxButton_pressed"]

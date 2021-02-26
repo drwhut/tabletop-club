@@ -107,6 +107,7 @@ db_types = {
 "Music": "music",
 "Sounds": "sounds"
 }
+status_text_multiple = "Loaded %d tracks."
 
 [node name="BoxSelectionRect" type="ColorRect" parent="."]
 visible = false
