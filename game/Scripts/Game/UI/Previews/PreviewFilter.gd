@@ -209,19 +209,28 @@ func _update_preview_gui() -> void:
 		_object_preview_grid.reset()
 		
 	elif _generic_preview_grid.visible:
-		# TODO: Optimise this.
-		for child in _generic_preview_grid.get_children():
-			_generic_preview_grid.remove_child(child)
-			child.queue_free()
+		var current_children = _generic_preview_grid.get_child_count()
+		var target_children = _preview_entries_filtered.size()
 		
-		for entry in _preview_entries_filtered:
+		while current_children < target_children:
 			var preview = preload("res://Scenes/Game/UI/Previews/GenericPreview.tscn").instance()
 			preview.size_flags_horizontal = SIZE_EXPAND_FILL
 			preview.size_flags_vertical = SIZE_EXPAND_FILL
 			preview.connect("clicked", self, "_on_generic_preview_clicked")
 			_generic_preview_grid.add_child(preview)
 			
-			preview.set_entry(entry)
+			current_children += 1
+		
+		while current_children > target_children:
+			var child = _generic_preview_grid.get_child(current_children - 1)
+			_generic_preview_grid.remove_child(child)
+			child.queue_free()
+			
+			current_children -= 1
+		
+		for i in range(target_children):
+			var preview: GenericPreview = _generic_preview_grid.get_child(i)
+			preview.set_entry(_preview_entries_filtered[i])
 
 func _on_generic_preview_clicked(preview: GenericPreview, event: InputEventMouseButton):
 	emit_signal("preview_clicked", preview, event)
