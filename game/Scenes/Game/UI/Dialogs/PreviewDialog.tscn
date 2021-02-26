@@ -51,5 +51,7 @@ margin_right = 632.0
 margin_bottom = 26.0
 disabled = true
 
+[connection signal="about_to_show" from="." to="." method="_on_PreviewDialog_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_PreviewDialog_popup_hide"]
 [connection signal="preview_clicked" from="VBoxContainer/PreviewFilter" to="." method="_on_PreviewFilter_preview_clicked"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]

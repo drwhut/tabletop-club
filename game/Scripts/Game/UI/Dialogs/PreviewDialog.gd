@@ -60,6 +60,12 @@ func _on_LoadButton_pressed():
 	else:
 		_status.text = status_text_multiple % previews_selected.size()
 
+func _on_PreviewDialog_about_to_show():
+	_preview_filter.display_previews()
+
+func _on_PreviewDialog_popup_hide():
+	_preview_filter.clear_previews()
+
 func _on_PreviewFilter_preview_clicked(_preview: ObjectPreview, _event: InputEventMouseButton):
 	var none_selected = get_tree().get_nodes_in_group("preview_selected").empty()
 	_load_button.disabled = none_selected

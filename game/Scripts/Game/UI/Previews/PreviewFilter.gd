@@ -40,12 +40,24 @@ const GENERIC_PREVIEW_TYPES = [
 	"sounds"
 ]
 
-var _display_types_on_ready = false
+var _set_types_on_ready = false
 var _is_ready = false
 var _last_filtered_hash: int = 0
 var _preview_entries = []
 var _preview_entries_filtered = []
 var _search_length = 0
+
+# Clear the previews.
+func clear_previews() -> void:
+	_object_preview_grid.provide_objects([], 0)
+	
+	for child in _generic_preview_grid.get_children():
+		_generic_preview_grid.remove_child(child)
+		child.queue_free()
+
+# Start displaying the previews.
+func display_previews() -> void:
+	_display_previews()
 
 # Get the currently selected pack.
 # Returns: The currently selected pack.
@@ -82,9 +94,8 @@ func set_db_types(types: Dictionary) -> void:
 	
 	if _is_ready:
 		_set_type_options()
-		_display_previews()
 	else:
-		_display_types_on_ready = true
+		_set_types_on_ready = true
 
 func _ready():
 	_pack_button.clear()
@@ -99,10 +110,9 @@ func _ready():
 			_pack_button.add_item(pack)
 	
 	_is_ready = true
-	if _display_types_on_ready:
+	if _set_types_on_ready:
 		_set_type_options()
-		_display_previews()
-		_display_types_on_ready = false
+		_set_types_on_ready = false
 
 # Check that a certain type directory exists within the given asset pack in the
 # assets DB.
