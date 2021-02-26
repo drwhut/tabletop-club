@@ -42,6 +42,7 @@ const GENERIC_PREVIEW_TYPES = [
 
 var _display_types_on_ready = false
 var _is_ready = false
+var _last_filtered_hash: int = 0
 var _preview_entries = []
 var _preview_entries_filtered = []
 var _search_length = 0
@@ -174,7 +175,11 @@ func _filter_previews(from_filtered: bool) -> void:
 			if not query in entry_name:
 				_preview_entries_filtered.remove(i)
 	
-	_update_preview_gui()
+	var current_hash = _preview_entries_filtered.hash()
+	if current_hash != _last_filtered_hash:
+		_update_preview_gui()
+	
+	_last_filtered_hash = current_hash
 
 # Set the items in the type option button.
 func _set_type_options() -> void:
