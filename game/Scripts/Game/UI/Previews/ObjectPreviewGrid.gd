@@ -94,11 +94,11 @@ func provide_objects(objects: Array, after: int) -> void:
 				else:
 					push_error("Piece %d in object array is not an orphan node!" % i)
 			elif piece is Dictionary:
-				preview.set_piece_with_entry(piece)
+				preview.set_entry(piece)
 			else:
 				push_error("Element %d in object array is not a piece or piece entry!" % i)
 		else:
-			preview.clear_piece()
+			preview.clear()
 	
 	_page_index = _start / get_preview_count()
 	_page_last = _page_index + int(ceil(floor(after) / get_preview_count()))
@@ -194,9 +194,6 @@ func _init():
 	_last_button.connect("pressed", self, "_on_last_button_pressed")
 	hbox.add_child(_last_button)
 
-func _ready():
-	connect("visibility_changed", self, "_on_visibility_changed")
-
 # Request objects from a given start index.
 # start: The start index to request.
 func _request_objects(start: int) -> void:
@@ -212,6 +209,8 @@ func _setup_previews() -> void:
 	
 	while current_children < target_children:
 		var preview = _object_preview.instance()
+		if not Engine.editor_hint:
+			preview.allow_multiple_select = true
 		preview.connect("clicked", self, "_on_preview_clicked")
 		_preview_container.add_child(preview)
 
@@ -240,7 +239,3 @@ func _on_last_button_pressed():
 func _on_preview_clicked(preview: ObjectPreview, event: InputEventMouseButton):
 	# Forward the signal outside the grid.
 	emit_signal("preview_clicked", preview, event)
-
-func _on_visibility_changed():
-	# Make sure none of the previews are selected.
-	get_tree().call_group("preview_selected", "set_selected", false)

@@ -19,25 +19,34 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Control
+extends Preview
 
-signal load_pressed(game_entry)
+class_name GenericPreview
 
-onready var _description = $HBoxContainer/VBoxContainer/Description
-onready var _name = $Name
-onready var _pack = $HBoxContainer/VBoxContainer/Pack
+onready var _description = $VBoxContainer/HBoxContainer/ScrollContainer/Description
+onready var _name = $VBoxContainer/Name
+onready var _selected_rect = $SelectedRect
+onready var _texture = $VBoxContainer/HBoxContainer/Texture
 
-var _entry: Dictionary = {}
+# Called when the preview is cleared.
+func _clear_gui() -> void:
+	_description.text = ""
+	_name.text = ""
+	_texture.texture = null
 
-# Set the preview details using an entry from the AssetDB.
-# pack_name: The name of the pack the entry belongs to.
-# entry: The entry this preview should represent.
-func set_preview(pack_name: String, entry: Dictionary) -> void:
-	_entry = entry
-	
-	_name.text = entry["name"]
-	_pack.text = "from " + pack_name
+# Called when the preview entry is changed.
+# entry: The new entry to display. It is guaranteed to not be empty.
+func _set_entry_gui(entry: Dictionary) -> void:
 	_description.text = entry["description"]
+	_name.text = entry["name"]
+	
+	if entry.has("texture_path") and (not entry["texture_path"].empty()):
+		_texture.visible = true
+		_texture.texture = load(entry["texture_path"])
+	else:
+		_texture.visible = false
 
-func _on_LoadButton_pressed():
-	emit_signal("load_pressed", _entry)
+# Called when the selected flag has been changed.
+# selected: If the preview is now selected.
+func _set_selected_gui(selected: bool) -> void:
+	_selected_rect.color.a = 1.0 if selected else 0.0

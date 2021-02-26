@@ -5,7 +5,7 @@
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
-background_color = Color( 0.545098, 0.733333, 0.780392, 1 )
+background_color = Color( 0.54902, 0.705882, 0.784314, 1 )
 ambient_light_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="World" id=2]
@@ -54,5 +54,3 @@ margin_bottom = 119.0
 custom_fonts/font = SubResource( 3 )
 align = 1
 autowrap = true
-
-[connection signal="gui_input" from="CenterContainer/ViewportContainer" to="." method="_on_ViewportContainer_gui_input"]

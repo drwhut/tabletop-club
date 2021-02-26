@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/Cabin-SemiBold.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Fonts/Cabin-Italic.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/Game/UI/Previews/GenericPreview.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
@@ -12,62 +12,61 @@ font_data = ExtResource( 1 )
 size = 12
 font_data = ExtResource( 2 )
 
-[node name="GenericPreview" type="VBoxContainer"]
-margin_right = 109.0
-margin_bottom = 123.0
-size_flags_horizontal = 3
+[node name="GenericPreview" type="PanelContainer"]
+margin_right = 119.0
+margin_bottom = 104.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false,
-"_editor_description_": "This scene is used to display \"games\", which are pre-made .table files that are stored in asset packs in order to make setting up games easier.
-
-Table files can be made by clicking the save game button in the in-game menu."
+"_editor_description_": "This preview is used to display basic assets. It displays the name and description, and the texture if the asset points to one."
 }
 
-[node name="Name" type="Label" parent="."]
-margin_right = 109.0
+[node name="SelectedRect" type="ColorRect" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 112.0
+margin_bottom = 97.0
+color = Color( 0.54902, 0.705882, 0.784314, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 112.0
+margin_bottom = 97.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+margin_right = 105.0
 margin_bottom = 30.0
 custom_fonts/font = SubResource( 1 )
 autowrap = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 34.0
-margin_right = 109.0
-margin_bottom = 73.0
+margin_right = 105.0
+margin_bottom = 90.0
+size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 59.0
-margin_bottom = 39.0
+[node name="Texture" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 100, 56 )
+expand = true
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 104.0
+margin_right = 105.0
+margin_bottom = 56.0
+mouse_filter = 2
 size_flags_horizontal = 3
+scroll_vertical_enabled = false
 
-[node name="Pack" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_right = 59.0
+[node name="Description" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
 margin_bottom = 15.0
 custom_fonts/font = SubResource( 2 )
-
-[node name="Description" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 19.0
-margin_right = 59.0
-margin_bottom = 39.0
-size_flags_vertical = 6
-autowrap = true
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 63.0
-margin_right = 109.0
-margin_bottom = 39.0
-alignment = 2
-
-[node name="LoadButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
-margin_top = 13.0
-margin_right = 46.0
-margin_bottom = 39.0
-text = "Load"
-
-[node name="Space" type="Control" parent="."]
-margin_top = 77.0
-margin_right = 109.0
-margin_bottom = 87.0
-rect_min_size = Vector2( 0, 10 )
-
-[connection signal="pressed" from="HBoxContainer/VBoxContainer2/LoadButton" to="." method="_on_LoadButton_pressed"]

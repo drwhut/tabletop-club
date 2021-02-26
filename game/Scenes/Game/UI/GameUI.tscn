@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Game/UI/GameUI.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Game/UI/Dialogs/ObjectsDialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Game/UI/ChatBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Game/UI/Dialogs/GamesDialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/RoomDialog.tscn" type="PackedScene" id=6]
 
 [node name="GameUI" type="Control"]
@@ -79,10 +78,25 @@ __meta__ = {
 }
 
 [node name="ObjectsDialog" parent="." instance=ExtResource( 2 )]
+window_title = "Objects"
+db_types = {
+"Cards": "cards",
+"Containers": [ "containers/cube", "containers/custom", "containers/cylinder" ],
+"Dice - d4": "dice/d4",
+"Dice - d6": "dice/d6",
+"Dice - d8": "dice/d8",
+"Pieces": [ "pieces/cube", "pieces/custom", "pieces/cylinder" ],
+"Speakers": [ "speakers/cube", "speakers/custom", "speakers/cylinder" ],
+"Stacks": "stacks",
+"Timers": [ "timers/cube", "timers/custom", "timers/cylinder" ],
+"Tokens": [ "tokens/cube", "tokens/cylinder" ]
+}
 
-[node name="GamesDialog" parent="." instance=ExtResource( 5 )]
-margin_right = 400.0
-margin_bottom = 250.0
+[node name="GamesDialog" parent="." instance=ExtResource( 2 )]
+window_title = "Games"
+db_types = {
+"Games": "games"
+}
 
 [node name="RoomDialog" parent="." instance=ExtResource( 6 )]
 
@@ -174,8 +188,8 @@ visible = false
 [connection signal="pressed" from="TopPanel/ClearTableButton" to="." method="_on_ClearTableButton_pressed"]
 [connection signal="item_selected" from="TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
 [connection signal="pressed" from="TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
-[connection signal="piece_requested" from="ObjectsDialog" to="." method="_on_ObjectsDialog_piece_requested"]
-[connection signal="loading_game" from="GamesDialog" to="." method="_on_GamesDialog_loading_game"]
+[connection signal="entry_requested" from="ObjectsDialog" to="." method="_on_ObjectsDialog_entry_requested"]
+[connection signal="entry_requested" from="GamesDialog" to="." method="_on_GamesDialog_entry_requested"]
 [connection signal="requesting_room_details" from="RoomDialog" to="." method="_on_RoomDialog_requesting_room_details"]
 [connection signal="setting_lighting" from="RoomDialog" to="." method="_on_RoomDialog_setting_lighting"]
 [connection signal="setting_skybox" from="RoomDialog" to="." method="_on_RoomDialog_setting_skybox"]

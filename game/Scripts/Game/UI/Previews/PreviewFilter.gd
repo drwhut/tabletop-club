@@ -28,16 +28,37 @@ onready var _type_button = $HBoxContainer/TypeButton
 onready var _search_edit = $HBoxContainer/SearchEdit
 
 onready var _object_preview_grid = $ScrollContainer/VBoxContainer/ObjectPreviewGrid
+onready var _generic_preview_grid = $ScrollContainer/VBoxContainer/GenericPreviewGrid
 
-export(Dictionary) var db_types = {}
+export(Dictionary) var db_types = {} setget set_db_types
 
 const DEFAULT_ASSET_PACK = "OpenTabletop"
+const GENERIC_PREVIEW_TYPES = [
+	"games",
+	"music",
+	"skyboxes",
+	"sounds"
+]
 
+var _display_types_on_ready = false
+var _is_ready = false
 var _preview_entries = []
 var _preview_entries_filtered = []
 var _search_length = 0
 
-func _ready():
+# Get the currently selected pack.
+# Returns: The currently selected pack.
+func get_pack() -> String:
+	return _pack_button.get_item_text(_pack_button.selected)
+
+# Get the currently selected type.
+# Returns: The currently selected type.
+func get_type() -> String:
+	return _type_button.get_item_text(_type_button.selected)
+
+# Set the AssetDB types to be displayed.
+# types: The dictionary representing the AssetDB types and their display name.
+func set_db_types(types: Dictionary) -> void:
 	# First check that the db_types dictionary is valid.
 	for key in db_types:
 		if key is String:
@@ -56,6 +77,17 @@ func _ready():
 			push_error("%s entry in DB types is not a string!" % str(key))
 			return
 	
+	db_types = types
+	
+	if _is_ready:
+		_set_type_options()
+		_display_previews()
+	else:
+		_display_types_on_ready = true
+
+func _ready():
+	_pack_button.clear()
+	
 	var asset_db = AssetDB.get_db()
 	if asset_db.has(DEFAULT_ASSET_PACK):
 		_pack_button.add_item(DEFAULT_ASSET_PACK)
@@ -65,11 +97,11 @@ func _ready():
 		if pack != DEFAULT_ASSET_PACK:
 			_pack_button.add_item(pack)
 	
-	_set_type_options()
-	
-	# Call this a frame later when the rest of the scene tree is ready.
-	# That way, we can be sure a network peer exists if pieces are created.
-	call_deferred("_display_previews")
+	_is_ready = true
+	if _display_types_on_ready:
+		_set_type_options()
+		_display_previews()
+		_display_types_on_ready = false
 
 # Check that a certain type directory exists within the given asset pack in the
 # assets DB.
@@ -107,6 +139,15 @@ func _display_previews() -> void:
 			if asset_db[pack].has(type):
 				for entry in asset_db[pack][type]:
 					_preview_entries.append(entry)
+	
+	var use_generic_grid = false
+	for type in types:
+		for start in GENERIC_PREVIEW_TYPES:
+			if type.begins_with(start):
+				use_generic_grid = true
+				break
+	_object_preview_grid.visible = not use_generic_grid
+	_generic_preview_grid.visible = use_generic_grid
 	
 	# Reset the search text and show everything.
 	_preview_entries_filtered = _preview_entries.duplicate()
@@ -164,7 +205,26 @@ func _set_type_options() -> void:
 
 # Update the preview GUI.
 func _update_preview_gui() -> void:
-	_object_preview_grid.reset()
+	if _object_preview_grid.visible:
+		_object_preview_grid.reset()
+		
+	elif _generic_preview_grid.visible:
+		# TODO: Optimise this.
+		for child in _generic_preview_grid.get_children():
+			_generic_preview_grid.remove_child(child)
+			child.queue_free()
+		
+		for entry in _preview_entries_filtered:
+			var preview = preload("res://Scenes/Game/UI/Previews/GenericPreview.tscn").instance()
+			preview.size_flags_horizontal = SIZE_EXPAND_FILL
+			preview.size_flags_vertical = SIZE_EXPAND_FILL
+			preview.connect("clicked", self, "_on_generic_preview_clicked")
+			_generic_preview_grid.add_child(preview)
+			
+			preview.set_entry(entry)
+
+func _on_generic_preview_clicked(preview: GenericPreview, event: InputEventMouseButton):
+	emit_signal("preview_clicked", preview, event)
 
 func _on_ObjectPreviewGrid_preview_clicked(preview: ObjectPreview, event: InputEventMouseButton):
 	# Forward the signal outside the filter.

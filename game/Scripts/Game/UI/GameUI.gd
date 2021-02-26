@@ -65,21 +65,15 @@ func hide_chat_box() -> void:
 func popup_objects_dialog() -> void:
 	_objects_dialog.popup_centered()
 
-# Set the asset database contents, based on the asset database given.
-# assets: The database from the AssetDB.
-func set_piece_db(assets: Dictionary) -> void:
-	_games_dialog.set_piece_db(assets)
-	_room_dialog.set_piece_db(assets)
-
 # Set the room details in the room dialog.
-# skybox_path: The texture path to the skybox texture.
+# skybox_entry: The skybox's asset DB entry.
 # lamp_color: The color of the room lamp.
 # lamp_intensity: The intensity of the room lamp.
 # lamp_sunlight: If the room lamp is emitting sunlight.
-func set_room_details(skybox_path: String, lamp_color: Color,
+func set_room_details(skybox_entry: Dictionary, lamp_color: Color,
 	lamp_intensity: float, lamp_sunlight: bool) -> void:
 	
-	_room_dialog.set_room_details(skybox_path, lamp_color, lamp_intensity,
+	_room_dialog.set_room_details(skybox_entry, lamp_color, lamp_intensity,
 		lamp_sunlight)
 
 # Set the table flipped status, so the flip table button can be updated.
@@ -171,9 +165,9 @@ func _on_GameMenuButton_pressed():
 func _on_GamesButton_pressed():
 	_games_dialog.popup_centered()
 
-func _on_GamesDialog_loading_game(game_entry: Dictionary):
+func _on_GamesDialog_entry_requested(_pack: String, _type: String, entry: Dictionary):
 	_games_dialog.visible = false
-	emit_signal("load_table", game_entry["table_path"])
+	emit_signal("load_table", entry["table_path"])
 
 func _on_LoadGameButton_pressed():
 	_popup_file_dialog(FileDialog.MODE_OPEN_FILE)
@@ -194,8 +188,8 @@ func _on_ObjectsButton_pressed():
 	spawn_point_temp_offset = Vector3()
 	popup_objects_dialog()
 
-func _on_ObjectsDialog_piece_requested(piece_entry: Dictionary):
-	emit_signal("piece_requested", piece_entry, spawn_point_origin + spawn_point_temp_offset)
+func _on_ObjectsDialog_entry_requested(_pack: String, _type: String, entry: Dictionary):
+	emit_signal("piece_requested", entry, spawn_point_origin + spawn_point_temp_offset)
 
 func _on_OptionsButton_pressed():
 	_options_menu.visible = true

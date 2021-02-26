@@ -21,34 +21,41 @@
 
 extends WindowDialog
 
-signal piece_requested(piece_entry)
+signal entry_requested(pack, type, entry)
 
-onready var _add_button = $VBoxContainer/HBoxContainer/AddButton
+onready var _load_button = $VBoxContainer/HBoxContainer/LoadButton
 onready var _preview_filter = $VBoxContainer/PreviewFilter
 onready var _status = $VBoxContainer/HBoxContainer/StatusLabel
 
-func _on_AddButton_pressed():
+export(Dictionary) var db_types = {}
+
+func _ready():
+	_preview_filter.db_types = db_types
+
+func _on_LoadButton_pressed():
 	var previews_selected = get_tree().get_nodes_in_group("preview_selected")
 	
 	var num_pieces = 0
-	var piece_name = ""
+	var entry_name = ""
 	for preview in previews_selected:
-		if preview is ObjectPreview:
-			var piece_entry = preview.get_piece_entry()
+		if preview is Preview:
+			var entry = preview.get_entry()
 			
 			num_pieces += 1
-			if piece_name.empty():
-				piece_name = piece_entry["name"]
+			if entry_name.empty():
+				entry_name = entry["name"]
 			
-			emit_signal("piece_requested", piece_entry)
+			var pack = _preview_filter.get_pack()
+			var type = _preview_filter.get_type()
+			emit_signal("entry_requested", pack, type, entry)
 	
 	if num_pieces == 0:
 		pass
 	elif num_pieces == 1:
-		_status.text = "Added %s." % piece_name
+		_status.text = "Loaded %s." % entry_name
 	else:
-		_status.text = "Added %d objects." % previews_selected.size()
+		_status.text = "Loaded %d objects." % previews_selected.size()
 
 func _on_PreviewFilter_preview_clicked(_preview: ObjectPreview, _event: InputEventMouseButton):
 	var none_selected = get_tree().get_nodes_in_group("preview_selected").empty()
-	_add_button.disabled = none_selected
+	_load_button.disabled = none_selected

@@ -19,11 +19,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Control
+extends Preview
 
 class_name ObjectPreview
-
-signal clicked(preview, button_event)
 
 onready var _camera = $CenterContainer/ViewportContainer/Viewport/Camera
 onready var _label = $Label
@@ -32,35 +30,9 @@ onready var _viewport = $CenterContainer/ViewportContainer/Viewport
 const REVOLUTIONS_PER_SECOND = 0.25
 const X_ROTATION = PI / 4
 
-var _last_piece_entry: Dictionary = {}
 var _piece: Piece = null
 
 var _reject_factory_output = false
-
-# Remove the piece from the display if there is one.
-# details: Should the details (like the name) be cleared too?
-func clear_piece(details: bool = true) -> void:
-	_last_piece_entry = {}
-	
-	if details:
-		hint_tooltip = ""
-		_label.text = ""
-		
-		# If the ObjectPreviewFactory is still building a piece for this
-		# preview, we don't want it to appear after we've cleared the preview,
-		# so turn it away when it does eventually come knocking on the front
-		# door.
-		_reject_factory_output = true
-	
-	if _piece:
-		_viewport.remove_child(_piece)
-		_piece.queue_free()
-		_piece = null
-
-# Get the piece entry this preview represents.
-# Returns: The piece entry, empty if no piece has been set.
-func get_piece_entry() -> Dictionary:
-	return _last_piece_entry
 
 # Get the name of the piece node this preview is displaying.
 # Returns: The name of the piece node, an empty string if displaying nothing.
@@ -69,11 +41,6 @@ func get_piece_name() -> String:
 		return _piece.name
 	
 	return ""
-
-# Does the preview appear selected?
-# Returns: If the preview appears selected.
-func is_selected() -> bool:
-	return not _viewport.transparent_bg
 
 # Set the preview to display a given piece.
 # piece: The piece to display. Note that it must be an orphan node!
@@ -84,7 +51,7 @@ func set_piece(piece: Piece) -> void:
 # Set the preview's details with a piece entry.
 # piece_entry: The entry used to populate the details.
 func set_piece_details(piece_entry: Dictionary) -> void:
-	_last_piece_entry = piece_entry
+	_entry = piece_entry
 	
 	if piece_entry["description"].empty():
 		hint_tooltip = ""
@@ -105,7 +72,7 @@ func set_piece_display(piece: Piece) -> void:
 	
 	# Make sure that if we are already displaying a piece, we free it before
 	# we lose it!
-	clear_piece(false)
+	_clear_gui(false)
 	_piece = piece
 	
 	# Disable physics-related properties, there won't be any physicsing here!
@@ -143,25 +110,6 @@ func set_piece_display(piece: Piece) -> void:
 	var dist = 1 + display_radius + (display_height / (2 * tan(theta / 2)))
 	_camera.translation.z = dist
 
-# Set the preview to display a piece with the given piece entry.
-# piece_entry: The entry of the piece to display.
-func set_piece_with_entry(piece_entry: Dictionary) -> void:
-	set_piece_details(piece_entry)
-	
-	# Ask the ObjectPreviewFactory to build the piece for us to display in
-	# another thread.
-	clear_piece(false)
-	ObjectPreviewFactory.add_to_queue(self, piece_entry)
-
-# Set the preview to appear selected.
-# selected: Whether the preview should be selected.
-func set_selected(selected: bool) -> void:
-	_viewport.transparent_bg = not selected
-	if selected:
-		add_to_group("preview_selected")
-	else:
-		remove_from_group("preview_selected")
-
 func _ready():
 	# We connect the signal here because we don't want the editor to connect
 	# the signal when this is inside an ObjectPreviewGrid (which is an editor
@@ -173,22 +121,40 @@ func _process(delta):
 		var delta_theta = 2 * PI * REVOLUTIONS_PER_SECOND * delta
 		_piece.rotate_object_local(Vector3.UP, delta_theta)
 
+# Called when the preview is cleared.
+# details: Should the details (like the name) be cleared too?
+func _clear_gui(details: bool = true) -> void:
+	if details:
+		hint_tooltip = ""
+		_label.text = ""
+		
+		# If the ObjectPreviewFactory is still building a piece for this
+		# preview, we don't want it to appear after we've cleared the preview,
+		# so turn it away when it does eventually come knocking on the front
+		# door.
+		_reject_factory_output = true
+	
+	if _piece:
+		_viewport.remove_child(_piece)
+		_piece.queue_free()
+		_piece = null
+
+# Called when the preview entry is changed.
+# piece_entry: The new entry to display. It is guaranteed to not be empty.
+func _set_entry_gui(piece_entry: Dictionary) -> void:
+	set_piece_details(piece_entry)
+	
+	# Ask the ObjectPreviewFactory to build the piece for us to display in
+	# another thread.
+	_clear_gui(false)
+	ObjectPreviewFactory.add_to_queue(self, piece_entry)
+
+# Called when the selected flag has been changed.
+# selected: If the preview is now selected.
+func _set_selected_gui(selected: bool) -> void:
+	_viewport.transparent_bg = not selected
+
 func _on_tree_exiting():
 	# Wait for the ObjectPreviewFactory's build thread to finish in the event
 	# it is still building a piece for us.
 	ObjectPreviewFactory.flush_queue()
-
-func _on_ViewportContainer_gui_input(event):
-	# Completely ignore any events if the preview isn't displaying anything.
-	if _piece == null:
-		return
-	
-	if event is InputEventMouseButton:
-		emit_signal("clicked", self, event)
-		
-		# If the preview has been clicked, register it as selected.
-		if event.pressed:
-			if event.button_index == BUTTON_LEFT:
-				if not event.control:
-					get_tree().call_group("preview_selected", "set_selected", false)
-				set_selected(not is_selected())

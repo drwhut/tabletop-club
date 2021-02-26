@@ -105,9 +105,6 @@ func _ready():
 	Lobby.connect("players_synced", self, "_on_Lobby_players_synced")
 	
 	Lobby.clear_players()
-	
-	# The assets should have been imported at the start of the game.
-	_ui.set_piece_db(AssetDB.get_db())
 
 # Create a network peer object.
 # Returns: A new network peer object.
@@ -242,7 +239,7 @@ func _on_GameUI_stopped_saving_table():
 	_room_state_saving = {}
 
 func _on_GameUI_skybox_requested(skybox_entry: Dictionary):
-	_room.rpc_id(1, "request_set_skybox", skybox_entry["texture_path"])
+	_room.rpc_id(1, "request_set_skybox", skybox_entry)
 
 func _on_Lobby_players_synced():
 	if not get_tree().is_network_server():

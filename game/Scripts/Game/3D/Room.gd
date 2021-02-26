@@ -404,14 +404,16 @@ func get_pieces() -> Array:
 func get_piece_count() -> int:
 	return _pieces.get_child_count()
 
-# Get the current skybox texture path.
-# Returns: The current skybox texture path. Empty if it is the default skybox.
-func get_skybox() -> String:
-	var sky = _world_environment.environment.background_sky
-	if sky is PanoramaSky:
-		return sky.panorama.resource_path
-	else:
-		return ""
+# Get the current skybox's entry in the asset DB.
+# Returns: The current skybox's entry, empty if it is using the default skybox.
+func get_skybox() -> Dictionary:
+	if _world_environment.has_meta("skybox_entry"):
+		var skybox_entry = _world_environment.get_meta("skybox_entry")
+		if skybox_entry.has("texture_path"):
+			if not skybox_entry["texture_path"].empty():
+				return skybox_entry
+	
+	return {}
 
 # Get the current room state.
 # Returns: The current room state.
@@ -1017,9 +1019,9 @@ master func request_set_lamp_type(sunlight: bool) -> void:
 	rpc("set_lamp_type", sunlight)
 
 # Request the server to set the room skybox.
-# texture_path: The texture path of the skybox.
-master func request_set_skybox(texture_path: String) -> void:
-	rpc("set_skybox", texture_path)
+# skybox_entry: The skybox's entry in the asset DB.
+master func request_set_skybox(skybox_entry: Dictionary) -> void:
+	rpc("set_skybox", skybox_entry)
 
 # Request the server to get a stack to collect all of the pieces that it can
 # stack.
@@ -1077,11 +1079,17 @@ remotesync func set_lamp_type(sunlight: bool) -> void:
 	_sun_light.visible = sunlight
 
 # Set the room's skybox.
-# texture_path: The path of the skybox texture. If empty, the default
-# skybox is used.
-remotesync func set_skybox(texture_path: String) -> void:
+# skybox_entry: The skybox's entry in the asset DB. If the texture path is
+# empty, the default skybox is used.
+remotesync func set_skybox(skybox_entry: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
+	
+	if not skybox_entry.has("texture_path"):
+		push_error("Skybox entry does not point to a texture!")
+		return
+	
+	var texture_path = skybox_entry["texture_path"]
 	
 	if texture_path.empty():
 		_world_environment.environment.background_sky = ProceduralSky.new()
@@ -1091,6 +1099,8 @@ remotesync func set_skybox(texture_path: String) -> void:
 		panorama.panorama = texture
 		
 		_world_environment.environment.background_sky = panorama
+	
+	_world_environment.set_meta("skybox_entry", skybox_entry)
 
 # Set the room state.
 # state: The new room state.

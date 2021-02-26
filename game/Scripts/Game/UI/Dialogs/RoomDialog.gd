@@ -25,59 +25,45 @@ signal requesting_room_details()
 signal setting_lighting(lamp_color, lamp_intensity, lamp_sunlight)
 signal setting_skybox(skybox_entry)
 
-onready var _apply_button = $VBoxContainer/HBoxContainer2/ApplyButton
-onready var _lamp_color_picker = $VBoxContainer/HBoxContainer/VBoxContainer2/ColorPickerButton
-onready var _lamp_intensity_slider = $VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/IntensitySlider
-onready var _lamp_intensity_value_label = $VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/IntensityValueLabel
-onready var _lamp_type_button = $VBoxContainer/HBoxContainer/VBoxContainer2/TypeButton
-onready var _skyboxes = $VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/Skyboxes
+onready var _apply_button = $VBoxContainer/HBoxContainer/ApplyButton
+onready var _clear_skybox_button = $VBoxContainer/TabContainer/Skybox/ClearSkyboxButton
+onready var _lamp_color_picker = $VBoxContainer/TabContainer/Lighting/ColorPickerButton
+onready var _lamp_intensity_slider = $VBoxContainer/TabContainer/Lighting/HBoxContainer/IntensitySlider
+onready var _lamp_intensity_value_label = $VBoxContainer/TabContainer/Lighting/HBoxContainer/IntensityValueLabel
+onready var _lamp_type_button = $VBoxContainer/TabContainer/Lighting/TypeButton
+onready var _skybox_dialog = $SkyboxDialog
+onready var _skybox_preview = $VBoxContainer/TabContainer/Skybox/SkyboxPreview
 
-# Set the room database contents, based on the database given.
-# assets: The database from the AssetDB.
-func set_piece_db(assets: Dictionary) -> void:
-	for child in _skyboxes.get_children():
-		_skyboxes.remove_child(child)
-		child.queue_free()
-	
-	# Create a skybox preview for the "default" skybox.	
-	_add_skybox_preview("OpenTabletop", {
+# Clear the currently selected skybox, and set it to the default skybox.
+func clear_skybox() -> void:
+	_skybox_preview.set_entry({
 		"description": "The default skybox for OpenTabletop.",
 		"name": "Default",
 		"texture_path": ""
 	})
 	
-	for pack_name in assets:
-		if assets[pack_name].has("skyboxes"):
-			for skybox_entry in assets[pack_name]["skyboxes"]:
-				_add_skybox_preview(pack_name, skybox_entry)
+	_clear_skybox_button.disabled = true
 
 # Set the room details in the room dialog.
-# skybox_path: The texture path to the skybox texture.
+# skybox_entry: The skybox's entry in the asset DB.
 # lamp_color: The color of the room lamp.
 # lamp_intensity: The intensity of the room lamp.
 # lamp_sunlight: If the room lamp is emitting sunlight.
-func set_room_details(skybox_path: String, lamp_color: Color,
+func set_room_details(skybox_entry: Dictionary, lamp_color: Color,
 	lamp_intensity: float, lamp_sunlight: bool) -> void:
 	
-	for skybox in _skyboxes.get_children():
-		var texture_path = skybox.get_skybox_entry()["texture_path"]
-		skybox.set_selected(texture_path == skybox_path)
+	if skybox_entry.empty():
+		clear_skybox()
+	else:
+		_skybox_preview.set_entry(skybox_entry)
 	
 	_lamp_color_picker.color = lamp_color
 	_lamp_intensity_slider.value = lamp_intensity
 	_set_lamp_intensity_value_label(lamp_intensity)
 	_lamp_type_button.selected = 0 if lamp_sunlight else 1
 
-# Add a skybox preview to the list.
-# pack_name: The name of the pack the skybox belongs to.
-# skybox_entry: The skybox's entry in the asset database.
-func _add_skybox_preview(pack_name: String, skybox_entry: Dictionary) -> void:
-	var preview = preload("res://Scenes/Game/UI/Previews/SkyboxPreview.tscn").instance()
-	_skyboxes.add_child(preview)
-	
-	preview.set_skybox(pack_name, skybox_entry)
-	
-	preview.connect("clicked", self, "_on_preview_clicked")
+func _ready():
+	clear_skybox()
 
 # Set the lamp intensity value label as a percentage value.
 # value: The value to display in the label.
@@ -87,12 +73,18 @@ func _set_lamp_intensity_value_label(value: float) -> void:
 func _on_ApplyButton_pressed():
 	_apply_button.disabled = true
 	
-	var skyboxes_selected = get_tree().get_nodes_in_group("skyboxes_selected")
-	if skyboxes_selected.size() > 0:
-		emit_signal("setting_skybox", skyboxes_selected[0].get_skybox_entry())
+	emit_signal("setting_skybox", _skybox_preview.get_entry())
 	
 	emit_signal("setting_lighting", _lamp_color_picker.color,
 		_lamp_intensity_slider.value, _lamp_type_button.selected == 0)
+
+func _on_ChangeSkyboxButton_pressed():
+	_skybox_dialog.popup_centered()
+
+func _on_ClearSkyboxButton_pressed():
+	_apply_button.disabled = false
+	
+	clear_skybox()
 
 func _on_ColorPickerButton_color_changed(_color: Color):
 	_apply_button.disabled = false
@@ -107,6 +99,14 @@ func _on_RoomDialog_about_to_show():
 func _on_IntensitySlider_value_changed(value: float):
 	_apply_button.disabled = false
 	_set_lamp_intensity_value_label(value)
+
+func _on_SkyboxDialog_entry_requested(_pack: String, _type: String, entry: Dictionary):
+	_apply_button.disabled = false
+	
+	_skybox_preview.set_entry(entry)
+	_skybox_dialog.visible = false
+	
+	_clear_skybox_button.disabled = false
 
 func _on_TypeButton_item_selected(_index: int):
 	_apply_button.disabled = false

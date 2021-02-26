@@ -11,7 +11,7 @@
 [ext_resource path="res://Images/RulerLine.png" type="Texture" id=9]
 [ext_resource path="res://Images/HiddenAreaIconPressed.svg" type="Texture" id=10]
 [ext_resource path="res://Images/HiddenAreaIconNormal.svg" type="Texture" id=11]
-[ext_resource path="res://Scenes/Game/UI/Dialogs/TrackDialog.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=12]
 
 [node name="CameraController" type="Spatial"]
 script = ExtResource( 1 )
@@ -102,6 +102,11 @@ margin_right = -5.0
 margin_bottom = -5.0
 
 [node name="TrackDialog" parent="." instance=ExtResource( 12 )]
+window_title = "Select a track..."
+db_types = {
+"Music": "music",
+"Sounds": "sounds"
+}
 
 [node name="BoxSelectionRect" type="ColorRect" parent="."]
 visible = false
@@ -139,6 +144,6 @@ __meta__ = {
 [connection signal="pressed" from="ToolContainer/HiddenAreaToolButton" to="." method="_on_HiddenAreaToolButton_pressed"]
 [connection signal="popup_hide" from="PieceContextMenu" to="." method="_on_PieceContextMenu_popup_hide"]
 [connection signal="item_rect_changed" from="PieceContextMenu/VBoxContainer" to="." method="_on_VBoxContainer_item_rect_changed"]
-[connection signal="loading_track" from="TrackDialog" to="." method="_on_TrackDialog_loading_track"]
+[connection signal="entry_requested" from="TrackDialog" to="." method="_on_TrackDialog_entry_requested"]
 [connection signal="take_all_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_all_from"]
 [connection signal="take_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_from"]

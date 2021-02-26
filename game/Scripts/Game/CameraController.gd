@@ -296,9 +296,6 @@ func _ready():
 	_initial_transform = transform
 	_initial_zoom = _camera.translation.z
 	_reset_camera()
-	
-	# The assets should have been imported at the start of the game.
-	_track_dialog.set_piece_db(AssetDB.get_db())
 
 func _process(delta):
 	if _is_grabbing_selected:
@@ -1569,10 +1566,11 @@ func _on_PieceContextMenu_popup_hide():
 func _on_RulerToolButton_pressed():
 	_set_tool(TOOL_RULER)
 
-func _on_TrackDialog_loading_track(track_entry: Dictionary, music: bool):
+func _on_TrackDialog_entry_requested(_pack: String, type: String, entry: Dictionary):
 	_track_dialog.visible = false
 	if _speaker_connected:
-		_speaker_connected.rpc_id(1, "request_set_track", track_entry, music)
+		var music = (type == "Music")
+		_speaker_connected.rpc_id(1, "request_set_track", entry, music)
 	else:
 		push_warning("Don't know which speaker to set track for, doing nothing.")
 

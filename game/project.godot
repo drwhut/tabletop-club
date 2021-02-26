@@ -29,12 +29,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/Dice.gd"
 }, {
+"base": "Preview",
+"class": "GenericPreview",
+"language": "GDScript",
+"path": "res://Scripts/Game/UI/Previews/GenericPreview.gd"
+}, {
 "base": "Area",
 "class": "HiddenArea",
 "language": "GDScript",
 "path": "res://Scripts/Game/3D/HiddenArea.gd"
 }, {
-"base": "Control",
+"base": "Preview",
 "class": "ObjectPreview",
 "language": "GDScript",
 "path": "res://Scripts/Game/UI/Previews/ObjectPreview.gd"
@@ -68,6 +73,11 @@ _global_script_classes=[ {
 "class": "PieceContainer",
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/PieceContainer.gd"
+}, {
+"base": "Control",
+"class": "Preview",
+"language": "GDScript",
+"path": "res://Scripts/Game/UI/Previews/Preview.gd"
 }, {
 "base": "Piece",
 "class": "SpeakerPiece",
@@ -109,6 +119,7 @@ _global_script_class_icons={
 "BindButton": "",
 "Card": "",
 "Dice": "",
+"GenericPreview": "",
 "HiddenArea": "",
 "ObjectPreview": "",
 "ObjectPreviewGrid": "",
@@ -117,6 +128,7 @@ _global_script_class_icons={
 "Piece": "",
 "PieceBuilder": "",
 "PieceContainer": "",
+"Preview": "",
 "SpeakerPiece": "",
 "SpinBoxButton": "",
 "Stack": "",

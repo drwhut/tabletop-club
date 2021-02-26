@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scripts/Game/UI/Dialogs/ObjectsDialog.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game/UI/Dialogs/PreviewDialog.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/UI/Previews/PreviewFilter.tscn" type="PackedScene" id=2]
 
-[node name="ObjectsDialog" type="WindowDialog"]
+[node name="PreviewDialog" type="WindowDialog"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -14,11 +14,12 @@ margin_right = 120.0
 margin_bottom = 174.0
 rect_min_size = Vector2( 570, 350 )
 popup_exclusive = true
-window_title = "Objects"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
-"_editor_description_": "Displays the pieces that are available to spawn."
+"_editor_description_": "Displays previews of different assets that have been imported.
+
+You can change what types of assets are shown by modifying the db_types dictionary."
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -32,18 +33,6 @@ __meta__ = {
 margin_right = 632.0
 margin_bottom = 444.0
 size_flags_vertical = 3
-db_types = {
-"Cards": "cards",
-"Containers": [ "containers/cube", "containers/custom", "containers/cylinder" ],
-"Dice - d4": "dice/d4",
-"Dice - d6": "dice/d6",
-"Dice - d8": "dice/d8",
-"Pieces": [ "pieces/cube", "pieces/custom", "pieces/cylinder" ],
-"Speakers": [ "speakers/cube", "speakers/custom", "speakers/cylinder" ],
-"Stacks": "stacks",
-"Timers": [ "timers/cube", "timers/custom", "timers/cylinder" ],
-"Tokens": [ "tokens/cube", "tokens/cylinder" ]
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 448.0
@@ -52,16 +41,16 @@ margin_bottom = 474.0
 
 [node name="StatusLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
 margin_top = 3.0
-margin_right = 588.0
+margin_right = 582.0
 margin_bottom = 23.0
 size_flags_horizontal = 3
 
-[node name="AddButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 592.0
+[node name="LoadButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 586.0
 margin_right = 632.0
 margin_bottom = 26.0
 disabled = true
-text = "Add"
+text = "Load"
 
 [connection signal="preview_clicked" from="VBoxContainer/PreviewFilter" to="." method="_on_PreviewFilter_preview_clicked"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddButton" to="." method="_on_AddButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]

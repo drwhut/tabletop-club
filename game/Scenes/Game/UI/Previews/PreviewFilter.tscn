@@ -76,6 +76,13 @@ script = ExtResource( 3 )
 columns = 6
 rows = 3
 
+[node name="GenericPreviewGrid" type="GridContainer" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 399.0
+margin_right = 632.0
+margin_bottom = 399.0
+columns = 2
+
 [connection signal="item_selected" from="HBoxContainer/PackButton" to="." method="_on_PackButton_item_selected"]
 [connection signal="item_selected" from="HBoxContainer/TypeButton" to="." method="_on_TypeButton_item_selected"]
 [connection signal="text_changed" from="HBoxContainer/SearchEdit" to="." method="_on_SearchEdit_text_changed"]
