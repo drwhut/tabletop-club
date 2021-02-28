@@ -156,6 +156,8 @@ func _goto_scene(path: String, args: Dictionary) -> void:
 	root.remove_child(_current_scene)
 	_current_scene.free()
 	
+	PieceBuilder.free_cache()
+	
 	_current_scene = load(path).instance()
 	
 	root.add_child(_current_scene)

@@ -29,6 +29,9 @@ var _entry_list_mutex = Mutex.new()
 var _finished_pieces = {}
 var _finished_pieces_mutex = Mutex.new()
 
+var _free_pieces = []
+var _free_pieces_mutex = Mutex.new()
+
 # Add a request to build a piece with the given entry, and place the result in
 # the given object preview.
 # preview: The preview to place the built piece into.
@@ -47,6 +50,20 @@ func flush_queue() -> void:
 	if _build_thread.is_active():
 		_build_thread.wait_to_finish()
 
+# Free a piece while in the build thread. This should be used if the piece was
+# built via this factory.
+# piece: The piece to free.
+func free_piece(piece: Piece) -> void:
+	_free_pieces_mutex.lock()
+	_free_pieces.append(piece)
+	_free_pieces_mutex.unlock()
+	
+	if not _build_thread.is_active():
+		_build_thread.start(self, "_build")
+
+func _ready():
+	connect("tree_exiting", self, "_on_tree_exiting")
+
 func _process(_delta):
 	_finished_pieces_mutex.lock()
 	for preview in _finished_pieces:
@@ -61,7 +78,7 @@ func _process(_delta):
 				# likely because the preview was cleared earlier while we were
 				# still building the piece for the preview.
 				if not piece.is_inside_tree():
-					piece.free()
+					free_piece(piece)
 	
 	_finished_pieces.clear()
 	_finished_pieces_mutex.unlock()
@@ -103,8 +120,23 @@ func _build(_userdata) -> void:
 			_entry_list.erase(preview)
 		_entry_list_mutex.unlock()
 	
+	_free_pieces_mutex.lock()
+	while not _free_pieces.empty():
+		var piece = _free_pieces.pop_back()
+		piece.free()
+	_free_pieces_mutex.unlock()
+	
 	# When threads reach the end of their function, Godot still flags them as
 	# "active" until they are joined back into the main thread. This line
 	# ensures the thread is properly de-allocated when there are no more pieces
 	# to build.
 	_build_thread.call_deferred("wait_to_finish")
+
+func _on_tree_exiting():
+	# Start the build thread so it can free the remaining pieces in the free
+	# queue.
+	if not _build_thread.is_active():
+		_build_thread.start(self, "_build")
+	
+	if _build_thread.is_active():
+		_build_thread.wait_to_finish()

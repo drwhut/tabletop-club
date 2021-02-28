@@ -136,7 +136,12 @@ func _clear_gui(details: bool = true) -> void:
 	
 	if _piece:
 		_viewport.remove_child(_piece)
-		_piece.queue_free()
+		
+		# Ask the ObjectPreviewFactory to free the piece, as it could have come
+		# from there. If it didn't, that doesn't matter, it does the same thing
+		# anyway.
+		ObjectPreviewFactory.free_piece(_piece)
+		
 		_piece = null
 
 # Called when the preview entry is changed.

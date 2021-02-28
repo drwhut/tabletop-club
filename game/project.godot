@@ -64,11 +64,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/Piece.gd"
 }, {
-"base": "Resource",
-"class": "PieceBuilder",
-"language": "GDScript",
-"path": "res://Scripts/PieceBuilder.gd"
-}, {
 "base": "Piece",
 "class": "PieceContainer",
 "language": "GDScript",
@@ -126,7 +121,6 @@ _global_script_class_icons={
 "OptionsTab": "",
 "OutlineColorRect": "",
 "Piece": "",
-"PieceBuilder": "",
 "PieceContainer": "",
 "Preview": "",
 "SpeakerPiece": "",
@@ -150,10 +144,11 @@ config/version="master"
 
 [autoload]
 
+AssetDB="*res://Scripts/AssetDB.gd"
 Global="*res://Scripts/Global.gd"
 Lobby="*res://Scripts/Lobby.gd"
-AssetDB="*res://Scripts/AssetDB.gd"
 ObjectPreviewFactory="*res://Scripts/Game/UI/Previews/ObjectPreviewFactory.gd"
+PieceBuilder="*res://Scripts/PieceBuilder.gd"
 
 [debug]
 

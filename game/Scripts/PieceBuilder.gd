@@ -19,15 +19,22 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Resource
+extends Node
 
-class_name PieceBuilder
+# If a resource is loaded via the PieceBuilder (e.g. a texture or a 3D model),
+# then it is very likely it will be loaded again in the future. So keep
+# resources that we load into a dictionary, where the key is the path to the
+# resource.
+# Plus, this also makes building pieces in multiple threads safer, as we can
+# control who gets control over the cache with a mutex.
+var _res_cache = {}
+var _res_cache_mutex = Mutex.new()
 
 # Build a piece using an entry from the AssetDB.
 # Returns: The piece corresponding to the given entry.
 # piece_entry: The entry to create the piece with.
-static func build_piece(piece_entry: Dictionary) -> Piece:
-	var piece = load(piece_entry["scene_path"]).instance()
+func build_piece(piece_entry: Dictionary) -> Piece:
+	var piece = _load_res(piece_entry["scene_path"]).instance()
 	
 	# If the scene is not a piece (e.g. when importing a scene from the assets
 	# folder), make it a piece so it can interact with other objects.
@@ -84,7 +91,7 @@ static func build_piece(piece_entry: Dictionary) -> Piece:
 			child.transform.origin -= centre_of_mass
 	
 	if piece_entry.has("texture_path") and piece_entry["texture_path"] is String:
-		var texture: Texture = load(piece_entry["texture_path"])
+		var texture: Texture = _load_res(piece_entry["texture_path"])
 		piece.apply_texture(texture)
 	
 	return piece
@@ -92,12 +99,12 @@ static func build_piece(piece_entry: Dictionary) -> Piece:
 # Fill a stack with pieces using an entry from the AssetDB.
 # stack: The stack to fill.
 # stack_entry: The stack entry to use.
-static func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
+func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 	if stack_entry["masses"].size() != stack_entry["texture_paths"].size():
 		push_error("Stack entry arrays do not match size!")
 		return
 	
-	var single_piece = load(stack_entry["scene_path"]).instance()
+	var single_piece = _load_res(stack_entry["scene_path"]).instance()
 	if not single_piece is Piece:
 		push_error("Scene path does not point to a piece!")
 		return
@@ -129,7 +136,7 @@ static func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 		
 		# TODO: Make sure StackPieceInstances do the exact same thing as Pieces
 		# when it comes to applying textures.
-		var texture: Texture = load(texture_path)
+		var texture: Texture = _load_res(texture_path)
 		var new_material = SpatialMaterial.new()
 		new_material.albedo_texture = texture
 		
@@ -139,12 +146,18 @@ static func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 	
 	single_piece.free()
 
+# Free the entire resource cache.
+func free_cache() -> void:
+	_res_cache_mutex.lock()
+	_res_cache.clear()
+	_res_cache_mutex.unlock()
+
 # Create an array of StackPieceInstances from a piece, which act as mesh
 # instances, but can also be inserted into stacks.
 # Returns: An array of StackPieceInstances representing the piece's mesh
 # instances.
 # piece: The piece to get the mesh instances from.
-static func get_piece_meshes(piece: Piece) -> Array:
+func get_piece_meshes(piece: Piece) -> Array:
 	var out = []
 	for mesh_instance in piece.get_mesh_instances():
 		var piece_mesh = StackPieceInstance.new()
@@ -166,7 +179,7 @@ static func get_piece_meshes(piece: Piece) -> Array:
 # Scale a piece by changing the scale of its children collision shapes.
 # piece: The piece to scale.
 # scale: How much to scale the piece by.
-static func scale_piece(piece: Piece, scale: Vector3) -> void:
+func scale_piece(piece: Piece, scale: Vector3) -> void:
 	for child in piece.get_collision_shapes():
 		child.scale_object_local(scale)
 
@@ -175,7 +188,7 @@ static func scale_piece(piece: Piece, scale: Vector3) -> void:
 # add_to: The node to add the collision shapes + mesh instances to.
 # from: Where to start recursing from.
 # transform: The transform up to that point in the recursion.
-static func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
+func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 	transform: Transform) -> void:
 	
 	for child in from.get_children():
@@ -226,3 +239,21 @@ static func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 		
 		collision_shape.add_child(from)
 		add_to.add_child(collision_shape)
+
+# Load the resource at the given path. If it is already in the cache, the cache
+# version is returned. Otherwise, the resource is put into the cache before it
+# is returned.
+# Returns: The resource at the given path.
+# path: The path of the resource to load.
+func _load_res(path: String) -> Resource:
+	var res: Resource
+	
+	_res_cache_mutex.lock()
+	if _res_cache.has(path):
+		res = _res_cache[path]
+	else:
+		res = load(path)
+		_res_cache[path] = res
+	_res_cache_mutex.unlock()
+	
+	return res
