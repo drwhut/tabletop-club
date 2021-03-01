@@ -878,6 +878,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/MasterVolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SoundsVolumeSlider" to="." method="_on_SoundsVolumeSlider_value_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton" to="." method="_on_OpenAssetsButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ReimportButton" to="." method="_on_ReimportButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ViewLicenseButton" to="." method="_on_ViewLicenseButton_pressed"]

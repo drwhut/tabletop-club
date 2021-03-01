@@ -70,15 +70,7 @@ func _apply_config(config: ConfigFile) -> void:
 	# AUDIO #
 	#########
 	
-	for volume_key in config.get_section_keys("audio"):
-		var bus_name = volume_key.split("_")[0].capitalize()
-		var bus_index = AudioServer.get_bus_index(bus_name)
-		var bus_volume = config.get_value("audio", volume_key)
-		
-		AudioServer.set_bus_mute(bus_index, bus_volume == 0)
-		if bus_volume > 0:
-			var bus_db = _volume_to_db(bus_volume)
-			AudioServer.set_bus_volume_db(bus_index, bus_db)
+	_apply_audio_config(config)
 	
 	################
 	# KEY BINDINGS #
@@ -125,6 +117,21 @@ func _apply_config(config: ConfigFile) -> void:
 			msaa = Viewport.MSAA_16X
 	
 	get_viewport().msaa = msaa
+
+# Apply the audio options in the given config. We need to be able to do this
+# separately to the rest of the options, as the volume sliders should affect
+# the audio levels immediately.
+# config: The options to apply.
+func _apply_audio_config(config: ConfigFile) -> void:
+	for volume_key in config.get_section_keys("audio"):
+		var bus_name = volume_key.split("_")[0].capitalize()
+		var bus_index = AudioServer.get_bus_index(bus_name)
+		var bus_volume = config.get_value("audio", volume_key)
+		
+		AudioServer.set_bus_mute(bus_index, bus_volume == 0)
+		if bus_volume > 0:
+			var bus_db = _volume_to_db(bus_volume)
+			AudioServer.set_bus_volume_db(bus_index, bus_db)
 
 # Create a config file from the current options.
 # Returns: A config file whose values are based on the current options.
@@ -323,6 +330,12 @@ func _on_BindingBackground_unhandled_input(event: InputEvent):
 func _on_CancelBindButton_pressed():
 	_binding_background.visible = false
 
+func _on_MasterVolumeSlider_value_changed(_value: float):
+	_apply_audio_config(_create_config_from_current())
+
+func _on_MusicVolumeSlider_value_changed(_value: float):
+	_apply_audio_config(_create_config_from_current())
+
 func _on_OpenAssetsButton_pressed():
 	var asset_paths = AssetDB.get_asset_paths()
 	if asset_paths.empty():
@@ -429,6 +442,9 @@ func _on_ResetBindingsConfirm_confirmed():
 					event = events[0]
 				node.input_event = event
 				node.update_text()
+
+func _on_SoundsVolumeSlider_value_changed(_value: float):
+	_apply_audio_config(_create_config_from_current())
 
 func _on_ViewLicenseButton_pressed():
 	_license_dialog.popup_centered()
