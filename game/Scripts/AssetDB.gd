@@ -126,6 +126,24 @@ func get_asset_paths() -> Array:
 func get_db() -> Dictionary:
 	return _db
 
+# Search a pack's type directory for an asset with the given name.
+# Returns: The asset's entry in the DB if it exists, empty otherwise.
+# pack: The asset pack to search.
+# type: The type directory to search.
+# asset: The name of the asset to query.
+func search_type(pack: String, type: String, asset: String) -> Dictionary:
+	if _db.has(pack):
+		if _db[pack].has(type):
+			# The array of assets should be sorted by name, so we can use
+			# binary search!
+			var array: Array = _db[pack][type]
+			var index = array.bsearch_custom(asset, self, "_search_assets")
+			if index < array.size():
+				if array[index]["name"] == asset:
+					return array[index]
+	
+	return {}
+
 # Start the importing thread.
 func start_importing() -> void:
 	if _import_thread.is_active():
@@ -634,6 +652,10 @@ func _import_stack_config(stack_config: ConfigFile, pack: String, type: String,
 				_add_entry_to_db(pack, "stacks", stack_entry)
 			else:
 				print("Could not determine scale of stack ", stack_name)
+
+# Function used to binary search an array of asset entries by name.
+func _search_assets(element: Dictionary, search: String) -> bool:
+	return element["name"] < search
 
 # Send a signal from the importing thread.
 # file: The file we are currently importing - if blank, send the completed

@@ -146,8 +146,28 @@ func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 		var texture: Texture = _load_res(texture_path)
 		var new_material = SpatialMaterial.new()
 		new_material.albedo_texture = texture
-		
 		mesh.set_surface_material(0, new_material)
+		
+		# Cards are a special case, since they have two surfaces (one for each
+		# face), so we need to make sure the second texture is accounted for.
+		var type_dir = texture_path.get_base_dir()
+		if type_dir.ends_with("cards"):
+			var pack = type_dir.get_base_dir().get_file()
+			var asset = texture_path.get_file().get_basename()
+			
+			var entry = AssetDB.search_type(pack, "cards", asset)
+			if not entry.empty():
+				var back_texture_path = entry["texture_path_1"]
+				
+				var back_texture: Texture = _load_res(back_texture_path)
+				var back_material = SpatialMaterial.new()
+				back_material.albedo_texture = back_texture
+				mesh.set_surface_material(1, back_material)
+				
+				mesh.piece_entry["texture_path_1"] = back_texture_path
+			else:
+				push_error("Inferred %s/cards/%s from '%s', asset was not found in AssetDB!" % [
+					pack, asset, texture_path])
 		
 		stack.add_piece(mesh, shape, Stack.STACK_BOTTOM, Stack.FLIP_NO)
 	
@@ -177,7 +197,9 @@ func get_piece_meshes(piece: Piece) -> Array:
 		piece_mesh.scale = mesh_instance.scale
 		
 		piece_mesh.mesh = mesh_instance.mesh
-		piece_mesh.set_surface_material(0, mesh_instance.get_surface_material(0))
+		for surface in range(mesh_instance.get_surface_material_count()):
+			var material = mesh_instance.get_surface_material(surface)
+			piece_mesh.set_surface_material(surface, material)
 		
 		out.append(piece_mesh)
 	
