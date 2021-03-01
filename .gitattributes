@@ -1,5 +1,8 @@
 # Normalise the line endings of all text files.
 * text=auto eol=lf
 
+# Keep the line endings of Windows batch files.
+docs/make.bat eol=crlf
+
 # Binary files.
 *.png binary
