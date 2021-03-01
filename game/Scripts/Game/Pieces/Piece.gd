@@ -63,12 +63,13 @@ var _new_velocity = Vector3()
 
 # Apply a texture to the piece.
 # texture: The texture to apply.
-func apply_texture(texture: Texture) -> void:
+# surface: The index of the surface to apply the texture to.
+func apply_texture(texture: Texture, surface: int = 0) -> void:
 	for mesh_instance in get_mesh_instances():
 		var material = SpatialMaterial.new()
 		material.albedo_texture = texture
 		
-		mesh_instance.set_surface_material(0, material)
+		mesh_instance.set_surface_material(surface, material)
 
 # If you are hovering this piece, ask the server to flip the piece vertically.
 master func flip_vertically() -> void:

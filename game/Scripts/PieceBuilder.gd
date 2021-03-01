@@ -93,6 +93,13 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 	if piece_entry.has("texture_path") and piece_entry["texture_path"] is String:
 		var texture: Texture = _load_res(piece_entry["texture_path"])
 		piece.apply_texture(texture)
+		
+		# Check if the entry has textures for more than one surface.
+		var surface = 1
+		while piece_entry.has("texture_path_" + str(surface)):
+			texture = _load_res(piece_entry["texture_path_" + str(surface)])
+			piece.apply_texture(texture, surface)
+			surface += 1
 	
 	return piece
 

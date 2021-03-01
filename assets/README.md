@@ -144,6 +144,27 @@ Here is an example of a skybox texture:
 Cards are flat, rectangular-shaped objects that are stackable, and they have
 the unique functionality to be able to be put in a player's hand.
 
+**NOTE:** Unlike other objects, you need two separate textures for cards - one
+for the front face, and one for the back face. The game registers each of the
+textures in the `cards/` folder as the front face of a card, but you need to
+tell the game where to find the back face in the `config.cfg` file.
+
+Here is a simple example that will apply one back face texture to all of the
+cards in the folder:
+
+```ini
+; cards/config.cfg
+[*]
+
+back_face = "BackFace.png"
+
+[BackFace.png]
+
+; If we don't ignore the back face, then a card with both sides being the back
+; face will be imported.
+ignore = true
+```
+
 ### Container
 
 Containers are special objects that can hold an unlimited amount of other
@@ -189,6 +210,7 @@ of objects in the subfolder.
 #### Properties
 | Name            | Data Type | Used By    | Default Value      | Description |
 | :-------------- | :-------- | :--------- | :----------------- | :---------- |
+| `back_face`     | Text      | Cards      | `""`               | The file name of the back face of the card. The texture must be in the same folder. If blank, no back face texture is applied.
 | `desc`          | Text      | All        | `""`               | Describes the asset in more detail.
 | `ignore`        | Boolean   | All        | `false`            | If `true`, it tells the game to ignore this asset when importing the asset pack.
 | `main_menu`     | Boolean   | Music      | `false`            | If `true`, the music will have a chance of playing in the main menu.

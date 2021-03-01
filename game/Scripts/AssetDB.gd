@@ -512,6 +512,24 @@ func _import_asset(from: String, pack: String, type_dir: String,
 				"scene_path": scene,
 				"texture_path": to
 			}
+			
+			# Cards have two surfaces - one for the front face, and one for the
+			# back face.
+			if type_dir == "cards":
+				var back_path = _get_file_config_value(config, from.get_file(), "back_face", "")
+				if not back_path.empty():
+					if "/" in back_path or "\\" in back_path:
+						push_error("'%s' is invalid - back_face cannot point to another folder!" % back_path)
+					else:
+						back_path = from.get_base_dir() + "/" + back_path
+						var back_to = dir.get_current_dir() + "/" + back_path.get_file()
+						var back_err = _import_file(back_path, back_to)
+						
+						if back_err == OK or back_err == ERR_ALREADY_EXISTS:
+							entry["texture_path_1"] = back_to
+							print("Loaded back face: %s" % back_path)
+						else:
+							push_error("Failed to import '%s' (error %d)" % [back_path, back_err])
 	
 	if not entry.empty():
 		if type_dir.begins_with("containers"):
