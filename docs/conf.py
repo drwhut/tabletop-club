@@ -31,6 +31,7 @@ release = 'master'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinx.ext.todo"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -40,6 +41,9 @@ templates_path = []
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+
+# Show TODOs in the documentation.
+todo_include_todos = True
 
 
 # -- Options for HTML output -------------------------------------------------
