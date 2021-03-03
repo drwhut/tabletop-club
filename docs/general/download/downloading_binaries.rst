@@ -73,6 +73,8 @@ Downloading for macOS
       clicking "Open" in the pop-up. This button won't appear if you
       double-click the application.
 
+.. _download-server:
+
 Downloading for Linux / \*BSD / Server
 --------------------------------------
 
