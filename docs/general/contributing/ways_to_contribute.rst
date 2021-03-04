@@ -71,6 +71,21 @@ However you propose the asset, you need to provide the following information:
   accessible, and it must lead to a trusted website.
 
 
+Changing the documentation
+--------------------------
+
+If there is a part of the documentation that you don't understand, or that you
+think is missing, then please don't hesistate to suggest a change to the
+documentation:
+
+* You can `post an issue`_ with the documentation change template
+  describing the edit you want.
+
+* You can click on the GitHub icon at the top of the page, click the
+  :guilabel:`suggest edit` button, and create a pull request with the changes
+  you give!
+
+
 .. _GitHub repository: https://github.com/drwhut/open-tabletop
 .. _issues page: https://github.com/drwhut/open-tabletop/issues
 .. _post an issue: https://github.com/drwhut/open-tabletop/issues/new/choose
