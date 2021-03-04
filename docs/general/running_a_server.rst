@@ -1,3 +1,5 @@
+.. _running-a-server:
+
 ****************
 Running a server
 ****************

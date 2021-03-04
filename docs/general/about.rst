@@ -93,7 +93,7 @@ server and start playing with friends!
    Multiplayer", and changing the relevant settings.
 
 Currently there are no dedicated servers you can join, but you can make your
-own server to play on! See :ref:`setting-up-a-server`.
+own server to play on! See :ref:`running-a-server`.
 
 
 Is OpenTabletop on Steam / GOG / itch.io?

@@ -10,3 +10,6 @@ data_*/
 
 # Documentation ignores
 docs/_build/
+
+# Editor ignores
+.vscode/

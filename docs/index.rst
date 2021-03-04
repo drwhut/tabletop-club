@@ -26,6 +26,7 @@ contents, the sidebar, or the search bar to find what you need!
    general/about.rst
    general/download/index.rst
    general/running_a_server.rst
+   general/contributing/index.rst
 
 
 Indices and tables
