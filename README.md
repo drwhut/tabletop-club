@@ -1,58 +1,27 @@
 # OpenTabletop
-An open-source platform for playing tabletop games in a physics-based 3D
-environment for Windows, macOS and Linux! Made with the Godot Engine.
+
+OpenTabletop is an open-source multiplayer game that allows you to play your
+favourite tabletop games in a physics-driven 3D environment with the use of
+easy-to-make
+[asset packs](https://opentabletop.readthedocs.io/en/latest/custom_assets/asset_packs/index.html)!
+
+The game is available on Windows, macOS, and Linux, and is being developed with
+the [Godot Engine](https://godotengine.org/).
 
 ![Screenshot of gameplay](screenshot.png)
 
-## Custom Assets
+## Downloading
 
-While the game has some of the most common tabletop pieces included, this game
-allows you to create and play with your own custom assets! See
-[the assets guide](assets/README.md) for more information.
-
-## Compiling
-
-To build the game from source, you'll need to download and compile a slightly
-modified version of the Godot Engine - the reason is because the game needs the
-ability to import resources like textures at runtime which, firstly, isn't
-available in GDScript, and secondly, isn't available outside of the editor.
-
-1. Download the modified version of Godot:
-
-```bash
-git clone --depth 1 --recursive https://github.com/drwhut/godot.git -b tabletop-3.2.4-rc2
-```
-
-2. Compile Godot for your platform (see
-[the Godot documentation](https://docs.godotengine.org/en/stable/development/compiling/index.html)
-for more information).
-
-3. Download the game:
-
-```bash
-cd ..
-git clone --depth 1 https://github.com/drwhut/open-tabletop.git
-cd open-tabletop
-```
-
-4. Open the editor you built in step 2, and import the project at
-`open-tabletop/game`!
-
-## Running a dedicated server
-
-For the multiplayer, this game uses a dedicated server/client model, meaning
-the server isn't displayed as a player in the game, and the first client that
-connects to the server is set as the host of the game.
-
-If you want to host a dedicated server, and you haven't got a Server build of
-the game (which is only available on Linux), then you can make your version of
-the game a dedicated server by copying the [game/server.cfg](game/server.cfg)
-file into the directory where the executable is. Then, if you have a Release
-build of the game, launching the game will launch a dedicated server
-automatically, and if you have a Debug build of the game, a button will appear
-on the main menu allowing you to launch a dedicated server.
+To download the game, you can either
+[download an official binary](https://opentabletop.readthedocs.io/en/latest/general/download/downloading_binaries.html)
+or
+[compile the game from source](https://opentabletop.readthedocs.io/en/latest/general/download/compiling_from_source.html).
 
 ## Contributing
 
-Want to help contribute to the project? Have a look at
-[the contributing guide](CONTRIBUTING.md)!
+Want to help contribute to the project? Have a look at the
+[ways you can contribute](https://opentabletop.readthedocs.io/en/latest/general/contributing/ways_to_contribute.html)!
+
+## Documentation
+
+The documentation is hosted on [ReadTheDocs](https://opentabletop.readthedocs.io).
