@@ -55,8 +55,8 @@ Container
 Containers are special objects that can hold an unlimited amount of other
 objects inside themselves (including other containers)! Containers are opaque,
 meaning you cannot see the objects physically inside of them, but you can peek
-inside a container by right-clicking it and pressing "Peek inside", which will
-open a pop-up showing the contents of the container.
+inside a container by right-clicking it and pressing :guilabel:`Peek inside`,
+which will open a pop-up showing the contents of the container.
 
 Objects can be placed inside containers by dropping them on top of the
 container, and objects can be randomly removed from the container by quickly

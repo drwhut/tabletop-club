@@ -86,7 +86,7 @@ To compile Godot for Windows, you'll also need the following:
 * `Visual Studio Community <https://visualstudio.microsoft.com/vs/community/>`_
   version 2017 or later. You'll need to install it with C++ support - if you've
   already installed Visual Studio without C++ support, you can re-run the
-  installer and click "Modify" to install the C++ tools.
+  installer and click :guilabel:`Modify` to install the C++ tools.
 
 * `MinGW-w64 <http://mingw-w64.org/doku.php>`_ with GCC can be used as an
   alternative to Visual Studio. You'll need to configure it to use the
@@ -345,10 +345,10 @@ Running OpenTabletop in the Godot editor
 ----------------------------------------
 
 To open Godot's project manager, run the executable you compiled in
-``godot/bin/``. You can then import the project by clicking the "Import" button
-and selecting the ``open-tabletop/game/project.godot`` file. Now you can open
-the project and play the game by pressing the play button in the top-right
-corner (or by pressing F5)!
+``godot/bin/``. You can then import the project by clicking the
+:guilabel:`Import` button and selecting the ``open-tabletop/game/project.godot``
+file. Now you can open the project and play the game by pressing the play
+button in the top-right corner (or by pressing F5)!
 
 At this point, you can modify the game to your heart's content! Have a look at
 the scenes and scripts, try tweaking things here and there, or maybe try and
@@ -361,12 +361,13 @@ Exporting the game
 You can export the game with the editor to make it so you don't need to run the
 game through the editor to play it. Here's how you can export the project:
 
-1. Click on "Project > Export..."
-2. In the pop-up, click "Add...", and select your platform.
+1. Click on :guilabel:`Project` > :guilabel:`Export...`
+2. In the pop-up, click :guilabel:`Add...`, and select your platform.
 3. In the menu on the right, set the debug template to point to the editor
    executable, and if you made a release template, set that as well.
-4. Click "Export project", choose where you want to export the project and
-   whether you want to export a debug or a release binary, then click "Save".
+4. Click :guilabel:`Export project`, choose where you want to export the
+   project and whether you want to export a debug or a release binary, then
+   click :guilabel:`Save`.
 5. Copy the ``open-tabletop/assets/`` folder next to the exported binary, so
    the game has assets to import.
 

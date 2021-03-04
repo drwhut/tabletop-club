@@ -111,6 +111,7 @@ Save File
 Save files are used to load back a saved state within OpenTabletop. They use
 the ``.table`` extension.
 
-To create a save file when in-game, go to the menu and click "Save game", then
-choose where you want to save the file. You can then load the state back by
-clicking the "Load game" button in the same menu.
+To create a save file when in-game, go to the menu and click
+:guilabel:`Save game`, then choose where you want to save the file. You can
+then load the state back by clicking the :guilabel:`Load game` button in the
+same menu.

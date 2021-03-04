@@ -38,7 +38,8 @@ From Windows / macOS
 4. Run the server by double-clicking the executable in ``OTServer``, and make
    sure that after the assets have been imported you can see the table in-game.
 
-5. You can close the server by clicking "Menu > Quit to desktop".
+5. You can close the server by clicking :guilabel:`Menu` >
+   :guilabel:`Quit to desktop`.
 
 
 From Linux / \*BSD
@@ -73,8 +74,9 @@ From the Godot Editor
 
 If you are running the game through the Godot Editor, or you are running a
 debug build of the game and have a ``server.cfg`` file next to the executable
-as described above, you should see a button on the main menu labeled "Debug:
-Start Dedicated Server". Clicking this button will start the server.
+as described above, you should see a button on the main menu labeled
+:guilabel:`Debug: Start Dedicated Server`. Clicking this button will start the
+server.
 
 
 Testing the server
@@ -82,7 +84,8 @@ Testing the server
 
 To test if the server is accepting connections, you can start a normal version
 of OpenTabletop on the same computer, and in the main menu to the left of the
-"Join Game" button, you can enter ``127.0.0.1:26271``, then click "Join Game".
+:guilabel:`Join Game` button, you can enter ``127.0.0.1:26271``, then click
+:guilabel:`Join Game`.
 
 .. note::
 
@@ -106,16 +109,18 @@ running on. If you don't know it, then here's how you can find out what the
 address is:
 
 * On Windows, open a command prompt and run the ``ipconfig`` command. You can
-  identify the address of the computer by looking for the "IPv4 Address" entry.
+  identify the address of the computer by looking for the
+  :guilabel:`IPv4 Address` entry.
 
 * On macOS / Linux / \*BSD, open a terminal and run the ``ifconfig`` command.
   You can identify the address of the computer by looking for what comes after
-  "inet", but making sure it isn't ``127.0.0.1`` (that is how your computer
-  addresses itself, not how other computers on the network address it).
+  :guilabel:`inet`, but making sure it isn't ``127.0.0.1`` (that is how your
+  computer addresses itself, not how other computers on the network address it).
 
 Once you know this address, you can tell the other players to enter
 ``<IP_ADDRESS>:<PORT>`` (e.g. ``192.168.1.8:26271``) in the main menu, next to
-the "Join game" button. They can then click that button to join your server!
+the :guilabel:`Join game` button. They can then click that button to join your
+server!
 
 
 Online multiplayer

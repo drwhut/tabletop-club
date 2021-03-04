@@ -20,7 +20,7 @@ Eventually, the side road will join back in with the main road later on (the
 "merge").
 
 To create a fork of the OpenTabletop repository on GitHub, you can go to the
-`GitHub repository`_ and click on the "Fork" button on the top-right.
+`GitHub repository`_ and click on the :guilabel:`Fork` button on the top-right.
 You should now have your own copy of the repository at that point in time.
 You can then clone the repository to your computer with ``git clone``.
 
@@ -91,10 +91,11 @@ Once you've made the changes you wanted to make, and you've thoroughly tested
 them, you can push them to the custom branch on your forked repository and
 create a pull request!
 
-To start, go to the original `GitHub repository`_ and click "Pull requests >
-New pull request". Make sure you are merging from your fork's custom branch to
-``drwhut/open-tabletop`` on the ``master`` branch. If GitHub is happy, then you
-can click "Create pull request", and fill in the details for the pull request.
+To start, go to the original `GitHub repository`_ and click
+:guilabel:`Pull requests` > :guilabel:`New pull request`. Make sure you are
+merging from your fork's custom branch to ``drwhut/open-tabletop`` on the
+``master`` branch. If GitHub is happy, then you can click
+:guilabel:`Create pull request`, and fill in the details for the pull request.
 
 .. note::
 

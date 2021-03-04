@@ -34,12 +34,13 @@ Downloading for Windows
 1. Make sure you have downloaded the compressed file, it should be called
    something like ``OpenTabletop_vX.X.X_Windows_64.zip``.
 
-2. Right-click the downloaded file in File Explorer, and click "Extract all..."
+2. Right-click the downloaded file in File Explorer, and click
+   :guilabel:`Extract all...`
 
 3. There should be a pop-up asking where you want to extract the files to.
    You can put the game files anywhere you like, for example
-   ``Desktop/OpenTabletop``. You can then click "Extract" to extract the files
-   to that location.
+   ``Desktop/OpenTabletop``. You can then click :guilabel:`Extract` to extract
+   the files to that location.
 
 4. Go to the folder where you extracted the files, and double-click the
    ``OpenTabletop.exe`` executable to start the game!
@@ -48,8 +49,8 @@ Downloading for Windows
 
       Currently Windows binaries of the game are not signed, so you'll most
       likely get a warning when you try to run the game saying that the
-      publisher can't be trusted. You can get past this by clicking "More info",
-      then by clicking "Run anyway".
+      publisher can't be trusted. You can get past this by clicking
+      :guilabel:`More info`, then by clicking :guilabel:`Run anyway`.
 
 Downloading for macOS
 ---------------------
@@ -64,13 +65,13 @@ Downloading for macOS
 3. Re-name the new folder to ``OpenTabletop``.
 
 4. Go into the folder, and launch the game by right-clicking ``OpenTabletop``
-   and clicking "Open".
+   and clicking :guilabel:`Open`.
 
    .. note::
 
       Currently macOS binaries of the game are not signed, so you'll get a
       warning saying the publisher is unknown. You can get past this warning by
-      clicking "Open" in the pop-up. This button won't appear if you
+      clicking :guilabel:`Open` in the pop-up. This button won't appear if you
       double-click the application.
 
 .. _download-server:

@@ -89,8 +89,9 @@ server and start playing with friends!
 
 .. hint::
 
-   You can change your name and colour in multiplayer by going to "Options >
-   Multiplayer", and changing the relevant settings.
+   You can change your name and colour in multiplayer by going to
+   :guilabel:`Options` > :guilabel:`Multiplayer`, and changing the relevant
+   settings.
 
 Currently there are no dedicated servers you can join, but you can make your
 own server to play on! See :ref:`running-a-server`.
@@ -140,13 +141,14 @@ How easy is it to setup a game in OpenTabletop?
 -----------------------------------------------
 
 For the most popular games, the default asset pack comes with pre-made save
-files that you can load instantly (when in-game, click "Games", then click on
-the game you want to play, then click "Load") to play the game right away!
+files that you can load instantly (when in-game, click :guilabel:`Games`, then
+click on the game you want to play, then click :guilabel:`Load`) to play the
+game right away!
 
 If there isn't a pre-made save file for the game you want to play, you can
 easily make your own save by setting up the table the way you want to, then by
-going to the menu and clicking "Save file". This way, if you want to play the
-game again, you can just load the save you made previously.
+going to the menu and clicking :guilabel:`Save file`. This way, if you want to
+play the game again, you can just load the save you made previously.
 
 See the :ref:`asset-type-game` page for more information about pre-made save
 files in asset packs.
