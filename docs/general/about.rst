@@ -148,19 +148,19 @@ easily make your own save by setting up the table the way you want to, then by
 going to the menu and clicking "Save file". This way, if you want to play the
 game again, you can just load the save you made previously.
 
-See :ref:`asset-type-games` for more information about pre-made save files in
-asset packs.
+See the :ref:`asset-type-game` page for more information about pre-made save
+files in asset packs.
 
 
 Can I add assets other than game pieces to OpenTabletop?
 --------------------------------------------------------
 
-Yes! As well as objects, you can also import:
+Yes! As well as objects, you can also import the following types of assets:
 
-* :ref:`asset-type-games`
+* :ref:`asset-type-game`
 * :ref:`asset-type-music`
-* :ref:`asset-type-skyboxes`
-* :ref:`asset-type-sounds`
+* :ref:`asset-type-skybox`
+* :ref:`asset-type-sound`
 
 There's also plans to be able to import your own tables into the game (see
 issue `#44 <https://github.com/drwhut/open-tabletop/issues/44>`_ on GitHub).

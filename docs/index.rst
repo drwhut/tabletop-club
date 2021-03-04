@@ -28,6 +28,13 @@ contents, the sidebar, or the search bar to find what you need!
    general/running_a_server.rst
    general/contributing/index.rst
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Custom Assets
+
+   custom_assets/asset_packs/index.rst
+   custom_assets/tutorials/index.rst
+
 
 Indices and tables
 ==================
