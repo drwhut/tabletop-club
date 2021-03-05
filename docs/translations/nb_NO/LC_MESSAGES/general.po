@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-04 22:19+0000\n"
+"POT-Creation-Date: 2021-03-05 10:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -25,7 +25,9 @@ msgid "What is OpenTabletop?"
 msgstr ""
 
 #: ../../general/about.rst:10
-msgid "OpenTabletop is a free and open-source tabletop board game simulator! That's a bit of a mouthful, so I'll break that sentence down a bit:"
+msgid ""
+"OpenTabletop is a free and open-source tabletop board game simulator! That's "
+"a bit of a mouthful, so I'll break that sentence down a bit:"
 msgstr ""
 
 #: ../../general/about.rst:14
@@ -33,7 +35,9 @@ msgid "Free"
 msgstr ""
 
 #: ../../general/about.rst:16
-msgid "The game is completely free to download and play! You can do so by going to the :ref:`downloading-binaries` page."
+msgid ""
+"The game is completely free to download and play! You can do so by going to "
+"the :ref:`downloading-binaries` page."
 msgstr ""
 
 #: ../../general/about.rst:20
@@ -45,23 +49,37 @@ msgid "This means a few things:"
 msgstr ""
 
 #: ../../general/about.rst:24
-msgid "The source code of the game is visible to the public (you can see it in the `GitHub repository <https://github.com/drwhut/open-tabletop>`_). This also means you can compile the game youself from scratch (see :ref:`compiling-from-source`)."
+msgid ""
+"The source code of the game is visible to the public (you can see it in the "
+"`GitHub repository <https://github.com/drwhut/open-tabletop>`_). This also "
+"means you can compile the game youself from scratch (see :ref:`compiling-"
+"from-source`)."
 msgstr ""
 
 #: ../../general/about.rst:29
-msgid "Anyone can contribute to the development of OpenTabletop in a number of different ways! For more information about how you can help contribute to the project, visit the :ref:`contributing` page."
+msgid ""
+"Anyone can contribute to the development of OpenTabletop in a number of "
+"different ways! For more information about how you can help contribute to "
+"the project, visit the :ref:`contributing` page."
 msgstr ""
 
 #: ../../general/about.rst:33
-msgid "The game is licensed under the `MIT License <https://github.com/drwhut/open-tabletop/blob/master/LICENSE>`_, which is an open, permissive license."
+msgid ""
+"The game is licensed under the `MIT License <https://github.com/drwhut/open-"
+"tabletop/blob/master/LICENSE>`_, which is an open, permissive license."
 msgstr ""
 
 #: ../../general/about.rst:39
-msgid "The game's code and project files are licensed under the MIT License, but some of the assets are licensed under different open licenses."
+msgid ""
+"The game's code and project files are licensed under the MIT License, but "
+"some of the assets are licensed under different open licenses."
 msgstr ""
 
 #: ../../general/about.rst:42
-msgid "To see the details of these assets and their authors and licenses, have a look at ``assets/OpenTabletop/LICENSES`` and ``game/LICENSES.tres`` in the source code."
+msgid ""
+"To see the details of these assets and their authors and licenses, have a "
+"look at ``assets/OpenTabletop/LICENSES`` and ``game/LICENSES.tres`` in the "
+"source code."
 msgstr ""
 
 #: ../../general/about.rst:47
@@ -69,11 +87,20 @@ msgid "Tabletop board game"
 msgstr ""
 
 #: ../../general/about.rst:49
-msgid "The game is designed to allow you to play your favourite tabletop board games by effectively giving you a box of toys to play with (which include things like cards, dice, game pieces, and more), and it's up to you what you do with what you're given!"
+msgid ""
+"The game is designed to allow you to play your favourite tabletop board "
+"games by effectively giving you a box of toys to play with (which include "
+"things like cards, dice, game pieces, and more), and it's up to you what you "
+"do with what you're given!"
 msgstr ""
 
 #: ../../general/about.rst:54
-msgid "But the coolest thing about the game is that anyone can create assets for the game! It's as simple as dragging files into a folder and the game will import them, then you can use them straight away in-game! If you want to learn more about how to make assets for OpenTabletop, visit the :ref:`asset-packs` page."
+msgid ""
+"But the coolest thing about the game is that anyone can create assets for "
+"the game! It's as simple as dragging files into a folder and the game will "
+"import them, then you can use them straight away in-game! If you want to "
+"learn more about how to make assets for OpenTabletop, visit the :ref:`asset-"
+"packs` page."
 msgstr ""
 
 #: ../../general/about.rst:60
@@ -81,7 +108,11 @@ msgid "Simulator"
 msgstr ""
 
 #: ../../general/about.rst:62
-msgid "Not only is the game a simulator of tabletop games, it also has a fully-simulated 3D physics engine! This means that objects in the game act like they do in real life, and it also means you can potentially send objects flying off the edge! Did I also mention you could flip the table?"
+msgid ""
+"Not only is the game a simulator of tabletop games, it also has a fully-"
+"simulated 3D physics engine! This means that objects in the game act like "
+"they do in real life, and it also means you can potentially send objects "
+"flying off the edge! Did I also mention you could flip the table?"
 msgstr ""
 
 #: ../../general/about.rst:69
@@ -109,7 +140,9 @@ msgid "Linux / \\*BSD"
 msgstr ""
 
 #: ../../general/about.rst:80
-msgid "Currently there are no plans for the game to be supported on mobile devices or consoles."
+msgid ""
+"Currently there are no plans for the game to be supported on mobile devices "
+"or consoles."
 msgstr ""
 
 #: ../../general/about.rst:85
@@ -117,15 +150,21 @@ msgid "Does OpenTabletop support multiplayer?"
 msgstr ""
 
 #: ../../general/about.rst:87
-msgid "Yes! You don't need to make an account to play multiplayer, you can just join a server and start playing with friends!"
+msgid ""
+"Yes! You don't need to make an account to play multiplayer, you can just "
+"join a server and start playing with friends!"
 msgstr ""
 
 #: ../../general/about.rst:92
-msgid "You can change your name and colour in multiplayer by going to :guilabel:`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
+msgid ""
+"You can change your name and colour in multiplayer by going to :guilabel:"
+"`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
 msgstr ""
 
 #: ../../general/about.rst:96
-msgid "Currently there are no dedicated servers you can join, but you can make your own server to play on! See :ref:`running-a-server`."
+msgid ""
+"Currently there are no dedicated servers you can join, but you can make your "
+"own server to play on! See :ref:`running-a-server`."
 msgstr ""
 
 #: ../../general/about.rst:101
@@ -133,11 +172,16 @@ msgid "Is OpenTabletop on Steam / GOG / itch.io?"
 msgstr ""
 
 #: ../../general/about.rst:103
-msgid "No. OpenTabletop is a standalone game, meaning when you download the game you can extract the game files anywhere you want on your computer, and the game will work."
+msgid ""
+"No. OpenTabletop is a standalone game, meaning when you download the game "
+"you can extract the game files anywhere you want on your computer, and the "
+"game will work."
 msgstr ""
 
 #: ../../general/about.rst:107
-msgid "Currently there are no plans to add OpenTabletop to any gaming platform at this stage."
+msgid ""
+"Currently there are no plans to add OpenTabletop to any gaming platform at "
+"this stage."
 msgstr ""
 
 #: ../../general/about.rst:112
@@ -145,7 +189,12 @@ msgid "What stage of development is OpenTabletop at?"
 msgstr ""
 
 #: ../../general/about.rst:114
-msgid "OpenTabletop is currently in alpha development. This means that core features of the game are still being implemented (you can see what needs to be added by going to the `issues page <https://github.com/drwhut/open-tabletop/issues>`_ on GitHub), and there are no publicly released versions of the game... yet."
+msgid ""
+"OpenTabletop is currently in alpha development. This means that core "
+"features of the game are still being implemented (you can see what needs to "
+"be added by going to the `issues page <https://github.com/drwhut/open-"
+"tabletop/issues>`_ on GitHub), and there are no publicly released versions "
+"of the game... yet."
 msgstr ""
 
 #: ../../general/about.rst:121
@@ -157,15 +206,26 @@ msgid "Theoretically, any of them!"
 msgstr ""
 
 #: ../../general/about.rst:125
-msgid "Out of the box, the games comes with the default OpenTabletop asset pack which contains some of the most common objects you'll need, like playing cards, dice, poker chips, etc."
+msgid ""
+"Out of the box, the games comes with the default OpenTabletop asset pack "
+"which contains some of the most common objects you'll need, like playing "
+"cards, dice, poker chips, etc."
 msgstr ""
 
 #: ../../general/about.rst:129
-msgid "On GitHub, there is `an issue <https://github.com/drwhut/open-tabletop/issues/28>`_ listing which objects still need to be added to the default asset pack. If everything under a game is ticked, then you can play that game!"
+msgid ""
+"On GitHub, there is `an issue <https://github.com/drwhut/open-tabletop/"
+"issues/28>`_ listing which objects still need to be added to the default "
+"asset pack. If everything under a game is ticked, then you can play that "
+"game!"
 msgstr ""
 
 #: ../../general/about.rst:134
-msgid "On the other hand, if the pieces you need aren't going to be included in the default asset pack, then you can either download an asset pack that someone else has already made, or you can create your own! Visit the :ref:`asset-packs` page if you're interested in making your own assets."
+msgid ""
+"On the other hand, if the pieces you need aren't going to be included in the "
+"default asset pack, then you can either download an asset pack that someone "
+"else has already made, or you can create your own! Visit the :ref:`asset-"
+"packs` page if you're interested in making your own assets."
 msgstr ""
 
 #: ../../general/about.rst:141
@@ -173,15 +233,25 @@ msgid "How easy is it to setup a game in OpenTabletop?"
 msgstr ""
 
 #: ../../general/about.rst:143
-msgid "For the most popular games, the default asset pack comes with pre-made save files that you can load instantly (when in-game, click :guilabel:`Games`, then click on the game you want to play, then click :guilabel:`Load`) to play the game right away!"
+msgid ""
+"For the most popular games, the default asset pack comes with pre-made save "
+"files that you can load instantly (when in-game, click :guilabel:`Games`, "
+"then click on the game you want to play, then click :guilabel:`Load`) to "
+"play the game right away!"
 msgstr ""
 
 #: ../../general/about.rst:148
-msgid "If there isn't a pre-made save file for the game you want to play, you can easily make your own save by setting up the table the way you want to, then by going to the menu and clicking :guilabel:`Save file`. This way, if you want to play the game again, you can just load the save you made previously."
+msgid ""
+"If there isn't a pre-made save file for the game you want to play, you can "
+"easily make your own save by setting up the table the way you want to, then "
+"by going to the menu and clicking :guilabel:`Save file`. This way, if you "
+"want to play the game again, you can just load the save you made previously."
 msgstr ""
 
 #: ../../general/about.rst:153
-msgid "See the :ref:`asset-type-game` page for more information about pre-made save files in asset packs."
+msgid ""
+"See the :ref:`asset-type-game` page for more information about pre-made save "
+"files in asset packs."
 msgstr ""
 
 #: ../../general/about.rst:158
@@ -189,7 +259,8 @@ msgid "Can I add assets other than game pieces to OpenTabletop?"
 msgstr ""
 
 #: ../../general/about.rst:160
-msgid "Yes! As well as objects, you can also import the following types of assets:"
+msgid ""
+"Yes! As well as objects, you can also import the following types of assets:"
 msgstr ""
 
 #: ../../general/about.rst:162
@@ -209,7 +280,9 @@ msgid ":ref:`asset-type-sound`"
 msgstr ""
 
 #: ../../general/about.rst:167
-msgid "There's also plans to be able to import your own tables into the game (see issue `#44 <https://github.com/drwhut/open-tabletop/issues/44>`_ on GitHub)."
+msgid ""
+"There's also plans to be able to import your own tables into the game (see "
+"issue `#44 <https://github.com/drwhut/open-tabletop/issues/44>`_ on GitHub)."
 msgstr ""
 
 #: ../../general/about.rst:172
@@ -217,7 +290,11 @@ msgid "Can you add my favourite board game to OpenTabletop?"
 msgstr ""
 
 #: ../../general/about.rst:174
-msgid "For legal safety, OpenTabletop will only ever distribute `public-domain <https://en.wikipedia.org/wiki/Public_domain>`_ board games in the default asset pack. But that doesn't stop you from making assets for your favourite board game for private use!"
+msgid ""
+"For legal safety, OpenTabletop will only ever distribute `public-domain "
+"<https://en.wikipedia.org/wiki/Public_domain>`_ board games in the default "
+"asset pack. But that doesn't stop you from making assets for your favourite "
+"board game for private use!"
 msgstr ""
 
 #: ../../general/about.rst:181
@@ -225,23 +302,34 @@ msgid "Can I share assets I've made on the internet?"
 msgstr ""
 
 #: ../../general/about.rst:183
-msgid "It depends on a number of factors. In general, it should be safe to share the assets you've made for the game if the following is all true:"
+msgid ""
+"It depends on a number of factors. In general, it should be safe to share "
+"the assets you've made for the game if the following is all true:"
 msgstr ""
 
 #: ../../general/about.rst:186
-msgid "The assets you've made (textures, 3D models, etc.) are made by you, and are not derived from copyrighted material."
+msgid ""
+"The assets you've made (textures, 3D models, etc.) are made by you, and are "
+"not derived from copyrighted material."
 msgstr ""
 
 #: ../../general/about.rst:191
-msgid "You can distribute other people's creations **if** the license it's under allows you to. It's always safer to attribute the original author, and to state the license and whether the content was modified. Please read the terms of the license first."
+msgid ""
+"You can distribute other people's creations **if** the license it's under "
+"allows you to. It's always safer to attribute the original author, and to "
+"state the license and whether the content was modified. Please read the "
+"terms of the license first."
 msgstr ""
 
 #: ../../general/about.rst:196
-msgid "If the assets you've made are for playing a game that already exists, then:"
+msgid ""
+"If the assets you've made are for playing a game that already exists, then:"
 msgstr ""
 
 #: ../../general/about.rst:198
-msgid "You cannot use the same name of the game without the owner's explicit permission."
+msgid ""
+"You cannot use the same name of the game without the owner's explicit "
+"permission."
 msgstr ""
 
 #: ../../general/about.rst:201
@@ -258,7 +346,10 @@ msgid "Add instructions to check if the mechanics are patented."
 msgstr ""
 
 #: ../../general/about.rst:209
-msgid "This is NOT legal advice. Please go ask the nearest lawyer for advice if you are worried about distributing your asset pack on the internet, as this also depends on your country's copyright laws."
+msgid ""
+"This is NOT legal advice. Please go ask the nearest lawyer for advice if you "
+"are worried about distributing your asset pack on the internet, as this also "
+"depends on your country's copyright laws."
 msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:5
@@ -266,7 +357,10 @@ msgid "Coding guidelines"
 msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:7
-msgid "When modifying the game's scenes and scripts, as well as following Godot's `GDScript style guide`_, make sure to follow these guidelines for consistency, and to make everyone's lives easier:"
+msgid ""
+"When modifying the game's scenes and scripts, as well as following Godot's "
+"`GDScript style guide`_, make sure to follow these guidelines for "
+"consistency, and to make everyone's lives easier:"
 msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:11
@@ -274,11 +368,15 @@ msgid "Only use GDScript for scripting."
 msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:13
-msgid "When writing code, make sure your editor (whether it's Godot, or another external editor) is set to use tabs instead of spaces."
+msgid ""
+"When writing code, make sure your editor (whether it's Godot, or another "
+"external editor) is set to use tabs instead of spaces."
 msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:16
-msgid "When creating a new script, use the ``Copyright Notice`` template in ``game/Scripts/Templates/CopyrightNotice.gd``."
+msgid ""
+"When creating a new script, use the ``Copyright Notice`` template in ``game/"
+"Scripts/Templates/CopyrightNotice.gd``."
 msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:19
@@ -286,7 +384,11 @@ msgid "Use typed variables, arguments, and return values where possible."
 msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:21
-msgid "When writing functions in scripts that aren't built in functions (e.g. ``_ready()``) or functions called by signals (e.g. ``_on_*``), then please add a comment above the function describing what the function does, what it's return value is (if any), and what the arguments are. For example:"
+msgid ""
+"When writing functions in scripts that aren't built in functions (e.g. "
+"``_ready()``) or functions called by signals (e.g. ``_on_*``), then please "
+"add a comment above the function describing what the function does, what "
+"it's return value is (if any), and what the arguments are. For example:"
 msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:34
@@ -294,7 +396,16 @@ msgid "Make sure to fix any warnings Godot shows in scripts."
 msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:36
-msgid "When creating new scenes, fill in the editor description for the root node explaining what the scene does. Also fill in the editor description for any nodes in the scene where it isn't obvious what they're there for."
+msgid ""
+"If you are writing strings that will get displayed in the UI, remember to "
+"use the ``tr()`` function so the text can be translated."
+msgstr ""
+
+#: ../../general/contributing/coding_guidelines.rst:39
+msgid ""
+"When creating new scenes, fill in the editor description for the root node "
+"explaining what the scene does. Also fill in the editor description for any "
+"nodes in the scene where it isn't obvious what they're there for."
 msgstr ""
 
 #: ../../general/contributing/index.rst:5
@@ -306,7 +417,11 @@ msgid "Pull request workflow"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:7
-msgid "If you want to help contribute to the project directly, by either fixing a bug or implementing a feature, then you'll need to create a **pull request** on the project's `GitHub repository`_. This page explains the steps needed to do exactly that!"
+msgid ""
+"If you want to help contribute to the project directly, by either fixing a "
+"bug or implementing a feature, then you'll need to create a **pull request** "
+"on the project's `GitHub repository`_. This page explains the steps needed "
+"to do exactly that!"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:14
@@ -314,19 +429,34 @@ msgid "Creating a fork"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:16
-msgid "The way to think about forks is by thinking about going down a side road on a fork in the road - you'll be doing your own think on the side road (your \"fork\") while the main road (the repository's ``master`` branch) goes on. Eventually, the side road will join back in with the main road later on (the \"merge\")."
+msgid ""
+"The way to think about forks is by thinking about going down a side road on "
+"a fork in the road - you'll be doing your own think on the side road (your "
+"\"fork\") while the main road (the repository's ``master`` branch) goes on. "
+"Eventually, the side road will join back in with the main road later on (the "
+"\"merge\")."
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:22
-msgid "To create a fork of the OpenTabletop repository on GitHub, you can go to the `GitHub repository`_ and click on the :guilabel:`Fork` button on the top-right. You should now have your own copy of the repository at that point in time. You can then clone the repository to your computer with ``git clone``."
+msgid ""
+"To create a fork of the OpenTabletop repository on GitHub, you can go to the "
+"`GitHub repository`_ and click on the :guilabel:`Fork` button on the top-"
+"right. You should now have your own copy of the repository at that point in "
+"time. You can then clone the repository to your computer with ``git clone``."
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:27
-msgid "In this cloned repository, ``origin`` will point to your forked repository, which will not automatically update with the original repository. To make sure you can get updates from the original repository, you can add the original as a remote repository with this command:"
+msgid ""
+"In this cloned repository, ``origin`` will point to your forked repository, "
+"which will not automatically update with the original repository. To make "
+"sure you can get updates from the original repository, you can add the "
+"original as a remote repository with this command:"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:36
-msgid "Now, if you ever need to update the ``master`` branch on your local repository, you can run the following commands:"
+msgid ""
+"Now, if you ever need to update the ``master`` branch on your local "
+"repository, you can run the following commands:"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:44
@@ -338,7 +468,13 @@ msgid "Downloading and compiling Godot"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:54
-msgid "Now that you have made a local copy of the fork on your computer, there's one more step that's needed to be able to play, edit, and test the game - you'll need to download and compile the modified version of Godot the game runs on. You can follow the instructions in :ref:`compiling-from-source` up until the section where you download the game (you already did that just!) to get Godot up and running."
+msgid ""
+"Now that you have made a local copy of the fork on your computer, there's "
+"one more step that's needed to be able to play, edit, and test the game - "
+"you'll need to download and compile the modified version of Godot the game "
+"runs on. You can follow the instructions in :ref:`compiling-from-source` up "
+"until the section where you download the game (you already did that just!) "
+"to get Godot up and running."
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:63
@@ -346,32 +482,50 @@ msgid "Making changes"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:65
-msgid "Before you start making the changes you want to make, it is highly advised that you create a branch on the local repository for the bug/feature you're going to solve:"
+msgid ""
+"Before you start making the changes you want to make, it is highly advised "
+"that you create a branch on the local repository for the bug/feature you're "
+"going to solve:"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:74
-msgid "Now you can start working on the code! See :ref:`coding-guidelines` for guidelines as to how you should write your code."
+msgid ""
+"Now you can start working on the code! See :ref:`coding-guidelines` for "
+"guidelines as to how you should write your code."
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:79
-msgid "When you are done, you should commit your changes and push them to your fork with this command:"
+msgid ""
+"When you are done, you should commit your changes and push them to your fork "
+"with this command:"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:88
-#: ../../general/contributing/ways_to_contribute.rst:43
+#: ../../general/contributing/ways_to_contribute.rst:79
 msgid "Creating a pull request"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:90
-msgid "Once you've made the changes you wanted to make, and you've thoroughly tested them, you can push them to the custom branch on your forked repository and create a pull request!"
+msgid ""
+"Once you've made the changes you wanted to make, and you've thoroughly "
+"tested them, you can push them to the custom branch on your forked "
+"repository and create a pull request!"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:94
-msgid "To start, go to the original `GitHub repository`_ and click :guilabel:`Pull requests` > :guilabel:`New pull request`. Make sure you are merging from your fork's custom branch to ``drwhut/open-tabletop`` on the ``master`` branch. If GitHub is happy, then you can click :guilabel:`Create pull request`, and fill in the details for the pull request."
+msgid ""
+"To start, go to the original `GitHub repository`_ and click :guilabel:`Pull "
+"requests` > :guilabel:`New pull request`. Make sure you are merging from "
+"your fork's custom branch to ``drwhut/open-tabletop`` on the ``master`` "
+"branch. If GitHub is happy, then you can click :guilabel:`Create pull "
+"request`, and fill in the details for the pull request."
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:102
-msgid "If the pull request was to fix an issue, then please put the issue number in the pull request! For example, if the issue fixes issue number ``69``, then say in the pull request: ``This PR fixes #69``."
+msgid ""
+"If the pull request was to fix an issue, then please put the issue number in "
+"the pull request! For example, if the issue fixes issue number ``69``, then "
+"say in the pull request: ``This PR fixes #69``."
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:106
@@ -379,7 +533,10 @@ msgid "Once you're done filling in the PR, you can submit it!"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:110
-msgid "If we ask you to make changes to the pull request, you can do so by making the changes locally on your computer and pushing the commits to your fork's custom branch. These new commits will appear automatically in the PR."
+msgid ""
+"If we ask you to make changes to the pull request, you can do so by making "
+"the changes locally on your computer and pushing the commits to your fork's "
+"custom branch. These new commits will appear automatically in the PR."
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:116
@@ -387,23 +544,33 @@ msgid "Resolving merge conflicts"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:118
-msgid "There is a chance that GitHub will not let us merge the pull request into the ``master`` branch because of a merge conflict between the ``master`` branch and the branch on your fork. In this case, you should take the following steps:"
+msgid ""
+"There is a chance that GitHub will not let us merge the pull request into "
+"the ``master`` branch because of a merge conflict between the ``master`` "
+"branch and the branch on your fork. In this case, you should take the "
+"following steps:"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:122
-msgid "Update the fork's ``master`` branch so it is up-to-date with the original's:"
+msgid ""
+"Update the fork's ``master`` branch so it is up-to-date with the original's:"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:130
-msgid "Merge the ``master`` branch on your local repository into your custom branch:"
+msgid ""
+"Merge the ``master`` branch on your local repository into your custom branch:"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:139
-msgid "You can also use ``rebase`` here instead of ``merge``, but we don't mind whichever command you use. Use whichever one you're most comfortable with!"
+msgid ""
+"You can also use ``rebase`` here instead of ``merge``, but we don't mind "
+"whichever command you use. Use whichever one you're most comfortable with!"
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:143
-msgid "At this point you'll get the same merge conflicts that stopped the pull request from being merged. You need to resolve them before continuing."
+msgid ""
+"At this point you'll get the same merge conflicts that stopped the pull "
+"request from being merged. You need to resolve them before continuing."
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:146
@@ -415,7 +582,9 @@ msgid "Push the merge commit, plus any other commits you make, to your fork."
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:150
-msgid "Go back to the pull request on GitHub, and ensure that there are no merge merge conflicts."
+msgid ""
+"Go back to the pull request on GitHub, and ensure that there are no merge "
+"merge conflicts."
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:3
@@ -431,23 +600,35 @@ msgid "Before reporting a bug on GitHub, make sure of the following:"
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:10
-msgid "The bug is reproducible. If you can't get the bug to happen again, then chances are that we won't be able to either, then we can't fix it!"
+msgid ""
+"The bug is reproducible. If you can't get the bug to happen again, then "
+"chances are that we won't be able to either, then we can't fix it!"
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:13
-msgid "The bug hasn't already been reported - you can check by going to the `issues page`_ on GitHub and searching for it there."
+msgid ""
+"The bug hasn't already been reported - you can check by going to the `issues "
+"page`_ on GitHub and searching for it there."
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:16
-msgid "To report a bug, please `post an issue`_ on GitHub with the bug report template."
+msgid ""
+"To report a bug, please `post an issue`_ on GitHub with the bug report "
+"template."
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:20
-msgid "If you come across multiple bugs, please post one issue for each bug! This way, we can easily reference individual bugs."
+msgid ""
+"If you come across multiple bugs, please post one issue for each bug! This "
+"way, we can easily reference individual bugs."
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:23
-msgid "Make sure to include as much information as you can in the post, including how to reproduce the bug, the platform you're running the game on, and if possible, provide the latest log so we can check if there were any errors thrown. You can find the game logs in the following folders:"
+msgid ""
+"Make sure to include as much information as you can in the post, including "
+"how to reproduce the bug, the platform you're running the game on, and if "
+"possible, provide the latest log so we can check if there were any errors "
+"thrown. You can find the game logs in the following folders:"
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:28
@@ -463,59 +644,114 @@ msgid "Suggesting a feature"
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:35
-msgid "Have you got an idea to make the game better? If someone else hasn't had the same idea (you can check by searching the `issues page`_ on GitHub), then you can `post an issue`_ on GitHub explaining your idea, what problem it solves, and any alternative ideas you've thought of. We want to make the game as good as it can possibly be, so don't hesistate to let us know your idea!"
+msgid ""
+"Have you got an idea to make the game better? If someone else hasn't had the "
+"same idea (you can check by searching the `issues page`_ on GitHub), then "
+"you can `post an issue`_ on GitHub explaining your idea, what problem it "
+"solves, and any alternative ideas you've thought of. We want to make the "
+"game as good as it can possibly be, so don't hesistate to let us know your "
+"idea!"
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:45
-msgid "If you see an issue on the `GitHub repository`_ that you think you can fix, and you want to directly contribute to the project by modifying the game code, you can create a pull request on GitHub to merge your changes in! See the :ref:`pull-request-workflow` page for more information."
-msgstr ""
-
-#: ../../general/contributing/ways_to_contribute.rst:52
-msgid "Proposing assets"
-msgstr ""
-
-#: ../../general/contributing/ways_to_contribute.rst:54
-msgid "If you see an issue on the `GitHub repository`_ that needs game assets to fix (like textures, 3D models, sound effects, music, etc.), then you can reply to that issue with either an asset you've found online, or one that you've made yourself!"
-msgstr ""
-
-#: ../../general/contributing/ways_to_contribute.rst:59
-msgid "If the asset doesn't solve an issue, but you still think OpenTabletop would benefit from having it, then you can `post an issue`_ with the asset submission template instead!"
-msgstr ""
-
-#: ../../general/contributing/ways_to_contribute.rst:63
-msgid "However you propose the asset, you need to provide the following information:"
-msgstr ""
-
-#: ../../general/contributing/ways_to_contribute.rst:65
-msgid "The name of the asset."
-msgstr ""
-
-#: ../../general/contributing/ways_to_contribute.rst:66
-msgid "The name of the author."
-msgstr ""
-
-#: ../../general/contributing/ways_to_contribute.rst:67
-msgid "The license the asset is under - keep in mind that we will only include assets with open licenses, e.g. `CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/>`_."
-msgstr ""
-
-#: ../../general/contributing/ways_to_contribute.rst:70
-msgid "The URL where the asset can be downloaded from. The URL must be publically accessible, and it must lead to a trusted website."
-msgstr ""
-
-#: ../../general/contributing/ways_to_contribute.rst:75
+#: ../../general/contributing/ways_to_contribute.rst:43
 msgid "Changing the documentation"
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:77
-msgid "If there is a part of the documentation that you don't understand, or that you think is missing, then please don't hesistate to suggest a change to the documentation:"
+#: ../../general/contributing/ways_to_contribute.rst:45
+msgid ""
+"If there is a part of the documentation that you don't understand, or that "
+"you think is missing, then please don't hesistate to suggest a change to the "
+"documentation:"
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:49
+msgid ""
+"You can `post an issue`_ with the documentation change template describing "
+"the edit you want."
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:52
+msgid ""
+"You can click on the GitHub icon at the top of the page, click the :guilabel:"
+"`suggest edit` button, and create a pull request with the changes you give!"
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:58
+msgid "Translating the project"
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:60
+msgid ""
+"If you know a language other than English, you can help to translate the "
+"game and it's documentation by going to the project's `Hosted Weblate "
+"<https://hosted.weblate.org/engage/opentabletop/>`_ page and suggest "
+"translations for the project's strings in your language!"
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:65
+msgid ""
+"If you don't see your language in a component, you can add it by scrolling "
+"to the bottom of the component page and pressing :guilabel:`Start new "
+"translation`."
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:70
+msgid ""
+"Manual pull requests for translations will be closed, as Weblate keeps it's "
+"own fork of the project, and we want to avoid having merge requests occur."
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:81
-msgid "You can `post an issue`_ with the documentation change template describing the edit you want."
+msgid ""
+"If you see an issue on the `GitHub repository`_ that you think you can fix, "
+"and you want to directly contribute to the project by modifying the game "
+"code, you can create a pull request on GitHub to merge your changes in! See "
+"the :ref:`pull-request-workflow` page for more information."
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:84
-msgid "You can click on the GitHub icon at the top of the page, click the :guilabel:`suggest edit` button, and create a pull request with the changes you give!"
+#: ../../general/contributing/ways_to_contribute.rst:88
+msgid "Proposing assets"
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:90
+msgid ""
+"If you see an issue on the `GitHub repository`_ that needs game assets to "
+"fix (like textures, 3D models, sound effects, music, etc.), then you can "
+"reply to that issue with either an asset you've found online, or one that "
+"you've made yourself!"
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:95
+msgid ""
+"If the asset doesn't solve an issue, but you still think OpenTabletop would "
+"benefit from having it, then you can `post an issue`_ with the asset "
+"submission template instead!"
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:99
+msgid ""
+"However you propose the asset, you need to provide the following information:"
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:101
+msgid "The name of the asset."
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:102
+msgid "The name of the author."
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:103
+msgid ""
+"The license the asset is under - keep in mind that we will only include "
+"assets with open licenses, e.g. `CC BY-SA 3.0 <https://creativecommons.org/"
+"licenses/by-sa/3.0/>`_."
+msgstr ""
+
+#: ../../general/contributing/ways_to_contribute.rst:106
+msgid ""
+"The URL where the asset can be downloaded from. The URL must be publically "
+"accessible, and it must lead to a trusted website."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:5
@@ -527,27 +763,53 @@ msgid "Downloading the Godot fork"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:10
-msgid "The first step in compiling the game from scratch is to download and compile the game engine it runs on - `Godot <https://godotengine.org/>`_. Godot is a free and open-source 2D and 3D game engine, and it has all the functionality we need to make the game, except for one..."
+msgid ""
+"The first step in compiling the game from scratch is to download and compile "
+"the game engine it runs on - `Godot <https://godotengine.org/>`_. Godot is a "
+"free and open-source 2D and 3D game engine, and it has all the functionality "
+"we need to make the game, except for one..."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:15
-msgid "At this point, if you've used Godot in the past, you might be wondering \"wait, if it uses Godot, can't we just download Godot from the website and import the project?\". Not quite, because we've needed to add our own little bit of code on top of vanilla Godot, so to compile the game we need to download and compile `a modified version of Godot <https://github.com/drwhut/godot>`_. If you're interested as to why we've modified Godot, see :ref:`why-modify-godot`."
+msgid ""
+"At this point, if you've used Godot in the past, you might be wondering "
+"\"wait, if it uses Godot, can't we just download Godot from the website and "
+"import the project?\". Not quite, because we've needed to add our own little "
+"bit of code on top of vanilla Godot, so to compile the game we need to "
+"download and compile `a modified version of Godot <https://github.com/drwhut/"
+"godot>`_. If you're interested as to why we've modified Godot, see :ref:`why-"
+"modify-godot`."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:22
-msgid "To download the modified Godot, you'll need to have ``git`` installed on your computer (this will come in useful later as well). Then you can use this command in a terminal to download the fork of Godot:"
+msgid ""
+"To download the modified Godot, you'll need to have ``git`` installed on "
+"your computer (this will come in useful later as well). Then you can use "
+"this command in a terminal to download the fork of Godot:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:32
-msgid "The version number after ``-b tabletop`` refers to the Godot version the modified code is based on. You might need to change which version of Godot to download if you're planning on downloading a specific version of OpenTabletop, as different versions of OpenTabletop might use different versions of Godot."
+msgid ""
+"The version number after ``-b tabletop`` refers to the Godot version the "
+"modified code is based on. You might need to change which version of Godot "
+"to download if you're planning on downloading a specific version of "
+"OpenTabletop, as different versions of OpenTabletop might use different "
+"versions of Godot."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:38
-msgid "If you just plan on downloading the current ``master`` branch from OpenTabletop, then you don't need to change the above command."
+msgid ""
+"If you just plan on downloading the current ``master`` branch from "
+"OpenTabletop, then you don't need to change the above command."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:41
-msgid "If you know which version of OpenTabletop you want to download, check the ``README.md`` file in it's source code and look for a command similar to the one above. Then, replace what comes after the ``-b`` above with what the ``README.md`` file says. This way, you know you're compiling a compatible version of Godot for the OpenTabletop version you want."
+msgid ""
+"If you know which version of OpenTabletop you want to download, check the "
+"``README.md`` file in it's source code and look for a command similar to the "
+"one above. Then, replace what comes after the ``-b`` above with what the "
+"``README.md`` file says. This way, you know you're compiling a compatible "
+"version of Godot for the OpenTabletop version you want."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:49
@@ -555,7 +817,12 @@ msgid "Compiling Godot"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:51
-msgid "The way you compile Godot's source code is exactly how you would normally compile Godot, the documentation of which can be found `here <https://docs.godotengine.org/en/stable/development/compiling/index.html>`_. For convenience, the instructions from the Godot documentation has been taken, modified slightly, and put here for each platform [#godot-doc-license]_."
+msgid ""
+"The way you compile Godot's source code is exactly how you would normally "
+"compile Godot, the documentation of which can be found `here <https://docs."
+"godotengine.org/en/stable/development/compiling/index.html>`_. For "
+"convenience, the instructions from the Godot documentation has been taken, "
+"modified slightly, and put here for each platform [#godot-doc-license]_."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:57
@@ -563,15 +830,21 @@ msgid "For all platforms, you will need *at least* the following:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:59
-msgid "`Python 3.5+ <https://www.python.org/downloads/>`_. Make sure Python is added to your ``PATH`` environment variable."
+msgid ""
+"`Python 3.5+ <https://www.python.org/downloads/>`_. Make sure Python is "
+"added to your ``PATH`` environment variable."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:62
-msgid "`SCons 3.0+ <https://www.scons.org/>`_. Once you have Python installed, you can install it by opening a terminal/command prompt and running:"
+msgid ""
+"`SCons 3.0+ <https://www.scons.org/>`_. Once you have Python installed, you "
+"can install it by opening a terminal/command prompt and running:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:69
-msgid "You can check to see whether you have installed Python and SCons correctly by running:"
+msgid ""
+"You can check to see whether you have installed Python and SCons correctly "
+"by running:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:79
@@ -589,11 +862,18 @@ msgid "To compile Godot for Windows, you'll also need the following:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:86
-msgid "`Visual Studio Community <https://visualstudio.microsoft.com/vs/community/>`_ version 2017 or later. You'll need to install it with C++ support - if you've already installed Visual Studio without C++ support, you can re-run the installer and click :guilabel:`Modify` to install the C++ tools."
+msgid ""
+"`Visual Studio Community <https://visualstudio.microsoft.com/vs/community/"
+">`_ version 2017 or later. You'll need to install it with C++ support - if "
+"you've already installed Visual Studio without C++ support, you can re-run "
+"the installer and click :guilabel:`Modify` to install the C++ tools."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:91
-msgid "`MinGW-w64 <http://mingw-w64.org/doku.php>`_ with GCC can be used as an alternative to Visual Studio. You'll need to configure it to use the ``posix`` thread model."
+msgid ""
+"`MinGW-w64 <http://mingw-w64.org/doku.php>`_ with GCC can be used as an "
+"alternative to Visual Studio. You'll need to configure it to use the "
+"``posix`` thread model."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:96
@@ -603,16 +883,26 @@ msgid "Compiling"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:98
-msgid "To compile the engine, open a command prompt, change to the root directory of the engine code (using ``cd``), and run:"
+msgid ""
+"To compile the engine, open a command prompt, change to the root directory "
+"of the engine code (using ``cd``), and run:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:107
 #: ../../general/download/compiling_from_source.rst:296
-msgid "The ``-j8`` means that SCons will use eight threads to compile Godot. To make compiling faster, it's best to have this number be the same as the number of logical cores in your CPU."
+msgid ""
+"The ``-j8`` means that SCons will use eight threads to compile Godot. To "
+"make compiling faster, it's best to have this number be the same as the "
+"number of logical cores in your CPU."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:111
-msgid "If it compiles successfully, the result binary will be put in ``godot/bin/`` with the name ``godot.windows.opt.tools.32.exe`` or ``godot.windows.opt.tools.64.exe``. By default, SCons will build a binary matching your CPU architecture, but this can be changed by adding ``bits=64`` or ``bits=32`` to the above command."
+msgid ""
+"If it compiles successfully, the result binary will be put in ``godot/bin/`` "
+"with the name ``godot.windows.opt.tools.32.exe`` or ``godot.windows.opt."
+"tools.64.exe``. By default, SCons will build a binary matching your CPU "
+"architecture, but this can be changed by adding ``bits=64`` or ``bits=32`` "
+"to the above command."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:118
@@ -620,7 +910,10 @@ msgid "Creating a Visual Studio project"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:120
-msgid "If you want to create a Visual Studio solution for compiling Godot instead (which can come in handy if you plan to modify the Godot source code), you can run SCons with the ``vsproj=yes`` parameter added:"
+msgid ""
+"If you want to create a Visual Studio solution for compiling Godot instead "
+"(which can come in handy if you plan to modify the Godot source code), you "
+"can run SCons with the ``vsproj=yes`` parameter added:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:129
@@ -630,7 +923,9 @@ msgid "Building an export template"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:131
-msgid "If you want to compile an export template to export a release build of the game from the editor, you can use the following comamnd:"
+msgid ""
+"If you want to compile an export template to export a release build of the "
+"game from the editor, you can use the following comamnd:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:140
@@ -638,7 +933,9 @@ msgid "Compiling Godot for macOS"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:145
-msgid "To compile Godot for macOS, you'll also need `Xcode <https://apps.apple.com/us/app/xcode/id497799835>`_."
+msgid ""
+"To compile Godot for macOS, you'll also need `Xcode <https://apps.apple.com/"
+"us/app/xcode/id497799835>`_."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:151
@@ -654,19 +951,26 @@ msgid "To compile for Apple Silicon (ARM64) CPUs, use:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:165
-msgid "To support both architectures in a single \"Universal 2\" binary, run the above two commands, then use ``lipo`` to bundle them together:"
+msgid ""
+"To support both architectures in a single \"Universal 2\" binary, run the "
+"above two commands, then use ``lipo`` to bundle them together:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:172
-msgid "If it compiles successfully, the result binary will be put in ``godot/bin/``."
+msgid ""
+"If it compiles successfully, the result binary will be put in ``godot/bin/``."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:174
-msgid "To create an ``.app`` bundle like in the official builds, you need to use the template provided in ``misc/dist/osx_tools.app``:"
+msgid ""
+"To create an ``.app`` bundle like in the official builds, you need to use "
+"the template provided in ``misc/dist/osx_tools.app``:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:187
-msgid "If you want to compile an export template to export a release build of the game from the editor, you can use the following commands:"
+msgid ""
+"If you want to compile an export template to export a release build of the "
+"game from the editor, you can use the following commands:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:206
@@ -674,7 +978,9 @@ msgid "Compiling Godot for Linux / \\*BSD"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:211
-msgid "To compile Godot for Linux and other Unix systems, you'll also need the following:"
+msgid ""
+"To compile Godot for Linux and other Unix systems, you'll also need the "
+"following:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:214
@@ -754,11 +1060,17 @@ msgid "**Solus**"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:287
-msgid "To compile the engine, open a terminal, change to the root directory of the engine code, and run:"
+msgid ""
+"To compile the engine, open a terminal, change to the root directory of the "
+"engine code, and run:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:300
-msgid "If it compiles successfully, the result binary will be put in ``godot/bin/`` with the name ``godot.x11.opt.tools.32`` or ``godot.x11.opt.tools.64``. By default, SCons will build a binary matching your CPU architecture, but this can be changed by adding ``bits=64`` or ``bits=32`` to the above command."
+msgid ""
+"If it compiles successfully, the result binary will be put in ``godot/bin/`` "
+"with the name ``godot.x11.opt.tools.32`` or ``godot.x11.opt.tools.64``. By "
+"default, SCons will build a binary matching your CPU architecture, but this "
+"can be changed by adding ``bits=64`` or ``bits=32`` to the above command."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:307
@@ -766,7 +1078,9 @@ msgid "If you want to compile using Clang instead of GCC, use this command:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:316
-msgid "If you want to compile an export template to export a release build of the game from the editor, you can use the following command:"
+msgid ""
+"If you want to compile an export template to export a release build of the "
+"game from the editor, you can use the following command:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:323
@@ -778,7 +1092,13 @@ msgid "Downloading OpenTabletop"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:333
-msgid "To download the OpenTabletop Godot project, you can either download a compressed copy of the source code for a particular version from the `releases <https://github.com/drwhut/open-tabletop/releases>`_ page on GitHub and extract it, or if you're feeling very adventurous, you can download the latest source code on the ``master`` branch by running this command:"
+msgid ""
+"To download the OpenTabletop Godot project, you can either download a "
+"compressed copy of the source code for a particular version from the "
+"`releases <https://github.com/drwhut/open-tabletop/releases>`_ page on "
+"GitHub and extract it, or if you're feeling very adventurous, you can "
+"download the latest source code on the ``master`` branch by running this "
+"command:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:345
@@ -786,11 +1106,19 @@ msgid "Running OpenTabletop in the Godot editor"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:347
-msgid "To open Godot's project manager, run the executable you compiled in ``godot/bin/``. You can then import the project by clicking the :guilabel:`Import` button and selecting the ``open-tabletop/game/project.godot`` file. Now you can open the project and play the game by pressing the play button in the top-right corner (or by pressing F5)!"
+msgid ""
+"To open Godot's project manager, run the executable you compiled in ``godot/"
+"bin/``. You can then import the project by clicking the :guilabel:`Import` "
+"button and selecting the ``open-tabletop/game/project.godot`` file. Now you "
+"can open the project and play the game by pressing the play button in the "
+"top-right corner (or by pressing F5)!"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:353
-msgid "At this point, you can modify the game to your heart's content! Have a look at the scenes and scripts, try tweaking things here and there, or maybe try and add some stuff of your own?"
+msgid ""
+"At this point, you can modify the game to your heart's content! Have a look "
+"at the scenes and scripts, try tweaking things here and there, or maybe try "
+"and add some stuff of your own?"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:359
@@ -798,7 +1126,10 @@ msgid "Exporting the game"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:361
-msgid "You can export the game with the editor to make it so you don't need to run the game through the editor to play it. Here's how you can export the project:"
+msgid ""
+"You can export the game with the editor to make it so you don't need to run "
+"the game through the editor to play it. Here's how you can export the "
+"project:"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:364
@@ -810,19 +1141,28 @@ msgid "In the pop-up, click :guilabel:`Add...`, and select your platform."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:366
-msgid "In the menu on the right, set the debug template to point to the editor executable, and if you made a release template, set that as well."
+msgid ""
+"In the menu on the right, set the debug template to point to the editor "
+"executable, and if you made a release template, set that as well."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:368
-msgid "Click :guilabel:`Export project`, choose where you want to export the project and whether you want to export a debug or a release binary, then click :guilabel:`Save`."
+msgid ""
+"Click :guilabel:`Export project`, choose where you want to export the "
+"project and whether you want to export a debug or a release binary, then "
+"click :guilabel:`Save`."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:371
-msgid "Copy the ``open-tabletop/assets/`` folder next to the exported binary, so the game has assets to import."
+msgid ""
+"Copy the ``open-tabletop/assets/`` folder next to the exported binary, so "
+"the game has assets to import."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:374
-msgid "Now, you should be able to launch the exported executable and play the game directly!"
+msgid ""
+"Now, you should be able to launch the exported executable and play the game "
+"directly!"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:381
@@ -830,15 +1170,33 @@ msgid "Why did you fork Godot?"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:383
-msgid "There's actually just one reason for this: there was a feature that I knew existed in Godot, but it was not exposed to the in-built scripting language GDScript, and the functionality wasn't included in release templates."
+msgid ""
+"There's actually just one reason for this: there was a feature that I knew "
+"existed in Godot, but it was not exposed to the in-built scripting language "
+"GDScript, and the functionality wasn't included in release templates."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:387
-msgid "When the game starts, the first thing it does is it scans certain folders for asset packs, and if it finds any, the game will then import assets from those packs. The way the game imports assets is almost identical to how Godot imports assets in the editor. It's possible because of `a custom module <https://github.com/drwhut/open_tabletop_godot_module>`_ I made that takes advantage of the importing code that already exists for the editor, and it allows me to import assets like textures and 3D models from anywhere on the filesystem using just one function in GDScript."
+msgid ""
+"When the game starts, the first thing it does is it scans certain folders "
+"for asset packs, and if it finds any, the game will then import assets from "
+"those packs. The way the game imports assets is almost identical to how "
+"Godot imports assets in the editor. It's possible because of `a custom "
+"module <https://github.com/drwhut/open_tabletop_godot_module>`_ I made that "
+"takes advantage of the importing code that already exists for the editor, "
+"and it allows me to import assets like textures and 3D models from anywhere "
+"on the filesystem using just one function in GDScript."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:396
-msgid "However, a problem occured when compiling Godot with this module as a release template - the compiled editor code was not included in the release templates, so the custom module had no idea what \"importing\" meant. This meant I had to tweak some of the editor code and the SCons build script to include the importing code in release builds, while stopping compiler/runtime errors from happening since the code was suddenly disconnected from the rest of the editor."
+msgid ""
+"However, a problem occured when compiling Godot with this module as a "
+"release template - the compiled editor code was not included in the release "
+"templates, so the custom module had no idea what \"importing\" meant. This "
+"meant I had to tweak some of the editor code and the SCons build script to "
+"include the importing code in release builds, while stopping compiler/"
+"runtime errors from happening since the code was suddenly disconnected from "
+"the rest of the editor."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:404
@@ -846,7 +1204,10 @@ msgid "Footnotes"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:405
-msgid "`The Godot documentation <https://docs.godotengine.org>`_ is from Juan Linietsky, Ariel Manzur and the Godot community, and it is licensed under the `CC-BY 3.0 License <https://creativecommons.org/licenses/by/3.0/>`_."
+msgid ""
+"`The Godot documentation <https://docs.godotengine.org>`_ is from Juan "
+"Linietsky, Ariel Manzur and the Godot community, and it is licensed under "
+"the `CC-BY 3.0 License <https://creativecommons.org/licenses/by/3.0/>`_."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:5
@@ -854,23 +1215,38 @@ msgid "Downloading the official binaries"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:9
-msgid "Currently, the game is in alpha development and there are no official binaries to download. Hopefully this will change in the future!"
+msgid ""
+"Currently, the game is in alpha development and there are no official "
+"binaries to download. Hopefully this will change in the future!"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:12
-msgid "For now, you'll need to download the source code and compile it to play the game. You can follow the instructions in :ref:`compiling-from-source` to learn how."
+msgid ""
+"For now, you'll need to download the source code and compile it to play the "
+"game. You can follow the instructions in :ref:`compiling-from-source` to "
+"learn how."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:16
-msgid "You can download an official binary for your platform by going to the `releases page <https://github.com/drwhut/open-tabletop/releases>`_  on GitHub and downloading the compressed file for your platform under the version of the game you want to play."
+msgid ""
+"You can download an official binary for your platform by going to the "
+"`releases page <https://github.com/drwhut/open-tabletop/releases>`_  on "
+"GitHub and downloading the compressed file for your platform under the "
+"version of the game you want to play."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:21
-msgid "In most cases, you'll want to download the latest *non-beta* version of the game. While beta versions of the game have new features and are very helpful for player feedback, they are more suseptable to bugs. But if you're feeling a little experimental, go for the latest version!"
+msgid ""
+"In most cases, you'll want to download the latest *non-beta* version of the "
+"game. While beta versions of the game have new features and are very helpful "
+"for player feedback, they are more suseptable to bugs. But if you're feeling "
+"a little experimental, go for the latest version!"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:26
-msgid "If you've downloaded OpenTabletop in the past and want to download a newer version, follow :ref:`upgrading-installation` before carrying on here."
+msgid ""
+"If you've downloaded OpenTabletop in the past and want to download a newer "
+"version, follow :ref:`upgrading-installation` before carrying on here."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:29
@@ -882,23 +1258,37 @@ msgid "Downloading for Windows"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:34
-msgid "Make sure you have downloaded the compressed file, it should be called something like ``OpenTabletop_vX.X.X_Windows_64.zip``."
+msgid ""
+"Make sure you have downloaded the compressed file, it should be called "
+"something like ``OpenTabletop_vX.X.X_Windows_64.zip``."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:37
-msgid "Right-click the downloaded file in File Explorer, and click :guilabel:`Extract all...`"
+msgid ""
+"Right-click the downloaded file in File Explorer, and click :guilabel:"
+"`Extract all...`"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:40
-msgid "There should be a pop-up asking where you want to extract the files to. You can put the game files anywhere you like, for example ``Desktop/OpenTabletop``. You can then click :guilabel:`Extract` to extract the files to that location."
+msgid ""
+"There should be a pop-up asking where you want to extract the files to. You "
+"can put the game files anywhere you like, for example ``Desktop/"
+"OpenTabletop``. You can then click :guilabel:`Extract` to extract the files "
+"to that location."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:45
-msgid "Go to the folder where you extracted the files, and double-click the ``OpenTabletop.exe`` executable to start the game!"
+msgid ""
+"Go to the folder where you extracted the files, and double-click the "
+"``OpenTabletop.exe`` executable to start the game!"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:50
-msgid "Currently Windows binaries of the game are not signed, so you'll most likely get a warning when you try to run the game saying that the publisher can't be trusted. You can get past this by clicking :guilabel:`More info`, then by clicking :guilabel:`Run anyway`."
+msgid ""
+"Currently Windows binaries of the game are not signed, so you'll most likely "
+"get a warning when you try to run the game saying that the publisher can't "
+"be trusted. You can get past this by clicking :guilabel:`More info`, then by "
+"clicking :guilabel:`Run anyway`."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:56
@@ -906,11 +1296,16 @@ msgid "Downloading for macOS"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:58
-msgid "Start downloading the compressed file, it should be called something like ``OpenTabletop_vX.X.X_OSX_Universal.zip``."
+msgid ""
+"Start downloading the compressed file, it should be called something like "
+"``OpenTabletop_vX.X.X_OSX_Universal.zip``."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:61
-msgid "When it has downloaded, macOS should automatically extract the files in the Downloads folder for you. Go to your downloads folder in Finder, and find the extracted folder, it will be called something like ``OpenTabletop_v0``."
+msgid ""
+"When it has downloaded, macOS should automatically extract the files in the "
+"Downloads folder for you. Go to your downloads folder in Finder, and find "
+"the extracted folder, it will be called something like ``OpenTabletop_v0``."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:65
@@ -918,11 +1313,17 @@ msgid "Re-name the new folder to ``OpenTabletop``."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:67
-msgid "Go into the folder, and launch the game by right-clicking ``OpenTabletop`` and clicking :guilabel:`Open`."
+msgid ""
+"Go into the folder, and launch the game by right-clicking ``OpenTabletop`` "
+"and clicking :guilabel:`Open`."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:72
-msgid "Currently macOS binaries of the game are not signed, so you'll get a warning saying the publisher is unknown. You can get past this warning by clicking :guilabel:`Open` in the pop-up. This button won't appear if you double-click the application."
+msgid ""
+"Currently macOS binaries of the game are not signed, so you'll get a warning "
+"saying the publisher is unknown. You can get past this warning by clicking :"
+"guilabel:`Open` in the pop-up. This button won't appear if you double-click "
+"the application."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:80
@@ -930,15 +1331,27 @@ msgid "Downloading for Linux / \\*BSD / Server"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:82
-msgid "Make sure you have downloaded the compressed file, it should be called something like ``OpenTabletop_vX.X.X_Linux_64.tar.gz``, or ``OpenTabletop_vX.X.X_Server_64.tar.gz`` if you are downloading the dedicated server version of the game."
+msgid ""
+"Make sure you have downloaded the compressed file, it should be called "
+"something like ``OpenTabletop_vX.X.X_Linux_64.tar.gz``, or ``OpenTabletop_vX."
+"X.X_Server_64.tar.gz`` if you are downloading the dedicated server version "
+"of the game."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:87
-msgid "If your Linux/BSD distribution has a GUI, then you can use it to extract the files if you have a GUI archive manager installed. If you don't have a GUI, then a. I hope you're not trying to run a game with graphics in a terminal (unless it's a dedicated server, in which case I forgive you), and b. you can use this command to extract the files, where the X's are replaced with the numbers of the version you downloaded:"
+msgid ""
+"If your Linux/BSD distribution has a GUI, then you can use it to extract the "
+"files if you have a GUI archive manager installed. If you don't have a GUI, "
+"then a. I hope you're not trying to run a game with graphics in a terminal "
+"(unless it's a dedicated server, in which case I forgive you), and b. you "
+"can use this command to extract the files, where the X's are replaced with "
+"the numbers of the version you downloaded:"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:98
-msgid "Either double-click the executable, or go into a terminal and run this command in the folder the executable is in:"
+msgid ""
+"Either double-click the executable, or go into a terminal and run this "
+"command in the folder the executable is in:"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:107
@@ -950,11 +1363,15 @@ msgid "Upgrading an existing installation"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:115
-msgid "If you have already downloaded the game before, and you want to overwrite the files that are already there, then before downloading and extracting the new version of the game, first delete the following files and folders:"
+msgid ""
+"If you have already downloaded the game before, and you want to overwrite "
+"the files that are already there, then before downloading and extracting the "
+"new version of the game, first delete the following files and folders:"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:119
-msgid "``OpenTabletop.exe``, or ``OpenTabletop.app``, or ``OpenTabletop.x86_64``"
+msgid ""
+"``OpenTabletop.exe``, or ``OpenTabletop.app``, or ``OpenTabletop.x86_64``"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:120
@@ -966,7 +1383,10 @@ msgid "``assets/OpenTabletop``"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:123
-msgid "Now you can extract the new version of the game as described above. If the operating systems asks you if you want to replace any files, say yes to all files."
+msgid ""
+"Now you can extract the new version of the game as described above. If the "
+"operating systems asks you if you want to replace any files, say yes to all "
+"files."
 msgstr ""
 
 #: ../../general/download/index.rst:5
@@ -978,11 +1398,18 @@ msgid "There are two ways to download and play OpenTabletop:"
 msgstr ""
 
 #: ../../general/download/index.rst:9
-msgid "By downloading the official binary for your platform and running the executable. This is by far the simplest method, and it is all that most players need to do."
+msgid ""
+"By downloading the official binary for your platform and running the "
+"executable. This is by far the simplest method, and it is all that most "
+"players need to do."
 msgstr ""
 
 #: ../../general/download/index.rst:13
-msgid "By downloading the source code from the game's repository and compiling it from scratch. This requires a few extra steps compared to running a pre-built binary, but you'll need to do this if you plan on contributing to the game code, or you could try it for fun!"
+msgid ""
+"By downloading the source code from the game's repository and compiling it "
+"from scratch. This requires a few extra steps compared to running a pre-"
+"built binary, but you'll need to do this if you plan on contributing to the "
+"game code, or you could try it for fun!"
 msgstr ""
 
 #: ../../general/running_a_server.rst:5
@@ -990,7 +1417,10 @@ msgid "Running a server"
 msgstr ""
 
 #: ../../general/running_a_server.rst:7
-msgid "OpenTabletop supports both local and online multiplayer through the use of dedicated servers. This page explains how to set up a dedicated server, and how players can join the server."
+msgid ""
+"OpenTabletop supports both local and online multiplayer through the use of "
+"dedicated servers. This page explains how to set up a dedicated server, and "
+"how players can join the server."
 msgstr ""
 
 #: ../../general/running_a_server.rst:13
@@ -998,11 +1428,15 @@ msgid "Setting up a server instance"
 msgstr ""
 
 #: ../../general/running_a_server.rst:15
-msgid "Firstly, we're going to need to configure a server instance of OpenTabletop that we can run. This step varies depending on the platform."
+msgid ""
+"Firstly, we're going to need to configure a server instance of OpenTabletop "
+"that we can run. This step varies depending on the platform."
 msgstr ""
 
 #: ../../general/running_a_server.rst:18
-msgid "We're assuming from now on that you've already downloaded the game - if not, you should go to the :ref:`download` page first before continuing."
+msgid ""
+"We're assuming from now on that you've already downloaded the game - if not, "
+"you should go to the :ref:`download` page first before continuing."
 msgstr ""
 
 #: ../../general/running_a_server.rst:23
@@ -1010,23 +1444,36 @@ msgid "From Windows / macOS"
 msgstr ""
 
 #: ../../general/running_a_server.rst:25
-msgid "Create a new folder for the server files. For this example, we'll call the folder ``OTServer``, but you can call the folder anything you want."
+msgid ""
+"Create a new folder for the server files. For this example, we'll call the "
+"folder ``OTServer``, but you can call the folder anything you want."
 msgstr ""
 
 #: ../../general/running_a_server.rst:28
-msgid "Copy all of the game files from the folder you extracted the game to previously into the new ``OTServer`` folder. After this step, you should have an executable either at ``OTServer/OpenTabletop.app`` or ``OTServer/OpenTabletop.exe``."
+msgid ""
+"Copy all of the game files from the folder you extracted the game to "
+"previously into the new ``OTServer`` folder. After this step, you should "
+"have an executable either at ``OTServer/OpenTabletop.app`` or ``OTServer/"
+"OpenTabletop.exe``."
 msgstr ""
 
 #: ../../general/running_a_server.rst:33
-msgid "Go to `this page <https://raw.githubusercontent.com/drwhut/open-tabletop/master/game/server.cfg>`_, right-click the page and save the file into the ``OTServer`` folder with the name ``server.cfg``."
+msgid ""
+"Go to `this page <https://raw.githubusercontent.com/drwhut/open-tabletop/"
+"master/game/server.cfg>`_, right-click the page and save the file into the "
+"``OTServer`` folder with the name ``server.cfg``."
 msgstr ""
 
 #: ../../general/running_a_server.rst:38
-msgid "Run the server by double-clicking the executable in ``OTServer``, and make sure that after the assets have been imported you can see the table in-game."
+msgid ""
+"Run the server by double-clicking the executable in ``OTServer``, and make "
+"sure that after the assets have been imported you can see the table in-game."
 msgstr ""
 
 #: ../../general/running_a_server.rst:41
-msgid "You can close the server by clicking :guilabel:`Menu` > :guilabel:`Quit to desktop`."
+msgid ""
+"You can close the server by clicking :guilabel:`Menu` > :guilabel:`Quit to "
+"desktop`."
 msgstr ""
 
 #: ../../general/running_a_server.rst:46
@@ -1034,23 +1481,37 @@ msgid "From Linux / \\*BSD"
 msgstr ""
 
 #: ../../general/running_a_server.rst:48
-msgid "For Unix systems, you can follow the same steps as Windows and macOS systems, but OpenTabletop also comes with dedicated server builds for Unix that don't have a GUI, making them much faster. They also come pre-packaged with a ``server.cfg`` file."
+msgid ""
+"For Unix systems, you can follow the same steps as Windows and macOS "
+"systems, but OpenTabletop also comes with dedicated server builds for Unix "
+"that don't have a GUI, making them much faster. They also come pre-packaged "
+"with a ``server.cfg`` file."
 msgstr ""
 
 #: ../../general/running_a_server.rst:53
-msgid "You can download a server build of the game by following the instructions at :ref:`download-server`."
+msgid ""
+"You can download a server build of the game by following the instructions "
+"at :ref:`download-server`."
 msgstr ""
 
 #: ../../general/running_a_server.rst:56
-msgid "Once you have downloaded the server build, you can then use the following command where you extracted the files to run the server in a terminal:"
+msgid ""
+"Once you have downloaded the server build, you can then use the following "
+"command where you extracted the files to run the server in a terminal:"
 msgstr ""
 
 #: ../../general/running_a_server.rst:63
-msgid "You should see from the ``stdout`` output that the game will start by importing assets, and once it's done, you should see a message like ``Starting server on port 26271 with 10 max players...``. The message might change depending on how you've configured the server in ``server.cfg``."
+msgid ""
+"You should see from the ``stdout`` output that the game will start by "
+"importing assets, and once it's done, you should see a message like "
+"``Starting server on port 26271 with 10 max players...``. The message might "
+"change depending on how you've configured the server in ``server.cfg``."
 msgstr ""
 
 #: ../../general/running_a_server.rst:68
-msgid "To close the server, you can hit ``Ctrl+C`` in the terminal where you launched the server."
+msgid ""
+"To close the server, you can hit ``Ctrl+C`` in the terminal where you "
+"launched the server."
 msgstr ""
 
 #: ../../general/running_a_server.rst:73
@@ -1058,7 +1519,12 @@ msgid "From the Godot Editor"
 msgstr ""
 
 #: ../../general/running_a_server.rst:75
-msgid "If you are running the game through the Godot Editor, or you are running a debug build of the game and have a ``server.cfg`` file next to the executable as described above, you should see a button on the main menu labeled :guilabel:`Debug: Start Dedicated Server`. Clicking this button will start the server."
+msgid ""
+"If you are running the game through the Godot Editor, or you are running a "
+"debug build of the game and have a ``server.cfg`` file next to the "
+"executable as described above, you should see a button on the main menu "
+"labeled :guilabel:`Debug: Start Dedicated Server`. Clicking this button will "
+"start the server."
 msgstr ""
 
 #: ../../general/running_a_server.rst:83
@@ -1066,19 +1532,30 @@ msgid "Testing the server"
 msgstr ""
 
 #: ../../general/running_a_server.rst:85
-msgid "To test if the server is accepting connections, you can start a normal version of OpenTabletop on the same computer, and in the main menu to the left of the :guilabel:`Join Game` button, you can enter ``127.0.0.1:26271``, then click :guilabel:`Join Game`."
+msgid ""
+"To test if the server is accepting connections, you can start a normal "
+"version of OpenTabletop on the same computer, and in the main menu to the "
+"left of the :guilabel:`Join Game` button, you can enter ``127.0.0.1:26271``, "
+"then click :guilabel:`Join Game`."
 msgstr ""
 
 #: ../../general/running_a_server.rst:92
-msgid "If you've changed the port number the server is on, replace the number after the colon with the port number you put in ``server.cfg``."
+msgid ""
+"If you've changed the port number the server is on, replace the number after "
+"the colon with the port number you put in ``server.cfg``."
 msgstr ""
 
 #: ../../general/running_a_server.rst:95
-msgid "If the server is working, then you should be able to see a chat box in the bottom-left that says ``<PLAYER_NAME> has joined the game.``"
+msgid ""
+"If the server is working, then you should be able to see a chat box in the "
+"bottom-left that says ``<PLAYER_NAME> has joined the game.``"
 msgstr ""
 
 #: ../../general/running_a_server.rst:98
-msgid "If the server is not working, then after a few seconds of trying to connect, the client will go back to the main menu and show an error saying it was unable to connect to the server."
+msgid ""
+"If the server is not working, then after a few seconds of trying to connect, "
+"the client will go back to the main menu and show an error saying it was "
+"unable to connect to the server."
 msgstr ""
 
 #: ../../general/running_a_server.rst:104
@@ -1086,19 +1563,35 @@ msgid "Local multiplayer"
 msgstr ""
 
 #: ../../general/running_a_server.rst:106
-msgid "If you want players to be able to connect to your server from your Local Area Network (LAN), you need to know the IPv4 address of the computer the server is running on. If you don't know it, then here's how you can find out what the address is:"
+msgid ""
+"If you want players to be able to connect to your server from your Local "
+"Area Network (LAN), you need to know the IPv4 address of the computer the "
+"server is running on. If you don't know it, then here's how you can find out "
+"what the address is:"
 msgstr ""
 
 #: ../../general/running_a_server.rst:111
-msgid "On Windows, open a command prompt and run the ``ipconfig`` command. You can identify the address of the computer by looking for the :guilabel:`IPv4 Address` entry."
+msgid ""
+"On Windows, open a command prompt and run the ``ipconfig`` command. You can "
+"identify the address of the computer by looking for the :guilabel:`IPv4 "
+"Address` entry."
 msgstr ""
 
 #: ../../general/running_a_server.rst:115
-msgid "On macOS / Linux / \\*BSD, open a terminal and run the ``ifconfig`` command. You can identify the address of the computer by looking for what comes after :guilabel:`inet`, but making sure it isn't ``127.0.0.1`` (that is how your computer addresses itself, not how other computers on the network address it)."
+msgid ""
+"On macOS / Linux / \\*BSD, open a terminal and run the ``ifconfig`` command. "
+"You can identify the address of the computer by looking for what comes "
+"after :guilabel:`inet`, but making sure it isn't ``127.0.0.1`` (that is how "
+"your computer addresses itself, not how other computers on the network "
+"address it)."
 msgstr ""
 
 #: ../../general/running_a_server.rst:120
-msgid "Once you know this address, you can tell the other players to enter ``<IP_ADDRESS>:<PORT>`` (e.g. ``192.168.1.8:26271``) in the main menu, next to the :guilabel:`Join game` button. They can then click that button to join your server!"
+msgid ""
+"Once you know this address, you can tell the other players to enter "
+"``<IP_ADDRESS>:<PORT>`` (e.g. ``192.168.1.8:26271``) in the main menu, next "
+"to the :guilabel:`Join game` button. They can then click that button to join "
+"your server!"
 msgstr ""
 
 #: ../../general/running_a_server.rst:127
@@ -1106,17 +1599,39 @@ msgid "Online multiplayer"
 msgstr ""
 
 #: ../../general/running_a_server.rst:129
-msgid "If you want players to be able to connect to your server from the wild west that is the internet, across hills of memes and valleys of Facebook users, then you'll need to know your router's IPv4 address. This is easier to find out that getting your computer's local IP address, you just need to open your web browser and type into your favourite search engine: \"what is my ip address\". If the search engine doesn't tell you, then you can go to the first result and find out there."
+msgid ""
+"If you want players to be able to connect to your server from the wild west "
+"that is the internet, across hills of memes and valleys of Facebook users, "
+"then you'll need to know your router's IPv4 address. This is easier to find "
+"out that getting your computer's local IP address, you just need to open "
+"your web browser and type into your favourite search engine: \"what is my ip "
+"address\". If the search engine doesn't tell you, then you can go to the "
+"first result and find out there."
 msgstr ""
 
 #: ../../general/running_a_server.rst:137
-msgid "But there's one more step needed to make your server accessible to the world: you need to do something called **port forwarding**, which tells your router to forward incoming messages from the outside world on a given port to a particular computer on the network (the one that's hosting your server). You can find out how to port forward with your network's router by going to https://portforward.com/router.htm - you'll want to set it up such that the external and internal ports are the same as in ``server.cfg``, and the internal address is the local IP address of the computer running the server."
+msgid ""
+"But there's one more step needed to make your server accessible to the "
+"world: you need to do something called **port forwarding**, which tells your "
+"router to forward incoming messages from the outside world on a given port "
+"to a particular computer on the network (the one that's hosting your "
+"server). You can find out how to port forward with your network's router by "
+"going to https://portforward.com/router.htm - you'll want to set it up such "
+"that the external and internal ports are the same as in ``server.cfg``, and "
+"the internal address is the local IP address of the computer running the "
+"server."
 msgstr ""
 
 #: ../../general/running_a_server.rst:146
-msgid "Once you have port forwarded, players can join the server using the same string of text as they would in local multiplayer, but instead of using your local IP address, they should use your router's IP address."
+msgid ""
+"Once you have port forwarded, players can join the server using the same "
+"string of text as they would in local multiplayer, but instead of using your "
+"local IP address, they should use your router's IP address."
 msgstr ""
 
 #: ../../general/running_a_server.rst:152
-msgid "If players still cannot join your server after you have port forwarded, try checking your firewall's settings. Make sure that your firewall isn't rejecting packets with the server's port number."
+msgid ""
+"If players still cannot join your server after you have port forwarded, try "
+"checking your firewall's settings. Make sure that your firewall isn't "
+"rejecting packets with the server's port number."
 msgstr ""
