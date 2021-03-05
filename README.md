@@ -1,8 +1,5 @@
 # OpenTabletop
 
-[![Documentation Status](https://readthedocs.org/projects/opentabletop/badge/?version=latest)](https://opentabletop.readthedocs.io/en/latest/?badge=latest)
-[![Translation Status](https://hosted.weblate.org/widgets/opentabletop/-/svg-badge.svg)](https://hosted.weblate.org/engage/opentabletop/)
-
 OpenTabletop is an open-source multiplayer game that allows you to play your
 favourite tabletop games in a physics-driven 3D environment with the use of
 easy-to-make
@@ -20,11 +17,25 @@ To download the game, you can either
 or
 [compile the game from source](https://opentabletop.readthedocs.io/en/latest/general/download/compiling_from_source.html).
 
+## Languages
+
+[![Translation Status](https://hosted.weblate.org/widgets/opentabletop/-/svg-badge.svg)](https://hosted.weblate.org/engage/opentabletop/)
+
+Currently, the game and documentation are only available in English.
+
+If you want to help translate the project, you can go to the project's
+[Hosted Weblate](https://hosted.weblate.org/engage/opentabletop/) page.
+
+You can find out more about contributing translations
+[here](https://opentabletop.readthedocs.io/en/latest/general/contributing/ways_to_contribute.html#translating-the-project).
+
 ## Contributing
 
 Want to help contribute to the project? Have a look at the
 [ways you can contribute](https://opentabletop.readthedocs.io/en/latest/general/contributing/ways_to_contribute.html)!
 
 ## Documentation
+
+[![Documentation Status](https://readthedocs.org/projects/opentabletop/badge/?version=latest)](https://opentabletop.readthedocs.io/en/latest/?badge=latest)
 
 The documentation is hosted on [ReadTheDocs](https://opentabletop.readthedocs.io).
