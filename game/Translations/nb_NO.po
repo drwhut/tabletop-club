@@ -1,0 +1,720 @@
+# Translations template for OpenTabletop.
+# Copyright (C) 2020-2021 Benjamin 'drwhut' Beddows
+# This file is distributed under the same license as the OpenTabletop project.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-03-05 09:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: nb_NO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../Scenes/ImportAssets.tscn:32
+msgid "Importing assets..."
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:35
+msgid "Singleplayer"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:42
+msgid "Debug: Start Dedicated Server"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:57
+msgid "127.0.0.1:26271"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:63
+msgid "Join Server"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:163 ../Scenes/MainMenu.tscn:69
+msgid "Options"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:75
+msgid "Credits"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:81
+msgid "Quit"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:60
+msgid "Master Volume"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:77
+msgid "Music Volume"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:95
+msgid "Sounds Volume"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:130
+msgid "Mouse Horizontal Sensitivity"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:148
+msgid "Mouse Vertical Sensitivity"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:167
+msgid "Mouse Horizontal Invert"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:181
+msgid "Mouse Vertical Invert"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:195
+msgid "Camera Movement Speed"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:214
+msgid "Hold Left Click to Move Camera"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:228
+msgid "Zoom Sensitivity"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:247
+msgid "Zoom Invert"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:261
+msgid "Piece Lift Sensitivity"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:280
+msgid "Piece Lift Invert"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:294
+msgid "Piece Rotation Invert"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:331
+msgid "Open Assets Folder"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:345
+msgid "Reimport Assets"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:359
+msgid "View License"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:384
+msgid "Move Forward"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:400
+msgid "Move Back"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:417
+msgid "Move Left"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:434
+msgid "Move Right"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:451
+msgid "Rotate Camera"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:468
+msgid "Reset Camera"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:485
+msgid "Flip Piece Orientation"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:502
+msgid "Reset Piece Orientation"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:519
+msgid "Lock/Unlock Piece"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:536
+msgid "Delete Piece"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:553
+msgid "Game Menu"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:575
+msgid "Reset Bindings"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:600
+msgid "Name"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:608
+msgid "Player"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:615
+msgid "Color"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:632
+msgid "Hide Player Cursors"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:647
+msgid "Censor Profanity"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:681
+msgid "Window Mode"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:689
+msgid "Windowed"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:698
+msgid "Field of View"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:718
+msgid "VSync"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:733
+msgid "MSAA"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:742
+msgid "None"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:756
+msgid "Back"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:134 ../Scenes/OptionsMenu.tscn:762
+msgid "Apply"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:768
+msgid "OK"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:815
+msgid "Please press a key or button to bind it..."
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:835
+msgid "Cancel"
+msgstr ""
+
+#: ../Scenes/RandomMusicPlayer.tscn:21
+msgid "Now Playing:"
+msgstr ""
+
+#: ../Scenes/Game/CameraController.tscn:110
+#, python-format
+msgid "Loaded %d tracks."
+msgstr ""
+
+#: ../Scenes/Game/Game.tscn:25
+msgid "Connecting to the server..."
+msgstr ""
+
+#: ../Scenes/Game/UI/ChatBox.tscn:47
+msgid "Type a message here..."
+msgstr ""
+
+#: ../Scenes/Game/UI/ChatBox.tscn:53
+msgid "Send"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:28
+msgid "Objects"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:34
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:225
+msgid "Games"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:40
+msgid "Room"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:46 ../Scripts/Game/UI/GameUI.gd:88
+msgid "Flip Table"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:52
+msgid "Clear Table"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:58
+msgid "45"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:66
+msgid "Menu"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:94
+msgid "Add"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:95
+#, python-format
+msgid "Added %s."
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:96
+#, python-format
+msgid "Added %d objects."
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:103
+#, python-format
+msgid "Loaded %d games."
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:145
+msgid "Back to game"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:151
+msgid "Save game"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:157
+msgid "Load game"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:169
+msgid "Quit to main menu"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:175
+msgid "Quit to desktop"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:42
+msgid "Take"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:50
+msgid "Take All"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
+msgid "Current skybox:"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:53
+msgid "Change skybox"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:59
+msgid "Clear skybox"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:73
+msgid "Lamp Type"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:79
+msgid "Sunlight"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:87
+msgid "Lamp Intensity"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:108
+msgid "10%"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:114
+msgid "Lamp Color"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:141
+#, python-format
+msgid "Loaded %d skyboxes."
+msgstr ""
+
+#: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:24
+msgid "Pack:"
+msgstr ""
+
+#: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:37
+msgid "Type:"
+msgstr ""
+
+#: ../Scripts/ImportAssets.gd:38
+msgid ""
+"OpenTabletop couldn't find an assets folder in any of the following "
+"places:"
+msgstr ""
+
+#: ../Scripts/ImportAssets.gd:43
+msgid "Please create one of these folders and restart the game."
+msgstr ""
+
+#: ../Scripts/Lobby.gd:63 ../Scripts/Lobby.gd:69
+msgid "<No Name>"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:41
+msgid "Alpha Testers"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:42
+msgid "Cursors"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:43
+msgid "Developers"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:44
+msgid "Fonts"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:45
+msgid "Images"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:46
+msgid "Tool Icons"
+msgstr ""
+
+#: ../Scripts/RandomMusicPlayer.gd:32 ../Scripts/RandomMusicPlayer.gd:52
+#, python-format
+msgid "Now Playing: %s"
+msgstr ""
+
+#: ../Scripts/RandomMusicPlayer.gd:32
+msgid "Nothing"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:872
+#, python-format
+msgid "Count: %d"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:890
+msgid "Put in hand"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:897
+msgid "Collect individuals"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:902
+msgid "Collect all"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:909
+msgid "Deal X cards"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:917
+msgid "Take X off top"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:925
+msgid "Orient all up"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:930
+msgid "Orient all down"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:935
+msgid "Shuffle"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:940
+msgid "Sort"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:986
+msgid "Collect selected"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:993
+msgid "Peek inside"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:998
+msgid "Take X out"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1020
+msgid "Select track"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1033
+msgid "Range:"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1058
+msgid "Lock"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1064
+msgid "Unlock"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1069
+msgid "Delete"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1085
+msgid "Set spawn point here"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1090
+msgid "Spawn object here"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1111
+msgid "Pause track"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1116
+msgid "Resume track"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1120
+msgid "Stop track"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1122
+msgid "Play track"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1127
+msgid "No track loaded"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1129
+#, python-format
+msgid "Playing: %s"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1131
+#, python-format
+msgid "Loaded: %s"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1141
+msgid "Pause timer"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1146
+msgid "Resume timer"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1150
+msgid "Stop countdown"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1152
+msgid "Start countdown"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1156
+msgid "Stop stopwatch"
+msgstr ""
+
+#: ../Scripts/Game/CameraController.gd:1158
+msgid "Start stopwatch"
+msgstr ""
+
+#: ../Scripts/Game/Game.gd:126
+#, python-format
+msgid "Could not open the file at path '%s' (error %d)."
+msgstr ""
+
+#: ../Scripts/Game/Game.gd:177
+msgid "Failed to connect to the server!"
+msgstr ""
+
+#: ../Scripts/Game/Game.gd:181
+msgid "Lost connection to the server!"
+msgstr ""
+
+#: ../Scripts/Game/Game.gd:215
+msgid "Loaded table has no version information. Load anyway?"
+msgstr ""
+
+#: ../Scripts/Game/Game.gd:217
+#, python-format
+msgid ""
+"Loaded table was saved with a different version of the game (Current: %s,"
+" Table: %s). Load anyway?"
+msgstr ""
+
+#: ../Scripts/Game/Game.gd:219
+msgid "Loaded table is not in the correct format."
+msgstr ""
+
+#: ../Scripts/Game/UI/ChatBox.gd:108
+msgid "Server: "
+msgstr ""
+
+#: ../Scripts/Game/UI/ChatBox.gd:156
+#, python-format
+msgid "%s has joined the game."
+msgstr ""
+
+#: ../Scripts/Game/UI/ChatBox.gd:164
+#, python-format
+msgid "%s changed their name to %s"
+msgstr ""
+
+#: ../Scripts/Game/UI/ChatBox.gd:168
+#, python-format
+msgid "%s has left the game."
+msgstr ""
+
+#: ../Scripts/Game/UI/GameUI.gd:86
+msgid "Reset Table"
+msgstr ""
+
+#: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:39
+#, python-format
+msgid "Contents of %s"
+msgstr ""
+
+#: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:44
+#, python-format
+msgid "%s is empty."
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:106
+#, python-format
+msgid "Page %d/%d"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:220
+msgid "Cards"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:221
+msgid "Containers"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:222
+msgid "Dice - d4"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:223
+msgid "Dice - d6"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:224
+msgid "Dice - d8"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:226
+msgid "Music"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:227
+msgid "Pieces"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:228
+msgid "Skyboxes"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:229
+msgid "Sounds"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:230
+msgid "Speakers"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:231
+msgid "Stacks"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:232
+msgid "Timers"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:233
+msgid "Tokens"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:51
+msgid "Not bound"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:58
+msgid "Left Mouse Button"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:60
+msgid "Right Mouse Button"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:62
+msgid "Middle Mouse Button"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:64
+msgid "Extra Mouse Button 1"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:66
+msgid "Extra Mouse Button 2"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:68
+msgid "Mouse Wheel Up"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:70
+msgid "Mouse Wheel Down"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:72
+msgid "Mouse Wheel Left"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:74
+msgid "Mouse Wheel Right"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:76
+msgid "Unknown Mouse Button"
+msgstr ""
+
+#: ../Scripts/Misc/BindButton.gd:78
+msgid "Unknown event type"
+msgstr ""
