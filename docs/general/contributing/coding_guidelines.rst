@@ -33,6 +33,9 @@ and to make everyone's lives easier:
 
 * Make sure to fix any warnings Godot shows in scripts.
 
+* If you are writing strings that will get displayed in the UI, remember to use
+  the ``tr()`` function so the text can be translated.
+
 * When creating new scenes, fill in the editor description for the root node
   explaining what the scene does. Also fill in the editor description for any
   nodes in the scene where it isn't obvious what they're there for.

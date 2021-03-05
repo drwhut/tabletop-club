@@ -123,7 +123,7 @@ func _open_table_state_file(path: String, mode: int) -> File:
 	if open_err == OK:
 		return file
 	else:
-		_popup_table_state_error("Could not open the file at path '%s' (error %d)." % [path, open_err])
+		_popup_table_state_error(tr("Could not open the file at path '%s' (error %d).") % [path, open_err])
 		return null
 
 # Show the table state popup dialog with the given error.
@@ -174,11 +174,11 @@ func _connected_ok() -> void:
 
 func _connected_fail() -> void:
 	print("Failed to connect to the server!")
-	Global.start_main_menu_with_error("Failed to connect to the server!")
+	Global.start_main_menu_with_error(tr("Failed to connect to the server!"))
 
 func _server_disconnected() -> void:
 	print("Lost connection to the server!")
-	Global.start_main_menu_with_error("Lost connection to the server!")
+	Global.start_main_menu_with_error(tr("Lost connection to the server!"))
 
 func _on_GameUI_about_to_save_table():
 	_room_state_saving = _room.get_state(false, false)
@@ -212,11 +212,11 @@ func _on_GameUI_load_table(path: String):
 			else:
 				_state_version_save = state
 				if not state.has("version"):
-					_popup_table_state_version("Loaded table has no version information. Load anyway?")
+					_popup_table_state_version(tr("Loaded table has no version information. Load anyway?"))
 				else:
-					_popup_table_state_version("Loaded table was saved with a different version of the game (Current: %s, Table: %s). Load anyway?" % [our_version, state["version"]])
+					_popup_table_state_version(tr("Loaded table was saved with a different version of the game (Current: %s, Table: %s). Load anyway?") % [our_version, state["version"]])
 		else:
-			_popup_table_state_error("Loaded table is not in the correct format.")
+			_popup_table_state_error(tr("Loaded table is not in the correct format."))
 
 func _on_GameUI_piece_requested(piece_entry: Dictionary, position: Vector3):
 	rpc_id(1, "request_game_piece", piece_entry, position)

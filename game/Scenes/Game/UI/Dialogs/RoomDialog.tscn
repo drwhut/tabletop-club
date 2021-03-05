@@ -136,7 +136,7 @@ text = "Apply"
 [node name="SkyboxDialog" parent="." instance=ExtResource( 2 )]
 window_title = "Select a skybox..."
 db_types = {
-"Skyboxes": "skyboxes"
+"SKYBOXES": "skyboxes"
 }
 status_text_multiple = "Loaded %d skyboxes."
 

@@ -67,7 +67,7 @@ func get_pack() -> String:
 # Get the currently selected type.
 # Returns: The currently selected type.
 func get_type() -> String:
-	return _type_button.get_item_text(_type_button.selected)
+	return _type_button.get_item_metadata(_type_button.selected)
 
 # Set the AssetDB types to be displayed.
 # types: The dictionary representing the AssetDB types and their display name.
@@ -138,7 +138,7 @@ func _display_previews() -> void:
 	if not asset_db.has(pack):
 		return
 	
-	var type_display = _type_button.get_item_text(_type_button.selected)
+	var type_display = _type_button.get_item_metadata(_type_button.selected)
 	if not db_types.has(type_display):
 		return
 	
@@ -216,7 +216,24 @@ func _set_type_options() -> void:
 						break
 		
 		if add_type:
-			_type_button.add_item(type_display)
+			var type_text = type_display
+			type_text = type_text.replace("CARDS", tr("Cards"))
+			type_text = type_text.replace("CONTAINERS", tr("Containers"))
+			type_text = type_text.replace("DICE - D4", tr("Dice - d4"))
+			type_text = type_text.replace("DICE - D6", tr("Dice - d6"))
+			type_text = type_text.replace("DICE - D8", tr("Dice - d8"))
+			type_text = type_text.replace("GAMES", tr("Games"))
+			type_text = type_text.replace("MUSIC", tr("Music"))
+			type_text = type_text.replace("PIECES", tr("Pieces"))
+			type_text = type_text.replace("SKYBOXES", tr("Skyboxes"))
+			type_text = type_text.replace("SOUNDS", tr("Sounds"))
+			type_text = type_text.replace("SPEAKERS", tr("Speakers"))
+			type_text = type_text.replace("STACKS", tr("Stacks"))
+			type_text = type_text.replace("TIMERS", tr("Timers"))
+			type_text = type_text.replace("TOKENS", tr("Tokens"))
+			
+			_type_button.add_item(type_text)
+			_type_button.set_item_metadata(_type_button.get_item_count() - 1, type_display)
 
 # Update the preview GUI.
 func _update_preview_gui() -> void:

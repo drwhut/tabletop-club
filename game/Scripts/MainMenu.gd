@@ -36,7 +36,16 @@ func display_error(error: String) -> void:
 
 func _ready():
 	var credits_file = preload("res://CREDITS.tres")
-	var credits_lines = credits_file.text.split("\n")
+	
+	var credits_text = credits_file.text
+	credits_text = credits_text.replace("ALPHA TESTERS", tr("Alpha Testers"))
+	credits_text = credits_text.replace("CURSORS", tr("Cursors"))
+	credits_text = credits_text.replace("DEVELOPERS", tr("Developers"))
+	credits_text = credits_text.replace("FONTS", tr("Fonts"))
+	credits_text = credits_text.replace("IMAGES", tr("Images"))
+	credits_text = credits_text.replace("TOOL ICONS", tr("Tool Icons"))
+	
+	var credits_lines = credits_text.split("\n")
 	
 	for i in range(credits_lines.size() - 1, -1, -1):
 		var line = credits_lines[i]

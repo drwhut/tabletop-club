@@ -83,9 +83,9 @@ func set_flip_table_status(flip_table_status: bool) -> void:
 	_flip_table_status = flip_table_status
 	
 	if flip_table_status:
-		_flip_table_button.text = "Reset Table"
+		_flip_table_button.text = tr("Reset Table")
 	else:
-		_flip_table_button.text = "Flip Table"
+		_flip_table_button.text = tr("Flip Table")
 	
 	_clear_table_button.disabled = flip_table_status
 

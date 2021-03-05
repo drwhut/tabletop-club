@@ -60,13 +60,13 @@ func get_name_bb_code_custom(player: Dictionary) -> String:
 		player_color = player["color"].to_html(false)
 	var code = "[color=#" + player_color + "]"
 	
-	var player_name = "<No Name>"
+	var player_name = tr("<No Name>")
 	if player.has("name"):
 		player_name = player["name"]
 	# Security!
 	player_name = player_name.strip_edges().strip_escapes().replace("[", "[ ")
 	if player_name.empty():
-		player_name = "<No Name>"
+		player_name = tr("<No Name>")
 	code += player_name
 	
 	code += "[/color]"

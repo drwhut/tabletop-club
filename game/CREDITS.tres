@@ -4,12 +4,12 @@
 
 [resource]
 script = ExtResource( 1 )
-text = "Developers
+text = "DEVELOPERS
 =========
 
 Benjamin 'drwhut' Beddows
 
-Alpha Testers
+ALPHA TESTERS
 ===========
 
 Rory Baxter
@@ -21,18 +21,18 @@ Sebastian Milovsorov
 Luke Stuart
 Cameron Tibbles
 
-Images
+IMAGES
 ======
 
-Cursors
+CURSORS
 ----------
 Jakub 'Nighted' Steiner
 
-Tool Icons
+TOOL ICONS
 -------------
 SVG Repo
 
-Fonts
+FONTS
 ====
 
 Cabin

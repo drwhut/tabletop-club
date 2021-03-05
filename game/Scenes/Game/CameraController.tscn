@@ -104,8 +104,8 @@ margin_bottom = -5.0
 [node name="TrackDialog" parent="." instance=ExtResource( 12 )]
 window_title = "Select a track..."
 db_types = {
-"Music": "music",
-"Sounds": "sounds"
+"MUSIC": "music",
+"SOUNDS": "sounds"
 }
 status_text_multiple = "Loaded %d tracks."
 

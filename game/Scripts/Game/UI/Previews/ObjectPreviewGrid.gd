@@ -103,7 +103,7 @@ func provide_objects(objects: Array, after: int) -> void:
 	_page_index = _start / get_preview_count()
 	_page_last = _page_index + int(ceil(floor(after) / get_preview_count()))
 	
-	_page_label.text = "Page %d/%d" % [_page_index+1, _page_last+1]
+	_page_label.text = tr("Page %d/%d") % [_page_index+1, _page_last+1]
 	
 	_first_button.disabled = true
 	_previous_button.disabled = true

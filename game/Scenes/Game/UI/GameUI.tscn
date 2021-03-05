@@ -80,16 +80,16 @@ __meta__ = {
 [node name="ObjectsDialog" parent="." instance=ExtResource( 2 )]
 window_title = "Objects"
 db_types = {
-"Cards": "cards",
-"Containers": [ "containers/cube", "containers/custom", "containers/cylinder" ],
-"Dice - d4": "dice/d4",
-"Dice - d6": "dice/d6",
-"Dice - d8": "dice/d8",
-"Pieces": [ "pieces/cube", "pieces/custom", "pieces/cylinder" ],
-"Speakers": [ "speakers/cube", "speakers/custom", "speakers/cylinder" ],
-"Stacks": "stacks",
-"Timers": [ "timers/cube", "timers/custom", "timers/cylinder" ],
-"Tokens": [ "tokens/cube", "tokens/cylinder" ]
+"CARDS": "cards",
+"CONTAINERS": [ "containers/cube", "containers/custom", "containers/cylinder" ],
+"DICE - D4": "dice/d4",
+"DICE - D6": "dice/d6",
+"DICE - D8": "dice/d8",
+"PIECES": [ "pieces/cube", "pieces/custom", "pieces/cylinder" ],
+"SPEAKERS": [ "speakers/cube", "speakers/custom", "speakers/cylinder" ],
+"STACKS": "stacks",
+"TIMERS": [ "timers/cube", "timers/custom", "timers/cylinder" ],
+"TOKENS": [ "tokens/cube", "tokens/cylinder" ]
 }
 load_button_text = "Add"
 status_text_one = "Added %s."
@@ -98,7 +98,7 @@ status_text_multiple = "Added %d objects."
 [node name="GamesDialog" parent="." instance=ExtResource( 2 )]
 window_title = "Games"
 db_types = {
-"Games": "games"
+"GAMES": "games"
 }
 status_text_multiple = "Loaded %d games."
 

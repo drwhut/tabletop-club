@@ -36,12 +36,12 @@ func display_contents(container: PieceContainer) -> void:
 	_last_container = container
 	
 	var container_name = container.piece_entry["name"]
-	window_title = "Contents of %s" % container_name
+	window_title = tr("Contents of %s") % container_name
 	
 	_take_button.disabled = true
 	_take_all_button.disabled = true
 	
-	_preview_grid.empty_text = "%s is empty." % container_name
+	_preview_grid.empty_text = tr("%s is empty.") % container_name
 	_preview_grid.reset()
 
 func _on_ObjectPreviewGrid_preview_clicked(_preview: ObjectPreview, _event: InputEventMouseButton):

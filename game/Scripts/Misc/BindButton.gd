@@ -48,34 +48,34 @@ func get_action_input_event() -> InputEvent:
 func update_text() -> void:
 	var event = get_action_input_event()
 	if not event:
-		text = "Not bound"
+		text = tr("Not bound")
 	
 	if event is InputEventKey:
 		text = OS.get_scancode_string(event.scancode)
 	elif event is InputEventMouseButton:
 		match event.button_index:
 			BUTTON_LEFT:
-				text = "Left Mouse Button"
+				text = tr("Left Mouse Button")
 			BUTTON_RIGHT:
-				text = "Right Mouse Button"
+				text = tr("Right Mouse Button")
 			BUTTON_MIDDLE:
-				text = "Middle Mouse Button"
+				text = tr("Middle Mouse Button")
 			BUTTON_XBUTTON1:
-				text = "Extra Mouse Button 1"
+				text = tr("Extra Mouse Button 1")
 			BUTTON_XBUTTON2:
-				text = "Extra Mouse Button 2"
+				text = tr("Extra Mouse Button 2")
 			BUTTON_WHEEL_UP:
-				text = "Mouse Wheel Up"
+				text = tr("Mouse Wheel Up")
 			BUTTON_WHEEL_DOWN:
-				text = "Mouse Wheel Down"
+				text = tr("Mouse Wheel Down")
 			BUTTON_WHEEL_LEFT:
-				text = "Mouse Wheel Left"
+				text = tr("Mouse Wheel Left")
 			BUTTON_WHEEL_RIGHT:
-				text = "Mouse Wheel Right"
+				text = tr("Mouse Wheel Right")
 			_:
-				text = "Unknown Mouse Button"
+				text = tr("Unknown Mouse Button")
 	else:
-		text = "Unknown event type"
+		text = tr("Unknown event type")
 
 func _ready():
 	connect("pressed", self, "_on_pressed")

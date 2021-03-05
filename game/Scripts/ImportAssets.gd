@@ -35,12 +35,12 @@ func _on_importing_completed(dir_found: bool) -> void:
 		Global.start_main_menu()
 	else:
 		var missing_text = ""
-		missing_text += "OpenTabletop couldn't find an assets folder in any of the following places:"
+		missing_text += tr("OpenTabletop couldn't find an assets folder in any of the following places:")
 		missing_text += "\n\n"
 		for asset_dir in AssetDB.get_asset_paths():
 			missing_text += asset_dir + "\n"
 		missing_text += "\n"
-		missing_text += "Please create one of these folders and restart the game."
+		missing_text += tr("Please create one of these folders and restart the game.")
 		_missing_assets_popup.dialog_text = missing_text
 		_missing_assets_popup.popup_centered()
 

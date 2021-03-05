@@ -29,7 +29,7 @@ var _music_queue = []
 # Play the next track in the queue.
 func next_track() -> void:
 	if _music_queue.empty():
-		_track_label.text = "Now Playing: Nothing :("
+		_track_label.text = tr("Now Playing: %s") % tr("Nothing")
 		return
 	
 	var track_entry = _music_queue.pop_front()
@@ -49,7 +49,7 @@ func next_track() -> void:
 	_audio_player.stream = track_stream
 	_audio_player.play()
 	
-	_track_label.text = "Now Playing: %s" % track_name
+	_track_label.text = tr("Now Playing: %s") % track_name
 
 func _ready():
 	var asset_db = AssetDB.get_db()

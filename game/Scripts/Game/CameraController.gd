@@ -869,7 +869,7 @@ func _popup_piece_context_menu() -> void:
 			count += stack.get_piece_count()
 		
 		var count_label = Label.new()
-		count_label.text = "Count: %d" % count
+		count_label.text = tr("Count: %d") % count
 		_piece_context_menu_container.add_child(count_label)
 	
 	###########
@@ -887,26 +887,26 @@ func _popup_piece_context_menu() -> void:
 		
 		if only_cards:
 			var put_in_hand_button = Button.new()
-			put_in_hand_button.text = "Put in hand"
+			put_in_hand_button.text = tr("Put in hand")
 			put_in_hand_button.connect("pressed", self, "_on_context_put_in_hand_pressed")
 			_piece_context_menu_container.add_child(put_in_hand_button)
 	
 	if _inheritance_has(inheritance, "Stack"):
 		if _selected_pieces.size() == 1:
 			var collect_individuals_button = Button.new()
-			collect_individuals_button.text = "Collect individuals"
+			collect_individuals_button.text = tr("Collect individuals")
 			collect_individuals_button.connect("pressed", self, "_on_context_collect_individuals_pressed")
 			_piece_context_menu_container.add_child(collect_individuals_button)
 			
 			var collect_all_button = Button.new()
-			collect_all_button.text = "Collect all"
+			collect_all_button.text = tr("Collect all")
 			collect_all_button.connect("pressed", self, "_on_context_collect_all_pressed")
 			_piece_context_menu_container.add_child(collect_all_button)
 			
 			var stack = _selected_pieces[0]
 			if stack.is_card_stack():
 				var deal_button = SpinBoxButton.new()
-				deal_button.button.text = "Deal X cards"
+				deal_button.button.text = tr("Deal X cards")
 				deal_button.spin_box.prefix = "X ="
 				deal_button.spin_box.min_value = 1
 				deal_button.spin_box.max_value = stack.get_piece_count()
@@ -914,7 +914,7 @@ func _popup_piece_context_menu() -> void:
 				_piece_context_menu_container.add_child(deal_button)
 			
 			var take_top_button = SpinBoxButton.new()
-			take_top_button.button.text = "Take X off top"
+			take_top_button.button.text = tr("Take X off top")
 			take_top_button.spin_box.prefix = "X ="
 			take_top_button.spin_box.min_value = 1
 			take_top_button.spin_box.max_value = stack.get_piece_count()
@@ -922,22 +922,22 @@ func _popup_piece_context_menu() -> void:
 			_piece_context_menu_container.add_child(take_top_button)
 		
 		var orient_up_button = Button.new()
-		orient_up_button.text = "Orient all up"
+		orient_up_button.text = tr("Orient all up")
 		orient_up_button.connect("pressed", self, "_on_context_orient_up_pressed")
 		_piece_context_menu_container.add_child(orient_up_button)
 		
 		var orient_down_button = Button.new()
-		orient_down_button.text = "Orient all down"
+		orient_down_button.text = tr("Orient all down")
 		orient_down_button.connect("pressed", self, "_on_context_orient_down_pressed")
 		_piece_context_menu_container.add_child(orient_down_button)
 		
 		var shuffle_button = Button.new()
-		shuffle_button.text = "Shuffle"
+		shuffle_button.text = tr("Shuffle")
 		shuffle_button.connect("pressed", self, "_on_context_shuffle_pressed")
 		_piece_context_menu_container.add_child(shuffle_button)
 		
 		var sort_button = Button.new()
-		sort_button.text = "Sort"
+		sort_button.text = tr("Sort")
 		sort_button.connect("pressed", self, "_on_context_sort_pressed")
 		_piece_context_menu_container.add_child(sort_button)
 	
@@ -983,19 +983,19 @@ func _popup_piece_context_menu() -> void:
 	if _inheritance_has(inheritance, "StackablePiece"):
 		if _selected_pieces.size() > 1:
 			var collect_selected_button = Button.new()
-			collect_selected_button.text = "Collect selected"
+			collect_selected_button.text = tr("Collect selected")
 			collect_selected_button.connect("pressed", self, "_on_context_collect_selected_pressed")
 			_piece_context_menu_container.add_child(collect_selected_button)
 	
 	elif _inheritance_has(inheritance, "PieceContainer"):
 		if _selected_pieces.size() == 1:
 			var peek_button = Button.new()
-			peek_button.text = "Peek inside"
+			peek_button.text = tr("Peek inside")
 			peek_button.connect("pressed", self, "_on_context_peek_inside_pressed")
 			_piece_context_menu_container.add_child(peek_button)
 			
 			var take_button = SpinBoxButton.new()
-			take_button.button.text = "Take X out"
+			take_button.button.text = tr("Take X out")
 			take_button.spin_box.prefix = "X ="
 			take_button.spin_box.min_value = 1
 			# We don't set the maximum value here, as we don't want the player
@@ -1017,7 +1017,7 @@ func _popup_piece_context_menu() -> void:
 			_piece_context_menu_container.add_child(_speaker_track_label)
 			
 			var speaker_select_track_button = Button.new()
-			speaker_select_track_button.text = "Select track"
+			speaker_select_track_button.text = tr("Select track")
 			speaker_select_track_button.connect("pressed", self, "_on_context_speaker_select_track_pressed")
 			_piece_context_menu_container.add_child(speaker_select_track_button)
 			
@@ -1030,7 +1030,7 @@ func _popup_piece_context_menu() -> void:
 			_piece_context_menu_container.add_child(_speaker_pause_button)
 			
 			var volume_label = Label.new()
-			volume_label.text = "Range:"
+			volume_label.text = tr("Range:")
 			_piece_context_menu_container.add_child(volume_label)
 			
 			_speaker_volume_slider = HSlider.new()
@@ -1055,18 +1055,18 @@ func _popup_piece_context_menu() -> void:
 		
 		if num_unlocked == _selected_pieces.size():
 			var lock_button = Button.new()
-			lock_button.text = "Lock"
+			lock_button.text = tr("Lock")
 			lock_button.connect("pressed", self, "_on_context_lock_pressed")
 			_piece_context_menu_container.add_child(lock_button)
 		
 		if num_locked == _selected_pieces.size():
 			var unlock_button = Button.new()
-			unlock_button.text = "Unlock"
+			unlock_button.text = tr("Unlock")
 			unlock_button.connect("pressed", self, "_on_context_unlock_pressed")
 			_piece_context_menu_container.add_child(unlock_button)
 		
 		var delete_button = Button.new()
-		delete_button.text = "Delete"
+		delete_button.text = tr("Delete")
 		delete_button.connect("pressed", self, "_on_context_delete_pressed")
 		_piece_context_menu_container.add_child(delete_button)
 	
@@ -1082,12 +1082,12 @@ func _popup_table_context_menu() -> void:
 		child.queue_free()
 	
 	var spawn_point_button = Button.new()
-	spawn_point_button.text = "Set spawn point here"
+	spawn_point_button.text = tr("Set spawn point here")
 	spawn_point_button.connect("pressed", self, "_on_context_spawn_point_pressed")
 	_piece_context_menu_container.add_child(spawn_point_button)
 	
 	var spawn_object_button = Button.new()
-	spawn_object_button.text = "Spawn object here"
+	spawn_object_button.text = tr("Spawn object here")
 	spawn_object_button.connect("pressed", self, "_on_context_spawn_object_pressed")
 	_piece_context_menu_container.add_child(spawn_object_button)
 	
@@ -1108,27 +1108,27 @@ func _set_speaker_controls() -> void:
 	if _speaker_connected:
 		if _speaker_pause_button:
 			_speaker_pause_button.disabled = true
-			_speaker_pause_button.text = "Pause track"
+			_speaker_pause_button.text = tr("Pause track")
 			
 			if _speaker_connected.is_playing_track():
 				_speaker_pause_button.disabled = false
 				if _speaker_connected.is_track_paused():
-					_speaker_pause_button.text = "Resume track"
+					_speaker_pause_button.text = tr("Resume track")
 		
 		if _speaker_play_stop_button:
 			if _speaker_connected.is_playing_track():
-				_speaker_play_stop_button.text = "Stop track"
+				_speaker_play_stop_button.text = tr("Stop track")
 			else:
-				_speaker_play_stop_button.text = "Play track"
+				_speaker_play_stop_button.text = tr("Play track")
 		
 		if _speaker_track_label:
 			var track_entry = _speaker_connected.get_track()
 			if track_entry.empty():
-				_speaker_track_label.text = "No track loaded"
+				_speaker_track_label.text = tr("No track loaded")
 			elif _speaker_connected.is_playing_track():
-				_speaker_track_label.text = "Playing: %s" % track_entry["name"]
+				_speaker_track_label.text = tr("Playing: %s") % track_entry["name"]
 			else:
-				_speaker_track_label.text = "Loaded: %s" % track_entry["name"]
+				_speaker_track_label.text = tr("Loaded: %s") % track_entry["name"]
 		
 		if _speaker_volume_slider:
 			_speaker_volume_slider.value = _speaker_connected.get_unit_size()
@@ -1138,24 +1138,24 @@ func _set_timer_controls() -> void:
 	if _timer_connected:
 		if _timer_pause_button:
 			_timer_pause_button.disabled = false
-			_timer_pause_button.text = "Pause timer"
+			_timer_pause_button.text = tr("Pause timer")
 			
 			if _timer_connected.get_mode() == TimerPiece.MODE_SYSTEM_TIME:
 				_timer_pause_button.disabled = true
 			elif _timer_connected.is_timer_paused():
-				_timer_pause_button.text = "Resume timer"
+				_timer_pause_button.text = tr("Resume timer")
 		
 		if _timer_start_stop_countdown_button:
 			if _timer_connected.get_mode() == TimerPiece.MODE_COUNTDOWN:
-				_timer_start_stop_countdown_button.text = "Stop countdown"
+				_timer_start_stop_countdown_button.text = tr("Stop countdown")
 			else:
-				_timer_start_stop_countdown_button.text = "Start countdown"
+				_timer_start_stop_countdown_button.text = tr("Start countdown")
 		
 		if _timer_start_stop_stopwatch_button:
 			if _timer_connected.get_mode() == TimerPiece.MODE_STOPWATCH:
-				_timer_start_stop_stopwatch_button.text = "Stop stopwatch"
+				_timer_start_stop_stopwatch_button.text = tr("Stop stopwatch")
 			else:
-				_timer_start_stop_stopwatch_button.text = "Start stopwatch"
+				_timer_start_stop_stopwatch_button.text = tr("Start stopwatch")
 		
 		if _timer_time_label:
 			_timer_time_label.text = _timer_connected.get_time_string()
@@ -1569,7 +1569,7 @@ func _on_RulerToolButton_pressed():
 func _on_TrackDialog_entry_requested(_pack: String, type: String, entry: Dictionary):
 	_track_dialog.visible = false
 	if _speaker_connected:
-		var music = (type == "Music")
+		var music = (type == "MUSIC")
 		_speaker_connected.rpc_id(1, "request_set_track", entry, music)
 	else:
 		push_warning("Don't know which speaker to set track for, doing nothing.")
