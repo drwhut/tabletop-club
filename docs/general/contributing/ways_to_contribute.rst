@@ -39,6 +39,42 @@ and any alternative ideas you've thought of. We want to make the game as good
 as it can possibly be, so don't hesistate to let us know your idea!
 
 
+Changing the documentation
+--------------------------
+
+If there is a part of the documentation that you don't understand, or that you
+think is missing, then please don't hesistate to suggest a change to the
+documentation:
+
+* You can `post an issue`_ with the documentation change template
+  describing the edit you want.
+
+* You can click on the GitHub icon at the top of the page, click the
+  :guilabel:`suggest edit` button, and create a pull request with the changes
+  you give!
+
+
+Translating the project
+-----------------------
+
+If you know a language other than English, you can help to translate the game
+and it's documentation by going to the project's `Hosted Weblate
+<https://hosted.weblate.org/engage/opentabletop/>`_ page and suggest
+translations for the project's strings in your language!
+
+If you don't see your language in a component, you can add it by scrolling to
+the bottom of the component page and pressing :guilabel:`Start new translation`.
+
+.. note::
+
+   Manual pull requests for translations will be closed, as Weblate keeps it's
+   own fork of the project, and we want to avoid having merge requests occur.
+
+.. image:: https://hosted.weblate.org/widgets/opentabletop/-/287x66-white.png
+   :alt: Translation status
+   :target: https://hosted.weblate.org/engage/opentabletop/
+
+
 Creating a pull request
 -----------------------
 
@@ -69,21 +105,6 @@ However you propose the asset, you need to provide the following information:
   <https://creativecommons.org/licenses/by-sa/3.0/>`_.
 * The URL where the asset can be downloaded from. The URL must be publically
   accessible, and it must lead to a trusted website.
-
-
-Changing the documentation
---------------------------
-
-If there is a part of the documentation that you don't understand, or that you
-think is missing, then please don't hesistate to suggest a change to the
-documentation:
-
-* You can `post an issue`_ with the documentation change template
-  describing the edit you want.
-
-* You can click on the GitHub icon at the top of the page, click the
-  :guilabel:`suggest edit` button, and create a pull request with the changes
-  you give!
 
 
 .. _GitHub repository: https://github.com/drwhut/open-tabletop

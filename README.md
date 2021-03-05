@@ -1,5 +1,8 @@
 # OpenTabletop
 
+[![Documentation Status](https://readthedocs.org/projects/opentabletop/badge/?version=latest)](https://opentabletop.readthedocs.io/en/latest/?badge=latest)
+[![Translation Status](https://hosted.weblate.org/widgets/opentabletop/-/svg-badge.svg)](https://hosted.weblate.org/engage/opentabletop/)
+
 OpenTabletop is an open-source multiplayer game that allows you to play your
 favourite tabletop games in a physics-driven 3D environment with the use of
 easy-to-make
