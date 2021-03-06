@@ -77,7 +77,7 @@ const ASSET_PACK_SUBFOLDERS = {
 
 const VALID_AUDIO_EXTENSIONS = ["mp3", "ogg", "wav"]
 const VALID_SCENE_EXTENSIONS = ["dae", "glb", "gltf", "obj"]
-const VALID_TABLE_EXTENSIONS = ["table"]
+const VALID_TABLE_EXTENSIONS = ["ot"]
 
 # List taken from:
 # https://docs.godotengine.org/en/3.2/getting_started/workflow/assets/importing_images.html
