@@ -164,7 +164,7 @@ func _create_config_from_current() -> ConfigFile:
 					# the key is more efficient, since we can just bind it on
 					# load straight away.
 					key_name = value.action
-					key_value = value.get_action_input_event()
+					key_value = value.get_button_input_event()
 				elif value is CheckBox:
 					key_value = value.pressed
 				elif value is ColorPicker:

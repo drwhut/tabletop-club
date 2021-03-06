@@ -145,6 +145,7 @@ config/version="master"
 [autoload]
 
 AssetDB="*res://Scripts/AssetDB.gd"
+BindManager="*res://Scripts/BindManager.gd"
 Global="*res://Scripts/Global.gd"
 Lobby="*res://Scripts/Lobby.gd"
 ObjectPreviewFactory="*res://Scripts/Game/UI/Previews/ObjectPreviewFactory.gd"

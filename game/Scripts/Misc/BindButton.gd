@@ -31,51 +31,15 @@ var input_event: InputEvent = null
 # Get the input event corresponding to the action this button represents.
 # Returns: The corresponding input event, or null if there is no input event
 # for the action.
-func get_action_input_event() -> InputEvent:
+func get_button_input_event() -> InputEvent:
 	if input_event:
 		return input_event
 	
-	if not InputMap.has_action(action):
-		return null
-	
-	var events = InputMap.get_action_list(action)
-	if events.empty():
-		return null
-	
-	return events[0]
+	return BindManager.get_action_input_event(action)
 
 # Update the button's text to represent the action's bind.
 func update_text() -> void:
-	var event = get_action_input_event()
-	if not event:
-		text = tr("Not bound")
-	
-	if event is InputEventKey:
-		text = OS.get_scancode_string(event.scancode)
-	elif event is InputEventMouseButton:
-		match event.button_index:
-			BUTTON_LEFT:
-				text = tr("Left Mouse Button")
-			BUTTON_RIGHT:
-				text = tr("Right Mouse Button")
-			BUTTON_MIDDLE:
-				text = tr("Middle Mouse Button")
-			BUTTON_XBUTTON1:
-				text = tr("Extra Mouse Button 1")
-			BUTTON_XBUTTON2:
-				text = tr("Extra Mouse Button 2")
-			BUTTON_WHEEL_UP:
-				text = tr("Mouse Wheel Up")
-			BUTTON_WHEEL_DOWN:
-				text = tr("Mouse Wheel Down")
-			BUTTON_WHEEL_LEFT:
-				text = tr("Mouse Wheel Left")
-			BUTTON_WHEEL_RIGHT:
-				text = tr("Mouse Wheel Right")
-			_:
-				text = tr("Unknown Mouse Button")
-	else:
-		text = tr("Unknown event type")
+	text = BindManager.get_input_event_text(get_button_input_event())
 
 func _ready():
 	connect("pressed", self, "_on_pressed")

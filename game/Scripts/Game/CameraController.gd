@@ -46,6 +46,7 @@ signal stack_collect_all_requested(stack, collect_stacks)
 onready var _box_selection_rect = $BoxSelectionRect
 onready var _camera = $Camera
 onready var _container_content_dialog = $ContainerContentDialog
+onready var _control_hint_label = $ControlHintLabel
 onready var _cursors = $Cursors
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
@@ -165,6 +166,7 @@ func apply_options(config: ConfigFile) -> void:
 	
 	piece_rotate_invert = config.get_value("controls", "piece_rotation_invert")
 	
+	_control_hint_label.visible = not config.get_value("controls", "hide_control_hints")
 	_cursors.visible = not config.get_value("multiplayer", "hide_cursors")
 
 # Clear the list of selected pieces.
@@ -304,6 +306,10 @@ func _process(delta):
 		# Have we been grabbing this piece for a long time?
 		if _grabbing_time > GRABBING_SLOW_TIME:
 			_start_hovering_grabbed_piece(false)
+	
+	# TODO: Only do this if the state of the camera changes.
+	if _control_hint_label.visible:
+		_set_control_hint_label()
 	
 	for cursor in _cursors.get_children():
 		if cursor is TextureRect:
@@ -1102,6 +1108,166 @@ func _reset_camera() -> void:
 	
 	_camera.translation.z = _initial_zoom
 	_target_zoom = _initial_zoom
+
+# Set the control hint label's text based on the camera's state.
+func _set_control_hint_label() -> void:
+	var text = "[right][table=2]"
+	
+	var alt     = tr("Alt + %s")
+	var ctrl    = tr("Ctrl + %s")
+	var hold    = tr("Hold %s")
+	var release = tr("Release %s")
+	
+	var hovering = _is_hovering_selected or _is_grabbing_selected
+	
+	############
+	# MOVEMENT #
+	############
+	var sw = tr("Scroll Wheel")
+	
+	if not hold_left_click_to_move:
+		text += _set_control_hint_label_row_actions(tr("Move camera"),
+			["game_up", "game_left", "game_down", "game_right"])
+	
+	if not hovering:
+		text += _set_control_hint_label_row_actions(tr("Rotate camera"),
+			["game_rotate"], tr("Hold %s + Move Mouse"))
+		
+		text += _set_control_hint_label_row(tr("Zoom camera"), sw)
+	
+	#####################
+	# LEFT MOUSE BUTTON #
+	#####################
+	var lmb = tr("Left Mouse Button")
+	
+	if _tool == TOOL_CURSOR:
+		
+		if _is_hovering_selected:
+			text += _set_control_hint_label_row(tr("Release selected"), lmb, release)
+		elif _is_grabbing_selected:
+			text += _set_control_hint_label_row(tr("Quick grab"), tr("Move Mouse"))
+			text += _set_control_hint_label_row(tr("Stop grabbing"), lmb, release)
+		elif _is_box_selecting:
+			text += _set_control_hint_label_row(tr("Stop box selecting"), lmb, release)
+		elif _piece_mouse_is_over:
+			if not _piece_mouse_is_over in _selected_pieces:
+				text += _set_control_hint_label_row(tr("Select object"), lmb)
+				if not _selected_pieces.empty():
+					text += _set_control_hint_label_row(tr("Add to selection"), lmb, ctrl)
+			
+			if _piece_mouse_is_over is PieceContainer:
+				text += _set_control_hint_label_row(tr("Take random object"), lmb,
+					tr("%s + Move Mouse"))
+			elif _piece_mouse_is_over is Stack:
+				text += _set_control_hint_label_row(tr("Take top object"), lmb,
+					tr("%s + Move Mouse"))
+			
+			var name = tr("Grab selected") if _piece_mouse_is_over in _selected_pieces else tr("Grab object")
+			text += _set_control_hint_label_row(name, lmb, hold)
+		elif hold_left_click_to_move:
+			var name = tr("Stop moving") if _is_dragging_camera else tr("Start moving")
+			var mod  = release if _is_dragging_camera else hold
+			text += _set_control_hint_label_row(name, lmb, mod)
+		else:
+			text += _set_control_hint_label_row(tr("Box select"), lmb, hold)
+	
+	elif _tool == TOOL_RULER:
+		if _ruler_placing_point2:
+			text += _set_control_hint_label_row(tr("Stop measuring"), lmb)
+		else:
+			text += _set_control_hint_label_row(tr("Start measuring"), lmb)
+	
+	elif _tool == TOOL_HIDDEN_AREA:
+		if _hidden_area_placing_point2:
+			text += _set_control_hint_label_row(tr("Create hidden area"), lmb)
+		else:
+			text += _set_control_hint_label_row(tr("Draw hidden area"), lmb)
+	
+	######################
+	# RIGHT MOUSE BUTTON #
+	######################
+	var rmb = tr("Right Mouse Button")
+	
+	if _tool == TOOL_CURSOR and (not hovering):
+		
+		if _piece_mouse_is_over:
+			text += _set_control_hint_label_row(tr("Object menu"), rmb)
+		elif _cursor_on_table:
+			text += _set_control_hint_label_row(tr("Table menu"), rmb)
+	
+	elif _tool == TOOL_RULER:
+		pass
+	
+	elif _tool == TOOL_HIDDEN_AREA:
+		if _hidden_area_mouse_is_over:
+			text += _set_control_hint_label_row(tr("Remove hidden area"), rmb)
+	
+	#########
+	# OTHER #
+	#########
+	
+	if not _selected_pieces.empty():
+		if _is_hovering_selected:
+			text += _set_control_hint_label_row_actions(tr("Flip orientation"),
+				["game_flip_piece"])
+			text += _set_control_hint_label_row_actions(tr("Reset orientation"),
+				["game_reset_piece"])
+			
+			text += _set_control_hint_label_row(tr("Zoom selected"), sw)
+			text += _set_control_hint_label_row(tr("Lift selected"), sw, ctrl)
+			text += _set_control_hint_label_row(tr("Rotate selected"), sw, alt)
+		
+		var all_locked = true
+		for piece in _selected_pieces:
+			if piece is Piece:
+				if not piece.is_locked():
+					all_locked = false
+					break
+		var lock = tr("Unlock selected") if all_locked else tr("Lock selected")
+		text += _set_control_hint_label_row_actions(lock, ["game_lock_piece"])
+		
+		text += _set_control_hint_label_row_actions(tr("Delete selected"),
+			["game_delete_piece"])
+	
+	text += _set_control_hint_label_row_actions(tr("Reset camera"), ["game_reset_camera"])
+	
+	text += "[/table][/right]"
+	
+	# Make sure the label is flush with the bottom of the frame.
+	var old_height = _control_hint_label.rect_size.y
+	_control_hint_label.bbcode_text = ""
+	# This doesn't actually set the height to 0, it just sets it to the
+	# smallest height possible.
+	_control_hint_label.rect_size.y = 0
+	_control_hint_label.rect_position.y += old_height - _control_hint_label.rect_size.y
+	_control_hint_label.bbcode_text = text
+
+# Generate a row of text for the control hint label.
+# Returns: A row of text formatted with BBCode.
+# name: The name of the row.
+# desc: The description of the row.
+# mod: String to modify the row description - should contain one '%s'.
+func _set_control_hint_label_row(name: String, desc: String, mod: String = "%s") -> String:
+	return "[cell][b]%s:[/b][/cell][cell]%s[/cell]" % [name, mod % desc]
+
+# Generate a row of text for the control hint label using an array of actions.
+# Returns: A row of text formatted with BBCode.
+# name: The name of the row.
+# actions: An array of action strings, which will be converted into their input
+# event bindings.
+# mod: String to modify the row description - should contain one '%s'.
+func _set_control_hint_label_row_actions(name: String, actions: Array,
+	mod: String = "%s") -> String:
+	
+	var desc = ""
+	var first = true
+	for action in actions:
+		if not first:
+			desc += "/"
+		desc += BindManager.get_action_input_event_text(action)
+		first = false
+	
+	return _set_control_hint_label_row(name, desc, mod)
 
 # Set the properties of controls relating to the selected speaker.
 func _set_speaker_controls() -> void:
