@@ -98,7 +98,7 @@ func _ready():
 	call_deferred("_set_rotation_amount")
 
 func _unhandled_input(event):
-	if event.is_action_pressed("game_menu"):
+	if event.is_action_pressed("ui_cancel"):
 		_game_menu_background.visible = not _game_menu_background.visible
 		if not _game_menu_background.visible:
 			_options_menu.visible = false

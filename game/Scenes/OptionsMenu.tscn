@@ -334,41 +334,41 @@ columns = 2
 
 [node name="OpenAssetsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_right = 486.0
-margin_bottom = 20.0
+margin_bottom = 26.0
 size_flags_horizontal = 3
 
 [node name="OpenAssetsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
 margin_right = 976.0
-margin_bottom = 20.0
+margin_bottom = 26.0
 size_flags_horizontal = 3
 text = "Open Assets Folder"
 
 [node name="ReimportSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
-margin_top = 24.0
+margin_top = 30.0
 margin_right = 486.0
-margin_bottom = 44.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 
 [node name="ReimportButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
-margin_top = 24.0
+margin_top = 30.0
 margin_right = 976.0
-margin_bottom = 44.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 text = "Reimport Assets"
 
 [node name="ViewLicenseSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
-margin_top = 48.0
+margin_top = 60.0
 margin_right = 486.0
-margin_bottom = 68.0
+margin_bottom = 86.0
 size_flags_horizontal = 3
 
 [node name="ViewLicenseButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
-margin_top = 48.0
+margin_top = 60.0
 margin_right = 976.0
-margin_bottom = 68.0
+margin_bottom = 86.0
 size_flags_horizontal = 3
 text = "View License"
 
@@ -393,7 +393,7 @@ columns = 2
 [node name="MoveForward" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 3.0
 margin_right = 486.0
-margin_bottom = 17.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
 text = "Move Forward"
 align = 2
@@ -401,191 +401,174 @@ align = 2
 [node name="MoveForwardButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_right = 976.0
-margin_bottom = 20.0
+margin_bottom = 26.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_up"
 
 [node name="MoveBack" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 27.0
+margin_top = 33.0
 margin_right = 486.0
-margin_bottom = 41.0
+margin_bottom = 53.0
 size_flags_horizontal = 3
 text = "Move Back"
 align = 2
 
 [node name="MoveBackButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
-margin_top = 24.0
+margin_top = 30.0
 margin_right = 976.0
-margin_bottom = 44.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_down"
 
 [node name="MoveLeft" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 51.0
+margin_top = 63.0
 margin_right = 486.0
-margin_bottom = 65.0
+margin_bottom = 83.0
 size_flags_horizontal = 3
 text = "Move Left"
 align = 2
 
 [node name="MoveLeftButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
-margin_top = 48.0
+margin_top = 60.0
 margin_right = 976.0
-margin_bottom = 68.0
+margin_bottom = 86.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_left"
 
 [node name="MoveRight" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 75.0
+margin_top = 93.0
 margin_right = 486.0
-margin_bottom = 89.0
+margin_bottom = 113.0
 size_flags_horizontal = 3
 text = "Move Right"
 align = 2
 
 [node name="MoveRightButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
-margin_top = 72.0
+margin_top = 90.0
 margin_right = 976.0
-margin_bottom = 92.0
+margin_bottom = 116.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_right"
 
 [node name="RotateCamera" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 99.0
+margin_top = 123.0
 margin_right = 486.0
-margin_bottom = 113.0
+margin_bottom = 143.0
 size_flags_horizontal = 3
 text = "Rotate Camera"
 align = 2
 
 [node name="RotateCameraButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
-margin_top = 96.0
+margin_top = 120.0
 margin_right = 976.0
-margin_bottom = 116.0
+margin_bottom = 146.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_rotate"
 
 [node name="ResetCamera" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 123.0
+margin_top = 153.0
 margin_right = 486.0
-margin_bottom = 137.0
+margin_bottom = 173.0
 size_flags_horizontal = 3
 text = "Reset Camera"
 align = 2
 
 [node name="ResetCameraButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
-margin_top = 120.0
+margin_top = 150.0
 margin_right = 976.0
-margin_bottom = 140.0
+margin_bottom = 176.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_reset_camera"
 
 [node name="FlipPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 147.0
+margin_top = 183.0
 margin_right = 486.0
-margin_bottom = 161.0
+margin_bottom = 203.0
 size_flags_horizontal = 3
 text = "Flip Piece Orientation"
 align = 2
 
 [node name="FlipPieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
-margin_top = 144.0
+margin_top = 180.0
 margin_right = 976.0
-margin_bottom = 164.0
+margin_bottom = 206.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_flip_piece"
 
 [node name="ResetPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 171.0
+margin_top = 213.0
 margin_right = 486.0
-margin_bottom = 185.0
+margin_bottom = 233.0
 size_flags_horizontal = 3
 text = "Reset Piece Orientation"
 align = 2
 
 [node name="ResetPieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
-margin_top = 168.0
+margin_top = 210.0
 margin_right = 976.0
-margin_bottom = 188.0
+margin_bottom = 236.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_reset_piece"
 
 [node name="LockPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 195.0
+margin_top = 243.0
 margin_right = 486.0
-margin_bottom = 209.0
+margin_bottom = 263.0
 size_flags_horizontal = 3
 text = "Lock/Unlock Piece"
 align = 2
 
 [node name="LockPieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
-margin_top = 192.0
+margin_top = 240.0
 margin_right = 976.0
-margin_bottom = 212.0
+margin_bottom = 266.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_lock_piece"
 
 [node name="DeletePiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 219.0
+margin_top = 273.0
 margin_right = 486.0
-margin_bottom = 233.0
+margin_bottom = 293.0
 size_flags_horizontal = 3
 text = "Delete Piece"
 align = 2
 
 [node name="DeletePieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
-margin_top = 216.0
+margin_top = 270.0
 margin_right = 976.0
-margin_bottom = 236.0
+margin_bottom = 296.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_delete_piece"
 
-[node name="GameMenu" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 243.0
-margin_right = 486.0
-margin_bottom = 257.0
-size_flags_horizontal = 3
-text = "Game Menu"
-align = 2
-
-[node name="GameMenuButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_top = 240.0
-margin_right = 976.0
-margin_bottom = 260.0
-size_flags_horizontal = 3
-script = ExtResource( 2 )
-action = "game_menu"
-
 [node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 264.0
+margin_top = 300.0
 margin_right = 486.0
-margin_bottom = 284.0
+margin_bottom = 326.0
 
 [node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
-margin_top = 264.0
+margin_top = 300.0
 margin_right = 976.0
-margin_bottom = 284.0
+margin_bottom = 326.0
 text = "Reset Bindings"
 
 [node name="Multiplayer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
@@ -690,7 +673,7 @@ columns = 2
 [node name="WindowMode" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
 margin_top = 3.0
 margin_right = 486.0
-margin_bottom = 17.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
 text = "Window Mode"
 align = 2
@@ -698,25 +681,25 @@ align = 2
 [node name="WindowModeButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
 margin_left = 490.0
 margin_right = 976.0
-margin_bottom = 20.0
+margin_bottom = 26.0
 size_flags_horizontal = 3
 text = "Windowed"
 items = [ "Windowed", null, false, 0, null, "Borderless Fullscreen", null, false, 1, null, "Fullscreen", null, false, 2, null ]
 selected = 0
 
 [node name="FOV" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
-margin_top = 29.0
+margin_top = 35.0
 margin_right = 486.0
-margin_bottom = 43.0
+margin_bottom = 55.0
 size_flags_horizontal = 3
 text = "Field of View"
 align = 2
 
 [node name="FOVSpin" type="SpinBox" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
 margin_left = 490.0
-margin_top = 24.0
+margin_top = 30.0
 margin_right = 976.0
-margin_bottom = 48.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 min_value = 50.0
 max_value = 130.0
@@ -725,33 +708,33 @@ value = 70.0
 suffix = "º"
 
 [node name="VSync" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
-margin_top = 57.0
+margin_top = 68.0
 margin_right = 486.0
-margin_bottom = 71.0
+margin_bottom = 88.0
 size_flags_horizontal = 3
 text = "VSync"
 align = 2
 
 [node name="VSyncCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
 margin_left = 490.0
-margin_top = 52.0
+margin_top = 64.0
 margin_right = 976.0
-margin_bottom = 76.0
+margin_bottom = 92.0
 size_flags_horizontal = 3
 
 [node name="MSAA" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
-margin_top = 83.0
+margin_top = 99.0
 margin_right = 486.0
-margin_bottom = 97.0
+margin_bottom = 119.0
 size_flags_horizontal = 3
 text = "MSAA"
 align = 2
 
 [node name="MSAAButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
 margin_left = 490.0
-margin_top = 80.0
+margin_top = 96.0
 margin_right = 976.0
-margin_bottom = 100.0
+margin_bottom = 122.0
 size_flags_horizontal = 3
 text = "None"
 items = [ "None", null, false, 0, null, "2X", null, false, 1, null, "4X", null, false, 2, null, "8X", null, false, 3, null, "16X", null, false, 4, null ]
