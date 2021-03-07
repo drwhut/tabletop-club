@@ -229,6 +229,7 @@ func _set_type_options() -> void:
 			type_text = type_text.replace("SOUNDS", tr("Sounds"))
 			type_text = type_text.replace("SPEAKERS", tr("Speakers"))
 			type_text = type_text.replace("STACKS", tr("Stacks"))
+			type_text = type_text.replace("TABLES", tr("Tables"))
 			type_text = type_text.replace("TIMERS", tr("Timers"))
 			type_text = type_text.replace("TOKENS", tr("Tokens"))
 			

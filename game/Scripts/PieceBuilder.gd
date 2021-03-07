@@ -77,18 +77,7 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 	# Now that the piece has been scaled, if the piece entry contains the
 	# bounding box of the piece, we should take the time to adjust the centre
 	# of mass of the object.
-	# NOTE: The reason we offset all the collision shapes is because the
-	# Bullet physics engine defines the centre of mass as the origin of the
-	# rigidbody, and there is currently no way to manually define the
-	# centre of mass of a rigidbody in Godot. See:
-	# https://github.com/godotengine/godot-proposals/issues/945
-	if piece_entry.has("bounding_box"):
-		
-		var bounding_box = piece_entry["bounding_box"]
-		var centre_of_mass = 0.5 * (bounding_box[0] + bounding_box[1])
-		
-		for child in piece.get_children():
-			child.transform.origin -= centre_of_mass
+	_adjust_centre_of_mass(piece, piece_entry)
 	
 	if piece_entry.has("texture_path") and piece_entry["texture_path"] is String:
 		var texture: Texture = _load_res(piece_entry["texture_path"])
@@ -102,6 +91,28 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 			surface += 1
 	
 	return piece
+
+# Build a table using a table entry from the AssetDB.
+# Returns: The table corresponding to the given entry.
+# table_entry: The entry to create the table with.
+func build_table(table_entry: Dictionary) -> RigidBody:
+	print(table_entry)
+	var scene: Spatial = _load_res(table_entry["scene_path"]).instance()
+	
+	var table = RigidBody.new()
+	_extract_and_shape_mesh_instances(table, scene, Transform.IDENTITY)
+	if not scene.get_parent():
+		scene.free()
+	
+	# Since the table is a vanilla RigidBody, it doesn't have a "table_entry"
+	# property like pieces do, so we'll store the table entry in it's metadata.
+	table.set_meta("table_entry", table_entry)
+	
+	# TODO: Scale the table.
+	
+	_adjust_centre_of_mass(table, table_entry)
+	
+	return table
 
 # Fill a stack with pieces using an entry from the AssetDB.
 # stack: The stack to fill.
@@ -211,6 +222,25 @@ func get_piece_meshes(piece: Piece) -> Array:
 func scale_piece(piece: Piece, scale: Vector3) -> void:
 	for child in piece.get_collision_shapes():
 		child.scale_object_local(scale)
+
+# If the given piece entry has bounding box information, adjust the centre of
+# mass of a piece to be the centre of the bounding box.
+# piece: The piece whose centre of mass to adjust.
+# piece_entry: The piece entry of the piece.
+func _adjust_centre_of_mass(piece: RigidBody, piece_entry: Dictionary) -> void:
+	# NOTE: The reason we offset all the collision shapes is because the
+	# Bullet physics engine defines the centre of mass as the origin of the
+	# rigidbody, and there is currently no way to manually define the
+	# centre of mass of a rigidbody in Godot. See:
+	# https://github.com/godotengine/godot-proposals/issues/945
+	if piece_entry.has("bounding_box"):
+		
+		var bounding_box = piece_entry["bounding_box"]
+		var centre_of_mass = 0.5 * (bounding_box[0] + bounding_box[1])
+		
+		for child in piece.get_children():
+			if child is CollisionShape:
+				child.transform.origin -= centre_of_mass
 
 # Extract mesh instances from a tree, define collision shapes for each mesh
 # instance, and add them to a node.
