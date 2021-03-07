@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-05 00:30+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-03-08 15:03+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"opentabletop/docs-custom-assets/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5.1\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -343,7 +346,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:132
 msgid "Cards"
-msgstr ""
+msgstr "Kort"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:132
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:134
@@ -396,7 +399,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:138
 #: ../../custom_assets/asset_packs/asset_types.rst:124
 msgid "Music"
-msgstr ""
+msgstr "Musikk"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:138
 msgid "If ``true``, the music will have a chance of playing in the main menu."
@@ -414,7 +417,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:140
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:144
 msgid "Objects"
-msgstr ""
+msgstr "Objekter"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:140
 msgid "``1.0``"
@@ -432,7 +435,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:142
 msgid "Containers"
-msgstr ""
+msgstr "Beholdere"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:142
 msgid "``30.0``"
