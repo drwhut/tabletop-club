@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-03-05 09:21+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-03-08 15:03+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"opentabletop/game/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5.1\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:32
@@ -31,7 +34,7 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:57
 msgid "127.0.0.1:26271"
-msgstr ""
+msgstr "127.0.0.1:26271"
 
 #: ../Scenes/MainMenu.tscn:63
 msgid "Join Server"
@@ -39,27 +42,27 @@ msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:163 ../Scenes/MainMenu.tscn:69
 msgid "Options"
-msgstr ""
+msgstr "Innstillinger"
 
 #: ../Scenes/MainMenu.tscn:75
 msgid "Credits"
-msgstr ""
+msgstr "Bidragsytere"
 
 #: ../Scenes/MainMenu.tscn:81
 msgid "Quit"
-msgstr ""
+msgstr "Avslutt"
 
 #: ../Scenes/OptionsMenu.tscn:60
 msgid "Master Volume"
-msgstr ""
+msgstr "Hovedlydstyrke"
 
 #: ../Scenes/OptionsMenu.tscn:77
 msgid "Music Volume"
-msgstr ""
+msgstr "Musikklydstyrke"
 
 #: ../Scenes/OptionsMenu.tscn:95
 msgid "Sounds Volume"
-msgstr ""
+msgstr "Lyd-lydstyrke"
 
 #: ../Scenes/OptionsMenu.tscn:130
 msgid "Mouse Horizontal Sensitivity"
@@ -159,7 +162,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:553
 msgid "Game Menu"
-msgstr ""
+msgstr "Spillmeny"
 
 #: ../Scenes/OptionsMenu.tscn:575
 msgid "Reset Bindings"
@@ -167,19 +170,19 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:600
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 #: ../Scenes/OptionsMenu.tscn:608
 msgid "Player"
-msgstr ""
+msgstr "Spiller"
 
 #: ../Scenes/OptionsMenu.tscn:615
 msgid "Color"
-msgstr ""
+msgstr "Farge"
 
 #: ../Scenes/OptionsMenu.tscn:632
 msgid "Hide Player Cursors"
-msgstr ""
+msgstr "Skjul spillerpekere"
 
 #: ../Scenes/OptionsMenu.tscn:647
 msgid "Censor Profanity"
@@ -187,15 +190,15 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:681
 msgid "Window Mode"
-msgstr ""
+msgstr "Vindusmodus"
 
 #: ../Scenes/OptionsMenu.tscn:689
 msgid "Windowed"
-msgstr ""
+msgstr "Vindu"
 
 #: ../Scenes/OptionsMenu.tscn:698
 msgid "Field of View"
-msgstr ""
+msgstr "Synsfelt"
 
 #: ../Scenes/OptionsMenu.tscn:718
 msgid "VSync"
@@ -215,11 +218,11 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:134 ../Scenes/OptionsMenu.tscn:762
 msgid "Apply"
-msgstr ""
+msgstr "Bruk"
 
 #: ../Scenes/OptionsMenu.tscn:768
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: ../Scenes/OptionsMenu.tscn:815
 msgid "Please press a key or button to bind it..."
@@ -227,7 +230,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:835
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: ../Scenes/RandomMusicPlayer.tscn:21
 msgid "Now Playing:"
@@ -248,20 +251,20 @@ msgstr ""
 
 #: ../Scenes/Game/UI/ChatBox.tscn:53
 msgid "Send"
-msgstr ""
+msgstr "Send"
 
 #: ../Scenes/Game/UI/GameUI.tscn:28
 msgid "Objects"
-msgstr ""
+msgstr "Objekter"
 
 #: ../Scenes/Game/UI/GameUI.tscn:34
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:225
 msgid "Games"
-msgstr ""
+msgstr "Spill"
 
 #: ../Scenes/Game/UI/GameUI.tscn:40
 msgid "Room"
-msgstr ""
+msgstr "Rom"
 
 #: ../Scenes/Game/UI/GameUI.tscn:46 ../Scripts/Game/UI/GameUI.gd:88
 msgid "Flip Table"
@@ -273,50 +276,50 @@ msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:58
 msgid "45"
-msgstr ""
+msgstr "45"
 
 #: ../Scenes/Game/UI/GameUI.tscn:66
 msgid "Menu"
-msgstr ""
+msgstr "Meny"
 
 #: ../Scenes/Game/UI/GameUI.tscn:94
 msgid "Add"
-msgstr ""
+msgstr "Legg til"
 
 #: ../Scenes/Game/UI/GameUI.tscn:95
 #, python-format
 msgid "Added %s."
-msgstr ""
+msgstr "La til %s."
 
 #: ../Scenes/Game/UI/GameUI.tscn:96
 #, python-format
 msgid "Added %d objects."
-msgstr ""
+msgstr "La til %d objekter."
 
 #: ../Scenes/Game/UI/GameUI.tscn:103
 #, python-format
 msgid "Loaded %d games."
-msgstr ""
+msgstr "La til %d spill."
 
 #: ../Scenes/Game/UI/GameUI.tscn:145
 msgid "Back to game"
-msgstr ""
+msgstr "Fortsett spill"
 
 #: ../Scenes/Game/UI/GameUI.tscn:151
 msgid "Save game"
-msgstr ""
+msgstr "Lagre spill"
 
 #: ../Scenes/Game/UI/GameUI.tscn:157
 msgid "Load game"
-msgstr ""
+msgstr "Last inn spill"
 
 #: ../Scenes/Game/UI/GameUI.tscn:169
 msgid "Quit to main menu"
-msgstr ""
+msgstr "Avslutt til hovedmeny"
 
 #: ../Scenes/Game/UI/GameUI.tscn:175
 msgid "Quit to desktop"
-msgstr ""
+msgstr "Avslutt til skrivebord"
 
 #: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:42
 msgid "Take"
@@ -369,7 +372,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:37
 msgid "Type:"
-msgstr ""
+msgstr "Type:"
 
 #: ../Scripts/ImportAssets.gd:38
 msgid ""
@@ -390,32 +393,32 @@ msgstr ""
 
 #: ../Scripts/MainMenu.gd:42
 msgid "Cursors"
-msgstr ""
+msgstr "Pekere"
 
 #: ../Scripts/MainMenu.gd:43
 msgid "Developers"
-msgstr ""
+msgstr "Utviklere"
 
 #: ../Scripts/MainMenu.gd:44
 msgid "Fonts"
-msgstr ""
+msgstr "Skrifter"
 
 #: ../Scripts/MainMenu.gd:45
 msgid "Images"
-msgstr ""
+msgstr "Bilder"
 
 #: ../Scripts/MainMenu.gd:46
 msgid "Tool Icons"
-msgstr ""
+msgstr "Verktøyikoner"
 
 #: ../Scripts/RandomMusicPlayer.gd:32 ../Scripts/RandomMusicPlayer.gd:52
 #, python-format
 msgid "Now Playing: %s"
-msgstr ""
+msgstr "Spiller nå: %s"
 
 #: ../Scripts/RandomMusicPlayer.gd:32
 msgid "Nothing"
-msgstr ""
+msgstr "Ingenting"
 
 #: ../Scripts/Game/CameraController.gd:872
 #, python-format
@@ -480,15 +483,15 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1058
 msgid "Lock"
-msgstr ""
+msgstr "Lås"
 
 #: ../Scripts/Game/CameraController.gd:1064
 msgid "Unlock"
-msgstr ""
+msgstr "Lås opp"
 
 #: ../Scripts/Game/CameraController.gd:1069
 msgid "Delete"
-msgstr ""
+msgstr "Slett"
 
 #: ../Scripts/Game/CameraController.gd:1085
 msgid "Set spawn point here"
@@ -550,7 +553,7 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1158
 msgid "Start stopwatch"
-msgstr ""
+msgstr "Start stoppeklokke"
 
 #: ../Scripts/Game/Game.gd:126
 #, python-format
@@ -620,27 +623,27 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:220
 msgid "Cards"
-msgstr ""
+msgstr "Kort"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:221
 msgid "Containers"
-msgstr ""
+msgstr "Beholdere"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:222
 msgid "Dice - d4"
-msgstr ""
+msgstr "Terning - d4"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:223
 msgid "Dice - d6"
-msgstr ""
+msgstr "Terning - d6"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:224
 msgid "Dice - d8"
-msgstr ""
+msgstr "Terning - d8"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:226
 msgid "Music"
-msgstr ""
+msgstr "Musikk"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:227
 msgid "Pieces"
@@ -652,7 +655,7 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:229
 msgid "Sounds"
-msgstr ""
+msgstr "Lyder"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:230
 msgid "Speakers"
@@ -664,11 +667,11 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:232
 msgid "Timers"
-msgstr ""
+msgstr "Tidsur"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:233
 msgid "Tokens"
-msgstr ""
+msgstr "Symboler"
 
 #: ../Scripts/Misc/BindButton.gd:51
 msgid "Not bound"
@@ -712,8 +715,8 @@ msgstr ""
 
 #: ../Scripts/Misc/BindButton.gd:76
 msgid "Unknown Mouse Button"
-msgstr ""
+msgstr "Ukjent museknapp"
 
 #: ../Scripts/Misc/BindButton.gd:78
 msgid "Unknown event type"
-msgstr ""
+msgstr "Ukjent hendelsestype"
