@@ -33,11 +33,12 @@ onready var _hidden_area_preview = $HiddenAreaPreview
 onready var _pieces = $Pieces
 onready var _spot_light = $SpotLight
 onready var _sun_light = $SunLight
-onready var _table_body = $Table/Body
+onready var _table = $Table
 onready var _world_environment = $WorldEnvironment
 
 var _srv_next_piece_name = 0
 var _srv_retrieve_pieces_from_hell = true
+var _table_body: RigidBody = null
 var _table_preflip_state: Dictionary = {}
 
 # Add a hand to the game for a given player.
@@ -1203,6 +1204,20 @@ remotesync func set_state(state: Dictionary) -> void:
 	
 	_extract_piece_states(state, _pieces)
 
+# Set the room table.
+# table_entry: The table's entry in the asset DB.
+remotesync func set_table(table_entry: Dictionary) -> void:
+	if get_tree().has_network_peer():
+		if get_tree().get_rpc_sender_id() != 1:
+			return
+	
+	if _table_body != null:
+		_table.remove_child(_table_body)
+		_table.queue_free()
+	
+	_table_body = PieceBuilder.build_table(table_entry)
+	_table.add_child(_table_body)
+
 # Get the next hand transform. Note that there may not be a next transform, in
 # which case the function returns the identity transform.
 # Returns: The next hand transform.
@@ -1318,14 +1333,20 @@ remotesync func unflip_table() -> void:
 	emit_signal("table_flipped", true)
 
 func _ready():
-	# Scan the default asset pack and find a skybox whose "default" value is
-	# true - if we find one, load it now.
+	# Scan the default asset pack and find a skybox and table whose "default"
+	# value is true - if we find one, load it now.
 	var asset_db = AssetDB.get_db()
 	if asset_db.has("OpenTabletop"):
 		if asset_db["OpenTabletop"].has("skyboxes"):
 			for skybox_entry in asset_db["OpenTabletop"]["skyboxes"]:
 				if skybox_entry["default"]:
 					set_skybox(skybox_entry)
+					break
+		
+		if asset_db["OpenTabletop"].has("tables"):
+			for table_entry in asset_db["OpenTabletop"]["tables"]:
+				if table_entry["default"]:
+					set_table(table_entry)
 					break
 
 # Append the states of pieces to a given dictionary.

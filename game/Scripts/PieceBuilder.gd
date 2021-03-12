@@ -104,13 +104,17 @@ func build_table(table_entry: Dictionary) -> RigidBody:
 	if not scene.get_parent():
 		scene.free()
 	
+	#table.continuous_cd = true
+	table.mass = 100000 # = 10kg
+	table.mode = RigidBody.MODE_STATIC
+	
 	# Since the table is a vanilla RigidBody, it doesn't have a "table_entry"
 	# property like pieces do, so we'll store the table entry in it's metadata.
 	table.set_meta("table_entry", table_entry)
 	
 	# TODO: Scale the table.
 	
-	_adjust_centre_of_mass(table, table_entry)
+	_adjust_centre_of_mass(table, table_entry, true)
 	
 	return table
 
@@ -227,7 +231,10 @@ func scale_piece(piece: Piece, scale: Vector3) -> void:
 # mass of a piece to be the centre of the bounding box.
 # piece: The piece whose centre of mass to adjust.
 # piece_entry: The piece entry of the piece.
-func _adjust_centre_of_mass(piece: RigidBody, piece_entry: Dictionary) -> void:
+# keep_pos: Should the piece's position stay the same?
+func _adjust_centre_of_mass(piece: RigidBody, piece_entry: Dictionary,
+	keep_pos: bool = false) -> void:
+	
 	# NOTE: The reason we offset all the collision shapes is because the
 	# Bullet physics engine defines the centre of mass as the origin of the
 	# rigidbody, and there is currently no way to manually define the
@@ -241,6 +248,9 @@ func _adjust_centre_of_mass(piece: RigidBody, piece_entry: Dictionary) -> void:
 		for child in piece.get_children():
 			if child is CollisionShape:
 				child.transform.origin -= centre_of_mass
+		
+		if keep_pos:
+			piece.transform.origin += centre_of_mass
 
 # Extract mesh instances from a tree, define collision shapes for each mesh
 # instance, and add them to a node.
