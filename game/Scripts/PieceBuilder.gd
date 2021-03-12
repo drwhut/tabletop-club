@@ -96,7 +96,6 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 # Returns: The table corresponding to the given entry.
 # table_entry: The entry to create the table with.
 func build_table(table_entry: Dictionary) -> RigidBody:
-	print(table_entry)
 	var scene: Spatial = _load_res(table_entry["scene_path"]).instance()
 	
 	var table = RigidBody.new()

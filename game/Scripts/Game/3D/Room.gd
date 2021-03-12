@@ -429,12 +429,18 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 		"intensity": get_lamp_intensity(),
 		"sunlight": get_lamp_type()
 	}
+	
 	out["skybox"] = get_skybox()
+	
 	out["table"] = {
-		"is_rigid": _table_body.mode == RigidBody.MODE_RIGID,
+		"entry": get_table(),
+		"is_rigid": false,
 		"preflip_state": _table_preflip_state,
-		"transform": _table_body.transform
+		"transform": Transform.IDENTITY
 	}
+	if _table_body:
+		out["table"]["is_rigid"] = _table_body.mode == RigidBody.MODE_RIGID
+		out["table"]["transform"] = _table_body.transform
 	
 	if hands:
 		var hand_dict = {}
@@ -470,6 +476,15 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	_append_piece_states(out, _pieces, collisions)
 	
 	return out
+
+# Get the current table's entry in the asset DB.
+# Returns: The current table's entry, empty if there is no table.
+func get_table() -> Dictionary:
+	if _table_body:
+		if _table_body.has_meta("table_entry"):
+			return _table_body.get_meta("table_entry")
+	
+	return {}
 
 # Called by the server to place a hidden area for a given player.
 # area_name: The name of the new hidden area.
@@ -1123,17 +1138,21 @@ remotesync func set_state(state: Dictionary) -> void:
 	if state.has("table"):
 		var table_meta = state["table"]
 		
-		if table_meta["is_rigid"]:
-			_table_body.mode = RigidBody.MODE_RIGID
-		else:
-			_table_body.mode = RigidBody.MODE_STATIC
-		emit_signal("table_flipped", not table_meta["is_rigid"])
+		set_table(table_meta["entry"])
 		
+		if _table_body:
+			if table_meta["is_rigid"]:
+				_table_body.mode = RigidBody.MODE_RIGID
+			else:
+				_table_body.mode = RigidBody.MODE_STATIC
+			
+			_table_body.transform = table_meta["transform"]
+		
+		emit_signal("table_flipped", not table_meta["is_rigid"])
 		if get_tree().is_network_server():
 			srv_set_retrieve_pieces_from_hell(not table_meta["is_rigid"])
 		
 		_table_preflip_state = table_meta["preflip_state"]
-		_table_body.transform = table_meta["transform"]
 	
 	if state.has("hands"):
 		for hand in _hands.get_children():
@@ -1213,10 +1232,12 @@ remotesync func set_table(table_entry: Dictionary) -> void:
 	
 	if _table_body != null:
 		_table.remove_child(_table_body)
-		_table.queue_free()
+		_table_body.queue_free()
+		_table_body = null
 	
-	_table_body = PieceBuilder.build_table(table_entry)
-	_table.add_child(_table_body)
+	if not table_entry.empty():
+		_table_body = PieceBuilder.build_table(table_entry)
+		_table.add_child(_table_body)
 
 # Get the next hand transform. Note that there may not be a next transform, in
 # which case the function returns the identity transform.
@@ -1325,7 +1346,6 @@ remotesync func unflip_table() -> void:
 		_table_preflip_state = {}
 	
 	_table_body.mode = RigidBody.MODE_STATIC
-	_table_body.transform = Transform.IDENTITY
 	
 	if get_tree().is_network_server():
 		srv_set_retrieve_pieces_from_hell(true)
