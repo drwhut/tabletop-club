@@ -52,12 +52,6 @@ margin_right = 442.0
 margin_bottom = 158.0
 text = "Change skybox"
 
-[node name="ClearSkyboxButton" type="Button" parent="VBoxContainer/TabContainer/Skybox"]
-margin_top = 162.0
-margin_right = 442.0
-margin_bottom = 188.0
-text = "Clear skybox"
-
 [node name="Lighting" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
 visible = false
 anchor_right = 1.0
@@ -142,7 +136,6 @@ status_text_multiple = "Loaded %d skyboxes."
 
 [connection signal="about_to_show" from="." to="." method="_on_RoomDialog_about_to_show"]
 [connection signal="pressed" from="VBoxContainer/TabContainer/Skybox/ChangeSkyboxButton" to="." method="_on_ChangeSkyboxButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/TabContainer/Skybox/ClearSkyboxButton" to="." method="_on_ClearSkyboxButton_pressed"]
 [connection signal="item_selected" from="VBoxContainer/TabContainer/Lighting/TypeButton" to="." method="_on_TypeButton_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Lighting/HBoxContainer/IntensitySlider" to="." method="_on_IntensitySlider_value_changed"]
 [connection signal="color_changed" from="VBoxContainer/TabContainer/Lighting/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]

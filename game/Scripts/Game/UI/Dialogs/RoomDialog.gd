@@ -26,23 +26,12 @@ signal setting_lighting(lamp_color, lamp_intensity, lamp_sunlight)
 signal setting_skybox(skybox_entry)
 
 onready var _apply_button = $VBoxContainer/HBoxContainer/ApplyButton
-onready var _clear_skybox_button = $VBoxContainer/TabContainer/Skybox/ClearSkyboxButton
 onready var _lamp_color_picker = $VBoxContainer/TabContainer/Lighting/ColorPickerButton
 onready var _lamp_intensity_slider = $VBoxContainer/TabContainer/Lighting/HBoxContainer/IntensitySlider
 onready var _lamp_intensity_value_label = $VBoxContainer/TabContainer/Lighting/HBoxContainer/IntensityValueLabel
 onready var _lamp_type_button = $VBoxContainer/TabContainer/Lighting/TypeButton
 onready var _skybox_dialog = $SkyboxDialog
 onready var _skybox_preview = $VBoxContainer/TabContainer/Skybox/SkyboxPreview
-
-# Clear the currently selected skybox, and set it to the default skybox.
-func clear_skybox() -> void:
-	_skybox_preview.set_entry({
-		"description": "The default skybox for OpenTabletop.",
-		"name": "Default",
-		"texture_path": ""
-	})
-	
-	_clear_skybox_button.disabled = true
 
 # Set the room details in the room dialog.
 # skybox_entry: The skybox's entry in the asset DB.
@@ -53,7 +42,12 @@ func set_room_details(skybox_entry: Dictionary, lamp_color: Color,
 	lamp_intensity: float, lamp_sunlight: bool) -> void:
 	
 	if skybox_entry.empty():
-		clear_skybox()
+		_skybox_preview.set_entry({
+			"default": false,
+			"description": "",
+			"name": "None",
+			"texture_path": ""
+		})
 	else:
 		_skybox_preview.set_entry(skybox_entry)
 	
@@ -61,9 +55,6 @@ func set_room_details(skybox_entry: Dictionary, lamp_color: Color,
 	_lamp_intensity_slider.value = lamp_intensity
 	_set_lamp_intensity_value_label(lamp_intensity)
 	_lamp_type_button.selected = 0 if lamp_sunlight else 1
-
-func _ready():
-	clear_skybox()
 
 # Set the lamp intensity value label as a percentage value.
 # value: The value to display in the label.
@@ -80,11 +71,6 @@ func _on_ApplyButton_pressed():
 
 func _on_ChangeSkyboxButton_pressed():
 	_skybox_dialog.popup_centered()
-
-func _on_ClearSkyboxButton_pressed():
-	_apply_button.disabled = false
-	
-	clear_skybox()
 
 func _on_ColorPickerButton_color_changed(_color: Color):
 	_apply_button.disabled = false
@@ -105,8 +91,6 @@ func _on_SkyboxDialog_entry_requested(_pack: String, _type: String, entry: Dicti
 	
 	_skybox_preview.set_entry(entry)
 	_skybox_dialog.visible = false
-	
-	_clear_skybox_button.disabled = false
 
 func _on_TypeButton_item_selected(_index: int):
 	_apply_button.disabled = false

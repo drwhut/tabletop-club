@@ -1082,8 +1082,9 @@ remotesync func set_lamp_type(sunlight: bool) -> void:
 # skybox_entry: The skybox's entry in the asset DB. If either the texture path
 # or the entry are empty, the default skybox is used.
 remotesync func set_skybox(skybox_entry: Dictionary) -> void:
-	if get_tree().get_rpc_sender_id() != 1:
-		return
+	if get_tree().has_network_peer():
+		if get_tree().get_rpc_sender_id() != 1:
+			return
 	
 	var default_skybox = true
 	if not skybox_entry.empty():
@@ -1315,6 +1316,17 @@ remotesync func unflip_table() -> void:
 		srv_set_retrieve_pieces_from_hell(true)
 	
 	emit_signal("table_flipped", true)
+
+func _ready():
+	# Scan the default asset pack and find a skybox whose "default" value is
+	# true - if we find one, load it now.
+	var asset_db = AssetDB.get_db()
+	if asset_db.has("OpenTabletop"):
+		if asset_db["OpenTabletop"].has("skyboxes"):
+			for skybox_entry in asset_db["OpenTabletop"]["skyboxes"]:
+				if skybox_entry["default"]:
+					set_skybox(skybox_entry)
+					break
 
 # Append the states of pieces to a given dictionary.
 # state: The dictionary to add the states to.
