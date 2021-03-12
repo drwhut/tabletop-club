@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Game/UI/Dialogs/RoomDialog.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Game/UI/Previews/GenericPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Game/UI/Previews/ObjectPreview.tscn" type="PackedScene" id=4]
 
 [node name="RoomDialog" type="WindowDialog"]
 margin_right = 450.0
@@ -26,7 +27,32 @@ margin_right = 450.0
 margin_bottom = 320.0
 size_flags_vertical = 3
 
+[node name="Table" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 38.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="CurrentTableLabel" type="Label" parent="VBoxContainer/TabContainer/Table"]
+margin_right = 442.0
+margin_bottom = 20.0
+text = "Current table:"
+
+[node name="TablePreview" parent="VBoxContainer/TabContainer/Table" instance=ExtResource( 4 )]
+margin_top = 24.0
+margin_right = 442.0
+margin_bottom = 143.0
+
+[node name="ChangeTableButton" type="Button" parent="VBoxContainer/TabContainer/Table"]
+margin_top = 147.0
+margin_right = 442.0
+margin_bottom = 173.0
+text = "Change table"
+
 [node name="Skybox" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -134,10 +160,19 @@ db_types = {
 }
 status_text_multiple = "Loaded %d skyboxes."
 
+[node name="TableDialog" parent="." instance=ExtResource( 2 )]
+window_title = "Select a table..."
+db_types = {
+"TABLES": "tables"
+}
+status_text_multiple = "Loaded %d tables."
+
 [connection signal="about_to_show" from="." to="." method="_on_RoomDialog_about_to_show"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Table/ChangeTableButton" to="." method="_on_ChangeTableButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/TabContainer/Skybox/ChangeSkyboxButton" to="." method="_on_ChangeSkyboxButton_pressed"]
 [connection signal="item_selected" from="VBoxContainer/TabContainer/Lighting/TypeButton" to="." method="_on_TypeButton_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Lighting/HBoxContainer/IntensitySlider" to="." method="_on_IntensitySlider_value_changed"]
 [connection signal="color_changed" from="VBoxContainer/TabContainer/Lighting/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]
 [connection signal="entry_requested" from="SkyboxDialog" to="." method="_on_SkyboxDialog_entry_requested"]
+[connection signal="entry_requested" from="TableDialog" to="." method="_on_TableDialog_entry_requested"]

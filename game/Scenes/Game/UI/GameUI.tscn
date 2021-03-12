@@ -199,6 +199,7 @@ visible = false
 [connection signal="requesting_room_details" from="RoomDialog" to="." method="_on_RoomDialog_requesting_room_details"]
 [connection signal="setting_lighting" from="RoomDialog" to="." method="_on_RoomDialog_setting_lighting"]
 [connection signal="setting_skybox" from="RoomDialog" to="." method="_on_RoomDialog_setting_skybox"]
+[connection signal="setting_table" from="RoomDialog" to="." method="_on_RoomDialog_setting_table"]
 [connection signal="confirmed" from="ClearTableConfirmDialog" to="." method="_on_ClearTableConfirmDialog_confirmed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/SaveGameButton" to="." method="_on_SaveGameButton_pressed"]

@@ -33,6 +33,7 @@ signal rotation_amount_updated(rotation_amount)
 signal save_table(path)
 signal skybox_requested(skybox_entry)
 signal stopped_saving_table()
+signal table_requested(table_entry)
 
 onready var _chat_box = $ChatBox
 onready var _clear_table_button = $TopPanel/ClearTableButton
@@ -66,15 +67,16 @@ func popup_objects_dialog() -> void:
 	_objects_dialog.popup_centered()
 
 # Set the room details in the room dialog.
+# table_entry: The table's asset DB entry.
 # skybox_entry: The skybox's asset DB entry.
 # lamp_color: The color of the room lamp.
 # lamp_intensity: The intensity of the room lamp.
 # lamp_sunlight: If the room lamp is emitting sunlight.
-func set_room_details(skybox_entry: Dictionary, lamp_color: Color,
-	lamp_intensity: float, lamp_sunlight: bool) -> void:
+func set_room_details(table_entry: Dictionary, skybox_entry: Dictionary,
+	lamp_color: Color, lamp_intensity: float, lamp_sunlight: bool) -> void:
 	
-	_room_dialog.set_room_details(skybox_entry, lamp_color, lamp_intensity,
-		lamp_sunlight)
+	_room_dialog.set_room_details(table_entry, skybox_entry, lamp_color,
+		lamp_intensity, lamp_sunlight)
 
 # Set the table flipped status, so the flip table button can be updated.
 # flip_table_status: If true, the button will represent resetting the table.
@@ -212,6 +214,10 @@ func _on_RoomDialog_setting_lighting(lamp_color: Color, lamp_intensity: float,
 func _on_RoomDialog_setting_skybox(skybox_entry: Dictionary):
 	_room_dialog.visible = false
 	emit_signal("skybox_requested", skybox_entry)
+
+func _on_RoomDialog_setting_table(table_entry: Dictionary):
+	_room_dialog.visible = false
+	emit_signal("table_requested", table_entry)
 
 func _on_RotationOption_item_selected(_index: int):
 	_set_rotation_amount()

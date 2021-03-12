@@ -1039,6 +1039,11 @@ master func request_set_lamp_type(sunlight: bool) -> void:
 master func request_set_skybox(skybox_entry: Dictionary) -> void:
 	rpc("set_skybox", skybox_entry)
 
+# Request the server to set the room table.
+# table_entry: The table's entry in the asset DB.
+master func request_set_table(table_entry: Dictionary) -> void:
+	rpc("set_table", table_entry)
+
 # Request the server to get a stack to collect all of the pieces that it can
 # stack.
 # stack_name: The name of the collecting stack.
@@ -1236,8 +1241,10 @@ remotesync func set_table(table_entry: Dictionary) -> void:
 		_table_body = null
 	
 	if not table_entry.empty():
-		_table_body = PieceBuilder.build_table(table_entry)
-		_table.add_child(_table_body)
+		if table_entry.has("scene_path"):
+			if not table_entry["scene_path"].empty():
+				_table_body = PieceBuilder.build_table(table_entry)
+				_table.add_child(_table_body)
 
 # Get the next hand transform. Note that there may not be a next transform, in
 # which case the function returns the identity transform.

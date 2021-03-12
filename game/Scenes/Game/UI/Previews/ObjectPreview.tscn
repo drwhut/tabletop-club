@@ -46,6 +46,7 @@ render_target_update_mode = 3
 gui_disable_input = true
 
 [node name="Camera" type="Camera" parent="CenterContainer/ViewportContainer/Viewport"]
+far = 500.0
 
 [node name="Label" type="Label" parent="."]
 margin_top = 104.0

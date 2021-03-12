@@ -54,4 +54,5 @@ dialog_autowrap = true
 [connection signal="save_table" from="GameUI" to="." method="_on_GameUI_save_table"]
 [connection signal="skybox_requested" from="GameUI" to="." method="_on_GameUI_skybox_requested"]
 [connection signal="stopped_saving_table" from="GameUI" to="." method="_on_GameUI_stopped_saving_table"]
+[connection signal="table_requested" from="GameUI" to="." method="_on_GameUI_table_requested"]
 [connection signal="confirmed" from="TableStateVersionDialog" to="." method="_on_TableStateVersionDialog_confirmed"]

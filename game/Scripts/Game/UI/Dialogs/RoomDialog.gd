@@ -24,6 +24,7 @@ extends WindowDialog
 signal requesting_room_details()
 signal setting_lighting(lamp_color, lamp_intensity, lamp_sunlight)
 signal setting_skybox(skybox_entry)
+signal setting_table(table_entry)
 
 onready var _apply_button = $VBoxContainer/HBoxContainer/ApplyButton
 onready var _lamp_color_picker = $VBoxContainer/TabContainer/Lighting/ColorPickerButton
@@ -32,14 +33,31 @@ onready var _lamp_intensity_value_label = $VBoxContainer/TabContainer/Lighting/H
 onready var _lamp_type_button = $VBoxContainer/TabContainer/Lighting/TypeButton
 onready var _skybox_dialog = $SkyboxDialog
 onready var _skybox_preview = $VBoxContainer/TabContainer/Skybox/SkyboxPreview
+onready var _table_dialog = $TableDialog
+onready var _table_preview = $VBoxContainer/TabContainer/Table/TablePreview
 
 # Set the room details in the room dialog.
+# table_entry: The table's entry in the asset DB.
 # skybox_entry: The skybox's entry in the asset DB.
 # lamp_color: The color of the room lamp.
 # lamp_intensity: The intensity of the room lamp.
 # lamp_sunlight: If the room lamp is emitting sunlight.
-func set_room_details(skybox_entry: Dictionary, lamp_color: Color,
-	lamp_intensity: float, lamp_sunlight: bool) -> void:
+func set_room_details(table_entry: Dictionary, skybox_entry: Dictionary,
+	lamp_color: Color, lamp_intensity: float, lamp_sunlight: bool) -> void:
+	
+	if table_entry.empty():
+		_table_preview.set_entry({
+			"bounding_box": [Vector3.ZERO, Vector3.ZERO],
+			"default": false,
+			"description": "",
+			"mass": 1.0,
+			"name": "None",
+			"scale": Vector3.ONE,
+			"scene_path": "",
+			"texture_path": null
+		})
+	else:
+		_table_preview.set_entry(table_entry)
 	
 	if skybox_entry.empty():
 		_skybox_preview.set_entry({
@@ -64,6 +82,7 @@ func _set_lamp_intensity_value_label(value: float) -> void:
 func _on_ApplyButton_pressed():
 	_apply_button.disabled = true
 	
+	emit_signal("setting_table", _table_preview.get_entry())
 	emit_signal("setting_skybox", _skybox_preview.get_entry())
 	
 	emit_signal("setting_lighting", _lamp_color_picker.color,
@@ -71,6 +90,9 @@ func _on_ApplyButton_pressed():
 
 func _on_ChangeSkyboxButton_pressed():
 	_skybox_dialog.popup_centered()
+
+func _on_ChangeTableButton_pressed():
+	_table_dialog.popup_centered()
 
 func _on_ColorPickerButton_color_changed(_color: Color):
 	_apply_button.disabled = false
@@ -91,6 +113,12 @@ func _on_SkyboxDialog_entry_requested(_pack: String, _type: String, entry: Dicti
 	
 	_skybox_preview.set_entry(entry)
 	_skybox_dialog.visible = false
+
+func _on_TableDialog_entry_requested(_pack: String, _type: String, entry: Dictionary):
+	_apply_button.disabled = false
+	
+	_table_preview.set_entry(entry)
+	_table_dialog.visible = false
 
 func _on_TypeButton_item_selected(_index: int):
 	_apply_button.disabled = false

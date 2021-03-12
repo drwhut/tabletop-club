@@ -222,8 +222,9 @@ func _on_GameUI_piece_requested(piece_entry: Dictionary, position: Vector3):
 	rpc_id(1, "request_game_piece", piece_entry, position)
 
 func _on_GameUI_requesting_room_details():
-	_ui.set_room_details(_room.get_skybox(), _room.get_lamp_color(),
-		_room.get_lamp_intensity(), _room.get_lamp_type())
+	_ui.set_room_details(_room.get_table(), _room.get_skybox(),
+		_room.get_lamp_color(), _room.get_lamp_intensity(),
+		_room.get_lamp_type())
 
 func _on_GameUI_save_table(path: String):
 	if _room_state_saving.empty():
@@ -240,6 +241,9 @@ func _on_GameUI_stopped_saving_table():
 
 func _on_GameUI_skybox_requested(skybox_entry: Dictionary):
 	_room.rpc_id(1, "request_set_skybox", skybox_entry)
+
+func _on_GameUI_table_requested(table_entry: Dictionary):
+	_room.rpc_id(1, "request_set_table", table_entry)
 
 func _on_Lobby_players_synced():
 	if not get_tree().is_network_server():
