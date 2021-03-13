@@ -300,6 +300,9 @@ func _ready():
 	_reset_camera()
 
 func _process(delta):
+	_process_input(delta)
+	_process_movement(delta)
+	
 	if _is_grabbing_selected:
 		_grabbing_time += delta
 		
@@ -373,10 +376,7 @@ func _process(delta):
 				_timer_time_label.text = _timer_connected.get_time_string()
 				_timer_last_time_update -= TIMER_UPDATE_INTERVAL
 
-func _physics_process(delta):
-	_process_input(delta)
-	_process_movement(delta)
-	
+func _physics_process(_delta):
 	# Perform a raycast out into the world from the camera.
 	var mouse_pos = get_viewport().get_mouse_position()
 	var from = _camera.project_ray_origin(mouse_pos)
