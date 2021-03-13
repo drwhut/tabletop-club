@@ -76,9 +76,8 @@ func init_singleplayer() -> void:
 	
 	var hand_transform = _room.srv_get_next_hand_transform()
 	if hand_transform == Transform.IDENTITY:
-		push_error("Player hand not added, no available hand positions!")
-	else:
-		_room.rpc_id(1, "add_hand", 1, hand_transform)
+		push_warning("Table has no available hand positions!")
+	_room.rpc_id(1, "add_hand", 1, hand_transform)
 	
 	_ui.hide_chat_box()
 
