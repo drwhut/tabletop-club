@@ -47,6 +47,7 @@ func set_room_details(table_entry: Dictionary, skybox_entry: Dictionary,
 	
 	if table_entry.empty():
 		_table_preview.set_entry({
+			"bounce": 0.5,
 			"bounding_box": [Vector3.ZERO, Vector3.ZERO],
 			"default": false,
 			"description": "",

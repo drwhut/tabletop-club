@@ -103,9 +103,12 @@ func build_table(table_entry: Dictionary) -> RigidBody:
 	if not scene.get_parent():
 		scene.free()
 	
-	#table.continuous_cd = true
 	table.mass = 100000 # = 10kg
 	table.mode = RigidBody.MODE_STATIC
+	
+	var physics_material = PhysicsMaterial.new()
+	physics_material.bounce = table_entry["bounce"]
+	table.physics_material_override = physics_material
 	
 	# Since the table is a vanilla RigidBody, it doesn't have a "table_entry"
 	# property like pieces do, so we'll store the table entry in it's metadata.
