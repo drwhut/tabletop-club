@@ -138,23 +138,14 @@ func _set_front_face_visible_recursive(node: Node, visible: bool) -> void:
 	if node is MeshInstance:
 		var material = node.get_surface_material(0)
 		if material is SpatialMaterial:
-			var uv_offset = Vector3(0, 0, 0)
-			var uv_scale = Vector3(1, 1, 1)
-			
-			if not visible:
-				uv_offset.x = 1.5
-				uv_scale.x = -1
-				uv_scale.z = -1
-			
-			material.uv1_offset = uv_offset
-			material.uv1_scale = uv_scale
+			material.uv1_scale = Vector3.ONE if visible else Vector3.ZERO
 	
 	for child in node.get_children():
 		_set_front_face_visible_recursive(child, visible)
 
 # Set the hover positions of the hand's cards.
 func _srv_set_card_positions() -> void:
-	if _srv_cards.empty() or (not is_inside_tree()):
+	if _srv_cards.empty() or (not _area.is_inside_tree()):
 		return
 	
 	var total_width = 0
