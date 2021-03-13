@@ -63,11 +63,8 @@ func srv_add_card(card: Card) -> bool:
 		
 		card.rpc("set_collisions_on", false)
 		
-		# Set the rotation of the card to be in line with the hand.
-		var new_basis = transform.basis
-		if card.transform.basis.y.y < 0:
-			new_basis = new_basis.rotated(transform.basis.z, PI)
-		card.srv_hover_basis = new_basis
+		_srv_set_card_rotation(card)
+	
 	return success
 
 # Remove all cards from the hand. This does not stop the cards from hovering.
@@ -100,6 +97,19 @@ func update_owner_display() -> void:
 		material.albedo_color.a = a
 	
 	_name_label.bbcode_text = "[center]" + Lobby.get_name_bb_code(owner_id()) + "[/center]"
+
+# Update the hand's transform, along with the card's.
+remotesync func update_transform(new_transform: Transform) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	transform = new_transform
+	
+	if get_tree().is_network_server():
+		_srv_set_card_positions()
+		
+		for card in _srv_cards:
+			_srv_set_card_rotation(card)
 
 func _ready():
 	# Each hand should have a different material since they will probably have
@@ -144,7 +154,7 @@ func _set_front_face_visible_recursive(node: Node, visible: bool) -> void:
 
 # Set the hover positions of the hand's cards.
 func _srv_set_card_positions() -> void:
-	if _srv_cards.size() == 0:
+	if _srv_cards.empty() or (not is_inside_tree()):
 		return
 	
 	var total_width = 0
@@ -176,6 +186,14 @@ func _srv_set_card_positions() -> void:
 		_srv_cards[i].srv_wake_up()
 		
 		cumulative_width += widths[i] + offset_other
+
+# Set the rotation of the given card to be in line with the hand.
+# card: The card whose rotation we want to set.
+func _srv_set_card_rotation(card: Card) -> void:
+	var new_basis = transform.basis
+	if card.transform.basis.y.y < 0:
+		new_basis = new_basis.rotated(transform.basis.z, PI)
+	card.srv_hover_basis = new_basis
 
 # Try and set a node's front face visibility.
 # body: The node to try and set the front face visibility of.
@@ -213,7 +231,11 @@ func _on_client_set_card_position(card: Card):
 	srv_remove_card(card)
 
 func _on_Hand_tree_exiting():
-	_srv_cards.clear()
+	if get_tree().is_network_server():
+		for card in _srv_cards:
+			card.rpc_id(1, "stop_hovering")
+		
+		srv_clear_cards()
 
 func _on_Lobby_player_modified(id: int, _old: Dictionary):
 	if id == owner_id():

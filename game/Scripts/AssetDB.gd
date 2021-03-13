@@ -514,6 +514,8 @@ func _import_asset(from: String, pack: String, type_dir: String,
 				entry["bounce"] = bounce
 				var default = _get_file_config_value(config, from.get_file(), "default", false)
 				entry["default"] = default
+				var hands = _get_file_config_value(config, from.get_file(), "hands", [])
+				entry["hands"] = hands
 	elif type_asset == ASSET_SKYBOX:
 		if VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
 			var default = _get_file_config_value(config, from.get_file(), "default", false)

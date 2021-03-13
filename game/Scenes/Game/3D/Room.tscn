@@ -23,36 +23,6 @@ environment = SubResource( 2 )
 
 [node name="HandPositions" type="Spatial" parent="Table"]
 
-[node name="0" type="Spatial" parent="Table/HandPositions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 50 )
-
-[node name="1" type="Spatial" parent="Table/HandPositions"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 8, -50 )
-
-[node name="2" type="Spatial" parent="Table/HandPositions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 8, 50 )
-
-[node name="3" type="Spatial" parent="Table/HandPositions"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -40, 8, -50 )
-
-[node name="4" type="Spatial" parent="Table/HandPositions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 8, 50 )
-
-[node name="5" type="Spatial" parent="Table/HandPositions"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 40, 8, -50 )
-
-[node name="6" type="Spatial" parent="Table/HandPositions"]
-transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 80, 8, -28 )
-
-[node name="7" type="Spatial" parent="Table/HandPositions"]
-transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 80, 8, 28 )
-
-[node name="8" type="Spatial" parent="Table/HandPositions"]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -80, 8, -28 )
-
-[node name="9" type="Spatial" parent="Table/HandPositions"]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -80, 8, 28 )
-
 [node name="SunLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 50, 0 )
 shadow_enabled = true

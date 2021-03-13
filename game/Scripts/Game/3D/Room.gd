@@ -52,8 +52,8 @@ remotesync func add_hand(player: int, transform: Transform) -> void:
 	hand.name = str(player)
 	hand.transform = transform
 	
-	hand.update_owner_display()
 	_hands.add_child(hand)
+	hand.update_owner_display()
 
 # Called by the server to add a piece to the room.
 # name: The name of the new piece.
@@ -1240,11 +1240,29 @@ remotesync func set_table(table_entry: Dictionary) -> void:
 		_table_body.queue_free()
 		_table_body = null
 	
+	for hand_pos in _hand_positions.get_children():
+		_hand_positions.remove_child(hand_pos)
+		hand_pos.queue_free()
+	
 	if not table_entry.empty():
 		if table_entry.has("scene_path"):
 			if not table_entry["scene_path"].empty():
 				_table_body = PieceBuilder.build_table(table_entry)
 				_table.add_child(_table_body)
+				
+				for hand_meta in table_entry["hands"]:
+					var pos: Vector3 = hand_meta["pos"]
+					var dir: float = deg2rad(hand_meta["dir"])
+					
+					var hand = Spatial.new()
+					hand.transform = hand.transform.rotated(Vector3.UP, dir)
+					hand.transform.origin = pos
+					
+					_hand_positions.add_child(hand)
+	
+	if get_tree().has_network_peer():
+		if get_tree().is_network_server():
+			srv_update_hand_transforms()
 
 # Get the next hand transform. Note that there may not be a next transform, in
 # which case the function returns the identity transform.
@@ -1286,6 +1304,28 @@ func srv_stop_player_hovering(player: int) -> void:
 	for piece in _pieces.get_children():
 		if piece.srv_get_hover_player() == player:
 			piece.rpc_id(1, "stop_hovering")
+
+# Update the transforms of the hands to match the table entry's hand positions.
+func srv_update_hand_transforms() -> void:
+	var hand_index = 0
+	for hand in _hands.get_children():
+		var hand_player = int(hand.name)
+		if hand_index < _hand_positions.get_child_count():
+			var hand_transform = _hand_positions.get_child(hand_index).transform
+			hand.rpc("update_transform", hand_transform)
+		else:
+			rpc("remove_hand", hand_player)
+		
+		hand_index += 1
+	
+	var player_ids = Lobby.get_player_list()
+	var next_transform = srv_get_next_hand_transform()
+	while (not player_ids.empty()) and next_transform != Transform.IDENTITY:
+		var player_id = player_ids.pop_front()
+		if not _hands.has_node(str(player_id)):
+			rpc("add_hand", player_id, next_transform)
+		
+		next_transform = srv_get_next_hand_transform()
 
 # Start sending the player's 3D cursor position to the server.
 func start_sending_cursor_position() -> void:
