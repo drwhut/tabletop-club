@@ -152,3 +152,46 @@ to convert cube-mapped skyboxes to equirectangular skyboxes.
 For the best lighting quality, it is recommended to use a HDR panorama.
 OpenTabletop supports the Radiance HDR (``.hdr``) and OpenEXR (``.exr``)
 formats.
+
+
+.. _asset-type-table:
+
+Table
+-----
+
+A table is a :ref:`file-type-3d` that is placed in the centre of the game world
+for players to put objects on.
+
+However, unlike custom objects, the position and scale of the exported model
+matters. Keep the following points in mind when you export models to be used as
+tables:
+
+* One unit in the exported model = one centimeter (cm) in-game.
+* The lowest vertical position the camera can zoom to is ``0`` (this is either
+  the y or z axis, depending on the program you're using).
+
+Tables also have a set of hand positions, which are assigned to players by the
+server when they join the game. These hand positions can be defined in the
+``config.cfg`` file:
+
+.. code-block:: ini
+
+   ; tables/config.cfg
+   [Table.gltf]
+
+   hands = [
+      ; The first player's hand will be facing forward.
+      { "pos": Vector3(0, 5, -50), "dir": 0 },
+
+      ; The second player's hand will be in front of the first player's hand,
+      ; but it will be facing backwards.
+      { "pos": Vector3(0, 5, 50), "dir": 180 },
+
+      ; The third player's hand will be to the side, facing right.
+      { "pos": Vector3(-50, 5, 0), "dir": -90 },
+
+      ; The fourth player's hand will be on the other side, facing left.
+      { "pos": Vector3(50, 5, 0), "dir": 90 },
+
+      ; You can add more hand positions here...
+   ]

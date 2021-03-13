@@ -114,8 +114,6 @@ func build_table(table_entry: Dictionary) -> RigidBody:
 	# property like pieces do, so we'll store the table entry in it's metadata.
 	table.set_meta("table_entry", table_entry)
 	
-	# TODO: Scale the table.
-	
 	_adjust_centre_of_mass(table, table_entry, true)
 	
 	return table

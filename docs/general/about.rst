@@ -163,9 +163,7 @@ Yes! As well as objects, you can also import the following types of assets:
 * :ref:`asset-type-music`
 * :ref:`asset-type-skybox`
 * :ref:`asset-type-sound`
-
-There's also plans to be able to import your own tables into the game (see
-issue `#44 <https://github.com/drwhut/open-tabletop/issues/44>`_ on GitHub).
+* :ref:`asset-type-table`
 
 
 Can you add my favourite board game to OpenTabletop?

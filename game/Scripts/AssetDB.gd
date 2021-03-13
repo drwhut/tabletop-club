@@ -510,6 +510,8 @@ func _import_asset(from: String, pack: String, type_dir: String,
 			}
 			
 			if type_dir.begins_with("tables"):
+				entry["scale"] = Vector3.ONE
+				
 				var bounce = _get_file_config_value(config, from.get_file(), "bounce", 0.5)
 				entry["bounce"] = bounce
 				var default = _get_file_config_value(config, from.get_file(), "default", false)
