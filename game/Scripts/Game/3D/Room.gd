@@ -335,6 +335,23 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
 	_camera_controller.apply_options(config)
+	
+	var radiance = Sky.RADIANCE_SIZE_128
+	var radiance_index = config.get_value("video", "skybox_radiance_detail")
+	
+	match radiance_index:
+		0:
+			radiance = Sky.RADIANCE_SIZE_128
+		1:
+			radiance = Sky.RADIANCE_SIZE_256
+		2:
+			radiance = Sky.RADIANCE_SIZE_512
+		3:
+			radiance = Sky.RADIANCE_SIZE_1024
+		4:
+			radiance = Sky.RADIANCE_SIZE_2048
+	
+	_world_environment.environment.background_sky.radiance_size = radiance
 
 # Flip the table.
 # camera_basis: The basis matrix of the player flipping the table.
@@ -1107,21 +1124,18 @@ remotesync func set_skybox(skybox_entry: Dictionary) -> void:
 		if get_tree().get_rpc_sender_id() != 1:
 			return
 	
-	var default_skybox = true
+	var skybox: Sky = ProceduralSky.new()
 	if not skybox_entry.empty():
 		if skybox_entry.has("texture_path"):
 			var texture_path = skybox_entry["texture_path"]
 			if not texture_path.empty():
 				var texture: Texture = load(texture_path)
-				var panorama = PanoramaSky.new()
-				panorama.panorama = texture
-				
-				_world_environment.environment.background_sky = panorama
-				
-				default_skybox = false
+				skybox = PanoramaSky.new()
+				skybox.panorama = texture
 	
-	if default_skybox:
-		_world_environment.environment.background_sky = ProceduralSky.new()
+	var radiance = _world_environment.environment.background_sky.radiance_size
+	skybox.radiance_size = radiance
+	_world_environment.environment.background_sky = skybox
 	
 	_world_environment.set_meta("skybox_entry", skybox_entry)
 
