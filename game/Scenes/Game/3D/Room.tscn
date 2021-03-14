@@ -26,6 +26,7 @@ environment = SubResource( 2 )
 [node name="SunLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 50, 0 )
 shadow_enabled = true
+directional_shadow_normal_bias = 3.0
 directional_shadow_max_distance = 250.0
 
 [node name="SpotLight" type="SpotLight" parent="."]

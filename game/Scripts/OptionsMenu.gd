@@ -31,9 +31,11 @@ onready var _license_dialog = $LicenseDialog
 onready var _open_assets_button = $MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton
 onready var _reimport_confirm = $ReimportConfirm
 onready var _reset_bindings_confirm = $ResetBindingsConfirm
+onready var _restart_required_dialog = $RestartRequiredDialog
 onready var _tab_container = $MarginContainer/VBoxContainer/TabContainer
 
 var _action_to_bind = ""
+var _restart_popup_shown = false
 
 func _ready():
 	var config = _create_config_from_current()
@@ -102,6 +104,25 @@ func _apply_config(config: ConfigFile) -> void:
 	OS.window_maximized = maximized
 	
 	OS.vsync_enabled = config.get_value("video", "vsync")
+	
+	var shadow_size = 4096
+	var shadow_detail_id = config.get_value("video", "shadow_detail")
+	
+	match shadow_detail_id:
+		0:
+			shadow_size = 2048
+		1:
+			shadow_size = 4096
+		2:
+			shadow_size = 8192
+		3:
+			shadow_size = 16384
+	
+	# The game needs to be restarted for these changes to take effect.
+	var override_file = ConfigFile.new()
+	override_file.set_value("rendering", "quality/directional_shadow/size", shadow_size)
+	override_file.set_value("rendering", "quality/shadow_atlas/size", shadow_size)
+	override_file.save("user://override.cfg")
 	
 	var msaa = Viewport.MSAA_DISABLED
 	var msaa_id = config.get_value("video", "msaa")
@@ -289,6 +310,12 @@ func _set_current_with_config(config: ConfigFile) -> void:
 					else:
 						push_error(value.name + " is an unknown type!")
 
+# Show the restart required popup if it hasn't already been shown to the user.
+func _show_restart_popup() -> void:
+	if not _restart_popup_shown:
+		_restart_required_dialog.popup_centered()
+		_restart_popup_shown = true
+
 # Convert a volume value to a decibel value.
 # Returns: The associated decibel value.
 # volume: The volume to convert.
@@ -442,6 +469,9 @@ func _on_ResetBindingsConfirm_confirmed():
 					event = events[0]
 				node.input_event = event
 				node.update_text()
+
+func _on_ShadowDetailButton_item_selected(_index: int):
+	_show_restart_popup()
 
 func _on_SoundsVolumeSlider_value_changed(_value: float):
 	_apply_audio_config(_create_config_from_current())
