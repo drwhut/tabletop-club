@@ -27,6 +27,7 @@ signal client_set_hover_position(piece)
 signal piece_exiting_tree(piece)
 
 const ANGULAR_FORCE_SCALAR = 25.0
+const HARMONIC_DAMPENING = 0.5
 const HELL_HEIGHT = -50.0
 const HOVER_INACTIVE_DURATION = 5.0
 const LINEAR_FORCE_SCALAR = 50.0
@@ -35,7 +36,7 @@ const SELECTED_COLOUR = Color.cyan
 const SELECTED_ENERGY = 0.25
 const SHAKING_THRESHOLD = 1000.0
 const SPAWN_HEIGHT = 2.0
-const TRANSFORM_LERP_ALPHA = 0.5
+const TRANSFORM_LERP_ALPHA = 0.9
 
 # Set if you know where the mesh instance is, and if there is only one mesh
 # instance. Otherwise, the game will try and find it automatically when it
@@ -381,13 +382,14 @@ func _on_tree_exiting() -> void:
 # state: The direct physics state of the piece.
 func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Force the piece to the given location.
-	var linear_dir = srv_hover_position + _srv_hover_offset - translation
+	var pos = state.transform.origin
+	var linear_dir = srv_hover_position + _srv_hover_offset - pos
 	state.apply_central_impulse(LINEAR_FORCE_SCALAR * mass * linear_dir)
 	# Stops linear harmonic motion.
-	state.apply_central_impulse(-mass * linear_velocity)
+	state.apply_central_impulse(-HARMONIC_DAMPENING * mass * state.linear_velocity)
 	
 	# Force the piece to the given basis.
-	var current_basis = transform.basis.orthonormalized()
+	var current_basis = state.transform.basis.orthonormalized()
 	var target_basis = srv_hover_basis.orthonormalized()
 	var rotation_basis = target_basis * current_basis.inverse()
 	var rotation_euler = rotation_basis.get_euler()
@@ -407,5 +409,5 @@ func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	state.apply_torque_impulse(ANGULAR_FORCE_SCALAR * applied_torque)
 	
 	# Stops angular harmonic motion.
-	var angular_torque = inertia_tensor * angular_velocity
-	state.apply_torque_impulse(-angular_torque)
+	var angular_torque = inertia_tensor * state.angular_velocity
+	state.apply_torque_impulse(-HARMONIC_DAMPENING * angular_torque)
