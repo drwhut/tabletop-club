@@ -352,6 +352,23 @@ func apply_options(config: ConfigFile) -> void:
 			radiance = Sky.RADIANCE_SIZE_2048
 	
 	_world_environment.environment.background_sky.radiance_size = radiance
+	
+	var ssao_enabled = true
+	var ssao_quality = Environment.SSAO_QUALITY_LOW
+	var ssao_index = config.get_value("video", "ssao")
+	
+	match ssao_index:
+		0:
+			ssao_enabled = false
+		1:
+			ssao_quality = Environment.SSAO_QUALITY_LOW
+		2:
+			ssao_quality = Environment.SSAO_QUALITY_MEDIUM
+		3:
+			ssao_quality = Environment.SSAO_QUALITY_HIGH
+	
+	_world_environment.environment.ssao_enabled = ssao_enabled
+	_world_environment.environment.ssao_quality = ssao_quality
 
 # Flip the table.
 # camera_basis: The basis matrix of the player flipping the table.
