@@ -110,10 +110,12 @@ func _ready():
 
 func _physics_process(_delta):
 	if get_tree().is_network_server():
-		# If the container is upside down, and it is being shaken, then randomly
-		# release a piece to simulate what would happen in reality.
-		if transform.basis.y.y < 0 and is_being_shaked():
-			emit_signal("releasing_random_piece", self)
+		var shakable: bool = piece_entry["shakable"]
+		if shakable:
+			# If the container is upside down, and it is being shaken, then
+			# randomly release a piece to simulate what would happen in reality.
+			if transform.basis.y.y < -0.9 and is_being_shaked():
+				emit_signal("releasing_random_piece", self)
 
 func _on_body_entered(body) -> void:
 	if not piece_entry.has("opening_angle_sin"):

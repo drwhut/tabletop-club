@@ -424,6 +424,7 @@ func _import_asset(from: String, pack: String, type_dir: String,
 	var scale = _get_file_config_value(config, from.get_file(), "scale", Vector3(1, 1, 1))
 	
 	var opening_angle = 0
+	var shakable = false
 	if type_dir.begins_with("containers"):
 		opening_angle = _get_file_config_value(config, from.get_file(), "opening_angle", 30.0)
 		if opening_angle < 0.0:
@@ -433,6 +434,8 @@ func _import_asset(from: String, pack: String, type_dir: String,
 			push_warning("%s opening angle is more than 90 degress, setting to 90." % from)
 			opening_angle = 90.0
 		opening_angle = sin(deg2rad(opening_angle))
+		
+		shakable = _get_file_config_value(config, from.get_file(), "shakable", false)
 	
 	var entry = {}
 	if type_asset == ASSET_AUDIO:
@@ -568,6 +571,7 @@ func _import_asset(from: String, pack: String, type_dir: String,
 	if not entry.empty():
 		if type_dir.begins_with("containers"):
 			entry["opening_angle_sin"] = opening_angle
+			entry["shakable"] = shakable
 		
 		_add_entry_to_db(pack, type_dir, entry)
 	

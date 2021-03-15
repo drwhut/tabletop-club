@@ -60,8 +60,10 @@ which will open a pop-up showing the contents of the container.
 
 Objects can be placed inside containers by dropping them on top of the
 container, and objects can be randomly removed from the container by quickly
-dragging from the container. You can also shake the contents of the container
-out by flipping the container upside-down and shaking it with your mouse.
+dragging from the container.
+
+Containers can also be configured to drop items out when they are shaken
+upside-down by setting ``shakable = true`` in the :ref:`config-cfg` file.
 
 
 .. _object-type-dice:
