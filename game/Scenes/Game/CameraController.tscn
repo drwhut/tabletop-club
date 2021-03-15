@@ -15,11 +15,11 @@
 [ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Fonts/Cabin-Bold.ttf" type="DynamicFontData" id=14]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 12
 font_data = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 12
 font_data = ExtResource( 13 )
 
@@ -42,78 +42,15 @@ __meta__ = {
 "_editor_description_": "Instead of processing mouse events in _unhandled_input(), the camera controller catches the mouse events in this control which spans the entire viewport."
 }
 
-[node name="Cursors" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="BoxSelectionRect" type="ColorRect" parent="."]
+visible = false
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": "This control will be the parent of all of the cursors that are displayed in multiplayer games (showing the positions and rotations of every other player's cursor on the table)."
-}
-
-[node name="ControlHintLabel" type="RichTextLabel" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -200.0
-margin_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 2
-custom_fonts/bold_font = SubResource( 2 )
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-fit_content_height = true
-scroll_active = false
+color = Color( 0, 1, 1, 0.392157 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ToolContainer" type="VBoxContainer" parent="."]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -52.0
-margin_right = 32.0
-margin_bottom = 52.0
-grow_horizontal = 0
-grow_vertical = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CursorToolButton" type="TextureButton" parent="ToolContainer"]
-margin_right = 32.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-toggle_mode = true
-pressed = true
-group = ExtResource( 6 )
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 8 )
-expand = true
-
-[node name="RulerToolButton" type="TextureButton" parent="ToolContainer"]
-margin_top = 36.0
-margin_right = 32.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 32, 32 )
-toggle_mode = true
-group = ExtResource( 6 )
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 7 )
-expand = true
-
-[node name="HiddenAreaToolButton" type="TextureButton" parent="ToolContainer"]
-margin_top = 72.0
-margin_right = 32.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 32, 32 )
-toggle_mode = true
-group = ExtResource( 6 )
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 10 )
-expand = true
+outline_color = Color( 0, 1, 1, 0.588235 )
 
 [node name="PieceContextMenu" type="PopupMenu" parent="."]
 margin_right = 20.0
@@ -138,16 +75,6 @@ db_types = {
 }
 status_text_multiple = "Loaded %d tracks."
 
-[node name="BoxSelectionRect" type="ColorRect" parent="."]
-visible = false
-mouse_filter = 2
-color = Color( 0, 1, 1, 0.392157 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-outline_color = Color( 0, 1, 1, 0.588235 )
-
 [node name="ContainerContentDialog" parent="." instance=ExtResource( 3 )]
 
 [node name="RulerLineTexture" type="TextureRect" parent="."]
@@ -168,12 +95,93 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CameraUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cursors" type="Control" parent="CameraUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "This control will be the parent of all of the cursors that are displayed in multiplayer games (showing the positions and rotations of every other player's cursor on the table)."
+}
+
+[node name="ControlHintLabel" type="RichTextLabel" parent="CameraUI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+custom_fonts/bold_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToolContainer" type="VBoxContainer" parent="CameraUI"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -52.0
+margin_right = 32.0
+margin_bottom = 52.0
+grow_horizontal = 0
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CursorToolButton" type="TextureButton" parent="CameraUI/ToolContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+toggle_mode = true
+pressed = true
+group = ExtResource( 6 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="RulerToolButton" type="TextureButton" parent="CameraUI/ToolContainer"]
+margin_top = 36.0
+margin_right = 32.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 32, 32 )
+toggle_mode = true
+group = ExtResource( 6 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 7 )
+expand = true
+
+[node name="HiddenAreaToolButton" type="TextureButton" parent="CameraUI/ToolContainer"]
+margin_top = 72.0
+margin_right = 32.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 32, 32 )
+toggle_mode = true
+group = ExtResource( 6 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 10 )
+expand = true
+
 [connection signal="gui_input" from="MouseGrab" to="." method="_on_MouseGrab_gui_input"]
-[connection signal="pressed" from="ToolContainer/CursorToolButton" to="." method="_on_CursorToolButton_pressed"]
-[connection signal="pressed" from="ToolContainer/RulerToolButton" to="." method="_on_RulerToolButton_pressed"]
-[connection signal="pressed" from="ToolContainer/HiddenAreaToolButton" to="." method="_on_HiddenAreaToolButton_pressed"]
 [connection signal="popup_hide" from="PieceContextMenu" to="." method="_on_PieceContextMenu_popup_hide"]
 [connection signal="item_rect_changed" from="PieceContextMenu/VBoxContainer" to="." method="_on_VBoxContainer_item_rect_changed"]
 [connection signal="entry_requested" from="TrackDialog" to="." method="_on_TrackDialog_entry_requested"]
 [connection signal="take_all_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_all_from"]
 [connection signal="take_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_from"]
+[connection signal="pressed" from="CameraUI/ToolContainer/CursorToolButton" to="." method="_on_CursorToolButton_pressed"]
+[connection signal="pressed" from="CameraUI/ToolContainer/RulerToolButton" to="." method="_on_RulerToolButton_pressed"]
+[connection signal="pressed" from="CameraUI/ToolContainer/HiddenAreaToolButton" to="." method="_on_HiddenAreaToolButton_pressed"]

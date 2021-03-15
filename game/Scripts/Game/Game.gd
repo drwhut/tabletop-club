@@ -105,6 +105,39 @@ func _ready():
 	
 	Lobby.clear_players()
 
+func _unhandled_input(event):
+	if event.is_action_pressed("game_take_screenshot"):
+		# Create the user://screenshots folder if it doesn't already exist.
+		var screenshot_dir = Directory.new()
+		if screenshot_dir.open("user://") != OK:
+			push_error("Cannot open user:// directory!")
+			return
+		
+		if not screenshot_dir.dir_exists("screenshots"):
+			if screenshot_dir.make_dir("screenshots") != OK:
+				push_error("Failed to create the user://screenshots directory!")
+				return
+		
+		if screenshot_dir.change_dir("screenshots") != OK:
+			push_error("Failed to change to the user://screenshots directory!")
+			return
+		
+		var dt = OS.get_datetime()
+		var name = "%d-%d-%d-%d-%d-%d.png" % [dt["year"], dt["month"],
+			dt["day"], dt["hour"], dt["minute"], dt["second"]]
+		var path = screenshot_dir.get_current_dir() + "/" + name
+		
+		var image = get_viewport().get_texture().get_data()
+		image.flip_y()
+		if image.save_png(path) == OK:
+			var message = "Saved screenshot to '%s'." % path
+			print(message)
+			
+			# TODO: Show a notification in the UI with this message.
+		else:
+			push_error("Failed to save screenshot to '%s'!" % path)
+			return
+
 # Create a network peer object.
 # Returns: A new network peer object.
 func _create_network_peer() -> NetworkedMultiplayerENet:

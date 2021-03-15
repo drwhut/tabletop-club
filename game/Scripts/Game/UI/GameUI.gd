@@ -104,6 +104,9 @@ func _unhandled_input(event):
 		_game_menu_background.visible = not _game_menu_background.visible
 		if not _game_menu_background.visible:
 			_options_menu.visible = false
+	
+	elif event.is_action_pressed("game_toggle_ui"):
+		visible = not visible
 
 # Popup the file dialog in the given mode.
 # mode: The mode to open the file dialog in.

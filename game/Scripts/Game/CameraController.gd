@@ -45,9 +45,10 @@ signal stack_collect_all_requested(stack, collect_stacks)
 
 onready var _box_selection_rect = $BoxSelectionRect
 onready var _camera = $Camera
+onready var _camera_ui = $CameraUI
 onready var _container_content_dialog = $ContainerContentDialog
-onready var _control_hint_label = $ControlHintLabel
-onready var _cursors = $Cursors
+onready var _control_hint_label = $CameraUI/ControlHintLabel
+onready var _cursors = $CameraUI/Cursors
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 onready var _ruler_line_label = $RulerLineLabel
@@ -546,6 +547,8 @@ func _unhandled_input(event):
 		for piece in _selected_pieces:
 			if piece is Piece:
 				piece.rpc_id(1, "reset_orientation")
+	elif event.is_action_pressed("game_toggle_ui"):
+		_camera_ui.visible = not _camera_ui.visible
 	
 	if event is InputEventKey:
 		if event.scancode == KEY_A and event.control:
