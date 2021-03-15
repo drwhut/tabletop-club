@@ -1141,6 +1141,13 @@ remotesync func set_skybox(skybox_entry: Dictionary) -> void:
 		if get_tree().get_rpc_sender_id() != 1:
 			return
 	
+	# Changing the skybox can take a long time if the radiance size is big, so
+	# avoid doing it if the skybox being set is the same as the current skybox.
+	if _world_environment.has_meta("skybox_entry"):
+		var current_entry = _world_environment.get_meta("skybox_entry")
+		if current_entry.hash() == skybox_entry.hash():
+			return
+	
 	var skybox: Sky = ProceduralSky.new()
 	if not skybox_entry.empty():
 		if skybox_entry.has("texture_path"):
@@ -1153,6 +1160,8 @@ remotesync func set_skybox(skybox_entry: Dictionary) -> void:
 	var radiance = _world_environment.environment.background_sky.radiance_size
 	skybox.radiance_size = radiance
 	_world_environment.environment.background_sky = skybox
+	
+	_world_environment.environment.background_energy = skybox_entry["strength"]
 	
 	_world_environment.set_meta("skybox_entry", skybox_entry)
 
@@ -1267,6 +1276,14 @@ remotesync func set_table(table_entry: Dictionary) -> void:
 			return
 	
 	if _table_body != null:
+		# Changing the table can take a while if the model is very detailed,
+		# so avoid doing it if the table being set is the same as the one
+		# already in the room.
+		if _table_body.has_meta("table_entry"):
+			var current_entry = _table_body.get_meta("table_entry")
+			if current_entry.hash() == table_entry.hash():
+				return
+		
 		_table.remove_child(_table_body)
 		_table_body.queue_free()
 		_table_body = null
