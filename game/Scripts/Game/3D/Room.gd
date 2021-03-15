@@ -369,6 +369,35 @@ func apply_options(config: ConfigFile) -> void:
 	
 	_world_environment.environment.ssao_enabled = ssao_enabled
 	_world_environment.environment.ssao_quality = ssao_quality
+	
+	var dof_enabled = true
+	var dof_quality = Environment.DOF_BLUR_QUALITY_LOW
+	var dof_index = config.get_value("video", "depth_of_field")
+	
+	match dof_index:
+		0:
+			dof_enabled = false
+		1:
+			dof_quality = Environment.DOF_BLUR_QUALITY_LOW
+		2:
+			dof_quality = Environment.DOF_BLUR_QUALITY_MEDIUM
+		3:
+			dof_quality = Environment.DOF_BLUR_QUALITY_HIGH
+	
+	var dof_amount = 0.1 * config.get_value("video", "depth_of_field_amount")
+	var dof_distance = 15 + 85 * config.get_value("video", "depth_of_field_distance")
+	
+	_world_environment.environment.dof_blur_far_amount = dof_amount
+	_world_environment.environment.dof_blur_far_distance = dof_distance
+	_world_environment.environment.dof_blur_far_enabled = dof_enabled
+	_world_environment.environment.dof_blur_far_quality = dof_quality
+	_world_environment.environment.dof_blur_far_transition = 10.0
+	
+	_world_environment.environment.dof_blur_near_amount = dof_amount
+	_world_environment.environment.dof_blur_near_distance = 5.0
+	_world_environment.environment.dof_blur_near_enabled = dof_enabled
+	_world_environment.environment.dof_blur_near_quality = dof_quality
+	_world_environment.environment.dof_blur_near_transition = 1.0
 
 # Flip the table.
 # camera_basis: The basis matrix of the player flipping the table.

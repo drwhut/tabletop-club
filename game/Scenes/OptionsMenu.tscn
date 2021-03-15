@@ -794,6 +794,62 @@ text = "Low"
 items = [ "Low", null, false, 0, null, "Medium", null, false, 1, null, "High", null, false, 2, null, "Very High", null, false, 3, null, "Ultra", null, false, 4, null ]
 selected = 0
 
+[node name="DepthOfField" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_top = 219.0
+margin_right = 486.0
+margin_bottom = 239.0
+size_flags_horizontal = 3
+text = "Depth of Field"
+align = 2
+
+[node name="DepthOfFieldButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_left = 490.0
+margin_top = 216.0
+margin_right = 976.0
+margin_bottom = 242.0
+size_flags_horizontal = 3
+text = "None"
+items = [ "None", null, false, 0, null, "Low", null, false, 1, null, "Medium", null, false, 2, null, "High", null, false, 3, null ]
+selected = 0
+
+[node name="DepthOfFieldAmount" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_top = 246.0
+margin_right = 486.0
+margin_bottom = 266.0
+size_flags_horizontal = 3
+text = "Depth of Field Amount"
+align = 2
+
+[node name="DepthOfFieldAmountSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_left = 490.0
+margin_top = 246.0
+margin_right = 976.0
+margin_bottom = 262.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="DepthOfFieldDistance" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_top = 270.0
+margin_right = 486.0
+margin_bottom = 290.0
+size_flags_horizontal = 3
+text = "Depth of Field Distance"
+align = 2
+
+[node name="DepthOfFieldDistanceSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_left = 490.0
+margin_top = 270.0
+margin_right = 976.0
+margin_bottom = 286.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.5
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 534.0
 margin_right = 984.0
