@@ -85,7 +85,7 @@ remotesync func add_piece(name: String, transform: Transform,
 	# If it is a container, make sure we attach the signal it emits when it
 	# wants to absorb or release a piece.
 	if piece is PieceContainer:
-		piece.connect("absorbing_piece", self, "_on_container_absorbing_piece")
+		piece.connect("absorbing_hovered", self, "_on_container_absorbing_hovered")
 		piece.connect("releasing_random_piece", self, "_on_container_releasing_random_piece")
 	
 	_pieces.add_child(piece)
@@ -116,6 +116,9 @@ remotesync func add_piece_to_container(container_name: String, piece_name: Strin
 	if not piece is Piece:
 		push_error("Object " + piece_name + " is not a piece!")
 		return
+	
+	if get_tree().is_network_server():
+		piece.stop_hovering()
 	
 	_pieces.remove_child(piece)
 	container.add_piece(piece)
@@ -834,14 +837,23 @@ master func request_container_release_these(container_name: String,
 	var hover_box_size  = Vector3.ZERO
 	var hover_direction = 0
 	
+	var max_y_pos = 0
+	
 	for piece_name in release_names:
 		if container.has_piece(piece_name):
 			rpc("remove_piece_from_container", container_name, piece_name)
 			
 			if hover:
-				var piece = _pieces.get_node(piece_name)
+				var piece: Piece = _pieces.get_node(piece_name)
 				var piece_size = piece.get_size()
 				var piece_offset = hover_box_pos
+				
+				if piece.transform.origin.y > max_y_pos:
+					max_y_pos = piece.transform.origin.y
+					
+					# TODO: Ideally should only be called once.
+					_camera_controller.rpc_id(player_id, "set_hover_height",
+						max_y_pos)
 				
 				if hover_direction == 0:
 					piece_offset.x += (hover_box_size.x + piece_size.x) / 2
@@ -1806,9 +1818,34 @@ func _set_hidden_area_transform(hidden_area: HiddenArea, point1: Vector2, point2
 	hidden_area.transform.basis.x.x = point_dif.x / 2
 	hidden_area.transform.basis.z.z = point_dif.y / 2
 
-func _on_container_absorbing_piece(container: PieceContainer, piece: Piece) -> void:
+func _on_container_absorbing_hovered(container: PieceContainer, player_id: int) -> void:
 	if get_tree().is_network_server():
-		rpc("add_piece_to_container", container.name, piece.name)
+		var names = []
+		var main: Piece = null
+		
+		# TODO: Optimize this by using groups?
+		for piece in _pieces.get_children():
+			if piece is Piece:
+				if piece.srv_get_hover_player() == player_id:
+					names.append(piece.name)
+					if piece.srv_get_hover_offset() == Vector3.ZERO:
+						main = piece
+		
+		if main != null:
+			# If there is a lot of space inbetween the container and the main
+			# piece the player is hovering, then it's possible that another
+			# piece bumped into the container by accident, so only add the
+			# pieces is the main piece is close to the container.
+			var distance = (container.transform.origin - main.transform.origin).length()
+			var container_radius = container.get_radius()
+			var piece_radius = main.get_radius()
+			
+			var space = distance - container_radius - piece_radius
+			if space > 15.0:
+				return
+		
+		for name in names:
+			rpc("add_piece_to_container", container.name, name)
 
 func _on_container_releasing_random_piece(container: PieceContainer) -> void:
 	if get_tree().is_network_server():

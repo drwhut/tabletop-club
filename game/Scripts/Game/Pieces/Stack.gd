@@ -103,13 +103,21 @@ func get_pieces() -> Array:
 func get_piece_count() -> int:
 	return _pieces.get_child_count()
 
+# Get the size of the stack.
+# Returns: A Vector3 representing the size of the stack in all three axes.
+func get_size() -> Vector3:
+	var collision_scale = _collision_shape.scale
+	return Vector3(collision_scale.x, get_total_height(), collision_scale.z)
+
 # Get the height of the collision shape.
 # Returns: The height of the collision shape.
 func get_total_height() -> float:
-	if _collision_shape.shape is BoxShape:
-		return _collision_shape.shape.extents.y * 2
-	elif _collision_shape.shape is CylinderShape:
-		return _collision_shape.shape.height
+	var shape = _collision_shape.shape
+	
+	if shape is BoxShape:
+		return shape.extents.y * 2
+	elif shape is CylinderShape:
+		return shape.height
 	
 	return 0.0
 

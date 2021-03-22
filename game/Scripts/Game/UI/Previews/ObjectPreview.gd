@@ -96,8 +96,6 @@ func set_piece_display(piece: Piece) -> void:
 	elif _piece is Stack:
 		if _piece.is_card_stack():
 			piece_height = 0
-		else:
-			piece_height *= _piece.get_piece_count()
 	
 	var piece_radius = max(scale.x, scale.z) / 2
 	

@@ -102,6 +102,14 @@ func get_mesh_instances() -> Array:
 				out.append(child)
 	return out
 
+# Get the radius of the bounding sphere of the piece.
+# Returns: The radius of the bounding sphere.
+func get_radius() -> float:
+	var size = get_size()
+	var diameter = max(size.x, max(size.y, size.z))
+	
+	return diameter / 2.0
+
 # Get the size of the piece.
 # NOTE: If you know the piece is not a custom piece, then you can just use the
 # "scale" key in the piece entry.

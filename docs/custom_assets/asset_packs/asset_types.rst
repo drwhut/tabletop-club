@@ -58,9 +58,9 @@ meaning you cannot see the objects physically inside of them, but you can peek
 inside a container by right-clicking it and pressing :guilabel:`Peek inside`,
 which will open a pop-up showing the contents of the container.
 
-Objects can be placed inside containers by dropping them on top of the
-container, and objects can be randomly removed from the container by quickly
-dragging from the container.
+Objects can be placed inside a container by touching the container with the
+object you want to add, and objects can be randomly removed from the container
+by quickly dragging from the container.
 
 Containers can also be configured to drop items out when they are shaken
 upside-down by setting ``shakable = true`` in the :ref:`config-cfg` file.

@@ -23,7 +23,7 @@ extends Piece
 
 class_name PieceContainer
 
-signal absorbing_piece(container, piece)
+signal absorbing_hovered(container, player_id)
 signal releasing_random_piece(container)
 
 onready var _pieces = $Pieces
@@ -118,25 +118,11 @@ func _physics_process(_delta):
 				emit_signal("releasing_random_piece", self)
 
 func _on_body_entered(body) -> void:
-	if not piece_entry.has("opening_angle_sin"):
-		push_error("Container " + name + " doesn't have opening_angle_sin in it's piece entry!")
-		return
-	
-	var opening_angle_sin: float = piece_entry["opening_angle_sin"]
-	
 	if get_tree().is_network_server():
 		
 		# If a piece has collided with this container, then figure out if the
-		# piece landed on top of us. If it did, then we can add it to the
-		# container!
+		# piece was being hovered by a player. If it is, then we can add it to
+		# the container!
 		if body is Piece:
-			var disp = body.transform.origin - transform.origin
-			
-			# Check if the piece is hitting the top side of the container...
-			if disp.dot(transform.basis.y) > 0:
-				disp = disp.normalized()
-				
-				# Check if the piece is within the opening cone...
-				if abs(disp.dot(transform.basis.x)) <= opening_angle_sin:
-					if abs(disp.dot(transform.basis.z)) <= opening_angle_sin:
-						emit_signal("absorbing_piece", self, body)
+			if body.srv_is_hovering():
+				emit_signal("absorbing_hovered", self, body.srv_get_hover_player())

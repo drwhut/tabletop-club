@@ -230,6 +230,14 @@ func set_is_hovering(is_hovering: bool) -> void:
 	
 	rpc_id(1, "request_set_cursor_grabbing", is_hovering)
 
+# Set the height the controller hovers pieces at.
+# hover_height: The height pieces are hovered at by the controller.
+remotesync func set_hover_height(hover_height: float) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_hover_y_pos = max(0, hover_height)
+
 # Called by the server when a player updates their hovering state.
 # id: The ID of the player.
 # grabbing: Whether the cursor should be the "grabbing" shape.
