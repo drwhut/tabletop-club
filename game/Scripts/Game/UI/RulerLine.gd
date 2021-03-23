@@ -24,8 +24,10 @@ extends Control
 onready var _label = $Label
 onready var _texture = $Texture
 
+var is_metric: bool = true
 var point1: Vector3
 var point2: Vector3
+var scale: float = 1.0
 
 # Update the position and scale of the ruler on the screen.
 # camera: The camera being used.
@@ -45,8 +47,14 @@ func update_ruler(camera: Camera) -> void:
 			_texture.rect_rotation = rad2deg(angle)
 		
 		_label.rect_position = point2_2d
-		var measure_cm = (point2 - point1).length()
-		var measure_in = 0.3937008 * measure_cm
-		_label.text = "%.1f cm\n%.1f in" % [measure_cm, measure_in]
+		var measure_cm = (point2 - point1).length() * scale
+		
+		if is_metric:
+			var measure_m = measure_cm / 100.0
+			_label.text = "%.1f cm\n%.2f m" % [measure_cm, measure_m]
+		else:
+			var measure_in = 0.3937008 * measure_cm
+			var measure_ft = measure_in / 12.0
+			_label.text = "%.1f in\n%.2f ft" % [measure_in, measure_ft]
 	else:
 		_texture.rect_size.x = 0

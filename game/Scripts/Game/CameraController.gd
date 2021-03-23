@@ -51,6 +51,10 @@ onready var _control_hint_label = $CameraUI/ControlHintLabel
 onready var _cursors = $CameraUI/Cursors
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
+onready var _ruler_scale_slider = $RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider
+onready var _ruler_scale_spin_box = $RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSpinBox
+onready var _ruler_system_button = $RulerToolMenu/MarginContainer/VBoxContainer/SystemButton
+onready var _ruler_tool_menu = $RulerToolMenu
 onready var _rulers = $Rulers
 onready var _track_dialog = $TrackDialog
 
@@ -1328,6 +1332,9 @@ func _set_tool(new_tool: int) -> void:
 		push_error("Invalid argument for _set_tool!")
 		return
 	
+	if new_tool == _tool:
+		return
+	
 	clear_selected_pieces()
 	
 	_ruler_placing_point2 = false
@@ -1550,8 +1557,10 @@ func _on_MouseGrab_gui_input(event):
 				if event.is_pressed() and _cursor_on_table:
 					if not _ruler_placing_point2:
 						var ruler = preload("res://Scenes/Game/UI/RulerLine.tscn").instance()
+						ruler.is_metric = (_ruler_system_button.selected == 0)
 						ruler.point1 = _cursor_position
 						ruler.point2 = ruler.point1
+						ruler.scale = _ruler_scale_spin_box.value
 						_rulers.add_child(ruler)
 					
 					_ruler_placing_point2 = not _ruler_placing_point2
@@ -1734,8 +1743,20 @@ func _on_PieceContextMenu_popup_hide():
 	_speaker_track_label = null
 	_speaker_volume_slider = null
 
+func _on_RulerOKButton_pressed():
+	_ruler_tool_menu.visible = false
+
+func _on_RulerScaleSlider_value_changed(value: float):
+	_ruler_scale_spin_box.value = value
+
+func _on_RulerScaleSpinBox_value_changed(value: float):
+	_ruler_scale_slider.value = value
+
 func _on_RulerToolButton_pressed():
 	_set_tool(TOOL_RULER)
+	
+	_ruler_tool_menu.rect_position = get_viewport().get_mouse_position()
+	_ruler_tool_menu.popup()
 
 func _on_TrackDialog_entry_requested(_pack: String, type: String, entry: Dictionary):
 	_track_dialog.visible = false

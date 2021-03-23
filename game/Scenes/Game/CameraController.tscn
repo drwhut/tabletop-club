@@ -66,6 +66,82 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 
+[node name="RulerToolMenu" type="PopupMenu" parent="."]
+margin_right = 242.0
+margin_bottom = 150.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="RulerToolMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RulerToolMenu/MarginContainer"]
+margin_right = 232.0
+margin_bottom = 140.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScaleLabel" type="Label" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
+margin_right = 232.0
+margin_bottom = 20.0
+text = "Scale:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 232.0
+margin_bottom = 54.0
+
+[node name="RulerScaleSpinBox" type="SpinBox" parent="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 90.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 90, 0 )
+min_value = 0.01
+step = 0.01
+value = 1.0
+allow_greater = true
+prefix = "x"
+
+[node name="RulerScaleSlider" type="HSlider" parent="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 94.0
+margin_right = 232.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = 0.01
+step = 0.01
+value = 1.0
+exp_edit = true
+allow_greater = true
+
+[node name="SystemLabel" type="Label" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 58.0
+margin_right = 232.0
+margin_bottom = 78.0
+text = "System:"
+
+[node name="SystemButton" type="OptionButton" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 232.0
+margin_bottom = 108.0
+text = "Metric"
+items = [ "Metric", null, false, 0, null, "Imperial", null, false, 1, null ]
+selected = 0
+
+[node name="RulerOKButton" type="Button" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 112.0
+margin_right = 232.0
+margin_bottom = 138.0
+text = "OK"
+
 [node name="TrackDialog" parent="." instance=ExtResource( 12 )]
 window_title = "Select a track..."
 db_types = {
@@ -165,6 +241,9 @@ expand = true
 [connection signal="gui_input" from="MouseGrab" to="." method="_on_MouseGrab_gui_input"]
 [connection signal="popup_hide" from="PieceContextMenu" to="." method="_on_PieceContextMenu_popup_hide"]
 [connection signal="item_rect_changed" from="PieceContextMenu/VBoxContainer" to="." method="_on_VBoxContainer_item_rect_changed"]
+[connection signal="value_changed" from="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSpinBox" to="." method="_on_RulerScaleSpinBox_value_changed"]
+[connection signal="value_changed" from="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider" to="." method="_on_RulerScaleSlider_value_changed"]
+[connection signal="pressed" from="RulerToolMenu/MarginContainer/VBoxContainer/RulerOKButton" to="." method="_on_RulerOKButton_pressed"]
 [connection signal="entry_requested" from="TrackDialog" to="." method="_on_TrackDialog_entry_requested"]
 [connection signal="take_all_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_all_from"]
 [connection signal="take_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_from"]
