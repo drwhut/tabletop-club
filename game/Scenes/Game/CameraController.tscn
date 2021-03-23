@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Game/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Misc/OutlineColorRect.gd" type="Script" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Scenes/Game/ToolButtonGroup.tres" type="ButtonGroup" id=6]
 [ext_resource path="res://Images/RulerIconPressed.svg" type="Texture" id=7]
 [ext_resource path="res://Images/CursorIconPressed.svg" type="Texture" id=8]
-[ext_resource path="res://Images/RulerLine.png" type="Texture" id=9]
 [ext_resource path="res://Images/HiddenAreaIconPressed.svg" type="Texture" id=10]
 [ext_resource path="res://Images/HiddenAreaIconNormal.svg" type="Texture" id=11]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=12]
@@ -77,20 +76,7 @@ status_text_multiple = "Loaded %d tracks."
 
 [node name="ContainerContentDialog" parent="." instance=ExtResource( 3 )]
 
-[node name="RulerLineTexture" type="TextureRect" parent="."]
-visible = false
-margin_bottom = 3.0
-mouse_filter = 2
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RulerLineLabel" type="Label" parent="."]
-visible = false
-margin_bottom = 20.0
+[node name="Rulers" type="Control" parent="."]
 __meta__ = {
 "_edit_use_anchors_": false
 }

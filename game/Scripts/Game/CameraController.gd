@@ -51,8 +51,7 @@ onready var _control_hint_label = $CameraUI/ControlHintLabel
 onready var _cursors = $CameraUI/Cursors
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
-onready var _ruler_line_label = $RulerLineLabel
-onready var _ruler_line_texture = $RulerLineTexture
+onready var _rulers = $Rulers
 onready var _track_dialog = $TrackDialog
 
 const CURSOR_LERP_SCALE = 100.0
@@ -85,6 +84,8 @@ var _drag_camera_anchor = Vector3()
 var _grabbing_time = 0.0
 var _hidden_area_mouse_is_over: HiddenArea = null
 var _hidden_area_placing_point2 = false
+var _hidden_area_point1 = Vector3()
+var _hidden_area_point2 = Vector3()
 var _hover_y_offset = 0.0
 var _hover_y_pos = 10.0
 var _initial_transform = Transform.IDENTITY
@@ -107,8 +108,6 @@ var _piece_rotation_amount = 1.0
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
 var _ruler_placing_point2 = false
-var _point1 = Vector3()
-var _point2 = Vector3()
 var _selected_pieces = []
 var _spawn_point_position = Vector3()
 var _speaker_connected: SpeakerPiece = null
@@ -345,37 +344,21 @@ func _process(delta):
 				var current_theta = deg2rad(cursor.rect_rotation)
 				cursor.rect_rotation = rad2deg(lerp_angle(current_theta, target_theta, CURSOR_LERP_SCALE * delta))
 	
-	if _ruler_placing_point2 or _hidden_area_placing_point2:
-		_point2 = _cursor_position
-	
-	if _ruler_line_texture.visible:
-		
-		var line_behind_camera = _camera.is_position_behind(_point1) or _camera.is_position_behind(_point2)
-		_ruler_line_label.visible = not line_behind_camera
-		if not line_behind_camera:
-			var point1 = _camera.unproject_position(_point1)
-			var point2 = _camera.unproject_position(_point2)
-			var line = point2 - point1
-			_ruler_line_texture.rect_position = point1
-			_ruler_line_texture.rect_size.x = line.length()
-			if line.x != 0:
-				var angle = atan(line.y / line.x)
-				if line.x < 0:
-					angle += PI
-				_ruler_line_texture.rect_rotation = rad2deg(angle)
-			
-			_ruler_line_label.rect_position = point2
-			var measure_cm = (_point2 - _point1).length()
-			var measure_in = 0.3937008 * measure_cm
-			_ruler_line_label.text = "%.1f cm\n%.1f in" % [measure_cm, measure_in]
+	if _ruler_placing_point2:
+		var num_rulers = _rulers.get_child_count()
+		if num_rulers > 0:
+			var last_ruler = _rulers.get_child(num_rulers - 1)
+			last_ruler.point2 = _cursor_position
 		else:
-			# Set the ruler width to 0 instead of setting visible to false, so
-			# we can keep running this code.
-			_ruler_line_texture.rect_size.x = 0
+			push_error("Placing point two of ruler, but no rulers exist!")
+	
+	for ruler in _rulers.get_children():
+		ruler.update_ruler(_camera)
 	
 	if _hidden_area_placing_point2:
-		var point1_v2 = Vector2(_point1.x, _point1.z)
-		var point2_v2 = Vector2(_point2.x, _point2.z)
+		_hidden_area_point2 = _cursor_position
+		var point1_v2 = Vector2(_hidden_area_point1.x, _hidden_area_point1.z)
+		var point2_v2 = Vector2(_hidden_area_point2.x, _hidden_area_point2.z)
 		emit_signal("setting_hidden_area_preview_points", point1_v2, point2_v2)
 	
 	if _timer_connected:
@@ -1207,7 +1190,8 @@ func _set_control_hint_label() -> void:
 			text += _set_control_hint_label_row(tr("Table menu"), rmb)
 	
 	elif _tool == TOOL_RULER:
-		pass
+		if _rulers.get_child_count() > 0:
+			text += _set_control_hint_label_row(tr("Remove last ruler"), rmb)
 	
 	elif _tool == TOOL_HIDDEN_AREA:
 		if _hidden_area_mouse_is_over:
@@ -1346,9 +1330,10 @@ func _set_tool(new_tool: int) -> void:
 	
 	clear_selected_pieces()
 	
-	_ruler_line_label.visible = false
-	_ruler_line_texture.visible = false
 	_ruler_placing_point2 = false
+	for ruler in _rulers.get_children():
+		_rulers.remove_child(ruler)
+		ruler.queue_free()
 	
 	emit_signal("setting_hidden_area_preview_visible", false)
 	_hidden_area_placing_point2 = false
@@ -1563,24 +1548,23 @@ func _on_MouseGrab_gui_input(event):
 			
 			elif _tool == TOOL_RULER:
 				if event.is_pressed() and _cursor_on_table:
-					# This activates the relevant code in _process().
-					_ruler_line_texture.visible = true
-					
 					if not _ruler_placing_point2:
-						_point1 = _cursor_position
-						_point2 = _point1
+						var ruler = preload("res://Scenes/Game/UI/RulerLine.tscn").instance()
+						ruler.point1 = _cursor_position
+						ruler.point2 = ruler.point1
+						_rulers.add_child(ruler)
 					
 					_ruler_placing_point2 = not _ruler_placing_point2
 			
 			elif _tool == TOOL_HIDDEN_AREA:
 				if event.is_pressed() and _cursor_on_table:
 					if _hidden_area_placing_point2:
-						var point1_v2 = Vector2(_point1.x, _point1.z)
-						var point2_v2 = Vector2(_point2.x, _point2.z)
+						var point1_v2 = Vector2(_hidden_area_point1.x, _hidden_area_point1.z)
+						var point2_v2 = Vector2(_hidden_area_point2.x, _hidden_area_point2.z)
 						emit_signal("placing_hidden_area", point1_v2, point2_v2)
 					else:
-						_point1 = _cursor_position
-						_point2 = _point1
+						_hidden_area_point1 = _cursor_position
+						_hidden_area_point2 = _hidden_area_point1
 					
 					_hidden_area_placing_point2 = not _hidden_area_placing_point2
 					emit_signal("setting_hidden_area_preview_visible", _hidden_area_placing_point2)
@@ -1611,6 +1595,16 @@ func _on_MouseGrab_gui_input(event):
 								_spawn_point_position.y += Piece.SPAWN_HEIGHT
 							else:
 								_popup_piece_context_menu()
+					
+					elif _tool == TOOL_RULER:
+						if event.position == _right_click_pos:
+							var num_rulers = _rulers.get_child_count()
+							if num_rulers > 0:
+								var last_ruler = _rulers.get_child(num_rulers - 1)
+								_rulers.remove_child(last_ruler)
+								last_ruler.queue_free()
+							
+							_ruler_placing_point2 = false
 					
 					elif _tool == TOOL_HIDDEN_AREA:
 						if event.position == _right_click_pos:
