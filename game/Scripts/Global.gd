@@ -29,12 +29,17 @@ enum {
 	MODE_SINGLEPLAYER
 }
 
+const LOADING_BLOCK_TIME = 20
+
 var _current_scene: Node = null
+var _loader: ResourceInteractiveLoader = null
+var _loader_args: Dictionary = {}
+var _wait_frames = 0
 
 # Restart the game.
 func restart_game() -> void:
 	call_deferred("_terminate_peer")
-	call_deferred("_goto_scene", ProjectSettings.get_setting("application/run/main_scene"), {
+	_goto_scene(ProjectSettings.get_setting("application/run/main_scene"), {
 		"mode": MODE_NONE
 	})
 
@@ -42,7 +47,7 @@ func restart_game() -> void:
 # server: The server to connect to.
 # port: The port to connect to.
 func start_game_as_client(server: String, port: int) -> void:
-	call_deferred("_goto_scene", "res://Scenes/Game/Game.tscn", {
+	_goto_scene("res://Scenes/Game/Game.tscn", {
 		"mode": MODE_CLIENT,
 		"server": server,
 		"port": port
@@ -52,7 +57,7 @@ func start_game_as_client(server: String, port: int) -> void:
 # max_players: The maximum number of allowed players.
 # port: The port to host the server on.
 func start_game_as_server(max_players: int, port: int) -> void:
-	call_deferred("_goto_scene", "res://Scenes/Game/Game.tscn", {
+	_goto_scene("res://Scenes/Game/Game.tscn", {
 		"mode": MODE_SERVER,
 		"max_players": max_players,
 		"port": port
@@ -60,14 +65,14 @@ func start_game_as_server(max_players: int, port: int) -> void:
 
 # Start the game in singleplayer mode.
 func start_game_singleplayer() -> void:
-	call_deferred("_goto_scene", "res://Scenes/Game/Game.tscn", {
+	_goto_scene("res://Scenes/Game/Game.tscn", {
 		"mode": MODE_SINGLEPLAYER
 	})
 
 # Start the main menu.
 func start_main_menu() -> void:
 	call_deferred("_terminate_peer")
-	call_deferred("_goto_scene", "res://Scenes/MainMenu.tscn", {
+	_goto_scene("res://Scenes/MainMenu.tscn", {
 		"mode": MODE_NONE
 	})
 
@@ -75,7 +80,7 @@ func start_main_menu() -> void:
 # error: The error message to display.
 func start_main_menu_with_error(error: String) -> void:
 	call_deferred("_terminate_peer")
-	call_deferred("_goto_scene", "res://Scenes/MainMenu.tscn", {
+	_goto_scene("res://Scenes/MainMenu.tscn", {
 		"mode": MODE_ERROR,
 		"error": error
 	})
@@ -83,11 +88,67 @@ func start_main_menu_with_error(error: String) -> void:
 func _ready():
 	var root = get_tree().get_root()
 	_current_scene = root.get_child(root.get_child_count() - 1)
+	
+	set_process(false)
+
+func _process(_delta):
+	if _loader == null:
+		set_process(false)
+		return
+	
+	if _wait_frames > 0:
+		_wait_frames -= 1
+		return
+	
+	var time = OS.get_ticks_msec()
+	while OS.get_ticks_msec() < time + LOADING_BLOCK_TIME:
+		var err = _loader.poll()
+		
+		if err == ERR_FILE_EOF:
+			var scene = _loader.get_resource()
+			call_deferred("_set_scene", scene.instance(), _loader_args)
+			
+			_loader = null
+			_loader_args = {}
+			break
+		elif err == OK:
+			# The current scene should be the loading scene, so we should be
+			# able to update the progress it is displaying.
+			var progress = 0.0
+			var stages = _loader.get_stage_count()
+			if stages > 0:
+				progress = float(_loader.get_stage()) / stages
+			_current_scene.set_progress(progress)
+		else:
+			push_error("Loader encountered an error (error code %d)!" % err)
+			_loader = null
+			break
 
 # Go to a given scene, with a set of arguments.
 # path: The file path of the scene to load.
 # args: The arguments for the scene to use after it has loaded.
-func _goto_scene(path: String, args: Dictionary) -> void:
+func _goto_scene(path: String, args: Dictionary) -> void:	
+	# Create the interactive loader for the new scene.
+	_loader = ResourceLoader.load_interactive(path)
+	if _loader == null:
+		push_error("Failed to create loader for '%s'!" % path)
+		return
+	_loader_args = args
+	
+	# Load the loading scene so the player can see the progress in loading the
+	# new scene.
+	var loading_scene = preload("res://Scenes/Loading.tscn").instance()
+	call_deferred("_set_scene", loading_scene, { "mode": MODE_NONE })
+	
+	set_process(true)
+	_wait_frames = 1
+
+# Immediately set the scene tree's current scene.
+# NOTE: This function should be called via call_deferred, since it will free
+# the existing scene.
+# scene: The scene to load.
+# args: The arguments for the scene to use after it has loaded.
+func _set_scene(scene: Node, args: Dictionary) -> void:
 	if not args.has("mode"):
 		push_error("Scene argument 'mode' is missing!")
 		return
@@ -150,18 +211,17 @@ func _goto_scene(path: String, args: Dictionary) -> void:
 			push_error("Invalid mode " + str(args["mode"]) + "!")
 			return
 	
-	# Since this function should be called via call_deferred, it should be safe
-	# to free the current scene now.
 	var root = get_tree().get_root()
+	
+	# Free the current scene - this should not be done during the main loop!
 	root.remove_child(_current_scene)
 	_current_scene.free()
 	
 	PieceBuilder.free_cache()
 	
-	_current_scene = load(path).instance()
-	
-	root.add_child(_current_scene)
-	get_tree().set_current_scene(_current_scene)
+	root.add_child(scene)
+	get_tree().set_current_scene(scene)
+	_current_scene = scene
 	
 	match args["mode"]:
 		MODE_ERROR:
@@ -174,6 +234,7 @@ func _goto_scene(path: String, args: Dictionary) -> void:
 			_current_scene.init_singleplayer()
 
 # Terminate the network peer if it exists.
+# NOTE: This function should be called via call_deferred.
 func _terminate_peer() -> void:
 	# TODO: Send a message to say we are leaving first.
 	get_tree().network_peer = null
