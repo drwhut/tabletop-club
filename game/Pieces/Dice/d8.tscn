@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Game/Pieces/Dice.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Shapes/d8.gd" type="Script" id=2]
+[ext_resource path="res://Pieces/Dice/Shapes/d8.obj" type="ArrayMesh" id=2]
 
 [sub_resource type="ConvexPolygonShape" id=1]
-points = PoolVector3Array( 1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1 )
+points = PoolVector3Array( 0, 0, 1, 0, 1, 0, 1, 0, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0 )
 
 [node name="d8" type="RigidBody"]
 script = ExtResource( 1 )
@@ -19,4 +19,5 @@ mesh_instance_path = NodePath("CollisionShape/MeshInstance")
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
-script = ExtResource( 2 )
+mesh = ExtResource( 2 )
+material/0 = null
