@@ -141,7 +141,12 @@ func append_selected_pieces(pieces: Array) -> void:
 			# select it and drag it out of the hidden area.
 			if piece.visible:
 				_selected_pieces.append(piece)
-				piece.set_appear_selected(true)
+				
+				var color = Color.white
+				var player = Lobby.get_player(get_tree().get_network_unique_id())
+				if player.has("color"):
+					color = player["color"]
+				piece.set_outline_color(color)
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -176,7 +181,7 @@ func apply_options(config: ConfigFile) -> void:
 # Clear the list of selected pieces.
 func clear_selected_pieces() -> void:
 	for piece in _selected_pieces:
-		piece.set_appear_selected(false)
+		piece.set_outline_color(Color.transparent)
 	
 	_selected_pieces.clear()
 
@@ -185,7 +190,7 @@ func clear_selected_pieces() -> void:
 func erase_selected_pieces(piece: Piece) -> void:
 	if _selected_pieces.has(piece):
 		_selected_pieces.erase(piece)
-		piece.set_appear_selected(false)
+		piece.set_outline_color(Color.transparent)
 
 # Get the current position that pieces should hover at, given the camera and
 # mouse positions.

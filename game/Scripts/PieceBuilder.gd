@@ -90,6 +90,8 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 			piece.apply_texture(texture, surface)
 			surface += 1
 	
+	piece.setup_outline_material()
+	
 	return piece
 
 # Build a table using a table entry from the AssetDB.

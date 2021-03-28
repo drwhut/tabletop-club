@@ -32,8 +32,6 @@ const HELL_HEIGHT = -50.0
 const HOVER_INACTIVE_DURATION = 5.0
 const LINEAR_FORCE_SCALAR = 50.0
 const ROTATION_LOCK_AT = 0.001
-const SELECTED_COLOUR = Color.cyan
-const SELECTED_ENERGY = 0.25
 const SHAKING_THRESHOLD = 1000.0
 const SPAWN_HEIGHT = 2.0
 const TRANSFORM_LERP_ALPHA = 0.9
@@ -61,6 +59,8 @@ var _last_server_state = {}
 
 var _last_velocity = Vector3()
 var _new_velocity = Vector3()
+
+var _outline_material: ShaderMaterial = null
 
 # Apply a texture to the piece.
 # texture: The texture to apply.
@@ -191,19 +191,6 @@ master func rotate_y(rot: float) -> void:
 		
 		srv_wake_up()
 
-# Set the piece to appear like it is selected.
-# selected: Should the piece appear selected?
-func set_appear_selected(selected: bool) -> void:
-	for mesh_instance in get_mesh_instances():
-		if mesh_instance is MeshInstance:
-			for surface in range(mesh_instance.get_surface_material_count()):
-				var material = mesh_instance.get_surface_material(surface)
-				if material and material is SpatialMaterial:
-					material.emission = SELECTED_COLOUR
-					material.emission_energy = SELECTED_ENERGY
-					
-					material.emission_enabled = selected
-
 # If you are hovering the piece, ask the server to set the hover position of the
 # piece.
 # hover_position: The position the hovering piece will go towards.
@@ -224,6 +211,15 @@ puppet func set_latest_server_physics_state(state: Dictionary) -> void:
 	_last_server_state = state
 	sleeping = false
 
+# Set the color of the piece's outline.
+# NOTE: This requires setup_outline_material() to be called first.
+# color: The color of the outline.
+func set_outline_color(color: Color) -> void:
+	if _outline_material:
+		_outline_material.set_shader_param("Color", color)
+	else:
+		push_error("Outline material has not been created!")
+
 # Called by the server to set the translation of the piece.
 # new_translation: The new translation.
 remotesync func set_translation(new_translation: Vector3) -> void:
@@ -232,6 +228,21 @@ remotesync func set_translation(new_translation: Vector3) -> void:
 	
 	translation = new_translation
 	sleeping = false
+
+# Add the outline material to all mesh instances in this piece.
+func setup_outline_material():
+	var outline_shader = preload("res://Shaders/OutlineShader.tres")
+	
+	_outline_material = ShaderMaterial.new()
+	_outline_material.shader = outline_shader
+	_outline_material.set_shader_param("Color", Color.transparent)
+	
+	for mesh_instance in get_mesh_instances():
+		if mesh_instance is MeshInstance:
+			for surface in range(mesh_instance.get_surface_material_count()):
+				var material = mesh_instance.get_surface_material(surface)
+				if material:
+					material.next_pass = _outline_material
 
 # Get the hover offset of the piece.
 # Returns: The hover offset of the piece.

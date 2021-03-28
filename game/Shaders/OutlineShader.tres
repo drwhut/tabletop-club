@@ -1,0 +1,72 @@
+[gd_resource type="VisualShader" load_steps=6 format=2]
+
+[sub_resource type="VisualShaderNodeFresnel" id=1]
+default_input_values = [ 2, false, 3, 3.0 ]
+
+[sub_resource type="VisualShaderNodeColorUniform" id=2]
+uniform_name = "Color"
+
+[sub_resource type="VisualShaderNodeScalarOp" id=3]
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id=4]
+input_name = "normal"
+
+[sub_resource type="VisualShaderNodeInput" id=5]
+input_name = "view"
+
+[resource]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+uniform vec4 Color : hint_color;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:3
+	vec3 n_out3p0 = Color.rgb;
+	float n_out3p1 = Color.a;
+
+// Input:5
+	vec3 n_out5p0 = NORMAL;
+
+// Input:6
+	vec3 n_out6p0 = VIEW;
+
+// Fresnel:2
+	float n_in2p3 = 3.00000;
+	float n_out2p0 = pow(1.0 - clamp(dot(n_out5p0, n_out6p0), 0.0, 1.0), n_in2p3);
+
+// ScalarOp:4
+	float n_out4p0 = n_out3p1 * n_out2p0;
+
+// Output:0
+	ALBEDO = n_out3p0;
+	ALPHA = n_out4p0;
+	EMISSION = n_out3p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -481, 115 )
+nodes/fragment/2/node = SubResource( 1 )
+nodes/fragment/2/position = Vector2( -40, 340 )
+nodes/fragment/3/node = SubResource( 2 )
+nodes/fragment/3/position = Vector2( -40, 160 )
+nodes/fragment/4/node = SubResource( 3 )
+nodes/fragment/4/position = Vector2( 200, 300 )
+nodes/fragment/5/node = SubResource( 4 )
+nodes/fragment/5/position = Vector2( -240, 320 )
+nodes/fragment/6/node = SubResource( 5 )
+nodes/fragment/6/position = Vector2( -240, 380 )
+nodes/fragment/connections = PoolIntArray( 3, 0, 0, 0, 2, 0, 4, 1, 3, 1, 4, 0, 4, 0, 0, 1, 5, 0, 2, 0, 6, 0, 2, 1, 3, 0, 0, 5 )
