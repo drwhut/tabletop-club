@@ -36,6 +36,8 @@ onready var _sun_light = $SunLight
 onready var _table = $Table
 onready var _world_environment = $WorldEnvironment
 
+var _srv_allow_card_stacking = true
+var _srv_hand_setup_frames = -1
 var _srv_next_piece_name = 0
 var _srv_retrieve_pieces_from_hell = true
 var _table_body: RigidBody = null
@@ -1308,6 +1310,12 @@ remotesync func set_state(state: Dictionary) -> void:
 		child.queue_free()
 	
 	_extract_piece_states(state, _pieces)
+	
+	# Wait a few physics frames for the hands to detect the cards, then add the
+	# cards to the hands.
+	if get_tree().is_network_server():
+		_srv_allow_card_stacking = false
+		_srv_hand_setup_frames = 5
 
 # Set the room table.
 # table_entry: The table's entry in the asset DB.
@@ -1504,6 +1512,25 @@ func _ready():
 				if table_entry["default"]:
 					set_table(table_entry)
 					break
+
+func _physics_process(_delta):
+	if get_tree().is_network_server():
+		if _srv_hand_setup_frames >= 0:
+			_srv_hand_setup_frames -= 1
+			
+			if _srv_hand_setup_frames == 0:
+				for piece in _pieces.get_children():
+					if piece is Card:
+						if piece.over_hand > 0:
+							var hand_name = str(piece.over_hand)
+							if _hands.has_node(hand_name):
+								var hand = _hands.get_node(hand_name)
+								var ok = hand.srv_add_card(piece)
+								if not ok:
+									push_error("Failed to add card %s to the hand of player %s!" %
+										[piece.name, hand_name])
+				
+				_srv_allow_card_stacking = true
 
 # Append the states of pieces to a given dictionary.
 # state: The dictionary to add the states to.
@@ -1856,6 +1883,10 @@ func _on_piece_exiting_tree(piece: Piece) -> void:
 
 func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void:
 	if get_tree().is_network_server():
+		if not _srv_allow_card_stacking:
+			if piece1 is Card or piece2 is Card:
+				return
+		
 		if piece1 is Stack and piece2 is Stack:
 			rpc("add_stack_to_stack", piece1.name, piece2.name)
 		elif piece1 is Stack:
