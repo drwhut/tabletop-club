@@ -392,30 +392,11 @@ func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	# Force the piece to the given location.
 	var pos = state.transform.origin
 	var linear_dir = srv_hover_position + _srv_hover_offset - pos
-	state.apply_central_impulse(LINEAR_FORCE_SCALAR * mass * linear_dir)
-	# Stops linear harmonic motion.
-	state.apply_central_impulse(-HARMONIC_DAMPENING * mass * state.linear_velocity)
+	state.linear_velocity = LINEAR_FORCE_SCALAR * linear_dir
 	
 	# Force the piece to the given basis.
 	var current_basis = state.transform.basis.orthonormalized()
 	var target_basis = srv_hover_basis.orthonormalized()
 	var rotation_basis = target_basis * current_basis.inverse()
 	var rotation_euler = rotation_basis.get_euler()
-	
-	# For rigid bodies, applied torque is multiplied with the inverse of the
-	# inertia tensor (a 3x3 matrix) to get the angular acceleration. But here
-	# we want all pieces to rotate the same way, so we get the non-inverted
-	# inertia tensor and multiply the torque by it to pretend all pieces have
-	# the same inertia tensor.
-	var inertia_tensor = get_inverse_inertia_tensor()
-	if inertia_tensor.determinant() == 0:
-		inertia_tensor = Basis.IDENTITY
-	else:
-		inertia_tensor = inertia_tensor.inverse()
-	
-	var applied_torque = inertia_tensor * rotation_euler
-	state.apply_torque_impulse(ANGULAR_FORCE_SCALAR * applied_torque)
-	
-	# Stops angular harmonic motion.
-	var angular_torque = inertia_tensor * state.angular_velocity
-	state.apply_torque_impulse(-HARMONIC_DAMPENING * angular_torque)
+	state.angular_velocity = ANGULAR_FORCE_SCALAR * rotation_euler
