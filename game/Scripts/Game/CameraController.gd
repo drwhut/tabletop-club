@@ -491,7 +491,8 @@ func _process_input(_delta):
 
 func _process_movement(delta):
 	var target_vel = _movement_dir * max_speed
-	_movement_vel = _movement_vel.linear_interpolate(target_vel, _movement_accel * delta)
+	var delta_vel = clamp(_movement_accel * delta, 0.0, 1.0)
+	_movement_vel = _movement_vel.linear_interpolate(target_vel, delta_vel)
 	
 	# A global translation, as we want to move on the plane parallel to the
 	# table, regardless of the direction we are facing.
@@ -505,7 +506,8 @@ func _process_movement(delta):
 	# Go towards the target zoom level.
 	var target_offset = Vector3(0, 0, _target_zoom)
 	var zoom_accel = zoom_sensitivity * ZOOM_ACCEL_SCALAR
-	_camera.translation = _camera.translation.linear_interpolate(target_offset, zoom_accel * delta)
+	var zoom_delta = clamp(zoom_accel * delta, 0.0, 1.0)
+	_camera.translation = _camera.translation.linear_interpolate(target_offset, zoom_delta)
 	
 	# Adjust the near value of the camera based on how far away the camera is
 	# from the table. If the camera is really far away, it probably won't have
