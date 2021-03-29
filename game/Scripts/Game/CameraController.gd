@@ -69,6 +69,7 @@ const ROTATION_Y_MAX = -0.2
 const ROTATION_Y_MIN = -1.5
 const TIMER_UPDATE_INTERVAL = 0.5
 const ZOOM_ACCEL_SCALAR = 3.0
+const ZOOM_CAMERA_NEAR_SCALAR = 0.01
 const ZOOM_DISTANCE_MIN = 2.0
 const ZOOM_DISTANCE_MAX = 200.0
 
@@ -505,6 +506,12 @@ func _process_movement(delta):
 	var target_offset = Vector3(0, 0, _target_zoom)
 	var zoom_accel = zoom_sensitivity * ZOOM_ACCEL_SCALAR
 	_camera.translation = _camera.translation.linear_interpolate(target_offset, zoom_accel * delta)
+	
+	# Adjust the near value of the camera based on how far away the camera is
+	# from the table. If the camera is really far away, it probably won't have
+	# anything directly in front of it, so we can make the depth buffer more
+	# accurate by having it cover a smaller area.
+	_camera.near = clamp(ZOOM_CAMERA_NEAR_SCALAR * _target_zoom, 0.05, 2.0)
 
 func _unhandled_input(event):
 	if not Input.is_key_pressed(KEY_CONTROL):
