@@ -19,3 +19,6 @@ The shape of the stack is determined by the first piece that enters the stack, a
 __meta__ = {
 "_editor_description_": "All of the pieces of the stack are put as children of this node, and are converted to StackPieceInstances (which are just MeshInstances)."
 }
+
+[node name="OutlineMeshInstance" type="MeshInstance" parent="CollisionShape"]
+skeleton = NodePath("")

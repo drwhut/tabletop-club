@@ -35,9 +35,8 @@ enum {
 	FLIP_YES
 }
 
-# Usually, these would be onready variables, but since this object is always
-# made in code, we set these variables before we need them.
 onready var _collision_shape = $CollisionShape
+onready var _outline_mesh_instance = $CollisionShape/OutlineMeshInstance
 onready var _pieces = $CollisionShape/Pieces
 
 # This should only be useful for stacks of cards.
@@ -241,12 +240,6 @@ master func request_sort() -> void:
 	
 	rpc("set_piece_order", names)
 
-# Set the stack to appear like it is selected.
-# selected: Should the stack appear like it is selected?
-func set_appear_selected(selected: bool) -> void:
-	for piece in get_pieces():
-		piece.set_appear_selected(selected)
-
 # Called by the server to set the order of the pieces in the stack.
 # order: The piece names in their new order.
 remotesync func set_piece_order(order: Array) -> void:
@@ -263,6 +256,16 @@ remotesync func set_piece_order(order: Array) -> void:
 		i += 1
 	
 	_set_piece_heights()
+
+# Add the outline material to the outline mesh instance.
+func setup_outline_material():
+	var outline_shader = preload("res://Shaders/OutlineShader.tres")
+	
+	_outline_material = ShaderMaterial.new()
+	_outline_material.shader = outline_shader
+	_outline_material.set_shader_param("Color", Color.transparent)
+	
+	_outline_mesh_instance.set_surface_material(0, _outline_material)
 
 func _physics_process(_delta):
 	# If the stack is being shaken, then get the server to send a list of
@@ -284,6 +287,8 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	# to the scene tree.
 	if _collision_shape == null:
 		_collision_shape = $CollisionShape
+	if _outline_mesh_instance == null:
+		_outline_mesh_instance = $CollisionShape/OutlineMeshInstance
 	if _pieces == null:
 		_pieces = $CollisionShape/Pieces
 	
@@ -321,6 +326,25 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 			_pieces.scale.y = shape.scale.y
 			
 			_mesh_unit_height = shape.scale.y * piece.scale.y
+			
+			# Add the corresponding mesh shape to the outline mesh instance.
+			if new_shape is BoxShape:
+				var cube_mesh = CubeMesh.new()
+				cube_mesh.size = Vector3.ONE
+				_outline_mesh_instance.mesh = cube_mesh
+			elif new_shape is CylinderShape:
+				var cylinder_mesh = CylinderMesh.new()
+				cylinder_mesh.bottom_radius = 0.5
+				cylinder_mesh.top_radius = 0.5
+				cylinder_mesh.height = 1.0
+				_outline_mesh_instance.mesh = cylinder_mesh
+			
+			# Avoid z-ordering glitches.
+			_outline_mesh_instance.scale.x = 1.001
+			_outline_mesh_instance.scale.z = 1.001
+			
+			_outline_mesh_instance.scale.y = shape.scale.y
+			setup_outline_material()
 	else:
 		var current_height = get_total_height()
 		var new_height = _mesh_unit_height * _pieces.get_child_count()
@@ -330,6 +354,8 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 			_collision_shape.shape.extents.y += (extra_height / 2)
 		elif _collision_shape.shape is CylinderShape:
 			_collision_shape.shape.height += extra_height
+		
+		_outline_mesh_instance.scale.y = new_height + 0.001
 	
 	# We just changed the collision shape, so make sure the stack is awake.
 	sleeping = false
@@ -384,6 +410,8 @@ func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	else:
 		push_error("Stack has an unsupported collision shape!")
 		return null
+	
+	_outline_mesh_instance.scale.y = new_height + 0.001
 	
 	# We just changed the collision shape, so make sure the stack is awake.
 	sleeping = false
