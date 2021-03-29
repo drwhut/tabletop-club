@@ -18,50 +18,53 @@ __meta__ = {
 
 [node name="TopPanel" type="HBoxContainer" parent="."]
 anchor_right = 1.0
+mouse_filter = 2
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ObjectsButton" type="Button" parent="TopPanel"]
-margin_right = 64.0
+margin_left = 278.0
+margin_right = 342.0
 margin_bottom = 26.0
 text = "Objects"
 
 [node name="GamesButton" type="Button" parent="TopPanel"]
-margin_left = 68.0
-margin_right = 128.0
+margin_left = 346.0
+margin_right = 406.0
 margin_bottom = 26.0
 text = "Games"
 
 [node name="RoomButton" type="Button" parent="TopPanel"]
-margin_left = 132.0
-margin_right = 186.0
+margin_left = 410.0
+margin_right = 464.0
 margin_bottom = 26.0
 text = "Room"
 
 [node name="FlipTableButton" type="Button" parent="TopPanel"]
-margin_left = 190.0
-margin_right = 269.0
+margin_left = 468.0
+margin_right = 547.0
 margin_bottom = 26.0
 text = "Flip Table"
 
 [node name="ClearTableButton" type="Button" parent="TopPanel"]
-margin_left = 273.0
-margin_right = 362.0
+margin_left = 551.0
+margin_right = 640.0
 margin_bottom = 26.0
 text = "Clear Table"
 
 [node name="RotationOption" type="OptionButton" parent="TopPanel"]
-margin_left = 366.0
-margin_right = 413.0
+margin_left = 644.0
+margin_right = 691.0
 margin_bottom = 26.0
 text = "45"
 items = [ "15", null, false, 0, null, "30", null, false, 1, null, "45", null, false, 2, null, "60", null, false, 3, null, "90", null, false, 4, null, "180", null, false, 5, null ]
 selected = 2
 
 [node name="GameMenuButton" type="Button" parent="TopPanel"]
-margin_left = 417.0
-margin_right = 468.0
+margin_left = 695.0
+margin_right = 746.0
 margin_bottom = 26.0
 text = "Menu"
 

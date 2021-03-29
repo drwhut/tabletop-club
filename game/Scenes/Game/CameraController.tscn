@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Game/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Misc/OutlineColorRect.gd" type="Script" id=2]
@@ -16,10 +16,20 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 14 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 9
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 13 )
 
 [node name="CameraController" type="Spatial"]
@@ -237,6 +247,13 @@ group = ExtResource( 6 )
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 10 )
 expand = true
+
+[node name="DebugInfoLabel" type="Label" parent="CameraUI"]
+visible = false
+margin_right = 240.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+autowrap = true
 
 [connection signal="gui_input" from="MouseGrab" to="." method="_on_MouseGrab_gui_input"]
 [connection signal="popup_hide" from="PieceContextMenu" to="." method="_on_PieceContextMenu_popup_hide"]

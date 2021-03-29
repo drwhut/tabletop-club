@@ -49,6 +49,7 @@ onready var _camera_ui = $CameraUI
 onready var _container_content_dialog = $ContainerContentDialog
 onready var _control_hint_label = $CameraUI/ControlHintLabel
 onready var _cursors = $CameraUI/Cursors
+onready var _debug_info_label = $CameraUI/DebugInfoLabel
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 onready var _ruler_scale_slider = $RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider
@@ -331,6 +332,9 @@ func _process(delta):
 	if _control_hint_label.visible:
 		_set_control_hint_label()
 	
+	if _debug_info_label.visible:
+		_set_debug_info_label()
+	
 	for cursor in _cursors.get_children():
 		if cursor is TextureRect:
 			if cursor.has_meta("cursor_position") and cursor.has_meta("x_basis"):
@@ -547,6 +551,8 @@ func _unhandled_input(event):
 		for piece in _selected_pieces:
 			if piece is Piece:
 				piece.rpc_id(1, "reset_orientation")
+	elif event.is_action_pressed("game_toggle_debug_info"):
+		_debug_info_label.visible = not _debug_info_label.visible
 	elif event.is_action_pressed("game_toggle_ui"):
 		_camera_ui.visible = not _camera_ui.visible
 	
@@ -1272,6 +1278,103 @@ func _set_control_hint_label_row_actions(name: String, actions: Array,
 		first = false
 	
 	return _set_control_hint_label_row(name, desc, mod)
+
+# Set the debug info label's text based on the state of the game.
+func _set_debug_info_label() -> void:
+	var text = ""
+	
+	#######################
+	# GAME/ENGINE VERSION #
+	#######################
+	
+	text += ProjectSettings.get_setting("application/config/name")
+	if ProjectSettings.has_setting("application/config/version"):
+		text += " " + ProjectSettings.get_setting("application/config/version")
+	text += " (%s)\n" % ("Debug" if OS.is_debug_build() else "Release")
+	
+	text += "Godot %s\n" % Engine.get_version_info()["string"]
+	
+	##########
+	# DEVICE #
+	##########
+	
+	text += "Video Adapter: %s\n" % VisualServer.get_video_adapter_name()
+	
+	###############
+	# PERFORMANCE #
+	###############
+	
+	text += "FPS: %.0f\n" % Performance.get_monitor(Performance.TIME_FPS)
+	text += "Frame Time: %.3fms\n" % (1000 * Performance.get_monitor(Performance.TIME_PROCESS))
+	text += "Physics Frame Time: %.3fms\n" % (1000 * Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS))
+	
+	###########
+	# OBJECTS #
+	###########
+	
+	text += "Objects: %.0f\n" % Performance.get_monitor(Performance.OBJECT_COUNT)
+	text += "Resources: %.0f\n" % Performance.get_monitor(Performance.OBJECT_RESOURCE_COUNT)
+	text += "Nodes: %.0f\n" % Performance.get_monitor(Performance.OBJECT_NODE_COUNT)
+	text += "Orphan Nodes: %.0f\n" % Performance.get_monitor(Performance.OBJECT_ORPHAN_NODE_COUNT)
+	
+	###########
+	# PHYSICS #
+	###########
+	
+	text += "Physics Objects: %.0f\n" % Performance.get_monitor(Performance.PHYSICS_3D_ACTIVE_OBJECTS)
+	
+	##########
+	# MEMORY #
+	##########
+	
+	if OS.is_debug_build():
+		var static_used = Performance.get_monitor(Performance.MEMORY_STATIC)
+		var static_max = Performance.get_monitor(Performance.MEMORY_STATIC_MAX)
+		var dynamic_used = Performance.get_monitor(Performance.MEMORY_DYNAMIC)
+		var dynamic_max = Performance.get_monitor(Performance.MEMORY_DYNAMIC_MAX)
+		
+		text += "Static Memory: %s/%s\n" % [String.humanize_size(static_used),
+			String.humanize_size(static_max)]
+		text += "Dynamic Memory: %s/%s\n" % [String.humanize_size(dynamic_used),
+			String.humanize_size(dynamic_max)]
+	
+	var video_memory = Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED)
+	text += "Video Memory: %s\n" % String.humanize_size(video_memory)
+	
+	###########
+	# NETWORK #
+	###########
+	
+	text += "Network ID: %d\n" % get_tree().get_network_unique_id()
+	
+	##########
+	# CAMERA #
+	##########
+	
+	var camera_pos = _camera.global_transform.origin
+	text += "Camera Position: %s\n" % str(camera_pos)
+	var camera_rot = (180.0 / PI) * _camera.global_transform.basis.get_euler()
+	text += "Camera Rotation: %s\n" % str(camera_rot)
+	text += "Cursor Position: %s\n" % str(_cursor_position)
+	
+	var cursor_over = "None"
+	if _piece_mouse_is_over:
+		var piece_name = _piece_mouse_is_over.name
+		var piece_entry = _piece_mouse_is_over.piece_entry
+		cursor_over = "Piece %s (%s)" % [piece_name, piece_entry["name"]]
+	elif _hidden_area_mouse_is_over:
+		var area_name = _hidden_area_mouse_is_over.name
+		cursor_over = "Hidden Area %s" % area_name
+	elif _cursor_on_table:
+		cursor_over = "Table"
+	text += "Cursor Over: %s\n" % cursor_over
+	
+	var hovering_text = "No"
+	if _is_hovering_selected:
+		hovering_text = "Yes %s" % str(get_hover_position())
+	text += "Hovering: %s\n" % hovering_text
+	
+	_debug_info_label.text = text
 
 # Set the properties of controls relating to the selected speaker.
 func _set_speaker_controls() -> void:

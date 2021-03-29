@@ -559,50 +559,67 @@ size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_delete_piece"
 
-[node name="ToggleUI" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="ToggleDebugInfo" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 303.0
 margin_right = 486.0
 margin_bottom = 323.0
 size_flags_horizontal = 3
-text = "Toggle UI"
+text = "Toggle Debug Info"
 align = 2
 
-[node name="ToggleUIButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="ToggleDebugInfoButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 300.0
 margin_right = 976.0
 margin_bottom = 326.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
-action = "game_toggle_ui"
+action = "game_toggle_debug_info"
 
-[node name="TakeScreenshot" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="ToggleUI" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 333.0
 margin_right = 486.0
 margin_bottom = 353.0
 size_flags_horizontal = 3
-text = "Take Screenshot"
+text = "Toggle UI"
 align = 2
 
-[node name="TakeScreenshotButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="ToggleUIButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 330.0
 margin_right = 976.0
 margin_bottom = 356.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
-action = "game_take_screenshot"
+action = "game_toggle_ui"
 
-[node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 360.0
+[node name="TakeScreenshot" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 363.0
 margin_right = 486.0
-margin_bottom = 386.0
+margin_bottom = 383.0
+size_flags_horizontal = 3
+text = "Take Screenshot"
+align = 2
 
-[node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="TakeScreenshotButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 360.0
 margin_right = 976.0
 margin_bottom = 386.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+action = "game_take_screenshot"
+
+[node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 390.0
+margin_right = 486.0
+margin_bottom = 416.0
+
+[node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 490.0
+margin_top = 390.0
+margin_right = 976.0
+margin_bottom = 416.0
 text = "Reset Bindings"
 
 [node name="Multiplayer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]

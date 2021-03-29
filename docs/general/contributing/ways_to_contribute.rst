@@ -28,6 +28,13 @@ find the game logs in the following folders:
 * Windows: ``%APPDATA%/OpenTabletop/logs/``
 * macOS / Linux: ``~/.local/share/godot/app_userdata/OpenTabletop/logs/``
 
+.. hint::
+
+   If you want to provide an in-game screenshot showing the bug, you can press
+   :guilabel:`F3` to display debug information on the screen, then you can
+   press :guilabel:`F12` to take a screenshot! Screenshots are saved to the
+   ``user://`` directory, next to the logs.
+
 
 Suggesting a feature
 --------------------
