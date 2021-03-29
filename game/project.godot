@@ -89,11 +89,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/Stack.gd"
 }, {
-"base": "MeshInstance",
-"class": "StackPieceInstance",
-"language": "GDScript",
-"path": "res://Scripts/Game/Pieces/StackPieceInstance.gd"
-}, {
 "base": "Piece",
 "class": "StackablePiece",
 "language": "GDScript",
@@ -126,7 +121,6 @@ _global_script_class_icons={
 "SpeakerPiece": "",
 "SpinBoxButton": "",
 "Stack": "",
-"StackPieceInstance": "",
 "StackablePiece": "",
 "TimeEdit": "",
 "TimerPiece": ""

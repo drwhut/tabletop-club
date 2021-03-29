@@ -1028,7 +1028,7 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 			
 			new_basis = (stack.transform.basis * piece_instance.transform.basis).orthonormalized()
 			rpc("add_piece", piece_instance.name, Transform(new_basis, new_origin),
-				piece_instance.piece_entry)
+				piece_instance.get_meta("piece_entry"))
 			new_piece = _pieces.get_node(piece_instance.name)
 			
 			piece_instance.queue_free()
@@ -1058,7 +1058,7 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 			
 			rpc("add_piece", piece_instance.name,
 				Transform(new_basis, new_stack_translation),
-				piece_instance.piece_entry)
+				piece_instance.get_meta("piece_entry"))
 			
 			piece_instance.queue_free()
 	else:
@@ -1465,8 +1465,9 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 	for _i in range(n):
 		contents.push_back(stack1.pop_piece())
 	
-	var test_piece = load(contents[0].piece_entry["scene_path"]).instance()
-	PieceBuilder.scale_piece(test_piece, contents[0].piece_entry["scale"])
+	var test_piece_entry = contents[0].get_meta("piece_entry")
+	var test_piece = load(test_piece_entry["scene_path"]).instance()
+	PieceBuilder.scale_piece(test_piece, test_piece_entry["scale"])
 	
 	var shapes = test_piece.get_collision_shapes()
 	if shapes.size() != 1:
@@ -1568,7 +1569,7 @@ func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> 
 				var child_piece_meta = {
 					"flip_y": child_piece.transform.basis.y.y < 0,
 					"name": child_piece.name,
-					"piece_entry": child_piece.piece_entry
+					"piece_entry": child_piece.get_meta("piece_entry")
 				}
 				
 				child_pieces.push_back(child_piece_meta)

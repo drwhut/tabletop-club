@@ -50,7 +50,7 @@ var _mesh_unit_height = 0
 # shape: The shape of the piece.
 # on: Where to add the piece in the stack.
 # flip: Whether the piece should be flipped when entering the stack.
-func add_piece(piece: StackPieceInstance, shape: CollisionShape,
+func add_piece(piece: MeshInstance, shape: CollisionShape,
 	on: int = STACK_AUTO, flip: int = FLIP_AUTO) -> void:
 	
 	var on_top = false
@@ -137,7 +137,7 @@ func is_card_stack() -> bool:
 # Is the piece's orientation flipped relative to the stack's orientation?
 # Returns: If the piece's orientation if flipped.
 # piece: The stack piece instance to query.
-func is_piece_flipped(piece: StackPieceInstance) -> bool:
+func is_piece_flipped(piece: MeshInstance) -> bool:
 	return transform.basis.y.dot(piece.transform.basis.y) < 0
 
 # Called by the server to orient all of the pieces in the stack in a particular
@@ -156,7 +156,7 @@ remotesync func orient_pieces(up: bool) -> void:
 # Pop a piece from the stack.
 # Returns: The stack piece instance that was poped.
 # from: Where to pop the stack from.
-func pop_piece(from: int = STACK_AUTO) -> StackPieceInstance:
+func pop_piece(from: int = STACK_AUTO) -> MeshInstance:
 	if _pieces.get_child_count() == 0:
 		return null
 	
@@ -180,7 +180,7 @@ func pop_piece(from: int = STACK_AUTO) -> StackPieceInstance:
 
 # Remove a piece from the stack.
 # piece: The stack piece instance to remove.
-func remove_piece(piece: StackPieceInstance) -> void:
+func remove_piece(piece: MeshInstance) -> void:
 	if _pieces.is_a_parent_of(piece):
 		_remove_piece_at_pos(piece.get_index())
 	else:
@@ -228,7 +228,7 @@ master func request_sort() -> void:
 	for piece in get_pieces():
 		items.append({
 			"name": piece.name,
-			"texture_path": piece.piece_entry.texture_path
+			"texture_path": piece.get_meta("piece_entry")["texture_path"]
 		})
 	var items2 = items.duplicate()
 	
@@ -278,8 +278,12 @@ func _physics_process(_delta):
 # shape: The piece's collision shape.
 # pos: The position of the new piece in the stack.
 # flip: Whether the piece should be flipped or not.
-func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
+func _add_piece_at_pos(piece: MeshInstance, shape: CollisionShape,
 	pos: int, flip: int) -> void:
+	
+	if not piece.has_meta("piece_entry"):
+		push_error("Piece MeshInstance has no piece_entry metadata!")
+		return
 	
 	# Workaround for the event that this function is called, but the child node
 	# variables have not been defined yet because the stack is not ready.
@@ -296,7 +300,7 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	_pieces.move_child(piece, pos)
 	
 	if _pieces.get_child_count() == 1:
-		piece_entry = piece.piece_entry
+		piece_entry = piece.get_meta("piece_entry")
 		
 		var new_shape: Shape = null
 		
@@ -360,7 +364,7 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 	# We just changed the collision shape, so make sure the stack is awake.
 	sleeping = false
 	
-	mass += piece.piece_entry["mass"]
+	mass += piece.get_meta("piece_entry")["mass"]
 	
 	var is_flipped = false
 	match flip:
@@ -390,7 +394,7 @@ func _add_piece_at_pos(piece: StackPieceInstance, shape: CollisionShape,
 # Remove the piece at the given position.
 # Returns: The stack piece instance at the given position.
 # pos: The position to remove from.
-func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
+func _remove_piece_at_pos(pos: int) -> MeshInstance:
 	if pos < 0 or pos >= _pieces.get_child_count():
 		push_error("Cannot remove " + str(pos) + "th child from the stack!")
 		return null
@@ -416,7 +420,7 @@ func _remove_piece_at_pos(pos: int) -> StackPieceInstance:
 	# We just changed the collision shape, so make sure the stack is awake.
 	sleeping = false
 	
-	mass -= piece.piece_entry["mass"]
+	mass -= piece.get_meta("piece_entry")["mass"]
 	
 	_set_piece_heights()
 	

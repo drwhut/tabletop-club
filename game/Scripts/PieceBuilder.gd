@@ -158,7 +158,7 @@ func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 			"texture_path": texture_path
 		}
 		
-		# TODO: Make sure StackPieceInstances do the exact same thing as Pieces
+		# TODO: Make sure these MeshInstances do the exact same thing as Pieces
 		# when it comes to applying textures.
 		var texture: Texture = _load_res(texture_path)
 		var new_material = SpatialMaterial.new()
@@ -196,18 +196,19 @@ func free_cache() -> void:
 	_res_cache.clear()
 	_res_cache_mutex.unlock()
 
-# Create an array of StackPieceInstances from a piece, which act as mesh
-# instances, but can also be inserted into stacks.
-# Returns: An array of StackPieceInstances representing the piece's mesh
-# instances.
+# Create an array of MeshInstances from a piece, which can also be inserted
+# into stacks.
+# Returns: An array of MeshInstances representing the piece's meshes, but with
+# extra metadata.
 # piece: The piece to get the mesh instances from.
 func get_piece_meshes(piece: Piece) -> Array:
 	var out = []
 	for mesh_instance in piece.get_mesh_instances():
-		var piece_mesh = StackPieceInstance.new()
+		var piece_mesh = MeshInstance.new()
 		piece_mesh.name = piece.name
 		piece_mesh.transform = piece.transform
-		piece_mesh.piece_entry = piece.piece_entry
+
+		piece_mesh.set_meta("piece_entry", piece.piece_entry)
 		
 		# Get the scale from the mesh instance (since the rigid body itself
 		# won't be scaled).
