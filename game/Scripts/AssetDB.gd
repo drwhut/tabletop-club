@@ -514,11 +514,13 @@ func _import_asset(from: String, pack: String, type_dir: String,
 	elif type_asset == ASSET_SKYBOX:
 		if VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
 			var default = _get_file_config_value(config, from.get_file(), "default", false)
+			var rotation = _get_file_config_value(config, from.get_file(), "rotation", Vector3.ZERO)
 			var strength = _get_file_config_value(config, from.get_file(), "strength", 1.0)
 			entry = {
 				"default": default,
 				"description": desc,
 				"name": _get_file_without_ext(to),
+				"rotation": rotation,
 				"strength": strength,
 				"texture_path": to
 			}

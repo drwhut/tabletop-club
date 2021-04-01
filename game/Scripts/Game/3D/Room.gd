@@ -1233,6 +1233,7 @@ remotesync func set_skybox(skybox_entry: Dictionary) -> void:
 	skybox.radiance_size = radiance
 	_world_environment.environment.background_sky = skybox
 	
+	_world_environment.environment.background_sky_rotation_degrees = skybox_entry["rotation"]
 	_world_environment.environment.background_energy = skybox_entry["strength"]
 	
 	_world_environment.set_meta("skybox_entry", skybox_entry)
