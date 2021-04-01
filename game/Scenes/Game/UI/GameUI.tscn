@@ -92,7 +92,6 @@ db_types = {
 "DICE - D8": "dice/d8",
 "PIECES": [ "pieces/cube", "pieces/custom", "pieces/cylinder" ],
 "SPEAKERS": [ "speakers/cube", "speakers/custom", "speakers/cylinder" ],
-"STACKS": "stacks",
 "TIMERS": [ "timers/cube", "timers/custom", "timers/cylinder" ],
 "TOKENS": [ "tokens/cube", "tokens/cylinder" ]
 }

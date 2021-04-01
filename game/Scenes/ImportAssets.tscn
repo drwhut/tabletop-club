@@ -13,30 +13,32 @@ __meta__ = {
 Once it is done importing, the scene goes to the main menu."
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 451.0
-margin_top = 278.0
-margin_right = 573.0
-margin_bottom = 322.0
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 122.0
-margin_bottom = 20.0
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 266.0
+margin_right = 1024.0
+margin_bottom = 286.0
 text = "Importing assets..."
 align = 1
 
-[node name="ImportingLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 24.0
-margin_right = 122.0
-margin_bottom = 44.0
+[node name="ImportingLabel" type="Label" parent="VBoxContainer"]
+margin_top = 290.0
+margin_right = 1024.0
+margin_bottom = 310.0
 align = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+margin_top = 314.0
+margin_right = 1024.0
+margin_bottom = 334.0
+max_value = 1.0
 
 [node name="MissingAssetsPopup" type="AcceptDialog" parent="."]
 margin_right = 500.0
