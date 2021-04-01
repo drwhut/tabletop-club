@@ -149,14 +149,14 @@ func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 		var texture_path = stack_entry.texture_paths[i]
 		
 		# Create a new piece entry based on the stack entry.
-		mesh.piece_entry = {
+		mesh.set_meta("piece_entry", {
 			"description": stack_entry.description,
 			"mass": mass,
 			"name": stack_entry.name,
 			"scale": stack_entry.scale,
 			"scene_path": stack_entry.scene_path,
 			"texture_path": texture_path
-		}
+		})
 		
 		# TODO: Make sure these MeshInstances do the exact same thing as Pieces
 		# when it comes to applying textures.
@@ -181,7 +181,7 @@ func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 				back_material.albedo_texture = back_texture
 				mesh.set_surface_material(1, back_material)
 				
-				mesh.piece_entry["texture_path_1"] = back_texture_path
+				mesh.get_meta("piece_entry")["texture_path_1"] = back_texture_path
 			else:
 				push_error("Inferred %s/cards/%s from '%s', asset was not found in AssetDB!" % [
 					pack, asset, texture_path])

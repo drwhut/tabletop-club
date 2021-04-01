@@ -81,19 +81,6 @@ func init_singleplayer() -> void:
 	
 	_ui.hide_chat_box()
 
-# Request the server to add a piece to the game.
-# piece_entry: The piece's entry in the AssetDB.
-# position: The position to spawn the piece at.
-master func request_game_piece(piece_entry: Dictionary, position: Vector3) -> void:
-	var transform = Transform(Basis.IDENTITY, position)
-	
-	# Is the piece a pre-filled stack?
-	if piece_entry.has("texture_paths") and (not piece_entry.has("texture_path")):
-		_room.rpc_id(1, "request_add_stack_filled", transform, piece_entry)
-	else:
-		# Send the call to create the piece to everyone.
-		_room.rpc("add_piece", _room.srv_get_next_piece_name(), transform, piece_entry)
-
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
@@ -251,7 +238,10 @@ func _on_GameUI_load_table(path: String):
 			_popup_table_state_error(tr("Loaded table is not in the correct format."))
 
 func _on_GameUI_piece_requested(piece_entry: Dictionary, position: Vector3):
-	rpc_id(1, "request_game_piece", piece_entry, position)
+	_room.rpc_id(1, "request_add_piece", piece_entry, position)
+
+func _on_GameUI_piece_requested_in_container(piece_entry: Dictionary, container_name: String):
+	_room.rpc_id(1, "request_add_piece_in_container", piece_entry, container_name)
 
 func _on_GameUI_requesting_room_details():
 	_ui.set_room_details(_room.get_table(), _room.get_skybox(),
@@ -285,7 +275,12 @@ func _on_Room_setting_spawn_point(position: Vector3):
 	_ui.spawn_point_origin = position
 
 func _on_Room_spawning_piece_at(position: Vector3):
+	_ui.spawn_point_container_name = ""
 	_ui.spawn_point_temp_offset = position - _ui.spawn_point_origin
+	_ui.popup_objects_dialog()
+
+func _on_Room_spawning_piece_in_container(container_name: String):
+	_ui.spawn_point_container_name = container_name
 	_ui.popup_objects_dialog()
 
 func _on_Room_table_flipped(table_reset: bool):

@@ -28,6 +28,7 @@ signal flipping_table(reset_table)
 signal lighting_requested(lamp_color, lamp_intensity, lamp_sunlight)
 signal load_table(path)
 signal piece_requested(piece_entry, position)
+signal piece_requested_in_container(piece_entry, container_name)
 signal requesting_room_details()
 signal rotation_amount_updated(rotation_amount)
 signal save_table(path)
@@ -48,6 +49,7 @@ onready var _player_list = $PlayerList
 onready var _room_dialog = $RoomDialog
 onready var _rotation_option = $TopPanel/RotationOption
 
+var spawn_point_container_name: String = ""
 var spawn_point_origin: Vector3 = Vector3(0, Piece.SPAWN_HEIGHT, 0)
 var spawn_point_temp_offset: Vector3 = Vector3()
 
@@ -190,11 +192,15 @@ func _on_MainMenuButton_pressed():
 	Global.start_main_menu()
 
 func _on_ObjectsButton_pressed():
+	spawn_point_container_name = ""
 	spawn_point_temp_offset = Vector3()
 	popup_objects_dialog()
 
 func _on_ObjectsDialog_entry_requested(_pack: String, _type: String, entry: Dictionary):
-	emit_signal("piece_requested", entry, spawn_point_origin + spawn_point_temp_offset)
+	if spawn_point_container_name.empty():
+		emit_signal("piece_requested", entry, spawn_point_origin + spawn_point_temp_offset)
+	else:
+		emit_signal("piece_requested_in_container", entry, spawn_point_container_name)
 
 func _on_OptionsButton_pressed():
 	_options_menu.visible = true

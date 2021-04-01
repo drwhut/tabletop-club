@@ -41,6 +41,7 @@ signal setting_hidden_area_preview_points(point1, point2)
 signal setting_hidden_area_preview_visible(is_visible)
 signal setting_spawn_point(position)
 signal spawning_piece_at(position)
+signal spawning_piece_in_container(container_name)
 signal stack_collect_all_requested(stack, collect_stacks)
 
 onready var _box_selection_rect = $BoxSelectionRect
@@ -688,6 +689,13 @@ func _lock_selected_pieces() -> void:
 		if piece is Piece:
 			piece.rpc_id(1, "request_lock")
 
+func _on_context_add_objects_pressed() -> void:
+	_hide_context_menu()
+	if _selected_pieces.size() == 1:
+		var piece = _selected_pieces[0]
+		if piece is PieceContainer:
+			emit_signal("spawning_piece_in_container", piece.name)
+
 func _on_context_collect_all_pressed() -> void:
 	_hide_context_menu()
 	if _selected_pieces.size() == 1:
@@ -1013,6 +1021,11 @@ func _popup_piece_context_menu() -> void:
 	
 	elif _inheritance_has(inheritance, "PieceContainer"):
 		if _selected_pieces.size() == 1:
+			var add_button = Button.new()
+			add_button.text = tr("Add objects...")
+			add_button.connect("pressed", self, "_on_context_add_objects_pressed")
+			_piece_context_menu_container.add_child(add_button)
+			
 			var peek_button = Button.new()
 			peek_button.text = tr("Peek inside")
 			peek_button.connect("pressed", self, "_on_context_peek_inside_pressed")

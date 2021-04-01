@@ -23,6 +23,7 @@ extends Spatial
 
 signal setting_spawn_point(position)
 signal spawning_piece_at(position)
+signal spawning_piece_in_container(container_name)
 signal table_flipped(table_reset)
 
 onready var _camera_controller = $CameraController
@@ -625,6 +626,31 @@ remotesync func remove_piece_from_container(container_name: String, piece_name: 
 	var piece = container.remove_piece(piece_name)
 	_pieces.add_child(piece)
 
+# Request the server to add a piece to the game.
+# Returns: The name of the new piece.
+# piece_entry: The piece's entry in the AssetDB.
+# position: The position to spawn the piece at.
+master func request_add_piece(piece_entry: Dictionary, position: Vector3) -> String:
+	var transform = Transform(Basis.IDENTITY, position)
+	
+	# Is the piece a pre-filled stack?
+	if piece_entry.has("texture_paths") and (not piece_entry.has("texture_path")):
+		return request_add_stack_filled(transform, piece_entry)
+	else:
+		# Send the call to create the piece to everyone.
+		var piece_name = srv_get_next_piece_name()
+		rpc("add_piece", piece_name, transform, piece_entry)
+		return piece_name
+
+# Request the server to add a piece into a container.
+# piece_entry: The piece's entry in the AssetDB.
+# container_name: The name of the container to add the piece to.
+master func request_add_piece_in_container(piece_entry: Dictionary, container_name: String) -> void:
+	# Spawn the piece far away so the players don't see it.
+	var piece_name = request_add_piece(piece_entry, Vector3(9999, 9999, 9999))
+	
+	rpc("add_piece_to_container", container_name, piece_name)
+
 # Request the server to add cards to the given hand.
 # card_names: The names of the cards to add to the hand. Note that the names
 # of stacks are also allowed.
@@ -716,9 +742,10 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 	request_add_cards_to_hand(card_names, hand_id)
 
 # Request the server to add a pre-filled stack.
+# Returns: The name of the new stack.
 # stack_transform: The transform the new stack should have.
 # stack_entry: The stack's entry in the AssetDB.
-master func request_add_stack_filled(stack_transform: Transform, stack_entry: Dictionary) -> void:
+master func request_add_stack_filled(stack_transform: Transform, stack_entry: Dictionary) -> String:
 	# Before we can get everyone to add the stack, we need to come up with names
 	# for the stack and it's items.
 	var stack_name = srv_get_next_piece_name()
@@ -728,6 +755,8 @@ master func request_add_stack_filled(stack_transform: Transform, stack_entry: Di
 		piece_names.push_back(srv_get_next_piece_name())
 	
 	rpc("add_stack_filled", stack_name, stack_transform, stack_entry, piece_names)
+	
+	return stack_name
 
 # Request the server to collect a set of pieces and, if possible, put them into
 # stacks.
@@ -1960,6 +1989,9 @@ func _on_CameraController_setting_spawn_point(position: Vector3):
 
 func _on_CameraController_spawning_piece_at(position: Vector3):
 	emit_signal("spawning_piece_at", position)
+
+func _on_CameraController_spawning_piece_in_container(container_name: String):
+	emit_signal("spawning_piece_in_container", container_name)
 
 func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stacks: bool):
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
