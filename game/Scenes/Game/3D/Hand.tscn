@@ -1,29 +1,38 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Fonts/Cabin-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Game/3D/Hand.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Misc/RandomAudioStream.gd" type="Script" id=4]
+[ext_resource path="res://Sounds/Cards/cardSlide1.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/Cards/cardSlide7.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Cards/cardSlide6.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/Cards/cardSlide4.wav" type="AudioStream" id=10]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="Resource" id=1]
+script = ExtResource( 4 )
+streams = [ ExtResource( 5 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 7 ) ]
+
+[sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="CubeMesh" id=3]
 size = Vector3( 1, 0.25, 1 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=4]
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0.196078 )
 
-[sub_resource type="PlaneMesh" id=4]
+[sub_resource type="PlaneMesh" id=5]
 
-[sub_resource type="ViewportTexture" id=5]
+[sub_resource type="ViewportTexture" id=6]
 viewport_path = NodePath("NamePlate/Viewport")
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=7]
 resource_local_to_scene = true
 flags_transparent = true
-albedo_texture = SubResource( 5 )
+albedo_texture = SubResource( 6 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 150
 font_data = ExtResource( 1 )
 
@@ -34,21 +43,22 @@ __meta__ = {
 
 Only the player owning the hand should be able to see what cards are in the hand."
 }
+hand_sounds = SubResource( 1 )
 
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 36, 0, 0, 0, 20, 0, 0, 0, 18, 0, 0, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Area/CollisionShape"]
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
 
 [node name="NamePlate" type="MeshInstance" parent="."]
 transform = Transform( 18, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 14 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 6 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 7 )
 
 [node name="Viewport" type="Viewport" parent="NamePlate"]
 size = Vector2( 1800, 200 )
@@ -68,9 +78,13 @@ margin_bottom = 40.0
 [node name="NameLabel" type="RichTextLabel" parent="NamePlate/Viewport/MarginContainer"]
 margin_right = 1840.0
 margin_bottom = 240.0
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 8 )
 bbcode_enabled = true
 scroll_active = false
+
+[node name="EffectPlayer" type="AudioStreamPlayer3D" parent="."]
+unit_size = 30.0
+bus = "Effects"
 
 [connection signal="tree_exiting" from="." to="." method="_on_Hand_tree_exiting"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

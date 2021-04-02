@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cardSlide6.wav-8bfc070d8c2d2dd21b1b830c4d3fb208.sample"
+
+[deps]
+
+source_file="res://Sounds/Cards/cardSlide6.wav"
+dest_files=[ "res://.import/cardSlide6.wav-8bfc070d8c2d2dd21b1b830c4d3fb208.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

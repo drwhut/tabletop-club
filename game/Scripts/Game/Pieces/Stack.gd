@@ -39,6 +39,13 @@ onready var _collision_shape = $CollisionShape
 onready var _outline_mesh_instance = $CollisionShape/OutlineMeshInstance
 onready var _pieces = $CollisionShape/Pieces
 
+# TODO: export(RandomAudioSample)
+# See: https://github.com/godotengine/godot/pull/44879
+export(Resource) var card_add_sounds
+export(Resource) var card_orient_sounds
+export(Resource) var card_remove_sounds
+export(Resource) var card_shuffle_sounds
+
 # This should only be useful for stacks of cards.
 var over_hand: int = 0
 
@@ -152,6 +159,9 @@ remotesync func orient_pieces(up: bool) -> void:
 		
 		elif not up and current_basis.y.y > 0:
 			piece.transform.basis = current_basis.rotated(Vector3.BACK, PI)
+	
+	if is_card_stack():
+		play_effect(card_orient_sounds.random_stream())
 
 # Pop a piece from the stack.
 # Returns: The stack piece instance that was poped.
@@ -254,6 +264,9 @@ remotesync func set_piece_order(order: Array) -> void:
 			_pieces.move_child(node, i)
 		
 		i += 1
+	
+	if is_card_stack():
+		play_effect(card_shuffle_sounds.random_stream())
 	
 	_set_piece_heights()
 
@@ -389,6 +402,9 @@ func _add_piece_at_pos(piece: MeshInstance, shape: CollisionShape,
 	piece.transform = Transform(basis, Vector3.ZERO)
 	piece.scale = piece_scale
 	
+	if is_card_stack():
+		play_effect(card_add_sounds.random_stream())
+	
 	_set_piece_heights()
 
 # Remove the piece at the given position.
@@ -421,6 +437,9 @@ func _remove_piece_at_pos(pos: int) -> MeshInstance:
 	sleeping = false
 	
 	mass -= piece.get_meta("piece_entry")["mass"]
+	
+	if is_card_stack():
+		play_effect(card_remove_sounds.random_stream())
 	
 	_set_piece_heights()
 	

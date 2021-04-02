@@ -15,6 +15,7 @@ __meta__ = {
 
 The length and width are 1, but the height is constant and small."
 }
+effect_player_path = NodePath("EffectPlayer")
 mesh_instance_path = NodePath("CollisionShape/MeshInstance")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -23,3 +24,7 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
 transform = Transform( 1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 2 )
+
+[node name="EffectPlayer" type="AudioStreamPlayer3D" parent="."]
+unit_size = 30.0
+bus = "Effects"

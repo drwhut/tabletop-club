@@ -357,6 +357,9 @@ func _on_BindingBackground_unhandled_input(event: InputEvent):
 func _on_CancelBindButton_pressed():
 	_binding_background.visible = false
 
+func _on_EffectsVolumeSlider_value_changed(_value: float):
+	_apply_audio_config(_create_config_from_current())
+
 func _on_MasterVolumeSlider_value_changed(_value: float):
 	_apply_audio_config(_create_config_from_current())
 

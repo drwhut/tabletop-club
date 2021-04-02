@@ -43,6 +43,7 @@ func _ready():
 	credits_text = credits_text.replace("DEVELOPERS", tr("Developers"))
 	credits_text = credits_text.replace("FONTS", tr("Fonts"))
 	credits_text = credits_text.replace("IMAGES", tr("Images"))
+	credits_text = credits_text.replace("SOUND EFFECTS", tr("Sound Effects"))
 	credits_text = credits_text.replace("TOOL ICONS", tr("Tool Icons"))
 	
 	var credits_lines = credits_text.split("\n")

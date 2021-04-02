@@ -4,7 +4,13 @@
 
 [resource]
 script = ExtResource( 1 )
-text = "Images/ArrowCursor.png
+text = "Fonts/Cabin-*.ttf
+===========
+Authors: Pablo Impallari, Igino Marini
+License: SIL OFL v1.1
+URL: https://www.dafont.com/cabin.font
+
+Images/ArrowCursor.png
 Images/GrabbingCursor.png
 =========================
 Author: Jakub 'Nighted' Steiner
@@ -37,8 +43,18 @@ License: CC0
 Modified By: Benjamin \"drwhut\" Beddows
 URL: https://www.svgrepo.com/svg/14071/search
 
-Fonts/Cabin-*.ttf
-===========
-Authors: Pablo Impallari, Igino Marini
-License: SIL OFL v1.1
-URL: https://www.dafont.com/cabin.font"
+Sounds/Cards/cardFan1.wav
+Sounds/Cards/cardPlace{1,2,3,4}.wav
+Sounds/Cards/cardSlide{1,4,6,7}.wav
+===============================
+Author: Kenney.nl
+License: CC0
+URL: https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips
+
+Sounds/Cards/cardShove{1,2,3,4}.wav
+Sounds/Cards/cardShuffle.wav
+==========================
+Author: Kenney.nl
+License: CC0
+Modified By: Benjamin \"drwhut\" Beddows
+URL: https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips"

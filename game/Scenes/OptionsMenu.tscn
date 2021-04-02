@@ -105,6 +105,24 @@ max_value = 1.0
 step = 0.01
 value = 0.5
 
+[node name="EffectsVolume" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
+margin_top = 72.0
+margin_right = 486.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+text = "Effects Volume"
+align = 2
+
+[node name="EffectsVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
+margin_left = 490.0
+margin_top = 72.0
+margin_right = 976.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.5
+
 [node name="Controls" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
 anchor_right = 1.0
@@ -1046,6 +1064,7 @@ dialog_autowrap = true
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/MasterVolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SoundsVolumeSlider" to="." method="_on_SoundsVolumeSlider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/EffectsVolumeSlider" to="." method="_on_EffectsVolumeSlider_value_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton" to="." method="_on_OpenAssetsButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ReimportButton" to="." method="_on_ReimportButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ViewLicenseButton" to="." method="_on_ViewLicenseButton_pressed"]

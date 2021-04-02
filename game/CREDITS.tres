@@ -5,12 +5,12 @@
 [resource]
 script = ExtResource( 1 )
 text = "DEVELOPERS
-=========
+==========
 
 Benjamin 'drwhut' Beddows
 
 ALPHA TESTERS
-===========
+=============
 
 Rory Baxter
 Joe Beddows
@@ -21,19 +21,24 @@ Sebastian Milovsorov
 Luke Stuart
 Cameron Tibbles
 
+SOUND EFFECTS
+=============
+
+Kenney.nl
+
 IMAGES
 ======
 
 CURSORS
-----------
+------------
 Jakub 'Nighted' Steiner
 
 TOOL ICONS
--------------
+-----------------
 SVG Repo
 
 FONTS
-====
+=====
 
 Cabin
 --------
