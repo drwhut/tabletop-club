@@ -1,27 +1,13 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Game/Pieces/Dice.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Misc/RandomAudioStream.gd" type="Script" id=2]
-[ext_resource path="res://Sounds/Dice/diceThrow4.wav" type="AudioStream" id=3]
-[ext_resource path="res://Sounds/Dice/diceThrow3.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/Dice/diceThrow2.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/Dice/diceThrow1.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sounds/Dice/dieShuffle1.wav" type="AudioStream" id=7]
-[ext_resource path="res://Sounds/Dice/dieShuffle2.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sounds/Dice/dieShuffle3.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/Dice/DiceShakeSounds.tres" type="Resource" id=2]
+[ext_resource path="res://Sounds/Dice/DiceTableFastSounds.tres" type="Resource" id=3]
 
-[sub_resource type="Resource" id=1]
-script = ExtResource( 2 )
-streams = [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ]
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 2 )
-streams = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
-
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="CubeMesh" id=2]
 size = Vector3( 1, 1, 1 )
 
 [node name="d6" type="RigidBody"]
@@ -35,14 +21,14 @@ The shape is based on the unit cube, i.e. each vertex lies on a cube with a leng
 }
 effect_player_path = NodePath("EffectPlayer")
 mesh_instance_path = NodePath("CollisionShape/MeshInstance")
-table_collide_fast_sounds = SubResource( 1 )
-shake_sounds = SubResource( 2 )
+table_collide_fast_sounds = ExtResource( 3 )
+shake_sounds = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
-mesh = SubResource( 4 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="EffectPlayer" type="AudioStreamPlayer3D" parent="."]

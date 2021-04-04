@@ -1,25 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Game/Pieces/Dice.gd" type="Script" id=1]
 [ext_resource path="res://Pieces/Dice/Shapes/d8.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://Scripts/Misc/RandomAudioStream.gd" type="Script" id=3]
-[ext_resource path="res://Sounds/Dice/diceThrow4.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/Dice/diceThrow3.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/Dice/diceThrow2.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sounds/Dice/diceThrow1.wav" type="AudioStream" id=7]
-[ext_resource path="res://Sounds/Dice/dieShuffle1.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sounds/Dice/dieShuffle2.wav" type="AudioStream" id=9]
-[ext_resource path="res://Sounds/Dice/dieShuffle3.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/Dice/DiceShakeSounds.tres" type="Resource" id=3]
+[ext_resource path="res://Sounds/Dice/DiceTableFastSounds.tres" type="Resource" id=4]
 
-[sub_resource type="Resource" id=1]
-script = ExtResource( 3 )
-streams = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ]
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 3 )
-streams = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ]
-
-[sub_resource type="ConvexPolygonShape" id=3]
+[sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( 0, 0, 1, 0, 1, 0, 1, 0, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0 )
 
 [node name="d8" type="RigidBody"]
@@ -33,11 +19,11 @@ The shape is based on the unit sphere, i.e. each vertex lies on a sphere with ra
 }
 effect_player_path = NodePath("EffectPlayer")
 mesh_instance_path = NodePath("CollisionShape/MeshInstance")
-table_collide_fast_sounds = SubResource( 1 )
-shake_sounds = SubResource( 2 )
+table_collide_fast_sounds = ExtResource( 4 )
+shake_sounds = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
 mesh = ExtResource( 2 )

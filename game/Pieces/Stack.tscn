@@ -1,58 +1,14 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Game/Pieces/Stack.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Misc/RandomAudioStream.gd" type="Script" id=2]
-[ext_resource path="res://Sounds/Cards/cardPlace4.wav" type="AudioStream" id=3]
-[ext_resource path="res://Sounds/Cards/cardPlace1.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/Cards/cardPlace2.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/Cards/cardPlace3.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sounds/Cards/cardShove1.wav" type="AudioStream" id=7]
-[ext_resource path="res://Sounds/Cards/cardShove3.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sounds/Cards/cardShove2.wav" type="AudioStream" id=9]
-[ext_resource path="res://Sounds/Cards/cardShove4.wav" type="AudioStream" id=10]
-[ext_resource path="res://Sounds/Cards/cardShuffle.wav" type="AudioStream" id=11]
-[ext_resource path="res://Sounds/Cards/cardFan1.wav" type="AudioStream" id=12]
-[ext_resource path="res://Sounds/Chips/chipsHandle2.wav" type="AudioStream" id=13]
-[ext_resource path="res://Sounds/Chips/chipsHandle4.wav" type="AudioStream" id=14]
-[ext_resource path="res://Sounds/Chips/chipsStack4.wav" type="AudioStream" id=15]
-[ext_resource path="res://Sounds/Chips/chipsStack2.wav" type="AudioStream" id=16]
-[ext_resource path="res://Sounds/Chips/chipsHandle1.wav" type="AudioStream" id=17]
-[ext_resource path="res://Sounds/Chips/chipsStack3.wav" type="AudioStream" id=18]
-[ext_resource path="res://Sounds/Chips/chipsHandle5.wav" type="AudioStream" id=19]
-[ext_resource path="res://Sounds/Chips/chipsStack1.wav" type="AudioStream" id=20]
-[ext_resource path="res://Sounds/Chips/chipsHandle6.wav" type="AudioStream" id=21]
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 2 )
-streams = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ) ]
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 2 )
-streams = [ ExtResource( 12 ) ]
-
-[sub_resource type="Resource" id=3]
-script = ExtResource( 2 )
-streams = [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ) ]
-
-[sub_resource type="Resource" id=4]
-script = ExtResource( 2 )
-streams = [ ExtResource( 11 ) ]
-
-[sub_resource type="Resource" id=5]
-script = ExtResource( 2 )
-streams = [ ExtResource( 20 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 15 ) ]
-
-[sub_resource type="Resource" id=6]
-script = ExtResource( 2 )
-streams = [ ExtResource( 19 ) ]
-
-[sub_resource type="Resource" id=7]
-script = ExtResource( 2 )
-streams = [ ExtResource( 17 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 21 ) ]
-
-[sub_resource type="Resource" id=8]
-script = ExtResource( 2 )
-streams = [ ExtResource( 19 ) ]
+[ext_resource path="res://Sounds/Chips/ChipStackShuffleSounds.tres" type="Resource" id=2]
+[ext_resource path="res://Sounds/Cards/CardStackRemoveSounds.tres" type="Resource" id=3]
+[ext_resource path="res://Sounds/Cards/CardStackOrientSounds.tres" type="Resource" id=4]
+[ext_resource path="res://Sounds/Cards/CardStackShuffleSounds.tres" type="Resource" id=5]
+[ext_resource path="res://Sounds/Cards/CardStackAddSounds.tres" type="Resource" id=6]
+[ext_resource path="res://Sounds/Chips/ChipStackAddSounds.tres" type="Resource" id=7]
+[ext_resource path="res://Sounds/Chips/ChipStackOrientSounds.tres" type="Resource" id=8]
+[ext_resource path="res://Sounds/Chips/ChipStackRemoveSounds.tres" type="Resource" id=9]
 
 [node name="Stack" type="RigidBody"]
 mass = 0.01
@@ -65,14 +21,14 @@ __meta__ = {
 The shape of the stack is determined by the first piece that enters the stack, and the stack automatically adjusts the height of the shape depending on the number of pieces in the stack."
 }
 effect_player_path = NodePath("EffectPlayer")
-card_add_sounds = SubResource( 1 )
-card_orient_sounds = SubResource( 2 )
-card_remove_sounds = SubResource( 3 )
-card_shuffle_sounds = SubResource( 4 )
-chip_add_sounds = SubResource( 5 )
-chip_orient_sounds = SubResource( 6 )
-chip_remove_sounds = SubResource( 7 )
-chip_shuffle_sounds = SubResource( 8 )
+card_add_sounds = ExtResource( 6 )
+card_orient_sounds = ExtResource( 4 )
+card_remove_sounds = ExtResource( 3 )
+card_shuffle_sounds = ExtResource( 5 )
+chip_add_sounds = ExtResource( 7 )
+chip_orient_sounds = ExtResource( 8 )
+chip_remove_sounds = ExtResource( 9 )
+chip_shuffle_sounds = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
