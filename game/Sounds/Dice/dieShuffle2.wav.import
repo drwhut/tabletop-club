@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dieShuffle2.wav-d03a4c194f7df6b3b1e542eb9d25328f.sample"
+
+[deps]
+
+source_file="res://Sounds/Dice/dieShuffle2.wav"
+dest_files=[ "res://.import/dieShuffle2.wav-d03a4c194f7df6b3b1e542eb9d25328f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
