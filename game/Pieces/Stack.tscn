@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scripts/Game/Pieces/Stack.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Misc/RandomAudioStream.gd" type="Script" id=2]
@@ -12,6 +12,15 @@
 [ext_resource path="res://Sounds/Cards/cardShove4.wav" type="AudioStream" id=10]
 [ext_resource path="res://Sounds/Cards/cardShuffle.wav" type="AudioStream" id=11]
 [ext_resource path="res://Sounds/Cards/cardFan1.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/Chips/chipsHandle2.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/Chips/chipsHandle4.wav" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/Chips/chipsStack4.wav" type="AudioStream" id=15]
+[ext_resource path="res://Sounds/Chips/chipsStack2.wav" type="AudioStream" id=16]
+[ext_resource path="res://Sounds/Chips/chipsHandle1.wav" type="AudioStream" id=17]
+[ext_resource path="res://Sounds/Chips/chipsStack3.wav" type="AudioStream" id=18]
+[ext_resource path="res://Sounds/Chips/chipsHandle5.wav" type="AudioStream" id=19]
+[ext_resource path="res://Sounds/Chips/chipsStack1.wav" type="AudioStream" id=20]
+[ext_resource path="res://Sounds/Chips/chipsHandle6.wav" type="AudioStream" id=21]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -29,6 +38,22 @@ streams = [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 1
 script = ExtResource( 2 )
 streams = [ ExtResource( 11 ) ]
 
+[sub_resource type="Resource" id=5]
+script = ExtResource( 2 )
+streams = [ ExtResource( 20 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 15 ) ]
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 2 )
+streams = [ ExtResource( 19 ) ]
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 2 )
+streams = [ ExtResource( 17 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 21 ) ]
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 2 )
+streams = [ ExtResource( 19 ) ]
+
 [node name="Stack" type="RigidBody"]
 mass = 0.01
 contacts_reported = 1
@@ -44,6 +69,10 @@ card_add_sounds = SubResource( 1 )
 card_orient_sounds = SubResource( 2 )
 card_remove_sounds = SubResource( 3 )
 card_shuffle_sounds = SubResource( 4 )
+chip_add_sounds = SubResource( 5 )
+chip_orient_sounds = SubResource( 6 )
+chip_remove_sounds = SubResource( 7 )
+chip_shuffle_sounds = SubResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
@@ -57,3 +86,4 @@ skeleton = NodePath("")
 
 [node name="EffectPlayer" type="AudioStreamPlayer3D" parent="."]
 unit_size = 30.0
+bus = "Effects"

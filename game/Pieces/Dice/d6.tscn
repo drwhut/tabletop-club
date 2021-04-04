@@ -12,11 +12,11 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-streams = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
+streams = [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 2 )
-streams = [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ]
+streams = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.5, 0.5, 0.5 )
@@ -35,8 +35,8 @@ The shape is based on the unit cube, i.e. each vertex lies on a cube with a leng
 }
 effect_player_path = NodePath("EffectPlayer")
 mesh_instance_path = NodePath("CollisionShape/MeshInstance")
-shake_sounds = SubResource( 1 )
-thrown_sounds = SubResource( 2 )
+table_collide_fast_sounds = SubResource( 1 )
+shake_sounds = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 3 )
@@ -47,3 +47,4 @@ material/0 = null
 
 [node name="EffectPlayer" type="AudioStreamPlayer3D" parent="."]
 unit_size = 20.0
+bus = "Effects"

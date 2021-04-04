@@ -13,11 +13,11 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
-streams = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ]
+streams = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 3 )
-streams = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ]
+streams = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ]
 
 [sub_resource type="ConvexPolygonShape" id=3]
 points = PoolVector3Array( 0, 0, 1, 0, 1, 0, 1, 0, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0 )
@@ -33,8 +33,8 @@ The shape is based on the unit sphere, i.e. each vertex lies on a sphere with ra
 }
 effect_player_path = NodePath("EffectPlayer")
 mesh_instance_path = NodePath("CollisionShape/MeshInstance")
-shake_sounds = SubResource( 1 )
-thrown_sounds = SubResource( 2 )
+table_collide_fast_sounds = SubResource( 1 )
+shake_sounds = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 3 )
@@ -45,3 +45,4 @@ material/0 = null
 
 [node name="EffectPlayer" type="AudioStreamPlayer3D" parent="."]
 unit_size = 20.0
+bus = "Effects"

@@ -43,6 +43,12 @@ export(NodePath) var effect_player_path: String
 # needs it (e.g. when using a custom piece).
 export(NodePath) var mesh_instance_path: String
 
+# TODO: export(RandomAudioSample)
+# See: https://github.com/godotengine/godot/pull/44879
+# NOTE: Contact reporting needs to be enabled for these sounds to be played.
+export(Resource) var table_collide_fast_sounds
+export(Resource) var table_collide_slow_sounds
+
 var piece_entry: Dictionary = {}
 
 # When setting these vectors, make sure you call set_angular_lock(false),
@@ -58,6 +64,7 @@ var _srv_hover_player = 0
 var _srv_hover_time_since_update = 0.0
 
 var _last_server_state = {}
+var _last_slow_table_collision = 0.0
 
 var _last_velocity = Vector3()
 var _new_velocity = Vector3()
@@ -348,10 +355,13 @@ func _ready():
 		# The clients are at the mercy of the server.
 		custom_integrator = true
 	
+	connect("body_entered", self, "_on_body_entered")
 	connect("tree_entered", self, "_on_tree_entered")
 	connect("tree_exiting", self, "_on_tree_exiting")
 
 func _process(delta):
+	_last_slow_table_collision += delta
+	
 	if get_tree().is_network_server():
 		if srv_is_hovering() and not sleeping:
 			_srv_hover_time_since_update += delta
@@ -415,6 +425,21 @@ func _integrate_forces(state):
 			var new_transform = Transform(lerp_quat)
 			new_transform.origin = origin
 			state.transform = new_transform
+
+func _on_body_entered(body):
+	# If we collided with the table...
+	if body is RigidBody and body.has_meta("table_entry"):
+		# ... play a sound effect depending on our angular velocity.
+		if angular_velocity.length_squared() > 100.0:
+			if table_collide_fast_sounds != null:
+				play_effect(table_collide_fast_sounds.random_stream())
+		
+		# Workaround for slow collisions being set off multiple times if the
+		# piece "floats" down to the table.
+		elif _last_slow_table_collision > 1.0:
+			_last_slow_table_collision = 0.0
+			if table_collide_slow_sounds != null:
+				play_effect(table_collide_slow_sounds.random_stream())
 
 func _on_tree_entered() -> void:
 	# If the piece just entered the tree, then reset the last server state,
