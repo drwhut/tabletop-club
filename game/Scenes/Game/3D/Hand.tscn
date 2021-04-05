@@ -36,6 +36,7 @@ Only the player owning the hand should be able to see what cards are in the hand
 }
 
 [node name="Area" type="Area" parent="."]
+collision_layer = 5
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 36, 0, 0, 0, 20, 0, 0, 0, 18, 0, 0, 0 )

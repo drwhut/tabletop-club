@@ -61,6 +61,13 @@ __meta__ = {
 }
 outline_color = Color( 0, 1, 1, 0.588235 )
 
+[node name="HandPreviewRect" type="TextureRect" parent="."]
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PieceContextMenu" type="PopupMenu" parent="."]
 margin_right = 20.0
 margin_bottom = 20.0

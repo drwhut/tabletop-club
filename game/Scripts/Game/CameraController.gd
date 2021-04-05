@@ -51,6 +51,7 @@ onready var _container_content_dialog = $ContainerContentDialog
 onready var _control_hint_label = $CameraUI/ControlHintLabel
 onready var _cursors = $CameraUI/Cursors
 onready var _debug_info_label = $CameraUI/DebugInfoLabel
+onready var _hand_preview_rect = $HandPreviewRect
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 onready var _ruler_scale_slider = $RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider
@@ -74,6 +75,8 @@ const ZOOM_CAMERA_NEAR_SCALAR = 0.01
 const ZOOM_DISTANCE_MIN = 2.0
 const ZOOM_DISTANCE_MAX = 200.0
 
+export(bool) var hand_preview_enabled: bool = true
+export(float) var hand_preview_delay: float = 0.5
 export(bool) var hold_left_click_to_move: bool = false
 export(float) var lift_sensitivity: float = 1.0
 export(float) var max_speed: float = 10.0
@@ -111,6 +114,8 @@ var _movement_dir = Vector3()
 var _movement_vel = Vector3()
 var _perform_box_select = false
 var _piece_mouse_is_over: Piece = null
+var _piece_mouse_is_over_last: Piece = null
+var _piece_mouse_is_over_time: float = 0.0
 var _piece_rotation_amount = 1.0
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
@@ -177,6 +182,10 @@ func apply_options(config: ConfigFile) -> void:
 		lift_sensitivity *= -1
 	
 	piece_rotate_invert = config.get_value("controls", "piece_rotation_invert")
+	
+	hand_preview_enabled = config.get_value("controls", "hand_preview_enabled")
+	hand_preview_delay = config.get_value("controls", "hand_preview_delay")
+	_hand_preview_rect.rect_size.y = int(50 + 250 * config.get_value("controls", "hand_preview_size"))
 	
 	_control_hint_label.visible = not config.get_value("controls", "hide_control_hints")
 	_cursors.visible = not config.get_value("multiplayer", "hide_cursors")
@@ -329,6 +338,45 @@ func _process(delta):
 		# Have we been grabbing this piece for a long time?
 		if _grabbing_time > GRABBING_SLOW_TIME:
 			_start_hovering_grabbed_piece(false)
+	
+	if _piece_mouse_is_over == _piece_mouse_is_over_last:
+		_piece_mouse_is_over_time += delta
+	else:
+		_piece_mouse_is_over_time = 0.0
+	_piece_mouse_is_over_last = _piece_mouse_is_over
+	
+	_hand_preview_rect.visible = false
+	if hand_preview_enabled:
+		if _piece_mouse_is_over_time > hand_preview_delay:
+			if _piece_mouse_is_over is Card:
+				if _piece_mouse_is_over.over_hand == get_tree().get_network_unique_id():
+					if not _selected_pieces.has(_piece_mouse_is_over):
+						_hand_preview_rect.visible = true
+	
+	if _hand_preview_rect.visible:
+		var card_entry = _piece_mouse_is_over.piece_entry
+		
+		var texture_path_key = "texture_path"
+		if _piece_mouse_is_over.transform.basis.y.y < 0.0:
+			texture_path_key = "texture_path_1"
+		var texture_path = card_entry[texture_path_key]
+		
+		var texture_changed = true
+		if _hand_preview_rect.texture:
+			if _hand_preview_rect.texture.resource_path == texture_path:
+				texture_changed = false
+		
+		if texture_changed:
+			_hand_preview_rect.texture = load(texture_path)
+		
+		var preview_height = _hand_preview_rect.rect_size.y
+		var card_scale = card_entry["scale"]
+		var aspect_ratio = card_scale.x / card_scale.z
+		_hand_preview_rect.rect_size.x = aspect_ratio * preview_height
+		
+		var position = get_viewport().get_mouse_position()
+		position.y -= preview_height
+		_hand_preview_rect.rect_position = position
 	
 	# TODO: Only do this if the state of the camera changes.
 	if _control_hint_label.visible:
@@ -1491,6 +1539,10 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 			selected.append(piece)
 		
 		clear_selected_pieces()
+		
+		# Now that there are no selected pieces, it's possible that the hand
+		# preview shows up again - this is a workaround to prevent that.
+		_piece_mouse_is_over_time = 0.0
 		
 		if not selected.empty():
 			_hover_y_offset = 0
