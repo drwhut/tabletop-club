@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-04-07 01:29+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-04-08 01:26+0000\n"
+"Last-Translator: drwhut <drwhut@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/opentabletop/"
+"game/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.6-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:28
@@ -35,7 +38,7 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:57
 msgid "127.0.0.1:26271"
-msgstr ""
+msgstr "127.0.0.1:26271"
 
 #: ../Scenes/MainMenu.tscn:63
 msgid "Join Server"
