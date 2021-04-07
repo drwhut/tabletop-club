@@ -670,6 +670,15 @@ master func request_add_piece_in_container(piece_entry: Dictionary, container_na
 	
 	rpc("add_piece_to_container", container_name, piece_name)
 
+# Request the server to add the given pieces to a container's contents.
+# container_name: The name of the container to add the pieces to.
+# piece_names: The names of the pieces to add to the container.
+master func request_add_pieces_to_container(container_name: String, piece_names: Array) -> void:
+	for piece_name in piece_names:
+		if piece_name is String:
+			if piece_name != container_name:
+				rpc("add_piece_to_container", container_name, piece_name)
+
 # Request the server to add cards to the given hand.
 # card_names: The names of the cards to add to the hand. Note that the names
 # of stacks are also allowed.
@@ -1935,8 +1944,7 @@ func _on_container_absorbing_hovered(container: PieceContainer, player_id: int) 
 			if space > 15.0:
 				return
 		
-		for name in names:
-			rpc("add_piece_to_container", container.name, name)
+		request_add_pieces_to_container(container.name, names)
 
 func _on_container_releasing_random_piece(container: PieceContainer) -> void:
 	if get_tree().is_network_server():
@@ -1971,6 +1979,13 @@ func _on_CameraController_adding_cards_to_hand(cards: Array, id: int):
 		rpc_id(1, "request_add_cards_to_hand", names, id)
 	else:
 		rpc_id(1, "request_add_cards_to_nearest_hand", names)
+
+func _on_CameraController_adding_pieces_to_container(container: PieceContainer, pieces: Array):
+	var piece_names = []
+	for piece in pieces:
+		if piece != container:
+			piece_names.append(piece.name)
+	rpc_id(1, "request_add_pieces_to_container", container.name, piece_names)
 
 func _on_CameraController_collect_pieces_requested(pieces: Array):
 	var names = []

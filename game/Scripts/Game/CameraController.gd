@@ -30,6 +30,7 @@ enum {
 }
 
 signal adding_cards_to_hand(cards, id) # If id is 0, add to nearest hand.
+signal adding_pieces_to_container(container, pieces)
 signal collect_pieces_requested(pieces)
 signal container_release_random_requested(container, n)
 signal container_release_these_requested(container, names)
@@ -99,6 +100,7 @@ export(float) var zoom_sensitivity: float = 1.0
 var send_cursor_position: bool = false
 
 var _box_select_init_pos = Vector2()
+var _container_multi_context: PieceContainer = null
 var _cursor_on_table = false
 var _cursor_position = Vector3()
 var _drag_camera_anchor = Vector3()
@@ -768,6 +770,19 @@ func _on_context_add_objects_pressed() -> void:
 		if piece is PieceContainer:
 			emit_signal("spawning_piece_in_container", piece.name)
 
+func _on_context_add_selected_pressed() -> void:
+	_hide_context_menu()
+	
+	if _container_multi_context == null:
+		return
+	
+	var pieces = []
+	for piece in _selected_pieces:
+		if piece != _container_multi_context:
+			pieces.append(piece)
+	
+	emit_signal("adding_pieces_to_container", _container_multi_context, pieces)
+
 func _on_context_collect_all_pressed() -> void:
 	_hide_context_menu()
 	if _selected_pieces.size() == 1:
@@ -975,6 +990,20 @@ func _popup_piece_context_menu() -> void:
 		var count_label = Label.new()
 		count_label.text = tr("Count: %d") % count
 		_piece_context_menu_container.add_child(count_label)
+	
+	################
+	# MULTI-OBJECT #
+	################
+	
+	_container_multi_context = null
+	if _piece_mouse_is_over is PieceContainer:
+		if _selected_pieces.size() > 1:
+			var add_selected_button = Button.new()
+			add_selected_button.text = tr("Add selected objects...")
+			add_selected_button.connect("pressed", self, "_on_context_add_selected_pressed")
+			_piece_context_menu_container.add_child(add_selected_button)
+			
+			_container_multi_context = _piece_mouse_is_over
 	
 	###########
 	# LEVEL 2 #
@@ -1840,7 +1869,10 @@ func _on_MouseGrab_gui_input(event):
 					if _tool == TOOL_CURSOR:
 						if _piece_mouse_is_over:
 							if not _selected_pieces.has(_piece_mouse_is_over):
-								set_selected_pieces([_piece_mouse_is_over])
+								if _piece_mouse_is_over is PieceContainer:
+									append_selected_pieces([_piece_mouse_is_over])
+								else:
+									set_selected_pieces([_piece_mouse_is_over])
 						else:
 							clear_selected_pieces()
 				else:
