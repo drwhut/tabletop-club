@@ -31,6 +31,7 @@ onready var _hand_positions = $Table/HandPositions
 onready var _hands = $Hands
 onready var _hidden_areas = $HiddenAreas
 onready var _hidden_area_preview = $HiddenAreaPreview
+onready var _paint_plane = $Table/PaintPlane
 onready var _pieces = $Pieces
 onready var _spot_light = $SpotLight
 onready var _sun_light = $SunLight
@@ -501,9 +502,27 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	
 	out["skybox"] = get_skybox()
 	
+	# If the paint image is blank (it's default state), don't bother storing
+	# any image data in the state.
+	var paint_image = _paint_plane.get_paint()
+	var is_paint_image_blank = true
+	paint_image.lock()
+	for x in range(paint_image.get_width()):
+		for y in range(paint_image.get_height()):
+			var p = paint_image.get_pixel(x, y)
+			if p.a > 0.0:
+				is_paint_image_blank = false
+				break
+	paint_image.unlock()
+	
+	var paint_image_data = null
+	if not is_paint_image_blank:
+		paint_image_data = paint_image.get_data()
+	
 	out["table"] = {
 		"entry": get_table(),
 		"is_rigid": false,
+		"paint_image_data": paint_image_data,
 		"preflip_state": _table_preflip_state,
 		"transform": Transform.IDENTITY
 	}
@@ -1271,6 +1290,16 @@ remotesync func set_state(state: Dictionary) -> void:
 			srv_set_retrieve_pieces_from_hell(not table_meta["is_rigid"])
 		
 		_table_preflip_state = table_meta["preflip_state"]
+		
+		var paint_image_data = table_meta["paint_image_data"]
+		if paint_image_data == null:
+			_paint_plane.clear_paint()
+		else:
+			var paint_image = Image.new()
+			var paint_image_size = _paint_plane.get_paint_size()
+			paint_image.create_from_data(paint_image_size.x, paint_image_size.y,
+				false, _paint_plane.PAINT_FORMAT, paint_image_data)
+			_paint_plane.set_paint(paint_image)
 	
 	if state.has("hands"):
 		for hand in _hands.get_children():
@@ -1390,6 +1419,10 @@ remotesync func set_table(table_entry: Dictionary) -> void:
 	if get_tree().has_network_peer():
 		if get_tree().is_network_server():
 			srv_update_hand_transforms()
+	
+	var paint_plane_size = table_entry["paint_plane"]
+	_paint_plane.scale = Vector3(paint_plane_size.x, 1.0, paint_plane_size.y)
+	_paint_plane.clear_paint()
 
 # Get the next hand transform. Note that there may not be a next transform, in
 # which case the function returns the identity transform.
@@ -1960,9 +1993,17 @@ func _on_CameraController_container_release_these_requested(container: PieceCont
 func _on_CameraController_dealing_cards(stack: Stack, n: int):
 	rpc_id(1, "request_deal_cards", stack.name, n)
 
+func _on_CameraController_erasing(position: Vector3, size: float):
+	_paint_plane.rpc_unreliable_id(1, "request_push_paint_queue", position,
+		Color.transparent, size)
+
 func _on_CameraController_hover_piece_requested(piece: Piece, offset: Vector3):
 	rpc_id(1, "request_hover_piece", piece.name,
 		_camera_controller.get_hover_position(), offset)
+
+func _on_CameraController_painting(position: Vector3, color: Color, size: float):
+	_paint_plane.rpc_unreliable_id(1, "request_push_paint_queue", position,
+		color, size)
 
 func _on_CameraController_placing_hidden_area(point1: Vector2, point2: Vector2):
 	rpc_id(1, "request_place_hidden_area", point1, point2)

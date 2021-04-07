@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Game/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Misc/OutlineColorRect.gd" type="Script" id=2]
@@ -8,11 +8,15 @@
 [ext_resource path="res://Scenes/Game/ToolButtonGroup.tres" type="ButtonGroup" id=6]
 [ext_resource path="res://Images/RulerIconPressed.svg" type="Texture" id=7]
 [ext_resource path="res://Images/CursorIconPressed.svg" type="Texture" id=8]
+[ext_resource path="res://Images/PaintIconPressed.svg" type="Texture" id=9]
 [ext_resource path="res://Images/HiddenAreaIconPressed.svg" type="Texture" id=10]
 [ext_resource path="res://Images/HiddenAreaIconNormal.svg" type="Texture" id=11]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Fonts/Cabin-Bold.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Images/PaintIconNormal.svg" type="Texture" id=15]
+[ext_resource path="res://Images/EraseIconPressed.svg" type="Texture" id=16]
+[ext_resource path="res://Images/EraseIconNormal.svg" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
@@ -159,6 +163,133 @@ margin_right = 232.0
 margin_bottom = 138.0
 text = "OK"
 
+[node name="PaintToolMenu" type="PopupMenu" parent="."]
+margin_right = 242.0
+margin_bottom = 138.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="PaintToolMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PaintToolMenu/MarginContainer"]
+margin_right = 232.0
+margin_bottom = 128.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BrushColorLabel" type="Label" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
+margin_right = 232.0
+margin_bottom = 20.0
+text = "Brush Color:"
+
+[node name="BrushColorPickerButton" type="ColorPickerButton" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 232.0
+margin_bottom = 50.0
+color = Color( 1, 1, 1, 1 )
+edit_alpha = false
+
+[node name="BrushSizeLabel" type="Label" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 232.0
+margin_bottom = 74.0
+text = "Brush Size:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 78.0
+margin_right = 232.0
+margin_bottom = 98.0
+
+[node name="BrushSizeValueLabel" type="Label" parent="PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 20.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 0 )
+text = "1"
+align = 2
+
+[node name="BrushSizeValueSlider" type="HSlider" parent="PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 24.0
+margin_right = 232.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 20.0
+value = 1.0
+
+[node name="PaintOKButton" type="Button" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 102.0
+margin_right = 232.0
+margin_bottom = 128.0
+text = "OK"
+
+[node name="EraseToolMenu" type="PopupMenu" parent="."]
+margin_right = 242.0
+margin_bottom = 85.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="EraseToolMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EraseToolMenu/MarginContainer"]
+margin_right = 232.0
+margin_bottom = 75.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EraserSizeLabel" type="Label" parent="EraseToolMenu/MarginContainer/VBoxContainer"]
+margin_right = 232.0
+margin_bottom = 20.0
+text = "Eraser Size:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EraseToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 232.0
+margin_bottom = 44.0
+
+[node name="EraserSizeValueLabel" type="Label" parent="EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 20.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 0 )
+text = "1"
+align = 2
+
+[node name="EraserSizeValueSlider" type="HSlider" parent="EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 24.0
+margin_right = 232.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 20.0
+value = 1.0
+
+[node name="EraseOKButton" type="Button" parent="EraseToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 232.0
+margin_bottom = 74.0
+text = "OK"
+
 [node name="TrackDialog" parent="." instance=ExtResource( 12 )]
 window_title = "Select a track..."
 db_types = {
@@ -255,6 +386,28 @@ texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 10 )
 expand = true
 
+[node name="PaintToolButton" type="TextureButton" parent="CameraUI/ToolContainer"]
+margin_top = 108.0
+margin_right = 32.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 32, 32 )
+toggle_mode = true
+group = ExtResource( 6 )
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 9 )
+expand = true
+
+[node name="EraseToolButton" type="TextureButton" parent="CameraUI/ToolContainer"]
+margin_top = 144.0
+margin_right = 32.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 32, 32 )
+toggle_mode = true
+group = ExtResource( 6 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 16 )
+expand = true
+
 [node name="DebugInfoLabel" type="Label" parent="CameraUI"]
 visible = false
 margin_right = 240.0
@@ -268,9 +421,15 @@ autowrap = true
 [connection signal="value_changed" from="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSpinBox" to="." method="_on_RulerScaleSpinBox_value_changed"]
 [connection signal="value_changed" from="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider" to="." method="_on_RulerScaleSlider_value_changed"]
 [connection signal="pressed" from="RulerToolMenu/MarginContainer/VBoxContainer/RulerOKButton" to="." method="_on_RulerOKButton_pressed"]
+[connection signal="value_changed" from="PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer/BrushSizeValueSlider" to="." method="_on_BrushSizeValueSlider_value_changed"]
+[connection signal="pressed" from="PaintToolMenu/MarginContainer/VBoxContainer/PaintOKButton" to="." method="_on_PaintOKButton_pressed"]
+[connection signal="value_changed" from="EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer/EraserSizeValueSlider" to="." method="_on_EraserSizeValueSlider_value_changed"]
+[connection signal="pressed" from="EraseToolMenu/MarginContainer/VBoxContainer/EraseOKButton" to="." method="_on_EraseOKButton_pressed"]
 [connection signal="entry_requested" from="TrackDialog" to="." method="_on_TrackDialog_entry_requested"]
 [connection signal="take_all_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_all_from"]
 [connection signal="take_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_from"]
 [connection signal="pressed" from="CameraUI/ToolContainer/CursorToolButton" to="." method="_on_CursorToolButton_pressed"]
 [connection signal="pressed" from="CameraUI/ToolContainer/RulerToolButton" to="." method="_on_RulerToolButton_pressed"]
 [connection signal="pressed" from="CameraUI/ToolContainer/HiddenAreaToolButton" to="." method="_on_HiddenAreaToolButton_pressed"]
+[connection signal="pressed" from="CameraUI/ToolContainer/PaintToolButton" to="." method="_on_PaintToolButton_pressed"]
+[connection signal="pressed" from="CameraUI/ToolContainer/EraseToolButton" to="." method="_on_EraseToolButton_pressed"]

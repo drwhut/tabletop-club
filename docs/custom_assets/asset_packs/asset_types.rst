@@ -203,3 +203,7 @@ server when they join the game. These hand positions can be defined in the
 
       ; You can add more hand positions here...
    ]
+
+Tables can also be painted on by the players! You can set the size of the area
+that the players can paint on by setting the ``paint_plane`` property in the
+:ref:`config-cfg` file.
