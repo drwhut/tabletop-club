@@ -50,6 +50,12 @@ func get_paint() -> Image:
 func get_paint_size() -> Vector2:
 	return _viewport.size
 
+# Set if the paint texture is filtered.
+# filtering_enabled: If texture filtering is enabled.
+func set_filtering_enabled(filtering_enabled: bool) -> void:
+	var mesh_material = _mesh_instance.get_surface_material(0)
+	mesh_material.set_shader_param("FilteringEnabled", filtering_enabled)
+
 # Set the current paint texture from the given image.
 # image: The image to set as the new paint texture.
 func set_paint(image: Image) -> void:

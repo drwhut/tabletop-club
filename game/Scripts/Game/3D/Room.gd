@@ -405,6 +405,9 @@ func apply_options(config: ConfigFile) -> void:
 	_world_environment.environment.dof_blur_near_enabled = dof_enabled
 	_world_environment.environment.dof_blur_near_quality = dof_quality
 	_world_environment.environment.dof_blur_near_transition = 1.0
+	
+	var paint_filtering = config.get_value("video", "table_paint_filtering")
+	_paint_plane.set_filtering_enabled(paint_filtering)
 
 # Flip the table.
 # camera_basis: The basis matrix of the player flipping the table.

@@ -12,6 +12,7 @@ viewport_path = NodePath("Viewport")
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 3 )
+shader_param/FilteringEnabled = false
 shader_param/TexturePixelSize = Vector2( 1, 1 )
 shader_param/Texture = SubResource( 2 )
 
