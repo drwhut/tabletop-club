@@ -224,7 +224,7 @@ margin_right = 232.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 min_value = 1.0
-max_value = 20.0
+max_value = 40.0
 value = 1.0
 
 [node name="PaintOKButton" type="Button" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
@@ -281,7 +281,7 @@ margin_right = 232.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 min_value = 1.0
-max_value = 20.0
+max_value = 40.0
 value = 1.0
 
 [node name="EraseOKButton" type="Button" parent="EraseToolMenu/MarginContainer/VBoxContainer"]

@@ -289,7 +289,7 @@ func _set_current_with_config(config: ConfigFile) -> void:
 					key_name = value.action
 				var key_value = config.get_value(section_name, key_name)
 				
-				if key_value:
+				if key_value != null:
 					if value is BindButton:
 						value.input_event = key_value
 						value.update_text()

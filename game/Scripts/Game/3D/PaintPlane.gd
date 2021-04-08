@@ -74,8 +74,9 @@ remotesync func push_paint_queue(position: Vector3, color: Color, size: float) -
 	var uv_x = position.x / scale.x + 0.5
 	var uv_z = position.z / scale.z + 0.5
 	
-	var max_length = max(scale.x, scale.z)
-	var adjusted_size = size / max_length
+	# Assuming the viewport is square.
+	var unit_size = 1.0 / _viewport.size.x
+	var adjusted_size = size * unit_size
 	
 	_paint_queue.push_back({
 		"color": color,
