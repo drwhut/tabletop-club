@@ -320,12 +320,6 @@ from the editor, you can use the following command:
 
    scons -j8 platform=x11 target=release tools=no production=yes
 
-If you want to compile a server build (for dedicated servers), run:
-
-.. code-block:: bash
-
-   scons -j8 platform=server target=release tools=no production=yes
-
 
 Downloading OpenTabletop
 ------------------------

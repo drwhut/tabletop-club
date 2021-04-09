@@ -74,22 +74,14 @@ Downloading for macOS
       clicking :guilabel:`Open` in the pop-up. This button won't appear if you
       double-click the application.
 
-.. _download-server:
-
-Downloading for Linux / \*BSD / Server
---------------------------------------
+Downloading for Linux / \*BSD
+-----------------------------
 
 1. Make sure you have downloaded the compressed file, it should be called
-   something like ``OpenTabletop_vX.X.X_Linux_64.tar.gz``, or
-   ``OpenTabletop_vX.X.X_Server_64.tar.gz`` if you are downloading the
-   dedicated server version of the game.
+   something like ``OpenTabletop_vX.X.X_Linux_64.tar.gz``.
 
-2. If your Linux/BSD distribution has a GUI, then you can use it to extract the
-   files if you have a GUI archive manager installed. If you don't have a GUI,
-   then a. I hope you're not trying to run a game with graphics in a terminal
-   (unless it's a dedicated server, in which case I forgive you), and b. you
-   can use this command to extract the files, where the X's are replaced with
-   the numbers of the version you downloaded:
+2. Either use your distribution's archive manager to extract the files, or run
+   this command in a terminal:
 
    .. code-block:: bash
 

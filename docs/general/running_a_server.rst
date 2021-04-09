@@ -13,22 +13,18 @@ Setting up a server instance
 ============================
 
 Firstly, we're going to need to configure a server instance of OpenTabletop
-that we can run. This step varies depending on the platform.
+that we can run.
 
 We're assuming from now on that you've already downloaded the game - if not,
 you should go to the :ref:`download` page first before continuing.
-
-
-From Windows / macOS
---------------------
 
 1. Create a new folder for the server files. For this example, we'll call the
    folder ``OTServer``, but you can call the folder anything you want.
 
 2. Copy all of the game files from the folder you extracted the game to
    previously into the new ``OTServer`` folder. After this step, you should
-   have an executable either at ``OTServer/OpenTabletop.app`` or
-   ``OTServer/OpenTabletop.exe``.
+   have an executable either at ``OTServer/OpenTabletop.app``,
+   ``OTServer/OpenTabletop.exe``, or ``OTServer/OpenTabletop.x86_64``.
 
 3. Go to `this page
    <https://raw.githubusercontent.com/drwhut/open-tabletop/master/game/server.cfg>`_,
@@ -40,33 +36,6 @@ From Windows / macOS
 
 5. You can close the server by clicking :guilabel:`Menu` >
    :guilabel:`Quit to desktop`.
-
-
-From Linux / \*BSD
-------------------
-
-For Unix systems, you can follow the same steps as Windows and macOS systems,
-but OpenTabletop also comes with dedicated server builds for Unix that don't
-have a GUI, making them much faster. They also come pre-packaged with a
-``server.cfg`` file.
-
-You can download a server build of the game by following the instructions at
-:ref:`download-server`.
-
-Once you have downloaded the server build, you can then use the following
-command where you extracted the files to run the server in a terminal:
-
-.. code-block:: bash
-
-   ./OpenTabletop.x86_64
-
-You should see from the ``stdout`` output that the game will start by importing
-assets, and once it's done, you should see a message like ``Starting server on
-port 26271 with 10 max players...``. The message might change depending on how
-you've configured the server in ``server.cfg``.
-
-To close the server, you can hit ``Ctrl+C`` in the terminal where you launched
-the server.
 
 
 From the Godot Editor
