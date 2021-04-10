@@ -1,22 +1,17 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Game/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Misc/OutlineColorRect.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Images/RulerIconNormal.svg" type="Texture" id=4]
-[ext_resource path="res://Images/CursorIconNormal.svg" type="Texture" id=5]
+[ext_resource path="res://Images/EraseIcon.svg" type="Texture" id=4]
+[ext_resource path="res://Images/HiddenAreaIcon.svg" type="Texture" id=5]
 [ext_resource path="res://Scenes/Game/ToolButtonGroup.tres" type="ButtonGroup" id=6]
-[ext_resource path="res://Images/RulerIconPressed.svg" type="Texture" id=7]
-[ext_resource path="res://Images/CursorIconPressed.svg" type="Texture" id=8]
-[ext_resource path="res://Images/PaintIconPressed.svg" type="Texture" id=9]
-[ext_resource path="res://Images/HiddenAreaIconPressed.svg" type="Texture" id=10]
-[ext_resource path="res://Images/HiddenAreaIconNormal.svg" type="Texture" id=11]
+[ext_resource path="res://Images/RulerIcon.svg" type="Texture" id=7]
+[ext_resource path="res://Images/CursorIcon.svg" type="Texture" id=8]
+[ext_resource path="res://Images/PaintIcon.svg" type="Texture" id=9]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Fonts/Cabin-Bold.ttf" type="DynamicFontData" id=14]
-[ext_resource path="res://Images/PaintIconNormal.svg" type="Texture" id=15]
-[ext_resource path="res://Images/EraseIconPressed.svg" type="Texture" id=16]
-[ext_resource path="res://Images/EraseIconNormal.svg" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
@@ -344,69 +339,64 @@ __meta__ = {
 [node name="ToolContainer" type="VBoxContainer" parent="CameraUI"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_top = -52.0
-margin_right = 32.0
-margin_bottom = 52.0
+margin_top = -108.0
+margin_right = 40.0
+margin_bottom = 108.0
 grow_horizontal = 0
 grow_vertical = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CursorToolButton" type="TextureButton" parent="CameraUI/ToolContainer"]
-margin_right = 32.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
+[node name="CursorToolButton" type="Button" parent="CameraUI/ToolContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
 toggle_mode = true
 pressed = true
 group = ExtResource( 6 )
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 8 )
-expand = true
+icon = ExtResource( 8 )
+expand_icon = true
 
-[node name="RulerToolButton" type="TextureButton" parent="CameraUI/ToolContainer"]
-margin_top = 36.0
-margin_right = 32.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 32, 32 )
+[node name="RulerToolButton" type="Button" parent="CameraUI/ToolContainer"]
+margin_top = 44.0
+margin_right = 40.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 40, 40 )
 toggle_mode = true
 group = ExtResource( 6 )
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 7 )
-expand = true
+icon = ExtResource( 7 )
+expand_icon = true
 
-[node name="HiddenAreaToolButton" type="TextureButton" parent="CameraUI/ToolContainer"]
-margin_top = 72.0
-margin_right = 32.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 32, 32 )
+[node name="HiddenAreaToolButton" type="Button" parent="CameraUI/ToolContainer"]
+margin_top = 88.0
+margin_right = 40.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 40, 40 )
 toggle_mode = true
 group = ExtResource( 6 )
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 10 )
-expand = true
+icon = ExtResource( 5 )
+expand_icon = true
 
-[node name="PaintToolButton" type="TextureButton" parent="CameraUI/ToolContainer"]
-margin_top = 108.0
-margin_right = 32.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 32, 32 )
+[node name="PaintToolButton" type="Button" parent="CameraUI/ToolContainer"]
+margin_top = 132.0
+margin_right = 40.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 40, 40 )
 toggle_mode = true
 group = ExtResource( 6 )
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 9 )
-expand = true
+icon = ExtResource( 9 )
+expand_icon = true
 
-[node name="EraseToolButton" type="TextureButton" parent="CameraUI/ToolContainer"]
-margin_top = 144.0
-margin_right = 32.0
-margin_bottom = 176.0
-rect_min_size = Vector2( 32, 32 )
+[node name="EraseToolButton" type="Button" parent="CameraUI/ToolContainer"]
+margin_top = 176.0
+margin_right = 40.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 40, 40 )
 toggle_mode = true
 group = ExtResource( 6 )
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 16 )
-expand = true
+icon = ExtResource( 4 )
+expand_icon = true
 
 [node name="DebugInfoLabel" type="Label" parent="CameraUI"]
 visible = false

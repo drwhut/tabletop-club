@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CursorIconPressed.svg-0985653666cc8582fd094e49fcdaf726.stex"
+path="res://.import/PaintIcon.svg-cf46ec0afd5aa7c94a69ee406465a93d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/CursorIconPressed.svg"
-dest_files=[ "res://.import/CursorIconPressed.svg-0985653666cc8582fd094e49fcdaf726.stex" ]
+source_file="res://Images/PaintIcon.svg"
+dest_files=[ "res://.import/PaintIcon.svg-cf46ec0afd5aa7c94a69ee406465a93d.stex" ]
 
 [params]
 

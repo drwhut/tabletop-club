@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EraseIconPressed.svg-38b24726f0c3985bf0d742ffd462c0ef.stex"
+path="res://.import/HiddenAreaIcon.svg-b52e4a4f30939d40784bf74a41aee682.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/EraseIconPressed.svg"
-dest_files=[ "res://.import/EraseIconPressed.svg-38b24726f0c3985bf0d742ffd462c0ef.stex" ]
+source_file="res://Images/HiddenAreaIcon.svg"
+dest_files=[ "res://.import/HiddenAreaIcon.svg-b52e4a4f30939d40784bf74a41aee682.stex" ]
 
 [params]
 
