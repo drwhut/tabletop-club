@@ -196,7 +196,8 @@ remotesync func add_stack(name: String, transform: Transform,
 	_pieces.remove_child(piece1)
 	_pieces.remove_child(piece2)
 	
-	var stack = add_stack_empty(name, transform)
+	var sandwich_stack = (piece1.piece_entry["scene_path"] == "res://Pieces/Card.tscn")
+	var stack = add_stack_empty(name, transform, sandwich_stack)
 	
 	stack.add_piece(piece1.piece_entry, piece1.transform)
 	stack.add_piece(piece2.piece_entry, piece2.transform)
@@ -207,14 +208,19 @@ remotesync func add_stack(name: String, transform: Transform,
 # Called by the server to add an empty stack to the room.
 # name: The name of the new stack.
 # transform: The initial transform of the new stack.
-puppet func add_stack_empty(name: String, transform: Transform) -> StackLasagne:
+# sandwich: If true, add a StackSandwich. If false, add a StackLasagne.
+puppet func add_stack_empty(name: String, transform: Transform, sandwich: bool) -> Stack:
 	
 	# Special case here, where we don't want the RPC to be sent to the server,
 	# but the server needs the stack to be returned.
 	if not (get_tree().is_network_server() or get_tree().get_rpc_sender_id() == 1):
 		return null
 	
-	var stack: StackLasagne = preload("res://Pieces/StackLasagne.tscn").instance()
+	var stack: Stack = null
+	if sandwich:
+		stack = preload("res://Pieces/StackSandwich.tscn").instance()
+	else:
+		stack = preload("res://Pieces/StackLasagne.tscn").instance()
 	
 	stack.name = name
 	stack.transform = transform
@@ -236,7 +242,9 @@ puppet func add_stack_empty(name: String, transform: Transform) -> StackLasagne:
 remotesync func add_stack_filled(name: String, transform: Transform,
 	stack_entry: Dictionary) -> void:
 	
-	var stack = add_stack_empty(name, transform)
+	var sandwich_stack = (stack_entry["scene_path"] == "res://Pieces/Card.tscn")
+	
+	var stack = add_stack_empty(name, transform, sandwich_stack)
 	PieceBuilder.fill_stack(stack, stack_entry)
 
 # Called by the server to merge the contents of one stack into another stack.
@@ -1041,7 +1049,7 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 		else:
 			var new_transform = Transform(new_basis, new_origin)
 			
-			new_piece = add_stack_empty(new_name, new_transform)
+			new_piece = add_stack_empty(new_name, new_transform, stack is StackSandwich)
 			rpc("add_stack_empty", new_name, new_transform)
 			
 			rpc("transfer_stack_contents", stack_name, new_name, n)
@@ -1668,7 +1676,8 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 				return
 		
 		if type_key == "stacks":
-			add_stack_empty(piece_name, piece_meta["transform"])
+			var sandwich_stack = (piece_meta["scene_path"] == "res://Pieces/Card.tscn")
+			add_stack_empty(piece_name, piece_meta["transform"], sandwich_stack)
 		else:
 			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
 		
