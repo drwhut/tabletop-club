@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 01:27+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-04-12 17:27+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/opentabletop/"
+"docs-custom-assets/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.6-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -342,7 +345,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:134
 msgid "Cards"
-msgstr ""
+msgstr "Cartes"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:134
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:140
@@ -367,7 +370,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:142
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:150
 msgid "Tables"
-msgstr ""
+msgstr "Tables"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:136
 msgid "``0.5``"
@@ -447,7 +450,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:146
 #: ../../custom_assets/asset_packs/asset_types.rst:126
 msgid "Music"
-msgstr ""
+msgstr "Musique"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:146
 msgid "If ``true``, the music will have a chance of playing in the main menu."
@@ -460,7 +463,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:148
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:154
 msgid "Objects"
-msgstr ""
+msgstr "Objets"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:148
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:158
@@ -527,7 +530,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:156
 msgid "Containers"
-msgstr ""
+msgstr "Conteneurs"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:156
 msgid "If ``true``, when the container is being shaken upside down, it will randomly drop items out."
