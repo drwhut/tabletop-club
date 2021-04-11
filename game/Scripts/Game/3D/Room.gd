@@ -159,17 +159,7 @@ remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 	
 	_pieces.remove_child(piece)
 	
-	var piece_meshes = PieceBuilder.get_piece_meshes(piece)
-	if piece_meshes.size() != 1:
-		push_error("Piece " + piece_name + " does not have one mesh instance!")
-		return
-	
-	var piece_shapes = piece.get_collision_shapes()
-	if piece_shapes.size() != 1:
-		push_error("Piece " + piece_name + " does not have one collision shape!")
-		return
-	
-	stack.add_piece(piece_meshes[0], piece_shapes[0], on, flip)
+	stack.add_piece(piece.piece_entry, piece.transform, on, flip)
 	
 	piece.queue_free()
 
@@ -206,30 +196,10 @@ remotesync func add_stack(name: String, transform: Transform,
 	_pieces.remove_child(piece1)
 	_pieces.remove_child(piece2)
 	
-	var piece1_meshes = PieceBuilder.get_piece_meshes(piece1)
-	if piece1_meshes.size() != 1:
-		push_error("Piece " + piece1_name + " does not have one mesh instance!")
-		return
-	
-	var piece2_meshes = PieceBuilder.get_piece_meshes(piece2)
-	if piece2_meshes.size() != 1:
-		push_error("Piece " + piece2_name + " does not have one mesh instance!")
-		return
-	
-	var piece1_shapes = piece1.get_collision_shapes()
-	if piece1_shapes.size() != 1:
-		push_error("Piece " + piece1_name + " does not have one collision shape!")
-		return
-	
-	var piece2_shapes = piece2.get_collision_shapes()
-	if piece2_shapes.size() != 1:
-		push_error("Piece " + piece2_name + " does not have one collision shape!")
-		return
-	
 	var stack = add_stack_empty(name, transform)
 	
-	stack.add_piece(piece1_meshes[0], piece1_shapes[0])
-	stack.add_piece(piece2_meshes[0], piece2_shapes[0])
+	stack.add_piece(piece1.piece_entry, piece1.transform)
+	stack.add_piece(piece2.piece_entry, piece2.transform)
 	
 	piece1.queue_free()
 	piece2.queue_free()
@@ -237,14 +207,14 @@ remotesync func add_stack(name: String, transform: Transform,
 # Called by the server to add an empty stack to the room.
 # name: The name of the new stack.
 # transform: The initial transform of the new stack.
-puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
+puppet func add_stack_empty(name: String, transform: Transform) -> StackLasagne:
 	
 	# Special case here, where we don't want the RPC to be sent to the server,
 	# but the server needs the stack to be returned.
 	if not (get_tree().is_network_server() or get_tree().get_rpc_sender_id() == 1):
 		return null
 	
-	var stack: Stack = preload("res://Pieces/Stack.tscn").instance()
+	var stack: StackLasagne = preload("res://Pieces/StackLasagne.tscn").instance()
 	
 	stack.name = name
 	stack.transform = transform
@@ -263,24 +233,16 @@ puppet func add_stack_empty(name: String, transform: Transform) -> Stack:
 # name: The name of the new stack.
 # transform: The initial transform of the new stack.
 # stack_entry: The stack's entry in the AssetDB.
-# piece_names: The names of the pieces in the newly filled stack.
 remotesync func add_stack_filled(name: String, transform: Transform,
-	stack_entry: Dictionary, piece_names: Array) -> void:
+	stack_entry: Dictionary) -> void:
 	
 	var stack = add_stack_empty(name, transform)
 	PieceBuilder.fill_stack(stack, stack_entry)
-	
-	for i in range(stack.get_piece_count()):
-		if i >= piece_names.size():
-			break
-		
-		stack.get_pieces()[i].name = piece_names[i]
 
 # Called by the server to merge the contents of one stack into another stack.
 # stack1_name: The name of the stack to merge contents from.
 # stack2_name: The name of the stack to merge contents to.
 remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> void:
-	
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
@@ -304,7 +266,7 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 		return
 	
 	# If there are no children in the first stack, don't bother doing anything.
-	if stack1.get_piece_count() == 0:
+	if stack1.empty():
 		return
 	
 	# We need to determine in which order to add the children of the first stack
@@ -317,25 +279,21 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 	else:
 		reverse = stack1.transform.basis.y.y > 0
 	
-	# Remove the children of the first stack, determine their transform, then
-	# add them to the second stack.
-	var pieces = stack1.empty()
+	var pieces = stack1.get_pieces()
 	if reverse:
 		pieces.invert()
-	
-	for piece in pieces:
-		var basis = piece.transform.basis
-		var origin = piece.transform.origin
-		
-		basis = stack1.transform.basis * basis
-		origin = stack1.transform.origin + origin
-		
-		piece.transform = Transform(basis, origin)
-		
-		stack2.add_piece(piece, null)
-	
-	# Finally, delete the first stack.
 	_pieces.remove_child(stack1)
+	
+	for piece_meta in pieces:
+		var piece_entry = piece_meta["piece_entry"]
+		var flip_y = piece_meta["flip_y"]
+		
+		var piece_transform = stack1.transform
+		if flip_y:
+			piece_transform = piece_transform.rotated(Vector3.BACK, PI)
+		
+		stack2.add_piece(piece_entry, piece_transform)
+	
 	stack1.queue_free()
 
 # Apply options from the options menu.
@@ -718,14 +676,15 @@ master func request_add_cards_to_hand(card_names: Array, hand_id: int) -> void:
 				push_error("Stack " + card_name + " does not contain cards!")
 				continue
 			
-			var stack_names = []
-			for inst in piece.get_pieces():
-				stack_names.append(inst.name)
-			
+			var new_card_names = []
+			var last_card_name = srv_get_next_piece_name()
 			for i in range(piece.get_piece_count() - 1):
-				request_pop_stack(card_name, 1, false, i + 1.0)
+				var new_name = request_pop_stack(card_name, 1, false, i + 1.0,
+					last_card_name)
+				new_card_names.append(new_name)
+			new_card_names.append(last_card_name)
 			
-			for name in stack_names:
+			for name in new_card_names:
 				var card: Card = _pieces.get_node(name)
 				cards.append(card)
 		else:
@@ -777,15 +736,8 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 # stack_transform: The transform the new stack should have.
 # stack_entry: The stack's entry in the AssetDB.
 master func request_add_stack_filled(stack_transform: Transform, stack_entry: Dictionary) -> String:
-	# Before we can get everyone to add the stack, we need to come up with names
-	# for the stack and it's items.
 	var stack_name = srv_get_next_piece_name()
-	var piece_names = []
-	
-	for texture_path in stack_entry["texture_paths"]:
-		piece_names.push_back(srv_get_next_piece_name())
-	
-	rpc("add_stack_filled", stack_name, stack_transform, stack_entry, piece_names)
+	rpc("add_stack_filled", stack_name, stack_transform, stack_entry)
 	
 	return stack_name
 
@@ -961,30 +913,20 @@ master func request_deal_cards(stack_name: String, n: int) -> void:
 		push_error("Stack " + stack_name + " does not contain cards!")
 		return
 	
-	var card_names = []
-	for card in stack.get_pieces():
-		card_names.append(card.name)
-	
+	var last_name = ""
 	for _i in range(n):
-		if card_names.size() < 1:
-			break
-		
 		for hand in _hands.get_children():
-			var card_name = ""
-			
-			if card_names.size() < 1:
+			if not last_name.empty():
+				request_add_cards_to_hand([last_name], hand.owner_id())
 				break
-			elif card_names.size() == 1:
-				card_name = card_names[0]
+			elif not stack.empty():
+				if stack.get_piece_count() == 2:
+					last_name = srv_get_next_piece_name()
+				
+				var card_name = request_pop_stack(stack_name, 1, false, 1.0, last_name)
+				request_add_cards_to_hand([card_name], hand.owner_id())
 			else:
-				card_name = request_pop_stack(stack_name, 1, false, 1.0)
-			
-			if card_name == "":
 				break
-			else:
-				card_names.erase(card_name)
-			
-			request_add_cards_to_hand([card_name], hand.owner_id())
 
 # Request the server to flip the table.
 # camera_basis: The basis matrix of the player flipping the table.
@@ -1050,8 +992,10 @@ master func request_place_hidden_area(point1: Vector2, point2: Vector2) -> void:
 # n: The number of pieces to pop from the stack.
 # hover: Do we want to start hovering the piece afterwards?
 # split_dist: How far away do we want the piece from the stack when it is poped?
+# last_name: If there is only one piece left in the stack, it is optionally
+# given this name.
 master func request_pop_stack(stack_name: String, n: int, hover: bool,
-	split_dist: float) -> String:
+	split_dist: float, last_name: String = "") -> String:
 	
 	var player_id = get_tree().get_rpc_sender_id()
 	var stack = _pieces.get_node(stack_name)
@@ -1082,18 +1026,19 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 		# again.
 		new_origin.y += split_dist + removed_height / 2
 		
+		var new_name = srv_get_next_piece_name()
+		
 		if n == 1:
-			var piece_instance = stack.pop_piece()
-			stack.rpc("remove_piece_by_name", piece_instance.name)
+			var index = stack.pop_index()
+			var piece_meta = stack.remove_piece(index)
+			stack.rpc("remove_piece", index)
 			
-			new_basis = (stack.transform.basis * piece_instance.transform.basis).orthonormalized()
-			rpc("add_piece", piece_instance.name, Transform(new_basis, new_origin),
-				piece_instance.get_meta("piece_entry"))
-			new_piece = _pieces.get_node(piece_instance.name)
-			
-			piece_instance.queue_free()
+			var piece_entry = piece_meta["piece_entry"]
+			var piece_transform = piece_meta["transform"]
+			new_basis = (stack.transform.basis * piece_transform.basis).orthonormalized()
+			rpc("add_piece", new_name, Transform(new_basis, new_origin), piece_entry)
+			new_piece = _pieces.get_node(new_name)
 		else:
-			var new_name = srv_get_next_piece_name()
 			var new_transform = Transform(new_basis, new_origin)
 			
 			new_piece = add_stack_empty(new_name, new_transform)
@@ -1112,15 +1057,17 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 		# If there is only one piece left in the stack, turn it into a normal
 		# piece.
 		if stack.get_piece_count() == 1:
-			var piece_instance = stack.empty()[0]
-			new_basis = (stack.transform.basis * piece_instance.transform.basis).orthonormalized()
+			if last_name.empty():
+				last_name = srv_get_next_piece_name()
+			
+			var piece_meta = stack.remove_piece(0)
+			var piece_entry = piece_meta["piece_entry"]
+			var piece_transform = piece_meta["transform"]
 			stack.rpc("remove_self")
 			
-			rpc("add_piece", piece_instance.name,
-				Transform(new_basis, new_stack_translation),
-				piece_instance.get_meta("piece_entry"))
-			
-			piece_instance.queue_free()
+			new_basis = (stack.transform.basis * piece_transform.basis).orthonormalized()
+			rpc("add_piece", last_name,
+				Transform(new_basis, new_stack_translation), piece_entry)
 	else:
 		new_piece = stack
 	
@@ -1538,23 +1485,14 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 	
 	var contents = []
 	for _i in range(n):
-		contents.push_back(stack1.pop_piece())
-	
-	var test_piece_entry = contents[0].get_meta("piece_entry")
-	var test_piece = load(test_piece_entry["scene_path"]).instance()
-	PieceBuilder.scale_piece(test_piece, test_piece_entry["scale"])
-	
-	var shapes = test_piece.get_collision_shapes()
-	if shapes.size() != 1:
-		push_error("Piece does not have one collision shape!")
-		return
-	var shape = shapes[0]
+		var index = stack1.pop_index()
+		contents.push_back(stack1.remove_piece(index))
 	
 	while not contents.empty():
-		var piece = contents.pop_back()
-		stack2.add_piece(piece, shape, Stack.STACK_TOP)
-	
-	test_piece.queue_free()
+		var piece_meta = contents.pop_back()
+		var piece_entry = piece_meta["piece_entry"]
+		var piece_transform = piece_meta["transform"]
+		stack2.add_piece(piece_entry, piece_transform, Stack.STACK_TOP)
 
 # Unflip the table from it's flipped state.
 remotesync func unflip_table() -> void:
@@ -1642,9 +1580,8 @@ func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> 
 			var child_pieces = []
 			for child_piece in piece.get_pieces():
 				var child_piece_meta = {
-					"flip_y": child_piece.transform.basis.y.y < 0,
-					"name": child_piece.name,
-					"piece_entry": child_piece.get_meta("piece_entry")
+					"flip_y": child_piece["flip_y"],
+					"piece_entry": child_piece["piece_entry"]
 				}
 				
 				child_pieces.push_back(child_piece_meta)
@@ -1769,43 +1706,32 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 					push_error("Stack piece is not a dictionary!")
 					return
 				
-				if not stack_piece_meta.has("name"):
-					push_error("Stack piece does not have a name!")
-					return
-				
-				if not stack_piece_meta["name"] is String:
-					push_error("Stack piece name is not a string!")
-					return
-				
-				var stack_piece_name = stack_piece_meta["name"]
-				
 				if not stack_piece_meta.has("flip_y"):
-					push_error("Stack piece" + stack_piece_name + " does not have a flip value!")
+					push_error("Stack piece does not have a flip value!")
 					return
 				
 				if not stack_piece_meta["flip_y"] is bool:
-					push_error("Stack piece" + stack_piece_name + " flip value is not a boolean!")
+					push_error("Stack piece flip value is not a boolean!")
 					return
 				
 				if not stack_piece_meta.has("piece_entry"):
-					push_error("Stack piece" + stack_piece_name + " does not have a piece entry!")
+					push_error("Stack piece does not have a piece entry!")
 					return
 				
 				if not stack_piece_meta["piece_entry"] is Dictionary:
-					push_error("Stack piece" + stack_piece_name + " entry is not a dictionary!")
+					push_error("Stack piece entry is not a dictionary!")
 					return
 				
-				# Add the piece normally so we can extract the mesh instance and
-				# shape.
-				add_piece(stack_piece_name, Transform(), stack_piece_meta["piece_entry"])
+				var stack_piece_entry = stack_piece_meta["piece_entry"]
 				
-				# Then add it to the stack at the top (since we're going through
-				# the list in order from bottom to top).
+				# Add it to the stack at the top (since we're going through the
+				# list in order from bottom to top).
 				var flip = Stack.FLIP_NO
 				if stack_piece_meta["flip_y"]:
 					flip = Stack.FLIP_YES
 				
-				add_piece_to_stack(stack_piece_name, piece_name, Stack.STACK_TOP, flip)
+				piece.add_piece(stack_piece_entry, Transform.IDENTITY,
+					Stack.STACK_TOP, flip)
 		
 		elif type_key == "speakers" or type_key == "timers":
 			if not piece_meta.has("is_music_track"):

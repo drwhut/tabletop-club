@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scripts/Game/Pieces/Stack.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game/Pieces/StackLasagne.gd" type="Script" id=1]
 
-[node name="Stack" type="RigidBody"]
+[node name="StackLasagne" type="RigidBody"]
 mass = 0.01
 contacts_reported = 1
 contact_monitor = true
@@ -10,8 +10,13 @@ script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "A stack is a piece that contains stackable pieces, one on top of another, and is a stackable piece itself.
 
-The shape of the stack is determined by the first piece that enters the stack, and the stack automatically adjusts the height of the shape depending on the number of pieces in the stack."
+The shape of the stack is determined by the first piece that enters the stack, and the stack automatically adjusts the height of the shape depending on the number of pieces in the stack.
+
+A lasagne stack renders all of the pieces inside it."
 }
+collision_shape_path = NodePath("CollisionShape")
+outline_mesh_path = NodePath("CollisionShape/OutlineMeshInstance")
+pieces_path = NodePath("CollisionShape/Pieces")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
