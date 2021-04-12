@@ -35,9 +35,8 @@ enum {
 	FLIP_YES
 }
 
-onready var _collision_shape = $CollisionShape
-onready var _outline_mesh_instance = $CollisionShape/OutlineMeshInstance
-onready var _pieces = $CollisionShape/Pieces
+export(NodePath) var collision_shape_path: String
+export(NodePath) var outline_mesh_path: String
 
 # TODO: export(RandomAudioSample)
 # See: https://github.com/godotengine/godot/pull/44879
@@ -57,18 +56,17 @@ var _collision_unit_height = 0
 var _mesh_unit_height = 0
 
 # Add a piece to the stack.
-# piece: The stack piece instance to add.
-# shape: The shape of the piece.
-# on: Where to add the piece in the stack.
-# flip: Whether the piece should be flipped when entering the stack.
-func add_piece(piece: MeshInstance, shape: CollisionShape,
+# piece_entry: The piece entry of the piece to add.
+# piece_transform: The transform of the piece.
+# on: Where to put the piece in the stack.
+# flip: If the piece should be flipped when entering the stack.
+func add_piece(piece_entry: Dictionary, piece_transform: Transform,
 	on: int = STACK_AUTO, flip: int = FLIP_AUTO) -> void:
 	
 	var on_top = false
-	
 	match on:
 		STACK_AUTO:
-			if transform.origin.y < piece.transform.origin.y:
+			if transform.origin.y < piece_transform.origin.y:
 				on_top = transform.basis.y.y > 0
 			else:
 				on_top = transform.basis.y.y < 0
@@ -77,55 +75,158 @@ func add_piece(piece: MeshInstance, shape: CollisionShape,
 		STACK_TOP:
 			on_top = true
 		_:
-			push_error("Invalid stack option " + str(on) + "!")
+			push_error("Invalid stack option %d!" % on)
+			return
+	var pos = get_piece_count() if on_top else 0
+	
+	var flip_y = false
+	match flip:
+		FLIP_AUTO:
+			flip_y = is_piece_flipped(piece_transform)
+		FLIP_NO:
+			flip_y = false
+		FLIP_YES:
+			flip_y = true
+		_:
+			push_error("Invalid flip option %d!" % flip)
 			return
 	
-	var pos = 0
-	if on_top:
-		pos = _pieces.get_child_count()
+	var collision_shape = get_collision_shape()
+	if empty():
+		self.piece_entry = piece_entry
+		
+		var new_shape: Shape = null
+		var piece_instance = PieceBuilder.build_piece(piece_entry)
+		
+		var piece_collision_shapes = piece_instance.get_collision_shapes()
+		if piece_collision_shapes.size() != 1:
+			push_error("Piece must have only and only one collision shape!")
+			return
+		var piece_collision_shape = piece_collision_shapes[0]
+		
+		var piece_mesh_instances = piece_instance.get_mesh_instances()
+		if piece_mesh_instances.size() != 1:
+			push_error("Piece must have one and only one mesh instance!")
+			return
+		var piece_mesh_instance = piece_mesh_instances[0]
+		
+		if piece_collision_shape.shape is BoxShape:
+			new_shape = BoxShape.new()
+			new_shape.extents = piece_collision_shape.shape.extents
+			new_shape.extents.y *= piece_collision_shape.scale.y
+			
+			_collision_unit_height = new_shape.extents.y * 2
+		elif piece_collision_shape.shape is CylinderShape:
+			new_shape = CylinderShape.new()
+			new_shape.height = piece_collision_shape.shape.height
+			new_shape.height *= piece_collision_shape.scale.y
+			new_shape.radius = piece_collision_shape.shape.radius
+			
+			_collision_unit_height = new_shape.height
+		else:
+			push_error("Piece has an unsupported collision shape!")
+			return
+		
+		if new_shape != null:
+			collision_shape.shape = new_shape
+			collision_shape.scale = piece_collision_shape.scale
+			collision_shape.scale.y = 1.0
+			
+			_mesh_unit_height = piece_collision_shape.scale.y * piece_mesh_instance.scale.y
+			
+			var outline_mesh_instance = get_outline_mesh_instance()
+			if new_shape is BoxShape:
+				var cube_mesh = CubeMesh.new()
+				cube_mesh.size = Vector3.ONE
+				outline_mesh_instance.mesh = cube_mesh
+			elif new_shape is CylinderShape:
+				var cylinder_mesh = CylinderMesh.new()
+				cylinder_mesh.bottom_radius = 0.5
+				cylinder_mesh.top_radius = 0.5
+				cylinder_mesh.height = 1.0
+				outline_mesh_instance.mesh = cylinder_mesh
+			
+			# Avoid z-ordering glitches.
+			outline_mesh_instance.scale.x = 1.001
+			outline_mesh_instance.scale.z = 1.001
+			
+			outline_mesh_instance.scale.y = piece_collision_shape.scale.y
+			setup_outline_material()
+		
+		piece_instance.free()
+	else:
+		var current_height = get_total_height()
+		var new_height = _mesh_unit_height * get_piece_count()
+		var extra_height = max(new_height - current_height, 0)
+		
+		if collision_shape.shape is BoxShape:
+			collision_shape.shape.extents.y += (extra_height / 2)
+		elif collision_shape.shape is CylinderShape:
+			collision_shape.shape.height += extra_height
+		
+		get_outline_mesh_instance().scale.y = new_height + 0.001
 	
-	_add_piece_at_pos(piece, shape, pos, flip)
+	# We just changed the collision shape, so make sure the stack is awake.
+	sleeping = false
+	
+	mass += piece_entry["mass"]
+	
+	if is_card_stack():
+		if card_add_sounds != null:
+			play_effect(card_add_sounds.random_stream())
+	else:
+		if chip_add_sounds != null:
+			play_effect(chip_add_sounds.random_stream())
+	
+	_add_piece_at_pos(piece_entry, pos, flip_y)
 
-# Empty the stack.
-# NOTE: If you plan to remove the stack, but get the pieces of the stack (e.g.
-# when putting one stack on top of another), use this function!
-# This function exists as a workaround to a bug where the engine crashes when
-# you change the collision shape of a rigidbody before removing it from the
-# tree.
-# See: https://github.com/godotengine/godot/issues/40283
-# Returns: The stack piece instances.
-func empty() -> Array:
-	var out = []
-	
-	for piece in _pieces.get_children():
-		_pieces.remove_child(piece)
-		out.push_back(piece)
-	
-	return out
+# Check if the stack is empty.
+# Returns: If the stack is empty.
+func empty() -> bool:
+	return get_piece_count() == 0
 
-# Get the pieces in the stack.
-# Returns: The pieces in the stack.
-func get_pieces() -> Array:
-	return _pieces.get_children()
+# Get the collision shape of the stack.
+# Returns: The stack's collision shape.
+func get_collision_shape() -> CollisionShape:
+	var node = get_node(collision_shape_path)
+	if node is CollisionShape:
+		return node
+	
+	return null
+
+# Get the outline mesh instance of the stack.
+# Returns: The stack's outline mesh instance.
+func get_outline_mesh_instance() -> MeshInstance:
+	var node = get_node(outline_mesh_path)
+	if node is MeshInstance:
+		return node
+	
+	return null
 
 # Get the number of pieces in the stack.
 # Returns: The number of pieces in the stack.
 func get_piece_count() -> int:
-	return _pieces.get_child_count()
+	return 0
+
+# Get the current list of pieces in the stack.
+# Returns: An array of dictionaries for every piece, containing "piece_entry"
+# and "flip_y" elements.
+func get_pieces() -> Array:
+	return []
 
 # Get the size of the stack.
 # Returns: A Vector3 representing the size of the stack in all three axes.
 func get_size() -> Vector3:
-	var collision_scale = _collision_shape.scale
+	var collision_scale = get_collision_shape().scale
 	return Vector3(collision_scale.x, get_total_height(), collision_scale.z)
 
 # Get the height of the collision shape.
 # Returns: The height of the collision shape.
 func get_total_height() -> float:
-	var shape = _collision_shape.shape
+	var shape = get_collision_shape().shape
 	
 	if shape is BoxShape:
-		return shape.extents.y * 2
+		return 2.0 * shape.extents.y
 	elif shape is CylinderShape:
 		return shape.height
 	
@@ -146,23 +247,17 @@ func is_card_stack() -> bool:
 	return false
 
 # Is the piece's orientation flipped relative to the stack's orientation?
-# Returns: If the piece's orientation if flipped.
-# piece: The stack piece instance to query.
-func is_piece_flipped(piece: MeshInstance) -> bool:
-	return transform.basis.y.dot(piece.transform.basis.y) < 0
+# Returns: If the piece's orientation is flipped.
+# piece_transform: The piece transform to query.
+func is_piece_flipped(piece_transform: Transform) -> bool:
+	return transform.basis.y.dot(piece_transform.basis.y) < 0.0
 
 # Called by the server to orient all of the pieces in the stack in a particular
 # direction.
 # up: Should all of the pieces be facing up?
-remotesync func orient_pieces(up: bool) -> void:
-	for piece in get_pieces():
-		var current_basis = piece.transform.basis
-		
-		if up and current_basis.y.y < 0:
-			piece.transform.basis = current_basis.rotated(Vector3.BACK, PI)
-		
-		elif not up and current_basis.y.y > 0:
-			piece.transform.basis = current_basis.rotated(Vector3.BACK, PI)
+remotesync func orient_pieces(_up: bool) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
 	
 	if is_card_stack():
 		if card_orient_sounds != null:
@@ -172,52 +267,87 @@ remotesync func orient_pieces(up: bool) -> void:
 			play_effect(chip_orient_sounds.random_stream())
 
 # Pop a piece from the stack.
-# Returns: The stack piece instance that was poped.
+# Returns: A dictionary containing "piece_entry" and "transform" elements,
+# an empty dictionary if the stack is empty.
 # from: Where to pop the stack from.
-func pop_piece(from: int = STACK_AUTO) -> MeshInstance:
-	if _pieces.get_child_count() == 0:
-		return null
-	
+func pop_piece(from: int = STACK_AUTO) -> Dictionary:
 	var pos = 0
-	
 	match from:
 		STACK_AUTO:
 			if transform.basis.y.y > 0:
-				pos = _pieces.get_child_count() - 1
+				pos = get_piece_count() - 1
 			else:
 				pos = 0
 		STACK_BOTTOM:
 			pos = 0
 		STACK_TOP:
-			pos = _pieces.get_child_count() - 1
+			pos = get_piece_count() - 1
 		_:
-			push_error("Invalid from option " + str(from) + "!")
-			return null
+			push_error("Invalid from option %d!" % from)
+			return {}
 	
-	return _remove_piece_at_pos(pos)
+	return remove_piece(pos)
 
-# Remove a piece from the stack.
-# piece: The stack piece instance to remove.
-func remove_piece(piece: MeshInstance) -> void:
-	if _pieces.is_a_parent_of(piece):
-		_remove_piece_at_pos(piece.get_index())
+# Get the index of the piece that is on the top of the stack.
+# Returns: The index of the piece at the top of the stack.
+# from: Where to pop the stack from.
+func pop_index(from: int = STACK_AUTO) -> int:
+	match from:
+		STACK_AUTO:
+			if transform.basis.y.y > 0:
+				return get_piece_count() - 1
+			else:
+				return 0
+		STACK_BOTTOM:
+			return 0
+		STACK_TOP:
+			return get_piece_count() - 1
+		_:
+			push_error("Invalid from option %d!" % from)
+			return -1
+
+# Remove a piece from the stack by it's index.
+# Returns: A dictionary containing "piece_entry" and "transform" elements,
+# an empty dictionary if the stack is empty.
+# index: The index of the piece to remove.
+puppet func remove_piece(index: int) -> Dictionary:
+	if not (get_tree().is_network_server() or get_tree().get_rpc_sender_id() == 1):
+		return {}
+	
+	if index < 0 or index >= get_piece_count():
+		push_error("Cannot remove index %d from the stack!" % index)
+		return {}
+	
+	var current_height = get_total_height()
+	var new_height = _mesh_unit_height * (get_piece_count() - 1)
+	new_height = max(new_height, _collision_unit_height)
+	var height_lost = max(current_height - new_height, 0)
+	
+	var collision_shape = get_collision_shape()
+	if collision_shape.shape is BoxShape:
+		collision_shape.shape.extents.y -= (height_lost / 2)
+	elif collision_shape.shape is CylinderShape:
+		collision_shape.shape.height -= height_lost
 	else:
-		push_error("Piece " + piece.name + " is not a child of this stack!")
-		return
-
-# Called by the server to remove a piece from the stack by it's name.
-# name: The name of the stack piece instance to remove.
-puppet func remove_piece_by_name(name: String) -> void:
-	if get_tree().get_rpc_sender_id() != 1:
-		return
+		push_error("Stack has an unsupported collision shape!")
+		return {}
 	
-	var piece = _pieces.get_node(name)
+	get_outline_mesh_instance().scale.y = new_height + 0.001
 	
-	if not piece:
-		push_error("Piece " + name + " is not in the stack!")
-		return
+	# We just changed the collision shape, so make sure the stack is awake.
+	sleeping = false
 	
-	remove_piece(piece)
+	if is_card_stack():
+		if card_remove_sounds != null:
+			play_effect(card_remove_sounds.random_stream())
+	else:
+		if chip_remove_sounds != null:
+			play_effect(chip_remove_sounds.random_stream())
+	
+	var piece_meta = _remove_piece_at_pos(index)
+	mass -= piece_meta["piece_entry"]["mass"]
+	
+	return piece_meta
 
 # Request the server to orient all of the pieces in the stack in a particular
 # direction.
@@ -231,47 +361,41 @@ master func request_orient_pieces(up: bool) -> void:
 
 # Request the server to shuffle the stack.
 master func request_shuffle() -> void:
-	var names = []
-	for piece in get_pieces():
-		names.push_back(piece.name)
+	var order = []
+	for i in range(get_piece_count()):
+		order.append(i)
 	
 	randomize()
-	names.shuffle()
+	order.shuffle()
 	
-	rpc("set_piece_order", names)
+	rpc("set_piece_order", order)
 
 # Request the server to sort the stack by texture path.
 master func request_sort() -> void:
+	var index = 0
 	var items = []
-	for piece in get_pieces():
+	for piece_meta in get_pieces():
+		var piece_entry = piece_meta["piece_entry"]
 		items.append({
-			"name": piece.name,
-			"texture_path": piece.get_meta("piece_entry")["texture_path"]
+			"index": index,
+			"texture_path": piece_entry["texture_path"]
 		})
-	var items2 = items.duplicate()
+		index += 1
 	
+	var items2 = items.duplicate()
 	_merge_sort(items, items2, 0, items.size())
 	
-	var names = []
+	var order = []
 	for item in items:
-		names.push_back(item.name)
+		order.push_back(item["index"])
 	
-	rpc("set_piece_order", names)
+	rpc("set_piece_order", order)
 
-# Called by the server to set the order of the pieces in the stack.
-# order: The piece names in their new order.
-remotesync func set_piece_order(order: Array) -> void:
+# Called by the server to set the order of pieces in the stack.
+# order: The piece indicies in their new order.
+remotesync func set_piece_order(_order: Array) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
-	
-	var i = 0
-	for piece_name in order:
-		var node = _pieces.get_node(piece_name)
-		
-		if node:
-			_pieces.move_child(node, i)
-		
-		i += 1
 	
 	if is_card_stack():
 		if card_shuffle_sounds != null:
@@ -279,8 +403,6 @@ remotesync func set_piece_order(order: Array) -> void:
 	else:
 		if chip_shuffle_sounds != null:
 			play_effect(chip_shuffle_sounds.random_stream())
-	
-	_set_piece_heights()
 
 # Add the outline material to the outline mesh instance.
 func setup_outline_material():
@@ -290,7 +412,7 @@ func setup_outline_material():
 	_outline_material.shader = outline_shader
 	_outline_material.set_shader_param("Color", Color.transparent)
 	
-	_outline_mesh_instance.set_surface_material(0, _outline_material)
+	get_outline_mesh_instance().set_surface_material(0, _outline_material)
 
 func _physics_process(_delta):
 	# If the stack is being shaken, then get the server to send a list of
@@ -299,184 +421,18 @@ func _physics_process(_delta):
 		request_shuffle()
 
 # Add a piece to the stack at a given position.
-# piece: The stack piece instance to add.
-# shape: The piece's collision shape.
+# piece_entry: The piece entry of the piece to add.
 # pos: The position of the new piece in the stack.
-# flip: Whether the piece should be flipped or not.
-func _add_piece_at_pos(piece: MeshInstance, shape: CollisionShape,
-	pos: int, flip: int) -> void:
-	
-	if not piece.has_meta("piece_entry"):
-		push_error("Piece MeshInstance has no piece_entry metadata!")
-		return
-	
-	# Workaround for the event that this function is called, but the child node
-	# variables have not been defined yet because the stack is not ready.
-	# This can happen if adding pieces to the stack before the stack is added
-	# to the scene tree.
-	if _collision_shape == null:
-		_collision_shape = $CollisionShape
-	if _outline_mesh_instance == null:
-		_outline_mesh_instance = $CollisionShape/OutlineMeshInstance
-	if _pieces == null:
-		_pieces = $CollisionShape/Pieces
-	
-	_pieces.add_child(piece)
-	_pieces.move_child(piece, pos)
-	
-	if _pieces.get_child_count() == 1:
-		piece_entry = piece.get_meta("piece_entry")
-		
-		var new_shape: Shape = null
-		
-		if shape.shape is BoxShape:
-			new_shape = BoxShape.new()
-			new_shape.extents = shape.shape.extents
-			new_shape.extents.y *= shape.scale.y
-			
-			_collision_unit_height = new_shape.extents.y * 2
-		elif shape.shape is CylinderShape:
-			new_shape = CylinderShape.new()
-			new_shape.height = shape.shape.height * shape.scale.y
-			new_shape.radius = shape.shape.radius
-			
-			_collision_unit_height = new_shape.height
-		else:
-			push_error("Piece " + piece.name + " has an unsupported collision shape!")
-		
-		if new_shape:
-			_collision_shape.shape = new_shape
-			_collision_shape.scale = Vector3(shape.scale.x, 1, shape.scale.z)
-			
-			# We want to keep the collision's shape y-scale at 1 so we can
-			# change the collision shape's height easily without having to deal
-			# with the scale, but we still need to scale the instances properly,
-			# so put the y-scale in the Pieces node.
-			_pieces.scale.y = shape.scale.y
-			
-			_mesh_unit_height = shape.scale.y * piece.scale.y
-			
-			# Add the corresponding mesh shape to the outline mesh instance.
-			if new_shape is BoxShape:
-				var cube_mesh = CubeMesh.new()
-				cube_mesh.size = Vector3.ONE
-				_outline_mesh_instance.mesh = cube_mesh
-			elif new_shape is CylinderShape:
-				var cylinder_mesh = CylinderMesh.new()
-				cylinder_mesh.bottom_radius = 0.5
-				cylinder_mesh.top_radius = 0.5
-				cylinder_mesh.height = 1.0
-				_outline_mesh_instance.mesh = cylinder_mesh
-			
-			# Avoid z-ordering glitches.
-			_outline_mesh_instance.scale.x = 1.001
-			_outline_mesh_instance.scale.z = 1.001
-			
-			_outline_mesh_instance.scale.y = shape.scale.y
-			setup_outline_material()
-	else:
-		var current_height = get_total_height()
-		var new_height = _mesh_unit_height * _pieces.get_child_count()
-		var extra_height = max(new_height - current_height, 0)
-		
-		if _collision_shape.shape is BoxShape:
-			_collision_shape.shape.extents.y += (extra_height / 2)
-		elif _collision_shape.shape is CylinderShape:
-			_collision_shape.shape.height += extra_height
-		
-		_outline_mesh_instance.scale.y = new_height + 0.001
-	
-	# We just changed the collision shape, so make sure the stack is awake.
-	sleeping = false
-	
-	mass += piece.get_meta("piece_entry")["mass"]
-	
-	var is_flipped = false
-	match flip:
-		FLIP_AUTO:
-			if is_piece_flipped(piece):
-				is_flipped = true
-			else:
-				is_flipped = false
-		FLIP_NO:
-			is_flipped = false
-		FLIP_YES:
-			is_flipped = true
-		_:
-			push_error("Invalid flip option " + str(flip) + "!")
-			return
-	
-	var basis = Basis.IDENTITY
-	if is_flipped:
-		basis = basis.rotated(Vector3.BACK, PI)
-	
-	var piece_scale = piece.scale
-	piece.transform = Transform(basis, Vector3.ZERO)
-	piece.scale = piece_scale
-	
-	if is_card_stack():
-		if card_add_sounds != null:
-			play_effect(card_add_sounds.random_stream())
-	else:
-		if chip_add_sounds != null:
-			play_effect(chip_add_sounds.random_stream())
-	
-	_set_piece_heights()
+# flip_y: If the piece should be flipped when entering the stack.
+func _add_piece_at_pos(_piece_entry: Dictionary, _pos: int, _flip_y: bool) -> void:
+	return
 
-# Remove the piece at the given position.
-# Returns: The stack piece instance at the given position.
-# pos: The position to remove from.
-func _remove_piece_at_pos(pos: int) -> MeshInstance:
-	if pos < 0 or pos >= _pieces.get_child_count():
-		push_error("Cannot remove " + str(pos) + "th child from the stack!")
-		return null
-	
-	var piece = _pieces.get_child(pos)
-	_pieces.remove_child(piece)
-	
-	# Re-calculate the stacks collision shape.
-	var current_height = get_total_height()
-	var new_height = max(_mesh_unit_height * _pieces.get_child_count(), _collision_unit_height)
-	var height_lost = max(current_height - new_height, 0)
-	
-	if _collision_shape.shape is BoxShape:
-		_collision_shape.shape.extents.y -= (height_lost / 2)
-	elif _collision_shape.shape is CylinderShape:
-		_collision_shape.shape.height -= height_lost
-	else:
-		push_error("Stack has an unsupported collision shape!")
-		return null
-	
-	_outline_mesh_instance.scale.y = new_height + 0.001
-	
-	# We just changed the collision shape, so make sure the stack is awake.
-	sleeping = false
-	
-	mass -= piece.get_meta("piece_entry")["mass"]
-	
-	if is_card_stack():
-		if card_remove_sounds != null:
-			play_effect(card_remove_sounds.random_stream())
-	else:
-		if chip_remove_sounds != null:
-			play_effect(chip_remove_sounds.random_stream())
-	
-	_set_piece_heights()
-	
-	return piece
-
-# Set the y-position of the pieces in the stack.
-func _set_piece_heights() -> void:
-	var height = _mesh_unit_height * _pieces.get_child_count()
-	var i = 0
-	for piece in _pieces.get_children():
-		piece.transform.origin.y = (_mesh_unit_height * (i + 0.5)) - (height / 2)
-		
-		# The Pieces node's scale will scale the translation here, so "undo"
-		# the scale.
-		if _pieces.scale.y != 0:
-			piece.transform.origin.y /= _pieces.scale.y
-		i += 1
+# Remove the piece at the given position from the stack.
+# Returns: A dictionary containing "piece_entry" and "transform" elements,
+# an empty dictionary if the stack is empty.
+# pos: The position to remove the piece from.
+func _remove_piece_at_pos(_pos: int) -> Dictionary:
+	return {}
 
 # Use the merge sort algorithm to sort the pieces by their texture paths.
 # array: The array to sort.
@@ -497,7 +453,7 @@ func _merge_sort(array: Array, copy: Array, begin: int, end: int) -> void:
 	
 	for k in range(begin, end):
 		# Sort the children by their texture paths.
-		if i < middle and (j >= end or copy[i].texture_path <= copy[j].texture_path):
+		if i < middle and (j >= end or copy[i]["texture_path"] <= copy[j]["texture_path"]):
 			array[k] = copy[i]
 			i += 1
 		else:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Game/CameraController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Game/3D/HiddenArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Game/3D/Room.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Game/3D/PaintPlane.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -22,6 +23,9 @@ environment = SubResource( 2 )
 [node name="Table" type="Spatial" parent="."]
 
 [node name="HandPositions" type="Spatial" parent="Table"]
+
+[node name="PaintPlane" parent="Table" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0 )
 
 [node name="SunLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 50, 0 )
@@ -54,11 +58,14 @@ monitoring = false
 collision_layer = 2
 
 [connection signal="adding_cards_to_hand" from="CameraController" to="." method="_on_CameraController_adding_cards_to_hand"]
+[connection signal="adding_pieces_to_container" from="CameraController" to="." method="_on_CameraController_adding_pieces_to_container"]
 [connection signal="collect_pieces_requested" from="CameraController" to="." method="_on_CameraController_collect_pieces_requested"]
 [connection signal="container_release_random_requested" from="CameraController" to="." method="_on_CameraController_container_release_random_requested"]
 [connection signal="container_release_these_requested" from="CameraController" to="." method="_on_CameraController_container_release_these_requested"]
 [connection signal="dealing_cards" from="CameraController" to="." method="_on_CameraController_dealing_cards"]
+[connection signal="erasing" from="CameraController" to="." method="_on_CameraController_erasing"]
 [connection signal="hover_piece_requested" from="CameraController" to="." method="_on_CameraController_hover_piece_requested"]
+[connection signal="painting" from="CameraController" to="." method="_on_CameraController_painting"]
 [connection signal="placing_hidden_area" from="CameraController" to="." method="_on_CameraController_placing_hidden_area"]
 [connection signal="pop_stack_requested" from="CameraController" to="." method="_on_CameraController_pop_stack_requested"]
 [connection signal="removing_hidden_area" from="CameraController" to="." method="_on_CameraController_removing_hidden_area"]

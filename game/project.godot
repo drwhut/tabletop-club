@@ -94,6 +94,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/Stack.gd"
 }, {
+"base": "Stack",
+"class": "StackLasagne",
+"language": "GDScript",
+"path": "res://Scripts/Game/Pieces/StackLasagne.gd"
+}, {
+"base": "Stack",
+"class": "StackSandwich",
+"language": "GDScript",
+"path": "res://Scripts/Game/Pieces/StackSandwich.gd"
+}, {
 "base": "Piece",
 "class": "StackablePiece",
 "language": "GDScript",
@@ -127,6 +137,8 @@ _global_script_class_icons={
 "SpeakerPiece": "",
 "SpinBoxButton": "",
 "Stack": "",
+"StackLasagne": "",
+"StackSandwich": "",
 "StackablePiece": "",
 "TimeEdit": "",
 "TimerPiece": ""

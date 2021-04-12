@@ -101,7 +101,10 @@ func _build(_userdata) -> void:
 		
 		# This section of code is why this function is running in a thread.
 		if piece_entry.has("texture_paths"):
-			piece = preload("res://Pieces/Stack.tscn").instance()
+			if piece_entry["scene_path"] == "res://Pieces/Card.tscn":
+				piece = preload("res://Pieces/StackSandwich.tscn").instance()
+			else:
+				piece = preload("res://Pieces/StackLasagne.tscn").instance()
 			PieceBuilder.fill_stack(piece, piece_entry)
 		else:
 			piece = PieceBuilder.build_piece(piece_entry)

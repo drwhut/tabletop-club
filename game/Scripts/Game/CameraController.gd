@@ -24,15 +24,20 @@ extends Spatial
 enum {
 	TOOL_CURSOR,
 	TOOL_RULER,
-	TOOL_HIDDEN_AREA
+	TOOL_HIDDEN_AREA,
+	TOOL_PAINT,
+	TOOL_ERASE
 }
 
 signal adding_cards_to_hand(cards, id) # If id is 0, add to nearest hand.
+signal adding_pieces_to_container(container, pieces)
 signal collect_pieces_requested(pieces)
 signal container_release_random_requested(container, n)
 signal container_release_these_requested(container, names)
 signal dealing_cards(stack, n)
+signal erasing(position, size)
 signal hover_piece_requested(piece, offset)
+signal painting(position, color, size)
 signal placing_hidden_area(point1, point2)
 signal pop_stack_requested(stack, n)
 signal removing_hidden_area(hidden_area)
@@ -45,12 +50,20 @@ signal spawning_piece_in_container(container_name)
 signal stack_collect_all_requested(stack, collect_stacks)
 
 onready var _box_selection_rect = $BoxSelectionRect
+onready var _brush_color_picker = $PaintToolMenu/MarginContainer/VBoxContainer/BrushColorPickerButton
+onready var _brush_size_label = $PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer/BrushSizeValueLabel
+onready var _brush_size_slider = $PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer/BrushSizeValueSlider
 onready var _camera = $Camera
 onready var _camera_ui = $CameraUI
 onready var _container_content_dialog = $ContainerContentDialog
 onready var _control_hint_label = $CameraUI/ControlHintLabel
 onready var _cursors = $CameraUI/Cursors
 onready var _debug_info_label = $CameraUI/DebugInfoLabel
+onready var _erase_tool_menu = $EraseToolMenu
+onready var _eraser_size_label = $EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer/EraserSizeValueLabel
+onready var _eraser_size_slider = $EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer/EraserSizeValueSlider
+onready var _hand_preview_rect = $HandPreviewRect
+onready var _paint_tool_menu = $PaintToolMenu
 onready var _piece_context_menu = $PieceContextMenu
 onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 onready var _ruler_scale_slider = $RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider
@@ -74,6 +87,8 @@ const ZOOM_CAMERA_NEAR_SCALAR = 0.01
 const ZOOM_DISTANCE_MIN = 2.0
 const ZOOM_DISTANCE_MAX = 200.0
 
+export(bool) var hand_preview_enabled: bool = true
+export(float) var hand_preview_delay: float = 0.5
 export(bool) var hold_left_click_to_move: bool = false
 export(float) var lift_sensitivity: float = 1.0
 export(float) var max_speed: float = 10.0
@@ -85,6 +100,7 @@ export(float) var zoom_sensitivity: float = 1.0
 var send_cursor_position: bool = false
 
 var _box_select_init_pos = Vector2()
+var _container_multi_context: PieceContainer = null
 var _cursor_on_table = false
 var _cursor_position = Vector3()
 var _drag_camera_anchor = Vector3()
@@ -99,8 +115,10 @@ var _initial_transform = Transform.IDENTITY
 var _initial_zoom = 0.0
 var _is_box_selecting = false
 var _is_dragging_camera = false
+var _is_erasing = false
 var _is_grabbing_selected = false
 var _is_hovering_selected = false
+var _is_painting = false
 var _last_sent_cursor_position = Vector3()
 var _move_down = false
 var _move_left = false
@@ -111,11 +129,15 @@ var _movement_dir = Vector3()
 var _movement_vel = Vector3()
 var _perform_box_select = false
 var _piece_mouse_is_over: Piece = null
+var _piece_mouse_is_over_last: Piece = null
+var _piece_mouse_is_over_time: float = 0.0
 var _piece_rotation_amount = 1.0
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
 var _ruler_placing_point2 = false
 var _selected_pieces = []
+var _send_erase_position = false
+var _send_paint_position = false
 var _spawn_point_position = Vector3()
 var _speaker_connected: SpeakerPiece = null
 var _speaker_track_label: Label = null
@@ -177,6 +199,10 @@ func apply_options(config: ConfigFile) -> void:
 		lift_sensitivity *= -1
 	
 	piece_rotate_invert = config.get_value("controls", "piece_rotation_invert")
+	
+	hand_preview_enabled = config.get_value("controls", "hand_preview_enabled")
+	hand_preview_delay = config.get_value("controls", "hand_preview_delay")
+	_hand_preview_rect.rect_size.y = int(50 + 250 * config.get_value("controls", "hand_preview_size"))
 	
 	_control_hint_label.visible = not config.get_value("controls", "hide_control_hints")
 	_cursors.visible = not config.get_value("multiplayer", "hide_cursors")
@@ -330,6 +356,45 @@ func _process(delta):
 		if _grabbing_time > GRABBING_SLOW_TIME:
 			_start_hovering_grabbed_piece(false)
 	
+	if _piece_mouse_is_over == _piece_mouse_is_over_last:
+		_piece_mouse_is_over_time += delta
+	else:
+		_piece_mouse_is_over_time = 0.0
+	_piece_mouse_is_over_last = _piece_mouse_is_over
+	
+	_hand_preview_rect.visible = false
+	if hand_preview_enabled:
+		if _piece_mouse_is_over_time > hand_preview_delay:
+			if _piece_mouse_is_over is Card:
+				if _piece_mouse_is_over.over_hand == get_tree().get_network_unique_id():
+					if not _selected_pieces.has(_piece_mouse_is_over):
+						_hand_preview_rect.visible = true
+	
+	if _hand_preview_rect.visible:
+		var card_entry = _piece_mouse_is_over.piece_entry
+		
+		var texture_path_key = "texture_path"
+		if _piece_mouse_is_over.transform.basis.y.y < 0.0:
+			texture_path_key = "texture_path_1"
+		var texture_path = card_entry[texture_path_key]
+		
+		var texture_changed = true
+		if _hand_preview_rect.texture:
+			if _hand_preview_rect.texture.resource_path == texture_path:
+				texture_changed = false
+		
+		if texture_changed:
+			_hand_preview_rect.texture = load(texture_path)
+		
+		var preview_height = _hand_preview_rect.rect_size.y
+		var card_scale = card_entry["scale"]
+		var aspect_ratio = card_scale.x / card_scale.z
+		_hand_preview_rect.rect_size.x = aspect_ratio * preview_height
+		
+		var position = get_viewport().get_mouse_position()
+		position.y -= preview_height
+		_hand_preview_rect.rect_position = position
+	
 	# TODO: Only do this if the state of the camera changes.
 	if _control_hint_label.visible:
 		_set_control_hint_label()
@@ -451,6 +516,15 @@ func _physics_process(_delta):
 					append_selected_pieces([box_result.collider])
 		
 		_perform_box_select = false
+	
+	if _send_paint_position:
+		emit_signal("painting", _cursor_position, _brush_color_picker.color,
+			_brush_size_slider.value)
+		_send_paint_position = false
+	
+	if _send_erase_position:
+		emit_signal("erasing", _cursor_position, _eraser_size_slider.value)
+		_send_erase_position = false
 
 func _process_input(_delta):
 	
@@ -696,6 +770,19 @@ func _on_context_add_objects_pressed() -> void:
 		if piece is PieceContainer:
 			emit_signal("spawning_piece_in_container", piece.name)
 
+func _on_context_add_selected_pressed() -> void:
+	_hide_context_menu()
+	
+	if _container_multi_context == null:
+		return
+	
+	var pieces = []
+	for piece in _selected_pieces:
+		if piece != _container_multi_context:
+			pieces.append(piece)
+	
+	emit_signal("adding_pieces_to_container", _container_multi_context, pieces)
+
 func _on_context_collect_all_pressed() -> void:
 	_hide_context_menu()
 	if _selected_pieces.size() == 1:
@@ -903,6 +990,20 @@ func _popup_piece_context_menu() -> void:
 		var count_label = Label.new()
 		count_label.text = tr("Count: %d") % count
 		_piece_context_menu_container.add_child(count_label)
+	
+	################
+	# MULTI-OBJECT #
+	################
+	
+	_container_multi_context = null
+	if _piece_mouse_is_over is PieceContainer:
+		if _selected_pieces.size() > 1:
+			var add_selected_button = Button.new()
+			add_selected_button.text = tr("Add selected objects...")
+			add_selected_button.connect("pressed", self, "_on_context_add_selected_pressed")
+			_piece_context_menu_container.add_child(add_selected_button)
+			
+			_container_multi_context = _piece_mouse_is_over
 	
 	###########
 	# LEVEL 2 #
@@ -1214,6 +1315,12 @@ func _set_control_hint_label() -> void:
 		else:
 			text += _set_control_hint_label_row(tr("Draw hidden area"), lmb)
 	
+	elif _tool == TOOL_PAINT:
+		text += _set_control_hint_label_row(tr("Paint Table"), lmb, hold)
+	
+	elif _tool == TOOL_ERASE:
+		text += _set_control_hint_label_row(tr("Erase Paint"), lmb, hold)
+	
 	######################
 	# RIGHT MOUSE BUTTON #
 	######################
@@ -1233,6 +1340,12 @@ func _set_control_hint_label() -> void:
 	elif _tool == TOOL_HIDDEN_AREA:
 		if _hidden_area_mouse_is_over:
 			text += _set_control_hint_label_row(tr("Remove hidden area"), rmb)
+	
+	elif _tool == TOOL_PAINT:
+		pass
+	
+	elif _tool == TOOL_ERASE:
+		pass
 	
 	#########
 	# OTHER #
@@ -1458,7 +1571,7 @@ func _set_timer_controls() -> void:
 # Set the tool used by the player.
 # new_tool: The tool to be used. See the TOOL_* enum for possible values.
 func _set_tool(new_tool: int) -> void:
-	if new_tool < TOOL_CURSOR or new_tool > TOOL_HIDDEN_AREA:
+	if new_tool < TOOL_CURSOR or new_tool > TOOL_ERASE:
 		push_error("Invalid argument for _set_tool!")
 		return
 	
@@ -1491,6 +1604,10 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 			selected.append(piece)
 		
 		clear_selected_pieces()
+		
+		# Now that there are no selected pieces, it's possible that the hand
+		# preview shows up again - this is a workaround to prevent that.
+		_piece_mouse_is_over_time = 0.0
 		
 		if not selected.empty():
 			_hover_y_offset = 0
@@ -1562,7 +1679,18 @@ func _on_moving() -> bool:
 			piece.rpc_unreliable_id(1, "set_hover_position", get_hover_position())
 		return true
 	
+	if _is_painting:
+		_send_paint_position = true
+		return true
+	
+	if _is_erasing:
+		_send_erase_position = true
+		return true
+	
 	return false
+
+func _on_BrushSizeValueSlider_value_changed(value: float):
+	_brush_size_label.text = str(value)
 
 func _on_ContainerContentDialog_take_all_from(container: PieceContainer):
 	_container_content_dialog.visible = false
@@ -1576,6 +1704,19 @@ func _on_ContainerContentDialog_take_from(container: PieceContainer, names: Arra
 
 func _on_CursorToolButton_pressed():
 	_set_tool(TOOL_CURSOR)
+
+func _on_EraserSizeValueSlider_value_changed(value: float):
+	_eraser_size_label.text = str(value)
+
+func _on_EraseOKButton_pressed():
+	_erase_tool_menu.visible = false
+
+func _on_EraseToolButton_pressed():
+	_set_tool(TOOL_ERASE)
+	
+	_erase_tool_menu.rect_position = get_viewport().get_mouse_position()
+	_erase_tool_menu.rect_position.y -= _erase_tool_menu.rect_size.y
+	_erase_tool_menu.popup()
 
 func _on_HiddenAreaToolButton_pressed():
 	_set_tool(TOOL_HIDDEN_AREA)
@@ -1707,6 +1848,12 @@ func _on_MouseGrab_gui_input(event):
 					
 					_hidden_area_placing_point2 = not _hidden_area_placing_point2
 					emit_signal("setting_hidden_area_preview_visible", _hidden_area_placing_point2)
+			
+			elif _tool == TOOL_PAINT:
+				_is_painting = event.is_pressed()
+			
+			elif _tool == TOOL_ERASE:
+				_is_erasing = event.is_pressed()
 		
 		elif event.button_index == BUTTON_RIGHT:
 			if _is_hovering_selected:
@@ -1722,7 +1869,10 @@ func _on_MouseGrab_gui_input(event):
 					if _tool == TOOL_CURSOR:
 						if _piece_mouse_is_over:
 							if not _selected_pieces.has(_piece_mouse_is_over):
-								set_selected_pieces([_piece_mouse_is_over])
+								if _piece_mouse_is_over is PieceContainer:
+									append_selected_pieces([_piece_mouse_is_over])
+								else:
+									set_selected_pieces([_piece_mouse_is_over])
 						else:
 							clear_selected_pieces()
 				else:
@@ -1749,6 +1899,12 @@ func _on_MouseGrab_gui_input(event):
 						if event.position == _right_click_pos:
 							if _hidden_area_mouse_is_over:
 								emit_signal("removing_hidden_area", _hidden_area_mouse_is_over)
+					
+					elif _tool == TOOL_PAINT:
+						pass
+					
+					elif _tool == TOOL_ERASE:
+						pass
 		
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
@@ -1842,6 +1998,16 @@ func _on_MouseGrab_gui_input(event):
 			
 			get_tree().set_input_as_handled()
 
+func _on_PaintOKButton_pressed():
+	_paint_tool_menu.visible = false
+
+func _on_PaintToolButton_pressed():
+	_set_tool(TOOL_PAINT)
+	
+	_paint_tool_menu.rect_position = get_viewport().get_mouse_position()
+	_paint_tool_menu.rect_position.y -= _paint_tool_menu.rect_size.y
+	_paint_tool_menu.popup()
+
 func _on_PieceContextMenu_popup_hide():
 	# Any variables that were potentially set if the object was a timer need
 	# to be reset.
@@ -1886,6 +2052,7 @@ func _on_RulerToolButton_pressed():
 	_set_tool(TOOL_RULER)
 	
 	_ruler_tool_menu.rect_position = get_viewport().get_mouse_position()
+	_ruler_tool_menu.rect_position.y -= _ruler_tool_menu.rect_size.y
 	_ruler_tool_menu.popup()
 
 func _on_TrackDialog_entry_requested(_pack: String, type: String, entry: Dictionary):

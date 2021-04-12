@@ -10,18 +10,18 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   id="Capa_1"
+   id="Layer_1"
    x="0px"
    y="0px"
-   viewBox="0 0 491.2 491.2"
-   style="enable-background:new 0 0 491.2 491.2;"
+   viewBox="0 0 330 330"
+   style="enable-background:new 0 0 330 330;"
    xml:space="preserve"
-   sodipodi:docname="RulerIconPressed.svg"
+   sodipodi:docname="EraserIconNormal.svg"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"><metadata
-   id="metadata41"><rdf:RDF><cc:Work
+   id="metadata38"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
-   id="defs39" /><sodipodi:namedview
+   id="defs36" /><sodipodi:namedview
    pagecolor="#ffffff"
    bordercolor="#666666"
    borderopacity="1"
@@ -32,66 +32,61 @@
    inkscape:pageshadow="2"
    inkscape:window-width="1920"
    inkscape:window-height="1015"
-   id="namedview37"
+   id="namedview34"
    showgrid="false"
-   inkscape:zoom="0.48045601"
-   inkscape:cx="245.60001"
-   inkscape:cy="245.60001"
+   inkscape:zoom="0.71515152"
+   inkscape:cx="165"
+   inkscape:cy="165"
    inkscape:window-x="0"
    inkscape:window-y="0"
    inkscape:window-maximized="1"
-   inkscape:current-layer="Capa_1" />
+   inkscape:current-layer="Layer_1" />
+<path
+   id="XMLID_85_"
+   d="M315,285H201.214l124.393-124.394c5.858-5.857,5.858-15.355,0-21.213l-120-120  c-5.857-5.858-15.355-5.858-21.213,0l-180,179.999C1.58,202.205,0,206.02,0,209.999s1.58,7.794,4.394,10.607l90,90  c2.813,2.813,6.628,4.393,10.606,4.393L165,315c0.006,0,0.011-0.001,0.017-0.001L315,315c8.283,0,15-6.716,15-15  C330,291.716,323.284,285,315,285z M195,51.213L293.787,150L207,236.787L108.213,138L195,51.213z" />
 <g
-   id="g4"
-   style="fill:#ffffff">
-	<path
-   d="M470.3,0.55H20.9C9.4,0.55,0,9.95,0,21.45v448.3c0,11.5,9.4,20.9,20.9,20.9h143.9c11.5,0,20.9-9.4,20.9-18.8v-284.7h284.6   c11.5,0,20.9-9.4,20.9-20.9V21.45C491.1,9.95,481.7,0.55,470.3,0.55z M449.4,144.45H164.8c-11.5,0-20.9,9.4-20.9,20.9v284.6H40.7   v-92.8h20.9c10.4,0,19.8-8.3,20.9-20.9c0-11.5-9.4-20.9-20.9-20.9H40.7v-49h20.9c10.4,0,20.9-9.4,20.9-20.9s-9.4-20.9-20.9-20.9   H40.7v-50h20.9c10.4,0,19.8-9.4,20.9-20.9c0-11.5-9.4-20.9-20.9-20.9H40.7v-91.5h91.7v16.7c0,11.5,9.4,20.9,20.9,20.9   s20.9-9.4,20.9-20.9v-16.7h50v16.7c0,11.5,9.4,20.9,20.9,20.9s20.9-9.4,20.9-20.9v-16.7h50v16.7c0,11.5,9.4,20.9,20.9,20.9   s19.8-9.4,20.9-20.9v-16.7h91.7v103.2H449.4z"
-   id="path2"
-   style="fill:#ffffff" />
+   id="g3">
 </g>
 <g
-   id="g6">
+   id="g5">
 </g>
 <g
-   id="g8">
+   id="g7">
 </g>
 <g
-   id="g10">
+   id="g9">
 </g>
 <g
-   id="g12">
+   id="g11">
 </g>
 <g
-   id="g14">
+   id="g13">
 </g>
 <g
-   id="g16">
+   id="g15">
 </g>
 <g
-   id="g18">
+   id="g17">
 </g>
 <g
-   id="g20">
+   id="g19">
 </g>
 <g
-   id="g22">
+   id="g21">
 </g>
 <g
-   id="g24">
+   id="g23">
 </g>
 <g
-   id="g26">
+   id="g25">
 </g>
 <g
-   id="g28">
+   id="g27">
 </g>
 <g
-   id="g30">
+   id="g29">
 </g>
 <g
-   id="g32">
-</g>
-<g
-   id="g34">
+   id="g31">
 </g>
 </svg>

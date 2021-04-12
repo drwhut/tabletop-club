@@ -128,42 +128,19 @@ func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 		push_error("Stack entry arrays do not match size!")
 		return
 	
-	var single_piece = _load_res(stack_entry["scene_path"]).instance()
-	if not single_piece is Piece:
-		push_error("Scene path does not point to a piece!")
-		return
-	if single_piece.get_collision_shapes().size() != 1:
-		push_error("Stackable pieces can only have one collision shape!")
-		return
-	if single_piece.get_mesh_instances().size() != 1:
-		push_error("Stackable pieces can only have one mesh instance!")
-		return
-	
-	scale_piece(single_piece, stack_entry["scale"])
-	
 	for i in range(stack_entry["texture_paths"].size()):
-		var mesh = get_piece_meshes(single_piece)[0]
-		var shape = single_piece.get_collision_shapes()[0]
-		
 		var mass = stack_entry.masses[i]
 		var texture_path = stack_entry.texture_paths[i]
 		
 		# Create a new piece entry based on the stack entry.
-		mesh.set_meta("piece_entry", {
+		var piece_entry = {
 			"description": stack_entry.description,
 			"mass": mass,
 			"name": stack_entry.name,
 			"scale": stack_entry.scale,
 			"scene_path": stack_entry.scene_path,
 			"texture_path": texture_path
-		})
-		
-		# TODO: Make sure these MeshInstances do the exact same thing as Pieces
-		# when it comes to applying textures.
-		var texture: Texture = _load_res(texture_path)
-		var new_material = SpatialMaterial.new()
-		new_material.albedo_texture = texture
-		mesh.set_surface_material(0, new_material)
+		}
 		
 		# Cards are a special case, since they have two surfaces (one for each
 		# face), so we need to make sure the second texture is accounted for.
@@ -174,21 +151,13 @@ func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 			
 			var entry = AssetDB.search_type(pack, "cards", asset)
 			if not entry.empty():
-				var back_texture_path = entry["texture_path_1"]
-				
-				var back_texture: Texture = _load_res(back_texture_path)
-				var back_material = SpatialMaterial.new()
-				back_material.albedo_texture = back_texture
-				mesh.set_surface_material(1, back_material)
-				
-				mesh.get_meta("piece_entry")["texture_path_1"] = back_texture_path
+				piece_entry["texture_path_1"] = entry["texture_path_1"]
 			else:
 				push_error("Inferred %s/cards/%s from '%s', asset was not found in AssetDB!" % [
 					pack, asset, texture_path])
 		
-		stack.add_piece(mesh, shape, Stack.STACK_BOTTOM, Stack.FLIP_NO)
-	
-	single_piece.free()
+		stack.add_piece(piece_entry, Transform.IDENTITY, Stack.STACK_BOTTOM,
+			Stack.FLIP_NO)
 
 # Free the entire resource cache.
 func free_cache() -> void:

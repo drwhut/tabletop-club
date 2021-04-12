@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Scripts/Game/Pieces/Stack.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game/Pieces/StackLasagne.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/Chips/ChipStackShuffleSounds.tres" type="Resource" id=2]
 [ext_resource path="res://Sounds/Cards/CardStackRemoveSounds.tres" type="Resource" id=3]
 [ext_resource path="res://Sounds/Cards/CardStackOrientSounds.tres" type="Resource" id=4]
@@ -10,7 +10,7 @@
 [ext_resource path="res://Sounds/Chips/ChipStackOrientSounds.tres" type="Resource" id=8]
 [ext_resource path="res://Sounds/Chips/ChipStackRemoveSounds.tres" type="Resource" id=9]
 
-[node name="Stack" type="RigidBody"]
+[node name="StackLasagne" type="RigidBody"]
 mass = 0.01
 contacts_reported = 1
 contact_monitor = true
@@ -18,9 +18,13 @@ script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "A stack is a piece that contains stackable pieces, one on top of another, and is a stackable piece itself.
 
-The shape of the stack is determined by the first piece that enters the stack, and the stack automatically adjusts the height of the shape depending on the number of pieces in the stack."
+The shape of the stack is determined by the first piece that enters the stack, and the stack automatically adjusts the height of the shape depending on the number of pieces in the stack.
+
+A lasagne stack renders all of the pieces inside it."
 }
 effect_player_path = NodePath("EffectPlayer")
+collision_shape_path = NodePath("CollisionShape")
+outline_mesh_path = NodePath("CollisionShape/OutlineMeshInstance")
 card_add_sounds = ExtResource( 6 )
 card_orient_sounds = ExtResource( 4 )
 card_remove_sounds = ExtResource( 3 )
@@ -29,6 +33,7 @@ chip_add_sounds = ExtResource( 7 )
 chip_orient_sounds = ExtResource( 8 )
 chip_remove_sounds = ExtResource( 9 )
 chip_shuffle_sounds = ExtResource( 2 )
+pieces_path = NodePath("CollisionShape/Pieces")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 

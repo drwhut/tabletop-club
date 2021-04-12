@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RulerIconPressed.svg-9f2416851b6107d0bb4f282ec22f5740.stex"
+path="res://.import/RulerIcon.svg-49ae1341722d3b981c9b1f2394f27281.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/RulerIconPressed.svg"
-dest_files=[ "res://.import/RulerIconPressed.svg-9f2416851b6107d0bb4f282ec22f5740.stex" ]
+source_file="res://Images/RulerIcon.svg"
+dest_files=[ "res://.import/RulerIcon.svg-49ae1341722d3b981c9b1f2394f27281.stex" ]
 
 [params]
 

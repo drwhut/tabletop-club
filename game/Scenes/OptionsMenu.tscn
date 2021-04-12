@@ -318,19 +318,72 @@ margin_top = 280.0
 margin_right = 976.0
 margin_bottom = 308.0
 
-[node name="HideControlHints" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+[node name="HandPreviewEnabled" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_top = 316.0
 margin_right = 486.0
 margin_bottom = 336.0
+size_flags_horizontal = 3
+text = "Hand Preview Enabled"
+align = 2
+
+[node name="HandPreviewEnabledCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 312.0
+margin_right = 976.0
+margin_bottom = 340.0
+pressed = true
+
+[node name="HandPreviewDelay" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 344.0
+margin_right = 486.0
+margin_bottom = 364.0
+size_flags_horizontal = 3
+text = "Hand Preview Delay"
+align = 2
+
+[node name="HandPreviewDelaySlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 344.0
+margin_right = 976.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="HandPreviewSize" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 368.0
+margin_right = 486.0
+margin_bottom = 388.0
+size_flags_horizontal = 3
+text = "Hand Preview Size"
+align = 2
+
+[node name="HandPreviewSizeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_left = 490.0
+margin_top = 368.0
+margin_right = 976.0
+margin_bottom = 384.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="HideControlHints" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
+margin_top = 396.0
+margin_right = 486.0
+margin_bottom = 416.0
 size_flags_horizontal = 3
 text = "Hide Control Hints"
 align = 2
 
 [node name="HideControlHintsCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Controls/GridContainer"]
 margin_left = 490.0
-margin_top = 312.0
+margin_top = 392.0
 margin_right = 976.0
-margin_bottom = 340.0
+margin_bottom = 420.0
 
 [node name="General" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -918,6 +971,22 @@ min_value = 0.01
 max_value = 1.0
 step = 0.01
 value = 0.5
+
+[node name="TablePaintFiltering" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_top = 298.0
+margin_right = 486.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+text = "Table Paint Filtering"
+align = 2
+
+[node name="TablePaintFilteringCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
+margin_left = 490.0
+margin_top = 294.0
+margin_right = 976.0
+margin_bottom = 322.0
+size_flags_horizontal = 3
+pressed = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 534.0

@@ -604,9 +604,15 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 				else:
 					push_error("Hand position is not a dictionary!")
 		
+		var paint_plane = _get_file_config_value(config, from.get_file(), "paint_plane", 100.0 * Vector2.ONE)
+		if paint_plane.x <= 0.0 or paint_plane.y <= 0.0:
+			push_error("Paint plane size must be positive!")
+			paint_plane = 100.0 * Vector2.ONE
+		
 		entry["bounce"] = bounce
 		entry["default"] = default
 		entry["hands"] = hands
+		entry["paint_plane"] = paint_plane
 	else: # Objects.
 		# Converting from g -> kg -> (Ns^2/cm, since game units are in cm) = x10.
 		var mass = 10 * _get_file_config_value(config, from.get_file(), "mass", 1.0)
