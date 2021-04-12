@@ -244,6 +244,10 @@ game_toggle_debug_info={
  ]
 }
 
+[locale]
+
+translations=PoolStringArray(  )
+
 [physics]
 
 3d/default_gravity=98.1

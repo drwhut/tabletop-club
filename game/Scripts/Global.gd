@@ -31,6 +31,8 @@ enum {
 
 const LOADING_BLOCK_TIME = 20
 
+var system_locale: String = ""
+
 var _current_scene: Node = null
 var _loader: ResourceInteractiveLoader = null
 var _loader_args: Dictionary = {}
@@ -90,6 +92,9 @@ func _ready():
 	_current_scene = root.get_child(root.get_child_count() - 1)
 	
 	set_process(false)
+	
+	# We're assuming the locale hasn't been modified yet.
+	system_locale = TranslationServer.get_locale()
 
 func _process(_delta):
 	if _loader == null:

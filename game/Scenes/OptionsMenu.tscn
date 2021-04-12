@@ -385,43 +385,73 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="OpenAssetsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+[node name="Language" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 3.0
 margin_right = 486.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+text = "Language"
+align = 2
+
+[node name="LanguageButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_left = 490.0
+margin_right = 976.0
 margin_bottom = 26.0
+size_flags_horizontal = 3
+selected = 0
+
+[node name="DividerLeft" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 30.0
+margin_right = 486.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+
+[node name="DividerRight" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_left = 490.0
+margin_top = 30.0
+margin_right = 976.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+
+[node name="OpenAssetsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 34.0
+margin_right = 486.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 
 [node name="OpenAssetsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
+margin_top = 34.0
 margin_right = 976.0
-margin_bottom = 26.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 text = "Open Assets Folder"
 
 [node name="ReimportSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
-margin_top = 30.0
+margin_top = 64.0
 margin_right = 486.0
-margin_bottom = 56.0
+margin_bottom = 90.0
 size_flags_horizontal = 3
 
 [node name="ReimportButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
-margin_top = 30.0
+margin_top = 64.0
 margin_right = 976.0
-margin_bottom = 56.0
+margin_bottom = 90.0
 size_flags_horizontal = 3
 text = "Reimport Assets"
 
 [node name="ViewLicenseSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
-margin_top = 60.0
+margin_top = 94.0
 margin_right = 486.0
-margin_bottom = 86.0
+margin_bottom = 120.0
 size_flags_horizontal = 3
 
 [node name="ViewLicenseButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
-margin_top = 60.0
+margin_top = 94.0
 margin_right = 976.0
-margin_bottom = 86.0
+margin_bottom = 120.0
 size_flags_horizontal = 3
 text = "View License"
 
@@ -1115,6 +1145,7 @@ dialog_autowrap = true
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/MasterVolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SoundsVolumeSlider" to="." method="_on_SoundsVolumeSlider_value_changed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/LanguageButton" to="." method="_on_LanguageButton_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton" to="." method="_on_OpenAssetsButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ReimportButton" to="." method="_on_ReimportButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ViewLicenseButton" to="." method="_on_ViewLicenseButton_pressed"]

@@ -26,6 +26,15 @@ onready var _missing_assets_popup = $MissingAssetsPopup
 onready var _progress_bar = $VBoxContainer/ProgressBar
 
 func _ready():
+	# TODO: Load ALL options at the start of the game.
+	var locale = ""
+	var options = ConfigFile.new()
+	if options.load("user://options.cfg") == OK:
+		locale = options.get_value("general", "language", "")
+	if locale.empty():
+		locale = Global.system_locale
+	TranslationServer.set_locale(locale)
+	
 	AssetDB.connect("completed", self, "_on_importing_completed")
 	AssetDB.connect("importing_file", self, "_on_importing_file")
 	

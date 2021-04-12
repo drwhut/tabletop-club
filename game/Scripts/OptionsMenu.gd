@@ -23,10 +23,16 @@ extends Control
 
 signal applying_options(config)
 
+var LOCALES = [
+	{ "locale": "", "name": tr("System Default") },
+	{ "locale": "en", "name": "English" }
+]
+
 const OPTIONS_FILE_PATH = "user://options.cfg"
 
 onready var _binding_background = $BindingBackground
 onready var _key_bindings_parent = $"MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"
+onready var _language_button = $MarginContainer/VBoxContainer/TabContainer/General/GridContainer/LanguageButton
 onready var _license_dialog = $LicenseDialog
 onready var _open_assets_button = $MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton
 onready var _reimport_confirm = $ReimportConfirm
@@ -38,6 +44,13 @@ var _action_to_bind = ""
 var _restart_popup_shown = false
 
 func _ready():
+	for locale_meta in LOCALES:
+		var locale = locale_meta["locale"]
+		var name = locale_meta["name"]
+		var index = _language_button.get_item_count()
+		_language_button.add_item(name)
+		_language_button.set_item_metadata(index, locale)
+	
 	var config = _create_config_from_current()
 	_load_file(config)
 	_set_current_with_config(config)
@@ -195,7 +208,11 @@ func _create_config_from_current() -> ConfigFile:
 				elif value is LineEdit:
 					key_value = value.text
 				elif value is OptionButton:
-					key_value = value.selected
+					if key_name == "language":
+						# Save the locale instead of the index.
+						key_value = value.get_selected_metadata()
+					else:
+						key_value = value.selected
 				elif value is Slider:
 					key_value = value.value
 				elif value is SpinBox:
@@ -302,7 +319,18 @@ func _set_current_with_config(config: ConfigFile) -> void:
 					elif value is LineEdit:
 						value.text = key_value
 					elif value is OptionButton:
-						value.selected = key_value
+						if key_name == "language":
+							# Load the locale instead of the index.
+							var locale = key_value
+							var index = -1
+							for locale_index in range(len(LOCALES)):
+								if LOCALES[locale_index]["locale"] == locale:
+									index = locale_index
+									break
+							if index >= 0:
+								value.selected = index
+						else:
+							value.selected = key_value
 					elif value is Slider:
 						value.value = key_value
 					elif value is SpinBox:
@@ -356,6 +384,12 @@ func _on_BindingBackground_unhandled_input(event: InputEvent):
 
 func _on_CancelBindButton_pressed():
 	_binding_background.visible = false
+
+func _on_LanguageButton_item_selected(index: int):
+	var locale = LOCALES[index]["locale"]
+	if locale.empty():
+		locale = Global.system_locale
+	TranslationServer.set_locale(locale)
 
 func _on_MasterVolumeSlider_value_changed(_value: float):
 	_apply_audio_config(_create_config_from_current())
