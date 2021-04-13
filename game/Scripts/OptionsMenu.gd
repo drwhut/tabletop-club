@@ -25,7 +25,8 @@ signal applying_options(config)
 
 var LOCALES = [
 	{ "locale": "", "name": tr("System Default") },
-	{ "locale": "en", "name": "English" }
+	{ "locale": "en", "name": "English" },
+	{ "locale": "fr", "name": "Français" }
 ]
 
 const OPTIONS_FILE_PATH = "user://options.cfg"

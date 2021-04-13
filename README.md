@@ -21,7 +21,10 @@ or
 
 [![Translation Status](https://hosted.weblate.org/widgets/opentabletop/-/svg-badge.svg)](https://hosted.weblate.org/engage/opentabletop/)
 
-Currently, the game and documentation are only available in English.
+Language | Game               | Documentation
+-------- | ------------------ | ------------------
+English  | :heavy_check_mark: | :heavy_check_mark:
+French   | 82%                | :x:
 
 If you want to help translate the project, you can go to the project's
 [Hosted Weblate](https://hosted.weblate.org/engage/opentabletop/) page.

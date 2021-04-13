@@ -246,7 +246,7 @@ game_toggle_debug_info={
 
 [locale]
 
-translations=PoolStringArray(  )
+translations=PoolStringArray( "res://Translations/fr.po" )
 
 [physics]
 
