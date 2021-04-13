@@ -22,6 +22,7 @@
 extends Control
 
 signal applying_options(config)
+signal locale_changed(locale)
 
 var LOCALES = [
 	{ "locale": "", "name": tr("System Default") },
@@ -391,6 +392,8 @@ func _on_LanguageButton_item_selected(index: int):
 	if locale.empty():
 		locale = Global.system_locale
 	TranslationServer.set_locale(locale)
+	
+	emit_signal("locale_changed", locale)
 
 func _on_MasterVolumeSlider_value_changed(_value: float):
 	_apply_audio_config(_create_config_from_current())

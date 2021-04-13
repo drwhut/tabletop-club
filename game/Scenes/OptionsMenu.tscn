@@ -45,6 +45,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "audio"
+text = "Audio"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio"]
 margin_right = 976.0
@@ -115,6 +116,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "controls"
+text = "Controls"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controls"]
 margin_right = 976.0
@@ -377,6 +379,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "general"
+text = "General"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/General"]
 margin_right = 976.0
@@ -398,7 +401,6 @@ margin_left = 490.0
 margin_right = 976.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-selected = 0
 
 [node name="DividerLeft" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_top = 30.0
@@ -465,6 +467,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "key_bindings"
+text = "Key Bindings"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings"]
 margin_right = 976.0
@@ -715,6 +718,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "multiplayer"
+text = "Multiplayer"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer"]
 margin_right = 976.0
@@ -796,6 +800,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "video"
+text = "Video"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video"]
 margin_right = 976.0

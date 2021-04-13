@@ -26,6 +26,7 @@ onready var _credits_label = $CreditsDialog/CreditsLabel
 onready var _error_dialog = $ErrorDialog
 onready var _join_server_edit = $CenterContainer/VBoxContainer/JoinContainer/JoinServerEdit
 onready var _options_menu = $OptionsMenu
+onready var _random_music_player = $RandomMusicPlayer
 onready var _server_button = $CenterContainer/VBoxContainer/ServerButton
 
 # Display an error.
@@ -35,6 +36,32 @@ func display_error(error: String) -> void:
 	_error_dialog.popup_centered()
 
 func _ready():
+	_update_credits_text()
+	
+	var file = File.new()
+	if file.file_exists("server.cfg"):
+		if OS.is_debug_build():
+			_server_button.visible = true
+		else:
+			_start_dedicated_server()
+
+# Start a dedicated server using the values in the server.cfg file in the
+# current working directory.
+func _start_dedicated_server():
+	var server_config = ConfigFile.new()
+	var server_config_err = server_config.load("server.cfg")
+	
+	if server_config_err == OK:
+		var max_players = server_config.get_value("server", "max_players", 10)
+		var port = server_config.get_value("server", "port", 26271)
+		
+		Global.start_game_as_server(max_players, port)
+	else:
+		print("Failed to read server.cfg (error ", server_config_err, ")")
+		return
+
+# Update the credits dialog text.
+func _update_credits_text() -> void:
 	var credits_file = preload("res://CREDITS.tres")
 	
 	var credits_text = credits_file.text
@@ -63,28 +90,6 @@ func _ready():
 	for line in credits_lines:
 		_credits_label.bbcode_text += line + "\n"
 	_credits_label.bbcode_text += "[/center]"
-	
-	var file = File.new()
-	if file.file_exists("server.cfg"):
-		if OS.is_debug_build():
-			_server_button.visible = true
-		else:
-			_start_dedicated_server()
-
-# Start a dedicated server using the values in the server.cfg file in the
-# current working directory.
-func _start_dedicated_server():
-	var server_config = ConfigFile.new()
-	var server_config_err = server_config.load("server.cfg")
-	
-	if server_config_err == OK:
-		var max_players = server_config.get_value("server", "max_players", 10)
-		var port = server_config.get_value("server", "port", 26271)
-		
-		Global.start_game_as_server(max_players, port)
-	else:
-		print("Failed to read server.cfg (error ", server_config_err, ")")
-		return
 
 func _on_SingleplayerButton_pressed():
 	Global.start_game_singleplayer()
@@ -111,6 +116,10 @@ func _on_JoinButton_pressed():
 
 func _on_OptionsButton_pressed():
 	_options_menu.visible = true
+
+func _on_OptionsMenu_locale_changed(_locale: String):
+	_update_credits_text()
+	_random_music_player.update_label_text()
 
 func _on_CreditsButton_pressed():
 	_credits_dialog.popup_centered()

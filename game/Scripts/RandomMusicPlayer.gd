@@ -25,15 +25,19 @@ onready var _audio_player = $AudioStreamPlayer
 onready var _track_label = $TrackLabel
 
 var _music_queue = []
+var _track_name = ""
 
 # Play the next track in the queue.
 func next_track() -> void:
 	if _music_queue.empty():
-		_track_label.text = tr("Now Playing: %s") % tr("Nothing")
+		_track_name = tr("Nothing")
+		update_label_text()
 		return
 	
 	var track_entry = _music_queue.pop_front()
-	var track_name = track_entry["name"]
+	_track_name = track_entry["name"]
+	update_label_text()
+	
 	var track_stream = load(track_entry["audio_path"])
 	
 	# Make sure the track doesn't loop, no matter what format it is.
@@ -48,8 +52,10 @@ func next_track() -> void:
 	
 	_audio_player.stream = track_stream
 	_audio_player.play()
-	
-	_track_label.text = tr("Now Playing: %s") % track_name
+
+# Update the label text.
+func update_label_text() -> void:
+	_track_label.text = tr("Now Playing: %s") % _track_name
 
 func _ready():
 	var asset_db = AssetDB.get_db()
