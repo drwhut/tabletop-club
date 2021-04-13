@@ -289,6 +289,8 @@ func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) 
 	# send them the all clear, since they are already in control.
 	if not is_locked():
 		if player_id == _srv_hover_player:
+			srv_hover_position = init_pos
+			_srv_hover_offset = offset_pos
 			return true
 	
 	return false
