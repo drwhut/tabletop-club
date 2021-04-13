@@ -44,6 +44,9 @@ func _ready():
 	credits_text = credits_text.replace("FONTS", tr("Fonts"))
 	credits_text = credits_text.replace("IMAGES", tr("Images"))
 	credits_text = credits_text.replace("TOOL ICONS", tr("Tool Icons"))
+	credits_text = credits_text.replace("TRANSLATORS", tr("Translators"))
+	
+	credits_text = credits_text.replace("FRENCH", tr("French"))
 	
 	var credits_lines = credits_text.split("\n")
 	
