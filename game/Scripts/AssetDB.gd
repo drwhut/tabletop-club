@@ -203,6 +203,15 @@ func _import_all(_userdata) -> void:
 				
 				files_imported += 1
 			
+			if _db.has(pack):
+				if _db[pack].has(type):
+					var array: Array = _db[pack][type]
+					array.sort_custom(self, "_sort_assets")
+			
+			# Do this after the assets have been sorted so searching
+			# through them is much more efficient.
+			_add_inheriting_assets(pack_path, type)
+			
 			var type_meta = ASSET_PACK_SUBFOLDERS[type]
 			var asset_scene = type_meta["scene"]
 			
@@ -221,11 +230,6 @@ func _import_all(_userdata) -> void:
 					print("Loaded: %s" % stacks_file_path)
 				else:
 					push_error("Failed to load '%s' (error %d)!" % [stacks_file_path, err])
-			
-			if _db.has(pack):
-				if _db[pack].has(type):
-					var array: Array = _db[pack][type]
-					array.sort_custom(self, "_sort_assets")
 	
 	_send_completed_signal(catalog["asset_dir_exists"])
 
@@ -246,6 +250,50 @@ func _add_entry_to_db(pack: String, type: String, entry: Dictionary) -> void:
 	_db_mutex.unlock()
 	
 	print("Added: %s/%s/%s" % [pack, type, entry["name"]])
+
+# Add assets to the database that inherit properties frome existing assets.
+# pack_path: The path to the asset pack.
+# type: The type of the assets to add.
+func _add_inheriting_assets(pack_path: String, type: String) -> void:
+	var pack = pack_path.get_file()
+	var type_path = pack_path + "/" + type
+	var config_file_path = type_path + "/config.cfg"
+	var config_file = ConfigFile.new()
+	if config_file.load(config_file_path) != OK:
+		return
+	
+	var children = []
+	var file = File.new()
+	for section in config_file.get_sections():
+		if not "*" in section:
+			if not file.file_exists(type_path + "/" + section):
+				var parent = config_file.get_value(section, "parent", "")
+				if not parent.empty():
+					var inherit = search_type(pack, type, parent)
+					if not inherit.empty():
+						var child = inherit.duplicate()
+						child["name"] = section
+						for key in config_file.get_section_keys(section):
+							if child.has(key):
+								# TODO: Check the value is the same type.
+								child[key] = config_file.get_value(section, key)
+						
+						# We can't insert the new object into the DB now, since
+						# the DB needs to be sorted for us to search it
+						# efficiently, so we'll keep a list of them and add
+						# them all after, then sort the DB again.
+						children.append(child)
+					else:
+						push_error("Parent '%s' for object '%s' does not exist!" % [parent, section])
+				else:
+					push_error("Unknown object '%s' has no 'parent' key!" % section)
+	
+	if not children.empty():
+		for child in children:
+			_add_entry_to_db(pack, type, child)
+		
+		var array: Array = _db[pack][type]
+		array.sort_custom(self, "_sort_assets")
 
 # Calculate the bounding box of a 3D scene.
 # Returns: A 2-length array containing the min and max corners of the box.
@@ -689,61 +737,62 @@ func _import_file(from: String, to: String) -> int:
 # type: The type of the assets.
 # stack_config: The stack config file.
 func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) -> void:
+	var stack_entries = []
 	for stack_name in stack_config.get_sections():
 		var desc = stack_config.get_value(stack_name, "desc", "")
 		var items = stack_config.get_value(stack_name, "items")
 		
-		if items and items is Array:
-			var masses = []
-			var texture_paths = []
-			var scale = null
-			for item in items:
-				var mass = 1.0
-			
-				# We know everything but the scale of the piece at this point.
-				# So, we need to scan through the DB to find the texture, then
-				# see what the scale of that texture's piece is.
-				if not scale:
-					if _db.has(pack):
-						if _db[pack].has(type) and _db[pack][type] is Array:
-							var piece_entry = null
-							
-							for piece in _db[pack][type]:
-								if piece.has("texture_path") and piece["texture_path"] is String:
-									if piece["texture_path"].ends_with(item):
-										piece_entry = piece
-										break
-							
-							if piece_entry and piece_entry.has("scale"):
-								scale = piece_entry["scale"]
-								if piece_entry.has("mass"):
-									mass = piece_entry["mass"]
-							else:
-								push_error("Could not determine scale of %s!" % item)
+		if items != null:
+			if items is Array:
+				# The only unknown at this point is the scale of one of the
+				# objects - which should also be the same for all of them.
+				var scale = null
 				
-				# TODO: Check the file exists.
-				masses.push_back(mass)
-				var texture_path = "user://assets/" + pack + "/" + type + "/" + item
-				texture_paths.push_back(texture_path)
-			
-			if scale:
-				var type_meta = ASSET_PACK_SUBFOLDERS[type]
-				var type_scene = type_meta["scene"]
+				var masses = []
+				var texture_paths = []
+				for item in items:
+					var entry = search_type(pack, type, item)
+					if not entry.empty():
+						if scale == null:
+							scale = entry["scale"]
+						else:
+							if entry["scale"] != scale:
+								push_error("'%s' has inconsistent scale in stack '%s'!" % [item, stack_name])
+								continue
+						masses.append(entry["mass"])
+						texture_paths.append(entry["texture_path"])
+					else:
+						push_error("Item '%s' in stack '%s' does not exist!" % [item, stack_name])
 				
-				var stack_entry = {
-					"description": desc,
-					"masses": masses,
-					"name": stack_name,
-					"scale": scale,
-					"scene_path": type_scene,
-					"texture_paths": texture_paths
-				}
-				
-				_add_entry_to_db(pack, type, stack_entry)
+				if scale != null:
+					var type_meta = ASSET_PACK_SUBFOLDERS[type]
+					var type_scene = type_meta["scene"]
+					
+					var stack_entry = {
+						"description": desc,
+						"masses": masses,
+						"name": stack_name,
+						"scale": scale,
+						"scene_path": type_scene,
+						"texture_paths": texture_paths
+					}
+					
+					# For us to read the DB efficiently it needs to be kept in
+					# order, so add all of the stacks after we're done.
+					stack_entries.append(stack_entry)
+				else:
+					push_error("Could not determine the scale of stack '%s'!" % stack_name)
 			else:
-				print("Could not determine scale of stack %s!" % stack_name)
+				push_error("Items property of '%s' is not an array!" % stack_name)
 		else:
-			push_error("Stack %s has no item array!" % stack_name)
+			push_error("'%s' has no 'items' property!" % stack_name)
+	
+	if not stack_entries.empty():
+		for stack_entry in stack_entries:
+			_add_entry_to_db(pack, type, stack_entry)
+		
+		var array: Array = _db[pack][type]
+		array.sort_custom(self, "_sort_assets")
 
 # Function used to binary search an array of asset entries by name.
 func _search_assets(element: Dictionary, search: String) -> bool:

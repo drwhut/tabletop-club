@@ -126,6 +126,13 @@ Here is an example of a ``config.cfg`` file:
    ; You can tell the game to not import certain objects.
    ignore = true
 
+   ; You can create new objects that inherit the properties of another object,
+   ; which you can then overwrite.
+   [Light Object]
+   parent = "Heavy Object"
+
+   mass = 1.0 ; = 1.0g
+
 Here is the full list of properties you can modify in ``config.cfg``:
 
 +-------------------+-----------+------------------+----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -179,9 +186,9 @@ Here is an example of a ``stacks.cfg`` file:
    ; You then specify which objects are in the stack.
    ; Note that all of the objects need to be the same size.
    items = [
-       "Card 1.png",
-       "Card 2.png",
-       "Card 3.png"
+       "Card 1",
+       "Card 2",
+       "Card 3"
    ]
 
    ; This is the name of another stack.
@@ -190,4 +197,4 @@ Here is an example of a ``stacks.cfg`` file:
    desc = "My friend's stack isn't as good as my stack!"
 
    ; It doesn't matter if each object is on a new line.
-   items = ["Trading Card 1.jpg", "Trading Card 2.jpg"]
+   items = ["Trading Card 1", "Trading Card 2"]
