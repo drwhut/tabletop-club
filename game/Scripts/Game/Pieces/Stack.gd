@@ -372,6 +372,9 @@ func setup_outline_material():
 	
 	get_outline_mesh_instance().set_surface_material(0, _outline_material)
 
+func _ready():
+	_expose_albedo_color = false
+
 func _physics_process(_delta):
 	# If the stack is being shaken, then get the server to send a list of
 	# shuffled names to each client (including itself).

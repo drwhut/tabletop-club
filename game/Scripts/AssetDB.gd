@@ -662,12 +662,17 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 		entry["hands"] = hands
 		entry["paint_plane"] = paint_plane
 	else: # Objects.
+		var color_str = _get_file_config_value(config, from.get_file(), "color", "#ffffff")
+		var color = Color(color_str)
+		color.a = 1.0
+		
 		# Converting from g -> kg -> (Ns^2/cm, since game units are in cm) = x10.
 		var mass = 10 * _get_file_config_value(config, from.get_file(), "mass", 1.0)
 		if mass < 0.0:
 			push_error("Mass cannot be negative!")
 			mass = 10.0
 		
+		entry["color"] = color
 		entry["mass"] = mass
 		entry["scale"] = scale
 		
@@ -748,6 +753,7 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 				# objects - which should also be the same for all of them.
 				var scale = null
 				
+				var colors = []
 				var masses = []
 				var texture_paths = []
 				for item in items:
@@ -759,6 +765,7 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 							if entry["scale"] != scale:
 								push_error("'%s' has inconsistent scale in stack '%s'!" % [item, stack_name])
 								continue
+						colors.append(entry["color"])
 						masses.append(entry["mass"])
 						texture_paths.append(entry["texture_path"])
 					else:
@@ -769,6 +776,7 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 					var type_scene = type_meta["scene"]
 					
 					var stack_entry = {
+						"colors": colors,
 						"description": desc,
 						"masses": masses,
 						"name": stack_name,

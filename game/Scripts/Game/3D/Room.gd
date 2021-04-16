@@ -159,6 +159,9 @@ remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 	
 	_pieces.remove_child(piece)
 	
+	var piece_entry = piece.piece_entry
+	if piece.is_albedo_color_exposed():
+		piece_entry["color"] = piece.get_albedo_color()
 	stack.add_piece(piece.piece_entry, piece.transform, on, flip)
 	
 	piece.queue_free()
@@ -193,17 +196,11 @@ remotesync func add_stack(name: String, transform: Transform,
 		push_error("Piece " + piece2_name + " is not stackable!")
 		return
 	
-	_pieces.remove_child(piece1)
-	_pieces.remove_child(piece2)
-	
 	var sandwich_stack = (piece1.piece_entry["scene_path"] == "res://Pieces/Card.tscn")
-	var stack = add_stack_empty(name, transform, sandwich_stack)
+	add_stack_empty(name, transform, sandwich_stack)
 	
-	stack.add_piece(piece1.piece_entry, piece1.transform)
-	stack.add_piece(piece2.piece_entry, piece2.transform)
-	
-	piece1.queue_free()
-	piece2.queue_free()
+	add_piece_to_stack(piece1.name, name)
+	add_piece_to_stack(piece2.name, name)
 
 # Called by the server to add an empty stack to the room.
 # name: The name of the new stack.
@@ -1572,6 +1569,11 @@ func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> 
 			"transform": piece.transform
 		}
 		
+		if piece.is_albedo_color_exposed():
+			var color = piece.get_albedo_color()
+			if piece.piece_entry["color"] != color:
+				piece_meta["color"] = color
+		
 		if piece is PieceContainer:
 			var child_pieces = {}
 			_append_piece_states(child_pieces, piece.get_node("Pieces"), collisions)
@@ -1676,7 +1678,17 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 				return
 		
 		if type_key == "stacks":
-			var sandwich_stack = (piece_meta["scene_path"] == "res://Pieces/Card.tscn")
+			var pieces: Array = piece_meta["pieces"]
+			if pieces.empty():
+				push_error("Piece " + type_key + "/" + piece_name + " has an empty 'pieces' array!")
+				return
+			var element_meta: Dictionary = pieces[0]
+			if not element_meta.has("piece_entry"):
+				push_error("Piece " + type_key + "/" + piece_name + " element meta has no piece entry!")
+				return
+			var piece_entry: Dictionary = element_meta["piece_entry"]
+			
+			var sandwich_stack = (piece_entry["scene_path"] == "res://Pieces/Card.tscn")
 			add_stack_empty(piece_name, piece_meta["transform"], sandwich_stack)
 		else:
 			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
@@ -1684,6 +1696,15 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 		var piece: Piece = _pieces.get_node(piece_name)
 		if piece_meta["is_locked"]:
 			piece.lock_client(piece_meta["transform"])
+		
+		if piece_meta.has("color"):
+			if not piece_meta["color"] is Color:
+				push_error("Piece " + type_key + "/" + piece_name + " color is not a color!")
+				return
+			
+			var color = piece_meta["color"]
+			if piece.is_albedo_color_exposed():
+				piece.set_albedo_color_client(color)
 		
 		if type_key == "containers":
 			if not piece_meta.has("pieces"):

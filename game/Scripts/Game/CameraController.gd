@@ -100,6 +100,7 @@ export(float) var zoom_sensitivity: float = 1.0
 var send_cursor_position: bool = false
 
 var _box_select_init_pos = Vector2()
+var _color_picker: ColorPicker = null
 var _container_multi_context: PieceContainer = null
 var _cursor_on_table = false
 var _cursor_position = Vector3()
@@ -802,6 +803,17 @@ func _on_context_collect_selected_pressed() -> void:
 	if _selected_pieces.size() > 1:
 		emit_signal("collect_pieces_requested", _selected_pieces)
 
+func _on_context_color_changed(color: Color) -> void:
+	for piece in _selected_pieces:
+		piece.rpc_unreliable_id(1, "request_set_albedo_color", color, true)
+
+func _on_context_color_popup_closed() -> void:
+	if _color_picker == null:
+		return
+	
+	for piece in _selected_pieces:
+		piece.rpc_id(1, "request_set_albedo_color", _color_picker.color, false)
+
 func _on_context_deal_cards_pressed(n: int) -> void:
 	_hide_context_menu()
 	emit_signal("dealing_cards", _selected_pieces[0], n)
@@ -1182,6 +1194,26 @@ func _popup_piece_context_menu() -> void:
 	###########
 	
 	if _inheritance_has(inheritance, "Piece"):
+		var all_albedo_color_exposed = true
+		for piece in _selected_pieces:
+			if not piece.is_albedo_color_exposed():
+				all_albedo_color_exposed = false
+				break
+		
+		if all_albedo_color_exposed:
+			var color_label = Label.new()
+			color_label.text = tr("Color:")
+			_piece_context_menu_container.add_child(color_label)
+			
+			var color_button = ColorPickerButton.new()
+			color_button.color = _selected_pieces[0].get_albedo_color()
+			color_button.edit_alpha = false
+			color_button.connect("color_changed", self, "_on_context_color_changed")
+			color_button.connect("popup_closed", self, "_on_context_color_popup_closed")
+			_piece_context_menu_container.add_child(color_button)
+			
+			_color_picker = color_button.get_picker()
+		
 		var num_locked = 0
 		var num_unlocked = 0
 		
