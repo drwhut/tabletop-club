@@ -131,6 +131,31 @@ func get_asset_paths() -> Array:
 func get_db() -> Dictionary:
 	return _db
 
+# Get a random asset from a pack's type directory.
+# Returns: A random asset from the given type directory, empty if there are no
+# assets to select from.
+# pack: The asset pack to search.
+# type: The type directory to search.
+# default: If true, only assets with the property "default" = true are
+# considered.
+func random_asset(pack: String, type: String, default: bool = false) -> Dictionary:
+	if _db.has(pack):
+		if _db[pack].has(type):
+			var array: Array = _db[pack][type]
+			if default:
+				var filtered = []
+				for entry in array:
+					if entry.has("default"):
+						if entry["default"] == true:
+							filtered.append(entry)
+				array = filtered
+			
+			if not array.empty():
+				randomize()
+				return array[randi() % array.size()]
+	
+	return {}
+
 # Search a pack's type directory for an asset with the given name.
 # Returns: The asset's entry in the DB if it exists, empty otherwise.
 # pack: The asset pack to search.

@@ -1516,21 +1516,13 @@ remotesync func unflip_table() -> void:
 	emit_signal("table_flipped", true)
 
 func _ready():
-	# Scan the default asset pack and find a skybox and table whose "default"
-	# value is true - if we find one, load it now.
-	var asset_db = AssetDB.get_db()
-	if asset_db.has("OpenTabletop"):
-		if asset_db["OpenTabletop"].has("skyboxes"):
-			for skybox_entry in asset_db["OpenTabletop"]["skyboxes"]:
-				if skybox_entry["default"]:
-					set_skybox(skybox_entry)
-					break
-		
-		if asset_db["OpenTabletop"].has("tables"):
-			for table_entry in asset_db["OpenTabletop"]["tables"]:
-				if table_entry["default"]:
-					set_table(table_entry)
-					break
+	var skybox = AssetDB.random_asset("OpenTabletop", "skyboxes", true)
+	if not skybox.empty():
+		set_skybox(skybox)
+	
+	var table = AssetDB.random_asset("OpenTabletop", "tables", true)
+	if not table.empty():
+		set_table(table)
 
 func _physics_process(_delta):
 	if get_tree().is_network_server():
