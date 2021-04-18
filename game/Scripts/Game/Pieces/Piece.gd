@@ -245,7 +245,17 @@ func set_albedo_color_client(color: Color) -> void:
 	for mesh_instance in get_mesh_instances():
 		for surface in range(mesh_instance.get_surface_material_count()):
 			var material = mesh_instance.get_surface_material(surface)
-			material.albedo_color = color
+			
+			# Some materials will already have an albedo colour set, so keep
+			# this colour saved so that we don't overwrite and lose it.
+			var original_color = material.albedo_color
+			var meta_key = "original_color_" + str(surface)
+			if material.has_meta(meta_key):
+				original_color = material.get_meta(meta_key)
+			else:
+				material.set_meta(meta_key, original_color)
+			
+			material.albedo_color = original_color * color
 
 # If you are hovering the piece, ask the server to set the hover position of the
 # piece.

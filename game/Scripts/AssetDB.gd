@@ -623,6 +623,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 	elif type == "tables":
 		# These values don't mean anything, but they are needed if we want to
 		# display the table like an object in an object preview.
+		entry["color"] = Color.white
 		entry["mass"] = 1.0
 		entry["scale"] = Vector3.ONE
 		
