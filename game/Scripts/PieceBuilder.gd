@@ -272,6 +272,16 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 			if material:
 				material = material.duplicate()
 				from.set_surface_material(surface, material)
+				
+				# Real-time global illumination is coming in Godot 4, so while
+				# we wait we can approximate emissive materials using
+				# OmniLights (see #34).
+				if material is SpatialMaterial:
+					if material.emission_enabled:
+						var omnilight = OmniLight.new()
+						omnilight.light_color = material.emission
+						omnilight.light_energy = material.emission_energy
+						from.add_child(omnilight)
 		
 		var collision_shape = CollisionShape.new()
 		collision_shape.shape = from.mesh.create_convex_shape()
