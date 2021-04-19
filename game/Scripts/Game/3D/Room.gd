@@ -527,7 +527,7 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	
 	out["hidden_areas"] = hidden_area_dict
 	
-	_append_piece_states(out, _pieces, collisions)
+	_append_piece_states(out, _pieces.get_children(), collisions)
 	
 	return out
 
@@ -539,6 +539,14 @@ func get_table() -> Dictionary:
 			return _table_body.get_meta("table_entry")
 	
 	return {}
+
+# Called by the server to paste the contents of a clipboard to the room.
+# clipboard: The clipboard contents (from _append_piece_states).
+remotesync func paste_clipboard(clipboard: Dictionary) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_extract_piece_states(clipboard, _pieces)
 
 # Called by the server to place a hidden area for a given player.
 # area_name: The name of the new hidden area.
@@ -983,6 +991,13 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 # state: The state to load.
 master func request_load_table_state(state: Dictionary) -> void:
 	rpc("set_state", state)
+
+# Request the server to paste the contents of a clipboard to the room.
+# clipboard: The clipboard contents (from _append_piece_states).
+# offset: Offset the positions of the pasted pieces by this value.
+master func request_paste_clipboard(clipboard: Dictionary, offset: Vector3) -> void:
+	_modify_piece_states(clipboard, offset)
+	rpc("paste_clipboard", clipboard)
 
 # Request the server to place a hidden area registered to you.
 # point1: One corner of the new hidden area.
@@ -1545,16 +1560,16 @@ func _physics_process(_delta):
 
 # Append the states of pieces to a given dictionary.
 # state: The dictionary to add the states to.
-# parent: The parent node to start scanning pieces from.
+# pieces: The list of pieces to scan from.
 # collisions: Should collision data be included in the state?
-func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> void:
+func _append_piece_states(state: Dictionary, pieces: Array, collisions: bool) -> void:
 	state["containers"] = {}
 	state["pieces"] = {}
 	state["speakers"] = {}
 	state["stacks"] = {}
 	state["timers"] = {}
 	
-	for piece in parent.get_children():
+	for piece in pieces:
 		var piece_meta = {
 			"is_locked": piece.is_locked(),
 			"piece_entry": piece.piece_entry,
@@ -1568,7 +1583,9 @@ func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> 
 		
 		if piece is PieceContainer:
 			var child_pieces = {}
-			_append_piece_states(child_pieces, piece.get_node("Pieces"), collisions)
+			if piece.has_node("Pieces"):
+				var children = piece.get_node("Pieces").get_children()
+				_append_piece_states(child_pieces, children, collisions)
 			
 			piece_meta["pieces"] = child_pieces
 			state["containers"][piece.name] = piece_meta
@@ -1852,6 +1869,37 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 			_pieces.remove_child(piece)
 			parent.add_child(piece)
 
+# Modify piece states such that the pieces have new names, and their positions
+# are offset by a given amount.
+# state: The state to modify.
+# offset: How much to offset the piece's positions by.
+func _modify_piece_states(state: Dictionary, offset: Vector3) -> void:
+	for type in state:
+		var type_dict = state[type]
+		if type_dict is Dictionary:
+			var names = type_dict.keys()
+			for name in names:
+				var piece_meta = type_dict[name]
+				
+				# If the piece is a container, we need to also modify the
+				# container's contents.
+				if type == "containers":
+					if piece_meta.has("pieces"):
+						var pieces = piece_meta["pieces"]
+						if pieces is Dictionary:
+							_modify_piece_states(pieces, Vector3.ZERO)
+				
+				# Offset the position.
+				if piece_meta.has("transform"):
+					var piece_transform = piece_meta["transform"]
+					if piece_transform is Transform:
+						piece_transform.origin += offset
+						piece_meta["transform"] = piece_transform
+				
+				# Give the piece a new name.
+				type_dict.erase(name)
+				type_dict[srv_get_next_piece_name()] = piece_meta
+
 # Set the transform of a hidden area based on two corner points.
 # hidden_area: The hidden area to set the transform of.
 # point1: One corner.
@@ -1937,6 +1985,20 @@ func _on_CameraController_adding_pieces_to_container(container: PieceContainer, 
 		if piece != container:
 			piece_names.append(piece.name)
 	rpc_id(1, "request_add_pieces_to_container", container.name, piece_names)
+
+func _on_CameraController_clipboard_paste(position: Vector3):
+	# If we are the server, then duplicate the clipboard contents, as the
+	# request will modify the contents by reference otherwise.
+	var clipboard = _camera_controller.clipboard_contents
+	if get_tree().is_network_server():
+		clipboard = clipboard.duplicate(true)
+	
+	var offset = position - _camera_controller.clipboard_yank_position
+	
+	rpc_id(1, "request_paste_clipboard", clipboard, offset)
+
+func _on_CameraController_clipboard_yank(pieces: Array):
+	_append_piece_states(_camera_controller.clipboard_contents, pieces, false)
 
 func _on_CameraController_collect_pieces_requested(pieces: Array):
 	var names = []

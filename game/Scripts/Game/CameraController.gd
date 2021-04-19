@@ -31,6 +31,8 @@ enum {
 
 signal adding_cards_to_hand(cards, id) # If id is 0, add to nearest hand.
 signal adding_pieces_to_container(container, pieces)
+signal clipboard_paste(position)
+signal clipboard_yank(pieces)
 signal collect_pieces_requested(pieces)
 signal container_release_random_requested(container, n)
 signal container_release_these_requested(container, names)
@@ -97,6 +99,8 @@ export(float) var rotation_sensitivity_x: float = -0.01
 export(float) var rotation_sensitivity_y: float = -0.01
 export(float) var zoom_sensitivity: float = 1.0
 
+var clipboard_contents: Dictionary = {}
+var clipboard_yank_position: Vector3 = Vector3()
 var send_cursor_position: bool = false
 
 var _box_select_init_pos = Vector2()
@@ -105,6 +109,7 @@ var _container_multi_context: PieceContainer = null
 var _cursor_on_table = false
 var _cursor_position = Vector3()
 var _drag_camera_anchor = Vector3()
+var _future_clipboard_position = Vector3()
 var _grabbing_time = 0.0
 var _hidden_area_mouse_is_over: HiddenArea = null
 var _hidden_area_placing_point2 = false
@@ -642,10 +647,18 @@ func _unhandled_input(event):
 		_camera_ui.visible = not _camera_ui.visible
 	
 	if event is InputEventKey:
-		if event.scancode == KEY_A and event.control:
-			if event.is_pressed():
-				# Select all of the pieces on the table.
+		if event.pressed and event.control:
+			if event.scancode == KEY_A:
 				emit_signal("selecting_all_pieces")
+			elif event.scancode == KEY_X:
+				_future_clipboard_position = _cursor_position
+				_cut_selected_pieces()
+			elif event.scancode == KEY_C:
+				_future_clipboard_position = _cursor_position
+				_copy_selected_pieces()
+			elif event.scancode == KEY_V:
+				_future_clipboard_position = _cursor_position
+				_paste_clipboard()
 	
 	# NOTE: Mouse events are caught by the MouseGrab node, see
 	# _on_MouseGrab_gui_input().
@@ -706,6 +719,17 @@ func _create_player_cursor_texture(id: int, grabbing: bool) -> ImageTexture:
 	var new_texture = ImageTexture.new()
 	new_texture.create_from_image(clone_image)
 	return new_texture
+
+# Copy the selected pieces to the clipboard.
+func _copy_selected_pieces() -> void:
+	_hide_context_menu()
+	clipboard_yank_position = _future_clipboard_position
+	emit_signal("clipboard_yank", _selected_pieces)
+
+# Cut the selected pieces to the clipboard.
+func _cut_selected_pieces() -> void:
+	_copy_selected_pieces()
+	_delete_selected_pieces()
 
 # Delete the currently selected pieces from the game.
 func _delete_selected_pieces() -> void:
@@ -814,6 +838,12 @@ func _on_context_color_popup_closed() -> void:
 	for piece in _selected_pieces:
 		piece.rpc_id(1, "request_set_albedo_color", _color_picker.color, false)
 
+func _on_context_copy_pressed() -> void:
+	_copy_selected_pieces()
+
+func _on_context_cut_pressed() -> void:
+	_cut_selected_pieces()
+
 func _on_context_deal_cards_pressed(n: int) -> void:
 	_hide_context_menu()
 	emit_signal("dealing_cards", _selected_pieces[0], n)
@@ -835,6 +865,9 @@ func _on_context_orient_up_pressed() -> void:
 	for piece in _selected_pieces:
 		if piece is Stack:
 			piece.rpc_id(1, "request_orient_pieces", true)
+
+func _on_context_paste_pressed() -> void:
+	_paste_clipboard()
 
 func _on_context_peek_inside_pressed() -> void:
 	_hide_context_menu()
@@ -960,6 +993,13 @@ func _on_timer_paused() -> void:
 
 func _on_timer_resumed() -> void:
 	_set_timer_controls()
+
+# Paste the contents of the clipboard.
+func _paste_clipboard() -> void:
+	_hide_context_menu()
+	
+	if not clipboard_contents.empty():
+		emit_signal("clipboard_paste", _future_clipboard_position)
 
 # Popup the piece context menu.
 func _popup_piece_context_menu() -> void:
@@ -1214,26 +1254,39 @@ func _popup_piece_context_menu() -> void:
 			
 			_color_picker = color_button.get_picker()
 		
-		var num_locked = 0
-		var num_unlocked = 0
+		var cut_button = Button.new()
+		cut_button.text = tr("Cut")
+		cut_button.connect("pressed", self, "_on_context_cut_pressed")
+		_piece_context_menu_container.add_child(cut_button)
 		
+		var copy_button = Button.new()
+		copy_button.text = tr("Copy")
+		copy_button.connect("pressed", self, "_on_context_copy_pressed")
+		_piece_context_menu_container.add_child(copy_button)
+		
+		var paste_button = Button.new()
+		paste_button.disabled = clipboard_contents.empty()
+		paste_button.text = tr("Paste")
+		paste_button.connect("pressed", self, "_on_context_paste_pressed")
+		_piece_context_menu_container.add_child(paste_button)
+		
+		_future_clipboard_position = _cursor_position
+		
+		var num_locked = 0
 		for piece in _selected_pieces:
 			if piece.is_locked():
 				num_locked += 1
-			else:
-				num_unlocked += 1
-		
-		if num_unlocked == _selected_pieces.size():
-			var lock_button = Button.new()
-			lock_button.text = tr("Lock")
-			lock_button.connect("pressed", self, "_on_context_lock_pressed")
-			_piece_context_menu_container.add_child(lock_button)
 		
 		if num_locked == _selected_pieces.size():
 			var unlock_button = Button.new()
 			unlock_button.text = tr("Unlock")
 			unlock_button.connect("pressed", self, "_on_context_unlock_pressed")
 			_piece_context_menu_container.add_child(unlock_button)
+		else:
+			var lock_button = Button.new()
+			lock_button.text = tr("Lock")
+			lock_button.connect("pressed", self, "_on_context_lock_pressed")
+			_piece_context_menu_container.add_child(lock_button)
 		
 		var delete_button = Button.new()
 		delete_button.text = tr("Delete")
@@ -1250,6 +1303,14 @@ func _popup_table_context_menu() -> void:
 	for child in _piece_context_menu_container.get_children():
 		_piece_context_menu_container.remove_child(child)
 		child.queue_free()
+	
+	var paste_button = Button.new()
+	paste_button.disabled = clipboard_contents.empty()
+	paste_button.text = tr("Paste")
+	paste_button.connect("pressed", self, "_on_context_paste_pressed")
+	_piece_context_menu_container.add_child(paste_button)
+	
+	_future_clipboard_position = _cursor_position
 	
 	var spawn_point_button = Button.new()
 	spawn_point_button.text = tr("Set spawn point here")
