@@ -17,4 +17,4 @@ import them so you can use them in-game!
 
 For information and tutorials as to how you can make your own assets for
 Tabletop Club, have a look at the
-[documentation](https://opentabletop.readthedocs.io/en/latest/custom_assets/asset_packs/index.html).
+[documentation](https://tabletop-club.readthedocs.io/en/latest/custom_assets/asset_packs/index.html).
