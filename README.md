@@ -19,7 +19,7 @@ or
 
 ## Languages
 
-[![Translation Status](https://hosted.weblate.org/widgets/opentabletop/-/svg-badge.svg)](https://hosted.weblate.org/engage/opentabletop/)
+[![Translation Status](https://hosted.weblate.org/widgets/tabletop-club/-/svg-badge.svg)](https://hosted.weblate.org/engage/tabletop-club/)
 
 Language | Game               | Documentation
 -------- | ------------------ | ------------------
@@ -27,7 +27,7 @@ English  | :heavy_check_mark: | :heavy_check_mark:
 French   | 82%                | :x:
 
 If you want to help translate the project, you can go to the project's
-[Hosted Weblate](https://hosted.weblate.org/engage/opentabletop/) page.
+[Hosted Weblate](https://hosted.weblate.org/engage/tabletop-club/) page.
 
 You can find out more about contributing translations
 [here](https://tabletop-club.readthedocs.io/en/latest/general/contributing/ways_to_contribute.html#translating-the-project).

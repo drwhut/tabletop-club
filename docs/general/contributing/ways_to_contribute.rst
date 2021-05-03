@@ -66,7 +66,7 @@ Translating the project
 
 If you know a language other than English, you can help to translate the game
 and it's documentation by going to the project's `Hosted Weblate
-<https://hosted.weblate.org/engage/opentabletop/>`_ page and suggest
+<https://hosted.weblate.org/engage/tabletop-club/>`_ page and suggest
 translations for the project's strings in your language!
 
 If you don't see your language in a component, you can add it by scrolling to
@@ -77,9 +77,9 @@ the bottom of the component page and pressing :guilabel:`Start new translation`.
    Manual pull requests for translations will be closed, as Weblate keeps it's
    own fork of the project, and we want to avoid having merge requests occur.
 
-.. image:: https://hosted.weblate.org/widgets/opentabletop/-/287x66-white.png
+.. image:: https://hosted.weblate.org/widgets/tabletop-club/-/287x66-white.png
    :alt: Translation status
-   :target: https://hosted.weblate.org/engage/opentabletop/
+   :target: https://hosted.weblate.org/engage/tabletop-club/
 
 
 Creating a pull request
