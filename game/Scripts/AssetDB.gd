@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,9 +35,9 @@ enum {
 const ASSET_DIR_PREFIXES = [
 	".",
 	"..",
-	"{DOWNLOADS}/OpenTabletop",
-	"{DOCUMENTS}/OpenTabletop",
-	"{DESKTOP}/OpenTabletop"
+	"{DOWNLOADS}/TabletopClub",
+	"{DOCUMENTS}/TabletopClub",
+	"{DESKTOP}/TabletopClub"
 ]
 
 const ASSET_PACK_SUBFOLDERS = {
@@ -92,7 +92,7 @@ const EXTENSIONS_TO_IMPORT = VALID_AUDIO_EXTENSIONS + VALID_SCENE_EXTENSIONS + V
 # NOTE: All assets are stored in the database in a directory structure, where
 # the first level is the pack name, and the second level is the type name (the
 # subfolder within the asset pack). For example, an asset in the
-# "OpenTabletop/dice/d6" folder would be in _db["OpenTabletop"]["dice/d6"].
+# "TabletopClub/dice/d6" folder would be in _db["TabletopClub"]["dice/d6"].
 var _db = {}
 var _db_mutex = Mutex.new()
 
@@ -104,8 +104,8 @@ var _import_mutex = Mutex.new()
 var _import_send_signal = false
 var _import_thread = Thread.new()
 
-# From the open_tabletop_godot_module:
-# https://github.com/drwhut/open_tabletop_godot_module
+# From the tabletop_club_godot_module:
+# https://github.com/drwhut/tabletop_club_godot_module
 var _importer = TabletopImporter.new()
 
 # Clear the AssetDB.

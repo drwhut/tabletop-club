@@ -25,8 +25,8 @@ to reproduce the bug, the platform you're running the game on, and if possible,
 provide the latest log so we can check if there were any errors thrown. You can
 find the game logs in the following folders:
 
-* Windows: ``%APPDATA%/OpenTabletop/logs/``
-* macOS / Linux: ``~/.local/share/godot/app_userdata/OpenTabletop/logs/``
+* Windows: ``%APPDATA%/TabletopClub/logs/``
+* macOS / Linux: ``~/.local/share/godot/app_userdata/TabletopClub/logs/``
 
 .. hint::
 
@@ -99,7 +99,7 @@ If you see an issue on the `GitHub repository`_ that needs game assets to fix
 that issue with either an asset you've found online, or one that you've made
 yourself!
 
-If the asset doesn't solve an issue, but you still think OpenTabletop would
+If the asset doesn't solve an issue, but you still think Tabletop Club would
 benefit from having it, then you can `post an issue`_ with the asset submission
 template instead!
 
@@ -114,6 +114,6 @@ However you propose the asset, you need to provide the following information:
   accessible, and it must lead to a trusted website.
 
 
-.. _GitHub repository: https://github.com/drwhut/open-tabletop
-.. _issues page: https://github.com/drwhut/open-tabletop/issues
-.. _post an issue: https://github.com/drwhut/open-tabletop/issues/new/choose
+.. _GitHub repository: https://github.com/drwhut/tabletop-club
+.. _issues page: https://github.com/drwhut/tabletop-club/issues
+.. _post an issue: https://github.com/drwhut/tabletop-club/issues/new/choose

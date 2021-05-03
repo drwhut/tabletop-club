@@ -10,7 +10,7 @@ Image
 Supported formats
 ^^^^^^^^^^^^^^^^^
 
-By default, OpenTabletop supports all of the image formats that Godot supports,
+By default, Tabletop Club supports all of the image formats that Godot supports,
 the list of which can be found `here
 <https://docs.godotengine.org/en/stable/getting_started/workflow/assets/importing_images.html>`_.
 
@@ -73,7 +73,7 @@ Dice - D8
 3D models can be exported from almost any 3D modelling software, including
 Blender and Maya.
 
-As of right now, OpenTabletop supports the following 3D file formats:
+As of right now, Tabletop Club supports the following 3D file formats:
 
 * Collada (``.dae``)
 * glTF 2.0 (``.glb``, ``.gltf``)
@@ -92,7 +92,7 @@ As of right now, OpenTabletop supports the following 3D file formats:
 Audio
 -----
 
-As of right now, OpenTabletop supports the following audio formats:
+As of right now, Tabletop Club supports the following audio formats:
 
 * MP3 (``.mp3``)
 * Vorbis (``.ogg``)
@@ -108,7 +108,7 @@ in the Godot documentation.
 Save File
 ---------
 
-Save files are used to load back a saved state within OpenTabletop. They use
+Save files are used to load back a saved state within Tabletop Club. They use
 the ``.ot`` extension.
 
 To create a save file when in-game, go to the menu and click

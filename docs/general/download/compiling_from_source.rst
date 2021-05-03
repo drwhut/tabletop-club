@@ -32,17 +32,17 @@ command in a terminal to download the fork of Godot:
    The version number after ``-b tabletop`` refers to the Godot version the
    modified code is based on. You might need to change which version of Godot
    to download if you're planning on downloading a specific version of
-   OpenTabletop, as different versions of OpenTabletop might use different
+   Tabletop Club, as different versions of Tabletop Club might use different
    versions of Godot.
 
    If you just plan on downloading the current ``master`` branch from
-   OpenTabletop, then you don't need to change the above command.
+   Tabletop Club, then you don't need to change the above command.
 
-   If you know which version of OpenTabletop you want to download, check the
+   If you know which version of Tabletop Club you want to download, check the
    ``README.md`` file in it's source code and look for a command similar to the
    one above. Then, replace what comes after the ``-b`` above with what the
    ``README.md`` file says. This way, you know you're compiling a compatible
-   version of Godot for the OpenTabletop version you want.
+   version of Godot for the Tabletop Club version you want.
 
 
 Compiling Godot
@@ -321,26 +321,26 @@ from the editor, you can use the following command:
    scons -j8 platform=x11 target=release tools=no production=yes
 
 
-Downloading OpenTabletop
-------------------------
+Downloading Tabletop Club
+-------------------------
 
-To download the OpenTabletop Godot project, you can either download a
+To download the Tabletop Club Godot project, you can either download a
 compressed copy of the source code for a particular version from the `releases
-<https://github.com/drwhut/open-tabletop/releases>`_ page on GitHub and extract
+<https://github.com/drwhut/tabletop-club/releases>`_ page on GitHub and extract
 it, or if you're feeling very adventurous, you can download the latest source
 code on the ``master`` branch by running this command:
 
 .. code-block:: bash
 
-   git clone --depth 1 https://github.com/drwhut/open-tabletop.git
+   git clone --depth 1 https://github.com/drwhut/tabletop-club.git
 
 
-Running OpenTabletop in the Godot editor
-----------------------------------------
+Running Tabletop Club in the Godot editor
+-----------------------------------------
 
 To open Godot's project manager, run the executable you compiled in
 ``godot/bin/``. You can then import the project by clicking the
-:guilabel:`Import` button and selecting the ``open-tabletop/game/project.godot``
+:guilabel:`Import` button and selecting the ``tabletop-club/game/project.godot``
 file. Now you can open the project and play the game by pressing the play
 button in the top-right corner (or by pressing F5)!
 
@@ -362,7 +362,7 @@ game through the editor to play it. Here's how you can export the project:
 4. Click :guilabel:`Export project`, choose where you want to export the
    project and whether you want to export a debug or a release binary, then
    click :guilabel:`Save`.
-5. Copy the ``open-tabletop/assets/`` folder next to the exported binary, so
+5. Copy the ``tabletop-club/assets/`` folder next to the exported binary, so
    the game has assets to import.
 
 Now, you should be able to launch the exported executable and play the game
@@ -382,7 +382,7 @@ When the game starts, the first thing it does is it scans certain folders for
 asset packs, and if it finds any, the game will then import assets from those
 packs. The way the game imports assets is almost identical to how Godot imports
 assets in the editor. It's possible because of `a custom module
-<https://github.com/drwhut/open_tabletop_godot_module>`_ I made that takes
+<https://github.com/drwhut/tabletop_club_godot_module>`_ I made that takes
 advantage of the importing code that already exists for the editor, and it
 allows me to import assets like textures and 3D models from anywhere on the
 filesystem using just one function in GDScript.

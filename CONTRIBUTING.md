@@ -1,4 +1,4 @@
-# Contributing to OpenTabletop
+# Contributing to Tabletop Club
 
 We're always open to contributions to help make the game better! If you want to
 report a bug, suggest a feature, or contribute to the project directly, have a

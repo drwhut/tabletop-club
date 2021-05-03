@@ -1,14 +1,14 @@
-.. OpenTabletop documentation master file, created by
+.. Tabletop Club documentation master file, created by
    sphinx-quickstart on Mon Mar  1 16:14:43 2021.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-OpenTabletop Documentation
-==========================
+Tabletop Club Documentation
+===========================
 
-Welcome to the documentation for OpenTabletop, a free and open source tabletop
+Welcome to the documentation for Tabletop Club, a free and open source tabletop
 board game simulator! If you're new to the project, feel free to check out the
-:ref:`about-open-tabletop` page. Otherwise, you can use either the table of
+:ref:`about-tabletop-club` page. Otherwise, you can use either the table of
 contents, the sidebar, or the search bar to find what you need!
 
 .. note::
@@ -17,7 +17,7 @@ contents, the sidebar, or the search bar to find what you need!
    and contributions! If you feel that something is not explained well, or you
    think that information is missing, then please don't hesitate to open an
    issue or a pull request on the project's `GitHub repository
-   <https://github.com/drwhut/open-tabletop/issues>`_!
+   <https://github.com/drwhut/tabletop-club/issues>`_!
 
 .. toctree::
    :maxdepth: 2

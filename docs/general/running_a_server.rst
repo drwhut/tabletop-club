@@ -4,7 +4,7 @@
 Running a server
 ****************
 
-OpenTabletop supports both local and online multiplayer through the use of
+Tabletop Club supports both local and online multiplayer through the use of
 dedicated servers. This page explains how to set up a dedicated server, and how
 players can join the server.
 
@@ -12,7 +12,7 @@ players can join the server.
 Setting up a server instance
 ============================
 
-Firstly, we're going to need to configure a server instance of OpenTabletop
+Firstly, we're going to need to configure a server instance of Tabletop Club
 that we can run.
 
 We're assuming from now on that you've already downloaded the game - if not,
@@ -23,11 +23,11 @@ you should go to the :ref:`download` page first before continuing.
 
 2. Copy all of the game files from the folder you extracted the game to
    previously into the new ``OTServer`` folder. After this step, you should
-   have an executable either at ``OTServer/OpenTabletop.app``,
-   ``OTServer/OpenTabletop.exe``, or ``OTServer/OpenTabletop.x86_64``.
+   have an executable either at ``OTServer/TabletopClub.app``,
+   ``OTServer/TabletopClub.exe``, or ``OTServer/TabletopClub.x86_64``.
 
 3. Go to `this page
-   <https://raw.githubusercontent.com/drwhut/open-tabletop/master/game/server.cfg>`_,
+   <https://raw.githubusercontent.com/drwhut/tabletop-club/master/game/server.cfg>`_,
    right-click the page and save the file into the ``OTServer`` folder with the
    name ``server.cfg``.
 
@@ -52,7 +52,7 @@ Testing the server
 ------------------
 
 To test if the server is accepting connections, you can start a normal version
-of OpenTabletop on the same computer, and in the main menu to the left of the
+of Tabletop Club on the same computer, and in the main menu to the left of the
 :guilabel:`Join Game` button, you can enter ``127.0.0.1:26271``, then click
 :guilabel:`Join Game`.
 

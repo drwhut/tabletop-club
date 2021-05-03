@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,7 +45,7 @@ func _on_importing_completed(dir_found: bool) -> void:
 		Global.start_main_menu()
 	else:
 		var missing_text = ""
-		missing_text += tr("OpenTabletop couldn't find an assets folder in any of the following places:")
+		missing_text += tr("Tabletop Club couldn't find an assets folder in any of the following places:")
 		missing_text += "\n\n"
 		for asset_dir in AssetDB.get_asset_paths():
 			missing_text += asset_dir + "\n"

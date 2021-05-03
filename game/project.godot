@@ -140,7 +140,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="OpenTabletop"
+config/name="Tabletop Club"
 config/description="Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 
 An open-source platform for playing tabletop games in a 3D environment, made with the Godot Engine!"

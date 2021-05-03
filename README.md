@@ -1,6 +1,6 @@
-# OpenTabletop
+# Tabletop Club
 
-OpenTabletop is an open-source multiplayer game that allows you to play your
+Tabletop Club is an open-source multiplayer game that allows you to play your
 favourite tabletop games in a physics-driven 3D environment with the use of
 easy-to-make
 [asset packs](https://opentabletop.readthedocs.io/en/latest/custom_assets/asset_packs/index.html)!

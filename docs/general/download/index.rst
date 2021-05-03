@@ -4,7 +4,7 @@
 Download
 ********
 
-There are two ways to download and play OpenTabletop:
+There are two ways to download and play Tabletop Club:
 
 * By downloading the official binary for your platform and running the
   executable. This is by far the simplest method, and it is all that most

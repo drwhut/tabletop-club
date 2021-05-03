@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1531,11 +1531,11 @@ remotesync func unflip_table() -> void:
 	emit_signal("table_flipped", true)
 
 func _ready():
-	var skybox = AssetDB.random_asset("OpenTabletop", "skyboxes", true)
+	var skybox = AssetDB.random_asset("TabletopClub", "skyboxes", true)
 	if not skybox.empty():
 		set_skybox(skybox)
 	
-	var table = AssetDB.random_asset("OpenTabletop", "tables", true)
+	var table = AssetDB.random_asset("TabletopClub", "tables", true)
 	if not table.empty():
 		set_table(table)
 

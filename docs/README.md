@@ -1,4 +1,4 @@
-# OpenTabletop Documentation
+# Tabletop Club Documentation
 
 The documentation is built using [Sphinx](https://www.sphinx-doc.org/en/master/).
 

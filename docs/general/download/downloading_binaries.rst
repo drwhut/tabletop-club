@@ -14,7 +14,7 @@ Downloading the official binaries
    learn how.
 
 You can download an official binary for your platform by going to the
-`releases page <https://github.com/drwhut/open-tabletop/releases>`_  on GitHub
+`releases page <https://github.com/drwhut/tabletop-club/releases>`_  on GitHub
 and downloading the compressed file for your platform under the version of the
 game you want to play.
 
@@ -23,7 +23,7 @@ game. While beta versions of the game have new features and are very helpful
 for player feedback, they are more suseptable to bugs. But if you're feeling a
 little experimental, go for the latest version!
 
-If you've downloaded OpenTabletop in the past and want to download a newer
+If you've downloaded Tabletop Club in the past and want to download a newer
 version, follow :ref:`upgrading-installation` before carrying on here.
 
 What happens now depends slightly on which platform you're on:
@@ -32,18 +32,18 @@ Downloading for Windows
 -----------------------
 
 1. Make sure you have downloaded the compressed file, it should be called
-   something like ``OpenTabletop_vX.X.X_Windows_64.zip``.
+   something like ``TabletopClub_vX.X.X_Windows_64.zip``.
 
 2. Right-click the downloaded file in File Explorer, and click
    :guilabel:`Extract all...`
 
 3. There should be a pop-up asking where you want to extract the files to.
    You can put the game files anywhere you like, for example
-   ``Desktop/OpenTabletop``. You can then click :guilabel:`Extract` to extract
+   ``Desktop/TabletopClub``. You can then click :guilabel:`Extract` to extract
    the files to that location.
 
 4. Go to the folder where you extracted the files, and double-click the
-   ``OpenTabletop.exe`` executable to start the game!
+   ``TabletopClub.exe`` executable to start the game!
 
    .. note::
 
@@ -56,15 +56,15 @@ Downloading for macOS
 ---------------------
 
 1. Start downloading the compressed file, it should be called something like
-   ``OpenTabletop_vX.X.X_OSX_Universal.zip``.
+   ``TabletopClub_vX.X.X_OSX_Universal.zip``.
 
 2. When it has downloaded, macOS should automatically extract the files in the
    Downloads folder for you. Go to your downloads folder in Finder, and find
-   the extracted folder, it will be called something like ``OpenTabletop_v0``.
+   the extracted folder, it will be called something like ``TabletopClub_v0``.
 
-3. Re-name the new folder to ``OpenTabletop``.
+3. Re-name the new folder to ``TabletopClub``.
 
-4. Go into the folder, and launch the game by right-clicking ``OpenTabletop``
+4. Go into the folder, and launch the game by right-clicking ``TabletopClub``
    and clicking :guilabel:`Open`.
 
    .. note::
@@ -78,21 +78,21 @@ Downloading for Linux / \*BSD
 -----------------------------
 
 1. Make sure you have downloaded the compressed file, it should be called
-   something like ``OpenTabletop_vX.X.X_Linux_64.tar.gz``.
+   something like ``TabletopClub_vX.X.X_Linux_64.tar.gz``.
 
 2. Either use your distribution's archive manager to extract the files, or run
    this command in a terminal:
 
    .. code-block:: bash
 
-      tar -xf OpenTabletop_vX.X.X_Linux_64.tar.gz
+      tar -xf TabletopClub_vX.X.X_Linux_64.tar.gz
 
 3. Either double-click the executable, or go into a terminal and run this
    command in the folder the executable is in:
 
    .. code-block:: bash
 
-      ./OpenTabletop.x86_64
+      ./TabletopClub.x86_64
 
 .. todo::
 
@@ -108,9 +108,9 @@ If you have already downloaded the game before, and you want to overwrite the
 files that are already there, then before downloading and extracting the new
 version of the game, first delete the following files and folders:
 
-* ``OpenTabletop.exe``, or ``OpenTabletop.app``, or ``OpenTabletop.x86_64``
-* ``OpenTabletop.pck``
-* ``assets/OpenTabletop``
+* ``TabletopClub.exe``, or ``TabletopClub.app``, or ``TabletopClub.x86_64``
+* ``TabletopClub.pck``
+* ``assets/TabletopClub``
 
 Now you can extract the new version of the game as described above. If the
 operating systems asks you if you want to replace any files, say yes to all

@@ -5,14 +5,14 @@ Asset pack structure
 Locations for asset packs
 -------------------------
 
-At the start of the game, OpenTabletop will scan a set of given folders for
+At the start of the game, Tabletop Club will scan a set of given folders for
 asset packs. If you want the game to import your asset pack, it needs to be
 put into one of the following locations:
 
-* ``<OPENTABLETOP_INSTALL_FOLDER>/assets/``
-* ``<DOWNLOADS>/OpenTabletop/assets/``
-* ``<DOCUMENTS>/OpenTabletop/assets/``
-* ``<DESKTOP>/OpenTabletop/assets/``
+* ``<TABLETOPCLUB_INSTALL_FOLDER>/assets/``
+* ``<DOWNLOADS>/TabletopClub/assets/``
+* ``<DOCUMENTS>/TabletopClub/assets/``
+* ``<DESKTOP>/TabletopClub/assets/``
 
 
 Creating an asset pack
