@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-07 01:27+0100\n"
+"POT-Creation-Date: 2021-05-03 20:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -21,13 +21,13 @@ msgid "About"
 msgstr ""
 
 #: ../../general/about.rst:8
-msgid "What is OpenTabletop?"
+msgid "What is Tabletop Club?"
 msgstr ""
 
 #: ../../general/about.rst:10
 msgid ""
-"OpenTabletop is a free and open-source tabletop board game simulator! That's "
-"a bit of a mouthful, so I'll break that sentence down a bit:"
+"Tabletop Club is a free and open-source tabletop board game simulator! "
+"That's a bit of a mouthful, so I'll break that sentence down a bit:"
 msgstr ""
 
 #: ../../general/about.rst:14
@@ -51,22 +51,22 @@ msgstr ""
 #: ../../general/about.rst:24
 msgid ""
 "The source code of the game is visible to the public (you can see it in the "
-"`GitHub repository <https://github.com/drwhut/open-tabletop>`_). This also "
+"`GitHub repository <https://github.com/drwhut/tabletop-club>`_). This also "
 "means you can compile the game youself from scratch (see :ref:`compiling-"
 "from-source`)."
 msgstr ""
 
 #: ../../general/about.rst:29
 msgid ""
-"Anyone can contribute to the development of OpenTabletop in a number of "
+"Anyone can contribute to the development of Tabletop Club in a number of "
 "different ways! For more information about how you can help contribute to "
 "the project, visit the :ref:`contributing` page."
 msgstr ""
 
 #: ../../general/about.rst:33
 msgid ""
-"The game is licensed under the `MIT License <https://github.com/drwhut/open-"
-"tabletop/blob/master/LICENSE>`_, which is an open, permissive license."
+"The game is licensed under the `MIT License <https://github.com/drwhut/"
+"tabletop-club/blob/master/LICENSE>`_, which is an open, permissive license."
 msgstr ""
 
 #: ../../general/about.rst:39
@@ -78,7 +78,7 @@ msgstr ""
 #: ../../general/about.rst:42
 msgid ""
 "To see the details of these assets and their authors and licenses, have a "
-"look at ``assets/OpenTabletop/LICENSES`` and ``game/LICENSES.tres`` in the "
+"look at ``assets/TabletopClub/LICENSES`` and ``game/LICENSES.tres`` in the "
 "source code."
 msgstr ""
 
@@ -99,7 +99,7 @@ msgid ""
 "But the coolest thing about the game is that anyone can create assets for "
 "the game! It's as simple as dragging files into a folder and the game will "
 "import them, then you can use them straight away in-game! If you want to "
-"learn more about how to make assets for OpenTabletop, visit the :ref:`asset-"
+"learn more about how to make assets for Tabletop Club, visit the :ref:`asset-"
 "packs` page."
 msgstr ""
 
@@ -120,11 +120,11 @@ msgid "Frequently Asked Questions"
 msgstr ""
 
 #: ../../general/about.rst:72
-msgid "What platforms can I play OpenTabletop on?"
+msgid "What platforms can I play Tabletop Club on?"
 msgstr ""
 
 #: ../../general/about.rst:74
-msgid "OpenTabletop can be played on any of these platforms:"
+msgid "Tabletop Club can be played on any of these platforms:"
 msgstr ""
 
 #: ../../general/about.rst:76
@@ -146,7 +146,7 @@ msgid ""
 msgstr ""
 
 #: ../../general/about.rst:85
-msgid "Does OpenTabletop support multiplayer?"
+msgid "Does Tabletop Club support multiplayer?"
 msgstr ""
 
 #: ../../general/about.rst:87
@@ -168,37 +168,37 @@ msgid ""
 msgstr ""
 
 #: ../../general/about.rst:101
-msgid "Is OpenTabletop on Steam / GOG / itch.io?"
+msgid "Is Tabletop Club on Steam / GOG / itch.io?"
 msgstr ""
 
 #: ../../general/about.rst:103
 msgid ""
-"No. OpenTabletop is a standalone game, meaning when you download the game "
+"No. Tabletop Club is a standalone game, meaning when you download the game "
 "you can extract the game files anywhere you want on your computer, and the "
 "game will work."
 msgstr ""
 
 #: ../../general/about.rst:107
 msgid ""
-"Currently there are no plans to add OpenTabletop to any gaming platform at "
+"Currently there are no plans to add Tabletop Club to any gaming platform at "
 "this stage."
 msgstr ""
 
 #: ../../general/about.rst:112
-msgid "What stage of development is OpenTabletop at?"
+msgid "What stage of development is Tabletop Club at?"
 msgstr ""
 
 #: ../../general/about.rst:114
 msgid ""
-"OpenTabletop is currently in alpha development. This means that core "
+"Tabletop Club is currently in alpha development. This means that core "
 "features of the game are still being implemented (you can see what needs to "
-"be added by going to the `issues page <https://github.com/drwhut/open-"
-"tabletop/issues>`_ on GitHub), and there are no publicly released versions "
-"of the game... yet."
+"be added by going to the `issues page <https://github.com/drwhut/tabletop-"
+"club/issues>`_ on GitHub), and there are no publicly released versions of "
+"the game... yet."
 msgstr ""
 
 #: ../../general/about.rst:121
-msgid "What board games can I play in OpenTabletop?"
+msgid "What board games can I play in Tabletop Club?"
 msgstr ""
 
 #: ../../general/about.rst:123
@@ -207,14 +207,14 @@ msgstr ""
 
 #: ../../general/about.rst:125
 msgid ""
-"Out of the box, the games comes with the default OpenTabletop asset pack "
+"Out of the box, the games comes with the default Tabletop Club asset pack "
 "which contains some of the most common objects you'll need, like playing "
 "cards, dice, poker chips, etc."
 msgstr ""
 
 #: ../../general/about.rst:129
 msgid ""
-"On GitHub, there is `an issue <https://github.com/drwhut/open-tabletop/"
+"On GitHub, there is `an issue <https://github.com/drwhut/tabletop-club/"
 "issues/28>`_ listing which objects still need to be added to the default "
 "asset pack. If everything under a game is ticked, then you can play that "
 "game!"
@@ -229,7 +229,7 @@ msgid ""
 msgstr ""
 
 #: ../../general/about.rst:141
-msgid "How easy is it to setup a game in OpenTabletop?"
+msgid "How easy is it to setup a game in Tabletop Club?"
 msgstr ""
 
 #: ../../general/about.rst:143
@@ -255,7 +255,7 @@ msgid ""
 msgstr ""
 
 #: ../../general/about.rst:158
-msgid "Can I add assets other than game pieces to OpenTabletop?"
+msgid "Can I add assets other than game pieces to Tabletop Club?"
 msgstr ""
 
 #: ../../general/about.rst:160
@@ -284,12 +284,12 @@ msgid ":ref:`asset-type-table`"
 msgstr ""
 
 #: ../../general/about.rst:170
-msgid "Can you add my favourite board game to OpenTabletop?"
+msgid "Can you add my favourite board game to Tabletop Club?"
 msgstr ""
 
 #: ../../general/about.rst:172
 msgid ""
-"For legal safety, OpenTabletop will only ever distribute `public-domain "
+"For legal safety, Tabletop Club will only ever distribute `public-domain "
 "<https://en.wikipedia.org/wiki/Public_domain>`_ board games in the default "
 "asset pack. But that doesn't stop you from making assets for your favourite "
 "board game for private use!"
@@ -335,7 +335,7 @@ msgid "The mechanics of the game cannot be patented."
 msgstr ""
 
 #: ../../general/about.rst:201
-#: ../../general/download/downloading_binaries.rst:105
+#: ../../general/download/downloading_binaries.rst:97
 msgid "Todo"
 msgstr ""
 
@@ -437,8 +437,8 @@ msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:22
 msgid ""
-"To create a fork of the OpenTabletop repository on GitHub, you can go to the "
-"`GitHub repository`_ and click on the :guilabel:`Fork` button on the top-"
+"To create a fork of the Tabletop Club repository on GitHub, you can go to "
+"the `GitHub repository`_ and click on the :guilabel:`Fork` button on the top-"
 "right. You should now have your own copy of the repository at that point in "
 "time. You can then clone the repository to your computer with ``git clone``."
 msgstr ""
@@ -514,7 +514,7 @@ msgstr ""
 msgid ""
 "To start, go to the original `GitHub repository`_ and click :guilabel:`Pull "
 "requests` > :guilabel:`New pull request`. Make sure you are merging from "
-"your fork's custom branch to ``drwhut/open-tabletop`` on the ``master`` "
+"your fork's custom branch to ``drwhut/tabletop-club`` on the ``master`` "
 "branch. If GitHub is happy, then you can click :guilabel:`Create pull "
 "request`, and fill in the details for the pull request."
 msgstr ""
@@ -630,11 +630,11 @@ msgid ""
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:28
-msgid "Windows: ``%APPDATA%/OpenTabletop/logs/``"
+msgid "Windows: ``%APPDATA%/TabletopClub/logs/``"
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:29
-msgid "macOS / Linux: ``~/.local/share/godot/app_userdata/OpenTabletop/logs/``"
+msgid "macOS / Linux: ``~/.local/share/godot/app_userdata/TabletopClub/logs/``"
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:33
@@ -690,7 +690,7 @@ msgstr ""
 msgid ""
 "If you know a language other than English, you can help to translate the "
 "game and it's documentation by going to the project's `Hosted Weblate "
-"<https://hosted.weblate.org/engage/opentabletop/>`_ page and suggest "
+"<https://hosted.weblate.org/engage/tabletop-club/>`_ page and suggest "
 "translations for the project's strings in your language!"
 msgstr ""
 
@@ -729,7 +729,7 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:102
 msgid ""
-"If the asset doesn't solve an issue, but you still think OpenTabletop would "
+"If the asset doesn't solve an issue, but you still think Tabletop Club would "
 "benefit from having it, then you can `post an issue`_ with the asset "
 "submission template instead!"
 msgstr ""
@@ -798,24 +798,24 @@ msgstr ""
 msgid ""
 "The version number after ``-b tabletop`` refers to the Godot version the "
 "modified code is based on. You might need to change which version of Godot "
-"to download if you're planning on downloading a specific version of "
-"OpenTabletop, as different versions of OpenTabletop might use different "
-"versions of Godot."
+"to download if you're planning on downloading a specific version of Tabletop "
+"Club, as different versions of Tabletop Club might use different versions of "
+"Godot."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:38
 msgid ""
-"If you just plan on downloading the current ``master`` branch from "
-"OpenTabletop, then you don't need to change the above command."
+"If you just plan on downloading the current ``master`` branch from Tabletop "
+"Club, then you don't need to change the above command."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:41
 msgid ""
-"If you know which version of OpenTabletop you want to download, check the "
+"If you know which version of Tabletop Club you want to download, check the "
 "``README.md`` file in it's source code and look for a command similar to the "
 "one above. Then, replace what comes after the ``-b`` above with what the "
 "``README.md`` file says. This way, you know you're compiling a compatible "
-"version of Godot for the OpenTabletop version you want."
+"version of Godot for the Tabletop Club version you want."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:49
@@ -1089,112 +1089,108 @@ msgid ""
 "game from the editor, you can use the following command:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:323
-msgid "If you want to compile a server build (for dedicated servers), run:"
+#: ../../general/download/compiling_from_source.rst:325
+msgid "Downloading Tabletop Club"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:331
-msgid "Downloading OpenTabletop"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:333
+#: ../../general/download/compiling_from_source.rst:327
 msgid ""
-"To download the OpenTabletop Godot project, you can either download a "
+"To download the Tabletop Club Godot project, you can either download a "
 "compressed copy of the source code for a particular version from the "
-"`releases <https://github.com/drwhut/open-tabletop/releases>`_ page on "
+"`releases <https://github.com/drwhut/tabletop-club/releases>`_ page on "
 "GitHub and extract it, or if you're feeling very adventurous, you can "
 "download the latest source code on the ``master`` branch by running this "
 "command:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:345
-msgid "Running OpenTabletop in the Godot editor"
+#: ../../general/download/compiling_from_source.rst:339
+msgid "Running Tabletop Club in the Godot editor"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:347
+#: ../../general/download/compiling_from_source.rst:341
 msgid ""
 "To open Godot's project manager, run the executable you compiled in ``godot/"
 "bin/``. You can then import the project by clicking the :guilabel:`Import` "
-"button and selecting the ``open-tabletop/game/project.godot`` file. Now you "
+"button and selecting the ``tabletop-club/game/project.godot`` file. Now you "
 "can open the project and play the game by pressing the play button in the "
 "top-right corner (or by pressing F5)!"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:353
+#: ../../general/download/compiling_from_source.rst:347
 msgid ""
 "At this point, you can modify the game to your heart's content! Have a look "
 "at the scenes and scripts, try tweaking things here and there, or maybe try "
 "and add some stuff of your own?"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:359
+#: ../../general/download/compiling_from_source.rst:353
 msgid "Exporting the game"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:361
+#: ../../general/download/compiling_from_source.rst:355
 msgid ""
 "You can export the game with the editor to make it so you don't need to run "
 "the game through the editor to play it. Here's how you can export the "
 "project:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:364
+#: ../../general/download/compiling_from_source.rst:358
 msgid "Click on :guilabel:`Project` > :guilabel:`Export...`"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:365
+#: ../../general/download/compiling_from_source.rst:359
 msgid "In the pop-up, click :guilabel:`Add...`, and select your platform."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:366
+#: ../../general/download/compiling_from_source.rst:360
 msgid ""
 "In the menu on the right, set the debug template to point to the editor "
 "executable, and if you made a release template, set that as well."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:368
+#: ../../general/download/compiling_from_source.rst:362
 msgid ""
 "Click :guilabel:`Export project`, choose where you want to export the "
 "project and whether you want to export a debug or a release binary, then "
 "click :guilabel:`Save`."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:371
+#: ../../general/download/compiling_from_source.rst:365
 msgid ""
-"Copy the ``open-tabletop/assets/`` folder next to the exported binary, so "
+"Copy the ``tabletop-club/assets/`` folder next to the exported binary, so "
 "the game has assets to import."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:374
+#: ../../general/download/compiling_from_source.rst:368
 msgid ""
 "Now, you should be able to launch the exported executable and play the game "
 "directly!"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:381
+#: ../../general/download/compiling_from_source.rst:375
 msgid "Why did you fork Godot?"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:383
+#: ../../general/download/compiling_from_source.rst:377
 msgid ""
 "There's actually just one reason for this: there was a feature that I knew "
 "existed in Godot, but it was not exposed to the in-built scripting language "
 "GDScript, and the functionality wasn't included in release templates."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:387
+#: ../../general/download/compiling_from_source.rst:381
 msgid ""
 "When the game starts, the first thing it does is it scans certain folders "
 "for asset packs, and if it finds any, the game will then import assets from "
 "those packs. The way the game imports assets is almost identical to how "
 "Godot imports assets in the editor. It's possible because of `a custom "
-"module <https://github.com/drwhut/open_tabletop_godot_module>`_ I made that "
+"module <https://github.com/drwhut/tabletop_club_godot_module>`_ I made that "
 "takes advantage of the importing code that already exists for the editor, "
 "and it allows me to import assets like textures and 3D models from anywhere "
 "on the filesystem using just one function in GDScript."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:396
+#: ../../general/download/compiling_from_source.rst:390
 msgid ""
 "However, a problem occured when compiling Godot with this module as a "
 "release template - the compiled editor code was not included in the release "
@@ -1205,11 +1201,11 @@ msgid ""
 "the rest of the editor."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:404
+#: ../../general/download/compiling_from_source.rst:398
 msgid "Footnotes"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:405
+#: ../../general/download/compiling_from_source.rst:399
 msgid ""
 "`The Godot documentation <https://docs.godotengine.org>`_ is from Juan "
 "Linietsky, Ariel Manzur and the Godot community, and it is licensed under "
@@ -1236,7 +1232,7 @@ msgstr ""
 #: ../../general/download/downloading_binaries.rst:16
 msgid ""
 "You can download an official binary for your platform by going to the "
-"`releases page <https://github.com/drwhut/open-tabletop/releases>`_  on "
+"`releases page <https://github.com/drwhut/tabletop-club/releases>`_  on "
 "GitHub and downloading the compressed file for your platform under the "
 "version of the game you want to play."
 msgstr ""
@@ -1251,7 +1247,7 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:26
 msgid ""
-"If you've downloaded OpenTabletop in the past and want to download a newer "
+"If you've downloaded Tabletop Club in the past and want to download a newer "
 "version, follow :ref:`upgrading-installation` before carrying on here."
 msgstr ""
 
@@ -1266,7 +1262,7 @@ msgstr ""
 #: ../../general/download/downloading_binaries.rst:34
 msgid ""
 "Make sure you have downloaded the compressed file, it should be called "
-"something like ``OpenTabletop_vX.X.X_Windows_64.zip``."
+"something like ``TabletopClub_vX.X.X_Windows_64.zip``."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:37
@@ -1279,14 +1275,14 @@ msgstr ""
 msgid ""
 "There should be a pop-up asking where you want to extract the files to. You "
 "can put the game files anywhere you like, for example ``Desktop/"
-"OpenTabletop``. You can then click :guilabel:`Extract` to extract the files "
+"TabletopClub``. You can then click :guilabel:`Extract` to extract the files "
 "to that location."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:45
 msgid ""
 "Go to the folder where you extracted the files, and double-click the "
-"``OpenTabletop.exe`` executable to start the game!"
+"``TabletopClub.exe`` executable to start the game!"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:50
@@ -1304,23 +1300,23 @@ msgstr ""
 #: ../../general/download/downloading_binaries.rst:58
 msgid ""
 "Start downloading the compressed file, it should be called something like "
-"``OpenTabletop_vX.X.X_OSX_Universal.zip``."
+"``TabletopClub_vX.X.X_OSX_Universal.zip``."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:61
 msgid ""
 "When it has downloaded, macOS should automatically extract the files in the "
 "Downloads folder for you. Go to your downloads folder in Finder, and find "
-"the extracted folder, it will be called something like ``OpenTabletop_v0``."
+"the extracted folder, it will be called something like ``TabletopClub_v0``."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:65
-msgid "Re-name the new folder to ``OpenTabletop``."
+msgid "Re-name the new folder to ``TabletopClub``."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:67
 msgid ""
-"Go into the folder, and launch the game by right-clicking ``OpenTabletop`` "
+"Go into the folder, and launch the game by right-clicking ``TabletopClub`` "
 "and clicking :guilabel:`Open`."
 msgstr ""
 
@@ -1332,63 +1328,57 @@ msgid ""
 "the application."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:80
-msgid "Downloading for Linux / \\*BSD / Server"
+#: ../../general/download/downloading_binaries.rst:78
+msgid "Downloading for Linux / \\*BSD"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:82
+#: ../../general/download/downloading_binaries.rst:80
 msgid ""
 "Make sure you have downloaded the compressed file, it should be called "
-"something like ``OpenTabletop_vX.X.X_Linux_64.tar.gz``, or ``OpenTabletop_vX."
-"X.X_Server_64.tar.gz`` if you are downloading the dedicated server version "
-"of the game."
+"something like ``TabletopClub_vX.X.X_Linux_64.tar.gz``."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:87
+#: ../../general/download/downloading_binaries.rst:83
 msgid ""
-"If your Linux/BSD distribution has a GUI, then you can use it to extract the "
-"files if you have a GUI archive manager installed. If you don't have a GUI, "
-"then a. I hope you're not trying to run a game with graphics in a terminal "
-"(unless it's a dedicated server, in which case I forgive you), and b. you "
-"can use this command to extract the files, where the X's are replaced with "
-"the numbers of the version you downloaded:"
+"Either use your distribution's archive manager to extract the files, or run "
+"this command in a terminal:"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:98
+#: ../../general/download/downloading_binaries.rst:90
 msgid ""
 "Either double-click the executable, or go into a terminal and run this "
 "command in the folder the executable is in:"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:107
+#: ../../general/download/downloading_binaries.rst:99
 msgid "Add instructions to check the SHA-256 of the compressed file."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:113
+#: ../../general/download/downloading_binaries.rst:105
 msgid "Upgrading an existing installation"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:115
+#: ../../general/download/downloading_binaries.rst:107
 msgid ""
 "If you have already downloaded the game before, and you want to overwrite "
 "the files that are already there, then before downloading and extracting the "
 "new version of the game, first delete the following files and folders:"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:119
+#: ../../general/download/downloading_binaries.rst:111
 msgid ""
-"``OpenTabletop.exe``, or ``OpenTabletop.app``, or ``OpenTabletop.x86_64``"
+"``TabletopClub.exe``, or ``TabletopClub.app``, or ``TabletopClub.x86_64``"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:120
-msgid "``OpenTabletop.pck``"
+#: ../../general/download/downloading_binaries.rst:112
+msgid "``TabletopClub.pck``"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:121
-msgid "``assets/OpenTabletop``"
+#: ../../general/download/downloading_binaries.rst:113
+msgid "``assets/TabletopClub``"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:123
+#: ../../general/download/downloading_binaries.rst:115
 msgid ""
 "Now you can extract the new version of the game as described above. If the "
 "operating systems asks you if you want to replace any files, say yes to all "
@@ -1400,7 +1390,7 @@ msgid "Download"
 msgstr ""
 
 #: ../../general/download/index.rst:7
-msgid "There are two ways to download and play OpenTabletop:"
+msgid "There are two ways to download and play Tabletop Club:"
 msgstr ""
 
 #: ../../general/download/index.rst:9
@@ -1424,7 +1414,7 @@ msgstr ""
 
 #: ../../general/running_a_server.rst:7
 msgid ""
-"OpenTabletop supports both local and online multiplayer through the use of "
+"Tabletop Club supports both local and online multiplayer through the use of "
 "dedicated servers. This page explains how to set up a dedicated server, and "
 "how players can join the server."
 msgstr ""
@@ -1435,8 +1425,8 @@ msgstr ""
 
 #: ../../general/running_a_server.rst:15
 msgid ""
-"Firstly, we're going to need to configure a server instance of OpenTabletop "
-"that we can run. This step varies depending on the platform."
+"Firstly, we're going to need to configure a server instance of Tabletop Club "
+"that we can run."
 msgstr ""
 
 #: ../../general/running_a_server.rst:18
@@ -1445,86 +1435,44 @@ msgid ""
 "you should go to the :ref:`download` page first before continuing."
 msgstr ""
 
-#: ../../general/running_a_server.rst:23
-msgid "From Windows / macOS"
-msgstr ""
-
-#: ../../general/running_a_server.rst:25
+#: ../../general/running_a_server.rst:21
 msgid ""
 "Create a new folder for the server files. For this example, we'll call the "
 "folder ``OTServer``, but you can call the folder anything you want."
 msgstr ""
 
-#: ../../general/running_a_server.rst:28
+#: ../../general/running_a_server.rst:24
 msgid ""
 "Copy all of the game files from the folder you extracted the game to "
 "previously into the new ``OTServer`` folder. After this step, you should "
-"have an executable either at ``OTServer/OpenTabletop.app`` or ``OTServer/"
-"OpenTabletop.exe``."
+"have an executable either at ``OTServer/TabletopClub.app``, ``OTServer/"
+"TabletopClub.exe``, or ``OTServer/TabletopClub.x86_64``."
 msgstr ""
 
-#: ../../general/running_a_server.rst:33
+#: ../../general/running_a_server.rst:29
 msgid ""
-"Go to `this page <https://raw.githubusercontent.com/drwhut/open-tabletop/"
+"Go to `this page <https://raw.githubusercontent.com/drwhut/tabletop-club/"
 "master/game/server.cfg>`_, right-click the page and save the file into the "
 "``OTServer`` folder with the name ``server.cfg``."
 msgstr ""
 
-#: ../../general/running_a_server.rst:38
+#: ../../general/running_a_server.rst:34
 msgid ""
 "Run the server by double-clicking the executable in ``OTServer``, and make "
 "sure that after the assets have been imported you can see the table in-game."
 msgstr ""
 
-#: ../../general/running_a_server.rst:41
+#: ../../general/running_a_server.rst:37
 msgid ""
 "You can close the server by clicking :guilabel:`Menu` > :guilabel:`Quit to "
 "desktop`."
 msgstr ""
 
-#: ../../general/running_a_server.rst:46
-msgid "From Linux / \\*BSD"
-msgstr ""
-
-#: ../../general/running_a_server.rst:48
-msgid ""
-"For Unix systems, you can follow the same steps as Windows and macOS "
-"systems, but OpenTabletop also comes with dedicated server builds for Unix "
-"that don't have a GUI, making them much faster. They also come pre-packaged "
-"with a ``server.cfg`` file."
-msgstr ""
-
-#: ../../general/running_a_server.rst:53
-msgid ""
-"You can download a server build of the game by following the instructions "
-"at :ref:`download-server`."
-msgstr ""
-
-#: ../../general/running_a_server.rst:56
-msgid ""
-"Once you have downloaded the server build, you can then use the following "
-"command where you extracted the files to run the server in a terminal:"
-msgstr ""
-
-#: ../../general/running_a_server.rst:63
-msgid ""
-"You should see from the ``stdout`` output that the game will start by "
-"importing assets, and once it's done, you should see a message like "
-"``Starting server on port 26271 with 10 max players...``. The message might "
-"change depending on how you've configured the server in ``server.cfg``."
-msgstr ""
-
-#: ../../general/running_a_server.rst:68
-msgid ""
-"To close the server, you can hit ``Ctrl+C`` in the terminal where you "
-"launched the server."
-msgstr ""
-
-#: ../../general/running_a_server.rst:73
+#: ../../general/running_a_server.rst:42
 msgid "From the Godot Editor"
 msgstr ""
 
-#: ../../general/running_a_server.rst:75
+#: ../../general/running_a_server.rst:44
 msgid ""
 "If you are running the game through the Godot Editor, or you are running a "
 "debug build of the game and have a ``server.cfg`` file next to the "
@@ -1533,42 +1481,42 @@ msgid ""
 "start the server."
 msgstr ""
 
-#: ../../general/running_a_server.rst:83
+#: ../../general/running_a_server.rst:52
 msgid "Testing the server"
 msgstr ""
 
-#: ../../general/running_a_server.rst:85
+#: ../../general/running_a_server.rst:54
 msgid ""
 "To test if the server is accepting connections, you can start a normal "
-"version of OpenTabletop on the same computer, and in the main menu to the "
+"version of Tabletop Club on the same computer, and in the main menu to the "
 "left of the :guilabel:`Join Game` button, you can enter ``127.0.0.1:26271``, "
 "then click :guilabel:`Join Game`."
 msgstr ""
 
-#: ../../general/running_a_server.rst:92
+#: ../../general/running_a_server.rst:61
 msgid ""
 "If you've changed the port number the server is on, replace the number after "
 "the colon with the port number you put in ``server.cfg``."
 msgstr ""
 
-#: ../../general/running_a_server.rst:95
+#: ../../general/running_a_server.rst:64
 msgid ""
 "If the server is working, then you should be able to see a chat box in the "
 "bottom-left that says ``<PLAYER_NAME> has joined the game.``"
 msgstr ""
 
-#: ../../general/running_a_server.rst:98
+#: ../../general/running_a_server.rst:67
 msgid ""
 "If the server is not working, then after a few seconds of trying to connect, "
 "the client will go back to the main menu and show an error saying it was "
 "unable to connect to the server."
 msgstr ""
 
-#: ../../general/running_a_server.rst:104
+#: ../../general/running_a_server.rst:73
 msgid "Local multiplayer"
 msgstr ""
 
-#: ../../general/running_a_server.rst:106
+#: ../../general/running_a_server.rst:75
 msgid ""
 "If you want players to be able to connect to your server from your Local "
 "Area Network (LAN), you need to know the IPv4 address of the computer the "
@@ -1576,14 +1524,14 @@ msgid ""
 "what the address is:"
 msgstr ""
 
-#: ../../general/running_a_server.rst:111
+#: ../../general/running_a_server.rst:80
 msgid ""
 "On Windows, open a command prompt and run the ``ipconfig`` command. You can "
 "identify the address of the computer by looking for the :guilabel:`IPv4 "
 "Address` entry."
 msgstr ""
 
-#: ../../general/running_a_server.rst:115
+#: ../../general/running_a_server.rst:84
 msgid ""
 "On macOS / Linux / \\*BSD, open a terminal and run the ``ifconfig`` command. "
 "You can identify the address of the computer by looking for what comes "
@@ -1592,7 +1540,7 @@ msgid ""
 "address it)."
 msgstr ""
 
-#: ../../general/running_a_server.rst:120
+#: ../../general/running_a_server.rst:89
 msgid ""
 "Once you know this address, you can tell the other players to enter "
 "``<IP_ADDRESS>:<PORT>`` (e.g. ``192.168.1.8:26271``) in the main menu, next "
@@ -1600,11 +1548,11 @@ msgid ""
 "your server!"
 msgstr ""
 
-#: ../../general/running_a_server.rst:127
+#: ../../general/running_a_server.rst:96
 msgid "Online multiplayer"
 msgstr ""
 
-#: ../../general/running_a_server.rst:129
+#: ../../general/running_a_server.rst:98
 msgid ""
 "If you want players to be able to connect to your server from the wild west "
 "that is the internet, across hills of memes and valleys of Facebook users, "
@@ -1615,7 +1563,7 @@ msgid ""
 "first result and find out there."
 msgstr ""
 
-#: ../../general/running_a_server.rst:137
+#: ../../general/running_a_server.rst:106
 msgid ""
 "But there's one more step needed to make your server accessible to the "
 "world: you need to do something called **port forwarding**, which tells your "
@@ -1628,14 +1576,14 @@ msgid ""
 "server."
 msgstr ""
 
-#: ../../general/running_a_server.rst:146
+#: ../../general/running_a_server.rst:115
 msgid ""
 "Once you have port forwarded, players can join the server using the same "
 "string of text as they would in local multiplayer, but instead of using your "
 "local IP address, they should use your router's IP address."
 msgstr ""
 
-#: ../../general/running_a_server.rst:152
+#: ../../general/running_a_server.rst:121
 msgid ""
 "If players still cannot join your server after you have port forwarded, try "
 "checking your firewall's settings. Make sure that your firewall isn't "
