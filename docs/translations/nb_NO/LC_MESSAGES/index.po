@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-07 01:27+0100\n"
+"POT-Creation-Date: 2021-05-03 20:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -25,14 +25,14 @@ msgid "Custom Assets"
 msgstr ""
 
 #: ../../index.rst:7
-msgid "OpenTabletop Documentation"
+msgid "Tabletop Club Documentation"
 msgstr ""
 
 #: ../../index.rst:9
 msgid ""
-"Welcome to the documentation for OpenTabletop, a free and open source "
+"Welcome to the documentation for Tabletop Club, a free and open source "
 "tabletop board game simulator! If you're new to the project, feel free to "
-"check out the :ref:`about-open-tabletop` page. Otherwise, you can use either "
+"check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
 "the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
 
@@ -42,7 +42,7 @@ msgid ""
 "and contributions! If you feel that something is not explained well, or you "
 "think that information is missing, then please don't hesitate to open an "
 "issue or a pull request on the project's `GitHub repository <https://github."
-"com/drwhut/open-tabletop/issues>`_!"
+"com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
 
 #: ../../index.rst:40
