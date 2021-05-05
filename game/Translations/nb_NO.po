@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-05-03 20:23+0100\n"
-"PO-Revision-Date: 2021-03-08 15:03+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-05-06 13:32+0000\n"
+"Last-Translator: drwhut <drwhut@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
-"opentabletop/game/nb_NO/>\n"
+"tabletop-club/game/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5.1\n"
+"X-Generator: Weblate 4.7-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:28
@@ -144,7 +144,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:396
 msgid "Language"
-msgstr ""
+msgstr "Språk"
 
 #: ../Scenes/OptionsMenu.tscn:430
 msgid "Open Assets Folder"
@@ -277,7 +277,7 @@ msgstr ""
 #: ../Scenes/OptionsMenu.tscn:896 ../Scenes/OptionsMenu.tscn:914
 #: ../Scenes/OptionsMenu.tscn:950
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: ../Scenes/OptionsMenu.tscn:905
 msgid "Screen Space Ambient Occlusion (SSAO)"
@@ -309,7 +309,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1018
 msgid "Back"
-msgstr ""
+msgstr "Tilbake"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:154
 #: ../Scenes/OptionsMenu.tscn:1024
@@ -332,7 +332,7 @@ msgstr "Avbryt"
 
 #: ../Scenes/RandomMusicPlayer.tscn:21
 msgid "Now Playing:"
-msgstr ""
+msgstr "Nå spiller:"
 
 #: ../Scenes/Game/CameraController.tscn:113
 msgid "Scale:"
@@ -357,7 +357,7 @@ msgstr ""
 #: ../Scenes/Game/CameraController.tscn:213
 #: ../Scenes/Game/CameraController.tscn:270
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../Scenes/Game/CameraController.tscn:259
 msgid "Eraser Size:"
@@ -450,11 +450,11 @@ msgstr "Avslutt til skrivebord"
 
 #: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:42
 msgid "Take"
-msgstr ""
+msgstr "Ta"
 
 #: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:50
 msgid "Take All"
-msgstr ""
+msgstr "Ta Alt"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
@@ -486,7 +486,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:128
 msgid "10%"
-msgstr ""
+msgstr "10%"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:134
 msgid "Lamp Color"
@@ -498,10 +498,9 @@ msgid "Loaded %d skyboxes."
 msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:168
-#, fuzzy, python-format
-#| msgid "Loaded %d games."
+#, python-format
 msgid "Loaded %d tables."
-msgstr "La til %d spill."
+msgstr "La til %d bord."
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:24
 msgid "Pack:"
@@ -570,7 +569,7 @@ msgstr ""
 
 #: ../Scripts/Lobby.gd:63 ../Scripts/Lobby.gd:69
 msgid "<No Name>"
-msgstr ""
+msgstr "<Ingen Navn>"
 
 #: ../Scripts/MainMenu.gd:68
 msgid "Alpha Testers"
@@ -602,7 +601,7 @@ msgstr ""
 
 #: ../Scripts/MainMenu.gd:76
 msgid "French"
-msgstr ""
+msgstr "Fransk"
 
 #: ../Scripts/OptionsMenu.gd:28
 msgid "System Default"
@@ -691,10 +690,8 @@ msgid "Range:"
 msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1245
-#, fuzzy
-#| msgid "Color"
 msgid "Color:"
-msgstr "Farge"
+msgstr "Farge:"
 
 #: ../Scripts/Game/CameraController.gd:1258
 msgid "Cut"
@@ -864,7 +861,7 @@ msgstr "Objekter"
 
 #: ../Scripts/Game/CameraController.gd:1427
 msgid "Table menu"
-msgstr ""
+msgstr "Bordmeny"
 
 #: ../Scripts/Game/CameraController.gd:1431
 msgid "Remove last ruler"
@@ -933,7 +930,7 @@ msgstr ""
 #: ../Scripts/Game/CameraController.gd:1630
 #, python-format
 msgid "Playing: %s"
-msgstr ""
+msgstr "Spiller: %s"
 
 #: ../Scripts/Game/CameraController.gd:1632
 #, python-format
@@ -1023,12 +1020,12 @@ msgstr ""
 #: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:44
 #, python-format
 msgid "%s is empty."
-msgstr ""
+msgstr "%s er tomt."
 
 #: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:106
 #, python-format
 msgid "Page %d/%d"
-msgstr ""
+msgstr "Side %d/%d"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:220
 msgid "Cards"
@@ -1076,7 +1073,7 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:232
 msgid "Tables"
-msgstr ""
+msgstr "Bord"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:233
 msgid "Timers"
