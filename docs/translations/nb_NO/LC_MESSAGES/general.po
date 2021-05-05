@@ -8,21 +8,24 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-03 20:23+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-05-06 13:32+0000\n"
+"Last-Translator: drwhut <drwhut@gmail.com>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"tabletop-club/docs-general/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
-msgstr ""
+msgstr "Hva er Tabletop Club?"
 
 #: ../../general/about.rst:10
 msgid ""
@@ -32,7 +35,7 @@ msgstr ""
 
 #: ../../general/about.rst:14
 msgid "Free"
-msgstr ""
+msgstr "Gratis"
 
 #: ../../general/about.rst:16
 msgid ""
@@ -46,7 +49,7 @@ msgstr ""
 
 #: ../../general/about.rst:22
 msgid "This means a few things:"
-msgstr ""
+msgstr "Dette betyr flere ting:"
 
 #: ../../general/about.rst:24
 msgid ""
@@ -129,15 +132,15 @@ msgstr ""
 
 #: ../../general/about.rst:76
 msgid "Windows"
-msgstr ""
+msgstr "Windows"
 
 #: ../../general/about.rst:77
 msgid "macOS"
-msgstr ""
+msgstr "macOS"
 
 #: ../../general/about.rst:78
 msgid "Linux / \\*BSD"
-msgstr ""
+msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:80
 msgid ""
@@ -169,7 +172,7 @@ msgstr ""
 
 #: ../../general/about.rst:101
 msgid "Is Tabletop Club on Steam / GOG / itch.io?"
-msgstr ""
+msgstr "Er Tabletop Club på Steam / GOG / itch.io?"
 
 #: ../../general/about.rst:103
 msgid ""
@@ -199,7 +202,7 @@ msgstr ""
 
 #: ../../general/about.rst:121
 msgid "What board games can I play in Tabletop Club?"
-msgstr ""
+msgstr "Hvilke bordspill kan jeg spille på Tabletop Club?"
 
 #: ../../general/about.rst:123
 msgid "Theoretically, any of them!"
@@ -265,23 +268,23 @@ msgstr ""
 
 #: ../../general/about.rst:162
 msgid ":ref:`asset-type-game`"
-msgstr ""
+msgstr ":ref:`asset-type-game`"
 
 #: ../../general/about.rst:163
 msgid ":ref:`asset-type-music`"
-msgstr ""
+msgstr ":ref:`asset-type-music`"
 
 #: ../../general/about.rst:164
 msgid ":ref:`asset-type-skybox`"
-msgstr ""
+msgstr ":ref:`asset-type-skybox`"
 
 #: ../../general/about.rst:165
 msgid ":ref:`asset-type-sound`"
-msgstr ""
+msgstr ":ref:`asset-type-sound`"
 
 #: ../../general/about.rst:166
 msgid ":ref:`asset-type-table`"
-msgstr ""
+msgstr ":ref:`asset-type-table`"
 
 #: ../../general/about.rst:170
 msgid "Can you add my favourite board game to Tabletop Club?"
@@ -631,11 +634,11 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:28
 msgid "Windows: ``%APPDATA%/TabletopClub/logs/``"
-msgstr ""
+msgstr "Windows: ``%APPDATA%/TabletopClub/logs/``"
 
 #: ../../general/contributing/ways_to_contribute.rst:29
 msgid "macOS / Linux: ``~/.local/share/godot/app_userdata/TabletopClub/logs/``"
-msgstr ""
+msgstr "macOS / Linux: ``~/.local/share/godot/app_userdata/TabletopClub/logs/``"
 
 #: ../../general/contributing/ways_to_contribute.rst:33
 msgid ""
@@ -684,7 +687,7 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:65
 msgid "Translating the project"
-msgstr ""
+msgstr "Oversetter prosjektet"
 
 #: ../../general/contributing/ways_to_contribute.rst:67
 msgid ""
@@ -693,6 +696,10 @@ msgid ""
 "<https://hosted.weblate.org/engage/tabletop-club/>`_ page and suggest "
 "translations for the project's strings in your language!"
 msgstr ""
+"Hvis vet du et språk som er ikke engelsk, kan du hjelpe til å oversette "
+"spillet og dokumentasjonen ved å gå til prosjektets `Hosted Weblate "
+"<https://hosted.weblate.org/engage/tabletop-club/>`_ side for å foreslå "
+"oversettelser for prosjektets tekst på ditt språk!"
 
 #: ../../general/contributing/ways_to_contribute.rst:72
 msgid ""
@@ -745,7 +752,7 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:109
 msgid "The name of the author."
-msgstr ""
+msgstr "Navnet til forfatteren."
 
 #: ../../general/contributing/ways_to_contribute.rst:110
 msgid ""
@@ -991,11 +998,11 @@ msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:214
 msgid "GCC 7+ or Clang 6+."
-msgstr ""
+msgstr "GCC 7+ eller Clang 6+."
 
 #: ../../general/download/compiling_from_source.rst:215
 msgid "pkg-config."
-msgstr ""
+msgstr "pkg-config."
 
 #: ../../general/download/compiling_from_source.rst:216
 msgid "X11, Xcursor, Ximerama, Xi and XRandR development libraries."
@@ -1019,43 +1026,43 @@ msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:225
 msgid "**Alpine Linux**"
-msgstr ""
+msgstr "**Alpine Linux**"
 
 #: ../../general/download/compiling_from_source.rst:230
 msgid "**Arch Linux**"
-msgstr ""
+msgstr "**Arch Linux**"
 
 #: ../../general/download/compiling_from_source.rst:235
 msgid "**Debian** / **Ubuntu**"
-msgstr ""
+msgstr "**Debian** / **Ubuntu**"
 
 #: ../../general/download/compiling_from_source.rst:240
 msgid "**Fedora**"
-msgstr ""
+msgstr "**Fedora**"
 
 #: ../../general/download/compiling_from_source.rst:246
 msgid "**FreeBSD**"
-msgstr ""
+msgstr "**FreeBSD**"
 
 #: ../../general/download/compiling_from_source.rst:252
 msgid "**Gentoo**"
-msgstr ""
+msgstr "**Gentoo**"
 
 #: ../../general/download/compiling_from_source.rst:257
 msgid "**Mageia**"
-msgstr ""
+msgstr "**Mageia**"
 
 #: ../../general/download/compiling_from_source.rst:263
 msgid "**OpenBSD**"
-msgstr ""
+msgstr "**OpenBSD**"
 
 #: ../../general/download/compiling_from_source.rst:267
 msgid "**openSUSE**"
-msgstr ""
+msgstr "**openSUSE**"
 
 #: ../../general/download/compiling_from_source.rst:272
 msgid "**NetBSD**"
-msgstr ""
+msgstr "**NetBSD**"
 
 #: ../../general/download/compiling_from_source.rst:276
 msgid "For audio support, you can optionally install ``pulseaudio``."
@@ -1063,7 +1070,7 @@ msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:278
 msgid "**Solus**"
-msgstr ""
+msgstr "**Solus**"
 
 #: ../../general/download/compiling_from_source.rst:287
 msgid ""
@@ -1091,7 +1098,7 @@ msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:325
 msgid "Downloading Tabletop Club"
-msgstr ""
+msgstr "Laster ned Tabletop Club"
 
 #: ../../general/download/compiling_from_source.rst:327
 msgid ""
@@ -1257,7 +1264,7 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:32
 msgid "Downloading for Windows"
-msgstr ""
+msgstr "Laster ned for Windows"
 
 #: ../../general/download/downloading_binaries.rst:34
 msgid ""
@@ -1295,7 +1302,7 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:56
 msgid "Downloading for macOS"
-msgstr ""
+msgstr "Laster ned for macOS"
 
 #: ../../general/download/downloading_binaries.rst:58
 msgid ""
@@ -1330,7 +1337,7 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:78
 msgid "Downloading for Linux / \\*BSD"
-msgstr ""
+msgstr "Laster ned for Linux / \\*BSD"
 
 #: ../../general/download/downloading_binaries.rst:80
 msgid ""
@@ -1369,14 +1376,16 @@ msgstr ""
 msgid ""
 "``TabletopClub.exe``, or ``TabletopClub.app``, or ``TabletopClub.x86_64``"
 msgstr ""
+"``TabletopClub.exe``, eller ``TabletopClub.app``, eller ``TabletopClub."
+"x86_64``"
 
 #: ../../general/download/downloading_binaries.rst:112
 msgid "``TabletopClub.pck``"
-msgstr ""
+msgstr "``TabletopClub.pck``"
 
 #: ../../general/download/downloading_binaries.rst:113
 msgid "``assets/TabletopClub``"
-msgstr ""
+msgstr "``assets/TabletopClub``"
 
 #: ../../general/download/downloading_binaries.rst:115
 msgid ""
@@ -1387,11 +1396,11 @@ msgstr ""
 
 #: ../../general/download/index.rst:5
 msgid "Download"
-msgstr ""
+msgstr "Laste ned"
 
 #: ../../general/download/index.rst:7
 msgid "There are two ways to download and play Tabletop Club:"
-msgstr ""
+msgstr "Det finnes to måter å laste ned og spiller Tabletop Club:"
 
 #: ../../general/download/index.rst:9
 msgid ""
