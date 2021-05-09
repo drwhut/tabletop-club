@@ -132,7 +132,7 @@ func _create_network_peer() -> NetworkedMultiplayerENet:
 	peer.compression_mode = NetworkedMultiplayerENet.COMPRESS_FASTLZ
 	return peer
 
-# Open a table state (.ot) file in the given mode.
+# Open a table state (.tc) file in the given mode.
 # Returns: A file object for the given path, null if it failed to open.
 # path: The file path to open.
 # mode: The mode to open the file with.
