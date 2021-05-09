@@ -182,7 +182,7 @@ text = "Quit to desktop"
 margin_right = 600.0
 margin_bottom = 350.0
 access = 2
-filters = PoolStringArray( "*.ot ; Tabletop Club Save" )
+filters = PoolStringArray( "*.tc ; Tabletop Club Save" )
 current_dir = "/"
 current_path = "/"
 
