@@ -208,7 +208,7 @@ func _set_scene(scene: Node, args: Dictionary) -> void:
 		MODE_SERVER:
 			_current_scene.start_host()
 		MODE_SINGLEPLAYER:
-			_current_scene.init_singleplayer()
+			_current_scene.start_singleplayer()
 
 # Terminate the network peer if it exists.
 # NOTE: This function should be called via call_deferred.
