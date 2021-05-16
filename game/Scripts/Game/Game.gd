@@ -33,6 +33,7 @@ onready var _table_state_version_dialog = $TableStateVersionDialog
 onready var _ui = $GameUI
 
 var _rtc = WebRTCMultiplayer.new()
+var _established_connection_with = []
 
 var _player_name: String
 var _player_color: Color
@@ -89,6 +90,16 @@ func _ready():
 	Lobby.connect("players_synced", self, "_on_Lobby_players_synced")
 	
 	Lobby.clear_players()
+
+func _process(_delta):
+	var current_peers = _rtc.get_peers()
+	for id in current_peers:
+		var peer: Dictionary = current_peers[id]
+		
+		if peer["connected"]:
+			if not id in _established_connection_with:
+				_on_connection_established(id)
+				_established_connection_with.append(id)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("game_take_screenshot"):
@@ -193,8 +204,11 @@ func _on_connected(id: int):
 	
 	_connecting_dialog.visible = false
 	
-	# If we are the host, then make our own hand.
+	# If we are the host, then add ourselves to the lobby, and create our own
+	# hand.
 	if id == 1:
+		Lobby.rpc_id(1, "add_self", 1, _player_name, _player_color)
+		
 		var hand_transform = _room.srv_get_next_hand_transform()
 		if hand_transform == Transform.IDENTITY:
 			push_warning("Table has no available hand positions!")
@@ -214,6 +228,23 @@ func _on_answer_received(id: int, answer: String):
 func _on_candidate_received(id: int, mid: String, index: int, sdp: String):
 	if _rtc.has_peer(id):
 		_rtc.get_peer(id).connection.add_ice_candidate(mid, index, sdp)
+
+func _on_connection_established(id: int):
+	# If a player has connected to the server, let them know of every piece on
+	# the board so far.
+	if get_tree().is_network_server():
+		_room.rpc_id(id, "set_state", _room.get_state(true, true))
+		
+		# If there is space, also give them a hand on the table.
+		var hand_transform = _room.srv_get_next_hand_transform()
+		if hand_transform != Transform.IDENTITY:
+			_room.rpc("add_hand", id, hand_transform)
+	
+	# If we are not the host, then ask the host to send us their list of
+	# players.
+	elif id == 1:
+		Lobby.rpc_id(1, "request_sync_players")
+		_room.start_sending_cursor_position()
 
 func _on_new_ice_candidate(mid: String, index: int, sdp: String, id: int):
 	_master_server.send_candidate(id, mid, index, sdp)
@@ -236,24 +267,13 @@ func _on_offer_received(id: int, offer: String):
 func _on_peer_connected(id: int):
 	print("Peer connected %d" % id)
 	_create_peer(id)
-	
-	# If a player has connected to the server, let them know of every piece on
-	# the board so far.
-	if get_tree().is_network_server():
-		_room.rpc_id(id, "set_state", _room.get_state(true, true))
-		
-		# If there is space, also give them a hand on the table.
-		var hand_transform = _room.srv_get_next_hand_transform()
-		if hand_transform != Transform.IDENTITY:
-			_room.rpc("add_hand", id, hand_transform)
-	
-	elif id == 1:
-		Lobby.rpc_id(1, "request_sync_players")
-		_room.start_sending_cursor_position()
 
 func _on_peer_disconnected(id: int):
 	if _rtc.has_peer(id):
 		_rtc.remove_peer(id)
+	
+	if id in _established_connection_with:
+		_established_connection_with.erase(id)
 	
 	if get_tree().is_network_server():
 		Lobby.rpc("remove_self", id)

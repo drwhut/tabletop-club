@@ -284,7 +284,7 @@ remotesync func set_hover_height(hover_height: float) -> void:
 # Called by the server when a player updates their hovering state.
 # id: The ID of the player.
 # grabbing: Whether the cursor should be the "grabbing" shape.
-puppet func set_player_cursor_grabbing(id: int, grabbing: bool) -> void:
+remotesync func set_player_cursor_grabbing(id: int, grabbing: bool) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
@@ -306,7 +306,7 @@ puppet func set_player_cursor_grabbing(id: int, grabbing: bool) -> void:
 # id: The ID of the player.
 # position: The position of the player's 3D cursor.
 # x_basis: The x-basis of the player's camera.
-puppet func set_player_cursor_position(id: int, position: Vector3, x_basis: Vector3) -> void:
+remotesync func set_player_cursor_position(id: int, position: Vector3, x_basis: Vector3) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
@@ -1815,9 +1815,6 @@ func _on_HiddenAreaToolButton_pressed():
 	_set_tool(TOOL_HIDDEN_AREA)
 
 func _on_Lobby_player_added(id: int) -> void:
-	if get_tree().is_network_server():
-		return
-	
 	if id == get_tree().get_network_unique_id():
 		return
 	
