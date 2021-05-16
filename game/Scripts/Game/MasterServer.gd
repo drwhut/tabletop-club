@@ -39,8 +39,8 @@ export(String) var room_code = "" # If empty, create a new room.
 
 var client = WebSocketClient.new()
 
-var _code: int = 1000
-var _reason: String = "Unknown"
+var code: int = 1000
+var reason: String = "Unknown"
 
 # Connect to the master server at the given URL.
 # url: The URL of the master server.
@@ -110,8 +110,8 @@ func _on_closed(_was_clean: bool = false):
 	emit_signal("disconnected")
 
 func _on_close_request(code: int, reason: String):
-	_code = code
-	_reason = reason
+	self.code = code
+	self.reason = reason
 
 func _on_connected(_protocol: String = ""):
 	client.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)

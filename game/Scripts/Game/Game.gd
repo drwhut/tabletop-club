@@ -33,7 +33,6 @@ onready var _table_state_version_dialog = $TableStateVersionDialog
 onready var _ui = $GameUI
 
 var _rtc = WebRTCMultiplayer.new()
-var _sealed = false
 
 var _player_name: String
 var _player_color: Color
@@ -66,48 +65,13 @@ func start_join(room_code: String) -> void:
 func start_singleplayer() -> void:
 	# Pretend that we asked the master server to host our own game.
 	_on_connected(1)
+	
+	_ui.hide_chat_box()
 
 # Stop the connections to the other peers and the master server.
 func stop() -> void:
 	_rtc.close()
 	_master_server.close()
-
-"""
-# Initialise a client peer.
-# server: The server to connect to.
-# port: The port number to connect to.
-func init_client(server: String, port: int) -> void:
-	print("Connecting to ", server, ":", port, " ...")
-	var peer = _create_network_peer()
-	peer.create_client(server, port)
-	get_tree().network_peer = peer
-	
-	_connecting_dialog.popup_centered()
-
-# Initialise a server peer.
-# max_players: The maximum number of peers (excluding the server) that can
-# connect to the server.
-# port: The port number to host the server on.
-func init_server(max_players: int, port: int) -> void:
-	print("Starting server on port ", port, " with ", max_players, " max players...")
-	var peer = _create_network_peer()
-	peer.create_server(port, max_players + 1)
-	get_tree().network_peer = peer
-
-# Initialise a singleplayer game, which is a server that refuses connections.
-func init_singleplayer() -> void:
-	print("Starting singleplayer...")
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	init_server(0, rng.randi_range(10000, 65535))
-	
-	var hand_transform = _room.srv_get_next_hand_transform()
-	if hand_transform == Transform.IDENTITY:
-		push_warning("Table has no available hand positions!")
-	_room.rpc_id(1, "add_hand", 1, hand_transform)
-	
-	_ui.hide_chat_box()
-"""
 
 func _ready():
 	_master_server.connect("connected", self, "_on_connected")
@@ -164,7 +128,8 @@ func _unhandled_input(event):
 # make our own room.
 func _connect_to_master_server(room_code: String = "") -> void:
 	stop()
-	_sealed = false
+	
+	_connecting_dialog.popup_centered()
 	
 	_master_server.room_code = room_code
 	_master_server.connect_to_url("ws://localhost:9080")
@@ -218,46 +183,6 @@ func _popup_table_state_version(message: String) -> void:
 	
 	push_warning(message)
 
-"""
-func _player_connected(id: int) -> void:
-	print("Player with ID ", id, " connected!")
-	
-	# If a player has connected to the server, let them know of every piece on
-	# the board so far.
-	if get_tree().is_network_server():
-		_room.rpc_id(id, "set_state", _room.get_state(true, true))
-		
-		# If there is space, also give them a hand on the table.
-		var hand_transform = _room.srv_get_next_hand_transform()
-		if hand_transform != Transform.IDENTITY:
-			_room.rpc("add_hand", id, hand_transform)
-
-func _player_disconnected(id: int) -> void:
-	print("Player with ID ", id, " disconnected!")
-	
-	if get_tree().is_network_server():
-		Lobby.rpc("remove_self", id)
-		
-		_room.rpc("remove_hand", id)
-		_room.srv_stop_player_hovering(id)
-
-func _connected_ok() -> void:
-	print("Successfully connected to the server!")
-	_connecting_dialog.visible = false
-	
-	Lobby.rpc_id(1, "request_sync_players")
-	
-	_room.start_sending_cursor_position()
-
-func _connected_fail() -> void:
-	print("Failed to connect to the server!")
-	Global.start_main_menu_with_error(tr("Failed to connect to the server!"))
-
-func _server_disconnected() -> void:
-	print("Lost connection to the server!")
-	Global.start_main_menu_with_error(tr("Lost connection to the server!"))
-"""
-
 func _on_connected(id: int):
 	print("Connected %d" % id)
 	_rtc.initialize(id, true)
@@ -265,11 +190,21 @@ func _on_connected(id: int):
 	# Assign the WebRTCMultiplayer object to the scene tree, so all nodes can
 	# use it with the RPC system.
 	get_tree().network_peer = _rtc
+	
+	_connecting_dialog.visible = false
+	
+	# If we are the host, then make our own hand.
+	if id == 1:
+		var hand_transform = _room.srv_get_next_hand_transform()
+		if hand_transform == Transform.IDENTITY:
+			push_warning("Table has no available hand positions!")
+		_room.rpc_id(1, "add_hand", 1, hand_transform)
 
 func _on_disconnected():
-	print("Disconnected")
-	if not _sealed:
-		stop()
+	stop()
+	
+	print("Failed to connect to the server!")
+	Global.start_main_menu_with_error(tr("Failed to connect to the server! Code: %d Reason: %s") % [_master_server.code, _master_server.reason])
 
 func _on_answer_received(id: int, answer: String):
 	print("Got answer: %d" % id)
@@ -301,16 +236,36 @@ func _on_offer_received(id: int, offer: String):
 func _on_peer_connected(id: int):
 	print("Peer connected %d" % id)
 	_create_peer(id)
+	
+	# If a player has connected to the server, let them know of every piece on
+	# the board so far.
+	if get_tree().is_network_server():
+		_room.rpc_id(id, "set_state", _room.get_state(true, true))
+		
+		# If there is space, also give them a hand on the table.
+		var hand_transform = _room.srv_get_next_hand_transform()
+		if hand_transform != Transform.IDENTITY:
+			_room.rpc("add_hand", id, hand_transform)
+	
+	elif id == 1:
+		Lobby.rpc_id(1, "request_sync_players")
+		_room.start_sending_cursor_position()
 
 func _on_peer_disconnected(id: int):
 	if _rtc.has_peer(id):
 		_rtc.remove_peer(id)
+	
+	if get_tree().is_network_server():
+		Lobby.rpc("remove_self", id)
+		
+		_room.rpc("remove_hand", id)
+		_room.srv_stop_player_hovering(id)
 
 func _on_room_joined(room_code: String):
 	_master_server.room_code = room_code
 
 func _on_room_sealed():
-	_sealed = true
+	pass
 
 func _on_GameUI_about_to_save_table():
 	_room_state_saving = _room.get_state(false, false)
