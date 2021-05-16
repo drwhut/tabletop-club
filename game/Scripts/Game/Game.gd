@@ -68,6 +68,7 @@ func start_singleplayer() -> void:
 	call_deferred("_on_connected", 1)
 	
 	_ui.hide_chat_box()
+	_ui.hide_room_code()
 
 # Stop the connections to the other peers and the master server.
 func stop() -> void:
@@ -283,6 +284,7 @@ func _on_peer_disconnected(id: int):
 
 func _on_room_joined(room_code: String):
 	_master_server.room_code = room_code
+	_ui.set_room_code(room_code)
 
 func _on_room_sealed():
 	pass
