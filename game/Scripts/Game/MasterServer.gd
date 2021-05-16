@@ -109,9 +109,9 @@ func _send_msg(type: String, id: int, data: String) -> int:
 func _on_closed(_was_clean: bool = false):
 	emit_signal("disconnected")
 
-func _on_close_request(code: int, reason: String):
-	self.code = code
-	self.reason = reason
+func _on_close_request(close_code: int, close_reason: String):
+	self.code = close_code
+	self.reason = close_reason
 
 func _on_connected(_protocol: String = ""):
 	client.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)

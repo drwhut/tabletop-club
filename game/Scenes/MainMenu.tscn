@@ -104,6 +104,7 @@ __meta__ = {
 margin_right = 243.0
 margin_bottom = 150.0
 window_title = "Error"
+dialog_autowrap = true
 
 [node name="VersionLabel" type="Label" parent="."]
 anchor_top = 1.0

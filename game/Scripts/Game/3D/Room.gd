@@ -1540,6 +1540,9 @@ func _ready():
 		set_table(table)
 
 func _physics_process(_delta):
+	if not get_tree().has_network_peer():
+		return
+	
 	if get_tree().is_network_server():
 		if _srv_hand_setup_frames >= 0:
 			_srv_hand_setup_frames -= 1
