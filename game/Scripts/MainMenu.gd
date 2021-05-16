@@ -112,7 +112,7 @@ func _on_JoinButton_pressed():
 		if split.size() > 1:
 			port = int(split[1])
 	
-	Global.start_game_as_client(server, port)
+	Global.start_game_as_client(server)
 
 func _on_OptionsButton_pressed():
 	_options_menu.visible = true

@@ -46,23 +46,17 @@ func restart_game() -> void:
 	})
 
 # Start the game as a client.
-# server: The server to connect to.
-# port: The port to connect to.
-func start_game_as_client(server: String, port: int) -> void:
+# room_code: The room code to connect to.
+func start_game_as_client(room_code: String) -> void:
 	_goto_scene("res://Scenes/Game/Game.tscn", {
 		"mode": MODE_CLIENT,
-		"server": server,
-		"port": port
+		"room_code": room_code
 	})
 
 # Start the game as a server.
-# max_players: The maximum number of allowed players.
-# port: The port to host the server on.
 func start_game_as_server(max_players: int, port: int) -> void:
 	_goto_scene("res://Scenes/Game/Game.tscn", {
-		"mode": MODE_SERVER,
-		"max_players": max_players,
-		"port": port
+		"mode": MODE_SERVER
 	})
 
 # Start the game in singleplayer mode.
@@ -176,38 +170,16 @@ func _set_scene(scene: Node, args: Dictionary) -> void:
 				return
 		
 		MODE_CLIENT:
-			if not args.has("server"):
-				push_error("Scene argument 'server' is missing!")
+			if not args.has("room_code"):
+				push_error("Scene argument 'room_code' is missing!")
 				return
 			
-			if not args["server"] is String:
-				push_error("Scene argument 'server' is not a string!")
-				return
-			
-			if not args.has("port"):
-				push_error("Scene argument 'port' is missing!")
-				return
-			
-			if not args["port"] is int:
-				push_error("Scene argument 'port' is not an integer!")
+			if not args["room_code"] is String:
+				push_error("Scene argument 'room_code' is not a string!")
 				return
 		
 		MODE_SERVER:
-			if not args.has("max_players"):
-				push_error("Scene argument 'max_players' is missing!")
-				return
-			
-			if not args["max_players"] is int:
-				push_error("Scene argument 'max_players' is not an integer!")
-				return
-			
-			if not args.has("port"):
-				push_error("Scene argument 'port' is missing!")
-				return
-			
-			if not args["port"] is int:
-				push_error("Scene argument 'port' is not an integer!")
-				return
+			pass
 		
 		MODE_SINGLEPLAYER:
 			pass
@@ -232,9 +204,9 @@ func _set_scene(scene: Node, args: Dictionary) -> void:
 		MODE_ERROR:
 			_current_scene.display_error(args["error"])
 		MODE_CLIENT:
-			_current_scene.init_client(args["server"], args["port"])
+			_current_scene.start_join(args["room_code"])
 		MODE_SERVER:
-			_current_scene.init_server(args["max_players"], args["port"])
+			_current_scene.start_host()
 		MODE_SINGLEPLAYER:
 			_current_scene.init_singleplayer()
 

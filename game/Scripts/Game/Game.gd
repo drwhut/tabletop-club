@@ -19,13 +19,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# NOTE: The WebRTC code in this script is based on the webrtc_signalling demo,
+# which is licensed under the MIT license:
+# https://github.com/godotengine/godot-demo-projects/blob/master/networking/webrtc_signaling/client/multiplayer_client.gd
+
 extends Node
 
 onready var _connecting_dialog = $ConnectingDialog
+onready var _master_server = $MasterServer
 onready var _room = $Room
 onready var _table_state_error_dialog = $TableStateErrorDialog
 onready var _table_state_version_dialog = $TableStateVersionDialog
 onready var _ui = $GameUI
+
+var _rtc = WebRTCMultiplayer.new()
+var _sealed = false
 
 var _player_name: String
 var _player_color: Color
@@ -46,6 +54,20 @@ func apply_options(config: ConfigFile) -> void:
 		if not _connecting_dialog.visible:
 			Lobby.rpc_id(1, "request_modify_self", _player_name, _player_color)
 
+# Ask the master server to host a game.
+func start_host() -> void:
+	_connect_to_master_server("")
+
+# Ask the master server to join a game.
+func start_join(room_code: String) -> void:
+	_connect_to_master_server(room_code)
+
+# Stop the connections to the other peers and the master server.
+func stop() -> void:
+	_rtc.close()
+	_master_server.close()
+
+"""
 # Initialise a client peer.
 # server: The server to connect to.
 # port: The port number to connect to.
@@ -80,13 +102,20 @@ func init_singleplayer() -> void:
 	_room.rpc_id(1, "add_hand", 1, hand_transform)
 	
 	_ui.hide_chat_box()
+"""
 
 func _ready():
-	get_tree().connect("network_peer_connected", self, "_player_connected")
-	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
-	get_tree().connect("connected_to_server", self, "_connected_ok")
-	get_tree().connect("connection_failed", self, "_connected_fail")
-	get_tree().connect("server_disconnected", self, "_server_disconnected")
+	_master_server.connect("connected", self, "_on_connected")
+	_master_server.connect("disconnected", self, "_on_disconnected")
+	
+	_master_server.connect("offer_received", self, "_on_offer_received")
+	_master_server.connect("answer_received", self, "_on_answer_received")
+	_master_server.connect("candidate_received", self, "_on_candidate_received")
+	
+	_master_server.connect("room_joined", self, "_on_room_joined")
+	_master_server.connect("room_sealed", self, "_on_room_sealed")
+	_master_server.connect("peer_connected", self, "_on_peer_connected")
+	_master_server.connect("peer_disconnected", self, "_on_peer_disconnected")
 	
 	Lobby.connect("players_synced", self, "_on_Lobby_players_synced")
 	
@@ -125,11 +154,34 @@ func _unhandled_input(event):
 			push_error("Failed to save screenshot to '%s'!" % path)
 			return
 
+# Connect to the master server, and ask to join the given room.
+# room_code: The room code to join with. If empty, ask the master server to
+# make our own room.
+func _connect_to_master_server(room_code: String = "") -> void:
+	stop()
+	_sealed = false
+	
+	_master_server.join_room_code = room_code
+	_master_server.connect_to_url("ws://localhost:9080")
+
 # Create a network peer object.
-# Returns: A new network peer object.
-func _create_network_peer() -> NetworkedMultiplayerENet:
-	var peer = NetworkedMultiplayerENet.new()
-	peer.compression_mode = NetworkedMultiplayerENet.COMPRESS_FASTLZ
+# Returns: A WebRTCPeerConnection for the given peer.
+# id: The ID of the peer.
+func _create_peer(id: int) -> WebRTCPeerConnection:
+	var peer = WebRTCPeerConnection.new()
+	peer.initialize({
+		"iceServers": [
+			{ "urls": ["stun:stun.l.google.com:19302"] }
+		]
+	})
+	
+	peer.connect("session_description_created", self, "_on_offer_created", [id])
+	peer.connect("ice_candidate_created", self, "_on_new_ice_candidate", [id])
+	
+	_rtc.add_peer(peer, id)
+	if id > _rtc.get_unique_id():
+		peer.create_offer()
+	
 	return peer
 
 # Open a table state (.tc) file in the given mode.
@@ -161,6 +213,7 @@ func _popup_table_state_version(message: String) -> void:
 	
 	push_warning(message)
 
+"""
 func _player_connected(id: int) -> void:
 	print("Player with ID ", id, " connected!")
 	
@@ -198,6 +251,61 @@ func _connected_fail() -> void:
 func _server_disconnected() -> void:
 	print("Lost connection to the server!")
 	Global.start_main_menu_with_error(tr("Lost connection to the server!"))
+"""
+
+func _on_connected(id: int):
+	print("Connected %d" % id)
+	_rtc.initialize(id, true)
+	
+	# Assign the WebRTCMultiplayer object to the scene tree, so all nodes can
+	# use it with the RPC system.
+	get_tree().network_peer = _rtc
+
+func _on_disconnected():
+	print("Disconnected")
+	if not _sealed:
+		stop()
+
+func _on_answer_received(id: int, answer: String):
+	print("Got answer: %d" % id)
+	if _rtc.has_peer(id):
+		_rtc.get_peer(id).connection.set_remote_description("answer", answer)
+
+func _on_candidate_received(id: int, mid: String, index: int, sdp: String):
+	if _rtc.has_peer(id):
+		_rtc.get_peer(id).connection.add_ice_candidate(mid, index, sdp)
+
+func _on_new_ice_candidate(mid: String, index: int, sdp: String, id: int):
+	_master_server.send_candidate(id, mid, index, sdp)
+
+func _on_offer_created(type: String, data: String, id: int):
+	if not _rtc.has_peer(id):
+		return
+	print("created ", type)
+	_rtc.get_peer(id).connection.set_local_description(type, data)
+	if type == "offer":
+		_master_server.send_offer(id, data)
+	else:
+		_master_server.send_answer(id, data)
+
+func _on_offer_received(id: int, offer: String):
+	print("Got offer %d" % id)
+	if _rtc.has_peer(id):
+		_rtc.get_peer(id).connection.set_remote_description("offer", offer)
+
+func _on_peer_connected(id: int):
+	print("Peer connected %d" % id)
+	_create_peer(id)
+
+func _on_peer_disconnected(id: int):
+	if _rtc.has_peer(id):
+		_rtc.remove_peer(id)
+
+func _on_room_joined(room_code: String):
+	_master_server.join_room_code = room_code
+
+func _on_room_sealed():
+	_sealed = true
 
 func _on_GameUI_about_to_save_table():
 	_room_state_saving = _room.get_state(false, false)
