@@ -54,7 +54,7 @@ func start_game_as_client(room_code: String) -> void:
 	})
 
 # Start the game as a server.
-func start_game_as_server(max_players: int, port: int) -> void:
+func start_game_as_server() -> void:
 	_goto_scene("res://Scenes/Game/Game.tscn", {
 		"mode": MODE_SERVER
 	})
