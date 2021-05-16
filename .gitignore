@@ -13,3 +13,6 @@ docs/_build/
 
 # Editor ignores
 .vscode/
+
+# GDNative ignores
+game/webrtc/
