@@ -65,7 +65,7 @@ func start_join(room_code: String) -> void:
 # Start the game in singleplayer mode.
 func start_singleplayer() -> void:
 	# Pretend that we asked the master server to host our own game.
-	_on_connected(1)
+	call_deferred("_on_connected", 1)
 	
 	_ui.hide_chat_box()
 
