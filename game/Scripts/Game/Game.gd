@@ -166,7 +166,7 @@ func _connect_to_master_server(room_code: String = "") -> void:
 	stop()
 	_sealed = false
 	
-	_master_server.join_room_code = room_code
+	_master_server.room_code = room_code
 	_master_server.connect_to_url("ws://localhost:9080")
 
 # Create a network peer object.
@@ -307,7 +307,7 @@ func _on_peer_disconnected(id: int):
 		_rtc.remove_peer(id)
 
 func _on_room_joined(room_code: String):
-	_master_server.join_room_code = room_code
+	_master_server.room_code = room_code
 
 func _on_room_sealed():
 	_sealed = true

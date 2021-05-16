@@ -35,7 +35,7 @@ signal offer_received(id, offer)
 signal peer_connected(id)
 signal peer_disconnected(id)
 
-export(String) var join_room_code = "" # If empty, create a new room.
+export(String) var room_code = "" # If empty, create a new room.
 
 var client = WebSocketClient.new()
 
@@ -54,9 +54,9 @@ func close() -> void:
 
 # Ask the master server to join the room with the given room code.
 # Returns: An Error.
-# room_code: The room code.
-func join_room(room_code: String) -> int:
-	return client.get_peer(1).put_packet(("J: %s\n" % room_code).to_utf8())
+# new_room_code: The room code.
+func join_room(new_room_code: String) -> int:
+	return client.get_peer(1).put_packet(("J: %s\n" % new_room_code).to_utf8())
 
 # Ask the master server to seal the room, which closes it.
 # Returns: An Error.
@@ -115,7 +115,7 @@ func _on_close_request(code: int, reason: String):
 
 func _on_connected(_protocol: String = ""):
 	client.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
-	join_room(join_room_code)
+	join_room(room_code)
 
 func _on_data_received():
 	var pkt_str: String = client.get_peer(1).get_packet().get_string_from_utf8()

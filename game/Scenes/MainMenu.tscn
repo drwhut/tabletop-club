@@ -137,6 +137,7 @@ __meta__ = {
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SingleplayerButton" to="." method="_on_SingleplayerButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HostGameButton" to="." method="_on_HostGameButton_pressed"]
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/JoinContainer/RoomCodeEdit" to="." method="_on_RoomCodeEdit_text_changed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/JoinContainer/JoinGameButton" to="." method="_on_JoinGameButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]

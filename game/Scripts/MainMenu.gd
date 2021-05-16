@@ -76,6 +76,11 @@ func _on_SingleplayerButton_pressed():
 func _on_HostGameButton_pressed():
 	Global.start_game_as_server()
 
+func _on_RoomCodeEdit_text_changed(new_text: String):
+	var caret_position = _room_code_edit.caret_position
+	_room_code_edit.text = new_text.to_upper()
+	_room_code_edit.caret_position = caret_position
+
 func _on_JoinGameButton_pressed():
 	var room_code = _room_code_edit.text.to_upper()
 	
