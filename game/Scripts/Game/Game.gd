@@ -50,9 +50,8 @@ func apply_options(config: ConfigFile) -> void:
 	_player_name = config.get_value("multiplayer", "name")
 	_player_color = config.get_value("multiplayer", "color")
 	
-	if not get_tree().is_network_server():
-		if not _connecting_dialog.visible:
-			Lobby.rpc_id(1, "request_modify_self", _player_name, _player_color)
+	if not _connecting_dialog.visible:
+		Lobby.rpc_id(1, "request_modify_self", _player_name, _player_color)
 
 # Ask the master server to host a game.
 func start_host() -> void:
