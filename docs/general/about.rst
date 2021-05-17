@@ -84,17 +84,14 @@ consoles.
 Does Tabletop Club support multiplayer?
 ---------------------------------------
 
-Yes! You don't need to make an account to play multiplayer, you can just join a
-server and start playing with friends!
+Yes! You don't need to make an account to play multiplayer, you can just host a
+game and start playing with friends!
 
 .. hint::
 
    You can change your name and colour in multiplayer by going to
    :guilabel:`Options` > :guilabel:`Multiplayer`, and changing the relevant
    settings.
-
-Currently there are no dedicated servers you can join, but you can make your
-own server to play on! See :ref:`running-a-server`.
 
 
 Is Tabletop Club on Steam / GOG / itch.io?
