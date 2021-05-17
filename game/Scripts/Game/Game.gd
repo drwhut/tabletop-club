@@ -143,7 +143,7 @@ func _connect_to_master_server(room_code: String = "") -> void:
 	_connecting_dialog.popup_centered()
 	
 	_master_server.room_code = room_code
-	_master_server.connect_to_url("ws://localhost:9080")
+	_master_server.connect_to_server()
 
 # Create a network peer object.
 # Returns: A WebRTCPeerConnection for the given peer.

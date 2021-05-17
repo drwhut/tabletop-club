@@ -35,6 +35,8 @@ signal offer_received(id, offer)
 signal peer_connected(id)
 signal peer_disconnected(id)
 
+const URL: String = "ws://localhost:9080"
+
 export(String) var room_code = "" # If empty, create a new room.
 
 var client = WebSocketClient.new()
@@ -42,11 +44,10 @@ var client = WebSocketClient.new()
 var code: int = 1000
 var reason: String = "Unknown"
 
-# Connect to the master server at the given URL.
-# url: The URL of the master server.
-func connect_to_url(url: String) -> void:
+# Connect to the master server.
+func connect_to_server() -> void:
 	close()
-	client.connect_to_url(url)
+	client.connect_to_url(URL)
 
 # Close the connection to the master server.
 func close() -> void:
