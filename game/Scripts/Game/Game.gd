@@ -55,14 +55,18 @@ func apply_options(config: ConfigFile) -> void:
 
 # Ask the master server to host a game.
 func start_host() -> void:
+	print("Hosting game...")
 	_connect_to_master_server("")
 
 # Ask the master server to join a game.
 func start_join(room_code: String) -> void:
+	print("Joining game with room code %s..." % room_code)
 	_connect_to_master_server(room_code)
 
 # Start the game in singleplayer mode.
 func start_singleplayer() -> void:
+	print("Starting singleplayer...")
+	
 	# Pretend that we asked the master server to host our own game.
 	call_deferred("_on_connected", 1)
 	
@@ -142,6 +146,8 @@ func _connect_to_master_server(room_code: String = "") -> void:
 	
 	_connecting_dialog.popup_centered()
 	
+	print("Connecting to master server at '%s' with room code '%s'..." %
+		[_master_server.URL, room_code])
 	_master_server.room_code = room_code
 	_master_server.connect_to_server()
 
@@ -149,6 +155,8 @@ func _connect_to_master_server(room_code: String = "") -> void:
 # Returns: A WebRTCPeerConnection for the given peer.
 # id: The ID of the peer.
 func _create_peer(id: int) -> WebRTCPeerConnection:
+	print("Creating a connection for peer %d..." % id)
+	
 	var peer = WebRTCPeerConnection.new()
 	peer.initialize({
 		"iceServers": [
@@ -195,7 +203,7 @@ func _popup_table_state_version(message: String) -> void:
 	push_warning(message)
 
 func _on_connected(id: int):
-	print("Connected %d" % id)
+	print("Connected to the room as peer %d." % id)
 	_rtc.initialize(id, true)
 	
 	# Assign the WebRTCMultiplayer object to the scene tree, so all nodes can
@@ -217,19 +225,24 @@ func _on_connected(id: int):
 func _on_disconnected():
 	stop()
 	
-	print("Failed to connect to the server!")
-	Global.start_main_menu_with_error(tr("Failed to connect to the server! Code: %d Reason: %s") % [_master_server.code, _master_server.reason])
+	print("Disconnected from the server! Code: %d Reason: %s" % [_master_server.code, _master_server.reason])
+	if _master_server.code == 1000:
+		Global.start_main_menu()
+	else:
+		Global.start_main_menu_with_error(tr("Disconnected from the server! Code: %d Reason: %s") % [_master_server.code, _master_server.reason])
 
 func _on_answer_received(id: int, answer: String):
-	print("Got answer: %d" % id)
+	print("Received answer from peer %d." % id)
 	if _rtc.has_peer(id):
 		_rtc.get_peer(id).connection.set_remote_description("answer", answer)
 
 func _on_candidate_received(id: int, mid: String, index: int, sdp: String):
+	print("Received candidate from peer %d." % id)
 	if _rtc.has_peer(id):
 		_rtc.get_peer(id).connection.add_ice_candidate(mid, index, sdp)
 
 func _on_connection_established(id: int):
+	print("Connection established with peer %d." % id)
 	# If a player has connected to the server, let them know of every piece on
 	# the board so far.
 	if get_tree().is_network_server():
@@ -252,7 +265,7 @@ func _on_new_ice_candidate(mid: String, index: int, sdp: String, id: int):
 func _on_offer_created(type: String, data: String, id: int):
 	if not _rtc.has_peer(id):
 		return
-	print("created ", type)
+	print("Created %s for peer %d." % [type, id])
 	_rtc.get_peer(id).connection.set_local_description(type, data)
 	if type == "offer":
 		_master_server.send_offer(id, data)
@@ -260,15 +273,16 @@ func _on_offer_created(type: String, data: String, id: int):
 		_master_server.send_answer(id, data)
 
 func _on_offer_received(id: int, offer: String):
-	print("Got offer %d" % id)
+	print("Received offer from peer %d." % id)
 	if _rtc.has_peer(id):
 		_rtc.get_peer(id).connection.set_remote_description("offer", offer)
 
 func _on_peer_connected(id: int):
-	print("Peer connected %d" % id)
+	print("Peer %d has connected." % id)
 	_create_peer(id)
 
 func _on_peer_disconnected(id: int):
+	print("Peer %d has disconnected." % id)
 	if _rtc.has_peer(id):
 		_rtc.remove_peer(id)
 	
@@ -282,6 +296,7 @@ func _on_peer_disconnected(id: int):
 		_room.srv_stop_player_hovering(id)
 
 func _on_room_joined(room_code: String):
+	print("Joined room %s." % room_code)
 	_master_server.room_code = room_code
 	_ui.set_room_code(room_code)
 

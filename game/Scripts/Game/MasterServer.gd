@@ -37,12 +37,33 @@ signal peer_disconnected(id)
 
 const URL: String = "ws://localhost:9080"
 
+# See: https://github.com/drwhut/tabletop_club_master_server/blob/master/server.js
+var ERROR_MESSAGES = {
+	4001: tr("Could not connect to the master server."),
+	4002: tr("Have not joined a room yet."),
+	4003: tr("Host has disconnected from the room."),
+	4004: tr("Only the host can seal the room."),
+	4005: tr("Too many rooms are open."),
+	4006: tr("Already in a room."),
+	4007: tr("Room does not exist."),
+	4008: tr("Room is sealed."),
+	4009: tr("Message format is invalid."),
+	4010: tr("Message is invalid when not in a room."),
+	4011: tr("Internal server error."),
+	4012: tr("Invalid destination."),
+	4013: tr("Invalid command."),
+	4014: tr("Too many players connected."),
+	4015: tr("Transfer mode is invalid.")
+}
+
 export(String) var room_code = "" # If empty, create a new room.
 
 var client = WebSocketClient.new()
 
-var code: int = 1000
-var reason: String = "Unknown"
+# If we suddenly disconnect from the master server without getting an error
+# code, assume we couldn't connect to the master server.
+var code: int = 4001
+var reason: String = ERROR_MESSAGES[code]
 
 # Connect to the master server.
 func connect_to_server() -> void:
@@ -112,7 +133,11 @@ func _on_closed(_was_clean: bool = false):
 
 func _on_close_request(close_code: int, close_reason: String):
 	self.code = close_code
-	self.reason = close_reason
+	
+	if close_code in ERROR_MESSAGES:
+		self.reason = ERROR_MESSAGES[close_code]
+	else:
+		self.reason = close_reason
 
 func _on_connected(_protocol: String = ""):
 	client.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
