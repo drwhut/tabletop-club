@@ -17,45 +17,54 @@ __meta__ = {
 "_editor_description_": "The UI of the game."
 }
 
-[node name="TopPanel" type="HBoxContainer" parent="."]
+[node name="HideableUI" type="Control" parent="."]
 anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopPanel" type="HBoxContainer" parent="HideableUI"]
+anchor_right = 1.0
+margin_bottom = 26.0
 mouse_filter = 2
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ObjectsButton" type="Button" parent="TopPanel"]
+[node name="ObjectsButton" type="Button" parent="HideableUI/TopPanel"]
 margin_left = 278.0
 margin_right = 342.0
 margin_bottom = 26.0
 text = "Objects"
 
-[node name="GamesButton" type="Button" parent="TopPanel"]
+[node name="GamesButton" type="Button" parent="HideableUI/TopPanel"]
 margin_left = 346.0
 margin_right = 406.0
 margin_bottom = 26.0
 text = "Games"
 
-[node name="RoomButton" type="Button" parent="TopPanel"]
+[node name="RoomButton" type="Button" parent="HideableUI/TopPanel"]
 margin_left = 410.0
 margin_right = 464.0
 margin_bottom = 26.0
 text = "Room"
 
-[node name="FlipTableButton" type="Button" parent="TopPanel"]
+[node name="FlipTableButton" type="Button" parent="HideableUI/TopPanel"]
 margin_left = 468.0
 margin_right = 547.0
 margin_bottom = 26.0
 text = "Flip Table"
 
-[node name="ClearTableButton" type="Button" parent="TopPanel"]
+[node name="ClearTableButton" type="Button" parent="HideableUI/TopPanel"]
 margin_left = 551.0
 margin_right = 640.0
 margin_bottom = 26.0
 text = "Clear Table"
 
-[node name="RotationOption" type="OptionButton" parent="TopPanel"]
+[node name="RotationOption" type="OptionButton" parent="HideableUI/TopPanel"]
 margin_left = 644.0
 margin_right = 691.0
 margin_bottom = 26.0
@@ -63,13 +72,13 @@ text = "45"
 items = [ "15", null, false, 0, null, "30", null, false, 1, null, "45", null, false, 2, null, "60", null, false, 3, null, "90", null, false, 4, null, "180", null, false, 5, null ]
 selected = 2
 
-[node name="GameMenuButton" type="Button" parent="TopPanel"]
+[node name="GameMenuButton" type="Button" parent="HideableUI/TopPanel"]
 margin_left = 695.0
 margin_right = 746.0
 margin_bottom = 26.0
 text = "Menu"
 
-[node name="PlayerList" type="RichTextLabel" parent="."]
+[node name="PlayerList" type="RichTextLabel" parent="HideableUI"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -200.0
@@ -82,6 +91,12 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ChatBox" parent="HideableUI" instance=ExtResource( 4 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -180.0
+margin_bottom = -20.0
 
 [node name="ObjectsDialog" parent="." instance=ExtResource( 2 )]
 window_title = "Objects"
@@ -115,12 +130,6 @@ margin_bottom = 93.0
 rect_min_size = Vector2( 300, 100 )
 dialog_text = "Are you sure you want to clear all objects from the table?"
 dialog_autowrap = true
-
-[node name="ChatBox" parent="." instance=ExtResource( 4 )]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -180.0
-margin_bottom = -40.0
 
 [node name="GameMenuBackground" type="ColorRect" parent="."]
 visible = false
@@ -188,13 +197,13 @@ script = ExtResource( 5 )
 [node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
 visible = false
 
-[connection signal="pressed" from="TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
-[connection signal="pressed" from="TopPanel/GamesButton" to="." method="_on_GamesButton_pressed"]
-[connection signal="pressed" from="TopPanel/RoomButton" to="." method="_on_RoomButton_pressed"]
-[connection signal="pressed" from="TopPanel/FlipTableButton" to="." method="_on_FlipTableButton_pressed"]
-[connection signal="pressed" from="TopPanel/ClearTableButton" to="." method="_on_ClearTableButton_pressed"]
-[connection signal="item_selected" from="TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
-[connection signal="pressed" from="TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
+[connection signal="pressed" from="HideableUI/TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
+[connection signal="pressed" from="HideableUI/TopPanel/GamesButton" to="." method="_on_GamesButton_pressed"]
+[connection signal="pressed" from="HideableUI/TopPanel/RoomButton" to="." method="_on_RoomButton_pressed"]
+[connection signal="pressed" from="HideableUI/TopPanel/FlipTableButton" to="." method="_on_FlipTableButton_pressed"]
+[connection signal="pressed" from="HideableUI/TopPanel/ClearTableButton" to="." method="_on_ClearTableButton_pressed"]
+[connection signal="item_selected" from="HideableUI/TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
+[connection signal="pressed" from="HideableUI/TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
 [connection signal="entry_requested" from="ObjectsDialog" to="." method="_on_ObjectsDialog_entry_requested"]
 [connection signal="entry_requested" from="GamesDialog" to="." method="_on_GamesDialog_entry_requested"]
 [connection signal="requesting_room_details" from="RoomDialog" to="." method="_on_RoomDialog_requesting_room_details"]

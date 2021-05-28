@@ -36,17 +36,18 @@ signal skybox_requested(skybox_entry)
 signal stopped_saving_table()
 signal table_requested(table_entry)
 
-onready var _chat_box = $ChatBox
-onready var _clear_table_button = $TopPanel/ClearTableButton
+onready var _chat_box = $HideableUI/ChatBox
+onready var _clear_table_button = $HideableUI/TopPanel/ClearTableButton
 onready var _clear_table_dialog = $ClearTableConfirmDialog
-onready var _flip_table_button = $TopPanel/FlipTableButton
+onready var _flip_table_button = $HideableUI/TopPanel/FlipTableButton
 onready var _game_menu_background = $GameMenuBackground
 onready var _games_dialog = $GamesDialog
+onready var _hideable_ui = $HideableUI
 onready var _objects_dialog = $ObjectsDialog
 onready var _options_menu = $OptionsMenu
-onready var _player_list = $PlayerList
+onready var _player_list = $HideableUI/PlayerList
 onready var _room_dialog = $RoomDialog
-onready var _rotation_option = $TopPanel/RotationOption
+onready var _rotation_option = $HideableUI/TopPanel/RotationOption
 onready var _save_dialog = $GameMenuBackground/SaveDialog
 
 var spawn_point_container_name: String = ""
@@ -111,7 +112,7 @@ func _unhandled_input(event):
 			_options_menu.visible = false
 	
 	elif event.is_action_pressed("game_toggle_ui"):
-		visible = not visible
+		_hideable_ui.visible = not _hideable_ui.visible
 
 # Popup the save dialog in the given mode.
 # save_mode: If the save dialog should open in save mode.
