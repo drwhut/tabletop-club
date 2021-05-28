@@ -183,9 +183,32 @@ func _get_file_path() -> String:
 func _on_about_to_show():
 	refresh()
 	
-	# TODO: Put an initial file name depending on the mode we're in.
+	if save_mode:
+		# Give the user a default name for the save file that doesn't already
+		# exist.
+		var file_exists = true
+		var file_path = ""
+		var index = 0
+		
+		while file_exists:
+			file_path = save_dir + "/New Game"
+			if index > 0:
+				file_path += " (%d)" % index
+			file_path += "." + save_ext
+			
+			var file = File.new()
+			file_exists = file.file_exists(file_path)
+			index += 1
+		
+		# Just use the file name without the extension.
+		var ext_index = file_path.length() - save_ext.length()
+		var file_name = file_path.substr(0, ext_index - 1).get_file()
+		_file_name_edit.text = file_name
+	else:
+		# Let the player pick a save file to load.
+		_file_name_edit.text = ""
 
-func _on_confirmed():	
+func _on_confirmed():
 	var path = _get_file_path()
 	if save_mode:
 		emit_signal("save_file", path)
