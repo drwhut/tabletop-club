@@ -92,12 +92,18 @@ func refresh() -> void:
 				var ext_index = file_name.length() - file_ext.length()
 				var display_name = file_name.substr(0, ext_index - 1)
 				
-				# TODO: Add image to the entry.
-				file_entry_list.append({
+				var file_entry = {
 					"description": tr("Created: %s") % modified_datetime_str,
 					"modified_time": modified_time,
 					"name": display_name
-				})
+				}
+				
+				# Check if there is an image file that goes with the save.
+				var image_path = save_dir + "/" + display_name + ".png"
+				if file.file_exists(image_path):
+					file_entry["texture_path"] = image_path
+				
+				file_entry_list.append(file_entry)
 		
 		file_name = dir.get_next()
 	
@@ -107,6 +113,7 @@ func refresh() -> void:
 	
 	for file_entry in file_entry_list:
 		var preview = _save_preview.instance()
+		preview.imported_texture = false
 		preview.connect("clicked", self, "_on_preview_clicked")
 		_save_container.add_child(preview)
 		
@@ -178,7 +185,7 @@ func _on_about_to_show():
 	
 	# TODO: Put an initial file name depending on the mode we're in.
 
-func _on_confirmed():
+func _on_confirmed():	
 	var path = _get_file_path()
 	if save_mode:
 		emit_signal("save_file", path)

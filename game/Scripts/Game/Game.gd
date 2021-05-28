@@ -31,6 +31,8 @@ var _player_name: String
 var _player_color: Color
 
 var _room_state_saving: Dictionary = {}
+var _save_screenshot_frames: int = -1
+var _save_screenshot_path: String = ""
 var _state_version_save: Dictionary = {}
 
 # Apply options from the options menu.
@@ -81,6 +83,21 @@ func init_singleplayer() -> void:
 	
 	_ui.hide_chat_box()
 
+# Save a screenshot from the main viewport.
+# Returns: An error.
+# path: The path to save the screenshot.
+# size_factor: Resize the screenshot by the given size factor.
+func save_screenshot(path: String, size_factor: float = 1.0) -> int:
+	var image = get_viewport().get_texture().get_data()
+	image.flip_y()
+	
+	if size_factor != 1.0:
+		var new_width = int(image.get_width() * size_factor)
+		var new_height = int(image.get_height() * size_factor)
+		image.resize(new_width, new_height, Image.INTERPOLATE_BILINEAR)
+	
+	return image.save_png(path)
+
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
@@ -92,6 +109,14 @@ func _ready():
 	
 	Lobby.clear_players()
 
+func _process(_delta):
+	if _save_screenshot_frames >= 0:
+		if _save_screenshot_frames == 0:
+			if save_screenshot(_save_screenshot_path, 0.1) != OK:
+				push_error("Failed to save a screenshot to '%s'!" % _save_screenshot_path)
+		
+		_save_screenshot_frames -= 1
+
 func _unhandled_input(event):
 	if event.is_action_pressed("game_take_screenshot"):
 		# Create the screenshots folder if it doesn't already exist.
@@ -102,9 +127,7 @@ func _unhandled_input(event):
 			dt["day"], dt["hour"], dt["minute"], dt["second"]]
 		var path = screenshot_dir.get_current_dir() + "/" + name
 		
-		var image = get_viewport().get_texture().get_data()
-		image.flip_y()
-		if image.save_png(path) == OK:
+		if save_screenshot(path) == OK:
 			var message = "Saved screenshot to '%s'." % path
 			print(message)
 			
@@ -245,6 +268,14 @@ func _on_GameUI_save_table(path: String):
 	if file:
 		file.store_var(_room_state_saving)
 		file.close()
+		
+		# Save a screenshot alongside the save file next frame, when the save
+		# dialog has disappeared.
+		var path_ext = path.get_extension()
+		var ext_index = path.length() - path_ext.length()
+		var path_no_ext = path.substr(0, ext_index - 1)
+		_save_screenshot_frames = 1
+		_save_screenshot_path = path_no_ext + ".png"
 
 func _on_GameUI_stopped_saving_table():
 	_room_state_saving = {}
