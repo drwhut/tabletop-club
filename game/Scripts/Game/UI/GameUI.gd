@@ -39,7 +39,6 @@ signal table_requested(table_entry)
 onready var _chat_box = $ChatBox
 onready var _clear_table_button = $TopPanel/ClearTableButton
 onready var _clear_table_dialog = $ClearTableConfirmDialog
-onready var _file_dialog = $GameMenuBackground/FileDialog
 onready var _flip_table_button = $TopPanel/FlipTableButton
 onready var _game_menu_background = $GameMenuBackground
 onready var _games_dialog = $GamesDialog
@@ -48,6 +47,7 @@ onready var _options_menu = $OptionsMenu
 onready var _player_list = $PlayerList
 onready var _room_dialog = $RoomDialog
 onready var _rotation_option = $TopPanel/RotationOption
+onready var _save_dialog = $GameMenuBackground/SaveDialog
 
 var spawn_point_container_name: String = ""
 var spawn_point_origin: Vector3 = Vector3(0, Piece.SPAWN_HEIGHT, 0)
@@ -101,8 +101,8 @@ func _ready():
 	# Make sure we emit the signal when all of the nodes are ready:
 	call_deferred("_set_rotation_amount")
 	
-	# Make the file dialog point to the default "saves" folder.
-	_file_dialog.current_dir = Global.get_output_subdir("saves").get_current_dir()
+	# Make the save dialog point to the default "saves" folder.
+	_save_dialog.save_dir = Global.get_output_subdir("saves").get_current_dir()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -113,15 +113,13 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("game_toggle_ui"):
 		visible = not visible
 
-# Popup the file dialog in the given mode.
-# mode: The mode to open the file dialog in.
-func _popup_file_dialog(mode: int) -> void:
-	if _file_dialog.current_dir == "/":
-		_file_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
-	_file_dialog.mode = mode
-	_file_dialog.popup_centered()
+# Popup the save dialog in the given mode.
+# save_mode: If the save dialog should open in save mode.
+func _popup_save_dialog(save_mode: bool) -> void:
+	_save_dialog.save_mode = save_mode
+	_save_dialog.popup_centered()
 	
-	if mode == FileDialog.MODE_SAVE_FILE:
+	if save_mode:
 		emit_signal("about_to_save_table")
 
 # Call to emit a signal for the camera to set it's piece rotation amount.
@@ -154,18 +152,6 @@ func _on_ClearTableConfirmDialog_confirmed():
 func _on_DesktopButton_pressed():
 	get_tree().quit()
 
-func _on_FileDialog_file_selected(path: String):
-	if _file_dialog.mode == FileDialog.MODE_OPEN_FILE:
-		emit_signal("load_table", path)
-	elif _file_dialog.mode == FileDialog.MODE_SAVE_FILE:
-		emit_signal("save_table", path)
-	
-	_game_menu_background.visible = false
-
-func _on_FileDialog_popup_hide():
-	if _file_dialog.mode == FileDialog.MODE_SAVE_FILE:
-		emit_signal("stopped_saving_table")
-
 func _on_FlipTableButton_pressed():
 	emit_signal("flipping_table", _flip_table_status)
 
@@ -180,7 +166,7 @@ func _on_GamesDialog_entry_requested(_pack: String, _type: String, entry: Dictio
 	emit_signal("load_table", entry["table_path"])
 
 func _on_LoadGameButton_pressed():
-	_popup_file_dialog(FileDialog.MODE_OPEN_FILE)
+	_popup_save_dialog(false)
 
 func _on_Lobby_player_added(_id: int):
 	_update_player_list()
@@ -234,5 +220,17 @@ func _on_RoomDialog_setting_table(table_entry: Dictionary):
 func _on_RotationOption_item_selected(_index: int):
 	_set_rotation_amount()
 
+func _on_SaveDialog_load_file(path: String):
+	emit_signal("load_table", path)
+	_game_menu_background.visible = false
+
+func _on_SaveDialog_popup_hide():
+	if _save_dialog.save_mode:
+		emit_signal("stopped_saving_table")
+
+func _on_SaveDialog_save_file(path: String):
+	emit_signal("save_table", path)
+	_game_menu_background.visible = false
+
 func _on_SaveGameButton_pressed():
-	_popup_file_dialog(FileDialog.MODE_SAVE_FILE)
+	_popup_save_dialog(true)

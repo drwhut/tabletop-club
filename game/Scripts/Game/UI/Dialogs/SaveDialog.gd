@@ -24,10 +24,14 @@ extends WindowDialog
 
 class_name SaveDialog
 
+signal load_file(path)
+signal save_file(path)
+
 export(String) var save_dir: String = "user://" setget set_save_dir, get_save_dir
 export(String) var save_ext: String = "tc"
 export(bool) var save_mode: bool = false setget set_save_mode, get_save_mode
 
+var _confirm_dialog: ConfirmationDialog
 var _file_name_edit: LineEdit
 var _load_save_button: Button
 var _save_container: VBoxContainer
@@ -83,11 +87,16 @@ func refresh() -> void:
 					modified_month, modified_day, modified_hour, modified_minute,
 					modified_second]
 				
+				# Don't display the file extension in the save list.
+				var file_ext = file_name.get_extension()
+				var ext_index = file_name.length() - file_ext.length()
+				var display_name = file_name.substr(0, ext_index - 1)
+				
 				# TODO: Add image to the entry.
 				file_entry_list.append({
 					"description": tr("Created: %s") % modified_datetime_str,
 					"modified_time": modified_time,
-					"name": file_name.get_file()
+					"name": display_name
 				})
 		
 		file_name = dir.get_next()
@@ -98,8 +107,10 @@ func refresh() -> void:
 	
 	for file_entry in file_entry_list:
 		var preview = _save_preview.instance()
-		preview.set_entry(file_entry)
+		preview.connect("clicked", self, "_on_preview_clicked")
 		_save_container.add_child(preview)
+		
+		preview.set_entry(file_entry)
 
 # Set the save directory.
 # new_save_dir: The new save directory.
@@ -130,6 +141,7 @@ func _init():
 	top_container.add_child(scroll_container)
 	
 	_save_container = VBoxContainer.new()
+	_save_container.size_flags_horizontal = SIZE_EXPAND_FILL
 	scroll_container.add_child(_save_container)
 	
 	var options_container = HBoxContainer.new()
@@ -140,13 +152,56 @@ func _init():
 	options_container.add_child(_file_name_edit)
 	
 	_load_save_button = Button.new()
+	_load_save_button.connect("pressed", self, "_on_load_save_button_pressed")
 	options_container.add_child(_load_save_button)
 	
-	connect("about_to_show", self, "_on_about_to_show")
-	connect("popup_hide", self, "_on_popup_hide")
+	_confirm_dialog = ConfirmationDialog.new()
+	_confirm_dialog.window_title = tr("Overwrite file?")
+	_confirm_dialog.dialog_text = tr("The file already exists. Are you sure you want to overwrite it?")
+	_confirm_dialog.dialog_autowrap = true
+	_confirm_dialog.rect_size = Vector2(250, 100)
+	_confirm_dialog.connect("confirmed", self, "_on_confirmed")
+	add_child(_confirm_dialog)
+	
+	if not is_connected("about_to_show", self, "_on_about_to_show"):
+		connect("about_to_show", self, "_on_about_to_show")
+	if not is_connected("popup_hide", self, "_on_popup_hide"):
+		connect("popup_hide", self, "_on_popup_hide")
+
+# Get the current file path.
+# Returns: The current file path.
+func _get_file_path() -> String:
+	return save_dir + "/" + _file_name_edit.text + "." + save_ext
 
 func _on_about_to_show():
 	refresh()
+	
+	# TODO: Put an initial file name depending on the mode we're in.
+
+func _on_confirmed():
+	var path = _get_file_path()
+	if save_mode:
+		emit_signal("save_file", path)
+	else:
+		emit_signal("load_file", path)
+	
+	visible = false
+
+func _on_load_save_button_pressed():
+	var path = _get_file_path()
+	var file = File.new()
+	if save_mode and file.file_exists(path):
+		_confirm_dialog.popup_centered()
+	else:
+		_on_confirmed()
 
 func _on_popup_hide():
 	clear()
+
+func _on_preview_clicked(preview: GenericPreview, event: InputEventMouseButton):
+	if event.button_index == BUTTON_LEFT:
+		var file_entry = preview.get_entry()
+		_file_name_edit.text = file_entry["name"]
+	else:
+		# TODO: Popup a menu with extra options like copy, delete, etc.
+		pass

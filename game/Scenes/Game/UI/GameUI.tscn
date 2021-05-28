@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Game/UI/GameUI.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Game/UI/ChatBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Game/UI/Dialogs/SaveDialog.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/RoomDialog.tscn" type="PackedScene" id=6]
 
 [node name="GameUI" type="Control"]
@@ -178,13 +179,11 @@ margin_right = 143.0
 margin_bottom = 176.0
 text = "Quit to desktop"
 
-[node name="FileDialog" type="FileDialog" parent="GameMenuBackground"]
-margin_right = 600.0
-margin_bottom = 350.0
-access = 2
-filters = PoolStringArray( "*.tc ; Tabletop Club Save" )
-current_dir = "/"
-current_path = "/"
+[node name="SaveDialog" type="WindowDialog" parent="GameMenuBackground"]
+margin_right = 400.0
+margin_bottom = 450.0
+window_title = "Load a file"
+script = ExtResource( 5 )
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -209,6 +208,7 @@ visible = false
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="GameMenuBackground/CenterContainer/VBoxContainer/DesktopButton" to="." method="_on_DesktopButton_pressed"]
-[connection signal="file_selected" from="GameMenuBackground/FileDialog" to="." method="_on_FileDialog_file_selected"]
-[connection signal="popup_hide" from="GameMenuBackground/FileDialog" to="." method="_on_FileDialog_popup_hide"]
+[connection signal="load_file" from="GameMenuBackground/SaveDialog" to="." method="_on_SaveDialog_load_file"]
+[connection signal="popup_hide" from="GameMenuBackground/SaveDialog" to="." method="_on_SaveDialog_popup_hide"]
+[connection signal="save_file" from="GameMenuBackground/SaveDialog" to="." method="_on_SaveDialog_save_file"]
 [connection signal="applying_options" from="OptionsMenu" to="." method="_on_OptionsMenu_applying_options"]
