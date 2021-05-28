@@ -33,7 +33,7 @@ find the game logs in the following folders:
    If you want to provide an in-game screenshot showing the bug, you can press
    :guilabel:`F3` to display debug information on the screen, then you can
    press :guilabel:`F12` to take a screenshot! Screenshots are saved to the
-   ``user://`` directory, next to the logs.
+   Documents folder under ``TabletopClub/screenshots``.
 
 
 Suggesting a feature

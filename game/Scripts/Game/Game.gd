@@ -94,20 +94,8 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("game_take_screenshot"):
-		# Create the user://screenshots folder if it doesn't already exist.
-		var screenshot_dir = Directory.new()
-		if screenshot_dir.open("user://") != OK:
-			push_error("Cannot open user:// directory!")
-			return
-		
-		if not screenshot_dir.dir_exists("screenshots"):
-			if screenshot_dir.make_dir("screenshots") != OK:
-				push_error("Failed to create the user://screenshots directory!")
-				return
-		
-		if screenshot_dir.change_dir("screenshots") != OK:
-			push_error("Failed to change to the user://screenshots directory!")
-			return
+		# Create the screenshots folder if it doesn't already exist.
+		var screenshot_dir = Global.get_output_subdir("screenshots")
 		
 		var dt = OS.get_datetime()
 		var name = "%d-%d-%d-%d-%d-%d.png" % [dt["year"], dt["month"],
