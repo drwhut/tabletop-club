@@ -35,6 +35,11 @@ func _ready():
 		locale = Global.system_locale
 	TranslationServer.set_locale(locale)
 	
+	# Create an assets folder in the user's documents folder, so that they have
+	# an easy-to-locate place to place custom asset packs.
+	var assets_dir = Global.get_output_subdir("assets")
+	print("Created assets directory at '%s'." % assets_dir.get_current_dir())
+	
 	AssetDB.connect("completed", self, "_on_importing_completed")
 	AssetDB.connect("importing_file", self, "_on_importing_file")
 	

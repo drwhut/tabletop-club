@@ -100,6 +100,9 @@ func _ready():
 	
 	# Make sure we emit the signal when all of the nodes are ready:
 	call_deferred("_set_rotation_amount")
+	
+	# Make the file dialog point to the default "saves" folder.
+	_file_dialog.current_dir = Global.get_output_subdir("saves").get_current_dir()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
