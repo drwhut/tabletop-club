@@ -27,6 +27,11 @@ class_name SaveDialog
 signal load_file(path)
 signal save_file(path)
 
+enum {
+	SORT_LAST_MODIFIED,
+	SORT_NAME
+}
+
 export(String) var save_dir: String = "user://" setget set_save_dir, get_save_dir
 export(String) var save_ext: String = "tc"
 export(bool) var save_mode: bool = false setget set_save_mode, get_save_mode
@@ -35,6 +40,7 @@ var _confirm_dialog: ConfirmationDialog
 var _file_name_edit: LineEdit
 var _load_save_button: Button
 var _save_container: VBoxContainer
+var _sort_by_button: OptionButton
 
 var _save_preview = preload("res://Scenes/Game/UI/Previews/GenericPreview.tscn")
 
@@ -83,9 +89,9 @@ func refresh() -> void:
 				var modified_minute   = modified_datetime["minute"]
 				var modified_second   = modified_datetime["second"]
 				
-				var modified_datetime_str = "%s/%s/%s %d:%d:%d" % [modified_year,
-					modified_month, modified_day, modified_hour, modified_minute,
-					modified_second]
+				var modified_datetime_str = "%02d/%02d/%02d %02d:%02d:%02d" % [
+					modified_year, modified_month, modified_day, modified_hour,
+					modified_minute, modified_second]
 				
 				# Don't display the file extension in the save list.
 				var file_ext = file_name.get_extension()
@@ -93,7 +99,7 @@ func refresh() -> void:
 				var display_name = file_name.substr(0, ext_index - 1)
 				
 				var file_entry = {
-					"description": tr("Created: %s") % modified_datetime_str,
+					"description": tr("Modified: %s") % modified_datetime_str,
 					"modified_time": modified_time,
 					"name": display_name
 				}
@@ -107,7 +113,11 @@ func refresh() -> void:
 		
 		file_name = dir.get_next()
 	
-	# TODO: Sort the list either by modified time or by name.
+	match _sort_by_button.get_selected_id():
+		SORT_LAST_MODIFIED:
+			file_entry_list.sort_custom(self, "_sort_modified_time")
+		SORT_NAME:
+			file_entry_list.sort_custom(self, "_sort_name")
 	
 	clear()
 	
@@ -142,6 +152,20 @@ func _init():
 	top_container.anchor_bottom = ANCHOR_END
 	top_container.anchor_right = ANCHOR_END
 	add_child(top_container)
+	
+	var filter_container = HBoxContainer.new()
+	filter_container.alignment = HALIGN_RIGHT
+	top_container.add_child(filter_container)
+	
+	var sort_by_label = Label.new()
+	sort_by_label.text = tr("Sort:")
+	filter_container.add_child(sort_by_label)
+	
+	_sort_by_button = OptionButton.new()
+	_sort_by_button.add_item(tr("Last Modified"), SORT_LAST_MODIFIED)
+	_sort_by_button.add_item(tr("Name"), SORT_NAME)
+	_sort_by_button.connect("item_selected", self, "_on_sort_by_selected")
+	filter_container.add_child(_sort_by_button)
 	
 	var scroll_container = ScrollContainer.new()
 	scroll_container.size_flags_vertical = SIZE_EXPAND_FILL
@@ -179,6 +203,18 @@ func _init():
 # Returns: The current file path.
 func _get_file_path() -> String:
 	return save_dir + "/" + _file_name_edit.text + "." + save_ext
+
+# Sort an array of file entries by modified time, descending.
+# a: The first element.
+# b: The second element.
+func _sort_modified_time(a: Dictionary, b: Dictionary) -> bool:
+	return a["modified_time"] > b["modified_time"]
+
+# Sort an array of file entries by name, ascending.
+# a: The first element.
+# b: The second element.
+func _sort_name(a: Dictionary, b: Dictionary) -> bool:
+	return a["name"] < b["name"]
 
 func _on_about_to_show():
 	refresh()
@@ -235,3 +271,6 @@ func _on_preview_clicked(preview: GenericPreview, event: InputEventMouseButton):
 	else:
 		# TODO: Popup a menu with extra options like copy, delete, etc.
 		pass
+
+func _on_sort_by_selected(_index: int):
+	refresh()
