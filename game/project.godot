@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/UI/Previews/Preview.gd"
 }, {
+"base": "WindowDialog",
+"class": "SaveDialog",
+"language": "GDScript",
+"path": "res://Scripts/Game/UI/Dialogs/SaveDialog.gd"
+}, {
 "base": "Piece",
 "class": "SpeakerPiece",
 "language": "GDScript",
@@ -128,6 +133,7 @@ _global_script_class_icons={
 "Piece": "",
 "PieceContainer": "",
 "Preview": "",
+"SaveDialog": "",
 "SpeakerPiece": "",
 "SpinBoxButton": "",
 "Stack": "",
