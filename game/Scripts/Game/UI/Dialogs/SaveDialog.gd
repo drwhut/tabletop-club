@@ -28,6 +28,12 @@ signal load_file(path)
 signal save_file(path)
 
 enum {
+	CONTEXT_RENAME,
+	CONTEXT_DUPLICATE,
+	CONTEXT_DELETE
+}
+
+enum {
 	SORT_LAST_MODIFIED,
 	SORT_NAME
 }
@@ -36,11 +42,17 @@ export(String) var save_dir: String = "user://" setget set_save_dir, get_save_di
 export(String) var save_ext: String = "tc"
 export(bool) var save_mode: bool = false setget set_save_mode, get_save_mode
 
-var _confirm_dialog: ConfirmationDialog
+var _confirm_delete_dialog: ConfirmationDialog
+var _confirm_overwrite_dialog: ConfirmationDialog
+var _context_menu: PopupMenu
 var _file_name_edit: LineEdit
 var _load_save_button: Button
+var _rename_line_edit: LineEdit
+var _rename_window: WindowDialog
 var _save_container: VBoxContainer
 var _sort_by_button: OptionButton
+
+var _context_file_entry: Dictionary = {}
 
 var _save_preview = preload("res://Scenes/Game/UI/Previews/GenericPreview.tscn")
 
@@ -186,13 +198,54 @@ func _init():
 	_load_save_button.connect("pressed", self, "_on_load_save_button_pressed")
 	options_container.add_child(_load_save_button)
 	
-	_confirm_dialog = ConfirmationDialog.new()
-	_confirm_dialog.window_title = tr("Overwrite file?")
-	_confirm_dialog.dialog_text = tr("The file already exists. Are you sure you want to overwrite it?")
-	_confirm_dialog.dialog_autowrap = true
-	_confirm_dialog.rect_size = Vector2(250, 100)
-	_confirm_dialog.connect("confirmed", self, "_on_confirmed")
-	add_child(_confirm_dialog)
+	_confirm_delete_dialog = ConfirmationDialog.new()
+	_confirm_delete_dialog.window_title = tr("Delete file?")
+	# The dialog text is set on popup.
+	_confirm_delete_dialog.dialog_autowrap = true
+	_confirm_delete_dialog.rect_size = Vector2(250, 100)
+	_confirm_delete_dialog.connect("confirmed", self, "_on_delete_confirmed")
+	add_child(_confirm_delete_dialog)
+	
+	_confirm_overwrite_dialog = ConfirmationDialog.new()
+	_confirm_overwrite_dialog.window_title = tr("Overwrite file?")
+	# The dialog text is set on popup.
+	_confirm_overwrite_dialog.dialog_autowrap = true
+	_confirm_overwrite_dialog.rect_size = Vector2(250, 100)
+	_confirm_overwrite_dialog.connect("confirmed", self, "_on_save_confirmed")
+	add_child(_confirm_overwrite_dialog)
+	
+	_context_menu = PopupMenu.new()
+	_context_menu.add_item(tr("Rename"), CONTEXT_RENAME)
+	_context_menu.add_item(tr("Duplicate"), CONTEXT_DUPLICATE)
+	_context_menu.add_item(tr("Delete"), CONTEXT_DELETE)
+	_context_menu.connect("id_pressed", self, "_on_context_menu_id_pressed")
+	add_child(_context_menu)
+	
+	_rename_window = WindowDialog.new()
+	_rename_window.window_title = tr("Rename file...")
+	_rename_window.rect_size = Vector2(300, 50)
+	add_child(_rename_window)
+	
+	var rename_vbox_container = VBoxContainer.new()
+	rename_vbox_container.anchor_bottom = ANCHOR_END
+	rename_vbox_container.anchor_right = ANCHOR_END
+	_rename_window.add_child(rename_vbox_container)
+	
+	var rename_label = Label.new()
+	rename_label.text = tr("Please enter a new name for the file:")
+	rename_vbox_container.add_child(rename_label)
+	
+	var rename_hbox_container = HBoxContainer.new()
+	rename_vbox_container.add_child(rename_hbox_container)
+	
+	_rename_line_edit = LineEdit.new()
+	_rename_line_edit.size_flags_horizontal = SIZE_EXPAND_FILL
+	rename_hbox_container.add_child(_rename_line_edit)
+	
+	var rename_button = Button.new()
+	rename_button.text = tr("Rename")
+	rename_button.connect("pressed", self, "_on_rename_pressed")
+	rename_hbox_container.add_child(rename_button)
 	
 	if not is_connected("about_to_show", self, "_on_about_to_show"):
 		connect("about_to_show", self, "_on_about_to_show")
@@ -244,7 +297,27 @@ func _on_about_to_show():
 		# Let the player pick a save file to load.
 		_file_name_edit.text = ""
 
-func _on_confirmed():
+func _on_delete_confirmed():
+	if _context_file_entry.empty():
+		return
+	
+	var save_path = save_dir + "/" + _context_file_entry["name"] + "." + save_ext
+	
+	var paths_to_delete = [save_path]
+	if _context_file_entry.has("texture_path"):
+		paths_to_delete.append(_context_file_entry["texture_path"])
+	
+	var dir = Directory.new()
+	for path in paths_to_delete:
+		if dir.file_exists(path):
+			if dir.remove(path) != OK:
+				push_error("Failed to delete the file '%s'!" % path)
+		else:
+			push_warning("File '%s' cannot be deleted, as it doesn't exist!" % path)
+	
+	refresh()
+
+func _on_save_confirmed():
 	var path = _get_file_path()
 	if save_mode:
 		emit_signal("save_file", path)
@@ -253,13 +326,45 @@ func _on_confirmed():
 	
 	visible = false
 
+func _on_context_menu_id_pressed(id: int):
+	if _context_file_entry.empty():
+		return
+	
+	var file_name = _context_file_entry["name"]
+	
+	match id:
+		CONTEXT_RENAME:
+			_rename_line_edit.text = file_name
+			_rename_window.popup_centered()
+		
+		CONTEXT_DUPLICATE:
+			var old_base = save_dir + "/" + file_name
+			var new_base = old_base + " (Copy)"
+			
+			var dir = Directory.new()
+			for ext in [save_ext, "png"]:
+				var old_path = old_base + "." + ext
+				var new_path = new_base + "." + ext
+				if dir.file_exists(old_path):
+					if dir.copy(old_path, new_path) != OK:
+						push_error("Failed to copy '%s' to '%s'!" % [old_path, new_path])
+			
+			refresh()
+		
+		CONTEXT_DELETE:
+			_confirm_delete_dialog.dialog_text = tr("Are you sure you want to delete '%s'?") % file_name
+			_confirm_delete_dialog.popup_centered()
+
 func _on_load_save_button_pressed():
 	var path = _get_file_path()
 	var file = File.new()
 	if save_mode and file.file_exists(path):
-		_confirm_dialog.popup_centered()
+		var ext_index = path.length() - save_ext.length()
+		var file_name = path.substr(0, ext_index - 1).get_file()
+		_confirm_overwrite_dialog.dialog_text = tr("The file '%s' already exists. Are you sure you want to overwrite it?") % file_name
+		_confirm_overwrite_dialog.popup_centered()
 	else:
-		_on_confirmed()
+		_on_save_confirmed()
 
 func _on_popup_hide():
 	clear()
@@ -268,9 +373,34 @@ func _on_preview_clicked(preview: GenericPreview, event: InputEventMouseButton):
 	if event.button_index == BUTTON_LEFT:
 		var file_entry = preview.get_entry()
 		_file_name_edit.text = file_entry["name"]
-	else:
-		# TODO: Popup a menu with extra options like copy, delete, etc.
-		pass
+	elif event.button_index == BUTTON_RIGHT:
+		_context_file_entry = preview.get_entry()
+		_context_menu.rect_position = get_viewport().get_mouse_position()
+		_context_menu.popup()
+
+func _on_rename_pressed():
+	_rename_window.visible = false
+	
+	if _context_file_entry.empty():
+		return
+	
+	var old_name = _context_file_entry["name"]
+	var new_name = _rename_line_edit.text.strip_edges().strip_escapes()
+	if new_name.empty():
+		return
+	
+	var old_base = save_dir + "/" + old_name
+	var new_base = save_dir + "/" + new_name
+	
+	var dir = Directory.new()
+	for ext in [save_ext, "png"]:
+		var old_path = old_base + "." + ext
+		var new_path = new_base + "." + ext
+		if dir.file_exists(old_path):
+			if dir.rename(old_path, new_path) != OK:
+				push_error("Failed to move '%s' to '%s'!" % [old_path, new_path])
+	
+	refresh()
 
 func _on_sort_by_selected(_index: int):
 	refresh()
