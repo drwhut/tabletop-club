@@ -79,7 +79,7 @@ const ASSET_PACK_SUBFOLDERS = {
 
 const VALID_AUDIO_EXTENSIONS = ["mp3", "ogg", "wav"]
 const VALID_SCENE_EXTENSIONS = ["dae", "glb", "gltf", "obj"]
-const VALID_TABLE_EXTENSIONS = ["ot"]
+const VALID_TABLE_EXTENSIONS = ["tc"]
 
 # List taken from:
 # https://docs.godotengine.org/en/3.2/getting_started/workflow/assets/importing_images.html
@@ -629,7 +629,15 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 	entry["description"] = _get_file_config_value(config, from.get_file(), "desc", "")
 	
 	if type == "games":
-		pass
+		# If there is a picture that goes with the save file, use it, as it
+		# should also be imported.
+		var check_file = File.new()
+		for ext in VALID_TEXTURE_EXTENSIONS:
+			var from_image_path = from.get_basename() + "." + ext
+			if check_file.file_exists(from_image_path):
+				var to_image_path = to.get_base_dir() + "/" + from_image_path.get_file()
+				entry["texture_path"] = to_image_path
+				break
 	elif type == "music":
 		entry["main_menu"] = _get_file_config_value(config, from.get_file(), "main_menu", false)
 	elif type == "skyboxes":
