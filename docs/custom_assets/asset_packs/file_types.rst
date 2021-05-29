@@ -112,6 +112,15 @@ Save files are used to load back a saved state within Tabletop Club. They use
 the ``.tc`` extension.
 
 To create a save file when in-game, go to the menu and click
-:guilabel:`Save game`, then choose where you want to save the file. You can
-then load the state back by clicking the :guilabel:`Load game` button in the
-same menu.
+:guilabel:`Save game`, then choose a name to save the file as. You can then
+load the state back by clicking the :guilabel:`Load game` button in the same
+menu.
+
+When saving, the game puts the save file under the
+``<DOCUMENTS>/TabletopClub/saves`` folder, alongside a screenshot which is
+taken when the save is made.
+
+.. hint::
+
+   If you don't want the screenshot to have the UI, you can toggle the UI
+   before saving by pressing the :guilabel:`F9` key.

@@ -137,6 +137,11 @@ Game
 A game is a :ref:`file-type-save` that has been pre-made such that players can
 instantly setup the table to play a particular game.
 
+.. note::
+
+   If there is an image next to the save file with the same name, it will be
+   shown next to the save file in-game.
+
 
 .. _asset-type-skybox:
 
