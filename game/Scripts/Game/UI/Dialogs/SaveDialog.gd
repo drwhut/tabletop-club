@@ -46,6 +46,7 @@ var _confirm_delete_dialog: ConfirmationDialog
 var _confirm_overwrite_dialog: ConfirmationDialog
 var _context_menu: PopupMenu
 var _file_name_edit: LineEdit
+var _invalid_name_dialog: AcceptDialog
 var _load_save_button: Button
 var _rename_line_edit: LineEdit
 var _rename_window: WindowDialog
@@ -221,6 +222,14 @@ func _init():
 	_context_menu.connect("id_pressed", self, "_on_context_menu_id_pressed")
 	add_child(_context_menu)
 	
+	_invalid_name_dialog = AcceptDialog.new()
+	_invalid_name_dialog.window_title = tr("Invalid name!")
+	# We use String.is_valid_filename() to determine invalid characters.
+	_invalid_name_dialog.dialog_text = tr("File names cannot contain any of the following characters:\n%s") % ": / \\ ? * \" | % < >"
+	_invalid_name_dialog.dialog_autowrap = true
+	_invalid_name_dialog.rect_size = Vector2(250, 100)
+	add_child(_invalid_name_dialog)
+	
 	_rename_window = WindowDialog.new()
 	_rename_window.window_title = tr("Rename file...")
 	_rename_window.rect_size = Vector2(300, 50)
@@ -356,12 +365,17 @@ func _on_context_menu_id_pressed(id: int):
 			_confirm_delete_dialog.popup_centered()
 
 func _on_load_save_button_pressed():
+	var file_name = _file_name_edit.text + "." + save_ext
+	if not file_name.is_valid_filename():
+		_invalid_name_dialog.popup_centered()
+		return
+	
 	var path = _get_file_path()
 	var file = File.new()
 	if save_mode and file.file_exists(path):
 		var ext_index = path.length() - save_ext.length()
-		var file_name = path.substr(0, ext_index - 1).get_file()
-		_confirm_overwrite_dialog.dialog_text = tr("The file '%s' already exists. Are you sure you want to overwrite it?") % file_name
+		var file_name_no_ext = path.substr(0, ext_index - 1).get_file()
+		_confirm_overwrite_dialog.dialog_text = tr("The file '%s' already exists. Are you sure you want to overwrite it?") % file_name_no_ext
 		_confirm_overwrite_dialog.popup_centered()
 	else:
 		_on_save_confirmed()
@@ -379,6 +393,11 @@ func _on_preview_clicked(preview: GenericPreview, event: InputEventMouseButton):
 		_context_menu.popup()
 
 func _on_rename_pressed():
+	var file_name = _rename_line_edit.text
+	if not file_name.is_valid_filename():
+		_invalid_name_dialog.popup_centered()
+		return
+	
 	_rename_window.visible = false
 	
 	if _context_file_entry.empty():
