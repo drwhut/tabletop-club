@@ -264,7 +264,8 @@ func _init():
 # Get the current file path.
 # Returns: The current file path.
 func _get_file_path() -> String:
-	return save_dir + "/" + _file_name_edit.text + "." + save_ext
+	var file_name = _file_name_edit.text.strip_edges().strip_escapes()
+	return save_dir + "/" + file_name + "." + save_ext
 
 # Sort an array of file entries by modified time, descending.
 # a: The first element.
