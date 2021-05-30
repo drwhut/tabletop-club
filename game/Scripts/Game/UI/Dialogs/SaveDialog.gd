@@ -107,9 +107,7 @@ func refresh() -> void:
 					modified_minute, modified_second]
 				
 				# Don't display the file extension in the save list.
-				var file_ext = file_name.get_extension()
-				var ext_index = file_name.length() - file_ext.length()
-				var display_name = file_name.substr(0, ext_index - 1)
+				var display_name = file_name.get_basename()
 				
 				var file_entry = {
 					"description": tr("Modified: %s") % modified_datetime_str,
@@ -300,8 +298,7 @@ func _on_about_to_show():
 			index += 1
 		
 		# Just use the file name without the extension.
-		var ext_index = file_path.length() - save_ext.length()
-		var file_name = file_path.substr(0, ext_index - 1).get_file()
+		var file_name = file_path.get_basename().get_file()
 		_file_name_edit.text = file_name
 	else:
 		# Let the player pick a save file to load.
@@ -374,8 +371,7 @@ func _on_load_save_button_pressed():
 	var path = _get_file_path()
 	var file = File.new()
 	if save_mode and file.file_exists(path):
-		var ext_index = path.length() - save_ext.length()
-		var file_name_no_ext = path.substr(0, ext_index - 1).get_file()
+		var file_name_no_ext = path.get_basename().get_file()
 		_confirm_overwrite_dialog.dialog_text = tr("The file '%s' already exists. Are you sure you want to overwrite it?") % file_name_no_ext
 		_confirm_overwrite_dialog.popup_centered()
 	else:

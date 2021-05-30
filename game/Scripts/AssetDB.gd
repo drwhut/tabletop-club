@@ -514,13 +514,6 @@ func _get_file_config_value(config: ConfigFile, section: String, key: String, de
 	
 	return config.get_value(section, key, _get_file_config_value(config, next_section, key, default))
 
-# Given a file path, get the file name without the extension.
-# Returns: The file name of file_path without the extension.
-# file_path: The file path.
-func _get_file_without_ext(file_path: String) -> String:
-	var file = file_path.get_file()
-	return file.substr(0, file.length() - file.get_extension().length() - 1)
-
 # Import an asset. If it has already been imported before, and it's contents
 # have not changed, it is not reimported, but the piece entry is still added to
 # the database.
@@ -625,7 +618,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 	if entry.empty():
 		return OK
 	
-	entry["name"] = _get_file_without_ext(to)
+	entry["name"] = to.get_basename().get_file()
 	entry["description"] = _get_file_config_value(config, from.get_file(), "desc", "")
 	
 	if type == "games":

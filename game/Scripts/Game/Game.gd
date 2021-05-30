@@ -271,11 +271,8 @@ func _on_GameUI_save_table(path: String):
 		
 		# Save a screenshot alongside the save file next frame, when the save
 		# dialog has disappeared.
-		var path_ext = path.get_extension()
-		var ext_index = path.length() - path_ext.length()
-		var path_no_ext = path.substr(0, ext_index - 1)
 		_save_screenshot_frames = 1
-		_save_screenshot_path = path_no_ext + ".png"
+		_save_screenshot_path = path.get_basename() + ".png"
 
 func _on_GameUI_stopped_saving_table():
 	_room_state_saving = {}
