@@ -223,6 +223,23 @@ func _unhandled_input(event):
 		else:
 			push_error("Failed to save screenshot to '%s'!" % path)
 			return
+	
+	elif event.is_action_pressed("game_quicksave") or event.is_action_pressed("game_quickload"):
+		var save_dir_path = Global.get_output_subdir("saves").get_current_dir()
+		var quicksave_path = save_dir_path + "/quicksave.tc"
+		
+		if event.is_action_pressed("game_quicksave"):
+			var state = _room.get_state(false, false)
+			save_state(state, quicksave_path)
+			
+			# TODO: Show a notification that a quicksave was made.
+		
+		elif event.is_action_pressed("game_quickload"):
+			var file = File.new()
+			if file.file_exists(quicksave_path):
+				load_state(quicksave_path)
+			else:
+				push_warning("Cannot load quicksave file at '%s', does not exist!" % quicksave_path)
 
 # Create a network peer object.
 # Returns: A new network peer object.
