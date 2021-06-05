@@ -471,18 +471,8 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	# If the paint image is blank (it's default state), don't bother storing
 	# any image data in the state.
 	var paint_image = _paint_plane.get_paint()
-	var is_paint_image_blank = true
-	paint_image.lock()
-	for x in range(paint_image.get_width()):
-		for y in range(paint_image.get_height()):
-			var p = paint_image.get_pixel(x, y)
-			if p.a > 0.0:
-				is_paint_image_blank = false
-				break
-	paint_image.unlock()
-	
 	var paint_image_data = null
-	if not is_paint_image_blank:
+	if not paint_image.is_invisible():
 		paint_image_data = paint_image.get_data()
 	
 	out["table"] = {
