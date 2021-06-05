@@ -27,6 +27,10 @@ onready var _table_state_error_dialog = $TableStateErrorDialog
 onready var _table_state_version_dialog = $TableStateVersionDialog
 onready var _ui = $GameUI
 
+export(bool) var autosave_enabled: bool = true
+export(int) var autosave_interval: int = 300
+export(int) var autosave_count: int = 10
+
 var _player_name: String
 var _player_color: Color
 
@@ -34,12 +38,32 @@ var _room_state_saving: Dictionary = {}
 var _save_screenshot_frames: int = -1
 var _save_screenshot_path: String = ""
 var _state_version_save: Dictionary = {}
+var _time_since_last_autosave: float = 0.0
 
 # Apply options from the options menu.
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
 	_room.apply_options(config)
 	_ui.apply_options(config)
+	
+	autosave_enabled = true
+	var autosave_interval_id = config.get_value("general", "autosave_interval")
+	
+	match autosave_interval_id:
+		0:
+			autosave_enabled = false
+		1:
+			autosave_interval = 30
+		2:
+			autosave_interval = 60
+		3:
+			autosave_interval = 300
+		4:
+			autosave_interval = 600
+		5:
+			autosave_interval = 1800
+	
+	autosave_count = config.get_value("general", "autosave_file_count")
 	
 	_player_name = config.get_value("multiplayer", "name")
 	_player_color = config.get_value("multiplayer", "color")
@@ -83,6 +107,27 @@ func init_singleplayer() -> void:
 	
 	_ui.hide_chat_box()
 
+# Load a table state from the given file path.
+# path: The file path of the state to load.
+func load_state(path: String) -> void:
+	var file = _open_table_state_file(path, File.READ)
+	if file:
+		var state = file.get_var()
+		file.close()
+		
+		if state is Dictionary:
+			var our_version = ProjectSettings.get_setting("application/config/version")
+			if state.has("version") and state["version"] == our_version:
+				_room.rpc_id(1, "request_load_table_state", state)
+			else:
+				_state_version_save = state
+				if not state.has("version"):
+					_popup_table_state_version(tr("Loaded table has no version information. Load anyway?"))
+				else:
+					_popup_table_state_version(tr("Loaded table was saved with a different version of the game (Current: %s, Table: %s). Load anyway?") % [our_version, state["version"]])
+		else:
+			_popup_table_state_error(tr("Loaded table is not in the correct format."))
+
 # Save a screenshot from the main viewport.
 # Returns: An error.
 # path: The path to save the screenshot.
@@ -98,6 +143,20 @@ func save_screenshot(path: String, size_factor: float = 1.0) -> int:
 	
 	return image.save_png(path)
 
+# Save a table state to the given file path.
+# state: The state to save.
+# path: The file path to save the state to.
+func save_state(state: Dictionary, path: String) -> void:
+	var file = _open_table_state_file(path, File.WRITE)
+	if file:
+		file.store_var(state)
+		file.close()
+		
+		# Save a screenshot alongside the save file next frame, when the save
+		# dialog has disappeared.
+		_save_screenshot_frames = 1
+		_save_screenshot_path = path.get_basename() + ".png"
+
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
@@ -109,13 +168,42 @@ func _ready():
 	
 	Lobby.clear_players()
 
-func _process(_delta):
+func _process(delta):
 	if _save_screenshot_frames >= 0:
 		if _save_screenshot_frames == 0:
 			if save_screenshot(_save_screenshot_path, 0.1) != OK:
 				push_error("Failed to save a screenshot to '%s'!" % _save_screenshot_path)
 		
 		_save_screenshot_frames -= 1
+	
+	_time_since_last_autosave += delta
+	if autosave_enabled and _time_since_last_autosave > autosave_interval:
+		var autosave_dir_path = Global.get_output_subdir("saves").get_current_dir()
+		var autosave_path = ""
+		var oldest_file_path = ""
+		var oldest_file_time = 0
+		
+		var file = File.new()
+		for autosave_id in range(autosave_count):
+			autosave_path = autosave_dir_path + "/autosave_" + str(autosave_id) + ".tc"
+			
+			if file.file_exists(autosave_path):
+				var modified_time = file.get_modified_time(autosave_path)
+				if oldest_file_path.empty() or modified_time < oldest_file_time:
+					oldest_file_path = autosave_path
+					oldest_file_time = modified_time
+			else:
+				break
+		
+		if file.file_exists(autosave_path):
+			autosave_path = oldest_file_path
+		
+		var state = _room.get_state(false, false)
+		save_state(state, autosave_path)
+		
+		# TODO: Notify the player that an autosave was made.
+		
+		_time_since_last_autosave = 0.0
 
 func _unhandled_input(event):
 	if event.is_action_pressed("game_take_screenshot"):
@@ -230,23 +318,7 @@ func _on_GameUI_lighting_requested(lamp_color: Color, lamp_intensity: float,
 	_room.rpc_id(1, "request_set_lamp_type", lamp_sunlight)
 
 func _on_GameUI_load_table(path: String):
-	var file = _open_table_state_file(path, File.READ)
-	if file:
-		var state = file.get_var()
-		file.close()
-		
-		if state is Dictionary:
-			var our_version = ProjectSettings.get_setting("application/config/version")
-			if state.has("version") and state["version"] == our_version:
-				_room.rpc_id(1, "request_load_table_state", state)
-			else:
-				_state_version_save = state
-				if not state.has("version"):
-					_popup_table_state_version(tr("Loaded table has no version information. Load anyway?"))
-				else:
-					_popup_table_state_version(tr("Loaded table was saved with a different version of the game (Current: %s, Table: %s). Load anyway?") % [our_version, state["version"]])
-		else:
-			_popup_table_state_error(tr("Loaded table is not in the correct format."))
+	load_state(path)
 
 func _on_GameUI_piece_requested(piece_entry: Dictionary, position: Vector3):
 	_room.rpc_id(1, "request_add_piece", piece_entry, position)
@@ -264,15 +336,7 @@ func _on_GameUI_save_table(path: String):
 		push_error("Room state to save is empty!")
 		return
 	
-	var file = _open_table_state_file(path, File.WRITE)
-	if file:
-		file.store_var(_room_state_saving)
-		file.close()
-		
-		# Save a screenshot alongside the save file next frame, when the save
-		# dialog has disappeared.
-		_save_screenshot_frames = 1
-		_save_screenshot_path = path.get_basename() + ".png"
+	save_state(_room_state_saving, path)
 
 func _on_GameUI_stopped_saving_table():
 	_room_state_saving = {}
