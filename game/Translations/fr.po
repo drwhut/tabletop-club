@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-05-03 20:23+0100\n"
-"PO-Revision-Date: 2021-04-12 08:51+0000\n"
-"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/opentabletop/game/"
-"fr/>\n"
+"PO-Revision-Date: 2021-06-08 15:33+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
+"game/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:28
 msgid "Importing assets..."
-msgstr "Import des ressources…"
+msgstr "Importation des ressources…"
 
 #: ../Scenes/Loading.tscn:34
 msgid "Loading..."
@@ -58,7 +58,7 @@ msgstr "Quitter"
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: ../Scenes/OptionsMenu.tscn:61
 msgid "Master Volume"
@@ -73,10 +73,8 @@ msgid "Sounds Volume"
 msgstr "Volume des sons"
 
 #: ../Scenes/OptionsMenu.tscn:119
-#, fuzzy
-#| msgid "Containers"
 msgid "Controls"
-msgstr "Conteneurs"
+msgstr "Contrôles"
 
 #: ../Scenes/OptionsMenu.tscn:132
 msgid "Mouse Horizontal Sensitivity"
@@ -140,11 +138,11 @@ msgstr "Masquer les conseils des contrôles"
 
 #: ../Scenes/OptionsMenu.tscn:382
 msgid "General"
-msgstr ""
+msgstr "Général"
 
 #: ../Scenes/OptionsMenu.tscn:396
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 #: ../Scenes/OptionsMenu.tscn:430
 msgid "Open Assets Folder"
@@ -159,10 +157,8 @@ msgid "View License"
 msgstr "Voir la licence"
 
 #: ../Scenes/OptionsMenu.tscn:470
-#, fuzzy
-#| msgid "Reset Bindings"
 msgid "Key Bindings"
-msgstr "Réinitialiser les contrôles"
+msgstr "Raccourcis clavier"
 
 #: ../Scenes/OptionsMenu.tscn:484
 msgid "Move Forward"
@@ -221,10 +217,8 @@ msgid "Reset Bindings"
 msgstr "Réinitialiser les contrôles"
 
 #: ../Scenes/OptionsMenu.tscn:721
-#, fuzzy
-#| msgid "Singleplayer"
 msgid "Multiplayer"
-msgstr "1 joueur"
+msgstr "Multijoueur"
 
 #: ../Scenes/OptionsMenu.tscn:735
 msgid "Name"
@@ -244,11 +238,11 @@ msgstr "Masquer le curseur des joueurs"
 
 #: ../Scenes/OptionsMenu.tscn:782
 msgid "Censor Profanity"
-msgstr ""
+msgstr "Censurer les grossièretés"
 
 #: ../Scenes/OptionsMenu.tscn:803
 msgid "Video"
-msgstr ""
+msgstr "Vidéo"
 
 #: ../Scenes/OptionsMenu.tscn:817
 msgid "Window Mode"
@@ -490,7 +484,7 @@ msgstr "Intensité de la lampe"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:128
 msgid "10%"
-msgstr "10%"
+msgstr "10 %"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:134
 msgid "Lamp Color"
@@ -607,15 +601,15 @@ msgstr "Icônes des outils"
 
 #: ../Scripts/MainMenu.gd:74
 msgid "Translators"
-msgstr ""
+msgstr "Traducteurs"
 
 #: ../Scripts/MainMenu.gd:76
 msgid "French"
-msgstr ""
+msgstr "Français"
 
 #: ../Scripts/OptionsMenu.gd:28
 msgid "System Default"
-msgstr ""
+msgstr "Selon le système"
 
 #: ../Scripts/RandomMusicPlayer.gd:33
 msgid "Nothing"
@@ -632,10 +626,8 @@ msgid "Count: %d"
 msgstr "Compte : %d"
 
 #: ../Scripts/Game/CameraController.gd:1054
-#, fuzzy
-#| msgid "Add objects..."
 msgid "Add selected objects..."
-msgstr "Ajouter des objets…"
+msgstr "Ajouter les objets sélectionnés…"
 
 #: ../Scripts/Game/CameraController.gd:1075
 msgid "Put in hand"
@@ -675,7 +667,7 @@ msgstr "Trier"
 
 #: ../Scripts/Game/CameraController.gd:1171
 msgid "Collect selected"
-msgstr ""
+msgstr "Collecter les sélectionnés"
 
 #: ../Scripts/Game/CameraController.gd:1178
 msgid "Add objects..."
