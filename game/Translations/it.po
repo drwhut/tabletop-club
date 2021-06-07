@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-05-03 20:23+0100\n"
-"PO-Revision-Date: 2021-04-08 01:26+0000\n"
-"Last-Translator: drwhut <drwhut@gmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/opentabletop/"
+"PO-Revision-Date: 2021-06-08 15:33+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/tabletop-club/"
 "game/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:28
@@ -218,23 +218,23 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:721
 msgid "Multiplayer"
-msgstr ""
+msgstr "Multigiocatore"
 
 #: ../Scenes/OptionsMenu.tscn:735
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: ../Scenes/OptionsMenu.tscn:743
 msgid "Player"
-msgstr ""
+msgstr "Giocatore"
 
 #: ../Scenes/OptionsMenu.tscn:750
 msgid "Color"
-msgstr ""
+msgstr "Colore"
 
 #: ../Scenes/OptionsMenu.tscn:767
 msgid "Hide Player Cursors"
-msgstr ""
+msgstr "Nascondi i cursori del giocatore"
 
 #: ../Scenes/OptionsMenu.tscn:782
 msgid "Censor Profanity"
@@ -242,11 +242,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:803
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: ../Scenes/OptionsMenu.tscn:817
 msgid "Window Mode"
-msgstr ""
+msgstr "Modalità finestra"
 
 #: ../Scenes/OptionsMenu.tscn:825
 msgid "Windowed"
@@ -307,18 +307,18 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1018
 msgid "Back"
-msgstr ""
+msgstr "Indietro"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:154
 #: ../Scenes/OptionsMenu.tscn:1024
 msgid "Apply"
-msgstr ""
+msgstr "Applica"
 
 #: ../Scenes/Game/CameraController.tscn:159
 #: ../Scenes/Game/CameraController.tscn:229
 #: ../Scenes/Game/CameraController.tscn:286 ../Scenes/OptionsMenu.tscn:1030
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: ../Scenes/OptionsMenu.tscn:1077
 msgid "Please press a key or button to bind it..."
