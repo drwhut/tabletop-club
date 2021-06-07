@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-05-03 20:23+0100\n"
-"PO-Revision-Date: 2021-05-03 15:32+0000\n"
-"Last-Translator: Daniel Haag <dh.wblt@dhx.at>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/opentabletop/game/"
-"de/>\n"
+"PO-Revision-Date: 2021-06-08 15:33+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
+"game/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +22,11 @@ msgstr ""
 
 #: ../Scenes/ImportAssets.tscn:28
 msgid "Importing assets..."
-msgstr "Anlagen importieren..."
+msgstr "Anlagen werden importiert …"
 
 #: ../Scenes/Loading.tscn:34
 msgid "Loading..."
-msgstr "Laden..."
+msgstr "Wird geladen …"
 
 #: ../Scenes/MainMenu.tscn:35
 msgid "Singleplayer"
@@ -73,10 +73,8 @@ msgid "Sounds Volume"
 msgstr "Effektlautstärke"
 
 #: ../Scenes/OptionsMenu.tscn:119
-#, fuzzy
-#| msgid "Hide Control Hints"
 msgid "Controls"
-msgstr "Steuerungstipps verstecken"
+msgstr "Steuerungen"
 
 #: ../Scenes/OptionsMenu.tscn:132
 msgid "Mouse Horizontal Sensitivity"
@@ -219,10 +217,8 @@ msgid "Reset Bindings"
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:721
-#, fuzzy
-#| msgid "Singleplayer"
 msgid "Multiplayer"
-msgstr "Einzelspieler"
+msgstr "Mehrspieler"
 
 #: ../Scenes/OptionsMenu.tscn:735
 msgid "Name"
@@ -326,11 +322,11 @@ msgstr "OK"
 
 #: ../Scenes/OptionsMenu.tscn:1077
 msgid "Please press a key or button to bind it..."
-msgstr "Einen Knopf oder eine Taste für die Zuordnung betätigen..."
+msgstr "Einen Knopf oder eine Taste für die Zuordnung betätigen …"
 
 #: ../Scenes/OptionsMenu.tscn:1097
 msgid "Cancel"
-msgstr "Abbruch"
+msgstr "Abbrechen"
 
 #: ../Scenes/RandomMusicPlayer.tscn:21
 msgid "Now Playing:"
@@ -372,11 +368,11 @@ msgstr "%d Spuren geladen."
 
 #: ../Scenes/Game/Game.tscn:25
 msgid "Connecting to the server..."
-msgstr "Verbinden zum Server..."
+msgstr "Verbinden zum Server …"
 
 #: ../Scenes/Game/UI/ChatBox.tscn:47
 msgid "Type a message here..."
-msgstr "Nachricht eingeben..."
+msgstr "Nachricht eingeben …"
 
 #: ../Scenes/Game/UI/ChatBox.tscn:53
 msgid "Send"
@@ -488,7 +484,7 @@ msgstr "Leuchtmittelintensität"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:128
 msgid "10%"
-msgstr "10%"
+msgstr "10 %"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:134
 msgid "Lamp Color"
