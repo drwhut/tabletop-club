@@ -372,6 +372,17 @@ func apply_options(config: ConfigFile) -> void:
 	var paint_filtering = config.get_value("video", "table_paint_filtering")
 	_paint_plane.set_filtering_enabled(paint_filtering)
 
+# Compress the given room state.
+# Returns: A dictionary, where "data" is the compressed version of the room
+# state, and "size" is the size of the uncompressed data.
+# state: The room state to compress.
+func compress_state(state: Dictionary) -> Dictionary:
+	var bytes = var2bytes(state)
+	return {
+		"data": bytes.compress(File.COMPRESSION_FASTLZ),
+		"size": bytes.size()
+	}
+
 # Flip the table.
 # camera_basis: The basis matrix of the player flipping the table.
 remotesync func flip_table(camera_basis: Basis) -> void:
@@ -537,13 +548,7 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 # hands: Should the hand states be included?
 # collisions: Should collision data be included?
 func get_state_compressed(hands: bool = false, collisions: bool = false) -> Dictionary:
-	var state = get_state(hands, collisions)
-	var bytes = var2bytes(state)
-	
-	return {
-		"data": bytes.compress(File.COMPRESSION_FASTLZ),
-		"size": bytes.size()
-	}
+	return compress_state(get_state(hands, collisions))
 
 # Get the current table's entry in the asset DB.
 # Returns: The current table's entry, empty if there is no table.
@@ -1001,10 +1006,10 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	_camera_controller.append_selected_pieces([piece])
 	_camera_controller.set_is_hovering(true)
 
-# Request the server to load a table state.
-# state: The state to load.
-master func request_load_table_state(state: Dictionary) -> void:
-	rpc("set_state", state)
+# Request the server to load a compressed table state.
+# compressed_state: The compressed state to load.
+master func request_load_table_state(compressed_state: Dictionary) -> void:
+	rpc("set_state_compressed", compressed_state)
 
 # Request the server to paste the contents of a clipboard to the room.
 # clipboard: The clipboard contents (from _append_piece_states).
@@ -1252,7 +1257,7 @@ remotesync func set_skybox(skybox_entry: Dictionary) -> void:
 
 # Set the room state.
 # state: The new room state.
-remotesync func set_state(state: Dictionary) -> void:
+func set_state(state: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
