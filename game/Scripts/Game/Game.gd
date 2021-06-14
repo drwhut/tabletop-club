@@ -246,7 +246,8 @@ func _on_connection_established(id: int):
 	# If a player has connected to the server, let them know of every piece on
 	# the board so far.
 	if get_tree().is_network_server():
-		_room.rpc_id(id, "set_state", _room.get_state(true, true))
+		var compressed_state = _room.get_state_compressed(true, true)
+		_room.rpc_id(id, "set_state_compressed", compressed_state)
 		
 		# If there is space, also give them a hand on the table.
 		var hand_transform = _room.srv_get_next_hand_transform()

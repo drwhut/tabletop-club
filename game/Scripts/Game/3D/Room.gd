@@ -531,6 +531,20 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	
 	return out
 
+# Get the current room state as a compressed byte array.
+# Returns: A dictionary, where "data" is the compressed version of the room
+# state, and "size" is the size of the uncompressed data.
+# hands: Should the hand states be included?
+# collisions: Should collision data be included?
+func get_state_compressed(hands: bool = false, collisions: bool = false) -> Dictionary:
+	var state = get_state(hands, collisions)
+	var bytes = var2bytes(state)
+	
+	return {
+		"data": bytes.compress(File.COMPRESSION_FASTLZ),
+		"size": bytes.size()
+	}
+
 # Get the current table's entry in the asset DB.
 # Returns: The current table's entry, empty if there is no table.
 func get_table() -> Dictionary:
@@ -1354,6 +1368,38 @@ remotesync func set_state(state: Dictionary) -> void:
 	if get_tree().is_network_server():
 		_srv_allow_card_stacking = false
 		_srv_hand_setup_frames = 5
+
+# Set the room state with a compressed version of a state.
+# compressed_state: The compressed state from get_state_compressed().
+remotesync func set_state_compressed(compressed_state: Dictionary) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if not compressed_state.has("data"):
+		push_error("Compressed state does not contain data!")
+		return
+	
+	if not compressed_state["data"] is PoolByteArray:
+		push_error("Compressed state data is not a byte array!")
+		return
+	
+	if not compressed_state.has("size"):
+		push_error("Compressed state does not have size information!")
+		return
+	
+	if not compressed_state["size"] is int:
+		push_error("Compressed state size information is not an integer!")
+		return
+	
+	var data = compressed_state["data"]
+	var size = compressed_state["size"]
+	
+	var bytes = data.decompress(size, File.COMPRESSION_FASTLZ)
+	var state = bytes2var(bytes)
+	if state is Dictionary:
+		set_state(state)
+	else:
+		push_error("Failed to decode the uncompressed state!")
 
 # Set the room table.
 # table_entry: The table's entry in the asset DB.
