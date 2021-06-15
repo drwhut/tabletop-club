@@ -380,6 +380,12 @@ remotesync func flip_table(camera_basis: Basis) -> void:
 	
 	_table_preflip_state = get_state(false, false)
 	
+	# Unlock all pieces after we've saved the state so that the table doesn't
+	# get blocked.
+	for piece in _pieces.get_children():
+		if piece is Piece:
+			piece.mode = RigidBody.MODE_RIGID
+	
 	_table_body.mode = RigidBody.MODE_RIGID
 	
 	var left = -camera_basis.x
