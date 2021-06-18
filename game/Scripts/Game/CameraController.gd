@@ -510,6 +510,8 @@ func _physics_process(_delta):
 		if area_result.has("collider"):
 			if area_result.collider is HiddenArea:
 				_hidden_area_mouse_is_over = area_result.collider
+	else:
+		_cursor_position = _calculate_hover_position(mouse_pos, 0.0)
 	
 	if send_cursor_position and _cursor_position:
 		if _cursor_position != _last_sent_cursor_position:
@@ -1655,7 +1657,7 @@ func _on_MouseGrab_gui_input(event):
 						_perform_box_select = true
 			
 			elif _tool == TOOL_RULER:
-				if event.is_pressed() and _cursor_on_table:
+				if event.is_pressed() and (_cursor_on_table or _ruler_placing_point2):
 					if not _ruler_placing_point2:
 						var ruler = preload("res://Scenes/Game/UI/RulerLine.tscn").instance()
 						ruler.is_metric = (_ruler_system_button.selected == 0)
@@ -1667,7 +1669,7 @@ func _on_MouseGrab_gui_input(event):
 					_ruler_placing_point2 = not _ruler_placing_point2
 			
 			elif _tool == TOOL_HIDDEN_AREA:
-				if event.is_pressed() and _cursor_on_table:
+				if event.is_pressed() and (_cursor_on_table or _hidden_area_placing_point2):
 					if _hidden_area_placing_point2:
 						var point1_v2 = Vector2(_hidden_area_point1.x, _hidden_area_point1.z)
 						var point2_v2 = Vector2(_hidden_area_point2.x, _hidden_area_point2.z)
@@ -1707,13 +1709,14 @@ func _on_MouseGrab_gui_input(event):
 							clear_selected_pieces()
 				else:
 					if _tool == TOOL_CURSOR:
-						if event.position == _right_click_pos:
-							if _selected_pieces.empty():
-								_popup_table_context_menu()
-								_spawn_point_position = _cursor_position
-								_spawn_point_position.y += Piece.SPAWN_HEIGHT
-							else:
-								_popup_piece_context_menu()
+						if _cursor_on_table:
+							if event.position == _right_click_pos:
+								if _selected_pieces.empty():
+									_popup_table_context_menu()
+									_spawn_point_position = _cursor_position
+									_spawn_point_position.y += Piece.SPAWN_HEIGHT
+								else:
+									_popup_piece_context_menu()
 					
 					elif _tool == TOOL_RULER:
 						if event.position == _right_click_pos:
