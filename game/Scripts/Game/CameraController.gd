@@ -196,6 +196,9 @@ var _timer_last_time_update = 0
 var _tool = TOOL_CURSOR
 var _viewport_size_original = Vector2()
 
+
+
+
 # Append an array of pieces to the list of selected pieces.
 # pieces: The array of pieces to now be selected.
 func append_selected_pieces(pieces: Array) -> void:
@@ -2048,3 +2051,12 @@ func _on_Viewport_size_changed():
 	for cursor in _cursors.get_children():
 		if cursor is TextureRect:
 			cursor.rect_scale = _get_cursor_scale()
+
+
+func _on_UndoToolButton_pressed():
+	
+	var room = get_tree().get_current_scene().get_node("Room")	#the pop/push functions are a part of the Room scene's script so we need to get the "Room" node in order to use them
+	
+	room.rpc_id(1, "pop_undo_state")	#make the host pop an und state
+	
+	
