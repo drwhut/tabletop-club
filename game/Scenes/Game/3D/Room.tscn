@@ -70,6 +70,7 @@ collision_layer = 2
 [connection signal="painting" from="CameraController" to="." method="_on_CameraController_painting"]
 [connection signal="placing_hidden_area" from="CameraController" to="." method="_on_CameraController_placing_hidden_area"]
 [connection signal="pop_stack_requested" from="CameraController" to="." method="_on_CameraController_pop_stack_requested"]
+[connection signal="popping_undo_state" from="CameraController" to="." method="_on_CameraController_popping_undo_state"]
 [connection signal="removing_hidden_area" from="CameraController" to="." method="_on_CameraController_removing_hidden_area"]
 [connection signal="selecting_all_pieces" from="CameraController" to="." method="_on_CameraController_selecting_all_pieces"]
 [connection signal="setting_hidden_area_preview_points" from="CameraController" to="." method="_on_CameraController_setting_hidden_area_preview_points"]
