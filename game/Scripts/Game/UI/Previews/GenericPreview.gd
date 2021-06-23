@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,6 +28,8 @@ onready var _name = $VBoxContainer/Name
 onready var _selected_rect = $SelectedRect
 onready var _texture = $VBoxContainer/HBoxContainer/Texture
 
+export(bool) var imported_texture: bool = true
+
 # Called when the preview is cleared.
 func _clear_gui() -> void:
 	_description.text = ""
@@ -42,7 +44,24 @@ func _set_entry_gui(entry: Dictionary) -> void:
 	
 	if entry.has("texture_path") and (not entry["texture_path"].empty()):
 		_texture.visible = true
-		_texture.texture = load(entry["texture_path"])
+		
+		if imported_texture:
+			_texture.texture = load(entry["texture_path"])
+		else:
+			var image_file = File.new()
+			if image_file.open(entry["texture_path"], File.READ) == OK:
+				var buffer = image_file.get_buffer(image_file.get_len())
+				image_file.close()
+				
+				var image = Image.new()
+				if image.load_png_from_buffer(buffer) == OK:
+					var texture = ImageTexture.new()
+					texture.create_from_image(image)
+					_texture.texture = texture
+				else:
+					push_error("Could not load PNG data from the buffer!")
+			else:
+				push_error("Could not open '%s'!" % entry["texture_path"])
 	else:
 		_texture.visible = false
 

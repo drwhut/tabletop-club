@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Game/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Misc/OutlineColorRect.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Images/RulerIcon.svg" type="Texture" id=7]
 [ext_resource path="res://Images/CursorIcon.svg" type="Texture" id=8]
 [ext_resource path="res://Images/PaintIcon.svg" type="Texture" id=9]
+[ext_resource path="res://Scripts/Misc/SpinBoxButton.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/Misc/TimeEdit.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Fonts/Cabin-Bold.ttf" type="DynamicFontData" id=14]
@@ -76,45 +78,175 @@ __meta__ = {
 The operations are determined by the classes of the pieces, and how many of them are selected."
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PieceContextMenu"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+[node name="ColorMenu" type="PopupPanel" parent="PieceContextMenu"]
+margin_right = 327.0
+margin_bottom = 472.0
 
-[node name="RulerToolMenu" type="PopupMenu" parent="."]
-margin_right = 242.0
-margin_bottom = 150.0
+[node name="ColorPicker" type="ColorPicker" parent="PieceContextMenu/ColorMenu"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 323.0
+margin_bottom = 468.0
+edit_alpha = false
+
+[node name="DealCardsMenu" type="PopupPanel" parent="PieceContextMenu"]
+margin_right = 8.0
+margin_bottom = 8.0
+
+[node name="DealCardsSpinBoxButton" type="HBoxContainer" parent="PieceContextMenu/DealCardsMenu"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 180.0
+margin_bottom = 34.0
+script = ExtResource( 10 )
+max_value = 1
+prefix = "X ="
+text = "Deal X cards"
+
+[node name="SpeakerMenu" type="PopupPanel" parent="PieceContextMenu"]
+margin_right = 103.0
+margin_bottom = 162.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PieceContextMenu/SpeakerMenu"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 99.0
+margin_bottom = 158.0
+
+[node name="SpeakerTrackLabel" type="Label" parent="PieceContextMenu/SpeakerMenu/VBoxContainer"]
+margin_right = 95.0
+margin_bottom = 20.0
+
+[node name="SpeakerSelectTrackButton" type="Button" parent="PieceContextMenu/SpeakerMenu/VBoxContainer"]
+margin_top = 24.0
+margin_right = 95.0
+margin_bottom = 50.0
+text = "Select track"
+
+[node name="SpeakerPlayStopButton" type="Button" parent="PieceContextMenu/SpeakerMenu/VBoxContainer"]
+margin_top = 54.0
+margin_right = 95.0
+margin_bottom = 80.0
+
+[node name="SpeakerPauseButton" type="Button" parent="PieceContextMenu/SpeakerMenu/VBoxContainer"]
+margin_top = 84.0
+margin_right = 95.0
+margin_bottom = 110.0
+
+[node name="RangeLabel" type="Label" parent="PieceContextMenu/SpeakerMenu/VBoxContainer"]
+margin_top = 114.0
+margin_right = 95.0
+margin_bottom = 134.0
+text = "Range:"
+
+[node name="SpeakerVolumeSlider" type="HSlider" parent="PieceContextMenu/SpeakerMenu/VBoxContainer"]
+margin_top = 138.0
+margin_right = 95.0
+margin_bottom = 154.0
+
+[node name="TakeOffTopMenu" type="PopupPanel" parent="PieceContextMenu"]
+margin_right = 8.0
+margin_bottom = 8.0
+
+[node name="TakeOffTopSpinBoxButton" type="HBoxContainer" parent="PieceContextMenu/TakeOffTopMenu"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 190.0
+margin_bottom = 34.0
+script = ExtResource( 10 )
+max_value = 1
+prefix = "X ="
+text = "Take X off top"
+
+[node name="TakeOutMenu" type="PopupPanel" parent="PieceContextMenu"]
+margin_right = 8.0
+margin_bottom = 8.0
+
+[node name="TakeOutSpinBoxButton" type="HBoxContainer" parent="PieceContextMenu/TakeOutMenu"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 167.0
+margin_bottom = 34.0
+script = ExtResource( 10 )
+prefix = "X ="
+text = "Take X out"
+
+[node name="TimerMenu" type="PopupPanel" parent="PieceContextMenu"]
+margin_right = 8.0
+margin_bottom = 8.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PieceContextMenu/TimerMenu"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 16.0
+margin_bottom = 118.0
+
+[node name="TimerTimeLabel" type="Label" parent="PieceContextMenu/TimerMenu/VBoxContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+align = 1
+
+[node name="TimerPauseButton" type="Button" parent="PieceContextMenu/TimerMenu/VBoxContainer"]
+margin_top = 24.0
+margin_right = 12.0
+margin_bottom = 50.0
+
+[node name="CountdownContainer" type="VBoxContainer" parent="PieceContextMenu/TimerMenu/VBoxContainer"]
+margin_top = 54.0
+margin_right = 12.0
+margin_bottom = 84.0
+
+[node name="TimerCountdownTime" type="HBoxContainer" parent="PieceContextMenu/TimerMenu/VBoxContainer/CountdownContainer"]
+margin_right = 12.0
+script = ExtResource( 11 )
+
+[node name="StartStopCountdownButton" type="Button" parent="PieceContextMenu/TimerMenu/VBoxContainer/CountdownContainer"]
+margin_top = 4.0
+margin_right = 12.0
+margin_bottom = 30.0
+
+[node name="StartStopStopwatchButton" type="Button" parent="PieceContextMenu/TimerMenu/VBoxContainer"]
+margin_top = 88.0
+margin_right = 12.0
+margin_bottom = 114.0
+
+[node name="TableContextMenu" type="PopupMenu" parent="."]
+margin_right = 20.0
+margin_bottom = 20.0
 __meta__ = {
-"_edit_use_anchors_": false
+"_editor_description_": "The context menu appears when the table is right-clicked."
 }
+
+[node name="RulerToolMenu" type="PopupPanel" parent="."]
+margin_right = 242.0
+margin_bottom = 146.0
 
 [node name="MarginContainer" type="MarginContainer" parent="RulerToolMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RulerToolMenu/MarginContainer"]
-margin_right = 232.0
-margin_bottom = 140.0
+margin_right = 234.0
+margin_bottom = 138.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScaleLabel" type="Label" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 20.0
 text = "Scale:"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 24.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 54.0
 
 [node name="RulerScaleSpinBox" type="SpinBox" parent="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -129,7 +261,7 @@ prefix = "x"
 
 [node name="RulerScaleSlider" type="HSlider" parent="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 94.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 min_value = 0.01
@@ -140,13 +272,13 @@ allow_greater = true
 
 [node name="SystemLabel" type="Label" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 58.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 78.0
 text = "System:"
 
 [node name="SystemButton" type="OptionButton" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 82.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 108.0
 text = "Metric"
 items = [ "Metric", null, false, 0, null, "Imperial", null, false, 1, null ]
@@ -154,56 +286,53 @@ selected = 0
 
 [node name="RulerOKButton" type="Button" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 112.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 138.0
 text = "OK"
 
-[node name="PaintToolMenu" type="PopupMenu" parent="."]
+[node name="PaintToolMenu" type="PopupPanel" parent="."]
 margin_right = 242.0
-margin_bottom = 138.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 136.0
 
 [node name="MarginContainer" type="MarginContainer" parent="PaintToolMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PaintToolMenu/MarginContainer"]
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 128.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BrushColorLabel" type="Label" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 20.0
 text = "Brush Color:"
 
 [node name="BrushColorPickerButton" type="ColorPickerButton" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 24.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 50.0
 color = Color( 1, 1, 1, 1 )
 edit_alpha = false
 
 [node name="BrushSizeLabel" type="Label" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 54.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 74.0
 text = "Brush Size:"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 78.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 98.0
 
 [node name="BrushSizeValueLabel" type="Label" parent="PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -215,7 +344,7 @@ align = 2
 
 [node name="BrushSizeValueSlider" type="HSlider" parent="PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 24.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 min_value = 1.0
@@ -224,43 +353,40 @@ value = 1.0
 
 [node name="PaintOKButton" type="Button" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 102.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 128.0
 text = "OK"
 
-[node name="EraseToolMenu" type="PopupMenu" parent="."]
+[node name="EraseToolMenu" type="PopupPanel" parent="."]
 margin_right = 242.0
-margin_bottom = 85.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 82.0
 
 [node name="MarginContainer" type="MarginContainer" parent="EraseToolMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EraseToolMenu/MarginContainer"]
-margin_right = 232.0
-margin_bottom = 75.0
+margin_right = 234.0
+margin_bottom = 74.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EraserSizeLabel" type="Label" parent="EraseToolMenu/MarginContainer/VBoxContainer"]
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 20.0
 text = "Eraser Size:"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EraseToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 24.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 44.0
 
 [node name="EraserSizeValueLabel" type="Label" parent="EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -272,7 +398,7 @@ align = 2
 
 [node name="EraserSizeValueSlider" type="HSlider" parent="EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 24.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 min_value = 1.0
@@ -281,7 +407,7 @@ value = 1.0
 
 [node name="EraseOKButton" type="Button" parent="EraseToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 48.0
-margin_right = 232.0
+margin_right = 234.0
 margin_bottom = 74.0
 text = "OK"
 
@@ -406,8 +532,21 @@ custom_fonts/font = SubResource( 3 )
 autowrap = true
 
 [connection signal="gui_input" from="MouseGrab" to="." method="_on_MouseGrab_gui_input"]
+[connection signal="id_pressed" from="PieceContextMenu" to="." method="_on_PieceContextMenu_id_pressed"]
 [connection signal="popup_hide" from="PieceContextMenu" to="." method="_on_PieceContextMenu_popup_hide"]
-[connection signal="item_rect_changed" from="PieceContextMenu/VBoxContainer" to="." method="_on_VBoxContainer_item_rect_changed"]
+[connection signal="popup_hide" from="PieceContextMenu/ColorMenu" to="." method="_on_ColorMenu_popup_hide"]
+[connection signal="color_changed" from="PieceContextMenu/ColorMenu/ColorPicker" to="." method="_on_ColorPicker_color_changed"]
+[connection signal="pressed" from="PieceContextMenu/DealCardsMenu/DealCardsSpinBoxButton" to="." method="_on_DealCardsSpinBoxButton_pressed"]
+[connection signal="pressed" from="PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerSelectTrackButton" to="." method="_on_SpeakerSelectTrackButton_pressed"]
+[connection signal="pressed" from="PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerPlayStopButton" to="." method="_on_SpeakerPlayStopButton_pressed"]
+[connection signal="pressed" from="PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerPauseButton" to="." method="_on_SpeakerPauseButton_pressed"]
+[connection signal="value_changed" from="PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_value_changed"]
+[connection signal="pressed" from="PieceContextMenu/TakeOffTopMenu/TakeOffTopSpinBoxButton" to="." method="_on_TakeOffTopSpinBoxButton_pressed"]
+[connection signal="pressed" from="PieceContextMenu/TakeOutMenu/TakeOutSpinBoxButton" to="." method="_on_TakeOutSpinBoxButton_pressed"]
+[connection signal="pressed" from="PieceContextMenu/TimerMenu/VBoxContainer/TimerPauseButton" to="." method="_on_TimerPauseButton_pressed"]
+[connection signal="pressed" from="PieceContextMenu/TimerMenu/VBoxContainer/CountdownContainer/StartStopCountdownButton" to="." method="_on_StartStopCountdownButton_pressed"]
+[connection signal="pressed" from="PieceContextMenu/TimerMenu/VBoxContainer/StartStopStopwatchButton" to="." method="_on_StartStopStopwatchButton_pressed"]
+[connection signal="id_pressed" from="TableContextMenu" to="." method="_on_TableContextMenu_id_pressed"]
 [connection signal="value_changed" from="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSpinBox" to="." method="_on_RulerScaleSpinBox_value_changed"]
 [connection signal="value_changed" from="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider" to="." method="_on_RulerScaleSlider_value_changed"]
 [connection signal="pressed" from="RulerToolMenu/MarginContainer/VBoxContainer/RulerOKButton" to="." method="_on_RulerOKButton_pressed"]

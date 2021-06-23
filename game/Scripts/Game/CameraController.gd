@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,6 +22,36 @@
 extends Spatial
 
 enum {
+	CONTEXT_CARDS_PUT_IN_HAND,
+	
+	CONTEXT_PIECE_COPY,
+	CONTEXT_PIECE_CUT,
+	CONTEXT_PIECE_DELETE,
+	CONTEXT_PIECE_LOCK,
+	CONTEXT_PIECE_PASTE,
+	CONTEXT_PIECE_UNLOCK,
+	
+	CONTEXT_PIECE_CONTAINER_ADD,
+	CONTEXT_PIECE_CONTAINER_ADD_SELECTED,
+	CONTEXT_PIECE_CONTAINER_PEEK,
+	
+	CONTEXT_STACK_COLLECT_ALL,
+	CONTEXT_STACK_COLLECT_INDIVIDUALS,
+	CONTEXT_STACK_ORIENT_ALL_DOWN,
+	CONTEXT_STACK_ORIENT_ALL_UP,
+	CONTEXT_STACK_SHUFFLE,
+	CONTEXT_STACK_SORT,
+	
+	CONTEXT_STACKABLE_PIECE_COLLECT_SELECTED
+}
+
+enum {
+	CONTEXT_TABLE_PASTE,
+	CONTEXT_TABLE_SET_SPAWN_POINT,
+	CONTEXT_TABLE_SPAWN_OBJECT
+}
+
+enum {
 	TOOL_CURSOR,
 	TOOL_RULER,
 	TOOL_HIDDEN_AREA,
@@ -31,6 +61,8 @@ enum {
 
 signal adding_cards_to_hand(cards, id) # If id is 0, add to nearest hand.
 signal adding_pieces_to_container(container, pieces)
+signal clipboard_paste(position)
+signal clipboard_yank(pieces)
 signal collect_pieces_requested(pieces)
 signal container_release_random_requested(container, n)
 signal container_release_these_requested(container, names)
@@ -55,9 +87,11 @@ onready var _brush_size_label = $PaintToolMenu/MarginContainer/VBoxContainer/HBo
 onready var _brush_size_slider = $PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer/BrushSizeValueSlider
 onready var _camera = $Camera
 onready var _camera_ui = $CameraUI
+onready var _color_picker = $PieceContextMenu/ColorMenu/ColorPicker
 onready var _container_content_dialog = $ContainerContentDialog
 onready var _control_hint_label = $CameraUI/ControlHintLabel
 onready var _cursors = $CameraUI/Cursors
+onready var _deal_cards_spin_box_button = $PieceContextMenu/DealCardsMenu/DealCardsSpinBoxButton
 onready var _debug_info_label = $CameraUI/DebugInfoLabel
 onready var _erase_tool_menu = $EraseToolMenu
 onready var _eraser_size_label = $EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer/EraserSizeValueLabel
@@ -65,12 +99,24 @@ onready var _eraser_size_slider = $EraseToolMenu/MarginContainer/VBoxContainer/H
 onready var _hand_preview_rect = $HandPreviewRect
 onready var _paint_tool_menu = $PaintToolMenu
 onready var _piece_context_menu = $PieceContextMenu
-onready var _piece_context_menu_container = $PieceContextMenu/VBoxContainer
 onready var _ruler_scale_slider = $RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider
 onready var _ruler_scale_spin_box = $RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSpinBox
 onready var _ruler_system_button = $RulerToolMenu/MarginContainer/VBoxContainer/SystemButton
 onready var _ruler_tool_menu = $RulerToolMenu
 onready var _rulers = $Rulers
+onready var _speaker_menu = $PieceContextMenu/SpeakerMenu
+onready var _speaker_pause_button = $PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerPauseButton
+onready var _speaker_play_stop_button = $PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerPlayStopButton
+onready var _speaker_track_label = $PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerTrackLabel
+onready var _speaker_volume_slider = $PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider
+onready var _table_context_menu = $TableContextMenu
+onready var _take_off_top_spin_box_button = $PieceContextMenu/TakeOffTopMenu/TakeOffTopSpinBoxButton
+onready var _timer_countdown_time = $PieceContextMenu/TimerMenu/VBoxContainer/CountdownContainer/TimerCountdownTime
+onready var _timer_menu = $PieceContextMenu/TimerMenu
+onready var _timer_pause_button = $PieceContextMenu/TimerMenu/VBoxContainer/TimerPauseButton
+onready var _timer_start_stop_countdown_button = $PieceContextMenu/TimerMenu/VBoxContainer/CountdownContainer/StartStopCountdownButton
+onready var _timer_start_stop_stopwatch_button = $PieceContextMenu/TimerMenu/VBoxContainer/StartStopStopwatchButton
+onready var _timer_time_label = $PieceContextMenu/TimerMenu/VBoxContainer/TimerTimeLabel
 onready var _track_dialog = $TrackDialog
 
 const CURSOR_LERP_SCALE = 100.0
@@ -97,6 +143,8 @@ export(float) var rotation_sensitivity_x: float = -0.01
 export(float) var rotation_sensitivity_y: float = -0.01
 export(float) var zoom_sensitivity: float = 1.0
 
+var clipboard_contents: Dictionary = {}
+var clipboard_yank_position: Vector3 = Vector3()
 var send_cursor_position: bool = false
 
 var _box_select_init_pos = Vector2()
@@ -104,6 +152,7 @@ var _container_multi_context: PieceContainer = null
 var _cursor_on_table = false
 var _cursor_position = Vector3()
 var _drag_camera_anchor = Vector3()
+var _future_clipboard_position = Vector3()
 var _grabbing_time = 0.0
 var _hidden_area_mouse_is_over: HiddenArea = null
 var _hidden_area_placing_point2 = false
@@ -140,19 +189,10 @@ var _send_erase_position = false
 var _send_paint_position = false
 var _spawn_point_position = Vector3()
 var _speaker_connected: SpeakerPiece = null
-var _speaker_track_label: Label = null
-var _speaker_pause_button: Button = null
-var _speaker_play_stop_button: Button = null
 var _speaker_volume_awaiting_update = false
-var _speaker_volume_slider: Slider = null
 var _target_zoom = 0.0
 var _timer_connected: TimerPiece = null
-var _timer_countdown_time: TimeEdit = null
 var _timer_last_time_update = 0
-var _timer_pause_button: Button = null
-var _timer_start_stop_countdown_button: Button = null
-var _timer_start_stop_stopwatch_button: Button = null
-var _timer_time_label: Label = null
 var _tool = TOOL_CURSOR
 var _viewport_size_original = Vector2()
 
@@ -470,6 +510,8 @@ func _physics_process(_delta):
 		if area_result.has("collider"):
 			if area_result.collider is HiddenArea:
 				_hidden_area_mouse_is_over = area_result.collider
+	else:
+		_cursor_position = _calculate_hover_position(mouse_pos, 0.0)
 	
 	if send_cursor_position and _cursor_position:
 		if _cursor_position != _last_sent_cursor_position:
@@ -641,10 +683,18 @@ func _unhandled_input(event):
 		_camera_ui.visible = not _camera_ui.visible
 	
 	if event is InputEventKey:
-		if event.scancode == KEY_A and event.control:
-			if event.is_pressed():
-				# Select all of the pieces on the table.
+		if event.pressed and event.control:
+			if event.scancode == KEY_A:
 				emit_signal("selecting_all_pieces")
+			elif event.scancode == KEY_X:
+				_future_clipboard_position = _cursor_position
+				_cut_selected_pieces()
+			elif event.scancode == KEY_C:
+				_future_clipboard_position = _cursor_position
+				_copy_selected_pieces()
+			elif event.scancode == KEY_V:
+				_future_clipboard_position = _cursor_position
+				_paste_clipboard()
 	
 	# NOTE: Mouse events are caught by the MouseGrab node, see
 	# _on_MouseGrab_gui_input().
@@ -706,6 +756,17 @@ func _create_player_cursor_texture(id: int, grabbing: bool) -> ImageTexture:
 	new_texture.create_from_image(clone_image)
 	return new_texture
 
+# Copy the selected pieces to the clipboard.
+func _copy_selected_pieces() -> void:
+	_hide_context_menu()
+	clipboard_yank_position = _future_clipboard_position
+	emit_signal("clipboard_yank", _selected_pieces)
+
+# Cut the selected pieces to the clipboard.
+func _cut_selected_pieces() -> void:
+	_copy_selected_pieces()
+	_delete_selected_pieces()
+
 # Delete the currently selected pieces from the game.
 func _delete_selected_pieces() -> void:
 	_hide_context_menu()
@@ -744,6 +805,11 @@ func _get_piece_inheritance(piece: Piece) -> Array:
 # Hide the context menu.
 func _hide_context_menu():
 	_piece_context_menu.visible = false
+	
+	# Force submenus to hide as well.
+	for child in _piece_context_menu.get_children():
+		if child is PopupPanel:
+			child.visible = false
 
 # Check if an inheritance array has a particular class.
 # Returns: If the queried class is in the inheritance array.
@@ -762,162 +828,6 @@ func _lock_selected_pieces() -> void:
 	for piece in _selected_pieces:
 		if piece is Piece:
 			piece.rpc_id(1, "request_lock")
-
-func _on_context_add_objects_pressed() -> void:
-	_hide_context_menu()
-	if _selected_pieces.size() == 1:
-		var piece = _selected_pieces[0]
-		if piece is PieceContainer:
-			emit_signal("spawning_piece_in_container", piece.name)
-
-func _on_context_add_selected_pressed() -> void:
-	_hide_context_menu()
-	
-	if _container_multi_context == null:
-		return
-	
-	var pieces = []
-	for piece in _selected_pieces:
-		if piece != _container_multi_context:
-			pieces.append(piece)
-	
-	emit_signal("adding_pieces_to_container", _container_multi_context, pieces)
-
-func _on_context_collect_all_pressed() -> void:
-	_hide_context_menu()
-	if _selected_pieces.size() == 1:
-		var piece = _selected_pieces[0]
-		if piece is Stack:
-			emit_signal("stack_collect_all_requested", piece, true)
-
-func _on_context_collect_individuals_pressed() -> void:
-	_hide_context_menu()
-	if _selected_pieces.size() == 1:
-		var piece = _selected_pieces[0]
-		if piece is Stack:
-			emit_signal("stack_collect_all_requested", piece, false)
-
-func _on_context_collect_selected_pressed() -> void:
-	_hide_context_menu()
-	if _selected_pieces.size() > 1:
-		emit_signal("collect_pieces_requested", _selected_pieces)
-
-func _on_context_deal_cards_pressed(n: int) -> void:
-	_hide_context_menu()
-	emit_signal("dealing_cards", _selected_pieces[0], n)
-
-func _on_context_delete_pressed() -> void:
-	_delete_selected_pieces()
-
-func _on_context_lock_pressed() -> void:
-	_lock_selected_pieces()
-
-func _on_context_orient_down_pressed() -> void:
-	_hide_context_menu()
-	for piece in _selected_pieces:
-		if piece is Stack:
-			piece.rpc_id(1, "request_orient_pieces", false)
-
-func _on_context_orient_up_pressed() -> void:
-	_hide_context_menu()
-	for piece in _selected_pieces:
-		if piece is Stack:
-			piece.rpc_id(1, "request_orient_pieces", true)
-
-func _on_context_peek_inside_pressed() -> void:
-	_hide_context_menu()
-	if _selected_pieces.size() == 1:
-		var piece = _selected_pieces[0]
-		if piece is PieceContainer:
-			_container_content_dialog.display_contents(piece)
-			_container_content_dialog.popup_centered()
-
-func _on_context_put_in_hand_pressed() -> void:
-	_hide_context_menu()
-	emit_signal("adding_cards_to_hand", _selected_pieces, get_tree().get_network_unique_id())
-
-func _on_context_shuffle_pressed() -> void:
-	_hide_context_menu()
-	for piece in _selected_pieces:
-		if piece is Stack:
-			piece.rpc_id(1, "request_shuffle")
-
-func _on_context_sort_pressed() -> void:
-	_hide_context_menu()
-	for piece in _selected_pieces:
-		if piece is Stack:
-			piece.rpc_id(1, "request_sort")
-
-func _on_context_spawn_object_pressed() -> void:
-	_hide_context_menu()
-	emit_signal("spawning_piece_at", _spawn_point_position)
-
-func _on_context_spawn_point_pressed() -> void:
-	_hide_context_menu()
-	emit_signal("setting_spawn_point", _spawn_point_position)
-
-func _on_context_speaker_pause_pressed() -> void:
-	if _speaker_connected:
-		if _speaker_connected.is_track_paused():
-			_speaker_connected.rpc_id(1, "request_resume_track")
-		else:
-			_speaker_connected.rpc_id(1, "request_pause_track")
-
-func _on_context_speaker_play_stop_pressed() -> void:
-	if _speaker_connected:
-		if _speaker_connected.is_playing_track():
-			_speaker_connected.rpc_id(1, "request_stop_track")
-		else:
-			_speaker_connected.rpc_id(1, "request_play_track")
-
-func _on_context_speaker_select_track_pressed() -> void:
-	_track_dialog.popup_centered()
-
-func _on_context_speaker_volume_value_changed(value: float) -> void:
-	if _speaker_connected:
-		_speaker_volume_awaiting_update = true
-		_speaker_connected.rpc_id(1, "request_set_unit_size", value)
-
-func _on_context_take_top_pressed(n: int) -> void:
-	_hide_context_menu()
-	if _selected_pieces.size() == 1:
-		var piece = _selected_pieces[0]
-		if piece is Stack:
-			clear_selected_pieces()
-			emit_signal("pop_stack_requested", piece, n)
-
-func _on_context_take_out_pressed(n: int) -> void:
-	_hide_context_menu()
-	if _selected_pieces.size() == 1:
-		var piece = _selected_pieces[0]
-		if piece is PieceContainer:
-			clear_selected_pieces()
-			emit_signal("container_release_random_requested", piece, n)
-
-func _on_context_timer_pause_pressed() -> void:
-	if _timer_connected:
-		if _timer_connected.is_timer_paused():
-			_timer_connected.rpc_id(1, "request_resume_timer")
-		else:
-			_timer_connected.rpc_id(1, "request_pause_timer")
-
-func _on_context_timer_start_stop_countdown_pressed() -> void:
-	if _timer_connected:
-		if _timer_connected.get_mode() == TimerPiece.MODE_COUNTDOWN:
-			_timer_connected.rpc_id(1, "request_stop_timer")
-		else:
-			var time = _timer_countdown_time.get_seconds()
-			_timer_connected.rpc_id(1, "request_start_countdown", time)
-
-func _on_context_timer_start_stop_stopwatch_pressed() -> void:
-	if _timer_connected:
-		if _timer_connected.get_mode() == TimerPiece.MODE_STOPWATCH:
-			_timer_connected.rpc_id(1, "request_stop_timer")
-		else:
-			_timer_connected.rpc_id(1, "request_start_stopwatch")
-
-func _on_context_unlock_pressed() -> void:
-	_unlock_selected_pieces()
 
 func _on_speaker_started_playing() -> void:
 	_set_speaker_controls()
@@ -949,9 +859,16 @@ func _on_timer_paused() -> void:
 func _on_timer_resumed() -> void:
 	_set_timer_controls()
 
+# Paste the contents of the clipboard.
+func _paste_clipboard() -> void:
+	_hide_context_menu()
+	
+	if not clipboard_contents.empty():
+		emit_signal("clipboard_paste", _future_clipboard_position)
+
 # Popup the piece context menu.
 func _popup_piece_context_menu() -> void:
-	if _selected_pieces.size() == 0:
+	if _selected_pieces.empty():
 		return
 	
 	# Get the inheritance (e.g. Dice <- Piece) of the first piece in the array,
@@ -972,24 +889,10 @@ func _popup_piece_context_menu() -> void:
 		inheritance = inheritance.slice(cut_off, inheritance.size() - 1)
 	
 	# Populate the context menu, given the inheritance.
-	for child in _piece_context_menu_container.get_children():
-		_piece_context_menu_container.remove_child(child)
-		child.queue_free()
+	_piece_context_menu.clear()
+	var prev_num_items = 0
 	
-	########
-	# INFO #
-	########
-	
-	if _inheritance_has(inheritance, "Stack"):
-		
-		# TODO: Figure out a way to update this label if the count changes.
-		var count = 0
-		for stack in _selected_pieces:
-			count += stack.get_piece_count()
-		
-		var count_label = Label.new()
-		count_label.text = tr("Count: %d") % count
-		_piece_context_menu_container.add_child(count_label)
+	# TODO: Show size of stack, as well as general info like the description.
 	
 	################
 	# MULTI-OBJECT #
@@ -998,16 +901,16 @@ func _popup_piece_context_menu() -> void:
 	_container_multi_context = null
 	if _piece_mouse_is_over is PieceContainer:
 		if _selected_pieces.size() > 1:
-			var add_selected_button = Button.new()
-			add_selected_button.text = tr("Add selected objects...")
-			add_selected_button.connect("pressed", self, "_on_context_add_selected_pressed")
-			_piece_context_menu_container.add_child(add_selected_button)
-			
+			_piece_context_menu.add_item(tr("Add selected objects..."), CONTEXT_PIECE_CONTAINER_ADD_SELECTED)
 			_container_multi_context = _piece_mouse_is_over
 	
 	###########
 	# LEVEL 2 #
 	###########
+	
+	if _piece_context_menu.get_item_count() > prev_num_items:
+		_piece_context_menu.add_separator()
+	prev_num_items = _piece_context_menu.get_item_count()
 	
 	# If the pieces consist of both cards and stacks of cards, then the
 	# inheritance should include the StackablePiece class.
@@ -1019,60 +922,25 @@ func _popup_piece_context_menu() -> void:
 				break
 		
 		if only_cards:
-			var put_in_hand_button = Button.new()
-			put_in_hand_button.text = tr("Put in hand")
-			put_in_hand_button.connect("pressed", self, "_on_context_put_in_hand_pressed")
-			_piece_context_menu_container.add_child(put_in_hand_button)
+			_piece_context_menu.add_item(tr("Put in hand"), CONTEXT_CARDS_PUT_IN_HAND)
 	
 	if _inheritance_has(inheritance, "Stack"):
 		if _selected_pieces.size() == 1:
-			var collect_individuals_button = Button.new()
-			collect_individuals_button.text = tr("Collect individuals")
-			collect_individuals_button.connect("pressed", self, "_on_context_collect_individuals_pressed")
-			_piece_context_menu_container.add_child(collect_individuals_button)
-			
-			var collect_all_button = Button.new()
-			collect_all_button.text = tr("Collect all")
-			collect_all_button.connect("pressed", self, "_on_context_collect_all_pressed")
-			_piece_context_menu_container.add_child(collect_all_button)
+			_piece_context_menu.add_item(tr("Collect individuals"), CONTEXT_STACK_COLLECT_INDIVIDUALS)
+			_piece_context_menu.add_item(tr("Collect all"), CONTEXT_STACK_COLLECT_ALL)
 			
 			var stack = _selected_pieces[0]
 			if stack.is_card_stack():
-				var deal_button = SpinBoxButton.new()
-				deal_button.button.text = tr("Deal X cards")
-				deal_button.spin_box.prefix = "X ="
-				deal_button.spin_box.min_value = 1
-				deal_button.spin_box.max_value = stack.get_piece_count()
-				deal_button.connect("pressed", self, "_on_context_deal_cards_pressed")
-				_piece_context_menu_container.add_child(deal_button)
+				_piece_context_menu.add_submenu_item(tr("Deal cards"), "DealCardsMenu")
+				_deal_cards_spin_box_button.max_value = stack.get_piece_count()
 			
-			var take_top_button = SpinBoxButton.new()
-			take_top_button.button.text = tr("Take X off top")
-			take_top_button.spin_box.prefix = "X ="
-			take_top_button.spin_box.min_value = 1
-			take_top_button.spin_box.max_value = stack.get_piece_count()
-			take_top_button.connect("pressed", self, "_on_context_take_top_pressed")
-			_piece_context_menu_container.add_child(take_top_button)
+			_piece_context_menu.add_submenu_item(tr("Take off top"), "TakeOffTopMenu")
+			_take_off_top_spin_box_button.max_value = stack.get_piece_count()
 		
-		var orient_up_button = Button.new()
-		orient_up_button.text = tr("Orient all up")
-		orient_up_button.connect("pressed", self, "_on_context_orient_up_pressed")
-		_piece_context_menu_container.add_child(orient_up_button)
-		
-		var orient_down_button = Button.new()
-		orient_down_button.text = tr("Orient all down")
-		orient_down_button.connect("pressed", self, "_on_context_orient_down_pressed")
-		_piece_context_menu_container.add_child(orient_down_button)
-		
-		var shuffle_button = Button.new()
-		shuffle_button.text = tr("Shuffle")
-		shuffle_button.connect("pressed", self, "_on_context_shuffle_pressed")
-		_piece_context_menu_container.add_child(shuffle_button)
-		
-		var sort_button = Button.new()
-		sort_button.text = tr("Sort")
-		sort_button.connect("pressed", self, "_on_context_sort_pressed")
-		_piece_context_menu_container.add_child(sort_button)
+		_piece_context_menu.add_item(tr("Orient all up"), CONTEXT_STACK_ORIENT_ALL_UP)
+		_piece_context_menu.add_item(tr("Orient all down"), CONTEXT_STACK_ORIENT_ALL_DOWN)
+		_piece_context_menu.add_item(tr("Shuffle"), CONTEXT_STACK_SHUFFLE)
+		_piece_context_menu.add_item(tr("Sort"), CONTEXT_STACK_SORT)
 	
 	elif _inheritance_has(inheritance, "TimerPiece"):
 		if _selected_pieces.size() == 1:
@@ -1081,29 +949,7 @@ func _popup_piece_context_menu() -> void:
 			_timer_connected.connect("timer_paused", self, "_on_timer_paused")
 			_timer_connected.connect("timer_resumed", self, "_on_timer_resumed")
 			
-			_timer_time_label = Label.new()
-			_timer_time_label.align = Label.ALIGN_CENTER
-			_piece_context_menu_container.add_child(_timer_time_label)
-			
-			_timer_pause_button = Button.new()
-			_timer_pause_button.connect("pressed", self, "_on_context_timer_pause_pressed")
-			_piece_context_menu_container.add_child(_timer_pause_button)
-			
-			var countdown_container = HBoxContainer.new()
-			
-			_timer_countdown_time = TimeEdit.new()
-			countdown_container.add_child(_timer_countdown_time)
-			
-			_timer_start_stop_countdown_button = Button.new()
-			_timer_start_stop_countdown_button.connect("pressed", self, "_on_context_timer_start_stop_countdown_pressed")
-			countdown_container.add_child(_timer_start_stop_countdown_button)
-			
-			_piece_context_menu_container.add_child(countdown_container)
-			
-			_timer_start_stop_stopwatch_button = Button.new()
-			_timer_start_stop_stopwatch_button.connect("pressed", self, "_on_context_timer_start_stop_stopwatch_pressed")
-			_piece_context_menu_container.add_child(_timer_start_stop_stopwatch_button)
-			
+			_piece_context_menu.add_submenu_item(tr("Timer"), "TimerMenu")
 			_set_timer_controls()
 			
 			# Start updating the time label in _process().
@@ -1113,33 +959,23 @@ func _popup_piece_context_menu() -> void:
 	# LEVEL 1 #
 	###########
 	
+	if _piece_context_menu.get_item_count() > prev_num_items:
+		_piece_context_menu.add_separator()
+	prev_num_items = _piece_context_menu.get_item_count()
+	
 	if _inheritance_has(inheritance, "StackablePiece"):
 		if _selected_pieces.size() > 1:
-			var collect_selected_button = Button.new()
-			collect_selected_button.text = tr("Collect selected")
-			collect_selected_button.connect("pressed", self, "_on_context_collect_selected_pressed")
-			_piece_context_menu_container.add_child(collect_selected_button)
+			_piece_context_menu.add_item(tr("Collect selected"), CONTEXT_STACKABLE_PIECE_COLLECT_SELECTED)
 	
 	elif _inheritance_has(inheritance, "PieceContainer"):
 		if _selected_pieces.size() == 1:
-			var add_button = Button.new()
-			add_button.text = tr("Add objects...")
-			add_button.connect("pressed", self, "_on_context_add_objects_pressed")
-			_piece_context_menu_container.add_child(add_button)
+			_piece_context_menu.add_item(tr("Add objects..."), CONTEXT_PIECE_CONTAINER_ADD)
+			_piece_context_menu.add_item(tr("Peek inside"), CONTEXT_PIECE_CONTAINER_PEEK)
 			
-			var peek_button = Button.new()
-			peek_button.text = tr("Peek inside")
-			peek_button.connect("pressed", self, "_on_context_peek_inside_pressed")
-			_piece_context_menu_container.add_child(peek_button)
-			
-			var take_button = SpinBoxButton.new()
-			take_button.button.text = tr("Take X out")
-			take_button.spin_box.prefix = "X ="
-			take_button.spin_box.min_value = 1
-			# We don't set the maximum value here, as we don't want the player
-			# knowing how many items are in the container.
-			take_button.connect("pressed", self, "_on_context_take_out_pressed")
-			_piece_context_menu_container.add_child(take_button)
+			_piece_context_menu.add_submenu_item(tr("Take objects out"), "TakeOutMenu")
+			# We don't set the maximum number of things we can take out here,
+			# as we don't want the player knowing how many items are in the
+			# container.
 	
 	elif _inheritance_has(inheritance, "SpeakerPiece"):
 		if _selected_pieces.size() == 1:
@@ -1151,86 +987,67 @@ func _popup_piece_context_menu() -> void:
 			_speaker_connected.connect("track_resumed", self, "_on_speaker_track_resumed")
 			_speaker_connected.connect("unit_size_changed", self, "_on_speaker_unit_size_changed")
 			
-			_speaker_track_label = Label.new()
-			_piece_context_menu_container.add_child(_speaker_track_label)
-			
-			var speaker_select_track_button = Button.new()
-			speaker_select_track_button.text = tr("Select track")
-			speaker_select_track_button.connect("pressed", self, "_on_context_speaker_select_track_pressed")
-			_piece_context_menu_container.add_child(speaker_select_track_button)
-			
-			_speaker_play_stop_button = Button.new()
-			_speaker_play_stop_button.connect("pressed", self, "_on_context_speaker_play_stop_pressed")
-			_piece_context_menu_container.add_child(_speaker_play_stop_button)
-			
-			_speaker_pause_button = Button.new()
-			_speaker_pause_button.connect("pressed", self, "_on_context_speaker_pause_pressed")
-			_piece_context_menu_container.add_child(_speaker_pause_button)
-			
-			var volume_label = Label.new()
-			volume_label.text = tr("Range:")
-			_piece_context_menu_container.add_child(volume_label)
-			
-			_speaker_volume_slider = HSlider.new()
-			_speaker_volume_slider.connect("value_changed", self, "_on_context_speaker_volume_value_changed")
-			_piece_context_menu_container.add_child(_speaker_volume_slider)
-			
+			_piece_context_menu.add_submenu_item(tr("Speaker"), "SpeakerMenu")
 			_set_speaker_controls()
 	
 	###########
 	# LEVEL 0 #
 	###########
 	
+	if _piece_context_menu.get_item_count() > prev_num_items:
+		_piece_context_menu.add_separator()
+	prev_num_items = _piece_context_menu.get_item_count()
+	
 	if _inheritance_has(inheritance, "Piece"):
-		var num_locked = 0
-		var num_unlocked = 0
+		var all_albedo_color_exposed = true
+		for piece in _selected_pieces:
+			if not piece.is_albedo_color_exposed():
+				all_albedo_color_exposed = false
+				break
 		
+		if all_albedo_color_exposed:
+			_piece_context_menu.add_submenu_item(tr("Color"), "ColorMenu")
+			_color_picker.color = _selected_pieces[0].get_albedo_color()
+		
+		_piece_context_menu.add_item(tr("Cut"), CONTEXT_PIECE_CUT)
+		_piece_context_menu.add_item(tr("Copy"), CONTEXT_PIECE_COPY)
+		
+		_piece_context_menu.add_item(tr("Paste"), CONTEXT_PIECE_PASTE)
+		var paste_idx = _piece_context_menu.get_item_index(CONTEXT_PIECE_PASTE)
+		_piece_context_menu.set_item_disabled(paste_idx, clipboard_contents.empty())
+		_future_clipboard_position = _cursor_position
+		
+		var num_locked = 0
 		for piece in _selected_pieces:
 			if piece.is_locked():
 				num_locked += 1
-			else:
-				num_unlocked += 1
-		
-		if num_unlocked == _selected_pieces.size():
-			var lock_button = Button.new()
-			lock_button.text = tr("Lock")
-			lock_button.connect("pressed", self, "_on_context_lock_pressed")
-			_piece_context_menu_container.add_child(lock_button)
 		
 		if num_locked == _selected_pieces.size():
-			var unlock_button = Button.new()
-			unlock_button.text = tr("Unlock")
-			unlock_button.connect("pressed", self, "_on_context_unlock_pressed")
-			_piece_context_menu_container.add_child(unlock_button)
+			_piece_context_menu.add_item(tr("Unlock"), CONTEXT_PIECE_UNLOCK)
+		else:
+			_piece_context_menu.add_item(tr("Lock"), CONTEXT_PIECE_LOCK)
 		
-		var delete_button = Button.new()
-		delete_button.text = tr("Delete")
-		delete_button.connect("pressed", self, "_on_context_delete_pressed")
-		_piece_context_menu_container.add_child(delete_button)
+		_piece_context_menu.add_item(tr("Delete"), CONTEXT_PIECE_DELETE)
 	
-	# We've connected a signal elsewhere that will change the size of the popup
-	# to match the container.
 	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
+	_piece_context_menu.set_as_minsize()
 	_piece_context_menu.popup()
 
 # Popup the table context menu.
 func _popup_table_context_menu() -> void:
-	for child in _piece_context_menu_container.get_children():
-		_piece_context_menu_container.remove_child(child)
-		child.queue_free()
+	_table_context_menu.clear()
 	
-	var spawn_point_button = Button.new()
-	spawn_point_button.text = tr("Set spawn point here")
-	spawn_point_button.connect("pressed", self, "_on_context_spawn_point_pressed")
-	_piece_context_menu_container.add_child(spawn_point_button)
+	_table_context_menu.add_item(tr("Paste"), CONTEXT_TABLE_PASTE)
+	var paste_idx = _table_context_menu.get_item_index(CONTEXT_TABLE_PASTE)
+	_table_context_menu.set_item_disabled(paste_idx, clipboard_contents.empty())
+	_future_clipboard_position = _cursor_position
 	
-	var spawn_object_button = Button.new()
-	spawn_object_button.text = tr("Spawn object here")
-	spawn_object_button.connect("pressed", self, "_on_context_spawn_object_pressed")
-	_piece_context_menu_container.add_child(spawn_object_button)
+	_table_context_menu.add_item(tr("Set spawn point here"), CONTEXT_TABLE_SET_SPAWN_POINT)
+	_table_context_menu.add_item(tr("Spawn object here"), CONTEXT_TABLE_SPAWN_OBJECT)
 	
-	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
-	_piece_context_menu.popup()
+	_table_context_menu.rect_position = get_viewport().get_mouse_position()
+	_table_context_menu.set_as_minsize()
+	_table_context_menu.popup()
 
 # Reset the camera transform and zoom to their initial states.
 func _reset_camera() -> void:
@@ -1692,6 +1509,14 @@ func _on_moving() -> bool:
 func _on_BrushSizeValueSlider_value_changed(value: float):
 	_brush_size_label.text = str(value)
 
+func _on_ColorMenu_popup_hide():
+	for piece in _selected_pieces:
+		piece.rpc_id(1, "request_set_albedo_color", _color_picker.color, false)
+
+func _on_ColorPicker_color_changed(color: Color):
+	for piece in _selected_pieces:
+		piece.rpc_unreliable_id(1, "request_set_albedo_color", color, true)
+
 func _on_ContainerContentDialog_take_all_from(container: PieceContainer):
 	_container_content_dialog.visible = false
 	clear_selected_pieces()
@@ -1704,6 +1529,13 @@ func _on_ContainerContentDialog_take_from(container: PieceContainer, names: Arra
 
 func _on_CursorToolButton_pressed():
 	_set_tool(TOOL_CURSOR)
+
+func _on_DealCardsSpinBoxButton_pressed(value: int):
+	if _selected_pieces.empty():
+		return
+	
+	_hide_context_menu()
+	emit_signal("dealing_cards", _selected_pieces[0], value)
 
 func _on_EraserSizeValueSlider_value_changed(value: float):
 	_eraser_size_label.text = str(value)
@@ -1825,7 +1657,7 @@ func _on_MouseGrab_gui_input(event):
 						_perform_box_select = true
 			
 			elif _tool == TOOL_RULER:
-				if event.is_pressed() and _cursor_on_table:
+				if event.is_pressed() and (_cursor_on_table or _ruler_placing_point2):
 					if not _ruler_placing_point2:
 						var ruler = preload("res://Scenes/Game/UI/RulerLine.tscn").instance()
 						ruler.is_metric = (_ruler_system_button.selected == 0)
@@ -1837,7 +1669,7 @@ func _on_MouseGrab_gui_input(event):
 					_ruler_placing_point2 = not _ruler_placing_point2
 			
 			elif _tool == TOOL_HIDDEN_AREA:
-				if event.is_pressed() and _cursor_on_table:
+				if event.is_pressed() and (_cursor_on_table or _hidden_area_placing_point2):
 					if _hidden_area_placing_point2:
 						var point1_v2 = Vector2(_hidden_area_point1.x, _hidden_area_point1.z)
 						var point2_v2 = Vector2(_hidden_area_point2.x, _hidden_area_point2.z)
@@ -1877,13 +1709,14 @@ func _on_MouseGrab_gui_input(event):
 							clear_selected_pieces()
 				else:
 					if _tool == TOOL_CURSOR:
-						if event.position == _right_click_pos:
-							if _selected_pieces.empty():
-								_popup_table_context_menu()
-								_spawn_point_position = _cursor_position
-								_spawn_point_position.y += Piece.SPAWN_HEIGHT
-							else:
-								_popup_piece_context_menu()
+						if _cursor_on_table:
+							if event.position == _right_click_pos:
+								if _selected_pieces.empty():
+									_popup_table_context_menu()
+									_spawn_point_position = _cursor_position
+									_spawn_point_position.y += Piece.SPAWN_HEIGHT
+								else:
+									_popup_piece_context_menu()
 					
 					elif _tool == TOOL_RULER:
 						if event.position == _right_click_pos:
@@ -2008,6 +1841,92 @@ func _on_PaintToolButton_pressed():
 	_paint_tool_menu.rect_position.y -= _paint_tool_menu.rect_size.y
 	_paint_tool_menu.popup()
 
+func _on_PieceContextMenu_id_pressed(id: int):
+	match id:
+		CONTEXT_CARDS_PUT_IN_HAND:
+			emit_signal("adding_cards_to_hand", _selected_pieces, get_tree().get_network_unique_id())
+		
+		CONTEXT_PIECE_COPY:
+			_copy_selected_pieces()
+		
+		CONTEXT_PIECE_CUT:
+			_cut_selected_pieces()
+		
+		CONTEXT_PIECE_DELETE:
+			_delete_selected_pieces()
+		
+		CONTEXT_PIECE_LOCK:
+			_lock_selected_pieces()
+		
+		CONTEXT_PIECE_PASTE:
+			_paste_clipboard()
+		
+		CONTEXT_PIECE_UNLOCK:
+			_unlock_selected_pieces()
+		
+		CONTEXT_PIECE_CONTAINER_ADD:
+			if _selected_pieces.size() == 1:
+				var piece = _selected_pieces[0]
+				if piece is PieceContainer:
+					emit_signal("spawning_piece_in_container", piece.name)
+		
+		CONTEXT_PIECE_CONTAINER_ADD_SELECTED:
+			if _container_multi_context == null:
+				return
+			
+			var pieces = []
+			for piece in _selected_pieces:
+				if piece != _container_multi_context:
+					pieces.append(piece)
+			
+			emit_signal("adding_pieces_to_container", _container_multi_context, pieces)
+		
+		CONTEXT_PIECE_CONTAINER_PEEK:
+			if _selected_pieces.size() == 1:
+				var piece = _selected_pieces[0]
+				if piece is PieceContainer:
+					_container_content_dialog.display_contents(piece)
+					_container_content_dialog.popup_centered()
+		
+		CONTEXT_STACK_COLLECT_ALL:
+			if _selected_pieces.size() == 1:
+				var piece = _selected_pieces[0]
+				if piece is Stack:
+					emit_signal("stack_collect_all_requested", piece, true)
+		
+		CONTEXT_STACK_COLLECT_INDIVIDUALS:
+			if _selected_pieces.size() == 1:
+				var piece = _selected_pieces[0]
+				if piece is Stack:
+					emit_signal("stack_collect_all_requested", piece, false)
+		
+		CONTEXT_STACK_ORIENT_ALL_DOWN:
+			for piece in _selected_pieces:
+				if piece is Stack:
+					piece.rpc_id(1, "request_orient_pieces", false)
+		
+		CONTEXT_STACK_ORIENT_ALL_UP:
+			for piece in _selected_pieces:
+				if piece is Stack:
+					piece.rpc_id(1, "request_orient_pieces", true)
+		
+		CONTEXT_STACK_SHUFFLE:
+			for piece in _selected_pieces:
+				if piece is Stack:
+					piece.rpc_id(1, "request_shuffle")
+		
+		CONTEXT_STACK_SORT:
+			for piece in _selected_pieces:
+				if piece is Stack:
+					piece.rpc_id(1, "request_sort")
+		
+		CONTEXT_STACKABLE_PIECE_COLLECT_SELECTED:
+			if _selected_pieces.size() > 1:
+				emit_signal("collect_pieces_requested", _selected_pieces)
+		
+		_:
+			push_error("Invalid PieceContextMenu item id (%d)!" % id)
+
 func _on_PieceContextMenu_popup_hide():
 	# Any variables that were potentially set if the object was a timer need
 	# to be reset.
@@ -2016,12 +1935,6 @@ func _on_PieceContextMenu_popup_hide():
 		_timer_connected.disconnect("timer_paused", self, "_on_timer_paused")
 		_timer_connected.disconnect("timer_resumed", self, "_on_timer_resumed")
 	_timer_connected = null
-	
-	_timer_countdown_time = null
-	_timer_pause_button = null
-	_timer_start_stop_countdown_button = null
-	_timer_start_stop_stopwatch_button = null
-	_timer_time_label = null
 	
 	# Any variables that were potentially set if the object was a speaker need
 	# to be reset.
@@ -2033,11 +1946,6 @@ func _on_PieceContextMenu_popup_hide():
 		_speaker_connected.disconnect("track_resumed", self, "_on_speaker_track_resumed")
 		_speaker_connected.disconnect("unit_size_changed", self, "_on_speaker_unit_size_changed")
 	_speaker_connected = null
-	
-	_speaker_pause_button = null
-	_speaker_play_stop_button = null
-	_speaker_track_label = null
-	_speaker_volume_slider = null
 
 func _on_RulerOKButton_pressed():
 	_ruler_tool_menu.visible = false
@@ -2055,6 +1963,80 @@ func _on_RulerToolButton_pressed():
 	_ruler_tool_menu.rect_position.y -= _ruler_tool_menu.rect_size.y
 	_ruler_tool_menu.popup()
 
+func _on_SpeakerPauseButton_pressed():
+	if _speaker_connected:
+		if _speaker_connected.is_track_paused():
+			_speaker_connected.rpc_id(1, "request_resume_track")
+		else:
+			_speaker_connected.rpc_id(1, "request_pause_track")
+
+func _on_SpeakerPlayStopButton_pressed():
+	if _speaker_connected:
+		if _speaker_connected.is_playing_track():
+			_speaker_connected.rpc_id(1, "request_stop_track")
+		else:
+			_speaker_connected.rpc_id(1, "request_play_track")
+
+func _on_SpeakerSelectTrackButton_pressed():
+	_track_dialog.popup_centered()
+
+func _on_SpeakerVolumeSlider_value_changed(value: float):
+	if _speaker_connected:
+		_speaker_volume_awaiting_update = true
+		_speaker_connected.rpc_id(1, "request_set_unit_size", value)
+
+func _on_StartStopCountdownButton_pressed():
+	if _timer_connected:
+		if _timer_connected.get_mode() == TimerPiece.MODE_COUNTDOWN:
+			_timer_connected.rpc_id(1, "request_stop_timer")
+		else:
+			var time = _timer_countdown_time.get_seconds()
+			_timer_connected.rpc_id(1, "request_start_countdown", time)
+
+func _on_StartStopStopwatchButton_pressed():
+	if _timer_connected:
+		if _timer_connected.get_mode() == TimerPiece.MODE_STOPWATCH:
+			_timer_connected.rpc_id(1, "request_stop_timer")
+		else:
+			_timer_connected.rpc_id(1, "request_start_stopwatch")
+
+func _on_TableContextMenu_id_pressed(id: int):
+	match id:
+		CONTEXT_TABLE_PASTE:
+			_paste_clipboard()
+		
+		CONTEXT_TABLE_SET_SPAWN_POINT:
+			emit_signal("setting_spawn_point", _spawn_point_position)
+		
+		CONTEXT_TABLE_SPAWN_OBJECT:
+			emit_signal("spawning_piece_at", _spawn_point_position)
+		
+		_:
+			push_error("Invalid TableContextMenu item id (%d)!" % id)
+
+func _on_TakeOffTopSpinBoxButton_pressed(value: int):
+	_hide_context_menu()
+	if _selected_pieces.size() == 1:
+		var piece = _selected_pieces[0]
+		if piece is Stack:
+			clear_selected_pieces()
+			emit_signal("pop_stack_requested", piece, value)
+
+func _on_TakeOutSpinBoxButton_pressed(value: int):
+	_hide_context_menu()
+	if _selected_pieces.size() == 1:
+		var piece = _selected_pieces[0]
+		if piece is PieceContainer:
+			clear_selected_pieces()
+			emit_signal("container_release_random_requested", piece, value)
+
+func _on_TimerPauseButton_pressed():
+	if _timer_connected:
+		if _timer_connected.is_timer_paused():
+			_timer_connected.rpc_id(1, "request_resume_timer")
+		else:
+			_timer_connected.rpc_id(1, "request_pause_timer")
+
 func _on_TrackDialog_entry_requested(_pack: String, type: String, entry: Dictionary):
 	_track_dialog.visible = false
 	if _speaker_connected:
@@ -2062,16 +2044,6 @@ func _on_TrackDialog_entry_requested(_pack: String, type: String, entry: Diction
 		_speaker_connected.rpc_id(1, "request_set_track", entry, music)
 	else:
 		push_warning("Don't know which speaker to set track for, doing nothing.")
-
-func _on_VBoxContainer_item_rect_changed():
-	if _piece_context_menu and _piece_context_menu_container:
-		var size = _piece_context_menu_container.rect_size
-		size.x += _piece_context_menu_container.margin_left
-		size.y += _piece_context_menu_container.margin_top
-		size.x -= _piece_context_menu_container.margin_right
-		size.y -= _piece_context_menu_container.margin_bottom
-		_piece_context_menu.rect_min_size = size
-		_piece_context_menu.rect_size = size
 
 func _on_Viewport_size_changed():
 	# Scale the cursors so they always appear the same size, regardless of the

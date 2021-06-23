@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -71,6 +71,8 @@ var _new_velocity = Vector3()
 
 var _outline_material: ShaderMaterial = null
 
+var _expose_albedo_color = true
+
 # Apply a texture to the piece.
 # texture: The texture to apply.
 # surface: The index of the surface to apply the texture to.
@@ -86,6 +88,22 @@ master func flip_vertically() -> void:
 	if get_tree().get_rpc_sender_id() == _srv_hover_player:
 		srv_hover_basis = srv_hover_basis.rotated(transform.basis.z, PI)
 		srv_wake_up()
+
+# Get the current albedo colour in the piece's material.
+# Returns: The current albedo colour.
+func get_albedo_color() -> Color:
+	if not _expose_albedo_color:
+		push_error("Albedo color is not exposed!")
+		return Color.white
+	
+	var mesh_instances = get_mesh_instances()
+	if not mesh_instances.empty():
+		var mesh_instance = mesh_instances[0]
+		if mesh_instance.get_surface_material_count() > 0:
+			var material = mesh_instance.get_surface_material(0)
+			return material.albedo_color
+	
+	return Color.white
 
 # Get the piece's collision shapes.
 # Returns: An array of the piece's collision shapes.
@@ -138,6 +156,11 @@ func get_size() -> Vector3:
 		return piece_entry["bounding_box"][1] - piece_entry["bounding_box"][0]
 	
 	return piece_entry["scale"]
+
+# Is the albedo colour of the piece able to be changed?
+# Returns: If the albedo colour can be changed.
+func is_albedo_color_exposed() -> bool:
+	return _expose_albedo_color
 
 # Determines if the piece is being shaked.
 # Returns: If the piece is being shaked.
@@ -193,6 +216,19 @@ master func request_lock() -> void:
 master func request_remove_self() -> void:
 	rpc("remove_self")
 
+# Request the server to set the material's albedo color.
+# color: The new albedo color.
+# unreliable: Should the server send the RPC unreliably?
+master func request_set_albedo_color(color: Color, unreliable: bool = false) -> void:
+	if not _expose_albedo_color:
+		push_error("Albedo color is not exposed!")
+		return
+	
+	if unreliable:
+		rpc_unreliable("set_albedo_color", color)
+	else:
+		rpc("set_albedo_color", color)
+
 # Request the server to unlock the piece.
 master func request_unlock() -> void:
 	rpc("unlock")
@@ -225,6 +261,36 @@ master func rotate_y(rot: float) -> void:
 		srv_hover_basis = Basis(target_y_euler)
 		
 		srv_wake_up()
+
+# Called by the server to set the material's albedo color.
+# color: The new albedo color.
+remotesync func set_albedo_color(color: Color) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	set_albedo_color_client(color)
+
+# Set the material's albedo color.
+# color: The new albedo color.
+func set_albedo_color_client(color: Color) -> void:
+	if not _expose_albedo_color:
+		push_error("Albedo color is not exposed!")
+		return
+	
+	for mesh_instance in get_mesh_instances():
+		for surface in range(mesh_instance.get_surface_material_count()):
+			var material = mesh_instance.get_surface_material(surface)
+			
+			# Some materials will already have an albedo colour set, so keep
+			# this colour saved so that we don't overwrite and lose it.
+			var original_color = material.albedo_color
+			var meta_key = "original_color_" + str(surface)
+			if material.has_meta(meta_key):
+				original_color = material.get_meta(meta_key)
+			else:
+				material.set_meta(meta_key, original_color)
+			
+			material.albedo_color = original_color * color
 
 # If you are hovering the piece, ask the server to set the hover position of the
 # piece.
@@ -324,6 +390,8 @@ func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) 
 	# send them the all clear, since they are already in control.
 	if not is_locked():
 		if player_id == _srv_hover_player:
+			srv_hover_position = init_pos
+			_srv_hover_offset = offset_pos
 			return true
 	
 	return false

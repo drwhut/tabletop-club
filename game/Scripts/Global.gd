@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,10 +31,45 @@ enum {
 
 const LOADING_BLOCK_TIME = 20
 
+var system_locale: String = ""
+
 var _current_scene: Node = null
 var _loader: ResourceInteractiveLoader = null
 var _loader_args: Dictionary = {}
 var _wait_frames = 0
+
+# Get the directory of the given subfolder in the output folder. This should be
+# in the user's documents folder, but if it isn't, the function will resort to
+# the user:// folder instead.
+# Returns: The directory of the subfolder in the output folder.
+# subfolder: The subfolder to get the directory of.
+func get_output_subdir(subfolder: String) -> Directory:
+	var dir = Directory.new()
+	
+	if dir.open(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) != OK:
+		if dir.open("user://") != OK:
+			push_error("Could not open the output directory!")
+			return dir
+	
+	if not dir.dir_exists("TabletopClub"):
+		if dir.make_dir("TabletopClub") != OK:
+			push_error("Failed to create the output directory!")
+			return dir
+	
+	if dir.change_dir("TabletopClub") != OK:
+		push_error("Failed to change to the output directory!")
+		return dir
+	
+	if not dir.dir_exists(subfolder):
+		if dir.make_dir_recursive(subfolder) != OK:
+			push_error("Failed to create the '%s' subfolder!" % subfolder)
+			return dir
+	
+	if dir.change_dir(subfolder) != OK:
+		push_error("Failed to change to the '%s' subfolder!" % subfolder)
+		return dir
+	
+	return dir
 
 # Restart the game.
 func restart_game() -> void:
@@ -90,6 +125,9 @@ func _ready():
 	_current_scene = root.get_child(root.get_child_count() - 1)
 	
 	set_process(false)
+	
+	# We're assuming the locale hasn't been modified yet.
+	system_locale = TranslationServer.get_locale()
 
 func _process(_delta):
 	if _loader == null:

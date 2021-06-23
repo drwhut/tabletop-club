@@ -7,7 +7,7 @@ Asset types
 Object
 ------
 
-An object in OpenTabletop refers to anything in-game that is dynamic (that is,
+An object in Tabletop Club refers to anything in-game that is dynamic (that is,
 it is driven by the physics engine). There are many different types of objects,
 each with their own special functionality:
 
@@ -137,6 +137,11 @@ Game
 A game is a :ref:`file-type-save` that has been pre-made such that players can
 instantly setup the table to play a particular game.
 
+.. note::
+
+   If there is an image next to the save file with the same name, it will be
+   shown next to the save file in-game.
+
 
 .. _asset-type-skybox:
 
@@ -146,13 +151,13 @@ Skybox
 Skyboxes are special textures that determine what the environment around the
 table looks like.
 
-Skybox textures in OpenTabletop use equirectangular mappings, as opposed to
+Skybox textures in Tabletop Club use equirectangular mappings, as opposed to
 six-image cube mappings. Godot recommends using `this tool
 <https://danilw.github.io/GLSL-howto/cubemap_to_panorama_js/cubemap_to_panorama.html>`_
 to convert cube-mapped skyboxes to equirectangular skyboxes.
 
 For the best lighting quality, it is recommended to use a HDR panorama.
-OpenTabletop supports the Radiance HDR (``.hdr``) and OpenEXR (``.exr``)
+Tabletop Club supports the Radiance HDR (``.hdr``) and OpenEXR (``.exr``)
 formats.
 
 .. note::

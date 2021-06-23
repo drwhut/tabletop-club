@@ -45,6 +45,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "audio"
+text = "Audio"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio"]
 margin_right = 976.0
@@ -133,6 +134,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "controls"
+text = "Controls"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controls"]
 margin_right = 976.0
@@ -395,6 +397,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "general"
+text = "General"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/General"]
 margin_right = 976.0
@@ -403,43 +406,107 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="OpenAssetsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+[node name="Language" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 3.0
 margin_right = 486.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+text = "Language"
+align = 2
+
+[node name="LanguageButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_left = 490.0
+margin_right = 976.0
 margin_bottom = 26.0
+size_flags_horizontal = 3
+
+[node name="AutosaveInterval" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 33.0
+margin_right = 486.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+text = "Autosave Interval"
+align = 2
+
+[node name="AutosaveIntervalButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_left = 490.0
+margin_top = 30.0
+margin_right = 976.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+text = "5 minutes"
+items = [ "Never", null, false, 0, null, "30 seconds", null, false, 1, null, "1 minute", null, false, 2, null, "5 minutes", null, false, 3, null, "10 minutes", null, false, 4, null, "30 minutes", null, false, 5, null ]
+selected = 3
+
+[node name="AutosaveFileCount" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 65.0
+margin_right = 486.0
+margin_bottom = 85.0
+size_flags_horizontal = 3
+text = "Autosave File Count"
+align = 2
+
+[node name="AutosaveFileCountSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_left = 490.0
+margin_top = 60.0
+margin_right = 976.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+min_value = 1.0
+value = 10.0
+
+[node name="DividerLeft" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 94.0
+margin_right = 486.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+
+[node name="DividerRight" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_left = 490.0
+margin_top = 94.0
+margin_right = 976.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+
+[node name="OpenAssetsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 98.0
+margin_right = 486.0
+margin_bottom = 124.0
 size_flags_horizontal = 3
 
 [node name="OpenAssetsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
+margin_top = 98.0
 margin_right = 976.0
-margin_bottom = 26.0
+margin_bottom = 124.0
 size_flags_horizontal = 3
 text = "Open Assets Folder"
 
 [node name="ReimportSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
-margin_top = 30.0
+margin_top = 128.0
 margin_right = 486.0
-margin_bottom = 56.0
+margin_bottom = 154.0
 size_flags_horizontal = 3
 
 [node name="ReimportButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
-margin_top = 30.0
+margin_top = 128.0
 margin_right = 976.0
-margin_bottom = 56.0
+margin_bottom = 154.0
 size_flags_horizontal = 3
 text = "Reimport Assets"
 
 [node name="ViewLicenseSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
-margin_top = 60.0
+margin_top = 158.0
 margin_right = 486.0
-margin_bottom = 86.0
+margin_bottom = 184.0
 size_flags_horizontal = 3
 
 [node name="ViewLicenseButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
-margin_top = 60.0
+margin_top = 158.0
 margin_right = 976.0
-margin_bottom = 86.0
+margin_bottom = 184.0
 size_flags_horizontal = 3
 text = "View License"
 
@@ -453,6 +520,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "key_bindings"
+text = "Key Bindings"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings"]
 margin_right = 976.0
@@ -647,50 +715,84 @@ size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_toggle_debug_info"
 
-[node name="ToggleUI" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="Quicksave" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 333.0
 margin_right = 486.0
 margin_bottom = 353.0
 size_flags_horizontal = 3
-text = "Toggle UI"
+text = "Quicksave"
 align = 2
 
-[node name="ToggleUIButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="QuicksaveButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 330.0
 margin_right = 976.0
 margin_bottom = 356.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
-action = "game_toggle_ui"
+action = "game_quicksave"
 
-[node name="TakeScreenshot" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="Quickload" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 363.0
 margin_right = 486.0
 margin_bottom = 383.0
 size_flags_horizontal = 3
-text = "Take Screenshot"
+text = "Quickload"
 align = 2
 
-[node name="TakeScreenshotButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="QuickloadButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 360.0
 margin_right = 976.0
 margin_bottom = 386.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
-action = "game_take_screenshot"
+action = "game_quickload"
 
-[node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 390.0
+[node name="ToggleUI" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 393.0
 margin_right = 486.0
-margin_bottom = 416.0
+margin_bottom = 413.0
+size_flags_horizontal = 3
+text = "Toggle UI"
+align = 2
 
-[node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="ToggleUIButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 490.0
 margin_top = 390.0
 margin_right = 976.0
 margin_bottom = 416.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+action = "game_toggle_ui"
+
+[node name="TakeScreenshot" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 423.0
+margin_right = 486.0
+margin_bottom = 443.0
+size_flags_horizontal = 3
+text = "Take Screenshot"
+align = 2
+
+[node name="TakeScreenshotButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 490.0
+margin_top = 420.0
+margin_right = 976.0
+margin_bottom = 446.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+action = "game_take_screenshot"
+
+[node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 450.0
+margin_right = 486.0
+margin_bottom = 476.0
+
+[node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 490.0
+margin_top = 450.0
+margin_right = 976.0
+margin_bottom = 476.0
 text = "Reset Bindings"
 
 [node name="Multiplayer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
@@ -703,6 +805,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "multiplayer"
+text = "Multiplayer"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer"]
 margin_right = 976.0
@@ -784,6 +887,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 4 )
 section_name = "video"
+text = "Video"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video"]
 margin_right = 976.0
@@ -1134,6 +1238,7 @@ dialog_autowrap = true
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SoundsVolumeSlider" to="." method="_on_SoundsVolumeSlider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/EffectsVolumeSlider" to="." method="_on_EffectsVolumeSlider_value_changed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/LanguageButton" to="." method="_on_LanguageButton_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton" to="." method="_on_OpenAssetsButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ReimportButton" to="." method="_on_ReimportButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/General/GridContainer/ViewLicenseButton" to="." method="_on_ViewLicenseButton_pressed"]

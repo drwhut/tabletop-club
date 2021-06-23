@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -413,6 +413,9 @@ func setup_outline_material():
 	_outline_material.set_shader_param("Color", Color.transparent)
 	
 	get_outline_mesh_instance().set_surface_material(0, _outline_material)
+
+func _ready():
+	_expose_albedo_color = false
 
 func _physics_process(_delta):
 	# If the stack is being shaken, then get the server to send a list of

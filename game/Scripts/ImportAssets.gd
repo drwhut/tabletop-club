@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,6 +26,20 @@ onready var _missing_assets_popup = $MissingAssetsPopup
 onready var _progress_bar = $VBoxContainer/ProgressBar
 
 func _ready():
+	# TODO: Load ALL options at the start of the game.
+	var locale = ""
+	var options = ConfigFile.new()
+	if options.load("user://options.cfg") == OK:
+		locale = options.get_value("general", "language", "")
+	if locale.empty():
+		locale = Global.system_locale
+	TranslationServer.set_locale(locale)
+	
+	# Create an assets folder in the user's documents folder, so that they have
+	# an easy-to-locate place to place custom asset packs.
+	var assets_dir = Global.get_output_subdir("assets")
+	print("Created assets directory at '%s'." % assets_dir.get_current_dir())
+	
 	AssetDB.connect("completed", self, "_on_importing_completed")
 	AssetDB.connect("importing_file", self, "_on_importing_file")
 	
@@ -36,7 +50,7 @@ func _on_importing_completed(dir_found: bool) -> void:
 		Global.start_main_menu()
 	else:
 		var missing_text = ""
-		missing_text += tr("OpenTabletop couldn't find an assets folder in any of the following places:")
+		missing_text += tr("Tabletop Club couldn't find an assets folder in any of the following places:")
 		missing_text += "\n\n"
 		for asset_dir in AssetDB.get_asset_paths():
 			missing_text += asset_dir + "\n"

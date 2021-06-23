@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,7 +32,7 @@ onready var _generic_preview_grid = $ScrollContainer/VBoxContainer/GenericPrevie
 
 export(Dictionary) var db_types = {} setget set_db_types
 
-const DEFAULT_ASSET_PACK = "OpenTabletop"
+const DEFAULT_ASSET_PACK = "TabletopClub"
 const GENERIC_PREVIEW_TYPES = [
 	"games",
 	"music",

@@ -19,7 +19,7 @@ fork in the road - you'll be doing your own think on the side road (your
 Eventually, the side road will join back in with the main road later on (the
 "merge").
 
-To create a fork of the OpenTabletop repository on GitHub, you can go to the
+To create a fork of the Tabletop Club repository on GitHub, you can go to the
 `GitHub repository`_ and click on the :guilabel:`Fork` button on the top-right.
 You should now have your own copy of the repository at that point in time.
 You can then clone the repository to your computer with ``git clone``.
@@ -31,7 +31,7 @@ as a remote repository with this command:
 
 .. code-block:: bash
 
-   git remote add upstream https://github.com/drwhut/open-tabletop.git
+   git remote add upstream https://github.com/drwhut/tabletop-club.git
 
 Now, if you ever need to update the ``master`` branch on your local repository,
 you can run the following commands:
@@ -93,7 +93,7 @@ create a pull request!
 
 To start, go to the original `GitHub repository`_ and click
 :guilabel:`Pull requests` > :guilabel:`New pull request`. Make sure you are
-merging from your fork's custom branch to ``drwhut/open-tabletop`` on the
+merging from your fork's custom branch to ``drwhut/tabletop-club`` on the
 ``master`` branch. If GitHub is happy, then you can click
 :guilabel:`Create pull request`, and fill in the details for the pull request.
 
@@ -151,4 +151,4 @@ the branch on your fork. In this case, you should take the following steps:
    merge conflicts.
 
 
-.. _GitHub repository: https://github.com/drwhut/open-tabletop
+.. _GitHub repository: https://github.com/drwhut/tabletop-club

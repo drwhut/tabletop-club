@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -159,6 +159,9 @@ remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 	
 	_pieces.remove_child(piece)
 	
+	var piece_entry = piece.piece_entry
+	if piece.is_albedo_color_exposed():
+		piece_entry["color"] = piece.get_albedo_color()
 	stack.add_piece(piece.piece_entry, piece.transform, on, flip)
 	
 	piece.queue_free()
@@ -193,17 +196,11 @@ remotesync func add_stack(name: String, transform: Transform,
 		push_error("Piece " + piece2_name + " is not stackable!")
 		return
 	
-	_pieces.remove_child(piece1)
-	_pieces.remove_child(piece2)
-	
 	var sandwich_stack = (piece1.piece_entry["scene_path"] == "res://Pieces/Card.tscn")
-	var stack = add_stack_empty(name, transform, sandwich_stack)
+	add_stack_empty(name, transform, sandwich_stack)
 	
-	stack.add_piece(piece1.piece_entry, piece1.transform)
-	stack.add_piece(piece2.piece_entry, piece2.transform)
-	
-	piece1.queue_free()
-	piece2.queue_free()
+	add_piece_to_stack(piece1.name, name)
+	add_piece_to_stack(piece2.name, name)
 
 # Called by the server to add an empty stack to the room.
 # name: The name of the new stack.
@@ -383,6 +380,12 @@ remotesync func flip_table(camera_basis: Basis) -> void:
 	
 	_table_preflip_state = get_state(false, false)
 	
+	# Unlock all pieces after we've saved the state so that the table doesn't
+	# get blocked.
+	for piece in _pieces.get_children():
+		if piece is Piece:
+			piece.mode = RigidBody.MODE_RIGID
+	
 	_table_body.mode = RigidBody.MODE_RIGID
 	
 	var left = -camera_basis.x
@@ -474,18 +477,8 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	# If the paint image is blank (it's default state), don't bother storing
 	# any image data in the state.
 	var paint_image = _paint_plane.get_paint()
-	var is_paint_image_blank = true
-	paint_image.lock()
-	for x in range(paint_image.get_width()):
-		for y in range(paint_image.get_height()):
-			var p = paint_image.get_pixel(x, y)
-			if p.a > 0.0:
-				is_paint_image_blank = false
-				break
-	paint_image.unlock()
-	
 	var paint_image_data = null
-	if not is_paint_image_blank:
+	if not paint_image.is_invisible():
 		paint_image_data = paint_image.get_data()
 	
 	out["table"] = {
@@ -530,7 +523,7 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	
 	out["hidden_areas"] = hidden_area_dict
 	
-	_append_piece_states(out, _pieces, collisions)
+	_append_piece_states(out, _pieces.get_children(), collisions)
 	
 	return out
 
@@ -542,6 +535,14 @@ func get_table() -> Dictionary:
 			return _table_body.get_meta("table_entry")
 	
 	return {}
+
+# Called by the server to paste the contents of a clipboard to the room.
+# clipboard: The clipboard contents (from _append_piece_states).
+remotesync func paste_clipboard(clipboard: Dictionary) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_extract_piece_states(clipboard, _pieces)
 
 # Called by the server to place a hidden area for a given player.
 # area_name: The name of the new hidden area.
@@ -986,6 +987,13 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 # state: The state to load.
 master func request_load_table_state(state: Dictionary) -> void:
 	rpc("set_state", state)
+
+# Request the server to paste the contents of a clipboard to the room.
+# clipboard: The clipboard contents (from _append_piece_states).
+# offset: Offset the positions of the pasted pieces by this value.
+master func request_paste_clipboard(clipboard: Dictionary, offset: Vector3) -> void:
+	_modify_piece_states(clipboard, offset)
+	rpc("paste_clipboard", clipboard)
 
 # Request the server to place a hidden area registered to you.
 # point1: One corner of the new hidden area.
@@ -1519,21 +1527,13 @@ remotesync func unflip_table() -> void:
 	emit_signal("table_flipped", true)
 
 func _ready():
-	# Scan the default asset pack and find a skybox and table whose "default"
-	# value is true - if we find one, load it now.
-	var asset_db = AssetDB.get_db()
-	if asset_db.has("OpenTabletop"):
-		if asset_db["OpenTabletop"].has("skyboxes"):
-			for skybox_entry in asset_db["OpenTabletop"]["skyboxes"]:
-				if skybox_entry["default"]:
-					set_skybox(skybox_entry)
-					break
-		
-		if asset_db["OpenTabletop"].has("tables"):
-			for table_entry in asset_db["OpenTabletop"]["tables"]:
-				if table_entry["default"]:
-					set_table(table_entry)
-					break
+	var skybox = AssetDB.random_asset("TabletopClub", "skyboxes", true)
+	if not skybox.empty():
+		set_skybox(skybox)
+	
+	var table = AssetDB.random_asset("TabletopClub", "tables", true)
+	if not table.empty():
+		set_table(table)
 
 func _physics_process(_delta):
 	if get_tree().is_network_server():
@@ -1556,25 +1556,32 @@ func _physics_process(_delta):
 
 # Append the states of pieces to a given dictionary.
 # state: The dictionary to add the states to.
-# parent: The parent node to start scanning pieces from.
+# pieces: The list of pieces to scan from.
 # collisions: Should collision data be included in the state?
-func _append_piece_states(state: Dictionary, parent: Node, collisions: bool) -> void:
+func _append_piece_states(state: Dictionary, pieces: Array, collisions: bool) -> void:
 	state["containers"] = {}
 	state["pieces"] = {}
 	state["speakers"] = {}
 	state["stacks"] = {}
 	state["timers"] = {}
 	
-	for piece in parent.get_children():
+	for piece in pieces:
 		var piece_meta = {
 			"is_locked": piece.is_locked(),
 			"piece_entry": piece.piece_entry,
 			"transform": piece.transform
 		}
 		
+		if piece.is_albedo_color_exposed():
+			var color = piece.get_albedo_color()
+			if piece.piece_entry["color"] != color:
+				piece_meta["color"] = color
+		
 		if piece is PieceContainer:
 			var child_pieces = {}
-			_append_piece_states(child_pieces, piece.get_node("Pieces"), collisions)
+			if piece.has_node("Pieces"):
+				var children = piece.get_node("Pieces").get_children()
+				_append_piece_states(child_pieces, children, collisions)
 			
 			piece_meta["pieces"] = child_pieces
 			state["containers"][piece.name] = piece_meta
@@ -1676,7 +1683,17 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 				return
 		
 		if type_key == "stacks":
-			var sandwich_stack = (piece_meta["scene_path"] == "res://Pieces/Card.tscn")
+			var pieces: Array = piece_meta["pieces"]
+			if pieces.empty():
+				push_error("Piece " + type_key + "/" + piece_name + " has an empty 'pieces' array!")
+				return
+			var element_meta: Dictionary = pieces[0]
+			if not element_meta.has("piece_entry"):
+				push_error("Piece " + type_key + "/" + piece_name + " element meta has no piece entry!")
+				return
+			var piece_entry: Dictionary = element_meta["piece_entry"]
+			
+			var sandwich_stack = (piece_entry["scene_path"] == "res://Pieces/Card.tscn")
 			add_stack_empty(piece_name, piece_meta["transform"], sandwich_stack)
 		else:
 			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
@@ -1684,6 +1701,15 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 		var piece: Piece = _pieces.get_node(piece_name)
 		if piece_meta["is_locked"]:
 			piece.lock_client(piece_meta["transform"])
+		
+		if piece_meta.has("color"):
+			if not piece_meta["color"] is Color:
+				push_error("Piece " + type_key + "/" + piece_name + " color is not a color!")
+				return
+			
+			var color = piece_meta["color"]
+			if piece.is_albedo_color_exposed():
+				piece.set_albedo_color_client(color)
 		
 		if type_key == "containers":
 			if not piece_meta.has("pieces"):
@@ -1839,6 +1865,37 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 			_pieces.remove_child(piece)
 			parent.add_child(piece)
 
+# Modify piece states such that the pieces have new names, and their positions
+# are offset by a given amount.
+# state: The state to modify.
+# offset: How much to offset the piece's positions by.
+func _modify_piece_states(state: Dictionary, offset: Vector3) -> void:
+	for type in state:
+		var type_dict = state[type]
+		if type_dict is Dictionary:
+			var names = type_dict.keys()
+			for name in names:
+				var piece_meta = type_dict[name]
+				
+				# If the piece is a container, we need to also modify the
+				# container's contents.
+				if type == "containers":
+					if piece_meta.has("pieces"):
+						var pieces = piece_meta["pieces"]
+						if pieces is Dictionary:
+							_modify_piece_states(pieces, Vector3.ZERO)
+				
+				# Offset the position.
+				if piece_meta.has("transform"):
+					var piece_transform = piece_meta["transform"]
+					if piece_transform is Transform:
+						piece_transform.origin += offset
+						piece_meta["transform"] = piece_transform
+				
+				# Give the piece a new name.
+				type_dict.erase(name)
+				type_dict[srv_get_next_piece_name()] = piece_meta
+
 # Set the transform of a hidden area based on two corner points.
 # hidden_area: The hidden area to set the transform of.
 # point1: One corner.
@@ -1924,6 +1981,20 @@ func _on_CameraController_adding_pieces_to_container(container: PieceContainer, 
 		if piece != container:
 			piece_names.append(piece.name)
 	rpc_id(1, "request_add_pieces_to_container", container.name, piece_names)
+
+func _on_CameraController_clipboard_paste(position: Vector3):
+	# If we are the server, then duplicate the clipboard contents, as the
+	# request will modify the contents by reference otherwise.
+	var clipboard = _camera_controller.clipboard_contents
+	if get_tree().is_network_server():
+		clipboard = clipboard.duplicate(true)
+	
+	var offset = position - _camera_controller.clipboard_yank_position
+	
+	rpc_id(1, "request_paste_clipboard", clipboard, offset)
+
+func _on_CameraController_clipboard_yank(pieces: Array):
+	_append_piece_states(_camera_controller.clipboard_contents, pieces, false)
 
 func _on_CameraController_collect_pieces_requested(pieces: Array):
 	var names = []

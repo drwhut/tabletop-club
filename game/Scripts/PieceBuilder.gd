@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -90,6 +90,9 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 			piece.apply_texture(texture, surface)
 			surface += 1
 	
+	if piece.is_albedo_color_exposed():
+		piece.set_albedo_color_client(piece_entry["color"])
+	
 	piece.setup_outline_material()
 	
 	return piece
@@ -124,16 +127,21 @@ func build_table(table_entry: Dictionary) -> RigidBody:
 # stack: The stack to fill.
 # stack_entry: The stack entry to use.
 func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
+	if stack_entry["colors"].size() != stack_entry["masses"].size():
+		push_error("Stack entry arrays 'colors' and 'masses' do not match size!")
+		return
 	if stack_entry["masses"].size() != stack_entry["texture_paths"].size():
-		push_error("Stack entry arrays do not match size!")
+		push_error("Stack entry arrays 'masses' and 'texture_paths' do not match size!")
 		return
 	
 	for i in range(stack_entry["texture_paths"].size()):
+		var color = stack_entry.colors[i]
 		var mass = stack_entry.masses[i]
 		var texture_path = stack_entry.texture_paths[i]
 		
 		# Create a new piece entry based on the stack entry.
 		var piece_entry = {
+			"color": color,
 			"description": stack_entry.description,
 			"mass": mass,
 			"name": stack_entry.name,
@@ -264,6 +272,16 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 			if material:
 				material = material.duplicate()
 				from.set_surface_material(surface, material)
+				
+				# Real-time global illumination is coming in Godot 4, so while
+				# we wait we can approximate emissive materials using
+				# OmniLights (see #34).
+				if material is SpatialMaterial:
+					if material.emission_enabled:
+						var omnilight = OmniLight.new()
+						omnilight.light_color = material.emission
+						omnilight.light_energy = material.emission_energy
+						from.add_child(omnilight)
 		
 		var collision_shape = CollisionShape.new()
 		collision_shape.shape = from.mesh.create_convex_shape()

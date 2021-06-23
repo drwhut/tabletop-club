@@ -25,15 +25,15 @@ to reproduce the bug, the platform you're running the game on, and if possible,
 provide the latest log so we can check if there were any errors thrown. You can
 find the game logs in the following folders:
 
-* Windows: ``%APPDATA%/OpenTabletop/logs/``
-* macOS / Linux: ``~/.local/share/godot/app_userdata/OpenTabletop/logs/``
+* Windows: ``%APPDATA%/TabletopClub/logs/``
+* macOS / Linux: ``~/.local/share/godot/app_userdata/TabletopClub/logs/``
 
 .. hint::
 
    If you want to provide an in-game screenshot showing the bug, you can press
    :guilabel:`F3` to display debug information on the screen, then you can
    press :guilabel:`F12` to take a screenshot! Screenshots are saved to the
-   ``user://`` directory, next to the logs.
+   Documents folder under ``TabletopClub/screenshots``.
 
 
 Suggesting a feature
@@ -66,7 +66,7 @@ Translating the project
 
 If you know a language other than English, you can help to translate the game
 and it's documentation by going to the project's `Hosted Weblate
-<https://hosted.weblate.org/engage/opentabletop/>`_ page and suggest
+<https://hosted.weblate.org/engage/tabletop-club/>`_ page and suggest
 translations for the project's strings in your language!
 
 If you don't see your language in a component, you can add it by scrolling to
@@ -77,9 +77,9 @@ the bottom of the component page and pressing :guilabel:`Start new translation`.
    Manual pull requests for translations will be closed, as Weblate keeps it's
    own fork of the project, and we want to avoid having merge requests occur.
 
-.. image:: https://hosted.weblate.org/widgets/opentabletop/-/287x66-white.png
+.. image:: https://hosted.weblate.org/widgets/tabletop-club/-/287x66-white.png
    :alt: Translation status
-   :target: https://hosted.weblate.org/engage/opentabletop/
+   :target: https://hosted.weblate.org/engage/tabletop-club/
 
 
 Creating a pull request
@@ -99,7 +99,7 @@ If you see an issue on the `GitHub repository`_ that needs game assets to fix
 that issue with either an asset you've found online, or one that you've made
 yourself!
 
-If the asset doesn't solve an issue, but you still think OpenTabletop would
+If the asset doesn't solve an issue, but you still think Tabletop Club would
 benefit from having it, then you can `post an issue`_ with the asset submission
 template instead!
 
@@ -114,6 +114,6 @@ However you propose the asset, you need to provide the following information:
   accessible, and it must lead to a trusted website.
 
 
-.. _GitHub repository: https://github.com/drwhut/open-tabletop
-.. _issues page: https://github.com/drwhut/open-tabletop/issues
-.. _post an issue: https://github.com/drwhut/open-tabletop/issues/new/choose
+.. _GitHub repository: https://github.com/drwhut/tabletop-club
+.. _issues page: https://github.com/drwhut/tabletop-club/issues
+.. _post an issue: https://github.com/drwhut/tabletop-club/issues/new/choose

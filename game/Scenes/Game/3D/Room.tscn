@@ -59,6 +59,8 @@ collision_layer = 2
 
 [connection signal="adding_cards_to_hand" from="CameraController" to="." method="_on_CameraController_adding_cards_to_hand"]
 [connection signal="adding_pieces_to_container" from="CameraController" to="." method="_on_CameraController_adding_pieces_to_container"]
+[connection signal="clipboard_paste" from="CameraController" to="." method="_on_CameraController_clipboard_paste"]
+[connection signal="clipboard_yank" from="CameraController" to="." method="_on_CameraController_clipboard_yank"]
 [connection signal="collect_pieces_requested" from="CameraController" to="." method="_on_CameraController_collect_pieces_requested"]
 [connection signal="container_release_random_requested" from="CameraController" to="." method="_on_CameraController_container_release_random_requested"]
 [connection signal="container_release_these_requested" from="CameraController" to="." method="_on_CameraController_container_release_these_requested"]

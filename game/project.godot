@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Misc/RandomAudioStream.gd"
 }, {
+"base": "WindowDialog",
+"class": "SaveDialog",
+"language": "GDScript",
+"path": "res://Scripts/Game/UI/Dialogs/SaveDialog.gd"
+}, {
 "base": "Piece",
 "class": "SpeakerPiece",
 "language": "GDScript",
@@ -134,6 +139,7 @@ _global_script_class_icons={
 "PieceContainer": "",
 "Preview": "",
 "RandomAudioStream": "",
+"SaveDialog": "",
 "SpeakerPiece": "",
 "SpinBoxButton": "",
 "Stack": "",
@@ -146,7 +152,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="OpenTabletop"
+config/name="Tabletop Club"
 config/description="Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 
 An open-source platform for playing tabletop games in a 3D environment, made with the Godot Engine!"
@@ -249,6 +255,20 @@ game_toggle_debug_info={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777246,"unicode":0,"echo":false,"script":null)
  ]
 }
+game_quicksave={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777248,"unicode":0,"echo":false,"script":null)
+ ]
+}
+game_quickload={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777250,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[locale]
+
+translations=PoolStringArray( "res://Translations/fr.po" )
 
 [physics]
 

@@ -10,7 +10,7 @@ Image
 Supported formats
 ^^^^^^^^^^^^^^^^^
 
-By default, OpenTabletop supports all of the image formats that Godot supports,
+By default, Tabletop Club supports all of the image formats that Godot supports,
 the list of which can be found `here
 <https://docs.godotengine.org/en/stable/getting_started/workflow/assets/importing_images.html>`_.
 
@@ -73,7 +73,7 @@ Dice - D8
 3D models can be exported from almost any 3D modelling software, including
 Blender and Maya.
 
-As of right now, OpenTabletop supports the following 3D file formats:
+As of right now, Tabletop Club supports the following 3D file formats:
 
 * Collada (``.dae``)
 * glTF 2.0 (``.glb``, ``.gltf``)
@@ -92,7 +92,7 @@ As of right now, OpenTabletop supports the following 3D file formats:
 Audio
 -----
 
-As of right now, OpenTabletop supports the following audio formats:
+As of right now, Tabletop Club supports the following audio formats:
 
 * MP3 (``.mp3``)
 * Vorbis (``.ogg``)
@@ -108,10 +108,19 @@ in the Godot documentation.
 Save File
 ---------
 
-Save files are used to load back a saved state within OpenTabletop. They use
-the ``.ot`` extension.
+Save files are used to load back a saved state within Tabletop Club. They use
+the ``.tc`` extension.
 
 To create a save file when in-game, go to the menu and click
-:guilabel:`Save game`, then choose where you want to save the file. You can
-then load the state back by clicking the :guilabel:`Load game` button in the
-same menu.
+:guilabel:`Save game`, then choose a name to save the file as. You can then
+load the state back by clicking the :guilabel:`Load game` button in the same
+menu.
+
+When saving, the game puts the save file under the
+``<DOCUMENTS>/TabletopClub/saves`` folder, alongside a screenshot which is
+taken when the save is made.
+
+.. hint::
+
+   If you don't want the screenshot to have the UI, you can toggle the UI
+   before saving by pressing the :guilabel:`F9` key.

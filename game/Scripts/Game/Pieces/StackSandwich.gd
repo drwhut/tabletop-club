@@ -1,4 +1,4 @@
-# open-tabletop
+# tabletop-club
 # Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -124,6 +124,7 @@ func _set_sandwich_display() -> void:
 	if front_flip:
 		front_key += "_1"
 	var front_material = SpatialMaterial.new()
+	front_material.albedo_color = front_entry["color"]
 	front_material.albedo_texture = load(front_entry[front_key])
 	sandwich.set_surface_material(0, front_material)
 	
@@ -135,5 +136,6 @@ func _set_sandwich_display() -> void:
 	if not back_flip:
 		back_key += "_1"
 	var back_material = SpatialMaterial.new()
+	back_material.albedo_color = back_entry["color"]
 	back_material.albedo_texture = load(back_entry[back_key])
 	sandwich.set_surface_material(1, back_material)
