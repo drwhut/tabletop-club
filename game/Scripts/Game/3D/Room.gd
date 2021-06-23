@@ -26,6 +26,8 @@ signal spawning_piece_at(position)
 signal spawning_piece_in_container(container_name)
 signal table_flipped(table_reset)
 
+
+
 onready var _camera_controller = $CameraController
 onready var _hand_positions = $Table/HandPositions
 onready var _hands = $Hands
@@ -47,17 +49,14 @@ var _srv_retrieve_pieces_from_hell = true
 var _srv_undo_stack: Array = []
 var _srv_undo_stack_size_limit: int = 10
 
-var _srv_add_piece_timer: int = 0	#this is set to 0 to start to it will save the first state
-var _srv_add_piece_timer_max: int = 5
+
 
 var _srv_events_add_states: bool = true	#this is so events that normally add states like add_piece don't add a state when they are called as a part of set_state
 
-var _srv_flip_table_timer: int = 0
-var _srv_flip_table_timer_max: int = 5
 
-var _srv_remove_piece_timer: int = 0
-var _srv_remove_piece_timer_max: int = 5
-
+var _srv_undo_state_events: Dictionary = {"add_piece": 0, "flip_table": 0, "remove_piece": 0}	#all timers start at 0 because the first time the event is called it will save the state
+var _physics_processes_per_second: int = 100
+var _ten_seconds: int = 1000	#this is an approximation, I think it's actually a little longer than 10 seconds
 #these are my custom vars
 
 var _table_body: RigidBody = null
@@ -65,6 +64,9 @@ var _table_preflip_state: Dictionary = {}
 
 
 #these are my functions
+
+master func test():
+	rpc_id(1, "pop_undo_state")	#make the host pop an und state
 
 #adds an undo state to the undo stack if possible
 #Returns: nothing(void)
@@ -127,6 +129,18 @@ remotesync func add_hand(player: int, transform: Transform) -> void:
 remotesync func add_piece(name: String, transform: Transform,
 	piece_entry: Dictionary) -> void:
 	
+	#if not waiting for a timer or disabled because set_state wil be called
+	if _srv_events_add_states and _srv_undo_state_events["add_piece"] == 0 and get_tree().is_network_server():
+		rpc_id(1, "push_undo_state")	#make host add an undo state
+		
+		print("this was called")
+		
+		_srv_undo_state_events["add_piece"] = _ten_seconds	#set timer
+		
+	else:
+		
+		_srv_undo_state_events["add_piece"] = _ten_seconds	#if you try to add a piece before timer is up, timer resets
+		
 
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -154,17 +168,7 @@ remotesync func add_piece(name: String, transform: Transform,
 
 	_pieces.add_child(piece)
 	
-	#if not waiting for a timer or disabled because set_state wil be called
-	if _srv_events_add_states and _srv_add_piece_timer == 0:
-		rpc_id(1, "push_undo_state")	#make host add an undo state
-		print("this was called")
-		
-		_srv_add_piece_timer = _srv_add_piece_timer_max	#set timer
-		print(_srv_add_piece_timer)
-	else:
-		#waiting on timer
-		_srv_add_piece_timer -= 1
-		print(_srv_add_piece_timer)
+	
 	
 	
 
@@ -455,12 +459,12 @@ remotesync func flip_table(camera_basis: Basis) -> void:
 	_table_preflip_state = get_state(false, false)
 	
 	#if not waiting for a timer or disabled because set_state wil be called
-	if _srv_events_add_states and _srv_flip_table_timer == 0:
+	if _srv_events_add_states and _srv_undo_state_events["flip_table"] == 0 and get_tree().is_network_server():
 		rpc_id(1, "push_undo_state")	#make host add an undo state
-		_srv_flip_table_timer = _srv_flip_table_timer_max	#set timer
+		_srv_undo_state_events["flip_table"] = _ten_seconds	#set timer
 	else:
-		#waiting on timer
-		_srv_flip_table_timer -= 1
+		
+		_srv_undo_state_events["flip_table"] = _ten_seconds	#if they try to save a state with this event again before the timer has run out, it will reset the timer
 		
 
 	# Unlock all pieces after we've saved the state so that the table doesn't
@@ -1610,6 +1614,8 @@ remotesync func unflip_table() -> void:
 	emit_signal("table_flipped", true)
 
 func _ready():
+	#connect("popping_undo_state", self, "test")
+	
 	var skybox = AssetDB.random_asset("TabletopClub", "skyboxes", true)
 	if not skybox.empty():
 		set_skybox(skybox)
@@ -1619,6 +1625,21 @@ func _ready():
 		set_table(table)
 
 func _physics_process(_delta):
+	
+	
+	var timers_to_manage = _srv_undo_state_events.keys()
+	
+	for key in timers_to_manage:
+		#if the timer is = 0, that means it's event is ready to add a state
+		if _srv_undo_state_events[key] == 0:
+			pass
+		#if a timer is != 0, that means it is waiting until it is ready to add a state again
+		else:
+			_srv_undo_state_events[key] -= 1
+	
+	
+		
+	
 	if get_tree().is_network_server():
 		if _srv_hand_setup_frames >= 0:
 			_srv_hand_setup_frames -= 1
@@ -2032,12 +2053,12 @@ func _on_piece_exiting_tree(piece: Piece) -> void:
 	
 	
 	#if not waiting for a timer or disabled because set_state wil be called
-	if _srv_events_add_states and _srv_remove_piece_timer == 0:
+	if _srv_events_add_states and _srv_undo_state_events["remove_piece"] == 0 and get_tree().is_network_server():
 		rpc_id(1, "push_undo_state")	#make host add an undo state
-		_srv_remove_piece_timer = _srv_remove_piece_timer_max	#set timer
+		_srv_undo_state_events["remove_piece"] = _ten_seconds	#set timer
 	else:
 		#waiting on timer
-		_srv_remove_piece_timer -= 1
+		_srv_undo_state_events["remove_piece"] = _ten_seconds	#if they trigger this again before timer is done, reset the timer
 	
 	_camera_controller.erase_selected_pieces(piece)
 

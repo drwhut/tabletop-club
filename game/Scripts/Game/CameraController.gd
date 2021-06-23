@@ -81,6 +81,10 @@ signal spawning_piece_at(position)
 signal spawning_piece_in_container(container_name)
 signal stack_collect_all_requested(stack, collect_stacks)
 
+#here
+signal popping_undo_state()
+
+
 onready var _box_selection_rect = $BoxSelectionRect
 onready var _brush_color_picker = $PaintToolMenu/MarginContainer/VBoxContainer/BrushColorPickerButton
 onready var _brush_size_label = $PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer/BrushSizeValueLabel
@@ -2055,8 +2059,11 @@ func _on_Viewport_size_changed():
 
 func _on_UndoToolButton_pressed():
 	
+	#emit_signal("popping_undo_state")
+	
 	var room = get_tree().get_current_scene().get_node("Room")	#the pop/push functions are a part of the Room scene's script so we need to get the "Room" node in order to use them
 	
-	room.rpc_id(1, "pop_undo_state")	#make the host pop an und state
+	#put the same check on this as on the if statements I think. As him
+	room.rpc_id(1, "pop_undo_state")
 	
 	
