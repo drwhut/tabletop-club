@@ -79,7 +79,7 @@ func push_undo_state() -> void:
 
 #takes an undo state off of the undo stack if possible
 #Returns: nothing(void)
-func pop_undo_state() -> void:
+master func pop_undo_state() -> void:
 	#if there is an undo state, pop it off and restore the table with set_state()
 	if _srv_undo_stack.size() > 0:
 		var state_to_restore = _srv_undo_stack.pop_back()
@@ -2174,6 +2174,6 @@ func _on_GameUI_rotation_amount_updated(rotation_amount: float):
 
 
 func _on_CameraController_popping_undo_state():
-	#make sure only the host can call undo
-	if get_tree().is_network_server():
-		pop_undo_state()
+	
+	#any one can undo by pressing the undo button, but the host owns the stack
+	rpc_id(1, "pop_undo_state")
