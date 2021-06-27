@@ -322,11 +322,8 @@ func _on_GameUI_about_to_save_table():
 func _on_GameUI_applying_options(config: ConfigFile):
 	apply_options(config)
 
-func _on_GameUI_flipping_table(reset_table: bool):
-	if reset_table:
-		_room.rpc_id(1, "request_unflip_table")
-	else:
-		_room.rpc_id(1, "request_flip_table", _room.get_camera_transform().basis)
+func _on_GameUI_flipping_table():
+	_room.rpc_id(1, "request_flip_table", _room.get_camera_transform().basis)
 
 func _on_GameUI_lighting_requested(lamp_color: Color, lamp_intensity: float,
 	lamp_sunlight: bool):
@@ -381,8 +378,11 @@ func _on_Room_spawning_piece_in_container(container_name: String):
 	_ui.spawn_point_container_name = container_name
 	_ui.popup_objects_dialog()
 
-func _on_Room_table_flipped(table_reset: bool):
-	_ui.set_flip_table_status(not table_reset)
+func _on_Room_table_flipped():
+	_ui.set_flip_table_status(true)
+
+func _on_Room_table_unflipped():
+	_ui.set_flip_table_status(false)
 
 func _on_TableStateVersionDialog_confirmed():
 	_room.rpc_id(1, "request_load_table_state", _state_version_save)

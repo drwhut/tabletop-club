@@ -81,7 +81,6 @@ signal setting_spawn_point(position)
 signal spawning_piece_at(position)
 signal spawning_piece_in_container(container_name)
 signal stack_collect_all_requested(stack, collect_stacks)
-signal popping_undo_state()
 
 
 onready var _box_selection_rect = $BoxSelectionRect
@@ -2057,13 +2056,3 @@ func _on_Viewport_size_changed():
 	for cursor in _cursors.get_children():
 		if cursor is TextureRect:
 			cursor.rect_scale = _get_cursor_scale()
-
-
-func _on_UndoToolButton_pressed():
-	
-	
-	emit_signal("popping_undo_state")
-	
-	
-	
-	

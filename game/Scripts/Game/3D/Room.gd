@@ -25,7 +25,8 @@ extends Spatial
 signal setting_spawn_point(position)
 signal spawning_piece_at(position)
 signal spawning_piece_in_container(container_name)
-signal table_flipped(table_reset)
+signal table_flipped()
+signal table_unflipped()
 
 
 
@@ -56,7 +57,6 @@ var _event_cooldown_timer: int = 10	#this is an approximation, I think it's actu
 
 
 var _table_body: RigidBody = null
-var _table_preflip_state: Dictionary = {}
 
 
 
@@ -447,8 +447,6 @@ remotesync func flip_table(camera_basis: Basis) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 
-	_table_preflip_state = get_state(false, false)
-
 	#if not waiting for a timer or disabled because set_state wil be called
 	if _srv_events_add_states and _srv_undo_state_events["flip_table"] <= 0 and get_tree().is_network_server():
 		push_undo_state()	#make host add an undo state
@@ -475,7 +473,7 @@ remotesync func flip_table(camera_basis: Basis) -> void:
 	if get_tree().is_network_server():
 		srv_set_retrieve_pieces_from_hell(false)
 
-	emit_signal("table_flipped", false)
+	emit_signal("table_flipped")
 
 # Get the player camera's hover position.
 # Returns: The current hover position.
@@ -562,7 +560,6 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 		"entry": get_table(),
 		"is_rigid": false,
 		"paint_image_data": paint_image_data,
-		"preflip_state": _table_preflip_state,
 		"transform": Transform.IDENTITY
 	}
 	if _table_body:
@@ -1248,10 +1245,6 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 				else:
 					rpc("add_piece_to_stack", piece.name, stack_name, Stack.STACK_TOP)
 
-# Request the server to unflip the table.
-master func request_unflip_table() -> void:
-	rpc("unflip_table")
-
 # Set the color of the room lamp.
 # color: The color of the lamp.
 remotesync func set_lamp_color(color: Color) -> void:
@@ -1337,11 +1330,12 @@ remotesync func set_state(state: Dictionary) -> void:
 
 			_table_body.transform = table_meta["transform"]
 
-		emit_signal("table_flipped", not table_meta["is_rigid"])
+		if table_meta["is_rigid"]:
+			emit_signal("table_flipped")
+		else:
+			emit_signal("table_unflipped")
 		if get_tree().is_network_server():
 			srv_set_retrieve_pieces_from_hell(not table_meta["is_rigid"])
-
-		_table_preflip_state = table_meta["preflip_state"]
 
 		var paint_image_data = table_meta["paint_image_data"]
 		if paint_image_data == null:
@@ -1586,22 +1580,6 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 		var piece_entry = piece_meta["piece_entry"]
 		var piece_transform = piece_meta["transform"]
 		stack2.add_piece(piece_entry, piece_transform, Stack.STACK_TOP)
-
-# Unflip the table from it's flipped state.
-remotesync func unflip_table() -> void:
-	if get_tree().get_rpc_sender_id() != 1:
-		return
-
-	if not _table_preflip_state.empty():
-		set_state(_table_preflip_state)
-		_table_preflip_state = {}
-
-	_table_body.mode = RigidBody.MODE_STATIC
-
-	if get_tree().is_network_server():
-		srv_set_retrieve_pieces_from_hell(true)
-
-	emit_signal("table_flipped", true)
 
 func _ready():
 
@@ -2174,8 +2152,5 @@ func _on_GameUI_clear_pieces():
 func _on_GameUI_rotation_amount_updated(rotation_amount: float):
 	_camera_controller.set_piece_rotation_amount(rotation_amount)
 
-
-func _on_CameraController_popping_undo_state():
-
-	#any one can undo by pressing the undo button, but the host owns the stack
+func _on_GameUI_undo_state():
 	rpc_id(1, "pop_undo_state")

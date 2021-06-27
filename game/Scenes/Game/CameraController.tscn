@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Game/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Misc/OutlineColorRect.gd" type="Script" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Fonts/Cabin-Bold.ttf" type="DynamicFontData" id=14]
-[ext_resource path="res://Images/UndoIcon.svg" type="Texture" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
@@ -525,14 +524,6 @@ group = ExtResource( 6 )
 icon = ExtResource( 4 )
 expand_icon = true
 
-[node name="UndoToolButton" type="Button" parent="CameraUI/ToolContainer"]
-margin_top = 220.0
-margin_right = 40.0
-margin_bottom = 246.0
-toggle_mode = true
-icon = ExtResource( 15 )
-expand_icon = true
-
 [node name="DebugInfoLabel" type="Label" parent="CameraUI"]
 visible = false
 margin_right = 240.0
@@ -571,4 +562,3 @@ autowrap = true
 [connection signal="pressed" from="CameraUI/ToolContainer/HiddenAreaToolButton" to="." method="_on_HiddenAreaToolButton_pressed"]
 [connection signal="pressed" from="CameraUI/ToolContainer/PaintToolButton" to="." method="_on_PaintToolButton_pressed"]
 [connection signal="pressed" from="CameraUI/ToolContainer/EraseToolButton" to="." method="_on_EraseToolButton_pressed"]
-[connection signal="pressed" from="CameraUI/ToolContainer/UndoToolButton" to="." method="_on_UndoToolButton_pressed"]

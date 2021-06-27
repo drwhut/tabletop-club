@@ -25,7 +25,7 @@ extends Control
 signal about_to_save_table()
 signal applying_options(config)
 signal clear_pieces()
-signal flipping_table(reset_table)
+signal flipping_table()
 signal lighting_requested(lamp_color, lamp_intensity, lamp_sunlight)
 signal load_table(path)
 signal piece_requested(piece_entry, position)
@@ -36,6 +36,7 @@ signal save_table(path)
 signal skybox_requested(skybox_entry)
 signal stopped_saving_table()
 signal table_requested(table_entry)
+signal undo_state()
 
 onready var _chat_box = $HideableUI/ChatBox
 onready var _clear_table_button = $HideableUI/TopPanel/ClearTableButton
@@ -54,8 +55,6 @@ onready var _save_dialog = $GameMenuBackground/SaveDialog
 var spawn_point_container_name: String = ""
 var spawn_point_origin: Vector3 = Vector3(0, Piece.SPAWN_HEIGHT, 0)
 var spawn_point_temp_offset: Vector3 = Vector3()
-
-var _flip_table_status = false
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -83,16 +82,11 @@ func set_room_details(table_entry: Dictionary, skybox_entry: Dictionary,
 		lamp_intensity, lamp_sunlight)
 
 # Set the table flipped status, so the flip table button can be updated.
-# flip_table_status: If true, the button will represent resetting the table.
-# If false, the button will represent flipping the table.
+# flip_table_status: If true, the table is assumed to have been flipped, and
+# the flip table button is disabled. Otherwise, the table is assumed to be in
+# it's normal state, and the button is enabled.
 func set_flip_table_status(flip_table_status: bool) -> void:
-	_flip_table_status = flip_table_status
-	
-	if flip_table_status:
-		_flip_table_button.text = tr("Reset Table")
-	else:
-		_flip_table_button.text = tr("Flip Table")
-	
+	_flip_table_button.disabled = flip_table_status
 	_clear_table_button.disabled = flip_table_status
 
 func _ready():
@@ -155,7 +149,7 @@ func _on_DesktopButton_pressed():
 	get_tree().quit()
 
 func _on_FlipTableButton_pressed():
-	emit_signal("flipping_table", _flip_table_status)
+	emit_signal("flipping_table")
 
 func _on_GameMenuButton_pressed():
 	_game_menu_background.visible = true
@@ -236,3 +230,6 @@ func _on_SaveDialog_save_file(path: String):
 
 func _on_SaveGameButton_pressed():
 	_popup_save_dialog(true)
+
+func _on_UndoButton_pressed():
+	emit_signal("undo_state")

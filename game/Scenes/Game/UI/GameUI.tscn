@@ -35,46 +35,52 @@ __meta__ = {
 }
 
 [node name="ObjectsButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 278.0
-margin_right = 342.0
+margin_left = 250.0
+margin_right = 314.0
 margin_bottom = 26.0
 text = "Objects"
 
 [node name="GamesButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 346.0
-margin_right = 406.0
+margin_left = 318.0
+margin_right = 378.0
 margin_bottom = 26.0
 text = "Games"
 
 [node name="RoomButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 410.0
-margin_right = 464.0
+margin_left = 382.0
+margin_right = 436.0
 margin_bottom = 26.0
 text = "Room"
 
+[node name="UndoButton" type="Button" parent="HideableUI/TopPanel"]
+margin_left = 440.0
+margin_right = 491.0
+margin_bottom = 26.0
+text = "Undo"
+
 [node name="FlipTableButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 468.0
-margin_right = 547.0
+margin_left = 495.0
+margin_right = 574.0
 margin_bottom = 26.0
 text = "Flip Table"
 
 [node name="ClearTableButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 551.0
-margin_right = 640.0
+margin_left = 578.0
+margin_right = 667.0
 margin_bottom = 26.0
 text = "Clear Table"
 
 [node name="RotationOption" type="OptionButton" parent="HideableUI/TopPanel"]
-margin_left = 644.0
-margin_right = 691.0
+margin_left = 671.0
+margin_right = 718.0
 margin_bottom = 26.0
 text = "45"
 items = [ "15", null, false, 0, null, "30", null, false, 1, null, "45", null, false, 2, null, "60", null, false, 3, null, "90", null, false, 4, null, "180", null, false, 5, null ]
 selected = 2
 
 [node name="GameMenuButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 695.0
-margin_right = 746.0
+margin_left = 722.0
+margin_right = 773.0
 margin_bottom = 26.0
 text = "Menu"
 
@@ -200,6 +206,7 @@ visible = false
 [connection signal="pressed" from="HideableUI/TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
 [connection signal="pressed" from="HideableUI/TopPanel/GamesButton" to="." method="_on_GamesButton_pressed"]
 [connection signal="pressed" from="HideableUI/TopPanel/RoomButton" to="." method="_on_RoomButton_pressed"]
+[connection signal="pressed" from="HideableUI/TopPanel/UndoButton" to="." method="_on_UndoButton_pressed"]
 [connection signal="pressed" from="HideableUI/TopPanel/FlipTableButton" to="." method="_on_FlipTableButton_pressed"]
 [connection signal="pressed" from="HideableUI/TopPanel/ClearTableButton" to="." method="_on_ClearTableButton_pressed"]
 [connection signal="item_selected" from="HideableUI/TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
