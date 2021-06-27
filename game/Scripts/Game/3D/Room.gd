@@ -601,6 +601,10 @@ master func pop_undo_state() -> void:
 		_srv_events_add_states = false	#we don't want add_piece adding states when it's called as a part of set state
 		rpc("set_state", state_to_restore)	#set the state for everyone
 		_srv_events_add_states = true
+	
+	# Let all players know if the undo stack is now empty.
+	if _srv_undo_stack.empty():
+		rpc("_on_undo_stack_empty")
 
 #adds an undo state to the undo stack if possible
 #Returns: nothing(void)
@@ -609,6 +613,9 @@ func push_undo_state() -> void:
 		_srv_undo_stack.pop_front()
 	
 	_srv_undo_stack.push_back(get_state(false,false))
+	
+	# Let all players know that the undo stack has been pushed to.
+	rpc("_on_undo_stack_pushed")
 
 # Remove a player's hand from the room.
 # player: The ID of the player whose hand to remove.
@@ -2014,6 +2021,14 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 		else:
 			rpc("add_stack", srv_get_next_piece_name(), piece1.transform, piece1.name,
 				piece2.name)
+
+# Called by the server when the undo stack is empty.
+remotesync func _on_undo_stack_empty():
+	emit_signal("undo_stack_empty")
+
+# Called by the server when the undo stack is pushed to.
+remotesync func _on_undo_stack_pushed():
+	emit_signal("undo_stack_pushed")
 
 func _on_CameraController_adding_cards_to_hand(cards: Array, id: int):
 	var names = []

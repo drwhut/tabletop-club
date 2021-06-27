@@ -51,6 +51,7 @@ onready var _player_list = $HideableUI/PlayerList
 onready var _room_dialog = $RoomDialog
 onready var _rotation_option = $HideableUI/TopPanel/RotationOption
 onready var _save_dialog = $GameMenuBackground/SaveDialog
+onready var _undo_button = $HideableUI/TopPanel/UndoButton
 
 var spawn_point_container_name: String = ""
 var spawn_point_origin: Vector3 = Vector3(0, Piece.SPAWN_HEIGHT, 0)
@@ -192,6 +193,12 @@ func _on_OptionsButton_pressed():
 
 func _on_OptionsMenu_applying_options(config: ConfigFile):
 	emit_signal("applying_options", config)
+
+func _on_Room_undo_stack_empty():
+	_undo_button.disabled = true
+
+func _on_Room_undo_stack_pushed():
+	_undo_button.disabled = false
 
 func _on_RoomButton_pressed():
 	_room_dialog.popup_centered()

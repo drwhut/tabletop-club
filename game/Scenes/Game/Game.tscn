@@ -44,6 +44,8 @@ dialog_autowrap = true
 [connection signal="spawning_piece_in_container" from="Room" to="." method="_on_Room_spawning_piece_in_container"]
 [connection signal="table_flipped" from="Room" to="." method="_on_Room_table_flipped"]
 [connection signal="table_unflipped" from="Room" to="." method="_on_Room_table_unflipped"]
+[connection signal="undo_stack_empty" from="Room" to="GameUI" method="_on_Room_undo_stack_empty"]
+[connection signal="undo_stack_pushed" from="Room" to="GameUI" method="_on_Room_undo_stack_pushed"]
 [connection signal="about_to_save_table" from="GameUI" to="." method="_on_GameUI_about_to_save_table"]
 [connection signal="applying_options" from="GameUI" to="." method="_on_GameUI_applying_options"]
 [connection signal="clear_pieces" from="GameUI" to="Room" method="_on_GameUI_clear_pieces"]

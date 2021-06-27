@@ -56,6 +56,7 @@ text = "Room"
 margin_left = 440.0
 margin_right = 491.0
 margin_bottom = 26.0
+disabled = true
 text = "Undo"
 
 [node name="FlipTableButton" type="Button" parent="HideableUI/TopPanel"]
