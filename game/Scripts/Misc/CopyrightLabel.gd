@@ -1,5 +1,6 @@
 # tabletop-club
-# Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
+# Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021 Tabletop Club contributors (see game/CREDITS.tres).
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,4 +24,5 @@ extends Label
 
 func _ready():
 	var description = ProjectSettings.get_setting("application/config/description")
-	text = description.split("\n", false, 1)[0]
+	var description_lines = description.split("\n", false, 2)
+	text = description_lines[0] + "\n" + description_lines[1]

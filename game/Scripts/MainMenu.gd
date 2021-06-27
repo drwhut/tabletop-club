@@ -1,5 +1,6 @@
 # tabletop-club
-# Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows
+# Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021 Tabletop Club contributors (see game/CREDITS.tres).
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -66,6 +67,7 @@ func _update_credits_text() -> void:
 	
 	var credits_text = credits_file.text
 	credits_text = credits_text.replace("ALPHA TESTERS", tr("Alpha Testers"))
+	credits_text = credits_text.replace("CONTRIBUTORS", tr("Contributors"))
 	credits_text = credits_text.replace("CURSORS", tr("Cursors"))
 	credits_text = credits_text.replace("DEVELOPERS", tr("Developers"))
 	credits_text = credits_text.replace("FONTS", tr("Fonts"))

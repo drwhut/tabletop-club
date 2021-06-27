@@ -80,9 +80,6 @@ margin_right = 239.0
 margin_bottom = 150.0
 text = "Quit"
 
-[node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
-visible = false
-
 [node name="CreditsDialog" type="WindowDialog" parent="."]
 margin_right = 512.0
 margin_bottom = 300.0
@@ -134,6 +131,9 @@ __meta__ = {
 }
 
 [node name="RandomMusicPlayer" parent="." instance=ExtResource( 6 )]
+
+[node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
+visible = false
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SingleplayerButton" to="." method="_on_SingleplayerButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ServerButton" to="." method="_on_ServerButton_pressed"]
