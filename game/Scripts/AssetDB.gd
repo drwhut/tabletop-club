@@ -371,6 +371,7 @@ func _calculate_bounding_box_recursive(scene: Spatial, transform: Transform) -> 
 func _catalog_assets() -> Dictionary:
 	var dir = Directory.new()
 	
+	var scanned_asset_dirs = []
 	var asset_dir_exists = false
 	var file_count = 0
 	var packs = {}
@@ -378,6 +379,11 @@ func _catalog_assets() -> Dictionary:
 		var err = dir.open(asset_dir)
 		if err == OK:
 			asset_dir_exists = true
+			
+			# Don't scan the same asset directory twice!
+			if dir.get_current_dir() in scanned_asset_dirs:
+				continue
+			
 			dir.list_dir_begin(true, true)
 			
 			var folder = dir.get_next()
@@ -405,6 +411,8 @@ func _catalog_assets() -> Dictionary:
 						push_error("Failed to open '%s' (error %d)!" % [pack_path, err])
 				
 				folder = dir.get_next()
+			
+			scanned_asset_dirs.append(dir.get_current_dir())
 		elif err == ERR_INVALID_PARAMETER:
 			# The folder doesn't exist.
 			pass
