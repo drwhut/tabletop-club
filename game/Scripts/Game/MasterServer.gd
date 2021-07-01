@@ -35,7 +35,7 @@ signal offer_received(id, offer)
 signal peer_connected(id)
 signal peer_disconnected(id)
 
-const URL: String = "ws://localhost:9080"
+const URL: String = "ws://tabletop-club.duckdns.org:9080"
 
 # See: https://github.com/drwhut/tabletop_club_master_server/blob/master/server.js
 var ERROR_MESSAGES = {
