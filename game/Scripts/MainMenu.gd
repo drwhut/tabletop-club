@@ -25,10 +25,11 @@ extends Control
 onready var _credits_dialog = $CreditsDialog
 onready var _credits_label = $CreditsDialog/CreditsLabel
 onready var _error_dialog = $ErrorDialog
-onready var _join_server_edit = $CenterContainer/VBoxContainer/JoinContainer/JoinServerEdit
 onready var _options_menu = $OptionsMenu
 onready var _random_music_player = $RandomMusicPlayer
-onready var _server_button = $CenterContainer/VBoxContainer/ServerButton
+onready var _room_code_edit = $CenterContainer/VBoxContainer/JoinContainer/RoomCodeEdit
+
+const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 # Display an error.
 # error: The error to display.
@@ -38,28 +39,6 @@ func display_error(error: String) -> void:
 
 func _ready():
 	_update_credits_text()
-	
-	var file = File.new()
-	if file.file_exists("server.cfg"):
-		if OS.is_debug_build():
-			_server_button.visible = true
-		else:
-			_start_dedicated_server()
-
-# Start a dedicated server using the values in the server.cfg file in the
-# current working directory.
-func _start_dedicated_server():
-	var server_config = ConfigFile.new()
-	var server_config_err = server_config.load("server.cfg")
-	
-	if server_config_err == OK:
-		var max_players = server_config.get_value("server", "max_players", 10)
-		var port = server_config.get_value("server", "port", 26271)
-		
-		Global.start_game_as_server(max_players, port)
-	else:
-		print("Failed to read server.cfg (error ", server_config_err, ")")
-		return
 
 # Update the credits dialog text.
 func _update_credits_text() -> void:
@@ -96,25 +75,25 @@ func _update_credits_text() -> void:
 func _on_SingleplayerButton_pressed():
 	Global.start_game_singleplayer()
 
-func _on_ServerButton_pressed():
-	_start_dedicated_server()
+func _on_HostGameButton_pressed():
+	Global.start_game_as_server()
 
-func _on_JoinButton_pressed():
-	var server_port = _join_server_edit.text
+func _on_RoomCodeEdit_text_changed(new_text: String):
+	var caret_position = _room_code_edit.caret_position
+	_room_code_edit.text = new_text.to_upper()
+	_room_code_edit.caret_position = caret_position
+
+func _on_JoinGameButton_pressed():
+	var room_code = _room_code_edit.text.to_upper()
 	
-	# TODO: Add validation.
-	# TODO: Use String.is_valid_ip_address()
-	var server = "127.0.0.1"
-	var port = 26271
-	var split = server_port.rsplit(":", false, 1)
+	if room_code.length() != 4:
+		display_error(tr("Room code must be four characters long!"))
 	
-	if split.size() > 0:
-		server = split[0]
-		
-		if split.size() > 1:
-			port = int(split[1])
+	for c in room_code:
+		if not c in ALPHABET:
+			display_error(tr("Invalid room code!"))
 	
-	Global.start_game_as_client(server, port)
+	Global.start_game_as_client(room_code)
 
 func _on_OptionsButton_pressed():
 	_options_menu.visible = true

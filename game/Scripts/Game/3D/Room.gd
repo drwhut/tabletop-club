@@ -398,6 +398,17 @@ func apply_options(config: ConfigFile) -> void:
 	var paint_filtering = config.get_value("video", "table_paint_filtering")
 	_paint_plane.set_filtering_enabled(paint_filtering)
 
+# Compress the given room state.
+# Returns: A dictionary, where "data" is the compressed version of the room
+# state, and "size" is the size of the uncompressed data.
+# state: The room state to compress.
+func compress_state(state: Dictionary) -> Dictionary:
+	var bytes = var2bytes(state)
+	return {
+		"data": bytes.compress(File.COMPRESSION_FASTLZ),
+		"size": bytes.size()
+	}
+
 # Flip the table.
 # camera_basis: The basis matrix of the player flipping the table.
 remotesync func flip_table(camera_basis: Basis) -> void:
@@ -556,6 +567,14 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 
 	return out
 
+# Get the current room state as a compressed byte array.
+# Returns: A dictionary, where "data" is the compressed version of the room
+# state, and "size" is the size of the uncompressed data.
+# hands: Should the hand states be included?
+# collisions: Should collision data be included?
+func get_state_compressed(hands: bool = false, collisions: bool = false) -> Dictionary:
+	return compress_state(get_state(hands, collisions))
+
 # Get the current table's entry in the asset DB.
 # Returns: The current table's entry, empty if there is no table.
 func get_table() -> Dictionary:
@@ -599,7 +618,8 @@ master func pop_undo_state() -> void:
 	if _srv_undo_stack.size() > 0:
 		var state_to_restore = _srv_undo_stack.pop_back()
 		_srv_events_add_states = false	#we don't want add_piece adding states when it's called as a part of set state
-		rpc("set_state", state_to_restore)	#set the state for everyone
+		# TODO: Consider pushing compressed states to the undo stack?
+		rpc("set_state_compressed", compress_state(state_to_restore))	#set the state for everyone
 		_srv_events_add_states = true
 	
 	# Let all players know if the undo stack is now empty.
@@ -1037,10 +1057,10 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 	_camera_controller.append_selected_pieces([piece])
 	_camera_controller.set_is_hovering(true)
 
-# Request the server to load a table state.
-# state: The state to load.
-master func request_load_table_state(state: Dictionary) -> void:
-	rpc("set_state", state)
+# Request the server to load a compressed table state.
+# compressed_state: The compressed state to load.
+master func request_load_table_state(compressed_state: Dictionary) -> void:
+	rpc("set_state_compressed", compressed_state)
 
 # Request the server to paste the contents of a clipboard to the room.
 # clipboard: The clipboard contents (from _append_piece_states).
@@ -1284,7 +1304,7 @@ remotesync func set_skybox(skybox_entry: Dictionary) -> void:
 
 # Set the room state.
 # state: The new room state.
-remotesync func set_state(state: Dictionary) -> void:
+func set_state(state: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 
@@ -1401,6 +1421,38 @@ remotesync func set_state(state: Dictionary) -> void:
 	if get_tree().is_network_server():
 		_srv_allow_card_stacking = false
 		_srv_hand_setup_frames = 5
+
+# Set the room state with a compressed version of a state.
+# compressed_state: The compressed state from get_state_compressed().
+remotesync func set_state_compressed(compressed_state: Dictionary) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if not compressed_state.has("data"):
+		push_error("Compressed state does not contain data!")
+		return
+	
+	if not compressed_state["data"] is PoolByteArray:
+		push_error("Compressed state data is not a byte array!")
+		return
+	
+	if not compressed_state.has("size"):
+		push_error("Compressed state does not have size information!")
+		return
+	
+	if not compressed_state["size"] is int:
+		push_error("Compressed state size information is not an integer!")
+		return
+	
+	var data = compressed_state["data"]
+	var size = compressed_state["size"]
+	
+	var bytes = data.decompress(size, File.COMPRESSION_FASTLZ)
+	var state = bytes2var(bytes)
+	if state is Dictionary:
+		set_state(state)
+	else:
+		push_error("Failed to decode the uncompressed state!")
 
 # Set the room table.
 # table_entry: The table's entry in the asset DB.
@@ -1573,8 +1625,6 @@ func _ready():
 		set_table(table)
 
 func _physics_process(_delta):
-
-
 	var timers_to_manage = _srv_undo_state_events.keys()
 
 	for key in timers_to_manage:
@@ -1585,8 +1635,8 @@ func _physics_process(_delta):
 		else:
 			_srv_undo_state_events[key] -= _delta	#this is so that the timer is accurate even if the physics frames last longer than expected
 
-
-
+	if not get_tree().has_network_peer():
+		return
 
 	if get_tree().is_network_server():
 		if _srv_hand_setup_frames >= 0:

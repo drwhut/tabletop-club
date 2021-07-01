@@ -82,7 +82,9 @@ func srv_remove_card(card: Card) -> void:
 	card.disconnect("client_set_hover_position", self, "_on_client_set_card_position")
 	card.disconnect("piece_exiting_tree", self, "_on_card_exiting_tree")
 	
-	card.rpc("set_collisions_on", true)
+	# The card may be removed because the game is exiting!
+	if get_tree().has_network_peer():
+		card.rpc("set_collisions_on", true)
 
 # Update the display of the hand to reflect the owner's properties, such as
 # their colour.
@@ -192,8 +194,9 @@ func _srv_set_card_rotation(card: Card) -> void:
 # visible: Whether the front face should be visible or not.
 func _try_set_front_face_visible(body: Node, visible: bool) -> void:
 	# We don't want to hide the front face if this is our hand!
-	if get_tree().get_network_unique_id() == owner_id():
-		return
+	if get_tree().has_network_peer():
+		if get_tree().get_network_unique_id() == owner_id():
+			return
 	
 	var valid = false
 	if body is Card:
@@ -223,11 +226,12 @@ func _on_client_set_card_position(card: Card):
 	srv_remove_card(card)
 
 func _on_Hand_tree_exiting():
-	if get_tree().is_network_server():
-		for card in _srv_cards:
-			card.rpc_id(1, "stop_hovering")
-		
-		srv_clear_cards()
+	if get_tree().has_network_peer():
+		if get_tree().is_network_server():
+			for card in _srv_cards:
+				card.rpc_id(1, "stop_hovering")
+	
+	srv_clear_cards()
 
 func _on_Lobby_player_modified(id: int, _old: Dictionary):
 	if id == owner_id():

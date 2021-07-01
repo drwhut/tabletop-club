@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Game/3D/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Game/UI/GameUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Game/Game.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Game/MasterServer.gd" type="Script" id=4]
 
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
@@ -14,17 +15,17 @@ __meta__ = {
 
 [node name="GameUI" parent="." instance=ExtResource( 2 )]
 
-[node name="ConnectingDialog" type="PopupDialog" parent="."]
-margin_right = 200.0
-margin_bottom = 40.0
+[node name="ConnectingPopup" type="PopupPanel" parent="."]
 popup_exclusive = true
 
-[node name="Label" type="Label" parent="ConnectingDialog"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "Connecting to the server..."
-align = 1
-valign = 1
+[node name="Label" type="Label" parent="ConnectingPopup"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TableStateErrorDialog" type="AcceptDialog" parent="."]
 margin_right = 300.0
@@ -39,6 +40,9 @@ margin_bottom = 180.0
 rect_min_size = Vector2( 300, 180 )
 dialog_autowrap = true
 
+[node name="MasterServer" type="Node" parent="."]
+script = ExtResource( 4 )
+
 [connection signal="setting_spawn_point" from="Room" to="." method="_on_Room_setting_spawn_point"]
 [connection signal="spawning_piece_at" from="Room" to="." method="_on_Room_spawning_piece_at"]
 [connection signal="spawning_piece_in_container" from="Room" to="." method="_on_Room_spawning_piece_in_container"]
@@ -50,6 +54,7 @@ dialog_autowrap = true
 [connection signal="applying_options" from="GameUI" to="." method="_on_GameUI_applying_options"]
 [connection signal="clear_pieces" from="GameUI" to="Room" method="_on_GameUI_clear_pieces"]
 [connection signal="flipping_table" from="GameUI" to="." method="_on_GameUI_flipping_table"]
+[connection signal="leaving_room" from="GameUI" to="." method="_on_GameUI_leaving_room"]
 [connection signal="lighting_requested" from="GameUI" to="." method="_on_GameUI_lighting_requested"]
 [connection signal="load_table" from="GameUI" to="." method="_on_GameUI_load_table"]
 [connection signal="piece_requested" from="GameUI" to="." method="_on_GameUI_piece_requested"]

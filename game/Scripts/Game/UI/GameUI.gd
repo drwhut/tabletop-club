@@ -26,6 +26,7 @@ signal about_to_save_table()
 signal applying_options(config)
 signal clear_pieces()
 signal flipping_table()
+signal leaving_room()
 signal lighting_requested(lamp_color, lamp_intensity, lamp_sunlight)
 signal load_table(path)
 signal piece_requested(piece_entry, position)
@@ -47,7 +48,9 @@ onready var _games_dialog = $GamesDialog
 onready var _hideable_ui = $HideableUI
 onready var _objects_dialog = $ObjectsDialog
 onready var _options_menu = $OptionsMenu
-onready var _player_list = $HideableUI/PlayerList
+onready var _player_list = $HideableUI/MultiplayerContainer/PlayerList
+onready var _room_code_label = $HideableUI/MultiplayerContainer/RoomCodeLabel
+onready var _room_code_toggle_button = $HideableUI/MultiplayerContainer/RoomCodeVisibleContainer/RoomCodeToggleButton
 onready var _room_dialog = $RoomDialog
 onready var _rotation_option = $HideableUI/TopPanel/RotationOption
 onready var _save_dialog = $GameMenuBackground/SaveDialog
@@ -56,6 +59,9 @@ onready var _undo_button = $HideableUI/TopPanel/UndoButton
 var spawn_point_container_name: String = ""
 var spawn_point_origin: Vector3 = Vector3(0, Piece.SPAWN_HEIGHT, 0)
 var spawn_point_temp_offset: Vector3 = Vector3()
+
+var _room_code: String = ""
+var _room_code_visible: bool = true
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -66,9 +72,20 @@ func apply_options(config: ConfigFile) -> void:
 func hide_chat_box() -> void:
 	_chat_box.visible = false
 
+# Hide the room code from the UI.
+func hide_room_code() -> void:
+	_room_code_label.visible = false
+	_room_code_toggle_button.visible = false
+
 # Popup the objects menu dialog.
 func popup_objects_dialog() -> void:
 	_objects_dialog.popup_centered()
+
+# Set the room code that is displayed in the UI.
+# room_code: The room code to display.
+func set_room_code(room_code: String) -> void:
+	_room_code = room_code
+	_update_room_code_display()
 
 # Set the room details in the room dialog.
 # table_entry: The table's asset DB entry.
@@ -129,13 +146,27 @@ func _set_rotation_amount() -> void:
 
 # Update the player list based on what is in the Lobby.
 func _update_player_list() -> void:
-	var code = "[right][table=1]"
+	var code = "[right]"
 	
 	for id in Lobby.get_player_list():
-		code += "[cell]" + Lobby.get_name_bb_code(id) + "[/cell]"
+		code += Lobby.get_name_bb_code(id) + " \n"
 	
-	code += "[/table][/right]"
+	code += "[/right]"
 	_player_list.bbcode_text = code
+
+# Update the room code display.
+func _update_room_code_display() -> void:
+	var room_code_display = _room_code
+	if not _room_code_visible:
+		room_code_display = "*".repeat(_room_code.length())
+	
+	var text = "[right]" + tr("Room Code: [b]%s[/b]") % room_code_display + " [/right]"
+	_room_code_label.bbcode_text = text
+	
+	if _room_code_visible:
+		_room_code_toggle_button.text = tr("Hide Room Code")
+	else:
+		_room_code_toggle_button.text = tr("Show Room Code")
 
 func _on_BackToGameButton_pressed():
 	_game_menu_background.visible = false
@@ -147,6 +178,7 @@ func _on_ClearTableConfirmDialog_confirmed():
 	emit_signal("clear_pieces")
 
 func _on_DesktopButton_pressed():
+	emit_signal("leaving_room")
 	get_tree().quit()
 
 func _on_FlipTableButton_pressed():
@@ -175,6 +207,7 @@ func _on_Lobby_player_removed(_id: int):
 	_update_player_list()
 
 func _on_MainMenuButton_pressed():
+	emit_signal("leaving_room")
 	Global.start_main_menu()
 
 func _on_ObjectsButton_pressed():
@@ -202,6 +235,10 @@ func _on_Room_undo_stack_pushed():
 
 func _on_RoomButton_pressed():
 	_room_dialog.popup_centered()
+
+func _on_RoomCodeToggleButton_pressed():
+	_room_code_visible = not _room_code_visible
+	_update_room_code_display()
 
 func _on_RoomDialog_requesting_room_details():
 	emit_signal("requesting_room_details")

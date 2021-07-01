@@ -20,9 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# NOTE: The WebRTC code in this script is based on the webrtc_signalling demo,
+# which is licensed under the MIT license:
+# https://github.com/godotengine/godot-demo-projects/blob/master/networking/webrtc_signaling/client/multiplayer_client.gd
+
 extends Node
 
-onready var _connecting_dialog = $ConnectingDialog
+onready var _connecting_popup = $ConnectingPopup
+onready var _connecting_popup_label = $ConnectingPopup/Label
+onready var _master_server = $MasterServer
 onready var _room = $Room
 onready var _table_state_error_dialog = $TableStateErrorDialog
 onready var _table_state_version_dialog = $TableStateVersionDialog
@@ -31,6 +37,9 @@ onready var _ui = $GameUI
 export(bool) var autosave_enabled: bool = true
 export(int) var autosave_interval: int = 300
 export(int) var autosave_count: int = 10
+
+var _rtc = WebRTCMultiplayer.new()
+var _established_connection_with = []
 
 var _player_name: String
 var _player_color: Color
@@ -69,44 +78,33 @@ func apply_options(config: ConfigFile) -> void:
 	_player_name = config.get_value("multiplayer", "name")
 	_player_color = config.get_value("multiplayer", "color")
 	
-	if not get_tree().is_network_server():
-		if not _connecting_dialog.visible:
-			Lobby.rpc_id(1, "request_modify_self", _player_name, _player_color)
+	if _master_server.is_connection_established():
+		Lobby.rpc_id(1, "request_modify_self", _player_name, _player_color)
 
-# Initialise a client peer.
-# server: The server to connect to.
-# port: The port number to connect to.
-func init_client(server: String, port: int) -> void:
-	print("Connecting to ", server, ":", port, " ...")
-	var peer = _create_network_peer()
-	peer.create_client(server, port)
-	get_tree().network_peer = peer
-	
-	_connecting_dialog.popup_centered()
+# Ask the master server to host a game.
+func start_host() -> void:
+	print("Hosting game...")
+	_connect_to_master_server("")
 
-# Initialise a server peer.
-# max_players: The maximum number of peers (excluding the server) that can
-# connect to the server.
-# port: The port number to host the server on.
-func init_server(max_players: int, port: int) -> void:
-	print("Starting server on port ", port, " with ", max_players, " max players...")
-	var peer = _create_network_peer()
-	peer.create_server(port, max_players + 1)
-	get_tree().network_peer = peer
+# Ask the master server to join a game.
+func start_join(room_code: String) -> void:
+	print("Joining game with room code %s..." % room_code)
+	_connect_to_master_server(room_code)
 
-# Initialise a singleplayer game, which is a server that refuses connections.
-func init_singleplayer() -> void:
+# Start the game in singleplayer mode.
+func start_singleplayer() -> void:
 	print("Starting singleplayer...")
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	init_server(0, rng.randi_range(10000, 65535))
 	
-	var hand_transform = _room.srv_get_next_hand_transform()
-	if hand_transform == Transform.IDENTITY:
-		push_warning("Table has no available hand positions!")
-	_room.rpc_id(1, "add_hand", 1, hand_transform)
+	# Pretend that we asked the master server to host our own game.
+	call_deferred("_on_connected", 1)
 	
 	_ui.hide_chat_box()
+	_ui.hide_room_code()
+
+# Stop the connections to the other peers and the master server.
+func stop() -> void:
+	_rtc.close()
+	_master_server.close()
 
 # Load a table state from the given file path.
 # path: The file path of the state to load.
@@ -159,17 +157,32 @@ func save_state(state: Dictionary, path: String) -> void:
 		_save_screenshot_path = path.get_basename() + ".png"
 
 func _ready():
-	get_tree().connect("network_peer_connected", self, "_player_connected")
-	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
-	get_tree().connect("connected_to_server", self, "_connected_ok")
-	get_tree().connect("connection_failed", self, "_connected_fail")
-	get_tree().connect("server_disconnected", self, "_server_disconnected")
+	_master_server.connect("connected", self, "_on_connected")
+	_master_server.connect("disconnected", self, "_on_disconnected")
+	
+	_master_server.connect("offer_received", self, "_on_offer_received")
+	_master_server.connect("answer_received", self, "_on_answer_received")
+	_master_server.connect("candidate_received", self, "_on_candidate_received")
+	
+	_master_server.connect("room_joined", self, "_on_room_joined")
+	_master_server.connect("room_sealed", self, "_on_room_sealed")
+	_master_server.connect("peer_connected", self, "_on_peer_connected")
+	_master_server.connect("peer_disconnected", self, "_on_peer_disconnected")
 	
 	Lobby.connect("players_synced", self, "_on_Lobby_players_synced")
 	
 	Lobby.clear_players()
 
 func _process(delta):
+	var current_peers = _rtc.get_peers()
+	for id in current_peers:
+		var peer: Dictionary = current_peers[id]
+		
+		if peer["connected"]:
+			if not id in _established_connection_with:
+				_on_connection_established(id)
+				_established_connection_with.append(id)
+	
 	if _save_screenshot_frames >= 0:
 		if _save_screenshot_frames == 0:
 			if save_screenshot(_save_screenshot_path, 0.1) != OK:
@@ -242,11 +255,40 @@ func _unhandled_input(event):
 			else:
 				push_warning("Cannot load quicksave file at '%s', does not exist!" % quicksave_path)
 
+# Connect to the master server, and ask to join the given room.
+# room_code: The room code to join with. If empty, ask the master server to
+# make our own room.
+func _connect_to_master_server(room_code: String = "") -> void:
+	stop()
+	
+	_connecting_popup_label.text = tr("Connecting to the master server...")
+	_connecting_popup.popup_centered()
+	
+	print("Connecting to master server at '%s' with room code '%s'..." %
+		[_master_server.URL, room_code])
+	_master_server.room_code = room_code
+	_master_server.connect_to_server()
+
 # Create a network peer object.
-# Returns: A new network peer object.
-func _create_network_peer() -> NetworkedMultiplayerENet:
-	var peer = NetworkedMultiplayerENet.new()
-	peer.compression_mode = NetworkedMultiplayerENet.COMPRESS_FASTLZ
+# Returns: A WebRTCPeerConnection for the given peer.
+# id: The ID of the peer.
+func _create_peer(id: int) -> WebRTCPeerConnection:
+	print("Creating a connection for peer %d..." % id)
+	
+	var peer = WebRTCPeerConnection.new()
+	peer.initialize({
+		"iceServers": [
+			{ "urls": ["stun:stun.l.google.com:19302"] }
+		]
+	})
+	
+	peer.connect("session_description_created", self, "_on_offer_created", [id])
+	peer.connect("ice_candidate_created", self, "_on_new_ice_candidate", [id])
+	
+	_rtc.add_peer(peer, id)
+	if id > _rtc.get_unique_id():
+		peer.create_offer()
+	
 	return peer
 
 # Open a table state (.tc) file in the given mode.
@@ -278,21 +320,98 @@ func _popup_table_state_version(message: String) -> void:
 	
 	push_warning(message)
 
-func _player_connected(id: int) -> void:
-	print("Player with ID ", id, " connected!")
+func _on_connected(id: int):
+	print("Connected to the room as peer %d." % id)
+	_rtc.initialize(id, true)
 	
+	# Assign the WebRTCMultiplayer object to the scene tree, so all nodes can
+	# use it with the RPC system.
+	get_tree().network_peer = _rtc
+	
+	_connecting_popup.hide()
+	
+	# If we are the host, then add ourselves to the lobby, and create our own
+	# hand.
+	if id == 1:
+		Lobby.rpc_id(1, "add_self", 1, _player_name, _player_color)
+		
+		var hand_transform = _room.srv_get_next_hand_transform()
+		if hand_transform == Transform.IDENTITY:
+			push_warning("Table has no available hand positions!")
+		_room.rpc_id(1, "add_hand", 1, hand_transform)
+	else:
+		_connecting_popup_label.text = tr("Establishing connection with the host...")
+		_connecting_popup.popup_centered()
+
+func _on_disconnected():
+	stop()
+	
+	print("Disconnected from the server! Code: %d Reason: %s" % [_master_server.code, _master_server.reason])
+	if _master_server.code == 1000:
+		Global.start_main_menu()
+	else:
+		Global.start_main_menu_with_error(tr("Disconnected from the server! Code: %d Reason: %s") % [_master_server.code, _master_server.reason])
+
+func _on_answer_received(id: int, answer: String):
+	print("Received answer from peer %d." % id)
+	if _rtc.has_peer(id):
+		_rtc.get_peer(id).connection.set_remote_description("answer", answer)
+
+func _on_candidate_received(id: int, mid: String, index: int, sdp: String):
+	print("Received candidate from peer %d." % id)
+	if _rtc.has_peer(id):
+		_rtc.get_peer(id).connection.add_ice_candidate(mid, index, sdp)
+
+func _on_connection_established(id: int):
+	print("Connection established with peer %d." % id)
 	# If a player has connected to the server, let them know of every piece on
 	# the board so far.
 	if get_tree().is_network_server():
-		_room.rpc_id(id, "set_state", _room.get_state(true, true))
+		var compressed_state = _room.get_state_compressed(true, true)
+		_room.rpc_id(id, "set_state_compressed", compressed_state)
 		
 		# If there is space, also give them a hand on the table.
 		var hand_transform = _room.srv_get_next_hand_transform()
 		if hand_transform != Transform.IDENTITY:
 			_room.rpc("add_hand", id, hand_transform)
+	
+	# If we are not the host, then ask the host to send us their list of
+	# players.
+	elif id == 1:
+		Lobby.rpc_id(1, "request_sync_players")
+		_room.start_sending_cursor_position()
+		
+		_connecting_popup.hide()
 
-func _player_disconnected(id: int) -> void:
-	print("Player with ID ", id, " disconnected!")
+func _on_new_ice_candidate(mid: String, index: int, sdp: String, id: int):
+	_master_server.send_candidate(id, mid, index, sdp)
+
+func _on_offer_created(type: String, data: String, id: int):
+	if not _rtc.has_peer(id):
+		return
+	print("Created %s for peer %d." % [type, id])
+	_rtc.get_peer(id).connection.set_local_description(type, data)
+	if type == "offer":
+		_master_server.send_offer(id, data)
+	else:
+		_master_server.send_answer(id, data)
+
+func _on_offer_received(id: int, offer: String):
+	print("Received offer from peer %d." % id)
+	if _rtc.has_peer(id):
+		_rtc.get_peer(id).connection.set_remote_description("offer", offer)
+
+func _on_peer_connected(id: int):
+	print("Peer %d has connected." % id)
+	_create_peer(id)
+
+func _on_peer_disconnected(id: int):
+	print("Peer %d has disconnected." % id)
+	if _rtc.has_peer(id):
+		_rtc.remove_peer(id)
+	
+	if id in _established_connection_with:
+		_established_connection_with.erase(id)
 	
 	if get_tree().is_network_server():
 		Lobby.rpc("remove_self", id)
@@ -300,21 +419,13 @@ func _player_disconnected(id: int) -> void:
 		_room.rpc("remove_hand", id)
 		_room.srv_stop_player_hovering(id)
 
-func _connected_ok() -> void:
-	print("Successfully connected to the server!")
-	_connecting_dialog.visible = false
-	
-	Lobby.rpc_id(1, "request_sync_players")
-	
-	_room.start_sending_cursor_position()
+func _on_room_joined(room_code: String):
+	print("Joined room %s." % room_code)
+	_master_server.room_code = room_code
+	_ui.set_room_code(room_code)
 
-func _connected_fail() -> void:
-	print("Failed to connect to the server!")
-	Global.start_main_menu_with_error(tr("Failed to connect to the server!"))
-
-func _server_disconnected() -> void:
-	print("Lost connection to the server!")
-	Global.start_main_menu_with_error(tr("Lost connection to the server!"))
+func _on_room_sealed():
+	Global.start_main_menu_with_error(tr("Room has been closed by the host."))
 
 func _on_GameUI_about_to_save_table():
 	_room_state_saving = _room.get_state(false, false)
@@ -324,6 +435,11 @@ func _on_GameUI_applying_options(config: ConfigFile):
 
 func _on_GameUI_flipping_table():
 	_room.rpc_id(1, "request_flip_table", _room.get_camera_transform().basis)
+
+func _on_GameUI_leaving_room():
+	if get_tree().is_network_server():
+		if _master_server.is_connection_established():
+			_master_server.seal_room()
 
 func _on_GameUI_lighting_requested(lamp_color: Color, lamp_intensity: float,
 	lamp_sunlight: bool):
@@ -385,4 +501,5 @@ func _on_Room_table_unflipped():
 	_ui.set_flip_table_status(false)
 
 func _on_TableStateVersionDialog_confirmed():
-	_room.rpc_id(1, "request_load_table_state", _state_version_save)
+	var compressed_state = _room.compress_state(_state_version_save)
+	_room.rpc_id(1, "request_load_table_state", compressed_state)
