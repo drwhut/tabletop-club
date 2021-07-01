@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-03 20:23+0100\n"
+"POT-Creation-Date: 2021-07-01 20:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -152,7 +152,7 @@ msgstr ""
 #: ../../general/about.rst:87
 msgid ""
 "Yes! You don't need to make an account to play multiplayer, you can just "
-"join a server and start playing with friends!"
+"host a game and start playing with friends!"
 msgstr ""
 
 #: ../../general/about.rst:92
@@ -161,34 +161,28 @@ msgid ""
 "`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
 msgstr ""
 
-#: ../../general/about.rst:96
-msgid ""
-"Currently there are no dedicated servers you can join, but you can make your "
-"own server to play on! See :ref:`running-a-server`."
-msgstr ""
-
-#: ../../general/about.rst:101
+#: ../../general/about.rst:98
 msgid "Is Tabletop Club on Steam / GOG / itch.io?"
 msgstr ""
 
-#: ../../general/about.rst:103
+#: ../../general/about.rst:100
 msgid ""
 "No. Tabletop Club is a standalone game, meaning when you download the game "
 "you can extract the game files anywhere you want on your computer, and the "
 "game will work."
 msgstr ""
 
-#: ../../general/about.rst:107
+#: ../../general/about.rst:104
 msgid ""
 "Currently there are no plans to add Tabletop Club to any gaming platform at "
 "this stage."
 msgstr ""
 
-#: ../../general/about.rst:112
+#: ../../general/about.rst:109
 msgid "What stage of development is Tabletop Club at?"
 msgstr ""
 
-#: ../../general/about.rst:114
+#: ../../general/about.rst:111
 msgid ""
 "Tabletop Club is currently in alpha development. This means that core "
 "features of the game are still being implemented (you can see what needs to "
@@ -197,22 +191,22 @@ msgid ""
 "the game... yet."
 msgstr ""
 
-#: ../../general/about.rst:121
+#: ../../general/about.rst:118
 msgid "What board games can I play in Tabletop Club?"
 msgstr ""
 
-#: ../../general/about.rst:123
+#: ../../general/about.rst:120
 msgid "Theoretically, any of them!"
 msgstr ""
 
-#: ../../general/about.rst:125
+#: ../../general/about.rst:122
 msgid ""
 "Out of the box, the games comes with the default Tabletop Club asset pack "
 "which contains some of the most common objects you'll need, like playing "
 "cards, dice, poker chips, etc."
 msgstr ""
 
-#: ../../general/about.rst:129
+#: ../../general/about.rst:126
 msgid ""
 "On GitHub, there is `an issue <https://github.com/drwhut/tabletop-club/"
 "issues/28>`_ listing which objects still need to be added to the default "
@@ -220,7 +214,7 @@ msgid ""
 "game!"
 msgstr ""
 
-#: ../../general/about.rst:134
+#: ../../general/about.rst:131
 msgid ""
 "On the other hand, if the pieces you need aren't going to be included in the "
 "default asset pack, then you can either download an asset pack that someone "
@@ -228,11 +222,11 @@ msgid ""
 "packs` page if you're interested in making your own assets."
 msgstr ""
 
-#: ../../general/about.rst:141
+#: ../../general/about.rst:138
 msgid "How easy is it to setup a game in Tabletop Club?"
 msgstr ""
 
-#: ../../general/about.rst:143
+#: ../../general/about.rst:140
 msgid ""
 "For the most popular games, the default asset pack comes with pre-made save "
 "files that you can load instantly (when in-game, click :guilabel:`Games`, "
@@ -240,7 +234,7 @@ msgid ""
 "play the game right away!"
 msgstr ""
 
-#: ../../general/about.rst:148
+#: ../../general/about.rst:145
 msgid ""
 "If there isn't a pre-made save file for the game you want to play, you can "
 "easily make your own save by setting up the table the way you want to, then "
@@ -248,46 +242,46 @@ msgid ""
 "want to play the game again, you can just load the save you made previously."
 msgstr ""
 
-#: ../../general/about.rst:153
+#: ../../general/about.rst:150
 msgid ""
 "See the :ref:`asset-type-game` page for more information about pre-made save "
 "files in asset packs."
 msgstr ""
 
-#: ../../general/about.rst:158
+#: ../../general/about.rst:155
 msgid "Can I add assets other than game pieces to Tabletop Club?"
 msgstr ""
 
-#: ../../general/about.rst:160
+#: ../../general/about.rst:157
 msgid ""
 "Yes! As well as objects, you can also import the following types of assets:"
 msgstr ""
 
-#: ../../general/about.rst:162
+#: ../../general/about.rst:159
 msgid ":ref:`asset-type-game`"
 msgstr ""
 
-#: ../../general/about.rst:163
+#: ../../general/about.rst:160
 msgid ":ref:`asset-type-music`"
 msgstr ""
 
-#: ../../general/about.rst:164
+#: ../../general/about.rst:161
 msgid ":ref:`asset-type-skybox`"
 msgstr ""
 
-#: ../../general/about.rst:165
+#: ../../general/about.rst:162
 msgid ":ref:`asset-type-sound`"
 msgstr ""
 
-#: ../../general/about.rst:166
+#: ../../general/about.rst:163
 msgid ":ref:`asset-type-table`"
 msgstr ""
 
-#: ../../general/about.rst:170
+#: ../../general/about.rst:167
 msgid "Can you add my favourite board game to Tabletop Club?"
 msgstr ""
 
-#: ../../general/about.rst:172
+#: ../../general/about.rst:169
 msgid ""
 "For legal safety, Tabletop Club will only ever distribute `public-domain "
 "<https://en.wikipedia.org/wiki/Public_domain>`_ board games in the default "
@@ -295,23 +289,23 @@ msgid ""
 "board game for private use!"
 msgstr ""
 
-#: ../../general/about.rst:179
+#: ../../general/about.rst:176
 msgid "Can I share assets I've made on the internet?"
 msgstr ""
 
-#: ../../general/about.rst:181
+#: ../../general/about.rst:178
 msgid ""
 "It depends on a number of factors. In general, it should be safe to share "
 "the assets you've made for the game if the following is all true:"
 msgstr ""
 
-#: ../../general/about.rst:184
+#: ../../general/about.rst:181
 msgid ""
 "The assets you've made (textures, 3D models, etc.) are made by you, and are "
 "not derived from copyrighted material."
 msgstr ""
 
-#: ../../general/about.rst:189
+#: ../../general/about.rst:186
 msgid ""
 "You can distribute other people's creations **if** the license it's under "
 "allows you to. It's always safer to attribute the original author, and to "
@@ -319,31 +313,31 @@ msgid ""
 "terms of the license first."
 msgstr ""
 
-#: ../../general/about.rst:194
+#: ../../general/about.rst:191
 msgid ""
 "If the assets you've made are for playing a game that already exists, then:"
 msgstr ""
 
-#: ../../general/about.rst:196
+#: ../../general/about.rst:193
 msgid ""
 "You cannot use the same name of the game without the owner's explicit "
 "permission."
 msgstr ""
 
-#: ../../general/about.rst:199
+#: ../../general/about.rst:196
 msgid "The mechanics of the game cannot be patented."
 msgstr ""
 
-#: ../../general/about.rst:201
+#: ../../general/about.rst:198
 #: ../../general/download/downloading_binaries.rst:97
 msgid "Todo"
 msgstr ""
 
-#: ../../general/about.rst:203
+#: ../../general/about.rst:200
 msgid "Add instructions to check if the mechanics are patented."
 msgstr ""
 
-#: ../../general/about.rst:207
+#: ../../general/about.rst:204
 msgid ""
 "This is NOT legal advice. Please go ask the nearest lawyer for advice if you "
 "are worried about distributing your asset pack on the internet, as this also "
@@ -642,7 +636,7 @@ msgid ""
 "If you want to provide an in-game screenshot showing the bug, you can press :"
 "guilabel:`F3` to display debug information on the screen, then you can "
 "press :guilabel:`F12` to take a screenshot! Screenshots are saved to the "
-"``user://`` directory, next to the logs."
+"Documents folder under ``TabletopClub/screenshots``."
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:40
@@ -1104,10 +1098,42 @@ msgid ""
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:339
-msgid "Running Tabletop Club in the Godot editor"
+msgid "Downloading the WebRTC GDNative plugin"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:341
+msgid ""
+"Since the multiplayer for Tabletop Club uses WebRTC, you'll need to download "
+"the WebRTC plugin for Godot. You can follow these instructions to setup the "
+"plugin:"
+msgstr ""
+
+#: ../../general/download/compiling_from_source.rst:345
+msgid ""
+"Download the latest release of the plugin from `the repository <https://"
+"github.com/godotengine/webrtc-native/releases>`_. Make sure to download the "
+"``release`` build."
+msgstr ""
+
+#: ../../general/download/compiling_from_source.rst:351
+msgid ""
+"As of right now, there are no official macOS builds of the plugin, but you "
+"can download an unofficial build from `this thread <https://github.com/"
+"godotengine/webrtc-native/issues/8>`_."
+msgstr ""
+
+#: ../../general/download/compiling_from_source.rst:355
+msgid ""
+"Open the compressed file, and place the ``webrtc/`` folder into ``tabletop-"
+"club/game/``. Afterwards, there should be a file at ``tabletop-club/game/"
+"webrtc/webrtc.tres``."
+msgstr ""
+
+#: ../../general/download/compiling_from_source.rst:361
+msgid "Running Tabletop Club in the Godot editor"
+msgstr ""
+
+#: ../../general/download/compiling_from_source.rst:363
 msgid ""
 "To open Godot's project manager, run the executable you compiled in ``godot/"
 "bin/``. You can then import the project by clicking the :guilabel:`Import` "
@@ -1116,69 +1142,69 @@ msgid ""
 "top-right corner (or by pressing F5)!"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:347
+#: ../../general/download/compiling_from_source.rst:369
 msgid ""
 "At this point, you can modify the game to your heart's content! Have a look "
 "at the scenes and scripts, try tweaking things here and there, or maybe try "
 "and add some stuff of your own?"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:353
+#: ../../general/download/compiling_from_source.rst:375
 msgid "Exporting the game"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:355
+#: ../../general/download/compiling_from_source.rst:377
 msgid ""
 "You can export the game with the editor to make it so you don't need to run "
 "the game through the editor to play it. Here's how you can export the "
 "project:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:358
+#: ../../general/download/compiling_from_source.rst:380
 msgid "Click on :guilabel:`Project` > :guilabel:`Export...`"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:359
+#: ../../general/download/compiling_from_source.rst:381
 msgid "In the pop-up, click :guilabel:`Add...`, and select your platform."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:360
+#: ../../general/download/compiling_from_source.rst:382
 msgid ""
 "In the menu on the right, set the debug template to point to the editor "
 "executable, and if you made a release template, set that as well."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:362
+#: ../../general/download/compiling_from_source.rst:384
 msgid ""
 "Click :guilabel:`Export project`, choose where you want to export the "
 "project and whether you want to export a debug or a release binary, then "
 "click :guilabel:`Save`."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:365
+#: ../../general/download/compiling_from_source.rst:387
 msgid ""
 "Copy the ``tabletop-club/assets/`` folder next to the exported binary, so "
 "the game has assets to import."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:368
+#: ../../general/download/compiling_from_source.rst:390
 msgid ""
 "Now, you should be able to launch the exported executable and play the game "
 "directly!"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:375
+#: ../../general/download/compiling_from_source.rst:397
 msgid "Why did you fork Godot?"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:377
+#: ../../general/download/compiling_from_source.rst:399
 msgid ""
 "There's actually just one reason for this: there was a feature that I knew "
 "existed in Godot, but it was not exposed to the in-built scripting language "
 "GDScript, and the functionality wasn't included in release templates."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:381
+#: ../../general/download/compiling_from_source.rst:403
 msgid ""
 "When the game starts, the first thing it does is it scans certain folders "
 "for asset packs, and if it finds any, the game will then import assets from "
@@ -1190,7 +1216,7 @@ msgid ""
 "on the filesystem using just one function in GDScript."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:390
+#: ../../general/download/compiling_from_source.rst:412
 msgid ""
 "However, a problem occured when compiling Godot with this module as a "
 "release template - the compiled editor code was not included in the release "
@@ -1201,11 +1227,11 @@ msgid ""
 "the rest of the editor."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:398
+#: ../../general/download/compiling_from_source.rst:420
 msgid "Footnotes"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:399
+#: ../../general/download/compiling_from_source.rst:421
 msgid ""
 "`The Godot documentation <https://docs.godotengine.org>`_ is from Juan "
 "Linietsky, Ariel Manzur and the Godot community, and it is licensed under "
@@ -1406,186 +1432,4 @@ msgid ""
 "from scratch. This requires a few extra steps compared to running a pre-"
 "built binary, but you'll need to do this if you plan on contributing to the "
 "game code, or you could try it for fun!"
-msgstr ""
-
-#: ../../general/running_a_server.rst:5
-msgid "Running a server"
-msgstr ""
-
-#: ../../general/running_a_server.rst:7
-msgid ""
-"Tabletop Club supports both local and online multiplayer through the use of "
-"dedicated servers. This page explains how to set up a dedicated server, and "
-"how players can join the server."
-msgstr ""
-
-#: ../../general/running_a_server.rst:13
-msgid "Setting up a server instance"
-msgstr ""
-
-#: ../../general/running_a_server.rst:15
-msgid ""
-"Firstly, we're going to need to configure a server instance of Tabletop Club "
-"that we can run."
-msgstr ""
-
-#: ../../general/running_a_server.rst:18
-msgid ""
-"We're assuming from now on that you've already downloaded the game - if not, "
-"you should go to the :ref:`download` page first before continuing."
-msgstr ""
-
-#: ../../general/running_a_server.rst:21
-msgid ""
-"Create a new folder for the server files. For this example, we'll call the "
-"folder ``OTServer``, but you can call the folder anything you want."
-msgstr ""
-
-#: ../../general/running_a_server.rst:24
-msgid ""
-"Copy all of the game files from the folder you extracted the game to "
-"previously into the new ``OTServer`` folder. After this step, you should "
-"have an executable either at ``OTServer/TabletopClub.app``, ``OTServer/"
-"TabletopClub.exe``, or ``OTServer/TabletopClub.x86_64``."
-msgstr ""
-
-#: ../../general/running_a_server.rst:29
-msgid ""
-"Go to `this page <https://raw.githubusercontent.com/drwhut/tabletop-club/"
-"master/game/server.cfg>`_, right-click the page and save the file into the "
-"``OTServer`` folder with the name ``server.cfg``."
-msgstr ""
-
-#: ../../general/running_a_server.rst:34
-msgid ""
-"Run the server by double-clicking the executable in ``OTServer``, and make "
-"sure that after the assets have been imported you can see the table in-game."
-msgstr ""
-
-#: ../../general/running_a_server.rst:37
-msgid ""
-"You can close the server by clicking :guilabel:`Menu` > :guilabel:`Quit to "
-"desktop`."
-msgstr ""
-
-#: ../../general/running_a_server.rst:42
-msgid "From the Godot Editor"
-msgstr ""
-
-#: ../../general/running_a_server.rst:44
-msgid ""
-"If you are running the game through the Godot Editor, or you are running a "
-"debug build of the game and have a ``server.cfg`` file next to the "
-"executable as described above, you should see a button on the main menu "
-"labeled :guilabel:`Debug: Start Dedicated Server`. Clicking this button will "
-"start the server."
-msgstr ""
-
-#: ../../general/running_a_server.rst:52
-msgid "Testing the server"
-msgstr ""
-
-#: ../../general/running_a_server.rst:54
-msgid ""
-"To test if the server is accepting connections, you can start a normal "
-"version of Tabletop Club on the same computer, and in the main menu to the "
-"left of the :guilabel:`Join Game` button, you can enter ``127.0.0.1:26271``, "
-"then click :guilabel:`Join Game`."
-msgstr ""
-
-#: ../../general/running_a_server.rst:61
-msgid ""
-"If you've changed the port number the server is on, replace the number after "
-"the colon with the port number you put in ``server.cfg``."
-msgstr ""
-
-#: ../../general/running_a_server.rst:64
-msgid ""
-"If the server is working, then you should be able to see a chat box in the "
-"bottom-left that says ``<PLAYER_NAME> has joined the game.``"
-msgstr ""
-
-#: ../../general/running_a_server.rst:67
-msgid ""
-"If the server is not working, then after a few seconds of trying to connect, "
-"the client will go back to the main menu and show an error saying it was "
-"unable to connect to the server."
-msgstr ""
-
-#: ../../general/running_a_server.rst:73
-msgid "Local multiplayer"
-msgstr ""
-
-#: ../../general/running_a_server.rst:75
-msgid ""
-"If you want players to be able to connect to your server from your Local "
-"Area Network (LAN), you need to know the IPv4 address of the computer the "
-"server is running on. If you don't know it, then here's how you can find out "
-"what the address is:"
-msgstr ""
-
-#: ../../general/running_a_server.rst:80
-msgid ""
-"On Windows, open a command prompt and run the ``ipconfig`` command. You can "
-"identify the address of the computer by looking for the :guilabel:`IPv4 "
-"Address` entry."
-msgstr ""
-
-#: ../../general/running_a_server.rst:84
-msgid ""
-"On macOS / Linux / \\*BSD, open a terminal and run the ``ifconfig`` command. "
-"You can identify the address of the computer by looking for what comes "
-"after :guilabel:`inet`, but making sure it isn't ``127.0.0.1`` (that is how "
-"your computer addresses itself, not how other computers on the network "
-"address it)."
-msgstr ""
-
-#: ../../general/running_a_server.rst:89
-msgid ""
-"Once you know this address, you can tell the other players to enter "
-"``<IP_ADDRESS>:<PORT>`` (e.g. ``192.168.1.8:26271``) in the main menu, next "
-"to the :guilabel:`Join game` button. They can then click that button to join "
-"your server!"
-msgstr ""
-
-#: ../../general/running_a_server.rst:96
-msgid "Online multiplayer"
-msgstr ""
-
-#: ../../general/running_a_server.rst:98
-msgid ""
-"If you want players to be able to connect to your server from the wild west "
-"that is the internet, across hills of memes and valleys of Facebook users, "
-"then you'll need to know your router's IPv4 address. This is easier to find "
-"out that getting your computer's local IP address, you just need to open "
-"your web browser and type into your favourite search engine: \"what is my ip "
-"address\". If the search engine doesn't tell you, then you can go to the "
-"first result and find out there."
-msgstr ""
-
-#: ../../general/running_a_server.rst:106
-msgid ""
-"But there's one more step needed to make your server accessible to the "
-"world: you need to do something called **port forwarding**, which tells your "
-"router to forward incoming messages from the outside world on a given port "
-"to a particular computer on the network (the one that's hosting your "
-"server). You can find out how to port forward with your network's router by "
-"going to https://portforward.com/router.htm - you'll want to set it up such "
-"that the external and internal ports are the same as in ``server.cfg``, and "
-"the internal address is the local IP address of the computer running the "
-"server."
-msgstr ""
-
-#: ../../general/running_a_server.rst:115
-msgid ""
-"Once you have port forwarded, players can join the server using the same "
-"string of text as they would in local multiplayer, but instead of using your "
-"local IP address, they should use your router's IP address."
-msgstr ""
-
-#: ../../general/running_a_server.rst:121
-msgid ""
-"If players still cannot join your server after you have port forwarded, try "
-"checking your firewall's settings. Make sure that your firewall isn't "
-"rejecting packets with the server's port number."
 msgstr ""
