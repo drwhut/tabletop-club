@@ -25,6 +25,7 @@ signal about_to_save_table()
 signal applying_options(config)
 signal clear_pieces()
 signal flipping_table(reset_table)
+signal leaving_room()
 signal lighting_requested(lamp_color, lamp_intensity, lamp_sunlight)
 signal load_table(path)
 signal piece_requested(piece_entry, position)
@@ -179,6 +180,7 @@ func _on_ClearTableConfirmDialog_confirmed():
 	emit_signal("clear_pieces")
 
 func _on_DesktopButton_pressed():
+	emit_signal("leaving_room")
 	get_tree().quit()
 
 func _on_FileDialog_file_selected(path: String):
@@ -219,6 +221,7 @@ func _on_Lobby_player_removed(_id: int):
 	_update_player_list()
 
 func _on_MainMenuButton_pressed():
+	emit_signal("leaving_room")
 	Global.start_main_menu()
 
 func _on_ObjectsButton_pressed():

@@ -302,7 +302,7 @@ func _on_room_joined(room_code: String):
 	_ui.set_room_code(room_code)
 
 func _on_room_sealed():
-	pass
+	Global.start_main_menu_with_error(tr("Room has been closed by the host."))
 
 func _on_GameUI_about_to_save_table():
 	_room_state_saving = _room.get_state(false, false)
@@ -315,6 +315,11 @@ func _on_GameUI_flipping_table(reset_table: bool):
 		_room.rpc_id(1, "request_unflip_table")
 	else:
 		_room.rpc_id(1, "request_flip_table", _room.get_camera_transform().basis)
+
+func _on_GameUI_leaving_room():
+	if get_tree().is_network_server():
+		if _master_server.is_connection_established():
+			_master_server.seal_room()
 
 func _on_GameUI_lighting_requested(lamp_color: Color, lamp_intensity: float,
 	lamp_sunlight: bool):

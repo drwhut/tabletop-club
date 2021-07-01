@@ -74,6 +74,11 @@ func connect_to_server() -> void:
 func close() -> void:
 	client.disconnect_from_host()
 
+# Check if we are currently connected to the master server.
+# Returns: If there is an ongoing connection to the master server.
+func is_connection_established() -> bool:
+	return client.get_connection_status() == NetworkedMultiplayerPeer.CONNECTION_CONNECTED
+
 # Ask the master server to join the room with the given room code.
 # Returns: An Error.
 # new_room_code: The room code.
