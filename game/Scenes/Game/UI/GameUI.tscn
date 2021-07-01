@@ -10,9 +10,13 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=2]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 5 )
 
 [node name="GameUI" type="Control"]
