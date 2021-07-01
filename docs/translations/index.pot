@@ -1,5 +1,6 @@
 # Tabletop Club Documentation Translation Template.
-# Copyright (C) 2020-2021, Benjamin 'drwhut' Beddows
+# Copyright (C) 2020-2021 Benjamin 'drwhut' Beddows.
+# Copyright (C) 2021 Tabletop Club contributors (see game/CREDITS.tres).
 # This file is distributed under the same license as the Tabletop Club package.
 # Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2021.
 #
@@ -8,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-03 20:23+0100\n"
+"POT-Creation-Date: 2021-07-01 20:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,8 +22,8 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: ../../index.rst:31
-#: ../../index.rst:31
+#: ../../index.rst:30
+#: ../../index.rst:30
 msgid "Custom Assets"
 msgstr ""
 
@@ -38,18 +39,18 @@ msgstr ""
 msgid "The documentation, as well as the project in general, is open to suggestions and contributions! If you feel that something is not explained well, or you think that information is missing, then please don't hesitate to open an issue or a pull request on the project's `GitHub repository <https://github.com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
 
-#: ../../index.rst:40
+#: ../../index.rst:39
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../index.rst:42
+#: ../../index.rst:41
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../index.rst:43
+#: ../../index.rst:42
 msgid ":ref:`modindex`"
 msgstr ""
 
-#: ../../index.rst:44
+#: ../../index.rst:43
 msgid ":ref:`search`"
 msgstr ""
