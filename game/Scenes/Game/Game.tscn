@@ -15,17 +15,17 @@ __meta__ = {
 
 [node name="GameUI" parent="." instance=ExtResource( 2 )]
 
-[node name="ConnectingDialog" type="PopupDialog" parent="."]
-margin_right = 200.0
-margin_bottom = 40.0
+[node name="ConnectingPopup" type="PopupPanel" parent="."]
 popup_exclusive = true
 
-[node name="Label" type="Label" parent="ConnectingDialog"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "Connecting to the server..."
-align = 1
-valign = 1
+[node name="Label" type="Label" parent="ConnectingPopup"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TableStateErrorDialog" type="AcceptDialog" parent="."]
 margin_right = 300.0

@@ -25,7 +25,8 @@
 
 extends Node
 
-onready var _connecting_dialog = $ConnectingDialog
+onready var _connecting_popup = $ConnectingPopup
+onready var _connecting_popup_label = $ConnectingPopup/Label
 onready var _master_server = $MasterServer
 onready var _room = $Room
 onready var _table_state_error_dialog = $TableStateErrorDialog
@@ -50,7 +51,7 @@ func apply_options(config: ConfigFile) -> void:
 	_player_name = config.get_value("multiplayer", "name")
 	_player_color = config.get_value("multiplayer", "color")
 	
-	if not _connecting_dialog.visible:
+	if not _connecting_popup.visible:
 		Lobby.rpc_id(1, "request_modify_self", _player_name, _player_color)
 
 # Ask the master server to host a game.
@@ -144,7 +145,8 @@ func _unhandled_input(event):
 func _connect_to_master_server(room_code: String = "") -> void:
 	stop()
 	
-	_connecting_dialog.popup_centered()
+	_connecting_popup_label.text = tr("Connecting to the master server...")
+	_connecting_popup.popup_centered()
 	
 	print("Connecting to master server at '%s' with room code '%s'..." %
 		[_master_server.URL, room_code])
@@ -210,7 +212,7 @@ func _on_connected(id: int):
 	# use it with the RPC system.
 	get_tree().network_peer = _rtc
 	
-	_connecting_dialog.visible = false
+	_connecting_popup.hide()
 	
 	# If we are the host, then add ourselves to the lobby, and create our own
 	# hand.
@@ -221,6 +223,9 @@ func _on_connected(id: int):
 		if hand_transform == Transform.IDENTITY:
 			push_warning("Table has no available hand positions!")
 		_room.rpc_id(1, "add_hand", 1, hand_transform)
+	else:
+		_connecting_popup_label.text = tr("Establishing connection with the host...")
+		_connecting_popup.popup_centered()
 
 func _on_disconnected():
 	stop()
@@ -259,6 +264,8 @@ func _on_connection_established(id: int):
 	elif id == 1:
 		Lobby.rpc_id(1, "request_sync_players")
 		_room.start_sending_cursor_position()
+		
+		_connecting_popup.hide()
 
 func _on_new_ice_candidate(mid: String, index: int, sdp: String, id: int):
 	_master_server.send_candidate(id, mid, index, sdp)
