@@ -117,7 +117,8 @@ func load_state(path: String) -> void:
 		if state is Dictionary:
 			var our_version = ProjectSettings.get_setting("application/config/version")
 			if state.has("version") and state["version"] == our_version:
-				_room.rpc_id(1, "request_load_table_state", state)
+				var compressed_state = _room.compress_state(state)
+				_room.rpc_id(1, "request_load_table_state", compressed_state)
 			else:
 				_state_version_save = state
 				if not state.has("version"):
