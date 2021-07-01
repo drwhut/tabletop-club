@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-03 20:23+0100\n"
+"POT-Creation-Date: 2021-07-01 20:36+0100\n"
 "PO-Revision-Date: 2021-04-12 17:26+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/opentabletop/docs-"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "General"
 msgstr "Général"
 
-#: ../../index.rst:31
+#: ../../index.rst:30
 msgid "Custom Assets"
 msgstr "Ressources personnalisées"
 
@@ -50,18 +50,18 @@ msgid ""
 "com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
 
-#: ../../index.rst:40
+#: ../../index.rst:39
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../index.rst:42
+#: ../../index.rst:41
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../index.rst:43
+#: ../../index.rst:42
 msgid ":ref:`modindex`"
 msgstr ""
 
-#: ../../index.rst:44
+#: ../../index.rst:43
 msgid ":ref:`search`"
 msgstr ""
