@@ -84,4 +84,22 @@ Sounds/Dice/dieShuffle{1,2,3}.wav
 =============================
 Author: Kenney.nl
 License: CC0
-URL: https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips"
+URL: https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips
+
+Sounds/Generic/impactGeneric_light_00{0,1,2,3,4}.ogg
+Sounds/Glass/impactGlass_medium_00{0,1,2,3,4}.ogg
+Sounds/GlassHeavy/impactGlass_heavy_00{0,1,2,3,4}.ogg
+Sounds/GlassLight/impactGlass_light_00{0,1,2,3,4}.ogg
+Sounds/Metal/impactMetal_medium_00{0,1,2,3,4}.ogg
+Sounds/MetalHeavy/impactMetal_heavy_00{0,1,2,3,4}.ogg
+Sounds/MetalLight/impactMetal_light_00{0,1,2,3,4}.ogg
+Sounds/Soft/impactSoft_medium_00{0,1,2,3,4}.ogg
+Sounds/SoftHeavy/impactSoft_heavy_00{0,1,2,3,4}.ogg
+Sounds/Tin/impactTin_medium_00{0,1,2,3,4}.ogg
+Sounds/Wood/impactWood_medium_00{0,1,2,3,4}.ogg
+Sounds/WoodHeavy/impactWood_heavy_00{0,1,2,3,4}.ogg
+Sounds/WoodLight/impactWood_light_00{0,1,2,3,4}.ogg
+==============================================
+Author: Kenney.nl
+License: CC0
+URL: https://kenney.nl/assets/impact-sounds"
