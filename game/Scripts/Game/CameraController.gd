@@ -715,6 +715,8 @@ func _calculate_hover_position(mouse_position: Vector2, y_position: float) -> Ve
 	
 	# Figure out at which point along this line the piece should hover at,
 	# given we want it to hover at a particular Y-level.
+	if to.y == from.y:
+		return Vector3.ZERO
 	var lambda = (y_position - from.y) / (to.y - from.y)
 	
 	var x = from.x + lambda * (to.x - from.x)
