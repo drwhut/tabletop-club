@@ -88,10 +88,12 @@ func _on_JoinGameButton_pressed():
 	
 	if room_code.length() != 4:
 		display_error(tr("Room code must be four characters long!"))
+		return
 	
 	for c in room_code:
 		if not c in ALPHABET:
 			display_error(tr("Invalid room code!"))
+			return
 	
 	Global.start_game_as_client(room_code)
 
