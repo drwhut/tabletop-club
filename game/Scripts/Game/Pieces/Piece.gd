@@ -495,8 +495,8 @@ func _integrate_forces(state):
 			state.transform = new_transform
 
 func _on_body_entered(body):
-	# If we collided with the table...
-	if body is RigidBody and body.has_meta("table_entry"):
+	# If we collided with another object...
+	if body is RigidBody:
 		# ... play a sound effect depending on our angular velocity.
 		if angular_velocity.length_squared() > 100.0:
 			if table_collide_fast_sounds != null:
