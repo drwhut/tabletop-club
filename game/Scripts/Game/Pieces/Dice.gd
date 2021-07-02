@@ -24,15 +24,21 @@ extends Piece
 
 class_name Dice
 
+# TODO: export(RandomAudioSample)
+# See: https://github.com/godotengine/godot/pull/44879
+export(Resource) var shake_sounds
+
 var _rng = RandomNumberGenerator.new()
 
 func _ready():
 	_rng.randomize()
 
 func _physics_process(_delta):
-	
-	# If the dice is being shaked, randomize the basis.
-	if get_tree().is_network_server() and is_being_shaked():
-		srv_hover_basis = srv_hover_basis.rotated(Vector3.RIGHT, 2 * PI * _rng.randf())
-		srv_hover_basis = srv_hover_basis.rotated(Vector3.UP, 2 * PI * _rng.randf())
-		srv_hover_basis = srv_hover_basis.rotated(Vector3.BACK, 2 * PI * _rng.randf())
+	if is_being_shaked():
+		if get_tree().is_network_server():
+			srv_hover_basis = srv_hover_basis.rotated(Vector3.RIGHT, 2 * PI * _rng.randf())
+			srv_hover_basis = srv_hover_basis.rotated(Vector3.UP, 2 * PI * _rng.randf())
+			srv_hover_basis = srv_hover_basis.rotated(Vector3.BACK, 2 * PI * _rng.randf())
+		
+		if shake_sounds != null:
+			play_effect(shake_sounds.random_stream())

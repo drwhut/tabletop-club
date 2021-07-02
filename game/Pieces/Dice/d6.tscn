@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Game/Pieces/Dice.gd" type="Script" id=1]
+[ext_resource path="res://Sounds/Dice/DiceShakeSounds.tres" type="Resource" id=2]
+[ext_resource path="res://Sounds/Dice/DiceTableFastSounds.tres" type="Resource" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 0.5, 0.5 )
@@ -9,13 +11,18 @@ extents = Vector3( 0.5, 0.5, 0.5 )
 size = Vector3( 1, 1, 1 )
 
 [node name="d6" type="RigidBody"]
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "A 6-sided dice.
 
 The shape is based on the unit cube, i.e. each vertex lies on a cube with a length, width and height of 1."
 }
+effect_player_path = NodePath("EffectPlayer")
 mesh_instance_path = NodePath("CollisionShape/MeshInstance")
+table_collide_fast_sounds = ExtResource( 3 )
+shake_sounds = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
@@ -23,3 +30,7 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
 mesh = SubResource( 2 )
 material/0 = null
+
+[node name="EffectPlayer" type="AudioStreamPlayer3D" parent="."]
+unit_size = 20.0
+bus = "Effects"

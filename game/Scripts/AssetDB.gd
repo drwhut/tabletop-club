@@ -90,6 +90,61 @@ const VALID_TEXTURE_EXTENSIONS = ["bmp", "dds", "exr", "hdr", "jpeg", "jpg",
 # The list of extensions that require us to use the TabletopImporter.
 const EXTENSIONS_TO_IMPORT = VALID_AUDIO_EXTENSIONS + VALID_SCENE_EXTENSIONS + VALID_TEXTURE_EXTENSIONS
 
+const SFX_AUDIO_STREAMS = {
+	"generic": {
+		"fast": preload("res://Sounds/Generic/GenericFastSounds.tres"),
+		"slow": preload("res://Sounds/Generic/GenericSlowSounds.tres")
+	},
+	"glass": {
+		"fast": preload("res://Sounds/Glass/GlassFastSounds.tres"),
+		"slow": preload("res://Sounds/Glass/GlassSlowSounds.tres")
+	},
+	"glass_heavy": {
+		"fast": preload("res://Sounds/GlassHeavy/GlassHeavyFastSounds.tres"),
+		"slow": preload("res://Sounds/GlassHeavy/GlassHeavySlowSounds.tres")
+	},
+	"glass_light": {
+		"fast": preload("res://Sounds/GlassLight/GlassLightFastSounds.tres"),
+		"slow": preload("res://Sounds/GlassLight/GlassLightSlowSounds.tres")
+	},
+	"metal": {
+		"fast": preload("res://Sounds/Metal/MetalFastSounds.tres"),
+		"slow": preload("res://Sounds/Metal/MetalSlowSounds.tres")
+	},
+	"metal_heavy": {
+		"fast": preload("res://Sounds/MetalHeavy/MetalHeavyFastSounds.tres"),
+		"slow": preload("res://Sounds/MetalHeavy/MetalHeavySlowSounds.tres")
+	},
+	"metal_light": {
+		"fast": preload("res://Sounds/MetalLight/MetalLightFastSounds.tres"),
+		"slow": preload("res://Sounds/MetalLight/MetalLightSlowSounds.tres")
+	},
+	"soft": {
+		"fast": preload("res://Sounds/Soft/SoftFastSounds.tres"),
+		"slow": preload("res://Sounds/Soft/SoftSlowSounds.tres")
+	},
+	"soft_heavy": {
+		"fast": preload("res://Sounds/SoftHeavy/SoftHeavyFastSounds.tres"),
+		"slow": preload("res://Sounds/SoftHeavy/SoftHeavySlowSounds.tres")
+	},
+	"tin": {
+		"fast": preload("res://Sounds/Tin/TinFastSounds.tres"),
+		"slow": preload("res://Sounds/Tin/TinSlowSounds.tres")
+	},
+	"wood": {
+		"fast": preload("res://Sounds/Wood/WoodFastSounds.tres"),
+		"slow": preload("res://Sounds/Wood/WoodSlowSounds.tres")
+	},
+	"wood_heavy": {
+		"fast": preload("res://Sounds/WoodHeavy/WoodHeavyFastSounds.tres"),
+		"slow": preload("res://Sounds/WoodHeavy/WoodHeavySlowSounds.tres")
+	},
+	"wood_light": {
+		"fast": preload("res://Sounds/WoodLight/WoodLightFastSounds.tres"),
+		"slow": preload("res://Sounds/WoodLight/WoodLightSlowSounds.tres")
+	}
+}
+
 # NOTE: All assets are stored in the database in a directory structure, where
 # the first level is the pack name, and the second level is the type name (the
 # subfolder within the asset pack). For example, an asset in the
@@ -708,9 +763,21 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 			push_error("Mass cannot be negative!")
 			mass = 10.0
 		
+		var sfx = _get_file_config_value(config, from.get_file(), "sfx", "")
+		if not sfx.empty():
+			if not sfx in SFX_AUDIO_STREAMS:
+				push_error("SFX value does not match any existing preset!")
+				sfx = ""
+		if sfx.empty():
+			# Certain pieces already have their own sound effects - don't
+			# replace those.
+			if not (type == "cards" or type.begins_with("dice") or type.begins_with("tokens")):
+				sfx = "generic"
+		
 		entry["color"] = color
 		entry["mass"] = mass
 		entry["scale"] = scale
+		entry["sfx"] = sfx
 		
 		if type == "cards":
 			var back_path = _get_file_config_value(config, from.get_file(), "back_face", "")

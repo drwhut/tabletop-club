@@ -42,9 +42,6 @@ func matches(body: Piece) -> bool:
 	
 	return false
 
-func _ready():
-	connect("body_entered", self, "_on_body_entered")
-
 # Can this piece stack with another piece?
 # Returns: If the piece can stack with the other piece.
 # body: The piece to check against.
@@ -67,6 +64,8 @@ func _can_stack(body: Spatial) -> bool:
 	return false
 
 func _on_body_entered(body) -> void:
+	._on_body_entered(body)
+	
 	# This check is needed, as stackable pieces can move in and out of the
 	# scene tree when they are being moved in and out of stacks.
 	if get_tree() != null:

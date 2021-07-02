@@ -24,10 +24,15 @@ extends Spatial
 
 onready var _area = $Area
 onready var _area_collision_shape = $Area/CollisionShape
+onready var _effect_player = $EffectPlayer
 onready var _mesh_instance = $Area/CollisionShape/MeshInstance
 onready var _name_label = $NamePlate/Viewport/MarginContainer/NameLabel
 
 const CARD_HEIGHT_DIFF = 0.01
+
+# TODO: export(RandomAudioSample)
+# See: https://github.com/godotengine/godot/pull/44879
+export(Resource) var hand_sounds
 
 var _srv_cards = []
 
@@ -36,6 +41,19 @@ var _srv_cards = []
 # Returns: The player's ID.
 func owner_id() -> int:
 	return int(name)
+
+# Play a random hand sound.
+remotesync func play_hand_sound() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if _effect_player.playing:
+		return
+	
+	var hand_sound = hand_sounds.random_stream()
+	if hand_sound:
+		_effect_player.stream = hand_sound
+		_effect_player.play()
 
 # Add a card to the hand. The card must not be hovering, as the operation makes
 # the card hover.
@@ -65,6 +83,8 @@ func srv_add_card(card: Card) -> bool:
 		card.rpc("set_collisions_on", false)
 		
 		_srv_set_card_rotation(card)
+		
+		rpc("play_hand_sound")
 	
 	return success
 
@@ -85,6 +105,7 @@ func srv_remove_card(card: Card) -> void:
 	# The card may be removed because the game is exiting!
 	if get_tree().has_network_peer():
 		card.rpc("set_collisions_on", true)
+		rpc("play_hand_sound")
 
 # Update the display of the hand to reflect the owner's properties, such as
 # their colour.

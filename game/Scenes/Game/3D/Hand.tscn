@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Fonts/Cabin-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Game/3D/Hand.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/Cards/CardHandSounds.tres" type="Resource" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 0.5, 0.5 )
@@ -34,6 +35,7 @@ __meta__ = {
 
 Only the player owning the hand should be able to see what cards are in the hand."
 }
+hand_sounds = ExtResource( 3 )
 
 [node name="Area" type="Area" parent="."]
 collision_layer = 5
@@ -72,6 +74,10 @@ margin_bottom = 240.0
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
 scroll_active = false
+
+[node name="EffectPlayer" type="AudioStreamPlayer3D" parent="."]
+unit_size = 30.0
+bus = "Effects"
 
 [connection signal="tree_exiting" from="." to="." method="_on_Hand_tree_exiting"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

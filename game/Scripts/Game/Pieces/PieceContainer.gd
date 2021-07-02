@@ -106,9 +106,6 @@ func remove_piece(piece_name: String) -> Piece:
 	
 	return null
 
-func _ready():
-	connect("body_entered", self, "_on_body_entered")
-
 func _physics_process(_delta):
 	if get_tree().is_network_server():
 		var shakable: bool = piece_entry["shakable"]
@@ -119,6 +116,8 @@ func _physics_process(_delta):
 				emit_signal("releasing_random_piece", self)
 
 func _on_body_entered(body) -> void:
+	._on_body_entered(body)
+	
 	if get_tree().is_network_server():
 		
 		# If a piece has collided with this container, then figure out if the

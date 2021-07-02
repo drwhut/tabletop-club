@@ -37,10 +37,18 @@ const SHAKING_THRESHOLD = 1000.0
 const SPAWN_HEIGHT = 2.0
 const TRANSFORM_LERP_ALPHA = 0.9
 
+export(NodePath) var effect_player_path: String
+
 # Set if you know where the mesh instance is, and if there is only one mesh
 # instance. Otherwise, the game will try and find it automatically when it
 # needs it (e.g. when using a custom piece).
 export(NodePath) var mesh_instance_path: String
+
+# TODO: export(RandomAudioSample)
+# See: https://github.com/godotengine/godot/pull/44879
+# NOTE: Contact reporting needs to be enabled for these sounds to be played.
+export(Resource) var table_collide_fast_sounds
+export(Resource) var table_collide_slow_sounds
 
 var piece_entry: Dictionary = {}
 
@@ -57,6 +65,7 @@ var _srv_hover_player = 0
 var _srv_hover_time_since_update = 0.0
 
 var _last_server_state = {}
+var _last_slow_table_collision = 0.0
 
 var _last_velocity = Vector3()
 var _new_velocity = Vector3()
@@ -105,6 +114,16 @@ func get_collision_shapes() -> Array:
 		if child is CollisionShape:
 			out.append(child)
 	return out
+
+# Get the piece's effect player.
+# Returns: The piece's effect player if it exists, null if it doesn't.
+func get_effect_player() -> AudioStreamPlayer3D:
+	if effect_player_path:
+		var effect_player = get_node(effect_player_path)
+		if effect_player is AudioStreamPlayer3D:
+			return effect_player
+	
+	return null
 
 # Get the piece's mesh instances.
 # Returns: An array of the piece's mesh instances.
@@ -164,6 +183,22 @@ puppet func lock_client(locked_transform: Transform) -> void:
 	
 	mode = MODE_STATIC
 	transform = locked_transform
+
+# Play a sound effect from the effect player, if it exists.
+# sound: The sound effect to play.
+func play_effect(sound: AudioStream) -> void:
+	if sound == null:
+		return
+	
+	var effect_player = get_effect_player()
+	if effect_player == null:
+		return
+	
+	if effect_player.playing:
+		return
+	
+	effect_player.stream = sound
+	effect_player.play()
 
 # Called by the server to remove the piece from the game.
 remotesync func remove_self() -> void:
@@ -389,10 +424,13 @@ func _ready():
 		# The clients are at the mercy of the server.
 		custom_integrator = true
 	
+	connect("body_entered", self, "_on_body_entered")
 	connect("tree_entered", self, "_on_tree_entered")
 	connect("tree_exiting", self, "_on_tree_exiting")
 
 func _process(delta):
+	_last_slow_table_collision += delta
+	
 	if get_tree().is_network_server():
 		if srv_is_hovering() and not sleeping:
 			_srv_hover_time_since_update += delta
@@ -456,6 +494,21 @@ func _integrate_forces(state):
 			var new_transform = Transform(lerp_quat)
 			new_transform.origin = origin
 			state.transform = new_transform
+
+func _on_body_entered(body):
+	# If we collided with another object...
+	if body is RigidBody:
+		# ... play a sound effect depending on our angular velocity.
+		if angular_velocity.length_squared() > 100.0:
+			if table_collide_fast_sounds != null:
+				play_effect(table_collide_fast_sounds.random_stream())
+		
+		# Workaround for slow collisions being set off multiple times if the
+		# piece "floats" down to the table.
+		elif _last_slow_table_collision > 1.0:
+			_last_slow_table_collision = 0.0
+			if table_collide_slow_sounds != null:
+				play_effect(table_collide_slow_sounds.random_stream())
 
 func _on_tree_entered() -> void:
 	# If the piece just entered the tree, then reset the last server state,

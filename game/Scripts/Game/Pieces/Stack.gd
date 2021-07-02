@@ -39,6 +39,17 @@ enum {
 export(NodePath) var collision_shape_path: String
 export(NodePath) var outline_mesh_path: String
 
+# TODO: export(RandomAudioSample)
+# See: https://github.com/godotengine/godot/pull/44879
+export(Resource) var card_add_sounds
+export(Resource) var card_orient_sounds
+export(Resource) var card_remove_sounds
+export(Resource) var card_shuffle_sounds
+export(Resource) var chip_add_sounds
+export(Resource) var chip_orient_sounds
+export(Resource) var chip_remove_sounds
+export(Resource) var chip_shuffle_sounds
+
 # This should only be useful for stacks of cards.
 var over_hand: int = 0
 
@@ -161,6 +172,13 @@ func add_piece(piece_entry: Dictionary, piece_transform: Transform,
 	
 	mass += piece_entry["mass"]
 	
+	if is_card_stack():
+		if card_add_sounds != null:
+			play_effect(card_add_sounds.random_stream())
+	else:
+		if chip_add_sounds != null:
+			play_effect(chip_add_sounds.random_stream())
+	
 	_add_piece_at_pos(piece_entry, pos, flip_y)
 
 # Check if the stack is empty.
@@ -239,7 +257,15 @@ func is_piece_flipped(piece_transform: Transform) -> bool:
 # direction.
 # up: Should all of the pieces be facing up?
 remotesync func orient_pieces(_up: bool) -> void:
-	return
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if is_card_stack():
+		if card_orient_sounds != null:
+			play_effect(card_orient_sounds.random_stream())
+	else:
+		if chip_orient_sounds != null:
+			play_effect(chip_orient_sounds.random_stream())
 
 # Pop a piece from the stack.
 # Returns: A dictionary containing "piece_entry" and "transform" elements,
@@ -312,8 +338,16 @@ puppet func remove_piece(index: int) -> Dictionary:
 	# We just changed the collision shape, so make sure the stack is awake.
 	sleeping = false
 	
+	if is_card_stack():
+		if card_remove_sounds != null:
+			play_effect(card_remove_sounds.random_stream())
+	else:
+		if chip_remove_sounds != null:
+			play_effect(chip_remove_sounds.random_stream())
+	
 	var piece_meta = _remove_piece_at_pos(index)
 	mass -= piece_meta["piece_entry"]["mass"]
+	
 	return piece_meta
 
 # Request the server to orient all of the pieces in the stack in a particular
@@ -361,7 +395,15 @@ master func request_sort() -> void:
 # Called by the server to set the order of pieces in the stack.
 # order: The piece indicies in their new order.
 remotesync func set_piece_order(_order: Array) -> void:
-	return
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if is_card_stack():
+		if card_shuffle_sounds != null:
+			play_effect(card_shuffle_sounds.random_stream())
+	else:
+		if chip_shuffle_sounds != null:
+			play_effect(chip_shuffle_sounds.random_stream())
 
 # Add the outline material to the outline mesh instance.
 func setup_outline_material():

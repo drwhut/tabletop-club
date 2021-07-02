@@ -51,6 +51,7 @@ func _update_credits_text() -> void:
 	credits_text = credits_text.replace("DEVELOPERS", tr("Developers"))
 	credits_text = credits_text.replace("FONTS", tr("Fonts"))
 	credits_text = credits_text.replace("IMAGES", tr("Images"))
+	credits_text = credits_text.replace("SOUND EFFECTS", tr("Sound Effects"))
 	credits_text = credits_text.replace("TOOL ICONS", tr("Tool Icons"))
 	credits_text = credits_text.replace("TRANSLATORS", tr("Translators"))
 	

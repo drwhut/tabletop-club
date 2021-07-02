@@ -50,6 +50,9 @@ remotesync func orient_pieces(up: bool) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
+	# Play sound effects.
+	.orient_pieces(up)
+	
 	for piece in _get_pieces_node().get_children():
 		var current_basis = piece.transform.basis
 		
@@ -64,6 +67,9 @@ remotesync func orient_pieces(up: bool) -> void:
 remotesync func set_piece_order(order: Array) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
+	
+	# Play sound effects.
+	.set_piece_order(order)
 	
 	var pieces_node = _get_pieces_node()
 	

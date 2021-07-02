@@ -52,6 +52,12 @@ func get_sandwich() -> MeshInstance:
 # direction.
 # up: Should all of the pieces be facing up?
 remotesync func orient_pieces(up: bool) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	# Play sound effects.
+	.orient_pieces(up)
+
 	for i in range(get_piece_count()):
 		_pieces[i]["flip_y"] = not up
 	
@@ -60,6 +66,12 @@ remotesync func orient_pieces(up: bool) -> void:
 # Called by the server to set the order of pieces in the stack.
 # order: The piece indicies in their new order.
 remotesync func set_piece_order(order: Array) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	# Play sound effects.
+	.set_piece_order(order)
+
 	var new_list = []
 	
 	for index in order:

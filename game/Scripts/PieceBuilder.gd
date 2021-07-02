@@ -96,6 +96,30 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 	
 	piece.setup_outline_material()
 	
+	if piece_entry.has("sfx") and piece_entry["sfx"] is String:
+		if not piece_entry["sfx"].empty():
+			if piece.effect_player_path.empty():
+				var effect_player = AudioStreamPlayer3D.new()
+				effect_player.name = "EffectPlayer"
+				effect_player.bus = "Effects"
+				effect_player.unit_size = 20
+				
+				piece.add_child(effect_player)
+				piece.effect_player_path = NodePath("EffectPlayer")
+			
+			# Need to enable contact monitoring so the piece knows when to play
+			# the sound effects.
+			if not piece.contact_monitor:
+				piece.contact_monitor = true
+				piece.contacts_reported = 1
+			
+			if piece_entry["sfx"] in AssetDB.SFX_AUDIO_STREAMS:
+				var sounds = AssetDB.SFX_AUDIO_STREAMS[piece_entry["sfx"]]
+				piece.table_collide_fast_sounds = sounds["fast"]
+				piece.table_collide_slow_sounds = sounds["slow"]
+			else:
+				push_error("'%s' is an unknown SFX preset!" % piece_entry["sfx"])
+	
 	return piece
 
 # Build a table using a table entry from the AssetDB.
