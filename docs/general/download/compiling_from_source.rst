@@ -346,12 +346,6 @@ the plugin:
    `the repository <https://github.com/godotengine/webrtc-native/releases>`_.
    Make sure to download the ``release`` build.
 
-   .. note::
-
-      As of right now, there are no official macOS builds of the plugin, but
-      you can download an unofficial build from
-      `this thread <https://github.com/godotengine/webrtc-native/issues/8>`_.
-
 2. Open the compressed file, and place the ``webrtc/`` folder into
    ``tabletop-club/game/``. Afterwards, there should be a file at
    ``tabletop-club/game/webrtc/webrtc.tres``.
