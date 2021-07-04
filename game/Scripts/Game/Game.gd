@@ -375,6 +375,8 @@ func _on_connection_established(id: int):
 		var hand_transform = _room.srv_get_next_hand_transform()
 		if hand_transform != Transform.IDENTITY:
 			_room.rpc("add_hand", id, hand_transform)
+		
+		_room.start_sending_cursor_position()
 	
 	# If we are not the host, then ask the host to send us their list of
 	# players.
