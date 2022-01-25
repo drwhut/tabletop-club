@@ -8,7 +8,7 @@ easy-to-make
 The game is available on Windows, macOS, and Linux, and is being developed with
 the [Godot Engine](https://godotengine.org/).
 
-![Screenshot of gameplay](screenshot.png)
+![Screenshot of gameplay](screenshot.jpg)
 
 ## Downloading
 
