@@ -69,7 +69,8 @@ signal container_release_random_requested(container, n)
 signal container_release_these_requested(container, names)
 signal dealing_cards(stack, n)
 signal erasing(position, size)
-signal hover_piece_requested(piece, offset)
+signal hover_piece_requested(piece)
+signal hover_pieces_requested(pieces, offsets)
 signal painting(position, color, size)
 signal placing_hidden_area(point1, point2)
 signal pop_stack_requested(stack, n)
@@ -77,6 +78,7 @@ signal removing_hidden_area(hidden_area)
 signal selecting_all_pieces()
 signal setting_hidden_area_preview_points(point1, point2)
 signal setting_hidden_area_preview_visible(is_visible)
+signal setting_hover_position_multiple(position)
 signal setting_spawn_point(position)
 signal spawning_piece_at(position)
 signal spawning_piece_in_container(container_name)
@@ -1460,17 +1462,25 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 					origin_piece = _piece_mouse_is_over
 			var origin = origin_piece.transform.origin
 			
-			for piece in selected:
-				if selected.size() == 1 and piece is Stack and fast:
+			if selected.size() == 1:
+				var piece = selected[0]
+				
+				if piece is Stack and fast:
 					emit_signal("pop_stack_requested", piece, 1)
-				elif selected.size() == 1 and piece is PieceContainer and fast:
+				elif piece is PieceContainer and fast:
 					if piece.get_piece_count() == 0:
-						emit_signal("hover_piece_requested", piece, Vector3())
+						emit_signal("hover_piece_requested", piece)
 					else:
 						emit_signal("container_release_random_requested", piece, 1)
 				else:
+					emit_signal("hover_piece_requested", piece)
+			else:
+				var offsets = []
+				for piece in selected:
 					var offset = piece.transform.origin - origin
-					emit_signal("hover_piece_requested", piece, offset)
+					offsets.append(offset)
+				
+				emit_signal("hover_pieces_requested", selected, offsets)
 		
 		_is_grabbing_selected = false
 
@@ -1499,8 +1509,14 @@ func _on_moving() -> bool:
 		_hover_y_pos = min(_hover_y_pos, max_y_pos)
 		
 		# ... then send out a signal with the new hover position.
-		for piece in _selected_pieces:
+		if _selected_pieces.size() == 1:
+			var piece = _selected_pieces[0]
 			piece.rpc_unreliable_id(1, "set_hover_position", get_hover_position())
+		else:
+			# If we started hovering multiple pieces, the server should have
+			# remembered the list of pieces we started hovering, so all we need
+			# to do is send it the updated position.
+			emit_signal("setting_hover_position_multiple", get_hover_position())
 		return true
 	
 	if _is_painting:

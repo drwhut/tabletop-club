@@ -63,6 +63,11 @@ var _srv_undo_state_events: Dictionary = {
 	"remove_piece": 0
 } #all timers start at 0 because the first time the event is called it will save the state
 
+# If clients start hovering multiple pieces at a time, then keep track here of
+# which pieces they hover, so that the client doesn't have to send multiple
+# requests with the same position.
+var _srv_client_hover_pieces: Dictionary = {}
+
 var _table_body: RigidBody = null
 
 # Add a hand to the game for a given player.
@@ -1017,26 +1022,52 @@ master func request_flip_table(camera_basis: Basis) -> void:
 	rpc("flip_table", camera_basis)
 
 # Request the server to hover a piece.
+# Returns: If the request was successful.
 # piece_name: The name of the piece to hover.
 # init_pos: The initial hover position.
 # offset_pos: The hover position offset.
 master func request_hover_piece(piece_name: String, init_pos: Vector3,
-	offset_pos: Vector3) -> void:
+	offset_pos: Vector3) -> bool:
 
 	var piece = _pieces.get_node(piece_name)
 
 	if not piece:
 		push_error("Piece " + piece_name + " does not exist!")
-		return
+		return false
 
 	if not piece is Piece:
 		push_error("Object " + piece_name + " is not a piece!")
-		return
+		return false
 
 	var player_id = get_tree().get_rpc_sender_id()
 
 	if piece.srv_start_hovering(player_id, init_pos, offset_pos):
 		rpc_id(player_id, "request_hover_piece_accepted", piece_name)
+		return true
+	
+	return false
+
+# Request the server to hover a set of pieces. The server will remember the
+# list of pieces given, and use it to re-set the hover position of those pieces
+# if the client wishes to update it.
+# piece_names: The names of the pieces to hover.
+# init_pos: The initial hover position.
+# offset_pos_arr: The hover position offsets for each piece.
+master func request_hover_pieces(piece_names: Array, init_pos: Vector3,
+	offset_pos_arr: Array) -> void:
+	
+	if piece_names.size() != offset_pos_arr.size():
+		push_error("Name and offset arrays differ in size (name = %d, offset = %d)!" % [piece_names.size(), offset_pos_arr.size()])
+		return
+	
+	var player_id = get_tree().get_rpc_sender_id()
+	_srv_client_hover_pieces[player_id] = []
+	
+	for i in range(len(piece_names)):
+		var piece_name: String = piece_names[i]
+		var offset_pos: Vector3 = offset_pos_arr[i]
+		if request_hover_piece(piece_name, init_pos, offset_pos):
+			_srv_client_hover_pieces[player_id].append(piece_name)
 
 # Called by the server if the request to hover a piece was accepted.
 # piece_name: The name of the piece we are now hovering.
@@ -1244,6 +1275,30 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 						continue
 				else:
 					rpc("add_piece_to_stack", piece.name, stack_name, Stack.STACK_TOP)
+
+# Request the server to set the hover position of multiple pieces - note that
+# the pieces that are updated are defined when calling request_hover_pieces.
+# hover_position: The new hover position.
+master func set_hover_position_multiple(hover_position: Vector3) -> void:
+	var piece_names = _srv_client_hover_pieces[get_tree().get_rpc_sender_id()]
+	
+	# TODO: This method reduces the network traffic from client to server, but
+	# we can also reduce the traffic from server to client by potentially
+	# stopping the pieces from automatically sending their new positions every
+	# physics tick, and only sending updates when the hovering client does.
+	
+	for piece_name in piece_names:
+		var piece = _pieces.get_node(piece_name)
+
+		if not piece:
+			push_error("Piece " + piece_name + " does not exist!")
+			return
+
+		if not piece is Piece:
+			push_error("Object " + piece_name + " is not a piece!")
+			return
+		
+		piece.set_hover_position(hover_position)
 
 # Set the color of the room lamp.
 # color: The color of the lamp.
@@ -2137,9 +2192,22 @@ func _on_CameraController_erasing(position: Vector3, size: float):
 	_paint_plane.rpc_unreliable_id(1, "request_push_paint_queue", position,
 		Color.transparent, size)
 
-func _on_CameraController_hover_piece_requested(piece: Piece, offset: Vector3):
+func _on_CameraController_hover_piece_requested(piece: Piece):
 	rpc_id(1, "request_hover_piece", piece.name,
-		_camera_controller.get_hover_position(), offset)
+		_camera_controller.get_hover_position(), Vector3.ZERO)
+
+func _on_CameraController_hover_pieces_requested(pieces: Array, offsets: Array):
+	var names = []
+	for piece in pieces:
+		if piece is Piece:
+			names.append(piece.name)
+	
+	if names.size() != offsets.size():
+		push_error("Name and offset arrays differ in size (name = %d, offset = %d)!" % [names.size(), offsets.size()])
+		return
+	
+	rpc_id(1, "request_hover_pieces", names,
+		_camera_controller.get_hover_position(), offsets)
 
 func _on_CameraController_painting(position: Vector3, color: Color, size: float):
 	_paint_plane.rpc_unreliable_id(1, "request_push_paint_queue", position,
@@ -2165,6 +2233,9 @@ func _on_CameraController_setting_hidden_area_preview_points(point1: Vector2, po
 func _on_CameraController_setting_hidden_area_preview_visible(is_visible: bool):
 	_hidden_area_preview.visible = is_visible
 	_hidden_area_preview.collision_layer = 1 if is_visible else 2
+
+func _on_CameraController_setting_hover_position_multiple(position: Vector3):
+	rpc_unreliable_id(1, "set_hover_position_multiple", position)
 
 func _on_CameraController_setting_spawn_point(position: Vector3):
 	emit_signal("setting_spawn_point", position)
