@@ -1511,7 +1511,7 @@ func _on_moving() -> bool:
 		# ... then send out a signal with the new hover position.
 		if _selected_pieces.size() == 1:
 			var piece = _selected_pieces[0]
-			piece.rpc_unreliable_id(1, "set_hover_position", get_hover_position())
+			piece.rpc_unreliable_id(1, "request_set_hover_position", get_hover_position())
 		else:
 			# If we started hovering multiple pieces, the server should have
 			# remembered the list of pieces we started hovering, so all we need
@@ -1663,7 +1663,7 @@ func _on_MouseGrab_gui_input(event):
 								cards.append(piece)
 								if piece.over_hand > 0:
 									adding_card_to_hand = true
-							piece.rpc_id(1, "stop_hovering")
+							piece.rpc_id(1, "request_stop_hovering")
 						
 						set_is_hovering(false)
 						

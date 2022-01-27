@@ -77,6 +77,6 @@ func _on_body_entered(body) -> void:
 			# the piece is the same as ours, since we only want to stack items
 			# of the same shape.
 			if body is Piece:
-				if not (srv_is_hovering() or body.srv_is_hovering()):
+				if not (is_hovering() or body.is_hovering()):
 					if matches(body) and _can_stack(body):
 						emit_signal("stack_requested", self, body)

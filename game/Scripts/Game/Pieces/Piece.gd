@@ -257,17 +257,19 @@ master func request_set_albedo_color(color: Color, unreliable: bool = false) -> 
 
 # Request the server to set the hover basis if you are the client hovering the
 # piece.
-# hover_basis: The basis the hovering piece will go towards.
-master func request_set_hover_basis(hover_basis: Basis) -> void:
-	if get_tree().get_rpc_sender_id() == hover_player:
-		rpc_unreliable("set_hover_basis", hover_basis)
+# new_hover_basis: The basis the hovering piece will go towards.
+master func request_set_hover_basis(new_hover_basis: Basis) -> void:
+	var player_id = get_tree().get_rpc_sender_id()
+	if player_id == hover_player or player_id == 1:
+		rpc_unreliable("set_hover_basis", new_hover_basis)
 
 # Request the server to set the hover position if you are the client hovering
 # the piece.
-# hover_position: The position the hovering piece will go towards.
-master func request_set_hover_position(hover_position: Vector3) -> void:
-	if get_tree().get_rpc_sender_id() == hover_player:
-		rpc_unreliable("set_hover_position", hover_position)
+# new_hover_position: The position the hovering piece will go towards.
+master func request_set_hover_position(new_hover_position: Vector3) -> void:
+	var player_id = get_tree().get_rpc_sender_id()
+	if player_id == hover_player or player_id == 1:
+		rpc_unreliable("set_hover_position", new_hover_position)
 		emit_signal("client_set_hover_position", self)
 
 # Request the server to start hovering the piece.
@@ -276,10 +278,8 @@ master func request_start_hovering(init_pos: Vector3, offset_pos: Vector3) -> vo
 
 # If you are hovering the piece, request the server to stop hovering it.
 master func request_stop_hovering() -> void:
-	var id = get_tree().get_rpc_sender_id()
-	
-	# The server can also stop hovering piece regardless of whether some else is.
-	if id == hover_player or id == 1:
+	var player_id = get_tree().get_rpc_sender_id()
+	if player_id == hover_player or player_id == 1:
 		rpc("stop_hovering")
 
 # Request the server to unlock the piece.
@@ -317,21 +317,21 @@ func set_albedo_color_client(color: Color) -> void:
 			material.albedo_color = original_color * color
 
 # Set the hover basis of the piece.
-# hover_basis: The basis the hovering piece will go towards.
-remotesync func set_hover_basis(hover_basis: Basis) -> void:
+# new_hover_basis: The basis the hovering piece will go towards.
+remotesync func set_hover_basis(new_hover_basis: Basis) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	self.hover_basis = hover_basis
+	hover_basis = new_hover_basis
 	sleeping = false
 
 # Set the hover position of the piece.
-# hover_position: The position the hovering piece will go towards.
-remotesync func set_hover_position(hover_position: Vector3) -> void:
+# new_hover_position: The position the hovering piece will go towards.
+remotesync func set_hover_position(new_hover_position: Vector3) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	self.hover_position = hover_position
+	hover_position = new_hover_position
 	sleeping = false
 
 # Called by the server to store the server's physics state locally.
@@ -413,6 +413,9 @@ remotesync func stop_hovering() -> void:
 	# authority for the physics simulation.
 	if get_tree().is_network_server():
 		custom_integrator = false
+	
+	# The last server state will be out of date, so reset it here.
+	_last_server_state = {}
 
 # As the server, start hovering the piece.
 # Returns: If the piece started hovering.

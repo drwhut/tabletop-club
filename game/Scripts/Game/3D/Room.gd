@@ -66,7 +66,7 @@ var _srv_undo_state_events: Dictionary = {
 # If clients start hovering multiple pieces at a time, then keep track here of
 # which pieces they hover, so that the client doesn't have to send multiple
 # requests with the same position.
-var _srv_client_hover_pieces: Dictionary = {}
+var _client_hover_pieces: Dictionary = {}
 
 var _table_body: RigidBody = null
 
@@ -1061,13 +1061,17 @@ master func request_hover_pieces(piece_names: Array, init_pos: Vector3,
 		return
 	
 	var player_id = get_tree().get_rpc_sender_id()
-	_srv_client_hover_pieces[player_id] = []
+	_client_hover_pieces[player_id] = []
 	
 	for i in range(len(piece_names)):
 		var piece_name: String = piece_names[i]
 		var offset_pos: Vector3 = offset_pos_arr[i]
 		if request_hover_piece(piece_name, init_pos, offset_pos):
-			_srv_client_hover_pieces[player_id].append(piece_name)
+			_client_hover_pieces[player_id].append(piece_name)
+	
+	# Send the hover pieces to the other clients so that they can hover the
+	# pieces when the hovering player sends an update.
+	rpc("set_client_hover_pieces", player_id, piece_names)
 
 # Called by the server if the request to hover a piece was accepted.
 # piece_name: The name of the piece we are now hovering.
@@ -1276,16 +1280,30 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 				else:
 					rpc("add_piece_to_stack", piece.name, stack_name, Stack.STACK_TOP)
 
+# Called by the server to set a client's hovering pieces.
+remote func set_client_hover_pieces(player_id: int, piece_names: Array) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_client_hover_pieces[player_id] = piece_names
+
 # Request the server to set the hover position of multiple pieces - note that
 # the pieces that are updated are defined when calling request_hover_pieces.
 # hover_position: The new hover position.
 master func set_hover_position_multiple(hover_position: Vector3) -> void:
-	var piece_names = _srv_client_hover_pieces[get_tree().get_rpc_sender_id()]
+	rpc_unreliable("set_hover_position_multiple_client",
+		get_tree().get_rpc_sender_id(), hover_position)
+
+# Called by the server to set the hover position of multiple pieces.
+# player_id: The ID of the player updating the hover positions.
+# hover_position: The new hover position.
+remotesync func set_hover_position_multiple_client(player_id: int,
+	hover_position: Vector3) -> void:
 	
-	# TODO: This method reduces the network traffic from client to server, but
-	# we can also reduce the traffic from server to client by potentially
-	# stopping the pieces from automatically sending their new positions every
-	# physics tick, and only sending updates when the hovering client does.
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var piece_names = _client_hover_pieces[player_id]
 	
 	for piece_name in piece_names:
 		var piece = _pieces.get_node(piece_name)
@@ -1595,8 +1613,8 @@ func srv_set_retrieve_pieces_from_hell(retrieve: bool) -> void:
 # player: The player to stop from hovering.
 func srv_stop_player_hovering(player: int) -> void:
 	for piece in _pieces.get_children():
-		if piece.srv_get_hover_player() == player:
-			piece.rpc_id(1, "stop_hovering")
+		if piece.hover_player == player:
+			piece.rpc_id(1, "request_stop_hovering")
 
 # Update the transforms of the hands to match the table entry's hand positions.
 func srv_update_hand_transforms() -> void:
