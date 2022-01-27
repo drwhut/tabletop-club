@@ -259,17 +259,15 @@ master func request_set_albedo_color(color: Color, unreliable: bool = false) -> 
 # piece.
 # new_hover_basis: The basis the hovering piece will go towards.
 master func request_set_hover_basis(new_hover_basis: Basis) -> void:
-	var player_id = get_tree().get_rpc_sender_id()
-	if player_id == hover_player or player_id == 1:
-		rpc_unreliable("set_hover_basis", new_hover_basis)
+	if get_tree().get_rpc_sender_id() == hover_player:
+		srv_set_hover_basis(new_hover_basis)
 
 # Request the server to set the hover position if you are the client hovering
 # the piece.
 # new_hover_position: The position the hovering piece will go towards.
 master func request_set_hover_position(new_hover_position: Vector3) -> void:
-	var player_id = get_tree().get_rpc_sender_id()
-	if player_id == hover_player or player_id == 1:
-		rpc_unreliable("set_hover_position", new_hover_position)
+	if get_tree().get_rpc_sender_id() == hover_player:
+		srv_set_hover_position(new_hover_position)
 		emit_signal("client_set_hover_position", self)
 
 # Request the server to start hovering the piece.
@@ -376,11 +374,6 @@ func setup_outline_material():
 				if material:
 					material.next_pass = _outline_material
 
-# Lock the piece server-side.
-func srv_lock() -> void:
-	mode = MODE_STATIC
-	rpc("lock_client", transform)
-
 # Called by the server to start hovering the piece.
 # player_id: The ID of the player hovering the piece.
 # init_pos: The initial hover position.
@@ -417,13 +410,28 @@ remotesync func stop_hovering() -> void:
 	# The last server state will be out of date, so reset it here.
 	_last_server_state = {}
 
+# Lock the piece server-side.
+func srv_lock() -> void:
+	mode = MODE_STATIC
+	rpc("lock_client", transform)
+
+# As the server, set the hover basis of the piece.
+# new_hover_basis: The basis the hovering piece will go towards.
+func srv_set_hover_basis(new_hover_basis: Basis) -> void:
+	rpc_unreliable("set_hover_basis", new_hover_basis)
+
+# As the server, set the hover position of the piece.
+# new_hover_position: The position the hovering piece will go towards.
+func srv_set_hover_position(new_hover_position: Vector3) -> void:
+	rpc_unreliable("set_hover_position", new_hover_position)
+
 # As the server, start hovering the piece.
 # Returns: If the piece started hovering.
 # player_id: The ID of the player hovering the piece.
 # init_pos: The initial hover position.
 # offset_pos: The hover position offset.
 func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) -> bool:
-	if not (is_hovering() or is_locked()):
+	if (not is_hovering() or hover_player == player_id) and (not is_locked()):
 		rpc("start_hovering", player_id, init_pos, offset_pos)
 		return true
 	

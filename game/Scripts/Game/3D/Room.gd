@@ -808,7 +808,7 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 			continue
 
 		if piece.over_hand > 0:
-			var piece_dist = piece.srv_get_hover_offset().length()
+			var piece_dist = piece.hover_offset.length()
 			if (min_dist == null) or (piece_dist < min_dist):
 				hand_id = piece.over_hand
 				min_dist = piece_dist

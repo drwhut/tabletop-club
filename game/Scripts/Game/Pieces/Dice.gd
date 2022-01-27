@@ -40,7 +40,7 @@ func _physics_process(_delta):
 			new_basis = new_basis.rotated(Vector3.RIGHT, 2 * PI * _rng.randf())
 			new_basis = new_basis.rotated(Vector3.UP, 2 * PI * _rng.randf())
 			new_basis = new_basis.rotated(Vector3.BACK, 2 * PI * _rng.randf())
-			rpc_id(1, "request_set_hover_basis", new_basis)
+			srv_set_hover_basis(new_basis)
 		
 		if shake_sounds != null:
 			play_effect(shake_sounds.random_stream())

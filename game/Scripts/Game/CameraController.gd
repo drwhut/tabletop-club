@@ -679,11 +679,11 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("game_flip_piece"):
 		for piece in _selected_pieces:
 			if piece is Piece:
-				piece.rpc_id(1, "flip_vertically")
+				piece.rpc_id(1, "request_flip_vertically")
 	elif event.is_action_pressed("game_reset_piece"):
 		for piece in _selected_pieces:
 			if piece is Piece:
-				piece.rpc_id(1, "reset_orientation")
+				piece.rpc_id(1, "request_reset_orientation")
 	elif event.is_action_pressed("game_toggle_debug_info"):
 		_debug_info_label.visible = not _debug_info_label.visible
 	elif event.is_action_pressed("game_toggle_ui"):
@@ -1771,7 +1771,7 @@ func _on_MouseGrab_gui_input(event):
 					if piece_rotate_invert:
 						amount *= -1
 					for piece in _selected_pieces:
-						piece.rpc_id(1, "rotate_y", amount)
+						piece.rpc_id(1, "request_rotate_y", amount)
 				else:
 					# Changing the y-position/offset of hovered pieces.
 					var offset = 0

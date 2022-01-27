@@ -191,14 +191,12 @@ func _srv_set_card_positions() -> void:
 		dir = dir.normalized()
 	var origin = _area.global_transform.origin - dir * (hand_width / 2)
 	
-	_srv_cards[0].srv_hover_position = origin + dir * offset_begin
-	_srv_cards[0].srv_wake_up()
+	_srv_cards[0].srv_set_hover_position(origin + dir * offset_begin)
 	
 	var cumulative_width = widths[0]
 	for i in range(1, _srv_cards.size()):
 		var k = offset_begin + cumulative_width + offset_other
-		_srv_cards[i].srv_hover_position = origin + dir * k
-		_srv_cards[i].srv_wake_up()
+		_srv_cards[i].srv_set_hover_position(origin + dir * k)
 		
 		cumulative_width += widths[i] + offset_other
 
@@ -208,7 +206,7 @@ func _srv_set_card_rotation(card: Card) -> void:
 	var new_basis = transform.basis
 	if card.transform.basis.y.y < 0:
 		new_basis = new_basis.rotated(transform.basis.z, PI)
-	card.srv_hover_basis = new_basis
+	card.srv_set_hover_basis(new_basis)
 
 # Try and set a node's front face visibility.
 # body: The node to try and set the front face visibility of.
@@ -250,7 +248,7 @@ func _on_Hand_tree_exiting():
 	if get_tree().has_network_peer():
 		if get_tree().is_network_server():
 			for card in _srv_cards:
-				card.rpc_id(1, "stop_hovering")
+				card.rpc_id(1, "request_stop_hovering")
 	
 	srv_clear_cards()
 
