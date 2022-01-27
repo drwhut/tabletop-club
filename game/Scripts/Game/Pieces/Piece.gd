@@ -54,15 +54,12 @@ var piece_entry: Dictionary = {}
 
 # When setting these vectors, make sure you call set_angular_lock(false),
 # otherwise the piece won't rotate towards the orientation!
-var srv_hover_basis = Basis.IDENTITY
-var srv_hover_position = Vector3()
+var hover_basis = Basis.IDENTITY
+var hover_offset = Vector3.ZERO
+var hover_player = 0 # 0 = Not hovering, > 0 is the player ID.
+var hover_position = Vector3.ZERO
 
 var srv_retrieve_from_hell: bool = true
-
-var _srv_hover_offset = Vector3()
-var _srv_hover_player = 0
-
-var _srv_hover_time_since_update = 0.0
 
 var _last_server_state = {}
 var _last_slow_table_collision = 0.0
@@ -83,12 +80,6 @@ func apply_texture(texture: Texture, surface: int = 0) -> void:
 		material.albedo_texture = texture
 		
 		mesh_instance.set_surface_material(surface, material)
-
-# If you are hovering this piece, ask the server to flip the piece vertically.
-master func flip_vertically() -> void:
-	if get_tree().get_rpc_sender_id() == _srv_hover_player:
-		srv_hover_basis = srv_hover_basis.rotated(transform.basis.z, PI)
-		srv_wake_up()
 
 # Get the current albedo colour in the piece's material.
 # Returns: The current albedo colour.
@@ -170,6 +161,11 @@ func is_being_shaked() -> bool:
 		return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD
 	return false
 
+# Is the piece being hovered?
+# Returns: If the piece is being hovered.
+func is_hovering() -> bool:
+	return hover_player > 0
+
 # Is the piece locked, i.e. unable to move?
 # Returns: If the piece is locked.
 func is_locked() -> bool:
@@ -209,6 +205,10 @@ remotesync func remove_self() -> void:
 		get_parent().remove_child(self)
 		queue_free()
 
+# If you are hovering this piece, ask the server to flip the piece vertically.
+master func request_flip_vertically() -> void:
+	request_set_hover_basis(hover_basis.rotated(transform.basis.z, PI))
+
 # Request the server to lock the piece.
 master func request_lock() -> void:
 	srv_lock()
@@ -216,6 +216,31 @@ master func request_lock() -> void:
 # Request the server to remove the piece.
 master func request_remove_self() -> void:
 	rpc("remove_self")
+
+# If you are hovering the piece, ask the server to reset the orientation of the
+# piece.
+master func request_reset_orientation() -> void:
+	request_set_hover_basis(Basis.IDENTITY)
+
+# If you are hovering the piece, rotate it on the y-axis.
+# rot: The amount to rotate it by in radians.
+master func request_rotate_y(rot: float) -> void:
+	if rot == 0.0:
+		return
+	
+	var current_euler = hover_basis.get_euler()
+	var current_y_scale = current_euler.y / abs(rot)
+	# The .001 is to avoid floating point errors.
+	var offset = 1.001
+	var target_y_scale = current_y_scale
+	if rot > 0.0:
+		target_y_scale = floor(current_y_scale + offset)
+	else:
+		target_y_scale = ceil(current_y_scale - offset)
+	var target_y_euler = current_euler
+	target_y_euler.y = wrapf(target_y_scale * abs(rot), -PI, PI)
+	
+	request_set_hover_basis(Basis(target_y_euler))
 
 # Request the server to set the material's albedo color.
 # color: The new albedo color.
@@ -230,38 +255,36 @@ master func request_set_albedo_color(color: Color, unreliable: bool = false) -> 
 	else:
 		rpc("set_albedo_color", color)
 
+# Request the server to set the hover basis if you are the client hovering the
+# piece.
+# hover_basis: The basis the hovering piece will go towards.
+master func request_set_hover_basis(hover_basis: Basis) -> void:
+	if get_tree().get_rpc_sender_id() == hover_player:
+		rpc_unreliable("set_hover_basis", hover_basis)
+
+# Request the server to set the hover position if you are the client hovering
+# the piece.
+# hover_position: The position the hovering piece will go towards.
+master func request_set_hover_position(hover_position: Vector3) -> void:
+	if get_tree().get_rpc_sender_id() == hover_player:
+		rpc_unreliable("set_hover_position", hover_position)
+		emit_signal("client_set_hover_position", self)
+
+# Request the server to start hovering the piece.
+master func request_start_hovering(init_pos: Vector3, offset_pos: Vector3) -> void:
+	srv_start_hovering(get_tree().get_rpc_sender_id(), init_pos, offset_pos)
+
+# If you are hovering the piece, request the server to stop hovering it.
+master func request_stop_hovering() -> void:
+	var id = get_tree().get_rpc_sender_id()
+	
+	# The server can also stop hovering piece regardless of whether some else is.
+	if id == hover_player or id == 1:
+		rpc("stop_hovering")
+
 # Request the server to unlock the piece.
 master func request_unlock() -> void:
 	rpc("unlock")
-
-# If you are hovering the piece, ask the server to reset the orientation of the
-# piece.
-master func reset_orientation() -> void:
-	if get_tree().get_rpc_sender_id() == _srv_hover_player:
-		srv_hover_basis = Basis.IDENTITY
-		srv_wake_up()
-
-# If you are hovering the piece, rotate it on the y-axis.
-# rot: The amount to rotate it by in radians.
-master func rotate_y(rot: float) -> void:
-	if get_tree().get_rpc_sender_id() == _srv_hover_player:
-		if rot == 0.0:
-			return
-		
-		var current_euler = srv_hover_basis.get_euler()
-		var current_y_scale = current_euler.y / abs(rot)
-		# The .001 is to avoid floating point errors.
-		var offset = 1.001
-		var target_y_scale = current_y_scale
-		if rot > 0.0:
-			target_y_scale = floor(current_y_scale + offset)
-		else:
-			target_y_scale = ceil(current_y_scale - offset)
-		var target_y_euler = current_euler
-		target_y_euler.y = wrapf(target_y_scale * abs(rot), -PI, PI)
-		srv_hover_basis = Basis(target_y_euler)
-		
-		srv_wake_up()
 
 # Called by the server to set the material's albedo color.
 # color: The new albedo color.
@@ -293,16 +316,23 @@ func set_albedo_color_client(color: Color) -> void:
 			
 			material.albedo_color = original_color * color
 
-# If you are hovering the piece, ask the server to set the hover position of the
-# piece.
+# Set the hover basis of the piece.
+# hover_basis: The basis the hovering piece will go towards.
+remotesync func set_hover_basis(hover_basis: Basis) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	self.hover_basis = hover_basis
+	sleeping = false
+
+# Set the hover position of the piece.
 # hover_position: The position the hovering piece will go towards.
-master func set_hover_position(hover_position: Vector3) -> void:
-	# Only allow the hover position to be set if the request is coming from the
-	# player that is hovering the piece.
-	if get_tree().get_rpc_sender_id() == _srv_hover_player:
-		srv_hover_position = hover_position
-		srv_wake_up()
-		emit_signal("client_set_hover_position", self)
+remotesync func set_hover_position(hover_position: Vector3) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	self.hover_position = hover_position
+	sleeping = false
 
 # Called by the server to store the server's physics state locally.
 # state: The server's physics state for this piece.
@@ -346,71 +376,55 @@ func setup_outline_material():
 				if material:
 					material.next_pass = _outline_material
 
-# Get the hover offset of the piece.
-# Returns: The hover offset of the piece.
-func srv_get_hover_offset() -> Vector3:
-	return _srv_hover_offset
-
-# Get the ID of the player that is hovering the piece.
-# Returns: The ID of the player hovering the piece. 0 if the piece is not being
-# hovered.
-func srv_get_hover_player() -> int:
-	return _srv_hover_player
-
-# Is the piece being hovered?
-# Returns: If the piece is being hovered.
-func srv_is_hovering() -> bool:
-	return _srv_hover_player > 0
-
 # Lock the piece server-side.
 func srv_lock() -> void:
 	mode = MODE_STATIC
 	rpc("lock_client", transform)
 
-# Start hovering the piece server-side.
+# Called by the server to start hovering the piece.
+# player_id: The ID of the player hovering the piece.
+# init_pos: The initial hover position.
+# offset_pos: The hover position offset.
+remotesync func start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	hover_basis = transform.basis
+	hover_position = init_pos
+	
+	hover_offset = offset_pos
+	hover_player = player_id
+	
+	sleeping = false
+	
+	collision_layer = 2
+	custom_integrator = true
+
+# Called by the server to stop hovering the piece.
+remotesync func stop_hovering() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	hover_player = 0
+	collision_layer = 1
+	sleeping = false
+	
+	# Only the server gets to turn off the custom integrator, since it is the
+	# authority for the physics simulation.
+	if get_tree().is_network_server():
+		custom_integrator = false
+
+# As the server, start hovering the piece.
 # Returns: If the piece started hovering.
 # player_id: The ID of the player hovering the piece.
 # init_pos: The initial hover position.
 # offset_pos: The hover position offset.
 func srv_start_hovering(player_id: int, init_pos: Vector3, offset_pos: Vector3) -> bool:
-	if not (srv_is_hovering() or is_locked()):
-		srv_hover_basis = transform.basis
-		srv_hover_position = init_pos
-		
-		_srv_hover_offset = offset_pos
-		_srv_hover_player = player_id
-		
-		srv_wake_up()
-		
-		collision_layer = 2
-		custom_integrator = true
-		
+	if not (is_hovering() or is_locked()):
+		rpc("start_hovering", player_id, init_pos, offset_pos)
 		return true
 	
-	# If the piece is hovering, and it's the client that is hovering the piece,
-	# send them the all clear, since they are already in control.
-	if not is_locked():
-		if player_id == _srv_hover_player:
-			srv_hover_position = init_pos
-			_srv_hover_offset = offset_pos
-			return true
-	
 	return false
-
-# Wake the piece up if it is sleeping.
-func srv_wake_up() -> void:
-	sleeping = false
-	_srv_hover_time_since_update = 0.0
-
-# If you are hovering the piece, ask the server to stop hovering it. The server
-# can also stop hovering the piece regardless of who is currently hovering it.
-master func stop_hovering() -> void:
-	var id = get_tree().get_rpc_sender_id()
-	if id == _srv_hover_player or id == 1:
-		_srv_hover_player = 0
-		collision_layer = 1
-		custom_integrator = false
-		sleeping = false
 
 # Called by the server to unlock the piece.
 remotesync func unlock() -> void:
@@ -430,70 +444,76 @@ func _ready():
 
 func _process(delta):
 	_last_slow_table_collision += delta
-	
-	if get_tree().is_network_server():
-		if srv_is_hovering() and not sleeping:
-			_srv_hover_time_since_update += delta
-			
-			# If the hovering piece has not had a transform update in a certain
-			# amount of time, put it to sleep so it doesn't send unnessesary
-			# updates to all the clients.
-			if _srv_hover_time_since_update > HOVER_INACTIVE_DURATION:
-				sleeping = true
 
 func _physics_process(_delta):
 	_last_velocity = _new_velocity
 	_new_velocity  = linear_velocity
 	
 	if get_tree().is_network_server():
-		if not (sleeping or is_locked()):
+		if not (sleeping or is_hovering() or is_locked()):
 			rpc_unreliable("set_latest_server_physics_state", _last_server_state)
 
-func _integrate_forces(state):
-	if get_tree().is_network_server():
-		
-		# Only the server can apply what happens when a piece is hovered.
-		if srv_is_hovering():
-			_srv_apply_hover_to_state(state)
-		
-		# If the piece has fallen off the table and decended into hell, recover
-		# it so the devil doesn't tickle it to death.
-		elif srv_retrieve_from_hell and state.transform.origin.y < HELL_HEIGHT:
-			state.transform = Transform.IDENTITY
-			state.transform.origin.y += SPAWN_HEIGHT
-			
-			state.angular_velocity = Vector3.ZERO
-			state.linear_velocity = Vector3.ZERO
-		
-		# The server piece needs to keep track of its physics properties in
-		# order to send it to the client.
-		_last_server_state = {
-			"angular_velocity": state.angular_velocity,
-			"linear_velocity": state.linear_velocity,
-			"transform": state.transform
-		}
+# Apply forces to the piece to get it to the desired hover position and
+# orientation.
+# state: The direct physics state of the piece.
+func _apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
+	# Force the piece to the given location.
+	var pos = state.transform.origin
+	var linear_dir = hover_position + hover_offset - pos
+	state.linear_velocity = LINEAR_FORCE_SCALAR * linear_dir
 	
+	# Force the piece to the given basis.
+	var current_basis = state.transform.basis.orthonormalized()
+	var target_basis = hover_basis.orthonormalized()
+	var rotation_basis = target_basis * current_basis.inverse()
+	var rotation_euler = rotation_basis.get_euler()
+	state.angular_velocity = ANGULAR_FORCE_SCALAR * rotation_euler
+
+func _integrate_forces(state):
+	# Overwrite the physics forces if the piece is hovering, so we can control
+	# where the piece goes.
+	if is_hovering():
+		_apply_hover_to_state(state)
 	else:
-		# The client, if it has received a new physics state from the
-		# server, needs to update it here.
+		if get_tree().is_network_server():
+			# If the piece has fallen off the table and decended into hell, recover
+			# it so the devil doesn't tickle it to death.
+			if srv_retrieve_from_hell and state.transform.origin.y < HELL_HEIGHT:
+				state.transform = Transform.IDENTITY
+				state.transform.origin.y += SPAWN_HEIGHT
+				
+				state.angular_velocity = Vector3.ZERO
+				state.linear_velocity = Vector3.ZERO
+			
+			# The server piece needs to keep track of its physics properties in
+			# order to send it to the client.
+			_last_server_state = {
+				"angular_velocity": state.angular_velocity,
+				"linear_velocity": state.linear_velocity,
+				"transform": state.transform
+			}
 		
-		if _last_server_state.has("angular_velocity"):
-			state.angular_velocity = _last_server_state["angular_velocity"]
-		if _last_server_state.has("linear_velocity"):
-			state.linear_velocity = _last_server_state["linear_velocity"]
-		if _last_server_state.has("transform"):
+		else:
+			# The client, if it has received a new physics state from the
+			# server, needs to update it here.
 			
-			# For the transform, we want to lerp into the new state to make it
-			# as smooth as possible, even if the server fails to send the state.
-			var server_transform = _last_server_state["transform"]
-			var origin = transform.origin.linear_interpolate(server_transform.origin, TRANSFORM_LERP_ALPHA)
-			var client_quat = Quat(transform.basis)
-			var server_quat = Quat(server_transform.basis)
-			var lerp_quat = client_quat.slerp(server_quat, TRANSFORM_LERP_ALPHA).normalized()
-			
-			var new_transform = Transform(lerp_quat)
-			new_transform.origin = origin
-			state.transform = new_transform
+			if _last_server_state.has("angular_velocity"):
+				state.angular_velocity = _last_server_state["angular_velocity"]
+			if _last_server_state.has("linear_velocity"):
+				state.linear_velocity = _last_server_state["linear_velocity"]
+			if _last_server_state.has("transform"):
+				
+				# For the transform, we want to lerp into the new state to make it
+				# as smooth as possible, even if the server fails to send the state.
+				var server_transform = _last_server_state["transform"]
+				var origin = transform.origin.linear_interpolate(server_transform.origin, TRANSFORM_LERP_ALPHA)
+				var client_quat = Quat(transform.basis)
+				var server_quat = Quat(server_transform.basis)
+				var lerp_quat = client_quat.slerp(server_quat, TRANSFORM_LERP_ALPHA).normalized()
+				
+				var new_transform = Transform(lerp_quat)
+				new_transform.origin = origin
+				state.transform = new_transform
 
 func _on_body_entered(body):
 	# If we collided with another object...
@@ -517,19 +537,3 @@ func _on_tree_entered() -> void:
 
 func _on_tree_exiting() -> void:
 	emit_signal("piece_exiting_tree", self)
-
-# Apply forces to the piece to get it to the desired hover position and
-# orientation.
-# state: The direct physics state of the piece.
-func _srv_apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
-	# Force the piece to the given location.
-	var pos = state.transform.origin
-	var linear_dir = srv_hover_position + _srv_hover_offset - pos
-	state.linear_velocity = LINEAR_FORCE_SCALAR * linear_dir
-	
-	# Force the piece to the given basis.
-	var current_basis = state.transform.basis.orthonormalized()
-	var target_basis = srv_hover_basis.orthonormalized()
-	var rotation_basis = target_basis * current_basis.inverse()
-	var rotation_euler = rotation_basis.get_euler()
-	state.angular_velocity = ANGULAR_FORCE_SCALAR * rotation_euler
