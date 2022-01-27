@@ -124,5 +124,5 @@ func _on_body_entered(body) -> void:
 		# piece was being hovered by a player. If it is, then we can add it to
 		# the container!
 		if body is Piece:
-			if body.srv_is_hovering():
-				emit_signal("absorbing_hovered", self, body.srv_get_hover_player())
+			if body.is_hovering():
+				emit_signal("absorbing_hovered", self, body.hover_player)

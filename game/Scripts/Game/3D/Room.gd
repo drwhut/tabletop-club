@@ -1687,8 +1687,6 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 		stack2.add_piece(piece_entry, piece_transform, Stack.STACK_TOP)
 
 func _ready():
-
-
 	var skybox = AssetDB.random_asset("TabletopClub", "skyboxes", true)
 	if not skybox.empty():
 		set_skybox(skybox)
@@ -2096,9 +2094,9 @@ func _on_container_absorbing_hovered(container: PieceContainer, player_id: int) 
 		# TODO: Optimize this by using groups?
 		for piece in _pieces.get_children():
 			if piece is Piece:
-				if piece.srv_get_hover_player() == player_id:
+				if piece.hover_player == player_id:
 					names.append(piece.name)
-					if piece.srv_get_hover_offset() == Vector3.ZERO:
+					if piece.hover_offset == Vector3.ZERO:
 						main = piece
 
 		if main != null:
