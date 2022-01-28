@@ -61,7 +61,13 @@ var hover_position = Vector3.ZERO
 
 var srv_retrieve_from_hell: bool = true
 
-var _last_server_state = {}
+# The physics state sent by the server is sent as a pair of Basis: the first
+# contanining angular velocity, linear velocity and the origin - the second
+# containing the transform basis. This format reduces the size of the packets
+# that are sent to the clients.
+var _last_server_state_0: Basis
+var _last_server_state_1: Basis
+var _last_server_state_invalid: bool = true
 var _last_slow_table_collision = 0.0
 
 var _last_velocity = Vector3()
@@ -333,12 +339,17 @@ remotesync func set_hover_position(new_hover_position: Vector3) -> void:
 	sleeping = false
 
 # Called by the server to store the server's physics state locally.
-# state: The server's physics state for this piece.
-puppet func set_latest_server_physics_state(state: Dictionary) -> void:
+# NOTE: "ss" stands for "set state", the reason for the short name is to reduce
+# the size of the packet that is sent to the clients.
+# basis0: The angular velocity, the linear velocity, and the transform origin.
+# basis1: The transform basis.
+puppet func ss(basis0: Basis, basis1: Basis) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	_last_server_state = state
+	_last_server_state_0 = basis0
+	_last_server_state_1 = basis1
+	_last_server_state_invalid = false
 	sleeping = false
 
 # Set the color of the piece's outline.
@@ -408,7 +419,7 @@ remotesync func stop_hovering() -> void:
 		custom_integrator = false
 	
 	# The last server state will be out of date, so reset it here.
-	_last_server_state = {}
+	_last_server_state_invalid = true
 
 # Lock the piece server-side.
 func srv_lock() -> void:
@@ -461,8 +472,9 @@ func _physics_process(_delta):
 	_new_velocity  = linear_velocity
 	
 	if get_tree().is_network_server():
-		if not (sleeping or is_hovering() or is_locked()):
-			rpc_unreliable("set_latest_server_physics_state", _last_server_state)
+		if not _last_server_state_invalid:
+			if not (sleeping or is_hovering() or is_locked()):
+				rpc_unreliable("ss", _last_server_state_0, _last_server_state_1)
 
 # Apply forces to the piece to get it to the desired hover position and
 # orientation.
@@ -498,25 +510,22 @@ func _integrate_forces(state):
 			
 			# The server piece needs to keep track of its physics properties in
 			# order to send it to the client.
-			_last_server_state = {
-				"angular_velocity": state.angular_velocity,
-				"linear_velocity": state.linear_velocity,
-				"transform": state.transform
-			}
+			_last_server_state_0 = Basis(state.angular_velocity,
+				state.linear_velocity, state.transform.origin)
+			_last_server_state_1 = state.transform.basis
+			_last_server_state_invalid = false
 		
 		else:
 			# The client, if it has received a new physics state from the
 			# server, needs to update it here.
-			
-			if _last_server_state.has("angular_velocity"):
-				state.angular_velocity = _last_server_state["angular_velocity"]
-			if _last_server_state.has("linear_velocity"):
-				state.linear_velocity = _last_server_state["linear_velocity"]
-			if _last_server_state.has("transform"):
+			if not _last_server_state_invalid:
+				state.angular_velocity = _last_server_state_0.x
+				state.linear_velocity = _last_server_state_0.y
 				
-				# For the transform, we want to lerp into the new state to make it
-				# as smooth as possible, even if the server fails to send the state.
-				var server_transform = _last_server_state["transform"]
+				# For the transform, we want to lerp into the new state to make
+				# it as smooth as possible, even if the server fails to send
+				# the state.
+				var server_transform = Transform(_last_server_state_1, _last_server_state_0.z)
 				var origin = transform.origin.linear_interpolate(server_transform.origin, TRANSFORM_LERP_ALPHA)
 				var client_quat = Quat(transform.basis)
 				var server_quat = Quat(server_transform.basis)
@@ -544,7 +553,7 @@ func _on_body_entered(body):
 func _on_tree_entered() -> void:
 	# If the piece just entered the tree, then reset the last server state,
 	# because it's very likely that it's wrong now.
-	_last_server_state = {}
+	_last_server_state_invalid = true
 
 func _on_tree_exiting() -> void:
 	emit_signal("piece_exiting_tree", self)
