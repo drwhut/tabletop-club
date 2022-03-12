@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-07-01 20:34+0100\n"
-"PO-Revision-Date: 2022-03-01 18:59+0000\n"
+"PO-Revision-Date: 2022-03-13 03:58+0000\n"
 "Last-Translator: Leona 'leo' Gottfried <s6573328@stud.uni-frankfurt.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "game/de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.1-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:28
@@ -154,7 +154,7 @@ msgstr "5 Minuten"
 
 #: ../Scenes/OptionsMenu.tscn:428
 msgid "Autosave File Count"
-msgstr ""
+msgstr "Anzahl der Autosave-Dateien"
 
 #: ../Scenes/OptionsMenu.tscn:465
 msgid "Open Assets Folder"
@@ -170,7 +170,7 @@ msgstr "Lizenz anzeigen"
 
 #: ../Scenes/OptionsMenu.tscn:505
 msgid "Key Bindings"
-msgstr ""
+msgstr "Tastenbelegungen"
 
 #: ../Scenes/OptionsMenu.tscn:519
 msgid "Move Forward"
@@ -182,11 +182,11 @@ msgstr "Rückwärts bewegen"
 
 #: ../Scenes/OptionsMenu.tscn:552
 msgid "Move Left"
-msgstr ""
+msgstr "Links"
 
 #: ../Scenes/OptionsMenu.tscn:569
 msgid "Move Right"
-msgstr ""
+msgstr "Rechts"
 
 #: ../Scenes/OptionsMenu.tscn:586
 msgid "Rotate Camera"
@@ -198,7 +198,7 @@ msgstr "Kamera zurücksetzen"
 
 #: ../Scenes/OptionsMenu.tscn:620
 msgid "Flip Piece Orientation"
-msgstr ""
+msgstr "Spielstein umdrehen"
 
 #: ../Scenes/OptionsMenu.tscn:637
 msgid "Reset Piece Orientation"
@@ -206,7 +206,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:654
 msgid "Lock/Unlock Piece"
-msgstr ""
+msgstr "Spielstein ent-/sperren"
 
 #: ../Scenes/OptionsMenu.tscn:671
 msgid "Delete Piece"
@@ -214,15 +214,15 @@ msgstr "Spielstein entfernen"
 
 #: ../Scenes/OptionsMenu.tscn:688
 msgid "Toggle Debug Info"
-msgstr ""
+msgstr "Debug-Info umschalten"
 
 #: ../Scenes/OptionsMenu.tscn:705
 msgid "Quicksave"
-msgstr ""
+msgstr "Schnellspeichern"
 
 #: ../Scenes/OptionsMenu.tscn:722
 msgid "Quickload"
-msgstr ""
+msgstr "Schnellladen"
 
 #: ../Scenes/OptionsMenu.tscn:739
 msgid "Toggle UI"
@@ -262,7 +262,7 @@ msgstr "Vulgäre Ausdrücke zensieren"
 
 #: ../Scenes/OptionsMenu.tscn:872
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: ../Scenes/OptionsMenu.tscn:886
 msgid "Window Mode"
@@ -278,7 +278,7 @@ msgstr "Sichtfeld"
 
 #: ../Scenes/OptionsMenu.tscn:923
 msgid "VSync"
-msgstr ""
+msgstr "Vsync"
 
 #: ../Scenes/OptionsMenu.tscn:938
 msgid "Shadow Detail"
@@ -612,7 +612,7 @@ msgstr "<kein Name>"
 
 #: ../Scripts/MainMenu.gd:48
 msgid "Alpha Testers"
-msgstr ""
+msgstr "Alpha Tester*innen"
 
 #: ../Scripts/MainMenu.gd:49
 msgid "Contributors"
@@ -620,11 +620,11 @@ msgstr "Mitwirkende"
 
 #: ../Scripts/MainMenu.gd:50
 msgid "Cursors"
-msgstr ""
+msgstr "Zeiger"
 
 #: ../Scripts/MainMenu.gd:51
 msgid "Developers"
-msgstr ""
+msgstr "Entwickler*innen"
 
 #: ../Scripts/MainMenu.gd:52
 msgid "Fonts"
@@ -656,7 +656,7 @@ msgstr "Ungültiger Raumcode!"
 
 #: ../Scripts/OptionsMenu.gd:29
 msgid "System Default"
-msgstr ""
+msgstr "Systemvoreinstellung"
 
 #: ../Scripts/RandomMusicPlayer.gd:34
 msgid "Nothing"
@@ -673,15 +673,15 @@ msgstr "Ausgewählte Objekte hinzufügen..."
 
 #: ../Scripts/Game/CameraController.gd:930
 msgid "Put in hand"
-msgstr ""
+msgstr "In die Hand nehmen"
 
 #: ../Scripts/Game/CameraController.gd:934
 msgid "Collect individuals"
-msgstr ""
+msgstr "Einzelne aufnehmen"
 
 #: ../Scripts/Game/CameraController.gd:935
 msgid "Collect all"
-msgstr ""
+msgstr "Alle aufnehmen"
 
 #: ../Scripts/Game/CameraController.gd:939
 msgid "Deal cards"
@@ -689,7 +689,7 @@ msgstr "Karten austeilen"
 
 #: ../Scripts/Game/CameraController.gd:942
 msgid "Take off top"
-msgstr ""
+msgstr "Von oben nehmen"
 
 #: ../Scripts/Game/CameraController.gd:945
 msgid "Orient all up"
@@ -713,7 +713,7 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:973
 msgid "Collect selected"
-msgstr ""
+msgstr "Ausgewählte sammeln"
 
 #: ../Scripts/Game/CameraController.gd:977
 msgid "Add objects..."
@@ -729,11 +729,11 @@ msgstr "Objekte herausnehmen"
 
 #: ../Scripts/Game/CameraController.gd:995
 msgid "Speaker"
-msgstr ""
+msgstr "Lautsprecher"
 
 #: ../Scripts/Game/CameraController.gd:1017
 msgid "Cut"
-msgstr ""
+msgstr "Ausschneiden"
 
 #: ../Scripts/Game/CameraController.gd:1018
 msgid "Copy"
@@ -759,11 +759,11 @@ msgstr "Löschen"
 
 #: ../Scripts/Game/CameraController.gd:1050
 msgid "Set spawn point here"
-msgstr ""
+msgstr "Spawnpunkt hier setzen"
 
 #: ../Scripts/Game/CameraController.gd:1051
 msgid "Spawn object here"
-msgstr ""
+msgstr "Objekt hier spawnen"
 
 #: ../Scripts/Game/CameraController.gd:1070
 #, python-format
@@ -816,7 +816,7 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1102
 msgid "Move Mouse"
-msgstr ""
+msgstr "Bewege die Maus"
 
 #: ../Scripts/Game/CameraController.gd:1103
 msgid "Stop grabbing"
@@ -942,7 +942,7 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1199
 msgid "Reset camera"
-msgstr ""
+msgstr "Kamera zurücksetzen"
 
 #: ../Scripts/Game/CameraController.gd:1341
 msgid "Pause track"
@@ -984,19 +984,19 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1380
 msgid "Stop countdown"
-msgstr ""
+msgstr "Stoppe Countdown"
 
 #: ../Scripts/Game/CameraController.gd:1382
 msgid "Start countdown"
-msgstr ""
+msgstr "Starte Countdown"
 
 #: ../Scripts/Game/CameraController.gd:1386
 msgid "Stop stopwatch"
-msgstr ""
+msgstr "Stoppe Stoppuhr"
 
 #: ../Scripts/Game/CameraController.gd:1388
 msgid "Start stopwatch"
-msgstr ""
+msgstr "Starte Stoppuhr"
 
 #: ../Scripts/Game/Game.gd:125
 msgid "Loaded table has no version information. Load anyway?"
@@ -1020,20 +1020,20 @@ msgstr "Verbinde zum Hauptserver …"
 #: ../Scripts/Game/Game.gd:305
 #, python-format
 msgid "Could not open the file at path '%s' (error %d)."
-msgstr ""
+msgstr "Konnte Datei in Pfad '%s' nicht öffnen (Fehler %d)."
 
 #: ../Scripts/Game/Game.gd:344
 msgid "Establishing connection with the host..."
-msgstr ""
+msgstr "Verbinde mit Host..."
 
 #: ../Scripts/Game/Game.gd:354
 #, python-format
 msgid "Disconnected from the server! Code: %d Reason: %s"
-msgstr ""
+msgstr "Verbindung zum Server getrennt! Code: %d Grund %s"
 
 #: ../Scripts/Game/Game.gd:429
 msgid "Room has been closed by the host."
-msgstr ""
+msgstr "Der Raum wurde durch den Host geschlossen."
 
 #: ../Scripts/Game/MasterServer.gd:42
 msgid "Could not connect to the master server."
@@ -1041,112 +1041,110 @@ msgstr "Keine Verbindung zum Hauptserver möglich."
 
 #: ../Scripts/Game/MasterServer.gd:43
 msgid "Have not joined a room yet."
-msgstr ""
+msgstr "Noch keinem Raum beigetreten."
 
 #: ../Scripts/Game/MasterServer.gd:44
 msgid "Host has disconnected from the room."
-msgstr ""
+msgstr "Host hat die Verbindung zum Raum getrennt."
 
 #: ../Scripts/Game/MasterServer.gd:45
 msgid "Only the host can seal the room."
-msgstr ""
+msgstr "Nur der Host kann den Raum verschließen."
 
 #: ../Scripts/Game/MasterServer.gd:46
 msgid "Too many rooms are open."
-msgstr ""
+msgstr "Es sind zu viele Räume offen."
 
 #: ../Scripts/Game/MasterServer.gd:47
 msgid "Already in a room."
-msgstr ""
+msgstr "Schon in einem Raum."
 
 #: ../Scripts/Game/MasterServer.gd:48
 msgid "Room does not exist."
-msgstr ""
+msgstr "Raum existiert nicht."
 
 #: ../Scripts/Game/MasterServer.gd:49
 msgid "Room is sealed."
-msgstr ""
+msgstr "Raum ist verschlossen."
 
 #: ../Scripts/Game/MasterServer.gd:50
 msgid "Message format is invalid."
-msgstr ""
+msgstr "Nachrichtenformat ist ungültig."
 
 #: ../Scripts/Game/MasterServer.gd:51
 msgid "Message is invalid when not in a room."
-msgstr ""
+msgstr "Nachricht ist ungültig, solange nicht in einem Raum."
 
 #: ../Scripts/Game/MasterServer.gd:52
 msgid "Internal server error."
-msgstr ""
+msgstr "Interner Server-Fehler."
 
 #: ../Scripts/Game/MasterServer.gd:53
 msgid "Invalid destination."
-msgstr ""
+msgstr "Ungültiges Ziel."
 
 #: ../Scripts/Game/MasterServer.gd:54
 msgid "Invalid command."
-msgstr ""
+msgstr "Ungültiger Befehl."
 
 #: ../Scripts/Game/MasterServer.gd:55
 msgid "Too many players connected."
-msgstr ""
+msgstr "Zu viele Spieler*innen verbunden."
 
 #: ../Scripts/Game/MasterServer.gd:56
 msgid "Transfer mode is invalid."
-msgstr ""
+msgstr "Übertragungsmodus ist ungültig."
 
 #: ../Scripts/Game/UI/ChatBox.gd:109
 msgid "Server: "
-msgstr ""
+msgstr "Server: "
 
 #: ../Scripts/Game/UI/ChatBox.gd:157
 #, python-format
 msgid "%s has joined the game."
-msgstr ""
+msgstr "%s ist dem Spiel beigetreten."
 
 #: ../Scripts/Game/UI/ChatBox.gd:165
 #, python-format
 msgid "%s changed their name to %s"
-msgstr ""
+msgstr "%s änderte seinen*ihren Namen zu %s"
 
 #: ../Scripts/Game/UI/ChatBox.gd:169
 #, python-format
 msgid "%s has left the game."
-msgstr ""
+msgstr "%s hat das Spiel verlassen."
 
 #: ../Scripts/Game/UI/GameUI.gd:163
 #, python-format
 msgid "Room Code: [b]%s[/b]"
-msgstr ""
+msgstr "Raum-Code: [b]%s[/b]"
 
 #: ../Scripts/Game/UI/GameUI.gd:167
 msgid "Hide Room Code"
-msgstr ""
+msgstr "Raum-Code verstecken"
 
 #: ../Scripts/Game/UI/GameUI.gd:169
 msgid "Show Room Code"
-msgstr ""
+msgstr "Raum-Code anzeigen"
 
 #: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:40
 #, python-format
 msgid "Contents of %s"
-msgstr ""
+msgstr "Inhalt von %s"
 
 #: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:45
 #, python-format
 msgid "%s is empty."
-msgstr ""
+msgstr "%s is leer."
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:114
 #, python-format
 msgid "Modified: %s"
-msgstr ""
+msgstr "Modifiziert: %s"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:157
-#, fuzzy
-#| msgid "Save game"
 msgid "Save a file"
-msgstr "Spiel sichern"
+msgstr "Eine Datei speichern"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:157
 msgid "Load a file"
@@ -1174,20 +1172,20 @@ msgstr "Datei Löschen?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:210
 msgid "Overwrite file?"
-msgstr ""
+msgstr "Datei überschreiben?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:218
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:254
 msgid "Rename"
-msgstr ""
+msgstr "Umbenennen"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:219
 msgid "Duplicate"
-msgstr ""
+msgstr "Duplizieren"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:225
 msgid "Invalid name!"
-msgstr ""
+msgstr "Ungültiger Name!"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:227
 #, python-format
@@ -1195,33 +1193,35 @@ msgid ""
 "File names cannot contain any of the following characters:\n"
 "%s"
 msgstr ""
+"Dateinamen können keine der folgenden Zeichen enthalten:\n"
+"%s"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:233
 msgid "Rename file..."
-msgstr ""
+msgstr "Datei umbenennen…"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:243
 msgid "Please enter a new name for the file:"
-msgstr ""
+msgstr "Bitte einen Namen für die Datei eingeben:"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:363
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr ""
+msgstr "Soll '%s' wirklich gelöscht werden?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:376
 #, python-format
 msgid "The file '%s' already exists. Are you sure you want to overwrite it?"
-msgstr ""
+msgstr "Die Datei '%s' existiert bereits. Wirklich überschreiben?"
 
 #: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:107
 #, python-format
 msgid "Page %d/%d"
-msgstr ""
+msgstr "Seite %d %d"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:221
 msgid "Cards"
-msgstr ""
+msgstr "Karten"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:222
 msgid "Containers"
@@ -1229,15 +1229,15 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:223
 msgid "Dice - d4"
-msgstr ""
+msgstr "Würfel - w4"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:224
 msgid "Dice - d6"
-msgstr ""
+msgstr "Würfel - w6"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:225
 msgid "Dice - d8"
-msgstr ""
+msgstr "Würfel - w8"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:227
 msgid "Music"
