@@ -1710,6 +1710,10 @@ func _physics_process(_delta):
 		return
 
 	if get_tree().is_network_server():
+		# TODO: This does not need to be done every frame, find a way to run
+		# this just whenever the number of active pieces changes.
+		_srv_update_bandwidth_throttle()
+		
 		if _srv_hand_setup_frames >= 0:
 			_srv_hand_setup_frames -= 1
 
@@ -2085,6 +2089,19 @@ func _set_hidden_area_transform(hidden_area: HiddenArea, point1: Vector2, point2
 	# We're assuming here that the hidden area is never rotated.
 	hidden_area.transform.basis.x.x = point_dif.x / 2
 	hidden_area.transform.basis.z.z = point_dif.y / 2
+
+# Update the rate at which state updates are sent to the client, based on the
+# number of active pieces in the room.
+func _srv_update_bandwidth_throttle() -> void:
+	# TODO: Instead of using the total number of pieces, use the number of
+	# pieces that are NOT sleeping. This could be done with
+	# PhysicsServer.get_process_info, but it has not been implemented with the
+	# Bullet physics engine.
+	# See: https://github.com/godotengine/godot/issues/59279
+	var physics_frames_per_update = floor(1.0 + _pieces.get_child_count() / Global.SRV_PIECE_UPDATE_TRANSMIT_LIMIT)
+	if Global.srv_num_physics_frames_per_state_update != physics_frames_per_update:
+		Global.srv_num_physics_frames_per_state_update = physics_frames_per_update
+		print("State update rate set to %dHz." % (60 / physics_frames_per_update))
 
 func _on_container_absorbing_hovered(container: PieceContainer, player_id: int) -> void:
 	if get_tree().is_network_server():

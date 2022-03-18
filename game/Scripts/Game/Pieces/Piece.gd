@@ -472,9 +472,10 @@ func _physics_process(_delta):
 	_new_velocity  = linear_velocity
 	
 	if get_tree().is_network_server():
-		if not _last_server_state_invalid:
-			if not (sleeping or is_hovering() or is_locked()):
-				rpc_unreliable("ss", _last_server_state_0, _last_server_state_1)
+		if Engine.get_physics_frames() % Global.srv_num_physics_frames_per_state_update == 0:
+			if not _last_server_state_invalid:
+				if not (sleeping or is_hovering() or is_locked()):
+					rpc_unreliable("ss", _last_server_state_0, _last_server_state_1)
 
 # Apply forces to the piece to get it to the desired hover position and
 # orientation.
@@ -534,6 +535,8 @@ func _integrate_forces(state):
 				var new_transform = Transform(lerp_quat)
 				new_transform.origin = origin
 				state.transform = new_transform
+				
+				_last_server_state_invalid = true
 
 func _on_body_entered(body):
 	# If we collided with another object...

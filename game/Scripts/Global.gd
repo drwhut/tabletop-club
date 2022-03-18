@@ -34,6 +34,11 @@ const LOADING_BLOCK_TIME = 20
 
 var system_locale: String = ""
 
+# Throttle the piece state transmissions if there are many active physics
+# objects.
+const SRV_PIECE_UPDATE_TRANSMIT_LIMIT = 20
+var srv_num_physics_frames_per_state_update: int = 1
+
 var _current_scene: Node = null
 var _loader: ResourceInteractiveLoader = null
 var _loader_args: Dictionary = {}
@@ -243,6 +248,8 @@ func _set_scene(scene: Node, args: Dictionary) -> void:
 			_current_scene.start_host()
 		MODE_SINGLEPLAYER:
 			_current_scene.start_singleplayer()
+	
+	srv_num_physics_frames_per_state_update = 1
 
 # Terminate the network peer if it exists.
 # NOTE: This function should be called via call_deferred.
