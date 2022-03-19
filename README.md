@@ -1,4 +1,6 @@
-# Tabletop Club
+<p align="center">
+  <img src="tabletop_club_logo.svg" width="256">
+</p>
 
 Tabletop Club is an open-source multiplayer game that allows you to play your
 favourite tabletop games in a physics-driven 3D environment with the use of
