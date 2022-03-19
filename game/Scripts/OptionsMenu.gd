@@ -27,6 +27,7 @@ signal locale_changed(locale)
 
 var LOCALES = [
 	{ "locale": "", "name": tr("System Default") },
+	{ "locale": "de", "name": "Deutsch" },
 	{ "locale": "en", "name": "English" },
 	{ "locale": "fr", "name": "Français" }
 ]
