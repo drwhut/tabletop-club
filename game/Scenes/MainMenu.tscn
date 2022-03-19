@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scripts/Misc/VersionLabel.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Misc/CopyrightLabel.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fonts/Cabin-Italic.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Scenes/RandomMusicPlayer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tabletop_club_logo.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/MainMenuFont.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Images/InfoIcon.svg" type="Texture" id=9]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -16,69 +17,240 @@ __meta__ = {
 "_editor_description_": "The main menu of the game."
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="MainView" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainList" type="VBoxContainer" parent="MainView"]
+margin_left = 384.0
+margin_right = 640.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="MainView/MainList"]
+margin_right = 256.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 256, 256 )
+texture = ExtResource( 7 )
+expand = true
+
+[node name="SingleplayerButton" type="Button" parent="MainView/MainList"]
+margin_top = 260.0
+margin_right = 256.0
+margin_bottom = 291.0
+custom_fonts/font = ExtResource( 8 )
+text = "Singleplayer"
+
+[node name="MultiplayerButton" type="Button" parent="MainView/MainList"]
+margin_top = 295.0
+margin_right = 256.0
+margin_bottom = 326.0
+custom_fonts/font = ExtResource( 8 )
+text = "Multiplayer"
+
+[node name="OptionsButton" type="Button" parent="MainView/MainList"]
+margin_top = 330.0
+margin_right = 256.0
+margin_bottom = 361.0
+custom_fonts/font = ExtResource( 8 )
+text = "Options"
+
+[node name="CreditsButton" type="Button" parent="MainView/MainList"]
+margin_top = 365.0
+margin_right = 256.0
+margin_bottom = 396.0
+custom_fonts/font = ExtResource( 8 )
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="MainView/MainList"]
+margin_top = 400.0
+margin_right = 256.0
+margin_bottom = 431.0
+custom_fonts/font = ExtResource( 8 )
+text = "Quit"
+
+[node name="Gap" type="Control" parent="MainView/MainList"]
+margin_top = 435.0
+margin_right = 256.0
+margin_bottom = 564.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainView/MainList"]
+margin_top = 568.0
+margin_right = 256.0
+margin_bottom = 600.0
+alignment = 2
+
+[node name="InfoButton" type="Button" parent="MainView/MainList/HBoxContainer"]
+margin_left = 224.0
+margin_right = 256.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+icon = ExtResource( 9 )
+expand_icon = true
+
+[node name="MultiplayerDialog" type="WindowDialog" parent="."]
+margin_right = 431.0
+margin_bottom = 121.0
+window_title = "Multiplayer"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MultiplayerDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HostGameContainer" type="VBoxContainer" parent="MultiplayerDialog/HBoxContainer"]
+margin_right = 213.0
+margin_bottom = 121.0
+size_flags_horizontal = 3
+
+[node name="HostGameButton" type="Button" parent="MultiplayerDialog/HBoxContainer/HostGameContainer"]
+margin_right = 213.0
+margin_bottom = 26.0
+text = "Host Game"
+
+[node name="HostGameLabel" type="Label" parent="MultiplayerDialog/HBoxContainer/HostGameContainer"]
+margin_top = 30.0
+margin_right = 213.0
+margin_bottom = 96.0
+text = "Create a new lobby for your friends to join over the internet."
+autowrap = true
+
+[node name="EnterCodeContainer" type="VBoxContainer" parent="MultiplayerDialog/HBoxContainer"]
+margin_left = 217.0
+margin_right = 431.0
+margin_bottom = 121.0
+size_flags_horizontal = 3
+
+[node name="EnterCodeButton" type="Button" parent="MultiplayerDialog/HBoxContainer/EnterCodeContainer"]
+margin_right = 214.0
+margin_bottom = 26.0
+text = "Join Game"
+
+[node name="EnterCodeLabel" type="Label" parent="MultiplayerDialog/HBoxContainer/EnterCodeContainer"]
+margin_top = 30.0
+margin_right = 214.0
+margin_bottom = 73.0
+text = "Use a room code to join your friend's lobby."
+autowrap = true
+
+[node name="EnterCodeDialog" type="WindowDialog" parent="."]
+margin_right = 177.0
+margin_bottom = 63.0
+window_title = "Enter Room Code"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnterCodeDialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 438.0
-margin_top = 210.0
-margin_right = 585.0
-margin_bottom = 390.0
-
-[node name="SingleplayerButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_right = 147.0
-margin_bottom = 26.0
-text = "Singleplayer"
-
-[node name="HostGameButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 30.0
-margin_right = 147.0
-margin_bottom = 56.0
-text = "Host Game"
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="JoinContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 60.0
-margin_right = 147.0
-margin_bottom = 90.0
-
-[node name="RoomCodeEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/JoinContainer"]
-margin_right = 60.0
+[node name="RoomCodeContainer" type="HBoxContainer" parent="EnterCodeDialog/VBoxContainer"]
+margin_right = 177.0
 margin_bottom = 30.0
-rect_min_size = Vector2( 60, 0 )
+
+[node name="RoomCodeLabel" type="Label" parent="EnterCodeDialog/VBoxContainer/RoomCodeContainer"]
+margin_top = 5.0
+margin_right = 85.0
+margin_bottom = 25.0
+text = "Room Code:"
+
+[node name="RoomCodeEdit" type="LineEdit" parent="EnterCodeDialog/VBoxContainer/RoomCodeContainer"]
+margin_left = 89.0
+margin_right = 177.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
 align = 1
 max_length = 4
 placeholder_text = "ABCD"
 
-[node name="JoinGameButton" type="Button" parent="CenterContainer/VBoxContainer/JoinContainer"]
-margin_left = 64.0
-margin_right = 147.0
-margin_bottom = 30.0
+[node name="JoinGameButton" type="Button" parent="EnterCodeDialog/VBoxContainer"]
+margin_top = 34.0
+margin_right = 177.0
+margin_bottom = 60.0
 text = "Join Game"
 
-[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 94.0
-margin_right = 147.0
-margin_bottom = 120.0
-text = "Options"
+[node name="InfoDialog" type="WindowDialog" parent="."]
+margin_right = 720.0
+margin_bottom = 450.0
+window_title = "Information"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 124.0
-margin_right = 147.0
-margin_bottom = 150.0
-text = "Credits"
+[node name="ScrollContainer" type="ScrollContainer" parent="InfoDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 154.0
-margin_right = 147.0
-margin_bottom = 180.0
-text = "Quit"
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoDialog/ScrollContainer"]
+margin_right = 720.0
+margin_bottom = 618.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoLogoContainer" type="HBoxContainer" parent="InfoDialog/ScrollContainer/VBoxContainer"]
+margin_right = 708.0
+margin_bottom = 128.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="InfoDialog/ScrollContainer/VBoxContainer/InfoLogoContainer"]
+margin_left = 290.0
+margin_right = 418.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 7 )
+expand = true
+
+[node name="VersionLabel" type="Label" parent="InfoDialog/ScrollContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 708.0
+margin_bottom = 157.0
+custom_fonts/font = ExtResource( 8 )
+align = 1
+
+[node name="LicenseLabel" type="Label" parent="InfoDialog/ScrollContainer/VBoxContainer"]
+margin_top = 161.0
+margin_right = 708.0
+margin_bottom = 618.0
+text = "Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows.
+Copyright (c) 2021 Tabletop Club contributors (see credits).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE."
+autowrap = true
 
 [node name="CreditsDialog" type="WindowDialog" parent="."]
 margin_right = 512.0
@@ -103,44 +275,19 @@ margin_bottom = 150.0
 window_title = "Error"
 dialog_autowrap = true
 
-[node name="VersionLabel" type="Label" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -14.0
-margin_right = 40.0
-grow_vertical = 0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": "Automatically displays the name and version of the game based on the project settings."
-}
-
-[node name="CopyrightLabel" type="Label" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -40.0
-margin_top = -14.0
-grow_horizontal = 0
-grow_vertical = 0
-align = 2
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": "Automatically displays the first line of the description of the game in the project settings."
-}
-
 [node name="RandomMusicPlayer" parent="." instance=ExtResource( 6 )]
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
 visible = false
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/SingleplayerButton" to="." method="_on_SingleplayerButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HostGameButton" to="." method="_on_HostGameButton_pressed"]
-[connection signal="text_changed" from="CenterContainer/VBoxContainer/JoinContainer/RoomCodeEdit" to="." method="_on_RoomCodeEdit_text_changed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/JoinContainer/JoinGameButton" to="." method="_on_JoinGameButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/SingleplayerButton" to="." method="_on_SingleplayerButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/MultiplayerButton" to="." method="_on_MultiplayerButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/HBoxContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
+[connection signal="pressed" from="MultiplayerDialog/HBoxContainer/HostGameContainer/HostGameButton" to="." method="_on_HostGameButton_pressed"]
+[connection signal="pressed" from="MultiplayerDialog/HBoxContainer/EnterCodeContainer/EnterCodeButton" to="." method="_on_EnterCodeButton_pressed"]
+[connection signal="text_changed" from="EnterCodeDialog/VBoxContainer/RoomCodeContainer/RoomCodeEdit" to="." method="_on_RoomCodeEdit_text_changed"]
+[connection signal="pressed" from="EnterCodeDialog/VBoxContainer/JoinGameButton" to="." method="_on_JoinGameButton_pressed"]
 [connection signal="locale_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_locale_changed"]

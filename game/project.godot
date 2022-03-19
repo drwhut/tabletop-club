@@ -159,7 +159,8 @@ Copyright (c) 2021 Tabletop Club contributors (see credits).
 An open-source platform for playing tabletop games in a 3D environment, made with the Godot Engine!"
 run/main_scene="res://Scenes/ImportAssets.tscn"
 config/project_settings_override="user://override.cfg"
-config/icon="res://icon.png"
+config/icon="res://tabletop_club_icon.png"
+config/windows_native_icon="res://tabletop_club_icon.ico"
 config/version="master"
 
 [autoload]

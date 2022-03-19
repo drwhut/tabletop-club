@@ -36,7 +36,6 @@ const OPTIONS_FILE_PATH = "user://options.cfg"
 onready var _binding_background = $BindingBackground
 onready var _key_bindings_parent = $"MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"
 onready var _language_button = $MarginContainer/VBoxContainer/TabContainer/General/GridContainer/LanguageButton
-onready var _license_dialog = $LicenseDialog
 onready var _open_assets_button = $MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton
 onready var _reimport_confirm = $ReimportConfirm
 onready var _reset_bindings_confirm = $ResetBindingsConfirm
@@ -523,6 +522,3 @@ func _on_ShadowDetailButton_item_selected(_index: int):
 
 func _on_SoundsVolumeSlider_value_changed(_value: float):
 	_apply_audio_config(_create_config_from_current())
-
-func _on_ViewLicenseButton_pressed():
-	_license_dialog.popup_centered()

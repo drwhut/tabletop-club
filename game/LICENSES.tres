@@ -4,7 +4,14 @@
 
 [resource]
 script = ExtResource( 1 )
-text = "Fonts/Cabin-*.ttf
+text = "tabletop_club_{icon,logo}.png
+=========================
+Author: The Ghost
+License: CC BY-SA 4.0
+Modified By: traverseda
+URL: https://files.outsidecontext.solutions/s/G6aHm9qGPbJzBBH
+
+Fonts/Cabin-*.ttf
 ===========
 Authors: Pablo Impallari, Igino Marini
 License: SIL OFL v1.1
@@ -35,6 +42,12 @@ Author: SVG Repo
 License: CC0
 Modified By: Benjamin \"drwhut\" Beddows
 URL: https://www.svgrepo.com/svg/10764/eye
+
+Images/InfoIcon.svg
+=================
+Author: SVG Repo
+License: CC0
+URL: https://www.svgrepo.com/svg/60892/info
 
 Images/PaintIcon.svg
 ==================

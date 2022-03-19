@@ -24,10 +24,14 @@ extends Control
 
 onready var _credits_dialog = $CreditsDialog
 onready var _credits_label = $CreditsDialog/CreditsLabel
+onready var _enter_code_dialog = $EnterCodeDialog
 onready var _error_dialog = $ErrorDialog
+onready var _info_dialog = $InfoDialog
+onready var _multiplayer_dialog = $MultiplayerDialog
 onready var _options_menu = $OptionsMenu
 onready var _random_music_player = $RandomMusicPlayer
-onready var _room_code_edit = $CenterContainer/VBoxContainer/JoinContainer/RoomCodeEdit
+onready var _room_code_edit = $EnterCodeDialog/VBoxContainer/RoomCodeContainer/RoomCodeEdit
+onready var _version_label = $InfoDialog/ScrollContainer/VBoxContainer/VersionLabel
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -39,6 +43,10 @@ func display_error(error: String) -> void:
 
 func _ready():
 	_update_credits_text()
+	
+	_version_label.text = ProjectSettings.get_setting("application/config/name")
+	if ProjectSettings.has_setting("application/config/version"):
+		_version_label.text += " " + ProjectSettings.get_setting("application/config/version")
 
 # Update the credits dialog text.
 func _update_credits_text() -> void:
@@ -51,6 +59,7 @@ func _update_credits_text() -> void:
 	credits_text = credits_text.replace("DEVELOPERS", tr("Developers"))
 	credits_text = credits_text.replace("FONTS", tr("Fonts"))
 	credits_text = credits_text.replace("IMAGES", tr("Images"))
+	credits_text = credits_text.replace("LOGO AND ICON", tr("Logo and Icon"))
 	credits_text = credits_text.replace("SOUND EFFECTS", tr("Sound Effects"))
 	credits_text = credits_text.replace("TOOL ICONS", tr("Tool Icons"))
 	credits_text = credits_text.replace("TRANSLATORS", tr("Translators"))
@@ -76,8 +85,15 @@ func _update_credits_text() -> void:
 func _on_SingleplayerButton_pressed():
 	Global.start_game_singleplayer()
 
+func _on_MultiplayerButton_pressed():
+	_multiplayer_dialog.popup_centered()
+
 func _on_HostGameButton_pressed():
 	Global.start_game_as_server()
+
+func _on_EnterCodeButton_pressed():
+	_enter_code_dialog.popup_centered()
+	_multiplayer_dialog.visible = false
 
 func _on_RoomCodeEdit_text_changed(new_text: String):
 	var caret_position = _room_code_edit.caret_position
@@ -110,3 +126,6 @@ func _on_CreditsButton_pressed():
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
+
+func _on_InfoButton_pressed():
+	_info_dialog.popup_centered()
