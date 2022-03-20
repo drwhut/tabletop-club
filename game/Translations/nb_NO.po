@@ -26,15 +26,15 @@ msgstr ""
 
 #: ../Scenes/Loading.tscn:34
 msgid "Loading..."
-msgstr ""
+msgstr "Laster inn …"
 
 #: ../Scenes/MainMenu.tscn:48
 msgid "Singleplayer"
-msgstr ""
+msgstr "Enkeltspiller"
 
 #: ../Scenes/MainMenu.tscn:55 ../Scenes/OptionsMenu.tscn:794
 msgid "Multiplayer"
-msgstr ""
+msgstr "Flerspiller"
 
 #: ../Scenes/Game/UI/GameUI.tscn:225 ../Scenes/MainMenu.tscn:62
 msgid "Options"
@@ -50,11 +50,11 @@ msgstr "Avslutt"
 
 #: ../Scenes/MainMenu.tscn:119
 msgid "Host Game"
-msgstr ""
+msgstr "Vertstjen spill"
 
 #: ../Scenes/MainMenu.tscn:125
 msgid "Create a new lobby for your friends to join over the internet."
-msgstr ""
+msgstr "Opprett ny lobby for venner som tar del over Internett."
 
 #: ../Scenes/MainMenu.tscn:137 ../Scenes/MainMenu.tscn:184
 msgid "Join Game"
@@ -90,13 +90,11 @@ msgstr "Lyd-lydstyrke"
 
 #: ../Scenes/OptionsMenu.tscn:114
 #, fuzzy
-#| msgid "Music Volume"
 msgid "Effects Volume"
 msgstr "Musikklydstyrke"
 
 #: ../Scenes/OptionsMenu.tscn:137
 #, fuzzy
-#| msgid "Containers"
 msgid "Controls"
 msgstr "Beholdere"
 
@@ -631,7 +629,6 @@ msgstr ""
 
 #: ../Scripts/MainMenu.gd:57
 #, fuzzy
-#| msgid "Containers"
 msgid "Contributors"
 msgstr "Beholdere"
 
@@ -653,13 +650,11 @@ msgstr "Bilder"
 
 #: ../Scripts/MainMenu.gd:62
 #, fuzzy
-#| msgid "Tool Icons"
 msgid "Logo and Icon"
 msgstr "Verktøyikoner"
 
 #: ../Scripts/MainMenu.gd:63
 #, fuzzy
-#| msgid "Sounds"
 msgid "Sound Effects"
 msgstr "Lyder"
 
@@ -698,7 +693,6 @@ msgstr "Spiller nå: %s"
 
 #: ../Scripts/Game/CameraController.gd:913
 #, fuzzy
-#| msgid "Added %d objects."
 msgid "Add selected objects..."
 msgstr "La til %d objekter."
 
@@ -740,7 +734,6 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:961
 #, fuzzy
-#| msgid "Timers"
 msgid "Timer"
 msgstr "Tidsur"
 
@@ -750,7 +743,6 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:981
 #, fuzzy
-#| msgid "Added %d objects."
 msgid "Add objects..."
 msgstr "La til %d objekter."
 
@@ -929,7 +921,6 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1158
 #, fuzzy
-#| msgid "Objects"
 msgid "Object menu"
 msgstr "Objekter"
 
@@ -1181,25 +1172,21 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:157
 #, fuzzy
-#| msgid "Save game"
 msgid "Save a file"
 msgstr "Lagre spill"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:157
 #, fuzzy
-#| msgid "Load game"
 msgid "Load a file"
 msgstr "Last inn spill"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:160
 #, fuzzy
-#| msgid "Save game"
 msgid "Save"
 msgstr "Lagre spill"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:160
 #, fuzzy
-#| msgid "Load game"
 msgid "Load"
 msgstr "Last inn spill"
 
@@ -1213,7 +1200,6 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:202
 #, fuzzy
-#| msgid "Delete"
 msgid "Delete file?"
 msgstr "Slett"
 
