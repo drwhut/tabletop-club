@@ -122,7 +122,7 @@ text = "Host Game"
 margin_top = 30.0
 margin_right = 213.0
 margin_bottom = 96.0
-text = "Create a new lobby for your friends to join over the internet."
+text = "Create a new lobby for your friends to join over the Internet."
 autowrap = true
 
 [node name="EnterCodeContainer" type="VBoxContainer" parent="MultiplayerDialog/HBoxContainer"]
@@ -230,7 +230,7 @@ align = 1
 margin_top = 161.0
 margin_right = 708.0
 margin_bottom = 618.0
-text = "Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows.
+text = "Copyright (c) 2020–2021 Benjamin 'drwhut' Beddows.
 Copyright (c) 2021 Tabletop Club contributors (see credits).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
