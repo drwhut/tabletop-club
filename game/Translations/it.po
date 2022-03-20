@@ -1,5 +1,5 @@
 # Translations template for OpenTabletop.
-# Copyright (C) 2020-2021 Benjamin 'drwhut' Beddows
+# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows
 # This file is distributed under the same license as the OpenTabletop project.
 # Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2021.
 #

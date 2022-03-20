@@ -153,8 +153,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Tabletop Club"
-config/description="Copyright (c) 2020-2021 Benjamin 'drwhut' Beddows.
-Copyright (c) 2021 Tabletop Club contributors (see credits).
+config/description="Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows.
+Copyright (c) 2021-2022 Tabletop Club contributors (see credits).
 
 An open-source platform for playing tabletop games in a 3D environment, made with the Godot Engine!"
 run/main_scene="res://Scenes/ImportAssets.tscn"
