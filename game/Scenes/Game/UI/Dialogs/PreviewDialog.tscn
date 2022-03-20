@@ -13,7 +13,6 @@ margin_top = -300.0
 margin_right = 120.0
 margin_bottom = 174.0
 rect_min_size = Vector2( 570, 350 )
-popup_exclusive = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
