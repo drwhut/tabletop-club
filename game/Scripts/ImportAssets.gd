@@ -24,6 +24,7 @@ extends Control
 
 onready var _importing_label = $VBoxContainer/ImportingLabel
 onready var _missing_assets_popup = $MissingAssetsPopup
+onready var _missing_module_popup = $MissingModulePopup
 onready var _progress_bar = $VBoxContainer/ProgressBar
 
 func _ready():
@@ -44,7 +45,11 @@ func _ready():
 	AssetDB.connect("completed", self, "_on_importing_completed")
 	AssetDB.connect("importing_file", self, "_on_importing_file")
 	
-	AssetDB.start_importing()
+	# Check to see if the TabletopClub Godot module is loaded.
+	if AssetDB.importer_exists:
+		AssetDB.start_importing()
+	else:
+		_missing_module_popup.popup_centered()
 
 func _on_importing_completed(dir_found: bool) -> void:
 	if dir_found:
@@ -65,4 +70,7 @@ func _on_importing_file(file: String, files_imported: int, files_total: int) -> 
 	_progress_bar.value = float(files_imported) / files_total
 
 func _on_MissingAssetsPopup_popup_hide():
+	Global.start_main_menu()
+
+func _on_MissingModulePopup_popup_hide():
 	Global.start_main_menu()

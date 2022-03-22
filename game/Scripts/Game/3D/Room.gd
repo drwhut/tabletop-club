@@ -419,6 +419,9 @@ func compress_state(state: Dictionary) -> Dictionary:
 remotesync func flip_table(camera_basis: Basis) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
+	
+	if _table_body == null:
+		return
 
 	if get_tree().is_network_server() and _srv_events_add_states:
 		#if not waiting for a timer or disabled because set_state wil be called

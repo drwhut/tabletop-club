@@ -47,4 +47,15 @@ popup_exclusive = true
 window_title = "Missing Asset Folder"
 dialog_autowrap = true
 
+[node name="MissingModulePopup" type="AcceptDialog" parent="."]
+margin_right = 350.0
+margin_bottom = 220.0
+window_title = "Missing Module"
+dialog_text = "This version of Godot does not include the Tabletop Club module, which is required to import assets from the file system.
+
+You can compile this version of Godot to gain access to missing functionality:
+https://github.com/drwhut/godot"
+dialog_autowrap = true
+
 [connection signal="popup_hide" from="MissingAssetsPopup" to="." method="_on_MissingAssetsPopup_popup_hide"]
+[connection signal="popup_hide" from="MissingModulePopup" to="." method="_on_MissingModulePopup_popup_hide"]

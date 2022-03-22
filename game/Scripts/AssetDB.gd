@@ -162,7 +162,8 @@ var _import_thread = Thread.new()
 
 # From the tabletop_club_godot_module:
 # https://github.com/drwhut/tabletop_club_godot_module
-var _importer = TabletopImporter.new()
+var _importer
+var importer_exists: bool = false
 
 # Clear the AssetDB.
 func clear_db() -> void:
@@ -238,6 +239,13 @@ func start_importing() -> void:
 
 func _ready():
 	connect("tree_exiting", self, "_on_exiting_tree")
+	
+	# We might be running this with vanilla Godot!
+	importer_exists = type_exists("TabletopImporter")
+	if importer_exists:
+		_importer = ClassDB.instance("TabletopImporter")
+	else:
+		push_error("TabletopImporter does not exist! Make sure to install the TabletopClub Godot module.")
 
 func _process(_delta):
 	_import_mutex.lock()
@@ -807,6 +815,9 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 # from: The file path of the file to import.
 # to: The path of where to copy the file to.
 func _import_file(from: String, to: String) -> int:
+	if not importer_exists:
+		return ERR_UNAVAILABLE
+	
 	var copy_err = _importer.copy_file(from, to)
 	
 	if copy_err:
