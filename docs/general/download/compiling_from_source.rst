@@ -25,7 +25,7 @@ command in a terminal to download the fork of Godot:
 
 .. code-block:: bash
 
-   git clone --depth 1 --recursive https://github.com/drwhut/godot.git -b tabletop-3.3.4
+   git clone --depth 1 --recursive https://github.com/drwhut/godot.git -b tabletop-3.4.4
 
 .. note::
 
