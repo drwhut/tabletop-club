@@ -68,7 +68,6 @@ func _ready():
 	
 	randomize()
 	_music_queue.shuffle()
-	next_track()
 
 func _on_AudioStreamPlayer_finished():
 	next_track()

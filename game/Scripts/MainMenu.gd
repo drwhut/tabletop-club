@@ -47,6 +47,9 @@ func _ready():
 	_version_label.text = ProjectSettings.get_setting("application/config/name")
 	if ProjectSettings.has_setting("application/config/version"):
 		_version_label.text += " " + ProjectSettings.get_setting("application/config/version")
+	
+	# Start playing the music once every child node is ready.
+	_random_music_player.next_track()
 
 # Update the credits dialog text.
 func _update_credits_text() -> void:
