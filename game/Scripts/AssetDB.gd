@@ -787,6 +787,8 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 		entry["scale"] = scale
 		entry["sfx"] = sfx
 		
+		entry["main_menu"] = _get_file_config_value(config, from.get_file(), "main_menu", false)
+		
 		if type == "cards":
 			var back_path = _get_file_config_value(config, from.get_file(), "back_face", "")
 			if not back_path.empty():

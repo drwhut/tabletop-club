@@ -54,20 +54,31 @@ func _ready():
 	for pack in db:
 		var pack_meta = {}
 		var pack_total = 0
-		var num_packs = 0
+		var num_types = 0
 		for type in db[pack]:
 			var file_type = AssetDB.ASSET_PACK_SUBFOLDERS[type]["type"]
 			if file_type == AssetDB.ASSET_TEXTURE or file_type == AssetDB.ASSET_SCENE:
 				if type != "tables":
-					var type_total = db[pack][type].size()
-					pack_meta[type] = type_total
+					var approved_assets = {
+						"chances": 0,
+						"assets": []
+					}
+					for i in range(db[pack][type].size()):
+						var asset: Dictionary = db[pack][type][i]
+						if asset.has("main_menu"):
+							if asset["main_menu"] == true:
+								approved_assets["assets"].append(i)
+								approved_assets["chances"] += 1
+					
+					var type_total = approved_assets["chances"]
+					pack_meta[type] = approved_assets
 					pack_total += type_total
-					num_packs += 1
+					num_types += 1
 		
 		if pack_total > 0:
 			pack_meta["/total"] = pack_total
 			pack_meta["/chances"] = pack_total
-			pack_meta["/average"] = pack_total / num_packs
+			pack_meta["/average"] = ceil(float(pack_total) / num_types)
 			_asset_chances[pack] = pack_meta
 	
 	if not _asset_chances.empty():
@@ -76,7 +87,7 @@ func _ready():
 			overall_total += _asset_chances[pack]["/total"]
 		_asset_chances["/average"] = overall_total / _asset_chances.size()
 		_asset_chances["/total"] = overall_total
-	
+		
 		# Adjust the chances of picking certain types of assets, so
 		# under-populated assets appear a bit more often.
 		var new_pack_total = 0
@@ -87,21 +98,23 @@ func _ready():
 				var pack_type_average = _asset_chances[pack]["/average"]
 				for type in _asset_chances[pack]:
 					if not type.begins_with("/"):
-						var old_type_chances = _asset_chances[pack][type]
-						var adjustment = BALANCE_ASSETS_RATIO * (pack_type_average - old_type_chances)
-						var new_type_chances = int(0.5*(old_type_chances + adjustment))
-						
-						_asset_chances[pack][type] = new_type_chances
-						new_type_total += new_type_chances
+						var old_type_chances = _asset_chances[pack][type]["chances"]
+						if old_type_chances > 0:
+							var adjustment = BALANCE_ASSETS_RATIO * (pack_type_average - old_type_chances)
+							var new_type_chances = int(old_type_chances + adjustment)
+							
+							_asset_chances[pack][type]["chances"] = new_type_chances
+							new_type_total += new_type_chances
 				
 				_asset_chances[pack]["/total"] = new_type_total
 				
 				var old_pack_chances = _asset_chances[pack]["/chances"]
-				var adjustment = BALANCE_ASSETS_RATIO * (pack_average - old_pack_chances)
-				var new_pack_chances = int(0.5*(old_pack_chances + adjustment))
-				
-				_asset_chances[pack]["/chances"] = new_pack_chances
-				new_pack_total += new_pack_chances
+				if old_pack_chances > 0:
+					var adjustment = BALANCE_ASSETS_RATIO * (pack_average - old_pack_chances)
+					var new_pack_chances = int(old_pack_chances + adjustment)
+					
+					_asset_chances[pack]["/chances"] = new_pack_chances
+					new_pack_total += new_pack_chances
 		
 		_asset_chances["/total"] = new_pack_total
 	
@@ -184,17 +197,15 @@ func _decide_next_piece() -> void:
 			var type_selected = ""
 			for type in _asset_chances[pack_selected]:
 				if not type.begins_with("/"):
-					type_running_total += _asset_chances[pack_selected][type]
+					type_running_total += _asset_chances[pack_selected][type]["chances"]
 					if type_running_total >= rand_type:
 						type_selected = type
 						break
 			
 			if not type_selected.empty():
-				# We don't want to spawn stacks of pieces, just the individual
-				# pieces themselves.
-				_next_piece_entry = { "texture_paths": "" }
-				while _next_piece_entry.has("texture_paths"):
-					_next_piece_entry = AssetDB.random_asset(pack_selected, type_selected)
+				var possible_objects = _asset_chances[pack_selected][type_selected]["assets"]
+				var random_db_index = possible_objects[_rng.randi() % possible_objects.size()]
+				_next_piece_entry = AssetDB.get_db()[pack_selected][type_selected][random_db_index]
 
 func _on_SpawnTimer_timeout():
 	_piece_mutex.lock()
