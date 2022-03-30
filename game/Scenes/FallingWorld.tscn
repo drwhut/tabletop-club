@@ -21,6 +21,7 @@ environment = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
 [node name="Pieces" type="Spatial" parent="."]
