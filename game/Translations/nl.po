@@ -9,42 +9,45 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-03-19 21:50+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-05-22 12:19+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
+"nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:28
 msgid "Importing assets..."
-msgstr ""
+msgstr "Bezig met importeren van spelelementen…"
 
 #: ../Scenes/Loading.tscn:34
 msgid "Loading..."
-msgstr ""
+msgstr "Bezig met laden…"
 
 #: ../Scenes/MainMenu.tscn:48
 msgid "Singleplayer"
-msgstr ""
+msgstr "Eén speler"
 
 #: ../Scenes/MainMenu.tscn:55 ../Scenes/OptionsMenu.tscn:794
 msgid "Multiplayer"
-msgstr ""
+msgstr "Meerdere spelers"
 
 #: ../Scenes/Game/UI/GameUI.tscn:225 ../Scenes/MainMenu.tscn:62
 msgid "Options"
-msgstr ""
+msgstr "Instellingen"
 
 #: ../Scenes/MainMenu.tscn:69
 msgid "Credits"
-msgstr ""
+msgstr "Met dank aan"
 
 #: ../Scenes/MainMenu.tscn:76
 msgid "Quit"
-msgstr ""
+msgstr "Afsluiten"
 
 #: ../Scenes/MainMenu.tscn:119
 msgid "Host Game"
