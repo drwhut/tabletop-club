@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-03-19 21:50+0000\n"
-"PO-Revision-Date: 2022-05-22 12:19+0000\n"
+"PO-Revision-Date: 2022-05-23 13:18+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
 "nl/>\n"
@@ -51,264 +51,264 @@ msgstr "Afsluiten"
 
 #: ../Scenes/MainMenu.tscn:119
 msgid "Host Game"
-msgstr ""
+msgstr "Spel organiseren"
 
 #: ../Scenes/MainMenu.tscn:125
 msgid "Create a new lobby for your friends to join over the internet."
-msgstr ""
+msgstr "Maak een ruimte aan waar je online spellen met je vrienden kunt spelen."
 
 #: ../Scenes/MainMenu.tscn:137 ../Scenes/MainMenu.tscn:184
 msgid "Join Game"
-msgstr ""
+msgstr "Deelnemen aan spel"
 
 #: ../Scenes/MainMenu.tscn:143
 msgid "Use a room code to join your friend's lobby."
-msgstr ""
+msgstr "Voer de kamercode in om mee te spelen."
 
 #: ../Scenes/MainMenu.tscn:169
 msgid "Room Code:"
-msgstr ""
+msgstr "Kamercode:"
 
 #: ../Scenes/MainMenu.tscn:178
 msgid "ABCD"
-msgstr ""
+msgstr "ABCD"
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: ../Scenes/OptionsMenu.tscn:61
 msgid "Master Volume"
-msgstr ""
+msgstr "Hoofdvolume"
 
 #: ../Scenes/OptionsMenu.tscn:78
 msgid "Music Volume"
-msgstr ""
+msgstr "Muziekvolume"
 
 #: ../Scenes/OptionsMenu.tscn:96
 msgid "Sounds Volume"
-msgstr ""
+msgstr "Geluidsvolume"
 
 #: ../Scenes/OptionsMenu.tscn:114
 msgid "Effects Volume"
-msgstr ""
+msgstr "Effectvolume"
 
 #: ../Scenes/OptionsMenu.tscn:137
 msgid "Controls"
-msgstr ""
+msgstr "Bediening"
 
 #: ../Scenes/OptionsMenu.tscn:150
 msgid "Mouse Horizontal Sensitivity"
-msgstr ""
+msgstr "Horizontale muisgevoeligheid"
 
 #: ../Scenes/OptionsMenu.tscn:168
 msgid "Mouse Vertical Sensitivity"
-msgstr ""
+msgstr "Verticale muisgevoeligheid"
 
 #: ../Scenes/OptionsMenu.tscn:187
 msgid "Mouse Horizontal Invert"
-msgstr ""
+msgstr "Horizontale muisgevoeligheid (omgekeerd)"
 
 #: ../Scenes/OptionsMenu.tscn:201
 msgid "Mouse Vertical Invert"
-msgstr ""
+msgstr "Verticale muisgevoeligheid (omgekeerd)"
 
 #: ../Scenes/OptionsMenu.tscn:215
 msgid "Camera Movement Speed"
-msgstr ""
+msgstr "Camerasnelheid"
 
 #: ../Scenes/OptionsMenu.tscn:234
 msgid "Hold Left Click to Move Camera"
-msgstr ""
+msgstr "Camera verplaatsen met linkermuisknop"
 
 #: ../Scenes/OptionsMenu.tscn:248
 msgid "Zoom Sensitivity"
-msgstr ""
+msgstr "Zoomgevoeligheid"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid "Zoom Invert"
-msgstr ""
+msgstr "Zoomgevoeligheid (omgekeerd)"
 
 #: ../Scenes/OptionsMenu.tscn:281
 msgid "Piece Lift Sensitivity"
-msgstr ""
+msgstr "Gevoeligheid bij oppakken van spelstuk"
 
 #: ../Scenes/OptionsMenu.tscn:300
 msgid "Piece Lift Invert"
-msgstr ""
+msgstr "Gevoeligheid bij oppakken van spelstuk (omgekeerd)"
 
 #: ../Scenes/OptionsMenu.tscn:314
 msgid "Piece Rotation Invert"
-msgstr ""
+msgstr "Gevoeligheid bij draaien van spelstuk"
 
 #: ../Scenes/OptionsMenu.tscn:328
 msgid "Hand Preview Enabled"
-msgstr ""
+msgstr "Hand tonen"
 
 #: ../Scenes/OptionsMenu.tscn:343
 msgid "Hand Preview Delay"
-msgstr ""
+msgstr "Wachttijd alvorens hand te tonen"
 
 #: ../Scenes/OptionsMenu.tscn:362
 msgid "Hand Preview Size"
-msgstr ""
+msgstr "Handomvang"
 
 #: ../Scenes/OptionsMenu.tscn:381
 msgid "Hide Control Hints"
-msgstr ""
+msgstr "Tips omtrent het verbergen van de bediening"
 
 #: ../Scenes/OptionsMenu.tscn:400
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 #: ../Scenes/OptionsMenu.tscn:414
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 #: ../Scenes/OptionsMenu.tscn:428
 msgid "Autosave Interval"
-msgstr ""
+msgstr "Automatisch opslaan, elke"
 
 #: ../Scenes/OptionsMenu.tscn:437
 msgid "5 minutes"
-msgstr ""
+msgstr "5 minuten"
 
 #: ../Scenes/OptionsMenu.tscn:446
 msgid "Autosave File Count"
-msgstr ""
+msgstr "Aantal reservekopieën"
 
 #: ../Scenes/OptionsMenu.tscn:483
 msgid "Open Assets Folder"
-msgstr ""
+msgstr "Spelelementmap openen"
 
 #: ../Scenes/OptionsMenu.tscn:497
 msgid "Reimport Assets"
-msgstr ""
+msgstr "Spelelementen opnieuw importeren"
 
 #: ../Scenes/OptionsMenu.tscn:509
 msgid "Key Bindings"
-msgstr ""
+msgstr "Toetsen"
 
 #: ../Scenes/OptionsMenu.tscn:523
 msgid "Move Forward"
-msgstr ""
+msgstr "Vooruit"
 
 #: ../Scenes/OptionsMenu.tscn:539
 msgid "Move Back"
-msgstr ""
+msgstr "Achteruit"
 
 #: ../Scenes/OptionsMenu.tscn:556
 msgid "Move Left"
-msgstr ""
+msgstr "Naar links"
 
 #: ../Scenes/OptionsMenu.tscn:573
 msgid "Move Right"
-msgstr ""
+msgstr "Naar rechts"
 
 #: ../Scenes/OptionsMenu.tscn:590
 msgid "Rotate Camera"
-msgstr ""
+msgstr "Camera draaien"
 
 #: ../Scenes/OptionsMenu.tscn:607
 msgid "Reset Camera"
-msgstr ""
+msgstr "Standaard camerazicht"
 
 #: ../Scenes/OptionsMenu.tscn:624
 msgid "Flip Piece Orientation"
-msgstr ""
+msgstr "Spelstuk omdraaien"
 
 #: ../Scenes/OptionsMenu.tscn:641
 msgid "Reset Piece Orientation"
-msgstr ""
+msgstr "Standaard spelstukkant"
 
 #: ../Scenes/OptionsMenu.tscn:658
 msgid "Lock/Unlock Piece"
-msgstr ""
+msgstr "Spelstuk ver-/ontgrendelen"
 
 #: ../Scenes/OptionsMenu.tscn:675
 msgid "Delete Piece"
-msgstr ""
+msgstr "Spelstuk verwijderen"
 
 #: ../Scenes/OptionsMenu.tscn:692
 msgid "Toggle Debug Info"
-msgstr ""
+msgstr "Foutopsporingsinformatie aan/uit"
 
 #: ../Scenes/OptionsMenu.tscn:709
 msgid "Quicksave"
-msgstr ""
+msgstr "Snel opslaan"
 
 #: ../Scenes/OptionsMenu.tscn:726
 msgid "Quickload"
-msgstr ""
+msgstr "Snel laden"
 
 #: ../Scenes/OptionsMenu.tscn:743
 msgid "Toggle UI"
-msgstr ""
+msgstr "Bediening tonen/verbergen"
 
 #: ../Scenes/OptionsMenu.tscn:760
 msgid "Take Screenshot"
-msgstr ""
+msgstr "Schermfoto maken"
 
 #: ../Scenes/OptionsMenu.tscn:782
 msgid "Reset Bindings"
-msgstr ""
+msgstr "Standaardwaarden herstellen"
 
 #: ../Scenes/OptionsMenu.tscn:808 ../Scripts/Game/UI/Dialogs/SaveDialog.gd:178
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: ../Scenes/OptionsMenu.tscn:816
 msgid "Player"
-msgstr ""
+msgstr "Speler"
 
 #: ../Scenes/OptionsMenu.tscn:823 ../Scripts/Game/CameraController.gd:1018
 msgid "Color"
-msgstr ""
+msgstr "Kleur"
 
 #: ../Scenes/OptionsMenu.tscn:840
 msgid "Hide Player Cursors"
-msgstr ""
+msgstr "Spelercursors verbergen"
 
 #: ../Scenes/OptionsMenu.tscn:855
 msgid "Censor Profanity"
-msgstr ""
+msgstr "Grof taalgebruik censureren"
 
 #: ../Scenes/OptionsMenu.tscn:876
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: ../Scenes/OptionsMenu.tscn:890
 msgid "Window Mode"
-msgstr ""
+msgstr "Venstermodus"
 
 #: ../Scenes/OptionsMenu.tscn:898
 msgid "Windowed"
-msgstr ""
+msgstr "Venster"
 
 #: ../Scenes/OptionsMenu.tscn:907
 msgid "Field of View"
-msgstr ""
+msgstr "Gezichtsveld"
 
 #: ../Scenes/OptionsMenu.tscn:927
 msgid "VSync"
-msgstr ""
+msgstr "Verticale synchronisatie"
 
 #: ../Scenes/OptionsMenu.tscn:942
 msgid "Shadow Detail"
-msgstr ""
+msgstr "Schaduwdetails"
 
 #: ../Scenes/OptionsMenu.tscn:951
 msgid "Medium"
-msgstr ""
+msgstr "Gemiddeld"
 
 #: ../Scenes/OptionsMenu.tscn:960
 msgid "Multisample Anti-Aliasing (MSAA)"
-msgstr ""
+msgstr "Anti-kartelvorming (MSAA)"
 
 #: ../Scenes/OptionsMenu.tscn:969 ../Scenes/OptionsMenu.tscn:987
 #: ../Scenes/OptionsMenu.tscn:1023
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: ../Scenes/OptionsMenu.tscn:978
 msgid "Screen Space Ambient Occlusion (SSAO)"
