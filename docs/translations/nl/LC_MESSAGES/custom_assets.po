@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-01 20:36+0100\n"
-"PO-Revision-Date: 2022-05-23 13:18+0000\n"
+"PO-Revision-Date: 2022-05-30 16:20+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/nl/>\n"
@@ -393,7 +393,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 msgid "Objects"
-msgstr ""
+msgstr "Objecten"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "``#ffffff``"
@@ -646,7 +646,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:88
 msgid "Speaker"
-msgstr ""
+msgstr "Spreker"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:90
 msgid "Speakers are objects that can play audio tracks. They emit sound positionally, so the audio will vary depending on the position of the speaker relative to the camera."
@@ -654,7 +654,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:98
 msgid "Timer"
-msgstr ""
+msgstr "Tijdklok"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:100
 msgid "Timers are objects that can be used as countdowns, stopwatches, or to display the system time. If an audio track is loaded, it will automatically play when the countdown reaches 0."
