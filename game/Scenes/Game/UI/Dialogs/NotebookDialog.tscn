@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Game/UI/Dialogs/NotebookDialog.gd" type="Script" id=1]
+
+[node name="NotebookDialog" type="WindowDialog"]
+margin_right = 500.0
+margin_bottom = 350.0
+window_title = "Notebook"
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+margin_right = 150.0
+margin_bottom = 350.0
+scroll_horizontal_enabled = false
+
+[node name="PageListContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
+margin_right = 150.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 150, 0 )
+
+[node name="PageList" type="ItemList" parent="HBoxContainer/ScrollContainer/PageListContainer"]
+margin_right = 150.0
+margin_bottom = 9.0
+auto_height = true
+
+[node name="NewPageButton" type="Button" parent="HBoxContainer/ScrollContainer/PageListContainer"]
+margin_top = 13.0
+margin_right = 150.0
+margin_bottom = 39.0
+text = "+ New Page"
+clip_text = true
+
+[node name="PageContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 154.0
+margin_right = 500.0
+margin_bottom = 350.0
+size_flags_horizontal = 3
+
+[node name="TitleEdit" type="LineEdit" parent="HBoxContainer/PageContainer"]
+margin_right = 346.0
+margin_bottom = 30.0
+editable = false
+placeholder_text = "Title"
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/PageContainer"]
+margin_top = 34.0
+margin_right = 346.0
+margin_bottom = 350.0
+size_flags_vertical = 3
+readonly = true
+bookmark_gutter = true
+wrap_enabled = true
+
+[connection signal="about_to_show" from="." to="." method="_on_NotebookDialog_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_NotebookDialog_popup_hide"]
+[connection signal="tree_exiting" from="." to="." method="_on_NotebookDialog_tree_exiting"]
+[connection signal="item_activated" from="HBoxContainer/ScrollContainer/PageListContainer/PageList" to="." method="_on_PageList_item_activated"]
+[connection signal="item_selected" from="HBoxContainer/ScrollContainer/PageListContainer/PageList" to="." method="_on_PageList_item_selected"]
+[connection signal="pressed" from="HBoxContainer/ScrollContainer/PageListContainer/NewPageButton" to="." method="_on_NewPageButton_pressed"]
+[connection signal="text_changed" from="HBoxContainer/PageContainer/TitleEdit" to="." method="_on_TitleEdit_text_changed"]
+[connection signal="text_changed" from="HBoxContainer/PageContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]

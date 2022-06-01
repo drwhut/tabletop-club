@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Game/UI/GameUI.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/RoomDialog.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Fonts/Cabin-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Scenes/Game/UI/Dialogs/NotebookDialog.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -26,7 +27,6 @@ anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": "The UI of the game."
 }
 
@@ -43,58 +43,61 @@ anchor_right = 1.0
 margin_bottom = 26.0
 mouse_filter = 2
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ObjectsButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 250.0
-margin_right = 314.0
+margin_left = 210.0
+margin_right = 274.0
 margin_bottom = 26.0
 text = "Objects"
 
 [node name="GamesButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 318.0
-margin_right = 378.0
+margin_left = 278.0
+margin_right = 338.0
 margin_bottom = 26.0
 text = "Games"
 
 [node name="RoomButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 382.0
-margin_right = 436.0
+margin_left = 342.0
+margin_right = 396.0
 margin_bottom = 26.0
 text = "Room"
 
-[node name="UndoButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 440.0
-margin_right = 491.0
+[node name="NotebookButton" type="Button" parent="HideableUI/TopPanel"]
+margin_left = 400.0
+margin_right = 479.0
 margin_bottom = 26.0
-disabled = true
-text = "Undo"
+text = "Notebook"
 
 [node name="FlipTableButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 495.0
-margin_right = 574.0
+margin_left = 483.0
+margin_right = 561.0
 margin_bottom = 26.0
 text = "Flip Table"
 
 [node name="ClearTableButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 578.0
-margin_right = 667.0
+margin_left = 565.0
+margin_right = 653.0
 margin_bottom = 26.0
 text = "Clear Table"
 
+[node name="UndoButton" type="Button" parent="HideableUI/TopPanel"]
+margin_left = 657.0
+margin_right = 708.0
+margin_bottom = 26.0
+disabled = true
+text = "Undo"
+
 [node name="RotationOption" type="OptionButton" parent="HideableUI/TopPanel"]
-margin_left = 671.0
-margin_right = 718.0
+margin_left = 712.0
+margin_right = 759.0
 margin_bottom = 26.0
 text = "45"
 items = [ "15", null, false, 0, null, "30", null, false, 1, null, "45", null, false, 2, null, "60", null, false, 3, null, "90", null, false, 4, null, "180", null, false, 5, null ]
 selected = 2
 
 [node name="GameMenuButton" type="Button" parent="HideableUI/TopPanel"]
-margin_left = 722.0
-margin_right = 773.0
+margin_left = 763.0
+margin_right = 814.0
 margin_bottom = 26.0
 text = "Menu"
 
@@ -172,6 +175,8 @@ status_text_multiple = "Loaded %d games."
 
 [node name="RoomDialog" parent="." instance=ExtResource( 7 )]
 
+[node name="NotebookDialog" parent="." instance=ExtResource( 9 )]
+
 [node name="ClearTableConfirmDialog" type="ConfirmationDialog" parent="."]
 margin_right = 250.0
 margin_bottom = 93.0
@@ -248,9 +253,10 @@ visible = false
 [connection signal="pressed" from="HideableUI/TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
 [connection signal="pressed" from="HideableUI/TopPanel/GamesButton" to="." method="_on_GamesButton_pressed"]
 [connection signal="pressed" from="HideableUI/TopPanel/RoomButton" to="." method="_on_RoomButton_pressed"]
-[connection signal="pressed" from="HideableUI/TopPanel/UndoButton" to="." method="_on_UndoButton_pressed"]
+[connection signal="pressed" from="HideableUI/TopPanel/NotebookButton" to="." method="_on_NotebookButton_pressed"]
 [connection signal="pressed" from="HideableUI/TopPanel/FlipTableButton" to="." method="_on_FlipTableButton_pressed"]
 [connection signal="pressed" from="HideableUI/TopPanel/ClearTableButton" to="." method="_on_ClearTableButton_pressed"]
+[connection signal="pressed" from="HideableUI/TopPanel/UndoButton" to="." method="_on_UndoButton_pressed"]
 [connection signal="item_selected" from="HideableUI/TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
 [connection signal="pressed" from="HideableUI/TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
 [connection signal="pressed" from="HideableUI/MultiplayerContainer/RoomCodeVisibleContainer/RoomCodeToggleButton" to="." method="_on_RoomCodeToggleButton_pressed"]

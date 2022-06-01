@@ -46,6 +46,7 @@ onready var _flip_table_button = $HideableUI/TopPanel/FlipTableButton
 onready var _game_menu_background = $GameMenuBackground
 onready var _games_dialog = $GamesDialog
 onready var _hideable_ui = $HideableUI
+onready var _notebook_dialog = $NotebookDialog
 onready var _objects_dialog = $ObjectsDialog
 onready var _options_menu = $OptionsMenu
 onready var _player_list = $HideableUI/MultiplayerContainer/PlayerList
@@ -209,6 +210,9 @@ func _on_Lobby_player_removed(_id: int):
 func _on_MainMenuButton_pressed():
 	emit_signal("leaving_room")
 	Global.start_main_menu()
+
+func _on_NotebookButton_pressed():
+	_notebook_dialog.popup_centered()
 
 func _on_ObjectsButton_pressed():
 	spawn_point_container_name = ""
