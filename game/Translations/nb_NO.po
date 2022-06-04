@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-19 21:50+0000\n"
+"POT-Creation-Date: 2022-06-04 15:58+0100\n"
 "PO-Revision-Date: 2021-05-06 13:32+0000\n"
 "Last-Translator: drwhut <drwhut@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -36,7 +36,7 @@ msgstr "Enkeltspiller"
 msgid "Multiplayer"
 msgstr "Flerspiller"
 
-#: ../Scenes/Game/UI/GameUI.tscn:225 ../Scenes/MainMenu.tscn:62
+#: ../Scenes/Game/UI/GameUI.tscn:230 ../Scenes/MainMenu.tscn:62
 msgid "Options"
 msgstr "Innstillinger"
 
@@ -53,7 +53,9 @@ msgid "Host Game"
 msgstr "Vertstjen spill"
 
 #: ../Scenes/MainMenu.tscn:125
-msgid "Create a new lobby for your friends to join over the internet."
+#, fuzzy
+#| msgid "Create a new lobby for your friends to join over the internet."
+msgid "Create a new lobby for your friends to join over the Internet."
 msgstr "Opprett ny lobby for venner som tar del over Internett."
 
 #: ../Scenes/MainMenu.tscn:137 ../Scenes/MainMenu.tscn:184
@@ -428,75 +430,79 @@ msgstr ""
 msgid "Send"
 msgstr "Send"
 
-#: ../Scenes/Game/UI/GameUI.tscn:54
+#: ../Scenes/Game/UI/GameUI.tscn:51
 msgid "Objects"
 msgstr "Objekter"
 
-#: ../Scenes/Game/UI/GameUI.tscn:60
+#: ../Scenes/Game/UI/GameUI.tscn:57
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:226
 msgid "Games"
 msgstr "Spill"
 
-#: ../Scenes/Game/UI/GameUI.tscn:66
+#: ../Scenes/Game/UI/GameUI.tscn:63
 msgid "Room"
 msgstr "Rom"
 
-#: ../Scenes/Game/UI/GameUI.tscn:73
-msgid "Undo"
+#: ../Scenes/Game/UI/GameUI.tscn:69
+msgid "Notebook"
 msgstr ""
 
-#: ../Scenes/Game/UI/GameUI.tscn:79
+#: ../Scenes/Game/UI/GameUI.tscn:75
 msgid "Flip Table"
 msgstr ""
 
-#: ../Scenes/Game/UI/GameUI.tscn:85
+#: ../Scenes/Game/UI/GameUI.tscn:81
 msgid "Clear Table"
 msgstr ""
 
-#: ../Scenes/Game/UI/GameUI.tscn:91
+#: ../Scenes/Game/UI/GameUI.tscn:88
+msgid "Undo"
+msgstr ""
+
+#: ../Scenes/Game/UI/GameUI.tscn:94
 msgid "45"
 msgstr "45"
 
-#: ../Scenes/Game/UI/GameUI.tscn:99
+#: ../Scenes/Game/UI/GameUI.tscn:102
 msgid "Menu"
 msgstr "Meny"
 
-#: ../Scenes/Game/UI/GameUI.tscn:162
+#: ../Scenes/Game/UI/GameUI.tscn:165
 msgid "Add"
 msgstr "Legg til"
 
-#: ../Scenes/Game/UI/GameUI.tscn:163
+#: ../Scenes/Game/UI/GameUI.tscn:166
 #, python-format
 msgid "Added %s."
 msgstr "La til %s."
 
-#: ../Scenes/Game/UI/GameUI.tscn:164
+#: ../Scenes/Game/UI/GameUI.tscn:167
 #, python-format
 msgid "Added %d objects."
 msgstr "La til %d objekter."
 
-#: ../Scenes/Game/UI/GameUI.tscn:171
+#: ../Scenes/Game/UI/GameUI.tscn:174
 #, python-format
 msgid "Loaded %d games."
 msgstr "La til %d spill."
 
-#: ../Scenes/Game/UI/GameUI.tscn:207
+#: ../Scenes/Game/UI/GameUI.tscn:212
 msgid "Back to game"
 msgstr "Fortsett spill"
 
-#: ../Scenes/Game/UI/GameUI.tscn:213
+#: ../Scenes/Game/UI/GameUI.tscn:218
 msgid "Save game"
 msgstr "Lagre spill"
 
-#: ../Scenes/Game/UI/GameUI.tscn:219
+#: ../Scenes/Game/UI/GameUI.tscn:224
 msgid "Load game"
 msgstr "Last inn spill"
 
-#: ../Scenes/Game/UI/GameUI.tscn:231
+#: ../Scenes/Game/UI/GameUI.tscn:236
 msgid "Quit to main menu"
 msgstr "Avslutt til hovedmeny"
 
-#: ../Scenes/Game/UI/GameUI.tscn:237
+#: ../Scenes/Game/UI/GameUI.tscn:242
 msgid "Quit to desktop"
 msgstr "Avslutt til skrivebord"
 
@@ -507,6 +513,28 @@ msgstr "Ta"
 #: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:50
 msgid "Take All"
 msgstr "Ta Alt"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:34
+msgid "+ New Page"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:47
+msgid "Title"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:68
+msgid "Move Up"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:76
+msgid "Move Down"
+msgstr ""
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:84
+#: ../Scripts/Game/CameraController.gd:1039
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:220
+msgid "Delete"
+msgstr "Slett"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
@@ -610,12 +638,12 @@ msgstr "Ukjent museknapp"
 msgid "Unknown event type"
 msgstr "Ukjent hendelsestype"
 
-#: ../Scripts/ImportAssets.gd:54
+#: ../Scripts/ImportAssets.gd:59
 msgid ""
 "Tabletop Club couldn't find an assets folder in any of the following places:"
 msgstr ""
 
-#: ../Scripts/ImportAssets.gd:59
+#: ../Scripts/ImportAssets.gd:64
 msgid "Please create one of these folders and restart the game."
 msgstr ""
 
@@ -623,58 +651,62 @@ msgstr ""
 msgid "<No Name>"
 msgstr "<Ingen Navn>"
 
-#: ../Scripts/MainMenu.gd:56
+#: ../Scripts/MainMenu.gd:59
 msgid "Alpha Testers"
 msgstr ""
 
-#: ../Scripts/MainMenu.gd:57
+#: ../Scripts/MainMenu.gd:60
 #, fuzzy
 msgid "Contributors"
 msgstr "Beholdere"
 
-#: ../Scripts/MainMenu.gd:58
+#: ../Scripts/MainMenu.gd:61
 msgid "Cursors"
 msgstr "Pekere"
 
-#: ../Scripts/MainMenu.gd:59
+#: ../Scripts/MainMenu.gd:62
 msgid "Developers"
 msgstr "Utviklere"
 
-#: ../Scripts/MainMenu.gd:60
+#: ../Scripts/MainMenu.gd:63
 msgid "Fonts"
 msgstr "Skrifter"
 
-#: ../Scripts/MainMenu.gd:61
+#: ../Scripts/MainMenu.gd:64
 msgid "Images"
 msgstr "Bilder"
 
-#: ../Scripts/MainMenu.gd:62
+#: ../Scripts/MainMenu.gd:65
 #, fuzzy
 msgid "Logo and Icon"
 msgstr "Verktøyikoner"
 
-#: ../Scripts/MainMenu.gd:63
+#: ../Scripts/MainMenu.gd:66
 #, fuzzy
 msgid "Sound Effects"
 msgstr "Lyder"
 
-#: ../Scripts/MainMenu.gd:64
+#: ../Scripts/MainMenu.gd:67
 msgid "Tool Icons"
 msgstr "Verktøyikoner"
 
-#: ../Scripts/MainMenu.gd:65
+#: ../Scripts/MainMenu.gd:68
 msgid "Translators"
 msgstr ""
 
-#: ../Scripts/MainMenu.gd:67
+#: ../Scripts/MainMenu.gd:70
 msgid "French"
 msgstr "Fransk"
 
-#: ../Scripts/MainMenu.gd:107
+#: ../Scripts/MainMenu.gd:71
+msgid "German"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:111
 msgid "Room code must be four characters long!"
 msgstr ""
 
-#: ../Scripts/MainMenu.gd:112
+#: ../Scripts/MainMenu.gd:116
 msgid "Invalid room code!"
 msgstr ""
 
@@ -778,11 +810,6 @@ msgstr "Lås opp"
 #: ../Scripts/Game/CameraController.gd:1037
 msgid "Lock"
 msgstr "Lås"
-
-#: ../Scripts/Game/CameraController.gd:1039
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:220
-msgid "Delete"
-msgstr "Slett"
 
 #: ../Scripts/Game/CameraController.gd:1054
 msgid "Set spawn point here"
@@ -1142,16 +1169,16 @@ msgstr ""
 msgid "%s has left the game."
 msgstr ""
 
-#: ../Scripts/Game/UI/GameUI.gd:163
+#: ../Scripts/Game/UI/GameUI.gd:164
 #, python-format
 msgid "Room Code: [b]%s[/b]"
 msgstr ""
 
-#: ../Scripts/Game/UI/GameUI.gd:167
+#: ../Scripts/Game/UI/GameUI.gd:168
 msgid "Hide Room Code"
 msgstr ""
 
-#: ../Scripts/Game/UI/GameUI.gd:169
+#: ../Scripts/Game/UI/GameUI.gd:170
 msgid "Show Room Code"
 msgstr ""
 
@@ -1164,6 +1191,15 @@ msgstr ""
 #, python-format
 msgid "%s is empty."
 msgstr "%s er tomt."
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:137
+#, python-format
+msgid "Are you sure you want to delete the page '%s'?"
+msgstr ""
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:163
+msgid "New Page"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:114
 #, python-format
