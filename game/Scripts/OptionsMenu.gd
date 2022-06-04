@@ -29,7 +29,8 @@ var LOCALES = [
 	{ "locale": "", "name": tr("System Default") },
 	{ "locale": "de", "name": "Deutsch" },
 	{ "locale": "en", "name": "English" },
-	{ "locale": "fr", "name": "Français" }
+	{ "locale": "fr", "name": "Français" },
+	{ "locale": "nl", "name": "Nederlands" }
 ]
 
 const OPTIONS_FILE_PATH = "user://options.cfg"

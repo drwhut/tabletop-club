@@ -274,7 +274,7 @@ game_quickload={
 
 [locale]
 
-translations=PoolStringArray( "res://Translations/fr.po", "res://Translations/de.po" )
+translations=PoolStringArray( "res://Translations/fr.po", "res://Translations/de.po", "res://Translations/nl.po" )
 
 [physics]
 
