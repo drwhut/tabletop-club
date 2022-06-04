@@ -4,7 +4,7 @@
 
 [node name="NotebookDialog" type="WindowDialog"]
 margin_right = 500.0
-margin_bottom = 350.0
+margin_bottom = 450.0
 window_title = "Notebook"
 script = ExtResource( 1 )
 
@@ -14,7 +14,7 @@ anchor_bottom = 1.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
 margin_right = 150.0
-margin_bottom = 350.0
+margin_bottom = 450.0
 scroll_horizontal_enabled = false
 
 [node name="PageListContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
@@ -37,7 +37,7 @@ clip_text = true
 [node name="PageContainer" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 154.0
 margin_right = 500.0
-margin_bottom = 350.0
+margin_bottom = 450.0
 size_flags_horizontal = 3
 
 [node name="TitleEdit" type="LineEdit" parent="HBoxContainer/PageContainer"]
@@ -49,11 +49,45 @@ placeholder_text = "Title"
 [node name="TextEdit" type="TextEdit" parent="HBoxContainer/PageContainer"]
 margin_top = 34.0
 margin_right = 346.0
-margin_bottom = 350.0
+margin_bottom = 420.0
 size_flags_vertical = 3
 readonly = true
 bookmark_gutter = true
 wrap_enabled = true
+
+[node name="ModifyContainer" type="HBoxContainer" parent="HBoxContainer/PageContainer"]
+margin_top = 424.0
+margin_right = 346.0
+margin_bottom = 450.0
+
+[node name="MoveUpButton" type="Button" parent="HBoxContainer/PageContainer/ModifyContainer"]
+margin_right = 112.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+disabled = true
+text = "Move Up"
+
+[node name="MoveDownButton" type="Button" parent="HBoxContainer/PageContainer/ModifyContainer"]
+margin_left = 116.0
+margin_right = 229.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+disabled = true
+text = "Move Down"
+
+[node name="DeleteButton" type="Button" parent="HBoxContainer/PageContainer/ModifyContainer"]
+margin_left = 233.0
+margin_right = 346.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+disabled = true
+text = "Delete"
+
+[node name="ConfirmDeleteDialog" type="ConfirmationDialog" parent="."]
+margin_right = 250.0
+margin_bottom = 90.0
+window_title = "Delete page?"
+dialog_autowrap = true
 
 [connection signal="about_to_show" from="." to="." method="_on_NotebookDialog_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_NotebookDialog_popup_hide"]
@@ -63,3 +97,7 @@ wrap_enabled = true
 [connection signal="pressed" from="HBoxContainer/ScrollContainer/PageListContainer/NewPageButton" to="." method="_on_NewPageButton_pressed"]
 [connection signal="text_changed" from="HBoxContainer/PageContainer/TitleEdit" to="." method="_on_TitleEdit_text_changed"]
 [connection signal="text_changed" from="HBoxContainer/PageContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]
+[connection signal="pressed" from="HBoxContainer/PageContainer/ModifyContainer/MoveUpButton" to="." method="_on_MoveUpButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/PageContainer/ModifyContainer/MoveDownButton" to="." method="_on_MoveDownButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/PageContainer/ModifyContainer/DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="confirmed" from="ConfirmDeleteDialog" to="." method="_on_ConfirmDeleteDialog_confirmed"]

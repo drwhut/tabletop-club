@@ -22,6 +22,10 @@
 
 extends WindowDialog
 
+onready var _confirm_delete_dialog = $ConfirmDeleteDialog
+onready var _delete_button = $HBoxContainer/PageContainer/ModifyContainer/DeleteButton
+onready var _move_down_button = $HBoxContainer/PageContainer/ModifyContainer/MoveDownButton
+onready var _move_up_button = $HBoxContainer/PageContainer/ModifyContainer/MoveUpButton
 onready var _page_list = $HBoxContainer/ScrollContainer/PageListContainer/PageList
 onready var _text_edit = $HBoxContainer/PageContainer/TextEdit
 onready var _title_edit = $HBoxContainer/PageContainer/TitleEdit
@@ -42,6 +46,10 @@ func display_page(index: int) -> void:
 		_page_list.select(index)
 		_title_edit.text = _page_list.get_item_text(index)
 		_text_edit.text = pages[index]
+		
+		_delete_button.disabled = false
+		_move_down_button.disabled = (index == _page_list.get_item_count()-1)
+		_move_up_button.disabled = (index == 0)
 		
 		_last_page_seen = index
 	else:
@@ -90,7 +98,9 @@ func _save_current_page() -> void:
 				[_page_list.get_item_count(), pages.size()])
 	
 	_updating = false
-	pages[_last_page_seen] = _text_edit.text
+	
+	if _last_page_seen >= 0 and _last_page_seen < _page_list.get_item_count():
+		pages[_last_page_seen] = _text_edit.text
 	
 	var file_content = []
 	for index in range(pages.size()):
@@ -104,6 +114,47 @@ func _save_current_page() -> void:
 	var error = file.save("user://notebook.cfg")
 	if error != OK:
 		push_error("Error saving notebook contents (error: %d)!" % error)
+
+func _on_ConfirmDeleteDialog_confirmed():
+	_page_list.remove_item(_last_page_seen)
+	pages.remove(_last_page_seen)
+	
+	if _page_list.get_item_count() > 0:
+		var new_index = max(_last_page_seen - 1, 0)
+		display_page(new_index)
+	else:
+		_title_edit.text = ""
+		_title_edit.editable = false
+		_text_edit.text = ""
+		_text_edit.readonly = true
+		
+		_delete_button.disabled = true
+		_move_down_button.disabled = true
+		_move_up_button.disabled = true
+
+func _on_DeleteButton_pressed():
+	var page_name = _page_list.get_item_text(_last_page_seen)
+	var text = tr("Are you sure you want to delete the page '%s'?") % page_name
+	_confirm_delete_dialog.dialog_text = text
+	_confirm_delete_dialog.popup_centered()
+
+func _on_MoveDownButton_pressed():
+	_page_list.move_item(_last_page_seen, _last_page_seen + 1)
+	
+	var page_text = pages[_last_page_seen]
+	pages[_last_page_seen] = pages[_last_page_seen + 1]
+	pages[_last_page_seen + 1] = page_text
+	
+	_last_page_seen += 1
+
+func _on_MoveUpButton_pressed():
+	_page_list.move_item(_last_page_seen, _last_page_seen - 1)
+	
+	var page_text = pages[_last_page_seen]
+	pages[_last_page_seen] = pages[_last_page_seen - 1]
+	pages[_last_page_seen - 1] = page_text
+	
+	_last_page_seen -= 1
 
 func _on_NewPageButton_pressed():
 	if not pages.empty():
