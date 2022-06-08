@@ -9,157 +9,207 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-01 20:36+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-06-10 17:17+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-general/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
-msgstr ""
+msgstr "Over"
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
-msgstr ""
+msgstr "Wat is Tabletop Club?"
 
 #: ../../general/about.rst:10
 msgid "Tabletop Club is a free and open-source tabletop board game simulator! That's a bit of a mouthful, so I'll break that sentence down a bit:"
 msgstr ""
+"Tabletop Club is een gratis en opensource-bordspelsimulator! Dat is een hele "
+"mond vol, dus we leggen het graag beter aan je uit:"
 
 #: ../../general/about.rst:14
 msgid "Free"
-msgstr ""
+msgstr "Gratis"
 
 #: ../../general/about.rst:16
 msgid "The game is completely free to download and play! You can do so by going to the :ref:`downloading-binaries` page."
 msgstr ""
+"Het spel is helemaal gratis te downloaden en spelen! Download de nieuwste "
+"versie van de :ref:`downloading-binaries`-pagina."
 
 #: ../../general/about.rst:20
 msgid "Open-source"
-msgstr ""
+msgstr "Open source"
 
 #: ../../general/about.rst:22
 msgid "This means a few things:"
-msgstr ""
+msgstr "Dit omvat de volgende dingen:"
 
 #: ../../general/about.rst:24
 msgid "The source code of the game is visible to the public (you can see it in the `GitHub repository <https://github.com/drwhut/tabletop-club>`_). This also means you can compile the game youself from scratch (see :ref:`compiling-from-source`)."
 msgstr ""
+"De broncode is openbaar (`GitHub-pagina: <https://github.com/drwhut/tabletop-"
+"club>`_). Dit houdt in dat je het spel zelf kunt compileren (zie :ref"
+":`compiling-from-source`)."
 
 #: ../../general/about.rst:29
 msgid "Anyone can contribute to the development of Tabletop Club in a number of different ways! For more information about how you can help contribute to the project, visit the :ref:`contributing` page."
 msgstr ""
+"Iedereen kan bijdragen aan de ontwikkeling van Tabletop Club! Meer "
+"informatie daaromtrent is te vinden op de :ref:`contributing`-pagina."
 
 #: ../../general/about.rst:33
 msgid "The game is licensed under the `MIT License <https://github.com/drwhut/tabletop-club/blob/master/LICENSE>`_, which is an open, permissive license."
 msgstr ""
+"Het spel wordt uitgebracht onder de `MIT-licentie <https://github.com/drwhut/"
+"tabletop-club/blob/master/LICENSE>`_, een open en tolerante licentie."
 
 #: ../../general/about.rst:39
 msgid "The game's code and project files are licensed under the MIT License, but some of the assets are licensed under different open licenses."
 msgstr ""
+"De spelcode en projectbestanden worden uitgebracht onder de MIT-licentie, "
+"maar sommige spelelementen worden uitgebracht onder andere vrije licenties."
 
 #: ../../general/about.rst:42
 msgid "To see the details of these assets and their authors and licenses, have a look at ``assets/TabletopClub/LICENSES`` and ``game/LICENSES.tres`` in the source code."
 msgstr ""
+"Meer informatie over de makers en licenties van die elementen is te vinden "
+"in de bestanden ``assets/TabletopClub/LICENSES`` en ``game/LICENSES.tres`` "
+"in de broncode."
 
 #: ../../general/about.rst:47
 msgid "Tabletop board game"
-msgstr ""
+msgstr "Bordspel"
 
 #: ../../general/about.rst:49
 msgid "The game is designed to allow you to play your favourite tabletop board games by effectively giving you a box of toys to play with (which include things like cards, dice, game pieces, and more), and it's up to you what you do with what you're given!"
 msgstr ""
+"Het spel is gemaakt om al je favoriete bordspellen te kunnen spelen met "
+"behulp van een doos vol elementen, zoals kaarten, dobbelstenen, spelstukken "
+"en nog veel meer. Het is aan jóu om te kiezen wat je er mee doet!"
 
 #: ../../general/about.rst:54
 msgid "But the coolest thing about the game is that anyone can create assets for the game! It's as simple as dragging files into a folder and the game will import them, then you can use them straight away in-game! If you want to learn more about how to make assets for Tabletop Club, visit the :ref:`asset-packs` page."
 msgstr ""
+"Maal het allertofste is dat iedereen zijn/haar eigen spelelementen kan "
+"maken! Je hoeft alleen maar bestanden naar een map te verslepen om ze te "
+"importeren en gebruiken! Meer informatie omtrent het maken van spelelementen "
+"is te vinden op de pagina :ref:`asset-packs`."
 
 #: ../../general/about.rst:60
 msgid "Simulator"
-msgstr ""
+msgstr "Simulator"
 
 #: ../../general/about.rst:62
 msgid "Not only is the game a simulator of tabletop games, it also has a fully-simulated 3D physics engine! This means that objects in the game act like they do in real life, and it also means you can potentially send objects flying off the edge! Did I also mention you could flip the table?"
 msgstr ""
+"Niet alleen is het spel een bordspelsimulator, ook bevat het een "
+"gesimuleerde 3D-aandrijving! Dit houdt in dat objecten precies zo bewegen "
+"als het in het echt, maar ook dat je objecten van de tafel af kunt schuiven! "
+"O, en had ik al gezegd dat je de tafel kunt omgooien?"
 
 #: ../../general/about.rst:69
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Veelgestelde vragen"
 
 #: ../../general/about.rst:72
 msgid "What platforms can I play Tabletop Club on?"
-msgstr ""
+msgstr "Op welke besturingssystemen kan Tabletop Club installeren?"
 
 #: ../../general/about.rst:74
 msgid "Tabletop Club can be played on any of these platforms:"
-msgstr ""
+msgstr "Tabletop Club is beschikbaar op de volgende systemen:"
 
 #: ../../general/about.rst:76
 msgid "Windows"
-msgstr ""
+msgstr "Windows"
 
 #: ../../general/about.rst:77
 msgid "macOS"
-msgstr ""
+msgstr "macOS"
 
 #: ../../general/about.rst:78
 msgid "Linux / \\*BSD"
-msgstr ""
+msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:80
 msgid "Currently there are no plans for the game to be supported on mobile devices or consoles."
 msgstr ""
+"Er zijn momenteel geen plannen om het spel geschikt te voor mobiele "
+"apparaten en gameconsoles."
 
 #: ../../general/about.rst:85
 msgid "Does Tabletop Club support multiplayer?"
-msgstr ""
+msgstr "Kunnen meerdere spelers tegelijk spelen?"
 
 #: ../../general/about.rst:87
 msgid "Yes! You don't need to make an account to play multiplayer, you can just host a game and start playing with friends!"
 msgstr ""
+"Ja, en zelfs zónder account! Organiseer gewoon een spel en start met spelen!"
 
 #: ../../general/about.rst:92
 msgid "You can change your name and colour in multiplayer by going to :guilabel:`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
 msgstr ""
+"Je kunt je naam en kleur veranderen via :guilabel:`Instellingen` > "
+":guilabel:`Meerdere spelers`."
 
 #: ../../general/about.rst:98
 msgid "Is Tabletop Club on Steam / GOG / itch.io?"
-msgstr ""
+msgstr "Is Tabletop Club beschikbaar op Steam / GOG / itch.io?"
 
 #: ../../general/about.rst:100
 msgid "No. Tabletop Club is a standalone game, meaning when you download the game you can extract the game files anywhere you want on your computer, and the game will work."
 msgstr ""
+"Nee. Tabletop Club is een zelf-uitpakkend spel. Dit houdt in dat je de "
+"spelbestanden kunt uitpakken in een map naar keuze en direct kunt spelen."
 
 #: ../../general/about.rst:104
 msgid "Currently there are no plans to add Tabletop Club to any gaming platform at this stage."
 msgstr ""
+"Er zijn momenteel geen plannen om het spel te publiceren op een "
+"gamingplatform."
 
 #: ../../general/about.rst:109
 msgid "What stage of development is Tabletop Club at?"
-msgstr ""
+msgstr "In welke ontwikkelingsfase bevindt het spel zich?"
 
 #: ../../general/about.rst:111
 msgid "Tabletop Club is currently in alpha development. This means that core features of the game are still being implemented (you can see what needs to be added by going to the `issues page <https://github.com/drwhut/tabletop-club/issues>`_ on GitHub), and there are no publicly released versions of the game... yet."
 msgstr ""
+"De ontwikkeling van Tabletop Club bevindt zich momenteel in de alfafase. Dit "
+"houdt in dat de basale functies nog niet volledig geïmplementeerd zijn ("
+"bekijk de lijst met ontbrekende functies op GitHub: `<https://github.com/"
+"drwhut/tabletop-club/issues>`_) en dat er nog geen officiële eerste versie "
+"is… althans, nóg niet."
 
 #: ../../general/about.rst:118
 msgid "What board games can I play in Tabletop Club?"
-msgstr ""
+msgstr "Welke bordspellen kan ik spelen?"
 
 #: ../../general/about.rst:120
 msgid "Theoretically, any of them!"
-msgstr ""
+msgstr "In principe alle bordspellen die je maar kunt bedenken!"
 
 #: ../../general/about.rst:122
 msgid "Out of the box, the games comes with the default Tabletop Club asset pack which contains some of the most common objects you'll need, like playing cards, dice, poker chips, etc."
 msgstr ""
+"Standaard wordt Tabletop Club geleverd met een doos met algemene "
+"spelelementen, zoals speelkaarten, dobbelstenen, pokerfiches, etc."
 
 #: ../../general/about.rst:126
 msgid "On GitHub, there is `an issue <https://github.com/drwhut/tabletop-club/issues/28>`_ listing which objects still need to be added to the default asset pack. If everything under a game is ticked, then you can play that game!"
 msgstr ""
+"Op GitHub is `een lijst <https://github.com/drwhut/tabletop-club/issues/28>`"
+"_ te vinden met objecten die nog moeten worden toegevoegd. Als alle objecten "
+"onder een genoemd spel zijn aangevinkt, dan kun je het spel in kwestie "
+"spelen!"
 
 #: ../../general/about.rst:131
 msgid "On the other hand, if the pieces you need aren't going to be included in the default asset pack, then you can either download an asset pack that someone else has already made, or you can create your own! Visit the :ref:`asset-packs` page if you're interested in making your own assets."
