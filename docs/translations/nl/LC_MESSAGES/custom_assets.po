@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-01 20:36+0100\n"
-"PO-Revision-Date: 2022-05-30 16:20+0000\n"
+"PO-Revision-Date: 2022-06-09 17:18+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/nl/>\n"
@@ -346,7 +346,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 msgid "Cards"
-msgstr ""
+msgstr "Kaarten"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
@@ -371,7 +371,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid "Tables"
-msgstr ""
+msgstr "Tafels"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 msgid "``0.5``"
@@ -473,7 +473,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 #: ../../custom_assets/asset_packs/asset_types.rst:126
 msgid "Music"
-msgstr ""
+msgstr "Muziek"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 msgid "If ``true``, the music will have a chance of playing in the main menu."
@@ -520,7 +520,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
 msgid "Skyboxes"
-msgstr ""
+msgstr "Skyboxen"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 msgid "``Vector3(0.0, 0.0, 0.0)``"
@@ -548,7 +548,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 msgid "Containers"
-msgstr ""
+msgstr "Dozen"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 msgid "If ``true``, when the container is being shaken upside down, it will randomly drop items out."
@@ -638,7 +638,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:80
 msgid "Piece"
-msgstr ""
+msgstr "Spelstuk"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:82
 msgid "Pieces are generic objects with no special functionality."
