@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-01 20:36+0100\n"
-"PO-Revision-Date: 2022-06-10 17:17+0000\n"
+"PO-Revision-Date: 2022-06-12 10:19+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/nl/>\n"
@@ -214,14 +214,21 @@ msgstr ""
 #: ../../general/about.rst:131
 msgid "On the other hand, if the pieces you need aren't going to be included in the default asset pack, then you can either download an asset pack that someone else has already made, or you can create your own! Visit the :ref:`asset-packs` page if you're interested in making your own assets."
 msgstr ""
+"Als je objecten nodig hebt die niet op de lijst staan om te worden opgenomen "
+"in de standaarddoos, dan kun je een doos downloaden die iemand anders "
+"gemaakt heeft of je eigen doos samenstellen! Bekijk de pagina :ref:`asset-"
+"packs` als je geïnteresseerd bent in het maken van objecten."
 
 #: ../../general/about.rst:138
 msgid "How easy is it to setup a game in Tabletop Club?"
-msgstr ""
+msgstr "Hoe eenvoudig is het om een spel klaar te zetten?"
 
 #: ../../general/about.rst:140
 msgid "For the most popular games, the default asset pack comes with pre-made save files that you can load instantly (when in-game, click :guilabel:`Games`, then click on the game you want to play, then click :guilabel:`Load`) to play the game right away!"
 msgstr ""
+"Bij de populairste spellen zijn er vooringestelde reservekopiebestanden die "
+"je direct kunt openen. Open Tabletop Club, klik op :guilabel:`Spellen`, dan "
+"op het spel dat je wilt spelen en vervolgens op :guilabel:`Laden`)."
 
 #: ../../general/about.rst:145
 msgid "If there isn't a pre-made save file for the game you want to play, you can easily make your own save by setting up the table the way you want to, then by going to the menu and clicking :guilabel:`Save file`. This way, if you want to play the game again, you can just load the save you made previously."
@@ -234,34 +241,36 @@ msgstr ""
 #: ../../general/about.rst:155
 msgid "Can I add assets other than game pieces to Tabletop Club?"
 msgstr ""
+"Kan ik andere objecten - dus geen spelelementen - toevoegen aan Tabletop "
+"Club?"
 
 #: ../../general/about.rst:157
 msgid "Yes! As well as objects, you can also import the following types of assets:"
-msgstr ""
+msgstr "Jazeker! Naast objecten kun je de volgende elementen toevoegen:"
 
 #: ../../general/about.rst:159
 msgid ":ref:`asset-type-game`"
-msgstr ""
+msgstr ":ref:`asset-type-game`"
 
 #: ../../general/about.rst:160
 msgid ":ref:`asset-type-music`"
-msgstr ""
+msgstr ":ref:`asset-type-music`"
 
 #: ../../general/about.rst:161
 msgid ":ref:`asset-type-skybox`"
-msgstr ""
+msgstr ":ref:`asset-type-skybox`"
 
 #: ../../general/about.rst:162
 msgid ":ref:`asset-type-sound`"
-msgstr ""
+msgstr ":ref:`asset-type-sound`"
 
 #: ../../general/about.rst:163
 msgid ":ref:`asset-type-table`"
-msgstr ""
+msgstr ":ref:`asset-type-table`"
 
 #: ../../general/about.rst:167
 msgid "Can you add my favourite board game to Tabletop Club?"
-msgstr ""
+msgstr "Kan ik mijn favoriete bordspel toevoegen aan Tabletop Club?"
 
 #: ../../general/about.rst:169
 msgid "For legal safety, Tabletop Club will only ever distribute `public-domain <https://en.wikipedia.org/wiki/Public_domain>`_ board games in the default asset pack. But that doesn't stop you from making assets for your favourite board game for private use!"
@@ -269,11 +278,13 @@ msgstr ""
 
 #: ../../general/about.rst:176
 msgid "Can I share assets I've made on the internet?"
-msgstr ""
+msgstr "Kan ik zelfgemaakte elementen online delen?"
 
 #: ../../general/about.rst:178
 msgid "It depends on a number of factors. In general, it should be safe to share the assets you've made for the game if the following is all true:"
 msgstr ""
+"Dat is afhankelijk van een aantal factoren. Normaliter zou dat prima moeten "
+"kunnen als je elementen aan de volgende voorwaarden voldoen:"
 
 #: ../../general/about.rst:181
 msgid "The assets you've made (textures, 3D models, etc.) are made by you, and are not derived from copyrighted material."
