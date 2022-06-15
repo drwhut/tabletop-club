@@ -132,5 +132,8 @@ func _on_CreditsButton_pressed():
 func _on_QuitButton_pressed():
 	get_tree().quit()
 
+func _on_HelpButton_pressed():
+	OS.shell_open("https://tabletop-club.readthedocs.io/en/latest/")
+
 func _on_InfoButton_pressed():
 	_info_dialog.popup_centered()

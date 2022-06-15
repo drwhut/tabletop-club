@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/FallingWorld.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/HelpIcon.svg" type="Texture" id=2]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fonts/Cabin-Italic.tres" type="DynamicFont" id=5]
@@ -86,6 +87,14 @@ margin_top = 568.0
 margin_right = 256.0
 margin_bottom = 600.0
 alignment = 2
+
+[node name="HelpButton" type="Button" parent="MainView/MainList/HBoxContainer"]
+margin_left = 188.0
+margin_right = 220.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+icon = ExtResource( 2 )
+expand_icon = true
 
 [node name="InfoButton" type="Button" parent="MainView/MainList/HBoxContainer"]
 margin_left = 224.0
@@ -287,6 +296,7 @@ visible = false
 [connection signal="pressed" from="MainView/MainList/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/HBoxContainer/HelpButton" to="." method="_on_HelpButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="MultiplayerDialog/HBoxContainer/HostGameContainer/HostGameButton" to="." method="_on_HostGameButton_pressed"]
 [connection signal="pressed" from="MultiplayerDialog/HBoxContainer/EnterCodeContainer/EnterCodeButton" to="." method="_on_EnterCodeButton_pressed"]
