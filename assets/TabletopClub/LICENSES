@@ -15,8 +15,8 @@ Author: jeffshee
 License: CC-BY 3.0
 URL: https://opengameart.org/content/colorful-poker-card-back
 
-containers/custom/Purse.{bin,gltf}
-containers/custom/purse01{D,N}.png
+containers/Purse.{bin,gltf}
+containers/purse01{D,N}.png
 ==================================
 Author: yd
 License: Public Domain
@@ -95,21 +95,21 @@ Author: Kevin MacLeod
 License: Filmmusic.io Standard License (https://filmmusic.io/standard-license)
 URL: https://incompetech.filmmusic.io/song/4410-spy-glass
 
-pieces/custom/{Bishop,King,Knight,Pawn,Queen,Rook} {Black,White}.gltf
-pieces/custom/{Bishop,King,Knight,Pawn,Queen,Rook}.bin
+pieces/{Bishop,King,Knight,Pawn,Queen,Rook} {Black,White}.gltf
+pieces/{Bishop,King,Knight,Pawn,Queen,Rook}.bin
 ======================================================
 Author: rehcub
 License: CC0
 URL: https://opengameart.org/content/chess-set-1
 
-pieces/custom/Chess Board.{obj,mtl}
-pieces/custom/darkwood1_0.jpg
+pieces/Chess Board.{obj,mtl}
+pieces/darkwood1_0.jpg
 ===================================
 Author: Thane "pennomi" Brimhall
 License: CC-BY 3.0
 URL: https://opengameart.org/content/chess-board
 
-pieces/custom/grid.png
+pieces/grid.png
 ======================
 Author: Tiziana
 License: LGPL 2.1, LGPL 3.0, CC-BY 3.0
@@ -186,9 +186,9 @@ Author: Frenchyboy
 License: CC0
 URL: https://opengameart.org/content/alarm-2
 
-speakers/custom/Gramophone.gltf
-speakers/custom/Gramophone.bin
-speakers/custom/GramophoneTexture.png
+speakers/Gramophone.gltf
+speakers/Gramophone.bin
+speakers/GramophoneTexture.png
 =====================================
 Author: RayB2
 License: CC0
