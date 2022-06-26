@@ -153,13 +153,13 @@ __meta__ = {
 window_title = "Objects"
 db_types = {
 "CARDS": "cards",
-"CONTAINERS": [ "containers/cube", "containers/custom", "containers/cylinder" ],
+"CONTAINERS": "containers",
 "DICE - D4": "dice/d4",
 "DICE - D6": "dice/d6",
 "DICE - D8": "dice/d8",
-"PIECES": [ "pieces/cube", "pieces/custom", "pieces/cylinder" ],
-"SPEAKERS": [ "speakers/cube", "speakers/custom", "speakers/cylinder" ],
-"TIMERS": [ "timers/cube", "timers/custom", "timers/cylinder" ],
+"PIECES": "pieces",
+"SPEAKERS": "speakers",
+"TIMERS": "timers",
 "TOKENS": [ "tokens/cube", "tokens/cylinder" ]
 }
 load_button_text = "Add"

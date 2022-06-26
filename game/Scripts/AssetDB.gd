@@ -43,37 +43,18 @@ const ASSET_DIR_PREFIXES = [
 
 const ASSET_PACK_SUBFOLDERS = {
 	"cards": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Card.tscn" },
-	
-	"containers/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Containers/Cube.tscn" },
-	"containers/custom": { "type": ASSET_SCENE, "scene": "" },
-	"containers/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Containers/Cylinder.tscn" },
-	
-	"dice/d4": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Dice/d4.tscn" },
-	"dice/d6": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Dice/d6.tscn" },
-	"dice/d8": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Dice/d8.tscn" },
-	
+	"containers": { "type": ASSET_SCENE, "scene": "" },
+	"dice/d4": { "type": ASSET_SCENE, "scene": "" },
+	"dice/d6": { "type": ASSET_SCENE, "scene": "" },
+	"dice/d8": { "type": ASSET_SCENE, "scene": "" },
 	"games": { "type": ASSET_TABLE, "scene": "" },
-	
 	"music": { "type": ASSET_AUDIO, "scene": "" },
-	
-	"pieces/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Pieces/Cube.tscn" },
-	"pieces/custom": { "type": ASSET_SCENE, "scene": "" },
-	"pieces/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Pieces/Cylinder.tscn" },
-	
+	"pieces": { "type": ASSET_SCENE, "scene": "" },
 	"skyboxes": { "type": ASSET_SKYBOX, "scene": "" },
-	
 	"sounds": { "type": ASSET_AUDIO, "scene": "" },
-	
-	"speakers/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Speakers/Cube.tscn" },
-	"speakers/custom": { "type": ASSET_SCENE, "scene": "" },
-	"speakers/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Speakers/Cylinder.tscn" },
-	
+	"speakers": { "type": ASSET_SCENE, "scene": "" },
 	"tables": { "type": ASSET_SCENE, "scene": "" },
-	
-	"timers/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Timers/Cube.tscn" },
-	"timers/custom": { "type": ASSET_SCENE, "scene": "" },
-	"timers/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Timers/Cylinder.tscn" },
-	
+	"timers": { "type": ASSET_SCENE, "scene": "" },
 	"tokens/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Tokens/Cube.tscn" },
 	"tokens/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Tokens/Cylinder.tscn" }
 }

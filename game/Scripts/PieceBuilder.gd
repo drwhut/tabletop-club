@@ -43,7 +43,7 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 		var scene_dir = piece_entry["scene_path"].get_base_dir()
 		var build: Piece = null
 		
-		if scene_dir.ends_with("containers/custom"):
+		if scene_dir.ends_with("containers"):
 			build = PieceContainer.new()
 			
 			build.contact_monitor = true
@@ -52,8 +52,8 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 			var pieces_node = Spatial.new()
 			pieces_node.name = "Pieces"
 			build.add_child(pieces_node)
-		elif scene_dir.ends_with("speakers/custom") or scene_dir.ends_with("timers/custom"):
-			if scene_dir.ends_with("speakers/custom"):
+		elif scene_dir.ends_with("speakers") or scene_dir.ends_with("timers"):
+			if scene_dir.ends_with("speakers"):
 				build = SpeakerPiece.new()
 			else:
 				build = TimerPiece.new()
