@@ -62,7 +62,27 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 			audio_player_node.name = "AudioStreamPlayer3D"
 			build.add_child(audio_player_node)
 		else:
-			build = Piece.new()
+			var parent_dir = scene_dir.get_base_dir()
+			if parent_dir.ends_with("dice"):
+				build = Dice.new()
+				
+				# Dice, along with cards and tokens, have their own unique
+				# sound effects which are implemented here.
+				build.contact_monitor = true
+				build.contacts_reported = 1
+				
+				var effect_player = AudioStreamPlayer3D.new()
+				effect_player.name = "EffectPlayer"
+				effect_player.bus = "Effects"
+				effect_player.unit_size = 20.0
+				build.add_child(effect_player)
+				
+				build.effect_player_path = NodePath("EffectPlayer")
+				
+				build.table_collide_fast_sounds = preload("res://Sounds/Dice/DiceTableFastSounds.tres")
+				build.shake_sounds = preload("res://Sounds/Dice/DiceShakeSounds.tres")
+			else:
+				build = Piece.new()
 		
 		_extract_and_shape_mesh_instances(build, piece, Transform.IDENTITY)
 		
