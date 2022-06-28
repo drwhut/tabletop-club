@@ -220,9 +220,7 @@ func _set_type_options() -> void:
 			var type_text = type_display
 			type_text = type_text.replace("CARDS", tr("Cards"))
 			type_text = type_text.replace("CONTAINERS", tr("Containers"))
-			type_text = type_text.replace("DICE - D4", tr("Dice - d4"))
-			type_text = type_text.replace("DICE - D6", tr("Dice - d6"))
-			type_text = type_text.replace("DICE - D8", tr("Dice - d8"))
+			type_text = type_text.replace("DICE", tr("Dice"))
 			type_text = type_text.replace("GAMES", tr("Games"))
 			type_text = type_text.replace("MUSIC", tr("Music"))
 			type_text = type_text.replace("PIECES", tr("Pieces"))

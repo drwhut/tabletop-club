@@ -154,9 +154,7 @@ window_title = "Objects"
 db_types = {
 "CARDS": "cards",
 "CONTAINERS": "containers",
-"DICE - D4": "dice/d4",
-"DICE - D6": "dice/d6",
-"DICE - D8": "dice/d8",
+"DICE": [ "dice/d4", "dice/d6", "dice/d8", "dice/d10", "dice/d12", "dice/d20" ],
 "PIECES": "pieces",
 "SPEAKERS": "speakers",
 "TIMERS": "timers",
