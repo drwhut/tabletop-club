@@ -16,12 +16,7 @@
     "nodes" : [
         {
             "mesh" : 0,
-            "name" : "d10_Percent",
-            "translation" : [
-                -2,
-                0,
-                -6
-            ]
+            "name" : "d10_Percent"
         }
     ],
     "materials" : [
