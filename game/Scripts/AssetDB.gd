@@ -350,6 +350,13 @@ func _add_inheriting_assets(pack_path: String, type: String) -> void:
 							if child.has(key):
 								# TODO: Check the value is the same type.
 								child[key] = config_file.get_value(section, key)
+								
+								# A particular edge-case where the colour stored
+								# in the piece entry is of the Colour type, not
+								# a string, which is expected in the config file.
+								if key == "color":
+									child[key] = Color(child[key])
+									child[key].a = 1.0
 						
 						# We can't insert the new object into the DB now, since
 						# the DB needs to be sorted for us to search it

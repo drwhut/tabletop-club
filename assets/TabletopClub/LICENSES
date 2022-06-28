@@ -23,15 +23,49 @@ License: Public Domain
 Modified By: Benjamin "drwhut" Beddows
 URL: https://opengameart.org/content/bag-of-coins
 
-dice/d4/d4{.bin,.gltf,_Numbers.png}
-dice/d6/d6{.bin,.gltf,_Numbers.png}
-dice/d8/d8{.bin,.gltf,_Numbers.png}
-dice/d10/d10{.bin,.gltf, Percent.gltf,_Numbers.png,_Percent_Numbers.png}
-dice/d12/d12{.bin,.gltf,_Numbers.png}
-dice/d20/d20{.bin,.gltf,_Numbers.png}
-=====================================
+dice/d4/d4 (Black).gltf
+dice/d4/d4_Numbers.png
+dice/d4/d4.bin
+dice/d6/d6 (Black).gltf
+dice/d6/d6_Numbers.png
+dice/d6/d6.bin
+dice/d8/d8 (Black).gltf
+dice/d8/d8_Numbers.png
+dice/d8/d8.bin
+dice/d10/d10 (Black).gltf
+dice/d10/d10 (Percent) (Black).gltf
+dice/d10/d10_Numbers.png
+dice/d10/d10_Percent_Numbers.png
+dice/d10/d10.bin
+dice/d12/d12 (Black).gltf
+dice/d12/d12_Numbers.png
+dice/d12/d12.bin
+dice/d20/d20 (Black).gltf
+dice/d20/d20_Numbers.png
+dice/d20/d20.bin
+=========================
 Author: facehunter2003
 License: CC0
+URL: https://opengameart.org/content/low-poly-3d-dice
+
+dice/d4/d4 (White).gltf
+dice/d4/d4_Numbers_Inverted.png
+dice/d6/d6 (White).gltf
+dice/d6/d6_Numbers_Inverted.png
+dice/d8/d8 (White).gltf
+dice/d8/d8_Numbers_Inverted.png
+dice/d10/d10 (White).gltf
+dice/d10/d10_Numbers_Inverted.png
+dice/d10/d10 (Percent) (White).gltf
+dice/d10/d10_Percent_Numbers_Inverted.png
+dice/d12/d12 (Percent) (White).gltf
+dice/d12/d12_Numbers_Inverted.png
+dice/d20/d20 (Percent) (White).gltf
+dice/d20/d20_Numbers_Inverted.png
+=================================
+Author: facehunter2003
+License: CC0
+Modified By: Benjamin "drwhut" Beddows
 URL: https://opengameart.org/content/low-poly-3d-dice
 
 music/Airport Lounge - Kevin MacLeod.ogg
