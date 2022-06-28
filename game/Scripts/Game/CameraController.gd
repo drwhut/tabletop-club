@@ -177,6 +177,7 @@ var _move_down = false
 var _move_left = false
 var _move_right = false
 var _move_up = false
+var _moved_piece_this_frame = false
 var _movement_accel = 0.0
 var _movement_dir = Vector3()
 var _movement_vel = Vector3()
@@ -393,6 +394,8 @@ func _ready():
 	_reset_camera()
 
 func _process(delta):
+	_moved_piece_this_frame = false
+	
 	_process_input(delta)
 	_process_movement(delta)
 	
@@ -1492,7 +1495,7 @@ func _unlock_selected_pieces() -> void:
 			piece.rpc_id(1, "request_unlock")
 
 # Called when the camera starts moving either positionally or rotationally.
-func _on_moving() -> bool:
+func _on_moving() -> bool:	
 	# If we were grabbing a piece while moving...
 	if _is_grabbing_selected:
 		
@@ -1502,6 +1505,11 @@ func _on_moving() -> bool:
 	
 	# Or if we were hovering a piece already...
 	if _is_hovering_selected:
+		# This code may be run multiple times a frame depending on how fast the
+		# user is moving the mouse, so limit ourselves to run this only once
+		# per frame.
+		if _moved_piece_this_frame:
+			return true
 		
 		# Set the maximum hover y-position so the pieces don't go above and
 		# behind the camera.
@@ -1517,6 +1525,8 @@ func _on_moving() -> bool:
 			# remembered the list of pieces we started hovering, so all we need
 			# to do is send it the updated position.
 			emit_signal("setting_hover_position_multiple", get_hover_position())
+		
+		_moved_piece_this_frame = true
 		return true
 	
 	if _is_painting:
