@@ -329,7 +329,10 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 						from.add_child(omnilight)
 		
 		var collision_shape = CollisionShape.new()
-		collision_shape.shape = from.mesh.create_convex_shape()
+		# Setting clean to false here, because I've noticed it makes little to
+		# no difference in the collision shapes themselves, but it speeds up
+		# the process significantly.
+		collision_shape.shape = from.mesh.create_convex_shape(false, false)
 		
 		# The collision shape's transform needs to match up with the mesh
 		# instance's, but they can't both use the same transform, otherwise
