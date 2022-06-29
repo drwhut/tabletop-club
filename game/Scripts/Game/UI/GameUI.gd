@@ -230,7 +230,7 @@ func _on_Lobby_player_modified(id: int, old: Dictionary):
 func _on_Lobby_player_removed(id: int):
 	var name = Lobby.get_name_bb_code(id)
 	add_notification_info(tr("%s has left the game.") % name)
-	_update_player_list()
+	call_deferred("_update_player_list")
 
 func _on_MainMenuButton_pressed():
 	emit_signal("leaving_room")

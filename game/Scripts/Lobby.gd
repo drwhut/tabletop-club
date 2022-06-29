@@ -24,7 +24,7 @@ extends Node
 
 signal player_added(id)
 signal player_modified(id)
-signal player_removed(id)
+signal player_removed(id) # NOTE: Info is deleted after this signal is resolved.
 signal players_synced()
 
 var _players = {}
