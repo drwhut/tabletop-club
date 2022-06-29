@@ -105,10 +105,7 @@ remotesync func receive_message(sender_id: int, message: String) -> void:
 	if message.length() == 0:
 		return
 	
-	if sender_id == 1:
-		message = tr("Server: ") + message
-	else:
-		message = Lobby.get_name_bb_code(sender_id) + ": " + message
+	message = Lobby.get_name_bb_code(sender_id) + ": " + message
 	
 	if censoring_profanity:
 		message = censor_profanity(message)
@@ -131,10 +128,6 @@ func set_chat_visible(chat_visible: bool) -> void:
 	_toggle_button.text = text
 
 func _ready():
-	Lobby.connect("player_added", self, "_on_Lobby_player_added")
-	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
-	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
-	
 	set_chat_visible(true)
 	
 	_profanity_list = preload("res://Text/Profanity.tres").text.split("\n", false)
@@ -151,22 +144,6 @@ func _random_string_from_array(array: Array) -> String:
 	var line = array[rng.randi() % array.size()]
 	
 	return line
-
-func _on_Lobby_player_added(id: int):
-	var name = Lobby.get_name_bb_code(id)
-	add_raw_message(tr("%s has joined the game.") % name)
-
-func _on_Lobby_player_modified(id: int, old: Dictionary):
-	if old.empty():
-		return
-	
-	var old_name = Lobby.get_name_bb_code_custom(old)
-	var new_name = Lobby.get_name_bb_code(id)
-	add_raw_message(tr("%s changed their name to %s") % [old_name, new_name])
-
-func _on_Lobby_player_removed(id: int):
-	var name = Lobby.get_name_bb_code(id)
-	add_raw_message(tr("%s has left the game.") % name)
 
 func _on_MessageEdit_text_entered(_new_text: String):
 	prepare_send_message()

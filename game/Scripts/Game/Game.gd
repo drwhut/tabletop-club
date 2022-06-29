@@ -98,7 +98,6 @@ func start_singleplayer() -> void:
 	# Pretend that we asked the master server to host our own game.
 	call_deferred("_on_connected", 1)
 	
-	_ui.hide_chat_box()
 	_ui.hide_room_code()
 
 # Stop the connections to the other peers and the master server.
@@ -216,8 +215,6 @@ func _process(delta):
 		var state = _room.get_state(false, false)
 		save_state(state, autosave_path)
 		
-		# TODO: Notify the player that an autosave was made.
-		
 		_time_since_last_autosave = 0.0
 
 func _unhandled_input(event):
@@ -231,10 +228,8 @@ func _unhandled_input(event):
 		var path = screenshot_dir.get_current_dir() + "/" + name
 		
 		if save_screenshot(path) == OK:
-			var message = "Saved screenshot to '%s'." % path
-			print(message)
-			
-			# TODO: Show a notification in the UI with this message.
+			var message = tr("Saved screenshot to '%s'.") % path
+			_ui.add_notification_info(message)
 		else:
 			push_error("Failed to save screenshot to '%s'!" % path)
 			return
@@ -247,7 +242,7 @@ func _unhandled_input(event):
 			var state = _room.get_state(false, false)
 			save_state(state, quicksave_path)
 			
-			# TODO: Show a notification that a quicksave was made.
+			_ui.add_notification_info(tr("Quicksave file saved."))
 		
 		elif event.is_action_pressed("game_quickload"):
 			var file = File.new()

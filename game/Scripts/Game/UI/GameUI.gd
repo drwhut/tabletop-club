@@ -64,14 +64,23 @@ var spawn_point_temp_offset: Vector3 = Vector3()
 var _room_code: String = ""
 var _room_code_visible: bool = true
 
+# From the custom module:
+# https://github.com/drwhut/tabletop_club_godot_module
+var _error_reporter = ErrorReporter.new()
+
+func add_notification_info(message: String) -> void:
+	_chat_box.add_raw_message("[color=aqua][INFO][/color] %s" % message)
+
+func add_notification_warning(message: String) -> void:
+	_chat_box.add_raw_message("[color=yellow][WARN] %s[/color]" % message)
+
+func add_notification_error(message: String) -> void:
+	_chat_box.add_raw_message("[color=red][ERROR] %s[/color]" % message)
+
 # Apply options from the options menu.
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
 	_chat_box.apply_options(config)
-
-# Hide the chat box from the UI.
-func hide_chat_box() -> void:
-	_chat_box.visible = false
 
 # Hide the room code from the UI.
 func hide_room_code() -> void:
@@ -112,6 +121,9 @@ func _ready():
 	Lobby.connect("player_added", self, "_on_Lobby_player_added")
 	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
 	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
+	
+	_error_reporter.connect("error_received", self, "_on_error_received")
+	_error_reporter.connect("warning_received", self, "_on_warning_received")
 	
 	# Make sure we emit the signal when all of the nodes are ready:
 	call_deferred("_set_rotation_amount")
@@ -182,6 +194,11 @@ func _on_DesktopButton_pressed():
 	emit_signal("leaving_room")
 	get_tree().quit()
 
+func _on_error_received(function: String, file: String, line: int,
+	error: String, _errorexp: String):
+	
+	add_notification_error("%s:%d %s: %s" % [file, line, function, error])
+
 func _on_FlipTableButton_pressed():
 	emit_signal("flipping_table")
 
@@ -198,13 +215,21 @@ func _on_GamesDialog_entry_requested(_pack: String, _type: String, entry: Dictio
 func _on_LoadGameButton_pressed():
 	_popup_save_dialog(false)
 
-func _on_Lobby_player_added(_id: int):
+func _on_Lobby_player_added(id: int):
+	var name = Lobby.get_name_bb_code(id)
+	add_notification_info(tr("%s has joined the game.") % name)
 	_update_player_list()
 
-func _on_Lobby_player_modified(_id: int, _old: Dictionary):
+func _on_Lobby_player_modified(id: int, old: Dictionary):
+	if not old.empty():
+		var old_name = Lobby.get_name_bb_code_custom(old)
+		var new_name = Lobby.get_name_bb_code(id)
+		add_notification_info(tr("%s changed their name to %s") % [old_name, new_name])
 	_update_player_list()
 
-func _on_Lobby_player_removed(_id: int):
+func _on_Lobby_player_removed(id: int):
+	var name = Lobby.get_name_bb_code(id)
+	add_notification_info(tr("%s has left the game.") % name)
 	_update_player_list()
 
 func _on_MainMenuButton_pressed():
@@ -281,3 +306,8 @@ func _on_SaveGameButton_pressed():
 
 func _on_UndoButton_pressed():
 	emit_signal("undo_state")
+
+func _on_warning_received(function: String, file: String, line: int,
+	error: String, _errorexp: String):
+	
+	add_notification_warning("%s:%d %s: %s" % [file, line, function, error])
