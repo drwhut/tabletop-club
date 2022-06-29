@@ -23,6 +23,13 @@ License: Public Domain
 Modified By: Benjamin "drwhut" Beddows
 URL: https://opengameart.org/content/bag-of-coins
 
+containers/Red Cup.{bin,gltf}
+container/RedCup_{baseColor,metallicRoughness,normal}.png
+=========================================================
+Author: Marcel "plaggy" Plagmann
+License: CC0
+URL: https://opengameart.org/content/red-cup
+
 dice/d4/d4 (Black).gltf
 dice/d4/d4_Numbers.png
 dice/d4/d4.bin
