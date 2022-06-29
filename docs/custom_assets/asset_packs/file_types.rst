@@ -49,21 +49,6 @@ Cylinder
 
 .. image:: uv_mappings/cylinder.svg
 
-Dice - D4
-"""""""""
-
-.. image:: uv_mappings/d4.svg
-
-Dice - D6
-"""""""""
-
-.. image:: uv_mappings/d6.svg
-
-Dice - D8
-"""""""""
-
-.. image:: uv_mappings/d8.svg
-
 
 .. _file-type-3d:
 

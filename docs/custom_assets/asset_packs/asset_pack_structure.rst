@@ -35,45 +35,35 @@ Note that asset packs don't need to have all of these sub-folders.
 +==========================+========================+==========================+==============================+
 | ``cards/``               | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-card`      |
 +--------------------------+------------------------+--------------------------+------------------------------+
-| ``containers/cube/``     | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-container` |
+| ``containers/``          | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-container` |
 +--------------------------+------------------------+--------------------------+------------------------------+
-| ``containers/custom/``   | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-container` |
+| ``dice/d4/``             | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-dice`      |
 +--------------------------+------------------------+--------------------------+------------------------------+
-| ``containers/cylinder/`` | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-container` |
+| ``dice/d6/``             | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-dice`      |
 +--------------------------+------------------------+--------------------------+------------------------------+
-| ``dice/d4/``             | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-dice`      |
+| ``dice/d8/``             | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-dice`      |
 +--------------------------+------------------------+--------------------------+------------------------------+
-| ``dice/d6/``             | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-dice`      |
+| ``dice/d10/``            | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-dice`      |
 +--------------------------+------------------------+--------------------------+------------------------------+
-| ``dice/d8/``             | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-dice`      |
+| ``dice/d12/``            | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-dice`      |
++--------------------------+------------------------+--------------------------+------------------------------+
+| ``dice/d20/``            | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-dice`      |
 +--------------------------+------------------------+--------------------------+------------------------------+
 | ``games/``               | :ref:`file-type-save`  | :ref:`asset-type-game`   | N/A                          |
 +--------------------------+------------------------+--------------------------+------------------------------+
 | ``music/``               | :ref:`file-type-audio` | :ref:`asset-type-music`  | N/A                          |
 +--------------------------+------------------------+--------------------------+------------------------------+
-| ``pieces/cube/``         | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-piece`     |
-+--------------------------+------------------------+--------------------------+------------------------------+
-| ``pieces/custom/``       | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-piece`     |
-+--------------------------+------------------------+--------------------------+------------------------------+
-| ``pieces/cylinder/``     | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-piece`     |
+| ``pieces/``              | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-piece`     |
 +--------------------------+------------------------+--------------------------+------------------------------+
 | ``skyboxes/``            | :ref:`file-type-image` | :ref:`asset-type-skybox` | N/A                          |
 +--------------------------+------------------------+--------------------------+------------------------------+
 | ``sounds/``              | :ref:`file-type-audio` | :ref:`asset-type-sound`  | N/A                          |
 +--------------------------+------------------------+--------------------------+------------------------------+
-| ``speakers/cube/``       | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-speaker`   |
-+--------------------------+------------------------+--------------------------+------------------------------+
-| ``speakers/custom/``     | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-speaker`   |
-+--------------------------+------------------------+--------------------------+------------------------------+
-| ``speakers/cylinder/``   | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-speaker`   |
+| ``speakers/``            | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-speaker`   |
 +--------------------------+------------------------+--------------------------+------------------------------+
 | ``tables/``              | :ref:`file-type-3d`    | :ref:`asset-type-table`  | N/A                          |
 +--------------------------+------------------------+--------------------------+------------------------------+
-| ``timers/cube/``         | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-timer`     |
-+--------------------------+------------------------+--------------------------+------------------------------+
-| ``timers/custom/``       | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-timer`     |
-+--------------------------+------------------------+--------------------------+------------------------------+
-| ``timers/cylinder/``     | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-timer`     |
+| ``timers/``              | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-timer`     |
 +--------------------------+------------------------+--------------------------+------------------------------+
 | ``tokens/cube/``         | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-token`     |
 +--------------------------+------------------------+--------------------------+------------------------------+
