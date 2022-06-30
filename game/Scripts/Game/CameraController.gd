@@ -122,6 +122,15 @@ onready var _timer_start_stop_countdown_button = $PieceContextMenu/TimerMenu/VBo
 onready var _timer_start_stop_stopwatch_button = $PieceContextMenu/TimerMenu/VBoxContainer/StartStopStopwatchButton
 onready var _timer_time_label = $PieceContextMenu/TimerMenu/VBoxContainer/TimerTimeLabel
 onready var _track_dialog = $TrackDialog
+onready var _transform_piece_pos_x = $PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer/PosXSpinBox
+onready var _transform_piece_pos_y = $PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer/PosYSpinBox
+onready var _transform_piece_pos_z = $PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer/PosZSpinBox
+onready var _transform_piece_rot_x = $PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer/RotXSpinBox
+onready var _transform_piece_rot_y = $PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer/RotYSpinBox
+onready var _transform_piece_rot_z = $PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer/RotZSpinBox
+onready var _transform_piece_sca_x = $PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer/ScaXSpinBox
+onready var _transform_piece_sca_y = $PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer/ScaYSpinBox
+onready var _transform_piece_sca_z = $PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer/ScaZSpinBox
 
 const CURSOR_LERP_SCALE = 100.0
 const GRABBING_SLOW_TIME = 0.25
@@ -1040,6 +1049,17 @@ func _popup_piece_context_menu() -> void:
 			_piece_context_menu.add_item(tr("Lock"), CONTEXT_PIECE_LOCK)
 		
 		_piece_context_menu.add_item(tr("Delete"), CONTEXT_PIECE_DELETE)
+		
+		_piece_context_menu.add_submenu_item(tr("Transform"), "TransformMenu")
+		var first_transform: Transform = _selected_pieces[0].transform
+		_transform_piece_pos_x.value = first_transform.origin.x
+		_transform_piece_pos_y.value = first_transform.origin.y
+		_transform_piece_pos_z.value = first_transform.origin.z
+		var euler = first_transform.basis.get_euler()
+		_transform_piece_rot_x.value = rad2deg(euler[0])
+		_transform_piece_rot_y.value = rad2deg(euler[1])
+		_transform_piece_rot_z.value = rad2deg(euler[2])
+		# TODO: Get scale.
 	
 	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
 	_piece_context_menu.set_as_minsize()
@@ -1495,7 +1515,7 @@ func _unlock_selected_pieces() -> void:
 			piece.rpc_id(1, "request_unlock")
 
 # Called when the camera starts moving either positionally or rotationally.
-func _on_moving() -> bool:	
+func _on_moving() -> bool:
 	# If we were grabbing a piece while moving...
 	if _is_grabbing_selected:
 		
@@ -1538,6 +1558,19 @@ func _on_moving() -> bool:
 		return true
 	
 	return false
+
+func _on_ApplyTransformButton_pressed():
+	_hide_context_menu()
+	var origin = Vector3(_transform_piece_pos_x.value,
+			_transform_piece_pos_y.value, _transform_piece_pos_z.value)
+	var angles = Vector3(deg2rad(_transform_piece_rot_x.value),
+			deg2rad(_transform_piece_rot_y.value),
+			deg2rad(_transform_piece_rot_z.value))
+	# TODO: Implement scale.
+	var new_transform = Transform(Basis(angles), origin)
+	
+	for piece in _selected_pieces:
+		piece.rpc_id(1, "request_set_transform", new_transform)
 
 func _on_BrushSizeValueSlider_value_changed(value: float):
 	_brush_size_label.text = str(value)

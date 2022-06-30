@@ -276,6 +276,12 @@ master func request_set_hover_position(new_hover_position: Vector3) -> void:
 		srv_set_hover_position(new_hover_position)
 		emit_signal("client_set_hover_position", self)
 
+# Request the server to set the transform of this piece.
+# new_transform: The piece's new transform.
+master func request_set_transform(new_transform: Transform) -> void:
+	if not is_hovering():
+		rpc("set_transform", new_transform)
+
 # Request the server to start hovering the piece.
 master func request_start_hovering(init_pos: Vector3, offset_pos: Vector3) -> void:
 	srv_start_hovering(get_tree().get_rpc_sender_id(), init_pos, offset_pos)
@@ -360,6 +366,23 @@ func set_outline_color(color: Color) -> void:
 		_outline_material.set_shader_param("Color", color)
 	else:
 		push_error("Outline material has not been created!")
+
+# Called by the server to set the transform of the piece.
+# new_transform: The piece's new transform.
+remotesync func set_transform(new_transform: Transform) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	transform.origin = new_transform.origin
+	
+	# The RigidBody's scale needs to stay as (1, 1, 1), so only take the
+	# rotation information out of the basis.
+	var new_basis = Basis(new_transform.basis.get_rotation_quat())
+	transform.basis = new_basis
+	
+	# TODO: Modify the piece's scale.
+	
+	sleeping = false
 
 # Called by the server to set the translation of the piece.
 # new_translation: The new translation.
@@ -454,6 +477,7 @@ remotesync func unlock() -> void:
 		return
 	
 	mode = MODE_RIGID
+	sleeping = false
 
 func _ready():
 	if not get_tree().is_network_server():
