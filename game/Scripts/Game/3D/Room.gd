@@ -2104,7 +2104,7 @@ func _srv_update_bandwidth_throttle() -> void:
 	var physics_frames_per_update = floor(1.0 + _pieces.get_child_count() / Global.SRV_PIECE_UPDATE_TRANSMIT_LIMIT)
 	if Global.srv_num_physics_frames_per_state_update != physics_frames_per_update:
 		Global.srv_num_physics_frames_per_state_update = physics_frames_per_update
-		print("State update rate set to %dHz." % (60 / physics_frames_per_update))
+		print("State update rate set to %.2fHz." % (60 / physics_frames_per_update))
 
 func _on_container_absorbing_hovered(container: PieceContainer, player_id: int) -> void:
 	if get_tree().is_network_server():
