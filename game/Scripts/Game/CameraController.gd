@@ -1059,7 +1059,10 @@ func _popup_piece_context_menu() -> void:
 		_transform_piece_rot_x.value = rad2deg(euler[0])
 		_transform_piece_rot_y.value = rad2deg(euler[1])
 		_transform_piece_rot_z.value = rad2deg(euler[2])
-		# TODO: Get scale.
+		var current_scale = _selected_pieces[0].get_current_scale()
+		_transform_piece_sca_x.value = current_scale.x
+		_transform_piece_sca_y.value = current_scale.y
+		_transform_piece_sca_z.value = current_scale.z
 	
 	_piece_context_menu.rect_position = get_viewport().get_mouse_position()
 	_piece_context_menu.set_as_minsize()
@@ -1566,8 +1569,11 @@ func _on_ApplyTransformButton_pressed():
 	var angles = Vector3(deg2rad(_transform_piece_rot_x.value),
 			deg2rad(_transform_piece_rot_y.value),
 			deg2rad(_transform_piece_rot_z.value))
-	# TODO: Implement scale.
-	var new_transform = Transform(Basis(angles), origin)
+	var new_scale = Vector3(_transform_piece_sca_x.value,
+			_transform_piece_sca_y.value, _transform_piece_sca_z.value)
+	
+	var new_basis = Basis(angles) * Basis.IDENTITY.scaled(new_scale)
+	var new_transform = Transform(new_basis, origin)
 	
 	for piece in _selected_pieces:
 		piece.rpc_id(1, "request_set_transform", new_transform)

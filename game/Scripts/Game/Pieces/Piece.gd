@@ -77,6 +77,9 @@ var _outline_material: ShaderMaterial = null
 
 var _expose_albedo_color = true
 
+var _original_shape_scales = []
+var _original_shape_scales_saved = false
+
 # Apply a texture to the piece.
 # texture: The texture to apply.
 # surface: The index of the surface to apply the texture to.
@@ -111,6 +114,26 @@ func get_collision_shapes() -> Array:
 		if child is CollisionShape:
 			out.append(child)
 	return out
+
+# Get the current scale of the piece relative to it's original size.
+# Returns: A Vector3 representing the scale in all three axes.
+func get_current_scale() -> Vector3:
+	if _original_shape_scales_saved:
+		var collision_shapes = get_collision_shapes()
+		if not collision_shapes.empty():
+			# The scale should be consistent across all of the collision shapes,
+			# so just compare it against the first one.
+			var shape: CollisionShape = collision_shapes[0]
+			# We want the local scale, ignoring any rotation from the parent.
+			var true_scale = shape.transform.basis.get_scale()
+			var x = true_scale.x / _original_shape_scales[0].x
+			var y = true_scale.y / _original_shape_scales[0].y
+			var z = true_scale.z / _original_shape_scales[0].z
+			return Vector3(x, y, z)
+		else:
+			return Vector3.ZERO
+	else:
+		return Vector3.ONE
 
 # Get the piece's effect player.
 # Returns: The piece's effect player if it exists, null if it doesn't.
@@ -326,6 +349,39 @@ func set_albedo_color_client(color: Color) -> void:
 			
 			material.albedo_color = original_color * color
 
+# Set the current scale of the piece.
+# new_scale: The scale of the piece in all three axes.
+func set_current_scale(new_scale: Vector3) -> void:
+	var collision_shapes = get_collision_shapes()
+	if not _original_shape_scales_saved:
+		var original_scales = []
+		for collision_shape in collision_shapes:
+			var this_scale = collision_shape.scale
+			# Avoid divide-by-zero errors.
+			if this_scale.x == 0.0:
+				this_scale.x = 1.0
+			if this_scale.y == 0.0:
+				this_scale.y = 1.0
+			if this_scale.z == 0.0:
+				this_scale.z = 1.0
+			original_scales.append(collision_shape.scale)
+		_original_shape_scales = original_scales
+		_original_shape_scales_saved = true
+	
+	var modified_scale = new_scale
+	var current_scale = get_current_scale()
+	if current_scale.x != 0.0:
+		modified_scale.x /= current_scale.x
+	if current_scale.y != 0.0:
+		modified_scale.y /= current_scale.y
+	if current_scale.z != 0.0:
+		modified_scale.z /= current_scale.z
+	
+	for i in range(collision_shapes.size()):
+		# Like in get_current_scale, we want to modify the scale locally.
+		var old_basis = collision_shapes[i].transform.basis
+		collision_shapes[i].transform.basis = old_basis.scaled(modified_scale)
+
 # Set the hover basis of the piece.
 # new_hover_basis: The basis the hovering piece will go towards.
 remotesync func set_hover_basis(new_hover_basis: Basis) -> void:
@@ -380,7 +436,7 @@ remotesync func set_transform(new_transform: Transform) -> void:
 	var new_basis = Basis(new_transform.basis.get_rotation_quat())
 	transform.basis = new_basis
 	
-	# TODO: Modify the piece's scale.
+	set_current_scale(new_transform.basis.get_scale())
 	
 	sleeping = false
 

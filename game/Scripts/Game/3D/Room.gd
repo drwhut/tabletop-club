@@ -1749,7 +1749,8 @@ func _append_piece_states(state: Dictionary, pieces: Array, collisions: bool) ->
 		var piece_meta = {
 			"is_locked": piece.is_locked(),
 			"piece_entry": piece.piece_entry,
-			"transform": piece.transform
+			"transform": piece.transform,
+			"user_scale": piece.get_current_scale()
 		}
 
 		if piece.is_albedo_color_exposed():
@@ -1851,6 +1852,14 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 			push_error("Piece " + type_key + "/" + piece_name + " transform is not a transform!")
 			return
 
+		if not piece_meta.has("user_scale"):
+			push_error("Piece " + type_key + "/" + piece_name + " in new state has no user scale!")
+			return
+
+		if not piece_meta["user_scale"] is Vector3:
+			push_error("Piece " + type_key + "/" + piece_name + " user scale is not a vector!")
+			return
+
 		# Stacks don't include their piece entry, since they can figure it out
 		# themselves once the first piece is added.
 		if type_key != "stacks":
@@ -1881,6 +1890,8 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 		var piece: Piece = _pieces.get_node(piece_name)
 		if piece_meta["is_locked"]:
 			piece.lock_client(piece_meta["transform"])
+
+		piece.set_current_scale(piece_meta["user_scale"])
 
 		if piece_meta.has("color"):
 			if not piece_meta["color"] is Color:
