@@ -35,7 +35,6 @@ onready var _hand_positions = $Table/HandPositions
 onready var _hands = $Hands
 onready var _hidden_areas = $HiddenAreas
 onready var _hidden_area_preview = $HiddenAreaPreview
-onready var _paint_plane = $Table/PaintPlane
 onready var _pieces = $Pieces
 onready var _spot_light = $SpotLight
 onready var _sun_light = $SunLight
@@ -69,6 +68,7 @@ var _srv_undo_state_events: Dictionary = {
 var _client_hover_pieces: Dictionary = {}
 
 var _table_body: RigidBody = null
+var _paint_plane = preload("res://Scenes/Game/3D/PaintPlane.tscn").instance()
 
 # Add a hand to the game for a given player.
 # player: The ID of the player the hand should belong to.
@@ -1546,6 +1546,8 @@ remotesync func set_table(table_entry: Dictionary) -> void:
 			if current_entry.hash() == table_entry.hash():
 				return
 
+		if _table_body.is_a_parent_of(_paint_plane):
+			_table_body.remove_child(_paint_plane)
 		_table.remove_child(_table_body)
 		_table_body.queue_free()
 		_table_body = null
@@ -1574,7 +1576,10 @@ remotesync func set_table(table_entry: Dictionary) -> void:
 		if get_tree().is_network_server():
 			srv_update_hand_transforms()
 
+	_table_body.add_child(_paint_plane)
 	var paint_plane_size = table_entry["paint_plane"]
+	_paint_plane.global_transform.origin = Vector3(0.0, 0.001, 0.0)
+	# The table, being a RigidBody, should not have it's own scale.
 	_paint_plane.scale = Vector3(paint_plane_size.x, 1.0, paint_plane_size.y)
 	_paint_plane.clear_paint()
 
@@ -2306,3 +2311,7 @@ func _on_GameUI_rotation_amount_updated(rotation_amount: float):
 
 func _on_GameUI_undo_state():
 	rpc_id(1, "pop_undo_state")
+
+func _on_Room_tree_exiting():
+	if not _paint_plane.get_parent():
+		_paint_plane.free()
