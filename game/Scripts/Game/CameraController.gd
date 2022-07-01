@@ -1754,29 +1754,34 @@ func _on_MouseGrab_gui_input(event):
 						_perform_box_select = true
 			
 			elif _tool == TOOL_RULER:
-				if event.is_pressed() and (_cursor_on_table or _ruler_placing_point2):
-					if not _ruler_placing_point2:
-						var ruler = preload("res://Scenes/Game/UI/RulerLine.tscn").instance()
-						ruler.is_metric = (_ruler_system_button.selected == 0)
-						ruler.point1 = _cursor_position
-						ruler.point2 = ruler.point1
-						ruler.scale = _ruler_scale_spin_box.value
-						_rulers.add_child(ruler)
+				if event.is_pressed() and _cursor_on_table and (not _ruler_placing_point2):
+					var ruler = preload("res://Scenes/Game/UI/RulerLine.tscn").instance()
+					ruler.is_metric = (_ruler_system_button.selected == 0)
+					ruler.point1 = _cursor_position
+					ruler.point2 = ruler.point1
+					ruler.scale = _ruler_scale_spin_box.value
+					_rulers.add_child(ruler)
 					
-					_ruler_placing_point2 = not _ruler_placing_point2
+					_ruler_placing_point2 = true
+				
+				elif not event.is_pressed():
+					_ruler_placing_point2 = false
 			
 			elif _tool == TOOL_HIDDEN_AREA:
-				if event.is_pressed() and (_cursor_on_table or _hidden_area_placing_point2):
-					if _hidden_area_placing_point2:
-						var point1_v2 = Vector2(_hidden_area_point1.x, _hidden_area_point1.z)
-						var point2_v2 = Vector2(_hidden_area_point2.x, _hidden_area_point2.z)
-						emit_signal("placing_hidden_area", point1_v2, point2_v2)
-					else:
-						_hidden_area_point1 = _cursor_position
-						_hidden_area_point2 = _hidden_area_point1
+				if event.is_pressed() and _cursor_on_table and (not _hidden_area_placing_point2):
+					_hidden_area_point1 = _cursor_position
+					_hidden_area_point2 = _hidden_area_point1
 					
-					_hidden_area_placing_point2 = not _hidden_area_placing_point2
-					emit_signal("setting_hidden_area_preview_visible", _hidden_area_placing_point2)
+					_hidden_area_placing_point2 = true
+				
+				elif not event.is_pressed():
+					var point1_v2 = Vector2(_hidden_area_point1.x, _hidden_area_point1.z)
+					var point2_v2 = Vector2(_hidden_area_point2.x, _hidden_area_point2.z)
+					emit_signal("placing_hidden_area", point1_v2, point2_v2)
+					
+					_hidden_area_placing_point2 = false
+				
+				emit_signal("setting_hidden_area_preview_visible", _hidden_area_placing_point2)
 			
 			elif _tool == TOOL_PAINT:
 				_is_painting = event.is_pressed()
