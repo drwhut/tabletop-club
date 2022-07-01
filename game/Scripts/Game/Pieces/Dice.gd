@@ -30,6 +30,24 @@ export(Resource) var shake_sounds
 
 var _rng = RandomNumberGenerator.new()
 
+# Get the value of the face that is currently pointed upwards.
+# Returns: The top face's value, 0 if no values are configured.
+func get_face_value() -> float:
+	var face_values: Dictionary = piece_entry["face_values"]
+	if face_values.empty():
+		return 0.0
+	
+	var max_dot = -1.0
+	var closest_value = 0
+	for value in face_values:
+		var normal = face_values[value]
+		var dot = transform.basis.xform(normal).dot(Vector3.UP)
+		if dot > max_dot:
+			max_dot = dot
+			closest_value = value
+	
+	return closest_value
+
 func _ready():
 	_rng.randomize()
 

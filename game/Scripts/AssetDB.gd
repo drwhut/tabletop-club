@@ -349,6 +349,9 @@ func _add_inheriting_assets(pack_path: String, type: String) -> void:
 						for key in config_file.get_section_keys(section):
 							if child.has(key):
 								# TODO: Check the value is the same type.
+								# TODO: Maybe separate the parsing of the
+								# config files into it's own function, so we
+								# can use it here?
 								child[key] = config_file.get_value(section, key)
 								
 								# A particular edge-case where the colour stored
@@ -357,6 +360,11 @@ func _add_inheriting_assets(pack_path: String, type: String) -> void:
 								if key == "color":
 									child[key] = Color(child[key])
 									child[key].a = 1.0
+								
+								elif key == "face_values":
+									for face_value in child[key]:
+										var face_rot = child[key][face_value]
+										child[key][face_value] = _precalculate_face_value_normal(face_rot)
 						
 						# We can't insert the new object into the DB now, since
 						# the DB needs to be sorted for us to search it
@@ -798,6 +806,45 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 		
 		elif type.begins_with("containers"):
 			entry["shakable"] = _get_file_config_value(config, from.get_file(), "shakable", false)
+		
+		elif type.begins_with("dice"):
+			var num_faces = 0
+			
+			if type.ends_with("d4"):
+				num_faces = 4
+			elif type.ends_with("d6"):
+				num_faces = 6
+			elif type.ends_with("d8"):
+				num_faces = 8
+			elif type.ends_with("d10"):
+				num_faces = 10
+			elif type.ends_with("d12"):
+				num_faces = 12
+			elif type.ends_with("d20"):
+				num_faces = 20
+			
+			var face_values: Dictionary = _get_file_config_value(config, from.get_file(), "face_values", {})
+			var face_values_entry = {}
+			if not face_values.empty():
+				if face_values.size() == num_faces:
+					for key in face_values:
+						if not (key is int or key is float):
+							push_error("Key in face_values entry is not a number! (%s)" % str(key))
+							return ERR_INVALID_DATA
+						
+						var value = face_values[key]
+						if not value is Vector2:
+							push_error("Value in face_values entry is not a Vector2! (%s)" % str(value))
+							return ERR_INVALID_DATA
+						
+						var normal_vec = _precalculate_face_value_normal(value)
+						face_values_entry[key] = normal_vec
+				else:
+					push_error("Number of entries for face_values (%d) does not match the number of faces (%d)!" %
+							[face_values.size(), num_faces])
+					return ERR_INVALID_DATA
+			
+			entry["face_values"] = face_values_entry
 	
 	_add_entry_to_db(pack, type, entry)
 	
@@ -908,6 +955,15 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 		
 		var array: Array = _db[pack][type]
 		array.sort_custom(self, "_sort_assets")
+
+# Function used to convert rotation transforms in the form of a Vector2 into
+# a Vector3 representing the normal vector of the corresponding face.
+# Returns: The normal vector.
+# rot: The rotation transformation, where the first element is the x rotation,
+# and the second element is the z rotation, both in degrees.
+func _precalculate_face_value_normal(rot: Vector2) -> Vector3:
+	var quat = Quat(Vector3(deg2rad(rot.x), 0.0, deg2rad(rot.y)))
+	return quat.inverse().xform(Vector3.UP)
 
 # Function used to binary search an array of asset entries by name.
 func _search_assets(element: Dictionary, search: String) -> bool:

@@ -984,7 +984,18 @@ func _popup_piece_context_menu() -> void:
 		_piece_context_menu.add_separator()
 	prev_num_items = _piece_context_menu.get_item_count()
 	
-	if _inheritance_has(inheritance, "StackablePiece"):
+	if _inheritance_has(inheritance, "Dice"):
+		var total = 0.0
+		for dice in _selected_pieces:
+			total += dice.get_face_value()
+		
+		var is_int = (round(total) == total)
+		if is_int:
+			_piece_context_menu.add_item(tr("Total: %d") % total)
+		else:
+			_piece_context_menu.add_item(tr("Total: %f") % total)
+	
+	elif _inheritance_has(inheritance, "StackablePiece"):
 		if _selected_pieces.size() > 1:
 			_piece_context_menu.add_item(tr("Collect selected"), CONTEXT_STACKABLE_PIECE_COLLECT_SELECTED)
 	

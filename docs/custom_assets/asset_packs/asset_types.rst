@@ -73,6 +73,41 @@ Dice
 
 Dice are objects that, when shaken, randomize their orientation.
 
+They can also be configured to report certain values depending on their
+orientation in the :ref:`config-cfg` file, using the ``face_values`` property:
+
+.. code-block:: ini
+
+   ; dice/d6/config.cfg
+   [*]
+
+   face_values = {
+
+      ; This is the format of an entry in face_values:
+      ; A number, followed by a semi-colon, followed by a Vector2, with two
+      ; numbers inside, followed by a comma if it is not the last entry.
+      1: Vector2(0.0, 0.0),
+
+      ; The two numbers inside the Vector2 correspond to the rotation in the
+      ; x-axis (left/right), and the z-axis (forward/back), respectively.
+      ; If you are not sure what these numbers should be, you can use the
+      ; Transform menu in-game to manipulate the dice and find out what the
+      ; rotation is for each face of the dice.
+      2: Vector2(0.0, 90.0),
+
+      3: Vector2(-90.0, 0.0),
+      4: Vector2(90.0, 0.0),
+      5: Vector2(0.0, -90.0),
+      6: Vector2(180.0, 0.0)
+   }
+
+If the face values are configured correctly, then the player will easily be able
+to check the total of a set of thrown dice by selecting, then right-clicking the
+dice. The total will be shown at the top of the context menu.
+
+If ``face_values`` is not configured, the dice will always report ``0`` as its
+value.
+
 
 .. _object-type-piece:
 
