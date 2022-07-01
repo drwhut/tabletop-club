@@ -781,6 +781,23 @@ func _create_player_cursor_texture(id: int, grabbing: bool) -> ImageTexture:
 func _copy_selected_pieces() -> void:
 	_hide_context_menu()
 	clipboard_yank_position = _future_clipboard_position
+	
+	# Adjust the y value of the yank position, such that we yank from the
+	# lowest point of the selection - this way, when the objects are pasted on
+	# the surface of the table (y = 0), they do not spawn in the ground.
+	var min_y = clipboard_yank_position.y
+	for piece in _selected_pieces:
+		var height = piece.get_size().y
+		var lowest_y = piece.translation.y - (height / 2.0)
+		if lowest_y < min_y:
+			if lowest_y < 0.0:
+				min_y = 0.0
+				break
+			else:
+				min_y = lowest_y
+	
+	clipboard_yank_position.y = min_y
+	
 	emit_signal("clipboard_yank", _selected_pieces)
 
 # Cut the selected pieces to the clipboard.
