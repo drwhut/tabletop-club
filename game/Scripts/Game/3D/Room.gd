@@ -1857,14 +1857,6 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 			push_error("Piece " + type_key + "/" + piece_name + " transform is not a transform!")
 			return
 
-		if not piece_meta.has("user_scale"):
-			push_error("Piece " + type_key + "/" + piece_name + " in new state has no user scale!")
-			return
-
-		if not piece_meta["user_scale"] is Vector3:
-			push_error("Piece " + type_key + "/" + piece_name + " user scale is not a vector!")
-			return
-
 		# Stacks don't include their piece entry, since they can figure it out
 		# themselves once the first piece is added.
 		if type_key != "stacks":
@@ -1896,7 +1888,12 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 		if piece_meta["is_locked"]:
 			piece.lock_client(piece_meta["transform"])
 
-		piece.set_current_scale(piece_meta["user_scale"])
+		if piece_meta.has("user_scale"):
+			if not piece_meta["user_scale"] is Vector3:
+				push_error("Piece " + type_key + "/" + piece_name + " user scale is not a Vector3!")
+				return
+
+			piece.set_current_scale(piece_meta["user_scale"])
 
 		if piece_meta.has("color"):
 			if not piece_meta["color"] is Color:
