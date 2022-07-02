@@ -25,8 +25,9 @@ to reproduce the bug, the platform you're running the game on, and if possible,
 provide the latest log so we can check if there were any errors thrown. You can
 find the game logs in the following folders:
 
-* Windows: ``%APPDATA%/TabletopClub/logs/``
-* macOS / Linux: ``~/.local/share/godot/app_userdata/TabletopClub/logs/``
+* Windows: ``%APPDATA%/Tabletop Club/logs/``
+* macOS: ``~/Library/Application/Support/Tabletop Club/logs``
+* Linux: ``~/.local/share/Tabletop Club/logs/``
 
 .. hint::
 
