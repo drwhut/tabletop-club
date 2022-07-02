@@ -64,8 +64,8 @@ msgid ""
 msgstr ""
 "le code source de ce jeu est ouvert au public (vous pouvez le retrouver dans "
 "le `dépôt GitHub <https://github.com/drwhut/tabletop-club>`_). Cela implique "
-"que vous pouvez également compiler le jeu vous-même de zéro (voir: :ref"
-":`compiling-from-source`)."
+"que vous pouvez également compiler le jeu vous-même de zéro (voir: :ref:"
+"`compiling-from-source`)."
 
 #: ../../general/about.rst:29
 msgid ""
