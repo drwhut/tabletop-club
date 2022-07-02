@@ -1560,6 +1560,7 @@ remotesync func set_table(table_entry: Dictionary) -> void:
 		if table_entry.has("scene_path"):
 			if not table_entry["scene_path"].empty():
 				_table_body = PieceBuilder.build_table(table_entry)
+				_table_body.name = "TableBody"
 				_table.add_child(_table_body)
 
 				for hand_meta in table_entry["hands"]:
@@ -1576,10 +1577,11 @@ remotesync func set_table(table_entry: Dictionary) -> void:
 		if get_tree().is_network_server():
 			srv_update_hand_transforms()
 
-	_table_body.add_child(_paint_plane)
-	var paint_plane_size = table_entry["paint_plane"]
-	_paint_plane.global_transform.origin = Vector3(0.0, 0.001, 0.0)
+	if _table_body != null:
+		_table_body.add_child(_paint_plane)
+		_paint_plane.global_transform.origin = Vector3(0.0, 0.001, 0.0)
 	# The table, being a RigidBody, should not have it's own scale.
+	var paint_plane_size = table_entry["paint_plane"]
 	_paint_plane.scale = Vector3(paint_plane_size.x, 1.0, paint_plane_size.y)
 	_paint_plane.clear_paint()
 
