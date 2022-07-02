@@ -133,6 +133,7 @@ onready var _transform_piece_sca_y = $PieceContextMenu/TransformMenu/VBoxContain
 onready var _transform_piece_sca_z = $PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer/ScaZSpinBox
 
 const CURSOR_LERP_SCALE = 100.0
+const CURSOR_MAX_DIST = 10000.0
 const GRABBING_SLOW_TIME = 0.25
 const HOVER_Y_MIN = 1.0
 const MOVEMENT_ACCEL_SCALAR = 0.125
@@ -373,6 +374,18 @@ remotesync func set_player_cursor_position(id: int, position: Vector3, x_basis: 
 	if not cursor is TextureRect:
 		return
 	
+	if is_nan(position.x) or is_nan(position.y) or is_nan(position.z):
+		return
+	elif position.length_squared() > CURSOR_MAX_DIST * CURSOR_MAX_DIST:
+		position = CURSOR_MAX_DIST * position.normalized()
+	
+	if is_nan(x_basis.x) or is_nan(x_basis.y) or is_nan(x_basis.z):
+		return
+	elif x_basis == Vector3.ZERO:
+		x_basis = Vector3.RIGHT
+	else:
+		x_basis = x_basis.normalized()
+	
 	cursor.set_meta("cursor_position", position)
 	cursor.set_meta("x_basis", x_basis)
 
@@ -465,23 +478,27 @@ func _process(delta):
 		if cursor is TextureRect:
 			if cursor.has_meta("cursor_position") and cursor.has_meta("x_basis"):
 				var current_position = cursor.rect_position
+				# We check if the cursor position is valid when it is sent to
+				# us by the server.
 				var target_position = _camera.unproject_position(cursor.get_meta("cursor_position"))
-				cursor.rect_position = current_position.linear_interpolate(target_position, CURSOR_LERP_SCALE * delta)
+				var lerp_amount = min(CURSOR_LERP_SCALE * delta, 1.0)
+				cursor.rect_position = current_position.linear_interpolate(target_position, lerp_amount)
 				
 				var our_basis = transform.basis.x.normalized()
-				var their_basis = cursor.get_meta("x_basis").normalized()
+				var their_basis = cursor.get_meta("x_basis")
 				var cos_theta = our_basis.dot(their_basis)
 				var cross = our_basis.cross(their_basis)
-				var sin_theta = cross.length()
-				if cross.y < 0:
-					sin_theta = -sin_theta
-				var target_theta = acos(cos_theta)
-				# If the camera goes one way, the cursor needs to go the other
-				# way. This is why the if statement isn't < 0.
-				if sin_theta > 0:
-					target_theta = -target_theta
-				var current_theta = deg2rad(cursor.rect_rotation)
-				cursor.rect_rotation = rad2deg(lerp_angle(current_theta, target_theta, CURSOR_LERP_SCALE * delta))
+				
+				# Since we normalise the vectors, this should always be true,
+				# but just in case, since acos would give NaN otherwise!
+				if cos_theta >= -1.0 and cos_theta <= 1.0:
+					var target_theta = acos(cos_theta)
+					# If the camera goes one way, the cursor needs to go the other
+					# way. This is why the if statement isn't < 0.
+					if cross.y > 0:
+						target_theta = -target_theta
+					var current_theta = deg2rad(cursor.rect_rotation)
+					cursor.rect_rotation = rad2deg(lerp_angle(current_theta, target_theta, lerp_amount))
 	
 	if _ruler_placing_point2:
 		var num_rulers = _rulers.get_child_count()
