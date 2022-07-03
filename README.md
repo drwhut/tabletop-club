@@ -30,7 +30,7 @@ English  | :heavy_check_mark: | :heavy_check_mark:
 Dutch    | 83%                | :x:
 French   | 53%                | :x:
 German   | 78%                | :x:
-Russian  | 80%                | :x:
+Russian  | 80%                | 99%
 
 If you want to help translate the project, you can go to the project's
 [Hosted Weblate](https://hosted.weblate.org/engage/tabletop-club/) page.
@@ -47,4 +47,4 @@ Want to help contribute to the project? Have a look at the
 
 [![Documentation Status](https://readthedocs.org/projects/tabletop-club/badge/?version=latest)](https://tabletop-club.readthedocs.io/en/latest/?badge=latest)
 
-The documentation is hosted on [ReadTheDocs](https://tabletop-club.readthedocs.io).
+The documentation is hosted on [ReadTheDocs](https://tabletop-club.readthedocs.io/en/latest).

@@ -28,7 +28,7 @@ Tabletop Club - это многопользовательская игра с о
 Нидерландский   | 83%                | :x:
 Французкий      | 53%                | :x:
 Немецкий        | 78%                | :x:
-Русский         | 80%                | :x: 
+Русский         | 80%                | 99%
 
 Если вы хотите помочь с переводом проекта, вы можете перейти на страницу [Weblate](https://hosted.weblate.org/engage/tabletop-club/).
 
@@ -43,5 +43,5 @@ Tabletop Club - это многопользовательская игра с о
 
 [![Статус документации](https://readthedocs.org/projects/tabletop-club/badge/?version=latest)](https://tabletop-club.readthedocs.io/ru/latest/?badge=latest)
 
-Документация размещена на [ReadTheDocs](https://tabletop-club.readthedocs.io/ru).
+Документация размещена на [ReadTheDocs](https://tabletop-club.readthedocs.io/ru/latest).
 
