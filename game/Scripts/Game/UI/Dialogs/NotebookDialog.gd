@@ -146,6 +146,8 @@ func _on_MoveDownButton_pressed():
 	pages[_last_page_seen + 1] = page_text
 	
 	_last_page_seen += 1
+	_move_down_button.disabled = (_last_page_seen == _page_list.get_item_count()-1)
+	_move_up_button.disabled = (_last_page_seen == 0)
 
 func _on_MoveUpButton_pressed():
 	_page_list.move_item(_last_page_seen, _last_page_seen - 1)
@@ -155,6 +157,8 @@ func _on_MoveUpButton_pressed():
 	pages[_last_page_seen - 1] = page_text
 	
 	_last_page_seen -= 1
+	_move_down_button.disabled = (_last_page_seen == _page_list.get_item_count()-1)
+	_move_up_button.disabled = (_last_page_seen == 0)
 
 func _on_NewPageButton_pressed():
 	if not pages.empty():
