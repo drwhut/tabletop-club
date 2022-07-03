@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="tabletop_club_logo.svg" width="256">
+  <img src="tabletop_club_logo.svg" width="256"><br>
+  <a href="README.md">English</a> | <a href="README.ru.md">Русский</a>
 </p>
 
 Tabletop Club is an open-source multiplayer game that allows you to play your
