@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Game/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Misc/OutlineColorRect.gd" type="Script" id=2]
@@ -12,26 +12,9 @@
 [ext_resource path="res://Scripts/Misc/SpinBoxButton.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/Misc/TimeEdit.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Fonts/Cabin-Bold.ttf" type="DynamicFontData" id=14]
-
-[sub_resource type="DynamicFont" id=1]
-size = 12
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 14 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 12
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 13 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 9
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 13 )
+[ext_resource path="res://Fonts/Cabin/Modified/Cabin-Bold-Outline.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-Outline.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-Outline-Small.tres" type="DynamicFont" id=15]
 
 [node name="CameraController" type="Spatial"]
 script = ExtResource( 1 )
@@ -632,7 +615,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": "This control will be the parent of all of the cursors that are displayed in multiplayer games (showing the positions and rotations of every other player's cursor on the table)."
 }
 
@@ -646,14 +628,11 @@ margin_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
-custom_fonts/bold_font = SubResource( 1 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/bold_font = ExtResource( 13 )
+custom_fonts/normal_font = ExtResource( 14 )
 bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ToolContainer" type="VBoxContainer" parent="CameraUI"]
 anchor_top = 0.5
@@ -721,7 +700,7 @@ expand_icon = true
 visible = false
 margin_right = 240.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 15 )
 autowrap = true
 
 [connection signal="gui_input" from="MouseGrab" to="." method="_on_MouseGrab_gui_input"]

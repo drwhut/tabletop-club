@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Game/UI/ChatBox.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/Cabin-Bold.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Fonts/Cabin-Italic.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/Cabin/Cabin-Bold.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/Cabin/Cabin-Italic.tres" type="DynamicFont" id=3]
 
 [node name="ChatBox" type="HBoxContainer"]
 margin_right = 300.0

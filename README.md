@@ -26,9 +26,10 @@ or
 Language | Game               | Documentation
 -------- | ------------------ | ------------------
 English  | :heavy_check_mark: | :heavy_check_mark:
-Dutch    | 73%                | :x:
-French   | 64%                | :x:
-German   | 94%                | :x:
+Dutch    | 83%                | :x:
+French   | 53%                | :x:
+German   | 78%                | :x:
+Russian  | 80%                | :x:
 
 If you want to help translate the project, you can go to the project's
 [Hosted Weblate](https://hosted.weblate.org/engage/tabletop-club/) page.

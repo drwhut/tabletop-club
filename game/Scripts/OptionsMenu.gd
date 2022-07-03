@@ -30,7 +30,8 @@ var LOCALES = [
 	{ "locale": "de", "name": "Deutsch" },
 	{ "locale": "en", "name": "English" },
 	{ "locale": "fr", "name": "Français" },
-	{ "locale": "nl", "name": "Nederlands" }
+	{ "locale": "nl", "name": "Nederlands" },
+	{ "locale": "ru", "name": "Русский" }
 ]
 
 const OPTIONS_FILE_PATH = "user://options.cfg"

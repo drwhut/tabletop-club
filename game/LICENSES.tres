@@ -11,11 +11,17 @@ License: CC BY-SA 4.0
 Modified By: traverseda
 URL: https://files.outsidecontext.solutions/s/G6aHm9qGPbJzBBH
 
-Fonts/Cabin-*.ttf
-===========
+Fonts/Cabin/*.ttf
+==============
 Authors: Pablo Impallari, Igino Marini
 License: SIL OFL v1.1
 URL: https://www.dafont.com/cabin.font
+
+Fonts/PTSans/*.ttf
+===============
+Authors: ParaType
+License: SIL OFL v1.1
+URL: https://fonts.google.com/specimen/PT+Sans
 
 Images/ArrowCursor.png
 Images/GrabbingCursor.png

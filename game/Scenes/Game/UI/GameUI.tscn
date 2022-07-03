@@ -1,25 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Game/UI/GameUI.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Game/UI/ChatBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Game/UI/Dialogs/SaveDialog.gd" type="Script" id=5]
-[ext_resource path="res://Fonts/Cabin-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Fonts/Cabin/Modified/Cabin-Bold-Outline-Large.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/RoomDialog.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Fonts/Cabin-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-Outline.tres" type="DynamicFont" id=8]
 [ext_resource path="res://Scenes/Game/UI/Dialogs/NotebookDialog.tscn" type="PackedScene" id=9]
-
-[sub_resource type="DynamicFont" id=1]
-size = 18
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=2]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 6 )
 
 [node name="GameUI" type="Control"]
 anchor_right = 1.0
@@ -119,17 +108,17 @@ __meta__ = {
 
 [node name="RoomCodeLabel" type="RichTextLabel" parent="HideableUI/MultiplayerContainer"]
 margin_right = 200.0
-margin_bottom = 21.0
-custom_fonts/bold_font = SubResource( 1 )
-custom_fonts/normal_font = SubResource( 2 )
+margin_bottom = 16.0
+custom_fonts/bold_font = ExtResource( 6 )
+custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
 
 [node name="RoomCodeVisibleContainer" type="HBoxContainer" parent="HideableUI/MultiplayerContainer"]
-margin_top = 25.0
+margin_top = 20.0
 margin_right = 200.0
-margin_bottom = 51.0
+margin_bottom = 46.0
 alignment = 2
 
 [node name="RoomCodeToggleButton" type="Button" parent="HideableUI/MultiplayerContainer/RoomCodeVisibleContainer"]
@@ -138,9 +127,9 @@ margin_right = 200.0
 margin_bottom = 26.0
 
 [node name="PlayerList" type="RichTextLabel" parent="HideableUI/MultiplayerContainer"]
-margin_top = 55.0
+margin_top = 50.0
 margin_right = 200.0
-margin_bottom = 76.0
+margin_bottom = 71.0
 mouse_filter = 2
 bbcode_enabled = true
 fit_content_height = true

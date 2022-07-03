@@ -20,8 +20,5 @@ margin_bottom = 20.0
 grow_horizontal = 0
 text = "Now Playing:"
 align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

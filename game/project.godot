@@ -193,7 +193,7 @@ singletons=[ "res://webrtc/webrtc.tres" ]
 
 [gui]
 
-theme/custom_font="res://Fonts/Cabin-Medium.tres"
+theme/custom_font="res://Fonts/Cabin/Cabin-Medium.tres"
 
 [input]
 
@@ -275,7 +275,7 @@ game_quickload={
 
 [locale]
 
-translations=PoolStringArray( "res://Translations/fr.po", "res://Translations/de.po", "res://Translations/nl.po" )
+translations=PoolStringArray( "res://Translations/fr.po", "res://Translations/de.po", "res://Translations/nl.po", "res://Translations/ru.po" )
 
 [physics]
 
