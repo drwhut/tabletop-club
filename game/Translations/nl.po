@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-07-03 02:05+0100\n"
-"PO-Revision-Date: 2022-06-09 17:16+0000\n"
+"PO-Revision-Date: 2022-07-06 11:15+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
 "nl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:27
@@ -50,14 +50,12 @@ msgid "Quit"
 msgstr "Afsluiten"
 
 #: ../Scenes/MainMenu.tscn:96
-#, fuzzy
-#| msgid "Flip orientation"
 msgid "Documentation"
-msgstr "Spiegelen"
+msgstr "Documentatie"
 
 #: ../Scenes/MainMenu.tscn:105
 msgid "Information"
-msgstr ""
+msgstr "Informatie"
 
 #: ../Scenes/MainMenu.tscn:130
 msgid "Host Game"
@@ -94,7 +92,7 @@ msgstr "Hoofdvolume"
 
 #: ../Scenes/OptionsMenu.tscn:67
 msgid "Sets the overall volume of all sources of sound in the game."
-msgstr ""
+msgstr "Stel het algehele volumeniveau van alle geluidsbronnen in."
 
 #: ../Scenes/OptionsMenu.tscn:78
 msgid "Music Volume"
@@ -102,7 +100,7 @@ msgstr "Muziekvolume"
 
 #: ../Scenes/OptionsMenu.tscn:86
 msgid "Sets the volume of all music sources in the game."
-msgstr ""
+msgstr "Stel het volumeniveau van alle muziekbronnen in het spel in."
 
 #: ../Scenes/OptionsMenu.tscn:97
 msgid "Sounds Volume"
@@ -112,7 +110,7 @@ msgstr "Geluidsvolume"
 msgid ""
 "Sets the volume of sound sources played manually throughout the game, for "
 "example, from speakers."
-msgstr ""
+msgstr "Stel het volumeniveau van alle geluidsbronnen in het spel handmatig in."
 
 #: ../Scenes/OptionsMenu.tscn:116
 msgid "Effects Volume"
@@ -123,6 +121,8 @@ msgid ""
 "Sets the volume of sound effects played automatically throughout the game, "
 "for example, pieces falling on the table. "
 msgstr ""
+"Stel het volumeniveau van geluidseffecten in het spel in, bijvoorbeeld het "
+"vallen van spelstukken op de tafel. "
 
 #: ../Scenes/OptionsMenu.tscn:140
 msgid "Controls"
@@ -134,7 +134,7 @@ msgstr "Horizontale muisgevoeligheid"
 
 #: ../Scenes/OptionsMenu.tscn:160
 msgid "Sets the horizontal sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "Stel de horizontale gevoeligheid tijdens het draaien van de camera in."
 
 #: ../Scenes/OptionsMenu.tscn:172
 msgid "Mouse Vertical Sensitivity"
@@ -142,7 +142,7 @@ msgstr "Verticale muisgevoeligheid"
 
 #: ../Scenes/OptionsMenu.tscn:180
 msgid "Sets the vertical sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "Stel de verticale gevoeligheid tijdens het draaien van de camera in."
 
 #: ../Scenes/OptionsMenu.tscn:192
 msgid "Mouse Horizontal Invert"
@@ -150,7 +150,7 @@ msgstr "Horizontale muisgevoeligheid (omgekeerd)"
 
 #: ../Scenes/OptionsMenu.tscn:200
 msgid "Used to invert the rotation of the camera horizontally."
-msgstr ""
+msgstr "De gevoeligheid van het omgekeerd horizontaal draaien van de camera."
 
 #: ../Scenes/OptionsMenu.tscn:207
 msgid "Mouse Vertical Invert"
@@ -158,7 +158,7 @@ msgstr "Verticale muisgevoeligheid (omgekeerd)"
 
 #: ../Scenes/OptionsMenu.tscn:215
 msgid "Used to invert the rotation of the camera vertically."
-msgstr ""
+msgstr "De gevoeligheid van het omgekeerd verticaal draaien van de camera."
 
 #: ../Scenes/OptionsMenu.tscn:222
 msgid "Camera Movement Speed"
@@ -166,7 +166,7 @@ msgstr "Camerasnelheid"
 
 #: ../Scenes/OptionsMenu.tscn:230
 msgid "Used to set how fast the camera moves across the table."
-msgstr ""
+msgstr "Hoe snel de camera over de tafel heen moet gaan."
 
 #: ../Scenes/OptionsMenu.tscn:242
 msgid "Hold Left Click to Move Camera"
@@ -177,6 +177,8 @@ msgid ""
 "Used to allow the player to move the camera by dragging the mouse across the "
 "table."
 msgstr ""
+"Of een speler de camera kan verplaatsen door te cursor over de tafel te "
+"verslepen."
 
 #: ../Scenes/OptionsMenu.tscn:257
 msgid "Zoom Sensitivity"
@@ -186,7 +188,7 @@ msgstr "Zoomgevoeligheid"
 msgid ""
 "Sets how fast the camera zooms in and out of the table when using the scroll "
 "wheel."
-msgstr ""
+msgstr "Stel in hoe snel de camera in- en uitzoomt met het scrolwiel."
 
 #: ../Scenes/OptionsMenu.tscn:277
 msgid "Zoom Invert"
@@ -194,7 +196,7 @@ msgstr "Zoomgevoeligheid (omgekeerd)"
 
 #: ../Scenes/OptionsMenu.tscn:285
 msgid "Used to invert the direction of zooming when using the scroll wheel."
-msgstr ""
+msgstr "Draai de scrolrichting (bij zoomen) om."
 
 #: ../Scenes/OptionsMenu.tscn:292
 msgid "Piece Lift Sensitivity"
@@ -203,6 +205,8 @@ msgstr "Gevoeligheid bij oppakken van spelstuk"
 #: ../Scenes/OptionsMenu.tscn:300
 msgid "Sets how fast a piece will move when lifting it off the table."
 msgstr ""
+"Geef aan hoe snel een spelstuk dient te worden verplaatst na het oppakken "
+"ervan."
 
 #: ../Scenes/OptionsMenu.tscn:312
 msgid "Piece Lift Invert"
@@ -212,6 +216,8 @@ msgstr "Gevoeligheid bij oppakken van spelstuk (omgekeerd)"
 msgid ""
 "Used to invert the direction a piece will go when lifting it off the table."
 msgstr ""
+"Geef aan hoe snel het spelstuk dient te worden omgedraaid om na het oppakken "
+"ervan."
 
 #: ../Scenes/OptionsMenu.tscn:327
 msgid "Piece Rotation Invert"
@@ -220,6 +226,8 @@ msgstr "Gevoeligheid bij draaien van spelstuk"
 #: ../Scenes/OptionsMenu.tscn:335
 msgid "Used to invert the direction a piece will rotate."
 msgstr ""
+"Geef aan hoe snel het spelstuk dient te worden gedraaid om na het oppakken "
+"ervan."
 
 #: ../Scenes/OptionsMenu.tscn:342
 msgid "Hand Preview Enabled"
@@ -229,17 +237,19 @@ msgstr "Hand tonen"
 msgid ""
 "When set, hovering over a card in your hand will display an enhanced preview "
 "of the card after a short period of time."
-msgstr ""
+msgstr "Stel in om na een bepaalde tijd een kaart in je hand te tonen."
 
 #: ../Scenes/OptionsMenu.tscn:358
 msgid "Hand Preview Delay"
-msgstr "Wachttijd alvorens hand te tonen"
+msgstr "Wachttijd alvorens kaart in hand te tonen"
 
 #: ../Scenes/OptionsMenu.tscn:366
 msgid ""
 "Used to set how long the mouse needs to be kept still before a preview of a "
 "card is displayed from the hand."
 msgstr ""
+"Geef aan hoelang de cursor stilgehouden dient te worden alvorens een kaart "
+"wordt voorvertoond."
 
 #: ../Scenes/OptionsMenu.tscn:378
 msgid "Hand Preview Size"
@@ -247,15 +257,15 @@ msgstr "Handomvang"
 
 #: ../Scenes/OptionsMenu.tscn:386
 msgid "Used to control how large the card preview is."
-msgstr ""
+msgstr "Stel in hoe groot de kaartvoorvertoning dient te zijn."
 
 #: ../Scenes/OptionsMenu.tscn:398
 msgid "Hide Control Hints"
-msgstr "Tips omtrent het verbergen van de bediening"
+msgstr "Tips omtrent spelbediening verbergen"
 
 #: ../Scenes/OptionsMenu.tscn:406
 msgid "Used to hide the dynamic text displaying how to control the game."
-msgstr ""
+msgstr "Verberg de tekst die aangeeft hoe het spel moet worden bediend."
 
 #: ../Scenes/OptionsMenu.tscn:418
 msgid "General"
@@ -271,7 +281,7 @@ msgstr "Automatisch opslaan, elke"
 
 #: ../Scenes/OptionsMenu.tscn:460
 msgid "Used to set how often autosaves are created."
-msgstr ""
+msgstr "Geef aan hoe vaak een spel automatisch dient te worden opgeslagen."
 
 #: ../Scenes/OptionsMenu.tscn:462
 msgid "5 minutes"
@@ -283,15 +293,15 @@ msgstr "Aantal reservekopieën"
 
 #: ../Scenes/OptionsMenu.tscn:479
 msgid "Used to set the maximum number of autosave files that are made."
-msgstr ""
+msgstr "Geef aan hoeveel reservekopieën er maximaal mogen worden gemaakt."
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Opens the assets folder in your file explorer."
-msgstr ""
+msgstr "Open de elementmap in je bestandsbeheerder."
 
 #: ../Scenes/OptionsMenu.tscn:510
 msgid "Open Assets Folder"
-msgstr "Spelelementmap openen"
+msgstr "Spelelementenmap openen"
 
 #: ../Scenes/OptionsMenu.tscn:526
 msgid "Reimport Assets"
@@ -306,10 +316,8 @@ msgid "Move Forward"
 msgstr "Vooruit"
 
 #: ../Scenes/OptionsMenu.tscn:559
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera forward."
-msgstr "Camera verplaatsen"
+msgstr "Duw de camera naar voren."
 
 #: ../Scenes/OptionsMenu.tscn:569
 msgid "Move Back"
@@ -317,27 +325,23 @@ msgstr "Achteruit"
 
 #: ../Scenes/OptionsMenu.tscn:577
 msgid "Moves the camera backwards."
-msgstr ""
+msgstr "Trek de camera naar achter."
 
 #: ../Scenes/OptionsMenu.tscn:587
 msgid "Move Left"
 msgstr "Naar links"
 
 #: ../Scenes/OptionsMenu.tscn:595
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera left."
-msgstr "Camera verplaatsen"
+msgstr "Duw de camera naar links."
 
 #: ../Scenes/OptionsMenu.tscn:605
 msgid "Move Right"
 msgstr "Naar rechts"
 
 #: ../Scenes/OptionsMenu.tscn:613
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera right."
-msgstr "Camera verplaatsen"
+msgstr "Duw de camera naar rechts."
 
 #: ../Scenes/OptionsMenu.tscn:623
 msgid "Rotate Camera"
@@ -345,7 +349,7 @@ msgstr "Camera draaien"
 
 #: ../Scenes/OptionsMenu.tscn:631
 msgid "Enable rotation of the camera when moving the mouse."
-msgstr ""
+msgstr "Draai de camera door de muis te verplaatsen."
 
 #: ../Scenes/OptionsMenu.tscn:641
 msgid "Reset Camera"
@@ -353,7 +357,7 @@ msgstr "Standaard camerazicht"
 
 #: ../Scenes/OptionsMenu.tscn:649
 msgid "Resets the camera to the default position."
-msgstr ""
+msgstr "Stel de camera in op de standaardpositie."
 
 #: ../Scenes/OptionsMenu.tscn:659
 msgid "Flip Piece Orientation"
@@ -361,7 +365,7 @@ msgstr "Spelstuk omdraaien"
 
 #: ../Scenes/OptionsMenu.tscn:667
 msgid "Flip the selected piece on the horizontal axis."
-msgstr ""
+msgstr "Draai het gekozen spelstuk horizontaal om."
 
 #: ../Scenes/OptionsMenu.tscn:677
 msgid "Reset Piece Orientation"
@@ -369,7 +373,7 @@ msgstr "Standaard spelstukkant"
 
 #: ../Scenes/OptionsMenu.tscn:685
 msgid "Resets the selected piece to its default orientation."
-msgstr ""
+msgstr "Herstel de standaardoriëntatie van het gekozen spelstuk."
 
 #: ../Scenes/OptionsMenu.tscn:695
 msgid "Lock/Unlock Piece"
@@ -379,6 +383,8 @@ msgstr "Spelstuk ver-/ontgrendelen"
 msgid ""
 "Toggles the lock on the selected piece, fixing its position and rotation."
 msgstr ""
+"Vergrendel een spelstuk. Hierdoor kan het stuk niet worden gedraaid of "
+"verplaatst."
 
 #: ../Scenes/OptionsMenu.tscn:713
 msgid "Delete Piece"
@@ -386,7 +392,7 @@ msgstr "Spelstuk verwijderen"
 
 #: ../Scenes/OptionsMenu.tscn:721
 msgid "Deletes the currently selected piece."
-msgstr ""
+msgstr "Verwijder het huidige spelstuk."
 
 #: ../Scenes/OptionsMenu.tscn:731
 msgid "Toggle Debug Info"
@@ -394,7 +400,7 @@ msgstr "Foutopsporingsinformatie aan/uit"
 
 #: ../Scenes/OptionsMenu.tscn:739
 msgid "Toggles whether debug information is displayed."
-msgstr ""
+msgstr "Toon/Verberg foutopsporingsinformatie."
 
 #: ../Scenes/OptionsMenu.tscn:749
 msgid "Quicksave"
@@ -402,7 +408,7 @@ msgstr "Snel opslaan"
 
 #: ../Scenes/OptionsMenu.tscn:757
 msgid "Creates a quicksave file."
-msgstr ""
+msgstr "Bewaar het spel snel."
 
 #: ../Scenes/OptionsMenu.tscn:767
 msgid "Quickload"
@@ -410,7 +416,7 @@ msgstr "Snel laden"
 
 #: ../Scenes/OptionsMenu.tscn:775
 msgid "Loads the latest quicksave file."
-msgstr ""
+msgstr "Laad het vorige snelle opgeslagen spel."
 
 #: ../Scenes/OptionsMenu.tscn:785
 msgid "Toggle UI"
@@ -418,7 +424,7 @@ msgstr "Bediening tonen/verbergen"
 
 #: ../Scenes/OptionsMenu.tscn:793
 msgid "Toggles whether the entire UI is displayed."
-msgstr ""
+msgstr "Toon/Verberg de algehele bediening."
 
 #: ../Scenes/OptionsMenu.tscn:803
 msgid "Take Screenshot"
@@ -426,11 +432,11 @@ msgstr "Schermfoto maken"
 
 #: ../Scenes/OptionsMenu.tscn:811
 msgid "Takes a screenshot of the game in its current state."
-msgstr ""
+msgstr "Maak een schermfoto van de huidige spelstatus."
 
 #: ../Scenes/OptionsMenu.tscn:826
 msgid "Used to reset the key bindings to their default values."
-msgstr ""
+msgstr "Herstel de standaard sneltoetsen."
 
 #: ../Scenes/OptionsMenu.tscn:827
 msgid "Reset Bindings"
@@ -442,7 +448,7 @@ msgstr "Naam"
 
 #: ../Scenes/OptionsMenu.tscn:860
 msgid "The player's displayed name in multiplayer lobbies."
-msgstr ""
+msgstr "De naam van de speler in kamers met meerdere spelers."
 
 #: ../Scenes/OptionsMenu.tscn:862
 msgid "Player"
@@ -454,7 +460,7 @@ msgstr "Kleur"
 
 #: ../Scenes/OptionsMenu.tscn:877
 msgid "The player's displayed colour in multiplayer lobbies."
-msgstr ""
+msgstr "De kleur van de speler in kamers met meerdere spelers."
 
 #: ../Scenes/OptionsMenu.tscn:887
 msgid "Hide Player Cursors"
@@ -463,7 +469,7 @@ msgstr "Spelercursors verbergen"
 #: ../Scenes/OptionsMenu.tscn:895
 msgid ""
 "Used to stop showing other player's cursors when in multiplayer lobbies."
-msgstr ""
+msgstr "Verberg de cursors van andere spelers in kamers met meerdere spelers."
 
 #: ../Scenes/OptionsMenu.tscn:903
 msgid "Censor Profanity"
@@ -473,7 +479,7 @@ msgstr "Grof taalgebruik censureren"
 msgid ""
 "Used to censor potentially offensive words in the chat window when in "
 "multiplayer lobbies."
-msgstr ""
+msgstr "Censureer grof taalgebruik in de chat van kamers met meerdere spelers."
 
 #: ../Scenes/OptionsMenu.tscn:925
 msgid "Video"
@@ -485,7 +491,7 @@ msgstr "Venstermodus"
 
 #: ../Scenes/OptionsMenu.tscn:946
 msgid "Sets the mode in which the game window is displayed."
-msgstr ""
+msgstr "Stel de venstermodus van een spel in."
 
 #: ../Scenes/OptionsMenu.tscn:948
 msgid "Windowed"
@@ -497,7 +503,7 @@ msgstr "Gezichtsveld"
 
 #: ../Scenes/OptionsMenu.tscn:965
 msgid "Sets the field of view of the in-game camera."
-msgstr ""
+msgstr "Stel het gezichtsveld van de ingebouwde camera in."
 
 #: ../Scenes/OptionsMenu.tscn:978
 msgid "VSync"
@@ -545,6 +551,8 @@ msgid ""
 "Used to determine how much the background is blurred when using depth of "
 "field."
 msgstr ""
+"Hoeveel de achtergrond vervaagd dient te worden bij het gebruik van "
+"scherptediepte."
 
 #: ../Scenes/OptionsMenu.tscn:1120
 msgid "Depth of Field Distance"
@@ -555,6 +563,8 @@ msgid ""
 "Used to set the threshold of what is considered the background when using "
 "depth of field."
 msgstr ""
+"De drempelwaarde omtrent het bepalen van de achtergrond bij gebruik van "
+"scherptediepte."
 
 #: ../Scenes/OptionsMenu.tscn:1140
 msgid "Table Paint Filtering"
@@ -610,29 +620,29 @@ msgstr "X-aantal uitnemen"
 
 #: ../Scenes/Game/CameraController.tscn:236
 msgid "Position:"
-msgstr ""
+msgstr "Positie:"
 
 #: ../Scenes/Game/CameraController.tscn:247
 #: ../Scenes/Game/CameraController.tscn:305
 #: ../Scenes/Game/CameraController.tscn:357
 msgid "X:"
-msgstr ""
+msgstr "X:"
 
 #: ../Scenes/Game/CameraController.tscn:263
 #: ../Scenes/Game/CameraController.tscn:319
 #: ../Scenes/Game/CameraController.tscn:373
 msgid "Y:"
-msgstr ""
+msgstr "Y:"
 
 #: ../Scenes/Game/CameraController.tscn:279
 #: ../Scenes/Game/CameraController.tscn:333
 #: ../Scenes/Game/CameraController.tscn:389
 msgid "Z:"
-msgstr ""
+msgstr "Z:"
 
 #: ../Scenes/Game/CameraController.tscn:294
 msgid "Rotation (°):"
-msgstr ""
+msgstr "Draaiing (°):"
 
 #: ../Scenes/Game/CameraController.tscn:346
 #: ../Scenes/Game/CameraController.tscn:438
@@ -940,7 +950,7 @@ msgstr "Vertalers"
 
 #: ../Scripts/MainMenu.gd:70
 msgid "Dutch"
-msgstr ""
+msgstr "Nederlands"
 
 #: ../Scripts/MainMenu.gd:71
 msgid "French"
@@ -1018,12 +1028,12 @@ msgstr "Tijdklok"
 #: ../Scripts/Game/CameraController.gd:1028
 #, python-format
 msgid "Total: %d"
-msgstr ""
+msgstr "Totaal: %d"
 
 #: ../Scripts/Game/CameraController.gd:1030
 #, python-format
 msgid "Total: %f"
-msgstr ""
+msgstr "Totaal: %f"
 
 #: ../Scripts/Game/CameraController.gd:1034
 msgid "Collect selected"
@@ -1067,10 +1077,8 @@ msgid "Lock"
 msgstr "Vastmaken"
 
 #: ../Scripts/Game/CameraController.gd:1098
-#, fuzzy
-#| msgid "Translators"
 msgid "Transform"
-msgstr "Vertalers"
+msgstr "Omvormen"
 
 #: ../Scripts/Game/CameraController.gd:1125
 msgid "Set spawn point here"
@@ -1333,16 +1341,13 @@ msgid "Loaded table is not in the correct format."
 msgstr "De geladen tabel is niet het juiste formaat."
 
 #: ../Scripts/Game/Game.gd:231
-#, fuzzy, python-format
-#| msgid "Take Screenshot"
+#, python-format
 msgid "Saved screenshot to '%s'."
-msgstr "Schermfoto maken"
+msgstr "De schermfoto is opgeslagen als ‘%s’."
 
 #: ../Scripts/Game/Game.gd:245
-#, fuzzy
-#| msgid "Quicksave"
 msgid "Quicksave file saved."
-msgstr "Snel opslaan"
+msgstr "Het spel is snel opgeslagen."
 
 #: ../Scripts/Game/Game.gd:260
 msgid "Connecting to the master server..."
@@ -1564,10 +1569,8 @@ msgid "Containers"
 msgstr "Dozen"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:223
-#, fuzzy
-#| msgid "Dice - d4"
 msgid "Dice"
-msgstr "Dobbelsteen - d4"
+msgstr "Dobbelsteen"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:225
 msgid "Music"
