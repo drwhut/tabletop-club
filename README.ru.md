@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="tabletop_club_logo.svg" width="256">
+  <img src="tabletop_club_logo.svg" width="256"><br>
+  <a href="README.md">English</a> | <a href="README.ru.md">Русский</a>
 </p>
 
 Tabletop Club - это многопользовательская игра с открытым исходным кодом,
@@ -24,10 +25,10 @@ Tabletop Club - это многопользовательская игра с о
 Язык            | Игра               | Документация
 --------------- | ------------------ | ------------------
 Английский      | :heavy_check_mark: | :heavy_check_mark:
-Нидерландский   | [![Game](https://hosted.weblate.org/widgets/tabletop-club/de/game/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/game/de/) | [![Index](https://hosted.weblate.org/widgets/tabletop-club/nl/docs-index/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-index/nl/) <br> [![General](https://hosted.weblate.org/widgets/tabletop-club/nl/docs-general/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-general/nl/) <br> [![Custom Assets](https://hosted.weblate.org/widgets/tabletop-club/nl/docs-custom-assets/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-custom-assets/nl/)
-Французкий      | [![Game](https://hosted.weblate.org/widgets/tabletop-club/fr/game/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/game/fr/) | [![Index](https://hosted.weblate.org/widgets/tabletop-club/fr/docs-index/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-index/fr/) <br> [![General](https://hosted.weblate.org/widgets/tabletop-club/fr/docs-general/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-general/fr/) <br> [![Custom Assets](https://hosted.weblate.org/widgets/tabletop-club/fr/docs-custom-assets/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-custom-assets/fr/)
-Немецкий        | [![Game](https://hosted.weblate.org/widgets/tabletop-club/de/game/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/game/de/) | [![Index](https://hosted.weblate.org/widgets/tabletop-club/de/docs-index/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-index/de/) <br> [![General](https://hosted.weblate.org/widgets/tabletop-club/de/docs-general/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-general/de/) <br> [![Custom Assets](https://hosted.weblate.org/widgets/tabletop-club/de/docs-custom-assets/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-custom-assets/de/)
-Русский         | [![Game](https://hosted.weblate.org/widgets/tabletop-club/ru/game/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/game/ru/) | [![Index](https://hosted.weblate.org/widgets/tabletop-club/ru/docs-index/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-index/ru/) <br> [![General](https://hosted.weblate.org/widgets/tabletop-club/ru/docs-general/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-general/ru/) <br> [![Custom Assets](https://hosted.weblate.org/widgets/tabletop-club/ru/docs-custom-assets/svg-badge.svg)](https://hosted.weblate.org/projects/tabletop-club/docs-custom-assets/ru/) 
+Нидерландский   | 83%                | :x:
+Французкий      | 53%                | :x:
+Немецкий        | 78%                | :x:
+Русский         | 80%                | :x: 
 
 Если вы хотите помочь с переводом проекта, вы можете перейти на страницу [Weblate](https://hosted.weblate.org/engage/tabletop-club/).
 
