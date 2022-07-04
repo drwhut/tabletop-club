@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-03 02:05+0100\n"
-"PO-Revision-Date: 2022-07-03 20:28+0000\n"
+"PO-Revision-Date: 2022-07-04 16:58+0000\n"
 "Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/ru/>\n"
@@ -686,7 +686,7 @@ msgstr "В планах"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:16
 msgid "Add images of each of the different types of objects."
-msgstr "Добавьте изображения каждого из различных типов объектов."
+msgstr "Добавить изображения каждого из различных типов объектов."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:22
 #: ../../custom_assets/asset_packs/file_types.rst:33
@@ -912,7 +912,7 @@ msgid ""
 msgstr ""
 "Текстуры скайбоксов в Tabletop Club используют равностороннее отображение, в "
 "отличие от кубического отображения шести изображений. Godot рекомендует "
-"использовать ` этот инструмент <https://danilw.github.io/GLSL-howto/"
+"использовать `этот инструмент <https://danilw.github.io/GLSL-howto/"
 "cubemap_to_panorama_js/cubemap_to_panorama.html>`_ для преобразования "
 "кубических скайбоксов в равносторонние."
 
@@ -1010,7 +1010,7 @@ msgid ""
 "en/stable/getting_started/workflow/assets/importing_images.html>`_."
 msgstr ""
 "По умолчанию Tabletop Club поддерживает все форматы изображений, которые "
-"поддерживает Godot, список которых можно найти ` здесь <https://docs."
+"поддерживает Godot, список которых можно найти `здесь <https://docs."
 "godotengine.org/en/stable/getting_started/workflow/assets/importing_images."
 "html>`_."
 
@@ -1126,7 +1126,7 @@ msgid ""
 "page <https://docs.godotengine.org/en/stable/getting_started/workflow/assets/"
 "importing_audio_samples.html>`_ in the Godot documentation."
 msgstr ""
-"Вы можете узнать, какой формат подходит вам лучше всего, на странице ` "
+"Вы можете узнать, какой формат подходит вам лучше всего, на странице `"
 "импорта аудио <https://docs.godotengine.org/en/stable/getting_started/"
 "workflow/assets/importing_audio_samples.html>`_ в документации Godot."
 
@@ -1184,8 +1184,7 @@ msgstr ""
 "Чтобы упростить управление и обмен пользовательскими ассетами, они "
 "помещаются в так называемые **пакеты ассетов**, которые, по сути, "
 "представляют собой специально созданные папки. В этой главе описывается "
-"спецификация пользовательских ассетоов и пакетов ассетов, которые их "
-"содержат."
+"спецификация пользовательских ассетов и пакетов ассетов, которые их содержат."
 
 #: ../../custom_assets/asset_packs/index.rst:12
 msgid ""
@@ -1201,7 +1200,7 @@ msgid ""
 "`custom-asset-tutorials`."
 msgstr ""
 "Простые и понятные руководства по созданию ассетов и пакетов ассетов "
-"смотрите в :ref:`custom-asset-tutorials`."
+"смотрите на странице \":ref:`custom-asset-tutorials`\"."
 
 #: ../../custom_assets/tutorials/index.rst:5
 msgid "Tutorials"
