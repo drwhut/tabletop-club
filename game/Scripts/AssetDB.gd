@@ -692,6 +692,11 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 	entry["name"] = to.get_basename().get_file()
 	entry["description"] = _get_file_config_value(config, from.get_file(), "desc", "")
 	
+	entry["author"] = _get_file_config_value(config, from.get_file(), "author", "")
+	entry["license"] = _get_file_config_value(config, from.get_file(), "license", "")
+	entry["modified_by"] = _get_file_config_value(config, from.get_file(), "modified_by", "")
+	entry["url"] = _get_file_config_value(config, from.get_file(), "url", "")
+	
 	if type == "games":
 		# If there is a picture that goes with the save file, use it, as it
 		# should also be imported.

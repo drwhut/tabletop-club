@@ -54,10 +54,36 @@ func set_piece(piece: Piece) -> void:
 func set_piece_details(piece_entry: Dictionary) -> void:
 	_entry = piece_entry
 	
-	if piece_entry["description"].empty():
-		hint_tooltip = ""
-	else:
-		hint_tooltip = piece_entry["description"]
+	var tooltip_text = ""
+	
+	if not piece_entry["description"].empty():
+		tooltip_text = piece_entry["description"]
+	
+	if piece_entry.has("author"):
+		if not piece_entry["author"].empty():
+			if not tooltip_text.empty():
+				tooltip_text += "\n"
+			tooltip_text += tr("Author: %s") % piece_entry["author"]
+	
+	if piece_entry.has("license"):
+		if not piece_entry["license"].empty():
+			if not tooltip_text.empty():
+				tooltip_text += "\n"
+			tooltip_text += tr("License: %s") % piece_entry["license"]
+	
+	if piece_entry.has("modified_by"):
+		if not piece_entry["modified_by"].empty():
+			if not tooltip_text.empty():
+				tooltip_text += "\n"
+			tooltip_text += tr("Modified by: %s") % piece_entry["modified_by"]
+	
+	if piece_entry.has("url"):
+		if not piece_entry["url"].empty():
+			if not tooltip_text.empty():
+				tooltip_text += "\n"
+			tooltip_text += tr("URL: %s") % piece_entry["url"]
+	
+	hint_tooltip = tooltip_text
 	_label.text = piece_entry["name"]
 	
 	# If we've just set the details of a piece, then we're bound to have our

@@ -41,6 +41,31 @@ func _clear_gui() -> void:
 # entry: The new entry to display. It is guaranteed to not be empty.
 func _set_entry_gui(entry: Dictionary) -> void:
 	_description.text = entry["description"]
+	
+	if entry.has("author"):
+		if not entry["author"].empty():
+			if not _description.text.empty():
+				_description.text += "\n"
+			_description.text += tr("Author: %s") % entry["author"]
+	
+	if entry.has("license"):
+		if not entry["license"].empty():
+			if not _description.text.empty():
+				_description.text += "\n"
+			_description.text += tr("License: %s") % entry["license"]
+	
+	if entry.has("modified_by"):
+		if not entry["modified_by"].empty():
+			if not _description.text.empty():
+				_description.text += "\n"
+			_description.text += tr("Modified by: %s") % entry["modified_by"]
+	
+	if entry.has("url"):
+		if not entry["url"].empty():
+			if not _description.text.empty():
+				_description.text += "\n"
+			_description.text += tr("URL: %s") % entry["url"]
+	
 	_name.text = entry["name"]
 	
 	if entry.has("texture_path") and (not entry["texture_path"].empty()):

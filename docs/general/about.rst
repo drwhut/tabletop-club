@@ -188,6 +188,9 @@ assets you've made for the game if the following is all true:
      state the license and whether the content was modified. Please read the
      terms of the license first.
 
+     To help with this, the :ref:`config-cfg` file allows you to put the author,
+     license, modifier, and URL with the asset, which is then shown in-game.
+
 * If the assets you've made are for playing a game that already exists, then:
 
   * You cannot use the same name of the game without the owner's explicit
