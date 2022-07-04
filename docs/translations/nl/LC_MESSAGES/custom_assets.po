@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-03 02:05+0100\n"
-"PO-Revision-Date: 2022-06-13 11:15+0000\n"
+"PO-Revision-Date: 2022-07-06 11:21+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/docs-"
-"custom-assets/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-custom-assets/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -441,7 +441,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 #: ../../custom_assets/asset_packs/asset_types.rst:72
 msgid "Dice"
-msgstr ""
+msgstr "Dobbelsteen"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 msgid "``{}``"
