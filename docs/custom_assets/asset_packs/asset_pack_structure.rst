@@ -203,3 +203,45 @@ Here is an example of a ``stacks.cfg`` file:
 
    ; It doesn't matter if each object is on a new line.
    items = ["Trading Card 1", "Trading Card 2"]
+
+
+Translations
+^^^^^^^^^^^^
+
+You can also provide translations for the names and descriptions of assets in
+the asset pack! This is done using separate configuration files for each
+language. The name of the file should be ``config.<locale>.cfg``, where
+``<locale>`` is the `locale code
+<https://docs.godotengine.org/en/stable/tutorials/i18n/locales.html>`_ for your
+language.
+
+.. note::
+
+   The list of languages supported by the game is shown in the `README
+   <https://github.com/drwhut/tabletop-club#languages>`_ file of the project.
+
+   If the language you are translating to is not on this list, unfortunately
+   you will not be able to see the results in-game. However, you can help to
+   translate the project as a whole so your languages does become supported!
+   See :ref:`translating-the-project` for more information.
+
+.. note::
+
+   These translation files are treated differently to other configuration files.
+   You can only edit the ``name`` and ``desc`` properties of assets in these
+   files. You also cannot apply translations to multiple assets at the same
+   time with wildcards.
+
+Here is an example of a Norwegian translation file, called ``config.nb.cfg``:
+
+.. code-block:: ini
+
+   ; The name here refers to the name of the asset in-game, NOT the name of
+   ; the file. This should just be the file name, without the extension.
+   [Chess]
+
+   ; The name "Chess" in Norwegian.
+   name = "Sjakk"
+
+   ; A description in Norwegian, "A game for two people."
+   desc = "Et spill for to personer."

@@ -53,11 +53,15 @@ func set_piece(piece: Piece) -> void:
 # piece_entry: The entry used to populate the details.
 func set_piece_details(piece_entry: Dictionary) -> void:
 	_entry = piece_entry
+	var locale = TranslationServer.get_locale()
 	
 	var tooltip_text = ""
 	
-	if not piece_entry["description"].empty():
-		tooltip_text = piece_entry["description"]
+	var desc_locale = "desc_%s" % locale
+	if piece_entry.has(desc_locale):
+		tooltip_text = piece_entry[desc_locale]
+	elif not piece_entry["desc"].empty():
+		tooltip_text = piece_entry["desc"]
 	
 	if piece_entry.has("author"):
 		if not piece_entry["author"].empty():
@@ -84,7 +88,12 @@ func set_piece_details(piece_entry: Dictionary) -> void:
 			tooltip_text += tr("URL: %s") % piece_entry["url"]
 	
 	hint_tooltip = tooltip_text
-	_label.text = piece_entry["name"]
+	
+	var name_locale = "name_%s" % locale
+	if piece_entry.has(name_locale):
+		_label.text = piece_entry[name_locale]
+	else:
+		_label.text = piece_entry["name"]
 	
 	# If we've just set the details of a piece, then we're bound to have our
 	# display set as well, so welcome any pieces built by the

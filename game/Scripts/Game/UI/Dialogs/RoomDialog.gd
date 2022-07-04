@@ -51,7 +51,7 @@ func set_room_details(table_entry: Dictionary, skybox_entry: Dictionary,
 			"bounce": 0.5,
 			"bounding_box": [Vector3.ZERO, Vector3.ZERO],
 			"default": false,
-			"description": "",
+			"desc": "",
 			"hands": [],
 			"mass": 1.0,
 			"name": "None",
@@ -65,7 +65,7 @@ func set_room_details(table_entry: Dictionary, skybox_entry: Dictionary,
 	if skybox_entry.empty():
 		_skybox_preview.set_entry({
 			"default": false,
-			"description": "",
+			"desc": "",
 			"name": "None",
 			"texture_path": ""
 		})

@@ -62,6 +62,8 @@ documentation:
   you give!
 
 
+.. _translating-the-project:
+
 Translating the project
 -----------------------
 

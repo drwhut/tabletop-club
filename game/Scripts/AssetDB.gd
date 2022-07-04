@@ -144,6 +144,9 @@ var _import_mutex = Mutex.new()
 var _import_send_signal = false
 var _import_thread = Thread.new()
 
+# Keep track of which locales we've translated to, so we don't re-parse them.
+var _tr_locales = []
+
 # From the tabletop_club_godot_module:
 # https://github.com/drwhut/tabletop_club_godot_module
 var _importer
@@ -171,6 +174,38 @@ func get_asset_paths() -> Array:
 # Returns: The asset database.
 func get_db() -> Dictionary:
 	return _db
+
+# Parse translation config files in the assets directory for the given locale.
+# NOTE: This must be run AFTER the assets have been imported.
+# locale: The locale to parse the config files for.
+func parse_translations(locale: String) -> void:
+	if locale in _tr_locales:
+		return
+	
+	if _import_thread.is_active():
+		_import_thread.wait_to_finish()
+	
+	if _db.empty():
+		push_warning("Tried to parse translations while AssetDB is empty.")
+		return
+	
+	_tr_locales.append(locale)
+	
+	var catalog = _catalog_assets()
+	for pack_name in catalog["packs"]:
+		var pack_catalog = catalog["packs"][pack_name]
+		var pack_path = pack_catalog["path"]
+		for type in pack_catalog["types"]:
+			var cfg_path = pack_path + "/" + type + "/" + "config.%s.cfg" % locale
+			var file = File.new()
+			if file.file_exists(cfg_path):
+				var cfg_file = ConfigFile.new()
+				var err = cfg_file.load(cfg_path)
+				if err == OK:
+					print("Loading translations: %s" % cfg_path)
+					_parse_tr_file(pack_name, type, cfg_file, locale)
+				else:
+					push_error("Could not load '%s'! (error: %d)" % [cfg_path, err])
 
 # Get a random asset from a pack's type directory.
 # Returns: A random asset from the given type directory, empty if there are no
@@ -220,6 +255,8 @@ func start_importing() -> void:
 	if _import_thread.is_active():
 		_import_thread.wait_to_finish()
 	_import_thread.start(self, "_import_all")
+	
+	_tr_locales = []
 
 func _ready():
 	connect("tree_exiting", self, "_on_exiting_tree")
@@ -690,7 +727,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 		return OK
 	
 	entry["name"] = to.get_basename().get_file()
-	entry["description"] = _get_file_config_value(config, from.get_file(), "desc", "")
+	entry["desc"] = _get_file_config_value(config, from.get_file(), "desc", "")
 	
 	entry["author"] = _get_file_config_value(config, from.get_file(), "author", "")
 	entry["license"] = _get_file_config_value(config, from.get_file(), "license", "")
@@ -936,7 +973,7 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 					
 					var stack_entry = {
 						"colors": colors,
-						"description": desc,
+						"desc": desc,
 						"masses": masses,
 						"name": stack_name,
 						"scale": scale,
@@ -960,6 +997,37 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 		
 		var array: Array = _db[pack][type]
 		array.sort_custom(self, "_sort_assets")
+
+# Parse translations from a config file and insert them into the AssetDB.
+# pack: The asset pack containing the translations.
+# type: The type of asset containing the translations.
+# config: The config file containing the translations.
+# locale: The locale of the translations.
+func _parse_tr_file(pack: String, type: String, config: ConfigFile, locale: String) -> void:
+	if not _db.has(pack):
+		push_error("AssetDB does not contain pack %s!" % pack)
+		return
+	
+	if not _db[pack].has(type):
+		push_error("AssetDB does not contain type %s in pack %s!" % [type, pack])
+		return
+	
+	var sections = config.get_sections()
+	for asset_name in sections:
+		var result = search_type(pack, type, asset_name)
+		if not result.empty():
+			for key in ["name", "desc"]:
+				if config.has_section_key(asset_name, key):
+					var tr_name = config.get_value(asset_name, key)
+					if tr_name is String:
+						if not tr_name.empty():
+							result["%s_%s" % [key, locale]] = tr_name
+						else:
+							push_error("%s cannot be empty!" % key)
+					else:
+						push_error("%s under %s is not text!" % [key, asset_name])
+		else:
+			push_warning("Asset %s was not found in %s/%s, ignoring." % [asset_name, pack, type])
 
 # Function used to convert rotation transforms in the form of a Vector2 into
 # a Vector3 representing the normal vector of the corresponding face.

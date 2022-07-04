@@ -111,7 +111,7 @@ func refresh() -> void:
 				var display_name = file_name.get_basename()
 				
 				var file_entry = {
-					"description": tr("Modified: %s") % modified_datetime_str,
+					"desc": tr("Modified: %s") % modified_datetime_str,
 					"modified_time": modified_time,
 					"name": display_name
 				}

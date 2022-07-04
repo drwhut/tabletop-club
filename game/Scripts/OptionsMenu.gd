@@ -86,6 +86,14 @@ func _apply_changes() -> void:
 func _apply_config(config: ConfigFile) -> void:
 	emit_signal("applying_options", config)
 	
+	##########
+	# LOCALE #
+	##########
+	
+	# The majority of the work is done by the TranslationServer, but we need to
+	# manually get the translations from the asset packs.
+	AssetDB.parse_translations(TranslationServer.get_locale())
+	
 	#########
 	# AUDIO #
 	#########

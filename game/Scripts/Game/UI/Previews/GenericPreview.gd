@@ -40,7 +40,12 @@ func _clear_gui() -> void:
 # Called when the preview entry is changed.
 # entry: The new entry to display. It is guaranteed to not be empty.
 func _set_entry_gui(entry: Dictionary) -> void:
-	_description.text = entry["description"]
+	var locale = TranslationServer.get_locale()
+	var desc_locale = "desc_%s" % locale
+	if entry.has(desc_locale):
+		_description.text = entry[desc_locale]
+	else:
+		_description.text = entry["desc"]
 	
 	if entry.has("author"):
 		if not entry["author"].empty():
@@ -66,7 +71,11 @@ func _set_entry_gui(entry: Dictionary) -> void:
 				_description.text += "\n"
 			_description.text += tr("URL: %s") % entry["url"]
 	
-	_name.text = entry["name"]
+	var name_locale = "name_%s" % locale
+	if entry.has(name_locale):
+		_name.text = entry[name_locale]
+	else:
+		_name.text = entry["name"]
 	
 	if entry.has("texture_path") and (not entry["texture_path"].empty()):
 		_texture.visible = true
