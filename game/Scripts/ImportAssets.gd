@@ -52,6 +52,33 @@ func _ready():
 		_missing_module_popup.popup_centered()
 
 func _on_importing_completed(dir_found: bool) -> void:
+	# Now that we've imported everything, check to see if we should export the
+	# AssetDB to a file...
+	var args = OS.get_cmdline_args()
+	var db_file_path_index = -1
+	for argi in range(args.size()):
+		if args[argi] == "--export-asset-db":
+			db_file_path_index = argi + 1
+			break
+	
+	if db_file_path_index >= 0:
+		if db_file_path_index < args.size():
+			var db_file_path: String = args[db_file_path_index]
+			if db_file_path.is_abs_path() or db_file_path.is_rel_path():
+				var file = File.new()
+				var err = file.open(db_file_path, File.WRITE)
+				if err == OK:
+					file.store_string(JSON.print(AssetDB.get_db(), "\t"))
+					file.close()
+				else:
+					push_error("Failed to open %s: error %d" % [db_file_path, err])
+			else:
+				push_error("File path argument is not a valid file path!")
+		else:
+			push_error("No file path argument given for --export-asset-db!")
+		
+		get_tree().quit()
+	
 	if dir_found:
 		Global.start_main_menu()
 	else:
