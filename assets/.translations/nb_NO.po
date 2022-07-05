@@ -9,13 +9,16 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-05 00:27\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-07-05 07:26+0000\n"
+"Last-Translator: drwhut <drwhut@gmail.com>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"tabletop-club/default-asset-pack/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/cards/52-Card Deck:1
@@ -256,19 +259,19 @@ msgstr ""
 
 #: ../TabletopClub/dice/d4/d4 (Black):1
 msgid "d4 (Black)"
-msgstr ""
+msgstr "d4 (Svart)"
 
 #: ../TabletopClub/dice/d4/d4 (Black):2 ../TabletopClub/dice/d4/d4 (Blue):2 ../TabletopClub/dice/d4/d4 (Brown):2 ../TabletopClub/dice/d4/d4 (Cyan):2 ../TabletopClub/dice/d4/d4 (Green):2 ../TabletopClub/dice/d4/d4 (Orange):2 ../TabletopClub/dice/d4/d4 (Pink):2 ../TabletopClub/dice/d4/d4 (Purple):2 ../TabletopClub/dice/d4/d4 (Red):2 ../TabletopClub/dice/d4/d4 (White):2 ../TabletopClub/dice/d4/d4 (Yellow):2
 msgid "A 4-sided die."
-msgstr ""
+msgstr "En terning med 4 sider."
 
 #: ../TabletopClub/dice/d4/d4 (Blue):1
 msgid "d4 (Blue)"
-msgstr ""
+msgstr "d4 (Blå)"
 
 #: ../TabletopClub/dice/d4/d4 (Brown):1
 msgid "d4 (Brown)"
-msgstr ""
+msgstr "d4 (Brun)"
 
 #: ../TabletopClub/dice/d4/d4 (Cyan):1
 msgid "d4 (Cyan)"
@@ -276,47 +279,47 @@ msgstr ""
 
 #: ../TabletopClub/dice/d4/d4 (Green):1
 msgid "d4 (Green)"
-msgstr ""
+msgstr "d4 (Grønn)"
 
 #: ../TabletopClub/dice/d4/d4 (Orange):1
 msgid "d4 (Orange)"
-msgstr ""
+msgstr "d4 (Oransje)"
 
 #: ../TabletopClub/dice/d4/d4 (Pink):1
 msgid "d4 (Pink)"
-msgstr ""
+msgstr "d4 (Rosa)"
 
 #: ../TabletopClub/dice/d4/d4 (Purple):1
 msgid "d4 (Purple)"
-msgstr ""
+msgstr "d4 (Lilla)"
 
 #: ../TabletopClub/dice/d4/d4 (Red):1
 msgid "d4 (Red)"
-msgstr ""
+msgstr "d4 (Rød)"
 
 #: ../TabletopClub/dice/d4/d4 (White):1
 msgid "d4 (White)"
-msgstr ""
+msgstr "d4 (Hvit)"
 
 #: ../TabletopClub/dice/d4/d4 (Yellow):1
 msgid "d4 (Yellow)"
-msgstr ""
+msgstr "d4 (Gul)"
 
 #: ../TabletopClub/dice/d6/d6 (Black):1
 msgid "d6 (Black)"
-msgstr ""
+msgstr "d6 (Svart)"
 
 #: ../TabletopClub/dice/d6/d6 (Black):2 ../TabletopClub/dice/d6/d6 (Blue):2 ../TabletopClub/dice/d6/d6 (Brown):2 ../TabletopClub/dice/d6/d6 (Cyan):2 ../TabletopClub/dice/d6/d6 (Green):2 ../TabletopClub/dice/d6/d6 (Orange):2 ../TabletopClub/dice/d6/d6 (Pink):2 ../TabletopClub/dice/d6/d6 (Purple):2 ../TabletopClub/dice/d6/d6 (Red):2 ../TabletopClub/dice/d6/d6 (Traditional):2 ../TabletopClub/dice/d6/d6 (White):2 ../TabletopClub/dice/d6/d6 (Yellow):2
 msgid "A 6-sided die."
-msgstr ""
+msgstr "En terning med 6 sider."
 
 #: ../TabletopClub/dice/d6/d6 (Blue):1
 msgid "d6 (Blue)"
-msgstr ""
+msgstr "d6 (Blå)"
 
 #: ../TabletopClub/dice/d6/d6 (Brown):1
 msgid "d6 (Brown)"
-msgstr ""
+msgstr "d6 (Brun)"
 
 #: ../TabletopClub/dice/d6/d6 (Cyan):1
 msgid "d6 (Cyan)"
@@ -324,51 +327,51 @@ msgstr ""
 
 #: ../TabletopClub/dice/d6/d6 (Green):1
 msgid "d6 (Green)"
-msgstr ""
+msgstr "d6 (Grønn)"
 
 #: ../TabletopClub/dice/d6/d6 (Orange):1
 msgid "d6 (Orange)"
-msgstr ""
+msgstr "d6 (Oransje)"
 
 #: ../TabletopClub/dice/d6/d6 (Pink):1
 msgid "d6 (Pink)"
-msgstr ""
+msgstr "d6 (Rosa)"
 
 #: ../TabletopClub/dice/d6/d6 (Purple):1
 msgid "d6 (Purple)"
-msgstr ""
+msgstr "d6 (Lilla)"
 
 #: ../TabletopClub/dice/d6/d6 (Red):1
 msgid "d6 (Red)"
-msgstr ""
+msgstr "d6 (Rød)"
 
 #: ../TabletopClub/dice/d6/d6 (Traditional):1
 msgid "d6 (Traditional)"
-msgstr ""
+msgstr "d6 (Tradisjonell)"
 
 #: ../TabletopClub/dice/d6/d6 (White):1
 msgid "d6 (White)"
-msgstr ""
+msgstr "d6 (Hvit)"
 
 #: ../TabletopClub/dice/d6/d6 (Yellow):1
 msgid "d6 (Yellow)"
-msgstr ""
+msgstr "d6 (Gul)"
 
 #: ../TabletopClub/dice/d8/d8 (Black):1
 msgid "d8 (Black)"
-msgstr ""
+msgstr "d8 (Svart)"
 
 #: ../TabletopClub/dice/d8/d8 (Black):2 ../TabletopClub/dice/d8/d8 (Blue):2 ../TabletopClub/dice/d8/d8 (Brown):2 ../TabletopClub/dice/d8/d8 (Cyan):2 ../TabletopClub/dice/d8/d8 (Green):2 ../TabletopClub/dice/d8/d8 (Orange):2 ../TabletopClub/dice/d8/d8 (Pink):2 ../TabletopClub/dice/d8/d8 (Purple):2 ../TabletopClub/dice/d8/d8 (Red):2 ../TabletopClub/dice/d8/d8 (White):2 ../TabletopClub/dice/d8/d8 (Yellow):2
 msgid "An 8-sided die."
-msgstr ""
+msgstr "En terning med 8 sider."
 
 #: ../TabletopClub/dice/d8/d8 (Blue):1
 msgid "d8 (Blue)"
-msgstr ""
+msgstr "d8 (Blå)"
 
 #: ../TabletopClub/dice/d8/d8 (Brown):1
 msgid "d8 (Brown)"
-msgstr ""
+msgstr "d8 (Brun)"
 
 #: ../TabletopClub/dice/d8/d8 (Cyan):1
 msgid "d8 (Cyan)"
@@ -376,47 +379,47 @@ msgstr ""
 
 #: ../TabletopClub/dice/d8/d8 (Green):1
 msgid "d8 (Green)"
-msgstr ""
+msgstr "d8 (Grønn)"
 
 #: ../TabletopClub/dice/d8/d8 (Orange):1
 msgid "d8 (Orange)"
-msgstr ""
+msgstr "d8 (Oransje)"
 
 #: ../TabletopClub/dice/d8/d8 (Pink):1
 msgid "d8 (Pink)"
-msgstr ""
+msgstr "d8 (Rosa)"
 
 #: ../TabletopClub/dice/d8/d8 (Purple):1
 msgid "d8 (Purple)"
-msgstr ""
+msgstr "d8 (Lilla)"
 
 #: ../TabletopClub/dice/d8/d8 (Red):1
 msgid "d8 (Red)"
-msgstr ""
+msgstr "d8 (Rød)"
 
 #: ../TabletopClub/dice/d8/d8 (White):1
 msgid "d8 (White)"
-msgstr ""
+msgstr "d8 (Hvit)"
 
 #: ../TabletopClub/dice/d8/d8 (Yellow):1
 msgid "d8 (Yellow)"
-msgstr ""
+msgstr "d8 (Gul)"
 
 #: ../TabletopClub/dice/d10/d10 (Black):1
 msgid "d10 (Black)"
-msgstr ""
+msgstr "d10 (Svart)"
 
 #: ../TabletopClub/dice/d10/d10 (Black):2 ../TabletopClub/dice/d10/d10 (Blue):2 ../TabletopClub/dice/d10/d10 (Brown):2 ../TabletopClub/dice/d10/d10 (Cyan):2 ../TabletopClub/dice/d10/d10 (Green):2 ../TabletopClub/dice/d10/d10 (Orange):2 ../TabletopClub/dice/d10/d10 (Percent) (Black):2 ../TabletopClub/dice/d10/d10 (Percent) (Blue):2 ../TabletopClub/dice/d10/d10 (Percent) (Brown):2 ../TabletopClub/dice/d10/d10 (Percent) (Cyan):2 ../TabletopClub/dice/d10/d10 (Percent) (Green):2 ../TabletopClub/dice/d10/d10 (Percent) (Orange):2 ../TabletopClub/dice/d10/d10 (Percent) (Pink):2 ../TabletopClub/dice/d10/d10 (Percent) (Purple):2 ../TabletopClub/dice/d10/d10 (Percent) (Red):2 ../TabletopClub/dice/d10/d10 (Percent) (White):2 ../TabletopClub/dice/d10/d10 (Percent) (Yellow):2 ../TabletopClub/dice/d10/d10 (Pink):2 ../TabletopClub/dice/d10/d10 (Purple):2 ../TabletopClub/dice/d10/d10 (Red):2 ../TabletopClub/dice/d10/d10 (White):2 ../TabletopClub/dice/d10/d10 (Yellow):2
 msgid "A 10-sided die."
-msgstr ""
+msgstr "En terning med 10 sider."
 
 #: ../TabletopClub/dice/d10/d10 (Blue):1
 msgid "d10 (Blue)"
-msgstr ""
+msgstr "d10 (Blå)"
 
 #: ../TabletopClub/dice/d10/d10 (Brown):1
 msgid "d10 (Brown)"
-msgstr ""
+msgstr "d10 (Brun)"
 
 #: ../TabletopClub/dice/d10/d10 (Cyan):1
 msgid "d10 (Cyan)"
@@ -424,23 +427,23 @@ msgstr ""
 
 #: ../TabletopClub/dice/d10/d10 (Green):1
 msgid "d10 (Green)"
-msgstr ""
+msgstr "d10 (Grønn)"
 
 #: ../TabletopClub/dice/d10/d10 (Orange):1
 msgid "d10 (Orange)"
-msgstr ""
+msgstr "d10 (Oransje)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Black):1
 msgid "d10 (Percent) (Black)"
-msgstr ""
+msgstr "d10 (Prosent) (Svart)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Blue):1
 msgid "d10 (Percent) (Blue)"
-msgstr ""
+msgstr "d10 (Prosent) (Blå)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Brown):1
 msgid "d10 (Percent) (Brown)"
-msgstr ""
+msgstr "d10 (Prosent) (Brun)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Cyan):1
 msgid "d10 (Percent) (Cyan)"
@@ -448,67 +451,67 @@ msgstr ""
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Green):1
 msgid "d10 (Percent) (Green)"
-msgstr ""
+msgstr "d10 (Prosent) (Grønn)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Orange):1
 msgid "d10 (Percent) (Orange)"
-msgstr ""
+msgstr "d10 (Prosent) (Oransje)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Pink):1
 msgid "d10 (Percent) (Pink)"
-msgstr ""
+msgstr "d10 (Prosent) (Rosa)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Purple):1
 msgid "d10 (Percent) (Purple)"
-msgstr ""
+msgstr "d10 (Prosent) (Lilla)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Red):1
 msgid "d10 (Percent) (Red)"
-msgstr ""
+msgstr "d10 (Prosent) (Rød)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (White):1
 msgid "d10 (Percent) (White)"
-msgstr ""
+msgstr "d10 (Prosent) (Hvit)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Yellow):1
 msgid "d10 (Percent) (Yellow)"
-msgstr ""
+msgstr "d10 (Prosent) (Gul)"
 
 #: ../TabletopClub/dice/d10/d10 (Pink):1
 msgid "d10 (Pink)"
-msgstr ""
+msgstr "d10 (Rosa)"
 
 #: ../TabletopClub/dice/d10/d10 (Purple):1
 msgid "d10 (Purple)"
-msgstr ""
+msgstr "d10 (Lilla)"
 
 #: ../TabletopClub/dice/d10/d10 (Red):1
 msgid "d10 (Red)"
-msgstr ""
+msgstr "d10 (Rød)"
 
 #: ../TabletopClub/dice/d10/d10 (White):1
 msgid "d10 (White)"
-msgstr ""
+msgstr "d10 (Hvit)"
 
 #: ../TabletopClub/dice/d10/d10 (Yellow):1
 msgid "d10 (Yellow)"
-msgstr ""
+msgstr "d10 (Gul)"
 
 #: ../TabletopClub/dice/d12/d12 (Black):1
 msgid "d12 (Black)"
-msgstr ""
+msgstr "d12 (Svart)"
 
 #: ../TabletopClub/dice/d12/d12 (Black):2 ../TabletopClub/dice/d12/d12 (Blue):2 ../TabletopClub/dice/d12/d12 (Brown):2 ../TabletopClub/dice/d12/d12 (Cyan):2 ../TabletopClub/dice/d12/d12 (Green):2 ../TabletopClub/dice/d12/d12 (Orange):2 ../TabletopClub/dice/d12/d12 (Pink):2 ../TabletopClub/dice/d12/d12 (Purple):2 ../TabletopClub/dice/d12/d12 (Red):2 ../TabletopClub/dice/d12/d12 (White):2 ../TabletopClub/dice/d12/d12 (Yellow):2
 msgid "A 12-sided die."
-msgstr ""
+msgstr "En terning med 12 sider."
 
 #: ../TabletopClub/dice/d12/d12 (Blue):1
 msgid "d12 (Blue)"
-msgstr ""
+msgstr "d12 (Blå)"
 
 #: ../TabletopClub/dice/d12/d12 (Brown):1
 msgid "d12 (Brown)"
-msgstr ""
+msgstr "d12 (Brun)"
 
 #: ../TabletopClub/dice/d12/d12 (Cyan):1
 msgid "d12 (Cyan)"
@@ -516,47 +519,47 @@ msgstr ""
 
 #: ../TabletopClub/dice/d12/d12 (Green):1
 msgid "d12 (Green)"
-msgstr ""
+msgstr "d12 (Grønn)"
 
 #: ../TabletopClub/dice/d12/d12 (Orange):1
 msgid "d12 (Orange)"
-msgstr ""
+msgstr "d12 (Oransje)"
 
 #: ../TabletopClub/dice/d12/d12 (Pink):1
 msgid "d12 (Pink)"
-msgstr ""
+msgstr "d12 (Rosa)"
 
 #: ../TabletopClub/dice/d12/d12 (Purple):1
 msgid "d12 (Purple)"
-msgstr ""
+msgstr "d12 (Lilla)"
 
 #: ../TabletopClub/dice/d12/d12 (Red):1
 msgid "d12 (Red)"
-msgstr ""
+msgstr "d12 (Rød)"
 
 #: ../TabletopClub/dice/d12/d12 (White):1
 msgid "d12 (White)"
-msgstr ""
+msgstr "d12 (Hvit)"
 
 #: ../TabletopClub/dice/d12/d12 (Yellow):1
 msgid "d12 (Yellow)"
-msgstr ""
+msgstr "d12 (Gul)"
 
 #: ../TabletopClub/dice/d20/d20 (Black):1
 msgid "d20 (Black)"
-msgstr ""
+msgstr "d20 (Svart)"
 
 #: ../TabletopClub/dice/d20/d20 (Black):2 ../TabletopClub/dice/d20/d20 (Blue):2 ../TabletopClub/dice/d20/d20 (Brown):2 ../TabletopClub/dice/d20/d20 (Cyan):2 ../TabletopClub/dice/d20/d20 (Green):2 ../TabletopClub/dice/d20/d20 (Orange):2 ../TabletopClub/dice/d20/d20 (Pink):2 ../TabletopClub/dice/d20/d20 (Purple):2 ../TabletopClub/dice/d20/d20 (Red):2 ../TabletopClub/dice/d20/d20 (White):2 ../TabletopClub/dice/d20/d20 (Yellow):2
 msgid "A 20-sided die."
-msgstr ""
+msgstr "En terning med 20 sider."
 
 #: ../TabletopClub/dice/d20/d20 (Blue):1
 msgid "d20 (Blue)"
-msgstr ""
+msgstr "d20 (Blå)"
 
 #: ../TabletopClub/dice/d20/d20 (Brown):1
 msgid "d20 (Brown)"
-msgstr ""
+msgstr "d20 (Brun)"
 
 #: ../TabletopClub/dice/d20/d20 (Cyan):1
 msgid "d20 (Cyan)"
@@ -564,35 +567,35 @@ msgstr ""
 
 #: ../TabletopClub/dice/d20/d20 (Green):1
 msgid "d20 (Green)"
-msgstr ""
+msgstr "d20 (Grønn)"
 
 #: ../TabletopClub/dice/d20/d20 (Orange):1
 msgid "d20 (Orange)"
-msgstr ""
+msgstr "d20 (Oransje)"
 
 #: ../TabletopClub/dice/d20/d20 (Pink):1
 msgid "d20 (Pink)"
-msgstr ""
+msgstr "d20 (Rosa)"
 
 #: ../TabletopClub/dice/d20/d20 (Purple):1
 msgid "d20 (Purple)"
-msgstr ""
+msgstr "d20 (Lilla)"
 
 #: ../TabletopClub/dice/d20/d20 (Red):1
 msgid "d20 (Red)"
-msgstr ""
+msgstr "d20 (Rød)"
 
 #: ../TabletopClub/dice/d20/d20 (White):1
 msgid "d20 (White)"
-msgstr ""
+msgstr "d20 (Hvit)"
 
 #: ../TabletopClub/dice/d20/d20 (Yellow):1
 msgid "d20 (Yellow)"
-msgstr ""
+msgstr "d20 (Gul)"
 
 #: ../TabletopClub/games/Chess:1
 msgid "Chess"
-msgstr ""
+msgstr "Sjakk"
 
 #: ../TabletopClub/games/Chess:2
 msgid "Standard Chess for two players."
@@ -696,11 +699,11 @@ msgstr ""
 
 #: ../TabletopClub/pieces/Bishop Black:1
 msgid "Bishop Black"
-msgstr ""
+msgstr "Løper Svart"
 
 #: ../TabletopClub/pieces/Bishop White:1
 msgid "Bishop White"
-msgstr ""
+msgstr "Løper Hvit"
 
 #: ../TabletopClub/pieces/Chess Board:1
 msgid "Chess Board"
@@ -720,43 +723,43 @@ msgstr ""
 
 #: ../TabletopClub/pieces/King Black:1
 msgid "King Black"
-msgstr ""
+msgstr "Konge Svart"
 
 #: ../TabletopClub/pieces/King White:1
 msgid "King White"
-msgstr ""
+msgstr "Konge Hvit"
 
 #: ../TabletopClub/pieces/Knight Black:1
 msgid "Knight Black"
-msgstr ""
+msgstr "Springer Svart"
 
 #: ../TabletopClub/pieces/Knight White:1
 msgid "Knight White"
-msgstr ""
+msgstr "Springer Hvit"
 
 #: ../TabletopClub/pieces/Pawn Black:1
 msgid "Pawn Black"
-msgstr ""
+msgstr "Bonde Svart"
 
 #: ../TabletopClub/pieces/Pawn White:1
 msgid "Pawn White"
-msgstr ""
+msgstr "Bonde Hvit"
 
 #: ../TabletopClub/pieces/Queen Black:1
 msgid "Queen Black"
-msgstr ""
+msgstr "Dronning Svart"
 
 #: ../TabletopClub/pieces/Queen White:1
 msgid "Queen White"
-msgstr ""
+msgstr "Dronning Hvit"
 
 #: ../TabletopClub/pieces/Rook Black:1
 msgid "Rook Black"
-msgstr ""
+msgstr "Tørn Svart"
 
 #: ../TabletopClub/pieces/Rook White:1
 msgid "Rook White"
-msgstr ""
+msgstr "Tørn Hvit"
 
 #: ../TabletopClub/pieces/Sphere:1
 msgid "Sphere"
@@ -856,7 +859,7 @@ msgstr ""
 
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
-msgstr ""
+msgstr "Bord"
 
 #: ../TabletopClub/timers/Temp:1
 msgid "Temp"
@@ -864,7 +867,7 @@ msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2 ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2 ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
 msgid "A poker chip."
@@ -872,11 +875,11 @@ msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/10:1
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: ../TabletopClub/tokens/cylinder/100:1
 msgid "100"
-msgstr ""
+msgstr "100"
 
 #: ../TabletopClub/tokens/cylinder/20 x 1 Chips:1
 msgid "20 x 1 Chips"
@@ -920,12 +923,12 @@ msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/25:1
 msgid "25"
-msgstr ""
+msgstr "25"
 
 #: ../TabletopClub/tokens/cylinder/5:1
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../TabletopClub/tokens/cylinder/D:1
 msgid "D"
-msgstr ""
+msgstr "D"
