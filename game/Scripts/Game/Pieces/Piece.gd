@@ -186,8 +186,9 @@ func is_albedo_color_exposed() -> bool:
 # Determines if the piece is being shaked.
 # Returns: If the piece is being shaked.
 func is_being_shaked() -> bool:
-	if _new_velocity.dot(_last_velocity) < 0:
-		return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD
+	if _last_velocity.length_squared() > 1.0:
+		if _new_velocity.dot(_last_velocity) < 0:
+			return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD
 	return false
 
 # Is the piece being hovered?
