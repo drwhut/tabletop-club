@@ -9,923 +9,972 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-05 00:27\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-07-05 15:49+0000\n"
+"Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
+"default-asset-pack/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/cards/52-Card Deck:1
 msgid "52-Card Deck"
-msgstr ""
+msgstr "Колода из 52 карт"
 
 #: ../TabletopClub/cards/52-Card Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
 msgstr ""
+"Колода игральных карт французской масти размером для покера, за исключением "
+"джокеров."
 
 #: ../TabletopClub/cards/Ace of Clubs:1
 msgid "Ace of Clubs"
-msgstr ""
+msgstr "Туз треф"
 
 #: ../TabletopClub/cards/Ace of Clubs:2 ../TabletopClub/cards/Ace of Diamonds:2 ../TabletopClub/cards/Ace of Hearts:2 ../TabletopClub/cards/Ace of Spades:2 ../TabletopClub/cards/Eight of Clubs:2 ../TabletopClub/cards/Eight of Diamonds:2 ../TabletopClub/cards/Eight of Hearts:2 ../TabletopClub/cards/Eight of Spades:2 ../TabletopClub/cards/Five of Clubs:2 ../TabletopClub/cards/Five of Diamonds:2 ../TabletopClub/cards/Five of Hearts:2 ../TabletopClub/cards/Five of Spades:2 ../TabletopClub/cards/Four of Clubs:2 ../TabletopClub/cards/Four of Diamonds:2 ../TabletopClub/cards/Four of Hearts:2 ../TabletopClub/cards/Four of Spades:2 ../TabletopClub/cards/Jack of Clubs:2 ../TabletopClub/cards/Jack of Diamonds:2 ../TabletopClub/cards/Jack of Hearts:2 ../TabletopClub/cards/Jack of Spades:2 ../TabletopClub/cards/Joker Black:2 ../TabletopClub/cards/Joker Red:2 ../TabletopClub/cards/King of Clubs:2 ../TabletopClub/cards/King of Diamonds:2 ../TabletopClub/cards/King of Hearts:2 ../TabletopClub/cards/King of Spades:2 ../TabletopClub/cards/Nine of Clubs:2 ../TabletopClub/cards/Nine of Diamonds:2 ../TabletopClub/cards/Nine of Hearts:2 ../TabletopClub/cards/Nine of Spades:2 ../TabletopClub/cards/Queen of Clubs:2 ../TabletopClub/cards/Queen of Diamonds:2 ../TabletopClub/cards/Queen of Hearts:2 ../TabletopClub/cards/Queen of Spades:2 ../TabletopClub/cards/Seven of Clubs:2 ../TabletopClub/cards/Seven of Diamonds:2 ../TabletopClub/cards/Seven of Hearts:2 ../TabletopClub/cards/Seven of Spades:2 ../TabletopClub/cards/Six of Clubs:2 ../TabletopClub/cards/Six of Diamonds:2 ../TabletopClub/cards/Six of Hearts:2 ../TabletopClub/cards/Six of Spades:2 ../TabletopClub/cards/Ten of Clubs:2 ../TabletopClub/cards/Ten of Diamonds:2 ../TabletopClub/cards/Ten of Hearts:2 ../TabletopClub/cards/Ten of Spades:2 ../TabletopClub/cards/Three of Clubs:2 ../TabletopClub/cards/Three of Diamonds:2 ../TabletopClub/cards/Three of Hearts:2 ../TabletopClub/cards/Three of Spades:2 ../TabletopClub/cards/Two of Clubs:2 ../TabletopClub/cards/Two of Diamonds:2 ../TabletopClub/cards/Two of Hearts:2 ../TabletopClub/cards/Two of Spades:2
 msgid "A poker-sized French-suited playing card."
-msgstr ""
+msgstr "Игральная карта французской масти размером для покера."
 
 #: ../TabletopClub/cards/Ace of Diamonds:1
 msgid "Ace of Diamonds"
-msgstr ""
+msgstr "Туз бубен"
 
 #: ../TabletopClub/cards/Ace of Hearts:1
 msgid "Ace of Hearts"
-msgstr ""
+msgstr "Туз червей"
 
 #: ../TabletopClub/cards/Ace of Spades:1
 msgid "Ace of Spades"
-msgstr ""
+msgstr "Туз пик"
 
 #: ../TabletopClub/cards/Eight of Clubs:1
 msgid "Eight of Clubs"
-msgstr ""
+msgstr "Восьмерка треф"
 
 #: ../TabletopClub/cards/Eight of Diamonds:1
 msgid "Eight of Diamonds"
-msgstr ""
+msgstr "Восьмерка бубен"
 
 #: ../TabletopClub/cards/Eight of Hearts:1
 msgid "Eight of Hearts"
-msgstr ""
+msgstr "Восьмерка червей"
 
 #: ../TabletopClub/cards/Eight of Spades:1
 msgid "Eight of Spades"
-msgstr ""
+msgstr "Восьмерка пик"
 
 #: ../TabletopClub/cards/Five of Clubs:1
 msgid "Five of Clubs"
-msgstr ""
+msgstr "Пятерка треф"
 
 #: ../TabletopClub/cards/Five of Diamonds:1
 msgid "Five of Diamonds"
-msgstr ""
+msgstr "Пятерка бубен"
 
 #: ../TabletopClub/cards/Five of Hearts:1
 msgid "Five of Hearts"
-msgstr ""
+msgstr "Пятерка червей"
 
 #: ../TabletopClub/cards/Five of Spades:1
 msgid "Five of Spades"
-msgstr ""
+msgstr "Пятерка пик"
 
 #: ../TabletopClub/cards/Four of Clubs:1
 msgid "Four of Clubs"
-msgstr ""
+msgstr "Четверка треф"
 
 #: ../TabletopClub/cards/Four of Diamonds:1
 msgid "Four of Diamonds"
-msgstr ""
+msgstr "Четверка бубен"
 
 #: ../TabletopClub/cards/Four of Hearts:1
 msgid "Four of Hearts"
-msgstr ""
+msgstr "Четверка червей"
 
 #: ../TabletopClub/cards/Four of Spades:1
 msgid "Four of Spades"
-msgstr ""
+msgstr "Четверка пик"
 
 #: ../TabletopClub/cards/Jack of Clubs:1
 msgid "Jack of Clubs"
-msgstr ""
+msgstr "Валет треф"
 
 #: ../TabletopClub/cards/Jack of Diamonds:1
 msgid "Jack of Diamonds"
-msgstr ""
+msgstr "Валет бубен"
 
 #: ../TabletopClub/cards/Jack of Hearts:1
 msgid "Jack of Hearts"
-msgstr ""
+msgstr "Валет червей"
 
 #: ../TabletopClub/cards/Jack of Spades:1
 msgid "Jack of Spades"
-msgstr ""
+msgstr "Валет пик"
 
 #: ../TabletopClub/cards/Joker Black:1
 msgid "Joker Black"
-msgstr ""
+msgstr "Черный джокер"
 
 #: ../TabletopClub/cards/Joker Red:1
 msgid "Joker Red"
-msgstr ""
+msgstr "Красный джокер"
 
 #: ../TabletopClub/cards/King of Clubs:1
 msgid "King of Clubs"
-msgstr ""
+msgstr "Король треф"
 
 #: ../TabletopClub/cards/King of Diamonds:1
 msgid "King of Diamonds"
-msgstr ""
+msgstr "Король бубен"
 
 #: ../TabletopClub/cards/King of Hearts:1
 msgid "King of Hearts"
-msgstr ""
+msgstr "Король червей"
 
 #: ../TabletopClub/cards/King of Spades:1
 msgid "King of Spades"
-msgstr ""
+msgstr "Король пик"
 
 #: ../TabletopClub/cards/Nine of Clubs:1
 msgid "Nine of Clubs"
-msgstr ""
+msgstr "Девятка треф"
 
 #: ../TabletopClub/cards/Nine of Diamonds:1
 msgid "Nine of Diamonds"
-msgstr ""
+msgstr "Девятка бубен"
 
 #: ../TabletopClub/cards/Nine of Hearts:1
 msgid "Nine of Hearts"
-msgstr ""
+msgstr "Девятка червей"
 
 #: ../TabletopClub/cards/Nine of Spades:1
 msgid "Nine of Spades"
-msgstr ""
+msgstr "Девятка пик"
 
 #: ../TabletopClub/cards/Queen of Clubs:1
 msgid "Queen of Clubs"
-msgstr ""
+msgstr "Дама треф"
 
 #: ../TabletopClub/cards/Queen of Diamonds:1
 msgid "Queen of Diamonds"
-msgstr ""
+msgstr "Дама бубен"
 
 #: ../TabletopClub/cards/Queen of Hearts:1
 msgid "Queen of Hearts"
-msgstr ""
+msgstr "Дама червей"
 
 #: ../TabletopClub/cards/Queen of Spades:1
 msgid "Queen of Spades"
-msgstr ""
+msgstr "Дама пик"
 
 #: ../TabletopClub/cards/Seven of Clubs:1
 msgid "Seven of Clubs"
-msgstr ""
+msgstr "Семерка треф"
 
 #: ../TabletopClub/cards/Seven of Diamonds:1
 msgid "Seven of Diamonds"
-msgstr ""
+msgstr "Семерка бубен"
 
 #: ../TabletopClub/cards/Seven of Hearts:1
 msgid "Seven of Hearts"
-msgstr ""
+msgstr "Семерка червей"
 
 #: ../TabletopClub/cards/Seven of Spades:1
 msgid "Seven of Spades"
-msgstr ""
+msgstr "Семерка пик"
 
 #: ../TabletopClub/cards/Six of Clubs:1
 msgid "Six of Clubs"
-msgstr ""
+msgstr "Шестерка треф"
 
 #: ../TabletopClub/cards/Six of Diamonds:1
 msgid "Six of Diamonds"
-msgstr ""
+msgstr "Шестерка бубен"
 
 #: ../TabletopClub/cards/Six of Hearts:1
 msgid "Six of Hearts"
-msgstr ""
+msgstr "Шестерка червей"
 
 #: ../TabletopClub/cards/Six of Spades:1
 msgid "Six of Spades"
-msgstr ""
+msgstr "Шестерка пик"
 
 #: ../TabletopClub/cards/Ten of Clubs:1
 msgid "Ten of Clubs"
-msgstr ""
+msgstr "Десятка треф"
 
 #: ../TabletopClub/cards/Ten of Diamonds:1
 msgid "Ten of Diamonds"
-msgstr ""
+msgstr "Десятка бубен"
 
 #: ../TabletopClub/cards/Ten of Hearts:1
 msgid "Ten of Hearts"
-msgstr ""
+msgstr "Десятка червей"
 
 #: ../TabletopClub/cards/Ten of Spades:1
 msgid "Ten of Spades"
-msgstr ""
+msgstr "Десятка пик"
 
 #: ../TabletopClub/cards/Three of Clubs:1
 msgid "Three of Clubs"
-msgstr ""
+msgstr "Тройка треф"
 
 #: ../TabletopClub/cards/Three of Diamonds:1
 msgid "Three of Diamonds"
-msgstr ""
+msgstr "Тройка бубен"
 
 #: ../TabletopClub/cards/Three of Hearts:1
 msgid "Three of Hearts"
-msgstr ""
+msgstr "Тройка червей"
 
 #: ../TabletopClub/cards/Three of Spades:1
 msgid "Three of Spades"
-msgstr ""
+msgstr "Тройка пик"
 
 #: ../TabletopClub/cards/Two of Clubs:1
 msgid "Two of Clubs"
-msgstr ""
+msgstr "Двойка треф"
 
 #: ../TabletopClub/cards/Two of Diamonds:1
 msgid "Two of Diamonds"
-msgstr ""
+msgstr "Двойка бубен"
 
 #: ../TabletopClub/cards/Two of Hearts:1
 msgid "Two of Hearts"
-msgstr ""
+msgstr "Двойка червей"
 
 #: ../TabletopClub/cards/Two of Spades:1
 msgid "Two of Spades"
-msgstr ""
+msgstr "Двойка пик"
 
 #: ../TabletopClub/containers/Purse:1
 msgid "Purse"
-msgstr ""
+msgstr "Сумка"
 
 #: ../TabletopClub/containers/Red Cup:1
 msgid "Red Cup"
-msgstr ""
+msgstr "Красная чашка"
 
 #: ../TabletopClub/dice/d4/d4 (Black):1
 msgid "d4 (Black)"
-msgstr ""
+msgstr "d4 (Чёрный)"
 
 #: ../TabletopClub/dice/d4/d4 (Black):2 ../TabletopClub/dice/d4/d4 (Blue):2 ../TabletopClub/dice/d4/d4 (Brown):2 ../TabletopClub/dice/d4/d4 (Cyan):2 ../TabletopClub/dice/d4/d4 (Green):2 ../TabletopClub/dice/d4/d4 (Orange):2 ../TabletopClub/dice/d4/d4 (Pink):2 ../TabletopClub/dice/d4/d4 (Purple):2 ../TabletopClub/dice/d4/d4 (Red):2 ../TabletopClub/dice/d4/d4 (White):2 ../TabletopClub/dice/d4/d4 (Yellow):2
 msgid "A 4-sided die."
-msgstr ""
+msgstr "4-гранный кубик."
 
 #: ../TabletopClub/dice/d4/d4 (Blue):1
 msgid "d4 (Blue)"
-msgstr ""
+msgstr "d4 (Синий)"
 
 #: ../TabletopClub/dice/d4/d4 (Brown):1
 msgid "d4 (Brown)"
-msgstr ""
+msgstr "d4 (Коричневый)"
 
 #: ../TabletopClub/dice/d4/d4 (Cyan):1
 msgid "d4 (Cyan)"
-msgstr ""
+msgstr "d4 (Голубой)"
 
 #: ../TabletopClub/dice/d4/d4 (Green):1
 msgid "d4 (Green)"
-msgstr ""
+msgstr "d4 (Зелёный)"
 
 #: ../TabletopClub/dice/d4/d4 (Orange):1
 msgid "d4 (Orange)"
-msgstr ""
+msgstr "d4 (Оранжевый)"
 
 #: ../TabletopClub/dice/d4/d4 (Pink):1
 msgid "d4 (Pink)"
-msgstr ""
+msgstr "d4 (Розовый)"
 
 #: ../TabletopClub/dice/d4/d4 (Purple):1
 msgid "d4 (Purple)"
-msgstr ""
+msgstr "d4 (Фиолетовый)"
 
 #: ../TabletopClub/dice/d4/d4 (Red):1
 msgid "d4 (Red)"
-msgstr ""
+msgstr "d4 (Красный)"
 
 #: ../TabletopClub/dice/d4/d4 (White):1
 msgid "d4 (White)"
-msgstr ""
+msgstr "d4 (Белый)"
 
 #: ../TabletopClub/dice/d4/d4 (Yellow):1
 msgid "d4 (Yellow)"
-msgstr ""
+msgstr "d4 (Жёлтый)"
 
 #: ../TabletopClub/dice/d6/d6 (Black):1
 msgid "d6 (Black)"
-msgstr ""
+msgstr "d6 (Чёрный)"
 
 #: ../TabletopClub/dice/d6/d6 (Black):2 ../TabletopClub/dice/d6/d6 (Blue):2 ../TabletopClub/dice/d6/d6 (Brown):2 ../TabletopClub/dice/d6/d6 (Cyan):2 ../TabletopClub/dice/d6/d6 (Green):2 ../TabletopClub/dice/d6/d6 (Orange):2 ../TabletopClub/dice/d6/d6 (Pink):2 ../TabletopClub/dice/d6/d6 (Purple):2 ../TabletopClub/dice/d6/d6 (Red):2 ../TabletopClub/dice/d6/d6 (Traditional):2 ../TabletopClub/dice/d6/d6 (White):2 ../TabletopClub/dice/d6/d6 (Yellow):2
 msgid "A 6-sided die."
-msgstr ""
+msgstr "6-гранный кубик."
 
 #: ../TabletopClub/dice/d6/d6 (Blue):1
 msgid "d6 (Blue)"
-msgstr ""
+msgstr "d6 (Синий)"
 
 #: ../TabletopClub/dice/d6/d6 (Brown):1
 msgid "d6 (Brown)"
-msgstr ""
+msgstr "d6 (Коричневый)"
 
 #: ../TabletopClub/dice/d6/d6 (Cyan):1
 msgid "d6 (Cyan)"
-msgstr ""
+msgstr "d6 (Голубой)"
 
 #: ../TabletopClub/dice/d6/d6 (Green):1
 msgid "d6 (Green)"
-msgstr ""
+msgstr "d6 (Зелёный)"
 
 #: ../TabletopClub/dice/d6/d6 (Orange):1
 msgid "d6 (Orange)"
-msgstr ""
+msgstr "d6 (Оранжевый)"
 
 #: ../TabletopClub/dice/d6/d6 (Pink):1
 msgid "d6 (Pink)"
-msgstr ""
+msgstr "d6 (Розовый)"
 
 #: ../TabletopClub/dice/d6/d6 (Purple):1
 msgid "d6 (Purple)"
-msgstr ""
+msgstr "d6 (Фиолетовый)"
 
 #: ../TabletopClub/dice/d6/d6 (Red):1
 msgid "d6 (Red)"
-msgstr ""
+msgstr "d6 (Красный)"
 
 #: ../TabletopClub/dice/d6/d6 (Traditional):1
 msgid "d6 (Traditional)"
-msgstr ""
+msgstr "d6 (Традиционный)"
 
 #: ../TabletopClub/dice/d6/d6 (White):1
 msgid "d6 (White)"
-msgstr ""
+msgstr "d6 (Белый)"
 
 #: ../TabletopClub/dice/d6/d6 (Yellow):1
 msgid "d6 (Yellow)"
-msgstr ""
+msgstr "d6 (Жёлтый)"
 
 #: ../TabletopClub/dice/d8/d8 (Black):1
 msgid "d8 (Black)"
-msgstr ""
+msgstr "d8 (Чёрный)"
 
 #: ../TabletopClub/dice/d8/d8 (Black):2 ../TabletopClub/dice/d8/d8 (Blue):2 ../TabletopClub/dice/d8/d8 (Brown):2 ../TabletopClub/dice/d8/d8 (Cyan):2 ../TabletopClub/dice/d8/d8 (Green):2 ../TabletopClub/dice/d8/d8 (Orange):2 ../TabletopClub/dice/d8/d8 (Pink):2 ../TabletopClub/dice/d8/d8 (Purple):2 ../TabletopClub/dice/d8/d8 (Red):2 ../TabletopClub/dice/d8/d8 (White):2 ../TabletopClub/dice/d8/d8 (Yellow):2
 msgid "An 8-sided die."
-msgstr ""
+msgstr "8-гранный кубик."
 
 #: ../TabletopClub/dice/d8/d8 (Blue):1
 msgid "d8 (Blue)"
-msgstr ""
+msgstr "d8 (Синий)"
 
 #: ../TabletopClub/dice/d8/d8 (Brown):1
 msgid "d8 (Brown)"
-msgstr ""
+msgstr "d8 (Коричневый)"
 
 #: ../TabletopClub/dice/d8/d8 (Cyan):1
 msgid "d8 (Cyan)"
-msgstr ""
+msgstr "d8 (Голубой)"
 
 #: ../TabletopClub/dice/d8/d8 (Green):1
 msgid "d8 (Green)"
-msgstr ""
+msgstr "d8 (Зелёный)"
 
 #: ../TabletopClub/dice/d8/d8 (Orange):1
 msgid "d8 (Orange)"
-msgstr ""
+msgstr "d8 (Оранжевый)"
 
 #: ../TabletopClub/dice/d8/d8 (Pink):1
 msgid "d8 (Pink)"
-msgstr ""
+msgstr "d8 (Розовый)"
 
 #: ../TabletopClub/dice/d8/d8 (Purple):1
 msgid "d8 (Purple)"
-msgstr ""
+msgstr "d8 (Фиолетовый)"
 
 #: ../TabletopClub/dice/d8/d8 (Red):1
 msgid "d8 (Red)"
-msgstr ""
+msgstr "d8 (Красный)"
 
 #: ../TabletopClub/dice/d8/d8 (White):1
 msgid "d8 (White)"
-msgstr ""
+msgstr "d8 (Белый)"
 
 #: ../TabletopClub/dice/d8/d8 (Yellow):1
 msgid "d8 (Yellow)"
-msgstr ""
+msgstr "d8 (Жёлтый)"
 
 #: ../TabletopClub/dice/d10/d10 (Black):1
 msgid "d10 (Black)"
-msgstr ""
+msgstr "d10 (Чёрный)"
 
 #: ../TabletopClub/dice/d10/d10 (Black):2 ../TabletopClub/dice/d10/d10 (Blue):2 ../TabletopClub/dice/d10/d10 (Brown):2 ../TabletopClub/dice/d10/d10 (Cyan):2 ../TabletopClub/dice/d10/d10 (Green):2 ../TabletopClub/dice/d10/d10 (Orange):2 ../TabletopClub/dice/d10/d10 (Percent) (Black):2 ../TabletopClub/dice/d10/d10 (Percent) (Blue):2 ../TabletopClub/dice/d10/d10 (Percent) (Brown):2 ../TabletopClub/dice/d10/d10 (Percent) (Cyan):2 ../TabletopClub/dice/d10/d10 (Percent) (Green):2 ../TabletopClub/dice/d10/d10 (Percent) (Orange):2 ../TabletopClub/dice/d10/d10 (Percent) (Pink):2 ../TabletopClub/dice/d10/d10 (Percent) (Purple):2 ../TabletopClub/dice/d10/d10 (Percent) (Red):2 ../TabletopClub/dice/d10/d10 (Percent) (White):2 ../TabletopClub/dice/d10/d10 (Percent) (Yellow):2 ../TabletopClub/dice/d10/d10 (Pink):2 ../TabletopClub/dice/d10/d10 (Purple):2 ../TabletopClub/dice/d10/d10 (Red):2 ../TabletopClub/dice/d10/d10 (White):2 ../TabletopClub/dice/d10/d10 (Yellow):2
 msgid "A 10-sided die."
-msgstr ""
+msgstr "10-гранный кубик."
 
 #: ../TabletopClub/dice/d10/d10 (Blue):1
 msgid "d10 (Blue)"
-msgstr ""
+msgstr "d10 (Синий)"
 
 #: ../TabletopClub/dice/d10/d10 (Brown):1
 msgid "d10 (Brown)"
-msgstr ""
+msgstr "d10 (Коричневый)"
 
 #: ../TabletopClub/dice/d10/d10 (Cyan):1
 msgid "d10 (Cyan)"
-msgstr ""
+msgstr "d10 (Голубой)"
 
 #: ../TabletopClub/dice/d10/d10 (Green):1
 msgid "d10 (Green)"
-msgstr ""
+msgstr "d10 (Зелёный)"
 
 #: ../TabletopClub/dice/d10/d10 (Orange):1
 msgid "d10 (Orange)"
-msgstr ""
+msgstr "d10 (Оранжевый)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Black):1
 msgid "d10 (Percent) (Black)"
-msgstr ""
+msgstr "d10 (Проценты) (Чёрный)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Blue):1
 msgid "d10 (Percent) (Blue)"
-msgstr ""
+msgstr "d10 (Проценты) (Синий)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Brown):1
 msgid "d10 (Percent) (Brown)"
-msgstr ""
+msgstr "d10 (Проценты) (Коричневый)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Cyan):1
 msgid "d10 (Percent) (Cyan)"
-msgstr ""
+msgstr "d10 (Проценты) (Голубой)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Green):1
 msgid "d10 (Percent) (Green)"
-msgstr ""
+msgstr "d10 (Проценты) (Зелёный)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Orange):1
 msgid "d10 (Percent) (Orange)"
-msgstr ""
+msgstr "d10 (Проценты) (Оранжевый)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Pink):1
 msgid "d10 (Percent) (Pink)"
-msgstr ""
+msgstr "d10 (Проценты) (Розовый)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Purple):1
 msgid "d10 (Percent) (Purple)"
-msgstr ""
+msgstr "d10 (Проценты) (Фиолетовый)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Red):1
 msgid "d10 (Percent) (Red)"
-msgstr ""
+msgstr "d10 (Проценты) (Красный)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (White):1
 msgid "d10 (Percent) (White)"
-msgstr ""
+msgstr "d10 (Проценты) (Белый)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Yellow):1
 msgid "d10 (Percent) (Yellow)"
-msgstr ""
+msgstr "d10 (Проценты) (Жёлтый)"
 
 #: ../TabletopClub/dice/d10/d10 (Pink):1
 msgid "d10 (Pink)"
-msgstr ""
+msgstr "d10 (Розовый)"
 
 #: ../TabletopClub/dice/d10/d10 (Purple):1
 msgid "d10 (Purple)"
-msgstr ""
+msgstr "d10 (Фиолетовый)"
 
 #: ../TabletopClub/dice/d10/d10 (Red):1
 msgid "d10 (Red)"
-msgstr ""
+msgstr "d10 (Красный)"
 
 #: ../TabletopClub/dice/d10/d10 (White):1
 msgid "d10 (White)"
-msgstr ""
+msgstr "d10 (Белый)"
 
 #: ../TabletopClub/dice/d10/d10 (Yellow):1
 msgid "d10 (Yellow)"
-msgstr ""
+msgstr "d10 (Жёлтый)"
 
 #: ../TabletopClub/dice/d12/d12 (Black):1
 msgid "d12 (Black)"
-msgstr ""
+msgstr "d12 (Чёрный)"
 
 #: ../TabletopClub/dice/d12/d12 (Black):2 ../TabletopClub/dice/d12/d12 (Blue):2 ../TabletopClub/dice/d12/d12 (Brown):2 ../TabletopClub/dice/d12/d12 (Cyan):2 ../TabletopClub/dice/d12/d12 (Green):2 ../TabletopClub/dice/d12/d12 (Orange):2 ../TabletopClub/dice/d12/d12 (Pink):2 ../TabletopClub/dice/d12/d12 (Purple):2 ../TabletopClub/dice/d12/d12 (Red):2 ../TabletopClub/dice/d12/d12 (White):2 ../TabletopClub/dice/d12/d12 (Yellow):2
 msgid "A 12-sided die."
-msgstr ""
+msgstr "12-гранный кубик."
 
 #: ../TabletopClub/dice/d12/d12 (Blue):1
 msgid "d12 (Blue)"
-msgstr ""
+msgstr "d12 (Синий)"
 
 #: ../TabletopClub/dice/d12/d12 (Brown):1
 msgid "d12 (Brown)"
-msgstr ""
+msgstr "d12 (Коричневый)"
 
 #: ../TabletopClub/dice/d12/d12 (Cyan):1
 msgid "d12 (Cyan)"
-msgstr ""
+msgstr "d12 (Голубой)"
 
 #: ../TabletopClub/dice/d12/d12 (Green):1
 msgid "d12 (Green)"
-msgstr ""
+msgstr "d12 (Зелёный)"
 
 #: ../TabletopClub/dice/d12/d12 (Orange):1
 msgid "d12 (Orange)"
-msgstr ""
+msgstr "d12 (Оранжевый)"
 
 #: ../TabletopClub/dice/d12/d12 (Pink):1
 msgid "d12 (Pink)"
-msgstr ""
+msgstr "d12 (Розовый)"
 
 #: ../TabletopClub/dice/d12/d12 (Purple):1
 msgid "d12 (Purple)"
-msgstr ""
+msgstr "d12 (Фиолетовый)"
 
 #: ../TabletopClub/dice/d12/d12 (Red):1
 msgid "d12 (Red)"
-msgstr ""
+msgstr "d12 (Красный)"
 
 #: ../TabletopClub/dice/d12/d12 (White):1
 msgid "d12 (White)"
-msgstr ""
+msgstr "d12 (Белый)"
 
 #: ../TabletopClub/dice/d12/d12 (Yellow):1
 msgid "d12 (Yellow)"
-msgstr ""
+msgstr "d12 (Жёлтый)"
 
 #: ../TabletopClub/dice/d20/d20 (Black):1
 msgid "d20 (Black)"
-msgstr ""
+msgstr "d20 (Чёрный)"
 
 #: ../TabletopClub/dice/d20/d20 (Black):2 ../TabletopClub/dice/d20/d20 (Blue):2 ../TabletopClub/dice/d20/d20 (Brown):2 ../TabletopClub/dice/d20/d20 (Cyan):2 ../TabletopClub/dice/d20/d20 (Green):2 ../TabletopClub/dice/d20/d20 (Orange):2 ../TabletopClub/dice/d20/d20 (Pink):2 ../TabletopClub/dice/d20/d20 (Purple):2 ../TabletopClub/dice/d20/d20 (Red):2 ../TabletopClub/dice/d20/d20 (White):2 ../TabletopClub/dice/d20/d20 (Yellow):2
 msgid "A 20-sided die."
-msgstr ""
+msgstr "20-гранный кубик."
 
 #: ../TabletopClub/dice/d20/d20 (Blue):1
 msgid "d20 (Blue)"
-msgstr ""
+msgstr "d20 (Синий)"
 
 #: ../TabletopClub/dice/d20/d20 (Brown):1
 msgid "d20 (Brown)"
-msgstr ""
+msgstr "d20 (Коричневый)"
 
 #: ../TabletopClub/dice/d20/d20 (Cyan):1
 msgid "d20 (Cyan)"
-msgstr ""
+msgstr "d20 (Голубой)"
 
 #: ../TabletopClub/dice/d20/d20 (Green):1
 msgid "d20 (Green)"
-msgstr ""
+msgstr "d20 (Зелёный)"
 
 #: ../TabletopClub/dice/d20/d20 (Orange):1
 msgid "d20 (Orange)"
-msgstr ""
+msgstr "d20 (Оранжевый)"
 
 #: ../TabletopClub/dice/d20/d20 (Pink):1
 msgid "d20 (Pink)"
-msgstr ""
+msgstr "d20 (Розовый)"
 
 #: ../TabletopClub/dice/d20/d20 (Purple):1
 msgid "d20 (Purple)"
-msgstr ""
+msgstr "d20 (Фиолетовый)"
 
 #: ../TabletopClub/dice/d20/d20 (Red):1
 msgid "d20 (Red)"
-msgstr ""
+msgstr "d20 (Красный)"
 
 #: ../TabletopClub/dice/d20/d20 (White):1
 msgid "d20 (White)"
-msgstr ""
+msgstr "d20 (Белый)"
 
 #: ../TabletopClub/dice/d20/d20 (Yellow):1
 msgid "d20 (Yellow)"
-msgstr ""
+msgstr "d20 (Жёлтый)"
 
 #: ../TabletopClub/games/Chess:1
 msgid "Chess"
-msgstr ""
+msgstr "Шахматы"
 
 #: ../TabletopClub/games/Chess:2
 msgid "Standard Chess for two players."
-msgstr ""
+msgstr "Стандартные шахматы для двух игроков."
 
 #: ../TabletopClub/music/Airport Lounge - Kevin MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
-msgstr ""
+msgstr "Airport Lounge - Kevin MacLeod"
 
 #: ../TabletopClub/music/Airport Lounge - Kevin MacLeod:2
 msgid "Light and airy, this piece is guaranteed not to steal focus."
 msgstr ""
+"Легкая и воздушная, эта музыка гарантированно не будет привлекать внимание."
 
 #: ../TabletopClub/music/Backbay Lounge - Kevin MacLeod:1
 msgid "Backbay Lounge - Kevin MacLeod"
-msgstr ""
+msgstr "Backbay Lounge - Kevin MacLeod"
 
 #: ../TabletopClub/music/Backbay Lounge - Kevin MacLeod:2
 msgid "This is cool. You can walk into a dinner party, grab a glass of prosecco, kiss the host, then casually defuse a large bomb one second before the timer runs out. That level of cool. Maybe you're not that cool, but if you adopt this as your personal theme tune, people will THINK you're that cool."
 msgstr ""
+"Это крутая штучка. Вы можете зайти на званый ужин, взять стакан просекко, "
+"поцеловать хозяина, а затем небрежно обезвредить большую бомбу за секунду до "
+"истечения времени. Такой уровень крутости. Может быть, вы не настолько "
+"круты, но если вы примете это как свою личную мелодию, люди будут ДУМАТЬ, "
+"что вы настолько круты."
 
 #: ../TabletopClub/music/Bossa Antigua - Kevin MacLeod:1
 msgid "Bossa Antigua - Kevin MacLeod"
-msgstr ""
+msgstr "Bossa Antigua - Kevin MacLeod"
 
 #: ../TabletopClub/music/Bossa Antigua - Kevin MacLeod:2
 msgid "Oh hello. I didn't see you there. Welcome to my pad. My favorite parts are the view of the beach, and this very groovy orange shag-carpeting on the walls. I still haven't been able to teach my Roombas to get up by the ceiling, though."
 msgstr ""
+"О, привет. Я не видел тебя здесь. Добро пожаловать в мою квартиру. Больше "
+"всего мне нравится вид на пляж и очень прикольный оранжевый ковер на стенах. "
+"Хотя я до сих пор не смог научить своего Румбаса подниматься под потолок."
 
 #: ../TabletopClub/music/Deadly Roulette - Kevin MacLeod:1
 msgid "Deadly Roulette - Kevin MacLeod"
-msgstr ""
+msgstr "Deadly Roulette - Kevin MacLeod"
 
 #: ../TabletopClub/music/Deadly Roulette - Kevin MacLeod:2
 msgid "Jazzy! Gumshoe-y! Mystery-y! I suck at making adjectives. Who needs adjectives anyway! I'm fine without adjectives. How fine without adjectives, you may ask? I can't say - as that would require some sort of descriptor! And I don't need descriptors in my writings... Maybe one... tiny little... NO! What am I thinking!? I refuse! I've completely had it with adjectives! Hah! Adverbs work perfectly fine! Woohoo! Adverbs! And before I get mail... adjectives killed my family, so I can go off on them all I want."
 msgstr ""
+"Выпедрежный! Детективный! Таинственный! У меня плохо получается делать "
+"прилагательные. Кому вообще нужны прилагательные! Я прекрасно обхожусь без "
+"прилагательных. Как хорошо без прилагательных, спросите вы? Я не могу "
+"сказать, так как это потребует какого-то описания! А мне не нужны описания в "
+"моих работах… Может быть, одно… крошечное… НЕТ! О чем я думаю!? Я "
+"отказываюсь! С меня хватит прилагательных! Ха! Наречия прекрасно работают! "
+"Ух ты! Наречия! И пока я не получил письмо… прилагательные убили мою семью, "
+"так что я могу огрызаться на них сколько угодно."
 
 #: ../TabletopClub/music/George Street Shuffle - Kevin MacLeod:1
 msgid "George Street Shuffle - Kevin MacLeod"
-msgstr ""
+msgstr "George Street Shuffle - Kevin MacLeod"
 
 #: ../TabletopClub/music/George Street Shuffle - Kevin MacLeod:2
 msgid "Nice little non-offending light jazz piece for vibes."
 msgstr ""
+"Неплохая легкая джазовая музыка, не вызывающая огарчения, для настроения."
 
 #: ../TabletopClub/music/Hard Boiled - Kevin MacLeod:1
 msgid "Hard Boiled - Kevin MacLeod"
-msgstr ""
+msgstr "Hard Boiled - Kevin MacLeod"
 
 #: ../TabletopClub/music/Hard Boiled - Kevin MacLeod:2
 msgid "You're looking for the low-down, huh? That's going to take lettuce. You want the dope? the scoop? the skinny? Ten bucks a day plus expenses. No negotiations. I ain't no fourth-rate gumshoe - but a ducky shincracker like you already knew that... Out of curiosity, what's the word for people who overuse slang?"
 msgstr ""
+"Ты ищешь информацию, да? Для этого понадобится зелень. Тебе нужна "
+"информация, сенсация, тонкости? Десять баксов в день плюс расходы. Никаких "
+"переговоров. Я не четверосортный сыщик - но такой душка, как ты, уже это "
+"знает… Из любопытства, как называются люди, которые злоупотребляют сленгом?"
 
 #: ../TabletopClub/music/In Your Arms - Kevin MacLeod:1
 msgid "In Your Arms - Kevin MacLeod"
-msgstr ""
+msgstr "In Your Arms - Kevin MacLeod"
 
 #: ../TabletopClub/music/In Your Arms - Kevin MacLeod:2
 msgid "A piece of music from a more elegant time, 1940. This is a beautiful slow piece that will make you want to pick up some champagne and go off slow dancing with people... or penguins. I like penguins. And now some searchable words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No Whammies."
 msgstr ""
+"Музыка из более элегантного времени, 1940 года. Это красивая медленная "
+"композиция, которая заставит вас захотеть взять шампанское и пуститься в "
+"медленный танец с людьми… или пингвинами. Мне нравятся пингвины. А теперь "
+"несколько слов для поиска: Биг-бэнд. 1940 г. Сороковые. Официальная "
+"вечеринка. Медленный танец пингвинов. Никаких неудач."
 
 #: ../TabletopClub/music/Lobby Time - Kevin MacLeod:1
 msgid "Lobby Time - Kevin MacLeod"
-msgstr ""
+msgstr "Lobby Time - Kevin MacLeod"
 
 #: ../TabletopClub/music/Lobby Time - Kevin MacLeod:2
 msgid "Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail from our cheerful bar staff (with a complimentary cheese and fruit plate before 5pm). We feature prime rib dinners every day that ends in a "
 msgstr ""
+"Добро пожаловать в вестибюль БУДУЩЕГО! Роскошные автоматические пепельницы и "
+"современная мебель из зеленого винила выгодно оттеняют стены, покрытые "
+"мохнатым ковром. Насладитесь \"Ржавым гвоздем\" от нашего веселого персонала "
+"бара (с бесплатной тарелкой сыра и фруктов до 17:00). Каждый день мы "
+"предлагаем ужин из ребрышек который заканчивается в "
 
 #: ../TabletopClub/music/Night on the Docks - Sax - Kevin MacLeod:1
 msgid "Night on the Docks - Sax - Kevin MacLeod"
-msgstr ""
+msgstr "Night on the Docks - Sax - Kevin MacLeod"
 
 #: ../TabletopClub/music/Night on the Docks - Sax - Kevin MacLeod:2
 msgid "Sad and smooth; Think 1950's detective film."
-msgstr ""
+msgstr "Грустная и плавная музыка. Напоминает детективный фильм 1950 года."
 
 #: ../TabletopClub/music/Shades of Spring - Kevin MacLeod:1
 msgid "Shades of Spring - Kevin MacLeod"
-msgstr ""
+msgstr "Shades of Spring - Kevin MacLeod"
 
 #: ../TabletopClub/music/Shades of Spring - Kevin MacLeod:2
 msgid "Sort of a minor mid-tempo jazz combo with 2 pianos. Melody is doubled in octaves. Soloist goes outside more than the guy comping... but hey - what are soloists for?"
 msgstr ""
+"Что-то вроде минорного среднетемпового джазового комбо с двумя фортепиано. "
+"Мелодия удваивается в октавах. Солист выходит чаще, чем композитор… но эй - "
+"для чего нужны солисты?"
 
 #: ../TabletopClub/music/Smooth Lovin - Kevin MacLeod:1
 msgid "Smooth Lovin - Kevin MacLeod"
-msgstr ""
+msgstr "Smooth Lovin - Kevin MacLeod"
 
 #: ../TabletopClub/music/Smooth Lovin - Kevin MacLeod:2
 msgid "This one got turned up to 11. I started producing this as a parody... then I really started liking it, so I guess it is a pastiche now? Oh, man... I wish there was an allowance for pastiche in copyright like there is for parody."
 msgstr ""
+"Я начал делать это как пародию… потом мне это действительно начало "
+"нравиться, так что, я думаю, теперь это подделка? О, чувак… Хотел бы я, "
+"чтобы в авторском праве было разрешение на подделку, как на пародию."
 
 #: ../TabletopClub/music/Spy Glass - Kevin MacLeod:1
 msgid "Spy Glass - Kevin MacLeod"
-msgstr ""
+msgstr "Spy Glass - Kevin MacLeod"
 
 #: ../TabletopClub/music/Spy Glass - Kevin MacLeod:2
 msgid "The year is... I have no idea. Timeless. Could be now, could be in the 1950s. Super cool jazz for your hardcore detectives! Also useful for beat poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
 msgstr ""
+"Год… Понятия не имею. Вне времени. Может быть сейчас, может быть в 1950-х. "
+"Суперкрутой джаз для ваших хардкорных детективов! Также полезен для поэтов-"
+"битников! А также полезен от уныния или скуки! Ну, интересные виды скуки."
 
 #: ../TabletopClub/pieces/Bishop Black:1
 msgid "Bishop Black"
-msgstr ""
+msgstr "Чёрный слон"
 
 #: ../TabletopClub/pieces/Bishop White:1
 msgid "Bishop White"
-msgstr ""
+msgstr "Белый слон"
 
 #: ../TabletopClub/pieces/Chess Board:1
 msgid "Chess Board"
-msgstr ""
+msgstr "Шахматная доска"
 
 #: ../TabletopClub/pieces/Chess Board:2
 msgid "An 8x8 Chess board."
-msgstr ""
+msgstr "Шахматная доска 8 на 8."
 
 #: ../TabletopClub/pieces/ColladaSphere:1
 msgid "ColladaSphere"
-msgstr ""
+msgstr "Collada сфера"
 
 #: ../TabletopClub/pieces/ColladaSphere:2
 msgid "A test sphere exported as a Collada file using Blender."
-msgstr ""
+msgstr "Тестовая сфера, экспортированная как файл Collada с помощью Blender."
 
 #: ../TabletopClub/pieces/King Black:1
 msgid "King Black"
-msgstr ""
+msgstr "Чёрный король"
 
 #: ../TabletopClub/pieces/King White:1
 msgid "King White"
-msgstr ""
+msgstr "Белый король"
 
 #: ../TabletopClub/pieces/Knight Black:1
 msgid "Knight Black"
-msgstr ""
+msgstr "Чёрный конь"
 
 #: ../TabletopClub/pieces/Knight White:1
 msgid "Knight White"
-msgstr ""
+msgstr "Белый конь"
 
 #: ../TabletopClub/pieces/Pawn Black:1
 msgid "Pawn Black"
-msgstr ""
+msgstr "Чёрная пешка"
 
 #: ../TabletopClub/pieces/Pawn White:1
 msgid "Pawn White"
-msgstr ""
+msgstr "Белая пешка"
 
 #: ../TabletopClub/pieces/Queen Black:1
 msgid "Queen Black"
-msgstr ""
+msgstr "Чёрный ферзь"
 
 #: ../TabletopClub/pieces/Queen White:1
 msgid "Queen White"
-msgstr ""
+msgstr "Белый ферзь"
 
 #: ../TabletopClub/pieces/Rook Black:1
 msgid "Rook Black"
-msgstr ""
+msgstr "Чёрная ладья"
 
 #: ../TabletopClub/pieces/Rook White:1
 msgid "Rook White"
-msgstr ""
+msgstr "Белая ладья"
 
 #: ../TabletopClub/pieces/Sphere:1
 msgid "Sphere"
-msgstr ""
+msgstr "Сфера"
 
 #: ../TabletopClub/pieces/Sphere:2
 msgid "A sphere exported directly from Blender."
-msgstr ""
+msgstr "Сфера, экспортированная напрямую из Blender."
 
 #: ../TabletopClub/pieces/Suzanne:1
 msgid "Suzanne"
-msgstr ""
+msgstr "Сюзанна"
 
 #: ../TabletopClub/pieces/TwoToruses:1
+#, fuzzy
 msgid "TwoToruses"
-msgstr ""
+msgstr "Два кольца"
 
 #: ../TabletopClub/skyboxes/Clouds:1
 msgid "Clouds"
-msgstr ""
+msgstr "Облака"
 
 #: ../TabletopClub/skyboxes/Dallas West:1
 msgid "Dallas West"
-msgstr ""
+msgstr "Dallas West"
 
 #: ../TabletopClub/skyboxes/Forest:1
 msgid "Forest"
-msgstr ""
+msgstr "Лес"
 
 #: ../TabletopClub/skyboxes/Hornstulls Strand:1
 msgid "Hornstulls Strand"
-msgstr ""
+msgstr "Hornstulls Strand"
 
 #: ../TabletopClub/skyboxes/Ice River:1
 msgid "Ice River"
-msgstr ""
+msgstr "Ледяная река"
 
 #: ../TabletopClub/skyboxes/Marriott Madison West:1
 msgid "Marriott Madison West"
-msgstr ""
+msgstr "Marriott Madison West"
 
 #: ../TabletopClub/skyboxes/Maskonaive:1
 msgid "Maskonaive"
-msgstr ""
+msgstr "Maskonaive"
 
 #: ../TabletopClub/skyboxes/Nebula:1
 msgid "Nebula"
-msgstr ""
+msgstr "Туманность"
 
 #: ../TabletopClub/skyboxes/Niagra Falls:1
 msgid "Niagra Falls"
-msgstr ""
+msgstr "Ниагарский водопад"
 
 #: ../TabletopClub/skyboxes/Park:1
 msgid "Park"
-msgstr ""
+msgstr "Парк"
 
 #: ../TabletopClub/skyboxes/Park Winter:1
 msgid "Park Winter"
-msgstr ""
+msgstr "Зимний парк"
 
 #: ../TabletopClub/skyboxes/Path:1
 msgid "Path"
-msgstr ""
+msgstr "Дорожка"
 
 #: ../TabletopClub/skyboxes/Space:1
 msgid "Space"
-msgstr ""
+msgstr "Космос"
 
 #: ../TabletopClub/skyboxes/Tantolunden:1
 msgid "Tantolunden"
-msgstr ""
+msgstr "Тантолунден"
 
 #: ../TabletopClub/skyboxes/Vasa:1
 msgid "Vasa"
-msgstr ""
+msgstr "Васа"
 
 #: ../TabletopClub/sounds/Alarm:1
 msgid "Alarm"
-msgstr ""
+msgstr "Тревога"
 
 #: ../TabletopClub/sounds/Alarm:2
 msgid "An alarm for alarming situations."
-msgstr ""
+msgstr "Сигнал тревоги для тревожных ситуаций."
 
 #: ../TabletopClub/speakers/Gramophone:1
 msgid "Gramophone"
-msgstr ""
+msgstr "Граммофон"
 
 #: ../TabletopClub/speakers/Gramophone:2
 msgid "A low-poly vintage gramophone."
-msgstr ""
+msgstr "Низкополигональный винтажный граммофон."
 
 #: ../TabletopClub/tables/Picnic Bench:1
 msgid "Picnic Bench"
-msgstr ""
+msgstr "Скамейка для пикника"
 
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
-msgstr ""
+msgstr "Стол"
 
 #: ../TabletopClub/timers/Temp:1
+#, fuzzy
 msgid "Temp"
-msgstr ""
+msgstr "Заглушка"
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2 ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2 ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
 msgid "A poker chip."
-msgstr ""
+msgstr "Покерная фишка."
 
 #: ../TabletopClub/tokens/cylinder/10:1
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: ../TabletopClub/tokens/cylinder/100:1
 msgid "100"
-msgstr ""
+msgstr "100"
 
 #: ../TabletopClub/tokens/cylinder/20 x 1 Chips:1
 msgid "20 x 1 Chips"
-msgstr ""
+msgstr "20 x 1 фишек"
 
 #: ../TabletopClub/tokens/cylinder/20 x 1 Chips:2
 msgid "A stack of 20 1-value chips."
-msgstr ""
+msgstr "Стопка из 20 фишек номиналом 1."
 
 #: ../TabletopClub/tokens/cylinder/20 x 10 Chips:1
 msgid "20 x 10 Chips"
-msgstr ""
+msgstr "20 x 10 фишек"
 
 #: ../TabletopClub/tokens/cylinder/20 x 10 Chips:2
 msgid "A stack of 20 10-value chips."
-msgstr ""
+msgstr "Стопка из 20 фишек номиналом 10."
 
 #: ../TabletopClub/tokens/cylinder/20 x 100 Chips:1
 msgid "20 x 100 Chips"
-msgstr ""
+msgstr "20 х 100 фишек"
 
 #: ../TabletopClub/tokens/cylinder/20 x 100 Chips:2
 msgid "A stack of 20 100-value chips."
-msgstr ""
+msgstr "Стопка из 20 фишек номиналом 100."
 
 #: ../TabletopClub/tokens/cylinder/20 x 25 Chips:1
 msgid "20 x 25 Chips"
-msgstr ""
+msgstr "20 x 25 фишек"
 
 #: ../TabletopClub/tokens/cylinder/20 x 25 Chips:2
 msgid "A stack of 20 25-value chips."
-msgstr ""
+msgstr "Стопка из 20 фишек номиналом 25."
 
 #: ../TabletopClub/tokens/cylinder/20 x 5 Chips:1
 msgid "20 x 5 Chips"
-msgstr ""
+msgstr "20 x 5 фишек"
 
 #: ../TabletopClub/tokens/cylinder/20 x 5 Chips:2
 msgid "A stack of 20 5-value chips."
-msgstr ""
+msgstr "Стопка из 20 фишек номиналом 5."
 
 #: ../TabletopClub/tokens/cylinder/25:1
 msgid "25"
-msgstr ""
+msgstr "25"
 
 #: ../TabletopClub/tokens/cylinder/5:1
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../TabletopClub/tokens/cylinder/D:1
 msgid "D"
-msgstr ""
+msgstr "D"
