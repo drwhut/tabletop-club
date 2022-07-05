@@ -9,114 +9,117 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-05 00:27\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-07-05 10:27+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
+"default-asset-pack/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/cards/52-Card Deck:1
 msgid "52-Card Deck"
-msgstr ""
+msgstr "52 speelkaarten"
 
 #: ../TabletopClub/cards/52-Card Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr ""
+msgstr "52 Franse speelkaarten, exclusief jokers."
 
 #: ../TabletopClub/cards/Ace of Clubs:1
 msgid "Ace of Clubs"
-msgstr ""
+msgstr "Klaverenaas"
 
 #: ../TabletopClub/cards/Ace of Clubs:2 ../TabletopClub/cards/Ace of Diamonds:2 ../TabletopClub/cards/Ace of Hearts:2 ../TabletopClub/cards/Ace of Spades:2 ../TabletopClub/cards/Eight of Clubs:2 ../TabletopClub/cards/Eight of Diamonds:2 ../TabletopClub/cards/Eight of Hearts:2 ../TabletopClub/cards/Eight of Spades:2 ../TabletopClub/cards/Five of Clubs:2 ../TabletopClub/cards/Five of Diamonds:2 ../TabletopClub/cards/Five of Hearts:2 ../TabletopClub/cards/Five of Spades:2 ../TabletopClub/cards/Four of Clubs:2 ../TabletopClub/cards/Four of Diamonds:2 ../TabletopClub/cards/Four of Hearts:2 ../TabletopClub/cards/Four of Spades:2 ../TabletopClub/cards/Jack of Clubs:2 ../TabletopClub/cards/Jack of Diamonds:2 ../TabletopClub/cards/Jack of Hearts:2 ../TabletopClub/cards/Jack of Spades:2 ../TabletopClub/cards/Joker Black:2 ../TabletopClub/cards/Joker Red:2 ../TabletopClub/cards/King of Clubs:2 ../TabletopClub/cards/King of Diamonds:2 ../TabletopClub/cards/King of Hearts:2 ../TabletopClub/cards/King of Spades:2 ../TabletopClub/cards/Nine of Clubs:2 ../TabletopClub/cards/Nine of Diamonds:2 ../TabletopClub/cards/Nine of Hearts:2 ../TabletopClub/cards/Nine of Spades:2 ../TabletopClub/cards/Queen of Clubs:2 ../TabletopClub/cards/Queen of Diamonds:2 ../TabletopClub/cards/Queen of Hearts:2 ../TabletopClub/cards/Queen of Spades:2 ../TabletopClub/cards/Seven of Clubs:2 ../TabletopClub/cards/Seven of Diamonds:2 ../TabletopClub/cards/Seven of Hearts:2 ../TabletopClub/cards/Seven of Spades:2 ../TabletopClub/cards/Six of Clubs:2 ../TabletopClub/cards/Six of Diamonds:2 ../TabletopClub/cards/Six of Hearts:2 ../TabletopClub/cards/Six of Spades:2 ../TabletopClub/cards/Ten of Clubs:2 ../TabletopClub/cards/Ten of Diamonds:2 ../TabletopClub/cards/Ten of Hearts:2 ../TabletopClub/cards/Ten of Spades:2 ../TabletopClub/cards/Three of Clubs:2 ../TabletopClub/cards/Three of Diamonds:2 ../TabletopClub/cards/Three of Hearts:2 ../TabletopClub/cards/Three of Spades:2 ../TabletopClub/cards/Two of Clubs:2 ../TabletopClub/cards/Two of Diamonds:2 ../TabletopClub/cards/Two of Hearts:2 ../TabletopClub/cards/Two of Spades:2
 msgid "A poker-sized French-suited playing card."
-msgstr ""
+msgstr "Een Franse speelkaart."
 
 #: ../TabletopClub/cards/Ace of Diamonds:1
 msgid "Ace of Diamonds"
-msgstr ""
+msgstr "Ruitenaas"
 
 #: ../TabletopClub/cards/Ace of Hearts:1
 msgid "Ace of Hearts"
-msgstr ""
+msgstr "Hartenaas"
 
 #: ../TabletopClub/cards/Ace of Spades:1
 msgid "Ace of Spades"
-msgstr ""
+msgstr "Schoppenaas"
 
 #: ../TabletopClub/cards/Eight of Clubs:1
 msgid "Eight of Clubs"
-msgstr ""
+msgstr "Klaverenacht"
 
 #: ../TabletopClub/cards/Eight of Diamonds:1
 msgid "Eight of Diamonds"
-msgstr ""
+msgstr "Ruitenacht"
 
 #: ../TabletopClub/cards/Eight of Hearts:1
 msgid "Eight of Hearts"
-msgstr ""
+msgstr "Hartenacht"
 
 #: ../TabletopClub/cards/Eight of Spades:1
 msgid "Eight of Spades"
-msgstr ""
+msgstr "Schoppenacht"
 
 #: ../TabletopClub/cards/Five of Clubs:1
 msgid "Five of Clubs"
-msgstr ""
+msgstr "Klaverenvijf"
 
 #: ../TabletopClub/cards/Five of Diamonds:1
 msgid "Five of Diamonds"
-msgstr ""
+msgstr "Ruitenvijf"
 
 #: ../TabletopClub/cards/Five of Hearts:1
 msgid "Five of Hearts"
-msgstr ""
+msgstr "Hartenvijf"
 
 #: ../TabletopClub/cards/Five of Spades:1
 msgid "Five of Spades"
-msgstr ""
+msgstr "Schoppenvijf"
 
 #: ../TabletopClub/cards/Four of Clubs:1
 msgid "Four of Clubs"
-msgstr ""
+msgstr "Klaverenvier"
 
 #: ../TabletopClub/cards/Four of Diamonds:1
 msgid "Four of Diamonds"
-msgstr ""
+msgstr "Ruitenvier"
 
 #: ../TabletopClub/cards/Four of Hearts:1
 msgid "Four of Hearts"
-msgstr ""
+msgstr "Hartenvier"
 
 #: ../TabletopClub/cards/Four of Spades:1
 msgid "Four of Spades"
-msgstr ""
+msgstr "Schoppenvier"
 
 #: ../TabletopClub/cards/Jack of Clubs:1
 msgid "Jack of Clubs"
-msgstr ""
+msgstr "Klaverenboer"
 
 #: ../TabletopClub/cards/Jack of Diamonds:1
 msgid "Jack of Diamonds"
-msgstr ""
+msgstr "Ruitenboer"
 
 #: ../TabletopClub/cards/Jack of Hearts:1
 msgid "Jack of Hearts"
-msgstr ""
+msgstr "Hartenboer"
 
 #: ../TabletopClub/cards/Jack of Spades:1
 msgid "Jack of Spades"
-msgstr ""
+msgstr "Schoppenboer"
 
 #: ../TabletopClub/cards/Joker Black:1
 msgid "Joker Black"
-msgstr ""
+msgstr "Zwarte joker"
 
 #: ../TabletopClub/cards/Joker Red:1
 msgid "Joker Red"
-msgstr ""
+msgstr "Rode joker"
 
 #: ../TabletopClub/cards/King of Clubs:1
 msgid "King of Clubs"
