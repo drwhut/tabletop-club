@@ -134,6 +134,9 @@ func _display_previews() -> void:
 	_preview_entries.clear()
 	_preview_entries_filtered.clear()
 	
+	if _pack_button.get_item_count() == 0:
+		return
+	
 	var asset_db = AssetDB.get_db()
 	var pack = _pack_button.get_item_text(_pack_button.selected)
 	if not asset_db.has(pack):
@@ -195,6 +198,9 @@ func _filter_previews(from_filtered: bool) -> void:
 # Set the items in the type option button.
 func _set_type_options() -> void:
 	_type_button.clear()
+	
+	if _pack_button.get_item_count() == 0:
+		return
 	
 	var asset_db = AssetDB.get_db()
 	var pack = _pack_button.get_item_text(_pack_button.selected)

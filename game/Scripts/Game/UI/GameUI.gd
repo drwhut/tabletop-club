@@ -66,7 +66,7 @@ var _room_code_visible: bool = true
 
 # From the custom module:
 # https://github.com/drwhut/tabletop_club_godot_module
-var _error_reporter = ErrorReporter.new()
+var _error_reporter
 
 func add_notification_info(message: String) -> void:
 	_chat_box.add_raw_message("[color=aqua][INFO][/color] %s" % message)
@@ -122,8 +122,13 @@ func _ready():
 	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
 	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
 	
-	_error_reporter.connect("error_received", self, "_on_error_received")
-	_error_reporter.connect("warning_received", self, "_on_warning_received")
+	# We might be running this with vanilla Godot!
+	if type_exists("ErrorReporter"):
+		_error_reporter = ClassDB.instance("ErrorReporter")
+		_error_reporter.connect("error_received", self, "_on_error_received")
+		_error_reporter.connect("warning_received", self, "_on_warning_received")
+	else:
+		push_error("ErrorReporter does not exist! Make sure to install the TabletopClub Godot module.")
 	
 	# Make sure we emit the signal when all of the nodes are ready:
 	call_deferred("_set_rotation_amount")
