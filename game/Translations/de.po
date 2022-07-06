@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-07-03 02:05+0100\n"
-"PO-Revision-Date: 2022-03-13 03:58+0000\n"
-"Last-Translator: Leona 'leo' Gottfried <s6573328@stud.uni-frankfurt.de>\n"
+"PO-Revision-Date: 2022-07-07 21:18+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "game/de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:27
@@ -416,7 +416,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:785
 msgid "Toggle UI"
-msgstr "Interface umschalten"
+msgstr "Benutzeroberfläche umschalten"
 
 #: ../Scenes/OptionsMenu.tscn:793
 msgid "Toggles whether the entire UI is displayed."
@@ -424,11 +424,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:803
 msgid "Take Screenshot"
-msgstr "Screenshot aufnehmen"
+msgstr "Bildschirmfoto aufnehmen"
 
 #: ../Scenes/OptionsMenu.tscn:811
 msgid "Takes a screenshot of the game in its current state."
-msgstr ""
+msgstr "Nimmt ein Bildschirmfoto des Spiels in seinem aktuellen Zustand auf."
 
 #: ../Scenes/OptionsMenu.tscn:826
 msgid "Used to reset the key bindings to their default values."
@@ -939,7 +939,7 @@ msgstr "Geräuscheffekte"
 
 #: ../Scripts/MainMenu.gd:67
 msgid "Tool Icons"
-msgstr "Werkzeug-Icons"
+msgstr "Werkzeugsymbole"
 
 #: ../Scripts/MainMenu.gd:68
 msgid "Translators"
@@ -1549,12 +1549,12 @@ msgstr "Bitte einen Namen für die Datei eingeben:"
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:363
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Soll '%s' wirklich gelöscht werden?"
+msgstr "Soll „%s“ wirklich gelöscht werden?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:376
 #, python-format
 msgid "The file '%s' already exists. Are you sure you want to overwrite it?"
-msgstr "Die Datei '%s' existiert bereits. Wirklich überschreiben?"
+msgstr "Die Datei „%s“ existiert bereits. Wirklich überschreiben?"
 
 #: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:107
 #, python-format
