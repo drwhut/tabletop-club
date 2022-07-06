@@ -9,126 +9,129 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-05 00:27\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-07-08 13:16+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
+"default-asset-pack/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/cards/52-Card Deck:1
 msgid "52-Card Deck"
-msgstr ""
+msgstr "Jeu de 52 cartes"
 
 #: ../TabletopClub/cards/52-Card Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr ""
+msgstr "Un jeu de cartes à jouer de la taille d'un poker, sans jokers."
 
 #: ../TabletopClub/cards/Ace of Clubs:1
 msgid "Ace of Clubs"
-msgstr ""
+msgstr "As de trèfle"
 
 #: ../TabletopClub/cards/Ace of Clubs:2 ../TabletopClub/cards/Ace of Diamonds:2 ../TabletopClub/cards/Ace of Hearts:2 ../TabletopClub/cards/Ace of Spades:2 ../TabletopClub/cards/Eight of Clubs:2 ../TabletopClub/cards/Eight of Diamonds:2 ../TabletopClub/cards/Eight of Hearts:2 ../TabletopClub/cards/Eight of Spades:2 ../TabletopClub/cards/Five of Clubs:2 ../TabletopClub/cards/Five of Diamonds:2 ../TabletopClub/cards/Five of Hearts:2 ../TabletopClub/cards/Five of Spades:2 ../TabletopClub/cards/Four of Clubs:2 ../TabletopClub/cards/Four of Diamonds:2 ../TabletopClub/cards/Four of Hearts:2 ../TabletopClub/cards/Four of Spades:2 ../TabletopClub/cards/Jack of Clubs:2 ../TabletopClub/cards/Jack of Diamonds:2 ../TabletopClub/cards/Jack of Hearts:2 ../TabletopClub/cards/Jack of Spades:2 ../TabletopClub/cards/Joker Black:2 ../TabletopClub/cards/Joker Red:2 ../TabletopClub/cards/King of Clubs:2 ../TabletopClub/cards/King of Diamonds:2 ../TabletopClub/cards/King of Hearts:2 ../TabletopClub/cards/King of Spades:2 ../TabletopClub/cards/Nine of Clubs:2 ../TabletopClub/cards/Nine of Diamonds:2 ../TabletopClub/cards/Nine of Hearts:2 ../TabletopClub/cards/Nine of Spades:2 ../TabletopClub/cards/Queen of Clubs:2 ../TabletopClub/cards/Queen of Diamonds:2 ../TabletopClub/cards/Queen of Hearts:2 ../TabletopClub/cards/Queen of Spades:2 ../TabletopClub/cards/Seven of Clubs:2 ../TabletopClub/cards/Seven of Diamonds:2 ../TabletopClub/cards/Seven of Hearts:2 ../TabletopClub/cards/Seven of Spades:2 ../TabletopClub/cards/Six of Clubs:2 ../TabletopClub/cards/Six of Diamonds:2 ../TabletopClub/cards/Six of Hearts:2 ../TabletopClub/cards/Six of Spades:2 ../TabletopClub/cards/Ten of Clubs:2 ../TabletopClub/cards/Ten of Diamonds:2 ../TabletopClub/cards/Ten of Hearts:2 ../TabletopClub/cards/Ten of Spades:2 ../TabletopClub/cards/Three of Clubs:2 ../TabletopClub/cards/Three of Diamonds:2 ../TabletopClub/cards/Three of Hearts:2 ../TabletopClub/cards/Three of Spades:2 ../TabletopClub/cards/Two of Clubs:2 ../TabletopClub/cards/Two of Diamonds:2 ../TabletopClub/cards/Two of Hearts:2 ../TabletopClub/cards/Two of Spades:2
 msgid "A poker-sized French-suited playing card."
-msgstr ""
+msgstr "Une carte à jouer française de taille poker."
 
 #: ../TabletopClub/cards/Ace of Diamonds:1
 msgid "Ace of Diamonds"
-msgstr ""
+msgstr "As de carreau"
 
 #: ../TabletopClub/cards/Ace of Hearts:1
 msgid "Ace of Hearts"
-msgstr ""
+msgstr "As de cœur"
 
 #: ../TabletopClub/cards/Ace of Spades:1
 msgid "Ace of Spades"
-msgstr ""
+msgstr "As de pique"
 
 #: ../TabletopClub/cards/Eight of Clubs:1
 msgid "Eight of Clubs"
-msgstr ""
+msgstr "Huit de trèfle"
 
 #: ../TabletopClub/cards/Eight of Diamonds:1
 msgid "Eight of Diamonds"
-msgstr ""
+msgstr "Huit de diamant"
 
 #: ../TabletopClub/cards/Eight of Hearts:1
 msgid "Eight of Hearts"
-msgstr ""
+msgstr "Huit de cœur"
 
 #: ../TabletopClub/cards/Eight of Spades:1
 msgid "Eight of Spades"
-msgstr ""
+msgstr "Huit de pique"
 
 #: ../TabletopClub/cards/Five of Clubs:1
 msgid "Five of Clubs"
-msgstr ""
+msgstr "Cinq de trèfle"
 
 #: ../TabletopClub/cards/Five of Diamonds:1
 msgid "Five of Diamonds"
-msgstr ""
+msgstr "Cinq de carreau"
 
 #: ../TabletopClub/cards/Five of Hearts:1
 msgid "Five of Hearts"
-msgstr ""
+msgstr "Cinq de cœur"
 
 #: ../TabletopClub/cards/Five of Spades:1
 msgid "Five of Spades"
-msgstr ""
+msgstr "Cinq de pique"
 
 #: ../TabletopClub/cards/Four of Clubs:1
 msgid "Four of Clubs"
-msgstr ""
+msgstr "Quatre de trèfle"
 
 #: ../TabletopClub/cards/Four of Diamonds:1
 msgid "Four of Diamonds"
-msgstr ""
+msgstr "Quatre de diamant"
 
 #: ../TabletopClub/cards/Four of Hearts:1
 msgid "Four of Hearts"
-msgstr ""
+msgstr "Quatre de cœur"
 
 #: ../TabletopClub/cards/Four of Spades:1
 msgid "Four of Spades"
-msgstr ""
+msgstr "Quatre de pique"
 
 #: ../TabletopClub/cards/Jack of Clubs:1
 msgid "Jack of Clubs"
-msgstr ""
+msgstr "Valet de trèfle"
 
 #: ../TabletopClub/cards/Jack of Diamonds:1
 msgid "Jack of Diamonds"
-msgstr ""
+msgstr "Valet de diamant"
 
 #: ../TabletopClub/cards/Jack of Hearts:1
 msgid "Jack of Hearts"
-msgstr ""
+msgstr "Valet de cœur"
 
 #: ../TabletopClub/cards/Jack of Spades:1
 msgid "Jack of Spades"
-msgstr ""
+msgstr "Valet de pique"
 
 #: ../TabletopClub/cards/Joker Black:1
 msgid "Joker Black"
-msgstr ""
+msgstr "Joker noir"
 
 #: ../TabletopClub/cards/Joker Red:1
 msgid "Joker Red"
-msgstr ""
+msgstr "Joker rouge"
 
 #: ../TabletopClub/cards/King of Clubs:1
 msgid "King of Clubs"
-msgstr ""
+msgstr "Roi de trèfle"
 
 #: ../TabletopClub/cards/King of Diamonds:1
 msgid "King of Diamonds"
-msgstr ""
+msgstr "Roi de diamant"
 
 #: ../TabletopClub/cards/King of Hearts:1
 msgid "King of Hearts"
-msgstr ""
+msgstr "Roi de cœur"
 
 #: ../TabletopClub/cards/King of Spades:1
 msgid "King of Spades"
@@ -852,7 +855,7 @@ msgstr ""
 
 #: ../TabletopClub/tables/Picnic Bench:1
 msgid "Picnic Bench"
-msgstr ""
+msgstr "Banc de pique-nique"
 
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
@@ -928,4 +931,4 @@ msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/D:1
 msgid "D"
-msgstr ""
+msgstr "D"
