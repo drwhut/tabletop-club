@@ -250,6 +250,25 @@ func search_type(pack: String, type: String, asset: String) -> Dictionary:
 	
 	return {}
 
+# Search for an asset in the DB with it's path.
+# Returns: The asset's entry in the DB if it exists, empty otherwise.
+# path: The path of the asset.
+func search_path(path: String) -> Dictionary:
+	var pack_split = path.split("/", false, 1)
+	if pack_split.size() != 2:
+		push_error("Invalid path format: %s" % path)
+		return {}
+	
+	var pack = pack_split[0]
+	var asset_split = pack_split[1].rsplit("/", false, 1)
+	if asset_split.size() != 2:
+		push_error("Invalid path format: %s" % path)
+		return {}
+	
+	var type = asset_split[0]
+	var asset = asset_split[1]
+	return search_type(pack, type, asset)
+
 # Start the importing thread.
 func start_importing() -> void:
 	if _import_thread.is_active():
@@ -356,10 +375,12 @@ func _add_entry_to_db(pack: String, type: String, entry: Dictionary) -> void:
 	if not _db[pack].has(type):
 		_db[pack][type] = []
 	
+	var entry_path = "%s/%s/%s" % [pack, type, entry["name"]]
+	entry["entry_path"] = entry_path
 	_db[pack][type].push_back(entry)
 	_db_mutex.unlock()
 	
-	print("Added: %s/%s/%s" % [pack, type, entry["name"]])
+	print("Added: %s" % entry)
 
 # Add assets to the database that inherit properties frome existing assets.
 # pack_path: The path to the asset pack.
