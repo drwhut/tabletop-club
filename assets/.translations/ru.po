@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-05 00:27\n"
-"PO-Revision-Date: 2022-07-05 15:49+0000\n"
+"PO-Revision-Date: 2022-07-08 13:16+0000\n"
 "Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/ru/>\n"
@@ -254,7 +254,7 @@ msgstr "Двойка пик"
 
 #: ../TabletopClub/containers/Purse:1
 msgid "Purse"
-msgstr "Сумка"
+msgstr "Кошелёк"
 
 #: ../TabletopClub/containers/Red Cup:1
 msgid "Red Cup"
