@@ -239,6 +239,13 @@ remotesync func remove_self() -> void:
 master func request_flip_vertically() -> void:
 	request_set_hover_basis(hover_basis.rotated(transform.basis.z, PI))
 
+# Request the server to apply an impulse to the piece.
+# position: The position to apply the impulse, relative to the piece's origin.
+# impulse: The impulse to apply, using the global rotation.
+master func request_impulse(position: Vector3, impulse: Vector3) -> void:
+	if not (is_hovering() or is_locked()):
+		apply_impulse(position, impulse)
+
 # Request the server to lock the piece.
 master func request_lock() -> void:
 	srv_lock()

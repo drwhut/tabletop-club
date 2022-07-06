@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Game/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Misc/OutlineColorRect.gd" type="Script" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-Bold-Outline.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-Outline.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-Outline-Small.tres" type="DynamicFont" id=15]
+[ext_resource path="res://Images/FlickIconsvg.svg" type="Texture" id=16]
+[ext_resource path="res://Scenes/Game/UI/RulerLine.tscn" type="PackedScene" id=17]
 
 [node name="CameraController" type="Spatial"]
 script = ExtResource( 1 )
@@ -393,6 +395,59 @@ __meta__ = {
 "_editor_description_": "The context menu appears when the table is right-clicked."
 }
 
+[node name="FlickToolMenu" type="PopupPanel" parent="."]
+margin_right = 242.0
+margin_bottom = 82.0
+
+[node name="MarginContainer" type="MarginContainer" parent="FlickToolMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FlickToolMenu/MarginContainer"]
+margin_right = 234.0
+margin_bottom = 74.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlickStrengthLabel" type="Label" parent="FlickToolMenu/MarginContainer/VBoxContainer"]
+margin_right = 234.0
+margin_bottom = 20.0
+text = "Strength:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FlickToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 234.0
+margin_bottom = 44.0
+
+[node name="FlickStrengthValueLabel" type="Label" parent="FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 55.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 55, 0 )
+text = "1.0"
+align = 2
+
+[node name="FlickStrengthValueSlider" type="HSlider" parent="FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 59.0
+margin_right = 234.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 9999.9
+step = 0.1
+value = 1.0
+exp_edit = true
+
+[node name="FlickOKButton" type="Button" parent="FlickToolMenu/MarginContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 234.0
+margin_bottom = 74.0
+text = "OK"
+
 [node name="RulerToolMenu" type="PopupPanel" parent="."]
 margin_right = 242.0
 margin_bottom = 146.0
@@ -602,6 +657,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FlickLine" parent="." instance=ExtResource( 17 )]
+visible = false
+
 [node name="CameraUI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -635,16 +693,13 @@ fit_content_height = true
 scroll_active = false
 
 [node name="ToolContainer" type="VBoxContainer" parent="CameraUI"]
-anchor_top = 0.5
-anchor_bottom = 0.5
+anchor_top = 0.45
+anchor_bottom = 0.45
 margin_top = -108.0
 margin_right = 40.0
 margin_bottom = 108.0
 grow_horizontal = 0
 grow_vertical = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CursorToolButton" type="Button" parent="CameraUI/ToolContainer"]
 margin_right = 40.0
@@ -656,10 +711,20 @@ group = ExtResource( 6 )
 icon = ExtResource( 8 )
 expand_icon = true
 
-[node name="RulerToolButton" type="Button" parent="CameraUI/ToolContainer"]
+[node name="FlickToolButton" type="Button" parent="CameraUI/ToolContainer"]
 margin_top = 44.0
 margin_right = 40.0
 margin_bottom = 84.0
+rect_min_size = Vector2( 40, 40 )
+toggle_mode = true
+group = ExtResource( 6 )
+icon = ExtResource( 16 )
+expand_icon = true
+
+[node name="RulerToolButton" type="Button" parent="CameraUI/ToolContainer"]
+margin_top = 88.0
+margin_right = 40.0
+margin_bottom = 128.0
 rect_min_size = Vector2( 40, 40 )
 toggle_mode = true
 group = ExtResource( 6 )
@@ -667,9 +732,9 @@ icon = ExtResource( 7 )
 expand_icon = true
 
 [node name="HiddenAreaToolButton" type="Button" parent="CameraUI/ToolContainer"]
-margin_top = 88.0
+margin_top = 132.0
 margin_right = 40.0
-margin_bottom = 128.0
+margin_bottom = 172.0
 rect_min_size = Vector2( 40, 40 )
 toggle_mode = true
 group = ExtResource( 6 )
@@ -677,9 +742,9 @@ icon = ExtResource( 5 )
 expand_icon = true
 
 [node name="PaintToolButton" type="Button" parent="CameraUI/ToolContainer"]
-margin_top = 132.0
+margin_top = 176.0
 margin_right = 40.0
-margin_bottom = 172.0
+margin_bottom = 216.0
 rect_min_size = Vector2( 40, 40 )
 toggle_mode = true
 group = ExtResource( 6 )
@@ -687,9 +752,9 @@ icon = ExtResource( 9 )
 expand_icon = true
 
 [node name="EraseToolButton" type="Button" parent="CameraUI/ToolContainer"]
-margin_top = 176.0
+margin_top = 220.0
 margin_right = 40.0
-margin_bottom = 216.0
+margin_bottom = 260.0
 rect_min_size = Vector2( 40, 40 )
 toggle_mode = true
 group = ExtResource( 6 )
@@ -720,6 +785,8 @@ autowrap = true
 [connection signal="pressed" from="PieceContextMenu/TimerMenu/VBoxContainer/StartStopStopwatchButton" to="." method="_on_StartStopStopwatchButton_pressed"]
 [connection signal="pressed" from="PieceContextMenu/TransformMenu/VBoxContainer/ApplyTransformButton" to="." method="_on_ApplyTransformButton_pressed"]
 [connection signal="id_pressed" from="TableContextMenu" to="." method="_on_TableContextMenu_id_pressed"]
+[connection signal="value_changed" from="FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer/FlickStrengthValueSlider" to="." method="_on_FlickStrengthValueSlider_value_changed"]
+[connection signal="pressed" from="FlickToolMenu/MarginContainer/VBoxContainer/FlickOKButton" to="." method="_on_FlickOKButton_pressed"]
 [connection signal="value_changed" from="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSpinBox" to="." method="_on_RulerScaleSpinBox_value_changed"]
 [connection signal="value_changed" from="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider" to="." method="_on_RulerScaleSlider_value_changed"]
 [connection signal="pressed" from="RulerToolMenu/MarginContainer/VBoxContainer/RulerOKButton" to="." method="_on_RulerOKButton_pressed"]
@@ -731,6 +798,7 @@ autowrap = true
 [connection signal="take_all_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_all_from"]
 [connection signal="take_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_from"]
 [connection signal="pressed" from="CameraUI/ToolContainer/CursorToolButton" to="." method="_on_CursorToolButton_pressed"]
+[connection signal="pressed" from="CameraUI/ToolContainer/FlickToolButton" to="." method="_on_FlickToolButton_pressed"]
 [connection signal="pressed" from="CameraUI/ToolContainer/RulerToolButton" to="." method="_on_RulerToolButton_pressed"]
 [connection signal="pressed" from="CameraUI/ToolContainer/HiddenAreaToolButton" to="." method="_on_HiddenAreaToolButton_pressed"]
 [connection signal="pressed" from="CameraUI/ToolContainer/PaintToolButton" to="." method="_on_PaintToolButton_pressed"]

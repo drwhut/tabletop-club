@@ -54,6 +54,7 @@ enum {
 
 enum {
 	TOOL_CURSOR,
+	TOOL_FLICK,
 	TOOL_RULER,
 	TOOL_HIDDEN_AREA,
 	TOOL_PAINT,
@@ -100,6 +101,10 @@ onready var _debug_info_label = $CameraUI/DebugInfoLabel
 onready var _erase_tool_menu = $EraseToolMenu
 onready var _eraser_size_label = $EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer/EraserSizeValueLabel
 onready var _eraser_size_slider = $EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer/EraserSizeValueSlider
+onready var _flick_line = $FlickLine
+onready var _flick_strength_value_label = $FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer/FlickStrengthValueLabel
+onready var _flick_strength_value_slider = $FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer/FlickStrengthValueSlider
+onready var _flick_tool_menu = $FlickToolMenu
 onready var _hand_preview_rect = $HandPreviewRect
 onready var _paint_tool_menu = $PaintToolMenu
 onready var _piece_context_menu = $PieceContextMenu
@@ -134,6 +139,7 @@ onready var _transform_piece_sca_z = $PieceContextMenu/TransformMenu/VBoxContain
 
 const CURSOR_LERP_SCALE = 100.0
 const CURSOR_MAX_DIST = 10000.0
+const FLICK_MODIFIER = 10.0
 const GRABBING_SLOW_TIME = 0.25
 const HOVER_Y_MIN = 1.0
 const MOVEMENT_ACCEL_SCALAR = 0.125
@@ -166,6 +172,8 @@ var _container_multi_context: PieceContainer = null
 var _cursor_on_table = false
 var _cursor_position = Vector3()
 var _drag_camera_anchor = Vector3()
+var _flick_piece_origin = Vector3()
+var _flick_placing_point2 = false
 var _future_clipboard_position = Vector3()
 var _grabbing_time = 0.0
 var _hidden_area_mouse_is_over: HiddenArea = null
@@ -414,6 +422,8 @@ func _ready():
 	_initial_transform = transform
 	_initial_zoom = _camera.translation.z
 	_reset_camera()
+	
+	_flick_line.set_label_visible(false)
 
 func _process(delta):
 	_moved_piece_this_frame = false
@@ -499,6 +509,13 @@ func _process(delta):
 						target_theta = -target_theta
 					var current_theta = deg2rad(cursor.rect_rotation)
 					cursor.rect_rotation = rad2deg(lerp_angle(current_theta, target_theta, lerp_amount))
+	
+	if _flick_placing_point2:
+		var flick_y = _flick_line.point1.y
+		var point2 = _cursor_position
+		point2.y = flick_y
+		_flick_line.point2 = point2
+		_flick_line.update_ruler(_camera)
 	
 	if _ruler_placing_point2:
 		var num_rulers = _rulers.get_child_count()
@@ -1200,6 +1217,12 @@ func _set_control_hint_label() -> void:
 		else:
 			text += _set_control_hint_label_row(tr("Box select"), lmb, hold)
 	
+	elif _tool == TOOL_FLICK:
+		if _flick_placing_point2:
+			text += _set_control_hint_label_row(tr("Flick object"), lmb)
+		elif _piece_mouse_is_over:
+			text += _set_control_hint_label_row(tr("Prepare to flick"), lmb)
+	
 	elif _tool == TOOL_RULER:
 		if _ruler_placing_point2:
 			text += _set_control_hint_label_row(tr("Stop measuring"), lmb)
@@ -1229,6 +1252,10 @@ func _set_control_hint_label() -> void:
 			text += _set_control_hint_label_row(tr("Object menu"), rmb)
 		elif _cursor_on_table:
 			text += _set_control_hint_label_row(tr("Table menu"), rmb)
+	
+	elif _tool == TOOL_FLICK:
+		if _flick_placing_point2:
+			text += _set_control_hint_label_row(tr("Stop flicking"), rmb)
 	
 	elif _tool == TOOL_RULER:
 		if _rulers.get_child_count() > 0:
@@ -1477,6 +1504,9 @@ func _set_tool(new_tool: int) -> void:
 	
 	clear_selected_pieces()
 	
+	_flick_placing_point2 = false
+	_flick_line.visible = false
+	
 	_ruler_placing_point2 = false
 	for ruler in _rulers.get_children():
 		_rulers.remove_child(ruler)
@@ -1667,6 +1697,19 @@ func _on_EraseToolButton_pressed():
 	_erase_tool_menu.rect_position.y -= _erase_tool_menu.rect_size.y
 	_erase_tool_menu.popup()
 
+func _on_FlickOKButton_pressed():
+	_flick_tool_menu.visible = false
+
+func _on_FlickStrengthValueSlider_value_changed(value: float):
+	_flick_strength_value_label.text = "%.1f" % value
+
+func _on_FlickToolButton_pressed():
+	_set_tool(TOOL_FLICK)
+	
+	_flick_tool_menu.rect_position = get_viewport().get_mouse_position()
+	_flick_tool_menu.rect_position.y -= _paint_tool_menu.rect_size.y
+	_flick_tool_menu.popup()
+
 func _on_HiddenAreaToolButton_pressed():
 	_set_tool(TOOL_HIDDEN_AREA)
 
@@ -1770,6 +1813,27 @@ func _on_MouseGrab_gui_input(event):
 						_is_box_selecting = false
 						_perform_box_select = true
 			
+			elif _tool == TOOL_FLICK:
+				if event.is_pressed() and _piece_mouse_is_over and (not _flick_placing_point2):
+					set_selected_pieces([_piece_mouse_is_over])
+					
+					_flick_line.visible = true
+					_flick_line.point1 = _cursor_position
+					_flick_piece_origin = _piece_mouse_is_over.transform.origin
+					_flick_placing_point2 = true
+				
+				elif not event.is_pressed():
+					if not _selected_pieces.empty():
+						var position = _flick_line.point1 - _flick_piece_origin
+						var impulse = _flick_line.point1 - _flick_line.point2
+						impulse *= FLICK_MODIFIER * _flick_strength_value_slider.value
+						_selected_pieces[0].rpc_id(1, "request_impulse",
+								position, impulse)
+					
+					set_selected_pieces([])
+					_flick_line.visible = false
+					_flick_placing_point2 = false
+			
 			elif _tool == TOOL_RULER:
 				if event.is_pressed() and _cursor_on_table and (not _ruler_placing_point2):
 					var ruler = preload("res://Scenes/Game/UI/RulerLine.tscn").instance()
@@ -1836,6 +1900,12 @@ func _on_MouseGrab_gui_input(event):
 									_spawn_point_position.y += Piece.SPAWN_HEIGHT
 								else:
 									_popup_piece_context_menu()
+					
+					elif _tool == TOOL_FLICK:
+						if event.position == _right_click_pos:
+							set_selected_pieces([])
+							_flick_placing_point2 = false
+							_flick_line.visible = false
 					
 					elif _tool == TOOL_RULER:
 						if event.position == _right_click_pos:
