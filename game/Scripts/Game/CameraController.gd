@@ -106,6 +106,7 @@ onready var _flick_strength_value_label = $FlickToolMenu/MarginContainer/VBoxCon
 onready var _flick_strength_value_slider = $FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer/FlickStrengthValueSlider
 onready var _flick_tool_menu = $FlickToolMenu
 onready var _hand_preview_rect = $HandPreviewRect
+onready var _mouse_grab = $MouseGrab
 onready var _paint_tool_menu = $PaintToolMenu
 onready var _piece_context_menu = $PieceContextMenu
 onready var _ruler_scale_slider = $RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider
@@ -301,12 +302,11 @@ func get_hover_position() -> Vector3:
 func get_selected_pieces() -> Array:
 	return _selected_pieces
 
-# Request the server to set your cursor to the "grabbing" cursor on all other
-# clients.
-# grabbing: Whether the cursor should be the "grabbing" cursor.
-master func request_set_cursor_grabbing(grabbing: bool) -> void:
+# Request the server to set your cursor image on all other clients.
+# cursor_type: The shape of the cursor to set, e.g. Input.CURSOR_ARROW.
+master func request_set_cursor(cursor_shape: int) -> void:
 	var id = get_tree().get_rpc_sender_id()
-	rpc("set_player_cursor_grabbing", id, grabbing)
+	rpc("set_player_cursor", id, cursor_shape)
 
 # Request the server to set your 3D cursor position to all other players.
 # position: Your new 3D cursor position.
@@ -329,9 +329,8 @@ func set_is_hovering(is_hovering: bool) -> void:
 		# If we have started hovering, we have stopped grabbing.
 		_is_grabbing_selected = false
 	
-	Input.set_default_cursor_shape(cursor)
-	
-	rpc_id(1, "request_set_cursor_grabbing", is_hovering)
+	_mouse_grab.mouse_default_cursor_shape = cursor
+	rpc_id(1, "request_set_cursor", cursor)
 
 # Set the height the controller hovers pieces at.
 # hover_height: The height pieces are hovered at by the controller.
@@ -341,10 +340,10 @@ remotesync func set_hover_height(hover_height: float) -> void:
 	
 	_hover_y_pos = max(0, hover_height)
 
-# Called by the server when a player updates their hovering state.
+# Called by the server when a player changes their cursor shape.
 # id: The ID of the player.
-# grabbing: Whether the cursor should be the "grabbing" shape.
-remotesync func set_player_cursor_grabbing(id: int, grabbing: bool) -> void:
+# cursor_shape: The cursor shape to display.
+remotesync func set_player_cursor(id: int, cursor_shape: int) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
@@ -360,7 +359,7 @@ remotesync func set_player_cursor_grabbing(id: int, grabbing: bool) -> void:
 	if not cursor is TextureRect:
 		return
 	
-	cursor.texture = _create_player_cursor_texture(id, grabbing)
+	cursor.texture = _create_player_cursor_texture(id, cursor_shape)
 
 # Called by the server when a player updates their 3D cursor position.
 # id: The ID of the player.
@@ -775,13 +774,25 @@ func _calculate_hover_position(mouse_position: Vector2, y_position: float) -> Ve
 # Create a cursor texture representing a given player.
 # Returns: A cursor texture representing a given player.
 # id: The ID of the player.
-# grabbing: If the cursor should be the "grabbing" cursor.
-func _create_player_cursor_texture(id: int, grabbing: bool) -> ImageTexture:
+# cursor_shape: The cursor shape to display.
+func _create_player_cursor_texture(id: int, cursor_shape: int) -> ImageTexture:
 	var cursor_image: Image = null
-	if grabbing:
-		cursor_image = preload("res://Images/GrabbingCursor.png")
-	else:
-		cursor_image = preload("res://Images/ArrowCursor.png")
+	match cursor_shape:
+		Input.CURSOR_ARROW:
+			cursor_image = preload("res://Images/ArrowCursor.png")
+		Input.CURSOR_DRAG:
+			cursor_image = preload("res://Images/GrabbingCursor.png")
+		Input.CURSOR_POINTING_HAND:
+			cursor_image = preload("res://Images/PointingCursor.png")
+		Input.CURSOR_HSIZE:
+			cursor_image = preload("res://Images/HResizeCursor.png")
+		Input.CURSOR_FORBIDDEN:
+			cursor_image = preload("res://Images/ForbiddenCursor.png")
+		Input.CURSOR_CROSS:
+			cursor_image = preload("res://Images/CrossCursor.png")
+		_:
+			push_error("Invalid index for cursor shape (%d)!" % cursor_shape)
+			return null
 	
 	# Create a clone of the image, so we don't modify the original.
 	var clone_image = Image.new()
@@ -1501,6 +1512,24 @@ func _set_tool(new_tool: int) -> void:
 	
 	if new_tool == _tool:
 		return
+	
+	var cursor = Input.CURSOR_ARROW
+	match new_tool:
+		TOOL_CURSOR:
+			cursor = Input.CURSOR_ARROW
+		TOOL_FLICK:
+			cursor = Input.CURSOR_POINTING_HAND
+		TOOL_RULER:
+			cursor = Input.CURSOR_HSIZE
+		TOOL_HIDDEN_AREA:
+			cursor = Input.CURSOR_FORBIDDEN
+		TOOL_PAINT:
+			cursor = Input.CURSOR_CROSS
+		TOOL_ERASE:
+			cursor = Input.CURSOR_CROSS
+	
+	_mouse_grab.mouse_default_cursor_shape = cursor
+	rpc_id(1, "request_set_cursor", cursor)
 	
 	clear_selected_pieces()
 	

@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/HResizeCursor.png-786cca9bc760f8a1d345e0d1a4406db1.image"
+
+[deps]
+
+source_file="res://Images/HResizeCursor.png"
+dest_files=[ "res://.import/HResizeCursor.png-786cca9bc760f8a1d345e0d1a4406db1.image" ]
+
+[params]
+

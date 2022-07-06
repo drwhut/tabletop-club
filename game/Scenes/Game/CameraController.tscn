@@ -15,7 +15,7 @@
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-Bold-Outline.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-Outline.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-Outline-Small.tres" type="DynamicFont" id=15]
-[ext_resource path="res://Images/FlickIconsvg.svg" type="Texture" id=16]
+[ext_resource path="res://Images/FlickIcon.svg" type="Texture" id=16]
 [ext_resource path="res://Scenes/Game/UI/RulerLine.tscn" type="PackedScene" id=17]
 
 [node name="CameraController" type="Spatial"]
