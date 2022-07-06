@@ -213,7 +213,7 @@ var _send_erase_position = false
 var _send_paint_position = false
 var _spawn_point_position = Vector3()
 var _speaker_connected: SpeakerPiece = null
-var _speaker_volume_awaiting_update = false
+var _speaker_volume_mouse_over = false
 var _target_zoom = 0.0
 var _timer_connected: TimerPiece = null
 var _timer_last_time_update = 0
@@ -928,10 +928,8 @@ func _on_speaker_track_resumed() -> void:
 	_set_speaker_controls()
 
 func _on_speaker_unit_size_changed(_unit_size: float) -> void:
-	if not _speaker_volume_awaiting_update:
+	if not _speaker_volume_mouse_over:
 		_set_speaker_controls()
-	
-	_speaker_volume_awaiting_update = false
 
 func _on_timer_mode_changed(_new_mode: int) -> void:
 	_set_timer_controls()
@@ -2198,9 +2196,14 @@ func _on_SpeakerPlayStopButton_pressed():
 func _on_SpeakerSelectTrackButton_pressed():
 	_track_dialog.popup_centered()
 
+func _on_SpeakerVolumeSlider_mouse_entered():
+	_speaker_volume_mouse_over = true
+
+func _on_SpeakerVolumeSlider_mouse_exited():
+	_speaker_volume_mouse_over = false
+
 func _on_SpeakerVolumeSlider_value_changed(value: float):
 	if _speaker_connected:
-		_speaker_volume_awaiting_update = true
 		_speaker_connected.rpc_id(1, "request_set_unit_size", value)
 
 func _on_StartStopCountdownButton_pressed():
