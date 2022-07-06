@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-05 00:27\n"
-"PO-Revision-Date: 2022-07-05 10:27+0000\n"
+"PO-Revision-Date: 2022-07-06 18:30+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/nl/>\n"
@@ -123,263 +123,263 @@ msgstr "Rode joker"
 
 #: ../TabletopClub/cards/King of Clubs:1
 msgid "King of Clubs"
-msgstr ""
+msgstr "Klaverenheer"
 
 #: ../TabletopClub/cards/King of Diamonds:1
 msgid "King of Diamonds"
-msgstr ""
+msgstr "Ruitenheer"
 
 #: ../TabletopClub/cards/King of Hearts:1
 msgid "King of Hearts"
-msgstr ""
+msgstr "Hartenheer"
 
 #: ../TabletopClub/cards/King of Spades:1
 msgid "King of Spades"
-msgstr ""
+msgstr "Schoppenheer"
 
 #: ../TabletopClub/cards/Nine of Clubs:1
 msgid "Nine of Clubs"
-msgstr ""
+msgstr "Klaverennegen"
 
 #: ../TabletopClub/cards/Nine of Diamonds:1
 msgid "Nine of Diamonds"
-msgstr ""
+msgstr "Ruitennegen"
 
 #: ../TabletopClub/cards/Nine of Hearts:1
 msgid "Nine of Hearts"
-msgstr ""
+msgstr "Hartennegen"
 
 #: ../TabletopClub/cards/Nine of Spades:1
 msgid "Nine of Spades"
-msgstr ""
+msgstr "Schoppennegen"
 
 #: ../TabletopClub/cards/Queen of Clubs:1
 msgid "Queen of Clubs"
-msgstr ""
+msgstr "Klaverendame"
 
 #: ../TabletopClub/cards/Queen of Diamonds:1
 msgid "Queen of Diamonds"
-msgstr ""
+msgstr "Ruitendame"
 
 #: ../TabletopClub/cards/Queen of Hearts:1
 msgid "Queen of Hearts"
-msgstr ""
+msgstr "Hartendame"
 
 #: ../TabletopClub/cards/Queen of Spades:1
 msgid "Queen of Spades"
-msgstr ""
+msgstr "Schoppendame"
 
 #: ../TabletopClub/cards/Seven of Clubs:1
 msgid "Seven of Clubs"
-msgstr ""
+msgstr "Klaverenzeven"
 
 #: ../TabletopClub/cards/Seven of Diamonds:1
 msgid "Seven of Diamonds"
-msgstr ""
+msgstr "Ruitenzeven"
 
 #: ../TabletopClub/cards/Seven of Hearts:1
 msgid "Seven of Hearts"
-msgstr ""
+msgstr "Hartenzeven"
 
 #: ../TabletopClub/cards/Seven of Spades:1
 msgid "Seven of Spades"
-msgstr ""
+msgstr "Schoppenzeven"
 
 #: ../TabletopClub/cards/Six of Clubs:1
 msgid "Six of Clubs"
-msgstr ""
+msgstr "Klaverenzes"
 
 #: ../TabletopClub/cards/Six of Diamonds:1
 msgid "Six of Diamonds"
-msgstr ""
+msgstr "Ruitenzes"
 
 #: ../TabletopClub/cards/Six of Hearts:1
 msgid "Six of Hearts"
-msgstr ""
+msgstr "Hartenzes"
 
 #: ../TabletopClub/cards/Six of Spades:1
 msgid "Six of Spades"
-msgstr ""
+msgstr "Schoppenzes"
 
 #: ../TabletopClub/cards/Ten of Clubs:1
 msgid "Ten of Clubs"
-msgstr ""
+msgstr "Klaverentien"
 
 #: ../TabletopClub/cards/Ten of Diamonds:1
 msgid "Ten of Diamonds"
-msgstr ""
+msgstr "Ruitentien"
 
 #: ../TabletopClub/cards/Ten of Hearts:1
 msgid "Ten of Hearts"
-msgstr ""
+msgstr "Hartentien"
 
 #: ../TabletopClub/cards/Ten of Spades:1
 msgid "Ten of Spades"
-msgstr ""
+msgstr "Schoppentien"
 
 #: ../TabletopClub/cards/Three of Clubs:1
 msgid "Three of Clubs"
-msgstr ""
+msgstr "Klaverendrie"
 
 #: ../TabletopClub/cards/Three of Diamonds:1
 msgid "Three of Diamonds"
-msgstr ""
+msgstr "Ruitendrie"
 
 #: ../TabletopClub/cards/Three of Hearts:1
 msgid "Three of Hearts"
-msgstr ""
+msgstr "Hartendrie"
 
 #: ../TabletopClub/cards/Three of Spades:1
 msgid "Three of Spades"
-msgstr ""
+msgstr "Schoppendrie"
 
 #: ../TabletopClub/cards/Two of Clubs:1
 msgid "Two of Clubs"
-msgstr ""
+msgstr "Klaverentwee"
 
 #: ../TabletopClub/cards/Two of Diamonds:1
 msgid "Two of Diamonds"
-msgstr ""
+msgstr "Ruitentwee"
 
 #: ../TabletopClub/cards/Two of Hearts:1
 msgid "Two of Hearts"
-msgstr ""
+msgstr "Hartentwee"
 
 #: ../TabletopClub/cards/Two of Spades:1
 msgid "Two of Spades"
-msgstr ""
+msgstr "Schoppentwee"
 
 #: ../TabletopClub/containers/Purse:1
 msgid "Purse"
-msgstr ""
+msgstr "Handtas"
 
 #: ../TabletopClub/containers/Red Cup:1
 msgid "Red Cup"
-msgstr ""
+msgstr "Rode beker"
 
 #: ../TabletopClub/dice/d4/d4 (Black):1
 msgid "d4 (Black)"
-msgstr ""
+msgstr "d4 (zwart)"
 
 #: ../TabletopClub/dice/d4/d4 (Black):2 ../TabletopClub/dice/d4/d4 (Blue):2 ../TabletopClub/dice/d4/d4 (Brown):2 ../TabletopClub/dice/d4/d4 (Cyan):2 ../TabletopClub/dice/d4/d4 (Green):2 ../TabletopClub/dice/d4/d4 (Orange):2 ../TabletopClub/dice/d4/d4 (Pink):2 ../TabletopClub/dice/d4/d4 (Purple):2 ../TabletopClub/dice/d4/d4 (Red):2 ../TabletopClub/dice/d4/d4 (White):2 ../TabletopClub/dice/d4/d4 (Yellow):2
 msgid "A 4-sided die."
-msgstr ""
+msgstr "Een vierzijdige dobbelsteen."
 
 #: ../TabletopClub/dice/d4/d4 (Blue):1
 msgid "d4 (Blue)"
-msgstr ""
+msgstr "d4 (blauw)"
 
 #: ../TabletopClub/dice/d4/d4 (Brown):1
 msgid "d4 (Brown)"
-msgstr ""
+msgstr "d4 (bruin)"
 
 #: ../TabletopClub/dice/d4/d4 (Cyan):1
 msgid "d4 (Cyan)"
-msgstr ""
+msgstr "d4 (groenblauw)"
 
 #: ../TabletopClub/dice/d4/d4 (Green):1
 msgid "d4 (Green)"
-msgstr ""
+msgstr "d4 (groen)"
 
 #: ../TabletopClub/dice/d4/d4 (Orange):1
 msgid "d4 (Orange)"
-msgstr ""
+msgstr "d4 (oranje)"
 
 #: ../TabletopClub/dice/d4/d4 (Pink):1
 msgid "d4 (Pink)"
-msgstr ""
+msgstr "d4 (roze)"
 
 #: ../TabletopClub/dice/d4/d4 (Purple):1
 msgid "d4 (Purple)"
-msgstr ""
+msgstr "d4 (paars)"
 
 #: ../TabletopClub/dice/d4/d4 (Red):1
 msgid "d4 (Red)"
-msgstr ""
+msgstr "d4 (rood)"
 
 #: ../TabletopClub/dice/d4/d4 (White):1
 msgid "d4 (White)"
-msgstr ""
+msgstr "d4 (wit)"
 
 #: ../TabletopClub/dice/d4/d4 (Yellow):1
 msgid "d4 (Yellow)"
-msgstr ""
+msgstr "d4 (geel)"
 
 #: ../TabletopClub/dice/d6/d6 (Black):1
 msgid "d6 (Black)"
-msgstr ""
+msgstr "d6 (zwart)"
 
 #: ../TabletopClub/dice/d6/d6 (Black):2 ../TabletopClub/dice/d6/d6 (Blue):2 ../TabletopClub/dice/d6/d6 (Brown):2 ../TabletopClub/dice/d6/d6 (Cyan):2 ../TabletopClub/dice/d6/d6 (Green):2 ../TabletopClub/dice/d6/d6 (Orange):2 ../TabletopClub/dice/d6/d6 (Pink):2 ../TabletopClub/dice/d6/d6 (Purple):2 ../TabletopClub/dice/d6/d6 (Red):2 ../TabletopClub/dice/d6/d6 (Traditional):2 ../TabletopClub/dice/d6/d6 (White):2 ../TabletopClub/dice/d6/d6 (Yellow):2
 msgid "A 6-sided die."
-msgstr ""
+msgstr "Een zeszijdige dobbelsteen."
 
 #: ../TabletopClub/dice/d6/d6 (Blue):1
 msgid "d6 (Blue)"
-msgstr ""
+msgstr "d6 (blauw)"
 
 #: ../TabletopClub/dice/d6/d6 (Brown):1
 msgid "d6 (Brown)"
-msgstr ""
+msgstr "d6 (bruin)"
 
 #: ../TabletopClub/dice/d6/d6 (Cyan):1
 msgid "d6 (Cyan)"
-msgstr ""
+msgstr "d6 (groenblauw)"
 
 #: ../TabletopClub/dice/d6/d6 (Green):1
 msgid "d6 (Green)"
-msgstr ""
+msgstr "d6 (groen)"
 
 #: ../TabletopClub/dice/d6/d6 (Orange):1
 msgid "d6 (Orange)"
-msgstr ""
+msgstr "d6 (oranje)"
 
 #: ../TabletopClub/dice/d6/d6 (Pink):1
 msgid "d6 (Pink)"
-msgstr ""
+msgstr "d6 (roze)"
 
 #: ../TabletopClub/dice/d6/d6 (Purple):1
 msgid "d6 (Purple)"
-msgstr ""
+msgstr "d6 (paars)"
 
 #: ../TabletopClub/dice/d6/d6 (Red):1
 msgid "d6 (Red)"
-msgstr ""
+msgstr "d6 (rood)"
 
 #: ../TabletopClub/dice/d6/d6 (Traditional):1
 msgid "d6 (Traditional)"
-msgstr ""
+msgstr "d6 (traditioneel)"
 
 #: ../TabletopClub/dice/d6/d6 (White):1
 msgid "d6 (White)"
-msgstr ""
+msgstr "d6 (wit)"
 
 #: ../TabletopClub/dice/d6/d6 (Yellow):1
 msgid "d6 (Yellow)"
-msgstr ""
+msgstr "d6 (geel)"
 
 #: ../TabletopClub/dice/d8/d8 (Black):1
 msgid "d8 (Black)"
-msgstr ""
+msgstr "d8 (zwart)"
 
 #: ../TabletopClub/dice/d8/d8 (Black):2 ../TabletopClub/dice/d8/d8 (Blue):2 ../TabletopClub/dice/d8/d8 (Brown):2 ../TabletopClub/dice/d8/d8 (Cyan):2 ../TabletopClub/dice/d8/d8 (Green):2 ../TabletopClub/dice/d8/d8 (Orange):2 ../TabletopClub/dice/d8/d8 (Pink):2 ../TabletopClub/dice/d8/d8 (Purple):2 ../TabletopClub/dice/d8/d8 (Red):2 ../TabletopClub/dice/d8/d8 (White):2 ../TabletopClub/dice/d8/d8 (Yellow):2
 msgid "An 8-sided die."
-msgstr ""
+msgstr "Een achtzijdige dobbelsteen."
 
 #: ../TabletopClub/dice/d8/d8 (Blue):1
 msgid "d8 (Blue)"
-msgstr ""
+msgstr "d8 (blauw)"
 
 #: ../TabletopClub/dice/d8/d8 (Brown):1
 msgid "d8 (Brown)"
-msgstr ""
+msgstr "d8 (bruin)"
 
 #: ../TabletopClub/dice/d8/d8 (Cyan):1
 msgid "d8 (Cyan)"
-msgstr ""
+msgstr "d8 (groenblauw)"
 
 #: ../TabletopClub/dice/d8/d8 (Green):1
 msgid "d8 (Green)"
-msgstr ""
+msgstr "d8 (groen)"
 
 #: ../TabletopClub/dice/d8/d8 (Orange):1
 msgid "d8 (Orange)"
