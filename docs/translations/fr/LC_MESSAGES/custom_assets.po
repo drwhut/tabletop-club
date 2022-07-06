@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-03 02:05+0100\n"
-"PO-Revision-Date: 2022-03-29 02:10+0000\n"
-"Last-Translator: NeoNiNe <lelardon77@gmail.com>\n"
+"PO-Revision-Date: 2022-07-07 21:18+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/fr/>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -442,7 +442,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 #: ../../custom_assets/asset_packs/asset_types.rst:72
 msgid "Dice"
-msgstr ""
+msgstr "Dés"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 msgid "``{}``"
@@ -744,7 +744,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:133
 msgid "Timer"
-msgstr ""
+msgstr "Minuteur"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:135
 msgid ""
