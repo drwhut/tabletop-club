@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-07-03 02:05+0100\n"
-"PO-Revision-Date: 2021-06-08 15:33+0000\n"
+"PO-Revision-Date: 2022-07-07 21:18+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "game/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:27
@@ -49,14 +49,12 @@ msgid "Quit"
 msgstr "Quitter"
 
 #: ../Scenes/MainMenu.tscn:96
-#, fuzzy
-#| msgid "Flip orientation"
 msgid "Documentation"
-msgstr "Inverser l'orientation"
+msgstr "Documentation"
 
 #: ../Scenes/MainMenu.tscn:105
 msgid "Information"
-msgstr ""
+msgstr "Informations"
 
 #: ../Scenes/MainMenu.tscn:130
 msgid "Host Game"
@@ -64,25 +62,23 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:136
 msgid "Create a new lobby for your friends to join over the Internet."
-msgstr ""
+msgstr "Créez un nouveau salon que vos amis pourront rejoindre sur Internet."
 
 #: ../Scenes/MainMenu.tscn:148 ../Scenes/MainMenu.tscn:195
-#, fuzzy
-#| msgid "Join Server"
 msgid "Join Game"
-msgstr "Rejoindre le serveur"
+msgstr "Rejoindre la partie"
 
 #: ../Scenes/MainMenu.tscn:154
 msgid "Use a room code to join your friend's lobby."
-msgstr ""
+msgstr "Utilisez un code de salon pour rejoindre le salon de votre ami·e."
 
 #: ../Scenes/MainMenu.tscn:180
 msgid "Room Code:"
-msgstr ""
+msgstr "Code du salon :"
 
 #: ../Scenes/MainMenu.tscn:189
 msgid "ABCD"
-msgstr ""
+msgstr "ABCD"
 
 #: ../Scenes/OptionsMenu.tscn:47
 msgid "Audio"
@@ -94,7 +90,7 @@ msgstr "Volume principal"
 
 #: ../Scenes/OptionsMenu.tscn:67
 msgid "Sets the overall volume of all sources of sound in the game."
-msgstr ""
+msgstr "Règle le volume général de toutes les sources de son dans le jeu."
 
 #: ../Scenes/OptionsMenu.tscn:78
 msgid "Music Volume"
@@ -102,7 +98,7 @@ msgstr "Volume de la musique"
 
 #: ../Scenes/OptionsMenu.tscn:86
 msgid "Sets the volume of all music sources in the game."
-msgstr ""
+msgstr "Règle le volume de toutes les sources de musique dans le jeu."
 
 #: ../Scenes/OptionsMenu.tscn:97
 msgid "Sounds Volume"
@@ -113,18 +109,20 @@ msgid ""
 "Sets the volume of sound sources played manually throughout the game, for "
 "example, from speakers."
 msgstr ""
+"Règle le volume des sources sonores jouées manuellement dans le jeu, par "
+"exemple, à partir des haut-parleurs."
 
 #: ../Scenes/OptionsMenu.tscn:116
-#, fuzzy
-#| msgid "Music Volume"
 msgid "Effects Volume"
-msgstr "Volume de la musique"
+msgstr "Volume des effets"
 
 #: ../Scenes/OptionsMenu.tscn:124
 msgid ""
 "Sets the volume of sound effects played automatically throughout the game, "
 "for example, pieces falling on the table. "
 msgstr ""
+"Règle le volume des effets sonores joués automatiquement tout au long du "
+"jeu, par exemple, les pièces qui tombent sur la table. "
 
 #: ../Scenes/OptionsMenu.tscn:140
 msgid "Controls"
@@ -269,27 +267,30 @@ msgstr "Langue"
 
 #: ../Scenes/OptionsMenu.tscn:452
 msgid "Autosave Interval"
-msgstr ""
+msgstr "Intervalle de sauvegarde automatique"
 
 #: ../Scenes/OptionsMenu.tscn:460
 msgid "Used to set how often autosaves are created."
 msgstr ""
+"Permet de définir la fréquence de création des sauvegardes automatiques."
 
 #: ../Scenes/OptionsMenu.tscn:462
 msgid "5 minutes"
-msgstr ""
+msgstr "5 minutes"
 
 #: ../Scenes/OptionsMenu.tscn:471
 msgid "Autosave File Count"
-msgstr ""
+msgstr "Nombre de fichiers d'enregistrement automatique"
 
 #: ../Scenes/OptionsMenu.tscn:479
 msgid "Used to set the maximum number of autosave files that are made."
 msgstr ""
+"Permet de définir le nombre maximal de fichiers d'enregistrement automatique "
+"qui sont créés."
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Opens the assets folder in your file explorer."
-msgstr ""
+msgstr "Ouvre le dossier des actifs dans votre explorateur de fichiers."
 
 #: ../Scenes/OptionsMenu.tscn:510
 msgid "Open Assets Folder"
@@ -308,10 +309,8 @@ msgid "Move Forward"
 msgstr "Avancer"
 
 #: ../Scenes/OptionsMenu.tscn:559
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera forward."
-msgstr "Déplacer la caméra"
+msgstr "Déplace la caméra vers l'avant."
 
 #: ../Scenes/OptionsMenu.tscn:569
 msgid "Move Back"
@@ -400,19 +399,19 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:749
 msgid "Quicksave"
-msgstr ""
+msgstr "Sauvegarde rapide"
 
 #: ../Scenes/OptionsMenu.tscn:757
 msgid "Creates a quicksave file."
-msgstr ""
+msgstr "Crée un fichier de sauvegarde rapide."
 
 #: ../Scenes/OptionsMenu.tscn:767
 msgid "Quickload"
-msgstr ""
+msgstr "Chargement rapide"
 
 #: ../Scenes/OptionsMenu.tscn:775
 msgid "Loads the latest quicksave file."
-msgstr ""
+msgstr "Charge le dernier fichier de sauvegarde rapide."
 
 #: ../Scenes/OptionsMenu.tscn:785
 msgid "Toggle UI"
@@ -694,7 +693,7 @@ msgstr "Salle"
 
 #: ../Scenes/Game/UI/GameUI.tscn:69
 msgid "Notebook"
-msgstr ""
+msgstr "Cahier"
 
 #: ../Scenes/Game/UI/GameUI.tscn:75
 msgid "Flip Table"
@@ -706,7 +705,7 @@ msgstr "Vider la table"
 
 #: ../Scenes/Game/UI/GameUI.tscn:88
 msgid "Undo"
-msgstr ""
+msgstr "Annuler"
 
 #: ../Scenes/Game/UI/GameUI.tscn:94
 msgid "45"
@@ -765,23 +764,19 @@ msgstr "Tout prendre"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:34
 msgid "+ New Page"
-msgstr ""
+msgstr "+ Nouvelle page"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:47
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:68
-#, fuzzy
-#| msgid "Move Back"
 msgid "Move Up"
-msgstr "Reculer"
+msgstr "Remonter"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:76
-#, fuzzy
-#| msgid "Move Forward"
 msgid "Move Down"
-msgstr "Avancer"
+msgstr "Descendre"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:84
 #: ../Scripts/Game/CameraController.gd:1096
@@ -943,10 +938,8 @@ msgid "Logo and Icon"
 msgstr "Icônes des outils"
 
 #: ../Scripts/MainMenu.gd:66
-#, fuzzy
-#| msgid "Sounds"
 msgid "Sound Effects"
-msgstr "Sons"
+msgstr "Effets sonores"
 
 #: ../Scripts/MainMenu.gd:67
 msgid "Tool Icons"
@@ -958,23 +951,23 @@ msgstr "Traducteurs"
 
 #: ../Scripts/MainMenu.gd:70
 msgid "Dutch"
-msgstr ""
+msgstr "néerlandais"
 
 #: ../Scripts/MainMenu.gd:71
 msgid "French"
-msgstr "Français"
+msgstr "français"
 
 #: ../Scripts/MainMenu.gd:72
 msgid "German"
-msgstr ""
+msgstr "allemand"
 
 #: ../Scripts/MainMenu.gd:112
 msgid "Room code must be four characters long!"
-msgstr ""
+msgstr "Le code de la salle doit comporter quatre caractères !"
 
 #: ../Scripts/MainMenu.gd:117
 msgid "Invalid room code!"
-msgstr ""
+msgstr "Code de chambre invalide !"
 
 #: ../Scripts/OptionsMenu.gd:29
 msgid "System Default"
@@ -1032,10 +1025,8 @@ msgid "Sort"
 msgstr "Trier"
 
 #: ../Scripts/Game/CameraController.gd:1007
-#, fuzzy
-#| msgid "Timers"
 msgid "Timer"
-msgstr "Minuteurs"
+msgstr "Minuteur"
 
 #: ../Scripts/Game/CameraController.gd:1028
 #, fuzzy, python-format
@@ -1072,16 +1063,16 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1078
 msgid "Cut"
-msgstr ""
+msgstr "Couper"
 
 #: ../Scripts/Game/CameraController.gd:1079
 msgid "Copy"
-msgstr ""
+msgstr "Copier"
 
 #: ../Scripts/Game/CameraController.gd:1081
 #: ../Scripts/Game/CameraController.gd:1120
 msgid "Paste"
-msgstr ""
+msgstr "Coller"
 
 #: ../Scripts/Game/CameraController.gd:1092
 msgid "Unlock"
@@ -1413,23 +1404,23 @@ msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:47
 msgid "Already in a room."
-msgstr ""
+msgstr "Déjà dans une salle."
 
 #: ../Scripts/Game/MasterServer.gd:48
 msgid "Room does not exist."
-msgstr ""
+msgstr "La salle n'existe pas."
 
 #: ../Scripts/Game/MasterServer.gd:49
 msgid "Room is sealed."
-msgstr ""
+msgstr "La salle est fermée."
 
 #: ../Scripts/Game/MasterServer.gd:50
 msgid "Message format is invalid."
-msgstr ""
+msgstr "Le format du message est invalide."
 
 #: ../Scripts/Game/MasterServer.gd:51
 msgid "Message is invalid when not in a room."
-msgstr ""
+msgstr "Le message est invalide quand il n'est pas dans une salle."
 
 #: ../Scripts/Game/MasterServer.gd:52
 msgid "Internal server error."
@@ -1492,74 +1483,61 @@ msgstr "%s est vide."
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:137
 #, python-format
 msgid "Are you sure you want to delete the page '%s'?"
-msgstr ""
+msgstr "Êtes-vous sûr·e de vouloir supprimer la page « %s » ?"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:163
 msgid "New Page"
-msgstr ""
+msgstr "Nouvelle page"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:114
-#, fuzzy, python-format
-#| msgid "Loaded: %s"
+#, python-format
 msgid "Modified: %s"
-msgstr "Chargé : %s"
+msgstr "Modifié : %s"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:157
-#, fuzzy
-#| msgid "Save game"
 msgid "Save a file"
-msgstr "Sauvegarder la partie"
+msgstr "Enregistrer un fichier"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:157
-#, fuzzy
-#| msgid "Load game"
 msgid "Load a file"
-msgstr "Charger une sauvegarde"
+msgstr "Charger un fichier"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:160
-#, fuzzy
-#| msgid "Save game"
 msgid "Save"
-msgstr "Sauvegarder la partie"
+msgstr "Enregistrer"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:160
-#, fuzzy
-#| msgid "Load game"
 msgid "Load"
-msgstr "Charger une sauvegarde"
+msgstr "Charger"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:173
-#, fuzzy
-#| msgid "Sort"
 msgid "Sort:"
-msgstr "Trier"
+msgstr "Trier :"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:177
 msgid "Last Modified"
-msgstr ""
+msgstr "Dernière modification"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:202
-#, fuzzy
-#| msgid "Delete Piece"
 msgid "Delete file?"
-msgstr "Supprimer la pièce"
+msgstr "Supprimer le fichier ?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:210
 msgid "Overwrite file?"
-msgstr ""
+msgstr "Écraser le fichier ?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:218
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:254
 msgid "Rename"
-msgstr ""
+msgstr "Renommer"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:219
 msgid "Duplicate"
-msgstr ""
+msgstr "Dupliquer"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:225
 msgid "Invalid name!"
-msgstr ""
+msgstr "Nom invalide !"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:227
 #, python-format
@@ -1570,21 +1548,21 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:233
 msgid "Rename file..."
-msgstr ""
+msgstr "Renommer le fichier…"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:243
 msgid "Please enter a new name for the file:"
-msgstr ""
+msgstr "Veuillez entrer un nouveau nom pour le fichier :"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:363
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr ""
+msgstr "Êtes-vous sûr·e de vouloir supprimer « %s » ?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:376
 #, python-format
 msgid "The file '%s' already exists. Are you sure you want to overwrite it?"
-msgstr ""
+msgstr "Le fichier « %s » existe déjà. Êtes-vous sûr·e de vouloir l'écraser ?"
 
 #: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:107
 #, python-format
@@ -1600,10 +1578,8 @@ msgid "Containers"
 msgstr "Conteneurs"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:223
-#, fuzzy
-#| msgid "Dice - d4"
 msgid "Dice"
-msgstr "Dé - 4 faces"
+msgstr "Dés"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:225
 msgid "Music"
