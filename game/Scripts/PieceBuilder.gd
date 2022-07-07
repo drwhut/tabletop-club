@@ -184,30 +184,21 @@ func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 		var mass = stack_entry.masses[i]
 		var texture_path = stack_entry.texture_paths[i]
 		
-		# Create a new piece entry based on the stack entry.
-		var piece_entry = {
-			"color": color,
-			"desc": stack_entry.desc,
-			"mass": mass,
-			"name": stack_entry.name,
-			"scale": stack_entry.scale,
-			"scene_path": stack_entry.scene_path,
-			"texture_path": texture_path
-		}
-		
-		# Cards are a special case, since they have two surfaces (one for each
-		# face), so we need to make sure the second texture is accounted for.
+		# TODO: Using the texture path to figure out the entry path seems a
+		# bit... dirty? There's got to be a better way of doing this :O
+		var asset = texture_path.get_file().get_basename()
 		var type_dir = texture_path.get_base_dir()
-		if type_dir.ends_with("cards"):
-			var pack = type_dir.get_base_dir().get_file()
-			var asset = texture_path.get_file().get_basename()
-			
-			var entry = AssetDB.search_type(pack, "cards", asset)
-			if not entry.empty():
-				piece_entry["texture_path_1"] = entry["texture_path_1"]
-			else:
-				push_error("Inferred %s/cards/%s from '%s', asset was not found in AssetDB!" % [
-					pack, asset, texture_path])
+		var type = type_dir.get_file()
+		var pack = type_dir.get_base_dir().get_file()
+		var entry_path = "%s/%s/%s" % [pack, type, asset]
+		
+		var piece_entry = AssetDB.search_path(entry_path)
+		if piece_entry.empty():
+			push_error("Entry (%s) from texture path (%s) was not found!" % [entry_path, texture_path])
+			continue
+		
+		piece_entry["color"] = color
+		piece_entry["mass"] = mass
 		
 		stack.add_piece(piece_entry, Transform.IDENTITY, Stack.STACK_BOTTOM,
 			Stack.FLIP_NO)

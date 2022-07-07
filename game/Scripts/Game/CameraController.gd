@@ -220,9 +220,6 @@ var _timer_last_time_update = 0
 var _tool = TOOL_CURSOR
 var _viewport_size_original = Vector2()
 
-
-
-
 # Append an array of pieces to the list of selected pieces.
 # pieces: The array of pieces to now be selected.
 func append_selected_pieces(pieces: Array) -> void:
@@ -301,6 +298,25 @@ func get_hover_position() -> Vector3:
 # Returns: The list of selected pieces.
 func get_selected_pieces() -> Array:
 	return _selected_pieces
+
+# Nullify references to the given piece. Call this if you know a piece is about
+# to be freed from memory.
+# ref: The reference to remove.
+func remove_piece_ref(ref: Piece) -> void:
+	erase_selected_pieces(ref)
+	
+	# TODO: Check if there is a more elegant solution - it may be problamatic
+	# relying on the room to tell us if a piece is about to go out of memory.
+	if _container_multi_context == ref:
+		_container_multi_context = null
+	if _piece_mouse_is_over == ref:
+		_piece_mouse_is_over = null
+	if _piece_mouse_is_over_last == ref:
+		_piece_mouse_is_over_last = null
+	if _speaker_connected == ref:
+		_speaker_connected = null
+	if _timer_connected == ref:
+		_timer_connected = null
 
 # Request the server to set your cursor image on all other clients.
 # cursor_type: The shape of the cursor to set, e.g. Input.CURSOR_ARROW.
@@ -1645,7 +1661,7 @@ func _on_moving() -> bool:
 		if _selected_pieces.size() == 1:
 			var piece = _selected_pieces[0]
 			piece.rpc_unreliable_id(1, "request_set_hover_position", get_hover_position())
-		else:
+		elif _selected_pieces.size() > 1:
 			# If we started hovering multiple pieces, the server should have
 			# remembered the list of pieces we started hovering, so all we need
 			# to do is send it the updated position.

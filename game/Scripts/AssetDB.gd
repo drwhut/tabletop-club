@@ -380,7 +380,7 @@ func _add_entry_to_db(pack: String, type: String, entry: Dictionary) -> void:
 	_db[pack][type].push_back(entry)
 	_db_mutex.unlock()
 	
-	print("Added: %s" % entry)
+	print("Added: %s" % entry_path)
 
 # Add assets to the database that inherit properties frome existing assets.
 # pack_path: The path to the asset pack.
@@ -404,6 +404,7 @@ func _add_inheriting_assets(pack_path: String, type: String) -> void:
 					if not inherit.empty():
 						var child = inherit.duplicate()
 						child["name"] = section
+						child["entry_path"] = "%s/%s/%s" % [pack, type, section]
 						for key in config_file.get_section_keys(section):
 							if child.has(key):
 								# TODO: Check the value is the same type.
@@ -995,6 +996,7 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 					var stack_entry = {
 						"colors": colors,
 						"desc": desc,
+						"entry_path": "%s/%s/%s" % [pack, type, stack_name],
 						"masses": masses,
 						"name": stack_name,
 						"scale": scale,

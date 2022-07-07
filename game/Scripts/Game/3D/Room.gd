@@ -87,13 +87,16 @@ remotesync func add_hand(player: int, transform: Transform) -> void:
 # Called by the server to add a piece to the room.
 # name: The name of the new piece.
 # transform: The initial transform of the new piece.
-# piece_entry: The piece's entry in the AssetDB.
-# hover_player: If set to > 0, it will initially be in a hover state by the
-# player with the given ID.
+# entry_path: The piece's entry path in the AssetDB.
 remotesync func add_piece(name: String, transform: Transform,
-	piece_entry: Dictionary) -> void:
+	entry_path: String) -> void:
 
 	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var piece_entry = AssetDB.search_path(entry_path)
+	if piece_entry.empty():
+		push_error("Cannot add piece, entry not found: %s" % entry_path)
 		return
 
 	if get_tree().is_network_server() and _srv_events_add_states:
@@ -266,9 +269,14 @@ puppet func add_stack_empty(name: String, transform: Transform, sandwich: bool) 
 # Called by the server to add a pre-filled stack to the room.
 # name: The name of the new stack.
 # transform: The initial transform of the new stack.
-# stack_entry: The stack's entry in the AssetDB.
+# stack_entry_path: The stack's entry path in the AssetDB.
 remotesync func add_stack_filled(name: String, transform: Transform,
-	stack_entry: Dictionary) -> void:
+	stack_entry_path: String) -> void:
+	
+	var stack_entry = AssetDB.search_path(stack_entry_path)
+	if stack_entry.empty():
+		push_error("Cannot add stack, entry not found: %s" % stack_entry_path)
+		return
 
 	var sandwich_stack = (stack_entry["scene_path"] == "res://Pieces/Card.tscn")
 
@@ -521,7 +529,9 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 		"sunlight": get_lamp_type()
 	}
 
-	out["skybox"] = get_skybox()
+	var skybox_entry = get_skybox()
+	if skybox_entry.has("entry_path"):
+		out["skybox"] = skybox_entry["entry_path"]
 
 	# If the paint image is blank (it's default state), don't bother storing
 	# any image data in the state.
@@ -530,15 +540,17 @@ func get_state(hands: bool = false, collisions: bool = false) -> Dictionary:
 	if not paint_image.is_invisible():
 		paint_image_data = paint_image.get_data()
 
-	out["table"] = {
-		"entry": get_table(),
-		"is_rigid": false,
-		"paint_image_data": paint_image_data,
-		"transform": Transform.IDENTITY
-	}
-	if _table_body:
-		out["table"]["is_rigid"] = _table_body.mode == RigidBody.MODE_RIGID
-		out["table"]["transform"] = _table_body.transform
+	var table_entry = get_table()
+	if table_entry.has("entry_path"):
+		out["table"] = {
+			"entry_path": table_entry["entry_path"],
+			"is_rigid": false,
+			"paint_image_data": paint_image_data,
+			"transform": Transform.IDENTITY
+		}
+		if _table_body:
+			out["table"]["is_rigid"] = _table_body.mode == RigidBody.MODE_RIGID
+			out["table"]["transform"] = _table_body.transform
 
 	if hands:
 		var hand_dict = {}
@@ -698,27 +710,34 @@ remotesync func remove_piece_from_container(container_name: String, piece_name: 
 	_pieces.add_child(piece)
 
 # Request the server to add a piece to the game.
-# Returns: The name of the new piece.
-# piece_entry: The piece's entry in the AssetDB.
+# Returns: The name of the new piece, an empty string if invalid.
+# entry_path: The piece's entry path in the AssetDB.
 # position: The position to spawn the piece at.
-master func request_add_piece(piece_entry: Dictionary, position: Vector3) -> String:
+master func request_add_piece(entry_path: String, position: Vector3) -> String:
 	var transform = Transform(Basis.IDENTITY, position)
 
+	var piece_entry = AssetDB.search_path(entry_path)
+	if piece_entry.empty():
+		push_error("Invalid add request, entry not found: %s" % entry_path)
+		return ""
+	
 	# Is the piece a pre-filled stack?
 	if piece_entry.has("texture_paths") and (not piece_entry.has("texture_path")):
-		return request_add_stack_filled(transform, piece_entry)
+		return request_add_stack_filled(transform, entry_path)
 	else:
 		# Send the call to create the piece to everyone.
 		var piece_name = srv_get_next_piece_name()
-		rpc("add_piece", piece_name, transform, piece_entry)
+		rpc("add_piece", piece_name, transform, entry_path)
 		return piece_name
 
 # Request the server to add a piece into a container.
-# piece_entry: The piece's entry in the AssetDB.
+# entry_path: The piece's entry path in the AssetDB.
 # container_name: The name of the container to add the piece to.
-master func request_add_piece_in_container(piece_entry: Dictionary, container_name: String) -> void:
+master func request_add_piece_in_container(entry_path: String, container_name: String) -> void:
 	# Spawn the piece far away so the players don't see it.
-	var piece_name = request_add_piece(piece_entry, Vector3(9999, 9999, 9999))
+	var piece_name = request_add_piece(entry_path, Vector3(9999, 9999, 9999))
+	if piece_name.empty():
+		return
 
 	rpc("add_piece_to_container", container_name, piece_name)
 
@@ -823,12 +842,18 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 	request_add_cards_to_hand(card_names, hand_id)
 
 # Request the server to add a pre-filled stack.
-# Returns: The name of the new stack.
+# Returns: The name of the new stack, an empty string if invalid.
 # stack_transform: The transform the new stack should have.
-# stack_entry: The stack's entry in the AssetDB.
-master func request_add_stack_filled(stack_transform: Transform, stack_entry: Dictionary) -> String:
+# stack_entry_path: The stack's entry path in the AssetDB.
+master func request_add_stack_filled(stack_transform: Transform,
+	stack_entry_path: String) -> String:
+	
+	if AssetDB.search_path(stack_entry_path).empty():
+		push_error("Invalid add stack request, entry not found: %s" % stack_entry_path)
+		return ""
+	
 	var stack_name = srv_get_next_piece_name()
-	rpc("add_stack_filled", stack_name, stack_transform, stack_entry)
+	rpc("add_stack_filled", stack_name, stack_transform, stack_entry_path)
 
 	return stack_name
 
@@ -1164,7 +1189,8 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 			var piece_entry = piece_meta["piece_entry"]
 			var piece_transform = piece_meta["transform"]
 			new_basis = (stack.transform.basis * piece_transform.basis).orthonormalized()
-			rpc("add_piece", new_name, Transform(new_basis, new_origin), piece_entry)
+			rpc("add_piece", new_name, Transform(new_basis, new_origin),
+					piece_entry["entry_path"])
 			new_piece = _pieces.get_node(new_name)
 		else:
 			var new_transform = Transform(new_basis, new_origin)
@@ -1195,7 +1221,8 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 
 			new_basis = (stack.transform.basis * piece_transform.basis).orthonormalized()
 			rpc("add_piece", last_name,
-				Transform(new_basis, new_stack_translation), piece_entry)
+					Transform(new_basis, new_stack_translation),
+					piece_entry["entry_path"])
 	else:
 		new_piece = stack
 
@@ -1247,14 +1274,20 @@ master func request_set_lamp_type(sunlight: bool) -> void:
 	rpc("set_lamp_type", sunlight)
 
 # Request the server to set the room skybox.
-# skybox_entry: The skybox's entry in the asset DB.
-master func request_set_skybox(skybox_entry: Dictionary) -> void:
-	rpc("set_skybox", skybox_entry)
+# skybox_entry_path: The skybox's entry path in the asset DB.
+master func request_set_skybox(skybox_entry_path: String) -> void:
+	if AssetDB.search_path(skybox_entry_path).empty():
+		push_error("Invalid set skybox request, entry not found: %s" % skybox_entry_path)
+	
+	rpc("set_skybox", skybox_entry_path)
 
 # Request the server to set the room table.
-# table_entry: The table's entry in the asset DB.
-master func request_set_table(table_entry: Dictionary) -> void:
-	rpc("set_table", table_entry)
+# table_entry_path: The table's entry path in the asset DB.
+master func request_set_table(table_entry_path: String) -> void:
+	if AssetDB.search_path(table_entry_path).empty():
+		push_error("Invalid set table request, entry not found: %s" % table_entry_path)
+	
+	rpc("set_table", table_entry_path)
 
 # Request the server to get a stack to collect all of the pieces that it can
 # stack.
@@ -1346,12 +1379,17 @@ remotesync func set_lamp_type(sunlight: bool) -> void:
 	_sun_light.visible = sunlight
 
 # Set the room's skybox.
-# skybox_entry: The skybox's entry in the asset DB. If either the texture path
-# or the entry are empty, the default skybox is used.
-remotesync func set_skybox(skybox_entry: Dictionary) -> void:
+# skybox_entry_path: The skybox's entry path in the asset DB. If either the
+# texture path or the entry are empty, the default skybox is used.
+remotesync func set_skybox(skybox_entry_path: String) -> void:
 	if get_tree().has_network_peer():
 		if get_tree().get_rpc_sender_id() != 1:
 			return
+	
+	var skybox_entry = AssetDB.search_path(skybox_entry_path)
+	if skybox_entry.empty():
+		push_error("Cannot set skybox, entry not found: %s" % skybox_entry_path)
+		return
 
 	# Changing the skybox can take a long time if the radiance size is big, so
 	# avoid doing it if the skybox being set is the same as the current skybox.
@@ -1396,7 +1434,7 @@ func set_state(state: Dictionary) -> void:
 	if state.has("table"):
 		var table_meta = state["table"]
 
-		set_table(table_meta["entry"])
+		set_table(table_meta["entry_path"])
 
 		if _table_body:
 			if table_meta["is_rigid"]:
@@ -1531,11 +1569,16 @@ remotesync func set_state_compressed(compressed_state: Dictionary) -> void:
 		push_error("Failed to decode the uncompressed state!")
 
 # Set the room table.
-# table_entry: The table's entry in the asset DB.
-remotesync func set_table(table_entry: Dictionary) -> void:
+# table_entry_path: The table's entry path in the asset DB.
+remotesync func set_table(table_entry_path: String) -> void:
 	if get_tree().has_network_peer():
 		if get_tree().get_rpc_sender_id() != 1:
 			return
+	
+	var table_entry = AssetDB.search_path(table_entry_path)
+	if table_entry.empty():
+		push_error("Cannot set table, entry not found: %s" % table_entry_path)
+		return
 
 	if _table_body != null:
 		# Changing the table can take a while if the model is very detailed,
@@ -1699,11 +1742,12 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 func _ready():
 	var skybox = AssetDB.random_asset("TabletopClub", "skyboxes", true)
 	if not skybox.empty():
-		set_skybox(skybox)
+		# TODO: Consider setting this directly?
+		set_skybox(skybox["entry_path"])
 
 	var table = AssetDB.random_asset("TabletopClub", "tables", true)
 	if not table.empty():
-		set_table(table)
+		set_table(table["entry_path"])
 
 func _physics_process(_delta):
 	var timers_to_manage = _srv_undo_state_events.keys()
@@ -1754,8 +1798,8 @@ func _append_piece_states(state: Dictionary, pieces: Array, collisions: bool) ->
 
 	for piece in pieces:
 		var piece_meta = {
+			"entry_path": piece.piece_entry["entry_path"],
 			"is_locked": piece.is_locked(),
-			"piece_entry": piece.piece_entry,
 			"transform": piece.transform,
 			"user_scale": piece.get_current_scale()
 		}
@@ -1778,13 +1822,13 @@ func _append_piece_states(state: Dictionary, pieces: Array, collisions: bool) ->
 			# If the piece is a stack, we don't need to store the stack's piece
 			# entry, as it will figure it out itself once the first piece is
 			# added.
-			piece_meta.erase("piece_entry")
+			piece_meta.erase("entry_path")
 
 			var child_pieces = []
 			for child_piece in piece.get_pieces():
 				var child_piece_meta = {
 					"flip_y": child_piece["flip_y"],
-					"piece_entry": child_piece["piece_entry"]
+					"entry_path": child_piece["piece_entry"]["entry_path"]
 				}
 
 				child_pieces.push_back(child_piece_meta)
@@ -1862,12 +1906,12 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 		# Stacks don't include their piece entry, since they can figure it out
 		# themselves once the first piece is added.
 		if type_key != "stacks":
-			if not piece_meta.has("piece_entry"):
-				push_error("Piece " + type_key + "/" + piece_name + " in new state has no piece entry!")
+			if not piece_meta.has("entry_path"):
+				push_error("Piece " + type_key + "/" + piece_name + " in new state has no entry path!")
 				return
 
-			if not piece_meta["piece_entry"] is Dictionary:
-				push_error("Piece " + type_key + "/" + piece_name + " entry is not a dictionary!")
+			if not piece_meta["entry_path"] is String:
+				push_error("Piece " + type_key + "/" + piece_name + " entry path is not a string!")
 				return
 
 		if type_key == "stacks":
@@ -1876,15 +1920,18 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 				push_error("Piece " + type_key + "/" + piece_name + " has an empty 'pieces' array!")
 				return
 			var element_meta: Dictionary = pieces[0]
-			if not element_meta.has("piece_entry"):
-				push_error("Piece " + type_key + "/" + piece_name + " element meta has no piece entry!")
+			if not element_meta.has("entry_path"):
+				push_error("Piece " + type_key + "/" + piece_name + " element meta has no entry path!")
 				return
-			var piece_entry: Dictionary = element_meta["piece_entry"]
-
-			var sandwich_stack = (piece_entry["scene_path"] == "res://Pieces/Card.tscn")
-			add_stack_empty(piece_name, piece_meta["transform"], sandwich_stack)
+			var entry_path: String = element_meta["entry_path"]
+			var piece_entry = AssetDB.search_path(entry_path)
+			if not piece_entry.empty():
+				var sandwich_stack = (piece_entry["scene_path"] == "res://Pieces/Card.tscn")
+				add_stack_empty(piece_name, piece_meta["transform"], sandwich_stack)
+			else:
+				push_error("Cannot add stack, first entry not found: %s" % entry_path)
 		else:
-			add_piece(piece_name, piece_meta["transform"], piece_meta["piece_entry"])
+			add_piece(piece_name, piece_meta["transform"], piece_meta["entry_path"])
 
 		var piece: Piece = _pieces.get_node(piece_name)
 		if piece_meta["is_locked"]:
@@ -1944,24 +1991,27 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 					push_error("Stack piece flip value is not a boolean!")
 					return
 
-				if not stack_piece_meta.has("piece_entry"):
-					push_error("Stack piece does not have a piece entry!")
+				if not stack_piece_meta.has("entry_path"):
+					push_error("Stack piece does not have an entry path!")
 					return
 
-				if not stack_piece_meta["piece_entry"] is Dictionary:
-					push_error("Stack piece entry is not a dictionary!")
+				if not stack_piece_meta["entry_path"] is String:
+					push_error("Stack piece entry path is not a string!")
 					return
 
-				var stack_piece_entry = stack_piece_meta["piece_entry"]
+				var stack_piece_entry_path = stack_piece_meta["entry_path"]
+				var stack_piece_entry = AssetDB.search_path(stack_piece_entry_path)
+				if not stack_piece_entry.empty():
+					# Add it to the stack at the top (since we're going through the
+					# list in order from bottom to top).
+					var flip = Stack.FLIP_NO
+					if stack_piece_meta["flip_y"]:
+						flip = Stack.FLIP_YES
 
-				# Add it to the stack at the top (since we're going through the
-				# list in order from bottom to top).
-				var flip = Stack.FLIP_NO
-				if stack_piece_meta["flip_y"]:
-					flip = Stack.FLIP_YES
-
-				piece.add_piece(stack_piece_entry, Transform.IDENTITY,
-					Stack.STACK_TOP, flip)
+					piece.add_piece(stack_piece_entry, Transform.IDENTITY,
+						Stack.STACK_TOP, flip)
+				else:
+					push_error("Cannot add piece to stack, entry not found: %s" % stack_piece_entry_path)
 
 		elif type_key == "speakers" or type_key == "timers":
 			if not piece_meta.has("is_music_track"):
@@ -2155,12 +2205,19 @@ func _on_container_releasing_random_piece(container: PieceContainer) -> void:
 
 func _on_piece_exiting_tree(piece: Piece) -> void:
 	if get_tree().is_network_server() and _srv_events_add_states:
-		#if not waiting for a timer or disabled because set_state wil be called
-		if _srv_undo_state_events["remove_piece"] <= 0:
-			push_undo_state()	#make host add an undo state
-		_srv_undo_state_events["remove_piece"] = UNDO_STATE_EVENT_TIMERS["remove_piece"]	#if they trigger this again before timer is done, reset the timer
+		# Push the undo state after this frame, just in case some pieces are
+		# in the middle of being manipulated, e.g. stacks.
+		# TODO: Could we deal with the case of one card being put on top of
+		# another? Or do we move this code somewhere else?
+		call_deferred("_on_piece_exiting_tree_after")
 
-	_camera_controller.erase_selected_pieces(piece)
+	_camera_controller.remove_piece_ref(piece)
+
+func _on_piece_exiting_tree_after() -> void:
+	#if not waiting for a timer or disabled because set_state wil be called
+	if _srv_undo_state_events["remove_piece"] <= 0:
+		push_undo_state()	#make host add an undo state
+	_srv_undo_state_events["remove_piece"] = UNDO_STATE_EVENT_TIMERS["remove_piece"]	#if they trigger this again before timer is done, reset the timer
 
 func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void:
 	if get_tree().is_network_server():

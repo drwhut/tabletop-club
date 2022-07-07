@@ -450,10 +450,12 @@ func _on_GameUI_load_table(path: String):
 	load_state(path)
 
 func _on_GameUI_piece_requested(piece_entry: Dictionary, position: Vector3):
-	_room.rpc_id(1, "request_add_piece", piece_entry, position)
+	var entry_path = piece_entry["entry_path"]
+	_room.rpc_id(1, "request_add_piece", entry_path, position)
 
 func _on_GameUI_piece_requested_in_container(piece_entry: Dictionary, container_name: String):
-	_room.rpc_id(1, "request_add_piece_in_container", piece_entry, container_name)
+	var entry_path = piece_entry["entry_path"]
+	_room.rpc_id(1, "request_add_piece_in_container", entry_path, container_name)
 
 func _on_GameUI_requesting_room_details():
 	_ui.set_room_details(_room.get_table(), _room.get_skybox(),
@@ -471,10 +473,12 @@ func _on_GameUI_stopped_saving_table():
 	_room_state_saving = {}
 
 func _on_GameUI_skybox_requested(skybox_entry: Dictionary):
-	_room.rpc_id(1, "request_set_skybox", skybox_entry)
+	var skybox_entry_path = skybox_entry["entry_path"]
+	_room.rpc_id(1, "request_set_skybox", skybox_entry_path)
 
 func _on_GameUI_table_requested(table_entry: Dictionary):
-	_room.rpc_id(1, "request_set_table", table_entry)
+	var table_entry_path = table_entry["entry_path"]
+	_room.rpc_id(1, "request_set_table", table_entry_path)
 
 func _on_Lobby_players_synced():
 	if not get_tree().is_network_server():
