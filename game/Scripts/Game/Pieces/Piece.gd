@@ -25,7 +25,6 @@ extends RigidBody
 class_name Piece
 
 signal client_set_hover_position(piece)
-signal piece_exiting_tree(piece)
 
 const ANGULAR_FORCE_SCALAR = 25.0
 const HARMONIC_DAMPENING = 0.5
@@ -68,6 +67,7 @@ var srv_retrieve_from_hell: bool = true
 var _last_server_state_0: Basis
 var _last_server_state_1: Basis
 var _last_server_state_invalid: bool = true
+var _last_server_state_time: int = 0
 var _last_slow_table_collision = 0.0
 
 var _last_velocity = Vector3()
@@ -178,6 +178,12 @@ func get_size() -> Vector3:
 	
 	return piece_entry["scale"]
 
+# Get the time that has passed in seconds since the last state update from the
+# server.
+# Returns: The time since the last state update, in seconds.
+func get_time_since_update() -> float:
+	return float(OS.get_ticks_msec() - _last_server_state_time) / 1000
+
 # Is the albedo colour of the piece able to be changed?
 # Returns: If the albedo colour can be changed.
 func is_albedo_color_exposed() -> bool:
@@ -226,15 +232,6 @@ func play_effect(sound: AudioStream) -> void:
 	effect_player.stream = sound
 	effect_player.play()
 
-# Called by the server to remove the piece from the game.
-remotesync func remove_self() -> void:
-	if get_tree().get_rpc_sender_id() != 1:
-		return
-	
-	if get_parent():
-		get_parent().remove_child(self)
-		queue_free()
-
 # If you are hovering this piece, ask the server to flip the piece vertically.
 master func request_flip_vertically() -> void:
 	request_set_hover_basis(hover_basis.rotated(transform.basis.z, PI))
@@ -249,10 +246,6 @@ master func request_impulse(position: Vector3, impulse: Vector3) -> void:
 # Request the server to lock the piece.
 master func request_lock() -> void:
 	srv_lock()
-
-# Request the server to remove the piece.
-master func request_remove_self() -> void:
-	rpc("remove_self")
 
 # If you are hovering the piece, ask the server to reset the orientation of the
 # piece.
@@ -420,6 +413,7 @@ puppet func ss(basis0: Basis, basis1: Basis) -> void:
 	_last_server_state_0 = basis0
 	_last_server_state_1 = basis1
 	_last_server_state_invalid = false
+	_last_server_state_time = OS.get_ticks_msec()
 	sleeping = false
 
 # Set the color of the piece's outline.
@@ -550,7 +544,6 @@ func _ready():
 	
 	connect("body_entered", self, "_on_body_entered")
 	connect("tree_entered", self, "_on_tree_entered")
-	connect("tree_exiting", self, "_on_tree_exiting")
 
 func _process(delta):
 	_last_slow_table_collision += delta
@@ -603,6 +596,7 @@ func _integrate_forces(state):
 				state.linear_velocity, state.transform.origin)
 			_last_server_state_1 = state.transform.basis
 			_last_server_state_invalid = false
+			_last_server_state_time = OS.get_ticks_msec()
 		
 		else:
 			# The client, if it has received a new physics state from the
@@ -645,6 +639,3 @@ func _on_tree_entered() -> void:
 	# If the piece just entered the tree, then reset the last server state,
 	# because it's very likely that it's wrong now.
 	_last_server_state_invalid = true
-
-func _on_tree_exiting() -> void:
-	emit_signal("piece_exiting_tree", self)

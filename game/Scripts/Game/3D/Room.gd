@@ -41,6 +41,7 @@ onready var _sun_light = $SunLight
 onready var _table = $Table
 onready var _world_environment = $WorldEnvironment
 
+const LIMBO_DURATION = 5.0
 const UNDO_STACK_SIZE_LIMIT = 10
 const UNDO_STATE_EVENT_TIMERS = {
 	"add_piece": 10,
@@ -112,8 +113,6 @@ remotesync func add_piece(name: String, transform: Transform,
 
 	if get_tree().is_network_server():
 		piece.srv_retrieve_from_hell = _srv_retrieve_pieces_from_hell
-
-	piece.connect("piece_exiting_tree", self, "_on_piece_exiting_tree")
 
 	# If it is a stackable piece, make sure we attach the signal it emits when
 	# it wants to create a stack.
@@ -191,14 +190,16 @@ remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 		push_error("Piece " + stack_name + " is not a stack!")
 		return
 
-	_pieces.remove_child(piece)
-
 	var piece_entry = piece.piece_entry
 	if piece.is_albedo_color_exposed():
 		piece_entry["color"] = piece.get_albedo_color()
-	stack.add_piece(piece.piece_entry, piece.transform, on, flip)
 
-	piece.queue_free()
+	# Don't add an undo state, since it would be saved just before the piece
+	# gets added to the stack.
+	_srv_events_add_states = false
+	remove_pieces([piece_name])
+	stack.add_piece(piece.piece_entry, piece.transform, on, flip)
+	_srv_events_add_states = true
 
 # Called by the server to add a stack to the room with 2 initial pieces.
 # name: The name of the new stack.
@@ -261,7 +262,6 @@ puppet func add_stack_empty(name: String, transform: Transform, sandwich: bool) 
 
 	_pieces.add_child(stack)
 
-	stack.connect("piece_exiting_tree", self, "_on_piece_exiting_tree")
 	stack.connect("stack_requested", self, "_on_stack_requested")
 
 	return stack
@@ -326,7 +326,6 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 	var pieces = stack1.get_pieces()
 	if reverse:
 		pieces.invert()
-	_pieces.remove_child(stack1)
 
 	for piece_meta in pieces:
 		var piece_entry = piece_meta["piece_entry"]
@@ -338,7 +337,11 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 
 		stack2.add_piece(piece_entry, piece_transform)
 
-	stack1.queue_free()
+	# Don't push an undo state here, since it would be saved just before the
+	# first stack gets removed.
+	_srv_events_add_states = false
+	remove_pieces([stack1_name])
+	_srv_events_add_states = true
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -708,6 +711,52 @@ remotesync func remove_piece_from_container(container_name: String, piece_name: 
 
 	var piece = container.remove_piece(piece_name)
 	_pieces.add_child(piece)
+
+# Called by the server to remove pieces from the room.
+# piece_names: The names of the pieces to remove.
+remotesync func remove_pieces(piece_names: Array) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	for piece_name in piece_names:
+		if not piece_name is String:
+			push_error("Piece name is not a string!")
+			return
+		
+		if not _pieces.has_node(piece_name):
+			push_error("Piece %s does not exist!" % piece_name)
+			return
+		
+		var piece = _pieces.get_node(piece_name)
+		if not piece is Piece:
+			push_error("Object %s is not a piece!" % piece_name)
+			return
+		
+		_camera_controller.remove_piece_ref(piece)
+		
+		if get_tree().is_network_server():
+			if _srv_events_add_states:
+				# Does the timer allow us to add a new state?
+				if _srv_undo_state_events["remove_piece"] <= 0:
+					push_undo_state()
+				_srv_undo_state_events["remove_piece"] = UNDO_STATE_EVENT_TIMERS["remove_piece"]
+			
+			_pieces.remove_child(piece)
+			piece.queue_free()
+		else:
+			# Clients put the piece in "limbo", until a certain amount of time
+			# has passed since the last RPC call.
+			if piece.is_in_group("limbo"):
+				return
+			
+			piece.collision_layer = 0
+			piece.collision_mask = 0
+			piece.mode = RigidBody.MODE_STATIC
+			piece.visible = false
+			piece.set_process(false)
+			piece.set_physics_process(false)
+			
+			piece.add_to_group("limbo")
 
 # Request the server to add a piece to the game.
 # Returns: The name of the new piece, an empty string if invalid.
@@ -1217,7 +1266,7 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 			var piece_meta = stack.remove_piece(0)
 			var piece_entry = piece_meta["piece_entry"]
 			var piece_transform = piece_meta["transform"]
-			stack.rpc("remove_self")
+			rpc("remove_pieces", [stack_name])
 
 			new_basis = (stack.transform.basis * piece_transform.basis).orthonormalized()
 			rpc("add_piece", last_name,
@@ -1257,6 +1306,25 @@ master func request_remove_hidden_area(area_name: String) -> void:
 		return
 
 	rpc("remove_hidden_area", area_name)
+
+# Request the server to remove a set of pieces from the table.
+# piece_names: The names of the pieces to remove.
+master func request_remove_pieces(piece_names: Array) -> void:
+	for piece_name in piece_names:
+		if not piece_name is String:
+			push_error("Piece name in array is not a string!")
+			return
+		
+		if not _pieces.has_node(piece_name):
+			push_error("Piece with name %s does not exist!" % piece_name)
+			return
+		
+		var piece = _pieces.get_node(piece_name)
+		if not piece is Piece:
+			push_error("Object %s is not a piece!" % piece_name)
+			return
+	
+	rpc("remove_pieces", piece_names)
 
 # Request the server to set the lamp color.
 # color: The color to set the lamp to.
@@ -1524,6 +1592,8 @@ func set_state(state: Dictionary) -> void:
 			var point2 = hidden_area_meta["point2"]
 			place_hidden_area(hidden_area_name, player_id, point1, point2)
 
+	# We don't use the limbo system here, since incoming pieces may have the
+	# same name as ones currently in the tree.
 	for child in _pieces.get_children():
 		_pieces.remove_child(child)
 		child.queue_free()
@@ -1797,6 +1867,9 @@ func _append_piece_states(state: Dictionary, pieces: Array, collisions: bool) ->
 	state["timers"] = {}
 
 	for piece in pieces:
+		if piece.is_in_group("limbo"):
+			continue
+		
 		var piece_meta = {
 			"entry_path": piece.piece_entry["entry_path"],
 			"is_locked": piece.is_locked(),
@@ -2110,6 +2183,16 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 			_pieces.remove_child(piece)
 			parent.add_child(piece)
 
+# Clean the pieces that have been put into limbo from memory.
+# force: If true, clean all pieces. If false, only clean pieces that have not
+# received a RPC for some time.
+func _limbo_clean_pieces(force: bool) -> void:
+	for piece in get_tree().get_nodes_in_group("limbo"):
+		if piece is Piece:
+			if force or piece.get_time_since_update() > LIMBO_DURATION:
+				_pieces.remove_child(piece)
+				piece.queue_free()
+
 # Modify piece states such that the pieces have new names, and their positions
 # are offset by a given amount.
 # state: The state to modify.
@@ -2202,22 +2285,6 @@ func _on_container_absorbing_hovered(container: PieceContainer, player_id: int) 
 func _on_container_releasing_random_piece(container: PieceContainer) -> void:
 	if get_tree().is_network_server():
 		rpc_id(1, "request_container_release_random", container.name, 1, false)
-
-func _on_piece_exiting_tree(piece: Piece) -> void:
-	if get_tree().is_network_server() and _srv_events_add_states:
-		# Push the undo state after this frame, just in case some pieces are
-		# in the middle of being manipulated, e.g. stacks.
-		# TODO: Could we deal with the case of one card being put on top of
-		# another? Or do we move this code somewhere else?
-		call_deferred("_on_piece_exiting_tree_after")
-
-	_camera_controller.remove_piece_ref(piece)
-
-func _on_piece_exiting_tree_after() -> void:
-	#if not waiting for a timer or disabled because set_state wil be called
-	if _srv_undo_state_events["remove_piece"] <= 0:
-		push_undo_state()	#make host add an undo state
-	_srv_undo_state_events["remove_piece"] = UNDO_STATE_EVENT_TIMERS["remove_piece"]	#if they trigger this again before timer is done, reset the timer
 
 func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void:
 	if get_tree().is_network_server():
@@ -2331,6 +2398,13 @@ func _on_CameraController_removing_hidden_area(hidden_area: HiddenArea):
 	if _hidden_areas.is_a_parent_of(hidden_area):
 		rpc_id(1, "request_remove_hidden_area", hidden_area.name)
 
+func _on_CameraController_removing_pieces(pieces: Array):
+	var piece_names = []
+	for piece in pieces:
+		if piece is Piece:
+			piece_names.append(piece.name)
+	rpc_id(1, "request_remove_pieces", piece_names)
+
 func _on_CameraController_selecting_all_pieces():
 	var pieces = _pieces.get_children()
 	_camera_controller.append_selected_pieces(pieces)
@@ -2358,15 +2432,20 @@ func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stac
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
 
 func _on_GameUI_clear_pieces():
+	var piece_names = []
 	for piece in _pieces.get_children():
 		if piece is Piece:
-			piece.rpc_id(1, "request_remove_self")
+			piece_names.append(piece)
+	rpc_id(1, "request_remove_pieces", piece_names)
 
 func _on_GameUI_rotation_amount_updated(rotation_amount: float):
 	_camera_controller.set_piece_rotation_amount(rotation_amount)
 
 func _on_GameUI_undo_state():
 	rpc_id(1, "pop_undo_state")
+
+func _on_LimboCleanTimer_timeout():
+	call_deferred("_limbo_clean_pieces", false)
 
 func _on_Room_tree_exiting():
 	if not _paint_plane.get_parent():

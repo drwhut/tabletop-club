@@ -76,6 +76,7 @@ signal painting(position, color, size)
 signal placing_hidden_area(point1, point2)
 signal pop_stack_requested(stack, n)
 signal removing_hidden_area(hidden_area)
+signal removing_pieces(pieces)
 signal selecting_all_pieces()
 signal setting_hidden_area_preview_points(point1, point2)
 signal setting_hidden_area_preview_visible(is_visible)
@@ -869,11 +870,7 @@ func _cut_selected_pieces() -> void:
 # Delete the currently selected pieces from the game.
 func _delete_selected_pieces() -> void:
 	_hide_context_menu()
-	# Go in reverse order, as we are removing the pieces as we go.
-	for i in range(_selected_pieces.size() - 1, -1, -1):
-		var piece = _selected_pieces[i]
-		if piece is Piece:
-			piece.rpc_id(1, "request_remove_self")
+	emit_signal("removing_pieces", _selected_pieces)
 
 # Get the scale nessesary to make cursors appear the same size regardless of
 # resolution.
