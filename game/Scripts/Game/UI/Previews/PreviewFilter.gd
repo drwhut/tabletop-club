@@ -184,7 +184,11 @@ func _filter_previews(from_filtered: bool) -> void:
 	if not query.empty():
 		for i in range(_preview_entries_filtered.size() - 1, -1, -1):
 			var entry = _preview_entries_filtered[i]
-			var entry_name = entry["name"].capitalize()
+			var name_key = "name_%s" % TranslationServer.get_locale()
+			var entry_name = entry["name"]
+			if entry.has(name_key):
+				entry_name = entry[name_key]
+			entry_name = entry_name.capitalize()
 			
 			if not query in entry_name:
 				_preview_entries_filtered.remove(i)
