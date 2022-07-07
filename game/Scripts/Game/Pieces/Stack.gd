@@ -172,14 +172,14 @@ func add_piece(piece_entry: Dictionary, piece_transform: Transform,
 	
 	mass += piece_entry["mass"]
 	
+	_add_piece_at_pos(piece_entry, pos, flip_y)
+	
 	if is_card_stack():
 		if card_add_sounds != null:
 			play_effect(card_add_sounds.random_stream())
 	else:
 		if chip_add_sounds != null:
 			play_effect(chip_add_sounds.random_stream())
-	
-	_add_piece_at_pos(piece_entry, pos, flip_y)
 
 # Check if the stack is empty.
 # Returns: If the stack is empty.

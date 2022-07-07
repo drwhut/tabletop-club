@@ -188,8 +188,11 @@ func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 		# bit... dirty? There's got to be a better way of doing this :O
 		var asset = texture_path.get_file().get_basename()
 		var type_dir = texture_path.get_base_dir()
-		var type = type_dir.get_file()
-		var pack = type_dir.get_base_dir().get_file()
+		if type_dir.begins_with("user://assets/"):
+			type_dir = type_dir.substr(14)
+		var type_split = type_dir.split("/", false, 1)
+		var pack = type_split[0]
+		var type = type_split[1]
 		var entry_path = "%s/%s/%s" % [pack, type, asset]
 		
 		var piece_entry = AssetDB.search_path(entry_path)
