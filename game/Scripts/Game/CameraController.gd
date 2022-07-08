@@ -1002,6 +1002,14 @@ func _popup_piece_context_menu() -> void:
 	# LEVEL 2 #
 	###########
 	
+	# We make an exception here so that the "size" item has a separator below
+	# it, separating it from the rest of the items below (which have functions).
+	if _inheritance_has(inheritance, "Stack"):
+		var size = 0
+		for stack in _selected_pieces:
+			size += stack.get_piece_count()
+		_piece_context_menu.add_item(tr("Size: %d") % size)
+	
 	if _piece_context_menu.get_item_count() > prev_num_items:
 		_piece_context_menu.add_separator()
 	prev_num_items = _piece_context_menu.get_item_count()
