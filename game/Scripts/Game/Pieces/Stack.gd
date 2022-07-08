@@ -371,17 +371,45 @@ master func request_shuffle() -> void:
 	
 	rpc("set_piece_order", order)
 
-# Request the server to sort the stack by texture path.
-master func request_sort() -> void:
+# Request the server to sort the stack by a given key in the item's entries.
+# key: The key whose values to sort.
+master func request_sort(key: String) -> void:
 	var index = 0
 	var items = []
+	var num_numbers = 0
+	var num_strings = 0
 	for piece_meta in get_pieces():
 		var piece_entry = piece_meta["piece_entry"]
+		var piece_name = piece_entry["name"]
+		
+		if not piece_entry.has(key):
+			push_error("Cannot sort stack, entry of piece %s has no key %s!" % [piece_name, key])
+			return
+		
+		var value = piece_entry[key]
+		if value == null:
+			push_error("Cannot sort stack, value of piece %s is null!" % piece_name)
+			return
+		elif value is int or value is float:
+			num_numbers += 1
+		elif value is String:
+			num_strings += 1
+		else:
+			push_error("Cannot sort stack, value of piece %s is neither a number nor a string!" % piece_name)
+			return
+		
 		items.append({
 			"index": index,
-			"texture_path": piece_entry["texture_path"]
+			"name": piece_name,
+			"value": value
 		})
 		index += 1
+	
+	if num_numbers > 0 and num_strings > 0:
+		push_warning("Stack values are a mixture of numbers and strings, converting values to strings.")
+		for item in items:
+			if not item["value"] is String:
+				item["value"] = str(item["value"])
 	
 	var items2 = items.duplicate()
 	_merge_sort(items, items2, 0, items.size())
@@ -456,8 +484,23 @@ func _merge_sort(array: Array, copy: Array, begin: int, end: int) -> void:
 	var j = middle
 	
 	for k in range(begin, end):
-		# Sort the children by their texture paths.
-		if i < middle and (j >= end or copy[i]["texture_path"] <= copy[j]["texture_path"]):
+		var increment_i = false
+		if i < middle:
+			if j >= end:
+				increment_i = true
+			else:
+				# If the values are the same, fall back on the name for sorting.
+				# This way, if there are lots of pieces with the same value, they
+				# should not be a subset of pieces that are effectively random.
+				var less_than_or_equal = true
+				if copy[i]["value"] == copy[j]["value"]:
+					less_than_or_equal = (copy[i]["name"] <= copy[j]["name"])
+				else:
+					less_than_or_equal = (copy[i]["value"] <= copy[j]["value"])
+				
+				increment_i = less_than_or_equal
+		
+		if increment_i:
 			array[k] = copy[i]
 			i += 1
 		else:

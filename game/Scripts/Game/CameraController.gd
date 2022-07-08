@@ -41,7 +41,10 @@ enum {
 	CONTEXT_STACK_ORIENT_ALL_DOWN,
 	CONTEXT_STACK_ORIENT_ALL_UP,
 	CONTEXT_STACK_SHUFFLE,
-	CONTEXT_STACK_SORT,
+	
+	CONTEXT_STACK_SORT_NAME,
+	CONTEXT_STACK_SORT_SUIT,
+	CONTEXT_STACK_SORT_VALUE,
 	
 	CONTEXT_STACKABLE_PIECE_COLLECT_SELECTED
 }
@@ -115,6 +118,7 @@ onready var _ruler_scale_spin_box = $RulerToolMenu/MarginContainer/VBoxContainer
 onready var _ruler_system_button = $RulerToolMenu/MarginContainer/VBoxContainer/SystemButton
 onready var _ruler_tool_menu = $RulerToolMenu
 onready var _rulers = $Rulers
+onready var _sort_menu = $PieceContextMenu/SortMenu
 onready var _speaker_menu = $PieceContextMenu/SpeakerMenu
 onready var _speaker_pause_button = $PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPauseButton
 onready var _speaker_play_stop_button = $PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPlayStopButton
@@ -1042,7 +1046,29 @@ func _popup_piece_context_menu() -> void:
 		_piece_context_menu.add_item(tr("Orient all up"), CONTEXT_STACK_ORIENT_ALL_UP)
 		_piece_context_menu.add_item(tr("Orient all down"), CONTEXT_STACK_ORIENT_ALL_DOWN)
 		_piece_context_menu.add_item(tr("Shuffle"), CONTEXT_STACK_SHUFFLE)
-		_piece_context_menu.add_item(tr("Sort"), CONTEXT_STACK_SORT)
+		
+		_sort_menu.clear()
+		var optional_keys = [ "suit", "value" ]
+		for stack in _selected_pieces:
+			for piece_meta in stack.get_pieces():
+				var piece_entry = piece_meta["piece_entry"]
+				for key_index in range(optional_keys.size()-1, -1, -1):
+					var key = optional_keys[key_index]
+					var keep_key = false
+					if piece_entry.has(key):
+						if piece_entry[key] != null:
+							keep_key = true
+					
+					if not keep_key:
+						optional_keys.remove(key_index)
+		
+		_sort_menu.add_item(tr("Name"), CONTEXT_STACK_SORT_NAME)
+		if optional_keys.has("suit"):
+			_sort_menu.add_item(tr("Suit"), CONTEXT_STACK_SORT_SUIT)
+		if optional_keys.has("value"):
+			_sort_menu.add_item(tr("Value"), CONTEXT_STACK_SORT_VALUE)
+		_sort_menu.set_as_minsize()
+		_piece_context_menu.add_submenu_item(tr("Sort by"), "SortMenu")
 	
 	elif _inheritance_has(inheritance, "TimerPiece"):
 		if _selected_pieces.size() == 1:
@@ -2152,11 +2178,6 @@ func _on_PieceContextMenu_id_pressed(id: int):
 				if piece is Stack:
 					piece.rpc_id(1, "request_shuffle")
 		
-		CONTEXT_STACK_SORT:
-			for piece in _selected_pieces:
-				if piece is Stack:
-					piece.rpc_id(1, "request_sort")
-		
 		CONTEXT_STACKABLE_PIECE_COLLECT_SELECTED:
 			if _selected_pieces.size() > 1:
 				emit_signal("collect_pieces_requested", _selected_pieces)
@@ -2199,6 +2220,21 @@ func _on_RulerToolButton_pressed():
 	_ruler_tool_menu.rect_position = get_viewport().get_mouse_position()
 	_ruler_tool_menu.rect_position.y -= _ruler_tool_menu.rect_size.y
 	_ruler_tool_menu.popup()
+
+func _on_SortMenu_id_pressed(id: int):
+	var key = ""
+	match id:
+		CONTEXT_STACK_SORT_NAME:
+			key = "name"
+		CONTEXT_STACK_SORT_SUIT:
+			key = "suit"
+		CONTEXT_STACK_SORT_VALUE:
+			key = "value"
+	
+	if not key.empty():
+		for stack in _selected_pieces:
+			if stack is Stack:
+				stack.rpc_id(1, "request_sort", key)
 
 func _on_SpeakerPauseButton_pressed():
 	if _speaker_connected:

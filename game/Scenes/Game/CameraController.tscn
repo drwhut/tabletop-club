@@ -88,6 +88,10 @@ max_value = 1
 prefix = "X ="
 text = "Deal X cards"
 
+[node name="SortMenu" type="PopupMenu" parent="PieceContextMenu"]
+margin_right = 20.0
+margin_bottom = 20.0
+
 [node name="SpeakerMenu" type="PopupPanel" parent="PieceContextMenu"]
 margin_right = 300.0
 margin_bottom = 102.0
@@ -774,6 +778,7 @@ autowrap = true
 [connection signal="popup_hide" from="PieceContextMenu/ColorMenu" to="." method="_on_ColorMenu_popup_hide"]
 [connection signal="color_changed" from="PieceContextMenu/ColorMenu/ColorPicker" to="." method="_on_ColorPicker_color_changed"]
 [connection signal="pressed" from="PieceContextMenu/DealCardsMenu/DealCardsSpinBoxButton" to="." method="_on_DealCardsSpinBoxButton_pressed"]
+[connection signal="id_pressed" from="PieceContextMenu/SortMenu" to="." method="_on_SortMenu_id_pressed"]
 [connection signal="pressed" from="PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerSelectTrackButton" to="." method="_on_SpeakerSelectTrackButton_pressed"]
 [connection signal="pressed" from="PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPlayStopButton" to="." method="_on_SpeakerPlayStopButton_pressed"]
 [connection signal="pressed" from="PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPauseButton" to="." method="_on_SpeakerPauseButton_pressed"]

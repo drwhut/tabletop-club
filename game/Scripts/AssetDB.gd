@@ -909,6 +909,30 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 					return ERR_INVALID_DATA
 			
 			entry["face_values"] = face_values_entry
+		
+		if type == "cards" or type.begins_with("tokens"):
+			# If we use null as a default value, ConfigFile will throw an error
+			# if there is no value there, so use something else temporarily
+			# to represent "nothing".
+			var value = _get_file_config_value(config, from.get_file(), "value", Reference.new())
+			var suit  = _get_file_config_value(config, from.get_file(), "suit", Reference.new())
+			
+			if value is Reference:
+				value = null
+			else:
+				if not (value is int or value is float or value is String):
+					push_error("Value must be a number or a string!")
+					return ERR_INVALID_DATA
+			
+			if suit is Reference:
+				suit = null
+			else:
+				if not (suit is int or suit is float or suit is String):
+					push_error("Suit must be a number or a string!")
+					return ERR_INVALID_DATA
+			
+			entry["value"] = value
+			entry["suit"] = suit
 	
 	_add_entry_to_db(pack, type, entry)
 	
