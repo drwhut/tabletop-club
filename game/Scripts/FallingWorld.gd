@@ -161,7 +161,7 @@ func _build_next_piece(_userdata) -> void:
 	var piece_entry = _next_piece_entry.duplicate(true)
 	_piece_mutex.unlock()
 	
-	if not (piece_entry.empty() or piece_entry.has("texture_paths")):
+	if not (piece_entry.empty() or piece_entry.has("entry_names")):
 		var piece = PieceBuilder.build_piece(piece_entry)
 		
 		_piece_mutex.lock()

@@ -971,9 +971,7 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 				# objects - which should also be the same for all of them.
 				var scale = null
 				
-				var colors = []
-				var masses = []
-				var texture_paths = []
+				var entry_names = []
 				for item in items:
 					var entry = search_type(pack, type, item)
 					if not entry.empty():
@@ -983,9 +981,7 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 							if entry["scale"] != scale:
 								push_error("'%s' has inconsistent scale in stack '%s'!" % [item, stack_name])
 								continue
-						colors.append(entry["color"])
-						masses.append(entry["mass"])
-						texture_paths.append(entry["texture_path"])
+						entry_names.append(item)
 					else:
 						push_error("Item '%s' in stack '%s' does not exist!" % [item, stack_name])
 				
@@ -994,14 +990,11 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 					var type_scene = type_meta["scene"]
 					
 					var stack_entry = {
-						"colors": colors,
 						"desc": desc,
-						"entry_path": "%s/%s/%s" % [pack, type, stack_name],
-						"masses": masses,
+						"entry_names": entry_names,
 						"name": stack_name,
 						"scale": scale,
-						"scene_path": type_scene,
-						"texture_paths": texture_paths
+						"scene_path": type_scene
 					}
 					
 					# For us to read the DB efficiently it needs to be kept in

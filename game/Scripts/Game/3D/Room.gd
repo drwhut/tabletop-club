@@ -771,7 +771,7 @@ master func request_add_piece(entry_path: String, position: Vector3) -> String:
 		return ""
 	
 	# Is the piece a pre-filled stack?
-	if piece_entry.has("texture_paths") and (not piece_entry.has("texture_path")):
+	if piece_entry.has("entry_names"):
 		return request_add_stack_filled(transform, entry_path)
 	else:
 		# Send the call to create the piece to everyone.

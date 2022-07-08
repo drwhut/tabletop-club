@@ -172,36 +172,13 @@ func build_table(table_entry: Dictionary) -> RigidBody:
 # stack: The stack to fill.
 # stack_entry: The stack entry to use.
 func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
-	if stack_entry["colors"].size() != stack_entry["masses"].size():
-		push_error("Stack entry arrays 'colors' and 'masses' do not match size!")
-		return
-	if stack_entry["masses"].size() != stack_entry["texture_paths"].size():
-		push_error("Stack entry arrays 'masses' and 'texture_paths' do not match size!")
-		return
-	
-	for i in range(stack_entry["texture_paths"].size()):
-		var color = stack_entry.colors[i]
-		var mass = stack_entry.masses[i]
-		var texture_path = stack_entry.texture_paths[i]
-		
-		# TODO: Using the texture path to figure out the entry path seems a
-		# bit... dirty? There's got to be a better way of doing this :O
-		var asset = texture_path.get_file().get_basename()
-		var type_dir = texture_path.get_base_dir()
-		if type_dir.begins_with("user://assets/"):
-			type_dir = type_dir.substr(14)
-		var type_split = type_dir.split("/", false, 1)
-		var pack = type_split[0]
-		var type = type_split[1]
-		var entry_path = "%s/%s/%s" % [pack, type, asset]
-		
+	var stack_entry_dir = stack_entry["entry_path"].get_base_dir()
+	for entry_name in stack_entry["entry_names"]:
+		var entry_path = stack_entry_dir + "/" + entry_name
 		var piece_entry = AssetDB.search_path(entry_path)
 		if piece_entry.empty():
-			push_error("Entry (%s) from texture path (%s) was not found!" % [entry_path, texture_path])
+			push_error("Entry (%s) was not found!" % entry_path)
 			continue
-		
-		piece_entry["color"] = color
-		piece_entry["mass"] = mass
 		
 		stack.add_piece(piece_entry, Transform.IDENTITY, Stack.STACK_BOTTOM,
 			Stack.FLIP_NO)

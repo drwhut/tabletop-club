@@ -101,7 +101,7 @@ func _build(_userdata) -> void:
 		var piece: Piece = null
 		
 		# This section of code is why this function is running in a thread.
-		if piece_entry.has("texture_paths"):
+		if piece_entry.has("entry_names"):
 			if piece_entry["scene_path"] == "res://Pieces/Card.tscn":
 				piece = preload("res://Pieces/StackSandwich.tscn").instance()
 			else:
