@@ -74,6 +74,9 @@ const VALID_TEXTURE_EXTENSIONS = ["bmp", "dds", "exr", "hdr", "jpeg", "jpg",
 # The list of extensions that require us to use the TabletopImporter.
 const EXTENSIONS_TO_IMPORT = VALID_AUDIO_EXTENSIONS + VALID_SCENE_EXTENSIONS + VALID_TEXTURE_EXTENSIONS
 
+const VALID_SUPPORT_EXTENSIONS = ["bin", "mtl"]
+const VALID_EXTENSIONS = EXTENSIONS_TO_IMPORT + VALID_TABLE_EXTENSIONS + VALID_SUPPORT_EXTENSIONS
+
 const SFX_AUDIO_STREAMS = {
 	"generic": {
 		"fast": preload("res://Sounds/Generic/GenericFastSounds.tres"),
@@ -586,12 +589,13 @@ func _catalog_type_dir(type_dir: Directory) -> Dictionary:
 	var file = type_dir.get_next()
 	while file:
 		if not (file == "config.cfg" or file == "stacks.cfg"):
-			# Make sure that scenes are imported last, since they can depend on
-			# other files like textures and binary files.
-			if VALID_SCENE_EXTENSIONS.has(file.get_extension()):
-				files.push_back(file)
-			else:
-				files.push_front(file)
+			if VALID_EXTENSIONS.has(file.get_extension()):
+				# Make sure that scenes are imported last, since they can
+				# depend on other files like textures and binary files.
+				if VALID_SCENE_EXTENSIONS.has(file.get_extension()):
+					files.push_back(file)
+				else:
+					files.push_front(file)
 		
 		file = type_dir.get_next()
 	

@@ -50,6 +50,10 @@ var _save_screenshot_path: String = ""
 var _state_version_save: Dictionary = {}
 var _time_since_last_autosave: float = 0.0
 
+var _cln_compared_schemas: bool = false
+var _srv_schema_db: Dictionary = {}
+var _srv_schema_fs: Dictionary = {}
+
 # Apply options from the options menu.
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
@@ -81,9 +85,244 @@ func apply_options(config: ConfigFile) -> void:
 	if _master_server.is_connection_established():
 		Lobby.rpc_id(1, "request_modify_self", _player_name, _player_color)
 
+# Called by the server to compare it's asset schemas against our own.
+# server_schema_db: The server's AssetDB schema.
+# server_schema_fs: The server's filesystem schema.
+puppet func compare_server_schemas(server_schema_db: Dictionary,
+	server_schema_fs: Dictionary) -> void:
+	
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if _cln_compared_schemas:
+		return
+	else:
+		_cln_compared_schemas = true
+	
+	print("Received asset schemas from the host, comparing...")
+	
+	var client_schema_db = _create_schema_db()
+	var client_schema_fs = _create_schema_fs()
+	
+	var db_extra = {}
+	var db_need = {}
+	var db_num_extra = 0
+	var db_num_missing = 0
+	var db_num_modified = 0
+	for pack in server_schema_db:
+		if not pack is String:
+			push_error("Key in server DB schema is not a string!")
+			return
+		
+		if not _check_name(pack):
+			push_error("Pack name '%s' in server DB schema is invalid!" % pack)
+			return
+		
+		var have_pack = client_schema_db.has(pack)
+		for type in server_schema_db[pack]:
+			if not type is String:
+				push_error("Key in pack %s in server DB schema is not a string!" % pack)
+				return
+			
+			if not type in AssetDB.ASSET_PACK_SUBFOLDERS:
+				push_error("Type name '%s' in pack %s in server DB schema is invalid!" % [type, pack])
+				return
+			
+			var server_type_arr = server_schema_db[pack][type]
+			if not server_type_arr is Array:
+				push_error("%s/%s in server DB schema is not an array!" % [pack, type])
+				return
+			
+			var have_type = false
+			if have_pack:
+				have_type = client_schema_db[pack].has(type)
+			
+			var need_arr = []
+			var extra_arr = []
+			var client_type_arr = []
+			if have_type:
+				client_type_arr = client_schema_db[pack][type]
+			
+			var client_ptr = 0
+			var last_name = ""
+			for server_ptr in range(server_type_arr.size()):
+				var server_meta = server_type_arr[server_ptr]
+				if not server_meta is Dictionary:
+					push_error("%s/%s/%d in server DB schema is not a dictionary!" % [pack, type, server_ptr])
+					return
+				
+				if server_meta.size() != 2:
+					push_error("%s/%s/%d in server DB schema has %d elements (expected 2)!" % [pack, type, server_ptr, server_meta.size()])
+					return
+				
+				if not server_meta.has("name"):
+					push_error("%s/%s/%d in server DB schema does not contain a name!" % [pack, type, server_ptr])
+					return
+				
+				if not server_meta["name"] is String:
+					push_error("Name in %s/%s/%d in server DB schema is not a string!" % [pack, type, server_ptr])
+					return
+				
+				if not _check_name(server_meta["name"]):
+					push_error("Name '%s' in %s/%s/%d in server DB schema is invalid!" % [server_meta["name"], pack, type, server_ptr])
+					return
+				
+				if not server_meta.has("hash"):
+					push_error("%s/%s/%d in server DB schema does not contain a hash!" % [pack, type, server_ptr])
+					return
+				
+				if not server_meta["hash"] is int:
+					push_error("Hash in %s/%s/%d in server DB schema is not an integer!" % [pack, type, server_ptr])
+					return
+				
+				# Check if the server names are in order! It's a requirement
+				# for the AssetDB, and is needed for this function to work
+				# properly.
+				if server_ptr > 0:
+					if server_meta["name"] < last_name:
+						push_error("Name '%s' in server DB schema came before the name '%s'!" % [server_meta["name"], last_name])
+						return
+				last_name = server_meta["name"]
+				
+				var found_match = false
+				while (not found_match) and client_ptr < client_type_arr.size():
+					var client_meta = client_type_arr[client_ptr]
+					if client_meta["name"] == server_meta["name"]:
+						found_match = true
+						if client_meta["hash"] != server_meta["hash"]:
+							need_arr.append(server_ptr)
+							db_num_modified += 1
+					
+					elif client_meta["name"] > server_meta["name"]:
+						break
+					
+					else:
+						extra_arr.append(client_ptr)
+						db_num_extra += 1
+					
+					client_ptr += 1
+				
+				if not found_match:
+					need_arr.append(server_ptr)
+					db_num_missing += 1
+			
+			while client_ptr < client_type_arr.size():
+				extra_arr.append(client_ptr)
+				db_num_extra += 1
+				client_ptr += 1
+			
+			if not extra_arr.empty():
+				if not db_extra.has(pack):
+					db_extra[pack] = {}
+				db_extra[pack][type] = extra_arr
+			
+			if not need_arr.empty():
+				if not db_need.has(pack):
+					db_need[pack] = {}
+				db_need[pack][type] = need_arr
+	
+	var fs_need = {}
+	var fs_num_missing = 0
+	var fs_num_modified = 0
+	for pack in server_schema_fs:
+		if not pack is String:
+			push_error("Key in server FS schema is not a string!")
+			return
+		
+		if not _check_name(pack):
+			push_error("Pack name '%s' in server FS schema is invalid!" % pack)
+			return
+		
+		var have_pack = client_schema_fs.has(pack)
+		for type in server_schema_fs[pack]:
+			if not type is String:
+				push_error("Key in pack %s in server FS schema is not a string!" % pack)
+				return
+			
+			if not type in AssetDB.ASSET_PACK_SUBFOLDERS:
+				push_error("Type name '%s' in pack %s in server FS schema is invalid!" % [type, pack])
+				return
+			
+			var server_type_dict = server_schema_fs[pack][type]
+			if not server_type_dict is Dictionary:
+				push_error("%s/%s in server FS schema is not a dictionary!" % [pack, type])
+				return
+			
+			var have_type = false
+			if have_pack:
+				have_type = client_schema_fs[pack].has(type)
+			
+			var need_arr = []
+			var client_type_dict = {}
+			if have_type:
+				client_type_dict = client_schema_fs[pack][type]
+			
+			for server_name in server_type_dict:
+				if not server_name is String:
+					push_error("File name in server FS schema is not a string!")
+					return
+				
+				if not _check_name(server_name):
+					push_error("File name '%s' in server FS schema is invalid!" % server_name)
+					return
+				
+				var server_md5 = server_type_dict[server_name]
+				if not server_md5 is String:
+					push_error("%s/%s/%s MD5 in server FS schema is not a string!" % [pack, type, server_name])
+					return
+				
+				if not server_md5.is_valid_hex_number():
+					push_error("%s/%s/%s MD5 in server FS schema is not a valid hex number!" % [pack, type, server_name])
+					return
+				
+				if client_type_dict.has(server_name):
+					# Do the MD5 hashes not match?
+					if client_type_dict[server_name] != server_md5:
+						need_arr.append(server_name)
+						fs_num_modified += 1
+				else:
+					need_arr.append(server_name)
+					fs_num_missing += 1
+			
+			if not need_arr.empty():
+				if not fs_need.has(pack):
+					fs_need[pack] = {}
+				fs_need[pack][type] = need_arr
+	
+	print("AssetDB schema results:")
+	print("# Extra entries: %d" % db_num_extra)
+	print("# Missing entries: %d" % db_num_missing)
+	print("# Modified entries: %d" % db_num_modified)
+	print("- Entries that the host is missing:")
+	for pack in db_extra:
+		for type in db_extra[pack]:
+			for index in db_extra[pack][type]:
+				var asset = client_schema_db[pack][type][index]["name"]
+				print("%s/%s/%s" % [pack, type, asset])
+	print("- Entries that we need from the host:")
+	for pack in db_need:
+		for type in db_need[pack]:
+			for index in db_need[pack][type]:
+				var asset = server_schema_db[pack][type][index]["name"]
+				print("%s/%s/%s" % [pack, type, asset])
+	
+	print("Filesystem schema results:")
+	print("# Missing files: %d" % fs_num_missing)
+	print("# Modified files: %d" % fs_num_modified)
+	print("- Files that we need from the host:")
+	for pack in fs_need:
+		for type in fs_need[pack]:
+			for asset in fs_need[pack][type]:
+				print("%s/%s/%s" % [pack, type, asset])
+
 # Ask the master server to host a game.
 func start_host() -> void:
 	print("Hosting game...")
+	
+	_srv_schema_db = _create_schema_db()
+	_srv_schema_fs = _create_schema_fs()
+	print(_srv_schema_fs)
+	
 	_connect_to_master_server("")
 
 # Ask the master server to join a game.
@@ -251,6 +490,18 @@ func _unhandled_input(event):
 			else:
 				push_warning("Cannot load quicksave file at '%s', does not exist!" % quicksave_path)
 
+# Check a name that was given to us over the network.
+# Returns: If the name is valid.
+# name: The name to check.
+func _check_name(name: String) -> bool:
+	if not name.is_valid_filename():
+		return false
+	
+	if ".." in name:
+		return false
+	
+	return true
+
 # Connect to the master server, and ask to join the given room.
 # room_code: The room code to join with. If empty, ask the master server to
 # make our own room.
@@ -264,6 +515,98 @@ func _connect_to_master_server(room_code: String = "") -> void:
 		[_master_server.URL, room_code])
 	_master_server.room_code = room_code
 	_master_server.connect_to_server()
+
+# Create a schema of the AssetDB, which contains the directory structure, and
+# hash values of the piece entries.
+# Returns: A schema of the AssetDB.
+func _create_schema_db() -> Dictionary:
+	var schema = {}
+	var asset_db = AssetDB.get_db()
+	
+	for pack in asset_db:
+		var pack_dict = {}
+		for type in asset_db[pack]:
+			var type_arr = []
+			for asset_entry in asset_db[pack][type]:
+				var dict_to_hash: Dictionary = asset_entry.duplicate()
+				var dict_keys = dict_to_hash.keys()
+				
+				# If we're going to hash the entry, we need to remove any
+				# potential translations, since they will differ between
+				# clients.
+				var tr_keys = ["name", "desc"]
+				for key in dict_keys:
+					for tr_key in tr_keys:
+						if key.begins_with(tr_key):
+							if key != tr_key:
+								dict_to_hash.erase(key)
+				
+				type_arr.append({
+					"name": dict_to_hash["name"],
+					"hash": dict_to_hash.hash()
+				})
+			
+			pack_dict[type] = type_arr
+		schema[pack] = pack_dict
+	
+	return schema
+
+# Create a schema of the asset file system, under the user:// directory,
+# containing the imported files and their md5 hashes.
+# Returns: A schema of the asset filesystem.
+func _create_schema_fs() -> Dictionary:
+	var schema = {}
+	
+	var dir = Directory.new()
+	var err = dir.open("user://assets")
+	if err != OK:
+		push_error("Failed to open the imported assets directory (error %d)" % err)
+		return {}
+	
+	dir.list_dir_begin(true, true)
+	var pack = dir.get_next()
+	while pack:
+		if dir.dir_exists(pack):
+			var pack_dir = Directory.new()
+			err = pack_dir.open("user://assets/" + pack)
+			
+			if err != OK:
+				push_error("Failed to open '%s' imported directory (error %d)" % [pack, err])
+				return {}
+			
+			for type in AssetDB.ASSET_PACK_SUBFOLDERS:
+				if pack_dir.dir_exists(type):
+					var sub_dir = Directory.new()
+					err = sub_dir.open("user://assets/" + pack + "/" + type)
+					
+					if err != OK:
+						push_error("Failed to open '%s/%s' imported directory (error %d" %
+								[pack, type, err])
+						return {}
+					
+					sub_dir.list_dir_begin(true, true)
+					
+					var file = sub_dir.get_next()
+					while file:
+						if AssetDB.VALID_EXTENSIONS.has(file.get_extension()):
+							var file_path = "user://assets/" + pack + "/" + type + "/" + file
+							var file_md5 = File.new()
+							var md5 = file_md5.get_md5(file_path)
+							if not md5.empty():
+								if not schema.has(pack):
+									schema[pack] = {}
+								
+								if not schema[pack].has(type):
+									schema[pack][type] = {}
+								
+								schema[pack][type][file] = md5
+							else:
+								push_error("Failed to get md5 of '%s'" % file_path)
+							
+						file = sub_dir.get_next()
+		pack = dir.get_next()
+	
+	return schema
 
 # Create a network peer object.
 # Returns: A WebRTCPeerConnection for the given peer.
@@ -372,6 +715,9 @@ func _on_connection_established(id: int):
 			_room.rpc("add_hand", id, hand_transform)
 		
 		_room.start_sending_cursor_position()
+		
+		# Send them our asset schemas to see if they are missing any assets.
+		rpc_id(id, "compare_server_schemas", _srv_schema_db, _srv_schema_fs)
 	
 	# If we are not the host, then ask the host to send us their list of
 	# players.
