@@ -217,6 +217,17 @@ func _on_GamesDialog_entry_requested(_pack: String, _type: String, entry: Dictio
 	_games_dialog.visible = false
 	emit_signal("load_table", entry["table_path"])
 
+func _on_GameUI_tree_exiting():
+	# So for some reason, really actually for realsies making sure that the
+	# ErrorReporter is well and truly gone before the UI is removed from the
+	# scene tree fixes a crash with an annoyingly short backtrace (it was
+	# literally just one line, and to some shared object file somewhere idk),
+	# but ONLY if the AssetDB was empty??? All you need to know is, this took
+	# me like four hours to find, and I'm sleepy, and I'm going to bed. o/ zzz
+	if _error_reporter != null:
+		_error_reporter.unreference()
+		_error_reporter = null
+
 func _on_LoadGameButton_pressed():
 	_popup_save_dialog(false)
 

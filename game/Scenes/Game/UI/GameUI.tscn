@@ -237,6 +237,7 @@ script = ExtResource( 5 )
 [node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
 visible = false
 
+[connection signal="tree_exiting" from="." to="." method="_on_GameUI_tree_exiting"]
 [connection signal="pressed" from="HideableUI/TopPanel/ObjectsButton" to="." method="_on_ObjectsButton_pressed"]
 [connection signal="pressed" from="HideableUI/TopPanel/GamesButton" to="." method="_on_GamesButton_pressed"]
 [connection signal="pressed" from="HideableUI/TopPanel/RoomButton" to="." method="_on_RoomButton_pressed"]
