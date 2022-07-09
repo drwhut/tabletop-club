@@ -335,7 +335,16 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 				_missing_fs_label.text += "- " + path
 				print(path)
 	
-	_missing_assets_dialog.popup_centered()
+	print("Temporarily removing entries that the host does not have...")
+	for pack in db_extra:
+		for type in db_extra[pack]:
+			var type_arr = db_extra[pack][type]
+			for index_arr in range(type_arr.size() - 1, -1, -1):
+				var index_asset = type_arr[index_arr]
+				AssetDB.temp_remove_entry(pack, type, index_asset)
+	
+	if not (db_need.empty() and fs_need.empty()):
+		_missing_assets_dialog.popup_centered()
 
 # Ask the master server to host a game.
 func start_host() -> void:

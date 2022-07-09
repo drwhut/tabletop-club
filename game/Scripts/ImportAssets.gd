@@ -46,7 +46,7 @@ func _ready():
 	AssetDB.connect("importing_file", self, "_on_importing_file")
 	
 	# Check to see if the TabletopClub Godot module is loaded.
-	if AssetDB.importer_exists:
+	if Global.tabletop_importer != null:
 		AssetDB.start_importing()
 	else:
 		_missing_module_popup.popup_centered()

@@ -139,6 +139,10 @@ const SFX_AUDIO_STREAMS = {
 var _db = {}
 var _db_mutex = Mutex.new()
 
+# A temporary copy of the AssetDB in the event that the host and client's assets
+# differ from one another - in that event, the temporary database is used.
+var _temp_db = {}
+
 var _import_dir_found = false
 var _import_file_path = ""
 var _import_files_imported = 0
@@ -150,16 +154,15 @@ var _import_thread = Thread.new()
 # Keep track of which locales we've translated to, so we don't re-parse them.
 var _tr_locales = []
 
-# From the tabletop_club_godot_module:
-# https://github.com/drwhut/tabletop_club_godot_module
-var _importer
-var importer_exists: bool = false
-
 # Clear the AssetDB.
 func clear_db() -> void:
 	_db_mutex.lock()
 	_db.clear()
 	_db_mutex.unlock()
+
+# Clear the temporary AssetDB, and stop it from being used.
+func clear_temp_db() -> void:
+	_temp_db.clear()
 
 # Get the list of asset directory paths the game will scan.
 # Returns: The list of asset directory paths.
@@ -176,7 +179,10 @@ func get_asset_paths() -> Array:
 # Get the asset database.
 # Returns: The asset database.
 func get_db() -> Dictionary:
-	return _db
+	if _temp_db.empty():
+		return _db
+	else:
+		return _temp_db
 
 # Parse translation config files in the assets directory for the given locale.
 # NOTE: This must be run AFTER the assets have been imported.
@@ -280,15 +286,35 @@ func start_importing() -> void:
 	
 	_tr_locales = []
 
+# Temporarily remove an entry from the AssetDB.
+# pack: The pack the entry belongs to.
+# type: The type of entry.
+# index: The index of the entry in the type's array.
+func temp_remove_entry(pack: String, type: String, index: int) -> void:
+	if _db.empty():
+		push_error("Attempted to remove an entry from the AssetDB while it is empty!")
+		return
+	
+	if _temp_db.empty():
+		_temp_db = _db.duplicate(true)
+	
+	if not _temp_db.has(pack):
+		push_error("Temporary AssetDB does not contain pack %s!" % pack)
+		return
+	
+	if not _temp_db[pack].has(type):
+		push_error("Temporary AssetDB does not contain type %s/%s!" % [pack, type])
+		return
+	
+	var arr_size = _temp_db[pack][type].size()
+	if index < 0 or index >= arr_size:
+		push_error("Invalid index to temporary AssetDB (index = %d, size = %d)" % [index, arr_size])
+		return
+	
+	_temp_db[pack][type].remove(index)
+
 func _ready():
 	connect("tree_exiting", self, "_on_exiting_tree")
-	
-	# We might be running this with vanilla Godot!
-	importer_exists = type_exists("TabletopImporter")
-	if importer_exists:
-		_importer = ClassDB.instance("TabletopImporter")
-	else:
-		push_error("TabletopImporter does not exist! Make sure to install the TabletopClub Godot module.")
 
 func _process(_delta):
 	_import_mutex.lock()
@@ -947,10 +973,10 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 # from: The file path of the file to import.
 # to: The path of where to copy the file to.
 func _import_file(from: String, to: String) -> int:
-	if not importer_exists:
+	if Global.tabletop_importer == null:
 		return ERR_UNAVAILABLE
 	
-	var copy_err = _importer.copy_file(from, to)
+	var copy_err = Global.tabletop_importer.copy_file(from, to)
 	
 	if copy_err:
 		return copy_err
@@ -979,7 +1005,7 @@ func _import_file(from: String, to: String) -> int:
 				push_error("Could not read file at '%s'." % to)
 	
 	if EXTENSIONS_TO_IMPORT.has(from.get_extension()):
-		return _importer.import(to)
+		return Global.tabletop_importer.import(to)
 	else:
 		return OK
 

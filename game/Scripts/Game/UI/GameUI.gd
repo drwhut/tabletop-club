@@ -122,13 +122,11 @@ func _ready():
 	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
 	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
 	
-	# We might be running this with vanilla Godot!
-	if type_exists("ErrorReporter"):
-		_error_reporter = ClassDB.instance("ErrorReporter")
-		_error_reporter.connect("error_received", self, "_on_error_received")
-		_error_reporter.connect("warning_received", self, "_on_warning_received")
+	if Global.error_reporter != null:
+		Global.error_reporter.connect("error_received", self, "_on_error_received")
+		Global.error_reporter.connect("warning_received", self, "_on_warning_received")
 	else:
-		push_error("ErrorReporter does not exist! Make sure to install the TabletopClub Godot module.")
+		push_warning("ErrorReporter does not exist! Make sure to install the TabletopClub Godot module.")
 	
 	# Make sure we emit the signal when all of the nodes are ready:
 	call_deferred("_set_rotation_amount")
@@ -218,15 +216,12 @@ func _on_GamesDialog_entry_requested(_pack: String, _type: String, entry: Dictio
 	emit_signal("load_table", entry["table_path"])
 
 func _on_GameUI_tree_exiting():
-	# So for some reason, really actually for realsies making sure that the
-	# ErrorReporter is well and truly gone before the UI is removed from the
-	# scene tree fixes a crash with an annoyingly short backtrace (it was
-	# literally just one line, and to some shared object file somewhere idk),
-	# but ONLY if the AssetDB was empty??? All you need to know is, this took
-	# me like four hours to find, and I'm sleepy, and I'm going to bed. o/ zzz
-	if _error_reporter != null:
-		_error_reporter.unreference()
-		_error_reporter = null
+	if Global.error_reporter != null:
+		if Global.error_reporter.is_connected("error_received", self, "_on_error_received"):
+			Global.error_reporter.disconnect("error_received", self, "_on_error_received")
+		
+		if Global.error_reporter.is_connected("warning_received", self, "_on_warning_received"):
+			Global.error_reporter.disconnect("warning_received", self, "_on_warning_received")
 
 func _on_LoadGameButton_pressed():
 	_popup_save_dialog(false)

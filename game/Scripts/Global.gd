@@ -32,6 +32,11 @@ enum {
 
 const LOADING_BLOCK_TIME = 20
 
+# From the tabletop_club_godot_module:
+# https://github.com/drwhut/tabletop_club_godot_module
+var tabletop_importer = null
+var error_reporter = null
+
 var system_locale: String = ""
 
 # Throttle the piece state transmissions if there are many active physics
@@ -128,6 +133,12 @@ func _ready():
 	
 	# We're assuming the locale hasn't been modified yet.
 	system_locale = TranslationServer.get_locale()
+	
+	# We may be running the game with vanilla Godot!
+	if type_exists("TabletopImporter"):
+		tabletop_importer = ClassDB.instance("TabletopImporter")
+	if type_exists("ErrorReporter"):
+		error_reporter = ClassDB.instance("ErrorReporter")
 
 func _process(_delta):
 	if _loader == null:
@@ -233,6 +244,7 @@ func _set_scene(scene: Node, args: Dictionary) -> void:
 	root.remove_child(_current_scene)
 	_current_scene.free()
 	
+	AssetDB.clear_temp_db()
 	PieceBuilder.free_cache()
 	
 	root.add_child(scene)
