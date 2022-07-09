@@ -28,7 +28,13 @@ extends Node
 
 onready var _connecting_popup = $ConnectingPopup
 onready var _connecting_popup_label = $ConnectingPopup/Label
+onready var _download_assets_confirm_dialog = $DownloadAssetsConfirmDialog
 onready var _master_server = $MasterServer
+onready var _missing_assets_dialog = $MissingAssetsDialog
+onready var _missing_db_label = $MissingAssetsDialog/VBoxContainer/MissingDBLabel
+onready var _missing_db_summary_label = $MissingAssetsDialog/VBoxContainer/MissingDBSummaryLabel
+onready var _missing_fs_label = $MissingAssetsDialog/VBoxContainer/MissingDBLabel
+onready var _missing_fs_summary_label = $MissingAssetsDialog/VBoxContainer/MissingFSSummaryLabel
 onready var _room = $Room
 onready var _table_state_error_dialog = $TableStateErrorDialog
 onready var _table_state_version_dialog = $TableStateVersionDialog
@@ -293,27 +299,43 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 	print("# Extra entries: %d" % db_num_extra)
 	print("# Missing entries: %d" % db_num_missing)
 	print("# Modified entries: %d" % db_num_modified)
+	_missing_db_summary_label.text = _missing_db_summary_label.text % [db_num_missing, db_num_modified]
 	print("- Entries that the host is missing:")
 	for pack in db_extra:
 		for type in db_extra[pack]:
 			for index in db_extra[pack][type]:
 				var asset = client_schema_db[pack][type][index]["name"]
-				print("%s/%s/%s" % [pack, type, asset])
+				var path = "%s/%s/%s" % [pack, type, asset]
+				if _missing_db_label.text.length() > 0:
+					_missing_db_label.text += "\n"
+				_missing_db_label.text += "+ " + path
+				print(path)
 	print("- Entries that we need from the host:")
 	for pack in db_need:
 		for type in db_need[pack]:
 			for index in db_need[pack][type]:
 				var asset = server_schema_db[pack][type][index]["name"]
-				print("%s/%s/%s" % [pack, type, asset])
+				var path = "%s/%s/%s" % [pack, type, asset]
+				if _missing_db_label.text.length() > 0:
+					_missing_db_label.text += "\n"
+				_missing_db_label.text += "- " + path
+				print(path)
 	
 	print("Filesystem schema results:")
 	print("# Missing files: %d" % fs_num_missing)
 	print("# Modified files: %d" % fs_num_modified)
+	_missing_fs_summary_label.text = _missing_fs_summary_label.text % [fs_num_missing, fs_num_modified]
 	print("- Files that we need from the host:")
 	for pack in fs_need:
 		for type in fs_need[pack]:
 			for asset in fs_need[pack][type]:
-				print("%s/%s/%s" % [pack, type, asset])
+				var path = "%s/%s/%s" % [pack, type, asset]
+				if _missing_fs_label.text.length() > 0:
+					_missing_fs_label.text += "\n"
+				_missing_fs_label.text += "- " + path
+				print(path)
+	
+	_missing_assets_dialog.popup_centered()
 
 # Ask the master server to host a game.
 func start_host() -> void:
@@ -321,7 +343,6 @@ func start_host() -> void:
 	
 	_srv_schema_db = _create_schema_db()
 	_srv_schema_fs = _create_schema_fs()
-	print(_srv_schema_fs)
 	
 	_connect_to_master_server("")
 
@@ -771,6 +792,9 @@ func _on_room_joined(room_code: String):
 func _on_room_sealed():
 	Global.start_main_menu_with_error(tr("Room has been closed by the host."))
 
+func _on_DownloadAssetsConfirmDialog_confirmed():
+	pass # Replace with function body.
+
 func _on_GameUI_about_to_save_table():
 	_room_state_saving = _room.get_state(false, false)
 
@@ -829,6 +853,13 @@ func _on_GameUI_table_requested(table_entry: Dictionary):
 func _on_Lobby_players_synced():
 	if not get_tree().is_network_server():
 		Lobby.rpc_id(1, "request_add_self", _player_name, _player_color)
+
+func _on_MissingYesButton_pressed():
+	_download_assets_confirm_dialog.popup_centered()
+	_missing_assets_dialog.visible = false
+
+func _on_MissingNoButton_pressed():
+	_missing_assets_dialog.visible = false
 
 func _on_Room_setting_spawn_point(position: Vector3):
 	_ui.spawn_point_origin = position

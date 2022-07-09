@@ -49,6 +49,8 @@ func get_paint() -> Image:
 # Get the paint image size.
 # Returns: The paint image size.
 func get_paint_size() -> Vector2:
+	if _viewport == null:
+		return Vector2.ZERO
 	return _viewport.size
 
 # Set if the paint texture is filtered.
@@ -62,6 +64,9 @@ func set_filtering_enabled(filtering_enabled: bool) -> void:
 # Set the current paint texture from the given image.
 # image: The image to set as the new paint texture.
 func set_paint(image: Image) -> void:
+	if _texture_rect == null:
+		return
+	
 	var texture = ImageTexture.new()
 	texture.create_from_image(image)
 	_texture_rect.texture = texture

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Game/3D/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Game/UI/GameUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Game/Game.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Game/MasterServer.gd" type="Script" id=4]
+[ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-List.tres" type="DynamicFont" id=5]
 
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
@@ -26,6 +27,78 @@ margin_bottom = 24.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MissingAssetsDialog" type="WindowDialog" parent="."]
+margin_right = 440.0
+margin_bottom = 460.0
+popup_exclusive = true
+window_title = "Missing Assets"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MissingAssetsDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MissingDBSummaryLabel" type="Label" parent="MissingAssetsDialog/VBoxContainer"]
+margin_right = 440.0
+margin_bottom = 89.0
+text = "The host has imported assets that your client is missing. This means that you won't be able to see these assets while in this game. There are a total of %d missing assets, and %d assets differ between your client and the host's client:"
+autowrap = true
+
+[node name="MissingDBLabel" type="RichTextLabel" parent="MissingAssetsDialog/VBoxContainer"]
+margin_top = 93.0
+margin_right = 440.0
+margin_bottom = 153.0
+rect_min_size = Vector2( 0, 60 )
+custom_fonts/normal_font = ExtResource( 5 )
+
+[node name="MissingFSSummaryLabel" type="Label" parent="MissingAssetsDialog/VBoxContainer"]
+margin_top = 157.0
+margin_right = 440.0
+margin_bottom = 200.0
+text = "Your client is also missing %d files, and %d files differ from that of the host's:"
+autowrap = true
+
+[node name="MissingFSLabel" type="RichTextLabel" parent="MissingAssetsDialog/VBoxContainer"]
+margin_top = 204.0
+margin_right = 440.0
+margin_bottom = 264.0
+rect_min_size = Vector2( 0, 60 )
+custom_fonts/normal_font = ExtResource( 5 )
+
+[node name="Gap" type="Control" parent="MissingAssetsDialog/VBoxContainer"]
+margin_top = 268.0
+margin_right = 440.0
+margin_bottom = 284.0
+size_flags_vertical = 3
+
+[node name="MissingInfoLabel" type="Label" parent="MissingAssetsDialog/VBoxContainer"]
+margin_top = 288.0
+margin_right = 440.0
+margin_bottom = 400.0
+text = "Do you want to download the missing assets from the host, so that your gameplay is not impeded?
+WARNING: Assets are user-made content, and as such, may contain malicious data. Do NOT download the assets if you do not trust the host."
+autowrap = true
+
+[node name="MissingYesButton" type="Button" parent="MissingAssetsDialog/VBoxContainer"]
+margin_top = 404.0
+margin_right = 440.0
+margin_bottom = 430.0
+text = "Yes, download missing assets."
+clip_text = true
+
+[node name="MissingNoButton" type="Button" parent="MissingAssetsDialog/VBoxContainer"]
+margin_top = 434.0
+margin_right = 440.0
+margin_bottom = 460.0
+text = "No, continue without them."
+
+[node name="DownloadAssetsConfirmDialog" type="ConfirmationDialog" parent="."]
+margin_right = 260.0
+margin_bottom = 140.0
+popup_exclusive = true
+window_title = "Download Assets?"
+dialog_text = "Are you sure you trust the host, and want to download the missing assets?"
+dialog_autowrap = true
 
 [node name="TableStateErrorDialog" type="AcceptDialog" parent="."]
 margin_right = 300.0
@@ -66,4 +139,7 @@ script = ExtResource( 4 )
 [connection signal="stopped_saving_table" from="GameUI" to="." method="_on_GameUI_stopped_saving_table"]
 [connection signal="table_requested" from="GameUI" to="." method="_on_GameUI_table_requested"]
 [connection signal="undo_state" from="GameUI" to="Room" method="_on_GameUI_undo_state"]
+[connection signal="pressed" from="MissingAssetsDialog/VBoxContainer/MissingYesButton" to="." method="_on_MissingYesButton_pressed"]
+[connection signal="pressed" from="MissingAssetsDialog/VBoxContainer/MissingNoButton" to="." method="_on_MissingNoButton_pressed"]
+[connection signal="confirmed" from="DownloadAssetsConfirmDialog" to="." method="_on_DownloadAssetsConfirmDialog_confirmed"]
 [connection signal="confirmed" from="TableStateVersionDialog" to="." method="_on_TableStateVersionDialog_confirmed"]
