@@ -68,12 +68,17 @@ var _srv_schema_db: Dictionary = {}
 var _srv_schema_fs: Dictionary = {}
 var _srv_waiting_for: Array = []
 
-const SRV_TRANSFER_CHUNK_SIZE = 50000 # 50Kb
-const SRV_TRANSFER_CHUNK_DELAY = 100 # 100ms, up to 500Kb/s.
+const TRANSFER_CHUNK_SIZE   = 50000 # 50Kb
+const TRANSFER_CHUNK_DELAY  = 0.1 # 100ms, up to 500Kb/s.
+const TRANSFER_MAX_COMMANDS = 5 # Up to 250Kb of RAM.
 # We don't have access to WebRTCDataChannel.get_buffered_amount(), so we can't
 # tell how much data is in the channel. So we need to give a guess as to how
 # long it will take for the outgoing packets to flush, while trying to
 # accomodate for slower computers.
+
+var _transfer_commands: Array = []
+var _transfer_mutex: Mutex = Mutex.new()
+var _transfer_time_since_rpc: float = 0.0
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -849,6 +854,32 @@ func _process(delta):
 		save_state(state, autosave_path)
 		
 		_time_since_last_autosave = 0.0
+	
+	if get_tree().is_network_server():
+		_transfer_time_since_rpc += delta
+		if _transfer_time_since_rpc > TRANSFER_CHUNK_DELAY:
+			_transfer_mutex.lock()
+			if not _transfer_commands.empty():
+				var cmd: Dictionary = _transfer_commands.pop_front()
+				var id: int = cmd["id"]
+				var pack: String = cmd["pack"]
+				var type: String = cmd["type"]
+				var asset: String = cmd["asset"]
+				var buffer: PoolByteArray = cmd["buffer"]
+				
+				# Check if the client is still connected before sending the
+				# data.
+				var is_connected = _rtc.has_peer(id)
+				if is_connected:
+					is_connected = _rtc.get_peer(id)["connected"]
+				
+				if is_connected:
+					print("Sending to %d: %s/%s/%s (size = %d)" % [id, pack,
+							type, asset, buffer.size()])
+					rpc_id(id, "receive_missing_asset_chunk", pack, type, asset,
+							buffer)
+					_transfer_time_since_rpc = 0.0
+			_transfer_mutex.unlock()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("game_take_screenshot"):
@@ -1127,18 +1158,35 @@ func _transfer_asset_files(userdata: Dictionary) -> void:
 					var file_size = file.get_len()
 					var file_ptr = 0
 					while file_ptr < file_size:
-						var bytes_left = file_size - file_ptr
-						var buffer_size = min(bytes_left, SRV_TRANSFER_CHUNK_SIZE)
-						var buffer = file.get_buffer(buffer_size)
-						print("sending to %d: %s (ptr=%d)" % [client_id, file_path, file_ptr])
-						
 						if data_channel.get_ready_state() != WebRTCDataChannel.STATE_OPEN:
 							return
-						rpc_id(client_id, "receive_missing_asset_chunk", pack,
-								type, asset, buffer)
-						file_ptr += SRV_TRANSFER_CHUNK_SIZE
 						
-						OS.delay_msec(SRV_TRANSFER_CHUNK_DELAY)
+						var bytes_left = file_size - file_ptr
+						var buffer_size = min(bytes_left, TRANSFER_CHUNK_SIZE)
+						var buffer = file.get_buffer(buffer_size)
+						
+						_transfer_mutex.lock()
+						var num_commands = _transfer_commands.size()
+						_transfer_mutex.unlock()
+						
+						while num_commands >= TRANSFER_MAX_COMMANDS:
+							OS.delay_msec(1000 * TRANSFER_CHUNK_DELAY)
+
+							_transfer_mutex.lock()
+							num_commands = _transfer_commands.size()
+							_transfer_mutex.unlock()
+						
+						_transfer_mutex.lock()
+						_transfer_commands.append({
+							"id": client_id,
+							"pack": pack,
+							"type": type,
+							"asset": asset,
+							"buffer": buffer
+						})
+						_transfer_mutex.unlock()
+						
+						file_ptr += TRANSFER_CHUNK_SIZE
 					file.close()
 				else:
 					push_error("Failed to read file '%s'!" % file_path)
@@ -1279,6 +1327,12 @@ func _on_DownloadAssetsConfirmDialog_popup_hide():
 func _on_Game_tree_exiting():
 	stop()
 	
+	_transfer_mutex.lock()
+	_transfer_commands.clear()
+	_transfer_mutex.unlock()
+	
+	# With the connection closed, and the commands cleared, the transfer
+	# threads should end on their own.
 	for thread in _srv_file_transfer_threads.values():
 		thread.wait_to_finish()
 
