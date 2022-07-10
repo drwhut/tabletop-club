@@ -117,6 +117,7 @@ dialog_autowrap = true
 [node name="MasterServer" type="Node" parent="."]
 script = ExtResource( 4 )
 
+[connection signal="tree_exiting" from="." to="." method="_on_Game_tree_exiting"]
 [connection signal="setting_spawn_point" from="Room" to="." method="_on_Room_setting_spawn_point"]
 [connection signal="spawning_piece_at" from="Room" to="." method="_on_Room_spawning_piece_at"]
 [connection signal="spawning_piece_in_container" from="Room" to="." method="_on_Room_spawning_piece_in_container"]

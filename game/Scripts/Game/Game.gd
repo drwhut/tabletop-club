@@ -33,7 +33,7 @@ onready var _master_server = $MasterServer
 onready var _missing_assets_dialog = $MissingAssetsDialog
 onready var _missing_db_label = $MissingAssetsDialog/VBoxContainer/MissingDBLabel
 onready var _missing_db_summary_label = $MissingAssetsDialog/VBoxContainer/MissingDBSummaryLabel
-onready var _missing_fs_label = $MissingAssetsDialog/VBoxContainer/MissingDBLabel
+onready var _missing_fs_label = $MissingAssetsDialog/VBoxContainer/MissingFSLabel
 onready var _missing_fs_summary_label = $MissingAssetsDialog/VBoxContainer/MissingFSSummaryLabel
 onready var _room = $Room
 onready var _table_state_error_dialog = $TableStateErrorDialog
@@ -63,9 +63,17 @@ var _cln_expect_db: Dictionary = {}
 var _cln_expect_fs: Dictionary = {}
 var _cln_keep_expecting: bool = false
 var _srv_expect_sync: Array = []
+var _srv_file_transfer_threads: Dictionary = {}
 var _srv_schema_db: Dictionary = {}
 var _srv_schema_fs: Dictionary = {}
 var _srv_waiting_for: Array = []
+
+const SRV_TRANSFER_CHUNK_SIZE = 50000 # 50Kb
+const SRV_TRANSFER_CHUNK_DELAY = 100 # 100ms, up to 500Kb/s.
+# We don't have access to WebRTCDataChannel.get_buffered_amount(), so we can't
+# tell how much data is in the channel. So we need to give a guess as to how
+# long it will take for the outgoing packets to flush, while trying to
+# accomodate for slower computers.
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -387,8 +395,20 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 			pack_dict[type] = type_dict
 		_cln_expect_fs[pack] = pack_dict
 
+# Called by the server when they transfer a chunk of a missing asset file to
+# the client.
+# pack: The pack the file belongs to.
+# type: The type of file.
+# asset: The name of the file.
+# chunk: The chunk of the file.
+puppet func receive_missing_asset_chunk(pack: String, type: String,
+	asset: String, chunk: PoolByteArray) -> void:
+	
+	print("Got: %s/%s/%s (size = %d)" % [pack, type, asset, chunk.size()])
+
 # Called by the server to receive the missing AssetDB entries that the client
 # asked for.
+# missing_entries: The directory of missing entries.
 puppet func receive_missing_db_entries(missing_entries: Dictionary) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -518,6 +538,8 @@ master func request_sync_state() -> void:
 
 # Called by the client after they have compared the server's schemas against
 # their own.
+# client_db_need: What the client reports that they need from the AssetDB.
+# client_fs_need: What the client reports that they need from the file system.
 master func respond_with_schema_results(client_db_need: Dictionary,
 	client_fs_need: Dictionary) -> void:
 	
@@ -600,14 +622,88 @@ master func respond_with_schema_results(client_db_need: Dictionary,
 			pack_provide[type] = type_provide
 		db_provide[pack] = pack_provide
 	
+	var file = File.new()
+	var fs_provide = {}
+	for pack in client_fs_need:
+		if not pack is String:
+			push_error("Pack in client FS is not a string!")
+			return
+		
+		if not _check_name(pack):
+			push_error("Pack string '%s' in client FS is not a valid name!" % pack)
+			return
+		
+		if not asset_db.has(pack):
+			push_error("Pack '%s' in client FS does not exist in the AssetDB!" % pack)
+			return
+		
+		var pack_dict = client_fs_need[pack]
+		if not pack_dict is Dictionary:
+			push_error("Value under pack '%s' in client FS is not a dictionary!" % pack)
+			return
+		
+		var pack_provide = {}
+		for type in pack_dict:
+			if not type is String:
+				push_error("Type under pack '%s' in client FS is not a string!" % pack)
+				return
+			
+			if not type in AssetDB.ASSET_PACK_SUBFOLDERS:
+				push_error("Type '%s' under pack '%s' in client FS is not a valid type!" % [type, pack])
+				return
+			
+			if not asset_db[pack].has(type):
+				push_error("Type '%s' under pack '%s' in client FS is not in the AssetDB!" % [type, pack])
+				return
+			
+			var name_arr = pack_dict[type]
+			if not name_arr is Array:
+				push_error("Value in '%s/%s' in client DB is not an array!" % [pack, type])
+				return
+			
+			var type_provide = []
+			for file_name in name_arr:
+				if not file_name is String:
+					push_error("Name in '%s/%s' in client DB is not a string!" % [pack, type])
+					return
+				
+				if not _check_name(file_name):
+					push_error("Name '%s' in '%s/%s' in client DB is invalid!" % [file_name, pack, type])
+					return
+				
+				var file_path = "user://assets/%s/%s/%s" % [pack, type, file_name]
+				if not file.file_exists(file_path):
+					push_error("File '%s' in client DB does not exist!" % file_path)
+					return
+				
+				type_provide.append(file_name)
+			pack_provide[type] = type_provide
+		fs_provide[pack] = pack_provide
+	
 	if not client_id in _srv_expect_sync:
 		_srv_expect_sync.append(client_id)
 	
-	if db_provide.empty():
+	if db_provide.empty() and fs_provide.empty():
 		request_sync_state()
 	else:
-		# TODO: Do for FS as well.
-		rpc_id(client_id, "receive_missing_db_entries", db_provide)
+		if not db_provide.empty():
+			rpc_id(client_id, "receive_missing_db_entries", db_provide)
+		
+		if not fs_provide.empty():
+			if client_id in _srv_file_transfer_threads:
+				push_error("File transfer thread already created for ID %d!" % client_id)
+				return
+			
+			var peer: Dictionary = _rtc.get_peer(client_id)
+			var data_channel: WebRTCDataChannel = peer["channels"][0]
+			
+			var transfer_thread = Thread.new()
+			transfer_thread.start(self, "_transfer_asset_files", {
+				"client_id": client_id,
+				"data_channel": data_channel,
+				"provide": fs_provide
+			})
+			_srv_file_transfer_threads[client_id] = transfer_thread
 
 # Ask the master server to host a game.
 func start_host() -> void:
@@ -1009,6 +1105,39 @@ func _popup_table_state_version(message: String) -> void:
 	
 	push_warning(message)
 
+# Transfer files from the server to a given client.
+# userdata: A dictionary, containing "client_id" (the client to send the files
+# to), and "provide" (the directory of files to provide from user://assets).
+func _transfer_asset_files(userdata: Dictionary) -> void:
+	var client_id: int = userdata["client_id"]
+	var data_channel: WebRTCDataChannel = userdata["data_channel"]
+	var provide: Dictionary = userdata["provide"]
+	
+	for pack in provide:
+		for type in provide[pack]:
+			for asset in provide[pack][type]:
+				var file = File.new()
+				var file_path = "user://assets/%s/%s/%s" % [pack, type, asset]
+				if file.open(file_path, File.READ) == OK:
+					var file_size = file.get_len()
+					var file_ptr = 0
+					while file_ptr < file_size:
+						var bytes_left = file_size - file_ptr
+						var buffer_size = min(bytes_left, SRV_TRANSFER_CHUNK_SIZE)
+						var buffer = file.get_buffer(buffer_size)
+						print("sending to %d: %s (ptr=%d)" % [client_id, file_path, file_ptr])
+						
+						if data_channel.get_ready_state() != WebRTCDataChannel.STATE_OPEN:
+							return
+						rpc_id(client_id, "receive_missing_asset_chunk", pack,
+								type, asset, buffer)
+						file_ptr += SRV_TRANSFER_CHUNK_SIZE
+						
+						OS.delay_msec(SRV_TRANSFER_CHUNK_DELAY)
+					file.close()
+				else:
+					push_error("Failed to read file '%s'!" % file_path)
+
 func _on_connected(id: int):
 	print("Connected to the room as peer %d." % id)
 	_rtc.initialize(id, true)
@@ -1141,6 +1270,12 @@ func _on_DownloadAssetsConfirmDialog_popup_hide():
 	if _cln_keep_expecting:
 		_cln_need_db.clear()
 		_cln_need_fs.clear()
+
+func _on_Game_tree_exiting():
+	stop()
+	
+	for thread in _srv_file_transfer_threads.values():
+		thread.wait_to_finish()
 
 func _on_GameUI_about_to_save_table():
 	_room_state_saving = _room.get_state(false, false)
