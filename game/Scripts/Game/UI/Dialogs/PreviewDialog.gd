@@ -33,6 +33,11 @@ export(String) var load_button_text = "Load"
 export(String) var status_text_one = "Loaded %s."
 export(String) var status_text_multiple = "Loaded %d assets."
 
+# Re-configure the preview filter, forcing it to read the AssetDB again.
+# Use this if you know the AssetDB contents have changed.
+func reconfigure() -> void:
+	_preview_filter.setup()
+
 func _ready():
 	_preview_filter.db_types = db_types
 	_load_button.text = load_button_text

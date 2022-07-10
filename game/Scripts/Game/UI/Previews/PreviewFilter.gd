@@ -41,7 +41,6 @@ const GENERIC_PREVIEW_TYPES = [
 	"sounds"
 ]
 
-var _set_types_on_ready = false
 var _is_ready = false
 var _last_filtered_hash: int = 0
 var _preview_entries = []
@@ -95,10 +94,11 @@ func set_db_types(types: Dictionary) -> void:
 	
 	if _is_ready:
 		_set_type_options()
-	else:
-		_set_types_on_ready = true
 
-func _ready():
+# Setup the preview filter using the entries in the AssetDB - this is called
+# automatically when it is ready, but it can also be triggered manually, e.g.
+# when new assets have been added to the AssetDB.
+func setup() -> void:
 	_pack_button.clear()
 	
 	var asset_db = AssetDB.get_db()
@@ -110,10 +110,12 @@ func _ready():
 		if pack != DEFAULT_ASSET_PACK:
 			_pack_button.add_item(pack)
 	
-	_is_ready = true
-	if _set_types_on_ready:
+	if _is_ready:
 		_set_type_options()
-		_set_types_on_ready = false
+
+func _ready():
+	_is_ready = true
+	setup()
 
 # Check that a certain type directory exists within the given asset pack in the
 # assets DB.

@@ -358,6 +358,10 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 				var index_asset = type_arr[index_arr]
 				AssetDB.temp_remove_entry(pack, type, index_asset)
 	
+	if not db_extra.empty():
+		# Prevent the player from spawning in the extra objects.
+		_ui.reconfigure_asset_dialogs()
+	
 	if db_need.empty() and fs_need.empty():
 		rpc_id(1, "respond_with_schema_results", {}, {})
 	else:
@@ -520,6 +524,7 @@ puppet func receive_missing_db_entries(missing_entries: Dictionary) -> void:
 	_cln_expect_db.clear()
 	
 	if _cln_expect_fs.empty():
+		_ui.reconfigure_asset_dialogs()
 		rpc_id(1, "request_sync_state")
 
 # Called by the client to send the current room state back to them. This can be

@@ -37,6 +37,12 @@ onready var _skybox_preview = $VBoxContainer/TabContainer/Skybox/SkyboxPreview
 onready var _table_dialog = $TableDialog
 onready var _table_preview = $VBoxContainer/TabContainer/Table/TablePreview
 
+# Re-configure the preview filters, forcing them to read the AssetDB again.
+# Use this if you know the AssetDB contents have changed.
+func reconfigure() -> void:
+	_skybox_dialog.reconfigure()
+	_table_dialog.reconfigure()
+
 # Set the room details in the room dialog.
 # table_entry: The table's entry in the asset DB.
 # skybox_entry: The skybox's entry in the asset DB.

@@ -91,6 +91,13 @@ func hide_room_code() -> void:
 func popup_objects_dialog() -> void:
 	_objects_dialog.popup_centered()
 
+# Re-configure all of the asset dialogs, forcing them to read the AssetDB again.
+# Use this if you know the AssetDB contents have changed.
+func reconfigure_asset_dialogs() -> void:
+	_objects_dialog.reconfigure()
+	_games_dialog.reconfigure()
+	_room_dialog.reconfigure()
+
 # Set the room code that is displayed in the UI.
 # room_code: The room code to display.
 func set_room_code(room_code: String) -> void:
