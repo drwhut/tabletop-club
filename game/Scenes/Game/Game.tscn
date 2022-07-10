@@ -55,7 +55,7 @@ custom_fonts/normal_font = ExtResource( 5 )
 margin_top = 157.0
 margin_right = 440.0
 margin_bottom = 200.0
-text = "Your client is also missing %d files, and %d files differ from that of the host's:"
+text = "Your client is also missing %d files, and %d files differ from that of the host's, which in total is %s of data:"
 autowrap = true
 
 [node name="MissingFSLabel" type="RichTextLabel" parent="MissingAssetsDialog/VBoxContainer"]

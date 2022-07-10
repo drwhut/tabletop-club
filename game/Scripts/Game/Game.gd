@@ -292,7 +292,25 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 					push_error("File name '%s' in server FS schema is invalid!" % server_name)
 					return
 				
-				var server_md5 = server_type_dict[server_name]
+				var server_ext = server_name.get_extension()
+				if not server_ext in AssetDB.VALID_EXTENSIONS:
+					push_error("File extension '%s' in '%s' in server FS schema is invalid!" % [server_ext, server_name])
+					return
+				
+				var server_meta = server_type_dict[server_name]
+				if not server_meta is Dictionary:
+					push_error("Value of %s/%s/%s in server FS schema is not a dictionary!" % [pack, type, server_name])
+					return
+				
+				if server_meta.size() != 2:
+					push_error("%s/%s/%s meta in server FS schema does not contain two elements!" % [pack, type, server_name])
+					return
+				
+				if not server_meta.has("md5"):
+					push_error("%s/%s/%s meta in server FS schema does not contain an md5!" % [pack, type, server_name])
+					return
+				
+				var server_md5 = server_meta["md5"]
 				if not server_md5 is String:
 					push_error("%s/%s/%s MD5 in server FS schema is not a string!" % [pack, type, server_name])
 					return
@@ -301,9 +319,22 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 					push_error("%s/%s/%s MD5 in server FS schema is not a valid hex number!" % [pack, type, server_name])
 					return
 				
+				if not server_meta.has("size"):
+					push_error("%s/%s/%s meta in server FS schema does not contain a size!" % [pack, type, server_name])
+					return
+				
+				var server_size = server_meta["size"]
+				if not server_size is int:
+					push_error("%s/%s/%s size in server FS schema is not an integer!" % [pack, type, server_name])
+					return
+				
+				if server_size < 0:
+					push_error("%s/%s/%s size in server FS schema is invalid (%d)!" % [pack, type, server_name, server_size])
+					return
+				
 				if client_type_dict.has(server_name):
 					# Do the MD5 hashes not match?
-					if client_type_dict[server_name] != server_md5:
+					if client_type_dict[server_name]["md5"] != server_md5:
 						need_arr.append(server_name)
 						fs_num_modified += 1
 				else:
@@ -344,16 +375,22 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 	print("Filesystem schema results:")
 	print("# Missing files: %d" % fs_num_missing)
 	print("# Modified files: %d" % fs_num_modified)
-	_missing_fs_summary_label.text = _missing_fs_summary_label.text % [fs_num_missing, fs_num_modified]
 	print("- Files that we need from the host:")
+	var total_size_need = 0
 	for pack in fs_need:
 		for type in fs_need[pack]:
 			for asset in fs_need[pack][type]:
 				var path = "%s/%s/%s" % [pack, type, asset]
+				var size = server_schema_fs[pack][type][asset]["size"]
+				total_size_need += size
+				
 				if _missing_fs_label.text.length() > 0:
 					_missing_fs_label.text += "\n"
-				_missing_fs_label.text += "- " + path
+				_missing_fs_label.text += "- %s (%s)" % [path,
+						String.humanize_size(size)]
 				print(path)
+	_missing_fs_summary_label.text = _missing_fs_summary_label.text % [
+			fs_num_missing, fs_num_modified, String.humanize_size(total_size_need)]
 	
 	print("Temporarily removing entries that the host does not have...")
 	for pack in db_extra:
@@ -398,8 +435,8 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 			var type_dict = {}
 			
 			for asset in fs_need[pack][type]:
-				var md5 = server_schema_fs[pack][type][asset]
-				type_dict[asset] = md5
+				var meta = server_schema_fs[pack][type][asset]
+				type_dict[asset] = meta
 			
 			pack_dict[type] = type_dict
 		_cln_expect_fs[pack] = pack_dict
@@ -1016,19 +1053,29 @@ func _create_schema_fs() -> Dictionary:
 					while file:
 						if AssetDB.VALID_EXTENSIONS.has(file.get_extension()):
 							var file_path = "user://assets/" + pack + "/" + type + "/" + file
-							var file_md5 = File.new()
-							var md5 = file_md5.get_md5(file_path)
-							if not md5.empty():
-								if not schema.has(pack):
-									schema[pack] = {}
+							var fp = File.new()
+							err = fp.open(file_path, File.READ)
+							if err == OK:
+								var file_len = fp.get_len()
+								var md5 = fp.get_md5(file_path)
+								if not md5.empty():
+									if not schema.has(pack):
+										schema[pack] = {}
+									
+									if not schema[pack].has(type):
+										schema[pack][type] = {}
+									
+									schema[pack][type][file] = {
+										"md5": md5,
+										"size": file_len
+									}
+								else:
+									push_error("Failed to get md5 of '%s'" % file_path)
 								
-								if not schema[pack].has(type):
-									schema[pack][type] = {}
-								
-								schema[pack][type][file] = md5
+								fp.close()
 							else:
-								push_error("Failed to get md5 of '%s'" % file_path)
-							
+								push_error("Failed to open '%s'" % file_path)
+						
 						file = sub_dir.get_next()
 		pack = dir.get_next()
 	
@@ -1170,8 +1217,8 @@ func _transfer_asset_files(userdata: Dictionary) -> void:
 						_transfer_mutex.unlock()
 						
 						while num_commands >= TRANSFER_MAX_COMMANDS:
-							OS.delay_msec(1000 * TRANSFER_CHUNK_DELAY)
-
+							OS.delay_msec(int(1000 * TRANSFER_CHUNK_DELAY))
+							
 							_transfer_mutex.lock()
 							num_commands = _transfer_commands.size()
 							_transfer_mutex.unlock()
