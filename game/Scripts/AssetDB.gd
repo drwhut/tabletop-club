@@ -247,11 +247,12 @@ func random_asset(pack: String, type: String, default: bool = false) -> Dictiona
 # type: The type directory to search.
 # asset: The name of the asset to query.
 func search_type(pack: String, type: String, asset: String) -> Dictionary:
-	if _db.has(pack):
-		if _db[pack].has(type):
+	var db = get_db() # We may use the temporary DB here!
+	if db.has(pack):
+		if db[pack].has(type):
 			# The array of assets should be sorted by name, so we can use
 			# binary search!
-			var array: Array = _db[pack][type]
+			var array: Array = db[pack][type]
 			var index = array.bsearch_custom(asset, self, "_search_assets")
 			if index < array.size():
 				if array[index]["name"] == asset:
@@ -285,6 +286,34 @@ func start_importing() -> void:
 	_import_thread.start(self, "_import_all")
 	
 	_tr_locales = []
+
+# Temporarily add an entry to the AssetDB.
+# pack: The pack the entry belongs to.
+# type: The type of entry.
+# entry: The entry to add in the type's array.
+func temp_add_entry(pack: String, type: String, entry: Dictionary) -> void:
+	if not entry.has("name"):
+		push_error("Temporary entry must have a name!")
+		return
+	
+	if _temp_db.empty():
+		_temp_db = _db.duplicate(true)
+	
+	if not _temp_db.has(pack):
+		_temp_db[pack] = {}
+	
+	if not _temp_db[pack].has(type):
+		_temp_db[pack][type] = []
+	
+	# Insert the entry in the type list, making sure the names of each entry are
+	# still in order.
+	var type_arr: Array = _temp_db[pack][type]
+	var insert_index = 0
+	while insert_index < type_arr.size():
+		if entry["name"] < type_arr[insert_index]["name"]:
+			break
+		insert_index += 1
+	type_arr.insert(insert_index, entry)
 
 # Temporarily remove an entry from the AssetDB.
 # pack: The pack the entry belongs to.

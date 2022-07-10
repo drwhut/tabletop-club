@@ -57,8 +57,15 @@ var _state_version_save: Dictionary = {}
 var _time_since_last_autosave: float = 0.0
 
 var _cln_compared_schemas: bool = false
+var _cln_need_db: Dictionary = {}
+var _cln_need_fs: Dictionary = {}
+var _cln_expect_db: Dictionary = {}
+var _cln_expect_fs: Dictionary = {}
+var _cln_keep_expecting: bool = false
+var _srv_expect_sync: Array = []
 var _srv_schema_db: Dictionary = {}
 var _srv_schema_fs: Dictionary = {}
+var _srv_waiting_for: Array = []
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -343,8 +350,264 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 				var index_asset = type_arr[index_arr]
 				AssetDB.temp_remove_entry(pack, type, index_asset)
 	
-	if not (db_need.empty() and fs_need.empty()):
+	if db_need.empty() and fs_need.empty():
+		rpc_id(1, "respond_with_schema_results", {}, {})
+	else:
 		_missing_assets_dialog.popup_centered()
+	
+	_cln_need_db = db_need
+	_cln_need_fs = fs_need
+	
+	# Store as much information as possible about what we expect from the
+	# server so that we can verify everything that comes in later.
+	_cln_expect_db.clear()
+	for pack in db_need:
+		var pack_dict = {}
+		
+		for type in db_need[pack]:
+			var type_arr = []
+			
+			for index in db_need[pack][type]:
+				type_arr.append(server_schema_db[pack][type][index])
+			
+			pack_dict[type] = type_arr
+		_cln_expect_db[pack] = pack_dict
+	
+	_cln_expect_fs.clear()
+	for pack in fs_need:
+		var pack_dict = {}
+		
+		for type in fs_need[pack]:
+			var type_dict = {}
+			
+			for asset in fs_need[pack][type]:
+				var md5 = server_schema_fs[pack][type][asset]
+				type_dict[asset] = md5
+			
+			pack_dict[type] = type_dict
+		_cln_expect_fs[pack] = pack_dict
+
+# Called by the server to receive the missing AssetDB entries that the client
+# asked for.
+puppet func receive_missing_db_entries(missing_entries: Dictionary) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if _cln_expect_db.empty():
+		push_warning("Received DB entries from the server when we weren't expecting any, ignoring.")
+		return
+	
+	for pack in missing_entries:
+		if not pack is String:
+			push_error("Pack in server DB is not a string!")
+			return
+		
+		if not _check_name(pack):
+			push_error("Pack string in server DB is not a valid name!")
+			return
+		
+		var pack_dict = missing_entries[pack]
+		if not pack_dict is Dictionary:
+			push_error("Value of pack '%s' in server DB is not a dictionary!" % pack)
+			return
+		
+		for type in pack_dict:
+			if not type is String:
+				push_error("Type in pack '%s' in server DB is not a string!" % pack)
+				return
+			
+			if not type in AssetDB.ASSET_PACK_SUBFOLDERS:
+				push_error("Type '%s' in pack '%s' in server DB is not a valid type!" % [type, pack])
+				return
+			
+			var type_arr = pack_dict[type]
+			if not type_arr is Array:
+				push_error("Type '%s' value in pack '%s' in server DB is not an array!" % [type, pack])
+				return
+			
+			for entry in type_arr:
+				if not entry is Dictionary:
+					push_error("Entry in '%s/%s' in server DB is not a dictionary!" % [pack, type])
+					return
+				
+				var entry_name = ""
+				var has_desc = false
+				
+				for key in entry:
+					if not key is String:
+						push_error("Key in entry in '%s/%s' in server DB is not a string!" % [pack, type])
+						return
+					
+					if not _check_name(key):
+						push_error("Key in entry in '%s/%s' in server DB is not a valid name!" % [pack, type])
+						return
+					
+					var value = entry[key]
+					if not _is_only_data(value):
+						push_error("Value of key '%s' in '%s/%s' in server DB is not pure data!" % [key, pack, type])
+						return
+					
+					if key == "name":
+						if not value is String:
+							push_error("'name' property in '%s/%s' in server DB is not a string!" % [pack, type])
+							return
+						if not _check_name(value):
+							push_error("Name '%s' in '%s/%s' in server DB is not a valid name!" % [value, pack, type])
+							return
+						entry_name = value
+					
+					elif key == "desc":
+						if not value is String:
+							push_error("'desc' property in '%s/%s' in server DB is not a string!" % [pack, type])
+							return
+						has_desc = true
+					
+					# TODO: Verify that given the type, the entry is valid by
+					# checking every key-value pair.
+				
+				if entry_name.empty():
+					push_error("Entry in '%s/%s' in server DB does not have a name!" % [pack, type])
+					return
+				
+				if not has_desc:
+					push_error("Entry in '%s/%s' in server DB does not have a description!" % [pack, type])
+					return
+				
+				var entry_hash = entry.hash()
+				var entry_index = -1
+				
+				for index in range(_cln_expect_db[pack][type].size()):
+					var test_entry = _cln_expect_db[pack][type][index]
+					if entry_name == test_entry["name"]:
+						if entry_hash == test_entry["hash"]:
+							entry_index = index
+							break
+				
+				if entry_index < 0:
+					push_error("Entry '%s/%s/%s' in server DB was not expected!" % [pack, type, entry_name])
+					return
+				
+				AssetDB.temp_add_entry(pack, type, entry)
+				_cln_expect_db[pack][type].remove(entry_index)
+	
+	var num_missing_db = 0
+	for pack in _cln_expect_db:
+		for type in _cln_expect_db[pack]:
+			num_missing_db += _cln_expect_db[pack][type].size()
+	
+	if num_missing_db > 0:
+		push_warning("Not all missing entries were sent, clearing server DB schema anyway.")
+	_cln_expect_db.clear()
+	
+	if _cln_expect_fs.empty():
+		rpc_id(1, "request_sync_state")
+
+# Called by the client to send the current room state back to them. This can be
+# called either right after the client joins, or after they have downloaded the
+# missing assets.
+master func request_sync_state() -> void:
+	var client_id = get_tree().get_rpc_sender_id()
+	if client_id in _srv_expect_sync:
+		var compressed_state = _room.get_state_compressed(true, true)
+		_room.rpc_id(client_id, "set_state_compressed", compressed_state)
+		
+		_srv_expect_sync.erase(client_id)
+		Global.srv_state_update_blacklist.erase(client_id)
+	else:
+		push_warning("Client %d requested state sync when we weren't expecting, ignoring." % client_id)
+
+# Called by the client after they have compared the server's schemas against
+# their own.
+master func respond_with_schema_results(client_db_need: Dictionary,
+	client_fs_need: Dictionary) -> void:
+	
+	var client_id = get_tree().get_rpc_sender_id()
+	if not client_id in _srv_waiting_for:
+		push_warning("Got response from ID %d when we weren't expecting one!" % client_id)
+		return
+	
+	_srv_waiting_for.erase(client_id)
+	
+	var asset_db = AssetDB.get_db()
+	var db_provide = {}
+	for pack in client_db_need:
+		if not pack is String:
+			push_error("Pack in client DB is not a string!")
+			return
+		
+		if not _check_name(pack):
+			push_error("Pack string '%s' in client DB is not a valid name!" % pack)
+			return
+		
+		if not asset_db.has(pack):
+			push_error("Pack '%s' in client DB does not exist in the AssetDB!" % pack)
+			return
+		
+		var pack_dict = client_db_need[pack]
+		if not pack_dict is Dictionary:
+			push_error("Value under pack '%s' in client DB is not a dictionary!" % pack)
+			return
+		
+		var pack_provide = {}
+		for type in pack_dict:
+			if not type is String:
+				push_error("Type under pack '%s' in client DB is not a string!" % pack)
+				return
+			
+			if not type in AssetDB.ASSET_PACK_SUBFOLDERS:
+				push_error("Type '%s' under pack '%s' in client DB is not a valid type!" % [type, pack])
+				return
+			
+			if not asset_db[pack].has(type):
+				push_error("Type '%s' under pack '%s' in client DB is not in the AssetDB!" % [type, pack])
+				return
+			
+			var index_arr = pack_dict[type]
+			if not index_arr is Array:
+				push_error("Value in '%s/%s' in client DB is not an array!" % [pack, type])
+				return
+			
+			var asset_db_type = asset_db[pack][type]
+			var indicies_registered = []
+			var type_provide = []
+			for index in index_arr:
+				if not index is int:
+					push_error("Index in '%s/%s' in client DB is not an integer!" % [pack, type])
+					return
+				
+				if index < 0 or index >= asset_db_type.size():
+					push_error("Index %d in '%s/%s' in client DB is invalid!" % [index, pack, type])
+					return
+				
+				if index in indicies_registered:
+					push_error("Index %d in '%s/%s' in client DB has already been registered!" % [index, pack, type])
+					return
+				
+				indicies_registered.append(index)
+				var entry = asset_db_type[index].duplicate()
+				
+				# In order for the hash of the entry to match what we sent to
+				# the client earlier, we need to remove any translations in the
+				# entry.
+				var tr_keys = ["name", "desc"]
+				for key in entry:
+					for tr_key in tr_keys:
+						if key.begins_with(tr_key):
+							if key != tr_key:
+								entry.erase(key)
+				
+				type_provide.append(entry)
+			pack_provide[type] = type_provide
+		db_provide[pack] = pack_provide
+	
+	if not client_id in _srv_expect_sync:
+		_srv_expect_sync.append(client_id)
+	
+	if db_provide.empty():
+		request_sync_state()
+	else:
+		# TODO: Do for FS as well.
+		rpc_id(client_id, "receive_missing_db_entries", db_provide)
 
 # Ask the master server to host a game.
 func start_host() -> void:
@@ -522,15 +785,16 @@ func _unhandled_input(event):
 
 # Check a name that was given to us over the network.
 # Returns: If the name is valid.
-# name: The name to check.
-func _check_name(name: String) -> bool:
-	if not name.is_valid_filename():
+# name_to_check: The name to check.
+func _check_name(name_to_check: String) -> bool:
+	if not name_to_check.is_valid_filename():
 		return false
 	
-	if ".." in name:
+	if ".." in name_to_check:
 		return false
 	
-	return true
+	var after = name_to_check.strip_edges().strip_escapes()
+	return name_to_check == after
 
 # Connect to the master server, and ask to join the given room.
 # room_code: The room code to join with. If empty, ask the master server to
@@ -660,6 +924,62 @@ func _create_peer(id: int) -> WebRTCPeerConnection:
 	
 	return peer
 
+# Check if some data only consists of data.
+# Returns: If the value only contains data.
+# data: The value to check.
+# depth: The depth of recursion - if it reaches a certain point, it is not
+# considered data.
+func _is_only_data(data, depth: int = 0) -> bool:
+	if depth > 2:
+		return false
+	
+	match typeof(data):
+		TYPE_NIL:
+			pass
+		TYPE_BOOL:
+			pass
+		TYPE_INT:
+			pass
+		TYPE_REAL:
+			pass
+		TYPE_STRING:
+			pass
+		TYPE_VECTOR2:
+			pass
+		TYPE_RECT2:
+			pass
+		TYPE_VECTOR3:
+			pass
+		TYPE_TRANSFORM2D:
+			pass
+		TYPE_PLANE:
+			pass
+		TYPE_QUAT:
+			pass
+		TYPE_AABB:
+			pass
+		TYPE_BASIS:
+			pass
+		TYPE_TRANSFORM:
+			pass
+		TYPE_COLOR:
+			pass
+		TYPE_DICTIONARY:
+			for key in data:
+				if not _is_only_data(key, depth+1):
+					return false
+				var value = data[key]
+				if not _is_only_data(value, depth+1):
+					return false
+		TYPE_ARRAY:
+			for element in data:
+				if not _is_only_data(element, depth+1):
+					return false
+		_:
+			return false
+	
+	return true
+
 # Open a table state (.tc) file in the given mode.
 # Returns: A file object for the given path, null if it failed to open.
 # path: The file path to open.
@@ -733,12 +1053,7 @@ func _on_candidate_received(id: int, mid: String, index: int, sdp: String):
 
 func _on_connection_established(id: int):
 	print("Connection established with peer %d." % id)
-	# If a player has connected to the server, let them know of every piece on
-	# the board so far.
 	if get_tree().is_network_server():
-		var compressed_state = _room.get_state_compressed(true, true)
-		_room.rpc_id(id, "set_state_compressed", compressed_state)
-		
 		# If there is space, also give them a hand on the table.
 		var hand_transform = _room.srv_get_next_hand_transform()
 		if hand_transform != Transform.IDENTITY:
@@ -748,6 +1063,12 @@ func _on_connection_established(id: int):
 		
 		# Send them our asset schemas to see if they are missing any assets.
 		rpc_id(id, "compare_server_schemas", _srv_schema_db, _srv_schema_fs)
+		_srv_waiting_for.append(id)
+		
+		# Don't send the client state updates yet, wait until they've confirmed
+		# that their AssetDB is synced with ours.
+		if not id in Global.srv_state_update_blacklist:
+			Global.srv_state_update_blacklist.append(id)
 	
 	# If we are not the host, then ask the host to send us their list of
 	# players.
@@ -792,6 +1113,8 @@ func _on_peer_disconnected(id: int):
 		
 		_room.rpc("remove_hand", id)
 		_room.srv_stop_player_hovering(id)
+		
+		Global.srv_state_update_blacklist.erase(id)
 
 func _on_room_joined(room_code: String):
 	print("Joined room %s." % room_code)
@@ -802,7 +1125,22 @@ func _on_room_sealed():
 	Global.start_main_menu_with_error(tr("Room has been closed by the host."))
 
 func _on_DownloadAssetsConfirmDialog_confirmed():
-	pass # Replace with function body.
+	_cln_keep_expecting = true
+	_download_assets_confirm_dialog.visible = false
+	_cln_keep_expecting = false
+
+func _on_DownloadAssetsConfirmDialog_popup_hide():
+	if not _cln_keep_expecting:
+		_cln_need_db.clear()
+		_cln_need_fs.clear()
+		_cln_expect_db.clear()
+		_cln_expect_fs.clear()
+	
+	rpc_id(1, "respond_with_schema_results", _cln_need_db, _cln_need_fs)
+	
+	if _cln_keep_expecting:
+		_cln_need_db.clear()
+		_cln_need_fs.clear()
 
 func _on_GameUI_about_to_save_table():
 	_room_state_saving = _room.get_state(false, false)
@@ -863,9 +1201,19 @@ func _on_Lobby_players_synced():
 	if not get_tree().is_network_server():
 		Lobby.rpc_id(1, "request_add_self", _player_name, _player_color)
 
+func _on_MissingAssetsDialog_popup_hide():
+	if not _cln_keep_expecting:
+		_cln_need_db.clear()
+		_cln_need_fs.clear()
+		_cln_expect_db.clear()
+		_cln_expect_fs.clear()
+		rpc_id(1, "respond_with_schema_results", {}, {})
+
 func _on_MissingYesButton_pressed():
 	_download_assets_confirm_dialog.popup_centered()
+	_cln_keep_expecting = true
 	_missing_assets_dialog.visible = false
+	_cln_keep_expecting = false
 
 func _on_MissingNoButton_pressed():
 	_missing_assets_dialog.visible = false

@@ -98,6 +98,7 @@ margin_bottom = 140.0
 popup_exclusive = true
 window_title = "Download Assets?"
 dialog_text = "Are you sure you trust the host, and want to download the missing assets?"
+dialog_hide_on_ok = false
 dialog_autowrap = true
 
 [node name="TableStateErrorDialog" type="AcceptDialog" parent="."]
@@ -139,7 +140,9 @@ script = ExtResource( 4 )
 [connection signal="stopped_saving_table" from="GameUI" to="." method="_on_GameUI_stopped_saving_table"]
 [connection signal="table_requested" from="GameUI" to="." method="_on_GameUI_table_requested"]
 [connection signal="undo_state" from="GameUI" to="Room" method="_on_GameUI_undo_state"]
+[connection signal="popup_hide" from="MissingAssetsDialog" to="." method="_on_MissingAssetsDialog_popup_hide"]
 [connection signal="pressed" from="MissingAssetsDialog/VBoxContainer/MissingYesButton" to="." method="_on_MissingYesButton_pressed"]
 [connection signal="pressed" from="MissingAssetsDialog/VBoxContainer/MissingNoButton" to="." method="_on_MissingNoButton_pressed"]
 [connection signal="confirmed" from="DownloadAssetsConfirmDialog" to="." method="_on_DownloadAssetsConfirmDialog_confirmed"]
+[connection signal="popup_hide" from="DownloadAssetsConfirmDialog" to="." method="_on_DownloadAssetsConfirmDialog_popup_hide"]
 [connection signal="confirmed" from="TableStateVersionDialog" to="." method="_on_TableStateVersionDialog_confirmed"]

@@ -44,6 +44,9 @@ var system_locale: String = ""
 const SRV_PIECE_UPDATE_TRANSMIT_LIMIT = 20
 var srv_num_physics_frames_per_state_update: int = 1
 
+# Do not send state updates to players if they are not ready.
+var srv_state_update_blacklist: Array = []
+
 var _current_scene: Node = null
 var _loader: ResourceInteractiveLoader = null
 var _loader_args: Dictionary = {}

@@ -556,7 +556,9 @@ func _physics_process(_delta):
 		if Engine.get_physics_frames() % Global.srv_num_physics_frames_per_state_update == 0:
 			if not _last_server_state_invalid:
 				if not (sleeping or is_hovering() or is_locked()):
-					rpc_unreliable("ss", _last_server_state_0, _last_server_state_1)
+					for id in Lobby.get_player_list():
+						if id != 1 and (not id in Global.srv_state_update_blacklist):
+							rpc_unreliable_id(id, "ss", _last_server_state_0, _last_server_state_1)
 
 # Apply forces to the piece to get it to the desired hover position and
 # orientation.
