@@ -742,7 +742,7 @@ remotesync func remove_pieces(piece_names: Array) -> void:
 				_srv_undo_state_events["remove_piece"] = UNDO_STATE_EVENT_TIMERS["remove_piece"]
 			
 			_pieces.remove_child(piece)
-			piece.queue_free()
+			PieceBuilder.queue_free_object(piece)
 		else:
 			# Clients put the piece in "limbo", until a certain amount of time
 			# has passed since the last RPC call.
@@ -1596,7 +1596,7 @@ func set_state(state: Dictionary) -> void:
 	# same name as ones currently in the tree.
 	for child in _pieces.get_children():
 		_pieces.remove_child(child)
-		child.queue_free()
+		PieceBuilder.queue_free_object(child)
 
 	_extract_piece_states(state, _pieces)
 
@@ -1662,7 +1662,7 @@ remotesync func set_table(table_entry_path: String) -> void:
 		if _table_body.is_a_parent_of(_paint_plane):
 			_table_body.remove_child(_paint_plane)
 		_table.remove_child(_table_body)
-		_table_body.queue_free()
+		PieceBuilder.queue_free_object(_table_body)
 		_table_body = null
 
 	for hand_pos in _hand_positions.get_children():
@@ -2191,7 +2191,7 @@ func _limbo_clean_pieces(force: bool) -> void:
 		if piece is Piece:
 			if force or piece.get_time_since_update() > LIMBO_DURATION:
 				_pieces.remove_child(piece)
-				piece.queue_free()
+				PieceBuilder.queue_free_object(piece)
 
 # Modify piece states such that the pieces have new names, and their positions
 # are offset by a given amount.

@@ -37,6 +37,8 @@ own_world = true
 world = SubResource( 2 )
 transparent_bg = true
 handle_input_locally = false
+disable_3d = true
+usage = 3
 render_target_update_mode = 3
 gui_disable_input = true
 

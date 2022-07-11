@@ -39,7 +39,6 @@ var _build_thread = Thread.new()
 
 var _next_piece_entry: Dictionary = {}
 var _piece_to_spawn: Piece = null
-var _pieces_to_free: Array = []
 
 var _piece_mutex = Mutex.new()
 
@@ -167,13 +166,6 @@ func _build_next_piece(_userdata) -> void:
 		_piece_mutex.lock()
 		_piece_to_spawn = piece
 		_piece_mutex.unlock()
-	
-	# If there are any pieces to free, free them now.
-	_piece_mutex.lock()
-	for piece in _pieces_to_free:
-		piece.free()
-	_pieces_to_free = []
-	_piece_mutex.unlock()
 
 func _decide_next_piece() -> void:
 	if not _asset_chances.empty():
@@ -241,7 +233,7 @@ func _on_SpawnTimer_timeout():
 	for piece in _pieces.get_children():
 		if piece.translation.y < DESPAWN_PLANE:
 			_pieces.remove_child(piece)
-			_pieces_to_free.append(piece)
+			PieceBuilder.queue_free_object(piece)
 	
 	_piece_mutex.unlock()
 

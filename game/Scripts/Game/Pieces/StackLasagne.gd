@@ -153,7 +153,7 @@ func _remove_piece_at_pos(pos: int) -> Dictionary:
 		"transform": piece.transform
 	}
 	
-	piece.queue_free()
+	PieceBuilder.queue_free_object(piece)
 	return out
 
 # Set the y-position of the pieces in the stack.

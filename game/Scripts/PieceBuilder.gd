@@ -26,6 +26,9 @@ extends Node
 # so make sure we load resources one at a time with a mutex.
 var _res_mutex = Mutex.new()
 
+# Prevent two objects from being registered to be freed at the same time.
+var _free_mutex = Mutex.new()
+
 # Build a piece using an entry from the AssetDB.
 # Returns: The piece corresponding to the given entry.
 # piece_entry: The entry to create the piece with.
@@ -205,6 +208,15 @@ func get_piece_meshes(piece: Piece) -> Array:
 	
 	return out
 
+# Queue an object built with the piece builder to be freed in a thread-safe
+# manner. Use this if an object is being freed before the scene is exiting
+# the scene tree.
+# object: The object to be freed.
+func queue_free_object(object: RigidBody) -> void:
+	_free_mutex.lock()
+	call_deferred("_free_object", object)
+	_free_mutex.unlock()
+
 # Scale a piece by changing the scale of its children collision shapes.
 # piece: The piece to scale.
 # scale: How much to scale the piece by.
@@ -306,6 +318,15 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 		
 		collision_shape.add_child(from)
 		add_to.add_child(collision_shape)
+
+# Free an object in a thread-safe manner.
+# object: The object to free.
+func _free_object(object: RigidBody) -> void:
+	# Lock the resource mutex here, just in case a resource used by the object
+	# is being created as it is being freed here.
+	_res_mutex.lock()
+	object.free()
+	_res_mutex.unlock()
 
 # Load the resource at the given path. This function will block if another
 # thread is loading a resource at the same time.

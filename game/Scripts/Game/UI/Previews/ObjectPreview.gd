@@ -34,6 +34,7 @@ const X_ROTATION = PI / 4
 var _piece: Piece = null
 
 var _reject_factory_output = false
+var _wait_for_render_pass = false
 
 # Get the name of the piece node this preview is displaying.
 # Returns: The name of the piece node, an empty string if displaying nothing.
@@ -106,6 +107,10 @@ func set_piece_display(piece: Piece) -> void:
 	if _reject_factory_output:
 		return
 	
+	if _wait_for_render_pass:
+		push_error("Cannot set piece display, waiting for render pass!")
+		return
+	
 	# Make sure that if we are already displaying a piece, we free it before
 	# we lose it!
 	_clear_gui(false)
@@ -143,12 +148,20 @@ func set_piece_display(piece: Piece) -> void:
 	var theta = deg2rad(_camera.fov)
 	var dist = 1 + display_radius + (display_height / (2 * tan(theta / 2)))
 	_camera.translation.z = dist
+	
+	_viewport.disable_3d = false
 
 func _ready():
 	# We connect the signal here because we don't want the editor to connect
 	# the signal when this is inside an ObjectPreviewGrid (which is an editor
 	# script).
 	connect("tree_exiting", self, "_on_tree_exiting")
+	
+	# When we're about to remove the piece from the preview, we want to wait
+	# for the render pass to end, so that we can guarantee that the viewport
+	# has been disabled before we remove the piece.
+	# TODO: Only connect if we need to wait?
+	VisualServer.connect("frame_post_draw", self, "_on_frame_post_draw")
 
 func _process(delta):
 	if _piece:
@@ -158,6 +171,8 @@ func _process(delta):
 # Called when the preview is cleared.
 # details: Should the details (like the name) be cleared too?
 func _clear_gui(details: bool = true) -> void:
+	_viewport.disable_3d = true
+	
 	if details:
 		hint_tooltip = ""
 		_label.text = ""
@@ -168,15 +183,22 @@ func _clear_gui(details: bool = true) -> void:
 		# door.
 		_reject_factory_output = true
 	
+	# We've set the viewport to disable 3D, but it won't actually take effect
+	# until the end of the next render pass.
 	if _piece:
-		_viewport.remove_child(_piece)
-		
-		# Ask the ObjectPreviewFactory to free the piece, as it could have come
-		# from there. If it didn't, that doesn't matter, it does the same thing
-		# anyway.
-		ObjectPreviewFactory.free_piece(_piece)
-		
-		_piece = null
+		_wait_for_render_pass = true
+
+# Remove the piece from the scene tree.
+func _remove_piece() -> void:
+	# There should only ever be at most one child piece, but since we only
+	# use a reference to one piece, _piece, remove all child pieces just in
+	# case one escapes the _piece reference.
+	for child in _viewport.get_children():
+		if child is RigidBody:
+			_viewport.remove_child(child)
+			PieceBuilder.queue_free_object(child)
+	
+	_piece = null
 
 # Called when the preview entry is changed.
 # piece_entry: The new entry to display. It is guaranteed to not be empty.
@@ -192,6 +214,11 @@ func _set_entry_gui(piece_entry: Dictionary) -> void:
 # selected: If the preview is now selected.
 func _set_selected_gui(selected: bool) -> void:
 	_viewport.transparent_bg = not selected
+
+func _on_frame_post_draw():
+	if _wait_for_render_pass:
+		_remove_piece()
+		_wait_for_render_pass = false
 
 func _on_tree_exiting():
 	# Wait for the ObjectPreviewFactory's build thread to finish in the event
