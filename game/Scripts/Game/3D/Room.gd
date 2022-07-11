@@ -2435,7 +2435,7 @@ func _on_GameUI_clear_pieces():
 	var piece_names = []
 	for piece in _pieces.get_children():
 		if piece is Piece:
-			piece_names.append(piece)
+			piece_names.append(piece.name)
 	rpc_id(1, "request_remove_pieces", piece_names)
 
 func _on_GameUI_rotation_amount_updated(rotation_amount: float):
