@@ -62,6 +62,7 @@ var _cln_need_fs: Dictionary = {}
 var _cln_expect_db: Dictionary = {}
 var _cln_expect_fs: Dictionary = {}
 var _cln_keep_expecting: bool = false
+var _cln_save_chunk_thread: Thread = null
 var _srv_expect_sync: Array = []
 var _srv_file_transfer_threads: Dictionary = {}
 var _srv_schema_db: Dictionary = {}
@@ -77,7 +78,9 @@ const TRANSFER_MAX_COMMANDS = 5 # Up to 250Kb of RAM.
 # accomodate for slower computers.
 
 var _transfer_commands: Array = []
+var _transfer_import_files: bool = false
 var _transfer_mutex: Mutex = Mutex.new()
+var _transfer_num_expected_rpcs: int = 0
 var _transfer_time_since_rpc: float = 0.0
 
 # Apply options from the options menu.
@@ -377,18 +380,24 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 	print("# Modified files: %d" % fs_num_modified)
 	print("- Files that we need from the host:")
 	var total_size_need = 0
+	_transfer_num_expected_rpcs = 0
 	for pack in fs_need:
 		for type in fs_need[pack]:
 			for asset in fs_need[pack][type]:
 				var path = "%s/%s/%s" % [pack, type, asset]
 				var size = server_schema_fs[pack][type][asset]["size"]
 				total_size_need += size
+				if size == 0:
+					_transfer_num_expected_rpcs += 1
+				else:
+					_transfer_num_expected_rpcs += int(ceil(float(size) / TRANSFER_CHUNK_SIZE))
 				
 				if _missing_fs_label.text.length() > 0:
 					_missing_fs_label.text += "\n"
 				_missing_fs_label.text += "- %s (%s)" % [path,
 						String.humanize_size(size)]
 				print(path)
+	print("We expect these files to be delivered in a total of %d RPCs." % _transfer_num_expected_rpcs)
 	_missing_fs_summary_label.text = _missing_fs_summary_label.text % [
 			fs_num_missing, fs_num_modified, String.humanize_size(total_size_need)]
 	
@@ -403,6 +412,9 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 	if not db_extra.empty():
 		# Prevent the player from spawning in the extra objects.
 		_ui.reconfigure_asset_dialogs()
+	
+	if not fs_need.empty():
+		_clear_download_cache()
 	
 	if db_need.empty() and fs_need.empty():
 		rpc_id(1, "respond_with_schema_results", {}, {})
@@ -450,7 +462,54 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 puppet func receive_missing_asset_chunk(pack: String, type: String,
 	asset: String, chunk: PoolByteArray) -> void:
 	
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	_transfer_mutex.lock()
+	var num_expected_rpcs = _transfer_num_expected_rpcs
+	_transfer_mutex.unlock()
+	
+	if num_expected_rpcs <= 0:
+		push_warning("Got an asset chunk when we weren't expecting one, ignoring.")
+		return
+	
+	_transfer_mutex.lock()
+	_transfer_num_expected_rpcs -= 1
+	_transfer_mutex.unlock()
+	
+	if not _cln_expect_fs.has(pack):
+		push_warning("Got asset chunk for pack '%s' which we weren't expecting, ignore." % pack)
+		return
+	
+	if not _cln_expect_fs[pack].has(type):
+		push_warning("Got asset chunk for type '%s/%s' which we weren't expecting, ignore." % [pack, type])
+		return
+	
+	if not _cln_expect_fs[pack][type].has(asset):
+		push_warning("Got asset chunk for '%s/%s/%s' which we weren't expecting, ignore." % [pack, type, asset])
+		return
+	
+	var size_remaining: int = _cln_expect_fs[pack][type][asset]["size"]
+	var chunk_expected_size = min(size_remaining, TRANSFER_CHUNK_SIZE)
+	if chunk.size() != chunk_expected_size:
+		push_warning("Chunk size should be %d, got %d, ignoring." % [chunk_expected_size, chunk.size()])
+		return
+	
 	print("Got: %s/%s/%s (size = %d)" % [pack, type, asset, chunk.size()])
+	_cln_expect_fs[pack][type][asset]["size"] -= chunk.size()
+	
+	_transfer_mutex.lock()
+	_transfer_commands.push_back({
+		"pack": pack,
+		"type": type,
+		"asset": asset,
+		"chunk": chunk
+	})
+	_transfer_mutex.unlock()
+	
+	if _cln_save_chunk_thread == null:
+		_cln_save_chunk_thread = Thread.new()
+		_cln_save_chunk_thread.start(self, "_save_chunks_to_cache")
 
 # Called by the server to receive the missing AssetDB entries that the client
 # asked for.
@@ -568,6 +627,58 @@ puppet func receive_missing_db_entries(missing_entries: Dictionary) -> void:
 	if _cln_expect_fs.empty():
 		_ui.reconfigure_asset_dialogs()
 		rpc_id(1, "request_sync_state")
+
+# Called by the server when they say that we have received all of the asset
+# chunks that we requested.
+puppet func received_all_asset_chunks() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if _cln_save_chunk_thread != null:
+		if _cln_save_chunk_thread.is_active():
+			_cln_save_chunk_thread.wait_to_finish()
+	else:
+		_cln_save_chunk_thread = Thread.new()
+	
+	# We'll use the same thread to import the new assets.
+	var instructions = []
+	
+	for pack in _cln_expect_fs:
+		for type in _cln_expect_fs[pack]:
+			for asset in _cln_expect_fs[pack][type]:
+				var meta = _cln_expect_fs[pack][type][asset]
+				var file_expected_md5 = meta["md5"]
+				var remaining_size = meta["size"]
+				
+				var act_file_path = "user://assets/%s/%s/%s" % [pack, type, asset]
+				var tmp_file_path = "user://tmp/%s.%s.bin" % [asset, act_file_path.md5_text()]
+				
+				if remaining_size != 0:
+					push_warning("Remaining size of %s/%s/%s is %d, not 0 - ignoring." % [pack, type, asset, remaining_size])
+					continue
+				
+				var check_md5 = File.new()
+				if check_md5.get_md5(tmp_file_path) != file_expected_md5:
+					push_warning("MD5 of %s/%s/%s does not match what the server told us - ignoring." % [pack, type, asset])
+					continue
+				
+				var instruction = {
+					"pack": pack,
+					"type": type,
+					"asset": asset
+				}
+				
+				# Like in the AssetDB, import scenes last, since they may
+				# depend on the other assets like textures.
+				if AssetDB.VALID_SCENE_EXTENSIONS.has(asset.get_extension()):
+					instructions.push_back(instruction)
+				else:
+					instructions.push_front(instruction)
+	
+	_transfer_mutex.lock()
+	_transfer_import_files = true
+	_transfer_mutex.unlock()
+	_cln_save_chunk_thread.start(self, "_import_new_assets", instructions)
 
 # Called by the client to send the current room state back to them. This can be
 # called either right after the client joins, or after they have downloaded the
@@ -899,10 +1010,6 @@ func _process(delta):
 			if not _transfer_commands.empty():
 				var cmd: Dictionary = _transfer_commands.pop_front()
 				var id: int = cmd["id"]
-				var pack: String = cmd["pack"]
-				var type: String = cmd["type"]
-				var asset: String = cmd["asset"]
-				var buffer: PoolByteArray = cmd["buffer"]
 				
 				# Check if the client is still connected before sending the
 				# data.
@@ -911,12 +1018,40 @@ func _process(delta):
 					is_connected = _rtc.get_peer(id)["connected"]
 				
 				if is_connected:
-					print("Sending to %d: %s/%s/%s (size = %d)" % [id, pack,
-							type, asset, buffer.size()])
-					rpc_id(id, "receive_missing_asset_chunk", pack, type, asset,
-							buffer)
+					if cmd.has("done"):
+						rpc_id(id, "received_all_asset_chunks")
+					else:
+						var pack: String = cmd["pack"]
+						var type: String = cmd["type"]
+						var asset: String = cmd["asset"]
+						var buffer: PoolByteArray = cmd["buffer"]
+						
+						if is_connected:
+							print("Sending to %d: %s/%s/%s (size = %d)" % [id, pack,
+									type, asset, buffer.size()])
+							rpc_id(id, "receive_missing_asset_chunk", pack, type,
+									asset, buffer)
+					
 					_transfer_time_since_rpc = 0.0
 			_transfer_mutex.unlock()
+	else:
+		_transfer_mutex.lock()
+		var done_importing_new_assets = false
+		if _transfer_commands.size() == 1:
+			if typeof(_transfer_commands[0]) == TYPE_STRING:
+				if _transfer_commands[0] == "done_importing":
+					done_importing_new_assets = true
+					_transfer_commands.clear()
+		_transfer_mutex.unlock()
+		
+		if done_importing_new_assets:
+			# Do the same as we do when we're done adding the extra AssetDB
+			# entries.
+			_cln_expect_fs.clear()
+			
+			if _cln_expect_db.empty():
+				_ui.reconfigure_asset_dialogs()
+				rpc_id(1, "request_sync_state")
 
 func _unhandled_input(event):
 	if event.is_action_pressed("game_take_screenshot"):
@@ -964,6 +1099,32 @@ func _check_name(name_to_check: String) -> bool:
 	
 	var after = name_to_check.strip_edges().strip_escapes()
 	return name_to_check == after
+
+# Clear the download cache, which consists of all files under user://tmp/
+func _clear_download_cache() -> void:
+	var download_dir = Directory.new()
+	var err = download_dir.open("user://")
+	if err == OK:
+		if download_dir.dir_exists("tmp"):
+			err = download_dir.change_dir("tmp")
+			if err == OK:
+				print("Deleting the download cache...")
+				download_dir.list_dir_begin(true, true)
+				
+				var file = download_dir.get_next()
+				while file:
+					if not download_dir.current_is_dir():
+						err = download_dir.remove(file)
+						if err != OK:
+							push_error("Failed to remove tmp/%s (error %d)" % [file, err])
+					
+					file = download_dir.get_next()
+				
+				download_dir.list_dir_end()
+			else:
+				push_error("Failed to open the user://tmp directory (error %d)" % err)
+	else:
+		push_error("Failed to open the user:// directory (error %d)" % err)
 
 # Connect to the master server, and ask to join the given room.
 # room_code: The room code to join with. If empty, ask the master server to
@@ -1103,6 +1264,45 @@ func _create_peer(id: int) -> WebRTCPeerConnection:
 	
 	return peer
 
+# Run by a thread to import assets from the user://tmp directory into the
+# user://assets directory.
+func _import_new_assets(instructions: Array) -> void:
+	if Global.tabletop_importer == null:
+		push_warning("TabletopImporter does not exist, aborting import of new assets.")
+		instructions.clear()
+	
+	for instruction in instructions:
+		_transfer_mutex.lock()
+		var keep_importing = _transfer_import_files
+		_transfer_mutex.unlock()
+		
+		if not keep_importing:
+			break
+		
+		var pack: String = instruction["pack"]
+		var type: String = instruction["type"]
+		var asset: String = instruction["asset"]
+		
+		var path_to = "user://assets/%s/%s/%s" % [pack, type, asset]
+		var path_to_md5 = path_to.md5_text()
+		var path_from = "user://tmp/%s.%s.bin" % [asset, path_to_md5]
+		
+		var dir = Directory.new()
+		var err = dir.rename(path_from, path_to)
+		if err != OK:
+			push_error("Failed to move %s to %s (error %d)" % [path_from, path_to, err])
+			continue
+		
+		print("%s -> %s" % [path_from, path_to])
+		
+		if AssetDB.EXTENSIONS_TO_IMPORT.has(path_to.get_extension()):
+			Global.tabletop_importer.import(path_to)
+	
+	_transfer_mutex.lock()
+	_transfer_import_files = false
+	_transfer_commands = ["done_importing"] # -> _process().
+	_transfer_mutex.unlock()
+
 # Check if some data only consists of data.
 # Returns: If the value only contains data.
 # data: The value to check.
@@ -1188,6 +1388,57 @@ func _popup_table_state_version(message: String) -> void:
 	
 	push_warning(message)
 
+# Saved downloaded chunks to a cache file in user://tmp.
+func _save_chunks_to_cache(_userdata) -> void:
+	_transfer_mutex.lock()
+	var num_commands = _transfer_commands.size()
+	var rpcs_remaining = _transfer_num_expected_rpcs
+	_transfer_mutex.unlock()
+	
+	while num_commands > 0 or rpcs_remaining > 0:
+		var cmd = {}
+		_transfer_mutex.lock()
+		if not _transfer_commands.empty():
+			cmd = _transfer_commands.pop_front()
+		_transfer_mutex.unlock()
+		
+		if not cmd.empty():
+			var pack: String = cmd["pack"]
+			var type: String = cmd["type"]
+			var asset: String = cmd["asset"]
+			var chunk: PoolByteArray = cmd["chunk"]
+			
+			var file_path_later = "user://assets/%s/%s/%s" % [pack, type, asset]
+			var file_path_md5 = file_path_later.md5_text()
+			var file_path_now = "user://tmp/%s.%s.bin" % [asset, file_path_md5]
+			
+			var tmp_dir = Directory.new()
+			if not tmp_dir.dir_exists("user://tmp"):
+				var err = tmp_dir.make_dir("user://tmp")
+				if err != OK:
+					push_error("Could not create user://tmp (error %d)" % err)
+					continue
+			
+			var file = File.new()
+			var mode = File.READ_WRITE
+			if not file.file_exists(file_path_now):
+				mode = File.WRITE
+			var err = file.open(file_path_now, mode)
+			if err != OK:
+				push_error("Could not open file %s (error %d)" % [file_path_now, err])
+				continue
+			
+			file.seek_end()
+			file.store_buffer(chunk)
+			file.close()
+		else:
+			OS.delay_msec(int(1000 * TRANSFER_CHUNK_DELAY))
+		
+		_transfer_mutex.lock()
+		num_commands = _transfer_commands.size()
+		rpcs_remaining = _transfer_num_expected_rpcs
+		_transfer_mutex.unlock()
+
 # Transfer files from the server to a given client.
 # userdata: A dictionary, containing "client_id" (the client to send the files
 # to), and "provide" (the directory of files to provide from user://assets).
@@ -1224,7 +1475,7 @@ func _transfer_asset_files(userdata: Dictionary) -> void:
 							_transfer_mutex.unlock()
 						
 						_transfer_mutex.lock()
-						_transfer_commands.append({
+						_transfer_commands.push_back({
 							"id": client_id,
 							"pack": pack,
 							"type": type,
@@ -1237,6 +1488,13 @@ func _transfer_asset_files(userdata: Dictionary) -> void:
 					file.close()
 				else:
 					push_error("Failed to read file '%s'!" % file_path)
+	
+	_transfer_mutex.lock()
+	_transfer_commands.push_back({
+		"id": client_id,
+		"done": true
+	})
+	_transfer_mutex.unlock()
 
 func _on_connected(id: int):
 	print("Connected to the room as peer %d." % id)
@@ -1376,12 +1634,20 @@ func _on_Game_tree_exiting():
 	
 	_transfer_mutex.lock()
 	_transfer_commands.clear()
+	_transfer_import_files = false
+	_transfer_num_expected_rpcs = 0
 	_transfer_mutex.unlock()
 	
 	# With the connection closed, and the commands cleared, the transfer
 	# threads should end on their own.
 	for thread in _srv_file_transfer_threads.values():
-		thread.wait_to_finish()
+		if thread.is_active():
+			thread.wait_to_finish()
+	
+	if _cln_save_chunk_thread != null:
+		if _cln_save_chunk_thread.is_active():
+			_cln_save_chunk_thread.wait_to_finish()
+	_clear_download_cache()
 
 func _on_GameUI_about_to_save_table():
 	_room_state_saving = _room.get_state(false, false)

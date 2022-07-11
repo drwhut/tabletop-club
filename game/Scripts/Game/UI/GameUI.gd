@@ -207,7 +207,11 @@ func _on_DesktopButton_pressed():
 func _on_error_received(function: String, file: String, line: int,
 	error: String, _errorexp: String):
 	
-	add_notification_error("%s:%d %s: %s" % [file, line, function, error])
+	# An error could occur while the chat box was in the middle of drawing (in
+	# another thread), so wait until a time where the chat box is guaranteed
+	# to not be in the middle of it's _draw().
+	call_deferred("add_notification_error", "%s:%d %s: %s" % [file, line,
+			function, error])
 
 func _on_FlipTableButton_pressed():
 	emit_signal("flipping_table")
@@ -328,4 +332,8 @@ func _on_UndoButton_pressed():
 func _on_warning_received(function: String, file: String, line: int,
 	error: String, _errorexp: String):
 	
-	add_notification_warning("%s:%d %s: %s" % [file, line, function, error])
+	# An error could occur while the chat box was in the middle of drawing (in
+	# another thread), so wait until a time where the chat box is guaranteed
+	# to not be in the middle of it's _draw().
+	call_deferred("add_notification_warning", "%s:%d %s: %s" % [file, line,
+			function, error])

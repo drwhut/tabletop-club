@@ -22,14 +22,9 @@
 
 extends Node
 
-# If a resource is loaded via the PieceBuilder (e.g. a texture or a 3D model),
-# then it is very likely it will be loaded again in the future. So keep
-# resources that we load into a dictionary, where the key is the path to the
-# resource.
-# Plus, this also makes building pieces in multiple threads safer, as we can
-# control who gets control over the cache with a mutex.
-var _res_cache = {}
-var _res_cache_mutex = Mutex.new()
+# Loading resources from multiple threads at the same time is not supported -
+# so make sure we load resources one at a time with a mutex.
+var _res_mutex = Mutex.new()
 
 # Build a piece using an entry from the AssetDB.
 # Returns: The piece corresponding to the given entry.
@@ -183,12 +178,6 @@ func fill_stack(stack: Stack, stack_entry: Dictionary) -> void:
 		stack.add_piece(piece_entry, Transform.IDENTITY, Stack.STACK_BOTTOM,
 			Stack.FLIP_NO)
 
-# Free the entire resource cache.
-func free_cache() -> void:
-	_res_cache_mutex.lock()
-	_res_cache.clear()
-	_res_cache_mutex.unlock()
-
 # Create an array of MeshInstances from a piece, which can also be inserted
 # into stacks.
 # Returns: An array of MeshInstances representing the piece's meshes, but with
@@ -318,20 +307,13 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 		collision_shape.add_child(from)
 		add_to.add_child(collision_shape)
 
-# Load the resource at the given path. If it is already in the cache, the cache
-# version is returned. Otherwise, the resource is put into the cache before it
-# is returned.
+# Load the resource at the given path. This function will block if another
+# thread is loading a resource at the same time.
 # Returns: The resource at the given path.
 # path: The path of the resource to load.
 func _load_res(path: String) -> Resource:
-	var res: Resource
-	
-	_res_cache_mutex.lock()
-	if _res_cache.has(path):
-		res = _res_cache[path]
-	else:
-		res = load(path)
-		_res_cache[path] = res
-	_res_cache_mutex.unlock()
+	_res_mutex.lock()
+	var res: Resource = load(path)
+	_res_mutex.unlock()
 	
 	return res

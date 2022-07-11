@@ -248,7 +248,6 @@ func _set_scene(scene: Node, args: Dictionary) -> void:
 	_current_scene.free()
 	
 	AssetDB.clear_temp_db()
-	PieceBuilder.free_cache()
 	
 	root.add_child(scene)
 	get_tree().set_current_scene(scene)
