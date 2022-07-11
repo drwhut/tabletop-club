@@ -97,7 +97,7 @@ func add_piece(piece_entry: Dictionary, piece_transform: Transform,
 		self.piece_entry = piece_entry
 		
 		var new_shape: Shape = null
-		var piece_instance = PieceBuilder.build_piece(piece_entry)
+		var piece_instance = PieceBuilder.build_piece(piece_entry, false)
 		
 		var piece_collision_shapes = piece_instance.get_collision_shapes()
 		if piece_collision_shapes.size() != 1:

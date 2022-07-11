@@ -32,7 +32,9 @@ var _free_mutex = Mutex.new()
 # Build a piece using an entry from the AssetDB.
 # Returns: The piece corresponding to the given entry.
 # piece_entry: The entry to create the piece with.
-func build_piece(piece_entry: Dictionary) -> Piece:
+# extra_nodes: If true, also include nodes that provide extra functionality,
+# e.g. sound effects.
+func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 	var piece = _load_res(piece_entry["scene_path"]).instance()
 	
 	# If the scene is not a piece (e.g. when importing a scene from the assets
@@ -51,34 +53,40 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 			pieces_node.name = "Pieces"
 			build.add_child(pieces_node)
 		elif scene_dir.ends_with("speakers") or scene_dir.ends_with("timers"):
-			if scene_dir.ends_with("speakers"):
-				build = SpeakerPiece.new()
+			if extra_nodes:
+				if scene_dir.ends_with("speakers"):
+					build = SpeakerPiece.new()
+				else:
+					build = TimerPiece.new()
+				
+				var audio_player_node = AudioStreamPlayer3D.new()
+				audio_player_node.name = "AudioStreamPlayer3D"
+				build.add_child(audio_player_node)
 			else:
-				build = TimerPiece.new()
-			
-			var audio_player_node = AudioStreamPlayer3D.new()
-			audio_player_node.name = "AudioStreamPlayer3D"
-			build.add_child(audio_player_node)
+				# Speakers rely on their audio player, so convert to a vanilla
+				# piece if we don't want the audio player.
+				build = Piece.new()
 		else:
 			var parent_dir = scene_dir.get_base_dir()
 			if parent_dir.ends_with("dice"):
 				build = Dice.new()
 				
-				# Dice, along with cards and tokens, have their own unique
-				# sound effects which are implemented here.
-				build.contact_monitor = true
-				build.contacts_reported = 1
-				
-				var effect_player = AudioStreamPlayer3D.new()
-				effect_player.name = "EffectPlayer"
-				effect_player.bus = "Effects"
-				effect_player.unit_size = 20.0
-				build.add_child(effect_player)
-				
-				build.effect_player_path = NodePath("EffectPlayer")
-				
-				build.table_collide_fast_sounds = preload("res://Sounds/Dice/DiceTableFastSounds.tres")
-				build.shake_sounds = preload("res://Sounds/Dice/DiceShakeSounds.tres")
+				if extra_nodes:
+					# Dice, along with cards and tokens, have their own unique
+					# sound effects which are implemented here.
+					build.contact_monitor = true
+					build.contacts_reported = 1
+					
+					var effect_player = AudioStreamPlayer3D.new()
+					effect_player.name = "EffectPlayer"
+					effect_player.bus = "Effects"
+					effect_player.unit_size = 20.0
+					build.add_child(effect_player)
+					
+					build.effect_player_path = NodePath("EffectPlayer")
+					
+					build.table_collide_fast_sounds = preload("res://Sounds/Dice/DiceTableFastSounds.tres")
+					build.shake_sounds = preload("res://Sounds/Dice/DiceShakeSounds.tres")
 			else:
 				build = Piece.new()
 		
@@ -112,31 +120,32 @@ func build_piece(piece_entry: Dictionary) -> Piece:
 	if piece.is_albedo_color_exposed():
 		piece.set_albedo_color_client(piece_entry["color"])
 	
-	piece.setup_outline_material()
-	
-	if piece_entry.has("sfx") and piece_entry["sfx"] is String:
-		if not piece_entry["sfx"].empty():
-			if piece.effect_player_path.empty():
-				var effect_player = AudioStreamPlayer3D.new()
-				effect_player.name = "EffectPlayer"
-				effect_player.bus = "Effects"
-				effect_player.unit_size = 20
+	if extra_nodes:
+		piece.setup_outline_material()
+		
+		if piece_entry.has("sfx") and piece_entry["sfx"] is String:
+			if not piece_entry["sfx"].empty():
+				if piece.effect_player_path.empty():
+					var effect_player = AudioStreamPlayer3D.new()
+					effect_player.name = "EffectPlayer"
+					effect_player.bus = "Effects"
+					effect_player.unit_size = 20
+					
+					piece.add_child(effect_player)
+					piece.effect_player_path = NodePath("EffectPlayer")
 				
-				piece.add_child(effect_player)
-				piece.effect_player_path = NodePath("EffectPlayer")
-			
-			# Need to enable contact monitoring so the piece knows when to play
-			# the sound effects.
-			if not piece.contact_monitor:
-				piece.contact_monitor = true
-				piece.contacts_reported = 1
-			
-			if piece_entry["sfx"] in AssetDB.SFX_AUDIO_STREAMS:
-				var sounds = AssetDB.SFX_AUDIO_STREAMS[piece_entry["sfx"]]
-				piece.table_collide_fast_sounds = sounds["fast"]
-				piece.table_collide_slow_sounds = sounds["slow"]
-			else:
-				push_error("'%s' is an unknown SFX preset!" % piece_entry["sfx"])
+				# Need to enable contact monitoring so the piece knows when to
+				# play the sound effects.
+				if not piece.contact_monitor:
+					piece.contact_monitor = true
+					piece.contacts_reported = 1
+				
+				if piece_entry["sfx"] in AssetDB.SFX_AUDIO_STREAMS:
+					var sounds = AssetDB.SFX_AUDIO_STREAMS[piece_entry["sfx"]]
+					piece.table_collide_fast_sounds = sounds["fast"]
+					piece.table_collide_slow_sounds = sounds["slow"]
+				else:
+					push_error("'%s' is an unknown SFX preset!" % piece_entry["sfx"])
 	
 	return piece
 
@@ -212,7 +221,7 @@ func get_piece_meshes(piece: Piece) -> Array:
 # manner. Use this if an object is being freed before the scene is exiting
 # the scene tree.
 # object: The object to be freed.
-func queue_free_object(object: RigidBody) -> void:
+func queue_free_object(object: Node) -> void:
 	_free_mutex.lock()
 	call_deferred("_free_object", object)
 	_free_mutex.unlock()
@@ -321,7 +330,7 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 
 # Free an object in a thread-safe manner.
 # object: The object to free.
-func _free_object(object: RigidBody) -> void:
+func _free_object(object: Node) -> void:
 	# Lock the resource mutex here, just in case a resource used by the object
 	# is being created as it is being freed here.
 	_res_mutex.lock()

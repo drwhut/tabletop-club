@@ -94,7 +94,7 @@ func _build(_userdata) -> void:
 				piece = preload("res://Pieces/StackLasagne.tscn").instance()
 			PieceBuilder.fill_stack(piece, piece_entry)
 		else:
-			piece = PieceBuilder.build_piece(piece_entry)
+			piece = PieceBuilder.build_piece(piece_entry, false)
 		
 		_finished_pieces_mutex.lock()
 		_finished_pieces[preview] = piece

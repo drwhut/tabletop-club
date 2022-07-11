@@ -94,7 +94,7 @@ remotesync func set_piece_order(order: Array) -> void:
 func _add_piece_at_pos(piece_entry: Dictionary, pos: int, flip_y: bool) -> void:
 	# TODO: Figure out a way to skip building the piece and directly get the
 	# mesh instance.
-	var piece = PieceBuilder.build_piece(piece_entry)
+	var piece = PieceBuilder.build_piece(piece_entry, false)
 	var meshes = PieceBuilder.get_piece_meshes(piece)
 	
 	if meshes.size() != 1:

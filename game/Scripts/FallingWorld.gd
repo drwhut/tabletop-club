@@ -161,7 +161,7 @@ func _build_next_piece(_userdata) -> void:
 	_piece_mutex.unlock()
 	
 	if not (piece_entry.empty() or piece_entry.has("entry_names")):
-		var piece = PieceBuilder.build_piece(piece_entry)
+		var piece = PieceBuilder.build_piece(piece_entry, false)
 		
 		_piece_mutex.lock()
 		_piece_to_spawn = piece
