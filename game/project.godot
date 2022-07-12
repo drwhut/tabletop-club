@@ -175,6 +175,7 @@ PieceBuilder="*res://Scripts/PieceBuilder.gd"
 
 [debug]
 
+settings/crash_handler/message="Please include this when reporting the bug on https://github.com/drwhut/tabletop-club/issues"
 gdscript/warnings/return_value_discarded=false
 gdscript/warnings/integer_division=false
 
