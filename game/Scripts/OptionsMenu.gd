@@ -48,6 +48,29 @@ onready var _tab_container = $MarginContainer/VBoxContainer/TabContainer
 var _action_to_bind = ""
 var _restart_popup_shown = false
 
+func _init():
+	# A workaround to ensure that options in drop-down menus are captured by
+	# game/Translations/extract_pot.sh, allowing them to be translated.
+	# TODO: Find a non-workaround way of allowing the translations.
+	var _ignore = ""
+	_ignore = tr("Never")
+	_ignore = tr("30 seconds")
+	_ignore = tr("1 minute")
+	_ignore = tr("5 minutes")
+	_ignore = tr("10 minutes")
+	_ignore = tr("30 minutes")
+	
+	_ignore = tr("Windowed")
+	_ignore = tr("Borderless Fullscreen")
+	_ignore = tr("Fullscreen")
+	
+	_ignore = tr("None")
+	_ignore = tr("Low")
+	_ignore = tr("Medium")
+	_ignore = tr("High")
+	_ignore = tr("Very High")
+	_ignore = tr("Ultra")
+
 func _ready():
 	for locale_meta in LOCALES:
 		var locale = locale_meta["locale"]
