@@ -1342,6 +1342,16 @@ func _import_new_assets(instructions: Array) -> void:
 		var path_from = "user://tmp/%s.%s.bin" % [asset, path_to_md5]
 		
 		var dir = Directory.new()
+		var base_dir = path_to.get_base_dir()
+		if not dir.dir_exists(base_dir):
+			var err = dir.make_dir_recursive(base_dir)
+			if err != OK:
+				push_error("Failed to create directory %s (error %d)" % [base_dir, err])
+				_transfer_mutex.lock()
+				_transfer_error_in_thread = true
+				_transfer_mutex.unlock()
+				continue
+		
 		var err = dir.rename(path_from, path_to)
 		if err != OK:
 			push_error("Failed to move %s to %s (error %d)" % [path_from, path_to, err])
