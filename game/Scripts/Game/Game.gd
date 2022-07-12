@@ -1013,6 +1013,19 @@ func save_state(state: Dictionary, path: String) -> void:
 		_save_screenshot_frames = 1
 		_save_screenshot_path = path.get_basename() + ".png"
 
+# Called by the server to verify that the client's game version matches theirs.
+puppet func verify_game_version(server_version: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	# Should always be the case, but if not, well... good luck, I guess :P
+	if ProjectSettings.has_setting("application/config/version"):
+		var client_version = ProjectSettings.get_setting("application/config/version")
+		
+		if client_version != server_version:
+			Global.start_main_menu_with_error(tr("Client version (%s) does not match server version (%s)!" % [
+					client_version, server_version]))
+
 func _ready():
 	_master_server.connect("connected", self, "_on_connected")
 	_master_server.connect("disconnected", self, "_on_disconnected")
@@ -1708,6 +1721,12 @@ func _on_candidate_received(id: int, mid: String, index: int, sdp: String):
 func _on_connection_established(id: int):
 	print("Connection established with peer %d." % id)
 	if get_tree().is_network_server():
+		# Check that the client's game version matches our own - they'll
+		# disconnect if that's not the case.
+		if ProjectSettings.has_setting("application/config/version"):
+			var version = ProjectSettings.get_setting("application/config/version")
+			rpc_id(id, "verify_game_version", version)
+		
 		# If there is space, also give them a hand on the table.
 		var hand_transform = _room.srv_get_next_hand_transform()
 		if hand_transform != Transform.IDENTITY:
