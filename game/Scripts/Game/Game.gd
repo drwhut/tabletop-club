@@ -1365,6 +1365,30 @@ func _import_new_assets(instructions: Array) -> void:
 		
 		print("%s -> %s" % [path_from, path_to])
 		
+		# If there's a potential .md5 file in user://.import for this file, we
+		# need to remove it so that the client can overwrite the file on the
+		# next game launch.
+		if dir.dir_exists("user://.import"):
+			err = dir.open("user://.import")
+			if err == OK:
+				var to_remove = []
+				dir.list_dir_begin(true, true)
+				
+				var file = dir.get_next()
+				while file:
+					if file.begins_with(asset) and file.get_extension() == "md5":
+						to_remove.append(file)
+					file = dir.get_next()
+				
+				dir.list_dir_end()
+				
+				for md5_file in to_remove:
+					err = dir.remove("user://.import/" + md5_file)
+					if err != OK:
+						push_error("Failed to remove user://.import/%s (error %d)" % [md5_file, err])
+			else:
+				push_error("Failed to open user://.import (error %d)" % err)
+		
 		if AssetDB.EXTENSIONS_TO_IMPORT.has(path_to.get_extension()):
 			Global.tabletop_importer.import(path_to)
 		
