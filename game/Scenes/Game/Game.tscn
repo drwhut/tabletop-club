@@ -214,4 +214,5 @@ script = ExtResource( 4 )
 [connection signal="pressed" from="MissingAssetsDialog/VBoxContainer/MissingNoButton" to="." method="_on_MissingNoButton_pressed"]
 [connection signal="confirmed" from="DownloadAssetsConfirmDialog" to="." method="_on_DownloadAssetsConfirmDialog_confirmed"]
 [connection signal="popup_hide" from="DownloadAssetsConfirmDialog" to="." method="_on_DownloadAssetsConfirmDialog_popup_hide"]
+[connection signal="popup_hide" from="DownloadAssetsProgressDialog" to="." method="_on_DownloadAssetsProgressDialog_popup_hide"]
 [connection signal="confirmed" from="TableStateVersionDialog" to="." method="_on_TableStateVersionDialog_confirmed"]

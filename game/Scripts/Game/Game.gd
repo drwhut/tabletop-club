@@ -85,6 +85,7 @@ const TRANSFER_MAX_COMMANDS = 5 # Up to 250Kb of RAM.
 # long it will take for the outgoing packets to flush, while trying to
 # accomodate for slower computers.
 
+var _transfer_clients_stopping: Array = []
 var _transfer_commands: Array = []
 var _transfer_error_in_thread: bool = false
 var _transfer_import_files: bool = false
@@ -937,6 +938,30 @@ func stop() -> void:
 	_rtc.close()
 	_master_server.close()
 
+# Clled by the client if they want the server to stop sending them asset chunks.
+master func stop_sending_asset_chunks() -> void:
+	var client_id = get_tree().get_rpc_sender_id()
+	
+	if not client_id in _srv_file_transfer_threads:
+		push_warning("Client %d asked us to stop sending asset chunks, when we don't have a thread for them - ignoring." % client_id)
+		return
+	
+	if not client_id in _srv_expect_sync:
+		push_warning("Client %d asked us to stop sending asset chunks after they synced table state - ignoring." % client_id)
+		return
+	
+	_transfer_mutex.lock()
+	var has_stopped = _transfer_clients_stopping.has(client_id)
+	_transfer_mutex.unlock()
+	
+	if has_stopped:
+		push_warning("Client %d asked us to stop sending asset chunks more than once - ignoring." % client_id)
+		return
+	
+	_transfer_mutex.lock()
+	_transfer_clients_stopping.append(client_id)
+	_transfer_mutex.unlock()
+
 # Load a table state from the given file path.
 # path: The file path of the state to load.
 func load_state(path: String) -> void:
@@ -1064,21 +1089,23 @@ func _process(delta):
 					is_connected = _rtc.get_peer(id)["connected"]
 				
 				if is_connected:
-					if cmd.has("done"):
-						rpc_id(id, "received_all_asset_chunks")
-					else:
-						var pack: String = cmd["pack"]
-						var type: String = cmd["type"]
-						var asset: String = cmd["asset"]
-						var buffer: PoolByteArray = cmd["buffer"]
+					# Check if the client has asked us to stop sending chunks.
+					if not _transfer_clients_stopping.has(id):
+						if cmd.has("done"):
+							rpc_id(id, "received_all_asset_chunks")
+						else:
+							var pack: String = cmd["pack"]
+							var type: String = cmd["type"]
+							var asset: String = cmd["asset"]
+							var buffer: PoolByteArray = cmd["buffer"]
+							
+							if is_connected:
+								print("Sending to %d: %s/%s/%s (size = %d)" % [
+										id, pack, type, asset, buffer.size()])
+								rpc_id(id, "receive_missing_asset_chunk", pack,
+										type, asset, buffer)
 						
-						if is_connected:
-							print("Sending to %d: %s/%s/%s (size = %d)" % [id, pack,
-									type, asset, buffer.size()])
-							rpc_id(id, "receive_missing_asset_chunk", pack, type,
-									asset, buffer)
-					
-					_transfer_time_since_rpc = 0.0
+						_transfer_time_since_rpc = 0.0
 			_transfer_mutex.unlock()
 	else:
 		_transfer_mutex.lock()
@@ -1356,7 +1383,7 @@ func _import_new_assets(instructions: Array) -> void:
 		_transfer_mutex.unlock()
 		
 		if not keep_importing:
-			break
+			return
 		
 		var pack: String = instruction["pack"]
 		var type: String = instruction["type"]
@@ -1592,6 +1619,13 @@ func _transfer_asset_files(userdata: Dictionary) -> void:
 						if data_channel.get_ready_state() != WebRTCDataChannel.STATE_OPEN:
 							return
 						
+						_transfer_mutex.lock()
+						var client_wants_to_stop = _transfer_clients_stopping.has(client_id)
+						_transfer_mutex.unlock()
+						
+						if client_wants_to_stop:
+							return
+						
 						var bytes_left = file_size - file_ptr
 						var buffer_size = min(bytes_left, TRANSFER_CHUNK_SIZE)
 						var buffer = file.get_buffer(buffer_size)
@@ -1764,6 +1798,27 @@ func _on_DownloadAssetsConfirmDialog_popup_hide():
 		
 		if not _cln_expect_fs.empty():
 			_download_assets_progress_dialog.popup_centered()
+
+func _on_DownloadAssetsProgressDialog_popup_hide():
+	# Stop downloading/importing asset files from the host.
+	if _cln_expect_fs.empty():
+		return
+	
+	_cln_expect_fs.clear()
+	_cln_need_fs.clear()
+	
+	# Same as we do when exiting the scene tree.
+	_transfer_mutex.lock()
+	_transfer_commands.clear()
+	_transfer_import_files = false
+	_transfer_num_expected_rpcs = 0
+	_transfer_mutex.unlock()
+	
+	rpc_id(1, "stop_sending_asset_chunks")
+	
+	if _cln_expect_db.empty():
+		_ui.reconfigure_asset_dialogs()
+		rpc_id(1, "request_sync_state")
 
 func _on_Game_tree_exiting():
 	stop()
