@@ -79,18 +79,28 @@ func _on_importing_completed(dir_found: bool) -> void:
 		
 		get_tree().quit()
 	
-	if dir_found:
-		Global.start_main_menu()
-	else:
+	# Should be safe to get the AssetDB now that it's done importing.
+	var no_assets = AssetDB.get_db().empty()
+	if (not dir_found) or no_assets:
 		var missing_text = ""
-		missing_text += tr("Tabletop Club couldn't find an assets folder in any of the following places:")
+		
+		if no_assets:
+			missing_text += tr("Tabletop Club could not find any asset packs in the following folders:")
+		else:
+			missing_text += tr("Tabletop Club could not find an assets folder in any of the following places:")
 		missing_text += "\n\n"
 		for asset_dir in AssetDB.get_asset_paths():
 			missing_text += asset_dir + "\n"
 		missing_text += "\n"
-		missing_text += tr("Please create one of these folders and restart the game.")
+		if no_assets:
+			missing_text += tr("Please place an asset pack into one of these folders, and restart the game.")
+		else:
+			missing_text += tr("Please create one of these folders and restart the game.")
+		
 		_missing_assets_popup.dialog_text = missing_text
 		_missing_assets_popup.popup_centered()
+	else:
+		Global.start_main_menu()
 
 func _on_importing_file(file: String, files_imported: int, files_total: int) -> void:
 	_importing_label.text = file
