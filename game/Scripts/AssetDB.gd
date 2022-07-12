@@ -184,6 +184,11 @@ func get_db() -> Dictionary:
 	else:
 		return _temp_db
 
+# Check if the import thread is currently running.
+# Returns: If the import thread is running.
+func is_importing() -> bool:
+	return _import_thread.is_alive()
+
 # Parse translation config files in the assets directory for the given locale.
 # NOTE: This must be run AFTER the assets have been imported.
 # locale: The locale to parse the config files for.

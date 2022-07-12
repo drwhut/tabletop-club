@@ -92,7 +92,8 @@ func _apply_config(config: ConfigFile) -> void:
 	
 	# The majority of the work is done by the TranslationServer, but we need to
 	# manually get the translations from the asset packs.
-	AssetDB.parse_translations(TranslationServer.get_locale())
+	if not AssetDB.is_importing():
+		AssetDB.parse_translations(TranslationServer.get_locale())
 	
 	#########
 	# AUDIO #
