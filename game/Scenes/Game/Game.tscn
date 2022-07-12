@@ -122,6 +122,7 @@ margin_right = 400.0
 margin_bottom = 38.0
 text = "Waiting for download..."
 align = 1
+clip_text = true
 
 [node name="DownloadProgressBar" type="ProgressBar" parent="DownloadAssetsProgressDialog/VBoxContainer"]
 margin_top = 42.0
@@ -134,6 +135,7 @@ margin_right = 400.0
 margin_bottom = 86.0
 text = "Waiting to verify integrity..."
 align = 1
+clip_text = true
 
 [node name="VerifyProgressBar" type="ProgressBar" parent="DownloadAssetsProgressDialog/VBoxContainer"]
 margin_top = 90.0
@@ -146,6 +148,7 @@ margin_right = 400.0
 margin_bottom = 134.0
 text = "Waiting to import assets..."
 align = 1
+clip_text = true
 
 [node name="ImportProgressBar" type="ProgressBar" parent="DownloadAssetsProgressDialog/VBoxContainer"]
 margin_top = 138.0
