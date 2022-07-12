@@ -26,7 +26,7 @@ provide the latest log so we can check if there were any errors thrown. You can
 find the game logs in the following folders:
 
 * Windows: ``%APPDATA%/Tabletop Club/logs/``
-* macOS: ``~/Library/Application/Support/Tabletop Club/logs``
+* macOS: ``~/Library/Application Support/Tabletop Club/logs``
 * Linux: ``~/.local/share/Tabletop Club/logs/``
 
 .. hint::

@@ -160,7 +160,7 @@ To compile for Apple Silicon (ARM64) CPUs, use:
 
 .. code-block:: bash
 
-   scons platform=osx arch=amd64 target=release_debug --jobs=$(sysctl -n hw.logicalcpu)
+   scons platform=osx arch=arm64 target=release_debug --jobs=$(sysctl -n hw.logicalcpu)
 
 To support both architectures in a single "Universal 2" binary, run the above
 two commands, then use ``lipo`` to bundle them together:
