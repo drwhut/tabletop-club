@@ -23,7 +23,7 @@
 extends HBoxContainer
 
 onready var _chat_container = $VBoxContainer
-onready var _chat_text = $VBoxContainer/ChatText
+onready var _chat_text = $VBoxContainer/ChatBackground/ChatText
 onready var _message_edit = $VBoxContainer/HBoxContainer/MessageEdit
 onready var _toggle_button = $ToggleButton
 

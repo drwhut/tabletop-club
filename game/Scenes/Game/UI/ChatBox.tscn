@@ -24,11 +24,16 @@ margin_right = 300.0
 margin_bottom = 160.0
 size_flags_horizontal = 3
 
-[node name="ChatText" type="RichTextLabel" parent="VBoxContainer"]
+[node name="ChatBackground" type="ColorRect" parent="VBoxContainer"]
 margin_right = 284.0
 margin_bottom = 126.0
-focus_mode = 2
 size_flags_vertical = 3
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="ChatText" type="RichTextLabel" parent="VBoxContainer/ChatBackground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_mode = 2
 custom_fonts/italics_font = ExtResource( 3 )
 custom_fonts/bold_font = ExtResource( 2 )
 bbcode_enabled = true
