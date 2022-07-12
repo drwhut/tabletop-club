@@ -1756,6 +1756,11 @@ func _on_peer_connected(id: int):
 
 func _on_peer_disconnected(id: int):
 	print("Peer %d has disconnected." % id)
+	
+	# Do this as soon as possible, so a piece state update doesn't get through.
+	if get_tree().is_network_server():
+		Global.srv_state_update_blacklist.erase(id)
+	
 	if _rtc.has_peer(id):
 		_rtc.remove_peer(id)
 	
@@ -1767,8 +1772,6 @@ func _on_peer_disconnected(id: int):
 		
 		_room.rpc("remove_hand", id)
 		_room.srv_stop_player_hovering(id)
-		
-		Global.srv_state_update_blacklist.erase(id)
 
 func _on_room_joined(room_code: String):
 	print("Joined room %s." % room_code)
