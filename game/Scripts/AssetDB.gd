@@ -292,8 +292,8 @@ func start_importing() -> void:
 # type: The type of entry.
 # entry: The entry to add in the type's array.
 func temp_add_entry(pack: String, type: String, entry: Dictionary) -> void:
-	if not entry.has("name"):
-		push_error("Temporary entry must have a name!")
+	if not _is_valid_entry(pack, type, entry):
+		push_error("Cannot add entry to AssetDB, entry is invalid!")
 		return
 	
 	if _temp_db.empty():
@@ -307,6 +307,7 @@ func temp_add_entry(pack: String, type: String, entry: Dictionary) -> void:
 	
 	# Insert the entry in the type list, making sure the names of each entry are
 	# still in order.
+	# TODO: Use binary search to find the right spot!
 	var type_arr: Array = _temp_db[pack][type]
 	var insert_index = 0
 	while insert_index < type_arr.size():
@@ -425,6 +426,13 @@ func _import_all(_userdata) -> void:
 # type: The type of the asset.
 # entry: The entry to add.
 func _add_entry_to_db(pack: String, type: String, entry: Dictionary) -> void:
+	var entry_path = "%s/%s/%s" % [pack, type, entry["name"]]
+	entry["entry_path"] = entry_path
+	
+	if not _is_valid_entry(pack, type, entry):
+		push_error("Cannot add entry to AssetDB, entry is invalid!")
+		return
+	
 	_db_mutex.lock()
 	
 	if not _db.has(pack):
@@ -433,8 +441,6 @@ func _add_entry_to_db(pack: String, type: String, entry: Dictionary) -> void:
 	if not _db[pack].has(type):
 		_db[pack][type] = []
 	
-	var entry_path = "%s/%s/%s" % [pack, type, entry["name"]]
-	entry["entry_path"] = entry_path
 	_db[pack][type].push_back(entry)
 	_db_mutex.unlock()
 	
@@ -1096,6 +1102,409 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 		
 		var array: Array = _db[pack][type]
 		array.sort_custom(self, "_sort_assets")
+
+# Check if the given piece entry is valid, given the pack and type. Throws an
+# error if it is not valid.
+# Returns: If the piece entry is valid.
+# pack: The asset pack containing the entry.
+# type: The type of entry.
+# entry: The entry to check.
+func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
+	if not type in ASSET_PACK_SUBFOLDERS:
+		push_error("Type %s is invalid!" % type)
+		return false
+	
+	var asset_type: int     = ASSET_PACK_SUBFOLDERS[type]["type"]
+	var asset_scene: String = ASSET_PACK_SUBFOLDERS[type]["scene"]
+	
+	# Figure out based on the type which keys should be in the entry - we'll
+	# check later if all of the keys were in here.
+	var expected_keys = ["desc", "entry_path", "name"]
+	
+	if entry.has("entry_names"): # A stack entry.
+		expected_keys.append_array(["entry_names", "scale", "scene_path"])
+	else:
+		expected_keys.append_array(["author", "license", "modified_by", "url"])
+		
+		if asset_type == ASSET_AUDIO:
+			expected_keys.append("audio_path")
+			if type == "music":
+				expected_keys.append("main_menu")
+		
+		elif asset_type == ASSET_SKYBOX:
+			expected_keys.append_array(["default", "rotation", "strength",
+					"texture_path"])
+		
+		elif asset_type == ASSET_TABLE:
+			expected_keys.append_array(["table_path", "texture_path"])
+		
+		else: # Objects.
+			expected_keys.append_array(["color", "mass", "scale", "scene_path",
+					"texture_path"])
+			
+			if asset_type == ASSET_SCENE:
+				expected_keys.append("bounding_box")
+			
+			if type == "tables":
+				expected_keys.append_array(["bounce", "default", "hands",
+						"paint_plane"])
+			else:
+				expected_keys.append_array(["main_menu", "sfx"])
+				
+				if type == "cards":
+					expected_keys.append("texture_path_1")
+				elif type == "containers":
+					expected_keys.append("shakable")
+				elif type.begins_with("dice"):
+					expected_keys.append("face_values")
+				
+				if type == "cards" or type.begins_with("tokens"):
+					expected_keys.append_array(["suit", "value"])
+	
+	expected_keys.sort()
+	var entry_keys = entry.keys()
+	entry_keys.sort()
+	
+	if entry_keys.hash() != expected_keys.hash():
+		for key in expected_keys:
+			if not key in entry_keys:
+				push_error("Key '%s' not found in entry!" % key)
+		for key in entry_keys:
+			if not key in expected_keys:
+				push_error("Key '%s' was not expected!" % key)
+		return false
+	
+	for key in entry:
+		# Very unlikely to ever be the case, but just in case!
+		if typeof(key) != TYPE_STRING:
+			push_error("Key in entry is not a string!")
+			return false
+		
+		var value = entry[key]
+		
+		match key:
+			"audio_path":
+				if typeof(value) != TYPE_STRING:
+					push_error("'audio_path' in entry is not a string!")
+					return false
+				
+				if not _is_valid_path(value, VALID_AUDIO_EXTENSIONS):
+					push_error("'audio_path' in entry is not a valid path!")
+					return false
+			"author":
+				if typeof(value) != TYPE_STRING:
+					push_error("'author' in entry is not a string!")
+					return false
+			"bounce":
+				if typeof(value) != TYPE_REAL:
+					push_error("'bounce' in entry is not a float!")
+					return false
+				
+				if value < 0.0 or value > 1.0:
+					push_error("'bounce' in entry must be between 0.0 and 1.0!")
+					return false
+			"bounding_box":
+				if typeof(value) != TYPE_ARRAY:
+					push_error("'bounding_box' in entry is not an array!")
+					return false
+				
+				if value.size() != 2:
+					push_error("'bounding_box' array in entry is not of size 2!")
+					return false
+				
+				if typeof(value[0]) != TYPE_VECTOR3:
+					push_error("First element of 'bounding_box' in entry is not a Vector3!")
+					return false
+				
+				if typeof(value[1]) != TYPE_VECTOR3:
+					push_error("Second element of 'bounding_box' in entry is not a Vector3!")
+					return false
+				
+				if (value[1] - value[0]).sign() != Vector3.ONE:
+					push_error("'bounding_box' in entry is invalid!")
+					return false
+			"color":
+				if typeof(value) != TYPE_COLOR:
+					push_error("'color' in entry is not a color!")
+					return false
+			
+				if value.a != 1.0:
+					push_error("'color' in entry cannot be transparent!")
+					return false
+			"default":
+				if typeof(value) != TYPE_BOOL:
+					push_error("'default' in entry is not a boolean!")
+					return false
+			"desc":
+				if typeof(value) != TYPE_STRING:
+					push_error("'desc' in entry is not a string!")
+					return false
+			"entry_names":
+				if typeof(value) != TYPE_ARRAY:
+					push_error("'entry_names' in entry is not an array!")
+					return false
+				
+				if value.empty():
+					push_error("'entry_names' in entry cannot be empty!")
+					return false
+				
+				for element in value:
+					if typeof(element) != TYPE_STRING:
+						push_error("'entry_names' element in entry is not a string!")
+						return false
+					
+					var db = get_db()
+					if not db.has(pack):
+						push_error("Pack '%s' does not exist in the AssetDB!" % pack)
+						return false
+					if not db[pack].has(type):
+						push_error("Type '%s/%s' does not exist in the AssetDB!" % [pack, type])
+						return false
+					
+					var type_arr: Array = db[pack][type]
+					# TODO: Re-work _sort_assets function?
+					var element_index = type_arr.bsearch_custom({"name": element}, self, "_sort_assets")
+					var element_valid = false
+					if element_index < type_arr.size():
+						if type_arr[element_index]["name"] == element:
+							element_valid = true
+					
+					if not element_valid:
+						push_error("Element '%s' in stack entry was not found in '%s/%s'!" % [element, pack, type])
+			"entry_path":
+				if typeof(value) != TYPE_STRING:
+					push_error("'entry_path' in entry is not a string!")
+					return false
+				# We'll check if it's the value we expect later!
+			"face_values":
+				if typeof(value) != TYPE_DICTIONARY:
+					push_error("'face_values' in entry is not a dictionary!")
+					return false
+				
+				var num_faces = 0
+				if type.ends_with("d4"):
+					num_faces = 4
+				elif type.ends_with("d6"):
+					num_faces = 6
+				elif type.ends_with("d8"):
+					num_faces = 8
+				elif type.ends_with("d10"):
+					num_faces = 10
+				elif type.ends_with("d12"):
+					num_faces = 12
+				elif type.ends_with("d20"):
+					num_faces = 20
+				
+				if value.size() != num_faces:
+					push_error("'face_values' dictionary in entry is not the expected size (%d)!" % num_faces)
+					return false
+				
+				for element_key in value:
+					if not (typeof(element_key) == TYPE_INT or typeof(element_key) == TYPE_REAL):
+						push_error("'face_values' key in entry is not a number!")
+						return false
+					
+					var element_value = value[element_key]
+					if typeof(element_value) != TYPE_VECTOR3:
+						push_error("'face_values' value in entry is not a Vector3!")
+						return false
+					
+					if abs(element_value.length_squared() - 1.0) > 0.00001:
+						push_error("'face_values' vector in entry is not unit length!")
+						return false
+			"hands":
+				if typeof(value) != TYPE_ARRAY:
+					push_error("'hands' in entry is not an array!")
+					return false
+				
+				for element in value:
+					if typeof(element) != TYPE_DICTIONARY:
+						push_error("'hands' element is not a dictionary!")
+						return false
+					
+					if element.size() != 2:
+						push_error("'hands' element must be size 2 (is %d)!" % [element.size()])
+						return false
+					
+					if not element.has("pos"):
+						push_error("'hands' does not contain 'pos' key!")
+						return false
+					
+					if not element.has("dir"):
+						push_error("'hands' does not contain 'dir' key!")
+						return false
+					
+					var pos = element["pos"]
+					if typeof(pos) != TYPE_VECTOR3:
+						push_error("'pos' element in 'hands' is not a Vector3!")
+						return false
+					
+					var dir = element["dir"]
+					if not (typeof(dir) == TYPE_INT or typeof(dir) == TYPE_REAL):
+						push_error("'dir' element in 'hands' is not a number!")
+						return false
+			"license":
+				if typeof(value) != TYPE_STRING:
+					push_error("'license' in entry is not a string!")
+					return false
+			"main_menu":
+				if typeof(value) != TYPE_BOOL:
+					push_error("'main_menu' in entry is not a boolean!")
+					return false
+			"mass":
+				if not (typeof(value) == TYPE_INT or typeof(value) == TYPE_REAL):
+					push_error("'mass' in entry is not a number!")
+					return false
+				
+				if value <= 0:
+					push_error("'mass' in entry cannot be negative or zero!")
+					return false
+			"modified_by":
+				if typeof(value) != TYPE_STRING:
+					push_error("'modified_by' in entry is not a string!")
+					return false
+			"name":
+				if typeof(value) != TYPE_STRING:
+					push_error("'name' in entry is not a string!")
+					return false
+				
+				if value.empty():
+					push_error("'name' in entry is empty!")
+					return false
+				
+				if not value.is_valid_filename():
+					push_error("'name' in entry is not a valid name!")
+					return false
+			"paint_plane":
+				if typeof(value) != TYPE_VECTOR2:
+					push_error("'paint_plane' is not a Vector2!")
+					return false
+				
+				if value.sign() != Vector2.ONE:
+					push_error("'paint_plane' elements cannot be negative!")
+					return false
+			"rotation":
+				if typeof(value) != TYPE_VECTOR3:
+					push_error("'rotation' in entry is not a Vector3!")
+					return false
+			"scale":
+				if typeof(value) != TYPE_VECTOR3:
+					push_error("'scale' in entry is not a Vector3!")
+					return false
+				
+				if value.sign() != Vector3.ONE:
+					push_error("'scale' element in entry cannot be negative!")
+					return false
+			"scene_path":
+				if typeof(value) != TYPE_STRING:
+					push_error("'scene_path' in entry is not a string!")
+					return false
+				
+				if asset_type == ASSET_TEXTURE:
+					if value != asset_scene:
+						push_error("'scene_path' value in entry is not expected value!")
+						return false
+				else:
+					if not _is_valid_path(value, VALID_SCENE_EXTENSIONS):
+						push_error("'scene_path' in entry is not a valid path!")
+						return false
+			"sfx":
+				if typeof(value) != TYPE_STRING:
+					push_error("'sfx' in entry is not a string!")
+					return false
+				
+				if type == "cards" or type.begins_with("dice") or type.begins_with("tokens"):
+					if not value.empty():
+						push_error("'sfx' value in entry should be empty!")
+						return false
+				else:
+					if not value in SFX_AUDIO_STREAMS:
+						push_error("'sfx' value in entry does not match any preset!")
+						return false
+			"shakable":
+				if typeof(value) != TYPE_BOOL:
+					push_error("'shakable' in entry is not a boolean!")
+					return false
+			"strength":
+				if not (typeof(value) == TYPE_INT or typeof(value) == TYPE_REAL):
+					push_error("'strength' in entry is not a number!")
+					return false
+				
+				if value < 0.0:
+					push_error("'strength' in entry cannot be negative!")
+					return false
+			"suit":
+				var t = typeof(value)
+				if not (t == TYPE_INT or t == TYPE_REAL or t == TYPE_STRING or t == TYPE_NIL):
+					push_error("'suit' in entry is not a number or a string!")
+					return false
+			"table_path":
+				if typeof(value) != TYPE_STRING:
+					push_error("'table_path' in entry is not a string!")
+					return false
+				
+				if not _is_valid_path(value, VALID_TABLE_EXTENSIONS):
+					push_error("'table_path' in entry is not a valid path!")
+					return false
+			"texture_path":
+				if asset_type == ASSET_SCENE:
+					if typeof(value) != TYPE_NIL:
+						push_error("'texture_path' in scene entry is not null!")
+						return false
+				else:
+					if typeof(value) != TYPE_STRING:
+						push_error("'texture_path' in entry is not a string!")
+						return false
+					
+					if not _is_valid_path(value, VALID_TEXTURE_EXTENSIONS):
+						push_error("'texture_path' in entry is not a valid path!")
+						return false
+			"texture_path_1":
+				if typeof(value) != TYPE_STRING:
+					push_error("'texture_path_1' in entry is not a string!")
+					return false
+				
+				if not _is_valid_path(value, VALID_TEXTURE_EXTENSIONS):
+					push_error("'texture_path_1' in entry is not a valid path!")
+					return false
+			"url":
+				if typeof(value) != TYPE_STRING:
+					push_error("'url' in entry is not a string!")
+					return false
+			"value":
+				var t = typeof(value)
+				if not (t == TYPE_INT or t == TYPE_REAL or t == TYPE_STRING or t == TYPE_NIL):
+					push_error("'value' in entry is not a number or a string!")
+					return false
+			_:
+				push_error("Unknown key '%s' in entry!" % key)
+				return false
+	
+	var entry_name = entry["name"]
+	var entry_path = entry["entry_path"]
+	var expected_entry_path = "%s/%s/%s" % [pack, type, entry_name]
+	if entry_path != expected_entry_path:
+		push_error("Entry 'entry_path' (%s) does not match expected value (%s)!" % [
+			entry_path, expected_entry_path])
+		return false
+	
+	return true
+
+# Check if a string is a valid path (for a piece entry).
+# Returns: If the path is valid.
+# path: The string to check.
+# valid_ext: The list of valid extensions of the path.
+func _is_valid_path(path: String, valid_ext: Array) -> bool:
+	if not path.is_abs_path():
+		return false
+	
+	if not path.begins_with("user://assets/"):
+		return false
+	
+	if not valid_ext.has(path.get_extension()):
+		return false
+	
+	return true
 
 # Parse translations from a config file and insert them into the AssetDB.
 # pack: The asset pack containing the translations.

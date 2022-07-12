@@ -573,6 +573,10 @@ puppet func receive_missing_db_entries(missing_entries: Dictionary) -> void:
 				_popup_download_error("Type '%s' value in pack '%s' in server DB is not an array!" % [type, pack])
 				return
 			
+			# We need to add stack entries last, after the entries they rely on
+			# have been added!
+			var stack_entries = []
+			
 			for entry in type_arr:
 				if not entry is Dictionary:
 					_popup_download_error("Entry in '%s/%s' in server DB is not a dictionary!" % [pack, type])
@@ -635,8 +639,15 @@ puppet func receive_missing_db_entries(missing_entries: Dictionary) -> void:
 					_popup_download_error("Entry '%s/%s/%s' in server DB was not expected!" % [pack, type, entry_name])
 					return
 				
-				AssetDB.temp_add_entry(pack, type, entry)
+				if entry.has("entry_names"):
+					stack_entries.append(entry)
+				else:
+					AssetDB.temp_add_entry(pack, type, entry)
+				
 				_cln_expect_db[pack][type].remove(entry_index)
+			
+			for stack_entry in stack_entries:
+				AssetDB.temp_add_entry(pack, type, stack_entry)
 	
 	var num_missing_db = 0
 	for pack in _cln_expect_db:
@@ -1145,6 +1156,9 @@ func _unhandled_input(event):
 # Returns: If the name is valid.
 # name_to_check: The name to check.
 func _check_name(name_to_check: String) -> bool:
+	if name_to_check.length() < 1 or name_to_check.length() > 256:
+		return false
+	
 	if not name_to_check.is_valid_filename():
 		return false
 	
@@ -1152,7 +1166,13 @@ func _check_name(name_to_check: String) -> bool:
 		return false
 	
 	var after = name_to_check.strip_edges().strip_escapes()
-	return name_to_check == after
+	if after != name_to_check:
+		return false
+	
+	if name_to_check.begins_with("."):
+		return false
+	
+	return true
 
 # Clear the download cache, which consists of all files under user://tmp/
 func _clear_download_cache() -> void:
@@ -1271,7 +1291,9 @@ func _create_schema_fs() -> Dictionary:
 							var fp = File.new()
 							
 							# Has the file been imported?
-							if fp.file_exists(file_path + ".import"):
+							var needs_importing = AssetDB.EXTENSIONS_TO_IMPORT.has(file.get_extension())
+							var has_been_imported = fp.file_exists(file_path + ".import")
+							if (not needs_importing) or has_been_imported:
 								err = fp.open(file_path, File.READ)
 								if err == OK:
 									var file_len = fp.get_len()
