@@ -1269,27 +1269,30 @@ func _create_schema_fs() -> Dictionary:
 						if AssetDB.VALID_EXTENSIONS.has(file.get_extension()):
 							var file_path = "user://assets/" + pack + "/" + type + "/" + file
 							var fp = File.new()
-							err = fp.open(file_path, File.READ)
-							if err == OK:
-								var file_len = fp.get_len()
-								var md5 = fp.get_md5(file_path)
-								if not md5.empty():
-									if not schema.has(pack):
-										schema[pack] = {}
+							
+							# Has the file been imported?
+							if fp.file_exists(file_path + ".import"):
+								err = fp.open(file_path, File.READ)
+								if err == OK:
+									var file_len = fp.get_len()
+									var md5 = fp.get_md5(file_path)
+									if not md5.empty():
+										if not schema.has(pack):
+											schema[pack] = {}
+										
+										if not schema[pack].has(type):
+											schema[pack][type] = {}
+										
+										schema[pack][type][file] = {
+											"md5": md5,
+											"size": file_len
+										}
+									else:
+										push_error("Failed to get md5 of '%s'" % file_path)
 									
-									if not schema[pack].has(type):
-										schema[pack][type] = {}
-									
-									schema[pack][type][file] = {
-										"md5": md5,
-										"size": file_len
-									}
+									fp.close()
 								else:
-									push_error("Failed to get md5 of '%s'" % file_path)
-								
-								fp.close()
-							else:
-								push_error("Failed to open '%s'" % file_path)
+									push_error("Failed to open '%s'" % file_path)
 						
 						file = sub_dir.get_next()
 		pack = dir.get_next()
