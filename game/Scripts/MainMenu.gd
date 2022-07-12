@@ -106,6 +106,9 @@ func _on_RoomCodeEdit_text_changed(new_text: String):
 	_room_code_edit.text = new_text.to_upper()
 	_room_code_edit.caret_position = caret_position
 
+func _on_RoomCodeEdit_text_entered(_new_text):
+	_on_JoinGameButton_pressed()
+
 func _on_JoinGameButton_pressed():
 	var room_code = _room_code_edit.text.to_upper()
 	

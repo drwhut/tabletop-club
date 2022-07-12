@@ -22,9 +22,6 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MainList" type="VBoxContainer" parent="MainView"]
 margin_left = 384.0
@@ -303,5 +300,6 @@ visible = false
 [connection signal="pressed" from="MultiplayerDialog/HBoxContainer/HostGameContainer/HostGameButton" to="." method="_on_HostGameButton_pressed"]
 [connection signal="pressed" from="MultiplayerDialog/HBoxContainer/EnterCodeContainer/EnterCodeButton" to="." method="_on_EnterCodeButton_pressed"]
 [connection signal="text_changed" from="EnterCodeDialog/VBoxContainer/RoomCodeContainer/RoomCodeEdit" to="." method="_on_RoomCodeEdit_text_changed"]
+[connection signal="text_entered" from="EnterCodeDialog/VBoxContainer/RoomCodeContainer/RoomCodeEdit" to="." method="_on_RoomCodeEdit_text_entered"]
 [connection signal="pressed" from="EnterCodeDialog/VBoxContainer/JoinGameButton" to="." method="_on_JoinGameButton_pressed"]
 [connection signal="locale_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_locale_changed"]
