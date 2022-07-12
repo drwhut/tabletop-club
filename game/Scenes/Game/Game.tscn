@@ -101,6 +101,71 @@ dialog_text = "Are you sure you trust the host, and want to download the missing
 dialog_hide_on_ok = false
 dialog_autowrap = true
 
+[node name="DownloadAssetsProgressDialog" type="WindowDialog" parent="."]
+margin_right = 400.0
+margin_bottom = 176.0
+popup_exclusive = true
+window_title = "Downloading..."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DownloadAssetsProgressDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GapTop" type="Control" parent="DownloadAssetsProgressDialog/VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 14.0
+size_flags_vertical = 3
+
+[node name="DownloadProgressLabel" type="Label" parent="DownloadAssetsProgressDialog/VBoxContainer"]
+margin_top = 18.0
+margin_right = 400.0
+margin_bottom = 38.0
+text = "Waiting for download..."
+align = 1
+
+[node name="DownloadProgressBar" type="ProgressBar" parent="DownloadAssetsProgressDialog/VBoxContainer"]
+margin_top = 42.0
+margin_right = 400.0
+margin_bottom = 62.0
+
+[node name="VerifyProgressLabel" type="Label" parent="DownloadAssetsProgressDialog/VBoxContainer"]
+margin_top = 66.0
+margin_right = 400.0
+margin_bottom = 86.0
+text = "Waiting to verify integrity..."
+align = 1
+
+[node name="VerifyProgressBar" type="ProgressBar" parent="DownloadAssetsProgressDialog/VBoxContainer"]
+margin_top = 90.0
+margin_right = 400.0
+margin_bottom = 110.0
+
+[node name="ImportProgressLabel" type="Label" parent="DownloadAssetsProgressDialog/VBoxContainer"]
+margin_top = 114.0
+margin_right = 400.0
+margin_bottom = 134.0
+text = "Waiting to import assets..."
+align = 1
+
+[node name="ImportProgressBar" type="ProgressBar" parent="DownloadAssetsProgressDialog/VBoxContainer"]
+margin_top = 138.0
+margin_right = 400.0
+margin_bottom = 158.0
+
+[node name="GapBottom" type="Control" parent="DownloadAssetsProgressDialog/VBoxContainer"]
+margin_top = 162.0
+margin_right = 400.0
+margin_bottom = 176.0
+size_flags_vertical = 3
+
+[node name="DownloadAssetsErrorDialog" type="AcceptDialog" parent="."]
+margin_right = 360.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 360, 180 )
+window_title = "Error!"
+dialog_text = "An error occured while downloading missing assets from the host. Consider leaving and rejoining, or asking the host to transfer the missing assets over the internet, or submit a bug report on GitHub."
+dialog_autowrap = true
+
 [node name="TableStateErrorDialog" type="AcceptDialog" parent="."]
 margin_right = 300.0
 margin_bottom = 180.0

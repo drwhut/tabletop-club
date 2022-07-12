@@ -29,6 +29,12 @@ extends Node
 onready var _connecting_popup = $ConnectingPopup
 onready var _connecting_popup_label = $ConnectingPopup/Label
 onready var _download_assets_confirm_dialog = $DownloadAssetsConfirmDialog
+onready var _download_assets_error_dialog = $DownloadAssetsErrorDialog
+onready var _download_assets_progress_dialog = $DownloadAssetsProgressDialog
+onready var _download_progress_bar = $DownloadAssetsProgressDialog/VBoxContainer/DownloadProgressBar
+onready var _download_progress_label = $DownloadAssetsProgressDialog/VBoxContainer/DownloadProgressLabel
+onready var _import_progress_bar = $DownloadAssetsProgressDialog/VBoxContainer/ImportProgressBar
+onready var _import_progress_label = $DownloadAssetsProgressDialog/VBoxContainer/ImportProgressLabel
 onready var _master_server = $MasterServer
 onready var _missing_assets_dialog = $MissingAssetsDialog
 onready var _missing_db_label = $MissingAssetsDialog/VBoxContainer/MissingDBLabel
@@ -39,6 +45,8 @@ onready var _room = $Room
 onready var _table_state_error_dialog = $TableStateErrorDialog
 onready var _table_state_version_dialog = $TableStateVersionDialog
 onready var _ui = $GameUI
+onready var _verify_progress_bar = $DownloadAssetsProgressDialog/VBoxContainer/VerifyProgressBar
+onready var _verify_progress_label = $DownloadAssetsProgressDialog/VBoxContainer/VerifyProgressLabel
 
 export(bool) var autosave_enabled: bool = true
 export(int) var autosave_interval: int = 300
@@ -78,10 +86,18 @@ const TRANSFER_MAX_COMMANDS = 5 # Up to 250Kb of RAM.
 # accomodate for slower computers.
 
 var _transfer_commands: Array = []
+var _transfer_error_in_thread: bool = false
 var _transfer_import_files: bool = false
 var _transfer_mutex: Mutex = Mutex.new()
 var _transfer_num_expected_rpcs: int = 0
 var _transfer_time_since_rpc: float = 0.0
+
+var _progress_total_rpcs: int = 0
+
+var _progress_import_current: int = 0
+var _progress_import_file: String = ""
+var _progress_import_mutex: Mutex = Mutex.new()
+var _progress_import_total: int   = 0
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -398,6 +414,7 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 						String.humanize_size(size)]
 				print(path)
 	print("We expect these files to be delivered in a total of %d RPCs." % _transfer_num_expected_rpcs)
+	_progress_total_rpcs = _transfer_num_expected_rpcs
 	_missing_fs_summary_label.text = _missing_fs_summary_label.text % [
 			fs_num_missing, fs_num_modified, String.humanize_size(total_size_need)]
 	
@@ -498,6 +515,12 @@ puppet func receive_missing_asset_chunk(pack: String, type: String,
 	print("Got: %s/%s/%s (size = %d)" % [pack, type, asset, chunk.size()])
 	_cln_expect_fs[pack][type][asset]["size"] -= chunk.size()
 	
+	_download_progress_label.text = tr("Downloading %s ...") % asset
+	var progress = 100
+	if _progress_total_rpcs > 0:
+		progress = 100 * (1.0 - (float(num_expected_rpcs - 1) / _progress_total_rpcs))
+	_download_progress_bar.value = progress
+	
 	_transfer_mutex.lock()
 	_transfer_commands.push_back({
 		"pack": pack,
@@ -524,35 +547,35 @@ puppet func receive_missing_db_entries(missing_entries: Dictionary) -> void:
 	
 	for pack in missing_entries:
 		if not pack is String:
-			push_error("Pack in server DB is not a string!")
+			_popup_download_error("Pack in server DB is not a string!")
 			return
 		
 		if not _check_name(pack):
-			push_error("Pack string in server DB is not a valid name!")
+			_popup_download_error("Pack string in server DB is not a valid name!")
 			return
 		
 		var pack_dict = missing_entries[pack]
 		if not pack_dict is Dictionary:
-			push_error("Value of pack '%s' in server DB is not a dictionary!" % pack)
+			_popup_download_error("Value of pack '%s' in server DB is not a dictionary!" % pack)
 			return
 		
 		for type in pack_dict:
 			if not type is String:
-				push_error("Type in pack '%s' in server DB is not a string!" % pack)
+				_popup_download_error("Type in pack '%s' in server DB is not a string!" % pack)
 				return
 			
 			if not type in AssetDB.ASSET_PACK_SUBFOLDERS:
-				push_error("Type '%s' in pack '%s' in server DB is not a valid type!" % [type, pack])
+				_popup_download_error("Type '%s' in pack '%s' in server DB is not a valid type!" % [type, pack])
 				return
 			
 			var type_arr = pack_dict[type]
 			if not type_arr is Array:
-				push_error("Type '%s' value in pack '%s' in server DB is not an array!" % [type, pack])
+				_popup_download_error("Type '%s' value in pack '%s' in server DB is not an array!" % [type, pack])
 				return
 			
 			for entry in type_arr:
 				if not entry is Dictionary:
-					push_error("Entry in '%s/%s' in server DB is not a dictionary!" % [pack, type])
+					_popup_download_error("Entry in '%s/%s' in server DB is not a dictionary!" % [pack, type])
 					return
 				
 				var entry_name = ""
@@ -560,30 +583,30 @@ puppet func receive_missing_db_entries(missing_entries: Dictionary) -> void:
 				
 				for key in entry:
 					if not key is String:
-						push_error("Key in entry in '%s/%s' in server DB is not a string!" % [pack, type])
+						_popup_download_error("Key in entry in '%s/%s' in server DB is not a string!" % [pack, type])
 						return
 					
 					if not _check_name(key):
-						push_error("Key in entry in '%s/%s' in server DB is not a valid name!" % [pack, type])
+						_popup_download_error("Key in entry in '%s/%s' in server DB is not a valid name!" % [pack, type])
 						return
 					
 					var value = entry[key]
 					if not _is_only_data(value):
-						push_error("Value of key '%s' in '%s/%s' in server DB is not pure data!" % [key, pack, type])
+						_popup_download_error("Value of key '%s' in '%s/%s' in server DB is not pure data!" % [key, pack, type])
 						return
 					
 					if key == "name":
 						if not value is String:
-							push_error("'name' property in '%s/%s' in server DB is not a string!" % [pack, type])
+							_popup_download_error("'name' property in '%s/%s' in server DB is not a string!" % [pack, type])
 							return
 						if not _check_name(value):
-							push_error("Name '%s' in '%s/%s' in server DB is not a valid name!" % [value, pack, type])
+							_popup_download_error("Name '%s' in '%s/%s' in server DB is not a valid name!" % [value, pack, type])
 							return
 						entry_name = value
 					
 					elif key == "desc":
 						if not value is String:
-							push_error("'desc' property in '%s/%s' in server DB is not a string!" % [pack, type])
+							_popup_download_error("'desc' property in '%s/%s' in server DB is not a string!" % [pack, type])
 							return
 						has_desc = true
 					
@@ -591,11 +614,11 @@ puppet func receive_missing_db_entries(missing_entries: Dictionary) -> void:
 					# checking every key-value pair.
 				
 				if entry_name.empty():
-					push_error("Entry in '%s/%s' in server DB does not have a name!" % [pack, type])
+					_popup_download_error("Entry in '%s/%s' in server DB does not have a name!" % [pack, type])
 					return
 				
 				if not has_desc:
-					push_error("Entry in '%s/%s' in server DB does not have a description!" % [pack, type])
+					_popup_download_error("Entry in '%s/%s' in server DB does not have a description!" % [pack, type])
 					return
 				
 				var entry_hash = entry.hash()
@@ -609,7 +632,7 @@ puppet func receive_missing_db_entries(missing_entries: Dictionary) -> void:
 							break
 				
 				if entry_index < 0:
-					push_error("Entry '%s/%s/%s' in server DB was not expected!" % [pack, type, entry_name])
+					_popup_download_error("Entry '%s/%s/%s' in server DB was not expected!" % [pack, type, entry_name])
 					return
 				
 				AssetDB.temp_add_entry(pack, type, entry)
@@ -640,15 +663,19 @@ puppet func received_all_asset_chunks() -> void:
 	else:
 		_cln_save_chunk_thread = Thread.new()
 	
+	_download_progress_label.text = tr("Download completed!")
+	
 	# We'll use the same thread to import the new assets.
 	var instructions = []
-	
+	var num_files = 0
 	for pack in _cln_expect_fs:
 		for type in _cln_expect_fs[pack]:
 			for asset in _cln_expect_fs[pack][type]:
 				var meta = _cln_expect_fs[pack][type][asset]
 				var file_expected_md5 = meta["md5"]
 				var remaining_size = meta["size"]
+				
+				num_files += 1
 				
 				var act_file_path = "user://assets/%s/%s/%s" % [pack, type, asset]
 				var tmp_file_path = "user://tmp/%s.%s.bin" % [asset, act_file_path.md5_text()]
@@ -674,6 +701,14 @@ puppet func received_all_asset_chunks() -> void:
 					instructions.push_back(instruction)
 				else:
 					instructions.push_front(instruction)
+	
+	_verify_progress_label.text = tr("Verified %d out of %d files!") % [instructions.size(), num_files]
+	if num_files == 0:
+		_verify_progress_bar.value = 100
+	else:
+		_verify_progress_bar.value = 100 * (float(instructions.size()) / num_files)
+	
+	_progress_import_total = instructions.size()
 	
 	_transfer_mutex.lock()
 	_transfer_import_files = true
@@ -1042,6 +1077,14 @@ func _process(delta):
 				if _transfer_commands[0] == "done_importing":
 					done_importing_new_assets = true
 					_transfer_commands.clear()
+		
+		if _transfer_error_in_thread:
+			_download_assets_error_dialog.popup_centered()
+			_transfer_error_in_thread = false
+		
+		var importing_files = false
+		if not done_importing_new_assets:
+			importing_files = _transfer_import_files
 		_transfer_mutex.unlock()
 		
 		if done_importing_new_assets:
@@ -1049,9 +1092,20 @@ func _process(delta):
 			# entries.
 			_cln_expect_fs.clear()
 			
+			_download_assets_progress_dialog.visible = false
+			
 			if _cln_expect_db.empty():
 				_ui.reconfigure_asset_dialogs()
 				rpc_id(1, "request_sync_state")
+		
+		elif importing_files:
+			_progress_import_mutex.lock()
+			_import_progress_label.text = tr("Importing %s ...") % _progress_import_file
+			if _progress_import_total == 0:
+				_import_progress_bar.value = 100
+			else:
+				_import_progress_bar.value = 100 * (float(_progress_import_current) / _progress_import_total)
+			_progress_import_mutex.unlock()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("game_take_screenshot"):
@@ -1291,12 +1345,20 @@ func _import_new_assets(instructions: Array) -> void:
 		var err = dir.rename(path_from, path_to)
 		if err != OK:
 			push_error("Failed to move %s to %s (error %d)" % [path_from, path_to, err])
+			_transfer_mutex.lock()
+			_transfer_error_in_thread = true
+			_transfer_mutex.unlock()
 			continue
 		
 		print("%s -> %s" % [path_from, path_to])
 		
 		if AssetDB.EXTENSIONS_TO_IMPORT.has(path_to.get_extension()):
 			Global.tabletop_importer.import(path_to)
+		
+		_progress_import_mutex.lock()
+		_progress_import_current += 1
+		_progress_import_file = asset
+		_progress_import_mutex.unlock()
 	
 	_transfer_mutex.lock()
 	_transfer_import_files = false
@@ -1372,6 +1434,12 @@ func _open_table_state_file(path: String, mode: int) -> File:
 		_popup_table_state_error(tr("Could not open the file at path '%s' (error %d).") % [path, open_err])
 		return null
 
+# Show the download assets error dialog with the given error.
+# error: The error message to show.
+func _popup_download_error(error: String) -> void:
+	_download_assets_error_dialog.popup_centered()
+	push_error(error)
+
 # Show the table state popup dialog with the given error.
 # error: The error message to show.
 func _popup_table_state_error(error: String) -> void:
@@ -1417,6 +1485,9 @@ func _save_chunks_to_cache(_userdata) -> void:
 				var err = tmp_dir.make_dir("user://tmp")
 				if err != OK:
 					push_error("Could not create user://tmp (error %d)" % err)
+					_transfer_mutex.lock()
+					_transfer_error_in_thread = true
+					_transfer_mutex.unlock()
 					continue
 			
 			var file = File.new()
@@ -1426,6 +1497,9 @@ func _save_chunks_to_cache(_userdata) -> void:
 			var err = file.open(file_path_now, mode)
 			if err != OK:
 				push_error("Could not open file %s (error %d)" % [file_path_now, err])
+				_transfer_mutex.lock()
+				_transfer_error_in_thread = true
+				_transfer_mutex.unlock()
 				continue
 			
 			file.seek_end()
@@ -1628,6 +1702,9 @@ func _on_DownloadAssetsConfirmDialog_popup_hide():
 	if _cln_keep_expecting:
 		_cln_need_db.clear()
 		_cln_need_fs.clear()
+		
+		if not _cln_expect_fs.empty():
+			_download_assets_progress_dialog.popup_centered()
 
 func _on_Game_tree_exiting():
 	stop()
