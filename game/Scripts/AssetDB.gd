@@ -1087,7 +1087,6 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 						"desc": desc,
 						"entry_names": entry_names,
 						"name": stack_name,
-						"scale": scale,
 						"scene_path": type_scene
 					}
 					
@@ -1127,7 +1126,7 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 	var expected_keys = ["desc", "entry_path", "name"]
 	
 	if entry.has("entry_names"): # A stack entry.
-		expected_keys.append_array(["entry_names", "scale", "scene_path"])
+		expected_keys.append_array(["entry_names", "scene_path"])
 	else:
 		expected_keys.append_array(["author", "license", "modified_by", "url"])
 		
