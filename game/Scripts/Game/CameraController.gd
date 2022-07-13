@@ -1002,17 +1002,49 @@ func _popup_piece_context_menu() -> void:
 			_piece_context_menu.add_item(tr("Add selected objects..."), CONTEXT_PIECE_CONTAINER_ADD_SELECTED)
 			_container_multi_context = _piece_mouse_is_over
 	
+	##############
+	# STACK INFO #
+	##############
+	
+	if _inheritance_has(inheritance, "StackablePiece"):
+		var size = 0
+		var value = 0
+		var show_value = true
+		
+		for stack in _selected_pieces:
+			if stack is Stack:
+				size += stack.get_piece_count()
+			else:
+				size += 1
+			
+			if show_value:
+				var piece_entry_list = []
+				if stack is Stack:
+					for piece_meta in stack.get_pieces():
+						piece_entry_list.append(piece_meta["piece_entry"])
+				else:
+					piece_entry_list = [stack.piece_entry]
+				
+				for piece_entry in piece_entry_list:
+					var piece_suit  = piece_entry["suit"]
+					var piece_value = piece_entry["value"]
+					
+					var value_is_num = (typeof(piece_value) == TYPE_INT or
+							typeof(piece_value) == TYPE_REAL)
+					
+					if typeof(piece_suit) == TYPE_NIL and value_is_num:
+						value += piece_value
+					else:
+						show_value = false
+						break
+		
+		_piece_context_menu.add_item(tr("Count: %d") % size)
+		if show_value:
+			_piece_context_menu.add_item(tr("Value: %d") % value)
+	
 	###########
 	# LEVEL 2 #
 	###########
-	
-	# We make an exception here so that the "size" item has a separator below
-	# it, separating it from the rest of the items below (which have functions).
-	if _inheritance_has(inheritance, "Stack"):
-		var size = 0
-		for stack in _selected_pieces:
-			size += stack.get_piece_count()
-		_piece_context_menu.add_item(tr("Size: %d") % size)
 	
 	if _piece_context_menu.get_item_count() > prev_num_items:
 		_piece_context_menu.add_separator()
