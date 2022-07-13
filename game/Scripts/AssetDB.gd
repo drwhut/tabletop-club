@@ -149,6 +149,7 @@ var _import_files_imported = 0
 var _import_files_total = 0
 var _import_mutex = Mutex.new()
 var _import_send_signal = false
+var _import_stop = false
 var _import_thread = Thread.new()
 
 # Keep track of which locales we've translated to, so we don't re-parse them.
@@ -288,6 +289,11 @@ func search_path(path: String) -> Dictionary:
 func start_importing() -> void:
 	if _import_thread.is_active():
 		_import_thread.wait_to_finish()
+	
+	_import_mutex.lock()
+	_import_stop = false
+	_import_mutex.unlock()
+	
 	_import_thread.start(self, "_import_all")
 	
 	_tr_locales = []
@@ -386,6 +392,13 @@ func _import_all(_userdata) -> void:
 					push_error("Failed to load '%s' (error %d)!" % [config_file_path, err])
 			
 			for file in type_catalog["files"]:
+				_import_mutex.lock()
+				var stop_requested = _import_stop
+				_import_mutex.unlock()
+				
+				if stop_requested:
+					return
+				
 				var file_path = type_path + "/" + file
 				_send_importing_file_signal(file_path, files_imported,
 					catalog["file_count"])
@@ -1580,5 +1593,9 @@ func _sort_assets(a: Dictionary, b: Dictionary) -> bool:
 	return a["name"] < b["name"]
 
 func _on_exiting_tree() -> void:
+	_import_mutex.lock()
+	_import_stop = true
+	_import_mutex.unlock()
+	
 	if _import_thread.is_active():
 		_import_thread.wait_to_finish()
