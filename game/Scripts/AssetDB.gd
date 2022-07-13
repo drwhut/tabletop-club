@@ -318,13 +318,8 @@ func temp_add_entry(pack: String, type: String, entry: Dictionary) -> void:
 	
 	# Insert the entry in the type list, making sure the names of each entry are
 	# still in order.
-	# TODO: Use binary search to find the right spot!
 	var type_arr: Array = _temp_db[pack][type]
-	var insert_index = 0
-	while insert_index < type_arr.size():
-		if entry["name"] < type_arr[insert_index]["name"]:
-			break
-		insert_index += 1
+	var insert_index = type_arr.bsearch_custom(entry, self, "_order_assets")
 	type_arr.insert(insert_index, entry)
 
 # Temporarily remove an entry from the AssetDB.
@@ -409,13 +404,6 @@ func _import_all(_userdata) -> void:
 				
 				files_imported += 1
 			
-			if _db.has(pack):
-				if _db[pack].has(type):
-					var array: Array = _db[pack][type]
-					array.sort_custom(self, "_sort_assets")
-			
-			# Do this after the assets have been sorted so searching
-			# through them is much more efficient.
 			_add_inheriting_assets(pack_path, type)
 			
 			var type_meta = ASSET_PACK_SUBFOLDERS[type]
@@ -459,7 +447,8 @@ func _add_entry_to_db(pack: String, type: String, entry: Dictionary) -> void:
 	if not _db[pack].has(type):
 		_db[pack][type] = []
 	
-	_db[pack][type].push_back(entry)
+	var index = _db[pack][type].bsearch_custom(entry, self, "_order_assets")
+	_db[pack][type].insert(index, entry)
 	_db_mutex.unlock()
 	
 	print("Added: %s" % entry_path)
@@ -520,9 +509,6 @@ func _add_inheriting_assets(pack_path: String, type: String) -> void:
 	if not children.empty():
 		for child in children:
 			_add_entry_to_db(pack, type, child)
-		
-		var array: Array = _db[pack][type]
-		array.sort_custom(self, "_sort_assets")
 
 # Calculate the bounding box of a 3D scene.
 # Returns: A 2-length array containing the min and max corners of the box.
@@ -1116,9 +1102,6 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 	if not stack_entries.empty():
 		for stack_entry in stack_entries:
 			_add_entry_to_db(pack, type, stack_entry)
-		
-		var array: Array = _db[pack][type]
-		array.sort_custom(self, "_sort_assets")
 
 # Check if the given piece entry is valid, given the pack and type. Throws an
 # error if it is not valid.
@@ -1280,7 +1263,7 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 					
 					var type_arr: Array = db[pack][type]
 					# TODO: Re-work _sort_assets function?
-					var element_index = type_arr.bsearch_custom({"name": element}, self, "_sort_assets")
+					var element_index = type_arr.bsearch_custom({"name": element}, self, "_order_assets")
 					var element_valid = false
 					if element_index < type_arr.size():
 						if type_arr[element_index]["name"] == element:
@@ -1589,7 +1572,7 @@ func _send_importing_file_signal(file: String, files_imported: int, files_total:
 	_import_mutex.unlock()
 
 # Function used to sort an array of asset entries.
-func _sort_assets(a: Dictionary, b: Dictionary) -> bool:
+func _order_assets(a: Dictionary, b: Dictionary) -> bool:
 	return a["name"] < b["name"]
 
 func _on_exiting_tree() -> void:
