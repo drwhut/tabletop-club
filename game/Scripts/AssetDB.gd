@@ -529,17 +529,23 @@ func _calculate_bounding_box_recursive(scene: Spatial, transform: Transform) -> 
 	
 	if scene is MeshInstance:
 		var mesh  = scene.mesh
-		var shape = mesh.create_convex_shape()
-		for point in shape.points:
-			var adj_point = new_transform * point
-			
-			bounding_box[0].x = min(bounding_box[0].x, adj_point.x)
-			bounding_box[0].y = min(bounding_box[0].y, adj_point.y)
-			bounding_box[0].z = min(bounding_box[0].z, adj_point.z)
-			
-			bounding_box[1].x = max(bounding_box[1].x, adj_point.x)
-			bounding_box[1].y = max(bounding_box[1].y, adj_point.y)
-			bounding_box[1].z = max(bounding_box[1].z, adj_point.z)
+		# Check that the mesh actually has any vertices in it.
+		var num_verts = 0
+		for surface_id in range(mesh.get_surface_count()):
+			num_verts += mesh.surface_get_arrays(surface_id)[0].size()
+		
+		if num_verts > 0:
+			var shape = mesh.create_convex_shape()
+			for point in shape.points:
+				var adj_point = new_transform * point
+				
+				bounding_box[0].x = min(bounding_box[0].x, adj_point.x)
+				bounding_box[0].y = min(bounding_box[0].y, adj_point.y)
+				bounding_box[0].z = min(bounding_box[0].z, adj_point.z)
+				
+				bounding_box[1].x = max(bounding_box[1].x, adj_point.x)
+				bounding_box[1].y = max(bounding_box[1].y, adj_point.y)
+				bounding_box[1].z = max(bounding_box[1].z, adj_point.z)
 	
 	for child in scene.get_children():
 		if child is Spatial:

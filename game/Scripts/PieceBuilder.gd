@@ -291,7 +291,13 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 		if num_materials < num_surfaces:
 			push_warning("Mesh '%s' has %d surfaces, but only %d materials!" %
 				[from.mesh.resource_path, num_surfaces, num_materials])
+		
+		var num_verts = 0
 		for surface in range(num_surfaces):
+			# A number of arrays make up the surface - the first of them being
+			# the vertex array (which is guaranteed to be there).
+			num_verts += from.mesh.surface_get_arrays(surface)[0].size()
+			
 			# NOTE: We always assume that imported meshes put their materials
 			# into the mesh itself, not the mesh instance.
 			var material = from.mesh.surface_get_material(surface)
@@ -309,24 +315,23 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 						omnilight.light_energy = material.emission_energy
 						from.add_child(omnilight)
 		
-		var collision_shape = CollisionShape.new()
-		# Setting clean to false here, because I've noticed it makes little to
-		# no difference in the collision shapes themselves, but it speeds up
-		# the process significantly.
-		collision_shape.shape = from.mesh.create_convex_shape(false, false)
-		
-		# The collision shape's transform needs to match up with the mesh
-		# instance's, but they can't both use the same transform, otherwise
-		# the transform of the mesh instance will be wrong.
-		var collision_transform = transform
-		collision_transform.basis = from.transform.basis * collision_transform.basis
-		collision_transform.origin = from.transform.origin + collision_transform.origin
-		
-		collision_shape.transform = collision_transform
-		from.transform = Transform.IDENTITY
-		
-		collision_shape.add_child(from)
-		add_to.add_child(collision_shape)
+		# Don't bother making a collision shape if there's no vertices.
+		if num_verts > 0:
+			var collision_shape = CollisionShape.new()
+			collision_shape.shape = from.mesh.create_convex_shape()
+			
+			# The collision shape's transform needs to match up with the mesh
+			# instance's, but they can't both use the same transform, otherwise
+			# the transform of the mesh instance will be wrong.
+			var collision_transform = transform
+			collision_transform.basis = from.transform.basis * collision_transform.basis
+			collision_transform.origin = from.transform.origin + collision_transform.origin
+			
+			collision_shape.transform = collision_transform
+			from.transform = Transform.IDENTITY
+			
+			collision_shape.add_child(from)
+			add_to.add_child(collision_shape)
 
 # Free an object in a thread-safe manner.
 # object: The object to free.
