@@ -69,13 +69,13 @@ var _room_code_visible: bool = true
 var _error_reporter
 
 func add_notification_info(message: String) -> void:
-	_chat_box.add_raw_message("[color=aqua][INFO][/color] %s" % message)
+	_chat_box.add_raw_message("[color=aqua][INFO][/color] %s" % message, true)
 
 func add_notification_warning(message: String) -> void:
-	_chat_box.add_raw_message("[color=yellow][WARN] %s[/color]" % message)
+	_chat_box.add_raw_message("[color=yellow][WARN] %s[/color]" % message, false)
 
 func add_notification_error(message: String) -> void:
-	_chat_box.add_raw_message("[color=red][ERROR] %s[/color]" % message)
+	_chat_box.add_raw_message("[color=red][ERROR] %s[/color]" % message, false)
 
 # Apply options from the options menu.
 # config: The options to apply.

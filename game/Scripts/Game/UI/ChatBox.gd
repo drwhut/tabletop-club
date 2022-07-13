@@ -27,17 +27,35 @@ onready var _chat_text = $VBoxContainer/ChatBackground/ChatText
 onready var _message_edit = $VBoxContainer/HBoxContainer/MessageEdit
 onready var _toggle_button = $ToggleButton
 
+const NUM_CHARS_BEFORE_TIMEOUT: int = 1000
+const TIMEOUT_WAIT_TIME: float = 1.0
+
 export(bool) var censoring_profanity: bool = true
 
+var _num_chars_recent: int = 0
 var _profanity_list: Array = []
+var _time_since_last_msg: float = 0.0
 
 # Add a message in BBCode format to the chat box.
 # raw_message: The message to add in BBCode format.
-func add_raw_message(raw_message: String) -> void:
-	_chat_text.bbcode_text += "\n" + raw_message
+# stdout: If true, also prints the message to the stdout buffer.
+func add_raw_message(raw_message: String, stdout: bool = true) -> void:
+	if _time_since_last_msg > TIMEOUT_WAIT_TIME:
+		if _num_chars_recent >= NUM_CHARS_BEFORE_TIMEOUT:
+			_chat_text.clear() # Clear tag stack.
+		_num_chars_recent = 0
 	
-	# Print an unformatted version of the message to stdout.
-	print(_chat_text.text.rsplit("\n", true, 1)[1])
+	if _num_chars_recent < NUM_CHARS_BEFORE_TIMEOUT:
+		_num_chars_recent += raw_message.length()
+		if _num_chars_recent >= NUM_CHARS_BEFORE_TIMEOUT:
+			_chat_text.add_text("\n[%s]" % tr("Too much text being sent, waiting..."))
+		else:
+			_chat_text.bbcode_text += "\n" + raw_message
+			_time_since_last_msg = 0.0
+			
+			# Print an unformatted version of the message to stdout.
+			if stdout:
+				print(_chat_text.text.rsplit("\n", true, 1)[1])
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -131,6 +149,9 @@ func _ready():
 	set_chat_visible(true)
 	
 	_profanity_list = preload("res://Text/Profanity.tres").text.split("\n", false)
+
+func _process(delta):
+	_time_since_last_msg += delta
 
 # Get a random string from an array.
 # Returns: A random line from the given array.

@@ -10,7 +10,6 @@ margin_bottom = 160.0
 rect_min_size = Vector2( 300, 160 )
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": "The chat box is used in multiplayer games so players can communicate to each other via text."
 }
 
