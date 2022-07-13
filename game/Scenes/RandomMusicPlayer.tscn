@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/RandomMusicPlayer.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Cabin/Modified/Cabin-Bold-Outline.tres" type="DynamicFont" id=2]
 
 [node name="RandomMusicPlayer" type="Node"]
 script = ExtResource( 1 )
@@ -14,10 +15,11 @@ By default, music is not configured to play in the main menu. To enable this, th
 bus = "Music"
 
 [node name="TrackLabel" type="Label" parent="."]
-anchor_left = 1.0
 anchor_right = 1.0
+margin_left = 10.0
+margin_right = -10.0
 margin_bottom = 20.0
-grow_horizontal = 0
+custom_fonts/font = ExtResource( 2 )
 text = "Now Playing:"
 align = 2
 
