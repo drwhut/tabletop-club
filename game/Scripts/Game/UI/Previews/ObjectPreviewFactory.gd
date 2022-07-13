@@ -57,14 +57,13 @@ func _process(_delta):
 		if preview is ObjectPreview:
 			var piece = _finished_pieces[preview]
 			if piece is Piece:
-				preview.set_piece_display(piece)
-				
-				# If the piece is not parented now, it means the preview
-				# rejected it (now that I'm writing this it actually sounds
-				# really sad, orphans should never be rejected). This is most
-				# likely because the preview was cleared earlier while we were
-				# still building the piece for the preview.
-				if not piece.is_inside_tree():
+				if not preview.set_piece_display(piece):
+					
+					# If the piece is not parented now, it means the preview
+					# rejected it (now that I'm writing this it actually sounds
+					# really sad, orphans should never be rejected). This is 
+					# most likely because the preview was cleared earlier while
+					# we were still building the piece for the preview.
 					PieceBuilder.queue_free_object(piece)
 	
 	_finished_pieces.clear()

@@ -33,6 +33,7 @@ const X_ROTATION = PI / 4
 
 var _piece: Piece = null
 
+var _piece_to_add: Piece = null
 var _reject_factory_output = false
 
 # Get the name of the piece node this preview is displaying.
@@ -101,54 +102,17 @@ func set_piece_details(piece_entry: Dictionary) -> void:
 	_reject_factory_output = false
 
 # Set the piece to be displayed in the viewport.
+# Returns: If the piece was accepted. If false, it should be freed!
 # piece: The piece to display. Note that it must be an orphan node!
-func set_piece_display(piece: Piece) -> void:
+func set_piece_display(piece: Piece) -> bool:
 	if _reject_factory_output:
-		return
+		return false
 	
-	if VisualServer.is_connected("frame_post_draw", self, "_on_frame_post_draw"):
-		push_error("Cannot set piece display, waiting for render pass!")
-		return
+	if _piece_to_add != null:
+		PieceBuilder.queue_free_object(_piece_to_add)
+	_piece_to_add = piece
 	
-	# Make sure that if we are already displaying a piece, we free it before
-	# we lose it!
-	_clear_gui(false)
-	_piece = piece
-	
-	# Disable physics-related properties, there won't be any physicsing here!
-	_piece.contact_monitor = false
-	_piece.mode = RigidBody.MODE_STATIC
-	
-	_piece.transform.origin = Vector3.ZERO
-	# Make sure the piece is orientated upwards.
-	_piece.transform = _piece.transform.looking_at(Vector3.FORWARD, Vector3.UP)
-	# Adjust the angle so we can see the top face.
-	_piece.rotate_object_local(Vector3.RIGHT, X_ROTATION)
-	
-	_viewport.add_child(_piece)
-	
-	# Adjust the camera's position so it can see the entire piece.
-	var scale = _piece.get_size()
-	var piece_height = scale.y
-	
-	if _piece is Card:
-		piece_height = 0
-	elif _piece is Stack:
-		if _piece.is_card_stack():
-			piece_height = 0
-	
-	var piece_radius = max(scale.x, scale.z) / 2
-	
-	var x_cos = cos(X_ROTATION)
-	var x_sin = sin(X_ROTATION)
-	var display_height = 2 * piece_radius * x_sin + piece_height * x_cos
-	var display_radius = piece_radius * x_cos + 0.5 * piece_height * x_sin
-	
-	var theta = deg2rad(_camera.fov)
-	var dist = 1 + display_radius + (display_height / (2 * tan(theta / 2)))
-	_camera.translation.z = dist
-	
-	_viewport.disable_3d = false
+	return true
 
 func _ready():
 	# We connect the signal here because we don't want the editor to connect
@@ -157,6 +121,55 @@ func _ready():
 	connect("tree_exiting", self, "_on_tree_exiting")
 
 func _process(delta):
+	# Only add a piece to the display if we're not waiting to remove a piece.
+	if _piece_to_add and not VisualServer.is_connected("frame_post_draw", self, "_on_frame_post_draw"):
+		# If the previous piece has been fully removed, we're safe to add the
+		# next one in!
+		if _piece == null:
+			_piece = _piece_to_add
+			_piece_to_add = null
+			
+			# Disable physics-related properties, there won't be any physicsing here!
+			_piece.contact_monitor = false
+			_piece.mode = RigidBody.MODE_STATIC
+			
+			_piece.transform.origin = Vector3.ZERO
+			# Make sure the piece is orientated upwards.
+			_piece.transform = _piece.transform.looking_at(Vector3.FORWARD, Vector3.UP)
+			# Adjust the angle so we can see the top face.
+			_piece.rotate_object_local(Vector3.RIGHT, X_ROTATION)
+			
+			_viewport.add_child(_piece)
+			
+			# Adjust the camera's position so it can see the entire piece.
+			var scale = _piece.get_size()
+			var piece_height = scale.y
+			
+			if _piece is Card:
+				piece_height = 0
+			elif _piece is Stack:
+				if _piece.is_card_stack():
+					piece_height = 0
+			
+			var piece_radius = max(scale.x, scale.z) / 2
+			
+			var x_cos = cos(X_ROTATION)
+			var x_sin = sin(X_ROTATION)
+			var display_height = 2 * piece_radius * x_sin + piece_height * x_cos
+			var display_radius = piece_radius * x_cos + 0.5 * piece_height * x_sin
+			
+			var theta = deg2rad(_camera.fov)
+			var dist = 1 + display_radius + (display_height / (2 * tan(theta / 2)))
+			_camera.translation.z = dist
+			
+			_viewport.disable_3d = false
+		
+		else:
+			# If there is still a piece in the viewport, start the process of
+			# removing it from the viewport - this may take some time, since we
+			# need to wait for a render pass before it is removed.
+			_clear_gui(false)
+
 	if _piece:
 		var delta_theta = 2 * PI * REVOLUTIONS_PER_SECOND * delta
 		_piece.rotate_object_local(Vector3.UP, delta_theta)
@@ -179,7 +192,8 @@ func _clear_gui(details: bool = true) -> void:
 	# We've set the viewport to disable 3D, but it won't actually take effect
 	# until the end of the next render pass.
 	if _piece:
-		VisualServer.connect("frame_post_draw", self, "_on_frame_post_draw")
+		if not VisualServer.is_connected("frame_post_draw", self, "_on_frame_post_draw"):
+			VisualServer.connect("frame_post_draw", self, "_on_frame_post_draw")
 
 # Remove the piece from the scene tree.
 func _remove_piece() -> void:
@@ -216,3 +230,6 @@ func _on_tree_exiting():
 	# Wait for the ObjectPreviewFactory's build thread to finish in the event
 	# it is still building a piece for us.
 	ObjectPreviewFactory.flush_queue()
+	
+	if _piece_to_add != null:
+		_piece_to_add.queue_free()
