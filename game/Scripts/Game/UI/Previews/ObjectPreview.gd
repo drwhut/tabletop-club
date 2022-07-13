@@ -34,7 +34,6 @@ const X_ROTATION = PI / 4
 var _piece: Piece = null
 
 var _reject_factory_output = false
-var _wait_for_render_pass = false
 
 # Get the name of the piece node this preview is displaying.
 # Returns: The name of the piece node, an empty string if displaying nothing.
@@ -107,7 +106,7 @@ func set_piece_display(piece: Piece) -> void:
 	if _reject_factory_output:
 		return
 	
-	if _wait_for_render_pass:
+	if VisualServer.is_connected("frame_post_draw", self, "_on_frame_post_draw"):
 		push_error("Cannot set piece display, waiting for render pass!")
 		return
 	
@@ -156,12 +155,6 @@ func _ready():
 	# the signal when this is inside an ObjectPreviewGrid (which is an editor
 	# script).
 	connect("tree_exiting", self, "_on_tree_exiting")
-	
-	# When we're about to remove the piece from the preview, we want to wait
-	# for the render pass to end, so that we can guarantee that the viewport
-	# has been disabled before we remove the piece.
-	# TODO: Only connect if we need to wait?
-	VisualServer.connect("frame_post_draw", self, "_on_frame_post_draw")
 
 func _process(delta):
 	if _piece:
@@ -186,7 +179,7 @@ func _clear_gui(details: bool = true) -> void:
 	# We've set the viewport to disable 3D, but it won't actually take effect
 	# until the end of the next render pass.
 	if _piece:
-		_wait_for_render_pass = true
+		VisualServer.connect("frame_post_draw", self, "_on_frame_post_draw")
 
 # Remove the piece from the scene tree.
 func _remove_piece() -> void:
@@ -216,9 +209,8 @@ func _set_selected_gui(selected: bool) -> void:
 	_viewport.transparent_bg = not selected
 
 func _on_frame_post_draw():
-	if _wait_for_render_pass:
-		_remove_piece()
-		_wait_for_render_pass = false
+	_remove_piece()
+	VisualServer.disconnect("frame_post_draw", self, "_on_frame_post_draw")
 
 func _on_tree_exiting():
 	# Wait for the ObjectPreviewFactory's build thread to finish in the event
