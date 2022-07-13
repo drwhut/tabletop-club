@@ -1042,6 +1042,27 @@ func _import_file(from: String, to: String) -> int:
 					push_error("Could not write to file at '%s'." % to)
 			else:
 				push_error("Could not read file at '%s'." % to)
+		
+		# With .mtl material files, the "Ka" property gives a warning in Godot,
+		# saying that ambient light is ignored in PBR - so we'll comment out the
+		# property in the file.
+		elif to.get_extension() == "mtl":
+			var mtl_file = File.new()
+			var open_err = mtl_file.open(to, File.READ)
+			if open_err == OK:
+				var mtl_contents = mtl_file.get_as_text()
+				mtl_file.close()
+				
+				mtl_contents = mtl_contents.replace("Ka ", "#Ka ")
+				
+				open_err = mtl_file.open(to, File.WRITE)
+				if open_err == OK:
+					mtl_file.store_string(mtl_contents)
+					mtl_file.close()
+				else:
+					push_error("Could not write to file at '%s'." % to)
+			else:
+				push_error("Could not read file at '%s'." % to)
 	
 	if EXTENSIONS_TO_IMPORT.has(from.get_extension()):
 		return Global.tabletop_importer.import(to)
