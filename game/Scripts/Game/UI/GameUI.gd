@@ -49,7 +49,7 @@ onready var _hideable_ui = $HideableUI
 onready var _notebook_dialog = $NotebookDialog
 onready var _objects_dialog = $ObjectsDialog
 onready var _options_menu = $CanvasLayer/OptionsMenu
-onready var _player_list = $HideableUI/MultiplayerContainer/PlayerList
+onready var _player_list_container = $HideableUI/MultiplayerContainer/PlayerListContainer
 onready var _room_code_label = $HideableUI/MultiplayerContainer/RoomCodeLabel
 onready var _room_code_toggle_button = $HideableUI/MultiplayerContainer/RoomCodeVisibleContainer/RoomCodeToggleButton
 onready var _room_dialog = $RoomDialog
@@ -169,13 +169,37 @@ func _set_rotation_amount() -> void:
 
 # Update the player list based on what is in the Lobby.
 func _update_player_list() -> void:
-	var code = "[right]"
+	var player_id_list: Array = Lobby.get_player_list()
 	
-	for id in Lobby.get_player_list():
-		code += Lobby.get_name_bb_code(id) + " \n"
+	# Before setting the names, check if there are any labels for players who
+	# have since left the game.
+	for label in _player_list_container.get_children():
+		if label.name.is_valid_integer():
+			if not int(label.name) in player_id_list:
+				_player_list_container.remove_child(label)
+				label.queue_free()
+		else:
+			push_warning("Player label name %s is not an integer, ignoring." % label.name)
 	
-	code += "[/right]"
-	_player_list.bbcode_text = code
+	for player_id in player_id_list:
+		var player_id_str = str(player_id)
+		var label: RichTextLabel = null
+		
+		if _player_list_container.has_node(player_id_str):
+			label = _player_list_container.get_node(player_id_str)
+		else:
+			label = RichTextLabel.new()
+			label.name = player_id_str
+			label.rect_min_size.y = 20
+			label.bbcode_enabled = true
+			label.scroll_active = false
+			_player_list_container.add_child(label)
+		
+		if label == null:
+			push_error("Label for player %d could not be created!" % player_id)
+			continue
+		
+		label.bbcode_text = "[right]%s[/right]" % Lobby.get_name_bb_code(player_id)
 
 # Update the room code display.
 func _update_room_code_display() -> void:

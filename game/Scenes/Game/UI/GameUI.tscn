@@ -102,9 +102,6 @@ anchor_right = 1.0
 margin_left = -200.0
 margin_bottom = 76.0
 grow_horizontal = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RoomCodeLabel" type="RichTextLabel" parent="HideableUI/MultiplayerContainer"]
 margin_right = 200.0
@@ -126,17 +123,10 @@ margin_left = 188.0
 margin_right = 200.0
 margin_bottom = 26.0
 
-[node name="PlayerList" type="RichTextLabel" parent="HideableUI/MultiplayerContainer"]
+[node name="PlayerListContainer" type="VBoxContainer" parent="HideableUI/MultiplayerContainer"]
 margin_top = 50.0
 margin_right = 200.0
-margin_bottom = 71.0
-mouse_filter = 2
-bbcode_enabled = true
-fit_content_height = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 50.0
 
 [node name="ObjectsDialog" parent="." instance=ExtResource( 2 )]
 window_title = "Objects"
