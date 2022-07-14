@@ -207,11 +207,19 @@ func _on_DesktopButton_pressed():
 func _on_error_received(function: String, file: String, line: int,
 	error: String, _errorexp: String):
 	
+	# In the event that an error is caused by this code, disconnect the signal
+	# so that a stack overflow does not occur.
+	if Global.error_reporter != null:
+		Global.error_reporter.disconnect("error_received", self, "_on_error_received")
+	
 	# An error could occur while the chat box was in the middle of drawing (in
 	# another thread), so wait until a time where the chat box is guaranteed
 	# to not be in the middle of it's _draw().
 	call_deferred("add_notification_error", "%s:%d %s: %s" % [file, line,
 			function, error])
+	
+	if Global.error_reporter != null:
+		Global.error_reporter.connect("error_received", self, "_on_error_received")
 
 func _on_FlipTableButton_pressed():
 	emit_signal("flipping_table")
@@ -332,8 +340,16 @@ func _on_UndoButton_pressed():
 func _on_warning_received(function: String, file: String, line: int,
 	error: String, _errorexp: String):
 	
+	# In the event that a warning is caused by this code, disconnect the signal
+	# so that a stack overflow does not occur.
+	if Global.error_reporter != null:
+		Global.error_reporter.disconnect("warning_received", self, "_on_warning_received")
+	
 	# An error could occur while the chat box was in the middle of drawing (in
 	# another thread), so wait until a time where the chat box is guaranteed
 	# to not be in the middle of it's _draw().
 	call_deferred("add_notification_warning", "%s:%d %s: %s" % [file, line,
 			function, error])
+	
+	if Global.error_reporter != null:
+		Global.error_reporter.connect("warning_received", self, "_on_warning_received")
