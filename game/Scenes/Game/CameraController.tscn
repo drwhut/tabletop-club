@@ -33,11 +33,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 focus_mode = 1
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": "Instead of processing mouse events in _unhandled_input(), the camera controller catches the mouse events in this control which spans the entire viewport."
 }
 
-[node name="BoxSelectionRect" type="ColorRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+__meta__ = {
+"_editor_description_": "This nodes makes sure that all of it's children are rendered above the GameUI."
+}
+
+[node name="BoxSelectionRect" type="ColorRect" parent="CanvasLayer"]
 visible = false
 mouse_filter = 2
 color = Color( 0, 1, 1, 0.392157 )
@@ -47,14 +51,11 @@ __meta__ = {
 }
 outline_color = Color( 0, 1, 1, 0.588235 )
 
-[node name="HandPreviewRect" type="TextureRect" parent="."]
+[node name="HandPreviewRect" type="TextureRect" parent="CanvasLayer"]
 mouse_filter = 2
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="PieceContextMenu" type="PopupMenu" parent="."]
+[node name="PieceContextMenu" type="PopupMenu" parent="CanvasLayer"]
 margin_right = 20.0
 margin_bottom = 20.0
 __meta__ = {
@@ -63,22 +64,22 @@ __meta__ = {
 The operations are determined by the classes of the pieces, and how many of them are selected."
 }
 
-[node name="ColorMenu" type="PopupPanel" parent="PieceContextMenu"]
+[node name="ColorMenu" type="PopupPanel" parent="CanvasLayer/PieceContextMenu"]
 margin_right = 327.0
 margin_bottom = 472.0
 
-[node name="ColorPicker" type="ColorPicker" parent="PieceContextMenu/ColorMenu"]
+[node name="ColorPicker" type="ColorPicker" parent="CanvasLayer/PieceContextMenu/ColorMenu"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 323.0
 margin_bottom = 468.0
 edit_alpha = false
 
-[node name="DealCardsMenu" type="PopupPanel" parent="PieceContextMenu"]
+[node name="DealCardsMenu" type="PopupPanel" parent="CanvasLayer/PieceContextMenu"]
 margin_right = 8.0
 margin_bottom = 8.0
 
-[node name="DealCardsSpinBoxButton" type="HBoxContainer" parent="PieceContextMenu/DealCardsMenu"]
+[node name="DealCardsSpinBoxButton" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/DealCardsMenu"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 180.0
@@ -88,64 +89,64 @@ max_value = 1
 prefix = "X ="
 text = "Deal X cards"
 
-[node name="SortMenu" type="PopupMenu" parent="PieceContextMenu"]
+[node name="SortMenu" type="PopupMenu" parent="CanvasLayer/PieceContextMenu"]
 margin_right = 20.0
 margin_bottom = 20.0
 
-[node name="SpeakerMenu" type="PopupPanel" parent="PieceContextMenu"]
+[node name="SpeakerMenu" type="PopupPanel" parent="CanvasLayer/PieceContextMenu"]
 margin_right = 300.0
 margin_bottom = 102.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PieceContextMenu/SpeakerMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PieceContextMenu/SpeakerMenu"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 296.0
 margin_bottom = 98.0
 
-[node name="SpeakerTrackLabel" type="Label" parent="PieceContextMenu/SpeakerMenu/VBoxContainer"]
+[node name="SpeakerTrackLabel" type="Label" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer"]
 margin_right = 292.0
 margin_bottom = 20.0
 clip_text = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PieceContextMenu/SpeakerMenu/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer"]
 margin_top = 24.0
 margin_right = 292.0
 margin_bottom = 50.0
 
-[node name="SpeakerSelectTrackButton" type="Button" parent="PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer"]
+[node name="SpeakerSelectTrackButton" type="Button" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer"]
 margin_right = 94.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 text = "Select track"
 
-[node name="SpeakerPlayStopButton" type="Button" parent="PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer"]
+[node name="SpeakerPlayStopButton" type="Button" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer"]
 margin_left = 98.0
 margin_right = 193.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 
-[node name="SpeakerPauseButton" type="Button" parent="PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer"]
+[node name="SpeakerPauseButton" type="Button" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer"]
 margin_left = 197.0
 margin_right = 292.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 
-[node name="RangeLabel" type="Label" parent="PieceContextMenu/SpeakerMenu/VBoxContainer"]
+[node name="RangeLabel" type="Label" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer"]
 margin_top = 54.0
 margin_right = 292.0
 margin_bottom = 74.0
 text = "Range:"
 
-[node name="SpeakerVolumeSlider" type="HSlider" parent="PieceContextMenu/SpeakerMenu/VBoxContainer"]
+[node name="SpeakerVolumeSlider" type="HSlider" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer"]
 margin_top = 78.0
 margin_right = 292.0
 margin_bottom = 94.0
 
-[node name="TakeOffTopMenu" type="PopupPanel" parent="PieceContextMenu"]
+[node name="TakeOffTopMenu" type="PopupPanel" parent="CanvasLayer/PieceContextMenu"]
 margin_right = 8.0
 margin_bottom = 8.0
 
-[node name="TakeOffTopSpinBoxButton" type="HBoxContainer" parent="PieceContextMenu/TakeOffTopMenu"]
+[node name="TakeOffTopSpinBoxButton" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/TakeOffTopMenu"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 189.0
@@ -155,11 +156,11 @@ max_value = 1
 prefix = "X ="
 text = "Take X off top"
 
-[node name="TakeOutMenu" type="PopupPanel" parent="PieceContextMenu"]
+[node name="TakeOutMenu" type="PopupPanel" parent="CanvasLayer/PieceContextMenu"]
 margin_right = 8.0
 margin_bottom = 8.0
 
-[node name="TakeOutSpinBoxButton" type="HBoxContainer" parent="PieceContextMenu/TakeOutMenu"]
+[node name="TakeOutSpinBoxButton" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/TakeOutMenu"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 166.0
@@ -168,50 +169,50 @@ script = ExtResource( 10 )
 prefix = "X ="
 text = "Take X out"
 
-[node name="TimerMenu" type="PopupPanel" parent="PieceContextMenu"]
+[node name="TimerMenu" type="PopupPanel" parent="CanvasLayer/PieceContextMenu"]
 margin_right = 8.0
 margin_bottom = 8.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PieceContextMenu/TimerMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PieceContextMenu/TimerMenu"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 16.0
 margin_bottom = 118.0
 
-[node name="TimerTimeLabel" type="Label" parent="PieceContextMenu/TimerMenu/VBoxContainer"]
+[node name="TimerTimeLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TimerMenu/VBoxContainer"]
 margin_right = 12.0
 margin_bottom = 20.0
 align = 1
 
-[node name="TimerPauseButton" type="Button" parent="PieceContextMenu/TimerMenu/VBoxContainer"]
+[node name="TimerPauseButton" type="Button" parent="CanvasLayer/PieceContextMenu/TimerMenu/VBoxContainer"]
 margin_top = 24.0
 margin_right = 12.0
 margin_bottom = 50.0
 
-[node name="CountdownContainer" type="VBoxContainer" parent="PieceContextMenu/TimerMenu/VBoxContainer"]
+[node name="CountdownContainer" type="VBoxContainer" parent="CanvasLayer/PieceContextMenu/TimerMenu/VBoxContainer"]
 margin_top = 54.0
 margin_right = 12.0
 margin_bottom = 84.0
 
-[node name="TimerCountdownTime" type="HBoxContainer" parent="PieceContextMenu/TimerMenu/VBoxContainer/CountdownContainer"]
+[node name="TimerCountdownTime" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/TimerMenu/VBoxContainer/CountdownContainer"]
 margin_right = 12.0
 script = ExtResource( 11 )
 
-[node name="StartStopCountdownButton" type="Button" parent="PieceContextMenu/TimerMenu/VBoxContainer/CountdownContainer"]
+[node name="StartStopCountdownButton" type="Button" parent="CanvasLayer/PieceContextMenu/TimerMenu/VBoxContainer/CountdownContainer"]
 margin_top = 4.0
 margin_right = 12.0
 margin_bottom = 30.0
 
-[node name="StartStopStopwatchButton" type="Button" parent="PieceContextMenu/TimerMenu/VBoxContainer"]
+[node name="StartStopStopwatchButton" type="Button" parent="CanvasLayer/PieceContextMenu/TimerMenu/VBoxContainer"]
 margin_top = 88.0
 margin_right = 12.0
 margin_bottom = 114.0
 
-[node name="TransformMenu" type="PopupPanel" parent="PieceContextMenu"]
+[node name="TransformMenu" type="PopupPanel" parent="CanvasLayer/PieceContextMenu"]
 margin_right = 287.0
 margin_bottom = 208.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PieceContextMenu/TransformMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PieceContextMenu/TransformMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -219,23 +220,23 @@ margin_top = 4.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="PositionLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer"]
+[node name="PositionLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer"]
 margin_right = 279.0
 margin_bottom = 20.0
 text = "Position:"
 
-[node name="PositionContainer" type="HBoxContainer" parent="PieceContextMenu/TransformMenu/VBoxContainer"]
+[node name="PositionContainer" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer"]
 margin_top = 24.0
 margin_right = 279.0
 margin_bottom = 54.0
 
-[node name="PosXLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
+[node name="PosXLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
 margin_top = 5.0
 margin_right = 13.0
 margin_bottom = 25.0
 text = "X:"
 
-[node name="PosXSpinBox" type="SpinBox" parent="PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
+[node name="PosXSpinBox" type="SpinBox" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
 margin_left = 17.0
 margin_right = 91.0
 margin_bottom = 30.0
@@ -244,14 +245,14 @@ step = 0.1
 allow_greater = true
 allow_lesser = true
 
-[node name="PosYLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
+[node name="PosYLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
 margin_left = 95.0
 margin_top = 5.0
 margin_right = 107.0
 margin_bottom = 25.0
 text = "Y:"
 
-[node name="PosYSpinBox" type="SpinBox" parent="PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
+[node name="PosYSpinBox" type="SpinBox" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
 margin_left = 111.0
 margin_right = 185.0
 margin_bottom = 30.0
@@ -260,14 +261,14 @@ step = 0.1
 allow_greater = true
 allow_lesser = true
 
-[node name="PosZLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
+[node name="PosZLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
 margin_left = 189.0
 margin_top = 5.0
 margin_right = 201.0
 margin_bottom = 25.0
 text = "Z:"
 
-[node name="PosZSpinBox" type="SpinBox" parent="PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
+[node name="PosZSpinBox" type="SpinBox" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/PositionContainer"]
 margin_left = 205.0
 margin_right = 279.0
 margin_bottom = 30.0
@@ -276,76 +277,76 @@ step = 0.1
 allow_greater = true
 allow_lesser = true
 
-[node name="RotationLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer"]
+[node name="RotationLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer"]
 margin_top = 58.0
 margin_right = 279.0
 margin_bottom = 78.0
 text = "Rotation (°):"
 
-[node name="RotationContainer" type="HBoxContainer" parent="PieceContextMenu/TransformMenu/VBoxContainer"]
+[node name="RotationContainer" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer"]
 margin_top = 82.0
 margin_right = 279.0
 margin_bottom = 112.0
 
-[node name="RotXLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
+[node name="RotXLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
 margin_top = 5.0
 margin_right = 13.0
 margin_bottom = 25.0
 text = "X:"
 
-[node name="RotXSpinBox" type="SpinBox" parent="PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
+[node name="RotXSpinBox" type="SpinBox" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
 margin_left = 17.0
 margin_right = 91.0
 margin_bottom = 30.0
 min_value = -360.0
 max_value = 360.0
 
-[node name="RotYLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
+[node name="RotYLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
 margin_left = 95.0
 margin_top = 5.0
 margin_right = 107.0
 margin_bottom = 25.0
 text = "Y:"
 
-[node name="RotYSpinBox" type="SpinBox" parent="PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
+[node name="RotYSpinBox" type="SpinBox" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
 margin_left = 111.0
 margin_right = 185.0
 margin_bottom = 30.0
 min_value = -360.0
 max_value = 360.0
 
-[node name="RotZLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
+[node name="RotZLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
 margin_left = 189.0
 margin_top = 5.0
 margin_right = 201.0
 margin_bottom = 25.0
 text = "Z:"
 
-[node name="RotZSpinBox" type="SpinBox" parent="PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
+[node name="RotZSpinBox" type="SpinBox" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/RotationContainer"]
 margin_left = 205.0
 margin_right = 279.0
 margin_bottom = 30.0
 min_value = -360.0
 max_value = 360.0
 
-[node name="ScaleLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer"]
+[node name="ScaleLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer"]
 margin_top = 116.0
 margin_right = 279.0
 margin_bottom = 136.0
 text = "Scale:"
 
-[node name="ScaleContainer" type="HBoxContainer" parent="PieceContextMenu/TransformMenu/VBoxContainer"]
+[node name="ScaleContainer" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer"]
 margin_top = 140.0
 margin_right = 279.0
 margin_bottom = 170.0
 
-[node name="ScaXLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
+[node name="ScaXLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
 margin_top = 5.0
 margin_right = 13.0
 margin_bottom = 25.0
 text = "X:"
 
-[node name="ScaXSpinBox" type="SpinBox" parent="PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
+[node name="ScaXSpinBox" type="SpinBox" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
 margin_left = 17.0
 margin_right = 91.0
 margin_bottom = 30.0
@@ -354,14 +355,14 @@ step = 0.1
 value = 1.0
 allow_greater = true
 
-[node name="ScaYLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
+[node name="ScaYLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
 margin_left = 95.0
 margin_top = 5.0
 margin_right = 107.0
 margin_bottom = 25.0
 text = "Y:"
 
-[node name="ScaYSpinBox" type="SpinBox" parent="PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
+[node name="ScaYSpinBox" type="SpinBox" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
 margin_left = 111.0
 margin_right = 185.0
 margin_bottom = 30.0
@@ -370,14 +371,14 @@ step = 0.1
 value = 1.0
 allow_greater = true
 
-[node name="ScaZLabel" type="Label" parent="PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
+[node name="ScaZLabel" type="Label" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
 margin_left = 189.0
 margin_top = 5.0
 margin_right = 201.0
 margin_bottom = 25.0
 text = "Z:"
 
-[node name="ScaZSpinBox" type="SpinBox" parent="PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
+[node name="ScaZSpinBox" type="SpinBox" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/ScaleContainer"]
 margin_left = 205.0
 margin_right = 279.0
 margin_bottom = 30.0
@@ -386,24 +387,24 @@ step = 0.1
 value = 1.0
 allow_greater = true
 
-[node name="ApplyTransformButton" type="Button" parent="PieceContextMenu/TransformMenu/VBoxContainer"]
+[node name="ApplyTransformButton" type="Button" parent="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer"]
 margin_top = 174.0
 margin_right = 279.0
 margin_bottom = 200.0
 text = "Apply"
 
-[node name="TableContextMenu" type="PopupMenu" parent="."]
+[node name="TableContextMenu" type="PopupMenu" parent="CanvasLayer"]
 margin_right = 20.0
 margin_bottom = 20.0
 __meta__ = {
 "_editor_description_": "The context menu appears when the table is right-clicked."
 }
 
-[node name="FlickToolMenu" type="PopupPanel" parent="."]
+[node name="FlickToolMenu" type="PopupPanel" parent="CanvasLayer"]
 margin_right = 242.0
 margin_bottom = 82.0
 
-[node name="MarginContainer" type="MarginContainer" parent="FlickToolMenu"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/FlickToolMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -411,31 +412,31 @@ margin_top = 4.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FlickToolMenu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/FlickToolMenu/MarginContainer"]
 margin_right = 234.0
 margin_bottom = 74.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FlickStrengthLabel" type="Label" parent="FlickToolMenu/MarginContainer/VBoxContainer"]
+[node name="FlickStrengthLabel" type="Label" parent="CanvasLayer/FlickToolMenu/MarginContainer/VBoxContainer"]
 margin_right = 234.0
 margin_bottom = 20.0
 text = "Strength:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="FlickToolMenu/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/FlickToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 234.0
 margin_bottom = 44.0
 
-[node name="FlickStrengthValueLabel" type="Label" parent="FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="FlickStrengthValueLabel" type="Label" parent="CanvasLayer/FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 55.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 55, 0 )
 text = "1.0"
 align = 2
 
-[node name="FlickStrengthValueSlider" type="HSlider" parent="FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="FlickStrengthValueSlider" type="HSlider" parent="CanvasLayer/FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 59.0
 margin_right = 234.0
 margin_bottom = 16.0
@@ -446,17 +447,17 @@ step = 0.1
 value = 1.0
 exp_edit = true
 
-[node name="FlickOKButton" type="Button" parent="FlickToolMenu/MarginContainer/VBoxContainer"]
+[node name="FlickOKButton" type="Button" parent="CanvasLayer/FlickToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 48.0
 margin_right = 234.0
 margin_bottom = 74.0
 text = "OK"
 
-[node name="RulerToolMenu" type="PopupPanel" parent="."]
+[node name="RulerToolMenu" type="PopupPanel" parent="CanvasLayer"]
 margin_right = 242.0
 margin_bottom = 146.0
 
-[node name="MarginContainer" type="MarginContainer" parent="RulerToolMenu"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/RulerToolMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -467,24 +468,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RulerToolMenu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/RulerToolMenu/MarginContainer"]
 margin_right = 234.0
 margin_bottom = 138.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScaleLabel" type="Label" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
+[node name="ScaleLabel" type="Label" parent="CanvasLayer/RulerToolMenu/MarginContainer/VBoxContainer"]
 margin_right = 234.0
 margin_bottom = 20.0
 text = "Scale:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/RulerToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 234.0
 margin_bottom = 54.0
 
-[node name="RulerScaleSpinBox" type="SpinBox" parent="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="RulerScaleSpinBox" type="SpinBox" parent="CanvasLayer/RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 90.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 90, 0 )
@@ -494,7 +495,7 @@ value = 1.0
 allow_greater = true
 prefix = "x"
 
-[node name="RulerScaleSlider" type="HSlider" parent="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="RulerScaleSlider" type="HSlider" parent="CanvasLayer/RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 94.0
 margin_right = 234.0
 margin_bottom = 16.0
@@ -505,13 +506,13 @@ value = 1.0
 exp_edit = true
 allow_greater = true
 
-[node name="SystemLabel" type="Label" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
+[node name="SystemLabel" type="Label" parent="CanvasLayer/RulerToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 58.0
 margin_right = 234.0
 margin_bottom = 78.0
 text = "System:"
 
-[node name="SystemButton" type="OptionButton" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
+[node name="SystemButton" type="OptionButton" parent="CanvasLayer/RulerToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 82.0
 margin_right = 234.0
 margin_bottom = 108.0
@@ -519,17 +520,17 @@ text = "Metric"
 items = [ "Metric", null, false, 0, null, "Imperial", null, false, 1, null ]
 selected = 0
 
-[node name="RulerOKButton" type="Button" parent="RulerToolMenu/MarginContainer/VBoxContainer"]
+[node name="RulerOKButton" type="Button" parent="CanvasLayer/RulerToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 112.0
 margin_right = 234.0
 margin_bottom = 138.0
 text = "OK"
 
-[node name="PaintToolMenu" type="PopupPanel" parent="."]
+[node name="PaintToolMenu" type="PopupPanel" parent="CanvasLayer"]
 margin_right = 242.0
 margin_bottom = 136.0
 
-[node name="MarginContainer" type="MarginContainer" parent="PaintToolMenu"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PaintToolMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -540,44 +541,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PaintToolMenu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PaintToolMenu/MarginContainer"]
 margin_right = 234.0
 margin_bottom = 128.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BrushColorLabel" type="Label" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
+[node name="BrushColorLabel" type="Label" parent="CanvasLayer/PaintToolMenu/MarginContainer/VBoxContainer"]
 margin_right = 234.0
 margin_bottom = 20.0
 text = "Brush Color:"
 
-[node name="BrushColorPickerButton" type="ColorPickerButton" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
+[node name="BrushColorPickerButton" type="ColorPickerButton" parent="CanvasLayer/PaintToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 234.0
 margin_bottom = 50.0
 color = Color( 1, 1, 1, 1 )
 edit_alpha = false
 
-[node name="BrushSizeLabel" type="Label" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
+[node name="BrushSizeLabel" type="Label" parent="CanvasLayer/PaintToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 54.0
 margin_right = 234.0
 margin_bottom = 74.0
 text = "Brush Size:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PaintToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 78.0
 margin_right = 234.0
 margin_bottom = 98.0
 
-[node name="BrushSizeValueLabel" type="Label" parent="PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="BrushSizeValueLabel" type="Label" parent="CanvasLayer/PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 20.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 20, 0 )
 text = "1"
 align = 2
 
-[node name="BrushSizeValueSlider" type="HSlider" parent="PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="BrushSizeValueSlider" type="HSlider" parent="CanvasLayer/PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 24.0
 margin_right = 234.0
 margin_bottom = 16.0
@@ -586,17 +587,17 @@ min_value = 1.0
 max_value = 40.0
 value = 1.0
 
-[node name="PaintOKButton" type="Button" parent="PaintToolMenu/MarginContainer/VBoxContainer"]
+[node name="PaintOKButton" type="Button" parent="CanvasLayer/PaintToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 102.0
 margin_right = 234.0
 margin_bottom = 128.0
 text = "OK"
 
-[node name="EraseToolMenu" type="PopupPanel" parent="."]
+[node name="EraseToolMenu" type="PopupPanel" parent="CanvasLayer"]
 margin_right = 242.0
 margin_bottom = 82.0
 
-[node name="MarginContainer" type="MarginContainer" parent="EraseToolMenu"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/EraseToolMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -607,31 +608,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EraseToolMenu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/EraseToolMenu/MarginContainer"]
 margin_right = 234.0
 margin_bottom = 74.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EraserSizeLabel" type="Label" parent="EraseToolMenu/MarginContainer/VBoxContainer"]
+[node name="EraserSizeLabel" type="Label" parent="CanvasLayer/EraseToolMenu/MarginContainer/VBoxContainer"]
 margin_right = 234.0
 margin_bottom = 20.0
 text = "Eraser Size:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="EraseToolMenu/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/EraseToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 234.0
 margin_bottom = 44.0
 
-[node name="EraserSizeValueLabel" type="Label" parent="EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="EraserSizeValueLabel" type="Label" parent="CanvasLayer/EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 20.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 20, 0 )
 text = "1"
 align = 2
 
-[node name="EraserSizeValueSlider" type="HSlider" parent="EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="EraserSizeValueSlider" type="HSlider" parent="CanvasLayer/EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 24.0
 margin_right = 234.0
 margin_bottom = 16.0
@@ -640,13 +641,13 @@ min_value = 1.0
 max_value = 40.0
 value = 1.0
 
-[node name="EraseOKButton" type="Button" parent="EraseToolMenu/MarginContainer/VBoxContainer"]
+[node name="EraseOKButton" type="Button" parent="CanvasLayer/EraseToolMenu/MarginContainer/VBoxContainer"]
 margin_top = 48.0
 margin_right = 234.0
 margin_bottom = 74.0
 text = "OK"
 
-[node name="TrackDialog" parent="." instance=ExtResource( 12 )]
+[node name="TrackDialog" parent="CanvasLayer" instance=ExtResource( 12 )]
 window_title = "Select a track..."
 db_types = {
 "MUSIC": "music",
@@ -654,25 +655,19 @@ db_types = {
 }
 status_text_multiple = "Loaded %d tracks."
 
-[node name="ContainerContentDialog" parent="." instance=ExtResource( 3 )]
+[node name="ContainerContentDialog" parent="CanvasLayer" instance=ExtResource( 3 )]
 
-[node name="Rulers" type="Control" parent="."]
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Rulers" type="Control" parent="CanvasLayer"]
 
-[node name="FlickLine" parent="." instance=ExtResource( 17 )]
+[node name="FlickLine" parent="CanvasLayer" instance=ExtResource( 17 )]
 visible = false
 
-[node name="CameraUI" type="Control" parent="."]
+[node name="CameraUI" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Cursors" type="Control" parent="CameraUI"]
+[node name="Cursors" type="Control" parent="CanvasLayer/CameraUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -680,7 +675,7 @@ __meta__ = {
 "_editor_description_": "This control will be the parent of all of the cursors that are displayed in multiplayer games (showing the positions and rotations of every other player's cursor on the table)."
 }
 
-[node name="ControlHintLabel" type="RichTextLabel" parent="CameraUI"]
+[node name="ControlHintLabel" type="RichTextLabel" parent="CanvasLayer/CameraUI"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -696,7 +691,7 @@ bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
 
-[node name="ToolContainer" type="VBoxContainer" parent="CameraUI"]
+[node name="ToolContainer" type="VBoxContainer" parent="CanvasLayer/CameraUI"]
 anchor_top = 0.45
 anchor_bottom = 0.45
 margin_top = -108.0
@@ -705,7 +700,7 @@ margin_bottom = 108.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="CursorToolButton" type="Button" parent="CameraUI/ToolContainer"]
+[node name="CursorToolButton" type="Button" parent="CanvasLayer/CameraUI/ToolContainer"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
@@ -715,7 +710,7 @@ group = ExtResource( 6 )
 icon = ExtResource( 8 )
 expand_icon = true
 
-[node name="FlickToolButton" type="Button" parent="CameraUI/ToolContainer"]
+[node name="FlickToolButton" type="Button" parent="CanvasLayer/CameraUI/ToolContainer"]
 margin_top = 44.0
 margin_right = 40.0
 margin_bottom = 84.0
@@ -725,7 +720,7 @@ group = ExtResource( 6 )
 icon = ExtResource( 16 )
 expand_icon = true
 
-[node name="RulerToolButton" type="Button" parent="CameraUI/ToolContainer"]
+[node name="RulerToolButton" type="Button" parent="CanvasLayer/CameraUI/ToolContainer"]
 margin_top = 88.0
 margin_right = 40.0
 margin_bottom = 128.0
@@ -735,7 +730,7 @@ group = ExtResource( 6 )
 icon = ExtResource( 7 )
 expand_icon = true
 
-[node name="HiddenAreaToolButton" type="Button" parent="CameraUI/ToolContainer"]
+[node name="HiddenAreaToolButton" type="Button" parent="CanvasLayer/CameraUI/ToolContainer"]
 margin_top = 132.0
 margin_right = 40.0
 margin_bottom = 172.0
@@ -745,7 +740,7 @@ group = ExtResource( 6 )
 icon = ExtResource( 5 )
 expand_icon = true
 
-[node name="PaintToolButton" type="Button" parent="CameraUI/ToolContainer"]
+[node name="PaintToolButton" type="Button" parent="CanvasLayer/CameraUI/ToolContainer"]
 margin_top = 176.0
 margin_right = 40.0
 margin_bottom = 216.0
@@ -755,7 +750,7 @@ group = ExtResource( 6 )
 icon = ExtResource( 9 )
 expand_icon = true
 
-[node name="EraseToolButton" type="Button" parent="CameraUI/ToolContainer"]
+[node name="EraseToolButton" type="Button" parent="CanvasLayer/CameraUI/ToolContainer"]
 margin_top = 220.0
 margin_right = 40.0
 margin_bottom = 260.0
@@ -765,7 +760,7 @@ group = ExtResource( 6 )
 icon = ExtResource( 4 )
 expand_icon = true
 
-[node name="DebugInfoLabel" type="Label" parent="CameraUI"]
+[node name="DebugInfoLabel" type="Label" parent="CanvasLayer/CameraUI"]
 visible = false
 margin_right = 240.0
 margin_bottom = 40.0
@@ -773,40 +768,40 @@ custom_fonts/font = ExtResource( 15 )
 autowrap = true
 
 [connection signal="gui_input" from="MouseGrab" to="." method="_on_MouseGrab_gui_input"]
-[connection signal="id_pressed" from="PieceContextMenu" to="." method="_on_PieceContextMenu_id_pressed"]
-[connection signal="popup_hide" from="PieceContextMenu" to="." method="_on_PieceContextMenu_popup_hide"]
-[connection signal="popup_hide" from="PieceContextMenu/ColorMenu" to="." method="_on_ColorMenu_popup_hide"]
-[connection signal="color_changed" from="PieceContextMenu/ColorMenu/ColorPicker" to="." method="_on_ColorPicker_color_changed"]
-[connection signal="pressed" from="PieceContextMenu/DealCardsMenu/DealCardsSpinBoxButton" to="." method="_on_DealCardsSpinBoxButton_pressed"]
-[connection signal="id_pressed" from="PieceContextMenu/SortMenu" to="." method="_on_SortMenu_id_pressed"]
-[connection signal="pressed" from="PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerSelectTrackButton" to="." method="_on_SpeakerSelectTrackButton_pressed"]
-[connection signal="pressed" from="PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPlayStopButton" to="." method="_on_SpeakerPlayStopButton_pressed"]
-[connection signal="pressed" from="PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPauseButton" to="." method="_on_SpeakerPauseButton_pressed"]
-[connection signal="mouse_entered" from="PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_mouse_entered"]
-[connection signal="mouse_exited" from="PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_mouse_exited"]
-[connection signal="value_changed" from="PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_value_changed"]
-[connection signal="pressed" from="PieceContextMenu/TakeOffTopMenu/TakeOffTopSpinBoxButton" to="." method="_on_TakeOffTopSpinBoxButton_pressed"]
-[connection signal="pressed" from="PieceContextMenu/TakeOutMenu/TakeOutSpinBoxButton" to="." method="_on_TakeOutSpinBoxButton_pressed"]
-[connection signal="pressed" from="PieceContextMenu/TimerMenu/VBoxContainer/TimerPauseButton" to="." method="_on_TimerPauseButton_pressed"]
-[connection signal="pressed" from="PieceContextMenu/TimerMenu/VBoxContainer/CountdownContainer/StartStopCountdownButton" to="." method="_on_StartStopCountdownButton_pressed"]
-[connection signal="pressed" from="PieceContextMenu/TimerMenu/VBoxContainer/StartStopStopwatchButton" to="." method="_on_StartStopStopwatchButton_pressed"]
-[connection signal="pressed" from="PieceContextMenu/TransformMenu/VBoxContainer/ApplyTransformButton" to="." method="_on_ApplyTransformButton_pressed"]
-[connection signal="id_pressed" from="TableContextMenu" to="." method="_on_TableContextMenu_id_pressed"]
-[connection signal="value_changed" from="FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer/FlickStrengthValueSlider" to="." method="_on_FlickStrengthValueSlider_value_changed"]
-[connection signal="pressed" from="FlickToolMenu/MarginContainer/VBoxContainer/FlickOKButton" to="." method="_on_FlickOKButton_pressed"]
-[connection signal="value_changed" from="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSpinBox" to="." method="_on_RulerScaleSpinBox_value_changed"]
-[connection signal="value_changed" from="RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider" to="." method="_on_RulerScaleSlider_value_changed"]
-[connection signal="pressed" from="RulerToolMenu/MarginContainer/VBoxContainer/RulerOKButton" to="." method="_on_RulerOKButton_pressed"]
-[connection signal="value_changed" from="PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer/BrushSizeValueSlider" to="." method="_on_BrushSizeValueSlider_value_changed"]
-[connection signal="pressed" from="PaintToolMenu/MarginContainer/VBoxContainer/PaintOKButton" to="." method="_on_PaintOKButton_pressed"]
-[connection signal="value_changed" from="EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer/EraserSizeValueSlider" to="." method="_on_EraserSizeValueSlider_value_changed"]
-[connection signal="pressed" from="EraseToolMenu/MarginContainer/VBoxContainer/EraseOKButton" to="." method="_on_EraseOKButton_pressed"]
-[connection signal="entry_requested" from="TrackDialog" to="." method="_on_TrackDialog_entry_requested"]
-[connection signal="take_all_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_all_from"]
-[connection signal="take_from" from="ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_from"]
-[connection signal="pressed" from="CameraUI/ToolContainer/CursorToolButton" to="." method="_on_CursorToolButton_pressed"]
-[connection signal="pressed" from="CameraUI/ToolContainer/FlickToolButton" to="." method="_on_FlickToolButton_pressed"]
-[connection signal="pressed" from="CameraUI/ToolContainer/RulerToolButton" to="." method="_on_RulerToolButton_pressed"]
-[connection signal="pressed" from="CameraUI/ToolContainer/HiddenAreaToolButton" to="." method="_on_HiddenAreaToolButton_pressed"]
-[connection signal="pressed" from="CameraUI/ToolContainer/PaintToolButton" to="." method="_on_PaintToolButton_pressed"]
-[connection signal="pressed" from="CameraUI/ToolContainer/EraseToolButton" to="." method="_on_EraseToolButton_pressed"]
+[connection signal="id_pressed" from="CanvasLayer/PieceContextMenu" to="." method="_on_PieceContextMenu_id_pressed"]
+[connection signal="popup_hide" from="CanvasLayer/PieceContextMenu" to="." method="_on_PieceContextMenu_popup_hide"]
+[connection signal="popup_hide" from="CanvasLayer/PieceContextMenu/ColorMenu" to="." method="_on_ColorMenu_popup_hide"]
+[connection signal="color_changed" from="CanvasLayer/PieceContextMenu/ColorMenu/ColorPicker" to="." method="_on_ColorPicker_color_changed"]
+[connection signal="pressed" from="CanvasLayer/PieceContextMenu/DealCardsMenu/DealCardsSpinBoxButton" to="." method="_on_DealCardsSpinBoxButton_pressed"]
+[connection signal="id_pressed" from="CanvasLayer/PieceContextMenu/SortMenu" to="." method="_on_SortMenu_id_pressed"]
+[connection signal="pressed" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerSelectTrackButton" to="." method="_on_SpeakerSelectTrackButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPlayStopButton" to="." method="_on_SpeakerPlayStopButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPauseButton" to="." method="_on_SpeakerPauseButton_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_mouse_exited"]
+[connection signal="value_changed" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/PieceContextMenu/TakeOffTopMenu/TakeOffTopSpinBoxButton" to="." method="_on_TakeOffTopSpinBoxButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PieceContextMenu/TakeOutMenu/TakeOutSpinBoxButton" to="." method="_on_TakeOutSpinBoxButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PieceContextMenu/TimerMenu/VBoxContainer/TimerPauseButton" to="." method="_on_TimerPauseButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PieceContextMenu/TimerMenu/VBoxContainer/CountdownContainer/StartStopCountdownButton" to="." method="_on_StartStopCountdownButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PieceContextMenu/TimerMenu/VBoxContainer/StartStopStopwatchButton" to="." method="_on_StartStopStopwatchButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PieceContextMenu/TransformMenu/VBoxContainer/ApplyTransformButton" to="." method="_on_ApplyTransformButton_pressed"]
+[connection signal="id_pressed" from="CanvasLayer/TableContextMenu" to="." method="_on_TableContextMenu_id_pressed"]
+[connection signal="value_changed" from="CanvasLayer/FlickToolMenu/MarginContainer/VBoxContainer/HBoxContainer/FlickStrengthValueSlider" to="." method="_on_FlickStrengthValueSlider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/FlickToolMenu/MarginContainer/VBoxContainer/FlickOKButton" to="." method="_on_FlickOKButton_pressed"]
+[connection signal="value_changed" from="CanvasLayer/RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSpinBox" to="." method="_on_RulerScaleSpinBox_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/RulerToolMenu/MarginContainer/VBoxContainer/HBoxContainer/RulerScaleSlider" to="." method="_on_RulerScaleSlider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/RulerToolMenu/MarginContainer/VBoxContainer/RulerOKButton" to="." method="_on_RulerOKButton_pressed"]
+[connection signal="value_changed" from="CanvasLayer/PaintToolMenu/MarginContainer/VBoxContainer/HBoxContainer/BrushSizeValueSlider" to="." method="_on_BrushSizeValueSlider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/PaintToolMenu/MarginContainer/VBoxContainer/PaintOKButton" to="." method="_on_PaintOKButton_pressed"]
+[connection signal="value_changed" from="CanvasLayer/EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer/EraserSizeValueSlider" to="." method="_on_EraserSizeValueSlider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/EraseToolMenu/MarginContainer/VBoxContainer/EraseOKButton" to="." method="_on_EraseOKButton_pressed"]
+[connection signal="entry_requested" from="CanvasLayer/TrackDialog" to="." method="_on_TrackDialog_entry_requested"]
+[connection signal="take_all_from" from="CanvasLayer/ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_all_from"]
+[connection signal="take_from" from="CanvasLayer/ContainerContentDialog" to="." method="_on_ContainerContentDialog_take_from"]
+[connection signal="pressed" from="CanvasLayer/CameraUI/ToolContainer/CursorToolButton" to="." method="_on_CursorToolButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/CameraUI/ToolContainer/FlickToolButton" to="." method="_on_FlickToolButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/CameraUI/ToolContainer/RulerToolButton" to="." method="_on_RulerToolButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/CameraUI/ToolContainer/HiddenAreaToolButton" to="." method="_on_HiddenAreaToolButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/CameraUI/ToolContainer/PaintToolButton" to="." method="_on_PaintToolButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/CameraUI/ToolContainer/EraseToolButton" to="." method="_on_EraseToolButton_pressed"]
