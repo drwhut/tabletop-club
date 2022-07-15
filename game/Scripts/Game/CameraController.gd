@@ -706,7 +706,7 @@ func _process_movement(delta):
 	_camera.near = clamp(ZOOM_CAMERA_NEAR_SCALAR * _target_zoom, 0.05, 2.0)
 
 func _unhandled_input(event):
-	if not Input.is_key_pressed(KEY_CONTROL):
+	if not (Input.is_key_pressed(KEY_CONTROL) or Input.is_key_pressed(KEY_META)):
 		if event.is_action_pressed("game_left"):
 			_move_left = true
 		elif event.is_action_released("game_left"):
@@ -756,7 +756,8 @@ func _unhandled_input(event):
 		_camera_ui.visible = not _camera_ui.visible
 	
 	if event is InputEventKey:
-		if event.pressed and event.control:
+		var ctrl = event.command if OS.get_name() == "OSX" else event.control
+		if event.pressed and ctrl:
 			if event.scancode == KEY_A:
 				emit_signal("selecting_all_pieces")
 			elif event.scancode == KEY_X:
@@ -1866,12 +1867,14 @@ func _on_Lobby_player_removed(id: int) -> void:
 
 func _on_MouseGrab_gui_input(event):
 	if event is InputEventMouseButton:
+		var ctrl = event.command if OS.get_name() == "OSX" else event.control
+		
 		if event.button_index == BUTTON_LEFT:
 			
 			if _tool == TOOL_CURSOR:
 				if event.is_pressed():
 					if _piece_mouse_is_over:
-						if event.control:
+						if ctrl:
 							append_selected_pieces([_piece_mouse_is_over])
 						else:
 							if not _selected_pieces.has(_piece_mouse_is_over):
@@ -1879,7 +1882,7 @@ func _on_MouseGrab_gui_input(event):
 							_is_grabbing_selected = true
 							_grabbing_time = 0.0
 					else:
-						if not (event.control or _is_hovering_selected):
+						if not (ctrl or _is_hovering_selected):
 							clear_selected_pieces()
 						
 						if hold_left_click_to_move:
@@ -2056,7 +2059,7 @@ func _on_MouseGrab_gui_input(event):
 					else:
 						offset = lift_sensitivity
 					
-					if event.control:
+					if ctrl:
 						var new_y_offset = _hover_y_offset + offset
 						if _hover_y_pos + new_y_offset >= HOVER_Y_MIN:
 							_hover_y_offset = new_y_offset

@@ -99,11 +99,11 @@ func _on_gui_input(event):
 		emit_signal("clicked", self, event)
 		
 		# If the preview has been clicked, register it as selected.
-		if event.pressed:
-			if event.button_index == BUTTON_LEFT:
-				if not (allow_multiple_select and event.control):
-					get_tree().call_group("preview_selected", "set_selected", false)
-				set_selected(not is_selected())
+		if event.pressed and event.button_index == BUTTON_LEFT:
+			var ctrl = event.command if OS.get_name() == "OSX" else event.control
+			if not (allow_multiple_select and ctrl):
+				get_tree().call_group("preview_selected", "set_selected", false)
+			set_selected(not is_selected())
 
 func _on_visibility_changed():
 	set_selected(false)
