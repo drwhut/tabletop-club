@@ -44,6 +44,7 @@ onready var _reimport_confirm = $ReimportConfirm
 onready var _reset_bindings_confirm = $ResetBindingsConfirm
 onready var _restart_required_dialog = $RestartRequiredDialog
 onready var _tab_container = $MarginContainer/VBoxContainer/TabContainer
+onready var _window_mode_button = $MarginContainer/VBoxContainer/TabContainer/Video/GridContainer/WindowModeButton
 
 var _action_to_bind = ""
 var _restart_popup_shown = false
@@ -92,9 +93,14 @@ func _ready():
 		if node is BindButton:
 			node.connect("rebinding_action", self, "_on_rebinding_action")
 	
-	# Opening folders is not supported on OSX.
 	if OS.get_name() == "OSX":
+		# Opening folders is not supported on OSX.
 		_open_assets_button.disabled = true
+		
+		# Both borderless fullscreen and fullscreen don't work as intended on
+		# OSX, so disable the button - the player can always maximize the
+		# window, to get the same affect as making it fullscreen.
+		_window_mode_button.disabled = true
 
 # Apply the changes made and save them in the options file.
 func _apply_changes() -> void:
@@ -137,21 +143,24 @@ func _apply_config(config: ConfigFile) -> void:
 	# VIDEO #
 	#########
 	
-	var window_mode_id = config.get_value("video", "window_mode")
-	var borderless = false
-	var fullscreen = false
-	var maximized = OS.window_maximized
-	
-	if window_mode_id >= 1:
-		borderless = true
-		if window_mode_id == 1:
-			maximized = true
-		elif window_mode_id == 2:
-			fullscreen = true
-	
-	OS.window_fullscreen = fullscreen
-	OS.window_borderless = borderless
-	OS.window_maximized = maximized
+	# As stated above, just let the player maximize the window if they want the
+	# game to be fullscreen on OSX.
+	if OS.get_name() != "OSX":
+		var window_mode_id = config.get_value("video", "window_mode")
+		var borderless = false
+		var fullscreen = false
+		var maximized = OS.window_maximized
+		
+		if window_mode_id >= 1:
+			borderless = true
+			if window_mode_id == 1:
+				maximized = true
+			elif window_mode_id == 2:
+				fullscreen = true
+		
+		OS.window_fullscreen = fullscreen
+		OS.window_borderless = borderless
+		OS.window_maximized = maximized
 	
 	OS.vsync_enabled = config.get_value("video", "vsync")
 	
