@@ -303,6 +303,14 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 			var material = from.mesh.surface_get_material(surface)
 			if material:
 				material = material.duplicate()
+				
+				# There seems to be a bug on OSX where the default cull mode
+				# inverts the normals of the mesh.
+				# See: https://github.com/godotengine/godot/issues/39936
+				if OS.get_name() == "OSX":
+					if material is SpatialMaterial:
+						material.params_cull_mode = SpatialMaterial.CULL_BACK
+				
 				from.set_surface_material(surface, material)
 				
 				# Real-time global illumination is coming in Godot 4, so while
