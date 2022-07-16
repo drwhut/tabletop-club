@@ -1250,6 +1250,7 @@ func _set_control_hint_label() -> void:
 	
 	var alt     = tr("Alt + %s")
 	var ctrl    = tr("Ctrl + %s")
+	var cmd     = tr("Cmd + %s")
 	var hold    = tr("Hold %s")
 	var release = tr("Release %s")
 	
@@ -1371,9 +1372,12 @@ func _set_control_hint_label() -> void:
 			text += _set_control_hint_label_row_actions(tr("Reset orientation"),
 				["game_reset_piece"])
 			
+			var ctrl_mod = cmd if OS.get_name() == "OSX" else ctrl
+			var alt_mod = ctrl if OS.get_name() == "OSX" else alt
+			
 			text += _set_control_hint_label_row(tr("Zoom selected"), sw)
-			text += _set_control_hint_label_row(tr("Lift selected"), sw, ctrl)
-			text += _set_control_hint_label_row(tr("Rotate selected"), sw, alt)
+			text += _set_control_hint_label_row(tr("Lift selected"), sw, ctrl_mod)
+			text += _set_control_hint_label_row(tr("Rotate selected"), sw, alt_mod)
 		
 		var all_locked = true
 		for piece in _selected_pieces:
@@ -1744,6 +1748,35 @@ func _on_moving() -> bool:
 	
 	return false
 
+# Called when the player inputs a scroll event.
+func _on_scroll(delta: float, ctrl: bool, alt: bool) -> void:
+	if _is_hovering_selected:
+		if alt:
+			# Changing the rotation of the hovered pieces.
+			var amount = _piece_rotation_amount * delta
+			if piece_rotate_invert:
+				amount *= -1
+			for piece in _selected_pieces:
+				piece.rpc_id(1, "request_rotate_y", amount)
+		else:
+			if ctrl:
+				var new_y_offset = _hover_y_offset + delta
+				if _hover_y_pos + new_y_offset >= HOVER_Y_MIN:
+					_hover_y_offset = new_y_offset
+			else:
+				var new_y_pos = _hover_y_pos + delta
+				_hover_y_pos = max(new_y_pos, HOVER_Y_MIN)
+				_hover_y_offset = max(_hover_y_offset, HOVER_Y_MIN - _hover_y_pos)
+			
+			_on_moving()
+	else:
+		# Zooming the camera in and away from the controller.
+		var offset = zoom_sensitivity * delta
+		var new_zoom = _target_zoom + offset
+		_target_zoom = max(min(new_zoom, ZOOM_DISTANCE_MAX), ZOOM_DISTANCE_MIN)
+	
+	get_tree().set_input_as_handled()
+
 func _on_ApplyTransformButton_pressed():
 	_hide_context_menu()
 	var origin = Vector3(_transform_piece_pos_x.value,
@@ -2040,48 +2073,9 @@ func _on_MouseGrab_gui_input(event):
 		elif event.is_pressed() and (event.button_index == BUTTON_WHEEL_UP or
 			event.button_index == BUTTON_WHEEL_DOWN):
 			
-			if _is_hovering_selected:
-				if event.alt:
-					# Changing the rotation of the hovered pieces.
-					var amount = _piece_rotation_amount
-					if event.button_index == BUTTON_WHEEL_DOWN:
-						amount *= -1
-					if piece_rotate_invert:
-						amount *= -1
-					for piece in _selected_pieces:
-						piece.rpc_id(1, "request_rotate_y", amount)
-				else:
-					# Changing the y-position/offset of hovered pieces.
-					var offset = 0
-					
-					if event.button_index == BUTTON_WHEEL_UP:
-						offset = -lift_sensitivity
-					else:
-						offset = lift_sensitivity
-					
-					if ctrl:
-						var new_y_offset = _hover_y_offset + offset
-						if _hover_y_pos + new_y_offset >= HOVER_Y_MIN:
-							_hover_y_offset = new_y_offset
-					else:
-						var new_y_pos = _hover_y_pos + offset
-						_hover_y_pos = max(new_y_pos, HOVER_Y_MIN)
-						_hover_y_offset = max(_hover_y_offset, HOVER_Y_MIN - _hover_y_pos)
-					
-					_on_moving()
-			else:
-				# Zooming the camera in and away from the controller.
-				var offset = 0
-				
-				if event.button_index == BUTTON_WHEEL_UP:
-					offset = -zoom_sensitivity
-				else:
-					offset = zoom_sensitivity
-				
-				var new_zoom = _target_zoom + offset
-				_target_zoom = max(min(new_zoom, ZOOM_DISTANCE_MAX), ZOOM_DISTANCE_MIN)
-			
-			get_tree().set_input_as_handled()
+			var delta = 1.0 if event.button_index == BUTTON_WHEEL_DOWN else -1.0
+			var alt = event.control if OS.get_name() == "OSX" else event.alt
+			_on_scroll(delta, ctrl, alt)
 	
 	elif event is InputEventMouseMotion:
 		# Check if by moving the mouse, we either started hovering a piece, or
@@ -2128,6 +2122,11 @@ func _on_MouseGrab_gui_input(event):
 			_box_selection_rect.rect_size = size
 			
 			get_tree().set_input_as_handled()
+	
+	elif event is InputEventPanGesture:
+		var ctrl = event.command if OS.get_name() == "OSX" else event.control
+		var alt  = event.control if OS.get_name() == "OSX" else event.alt
+		_on_scroll(event.delta.y, ctrl, alt)
 
 func _on_PaintOKButton_pressed():
 	_paint_tool_menu.visible = false
