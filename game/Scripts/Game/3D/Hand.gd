@@ -78,7 +78,7 @@ func srv_add_card(card: Card) -> bool:
 		_srv_set_card_positions()
 		
 		card.connect("client_set_hover_position", self, "_on_client_set_card_position")
-		card.connect("piece_exiting_tree", self, "_on_card_exiting_tree")
+		card.connect("card_exiting_tree", self, "_on_card_exiting_tree")
 		
 		card.rpc("set_collisions_on", false)
 		
@@ -100,7 +100,7 @@ func srv_remove_card(card: Card) -> void:
 	_srv_set_card_positions()
 	
 	card.disconnect("client_set_hover_position", self, "_on_client_set_card_position")
-	card.disconnect("piece_exiting_tree", self, "_on_card_exiting_tree")
+	card.disconnect("card_exiting_tree", self, "_on_card_exiting_tree")
 	
 	# The card may be removed because the game is exiting!
 	if get_tree().has_network_peer():

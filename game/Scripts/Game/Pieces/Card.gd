@@ -24,6 +24,9 @@ extends StackablePiece
 
 class_name Card
 
+# Used by hands so they know to release the card.
+signal card_exiting_tree(card)
+
 var over_hand: int = 0
 
 # Check if the card will collide with other pieces.
@@ -41,3 +44,9 @@ remotesync func set_collisions_on(on: bool) -> void:
 	if on:
 		mask = 1
 	collision_mask = mask
+
+func _ready():
+	connect("tree_exiting", self, "_on_tree_exiting")
+
+func _on_tree_exiting():
+	emit_signal("card_exiting_tree", self)
