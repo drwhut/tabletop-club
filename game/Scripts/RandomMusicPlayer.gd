@@ -39,7 +39,7 @@ func next_track() -> void:
 	_track_name = track_entry["name"]
 	update_label_text()
 	
-	var track_stream = load(track_entry["audio_path"])
+	var track_stream = ResourceManager.load_res(track_entry["audio_path"])
 	
 	# Make sure the track doesn't loop, no matter what format it is.
 	# NOTE: Why is looping a property of the stream and not the player??

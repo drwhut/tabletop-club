@@ -126,7 +126,7 @@ func _set_sandwich_display() -> void:
 		front_key += "_1"
 	var front_material = SpatialMaterial.new()
 	front_material.albedo_color = front_entry["color"]
-	front_material.albedo_texture = load(front_entry[front_key])
+	front_material.albedo_texture = ResourceManager.load_res(front_entry[front_key])
 	sandwich.set_surface_material(0, front_material)
 	
 	var back_meta = _pieces[0]
@@ -138,5 +138,5 @@ func _set_sandwich_display() -> void:
 		back_key += "_1"
 	var back_material = SpatialMaterial.new()
 	back_material.albedo_color = back_entry["color"]
-	back_material.albedo_texture = load(back_entry[back_key])
+	back_material.albedo_texture = ResourceManager.load_res(back_entry[back_key])
 	sandwich.set_surface_material(1, back_material)

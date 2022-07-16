@@ -139,7 +139,7 @@ remotesync func set_track(track_entry: Dictionary, music: bool) -> void:
 		_track_entry = {}
 	
 	elif track_entry.has("audio_path"):
-		var audio_stream = load(track_entry["audio_path"])
+		var audio_stream = ResourceManager.load_res(track_entry["audio_path"])
 		if audio_stream is AudioStream:
 			_track_entry = track_entry
 			

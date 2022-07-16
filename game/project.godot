@@ -172,6 +172,7 @@ Global="*res://Scripts/Global.gd"
 Lobby="*res://Scripts/Lobby.gd"
 ObjectPreviewFactory="*res://Scripts/Game/UI/Previews/ObjectPreviewFactory.gd"
 PieceBuilder="*res://Scripts/PieceBuilder.gd"
+ResourceManager="*res://Scripts/ResourceManager.gd"
 
 [debug]
 

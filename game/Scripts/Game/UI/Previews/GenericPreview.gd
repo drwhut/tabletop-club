@@ -81,7 +81,7 @@ func _set_entry_gui(entry: Dictionary) -> void:
 		_texture.visible = true
 		
 		if imported_texture:
-			_texture.texture = load(entry["texture_path"])
+			_texture.texture = ResourceManager.load_res(entry["texture_path"])
 		else:
 			var image_file = File.new()
 			if image_file.open(entry["texture_path"], File.READ) == OK:

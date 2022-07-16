@@ -22,20 +22,13 @@
 
 extends Node
 
-# Loading resources from multiple threads at the same time is not supported -
-# so make sure we load resources one at a time with a mutex.
-var _res_mutex = Mutex.new()
-
-# Prevent two objects from being registered to be freed at the same time.
-var _free_mutex = Mutex.new()
-
 # Build a piece using an entry from the AssetDB.
 # Returns: The piece corresponding to the given entry.
 # piece_entry: The entry to create the piece with.
 # extra_nodes: If true, also include nodes that provide extra functionality,
 # e.g. sound effects.
 func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
-	var piece = _load_res(piece_entry["scene_path"]).instance()
+	var piece = ResourceManager.load_res(piece_entry["scene_path"]).instance()
 	
 	# If the scene is not a piece (e.g. when importing a scene from the assets
 	# folder), make it a piece so it can interact with other objects.
@@ -107,13 +100,13 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 	_adjust_centre_of_mass(piece, piece_entry)
 	
 	if piece_entry.has("texture_path") and piece_entry["texture_path"] is String:
-		var texture: Texture = _load_res(piece_entry["texture_path"])
+		var texture: Texture = ResourceManager.load_res(piece_entry["texture_path"])
 		piece.apply_texture(texture)
 		
 		# Check if the entry has textures for more than one surface.
 		var surface = 1
 		while piece_entry.has("texture_path_" + str(surface)):
-			texture = _load_res(piece_entry["texture_path_" + str(surface)])
+			texture = ResourceManager.load_res(piece_entry["texture_path_" + str(surface)])
 			piece.apply_texture(texture, surface)
 			surface += 1
 	
@@ -153,7 +146,7 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 # Returns: The table corresponding to the given entry.
 # table_entry: The entry to create the table with.
 func build_table(table_entry: Dictionary) -> RigidBody:
-	var scene: Spatial = _load_res(table_entry["scene_path"]).instance()
+	var scene: Spatial = ResourceManager.load_res(table_entry["scene_path"]).instance()
 	
 	var table = RigidBody.new()
 	_extract_and_shape_mesh_instances(table, scene, Transform.IDENTITY)
@@ -216,15 +209,6 @@ func get_piece_meshes(piece: Piece) -> Array:
 		out.append(piece_mesh)
 	
 	return out
-
-# Queue an object built with the piece builder to be freed in a thread-safe
-# manner. Use this if an object is being freed before the scene is exiting
-# the scene tree.
-# object: The object to be freed.
-func queue_free_object(object: Node) -> void:
-	_free_mutex.lock()
-	call_deferred("_free_object", object)
-	_free_mutex.unlock()
 
 # Scale a piece by changing the scale of its children collision shapes.
 # piece: The piece to scale.
@@ -340,23 +324,3 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 			
 			collision_shape.add_child(from)
 			add_to.add_child(collision_shape)
-
-# Free an object in a thread-safe manner.
-# object: The object to free.
-func _free_object(object: Node) -> void:
-	# Lock the resource mutex here, just in case a resource used by the object
-	# is being created as it is being freed here.
-	_res_mutex.lock()
-	object.free()
-	_res_mutex.unlock()
-
-# Load the resource at the given path. This function will block if another
-# thread is loading a resource at the same time.
-# Returns: The resource at the given path.
-# path: The path of the resource to load.
-func _load_res(path: String) -> Resource:
-	_res_mutex.lock()
-	var res: Resource = load(path)
-	_res_mutex.unlock()
-	
-	return res

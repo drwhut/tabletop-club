@@ -64,7 +64,7 @@ func _process(_delta):
 					# really sad, orphans should never be rejected). This is 
 					# most likely because the preview was cleared earlier while
 					# we were still building the piece for the preview.
-					PieceBuilder.queue_free_object(piece)
+					ResourceManager.queue_free_object(piece)
 	
 	_finished_pieces.clear()
 	_finished_pieces_mutex.unlock()

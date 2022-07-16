@@ -486,7 +486,7 @@ func _process(delta):
 				texture_changed = false
 		
 		if texture_changed:
-			_hand_preview_rect.texture = load(texture_path)
+			_hand_preview_rect.texture = ResourceManager.load_res(texture_path)
 		
 		var preview_height = _hand_preview_rect.rect_size.y
 		var card_scale = card_entry["scale"]

@@ -109,7 +109,7 @@ func set_piece_display(piece: Piece) -> bool:
 		return false
 	
 	if _piece_to_add != null:
-		PieceBuilder.queue_free_object(_piece_to_add)
+		ResourceManager.queue_free_object(_piece_to_add)
 	_piece_to_add = piece
 	
 	return true
@@ -203,7 +203,7 @@ func _remove_piece() -> void:
 	for child in _viewport.get_children():
 		if child is RigidBody:
 			_viewport.remove_child(child)
-			PieceBuilder.queue_free_object(child)
+			ResourceManager.queue_free_object(child)
 	
 	_piece = null
 

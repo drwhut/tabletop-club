@@ -127,7 +127,7 @@ func _ready():
 		if skybox_entry.has("texture_path"):
 			var texture_path = skybox_entry["texture_path"]
 			if not texture_path.empty():
-				var texture: Texture = load(texture_path)
+				var texture: Texture = ResourceManager.load_res(texture_path)
 				skybox.panorama = texture
 		
 		var env = _world_environment.environment
@@ -233,7 +233,7 @@ func _on_SpawnTimer_timeout():
 	for piece in _pieces.get_children():
 		if piece.translation.y < DESPAWN_PLANE:
 			_pieces.remove_child(piece)
-			PieceBuilder.queue_free_object(piece)
+			ResourceManager.queue_free_object(piece)
 	
 	_piece_mutex.unlock()
 
