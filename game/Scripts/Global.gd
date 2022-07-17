@@ -142,8 +142,6 @@ func _ready():
 		tabletop_importer = ClassDB.instance("TabletopImporter")
 	if type_exists("ErrorReporter"):
 		error_reporter = ClassDB.instance("ErrorReporter")
-	
-	connect("tree_exiting", self, "_on_tree_exiting")
 
 func _process(_delta):
 	if _loader == null:
@@ -272,17 +270,3 @@ func _set_scene(scene: Node, args: Dictionary) -> void:
 func _terminate_peer() -> void:
 	# TODO: Send a message to say we are leaving first.
 	get_tree().network_peer = null
-
-func _on_tree_exiting():
-	# Force the module classes to call their destructors.
-	# NOTE: This only works if Global is the only place that references these
-	# classes!
-	# TODO: Consider gracefully telling the classes to stop doing stuff using
-	# a function, rather than forcefully unreferencing them?
-	if tabletop_importer != null:
-		tabletop_importer.unreference()
-		tabletop_importer = null
-	
-	if error_reporter != null:
-		error_reporter.unreference()
-		error_reporter = null
