@@ -324,3 +324,5 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 			
 			collision_shape.add_child(from)
 			add_to.add_child(collision_shape)
+		else:
+			from.free()
