@@ -193,31 +193,6 @@ func _apply_config(config: ConfigFile) -> void:
 	
 	OS.vsync_enabled = config.get_value("video", "vsync")
 	
-	var shadow_filter = 1
-	var shadow_size = 4096
-	var shadow_detail_id = config.get_value("video", "shadow_detail")
-	
-	match shadow_detail_id:
-		0:
-			shadow_filter = 1 # PCF5.
-			shadow_size = 2048
-		1:
-			shadow_filter = 1 # PCF5.
-			shadow_size = 4096
-		2:
-			shadow_filter = 2 # PCF13.
-			shadow_size = 8192
-		3:
-			shadow_filter = 2 # PCF13.
-			shadow_size = 16384
-	
-	# The game needs to be restarted for these changes to take effect.
-	var override_file = ConfigFile.new()
-	override_file.set_value("rendering", "quality/directional_shadow/size", shadow_size)
-	override_file.set_value("rendering", "quality/shadow_atlas/size", shadow_size)
-	override_file.set_value("rendering", "quality/shadows/filter_mode", shadow_filter)
-	override_file.save("user://override.cfg")
-	
 	var msaa = Viewport.MSAA_DISABLED
 	var msaa_id = config.get_value("video", "msaa")
 	
@@ -358,6 +333,35 @@ func _load_file(config: ConfigFile) -> void:
 func _save_file(config: ConfigFile) -> void:
 	config.save(OPTIONS_FILE_PATH)
 
+# Save the override file, given a set of options. The override.cfg file takes
+# effect when the engine starts.
+# config: The options to save.
+func _save_override_file(config: ConfigFile) -> void:
+	var shadow_filter = 1
+	var shadow_size = 4096
+	var shadow_detail_id = config.get_value("video", "shadow_detail")
+	
+	match shadow_detail_id:
+		0:
+			shadow_filter = 1 # PCF5.
+			shadow_size = 2048
+		1:
+			shadow_filter = 1 # PCF5.
+			shadow_size = 4096
+		2:
+			shadow_filter = 2 # PCF13.
+			shadow_size = 8192
+		3:
+			shadow_filter = 2 # PCF13.
+			shadow_size = 16384
+	
+	# The game needs to be restarted for these changes to take effect.
+	var override_file = ConfigFile.new()
+	override_file.set_value("rendering", "quality/directional_shadow/size", shadow_size)
+	override_file.set_value("rendering", "quality/shadow_atlas/size", shadow_size)
+	override_file.set_value("rendering", "quality/shadows/filter_mode", shadow_filter)
+	override_file.save("user://override.cfg")
+
 # Set the current values with the given config file.
 # It is assumed that the options are all validated.
 # config: The values to set.
@@ -481,7 +485,9 @@ func _on_KeepVideoConfirm_close_button_pressed():
 
 func _on_KeepVideoConfirm_ok_pressed():
 	# Save all settings, including video.
-	_save_file(_create_config_from_current())
+	var config = _create_config_from_current()
+	_save_file(config)
+	_save_override_file(config)
 
 func _on_LanguageButton_item_selected(index: int):
 	var locale = LOCALES[index]["locale"]
