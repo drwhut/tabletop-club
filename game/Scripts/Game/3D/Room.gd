@@ -1466,7 +1466,12 @@ remotesync func set_skybox(skybox_entry_path: String) -> void:
 		if current_entry.hash() == skybox_entry.hash():
 			return
 
-	var skybox: Sky = ProceduralSky.new()
+	# Free the current skybox before we create a new one, just so we don't use
+	# as much memory as we need to.
+	var radiance = _world_environment.environment.background_sky.radiance_size
+	_world_environment.environment.background_sky = null
+
+	var skybox: Sky = null
 	if not skybox_entry.empty():
 		if skybox_entry.has("texture_path"):
 			var texture_path = skybox_entry["texture_path"]
@@ -1474,8 +1479,10 @@ remotesync func set_skybox(skybox_entry_path: String) -> void:
 				var texture: Texture = ResourceManager.load_res(texture_path)
 				skybox = PanoramaSky.new()
 				skybox.panorama = texture
+	
+	if skybox == null:
+		skybox = ProceduralSky.new()
 
-	var radiance = _world_environment.environment.background_sky.radiance_size
 	skybox.radiance_size = radiance
 	_world_environment.environment.background_sky = skybox
 
