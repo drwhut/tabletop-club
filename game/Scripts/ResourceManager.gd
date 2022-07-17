@@ -48,7 +48,6 @@ func load_res(path: String) -> Resource:
 	# hostage in memory :)
 	if OS.get_name() == "OSX":
 		if res is StreamTexture:
-			print("_load_res: Saved %s" % res.resource_path)
 			_stex_refs[res.resource_path] = res
 	
 	_res_mutex.unlock()

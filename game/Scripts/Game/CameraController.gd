@@ -1908,7 +1908,10 @@ func _on_MouseGrab_gui_input(event):
 				if event.is_pressed():
 					if _piece_mouse_is_over:
 						if ctrl:
-							append_selected_pieces([_piece_mouse_is_over])
+							if _piece_mouse_is_over in _selected_pieces:
+								erase_selected_pieces(_piece_mouse_is_over)
+							else:
+								append_selected_pieces([_piece_mouse_is_over])
 						else:
 							if not _selected_pieces.has(_piece_mouse_is_over):
 								set_selected_pieces([_piece_mouse_is_over])
