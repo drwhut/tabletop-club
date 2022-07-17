@@ -1241,16 +1241,27 @@ margin_right = 162.0
 margin_bottom = 20.0
 text = "Cancel"
 
+[node name="KeepVideoConfirm" type="ConfirmationDialog" parent="."]
+margin_right = 320.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 320, 130 )
+popup_exclusive = true
+window_title = "Keep video settings?"
+dialog_text = "The new video settings have been applied. Do you wish to keep these settings?"
+dialog_autowrap = true
+
 [node name="ReimportConfirm" type="ConfirmationDialog" parent="."]
-margin_right = 297.0
-margin_bottom = 109.0
+margin_right = 350.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 350, 130 )
 window_title = "Reimporting Assets"
 dialog_text = "Reimporting your assets will delete your import cache (not the original files) and restart the game. Are you sure you want to continue?"
 dialog_autowrap = true
 
 [node name="ResetBindingsConfirm" type="ConfirmationDialog" parent="."]
-margin_right = 297.0
-margin_bottom = 109.0
+margin_right = 300.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 300, 120 )
 window_title = "Reset Bindings"
 dialog_text = "Are you sure you want to reset your key bindings to their default value?"
 dialog_autowrap = true

@@ -37,6 +37,7 @@ var LOCALES = [
 const OPTIONS_FILE_PATH = "user://options.cfg"
 
 onready var _binding_background = $BindingBackground
+onready var _keep_video_confirm = $KeepVideoConfirm
 onready var _key_bindings_parent = $"MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"
 onready var _language_button = $MarginContainer/VBoxContainer/TabContainer/General/GridContainer/LanguageButton
 onready var _open_assets_button = $MarginContainer/VBoxContainer/TabContainer/General/GridContainer/OpenAssetsButton
@@ -93,6 +94,12 @@ func _ready():
 		if node is BindButton:
 			node.connect("rebinding_action", self, "_on_rebinding_action")
 	
+	# Connect the "pressed" signal for these buttons, so we can perform actions
+	# before the dialog is hidden.
+	_keep_video_confirm.get_ok().connect("pressed", self, "_on_KeepVideoConfirm_ok_pressed")
+	_keep_video_confirm.get_cancel().connect("pressed", self, "_on_KeepVideoConfirm_cancel_pressed")
+	_keep_video_confirm.get_close_button().connect("pressed", self, "_on_KeepVideoConfirm_close_button_pressed")
+	
 	if OS.get_name() == "OSX":
 		# Opening folders is not supported on OSX.
 		_open_assets_button.disabled = true
@@ -105,8 +112,30 @@ func _ready():
 # Apply the changes made and save them in the options file.
 func _apply_changes() -> void:
 	var config = _create_config_from_current()
-	_save_file(config)
 	_apply_config(config)
+	
+	# If the video settings have changed, then don't save them to the file just
+	# yet - we'll wait and ask the player if they want to keep them after they
+	# have been applied.
+	var old_config = _create_config_from_current()
+	_load_file(old_config)
+	
+	var video_settings_changed = false
+	for key in config.get_section_keys("video"):
+		var new_value = config.get_value("video", key)
+		if old_config.has_section_key("video", key):
+			var old_value = old_config.get_value("video", key)
+			
+			if new_value != old_value:
+				# Save the old value to the file, in case we need to revert
+				# back to it.
+				config.set_value("video", key, old_value)
+				video_settings_changed = true
+	
+	_save_file(config)
+	
+	if video_settings_changed:
+		_keep_video_confirm.popup_centered()
 
 # Apply the given options. Not all settings can be applied here, e.g. the
 # controls settings will need to be applied by the camera controller.
@@ -439,6 +468,20 @@ func _on_CancelBindButton_pressed():
 
 func _on_EffectsVolumeSlider_value_changed(_value: float):
 	_apply_audio_config(_create_config_from_current())
+
+func _on_KeepVideoConfirm_cancel_pressed():
+	# Revert back to the original video settings.
+	var config = _create_config_from_current()
+	_load_file(config)
+	_set_current_with_config(config)
+	_apply_config(config)
+
+func _on_KeepVideoConfirm_close_button_pressed():
+	_on_KeepVideoConfirm_cancel_pressed()
+
+func _on_KeepVideoConfirm_ok_pressed():
+	# Save all settings, including video.
+	_save_file(_create_config_from_current())
 
 func _on_LanguageButton_item_selected(index: int):
 	var locale = LOCALES[index]["locale"]
