@@ -54,6 +54,7 @@ export(int) var autosave_count: int = 10
 
 var _rtc = WebRTCMultiplayer.new()
 var _established_connection_with = []
+var _is_room_sealed = false
 
 var _player_name: String
 var _player_color: Color
@@ -1018,6 +1019,9 @@ puppet func verify_game_version(server_version: String) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
+	if _is_room_sealed:
+		return
+	
 	# Should always be the case, but if not, well... good luck, I guess :P
 	if ProjectSettings.has_setting("application/config/version"):
 		var client_version = ProjectSettings.get_setting("application/config/version")
@@ -1702,6 +1706,11 @@ func _on_connected(id: int):
 func _on_disconnected():
 	stop()
 	
+	# If the room has been sealed (the host left gracefully), then the main menu
+	# should already be loading. See: _on_room_sealed().
+	if _is_room_sealed:
+		return
+	
 	print("Disconnected from the server! Code: %d Reason: %s" % [_master_server.code, _master_server.reason])
 	if _master_server.code == 1000:
 		Global.start_main_menu()
@@ -1798,6 +1807,7 @@ func _on_room_joined(room_code: String):
 	_ui.set_room_code(room_code)
 
 func _on_room_sealed():
+	_is_room_sealed = true
 	Global.start_main_menu_with_error(tr("Room has been closed by the host."))
 
 func _on_DownloadAssetsConfirmDialog_confirmed():
