@@ -83,7 +83,8 @@ func provide_objects(objects: Array, after: int) -> void:
 	_preview_container.visible = not objects.empty()
 	
 	# Make sure none of the previews are selected.
-	get_tree().call_group("preview_selected", "set_selected", false)
+	if is_inside_tree():
+		get_tree().call_group("preview_selected", "set_selected", false)
 	
 	for i in range(get_preview_count()):
 		var preview: ObjectPreview = _preview_container.get_child(i)
