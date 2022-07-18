@@ -36,6 +36,14 @@ __meta__ = {
 "_editor_description_": "Instead of processing mouse events in _unhandled_input(), the camera controller catches the mouse events in this control which spans the entire viewport."
 }
 
+[node name="Cursors" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_editor_description_": "This control will be the parent of all of the cursors that are displayed in multiplayer games (showing the positions and rotations of every other player's cursor on the table)."
+}
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 __meta__ = {
 "_editor_description_": "This nodes makes sure that all of it's children are rendered above the GameUI."
@@ -666,14 +674,6 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-
-[node name="Cursors" type="Control" parent="CanvasLayer/CameraUI"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_editor_description_": "This control will be the parent of all of the cursors that are displayed in multiplayer games (showing the positions and rotations of every other player's cursor on the table)."
-}
 
 [node name="ControlHintLabel" type="RichTextLabel" parent="CanvasLayer/CameraUI"]
 anchor_left = 1.0
