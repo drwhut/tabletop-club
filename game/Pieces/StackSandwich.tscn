@@ -23,7 +23,6 @@ The shape of the stack is determined by the first piece that enters the stack, a
 
 A sandwich stack only displays the top face of the top piece and the bottom face of the bottom piece."
 }
-effect_player_path = NodePath("EffectPlayer")
 collision_shape_path = NodePath("CollisionShape")
 outline_mesh_path = NodePath("CollisionShape/OutlineMeshInstance")
 card_add_sounds = ExtResource( 3 )
@@ -46,7 +45,3 @@ __meta__ = {
 
 [node name="OutlineMeshInstance" type="MeshInstance" parent="CollisionShape"]
 skeleton = NodePath("")
-
-[node name="EffectPlayer" type="AudioStreamPlayer3D" parent="."]
-unit_size = 30.0
-bus = "Effects"

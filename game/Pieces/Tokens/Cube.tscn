@@ -19,7 +19,6 @@ __meta__ = {
 
 The shape is based on the unit cube, i.e. the length, width and height of the cube is 1."
 }
-effect_player_path = NodePath("EffectPlayer")
 mesh_instance_path = NodePath("CollisionShape/MeshInstance")
 table_collide_fast_sounds = ExtResource( 3 )
 table_collide_slow_sounds = ExtResource( 2 )
@@ -30,7 +29,3 @@ shape = SubResource( 3 )
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
 mesh = SubResource( 4 )
 material/0 = null
-
-[node name="EffectPlayer" type="AudioStreamPlayer3D" parent="."]
-unit_size = 20.0
-bus = "Effects"

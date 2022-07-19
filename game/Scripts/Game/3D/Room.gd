@@ -259,6 +259,15 @@ puppet func add_stack_empty(name: String, transform: Transform, sandwich: bool) 
 
 	if get_tree().is_network_server():
 		stack.srv_retrieve_from_hell = _srv_retrieve_pieces_from_hell
+	
+	if stack.effect_player_path.empty():
+		var effect_player = AudioStreamPlayer3D.new()
+		effect_player.name = "EffectPlayer"
+		effect_player.bus = "Effects"
+		effect_player.unit_size = 20
+		
+		stack.add_child(effect_player)
+		stack.effect_player_path = NodePath("EffectPlayer")
 
 	_pieces.add_child(stack)
 
