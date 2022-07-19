@@ -193,6 +193,7 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 			
 			var client_ptr = 0
 			var last_name = ""
+			var registered_names = []
 			for server_ptr in range(server_type_arr.size()):
 				var server_meta = server_type_arr[server_ptr]
 				if not server_meta is Dictionary:
@@ -231,6 +232,12 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 						push_error("Name '%s' in server DB schema came before the name '%s'!" % [server_meta["name"], last_name])
 						return
 				last_name = server_meta["name"]
+				
+				# Duplicate names are not allowed in the AssetDB!
+				if server_meta["name"] in registered_names:
+					push_error("Name '%s' in server DB schema has already been registered!" % server_meta["name"])
+					return
+				registered_names.append(server_meta["name"])
 				
 				var found_match = false
 				while (not found_match) and client_ptr < client_type_arr.size():

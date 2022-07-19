@@ -320,6 +320,12 @@ func temp_add_entry(pack: String, type: String, entry: Dictionary) -> void:
 	# still in order.
 	var type_arr: Array = _temp_db[pack][type]
 	var insert_index = type_arr.bsearch_custom(entry, self, "_order_assets")
+	
+	if insert_index < type_arr.size():
+		if type_arr[insert_index]["name"] == entry["name"]:
+			push_error("Cannot add entry %s/%s/%s, already exists!" % [pack, type, entry["name"]])
+			return
+	
 	type_arr.insert(insert_index, entry)
 
 # Temporarily remove an entry from the AssetDB.
@@ -404,7 +410,7 @@ func _import_all(_userdata) -> void:
 				
 				files_imported += 1
 			
-			_add_inheriting_assets(pack_path, type)
+			_add_inheriting_assets(pack_path, pack, type)
 			
 			var type_meta = ASSET_PACK_SUBFOLDERS[type]
 			var asset_scene = type_meta["scene"]
@@ -447,17 +453,28 @@ func _add_entry_to_db(pack: String, type: String, entry: Dictionary) -> void:
 	if not _db[pack].has(type):
 		_db[pack][type] = []
 	
-	var index = _db[pack][type].bsearch_custom(entry, self, "_order_assets")
-	_db[pack][type].insert(index, entry)
-	_db_mutex.unlock()
+	var type_arr: Array = _db[pack][type]
+	var index = type_arr.bsearch_custom(entry, self, "_order_assets")
 	
-	print("Added: %s" % entry_path)
+	var is_duplicate = false
+	if index < type_arr.size():
+		if type_arr[index]["name"] == entry["name"]:
+			is_duplicate = true
+	
+	if not is_duplicate:
+		type_arr.insert(index, entry)
+		print("Added: %s" % entry_path)
+	else:
+		push_error("Cannot add %s/%s/%s to AssetDB, already exists!" % [pack, type, entry["name"]])
+	
+	_db_mutex.unlock()
 
 # Add assets to the database that inherit properties frome existing assets.
 # pack_path: The path to the asset pack.
+# pack_name: The name of the asset pack in the AssetDB. NOTE: This may differ
+# from the directory name!
 # type: The type of the assets to add.
-func _add_inheriting_assets(pack_path: String, type: String) -> void:
-	var pack = pack_path.get_file()
+func _add_inheriting_assets(pack_path: String, pack_name: String, type: String) -> void:
 	var type_path = pack_path + "/" + type
 	var config_file_path = type_path + "/config.cfg"
 	var config_file = ConfigFile.new()
@@ -471,11 +488,11 @@ func _add_inheriting_assets(pack_path: String, type: String) -> void:
 			if not file.file_exists(type_path + "/" + section):
 				var parent = config_file.get_value(section, "parent", "")
 				if not parent.empty():
-					var inherit = search_type(pack, type, parent)
+					var inherit = search_type(pack_name, type, parent)
 					if not inherit.empty():
 						var child = inherit.duplicate()
 						child["name"] = section
-						child["entry_path"] = "%s/%s/%s" % [pack, type, section]
+						child["entry_path"] = "%s/%s/%s" % [pack_name, type, section]
 						for key in config_file.get_section_keys(section):
 							if child.has(key):
 								# TODO: Check the value is the same type.
@@ -508,7 +525,7 @@ func _add_inheriting_assets(pack_path: String, type: String) -> void:
 	
 	if not children.empty():
 		for child in children:
-			_add_entry_to_db(pack, type, child)
+			_add_entry_to_db(pack_name, type, child)
 
 # Calculate the bounding box of a 3D scene.
 # Returns: A 2-length array containing the min and max corners of the box.
