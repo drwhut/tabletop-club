@@ -55,6 +55,7 @@ export(int) var autosave_count: int = 10
 var _rtc = WebRTCMultiplayer.new()
 var _established_connection_with = []
 var _is_room_sealed = false
+var _master_connect_wait_frames = 0
 
 var _player_name: String
 var _player_color: Color
@@ -1048,6 +1049,12 @@ func _ready():
 	Lobby.clear_players()
 
 func _process(delta):
+	if _master_connect_wait_frames > 0:
+		_master_connect_wait_frames -= 1
+		
+		if _master_connect_wait_frames == 0:
+			_master_server.connect_to_server()
+	
 	var current_peers = _rtc.get_peers()
 	for id in current_peers:
 		var peer: Dictionary = current_peers[id]
@@ -1256,7 +1263,12 @@ func _connect_to_master_server(room_code: String = "") -> void:
 	print("Connecting to master server at '%s' with room code '%s'..." %
 		[_master_server.URL, room_code])
 	_master_server.room_code = room_code
-	_master_server.connect_to_server()
+	
+	# Wait a couple of frames for the scene to be fully ready. The master server
+	# has a timeout between the beginning of the connection, and when we provide
+	# the room code - so we want to know when the connection is established as
+	# soon as possible.
+	_master_connect_wait_frames = 2
 
 # Create a schema of the AssetDB, which contains the directory structure, and
 # hash values of the piece entries.
