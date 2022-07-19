@@ -1021,11 +1021,35 @@ func _import_file(from: String, to: String) -> int:
 	if Global.tabletop_importer == null:
 		return ERR_UNAVAILABLE
 	
-	var copy_err = Global.tabletop_importer.copy_file(from, to)
+	# Two unique files with the same name could end up in the same location
+	# (if the pack name is the same), so keep track of where the imported file
+	# came from - if it doesn't match, forcefully re-import the new file.
+	var force_copy = true
+	var src_file = File.new()
+	if src_file.file_exists(to + ".src"):
+		var err = src_file.open(to + ".src", File.READ)
+		if err == OK:
+			var src = src_file.get_line()
+			src_file.close()
+			
+			if src == from:
+				force_copy = false
+		else:
+			push_error("Failed to open %s (error %d)" % [to + ".src", err])
+	
+	var copy_err = Global.tabletop_importer.copy_file(from, to, force_copy)
 	
 	if copy_err:
 		return copy_err
 	else:
+		if force_copy:
+			var err = src_file.open(to + ".src", File.WRITE)
+			if err == OK:
+				src_file.store_line(from)
+				src_file.close()
+			else:
+				push_error("Failed to open %s (error %d)" % [to + ".src", err])
+		
 		# With Wavefront files, there's an annoying thing where it will only
 		# look for the material file relative to the current working directory.
 		# So, after we've copied it (the hash file should have been generated),
