@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-List.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/Game/UI/Previews/ObjectPreview.gd" type="Script" id=2]
@@ -10,6 +10,23 @@ ambient_light_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="World" id=2]
 environment = SubResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="Theme" id=8]
+HScrollBar/styles/grabber = SubResource( 3 )
+HScrollBar/styles/grabber_highlight = SubResource( 4 )
+HScrollBar/styles/grabber_pressed = SubResource( 5 )
+HScrollBar/styles/scroll = SubResource( 6 )
+HScrollBar/styles/scroll_focus = SubResource( 7 )
 
 [node name="ObjectPreview" type="VBoxContainer"]
 margin_right = 40.0
@@ -45,10 +62,17 @@ gui_disable_input = true
 [node name="Camera" type="Camera" parent="CenterContainer/ViewportContainer/Viewport"]
 far = 500.0
 
-[node name="Label" type="Label" parent="."]
+[node name="LabelContainer" type="ScrollContainer" parent="."]
 margin_top = 104.0
 margin_right = 100.0
 margin_bottom = 119.0
+mouse_filter = 2
+theme = SubResource( 8 )
+scroll_vertical_enabled = false
+
+[node name="Label" type="Label" parent="LabelContainer"]
+margin_right = 100.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 align = 1
-autowrap = true

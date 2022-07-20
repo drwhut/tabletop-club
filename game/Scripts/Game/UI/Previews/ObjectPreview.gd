@@ -25,14 +25,20 @@ extends Preview
 class_name ObjectPreview
 
 onready var _camera = $CenterContainer/ViewportContainer/Viewport/Camera
-onready var _label = $Label
+onready var _label = $LabelContainer/Label
+onready var _label_container = $LabelContainer
 onready var _viewport = $CenterContainer/ViewportContainer/Viewport
 
+const LABEL_WAIT_TIME = 3.0
+const LABEL_MOVE_DELAY = 0.0625
 const REVOLUTIONS_PER_SECOND = 0.25
 const X_ROTATION = PI / 4
 
 var _piece: Piece = null
 
+var _label_direction_moving = 1
+var _label_time_since_move = 0.0
+var _label_time_waiting = 0.0
 var _piece_to_add: Piece = null
 var _reject_factory_output = false
 
@@ -95,6 +101,11 @@ func set_piece_details(piece_entry: Dictionary) -> void:
 		_label.text = piece_entry[name_locale]
 	else:
 		_label.text = piece_entry["name"]
+	
+	_label_container.scroll_horizontal_enabled = true
+	_label_direction_moving = 1
+	_label_time_since_move = 0.0
+	_label_time_waiting = LABEL_WAIT_TIME
 	
 	# If we've just set the details of a piece, then we're bound to have our
 	# display set as well, so welcome any pieces built by the
@@ -173,6 +184,25 @@ func _process(delta):
 	if _piece:
 		var delta_theta = 2 * PI * REVOLUTIONS_PER_SECOND * delta
 		_piece.rotate_object_local(Vector3.UP, delta_theta)
+	
+	if not _label.text.empty() and _label_container.scroll_horizontal_enabled:
+		if _label_time_waiting > 0.0:
+			_label_time_waiting = max(_label_time_waiting - delta, 0.0)
+		else:
+			_label_time_since_move += delta
+			while _label_time_since_move > LABEL_MOVE_DELAY:
+				_label_time_since_move -= LABEL_MOVE_DELAY
+				
+				var old_scroll = _label_container.scroll_horizontal
+				_label_container.scroll_horizontal += _label_direction_moving
+				if _label_container.scroll_horizontal == old_scroll:
+					# The scroll has reached an endpoint.
+					if _label_direction_moving == 1 and old_scroll == 0:
+						_label_container.scroll_horizontal_enabled = false
+					_label_direction_moving = -_label_direction_moving
+					_label_time_since_move = 0.0
+					_label_time_waiting = LABEL_WAIT_TIME
+					break
 
 # Called when the preview is cleared.
 # details: Should the details (like the name) be cleared too?
