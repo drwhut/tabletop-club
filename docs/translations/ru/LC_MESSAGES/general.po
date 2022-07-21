@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-21 13:07+0100\n"
-"PO-Revision-Date: 2022-07-04 16:58+0000\n"
+"PO-Revision-Date: 2022-07-22 03:09+0000\n"
 "Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/ru/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -407,6 +407,9 @@ msgid ""
 "To help with this, the :ref:`config-cfg` file allows you to put the author, "
 "license, modifier, and URL with the asset, which is then shown in-game."
 msgstr ""
+"Чтобы помочь в этом, файл :ref:`config-cfg` позволяет вам поместить автора, "
+"лицензию, модификатор и URL-адрес с ассетом, который затем отображается в "
+"игре."
 
 #: ../../general/about.rst:194
 msgid ""
@@ -834,10 +837,8 @@ msgid "Windows: ``%APPDATA%/Tabletop Club/logs/``"
 msgstr "Windows: ``%APPDATA%/Tabletop Club/logs/``"
 
 #: ../../general/contributing/ways_to_contribute.rst:29
-#, fuzzy
-#| msgid "macOS: ``~/Library/Application/Support/Tabletop Club/logs``"
 msgid "macOS: ``~/Library/Application Support/Tabletop Club/logs``"
-msgstr "macOS: ``~/Library/Application/Support/Tabletop Club/logs``"
+msgstr "macOS: ``~/Library/Application Support/Tabletop Club/logs``"
 
 #: ../../general/contributing/ways_to_contribute.rst:30
 msgid "Linux: ``~/.local/share/Tabletop Club/logs/``"
@@ -932,25 +933,24 @@ msgstr ""
 "страницу компонента вниз и нажав :guilabel:`Начать новый перевод`."
 
 #: ../../general/contributing/ways_to_contribute.rst:80
-#, fuzzy
-#| msgid ""
-#| "Manual pull requests for translations will be closed, as Weblate keeps "
-#| "it's own fork of the project, and we want to avoid having merge requests "
-#| "occur."
 msgid ""
 "Manual pull requests for translations will be closed, as Weblate keeps it's "
 "own fork of the project, and we want to avoid having merge conflicts occur."
 msgstr ""
 "Ручные запросы на слияние переводов будут закрыты, так как Weblate сохраняет "
-"свой собственный форк проекта, и мы хотим избежать возникновения проблем с "
-"запросами на слияние."
+"свой собственный форк проекта, и мы хотим избежать возникновения конфликтов "
+"слияния."
 
 #: ../../general/contributing/ways_to_contribute.rst:83
+#, fuzzy
 msgid ""
 "The only exception to this is the ``README.md`` file, which is not included "
 "in Weblate - feel free to provide a translation for this file with the name "
 "``README.<locale>.md``, and send in a pull request!"
 msgstr ""
+"Единственным исключением является файл ``README.md``, который не включен в "
+"Weblate - не стесняйтесь предоставить перевод для этого файла с именем "
+"``README.<locale>.md``, и отправить его в запросе на слияние!"
 
 #: ../../general/contributing/ways_to_contribute.rst:None
 msgid "Translation status"
