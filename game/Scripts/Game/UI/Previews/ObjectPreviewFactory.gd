@@ -116,5 +116,8 @@ func _build(_userdata) -> void:
 	_build_thread.call_deferred("wait_to_finish")
 
 func _on_tree_exiting():
-	if _build_thread.is_active():
-		_build_thread.wait_to_finish()
+	flush_queue()
+	
+	for piece in _finished_pieces.values():
+		if piece is Piece:
+			ResourceManager.free_object(piece)

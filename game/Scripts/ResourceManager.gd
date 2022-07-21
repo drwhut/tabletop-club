@@ -26,6 +26,8 @@ extends Node
 # so make sure we load resources one at a time with a mutex.
 var _res_mutex = Mutex.new()
 
+var _free_queue = []
+
 # Prevent two objects from being registered to be freed at the same time.
 var _free_mutex = Mutex.new()
 
@@ -67,5 +69,18 @@ func free_object(object: Object) -> void:
 # object: The object to be freed.
 func queue_free_object(object: Object) -> void:
 	_free_mutex.lock()
-	call_deferred("free_object", object)
+	_free_queue.push_back(object)
+	call_deferred("_clear_free_queue")
+	_free_mutex.unlock()
+
+func _notification(what):
+	match what:
+		NOTIFICATION_PREDELETE:
+			_clear_free_queue()
+
+# Free all of the objects in the free queue.
+func _clear_free_queue() -> void:
+	_free_mutex.lock()
+	while not _free_queue.empty():
+		free_object(_free_queue.pop_back())
 	_free_mutex.unlock()
