@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-07-21 13:06+0100\n"
-"PO-Revision-Date: 2022-07-06 11:15+0000\n"
+"PO-Revision-Date: 2022-07-22 03:09+0000\n"
 "Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "game/ru/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:31
@@ -27,14 +27,12 @@ msgid "Importing assets..."
 msgstr "Импорт ассетов…"
 
 #: ../Scenes/ImportAssets.tscn:50
-#, fuzzy
-#| msgid "Open Assets Folder"
 msgid "Missing Asset Folder"
-msgstr "Открыть папку ассетов"
+msgstr "Отсутствует папка ассетов"
 
 #: ../Scenes/ImportAssets.tscn:56
 msgid "Missing Module"
-msgstr ""
+msgstr "Отсутствует модуль"
 
 #: ../Scenes/Loading.tscn:34
 msgid "Loading..."
@@ -88,10 +86,8 @@ msgid "Use a room code to join your friend's lobby."
 msgstr "Используйте код комнаты, чтобы присоединиться к лобби вашего друга."
 
 #: ../Scenes/MainMenu.tscn:157
-#, fuzzy
-#| msgid "Hide Room Code"
 msgid "Enter Room Code"
-msgstr "Скрыть код комнаты"
+msgstr "Введите код комнаты"
 
 #: ../Scenes/MainMenu.tscn:177
 msgid "Room Code:"
@@ -103,7 +99,7 @@ msgstr "ABCD"
 
 #: ../Scenes/MainMenu.tscn:283
 msgid "Error"
-msgstr ""
+msgstr "Ошибка"
 
 #: ../Scenes/OptionsMenu.tscn:47
 msgid "Audio"
@@ -633,17 +629,15 @@ msgstr "Отмена"
 
 #: ../Scenes/OptionsMenu.tscn:1249
 msgid "Keep video settings?"
-msgstr ""
+msgstr "Сохранить настройки видео?"
 
 #: ../Scenes/OptionsMenu.tscn:1257
-#, fuzzy
-#| msgid "Reimport Assets"
 msgid "Reimporting Assets"
 msgstr "Реимпорт ассетов"
 
 #: ../Scenes/OptionsMenu.tscn:1275
 msgid "Warning!"
-msgstr ""
+msgstr "Предупреждение!"
 
 #: ../Scenes/RandomMusicPlayer.tscn:23
 msgid "Now Playing:"
@@ -702,13 +696,11 @@ msgstr "Масштаб:"
 
 #: ../Scenes/Game/CameraController.tscn:433
 msgid "Strength:"
-msgstr ""
+msgstr "Сила:"
 
 #: ../Scenes/Game/CameraController.tscn:444
-#, fuzzy
-#| msgid "10%"
 msgid "1.0"
-msgstr "10%"
+msgstr "1.0"
 
 #: ../Scenes/Game/CameraController.tscn:521
 msgid "System:"
@@ -736,10 +728,8 @@ msgid "Eraser Size:"
 msgstr "Размер ластика:"
 
 #: ../Scenes/Game/CameraController.tscn:659
-#, fuzzy
-#| msgid "Select track"
 msgid "Select a track..."
-msgstr "Выбрать трек"
+msgstr "Выберите трек…"
 
 #: ../Scenes/Game/CameraController.tscn:664
 #, python-format
@@ -748,7 +738,7 @@ msgstr "Загружено %d треков."
 
 #: ../Scenes/Game/Game.tscn:35
 msgid "Missing Assets"
-msgstr ""
+msgstr "Отсутствуют ассеты"
 
 #: ../Scenes/Game/Game.tscn:44
 #, python-format
@@ -758,6 +748,9 @@ msgid ""
 "of %d missing assets, and %d assets differ between your client and the "
 "host's client:"
 msgstr ""
+"Хост импортировал ассеты, которые отсутствуют в вашем клиенте. Это означает, "
+"что вы не сможете увидеть эти ассеты, находясь в этой игре. Всего недостаёт "
+"%d ассетов, и %d ассетов различаются между вашим клиентом и клиентом хоста:"
 
 #: ../Scenes/Game/Game.tscn:58
 #, python-format
@@ -765,46 +758,44 @@ msgid ""
 "Your client is also missing %d files, and %d files differ from that of the "
 "host's, which in total is %s of data:"
 msgstr ""
+"Вашему клиенту также не хватает %d файлов, а %d файлов отличаются от файлов "
+"хостера, что в сумме составляет %s данных:"
 
 #: ../Scenes/Game/Game.tscn:86
 msgid "Yes, download missing assets."
-msgstr ""
+msgstr "Да, загрузите недостающие ассеты."
 
 #: ../Scenes/Game/Game.tscn:93
 msgid "No, continue without them."
-msgstr ""
+msgstr "Нет, продолжайте без них."
 
 #: ../Scenes/Game/Game.tscn:99
 msgid "Download Assets?"
-msgstr ""
+msgstr "Загрузить ассеты?"
 
 #: ../Scenes/Game/Game.tscn:108
-#, fuzzy
-#| msgid "Loading..."
 msgid "Downloading..."
 msgstr "Загрузка…"
 
 #: ../Scenes/Game/Game.tscn:123
 msgid "Waiting for download..."
-msgstr ""
+msgstr "Ожидание загрузки…"
 
 #: ../Scenes/Game/Game.tscn:136
 msgid "Waiting to verify integrity..."
-msgstr ""
+msgstr "Ожидание проверки целостности…"
 
 #: ../Scenes/Game/Game.tscn:149
-#, fuzzy
-#| msgid "Importing assets..."
 msgid "Waiting to import assets..."
-msgstr "Импорт ассетов…"
+msgstr "Ожидание импорта ассетов…"
 
 #: ../Scenes/Game/Game.tscn:168 ../Scenes/Game/Game.tscn:186
 msgid "Error!"
-msgstr ""
+msgstr "Ошибка!"
 
 #: ../Scenes/Game/Game.tscn:176
 msgid "Download Folder Locked"
-msgstr ""
+msgstr "Папка загрузки заблокирована"
 
 #: ../Scenes/Game/UI/ChatBox.tscn:51
 msgid "Type a message here..."
@@ -928,10 +919,8 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:89
-#, fuzzy
-#| msgid "Delete file?"
 msgid "Delete page?"
-msgstr "Удалить файл?"
+msgstr "Удалить страницу?"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
@@ -970,10 +959,8 @@ msgid "Lamp Color"
 msgstr "Цвет лампы"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:157
-#, fuzzy
-#| msgid "Select track"
 msgid "Select a skybox..."
-msgstr "Выбрать трек"
+msgstr "Выберите скайбокс…"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:161
 #, python-format
@@ -981,10 +968,8 @@ msgid "Loaded %d skyboxes."
 msgstr "Загружено %d скайбоксов."
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:164
-#, fuzzy
-#| msgid "Select track"
 msgid "Select a table..."
-msgstr "Выбрать трек"
+msgstr "Выберите стол…"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:168
 #, python-format
@@ -992,7 +977,6 @@ msgid "Loaded %d tables."
 msgstr "Загружено %d столов."
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:24
-#, fuzzy
 msgid "Pack:"
 msgstr "Пакет:"
 
@@ -1049,30 +1033,20 @@ msgid "Unknown event type"
 msgstr "Неизвестный тип события"
 
 #: ../Scripts/ImportAssets.gd:88
-#, fuzzy
-#| msgid ""
-#| "Tabletop Club couldn't find an assets folder in any of the following "
-#| "places:"
 msgid "Tabletop Club could not find any asset packs in the following folders:"
-msgstr ""
-"Tabletop Club не смог найти папку ассетов ни в одном из следующих мест:"
+msgstr "Tabletop Club не смог найти никаких пакетов ассетов в следующих папках:"
 
 #: ../Scripts/ImportAssets.gd:90
-#, fuzzy
-#| msgid ""
-#| "Tabletop Club couldn't find an assets folder in any of the following "
-#| "places:"
 msgid ""
 "Tabletop Club could not find an assets folder in any of the following places:"
-msgstr ""
-"Tabletop Club не смог найти папку ассетов ни в одном из следующих мест:"
+msgstr "Tabletop Club не смог найти папку ассетов ни в одном из следующих мест:"
 
 #: ../Scripts/ImportAssets.gd:96
-#, fuzzy
-#| msgid "Please create one of these folders and restart the game."
 msgid ""
 "Please place an asset pack into one of these folders, and restart the game."
-msgstr "Пожалуйста, создайте одну из этих папок и перезапустите игру."
+msgstr ""
+"Пожалуйста, поместите пакет ассетов в одну из этих папок и перезапустите "
+"игру."
 
 #: ../Scripts/ImportAssets.gd:98
 msgid "Please create one of these folders and restart the game."
@@ -1136,7 +1110,7 @@ msgstr "Немецкий"
 
 #: ../Scripts/MainMenu.gd:73
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
 
 #: ../Scripts/MainMenu.gd:116
 msgid "Room code must be four characters long!"
@@ -1152,49 +1126,43 @@ msgstr "Системные по умолчанию"
 
 #: ../Scripts/OptionsMenu.gd:58
 msgid "Never"
-msgstr ""
+msgstr "Никогда"
 
 #: ../Scripts/OptionsMenu.gd:59
 msgid "30 seconds"
-msgstr ""
+msgstr "30 секунд"
 
 #: ../Scripts/OptionsMenu.gd:60
-#, fuzzy
-#| msgid "5 minutes"
 msgid "1 minute"
-msgstr "5 минут"
+msgstr "1 минута"
 
 #: ../Scripts/OptionsMenu.gd:62
-#, fuzzy
-#| msgid "5 minutes"
 msgid "10 minutes"
-msgstr "5 минут"
+msgstr "10 минут"
 
 #: ../Scripts/OptionsMenu.gd:63
-#, fuzzy
-#| msgid "5 minutes"
 msgid "30 minutes"
-msgstr "5 минут"
+msgstr "30 минут"
 
 #: ../Scripts/OptionsMenu.gd:66
 msgid "Borderless Fullscreen"
-msgstr ""
+msgstr "Полноэкранный режим без окна"
 
 #: ../Scripts/OptionsMenu.gd:67
 msgid "Fullscreen"
-msgstr ""
+msgstr "Полноэкранный режим"
 
 #: ../Scripts/OptionsMenu.gd:72
 msgid "High"
-msgstr ""
+msgstr "Высокая"
 
 #: ../Scripts/OptionsMenu.gd:73
 msgid "Very High"
-msgstr ""
+msgstr "Очень высокая"
 
 #: ../Scripts/OptionsMenu.gd:74
 msgid "Ultra"
-msgstr ""
+msgstr "Ультра"
 
 #: ../Scripts/RandomMusicPlayer.gd:34
 msgid "Nothing"
@@ -1213,13 +1181,13 @@ msgstr "Добавить выбранные объекты…"
 #, fuzzy, python-format
 #| msgid "Total: %d"
 msgid "Count: %d"
-msgstr "Всего: %d"
+msgstr "Количество: %d"
 
 #: ../Scripts/Game/CameraController.gd:1044
 #, fuzzy, python-format
 #| msgid "Total: %d"
 msgid "Value: %d"
-msgstr "Всего: %d"
+msgstr "Значение: %d"
 
 #: ../Scripts/Game/CameraController.gd:1064
 msgid "Put in hand"
@@ -1254,18 +1222,17 @@ msgid "Shuffle"
 msgstr "Перемешать"
 
 #: ../Scripts/Game/CameraController.gd:1100
+#, fuzzy
 msgid "Suit"
-msgstr ""
+msgstr "Подогнать"
 
 #: ../Scripts/Game/CameraController.gd:1102
 msgid "Value"
-msgstr ""
+msgstr "Значение"
 
 #: ../Scripts/Game/CameraController.gd:1104
-#, fuzzy
-#| msgid "Sort"
 msgid "Sort by"
-msgstr "Сортировать"
+msgstr "Сортировать по"
 
 #: ../Scripts/Game/CameraController.gd:1113
 msgid "Timer"
@@ -1345,10 +1312,9 @@ msgid "Ctrl + %s"
 msgstr "Ctrl + %s"
 
 #: ../Scripts/Game/CameraController.gd:1253
-#, fuzzy, python-format
-#| msgid "Ctrl + %s"
+#, python-format
 msgid "Cmd + %s"
-msgstr "Ctrl + %s"
+msgstr "Cmd + %s"
 
 #: ../Scripts/Game/CameraController.gd:1254
 #, python-format
@@ -1447,11 +1413,12 @@ msgstr "Выделение"
 #, fuzzy
 #| msgid "Select object"
 msgid "Flick object"
-msgstr "Выбрать объект"
+msgstr "Щёлкнуть по объекту"
 
 #: ../Scripts/Game/CameraController.gd:1314
+#, fuzzy
 msgid "Prepare to flick"
-msgstr ""
+msgstr "Приготовиться к щелчку"
 
 #: ../Scripts/Game/CameraController.gd:1318
 msgid "Stop measuring"
@@ -1488,10 +1455,8 @@ msgid "Table menu"
 msgstr "Меню стола"
 
 #: ../Scripts/Game/CameraController.gd:1348
-#, fuzzy
-#| msgid "Stop moving"
 msgid "Stop flicking"
-msgstr "Прекратить перемещение"
+msgstr "Прекратить щелкать"
 
 #: ../Scripts/Game/CameraController.gd:1352
 msgid "Remove last ruler"
@@ -1592,19 +1557,18 @@ msgid "Start stopwatch"
 msgstr "Запустить секундомер"
 
 #: ../Scripts/Game/Game.gd:529
-#, fuzzy, python-format
-#| msgid "Loading..."
+#, python-format
 msgid "Downloading %s ..."
-msgstr "Загрузка…"
+msgstr "Загрузка %s…"
 
 #: ../Scripts/Game/Game.gd:688
 msgid "Download completed!"
-msgstr ""
+msgstr "Загрузка завершена!"
 
 #: ../Scripts/Game/Game.gd:727
 #, python-format
 msgid "Verified %d out of %d files!"
-msgstr ""
+msgstr "Проверено %d из %d файлов!"
 
 #: ../Scripts/Game/Game.gd:991
 msgid "Loaded table has no version information. Load anyway?"
@@ -1626,13 +1590,12 @@ msgstr "Загруженный стол имеет неправильный фо
 #: ../Scripts/Game/Game.gd:1039
 #, python-format
 msgid "Client version (%s) does not match server version (%s)!"
-msgstr ""
+msgstr "Версия клиента (%s) не соответствует версии сервера (%s)!"
 
 #: ../Scripts/Game/Game.gd:1178
-#, fuzzy, python-format
-#| msgid "Importing assets..."
+#, python-format
 msgid "Importing %s ..."
-msgstr "Импорт ассетов…"
+msgstr "Импорт %s…"
 
 #: ../Scripts/Game/Game.gd:1196
 #, python-format
@@ -1729,7 +1692,7 @@ msgstr "Недопустимый режим передачи."
 
 #: ../Scripts/Game/UI/ChatBox.gd:51
 msgid "Too much text being sent, waiting..."
-msgstr ""
+msgstr "Отправлено слишком много текста, ожидание…"
 
 #: ../Scripts/Game/UI/GameUI.gd:210
 #, python-format
@@ -1855,18 +1818,17 @@ msgstr "Файл '%s' уже существует. Вы уверены, что �
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:77
 #, python-format
 msgid "Author: %s"
-msgstr ""
+msgstr "Автор: %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:60
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:83
 #, python-format
 msgid "License: %s"
-msgstr ""
+msgstr "Лицензия: %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:66
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:89
-#, fuzzy, python-format
-#| msgid "Modified: %s"
+#, python-format
 msgid "Modified by: %s"
 msgstr "Изменено: %s"
 
@@ -1874,7 +1836,7 @@ msgstr "Изменено: %s"
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:95
 #, python-format
 msgid "URL: %s"
-msgstr ""
+msgstr "URL-адрес: %s"
 
 #: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:108
 #, python-format
