@@ -636,7 +636,7 @@ puppet func receive_missing_db_entries(missing_entries: Dictionary) -> void:
 					_popup_download_error("Entry in '%s/%s' in server DB does not have a description!" % [pack, type])
 					return
 				
-				var entry_hash = entry.hash()
+				var entry_hash = _cross_platform_hash(entry)
 				var entry_index = -1
 				
 				for index in range(_cln_expect_db[pack][type].size()):
@@ -1310,7 +1310,7 @@ func _create_schema_db() -> Dictionary:
 				
 				type_arr.append({
 					"name": dict_to_hash["name"],
-					"hash": dict_to_hash.hash()
+					"hash": _cross_platform_hash(dict_to_hash)
 				})
 			
 			pack_dict[type] = type_arr
@@ -1411,6 +1411,126 @@ func _create_peer(id: int) -> WebRTCPeerConnection:
 		peer.create_offer()
 	
 	return peer
+
+# Hash a dictionary, with respect to the differences in floating-point
+# representations and calculations.
+# Returns: The hash of the dictionary.
+# dict: The dictionary to hash.
+func _cross_platform_hash(dict: Dictionary) -> int:
+	return _cross_platform_hash_helper(dict).hash()
+
+# A helper function for _cross_platform_hash.
+# Returns: The modified value.
+# value: The value to potentially modify.
+func _cross_platform_hash_helper(value):
+	match typeof(value):
+		TYPE_REAL:
+			# Store floats as integers, with 3 decimal places of precision.
+			return [ TYPE_REAL, int(1000.0 * value) ]
+		TYPE_VECTOR2:
+			return [
+				TYPE_VECTOR2,
+				_cross_platform_hash_helper(value.x),
+				_cross_platform_hash_helper(value.y)
+			]
+		TYPE_RECT2:
+			return [
+				TYPE_RECT2,
+				_cross_platform_hash_helper(value.end),
+				_cross_platform_hash_helper(value.position),
+				_cross_platform_hash_helper(value.size)
+			]
+		TYPE_VECTOR3:
+			return [
+				TYPE_VECTOR3,
+				_cross_platform_hash_helper(value.x),
+				_cross_platform_hash_helper(value.y),
+				_cross_platform_hash_helper(value.z)
+			]
+		TYPE_TRANSFORM2D:
+			return [
+				TYPE_TRANSFORM2D,
+				_cross_platform_hash_helper(value.origin),
+				_cross_platform_hash_helper(value.x),
+				_cross_platform_hash_helper(value.y)
+			]
+		TYPE_PLANE:
+			return [
+				TYPE_PLANE,
+				_cross_platform_hash_helper(value.d),
+				_cross_platform_hash_helper(value.normal),
+				_cross_platform_hash_helper(value.x),
+				_cross_platform_hash_helper(value.y),
+				_cross_platform_hash_helper(value.z)
+			]
+		TYPE_QUAT:
+			return [
+				TYPE_QUAT,
+				_cross_platform_hash_helper(value.w),
+				_cross_platform_hash_helper(value.x),
+				_cross_platform_hash_helper(value.y),
+				_cross_platform_hash_helper(value.z)
+			]
+		TYPE_AABB:
+			return [
+				TYPE_AABB,
+				_cross_platform_hash_helper(value.end),
+				_cross_platform_hash_helper(value.point),
+				_cross_platform_hash_helper(value.size)
+			]
+		TYPE_BASIS:
+			return [
+				TYPE_BASIS,
+				_cross_platform_hash_helper(value.x),
+				_cross_platform_hash_helper(value.y),
+				_cross_platform_hash_helper(value.z)
+			]
+		TYPE_TRANSFORM:
+			return [
+				TYPE_TRANSFORM,
+				_cross_platform_hash_helper(value.basis),
+				_cross_platform_hash_helper(value.origin)
+			]
+		TYPE_COLOR:
+			return [
+				TYPE_COLOR,
+				_cross_platform_hash_helper(value.r),
+				_cross_platform_hash_helper(value.g),
+				_cross_platform_hash_helper(value.b),
+				_cross_platform_hash_helper(value.a)
+			]
+		TYPE_DICTIONARY:
+			var dict = value.duplicate()
+			for key in dict:
+				dict[key] = _cross_platform_hash_helper(dict[key])
+			return dict
+		TYPE_ARRAY:
+			var new_arr = []
+			for subvalue in value:
+				new_arr.append(_cross_platform_hash_helper(subvalue))
+			return new_arr
+		TYPE_REAL_ARRAY:
+			var real_arr = [TYPE_REAL_ARRAY]
+			for subvalue in value:
+				real_arr.append(_cross_platform_hash_helper(subvalue))
+			return real_arr
+		TYPE_VECTOR2_ARRAY:
+			var v2_arr = [TYPE_VECTOR2_ARRAY]
+			for subvalue in value:
+				v2_arr.append(_cross_platform_hash_helper(subvalue))
+			return v2_arr
+		TYPE_VECTOR3_ARRAY:
+			var v3_arr = [TYPE_VECTOR3_ARRAY]
+			for subvalue in value:
+				v3_arr.append(_cross_platform_hash_helper(subvalue))
+			return v3_arr
+		TYPE_COLOR_ARRAY:
+			var color_arr = [TYPE_COLOR_ARRAY]
+			for subvalue in value:
+				color_arr.append(_cross_platform_hash_helper(subvalue))
+			return color_arr
+		_:
+			return value
 
 # Run by a thread to import assets from the user://tmp directory into the
 # user://assets directory.
