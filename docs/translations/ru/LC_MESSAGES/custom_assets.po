@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-21 13:07+0100\n"
-"PO-Revision-Date: 2022-07-06 11:21+0000\n"
+"PO-Revision-Date: 2022-07-22 03:09+0000\n"
 "Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/ru/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -326,10 +326,8 @@ msgid "Description"
 msgstr "Описание"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:131
-#, fuzzy
-#| msgid "``color``"
 msgid "``author``"
-msgstr "``color``"
+msgstr "``author``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:131
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
@@ -361,7 +359,7 @@ msgstr "``\"\"``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:131
 msgid "The name of the author(s) of the asset."
-msgstr ""
+msgstr "Имя автора(-ов) ассета."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
 msgid "``back_face``"
@@ -526,14 +524,12 @@ msgstr ""
 "ассетов."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
-#, fuzzy
-#| msgid "``false``"
 msgid "``license``"
-msgstr "``false``"
+msgstr "``license``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
 msgid "The license the asset is distributed under."
-msgstr ""
+msgstr "Лицензия, под которой распространяется ассет."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 msgid "``main_menu``"
@@ -570,11 +566,11 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 msgid "``modified_by``"
-msgstr ""
+msgstr "``modified_by``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 msgid "The name(s) of the people who have modified the asset."
-msgstr ""
+msgstr "Имена людей, которые изменили актив."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
 msgid "``paint_plane``"
@@ -684,34 +680,33 @@ msgstr "Сила окружающего света, исходящего от с
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "``suit``, ``value``"
-msgstr ""
+msgstr "``suit``, ``value``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
-#, fuzzy
-#| msgid "Number"
 msgid "Number, Text"
-msgstr "Число"
+msgstr "Число, Текст"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "Cards, Tokens"
-msgstr ""
+msgstr "Карты, Жетоны"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "``null``"
-msgstr ""
+msgstr "``null``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid ""
 "A value given to a stackable object that allows it to be sorted in a stack."
 msgstr ""
+"Значение, присваиваемое объекту , которое позволяет сортировать его в стопке."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
 msgid "``url``"
-msgstr ""
+msgstr "``url``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
 msgid "The URL where the asset originally came from."
-msgstr ""
+msgstr "URL-адрес, с которого первоначально был получен ассет."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:178
 msgid "stacks.cfg"
@@ -734,7 +729,7 @@ msgstr "Вот пример файла ``stacks.cfg``:"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:212
 msgid "Translations"
-msgstr ""
+msgstr "Переводы"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:214
 msgid ""
@@ -744,12 +739,19 @@ msgid ""
 "``<locale>`` is the `locale code <https://docs.godotengine.org/en/stable/"
 "tutorials/i18n/locales.html>`_ for your language."
 msgstr ""
+"Вы также можете предоставить переводы для названий и описаний ассетов в "
+"пакете ассетов! Это делается с помощью отдельных конфигурационных файлов для "
+"каждого языка. Имя файла должно быть ``config.<locale>.cfg``, где "
+"``<locale>`` - `код локали <https://docs.godotengine.org/en/stable/tutorials/"
+"i18n/locales.html>`_ для вашего языка."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:223
 msgid ""
 "The list of languages supported by the game is shown in the `README <https://"
 "github.com/drwhut/tabletop-club#languages>`_ file of the project."
 msgstr ""
+"Список языков, поддерживаемых игрой, приведен в файле `README <https://github"
+".com/drwhut/tabletop-club#languages>`_."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:226
 msgid ""
@@ -758,6 +760,10 @@ msgid ""
 "translate the project as a whole so your languages does become supported! "
 "See :ref:`translating-the-project` for more information."
 msgstr ""
+"Если языка, на который вы переводите, нет в этом списке, к сожалению, вы не "
+"сможете увидеть результаты в игре. Однако вы можете помочь перевести проект "
+"в целом, чтобы ваш язык стал поддерживаемым! Более подробную информацию "
+"смотрите в :ref:`translating-the-project`."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:233
 msgid ""
@@ -766,13 +772,15 @@ msgid ""
 "these files. You also cannot apply translations to multiple assets at the "
 "same time with wildcards."
 msgstr ""
+"Эти файлы перевода обрабатываются иначе, чем другие файлы конфигурации. В "
+"этих файлах можно редактировать только свойства ассетов ``name`` и ``desc``. "
+"Вы также не можете применять переводы к нескольким ассетам одновременно с "
+"помощью подстановочных знаков."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:238
-#, fuzzy
-#| msgid "Here is an example of a ``config.cfg`` file:"
 msgid ""
 "Here is an example of a Norwegian translation file, called ``config.nb.cfg``:"
-msgstr "Вот пример файла ``config.cfg``:"
+msgstr "Вот пример норвежского файла перевода под названием ``config.nb.cfg``:"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:3
 msgid "Asset types"
