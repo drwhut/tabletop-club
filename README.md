@@ -24,13 +24,13 @@ or
 
 [![Translation Status](https://hosted.weblate.org/widgets/tabletop-club/-/svg-badge.svg)](https://hosted.weblate.org/engage/tabletop-club/)
 
-Language | Game               | Documentation
--------- | ------------------ | ------------------
-English  | :heavy_check_mark: | :heavy_check_mark:
-Dutch    | 83%                | :x:
-French   | 53%                | :x:
-German   | 78%                | :x:
-Russian  | 80%                | 99%
+Language | Game               | Documentation      | Default Asset Pack
+-------- | ------------------ | ------------------ | ------------------
+English  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Dutch    | 86%                | :x:                | :heavy_check_mark:
+French   | 60%                | :x:                | :x:
+German   | 68%                | :x:                | :x:
+Russian  | 97%                | 99%                | 99%
 
 If you want to help translate the project, you can go to the project's
 [Hosted Weblate](https://hosted.weblate.org/engage/tabletop-club/) page.
