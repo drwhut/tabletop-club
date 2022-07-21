@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-03 02:05+0100\n"
+"POT-Creation-Date: 2022-07-21 13:07+0100\n"
 "PO-Revision-Date: 2022-07-04 16:58+0000\n"
 "Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
@@ -117,8 +117,8 @@ msgid ""
 msgstr ""
 "Игра разработана таким образом, чтобы позволить вам играть в ваши любимые "
 "настольные игры, фактически давая вам коробку с игрушками для игры (в "
-"которую входят такие вещи, как карты, кости, игровые детали и многое другое)"
-", и только от вас зависит, что вы будете делать с тем, что вам дано!"
+"которую входят такие вещи, как карты, кости, игровые детали и многое "
+"другое), и только от вас зависит, что вы будете делать с тем, что вам дано!"
 
 #: ../../general/about.rst:54
 msgid ""
@@ -199,8 +199,8 @@ msgid ""
 "You can change your name and colour in multiplayer by going to :guilabel:"
 "`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
 msgstr ""
-"Вы можете изменить свое имя и цвет в многопользовательской игре, зайдя в "
-":guilabel:`Настройки` > :guilabel:`Многопользовательская игра` и изменив "
+"Вы можете изменить свое имя и цвет в многопользовательской игре, зайдя в :"
+"guilabel:`Настройки` > :guilabel:`Многопользовательская игра` и изменив "
 "соответствующие настройки."
 
 #: ../../general/about.rst:98
@@ -269,9 +269,10 @@ msgid ""
 "asset pack. If everything under a game is ticked, then you can play that "
 "game!"
 msgstr ""
-"На GitHub есть `проблема <https://github.com/drwhut/tabletop-club/issues/28>`"
-"_ со списком объектов, которые еще необходимо добавить в пакет ассетов по "
-"умолчанию. Если все объекты в игре отмечены, то вы можете играть в эту игру!"
+"На GitHub есть `проблема <https://github.com/drwhut/tabletop-club/"
+"issues/28>`_ со списком объектов, которые еще необходимо добавить в пакет "
+"ассетов по умолчанию. Если все объекты в игре отмечены, то вы можете играть "
+"в эту игру!"
 
 #: ../../general/about.rst:131
 msgid ""
@@ -297,8 +298,8 @@ msgid ""
 "play the game right away!"
 msgstr ""
 "Для самых популярных игр пакет ассетов по умолчанию поставляется с заранее "
-"созданными файлами сохранений, которые вы можете мгновенно загрузить ("
-"находясь в игре, нажмите :guilabel:`Игры`, затем нажмите на игру, в которую "
+"созданными файлами сохранений, которые вы можете мгновенно загрузить "
+"(находясь в игре, нажмите :guilabel:`Игры`, затем нажмите на игру, в которую "
 "вы хотите играть, затем нажмите :guilabel:`Загрузить`), чтобы сразу же "
 "начать игру!"
 
@@ -364,8 +365,8 @@ msgid ""
 "asset pack. But that doesn't stop you from making assets for your favourite "
 "board game for private use!"
 msgstr ""
-"В целях юридической безопасности Tabletop Club будет распространять только `"
-"настольные игры в общественном достоянии <https://ru.wikipedia.org/wiki/"
+"В целях юридической безопасности Tabletop Club будет распространять только "
+"`настольные игры в общественном достоянии <https://ru.wikipedia.org/wiki/"
 "Public_domain>`_ в пакете ассетов по умолчанию. Но это не остановит вас от "
 "создания ассетов для вашей любимой настольной игры для личного использования!"
 
@@ -403,12 +404,18 @@ msgstr ""
 
 #: ../../general/about.rst:191
 msgid ""
+"To help with this, the :ref:`config-cfg` file allows you to put the author, "
+"license, modifier, and URL with the asset, which is then shown in-game."
+msgstr ""
+
+#: ../../general/about.rst:194
+msgid ""
 "If the assets you've made are for playing a game that already exists, then:"
 msgstr ""
 "Если созданные вами ассеты предназначены для игры, которая уже существует, "
 "тогда:"
 
-#: ../../general/about.rst:193
+#: ../../general/about.rst:196
 msgid ""
 "You cannot use the same name of the game without the owner's explicit "
 "permission."
@@ -416,20 +423,20 @@ msgstr ""
 "Вы не можете использовать одно и то же имя игры без явного разрешения "
 "владельца."
 
-#: ../../general/about.rst:196
+#: ../../general/about.rst:199
 msgid "The mechanics of the game cannot be patented."
 msgstr "Механика игры не может быть запатентована."
 
-#: ../../general/about.rst:198
+#: ../../general/about.rst:201
 #: ../../general/download/downloading_binaries.rst:97
 msgid "Todo"
 msgstr "В планах"
 
-#: ../../general/about.rst:200
+#: ../../general/about.rst:203
 msgid "Add instructions to check if the mechanics are patented."
 msgstr "Добавить инструкции для проверки, запатентована ли механика."
 
-#: ../../general/about.rst:204
+#: ../../general/about.rst:207
 msgid ""
 "This is NOT legal advice. Please go ask the nearest lawyer for advice if you "
 "are worried about distributing your asset pack on the internet, as this also "
@@ -487,8 +494,8 @@ msgid ""
 "add a comment above the function describing what the function does, what "
 "it's return value is (if any), and what the arguments are. For example:"
 msgstr ""
-"При написании функций в скриптах, которые не являются встроенными функциями ("
-"например, ``_ready()``) или функциями, вызываемыми сигналами (например. "
+"При написании функций в скриптах, которые не являются встроенными функциями "
+"(например, ``_ready()``) или функциями, вызываемыми сигналами (например. "
 "``_on_*``), то, пожалуйста, добавьте комментарий над функцией, описывающий, "
 "что делает функция, каково ее возвращаемое значение (если оно есть), и "
 "каковы аргументы. Например:"
@@ -552,8 +559,8 @@ msgid ""
 "Eventually, the side road will join back in with the main road later on (the "
 "\"merge\")."
 msgstr ""
-"О форках можно думать так: вы идете по боковой дороге и перед вами развилка -"
-" вы будете заниматься своими делами на боковой дороге (ваш \"форк\"), в то "
+"О форках можно думать так: вы идете по боковой дороге и перед вами развилка "
+"- вы будете заниматься своими делами на боковой дороге (ваш \"форк\"), в то "
 "время как главная дорога (репозиторий ``master``) идет дальше. В конце "
 "концов, боковая дорога снова соединится с главной (\"слияние\")."
 
@@ -564,8 +571,8 @@ msgid ""
 "right. You should now have your own copy of the repository at that point in "
 "time. You can then clone the repository to your computer with ``git clone``."
 msgstr ""
-"Чтобы создать форк репозитория Tabletop Club на GitHub, вы можете перейти в `"
-"репозиторий GitHub`_ и нажать на кнопку :guilabel:`Fork` в правом верхнем "
+"Чтобы создать форк репозитория Tabletop Club на GitHub, вы можете перейти в "
+"`репозиторий GitHub`_ и нажать на кнопку :guilabel:`Fork` в правом верхнем "
 "углу. Теперь у вас должна быть собственная копия репозитория. Затем вы "
 "можете клонировать репозиторий на свой компьютер с помощью ``git clone``."
 
@@ -592,7 +599,8 @@ msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:44
 msgid "You can then update your fork on GitHub with these changes:"
-msgstr "Затем вы можете обновить свой форк на GitHub со следующими изменениями:"
+msgstr ""
+"Затем вы можете обновить свой форк на GitHub со следующими изменениями:"
 
 #: ../../general/contributing/pull_request_workflow.rst:52
 msgid "Downloading and compiling Godot"
@@ -645,7 +653,7 @@ msgstr ""
 "свой форк с помощью этой команды:"
 
 #: ../../general/contributing/pull_request_workflow.rst:88
-#: ../../general/contributing/ways_to_contribute.rst:87
+#: ../../general/contributing/ways_to_contribute.rst:93
 msgid "Creating a pull request"
 msgstr "Создание запроса на слияние"
 
@@ -826,7 +834,9 @@ msgid "Windows: ``%APPDATA%/Tabletop Club/logs/``"
 msgstr "Windows: ``%APPDATA%/Tabletop Club/logs/``"
 
 #: ../../general/contributing/ways_to_contribute.rst:29
-msgid "macOS: ``~/Library/Application/Support/Tabletop Club/logs``"
+#, fuzzy
+#| msgid "macOS: ``~/Library/Application/Support/Tabletop Club/logs``"
+msgid "macOS: ``~/Library/Application Support/Tabletop Club/logs``"
 msgstr "macOS: ``~/Library/Application/Support/Tabletop Club/logs``"
 
 #: ../../general/contributing/ways_to_contribute.rst:30
@@ -859,11 +869,11 @@ msgid ""
 "idea!"
 msgstr ""
 "У вас есть идея, как сделать игру лучше? Если у кого-то еще не было такой же "
-"идеи (вы можете проверить это, воспользовавшись поиском на `странице проблем`"
-"_ на GitHub), то вы можете `разместить проблему`_ на GitHub, объяснив свою "
-"идею, какую проблему она решает, и любые альтернативные идеи, которые вы "
-"придумали. Мы хотим сделать игру настолько хорошей, насколько это возможно, "
-"поэтому не стесняйтесь сообщить нам о своей идее!"
+"идеи (вы можете проверить это, воспользовавшись поиском на `странице "
+"проблем`_ на GitHub), то вы можете `разместить проблему`_ на GitHub, "
+"объяснив свою идею, какую проблему она решает, и любые альтернативные идеи, "
+"которые вы придумали. Мы хотим сделать игру настолько хорошей, насколько это "
+"возможно, поэтому не стесняйтесь сообщить нам о своей идее!"
 
 #: ../../general/contributing/ways_to_contribute.rst:51
 msgid "Changing the documentation"
@@ -892,15 +902,15 @@ msgid ""
 "You can click on the GitHub icon at the top of the page, click the :guilabel:"
 "`suggest edit` button, and create a pull request with the changes you give!"
 msgstr ""
-"Вы можете нажать на значок GitHub в верхней части страницы, нажать на кнопку "
-":guilabel:`предложить изменения` и создать запрос на слияние с изменениями, "
-"которые вы внесли!"
+"Вы можете нажать на значок GitHub в верхней части страницы, нажать на "
+"кнопку :guilabel:`предложить изменения` и создать запрос на слияние с "
+"изменениями, которые вы внесли!"
 
-#: ../../general/contributing/ways_to_contribute.rst:66
+#: ../../general/contributing/ways_to_contribute.rst:68
 msgid "Translating the project"
 msgstr "Перевести проект"
 
-#: ../../general/contributing/ways_to_contribute.rst:68
+#: ../../general/contributing/ways_to_contribute.rst:70
 msgid ""
 "If you know a language other than English, you can help to translate the "
 "game and it's documentation by going to the project's `Hosted Weblate "
@@ -908,11 +918,11 @@ msgid ""
 "translations for the project's strings in your language!"
 msgstr ""
 "Если вы знаете язык, отличный от английского, вы можете помочь перевести "
-"игру и документацию к ней, зайдя на страницу проекта на `Weblate "
-"<https://hosted.weblate.org/engage/tabletop-club/>`_ и предложить перевод "
-"строк проекта на ваш язык!"
+"игру и документацию к ней, зайдя на страницу проекта на `Weblate <https://"
+"hosted.weblate.org/engage/tabletop-club/>`_ и предложить перевод строк "
+"проекта на ваш язык!"
 
-#: ../../general/contributing/ways_to_contribute.rst:73
+#: ../../general/contributing/ways_to_contribute.rst:75
 msgid ""
 "If you don't see your language in a component, you can add it by scrolling "
 "to the bottom of the component page and pressing :guilabel:`Start new "
@@ -921,20 +931,32 @@ msgstr ""
 "Если вы не видите свой язык в компоненте, вы можете добавить его, прокрутив "
 "страницу компонента вниз и нажав :guilabel:`Начать новый перевод`."
 
-#: ../../general/contributing/ways_to_contribute.rst:78
+#: ../../general/contributing/ways_to_contribute.rst:80
+#, fuzzy
+#| msgid ""
+#| "Manual pull requests for translations will be closed, as Weblate keeps "
+#| "it's own fork of the project, and we want to avoid having merge requests "
+#| "occur."
 msgid ""
 "Manual pull requests for translations will be closed, as Weblate keeps it's "
-"own fork of the project, and we want to avoid having merge requests occur."
+"own fork of the project, and we want to avoid having merge conflicts occur."
 msgstr ""
 "Ручные запросы на слияние переводов будут закрыты, так как Weblate сохраняет "
 "свой собственный форк проекта, и мы хотим избежать возникновения проблем с "
 "запросами на слияние."
 
+#: ../../general/contributing/ways_to_contribute.rst:83
+msgid ""
+"The only exception to this is the ``README.md`` file, which is not included "
+"in Weblate - feel free to provide a translation for this file with the name "
+"``README.<locale>.md``, and send in a pull request!"
+msgstr ""
+
 #: ../../general/contributing/ways_to_contribute.rst:None
 msgid "Translation status"
 msgstr "Статус перевода"
 
-#: ../../general/contributing/ways_to_contribute.rst:89
+#: ../../general/contributing/ways_to_contribute.rst:95
 msgid ""
 "If you see an issue on the `GitHub repository`_ that you think you can fix, "
 "and you want to directly contribute to the project by modifying the game "
@@ -947,11 +969,11 @@ msgstr ""
 "ваши изменения! Смотрите страницу \":ref:`pull-request-workflow`\" для "
 "получения дополнительной информации."
 
-#: ../../general/contributing/ways_to_contribute.rst:96
+#: ../../general/contributing/ways_to_contribute.rst:102
 msgid "Proposing assets"
 msgstr "Предложить ассеты"
 
-#: ../../general/contributing/ways_to_contribute.rst:98
+#: ../../general/contributing/ways_to_contribute.rst:104
 msgid ""
 "If you see an issue on the `GitHub repository`_ that needs game assets to "
 "fix (like textures, 3D models, sound effects, music, etc.), then you can "
@@ -963,7 +985,7 @@ msgstr ""
 "музыка и т.д.), то вы можете ответить на эту проблему либо ассетом, который "
 "вы нашли в сети, либо тем, который вы сделали сами!"
 
-#: ../../general/contributing/ways_to_contribute.rst:103
+#: ../../general/contributing/ways_to_contribute.rst:109
 msgid ""
 "If the asset doesn't solve an issue, but you still think Tabletop Club would "
 "benefit from having it, then you can `post an issue`_ with the asset "
@@ -973,32 +995,32 @@ msgstr ""
 "выиграет от его наличия, то вы можете `разместить проблему`_ с помощью "
 "шаблона подачи ассета!"
 
-#: ../../general/contributing/ways_to_contribute.rst:107
+#: ../../general/contributing/ways_to_contribute.rst:113
 msgid ""
 "However you propose the asset, you need to provide the following information:"
 msgstr ""
 "Как бы вы ни предлагали ассет, вам необходимо предоставить следующую "
 "информацию:"
 
-#: ../../general/contributing/ways_to_contribute.rst:109
+#: ../../general/contributing/ways_to_contribute.rst:115
 msgid "The name of the asset."
 msgstr "Название ассета."
 
-#: ../../general/contributing/ways_to_contribute.rst:110
+#: ../../general/contributing/ways_to_contribute.rst:116
 msgid "The name of the author."
 msgstr "Имя автора."
 
-#: ../../general/contributing/ways_to_contribute.rst:111
+#: ../../general/contributing/ways_to_contribute.rst:117
 msgid ""
 "The license the asset is under - keep in mind that we will only include "
 "assets with open licenses, e.g. `CC BY-SA 3.0 <https://creativecommons.org/"
 "licenses/by-sa/3.0/>`_."
 msgstr ""
 "Лицензия, под которой находится ассет - помните, что мы будем включать "
-"только ассеты с открытыми лицензиями, например, `CC BY-SA 3.0 "
-"<https://creativecommons.org/licenses/by-sa/3.0/>`_."
+"только ассеты с открытыми лицензиями, например, `CC BY-SA 3.0 <https://"
+"creativecommons.org/licenses/by-sa/3.0/>`_."
 
-#: ../../general/contributing/ways_to_contribute.rst:114
+#: ../../general/contributing/ways_to_contribute.rst:120
 msgid ""
 "The URL where the asset can be downloaded from. The URL must be publically "
 "accessible, and it must lead to a trusted website."
@@ -1022,9 +1044,9 @@ msgid ""
 "we need to make the game, except for one..."
 msgstr ""
 "Первым шагом в компиляции игры с нуля является загрузка и компиляция "
-"игрового движка, на котором она работает - `Godot <https://godotengine.org/>`"
-"_. Godot - это бесплатный игровой движок с открытым исходным кодом для 2D и "
-"3D игр, и в нем есть все функции, необходимые нам для создания игры, за "
+"игрового движка, на котором она работает - `Godot <https://godotengine.org/"
+">`_. Godot - это бесплатный игровой движок с открытым исходным кодом для 2D "
+"и 3D игр, и в нем есть все функции, необходимые нам для создания игры, за "
 "исключением одной…"
 
 #: ../../general/download/compiling_from_source.rst:15
@@ -1104,10 +1126,10 @@ msgid ""
 "modified slightly, and put here for each platform [#godot-doc-license]_."
 msgstr ""
 "Способ компиляции исходного кода Godot в точности соответствует тому, как вы "
-"обычно компилируете Godot, документацию которого можно найти `здесь "
-"<https://docs.godotengine.org/en/stable/development/compiling/index.html>`_. "
-"Для удобства, инструкции из документации Godot были взяты, немного изменены "
-"и помещены здесь для каждой платформы [#godot-doc-license]_."
+"обычно компилируете Godot, документацию которого можно найти `здесь <https://"
+"docs.godotengine.org/en/stable/development/compiling/index.html>`_. Для "
+"удобства, инструкции из документации Godot были взяты, немного изменены и "
+"помещены здесь для каждой платформы [#godot-doc-license]_."
 
 #: ../../general/download/compiling_from_source.rst:57
 msgid "For all platforms, you will need *at least* the following:"
@@ -1159,11 +1181,11 @@ msgid ""
 "you've already installed Visual Studio without C++ support, you can re-run "
 "the installer and click :guilabel:`Modify` to install the C++ tools."
 msgstr ""
-"`Visual Studio Community <https://visualstudio.microsoft.com/vs/community/>`"
-"_ версии 2017 или более поздней. Вам нужно будет установить ее с поддержкой "
-"C++ - если вы уже установили Visual Studio без поддержки C++, вы можете "
-"повторно запустить программу установки и нажать :guilabel:`Изменить` для "
-"установки инструментов C++."
+"`Visual Studio Community <https://visualstudio.microsoft.com/vs/community/"
+">`_ версии 2017 или более поздней. Вам нужно будет установить ее с "
+"поддержкой C++ - если вы уже установили Visual Studio без поддержки C++, вы "
+"можете повторно запустить программу установки и нажать :guilabel:`Изменить` "
+"для установки инструментов C++."
 
 #: ../../general/download/compiling_from_source.rst:91
 msgid ""
@@ -1404,8 +1426,8 @@ msgstr ""
 "Если компиляция прошла успешно, то двоичный файл будет помещен в ``godot/bin/"
 "`` с именем ``godot.x11.opt.tools.32`` или ``godot.x11.opt.tools.64``. По "
 "умолчанию SCons будет собирать двоичный файл, соответствующий архитектуре "
-"вашего процессора, но это можно изменить, добавив ``bits=64`` или ``bits=32``"
-" к приведенной выше команде."
+"вашего процессора, но это можно изменить, добавив ``bits=64`` или "
+"``bits=32`` к приведенной выше команде."
 
 #: ../../general/download/compiling_from_source.rst:307
 msgid "If you want to compile using Clang instead of GCC, use this command:"
@@ -1435,10 +1457,10 @@ msgid ""
 "command:"
 msgstr ""
 "Чтобы загрузить Godot проект Tabletop Club, вы можете либо загрузить сжатую "
-"копию исходного кода для конкретной версии со страницы `релизов "
-"<https://github.com/drwhut/tabletop-club/releases>`_ на GitHub и извлечь ее, "
-"либо, если вы чувствуете себя авантюристом, вы можете загрузить последний "
-"исходный код в ветке ``master``, выполнив эту команду:"
+"копию исходного кода для конкретной версии со страницы `релизов <https://"
+"github.com/drwhut/tabletop-club/releases>`_ на GitHub и извлечь ее, либо, "
+"если вы чувствуете себя авантюристом, вы можете загрузить последний исходный "
+"код в ветке ``master``, выполнив эту команду:"
 
 #: ../../general/download/compiling_from_source.rst:339
 msgid "Downloading the WebRTC GDNative plugin"
@@ -1470,8 +1492,8 @@ msgid ""
 "club/game/``. Afterwards, there should be a file at ``tabletop-club/game/"
 "webrtc/webrtc.tres``."
 msgstr ""
-"Откройте сжатый файл и поместите папку ``webrtc/`` в ``tabletop-club/game/``"
-". После этого должен появиться файл по адресу ``tabletop-club/game/webrtc/"
+"Откройте сжатый файл и поместите папку ``webrtc/`` в ``tabletop-club/game/"
+"``. После этого должен появиться файл по адресу ``tabletop-club/game/webrtc/"
 "webrtc.tres``."
 
 #: ../../general/download/compiling_from_source.rst:355
@@ -1703,8 +1725,8 @@ msgid ""
 "Right-click the downloaded file in File Explorer, and click :guilabel:"
 "`Extract all...`"
 msgstr ""
-"Щелкните правой кнопкой мыши по загруженному файлу в Проводнике и нажмите "
-":guilabel:`Извлечь все…`"
+"Щелкните правой кнопкой мыши по загруженному файлу в Проводнике и нажмите :"
+"guilabel:`Извлечь все…`"
 
 #: ../../general/download/downloading_binaries.rst:40
 msgid ""
@@ -1714,9 +1736,9 @@ msgid ""
 "to that location."
 msgstr ""
 "Должно появиться всплывающее окно с вопросом, куда вы хотите извлечь файлы. "
-"Вы можете поместить файлы игры куда угодно, например ``Desktop/TabletopClub``"
-". Затем вы можете нажать :guilabel:`Извлечь`, чтобы извлечь файлы в это "
-"место."
+"Вы можете поместить файлы игры куда угодно, например ``Desktop/"
+"TabletopClub``. Затем вы можете нажать :guilabel:`Извлечь`, чтобы извлечь "
+"файлы в это место."
 
 #: ../../general/download/downloading_binaries.rst:45
 msgid ""
@@ -1735,9 +1757,9 @@ msgid ""
 msgstr ""
 "В настоящее время двоичные файлы игры для Windows не подписаны, поэтому вы "
 "скорее всего, получите предупреждение при попытке запустить игру о том, что "
-"издатель не может быть доверенным. Вы можете пропустить это, нажав "
-":guilabel:`Дополнительная информация`, а затем нажав :guilabel:`В любом "
-"случае запустить`."
+"издатель не может быть доверенным. Вы можете пропустить это, нажав :guilabel:"
+"`Дополнительная информация`, а затем нажав :guilabel:`В любом случае "
+"запустить`."
 
 #: ../../general/download/downloading_binaries.rst:56
 msgid "Downloading for macOS"
