@@ -31,6 +31,7 @@ onready var _connecting_popup_label = $ConnectingPopup/Label
 onready var _download_assets_confirm_dialog = $DownloadAssetsConfirmDialog
 onready var _download_assets_error_dialog = $DownloadAssetsErrorDialog
 onready var _download_assets_progress_dialog = $DownloadAssetsProgressDialog
+onready var _download_lock_dialog = $DownloadLockDialog
 onready var _download_progress_bar = $DownloadAssetsProgressDialog/VBoxContainer/DownloadProgressBar
 onready var _download_progress_label = $DownloadAssetsProgressDialog/VBoxContainer/DownloadProgressLabel
 onready var _import_progress_bar = $DownloadAssetsProgressDialog/VBoxContainer/ImportProgressBar
@@ -1157,6 +1158,11 @@ func _process(delta):
 		_transfer_mutex.unlock()
 		
 		if done_importing_new_assets:
+			var lock = Directory.new()
+			if lock.file_exists("user://lock"):
+				if lock.remove("user://lock") != OK:
+					push_error("Failed to remove user://lock!")
+			
 			# Do the same as we do when we're done adding the extra AssetDB
 			# entries.
 			_cln_expect_fs.clear()
@@ -1840,15 +1846,14 @@ func _on_DownloadAssetsConfirmDialog_popup_hide():
 		_cln_need_fs.clear()
 		_cln_expect_db.clear()
 		_cln_expect_fs.clear()
+		rpc_id(1, "respond_with_schema_results", {}, {})
+		return
 	
-	rpc_id(1, "respond_with_schema_results", _cln_need_db, _cln_need_fs)
-	
-	if _cln_keep_expecting:
-		_cln_need_db.clear()
-		_cln_need_fs.clear()
-		
-		if not _cln_expect_fs.empty():
-			_download_assets_progress_dialog.popup_centered()
+	var lock_file = File.new()
+	if not _cln_need_fs.empty() and lock_file.file_exists("user://lock"):
+		_download_lock_dialog.popup_centered()
+	else:
+		_on_DownloadLockDialog_confirmed()
 
 func _on_DownloadAssetsProgressDialog_popup_hide():
 	# Stop downloading/importing asset files from the host.
@@ -1871,6 +1876,21 @@ func _on_DownloadAssetsProgressDialog_popup_hide():
 		_ui.reconfigure_asset_dialogs()
 		rpc_id(1, "request_sync_state")
 
+func _on_DownloadLockDialog_confirmed():
+	rpc_id(1, "respond_with_schema_results", _cln_need_db, _cln_need_fs)
+	
+	_cln_need_db.clear()
+	_cln_need_fs.clear()
+	
+	if not _cln_expect_fs.empty():
+		_download_assets_progress_dialog.popup_centered()
+		
+		var lock_file = File.new()
+		if lock_file.open("user://lock", File.WRITE) == OK:
+			lock_file.close()
+		else:
+			push_error("Failed to create user://lock!")
+
 func _on_Game_tree_exiting():
 	stop()
 	
@@ -1890,6 +1910,11 @@ func _on_Game_tree_exiting():
 		if _cln_save_chunk_thread.is_active():
 			_cln_save_chunk_thread.wait_to_finish()
 	_clear_download_cache()
+	
+	var lock = Directory.new()
+	if lock.file_exists("user://lock"):
+		if lock.remove("user://lock") != OK:
+			push_error("Failed to remove user://lock!")
 
 func _on_GameUI_about_to_save_table():
 	_room_state_saving = _room.get_state(false, false)

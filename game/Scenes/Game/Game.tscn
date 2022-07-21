@@ -169,6 +169,16 @@ window_title = "Error!"
 dialog_text = "An error occured while downloading missing assets from the host. Consider leaving and rejoining, or asking the host to transfer the missing assets over the internet, or submit a bug report on GitHub."
 dialog_autowrap = true
 
+[node name="DownloadLockDialog" type="AcceptDialog" parent="."]
+margin_right = 360.0
+margin_bottom = 230.0
+popup_exclusive = true
+window_title = "Download Folder Locked"
+dialog_text = "The download folder has been locked by another instance of the game. This was most likely caused by the other instance not exiting properly.
+
+If you are certain that this is the only instance of the game running on your system, then you can safely continue downloading the missing assets."
+dialog_autowrap = true
+
 [node name="TableStateErrorDialog" type="AcceptDialog" parent="."]
 margin_right = 300.0
 margin_bottom = 180.0
@@ -215,4 +225,5 @@ script = ExtResource( 4 )
 [connection signal="confirmed" from="DownloadAssetsConfirmDialog" to="." method="_on_DownloadAssetsConfirmDialog_confirmed"]
 [connection signal="popup_hide" from="DownloadAssetsConfirmDialog" to="." method="_on_DownloadAssetsConfirmDialog_popup_hide"]
 [connection signal="popup_hide" from="DownloadAssetsProgressDialog" to="." method="_on_DownloadAssetsProgressDialog_popup_hide"]
+[connection signal="confirmed" from="DownloadLockDialog" to="." method="_on_DownloadLockDialog_confirmed"]
 [connection signal="confirmed" from="TableStateVersionDialog" to="." method="_on_TableStateVersionDialog_confirmed"]
