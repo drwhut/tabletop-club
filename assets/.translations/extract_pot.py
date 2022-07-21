@@ -23,7 +23,7 @@ json_path = sys.argv[1]
 with open(json_path, "r") as json_file:
     asset_db = json.load(json_file)
 
-    pot_file = polib.POFile()
+    pot_file = polib.POFile(wrapwidth=-1)
     pot_file.header = HEADER
     creation_date = datetime.datetime.now()
     creation_date_str = creation_date.strftime("%Y-%m-%d %H:%M")
