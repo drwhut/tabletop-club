@@ -1185,7 +1185,7 @@ func _popup_piece_context_menu() -> void:
 		_piece_context_menu.add_item(tr("Copy"), CONTEXT_PIECE_COPY)
 		
 		_piece_context_menu.add_item(tr("Paste"), CONTEXT_PIECE_PASTE)
-		var paste_idx = _piece_context_menu.get_item_index(CONTEXT_PIECE_PASTE)
+		var paste_idx = _piece_context_menu.get_item_count() - 1
 		_piece_context_menu.set_item_disabled(paste_idx, clipboard_contents.empty())
 		_future_clipboard_position = _cursor_position
 		
@@ -1224,7 +1224,7 @@ func _popup_table_context_menu() -> void:
 	_table_context_menu.clear()
 	
 	_table_context_menu.add_item(tr("Paste"), CONTEXT_TABLE_PASTE)
-	var paste_idx = _table_context_menu.get_item_index(CONTEXT_TABLE_PASTE)
+	var paste_idx = _table_context_menu.get_item_count() - 1
 	_table_context_menu.set_item_disabled(paste_idx, clipboard_contents.empty())
 	_future_clipboard_position = _cursor_position
 	
