@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-07-21 13:06+0100\n"
-"PO-Revision-Date: 2022-07-06 11:15+0000\n"
+"PO-Revision-Date: 2022-07-22 20:55+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
 "nl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:31
@@ -26,14 +26,12 @@ msgid "Importing assets..."
 msgstr "Bezig met importeren van spelelementen…"
 
 #: ../Scenes/ImportAssets.tscn:50
-#, fuzzy
-#| msgid "Open Assets Folder"
 msgid "Missing Asset Folder"
-msgstr "Spelelementenmap openen"
+msgstr "De spelelementenmap ontbreekt"
 
 #: ../Scenes/ImportAssets.tscn:56
 msgid "Missing Module"
-msgstr ""
+msgstr "Er ontbreekt een module"
 
 #: ../Scenes/Loading.tscn:34
 msgid "Loading..."
@@ -86,10 +84,8 @@ msgid "Use a room code to join your friend's lobby."
 msgstr "Voer de kamercode in om mee te spelen."
 
 #: ../Scenes/MainMenu.tscn:157
-#, fuzzy
-#| msgid "Hide Room Code"
 msgid "Enter Room Code"
-msgstr "Kamercode verbergen"
+msgstr "Kamercode invoeren"
 
 #: ../Scenes/MainMenu.tscn:177
 msgid "Room Code:"
@@ -101,7 +97,7 @@ msgstr "ABCD"
 
 #: ../Scenes/MainMenu.tscn:283
 msgid "Error"
-msgstr ""
+msgstr "Foutmelding"
 
 #: ../Scenes/OptionsMenu.tscn:47
 msgid "Audio"
@@ -620,17 +616,15 @@ msgstr "Annuleren"
 
 #: ../Scenes/OptionsMenu.tscn:1249
 msgid "Keep video settings?"
-msgstr ""
+msgstr "Wil je de video-instellingen behouden?"
 
 #: ../Scenes/OptionsMenu.tscn:1257
-#, fuzzy
-#| msgid "Reimport Assets"
 msgid "Reimporting Assets"
-msgstr "Spelelementen opnieuw importeren"
+msgstr "Bezig met opnieuw importeren van spelelementen…"
 
 #: ../Scenes/OptionsMenu.tscn:1275
 msgid "Warning!"
-msgstr ""
+msgstr "Waarschuwing!"
 
 #: ../Scenes/RandomMusicPlayer.tscn:23
 msgid "Now Playing:"
@@ -689,13 +683,11 @@ msgstr "Schaal:"
 
 #: ../Scenes/Game/CameraController.tscn:433
 msgid "Strength:"
-msgstr ""
+msgstr "Sterkte:"
 
 #: ../Scenes/Game/CameraController.tscn:444
-#, fuzzy
-#| msgid "10%"
 msgid "1.0"
-msgstr "10%"
+msgstr "1.0"
 
 #: ../Scenes/Game/CameraController.tscn:521
 msgid "System:"
@@ -723,10 +715,8 @@ msgid "Eraser Size:"
 msgstr "Gumomvang:"
 
 #: ../Scenes/Game/CameraController.tscn:659
-#, fuzzy
-#| msgid "Select track"
 msgid "Select a track..."
-msgstr "Kies een parcours"
+msgstr "Kies een parcours…"
 
 #: ../Scenes/Game/CameraController.tscn:664
 #, python-format
@@ -735,7 +725,7 @@ msgstr "Er zijn %d parcours geladen."
 
 #: ../Scenes/Game/Game.tscn:35
 msgid "Missing Assets"
-msgstr ""
+msgstr "Ontbrekende spelelementen"
 
 #: ../Scenes/Game/Game.tscn:44
 #, python-format
@@ -745,6 +735,10 @@ msgid ""
 "of %d missing assets, and %d assets differ between your client and the "
 "host's client:"
 msgstr ""
+"De organisator maakt gebruik van spelelementen die jij niet hebt. Dit houdt "
+"in dat je de elementen in kwestie niet kunt zien tijdens dit spel. Er zijn "
+"in totaal %d ontbrekende elementen en %d elementen verschillen tussen de "
+"client van jou en de organisator:"
 
 #: ../Scenes/Game/Game.tscn:58
 #, python-format
@@ -752,46 +746,44 @@ msgid ""
 "Your client is also missing %d files, and %d files differ from that of the "
 "host's, which in total is %s of data:"
 msgstr ""
+"Er ontbreken tevens %d bestanden in je client en %d bestanden verschillen "
+"met die van de organisator, in totaal %s:"
 
 #: ../Scenes/Game/Game.tscn:86
 msgid "Yes, download missing assets."
-msgstr ""
+msgstr "Ontbrekende elementen downloaden"
 
 #: ../Scenes/Game/Game.tscn:93
 msgid "No, continue without them."
-msgstr ""
+msgstr "Doorgaan zonder deze elementen"
 
 #: ../Scenes/Game/Game.tscn:99
 msgid "Download Assets?"
-msgstr ""
+msgstr "Wil de spelelementen downloaden?"
 
 #: ../Scenes/Game/Game.tscn:108
-#, fuzzy
-#| msgid "Loading..."
 msgid "Downloading..."
-msgstr "Bezig met laden…"
+msgstr "Bezig met downloaden…"
 
 #: ../Scenes/Game/Game.tscn:123
 msgid "Waiting for download..."
-msgstr ""
+msgstr "Bezig met voorbereiden…"
 
 #: ../Scenes/Game/Game.tscn:136
 msgid "Waiting to verify integrity..."
-msgstr ""
+msgstr "Bezig met verifiëren…"
 
 #: ../Scenes/Game/Game.tscn:149
-#, fuzzy
-#| msgid "Importing assets..."
 msgid "Waiting to import assets..."
 msgstr "Bezig met importeren van spelelementen…"
 
 #: ../Scenes/Game/Game.tscn:168 ../Scenes/Game/Game.tscn:186
 msgid "Error!"
-msgstr ""
+msgstr "Foutmelding!"
 
 #: ../Scenes/Game/Game.tscn:176
 msgid "Download Folder Locked"
-msgstr ""
+msgstr "De downloadmap is vergrendeld"
 
 #: ../Scenes/Game/UI/ChatBox.tscn:51
 msgid "Type a message here..."
@@ -915,10 +907,8 @@ msgid "Delete"
 msgstr "Verwijderen"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:89
-#, fuzzy
-#| msgid "Delete file?"
 msgid "Delete page?"
-msgstr "Wil je het bestand verwijderen?"
+msgstr "Wil je deze pagina verwijderen?"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
@@ -957,10 +947,8 @@ msgid "Lamp Color"
 msgstr "Belichtingskleur"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:157
-#, fuzzy
-#| msgid "Select track"
 msgid "Select a skybox..."
-msgstr "Kies een parcours"
+msgstr "Kies een skybox…"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:161
 #, python-format
@@ -968,10 +956,8 @@ msgid "Loaded %d skyboxes."
 msgstr "Er zijn %d skyboxes geladen."
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:164
-#, fuzzy
-#| msgid "Select track"
 msgid "Select a table..."
-msgstr "Kies een parcours"
+msgstr "Kies een tafel…"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:168
 #, python-format
@@ -1035,28 +1021,18 @@ msgid "Unknown event type"
 msgstr "Onbekende actie"
 
 #: ../Scripts/ImportAssets.gd:88
-#, fuzzy
-#| msgid ""
-#| "Tabletop Club couldn't find an assets folder in any of the following "
-#| "places:"
 msgid "Tabletop Club could not find any asset packs in the following folders:"
-msgstr "De objectmap is niet aangetroffen op een van de volgende locaties:"
+msgstr "Er zijn geen objectpakketten aangetroffen op de volgende locaties:"
 
 #: ../Scripts/ImportAssets.gd:90
-#, fuzzy
-#| msgid ""
-#| "Tabletop Club couldn't find an assets folder in any of the following "
-#| "places:"
 msgid ""
 "Tabletop Club could not find an assets folder in any of the following places:"
 msgstr "De objectmap is niet aangetroffen op een van de volgende locaties:"
 
 #: ../Scripts/ImportAssets.gd:96
-#, fuzzy
-#| msgid "Please create one of these folders and restart the game."
 msgid ""
 "Please place an asset pack into one of these folders, and restart the game."
-msgstr "Maak een van deze mappen aan en start het spel opnieuw."
+msgstr "Plaats een pakket in een van deze mappen aan en start het spel opnieuw."
 
 #: ../Scripts/ImportAssets.gd:98
 msgid "Please create one of these folders and restart the game."
@@ -1120,7 +1096,7 @@ msgstr "Duits"
 
 #: ../Scripts/MainMenu.gd:73
 msgid "Russian"
-msgstr ""
+msgstr "Russisch"
 
 #: ../Scripts/MainMenu.gd:116
 msgid "Room code must be four characters long!"
@@ -1136,49 +1112,43 @@ msgstr "Systeemstandaard"
 
 #: ../Scripts/OptionsMenu.gd:58
 msgid "Never"
-msgstr ""
+msgstr "Nooit"
 
 #: ../Scripts/OptionsMenu.gd:59
 msgid "30 seconds"
-msgstr ""
+msgstr "30 seconden"
 
 #: ../Scripts/OptionsMenu.gd:60
-#, fuzzy
-#| msgid "5 minutes"
 msgid "1 minute"
-msgstr "5 minuten"
+msgstr "1 minuut"
 
 #: ../Scripts/OptionsMenu.gd:62
-#, fuzzy
-#| msgid "5 minutes"
 msgid "10 minutes"
-msgstr "5 minuten"
+msgstr "10 minuten"
 
 #: ../Scripts/OptionsMenu.gd:63
-#, fuzzy
-#| msgid "5 minutes"
 msgid "30 minutes"
-msgstr "5 minuten"
+msgstr "30 minuten"
 
 #: ../Scripts/OptionsMenu.gd:66
 msgid "Borderless Fullscreen"
-msgstr ""
+msgstr "Naadloze schermvullende weergave"
 
 #: ../Scripts/OptionsMenu.gd:67
 msgid "Fullscreen"
-msgstr ""
+msgstr "Schermvullende weergave"
 
 #: ../Scripts/OptionsMenu.gd:72
 msgid "High"
-msgstr ""
+msgstr "Hoog"
 
 #: ../Scripts/OptionsMenu.gd:73
 msgid "Very High"
-msgstr ""
+msgstr "Erg hoog"
 
 #: ../Scripts/OptionsMenu.gd:74
 msgid "Ultra"
-msgstr ""
+msgstr "Ultra"
 
 #: ../Scripts/RandomMusicPlayer.gd:34
 msgid "Nothing"
@@ -1194,16 +1164,14 @@ msgid "Add selected objects..."
 msgstr "Geselecteerde objecten toevoegen…"
 
 #: ../Scripts/Game/CameraController.gd:1042
-#, fuzzy, python-format
-#| msgid "Total: %d"
+#, python-format
 msgid "Count: %d"
-msgstr "Totaal: %d"
+msgstr "Aantal: %d"
 
 #: ../Scripts/Game/CameraController.gd:1044
-#, fuzzy, python-format
-#| msgid "Total: %d"
+#, python-format
 msgid "Value: %d"
-msgstr "Totaal: %d"
+msgstr "Waarde: %d"
 
 #: ../Scripts/Game/CameraController.gd:1064
 msgid "Put in hand"
@@ -1239,17 +1207,15 @@ msgstr "Schudden"
 
 #: ../Scripts/Game/CameraController.gd:1100
 msgid "Suit"
-msgstr ""
+msgstr "Pakket"
 
 #: ../Scripts/Game/CameraController.gd:1102
 msgid "Value"
-msgstr ""
+msgstr "Waarde"
 
 #: ../Scripts/Game/CameraController.gd:1104
-#, fuzzy
-#| msgid "Sort"
 msgid "Sort by"
-msgstr "Rangschikken"
+msgstr "Sorteren op"
 
 #: ../Scripts/Game/CameraController.gd:1113
 msgid "Timer"
@@ -1329,10 +1295,9 @@ msgid "Ctrl + %s"
 msgstr "Ctrl+%s"
 
 #: ../Scripts/Game/CameraController.gd:1253
-#, fuzzy, python-format
-#| msgid "Ctrl + %s"
+#, python-format
 msgid "Cmd + %s"
-msgstr "Ctrl+%s"
+msgstr "Cmd+%s"
 
 #: ../Scripts/Game/CameraController.gd:1254
 #, python-format
@@ -1428,14 +1393,12 @@ msgid "Box select"
 msgstr "Box selecteren"
 
 #: ../Scripts/Game/CameraController.gd:1312
-#, fuzzy
-#| msgid "Select object"
 msgid "Flick object"
-msgstr "Object selecteren"
+msgstr "Object aantikken"
 
 #: ../Scripts/Game/CameraController.gd:1314
 msgid "Prepare to flick"
-msgstr ""
+msgstr "Klaar om aan te tikken"
 
 #: ../Scripts/Game/CameraController.gd:1318
 msgid "Stop measuring"
@@ -1470,10 +1433,8 @@ msgid "Table menu"
 msgstr "Tafelmenu"
 
 #: ../Scripts/Game/CameraController.gd:1348
-#, fuzzy
-#| msgid "Stop moving"
 msgid "Stop flicking"
-msgstr "Stoppen met verplaatsen"
+msgstr "Stoppen met aantikken"
 
 #: ../Scripts/Game/CameraController.gd:1352
 msgid "Remove last ruler"
@@ -1574,19 +1535,18 @@ msgid "Start stopwatch"
 msgstr "Stopwatch starten"
 
 #: ../Scripts/Game/Game.gd:529
-#, fuzzy, python-format
-#| msgid "Loading..."
+#, python-format
 msgid "Downloading %s ..."
-msgstr "Bezig met laden…"
+msgstr "Bezig met downloaden van %s…"
 
 #: ../Scripts/Game/Game.gd:688
 msgid "Download completed!"
-msgstr ""
+msgstr "Het downloaden is voltooid!"
 
 #: ../Scripts/Game/Game.gd:727
 #, python-format
 msgid "Verified %d out of %d files!"
-msgstr ""
+msgstr "Er zijn %d van %d bestanden geverifieerd!"
 
 #: ../Scripts/Game/Game.gd:991
 msgid "Loaded table has no version information. Load anyway?"
@@ -1610,13 +1570,12 @@ msgstr "De geladen tabel is niet het juiste formaat."
 #: ../Scripts/Game/Game.gd:1039
 #, python-format
 msgid "Client version (%s) does not match server version (%s)!"
-msgstr ""
+msgstr "Die clientversie (%s) komt niet overeen met de serverversie (%s)!"
 
 #: ../Scripts/Game/Game.gd:1178
-#, fuzzy, python-format
-#| msgid "Importing assets..."
+#, python-format
 msgid "Importing %s ..."
-msgstr "Bezig met importeren van spelelementen…"
+msgstr "Bezig met importeren van %s…"
 
 #: ../Scripts/Game/Game.gd:1196
 #, python-format
@@ -1711,7 +1670,7 @@ msgstr "De overdrachtsmodus is ongeldig."
 
 #: ../Scripts/Game/UI/ChatBox.gd:51
 msgid "Too much text being sent, waiting..."
-msgstr ""
+msgstr "Er wordt teveel tekst verstuurd…"
 
 #: ../Scripts/Game/UI/GameUI.gd:210
 #, python-format
@@ -1837,26 +1796,25 @@ msgstr "‘%s’ bestaat al. Wil je het overschrijven?"
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:77
 #, python-format
 msgid "Author: %s"
-msgstr ""
+msgstr "Maker: %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:60
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:83
 #, python-format
 msgid "License: %s"
-msgstr ""
+msgstr "Licentie: %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:66
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:89
-#, fuzzy, python-format
-#| msgid "Modified: %s"
+#, python-format
 msgid "Modified by: %s"
-msgstr "Bewerkt: %s"
+msgstr "Bewerkt door: %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:72
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:95
 #, python-format
 msgid "URL: %s"
-msgstr ""
+msgstr "Url: %s"
 
 #: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:108
 #, python-format
