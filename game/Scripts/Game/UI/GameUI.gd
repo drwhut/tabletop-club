@@ -191,6 +191,7 @@ func _update_player_list() -> void:
 			label = RichTextLabel.new()
 			label.name = player_id_str
 			label.rect_min_size.y = 20
+			label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			label.bbcode_enabled = true
 			label.scroll_active = false
 			_player_list_container.add_child(label)
