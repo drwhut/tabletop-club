@@ -65,9 +65,14 @@ func free_object(object: Object) -> void:
 	if object is Node:
 		# This is a workaround for a crash that sometimes happens when a
 		# MeshInstance tries to disconnect its mesh's _mesh_changed signal.
-		if object is Piece:
-			for mesh_instance in object.get_mesh_instances():
-				mesh_instance.mesh = null
+		var node_stack = [object]
+		while not node_stack.empty():
+			var node: Node = node_stack.pop_back()
+			for child in node.get_children():
+				node_stack.push_back(child)
+			
+			if node is MeshInstance:
+				node.mesh = null
 		
 		object.queue_free()
 	else:
