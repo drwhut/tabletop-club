@@ -62,7 +62,16 @@ func free_object(object: Object) -> void:
 	# Lock the resource mutex here, just in case a resource used by the object
 	# is being created as it is being freed here.
 	_res_mutex.lock()
-	object.free()
+	if object is Node:
+		# This is a workaround for a crash that sometimes happens when a
+		# MeshInstance tries to disconnect its mesh's _mesh_changed signal.
+		if object is Piece:
+			for mesh_instance in object.get_mesh_instances():
+				mesh_instance.mesh = null
+		
+		object.queue_free()
+	else:
+		object.free()
 	_res_mutex.unlock()
 
 # Queue an object to be freed in a thread-safe manner.
