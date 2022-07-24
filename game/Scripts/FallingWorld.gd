@@ -35,13 +35,6 @@ const SPAWN_PLANE = 40.0
 var _camera_distance: float = 1.0
 var _time_in_scene: float = 0.0
 
-var _build_thread = Thread.new()
-
-var _next_piece_entry: Dictionary = {}
-var _piece_to_spawn: Piece = null
-
-var _piece_mutex = Mutex.new()
-
 var _asset_chances = {}
 var _rng = RandomNumberGenerator.new()
 
@@ -140,9 +133,7 @@ func _ready():
 		
 		_world_environment.environment = env
 	
-	# Kick-start the build thread with the first piece.
-	_decide_next_piece()
-	_build_thread.start(self, "_build_next_piece")
+	PieceFactory.connect("finished", self, "_on_PieceFactory_finished")
 
 func _process(delta):
 	_time_in_scene += delta
@@ -155,19 +146,7 @@ func _process(delta):
 	
 	_camera.transform = _camera.transform.looking_at(Vector3.ZERO, Vector3.UP)
 
-func _build_next_piece(_userdata) -> void:
-	_piece_mutex.lock()
-	var piece_entry = _next_piece_entry.duplicate(true)
-	_piece_mutex.unlock()
-	
-	if not (piece_entry.empty() or piece_entry.has("entry_names")):
-		var piece = PieceBuilder.build_piece(piece_entry, false)
-		
-		_piece_mutex.lock()
-		_piece_to_spawn = piece
-		_piece_mutex.unlock()
-
-func _decide_next_piece() -> void:
+func _decide_next_piece() -> Dictionary:
 	if not _asset_chances.empty():
 		var pack_total = _asset_chances["/total"]
 		var rand_pack = _rng.randi_range(1, pack_total)
@@ -197,47 +176,45 @@ func _decide_next_piece() -> void:
 			if not type_selected.empty():
 				var possible_objects = _asset_chances[pack_selected][type_selected]["assets"]
 				var random_db_index = possible_objects[_rng.randi() % possible_objects.size()]
-				_next_piece_entry = AssetDB.get_db()[pack_selected][type_selected][random_db_index]
+				return AssetDB.get_db()[pack_selected][type_selected][random_db_index]
+	
+	return {}
+
+func _on_PieceFactory_finished(order: int, piece: Piece):
+	# This should be the only node using the PieceFactory at the time, so
+	# accept all pieces that come out.
+	PieceFactory.accept(order)
+	
+	piece.gravity_scale = 0.0
+	
+	# Determine a random position and rotation for the piece.
+	var rot = 2 * PI * _rng.randf()
+	var dst = max(_camera_distance - 2*piece.get_radius(), 0.0)
+	var new_origin = Vector3(dst*cos(rot), SPAWN_PLANE, dst*sin(rot))
+	piece.transform.origin = new_origin
+	
+	var new_basis = piece.transform.basis
+	new_basis = new_basis.rotated(Vector3.UP, 2 * PI * _rng.randf())
+	new_basis = new_basis.rotated(Vector3.RIGHT, 2 * PI * _rng.randf())
+	piece.transform.basis = new_basis
+	
+	piece.linear_velocity = Vector3(0, -FALL_SPEED, 0)
+	
+	# Stop sound effects from playing if the pieces collide with each other.
+	piece.contact_monitor = false
+	
+	_pieces.add_child(piece)
 
 func _on_SpawnTimer_timeout():
-	_piece_mutex.lock()
-	
-	# Check to see if the build thread has built a piece.
-	if _piece_to_spawn != null:
-		_piece_to_spawn.gravity_scale = 0.0
-		
-		# Determine a random position and rotation for the piece.
-		var rot = 2 * PI * _rng.randf()
-		var dst = max(_camera_distance - 2*_piece_to_spawn.get_radius(), 0.0)
-		var new_origin = Vector3(dst*cos(rot), SPAWN_PLANE, dst*sin(rot))
-		_piece_to_spawn.transform.origin = new_origin
-		
-		var new_basis = _piece_to_spawn.transform.basis
-		new_basis = new_basis.rotated(Vector3.UP, 2 * PI * _rng.randf())
-		new_basis = new_basis.rotated(Vector3.RIGHT, 2 * PI * _rng.randf())
-		_piece_to_spawn.transform.basis = new_basis
-		
-		_piece_to_spawn.linear_velocity = Vector3(0, -FALL_SPEED, 0)
-		
-		# Stop sound effects from playing if the pieces collide with each other.
-		_piece_to_spawn.contact_monitor = false
-		
-		_pieces.add_child(_piece_to_spawn)
-		_piece_to_spawn = null
-		
-		_decide_next_piece()
-		_build_thread.wait_to_finish()
-		_build_thread.start(self, "_build_next_piece")
+	var next_piece = _decide_next_piece()
+	if not next_piece.empty():
+		PieceFactory.request(next_piece)
 	
 	# De-spawn any pieces that have fallen off the screen.
 	for piece in _pieces.get_children():
 		if piece.translation.y < DESPAWN_PLANE:
 			_pieces.remove_child(piece)
 			ResourceManager.queue_free_object(piece)
-	
-	_piece_mutex.unlock()
 
 func _on_FallingWorld_tree_exiting():
-	_build_thread.wait_to_finish()
-	if _piece_to_spawn != null:
-		_piece_to_spawn.free()
+	PieceFactory.disconnect("finished", self, "_on_PieceFactory_finished")

@@ -39,8 +39,8 @@ var _piece: Piece = null
 var _label_direction_moving = 1
 var _label_time_since_move = 0.0
 var _label_time_waiting = 0.0
+var _piece_factory_order = -1
 var _piece_to_add: Piece = null
-var _reject_factory_output = false
 
 # Get the name of the piece node this preview is displaying.
 # Returns: The name of the piece node, an empty string if displaying nothing.
@@ -106,30 +106,21 @@ func set_piece_details(piece_entry: Dictionary) -> void:
 	_label_direction_moving = 1
 	_label_time_since_move = 0.0
 	_label_time_waiting = LABEL_WAIT_TIME
-	
-	# If we've just set the details of a piece, then we're bound to have our
-	# display set as well, so welcome any pieces built by the
-	# ObjectPreviewFactory with open arms!
-	_reject_factory_output = false
 
 # Set the piece to be displayed in the viewport.
-# Returns: If the piece was accepted. If false, it should be freed!
 # piece: The piece to display. Note that it must be an orphan node!
-func set_piece_display(piece: Piece) -> bool:
-	if _reject_factory_output:
-		return false
-	
+func set_piece_display(piece: Piece) -> void:
 	if _piece_to_add != null:
 		ResourceManager.queue_free_object(_piece_to_add)
 	_piece_to_add = piece
-	
-	return true
 
 func _ready():
 	# We connect the signal here because we don't want the editor to connect
 	# the signal when this is inside an ObjectPreviewGrid (which is an editor
 	# script).
 	connect("tree_exiting", self, "_on_tree_exiting")
+	
+	PieceFactory.connect("finished", self, "_on_PieceFactory_finished")
 
 func _process(delta):
 	# Only add a piece to the display if we're not waiting to remove a piece.
@@ -212,12 +203,12 @@ func _clear_gui(details: bool = true) -> void:
 	if details:
 		hint_tooltip = ""
 		_label.text = ""
-		
-		# If the ObjectPreviewFactory is still building a piece for this
-		# preview, we don't want it to appear after we've cleared the preview,
-		# so turn it away when it does eventually come knocking on the front
-		# door.
-		_reject_factory_output = true
+	
+	# If the PieceFactory is still building a piece for this preview, we don't
+	# want it to appear after we've cleared the preview, so cancel the request.
+	if _piece_factory_order >= 0:
+		PieceFactory.cancel(_piece_factory_order)
+	_piece_factory_order = -1
 	
 	# We've set the viewport to disable 3D, but it won't actually take effect
 	# until the end of the next render pass.
@@ -242,10 +233,10 @@ func _remove_piece() -> void:
 func _set_entry_gui(piece_entry: Dictionary) -> void:
 	set_piece_details(piece_entry)
 	
-	# Ask the ObjectPreviewFactory to build the piece for us to display in
-	# another thread.
+	# Ask the PieceFactory to build the piece for us to display in another
+	# thread.
 	_clear_gui(false)
-	ObjectPreviewFactory.add_to_queue(self, piece_entry)
+	_piece_factory_order = PieceFactory.request(piece_entry)
 
 # Called when the selected flag has been changed.
 # selected: If the preview is now selected.
@@ -256,10 +247,15 @@ func _on_frame_post_draw():
 	_remove_piece()
 	VisualServer.disconnect("frame_post_draw", self, "_on_frame_post_draw")
 
+func _on_PieceFactory_finished(order: int, piece: Piece):
+	if order == _piece_factory_order:
+		set_piece_display(piece)
+		PieceFactory.accept(order)
+		
+		_piece_factory_order = -1
+
 func _on_tree_exiting():
-	# Wait for the ObjectPreviewFactory's build thread to finish in the event
-	# it is still building a piece for us.
-	ObjectPreviewFactory.flush_queue()
+	PieceFactory.disconnect("finished", self, "_on_PieceFactory_finished")
 	
 	if _piece_to_add != null:
-		_piece_to_add.queue_free()
+		ResourceManager.free_object(_piece_to_add)
