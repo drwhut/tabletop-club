@@ -102,10 +102,12 @@ anchor_right = 1.0
 margin_left = -200.0
 margin_bottom = 76.0
 grow_horizontal = 0
+mouse_filter = 2
 
 [node name="RoomCodeLabel" type="RichTextLabel" parent="HideableUI/MultiplayerContainer"]
 margin_right = 200.0
 margin_bottom = 16.0
+mouse_filter = 2
 custom_fonts/bold_font = ExtResource( 6 )
 custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
@@ -116,6 +118,7 @@ scroll_active = false
 margin_top = 20.0
 margin_right = 200.0
 margin_bottom = 46.0
+mouse_filter = 2
 alignment = 2
 
 [node name="RoomCodeToggleButton" type="Button" parent="HideableUI/MultiplayerContainer/RoomCodeVisibleContainer"]
@@ -127,6 +130,7 @@ margin_bottom = 26.0
 margin_top = 50.0
 margin_right = 200.0
 margin_bottom = 50.0
+mouse_filter = 2
 
 [node name="ObjectsDialog" parent="." instance=ExtResource( 2 )]
 window_title = "Objects"

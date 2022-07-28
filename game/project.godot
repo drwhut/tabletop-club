@@ -170,8 +170,8 @@ AssetDB="*res://Scripts/AssetDB.gd"
 BindManager="*res://Scripts/BindManager.gd"
 Global="*res://Scripts/Global.gd"
 Lobby="*res://Scripts/Lobby.gd"
-ObjectPreviewFactory="*res://Scripts/Game/UI/Previews/ObjectPreviewFactory.gd"
 PieceBuilder="*res://Scripts/PieceBuilder.gd"
+PieceFactory="*res://Scripts/PieceFactory.gd"
 ResourceManager="*res://Scripts/ResourceManager.gd"
 
 [debug]

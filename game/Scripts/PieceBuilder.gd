@@ -86,7 +86,7 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 		_extract_and_shape_mesh_instances(build, piece, Transform.IDENTITY)
 		
 		if not piece.get_parent():
-			piece.free()
+			ResourceManager.free_object(piece)
 		piece = build
 	
 	piece.mass = piece_entry["mass"]
@@ -163,7 +163,7 @@ func build_table(table_entry: Dictionary) -> RigidBody:
 	var table = RigidBody.new()
 	_extract_and_shape_mesh_instances(table, scene, Transform.IDENTITY)
 	if not scene.get_parent():
-		scene.free()
+		ResourceManager.free_object(scene)
 	
 	table.mass = 100000 # = 10kg
 	table.mode = RigidBody.MODE_STATIC
@@ -337,4 +337,4 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 			collision_shape.add_child(from)
 			add_to.add_child(collision_shape)
 		else:
-			from.free()
+			ResourceManager.free_object(from)
