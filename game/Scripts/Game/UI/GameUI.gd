@@ -46,6 +46,7 @@ onready var _flip_table_button = $HideableUI/TopPanel/FlipTableButton
 onready var _game_menu_background = $CanvasLayer/GameMenuBackground
 onready var _games_dialog = $GamesDialog
 onready var _hideable_ui = $HideableUI
+onready var _multiplayer_container = $HideableUI/MultiplayerContainer
 onready var _notebook_dialog = $NotebookDialog
 onready var _objects_dialog = $ObjectsDialog
 onready var _options_menu = $CanvasLayer/OptionsMenu
@@ -82,10 +83,9 @@ func add_notification_error(message: String) -> void:
 func apply_options(config: ConfigFile) -> void:
 	_chat_box.apply_options(config)
 
-# Hide the room code from the UI.
-func hide_room_code() -> void:
-	_room_code_label.visible = false
-	_room_code_toggle_button.visible = false
+# Hide the multiplayer section of the UI.
+func hide_multiplayer_ui() -> void:
+	_multiplayer_container.visible = false
 
 # Popup the objects menu dialog.
 func popup_objects_dialog() -> void:
