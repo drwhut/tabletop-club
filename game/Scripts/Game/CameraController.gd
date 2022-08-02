@@ -755,6 +755,19 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("game_toggle_ui"):
 		_camera_ui.visible = not _camera_ui.visible
 	
+	# Allow echo events for zooming in and out so the player doesn't have to
+	# spam the input.
+	elif event.is_action_pressed("game_zoom_in", true) or event.is_action_pressed("game_zoom_out", true):
+		var delta = -1.0 if event.is_action_pressed("game_zoom_in", true) else 1.0
+		var ctrl = false
+		var alt = false
+		
+		if event is InputEventWithModifiers:
+			ctrl = event.command if OS.get_name() == "OSX" else event.control
+			alt = event.control if OS.get_name() == "OSX" else event.alt
+		
+		_on_scroll(delta, ctrl, alt)
+	
 	if event is InputEventKey:
 		var ctrl = event.command if OS.get_name() == "OSX" else event.control
 		if event.pressed and ctrl:
@@ -1269,7 +1282,13 @@ func _set_control_hint_label() -> void:
 		text += _set_control_hint_label_row_actions(tr("Rotate camera"),
 			["game_rotate"], tr("Hold %s + Move Mouse"))
 		
-		text += _set_control_hint_label_row(tr("Zoom camera"), sw)
+		# Only show the zoom in and zoom out actions when in the "default"
+		# camera state - otherwise, the hint label will get quite large.
+		var zi = BindManager.get_action_input_event_text("game_zoom_in")
+		var zo = BindManager.get_action_input_event_text("game_zoom_out")
+		var sw_extra = "%s / %s / %s" % [sw, zi, zo]
+		
+		text += _set_control_hint_label_row(tr("Zoom camera"), sw_extra)
 	
 	#####################
 	# LEFT MOUSE BUTTON #

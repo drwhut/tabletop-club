@@ -42,6 +42,7 @@ margin_left = 4.0
 margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
+follow_focus = true
 script = ExtResource( 4 )
 section_name = "audio"
 text = "Audio"
@@ -135,6 +136,7 @@ margin_left = 4.0
 margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
+follow_focus = true
 script = ExtResource( 4 )
 section_name = "controls"
 text = "Controls"
@@ -413,6 +415,7 @@ margin_left = 4.0
 margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
+follow_focus = true
 script = ExtResource( 4 )
 section_name = "general"
 text = "General"
@@ -533,28 +536,29 @@ margin_left = 4.0
 margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
+follow_focus = true
 script = ExtResource( 4 )
 section_name = "key_bindings"
 text = "Key Bindings"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings"]
 margin_right = 976.0
-margin_bottom = 488.0
+margin_bottom = 536.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
 [node name="MoveForward" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 3.0
-margin_right = 486.0
+margin_right = 480.0
 margin_bottom = 23.0
 size_flags_horizontal = 3
 text = "Move Forward"
 align = 2
 
 [node name="MoveForwardButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_right = 976.0
+margin_left = 484.0
+margin_right = 964.0
 margin_bottom = 26.0
 hint_tooltip = "Moves the camera forward."
 size_flags_horizontal = 3
@@ -563,16 +567,16 @@ action = "game_up"
 
 [node name="MoveBack" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 33.0
-margin_right = 486.0
+margin_right = 480.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 text = "Move Back"
 align = 2
 
 [node name="MoveBackButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
+margin_left = 484.0
 margin_top = 30.0
-margin_right = 976.0
+margin_right = 964.0
 margin_bottom = 56.0
 hint_tooltip = "Moves the camera backwards."
 size_flags_horizontal = 3
@@ -581,16 +585,16 @@ action = "game_down"
 
 [node name="MoveLeft" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 63.0
-margin_right = 486.0
+margin_right = 480.0
 margin_bottom = 83.0
 size_flags_horizontal = 3
 text = "Move Left"
 align = 2
 
 [node name="MoveLeftButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
+margin_left = 484.0
 margin_top = 60.0
-margin_right = 976.0
+margin_right = 964.0
 margin_bottom = 86.0
 hint_tooltip = "Moves the camera left."
 size_flags_horizontal = 3
@@ -599,16 +603,16 @@ action = "game_left"
 
 [node name="MoveRight" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 93.0
-margin_right = 486.0
+margin_right = 480.0
 margin_bottom = 113.0
 size_flags_horizontal = 3
 text = "Move Right"
 align = 2
 
 [node name="MoveRightButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
+margin_left = 484.0
 margin_top = 90.0
-margin_right = 976.0
+margin_right = 964.0
 margin_bottom = 116.0
 hint_tooltip = "Moves the camera right."
 size_flags_horizontal = 3
@@ -617,16 +621,16 @@ action = "game_right"
 
 [node name="RotateCamera" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 123.0
-margin_right = 486.0
+margin_right = 480.0
 margin_bottom = 143.0
 size_flags_horizontal = 3
 text = "Rotate Camera"
 align = 2
 
 [node name="RotateCameraButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
+margin_left = 484.0
 margin_top = 120.0
-margin_right = 976.0
+margin_right = 964.0
 margin_bottom = 146.0
 hint_tooltip = "Enable rotation of the camera when moving the mouse."
 size_flags_horizontal = 3
@@ -635,194 +639,230 @@ action = "game_rotate"
 
 [node name="ResetCamera" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 153.0
-margin_right = 486.0
+margin_right = 480.0
 margin_bottom = 173.0
 size_flags_horizontal = 3
 text = "Reset Camera"
 align = 2
 
 [node name="ResetCameraButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
+margin_left = 484.0
 margin_top = 150.0
-margin_right = 976.0
+margin_right = 964.0
 margin_bottom = 176.0
 hint_tooltip = "Resets the camera to the default position."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_reset_camera"
 
-[node name="FlipPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="ZoomCameraIn" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 183.0
-margin_right = 486.0
+margin_right = 480.0
 margin_bottom = 203.0
+size_flags_horizontal = 3
+text = "Zoom In"
+align = 2
+
+[node name="ZoomCameraInButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 484.0
+margin_top = 180.0
+margin_right = 964.0
+margin_bottom = 206.0
+hint_tooltip = "Zoom the camera or object towards the table."
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+action = "game_zoom_in"
+
+[node name="ZoomCameraOut" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 213.0
+margin_right = 480.0
+margin_bottom = 233.0
+size_flags_horizontal = 3
+text = "Zoom Out"
+align = 2
+
+[node name="ZoomCameraOutButton2" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 484.0
+margin_top = 210.0
+margin_right = 964.0
+margin_bottom = 236.0
+hint_tooltip = "Zoom the camera or object away from the table."
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+action = "game_zoom_out"
+
+[node name="FlipPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 243.0
+margin_right = 480.0
+margin_bottom = 263.0
 size_flags_horizontal = 3
 text = "Flip Piece Orientation"
 align = 2
 
 [node name="FlipPieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_top = 180.0
-margin_right = 976.0
-margin_bottom = 206.0
+margin_left = 484.0
+margin_top = 240.0
+margin_right = 964.0
+margin_bottom = 266.0
 hint_tooltip = "Flip the selected piece on the horizontal axis."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_flip_piece"
 
 [node name="ResetPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 213.0
-margin_right = 486.0
-margin_bottom = 233.0
+margin_top = 273.0
+margin_right = 480.0
+margin_bottom = 293.0
 size_flags_horizontal = 3
 text = "Reset Piece Orientation"
 align = 2
 
 [node name="ResetPieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_top = 210.0
-margin_right = 976.0
-margin_bottom = 236.0
+margin_left = 484.0
+margin_top = 270.0
+margin_right = 964.0
+margin_bottom = 296.0
 hint_tooltip = "Resets the selected piece to its default orientation."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_reset_piece"
 
 [node name="LockPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 243.0
-margin_right = 486.0
-margin_bottom = 263.0
+margin_top = 303.0
+margin_right = 480.0
+margin_bottom = 323.0
 size_flags_horizontal = 3
 text = "Lock/Unlock Piece"
 align = 2
 
 [node name="LockPieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_top = 240.0
-margin_right = 976.0
-margin_bottom = 266.0
+margin_left = 484.0
+margin_top = 300.0
+margin_right = 964.0
+margin_bottom = 326.0
 hint_tooltip = "Toggles the lock on the selected piece, fixing its position and rotation."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_lock_piece"
 
 [node name="DeletePiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 273.0
-margin_right = 486.0
-margin_bottom = 293.0
+margin_top = 333.0
+margin_right = 480.0
+margin_bottom = 353.0
 size_flags_horizontal = 3
 text = "Delete Piece"
 align = 2
 
 [node name="DeletePieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_top = 270.0
-margin_right = 976.0
-margin_bottom = 296.0
+margin_left = 484.0
+margin_top = 330.0
+margin_right = 964.0
+margin_bottom = 356.0
 hint_tooltip = "Deletes the currently selected piece."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_delete_piece"
 
 [node name="ToggleDebugInfo" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 303.0
-margin_right = 486.0
-margin_bottom = 323.0
+margin_top = 363.0
+margin_right = 480.0
+margin_bottom = 383.0
 size_flags_horizontal = 3
 text = "Toggle Debug Info"
 align = 2
 
 [node name="ToggleDebugInfoButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_top = 300.0
-margin_right = 976.0
-margin_bottom = 326.0
+margin_left = 484.0
+margin_top = 360.0
+margin_right = 964.0
+margin_bottom = 386.0
 hint_tooltip = "Toggles whether debug information is displayed."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_toggle_debug_info"
 
 [node name="Quicksave" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 333.0
-margin_right = 486.0
-margin_bottom = 353.0
+margin_top = 393.0
+margin_right = 480.0
+margin_bottom = 413.0
 size_flags_horizontal = 3
 text = "Quicksave"
 align = 2
 
 [node name="QuicksaveButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_top = 330.0
-margin_right = 976.0
-margin_bottom = 356.0
+margin_left = 484.0
+margin_top = 390.0
+margin_right = 964.0
+margin_bottom = 416.0
 hint_tooltip = "Creates a quicksave file."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_quicksave"
 
 [node name="Quickload" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 363.0
-margin_right = 486.0
-margin_bottom = 383.0
+margin_top = 423.0
+margin_right = 480.0
+margin_bottom = 443.0
 size_flags_horizontal = 3
 text = "Quickload"
 align = 2
 
 [node name="QuickloadButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_top = 360.0
-margin_right = 976.0
-margin_bottom = 386.0
+margin_left = 484.0
+margin_top = 420.0
+margin_right = 964.0
+margin_bottom = 446.0
 hint_tooltip = "Loads the latest quicksave file."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_quickload"
 
 [node name="ToggleUI" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 393.0
-margin_right = 486.0
-margin_bottom = 413.0
+margin_top = 453.0
+margin_right = 480.0
+margin_bottom = 473.0
 size_flags_horizontal = 3
 text = "Toggle UI"
 align = 2
 
 [node name="ToggleUIButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_top = 390.0
-margin_right = 976.0
-margin_bottom = 416.0
+margin_left = 484.0
+margin_top = 450.0
+margin_right = 964.0
+margin_bottom = 476.0
 hint_tooltip = "Toggles whether the entire UI is displayed."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_toggle_ui"
 
 [node name="TakeScreenshot" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 423.0
-margin_right = 486.0
-margin_bottom = 443.0
+margin_top = 483.0
+margin_right = 480.0
+margin_bottom = 503.0
 size_flags_horizontal = 3
 text = "Take Screenshot"
 align = 2
 
 [node name="TakeScreenshotButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_top = 420.0
-margin_right = 976.0
-margin_bottom = 446.0
+margin_left = 484.0
+margin_top = 480.0
+margin_right = 964.0
+margin_bottom = 506.0
 hint_tooltip = "Takes a screenshot of the game in its current state."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_take_screenshot"
 
 [node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 450.0
-margin_right = 486.0
-margin_bottom = 476.0
+margin_top = 510.0
+margin_right = 480.0
+margin_bottom = 536.0
 
 [node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_left = 490.0
-margin_top = 450.0
-margin_right = 976.0
-margin_bottom = 476.0
+margin_left = 484.0
+margin_top = 510.0
+margin_right = 964.0
+margin_bottom = 536.0
 hint_tooltip = "Used to reset the key bindings to their default values."
 text = "Reset Bindings"
 
@@ -834,6 +874,7 @@ margin_left = 4.0
 margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
+follow_focus = true
 script = ExtResource( 4 )
 section_name = "multiplayer"
 text = "Multiplayer"
@@ -920,6 +961,7 @@ margin_left = 4.0
 margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
+follow_focus = true
 script = ExtResource( 4 )
 section_name = "video"
 text = "Video"
