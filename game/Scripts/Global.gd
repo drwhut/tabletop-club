@@ -22,6 +22,8 @@
 
 extends Node
 
+signal censor_changed()
+
 enum {
 	MODE_NONE,
 	MODE_ERROR,
@@ -39,6 +41,8 @@ var error_reporter = null
 
 var system_locale: String = ""
 
+var censoring_profanity: bool = true setget set_censoring_profanity
+
 # Throttle the piece state transmissions if there are many active physics
 # objects.
 const SRV_PIECE_UPDATE_TRANSMIT_LIMIT = 20
@@ -51,6 +55,43 @@ var _current_scene: Node = null
 var _loader: ResourceInteractiveLoader = null
 var _loader_args: Dictionary = {}
 var _wait_frames = 0
+
+var _profanity_list: Array = []
+
+# Given a string, return a new string with profanity hidden.
+# Returns: A (hopefully) profanity-less string.
+# string: The string to censor.
+func censor_profanity(string: String) -> String:
+	var lower_string = string.to_lower()
+	
+	# We are assuming the profanity list is in alphabetical order, and thus
+	# prefixes will come first.
+	for i in range(_profanity_list.size() - 1, -1, -1):
+		var profanity = _profanity_list[i].to_lower()
+		var j = 0
+		while j >= 0:
+			j = lower_string.find_last(profanity)
+			if j >= 0:
+				var censor = false
+				if lower_string.length() == profanity.length():
+					censor = true
+				elif j == 0:
+					# Most control and punctuation characters are below 65.
+					if lower_string.ord_at(profanity.length()) < 65:
+						censor = true
+				elif j == lower_string.length() - profanity.length():
+					if lower_string.ord_at(j - 1) < 65:
+						censor = true
+				else:
+					if lower_string.ord_at(j - 1) < 65 and lower_string.ord_at(j + profanity.length()) < 65:
+						censor = true
+				
+				if censor:
+					string.erase(j, profanity.length())
+					string = string.insert(j, "*".repeat(profanity.length()))
+				lower_string = lower_string.substr(0, j)
+	
+	return string
 
 # Get the directory of the given subfolder in the output folder. This should be
 # in the user's documents folder, but if it isn't, the function will resort to
@@ -91,6 +132,15 @@ func restart_game() -> void:
 	_goto_scene(ProjectSettings.get_setting("application/run/main_scene"), {
 		"mode": MODE_NONE
 	})
+
+# Set whether the game will censor profanity in player-generated text.
+# censor: If the game will censor profanity.
+func set_censoring_profanity(censor: bool) -> void:
+	var emit_after = (censor != censoring_profanity)
+	censoring_profanity = censor
+	
+	if emit_after:
+		emit_signal("censor_changed")
 
 # Start the game as a client.
 # room_code: The room code to connect to.
@@ -142,6 +192,8 @@ func _ready():
 		tabletop_importer = ClassDB.instance("TabletopImporter")
 	if type_exists("ErrorReporter"):
 		error_reporter = ClassDB.instance("ErrorReporter")
+	
+	_profanity_list = preload("res://Text/Profanity.tres").text.split("\n", false)
 
 func _process(_delta):
 	if _loader == null:

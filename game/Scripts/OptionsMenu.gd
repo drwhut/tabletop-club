@@ -168,6 +168,12 @@ func _apply_config(config: ConfigFile) -> void:
 			InputMap.action_erase_events(action)
 			InputMap.action_add_event(action, config.get_value("key_bindings", action))
 	
+	###############
+	# MULTIPLAYER #
+	###############
+	
+	Global.censoring_profanity = config.get_value("multiplayer", "censor_profanity")
+	
 	#########
 	# VIDEO #
 	#########

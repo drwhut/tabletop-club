@@ -78,11 +78,6 @@ func add_notification_warning(message: String) -> void:
 func add_notification_error(message: String) -> void:
 	_chat_box.add_raw_message("[color=red][ERROR] %s[/color]" % message, false)
 
-# Apply options from the options menu.
-# config: The options to apply.
-func apply_options(config: ConfigFile) -> void:
-	_chat_box.apply_options(config)
-
 # Hide the multiplayer section of the UI.
 func hide_multiplayer_ui() -> void:
 	_multiplayer_container.visible = false
@@ -134,6 +129,8 @@ func _ready():
 		Global.error_reporter.connect("warning_received", self, "_on_warning_received")
 	else:
 		push_warning("ErrorReporter does not exist! Make sure to install the TabletopClub Godot module.")
+	
+	Global.connect("censor_changed", self, "_on_Global_censor_changed")
 	
 	# Make sure we emit the signal when all of the nodes are ready:
 	call_deferred("_set_rotation_amount")
@@ -266,6 +263,9 @@ func _on_GameUI_tree_exiting():
 		
 		if Global.error_reporter.is_connected("warning_received", self, "_on_warning_received"):
 			Global.error_reporter.disconnect("warning_received", self, "_on_warning_received")
+
+func _on_Global_censor_changed():
+	_update_player_list()
 
 func _on_LoadGameButton_pressed():
 	_popup_save_dialog(false)

@@ -30,10 +30,7 @@ onready var _toggle_button = $ToggleButton
 const NUM_CHARS_BEFORE_TIMEOUT: int = 1000
 const TIMEOUT_WAIT_TIME: float = 1.0
 
-export(bool) var censoring_profanity: bool = true
-
 var _num_chars_recent: int = 0
-var _profanity_list: Array = []
 var _time_since_last_msg: float = 0.0
 
 # Add a message in BBCode format to the chat box.
@@ -56,49 +53,6 @@ func add_raw_message(raw_message: String, stdout: bool = true) -> void:
 			# Print an unformatted version of the message to stdout.
 			if stdout:
 				print(_chat_text.text.rsplit("\n", true, 1)[1])
-
-# Apply options from the options menu.
-# config: The options to apply.
-func apply_options(config: ConfigFile) -> void:
-	censoring_profanity = config.get_value("multiplayer", "censor_profanity")
-	
-	if censoring_profanity:
-		_chat_text.bbcode_text = censor_profanity(_chat_text.bbcode_text)
-
-# Given a string, return a new string with profanity hidden.
-# Returns: A (hopefully) profanity-less string.
-# string: The string to censor.
-func censor_profanity(string: String) -> String:
-	var lower_string = string.to_lower()
-	
-	# We are assuming the profanity list is in alphabetical order, and thus
-	# prefixes will come first.
-	for i in range(_profanity_list.size() - 1, -1, -1):
-		var profanity = _profanity_list[i].to_lower()
-		var j = 0
-		while j >= 0:
-			j = lower_string.find_last(profanity)
-			if j >= 0:
-				var censor = false
-				if lower_string.length() == profanity.length():
-					censor = true
-				elif j == 0:
-					# Most control and punctuation characters are below 65.
-					if lower_string.ord_at(profanity.length()) < 65:
-						censor = true
-				elif j == lower_string.length() - profanity.length():
-					if lower_string.ord_at(j - 1) < 65:
-						censor = true
-				else:
-					if lower_string.ord_at(j - 1) < 65 and lower_string.ord_at(j + profanity.length()) < 65:
-						censor = true
-				
-				if censor:
-					string.erase(j, profanity.length())
-					string = string.insert(j, "*".repeat(profanity.length()))
-				lower_string = lower_string.substr(0, j)
-	
-	return string
 
 # Check if the chat box is visible.
 # Returns: If the chat box is visible.
@@ -125,8 +79,8 @@ remotesync func receive_message(sender_id: int, message: String) -> void:
 	
 	message = Lobby.get_name_bb_code(sender_id) + ": " + message
 	
-	if censoring_profanity:
-		message = censor_profanity(message)
+	if Global.censoring_profanity:
+		message = Global.censor_profanity(message)
 	
 	add_raw_message(message)
 
@@ -148,7 +102,7 @@ func set_chat_visible(chat_visible: bool) -> void:
 func _ready():
 	set_chat_visible(true)
 	
-	_profanity_list = preload("res://Text/Profanity.tres").text.split("\n", false)
+	Global.connect("censor_changed", self, "_on_Global_censor_changed")
 
 func _process(delta):
 	_time_since_last_msg += delta
@@ -165,6 +119,10 @@ func _random_string_from_array(array: Array) -> String:
 	var line = array[rng.randi() % array.size()]
 	
 	return line
+
+func _on_Global_censor_changed():
+	if Global.censoring_profanity:
+		_chat_text.bbcode_text = Global.censor_profanity(_chat_text.bbcode_text)
 
 func _on_MessageEdit_text_entered(_new_text: String):
 	prepare_send_message()

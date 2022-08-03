@@ -68,6 +68,8 @@ func get_name_bb_code_custom(player: Dictionary) -> String:
 	player_name = player_name.strip_edges().strip_escapes().replace("[", "[ ")
 	if player_name.empty():
 		player_name = tr("<No Name>")
+	elif Global.censoring_profanity:
+		player_name = Global.censor_profanity(player_name)
 	code += player_name
 	
 	code += "[/color]"
