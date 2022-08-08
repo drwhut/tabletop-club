@@ -65,10 +65,6 @@ var spawn_point_temp_offset: Vector3 = Vector3()
 var _room_code: String = ""
 var _room_code_visible: bool = true
 
-# From the custom module:
-# https://github.com/drwhut/tabletop_club_godot_module
-var _error_reporter
-
 func add_notification_info(message: String) -> void:
 	_chat_box.add_raw_message("[color=aqua][INFO][/color] %s" % message, true)
 
@@ -77,6 +73,11 @@ func add_notification_warning(message: String) -> void:
 
 func add_notification_error(message: String) -> void:
 	_chat_box.add_raw_message("[color=red][ERROR] %s[/color]" % message, false)
+
+# Apply options from the options menu.
+# config: The options to apply.
+func apply_options(config: ConfigFile) -> void:
+	_chat_box.apply_options(config)
 
 # Hide the multiplayer section of the UI.
 func hide_multiplayer_ui() -> void:

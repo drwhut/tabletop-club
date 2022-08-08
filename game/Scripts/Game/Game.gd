@@ -107,6 +107,7 @@ var _progress_import_total: int   = 0
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
 	_room.apply_options(config)
+	_ui.apply_options(config)
 	
 	autosave_enabled = true
 	var autosave_interval_id = config.get_value("general", "autosave_interval")

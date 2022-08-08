@@ -72,6 +72,10 @@ func _init():
 	_ignore = tr("High")
 	_ignore = tr("Very High")
 	_ignore = tr("Ultra")
+	
+	_ignore = tr("Small")
+	#_ignore = tr("Medium")
+	_ignore = tr("Large")
 
 func _ready():
 	for locale_meta in LOCALES:

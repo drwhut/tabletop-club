@@ -920,35 +920,54 @@ size_flags_horizontal = 3
 color = Color( 1, 1, 1, 1 )
 edit_alpha = false
 
-[node name="HideCursors" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_top = 68.0
+[node name="ChatFontSize" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_top = 67.0
 margin_right = 486.0
-margin_bottom = 88.0
+margin_bottom = 87.0
+size_flags_horizontal = 3
+text = "Chat Font Size"
+align = 2
+
+[node name="ChatFontSizeButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_left = 490.0
+margin_top = 64.0
+margin_right = 976.0
+margin_bottom = 90.0
+hint_tooltip = "Changes the size of the text in the chat box."
+size_flags_horizontal = 3
+text = "Medium"
+items = [ "Small", null, false, 0, null, "Medium", null, false, 1, null, "Large", null, false, 2, null ]
+selected = 1
+
+[node name="HideCursors" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
+margin_top = 98.0
+margin_right = 486.0
+margin_bottom = 118.0
 size_flags_horizontal = 3
 text = "Hide Player Cursors"
 align = 2
 
 [node name="HideCursorsCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
 margin_left = 490.0
-margin_top = 64.0
+margin_top = 94.0
 margin_right = 976.0
-margin_bottom = 92.0
+margin_bottom = 122.0
 hint_tooltip = "Used to stop showing other player's cursors when in multiplayer lobbies."
 size_flags_horizontal = 3
 
 [node name="CensorProfanity" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
-margin_top = 100.0
+margin_top = 130.0
 margin_right = 486.0
-margin_bottom = 120.0
+margin_bottom = 150.0
 size_flags_horizontal = 3
 text = "Censor Profanity"
 align = 2
 
 [node name="CensorProfanityCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Multiplayer/GridContainer"]
 margin_left = 490.0
-margin_top = 96.0
+margin_top = 126.0
 margin_right = 976.0
-margin_bottom = 124.0
+margin_bottom = 154.0
 hint_tooltip = "Used to censor potentially offensive words in the chat window when in multiplayer lobbies."
 size_flags_horizontal = 3
 pressed = true

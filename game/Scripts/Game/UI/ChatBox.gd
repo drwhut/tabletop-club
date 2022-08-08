@@ -22,10 +22,18 @@
 
 extends HBoxContainer
 
+enum {
+	FONT_SMALL,
+	FONT_MEDIUM,
+	FONT_LARGE
+}
+
 onready var _chat_container = $VBoxContainer
 onready var _chat_text = $VBoxContainer/ChatBackground/ChatText
 onready var _message_edit = $VBoxContainer/HBoxContainer/MessageEdit
 onready var _toggle_button = $ToggleButton
+
+export(int) var font_size: int = FONT_LARGE setget set_font_size
 
 const NUM_CHARS_BEFORE_TIMEOUT: int = 1000
 const TIMEOUT_WAIT_TIME: float = 1.0
@@ -53,6 +61,11 @@ func add_raw_message(raw_message: String, stdout: bool = true) -> void:
 			# Print an unformatted version of the message to stdout.
 			if stdout:
 				print(_chat_text.text.rsplit("\n", true, 1)[1])
+
+# Apply options from the options menu.
+# config: The options to apply.
+func apply_options(config: ConfigFile) -> void:
+	set_font_size(config.get_value("multiplayer", "chat_font_size"))
 
 # Check if the chat box is visible.
 # Returns: If the chat box is visible.
@@ -98,6 +111,38 @@ func set_chat_visible(chat_visible: bool) -> void:
 	if chat_visible:
 		text = "<"
 	_toggle_button.text = text
+
+# Set the size of the font in the text window.
+# size: The size of the font, e.g. FONT_MEDIUM.
+func set_font_size(size: int) -> void:
+	if size < FONT_SMALL or size > FONT_LARGE:
+		push_error("Font size (%d) is invalid!" % size)
+		return
+	
+	if size != font_size:
+		var normal_font: DynamicFont = null
+		var bold_font: DynamicFont   = null
+		var italic_font: DynamicFont = null
+		
+		match size:
+			FONT_SMALL:
+				normal_font = preload("res://Fonts/Cabin/Modified/ChatBox/Cabin-Regular-Small.tres")
+				bold_font   = preload("res://Fonts/Cabin/Modified/ChatBox/Cabin-Bold-Small.tres")
+				italic_font = preload("res://Fonts/Cabin/Modified/ChatBox/Cabin-Italic-Small.tres")
+			FONT_MEDIUM:
+				normal_font = preload("res://Fonts/Cabin/Modified/ChatBox/Cabin-Regular-Medium.tres")
+				bold_font   = preload("res://Fonts/Cabin/Modified/ChatBox/Cabin-Bold-Medium.tres")
+				italic_font = preload("res://Fonts/Cabin/Modified/ChatBox/Cabin-Italic-Medium.tres")
+			FONT_LARGE:
+				normal_font = preload("res://Fonts/Cabin/Cabin-Regular.tres")
+				bold_font   = preload("res://Fonts/Cabin/Cabin-Bold.tres")
+				italic_font = preload("res://Fonts/Cabin/Cabin-Italic.tres")
+		
+		_chat_text.add_font_override("normal_font", normal_font)
+		_chat_text.add_font_override("bold_font", bold_font)
+		_chat_text.add_font_override("italics_font", italic_font)
+		
+		font_size = size
 
 func _ready():
 	set_chat_visible(true)

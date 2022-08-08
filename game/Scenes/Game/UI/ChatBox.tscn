@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Game/UI/ChatBox.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Cabin/Cabin-Bold.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Fonts/Cabin/Cabin-Italic.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/Cabin/Cabin-Regular.tres" type="DynamicFont" id=4]
 
 [node name="ChatBox" type="HBoxContainer"]
 margin_right = 300.0
@@ -35,6 +36,7 @@ anchor_bottom = 1.0
 focus_mode = 2
 custom_fonts/italics_font = ExtResource( 3 )
 custom_fonts/bold_font = ExtResource( 2 )
+custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 scroll_following = true
 selection_enabled = true
