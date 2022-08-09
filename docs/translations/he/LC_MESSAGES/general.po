@@ -9,53 +9,69 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-21 13:07+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-08-10 06:14+0000\n"
+"Last-Translator: Ido Dana <idodana01@gmail.com>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-general/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
-msgstr ""
+msgstr "אודות"
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
-msgstr ""
+msgstr "מה זה Tabletop Club?"
 
 #: ../../general/about.rst:10
+#, fuzzy
 msgid "Tabletop Club is a free and open-source tabletop board game simulator! That's a bit of a mouthful, so I'll break that sentence down a bit:"
 msgstr ""
+"Tabletop Club הוא סימולטור משחקי לוח שולחניים! אלו הרבה מילים, אז אני אפרק "
+"קצת את המשפט:"
 
 #: ../../general/about.rst:14
 msgid "Free"
-msgstr ""
+msgstr "חינמי"
 
 #: ../../general/about.rst:16
 msgid "The game is completely free to download and play! You can do so by going to the :ref:`downloading-binaries` page."
 msgstr ""
+"המשחק הוא חינמי לגמרי להורדה ולמשחק! תוכלו לעשות זאת על ידי מעבר לעמוד :ref"
+":`downloading-binaries`."
 
 #: ../../general/about.rst:20
 msgid "Open-source"
-msgstr ""
+msgstr "קוד פתוח"
 
 #: ../../general/about.rst:22
 msgid "This means a few things:"
-msgstr ""
+msgstr "זה אומר כמה דברים:"
 
 #: ../../general/about.rst:24
 msgid "The source code of the game is visible to the public (you can see it in the `GitHub repository <https://github.com/drwhut/tabletop-club>`_). This also means you can compile the game youself from scratch (see :ref:`compiling-from-source`)."
 msgstr ""
+"קוד המקור של המשחק גלוי לציבור (תוכלו לראות אותו ב `GitHub <https://github."
+"com/drwhut/tabletop-club>`_). זה גם אומר שתוכלו להדר את המשחק בעצמכם מאפס ("
+"ראו :ref:`compiling-from-source`)."
 
 #: ../../general/about.rst:29
 msgid "Anyone can contribute to the development of Tabletop Club in a number of different ways! For more information about how you can help contribute to the project, visit the :ref:`contributing` page."
 msgstr ""
+"כולם יכולים לתרום לפיתוח של Tabletop Club במספר דרכים! למידע נוסף על האופן "
+"שבו תוכלו לתרום לפרויקט, ראו את עמוד :ref:`תרומות`."
 
 #: ../../general/about.rst:33
 msgid "The game is licensed under the `MIT License <https://github.com/drwhut/tabletop-club/blob/master/LICENSE>`_, which is an open, permissive license."
 msgstr ""
+"המשחק מורשה תחת רישיון `MIT License <https://github.com/drwhut/tabletop-club/"
+"blob/master/LICENSE>`_, שהוא רישיון פתוח ומתיר."
 
 #: ../../general/about.rst:39
 msgid "The game's code and project files are licensed under the MIT License, but some of the assets are licensed under different open licenses."
@@ -67,7 +83,7 @@ msgstr ""
 
 #: ../../general/about.rst:47
 msgid "Tabletop board game"
-msgstr ""
+msgstr "משחק לוח שולחני"
 
 #: ../../general/about.rst:49
 msgid "The game is designed to allow you to play your favourite tabletop board games by effectively giving you a box of toys to play with (which include things like cards, dice, game pieces, and more), and it's up to you what you do with what you're given!"
