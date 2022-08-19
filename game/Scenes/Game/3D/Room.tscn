@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Game/CameraController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Game/3D/HiddenArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Game/3D/Room.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Game/3D/FastCircle.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -53,6 +54,9 @@ visible = false
 collision_layer = 2
 monitoring = false
 
+[node name="FastCircle" parent="." instance=ExtResource( 4 )]
+visible = false
+
 [node name="LimboCleanTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
@@ -79,6 +83,7 @@ autostart = true
 [connection signal="setting_hidden_area_preview_visible" from="CameraController" to="." method="_on_CameraController_setting_hidden_area_preview_visible"]
 [connection signal="setting_hover_position_multiple" from="CameraController" to="." method="_on_CameraController_setting_hover_position_multiple"]
 [connection signal="setting_spawn_point" from="CameraController" to="." method="_on_CameraController_setting_spawn_point"]
+[connection signal="spawning_fast_circle" from="CameraController" to="." method="_on_CameraController_spawning_fast_circle"]
 [connection signal="spawning_piece_at" from="CameraController" to="." method="_on_CameraController_spawning_piece_at"]
 [connection signal="spawning_piece_in_container" from="CameraController" to="." method="_on_CameraController_spawning_piece_in_container"]
 [connection signal="stack_collect_all_requested" from="CameraController" to="." method="_on_CameraController_stack_collect_all_requested"]

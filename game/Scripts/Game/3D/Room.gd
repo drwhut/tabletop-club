@@ -31,6 +31,7 @@ signal undo_stack_empty()
 signal undo_stack_pushed()
 
 onready var _camera_controller = $CameraController
+onready var _fast_circle = $FastCircle
 onready var _hand_positions = $Table/HandPositions
 onready var _hands = $Hands
 onready var _hidden_areas = $HiddenAreas
@@ -1366,6 +1367,10 @@ master func request_set_table(table_entry_path: String) -> void:
 	
 	rpc("set_table", table_entry_path)
 
+# Request the server to spawn the fast circle.
+master func request_spawn_fast_circle() -> void:
+	rpc("spawn_fast_circle")
+
 # Request the server to get a stack to collect all of the pieces that it can
 # stack.
 # stack_name: The name of the collecting stack.
@@ -1686,6 +1691,12 @@ remotesync func set_table(table_entry_path: String) -> void:
 		hand_pos.queue_free()
 
 	if not table_entry.empty():
+		if table_entry.has("bounding_box"):
+			var bounding_box: Array = table_entry["bounding_box"]
+			var size: Vector3 = bounding_box[1] - bounding_box[0]
+			var side_length = 3.0 * max(size.x, size.z)
+			_fast_circle.scale = Vector3(side_length, 1.0, side_length)
+		
 		if table_entry.has("scene_path"):
 			if not table_entry["scene_path"].empty():
 				_table_body = PieceBuilder.build_table(table_entry)
@@ -1713,6 +1724,14 @@ remotesync func set_table(table_entry_path: String) -> void:
 	var paint_plane_size = table_entry["paint_plane"]
 	_paint_plane.scale = Vector3(paint_plane_size.x, 1.0, paint_plane_size.y)
 	_paint_plane.clear_paint()
+
+# Spawn the fast circle.
+remotesync func spawn_fast_circle() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if not _fast_circle.is_processing():
+		_fast_circle.restart()
 
 # Get the next hand transform. Note that there may not be a next transform, in
 # which case the function returns the identity transform.
@@ -1834,6 +1853,8 @@ func _ready():
 	var table = AssetDB.random_asset("TabletopClub", "tables", true)
 	if not table.empty():
 		set_table(table["entry_path"])
+	
+	_fast_circle.set_process(false)
 
 func _physics_process(_delta):
 	var timers_to_manage = _srv_undo_state_events.keys()
@@ -2437,6 +2458,10 @@ func _on_CameraController_setting_hover_position_multiple(position: Vector3):
 
 func _on_CameraController_setting_spawn_point(position: Vector3):
 	emit_signal("setting_spawn_point", position)
+
+func _on_CameraController_spawning_fast_circle():
+	if not _fast_circle.is_processing():
+		rpc_id(1, "request_spawn_fast_circle")
 
 func _on_CameraController_spawning_piece_at(position: Vector3):
 	emit_signal("spawning_piece_at", position)

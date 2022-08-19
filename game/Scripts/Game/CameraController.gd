@@ -85,6 +85,7 @@ signal setting_hidden_area_preview_points(point1, point2)
 signal setting_hidden_area_preview_visible(is_visible)
 signal setting_hover_position_multiple(position)
 signal setting_spawn_point(position)
+signal spawning_fast_circle()
 signal spawning_piece_at(position)
 signal spawning_piece_in_container(container_name)
 signal stack_collect_all_requested(stack, collect_stacks)
@@ -178,6 +179,7 @@ var _container_multi_context: PieceContainer = null
 var _cursor_on_table = false
 var _cursor_position = Vector3()
 var _drag_camera_anchor = Vector3()
+var _fast_circle_seq = []
 var _flick_piece_origin = Vector3()
 var _flick_placing_point2 = false
 var _future_clipboard_position = Vector3()
@@ -782,6 +784,29 @@ func _unhandled_input(event):
 			elif event.scancode == KEY_V:
 				_future_clipboard_position = _cursor_position
 				_paste_clipboard()
+		
+		if event.pressed:
+			var add_true = false
+			var add_false = false
+			
+			if event.scancode == KEY_1 or event.scancode == KEY_KP_1:
+				add_false = true
+			elif event.scancode == KEY_4 or event.scancode == KEY_KP_4:
+				add_true = true
+			
+			if add_true or add_false:
+				if _fast_circle_seq.size() < 7:
+					_fast_circle_seq.append(add_true)
+				else:
+					for i in range(6):
+						_fast_circle_seq[i] = _fast_circle_seq[i+1]
+					_fast_circle_seq[6] = add_true
+				
+				if _fast_circle_seq == [true, true, true, false, true, true, true]:
+					emit_signal("spawning_fast_circle")
+					_fast_circle_seq = []
+			elif not _fast_circle_seq.empty():
+				_fast_circle_seq[-1] = false
 	
 	# NOTE: Mouse events are caught by the MouseGrab node, see
 	# _on_MouseGrab_gui_input().

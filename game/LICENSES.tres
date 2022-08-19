@@ -46,6 +46,12 @@ Author: SVG Repo
 License: CC0
 URL: https://www.svgrepo.com/svg/72555/eraser
 
+Images/FastCircle{Inner,Outer}.png
+==============================
+Author: Rebekka
+License: CC0
+Modified By: Benjamin \"drwhut\" Beddows
+
 Images/FlickIcon.svg
 ==================
 Author: SVG Repo
@@ -138,4 +144,11 @@ Sounds/WoodLight/impactWood_light_00{0,1,2,3,4}.ogg
 ==============================================
 Author: Kenney.nl
 License: CC0
-URL: https://kenney.nl/assets/impact-sounds"
+URL: https://kenney.nl/assets/impact-sounds
+
+Sounds/Misc/circle.wav
+====================
+Author: JaggedStone
+License: CC0
+URL: https://opengameart.org/content/magic-spell-sfx
+"
