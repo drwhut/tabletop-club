@@ -2400,8 +2400,8 @@ func _on_CameraController_container_release_these_requested(container: PieceCont
 func _on_CameraController_dealing_cards(stack: Stack, n: int):
 	rpc_id(1, "request_deal_cards", stack.name, n)
 
-func _on_CameraController_erasing(position: Vector3, size: float):
-	_paint_plane.rpc_unreliable_id(1, "request_push_paint_queue", position,
+func _on_CameraController_erasing(pos1: Vector3, pos2: Vector3, size: float):
+	_paint_plane.rpc_unreliable_id(1, "request_push_paint_queue", pos1, pos2,
 		Color.transparent, size)
 
 func _on_CameraController_hover_piece_requested(piece: Piece):
@@ -2421,8 +2421,8 @@ func _on_CameraController_hover_pieces_requested(pieces: Array, offsets: Array):
 	rpc_id(1, "request_hover_pieces", names,
 		_camera_controller.get_hover_position(), offsets)
 
-func _on_CameraController_painting(position: Vector3, color: Color, size: float):
-	_paint_plane.rpc_unreliable_id(1, "request_push_paint_queue", position,
+func _on_CameraController_painting(pos1: Vector3, pos2: Vector3, color: Color, size: float):
+	_paint_plane.rpc_unreliable_id(1, "request_push_paint_queue", pos1, pos2,
 		color, size)
 
 func _on_CameraController_placing_hidden_area(point1: Vector2, point2: Vector2):

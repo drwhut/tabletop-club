@@ -72,15 +72,18 @@ func set_paint(image: Image) -> void:
 	_texture_rect.texture = texture
 
 # Push a paint command to the paint queue.
-# position: The global position to paint on.
+# pos1: The initial global position to paint from.
+# pos2: The final global position to paint to.
 # color: The color to paint.
 # size: The size of the paint.
-remotesync func push_paint_queue(position: Vector3, color: Color, size: float) -> void:
+remotesync func push_paint_queue(pos1: Vector3, pos2: Vector3, color: Color, size: float) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	var uv_x = position.x / scale.x + 0.5
-	var uv_z = position.z / scale.z + 0.5
+	var uv1_x = pos1.x / scale.x + 0.5
+	var uv1_z = pos1.z / scale.z + 0.5
+	var uv2_x = pos2.x / scale.x + 0.5
+	var uv2_z = pos2.z / scale.z + 0.5
 	
 	# Assuming the viewport is square.
 	var unit_size = 1.0 / _viewport.size.x
@@ -88,16 +91,18 @@ remotesync func push_paint_queue(position: Vector3, color: Color, size: float) -
 	
 	_paint_queue.push_back({
 		"color": color,
-		"position": Vector2(uv_x, uv_z),
+		"pos1": Vector2(uv1_x, uv1_z),
+		"pos2": Vector2(uv2_x, uv2_z),
 		"size": adjusted_size
 	})
 
 # Request the server to add a paint command to the paint queue.
-# position: The global position to paint on.
+# pos1: The initial global position to paint from.
+# pos2: The final global position to paint to.
 # color: The color to paint.
 # size: The size of the paint.
-master func request_push_paint_queue(position: Vector3, color: Color, size: float) -> void:
-	rpc_unreliable("push_paint_queue", position, color, size)
+master func request_push_paint_queue(pos1: Vector3, pos2: Vector3, color: Color, size: float) -> void:
+	rpc_unreliable("push_paint_queue", pos1, pos2, color, size)
 
 func _ready():
 	var image_size = get_paint_size()
@@ -121,7 +126,8 @@ func _process(_delta):
 		_texture_rect.material.set_shader_param("AspectRatio", scale.x / scale.z)
 		_texture_rect.material.set_shader_param("BrushColor", command["color"])
 		_texture_rect.material.set_shader_param("BrushEnabled", true)
-		_texture_rect.material.set_shader_param("BrushPosition", command["position"])
+		_texture_rect.material.set_shader_param("BrushPosition1", command["pos1"])
+		_texture_rect.material.set_shader_param("BrushPosition2", command["pos2"])
 		_texture_rect.material.set_shader_param("BrushSize", command["size"])
 		
 		_painted_last_frame = true

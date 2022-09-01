@@ -72,10 +72,10 @@ signal collect_pieces_requested(pieces)
 signal container_release_random_requested(container, n)
 signal container_release_these_requested(container, names)
 signal dealing_cards(stack, n)
-signal erasing(position, size)
+signal erasing(pos1, pos2, size)
 signal hover_piece_requested(piece)
 signal hover_pieces_requested(pieces, offsets)
-signal painting(position, color, size)
+signal painting(pos1, pos2, color, size)
 signal placing_hidden_area(point1, point2)
 signal pop_stack_requested(stack, n)
 signal removing_hidden_area(hidden_area)
@@ -198,6 +198,7 @@ var _is_erasing = false
 var _is_grabbing_selected = false
 var _is_hovering_selected = false
 var _is_painting = false
+var _last_paint_position = Vector3()
 var _last_sent_cursor_position = Vector3()
 var _move_down = false
 var _move_left = false
@@ -225,6 +226,7 @@ var _target_zoom = 0.0
 var _timer_connected: TimerPiece = null
 var _timer_last_time_update = 0
 var _tool = TOOL_CURSOR
+var _use_last_paint_position = false
 var _viewport_size_original = Vector2()
 
 # Append an array of pieces to the list of selected pieces.
@@ -634,14 +636,20 @@ func _physics_process(_delta):
 		
 		_perform_box_select = false
 	
+	var paint_pos2 = _last_paint_position if _use_last_paint_position else _cursor_position
+	
 	if _send_paint_position:
-		emit_signal("painting", _cursor_position, _brush_color_picker.color,
+		emit_signal("painting", _cursor_position, paint_pos2, _brush_color_picker.color,
 			_brush_size_slider.value)
 		_send_paint_position = false
+		_use_last_paint_position = true
 	
 	if _send_erase_position:
-		emit_signal("erasing", _cursor_position, _eraser_size_slider.value)
+		emit_signal("erasing", _cursor_position, paint_pos2, _eraser_size_slider.value)
 		_send_erase_position = false
+		_use_last_paint_position = true
+	
+	_last_paint_position = _cursor_position
 
 func _process_input(_delta):
 	
@@ -2055,9 +2063,13 @@ func _on_MouseGrab_gui_input(event):
 			
 			elif _tool == TOOL_PAINT:
 				_is_painting = event.is_pressed()
+				if not _is_painting:
+					_use_last_paint_position = false
 			
 			elif _tool == TOOL_ERASE:
 				_is_erasing = event.is_pressed()
+				if not _is_erasing:
+					_use_last_paint_position = false
 		
 		elif event.button_index == BUTTON_RIGHT:
 			if _is_hovering_selected:
