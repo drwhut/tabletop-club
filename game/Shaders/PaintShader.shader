@@ -3,55 +3,37 @@ shader_type canvas_item;
 uniform float AspectRatio;
 uniform vec4 BrushColor: hint_color;
 uniform bool BrushEnabled;
-uniform vec2 BrushPosition1;
-uniform vec2 BrushPosition2;
+uniform vec2 BrushPosition;
 uniform float BrushSize;
 
+// The following globals are pre-calculated by the CPU.
+uniform vec2 InverseQuadCol1;
+uniform vec2 InverseQuadCol2;
+uniform vec2 QuadCorner;
+
 void fragment() {
-	vec4 base = texture(TEXTURE, UV);
+	bool replace_color = false;
 	
 	if (BrushEnabled) {
-		// TODO: Use the AspectRatio in these calculations.
+		mat2 inv_quad = mat2(InverseQuadCol1, InverseQuadCol2);
+		vec2 coeff = inv_quad * (UV - QuadCorner);
 		
-		vec2 rect_dir = normalize(BrushPosition2 - BrushPosition1);
-		vec2 perpendicular = vec2(-rect_dir.y, rect_dir.x); // 90 deg CCW.
-		vec2 to_corner = BrushSize * perpendicular;
-		
-		vec2 a = BrushPosition1 + to_corner;
-		vec2 b = BrushPosition1 - to_corner;
-		vec2 d = BrushPosition2 + to_corner;
-		
-		vec2 a_to_p = UV - a;
-		vec2 a_to_b = b - a;
-		vec2 a_to_d = d - a;
-		
-		float dot_p_b = dot(a_to_p, a_to_b);
-		float dot_b_b = dot(a_to_b, a_to_b);
-		float dot_p_d = dot(a_to_p, a_to_d);
-		float dot_d_d = dot(a_to_d, a_to_d);
-		
-		if (0.0 < dot_p_b && dot_p_b < dot_b_b && 0.0 < dot_p_d && dot_p_d < dot_d_d) {
-			COLOR = BrushColor;
+		if (coeff.x > 0.0 && coeff.x < 1.0 && coeff.y > 0.0 && coeff.y < 1.0) {
+			replace_color = true;
 		} else {
-			vec2 disp = UV - BrushPosition1;
-			//disp.x *= AspectRatio;
+			vec2 disp = UV - BrushPosition;
+			disp.x *= AspectRatio;
 			float len = length(disp);
 			
 			if (len < BrushSize) {
-				COLOR = BrushColor;
-			} else {
-				disp = UV - BrushPosition2;
-				//disp.x *= AspectRatio;
-				len = length(disp);
-				
-				if (len < BrushSize) {
-					COLOR = BrushColor;
-				} else {
-					COLOR = base;
-				}
+				replace_color = true;
 			}
 		}
+	}
+	
+	if (replace_color) {
+		COLOR = BrushColor;
 	} else {
-		COLOR = base;
+		COLOR = texture(TEXTURE, UV);
 	}
 }

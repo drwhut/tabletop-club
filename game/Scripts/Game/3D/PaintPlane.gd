@@ -117,18 +117,56 @@ func _ready():
 
 func _process(_delta):
 	if _painted_last_frame:
+		# TODO: This call is very costly - is there a way to avoid saving the
+		# image potentially every frame? Would it actually be faster to draw
+		# on the image on the CPU side? (CanvasItem?)
 		_save_viewport_texture()
 		_texture_rect.material.set_shader_param("BrushEnabled", false)
 	_painted_last_frame = false
 	
 	if not _paint_queue.empty():
 		var command = _paint_queue.pop_front()
-		_texture_rect.material.set_shader_param("AspectRatio", scale.x / scale.z)
-		_texture_rect.material.set_shader_param("BrushColor", command["color"])
+		
+		if scale.x == 0.0 or scale.z == 0.0:
+			return
+		
+		var aspect_ratio = scale.x / scale.z
+		_texture_rect.material.set_shader_param("AspectRatio", aspect_ratio)
+		
+		var color: Color = command["color"]
+		_texture_rect.material.set_shader_param("BrushColor", color)
 		_texture_rect.material.set_shader_param("BrushEnabled", true)
-		_texture_rect.material.set_shader_param("BrushPosition1", command["pos1"])
-		_texture_rect.material.set_shader_param("BrushPosition2", command["pos2"])
-		_texture_rect.material.set_shader_param("BrushSize", command["size"])
+		
+		var pos1: Vector2 = command["pos1"]
+		var pos2: Vector2 = command["pos2"]
+		_texture_rect.material.set_shader_param("BrushPosition", pos2)
+		
+		var size: float = command["size"]
+		_texture_rect.material.set_shader_param("BrushSize", size)
+		
+		# Perform some calculations on the CPU side to save time on the GPU.
+		# These calculations are consistent for every pixel.
+		var brush_vec = (pos2 - pos1).normalized()
+		var perpendicular = Vector2(-brush_vec.y, brush_vec.x)
+		var to_corner = size * perpendicular
+		to_corner.x /= aspect_ratio
+		
+		# Three corners of a parallelogram representing the fill-in line.
+		var a = pos1 + to_corner
+		var ab = -2.0 * to_corner
+		var ad = pos2 - pos1
+		
+		var inverse_col_1 = Vector2.ZERO
+		var inverse_col_2 = Vector2.ZERO
+		
+		var det = ab.x * ad.y - ad.x * ab.y
+		if det != 0.0:
+			inverse_col_1 = (1.0 / det) * Vector2(ad.y, -ab.y)
+			inverse_col_2 = (1.0 / det) * Vector2(-ad.x, ab.x)
+		
+		_texture_rect.material.set_shader_param("InverseQuadCol1", inverse_col_1)
+		_texture_rect.material.set_shader_param("InverseQuadCol2", inverse_col_2)
+		_texture_rect.material.set_shader_param("QuadCorner", a)
 		
 		_painted_last_frame = true
 
