@@ -58,6 +58,9 @@ onready var _rotation_option = $HideableUI/TopPanel/RotationOption
 onready var _save_dialog = $CanvasLayer/GameMenuBackground/SaveDialog
 onready var _undo_button = $HideableUI/TopPanel/UndoButton
 
+export(bool) var show_errors: bool = true
+export(bool) var show_warnings: bool = true
+
 var spawn_point_container_name: String = ""
 var spawn_point_origin: Vector3 = Vector3(0, Piece.SPAWN_HEIGHT, 0)
 var spawn_point_temp_offset: Vector3 = Vector3()
@@ -69,15 +72,30 @@ func add_notification_info(message: String) -> void:
 	_chat_box.add_raw_message("[color=aqua][INFO][/color] %s" % message, true)
 
 func add_notification_warning(message: String) -> void:
-	_chat_box.add_raw_message("[color=yellow][WARN] %s[/color]" % message, false)
+	if show_warnings:
+		_chat_box.add_raw_message("[color=yellow][WARN] %s[/color]" % message, false)
 
 func add_notification_error(message: String) -> void:
-	_chat_box.add_raw_message("[color=red][ERROR] %s[/color]" % message, false)
+	if show_errors:
+		_chat_box.add_raw_message("[color=red][ERROR] %s[/color]" % message, false)
 
 # Apply options from the options menu.
 # config: The options to apply.
 func apply_options(config: ConfigFile) -> void:
 	_chat_box.apply_options(config)
+	
+	var old_show_errors   = show_errors
+	var old_show_warnings = show_warnings
+	show_errors   = config.get_value("general", "show_errors")
+	show_warnings = config.get_value("general", "show_warnings")
+	var show_errors_changed   = (show_errors != old_show_errors)
+	var show_warnings_changed = (show_warnings != old_show_warnings)
+	
+	if show_errors_changed and (not show_errors):
+		_chat_box.clear_tag("color=red")
+	
+	if show_warnings_changed and (not show_warnings):
+		_chat_box.clear_tag("color=yellow")
 
 # Hide the multiplayer section of the UI.
 func hide_multiplayer_ui() -> void:

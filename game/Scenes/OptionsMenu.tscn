@@ -484,45 +484,79 @@ size_flags_horizontal = 3
 min_value = 1.0
 value = 10.0
 
-[node name="DividerLeft" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
-margin_top = 94.0
+[node name="ShowWarnings" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 98.0
 margin_right = 486.0
-margin_bottom = 94.0
+margin_bottom = 118.0
+size_flags_horizontal = 3
+text = "Show System Warnings"
+align = 2
+
+[node name="ShowWarningsCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_left = 490.0
+margin_top = 94.0
+margin_right = 976.0
+margin_bottom = 122.0
+hint_tooltip = "Displays system warnings in the chat box."
+size_flags_horizontal = 3
+pressed = true
+
+[node name="ShowErrors" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 130.0
+margin_right = 486.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+text = "Show System Errors"
+align = 2
+
+[node name="ShowErrorsCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_left = 490.0
+margin_top = 126.0
+margin_right = 976.0
+margin_bottom = 154.0
+hint_tooltip = "Displays system errors in the chat box."
+size_flags_horizontal = 3
+pressed = true
+
+[node name="DividerLeft" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
+margin_top = 158.0
+margin_right = 486.0
+margin_bottom = 158.0
 size_flags_horizontal = 3
 
 [node name="DividerRight" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
-margin_top = 94.0
+margin_top = 158.0
 margin_right = 976.0
-margin_bottom = 94.0
+margin_bottom = 158.0
 size_flags_horizontal = 3
 
 [node name="OpenAssetsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
-margin_top = 98.0
+margin_top = 162.0
 margin_right = 486.0
-margin_bottom = 124.0
+margin_bottom = 188.0
 size_flags_horizontal = 3
 
 [node name="OpenAssetsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
-margin_top = 98.0
+margin_top = 162.0
 margin_right = 976.0
-margin_bottom = 124.0
+margin_bottom = 188.0
 hint_tooltip = "Opens the assets folder in your file explorer."
 size_flags_horizontal = 3
 text = "Open Assets Folder"
 
 [node name="ReimportSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
-margin_top = 128.0
+margin_top = 192.0
 margin_right = 486.0
-margin_bottom = 154.0
+margin_bottom = 218.0
 size_flags_horizontal = 3
 
 [node name="ReimportButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/General/GridContainer"]
 margin_left = 490.0
-margin_top = 128.0
+margin_top = 192.0
 margin_right = 976.0
-margin_bottom = 154.0
+margin_bottom = 218.0
 hint_tooltip = "Re-imports all assets as if you have started playing for the first time.
 Use this if an asset is not working as intended, or an asset has just been added."
 size_flags_horizontal = 3

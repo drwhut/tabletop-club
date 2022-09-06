@@ -67,6 +67,43 @@ func add_raw_message(raw_message: String, stdout: bool = true) -> void:
 func apply_options(config: ConfigFile) -> void:
 	set_font_size(config.get_value("multiplayer", "chat_font_size"))
 
+# Clear all text from the chat box.
+func clear_all() -> void:
+	_chat_text.clear()
+
+# Clear all instances of a given BBCode tag from the chat box.
+# tag: The tag to clear - if it contains an '=' character, it will be assumed
+# the ending tag will be everything before the '='.
+func clear_tag(tag: String) -> void:
+	var end_tag = "/" + tag.split("=", true, 1)[0]
+	
+	var old_text = _chat_text.bbcode_text
+	var text_length = old_text.length()
+	var start_length = tag.length() + 2
+	var end_length = end_tag.length() + 2
+	
+	var new_text = ""
+	var start_add_from = 0
+	var currently_in_tag = false
+	for i in range(text_length):
+		if currently_in_tag:
+			if i < text_length:
+				var end_check = old_text.substr(i - end_length + 1, end_length)
+				if end_check == "[%s]" % end_tag:
+					currently_in_tag = false
+					start_add_from = i + 1
+		else:
+			if i <= text_length - start_length:
+				var start_check = old_text.substr(i, start_length)
+				if start_check == "[%s]" % tag:
+					currently_in_tag = true
+					# We assume the tag has a newline before it.
+					new_text += old_text.substr(start_add_from, i - start_add_from - 1)
+	
+	if not currently_in_tag:
+		new_text += old_text.substr(start_add_from)
+	_chat_text.bbcode_text = new_text
+
 # Check if the chat box is visible.
 # Returns: If the chat box is visible.
 func is_chat_visible() -> bool:
