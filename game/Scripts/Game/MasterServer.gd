@@ -35,7 +35,7 @@ signal offer_received(id, offer)
 signal peer_connected(id)
 signal peer_disconnected(id)
 
-const URL: String = "ws://tabletop-club.duckdns.org:9080"
+const URL: String = "wss://tabletop-club.duckdns.org:9080"
 
 # See: https://github.com/drwhut/tabletop_club_master_server/blob/master/server.js
 var ERROR_MESSAGES = {
@@ -119,6 +119,8 @@ func _init():
 	client.connect("connection_established", self, "_on_connected")
 	client.connect("data_received", self, "_on_data_received")
 	client.connect("server_close_request", self, "_on_close_request")
+	
+	client.verify_ssl = true
 
 func _process(_delta):
 	var status: int = client.get_connection_status()

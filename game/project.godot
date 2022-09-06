@@ -289,6 +289,10 @@ game_zoom_out={
 
 translations=PoolStringArray( "res://Translations/fr.po", "res://Translations/de.po", "res://Translations/nl.po", "res://Translations/ru.po" )
 
+[network]
+
+ssl/certificates="res://master_server.crt"
+
 [physics]
 
 3d/default_gravity=98.1
