@@ -636,16 +636,16 @@ func _physics_process(_delta):
 		
 		_perform_box_select = false
 	
-	var paint_pos2 = _last_paint_position if _use_last_paint_position else _cursor_position
+	var paint_pos1 = _last_paint_position if _use_last_paint_position else _cursor_position
 	
 	if _send_paint_position:
-		emit_signal("painting", _cursor_position, paint_pos2, _brush_color_picker.color,
+		emit_signal("painting", paint_pos1, _cursor_position, _brush_color_picker.color,
 			_brush_size_slider.value)
 		_send_paint_position = false
 		_use_last_paint_position = true
 	
 	if _send_erase_position:
-		emit_signal("erasing", _cursor_position, paint_pos2, _eraser_size_slider.value)
+		emit_signal("erasing", paint_pos1, _cursor_position, _eraser_size_slider.value)
 		_send_erase_position = false
 		_use_last_paint_position = true
 	
@@ -2062,13 +2062,15 @@ func _on_MouseGrab_gui_input(event):
 				emit_signal("setting_hidden_area_preview_visible", _hidden_area_placing_point2)
 			
 			elif _tool == TOOL_PAINT:
+				var was_painting = _is_painting
 				_is_painting = event.is_pressed()
-				if not _is_painting:
+				if (not was_painting) and _is_painting:
 					_use_last_paint_position = false
 			
 			elif _tool == TOOL_ERASE:
+				var was_erasing = _is_erasing
 				_is_erasing = event.is_pressed()
-				if not _is_erasing:
+				if (not was_erasing) and _is_erasing:
 					_use_last_paint_position = false
 		
 		elif event.button_index == BUTTON_RIGHT:
