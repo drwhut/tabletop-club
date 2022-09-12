@@ -435,11 +435,11 @@ remotesync func set_piece_order(_order: Array) -> void:
 
 # Add the outline material to the outline mesh instance.
 func setup_outline_material():
-	var outline_shader = preload("res://Shaders/OutlineShader.tres")
+	var outline_shader = preload("res://Shaders/OutlineShader.shader")
 	
 	_outline_material = ShaderMaterial.new()
 	_outline_material.shader = outline_shader
-	_outline_material.set_shader_param("Color", Color.transparent)
+	_outline_material.set_shader_param("OutlineColor", Color.transparent)
 	
 	get_outline_mesh_instance().set_surface_material(0, _outline_material)
 

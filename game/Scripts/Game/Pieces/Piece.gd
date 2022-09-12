@@ -421,7 +421,7 @@ puppet func ss(basis0: Basis, basis1: Basis) -> void:
 # color: The color of the outline.
 func set_outline_color(color: Color) -> void:
 	if _outline_material:
-		_outline_material.set_shader_param("Color", color)
+		_outline_material.set_shader_param("OutlineColor", color)
 	else:
 		push_error("Outline material has not been created!")
 
@@ -453,11 +453,11 @@ remotesync func set_translation(new_translation: Vector3) -> void:
 
 # Add the outline material to all mesh instances in this piece.
 func setup_outline_material():
-	var outline_shader = preload("res://Shaders/OutlineShader.tres")
+	var outline_shader = preload("res://Shaders/OutlineShader.shader")
 	
 	_outline_material = ShaderMaterial.new()
 	_outline_material.shader = outline_shader
-	_outline_material.set_shader_param("Color", Color.transparent)
+	_outline_material.set_shader_param("OutlineColor", Color.transparent)
 	
 	for mesh_instance in get_mesh_instances():
 		if mesh_instance is MeshInstance:
