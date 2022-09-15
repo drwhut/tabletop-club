@@ -53,7 +53,8 @@ var ERROR_MESSAGES = {
 	4012: tr("Invalid destination."),
 	4013: tr("Invalid command."),
 	4014: tr("Too many players connected."),
-	4015: tr("Transfer mode is invalid.")
+	4015: tr("Transfer mode is invalid."),
+	4016: tr("Too many connections.")
 }
 
 export(String) var room_code = "" # If empty, create a new room.
