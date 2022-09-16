@@ -759,6 +759,11 @@ remotesync func remove_pieces(piece_names: Array) -> void:
 			if piece.is_in_group("limbo"):
 				return
 			
+			# Audio players will continue to play music until they have been
+			# removed from the scene tree, so stop music locally.
+			if piece is SpeakerPiece:
+				piece.stop_track()
+			
 			piece.collision_layer = 0
 			piece.collision_mask = 0
 			piece.mode = RigidBody.MODE_STATIC
