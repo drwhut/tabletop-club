@@ -78,6 +78,7 @@ var _srv_expect_sync: Array = []
 var _srv_file_transfer_threads: Dictionary = {}
 var _srv_schema_db: Dictionary = {}
 var _srv_schema_fs: Dictionary = {}
+var _srv_skip_sync: bool = false
 var _srv_waiting_for: Array = []
 
 const TRANSFER_CHUNK_SIZE   = 50000 # 50Kb
@@ -926,6 +927,19 @@ func start_host() -> void:
 	
 	_srv_schema_db = _create_schema_db()
 	_srv_schema_fs = _create_schema_fs()
+	
+	var db_size = var2bytes(_srv_schema_db).size()
+	var fs_size = var2bytes(_srv_schema_fs).size()
+	
+	# TODO: May want to consider compressing the schemas before sending them,
+	# this would also have to be done for other dictionaries sent, e.g. the
+	# response from the client.
+	if db_size + fs_size > TRANSFER_CHUNK_SIZE:
+		push_warning("AssetDB schema is too large to send over the network, will skip syncing.")
+		
+		_srv_skip_sync = true
+		_srv_schema_db.clear()
+		_srv_schema_fs.clear()
 	
 	_connect_to_master_server("")
 
@@ -1888,14 +1902,19 @@ func _on_connection_established(id: int):
 		
 		_room.start_sending_cursor_position()
 		
-		# Send them our asset schemas to see if they are missing any assets.
-		rpc_id(id, "compare_server_schemas", _srv_schema_db, _srv_schema_fs)
-		_srv_waiting_for.append(id)
-		
-		# Don't send the client state updates yet, wait until they've confirmed
-		# that their AssetDB is synced with ours.
-		if not id in Global.srv_state_update_blacklist:
-			Global.srv_state_update_blacklist.append(id)
+		if _srv_skip_sync:
+			# Send the table state straight away.
+			var compressed_state = _room.get_state_compressed(true, true)
+			_room.rpc_id(id, "set_state_compressed", compressed_state)
+		else:
+			# Send them our asset schemas to see if they are missing any assets.
+			rpc_id(id, "compare_server_schemas", _srv_schema_db, _srv_schema_fs)
+			_srv_waiting_for.append(id)
+			
+			# Don't send the client state updates yet, wait until they've
+			# confirmed that their AssetDB is synced with ours.
+			if not id in Global.srv_state_update_blacklist:
+				Global.srv_state_update_blacklist.append(id)
 	
 	# If we are not the host, then ask the host to send us their list of
 	# players.
