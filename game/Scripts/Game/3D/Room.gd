@@ -1260,7 +1260,7 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 			var new_transform = Transform(new_basis, new_origin)
 
 			new_piece = add_stack_empty(new_name, new_transform, stack is StackSandwich)
-			rpc("add_stack_empty", new_name, new_transform)
+			rpc("add_stack_empty", new_name, new_transform, stack is StackSandwich)
 
 			rpc("transfer_stack_contents", stack_name, new_name, n)
 
