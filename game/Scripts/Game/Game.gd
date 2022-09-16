@@ -278,6 +278,18 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 					db_need[pack] = {}
 				db_need[pack][type] = need_arr
 	
+	for pack in client_schema_db:
+		if not pack in server_schema_db:
+			var extra_pack = {}
+			
+			for type in client_schema_db[pack]:
+				var extra_type = []
+				for i in range(client_schema_db[pack][type].size()):
+					extra_type.append(i)
+				extra_pack[type] = extra_type
+			
+			db_extra[pack] = extra_pack
+	
 	var fs_need = {}
 	var fs_num_missing = 0
 	var fs_num_modified = 0
