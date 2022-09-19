@@ -1448,6 +1448,13 @@ remotesync func set_hover_position_multiple_client(player_id: int,
 			push_error("Object " + piece_name + " is not a piece!")
 			return
 		
+		# The client_set_hover_position signal is only fired during the request
+		# on the server side for single-piece hovering - so for multi-piece
+		# hovering, we'll need to fire the signal ourselves, since the room
+		# directly calls Piece.set_hover_position.
+		if get_tree().is_network_server():
+			piece.emit_signal("client_set_hover_position", piece)
+		
 		piece.set_hover_position(hover_position)
 
 # Set the color of the room lamp.
