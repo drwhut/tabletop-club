@@ -2491,11 +2491,17 @@ func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stac
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
 
 func _on_GameUI_clear_pieces():
+	# TODO: Consider sending one signal to the server to clear everything,
+	# rather than one client sending multiple signals to the server.
 	var piece_names = []
 	for piece in _pieces.get_children():
 		if piece is Piece:
 			piece_names.append(piece.name)
 	rpc_id(1, "request_remove_pieces", piece_names)
+	
+	for hidden_area in _hidden_areas.get_children():
+		if hidden_area is HiddenArea:
+			rpc_id(1, "request_remove_hidden_area", hidden_area.name)
 
 func _on_GameUI_rotation_amount_updated(rotation_amount: float):
 	_camera_controller.set_piece_rotation_amount(rotation_amount)
