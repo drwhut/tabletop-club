@@ -42,6 +42,7 @@ onready var _sun_light = $SunLight
 onready var _table = $Table
 onready var _world_environment = $WorldEnvironment
 
+const HIDDEN_AREA_MIN_SIZE = Vector2(0.5, 0.5)
 const LIMBO_DURATION = 5.0
 const UNDO_STACK_SIZE_LIMIT = 10
 const UNDO_STATE_EVENT_TIMERS = {
@@ -635,6 +636,10 @@ remotesync func place_hidden_area(area_name: String, player_id: int,
 
 	if get_tree().get_rpc_sender_id() != 1:
 		return
+	
+	var size = (point2 - point1).abs()
+	if size.x < HIDDEN_AREA_MIN_SIZE.x or size.y < HIDDEN_AREA_MIN_SIZE.y:
+		return
 
 	var hidden_area: HiddenArea = preload("res://Scenes/Game/3D/HiddenArea.tscn").instance()
 	hidden_area.name = area_name
@@ -1200,6 +1205,10 @@ master func request_paste_clipboard(clipboard: Dictionary, offset: Vector3) -> v
 # point1: One corner of the new hidden area.
 # point2: The opposite corner of the new hidden area.
 master func request_place_hidden_area(point1: Vector2, point2: Vector2) -> void:
+	var size = (point2 - point1).abs()
+	if size.x < HIDDEN_AREA_MIN_SIZE.x or size.y < HIDDEN_AREA_MIN_SIZE.y:
+		return
+	
 	var player_id = get_tree().get_rpc_sender_id()
 	rpc("place_hidden_area", srv_get_next_piece_name(), player_id, point1, point2)
 
@@ -2431,6 +2440,10 @@ func _on_CameraController_painting(pos1: Vector3, pos2: Vector3, color: Color, s
 		color, size)
 
 func _on_CameraController_placing_hidden_area(point1: Vector2, point2: Vector2):
+	var size = (point2 - point1).abs()
+	if size.x < HIDDEN_AREA_MIN_SIZE.x or size.y < HIDDEN_AREA_MIN_SIZE.y:
+		return
+	
 	rpc_id(1, "request_place_hidden_area", point1, point2)
 
 func _on_CameraController_pop_stack_requested(stack: Stack, n: int):
