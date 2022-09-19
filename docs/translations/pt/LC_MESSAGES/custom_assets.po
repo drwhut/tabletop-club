@@ -9,13 +9,16 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-21 13:07+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-09-20 14:16+0000\n"
+"Last-Translator: Oni <nelsonbarbosaesteves31@gmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-custom-assets/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -730,7 +733,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:115
 msgid "Piece"
-msgstr ""
+msgstr "Peça"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:117
 msgid "Pieces are generic objects with no special functionality."
@@ -810,7 +813,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:208
 msgid "Table"
-msgstr ""
+msgstr "Mesa"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:210
 msgid "A table is a :ref:`file-type-3d` that is placed in the centre of the game world for players to put objects on."
