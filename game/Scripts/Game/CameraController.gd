@@ -23,7 +23,7 @@
 extends Spatial
 
 enum {
-	CONTEXT_CARDS_PUT_IN_HAND,
+	CONTEXT_CARDS_PUT_IN_HAND = 1,
 	
 	CONTEXT_PIECE_COPY,
 	CONTEXT_PIECE_CUT,
@@ -50,7 +50,7 @@ enum {
 }
 
 enum {
-	CONTEXT_TABLE_PASTE,
+	CONTEXT_TABLE_PASTE = 1,
 	CONTEXT_TABLE_SET_SPAWN_POINT,
 	CONTEXT_TABLE_SPAWN_OBJECT
 }
@@ -2277,6 +2277,9 @@ func _on_PieceContextMenu_id_pressed(id: int):
 			if _selected_pieces.size() > 1:
 				emit_signal("collect_pieces_requested", _selected_pieces)
 		
+		0: # Labels.
+			pass
+		
 		_:
 			push_error("Invalid PieceContextMenu item id (%d)!" % id)
 
@@ -2383,6 +2386,9 @@ func _on_TableContextMenu_id_pressed(id: int):
 		
 		CONTEXT_TABLE_SPAWN_OBJECT:
 			emit_signal("spawning_piece_at", _spawn_point_position)
+		
+		0: # Labels.
+			pass
 		
 		_:
 			push_error("Invalid TableContextMenu item id (%d)!" % id)
