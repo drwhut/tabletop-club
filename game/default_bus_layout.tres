@@ -1,7 +1,16 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=2]
+[gd_resource type="AudioBusLayout" load_steps=4 format=2]
 
 [sub_resource type="AudioEffectCompressor" id=1]
 resource_name = "Compressor"
+
+[sub_resource type="AudioEffectPitchShift" id=2]
+resource_name = "PitchShift"
+pitch_scale = 0.75
+
+[sub_resource type="AudioEffectReverb" id=3]
+resource_name = "Reverb"
+room_size = 0.5
+spread = 0.25
 
 [resource]
 bus/0/effect/0/effect = SubResource( 1 )
@@ -24,3 +33,23 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = "Master"
+bus/4/name = "WideMusic"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = "Music"
+bus/4/effect/0/effect = SubResource( 2 )
+bus/4/effect/0/enabled = true
+bus/4/effect/1/effect = SubResource( 3 )
+bus/4/effect/1/enabled = true
+bus/5/name = "WideSounds"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = "Sounds"
+bus/5/effect/0/effect = SubResource( 2 )
+bus/5/effect/0/enabled = true
+bus/5/effect/1/effect = SubResource( 3 )
+bus/5/effect/1/enabled = true

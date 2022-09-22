@@ -25,6 +25,7 @@ extends RigidBody
 class_name Piece
 
 signal client_set_hover_position(piece)
+signal scale_changed()
 
 const ANGULAR_FORCE_SCALAR = 25.0
 const HARMONIC_DAMPENING = 0.5
@@ -382,6 +383,8 @@ func set_current_scale(new_scale: Vector3) -> void:
 		# Like in get_current_scale, we want to modify the scale locally.
 		var old_basis = collision_shapes[i].transform.basis
 		collision_shapes[i].transform.basis = old_basis.scaled(modified_scale)
+	
+	emit_signal("scale_changed")
 
 # Set the hover basis of the piece.
 # new_hover_basis: The basis the hovering piece will go towards.

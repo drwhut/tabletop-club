@@ -53,7 +53,7 @@ func get_unit_size() -> float:
 # Check if the current track is a music track.
 # Returns: If the current track is a music track. Otherwise, it is a sound track.
 func is_music_track() -> bool:
-	return _audio_player.bus == "Music"
+	return _audio_player.bus == "Music" or _audio_player.bus == "WideMusic"
 
 # Check if the speaker is currently playing a track.
 # Returns: If the speaker is playing a track.
@@ -86,6 +86,8 @@ remotesync func pause_track(at: float) -> void:
 remotesync func play_track(from: float = 0.0) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
+	
+	_check_if_wide()
 	
 	_audio_player.stream_paused = false
 	_audio_player.play(from)
@@ -178,7 +180,33 @@ func _ready():
 	# Make sure that initially the track can be heard from across the table.
 	_audio_player.unit_size = 50
 	
+	connect("scale_changed", self, "_on_scale_changed")
 	_audio_player.connect("finished", self, "_on_audio_player_finished")
+
+# Check if the speaker is... wide. No context needed ;)
+func _check_if_wide() -> void:
+	if _audio_player.bus.empty():
+		return
+	
+	if not piece_entry.has("entry_path"):
+		return
+	
+	if piece_entry["entry_path"] != "TabletopClub/speakers/Gramophone":
+		return
+	
+	if get_current_scale() == Vector3(5.0, 1.0, 1.0):
+		if _audio_player.bus.ends_with("Music"):
+			_audio_player.bus = "WideMusic"
+		elif _audio_player.bus.ends_with("Sounds"):
+			_audio_player.bus = "WideSounds"
+	else:
+		if _audio_player.bus.ends_with("Music"):
+			_audio_player.bus = "Music"
+		elif _audio_player.bus.ends_with("Sounds"):
+			_audio_player.bus = "Sounds"
 
 func _on_audio_player_finished():
 	emit_signal("stopped_playing")
+
+func _on_scale_changed():
+	_check_if_wide()
