@@ -165,9 +165,12 @@ remotesync func add_piece_to_container(container_name: String, piece_name: Strin
 # Called by the server to add a piece to a stack.
 # piece_name: The name of the piece.
 # stack_name: The name of the stack.
+# piece_transform: The server's transform of the piece.
+# stack_transform: The server's transform of the stack.
 # on: Where to add the piece to in the stack.
 # flip: Should the piece be flipped upon entering the stack?
 remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
+	piece_transform: Transform, stack_transform: Transform,
 	on: int = Stack.STACK_AUTO, flip: int = Stack.FLIP_AUTO) -> void:
 
 	if get_tree().get_rpc_sender_id() != 1:
@@ -191,6 +194,9 @@ remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 	if not stack is Stack:
 		push_error("Piece " + stack_name + " is not a stack!")
 		return
+	
+	piece.transform = piece_transform
+	stack.transform = stack_transform
 
 	var piece_entry = piece.piece_entry
 	if piece.is_albedo_color_exposed():
@@ -205,11 +211,12 @@ remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 
 # Called by the server to add a stack to the room with 2 initial pieces.
 # name: The name of the new stack.
-# transform: The initial transform of the new stack.
 # piece1_name: The name of the first piece to add to the stack.
 # piece2_name: The name of the second piece to add to the stack.
-remotesync func add_stack(name: String, transform: Transform,
-	piece1_name: String, piece2_name: String) -> void:
+# piece1_transform: The server's transform of the first piece.
+# piece2_transform: The server's transform of the second piece.
+remotesync func add_stack(name: String, piece1_name: String, piece2_name: String,
+	piece1_transform: Transform, piece2_transform: Transform) -> void:
 
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -234,10 +241,10 @@ remotesync func add_stack(name: String, transform: Transform,
 		return
 
 	var sandwich_stack = (piece1.piece_entry["scene_path"] == "res://Pieces/Card.tscn")
-	add_stack_empty(name, transform, sandwich_stack)
+	add_stack_empty(name, piece2_transform, sandwich_stack)
 
-	add_piece_to_stack(piece1.name, name)
-	add_piece_to_stack(piece2.name, name)
+	add_piece_to_stack(piece1.name, name, piece1_transform, piece2_transform)
+	add_piece_to_stack(piece2.name, name, piece2_transform, piece2_transform)
 
 # Called by the server to add an empty stack to the room.
 # name: The name of the new stack.
@@ -297,7 +304,11 @@ remotesync func add_stack_filled(name: String, transform: Transform,
 # Called by the server to merge the contents of one stack into another stack.
 # stack1_name: The name of the stack to merge contents from.
 # stack2_name: The name of the stack to merge contents to.
-remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> void:
+# stack1_transform: The server's transform for the first stack.
+# stack2_transform: The server's transform for the second stack.
+remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String,
+	stack1_transform: Transform, stack2_transform: Transform) -> void:
+	
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 
@@ -323,6 +334,9 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String) -> 
 	# If there are no children in the first stack, don't bother doing anything.
 	if stack1.empty():
 		return
+	
+	stack1.transform = stack1_transform
+	stack2.transform = stack2_transform
 
 	# We need to determine in which order to add the children of the first stack
 	# to the second stack.
@@ -948,20 +962,23 @@ master func request_collect_pieces(piece_names: Array) -> void:
 			if add_to.matches(add_from):
 				if add_to is Stack:
 					if add_from is Stack:
-						rpc("add_stack_to_stack", add_from.name, add_to.name)
+						rpc("add_stack_to_stack", add_from.name, add_to.name,
+								add_from.transform, add_to.transform)
 					else:
-						rpc("add_piece_to_stack", add_from.name, add_to.name)
+						rpc("add_piece_to_stack", add_from.name, add_to.name,
+								add_from.transform, add_to.transform)
 				else:
 					if add_from is Stack:
-						rpc("add_piece_to_stack", add_to.name, add_from.name)
+						rpc("add_piece_to_stack", add_to.name, add_from.name,
+								add_to.transform, add_from.transform)
 
 						# add_to (Piece) has been added to add_from (Stack), so
 						# in future, we need to add pieces to add_from.
 						add_to = add_from
 					else:
 						var new_stack_name = srv_get_next_piece_name()
-						rpc("add_stack", new_stack_name, add_to.transform,
-							add_to.name, add_from.name)
+						rpc("add_stack", new_stack_name, add_to.name,
+								add_from.name, add_to.transform, add_from.transform)
 						add_to = _pieces.get_node(new_stack_name)
 
 				pieces.remove(i)
@@ -1271,7 +1288,7 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 			new_piece = add_stack_empty(new_name, new_transform, stack is StackSandwich)
 			rpc("add_stack_empty", new_name, new_transform, stack is StackSandwich)
 
-			rpc("transfer_stack_contents", stack_name, new_name, n)
+			rpc("transfer_stack_contents", stack_name, new_name, stack.transform, n)
 
 		# Move the stack down to it's new location.
 		var new_stack_translation = stack.translation
@@ -1406,11 +1423,13 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 			if stack.matches(piece):
 				if piece is Stack:
 					if collect_stacks:
-						rpc("add_stack_to_stack", piece.name, stack_name)
+						rpc("add_stack_to_stack", piece.name, stack_name,
+								piece.transform, stack.transform)
 					else:
 						continue
 				else:
-					rpc("add_piece_to_stack", piece.name, stack_name, Stack.STACK_TOP)
+					rpc("add_piece_to_stack", piece.name, stack_name,
+							piece.transform, stack.transform, Stack.STACK_TOP)
 
 # Called by the server to set a client's hovering pieces.
 remote func set_client_hover_pieces(player_id: int, piece_names: Array) -> void:
@@ -1824,9 +1843,10 @@ func start_sending_cursor_position() -> void:
 # Transfer the contents at the top of one stack to the top of another.
 # stack1_name: The name of the stack to transfer contents from.
 # stack2_name: The name of the stack to transfer contents to.
+# stack1_transform: The server's transform for the first stack.
 # n: The number of contents to transfer.
 remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String,
-	n: int) -> void:
+	stack1_transform: Transform, n: int) -> void:
 
 	if get_tree().get_rpc_sender_id() != 1:
 		return
@@ -1853,6 +1873,8 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 	n = int(min(n, stack1.get_piece_count()))
 	if n < 1:
 		return
+	
+	stack1.transform = stack1_transform
 
 	var contents = []
 	for _i in range(n):
@@ -2351,14 +2373,17 @@ func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void
 				return
 
 		if piece1 is Stack and piece2 is Stack:
-			rpc("add_stack_to_stack", piece1.name, piece2.name)
+			rpc("add_stack_to_stack", piece1.name, piece2.name,
+					piece1.transform, piece2.transform)
 		elif piece1 is Stack:
-			rpc("add_piece_to_stack", piece2.name, piece1.name)
+			rpc("add_piece_to_stack", piece2.name, piece1.name,
+					piece2.transform, piece1.transform)
 		elif piece2 is Stack:
-			rpc("add_piece_to_stack", piece1.name, piece2.name)
+			rpc("add_piece_to_stack", piece1.name, piece2.name,
+					piece1.transform, piece2.transform)
 		else:
-			rpc("add_stack", srv_get_next_piece_name(), piece1.transform, piece1.name,
-				piece2.name)
+			rpc("add_stack", srv_get_next_piece_name(), piece1.name,
+					piece2.name, piece1.transform, piece2.transform)
 
 # Called by the server when the undo stack is empty.
 remotesync func _on_undo_stack_empty():

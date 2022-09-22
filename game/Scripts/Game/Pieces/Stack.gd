@@ -272,20 +272,9 @@ remotesync func orient_pieces(_up: bool) -> void:
 # an empty dictionary if the stack is empty.
 # from: Where to pop the stack from.
 func pop_piece(from: int = STACK_AUTO) -> Dictionary:
-	var pos = 0
-	match from:
-		STACK_AUTO:
-			if transform.basis.y.y > 0:
-				pos = get_piece_count() - 1
-			else:
-				pos = 0
-		STACK_BOTTOM:
-			pos = 0
-		STACK_TOP:
-			pos = get_piece_count() - 1
-		_:
-			push_error("Invalid from option %d!" % from)
-			return {}
+	var pos = pop_index(from)
+	if pos < 0:
+		return {}
 	
 	return remove_piece(pos)
 
