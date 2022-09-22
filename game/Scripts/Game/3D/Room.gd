@@ -2119,7 +2119,7 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 			if piece is PieceContainer:
 				piece.recalculate_mass()
 
-		elif type_key == "piece":
+		elif type_key == "pieces":
 			if piece is Card:
 				# The state can choose not to have this data.
 				if piece_meta.has("is_collisions_on"):
