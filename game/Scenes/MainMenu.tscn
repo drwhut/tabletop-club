@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/FallingWorld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/HelpIcon.svg" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://tabletop_club_logo.png" type="Texture" id=7]
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-MainMenu.tres" type="DynamicFont" id=8]
 [ext_resource path="res://Images/InfoIcon.svg" type="Texture" id=9]
+[ext_resource path="res://Images/StoreIcon.svg" type="Texture" id=10]
+[ext_resource path="res://Images/CodeIcon.svg" type="Texture" id=11]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -84,6 +86,24 @@ margin_top = 568.0
 margin_right = 256.0
 margin_bottom = 600.0
 alignment = 2
+
+[node name="StoreButton" type="Button" parent="MainView/MainList/HBoxContainer"]
+margin_left = 116.0
+margin_right = 148.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+hint_tooltip = "Tabletop Club on Itch.io"
+icon = ExtResource( 10 )
+expand_icon = true
+
+[node name="SourceCodeButton" type="Button" parent="MainView/MainList/HBoxContainer"]
+margin_left = 152.0
+margin_right = 184.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+hint_tooltip = "Source Code"
+icon = ExtResource( 11 )
+expand_icon = true
 
 [node name="HelpButton" type="Button" parent="MainView/MainList/HBoxContainer"]
 margin_left = 188.0
@@ -295,6 +315,8 @@ visible = false
 [connection signal="pressed" from="MainView/MainList/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/HBoxContainer/StoreButton" to="." method="_on_HomeIcon_pressed"]
+[connection signal="pressed" from="MainView/MainList/HBoxContainer/SourceCodeButton" to="." method="_on_CodeIcon_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/HelpButton" to="." method="_on_HelpButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="MultiplayerDialog/HBoxContainer/HostGameContainer/HostGameButton" to="." method="_on_HostGameButton_pressed"]
