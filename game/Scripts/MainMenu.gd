@@ -28,9 +28,11 @@ onready var _enter_code_dialog = $EnterCodeDialog
 onready var _error_dialog = $ErrorDialog
 onready var _info_dialog = $InfoDialog
 onready var _multiplayer_dialog = $MultiplayerDialog
+onready var _options_button = $MainView/MainList/OptionsButton
 onready var _options_menu = $OptionsMenu
 onready var _random_music_player = $RandomMusicPlayer
 onready var _room_code_edit = $EnterCodeDialog/VBoxContainer/RoomCodeContainer/RoomCodeEdit
+onready var _singleplayer_button = $MainView/MainList/SingleplayerButton
 onready var _version_label = $InfoDialog/ScrollContainer/VBoxContainer/VersionLabel
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -50,6 +52,10 @@ func _ready():
 	
 	# Start playing the music once every child node is ready.
 	_random_music_player.next_track()
+	
+	# Focus on the singleplayer button so users can navigate the main menu with
+	# just the keyboard.
+	_singleplayer_button.grab_focus()
 
 # Update the credits dialog text.
 func _update_credits_text() -> void:
@@ -126,12 +132,21 @@ func _on_JoinGameButton_pressed():
 func _on_OptionsButton_pressed():
 	_options_menu.visible = true
 
+func _on_OptionsMenu_keep_video_dialog_hide():
+	if not _options_menu.visible:
+		_options_button.grab_focus()
+
 func _on_OptionsMenu_locale_changed(_locale: String):
 	_update_credits_text()
 	_random_music_player.update_label_text()
 
+func _on_OptionsMenu_visibility_changed():
+	if not _options_menu.visible:
+		_options_button.grab_focus()
+
 func _on_CreditsButton_pressed():
 	_credits_dialog.popup_centered()
+	_credits_label.grab_focus()
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
@@ -147,3 +162,4 @@ func _on_HelpButton_pressed():
 
 func _on_InfoButton_pressed():
 	_info_dialog.popup_centered()
+	_version_label.grab_focus()

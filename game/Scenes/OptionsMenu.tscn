@@ -1267,17 +1267,16 @@ text = "Apply"
 margin_left = 951.0
 margin_right = 984.0
 margin_bottom = 26.0
+focus_next = NodePath("../../TabContainer")
 text = "OK"
 
 [node name="BindingBackground" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+focus_mode = 2
 color = Color( 0, 0, 0, 0.313726 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Panel" parent="BindingBackground"]
 anchor_left = 0.5
@@ -1313,27 +1312,27 @@ __meta__ = {
 
 [node name="PressKeyLabel" type="Label" parent="BindingBackground/Panel/MarginContainer/VBoxContainer"]
 margin_right = 270.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 text = "Please press a key or button to bind it..."
 align = 1
 autowrap = true
 
 [node name="Space" type="Control" parent="BindingBackground/Panel/MarginContainer/VBoxContainer"]
-margin_top = 18.0
+margin_top = 24.0
 margin_right = 270.0
-margin_bottom = 56.0
+margin_bottom = 50.0
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BindingBackground/Panel/MarginContainer/VBoxContainer"]
-margin_top = 60.0
+margin_top = 54.0
 margin_right = 270.0
 margin_bottom = 80.0
 alignment = 1
 
 [node name="CancelBindButton" type="Button" parent="BindingBackground/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 108.0
-margin_right = 162.0
-margin_bottom = 20.0
+margin_left = 106.0
+margin_right = 164.0
+margin_bottom = 26.0
 text = "Cancel"
 
 [node name="KeepVideoConfirm" type="ConfirmationDialog" parent="."]
@@ -1371,6 +1370,7 @@ window_title = "Warning!"
 dialog_text = "Restarting the game is required in order for these changes to take effect."
 dialog_autowrap = true
 
+[connection signal="visibility_changed" from="." to="." method="_on_OptionsMenu_visibility_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/MasterVolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SoundsVolumeSlider" to="." method="_on_SoundsVolumeSlider_value_changed"]
@@ -1385,5 +1385,6 @@ dialog_autowrap = true
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/OKButton" to="." method="_on_OKButton_pressed"]
 [connection signal="unhandled_input" from="BindingBackground" to="." method="_on_BindingBackground_unhandled_input"]
 [connection signal="pressed" from="BindingBackground/Panel/MarginContainer/VBoxContainer/HBoxContainer/CancelBindButton" to="." method="_on_CancelBindButton_pressed"]
+[connection signal="visibility_changed" from="KeepVideoConfirm" to="." method="_on_KeepVideoConfirm_visibility_changed"]
 [connection signal="confirmed" from="ReimportConfirm" to="." method="_on_ReimportConfirm_confirmed"]
 [connection signal="confirmed" from="ResetBindingsConfirm" to="." method="_on_ResetBindingsConfirm_confirmed"]

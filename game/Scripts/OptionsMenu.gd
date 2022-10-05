@@ -23,6 +23,7 @@
 extends Control
 
 signal applying_options(config)
+signal keep_video_dialog_hide()
 signal locale_changed(locale)
 
 var LOCALES = [
@@ -36,6 +37,7 @@ var LOCALES = [
 
 const OPTIONS_FILE_PATH = "user://options.cfg"
 
+onready var _back_button = $MarginContainer/VBoxContainer/HBoxContainer/BackButton
 onready var _binding_background = $BindingBackground
 onready var _keep_video_confirm = $KeepVideoConfirm
 onready var _key_bindings_parent = $"MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"
@@ -48,6 +50,7 @@ onready var _tab_container = $MarginContainer/VBoxContainer/TabContainer
 onready var _window_mode_button = $MarginContainer/VBoxContainer/TabContainer/Video/GridContainer/WindowModeButton
 
 var _action_to_bind = ""
+var _bind_ignore_next_enter = false
 var _restart_popup_shown = false
 
 func _init():
@@ -112,6 +115,41 @@ func _ready():
 		# OSX, so disable the button - the player can always maximize the
 		# window, to get the same affect as making it fullscreen.
 		_window_mode_button.disabled = true
+	
+	# To help keyboard-only users, manually adjust the focus neighbours of all
+	# of the setting controls - Godot's default settings can sometimes send the
+	# focus back to the main menu.
+	for tab in _tab_container.get_children():
+		if tab is OptionsTab:
+			var grid = tab.get_node("GridContainer")
+			if not grid:
+				push_error("Options tab %s does not have a grid container child!" % tab.name)
+				continue
+			
+			var old_child: Control = null
+			
+			for new_child in grid.get_children():
+				if new_child is Control:
+					if new_child.focus_mode == Control.FOCUS_ALL:
+						if old_child != null:
+							old_child.focus_neighbour_bottom = new_child.get_path()
+							new_child.focus_neighbour_top = old_child.get_path()
+						else:
+							# Going up from the first control should take the
+							# focus back to the tabs.
+							new_child.focus_neighbour_top = _tab_container.get_path()
+						
+						old_child = new_child
+			
+			# Going down from the last element should take the focus to the
+			# back button.
+			if old_child != null:
+				old_child.focus_neighbour_bottom = _back_button.get_path()
+
+func _unhandled_input(event):
+	if visible and not _binding_background.visible and event.is_action_pressed("ui_cancel"):
+		visible = false
+		get_tree().set_input_as_handled()
 
 # Apply the changes made and save them in the options file.
 func _apply_changes() -> void:
@@ -447,7 +485,10 @@ func _volume_to_db(volume: float) -> float:
 
 func _on_rebinding_action(action: String) -> void:
 	_action_to_bind = action
+	_bind_ignore_next_enter = true
 	_binding_background.visible = true
+	
+	_binding_background.grab_focus()
 
 func _on_OKButton_pressed():
 	_apply_changes()
@@ -463,18 +504,27 @@ func _on_BindingBackground_unhandled_input(event: InputEvent):
 	if not _action_to_bind.empty():
 		var valid = false
 		if event is InputEventKey:
-			valid = true
+			var key_is_select = (event.scancode == KEY_ENTER or event.scancode == KEY_SPACE)
+			if _bind_ignore_next_enter and key_is_select:
+				_bind_ignore_next_enter = false
+			else:
+				valid = not event.is_pressed()
 		elif event is InputEventMouseButton:
 			valid = true
 		
 		if valid:
+			get_tree().set_input_as_handled()
+			
 			for node in _key_bindings_parent.get_children():
 				if node is BindButton:
 					if node.action == _action_to_bind:
 						node.input_event = event
 						node.update_text()
+						
+						node.grab_focus()
 			
 			_action_to_bind = ""
+			_bind_ignore_next_enter = false
 			_binding_background.visible = false
 
 func _on_CancelBindButton_pressed():
@@ -498,6 +548,15 @@ func _on_KeepVideoConfirm_ok_pressed():
 	var config = _create_config_from_current()
 	_save_file(config)
 	_save_override_file(config)
+
+func _on_KeepVideoConfirm_visibility_changed():
+	if _keep_video_confirm.visible:
+		_keep_video_confirm.get_cancel().grab_focus()
+	else:
+		emit_signal("keep_video_dialog_hide")
+		
+		if visible:
+			_tab_container.grab_focus()
 
 func _on_LanguageButton_item_selected(index: int):
 	var locale = LOCALES[index]["locale"]
@@ -549,6 +608,13 @@ func _on_OpenAssetsButton_pressed():
 	
 	if found:
 		OS.shell_open(dir.get_current_dir())
+
+func _on_OptionsMenu_visibility_changed():
+	if visible:
+		_tab_container.grab_focus()
+		
+		# Prevents focus from going back to the main menu.
+		_back_button.focus_neighbour_left = NodePath(".")
 
 func _on_ReimportButton_pressed():
 	_reimport_confirm.popup_centered()

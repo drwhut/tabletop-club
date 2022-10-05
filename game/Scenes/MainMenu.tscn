@@ -222,6 +222,7 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="InfoDialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+follow_focus = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -244,6 +245,9 @@ margin_left = 290.0
 margin_right = 418.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
+focus_neighbour_bottom = NodePath("../../LicenseLabel")
+focus_next = NodePath("../../LicenseLabel")
+focus_mode = 2
 texture = ExtResource( 7 )
 expand = true
 
@@ -251,6 +255,7 @@ expand = true
 margin_top = 132.0
 margin_right = 708.0
 margin_bottom = 157.0
+focus_mode = 2
 custom_fonts/font = ExtResource( 8 )
 align = 1
 
@@ -258,6 +263,7 @@ align = 1
 margin_top = 161.0
 margin_right = 708.0
 margin_bottom = 618.0
+focus_mode = 2
 text = "Copyright (c) 2020–2022 Benjamin 'drwhut' Beddows.
 Copyright (c) 2021–2022 Tabletop Club contributors (see credits).
 
@@ -291,6 +297,7 @@ __meta__ = {
 [node name="CreditsLabel" type="RichTextLabel" parent="CreditsDialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+focus_mode = 2
 custom_fonts/italics_font = ExtResource( 5 )
 bbcode_enabled = true
 __meta__ = {
@@ -324,4 +331,6 @@ visible = false
 [connection signal="text_changed" from="EnterCodeDialog/VBoxContainer/RoomCodeContainer/RoomCodeEdit" to="." method="_on_RoomCodeEdit_text_changed"]
 [connection signal="text_entered" from="EnterCodeDialog/VBoxContainer/RoomCodeContainer/RoomCodeEdit" to="." method="_on_RoomCodeEdit_text_entered"]
 [connection signal="pressed" from="EnterCodeDialog/VBoxContainer/JoinGameButton" to="." method="_on_JoinGameButton_pressed"]
+[connection signal="keep_video_dialog_hide" from="OptionsMenu" to="." method="_on_OptionsMenu_keep_video_dialog_hide"]
 [connection signal="locale_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_locale_changed"]
+[connection signal="visibility_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_visibility_changed"]
