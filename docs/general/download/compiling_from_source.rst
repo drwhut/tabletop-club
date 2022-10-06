@@ -375,6 +375,16 @@ game through the editor to play it. Here's how you can export the project:
 2. In the pop-up, click :guilabel:`Add...`, and select your platform.
 3. In the menu on the right, set the debug template to point to the editor
    executable, and if you made a release template, set that as well.
+
+   .. note::
+
+      If you are on macOS, then you will need to disable library validation as
+      shown below. This is in order to prevent the system from checking the
+      WebRTC library, which stops it from loading.
+
+      .. image:: osx_disable_library_validation.png
+         :scale: 50%
+
 4. Click :guilabel:`Export project`, choose where you want to export the
    project and whether you want to export a debug or a release binary, then
    click :guilabel:`Save`.
