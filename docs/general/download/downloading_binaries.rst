@@ -26,6 +26,40 @@ little experimental, go for the latest version!
 If you've downloaded Tabletop Club in the past and want to download a newer
 version, follow :ref:`upgrading-installation` before carrying on here.
 
+
+Verifying the download
+----------------------
+
+This step is completely optional, but it's a good idea to make sure that the
+downloaded file's contents are what we expect them to be. We do this by checking
+the `SHA512 hash <https://en.wikipedia.org/wiki/SHA-2>`_ of the file, and seeing
+if the hash matches the original.
+
+1. Download from the GitHub releases page, as well as the intended binary, the
+   ``TabletopClub_vX.X.X_SHA512.txt`` file. This text file contains the SHA512
+   hashes of all of the downloads.
+
+2. Open a command prompt or terminal, and navigate to the folder where the
+   compressed binary lies.
+
+3. Enter the command for your platform, adjusting the file name where necessary:
+
+   .. code-block:: bash
+
+      # Windows
+      certutil -hashfile TabletopClub_vX.X.X_Windows_64.zip SHA512
+
+      # macOS
+      shasum -a 512 TabletopClub_vX.X.X_OSX_Universal.zip
+
+      # Linux / *BSD
+      sha512sum TabletopClub_vX.X.X_Linux_64.tar.xz
+
+4. Compare the output of the previous command to the corresponding line in the
+   SHA512 text file. If the hashes do not match, then you will need to download
+   the binary again.
+
+
 What happens now depends slightly on which platform you're on:
 
 Downloading for Windows
@@ -60,7 +94,8 @@ Downloading for macOS
 
 2. When it has downloaded, macOS should automatically extract the files in the
    Downloads folder for you. Go to your downloads folder in Finder, and find
-   the extracted folder, it will be called something like ``TabletopClub_v0``.
+   the extracted folder, it will be called something like
+   ``TabletopClub_vX.X.X_OSX_Universal``.
 
 3. Re-name the new folder to ``TabletopClub``.
 
@@ -78,14 +113,14 @@ Downloading for Linux / \*BSD
 -----------------------------
 
 1. Make sure you have downloaded the compressed file, it should be called
-   something like ``TabletopClub_vX.X.X_Linux_64.tar.gz``.
+   something like ``TabletopClub_vX.X.X_Linux_64.tar.xz``.
 
 2. Either use your distribution's archive manager to extract the files, or run
    this command in a terminal:
 
    .. code-block:: bash
 
-      tar -xf TabletopClub_vX.X.X_Linux_64.tar.gz
+      tar -xf TabletopClub_vX.X.X_Linux_64.tar.xz
 
 3. Either double-click the executable, or go into a terminal and run this
    command in the folder the executable is in:
@@ -93,10 +128,6 @@ Downloading for Linux / \*BSD
    .. code-block:: bash
 
       ./TabletopClub.x86_64
-
-.. todo::
-
-   Add instructions to check the SHA-256 of the compressed file.
 
 
 .. _upgrading-installation:
