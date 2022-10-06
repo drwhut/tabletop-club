@@ -74,9 +74,11 @@ What platforms can I play Tabletop Club on?
 
 Tabletop Club can be played on any of these platforms:
 
-* Windows
-* macOS
+* Windows 7 or later
+* macOS 10.12 or later
 * Linux / \*BSD
+
+Your hardware must also have support for OpenGL 3.3.
 
 Currently there are no plans for the game to be supported on mobile devices or
 consoles.
