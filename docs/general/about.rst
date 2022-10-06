@@ -39,9 +39,10 @@ This means a few things:
      The game's code and project files are licensed under the MIT License, but
      some of the assets are licensed under different open licenses.
 
-     To see the details of these assets and their authors and licenses, have a
-     look at ``assets/TabletopClub/LICENSES`` and ``game/LICENSES.tres`` in the
-     source code.
+     To see the authors and licenses of these assets, you can check the
+     ``game/LICENSES.tres`` file, as well as hovering over items in the objects
+     menu in-game (which can also be found in the various ``.cfg`` files under
+     ``assets/``).
 
 Tabletop board game
 -------------------
@@ -101,8 +102,8 @@ No. Tabletop Club is a standalone game, meaning when you download the game you
 can extract the game files anywhere you want on your computer, and the game
 will work.
 
-Currently there are no plans to add Tabletop Club to any gaming platform at this
-stage.
+However, when the game is released, you will be able to download it from
+itch.io!
 
 
 What stage of development is Tabletop Club at?
@@ -198,9 +199,10 @@ assets you've made for the game if the following is all true:
 
   * The mechanics of the game cannot be patented.
 
-    .. todo::
+    .. tip::
     
-       Add instructions to check if the mechanics are patented.
+       You can `check online <https://worldwide.espacenet.com/advancedSearch>`_
+       to see if there are any patents for the game's mechanics.
 
 .. warning::
 
