@@ -22,6 +22,12 @@
 
 extends Node
 
+enum {
+	COLLISION_CONVEX,
+	COLLISION_MULTI_CONVEX,
+	COLLISION_CONCAVE
+}
+
 # Build a piece using an entry from the AssetDB.
 # Returns: The piece corresponding to the given entry.
 # piece_entry: The entry to create the piece with.
@@ -83,7 +89,8 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 			else:
 				build = Piece.new()
 		
-		_extract_and_shape_mesh_instances(build, piece, Transform.IDENTITY)
+		_extract_and_shape_mesh_instances(build, piece, Transform.IDENTITY,
+				piece_entry["collision_mode"])
 		
 		if not piece.get_parent():
 			ResourceManager.free_object(piece)
@@ -161,7 +168,8 @@ func build_table(table_entry: Dictionary) -> RigidBody:
 	var scene: Spatial = ResourceManager.load_res(table_entry["scene_path"]).instance()
 	
 	var table = RigidBody.new()
-	_extract_and_shape_mesh_instances(table, scene, Transform.IDENTITY)
+	_extract_and_shape_mesh_instances(table, scene, Transform.IDENTITY,
+			table_entry["collision_mode"])
 	if not scene.get_parent():
 		ResourceManager.free_object(scene)
 	
@@ -259,8 +267,10 @@ func _adjust_centre_of_mass(piece: RigidBody, piece_entry: Dictionary,
 # add_to: The node to add the collision shapes + mesh instances to.
 # from: Where to start recursing from.
 # transform: The transform up to that point in the recursion.
+# collision_mode: The type of collision shape to make - see the enum above for
+# possible values.
 func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
-	transform: Transform) -> void:
+	transform: Transform, collision_mode: int) -> void:
 	
 	for child in from.get_children():
 		var new_basis = transform.basis
@@ -271,7 +281,8 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 			new_origin = from.transform.origin + new_origin
 		
 		var new_transform = Transform(new_basis, new_origin)
-		_extract_and_shape_mesh_instances(add_to, child, new_transform)
+		_extract_and_shape_mesh_instances(add_to, child, new_transform,
+				collision_mode)
 	
 	if from is MeshInstance:
 		var parent = from.get_parent()
@@ -321,8 +332,44 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 		
 		# Don't bother making a collision shape if there's no vertices.
 		if num_verts > 0:
-			var collision_shape = CollisionShape.new()
-			collision_shape.shape = from.mesh.create_convex_shape()
+			var collision_shape_arr = []
+			
+			if collision_mode == COLLISION_MULTI_CONVEX:
+				from.create_multiple_convex_collisions()
+				
+				var static_body_index = -1
+				for index in range(from.get_child_count()):
+					var child = from.get_child(index)
+					if child is StaticBody:
+						if static_body_index < 0:
+							static_body_index = index
+						else:
+							push_error("Multiple StaticBody children generated!")
+							return
+				
+				if static_body_index < 0:
+					push_error("Could not find generated StaticBody!")
+					return
+				var static_body: StaticBody = from.get_child(static_body_index)
+				
+				for collision_shape in static_body.get_children():
+					if collision_shape is CollisionShape:
+						static_body.remove_child(collision_shape)
+						collision_shape_arr.append(collision_shape)
+				
+				from.remove_child(static_body)
+				ResourceManager.free_object(static_body)
+			else:
+				var collision_shape = CollisionShape.new()
+				
+				if collision_mode == COLLISION_CONVEX:
+					collision_shape.shape = from.mesh.create_convex_shape()
+				elif collision_mode == COLLISION_CONCAVE:
+					collision_shape.shape = from.mesh.create_trimesh_shape()
+				else:
+					push_error("Invalid collision mode %d!" % collision_mode)
+				
+				collision_shape_arr.append(collision_shape)
 			
 			# The collision shape's transform needs to match up with the mesh
 			# instance's, but they can't both use the same transform, otherwise
@@ -331,10 +378,12 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 			collision_transform.basis = from.transform.basis * collision_transform.basis
 			collision_transform.origin = from.transform.origin + collision_transform.origin
 			
-			collision_shape.transform = collision_transform
 			from.transform = Transform.IDENTITY
+			for collision_shape in collision_shape_arr:
+				collision_shape.transform = collision_transform
+				add_to.add_child(collision_shape)
 			
-			collision_shape.add_child(from)
-			add_to.add_child(collision_shape)
+			if not collision_shape_arr.empty():
+				collision_shape_arr[0].add_child(from)
 		else:
 			ResourceManager.free_object(from)

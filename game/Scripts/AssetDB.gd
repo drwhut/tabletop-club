@@ -769,6 +769,18 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 			entry = { "audio_path": to }
 	elif asset_type == ASSET_SCENE:
 		if VALID_SCENE_EXTENSIONS.has(to.get_extension()):
+			# Determines the kind of collision shape that is made.
+			var collision_mode = _get_file_config_value(config, from.get_file(),
+					"collision_mode", PieceBuilder.COLLISION_CONVEX)
+			
+			if collision_mode < PieceBuilder.COLLISION_CONVEX or collision_mode > PieceBuilder.COLLISION_CONCAVE:
+				push_error("Collision mode is invalid!")
+				collision_mode = PieceBuilder.COLLISION_CONVEX
+			
+			if type == "tables" and collision_mode == PieceBuilder.COLLISION_CONCAVE:
+				push_error("Tables do not support the concave collision mode!")
+				collision_mode = PieceBuilder.COLLISION_CONVEX
+			
 			# If the file has been imported before, check that the custom scene
 			# has a cached bounding box (.box) file, so we don't have to go and
 			# calculate it again.
@@ -823,6 +835,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 			
 			entry = {
 				"bounding_box": bounding_box,
+				"collision_mode": collision_mode,
 				"scene_path": to,
 				"texture_path": null
 			}
@@ -1211,7 +1224,7 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 					"texture_path"])
 			
 			if asset_type == ASSET_SCENE:
-				expected_keys.append("bounding_box")
+				expected_keys.append_array(["bounding_box", "collision_mode"])
 			
 			if type == "tables":
 				expected_keys.append_array(["bounce", "default", "hands",
@@ -1290,6 +1303,18 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 				
 				if (value[1] - value[0]).sign() != Vector3.ONE:
 					push_error("'bounding_box' in entry is invalid!")
+					return false
+			"collision_mode":
+				if typeof(value) != TYPE_INT:
+					push_error("'collision_mode' in entry is not an integer!")
+					return false
+				
+				if value < PieceBuilder.COLLISION_CONVEX or value > PieceBuilder.COLLISION_CONCAVE:
+					push_error("'collision_mode' in entry is invalid!")
+					return false
+				
+				if type == "tables" and value == PieceBuilder.COLLISION_CONCAVE:
+					push_error("'collision_mode' in entry is concave, but entry is for a table!")
 					return false
 			"color":
 				if typeof(value) != TYPE_COLOR:
