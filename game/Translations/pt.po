@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-07-21 13:06+0100\n"
-"PO-Revision-Date: 2022-09-20 14:17+0000\n"
-"Last-Translator: Oni <nelsonbarbosaesteves31@gmail.com>\n"
+"PO-Revision-Date: 2022-10-31 18:07+0000\n"
+"Last-Translator: Karina Guisini <karinaapguisini@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
 "game/pt/>\n"
 "Language: pt\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:31
@@ -35,11 +35,11 @@ msgstr ""
 
 #: ../Scenes/Loading.tscn:34
 msgid "Loading..."
-msgstr ""
+msgstr "Carregando..."
 
 #: ../Scenes/MainMenu.tscn:46
 msgid "Singleplayer"
-msgstr ""
+msgstr "Modo Solo"
 
 #: ../Scenes/MainMenu.tscn:53 ../Scenes/MainMenu.tscn:109
 #: ../Scenes/OptionsMenu.tscn:839
@@ -48,15 +48,15 @@ msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:213 ../Scenes/MainMenu.tscn:60
 msgid "Options"
-msgstr ""
+msgstr "Opções"
 
 #: ../Scenes/MainMenu.tscn:67 ../Scenes/MainMenu.tscn:266
 msgid "Credits"
-msgstr ""
+msgstr "Créditos"
 
 #: ../Scenes/MainMenu.tscn:74
 msgid "Quit"
-msgstr ""
+msgstr "Sair"
 
 #: ../Scenes/MainMenu.tscn:93
 msgid "Documentation"
@@ -64,7 +64,7 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:102 ../Scenes/MainMenu.tscn:197
 msgid "Information"
-msgstr ""
+msgstr "Informação"
 
 #: ../Scenes/MainMenu.tscn:127
 msgid "Host Game"
@@ -88,7 +88,7 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:177
 msgid "Room Code:"
-msgstr ""
+msgstr "Código da Sala:"
 
 #: ../Scenes/MainMenu.tscn:186
 msgid "ABCD"
@@ -96,11 +96,11 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:283
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: ../Scenes/OptionsMenu.tscn:47
 msgid "Audio"
-msgstr ""
+msgstr "Áudio"
 
 #: ../Scenes/OptionsMenu.tscn:60
 msgid "Master Volume"
@@ -112,7 +112,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:78
 msgid "Music Volume"
-msgstr ""
+msgstr "Volume da música"
 
 #: ../Scenes/OptionsMenu.tscn:86
 msgid "Sets the volume of all music sources in the game."
@@ -130,7 +130,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:116
 msgid "Effects Volume"
-msgstr ""
+msgstr "Volume dos efeitos"
 
 #: ../Scenes/OptionsMenu.tscn:124
 msgid ""
@@ -140,7 +140,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:140
 msgid "Controls"
-msgstr ""
+msgstr "Controles"
 
 #: ../Scenes/OptionsMenu.tscn:153
 msgid "Mouse Horizontal Sensitivity"
