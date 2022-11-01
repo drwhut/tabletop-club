@@ -1070,16 +1070,17 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 	
 	_add_entry_to_db(pack, type, entry)
 	
+	var change_detected = (import_err != ERR_ALREADY_EXISTS or config_changed)
 	if PieceCache.should_cache(entry):
 		# Should have been added by _add_entry_to_db.
 		var entry_path: String = entry["entry_path"]
 		
 		var piece_cache = PieceCache.new(entry_path, false)
-		if (not piece_cache.exists()) or config_changed:
+		if change_detected or (not piece_cache.exists()):
 			piece_cache.cache()
 		
 		var thumbnail_cache = PieceCache.new(entry_path, true)
-		if (not thumbnail_cache.exists()) or config_changed:
+		if change_detected or (not thumbnail_cache.exists()):
 			thumbnail_cache.cache()
 	
 	return OK
