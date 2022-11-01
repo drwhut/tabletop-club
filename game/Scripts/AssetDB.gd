@@ -384,13 +384,38 @@ func _import_all(_userdata) -> void:
 			var type_path = pack_path + "/" + type
 			
 			var config_file = ConfigFile.new()
+			var new_config_md5 = ""
+			
 			if type_catalog["config_file"]:
 				var config_file_path = type_path + "/config.cfg"
 				var err = config_file.load(config_file_path)
 				if err == OK:
 					print("Loaded: %s" % config_file_path)
+					var md5_check = File.new()
+					new_config_md5 = md5_check.get_md5(config_file_path)
 				else:
 					push_error("Failed to load '%s' (error %d)!" % [config_file_path, err])
+			
+			var old_config_md5 = "?" # if .md5 file does not exist, will differ from new.
+			var old_config_md5_file = File.new()
+			
+			var md5_file_path = "user://assets/%s/%s/config.cfg.md5" % [pack, type]
+			if old_config_md5_file.file_exists(md5_file_path):
+				var err = old_config_md5_file.open(md5_file_path, File.READ)
+				if err == OK:
+					old_config_md5 = old_config_md5_file.get_line()
+					old_config_md5_file.close()
+				else:
+					push_error("Failed to load '%s' (error %d)!" % [md5_file_path, err])
+			
+			var config_changed = (new_config_md5 != old_config_md5)
+			if config_changed:
+				var err = old_config_md5_file.open(md5_file_path, File.WRITE)
+				if err == OK:
+					old_config_md5_file.store_line(new_config_md5)
+					old_config_md5_file.close()
+				else:
+					push_error("Failed to load '%s' (error %d)!" % [md5_file_path, err])
 			
 			for file in type_catalog["files"]:
 				_import_mutex.lock()
@@ -404,7 +429,7 @@ func _import_all(_userdata) -> void:
 				_send_importing_file_signal(file_path, files_imported,
 					catalog["file_count"])
 				
-				var err = _import_asset(file_path, pack, type, config_file)
+				var err = _import_asset(file_path, pack, type, config_file, config_changed)
 				if err != OK:
 					push_error("Failed to import '%s' (error %d)!" % [file_path, err])
 				
@@ -744,7 +769,11 @@ func _get_file_config_value(config: ConfigFile, section: String, key: String, de
 # pack: The name of the pack to import the asset to.
 # type: The relative file path from the pack directory.
 # config: The configuration file for the asset's directory.
-func _import_asset(from: String, pack: String, type: String, config: ConfigFile) -> int:
+# config_changed: If true, the contents of the configuration file have changed
+# since the last import. This may impact cached files.
+func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
+	config_changed: bool) -> int:
+	
 	var ignore = _get_file_config_value(config, from.get_file(), "ignore", false)
 	if ignore:
 		return OK
@@ -1040,6 +1069,18 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile)
 			entry["suit"] = suit
 	
 	_add_entry_to_db(pack, type, entry)
+	
+	if PieceCache.should_cache(entry):
+		# Should have been added by _add_entry_to_db.
+		var entry_path: String = entry["entry_path"]
+		
+		var piece_cache = PieceCache.new(entry_path, false)
+		if (not piece_cache.exists()) or config_changed:
+			piece_cache.cache()
+		
+		var thumbnail_cache = PieceCache.new(entry_path, true)
+		if (not thumbnail_cache.exists()) or config_changed:
+			thumbnail_cache.cache()
 	
 	return OK
 

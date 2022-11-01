@@ -50,7 +50,9 @@ export(NodePath) var mesh_instance_path: String
 export(Resource) var table_collide_fast_sounds
 export(Resource) var table_collide_slow_sounds
 
-var piece_entry: Dictionary = {}
+# Exported so cached pieces save the piece entry, it is not expected to fill
+# this manually.
+export(Dictionary) var piece_entry: Dictionary = {}
 
 # When setting these vectors, make sure you call set_angular_lock(false),
 # otherwise the piece won't rotate towards the orientation!

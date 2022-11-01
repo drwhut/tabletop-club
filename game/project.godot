@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/Piece.gd"
 }, {
+"base": "Reference",
+"class": "PieceCache",
+"language": "GDScript",
+"path": "res://Scripts/PieceCache.gd"
+}, {
 "base": "Piece",
 "class": "PieceContainer",
 "language": "GDScript",
@@ -136,6 +141,7 @@ _global_script_class_icons={
 "OptionsTab": "",
 "OutlineColorRect": "",
 "Piece": "",
+"PieceCache": "",
 "PieceContainer": "",
 "Preview": "",
 "RandomAudioStream": "",

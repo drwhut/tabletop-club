@@ -136,6 +136,16 @@ func _build(_userdata) -> void:
 			else:
 				piece = preload("res://Pieces/StackLasagne.tscn").instance()
 			PieceBuilder.fill_stack(piece, piece_entry)
+		elif PieceCache.should_cache(piece_entry):
+			var thumbnail_cache = PieceCache.new(piece_entry["entry_path"], true)
+			var maybe_piece = thumbnail_cache.get_scene()
+			if maybe_piece != null and maybe_piece is Piece:
+				piece = maybe_piece
+			else:
+				if maybe_piece != null:
+					ResourceManager.free_object(maybe_piece)
+				
+				piece = PieceBuilder.build_piece(piece_entry, false)
 		else:
 			piece = PieceBuilder.build_piece(piece_entry, false)
 		

@@ -51,6 +51,7 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 			var pieces_node = Spatial.new()
 			pieces_node.name = "Pieces"
 			build.add_child(pieces_node)
+			pieces_node.owner = build
 		elif scene_dir.ends_with("speakers") or scene_dir.ends_with("timers"):
 			if extra_nodes:
 				if scene_dir.ends_with("speakers"):
@@ -61,6 +62,7 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 				var audio_player_node = AudioStreamPlayer3D.new()
 				audio_player_node.name = "AudioStreamPlayer3D"
 				build.add_child(audio_player_node)
+				audio_player_node.owner = build
 			else:
 				# Speakers rely on their audio player, so convert to a vanilla
 				# piece if we don't want the audio player.
@@ -81,6 +83,7 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 					effect_player.bus = "Effects"
 					effect_player.unit_size = 20.0
 					build.add_child(effect_player)
+					effect_player.owner = build
 					
 					build.effect_player_path = NodePath("EffectPlayer")
 					
@@ -146,6 +149,7 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 				effect_player.unit_size = 20
 				
 				piece.add_child(effect_player)
+				effect_player.owner = piece
 				piece.effect_player_path = NodePath("EffectPlayer")
 			
 			# Need to enable contact monitoring so the piece knows when to
@@ -382,8 +386,18 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 			for collision_shape in collision_shape_arr:
 				collision_shape.transform = collision_transform
 				add_to.add_child(collision_shape)
+				
+				# Set the collision shape's owner to the add_to node, so the
+				# PieceCache can store this scene in it's entirety if it wants.
+				collision_shape.owner = add_to
 			
 			if not collision_shape_arr.empty():
 				collision_shape_arr[0].add_child(from)
+				from.owner = add_to
+				
+				# We may have added extra nodes to the mesh instance above,
+				# for example, OmniLights.
+				for sub_child in from.get_children():
+					sub_child.owner = add_to
 		else:
 			ResourceManager.free_object(from)

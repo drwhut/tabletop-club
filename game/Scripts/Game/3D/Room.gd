@@ -108,7 +108,19 @@ remotesync func add_piece(name: String, transform: Transform,
 			push_undo_state()	#make host add an undo state
 		_srv_undo_state_events["add_piece"] = UNDO_STATE_EVENT_TIMERS["add_piece"]	#if you try to add a piece before timer is up, timer resets
 
-	var piece = PieceBuilder.build_piece(piece_entry)
+	var piece: Piece = null
+	if PieceCache.should_cache(piece_entry):
+		var piece_cache = PieceCache.new(entry_path, false)
+		var maybe_piece = piece_cache.get_scene()
+		if maybe_piece != null and maybe_piece is Piece:
+			piece = maybe_piece
+		else:
+			if maybe_piece != null:
+				ResourceManager.free_object(maybe_piece)
+			
+			piece = PieceBuilder.build_piece(piece_entry)
+	else:
+		piece = PieceBuilder.build_piece(piece_entry)
 
 	piece.name = name
 	piece.transform = transform
@@ -1739,7 +1751,19 @@ remotesync func set_table(table_entry_path: String) -> void:
 		
 		if table_entry.has("scene_path"):
 			if not table_entry["scene_path"].empty():
-				_table_body = PieceBuilder.build_table(table_entry)
+				if PieceCache.should_cache(table_entry):
+					var table_cache = PieceCache.new(table_entry_path, false)
+					var maybe_table = table_cache.get_scene()
+					if maybe_table != null and not maybe_table is Piece:
+						_table_body = maybe_table
+					else:
+						if maybe_table != null:
+							ResourceManager.free_object(maybe_table)
+						
+						_table_body = PieceBuilder.build_table(table_entry)
+				else:
+					_table_body = PieceBuilder.build_table(table_entry)
+				
 				_table_body.name = "TableBody"
 				_table.add_child(_table_body)
 
