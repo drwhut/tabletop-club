@@ -34,7 +34,6 @@ const HOVER_INACTIVE_DURATION = 5.0
 const LINEAR_FORCE_SCALAR = 50.0
 const ROTATION_LOCK_AT = 0.001
 const SHAKING_THRESHOLD = 1000.0
-const SPAWN_HEIGHT = 2.0
 const TRANSFORM_LERP_ALPHA = 0.9
 
 export(NodePath) var effect_player_path: String
@@ -592,7 +591,7 @@ func _integrate_forces(state):
 			# it so the devil doesn't tickle it to death.
 			if srv_retrieve_from_hell and state.transform.origin.y < HELL_HEIGHT:
 				state.transform = Transform.IDENTITY
-				state.transform.origin.y += SPAWN_HEIGHT
+				state.transform.origin.y = get_size().y / 2.0
 				
 				state.angular_velocity = Vector3.ZERO
 				state.linear_velocity = Vector3.ZERO

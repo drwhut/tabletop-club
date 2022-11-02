@@ -62,8 +62,8 @@ export(bool) var show_errors: bool = true
 export(bool) var show_warnings: bool = true
 
 var spawn_point_container_name: String = ""
-var spawn_point_origin: Vector3 = Vector3(0, Piece.SPAWN_HEIGHT, 0)
-var spawn_point_temp_offset: Vector3 = Vector3()
+var spawn_point_origin: Vector3 = Vector3.ZERO
+var spawn_point_temp_offset: Vector3 = Vector3.ZERO
 
 var _room_code: String = ""
 var _room_code_visible: bool = true

@@ -124,6 +124,7 @@ remotesync func add_piece(name: String, transform: Transform,
 
 	piece.name = name
 	piece.transform = transform
+	piece.transform.origin.y += piece.get_size().y / 2.0
 
 	if get_tree().is_network_server():
 		piece.srv_retrieve_from_hell = _srv_retrieve_pieces_from_hell
@@ -312,6 +313,7 @@ remotesync func add_stack_filled(name: String, transform: Transform,
 
 	var stack = add_stack_empty(name, transform, sandwich_stack)
 	PieceBuilder.fill_stack(stack, stack_entry)
+	stack.transform.origin.y += stack.get_size().y / 2.0
 
 # Called by the server to merge the contents of one stack into another stack.
 # stack1_name: The name of the stack to merge contents from.

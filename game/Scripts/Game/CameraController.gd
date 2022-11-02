@@ -2108,7 +2108,6 @@ func _on_MouseGrab_gui_input(event):
 								if _selected_pieces.empty():
 									_popup_table_context_menu()
 									_spawn_point_position = _cursor_position
-									_spawn_point_position.y += Piece.SPAWN_HEIGHT
 								else:
 									_popup_piece_context_menu()
 					
