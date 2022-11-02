@@ -147,6 +147,7 @@ onready var _transform_piece_sca_z = $CanvasLayer/PieceContextMenu/TransformMenu
 const CURSOR_LERP_SCALE = 100.0
 const CURSOR_MAX_DIST = 10000.0
 const FLICK_MODIFIER = 10.0
+const GRABBING_FAST_MIN_MOUSE_SPEED_SQ = 1000.0
 const GRABBING_SLOW_TIME = 0.25
 const HOVER_Y_MIN = 1.0
 const MOVEMENT_ACCEL_SCALAR = 0.125
@@ -1764,13 +1765,18 @@ func _unlock_selected_pieces() -> void:
 			piece.rpc_id(1, "request_unlock")
 
 # Called when the camera starts moving either positionally or rotationally.
-func _on_moving() -> bool:
+# mouse_speed_sq: The square of the speed the mouse is moving at in pixels/sec.
+# This is used to stop micro-movements of the mouse from triggering events.
+func _on_moving(mouse_speed_sq: float = 0.0) -> bool:
 	# If we were grabbing a piece while moving...
 	if _is_grabbing_selected:
-		
-		# ... then send out a signal to start hovering the piece fast.
-		_start_hovering_grabbed_piece(true)
-		return true
+		# ... and the mouse moved at a big enough speed ...
+		if mouse_speed_sq > GRABBING_FAST_MIN_MOUSE_SPEED_SQ:
+			# ... then send out a signal to start hovering the piece fast.
+			_start_hovering_grabbed_piece(true)
+			return true
+		else:
+			return false
 	
 	# Or if we were hovering a piece already...
 	if _is_hovering_selected:
@@ -2148,7 +2154,7 @@ func _on_MouseGrab_gui_input(event):
 	elif event is InputEventMouseMotion:
 		# Check if by moving the mouse, we either started hovering a piece, or
 		# we have moved the hovered pieces position.
-		if _on_moving():
+		if _on_moving(event.speed.length_squared()):
 			pass
 		
 		elif Input.is_action_pressed("game_rotate"):
