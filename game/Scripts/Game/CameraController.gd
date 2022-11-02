@@ -1565,7 +1565,15 @@ func _set_debug_info_label() -> void:
 	if _piece_mouse_is_over:
 		var piece_name = _piece_mouse_is_over.name
 		var piece_entry = _piece_mouse_is_over.piece_entry
-		cursor_over = "Piece %s (%s)" % [piece_name, piece_entry["name"]]
+		var entry_path: String = piece_entry["entry_path"]
+		
+		# Hide the identity of a card if it is in someone else's hand.
+		if _piece_mouse_is_over is Card:
+			var hand_id = _piece_mouse_is_over.over_hand
+			if hand_id > 0 and hand_id != get_tree().get_network_unique_id():
+				entry_path = "???"
+		
+		cursor_over = "Piece %s (%s)" % [piece_name, entry_path]
 	elif _hidden_area_mouse_is_over:
 		var area_name = _hidden_area_mouse_is_over.name
 		cursor_over = "Hidden Area %s" % area_name
