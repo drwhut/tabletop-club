@@ -99,14 +99,26 @@ func get_albedo_color() -> Color:
 		push_error("Albedo color is not exposed!")
 		return Color.white
 	
-	var mesh_instances = get_mesh_instances()
-	if not mesh_instances.empty():
-		var mesh_instance = mesh_instances[0]
+	var current_color = Color.white
+	var original_color = Color.white
+	for mesh_instance in get_mesh_instances():
 		if mesh_instance.get_surface_material_count() > 0:
 			var material = mesh_instance.get_surface_material(0)
-			return material.albedo_color
+			current_color = material.albedo_color
+			original_color = _get_original_albedo(material)
+			break
 	
-	return Color.white
+	# When we set the albedo colour, it is always relative to the original
+	# colour - so we need this to be relative to the original colour as well.
+	var r = 1.0 if original_color.r == 0.0 else current_color.r / original_color.r
+	var g = 1.0 if original_color.g == 0.0 else current_color.g / original_color.g
+	var b = 1.0 if original_color.b == 0.0 else current_color.b / original_color.b
+	
+	r = min(max(0.0, r), 1.0)
+	g = min(max(0.0, g), 1.0)
+	b = min(max(0.0, b), 1.0)
+	
+	return Color(r, g, b)
 
 # Get the piece's collision shapes.
 # Returns: An array of the piece's collision shapes.
@@ -343,13 +355,7 @@ func set_albedo_color_client(color: Color) -> void:
 			
 			# Some materials will already have an albedo colour set, so keep
 			# this colour saved so that we don't overwrite and lose it.
-			var original_color = material.albedo_color
-			var meta_key = "original_color_" + str(surface)
-			if material.has_meta(meta_key):
-				original_color = material.get_meta(meta_key)
-			else:
-				material.set_meta(meta_key, original_color)
-			
+			var original_color = _get_original_albedo(material)
 			material.albedo_color = original_color * color
 
 # Set the current scale of the piece.
@@ -625,6 +631,19 @@ func _integrate_forces(state):
 				state.transform = new_transform
 				
 				_last_server_state_invalid = true
+
+# Get the starting albedo colour of a given material.
+# Returns: The starting albedo of the material.
+# material: The material to get the albedo from.
+func _get_original_albedo(material: SpatialMaterial) -> Color:
+	var original_color = material.albedo_color
+	
+	if material.has_meta("original_color"):
+		original_color = material.get_meta("original_color")
+	else:
+		material.set_meta("original_color", original_color)
+	
+	return original_color
 
 func _on_body_entered(body):
 	# If we collided with another object...
