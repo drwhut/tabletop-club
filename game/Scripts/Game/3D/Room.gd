@@ -124,7 +124,6 @@ remotesync func add_piece(name: String, transform: Transform,
 
 	piece.name = name
 	piece.transform = transform
-	piece.transform.origin.y += piece.get_size().y / 2.0
 
 	if get_tree().is_network_server():
 		piece.srv_retrieve_from_hell = _srv_retrieve_pieces_from_hell
@@ -822,6 +821,20 @@ master func request_add_piece(entry_path: String, position: Vector3) -> String:
 	if piece_entry.has("entry_names"):
 		return request_add_stack_filled(transform, entry_path)
 	else:
+		# Adjust the initial position using information from the piece entry.
+		# NOTE: We don't need to do this for stacks, as add_stack_filled()
+		# does this for us.
+		var piece_height: float = 0.0
+		if piece_entry.has("bounding_box"):
+			var lower_corner: Vector3 = piece_entry["bounding_box"][0]
+			var upper_corner: Vector3 = piece_entry["bounding_box"][1]
+			piece_height = upper_corner.y - lower_corner.y
+		else:
+			var piece_scale: Vector3 = piece_entry["scale"]
+			piece_height = piece_scale.y
+		
+		transform.origin.y += piece_height / 2.0
+		
 		# Send the call to create the piece to everyone.
 		var piece_name = srv_get_next_piece_name()
 		rpc("add_piece", piece_name, transform, entry_path)
