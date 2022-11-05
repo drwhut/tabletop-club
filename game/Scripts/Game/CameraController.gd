@@ -1434,10 +1434,11 @@ func _set_control_hint_label() -> void:
 		
 		var all_locked = true
 		for piece in _selected_pieces:
-			if piece is Piece:
-				if not piece.is_locked():
-					all_locked = false
-					break
+			if piece != null:
+				if piece is Piece:
+					if not piece.is_locked():
+						all_locked = false
+						break
 		var lock = tr("Unlock selected") if all_locked else tr("Lock selected")
 		text += _set_control_hint_label_row_actions(lock, ["game_lock_piece"])
 		
