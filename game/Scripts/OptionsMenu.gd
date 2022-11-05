@@ -481,7 +481,7 @@ func _show_restart_popup() -> void:
 # Returns: The associated decibel value.
 # volume: The volume to convert.
 func _volume_to_db(volume: float) -> float:
-	return 8.656170245 * log(volume)
+	return 8.656170245 * log(0.5 * volume)
 
 func _on_rebinding_action(action: String) -> void:
 	_action_to_bind = action

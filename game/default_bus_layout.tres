@@ -2,6 +2,7 @@
 
 [sub_resource type="AudioEffectCompressor" id=1]
 resource_name = "Compressor"
+threshold = -6.0
 
 [sub_resource type="AudioEffectPitchShift" id=2]
 resource_name = "PitchShift"
