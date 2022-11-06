@@ -61,7 +61,7 @@ remotesync func orient_pieces(up: bool) -> void:
 	for i in range(get_piece_count()):
 		_pieces[i]["flip_y"] = not up
 	
-	_set_sandwich_display()
+	call_deferred("_set_sandwich_display")
 
 # Called by the server to set the order of pieces in the stack.
 # order: The piece indicies in their new order.
