@@ -2008,7 +2008,7 @@ func _on_MouseGrab_gui_input(event):
 						var cards = []
 						var adding_card_to_hand = false
 						for piece in _selected_pieces:
-							if piece.get("over_hand") != null:
+							if piece is Card or (piece is Stack and piece.is_card_stack()):
 								cards.append(piece)
 								if piece.over_hand > 0:
 									adding_card_to_hand = true
