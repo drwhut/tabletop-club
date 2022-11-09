@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-07-21 13:06+0100\n"
-"PO-Revision-Date: 2022-10-31 18:07+0000\n"
-"Last-Translator: Karina Guisini <karinaapguisini@gmail.com>\n"
+"PO-Revision-Date: 2022-11-09 19:50+0000\n"
+"Last-Translator: AllanOvelha <allan1234567@yahoo.com.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
 "game/pt/>\n"
 "Language: pt\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:31
@@ -274,7 +274,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:418
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: ../Scenes/OptionsMenu.tscn:432
 msgid "Language"
