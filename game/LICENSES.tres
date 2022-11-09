@@ -4,163 +4,234 @@
 
 [resource]
 script = ExtResource( 1 )
-text = "tabletop_club_{icon,logo}.png
-=========================
-Author: The Ghost
-License: CC BY-SA 4.0
-Modified By: traverseda
-URL: https://files.outsidecontext.solutions/s/G6aHm9qGPbJzBBH
+text = "NOTE: The following list does NOT include assets that originate from asset
+packs. To view details about such files, you can either look at the descriptions
+of the assets in-game, or examime the relevant config.cfg files in the asset pack
+directory.
 
-Fonts/Cabin/*.ttf
-==============
-Authors: Pablo Impallari, Igino Marini
-License: SIL OFL v1.1
-URL: https://www.dafont.com/cabin.font
+- Tabletop Club logo
 
-Fonts/PTSans/*.ttf
-===============
-Authors: ParaType
-License: SIL OFL v1.1
-URL: https://fonts.google.com/specimen/PT+Sans
+	Files:
+		tabletop_club_icon.png
+		tabletop_club_logo.png
+	Author: The Ghost
+	License: CC BY-SA 4.0
+	Modified By: traverseda
+	URL: https://files.outsidecontext.solutions/s/G6aHm9qGPbJzBBH
 
-Images/ArrowCursor.png
-Images/CrossCursor.png
-Images/ForbiddenCursor.png
-Images/GrabbingCursor.png
-Images/HResizeCursor.png
-Images/PointingCursor.png
-=======================
-Author: Jakub 'Nighted' Steiner
-License: MIT
-URL: https://www.deviantart.com/nighted/art/DMZ-Cursors-58429447
 
-Images/CodeIcon.svg
-==================
-Author: SVG Repo
-License: CC0
-URL: https://www.svgrepo.com/svg/36709/programming-code-signs
+- Cabin
 
-Images/CursorIcon.svg
-===================
-Author: SVG Repo
-License: CC0
-URL: https://www.svgrepo.com/svg/27866/cursor
+	Files:
+		Fonts/Cabin/*.ttf
+	Authors: Pablo Impallari, Igino Marini
+	License: SIL OFL v1.1
+	URL: https://www.dafont.com/cabin.font
 
-Images/EraseIcon.svg
-==================
-Author: SVG Repo
-License: CC0
-URL: https://www.svgrepo.com/svg/72555/eraser
 
-Images/FastCircle{Inner,Outer}.png
-==============================
-Author: Rebekka
-License: CC0
-Modified By: Benjamin \"drwhut\" Beddows
+- PTSans
 
-Images/FlickIcon.svg
-==================
-Author: SVG Repo
-License: CC0
-Modified By: Benjamin \"drwhut\" Beddows
-URL: https://www.svgrepo.com/svg/7368/dollar-coin-in-a-hand
+	Files:
+		Fonts/PTSans/*.ttf
+	Authors: ParaType
+	License: SIL OFL v1.1
+	URL: https://fonts.google.com/specimen/PT+Sans
 
-Images/HelpIcon.svg
-==================
-Author: SVG Repo
-License: CC0
-URL: https://www.svgrepo.com/svg/29860/help-web-button
 
-Images/HiddenAreaIcon.svg
-=======================
-Author: SVG Repo
-License: CC0
-Modified By: Benjamin \"drwhut\" Beddows
-URL: https://www.svgrepo.com/svg/10764/eye
+- Cursors
 
-Images/InfoIcon.svg
-=================
-Author: SVG Repo
-License: CC0
-URL: https://www.svgrepo.com/svg/60892/info
+	Files:
+		Images/ArrowCursor.png
+		Images/CrossCursor.png
+		Images/ForbiddenCursor.png
+		Images/GrabbingCursor.png
+		Images/HResizeCursor.png
+		Images/PointingCursor.png
+	Author: Jakub 'Nighted' Steiner
+	License: MIT
+	URL: https://www.deviantart.com/nighted/art/DMZ-Cursors-58429447
 
-Images/PaintIcon.svg
-==================
-Author: SVG Repo
-License: CC0
-URL: https://www.svgrepo.com/svg/169944/paint
 
-Images/RulerIcon.svg
-==================
-Author: SVG Repo
-License: CC0
-URL: https://www.svgrepo.com/svg/48874/ruler
+- Code icon
 
-Images/SearchIcon.svg
-===================
-Author: SVG Repo
-License: CC0
-Modified By: Benjamin \"drwhut\" Beddows
-URL: https://www.svgrepo.com/svg/14071/search
+	Files:
+		Images/CodeIcon.svg
+	Author: SVG Repo
+	License: CC0
+	URL: https://www.svgrepo.com/svg/36709/programming-code-signs
 
-Images/StoreIcon.svg
-==================
-Author: SVG Repo
-License: CC0
-URL: https://www.svgrepo.com/svg/1530/city-store
 
-Sounds/Cards/cardFan1.wav
-Sounds/Cards/cardPlace{1,2,3,4}.wav
-Sounds/Cards/cardSlide{1,4,6,7}.wav
-===============================
-Author: Kenney.nl
-License: CC0
-URL: https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips
+- Cursor icon
 
-Sounds/Cards/cardShove{1,2,3,4}.wav
-Sounds/Cards/cardShuffle.wav
-==========================
-Author: Kenney.nl
-License: CC0
-Modified By: Benjamin \"drwhut\" Beddows
-URL: https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips
+	Files:
+		Images/CursorIcon.svg
+	Author: SVG Repo
+	License: CC0
+	URL: https://www.svgrepo.com/svg/27866/cursor
 
-Sounds/Chips/chipLay{1,2,3}.wav
-Sounds/Chips/chipsHandle{1,2,4,5,6}.wav
-Sounds/Chips/chipsStack{1,2,3,4}.wav
-===============================
-Author: Kenney.nl
-License: CC0
-URL: https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips
 
-Sounds/Dice/diceThrow{1,2,3,4}.wav
-Sounds/Dice/dieShuffle{1,2,3}.wav
-=============================
-Author: Kenney.nl
-License: CC0
-URL: https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips
+- Erase icon
 
-Sounds/Generic/impactGeneric_light_00{0,1,2,3,4}.ogg
-Sounds/Glass/impactGlass_medium_00{0,1,2,3,4}.ogg
-Sounds/GlassHeavy/impactGlass_heavy_00{0,1,2,3,4}.ogg
-Sounds/GlassLight/impactGlass_light_00{0,1,2,3,4}.ogg
-Sounds/Metal/impactMetal_medium_00{0,1,2,3,4}.ogg
-Sounds/MetalHeavy/impactMetal_heavy_00{0,1,2,3,4}.ogg
-Sounds/MetalLight/impactMetal_light_00{0,1,2,3,4}.ogg
-Sounds/Soft/impactSoft_medium_00{0,1,2,3,4}.ogg
-Sounds/SoftHeavy/impactSoft_heavy_00{0,1,2,3,4}.ogg
-Sounds/Tin/impactTin_medium_00{0,1,2,3,4}.ogg
-Sounds/Wood/impactWood_medium_00{0,1,2,3,4}.ogg
-Sounds/WoodHeavy/impactWood_heavy_00{0,1,2,3,4}.ogg
-Sounds/WoodLight/impactWood_light_00{0,1,2,3,4}.ogg
-==============================================
-Author: Kenney.nl
-License: CC0
-URL: https://kenney.nl/assets/impact-sounds
+	Files:
+		Images/EraseIcon.svg
+	Author: SVG Repo
+	License: CC0
+	URL: https://www.svgrepo.com/svg/72555/eraser
 
-Sounds/Misc/circle.wav
-====================
-Author: JaggedStone
-License: CC0
-URL: https://opengameart.org/content/magic-spell-sfx
+- Fast circle
+
+	Files:
+		Images/FastCircleInner.png
+		Images/FastCircleOuter.png
+	Author: Rebekka
+	License: CC0
+	Modified By: Benjamin \"drwhut\" Beddows
+
+
+- Flick icon
+
+	Files:
+		Images/FlickIcon.svg
+	Author: SVG Repo
+	License: CC0
+	Modified By: Benjamin \"drwhut\" Beddows
+	URL: https://www.svgrepo.com/svg/7368/dollar-coin-in-a-hand
+
+
+- Help icon
+
+	Files:
+		Images/HelpIcon.svg
+	Author: SVG Repo
+	License: CC0
+	URL: https://www.svgrepo.com/svg/29860/help-web-button
+
+
+- Hidden area icon
+
+	Files:
+		Images/HiddenAreaIcon.svg
+	Author: SVG Repo
+	License: CC0
+	Modified By: Benjamin \"drwhut\" Beddows
+	URL: https://www.svgrepo.com/svg/10764/eye
+
+
+- Info icon
+
+	Files:
+		Images/InfoIcon.svg
+	Author: SVG Repo
+	License: CC0
+	URL: https://www.svgrepo.com/svg/60892/info
+
+
+- Paint icon
+
+	Files:
+		Images/PaintIcon.svg
+	Author: SVG Repo
+	License: CC0
+	URL: https://www.svgrepo.com/svg/169944/paint
+
+
+- Ruler icon
+
+	Files:
+		Images/RulerIcon.svg
+	Author: SVG Repo
+	License: CC0
+	URL: https://www.svgrepo.com/svg/48874/ruler
+
+
+- Search icon
+
+	Files:
+		Images/SearchIcon.svg
+	Author: SVG Repo
+	License: CC0
+	Modified By: Benjamin \"drwhut\" Beddows
+	URL: https://www.svgrepo.com/svg/14071/search
+
+
+- Store icon
+
+	Files:
+		Images/StoreIcon.svg
+	Author: SVG Repo
+	License: CC0
+	URL: https://www.svgrepo.com/svg/1530/city-store
+
+
+- Card sounds
+
+	Files:
+		Sounds/Cards/cardFan1.wav
+		Sounds/Cards/cardPlace{1,2,3,4}.wav
+		Sounds/Cards/cardSlide{1,4,6,7}.wav
+		Sounds/Cards/cardShove{1,2,3,4}.wav
+		Sounds/Cards/cardShuffle.wav
+	Author: Kenney.nl
+	License: CC0
+	URL: https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips
+
+
+- Chip sounds
+
+	Files:
+		Sounds/Chips/chipLay{1,2,3}.wav
+		Sounds/Chips/chipsHandle{1,2,4,5,6}.wav
+		Sounds/Chips/chipsStack{1,2,3,4}.wav
+	Author: Kenney.nl
+	License: CC0
+	URL: https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips
+
+
+- Dice sounds
+
+	Files:
+		Sounds/Dice/diceThrow{1,2,3,4}.wav
+		Sounds/Dice/dieShuffle{1,2,3}.wav
+	Author: Kenney.nl
+	License: CC0
+	URL: https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips
+
+
+- Impact sounds
+
+	Files:
+		Sounds/Generic/impactGeneric_light_00{0,1,2,3,4}.ogg
+		Sounds/Glass/impactGlass_medium_00{0,1,2,3,4}.ogg
+		Sounds/GlassHeavy/impactGlass_heavy_00{0,1,2,3,4}.ogg
+		Sounds/GlassLight/impactGlass_light_00{0,1,2,3,4}.ogg
+		Sounds/Metal/impactMetal_medium_00{0,1,2,3,4}.ogg
+		Sounds/MetalHeavy/impactMetal_heavy_00{0,1,2,3,4}.ogg
+		Sounds/MetalLight/impactMetal_light_00{0,1,2,3,4}.ogg
+		Sounds/Soft/impactSoft_medium_00{0,1,2,3,4}.ogg
+		Sounds/SoftHeavy/impactSoft_heavy_00{0,1,2,3,4}.ogg
+		Sounds/Tin/impactTin_medium_00{0,1,2,3,4}.ogg
+		Sounds/Wood/impactWood_medium_00{0,1,2,3,4}.ogg
+		Sounds/WoodHeavy/impactWood_heavy_00{0,1,2,3,4}.ogg
+		Sounds/WoodLight/impactWood_light_00{0,1,2,3,4}.ogg
+	Author: Kenney.nl
+	License: CC0
+	URL: https://kenney.nl/assets/impact-sounds
+
+
+- Fast circle sound
+
+	Files:
+		Sounds/Misc/circle.wav
+	Author: JaggedStone
+	License: CC0
+	URL: https://opengameart.org/content/magic-spell-sfx
+
+
+- webrtc-native
+
+	Files:
+		webrtc/*
+	Author: Godot Engine
+	License: MIT
+	URL: https://github.com/godotengine/webrtc-native
 "
