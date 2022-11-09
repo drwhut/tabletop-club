@@ -9,48 +9,61 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-01 20:36+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-11-11 18:47+0000\n"
+"Last-Translator: AllanOvelha <allan1234567@yahoo.com.br>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-index/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: ../../index.rst:22
 #: ../../index.rst:22
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: ../../index.rst:30
 #: ../../index.rst:30
 msgid "Custom Assets"
-msgstr ""
+msgstr "Assets Personalizadas"
 
 #: ../../index.rst:7
 msgid "Tabletop Club Documentation"
-msgstr ""
+msgstr "Tabletop Club Documentação"
 
 #: ../../index.rst:9
 msgid "Welcome to the documentation for Tabletop Club, a free and open source tabletop board game simulator! If you're new to the project, feel free to check out the :ref:`about-tabletop-club` page. Otherwise, you can use either the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
+"Bem vindo a documentação de Tabletop Club, Um simulador de jogos de mesa "
+"grátis e de código aberto! Se você é novo neste projeto, fique a vontade "
+"para dar uma olhada em :ref:`sobre-tabletop-club`. De outra forma, você pode "
+"usar o índice, a barra de rolagem ou a barra de pesquisa para achar o que "
+"você precisa!"
 
 #: ../../index.rst:16
 msgid "The documentation, as well as the project in general, is open to suggestions and contributions! If you feel that something is not explained well, or you think that information is missing, then please don't hesitate to open an issue or a pull request on the project's `GitHub repository <https://github.com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
+"A documentação, também como o projeto em geral, é aberto para sugestões! Se "
+"você percebeu que tem algo que não foi explicado devidamente, ou acha que há "
+"alguma informação faltando, por favor, não hesite solicitar uma requisição "
+"no projeto em `GitHub repository <https://github.com/drwhut/tabletop-club/"
+"issues>`_!"
 
 #: ../../index.rst:39
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices e tabelas"
 
 #: ../../index.rst:41
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../index.rst:42
 msgid ":ref:`modindex`"
-msgstr ""
+msgstr ":ref:`modindex`"
 
 #: ../../index.rst:43
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`pesquisa`"
