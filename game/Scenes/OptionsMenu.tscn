@@ -1082,6 +1082,7 @@ hint_tooltip = "Used to enable vertical synchronization.
 This forces the game to render at the same framerate as the monitor,
 and is used to prevent screen tearing."
 size_flags_horizontal = 3
+pressed = true
 
 [node name="ShadowDetail" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/GridContainer"]
 margin_top = 99.0
