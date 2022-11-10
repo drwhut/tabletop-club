@@ -80,6 +80,9 @@ Tabletop Club can be played on any of these platforms:
 
 Your hardware must also have support for OpenGL 3.3.
 
+It is recommended to have at least 1GB of available space on your drive to
+accommodate for the game files, as well as any generated files.
+
 Currently there are no plans for the game to be supported on mobile devices or
 consoles.
 
