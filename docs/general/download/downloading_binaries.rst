@@ -53,7 +53,7 @@ if the hash matches the original.
       shasum -a 512 TabletopClub_vX.X.X_OSX_Universal.zip
 
       # Linux / *BSD
-      sha512sum TabletopClub_vX.X.X_Linux_64.tar.xz
+      sha512sum TabletopClub_vX.X.X_Linux_64.zip
 
 4. Compare the output of the previous command to the corresponding line in the
    SHA512 text file. If the hashes do not match, then you will need to download
@@ -113,14 +113,14 @@ Downloading for Linux / \*BSD
 -----------------------------
 
 1. Make sure you have downloaded the compressed file, it should be called
-   something like ``TabletopClub_vX.X.X_Linux_64.tar.xz``.
+   something like ``TabletopClub_vX.X.X_Linux_64.zip``.
 
 2. Either use your distribution's archive manager to extract the files, or run
    this command in a terminal:
 
    .. code-block:: bash
 
-      tar -xf TabletopClub_vX.X.X_Linux_64.tar.xz
+      tar -xf TabletopClub_vX.X.X_Linux_64.zip
 
 3. Either double-click the executable, or go into a terminal and run this
    command in the folder the executable is in:
