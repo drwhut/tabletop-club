@@ -11,15 +11,17 @@ An object in Tabletop Club refers to anything in-game that is dynamic (that is,
 it is driven by the physics engine). There are many different types of objects,
 each with their own special functionality:
 
-.. todo::
-
-   Add images of each of the different types of objects.
-
 
 .. _object-type-card:
 
 Card
 ^^^^
+
+.. image:: examples/cards.jpg
+   :alt: A row of five cards in a white rectangle representing the player's
+      hand, from left to right, they are the ace of clubs, the ace of diamonds,
+      the ace of hearts, the ace of spades, and a card that is facing down. The
+      text "player" is shown in front of the hand.
 
 Cards are flat, rectangular-shaped objects that are stackable, and they have
 the unique functionality to be able to be put in a player's hand, where only
@@ -52,6 +54,9 @@ Here is a simple example that will apply a back face texture (in this example,
 Container
 ^^^^^^^^^
 
+.. image:: examples/container.jpg
+   :alt: A red plastic cup is placed near the corner of a table.
+
 Containers are special objects that can hold an unlimited amount of other
 objects inside themselves (including other containers)! Containers are opaque,
 meaning you cannot see the objects physically inside of them, but you can peek
@@ -70,6 +75,9 @@ upside-down by setting ``shakable = true`` in the :ref:`config-cfg` file.
 
 Dice
 ^^^^
+
+.. image:: examples/dice.jpg
+   :alt: On the table is a set of dice of varying colours and sides.
 
 Dice are objects that, when shaken, randomize their orientation.
 
@@ -114,6 +122,9 @@ value.
 Piece
 ^^^^^
 
+.. image:: examples/pieces.jpg
+   :alt: On the table are two chess pieces, a white pawn and a black queen.
+
 Pieces are generic objects with no special functionality.
 
 
@@ -121,6 +132,9 @@ Pieces are generic objects with no special functionality.
 
 Speaker
 ^^^^^^^
+
+.. image:: examples/speaker.jpg
+   :alt: By the corner of the table is a large, metallic gramophone.
 
 Speakers are objects that can play audio tracks. They emit sound positionally,
 so the audio will vary depending on the position of the speaker relative to the
@@ -141,6 +155,10 @@ the countdown reaches 0.
 
 Token
 ^^^^^
+
+.. image:: examples/tokens.png
+   :alt: On the table are some stacks of poker chips varying in height,
+      representing various values, those being 1, 5, 10, 25, and 100.
 
 Tokens are objects that are vertically stackable, meaning they join together
 when their top and bottom faces touch, similar to cards.
