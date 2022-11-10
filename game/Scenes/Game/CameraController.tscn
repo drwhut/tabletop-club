@@ -44,6 +44,10 @@ __meta__ = {
 "_editor_description_": "This control will be the parent of all of the cursors that are displayed in multiplayer games (showing the positions and rotations of every other player's cursor on the table)."
 }
 
+[node name="HandPreviewRect" type="TextureRect" parent="."]
+mouse_filter = 2
+expand = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 __meta__ = {
 "_editor_description_": "This nodes makes sure that all of it's children are rendered above the GameUI."
@@ -58,10 +62,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 outline_color = Color( 0, 1, 1, 0.588235 )
-
-[node name="HandPreviewRect" type="TextureRect" parent="CanvasLayer"]
-mouse_filter = 2
-expand = true
 
 [node name="PieceContextMenu" type="PopupMenu" parent="CanvasLayer"]
 margin_right = 20.0
