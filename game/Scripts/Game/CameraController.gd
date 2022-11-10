@@ -754,13 +754,25 @@ func _unhandled_input(event):
 		else:
 			_lock_selected_pieces()
 	elif event.is_action_pressed("game_flip_piece"):
-		for piece in _selected_pieces:
-			if piece is Piece:
-				piece.rpc_id(1, "request_flip_vertically")
+		if _selected_pieces.empty():
+			if _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
+				if _piece_mouse_is_over.over_hand == get_tree().get_network_unique_id():
+					if not _piece_mouse_is_over.is_collisions_on():
+						_piece_mouse_is_over.rpc_id(1, "request_flip_vertically")
+		else:
+			for piece in _selected_pieces:
+				if piece is Piece:
+					piece.rpc_id(1, "request_flip_vertically")
 	elif event.is_action_pressed("game_reset_piece"):
-		for piece in _selected_pieces:
-			if piece is Piece:
-				piece.rpc_id(1, "request_reset_orientation")
+		if _selected_pieces.empty():
+			if _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
+				if _piece_mouse_is_over.over_hand == get_tree().get_network_unique_id():
+					if not _piece_mouse_is_over.is_collisions_on():
+						_piece_mouse_is_over.rpc_id(1, "request_reset_orientation")
+		else:
+			for piece in _selected_pieces:
+				if piece is Piece:
+					piece.rpc_id(1, "request_reset_orientation")
 	elif event.is_action_pressed("game_toggle_debug_info"):
 		_debug_info_label.visible = not _debug_info_label.visible
 	elif event.is_action_pressed("game_toggle_ui"):
@@ -1444,6 +1456,14 @@ func _set_control_hint_label() -> void:
 		
 		text += _set_control_hint_label_row_actions(tr("Delete selected"),
 			["game_delete_piece"])
+	
+	elif _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
+		if _piece_mouse_is_over.over_hand == get_tree().get_network_unique_id():
+			if not _piece_mouse_is_over.is_collisions_on():
+				text += _set_control_hint_label_row_actions(tr("Flip card"),
+						["game_flip_piece"])
+				text += _set_control_hint_label_row_actions(tr("Face card up"),
+						["game_reset_piece"])
 	
 	text += _set_control_hint_label_row_actions(tr("Reset camera"), ["game_reset_camera"])
 	
