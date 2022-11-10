@@ -410,6 +410,15 @@ func _import_all(_userdata) -> void:
 			
 			var config_changed = (new_config_md5 != old_config_md5)
 			if config_changed:
+				# The directory holding the .md5 file might not exist yet if
+				# nothing has been imported!
+				var md5_dir = Directory.new()
+				var md5_dir_path = md5_file_path.get_base_dir()
+				if not md5_dir.dir_exists(md5_dir_path):
+					var err = md5_dir.make_dir_recursive(md5_dir_path)
+					if err != OK:
+						push_error("Failed to create directory at '%s'!" % md5_dir_path)
+				
 				var err = old_config_md5_file.open(md5_file_path, File.WRITE)
 				if err == OK:
 					old_config_md5_file.store_line(new_config_md5)
