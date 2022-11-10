@@ -132,8 +132,9 @@ func apply_options(config: ConfigFile) -> void:
 	_player_name = config.get_value("multiplayer", "name")
 	_player_color = config.get_value("multiplayer", "color")
 	
-	if _master_server.is_connection_established():
-		Lobby.rpc_id(1, "request_modify_self", _player_name, _player_color)
+	if get_tree().has_network_peer():
+		if Lobby.player_exists(get_tree().get_network_unique_id()):
+			Lobby.rpc_id(1, "request_modify_self", _player_name, _player_color)
 
 # Called by the server to compare it's asset schemas against our own.
 # server_schema_db: The server's AssetDB schema.
