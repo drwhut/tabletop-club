@@ -54,7 +54,8 @@ var ERROR_MESSAGES = {
 	4013: tr("Invalid command."),
 	4014: tr("Too many players connected."),
 	4015: tr("Transfer mode is invalid."),
-	4016: tr("Too many connections.")
+	4016: tr("Too many connections."),
+	4017: tr("Reconnected too quickly."),
 }
 
 export(String) var room_code = "" # If empty, create a new room.
