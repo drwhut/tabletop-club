@@ -108,9 +108,6 @@ func _ready():
 	_keep_video_confirm.get_close_button().connect("pressed", self, "_on_KeepVideoConfirm_close_button_pressed")
 	
 	if OS.get_name() == "OSX":
-		# Opening folders is not supported on OSX.
-		_open_assets_button.disabled = true
-		
 		# Both borderless fullscreen and fullscreen don't work as intended on
 		# OSX, so disable the button - the player can always maximize the
 		# window, to get the same affect as making it fullscreen.
@@ -573,41 +570,16 @@ func _on_MusicVolumeSlider_value_changed(_value: float):
 	_apply_audio_config(_create_config_from_current())
 
 func _on_OpenAssetsButton_pressed():
-	var asset_paths = AssetDB.get_asset_paths()
-	if asset_paths.empty():
-		return
-	
-	# Opening folders is not supported on OSX.
-	if OS.get_name() == "OSX":
-		return
+	var asset_dir_paths = AssetDB.get_asset_paths()
+	asset_dir_paths.invert() # From most convenient to access, to least.
 	
 	var dir = Directory.new()
-	var found = false
-	for dir_path in asset_paths:
-		var err = dir.open(dir_path)
-		if err == OK:
-			found = true
-			break
+	for dir_path in asset_dir_paths:
+		if dir.dir_exists(dir_path):
+			OS.shell_open("file://" + dir_path)
+			return
 	
-	# If no asset directory exists, make the first one in the list.
-	if not found:
-		var err = dir.open(".")
-		if err == OK:
-			var path = asset_paths[0]
-			err = dir.make_dir_recursive(path)
-			if err == OK:
-				err = dir.open(path)
-				if err == OK:
-					found = true
-				else:
-					print("Failed to open directory at ", path, " (error ", err, ")")
-			else:
-				print("Failed to create directory at ", path, " (error ", err, ")")
-		else:
-			print("Failed to open current working directory (error ", err, ")")
-	
-	if found:
-		OS.shell_open(dir.get_current_dir())
+	push_warning("Could not find a valid asset directory to open!")
 
 func _on_OptionsMenu_visibility_changed():
 	if visible:
