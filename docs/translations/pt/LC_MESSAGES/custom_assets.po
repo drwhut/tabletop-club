@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-21 13:07+0100\n"
-"PO-Revision-Date: 2022-11-10 20:49+0000\n"
+"PO-Revision-Date: 2022-11-12 18:49+0000\n"
 "Last-Translator: AllanOvelha <allan1234567@yahoo.com.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/pt/>\n"
@@ -385,7 +385,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 msgid "Objects"
-msgstr ""
+msgstr "Objetos"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 msgid "``#ffffff``"
