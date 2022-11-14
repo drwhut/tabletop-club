@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-21 13:07+0100\n"
-"PO-Revision-Date: 2022-11-14 14:48+0000\n"
+"PO-Revision-Date: 2022-11-15 14:48+0000\n"
 "Last-Translator: Neko Nekowazarashi <kodra@nekoweb.my.id>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/id/>\n"
@@ -813,7 +813,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:208
 msgid "Table"
-msgstr ""
+msgstr "Meja"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:210
 msgid "A table is a :ref:`file-type-3d` that is placed in the centre of the game world for players to put objects on."
