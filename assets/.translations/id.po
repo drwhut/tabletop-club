@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-07-21 17:08\n"
-"PO-Revision-Date: 2022-11-14 14:48+0000\n"
+"PO-Revision-Date: 2022-11-15 15:48+0000\n"
 "Last-Translator: Neko Nekowazarashi <kodra@nekoweb.my.id>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/id/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../TabletopClub/cards/52-Card Deck:1
 msgid "52-Card Deck"
-msgstr ""
+msgstr "Tumpukan 52 Kartu"
 
 #: ../TabletopClub/cards/52-Card Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
@@ -259,347 +259,347 @@ msgstr ""
 
 #: ../TabletopClub/dice/d4/d4 (Black):1
 msgid "d4 (Black)"
-msgstr ""
+msgstr "d4 (Hitam)"
 
 #: ../TabletopClub/dice/d4/d4 (Black):2 ../TabletopClub/dice/d4/d4 (Blue):2 ../TabletopClub/dice/d4/d4 (Brown):2 ../TabletopClub/dice/d4/d4 (Cyan):2 ../TabletopClub/dice/d4/d4 (Green):2 ../TabletopClub/dice/d4/d4 (Orange):2 ../TabletopClub/dice/d4/d4 (Pink):2 ../TabletopClub/dice/d4/d4 (Purple):2 ../TabletopClub/dice/d4/d4 (Red):2 ../TabletopClub/dice/d4/d4 (White):2 ../TabletopClub/dice/d4/d4 (Yellow):2
 msgid "A 4-sided die."
-msgstr ""
+msgstr "Dadu 4 sisi."
 
 #: ../TabletopClub/dice/d4/d4 (Blue):1
 msgid "d4 (Blue)"
-msgstr ""
+msgstr "d4 (Biru)"
 
 #: ../TabletopClub/dice/d4/d4 (Brown):1
 msgid "d4 (Brown)"
-msgstr ""
+msgstr "d4 (Cokelat)"
 
 #: ../TabletopClub/dice/d4/d4 (Cyan):1
 msgid "d4 (Cyan)"
-msgstr ""
+msgstr "d4 (Sian)"
 
 #: ../TabletopClub/dice/d4/d4 (Green):1
 msgid "d4 (Green)"
-msgstr ""
+msgstr "d4 (Hijau)"
 
 #: ../TabletopClub/dice/d4/d4 (Orange):1
 msgid "d4 (Orange)"
-msgstr ""
+msgstr "d4 (Jingga)"
 
 #: ../TabletopClub/dice/d4/d4 (Pink):1
 msgid "d4 (Pink)"
-msgstr ""
+msgstr "d4 (Merah Jambu)"
 
 #: ../TabletopClub/dice/d4/d4 (Purple):1
 msgid "d4 (Purple)"
-msgstr ""
+msgstr "d4 (Ungu)"
 
 #: ../TabletopClub/dice/d4/d4 (Red):1
 msgid "d4 (Red)"
-msgstr ""
+msgstr "d4 (Merah)"
 
 #: ../TabletopClub/dice/d4/d4 (White):1
 msgid "d4 (White)"
-msgstr ""
+msgstr "d4 (Putih)"
 
 #: ../TabletopClub/dice/d4/d4 (Yellow):1
 msgid "d4 (Yellow)"
-msgstr ""
+msgstr "d4 (Kuning)"
 
 #: ../TabletopClub/dice/d6/d6 (Black):1
 msgid "d6 (Black)"
-msgstr ""
+msgstr "d6 (Hitam)"
 
 #: ../TabletopClub/dice/d6/d6 (Black):2 ../TabletopClub/dice/d6/d6 (Blue):2 ../TabletopClub/dice/d6/d6 (Brown):2 ../TabletopClub/dice/d6/d6 (Cyan):2 ../TabletopClub/dice/d6/d6 (Green):2 ../TabletopClub/dice/d6/d6 (Orange):2 ../TabletopClub/dice/d6/d6 (Pink):2 ../TabletopClub/dice/d6/d6 (Purple):2 ../TabletopClub/dice/d6/d6 (Red):2 ../TabletopClub/dice/d6/d6 (Traditional):2 ../TabletopClub/dice/d6/d6 (White):2 ../TabletopClub/dice/d6/d6 (Yellow):2
 msgid "A 6-sided die."
-msgstr ""
+msgstr "Dadu 6 sisi."
 
 #: ../TabletopClub/dice/d6/d6 (Blue):1
 msgid "d6 (Blue)"
-msgstr ""
+msgstr "d6 (Biru)"
 
 #: ../TabletopClub/dice/d6/d6 (Brown):1
 msgid "d6 (Brown)"
-msgstr ""
+msgstr "d6 (Cokelat)"
 
 #: ../TabletopClub/dice/d6/d6 (Cyan):1
 msgid "d6 (Cyan)"
-msgstr ""
+msgstr "d6 (Sian)"
 
 #: ../TabletopClub/dice/d6/d6 (Green):1
 msgid "d6 (Green)"
-msgstr ""
+msgstr "d6 (Hijau)"
 
 #: ../TabletopClub/dice/d6/d6 (Orange):1
 msgid "d6 (Orange)"
-msgstr ""
+msgstr "d6 (Jingga)"
 
 #: ../TabletopClub/dice/d6/d6 (Pink):1
 msgid "d6 (Pink)"
-msgstr ""
+msgstr "d6 (Merah Jambu)"
 
 #: ../TabletopClub/dice/d6/d6 (Purple):1
 msgid "d6 (Purple)"
-msgstr ""
+msgstr "d6 (Ungu)"
 
 #: ../TabletopClub/dice/d6/d6 (Red):1
 msgid "d6 (Red)"
-msgstr ""
+msgstr "d6 (Merah)"
 
 #: ../TabletopClub/dice/d6/d6 (Traditional):1
 msgid "d6 (Traditional)"
-msgstr ""
+msgstr "d6 (Tradisional)"
 
 #: ../TabletopClub/dice/d6/d6 (White):1
 msgid "d6 (White)"
-msgstr ""
+msgstr "d6 (Putih)"
 
 #: ../TabletopClub/dice/d6/d6 (Yellow):1
 msgid "d6 (Yellow)"
-msgstr ""
+msgstr "d6 (Kuning)"
 
 #: ../TabletopClub/dice/d8/d8 (Black):1
 msgid "d8 (Black)"
-msgstr ""
+msgstr "d8 (Hitam)"
 
 #: ../TabletopClub/dice/d8/d8 (Black):2 ../TabletopClub/dice/d8/d8 (Blue):2 ../TabletopClub/dice/d8/d8 (Brown):2 ../TabletopClub/dice/d8/d8 (Cyan):2 ../TabletopClub/dice/d8/d8 (Green):2 ../TabletopClub/dice/d8/d8 (Orange):2 ../TabletopClub/dice/d8/d8 (Pink):2 ../TabletopClub/dice/d8/d8 (Purple):2 ../TabletopClub/dice/d8/d8 (Red):2 ../TabletopClub/dice/d8/d8 (White):2 ../TabletopClub/dice/d8/d8 (Yellow):2
 msgid "An 8-sided die."
-msgstr ""
+msgstr "Dadu 8 sisi."
 
 #: ../TabletopClub/dice/d8/d8 (Blue):1
 msgid "d8 (Blue)"
-msgstr ""
+msgstr "d8 (Biru)"
 
 #: ../TabletopClub/dice/d8/d8 (Brown):1
 msgid "d8 (Brown)"
-msgstr ""
+msgstr "d8 (Cokelat)"
 
 #: ../TabletopClub/dice/d8/d8 (Cyan):1
 msgid "d8 (Cyan)"
-msgstr ""
+msgstr "d8 (Sian)"
 
 #: ../TabletopClub/dice/d8/d8 (Green):1
 msgid "d8 (Green)"
-msgstr ""
+msgstr "d8 (Hijau)"
 
 #: ../TabletopClub/dice/d8/d8 (Orange):1
 msgid "d8 (Orange)"
-msgstr ""
+msgstr "d8 (Jingga)"
 
 #: ../TabletopClub/dice/d8/d8 (Pink):1
 msgid "d8 (Pink)"
-msgstr ""
+msgstr "d8 (Merah Jambu)"
 
 #: ../TabletopClub/dice/d8/d8 (Purple):1
 msgid "d8 (Purple)"
-msgstr ""
+msgstr "d8 (Ungu)"
 
 #: ../TabletopClub/dice/d8/d8 (Red):1
 msgid "d8 (Red)"
-msgstr ""
+msgstr "d8 (Merah)"
 
 #: ../TabletopClub/dice/d8/d8 (White):1
 msgid "d8 (White)"
-msgstr ""
+msgstr "d8 (Putih)"
 
 #: ../TabletopClub/dice/d8/d8 (Yellow):1
 msgid "d8 (Yellow)"
-msgstr ""
+msgstr "d8 (Kuning)"
 
 #: ../TabletopClub/dice/d10/d10 (Black):1
 msgid "d10 (Black)"
-msgstr ""
+msgstr "d10 (Hitam)"
 
 #: ../TabletopClub/dice/d10/d10 (Black):2 ../TabletopClub/dice/d10/d10 (Blue):2 ../TabletopClub/dice/d10/d10 (Brown):2 ../TabletopClub/dice/d10/d10 (Cyan):2 ../TabletopClub/dice/d10/d10 (Green):2 ../TabletopClub/dice/d10/d10 (Orange):2 ../TabletopClub/dice/d10/d10 (Percent) (Black):2 ../TabletopClub/dice/d10/d10 (Percent) (Blue):2 ../TabletopClub/dice/d10/d10 (Percent) (Brown):2 ../TabletopClub/dice/d10/d10 (Percent) (Cyan):2 ../TabletopClub/dice/d10/d10 (Percent) (Green):2 ../TabletopClub/dice/d10/d10 (Percent) (Orange):2 ../TabletopClub/dice/d10/d10 (Percent) (Pink):2 ../TabletopClub/dice/d10/d10 (Percent) (Purple):2 ../TabletopClub/dice/d10/d10 (Percent) (Red):2 ../TabletopClub/dice/d10/d10 (Percent) (White):2 ../TabletopClub/dice/d10/d10 (Percent) (Yellow):2 ../TabletopClub/dice/d10/d10 (Pink):2 ../TabletopClub/dice/d10/d10 (Purple):2 ../TabletopClub/dice/d10/d10 (Red):2 ../TabletopClub/dice/d10/d10 (White):2 ../TabletopClub/dice/d10/d10 (Yellow):2
 msgid "A 10-sided die."
-msgstr ""
+msgstr "Dadu 10 sisi."
 
 #: ../TabletopClub/dice/d10/d10 (Blue):1
 msgid "d10 (Blue)"
-msgstr ""
+msgstr "d10 (Biru)"
 
 #: ../TabletopClub/dice/d10/d10 (Brown):1
 msgid "d10 (Brown)"
-msgstr ""
+msgstr "d10 (Cokelat)"
 
 #: ../TabletopClub/dice/d10/d10 (Cyan):1
 msgid "d10 (Cyan)"
-msgstr ""
+msgstr "d10 (Sian)"
 
 #: ../TabletopClub/dice/d10/d10 (Green):1
 msgid "d10 (Green)"
-msgstr ""
+msgstr "d10 (Hijau)"
 
 #: ../TabletopClub/dice/d10/d10 (Orange):1
 msgid "d10 (Orange)"
-msgstr ""
+msgstr "d10 (Jingga)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Black):1
 msgid "d10 (Percent) (Black)"
-msgstr ""
+msgstr "d10 (Persen) (Hitam)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Blue):1
 msgid "d10 (Percent) (Blue)"
-msgstr ""
+msgstr "d10 (Persen) (Biru)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Brown):1
 msgid "d10 (Percent) (Brown)"
-msgstr ""
+msgstr "d10 (Persen) (Cokelat)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Cyan):1
 msgid "d10 (Percent) (Cyan)"
-msgstr ""
+msgstr "d10 (Persen) (Sian)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Green):1
 msgid "d10 (Percent) (Green)"
-msgstr ""
+msgstr "d10 (Persen) (Hijau)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Orange):1
 msgid "d10 (Percent) (Orange)"
-msgstr ""
+msgstr "d10 (Persen) (Jingga)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Pink):1
 msgid "d10 (Percent) (Pink)"
-msgstr ""
+msgstr "d10 (Persen) (Merah Jambu)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Purple):1
 msgid "d10 (Percent) (Purple)"
-msgstr ""
+msgstr "d10 (Persen) (Ungu)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Red):1
 msgid "d10 (Percent) (Red)"
-msgstr ""
+msgstr "d10 (Persen) (Merah)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (White):1
 msgid "d10 (Percent) (White)"
-msgstr ""
+msgstr "d10 (Persen) (Putih)"
 
 #: ../TabletopClub/dice/d10/d10 (Percent) (Yellow):1
 msgid "d10 (Percent) (Yellow)"
-msgstr ""
+msgstr "d10 (Persen) (Kuning)"
 
 #: ../TabletopClub/dice/d10/d10 (Pink):1
 msgid "d10 (Pink)"
-msgstr ""
+msgstr "d10 (Merah Jambu)"
 
 #: ../TabletopClub/dice/d10/d10 (Purple):1
 msgid "d10 (Purple)"
-msgstr ""
+msgstr "d10 (Ungu)"
 
 #: ../TabletopClub/dice/d10/d10 (Red):1
 msgid "d10 (Red)"
-msgstr ""
+msgstr "d10 (Merah)"
 
 #: ../TabletopClub/dice/d10/d10 (White):1
 msgid "d10 (White)"
-msgstr ""
+msgstr "d10 (Putih)"
 
 #: ../TabletopClub/dice/d10/d10 (Yellow):1
 msgid "d10 (Yellow)"
-msgstr ""
+msgstr "d10 (Kuning)"
 
 #: ../TabletopClub/dice/d12/d12 (Black):1
 msgid "d12 (Black)"
-msgstr ""
+msgstr "d12 (Hitam)"
 
 #: ../TabletopClub/dice/d12/d12 (Black):2 ../TabletopClub/dice/d12/d12 (Blue):2 ../TabletopClub/dice/d12/d12 (Brown):2 ../TabletopClub/dice/d12/d12 (Cyan):2 ../TabletopClub/dice/d12/d12 (Green):2 ../TabletopClub/dice/d12/d12 (Orange):2 ../TabletopClub/dice/d12/d12 (Pink):2 ../TabletopClub/dice/d12/d12 (Purple):2 ../TabletopClub/dice/d12/d12 (Red):2 ../TabletopClub/dice/d12/d12 (White):2 ../TabletopClub/dice/d12/d12 (Yellow):2
 msgid "A 12-sided die."
-msgstr ""
+msgstr "Dadu 12 sisi."
 
 #: ../TabletopClub/dice/d12/d12 (Blue):1
 msgid "d12 (Blue)"
-msgstr ""
+msgstr "d12 (Biru)"
 
 #: ../TabletopClub/dice/d12/d12 (Brown):1
 msgid "d12 (Brown)"
-msgstr ""
+msgstr "d12 (Cokelat)"
 
 #: ../TabletopClub/dice/d12/d12 (Cyan):1
 msgid "d12 (Cyan)"
-msgstr ""
+msgstr "d12 (Sian)"
 
 #: ../TabletopClub/dice/d12/d12 (Green):1
 msgid "d12 (Green)"
-msgstr ""
+msgstr "d12 (Hijau)"
 
 #: ../TabletopClub/dice/d12/d12 (Orange):1
 msgid "d12 (Orange)"
-msgstr ""
+msgstr "d12 (Jingga)"
 
 #: ../TabletopClub/dice/d12/d12 (Pink):1
 msgid "d12 (Pink)"
-msgstr ""
+msgstr "d12 (Merah Jambu)"
 
 #: ../TabletopClub/dice/d12/d12 (Purple):1
 msgid "d12 (Purple)"
-msgstr ""
+msgstr "d12 (Ungu)"
 
 #: ../TabletopClub/dice/d12/d12 (Red):1
 msgid "d12 (Red)"
-msgstr ""
+msgstr "d12 (Merah)"
 
 #: ../TabletopClub/dice/d12/d12 (White):1
 msgid "d12 (White)"
-msgstr ""
+msgstr "d12 (Putih)"
 
 #: ../TabletopClub/dice/d12/d12 (Yellow):1
 msgid "d12 (Yellow)"
-msgstr ""
+msgstr "d12 (Kuning)"
 
 #: ../TabletopClub/dice/d20/d20 (Black):1
 msgid "d20 (Black)"
-msgstr ""
+msgstr "d20 (Hitam)"
 
 #: ../TabletopClub/dice/d20/d20 (Black):2 ../TabletopClub/dice/d20/d20 (Blue):2 ../TabletopClub/dice/d20/d20 (Brown):2 ../TabletopClub/dice/d20/d20 (Cyan):2 ../TabletopClub/dice/d20/d20 (Green):2 ../TabletopClub/dice/d20/d20 (Orange):2 ../TabletopClub/dice/d20/d20 (Pink):2 ../TabletopClub/dice/d20/d20 (Purple):2 ../TabletopClub/dice/d20/d20 (Red):2 ../TabletopClub/dice/d20/d20 (White):2 ../TabletopClub/dice/d20/d20 (Yellow):2
 msgid "A 20-sided die."
-msgstr ""
+msgstr "Dadu 20 sisi."
 
 #: ../TabletopClub/dice/d20/d20 (Blue):1
 msgid "d20 (Blue)"
-msgstr ""
+msgstr "d20 (Biru)"
 
 #: ../TabletopClub/dice/d20/d20 (Brown):1
 msgid "d20 (Brown)"
-msgstr ""
+msgstr "d20 (Cokelat)"
 
 #: ../TabletopClub/dice/d20/d20 (Cyan):1
 msgid "d20 (Cyan)"
-msgstr ""
+msgstr "d20 (Sian)"
 
 #: ../TabletopClub/dice/d20/d20 (Green):1
 msgid "d20 (Green)"
-msgstr ""
+msgstr "d20 (Hijau)"
 
 #: ../TabletopClub/dice/d20/d20 (Orange):1
 msgid "d20 (Orange)"
-msgstr ""
+msgstr "d20 (Jingga)"
 
 #: ../TabletopClub/dice/d20/d20 (Pink):1
 msgid "d20 (Pink)"
-msgstr ""
+msgstr "d20 (Merah Jambu)"
 
 #: ../TabletopClub/dice/d20/d20 (Purple):1
 msgid "d20 (Purple)"
-msgstr ""
+msgstr "d20 (Ungu)"
 
 #: ../TabletopClub/dice/d20/d20 (Red):1
 msgid "d20 (Red)"
-msgstr ""
+msgstr "d20 (Merah)"
 
 #: ../TabletopClub/dice/d20/d20 (White):1
 msgid "d20 (White)"
-msgstr ""
+msgstr "d20 (Putih)"
 
 #: ../TabletopClub/dice/d20/d20 (Yellow):1
 msgid "d20 (Yellow)"
-msgstr ""
+msgstr "d20 (Kuning)"
 
 #: ../TabletopClub/games/Chess:1
 msgid "Chess"
-msgstr ""
+msgstr "Catur"
 
 #: ../TabletopClub/games/Chess:2
 msgid "Standard Chess for two players."
-msgstr ""
+msgstr "Catur Standar untuk dua pemain."
 
 #: ../TabletopClub/music/Airport Lounge - Kevin MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
@@ -699,19 +699,19 @@ msgstr ""
 
 #: ../TabletopClub/pieces/Bishop Black:1
 msgid "Bishop Black"
-msgstr ""
+msgstr "Menteri Hitam"
 
 #: ../TabletopClub/pieces/Bishop White:1
 msgid "Bishop White"
-msgstr ""
+msgstr "Menteri Putih"
 
 #: ../TabletopClub/pieces/Chess Board:1
 msgid "Chess Board"
-msgstr ""
+msgstr "Papan Catur"
 
 #: ../TabletopClub/pieces/Chess Board:2
 msgid "An 8x8 Chess board."
-msgstr ""
+msgstr "Papan Catur 8x8."
 
 #: ../TabletopClub/pieces/ColladaSphere:1
 msgid "ColladaSphere"
@@ -723,43 +723,43 @@ msgstr ""
 
 #: ../TabletopClub/pieces/King Black:1
 msgid "King Black"
-msgstr ""
+msgstr "Raja Hitam"
 
 #: ../TabletopClub/pieces/King White:1
 msgid "King White"
-msgstr ""
+msgstr "Raja Putih"
 
 #: ../TabletopClub/pieces/Knight Black:1
 msgid "Knight Black"
-msgstr ""
+msgstr "Kuda Hitam"
 
 #: ../TabletopClub/pieces/Knight White:1
 msgid "Knight White"
-msgstr ""
+msgstr "Kuda Putih"
 
 #: ../TabletopClub/pieces/Pawn Black:1
 msgid "Pawn Black"
-msgstr ""
+msgstr "Pion Hitam"
 
 #: ../TabletopClub/pieces/Pawn White:1
 msgid "Pawn White"
-msgstr ""
+msgstr "Pion Putih"
 
 #: ../TabletopClub/pieces/Queen Black:1
 msgid "Queen Black"
-msgstr ""
+msgstr "Ratu Hitam"
 
 #: ../TabletopClub/pieces/Queen White:1
 msgid "Queen White"
-msgstr ""
+msgstr "Ratu Putih"
 
 #: ../TabletopClub/pieces/Rook Black:1
 msgid "Rook Black"
-msgstr ""
+msgstr "Benteng Hitam"
 
 #: ../TabletopClub/pieces/Rook White:1
 msgid "Rook White"
-msgstr ""
+msgstr "Benteng Putih"
 
 #: ../TabletopClub/pieces/Sphere:1
 msgid "Sphere"
@@ -779,7 +779,7 @@ msgstr ""
 
 #: ../TabletopClub/skyboxes/Clouds:1
 msgid "Clouds"
-msgstr ""
+msgstr "Awan"
 
 #: ../TabletopClub/skyboxes/Dallas West:1
 msgid "Dallas West"
@@ -787,7 +787,7 @@ msgstr ""
 
 #: ../TabletopClub/skyboxes/Forest:1
 msgid "Forest"
-msgstr ""
+msgstr "Hutan"
 
 #: ../TabletopClub/skyboxes/Hornstulls Strand:1
 msgid "Hornstulls Strand"
@@ -823,11 +823,11 @@ msgstr ""
 
 #: ../TabletopClub/skyboxes/Path:1
 msgid "Path"
-msgstr ""
+msgstr "Jalur"
 
 #: ../TabletopClub/skyboxes/Space:1
 msgid "Space"
-msgstr ""
+msgstr "Angkasa"
 
 #: ../TabletopClub/skyboxes/Tantolunden:1
 msgid "Tantolunden"
@@ -839,7 +839,7 @@ msgstr ""
 
 #: ../TabletopClub/sounds/Alarm:1
 msgid "Alarm"
-msgstr ""
+msgstr "Alarm"
 
 #: ../TabletopClub/sounds/Alarm:2
 msgid "An alarm for alarming situations."
@@ -847,7 +847,7 @@ msgstr ""
 
 #: ../TabletopClub/speakers/Gramophone:1
 msgid "Gramophone"
-msgstr ""
+msgstr "Gramofon"
 
 #: ../TabletopClub/speakers/Gramophone:2
 msgid "A low-poly vintage gramophone."
@@ -859,7 +859,7 @@ msgstr ""
 
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
-msgstr ""
+msgstr "Meja"
 
 #: ../TabletopClub/timers/Temp:1
 msgid "Temp"
@@ -875,11 +875,11 @@ msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/10:1
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: ../TabletopClub/tokens/cylinder/100:1
 msgid "100"
-msgstr ""
+msgstr "100"
 
 #: ../TabletopClub/tokens/cylinder/20 x 1 Chips:1
 msgid "20 x 1 Chips"
@@ -923,12 +923,12 @@ msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/25:1
 msgid "25"
-msgstr ""
+msgstr "25"
 
 #: ../TabletopClub/tokens/cylinder/5:1
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../TabletopClub/tokens/cylinder/D:1
 msgid "D"
-msgstr ""
+msgstr "D"
