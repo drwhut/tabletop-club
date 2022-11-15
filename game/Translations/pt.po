@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-07-21 13:06+0100\n"
-"PO-Revision-Date: 2022-11-14 08:57+0000\n"
+"PO-Revision-Date: 2022-11-17 13:47+0000\n"
 "Last-Translator: AllanOvelha <allan1234567@yahoo.com.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
 "game/pt/>\n"
@@ -1457,51 +1457,51 @@ msgstr "Restaurar orientação"
 
 #: ../Scripts/Game/CameraController.gd:1378
 msgid "Zoom selected"
-msgstr "Selecionar Aproximação"
+msgstr "Aproximação selecionada"
 
 #: ../Scripts/Game/CameraController.gd:1379
 msgid "Lift selected"
-msgstr ""
+msgstr "Suspensão selecionada"
 
 #: ../Scripts/Game/CameraController.gd:1380
 msgid "Rotate selected"
-msgstr ""
+msgstr "Rotação selecionada"
 
 #: ../Scripts/Game/CameraController.gd:1388
 msgid "Unlock selected"
-msgstr ""
+msgstr "Desbloqueio selecionado"
 
 #: ../Scripts/Game/CameraController.gd:1388
 msgid "Lock selected"
-msgstr ""
+msgstr "Bloqueio Selecionado"
 
 #: ../Scripts/Game/CameraController.gd:1391
 msgid "Delete selected"
-msgstr ""
+msgstr "Excluir selecionado"
 
 #: ../Scripts/Game/CameraController.gd:1394
 msgid "Reset camera"
-msgstr ""
+msgstr "Restaurar câmera"
 
 #: ../Scripts/Game/CameraController.gd:1536
 msgid "Pause track"
-msgstr ""
+msgstr "Pausar gravação"
 
 #: ../Scripts/Game/CameraController.gd:1541
 msgid "Resume track"
-msgstr ""
+msgstr "Continuar gravação"
 
 #: ../Scripts/Game/CameraController.gd:1545
 msgid "Stop track"
-msgstr ""
+msgstr "Parar gravação"
 
 #: ../Scripts/Game/CameraController.gd:1547
 msgid "Play track"
-msgstr ""
+msgstr "Rodar gravação"
 
 #: ../Scripts/Game/CameraController.gd:1552
 msgid "No track loaded"
-msgstr ""
+msgstr "Gravação não carregada"
 
 #: ../Scripts/Game/CameraController.gd:1554
 #, python-format
