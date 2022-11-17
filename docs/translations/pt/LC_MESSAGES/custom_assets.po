@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-21 13:07+0100\n"
-"PO-Revision-Date: 2022-11-14 08:57+0000\n"
+"PO-Revision-Date: 2022-11-18 22:47+0000\n"
 "Last-Translator: AllanOvelha <allan1234567@yahoo.com.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/pt/>\n"
@@ -342,7 +342,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
 msgid "Cards"
-msgstr ""
+msgstr "Cartas"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
 msgid "The file name of the back face of the card. The texture must be in the same folder. If blank, no back face texture is applied."
@@ -362,7 +362,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
 msgid "Tables"
-msgstr ""
+msgstr "Mesas"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
 msgid "``0.5``"
@@ -440,7 +440,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 #: ../../custom_assets/asset_packs/asset_types.rst:72
 msgid "Dice"
-msgstr ""
+msgstr "Dado"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 msgid "``{}``"
@@ -543,7 +543,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
 msgid "Skyboxes"
-msgstr ""
+msgstr "Skybox"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid "``Vector3(0.0, 0.0, 0.0)``"
@@ -583,7 +583,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:166
 msgid "Containers"
-msgstr ""
+msgstr "Recipientes"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:166
 msgid "If ``true``, when the container is being shaken upside down, it will randomly drop items out."
@@ -773,7 +773,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:161
 msgid "Music"
-msgstr ""
+msgstr "Musica"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:163
 msgid "Music tracks are the same as sounds, but they can also be configured to play in the main menu. See the ``main_menu`` property in :ref:`config-cfg`."
