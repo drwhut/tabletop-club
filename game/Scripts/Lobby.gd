@@ -163,6 +163,9 @@ remotesync func request_sync_players_accepted(players: Dictionary) -> void:
 # name: The name of the player.
 # color: The color of the player.
 func _create_player_dict(name: String, color: Color) -> Dictionary:
+	# Maximum length of names.
+	name = name.substr(0, 100)
+	
 	return {
 		"name": name,
 		"color": color

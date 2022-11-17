@@ -43,6 +43,7 @@ size_flags_horizontal = 3
 [node name="TitleEdit" type="LineEdit" parent="HBoxContainer/PageContainer"]
 margin_right = 346.0
 margin_bottom = 30.0
+max_length = 100
 editable = false
 placeholder_text = "Title"
 
