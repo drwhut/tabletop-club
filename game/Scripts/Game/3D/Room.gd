@@ -1678,7 +1678,9 @@ func set_state(state: Dictionary) -> void:
 			var player_id = hidden_area_meta["player_id"]
 			var point1 = hidden_area_meta["point1"]
 			var point2 = hidden_area_meta["point2"]
-			place_hidden_area(hidden_area_name, player_id, point1, point2)
+			
+			if Lobby.player_exists(player_id):
+				place_hidden_area(hidden_area_name, player_id, point1, point2)
 
 	# We don't use the limbo system here, since incoming pieces may have the
 	# same name as ones currently in the tree.
