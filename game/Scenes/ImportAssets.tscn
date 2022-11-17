@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/ImportAssets.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Images/LoadingScreen.jpg" type="Texture" id=3]
+[ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-Outline.tres" type="DynamicFont" id=4]
 
 [node name="ImportAssets" type="Control"]
 anchor_right = 1.0
@@ -13,34 +15,41 @@ __meta__ = {
 Once it is done importing, the scene goes to the main menu."
 }
 
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 7
+
 [node name="OptionsMenu" parent="." instance=ExtResource( 2 )]
 visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -58.0
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 266.0
 margin_right = 1024.0
-margin_bottom = 286.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 4 )
 text = "Importing assets..."
 align = 1
 
 [node name="ImportingLabel" type="Label" parent="VBoxContainer"]
-margin_top = 290.0
+margin_top = 19.0
 margin_right = 1024.0
-margin_bottom = 310.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
-margin_top = 314.0
+margin_top = 38.0
 margin_right = 1024.0
-margin_bottom = 334.0
+margin_bottom = 58.0
 max_value = 1.0
 
 [node name="MissingAssetsPopup" type="AcceptDialog" parent="."]
