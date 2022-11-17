@@ -708,8 +708,9 @@ remotesync func remove_hand(player: int) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 
-	var hand = _hands.get_node(str(player))
-	if hand:
+	var node_name = str(player)
+	if _hands.has_node(node_name):
+		var hand = _hands.get_node(node_name)
 		_hands.remove_child(hand)
 		hand.queue_free()
 

@@ -1079,6 +1079,10 @@ func _ready():
 	_master_server.connect("peer_connected", self, "_on_peer_connected")
 	_master_server.connect("peer_disconnected", self, "_on_peer_disconnected")
 	
+	# Sometimes we will know when a peer has disconnected before the master
+	# server does, e.g. if the peer has crashed.
+	_rtc.connect("peer_disconnected", self, "_on_peer_disconnected")
+	
 	Lobby.connect("players_synced", self, "_on_Lobby_players_synced")
 	
 	Lobby.clear_players()
@@ -1960,8 +1964,6 @@ func _on_peer_connected(id: int):
 	_create_peer(id)
 
 func _on_peer_disconnected(id: int):
-	print("Peer %d has disconnected." % id)
-	
 	# Do this as soon as possible, so a piece state update doesn't get through.
 	if get_tree().is_network_server():
 		Global.srv_state_update_blacklist.erase(id)
@@ -1970,13 +1972,13 @@ func _on_peer_disconnected(id: int):
 		_rtc.remove_peer(id)
 	
 	if id in _established_connection_with:
+		print("Peer %d has disconnected." % id)
 		_established_connection_with.erase(id)
-	
-	if get_tree().is_network_server():
-		Lobby.rpc("remove_self", id)
 		
-		_room.rpc("remove_hand", id)
-		_room.srv_stop_player_hovering(id)
+		if get_tree().is_network_server():
+			Lobby.rpc("remove_self", id)
+			_room.rpc("remove_hand", id)
+			_room.srv_stop_player_hovering(id)
 
 func _on_room_joined(room_code: String):
 	print("Joined room %s." % room_code)
