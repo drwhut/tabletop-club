@@ -18,8 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Tabletop Club'
-copyright = "2020-2021, Benjamin 'drwhut' Beddows"
-author = "Benjamin 'drwhut' Beddows"
+copyright = "2020-2022, Benjamin 'drwhut' Beddows, Tabletop Club contributors"
 
 # The full version, including alpha/beta/rc tags
 release = 'master'
@@ -60,6 +59,10 @@ html_theme_options = {
     "use_issues_button": True,
     "use_repository_button": True
 }
+
+# Add the project logo and icon to the docs.
+html_logo = "../game/tabletop_club_logo.png"
+html_favicon = "../game/tabletop_club_icon.ico"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
