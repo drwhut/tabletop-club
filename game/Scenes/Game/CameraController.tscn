@@ -90,7 +90,7 @@ margin_bottom = 8.0
 [node name="DealCardsSpinBoxButton" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/DealCardsMenu"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 180.0
+margin_right = 186.0
 margin_bottom = 34.0
 script = ExtResource( 10 )
 max_value = 1
@@ -157,7 +157,7 @@ margin_bottom = 8.0
 [node name="TakeOffTopSpinBoxButton" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/TakeOffTopMenu"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 189.0
+margin_right = 195.0
 margin_bottom = 34.0
 script = ExtResource( 10 )
 max_value = 1
@@ -171,7 +171,7 @@ margin_bottom = 8.0
 [node name="TakeOutSpinBoxButton" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/TakeOutMenu"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 166.0
+margin_right = 172.0
 margin_bottom = 34.0
 script = ExtResource( 10 )
 prefix = "X ="

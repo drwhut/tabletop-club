@@ -74,6 +74,7 @@ func _init():
 	
 	_spin_box = SpinBox.new()
 	_spin_box.min_value = 1.0
+	_spin_box.rect_min_size.x = 80.0
 	add_child(_spin_box)
 
 func _on_button_pressed():
