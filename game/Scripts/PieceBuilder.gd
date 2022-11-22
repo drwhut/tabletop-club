@@ -327,12 +327,18 @@ func _extract_and_shape_mesh_instances(add_to: Node, from: Node,
 				# Real-time global illumination is coming in Godot 4, so while
 				# we wait we can approximate emissive materials using
 				# OmniLights (see #34).
+				# EDIT: Having a ton of these lights is causing serious issues
+				# on Linux with the NVIDIA Driver (520.56.06), so I'm going to
+				# disable them for now - I can always enable them again if there
+				# is enough demand, or if the NVIDIA driver has been updated.
+				"""
 				if material is SpatialMaterial:
 					if material.emission_enabled:
 						var omnilight = OmniLight.new()
 						omnilight.light_color = material.emission
 						omnilight.light_energy = material.emission_energy
 						from.add_child(omnilight)
+				"""
 		
 		# Don't bother making a collision shape if there's no vertices.
 		if num_verts > 0:
