@@ -284,7 +284,8 @@ func apply_options(config: ConfigFile) -> void:
 # Clear the list of selected pieces.
 func clear_selected_pieces() -> void:
 	for piece in _selected_pieces:
-		piece.set_outline_color(Color.transparent)
+		if is_instance_valid(piece):
+			piece.set_outline_color(Color.transparent)
 	
 	_selected_pieces.clear()
 

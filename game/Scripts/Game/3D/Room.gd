@@ -168,9 +168,11 @@ remotesync func add_piece_to_container(container_name: String, piece_name: Strin
 		push_error("Object " + piece_name + " is not a piece!")
 		return
 
-	if get_tree().is_network_server():
-		piece.stop_hovering()
+	for player_id in _client_hover_pieces:
+		var hovering: Array = _client_hover_pieces[player_id]
+		hovering.erase(piece_name)
 
+	piece.stop_hovering()
 	_pieces.remove_child(piece)
 	container.add_piece(piece)
 
@@ -776,6 +778,9 @@ remotesync func remove_pieces(piece_names: Array) -> void:
 			return
 		
 		_camera_controller.remove_piece_ref(piece)
+		for player_id in _client_hover_pieces:
+			var hovering: Array = _client_hover_pieces[player_id]
+			hovering.erase(piece_name)
 		
 		if get_tree().is_network_server():
 			if _srv_events_add_states:
@@ -1013,17 +1018,6 @@ master func request_collect_pieces(piece_names: Array) -> void:
 
 		add_to = pieces.pop_front()
 
-# Called by the server when the request to release a piece from a container was
-# accepted.
-# piece_name: The name of the piece that was just released from a container.
-remotesync func request_container_release_accepted(piece_name: String) -> void:
-	if get_tree().get_rpc_sender_id() != 1:
-		return
-
-	# The server has allowed us to hover the piece that has just poped off the
-	# stack!
-	request_hover_piece_accepted(piece_name)
-
 # Request the server to randomly release a set amount of pieces from a
 # container.
 # container_name: The name of the container to release pieces from.
@@ -1063,7 +1057,7 @@ master func request_container_release_random(container_name: String, n: int, hov
 master func request_container_release_these(container_name: String,
 	release_names: Array, hover: bool) -> void:
 
-	if release_names.size() == 0:
+	if release_names.empty():
 		return
 
 	var player_id = get_tree().get_rpc_sender_id()
@@ -1077,48 +1071,60 @@ master func request_container_release_these(container_name: String,
 		push_error("Piece " + container_name + " is not a container!")
 		return
 
-	var hover_box_pos   = Vector3.ZERO
-	var hover_box_size  = Vector3.ZERO
-	var hover_direction = 0
-
-	var max_y_pos = 0
+	var hover_name_arr  = []
+	var hover_offet_arr = []
+	var init_pos = Vector3.ZERO
+	var is_init_pos_set = false
 
 	for piece_name in release_names:
 		if container.has_piece(piece_name):
 			rpc("remove_piece_from_container", container_name, piece_name)
 
 			if hover:
-				var piece: Piece = _pieces.get_node(piece_name)
-				var piece_size = piece.get_size()
-				var piece_offset = hover_box_pos
+				hover_name_arr.append(piece_name)
+	
+	var calc_box_pos   = Vector3.ZERO
+	var calc_box_size  = Vector3.ZERO
+	var calc_direction = 0
+	var max_y_pos = 0
 
-				if piece.transform.origin.y > max_y_pos:
-					max_y_pos = piece.transform.origin.y
+	for piece_name in hover_name_arr:
+		var piece: Piece = _pieces.get_node(piece_name)
+		var piece_size = piece.get_size()
+		var piece_offset = calc_box_pos
 
-					# TODO: Ideally should only be called once.
-					_camera_controller.rpc_id(player_id, "set_hover_height",
-						max_y_pos)
+		if not is_init_pos_set:
+			init_pos = piece.transform.origin
+			is_init_pos_set = true
+		max_y_pos = max(max_y_pos, piece.transform.origin.y)
 
-				if hover_direction == 0:
-					piece_offset.x += (hover_box_size.x + piece_size.x) / 2
-				elif hover_direction == 1:
-					piece_offset.z += (hover_box_size.z + piece_size.z) / 2
-				elif hover_direction == 2:
-					piece_offset.x -= (hover_box_size.x + piece_size.x) / 2
-				else:
-					piece_offset.z -= (hover_box_size.z + piece_size.z) / 2
+		if calc_direction == 0:
+			piece_offset.x += (calc_box_size.x + piece_size.x) / 2
+		elif calc_direction == 1:
+			piece_offset.z += (calc_box_size.z + piece_size.z) / 2
+		elif calc_direction == 2:
+			piece_offset.x -= (calc_box_size.x + piece_size.x) / 2
+		else:
+			piece_offset.z -= (calc_box_size.z + piece_size.z) / 2
 
-				hover_box_pos = 0.5 * (hover_box_pos + piece_offset)
-				if hover_direction % 2 == 0:
-					hover_box_size.x += piece_size.x
-					hover_box_size.z = max(hover_box_size.z, piece_size.z)
-				else:
-					hover_box_size.x = max(hover_box_size.x, piece_size.x)
-					hover_box_size.z += piece_size.z
-				hover_direction = (hover_direction + 1) % 4
+		calc_box_pos = 0.5 * (calc_box_pos + piece_offset)
+		if calc_direction % 2 == 0:
+			calc_box_size.x += piece_size.x
+			calc_box_size.z = max(calc_box_size.z, piece_size.z)
+		else:
+			calc_box_size.x = max(calc_box_size.x, piece_size.x)
+			calc_box_size.z += piece_size.z
+		calc_direction = (calc_direction + 1) % 4
 
-				if piece.srv_start_hovering(player_id, piece.transform.origin, piece_offset):
-					rpc_id(player_id, "request_container_release_accepted", piece_name)
+		hover_offet_arr.append(piece_offset)
+
+	if not hover_name_arr.empty():
+		_camera_controller.rpc_id(player_id, "set_hover_height", max_y_pos)
+
+		if hover_name_arr.size() == 1:
+			request_hover_piece(hover_name_arr[0], init_pos, hover_offet_arr[0])
+		else:
+			request_hover_pieces(hover_name_arr, init_pos, hover_offet_arr)
 
 # Request the server to deal cards from a stack to all players.
 # stack_name: The name of the stack of cards.
@@ -1688,6 +1694,7 @@ func set_state(state: Dictionary) -> void:
 	for child in _pieces.get_children():
 		_pieces.remove_child(child)
 		ResourceManager.queue_free_object(child)
+	_client_hover_pieces.clear()
 
 	_extract_piece_states(state, _pieces)
 
