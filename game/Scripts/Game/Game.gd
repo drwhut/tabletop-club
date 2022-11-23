@@ -758,7 +758,7 @@ master func request_sync_state() -> void:
 	var client_id = get_tree().get_rpc_sender_id()
 	if client_id in _srv_expect_sync:
 		var compressed_state = _room.get_state_compressed(true, true)
-		_room.rpc_id(client_id, "set_state_compressed", compressed_state)
+		_room.rpc_id(client_id, "set_state_compressed", compressed_state, "")
 		
 		_srv_expect_sync.erase(client_id)
 		Global.srv_state_update_blacklist.erase(client_id)
@@ -1922,7 +1922,7 @@ func _on_connection_established(id: int):
 		if _srv_skip_sync:
 			# Send the table state straight away.
 			var compressed_state = _room.get_state_compressed(true, true)
-			_room.rpc_id(id, "set_state_compressed", compressed_state)
+			_room.rpc_id(id, "set_state_compressed", compressed_state, "")
 		else:
 			# Send them our asset schemas to see if they are missing any assets.
 			rpc_id(id, "compare_server_schemas", _srv_schema_db, _srv_schema_fs)

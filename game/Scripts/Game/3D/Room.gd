@@ -168,6 +168,7 @@ remotesync func add_piece_to_container(container_name: String, piece_name: Strin
 		push_error("Object " + piece_name + " is not a piece!")
 		return
 
+	_camera_controller.remove_piece_ref(piece)
 	for player_id in _client_hover_pieces:
 		var hovering: Array = _client_hover_pieces[player_id]
 		hovering.erase(piece_name)
@@ -175,6 +176,14 @@ remotesync func add_piece_to_container(container_name: String, piece_name: Strin
 	piece.stop_hovering()
 	_pieces.remove_child(piece)
 	container.add_piece(piece)
+
+	# If we are the client, then we'll need to put a piece into limbo with the
+	# same name, just in case an RPC is received afterwards.
+	if not get_tree().is_network_server():
+		var limbo_piece = Piece.new()
+		limbo_piece.name = piece_name
+		_pieces.add_child(limbo_piece)
+		remove_pieces([piece_name])
 
 # Called by the server to add a piece to a stack.
 # piece_name: The name of the piece.
@@ -649,11 +658,18 @@ func get_table() -> Dictionary:
 
 # Called by the server to paste the contents of a clipboard to the room.
 # clipboard: The clipboard contents (from _append_piece_states).
-remotesync func paste_clipboard(clipboard: Dictionary) -> void:
+# first_name: The name of the first piece to be created.
+remotesync func paste_clipboard(clipboard: Dictionary, first_name: String) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 
-	_extract_piece_states(clipboard, _pieces)
+	# _extract_piece_states() will use srv_get_next_piece_name() for all clients
+	# to determine the new piece names.
+	if not first_name.is_valid_integer():
+		push_error("First name %s is not a valid integer!" % first_name)
+		return
+	_srv_next_piece_name = int(first_name)
+	_extract_piece_states(clipboard, _pieces, true)
 
 # Called by the server to place a hidden area for a given player.
 # area_name: The name of the new hidden area.
@@ -685,8 +701,8 @@ master func pop_undo_state() -> void:
 	if _srv_undo_stack.size() > 0:
 		var state_to_restore = _srv_undo_stack.pop_back()
 		_srv_events_add_states = false	#we don't want add_piece adding states when it's called as a part of set state
-		# TODO: Consider pushing compressed states to the undo stack?
-		rpc("set_state_compressed", compress_state(state_to_restore))	#set the state for everyone
+		rpc("set_state_compressed", compress_state(state_to_restore),
+				srv_get_next_piece_name())	#set the state for everyone
 		_srv_events_add_states = true
 	
 	# Let all players know if the undo stack is now empty.
@@ -753,6 +769,15 @@ remotesync func remove_piece_from_container(container_name: String, piece_name: 
 	if not container.has_piece(piece_name):
 		push_error("Container " + container_name + " does not contain piece " + piece_name)
 		return
+
+	# If there is a piece with the same name (in limbo), rename it so this piece
+	# can use it's own name.
+	if _pieces.has_node(piece_name):
+		var node = _pieces.get_node(piece_name)
+		var new_name = node.name + "_"
+		while _pieces.has_node(new_name):
+			new_name += "_"
+		node.name = new_name
 
 	var piece = container.remove_piece(piece_name)
 	_pieces.add_child(piece)
@@ -1243,14 +1268,14 @@ remotesync func request_hover_piece_accepted(piece_name: String) -> void:
 # Request the server to load a compressed table state.
 # compressed_state: The compressed state to load.
 master func request_load_table_state(compressed_state: Dictionary) -> void:
-	rpc("set_state_compressed", compressed_state)
+	rpc("set_state_compressed", compressed_state, srv_get_next_piece_name())
 
 # Request the server to paste the contents of a clipboard to the room.
 # clipboard: The clipboard contents (from _append_piece_states).
 # offset: Offset the positions of the pasted pieces by this value.
 master func request_paste_clipboard(clipboard: Dictionary, offset: Vector3) -> void:
 	_modify_piece_states(clipboard, offset)
-	rpc("paste_clipboard", clipboard)
+	rpc("paste_clipboard", clipboard, srv_get_next_piece_name())
 
 # Request the server to place a hidden area registered to you.
 # point1: One corner of the new hidden area.
@@ -1581,9 +1606,19 @@ remotesync func set_skybox(skybox_entry_path: String) -> void:
 
 # Set the room state.
 # state: The new room state.
-func set_state(state: Dictionary) -> void:
+# first_name: The new name for the first piece in the state. If empty, the
+# saved name is used instead.
+func set_state(state: Dictionary, first_name: String) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
+
+	if not first_name.empty():
+		# _extract_piece_states() will use srv_get_next_piece_name() for all
+		# clients to determine the new piece names.
+		if not first_name.is_valid_integer():
+			push_error("First name %s is not a valid integer!" % first_name)
+			return
+		_srv_next_piece_name = int(first_name)
 
 	if state.has("lamp"):
 		var lamp_meta = state["lamp"]
@@ -1689,14 +1724,22 @@ func set_state(state: Dictionary) -> void:
 			if Lobby.player_exists(player_id):
 				place_hidden_area(hidden_area_name, player_id, point1, point2)
 
-	# We don't use the limbo system here, since incoming pieces may have the
-	# same name as ones currently in the tree.
-	for child in _pieces.get_children():
-		_pieces.remove_child(child)
-		ResourceManager.queue_free_object(child)
-	_client_hover_pieces.clear()
+	if first_name.empty():
+		# If we are using the original names, we need to forcefully remove all
+		# existing pieces, since they may use the same name.
+		for child in _pieces.get_children():
+			_pieces.remove_child(child)
+			ResourceManager.queue_free_object(child)
+		_client_hover_pieces.clear()
+	else:
+		# If the names will be replaced, then we can safely put pieces into
+		# limbo, since the new names should not clash.
+		var old_piece_name_arr = []
+		for child in _pieces.get_children():
+			old_piece_name_arr.append(child.name)
+		remove_pieces(old_piece_name_arr)
 
-	_extract_piece_states(state, _pieces)
+	_extract_piece_states(state, _pieces, not first_name.empty())
 
 	# Wait a few physics frames for the hands to detect the cards, then add the
 	# cards to the hands.
@@ -1706,7 +1749,9 @@ func set_state(state: Dictionary) -> void:
 
 # Set the room state with a compressed version of a state.
 # compressed_state: The compressed state from get_state_compressed().
-remotesync func set_state_compressed(compressed_state: Dictionary) -> void:
+# first_name: The new name for the first piece in the state. If empty, the
+# saved name is used instead.
+remotesync func set_state_compressed(compressed_state: Dictionary, first_name: String) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
@@ -1732,7 +1777,7 @@ remotesync func set_state_compressed(compressed_state: Dictionary) -> void:
 	var bytes = data.decompress(size, File.COMPRESSION_FASTLZ)
 	var state = bytes2var(bytes)
 	if state is Dictionary:
-		set_state(state)
+		set_state(state, first_name)
 	else:
 		push_error("Failed to decode the uncompressed state!")
 
@@ -2065,90 +2110,108 @@ func _append_piece_states(state: Dictionary, pieces: Array, collisions: bool) ->
 # Extract the pieces from a room state, and add them to the scene tree.
 # state: The state to extract the pieces from.
 # parent: The node to add the pieces to as children.
-func _extract_piece_states(state: Dictionary, parent: Node) -> void:
-	_extract_piece_states_type(state, parent, "containers")
-	_extract_piece_states_type(state, parent, "pieces")
-	_extract_piece_states_type(state, parent, "speakers")
-	_extract_piece_states_type(state, parent, "stacks")
-	_extract_piece_states_type(state, parent, "timers")
+# new_names: Should the extracted pieces use completely new names?
+func _extract_piece_states(state: Dictionary, parent: Node, new_names: bool) -> void:
+	_extract_piece_states_type(state, parent, new_names, "containers")
+	_extract_piece_states_type(state, parent, new_names, "pieces")
+	_extract_piece_states_type(state, parent, new_names, "speakers")
+	_extract_piece_states_type(state, parent, new_names, "stacks")
+	_extract_piece_states_type(state, parent, new_names, "timers")
 
 # A helper function when extracting piece states from a room state.
 # state: The state to extract the pieces from.
 # parent: The node to add the pieces to as children.
+# new_names: Should the extracted pieces use completely new names?
 # type_key: The key to extract from the state.
-func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: String) -> void:
+func _extract_piece_states_type(state: Dictionary, parent: Node, new_names: bool,
+	type_key: String) -> void:
+
 	if not state.has(type_key):
 		return
 
-	for piece_name in state[type_key]:
-		var piece_meta = state[type_key][piece_name]
+	for old_piece_name in state[type_key]:
+		var piece_meta = state[type_key][old_piece_name]
 
 		# Make sure the server doesn't duplicate piece names!
-		if get_tree().is_network_server():
-			var name_int = int(piece_name)
+		if not new_names and get_tree().is_network_server():
+			var name_int = int(old_piece_name)
 			if name_int >= _srv_next_piece_name:
 				_srv_next_piece_name = name_int + 1
 
 		if not piece_meta.has("is_locked"):
-			push_error("Piece " + type_key + "/" + piece_name + " in new state has no is locked value!")
+			push_error("Piece " + type_key + "/" + old_piece_name + " in new state has no is locked value!")
 			return
 
 		if not piece_meta["is_locked"] is bool:
-			push_error("Piece " + type_key + "/" + piece_name + " is locked value is not a boolean!")
+			push_error("Piece " + type_key + "/" + old_piece_name + " is locked value is not a boolean!")
 			return
 
 		if not piece_meta.has("transform"):
-			push_error("Piece " + type_key + "/" + piece_name + " in new state has no transform!")
+			push_error("Piece " + type_key + "/" + old_piece_name + " in new state has no transform!")
 			return
 
 		if not piece_meta["transform"] is Transform:
-			push_error("Piece " + type_key + "/" + piece_name + " transform is not a transform!")
+			push_error("Piece " + type_key + "/" + old_piece_name + " transform is not a transform!")
 			return
 
 		# Stacks don't include their piece entry, since they can figure it out
 		# themselves once the first piece is added.
 		if type_key != "stacks":
 			if not piece_meta.has("entry_path"):
-				push_error("Piece " + type_key + "/" + piece_name + " in new state has no entry path!")
+				push_error("Piece " + type_key + "/" + old_piece_name + " in new state has no entry path!")
 				return
 
 			if not piece_meta["entry_path"] is String:
-				push_error("Piece " + type_key + "/" + piece_name + " entry path is not a string!")
+				push_error("Piece " + type_key + "/" + old_piece_name + " entry path is not a string!")
 				return
+
+		var new_piece_name = old_piece_name
+		if new_names:
+			# All clients will use this function (even though it starts with
+			# srv_) to make sure they generate the same names as the server.
+			new_piece_name = srv_get_next_piece_name()
+
+		# This should never be the case, but just in case!
+		if parent.has_node(new_piece_name):
+			push_warning("Piece %s already exists in parent %s, yeeting." %
+					[new_piece_name, parent.name])
+			var sus_imposter = parent.get_node(new_piece_name)
+			parent.remove_child(sus_imposter)
+			ResourceManager.queue_free_object(sus_imposter)
 
 		if type_key == "stacks":
 			var pieces: Array = piece_meta["pieces"]
 			if pieces.empty():
-				push_error("Piece " + type_key + "/" + piece_name + " has an empty 'pieces' array!")
+				push_error("Piece " + type_key + "/" + old_piece_name + " has an empty 'pieces' array!")
 				return
 			var element_meta: Dictionary = pieces[0]
 			if not element_meta.has("entry_path"):
-				push_error("Piece " + type_key + "/" + piece_name + " element meta has no entry path!")
+				push_error("Piece " + type_key + "/" + old_piece_name + " element meta has no entry path!")
 				return
 			var entry_path: String = element_meta["entry_path"]
 			var piece_entry = AssetDB.search_path(entry_path)
 			if not piece_entry.empty():
 				var sandwich_stack = (piece_entry["scene_path"] == "res://Pieces/Card.tscn")
-				add_stack_empty(piece_name, piece_meta["transform"], sandwich_stack)
+				add_stack_empty(new_piece_name, piece_meta["transform"], sandwich_stack)
 			else:
 				push_error("Cannot add stack, first entry not found: %s" % entry_path)
 		else:
-			add_piece(piece_name, piece_meta["transform"], piece_meta["entry_path"])
+			add_piece(new_piece_name, piece_meta["transform"], piece_meta["entry_path"])
 
-		var piece: Piece = _pieces.get_node(piece_name)
+		var piece: Piece = _pieces.get_node(new_piece_name)
 		if piece_meta["is_locked"]:
 			piece.lock_client(piece_meta["transform"])
 
 		if piece_meta.has("user_scale"):
 			if not piece_meta["user_scale"] is Vector3:
-				push_error("Piece " + type_key + "/" + piece_name + " user scale is not a Vector3!")
+				push_error("Piece " + type_key + "/" + old_piece_name + " user scale is not a Vector3!")
 				return
 
 			piece.set_current_scale(piece_meta["user_scale"])
 
 		if piece_meta.has("color"):
 			if not piece_meta["color"] is Color:
-				push_error("Piece " + type_key + "/" + piece_name + " color is not a color!")
+				push_error("Piece " + type_key + "/" + old_piece_name + " color is not a color!")
 				return
 
 			var color = piece_meta["color"]
@@ -2164,7 +2227,8 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 				push_error("Container pieces entry is not a dictionary!")
 				return
 
-			_extract_piece_states(piece_meta["pieces"], piece.get_node("Pieces"))
+			_extract_piece_states(piece_meta["pieces"], piece.get_node("Pieces"),
+					new_names)
 			if piece is PieceContainer:
 				piece.recalculate_mass()
 
@@ -2173,7 +2237,7 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 				# The state can choose not to have this data.
 				if piece_meta.has("is_collisions_on"):
 					if not piece_meta["is_collisions_on"] is bool:
-						push_error("Card " + piece_name + " collisions on is not a boolean!")
+						push_error("Card " + old_piece_name + " collisions on is not a boolean!")
 						return
 
 					piece.set_collisions_on(piece_meta["is_collisions_on"])
@@ -2217,51 +2281,51 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 
 		elif type_key == "speakers" or type_key == "timers":
 			if not piece_meta.has("is_music_track"):
-				push_error("Speaker " + piece_name + " does not have an is music track value!")
+				push_error("Speaker " + old_piece_name + " does not have an is music track value!")
 				return
 
 			if not piece_meta["is_music_track"] is bool:
-				push_error("Speaker " + piece_name + " is music track value is not a boolean!")
+				push_error("Speaker " + old_piece_name + " is music track value is not a boolean!")
 				return
 
 			if not piece_meta.has("is_playing"):
-				push_error("Speaker " + piece_name + " does not have an is playing value!")
+				push_error("Speaker " + old_piece_name + " does not have an is playing value!")
 				return
 
 			if not piece_meta["is_playing"] is bool:
-				push_error("Speaker " + piece_name + " is playing value is not a boolean!")
+				push_error("Speaker " + old_piece_name + " is playing value is not a boolean!")
 				return
 
 			if not piece_meta.has("is_track_paused"):
-				push_error("Speaker " + piece_name + " does not have an is track paused value!")
+				push_error("Speaker " + old_piece_name + " does not have an is track paused value!")
 				return
 
 			if not piece_meta["is_track_paused"] is bool:
-				push_error("Speaker " + piece_name + " is track paused value is not a boolean!")
+				push_error("Speaker " + old_piece_name + " is track paused value is not a boolean!")
 				return
 
 			if not piece_meta.has("playback_position"):
-				push_error("Speaker " + piece_name + " does not have a playback position value!")
+				push_error("Speaker " + old_piece_name + " does not have a playback position value!")
 				return
 
 			if not piece_meta["playback_position"] is float:
-				push_error("Speaker " + piece_name + " playback position value is not a float!")
+				push_error("Speaker " + old_piece_name + " playback position value is not a float!")
 				return
 
 			if not piece_meta.has("track_entry"):
-				push_error("Speaker " + piece_name + " does not have a track entry!")
+				push_error("Speaker " + old_piece_name + " does not have a track entry!")
 				return
 
 			if not piece_meta["track_entry"] is Dictionary:
-				push_error("Speaker " + piece_name + " track entry is not a dictionary!")
+				push_error("Speaker " + old_piece_name + " track entry is not a dictionary!")
 				return
 
 			if not piece_meta.has("unit_size"):
-				push_error("Speaker " + piece_name + " does not have a unit size value!")
+				push_error("Speaker " + old_piece_name + " does not have a unit size value!")
 				return
 
 			if not piece_meta["unit_size"] is float:
-				push_error("Speaker " + piece_name + " unit size value is not a float!")
+				push_error("Speaker " + old_piece_name + " unit size value is not a float!")
 				return
 
 			if piece is SpeakerPiece:
@@ -2276,27 +2340,27 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, type_key: Strin
 
 			if type_key == "timers":
 				if not piece_meta.has("is_timer_paused"):
-					push_error("Timer " + piece_name + " does not have an is timer paused value!")
+					push_error("Timer " + old_piece_name + " does not have an is timer paused value!")
 					return
 
 				if not piece_meta["is_timer_paused"] is bool:
-					push_error("Timer " + piece_name + " is timer paused value is not a boolean!")
+					push_error("Timer " + old_piece_name + " is timer paused value is not a boolean!")
 					return
 
 				if not piece_meta.has("mode"):
-					push_error("Timer " + piece_name + " does not have a mode value!")
+					push_error("Timer " + old_piece_name + " does not have a mode value!")
 					return
 
 				if not piece_meta["mode"] is int:
-					push_error("Timer " + piece_name + " mode value is not an integer!")
+					push_error("Timer " + old_piece_name + " mode value is not an integer!")
 					return
 
 				if not piece_meta.has("time"):
-					push_error("Timer " + piece_name + " does not have a time value!")
+					push_error("Timer " + old_piece_name + " does not have a time value!")
 					return
 
 				if not piece_meta["time"] is float:
-					push_error("Timer " + piece_name + " time value is not a float!")
+					push_error("Timer " + old_piece_name + " time value is not a float!")
 					return
 
 				if piece is TimerPiece:
@@ -2348,10 +2412,6 @@ func _modify_piece_states(state: Dictionary, offset: Vector3) -> void:
 					if piece_transform is Transform:
 						piece_transform.origin += offset
 						piece_meta["transform"] = piece_transform
-
-				# Give the piece a new name.
-				type_dict.erase(name)
-				type_dict[srv_get_next_piece_name()] = piece_meta
 
 # Set the transform of a hidden area based on two corner points.
 # hidden_area: The hidden area to set the transform of.
@@ -2572,8 +2632,6 @@ func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stac
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
 
 func _on_GameUI_clear_pieces():
-	# TODO: Consider sending one signal to the server to clear everything,
-	# rather than one client sending multiple signals to the server.
 	var piece_names = []
 	for piece in _pieces.get_children():
 		if piece is Piece:
