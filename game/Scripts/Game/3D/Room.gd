@@ -43,7 +43,7 @@ onready var _table = $Table
 onready var _world_environment = $WorldEnvironment
 
 const HIDDEN_AREA_MIN_SIZE = Vector2(0.5, 0.5)
-const LIMBO_DURATION = 5.0
+const LIMBO_DURATION_MS = 3000
 const UNDO_STACK_SIZE_LIMIT = 10
 const UNDO_STATE_EVENT_TIMERS = {
 	"add_piece": 10,
@@ -177,13 +177,17 @@ remotesync func add_piece_to_container(container_name: String, piece_name: Strin
 	_pieces.remove_child(piece)
 	container.add_piece(piece)
 
-	# If we are the client, then we'll need to put a piece into limbo with the
-	# same name, just in case an RPC is received afterwards.
-	if not get_tree().is_network_server():
+	# If we are in multiplayer, then we'll need to put a piece into limbo with
+	# the same name, just in case an RPC is received afterwards.
+	if Lobby.get_player_count() > 1:
 		var limbo_piece = Piece.new()
 		limbo_piece.name = piece_name
 		_pieces.add_child(limbo_piece)
+
+		# Do not push an undo state for this... thing.
+		_srv_events_add_states = false
 		remove_pieces([piece_name])
+		_srv_events_add_states = true
 
 # Called by the server to add a piece to a stack.
 # piece_name: The name of the piece.
@@ -813,7 +817,8 @@ remotesync func remove_pieces(piece_names: Array) -> void:
 				if _srv_undo_state_events["remove_piece"] <= 0:
 					push_undo_state()
 				_srv_undo_state_events["remove_piece"] = UNDO_STATE_EVENT_TIMERS["remove_piece"]
-			
+		
+		if Lobby.get_player_count() <= 1:
 			_pieces.remove_child(piece)
 			ResourceManager.queue_free_object(piece)
 		else:
@@ -834,6 +839,7 @@ remotesync func remove_pieces(piece_names: Array) -> void:
 			piece.set_process(false)
 			piece.set_physics_process(false)
 			
+			piece.set_meta("entered_limbo", OS.get_ticks_msec())
 			piece.add_to_group("limbo")
 
 # Request the server to add a piece to the game.
@@ -2377,14 +2383,17 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, new_names: bool
 			parent.add_child(piece)
 
 # Clean the pieces that have been put into limbo from memory.
-# force: If true, clean all pieces. If false, only clean pieces that have not
-# received a RPC for some time.
+# force: If true, clean all pieces. If false, only clean pieces that have been
+# in limbo for a certain amount of time.
 func _limbo_clean_pieces(force: bool) -> void:
 	for piece in get_tree().get_nodes_in_group("limbo"):
-		if piece is Piece:
-			if force or piece.get_time_since_update() > LIMBO_DURATION:
-				_pieces.remove_child(piece)
-				ResourceManager.queue_free_object(piece)
+		var entered_limbo: int = 0
+		if piece.has_meta("entered_limbo"):
+			entered_limbo = piece.get_meta("entered_limbo")
+		var duration_in_limbo = OS.get_ticks_msec() - entered_limbo
+		if force or duration_in_limbo > LIMBO_DURATION_MS:
+			_pieces.remove_child(piece)
+			ResourceManager.queue_free_object(piece)
 
 # Modify piece states such that the pieces have new names, and their positions
 # are offset by a given amount.

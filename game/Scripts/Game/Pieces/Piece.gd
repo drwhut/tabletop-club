@@ -192,12 +192,6 @@ func get_size() -> Vector3:
 	
 	return piece_entry["scale"]
 
-# Get the time that has passed in seconds since the last state update from the
-# server.
-# Returns: The time since the last state update, in seconds.
-func get_time_since_update() -> float:
-	return float(OS.get_ticks_msec() - _last_server_state_time) / 1000
-
 # Is the albedo colour of the piece able to be changed?
 # Returns: If the albedo colour can be changed.
 func is_albedo_color_exposed() -> bool:

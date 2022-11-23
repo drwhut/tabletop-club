@@ -58,7 +58,7 @@ monitoring = false
 visible = false
 
 [node name="LimboCleanTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 1.5
 autostart = true
 
 [connection signal="tree_exiting" from="." to="." method="_on_Room_tree_exiting"]

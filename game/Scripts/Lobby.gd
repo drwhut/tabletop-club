@@ -83,6 +83,11 @@ func get_player(id: int) -> Dictionary:
 		return _players[id]
 	return {}
 
+# Get the number of players in the lobby.
+# Returns: The number of players registered in the lobby.
+func get_player_count() -> int:
+	return _players.size()
+
 # Get the list of player IDs in the lobby.
 # Returns: The list of player IDs in the lobby.
 func get_player_list() -> Array:
