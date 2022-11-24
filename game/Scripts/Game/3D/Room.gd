@@ -825,7 +825,7 @@ remotesync func remove_pieces(piece_names: Array) -> void:
 			# Clients put the piece in "limbo", until a certain amount of time
 			# has passed since the last RPC call.
 			if piece.is_in_group("limbo"):
-				return
+				continue
 			
 			# Audio players will continue to play music until they have been
 			# removed from the scene tree, so stop music locally.
