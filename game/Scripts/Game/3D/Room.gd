@@ -1988,6 +1988,8 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 		stack2.add_piece(piece_entry, piece_transform, Stack.STACK_TOP)
 
 func _ready():
+	Lobby.connect("player_added", self, "_on_Lobby_player_added")
+	
 	var skybox = AssetDB.random_asset("TabletopClub", "skyboxes", true)
 	if not skybox.empty():
 		# TODO: Consider setting this directly?
@@ -2659,6 +2661,19 @@ func _on_GameUI_undo_state():
 
 func _on_LimboCleanTimer_timeout():
 	call_deferred("_limbo_clean_pieces", false)
+
+func _on_Lobby_player_added(incoming_id: int):
+	if get_tree().is_network_server() and incoming_id != 1:
+		# Players joining the game will need to be aware of any hovering pieces.
+		for piece in _pieces.get_children():
+			if piece is Piece:
+				if piece.hover_player > 0:
+					piece.rpc_id(incoming_id, "start_hovering", piece.hover_player,
+							piece.hover_position, piece.hover_offset)
+
+		for player_id in _client_hover_pieces:
+			rpc_id(incoming_id, "set_client_hover_pieces", player_id,
+					_client_hover_pieces[player_id])
 
 func _on_Room_tree_exiting():
 	if not _paint_plane.get_parent():
