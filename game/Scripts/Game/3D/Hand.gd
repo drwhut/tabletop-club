@@ -212,11 +212,6 @@ func _srv_set_card_rotation(card: Card) -> void:
 # body: The node to try and set the front face visibility of.
 # visible: Whether the front face should be visible or not.
 func _try_set_front_face_visible(body: Node, visible: bool) -> void:
-	# We don't want to hide the front face if this is our hand!
-	if get_tree().has_network_peer():
-		if get_tree().get_network_unique_id() == owner_id():
-			return
-	
 	var valid = false
 	if body is Card:
 		valid = true
@@ -227,16 +222,26 @@ func _try_set_front_face_visible(body: Node, visible: bool) -> void:
 		_set_front_face_visible_recursive(body, visible)
 
 func _on_Area_body_entered(body: Node):
-	if body.get("over_hand") != null:
-		body.over_hand = owner_id()
+	if body.get("over_hands") == null:
+		return
 	
-	_try_set_front_face_visible(body, false)
+	var this_id = owner_id()
+	if not this_id in body.over_hands:
+		body.over_hands.append(this_id)
+	
+	var player_id = get_tree().get_network_unique_id()
+	_try_set_front_face_visible(body, player_id in body.over_hands)
 
 func _on_Area_body_exited(body: Node):
-	if body.get("over_hand") != null:
-		body.over_hand = 0
+	if body.get("over_hands") == null:
+		return
 	
-	_try_set_front_face_visible(body, true)
+	body.over_hands.erase(owner_id())
+	
+	var show_face = true
+	if not body.over_hands.empty():
+		show_face = get_tree().get_network_unique_id() in body.over_hands
+	_try_set_front_face_visible(body, show_face)
 
 func _on_card_exiting_tree(card: Card):
 	srv_remove_card(card)

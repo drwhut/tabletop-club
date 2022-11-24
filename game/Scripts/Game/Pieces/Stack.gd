@@ -51,7 +51,7 @@ export(Resource) var chip_remove_sounds
 export(Resource) var chip_shuffle_sounds
 
 # This should only be useful for stacks of cards.
-var over_hand: int = 0
+var over_hands: Array = []
 
 var _collision_unit_height = 0
 var _mesh_unit_height = 0

@@ -474,7 +474,7 @@ func _process(delta):
 	if hand_preview_enabled:
 		if _piece_mouse_is_over_time > hand_preview_delay:
 			if _piece_mouse_is_over is Card:
-				if _piece_mouse_is_over.over_hand == get_tree().get_network_unique_id():
+				if _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ]:
 					if not _selected_pieces.has(_piece_mouse_is_over):
 						_hand_preview_rect.visible = true
 	
@@ -757,7 +757,7 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("game_flip_piece"):
 		if _selected_pieces.empty():
 			if _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
-				if _piece_mouse_is_over.over_hand == get_tree().get_network_unique_id():
+				if _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ]:
 					if not _piece_mouse_is_over.is_collisions_on():
 						_piece_mouse_is_over.rpc_id(1, "request_flip_vertically")
 		else:
@@ -767,7 +767,7 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("game_reset_piece"):
 		if _selected_pieces.empty():
 			if _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
-				if _piece_mouse_is_over.over_hand == get_tree().get_network_unique_id():
+				if _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ]:
 					if not _piece_mouse_is_over.is_collisions_on():
 						_piece_mouse_is_over.rpc_id(1, "request_reset_orientation")
 		else:
@@ -1459,7 +1459,7 @@ func _set_control_hint_label() -> void:
 			["game_delete_piece"])
 	
 	elif _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
-		if _piece_mouse_is_over.over_hand == get_tree().get_network_unique_id():
+		if _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ]:
 			if not _piece_mouse_is_over.is_collisions_on():
 				text += _set_control_hint_label_row_actions(tr("Flip card"),
 						["game_flip_piece"])
@@ -1592,9 +1592,10 @@ func _set_debug_info_label() -> void:
 		
 		# Hide the identity of a card if it is in someone else's hand.
 		if _piece_mouse_is_over is Card:
-			var hand_id = _piece_mouse_is_over.over_hand
-			if hand_id > 0 and hand_id != get_tree().get_network_unique_id():
-				entry_path = "???"
+			var hand_id_arr = _piece_mouse_is_over.over_hands
+			if not hand_id_arr.empty():
+				if not get_tree().get_network_unique_id() in hand_id_arr:
+					entry_path = "???"
 		
 		cursor_over = "Piece %s (%s)" % [piece_name, entry_path]
 	elif _hidden_area_mouse_is_over:
@@ -2031,7 +2032,7 @@ func _on_MouseGrab_gui_input(event):
 						for piece in _selected_pieces:
 							if piece is Card or (piece is Stack and piece.is_card_stack()):
 								cards.append(piece)
-								if piece.over_hand > 0:
+								if not piece.over_hands.empty():
 									adding_card_to_hand = true
 							piece.rpc_id(1, "request_stop_hovering")
 						

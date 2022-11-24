@@ -27,7 +27,7 @@ class_name Card
 # Used by hands so they know to release the card.
 signal card_exiting_tree(card)
 
-var over_hand: int = 0
+var over_hands: Array = []
 
 # Check if the card will collide with other pieces.
 # Returns: If the card will collide with other pieces.

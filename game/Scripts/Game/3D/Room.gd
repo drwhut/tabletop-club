@@ -972,14 +972,14 @@ master func request_add_cards_to_nearest_hand(card_names: Array) -> void:
 			push_error("Object " + card_name + " is not a piece!")
 			continue
 
-		if piece.get("over_hand") == null:
-			push_error("Piece " + card_name + " does not have the over_hand property!")
+		if piece.get("over_hands") == null:
+			push_error("Piece " + card_name + " does not have the over_hands property!")
 			continue
 
-		if piece.over_hand > 0:
+		if not piece.over_hands.empty():
 			var piece_dist = piece.hover_offset.length()
 			if (min_dist == null) or (piece_dist < min_dist):
-				hand_id = piece.over_hand
+				hand_id = piece.over_hands[0]
 				min_dist = piece_dist
 
 	if hand_id <= 0:
@@ -2024,8 +2024,8 @@ func _physics_process(_delta):
 			if _srv_hand_setup_frames == 0:
 				for piece in _pieces.get_children():
 					if piece is Card:
-						if piece.over_hand > 0:
-							var hand_name = str(piece.over_hand)
+						if piece.over_hands.size() == 1:
+							var hand_name = str(piece.over_hands[0])
 							if _hands.has_node(hand_name):
 								var hand = _hands.get_node(hand_name)
 								var ok = hand.srv_add_card(piece)
@@ -2514,7 +2514,7 @@ remotesync func _on_undo_stack_pushed():
 func _on_CameraController_adding_cards_to_hand(cards: Array, id: int):
 	var names = []
 	for card in cards:
-		if card.get("over_hand") != null:
+		if card.get("over_hands") != null:
 			names.append(card.name)
 
 	if id > 0:
