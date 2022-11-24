@@ -10,6 +10,18 @@ your asset pack, then place your skybox image into that folder, like this:
        └── skyboxes
            └── My Skybox.png
 
-Note that the only format that the game will accept is an equirectangular image.
+Once the skybox has been imported, you can go in-game and press :guilabel:`Room`
+> :guilabel:`Skybox` > :guilabel:`Change skybox`, select the skybox from your
+asset pack, then click :guilabel:`Apply`.
 
-For more information, see :ref:`asset-type-skybox`.
+.. note::
+
+   The only format that the game accepts are equirectangular images like this
+   one:
+
+   .. image:: ../../../assets/TabletopClub/skyboxes/Park.jpg
+      :alt: A 360 degree image of an urban park, projected onto a rectangular
+         image.
+
+   If the skybox you want to add is cube-mapped, you can find more information
+   about how to convert it in :ref:`asset-type-skybox`.

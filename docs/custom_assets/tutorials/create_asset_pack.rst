@@ -1,3 +1,5 @@
+.. _tutorial-creating-asset-pack:
+
 Creating your own asset pack
 ============================
 
