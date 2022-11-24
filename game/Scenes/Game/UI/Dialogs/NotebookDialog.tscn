@@ -93,7 +93,6 @@ dialog_autowrap = true
 [connection signal="about_to_show" from="." to="." method="_on_NotebookDialog_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_NotebookDialog_popup_hide"]
 [connection signal="tree_exiting" from="." to="." method="_on_NotebookDialog_tree_exiting"]
-[connection signal="item_activated" from="HBoxContainer/ScrollContainer/PageListContainer/PageList" to="." method="_on_PageList_item_activated"]
 [connection signal="item_selected" from="HBoxContainer/ScrollContainer/PageListContainer/PageList" to="." method="_on_PageList_item_selected"]
 [connection signal="pressed" from="HBoxContainer/ScrollContainer/PageListContainer/NewPageButton" to="." method="_on_NewPageButton_pressed"]
 [connection signal="text_changed" from="HBoxContainer/PageContainer/TitleEdit" to="." method="_on_TitleEdit_text_changed"]

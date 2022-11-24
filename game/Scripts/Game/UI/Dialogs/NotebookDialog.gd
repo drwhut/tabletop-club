@@ -34,6 +34,7 @@ const TIME_UNTIL_SAVE: float = 3.0
 
 var pages: Array = []
 
+var _help_text = tr("You can use this notebook to write down information that will persist between sessions.")
 var _last_page_seen = -1
 var _last_update = 0.0
 var _updating = false
@@ -85,7 +86,7 @@ func _load_pages_from_file() -> void:
 					_title_edit.text = ""
 					_title_edit.editable = false
 					
-					_text_edit.text = ""
+					_text_edit.text = _help_text
 					_text_edit.readonly = true
 			else:
 				push_error("Notebook file format is invalid!")
@@ -125,7 +126,7 @@ func _on_ConfirmDeleteDialog_confirmed():
 	else:
 		_title_edit.text = ""
 		_title_edit.editable = false
-		_text_edit.text = ""
+		_text_edit.text = _help_text
 		_text_edit.readonly = true
 		
 		_delete_button.disabled = true
