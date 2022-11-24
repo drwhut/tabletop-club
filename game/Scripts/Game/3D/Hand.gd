@@ -89,13 +89,15 @@ func srv_add_card(card: Card) -> bool:
 	return success
 
 # Remove all cards from the hand. This does not stop the cards from hovering.
-func srv_clear_cards() -> void:
+# play_sound: Should the hand play a sound effect when removing the cards?
+func srv_clear_cards(play_sound: bool = true) -> void:
 	for i in range(_srv_cards.size() - 1, -1, -1):
-		srv_remove_card(_srv_cards[i])
+		srv_remove_card(_srv_cards[i], play_sound)
 
 # Remove a card from the hand. This does not stop the card from hovering.
 # card: The card to remove from the hand.
-func srv_remove_card(card: Card) -> void:
+# play_sound: Should the hand play a sound effect?
+func srv_remove_card(card: Card, play_sound: bool = true) -> void:
 	_srv_cards.erase(card)
 	_srv_set_card_positions()
 	
@@ -105,7 +107,8 @@ func srv_remove_card(card: Card) -> void:
 	# The card may be removed because the game is exiting!
 	if get_tree().has_network_peer():
 		card.rpc("set_collisions_on", true)
-		rpc("play_hand_sound")
+		if play_sound:
+			rpc("play_hand_sound")
 
 # Update the display of the hand to reflect the owner's properties, such as
 # their colour.
@@ -255,7 +258,7 @@ func _on_Hand_tree_exiting():
 			for card in _srv_cards:
 				card.rpc_id(1, "request_stop_hovering")
 	
-	srv_clear_cards()
+	srv_clear_cards(false)
 
 func _on_Lobby_player_modified(id: int, _old: Dictionary):
 	if id == owner_id():
