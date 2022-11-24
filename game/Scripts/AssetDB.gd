@@ -323,7 +323,8 @@ func temp_add_entry(pack: String, type: String, entry: Dictionary) -> void:
 	
 	if insert_index < type_arr.size():
 		if type_arr[insert_index]["name"] == entry["name"]:
-			push_error("Cannot add entry %s/%s/%s, already exists!" % [pack, type, entry["name"]])
+			# Overwrite entries with the same name.
+			type_arr[insert_index] = entry
 			return
 	
 	type_arr.insert(insert_index, entry)
