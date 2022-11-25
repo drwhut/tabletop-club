@@ -1,6 +1,6 @@
 # Tabletop Club Documentation Translation Template.
-# Copyright (C) 2020-2021 Benjamin 'drwhut' Beddows.
-# Copyright (C) 2021 Tabletop Club contributors (see game/CREDITS.tres).
+# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2022 Tabletop Club contributors (see game/CREDITS.tres).
 # This file is distributed under the same license as the Tabletop Club package.
 # Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2021.
 #
@@ -9,28 +9,28 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2022-06-09 18:17+0000\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/docs-"
-"index/nl/>\n"
-"Language: nl\n"
+"PO-Revision-Date: 2022-11-11 18:47+0000\n"
+"Last-Translator: AllanOvelha <allan1234567@yahoo.com.br>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-index/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: ../../index.rst:22
 msgid "General"
-msgstr "Algemeen"
+msgstr "Geral"
 
 #: ../../index.rst:30
 msgid "Custom Assets"
-msgstr "Aangepaste spelelementen"
+msgstr "Assets Personalizadas"
 
 #: ../../index.rst:7
 msgid "Tabletop Club Documentation"
-msgstr "Tabletop Club-documentatie"
+msgstr "Tabletop Club Documentação"
 
 #: ../../index.rst:9
 msgid ""
@@ -39,11 +39,11 @@ msgid ""
 "check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
 "the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
-"Welkom in de documentatiesite van Tabletob Club, een gratis en opensource-"
-"bordspelsimulator! Als je hier voor het eerst bent, neem dan eerst de "
-"pagina :ref:`about-tabletop-club` door. Als je al bekend bent met de "
-"simulator, dan kun je meteen gebruikmaken van de inhoudsopgave of de zij- of "
-"zoekbalk!"
+"Bem vindo a documentação de Tabletop Club, Um simulador de jogos de mesa "
+"grátis e de código aberto! Se você é novo neste projeto, fique a vontade "
+"para dar uma olhada em :ref:`sobre-tabletop-club`. De outra forma, você pode "
+"usar o índice, a barra de rolagem ou a barra de pesquisa para achar o que "
+"você precisa!"
 
 #: ../../index.rst:16
 msgid ""
@@ -53,15 +53,15 @@ msgid ""
 "issue or a pull request on the project's `GitHub repository <https://github."
 "com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
-"Wij zijn van mening dat de documentatie, en het project in zijn geheel, te "
-"allen tijde kan worden verbeterd! Als je dus het gevoel hebt dat er iets "
-"ontbreekt of niet goed is uitgelegd, open dan gerust een ‘issue’ of ‘pull "
-"request’ op onze `GitHub-pagina <https://github.com/drwhut/tabletop-club/"
+"A documentação, também como o projeto em geral, é aberto para sugestões! Se "
+"você percebeu que tem algo que não foi explicado devidamente, ou acha que há "
+"alguma informação faltando, por favor, não hesite solicitar uma requisição "
+"no projeto em `GitHub repository <https://github.com/drwhut/tabletop-club/"
 "issues>`_!"
 
 #: ../../index.rst:39
 msgid "Indices and tables"
-msgstr "Indexen en tabellen"
+msgstr "Índices e tabelas"
 
 #: ../../index.rst:41
 msgid ":ref:`genindex`"
@@ -73,4 +73,4 @@ msgstr ":ref:`modindex`"
 
 #: ../../index.rst:43
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`pesquisa`"
