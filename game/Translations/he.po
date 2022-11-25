@@ -1,34 +1,34 @@
-# Translations template for OpenTabletop.
-# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows
-# This file is distributed under the same license as the OpenTabletop project.
-# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2021.
+# Translations template for Tabletop Club.
+# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2022 Tabletop Club contributors (see game/CREDITS.tres).
+# This file is distributed under the same license as the Tabletop Club project.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2022-07-07 21:18+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
-"game/de/>\n"
-"Language: de\n"
+"PO-Revision-Date: 2022-08-10 06:14+0000\n"
+"Last-Translator: Ido Dana <idodana01@gmail.com>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/tabletop-club/"
+"game/he/>\n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 4.14-dev\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:39
 msgid "Importing assets..."
-msgstr "Assets werden importiert …"
+msgstr ""
 
 #: ../Scenes/ImportAssets.tscn:59
-#, fuzzy
-#| msgid "Open Assets Folder"
 msgid "Missing Asset Folder"
-msgstr "Assets-Ordner öffnen"
+msgstr ""
 
 #: ../Scenes/ImportAssets.tscn:65
 msgid "Missing Module"
@@ -36,28 +36,28 @@ msgstr ""
 
 #: ../Scenes/Loading.tscn:41
 msgid "Loading..."
-msgstr "Wird geladen …"
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:48
 msgid "Singleplayer"
-msgstr "Einzelspieler"
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:55 ../Scenes/MainMenu.tscn:129
 #: ../Scenes/OptionsMenu.tscn:914
 msgid "Multiplayer"
-msgstr "Mehrspieler"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:217 ../Scenes/MainMenu.tscn:62
 msgid "Options"
-msgstr "Optionen"
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:69 ../Scenes/MainMenu.tscn:286
 msgid "Credits"
-msgstr "Credits"
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:76
 msgid "Quit"
-msgstr "Beenden"
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:95
 msgid "Tabletop Club on Itch.io"
@@ -68,10 +68,8 @@ msgid "Source Code"
 msgstr ""
 
 #: ../Scenes/MainMenu.tscn:113
-#, fuzzy
-#| msgid "Reset orientation"
 msgid "Documentation"
-msgstr "Ausrichtung zurücksetzen"
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:122 ../Scenes/MainMenu.tscn:217
 msgid "Information"
@@ -79,37 +77,31 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:147
 msgid "Host Game"
-msgstr "Spiel erstellen"
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:153
-#, fuzzy
-#| msgid "Create a new lobby for your friends to join over the internet."
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr ""
-"Erstelle eine Lobby, der deine Freund*innen über das Internet beitreten "
-"können."
 
 #: ../Scenes/MainMenu.tscn:165 ../Scenes/MainMenu.tscn:212
 msgid "Join Game"
-msgstr "Spiel beitreten"
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:171
 msgid "Use a room code to join your friend's lobby."
-msgstr "Verwende einen Raum-Code um der Lobby eine*r Freund*in beizutreten."
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:177
-#, fuzzy
-#| msgid "Hide Room Code"
 msgid "Enter Room Code"
-msgstr "Raum-Code verstecken"
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:197
 msgid "Room Code:"
-msgstr "Raum-Code:"
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:206
 msgid "ABCD"
-msgstr "ABCD"
+msgstr ""
 
 #: ../Scenes/MainMenu.tscn:304
 msgid "Error"
@@ -117,11 +109,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
-msgstr "Audio"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:61
 msgid "Master Volume"
-msgstr "Gesamtlautstärke"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:68
 msgid "Sets the overall volume of all sources of sound in the game."
@@ -129,7 +121,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:79
 msgid "Music Volume"
-msgstr "Musiklautstärke"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:87
 msgid "Sets the volume of all music sources in the game."
@@ -137,7 +129,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:98
 msgid "Sounds Volume"
-msgstr "Effektlautstärke"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
@@ -147,7 +139,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:117
 msgid "Effects Volume"
-msgstr "Effektlautstärke"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
@@ -157,11 +149,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:142
 msgid "Controls"
-msgstr "Steuerung"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:155
 msgid "Mouse Horizontal Sensitivity"
-msgstr "Horizontale Mausempfindlichkeit"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:162
 msgid "Sets the horizontal sensitivity of the rotation of the camera."
@@ -169,7 +161,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:174
 msgid "Mouse Vertical Sensitivity"
-msgstr "Vertikale Mausempfindlichkeit"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:182
 msgid "Sets the vertical sensitivity of the rotation of the camera."
@@ -177,7 +169,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:194
 msgid "Mouse Horizontal Invert"
-msgstr "Maus horizontal gespiegelt"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:202
 msgid "Used to invert the rotation of the camera horizontally."
@@ -185,7 +177,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:209
 msgid "Mouse Vertical Invert"
-msgstr "Maus vertikal gespiegelt"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:217
 msgid "Used to invert the rotation of the camera vertically."
@@ -193,7 +185,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:224
 msgid "Camera Movement Speed"
-msgstr "Kamera Geschwindigkeit"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
@@ -201,7 +193,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
-msgstr "Kamera mit gedrückter linker Maustaste bewegen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:252
 msgid ""
@@ -211,7 +203,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
-msgstr "Zoom Empfindlichkeit"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
@@ -221,7 +213,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:279
 msgid "Zoom Invert"
-msgstr "Zoom invertiert"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
@@ -229,7 +221,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:294
 msgid "Piece Lift Sensitivity"
-msgstr "Spielstein anheben Empfindlichkeit"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:302
 msgid "Sets how fast a piece will move when lifting it off the table."
@@ -237,7 +229,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:314
 msgid "Piece Lift Invert"
-msgstr "Spielstein anheben Umkehrung"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
@@ -246,7 +238,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:329
 msgid "Piece Rotation Invert"
-msgstr "Spielstein drehen Umkehrung"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:337
 msgid "Used to invert the direction a piece will rotate."
@@ -254,7 +246,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:344
 msgid "Hand Preview Enabled"
-msgstr "Handvorschau aktiv"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:352
 msgid ""
@@ -264,7 +256,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:360
 msgid "Hand Preview Delay"
-msgstr "Handvorschau Verzögerung"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:368
 msgid ""
@@ -274,7 +266,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:380
 msgid "Hand Preview Size"
-msgstr "Handvorschau Größe"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:388
 msgid "Used to control how large the card preview is."
@@ -282,7 +274,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:400
 msgid "Hide Control Hints"
-msgstr "Steuerungstipps verstecken"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:408
 msgid "Used to hide the dynamic text displaying how to control the game."
@@ -290,15 +282,15 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:421
 msgid "General"
-msgstr "Allgemein"
+msgstr "כללי"
 
 #: ../Scenes/OptionsMenu.tscn:435
 msgid "Language"
-msgstr "Sprache"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:455
 msgid "Autosave Interval"
-msgstr "Autosave Intervall"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:463
 msgid "Used to set how often autosaves are created."
@@ -306,11 +298,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:64
 msgid "5 minutes"
-msgstr "5 Minuten"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:474
 msgid "Autosave File Count"
-msgstr "Anzahl der Autosave-Dateien"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:482
 msgid "Used to set the maximum number of autosave files that are made."
@@ -338,29 +330,27 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:547
 msgid "Open Assets Folder"
-msgstr "Assets-Ordner öffnen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:563
 msgid "Reimport Assets"
-msgstr "Assets neu importieren"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:576
 msgid "Key Bindings"
-msgstr "Tastenbelegungen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:590
 msgid "Move Forward"
-msgstr "Vorwärts bewegen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:597
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera forward."
-msgstr "Kamera bewegen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:607
 msgid "Move Back"
-msgstr "Rückwärts bewegen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:615
 msgid "Moves the camera backwards."
@@ -368,27 +358,23 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:625
 msgid "Move Left"
-msgstr "Links"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:633
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera left."
-msgstr "Kamera bewegen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:643
 msgid "Move Right"
-msgstr "Rechts"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:651
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera right."
-msgstr "Kamera bewegen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:661
 msgid "Rotate Camera"
-msgstr "Kamera drehen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:669
 msgid "Enable rotation of the camera when moving the mouse."
@@ -396,27 +382,23 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:679
 msgid "Reset Camera"
-msgstr "Kamera zurücksetzen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:687
 msgid "Resets the camera to the default position."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:697
-#, fuzzy
-#| msgid "Zoom Invert"
 msgid "Zoom In"
-msgstr "Zoom invertiert"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:705
 msgid "Zoom the camera or object towards the table."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:715
-#, fuzzy
-#| msgid "Zoom Invert"
 msgid "Zoom Out"
-msgstr "Zoom invertiert"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:723
 msgid "Zoom the camera or object away from the table."
@@ -424,7 +406,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:733
 msgid "Flip Piece Orientation"
-msgstr "Spielstein umdrehen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:741
 msgid "Flip the selected piece on the horizontal axis."
@@ -432,7 +414,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:751
 msgid "Reset Piece Orientation"
-msgstr "Spielstein-Ausrichtung zurücksetzen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:759
 msgid "Resets the selected piece to its default orientation."
@@ -440,7 +422,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:769
 msgid "Lock/Unlock Piece"
-msgstr "Spielstein ent-/sperren"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:777
 msgid ""
@@ -449,7 +431,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:787
 msgid "Delete Piece"
-msgstr "Spielstein entfernen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:795
 msgid "Deletes the currently selected piece."
@@ -457,7 +439,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:805
 msgid "Toggle Debug Info"
-msgstr "Debug-Info umschalten"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:813
 msgid "Toggles whether debug information is displayed."
@@ -465,7 +447,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:823
 msgid "Quicksave"
-msgstr "Schnellspeichern"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:831
 msgid "Creates a quicksave file."
@@ -473,7 +455,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:841
 msgid "Quickload"
-msgstr "Schnellladen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:849
 msgid "Loads the latest quicksave file."
@@ -481,7 +463,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:859
 msgid "Toggle UI"
-msgstr "Benutzeroberfläche umschalten"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:867
 msgid "Toggles whether the entire UI is displayed."
@@ -489,11 +471,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:877
 msgid "Take Screenshot"
-msgstr "Bildschirmfoto aufnehmen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:885
 msgid "Takes a screenshot of the game in its current state."
-msgstr "Nimmt ein Bildschirmfoto des Spiels in seinem aktuellen Zustand auf."
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:900
 msgid "Used to reset the key bindings to their default values."
@@ -501,12 +483,12 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:901 ../Scenes/OptionsMenu.tscn:1361
 msgid "Reset Bindings"
-msgstr "Tastenbelegungen zurücksetzen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:928 ../Scripts/Game/CameraController.gd:1158
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:178
 msgid "Name"
-msgstr "Name"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:935
 msgid "The player's displayed name in multiplayer lobbies."
@@ -514,11 +496,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:937
 msgid "Player"
-msgstr "Spieler"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:945 ../Scripts/Game/CameraController.gd:1241
 msgid "Color"
-msgstr "Farbe"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:953
 msgid "The player's displayed colour in multiplayer lobbies."
@@ -535,7 +517,7 @@ msgstr ""
 #: ../Scenes/OptionsMenu.tscn:973 ../Scenes/OptionsMenu.tscn:1104
 #: ../Scripts/OptionsMenu.gd:74
 msgid "Medium"
-msgstr "Mittel"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:982
 msgid "Hide Player Cursors"
@@ -548,7 +530,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:998
 msgid "Censor Profanity"
-msgstr "Vulgäre Ausdrücke zensieren"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1006
 msgid ""
@@ -558,11 +540,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1021
 msgid "Video"
-msgstr "Video"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1035
 msgid "Window Mode"
-msgstr "Fenster-Modus"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1042
 msgid "Sets the mode in which the game window is displayed."
@@ -570,11 +552,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1044 ../Scripts/OptionsMenu.gd:68
 msgid "Windowed"
-msgstr "im Fenster"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1053
 msgid "Field of View"
-msgstr "Sichtfeld"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1061
 msgid "Sets the field of view of the in-game camera."
@@ -582,40 +564,40 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1074
 msgid "VSync"
-msgstr "Vsync"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1093
 msgid "Shadow Detail"
-msgstr "Schatten Detailgrad"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1113
 msgid "Multisample Anti-Aliasing (MSAA)"
-msgstr "Multisample Anti-Aliasing (MSAA)"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1125 ../Scenes/OptionsMenu.tscn:1147
 #: ../Scenes/OptionsMenu.tscn:1188 ../Scripts/OptionsMenu.gd:72
 msgid "None"
-msgstr "Keine"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1134
 msgid "Screen Space Ambient Occlusion (SSAO)"
-msgstr "Screen Space Ambient Occlusion (SSAO)"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1156
 msgid "Skybox Radiance Detail"
-msgstr "Detailgrad des Skybox-Leuchtens"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1167 ../Scripts/OptionsMenu.gd:73
 msgid "Low"
-msgstr "Niedrig"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1176
 msgid "Depth of Field"
-msgstr "Abbildungstiefe"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1197
 msgid "Depth of Field Amount"
-msgstr "Abbildungstiefe Betrag"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1205
 msgid ""
@@ -625,7 +607,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1217
 msgid "Depth of Field Distance"
-msgstr "Abbildungstiefe Distanz"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1225
 msgid ""
@@ -639,38 +621,36 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1260
 msgid "Back"
-msgstr "Zurück"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:402
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:154
 #: ../Scenes/OptionsMenu.tscn:1266
 msgid "Apply"
-msgstr "Anwenden"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:462
 #: ../Scenes/Game/CameraController.tscn:535
 #: ../Scenes/Game/CameraController.tscn:602
 #: ../Scenes/Game/CameraController.tscn:656 ../Scenes/OptionsMenu.tscn:1273
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1318
 msgid "Please press a key or button to bind it..."
-msgstr "Zum Zuordnen einen Knopf oder eine Taste betätigen…"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1338
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1345
 msgid "Keep video settings?"
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1353
-#, fuzzy
-#| msgid "Reimport Assets"
 msgid "Reimporting Assets"
-msgstr "Assets neu importieren"
+msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1371
 msgid "Warning!"
@@ -678,11 +658,11 @@ msgstr ""
 
 #: ../Scenes/RandomMusicPlayer.tscn:23
 msgid "Now Playing:"
-msgstr "Aktuell spielen:"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:98
 msgid "Deal X cards"
-msgstr "X Karten austeilen"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:128
 msgid "Select track"
@@ -690,15 +670,15 @@ msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:146
 msgid "Range:"
-msgstr "Bereich:"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:165
 msgid "Take X off top"
-msgstr "Von oben X nehmen"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:178
 msgid "Take X out"
-msgstr "Nimm X heraus"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:234
 msgid "Position:"
@@ -729,42 +709,40 @@ msgstr ""
 #: ../Scenes/Game/CameraController.tscn:344
 #: ../Scenes/Game/CameraController.tscn:489
 msgid "Scale:"
-msgstr "Maßstab:"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:433
 msgid "Strength:"
 msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:444
-#, fuzzy
-#| msgid "10%"
 msgid "1.0"
-msgstr "10%"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:521
 msgid "System:"
-msgstr "System:"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:527
 msgid "Metric"
-msgstr "Metrik"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:562
 msgid "Brush Color:"
-msgstr "Pinselfarbe:"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:575
 msgid "Brush Size:"
-msgstr "Pinselgröße:"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:586
 #: ../Scenes/Game/CameraController.tscn:640
 msgid "1"
-msgstr "1"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:629
 msgid "Eraser Size:"
-msgstr "Radierer Größe:"
+msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:659
 msgid "Select a track..."
@@ -773,7 +751,7 @@ msgstr ""
 #: ../Scenes/Game/CameraController.tscn:664
 #, python-format
 msgid "Loaded %d tracks."
-msgstr "%d Spuren geladen."
+msgstr ""
 
 #: ../Scenes/Game/Game.tscn:35
 msgid "Missing Assets"
@@ -808,10 +786,8 @@ msgid "Download Assets?"
 msgstr ""
 
 #: ../Scenes/Game/Game.tscn:108
-#, fuzzy
-#| msgid "Loading..."
 msgid "Downloading..."
-msgstr "Wird geladen …"
+msgstr ""
 
 #: ../Scenes/Game/Game.tscn:123
 msgid "Waiting for download..."
@@ -822,10 +798,8 @@ msgid "Waiting to verify integrity..."
 msgstr ""
 
 #: ../Scenes/Game/Game.tscn:149
-#, fuzzy
-#| msgid "Importing assets..."
 msgid "Waiting to import assets..."
-msgstr "Assets werden importiert …"
+msgstr ""
 
 #: ../Scenes/Game/Game.tscn:168 ../Scenes/Game/Game.tscn:186
 msgid "Error!"
@@ -837,25 +811,25 @@ msgstr ""
 
 #: ../Scenes/Game/UI/ChatBox.tscn:54
 msgid "Type a message here..."
-msgstr "Nachricht eingeben …"
+msgstr ""
 
 #: ../Scenes/Game/UI/ChatBox.tscn:60
 msgid "Send"
-msgstr "Abschicken"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:40 ../Scenes/Game/UI/GameUI.tscn:136
 msgid "Objects"
-msgstr "Objekte"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:46 ../Scenes/Game/UI/GameUI.tscn:151
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:236
 msgid "Games"
-msgstr "Spiele"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:11
 #: ../Scenes/Game/UI/GameUI.tscn:52
 msgid "Room"
-msgstr "Raum"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:8
 #: ../Scenes/Game/UI/GameUI.tscn:58
@@ -864,75 +838,75 @@ msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:64
 msgid "Flip Table"
-msgstr "Tisch umwerfen"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:70
 msgid "Clear Table"
-msgstr "Tisch bereinigen"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:77
 msgid "Undo"
-msgstr "Rückgängig"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:83
 msgid "45"
-msgstr "45"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:91
 msgid "Menu"
-msgstr "Menü"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:146
 msgid "Add"
-msgstr "Hinzufügen"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:147
 #, python-format
 msgid "Added %s."
-msgstr "%s hinzugefügt."
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:148
 #, python-format
 msgid "Added %d objects."
-msgstr "%d Objekte hinzugefügt."
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:155
 #, python-format
 msgid "Loaded %d games."
-msgstr "%d Spiele geladen."
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:199
 msgid "Back to game"
-msgstr "Zurück zum Spiel"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:205
 msgid "Save game"
-msgstr "Spiel speichern"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:211
 msgid "Load game"
-msgstr "Spiel laden"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:223
 msgid "Quit to main menu"
-msgstr "Beenden und zum Hauptmenü"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:229
 msgid "Quit to desktop"
-msgstr "Beenden und zum Desktop"
+msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:234
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:157
 msgid "Load a file"
-msgstr "Eine Datei laden"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:42
 msgid "Take"
-msgstr "Nimm"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:50
 msgid "Take All"
-msgstr "Alle nehmen"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:34
 msgid "+ New Page"
@@ -943,64 +917,58 @@ msgid "Title"
 msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:69
-#, fuzzy
-#| msgid "Move Back"
 msgid "Move Up"
-msgstr "Rückwärts bewegen"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:77
-#, fuzzy
-#| msgid "Move Forward"
 msgid "Move Down"
-msgstr "Vorwärts bewegen"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:85
 #: ../Scripts/Game/CameraController.gd:1262
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:220
 msgid "Delete"
-msgstr "Löschen"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:90
-#, fuzzy
-#| msgid "Delete file?"
 msgid "Delete page?"
-msgstr "Datei Löschen?"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
-msgstr "Aktueller Tisch:"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:52
 msgid "Change table"
-msgstr "Tisch wechseln"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:67
 msgid "Current skybox:"
-msgstr "Aktuelle Skybox:"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:79
 msgid "Change skybox"
-msgstr "Skybox wechseln"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:93
 msgid "Lamp Type"
-msgstr "Leuchtmittelart"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:99
 msgid "Sunlight"
-msgstr "Sonnenlicht"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:107
 msgid "Lamp Intensity"
-msgstr "Leuchtmittelintensität"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:128
 msgid "10%"
-msgstr "10%"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:134
 msgid "Lamp Color"
-msgstr "Farbe der Lampe"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:157
 msgid "Select a skybox..."
@@ -1009,148 +977,134 @@ msgstr ""
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:161
 #, python-format
 msgid "Loaded %d skyboxes."
-msgstr "%d Skyboxen geladen."
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:164
-#, fuzzy
-#| msgid "Select object"
 msgid "Select a table..."
-msgstr "Objekt auswählen"
+msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:168
 #, python-format
 msgid "Loaded %d tables."
-msgstr "%d Tische geladen."
+msgstr ""
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:24
 msgid "Pack:"
-msgstr "Paket:"
+msgstr ""
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:37
 msgid "Type:"
-msgstr "Typ:"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:51
 msgid "Not bound"
-msgstr "Nicht gebunden"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:58 ../Scripts/Game/CameraController.gd:1343
 msgid "Left Mouse Button"
-msgstr "Linke Maustaste"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:60 ../Scripts/Game/CameraController.gd:1403
 msgid "Right Mouse Button"
-msgstr "Rechte Maustaste"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:62
 msgid "Middle Mouse Button"
-msgstr "Mittlere Maustaste"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:64
 msgid "Extra Mouse Button 1"
-msgstr "Zusätzliche Maustaste 1"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:66
 msgid "Extra Mouse Button 2"
-msgstr "Zusätzliche Maustaste 2"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:68
 msgid "Mouse Wheel Up"
-msgstr "Mausrad nach oben"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:70
 msgid "Mouse Wheel Down"
-msgstr "Mausrad nach unten"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:72
 msgid "Mouse Wheel Left"
-msgstr "Mausrad links"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:74
 msgid "Mouse Wheel Right"
-msgstr "Mausrad rechts"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:76
 msgid "Unknown Mouse Button"
-msgstr "Unbekannte Maustaste"
+msgstr ""
 
 #: ../Scripts/BindManager.gd:78
 msgid "Unknown event type"
-msgstr "Unbekannter Ereignistyp"
+msgstr ""
 
 #: ../Scripts/ImportAssets.gd:88
-#, fuzzy
-#| msgid ""
-#| "Tabletop Club couldn't find an assets folder in any of the following "
-#| "places:"
 msgid "Tabletop Club could not find any asset packs in the following folders:"
 msgstr ""
-"Tabletop Club konnte an den folgenden Orten keinen Assets-Ordner finden:"
 
 #: ../Scripts/ImportAssets.gd:90
-#, fuzzy
-#| msgid ""
-#| "Tabletop Club couldn't find an assets folder in any of the following "
-#| "places:"
 msgid ""
 "Tabletop Club could not find an assets folder in any of the following places:"
 msgstr ""
-"Tabletop Club konnte an den folgenden Orten keinen Assets-Ordner finden:"
 
 #: ../Scripts/ImportAssets.gd:96
-#, fuzzy
-#| msgid "Please create one of these folders and restart the game."
 msgid ""
 "Please place an asset pack into one of these folders, and restart the game."
-msgstr "Bitte erstellen Sie einen dieser Ordner und starten Sie das Spiel neu."
+msgstr ""
 
 #: ../Scripts/ImportAssets.gd:98
 msgid "Please create one of these folders and restart the game."
-msgstr "Bitte erstellen Sie einen dieser Ordner und starten Sie das Spiel neu."
+msgstr ""
 
 #: ../Scripts/Lobby.gd:64 ../Scripts/Lobby.gd:70
 msgid "<No Name>"
-msgstr "<kein Name>"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:67
 msgid "Alpha Testers"
-msgstr "Alpha Tester*innen"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:68
 msgid "Contributors"
-msgstr "Mitwirkende"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:69
 msgid "Cursors"
-msgstr "Zeiger"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:70
 msgid "Developers"
-msgstr "Entwickler*innen"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:71
 msgid "Fonts"
-msgstr "Schriftarten"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:72
 msgid "Images"
-msgstr "Bilder"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:73
 msgid "Logo and Icon"
-msgstr "Logo und Icon"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:74
 msgid "Sound Effects"
-msgstr "Geräuscheffekte"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:75
 msgid "Tool Icons"
-msgstr "Werkzeugsymbole"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:76
 msgid "Translators"
-msgstr "Übersetzer*innen"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:78
 msgid "Dutch"
@@ -1158,7 +1112,7 @@ msgstr ""
 
 #: ../Scripts/MainMenu.gd:79
 msgid "French"
-msgstr "Französisch"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:80
 msgid "German"
@@ -1170,15 +1124,15 @@ msgstr ""
 
 #: ../Scripts/MainMenu.gd:182
 msgid "Room code must be four characters long!"
-msgstr "Der Raumcode muss vier Zeichen lang sein!"
+msgstr ""
 
 #: ../Scripts/MainMenu.gd:187
 msgid "Invalid room code!"
-msgstr "Ungültiger Raumcode!"
+msgstr ""
 
 #: ../Scripts/OptionsMenu.gd:30
 msgid "System Default"
-msgstr "Systemvoreinstellung"
+msgstr ""
 
 #: ../Scripts/OptionsMenu.gd:61
 msgid "Never"
@@ -1189,22 +1143,16 @@ msgid "30 seconds"
 msgstr ""
 
 #: ../Scripts/OptionsMenu.gd:63
-#, fuzzy
-#| msgid "5 minutes"
 msgid "1 minute"
-msgstr "5 Minuten"
+msgstr ""
 
 #: ../Scripts/OptionsMenu.gd:65
-#, fuzzy
-#| msgid "5 minutes"
 msgid "10 minutes"
-msgstr "5 Minuten"
+msgstr ""
 
 #: ../Scripts/OptionsMenu.gd:66
-#, fuzzy
-#| msgid "5 minutes"
 msgid "30 minutes"
-msgstr "5 Minuten"
+msgstr ""
 
 #: ../Scripts/OptionsMenu.gd:69
 msgid "Borderless Fullscreen"
@@ -1236,16 +1184,16 @@ msgstr ""
 
 #: ../Scripts/RandomMusicPlayer.gd:34
 msgid "Nothing"
-msgstr "Nichts"
+msgstr ""
 
 #: ../Scripts/RandomMusicPlayer.gd:59
 #, python-format
 msgid "Now Playing: %s"
-msgstr "Jetzt spielen: %s"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1063
 msgid "Add selected objects..."
-msgstr "Ausgewählte Objekte hinzufügen..."
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1102
 #, python-format
@@ -1259,35 +1207,35 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1124
 msgid "Put in hand"
-msgstr "In die Hand nehmen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1128
 msgid "Collect individuals"
-msgstr "Einzelne aufnehmen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1129
 msgid "Collect all"
-msgstr "Alle aufnehmen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1133
 msgid "Deal cards"
-msgstr "Karten austeilen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1136
 msgid "Take off top"
-msgstr "Von oben nehmen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1139
 msgid "Orient all up"
-msgstr "Alle nach oben ausrichten"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1140
 msgid "Orient all down"
-msgstr "Alle nach unten ausrichten"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1141
 msgid "Shuffle"
-msgstr "Mischen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1160
 msgid "Suit"
@@ -1298,14 +1246,12 @@ msgid "Value"
 msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1164
-#, fuzzy
-#| msgid "Sort"
 msgid "Sort by"
-msgstr "Sortieren"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1173
 msgid "Timer"
-msgstr "Zeitgeber"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1194
 #, python-format
@@ -1319,105 +1265,102 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1200
 msgid "Collect selected"
-msgstr "Ausgewählte sammeln"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1204
 msgid "Add objects..."
-msgstr "Objekte hinzufügen..."
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1205
 msgid "Peek inside"
-msgstr "Hineinblicken"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1207
 msgid "Take objects out"
-msgstr "Objekte herausnehmen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1222
 msgid "Speaker"
-msgstr "Lautsprecher"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1244
 msgid "Cut"
-msgstr "Ausschneiden"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1245
 msgid "Copy"
-msgstr "Kopieren"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1247
 #: ../Scripts/Game/CameraController.gd:1286
 msgid "Paste"
-msgstr "Einfügen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1258
 msgid "Unlock"
-msgstr "Entsperren"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1260
 msgid "Lock"
-msgstr "Sperren"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1264
-#, fuzzy
-#| msgid "Translators"
 msgid "Transform"
-msgstr "Übersetzer*innen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1291
 msgid "Set spawn point here"
-msgstr "Spawnpunkt hier setzen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1292
 msgid "Spawn object here"
-msgstr "Objekt hier spawnen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1311
 #, python-format
 msgid "Alt + %s"
-msgstr "Alt + %s"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1312
 #, python-format
 msgid "Ctrl + %s"
-msgstr "Strg + %s"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1313
-#, fuzzy, python-format
-#| msgid "Ctrl + %s"
+#, python-format
 msgid "Cmd + %s"
-msgstr "Strg + %s"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1314
 #, python-format
 msgid "Hold %s"
-msgstr "Halte %s"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1315
 #, python-format
 msgid "Release %s"
-msgstr "Lasse %s los"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1322
 msgid "Scroll Wheel"
-msgstr "Mausrad"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1325
 msgid "Move camera"
-msgstr "Kamera bewegen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1329
 msgid "Rotate camera"
-msgstr "Kamera drehen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1330
 #, python-format
 msgid "Hold %s + Move Mouse"
-msgstr "%s halten + Maus bewegen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1338
 msgid "Zoom camera"
-msgstr "Kamera zoomen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1348
 msgid "Release selected"
@@ -1425,67 +1368,65 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1350
 msgid "Quick grab"
-msgstr "Schnell greifen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1350
 msgid "Move Mouse"
-msgstr "Bewege die Maus"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1351
 msgid "Stop grabbing"
-msgstr "Nicht mehr greifen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1353
 msgid "Stop box selecting"
-msgstr "Nicht mehr Auswählen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1356
 msgid "Select object"
-msgstr "Objekt auswählen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1358
 msgid "Add to selection"
-msgstr "Zur Auswahl hinzufügen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1361
 msgid "Take random object"
-msgstr "Zufälliges Objekt nehmen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1362
 #: ../Scripts/Game/CameraController.gd:1365
 #, python-format
 msgid "%s + Move Mouse"
-msgstr "%s + Mausbewegung"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1364
 msgid "Take top object"
-msgstr "Oberstes Objekt nehmen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1367
 msgid "Grab selected"
-msgstr "Ausgewählte(s) greifen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1367
 msgid "Grab object"
-msgstr "Objekt greifen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1370
 msgid "Stop moving"
-msgstr "Bewegung stoppen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1370
 msgid "Start moving"
-msgstr "Bewegen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1374
 msgid "Box select"
-msgstr "Rechteck-Auswahl"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1378
-#, fuzzy
-#| msgid "Select object"
 msgid "Flick object"
-msgstr "Objekt auswählen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1380
 msgid "Prepare to flick"
@@ -1493,49 +1434,47 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1384
 msgid "Stop measuring"
-msgstr "Messen stoppen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1386
 msgid "Start measuring"
-msgstr "Beginne zu messen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1390
 msgid "Create hidden area"
-msgstr "Erstelle verstecktes Gebiet"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1392
 msgid "Draw hidden area"
-msgstr "Zeichne verstecktes Gebiet"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1395
 msgid "Paint Table"
-msgstr "Bemale Tisch"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1398
 msgid "Erase Paint"
-msgstr "Farbe entfernen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1408
 msgid "Object menu"
-msgstr "Objekt-Menu"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1410
 msgid "Table menu"
-msgstr "Tisch-Menu"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1414
-#, fuzzy
-#| msgid "Stop moving"
 msgid "Stop flicking"
-msgstr "Bewegung stoppen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1418
 msgid "Remove last ruler"
-msgstr "Letztes Lineal entfernen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1422
 msgid "Remove hidden area"
-msgstr "Verstecktes Gebiet entfernen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1436
 msgid "Flip orientation"
@@ -1543,37 +1482,35 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1438
 msgid "Reset orientation"
-msgstr "Ausrichtung zurücksetzen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1444
 msgid "Zoom selected"
-msgstr "Ausgewählte vergrößern"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1445
 msgid "Lift selected"
-msgstr "Ausgewählte anheben"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1446
 msgid "Rotate selected"
-msgstr "Ausgewählte drehen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1455
 msgid "Unlock selected"
-msgstr "Ausgewählte entsperren"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1455
 msgid "Lock selected"
-msgstr "Ausgewählte sperren"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1458
 msgid "Delete selected"
-msgstr "Ausgewählte löschen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1464
-#, fuzzy
-#| msgid "Flip Table"
 msgid "Flip card"
-msgstr "Tisch umwerfen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1466
 msgid "Face card up"
@@ -1581,23 +1518,23 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1469
 msgid "Reset camera"
-msgstr "Kamera zurücksetzen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1620
 msgid "Pause track"
-msgstr "Track pausieren"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1625
 msgid "Resume track"
-msgstr "Track fortsetzen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1629
 msgid "Stop track"
-msgstr "Track anhalten"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1631
 msgid "Play track"
-msgstr "Track abspielen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1636
 msgid "No track loaded"
@@ -1615,33 +1552,32 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1650
 msgid "Pause timer"
-msgstr "Zeitgeber pausieren"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1655
 msgid "Resume timer"
-msgstr "Zeitgeber fortsetzen"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1659
 msgid "Stop countdown"
-msgstr "Stoppe Countdown"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1661
 msgid "Start countdown"
-msgstr "Starte Countdown"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1665
 msgid "Stop stopwatch"
-msgstr "Stoppe Stoppuhr"
+msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1667
 msgid "Start stopwatch"
-msgstr "Starte Stoppuhr"
+msgstr ""
 
 #: ../Scripts/Game/Game.gd:543
-#, fuzzy, python-format
-#| msgid "Loading..."
+#, python-format
 msgid "Downloading %s ..."
-msgstr "Wird geladen …"
+msgstr ""
 
 #: ../Scripts/Game/Game.gd:702
 msgid "Download completed!"
@@ -1654,7 +1590,7 @@ msgstr ""
 
 #: ../Scripts/Game/Game.gd:1018
 msgid "Loaded table has no version information. Load anyway?"
-msgstr "Geladener Tisch hat keine Versions-Informationen. Trotzdem laden?"
+msgstr ""
 
 #: ../Scripts/Game/Game.gd:1020
 #, python-format
@@ -1662,8 +1598,6 @@ msgid ""
 "Loaded table was saved with a different version of the game (Current: %s, "
 "Table: %s). Load anyway?"
 msgstr ""
-"Geladener Tisch wurde mit einer anderen Version des Spiels gespeichert "
-"(Aktuelle: %s, Tisch: %s). Trotzdem laden?"
 
 #: ../Scripts/Game/Game.gd:1022
 msgid "Loaded table is not in the correct format."
@@ -1675,110 +1609,104 @@ msgid "Client version (%s) does not match server version (%s)!"
 msgstr ""
 
 #: ../Scripts/Game/Game.gd:1209
-#, fuzzy, python-format
-#| msgid "Importing assets..."
+#, python-format
 msgid "Importing %s ..."
-msgstr "Assets werden importiert …"
+msgstr ""
 
 #: ../Scripts/Game/Game.gd:1227
-#, fuzzy, python-format
-#| msgid "Take Screenshot"
+#, python-format
 msgid "Saved screenshot to '%s'."
-msgstr "Screenshot aufnehmen"
+msgstr ""
 
 #: ../Scripts/Game/Game.gd:1241
-#, fuzzy
-#| msgid "Quicksave"
 msgid "Quicksave file saved."
-msgstr "Schnellspeichern"
+msgstr ""
 
 #: ../Scripts/Game/Game.gd:1304
 msgid "Connecting to the master server..."
-msgstr "Verbinde zum Hauptserver …"
+msgstr ""
 
 #: ../Scripts/Game/Game.gd:1713
 #, python-format
 msgid "Could not open the file at path '%s' (error %d)."
-msgstr "Konnte Datei in Pfad '%s' nicht öffnen (Fehler %d)."
+msgstr ""
 
 #: ../Scripts/Game/Game.gd:1879
 msgid "Establishing connection with the host..."
-msgstr "Verbinde mit Host..."
+msgstr ""
 
 #: ../Scripts/Game/Game.gd:1894
 #, python-format
 msgid "Disconnected from the server! Code: %d Reason: %s"
-msgstr "Verbindung zum Server getrennt! Code: %d Grund %s"
+msgstr ""
 
 #: ../Scripts/Game/Game.gd:1990
 msgid "Room has been closed by the host."
-msgstr "Der Raum wurde durch den Host geschlossen."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:42
 msgid "Could not connect to the master server."
-msgstr "Keine Verbindung zum Hauptserver möglich."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:43
 msgid "Have not joined a room yet."
-msgstr "Noch keinem Raum beigetreten."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:44
 msgid "Host has disconnected from the room."
-msgstr "Host hat die Verbindung zum Raum getrennt."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:45
 msgid "Only the host can seal the room."
-msgstr "Nur der Host kann den Raum verschließen."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:46
 msgid "Too many rooms are open."
-msgstr "Es sind zu viele Räume offen."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:47
 msgid "Already in a room."
-msgstr "Schon in einem Raum."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:48
 msgid "Room does not exist."
-msgstr "Raum existiert nicht."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:49
 msgid "Room is sealed."
-msgstr "Raum ist verschlossen."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:50
 msgid "Message format is invalid."
-msgstr "Nachrichtenformat ist ungültig."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:51
 msgid "Message is invalid when not in a room."
-msgstr "Nachricht ist ungültig, solange nicht in einem Raum."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:52
 msgid "Internal server error."
-msgstr "Interner Server-Fehler."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:53
 msgid "Invalid destination."
-msgstr "Ungültiges Ziel."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:54
 msgid "Invalid command."
-msgstr "Ungültiger Befehl."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:55
 msgid "Too many players connected."
-msgstr "Zu viele Spieler*innen verbunden."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:56
 msgid "Transfer mode is invalid."
-msgstr "Übertragungsmodus ist ungültig."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:57
-#, fuzzy
-#| msgid "Too many players connected."
 msgid "Too many connections."
-msgstr "Zu viele Spieler*innen verbunden."
+msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:58
 msgid "Reconnected too quickly."
@@ -1791,40 +1719,40 @@ msgstr ""
 #: ../Scripts/Game/UI/GameUI.gd:227
 #, python-format
 msgid "Room Code: [b]%s[/b]"
-msgstr "Raum-Code: [b]%s[/b]"
+msgstr ""
 
 #: ../Scripts/Game/UI/GameUI.gd:231
 msgid "Hide Room Code"
-msgstr "Raum-Code verstecken"
+msgstr ""
 
 #: ../Scripts/Game/UI/GameUI.gd:233
 msgid "Show Room Code"
-msgstr "Raum-Code anzeigen"
+msgstr ""
 
 #: ../Scripts/Game/UI/GameUI.gd:294
 #, python-format
 msgid "%s has joined the game."
-msgstr "%s ist dem Spiel beigetreten."
+msgstr ""
 
 #: ../Scripts/Game/UI/GameUI.gd:301
 #, python-format
 msgid "%s changed their name to %s"
-msgstr "%s änderte seinen*ihren Namen zu %s"
+msgstr ""
 
 #: ../Scripts/Game/UI/GameUI.gd:306
 #, python-format
 msgid "%s has left the game."
-msgstr "%s hat das Spiel verlassen."
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:40
 #, python-format
 msgid "Contents of %s"
-msgstr "Inhalt von %s"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:45
 #, python-format
 msgid "%s is empty."
-msgstr "%s is leer."
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:37
 msgid ""
@@ -1833,10 +1761,9 @@ msgid ""
 msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:138
-#, fuzzy, python-format
-#| msgid "Are you sure you want to delete '%s'?"
+#, python-format
 msgid "Are you sure you want to delete the page '%s'?"
-msgstr "Soll '%s' wirklich gelöscht werden?"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:168
 msgid "New Page"
@@ -1845,48 +1772,48 @@ msgstr ""
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:114
 #, python-format
 msgid "Modified: %s"
-msgstr "Modifiziert: %s"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:157
 msgid "Save a file"
-msgstr "Eine Datei speichern"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:160
 msgid "Save"
-msgstr "Speichern"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:160
 msgid "Load"
-msgstr "Laden"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:173
 msgid "Sort:"
-msgstr "Sortieren:"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:177
 msgid "Last Modified"
-msgstr "Zuletzt verändert"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:202
 msgid "Delete file?"
-msgstr "Datei Löschen?"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:210
 msgid "Overwrite file?"
-msgstr "Datei überschreiben?"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:218
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:254
 msgid "Rename"
-msgstr "Umbenennen"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:219
 msgid "Duplicate"
-msgstr "Duplizieren"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:225
 msgid "Invalid name!"
-msgstr "Ungültiger Name!"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:227
 #, python-format
@@ -1894,26 +1821,24 @@ msgid ""
 "File names cannot contain any of the following characters:\n"
 "%s"
 msgstr ""
-"Dateinamen können keine der folgenden Zeichen enthalten:\n"
-"%s"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:233
 msgid "Rename file..."
-msgstr "Datei umbenennen…"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:243
 msgid "Please enter a new name for the file:"
-msgstr "Bitte einen Namen für die Datei eingeben:"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:363
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Soll „%s“ wirklich gelöscht werden?"
+msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:376
 #, python-format
 msgid "The file '%s' already exists. Are you sure you want to overwrite it?"
-msgstr "Die Datei „%s“ existiert bereits. Wirklich überschreiben?"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:54
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:77
@@ -1923,17 +1848,15 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:60
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:83
-#, fuzzy, python-format
-#| msgid "View License"
+#, python-format
 msgid "License: %s"
-msgstr "Lizenz anzeigen"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:66
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:89
-#, fuzzy, python-format
-#| msgid "Modified: %s"
+#, python-format
 msgid "Modified by: %s"
-msgstr "Modifiziert: %s"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:72
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:95
@@ -1944,73 +1867,52 @@ msgstr ""
 #: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:108
 #, python-format
 msgid "Page %d/%d"
-msgstr "Seite %d %d"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:233
 msgid "Cards"
-msgstr "Karten"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:234
 msgid "Containers"
-msgstr "Container"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:235
-#, fuzzy
-#| msgid "Dice - d4"
 msgid "Dice"
-msgstr "Würfel - w4"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:237
 msgid "Music"
-msgstr "Musik"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:238
 msgid "Pieces"
-msgstr "Spielsteine"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:239
 msgid "Skyboxes"
-msgstr "Skyboxen"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:240
 msgid "Sounds"
-msgstr "Geräusche"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:241
 msgid "Speakers"
-msgstr "Lautsprecher"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:242
 msgid "Stacks"
-msgstr "Stapel"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:243
 msgid "Tables"
-msgstr "Tische"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:244
 msgid "Timers"
-msgstr "Zeitgeber"
+msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:245
 msgid "Tokens"
-msgstr "Token"
-
-#~ msgid "Server: "
-#~ msgstr "Server: "
-
-#~ msgid "Dice - d6"
-#~ msgstr "Würfel - w6"
-
-#~ msgid "Dice - d8"
-#~ msgstr "Würfel - w8"
-
-#~ msgid "Debug: Start Dedicated Server"
-#~ msgstr "Debug: Starte dedizierten Server"
-
-#~ msgid "127.0.0.1:26271"
-#~ msgstr "127.0.0.1:26271"
-
-#, fuzzy
-#~ msgid "Color:"
-#~ msgstr "Farbe"
+msgstr ""
