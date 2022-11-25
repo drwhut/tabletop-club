@@ -77,10 +77,12 @@ guidelines as to how you should write your code.
 .. note::
 
    When you are done, you should commit your changes and push them to your fork
-   with this command:
+   with these commands:
 
    .. code-block:: bash
 
+      git add .
+      git commit
       git push -u origin <branch_name>
 
 

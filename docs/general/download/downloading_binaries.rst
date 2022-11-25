@@ -4,19 +4,28 @@
 Downloading the official binaries
 =================================
 
-.. note::
+There are two ways to download and play the game:
 
-   Currently, the game is in alpha development and there are no official
-   binaries to download. Hopefully this will change in the future!
 
-   For now, you'll need to download the source code and compile it to play the
-   game. You can follow the instructions in :ref:`compiling-from-source` to
-   learn how.
+From the itch app
+-----------------
 
-You can download an official binary for your platform by going to the
-`releases page <https://github.com/drwhut/tabletop-club/releases>`_  on GitHub
-and downloading the compressed file for your platform under the version of the
-game you want to play.
+This is the recommended way to download and play the game, since you'll get
+updates automatically whenever they are released, and you'll also get access to
+a huge range of amazing indie games from developers far more talented than I am!
+
+You can download the itch app `here <https://itch.io/app>`_, and once you've
+logged in, search for "Tabletop Club" to download and install the game.
+
+
+As a standalone executable
+--------------------------
+
+You can also download the game as a standalone application that you can run
+anywhere on your system from the `itch.io page
+<https://drwhut.itch.io/tabletop-club>`_, or from the `GitHub repository
+<https://github.com/drwhut/tabletop-club/releases>`_. Once it is downloaded,
+there's only a couple of steps needed to run the game (see below)!
 
 In most cases, you'll want to download the latest *non-beta* version of the
 game. While beta versions of the game have new features and are very helpful
@@ -28,16 +37,15 @@ version, follow :ref:`upgrading-installation` before carrying on here.
 
 
 Verifying the download
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 This step is completely optional, but it's a good idea to make sure that the
 downloaded file's contents are what we expect them to be. We do this by checking
 the `SHA512 hash <https://en.wikipedia.org/wiki/SHA-2>`_ of the file, and seeing
 if the hash matches the original.
 
-1. Download from the GitHub releases page, as well as the intended binary, the
-   ``TabletopClub_vX.X.X_SHA512.txt`` file. This text file contains the SHA512
-   hashes of all of the downloads.
+1. Download from the GitHub releases page the ``TabletopClub_vX.X.X_SHA512.txt``
+   file. This text file contains the SHA512 hashes of all of the downloads.
 
 2. Open a command prompt or terminal, and navigate to the folder where the
    compressed binary lies.
@@ -63,7 +71,7 @@ if the hash matches the original.
 What happens now depends slightly on which platform you're on:
 
 Downloading for Windows
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Make sure you have downloaded the compressed file, it should be called
    something like ``TabletopClub_vX.X.X_Windows_64.zip``.
@@ -87,15 +95,14 @@ Downloading for Windows
       :guilabel:`More info`, then by clicking :guilabel:`Run anyway`.
 
 Downloading for macOS
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 1. Start downloading the compressed file, it should be called something like
    ``TabletopClub_vX.X.X_OSX_Universal.zip``.
 
-2. When it has downloaded, macOS should automatically extract the files in the
-   Downloads folder for you. Go to your downloads folder in Finder, and find
-   the extracted folder, it will be called something like
-   ``TabletopClub_vX.X.X_OSX_Universal``.
+2. When it has downloaded, go to your downloads folder in Finder, and find
+   the compressed file. Double-click the file to extract the folder - it will be
+   called something like ``TabletopClub_vX.X.X_OSX_Universal``.
 
 3. Re-name the new folder to ``TabletopClub``.
 
@@ -110,7 +117,7 @@ Downloading for macOS
       double-click the application.
 
 Downloading for Linux / \*BSD
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Make sure you have downloaded the compressed file, it should be called
    something like ``TabletopClub_vX.X.X_Linux_64.zip``.
@@ -120,7 +127,7 @@ Downloading for Linux / \*BSD
 
    .. code-block:: bash
 
-      tar -xf TabletopClub_vX.X.X_Linux_64.zip
+      unzip TabletopClub_vX.X.X_Linux_64.zip
 
 3. Either double-click the executable, or go into a terminal and run this
    command in the folder the executable is in:
@@ -133,7 +140,7 @@ Downloading for Linux / \*BSD
 .. _upgrading-installation:
 
 Upgrading an existing installation
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have already downloaded the game before, and you want to overwrite the
 files that are already there, then before downloading and extracting the new

@@ -103,21 +103,22 @@ game and start playing with friends!
 Is Tabletop Club on Steam / GOG / itch.io?
 ------------------------------------------
 
-No. Tabletop Club is a standalone game, meaning when you download the game you
-can extract the game files anywhere you want on your computer, and the game
-will work.
-
-However, when the game is released, you will be able to download it from
-itch.io!
+The game is available on `itch.io <https://drwhut.itch.io/tabletop-club>`_!
+Not only can you download the game as a standalone executable, you can also
+download it from the `itch app <https://itch.io/app>`_ and get automatic
+updates.
 
 
 What stage of development is Tabletop Club at?
 ----------------------------------------------
 
-Tabletop Club is currently in alpha development. This means that core features
-of the game are still being implemented (you can see what needs to be added by
-going to the `issues page <https://github.com/drwhut/tabletop-club/issues>`_ on
-GitHub), and there are no publicly released versions of the game... yet.
+Tabletop Club is currently in beta development. This means that most of the core
+features have been implemented, but there will very likely be some bugs, and
+features that have yet to be added (you can see what needs to be done by going
+to the `issues page <https://github.com/drwhut/tabletop-club/issues>`_ on
+GitHub).
+
+You can help test the game by :ref:`downloading-binaries`!
 
 
 What board games can I play in Tabletop Club?
