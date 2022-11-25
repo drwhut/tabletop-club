@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-01 20:36+0100\n"
+"POT-Creation-Date: 2022-11-25 11:08+0000\n"
 "PO-Revision-Date: 2022-08-10 06:18+0000\n"
 "Last-Translator: Ido Dana <idodana01@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/tabletop-club/"
@@ -22,11 +22,9 @@ msgstr ""
 "X-Generator: Weblate 4.14-dev\n"
 
 #: ../../index.rst:22
-#: ../../index.rst:22
 msgid "General"
 msgstr "כללי"
 
-#: ../../index.rst:30
 #: ../../index.rst:30
 msgid "Custom Assets"
 msgstr ""
@@ -37,7 +35,11 @@ msgid "Tabletop Club Documentation"
 msgstr "תיעוד Tabletop Club"
 
 #: ../../index.rst:9
-msgid "Welcome to the documentation for Tabletop Club, a free and open source tabletop board game simulator! If you're new to the project, feel free to check out the :ref:`about-tabletop-club` page. Otherwise, you can use either the table of contents, the sidebar, or the search bar to find what you need!"
+msgid ""
+"Welcome to the documentation for Tabletop Club, a free and open source "
+"tabletop board game simulator! If you're new to the project, feel free to "
+"check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
+"the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
 "ברוכים הבאים לתיעוד של Tabletop Club, סימולטור משחקי לוח שולחניים חינמי "
 "ובקוד פתוח! אם אתם חדשים בפרויקט, אל תהססו לבדוק את עמוד :ref:`about-"
@@ -45,11 +47,16 @@ msgstr ""
 "כדי למצוא את מה שאתם צריכים!"
 
 #: ../../index.rst:16
-msgid "The documentation, as well as the project in general, is open to suggestions and contributions! If you feel that something is not explained well, or you think that information is missing, then please don't hesitate to open an issue or a pull request on the project's `GitHub repository <https://github.com/drwhut/tabletop-club/issues>`_!"
+msgid ""
+"The documentation, as well as the project in general, is open to suggestions "
+"and contributions! If you feel that something is not explained well, or you "
+"think that information is missing, then please don't hesitate to open an "
+"issue or a pull request on the project's `GitHub repository <https://github."
+"com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
 "התיעוד, כמו גם הפרויקט בכלל, פתוח להצעות ולתרומות! אם אתם מרגישים שמשהו לא "
-"מוסבר היטב, או שאתם חושבים שחסר מידע, אל תהססו לפתוח בעייה או בקשת משיכה ב`"
-"GitHub <https://github.com/drwhut/tabletop-club/issues>`_!"
+"מוסבר היטב, או שאתם חושבים שחסר מידע, אל תהססו לפתוח בעייה או בקשת משיכה "
+"ב`GitHub <https://github.com/drwhut/tabletop-club/issues>`_!"
 
 #: ../../index.rst:39
 msgid "Indices and tables"
