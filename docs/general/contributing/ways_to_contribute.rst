@@ -80,10 +80,6 @@ the bottom of the component page and pressing :guilabel:`Start new translation`.
    Manual pull requests for translations will be closed, as Weblate keeps it's
    own fork of the project, and we want to avoid having merge conflicts occur.
 
-   The only exception to this is the ``README.md`` file, which is not included
-   in Weblate - feel free to provide a translation for this file with the name
-   ``README.<locale>.md``, and send in a pull request!
-
 .. image:: https://hosted.weblate.org/widgets/tabletop-club/-/287x66-white.png
    :alt: Translation status
    :target: https://hosted.weblate.org/engage/tabletop-club/

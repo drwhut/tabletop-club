@@ -1,6 +1,5 @@
 <p align="center">
   <img src="tabletop_club_logo.svg" width="256"><br>
-  <a href="README.md">English</a> | <a href="README.ru.md">Русский</a>
 </p>
 
 Tabletop Club is an open-source multiplayer game that allows you to play your
@@ -11,9 +10,9 @@ easy-to-make
 The game is available on Windows, macOS, and Linux, and is being developed with
 the [Godot Engine](https://godotengine.org/).
 
-![Screenshot of gameplay](screenshot.jpg)
-
 ## Downloading
+
+<iframe src="https://itch.io/embed/1602393" width="552" height="167" frameborder="0"><a href="https://drwhut.itch.io/tabletop-club">Tabletop Club by drwhut</a></iframe>
 
 To download the game, you can either
 [download an official binary](https://tabletop-club.readthedocs.io/en/latest/general/download/downloading_binaries.html)
@@ -24,13 +23,14 @@ or
 
 [![Translation Status](https://hosted.weblate.org/widgets/tabletop-club/-/svg-badge.svg)](https://hosted.weblate.org/engage/tabletop-club/)
 
-Language | Game               | Documentation      | Default Asset Pack
--------- | ------------------ | ------------------ | ------------------
-English  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-Dutch    | 86%                | :x:                | :heavy_check_mark:
-French   | 60%                | :x:                | :x:
-German   | 68%                | :x:                | :x:
-Russian  | 97%                | 99%                | 99%
+Language   | Game               | Documentation      | Default Asset Pack
+---------- | ------------------ | ------------------ | ------------------
+English    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Dutch      | :heavy_check_mark: | :x:                | :heavy_check_mark:
+French     | 58%                | :x:                | :x:
+German     | 65%                | :x:                | :x:
+Portuguese | 95%                | :x:                | 94%
+Russian    | 93%                | 78%                | 98%
 
 If you want to help translate the project, you can go to the project's
 [Hosted Weblate](https://hosted.weblate.org/engage/tabletop-club/) page.
