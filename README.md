@@ -12,7 +12,9 @@ the [Godot Engine](https://godotengine.org/).
 
 ## Downloading
 
-<iframe src="https://itch.io/embed/1602393" width="552" height="167" frameborder="0"><a href="https://drwhut.itch.io/tabletop-club">Tabletop Club by drwhut</a></iframe>
+<p>
+  <a href="https://drwhut.itch.io/tabletop-club"><img src="https://static.itch.io/images/badge-color.svg" alt="Available on itch.io" height="80"></a>
+</p>
 
 To download the game, you can either
 [download an official binary](https://tabletop-club.readthedocs.io/en/latest/general/download/downloading_binaries.html)
