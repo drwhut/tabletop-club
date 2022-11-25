@@ -1,6 +1,6 @@
 # Tabletop Club Documentation Translation Template.
-# Copyright (C) 2020-2021 Benjamin 'drwhut' Beddows.
-# Copyright (C) 2021 Tabletop Club contributors (see game/CREDITS.tres).
+# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2022 Tabletop Club contributors (see game/CREDITS.tres).
 # This file is distributed under the same license as the Tabletop Club package.
 # Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2021.
 #
@@ -9,16 +9,13 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2022-07-07 21:18+0000\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/docs-"
-"custom-assets/nl/>\n"
-"Language: nl\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -121,10 +118,8 @@ msgid ":ref:`object-type-card`"
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
-#, fuzzy
-#| msgid "Containers"
 msgid "``containers/``"
-msgstr "Dozen"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
@@ -187,7 +182,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
 msgid ":ref:`asset-type-game`"
-msgstr ":ref:`asset-type-game`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
@@ -208,7 +203,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
 msgid ":ref:`asset-type-music`"
-msgstr ":ref:`asset-type-music`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
 msgid "``pieces/``"
@@ -224,7 +219,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:58
 msgid ":ref:`asset-type-skybox`"
-msgstr ":ref:`asset-type-skybox`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 msgid "``sounds/``"
@@ -232,13 +227,11 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 msgid ":ref:`asset-type-sound`"
-msgstr ":ref:`asset-type-sound`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
-#, fuzzy
-#| msgid "Speaker"
 msgid "``speakers/``"
-msgstr "Spreker"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
 msgid ":ref:`object-type-speaker`"
@@ -250,7 +243,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
 msgid ":ref:`asset-type-table`"
-msgstr ":ref:`asset-type-table`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 msgid "``timers/``"
@@ -357,7 +350,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
 msgid "Cards"
-msgstr "Kaarten"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
 msgid ""
@@ -380,7 +373,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid "Tables"
-msgstr "Tafels"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
 msgid "``0.5``"
@@ -397,10 +390,8 @@ msgid "``collision_mode``"
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
-#, fuzzy
-#| msgid "Objects"
 msgid "Objects, Tables"
-msgstr "Objecten"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 msgid "``0``"
@@ -425,7 +416,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 msgid "Objects"
-msgstr "Objecten"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 msgid "``#ffffff``"
@@ -482,7 +473,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 #: ../../custom_assets/asset_packs/asset_types.rst:77
 msgid "Dice"
-msgstr "Dobbelsteen"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "``{}``"
@@ -535,10 +526,8 @@ msgid "``main_menu``"
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
-#, fuzzy
-#| msgid "Objects"
 msgid "Music, Objects"
-msgstr "Objecten"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
 msgid ""
@@ -599,7 +588,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "Skyboxes"
-msgstr "Skyboxen"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 msgid "``Vector3(0.0, 0.0, 0.0)``"
@@ -647,7 +636,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
 msgid "Containers"
-msgstr "Dozen"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
 msgid ""
@@ -857,7 +846,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:123
 msgid "Piece"
-msgstr "Spelstuk"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "On the table are two chess pieces, a white pawn and a black queen."
@@ -869,7 +858,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:134
 msgid "Speaker"
-msgstr "Spreker"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "By the corner of the table is a large, metallic gramophone."
@@ -884,7 +873,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:147
 msgid "Timer"
-msgstr "Tijdklok"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:149
 msgid ""
@@ -921,7 +910,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:179
 msgid "Music"
-msgstr "Muziek"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:181
 msgid ""
@@ -979,7 +968,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:226
 msgid "Table"
-msgstr "Tafel"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:228
 msgid ""
@@ -1146,7 +1135,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:99
 msgid "Audio"
-msgstr "Audio"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:101
 msgid "As of right now, Tabletop Club supports the following audio formats:"
@@ -1386,10 +1375,8 @@ msgid ":ref:`object-type-speaker`: ``MyAssetPack/speakers``"
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:104
-#, fuzzy
-#| msgid ":ref:`asset-type-table`"
 msgid ":ref:`asset-type-table`: ``MyAssetPack/tables``"
-msgstr ":ref:`asset-type-table`"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:105
 msgid ":ref:`object-type-timer`: ``MyAssetPack/timers``"
@@ -1646,10 +1633,8 @@ msgid "For more information, see :ref:`file-type-save`."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:2
-#, fuzzy
-#| msgid "Skyboxes"
 msgid "Adding skyboxes"
-msgstr "Skyboxen"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:4
 msgid ""
