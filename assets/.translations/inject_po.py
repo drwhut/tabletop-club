@@ -36,23 +36,9 @@ po_file = polib.pofile(locale + ".po")
 
 configs = {}
 for entry in po_file.translated_entries():
-    # Deal with spaces in file names.
-    corrected_occurences = []
     for occurrence in entry.occurrences:
-        append_to_last = False
-        if len(corrected_occurences) > 0:
-            if corrected_occurences[-1][1] == "":
-                append_to_last = True
-        
-        if append_to_last:
-            current_path = corrected_occurences[-1][0]
-            new_path = current_path + " " + occurrence[0]
-            corrected_occurences[-1] = (new_path, occurrence[1])
-        else:
-            corrected_occurences.append(occurrence)
-    
-    for occurrence in corrected_occurences:
-        add_config(configs, occurrence[0], occurrence[1], entry.msgstr, locale)
+        add_config(configs, occurrence[0].replace("_", " "), occurrence[1],
+                entry.msgstr, locale)
 
 for config_path in configs:
     with open(config_path, "w") as config_file:
