@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2022-07-22 20:55+0000\n"
+"PO-Revision-Date: 2022-11-26 15:05+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
 "nl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:39
@@ -60,11 +60,11 @@ msgstr "Afsluiten"
 
 #: ../Scenes/MainMenu.tscn:95
 msgid "Tabletop Club on Itch.io"
-msgstr ""
+msgstr "Tabletop Club op Itch.io"
 
 #: ../Scenes/MainMenu.tscn:104
 msgid "Source Code"
-msgstr ""
+msgstr "Broncode"
 
 #: ../Scenes/MainMenu.tscn:113
 msgid "Documentation"
@@ -323,19 +323,19 @@ msgstr "Geef aan hoeveel reservekopieën er maximaal mogen worden gemaakt."
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Show System Warnings"
-msgstr ""
+msgstr "Systeemwaarschuwingen tonen"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Displays system warnings in the chat box."
-msgstr ""
+msgstr "Toon systeemwaarschuwingen in het chatvenster."
 
 #: ../Scenes/OptionsMenu.tscn:509
 msgid "Show System Errors"
-msgstr ""
+msgstr "Systeemfoutmeldingen tonen"
 
 #: ../Scenes/OptionsMenu.tscn:517
 msgid "Displays system errors in the chat box."
-msgstr ""
+msgstr "Toon systeemfoutmeldingen in het chatvenster."
 
 #: ../Scenes/OptionsMenu.tscn:545
 msgid "Opens the assets folder in your file explorer."
@@ -402,28 +402,20 @@ msgid "Resets the camera to the default position."
 msgstr "Stel de camera in op de standaardpositie."
 
 #: ../Scenes/OptionsMenu.tscn:697
-#, fuzzy
-#| msgid "Zoom Invert"
 msgid "Zoom In"
-msgstr "Zoomgevoeligheid (omgekeerd)"
+msgstr "Inzoomen"
 
 #: ../Scenes/OptionsMenu.tscn:705
-#, fuzzy
-#| msgid "Used to set how fast the camera moves across the table."
 msgid "Zoom the camera or object towards the table."
-msgstr "Hoe snel de camera over de tafel heen moet gaan."
+msgstr "Zoom de camera of het object in op de tafel."
 
 #: ../Scenes/OptionsMenu.tscn:715
-#, fuzzy
-#| msgid "Zoom Invert"
 msgid "Zoom Out"
-msgstr "Zoomgevoeligheid (omgekeerd)"
+msgstr "Uitzoomen"
 
 #: ../Scenes/OptionsMenu.tscn:723
-#, fuzzy
-#| msgid "Used to set how fast the camera moves across the table."
 msgid "Zoom the camera or object away from the table."
-msgstr "Hoe snel de camera over de tafel heen moet gaan."
+msgstr "Zoom de camera of het object weg van de tafel."
 
 #: ../Scenes/OptionsMenu.tscn:733
 msgid "Flip Piece Orientation"
@@ -531,11 +523,11 @@ msgstr "De kleur van de speler in kamers met meerdere spelers."
 
 #: ../Scenes/OptionsMenu.tscn:963
 msgid "Chat Font Size"
-msgstr ""
+msgstr "Tekstgrootte van chat"
 
 #: ../Scenes/OptionsMenu.tscn:971
 msgid "Changes the size of the text in the chat box."
-msgstr ""
+msgstr "Pas de tekstgrootte van het chatvenster aan."
 
 #: ../Scenes/OptionsMenu.tscn:973 ../Scenes/OptionsMenu.tscn:1104
 #: ../Scripts/OptionsMenu.gd:74
@@ -1210,11 +1202,11 @@ msgstr "Ultra"
 
 #: ../Scripts/OptionsMenu.gd:79
 msgid "Small"
-msgstr ""
+msgstr "Klein"
 
 #: ../Scripts/OptionsMenu.gd:81
 msgid "Large"
-msgstr ""
+msgstr "Groot"
 
 #: ../Scripts/RandomMusicPlayer.gd:34
 msgid "Nothing"
@@ -1543,14 +1535,12 @@ msgid "Delete selected"
 msgstr "Selectie wissen"
 
 #: ../Scripts/Game/CameraController.gd:1464
-#, fuzzy
-#| msgid "Flip Table"
 msgid "Flip card"
-msgstr "Tafel omdraaien"
+msgstr "Kaart omdraaien"
 
 #: ../Scripts/Game/CameraController.gd:1466
 msgid "Face card up"
-msgstr ""
+msgstr "Kaart omdraaien"
 
 #: ../Scripts/Game/CameraController.gd:1469
 msgid "Reset camera"
@@ -1745,14 +1735,12 @@ msgid "Transfer mode is invalid."
 msgstr "De overdrachtsmodus is ongeldig."
 
 #: ../Scripts/Game/MasterServer.gd:57
-#, fuzzy
-#| msgid "Too many players connected."
 msgid "Too many connections."
-msgstr "Er zijn teveel spelers verbonden."
+msgstr "Er zijn teveel verbindingen."
 
 #: ../Scripts/Game/MasterServer.gd:58
 msgid "Reconnected too quickly."
-msgstr ""
+msgstr "Er is te snel opnieuw verbinding gemaakt."
 
 #: ../Scripts/Game/UI/ChatBox.gd:56
 msgid "Too much text being sent, waiting..."
@@ -1801,6 +1789,7 @@ msgid ""
 "You can use this notebook to write down information that will persist "
 "between sessions."
 msgstr ""
+"In dit notitieboek kun je aantekeningen maken en in andere sessies bekijken."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:138
 #, python-format
