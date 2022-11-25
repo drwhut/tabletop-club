@@ -1,17 +1,18 @@
-# OpenTabletop Documentation Translation Template.
-# Copyright (C) 2020-2021, Benjamin 'drwhut' Beddows
-# This file is distributed under the same license as the OpenTabletop package.
+# Tabletop Club Documentation Translation Template.
+# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2022 Tabletop Club contributors (see game/CREDITS.tres).
+# This file is distributed under the same license as the Tabletop Club package.
 # Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenTabletop\n"
+"Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: de\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

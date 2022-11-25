@@ -1,52 +1,60 @@
-# OpenTabletop Documentation Translation Template.
-# Copyright (C) 2020-2021, Benjamin 'drwhut' Beddows
-# This file is distributed under the same license as the OpenTabletop package.
+# Tabletop Club Documentation Translation Template.
+# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2022 Tabletop Club contributors (see game/CREDITS.tres).
+# This file is distributed under the same license as the Tabletop Club package.
 # Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenTabletop\n"
+"Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: de\n"
+"PO-Revision-Date: 2022-11-11 02:50+0000\n"
+"Last-Translator: AllanOvelha <allan1234567@yahoo.com.br>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-general/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
-msgstr ""
+msgstr "O que é Tabletop Club?"
 
 #: ../../general/about.rst:10
 msgid ""
 "Tabletop Club is a free and open-source tabletop board game simulator! "
 "That's a bit of a mouthful, so I'll break that sentence down a bit:"
 msgstr ""
+"Tabletop Club é um simulador de jogos de mesa gratuito e de código aberto! "
+"Isso é demasiado um bocado, então deixe simplificar esta frase um pouquinho:"
 
 #: ../../general/about.rst:14
 msgid "Free"
-msgstr ""
+msgstr "É de Graça"
 
 #: ../../general/about.rst:16
 msgid ""
 "The game is completely free to download and play! You can do so by going to "
 "the :ref:`downloading-binaries` page."
 msgstr ""
+"O jogo é totalmente grátis para baixar e jogar! Você também pode ir para "
+"página :ref:`downloading-binaries`."
 
 #: ../../general/about.rst:20
 msgid "Open-source"
-msgstr ""
+msgstr "Código aberto (ou Open-Source)"
 
 #: ../../general/about.rst:22
 msgid "This means a few things:"
-msgstr ""
+msgstr "Isso quer dizer algumas coisas:"
 
 #: ../../general/about.rst:24
 msgid ""
@@ -55,6 +63,10 @@ msgid ""
 "means you can compile the game youself from scratch (see :ref:`compiling-"
 "from-source`)."
 msgstr ""
+"O código fonte deste jogo é publicamente visível (você pode vê-lo em `GitHub "
+"repository <https://github.com/drwhut/tabletop-club>`_). Isso também "
+"significa que pode-se compilar o jogo por você mesmo (veja :ref:`compiling-"
+"from-source`)."
 
 #: ../../general/about.rst:29
 msgid ""
@@ -62,18 +74,27 @@ msgid ""
 "different ways! For more information about how you can help contribute to "
 "the project, visit the :ref:`contributing` page."
 msgstr ""
+"Qualquer pessoa pode contribuir para o desenvolvimento de Tabletop Club de "
+"diversas maneiras! Para mais informações de como contribuir para com o "
+"projeto, visite a página :ref:`contributing`."
 
 #: ../../general/about.rst:33
+#, fuzzy
 msgid ""
 "The game is licensed under the `MIT License <https://github.com/drwhut/"
 "tabletop-club/blob/master/LICENSE>`_, which is an open, permissive license."
 msgstr ""
+"O jogo é licenciado sobre a `licença MIT <https://github.com/drwhut/tabletop-"
+"club/blob/master/LICENSE>`_, no qual uma licença aberta de concessão."
 
 #: ../../general/about.rst:39
+#, fuzzy
 msgid ""
 "The game's code and project files are licensed under the MIT License, but "
 "some of the assets are licensed under different open licenses."
 msgstr ""
+"Os códigos e arquivos deste projeto é licenciado sobre a licença MIT, no "
+"entanto, alguns assets são licenciados sobre diferentes licenças abertas."
 
 #: ../../general/about.rst:42
 msgid ""
@@ -85,7 +106,7 @@ msgstr ""
 
 #: ../../general/about.rst:48
 msgid "Tabletop board game"
-msgstr ""
+msgstr "Tabletop board game"
 
 #: ../../general/about.rst:50
 msgid ""
@@ -94,6 +115,10 @@ msgid ""
 "things like cards, dice, game pieces, and more), and it's up to you what you "
 "do with what you're given!"
 msgstr ""
+"O jogo foi feito pensando na facilidade de jogar seus jogos de mesa "
+"favoritos, disponibilizando uma caixa de brinquedos para você se divertir "
+"(na caixa inclui cartas, dados, peças de jogos e mais), e você pode usa-las "
+"da maneira que quiser!"
 
 #: ../../general/about.rst:55
 msgid ""
@@ -103,10 +128,15 @@ msgid ""
 "learn more about how to make assets for Tabletop Club, visit the :ref:`asset-"
 "packs` page."
 msgstr ""
+"Mas a melhor parte deste jogo é que qualquer pessoa pode criar assets para "
+"ele! É simples, basta arrastar arquivos para dentro de uma pasta e o jogo "
+"irá importa-las, sendo assim você poderá usa-los direto no dentro do jogo! "
+"Se você quer aprender mais sobre como criar assets para o Tabletop Club, "
+"visite a página :ref:`asset-packs`."
 
 #: ../../general/about.rst:61
 msgid "Simulator"
-msgstr ""
+msgstr "Simulador"
 
 #: ../../general/about.rst:63
 msgid ""
@@ -115,18 +145,22 @@ msgid ""
 "they do in real life, and it also means you can potentially send objects "
 "flying off the edge! Did I also mention you could flip the table?"
 msgstr ""
+"Além do jogo ser um simulador de jogos de mesa, ele é construído usando uma "
+"engine de simulação de física 3D! Isso quer dizer que os objetos no jogo se "
+"comportam como fariam na vida real, e além disso, você pode jogar objetos "
+"para fora da mesa! Eu mencionei que é possível jogar a mesa pelos ares?"
 
 #: ../../general/about.rst:70
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Perguntas Frequentes"
 
 #: ../../general/about.rst:73
 msgid "What platforms can I play Tabletop Club on?"
-msgstr ""
+msgstr "Em quais plataformas eu posso jogar Tabletop Club?"
 
 #: ../../general/about.rst:75
 msgid "Tabletop Club can be played on any of these platforms:"
-msgstr ""
+msgstr "O Tabletop Club pode ser jogado nas seguintes plataformas:"
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
@@ -138,7 +172,7 @@ msgstr ""
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
-msgstr ""
+msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
@@ -155,26 +189,32 @@ msgid ""
 "Currently there are no plans for the game to be supported on mobile devices "
 "or consoles."
 msgstr ""
+"No momento não a planos de fazer um porte do jogo para aparelhos moveis e "
+"consoles."
 
 #: ../../general/about.rst:91
 msgid "Does Tabletop Club support multiplayer?"
-msgstr ""
+msgstr "O Tabletop Club tem suporte para multijogador?"
 
 #: ../../general/about.rst:93
 msgid ""
 "Yes! You don't need to make an account to play multiplayer, you can just "
 "host a game and start playing with friends!"
 msgstr ""
+"Sim! E você não precisa criar uma conta para jogar online, basta criar um "
+"host e começar a jogar com seus amigos!"
 
 #: ../../general/about.rst:98
 msgid ""
 "You can change your name and colour in multiplayer by going to :guilabel:"
 "`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
 msgstr ""
+"Você pode mudar seu nome e cor do multijogador indo em :guilabel:`Opções` > :"
+"guilabel:`Multjogador`, e mudar as configurações relevantes."
 
 #: ../../general/about.rst:104
 msgid "Is Tabletop Club on Steam / GOG / itch.io?"
-msgstr ""
+msgstr "Tabletop Club está na Steam / GOG / itch.io?"
 
 #: ../../general/about.rst:106
 msgid ""
@@ -186,9 +226,16 @@ msgstr ""
 
 #: ../../general/about.rst:113
 msgid "What stage of development is Tabletop Club at?"
-msgstr ""
+msgstr "Em qual estágio de desenvolvimento Tabletop Club está atualmente?"
 
 #: ../../general/about.rst:115
+#, fuzzy
+#| msgid ""
+#| "Tabletop Club is currently in alpha development. This means that core "
+#| "features of the game are still being implemented (you can see what needs "
+#| "to be added by going to the `issues page <https://github.com/drwhut/"
+#| "tabletop-club/issues>`_ on GitHub), and there are no publicly released "
+#| "versions of the game... yet."
 msgid ""
 "Tabletop Club is currently in beta development. This means that most of the "
 "core features have been implemented, but there will very likely be some "
@@ -196,6 +243,11 @@ msgid ""
 "done by going to the `issues page <https://github.com/drwhut/tabletop-club/"
 "issues>`_ on GitHub)."
 msgstr ""
+"Atualmente o Tabletop Club está no estado Alpha de desenvolvimento. Isso "
+"quer dizer que as principais funcionalidades do jogo ainda precisão ser "
+"implementadas (você pode ver o que falta para adicionar no jogo indo em "
+"`issues page <https://github.com/drwhut/tabletop-club/issues>`_ no GitHub), "
+"e não há versão publicada do jogo... ainda."
 
 #: ../../general/about.rst:121
 msgid "You can help test the game by :ref:`downloading-binaries`!"
@@ -203,11 +255,11 @@ msgstr ""
 
 #: ../../general/about.rst:125
 msgid "What board games can I play in Tabletop Club?"
-msgstr ""
+msgstr "Quais jogos de mesa eu posso jogar no Tabletop Club?"
 
 #: ../../general/about.rst:127
 msgid "Theoretically, any of them!"
-msgstr ""
+msgstr "Teoricamente, qualquer um!"
 
 #: ../../general/about.rst:129
 msgid ""
@@ -215,6 +267,9 @@ msgid ""
 "which contains some of the most common objects you'll need, like playing "
 "cards, dice, poker chips, etc."
 msgstr ""
+"Fora da caixa, os jogos que vem como padrão no Tabletop Club com o pacote de "
+"assets contem alguns dos objetos mais comuns que você irá precisar, como "
+"cartas, dados, fichas de pôker, etc."
 
 #: ../../general/about.rst:133
 msgid ""
@@ -223,6 +278,10 @@ msgid ""
 "asset pack. If everything under a game is ticked, then you can play that "
 "game!"
 msgstr ""
+"No GitHub, há em `issue <https://github.com/drwhut/tabletop-club/"
+"issues/28>`_ listando quais objetos ainda precisam ser colocados no pacote "
+"de assets padrão. Se tudo de um jogo estiver marcado, então você poderá "
+"jogar aquele jogo!"
 
 #: ../../general/about.rst:138
 msgid ""
@@ -231,10 +290,15 @@ msgid ""
 "else has already made, or you can create your own! Visit the :ref:`asset-"
 "packs` page if you're interested in making your own assets."
 msgstr ""
+"Por outro lado, se as peças que você precisa não vão ser incluídas no pacote "
+"de assets padrão, você pode baixar um pacote de assets que já tenha sido "
+"criado por alguém, ou, você pode criar o seu próprio pacote! Visite a "
+"página :ref: `pacotes de assets` se você está interessado em criar seus "
+"próprios assets."
 
 #: ../../general/about.rst:145
 msgid "How easy is it to setup a game in Tabletop Club?"
-msgstr ""
+msgstr "O quão fácil é arrumar um jogo no Tabletop Club?"
 
 #: ../../general/about.rst:147
 msgid ""
@@ -243,6 +307,10 @@ msgid ""
 "then click on the game you want to play, then click :guilabel:`Load`) to "
 "play the game right away!"
 msgstr ""
+"Para a maioria dos jogos populares, o pacore padrão vem com um arquivo salvo "
+"pré-pronto que você pode carregar instantaneamente (dentro do jogo, clique :"
+"guilabel:`Jogos`, escolha o jogo que você quer jogar, clique :guilabel:"
+"`Carregar`) para já sair jogando!"
 
 #: ../../general/about.rst:152
 msgid ""
@@ -251,12 +319,19 @@ msgid ""
 "by going to the menu and clicking :guilabel:`Save file`. This way, if you "
 "want to play the game again, you can just load the save you made previously."
 msgstr ""
+"Se não há nenhum arquivo pré-pronto salvo para o jogo que você deseja jogar, "
+"você pode facilmente fazer um e salva-lo com a mesa organizada da maneira "
+"que desejar, basta ir em menu, clicar em configurações, :guilabel:`Salvar "
+"arquivo`. Dessa maneira você pode jogar o jogo da maneira que você salvou "
+"pela ultima vez sem precisar organizar a mesa novamente."
 
 #: ../../general/about.rst:157
 msgid ""
 "See the :ref:`asset-type-game` page for more information about pre-made save "
 "files in asset packs."
 msgstr ""
+"Veja a página :ref:`tipos de asset de jogo` para mais informações sobre "
+"pacotes salvos de arquivos pré-prontos."
 
 #: ../../general/about.rst:162
 msgid "Can I add assets other than game pieces to Tabletop Club?"
@@ -1508,3 +1583,34 @@ msgid ""
 "built binary, but you'll need to do this if you plan on contributing to the "
 "game code, or you could try it for fun!"
 msgstr ""
+
+#~ msgid ""
+#~ "To see the details of these assets and their authors and licenses, have a "
+#~ "look at ``assets/TabletopClub/LICENSES`` and ``game/LICENSES.tres`` in "
+#~ "the source code."
+#~ msgstr ""
+#~ "Para ver mais detalhes sobre as assets e seus autores e licenciamento, de "
+#~ "uma olhada em ``assets/TabletopClub/LICENSES`` e ``game/LICENSES.tres`` "
+#~ "no código fonte."
+
+#~ msgid "Windows"
+#~ msgstr "Windows"
+
+#~ msgid "macOS"
+#~ msgstr "macOS"
+
+#~ msgid ""
+#~ "No. Tabletop Club is a standalone game, meaning when you download the "
+#~ "game you can extract the game files anywhere you want on your computer, "
+#~ "and the game will work."
+#~ msgstr ""
+#~ "Não. Tabletop Club é um jogo standalone, significa que você pode baixar e "
+#~ "extrair os arquivos do jogo em qualquer lugar do seu computador e ele irá "
+#~ "funcionar."
+
+#~ msgid ""
+#~ "Currently there are no plans to add Tabletop Club to any gaming platform "
+#~ "at this stage."
+#~ msgstr ""
+#~ "No momento não temos planos para adicionar Tabletop Club em qualquer "
+#~ "plataforma no estagio atual."
