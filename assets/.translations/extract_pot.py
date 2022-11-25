@@ -46,6 +46,7 @@ with open(json_path, "r") as json_file:
             for asset in asset_db[pack][asset_type]:
                 asset_name = asset["name"]
                 loc = "../{}/{}/{}".format(pack, asset_type, asset_name)
+                loc = loc.replace(" ", "_")
 
                 key_index = 0
                 for key in [ "name", "desc" ]:
