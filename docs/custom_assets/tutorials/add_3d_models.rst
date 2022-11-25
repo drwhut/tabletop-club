@@ -91,8 +91,28 @@ only supported option - see :ref:`file-type-3d` for all supported formats.
 
 To export the model, click on :guilabel:`File` > :guilabel:`Export` >
 :guilabel:`glTF 2.0 (.glb/.gltf)`, and in the dialog, go to your asset pack
-folder.
+folder (if you do not have one, see :ref:`tutorial-creating-asset-pack`). From
+here, you have a choice as to what folder you can create and put the exported
+model in, depending on what functionality the object should have:
 
-.. todo::
+* :ref:`object-type-container`: ``MyAssetPack/containers``
+* :ref:`object-type-dice`: ``MyAssetPack/dice`` - then depending on how many
+  sides the die has, a further subfolder named: ``d4``, ``d6``, ``d8``, ``d10``,
+  ``d12``, or ``d20``.
+* :ref:`object-type-piece`: ``MyAssetPack/pieces``
+* :ref:`object-type-speaker`: ``MyAssetPack/speakers``
+* :ref:`asset-type-table`: ``MyAssetPack/tables``
+* :ref:`object-type-timer`: ``MyAssetPack/timers``
 
-   Finish this page.
+If you are not sure what type of object the model should be, then a safe default
+is :ref:`object-type-piece`, since it has no special functionality.
+
+
+See more
+--------
+
+And with that, the next time you launch the game, you should be able to spawn in
+your 3D model in-game through the :guilabel:`Objects` menu!
+
+If you want to configure your new objects, feel free to have a look at
+:ref:`file-type-3d` and :ref:`config-cfg`.
