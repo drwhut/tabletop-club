@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-21 13:07+0100\n"
+"POT-Creation-Date: 2022-11-25 11:08+0000\n"
 "PO-Revision-Date: 2022-07-07 21:18+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/docs-"
@@ -321,29 +321,29 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:131
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
 msgid "Text"
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:131
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
 msgid "All"
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:131
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
 msgid "``\"\"``"
 msgstr ""
 
@@ -370,14 +370,15 @@ msgid "``bounce``"
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "Number"
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid "Tables"
 msgstr "Tafels"
 
@@ -392,226 +393,246 @@ msgid ""
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
-msgid "``color``"
+msgid "``collision_mode``"
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
-msgid "String"
-msgstr ""
-
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
-msgid "Objects"
+#, fuzzy
+#| msgid "Objects"
+msgid "Objects, Tables"
 msgstr "Objecten"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
-msgid "``#ffffff``"
+msgid "``0``"
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
+msgid ""
+"Determines the collision shape of the object. See :ref:`file-type-3d` for "
+"more details."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+msgid "``color``"
+msgstr ""
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+msgid "String"
+msgstr ""
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
+msgid "Objects"
+msgstr "Objecten"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+msgid "``#ffffff``"
+msgstr ""
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 msgid "Multiply the color of the texture by this value."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 msgid "``default``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:166
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
 msgid "Boolean"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 msgid "Skyboxes, Tables"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:166
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
 msgid "``false``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 msgid ""
 "If ``true``, the asset is loaded before the game starts. If ``true`` for "
 "multiple assets, one is loaded at random."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 msgid "``desc``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 msgid "Describes the asset in more detail."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "``face_values``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "Dictionary"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
-#: ../../custom_assets/asset_packs/asset_types.rst:72
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
+#: ../../custom_assets/asset_packs/asset_types.rst:77
 msgid "Dice"
 msgstr "Dobbelsteen"
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "``{}``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid ""
 "Specifies which rotations correspond to what values on the faces of the die. "
 "See :ref:`object-type-dice` for more information."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 msgid "``hands``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 msgid "Array"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 msgid "``[]``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 msgid ""
 "The positions of player's hands around the table. See :ref:`asset-type-"
 "table` for more information."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
 msgid "``ignore``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
 msgid ""
 "If ``true``, it tells the game to ignore this asset when importing the asset "
 "pack."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 msgid "``license``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 msgid "The license the asset is distributed under."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
 msgid "``main_menu``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
 #, fuzzy
 #| msgid "Objects"
 msgid "Music, Objects"
 msgstr "Objecten"
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
 msgid ""
 "If ``true``, objects will have a chance of spawning in the main menu, and "
 "music will have a chance of playing in the main menu."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 msgid "``mass``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "``1.0``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 msgid ""
 "The mass of the object in grams (g) when it is spawned in-game. It is "
 "recommended to set this value for more realistic physics collisions."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
 msgid "``modified_by``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
 msgid "The name(s) of the people who have modified the asset."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid "``paint_plane``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid "Vector2"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid "``Vector2(100.0, 100.0)``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid ""
 "The length and width of the plane in which players can paint on the table. "
 "The centre of the plane is at the origin."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 msgid "``rotation``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 msgid "Vector3"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "Skyboxes"
 msgstr "Skyboxen"
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 msgid "``Vector3(0.0, 0.0, 0.0)``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 msgid "Rotates the skybox a number of degrees in the X, Y and Z axes."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 msgid "``scale``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 msgid "``Vector3(1.0, 1.0, 1.0)``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 msgid ""
 "Scales the object in the X, Y and Z axes in centimeters (cm). Note that for "
 "objects that use custom 3D models, this value most likely won't reflect the "
 "final size of the object."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 msgid "``sfx``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 msgid "``\"generic\"``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 msgid ""
 "Determines what the object sounds like when it collides with the table. "
 "Possible values are: ``\"generic\"``, ``\"glass\"``, ``\"glass_heavy\"``, ``"
@@ -620,77 +641,77 @@ msgid ""
 "\"``, ``\"wood_light\"``."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:166
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
 msgid "``shakable``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:166
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
 msgid "Containers"
 msgstr "Dozen"
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:166
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
 msgid ""
 "If ``true``, when the container is being shaken upside down, it will "
 "randomly drop items out."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "``strength``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "The strength of the ambient light coming from the skybox."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:172
 msgid "``suit``, ``value``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:172
 msgid "Number, Text"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:172
 msgid "Cards, Tokens"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:172
 msgid "``null``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:172
 msgid ""
 "A value given to a stackable object that allows it to be sorted in a stack."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
 msgid "``url``"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
 msgid "The URL where the asset originally came from."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:178
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:182
 msgid "stacks.cfg"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:180
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:184
 msgid ""
 "For :ref:`object-type-card` and :ref:`object-type-token` objects, you can "
 "add this file to add pre-filled stacks of those objects to the asset pack. A "
 "good example of this is for adding pre-filled decks of cards to the game."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:184
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:188
 msgid "Here is an example of a ``stacks.cfg`` file:"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:212
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:216
 msgid "Translations"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:214
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:218
 msgid ""
 "You can also provide translations for the names and descriptions of assets "
 "in the asset pack! This is done using separate configuration files for each "
@@ -699,13 +720,13 @@ msgid ""
 "tutorials/i18n/locales.html>`_ for your language."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:223
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:227
 msgid ""
 "The list of languages supported by the game is shown in the `README <https://"
 "github.com/drwhut/tabletop-club#languages>`_ file of the project."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:226
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:230
 msgid ""
 "If the language you are translating to is not on this list, unfortunately "
 "you will not be able to see the results in-game. However, you can help to "
@@ -713,7 +734,7 @@ msgid ""
 "See :ref:`translating-the-project` for more information."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:233
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:237
 msgid ""
 "These translation files are treated differently to other configuration "
 "files. You can only edit the ``name`` and ``desc`` properties of assets in "
@@ -721,7 +742,7 @@ msgid ""
 "same time with wildcards."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_pack_structure.rst:238
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:242
 msgid ""
 "Here is an example of a Norwegian translation file, called ``config.nb.cfg``:"
 msgstr ""
@@ -741,28 +762,27 @@ msgid ""
 "objects, each with their own special functionality:"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:14
-#: ../../custom_assets/tutorials/index.rst:7
-msgid "Todo"
-msgstr ""
-
-#: ../../custom_assets/asset_packs/asset_types.rst:16
-msgid "Add images of each of the different types of objects."
-msgstr ""
-
-#: ../../custom_assets/asset_packs/asset_types.rst:22
+#: ../../custom_assets/asset_packs/asset_types.rst:18
 #: ../../custom_assets/asset_packs/file_types.rst:33
 msgid "Card"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:24
+#: ../../custom_assets/asset_packs/asset_types.rst:None
+msgid ""
+"A row of five cards in a white rectangle representing the player's\n"
+"hand, from left to right, they are the ace of clubs, the ace of diamonds,\n"
+"the ace of hearts, the ace of spades, and a card that is facing down. The\n"
+"text \"player\" is shown in front of the hand."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/asset_types.rst:26
 msgid ""
 "Cards are flat, rectangular-shaped objects that are stackable, and they have "
 "the unique functionality to be able to be put in a player's hand, where only "
 "the player whose hand it is can see the front face of the card."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:28
+#: ../../custom_assets/asset_packs/asset_types.rst:30
 msgid ""
 "Unlike other objects, you need two separate textures for cards - one for the "
 "front face, and one for the back face. The game registers each of the "
@@ -770,17 +790,21 @@ msgid ""
 "to tell the game where to find the back face in the ``config.cfg`` file."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:33
+#: ../../custom_assets/asset_packs/asset_types.rst:35
 msgid ""
 "Here is a simple example that will apply a back face texture (in this "
 "example, ``BackFace.png``) to all of the cards in the folder:"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:53
+#: ../../custom_assets/asset_packs/asset_types.rst:55
 msgid "Container"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:55
+#: ../../custom_assets/asset_packs/asset_types.rst:None
+msgid "A red plastic cup is placed near the corner of a table."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/asset_types.rst:60
 msgid ""
 "Containers are special objects that can hold an unlimited amount of other "
 "objects inside themselves (including other containers)! Containers are "
@@ -790,130 +814,148 @@ msgid ""
 "container."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:61
+#: ../../custom_assets/asset_packs/asset_types.rst:66
 msgid ""
 "Objects can be placed inside a container by touching the container with the "
 "object you want to add, and objects can be randomly removed from the "
 "container by quickly dragging from the container."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:65
+#: ../../custom_assets/asset_packs/asset_types.rst:70
 msgid ""
 "Containers can also be configured to drop items out when they are shaken "
 "upside-down by setting ``shakable = true`` in the :ref:`config-cfg` file."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:74
+#: ../../custom_assets/asset_packs/asset_types.rst:None
+msgid "On the table is a set of dice of varying colours and sides."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/asset_types.rst:82
 msgid "Dice are objects that, when shaken, randomize their orientation."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:76
+#: ../../custom_assets/asset_packs/asset_types.rst:84
 msgid ""
 "They can also be configured to report certain values depending on their "
 "orientation in the :ref:`config-cfg` file, using the ``face_values`` "
 "property:"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:104
+#: ../../custom_assets/asset_packs/asset_types.rst:112
 msgid ""
 "If the face values are configured correctly, then the player will easily be "
 "able to check the total of a set of thrown dice by selecting, then right-"
 "clicking the dice. The total will be shown at the top of the context menu."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:108
+#: ../../custom_assets/asset_packs/asset_types.rst:116
 msgid ""
 "If ``face_values`` is not configured, the dice will always report ``0`` as "
 "its value."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:115
+#: ../../custom_assets/asset_packs/asset_types.rst:123
 msgid "Piece"
 msgstr "Spelstuk"
 
-#: ../../custom_assets/asset_packs/asset_types.rst:117
+#: ../../custom_assets/asset_packs/asset_types.rst:None
+msgid "On the table are two chess pieces, a white pawn and a black queen."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/asset_types.rst:128
 msgid "Pieces are generic objects with no special functionality."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:123
+#: ../../custom_assets/asset_packs/asset_types.rst:134
 msgid "Speaker"
 msgstr "Spreker"
 
-#: ../../custom_assets/asset_packs/asset_types.rst:125
+#: ../../custom_assets/asset_packs/asset_types.rst:None
+msgid "By the corner of the table is a large, metallic gramophone."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/asset_types.rst:139
 msgid ""
 "Speakers are objects that can play audio tracks. They emit sound "
 "positionally, so the audio will vary depending on the position of the "
 "speaker relative to the camera."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:133
+#: ../../custom_assets/asset_packs/asset_types.rst:147
 msgid "Timer"
 msgstr "Tijdklok"
 
-#: ../../custom_assets/asset_packs/asset_types.rst:135
+#: ../../custom_assets/asset_packs/asset_types.rst:149
 msgid ""
 "Timers are objects that can be used as countdowns, stopwatches, or to "
 "display the system time. If an audio track is loaded, it will automatically "
 "play when the countdown reaches 0."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:143
+#: ../../custom_assets/asset_packs/asset_types.rst:157
 msgid "Token"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:145
+#: ../../custom_assets/asset_packs/asset_types.rst:None
+msgid ""
+"On the table are some stacks of poker chips varying in height,\n"
+"representing various values, those being 1, 5, 10, 25, and 100."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/asset_types.rst:163
 msgid ""
 "Tokens are objects that are vertically stackable, meaning they join together "
 "when their top and bottom faces touch, similar to cards."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:152
+#: ../../custom_assets/asset_packs/asset_types.rst:170
 msgid "Sound"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:154
+#: ../../custom_assets/asset_packs/asset_types.rst:172
 msgid ""
 "Sounds can be played through either a :ref:`object-type-speaker` or a :ref:"
 "`object-type-timer`."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:161
+#: ../../custom_assets/asset_packs/asset_types.rst:179
 msgid "Music"
 msgstr "Muziek"
 
-#: ../../custom_assets/asset_packs/asset_types.rst:163
+#: ../../custom_assets/asset_packs/asset_types.rst:181
 msgid ""
 "Music tracks are the same as sounds, but they can also be configured to play "
 "in the main menu. See the ``main_menu`` property in :ref:`config-cfg`."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:170
+#: ../../custom_assets/asset_packs/asset_types.rst:188
 msgid "Game"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:172
+#: ../../custom_assets/asset_packs/asset_types.rst:190
 msgid ""
 "A game is a :ref:`file-type-save` that has been pre-made such that players "
 "can instantly setup the table to play a particular game."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:177
+#: ../../custom_assets/asset_packs/asset_types.rst:195
 msgid ""
 "If there is an image next to the save file with the same name, it will be "
 "shown next to the save file in-game."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:184
+#: ../../custom_assets/asset_packs/asset_types.rst:202
 msgid "Skybox"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:186
+#: ../../custom_assets/asset_packs/asset_types.rst:204
 msgid ""
 "Skyboxes are special textures that determine what the environment around the "
 "table looks like."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:189
+#: ../../custom_assets/asset_packs/asset_types.rst:207
 msgid ""
 "Skybox textures in Tabletop Club use equirectangular mappings, as opposed to "
 "six-image cube mappings. Godot recommends using `this tool <https://danilw."
@@ -921,55 +963,55 @@ msgid ""
 "convert cube-mapped skyboxes to equirectangular skyboxes."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:194
+#: ../../custom_assets/asset_packs/asset_types.rst:212
 msgid ""
 "For the best lighting quality, it is recommended to use a HDR panorama. "
 "Tabletop Club supports the Radiance HDR (``.hdr``) and OpenEXR (``.exr``) "
 "formats."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:200
+#: ../../custom_assets/asset_packs/asset_types.rst:218
 msgid ""
 "If the skybox is either too bright or too dim, then you can change the "
 "strength of the ambient light generated by the skybox by setting the "
 "``strength`` value in the :ref:`config-cfg` file."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:208
+#: ../../custom_assets/asset_packs/asset_types.rst:226
 msgid "Table"
 msgstr "Tafel"
 
-#: ../../custom_assets/asset_packs/asset_types.rst:210
+#: ../../custom_assets/asset_packs/asset_types.rst:228
 msgid ""
 "A table is a :ref:`file-type-3d` that is placed in the centre of the game "
 "world for players to put objects on."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:213
+#: ../../custom_assets/asset_packs/asset_types.rst:231
 msgid ""
 "However, unlike custom objects, the position and scale of the exported model "
 "matters. Keep the following points in mind when you export models to be used "
 "as tables:"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:217
+#: ../../custom_assets/asset_packs/asset_types.rst:235
 msgid "One unit in the exported model = one centimeter (cm) in-game."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:218
+#: ../../custom_assets/asset_packs/asset_types.rst:236
 msgid ""
 "The lowest vertical position the camera can zoom to is ``0`` (this is either "
 "the y or z axis, depending on the program you're using)."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:221
+#: ../../custom_assets/asset_packs/asset_types.rst:239
 msgid ""
 "Tables also have a set of hand positions, which are assigned to players by "
 "the server when they join the game. These hand positions can be defined in "
 "the ``config.cfg`` file:"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/asset_types.rst:247
+#: ../../custom_assets/asset_packs/asset_types.rst:265
 msgid ""
 "Tables can also be painted on by the players! You can set the size of the "
 "area that the players can paint on by setting the ``paint_plane`` property "
@@ -1054,7 +1096,47 @@ msgstr ""
 msgid "Wavefront (``.obj``)"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/file_types.rst:69
+#: ../../custom_assets/asset_packs/file_types.rst:67
+msgid ""
+"You can also specify how accurate the collision of the model is using the "
+"``collision_mode`` property in the :ref:`config-cfg` file."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/file_types.rst:70
+msgid ""
+"``collision_mode = 0`` *(default)*: The collision takes a *convex* shape, "
+"which is the simplest, but also the least accurate. If the model is hollow, "
+"other objects will not be able to go inside the model in this mode."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/file_types.rst:74
+msgid ""
+"``collision_mode = 1``: The collision is made up of *multiple convex* "
+"shapes, which is slightly more accurate, but at the cost of performance "
+"(depending on the complexity of the model)."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/file_types.rst:78
+msgid ""
+"If a model's collision is not acting in the way you expect, it is "
+"recommended to switch to this mode."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/file_types.rst:81
+msgid ""
+"``collision_mode = 2``: The collision takes a *concave* shape, which is "
+"fully accurate, but also the heaviest on performance. Due to limitations "
+"with the game engine, concave models will not be able to collide with each "
+"other."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/file_types.rst:85
+msgid ""
+"This mode is recommended for models that are designed to be locked in place, "
+"like scenery or buildings."
+msgstr ""
+
+#: ../../custom_assets/asset_packs/file_types.rst:90
 msgid ""
 "When exporting 3D models with textures, make sure that the textures are also "
 "in the same folder as the exported model. You may also need to manually edit "
@@ -1062,58 +1144,58 @@ msgid ""
 "file path, otherwise the textures won't work when the model is imported!"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/file_types.rst:78
+#: ../../custom_assets/asset_packs/file_types.rst:99
 msgid "Audio"
 msgstr "Audio"
 
-#: ../../custom_assets/asset_packs/file_types.rst:80
+#: ../../custom_assets/asset_packs/file_types.rst:101
 msgid "As of right now, Tabletop Club supports the following audio formats:"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/file_types.rst:82
+#: ../../custom_assets/asset_packs/file_types.rst:103
 msgid "MP3 (``.mp3``)"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/file_types.rst:83
+#: ../../custom_assets/asset_packs/file_types.rst:104
 msgid "Vorbis (``.ogg``)"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/file_types.rst:84
+#: ../../custom_assets/asset_packs/file_types.rst:105
 msgid "Waveform (``.wav``)"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/file_types.rst:86
+#: ../../custom_assets/asset_packs/file_types.rst:107
 msgid ""
 "You can find out which format works best for you in the `importing audio "
 "page <https://docs.godotengine.org/en/stable/getting_started/workflow/assets/"
 "importing_audio_samples.html>`_ in the Godot documentation."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/file_types.rst:94
+#: ../../custom_assets/asset_packs/file_types.rst:115
 msgid "Save File"
 msgstr ""
 
-#: ../../custom_assets/asset_packs/file_types.rst:96
+#: ../../custom_assets/asset_packs/file_types.rst:117
 msgid ""
 "Save files are used to load back a saved state within Tabletop Club. They "
 "use the ``.tc`` extension."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/file_types.rst:99
+#: ../../custom_assets/asset_packs/file_types.rst:120
 msgid ""
 "To create a save file when in-game, go to the menu and click :guilabel:`Save "
 "game`, then choose a name to save the file as. You can then load the state "
 "back by clicking the :guilabel:`Load game` button in the same menu."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/file_types.rst:104
+#: ../../custom_assets/asset_packs/file_types.rst:125
 msgid ""
 "When saving, the game puts the save file under the ``<DOCUMENTS>/"
 "TabletopClub/saves`` folder, alongside a screenshot which is taken when the "
 "save is made."
 msgstr ""
 
-#: ../../custom_assets/asset_packs/file_types.rst:110
+#: ../../custom_assets/asset_packs/file_types.rst:131
 msgid ""
 "If you don't want the screenshot to have the UI, you can toggle the UI "
 "before saving by pressing the :guilabel:`F9` key."
@@ -1143,10 +1225,514 @@ msgid ""
 "`custom-asset-tutorials`."
 msgstr ""
 
+#: ../../custom_assets/tutorials/add_3d_models.rst:4
+msgid "Adding 3D models as objects"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:6
+msgid ""
+"This tutorial will teach you how to export 3D models from `Blender <https://"
+"www.blender.org/>`_ and add them to the game. If you wish to specifically "
+"add stackable objects like cards or tokens to the game, see :ref:`tutorial-"
+"adding-images`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:13
+msgid "Note about Blender"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:15
+msgid ""
+"This tutorial will be using Blender as an example to export a model ready "
+"for the game to use. It is worth noting however that if you already use "
+"another application for 3D-modelling, then it's okay as long as the "
+"application can export the model into one of the supported formats outlined "
+"in :ref:`file-type-3d`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:21
+msgid ""
+"If you do not have a 3D-modelling application installed, then I very highly "
+"recommend Blender in general, not only for this tutorial, but because it is "
+"free, and it is (in my humble opinion) one of the best open-source "
+"applications ever made! You can download it `on their website <https://www."
+"blender.org/download/>`_."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:29
+msgid "Setting up the model"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:31
+msgid ""
+"For the start of this tutorial, we're going to assume you have a 3D model in "
+"Blender already. If this is not the case, you can either create one, or you "
+"can import a model from the game's ``assets`` folder by going to :guilabel:"
+"`File` > :guilabel:`Import`!"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:38
+msgid ""
+"This is the ``assets`` folder next to the game executable, not the one under "
+"your Documents."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:41
+msgid ""
+"Once you can see your model in Blender, the first thing we will do is scale "
+"it to match the in-game dimensions we want. The golden rule is as follows:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:44
+msgid "**One unit in Blender = 1cm in Tabletop Club.**"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:46
+msgid ""
+"Select your object in Object Mode. From here, there are two ways you can set "
+"the scale of an object in Blender:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:49
+msgid ""
+"Pressing :guilabel:`S`, then moving the mouse of typing a number to adjust "
+"the size. You can then also press :guilabel:`X`, :guilabel:`Y` or :guilabel:"
+"`Z` to set the scale of the object on a specific axis."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:53
+msgid ""
+"In the main viewport, drag out the arrow on the right-hand side by the axis "
+"gizmo to bring out the Transform menu. At the bottom there should be three "
+"numbers representing the Dimensions of the object, which you can change."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:59
+msgid ""
+"The units in the transform menu don't affect the size of the exported model."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:64
+msgid "Further setup for tables"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:66
+msgid ""
+"Lastly, if the model is a :ref:`asset-type-table`, we will need to adjust "
+"it's position in the scene."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:71
+msgid ""
+"Positioning only matters for tables. Objects can be in any position in the "
+"scene, since the game will automatically center them when importing the "
+"model."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:75
+msgid ""
+"To position the table, select it in object mode, then you can use :guilabel:"
+"`G`, then either :guilabel:`X`, :guilabel:`Y` or :guilabel:`Z` before moving "
+"the mouse to move it in that respective axis. You'll want to position it "
+"with these points in mind:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:80
+msgid "The table should be in the centre of the scene."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:81
+msgid "The surface of the table should as close to ``z = 0`` as possible."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:85
+msgid "Exporting the model"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:87
+msgid ""
+"When exporting models, there are multiple different formats to choose from. "
+"The recommended format for Tabletop Club is glTF 2.0, with both binary (``."
+"glb``) and seperate (``.gltf``) formats supported. However, it is not the "
+"only supported option - see :ref:`file-type-3d` for all supported formats."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:92
+msgid ""
+"To export the model, click on :guilabel:`File` > :guilabel:`Export` > :"
+"guilabel:`glTF 2.0 (.glb/.gltf)`, and in the dialog, go to your asset pack "
+"folder (if you do not have one, see :ref:`tutorial-creating-asset-pack`). "
+"From here, you have a choice as to what folder you can create and put the "
+"exported model in, depending on what functionality the object should have:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:98
+msgid ":ref:`object-type-container`: ``MyAssetPack/containers``"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:99
+msgid ""
+":ref:`object-type-dice`: ``MyAssetPack/dice`` - then depending on how many "
+"sides the die has, a further subfolder named: ``d4``, ``d6``, ``d8``, "
+"``d10``, ``d12``, or ``d20``."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:102
+msgid ":ref:`object-type-piece`: ``MyAssetPack/pieces``"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:103
+msgid ":ref:`object-type-speaker`: ``MyAssetPack/speakers``"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:104
+#, fuzzy
+#| msgid ":ref:`asset-type-table`"
+msgid ":ref:`asset-type-table`: ``MyAssetPack/tables``"
+msgstr ":ref:`asset-type-table`"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:105
+msgid ":ref:`object-type-timer`: ``MyAssetPack/timers``"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:107
+msgid ""
+"If you are not sure what type of object the model should be, then a safe "
+"default is :ref:`object-type-piece`, since it has no special functionality."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:112
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:146
+msgid "See more"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:114
+msgid ""
+"And with that, the next time you launch the game, you should be able to "
+"spawn in your 3D model in-game through the :guilabel:`Objects` menu!"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:117
+msgid ""
+"If you want to configure your new objects, feel free to have a look at :ref:"
+"`file-type-3d` and :ref:`config-cfg`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_audio_tracks.rst:2
+msgid "Adding audio tracks"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_audio_tracks.rst:4
+msgid ""
+"Adding your own audio files to an asset pack is really simple, all you need "
+"to do is create a folder named either ``music`` or ``sounds``, and place "
+"your audio files inside. Afterwards, your asset pack may look something like "
+"this:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_audio_tracks.rst:21
+msgid ""
+"There is a slight difference between ``music`` and ``sounds``: Tracks placed "
+"in ``music`` will repeat once the track ends, whereas ones in ``sounds`` "
+"won't."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_audio_tracks.rst:25
+msgid ""
+"Once the tracks have been imported, you can then play them in-game through "
+"either a :ref:`object-type-speaker` or a :ref:`object-type-timer`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_audio_tracks.rst:28
+msgid "For more information, see :ref:`file-type-audio`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:4
+msgid "Adding images as cards and tokens"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:6
+msgid ""
+"This tutorial will teach you how to add images to an asset pack to make "
+"cards and tokens, which are in-game objects that can stack on top of each "
+"other. If you wish to add another kind of object to the game, see :ref:"
+"`tutorial-adding-3d-models`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:13
+msgid "Cards or tokens?"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:15
+msgid ""
+"Cards and tokens, while both are able to stack, differ slightly in extra "
+"functionality. If you're not sure which type of object you want to create, "
+"see :ref:`object-type-card` and :ref:`object-type-token`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:21
+msgid "Preparing the image"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:23
+msgid ""
+"Before we add the image to the asset pack, we will first need to make sure "
+"it is set up properly so it will appear correctly in-game."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:28
+msgid "Preparing card images"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:30
+msgid ""
+"Luckily, there is not much to do to set up card images, since the image will "
+"be shown as-is in-game! The only requirement is that each card will need "
+"it's own image (this includes the back face of the cards)."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:36
+msgid "Preparing token images"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:38
+msgid ""
+"For tokens, since the image will be mapped to a 3D shape (either a cube, or "
+"a cylinder), you'll need to modify the image to fit what is called a \"UV "
+"mapping\". This means your final image needs to look like this:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:42
+msgid "**Cube:**"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:46
+msgid "**Cylinder:**"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:52
+msgid ""
+"The resolution of the final image does not matter, only the *proportions* "
+"do. See :ref:`file-type-image` for more information."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:57
+msgid "Adding the images to the asset pack"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:59
+msgid ""
+"With the images set up, we can now add them to the asset pack! If you do not "
+"already have one, see :ref:`tutorial-creating-asset-pack`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:62
+msgid ""
+"In your asset pack, create a folder named either ``cards`` or ``tokens``. If "
+"you are adding tokens, you'll need to create a sub-folder named either "
+"``cube`` or ``cylinder`` depending on what shape the token will be. Once the "
+"folders are created, it's just a matter of copying the images to their "
+"respective folders, like so:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:84
+msgid "Configuring the object size"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:86
+msgid ""
+"At this point, you can launch the game and see that there are now objects in-"
+"game with your images on them, except they they are probably the wrong size. "
+"This is because without telling the game otherwise, it will assume the "
+"object is 1cm x 1cm x 1cm."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:91
+msgid ""
+"We can tell the game what size the object should actually be by creating a :"
+"ref:`config-cfg` file next to our images in the asset folder. Create a file "
+"with this name in your file manager, then open it with a text editor of your "
+"choice! Here are a few examples of how to set the size of your objects:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:119
+msgid ""
+"Cards are always the same thickness, so the second number in the ``scale`` "
+"property can just be ``1.0`` in this case."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:124
+msgid "Configuring card backs"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:126
+msgid ""
+"Using the :ref:`config-cfg` file, you can also tell the game what image to "
+"use for the back face of cards. Using ``Back.png`` as an example:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:148
+msgid "Congratulations, you now have your own cards and tokens in the game!"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:150
+msgid ""
+"If you want to further configure your objects, see :ref:`object-type-card`, :"
+"ref:`object-type-token`, and :ref:`config-cfg`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:153
+msgid ""
+"If you want to add pre-made stacks of cards and tokens to your asset pack, "
+"see :ref:`stacks-cfg`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_save_files.rst:2
+msgid "Adding saved games"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_save_files.rst:4
+msgid ""
+"If you are creating your asset pack to be able to play a certain game, then "
+"it may be worth adding a pre-made save file to the asset pack so players can "
+"get started straight away, without them having to spawn each object and "
+"place them individually."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_save_files.rst:9
+msgid ""
+"Firstly, you'll need to setup the table in-game the way you want players to "
+"see it, then go to :guilabel:`Menu` > :guilabel:`Save game`, enter an "
+"appropiate name, then click :guilabel:`Save`. This will create two files in "
+"your ``saves`` folder as shown:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_save_files.rst:22
+msgid ""
+"The ``.png`` file is a thumbnail created by the game at the time of saving, "
+"which is displayed alongside the save file. The ``.tc`` file is what "
+"contains the save data."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_save_files.rst:28
+msgid ""
+"You can improve how the thumbnail looks by pre-positioning the camera before "
+"saving, as well as by hiding the UI (:guilabel:`F9` by default)."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_save_files.rst:31
+msgid ""
+"To add these files to your asset pack, it's as simple as creating a "
+"``games`` folder, and copying the thumbnail and save file inside, like so:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_save_files.rst:41
+msgid ""
+"Once the save file has been imported, you can then load it in-game by "
+"clicking on :guilabel:`Games`, selecting it from the menu, and clicking :"
+"guilabel:`Load`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_save_files.rst:46
+msgid ""
+"You don't necessarily have to use the thumbnail the game generates! In "
+"theory, you can have any image alongside the save, and it will be displayed "
+"next to the save file in-game. The only requirement is that the name of the "
+"image *must* be the same name as the save file."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_save_files.rst:51
+msgid "For more information, see :ref:`file-type-save`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:2
+#, fuzzy
+#| msgid "Skyboxes"
+msgid "Adding skyboxes"
+msgstr "Skyboxen"
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:4
+msgid ""
+"To add your own skybox to the game, simply create a ``skyboxes`` folder "
+"inside your asset pack, then place your skybox image into that folder, like "
+"this:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:13
+msgid ""
+"Once the skybox has been imported, you can go in-game and press :guilabel:"
+"`Room` > :guilabel:`Skybox` > :guilabel:`Change skybox`, select the skybox "
+"from your asset pack, then click :guilabel:`Apply`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:19
+msgid ""
+"The only format that the game accepts are equirectangular images like this "
+"one:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:None
+msgid ""
+"A 360 degree image of an urban park, projected onto a rectangular\n"
+"image."
+msgstr ""
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:26
+msgid ""
+"If the skybox you want to add is cube-mapped, you can find more information "
+"about how to convert it in :ref:`asset-type-skybox`."
+msgstr ""
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:4
+msgid "Creating your own asset pack"
+msgstr ""
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:6
+msgid ""
+"Before you can add anything to the game, first you'll need to create your "
+"own asset pack for the game to scan when it starts. Luckily, it's super easy!"
+msgstr ""
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:9
+msgid ""
+"If you haven't already, launch the game. The game will automatically create "
+"a folder for us to place our asset pack in your Documents, like so:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:18
+msgid ""
+"Once you've found the ``assets`` folder, to make your own asset pack, you "
+"simply create a folder inside of it, giving it any name you want. In this "
+"example, the name of the asset pack would be ``MyAssetPack``:"
+msgstr ""
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:29
+msgid ""
+"And that's it! Note that everything you add will be put under this new "
+"folder, and all the following guides will assume you've created it."
+msgstr ""
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:32
+msgid ""
+"Once you have added what you want to your asset pack, you can either restart "
+"the game, or go to :guilabel:`Options` > :guilabel:`General`, and click :"
+"guilabel:`Reimport Assets` to have the game import everything you've added "
+"so you can use it in-game!"
+msgstr ""
+
 #: ../../custom_assets/tutorials/index.rst:5
 msgid "Tutorials"
 msgstr ""
 
-#: ../../custom_assets/tutorials/index.rst:9
-msgid "Add tutorials for creating assets for asset packs."
+#: ../../custom_assets/tutorials/index.rst:7
+msgid ""
+"This chapter contains easy-to-follow guides on how to add your own content "
+"to Tabletop Club!"
+msgstr ""
+
+#: ../../custom_assets/tutorials/index.rst:10
+msgid ""
+"These guides will cover the basics on adding various items to the game - if "
+"you want to see the full specification for what you can do with this system, "
+"see :ref:`asset-packs` for more information."
 msgstr ""
