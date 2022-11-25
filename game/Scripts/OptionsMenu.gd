@@ -32,6 +32,7 @@ var LOCALES = [
 	{ "locale": "en", "name": "English" },
 	{ "locale": "fr", "name": "Français" },
 	{ "locale": "nl", "name": "Nederlands" },
+	{ "locale": "pt", "name": "Português" },
 	{ "locale": "ru", "name": "Русский" }
 ]
 

@@ -293,7 +293,7 @@ game_zoom_out={
 
 [locale]
 
-translations=PoolStringArray( "res://Translations/fr.po", "res://Translations/de.po", "res://Translations/nl.po", "res://Translations/ru.po" )
+translations=PoolStringArray( "res://Translations/fr.po", "res://Translations/de.po", "res://Translations/nl.po", "res://Translations/ru.po", "res://Translations/pt.po" )
 
 [network]
 
