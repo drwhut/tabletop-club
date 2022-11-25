@@ -391,6 +391,11 @@ game through the editor to play it. Here's how you can export the project:
 5. Copy the ``tabletop-club/assets/`` folder next to the exported binary, so
    the game has assets to import.
 
+   .. note::
+
+      On macOS, you'll need to put this folder inside the ``.app`` package, 
+      specifically in ``Tabletop Club.app/Contents/Resources``.
+
 Now, you should be able to launch the exported executable and play the game
 directly!
 

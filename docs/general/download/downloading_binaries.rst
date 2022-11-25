@@ -101,13 +101,10 @@ Downloading for macOS
    ``TabletopClub_vX.X.X_OSX_Universal.zip``.
 
 2. When it has downloaded, go to your downloads folder in Finder, and find
-   the compressed file. Double-click the file to extract the folder - it will be
-   called something like ``TabletopClub_vX.X.X_OSX_Universal``.
+   the compressed file. Double-click the file to extract the application.
 
-3. Re-name the new folder to ``TabletopClub``.
-
-4. Go into the folder, and launch the game by right-clicking ``TabletopClub``
-   and clicking :guilabel:`Open`.
+3. Launch the game by right-clicking ``TabletopClub`` and clicking
+   :guilabel:`Open`.
 
    .. note::
 

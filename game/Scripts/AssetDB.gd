@@ -36,6 +36,7 @@ enum {
 const ASSET_DIR_PREFIXES = [
 	".",
 	"..",
+	"{EXEC_DIR}/../Resources", # macOS workaround.
 	"{DOWNLOADS}/TabletopClub",
 	"{DOCUMENTS}/TabletopClub",
 	"{DESKTOP}/TabletopClub"
@@ -171,6 +172,7 @@ func get_asset_paths() -> Array:
 	var out = []
 	for prefix in ASSET_DIR_PREFIXES:
 		var path = prefix + "/assets"
+		path = path.replace("{EXEC_DIR}", OS.get_executable_path().get_base_dir())
 		path = path.replace("{DOWNLOADS}", OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS))
 		path = path.replace("{DOCUMENTS}", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
 		path = path.replace("{DESKTOP}", OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP))
