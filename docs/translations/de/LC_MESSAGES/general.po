@@ -8,21 +8,24 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-11-28 17:25+0000\n"
+"Last-Translator: Raphipod <podraphi@googlemail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-general/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
-msgstr ""
+msgstr "Über"
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
-msgstr ""
+msgstr "Was ist Tabletop Club?"
 
 #: ../../general/about.rst:10
 msgid ""
@@ -32,21 +35,23 @@ msgstr ""
 
 #: ../../general/about.rst:14
 msgid "Free"
-msgstr ""
+msgstr "Kostenlos"
 
 #: ../../general/about.rst:16
 msgid ""
 "The game is completely free to download and play! You can do so by going to "
 "the :ref:`downloading-binaries` page."
 msgstr ""
+"Das Spiel ist komplett kostenlos! Lade es bei :ref:`downloading-"
+"binaries`herunter."
 
 #: ../../general/about.rst:20
 msgid "Open-source"
-msgstr ""
+msgstr "Quelloffen"
 
 #: ../../general/about.rst:22
 msgid "This means a few things:"
-msgstr ""
+msgstr "Das bedeutet:"
 
 #: ../../general/about.rst:24
 msgid ""
@@ -55,6 +60,9 @@ msgid ""
 "means you can compile the game youself from scratch (see :ref:`compiling-"
 "from-source`)."
 msgstr ""
+"Der Quellcode des Spiels ist für die Öffentlichkeit sichtbar (`GitHub "
+"repository<https://github.com/drwhut/tabletop-club>`_). Man kann das Spiel "
+"auch selber von Grund auf kompilieren (siehe :ref:`compiling-from-source`)."
 
 #: ../../general/about.rst:29
 msgid ""
@@ -62,18 +70,24 @@ msgid ""
 "different ways! For more information about how you can help contribute to "
 "the project, visit the :ref:`contributing` page."
 msgstr ""
+"Jeder kann sich bei der Entwicklung in verschiedener Art und Weise "
+"einbringen! Für weitere Informationen, schaue bei :ref:`contributing` vorbei."
 
 #: ../../general/about.rst:33
 msgid ""
 "The game is licensed under the `MIT License <https://github.com/drwhut/"
 "tabletop-club/blob/master/LICENSE>`_, which is an open, permissive license."
 msgstr ""
+"Das Spiel ist unter der offenen, liberalen `MIT-Lizenz<https://github.com/"
+"drwhut/tabletop-club/blob/master/LICENSE>`_ lizenziert."
 
 #: ../../general/about.rst:39
 msgid ""
 "The game's code and project files are licensed under the MIT License, but "
 "some of the assets are licensed under different open licenses."
 msgstr ""
+"Der Programmcode und die Projektdateien des Spiels stehen unter der MIT-"
+"Lizenz, aber manche Assets sind unter anderen offenen Lizenzen unterstellt."
 
 #: ../../general/about.rst:42
 msgid ""
