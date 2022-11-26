@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-11-26 15:06+0000\n"
+"Last-Translator: Hairic95 <hairic95@gmail.com>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-general/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -22,31 +25,35 @@ msgstr ""
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
-msgstr ""
+msgstr "Cosa è Tabletop Club?"
 
 #: ../../general/about.rst:10
 msgid ""
 "Tabletop Club is a free and open-source tabletop board game simulator! "
 "That's a bit of a mouthful, so I'll break that sentence down a bit:"
 msgstr ""
+"Tabletop Club è un simulatore di giochi da tavolo gratis e open-source! In "
+"parole più semplici:"
 
 #: ../../general/about.rst:14
 msgid "Free"
-msgstr ""
+msgstr "Gratis"
 
 #: ../../general/about.rst:16
 msgid ""
 "The game is completely free to download and play! You can do so by going to "
 "the :ref:`downloading-binaries` page."
 msgstr ""
+"Il gioco è completamente gratis da scaricare e giocare! Basta andare nella "
+"pagina :ref:`downloading-binaries`."
 
 #: ../../general/about.rst:20
 msgid "Open-source"
-msgstr ""
+msgstr "Open-source"
 
 #: ../../general/about.rst:22
 msgid "This means a few things:"
-msgstr ""
+msgstr "Questo indica più cose:"
 
 #: ../../general/about.rst:24
 msgid ""
@@ -55,6 +62,10 @@ msgid ""
 "means you can compile the game youself from scratch (see :ref:`compiling-"
 "from-source`)."
 msgstr ""
+"Il codice sorgente del gioco è visibile a tutti (puoi guardarlo sulla `"
+"repository GitHub <https://github.com/drwhut/tabletop-club>`_). Questo vuol "
+"dire che puoi compilare il gioco da zero (vai a :ref:`compiling-from-"
+"source`)."
 
 #: ../../general/about.rst:29
 msgid ""
