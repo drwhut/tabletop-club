@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-11-26 15:06+0000\n"
+"Last-Translator: Hairic95 <hairic95@gmail.com>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-custom-assets/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -349,7 +352,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
 msgid "Cards"
-msgstr ""
+msgstr "Carte"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
 msgid ""
@@ -372,7 +375,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid "Tables"
-msgstr ""
+msgstr "Tavoli"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
 msgid "``0.5``"
@@ -415,7 +418,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 msgid "Objects"
-msgstr ""
+msgstr "Oggetti"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 msgid "``#ffffff``"
@@ -472,7 +475,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 #: ../../custom_assets/asset_packs/asset_types.rst:77
 msgid "Dice"
-msgstr ""
+msgstr "Dadi"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "``{}``"
@@ -587,7 +590,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "Skyboxes"
-msgstr ""
+msgstr "Skybox"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 msgid "``Vector3(0.0, 0.0, 0.0)``"
@@ -635,7 +638,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
 msgid "Containers"
-msgstr ""
+msgstr "Contenitori"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
 msgid ""
@@ -845,7 +848,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:123
 msgid "Piece"
-msgstr ""
+msgstr "Componente"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "On the table are two chess pieces, a white pawn and a black queen."
@@ -857,7 +860,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:134
 msgid "Speaker"
-msgstr ""
+msgstr "Autoparlante"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "By the corner of the table is a large, metallic gramophone."
@@ -872,7 +875,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:147
 msgid "Timer"
-msgstr ""
+msgstr "Timer"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:149
 msgid ""
@@ -909,7 +912,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:179
 msgid "Music"
-msgstr ""
+msgstr "Musica"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:181
 msgid ""
@@ -1134,7 +1137,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:99
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: ../../custom_assets/asset_packs/file_types.rst:101
 msgid "As of right now, Tabletop Club supports the following audio formats:"
