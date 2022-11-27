@@ -8,35 +8,45 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-11-28 17:23+0000\n"
+"Last-Translator: HugoPlacer <hugoplanellmoreno@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-index/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: ../../index.rst:22
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: ../../index.rst:30
 msgid "Custom Assets"
-msgstr ""
+msgstr "Recursos personalizados"
 
 #: ../../index.rst:7
 msgid "Tabletop Club Documentation"
-msgstr ""
+msgstr "Documentación de Tabletop Club"
 
 #: ../../index.rst:9
+#, fuzzy
 msgid ""
 "Welcome to the documentation for Tabletop Club, a free and open source "
 "tabletop board game simulator! If you're new to the project, feel free to "
 "check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
 "the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
+"Bienvenido a la documentación de Tabletop Club, un simulador de juegos de "
+"mesa gratuito y de código abierto. Si eres nuevo en el proyecto, no dudes en "
+"echar un vistazo a la página :ref:`about-tabletop-club`. Si no, puedes "
+"utilizar el índice, la barra lateral o la barra de búsqueda para encontrar "
+"lo que necesitas."
 
 #: ../../index.rst:16
+#, fuzzy
 msgid ""
 "The documentation, as well as the project in general, is open to suggestions "
 "and contributions! If you feel that something is not explained well, or you "
@@ -44,6 +54,11 @@ msgid ""
 "issue or a pull request on the project's `GitHub repository <https://github."
 "com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
+"La documentación, así como el proyecto en general, están abiertos a "
+"sugerencias y contribuciones. <https://github.com/drwhut/tabletop-club/"
+"issues>`_ ¡Si crees que algo no está bien explicado, o crees que falta "
+"información, no dudes en abrir una incidencia o un pull request en el "
+"repositorio GitHub del proyecto `!"
 
 #: ../../index.rst:39
 msgid "Indices and tables"
