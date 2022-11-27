@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2022-07-22 03:09+0000\n"
+"PO-Revision-Date: 2022-11-28 17:25+0000\n"
 "Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/ru/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -102,6 +102,9 @@ msgid ""
 "game (which can also be found in the various ``.cfg`` files under ``assets/"
 "``)."
 msgstr ""
+"Чтобы узнать авторов и лицензии этих ассетов, вы можете проверить файл ``"
+"game/LICENSES.tres``, а также наведя курсор на предметы в меню объектов в "
+"игре (которые также можно найти в различных файлах ``.cfg`` в ``assets/``)."
 
 #: ../../general/about.rst:48
 msgid "Tabletop board game"
@@ -163,11 +166,11 @@ msgstr "В Tabletop Club можно играть на любой из этих �
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
-msgstr ""
+msgstr "Windows 7 или выше"
 
 #: ../../general/about.rst:78
 msgid "macOS 10.12 or later"
-msgstr ""
+msgstr "macOS 10.12 или выше"
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
@@ -175,13 +178,15 @@ msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
-msgstr ""
+msgstr "Ваше оборудование должно поддерживать OpenGL 3.3."
 
 #: ../../general/about.rst:83
 msgid ""
 "It is recommended to have at least 1GB of available space on your drive to "
 "accommodate for the game files, as well as any generated files."
 msgstr ""
+"Рекомендуется иметь не менее 1 ГБ свободного места на диске для размещения "
+"файлов игры, а также любых сгенерированных файлов."
 
 #: ../../general/about.rst:86
 msgid ""
@@ -223,19 +228,16 @@ msgid ""
 "download it from the `itch app <https://itch.io/app>`_ and get automatic "
 "updates."
 msgstr ""
+"Игра доступна на сайте `itch.io <https://drwhut.itch.io/tabletop-club>`_! Вы "
+"можете скачать игру не только как отдельный исполняемый файл, но и загрузить "
+"ее из приложения `itch <https://itch.io/app>`_ и получать автоматические "
+"обновления."
 
 #: ../../general/about.rst:113
 msgid "What stage of development is Tabletop Club at?"
 msgstr "На какой стадии разработки находится Tabletop Club?"
 
 #: ../../general/about.rst:115
-#, fuzzy
-#| msgid ""
-#| "Tabletop Club is currently in alpha development. This means that core "
-#| "features of the game are still being implemented (you can see what needs "
-#| "to be added by going to the `issues page <https://github.com/drwhut/"
-#| "tabletop-club/issues>`_ on GitHub), and there are no publicly released "
-#| "versions of the game... yet."
 msgid ""
 "Tabletop Club is currently in beta development. This means that most of the "
 "core features have been implemented, but there will very likely be some "
@@ -243,15 +245,15 @@ msgid ""
 "done by going to the `issues page <https://github.com/drwhut/tabletop-club/"
 "issues>`_ on GitHub)."
 msgstr ""
-"Tabletop Club в настоящее время находится в стадии альфа-разработки. Это "
-"означает, что основные функции игры все еще реализуются (вы можете увидеть, "
-"что нужно добавить, перейдя на страницу `проблем <https://github.com/drwhut/"
-"tabletop-club/issues>`_ на GitHub), и нет публично выпущенных версий игры… "
-"пока."
+"Tabletop Club в настоящее время находится в стадии бета-разработки. Это "
+"означает, что большинство основных функций уже реализовано, но вполне "
+"вероятно, что будут некоторые ошибки и функции, которые еще предстоит "
+"добавить (вы можете увидеть, что необходимо сделать, перейдя на страницу `"
+"issues <https://github.com/drwhut/tabletop-club/issues>`_ на GitHub)."
 
 #: ../../general/about.rst:121
 msgid "You can help test the game by :ref:`downloading-binaries`!"
-msgstr ""
+msgstr "Вы можете помочь протестировать игру, :ref:`downloading-binaries`!"
 
 #: ../../general/about.rst:125
 msgid "What board games can I play in Tabletop Club?"
@@ -272,17 +274,15 @@ msgstr ""
 "вам понадобятся, такие как игральные карты, кости, покерные фишки и т.д."
 
 #: ../../general/about.rst:133
-#, fuzzy
 msgid ""
 "On GitHub, there is `an issue <https://github.com/drwhut/tabletop-club/"
 "issues/28>`_ listing which objects still need to be added to the default "
 "asset pack. If everything under a game is ticked, then you can play that "
 "game!"
 msgstr ""
-"На GitHub есть `проблема <https://github.com/drwhut/tabletop-club/"
-"issues/28>`_ со списком объектов, которые еще необходимо добавить в пакет "
-"ассетов по умолчанию. Если все объекты в игре отмечены, то вы можете играть "
-"в эту игру!"
+"На GitHub есть `проблема <https://github.com/drwhut/tabletop-club/issues/28>`"
+"_ со списком объектов, которые еще необходимо добавить в пакет ассетов по "
+"умолчанию. Если все объекты в игре отмечены, то вы можете играть в эту игру!"
 
 #: ../../general/about.rst:138
 msgid ""
@@ -445,6 +445,8 @@ msgid ""
 "You can `check online <https://worldwide.espacenet.com/advancedSearch>`_ to "
 "see if there are any patents for the game's mechanics."
 msgstr ""
+"Вы можете `проверить этот сайт <https://worldwide.espacenet.com/"
+"advancedSearch>`_, чтобы узнать, есть ли патенты на механику игры."
 
 #: ../../general/about.rst:215
 msgid ""
@@ -540,7 +542,6 @@ msgid "Contributing"
 msgstr "Участие"
 
 #: ../../general/contributing/pull_request_workflow.rst:5
-#, fuzzy
 msgid "Pull request workflow"
 msgstr "Рабочий процесс запроса на слияния"
 
@@ -561,7 +562,6 @@ msgid "Creating a fork"
 msgstr "Создание форка"
 
 #: ../../general/contributing/pull_request_workflow.rst:16
-#, fuzzy
 msgid ""
 "The way to think about forks is by thinking about going down a side road on "
 "a fork in the road - you'll be doing your own think on the side road (your "
@@ -569,8 +569,8 @@ msgid ""
 "Eventually, the side road will join back in with the main road later on (the "
 "\"merge\")."
 msgstr ""
-"О форках можно думать так: вы идете по боковой дороге и перед вами развилка "
-"- вы будете заниматься своими делами на боковой дороге (ваш \"форк\"), в то "
+"О форках можно думать так: вы идете по боковой дороге и перед вами развилка -"
+" вы будете заниматься своими делами на боковой дороге (ваш \"форк\"), в то "
 "время как главная дорога (репозиторий ``master``) идет дальше. В конце "
 "концов, боковая дорога снова соединится с главной (\"слияние\")."
 
@@ -655,16 +655,12 @@ msgstr ""
 "guidelines`\" для рекомендаций о том, как вы должны писать свой код."
 
 #: ../../general/contributing/pull_request_workflow.rst:79
-#, fuzzy
-#| msgid ""
-#| "When you are done, you should commit your changes and push them to your "
-#| "fork with this command:"
 msgid ""
 "When you are done, you should commit your changes and push them to your fork "
 "with these commands:"
 msgstr ""
 "Когда вы закончите, вы должны зафиксировать свои изменения и перенести их в "
-"свой форк с помощью этой команды:"
+"свой форк с помощью этих команд:"
 
 #: ../../general/contributing/pull_request_workflow.rst:90
 #: ../../general/contributing/ways_to_contribute.rst:93
@@ -953,7 +949,6 @@ msgstr ""
 "слияния."
 
 #: ../../general/contributing/ways_to_contribute.rst:83
-#, fuzzy
 msgid ""
 "The only exception to this is the ``README.md`` file, which is not included "
 "in Weblate - feel free to provide a translation for this file with the name "
@@ -1572,6 +1567,9 @@ msgid ""
 "shown below. This is in order to prevent the system from checking the WebRTC "
 "library, which stops it from loading."
 msgstr ""
+"Если вы работаете на macOS, то вам необходимо отключить проверку библиотек, "
+"как показано ниже. Это делается для того, чтобы система не проверяла "
+"библиотеку WebRTC, что останавливает ее загрузку."
 
 #: ../../general/download/compiling_from_source.rst:388
 msgid ""
@@ -1671,14 +1669,12 @@ msgid "Downloading the official binaries"
 msgstr "Загрузка официальных двоичных файлов"
 
 #: ../../general/download/downloading_binaries.rst:7
-#, fuzzy
-#| msgid "There are two ways to download and play Tabletop Club:"
 msgid "There are two ways to download and play the game:"
-msgstr "Существует два способа загрузить и играть в Tabletop Club:"
+msgstr "Загрузить и играть в игру можно двумя способами:"
 
 #: ../../general/download/downloading_binaries.rst:11
 msgid "From the itch app"
-msgstr ""
+msgstr "Из приложения Itch"
 
 #: ../../general/download/downloading_binaries.rst:13
 msgid ""
@@ -1687,16 +1683,22 @@ msgid ""
 "to a huge range of amazing indie games from developers far more talented "
 "than I am!"
 msgstr ""
+"Это рекомендуемый способ загрузки и игры, поскольку вы будете получать "
+"обновления автоматически, когда они выходят, а также получите доступ к "
+"огромному количеству удивительных инди-игр от разработчиков, гораздо более "
+"талантливых, чем я!"
 
 #: ../../general/download/downloading_binaries.rst:17
 msgid ""
 "You can download the itch app `here <https://itch.io/app>`_, and once you've "
 "logged in, search for \"Tabletop Club\" to download and install the game."
 msgstr ""
+"Вы можете загрузить приложение itch `здесь <https://itch.io/app>`_, а после "
+"входа найдите \"Tabletop Club\", чтобы загрузить и установить игру."
 
 #: ../../general/download/downloading_binaries.rst:22
 msgid "As a standalone executable"
-msgstr ""
+msgstr "Как отдельный исполняемый файл"
 
 #: ../../general/download/downloading_binaries.rst:24
 msgid ""
@@ -1706,6 +1708,11 @@ msgid ""
 "tabletop-club/releases>`_. Once it is downloaded, there's only a couple of "
 "steps needed to run the game (see below)!"
 msgstr ""
+"Вы также можете загрузить игру как отдельное приложение, которое можно "
+"запустить в любом месте вашей системы со страницы `itch.io <https://drwhut."
+"itch.io/tabletop-club>`_, или из репозитория `GitHub <https://github.com/"
+"drwhut/tabletop-club/releases>`_. После загрузки игры необходимо выполнить "
+"всего пару шагов для ее запуска (см. ниже)!"
 
 #: ../../general/download/downloading_binaries.rst:30
 msgid ""
@@ -1730,7 +1737,7 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:40
 msgid "Verifying the download"
-msgstr ""
+msgstr "Проверка загрузки"
 
 #: ../../general/download/downloading_binaries.rst:42
 msgid ""
@@ -1739,6 +1746,10 @@ msgid ""
 "checking the `SHA512 hash <https://en.wikipedia.org/wiki/SHA-2>`_ of the "
 "file, and seeing if the hash matches the original."
 msgstr ""
+"Этот шаг совершенно необязателен, но это хорошая идея - убедиться, что "
+"содержимое загруженного файла соответствует нашим ожиданиям. Для этого мы "
+"проверяем хэш `SHA512 <https://en.wikipedia.org/wiki/SHA-2>`_ файла и "
+"смотрим, совпадает ли хэш с оригиналом."
 
 #: ../../general/download/downloading_binaries.rst:47
 msgid ""
@@ -1746,17 +1757,23 @@ msgid ""
 "txt`` file. This text file contains the SHA512 hashes of all of the "
 "downloads."
 msgstr ""
+"Скачайте со страницы релизов на GitHub файл ``TabletopClub_vX.X.X_SHA512."
+"txt``. Этот текстовый файл содержит SHA512 хэши всех загрузок."
 
 #: ../../general/download/downloading_binaries.rst:50
 msgid ""
 "Open a command prompt or terminal, and navigate to the folder where the "
 "compressed binary lies."
 msgstr ""
+"Откройте командную строку или терминал и перейдите в папку, где лежит сжатый "
+"двоичный файл."
 
 #: ../../general/download/downloading_binaries.rst:53
 msgid ""
 "Enter the command for your platform, adjusting the file name where necessary:"
 msgstr ""
+"Введите команду для вашей платформы, при необходимости скорректировав имя "
+"файла:"
 
 #: ../../general/download/downloading_binaries.rst:66
 msgid ""
@@ -1764,6 +1781,9 @@ msgid ""
 "SHA512 text file. If the hashes do not match, then you will need to download "
 "the binary again."
 msgstr ""
+"Сравните вывод предыдущей команды с соответствующей строкой в текстовом "
+"файле SHA512. Если хэши не совпадают, то вам нужно будет загрузить двоичный "
+"файл снова."
 
 #: ../../general/download/downloading_binaries.rst:71
 msgid "What happens now depends slightly on which platform you're on:"
@@ -1836,20 +1856,14 @@ msgstr ""
 "``TabletopClub_vX.X.X_OSX_Universal.zip``."
 
 #: ../../general/download/downloading_binaries.rst:103
-#, fuzzy
-#| msgid ""
-#| "When it has downloaded, macOS should automatically extract the files in "
-#| "the Downloads folder for you. Go to your downloads folder in Finder, and "
-#| "find the extracted folder, it will be called something like "
-#| "``TabletopClub_v0``."
 msgid ""
 "When it has downloaded, go to your downloads folder in Finder, and find the "
 "compressed file. Double-click the file to extract the folder - it will be "
 "called something like ``TabletopClub_vX.X.X_OSX_Universal``."
 msgstr ""
-"После загрузки macOS автоматически извлечет файлы из папки \"Загрузки\". "
-"Перейдите в папку \"Загрузки\" в Finder и найдите извлеченную папку, она "
-"будет называться примерно так ``TabletopClub_v0``."
+"После загрузки перейдите в папку загрузок в Finder и найдите сжатый файл. "
+"Дважды щелкните по файлу, чтобы извлечь папку - она будет называться "
+"примерно так: ``TabletopClub_vX.X.X_OSX_Universal``."
 
 #: ../../general/download/downloading_binaries.rst:107
 msgid "Re-name the new folder to ``TabletopClub``."
@@ -1880,16 +1894,12 @@ msgid "Downloading for Linux / \\*BSD"
 msgstr "Загрузка для Linux / \\*BSD"
 
 #: ../../general/download/downloading_binaries.rst:122
-#, fuzzy
-#| msgid ""
-#| "Make sure you have downloaded the compressed file, it should be called "
-#| "something like ``TabletopClub_vX.X.X_Linux_64.tar.gz``."
 msgid ""
 "Make sure you have downloaded the compressed file, it should be called "
 "something like ``TabletopClub_vX.X.X_Linux_64.zip``."
 msgstr ""
 "Убедитесь, что вы скачали сжатый файл, он должен называться примерно так "
-"``TabletopClub_vX.X.X_Linux_64.tar.gz``."
+"``TabletopClub_vX.X.X_Linux_64.zip``."
 
 #: ../../general/download/downloading_binaries.rst:125
 msgid ""
