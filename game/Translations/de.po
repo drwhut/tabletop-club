@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
 "PO-Revision-Date: 2022-11-28 17:28+0000\n"
-"Last-Translator: Remo <weblate@riimoh.anonaddy.com>\n"
+"Last-Translator: twenty three axiom <23.axiom@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "game/de/>\n"
 "Language: de\n"
@@ -30,7 +30,7 @@ msgstr "Fehlende Assets-Ordner"
 
 #: ../Scenes/ImportAssets.tscn:65
 msgid "Missing Module"
-msgstr ""
+msgstr "Fehlendes Modul"
 
 #: ../Scenes/Loading.tscn:41
 msgid "Loading..."
@@ -63,17 +63,15 @@ msgstr "Tabletop Club auf Itch.io"
 
 #: ../Scenes/MainMenu.tscn:104
 msgid "Source Code"
-msgstr ""
+msgstr "Quelltext"
 
 #: ../Scenes/MainMenu.tscn:113
-#, fuzzy
-#| msgid "Reset orientation"
 msgid "Documentation"
-msgstr "Ausrichtung zurücksetzen"
+msgstr "Dokumentation"
 
 #: ../Scenes/MainMenu.tscn:122 ../Scenes/MainMenu.tscn:217
 msgid "Information"
-msgstr ""
+msgstr "Information"
 
 #: ../Scenes/MainMenu.tscn:147
 msgid "Host Game"
