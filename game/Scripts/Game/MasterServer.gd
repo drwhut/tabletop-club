@@ -70,7 +70,76 @@ var reason: String = ERROR_MESSAGES[code]
 # Connect to the master server.
 func connect_to_server() -> void:
 	close()
-	client.connect_to_url(URL)
+	
+	# Players can change where the game looks for the master server by passing
+	# a "--master-server" argument when running the game, as well as an
+	# "--ssl-certificate" argument that points to a .crt file for the "new"
+	# master server.
+	var cmdline_args = OS.get_cmdline_args()
+	var master_server_index = -1
+	var ssl_certificate_index = -1
+	
+	for arg_index in range(cmdline_args.size()):
+		var arg = cmdline_args[arg_index]
+		if arg == "--master-server" and master_server_index < 0:
+			master_server_index = arg_index + 1
+		elif arg == "--ssl-certificate" and ssl_certificate_index < 0:
+			ssl_certificate_index = arg_index + 1
+	
+	if master_server_index >= cmdline_args.size():
+		push_error("--master-server argument requires an address!")
+		master_server_index = -1
+	
+	if ssl_certificate_index >= cmdline_args.size():
+		push_error("--ssl-certificate argument requires a file path!")
+		ssl_certificate_index = -1
+	
+	var custom_server: String = ""
+	var custom_certificate: X509Certificate = X509Certificate.new()
+	var custom_certificate_ok: bool = false
+	
+	if master_server_index >= 0:
+		var address: String = cmdline_args[master_server_index]
+		if address.begins_with("wss://"):
+			custom_server = address
+		else:
+			push_error("--master-server address does not begin with 'wss://'!")
+	
+	if ssl_certificate_index >= 0:
+		var path: String = cmdline_args[ssl_certificate_index]
+		if path.is_abs_path() or path.is_rel_path():
+			if path.get_extension() == "crt":
+				var file: File = File.new()
+				if file.file_exists(path):
+					var err = custom_certificate.load(path)
+					if err == OK:
+						custom_certificate_ok = true
+					else:
+						push_error("Failed to load custom SSL certificate (error: %d)!" % err)
+				else:
+					push_error("--ssl-certificate path does not exist!")
+			else:
+				push_error("--ssl-certificate path does not include the 'crt' extension!")
+		else:
+			push_error("--ssl-certificate is not a valid path!")
+	
+	if custom_server.empty():
+		if custom_certificate_ok:
+			push_warning("SSL certificate provided with no custom master server, ignoring.")
+		var connect_err = client.connect_to_url(URL)
+		if connect_err != OK:
+			push_error("Could not connect to the master server (error %d)!" % connect_err)
+			emit_signal("disconnected")
+	else:
+		push_warning("Connecting to an unofficial master server at '%s', proceed with caution!" % custom_server)
+		if custom_certificate_ok:
+			client.trusted_ssl_certificate = custom_certificate
+		else:
+			push_warning("No SSL certificate was loaded for '%s', this will not end well..." % custom_server)
+		var connect_err = client.connect_to_url(custom_server)
+		if connect_err != OK:
+			push_error("Could not connect to the custom master server (error %d)!" % connect_err)
+			emit_signal("disconnected")
 
 # Close the connection to the master server.
 func close() -> void:
