@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:54\n"
 "PO-Revision-Date: 2022-11-28 17:36+0000\n"
-"Last-Translator: Raphipod <podraphi@googlemail.com>\n"
+"Last-Translator: Remo <weblate@riimoh.anonaddy.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/de/>\n"
 "Language: de\n"
@@ -27,11 +27,11 @@ msgstr "52-Karten Deck"
 
 #: ../TabletopClub/cards/52-Card_Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr ""
+msgstr "Französisches Blatt für Poker, ohne Joker"
 
 #: ../TabletopClub/cards/Ace_of_Clubs:1
 msgid "Ace of Clubs"
-msgstr ""
+msgstr "Kreuzass"
 
 #: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2
 #: ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2
@@ -75,11 +75,11 @@ msgstr ""
 #: ../TabletopClub/cards/Two_of_Diamonds:2
 #: ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
 msgid "A poker-sized French-suited playing card."
-msgstr ""
+msgstr "Französisches Pokerkartenset."
 
 #: ../TabletopClub/cards/Ace_of_Diamonds:1
 msgid "Ace of Diamonds"
-msgstr ""
+msgstr "Karoass"
 
 #: ../TabletopClub/cards/Ace_of_Hearts:1
 msgid "Ace of Hearts"
