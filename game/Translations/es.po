@@ -8,70 +8,74 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2021-04-08 01:26+0000\n"
-"Last-Translator: drwhut <drwhut@gmail.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/opentabletop/"
+"PO-Revision-Date: 2022-11-28 17:28+0000\n"
+"Last-Translator: HugoPlacer <hugoplanellmoreno@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "game/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:39
 msgid "Importing assets..."
-msgstr ""
+msgstr "Importando recursos..."
 
 #: ../Scenes/ImportAssets.tscn:59
 msgid "Missing Asset Folder"
-msgstr ""
+msgstr "Carpeta de recursos faltante"
 
 #: ../Scenes/ImportAssets.tscn:65
+#, fuzzy
 msgid "Missing Module"
-msgstr ""
+msgstr "Módulo faltante"
 
 #: ../Scenes/Loading.tscn:41
 msgid "Loading..."
-msgstr ""
+msgstr "Cargando..."
 
 #: ../Scenes/MainMenu.tscn:48
 msgid "Singleplayer"
-msgstr ""
+msgstr "Un jugador"
 
 #: ../Scenes/MainMenu.tscn:55 ../Scenes/MainMenu.tscn:129
 #: ../Scenes/OptionsMenu.tscn:914
 msgid "Multiplayer"
-msgstr ""
+msgstr "Multijugador"
 
 #: ../Scenes/Game/UI/GameUI.tscn:217 ../Scenes/MainMenu.tscn:62
 msgid "Options"
-msgstr ""
+msgstr "Opciones"
 
 #: ../Scenes/MainMenu.tscn:69 ../Scenes/MainMenu.tscn:286
 msgid "Credits"
-msgstr ""
+msgstr "Créditos"
 
 #: ../Scenes/MainMenu.tscn:76
 msgid "Quit"
-msgstr ""
+msgstr "Salir"
 
 #: ../Scenes/MainMenu.tscn:95
 msgid "Tabletop Club on Itch.io"
-msgstr ""
+msgstr "Tabletop Club en Itch.io"
 
 #: ../Scenes/MainMenu.tscn:104
+#, fuzzy
 msgid "Source Code"
-msgstr ""
+msgstr "Código fuente"
 
 #: ../Scenes/MainMenu.tscn:113
+#, fuzzy
 msgid "Documentation"
-msgstr ""
+msgstr "Documentación"
 
 #: ../Scenes/MainMenu.tscn:122 ../Scenes/MainMenu.tscn:217
+#, fuzzy
 msgid "Information"
-msgstr ""
+msgstr "Información"
 
 #: ../Scenes/MainMenu.tscn:147
 msgid "Host Game"
@@ -280,7 +284,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:421
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: ../Scenes/OptionsMenu.tscn:435
 msgid "Language"
