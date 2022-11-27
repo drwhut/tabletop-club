@@ -8,21 +8,24 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-11-28 17:37+0000\n"
+"Last-Translator: HugoPlacer <hugoplanellmoreno@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-custom-assets/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
-msgstr ""
+msgstr "Estructura del paquete de recursos"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:6
 msgid "Locations for asset packs"
-msgstr ""
+msgstr "Localizaciones para los paquetes de recursos"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:8
 msgid ""
@@ -30,6 +33,9 @@ msgid ""
 "asset packs. If you want the game to import your asset pack, it needs to be "
 "put into one of the following locations:"
 msgstr ""
+"Al iniciar el juego, Tabletop Club escaneará un conjunto de carpetas dadas "
+"para los paquetes de recursos. Si quieres que el juego importe tu paquete de "
+"recursos, es necesario ponerlo en una de las siguientes ubicaciones:"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:12
 msgid "``<TABLETOPCLUB_INSTALL_FOLDER>/assets/``"
@@ -49,7 +55,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:19
 msgid "Creating an asset pack"
-msgstr ""
+msgstr "Creando un paquete de recursos"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:21
 msgid ""
@@ -57,10 +63,14 @@ msgid ""
 "in one of the folders mentioned above, and you're done! The name of the "
 "folder will be the name of the asset pack."
 msgstr ""
+"Crear un paquete de activos es muy fácil. Todo lo que tienes que hacer es "
+"crear una carpeta en una de las carpetas mencionadas anteriormente, ¡y ya "
+"está! El nombre de la carpeta será el nombre del paquete de recursos."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:27
+#, fuzzy
 msgid "Sub-folders"
-msgstr ""
+msgstr "Subcarpetas"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:29
 msgid ""
@@ -70,12 +80,14 @@ msgid ""
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
+#, fuzzy
 msgid "Sub-folder"
-msgstr ""
+msgstr "Subcarpeta"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
+#, fuzzy
 msgid "File Type"
-msgstr ""
+msgstr "Tipo de archivo"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
 msgid "Asset Type"
