@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
 "PO-Revision-Date: 2022-11-28 17:23+0000\n"
-"Last-Translator: Remo <weblate@riimoh.anonaddy.com>\n"
+"Last-Translator: twenty three axiom <23.axiom@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-index/de/>\n"
 "Language: de\n"
@@ -29,7 +29,7 @@ msgstr "Assets"
 
 #: ../../index.rst:7
 msgid "Tabletop Club Documentation"
-msgstr ""
+msgstr "Tabletop Club Dokumentation"
 
 #: ../../index.rst:9
 msgid ""
@@ -38,6 +38,10 @@ msgid ""
 "check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
 "the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
+"Willkommen zur Dokumentation von Tabletop Club, einem freien Open source "
+"Brettspiel Simulator. Wenn du neu beim Projekt bist, besuche zuerst die :ref"
+":`about-tabletop-club` Seite. Andernfalls kannst du entweder das "
+"Inhaltsverzeichnis oder die Suchleiste nutzen um das Gewünschte zu finden."
 
 #: ../../index.rst:16
 msgid ""
@@ -47,6 +51,11 @@ msgid ""
 "issue or a pull request on the project's `GitHub repository <https://github."
 "com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
+"Die Dokumentation und das Projekt sind offen für Vorschläge und Beiträge! "
+"Wenn du meinst, dass etwas nicht gut erklärt ist, oder du findest, dass "
+"Information fehlt, dann zögere bitte nicht einen „issue“ oder einen „pull "
+"request“ auf der Github Projektseite `GitHub repository <https://github.com/"
+"drwhut/tabletop-club/issues>`zu erstellen _!"
 
 #: ../../index.rst:39
 msgid "Indices and tables"
