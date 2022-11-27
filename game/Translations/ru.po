@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2022-07-22 03:09+0000\n"
+"PO-Revision-Date: 2022-11-28 17:28+0000\n"
 "Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "game/ru/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:39
@@ -61,11 +61,11 @@ msgstr "Выйти"
 
 #: ../Scenes/MainMenu.tscn:95
 msgid "Tabletop Club on Itch.io"
-msgstr ""
+msgstr "Tabletop Club на Itch.io"
 
 #: ../Scenes/MainMenu.tscn:104
 msgid "Source Code"
-msgstr ""
+msgstr "Исходный код"
 
 #: ../Scenes/MainMenu.tscn:113
 msgid "Documentation"
@@ -333,19 +333,19 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Show System Warnings"
-msgstr ""
+msgstr "Показывать системные предупреждения"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Displays system warnings in the chat box."
-msgstr ""
+msgstr "Показывает системные предупреждения в окне чата."
 
 #: ../Scenes/OptionsMenu.tscn:509
 msgid "Show System Errors"
-msgstr ""
+msgstr "Показывать системные ошибки"
 
 #: ../Scenes/OptionsMenu.tscn:517
 msgid "Displays system errors in the chat box."
-msgstr ""
+msgstr "Показывает системные ошибки в окне чата."
 
 #: ../Scenes/OptionsMenu.tscn:545
 msgid "Opens the assets folder in your file explorer."
@@ -415,25 +415,25 @@ msgstr "Сбрасывает камеру в положение по умолч�
 #, fuzzy
 #| msgid "Zoom Invert"
 msgid "Zoom In"
-msgstr "Инвертировать масштабирование"
+msgstr "Приблизить"
 
 #: ../Scenes/OptionsMenu.tscn:705
 #, fuzzy
 #| msgid "Used to set how fast the camera moves across the table."
 msgid "Zoom the camera or object towards the table."
-msgstr "Используется для настройки скорости перемещения камеры по столу."
+msgstr "Приблизить камеру или объект к столу."
 
 #: ../Scenes/OptionsMenu.tscn:715
 #, fuzzy
 #| msgid "Zoom Invert"
 msgid "Zoom Out"
-msgstr "Инвертировать масштабирование"
+msgstr "Отдалить"
 
 #: ../Scenes/OptionsMenu.tscn:723
 #, fuzzy
 #| msgid "Used to set how fast the camera moves across the table."
 msgid "Zoom the camera or object away from the table."
-msgstr "Используется для настройки скорости перемещения камеры по столу."
+msgstr "Отдалить камеру или объект от стола."
 
 #: ../Scenes/OptionsMenu.tscn:733
 msgid "Flip Piece Orientation"
@@ -540,11 +540,11 @@ msgstr "Цвет игрока отображаемый в многопользо
 
 #: ../Scenes/OptionsMenu.tscn:963
 msgid "Chat Font Size"
-msgstr ""
+msgstr "Размер шрифта чата"
 
 #: ../Scenes/OptionsMenu.tscn:971
 msgid "Changes the size of the text in the chat box."
-msgstr ""
+msgstr "Изменяет размер текста в окне чата."
 
 #: ../Scenes/OptionsMenu.tscn:973 ../Scenes/OptionsMenu.tscn:1104
 #: ../Scripts/OptionsMenu.gd:74
@@ -1225,11 +1225,11 @@ msgstr "Ультра"
 
 #: ../Scripts/OptionsMenu.gd:79
 msgid "Small"
-msgstr ""
+msgstr "Маленький"
 
 #: ../Scripts/OptionsMenu.gd:81
 msgid "Large"
-msgstr ""
+msgstr "Большой"
 
 #: ../Scripts/RandomMusicPlayer.gd:34
 msgid "Nothing"
@@ -1245,14 +1245,12 @@ msgid "Add selected objects..."
 msgstr "Добавить выбранные объекты…"
 
 #: ../Scripts/Game/CameraController.gd:1102
-#, fuzzy, python-format
-#| msgid "Total: %d"
+#, python-format
 msgid "Count: %d"
 msgstr "Количество: %d"
 
 #: ../Scripts/Game/CameraController.gd:1104
-#, fuzzy, python-format
-#| msgid "Total: %d"
+#, python-format
 msgid "Value: %d"
 msgstr "Значение: %d"
 
@@ -1566,14 +1564,13 @@ msgid "Delete selected"
 msgstr "Удалить выбранное"
 
 #: ../Scripts/Game/CameraController.gd:1464
-#, fuzzy
-#| msgid "Flip Table"
 msgid "Flip card"
-msgstr "Перевернуть стол"
+msgstr "Перевернуть карту"
 
 #: ../Scripts/Game/CameraController.gd:1466
+#, fuzzy
 msgid "Face card up"
-msgstr ""
+msgstr "Перевернуть карту лицом вверх"
 
 #: ../Scripts/Game/CameraController.gd:1469
 msgid "Reset camera"
@@ -1768,14 +1765,12 @@ msgid "Transfer mode is invalid."
 msgstr "Недопустимый режим передачи."
 
 #: ../Scripts/Game/MasterServer.gd:57
-#, fuzzy
-#| msgid "Too many players connected."
 msgid "Too many connections."
-msgstr "Слишком много игроков подключено."
+msgstr "Слишком много соединений."
 
 #: ../Scripts/Game/MasterServer.gd:58
 msgid "Reconnected too quickly."
-msgstr ""
+msgstr "Повторное подключение слишком быстрое."
 
 #: ../Scripts/Game/UI/ChatBox.gd:56
 msgid "Too much text being sent, waiting..."
@@ -1824,6 +1819,8 @@ msgid ""
 "You can use this notebook to write down information that will persist "
 "between sessions."
 msgstr ""
+"Вы можете использовать этот блокнот для записи информации, которая будет "
+"сохраняться между сеансами."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:138
 #, python-format
@@ -1981,7 +1978,6 @@ msgid "Timers"
 msgstr "Таймеры"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:245
-#, fuzzy
 msgid "Tokens"
 msgstr "Жетоны"
 
