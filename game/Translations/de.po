@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
 "PO-Revision-Date: 2022-11-29 02:35+0000\n"
-"Last-Translator: Meme <testtesttest@byom.de>\n"
+"Last-Translator: Web late <weblate123@mailinator.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "game/de/>\n"
 "Language: de\n"
@@ -1920,10 +1920,8 @@ msgid "Containers"
 msgstr "Container"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:235
-#, fuzzy
-#| msgid "Dice - d4"
 msgid "Dice"
-msgstr "Würfel - w4"
+msgstr "Würfel"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:237
 msgid "Music"
