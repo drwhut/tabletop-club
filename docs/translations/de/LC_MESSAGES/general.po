@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
 "PO-Revision-Date: 2022-11-29 03:02+0000\n"
-"Last-Translator: Benjamin <weblate@btzs.eu>\n"
+"Last-Translator: x3a <trevor@destroyed.today>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/de/>\n"
 "Language: de\n"
@@ -122,7 +122,7 @@ msgstr ""
 
 #: ../../general/about.rst:61
 msgid "Simulator"
-msgstr ""
+msgstr "Simulator"
 
 #: ../../general/about.rst:63
 msgid ""
@@ -134,31 +134,31 @@ msgstr ""
 
 #: ../../general/about.rst:70
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Häufig gestellte Fragen"
 
 #: ../../general/about.rst:73
 msgid "What platforms can I play Tabletop Club on?"
-msgstr ""
+msgstr "Auf welchen Plattformen kann ich Tabletop Club spielen?"
 
 #: ../../general/about.rst:75
 msgid "Tabletop Club can be played on any of these platforms:"
-msgstr ""
+msgstr "Tabletop Club kann auf jeder dieser Plattformen gespielt werden:"
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
-msgstr ""
+msgstr "Windows 7 oder höher"
 
 #: ../../general/about.rst:78
 msgid "macOS 10.12 or later"
-msgstr ""
+msgstr "macOS 10.12 oder höher"
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
-msgstr ""
+msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
-msgstr ""
+msgstr "Deine Hardware muss außerdem OpenGL 3.3 unterstützen."
 
 #: ../../general/about.rst:83
 msgid ""
@@ -173,6 +173,8 @@ msgid ""
 "Currently there are no plans for the game to be supported on mobile devices "
 "or consoles."
 msgstr ""
+"Derzeit gibt es keine Pläne für die Unterstützung des Spiels auf mobilen "
+"Geräten oder Konsolen."
 
 #: ../../general/about.rst:91
 msgid "Does Tabletop Club support multiplayer?"
@@ -195,7 +197,7 @@ msgstr ""
 
 #: ../../general/about.rst:104
 msgid "Is Tabletop Club on Steam / GOG / itch.io?"
-msgstr ""
+msgstr "Ist Tabletop Club auf Steam / GOG / itch.io erhältlich?"
 
 #: ../../general/about.rst:106
 msgid ""
@@ -255,7 +257,7 @@ msgstr ""
 
 #: ../../general/about.rst:145
 msgid "How easy is it to setup a game in Tabletop Club?"
-msgstr ""
+msgstr "Wie einfach ist es, ein Spiel in Tabletop Club einzurichten?"
 
 #: ../../general/about.rst:147
 msgid ""
@@ -567,7 +569,7 @@ msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:118
 msgid "Resolving merge conflicts"
-msgstr ""
+msgstr "Auflösen von Merge-Konflikten"
 
 #: ../../general/contributing/pull_request_workflow.rst:120
 msgid ""
@@ -659,15 +661,15 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:28
 msgid "Windows: ``%APPDATA%/Tabletop Club/logs/``"
-msgstr ""
+msgstr "Windows: ``%APPDATA%/Tabletop Club/logs/``"
 
 #: ../../general/contributing/ways_to_contribute.rst:29
 msgid "macOS: ``~/Library/Application Support/Tabletop Club/logs``"
-msgstr ""
+msgstr "macOS: ``~/Library/Application Support/Tabletop Club/logs``"
 
 #: ../../general/contributing/ways_to_contribute.rst:30
 msgid "Linux: ``~/.local/share/Tabletop Club/logs/``"
-msgstr ""
+msgstr "Linux: ``~/.local/share/Tabletop Club/logs/``"
 
 #: ../../general/contributing/ways_to_contribute.rst:34
 msgid ""
@@ -1514,6 +1516,7 @@ msgstr ""
 #: ../../general/download/index.rst:7
 msgid "There are two ways to download and play Tabletop Club:"
 msgstr ""
+"Es gibt zwei Möglichkeiten, Tabletop Club herunterzuladen und zu spielen:"
 
 #: ../../general/download/index.rst:9
 msgid ""
