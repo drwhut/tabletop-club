@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
 "PO-Revision-Date: 2022-11-30 10:48+0000\n"
-"Last-Translator: Web late <weblate123@mailinator.com>\n"
+"Last-Translator: Meme <testtesttest@byom.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/de/>\n"
 "Language: de\n"
@@ -77,6 +77,9 @@ msgid ""
 "what type of asset it is, and what the file type needed for that asset type "
 "is. Note that asset packs don't need to have all of these sub-folders."
 msgstr ""
+"Jedes Asset Paket unterteilt seine Assets in verschiedene Unterordner je "
+"nach Typ des Assets und dementsprechend benötigtem Dateityp. Jedes Asset "
+"Paket benötigt aber nicht zwingend alle dieser Unterordner."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
 msgid "Sub-folder"
@@ -126,10 +129,8 @@ msgid ":ref:`object-type-card`"
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
-#, fuzzy
-#| msgid "Containers"
 msgid "``containers/``"
-msgstr "Container"
+msgstr "``Container/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
@@ -249,7 +250,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
 msgid "``tables/``"
-msgstr ""
+msgstr "``Tische/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
 msgid ":ref:`asset-type-table`"
@@ -304,7 +305,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:129
 msgid "Property Name"
-msgstr ""
+msgstr "Eigenschaftsname"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:129
 msgid "Data Type"
@@ -686,10 +687,12 @@ msgid ""
 "If ``true``, when the container is being shaken upside down, it will "
 "randomly drop items out."
 msgstr ""
+"Wenn ``true`` dann lässt der Container zufällige Gegenstände fallen wenn er "
+"kopfüber geschüttelt wird."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "``strength``"
-msgstr ""
+msgstr "``Stärke``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "The strength of the ambient light coming from the skybox."
@@ -700,8 +703,9 @@ msgid "``suit``, ``value``"
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:172
+#, fuzzy
 msgid "Number, Text"
-msgstr ""
+msgstr "Zahl, Text"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:172
 msgid "Cards, Tokens"
@@ -715,10 +719,12 @@ msgstr ""
 msgid ""
 "A value given to a stackable object that allows it to be sorted in a stack."
 msgstr ""
+"Einem stapelbaren Objekt zugeordnete Zahl, um das sortieren in einem Stapel "
+"zu ermöglichen."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
 msgid "``url``"
-msgstr ""
+msgstr "``url``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
 msgid "The URL where the asset originally came from."
@@ -741,7 +747,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:216
 msgid "Translations"
-msgstr ""
+msgstr "Übersetzungen"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:218
 msgid ""
