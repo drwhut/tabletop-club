@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
 "PO-Revision-Date: 2022-11-28 17:37+0000\n"
-"Last-Translator: HugoPlacer <hugoplanellmoreno@gmail.com>\n"
+"Last-Translator: Emilio González <emi2k01@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/es/>\n"
 "Language: es\n"
@@ -39,19 +39,19 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:12
 msgid "``<TABLETOPCLUB_INSTALL_FOLDER>/assets/``"
-msgstr ""
+msgstr "``<CARPETA_DE_INSTALACION_DE_TABLETOPCLUB>/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:13
 msgid "``<DOWNLOADS>/TabletopClub/assets/``"
-msgstr ""
+msgstr "``<DESCARGAS>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:14
 msgid "``<DOCUMENTS>/TabletopClub/assets/``"
-msgstr ""
+msgstr "``<DOCUMENTOS>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:15
 msgid "``<DESKTOP>/TabletopClub/assets/``"
-msgstr ""
+msgstr "``<ESCRITORIO>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:19
 msgid "Creating an asset pack"
@@ -78,6 +78,10 @@ msgid ""
 "what type of asset it is, and what the file type needed for that asset type "
 "is. Note that asset packs don't need to have all of these sub-folders."
 msgstr ""
+"Cada paquete de recursos divide sus recurses en diferentes sub-carpetas, "
+"dependiendo de que tipo de recurso es, y que tipo de archivo se necesita "
+"para ese tipo de recurso. Ten en cuenta que los paquetes de recursos no "
+"tienen que tener todas estas sub-carpetas."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
 #, fuzzy
@@ -857,7 +861,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:123
 msgid "Piece"
-msgstr ""
+msgstr "Pieza"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "On the table are two chess pieces, a white pawn and a black queen."
