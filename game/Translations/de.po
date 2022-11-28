@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2022-11-28 17:28+0000\n"
-"Last-Translator: twenty three axiom <23.axiom@googlemail.com>\n"
+"PO-Revision-Date: 2022-11-29 02:35+0000\n"
+"Last-Translator: Felix Kaechele <felix@kaechele.ca>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "game/de/>\n"
 "Language: de\n"
@@ -22,11 +22,11 @@ msgstr ""
 
 #: ../Scenes/ImportAssets.tscn:39
 msgid "Importing assets..."
-msgstr "Assets werden importiert …"
+msgstr "Assets werden importiert…"
 
 #: ../Scenes/ImportAssets.tscn:59
 msgid "Missing Asset Folder"
-msgstr "Fehlende Assets-Ordner"
+msgstr "Fehlender Assets-Ordner"
 
 #: ../Scenes/ImportAssets.tscn:65
 msgid "Missing Module"
@@ -146,7 +146,6 @@ msgid "Effects Volume"
 msgstr "Effektlautstärke"
 
 #: ../Scenes/OptionsMenu.tscn:125
-#, fuzzy
 msgid ""
 "Sets the volume of sound effects played automatically throughout the game, "
 "for example, pieces falling on the table. "
@@ -291,7 +290,7 @@ msgstr "Handvorschau Größe"
 
 #: ../Scenes/OptionsMenu.tscn:388
 msgid "Used to control how large the card preview is."
-msgstr ""
+msgstr "Legt die Größe der Handvorschau fest."
 
 #: ../Scenes/OptionsMenu.tscn:400
 msgid "Hide Control Hints"
@@ -299,7 +298,7 @@ msgstr "Steuerungstipps verstecken"
 
 #: ../Scenes/OptionsMenu.tscn:408
 msgid "Used to hide the dynamic text displaying how to control the game."
-msgstr ""
+msgstr "Versteckt den Erklärungstext zur Spielsteuerung."
 
 #: ../Scenes/OptionsMenu.tscn:421
 msgid "General"
@@ -347,7 +346,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:545
 msgid "Opens the assets folder in your file explorer."
-msgstr ""
+msgstr "Öffnet den Assets-Ordner im Dateimanager."
 
 #: ../Scenes/OptionsMenu.tscn:547
 msgid "Open Assets Folder"
@@ -366,10 +365,8 @@ msgid "Move Forward"
 msgstr "Vorwärts bewegen"
 
 #: ../Scenes/OptionsMenu.tscn:597
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera forward."
-msgstr "Kamera bewegen"
+msgstr "Bewegt die Kamera vorwärts."
 
 #: ../Scenes/OptionsMenu.tscn:607
 msgid "Move Back"
@@ -384,20 +381,16 @@ msgid "Move Left"
 msgstr "Links"
 
 #: ../Scenes/OptionsMenu.tscn:633
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera left."
-msgstr "Kamera bewegen"
+msgstr "Bewegt die Kamera links."
 
 #: ../Scenes/OptionsMenu.tscn:643
 msgid "Move Right"
 msgstr "Rechts"
 
 #: ../Scenes/OptionsMenu.tscn:651
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera right."
-msgstr "Kamera bewegen"
+msgstr "Bewegt die Kamera rechts."
 
 #: ../Scenes/OptionsMenu.tscn:661
 msgid "Rotate Camera"
@@ -405,7 +398,7 @@ msgstr "Kamera drehen"
 
 #: ../Scenes/OptionsMenu.tscn:669
 msgid "Enable rotation of the camera when moving the mouse."
-msgstr ""
+msgstr "Aktiviert die Drehung der Kamera mit der Maus."
 
 #: ../Scenes/OptionsMenu.tscn:679
 msgid "Reset Camera"
@@ -416,24 +409,20 @@ msgid "Resets the camera to the default position."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:697
-#, fuzzy
-#| msgid "Zoom Invert"
 msgid "Zoom In"
-msgstr "Zoom invertiert"
+msgstr "Hineinzoomen"
 
 #: ../Scenes/OptionsMenu.tscn:705
 msgid "Zoom the camera or object towards the table."
-msgstr ""
+msgstr "Zoomt die Kamera oder das Objekt vom Tisch heran."
 
 #: ../Scenes/OptionsMenu.tscn:715
-#, fuzzy
-#| msgid "Zoom Invert"
 msgid "Zoom Out"
-msgstr "Zoom invertiert"
+msgstr "Herauszoomen"
 
 #: ../Scenes/OptionsMenu.tscn:723
 msgid "Zoom the camera or object away from the table."
-msgstr ""
+msgstr "Zoomt die Kamera oder das Objekt vom Tisch weg."
 
 #: ../Scenes/OptionsMenu.tscn:733
 msgid "Flip Piece Orientation"
@@ -441,7 +430,7 @@ msgstr "Spielstein umdrehen"
 
 #: ../Scenes/OptionsMenu.tscn:741
 msgid "Flip the selected piece on the horizontal axis."
-msgstr ""
+msgstr "Spiegelt den Spielstein um die horizontale Achse."
 
 #: ../Scenes/OptionsMenu.tscn:751
 msgid "Reset Piece Orientation"
@@ -449,7 +438,7 @@ msgstr "Spielstein-Ausrichtung zurücksetzen"
 
 #: ../Scenes/OptionsMenu.tscn:759
 msgid "Resets the selected piece to its default orientation."
-msgstr ""
+msgstr "Setzt die Ausrichtung des Spielsteins auf die Ausgangsposition zurück."
 
 #: ../Scenes/OptionsMenu.tscn:769
 msgid "Lock/Unlock Piece"
@@ -458,7 +447,7 @@ msgstr "Spielstein ent-/sperren"
 #: ../Scenes/OptionsMenu.tscn:777
 msgid ""
 "Toggles the lock on the selected piece, fixing its position and rotation."
-msgstr ""
+msgstr "Sperrt oder Entsperrt die Position und Drehung des Spielsteins."
 
 #: ../Scenes/OptionsMenu.tscn:787
 msgid "Delete Piece"
@@ -466,7 +455,7 @@ msgstr "Spielstein entfernen"
 
 #: ../Scenes/OptionsMenu.tscn:795
 msgid "Deletes the currently selected piece."
-msgstr ""
+msgstr "Entfernt den ausgewählten Spielstein."
 
 #: ../Scenes/OptionsMenu.tscn:805
 msgid "Toggle Debug Info"
@@ -474,7 +463,7 @@ msgstr "Debug-Info umschalten"
 
 #: ../Scenes/OptionsMenu.tscn:813
 msgid "Toggles whether debug information is displayed."
-msgstr ""
+msgstr "Blendet Debug-Informationen ein oder aus."
 
 #: ../Scenes/OptionsMenu.tscn:823
 msgid "Quicksave"
@@ -482,7 +471,7 @@ msgstr "Schnellspeichern"
 
 #: ../Scenes/OptionsMenu.tscn:831
 msgid "Creates a quicksave file."
-msgstr ""
+msgstr "Erstellt einen gespeicherten Spielstand."
 
 #: ../Scenes/OptionsMenu.tscn:841
 msgid "Quickload"
@@ -490,15 +479,15 @@ msgstr "Schnellladen"
 
 #: ../Scenes/OptionsMenu.tscn:849
 msgid "Loads the latest quicksave file."
-msgstr ""
+msgstr "Lädt den letzten Spielstand."
 
 #: ../Scenes/OptionsMenu.tscn:859
 msgid "Toggle UI"
-msgstr "Benutzeroberfläche umschalten"
+msgstr "Bedienelemente anzeigen"
 
 #: ../Scenes/OptionsMenu.tscn:867
 msgid "Toggles whether the entire UI is displayed."
-msgstr ""
+msgstr "Blendet die gesamten Bedienelemente ein oder aus."
 
 #: ../Scenes/OptionsMenu.tscn:877
 msgid "Take Screenshot"
@@ -552,12 +541,12 @@ msgstr "Mittel"
 
 #: ../Scenes/OptionsMenu.tscn:982
 msgid "Hide Player Cursors"
-msgstr ""
+msgstr "Spieler-Mauszeiger ausblenden"
 
 #: ../Scenes/OptionsMenu.tscn:990
 msgid ""
 "Used to stop showing other player's cursors when in multiplayer lobbies."
-msgstr ""
+msgstr "Blendet die Mauszeiger der Spieler im Mehrspielermodus aus."
 
 #: ../Scenes/OptionsMenu.tscn:998
 msgid "Censor Profanity"
@@ -567,7 +556,7 @@ msgstr "Vulgäre Ausdrücke zensieren"
 msgid ""
 "Used to censor potentially offensive words in the chat window when in "
 "multiplayer lobbies."
-msgstr ""
+msgstr "Zensiert vulgäre Ausdrücke im Chatfenster des Mehrspielermodus."
 
 #: ../Scenes/OptionsMenu.tscn:1021
 msgid "Video"
@@ -579,11 +568,11 @@ msgstr "Fenster-Modus"
 
 #: ../Scenes/OptionsMenu.tscn:1042
 msgid "Sets the mode in which the game window is displayed."
-msgstr ""
+msgstr "Verändert den Modus in dem das Spielfenster angezeigt wird."
 
 #: ../Scenes/OptionsMenu.tscn:1044 ../Scripts/OptionsMenu.gd:68
 msgid "Windowed"
-msgstr "im Fenster"
+msgstr "Fenstermodus"
 
 #: ../Scenes/OptionsMenu.tscn:1053
 msgid "Field of View"
@@ -591,7 +580,7 @@ msgstr "Sichtfeld"
 
 #: ../Scenes/OptionsMenu.tscn:1061
 msgid "Sets the field of view of the in-game camera."
-msgstr ""
+msgstr "Verändert das Sichtfeld der Spielfeldkamera."
 
 #: ../Scenes/OptionsMenu.tscn:1074
 msgid "VSync"
@@ -624,27 +613,29 @@ msgstr "Niedrig"
 
 #: ../Scenes/OptionsMenu.tscn:1176
 msgid "Depth of Field"
-msgstr "Abbildungstiefe"
+msgstr "Tiefenschärfe"
 
 #: ../Scenes/OptionsMenu.tscn:1197
 msgid "Depth of Field Amount"
-msgstr "Abbildungstiefe Betrag"
+msgstr "Tiefenschärfewert"
 
 #: ../Scenes/OptionsMenu.tscn:1205
 msgid ""
 "Used to determine how much the background is blurred when using depth of "
 "field."
 msgstr ""
+"Verändert den Schärfegrad des Hintergrundes wenn der Tiefenschärfe-Modus "
+"aktiv ist."
 
 #: ../Scenes/OptionsMenu.tscn:1217
 msgid "Depth of Field Distance"
-msgstr "Abbildungstiefe Distanz"
+msgstr "Tiefenschärfedistanz"
 
 #: ../Scenes/OptionsMenu.tscn:1225
 msgid ""
 "Used to set the threshold of what is considered the background when using "
 "depth of field."
-msgstr ""
+msgstr "Schwellwert zur Unterscheidung zwischen Vordergrund und Hintergrund."
 
 #: ../Scenes/OptionsMenu.tscn:1237
 msgid "Table Paint Filtering"
@@ -677,17 +668,15 @@ msgstr "Abbrechen"
 
 #: ../Scenes/OptionsMenu.tscn:1345
 msgid "Keep video settings?"
-msgstr ""
+msgstr "Videoeinstellungen beibehalten?"
 
 #: ../Scenes/OptionsMenu.tscn:1353
-#, fuzzy
-#| msgid "Reimport Assets"
 msgid "Reimporting Assets"
 msgstr "Assets neu importieren"
 
 #: ../Scenes/OptionsMenu.tscn:1371
 msgid "Warning!"
-msgstr ""
+msgstr "Warnung!"
 
 #: ../Scenes/RandomMusicPlayer.tscn:23
 msgid "Now Playing:"
@@ -699,7 +688,7 @@ msgstr "X Karten austeilen"
 
 #: ../Scenes/Game/CameraController.tscn:128
 msgid "Select track"
-msgstr ""
+msgstr "Stück auswählen"
 
 #: ../Scenes/Game/CameraController.tscn:146
 msgid "Range:"
@@ -715,7 +704,7 @@ msgstr "Nimm X heraus"
 
 #: ../Scenes/Game/CameraController.tscn:234
 msgid "Position:"
-msgstr ""
+msgstr "Position:"
 
 #: ../Scenes/Game/CameraController.tscn:245
 #: ../Scenes/Game/CameraController.tscn:303
@@ -727,17 +716,17 @@ msgstr ""
 #: ../Scenes/Game/CameraController.tscn:317
 #: ../Scenes/Game/CameraController.tscn:371
 msgid "Y:"
-msgstr ""
+msgstr "X:"
 
 #: ../Scenes/Game/CameraController.tscn:277
 #: ../Scenes/Game/CameraController.tscn:331
 #: ../Scenes/Game/CameraController.tscn:387
 msgid "Z:"
-msgstr ""
+msgstr "Z:"
 
 #: ../Scenes/Game/CameraController.tscn:292
 msgid "Rotation (°):"
-msgstr ""
+msgstr "Rotation (°):"
 
 #: ../Scenes/Game/CameraController.tscn:344
 #: ../Scenes/Game/CameraController.tscn:489
@@ -746,13 +735,11 @@ msgstr "Maßstab:"
 
 #: ../Scenes/Game/CameraController.tscn:433
 msgid "Strength:"
-msgstr ""
+msgstr "Stärke:"
 
 #: ../Scenes/Game/CameraController.tscn:444
-#, fuzzy
-#| msgid "10%"
 msgid "1.0"
-msgstr "10%"
+msgstr "1.0"
 
 #: ../Scenes/Game/CameraController.tscn:521
 msgid "System:"
@@ -760,7 +747,7 @@ msgstr "System:"
 
 #: ../Scenes/Game/CameraController.tscn:527
 msgid "Metric"
-msgstr "Metrik"
+msgstr "Metrisch"
 
 #: ../Scenes/Game/CameraController.tscn:562
 msgid "Brush Color:"
@@ -810,43 +797,39 @@ msgstr ""
 
 #: ../Scenes/Game/Game.tscn:86
 msgid "Yes, download missing assets."
-msgstr ""
+msgstr "Ja, fehlende Assets laden."
 
 #: ../Scenes/Game/Game.tscn:93
 msgid "No, continue without them."
-msgstr ""
+msgstr "Nein, ohne diese Assets fortfahren."
 
 #: ../Scenes/Game/Game.tscn:99
 msgid "Download Assets?"
-msgstr ""
+msgstr "Assets herunterladen?"
 
 #: ../Scenes/Game/Game.tscn:108
-#, fuzzy
-#| msgid "Loading..."
 msgid "Downloading..."
-msgstr "Wird geladen …"
+msgstr "Wird geladen…"
 
 #: ../Scenes/Game/Game.tscn:123
 msgid "Waiting for download..."
-msgstr ""
+msgstr "Warte auf Download..."
 
 #: ../Scenes/Game/Game.tscn:136
 msgid "Waiting to verify integrity..."
-msgstr ""
+msgstr "Warte auf Integritätsverifikation..."
 
 #: ../Scenes/Game/Game.tscn:149
-#, fuzzy
-#| msgid "Importing assets..."
 msgid "Waiting to import assets..."
-msgstr "Assets werden importiert …"
+msgstr "Warte auf Import der Assets…"
 
 #: ../Scenes/Game/Game.tscn:168 ../Scenes/Game/Game.tscn:186
 msgid "Error!"
-msgstr ""
+msgstr "Fehler!"
 
 #: ../Scenes/Game/Game.tscn:176
 msgid "Download Folder Locked"
-msgstr ""
+msgstr "Downloadverzeichnis gesperrt"
 
 #: ../Scenes/Game/UI/ChatBox.tscn:54
 msgid "Type a message here..."
@@ -873,7 +856,7 @@ msgstr "Raum"
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:8
 #: ../Scenes/Game/UI/GameUI.tscn:58
 msgid "Notebook"
-msgstr ""
+msgstr "Notizbuch"
 
 #: ../Scenes/Game/UI/GameUI.tscn:64
 msgid "Flip Table"
@@ -949,23 +932,19 @@ msgstr "Alle nehmen"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:34
 msgid "+ New Page"
-msgstr ""
+msgstr "+ Neue Seite"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:48
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:69
-#, fuzzy
-#| msgid "Move Back"
 msgid "Move Up"
-msgstr "Rückwärts bewegen"
+msgstr "Aufwärts"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:77
-#, fuzzy
-#| msgid "Move Forward"
 msgid "Move Down"
-msgstr "Vorwärts bewegen"
+msgstr "Abwärts"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:85
 #: ../Scripts/Game/CameraController.gd:1262
@@ -974,10 +953,8 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:90
-#, fuzzy
-#| msgid "Delete file?"
 msgid "Delete page?"
-msgstr "Datei Löschen?"
+msgstr "Seite löschen?"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
@@ -1017,7 +994,7 @@ msgstr "Farbe der Lampe"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:157
 msgid "Select a skybox..."
-msgstr ""
+msgstr "Skybox auswählen..."
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:161
 #, python-format
@@ -1495,14 +1472,12 @@ msgid "Box select"
 msgstr "Rechteck-Auswahl"
 
 #: ../Scripts/Game/CameraController.gd:1378
-#, fuzzy
-#| msgid "Select object"
 msgid "Flick object"
-msgstr "Objekt auswählen"
+msgstr "Objekt wegschnipsen"
 
 #: ../Scripts/Game/CameraController.gd:1380
 msgid "Prepare to flick"
-msgstr ""
+msgstr "Zum Schnipsen ansetzen"
 
 #: ../Scripts/Game/CameraController.gd:1384
 msgid "Stop measuring"
@@ -1537,10 +1512,8 @@ msgid "Table menu"
 msgstr "Tisch-Menu"
 
 #: ../Scripts/Game/CameraController.gd:1414
-#, fuzzy
-#| msgid "Stop moving"
 msgid "Stop flicking"
-msgstr "Bewegung stoppen"
+msgstr "Schnipsen abbrechen"
 
 #: ../Scripts/Game/CameraController.gd:1418
 msgid "Remove last ruler"
