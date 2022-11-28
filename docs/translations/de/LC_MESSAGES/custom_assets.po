@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
 "PO-Revision-Date: 2022-11-30 10:48+0000\n"
-"Last-Translator: Meme <testtesttest@byom.de>\n"
+"Last-Translator: x3a <trevor@destroyed.today>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/de/>\n"
 "Language: de\n"
@@ -39,19 +39,19 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:12
 msgid "``<TABLETOPCLUB_INSTALL_FOLDER>/assets/``"
-msgstr ""
+msgstr "``<TABLETOPCLUB_INSTALL_FOLDER>/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:13
 msgid "``<DOWNLOADS>/TabletopClub/assets/``"
-msgstr ""
+msgstr "``<DOWNLOADS>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:14
 msgid "``<DOCUMENTS>/TabletopClub/assets/``"
-msgstr ""
+msgstr "``<DOCUMENTS>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:15
 msgid "``<DESKTOP>/TabletopClub/assets/``"
-msgstr ""
+msgstr "``<DESKTOP>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:19
 msgid "Creating an asset pack"
@@ -696,7 +696,7 @@ msgstr "``Stärke``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "The strength of the ambient light coming from the skybox."
-msgstr ""
+msgstr "Die Stärke des Umgebungslichts aus der Skybox."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:172
 msgid "``suit``, ``value``"
@@ -728,11 +728,11 @@ msgstr "``url``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
 msgid "The URL where the asset originally came from."
-msgstr ""
+msgstr "Die URL, von der das Asset ursprünglich stammt."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:182
 msgid "stacks.cfg"
-msgstr ""
+msgstr "stacks.cfg"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:184
 msgid ""
@@ -743,7 +743,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:188
 msgid "Here is an example of a ``stacks.cfg`` file:"
-msgstr ""
+msgstr "Hier ist ein Beispiel für eine ``stacks.cfg``-Datei:"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:216
 msgid "Translations"
@@ -763,6 +763,8 @@ msgid ""
 "The list of languages supported by the game is shown in the `README <https://"
 "github.com/drwhut/tabletop-club#languages>`_ file of the project."
 msgstr ""
+"Die Liste der vom Spiel unterstützten Sprachen ist in der Datei `README "
+"<https://github.com/drwhut/tabletop-club#languages>`_ des Projekts zu finden."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:230
 msgid ""
@@ -799,6 +801,9 @@ msgid ""
 "is, it is driven by the physics engine). There are many different types of "
 "objects, each with their own special functionality:"
 msgstr ""
+"Ein Objekt im Tabletop Club ist alles im Spiel, was dynamisch ist (d.h. von "
+"der Physik-Engine gesteuert wird). Es gibt viele verschiedene Arten von "
+"Objekten, jedes mit seiner eigenen speziellen Funktionalität:"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:18
 #: ../../custom_assets/asset_packs/file_types.rst:33
@@ -919,6 +924,9 @@ msgid ""
 "positionally, so the audio will vary depending on the position of the "
 "speaker relative to the camera."
 msgstr ""
+"Lautsprecher sind Objekte, die Tonspuren abspielen können. Sie geben den Ton "
+"positionsabhängig ab, d. h. der Ton variiert je nach Position des "
+"Lautsprechers im Verhältnis zur Kamera."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:147
 msgid "Timer"
@@ -930,6 +938,9 @@ msgid ""
 "display the system time. If an audio track is loaded, it will automatically "
 "play when the countdown reaches 0."
 msgstr ""
+"Timer sind Objekte, die als Countdowns, Stoppuhren oder zur Anzeige der "
+"Systemzeit verwendet werden können. Wenn ein Audio-Track geladen ist, wird "
+"er automatisch abgespielt, wenn der Countdown 0 erreicht."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:157
 msgid "Token"
@@ -992,6 +1003,8 @@ msgid ""
 "Skyboxes are special textures that determine what the environment around the "
 "table looks like."
 msgstr ""
+"Skyboxen sind spezielle Texturen, die bestimmen, wie die Umgebung um den "
+"Tisch herum aussieht."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:207
 msgid ""
@@ -1035,6 +1048,8 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_types.rst:235
 msgid "One unit in the exported model = one centimeter (cm) in-game."
 msgstr ""
+"Eine Einheit im exportierten Modell entspricht einem Zentimeter (cm) im "
+"Spiel."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:236
 msgid ""
@@ -1066,7 +1081,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:11
 msgid "Supported formats"
-msgstr ""
+msgstr "Unterstützte Formate"
 
 #: ../../custom_assets/asset_packs/file_types.rst:13
 msgid ""
@@ -1093,6 +1108,7 @@ msgid ""
 "The width and height of the images don't matter, as long as the proportions "
 "are correct!"
 msgstr ""
+"Die Breite und Höhe der Bilder ist egal, solange die Proportionen stimmen!"
 
 #: ../../custom_assets/asset_packs/file_types.rst:39
 msgid ""
@@ -1117,10 +1133,12 @@ msgid ""
 "3D models can be exported from almost any 3D modelling software, including "
 "Blender and Maya."
 msgstr ""
+"3D-Modelle können aus fast jeder 3D-Modellierungssoftware, einschließlich "
+"Blender und Maya, exportiert werden."
 
 #: ../../custom_assets/asset_packs/file_types.rst:61
 msgid "As of right now, Tabletop Club supports the following 3D file formats:"
-msgstr ""
+msgstr "Derzeit unterstützt Tabletop Club die folgenden 3D-Dateiformate:"
 
 #: ../../custom_assets/asset_packs/file_types.rst:63
 msgid "Collada (``.dae``)"
@@ -1128,11 +1146,11 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:64
 msgid "glTF 2.0 (``.glb``, ``.gltf``)"
-msgstr ""
+msgstr "glTF 2.0 (``.glb``, ``.gltf``)"
 
 #: ../../custom_assets/asset_packs/file_types.rst:65
 msgid "Wavefront (``.obj``)"
-msgstr ""
+msgstr "Wavefront (``.obj``)"
 
 #: ../../custom_assets/asset_packs/file_types.rst:67
 msgid ""
@@ -1159,6 +1177,8 @@ msgid ""
 "If a model's collision is not acting in the way you expect, it is "
 "recommended to switch to this mode."
 msgstr ""
+"Wenn sich die Kollision eines Modells nicht so verhält, wie du es erwartest, "
+"empfiehlt es sich, in diesen Modus zu wechseln."
 
 #: ../../custom_assets/asset_packs/file_types.rst:81
 msgid ""
@@ -1173,6 +1193,8 @@ msgid ""
 "This mode is recommended for models that are designed to be locked in place, "
 "like scenery or buildings."
 msgstr ""
+"Dieser Modus wird für Modelle empfohlen, die in ihrer Position fixiert "
+"werden sollen, wie z. B. Landschaften oder Gebäude."
 
 #: ../../custom_assets/asset_packs/file_types.rst:90
 msgid ""
@@ -1188,19 +1210,19 @@ msgstr "Audio"
 
 #: ../../custom_assets/asset_packs/file_types.rst:101
 msgid "As of right now, Tabletop Club supports the following audio formats:"
-msgstr ""
+msgstr "Zurzeit unterstützt Tabletop Club die folgenden Audioformate:"
 
 #: ../../custom_assets/asset_packs/file_types.rst:103
 msgid "MP3 (``.mp3``)"
-msgstr ""
+msgstr "MP3 (``.mp3``)"
 
 #: ../../custom_assets/asset_packs/file_types.rst:104
 msgid "Vorbis (``.ogg``)"
-msgstr ""
+msgstr "Vorbis (``.ogg``)"
 
 #: ../../custom_assets/asset_packs/file_types.rst:105
 msgid "Waveform (``.wav``)"
-msgstr ""
+msgstr "Waveform (``.wav``)"
 
 #: ../../custom_assets/asset_packs/file_types.rst:107
 msgid ""
@@ -1265,7 +1287,7 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:4
 msgid "Adding 3D models as objects"
-msgstr ""
+msgstr "3D-Modelle als Objekte hinzufügen"
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:6
 msgid ""
@@ -1277,7 +1299,7 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:13
 msgid "Note about Blender"
-msgstr ""
+msgstr "Anmerkung zu Blender"
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:15
 msgid ""
@@ -1323,7 +1345,7 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:44
 msgid "**One unit in Blender = 1cm in Tabletop Club.**"
-msgstr ""
+msgstr "**Eine Einheit in Blender = 1cm in Tabletop Club.**"
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:46
 msgid ""
@@ -1349,6 +1371,8 @@ msgstr ""
 msgid ""
 "The units in the transform menu don't affect the size of the exported model."
 msgstr ""
+"Die Einheiten im Transformationsmenü haben keinen Einfluss auf die Größe des "
+"exportierten Modells."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:64
 msgid "Further setup for tables"
@@ -1385,7 +1409,7 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:85
 msgid "Exporting the model"
-msgstr ""
+msgstr "Exportieren des Models"
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:87
 msgid ""
@@ -1456,7 +1480,7 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_audio_tracks.rst:2
 msgid "Adding audio tracks"
-msgstr ""
+msgstr "Hinzufügen von Audio-Tracks"
 
 #: ../../custom_assets/tutorials/add_audio_tracks.rst:4
 msgid ""
