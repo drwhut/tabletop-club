@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:54\n"
 "PO-Revision-Date: 2022-11-29 03:08+0000\n"
-"Last-Translator: Felix Kaechele <felix@kaechele.ca>\n"
+"Last-Translator: Web late <weblate123@mailinator.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/de/>\n"
 "Language: de\n"
@@ -716,18 +716,31 @@ msgid ""
 "runs out. That level of cool. Maybe you're not that cool, but if you adopt "
 "this as your personal theme tune, people will THINK you're that cool."
 msgstr ""
+"Ich sag dir mal, was cool sein bedeutet. Du gehst zu einer Dinnerparty, "
+"schnappst dir ein Glass Prosecco, küsst den Gastgeber leidenschaftlich, und "
+"dann entschärfst du ganz entspannt und nebenbei eine Bombe in allerletzter "
+"Sekunde. Das ist cool. Vielleicht bist du nicht wirklich so cool, aber wenn "
+"du es dir zur Lebensaufgabe machst, so zu tun, als ob du all das bereits "
+"kannst, dann GLAUBEN die Leute irgendwann ganz automatisch, dass du so cool "
+"bist."
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:1
 msgid "Bossa Antigua - Kevin MacLeod"
 msgstr "Bossa Antigua - Kevin MacLeod"
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:2
+#, fuzzy
 msgid ""
 "Oh hello. I didn't see you there. Welcome to my pad. My favorite parts are "
 "the view of the beach, and this very groovy orange shag-carpeting on the "
 "walls. I still haven't been able to teach my Roombas to get up by the "
 "ceiling, though."
 msgstr ""
+"Oh, hallo! Ich habe dich gar nicht gesehen. Willkommen in meiner "
+"bescheidenen Behausung. Am besten gefällt mir die Aussicht auf den Strand "
+"und dieses lässige Orange auf den Wänden. Wenn ich es jetzt noch schaffe, "
+"meinem Staubsaugerroboter beizubringen, dass er die auch die Spinnweben an "
+"den Wänden und der Zimmerdecke entfernt, ist das Idyll perfekt."
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:1
 msgid "Deadly Roulette - Kevin MacLeod"
@@ -743,6 +756,16 @@ msgid ""
 "Hah! Adverbs work perfectly fine! Woohoo! Adverbs! And before I get mail... "
 "adjectives killed my family, so I can go off on them all I want."
 msgstr ""
+"Entspannt-cool! Unvergessbar! Geheimnisumhangen! Die passenden Adjektive "
+"finden ist echt nicht meins. Aber wer braucht schon Adjektive! Ich kann auch "
+"gut ohne die Dinger leben. Und falls du dich jetzt fragst, wie gut, dann "
+"lass mich eins sagen: ich kann‘s dir nicht sagen. Aber wozu braucht man das "
+"auch! Also ich muss keine Dinge beschreiben können, nicht in meinen Texten… "
+"außer vielleicht eines … ein klitzekleines … NEIN! Was sage ich da!? Ich "
+"verweigere mich! Mir stehen die Adjektive bis hierhin! Pah! Adverben reichen "
+"mir vollkommen! Wohoo! Adverben! Genau… und bevor mir jetzt einer einen "
+"erbosten Leserbrief schickt: Adjektive haben meine gesamte Familie auf dem "
+"Gewissen, ich darf also über Adjektive herziehen, wie ich will."
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:1
 msgid "George Street Shuffle - Kevin MacLeod"
@@ -757,6 +780,7 @@ msgid "Hard Boiled - Kevin MacLeod"
 msgstr "Hard Boiled - Kevin MacLeod"
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:2
+#, fuzzy
 msgid ""
 "You're looking for the low-down, huh? That's going to take lettuce. You want "
 "the dope? the scoop? the skinny? Ten bucks a day plus expenses. No "
@@ -764,12 +788,23 @@ msgid ""
 "you already knew that... Out of curiosity, what's the word for people who "
 "overuse slang?"
 msgstr ""
+"Du suchst also jemanden, der dir sagt, wo‘s langgeht? Der dir die Rute "
+"durchs Fenster wirft? Der dir die Fersen nach vorn richtet? Gehen wir ans "
+"Eingemachte! Mit einem großen Löffel für große Bissen, oder lieber einem "
+"langen dünnen, um tief zu schürfen? Nur 10 Scheine am Tag plus Aufwendungen. "
+"Und lass dir bloß nicht einfallen, mit mir zu feilschen. Ich bin kein "
+"Kaugummi, den man vollsabbert, weich kaut und dann an den Nächstbesten "
+"weitergibt. Mit mir ist nicht gut Kirschenessen, wie du bestimmt schon "
+"bemerkt hast, schreib dir das hinter die Ohren… nur mal so nebenbei, wie "
+"nennt man Leute, die dazu tendieren, eine etwas zu blumige Ausdrucksweise an "
+"den Tag zu legen?"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:1
 msgid "In Your Arms - Kevin MacLeod"
 msgstr "In Your Arms - Kevin MacLeod"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:2
+#, fuzzy
 msgid ""
 "A piece of music from a more elegant time, 1940. This is a beautiful slow "
 "piece that will make you want to pick up some champagne and go off slow "
@@ -777,18 +812,33 @@ msgid ""
 "words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No "
 "Whammies."
 msgstr ""
+"Eine Nummer aus einer Zeit, als man noch wusste, was Stil und Eleganz "
+"bedeuten, 1940. Ein wunderschönes Versatzstück musikalischer Ausprägung, das "
+"einen geradezu verleitet, mit einem Glas Champagner in der Hand ein Tänzchen "
+"zu wagen mit der nächstbesten Person, die sich findet… oder von mir aus auch "
+"mit einem Pinguin. Ich mag Pinguine. Und jetzt noch ein paar Schlagworte zum "
+"Nachlesen: Big Band. 1940er. Die wilden Vierziger. Empfänge. Jive au "
+"Pinguine. Keine Untergriffigkeiten, bitte."
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:1
 msgid "Lobby Time - Kevin MacLeod"
 msgstr "Lobby Time - Kevin MacLeod"
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:2
+#, fuzzy
 msgid ""
 "Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern "
 "green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail "
 "from our cheerful bar staff (with a complimentary cheese and fruit plate "
 "before 5pm). We feature prime rib dinners every day that ends in a "
 msgstr ""
+"Willkommen in der ZUKUNFT…slobby… aufenthaltsraum! Vollautomatische "
+"Aschenbecher vom Feinsten, und nur die modernsten Möbelbezüge aus Plastik im "
+"gleichen eleganten Kotzgrün der umgebenden Wände. Gönn dir einen Rusty Nail "
+"an der Bar mit unserem hochengagierten Personal (und nicht zu vergessen, "
+"einem Gruß des Hauses in Form einer geschmackvoll angerichteten Käse- und "
+"Obstplatte, alles nur bis 17 Uhr). Wir bieten ein gehaltvolles Rippchenmenü, "
+"das täglich mit dem Highlight schließt, einem "
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:1
 msgid "Night on the Docks - Sax - Kevin MacLeod"
@@ -803,11 +853,14 @@ msgid "Shades of Spring - Kevin MacLeod"
 msgstr "Shades of Spring - Kevin MacLeod"
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:2
+#, fuzzy
 msgid ""
 "Sort of a minor mid-tempo jazz combo with 2 pianos. Melody is doubled in "
 "octaves. Soloist goes outside more than the guy comping... but hey - what "
 "are soloists for?"
 msgstr ""
+"Fuck this shit browser crashing on every occasion and deleting my carefully-"
+"orchestrated translation. Fuck this shit Apple device with a rusty pitchfork."
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:1
 msgid "Smooth Lovin - Kevin MacLeod"
@@ -825,11 +878,16 @@ msgid "Spy Glass - Kevin MacLeod"
 msgstr "Spy Glass - Kevin MacLeod"
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:2
+#, fuzzy
 msgid ""
 "The year is... I have no idea. Timeless. Could be now, could be in the "
 "1950s. Super cool jazz for your hardcore detectives! Also useful for beat "
 "poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
 msgstr ""
+"Wir schreiben das Jahr… was weiß ich. Habe mein Gefühl für Zeit verloren. "
+"Könnte jetzt sein, oder in den 1950ern. Wirklich guter Jazz für euch "
+"Hardcore-Detektive! Zum Mitslammen geeignet! Bietet Abhilfe bei Kurz- und "
+"Langeweile! Interessante Art, seine Zeit zu vergeuden."
 
 #: ../TabletopClub/pieces/Bishop_Black:1
 msgid "Bishop Black"
