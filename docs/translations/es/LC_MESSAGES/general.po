@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
 "PO-Revision-Date: 2022-11-28 17:25+0000\n"
-"Last-Translator: HugoPlacer <hugoplanellmoreno@gmail.com>\n"
+"Last-Translator: Emilio González <emi2k01@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/es/>\n"
 "Language: es\n"
@@ -44,6 +44,8 @@ msgid ""
 "The game is completely free to download and play! You can do so by going to "
 "the :ref:`downloading-binaries` page."
 msgstr ""
+"El juego es completamente gratuito para descargar y jugar! Puedes hacerlo "
+"yendo a la página de :ref:`downloading-binaries`."
 
 #: ../../general/about.rst:20
 #, fuzzy
