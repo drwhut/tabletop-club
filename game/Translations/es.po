@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2022-11-28 17:28+0000\n"
-"Last-Translator: HugoPlacer <hugoplanellmoreno@gmail.com>\n"
+"PO-Revision-Date: 2022-11-29 02:35+0000\n"
+"Last-Translator: Xavi <xestevev@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "game/es/>\n"
 "Language: es\n"
@@ -29,7 +29,6 @@ msgid "Missing Asset Folder"
 msgstr "Carpeta de recursos faltante"
 
 #: ../Scenes/ImportAssets.tscn:65
-#, fuzzy
 msgid "Missing Module"
 msgstr "Módulo faltante"
 
@@ -73,13 +72,12 @@ msgid "Documentation"
 msgstr "Documentación"
 
 #: ../Scenes/MainMenu.tscn:122 ../Scenes/MainMenu.tscn:217
-#, fuzzy
 msgid "Information"
 msgstr "Información"
 
 #: ../Scenes/MainMenu.tscn:147
 msgid "Host Game"
-msgstr ""
+msgstr "Alojar juego"
 
 #: ../Scenes/MainMenu.tscn:153
 msgid "Create a new lobby for your friends to join over the Internet."
@@ -87,7 +85,7 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:165 ../Scenes/MainMenu.tscn:212
 msgid "Join Game"
-msgstr ""
+msgstr "Unirse al juego"
 
 #: ../Scenes/MainMenu.tscn:171
 msgid "Use a room code to join your friend's lobby."
@@ -95,27 +93,27 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:177
 msgid "Enter Room Code"
-msgstr ""
+msgstr "Introducir código de sala"
 
 #: ../Scenes/MainMenu.tscn:197
 msgid "Room Code:"
-msgstr ""
+msgstr "Código de sala:"
 
 #: ../Scenes/MainMenu.tscn:206
 msgid "ABCD"
-msgstr ""
+msgstr "ABCD"
 
 #: ../Scenes/MainMenu.tscn:304
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
-msgstr ""
+msgstr "Sonido"
 
 #: ../Scenes/OptionsMenu.tscn:61
 msgid "Master Volume"
-msgstr ""
+msgstr "Volumen principal"
 
 #: ../Scenes/OptionsMenu.tscn:68
 msgid "Sets the overall volume of all sources of sound in the game."
@@ -123,7 +121,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:79
 msgid "Music Volume"
-msgstr ""
+msgstr "Volumen de música"
 
 #: ../Scenes/OptionsMenu.tscn:87
 msgid "Sets the volume of all music sources in the game."
@@ -131,7 +129,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:98
 msgid "Sounds Volume"
-msgstr ""
+msgstr "Volumen de sonidos"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
@@ -141,7 +139,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:117
 msgid "Effects Volume"
-msgstr ""
+msgstr "Volumen de efectos"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
