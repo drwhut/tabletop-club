@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
 "PO-Revision-Date: 2022-11-29 02:35+0000\n"
-"Last-Translator: x3a <trevor@destroyed.today>\n"
+"Last-Translator: Meme <testtesttest@byom.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "game/de/>\n"
 "Language: de\n"
@@ -1078,30 +1078,21 @@ msgid "Unknown event type"
 msgstr "Unbekannter Ereignistyp"
 
 #: ../Scripts/ImportAssets.gd:88
-#, fuzzy
-#| msgid ""
-#| "Tabletop Club couldn't find an assets folder in any of the following "
-#| "places:"
 msgid "Tabletop Club could not find any asset packs in the following folders:"
-msgstr ""
-"Tabletop Club konnte an den folgenden Orten keinen Assets-Ordner finden:"
+msgstr "Tabletop Club konnte an den folgenden Orten keinen Asset-Pakete finden:"
 
 #: ../Scripts/ImportAssets.gd:90
-#, fuzzy
-#| msgid ""
-#| "Tabletop Club couldn't find an assets folder in any of the following "
-#| "places:"
 msgid ""
 "Tabletop Club could not find an assets folder in any of the following places:"
 msgstr ""
-"Tabletop Club konnte an den folgenden Orten keinen Assets-Ordner finden:"
+"Tabletop Club konnte an keinem der folgenden Orte einen Assets-Ordner finden:"
 
 #: ../Scripts/ImportAssets.gd:96
-#, fuzzy
-#| msgid "Please create one of these folders and restart the game."
 msgid ""
 "Please place an asset pack into one of these folders, and restart the game."
-msgstr "Bitte erstellen Sie einen dieser Ordner und starten Sie das Spiel neu."
+msgstr ""
+"Bitte platziere ein Asset Paket in einen dieser Ordner und starte das Spiel "
+"neu."
 
 #: ../Scripts/ImportAssets.gd:98
 msgid "Please create one of these folders and restart the game."
@@ -1188,22 +1179,16 @@ msgid "30 seconds"
 msgstr "30 Sekunden"
 
 #: ../Scripts/OptionsMenu.gd:63
-#, fuzzy
-#| msgid "5 minutes"
 msgid "1 minute"
-msgstr "5 Minuten"
+msgstr "1 Minute"
 
 #: ../Scripts/OptionsMenu.gd:65
-#, fuzzy
-#| msgid "5 minutes"
 msgid "10 minutes"
-msgstr "5 Minuten"
+msgstr "10 Minuten"
 
 #: ../Scripts/OptionsMenu.gd:66
-#, fuzzy
-#| msgid "5 minutes"
 msgid "30 minutes"
-msgstr "5 Minuten"
+msgstr "30 Minuten"
 
 #: ../Scripts/OptionsMenu.gd:69
 msgid "Borderless Fullscreen"
@@ -1297,10 +1282,8 @@ msgid "Value"
 msgstr "Wert"
 
 #: ../Scripts/Game/CameraController.gd:1164
-#, fuzzy
-#| msgid "Sort"
 msgid "Sort by"
-msgstr "Sortieren"
+msgstr "Sortieren nach"
 
 #: ../Scripts/Game/CameraController.gd:1173
 msgid "Timer"
@@ -1562,10 +1545,8 @@ msgid "Delete selected"
 msgstr "Ausgewählte löschen"
 
 #: ../Scripts/Game/CameraController.gd:1464
-#, fuzzy
-#| msgid "Flip Table"
 msgid "Flip card"
-msgstr "Tisch umwerfen"
+msgstr "Karte umdrehen"
 
 #: ../Scripts/Game/CameraController.gd:1466
 msgid "Face card up"
@@ -1676,10 +1657,8 @@ msgid "Saved screenshot to '%s'."
 msgstr "Screenshot unter '%s' gespeichert."
 
 #: ../Scripts/Game/Game.gd:1241
-#, fuzzy
-#| msgid "Quicksave"
 msgid "Quicksave file saved."
-msgstr "Schnellspeichern"
+msgstr "Schnellspeichern abgeschlossen."
 
 #: ../Scripts/Game/Game.gd:1304
 msgid "Connecting to the master server..."
@@ -1764,10 +1743,8 @@ msgid "Transfer mode is invalid."
 msgstr "Übertragungsmodus ist ungültig."
 
 #: ../Scripts/Game/MasterServer.gd:57
-#, fuzzy
-#| msgid "Too many players connected."
 msgid "Too many connections."
-msgstr "Zu viele Spieler*innen verbunden."
+msgstr "Zu viele Verbindungen."
 
 #: ../Scripts/Game/MasterServer.gd:58
 msgid "Reconnected too quickly."
@@ -1824,10 +1801,9 @@ msgstr ""
 "zwischen den Sitzungen erhalten bleiben sollen."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:138
-#, fuzzy, python-format
-#| msgid "Are you sure you want to delete '%s'?"
+#, python-format
 msgid "Are you sure you want to delete the page '%s'?"
-msgstr "Soll '%s' wirklich gelöscht werden?"
+msgstr "Soll die Seite '%s' wirklich gelöscht werden?"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:168
 msgid "New Page"
@@ -1920,10 +1896,9 @@ msgstr "Lizenz: %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:66
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:89
-#, fuzzy, python-format
-#| msgid "Modified: %s"
+#, python-format
 msgid "Modified by: %s"
-msgstr "Modifiziert: %s"
+msgstr "Geändert durch: %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:72
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:95
