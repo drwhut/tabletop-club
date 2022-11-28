@@ -170,12 +170,23 @@ func clear_temp_db() -> void:
 # Returns: The list of asset directory paths.
 func get_asset_paths() -> Array:
 	var out = []
+	var exec_dir = OS.get_executable_path().get_base_dir()
+	var downloads_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS)
+	var documents_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
+	var desktop_dir = OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP)
+	if downloads_dir.empty():
+		downloads_dir = "."
+	if documents_dir.empty():
+		documents_dir = "."
+	if desktop_dir.empty():
+		desktop_dir = "."
+	
 	for prefix in ASSET_DIR_PREFIXES:
 		var path = prefix + "/assets"
-		path = path.replace("{EXEC_DIR}", OS.get_executable_path().get_base_dir())
-		path = path.replace("{DOWNLOADS}", OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS))
-		path = path.replace("{DOCUMENTS}", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
-		path = path.replace("{DESKTOP}", OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP))
+		path = path.replace("{EXEC_DIR}", exec_dir)
+		path = path.replace("{DOWNLOADS}", downloads_dir)
+		path = path.replace("{DOCUMENTS}", documents_dir)
+		path = path.replace("{DESKTOP}", desktop_dir)
 		out.append(path)
 	return out
 
