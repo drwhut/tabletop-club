@@ -19,3 +19,6 @@ game/webrtc/
 
 # OSX ignores
 .DS_Store
+
+# Project-specific ignores
+game/TabletopClub/
