@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2022-11-29 02:35+0000\n"
-"Last-Translator: guissou <guimichel@protonmail.com>\n"
+"PO-Revision-Date: 2022-11-29 17:05+0000\n"
+"Last-Translator: SphinxKnight <julien.gattelier@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "game/fr/>\n"
 "Language: fr\n"
@@ -25,10 +25,8 @@ msgid "Importing assets..."
 msgstr "Importation des ressources…"
 
 #: ../Scenes/ImportAssets.tscn:59
-#, fuzzy
-#| msgid "Open Assets Folder"
 msgid "Missing Asset Folder"
-msgstr "Ouvrir le dossier des ressources"
+msgstr "Répertoire d'asset manquant"
 
 #: ../Scenes/ImportAssets.tscn:65
 msgid "Missing Module"
@@ -93,11 +91,11 @@ msgstr "Utilisez un code de salon pour rejoindre le salon de votre ami·e."
 
 #: ../Scenes/MainMenu.tscn:177
 msgid "Enter Room Code"
-msgstr "Code du salon:"
+msgstr "Veuillez saisir le code du salon"
 
 #: ../Scenes/MainMenu.tscn:197
 msgid "Room Code:"
-msgstr "Code du salon:"
+msgstr "Code du salon :"
 
 #: ../Scenes/MainMenu.tscn:206
 msgid "ABCD"
@@ -177,7 +175,7 @@ msgstr "Inversion horizontale de la souris"
 
 #: ../Scenes/OptionsMenu.tscn:202
 msgid "Used to invert the rotation of the camera horizontally."
-msgstr ""
+msgstr "Utilisé pour inverser la rotation de la caméra sur l'axe horizontal."
 
 #: ../Scenes/OptionsMenu.tscn:209
 msgid "Mouse Vertical Invert"
@@ -185,7 +183,7 @@ msgstr "Inversion verticale de la souris"
 
 #: ../Scenes/OptionsMenu.tscn:217
 msgid "Used to invert the rotation of the camera vertically."
-msgstr ""
+msgstr "Utilisé pour inverser la rotation de la caméra sur l'axe vertical."
 
 #: ../Scenes/OptionsMenu.tscn:224
 msgid "Camera Movement Speed"
@@ -194,6 +192,8 @@ msgstr "Vitesse des mouvements de caméra"
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
 msgstr ""
+"Utilisé pour indiquer la vitesse à laquelle la caméra se déplace sur la "
+"table."
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
@@ -204,6 +204,8 @@ msgid ""
 "Used to allow the player to move the camera by dragging the mouse across the "
 "table."
 msgstr ""
+"Utilisé pour permettre à la joueuse ou au joueur de déplacer la caméra en "
+"déplaçant la souris sur la table."
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
@@ -214,6 +216,8 @@ msgid ""
 "Sets how fast the camera zooms in and out of the table when using the scroll "
 "wheel."
 msgstr ""
+"Définit la vitesse à laquelle la caméra zoome/dézoome lorsqu'on utilise la "
+"roulette."
 
 #: ../Scenes/OptionsMenu.tscn:279
 msgid "Zoom Invert"
@@ -222,23 +226,28 @@ msgstr "Inversion du zoom"
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
 msgstr ""
+"Utilisé pour inverser la direction du zoom lorsqu'on utilise la roulette."
 
 #: ../Scenes/OptionsMenu.tscn:294
 msgid "Piece Lift Sensitivity"
-msgstr ""
+msgstr "Sensibilité pour le soulèvement de la pièce"
 
 #: ../Scenes/OptionsMenu.tscn:302
 msgid "Sets how fast a piece will move when lifting it off the table."
 msgstr ""
+"Définit la vitesse de déplacement d'une pièce lorsqu'elle est soulevé au-"
+"dessus de la table."
 
 #: ../Scenes/OptionsMenu.tscn:314
 msgid "Piece Lift Invert"
-msgstr ""
+msgstr "Inversion pour le soulèvement de la pièce"
 
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
 "Used to invert the direction a piece will go when lifting it off the table."
 msgstr ""
+"Utilisé pour inverser la direction selon laquelle une pièce se déplace "
+"lorsqu'elle est soulevée de la table."
 
 #: ../Scenes/OptionsMenu.tscn:329
 msgid "Piece Rotation Invert"
@@ -246,7 +255,7 @@ msgstr "Inverser la rotation des pièces"
 
 #: ../Scenes/OptionsMenu.tscn:337
 msgid "Used to invert the direction a piece will rotate."
-msgstr ""
+msgstr "Utilisé pour inverser la direction selon laquelle une pièce tournera."
 
 #: ../Scenes/OptionsMenu.tscn:344
 msgid "Hand Preview Enabled"
@@ -257,6 +266,8 @@ msgid ""
 "When set, hovering over a card in your hand will display an enhanced preview "
 "of the card after a short period of time."
 msgstr ""
+"Lorsque cette variable est définie, le survol d'une carte dans la main "
+"affichera une prévisualisation améliorée de la carte après un court délai."
 
 #: ../Scenes/OptionsMenu.tscn:360
 msgid "Hand Preview Delay"
@@ -267,6 +278,8 @@ msgid ""
 "Used to set how long the mouse needs to be kept still before a preview of a "
 "card is displayed from the hand."
 msgstr ""
+"Utilisé pour indiquer la durée d'immobilité de la souris à attendre avant "
+"qu'une prévisualisation d'une carte soit affichée depuis la main."
 
 #: ../Scenes/OptionsMenu.tscn:380
 msgid "Hand Preview Size"
@@ -274,7 +287,7 @@ msgstr "Taille de l'aperçu de la main"
 
 #: ../Scenes/OptionsMenu.tscn:388
 msgid "Used to control how large the card preview is."
-msgstr ""
+msgstr "Utilisé pour contrôler la taille de la prévisualisation de la carte."
 
 #: ../Scenes/OptionsMenu.tscn:400
 msgid "Hide Control Hints"
@@ -283,6 +296,7 @@ msgstr "Masquer les conseils des contrôles"
 #: ../Scenes/OptionsMenu.tscn:408
 msgid "Used to hide the dynamic text displaying how to control the game."
 msgstr ""
+"Utilisé pour masquer le texte dynamique affichant comment contrôler le jeu."
 
 #: ../Scenes/OptionsMenu.tscn:421
 msgid "General"
@@ -317,19 +331,19 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Show System Warnings"
-msgstr ""
+msgstr "Afficher les avertissements système"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Displays system warnings in the chat box."
-msgstr ""
+msgstr "Affiche les avertissements système dans la boîte de discussion."
 
 #: ../Scenes/OptionsMenu.tscn:509
 msgid "Show System Errors"
-msgstr ""
+msgstr "Afficher les erreurs système"
 
 #: ../Scenes/OptionsMenu.tscn:517
 msgid "Displays system errors in the chat box."
-msgstr ""
+msgstr "Affiche les erreurs système dans la boîte de discussion."
 
 #: ../Scenes/OptionsMenu.tscn:545
 msgid "Opens the assets folder in your file explorer."
@@ -361,27 +375,23 @@ msgstr "Reculer"
 
 #: ../Scenes/OptionsMenu.tscn:615
 msgid "Moves the camera backwards."
-msgstr ""
+msgstr "Déplace la caméra en arrière."
 
 #: ../Scenes/OptionsMenu.tscn:625
 msgid "Move Left"
 msgstr "Aller vers la gauche"
 
 #: ../Scenes/OptionsMenu.tscn:633
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera left."
-msgstr "Déplacer la caméra"
+msgstr "Déplace la caméra à gauche."
 
 #: ../Scenes/OptionsMenu.tscn:643
 msgid "Move Right"
 msgstr "Aller vers la droite"
 
 #: ../Scenes/OptionsMenu.tscn:651
-#, fuzzy
-#| msgid "Move camera"
 msgid "Moves the camera right."
-msgstr "Déplacer la caméra"
+msgstr "Déplace la caméra à droite."
 
 #: ../Scenes/OptionsMenu.tscn:661
 msgid "Rotate Camera"
@@ -389,7 +399,7 @@ msgstr "Tourner la caméra"
 
 #: ../Scenes/OptionsMenu.tscn:669
 msgid "Enable rotation of the camera when moving the mouse."
-msgstr ""
+msgstr "Active la rotation de la caméra au déplacement de la souris."
 
 #: ../Scenes/OptionsMenu.tscn:679
 msgid "Reset Camera"
@@ -397,27 +407,23 @@ msgstr "Réinitialiser la caméra"
 
 #: ../Scenes/OptionsMenu.tscn:687
 msgid "Resets the camera to the default position."
-msgstr ""
+msgstr "Réinitialise la caméra à sa position par défaut."
 
 #: ../Scenes/OptionsMenu.tscn:697
-#, fuzzy
-#| msgid "Zoom Invert"
 msgid "Zoom In"
-msgstr "Inversion du zoom"
+msgstr "Zoom"
 
 #: ../Scenes/OptionsMenu.tscn:705
 msgid "Zoom the camera or object towards the table."
-msgstr ""
+msgstr "Zoome la caméra ou l'objet vers la table."
 
 #: ../Scenes/OptionsMenu.tscn:715
-#, fuzzy
-#| msgid "Zoom Invert"
 msgid "Zoom Out"
-msgstr "Inversion du zoom"
+msgstr "Dézoom"
 
 #: ../Scenes/OptionsMenu.tscn:723
 msgid "Zoom the camera or object away from the table."
-msgstr ""
+msgstr "Dézoome la caméra ou l'objet de la table."
 
 #: ../Scenes/OptionsMenu.tscn:733
 msgid "Flip Piece Orientation"
@@ -425,24 +431,26 @@ msgstr "Inverser l'orientation des pièces"
 
 #: ../Scenes/OptionsMenu.tscn:741
 msgid "Flip the selected piece on the horizontal axis."
-msgstr ""
+msgstr "Renverse la pièce sélectionnée sur l'axe horizontal."
 
 #: ../Scenes/OptionsMenu.tscn:751
 msgid "Reset Piece Orientation"
-msgstr "Réinitialiser l'orientation des pièces"
+msgstr "Réinitialiser l'orientation de la pièce"
 
 #: ../Scenes/OptionsMenu.tscn:759
 msgid "Resets the selected piece to its default orientation."
-msgstr ""
+msgstr "Réinitialise l'orientation de la pièce sélectionnée à celle par défaut."
 
 #: ../Scenes/OptionsMenu.tscn:769
 msgid "Lock/Unlock Piece"
-msgstr "Verrouiller/Déverrouiller la pièce"
+msgstr "Verrouille/déverrouiller la pièce"
 
 #: ../Scenes/OptionsMenu.tscn:777
 msgid ""
 "Toggles the lock on the selected piece, fixing its position and rotation."
 msgstr ""
+"Alterne le verrouillage de la pièce sélectionnée, fixant sa position et sa "
+"rotation."
 
 #: ../Scenes/OptionsMenu.tscn:787
 msgid "Delete Piece"
@@ -450,7 +458,7 @@ msgstr "Supprimer la pièce"
 
 #: ../Scenes/OptionsMenu.tscn:795
 msgid "Deletes the currently selected piece."
-msgstr ""
+msgstr "Supprime la pièce actuellement sélectionnée."
 
 #: ../Scenes/OptionsMenu.tscn:805
 msgid "Toggle Debug Info"
@@ -458,7 +466,7 @@ msgstr "Activer/Désactiver les informations de débogage"
 
 #: ../Scenes/OptionsMenu.tscn:813
 msgid "Toggles whether debug information is displayed."
-msgstr ""
+msgstr "Alterne l'affichage des informations de débogage."
 
 #: ../Scenes/OptionsMenu.tscn:823
 msgid "Quicksave"
@@ -482,7 +490,7 @@ msgstr "Activer/Désactiver l'interface graphique"
 
 #: ../Scenes/OptionsMenu.tscn:867
 msgid "Toggles whether the entire UI is displayed."
-msgstr ""
+msgstr "Alterne l'affichage complet de l'interface utilisateur."
 
 #: ../Scenes/OptionsMenu.tscn:877
 msgid "Take Screenshot"
@@ -490,11 +498,12 @@ msgstr "Prendre une capture d'écran"
 
 #: ../Scenes/OptionsMenu.tscn:885
 msgid "Takes a screenshot of the game in its current state."
-msgstr ""
+msgstr "Prend une capture d'écran du jeu dans son état actuel."
 
 #: ../Scenes/OptionsMenu.tscn:900
 msgid "Used to reset the key bindings to their default values."
 msgstr ""
+"Utilisé pour réinitialiser les contrôles clavier à leurs valeurs par défaut."
 
 #: ../Scenes/OptionsMenu.tscn:901 ../Scenes/OptionsMenu.tscn:1361
 msgid "Reset Bindings"
@@ -507,11 +516,11 @@ msgstr "Nom"
 
 #: ../Scenes/OptionsMenu.tscn:935
 msgid "The player's displayed name in multiplayer lobbies."
-msgstr ""
+msgstr "Le nom affiché pour la personne dans les salons multijoueurs."
 
 #: ../Scenes/OptionsMenu.tscn:937
 msgid "Player"
-msgstr "Joueur"
+msgstr "Joueur/Joueuse"
 
 #: ../Scenes/OptionsMenu.tscn:945 ../Scripts/Game/CameraController.gd:1241
 msgid "Color"
@@ -519,15 +528,15 @@ msgstr "Couleur"
 
 #: ../Scenes/OptionsMenu.tscn:953
 msgid "The player's displayed colour in multiplayer lobbies."
-msgstr ""
+msgstr "La couleur affichée pour la personne dans les salons multijoueurs."
 
 #: ../Scenes/OptionsMenu.tscn:963
 msgid "Chat Font Size"
-msgstr ""
+msgstr "Taille de la police pour les discussions"
 
 #: ../Scenes/OptionsMenu.tscn:971
 msgid "Changes the size of the text in the chat box."
-msgstr ""
+msgstr "Change la taille de caractère utilisée dans la boîte de discussion."
 
 #: ../Scenes/OptionsMenu.tscn:973 ../Scenes/OptionsMenu.tscn:1104
 #: ../Scripts/OptionsMenu.gd:74
@@ -536,12 +545,14 @@ msgstr "Moyen"
 
 #: ../Scenes/OptionsMenu.tscn:982
 msgid "Hide Player Cursors"
-msgstr "Masquer le curseur des joueurs"
+msgstr "Masquer les curseurs du joueur/de la joueuse"
 
 #: ../Scenes/OptionsMenu.tscn:990
 msgid ""
 "Used to stop showing other player's cursors when in multiplayer lobbies."
 msgstr ""
+"Utilisé pour ne plus afficher les curseurs des autres joueurs ou joueuses "
+"dans les salons multijoueurs."
 
 #: ../Scenes/OptionsMenu.tscn:998
 msgid "Censor Profanity"
@@ -552,6 +563,8 @@ msgid ""
 "Used to censor potentially offensive words in the chat window when in "
 "multiplayer lobbies."
 msgstr ""
+"Utilisé pour censurer les mots potentiellement grossiers dans la fenêtre de "
+"discussion des salons multijoueurs."
 
 #: ../Scenes/OptionsMenu.tscn:1021
 msgid "Video"
@@ -563,7 +576,7 @@ msgstr "Mode fenêtré"
 
 #: ../Scenes/OptionsMenu.tscn:1042
 msgid "Sets the mode in which the game window is displayed."
-msgstr ""
+msgstr "Définit le mode selon lequel la fenêtre du jeu est affichée."
 
 #: ../Scenes/OptionsMenu.tscn:1044 ../Scripts/OptionsMenu.gd:68
 msgid "Windowed"
@@ -571,11 +584,11 @@ msgstr "Fenêtré"
 
 #: ../Scenes/OptionsMenu.tscn:1053
 msgid "Field of View"
-msgstr "Point de vue"
+msgstr "Champ de vue"
 
 #: ../Scenes/OptionsMenu.tscn:1061
 msgid "Sets the field of view of the in-game camera."
-msgstr ""
+msgstr "Définit le champ de vue pour la caméra du jeu."
 
 #: ../Scenes/OptionsMenu.tscn:1074
 msgid "VSync"
@@ -596,11 +609,11 @@ msgstr "Aucun"
 
 #: ../Scenes/OptionsMenu.tscn:1134
 msgid "Screen Space Ambient Occlusion (SSAO)"
-msgstr ""
+msgstr "Occlusion ambiante de l'espace à l'écran (SSAO)"
 
 #: ../Scenes/OptionsMenu.tscn:1156
 msgid "Skybox Radiance Detail"
-msgstr ""
+msgstr "Niveau de détail de radiance pour la skybox"
 
 #: ../Scenes/OptionsMenu.tscn:1167 ../Scripts/OptionsMenu.gd:73
 msgid "Low"
@@ -612,27 +625,31 @@ msgstr "Profondeur du champ"
 
 #: ../Scenes/OptionsMenu.tscn:1197
 msgid "Depth of Field Amount"
-msgstr ""
+msgstr "Quantité de profondeur de champ"
 
 #: ../Scenes/OptionsMenu.tscn:1205
 msgid ""
 "Used to determine how much the background is blurred when using depth of "
 "field."
 msgstr ""
+"Utilisé pour déterminer l'intensité du floutage de l'arrière-plan lorsque la "
+"profondeur de champ est utilisée."
 
 #: ../Scenes/OptionsMenu.tscn:1217
 msgid "Depth of Field Distance"
-msgstr ""
+msgstr "Distance pour la profondeur de champ"
 
 #: ../Scenes/OptionsMenu.tscn:1225
 msgid ""
 "Used to set the threshold of what is considered the background when using "
 "depth of field."
 msgstr ""
+"Définit le seuil à partir duquel les éléments sont considérés à l'arrière-"
+"plan lorsque la profondeur de champ est utilisée."
 
 #: ../Scenes/OptionsMenu.tscn:1237
 msgid "Table Paint Filtering"
-msgstr ""
+msgstr "Filtrage pour la peinture de la table"
 
 #: ../Scenes/OptionsMenu.tscn:1260
 msgid "Back"
@@ -685,7 +702,7 @@ msgstr "Sélectionner la piste"
 
 #: ../Scenes/Game/CameraController.tscn:146
 msgid "Range:"
-msgstr ""
+msgstr "Intervalle :"
 
 #: ../Scenes/Game/CameraController.tscn:165
 msgid "Take X off top"
@@ -697,38 +714,38 @@ msgstr "En retirer X"
 
 #: ../Scenes/Game/CameraController.tscn:234
 msgid "Position:"
-msgstr "Position:"
+msgstr "Position :"
 
 #: ../Scenes/Game/CameraController.tscn:245
 #: ../Scenes/Game/CameraController.tscn:303
 #: ../Scenes/Game/CameraController.tscn:355
 msgid "X:"
-msgstr ""
+msgstr "X :"
 
 #: ../Scenes/Game/CameraController.tscn:261
 #: ../Scenes/Game/CameraController.tscn:317
 #: ../Scenes/Game/CameraController.tscn:371
 msgid "Y:"
-msgstr ""
+msgstr "Y :"
 
 #: ../Scenes/Game/CameraController.tscn:277
 #: ../Scenes/Game/CameraController.tscn:331
 #: ../Scenes/Game/CameraController.tscn:387
 msgid "Z:"
-msgstr ""
+msgstr "Z :"
 
 #: ../Scenes/Game/CameraController.tscn:292
 msgid "Rotation (°):"
-msgstr "Rotation (°):"
+msgstr "Rotation (°) :"
 
 #: ../Scenes/Game/CameraController.tscn:344
 #: ../Scenes/Game/CameraController.tscn:489
 msgid "Scale:"
-msgstr "Échelle :"
+msgstr "Échelle :"
 
 #: ../Scenes/Game/CameraController.tscn:433
 msgid "Strength:"
-msgstr "Force:"
+msgstr "Force :"
 
 #: ../Scenes/Game/CameraController.tscn:444
 msgid "1.0"
@@ -780,6 +797,10 @@ msgid ""
 "of %d missing assets, and %d assets differ between your client and the "
 "host's client:"
 msgstr ""
+"L'hôte possède des assets importés qui manquent à votre client. Cela "
+"signifie que vous ne pourrez pas voir ces assets en jeu. Au total, %d assets "
+"manquents et %d assets sont différents entre votre client et le client de "
+"l'hôte :"
 
 #: ../Scenes/Game/Game.tscn:58
 #, python-format
@@ -787,10 +808,12 @@ msgid ""
 "Your client is also missing %d files, and %d files differ from that of the "
 "host's, which in total is %s of data:"
 msgstr ""
+"%d fichiers sont également manquants de votre client et %d fichiers sont "
+"différents de ceux de l'hôte, ce qui représente %s de données :"
 
 #: ../Scenes/Game/Game.tscn:86
 msgid "Yes, download missing assets."
-msgstr "Oui, télécharger les resources manquantes."
+msgstr "Oui, télécharger les ressources manquantes."
 
 #: ../Scenes/Game/Game.tscn:93
 msgid "No, continue without them."
@@ -798,7 +821,7 @@ msgstr "Non, continuer sans."
 
 #: ../Scenes/Game/Game.tscn:99
 msgid "Download Assets?"
-msgstr "Télécharger les resources?"
+msgstr "Télécharger les ressources ?"
 
 #: ../Scenes/Game/Game.tscn:108
 msgid "Downloading..."
@@ -806,25 +829,23 @@ msgstr "Téléchargement…"
 
 #: ../Scenes/Game/Game.tscn:123
 msgid "Waiting for download..."
-msgstr ""
+msgstr "En attente du téléchargement…"
 
 #: ../Scenes/Game/Game.tscn:136
 msgid "Waiting to verify integrity..."
-msgstr ""
+msgstr "En attente de la vérification d'intégrité…"
 
 #: ../Scenes/Game/Game.tscn:149
-#, fuzzy
-#| msgid "Importing assets..."
 msgid "Waiting to import assets..."
-msgstr "Importation des ressources…"
+msgstr "En attente de l'importation des assets…"
 
 #: ../Scenes/Game/Game.tscn:168 ../Scenes/Game/Game.tscn:186
 msgid "Error!"
-msgstr "Erreur!"
+msgstr "Erreur !"
 
 #: ../Scenes/Game/Game.tscn:176
 msgid "Download Folder Locked"
-msgstr ""
+msgstr "Dossier de téléchargement verrouillé"
 
 #: ../Scenes/Game/UI/ChatBox.tscn:54
 msgid "Type a message here..."
@@ -961,11 +982,11 @@ msgstr "Changer de table"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:67
 msgid "Current skybox:"
-msgstr ""
+msgstr "Skybox courante :"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:79
 msgid "Change skybox"
-msgstr ""
+msgstr "Modifier la skybox"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:93
 msgid "Lamp Type"
@@ -996,7 +1017,7 @@ msgstr "Sélectionner la piste"
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:161
 #, python-format
 msgid "Loaded %d skyboxes."
-msgstr ""
+msgstr "%d skybox chargées."
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:164
 msgid "Select a table..."
@@ -1189,7 +1210,7 @@ msgstr "30 minutes"
 
 #: ../Scripts/OptionsMenu.gd:69
 msgid "Borderless Fullscreen"
-msgstr ""
+msgstr "Plein écran sans bordure"
 
 #: ../Scripts/OptionsMenu.gd:70
 msgid "Fullscreen"
@@ -1244,7 +1265,7 @@ msgstr "Placer en main"
 
 #: ../Scripts/Game/CameraController.gd:1128
 msgid "Collect individuals"
-msgstr ""
+msgstr "Récupérer individuellement"
 
 #: ../Scripts/Game/CameraController.gd:1129
 msgid "Collect all"
@@ -1287,15 +1308,14 @@ msgid "Timer"
 msgstr "Minuteur"
 
 #: ../Scripts/Game/CameraController.gd:1194
-#, fuzzy, python-format
-#| msgid "Count: %d"
+#, python-format
 msgid "Total: %d"
-msgstr "Compte : %d"
+msgstr "Total : %d"
 
 #: ../Scripts/Game/CameraController.gd:1196
 #, python-format
 msgid "Total: %f"
-msgstr ""
+msgstr "Total : %f"
 
 #: ../Scripts/Game/CameraController.gd:1200
 msgid "Collect selected"
@@ -1398,11 +1418,11 @@ msgstr "Zoom caméra"
 
 #: ../Scripts/Game/CameraController.gd:1348
 msgid "Release selected"
-msgstr ""
+msgstr "Relâcher la sélection"
 
 #: ../Scripts/Game/CameraController.gd:1350
 msgid "Quick grab"
-msgstr ""
+msgstr "Saisir rapidement"
 
 #: ../Scripts/Game/CameraController.gd:1350
 msgid "Move Mouse"
@@ -1410,15 +1430,15 @@ msgstr "Déplacer la souris"
 
 #: ../Scripts/Game/CameraController.gd:1351
 msgid "Stop grabbing"
-msgstr ""
+msgstr "Relâcher"
 
 #: ../Scripts/Game/CameraController.gd:1353
 msgid "Stop box selecting"
-msgstr ""
+msgstr "Arrêter la sélection de boîte"
 
 #: ../Scripts/Game/CameraController.gd:1356
 msgid "Select object"
-msgstr ""
+msgstr "Sélectionner un objet"
 
 #: ../Scripts/Game/CameraController.gd:1358
 msgid "Add to selection"
@@ -1440,11 +1460,11 @@ msgstr "Prendre l'objet du dessus"
 
 #: ../Scripts/Game/CameraController.gd:1367
 msgid "Grab selected"
-msgstr ""
+msgstr "Saisir la sélection"
 
 #: ../Scripts/Game/CameraController.gd:1367
 msgid "Grab object"
-msgstr ""
+msgstr "Saisir un objet"
 
 #: ../Scripts/Game/CameraController.gd:1370
 msgid "Stop moving"
@@ -1456,15 +1476,15 @@ msgstr "Commencer à bouger"
 
 #: ../Scripts/Game/CameraController.gd:1374
 msgid "Box select"
-msgstr ""
+msgstr "Sélectionner une boîte"
 
 #: ../Scripts/Game/CameraController.gd:1378
 msgid "Flick object"
-msgstr ""
+msgstr "Donner une pichenette à l'objet"
 
 #: ../Scripts/Game/CameraController.gd:1380
 msgid "Prepare to flick"
-msgstr ""
+msgstr "Se préparer à donner une pichenette"
 
 #: ../Scripts/Game/CameraController.gd:1384
 msgid "Stop measuring"
@@ -1492,21 +1512,19 @@ msgstr "Effacer la peinture"
 
 #: ../Scripts/Game/CameraController.gd:1408
 msgid "Object menu"
-msgstr ""
+msgstr "Menu de l'objet"
 
 #: ../Scripts/Game/CameraController.gd:1410
 msgid "Table menu"
-msgstr ""
+msgstr "Menu de la table"
 
 #: ../Scripts/Game/CameraController.gd:1414
-#, fuzzy
-#| msgid "Stop moving"
 msgid "Stop flicking"
-msgstr "Arrêter de bouger"
+msgstr "Arrêter la pichenette"
 
 #: ../Scripts/Game/CameraController.gd:1418
 msgid "Remove last ruler"
-msgstr ""
+msgstr "Retirer la dernière règle"
 
 #: ../Scripts/Game/CameraController.gd:1422
 msgid "Remove hidden area"
