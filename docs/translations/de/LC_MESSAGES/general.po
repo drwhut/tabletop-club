@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
 "PO-Revision-Date: 2022-11-30 11:47+0000\n"
-"Last-Translator: Benjamin <weblate@btzs.eu>\n"
+"Last-Translator: x3a <trevor@destroyed.today>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/de/>\n"
 "Language: de\n"
@@ -182,13 +182,15 @@ msgstr ""
 
 #: ../../general/about.rst:91
 msgid "Does Tabletop Club support multiplayer?"
-msgstr ""
+msgstr "Ist Tabletop Club mehrspielerfähig?"
 
 #: ../../general/about.rst:93
 msgid ""
 "Yes! You don't need to make an account to play multiplayer, you can just "
 "host a game and start playing with friends!"
 msgstr ""
+"Ja! Du musst kein Konto erstellen, um Multiplayer zu spielen, du kannst "
+"einfach ein Spiel hosten und mit Freunden spielen!"
 
 #: ../../general/about.rst:98
 msgid ""
@@ -234,7 +236,7 @@ msgstr ""
 
 #: ../../general/about.rst:127
 msgid "Theoretically, any of them!"
-msgstr ""
+msgstr "Theoretisch alle!"
 
 #: ../../general/about.rst:129
 msgid ""
@@ -288,11 +290,14 @@ msgstr ""
 #: ../../general/about.rst:162
 msgid "Can I add assets other than game pieces to Tabletop Club?"
 msgstr ""
+"Kann ich außer Spielsteinen auch andere Assets zu Tabletop Club hinzufügen?"
 
 #: ../../general/about.rst:164
 msgid ""
 "Yes! As well as objects, you can also import the following types of assets:"
 msgstr ""
+"Ja! Zusätzlich zu Objekten kannst du die folgenden Arten von Assets "
+"importieren:"
 
 #: ../../general/about.rst:166
 msgid ":ref:`asset-type-game`"
@@ -328,13 +333,16 @@ msgstr ""
 
 #: ../../general/about.rst:183
 msgid "Can I share assets I've made on the internet?"
-msgstr ""
+msgstr "Kann ich Assets die ich erstellt habe im Internet teilen?"
 
 #: ../../general/about.rst:185
 msgid ""
 "It depends on a number of factors. In general, it should be safe to share "
 "the assets you've made for the game if the following is all true:"
 msgstr ""
+"Das hängt von einer Reihe von Faktoren ab. Im Allgemeinen sollte es sicher "
+"sein, die für das Spiel erstellten Assets weiterzugeben, wenn die folgenden "
+"Punkte alle zutreffen:"
 
 #: ../../general/about.rst:188
 msgid ""
@@ -360,6 +368,8 @@ msgstr ""
 msgid ""
 "If the assets you've made are for playing a game that already exists, then:"
 msgstr ""
+"Falls die von dir erstellten Assets für ein bereits existierendes Spiel "
+"bestimmt sind, dann:"
 
 #: ../../general/about.rst:203
 msgid ""
@@ -386,7 +396,7 @@ msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:5
 msgid "Coding guidelines"
-msgstr ""
+msgstr "Programmierrichtlinien"
 
 #: ../../general/contributing/coding_guidelines.rst:7
 msgid ""
@@ -397,7 +407,7 @@ msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:11
 msgid "Only use GDScript for scripting."
-msgstr ""
+msgstr "Verwende ausschließlich GDScript für Skripte."
 
 #: ../../general/contributing/coding_guidelines.rst:13
 msgid ""
@@ -497,7 +507,7 @@ msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:52
 msgid "Downloading and compiling Godot"
-msgstr ""
+msgstr "Herunterladen und kompilieren von Godot"
 
 #: ../../general/contributing/pull_request_workflow.rst:54
 msgid ""
@@ -625,17 +635,19 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:6
 msgid "Reporting a bug"
-msgstr ""
+msgstr "Einen Bug melden"
 
 #: ../../general/contributing/ways_to_contribute.rst:8
 msgid "Before reporting a bug on GitHub, make sure of the following:"
-msgstr ""
+msgstr "Bevor du auf GitHub einen Bug meldest, stelle Folgendes sicher:"
 
 #: ../../general/contributing/ways_to_contribute.rst:10
 msgid ""
 "The bug is reproducible. If you can't get the bug to happen again, then "
 "chances are that we won't be able to either, then we can't fix it!"
 msgstr ""
+"Der Fehler ist reproduzierbar. Wenn du den Fehler nicht reproduzieren "
+"kannst, dann können wir ihn wahrscheinlich auch nicht beheben!"
 
 #: ../../general/contributing/ways_to_contribute.rst:13
 msgid ""
@@ -685,7 +697,7 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:41
 msgid "Suggesting a feature"
-msgstr ""
+msgstr "Ein Feature vorschlagen"
 
 #: ../../general/contributing/ways_to_contribute.rst:43
 msgid ""
@@ -790,11 +802,11 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:115
 msgid "The name of the asset."
-msgstr ""
+msgstr "Der Name des Assets."
 
 #: ../../general/contributing/ways_to_contribute.rst:116
 msgid "The name of the author."
-msgstr ""
+msgstr "Der Name des Autors."
 
 #: ../../general/contributing/ways_to_contribute.rst:117
 msgid ""
@@ -802,12 +814,17 @@ msgid ""
 "assets with open licenses, e.g. `CC BY-SA 3.0 <https://creativecommons.org/"
 "licenses/by-sa/3.0/>`_."
 msgstr ""
+"Die Lizenz, unter der das Asset steht - denke daran, dass wir nur Assets mit "
+"offenen Lizenzen aufnehmen, z.B. `CC BY-SA 3.0 <https://creativecommons.org/"
+"licenses/by-sa/3.0/>`_."
 
 #: ../../general/contributing/ways_to_contribute.rst:120
 msgid ""
 "The URL where the asset can be downloaded from. The URL must be publically "
 "accessible, and it must lead to a trusted website."
 msgstr ""
+"Die URL, von der das Asset heruntergeladen werden kann. Die URL muss "
+"öffentlich zugänglich sein und zu einer vertrauenswürdigen Website führen."
 
 #: ../../general/download/compiling_from_source.rst:5
 msgid "Compiling from the source code"
@@ -869,7 +886,7 @@ msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:49
 msgid "Compiling Godot"
-msgstr ""
+msgstr "Godot kompilieren"
 
 #: ../../general/download/compiling_from_source.rst:51
 msgid ""
@@ -889,6 +906,8 @@ msgid ""
 "`Python 3.5+ <https://www.python.org/downloads/>`_. Make sure Python is "
 "added to your ``PATH`` environment variable."
 msgstr ""
+"`Python 3.5+ <https://www.python.org/downloads/>`_. Stelle sicher, dass "
+"Python zu deiner ``PATH`` Umgebungsvariable hinzugefügt wurde."
 
 #: ../../general/download/compiling_from_source.rst:62
 msgid ""
@@ -904,17 +923,17 @@ msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:79
 msgid "Compiling Godot for Windows"
-msgstr ""
+msgstr "Godot für Windows kompilieren"
 
 #: ../../general/download/compiling_from_source.rst:82
 #: ../../general/download/compiling_from_source.rst:143
 #: ../../general/download/compiling_from_source.rst:209
 msgid "Requirements"
-msgstr ""
+msgstr "Voraussetzungen"
 
 #: ../../general/download/compiling_from_source.rst:84
 msgid "To compile Godot for Windows, you'll also need the following:"
-msgstr ""
+msgstr "Um Godot für Windows zu kompilieren, benötigst du außerdem:"
 
 #: ../../general/download/compiling_from_source.rst:86
 msgid ""
@@ -935,7 +954,7 @@ msgstr ""
 #: ../../general/download/compiling_from_source.rst:149
 #: ../../general/download/compiling_from_source.rst:285
 msgid "Compiling"
-msgstr ""
+msgstr "Kompilierung"
 
 #: ../../general/download/compiling_from_source.rst:98
 msgid ""
@@ -962,7 +981,7 @@ msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:118
 msgid "Creating a Visual Studio project"
-msgstr ""
+msgstr "Erstellen eines Projektes in Visual Studio"
 
 #: ../../general/download/compiling_from_source.rst:120
 msgid ""
@@ -985,13 +1004,15 @@ msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:140
 msgid "Compiling Godot for macOS"
-msgstr ""
+msgstr "Kompilierung von Godot für macOS"
 
 #: ../../general/download/compiling_from_source.rst:145
 msgid ""
 "To compile Godot for macOS, you'll also need `Xcode <https://apps.apple.com/"
 "us/app/xcode/id497799835>`_."
 msgstr ""
+"Um Godot für macOS zu kompilieren, benötigst du zusätzlich `Xcode "
+"<https://apps.apple.com/us/app/xcode/id497799835>`_."
 
 #: ../../general/download/compiling_from_source.rst:151
 msgid "Start a terminal and go to the root directory of the engine code."
