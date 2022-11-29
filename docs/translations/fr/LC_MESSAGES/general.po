@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2022-11-29 03:02+0000\n"
-"Last-Translator: guissou <guimichel@protonmail.com>\n"
+"PO-Revision-Date: 2022-11-30 11:47+0000\n"
+"Last-Translator: SphinxKnight <julien.gattelier@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/fr/>\n"
 "Language: fr\n"
@@ -321,24 +321,29 @@ msgid ""
 msgstr ""
 
 #: ../../general/about.rst:166
+#, fuzzy
 msgid ":ref:`asset-type-game`"
-msgstr ""
+msgstr ":ref:`asset-type-game`"
 
 #: ../../general/about.rst:167
+#, fuzzy
 msgid ":ref:`asset-type-music`"
-msgstr ""
+msgstr ":ref:`asset-type-music`"
 
 #: ../../general/about.rst:168
+#, fuzzy
 msgid ":ref:`asset-type-skybox`"
-msgstr ""
+msgstr ":ref:`asset-type-skybox`"
 
 #: ../../general/about.rst:169
+#, fuzzy
 msgid ":ref:`asset-type-sound`"
-msgstr ""
+msgstr ":ref:`asset-type-sound`"
 
 #: ../../general/about.rst:170
+#, fuzzy
 msgid ":ref:`asset-type-table`"
-msgstr ""
+msgstr ":ref:`asset-type-table`"
 
 #: ../../general/about.rst:174
 msgid "Can you add my favourite board game to Tabletop Club?"
