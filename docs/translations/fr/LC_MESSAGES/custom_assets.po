@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
 "PO-Revision-Date: 2022-11-30 10:48+0000\n"
-"Last-Translator: SphinxKnight <julien.gattelier@gmail.com>\n"
+"Last-Translator: cogk <cflr.junk@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/fr/>\n"
 "Language: fr\n"
@@ -1034,7 +1034,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:226
 msgid "Table"
-msgstr ""
+msgstr "Table"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:228
 msgid ""
