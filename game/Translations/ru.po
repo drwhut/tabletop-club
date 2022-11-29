@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2022-11-28 17:28+0000\n"
-"Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
+"PO-Revision-Date: 2022-11-29 17:05+0000\n"
+"Last-Translator: Alexander Ivanov <saiv46.dev@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "game/ru/>\n"
 "Language: ru\n"
@@ -412,26 +412,18 @@ msgid "Resets the camera to the default position."
 msgstr "Сбрасывает камеру в положение по умолчанию."
 
 #: ../Scenes/OptionsMenu.tscn:697
-#, fuzzy
-#| msgid "Zoom Invert"
 msgid "Zoom In"
 msgstr "Приблизить"
 
 #: ../Scenes/OptionsMenu.tscn:705
-#, fuzzy
-#| msgid "Used to set how fast the camera moves across the table."
 msgid "Zoom the camera or object towards the table."
 msgstr "Приблизить камеру или объект к столу."
 
 #: ../Scenes/OptionsMenu.tscn:715
-#, fuzzy
-#| msgid "Zoom Invert"
 msgid "Zoom Out"
 msgstr "Отдалить"
 
 #: ../Scenes/OptionsMenu.tscn:723
-#, fuzzy
-#| msgid "Used to set how fast the camera moves across the table."
 msgid "Zoom the camera or object away from the table."
 msgstr "Отдалить камеру или объект от стола."
 
@@ -1287,9 +1279,8 @@ msgid "Shuffle"
 msgstr "Перемешать"
 
 #: ../Scripts/Game/CameraController.gd:1160
-#, fuzzy
 msgid "Suit"
-msgstr "Подогнать"
+msgstr "Масть"
 
 #: ../Scripts/Game/CameraController.gd:1162
 msgid "Value"
@@ -1502,14 +1493,12 @@ msgid "Draw hidden area"
 msgstr "Нарисовать скрытую область"
 
 #: ../Scripts/Game/CameraController.gd:1395
-#, fuzzy
 msgid "Paint Table"
-msgstr "Рисовать на столе"
+msgstr "Рисовать"
 
 #: ../Scripts/Game/CameraController.gd:1398
-#, fuzzy
 msgid "Erase Paint"
-msgstr "Стереть нарисованное"
+msgstr "Ластик"
 
 #: ../Scripts/Game/CameraController.gd:1408
 msgid "Object menu"
@@ -1568,9 +1557,8 @@ msgid "Flip card"
 msgstr "Перевернуть карту"
 
 #: ../Scripts/Game/CameraController.gd:1466
-#, fuzzy
 msgid "Face card up"
-msgstr "Перевернуть карту лицом вверх"
+msgstr "Перевернуть лицом вверх"
 
 #: ../Scripts/Game/CameraController.gd:1469
 msgid "Reset camera"
@@ -1715,7 +1703,6 @@ msgid "Host has disconnected from the room."
 msgstr "Хост отключился из комнаты."
 
 #: ../Scripts/Game/MasterServer.gd:45
-#, fuzzy
 msgid "Only the host can seal the room."
 msgstr "Только хост может заблокировать комнату."
 
@@ -1732,7 +1719,6 @@ msgid "Room does not exist."
 msgstr "Комната не существует."
 
 #: ../Scripts/Game/MasterServer.gd:49
-#, fuzzy
 msgid "Room is sealed."
 msgstr "Комната заблокирована."
 
