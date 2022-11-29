@@ -35,6 +35,7 @@ const LINEAR_FORCE_SCALAR = 50.0
 const ROTATION_LOCK_AT = 0.001
 const SHAKING_THRESHOLD = 1000.0
 const TRANSFORM_LERP_ALPHA = 0.9
+const SHAKE_WAIT_DURATION = 500
 
 export(NodePath) var effect_player_path: String
 
@@ -59,6 +60,7 @@ var hover_basis = Basis.IDENTITY
 var hover_offset = Vector3.ZERO
 var hover_player = 0 # 0 = Not hovering, > 0 is the player ID.
 var hover_position = Vector3.ZERO
+var hover_start_time: int = 0
 
 var srv_retrieve_from_hell: bool = true
 
@@ -200,10 +202,18 @@ func is_albedo_color_exposed() -> bool:
 # Determines if the piece is being shaked.
 # Returns: If the piece is being shaked.
 func is_being_shaked() -> bool:
-	if _last_velocity.length_squared() > 1.0:
-		if _new_velocity.dot(_last_velocity) < 0:
-			return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD
-	return false
+	if not is_hovering(): return false
+	if hovering_duration() < SHAKE_WAIT_DURATION: return false
+	if _last_velocity.length_squared() <= 1.0: return false
+	if _new_velocity.dot(_last_velocity) >= 0: return false
+	
+	return (_new_velocity - _last_velocity).length_squared() > SHAKING_THRESHOLD
+
+# Duration the piece is being hovered
+# Returns: Time the piece is being hovered for in msec
+func hovering_duration() -> int:
+	if hover_player == 0: return 0
+	return OS.get_ticks_msec() - hover_start_time
 
 # Is the piece being hovered?
 # Returns: If the piece is being hovered.
@@ -483,6 +493,8 @@ remotesync func start_hovering(player_id: int, init_pos: Vector3, offset_pos: Ve
 	
 	hover_offset = offset_pos
 	hover_player = player_id
+	
+	hover_start_time = OS.get_ticks_msec()
 	
 	sleeping = false
 	
