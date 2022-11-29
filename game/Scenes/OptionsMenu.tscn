@@ -36,6 +36,7 @@ margin_bottom = 530.0
 size_flags_vertical = 3
 
 [node name="Audio" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -563,7 +564,6 @@ size_flags_horizontal = 3
 text = "Reimport Assets"
 
 [node name="Key Bindings" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -576,8 +576,8 @@ section_name = "key_bindings"
 text = "Key Bindings"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings"]
-margin_right = 976.0
-margin_bottom = 536.0
+margin_right = 964.0
+margin_bottom = 566.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -761,142 +761,160 @@ size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_reset_piece"
 
-[node name="LockPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="Shuffle" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_top = 303.0
 margin_right = 480.0
 margin_bottom = 323.0
+size_flags_horizontal = 3
+text = "Shuffle"
+align = 2
+
+[node name="ShuffleButton2" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_left = 484.0
+margin_top = 300.0
+margin_right = 964.0
+margin_bottom = 326.0
+hint_tooltip = "Flip the selected piece on the horizontal axis."
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+action = "game_shuffle_stack"
+
+[node name="LockPiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+margin_top = 333.0
+margin_right = 480.0
+margin_bottom = 353.0
 size_flags_horizontal = 3
 text = "Lock/Unlock Piece"
 align = 2
 
 [node name="LockPieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 484.0
-margin_top = 300.0
+margin_top = 330.0
 margin_right = 964.0
-margin_bottom = 326.0
+margin_bottom = 356.0
 hint_tooltip = "Toggles the lock on the selected piece, fixing its position and rotation."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_lock_piece"
 
 [node name="DeletePiece" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 333.0
+margin_top = 363.0
 margin_right = 480.0
-margin_bottom = 353.0
+margin_bottom = 383.0
 size_flags_horizontal = 3
 text = "Delete Piece"
 align = 2
 
 [node name="DeletePieceButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 484.0
-margin_top = 330.0
+margin_top = 360.0
 margin_right = 964.0
-margin_bottom = 356.0
+margin_bottom = 386.0
 hint_tooltip = "Deletes the currently selected piece."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_delete_piece"
 
 [node name="ToggleDebugInfo" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 363.0
+margin_top = 393.0
 margin_right = 480.0
-margin_bottom = 383.0
+margin_bottom = 413.0
 size_flags_horizontal = 3
 text = "Toggle Debug Info"
 align = 2
 
 [node name="ToggleDebugInfoButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 484.0
-margin_top = 360.0
+margin_top = 390.0
 margin_right = 964.0
-margin_bottom = 386.0
+margin_bottom = 416.0
 hint_tooltip = "Toggles whether debug information is displayed."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_toggle_debug_info"
 
 [node name="Quicksave" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 393.0
+margin_top = 423.0
 margin_right = 480.0
-margin_bottom = 413.0
+margin_bottom = 443.0
 size_flags_horizontal = 3
 text = "Quicksave"
 align = 2
 
 [node name="QuicksaveButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 484.0
-margin_top = 390.0
+margin_top = 420.0
 margin_right = 964.0
-margin_bottom = 416.0
+margin_bottom = 446.0
 hint_tooltip = "Creates a quicksave file."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_quicksave"
 
 [node name="Quickload" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 423.0
+margin_top = 453.0
 margin_right = 480.0
-margin_bottom = 443.0
+margin_bottom = 473.0
 size_flags_horizontal = 3
 text = "Quickload"
 align = 2
 
 [node name="QuickloadButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 484.0
-margin_top = 420.0
+margin_top = 450.0
 margin_right = 964.0
-margin_bottom = 446.0
+margin_bottom = 476.0
 hint_tooltip = "Loads the latest quicksave file."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_quickload"
 
 [node name="ToggleUI" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 453.0
+margin_top = 483.0
 margin_right = 480.0
-margin_bottom = 473.0
+margin_bottom = 503.0
 size_flags_horizontal = 3
 text = "Toggle UI"
 align = 2
 
 [node name="ToggleUIButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 484.0
-margin_top = 450.0
+margin_top = 480.0
 margin_right = 964.0
-margin_bottom = 476.0
+margin_bottom = 506.0
 hint_tooltip = "Toggles whether the entire UI is displayed."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_toggle_ui"
 
 [node name="TakeScreenshot" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 483.0
+margin_top = 513.0
 margin_right = 480.0
-margin_bottom = 503.0
+margin_bottom = 533.0
 size_flags_horizontal = 3
 text = "Take Screenshot"
 align = 2
 
 [node name="TakeScreenshotButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 484.0
-margin_top = 480.0
+margin_top = 510.0
 margin_right = 964.0
-margin_bottom = 506.0
+margin_bottom = 536.0
 hint_tooltip = "Takes a screenshot of the game in its current state."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_take_screenshot"
 
 [node name="ResetBindingsSpace" type="Control" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
-margin_top = 510.0
+margin_top = 540.0
 margin_right = 480.0
-margin_bottom = 536.0
+margin_bottom = 566.0
 
 [node name="ResetBindingsButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 484.0
-margin_top = 510.0
+margin_top = 540.0
 margin_right = 964.0
-margin_bottom = 536.0
+margin_bottom = 566.0
 hint_tooltip = "Used to reset the key bindings to their default values."
 text = "Reset Bindings"
 
