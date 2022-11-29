@@ -36,7 +36,6 @@ margin_bottom = 530.0
 size_flags_vertical = 3
 
 [node name="Audio" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -564,6 +563,7 @@ size_flags_horizontal = 3
 text = "Reimport Assets"
 
 [node name="Key Bindings" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -769,12 +769,12 @@ size_flags_horizontal = 3
 text = "Shuffle"
 align = 2
 
-[node name="ShuffleButton2" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
+[node name="ShuffleButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
 margin_left = 484.0
 margin_top = 300.0
 margin_right = 964.0
 margin_bottom = 326.0
-hint_tooltip = "Flip the selected piece on the horizontal axis."
+hint_tooltip = "Shuffle stack"
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_shuffle_stack"
