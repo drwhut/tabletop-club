@@ -290,6 +290,11 @@ game_zoom_out={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":46,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+game_shuffle_stack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [locale]
 
@@ -305,6 +310,7 @@ ssl/certificates="res://master_server.crt"
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 threads/thread_model=2
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
