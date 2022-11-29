@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:54\n"
-"PO-Revision-Date: 2022-07-08 13:16+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2022-11-29 03:08+0000\n"
+"Last-Translator: cogk <cflr.junk@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/fr/>\n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/cards/52-Card_Deck:1
@@ -27,7 +27,7 @@ msgstr "Jeu de 52 cartes"
 
 #: ../TabletopClub/cards/52-Card_Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr "Un jeu de cartes à jouer de la taille d'un poker, sans jokers."
+msgstr "Un jeu de 52 cartes à jouer françaises de taille poker, sans jokers."
 
 #: ../TabletopClub/cards/Ace_of_Clubs:1
 msgid "Ace of Clubs"
@@ -95,7 +95,7 @@ msgstr "Huit de trèfle"
 
 #: ../TabletopClub/cards/Eight_of_Diamonds:1
 msgid "Eight of Diamonds"
-msgstr "Huit de diamant"
+msgstr "Huit de carreau"
 
 #: ../TabletopClub/cards/Eight_of_Hearts:1
 msgid "Eight of Hearts"
@@ -127,7 +127,7 @@ msgstr "Quatre de trèfle"
 
 #: ../TabletopClub/cards/Four_of_Diamonds:1
 msgid "Four of Diamonds"
-msgstr "Quatre de diamant"
+msgstr "Quatre de carreau"
 
 #: ../TabletopClub/cards/Four_of_Hearts:1
 msgid "Four of Hearts"
@@ -143,7 +143,7 @@ msgstr "Valet de trèfle"
 
 #: ../TabletopClub/cards/Jack_of_Diamonds:1
 msgid "Jack of Diamonds"
-msgstr "Valet de diamant"
+msgstr "Valet de carreau"
 
 #: ../TabletopClub/cards/Jack_of_Hearts:1
 msgid "Jack of Hearts"
@@ -167,7 +167,7 @@ msgstr "Roi de trèfle"
 
 #: ../TabletopClub/cards/King_of_Diamonds:1
 msgid "King of Diamonds"
-msgstr "Roi de diamant"
+msgstr "Roi de carreau"
 
 #: ../TabletopClub/cards/King_of_Hearts:1
 msgid "King of Hearts"
@@ -175,131 +175,131 @@ msgstr "Roi de cœur"
 
 #: ../TabletopClub/cards/King_of_Spades:1
 msgid "King of Spades"
-msgstr ""
+msgstr "Roi de pique"
 
 #: ../TabletopClub/cards/Nine_of_Clubs:1
 msgid "Nine of Clubs"
-msgstr ""
+msgstr "Neuf de trèfle"
 
 #: ../TabletopClub/cards/Nine_of_Diamonds:1
 msgid "Nine of Diamonds"
-msgstr ""
+msgstr "Neuf de carreau"
 
 #: ../TabletopClub/cards/Nine_of_Hearts:1
 msgid "Nine of Hearts"
-msgstr ""
+msgstr "Neuf de cœur"
 
 #: ../TabletopClub/cards/Nine_of_Spades:1
 msgid "Nine of Spades"
-msgstr ""
+msgstr "Neuf de pique"
 
 #: ../TabletopClub/cards/Queen_of_Clubs:1
 msgid "Queen of Clubs"
-msgstr ""
+msgstr "Dame de trèfle"
 
 #: ../TabletopClub/cards/Queen_of_Diamonds:1
 msgid "Queen of Diamonds"
-msgstr ""
+msgstr "Dame de carreau"
 
 #: ../TabletopClub/cards/Queen_of_Hearts:1
 msgid "Queen of Hearts"
-msgstr ""
+msgstr "Dame de cœur"
 
 #: ../TabletopClub/cards/Queen_of_Spades:1
 msgid "Queen of Spades"
-msgstr ""
+msgstr "Dame de pique"
 
 #: ../TabletopClub/cards/Seven_of_Clubs:1
 msgid "Seven of Clubs"
-msgstr ""
+msgstr "Sept de trèfle"
 
 #: ../TabletopClub/cards/Seven_of_Diamonds:1
 msgid "Seven of Diamonds"
-msgstr ""
+msgstr "Sept de carreau"
 
 #: ../TabletopClub/cards/Seven_of_Hearts:1
 msgid "Seven of Hearts"
-msgstr ""
+msgstr "Sept de cœur"
 
 #: ../TabletopClub/cards/Seven_of_Spades:1
 msgid "Seven of Spades"
-msgstr ""
+msgstr "Sept de pique"
 
 #: ../TabletopClub/cards/Six_of_Clubs:1
 msgid "Six of Clubs"
-msgstr ""
+msgstr "Six de trèfle"
 
 #: ../TabletopClub/cards/Six_of_Diamonds:1
 msgid "Six of Diamonds"
-msgstr ""
+msgstr "Six de carreau"
 
 #: ../TabletopClub/cards/Six_of_Hearts:1
 msgid "Six of Hearts"
-msgstr ""
+msgstr "Six de cœur"
 
 #: ../TabletopClub/cards/Six_of_Spades:1
 msgid "Six of Spades"
-msgstr ""
+msgstr "Six de pique"
 
 #: ../TabletopClub/cards/Ten_of_Clubs:1
 msgid "Ten of Clubs"
-msgstr ""
+msgstr "Dix de trèfle"
 
 #: ../TabletopClub/cards/Ten_of_Diamonds:1
 msgid "Ten of Diamonds"
-msgstr ""
+msgstr "Dix de carreau"
 
 #: ../TabletopClub/cards/Ten_of_Hearts:1
 msgid "Ten of Hearts"
-msgstr ""
+msgstr "Dix de cœur"
 
 #: ../TabletopClub/cards/Ten_of_Spades:1
 msgid "Ten of Spades"
-msgstr ""
+msgstr "Dix de pique"
 
 #: ../TabletopClub/cards/Three_of_Clubs:1
 msgid "Three of Clubs"
-msgstr ""
+msgstr "Trois de trèfle"
 
 #: ../TabletopClub/cards/Three_of_Diamonds:1
 msgid "Three of Diamonds"
-msgstr ""
+msgstr "Trois de carreau"
 
 #: ../TabletopClub/cards/Three_of_Hearts:1
 msgid "Three of Hearts"
-msgstr ""
+msgstr "Trois de cœur"
 
 #: ../TabletopClub/cards/Three_of_Spades:1
 msgid "Three of Spades"
-msgstr ""
+msgstr "Trois de pique"
 
 #: ../TabletopClub/cards/Two_of_Clubs:1
 msgid "Two of Clubs"
-msgstr ""
+msgstr "Deux de trèfle"
 
 #: ../TabletopClub/cards/Two_of_Diamonds:1
 msgid "Two of Diamonds"
-msgstr ""
+msgstr "Deux de carreau"
 
 #: ../TabletopClub/cards/Two_of_Hearts:1
 msgid "Two of Hearts"
-msgstr ""
+msgstr "Deux de cœur"
 
 #: ../TabletopClub/cards/Two_of_Spades:1
 msgid "Two of Spades"
-msgstr ""
+msgstr "Deux de pique"
 
 #: ../TabletopClub/containers/Purse:1
 msgid "Purse"
-msgstr ""
+msgstr "Sacoche"
 
 #: ../TabletopClub/containers/Red_Cup:1
 msgid "Red Cup"
-msgstr ""
+msgstr "Gobelet rouge"
 
 #: ../TabletopClub/dice/d4/d4_(Black):1
 msgid "d4 (Black)"
-msgstr ""
+msgstr "d4 (noir)"
 
 #: ../TabletopClub/dice/d4/d4_(Black):2 ../TabletopClub/dice/d4/d4_(Blue):2
 #: ../TabletopClub/dice/d4/d4_(Brown):2 ../TabletopClub/dice/d4/d4_(Cyan):2
@@ -308,51 +308,51 @@ msgstr ""
 #: ../TabletopClub/dice/d4/d4_(Red):2 ../TabletopClub/dice/d4/d4_(White):2
 #: ../TabletopClub/dice/d4/d4_(Yellow):2
 msgid "A 4-sided die."
-msgstr ""
+msgstr "Un dé à 4 faces."
 
 #: ../TabletopClub/dice/d4/d4_(Blue):1
 msgid "d4 (Blue)"
-msgstr ""
+msgstr "d4 (bleu)"
 
 #: ../TabletopClub/dice/d4/d4_(Brown):1
 msgid "d4 (Brown)"
-msgstr ""
+msgstr "d4 (brun)"
 
 #: ../TabletopClub/dice/d4/d4_(Cyan):1
 msgid "d4 (Cyan)"
-msgstr ""
+msgstr "d4 (cyan)"
 
 #: ../TabletopClub/dice/d4/d4_(Green):1
 msgid "d4 (Green)"
-msgstr ""
+msgstr "d4 (vert)"
 
 #: ../TabletopClub/dice/d4/d4_(Orange):1
 msgid "d4 (Orange)"
-msgstr ""
+msgstr "d4 (orange)"
 
 #: ../TabletopClub/dice/d4/d4_(Pink):1
 msgid "d4 (Pink)"
-msgstr ""
+msgstr "d4 (rose)"
 
 #: ../TabletopClub/dice/d4/d4_(Purple):1
 msgid "d4 (Purple)"
-msgstr ""
+msgstr "d4 (violet)"
 
 #: ../TabletopClub/dice/d4/d4_(Red):1
 msgid "d4 (Red)"
-msgstr ""
+msgstr "d4 (rouge)"
 
 #: ../TabletopClub/dice/d4/d4_(White):1
 msgid "d4 (White)"
-msgstr ""
+msgstr "d4 (blanc)"
 
 #: ../TabletopClub/dice/d4/d4_(Yellow):1
 msgid "d4 (Yellow)"
-msgstr ""
+msgstr "d4 (jaune)"
 
 #: ../TabletopClub/dice/d6/d6_(Black):1
 msgid "d6 (Black)"
-msgstr ""
+msgstr "d6 (noir)"
 
 #: ../TabletopClub/dice/d6/d6_(Black):2 ../TabletopClub/dice/d6/d6_(Blue):2
 #: ../TabletopClub/dice/d6/d6_(Brown):2 ../TabletopClub/dice/d6/d6_(Cyan):2
@@ -362,55 +362,55 @@ msgstr ""
 #: ../TabletopClub/dice/d6/d6_(Traditional):2
 #: ../TabletopClub/dice/d6/d6_(White):2 ../TabletopClub/dice/d6/d6_(Yellow):2
 msgid "A 6-sided die."
-msgstr ""
+msgstr "Un dé à 6 faces."
 
 #: ../TabletopClub/dice/d6/d6_(Blue):1
 msgid "d6 (Blue)"
-msgstr ""
+msgstr "d6 (bleu)"
 
 #: ../TabletopClub/dice/d6/d6_(Brown):1
 msgid "d6 (Brown)"
-msgstr ""
+msgstr "d6 (brun)"
 
 #: ../TabletopClub/dice/d6/d6_(Cyan):1
 msgid "d6 (Cyan)"
-msgstr ""
+msgstr "d6 (cyan)"
 
 #: ../TabletopClub/dice/d6/d6_(Green):1
 msgid "d6 (Green)"
-msgstr ""
+msgstr "d6 (vert)"
 
 #: ../TabletopClub/dice/d6/d6_(Orange):1
 msgid "d6 (Orange)"
-msgstr ""
+msgstr "d6 (orange)"
 
 #: ../TabletopClub/dice/d6/d6_(Pink):1
 msgid "d6 (Pink)"
-msgstr ""
+msgstr "d6 (rose)"
 
 #: ../TabletopClub/dice/d6/d6_(Purple):1
 msgid "d6 (Purple)"
-msgstr ""
+msgstr "d6 (violet)"
 
 #: ../TabletopClub/dice/d6/d6_(Red):1
 msgid "d6 (Red)"
-msgstr ""
+msgstr "d6 (rouge)"
 
 #: ../TabletopClub/dice/d6/d6_(Traditional):1
 msgid "d6 (Traditional)"
-msgstr ""
+msgstr "d6 (classique)"
 
 #: ../TabletopClub/dice/d6/d6_(White):1
 msgid "d6 (White)"
-msgstr ""
+msgstr "d6 (blanc)"
 
 #: ../TabletopClub/dice/d6/d6_(Yellow):1
 msgid "d6 (Yellow)"
-msgstr ""
+msgstr "d6 (jaune)"
 
 #: ../TabletopClub/dice/d8/d8_(Black):1
 msgid "d8 (Black)"
-msgstr ""
+msgstr "d8 (noir)"
 
 #: ../TabletopClub/dice/d8/d8_(Black):2 ../TabletopClub/dice/d8/d8_(Blue):2
 #: ../TabletopClub/dice/d8/d8_(Brown):2 ../TabletopClub/dice/d8/d8_(Cyan):2
@@ -419,51 +419,51 @@ msgstr ""
 #: ../TabletopClub/dice/d8/d8_(Red):2 ../TabletopClub/dice/d8/d8_(White):2
 #: ../TabletopClub/dice/d8/d8_(Yellow):2
 msgid "An 8-sided die."
-msgstr ""
+msgstr "Un dé à 8 faces."
 
 #: ../TabletopClub/dice/d8/d8_(Blue):1
 msgid "d8 (Blue)"
-msgstr ""
+msgstr "d8 (bleu)"
 
 #: ../TabletopClub/dice/d8/d8_(Brown):1
 msgid "d8 (Brown)"
-msgstr ""
+msgstr "d8 (brun)"
 
 #: ../TabletopClub/dice/d8/d8_(Cyan):1
 msgid "d8 (Cyan)"
-msgstr ""
+msgstr "d8 (cyan)"
 
 #: ../TabletopClub/dice/d8/d8_(Green):1
 msgid "d8 (Green)"
-msgstr ""
+msgstr "d8 (vert)"
 
 #: ../TabletopClub/dice/d8/d8_(Orange):1
 msgid "d8 (Orange)"
-msgstr ""
+msgstr "d8 (orange)"
 
 #: ../TabletopClub/dice/d8/d8_(Pink):1
 msgid "d8 (Pink)"
-msgstr ""
+msgstr "d8 (rose)"
 
 #: ../TabletopClub/dice/d8/d8_(Purple):1
 msgid "d8 (Purple)"
-msgstr ""
+msgstr "d8 (violet)"
 
 #: ../TabletopClub/dice/d8/d8_(Red):1
 msgid "d8 (Red)"
-msgstr ""
+msgstr "d8 (rouge)"
 
 #: ../TabletopClub/dice/d8/d8_(White):1
 msgid "d8 (White)"
-msgstr ""
+msgstr "d8 (blanc)"
 
 #: ../TabletopClub/dice/d8/d8_(Yellow):1
 msgid "d8 (Yellow)"
-msgstr ""
+msgstr "d8 (jaune)"
 
 #: ../TabletopClub/dice/d10/d10_(Black):1
 msgid "d10 (Black)"
-msgstr ""
+msgstr "d10 (noir)"
 
 #: ../TabletopClub/dice/d10/d10_(Black):2 ../TabletopClub/dice/d10/d10_(Blue):2
 #: ../TabletopClub/dice/d10/d10_(Brown):2 ../TabletopClub/dice/d10/d10_(Cyan):2
@@ -485,95 +485,95 @@ msgstr ""
 #: ../TabletopClub/dice/d10/d10_(White):2
 #: ../TabletopClub/dice/d10/d10_(Yellow):2
 msgid "A 10-sided die."
-msgstr ""
+msgstr "Un dé à 10 faces."
 
 #: ../TabletopClub/dice/d10/d10_(Blue):1
 msgid "d10 (Blue)"
-msgstr ""
+msgstr "d10 (bleu)"
 
 #: ../TabletopClub/dice/d10/d10_(Brown):1
 msgid "d10 (Brown)"
-msgstr ""
+msgstr "d10 (brun)"
 
 #: ../TabletopClub/dice/d10/d10_(Cyan):1
 msgid "d10 (Cyan)"
-msgstr ""
+msgstr "d10 (cyan)"
 
 #: ../TabletopClub/dice/d10/d10_(Green):1
 msgid "d10 (Green)"
-msgstr ""
+msgstr "d10 (vert)"
 
 #: ../TabletopClub/dice/d10/d10_(Orange):1
 msgid "d10 (Orange)"
-msgstr ""
+msgstr "d10 (orange)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Black):1
 msgid "d10 (Percent) (Black)"
-msgstr ""
+msgstr "d10 (Pourcentage) (noir)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Blue):1
 msgid "d10 (Percent) (Blue)"
-msgstr ""
+msgstr "d10 (Pourcentage) (bleu)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Brown):1
 msgid "d10 (Percent) (Brown)"
-msgstr ""
+msgstr "d10 (Pourcentage) (brun)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):1
 msgid "d10 (Percent) (Cyan)"
-msgstr ""
+msgstr "d10 (Pourcentage) (cyan)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Green):1
 msgid "d10 (Percent) (Green)"
-msgstr ""
+msgstr "d10 (Pourcentage) (vert)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Orange):1
 msgid "d10 (Percent) (Orange)"
-msgstr ""
+msgstr "d10 (Pourcentage) (orange)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Pink):1
 msgid "d10 (Percent) (Pink)"
-msgstr ""
+msgstr "d10 (Pourcentage) (rose)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Purple):1
 msgid "d10 (Percent) (Purple)"
-msgstr ""
+msgstr "d10 (Pourcentage) (violet)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Red):1
 msgid "d10 (Percent) (Red)"
-msgstr ""
+msgstr "d10 (Pourcentage) (rouge)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(White):1
 msgid "d10 (Percent) (White)"
-msgstr ""
+msgstr "d10 (Pourcentage) (blanc)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):1
 msgid "d10 (Percent) (Yellow)"
-msgstr ""
+msgstr "d10 (Pourcentage) (jaune)"
 
 #: ../TabletopClub/dice/d10/d10_(Pink):1
 msgid "d10 (Pink)"
-msgstr ""
+msgstr "d10 (rose)"
 
 #: ../TabletopClub/dice/d10/d10_(Purple):1
 msgid "d10 (Purple)"
-msgstr ""
+msgstr "d10 (violet)"
 
 #: ../TabletopClub/dice/d10/d10_(Red):1
 msgid "d10 (Red)"
-msgstr ""
+msgstr "d10 (rouge)"
 
 #: ../TabletopClub/dice/d10/d10_(White):1
 msgid "d10 (White)"
-msgstr ""
+msgstr "d10 (blanc)"
 
 #: ../TabletopClub/dice/d10/d10_(Yellow):1
 msgid "d10 (Yellow)"
-msgstr ""
+msgstr "d10 (jaune)"
 
 #: ../TabletopClub/dice/d12/d12_(Black):1
 msgid "d12 (Black)"
-msgstr ""
+msgstr "d12 (noir)"
 
 #: ../TabletopClub/dice/d12/d12_(Black):2 ../TabletopClub/dice/d12/d12_(Blue):2
 #: ../TabletopClub/dice/d12/d12_(Brown):2 ../TabletopClub/dice/d12/d12_(Cyan):2
@@ -584,51 +584,51 @@ msgstr ""
 #: ../TabletopClub/dice/d12/d12_(White):2
 #: ../TabletopClub/dice/d12/d12_(Yellow):2
 msgid "A 12-sided die."
-msgstr ""
+msgstr "Un dé à 12 faces."
 
 #: ../TabletopClub/dice/d12/d12_(Blue):1
 msgid "d12 (Blue)"
-msgstr ""
+msgstr "d12 (bleu)"
 
 #: ../TabletopClub/dice/d12/d12_(Brown):1
 msgid "d12 (Brown)"
-msgstr ""
+msgstr "d12 (brun)"
 
 #: ../TabletopClub/dice/d12/d12_(Cyan):1
 msgid "d12 (Cyan)"
-msgstr ""
+msgstr "d12 (cyan)"
 
 #: ../TabletopClub/dice/d12/d12_(Green):1
 msgid "d12 (Green)"
-msgstr ""
+msgstr "d12 (vert)"
 
 #: ../TabletopClub/dice/d12/d12_(Orange):1
 msgid "d12 (Orange)"
-msgstr ""
+msgstr "d12 (orange)"
 
 #: ../TabletopClub/dice/d12/d12_(Pink):1
 msgid "d12 (Pink)"
-msgstr ""
+msgstr "d12 (rose)"
 
 #: ../TabletopClub/dice/d12/d12_(Purple):1
 msgid "d12 (Purple)"
-msgstr ""
+msgstr "d12 (violet)"
 
 #: ../TabletopClub/dice/d12/d12_(Red):1
 msgid "d12 (Red)"
-msgstr ""
+msgstr "d12 (rouge)"
 
 #: ../TabletopClub/dice/d12/d12_(White):1
 msgid "d12 (White)"
-msgstr ""
+msgstr "d12 (blanc)"
 
 #: ../TabletopClub/dice/d12/d12_(Yellow):1
 msgid "d12 (Yellow)"
-msgstr ""
+msgstr "d12 (jaune)"
 
 #: ../TabletopClub/dice/d20/d20_(Black):1
 msgid "d20 (Black)"
-msgstr ""
+msgstr "d20 (noir)"
 
 #: ../TabletopClub/dice/d20/d20_(Black):2 ../TabletopClub/dice/d20/d20_(Blue):2
 #: ../TabletopClub/dice/d20/d20_(Brown):2 ../TabletopClub/dice/d20/d20_(Cyan):2
@@ -639,63 +639,63 @@ msgstr ""
 #: ../TabletopClub/dice/d20/d20_(White):2
 #: ../TabletopClub/dice/d20/d20_(Yellow):2
 msgid "A 20-sided die."
-msgstr ""
+msgstr "Un dé à 20 faces."
 
 #: ../TabletopClub/dice/d20/d20_(Blue):1
 msgid "d20 (Blue)"
-msgstr ""
+msgstr "d20 (bleu)"
 
 #: ../TabletopClub/dice/d20/d20_(Brown):1
 msgid "d20 (Brown)"
-msgstr ""
+msgstr "d20 (brun)"
 
 #: ../TabletopClub/dice/d20/d20_(Cyan):1
 msgid "d20 (Cyan)"
-msgstr ""
+msgstr "d20 (cyan)"
 
 #: ../TabletopClub/dice/d20/d20_(Green):1
 msgid "d20 (Green)"
-msgstr ""
+msgstr "d20 (vert)"
 
 #: ../TabletopClub/dice/d20/d20_(Orange):1
 msgid "d20 (Orange)"
-msgstr ""
+msgstr "d20 (orange)"
 
 #: ../TabletopClub/dice/d20/d20_(Pink):1
 msgid "d20 (Pink)"
-msgstr ""
+msgstr "d20 (rose)"
 
 #: ../TabletopClub/dice/d20/d20_(Purple):1
 msgid "d20 (Purple)"
-msgstr ""
+msgstr "d20 (violet)"
 
 #: ../TabletopClub/dice/d20/d20_(Red):1
 msgid "d20 (Red)"
-msgstr ""
+msgstr "d20 (rouge)"
 
 #: ../TabletopClub/dice/d20/d20_(White):1
 msgid "d20 (White)"
-msgstr ""
+msgstr "d20 (blanc)"
 
 #: ../TabletopClub/dice/d20/d20_(Yellow):1
 msgid "d20 (Yellow)"
-msgstr ""
+msgstr "d20 (jaune)"
 
 #: ../TabletopClub/games/Chess:1
 msgid "Chess"
-msgstr ""
+msgstr "Échecs"
 
 #: ../TabletopClub/games/Chess:2
 msgid "Standard Chess for two players."
-msgstr ""
+msgstr "Jeu d'échecs standard pour deux joueurs."
 
 #: ../TabletopClub/games/Poker:1
 msgid "Poker"
-msgstr ""
+msgstr "Poker"
 
 #: ../TabletopClub/games/Poker:2
 msgid "Each player has been given 25 chips, which sum up to a value of 500."
-msgstr ""
+msgstr "Chaque joueur a reçu 25 jetons, dont la valeur totale est de 500."
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
@@ -833,63 +833,63 @@ msgstr ""
 
 #: ../TabletopClub/pieces/Bishop_Black:1
 msgid "Bishop Black"
-msgstr ""
+msgstr "Fou noir"
 
 #: ../TabletopClub/pieces/Bishop_White:1
 msgid "Bishop White"
-msgstr ""
+msgstr "Fou blanc"
 
 #: ../TabletopClub/pieces/Chess_Board:1
 msgid "Chess Board"
-msgstr ""
+msgstr "Plateau d'échecs"
 
 #: ../TabletopClub/pieces/Chess_Board:2
 msgid "An 8x8 Chess board."
-msgstr ""
+msgstr "Un plateau d'échecs 8×8."
 
 #: ../TabletopClub/pieces/King_Black:1
 msgid "King Black"
-msgstr ""
+msgstr "Roi noir"
 
 #: ../TabletopClub/pieces/King_White:1
 msgid "King White"
-msgstr ""
+msgstr "Roi blanc"
 
 #: ../TabletopClub/pieces/Knight_Black:1
 msgid "Knight Black"
-msgstr ""
+msgstr "Cavalier noir"
 
 #: ../TabletopClub/pieces/Knight_White:1
 msgid "Knight White"
-msgstr ""
+msgstr "Cavalier blanc"
 
 #: ../TabletopClub/pieces/Pawn_Black:1
 msgid "Pawn Black"
-msgstr ""
+msgstr "Pion noir"
 
 #: ../TabletopClub/pieces/Pawn_White:1
 msgid "Pawn White"
-msgstr ""
+msgstr "Pion blanc"
 
 #: ../TabletopClub/pieces/Queen_Black:1
 msgid "Queen Black"
-msgstr ""
+msgstr "Dame noire"
 
 #: ../TabletopClub/pieces/Queen_White:1
 msgid "Queen White"
-msgstr ""
+msgstr "Dame blanche"
 
 #: ../TabletopClub/pieces/Rook_Black:1
 msgid "Rook Black"
-msgstr ""
+msgstr "Tour noire"
 
 #: ../TabletopClub/pieces/Rook_White:1
 msgid "Rook White"
-msgstr ""
+msgstr "Tour blanche"
 
 #: ../TabletopClub/skyboxes/Clouds:1
 msgid "Clouds"
-msgstr ""
+msgstr "Nuages"
 
 #: ../TabletopClub/skyboxes/Dallas_West:1
 msgid "Dallas West"
@@ -897,7 +897,7 @@ msgstr ""
 
 #: ../TabletopClub/skyboxes/Forest:1
 msgid "Forest"
-msgstr ""
+msgstr "Forêt"
 
 #: ../TabletopClub/skyboxes/Hornstulls_Strand:1
 msgid "Hornstulls Strand"
@@ -905,7 +905,7 @@ msgstr ""
 
 #: ../TabletopClub/skyboxes/Ice_River:1
 msgid "Ice River"
-msgstr ""
+msgstr "Rivière glacée"
 
 #: ../TabletopClub/skyboxes/Marriott_Madison_West:1
 msgid "Marriott Madison West"
@@ -917,27 +917,27 @@ msgstr ""
 
 #: ../TabletopClub/skyboxes/Nebula:1
 msgid "Nebula"
-msgstr ""
+msgstr "Nébuleuse"
 
 #: ../TabletopClub/skyboxes/Niagra_Falls:1
 msgid "Niagra Falls"
-msgstr ""
+msgstr "Chutes du Niagara"
 
 #: ../TabletopClub/skyboxes/Park:1
 msgid "Park"
-msgstr ""
+msgstr "Parc"
 
 #: ../TabletopClub/skyboxes/Park_Winter:1
 msgid "Park Winter"
-msgstr ""
+msgstr "Parc en hiver"
 
 #: ../TabletopClub/skyboxes/Path:1
 msgid "Path"
-msgstr ""
+msgstr "Chemin"
 
 #: ../TabletopClub/skyboxes/Space:1
 msgid "Space"
-msgstr ""
+msgstr "Espace"
 
 #: ../TabletopClub/skyboxes/Tantolunden:1
 msgid "Tantolunden"
@@ -949,15 +949,15 @@ msgstr ""
 
 #: ../TabletopClub/sounds/Alarm:1
 msgid "Alarm"
-msgstr ""
+msgstr "Alarme"
 
 #: ../TabletopClub/sounds/Alarm:2
 msgid "An alarm for alarming situations."
-msgstr ""
+msgstr "Une alarme pour les situations alarmantes."
 
 #: ../TabletopClub/speakers/Gramophone:1
 msgid "Gramophone"
-msgstr ""
+msgstr "Gramophone"
 
 #: ../TabletopClub/speakers/Gramophone:2
 msgid "A low-poly vintage gramophone."
@@ -969,15 +969,15 @@ msgstr "Banc de pique-nique"
 
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
-msgstr ""
+msgstr "Table"
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
-msgstr ""
+msgstr "Radio"
 
 #: ../TabletopClub/timers/Radio:2
 msgid "An old radio from a bygone era."
-msgstr ""
+msgstr "Une vieille radio d'une époque révolue."
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
@@ -987,63 +987,63 @@ msgstr ""
 #: ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2
 #: ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
 msgid "A poker chip."
-msgstr ""
+msgstr "Un jeton de poker."
 
 #: ../TabletopClub/tokens/cylinder/10:1
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: ../TabletopClub/tokens/cylinder/100:1
 msgid "100"
-msgstr ""
+msgstr "100"
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:1
 msgid "20 x 1 Chips"
-msgstr ""
+msgstr "20 × jetons de 1"
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:2
 msgid "A stack of 20 1-value chips."
-msgstr ""
+msgstr "Un pile de 20 jetons valant chacun 1."
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:1
 msgid "20 x 10 Chips"
-msgstr ""
+msgstr "20 × jetons de 10"
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:2
 msgid "A stack of 20 10-value chips."
-msgstr ""
+msgstr "Une pile de 20 jetons valant chacun 10."
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:1
 msgid "20 x 100 Chips"
-msgstr ""
+msgstr "20 × jetons de 100"
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:2
 msgid "A stack of 20 100-value chips."
-msgstr ""
+msgstr "Une pile de 20 jetons valant chacun 100."
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:1
 msgid "20 x 25 Chips"
-msgstr ""
+msgstr "20 × jetons de 25"
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:2
 msgid "A stack of 20 25-value chips."
-msgstr ""
+msgstr "Une pile de 20 jetons valant chacun 25."
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:1
 msgid "20 x 5 Chips"
-msgstr ""
+msgstr "20 × jetons de 5"
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:2
 msgid "A stack of 20 5-value chips."
-msgstr ""
+msgstr "Une pile de 20 jetons valant chacun 5."
 
 #: ../TabletopClub/tokens/cylinder/25:1
 msgid "25"
-msgstr ""
+msgstr "25"
 
 #: ../TabletopClub/tokens/cylinder/5:1
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../TabletopClub/tokens/cylinder/D:1
 msgid "D"
