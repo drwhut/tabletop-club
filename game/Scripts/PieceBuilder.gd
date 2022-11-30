@@ -222,13 +222,9 @@ func get_piece_meshes(piece: Piece) -> Array:
 	for mesh_instance in piece.get_mesh_instances():
 		var piece_mesh = MeshInstance.new()
 		piece_mesh.name = piece.name
-		piece_mesh.transform = piece.transform
-
-		piece_mesh.set_meta("piece_entry", piece.piece_entry)
+		piece_mesh.transform = mesh_instance.transform
 		
-		# Get the scale from the mesh instance (since the rigid body itself
-		# won't be scaled).
-		piece_mesh.scale = mesh_instance.scale
+		piece_mesh.set_meta("piece_entry", piece.piece_entry)
 		
 		piece_mesh.mesh = mesh_instance.mesh
 		for surface in range(mesh_instance.get_surface_material_count()):

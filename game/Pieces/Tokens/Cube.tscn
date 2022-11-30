@@ -27,5 +27,6 @@ table_collide_slow_sounds = ExtResource( 2 )
 shape = SubResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 mesh = SubResource( 4 )
 material/0 = null

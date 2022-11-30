@@ -119,7 +119,7 @@ func _add_piece_at_pos(piece_entry: Dictionary, pos: int, flip_y: bool) -> void:
 	# somewhere else, so to the pieces node it goes!
 	_get_pieces_node().scale.y = collision_shape_scale.y
 	
-	var basis = Basis.IDENTITY
+	var basis = mesh_instance.transform.basis
 	if flip_y:
 		basis = basis.rotated(Vector3.BACK, PI)
 	
@@ -148,9 +148,13 @@ func _remove_piece_at_pos(pos: int) -> Dictionary:
 	
 	_set_piece_heights()
 	
+	var piece_transform = Transform.IDENTITY
+	if piece.transform.basis.y.y < 0.0: # Was the piece flipped?
+		piece_transform = piece_transform.rotated(Vector3.BACK, PI)
+	
 	var out = {
 		"piece_entry": piece.get_meta("piece_entry"),
-		"transform": piece.transform
+		"transform": piece_transform
 	}
 	
 	ResourceManager.queue_free_object(piece)
