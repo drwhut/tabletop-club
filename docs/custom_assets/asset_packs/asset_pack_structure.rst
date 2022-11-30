@@ -100,15 +100,19 @@ Here is an example of a ``config.cfg`` file:
 
    ; The following properties apply only to objects whose name start with
    ; "Heavy". These properties take precedence over the properties under [*].
+   ; The wildcard * can either be at the beginning and/or at the end.
    [Heavy*]
+
+   ; This is equivalent to 100g.
+   mass = 100.0
+
+   ; Similar to [Heavy*] this applies only to objects whose name end with "Info.png".
+   [*Info.png]
 
    ; Descriptions can be on multiple lines.
    desc = "This is one line,
 
    and this is another!"
-
-   ; This is equivalent to 100g.
-   mass = 100.0
 
    ; The following properties apply only to the given object.
    [Temporary.png]

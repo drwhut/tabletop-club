@@ -759,30 +759,42 @@ func _get_asset_dir(pack: String, type_dir: String) -> Directory:
 	
 	return dir
 
-# Get an asset's config value. It will search the config file with wildcards
-# from right to left (e.g. Card -> Car* -> Ca* -> C* -> *).
+# Custom sorter class for _get_file_config_value
+# Sorts by string length. Largest to smallest
+class AssetDBSorter:
+	static func sort_length(a: String, b: String):
+		if a.length() > b.length():
+			return true
+		return false
+
+# Get an asset's config value. It will search the config file with wildcards.
+# Wildcards can be at the beginng and/or end.
+# E.g.: *Card.png, Card*, *Card*
 # Returns: The config value. If it doesn' exists, returns default.
 # config: The config file to query.
-# section: The section to query (this is the value that is wildcarded).
+# query: The section to query (this is the value that is wildcarded).
 # key: The key to query.
 # default: The default value to return if the value doesn't exist.
-func _get_file_config_value(config: ConfigFile, section: String, key: String, default):
-	var next_section = section
+func _get_file_config_value(config: ConfigFile, query: String, key: String, default):
+	var found_sections = ["*"]
 	
-	if section.length() == 0:
-		return default
+	for section in config.get_sections():
+		if section == "*": continue
+		
+		var wildcard_at_front = section.begins_with("*")
+		var wildcard_at_end = section.ends_with("*")
+		var search_term = section.replace("*","")
+		if ((search_term == query) \
+			or (wildcard_at_front and query.ends_with(search_term)) \
+			or (wildcard_at_end and query.begins_with(search_term)) \
+			or (wildcard_at_front and wildcard_at_end and search_term in query)):
+				found_sections.append(section)
 	
-	var take_away = 1
-	if section.ends_with("*"):
-		take_away += 1
-	
-	var new_len = max(section.length() - take_away, 0)
-	
-	next_section = section.substr(0, new_len)
-	if section != "*":
-		next_section += "*"
-	
-	return config.get_value(section, key, _get_file_config_value(config, next_section, key, default))
+	found_sections.sort_custom(AssetDBSorter, "sort_length")
+	for section in found_sections:
+		if config.has_section_key(section, key):
+			return config.get_value(section, key, default)
+	return default
 
 # Import an asset. If it has already been imported before, and it's contents
 # have not changed, it is not reimported, but the piece entry is still added to
