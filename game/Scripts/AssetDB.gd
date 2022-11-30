@@ -1024,6 +1024,8 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 						print("Loaded back face: %s" % back_path)
 					else:
 						push_error("Failed to import '%s' (error %d)!" % [back_path, back_err])
+			else:
+				entry["texture_path_1"] = ""
 		
 		elif type.begins_with("containers"):
 			entry["shakable"] = _get_file_config_value(config, from.get_file(), "shakable", false)
@@ -1622,7 +1624,7 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 					push_error("'texture_path_1' in entry is not a string!")
 					return false
 				
-				if not _is_valid_path(value, VALID_TEXTURE_EXTENSIONS):
+				if not (value.empty() or _is_valid_path(value, VALID_TEXTURE_EXTENSIONS)):
 					push_error("'texture_path_1' in entry is not a valid path!")
 					return false
 			"url":

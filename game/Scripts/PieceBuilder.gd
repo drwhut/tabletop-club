@@ -116,8 +116,13 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 		# Check if the entry has textures for more than one surface.
 		var surface = 1
 		while piece_entry.has("texture_path_" + str(surface)):
-			texture = ResourceManager.load_res(piece_entry["texture_path_" + str(surface)])
-			piece.apply_texture(texture, surface)
+			var texture_path: String = piece_entry["texture_path_" + str(surface)]
+			var optional_texture: Texture
+			if not texture_path.empty():
+				optional_texture = ResourceManager.load_res(texture_path)
+			else:
+				optional_texture = preload("res://Images/BlackTexture.bmp")
+			piece.apply_texture(optional_texture, surface)
 			surface += 1
 	
 	if piece.is_albedo_color_exposed():

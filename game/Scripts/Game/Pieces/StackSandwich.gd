@@ -124,9 +124,16 @@ func _set_sandwich_display() -> void:
 	var front_key = "texture_path"
 	if front_flip:
 		front_key += "_1"
+	var front_path: String = front_entry[front_key]
+	var front_texture: Texture
+	if not front_path.empty():
+		front_texture = ResourceManager.load_res(front_path)
+	else:
+		front_texture = preload("res://Images/BlackTexture.bmp")
+	
 	var front_material = SpatialMaterial.new()
 	front_material.albedo_color = front_entry["color"]
-	front_material.albedo_texture = ResourceManager.load_res(front_entry[front_key])
+	front_material.albedo_texture = front_texture
 	sandwich.set_surface_material(0, front_material)
 	
 	var back_meta = _pieces[0]
@@ -136,7 +143,14 @@ func _set_sandwich_display() -> void:
 	var back_key = "texture_path"
 	if not back_flip:
 		back_key += "_1"
+	var back_path: String = back_entry[back_key]
+	var back_texture: Texture
+	if not back_path.empty():
+		back_texture = ResourceManager.load_res(back_path)
+	else:
+		back_texture = preload("res://Images/BlackTexture.bmp")
+	
 	var back_material = SpatialMaterial.new()
 	back_material.albedo_color = back_entry["color"]
-	back_material.albedo_texture = ResourceManager.load_res(back_entry[back_key])
+	back_material.albedo_texture = back_texture
 	sandwich.set_surface_material(1, back_material)
