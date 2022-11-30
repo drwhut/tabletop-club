@@ -11,6 +11,9 @@ board game simulator! If you're new to the project, feel free to check out the
 :ref:`about-tabletop-club` page. Otherwise, you can use either the table of
 contents, the sidebar, or the search bar to find what you need!
 
+.. image:: ../screenshots.jpg
+   :alt: Screenshots from the game
+
 .. note::
 
    The documentation, as well as the project in general, is open to suggestions
