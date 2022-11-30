@@ -905,7 +905,8 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 	if entry.empty():
 		return OK
 	
-	entry["name"] = to.get_basename().get_file()
+	entry["name"] = _get_file_config_value(config, from.get_file(), "name",
+			to.get_basename().get_file())
 	entry["desc"] = _get_file_config_value(config, from.get_file(), "desc", "")
 	
 	entry["author"] = _get_file_config_value(config, from.get_file(), "author", "")
