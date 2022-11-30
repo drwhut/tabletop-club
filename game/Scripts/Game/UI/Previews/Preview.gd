@@ -103,7 +103,11 @@ func _on_gui_input(event):
 			var ctrl = event.command if OS.get_name() == "OSX" else event.control
 			if not (allow_multiple_select and ctrl):
 				get_tree().call_group("preview_selected", "set_selected", false)
-			set_selected(not is_selected())
+			if event.doubleclick:
+				get_tree().call_group("preview_selected", "set_selected", true)
+				set_selected(true)
+			else:
+				set_selected(not is_selected())
 
 func _on_visibility_changed():
 	set_selected(false)
