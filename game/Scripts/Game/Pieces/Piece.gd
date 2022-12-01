@@ -27,15 +27,15 @@ class_name Piece
 signal client_set_hover_position(piece)
 signal scale_changed()
 
-const ANGULAR_FORCE_SCALAR = 25.0
 const HARMONIC_DAMPENING = 0.5
 const HELL_HEIGHT = -50.0
 const HOVER_INACTIVE_DURATION = 5.0
 const LINEAR_FORCE_SCALAR = 50.0
 const ROTATION_LOCK_AT = 0.001
+const ROTATION_SLERP_ALPHA = 0.5
 const SHAKING_THRESHOLD = 1000.0
-const TRANSFORM_LERP_ALPHA = 0.9
 const SHAKE_WAIT_DURATION = 500
+const TRANSFORM_LERP_ALPHA = 0.9
 
 export(NodePath) var effect_player_path: String
 
@@ -252,7 +252,7 @@ func play_effect(sound: AudioStream) -> void:
 
 # If you are hovering this piece, ask the server to flip the piece vertically.
 master func request_flip_vertically() -> void:
-	request_set_hover_basis(hover_basis.rotated(transform.basis.z, PI))
+	request_set_hover_basis(hover_basis.rotated(hover_basis.z, PI))
 
 # Request the server to apply an impulse to the piece.
 # position: The position to apply the impulse, relative to the piece's origin.
@@ -403,7 +403,10 @@ remotesync func set_hover_basis(new_hover_basis: Basis) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	hover_basis = new_hover_basis
+	if new_hover_basis.is_equal_approx(Basis(Vector3.ZERO, Vector3.ZERO, Vector3.ZERO)):
+		return
+	
+	hover_basis = new_hover_basis.orthonormalized()
 	sleeping = false
 
 # Set the hover position of the piece.
@@ -586,11 +589,12 @@ func _apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	state.linear_velocity = LINEAR_FORCE_SCALAR * linear_dir
 	
 	# Force the piece to the given basis.
-	var current_basis = state.transform.basis.orthonormalized()
-	var target_basis = hover_basis.orthonormalized()
-	var rotation_basis = target_basis * current_basis.inverse()
-	var rotation_euler = rotation_basis.get_euler()
-	state.angular_velocity = ANGULAR_FORCE_SCALAR * rotation_euler
+	var current_basis = state.transform.basis
+	var new_basis = hover_basis
+	if not current_basis.is_equal_approx(hover_basis):
+		new_basis = current_basis.slerp(hover_basis, ROTATION_SLERP_ALPHA)
+	state.transform.basis = new_basis.orthonormalized()
+	state.angular_velocity = Vector3.ZERO
 
 func _integrate_forces(state):
 	# Overwrite the physics forces if the piece is hovering, so we can control
