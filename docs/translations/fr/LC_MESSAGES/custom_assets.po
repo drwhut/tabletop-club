@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2022-11-30 10:48+0000\n"
+"PO-Revision-Date: 2022-12-02 21:48+0000\n"
 "Last-Translator: guissou <guimichel@protonmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/fr/>\n"
@@ -654,7 +654,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "Skyboxes"
-msgstr ""
+msgstr "Loge"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 msgid "``Vector3(0.0, 0.0, 0.0)``"
