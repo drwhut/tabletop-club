@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:54\n"
-"PO-Revision-Date: 2022-11-29 03:08+0000\n"
+"PO-Revision-Date: 2022-12-02 21:46+0000\n"
 "Last-Translator: guissou <guimichel@protonmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/fr/>\n"
@@ -699,15 +699,16 @@ msgstr "Chaque joueur a reçu 25 jetons, dont la valeur totale est de 500."
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
-msgstr ""
+msgstr "Salon de l'aéroport - Kevin MacLeod"
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:2
 msgid "Light and airy, this piece is guaranteed not to steal focus."
 msgstr ""
+"Légère et aérienne, cette pièce est garantie de ne pas détourner l'attention."
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:1
 msgid "Backbay Lounge - Kevin MacLeod"
-msgstr ""
+msgstr "Lounge Backbay - Kevin MacLeod"
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:2
 msgid ""
@@ -719,7 +720,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:1
 msgid "Bossa Antigua - Kevin MacLeod"
-msgstr ""
+msgstr "Bossa Antigua - Kevin MacLeod"
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:2
 msgid ""
@@ -728,10 +729,14 @@ msgid ""
 "walls. I still haven't been able to teach my Roombas to get up by the "
 "ceiling, though."
 msgstr ""
+"Oh salut. Je ne t'avais pas vu. Bienvenue dans mon humble demeure. Ce qui me "
+"plait le plus, c'est la vue sur la plage, et ce tapis à poils longs orange "
+"très groovy sur les murs. Cependant, je n'ai pas pu apprendre à mon Roomba à "
+"grimper au plafond."
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:1
 msgid "Deadly Roulette - Kevin MacLeod"
-msgstr ""
+msgstr "Roulette Mortelle - Kevin MacLeod"
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:2
 msgid ""
