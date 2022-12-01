@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2022-11-29 17:05+0000\n"
-"Last-Translator: SphinxKnight <julien.gattelier@gmail.com>\n"
+"PO-Revision-Date: 2022-12-02 21:47+0000\n"
+"Last-Translator: guissou <guimichel@protonmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "game/fr/>\n"
 "Language: fr\n"
@@ -26,7 +26,7 @@ msgstr "Importation des ressources…"
 
 #: ../Scenes/ImportAssets.tscn:59
 msgid "Missing Asset Folder"
-msgstr "Répertoire d'asset manquant"
+msgstr "Dossier des ressources manquant"
 
 #: ../Scenes/ImportAssets.tscn:65
 msgid "Missing Module"
@@ -678,7 +678,7 @@ msgstr "Annuler"
 
 #: ../Scenes/OptionsMenu.tscn:1345
 msgid "Keep video settings?"
-msgstr "Garder les réglages vidéo?"
+msgstr "Garder les réglages vidéo ?"
 
 #: ../Scenes/OptionsMenu.tscn:1353
 msgid "Reimporting Assets"
@@ -686,7 +686,7 @@ msgstr "Importer à nouveau les ressources"
 
 #: ../Scenes/OptionsMenu.tscn:1371
 msgid "Warning!"
-msgstr "Attention!"
+msgstr "Attention !"
 
 #: ../Scenes/RandomMusicPlayer.tscn:23
 msgid "Now Playing:"
@@ -970,7 +970,7 @@ msgstr "Supprimer"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:90
 msgid "Delete page?"
-msgstr "Supprimer la page?"
+msgstr "Supprimer la page ?"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
@@ -1009,10 +1009,8 @@ msgid "Lamp Color"
 msgstr "Couleur de la lampe"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:157
-#, fuzzy
-#| msgid "Select track"
 msgid "Select a skybox..."
-msgstr "Sélectionner la piste"
+msgstr "Sélectionner la loge..."
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:161
 #, python-format
@@ -1085,20 +1083,12 @@ msgid "Unknown event type"
 msgstr "Type d'événement inconnu"
 
 #: ../Scripts/ImportAssets.gd:88
-#, fuzzy
-#| msgid ""
-#| "OpenTabletop couldn't find an assets folder in any of the following "
-#| "places:"
 msgid "Tabletop Club could not find any asset packs in the following folders:"
 msgstr ""
-"OpenTabletop n'a pas pu trouver de dossier de ressources aux emplacements "
+"Tabletop Club n'a pas pu trouver de dossier de ressources aux emplacements "
 "suivants :"
 
 #: ../Scripts/ImportAssets.gd:90
-#, fuzzy
-#| msgid ""
-#| "OpenTabletop couldn't find an assets folder in any of the following "
-#| "places:"
 msgid ""
 "Tabletop Club could not find an assets folder in any of the following places:"
 msgstr ""
@@ -1106,11 +1096,11 @@ msgstr ""
 "suivants :"
 
 #: ../Scripts/ImportAssets.gd:96
-#, fuzzy
-#| msgid "Please create one of these folders and restart the game."
 msgid ""
 "Please place an asset pack into one of these folders, and restart the game."
-msgstr "Veuillez créer l'un de ces dossiers et relancer le jeu."
+msgstr ""
+"Veuillez placer un dossier de ressources dans l'un de ces dossiers, et "
+"relancer le jeu."
 
 #: ../Scripts/ImportAssets.gd:98
 msgid "Please create one of these folders and restart the game."
@@ -1293,7 +1283,7 @@ msgstr "Mélanger"
 
 #: ../Scripts/Game/CameraController.gd:1160
 msgid "Suit"
-msgstr ""
+msgstr "Couleur"
 
 #: ../Scripts/Game/CameraController.gd:1162
 msgid "Value"
@@ -1544,11 +1534,11 @@ msgstr "Zoom séléctionné"
 
 #: ../Scripts/Game/CameraController.gd:1445
 msgid "Lift selected"
-msgstr ""
+msgstr "Soulever séléctionné"
 
 #: ../Scripts/Game/CameraController.gd:1446
 msgid "Rotate selected"
-msgstr ""
+msgstr "Rotation séléctionnée"
 
 #: ../Scripts/Game/CameraController.gd:1455
 msgid "Unlock selected"
@@ -1629,24 +1619,23 @@ msgid "Start stopwatch"
 msgstr "Démarrer le chronomètre"
 
 #: ../Scripts/Game/Game.gd:543
-#, fuzzy, python-format
-#| msgid "Loading..."
+#, python-format
 msgid "Downloading %s ..."
-msgstr "Chargement…"
+msgstr "Téléchargement %s ..."
 
 #: ../Scripts/Game/Game.gd:702
 msgid "Download completed!"
-msgstr "Téléchargement terminé!"
+msgstr "Téléchargement terminé !"
 
 #: ../Scripts/Game/Game.gd:741
 #, python-format
 msgid "Verified %d out of %d files!"
-msgstr ""
+msgstr "Vérifié %d parmis %d fichiers !"
 
 #: ../Scripts/Game/Game.gd:1018
 msgid "Loaded table has no version information. Load anyway?"
 msgstr ""
-"La table chargée n'a pas d'information de version. La charger quand même?"
+"La table chargée n'a pas d'information de version. La charger quand même ?"
 
 #: ../Scripts/Game/Game.gd:1020
 #, python-format
@@ -1654,6 +1643,8 @@ msgid ""
 "Loaded table was saved with a different version of the game (Current: %s, "
 "Table: %s). Load anyway?"
 msgstr ""
+"La table chargée a été enregistrée avec une version différente du jeu ("
+"version actuelle: %s, version table: %s). Charger quand même ?"
 
 #: ../Scripts/Game/Game.gd:1022
 msgid "Loaded table is not in the correct format."
@@ -1662,29 +1653,25 @@ msgstr "La table chargée n'a pas le bon format."
 #: ../Scripts/Game/Game.gd:1066
 #, python-format
 msgid "Client version (%s) does not match server version (%s)!"
-msgstr ""
+msgstr "La version client (%s) ne correspond pas à la version serveur (%s) !"
 
 #: ../Scripts/Game/Game.gd:1209
-#, fuzzy, python-format
-#| msgid "Importing assets..."
+#, python-format
 msgid "Importing %s ..."
-msgstr "Importation des ressources…"
+msgstr "Importation de %s…"
 
 #: ../Scripts/Game/Game.gd:1227
-#, fuzzy, python-format
-#| msgid "Take Screenshot"
+#, python-format
 msgid "Saved screenshot to '%s'."
-msgstr "Prendre une capture d'écran"
+msgstr "Capture de page écran enregistrée à '%s'."
 
 #: ../Scripts/Game/Game.gd:1241
 msgid "Quicksave file saved."
-msgstr ""
+msgstr "Fichier de sauvegarde rapide enregistrée."
 
 #: ../Scripts/Game/Game.gd:1304
-#, fuzzy
-#| msgid "Connecting to the server..."
 msgid "Connecting to the master server..."
-msgstr "Connexion au serveur…"
+msgstr "Connexion au serveur principal…"
 
 #: ../Scripts/Game/Game.gd:1713
 #, python-format
@@ -1692,41 +1679,37 @@ msgid "Could not open the file at path '%s' (error %d)."
 msgstr "Impossible d'ouvrir le fichier depuis « %s » (erreur %d)."
 
 #: ../Scripts/Game/Game.gd:1879
-#, fuzzy
-#| msgid "Lost connection to the server!"
 msgid "Establishing connection with the host..."
-msgstr "Connexion au serveur perdue !"
+msgstr "Connexion avec le serveur..."
 
 #: ../Scripts/Game/Game.gd:1894
 #, python-format
 msgid "Disconnected from the server! Code: %d Reason: %s"
-msgstr ""
+msgstr "Déconnecté du serveur ! Code: %d Raison: %s"
 
 #: ../Scripts/Game/Game.gd:1990
 msgid "Room has been closed by the host."
-msgstr ""
+msgstr "La salle a été fermée par l'hôte."
 
 #: ../Scripts/Game/MasterServer.gd:42
-#, fuzzy
-#| msgid "Failed to connect to the server!"
 msgid "Could not connect to the master server."
-msgstr "Échec de la connexion au serveur !"
+msgstr "Échec de la connexion au serveur principal."
 
 #: ../Scripts/Game/MasterServer.gd:43
 msgid "Have not joined a room yet."
-msgstr ""
+msgstr "Aucune salle n'a été rejointe pour l'instant."
 
 #: ../Scripts/Game/MasterServer.gd:44
 msgid "Host has disconnected from the room."
-msgstr ""
+msgstr "L'hôte s'est déconnecté de la salle."
 
 #: ../Scripts/Game/MasterServer.gd:45
 msgid "Only the host can seal the room."
-msgstr ""
+msgstr "Seul(e) l'hôte peut fermer la salle."
 
 #: ../Scripts/Game/MasterServer.gd:46
 msgid "Too many rooms are open."
-msgstr ""
+msgstr "Trop de salles sont ouvertes."
 
 #: ../Scripts/Game/MasterServer.gd:47
 msgid "Already in a room."
@@ -1750,7 +1733,7 @@ msgstr "Le message est invalide quand il n'est pas dans une salle."
 
 #: ../Scripts/Game/MasterServer.gd:52
 msgid "Internal server error."
-msgstr ""
+msgstr "Erreur interne du serveur."
 
 #: ../Scripts/Game/MasterServer.gd:53
 msgid "Invalid destination."
@@ -1758,15 +1741,15 @@ msgstr "Destination invalide."
 
 #: ../Scripts/Game/MasterServer.gd:54
 msgid "Invalid command."
-msgstr "Commande invalide"
+msgstr "Commande invalide."
 
 #: ../Scripts/Game/MasterServer.gd:55
 msgid "Too many players connected."
-msgstr ""
+msgstr "Trop de joueurs connectés."
 
 #: ../Scripts/Game/MasterServer.gd:56
 msgid "Transfer mode is invalid."
-msgstr ""
+msgstr "Mode de transfert invalide."
 
 #: ../Scripts/Game/MasterServer.gd:57
 msgid "Too many connections."
@@ -1774,24 +1757,24 @@ msgstr "Trop de connexions."
 
 #: ../Scripts/Game/MasterServer.gd:58
 msgid "Reconnected too quickly."
-msgstr ""
+msgstr "Reconnecté trop rapidement."
 
 #: ../Scripts/Game/UI/ChatBox.gd:56
 msgid "Too much text being sent, waiting..."
-msgstr ""
+msgstr "Trop de texte en cours d'envoi, patience..."
 
 #: ../Scripts/Game/UI/GameUI.gd:227
 #, python-format
 msgid "Room Code: [b]%s[/b]"
-msgstr ""
+msgstr "Code de la salle : [b]%s[/b]"
 
 #: ../Scripts/Game/UI/GameUI.gd:231
 msgid "Hide Room Code"
-msgstr ""
+msgstr "Cacher le code de la salle"
 
 #: ../Scripts/Game/UI/GameUI.gd:233
 msgid "Show Room Code"
-msgstr ""
+msgstr "Révéler le code de la salle"
 
 #: ../Scripts/Game/UI/GameUI.gd:294
 #, python-format
@@ -1823,6 +1806,8 @@ msgid ""
 "You can use this notebook to write down information that will persist "
 "between sessions."
 msgstr ""
+"Tu peux utiliser ce carnet pour écrire des informations qui vont persister "
+"entre les sessions."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:138
 #, python-format
@@ -1885,7 +1870,7 @@ msgid ""
 "File names cannot contain any of the following characters:\n"
 "%s"
 msgstr ""
-"Les noms de fichiers ne peuvent pas contenir les charactères suivants:\n"
+"Les noms de fichiers ne peuvent pas contenir les charactères suivants :\n"
 "%s"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:233
@@ -1910,27 +1895,25 @@ msgstr "Le fichier « %s » existe déjà. Êtes-vous sûr·e de vouloir l'éc
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:77
 #, python-format
 msgid "Author: %s"
-msgstr "Auteur: %s"
+msgstr "Autrice/auteur : %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:60
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:83
-#, fuzzy, python-format
-#| msgid "View License"
+#, python-format
 msgid "License: %s"
-msgstr "Voir la licence"
+msgstr "Licence : %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:66
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:89
-#, fuzzy, python-format
-#| msgid "Modified: %s"
+#, python-format
 msgid "Modified by: %s"
-msgstr "Modifié : %s"
+msgstr "Modifié par : %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:72
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:95
 #, python-format
 msgid "URL: %s"
-msgstr ""
+msgstr "URL : %s"
 
 #: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:108
 #, python-format
@@ -1959,7 +1942,7 @@ msgstr "Pièces"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:239
 msgid "Skyboxes"
-msgstr ""
+msgstr "Loge"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:240
 msgid "Sounds"
@@ -1967,7 +1950,7 @@ msgstr "Sons"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:241
 msgid "Speakers"
-msgstr ""
+msgstr "Haut-parleurs"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:242
 msgid "Stacks"
