@@ -756,24 +756,36 @@ func _unhandled_input(event):
 			_lock_selected_pieces()
 	elif event.is_action_pressed("game_flip_piece"):
 		if _selected_pieces.empty():
-			if _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
-				if _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ]:
-					if not _piece_mouse_is_over.is_collisions_on():
+			if _piece_mouse_is_over != null:
+				if (_piece_mouse_is_over is Card and (_piece_mouse_is_over.over_hands.empty() or _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ])) \
+					or not _piece_mouse_is_over is Card:
+					if _piece_mouse_is_over.is_hovering():
 						_piece_mouse_is_over.rpc_id(1, "request_flip_vertically")
+					else:
+						_piece_mouse_is_over.rpc_id(1, "request_flip_vertically_on_ground")
 		else:
 			for piece in _selected_pieces:
 				if piece is Piece:
-					piece.rpc_id(1, "request_flip_vertically")
+					if piece.is_hovering():
+						piece.rpc_id(1, "request_flip_vertically")
+					else:
+						piece.rpc_id(1, "request_flip_vertically_on_ground")
 	elif event.is_action_pressed("game_reset_piece"):
 		if _selected_pieces.empty():
-			if _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
-				if _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ]:
-					if not _piece_mouse_is_over.is_collisions_on():
+			if _piece_mouse_is_over != null:
+				if (_piece_mouse_is_over is Card and (_piece_mouse_is_over.over_hands.empty() or _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ])) \
+					or not _piece_mouse_is_over is Card:
+					if _piece_mouse_is_over.is_hovering():
 						_piece_mouse_is_over.rpc_id(1, "request_reset_orientation")
+					else:
+						_piece_mouse_is_over.rpc_id(1, "request_reset_orientation_on_ground")
 		else:
 			for piece in _selected_pieces:
 				if piece is Piece:
-					piece.rpc_id(1, "request_reset_orientation")
+					if piece.is_hovering():
+						piece.rpc_id(1, "request_reset_orientation")
+					else:
+						_piece_mouse_is_over.rpc_id(1, "request_reset_orientation_on_ground")
 	elif event.is_action_pressed("game_toggle_debug_info"):
 		_debug_info_label.visible = not _debug_info_label.visible
 	elif event.is_action_pressed("game_toggle_ui"):
