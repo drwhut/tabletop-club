@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2022-11-26 15:05+0000\n"
+"PO-Revision-Date: 2022-12-02 21:47+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
 "nl/>\n"
@@ -23,11 +23,11 @@ msgstr ""
 
 #: ../Scenes/ImportAssets.tscn:39
 msgid "Importing assets..."
-msgstr "Bezig met importeren van spelelementen…"
+msgstr "Bezig met importeren van spelonderdelen…"
 
 #: ../Scenes/ImportAssets.tscn:59
 msgid "Missing Asset Folder"
-msgstr "De spelelementenmap ontbreekt"
+msgstr "De spelonderdelenmap ontbreekt"
 
 #: ../Scenes/ImportAssets.tscn:65
 msgid "Missing Module"
@@ -339,15 +339,15 @@ msgstr "Toon systeemfoutmeldingen in het chatvenster."
 
 #: ../Scenes/OptionsMenu.tscn:545
 msgid "Opens the assets folder in your file explorer."
-msgstr "Open de elementmap in je bestandsbeheerder."
+msgstr "Open de onderdelenmap in je bestandsbeheerder."
 
 #: ../Scenes/OptionsMenu.tscn:547
 msgid "Open Assets Folder"
-msgstr "Spelelementenmap openen"
+msgstr "Spelonderdelenmap openen"
 
 #: ../Scenes/OptionsMenu.tscn:563
 msgid "Reimport Assets"
-msgstr "Spelelementen opnieuw importeren"
+msgstr "Spelonderdelen opnieuw importeren"
 
 #: ../Scenes/OptionsMenu.tscn:576
 msgid "Key Bindings"
@@ -669,7 +669,7 @@ msgstr "Wil je de video-instellingen behouden?"
 
 #: ../Scenes/OptionsMenu.tscn:1353
 msgid "Reimporting Assets"
-msgstr "Bezig met opnieuw importeren van spelelementen…"
+msgstr "Bezig met opnieuw importeren van spelonderdelen…"
 
 #: ../Scenes/OptionsMenu.tscn:1371
 msgid "Warning!"
@@ -774,7 +774,7 @@ msgstr "Er zijn %d parcours geladen."
 
 #: ../Scenes/Game/Game.tscn:35
 msgid "Missing Assets"
-msgstr "Ontbrekende spelelementen"
+msgstr "Ontbrekende spelonderdelen"
 
 #: ../Scenes/Game/Game.tscn:44
 #, python-format
@@ -784,9 +784,9 @@ msgid ""
 "of %d missing assets, and %d assets differ between your client and the "
 "host's client:"
 msgstr ""
-"De organisator maakt gebruik van spelelementen die jij niet hebt. Dit houdt "
-"in dat je de elementen in kwestie niet kunt zien tijdens dit spel. Er zijn "
-"in totaal %d ontbrekende elementen en %d elementen verschillen tussen de "
+"De organisator maakt gebruik van onderdelen die jij niet hebt. Dit houdt in "
+"dat je de onderdelen in kwestie niet kunt zien tijdens dit spel. Er zijn in "
+"totaal %d ontbrekende onderdelen en %d onderdelen die verschillen tussen de "
 "client van jou en de organisator:"
 
 #: ../Scenes/Game/Game.tscn:58
@@ -800,7 +800,7 @@ msgstr ""
 
 #: ../Scenes/Game/Game.tscn:86
 msgid "Yes, download missing assets."
-msgstr "Ontbrekende elementen downloaden"
+msgstr "Ontbrekende onderdelen downloaden"
 
 #: ../Scenes/Game/Game.tscn:93
 msgid "No, continue without them."
@@ -808,7 +808,7 @@ msgstr "Doorgaan zonder deze elementen"
 
 #: ../Scenes/Game/Game.tscn:99
 msgid "Download Assets?"
-msgstr "Wil de spelelementen downloaden?"
+msgstr "Wil je de spelonderdelen downloaden?"
 
 #: ../Scenes/Game/Game.tscn:108
 msgid "Downloading..."
@@ -824,7 +824,7 @@ msgstr "Bezig met verifiëren…"
 
 #: ../Scenes/Game/Game.tscn:149
 msgid "Waiting to import assets..."
-msgstr "Bezig met importeren van spelelementen…"
+msgstr "Bezig met importeren van spelonderdelen…"
 
 #: ../Scenes/Game/Game.tscn:168 ../Scenes/Game/Game.tscn:186
 msgid "Error!"
@@ -1071,12 +1071,12 @@ msgstr "Onbekende actie"
 
 #: ../Scripts/ImportAssets.gd:88
 msgid "Tabletop Club could not find any asset packs in the following folders:"
-msgstr "Er zijn geen objectpakketten aangetroffen op de volgende locaties:"
+msgstr "Er zijn geen onderdeelpakketten aangetroffen op de volgende locaties:"
 
 #: ../Scripts/ImportAssets.gd:90
 msgid ""
 "Tabletop Club could not find an assets folder in any of the following places:"
-msgstr "De objectmap is niet aangetroffen op een van de volgende locaties:"
+msgstr "De onderdelenmap is niet aangetroffen op een van de volgende locaties:"
 
 #: ../Scripts/ImportAssets.gd:96
 msgid ""
