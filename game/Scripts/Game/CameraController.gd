@@ -766,10 +766,12 @@ func _unhandled_input(event):
 		else:
 			for piece in _selected_pieces:
 				if piece is Piece:
-					if piece.is_hovering():
-						piece.rpc_id(1, "request_flip_vertically")
-					else:
-						piece.rpc_id(1, "request_flip_vertically_on_ground")
+					if (piece is Card and (piece.over_hands.empty() or piece.over_hands == [ get_tree().get_network_unique_id() ])) \
+					or not piece is Card:
+						if piece.is_hovering():
+							piece.rpc_id(1, "request_flip_vertically")
+						else:
+							piece.rpc_id(1, "request_flip_vertically_on_ground")
 	elif event.is_action_pressed("game_reset_piece"):
 		if _selected_pieces.empty():
 			if _piece_mouse_is_over != null:
@@ -782,10 +784,12 @@ func _unhandled_input(event):
 		else:
 			for piece in _selected_pieces:
 				if piece is Piece:
-					if piece.is_hovering():
-						piece.rpc_id(1, "request_reset_orientation")
-					else:
-						_piece_mouse_is_over.rpc_id(1, "request_reset_orientation_on_ground")
+					if (piece is Card and (piece.over_hands.empty() or piece.over_hands == [ get_tree().get_network_unique_id() ])) \
+					or not piece is Card:
+						if piece.is_hovering():
+							piece.rpc_id(1, "request_reset_orientation")
+						else:
+							piece.rpc_id(1, "request_reset_orientation_on_ground")
 	elif event.is_action_pressed("game_toggle_debug_info"):
 		_debug_info_label.visible = not _debug_info_label.visible
 	elif event.is_action_pressed("game_toggle_ui"):
@@ -1442,14 +1446,9 @@ func _set_control_hint_label() -> void:
 	#########
 	# OTHER #
 	#########
-	
+	var is_card_in_hand = false
 	if not _selected_pieces.empty():
 		if _is_hovering_selected:
-			text += _set_control_hint_label_row_actions(tr("Flip orientation"),
-				["game_flip_piece"])
-			text += _set_control_hint_label_row_actions(tr("Reset orientation"),
-				["game_reset_piece"])
-			
 			var ctrl_mod = cmd if OS.get_name() == "OSX" else ctrl
 			var alt_mod = ctrl if OS.get_name() == "OSX" else alt
 			
@@ -1477,6 +1476,13 @@ func _set_control_hint_label() -> void:
 						["game_flip_piece"])
 				text += _set_control_hint_label_row_actions(tr("Face card up"),
 						["game_reset_piece"])
+				is_card_in_hand = true
+	
+	if (not _selected_pieces.empty() or _piece_mouse_is_over != null) and not is_card_in_hand:
+		text += _set_control_hint_label_row_actions(tr("Reset orientation"),
+			["game_reset_piece"])
+		text += _set_control_hint_label_row_actions(tr("Flip orientation"),
+			["game_flip_piece"])
 	
 	text += _set_control_hint_label_row_actions(tr("Reset camera"), ["game_reset_camera"])
 	

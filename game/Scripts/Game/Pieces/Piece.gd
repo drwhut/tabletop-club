@@ -84,8 +84,6 @@ var _expose_albedo_color = true
 var _original_shape_scales = []
 var _original_shape_scales_saved = false
 
-var _timer_stop_hover = Timer.new()
-
 # Apply a texture to the piece.
 # texture: The texture to apply.
 # surface: The index of the surface to apply the texture to.
@@ -252,12 +250,9 @@ func play_effect(sound: AudioStream) -> void:
 	effect_player.stream = sound
 	effect_player.play()
 
-# If you are not hovering this piece, ask the server to lift the piece up and flip the piece vertically.
+# If you are not hovering this piece, ask the server to flip the piece vertically.
 master func request_flip_vertically_on_ground() -> void:
-	request_start_hovering(transform.origin, Vector3(0, 5, 0) )
-	request_flip_vertically()
-	_timer_stop_hover.connect("timeout", self, "rpc_id", [1, "request_stop_hovering"], 4)
-	_timer_stop_hover.start()
+	request_set_transform(Transform(transform.basis.rotated(transform.basis.z, PI), transform.origin))
 
 # If you are hovering this piece, ask the server to flip the piece vertically.
 master func request_flip_vertically() -> void:
@@ -274,17 +269,10 @@ master func request_impulse(position: Vector3, impulse: Vector3) -> void:
 master func request_lock() -> void:
 	srv_lock()
 
-# If you are not hovering the piece, ask the server to lift the piece up and reset the 
+# If you are not hovering the piece, ask the server to reset the 
 # orientation of the piece.
 master func request_reset_orientation_on_ground() -> void:
-	# Basis.is_equal_approx discards the epsilon. So here we go using the length instead
-	if (Basis.IDENTITY.get_euler() - transform.basis.get_euler()).length() < 0.01:
-		return
-	
-	request_start_hovering(transform.origin, Vector3(0,1,0) )
-	request_reset_orientation()
-	_timer_stop_hover.connect("timeout", self, "rpc_id", [1, "request_stop_hovering"], 4)
-	_timer_stop_hover.start()
+	request_set_transform(Transform(Basis.IDENTITY, transform.origin))
 
 # If you are hovering the piece, ask the server to reset the orientation of the
 # piece.
@@ -584,9 +572,6 @@ func _ready():
 	
 	connect("body_entered", self, "_on_body_entered")
 	connect("tree_entered", self, "_on_tree_entered")
-	_timer_stop_hover.set_wait_time(0.15)
-	_timer_stop_hover.set_one_shot(true)
-	add_child(_timer_stop_hover)
 
 func _process(delta):
 	_last_slow_table_collision += delta
