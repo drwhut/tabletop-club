@@ -29,6 +29,8 @@ signal releasing_random_piece(container)
 
 onready var _pieces = $Pieces
 
+var _srv_is_locked: bool = false
+
 # Add a piece as a child to the container. Note that the piece cannot already
 # have a parent!
 # piece: The piece to add to the container.
@@ -73,6 +75,25 @@ func get_piece_names() -> Array:
 func has_piece(piece_name: String) -> bool:
 	return _pieces.has_node(piece_name)
 
+# Is the piece locked, i.e. unable to move?
+# Returns: If the piece is locked.
+func is_locked() -> bool:
+	if _srv_is_locked:
+		return true
+	return .is_locked()
+
+# Called by the server to lock the piece on all clients, with the given
+# transform.
+puppet func lock_client(locked_transform: Transform) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if get_tree().is_network_server():
+		transform = locked_transform
+		_srv_set_locked_container(true)
+	else:
+		.lock_client(locked_transform)
+
 # Recalculate the mass of the container, based on the items inside it.
 # You should use this if you added a piece to the container, but not via the
 # add_piece() function.
@@ -106,6 +127,22 @@ func remove_piece(piece_name: String) -> Piece:
 	
 	return null
 
+# Lock the piece server-side.
+func srv_lock() -> void:
+	_srv_set_locked_container(true)
+	rpc("lock_client", transform)
+
+# Called by the server to unlock the piece.
+remotesync func unlock() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	if get_tree().is_network_server():
+		_srv_set_locked_container(false)
+		sleeping = false
+	else:
+		.unlock()
+
 func _physics_process(_delta):
 	if get_tree().is_network_server():
 		var shakable: bool = piece_entry["shakable"]
@@ -114,6 +151,27 @@ func _physics_process(_delta):
 			# randomly release a piece to simulate what would happen in reality.
 			if transform.basis.y.y < -0.9 and is_being_shaked():
 				emit_signal("releasing_random_piece", self)
+
+func _integrate_forces(state):
+	if not _srv_is_locked:
+		._integrate_forces(state)
+
+# Set if the container is locked on the server.
+# NOTE: Locking a container on the server side is different to every other
+# piece, since it still needs to emit signals when locked.
+# is_locked: If the container will be locked.
+func _srv_set_locked_container(is_locked: bool) -> void:
+	_srv_is_locked = is_locked
+	
+	axis_lock_angular_x = is_locked
+	axis_lock_angular_y = is_locked
+	axis_lock_angular_z = is_locked
+	axis_lock_linear_x = is_locked
+	axis_lock_linear_y = is_locked
+	axis_lock_linear_z = is_locked
+	
+	# Disables in-built physics, as well as physics from Piece.
+	custom_integrator = is_locked
 
 func _on_body_entered(body) -> void:
 	._on_body_entered(body)
