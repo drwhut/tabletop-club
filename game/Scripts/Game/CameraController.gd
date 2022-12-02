@@ -774,7 +774,7 @@ func _unhandled_input(event):
 			for piece in _selected_pieces:
 				if piece is Piece:
 					piece.rpc_id(1, "request_reset_orientation")
-	elif event.is_action_pressed("game_shuffle_stack", true):
+	elif event.is_action_pressed("game_shuffle_stack"):
 		if _selected_pieces.empty():
 			if _piece_mouse_is_over != null and _piece_mouse_is_over is Stack:
 				_piece_mouse_is_over.rpc_id(1, "request_shuffle")
