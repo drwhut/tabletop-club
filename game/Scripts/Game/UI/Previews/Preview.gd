@@ -65,12 +65,25 @@ func set_selected(selected: bool) -> void:
 	if not selectable:
 		return
 	
-	if selected and (not is_in_group("preview_selected")):
+	if selected and not is_selected():
 		add_to_group("preview_selected")
-	elif (not selected) and is_in_group("preview_selected"):
+	elif (not selected) and is_selected():
 		remove_from_group("preview_selected")
 	
 	_set_selected_gui(selected)
+
+# Set the preview as selected.
+# Will unselect all other previews.
+func set_selected_single() -> void:
+	if not selectable:
+		return
+	
+	if is_selected():
+		remove_from_group("preview_selected")
+	
+	get_tree().call_group_flags(SceneTree.GROUP_CALL_REALTIME , "preview_selected", "set_selected", false)
+	
+	set_selected(true)
 
 func _ready():
 	connect("gui_input", self, "_on_gui_input")
@@ -101,9 +114,10 @@ func _on_gui_input(event):
 		# If the preview has been clicked, register it as selected.
 		if event.pressed and event.button_index == BUTTON_LEFT:
 			var ctrl = event.command if OS.get_name() == "OSX" else event.control
-			if not (allow_multiple_select and ctrl):
-				get_tree().call_group("preview_selected", "set_selected", false)
-			set_selected(not is_selected())
+			if allow_multiple_select and ctrl:
+				set_selected(not is_selected())
+			else:
+				set_selected_single()
 
 func _on_visibility_changed():
 	set_selected(false)

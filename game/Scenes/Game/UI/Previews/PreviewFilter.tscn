@@ -61,6 +61,7 @@ margin_top = 34.0
 margin_right = 632.0
 margin_bottom = 434.0
 rect_min_size = Vector2( 620, 400 )
+mouse_filter = 1
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
