@@ -2570,9 +2570,9 @@ func _on_CameraController_erasing(pos1: Vector3, pos2: Vector3, size: float):
 	_paint_plane.rpc_unreliable_id(1, "request_push_paint_queue", pos1, pos2,
 		Color.transparent, size)
 
-func _on_CameraController_hover_piece_requested(piece: Piece):
+func _on_CameraController_hover_piece_requested(piece: Piece, offset: Vector3):
 	rpc_id(1, "request_hover_piece", piece.name,
-		_camera_controller.get_hover_position(), Vector3.ZERO)
+		_camera_controller.get_hover_position(), offset)
 
 func _on_CameraController_hover_pieces_requested(pieces: Array, offsets: Array):
 	var names = []
