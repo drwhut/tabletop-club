@@ -250,11 +250,11 @@ func play_effect(sound: AudioStream) -> void:
 	effect_player.stream = sound
 	effect_player.play()
 
-# If you are not hovering this piece, ask the server to flip the piece vertically.
+# If you are not hovering this piece, request the server to flip the piece vertically.
 master func request_flip_vertically_on_ground() -> void:
 	request_set_transform(Transform(transform.basis.rotated(transform.basis.z, PI), transform.origin))
 
-# If you are hovering this piece, ask the server to flip the piece vertically.
+# If you are hovering this piece, request the server to flip the piece vertically.
 master func request_flip_vertically() -> void:
 	request_set_hover_basis(hover_basis.rotated(hover_basis.z, PI))
 
@@ -269,17 +269,18 @@ master func request_impulse(position: Vector3, impulse: Vector3) -> void:
 master func request_lock() -> void:
 	srv_lock()
 
-# If you are not hovering the piece, ask the server to reset the 
+# If you are not hovering the piece, request the server to reset the 
 # orientation of the piece.
 master func request_reset_orientation_on_ground() -> void:
 	request_set_transform(Transform(Basis.IDENTITY, transform.origin))
 
-# If you are hovering the piece, ask the server to reset the orientation of the
+# If you are hovering the piece, request the server to reset the orientation of the
 # piece.
 master func request_reset_orientation() -> void:
 	request_set_hover_basis(Basis.IDENTITY)
 
-# If you are hovering the piece, rotate it on the y-axis.
+# If you are hovering the piece, request the server to rotate it
+# around the y-axis by the given rotation.
 # rot: The amount to rotate it by in radians.
 master func request_rotate_y(rot: float) -> void:
 	if rot == 0.0:
@@ -298,6 +299,12 @@ master func request_rotate_y(rot: float) -> void:
 	target_y_euler.y = wrapf(target_y_scale * abs(rot), -PI, PI)
 	
 	request_set_hover_basis(Basis(target_y_euler))
+
+# If you are not hovering the piece, request the server to
+# rotate it around the y-axis by the given rotation.
+# rot: The amount to rotate it by in radians.
+master func request_rotate_y_on_ground(rot: float) -> void:
+	request_set_transform(Transform(transform.basis.rotated(transform.basis.y, rot), transform.origin))
 
 # Request the server to set the material's albedo color.
 # color: The new albedo color.

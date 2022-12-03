@@ -772,6 +772,25 @@ func _unhandled_input(event):
 							piece.rpc_id(1, "request_flip_vertically")
 						else:
 							piece.rpc_id(1, "request_flip_vertically_on_ground")
+	elif event.is_action_pressed("game_rotate_piece"):
+		var amount = _piece_rotation_amount
+		if piece_rotate_invert:
+				amount *= -1
+		if _selected_pieces.empty():
+			if _piece_mouse_is_over != null:
+				if (_piece_mouse_is_over is Card and _piece_mouse_is_over.over_hands.empty()) or not _piece_mouse_is_over is Card:
+					if _piece_mouse_is_over.is_hovering():
+						_piece_mouse_is_over.rpc_id(1, "request_rotate_y", amount)
+					else:
+						_piece_mouse_is_over.rpc_id(1, "request_rotate_y_on_ground", amount)
+		else:
+			for piece in _selected_pieces:
+				if piece is Piece:
+					if (piece is Card and piece.over_hands.empty()) or not piece is Card:
+						if piece.is_hovering():
+							piece.rpc_id(1, "request_rotate_y", amount)
+						else:
+							piece.rpc_id(1, "request_rotate_y_on_ground", amount)
 	elif event.is_action_pressed("game_reset_piece"):
 		if _selected_pieces.empty():
 			if _piece_mouse_is_over != null:
@@ -1492,6 +1511,8 @@ func _set_control_hint_label() -> void:
 				is_card_in_hand = true
 	
 	if (not _selected_pieces.empty() or _piece_mouse_is_over != null) and not is_card_in_hand:
+		text += _set_control_hint_label_row_actions(tr("Rotate Piece"),
+			["game_rotate_piece"])
 		text += _set_control_hint_label_row_actions(tr("Reset orientation"),
 			["game_reset_piece"])
 		text += _set_control_hint_label_row_actions(tr("Flip orientation"),
