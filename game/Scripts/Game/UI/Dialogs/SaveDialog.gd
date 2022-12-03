@@ -58,6 +58,13 @@ var _context_file_entry: Dictionary = {}
 
 var _save_preview = preload("res://Scenes/Game/UI/Previews/GenericPreview.tscn")
 
+func _ready():
+	connect("gui_input", self, "_on_gui_input")
+	
+func _on_gui_input(event):
+	if event is InputEventMouseButton and event.pressed and event.doubleclick and event.button_index == BUTTON_LEFT:
+		_on_load_save_button_pressed()
+
 # Clear the list of saves.
 func clear() -> void:
 	for preview in _save_container.get_children():
@@ -181,6 +188,7 @@ func _init():
 	
 	var scroll_container = ScrollContainer.new()
 	scroll_container.size_flags_vertical = SIZE_EXPAND_FILL
+	scroll_container.mouse_filter = Control.MOUSE_FILTER_PASS
 	top_container.add_child(scroll_container)
 	
 	_save_container = VBoxContainer.new()

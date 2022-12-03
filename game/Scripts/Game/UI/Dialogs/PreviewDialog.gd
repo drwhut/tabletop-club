@@ -41,6 +41,11 @@ func reconfigure() -> void:
 func _ready():
 	_preview_filter.db_types = db_types
 	_load_button.text = load_button_text
+	connect("gui_input", self, "_on_gui_input")
+	
+func _on_gui_input(event):
+	if event is InputEventMouseButton and event.pressed and event.doubleclick and event.button_index == BUTTON_LEFT:
+		_on_LoadButton_pressed()
 
 func _on_LoadButton_pressed():
 	var previews_selected = get_tree().get_nodes_in_group("preview_selected")

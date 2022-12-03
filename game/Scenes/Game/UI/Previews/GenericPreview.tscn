@@ -7,6 +7,7 @@
 [node name="GenericPreview" type="PanelContainer"]
 margin_right = 119.0
 margin_bottom = 104.0
+mouse_filter = 1
 script = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": "This preview is used to display basic assets. It displays the name and description, and the texture if the asset points to one."

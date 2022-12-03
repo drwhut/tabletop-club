@@ -790,6 +790,14 @@ func _unhandled_input(event):
 							piece.rpc_id(1, "request_reset_orientation")
 						else:
 							piece.rpc_id(1, "request_reset_orientation_on_ground")
+	elif event.is_action_pressed("game_shuffle_stack"):
+		if _selected_pieces.empty():
+			if _piece_mouse_is_over != null and _piece_mouse_is_over is Stack:
+				_piece_mouse_is_over.rpc_id(1, "request_shuffle")
+		else:
+			for piece in _selected_pieces:
+				if piece is Stack:
+					piece.rpc_id(1, "request_shuffle")
 	elif event.is_action_pressed("game_toggle_debug_info"):
 		_debug_info_label.visible = not _debug_info_label.visible
 	elif event.is_action_pressed("game_toggle_ui"):
@@ -808,6 +816,7 @@ func _unhandled_input(event):
 		
 		_on_scroll(delta, ctrl, alt)
 	
+						
 	if event is InputEventKey:
 		var ctrl = event.command if OS.get_name() == "OSX" else event.control
 		if event.pressed and ctrl:
@@ -1449,6 +1458,9 @@ func _set_control_hint_label() -> void:
 	var is_card_in_hand = false
 	if not _selected_pieces.empty():
 		if _is_hovering_selected:
+			text += _set_control_hint_label_row_actions(tr("Shuffle"), 
+				["game_shuffle_stack"])
+			
 			var ctrl_mod = cmd if OS.get_name() == "OSX" else ctrl
 			var alt_mod = ctrl if OS.get_name() == "OSX" else alt
 			
@@ -1468,6 +1480,7 @@ func _set_control_hint_label() -> void:
 		
 		text += _set_control_hint_label_row_actions(tr("Delete selected"),
 			["game_delete_piece"])
+			
 	
 	elif _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
 		if _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ]:
@@ -1483,6 +1496,10 @@ func _set_control_hint_label() -> void:
 			["game_reset_piece"])
 		text += _set_control_hint_label_row_actions(tr("Flip orientation"),
 			["game_flip_piece"])
+	
+	if _piece_mouse_is_over != null and _piece_mouse_is_over is Stack:
+		text += _set_control_hint_label_row_actions(tr("Shuffle"),
+				["game_shuffle_stack"])
 	
 	text += _set_control_hint_label_row_actions(tr("Reset camera"), ["game_reset_camera"])
 	
