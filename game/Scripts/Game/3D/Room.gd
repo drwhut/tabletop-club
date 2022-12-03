@@ -1121,7 +1121,7 @@ master func request_container_release_these(container_name: String,
 
 	for piece_name in hover_name_arr:
 		var piece: Piece = _pieces.get_node(piece_name)
-		var piece_size = piece.get_size()
+		var piece_size = (piece.transform.basis * piece.get_size()).abs()
 		var piece_offset = calc_box_pos
 
 		if not is_init_pos_set:
