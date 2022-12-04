@@ -757,8 +757,7 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("game_flip_piece"):
 		if _selected_pieces.empty():
 			if _piece_mouse_is_over != null:
-				if (_piece_mouse_is_over is Card and (_piece_mouse_is_over.over_hands.empty() or _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ])) \
-					or not _piece_mouse_is_over is Card:
+				if is_piece_allowed_modify(_piece_mouse_is_over):
 					if _piece_mouse_is_over.is_hovering():
 						_piece_mouse_is_over.rpc_id(1, "request_flip_vertically")
 					else:
@@ -766,8 +765,7 @@ func _unhandled_input(event):
 		else:
 			for piece in _selected_pieces:
 				if piece is Piece:
-					if (piece is Card and (piece.over_hands.empty() or piece.over_hands == [ get_tree().get_network_unique_id() ])) \
-					or not piece is Card:
+					if is_piece_allowed_modify(piece):
 						if piece.is_hovering():
 							piece.rpc_id(1, "request_flip_vertically")
 						else:
@@ -794,8 +792,7 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("game_reset_piece"):
 		if _selected_pieces.empty():
 			if _piece_mouse_is_over != null:
-				if (_piece_mouse_is_over is Card and (_piece_mouse_is_over.over_hands.empty() or _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ])) \
-					or not _piece_mouse_is_over is Card:
+				if is_piece_allowed_modify(_piece_mouse_is_over):
 					if _piece_mouse_is_over.is_hovering():
 						_piece_mouse_is_over.rpc_id(1, "request_reset_orientation")
 					else:
@@ -803,8 +800,7 @@ func _unhandled_input(event):
 		else:
 			for piece in _selected_pieces:
 				if piece is Piece:
-					if (piece is Card and (piece.over_hands.empty() or piece.over_hands == [ get_tree().get_network_unique_id() ])) \
-					or not piece is Card:
+					if is_piece_allowed_modify(piece):
 						if piece.is_hovering():
 							piece.rpc_id(1, "request_reset_orientation")
 						else:
@@ -876,6 +872,18 @@ func _unhandled_input(event):
 	
 	# NOTE: Mouse events are caught by the MouseGrab node, see
 	# _on_MouseGrab_gui_input().
+
+# Checks if a piece is allowed to be modified by the current player.
+# E.g. to rotate, flip etc
+# Returns true if piece can be modified by current player
+func is_piece_allowed_modify( piece: Piece ) -> bool:
+	var can_modify = not piece is Card
+	if piece is Card:
+		if piece.over_hands.empty():
+			can_modify = true
+		else:
+			can_modify =  piece.over_hands == [ get_tree().get_network_unique_id() ]
+	return can_modify
 
 # Calculate the hover position of a piece, given a mouse position on the screen.
 # Returns: The hover position of a piece, based on the given mouse position.

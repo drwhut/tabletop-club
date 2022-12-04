@@ -252,7 +252,8 @@ func play_effect(sound: AudioStream) -> void:
 
 # If you are not hovering this piece, request the server to flip the piece vertically.
 master func request_flip_vertically_on_ground() -> void:
-	request_set_transform(Transform(transform.basis.rotated(transform.basis.z, PI), transform.origin))
+	var flipped_rotation = transform.basis.rotated(transform.basis.z, PI)
+	request_set_transform(Transform(flipped_rotation, transform.origin))
 
 # If you are hovering this piece, request the server to flip the piece vertically.
 master func request_flip_vertically() -> void:
