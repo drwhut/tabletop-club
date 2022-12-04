@@ -776,7 +776,7 @@ func _unhandled_input(event):
 				amount *= -1
 		if _selected_pieces.empty():
 			if _piece_mouse_is_over != null:
-				if (_piece_mouse_is_over is Card and _piece_mouse_is_over.over_hands.empty()) or not _piece_mouse_is_over is Card:
+				if is_piece_allowed_modify(_piece_mouse_is_over) and _piece_mouse_is_over.over_hands.empty():
 					if _piece_mouse_is_over.is_hovering():
 						_piece_mouse_is_over.rpc_id(1, "request_rotate_y", amount)
 					else:
@@ -784,7 +784,7 @@ func _unhandled_input(event):
 		else:
 			for piece in _selected_pieces:
 				if piece is Piece:
-					if (piece is Card and piece.over_hands.empty()) or not piece is Card:
+					if is_piece_allowed_modify(piece) and piece.over_hands.empty():
 						if piece.is_hovering():
 							piece.rpc_id(1, "request_rotate_y", amount)
 						else:
