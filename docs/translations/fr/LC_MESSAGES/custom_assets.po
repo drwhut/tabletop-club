@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2022-12-02 21:48+0000\n"
-"Last-Translator: guissou <guimichel@protonmail.com>\n"
+"PO-Revision-Date: 2022-12-06 00:48+0000\n"
+"Last-Translator: Azelven <azelven@pm.me>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/fr/>\n"
 "Language: fr\n"
@@ -50,9 +50,8 @@ msgid "``<DOCUMENTS>/TabletopClub/assets/``"
 msgstr "``<DOCUMENTS>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:15
-#, fuzzy
 msgid "``<DESKTOP>/TabletopClub/assets/``"
-msgstr "``<DESKTOP>/TabletopClub/assets/``"
+msgstr "``<BUREAU>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:19
 msgid "Creating an asset pack"
@@ -137,7 +136,7 @@ msgstr ":ref:`object-type-card`"
 #, fuzzy
 #| msgid "Containers"
 msgid "``containers/``"
-msgstr "Conteneurs"
+msgstr "``Conteneurs/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
