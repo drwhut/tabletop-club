@@ -101,17 +101,20 @@ func set_db_types(types: Dictionary) -> void:
 func setup() -> void:
 	_pack_button.clear()
 	
-	_pack_button.add_item("All")
+	_pack_button.add_item(tr("All"))
+	_pack_button.set_item_metadata(_pack_button.get_item_count() - 1, "ALL_PACKS_DISPLAY")
 	_pack_button.add_separator()
 	
 	var asset_db = AssetDB.get_db()
 	if asset_db.has(DEFAULT_ASSET_PACK):
 		_pack_button.add_item(DEFAULT_ASSET_PACK)
+		_pack_button.set_item_metadata(_pack_button.get_item_count() - 1, DEFAULT_ASSET_PACK)
 		_pack_button.add_separator()
 	
 	for pack in asset_db:
 		if pack != DEFAULT_ASSET_PACK:
 			_pack_button.add_item(pack)
+			_pack_button.set_item_metadata(_pack_button.get_item_count() - 1, pack)
 	
 	if _is_ready:
 		_set_type_options()
@@ -143,16 +146,16 @@ func _display_previews() -> void:
 		return
 	
 	var asset_db = AssetDB.get_db()
-	var selected_pack = get_pack()
+	var is_pack_all = bool(_pack_button.get_item_metadata(_pack_button.selected) == "ALL_PACKS_DISPLAY")
 	var packs = []
-	if selected_pack == "All":
+	if is_pack_all:
 		packs = asset_db.keys()
 	else:
-		packs.append(selected_pack)
+		packs.append(get_pack())
 	
 	var use_generic_grid = false
 	var type_display = get_type()
-	var is_type_all = bool(type_display == "ALL")
+	var is_type_all = bool(type_display == "ALL_TYPES_DISPLAY")
 	for pack in packs:
 		if not asset_db.has(pack):
 			continue
@@ -230,10 +233,11 @@ func _set_type_options() -> void:
 		return
 	
 	var asset_db = AssetDB.get_db()
+	var is_pack_all = bool(_pack_button.get_item_metadata(_pack_button.selected) == "ALL_PACKS_DISPLAY")
 	var pack = get_pack()
 	# The default asset pack has every type, so use the DEFAULT_ASSET_PACK
 	# as reference
-	if pack == "All":
+	if is_pack_all:
 		pack = DEFAULT_ASSET_PACK
 	if not asset_db.has(pack):
 		return
@@ -277,8 +281,8 @@ func _set_type_options() -> void:
 	
 	# An "All" filter makes only sense if we have more than 1 type.
 	if type_texts.size() > 1:
-		_type_button.add_item("All")
-		_type_button.set_item_metadata(_type_button.get_item_count() - 1, "ALL")
+		_type_button.add_item(tr("All"))
+		_type_button.set_item_metadata(_type_button.get_item_count() - 1, "ALL_TYPES_DISPLAY")
 	for i in range(type_texts.size()):
 		_type_button.add_item(type_texts[i])
 		_type_button.set_item_metadata(_type_button.get_item_count() - 1, type_displays[i])
