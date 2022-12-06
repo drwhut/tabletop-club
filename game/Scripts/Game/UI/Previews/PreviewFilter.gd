@@ -34,6 +34,8 @@ onready var _generic_preview_grid = $ScrollContainer/VBoxContainer/GenericPrevie
 export(Dictionary) var db_types = {} setget set_db_types
 
 const DEFAULT_ASSET_PACK = "TabletopClub"
+const ALL_PACKS_METADATA = "@ALL_PACKS_DISPLAY"
+const ALL_TYPES_METADATA = "@ALL_TYPES_DISPLAY"
 const GENERIC_PREVIEW_TYPES = [
 	"games",
 	"music",
@@ -63,6 +65,11 @@ func display_previews() -> void:
 # Returns: The currently selected pack.
 func get_pack() -> String:
 	return _pack_button.get_item_text(_pack_button.selected)
+
+# Get the current metadata of the selected pack
+# Returns: The current metadata of the selected pack
+func get_pack_metadata() -> String:
+	return _pack_button.get_item_metadata(_pack_button.selected)
 
 # Get the currently selected type.
 # Returns: The currently selected type.
@@ -102,7 +109,7 @@ func setup() -> void:
 	_pack_button.clear()
 	
 	_pack_button.add_item(tr("All"))
-	_pack_button.set_item_metadata(_pack_button.get_item_count() - 1, "ALL_PACKS_DISPLAY")
+	_pack_button.set_item_metadata(_pack_button.get_item_count() - 1, ALL_PACKS_METADATA)
 	_pack_button.add_separator()
 	
 	var asset_db = AssetDB.get_db()
@@ -146,7 +153,7 @@ func _display_previews() -> void:
 		return
 	
 	var asset_db = AssetDB.get_db()
-	var is_pack_all = bool(_pack_button.get_item_metadata(_pack_button.selected) == "ALL_PACKS_DISPLAY")
+	var is_pack_all = bool(get_pack_metadata() == ALL_PACKS_METADATA)
 	var packs = []
 	if is_pack_all:
 		packs = asset_db.keys()
@@ -155,7 +162,7 @@ func _display_previews() -> void:
 	
 	var use_generic_grid = false
 	var type_display = get_type()
-	var is_type_all = bool(type_display == "ALL_TYPES_DISPLAY")
+	var is_type_all = bool(type_display == ALL_TYPES_METADATA)
 	for pack in packs:
 		if not asset_db.has(pack):
 			continue
@@ -233,7 +240,7 @@ func _set_type_options() -> void:
 		return
 	
 	var asset_db = AssetDB.get_db()
-	var is_pack_all = bool(_pack_button.get_item_metadata(_pack_button.selected) == "ALL_PACKS_DISPLAY")
+	var is_pack_all = bool(get_pack_metadata() == ALL_PACKS_METADATA)
 	var pack = get_pack()
 	# The default asset pack has every type, so use the DEFAULT_ASSET_PACK
 	# as reference
@@ -282,7 +289,7 @@ func _set_type_options() -> void:
 	# An "All" filter makes only sense if we have more than 1 type.
 	if type_texts.size() > 1:
 		_type_button.add_item(tr("All"))
-		_type_button.set_item_metadata(_type_button.get_item_count() - 1, "ALL_TYPES_DISPLAY")
+		_type_button.set_item_metadata(_type_button.get_item_count() - 1, ALL_TYPES_METADATA)
 	for i in range(type_texts.size()):
 		_type_button.add_item(type_texts[i])
 		_type_button.set_item_metadata(_type_button.get_item_count() - 1, type_displays[i])
