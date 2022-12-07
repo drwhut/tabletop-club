@@ -34,6 +34,8 @@ onready var _generic_preview_grid = $ScrollContainer/VBoxContainer/GenericPrevie
 export(Dictionary) var db_types = {} setget set_db_types
 
 const DEFAULT_ASSET_PACK = "TabletopClub"
+const ALL_PACKS_METADATA = "@ALL_PACKS_DISPLAY"
+const ALL_TYPES_METADATA = "@ALL_TYPES_DISPLAY"
 const GENERIC_PREVIEW_TYPES = [
 	"games",
 	"music",
@@ -63,6 +65,11 @@ func display_previews() -> void:
 # Returns: The currently selected pack.
 func get_pack() -> String:
 	return _pack_button.get_item_text(_pack_button.selected)
+
+# Get the current metadata of the selected pack
+# Returns: The current metadata of the selected pack
+func get_pack_metadata() -> String:
+	return _pack_button.get_item_metadata(_pack_button.selected)
 
 # Get the currently selected type.
 # Returns: The currently selected type.
@@ -101,14 +108,20 @@ func set_db_types(types: Dictionary) -> void:
 func setup() -> void:
 	_pack_button.clear()
 	
+	_pack_button.add_item(tr("All"))
+	_pack_button.set_item_metadata(_pack_button.get_item_count() - 1, ALL_PACKS_METADATA)
+	_pack_button.add_separator()
+	
 	var asset_db = AssetDB.get_db()
 	if asset_db.has(DEFAULT_ASSET_PACK):
 		_pack_button.add_item(DEFAULT_ASSET_PACK)
+		_pack_button.set_item_metadata(_pack_button.get_item_count() - 1, DEFAULT_ASSET_PACK)
 		_pack_button.add_separator()
 	
 	for pack in asset_db:
 		if pack != DEFAULT_ASSET_PACK:
 			_pack_button.add_item(pack)
+			_pack_button.set_item_metadata(_pack_button.get_item_count() - 1, pack)
 	
 	if _is_ready:
 		_set_type_options()
@@ -135,34 +148,52 @@ func _check_pack_type_exists(pack: String, type: String) -> bool:
 func _display_previews() -> void:
 	_preview_entries.clear()
 	_preview_entries_filtered.clear()
-	
+
 	if _pack_button.get_item_count() == 0:
 		return
 	
 	var asset_db = AssetDB.get_db()
-	var pack = _pack_button.get_item_text(_pack_button.selected)
-	if not asset_db.has(pack):
-		return
-	
-	var type_display = _type_button.get_item_metadata(_type_button.selected)
-	if not db_types.has(type_display):
-		return
-	
-	var types = db_types[type_display]
-	if types is String:
-		types = [types]
-	if types is Array:
-		for type in types:
-			if asset_db[pack].has(type):
-				for entry in asset_db[pack][type]:
-					_preview_entries.append(entry)
+	var is_pack_all = bool(get_pack_metadata() == ALL_PACKS_METADATA)
+	var packs = []
+	if is_pack_all:
+		packs = asset_db.keys()
+	else:
+		packs.append(get_pack())
 	
 	var use_generic_grid = false
-	for type in types:
-		for start in GENERIC_PREVIEW_TYPES:
-			if type.begins_with(start):
-				use_generic_grid = true
-				break
+	var type_display = get_type()
+	var is_type_all = bool(type_display == ALL_TYPES_METADATA)
+	for pack in packs:
+		if not asset_db.has(pack):
+			continue
+		
+		if not is_type_all and not db_types.has(type_display):
+			continue
+		
+		var types = []
+		if is_type_all:
+			for type_key in db_types.keys():
+				var type = db_types[type_key]
+				if type is Array:
+					types += type
+				else:
+					types.append(type)
+		else:
+			types = db_types[type_display]
+		if types is String:
+			types = [types]
+		if types is Array:
+			for type in types:
+				if asset_db[pack].has(type):
+					for entry in asset_db[pack][type]:
+						_preview_entries.append(entry)
+	
+		if not use_generic_grid:
+			for type in types:
+				for start in GENERIC_PREVIEW_TYPES:
+					if type.begins_with(start):
+						use_generic_grid = true
+						break
 	_object_preview_grid.visible = not use_generic_grid
 	_generic_preview_grid.visible = use_generic_grid
 	
@@ -211,9 +242,17 @@ func _set_type_options() -> void:
 		return
 	
 	var asset_db = AssetDB.get_db()
-	var pack = _pack_button.get_item_text(_pack_button.selected)
+	var is_pack_all = bool(get_pack_metadata() == ALL_PACKS_METADATA)
+	var pack = get_pack()
+	# The default asset pack has every type, so use the DEFAULT_ASSET_PACK
+	# as reference
+	if is_pack_all:
+		pack = DEFAULT_ASSET_PACK
 	if not asset_db.has(pack):
 		return
+	
+	var type_texts = []
+	var type_displays = []
 	
 	for type_display in db_types:
 		# Only add the type to the option button if there are assets of that
@@ -246,8 +285,16 @@ func _set_type_options() -> void:
 			type_text = type_text.replace("TIMERS", tr("Timers"))
 			type_text = type_text.replace("TOKENS", tr("Tokens"))
 			
-			_type_button.add_item(type_text)
-			_type_button.set_item_metadata(_type_button.get_item_count() - 1, type_display)
+			type_texts.append(type_text)
+			type_displays.append(type_display)
+	
+	# An "All" filter makes only sense if we have more than 1 type.
+	if type_texts.size() > 1:
+		_type_button.add_item(tr("All"))
+		_type_button.set_item_metadata(_type_button.get_item_count() - 1, ALL_TYPES_METADATA)
+	for i in range(type_texts.size()):
+		_type_button.add_item(type_texts[i])
+		_type_button.set_item_metadata(_type_button.get_item_count() - 1, type_displays[i])
 	
 	# Set the selection to the same type, if the type exists in the current pack
 	for i in range(_type_button.get_item_count()):
