@@ -180,6 +180,7 @@ func _set_rotation_amount() -> void:
 	if _rotation_option.selected >= 0:
 		var deg_id = _rotation_option.get_item_id(_rotation_option.selected)
 		var deg_text = _rotation_option.get_item_text(deg_id)
+		deg_text = deg_text.replace("°", "")
 		var rad = deg2rad(float(deg_text))
 		emit_signal("rotation_amount_updated", rad)
 
