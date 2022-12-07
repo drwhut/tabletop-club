@@ -381,11 +381,11 @@ func set_current_scale(new_scale: Vector3) -> void:
 		for collision_shape in collision_shapes:
 			var this_scale = collision_shape.scale
 			# Avoid divide-by-zero errors.
-			if this_scale.x == 0.0:
+			if is_zero_approx(this_scale.x):
 				this_scale.x = 1.0
-			if this_scale.y == 0.0:
+			if is_zero_approx(this_scale.y):
 				this_scale.y = 1.0
-			if this_scale.z == 0.0:
+			if is_zero_approx(this_scale.z):
 				this_scale.z = 1.0
 			original_scales.append(collision_shape.scale)
 		_original_shape_scales = original_scales
@@ -393,17 +393,18 @@ func set_current_scale(new_scale: Vector3) -> void:
 	
 	var modified_scale = new_scale
 	var current_scale = get_current_scale()
-	if current_scale.x != 0.0:
+	if not is_zero_approx(current_scale.x):
 		modified_scale.x /= current_scale.x
-	if current_scale.y != 0.0:
+	if not is_zero_approx(current_scale.y):
 		modified_scale.y /= current_scale.y
-	if current_scale.z != 0.0:
+	if not is_zero_approx(current_scale.z):
 		modified_scale.z /= current_scale.z
 	
 	for i in range(collision_shapes.size()):
 		# Like in get_current_scale, we want to modify the scale locally.
 		var old_basis = collision_shapes[i].transform.basis
-		collision_shapes[i].transform.basis = old_basis.scaled(modified_scale)
+		if not (old_basis.get_scale().is_equal_approx(modified_scale)):
+			collision_shapes[i].transform.basis = old_basis.scaled(modified_scale)
 	
 	emit_signal("scale_changed")
 
