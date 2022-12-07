@@ -1321,6 +1321,11 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 	if n < 1:
 		return ""
 	elif n < stack.get_piece_count():
+		# Since there is a lot of piece manipulation in this function, disable
+		# creating undo states mid-way through.
+		# TODO: Add an undo state here as part of #157.
+		_srv_events_add_states = false
+
 		var unit_height = stack.get_unit_height()
 		var total_height = stack.get_total_height()
 		var removed_height = unit_height * n
@@ -1378,6 +1383,8 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 			rpc("add_piece", last_name,
 					Transform(new_basis, new_stack_translation),
 					piece_entry["entry_path"])
+
+		_srv_events_add_states = true
 	else:
 		new_piece = stack
 
