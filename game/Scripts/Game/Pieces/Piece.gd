@@ -513,6 +513,11 @@ remotesync func stop_hovering() -> void:
 	collision_layer = 1
 	sleeping = false
 	
+	# If the piece is still in the process to reach its hover position, the
+	# velocity in Y would let it fly away. Tossing pieces are not using the Y
+	# axis either, so we reset it to 0
+	linear_velocity.y = 0
+	
 	# Only the server gets to turn off the custom integrator, since it is the
 	# authority for the physics simulation.
 	if get_tree().is_network_server():

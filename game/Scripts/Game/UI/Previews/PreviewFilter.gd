@@ -234,6 +234,8 @@ func _filter_previews(from_filtered: bool) -> void:
 
 # Set the items in the type option button.
 func _set_type_options() -> void:
+	# Remember current selection
+	var selected_type = _type_button.get_item_text(_type_button.selected)
 	_type_button.clear()
 	
 	if _pack_button.get_item_count() == 0:
@@ -293,6 +295,12 @@ func _set_type_options() -> void:
 	for i in range(type_texts.size()):
 		_type_button.add_item(type_texts[i])
 		_type_button.set_item_metadata(_type_button.get_item_count() - 1, type_displays[i])
+	
+	# Set the selection to the same type, if the type exists in the current pack
+	for i in range(_type_button.get_item_count()):
+		if _type_button.get_item_text(i) == selected_type:
+			_type_button.select(i)
+			break
 
 # Update the preview GUI.
 func _update_preview_gui() -> void:
@@ -343,6 +351,8 @@ func _on_ObjectPreviewGrid_requesting_objects(start: int, length: int):
 	_object_preview_grid.provide_objects(previews, after)
 
 func _on_PackButton_item_selected(_index: int):
+	# Pack changed, reset types to only show available types and update displayed previews
+	_set_type_options()
 	_display_previews()
 
 func _on_SearchEdit_text_changed(new_text: String):
