@@ -235,7 +235,9 @@ func _filter_previews(from_filtered: bool) -> void:
 # Set the items in the type option button.
 func _set_type_options() -> void:
 	# Remember current selection
-	var selected_type = _type_button.get_item_text(_type_button.selected)
+	var selected_type: String = ""
+	if _type_button.selected >= 0 and _type_button.selected < _type_button.get_item_count():
+		selected_type = _type_button.get_item_text(_type_button.selected)
 	_type_button.clear()
 	
 	if _pack_button.get_item_count() == 0:
