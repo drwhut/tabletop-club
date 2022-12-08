@@ -776,7 +776,7 @@ func _unhandled_input(event):
 				amount *= -1
 		if _selected_pieces.empty():
 			if _piece_mouse_is_over != null:
-				if is_piece_allowed_modify(_piece_mouse_is_over) and _piece_mouse_is_over.over_hands.empty():
+				if is_piece_allowed_modify(_piece_mouse_is_over, true):
 					if _piece_mouse_is_over.is_hovering():
 						_piece_mouse_is_over.rpc_id(1, "request_rotate_y", amount)
 					else:
@@ -784,7 +784,7 @@ func _unhandled_input(event):
 		else:
 			for piece in _selected_pieces:
 				if piece is Piece:
-					if is_piece_allowed_modify(piece) and piece.over_hands.empty():
+					if is_piece_allowed_modify(piece, true):
 						if piece.is_hovering():
 							piece.rpc_id(1, "request_rotate_y", amount)
 						else:
@@ -875,13 +875,15 @@ func _unhandled_input(event):
 
 # Checks if a piece is allowed to be modified by the current player.
 # E.g. to rotate, flip etc
+# piece: The piece to check
+# not_in_hand: If the piece is only allowed to be modified if not in hand
 # Returns true if piece can be modified by current player
-func is_piece_allowed_modify( piece: Piece ) -> bool:
+func is_piece_allowed_modify( piece: Piece, not_in_hand: bool = false ) -> bool:
 	var can_modify = not bool(piece is Card)
 	if piece is Card:
 		if piece.over_hands.empty():
 			can_modify = true
-		else:
+		elif not not_in_hand:
 			can_modify = bool(piece.over_hands == [ get_tree().get_network_unique_id() ])
 	return can_modify
 
