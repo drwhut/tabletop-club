@@ -44,11 +44,12 @@ onready var _world_environment = $WorldEnvironment
 
 const HIDDEN_AREA_MIN_SIZE = Vector2(0.5, 0.5)
 const LIMBO_DURATION_MS = 3000
+
 const UNDO_STACK_SIZE_LIMIT = 10
-const UNDO_STATE_EVENT_TIMERS = {
-	"add_piece": 10,
+const UNDO_STATE_EVENT_TIMEOUTS_MS = {
+	"add_piece": 10000,
 	"flip_table": 0,
-	"remove_piece": 5
+	"remove_pieces": 5000,
 }
 
 var _srv_allow_card_stacking = true
@@ -57,13 +58,10 @@ var _srv_next_piece_name = 0
 var _srv_retrieve_pieces_from_hell = true
 
 var _srv_undo_stack: Array = []
-var _srv_events_add_states: bool = true #this is so events that normally add states like add_piece don't add a state when they are called as a part of set_state
-
-var _srv_undo_state_events: Dictionary = {
-	"add_piece": 0,
-	"flip_table": 0,
-	"remove_piece": 0
-} #all timers start at 0 because the first time the event is called it will save the state
+# This allows for functions to stop the creation of undo states when calling
+# e.g. add_piece.
+var _srv_undo_disable_state_creation: int = 0
+var _srv_undo_state_last_call_ms: Dictionary = {}
 
 # If clients start hovering multiple pieces at a time, then keep track here of
 # which pieces they hover, so that the client doesn't have to send multiple
@@ -101,13 +99,10 @@ remotesync func add_piece(name: String, transform: Transform,
 	if piece_entry.empty():
 		push_error("Cannot add piece, entry not found: %s" % entry_path)
 		return
-
-	if get_tree().is_network_server() and _srv_events_add_states:
-		#if not waiting for a timer or disabled because set_state wil be called
-		if _srv_undo_state_events["add_piece"] <= 0:
-			push_undo_state()	#make host add an undo state
-		_srv_undo_state_events["add_piece"] = UNDO_STATE_EVENT_TIMERS["add_piece"]	#if you try to add a piece before timer is up, timer resets
-
+	
+	if get_tree().is_network_server():
+		push_undo_state("add_piece")
+	
 	var piece: Piece = null
 	if PieceCache.should_cache(piece_entry):
 		var piece_cache = PieceCache.new(entry_path, false)
@@ -185,9 +180,9 @@ remotesync func add_piece_to_container(container_name: String, piece_name: Strin
 		_pieces.add_child(limbo_piece)
 
 		# Do not push an undo state for this... thing.
-		_srv_events_add_states = false
+		_srv_undo_state_creation_disable()
 		remove_pieces([piece_name])
-		_srv_events_add_states = true
+		_srv_undo_state_creation_enable()
 
 # Called by the server to add a piece to a stack.
 # piece_name: The name of the piece.
@@ -231,10 +226,10 @@ remotesync func add_piece_to_stack(piece_name: String, stack_name: String,
 
 	# Don't add an undo state, since it would be saved just before the piece
 	# gets added to the stack.
-	_srv_events_add_states = false
+	_srv_undo_state_creation_disable()
 	remove_pieces([piece_name])
 	stack.add_piece(piece.piece_entry, piece.transform, on, flip)
-	_srv_events_add_states = true
+	_srv_undo_state_creation_enable()
 
 # Called by the server to add a stack to the room with 2 initial pieces.
 # name: The name of the new stack.
@@ -392,9 +387,9 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String,
 
 	# Don't push an undo state here, since it would be saved just before the
 	# first stack gets removed.
-	_srv_events_add_states = false
+	_srv_undo_state_creation_disable()
 	remove_pieces([stack1_name])
-	_srv_events_add_states = true
+	_srv_undo_state_creation_enable()
 
 # Apply options from the options menu.
 # config: The options to apply.
@@ -487,11 +482,8 @@ remotesync func flip_table(camera_basis: Basis) -> void:
 	if _table_body == null:
 		return
 
-	if get_tree().is_network_server() and _srv_events_add_states:
-		#if not waiting for a timer or disabled because set_state wil be called
-		if _srv_undo_state_events["flip_table"] <= 0:
-			push_undo_state()	#make host add an undo state
-		_srv_undo_state_events["flip_table"] = UNDO_STATE_EVENT_TIMERS["flip_table"]	#if they try to save a state with this event again before the timer has run out, it will reset the timer
+	if get_tree().is_network_server():
+		push_undo_state("flip_table")
 
 	# Unlock all pieces after we've saved the state so that the table doesn't
 	# get blocked.
@@ -698,28 +690,46 @@ remotesync func place_hidden_area(area_name: String, player_id: int,
 	_hidden_areas.add_child(hidden_area)
 	hidden_area.update_player_color()
 
-#takes an undo state off of the undo stack if possible
-#Returns: nothing(void)
+# Takes the last undo state from the stack and sets it for all players.
 master func pop_undo_state() -> void:
-	#if there is an undo state, pop it off and restore the table with set_state()
-	if _srv_undo_stack.size() > 0:
-		var state_to_restore = _srv_undo_stack.pop_back()
-		_srv_events_add_states = false	#we don't want add_piece adding states when it's called as a part of set state
-		rpc("set_state_compressed", compress_state(state_to_restore),
-				srv_get_next_piece_name())	#set the state for everyone
-		_srv_events_add_states = true
+	if _srv_undo_stack.empty():
+		push_error("Cannot pop undo stack, is empty!")
+		return
+	
+	var state_to_restore = _srv_undo_stack.pop_back()
+	_srv_undo_state_creation_disable()
+	rpc("set_state_compressed", compress_state(state_to_restore),
+			srv_get_next_piece_name())
+	_srv_undo_state_creation_enable()
 	
 	# Let all players know if the undo stack is now empty.
 	if _srv_undo_stack.empty():
 		rpc("_on_undo_stack_empty")
 
-#adds an undo state to the undo stack if possible
-#Returns: nothing(void)
-func push_undo_state() -> void:
-	if _srv_undo_stack.size() >= UNDO_STACK_SIZE_LIMIT:
-		_srv_undo_stack.pop_front()
+# Pushes an undo state to the top of the undo stack if undo state creation has
+# been enabled.
+# func_name: The name of the function that was just called. This is used to
+# track timeouts for certain functions. The function name needs to be in the
+# UNDO_STATE_EVENT_TIMEOUTS_MS dictionary to be valid.
+func push_undo_state(func_name: String) -> void:
+	if _srv_undo_disable_state_creation > 0:
+		return
 	
-	_srv_undo_stack.push_back(get_state(false,false))
+	if not UNDO_STATE_EVENT_TIMEOUTS_MS.has(func_name):
+		push_error("Function '%s' has no pre-set timeout!" % func_name)
+		return
+	
+	var current_time_ms = OS.get_ticks_msec()
+	if _srv_undo_state_last_call_ms.has(func_name):
+		var last_time_ms: int = _srv_undo_state_last_call_ms[func_name]
+		if current_time_ms - last_time_ms < UNDO_STATE_EVENT_TIMEOUTS_MS[func_name]:
+			return
+	
+	_srv_undo_state_last_call_ms[func_name] = current_time_ms
+	
+	while _srv_undo_stack.size() >= UNDO_STACK_SIZE_LIMIT:
+		_srv_undo_stack.pop_front()
+	_srv_undo_stack.push_back(get_state(false, false))
 	
 	# Let all players know that the undo stack has been pushed to.
 	rpc("_on_undo_stack_pushed")
@@ -812,11 +822,7 @@ remotesync func remove_pieces(piece_names: Array) -> void:
 			hovering.erase(piece_name)
 		
 		if get_tree().is_network_server():
-			if _srv_events_add_states:
-				# Does the timer allow us to add a new state?
-				if _srv_undo_state_events["remove_piece"] <= 0:
-					push_undo_state()
-				_srv_undo_state_events["remove_piece"] = UNDO_STATE_EVENT_TIMERS["remove_piece"]
+			push_undo_state("remove_pieces")
 		
 		if Lobby.get_player_count() <= 1:
 			_pieces.remove_child(piece)
@@ -1324,7 +1330,7 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 		# Since there is a lot of piece manipulation in this function, disable
 		# creating undo states mid-way through.
 		# TODO: Add an undo state here as part of #157.
-		_srv_events_add_states = false
+		_srv_undo_state_creation_disable()
 
 		var unit_height = stack.get_unit_height()
 		var total_height = stack.get_total_height()
@@ -1384,7 +1390,7 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 					Transform(new_basis, new_stack_translation),
 					piece_entry["entry_path"])
 
-		_srv_events_add_states = true
+		_srv_undo_state_creation_enable()
 	else:
 		new_piece = stack
 
@@ -2009,16 +2015,6 @@ func _ready():
 	_fast_circle.set_process(false)
 
 func _physics_process(_delta):
-	var timers_to_manage = _srv_undo_state_events.keys()
-
-	for key in timers_to_manage:
-		#if the timer is = 0, that means it's event is ready to add a state
-		if _srv_undo_state_events[key] <= 0:
-			pass
-		#if a timer is != 0, that means it is waiting until it is ready to add a state again
-		else:
-			_srv_undo_state_events[key] -= _delta	#this is so that the timer is accurate even if the physics frames last longer than expected
-
 	if not get_tree().has_network_peer():
 		return
 
@@ -2447,6 +2443,19 @@ func _set_hidden_area_transform(hidden_area: HiddenArea, point1: Vector2, point2
 	# We're assuming here that the hidden area is never rotated.
 	hidden_area.transform.basis.x.x = point_dif.x / 2
 	hidden_area.transform.basis.z.z = point_dif.y / 2
+
+# Disable the creation of undo states.
+# NOTE: Using this function multiple times in the call stack will increment a
+# counter, and each invocation needs to be re-enabled for undo states to be
+# created again.
+func _srv_undo_state_creation_disable() -> void:
+	_srv_undo_disable_state_creation += 1
+
+# Re-enable the creation of undo states.
+func _srv_undo_state_creation_enable() -> void:
+	_srv_undo_disable_state_creation -= 1
+	if _srv_undo_disable_state_creation < 0:
+		_srv_undo_disable_state_creation = 0
 
 # Update the rate at which state updates are sent to the client, based on the
 # number of active pieces in the room.
