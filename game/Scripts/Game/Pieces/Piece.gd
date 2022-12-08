@@ -252,7 +252,9 @@ func play_effect(sound: AudioStream) -> void:
 
 # If you are not hovering this piece, ask the server to flip the piece vertically.
 master func request_flip_vertically_on_ground() -> void:
-	var flipped_rotation = transform.basis.rotated(transform.basis.z, PI)
+	var scaled_basis = Basis.IDENTITY.scaled(get_current_scale())
+	var current_basis = transform.basis * scaled_basis
+	var flipped_rotation = current_basis.rotated(transform.basis.z, PI)
 	request_set_transform(Transform(flipped_rotation, transform.origin))
 
 # If you are hovering this piece, ask the server to flip the piece vertically.
@@ -273,7 +275,8 @@ master func request_lock() -> void:
 # If you are not hovering the piece, ask the server to reset the 
 # orientation of the piece.
 master func request_reset_orientation_on_ground() -> void:
-	request_set_transform(Transform(Basis.IDENTITY, transform.origin))
+	var reset_rotation = Basis.IDENTITY.scaled(get_current_scale())
+	request_set_transform(Transform(reset_rotation, transform.origin))
 
 # If you are hovering the piece, ask the server to reset the orientation of the
 # piece.
@@ -403,7 +406,7 @@ func set_current_scale(new_scale: Vector3) -> void:
 	for i in range(collision_shapes.size()):
 		# Like in get_current_scale, we want to modify the scale locally.
 		var old_basis = collision_shapes[i].transform.basis
-		if not (old_basis.get_scale().is_equal_approx(modified_scale)):
+		if not (old_basis.get_scale().is_equal_approx(new_scale)):
 			collision_shapes[i].transform.basis = old_basis.scaled(modified_scale)
 	
 	emit_signal("scale_changed")
