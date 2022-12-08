@@ -877,12 +877,12 @@ func _unhandled_input(event):
 # E.g. to rotate, flip etc
 # Returns true if piece can be modified by current player
 func is_piece_allowed_modify( piece: Piece ) -> bool:
-	var can_modify = not piece is Card
+	var can_modify = not bool(piece is Card)
 	if piece is Card:
 		if piece.over_hands.empty():
 			can_modify = true
 		else:
-			can_modify =  piece.over_hands == [ get_tree().get_network_unique_id() ]
+			can_modify = bool(piece.over_hands == [ get_tree().get_network_unique_id() ])
 	return can_modify
 
 # Calculate the hover position of a piece, given a mouse position on the screen.
