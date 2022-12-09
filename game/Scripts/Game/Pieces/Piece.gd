@@ -283,7 +283,8 @@ master func request_reset_orientation_on_ground() -> void:
 master func request_reset_orientation() -> void:
 	request_set_hover_basis(Basis.IDENTITY)
 
-# If you are hovering the piece, rotate it on the y-axis.
+# If you are hovering the piece, request the server to rotate it
+# around the y-axis by the given rotation.
 # rot: The amount to rotate it by in radians.
 master func request_rotate_y(rot: float) -> void:
 	if rot == 0.0:
@@ -302,6 +303,15 @@ master func request_rotate_y(rot: float) -> void:
 	target_y_euler.y = wrapf(target_y_scale * abs(rot), -PI, PI)
 	
 	request_set_hover_basis(Basis(target_y_euler))
+
+# If you are not hovering the piece, request the server to
+# rotate it around the y-axis by the given rotation.
+# rot: The amount to rotate it by in radians.
+master func request_rotate_y_on_ground(rot: float) -> void:
+	var scaled_basis = Basis.IDENTITY.scaled(get_current_scale())
+	var current_basis = transform.basis * scaled_basis
+	var new_rotation = current_basis.rotated(transform.basis.y, rot)
+	request_set_transform(Transform(new_rotation, transform.origin))
 
 # Request the server to set the material's albedo color.
 # color: The new albedo color.

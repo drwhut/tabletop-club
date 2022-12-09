@@ -770,6 +770,25 @@ func _unhandled_input(event):
 							piece.rpc_id(1, "request_flip_vertically")
 						else:
 							piece.rpc_id(1, "request_flip_vertically_on_ground")
+	elif event.is_action_pressed("game_rotate_piece"):
+		var amount = _piece_rotation_amount
+		if piece_rotate_invert:
+				amount *= -1
+		if _selected_pieces.empty():
+			if _piece_mouse_is_over != null:
+				if is_piece_allowed_modify(_piece_mouse_is_over, false):
+					if _piece_mouse_is_over.is_hovering():
+						_piece_mouse_is_over.rpc_id(1, "request_rotate_y", amount)
+					else:
+						_piece_mouse_is_over.rpc_id(1, "request_rotate_y_on_ground", amount)
+		else:
+			for piece in _selected_pieces:
+				if piece is Piece:
+					if is_piece_allowed_modify(piece, false):
+						if piece.is_hovering():
+							piece.rpc_id(1, "request_rotate_y", amount)
+						else:
+							piece.rpc_id(1, "request_rotate_y_on_ground", amount)
 	elif event.is_action_pressed("game_reset_piece"):
 		if _selected_pieces.empty():
 			if _piece_mouse_is_over != null:
@@ -856,14 +875,16 @@ func _unhandled_input(event):
 
 # Checks if a piece is allowed to be modified by the current player.
 # E.g. to rotate, flip etc
+# piece: The piece to check
+# in_hand: If the piece is allowed to be modified if in hand
 # Returns true if piece can be modified by current player
-func is_piece_allowed_modify( piece: Piece ) -> bool:
-	var can_modify = not piece is Card
+func is_piece_allowed_modify( piece: Piece, in_hand: bool = true ) -> bool:
+	var can_modify = not bool(piece is Card)
 	if piece is Card:
 		if piece.over_hands.empty():
 			can_modify = true
-		else:
-			can_modify =  piece.over_hands == [ get_tree().get_network_unique_id() ]
+		elif in_hand:
+			can_modify = bool(piece.over_hands == [ get_tree().get_network_unique_id() ])
 	return can_modify
 
 # Calculate the hover position of a piece, given a mouse position on the screen.
@@ -1488,7 +1509,20 @@ func _set_control_hint_label() -> void:
 		
 		text += _set_control_hint_label_row_actions(tr("Delete selected"),
 			["game_delete_piece"])
-			
+		
+		# Check if all pieces are in hand or if one piece is not in hand
+		for piece in _selected_pieces:
+			if piece is Card:
+				if piece.over_hands == [ get_tree().get_network_unique_id() ]:
+					is_card_in_hand = true
+				else:
+					is_card_in_hand = false
+					break
+		if is_card_in_hand:
+			text += _set_control_hint_label_row_actions(tr("Reset orientation"),
+				["game_reset_piece"])
+			text += _set_control_hint_label_row_actions(tr("Flip orientation"),
+				["game_flip_piece"])
 	
 	elif _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
 		if _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ]:
@@ -1500,6 +1534,8 @@ func _set_control_hint_label() -> void:
 				is_card_in_hand = true
 	
 	if (not _selected_pieces.empty() or _piece_mouse_is_over != null) and not is_card_in_hand:
+		text += _set_control_hint_label_row_actions(tr("Rotate Piece"),
+			["game_rotate_piece"])
 		text += _set_control_hint_label_row_actions(tr("Reset orientation"),
 			["game_reset_piece"])
 		text += _set_control_hint_label_row_actions(tr("Flip orientation"),
