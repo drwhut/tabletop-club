@@ -1509,7 +1509,20 @@ func _set_control_hint_label() -> void:
 		
 		text += _set_control_hint_label_row_actions(tr("Delete selected"),
 			["game_delete_piece"])
-			
+		
+		# Check if all pieces are in hand or if one piece is not in hand
+		for piece in _selected_pieces:
+			if piece is Card:
+				if piece.over_hands == [ get_tree().get_network_unique_id() ]:
+					is_card_in_hand = true
+				else:
+					is_card_in_hand = false
+					break
+		if is_card_in_hand:
+			text += _set_control_hint_label_row_actions(tr("Reset orientation"),
+				["game_reset_piece"])
+			text += _set_control_hint_label_row_actions(tr("Flip orientation"),
+				["game_flip_piece"])
 	
 	elif _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
 		if _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ]:
