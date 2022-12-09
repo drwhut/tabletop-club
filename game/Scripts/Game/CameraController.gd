@@ -73,7 +73,7 @@ signal container_release_random_requested(container, n)
 signal container_release_these_requested(container, names)
 signal dealing_cards(stack, n)
 signal erasing(pos1, pos2, size)
-signal hover_piece_requested(piece)
+signal hover_piece_requested(piece, offset)
 signal hover_pieces_requested(pieces, offsets)
 signal painting(pos1, pos2, color, size)
 signal placing_hidden_area(point1, point2)
@@ -190,7 +190,7 @@ var _hidden_area_placing_point2 = false
 var _hidden_area_point1 = Vector3()
 var _hidden_area_point2 = Vector3()
 var _hover_y_offset = 0.0
-var _hover_y_pos = 10.0
+var _hover_y_pos = 7.0
 var _initial_transform = Transform.IDENTITY
 var _initial_zoom = 0.0
 var _is_box_selecting = false
@@ -1824,6 +1824,11 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 					origin_piece = _piece_mouse_is_over
 			var origin = origin_piece.transform.origin
 			
+			# Keep the X and the Z positions of the origin piece the same to
+			# start off with.
+			var origin_offset = origin - get_hover_position()
+			origin_offset.y = 0.0
+			
 			if selected.size() == 1:
 				var piece = selected[0]
 				
@@ -1831,15 +1836,15 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 					emit_signal("pop_stack_requested", piece, 1)
 				elif piece is PieceContainer and fast:
 					if piece.get_piece_count() == 0:
-						emit_signal("hover_piece_requested", piece)
+						emit_signal("hover_piece_requested", piece, origin_offset)
 					else:
 						emit_signal("container_release_random_requested", piece, 1)
 				else:
-					emit_signal("hover_piece_requested", piece)
+					emit_signal("hover_piece_requested", piece, origin_offset)
 			else:
 				var offsets = []
 				for piece in selected:
-					var offset = piece.transform.origin - origin
+					var offset = piece.transform.origin - origin + origin_offset
 					offsets.append(offset)
 				
 				emit_signal("hover_pieces_requested", selected, offsets)

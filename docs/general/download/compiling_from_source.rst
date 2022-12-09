@@ -314,11 +314,12 @@ Building an export template
 """""""""""""""""""""""""""
 
 If you want to compile an export template to export a release build of the game
-from the editor, you can use the following command:
+from the editor, you can use the following commands:
 
 .. code-block:: bash
 
    scons -j8 platform=x11 target=release tools=no production=yes
+   strip bin/godot.x11.opt.64
 
 
 Downloading Tabletop Club
@@ -342,9 +343,10 @@ Since the multiplayer for Tabletop Club uses WebRTC, you'll need to download
 the WebRTC plugin for Godot. You can follow these instructions to setup
 the plugin:
 
-1. Download the latest release of the plugin from
+1. Download the latest release (not a pre-release!) of the plugin from
    `the repository <https://github.com/godotengine/webrtc-native/releases>`_.
-   Make sure to download the ``release`` build.
+   Make sure to download the ``webrtc-native-release`` file rather than the
+   ``webrtc-native-debug`` file.
 
 2. Open the compressed file, and place the ``webrtc/`` folder into
    ``tabletop-club/game/``. Afterwards, there should be a file at

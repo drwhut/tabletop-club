@@ -120,7 +120,7 @@ func remove_piece(piece_name: String) -> Piece:
 		# shapes are.
 		var distance = 0.5 * (get_size().y + piece.get_size().y) + 1.0
 		var new_origin = transform.origin + transform.basis.y * distance
-		piece.transform = Transform(transform.basis, new_origin)
+		piece.transform.origin = new_origin
 		piece.mode = MODE_RIGID
 		
 		return piece
