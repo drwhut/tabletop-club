@@ -756,24 +756,36 @@ func _unhandled_input(event):
 			_lock_selected_pieces()
 	elif event.is_action_pressed("game_flip_piece"):
 		if _selected_pieces.empty():
-			if _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
-				if _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ]:
-					if not _piece_mouse_is_over.is_collisions_on():
+			if _piece_mouse_is_over != null:
+				if is_piece_allowed_modify(_piece_mouse_is_over):
+					if _piece_mouse_is_over.is_hovering():
 						_piece_mouse_is_over.rpc_id(1, "request_flip_vertically")
+					else:
+						_piece_mouse_is_over.rpc_id(1, "request_flip_vertically_on_ground")
 		else:
 			for piece in _selected_pieces:
 				if piece is Piece:
-					piece.rpc_id(1, "request_flip_vertically")
+					if is_piece_allowed_modify(piece):
+						if piece.is_hovering():
+							piece.rpc_id(1, "request_flip_vertically")
+						else:
+							piece.rpc_id(1, "request_flip_vertically_on_ground")
 	elif event.is_action_pressed("game_reset_piece"):
 		if _selected_pieces.empty():
-			if _piece_mouse_is_over != null and _piece_mouse_is_over is Card:
-				if _piece_mouse_is_over.over_hands == [ get_tree().get_network_unique_id() ]:
-					if not _piece_mouse_is_over.is_collisions_on():
+			if _piece_mouse_is_over != null:
+				if is_piece_allowed_modify(_piece_mouse_is_over):
+					if _piece_mouse_is_over.is_hovering():
 						_piece_mouse_is_over.rpc_id(1, "request_reset_orientation")
+					else:
+						_piece_mouse_is_over.rpc_id(1, "request_reset_orientation_on_ground")
 		else:
 			for piece in _selected_pieces:
 				if piece is Piece:
-					piece.rpc_id(1, "request_reset_orientation")
+					if is_piece_allowed_modify(piece):
+						if piece.is_hovering():
+							piece.rpc_id(1, "request_reset_orientation")
+						else:
+							piece.rpc_id(1, "request_reset_orientation_on_ground")
 	elif event.is_action_pressed("game_shuffle_stack"):
 		if _selected_pieces.empty():
 			if _piece_mouse_is_over != null and _piece_mouse_is_over is Stack:
@@ -781,8 +793,7 @@ func _unhandled_input(event):
 		else:
 			for piece in _selected_pieces:
 				if piece is Stack:
-					piece.rpc_id(1, "request_shuffle")	
-						
+					piece.rpc_id(1, "request_shuffle")
 	elif event.is_action_pressed("game_toggle_debug_info"):
 		_debug_info_label.visible = not _debug_info_label.visible
 	elif event.is_action_pressed("game_toggle_ui"):
@@ -842,6 +853,18 @@ func _unhandled_input(event):
 	
 	# NOTE: Mouse events are caught by the MouseGrab node, see
 	# _on_MouseGrab_gui_input().
+
+# Checks if a piece is allowed to be modified by the current player.
+# E.g. to rotate, flip etc
+# Returns true if piece can be modified by current player
+func is_piece_allowed_modify( piece: Piece ) -> bool:
+	var can_modify = not piece is Card
+	if piece is Card:
+		if piece.over_hands.empty():
+			can_modify = true
+		else:
+			can_modify =  piece.over_hands == [ get_tree().get_network_unique_id() ]
+	return can_modify
 
 # Calculate the hover position of a piece, given a mouse position on the screen.
 # Returns: The hover position of a piece, based on the given mouse position.
@@ -1440,17 +1463,11 @@ func _set_control_hint_label() -> void:
 	#########
 	# OTHER #
 	#########
-	
+	var is_card_in_hand = false
 	if not _selected_pieces.empty():
 		if _is_hovering_selected:
-			text += _set_control_hint_label_row_actions(tr("Flip orientation"),
-				["game_flip_piece"])
-			text += _set_control_hint_label_row_actions(tr("Reset orientation"),
-				["game_reset_piece"])
-			
 			text += _set_control_hint_label_row_actions(tr("Shuffle"), 
 				["game_shuffle_stack"])
-			
 			
 			var ctrl_mod = cmd if OS.get_name() == "OSX" else ctrl
 			var alt_mod = ctrl if OS.get_name() == "OSX" else alt
@@ -1480,6 +1497,13 @@ func _set_control_hint_label() -> void:
 						["game_flip_piece"])
 				text += _set_control_hint_label_row_actions(tr("Face card up"),
 						["game_reset_piece"])
+				is_card_in_hand = true
+	
+	if (not _selected_pieces.empty() or _piece_mouse_is_over != null) and not is_card_in_hand:
+		text += _set_control_hint_label_row_actions(tr("Reset orientation"),
+			["game_reset_piece"])
+		text += _set_control_hint_label_row_actions(tr("Flip orientation"),
+			["game_flip_piece"])
 	
 	if _piece_mouse_is_over != null and _piece_mouse_is_over is Stack:
 		text += _set_control_hint_label_row_actions(tr("Shuffle"),

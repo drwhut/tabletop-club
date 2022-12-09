@@ -250,6 +250,13 @@ func play_effect(sound: AudioStream) -> void:
 	effect_player.stream = sound
 	effect_player.play()
 
+# If you are not hovering this piece, ask the server to flip the piece vertically.
+master func request_flip_vertically_on_ground() -> void:
+	var scaled_basis = Basis.IDENTITY.scaled(get_current_scale())
+	var current_basis = transform.basis * scaled_basis
+	var flipped_rotation = current_basis.rotated(transform.basis.z, PI)
+	request_set_transform(Transform(flipped_rotation, transform.origin))
+
 # If you are hovering this piece, ask the server to flip the piece vertically.
 master func request_flip_vertically() -> void:
 	request_set_hover_basis(hover_basis.rotated(hover_basis.z, PI))
@@ -264,6 +271,12 @@ master func request_impulse(position: Vector3, impulse: Vector3) -> void:
 # Request the server to lock the piece.
 master func request_lock() -> void:
 	srv_lock()
+
+# If you are not hovering the piece, ask the server to reset the 
+# orientation of the piece.
+master func request_reset_orientation_on_ground() -> void:
+	var reset_rotation = Basis.IDENTITY.scaled(get_current_scale())
+	request_set_transform(Transform(reset_rotation, transform.origin))
 
 # If you are hovering the piece, ask the server to reset the orientation of the
 # piece.
@@ -371,11 +384,11 @@ func set_current_scale(new_scale: Vector3) -> void:
 		for collision_shape in collision_shapes:
 			var this_scale = collision_shape.scale
 			# Avoid divide-by-zero errors.
-			if this_scale.x == 0.0:
+			if is_zero_approx(this_scale.x):
 				this_scale.x = 1.0
-			if this_scale.y == 0.0:
+			if is_zero_approx(this_scale.y):
 				this_scale.y = 1.0
-			if this_scale.z == 0.0:
+			if is_zero_approx(this_scale.z):
 				this_scale.z = 1.0
 			original_scales.append(collision_shape.scale)
 		_original_shape_scales = original_scales
@@ -383,17 +396,18 @@ func set_current_scale(new_scale: Vector3) -> void:
 	
 	var modified_scale = new_scale
 	var current_scale = get_current_scale()
-	if current_scale.x != 0.0:
+	if not is_zero_approx(current_scale.x):
 		modified_scale.x /= current_scale.x
-	if current_scale.y != 0.0:
+	if not is_zero_approx(current_scale.y):
 		modified_scale.y /= current_scale.y
-	if current_scale.z != 0.0:
+	if not is_zero_approx(current_scale.z):
 		modified_scale.z /= current_scale.z
 	
 	for i in range(collision_shapes.size()):
 		# Like in get_current_scale, we want to modify the scale locally.
 		var old_basis = collision_shapes[i].transform.basis
-		collision_shapes[i].transform.basis = old_basis.scaled(modified_scale)
+		if not (old_basis.get_scale().is_equal_approx(new_scale)):
+			collision_shapes[i].transform.basis = old_basis.scaled(modified_scale)
 	
 	emit_signal("scale_changed")
 
