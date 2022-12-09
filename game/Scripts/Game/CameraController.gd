@@ -1398,11 +1398,8 @@ func _set_control_hint_label() -> void:
 	
 	if _tool == TOOL_CURSOR:
 		
-		if _is_hovering_selected:
+		if hovering:
 			text += _set_control_hint_label_row(tr("Release selected"), lmb, release)
-		elif _is_grabbing_selected:
-			text += _set_control_hint_label_row(tr("Quick grab"), tr("Move Mouse"))
-			text += _set_control_hint_label_row(tr("Stop grabbing"), lmb, release)
 		elif _is_box_selecting:
 			text += _set_control_hint_label_row(tr("Stop box selecting"), lmb, release)
 		elif _piece_mouse_is_over:
