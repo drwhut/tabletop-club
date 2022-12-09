@@ -308,7 +308,9 @@ master func request_rotate_y(rot: float) -> void:
 # rotate it around the y-axis by the given rotation.
 # rot: The amount to rotate it by in radians.
 master func request_rotate_y_on_ground(rot: float) -> void:
-	var new_rotation = transform.basis.rotated(transform.basis.y, rot)
+	var scaled_basis = Basis.IDENTITY.scaled(get_current_scale())
+	var current_basis = transform.basis * scaled_basis
+	var new_rotation = current_basis.rotated(transform.basis.y, rot)
 	request_set_transform(Transform(new_rotation, transform.origin))
 
 # Request the server to set the material's albedo color.
