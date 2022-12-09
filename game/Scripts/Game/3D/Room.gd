@@ -45,11 +45,22 @@ onready var _world_environment = $WorldEnvironment
 const HIDDEN_AREA_MIN_SIZE = Vector2(0.5, 0.5)
 const LIMBO_DURATION_MS = 3000
 
-const UNDO_STACK_SIZE_LIMIT = 10
+const UNDO_STACK_SIZE_LIMIT = 20
 const UNDO_STATE_EVENT_TIMEOUTS_MS = {
 	"add_piece": 10000,
+	"add_piece_to_container": 10000,
+	"add_stack_filled": 10000,
 	"flip_table": 0,
+	"place_hidden_area": 10000,
+	"remove_hidden_area": 5000,
+	"remove_piece_from_container": 5000,
 	"remove_pieces": 5000,
+	"request_collect_pieces": 5000,
+	"request_hover_piece": 5000,
+	"request_pop_stack": 5000,
+	"request_stack_collect_all": 5000,
+	"set_state": 0,
+	"set_table": 5000,
 }
 
 var _srv_allow_card_stacking = true
@@ -167,6 +178,9 @@ remotesync func add_piece_to_container(container_name: String, piece_name: Strin
 	for player_id in _client_hover_pieces:
 		var hovering: Array = _client_hover_pieces[player_id]
 		hovering.erase(piece_name)
+
+	if get_tree().is_network_server():
+		push_undo_state("add_piece_to_container")
 
 	piece.stop_hovering()
 	_pieces.remove_child(piece)
@@ -317,6 +331,9 @@ remotesync func add_stack_filled(name: String, transform: Transform,
 	if stack_entry.empty():
 		push_error("Cannot add stack, entry not found: %s" % stack_entry_path)
 		return
+
+	if get_tree().is_network_server():
+		push_undo_state("add_stack_filled")
 
 	var sandwich_stack = (stack_entry["scene_path"] == "res://Pieces/Card.tscn")
 
@@ -678,6 +695,9 @@ remotesync func place_hidden_area(area_name: String, player_id: int,
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
+	if get_tree().is_network_server():
+		push_undo_state("place_hidden_area")
+	
 	var size = (point2 - point1).abs()
 	if size.x < HIDDEN_AREA_MIN_SIZE.x or size.y < HIDDEN_AREA_MIN_SIZE.y:
 		return
@@ -695,6 +715,11 @@ master func pop_undo_state() -> void:
 	if _srv_undo_stack.empty():
 		push_error("Cannot pop undo stack, is empty!")
 		return
+	
+	# Reset all of the undo timers to -1 min, so that they are guaranteed to
+	# create states after this undo.
+	for func_name in _srv_undo_state_last_call_ms:
+		_srv_undo_state_last_call_ms[func_name] = -60000
 	
 	var state_to_restore = _srv_undo_stack.pop_back()
 	_srv_undo_state_creation_disable()
@@ -758,6 +783,9 @@ remotesync func remove_hidden_area(area_name: String) -> void:
 	if not hidden_area is HiddenArea:
 		push_error("Node " + area_name + " is not a hidden area!")
 		return
+	
+	if get_tree().is_network_server():
+		push_undo_state("remove_hidden_area")
 
 	_hidden_areas.remove_child(hidden_area)
 	hidden_area.queue_free()
@@ -783,6 +811,9 @@ remotesync func remove_piece_from_container(container_name: String, piece_name: 
 	if not container.has_piece(piece_name):
 		push_error("Container " + container_name + " does not contain piece " + piece_name)
 		return
+
+	if get_tree().is_network_server():
+		push_undo_state("remove_piece_from_container")
 
 	# If there is a piece with the same name (in limbo), rename it so this piece
 	# can use it's own name.
@@ -1023,6 +1054,8 @@ master func request_collect_pieces(piece_names: Array) -> void:
 	if pieces.size() <= 1:
 		return
 
+	push_undo_state("request_collect_pieces")
+
 	var add_to = pieces.pop_front()
 
 	while add_to:
@@ -1158,10 +1191,12 @@ master func request_container_release_these(container_name: String,
 	if not hover_name_arr.empty():
 		_camera_controller.rpc_id(player_id, "set_hover_height", max_y_pos)
 
+		_srv_undo_state_creation_disable()
 		if hover_name_arr.size() == 1:
 			request_hover_piece(hover_name_arr[0], init_pos, hover_offet_arr[0])
 		else:
 			request_hover_pieces(hover_name_arr, init_pos, hover_offet_arr)
+		_srv_undo_state_creation_enable()
 
 # Request the server to deal cards from a stack to all players.
 # stack_name: The name of the stack of cards.
@@ -1227,6 +1262,7 @@ master func request_hover_piece(piece_name: String, init_pos: Vector3,
 	var player_id = get_tree().get_rpc_sender_id()
 
 	if piece.srv_start_hovering(player_id, init_pos, offset_pos):
+		push_undo_state("request_hover_piece")
 		rpc_id(player_id, "request_hover_piece_accepted", piece_name)
 		return true
 	
@@ -1327,9 +1363,10 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 	if n < 1:
 		return ""
 	elif n < stack.get_piece_count():
+		push_undo_state("request_pop_stack")
+		
 		# Since there is a lot of piece manipulation in this function, disable
 		# creating undo states mid-way through.
-		# TODO: Add an undo state here as part of #157.
 		_srv_undo_state_creation_disable()
 
 		var unit_height = stack.get_unit_height()
@@ -1496,6 +1533,8 @@ master func request_stack_collect_all(stack_name: String, collect_stacks: bool) 
 		push_error("Object " + stack_name + " is not a stack!")
 		return
 
+	push_undo_state("request_stack_collect_all")
+
 	for piece in get_pieces():
 		if piece is StackablePiece and piece.name != stack_name:
 			if stack.matches(piece):
@@ -1560,6 +1599,11 @@ remotesync func set_lamp_color(color: Color) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 
+	# NOTE: This is usually called alongside set_table(), so push an undo state
+	# under that name so we don't create multiple states.
+	if get_tree().has_network_peer() and get_tree().is_network_server():
+		push_undo_state("set_table")
+
 	_spot_light.light_color = color
 	_sun_light.light_color = color
 
@@ -1569,12 +1613,25 @@ remotesync func set_lamp_intensity(intensity: float) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 
+	# NOTE: This is usually called alongside set_table(), so push an undo state
+	# under that name so we don't create multiple states.
+	if get_tree().has_network_peer() and get_tree().is_network_server():
+		push_undo_state("set_table")
+
 	_spot_light.light_energy = intensity
 	_sun_light.light_energy = intensity
 
 # Set the type of light the room lamp is emitting.
 # sunlight: True for sunlight, false for a spotlight.
 remotesync func set_lamp_type(sunlight: bool) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+
+	# NOTE: This is usually called alongside set_table(), so push an undo state
+	# under that name so we don't create multiple states.
+	if get_tree().has_network_peer() and get_tree().is_network_server():
+		push_undo_state("set_table")
+
 	_spot_light.visible = not sunlight
 	_sun_light.visible = sunlight
 
@@ -1597,6 +1654,11 @@ remotesync func set_skybox(skybox_entry_path: String) -> void:
 		var current_entry = _world_environment.get_meta("skybox_entry")
 		if current_entry.hash() == skybox_entry.hash():
 			return
+
+	# NOTE: This is usually called alongside set_table(), so push an undo state
+	# under that name so we don't create multiple states.
+	if get_tree().has_network_peer() and get_tree().is_network_server():
+		push_undo_state("set_table")
 
 	# Free the current skybox before we create a new one, just so we don't use
 	# as much memory as we need to.
@@ -1638,6 +1700,10 @@ func set_state(state: Dictionary, first_name: String) -> void:
 			push_error("First name %s is not a valid integer!" % first_name)
 			return
 		_srv_next_piece_name = int(first_name)
+
+	if get_tree().is_network_server():
+		push_undo_state("set_state")
+		_srv_undo_state_creation_disable()
 
 	if state.has("lamp"):
 		var lamp_meta = state["lamp"]
@@ -1765,6 +1831,8 @@ func set_state(state: Dictionary, first_name: String) -> void:
 	if get_tree().is_network_server():
 		_srv_allow_card_stacking = false
 		_srv_hand_setup_frames = 5
+		
+		_srv_undo_state_creation_enable()
 
 # Set the room state with a compressed version of a state.
 # compressed_state: The compressed state from get_state_compressed().
@@ -1820,6 +1888,9 @@ remotesync func set_table(table_entry_path: String) -> void:
 			var current_entry = _table_body.get_meta("table_entry")
 			if current_entry.hash() == table_entry.hash():
 				return
+
+		if get_tree().has_network_peer() and get_tree().is_network_server():
+			push_undo_state("set_table")
 
 		if _table_body.is_a_parent_of(_paint_plane):
 			_table_body.remove_child(_paint_plane)
@@ -2001,6 +2072,8 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 		stack2.add_piece(piece_entry, piece_transform, Stack.STACK_TOP)
 
 func _ready():
+	_srv_undo_state_creation_disable()
+
 	Lobby.connect("player_added", self, "_on_Lobby_player_added")
 	
 	var skybox = AssetDB.random_asset("TabletopClub", "skyboxes", true)
@@ -2013,6 +2086,8 @@ func _ready():
 		set_table(table["entry_path"])
 	
 	_fast_circle.set_process(false)
+
+	_srv_undo_state_creation_enable()
 
 func _physics_process(_delta):
 	if not get_tree().has_network_peer():
