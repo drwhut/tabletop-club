@@ -257,10 +257,9 @@ func play_effect(sound: AudioStream) -> void:
 
 # If you are not hovering this piece, ask the server to flip the piece vertically.
 master func request_flip_vertically_on_ground() -> void:
-	var scaled_basis = Basis.IDENTITY.scaled(get_current_scale())
-	var current_basis = transform.basis * scaled_basis
-	var flipped_rotation = current_basis.rotated(transform.basis.z, PI)
-	request_set_transform(Transform(flipped_rotation, transform.origin))
+	var current_quat = transform.basis.get_rotation_quat()
+	var modify_quat = Quat(transform.basis.z, PI)
+	request_set_rotation_quat(modify_quat * current_quat)
 
 # If you are hovering this piece, ask the server to flip the piece vertically.
 master func request_flip_vertically() -> void:
@@ -282,8 +281,7 @@ master func request_lock() -> void:
 # If you are not hovering the piece, ask the server to reset the 
 # orientation of the piece.
 master func request_reset_orientation_on_ground() -> void:
-	var reset_rotation = Basis.IDENTITY.scaled(get_current_scale())
-	request_set_transform(Transform(reset_rotation, transform.origin))
+	request_set_rotation_quat(Quat.IDENTITY)
 
 # If you are hovering the piece, ask the server to reset the orientation of the
 # piece.
@@ -315,10 +313,9 @@ master func request_rotate_y(rot: float) -> void:
 # rotate it around the y-axis by the given rotation.
 # rot: The amount to rotate it by in radians.
 master func request_rotate_y_on_ground(rot: float) -> void:
-	var scaled_basis = Basis.IDENTITY.scaled(get_current_scale())
-	var current_basis = transform.basis * scaled_basis
-	var new_rotation = current_basis.rotated(transform.basis.y, rot)
-	request_set_transform(Transform(new_rotation, transform.origin))
+	var current_quat = transform.basis.get_rotation_quat()
+	var modify_quat = Quat(transform.basis.y, rot)
+	request_set_rotation_quat(modify_quat * current_quat)
 
 # Request the server to set the material's albedo color.
 # color: The new albedo color.
@@ -348,11 +345,23 @@ master func request_set_hover_position(new_hover_position: Vector3) -> void:
 		srv_set_hover_position(new_hover_position)
 		emit_signal("client_set_hover_position", self)
 
+# Request the server to set the rotation of this piece.
+# new_rotation: The piece's new rotation.
+master func request_set_rotation_quat(new_rotation: Quat) -> void:
+	if not is_hovering():
+		rpc("set_rotation_quat", new_rotation)
+
 # Request the server to set the transform of this piece.
 # new_transform: The piece's new transform.
 master func request_set_transform(new_transform: Transform) -> void:
 	if not is_hovering():
 		rpc("set_transform", new_transform)
+
+# Request the server to set the translation of this piece.
+# new_translation: The piece's new translation.
+master func request_set_translation(new_translation: Vector3) -> void:
+	if not is_hovering():
+		rpc("set_translation", new_translation)
 
 # Request the server to start hovering the piece.
 master func request_start_hovering(init_pos: Vector3, offset_pos: Vector3) -> void:
@@ -482,22 +491,30 @@ func set_outline_color(color: Color) -> void:
 	else:
 		push_error("Outline material has not been created!")
 
+# Called by the server to set the rotation of the piece.
+# new_rotation: The piece's new rotation.
+remotesync func set_rotation_quat(new_rotation: Quat) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var quat_length_sq = new_rotation.length_squared()
+	if is_zero_approx(quat_length_sq):
+		return
+	elif not is_equal_approx(quat_length_sq, 1.0): # is_normalized()
+		new_rotation = new_rotation.normalized()
+	
+	transform.basis = Basis(new_rotation)
+	sleeping = false
+
 # Called by the server to set the transform of the piece.
 # new_transform: The piece's new transform.
 remotesync func set_transform(new_transform: Transform) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	transform.origin = new_transform.origin
-	
-	# The RigidBody's scale needs to stay as (1, 1, 1), so only take the
-	# rotation information out of the basis.
-	var new_basis = Basis(new_transform.basis.get_rotation_quat())
-	transform.basis = new_basis
-	
+	set_translation(new_transform.origin)
+	set_rotation_quat(new_transform.basis.get_rotation_quat())
 	set_current_scale(new_transform.basis.get_scale())
-	
-	sleeping = false
 
 # Called by the server to set the translation of the piece.
 # new_translation: The new translation.
