@@ -2578,23 +2578,27 @@ func _on_container_releasing_random_piece(container: PieceContainer) -> void:
 		rpc_id(1, "request_container_release_random", container.name, 1, false)
 
 func _on_stack_requested(piece1: StackablePiece, piece2: StackablePiece) -> void:
-	if get_tree().is_network_server():
-		if not _srv_allow_card_stacking:
-			if piece1 is Card or piece2 is Card:
-				return
-
-		if piece1 is Stack and piece2 is Stack:
-			rpc("add_stack_to_stack", piece1.name, piece2.name,
-					piece1.transform, piece2.transform)
-		elif piece1 is Stack:
-			rpc("add_piece_to_stack", piece2.name, piece1.name,
-					piece2.transform, piece1.transform)
-		elif piece2 is Stack:
-			rpc("add_piece_to_stack", piece1.name, piece2.name,
-					piece1.transform, piece2.transform)
-		else:
-			rpc("add_stack", srv_get_next_piece_name(), piece1.name,
-					piece2.name, piece1.transform, piece2.transform)
+	if not get_tree().is_network_server():
+		return
+	
+	if not _srv_allow_card_stacking and (piece1 is Card or piece2 is Card):
+		return
+	
+	if piece1.is_in_group("limbo") or piece2.is_in_group("limbo"):
+		return
+	
+	if piece1 is Stack and piece2 is Stack:
+		rpc("add_stack_to_stack", piece1.name, piece2.name, piece1.transform,
+				piece2.transform)
+	elif piece1 is Stack:
+		rpc("add_piece_to_stack", piece2.name, piece1.name, piece2.transform,
+				piece1.transform)
+	elif piece2 is Stack:
+		rpc("add_piece_to_stack", piece1.name, piece2.name, piece1.transform,
+				piece2.transform)
+	else:
+		rpc("add_stack", srv_get_next_piece_name(), piece1.name, piece2.name,
+				piece1.transform, piece2.transform)
 
 # Called by the server when the undo stack is empty.
 remotesync func _on_undo_stack_empty():
