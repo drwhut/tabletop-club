@@ -56,26 +56,31 @@ export(Dictionary) var piece_entry: Dictionary = {}
 
 # When setting these vectors, make sure you call set_angular_lock(false),
 # otherwise the piece won't rotate towards the orientation!
-var hover_basis = Basis.IDENTITY
 var hover_offset = Vector3.ZERO
 var hover_player = 0 # 0 = Not hovering, > 0 is the player ID.
 var hover_position = Vector3.ZERO
+var hover_quat = Quat.IDENTITY
 var hover_start_time: int = 0
 
 var srv_retrieve_from_hell: bool = true
 
-# The physics state sent by the server is sent as a pair of Basis: the first
-# contanining angular velocity, linear velocity and the origin - the second
-# containing the transform basis. This format reduces the size of the packets
-# that are sent to the clients.
-var _last_server_state_0: Basis
-var _last_server_state_1: Basis
+# The physics state sent by the server is sent as a Basis and a Quat: The basis
+# contains the angular velocity, linear velocity, and the origin - the Quat
+# contains the rotation. This format reduces the size of the packets that are
+# sent to the clients.
+var _last_server_state_vecs: Basis
+var _last_server_state_quat: Quat
 var _last_server_state_invalid: bool = true
 var _last_server_state_time: int = 0
 var _last_slow_table_collision = 0.0
 
 var _last_velocity = Vector3()
 var _new_velocity = Vector3()
+
+# For optimisation purposes, we rarely check if a Basis is orthonormalized
+# before converting it into a Quat. Since the game uses frame interpolation,
+# the "main thread" transform is not 100% reliable.
+var _last_physics_state_transform: Transform = Transform.IDENTITY
 
 var _outline_material: ShaderMaterial = null
 
@@ -259,7 +264,9 @@ master func request_flip_vertically_on_ground() -> void:
 
 # If you are hovering this piece, ask the server to flip the piece vertically.
 master func request_flip_vertically() -> void:
-	request_set_hover_basis(hover_basis.rotated(hover_basis.z, PI))
+	var back_basis = hover_quat * Vector3.BACK
+	var modify_quat = Quat(back_basis, PI)
+	request_set_hover_rotation(modify_quat * hover_quat)
 
 # Request the server to apply an impulse to the piece.
 # position: The position to apply the impulse, relative to the piece's origin.
@@ -281,16 +288,16 @@ master func request_reset_orientation_on_ground() -> void:
 # If you are hovering the piece, ask the server to reset the orientation of the
 # piece.
 master func request_reset_orientation() -> void:
-	request_set_hover_basis(Basis.IDENTITY)
+	request_set_hover_rotation(Quat.IDENTITY)
 
 # If you are hovering the piece, request the server to rotate it
 # around the y-axis by the given rotation.
 # rot: The amount to rotate it by in radians.
 master func request_rotate_y(rot: float) -> void:
-	if rot == 0.0:
+	if is_zero_approx(rot):
 		return
-	
-	var current_euler = hover_basis.get_euler()
+
+	var current_euler = hover_quat.get_euler()
 	var current_y_scale = current_euler.y / abs(rot)
 	# The .001 is to avoid floating point errors.
 	var offset = 1.001
@@ -302,7 +309,7 @@ master func request_rotate_y(rot: float) -> void:
 	var target_y_euler = current_euler
 	target_y_euler.y = wrapf(target_y_scale * abs(rot), -PI, PI)
 	
-	request_set_hover_basis(Basis(target_y_euler))
+	request_set_hover_rotation(Quat(target_y_euler))
 
 # If you are not hovering the piece, request the server to
 # rotate it around the y-axis by the given rotation.
@@ -326,12 +333,12 @@ master func request_set_albedo_color(color: Color, unreliable: bool = false) -> 
 	else:
 		rpc("set_albedo_color", color)
 
-# Request the server to set the hover basis if you are the client hovering the
-# piece.
-# new_hover_basis: The basis the hovering piece will go towards.
-master func request_set_hover_basis(new_hover_basis: Basis) -> void:
+# Request the server to set the hover rotation if you are the client hovering
+# the piece.
+# new_hover_quat: The quaternion the hovering piece will go towards.
+master func request_set_hover_rotation(new_hover_quat: Quat) -> void:
 	if get_tree().get_rpc_sender_id() == hover_player:
-		srv_set_hover_basis(new_hover_basis)
+		srv_set_hover_rotation(new_hover_quat)
 
 # Request the server to set the hover position if you are the client hovering
 # the piece.
@@ -421,16 +428,19 @@ func set_current_scale(new_scale: Vector3) -> void:
 	
 	emit_signal("scale_changed")
 
-# Set the hover basis of the piece.
-# new_hover_basis: The basis the hovering piece will go towards.
-remotesync func set_hover_basis(new_hover_basis: Basis) -> void:
+# Set the hover rotation of the piece.
+# new_hover_quat: The quaternion the hovering piece will go towards.
+remotesync func set_hover_rotation(new_hover_quat: Quat) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	if new_hover_basis.is_equal_approx(Basis(Vector3.ZERO, Vector3.ZERO, Vector3.ZERO)):
+	var quat_length_sq = new_hover_quat.length_squared()
+	if is_zero_approx(quat_length_sq):
 		return
+	elif not is_equal_approx(quat_length_sq, 1.0): # is_normalized()
+		new_hover_quat = new_hover_quat.normalized()
 	
-	hover_basis = new_hover_basis.orthonormalized()
+	hover_quat = new_hover_quat
 	sleeping = false
 
 # Set the hover position of the piece.
@@ -445,14 +455,20 @@ remotesync func set_hover_position(new_hover_position: Vector3) -> void:
 # Called by the server to store the server's physics state locally.
 # NOTE: "ss" stands for "set state", the reason for the short name is to reduce
 # the size of the packet that is sent to the clients.
-# basis0: The angular velocity, the linear velocity, and the transform origin.
-# basis1: The transform basis.
-puppet func ss(basis0: Basis, basis1: Basis) -> void:
+# vecs: The angular velocity, the linear velocity, and the transform origin.
+# quat: The rotation.
+puppet func ss(vecs: Basis, quat: Quat) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	_last_server_state_0 = basis0
-	_last_server_state_1 = basis1
+	var quat_length_sq = quat.length_squared()
+	if is_zero_approx(quat_length_sq):
+		return
+	elif not is_equal_approx(quat_length_sq, 1.0): # is_normalized()
+		quat = quat.normalized()
+	
+	_last_server_state_vecs = vecs
+	_last_server_state_quat = quat
 	_last_server_state_invalid = false
 	_last_server_state_time = OS.get_ticks_msec()
 	sleeping = false
@@ -515,7 +531,7 @@ remotesync func start_hovering(player_id: int, init_pos: Vector3, offset_pos: Ve
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	hover_basis = transform.basis
+	hover_quat = Quat(_last_physics_state_transform.basis)
 	hover_position = init_pos
 	
 	hover_offset = offset_pos
@@ -555,10 +571,10 @@ func srv_lock() -> void:
 	mode = MODE_STATIC
 	rpc("lock_client", transform)
 
-# As the server, set the hover basis of the piece.
-# new_hover_basis: The basis the hovering piece will go towards.
-func srv_set_hover_basis(new_hover_basis: Basis) -> void:
-	rpc_unreliable("set_hover_basis", new_hover_basis)
+# As the server, set the hover rotation of the piece.
+# new_hover_quat: The quaternion the hovering piece will go towards.
+func srv_set_hover_rotation(new_hover_quat: Quat) -> void:
+	rpc_unreliable("set_hover_rotation", new_hover_quat)
 
 # As the server, set the hover position of the piece.
 # new_hover_position: The position the hovering piece will go towards.
@@ -606,7 +622,8 @@ func _physics_process(_delta):
 				if not (sleeping or is_hovering() or is_locked()):
 					for id in Lobby.get_player_list():
 						if id != 1 and (not id in Global.srv_state_update_blacklist):
-							rpc_unreliable_id(id, "ss", _last_server_state_0, _last_server_state_1)
+							rpc_unreliable_id(id, "ss", _last_server_state_vecs,
+									_last_server_state_quat)
 
 # Apply forces to the piece to get it to the desired hover position and
 # orientation.
@@ -617,12 +634,13 @@ func _apply_hover_to_state(state: PhysicsDirectBodyState) -> void:
 	var linear_dir = hover_position + hover_offset - pos
 	state.linear_velocity = LINEAR_FORCE_SCALAR * linear_dir
 	
-	# Force the piece to the given basis.
-	var current_basis = state.transform.basis
-	var new_basis = hover_basis
-	if not current_basis.is_equal_approx(hover_basis):
-		new_basis = current_basis.slerp(hover_basis, ROTATION_SLERP_ALPHA)
-	state.transform.basis = new_basis.orthonormalized()
+	# Force the piece to the given quaternion.
+	var current_quat = Quat(state.transform.basis)
+	var new_quat = hover_quat
+	if not current_quat.is_equal_approx(hover_quat):
+		new_quat = current_quat.slerp(hover_quat, ROTATION_SLERP_ALPHA).normalized()
+	state.transform.basis = Basis(new_quat)
+	
 	state.angular_velocity = Vector3.ZERO
 
 func _integrate_forces(state):
@@ -643,9 +661,9 @@ func _integrate_forces(state):
 			
 			# The server piece needs to keep track of its physics properties in
 			# order to send it to the client.
-			_last_server_state_0 = Basis(state.angular_velocity,
+			_last_server_state_vecs = Basis(state.angular_velocity,
 				state.linear_velocity, state.transform.origin)
-			_last_server_state_1 = state.transform.basis
+			_last_server_state_quat = Quat(state.transform.basis)
 			_last_server_state_invalid = false
 			_last_server_state_time = OS.get_ticks_msec()
 		
@@ -653,23 +671,27 @@ func _integrate_forces(state):
 			# The client, if it has received a new physics state from the
 			# server, needs to update it here.
 			if not _last_server_state_invalid:
-				state.angular_velocity = _last_server_state_0.x
-				state.linear_velocity = _last_server_state_0.y
+				state.angular_velocity = _last_server_state_vecs.x
+				state.linear_velocity = _last_server_state_vecs.y
 				
 				# For the transform, we want to lerp into the new state to make
 				# it as smooth as possible, even if the server fails to send
 				# the state.
-				var server_transform = Transform(_last_server_state_1, _last_server_state_0.z)
-				var origin = transform.origin.linear_interpolate(server_transform.origin, TRANSFORM_LERP_ALPHA)
-				var client_quat = Quat(transform.basis)
-				var server_quat = Quat(server_transform.basis)
-				var lerp_quat = client_quat.slerp(server_quat, TRANSFORM_LERP_ALPHA).normalized()
+				var server_origin = _last_server_state_vecs.z
+				var lerp_origin = state.transform.origin.linear_interpolate(
+						server_origin, TRANSFORM_LERP_ALPHA)
+				
+				var client_quat = Quat(state.transform.basis)
+				var lerp_quat = client_quat.slerp(_last_server_state_quat,
+						TRANSFORM_LERP_ALPHA).normalized()
 				
 				var new_transform = Transform(lerp_quat)
-				new_transform.origin = origin
+				new_transform.origin = lerp_origin
 				state.transform = new_transform
 				
 				_last_server_state_invalid = true
+	
+	_last_physics_state_transform = state.transform
 
 # Get the starting albedo colour of a given material.
 # Returns: The starting albedo of the material.

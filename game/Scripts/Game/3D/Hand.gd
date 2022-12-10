@@ -209,7 +209,7 @@ func _srv_set_card_rotation(card: Card) -> void:
 	var new_basis = transform.basis
 	if card.transform.basis.y.y < 0:
 		new_basis = new_basis.rotated(transform.basis.z, PI)
-	card.srv_set_hover_basis(new_basis)
+	card.srv_set_hover_rotation(Quat(new_basis))
 
 # Try and set a node's front face visibility.
 # body: The node to try and set the front face visibility of.

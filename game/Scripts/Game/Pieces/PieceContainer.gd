@@ -111,7 +111,7 @@ func recalculate_mass() -> void:
 # piece_name: The name of the piece to release.
 func remove_piece(piece_name: String) -> Piece:
 	if has_piece(piece_name):
-		var piece = _pieces.get_node(piece_name)
+		var piece: Piece = _pieces.get_node(piece_name)
 		mass -= piece.mass
 		_pieces.remove_child(piece)
 		
@@ -121,6 +121,15 @@ func remove_piece(piece_name: String) -> Piece:
 		var distance = 0.5 * (get_size().y + piece.get_size().y) + 1.0
 		var new_origin = transform.origin + transform.basis.y * distance
 		piece.transform.origin = new_origin
+		
+		# NOTE: For some reason (my theory is the physics interpolation patch:
+		# https://github.com/drwhut/godot/commit/5d56dd72b13d261c88602d9b37ada1063c5c4b57
+		# ), the basis of the transform may drift slightly while in the
+		# container, even if the piece is in static mode. This line is a
+		# workaround to prevent that from affecting the physics state.
+		# TODO: Maybe this can be removed when using Godot 3.5?
+		piece.transform.basis = piece.transform.basis.orthonormalized()
+		
 		piece.mode = MODE_RIGID
 		
 		return piece

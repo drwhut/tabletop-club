@@ -54,11 +54,8 @@ func _ready():
 func _physics_process(_delta):
 	if is_being_shaked():
 		if get_tree().is_network_server():
-			var new_basis = hover_basis
-			new_basis = new_basis.rotated(Vector3.RIGHT, 2 * PI * _rng.randf())
-			new_basis = new_basis.rotated(Vector3.UP, 2 * PI * _rng.randf())
-			new_basis = new_basis.rotated(Vector3.BACK, 2 * PI * _rng.randf())
-			srv_set_hover_basis(new_basis)
+			var new_angles = 2 * PI * Vector3(_rng.randf(), _rng.randf(), _rng.randf())
+			srv_set_hover_rotation(Quat(new_angles))
 		
 		if shake_sounds != null:
 			play_effect(shake_sounds.random_stream())
