@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2022-11-29 02:35+0000\n"
-"Last-Translator: Xavi <xestevev@gmail.com>\n"
+"PO-Revision-Date: 2022-12-14 09:48+0000\n"
+"Last-Translator: Miguel de Dios Matias <tres.14159@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "game/es/>\n"
 "Language: es\n"
@@ -62,12 +62,10 @@ msgid "Tabletop Club on Itch.io"
 msgstr "Tabletop Club en Itch.io"
 
 #: ../Scenes/MainMenu.tscn:104
-#, fuzzy
 msgid "Source Code"
 msgstr "Código fuente"
 
 #: ../Scenes/MainMenu.tscn:113
-#, fuzzy
 msgid "Documentation"
 msgstr "Documentación"
 
@@ -149,11 +147,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:142
 msgid "Controls"
-msgstr ""
+msgstr "Controles"
 
 #: ../Scenes/OptionsMenu.tscn:155
 msgid "Mouse Horizontal Sensitivity"
-msgstr ""
+msgstr "Sensibilidad Horizontal del Ratón"
 
 #: ../Scenes/OptionsMenu.tscn:162
 msgid "Sets the horizontal sensitivity of the rotation of the camera."
@@ -161,15 +159,15 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:174
 msgid "Mouse Vertical Sensitivity"
-msgstr ""
+msgstr "Sensibilidad Vertical del Ratón"
 
 #: ../Scenes/OptionsMenu.tscn:182
 msgid "Sets the vertical sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "Fija la sensibilidad vertical de la rotación de la cámara."
 
 #: ../Scenes/OptionsMenu.tscn:194
 msgid "Mouse Horizontal Invert"
-msgstr ""
+msgstr "Inversión Horizontal del Ratón"
 
 #: ../Scenes/OptionsMenu.tscn:202
 msgid "Used to invert the rotation of the camera horizontally."
@@ -177,7 +175,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:209
 msgid "Mouse Vertical Invert"
-msgstr ""
+msgstr "Inversión Vertical del Ratón"
 
 #: ../Scenes/OptionsMenu.tscn:217
 msgid "Used to invert the rotation of the camera vertically."
@@ -185,7 +183,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:224
 msgid "Camera Movement Speed"
-msgstr ""
+msgstr "Velocidad de Movimiento de la Cámara"
 
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
@@ -203,7 +201,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
-msgstr ""
+msgstr "Sensibilidad del Zoom"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
@@ -213,7 +211,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:279
 msgid "Zoom Invert"
-msgstr ""
+msgstr "Inversión de Zoom"
 
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
@@ -286,11 +284,11 @@ msgstr "General"
 
 #: ../Scenes/OptionsMenu.tscn:435
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: ../Scenes/OptionsMenu.tscn:455
 msgid "Autosave Interval"
-msgstr ""
+msgstr "Intervalo de Guardado Automático"
 
 #: ../Scenes/OptionsMenu.tscn:463
 msgid "Used to set how often autosaves are created."
@@ -621,20 +619,20 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1260
 msgid "Back"
-msgstr ""
+msgstr "Atrás"
 
 #: ../Scenes/Game/CameraController.tscn:402
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:154
 #: ../Scenes/OptionsMenu.tscn:1266
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: ../Scenes/Game/CameraController.tscn:462
 #: ../Scenes/Game/CameraController.tscn:535
 #: ../Scenes/Game/CameraController.tscn:602
 #: ../Scenes/Game/CameraController.tscn:656 ../Scenes/OptionsMenu.tscn:1273
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: ../Scenes/OptionsMenu.tscn:1318
 msgid "Please press a key or button to bind it..."
@@ -642,7 +640,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1338
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: ../Scenes/OptionsMenu.tscn:1345
 msgid "Keep video settings?"
@@ -650,7 +648,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1353
 msgid "Reimporting Assets"
-msgstr ""
+msgstr "Reimportando Recursos"
 
 #: ../Scenes/OptionsMenu.tscn:1371
 msgid "Warning!"
@@ -666,11 +664,11 @@ msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:128
 msgid "Select track"
-msgstr ""
+msgstr "Seleccionar pista"
 
 #: ../Scenes/Game/CameraController.tscn:146
 msgid "Range:"
-msgstr ""
+msgstr "Alcance:"
 
 #: ../Scenes/Game/CameraController.tscn:165
 msgid "Take X off top"
@@ -682,34 +680,34 @@ msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:234
 msgid "Position:"
-msgstr ""
+msgstr "Posición:"
 
 #: ../Scenes/Game/CameraController.tscn:245
 #: ../Scenes/Game/CameraController.tscn:303
 #: ../Scenes/Game/CameraController.tscn:355
 msgid "X:"
-msgstr ""
+msgstr "X:"
 
 #: ../Scenes/Game/CameraController.tscn:261
 #: ../Scenes/Game/CameraController.tscn:317
 #: ../Scenes/Game/CameraController.tscn:371
 msgid "Y:"
-msgstr ""
+msgstr "Y:"
 
 #: ../Scenes/Game/CameraController.tscn:277
 #: ../Scenes/Game/CameraController.tscn:331
 #: ../Scenes/Game/CameraController.tscn:387
 msgid "Z:"
-msgstr ""
+msgstr "Z:"
 
 #: ../Scenes/Game/CameraController.tscn:292
 msgid "Rotation (°):"
-msgstr ""
+msgstr "Rotación (°):"
 
 #: ../Scenes/Game/CameraController.tscn:344
 #: ../Scenes/Game/CameraController.tscn:489
 msgid "Scale:"
-msgstr ""
+msgstr "Escala:"
 
 #: ../Scenes/Game/CameraController.tscn:433
 msgid "Strength:"
@@ -717,41 +715,41 @@ msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:444
 msgid "1.0"
-msgstr ""
+msgstr "1.0"
 
 #: ../Scenes/Game/CameraController.tscn:521
 msgid "System:"
-msgstr ""
+msgstr "Sistema:"
 
 #: ../Scenes/Game/CameraController.tscn:527
 msgid "Metric"
-msgstr ""
+msgstr "Métrico"
 
 #: ../Scenes/Game/CameraController.tscn:562
 msgid "Brush Color:"
-msgstr ""
+msgstr "Color del Pincel:"
 
 #: ../Scenes/Game/CameraController.tscn:575
 msgid "Brush Size:"
-msgstr ""
+msgstr "Tamaño del Pincel:"
 
 #: ../Scenes/Game/CameraController.tscn:586
 #: ../Scenes/Game/CameraController.tscn:640
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../Scenes/Game/CameraController.tscn:629
 msgid "Eraser Size:"
-msgstr ""
+msgstr "Tamaño del Borrador:"
 
 #: ../Scenes/Game/CameraController.tscn:659
 msgid "Select a track..."
-msgstr ""
+msgstr "Seleccionar una pista..."
 
 #: ../Scenes/Game/CameraController.tscn:664
 #, python-format
 msgid "Loaded %d tracks."
-msgstr ""
+msgstr "Cargadas %d pistas."
 
 #: ../Scenes/Game/Game.tscn:35
 msgid "Missing Assets"
@@ -910,11 +908,11 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:34
 msgid "+ New Page"
-msgstr ""
+msgstr "+ Nueva Página"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:48
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:69
 msgid "Move Up"
@@ -928,11 +926,11 @@ msgstr ""
 #: ../Scripts/Game/CameraController.gd:1262
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:220
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:90
 msgid "Delete page?"
-msgstr ""
+msgstr "¿Eliminar página?"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
@@ -1104,23 +1102,23 @@ msgstr ""
 
 #: ../Scripts/MainMenu.gd:76
 msgid "Translators"
-msgstr ""
+msgstr "Traductores"
 
 #: ../Scripts/MainMenu.gd:78
 msgid "Dutch"
-msgstr ""
+msgstr "Holandés"
 
 #: ../Scripts/MainMenu.gd:79
 msgid "French"
-msgstr ""
+msgstr "Francés"
 
 #: ../Scripts/MainMenu.gd:80
 msgid "German"
-msgstr ""
+msgstr "Alemán"
 
 #: ../Scripts/MainMenu.gd:81
 msgid "Russian"
-msgstr ""
+msgstr "Ruso"
 
 #: ../Scripts/MainMenu.gd:182
 msgid "Room code must be four characters long!"
@@ -1319,17 +1317,17 @@ msgstr ""
 #: ../Scripts/Game/CameraController.gd:1311
 #, python-format
 msgid "Alt + %s"
-msgstr ""
+msgstr "Alt + %s"
 
 #: ../Scripts/Game/CameraController.gd:1312
 #, python-format
 msgid "Ctrl + %s"
-msgstr ""
+msgstr "Ctrl + %s"
 
 #: ../Scripts/Game/CameraController.gd:1313
 #, python-format
 msgid "Cmd + %s"
-msgstr ""
+msgstr "Cmd + %s"
 
 #: ../Scripts/Game/CameraController.gd:1314
 #, python-format
@@ -1384,7 +1382,7 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1356
 msgid "Select object"
-msgstr ""
+msgstr "Seleccionar objeto"
 
 #: ../Scripts/Game/CameraController.gd:1358
 msgid "Add to selection"
@@ -1879,11 +1877,11 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:235
 msgid "Dice"
-msgstr ""
+msgstr "Dados"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:237
 msgid "Music"
-msgstr ""
+msgstr "Música"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:238
 msgid "Pieces"
@@ -1895,19 +1893,19 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:240
 msgid "Sounds"
-msgstr ""
+msgstr "Sonidos"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:241
 msgid "Speakers"
-msgstr ""
+msgstr "Altavoces"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:242
 msgid "Stacks"
-msgstr ""
+msgstr "Pilas"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:243
 msgid "Tables"
-msgstr ""
+msgstr "Mesas"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:244
 msgid "Timers"
@@ -1915,7 +1913,7 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:245
 msgid "Tokens"
-msgstr ""
+msgstr "Contadores"
 
 #~ msgid "127.0.0.1:26271"
 #~ msgstr "127.0.0.1:26271"
