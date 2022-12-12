@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:54\n"
 "PO-Revision-Date: 2022-12-14 09:47+0000\n"
-"Last-Translator: Miguel de Dios Matias <tres.14159@gmail.com>\n"
+"Last-Translator: HugoPlacer <hugoplanellmoreno@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/es/>\n"
 "Language: es\n"
@@ -99,11 +99,11 @@ msgstr "Ocho de Diamantes"
 
 #: ../TabletopClub/cards/Eight_of_Hearts:1
 msgid "Eight of Hearts"
-msgstr "Ocho de Corazones"
+msgstr "Ocho de corazones"
 
 #: ../TabletopClub/cards/Eight_of_Spades:1
 msgid "Eight of Spades"
-msgstr "Ocho de Picas"
+msgstr "Ocho de picas"
 
 #: ../TabletopClub/cards/Five_of_Clubs:1
 msgid "Five of Clubs"
