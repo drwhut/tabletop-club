@@ -2172,6 +2172,7 @@ func _append_piece_states(state: Dictionary, pieces: Array, collisions: bool) ->
 		elif piece is SpeakerPiece or piece is TimerPiece:
 			piece_meta["is_music_track"] = piece.is_music_track()
 			piece_meta["is_playing"] = piece.is_playing_track()
+			piece_meta["is_positional"] = piece.is_positional()
 			piece_meta["is_track_paused"] = piece.is_track_paused()
 			piece_meta["playback_position"] = piece.get_playback_position()
 			piece_meta["track_entry"] = piece.get_track()
@@ -2382,6 +2383,14 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, new_names: bool
 				push_error("Speaker " + old_piece_name + " is playing value is not a boolean!")
 				return
 
+			if not piece_meta.has("is_positional"):
+				push_warning("Speaker %s does not have key 'is_positional', defaulting to false." % old_piece_name)
+				piece_meta["is_positional"] = false
+
+			if not piece_meta["is_positional"] is bool:
+				push_error("Speaker %s 'is_positional' value is not a boolean!" % old_piece_name)
+				return
+
 			if not piece_meta.has("is_track_paused"):
 				push_error("Speaker " + old_piece_name + " does not have an is track paused value!")
 				return
@@ -2415,6 +2424,7 @@ func _extract_piece_states_type(state: Dictionary, parent: Node, new_names: bool
 				return
 
 			if piece is SpeakerPiece:
+				piece.set_positional(piece_meta["is_positional"])
 				piece.set_track(piece_meta["track_entry"], piece_meta["is_music_track"])
 				piece.set_unit_size(piece_meta["unit_size"])
 

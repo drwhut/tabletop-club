@@ -123,6 +123,7 @@ onready var _sort_menu = $CanvasLayer/PieceContextMenu/SortMenu
 onready var _speaker_menu = $CanvasLayer/PieceContextMenu/SpeakerMenu
 onready var _speaker_pause_button = $CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPauseButton
 onready var _speaker_play_stop_button = $CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPlayStopButton
+onready var _speaker_positional_button = $CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerPositionalButton
 onready var _speaker_track_label = $CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerTrackLabel
 onready var _speaker_volume_slider = $CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider
 onready var _table_context_menu = $CanvasLayer/TableContextMenu
@@ -1044,6 +1045,9 @@ func _lock_selected_pieces() -> void:
 		if piece is Piece:
 			piece.rpc_id(1, "request_lock")
 
+func _on_speaker_is_positional_changed(_is_positional: bool) -> void:
+	_set_speaker_controls()
+
 func _on_speaker_started_playing() -> void:
 	_set_speaker_controls()
 
@@ -1266,6 +1270,7 @@ func _popup_piece_context_menu() -> void:
 	elif _inheritance_has(inheritance, "SpeakerPiece"):
 		if _selected_pieces.size() == 1:
 			_speaker_connected = _selected_pieces[0]
+			_speaker_connected.connect("is_positional_changed", self, "_on_speaker_is_positional_changed")
 			_speaker_connected.connect("started_playing", self, "_on_speaker_started_playing")
 			_speaker_connected.connect("stopped_playing", self, "_on_speaker_stopped_playing")
 			_speaker_connected.connect("track_changed", self, "_on_speaker_track_changed")
@@ -1715,7 +1720,11 @@ func _set_speaker_controls() -> void:
 			else:
 				_speaker_track_label.text = tr("Loaded: %s") % track_entry["name"]
 		
+		if _speaker_positional_button:
+			_speaker_positional_button.pressed = _speaker_connected.is_positional()
+		
 		if _speaker_volume_slider:
+			_speaker_volume_slider.editable = _speaker_connected.is_positional()
 			_speaker_volume_slider.value = _speaker_connected.get_unit_size()
 
 # Set the properties of controls relating to the selected timer.
@@ -2412,6 +2421,7 @@ func _on_PieceContextMenu_popup_hide():
 	# Any variables that were potentially set if the object was a speaker need
 	# to be reset.
 	if _speaker_connected:
+		_speaker_connected.disconnect("is_positional_changed", self, "_on_speaker_is_positional_changed")
 		_speaker_connected.disconnect("started_playing", self, "_on_speaker_started_playing")
 		_speaker_connected.disconnect("stopped_playing", self, "_on_speaker_stopped_playing")
 		_speaker_connected.disconnect("track_changed", self, "_on_speaker_track_changed")
@@ -2464,6 +2474,10 @@ func _on_SpeakerPlayStopButton_pressed():
 			_speaker_connected.rpc_id(1, "request_stop_track")
 		else:
 			_speaker_connected.rpc_id(1, "request_play_track")
+
+func _on_SpeakerPositionalButton_toggled(button_pressed: bool):
+	if _speaker_connected:
+		_speaker_connected.rpc_id(1, "request_set_positional", button_pressed)
 
 func _on_SpeakerSelectTrackButton_pressed():
 	_track_dialog.popup_centered()

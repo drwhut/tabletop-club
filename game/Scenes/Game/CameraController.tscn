@@ -103,13 +103,13 @@ margin_bottom = 20.0
 
 [node name="SpeakerMenu" type="PopupPanel" parent="CanvasLayer/PieceContextMenu"]
 margin_right = 300.0
-margin_bottom = 102.0
+margin_bottom = 134.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PieceContextMenu/SpeakerMenu"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 296.0
-margin_bottom = 98.0
+margin_bottom = 130.0
 
 [node name="SpeakerTrackLabel" type="Label" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer"]
 margin_right = 292.0
@@ -139,16 +139,23 @@ margin_right = 292.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 
-[node name="RangeLabel" type="Label" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer"]
+[node name="SpeakerPositionalButton" type="CheckBox" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer"]
 margin_top = 54.0
 margin_right = 292.0
-margin_bottom = 74.0
+margin_bottom = 82.0
+text = "Positional audio"
+
+[node name="RangeLabel" type="Label" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer"]
+margin_top = 86.0
+margin_right = 292.0
+margin_bottom = 106.0
 text = "Range:"
 
 [node name="SpeakerVolumeSlider" type="HSlider" parent="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer"]
-margin_top = 78.0
+margin_top = 110.0
 margin_right = 292.0
-margin_bottom = 94.0
+margin_bottom = 126.0
+editable = false
 
 [node name="TakeOffTopMenu" type="PopupPanel" parent="CanvasLayer/PieceContextMenu"]
 margin_right = 8.0
@@ -777,6 +784,7 @@ autowrap = true
 [connection signal="pressed" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerSelectTrackButton" to="." method="_on_SpeakerSelectTrackButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPlayStopButton" to="." method="_on_SpeakerPlayStopButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPauseButton" to="." method="_on_SpeakerPauseButton_pressed"]
+[connection signal="toggled" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerPositionalButton" to="." method="_on_SpeakerPositionalButton_toggled"]
 [connection signal="mouse_entered" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_mouse_exited"]
 [connection signal="value_changed" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_value_changed"]

@@ -24,6 +24,7 @@ extends Piece
 
 class_name SpeakerPiece
 
+signal is_positional_changed(is_positional)
 signal started_playing()
 signal stopped_playing()
 signal track_changed(track_entry, music)
@@ -31,8 +32,9 @@ signal track_paused()
 signal track_resumed()
 signal unit_size_changed(unit_size)
 
-onready var _audio_player = $AudioStreamPlayer3D
+onready var _audio_player = $AudioStreamPlayer
 
+var _last_unit_size: float = 50.0
 var _track_entry: Dictionary = {}
 
 # Get the current playback position of the speaker.
@@ -48,7 +50,9 @@ func get_track() -> Dictionary:
 # Get the unit size of the speaker.
 # Returns: The unit size of the speaker.
 func get_unit_size() -> float:
-	return _audio_player.unit_size
+	if _audio_player is AudioStreamPlayer3D:
+		return _audio_player.unit_size
+	return _last_unit_size
 
 # Check if the current track is a music track.
 # Returns: If the current track is a music track. Otherwise, it is a sound track.
@@ -59,6 +63,11 @@ func is_music_track() -> bool:
 # Returns: If the speaker is playing a track.
 func is_playing_track() -> bool:
 	return _audio_player.playing
+
+# Check if the speaker is playing audio positionally.
+# Returns: If the speaker plays audio positionally.
+func is_positional() -> bool:
+	return _audio_player is AudioStreamPlayer3D
 
 # Check if there is a track loaded in the player.
 # Returns: If there is a track loaded.
@@ -106,6 +115,11 @@ master func request_play_track(from: float = 0.0) -> void:
 master func request_resume_track() -> void:
 	rpc("resume_track")
 
+# Request the server to change whether the speaker is positional or not.
+# is_positional: If the speaker is positional.
+master func request_set_positional(is_positional: bool) -> void:
+	rpc("set_positional", is_positional)
+
 # Request the server to set the player's track.
 # track_entry: The next track's entry.
 # music: True if it is a music track, false if it is a sound track.
@@ -129,6 +143,56 @@ remotesync func resume_track() -> void:
 	_audio_player.stream_paused = false
 	
 	emit_signal("track_resumed")
+
+# Called by the server to set whether the speaker is positional or not.
+# is_positional: If the speaker should be positional.
+remotesync func set_positional(is_positional: bool) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	var new_player = null
+	if is_positional and not (_audio_player is AudioStreamPlayer3D):
+		new_player = AudioStreamPlayer3D.new()
+		new_player.unit_size = _last_unit_size
+	elif not is_positional and not (_audio_player is AudioStreamPlayer):
+		new_player = AudioStreamPlayer.new()
+	
+	if new_player == null:
+		return
+	
+	if _audio_player is AudioStreamPlayer3D:
+		_last_unit_size = _audio_player.unit_size
+	
+	# Same connections as in _ready().
+	_audio_player.disconnect("finished", self, "_on_audio_player_finished")
+	new_player.connect("finished", self, "_on_audio_player_finished")
+	
+	new_player.bus = _audio_player.bus
+	new_player.stream = _audio_player.stream
+	var is_playing = is_playing_track()
+	var is_paused = is_track_paused()
+	
+	# Keep track of how much time passes between stopping the old audio player,
+	# and starting the new one.
+	var playback_position = get_playback_position()
+	var begin_transfer_time = OS.get_ticks_usec()
+	stop_track()
+	remove_child(_audio_player)
+	_audio_player.queue_free()
+	
+	new_player.name = "AudioStreamPlayer"
+	add_child(new_player)
+	_audio_player = new_player
+	
+	var end_transfer_time = OS.get_ticks_usec()
+	if is_paused or is_playing:
+		var playback_offset = float(end_transfer_time - begin_transfer_time) / 1000000.0
+		
+		play_track(playback_position + playback_offset)
+		if is_paused:
+			pause_track(playback_position)
+	
+	emit_signal("is_positional_changed", is_positional)
 
 # Set the track the player will play using it's entry in the AssetDB.
 # track_entry: The new track's entry.
@@ -164,7 +228,11 @@ remotesync func set_unit_size(unit_size: float) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	_audio_player.unit_size = unit_size
+	if _audio_player is AudioStreamPlayer3D:
+		_audio_player.unit_size = unit_size
+	else:
+		_last_unit_size = unit_size
+	
 	emit_signal("unit_size_changed", unit_size)
 
 # Stop playing the currently loaded track.
@@ -177,9 +245,6 @@ remotesync func stop_track() -> void:
 	emit_signal("stopped_playing")
 
 func _ready():
-	# Make sure that initially the track can be heard from across the table.
-	_audio_player.unit_size = 50
-	
 	connect("scale_changed", self, "_on_scale_changed")
 	_audio_player.connect("finished", self, "_on_audio_player_finished")
 
@@ -194,7 +259,7 @@ func _check_if_wide() -> void:
 	if piece_entry["entry_path"] != "TabletopClub/speakers/Gramophone":
 		return
 	
-	if get_current_scale() == Vector3(5.0, 1.0, 1.0):
+	if get_current_scale().is_equal_approx(Vector3(5.0, 1.0, 1.0)):
 		if _audio_player.bus.ends_with("Music"):
 			_audio_player.bus = "WideMusic"
 		elif _audio_player.bus.ends_with("Sounds"):

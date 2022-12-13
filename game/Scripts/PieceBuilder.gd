@@ -59,8 +59,8 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 				else:
 					build = TimerPiece.new()
 				
-				var audio_player_node = AudioStreamPlayer3D.new()
-				audio_player_node.name = "AudioStreamPlayer3D"
+				var audio_player_node = AudioStreamPlayer.new()
+				audio_player_node.name = "AudioStreamPlayer"
 				build.add_child(audio_player_node)
 				audio_player_node.owner = build
 			else:
