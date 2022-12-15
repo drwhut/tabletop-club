@@ -103,6 +103,7 @@ onready var _control_hint_label = $CanvasLayer/CameraUI/ControlHintLabel
 onready var _cursors = $Cursors
 onready var _deal_cards_spin_box_button = $CanvasLayer/PieceContextMenu/DealCardsMenu/DealCardsSpinBoxButton
 onready var _debug_info_label = $CanvasLayer/CameraUI/DebugInfoLabel
+onready var _dice_value_button = $CanvasLayer/PieceContextMenu/DiceValueMenu/VBoxContainer/HBoxContainer/DiceValueButton
 onready var _erase_tool_menu = $CanvasLayer/EraseToolMenu
 onready var _eraser_size_label = $CanvasLayer/EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer/EraserSizeValueLabel
 onready var _eraser_size_slider = $CanvasLayer/EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer/EraserSizeValueSlider
@@ -1244,14 +1245,35 @@ func _popup_piece_context_menu() -> void:
 	
 	if _inheritance_has(inheritance, "Dice"):
 		var total = 0.0
+		var available_values = []
 		for dice in _selected_pieces:
 			total += dice.get_face_value()
+			
+			var face_value_dict: Dictionary = dice.piece_entry["face_values"]
+			for possible_value in face_value_dict.keys():
+				if not available_values.has(possible_value):
+					available_values.append(possible_value)
+		available_values.sort()
 		
 		var is_int = (round(total) == total)
 		if is_int:
 			_piece_context_menu.add_item(tr("Total: %d") % total)
 		else:
 			_piece_context_menu.add_item(tr("Total: %f") % total)
+		
+		var prev_value = 1
+		if _dice_value_button.selected >= 0:
+			prev_value = _dice_value_button.get_item_metadata(
+					_dice_value_button.selected)
+		
+		_dice_value_button.clear()
+		for value in available_values:
+			var new_index = _dice_value_button.get_item_count()
+			_dice_value_button.add_item(str(value))
+			_dice_value_button.set_item_metadata(new_index, value)
+			if value == prev_value and typeof(value) == typeof(prev_value):
+				_dice_value_button.select(new_index)
+		_piece_context_menu.add_submenu_item(tr("Set value"), "DiceValueMenu")
 	
 	elif _inheritance_has(inheritance, "StackablePiece"):
 		if _selected_pieces.size() > 1:
@@ -2445,6 +2467,46 @@ func _on_RulerToolButton_pressed():
 	_ruler_tool_menu.rect_position = get_viewport().get_mouse_position()
 	_ruler_tool_menu.rect_position.y -= _ruler_tool_menu.rect_size.y
 	_ruler_tool_menu.popup()
+
+func _on_SetDiceValueButton_pressed():
+	_hide_context_menu()
+	
+	if _dice_value_button.selected < 0:
+		return
+	
+	var value_to_set = _dice_value_button.get_selected_metadata()
+	var quat_result_cache: Dictionary = {}
+	for piece in _selected_pieces:
+		if piece is Dice:
+			var face_value_dict: Dictionary = piece.piece_entry["face_values"]
+			if not face_value_dict.has(value_to_set):
+				continue
+			
+			var face_value_normal: Vector3 = face_value_dict[value_to_set]
+			
+			var rotation_quat: Quat
+			if face_value_normal.is_equal_approx(Vector3.UP):
+				rotation_quat = Quat.IDENTITY
+			elif quat_result_cache.has(face_value_normal):
+				rotation_quat = quat_result_cache[face_value_normal]
+			else:
+				# Come up with a basis where the y component is the normal
+				# vector, invert it, and use it as a transform to get the face
+				# we want to show pointed upwards.
+				var offset = Vector3.UP
+				if face_value_normal.abs().is_equal_approx(Vector3.UP):
+					offset = Vector3.BACK
+				
+				var basis_x = face_value_normal.cross(face_value_normal + offset)
+				var basis_z = basis_x.cross(face_value_normal)
+				var inverse_basis = Basis(basis_x, face_value_normal, basis_z)
+				rotation_quat = inverse_basis.get_rotation_quat().inverse()
+				quat_result_cache[face_value_normal] = rotation_quat
+			
+			if piece.is_hovering():
+				piece.rpc_id(1, "request_set_hover_rotation", rotation_quat)
+			else:
+				piece.rpc_id(1, "request_set_rotation_quat", rotation_quat)
 
 func _on_SortMenu_id_pressed(id: int):
 	var key = ""

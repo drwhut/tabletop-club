@@ -1482,7 +1482,7 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 						push_error("'face_values' value in entry is not a Vector3!")
 						return false
 					
-					if abs(element_value.length_squared() - 1.0) > 0.00001:
+					if not is_equal_approx(element_value.length_squared(), 1.0):
 						push_error("'face_values' vector in entry is not unit length!")
 						return false
 			"hands":
