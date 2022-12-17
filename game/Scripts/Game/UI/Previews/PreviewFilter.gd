@@ -273,6 +273,7 @@ func _set_type_options() -> void:
 		
 		if add_type:
 			var type_text = type_display
+			type_text = type_text.replace("BOARDS", tr("Boards"))
 			type_text = type_text.replace("CARDS", tr("Cards"))
 			type_text = type_text.replace("CONTAINERS", tr("Containers"))
 			type_text = type_text.replace("DICE", tr("Dice"))

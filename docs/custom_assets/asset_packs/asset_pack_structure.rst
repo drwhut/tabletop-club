@@ -33,6 +33,8 @@ Note that asset packs don't need to have all of these sub-folders.
 +--------------------------+------------------------+--------------------------+------------------------------+
 | Sub-folder               | File Type              | Asset Type               | Object Type                  |
 +==========================+========================+==========================+==============================+
+| ``boards/``              | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-board`     |
++--------------------------+------------------------+--------------------------+------------------------------+
 | ``cards/``               | :ref:`file-type-image` | :ref:`asset-type-object` | :ref:`object-type-card`      |
 +--------------------------+------------------------+--------------------------+------------------------------+
 | ``containers/``          | :ref:`file-type-3d`    | :ref:`asset-type-object` | :ref:`object-type-container` |

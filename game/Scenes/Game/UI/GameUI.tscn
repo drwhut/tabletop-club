@@ -138,6 +138,7 @@ mouse_filter = 2
 [node name="ObjectsDialog" parent="." instance=ExtResource( 2 )]
 window_title = "Objects"
 db_types = {
+"BOARDS": "boards",
 "CARDS": "cards",
 "CONTAINERS": "containers",
 "DICE": [ "dice/d4", "dice/d6", "dice/d8", "dice/d10", "dice/d12", "dice/d20" ],

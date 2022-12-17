@@ -43,6 +43,7 @@ const ASSET_DIR_PREFIXES = [
 ]
 
 const ASSET_PACK_SUBFOLDERS = {
+	"boards": { "type": ASSET_SCENE, "scene": "" },
 	"cards": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Card.tscn" },
 	"containers": { "type": ASSET_SCENE, "scene": "" },
 	"dice/d4": { "type": ASSET_SCENE, "scene": "" },

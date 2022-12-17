@@ -95,6 +95,7 @@ folder (if you do not have one, see :ref:`tutorial-creating-asset-pack`). From
 here, you have a choice as to what folder you can create and put the exported
 model in, depending on what functionality the object should have:
 
+* :ref:`object-type-board`: ``MyAssetPack/boards``
 * :ref:`object-type-container`: ``MyAssetPack/containers``
 * :ref:`object-type-dice`: ``MyAssetPack/dice`` - then depending on how many
   sides the die has, a further subfolder named: ``d4``, ``d6``, ``d8``, ``d10``,

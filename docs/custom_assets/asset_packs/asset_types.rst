@@ -12,6 +12,19 @@ it is driven by the physics engine). There are many different types of objects,
 each with their own special functionality:
 
 
+.. _object-type-board:
+
+Board
+^^^^^
+
+.. image:: examples/board.jpg
+   :alt: An empty chess board on a table.
+
+Boards are generic objects with no special functionality. In this way, they are
+equivalent to :ref:`object-type-piece`, with the exception that they are placed
+in a separate type in the objects menu.
+
+
 .. _object-type-card:
 
 Card
