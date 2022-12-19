@@ -828,7 +828,9 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 	# these values for the entry initialization.
 	var scale = _get_file_config_value(config, from.get_file(), "scale", Vector3.ONE)
 	if type == "cards":
-			scale = Vector3(scale.x, 1, scale.y)
+		if typeof(scale) != TYPE_VECTOR2:
+			push_warning("Scale for type cards has to be Vector2! Default thickness is used!")
+		scale = Vector3(scale.x, 1, scale.y)
 	elif typeof(scale) != TYPE_VECTOR3:
 		push_error("Scale for type %s has to be Vector3!" % type)
 	
