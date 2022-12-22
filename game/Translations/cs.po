@@ -9,183 +9,192 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-12-23 19:50+0000\n"
+"Last-Translator: muzzug <kadlec.ondrej@protonmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/game/"
+"cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:39
 msgid "Importing assets..."
-msgstr ""
+msgstr "Importování assetů..."
 
 #: ../Scenes/ImportAssets.tscn:59
 msgid "Missing Asset Folder"
-msgstr ""
+msgstr "Chybějící složka s assety"
 
 #: ../Scenes/ImportAssets.tscn:65
 msgid "Missing Module"
-msgstr ""
+msgstr "Chybějící modul"
 
 #: ../Scenes/Loading.tscn:41
 msgid "Loading..."
-msgstr ""
+msgstr "Načítání..."
 
 #: ../Scenes/MainMenu.tscn:48
 msgid "Singleplayer"
-msgstr ""
+msgstr "Jeden hráč"
 
 #: ../Scenes/MainMenu.tscn:55 ../Scenes/MainMenu.tscn:129
 #: ../Scenes/OptionsMenu.tscn:914
 msgid "Multiplayer"
-msgstr ""
+msgstr "Více hráčů"
 
 #: ../Scenes/Game/UI/GameUI.tscn:217 ../Scenes/MainMenu.tscn:62
 msgid "Options"
-msgstr ""
+msgstr "Možnosti"
 
 #: ../Scenes/MainMenu.tscn:69 ../Scenes/MainMenu.tscn:286
 msgid "Credits"
-msgstr ""
+msgstr "Titulky"
 
 #: ../Scenes/MainMenu.tscn:76
 msgid "Quit"
-msgstr ""
+msgstr "Ukončit"
 
 #: ../Scenes/MainMenu.tscn:95
 msgid "Tabletop Club on Itch.io"
-msgstr ""
+msgstr "Tabletop Club na Itch.io"
 
 #: ../Scenes/MainMenu.tscn:104
 msgid "Source Code"
-msgstr ""
+msgstr "Zdrojový kód"
 
 #: ../Scenes/MainMenu.tscn:113
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentace"
 
 #: ../Scenes/MainMenu.tscn:122 ../Scenes/MainMenu.tscn:217
 msgid "Information"
-msgstr ""
+msgstr "Informace"
 
 #: ../Scenes/MainMenu.tscn:147
 msgid "Host Game"
-msgstr ""
+msgstr "Hostovat hru"
 
 #: ../Scenes/MainMenu.tscn:153
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr ""
+"Vytvořte novou herní místnost, do které se můžou vaši přátelé připojit přes "
+"Internet."
 
 #: ../Scenes/MainMenu.tscn:165 ../Scenes/MainMenu.tscn:212
 msgid "Join Game"
-msgstr ""
+msgstr "Připojit ke hře"
 
 #: ../Scenes/MainMenu.tscn:171
 msgid "Use a room code to join your friend's lobby."
-msgstr ""
+msgstr "Připojte se do herní místnosti vašeho přítele pomocí kódu místnosti."
 
 #: ../Scenes/MainMenu.tscn:177
 msgid "Enter Room Code"
-msgstr ""
+msgstr "Vložit kód místnosti"
 
 #: ../Scenes/MainMenu.tscn:197
 msgid "Room Code:"
-msgstr ""
+msgstr "Kód místnosti:"
 
 #: ../Scenes/MainMenu.tscn:206
 msgid "ABCD"
-msgstr ""
+msgstr "ABCS"
 
 #: ../Scenes/MainMenu.tscn:304
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
-msgstr ""
+msgstr "Zvuk"
 
 #: ../Scenes/OptionsMenu.tscn:61
 msgid "Master Volume"
-msgstr ""
+msgstr "Hlavní hlasitost"
 
 #: ../Scenes/OptionsMenu.tscn:68
 msgid "Sets the overall volume of all sources of sound in the game."
-msgstr ""
+msgstr "Nastavuje celkovou hlasitost všech zdrojů zvuku ve hře."
 
 #: ../Scenes/OptionsMenu.tscn:79
 msgid "Music Volume"
-msgstr ""
+msgstr "Hlasitost hudby"
 
 #: ../Scenes/OptionsMenu.tscn:87
 msgid "Sets the volume of all music sources in the game."
-msgstr ""
+msgstr "Nastavuje celkovou hlasitost všech zdrojů hudby ve hře."
 
 #: ../Scenes/OptionsMenu.tscn:98
 msgid "Sounds Volume"
-msgstr ""
+msgstr "Hlasitost zvuků"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
 "Sets the volume of sound sources played manually throughout the game, for"
 " example, from speakers."
 msgstr ""
+"Nastavuje hlasitost zdrojů zvuku přehrávaných manuálně v průběhu hry, "
+"například z reproduktorů."
 
 #: ../Scenes/OptionsMenu.tscn:117
 msgid "Effects Volume"
-msgstr ""
+msgstr "Hlasitost efektů"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
 "Sets the volume of sound effects played automatically throughout the "
 "game, for example, pieces falling on the table. "
 msgstr ""
+"Nastavuje hlasitost zvukových efektů automaticky přehrávaných během hry, "
+"například padání figurek na stůl. "
 
 #: ../Scenes/OptionsMenu.tscn:142
 msgid "Controls"
-msgstr ""
+msgstr "Ovládání"
 
 #: ../Scenes/OptionsMenu.tscn:155
 msgid "Mouse Horizontal Sensitivity"
-msgstr ""
+msgstr "Horizontální citlivost myši"
 
 #: ../Scenes/OptionsMenu.tscn:162
 msgid "Sets the horizontal sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "Nastavuje horizontální citlivost otáčení kamery."
 
 #: ../Scenes/OptionsMenu.tscn:174
 msgid "Mouse Vertical Sensitivity"
-msgstr ""
+msgstr "Vertikální citlivost myši"
 
 #: ../Scenes/OptionsMenu.tscn:182
 msgid "Sets the vertical sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "Nastavuje vertikální citlivost otáčení kamery."
 
 #: ../Scenes/OptionsMenu.tscn:194
 msgid "Mouse Horizontal Invert"
-msgstr ""
+msgstr "Horizontální převrácení myši"
 
 #: ../Scenes/OptionsMenu.tscn:202
 msgid "Used to invert the rotation of the camera horizontally."
-msgstr ""
+msgstr "Slouží k převrácení horizontálního natočení kamery."
 
 #: ../Scenes/OptionsMenu.tscn:209
 msgid "Mouse Vertical Invert"
-msgstr ""
+msgstr "Vertikální převrácení myši"
 
 #: ../Scenes/OptionsMenu.tscn:217
 msgid "Used to invert the rotation of the camera vertically."
-msgstr ""
+msgstr "Slouží k převrácení vertikálního natočení kamery."
 
 #: ../Scenes/OptionsMenu.tscn:224
 msgid "Camera Movement Speed"
-msgstr ""
+msgstr "Rychlost pohybu kamery"
 
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
-msgstr ""
+msgstr "Slouží k nastavení rychlosti pohybu kamery po stole."
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
