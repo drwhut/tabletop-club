@@ -9,13 +9,16 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-12-23 19:50+0000\n"
+"Last-Translator: muzzug <kadlec.ondrej@protonmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-custom-assets/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -966,7 +969,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:99
 msgid "Audio"
-msgstr ""
+msgstr "Zvuk"
 
 #: ../../custom_assets/asset_packs/file_types.rst:101
 msgid "As of right now, Tabletop Club supports the following audio formats:"
