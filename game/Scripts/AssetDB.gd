@@ -826,13 +826,16 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 	
 	# We usually deal with the config values at the end, but some assets need
 	# these values for the entry initialization.
-	var scale = _get_file_config_value(config, from.get_file(), "scale", Vector3.ONE)
+	var scale
 	if type == "cards":
+		scale = _get_file_config_value(config, from.get_file(), "scale", Vector2.ONE)
 		if typeof(scale) != TYPE_VECTOR2:
 			push_warning("Scale for type cards has to be Vector2! Default thickness is used!")
 		scale = Vector3(scale.x, 1, scale.y)
-	elif typeof(scale) != TYPE_VECTOR3:
-		push_error("Scale for type %s has to be Vector3!" % type)
+	else:
+		scale = _get_file_config_value(config, from.get_file(), "scale", Vector3.ONE)
+		if typeof(scale) != TYPE_VECTOR3:
+			push_error("Scale for type %s has to be Vector3!" % type)
 	
 	var entry = {}
 	if asset_type == ASSET_AUDIO:
