@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2022-12-14 09:48+0000\n"
+"PO-Revision-Date: 2022-12-28 13:51+0000\n"
 "Last-Translator: Miguel de Dios Matias <tres.14159@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "game/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:39
@@ -296,7 +296,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:64
 msgid "5 minutes"
-msgstr ""
+msgstr "5 minutos"
 
 #: ../Scenes/OptionsMenu.tscn:474
 msgid "Autosave File Count"
@@ -316,7 +316,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:509
 msgid "Show System Errors"
-msgstr ""
+msgstr "Mostrar Errores de Sistema"
 
 #: ../Scenes/OptionsMenu.tscn:517
 msgid "Displays system errors in the chat box."
