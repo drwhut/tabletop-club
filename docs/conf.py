@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Tabletop Club'
-copyright = "2020-2022, Benjamin 'drwhut' Beddows, Tabletop Club contributors"
+copyright = "2020-2023, Benjamin 'drwhut' Beddows, Tabletop Club contributors"
 
 # The full version, including alpha/beta/rc tags
 release = 'master'

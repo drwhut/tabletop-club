@@ -1,5 +1,5 @@
 # tabletop-club
-# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows
+# Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal

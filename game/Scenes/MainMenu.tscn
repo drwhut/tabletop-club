@@ -259,8 +259,8 @@ margin_right = 720.0
 margin_bottom = 450.0
 focus_mode = 2
 size_flags_vertical = 3
-text = "Copyright (c) 2020–2022 Benjamin 'drwhut' Beddows.
-Copyright (c) 2021–2022 Tabletop Club contributors (see credits).
+text = "Copyright (c) 2020–2023 Benjamin 'drwhut' Beddows.
+Copyright (c) 2021–2023 Tabletop Club contributors (see credits).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \"Software\"), to deal
