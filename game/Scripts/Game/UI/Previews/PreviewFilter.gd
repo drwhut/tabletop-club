@@ -74,6 +74,8 @@ func get_pack_metadata() -> String:
 # Get the currently selected type.
 # Returns: The currently selected type.
 func get_type() -> String:
+	if _type_button.selected < 0:
+		return ""
 	return _type_button.get_item_metadata(_type_button.selected)
 
 # Set the AssetDB types to be displayed.
