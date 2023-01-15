@@ -62,46 +62,40 @@ func set_piece_details(piece_entry: Dictionary) -> void:
 	_entry = piece_entry
 	var locale = TranslationServer.get_locale()
 	
-	var tooltip_text = ""
+	var display_name = ""
+	var name_locale = "name_%s" % locale
+	if piece_entry.has(name_locale):
+		display_name = piece_entry[name_locale]
+	else:
+		display_name = piece_entry["name"]
+	
+	var tooltip_text = display_name
 	
 	var desc_locale = "desc_%s" % locale
 	if piece_entry.has(desc_locale):
-		tooltip_text = piece_entry[desc_locale]
+		tooltip_text += "\n" + piece_entry[desc_locale]
 	elif not piece_entry["desc"].empty():
-		tooltip_text = piece_entry["desc"]
+		tooltip_text += "\n" + piece_entry["desc"]
 	
 	if piece_entry.has("author"):
 		if not piece_entry["author"].empty():
-			if not tooltip_text.empty():
-				tooltip_text += "\n"
-			tooltip_text += tr("Author: %s") % piece_entry["author"]
+			tooltip_text += "\n" + tr("Author: %s") % piece_entry["author"]
 	
 	if piece_entry.has("license"):
 		if not piece_entry["license"].empty():
-			if not tooltip_text.empty():
-				tooltip_text += "\n"
-			tooltip_text += tr("License: %s") % piece_entry["license"]
+			tooltip_text += "\n" + tr("License: %s") % piece_entry["license"]
 	
 	if piece_entry.has("modified_by"):
 		if not piece_entry["modified_by"].empty():
-			if not tooltip_text.empty():
-				tooltip_text += "\n"
-			tooltip_text += tr("Modified by: %s") % piece_entry["modified_by"]
+			tooltip_text += "\n" + tr("Modified by: %s") % piece_entry["modified_by"]
 	
 	if piece_entry.has("url"):
 		if not piece_entry["url"].empty():
-			if not tooltip_text.empty():
-				tooltip_text += "\n"
-			tooltip_text += tr("URL: %s") % piece_entry["url"]
+			tooltip_text += "\n" + tr("URL: %s") % piece_entry["url"]
 	
 	hint_tooltip = tooltip_text
 	
-	var name_locale = "name_%s" % locale
-	if piece_entry.has(name_locale):
-		_label.text = piece_entry[name_locale]
-	else:
-		_label.text = piece_entry["name"]
-	
+	_label.text = display_name
 	_label_container.scroll_horizontal_enabled = true
 	_label_direction_moving = 1
 	_label_time_since_move = 0.0
