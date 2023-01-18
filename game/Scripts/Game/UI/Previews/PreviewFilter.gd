@@ -120,7 +120,9 @@ func setup() -> void:
 		_pack_button.set_item_metadata(_pack_button.get_item_count() - 1, DEFAULT_ASSET_PACK)
 		_pack_button.add_separator()
 	
-	for pack in asset_db:
+	var pack_arr = asset_db.keys()
+	pack_arr.sort()
+	for pack in pack_arr:
 		if pack != DEFAULT_ASSET_PACK:
 			_pack_button.add_item(pack)
 			_pack_button.set_item_metadata(_pack_button.get_item_count() - 1, pack)
