@@ -111,6 +111,12 @@ func get_albedo_color() -> Color:
 	for mesh_instance in get_mesh_instances():
 		if mesh_instance.get_surface_material_count() > 0:
 			var material = mesh_instance.get_surface_material(0)
+			
+			# Skip if the first surface does not have a material.
+			if material == null:
+				push_warning("Mesh instance %s has no material for surface 0, ignoring." % mesh_instance.name)
+				continue
+			
 			current_color = material.albedo_color
 			original_color = _get_original_albedo(material)
 			break
@@ -395,6 +401,13 @@ func set_albedo_color_client(color: Color) -> void:
 	for mesh_instance in get_mesh_instances():
 		for surface in range(mesh_instance.get_surface_material_count()):
 			var material = mesh_instance.get_surface_material(surface)
+			
+			# There's a chance the surface does not have a material - if this is
+			# the case, then skip this surface.
+			if material == null:
+				push_warning("Mesh instance %s has no material for surface %d, ignoring." % [
+						mesh_instance.name, surface])
+				continue
 			
 			# Some materials will already have an albedo colour set, so keep
 			# this colour saved so that we don't overwrite and lose it.
