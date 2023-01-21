@@ -131,8 +131,8 @@ msgstr ""
 "Mas a melhor parte deste jogo é que qualquer pessoa pode criar assets para "
 "ele! É simples, basta arrastar ficheiros numa pasta e o jogo irá importá-"
 "las, sendo assim você poderá usá-los direto no dentro do jogo! Se quer "
-"aprender mais sobre como criar assets para o Tabletop Club, visite a página "
-":ref:`asset-packs`."
+"aprender mais sobre como criar assets para o Tabletop Club, visite a página :"
+"ref:`asset-packs`."
 
 #: ../../general/about.rst:61
 msgid "Simulator"
@@ -308,9 +308,9 @@ msgid ""
 "play the game right away!"
 msgstr ""
 "Para a maioria dos jogos populares, o pacote padrão vem com um ficheiro "
-"salvo pré-pronto que pode carregar instantaneamente (dentro do jogo, clique "
-":guilabel:`Jogos`, escolha o jogo que quer jogar, clique "
-":guilabel:`Carregar`) para já sair jogando!"
+"salvo pré-pronto que pode carregar instantaneamente (dentro do jogo, clique :"
+"guilabel:`Jogos`, escolha o jogo que quer jogar, clique :guilabel:"
+"`Carregar`) para já sair jogando!"
 
 #: ../../general/about.rst:152
 msgid ""
