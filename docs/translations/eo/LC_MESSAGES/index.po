@@ -21,11 +21,9 @@ msgstr ""
 "X-Generator: Weblate 4.15.1-dev\n"
 
 #: ../../index.rst:22
-#: ../../index.rst:22
 msgid "General"
 msgstr "Ĝenerale"
 
-#: ../../index.rst:30
 #: ../../index.rst:30
 msgid "Custom Assets"
 msgstr "Propraj havaĵoj"
@@ -35,7 +33,11 @@ msgid "Tabletop Club Documentation"
 msgstr "Dokumentado de Tabletop Club"
 
 #: ../../index.rst:9
-msgid "Welcome to the documentation for Tabletop Club, a free and open source tabletop board game simulator! If you're new to the project, feel free to check out the :ref:`about-tabletop-club` page. Otherwise, you can use either the table of contents, the sidebar, or the search bar to find what you need!"
+msgid ""
+"Welcome to the documentation for Tabletop Club, a free and open source "
+"tabletop board game simulator! If you're new to the project, feel free to "
+"check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
+"the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
 "Bonvenon al la dokumentado por Tabletop Club, senpaga kaj malfermfonta "
 "tabulluda simulilo! Se vi estas novulo al la projekto, sentu vin libera "
@@ -44,7 +46,12 @@ msgstr ""
 "bezonas!"
 
 #: ../../index.rst:16
-msgid "The documentation, as well as the project in general, is open to suggestions and contributions! If you feel that something is not explained well, or you think that information is missing, then please don't hesitate to open an issue or a pull request on the project's `GitHub repository <https://github.com/drwhut/tabletop-club/issues>`_!"
+msgid ""
+"The documentation, as well as the project in general, is open to suggestions "
+"and contributions! If you feel that something is not explained well, or you "
+"think that information is missing, then please don't hesitate to open an "
+"issue or a pull request on the project's `GitHub repository <https://github."
+"com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
 "La dokumentado, same kiel la projekto ĝenerale, estas malferma al proponoj "
 "kaj kontribuoj! Se vi sentas, ke io ne estas bone klarigata, aŭ ke mankas "

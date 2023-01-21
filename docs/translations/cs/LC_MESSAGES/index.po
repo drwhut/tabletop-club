@@ -18,11 +18,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../index.rst:22
-#: ../../index.rst:22
 msgid "General"
 msgstr ""
 
-#: ../../index.rst:30
 #: ../../index.rst:30
 msgid "Custom Assets"
 msgstr ""
@@ -32,11 +30,20 @@ msgid "Tabletop Club Documentation"
 msgstr ""
 
 #: ../../index.rst:9
-msgid "Welcome to the documentation for Tabletop Club, a free and open source tabletop board game simulator! If you're new to the project, feel free to check out the :ref:`about-tabletop-club` page. Otherwise, you can use either the table of contents, the sidebar, or the search bar to find what you need!"
+msgid ""
+"Welcome to the documentation for Tabletop Club, a free and open source "
+"tabletop board game simulator! If you're new to the project, feel free to "
+"check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
+"the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
 
 #: ../../index.rst:16
-msgid "The documentation, as well as the project in general, is open to suggestions and contributions! If you feel that something is not explained well, or you think that information is missing, then please don't hesitate to open an issue or a pull request on the project's `GitHub repository <https://github.com/drwhut/tabletop-club/issues>`_!"
+msgid ""
+"The documentation, as well as the project in general, is open to suggestions "
+"and contributions! If you feel that something is not explained well, or you "
+"think that information is missing, then please don't hesitate to open an "
+"issue or a pull request on the project's `GitHub repository <https://github."
+"com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
 
 #: ../../index.rst:39

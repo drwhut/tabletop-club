@@ -39,8 +39,8 @@ msgid ""
 "the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
 "Willkommen zur Dokumentation von Tabletop Club, einem freien Open Source "
-"Brettspiel-Simulator! Wenn du neu beim Projekt bist, besuche zuerst die :ref"
-":`about-tabletop-club` Seite. Andernfalls kannst du entweder das "
+"Brettspiel-Simulator! Wenn du neu beim Projekt bist, besuche zuerst die :ref:"
+"`about-tabletop-club` Seite. Andernfalls kannst du entweder das "
 "Inhaltsverzeichnis oder die Suchleiste nutzen, um das Gewünschte zu finden!"
 
 #: ../../index.rst:16

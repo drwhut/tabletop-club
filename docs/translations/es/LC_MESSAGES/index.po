@@ -55,8 +55,8 @@ msgstr ""
 "La documentación, así como el proyecto en general, está abierto a "
 "sugerencias y contribuciones. Si crees que algo no está bien explicado, o "
 "crees que falta información, ¡no dudes en abrir una incidencia o un pull "
-"request en el `repositorio de GitHub <https://github.com/drwhut/"
-"tabletop-club/issues>` del proyecto!"
+"request en el `repositorio de GitHub <https://github.com/drwhut/tabletop-"
+"club/issues>` del proyecto!"
 
 #: ../../index.rst:39
 msgid "Indices and tables"
