@@ -300,8 +300,8 @@ msgstr "Hier ein Beispiel für eine ``config.cfg``-Datei:"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:126
 msgid "Here is the full list of properties you can modify in ``config.cfg``:"
 msgstr ""
-"Hier eine vollständige Liste der Eigenschaften, die in der ``config.cfg``"
-"verändert werden können:"
+"Hier eine vollständige Liste der Eigenschaften, die in der ``config."
+"cfg``verändert werden können:"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:129
 msgid "Property Name"
@@ -423,8 +423,8 @@ msgid ""
 "Determines the collision shape of the object. See :ref:`file-type-3d` for "
 "more details."
 msgstr ""
-"Legt die Form des Objekts für die Kollision fest. Siege :ref:`file-type-3d`"
-"für mehr Details."
+"Legt die Form des Objekts für die Kollision fest. Siege :ref:`file-"
+"type-3d`für mehr Details."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 msgid "``color``"
@@ -510,8 +510,8 @@ msgid ""
 "Specifies which rotations correspond to what values on the faces of the die. "
 "See :ref:`object-type-dice` for more information."
 msgstr ""
-"Legt fest, welche Würfelfläche bei welcher Drehung gezeigt wird. Siehe :ref"
-":`object-type-dice`für mehr Informationen."
+"Legt fest, welche Würfelfläche bei welcher Drehung gezeigt wird. Siehe :ref:"
+"`object-type-dice`für mehr Informationen."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 msgid "``hands``"
