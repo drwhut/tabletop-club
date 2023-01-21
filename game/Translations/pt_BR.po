@@ -15,7 +15,7 @@ msgstr ""
 "tabletop-club/game/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.15.1-dev\n"
@@ -132,8 +132,8 @@ msgstr "Volume de Sons"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
-"Sets the volume of sound sources played manually throughout the game, for"
-" example, from speakers."
+"Sets the volume of sound sources played manually throughout the game, for "
+"example, from speakers."
 msgstr ""
 "Define o volume de fontes de som tocadas manualmente durante o jogo, por "
 "exemplo, dos alto-falantes."
@@ -144,8 +144,8 @@ msgstr "Volume de Efeitos"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
-"Sets the volume of sound effects played automatically throughout the "
-"game, for example, pieces falling on the table. "
+"Sets the volume of sound effects played automatically throughout the game, "
+"for example, pieces falling on the table. "
 msgstr ""
 "Define o volume de efeitos sonoros tocados automaticamente durante o jogo, "
 "por exemplo, peças caindo na mesa. "
@@ -200,8 +200,8 @@ msgstr "Segurar o Botão Esquerdo para Movimentar a Câmera"
 
 #: ../Scenes/OptionsMenu.tscn:252
 msgid ""
-"Used to allow the player to move the camera by dragging the mouse across "
-"the table."
+"Used to allow the player to move the camera by dragging the mouse across the "
+"table."
 msgstr ""
 "Usado para permitir que o jogador mova a câmera arrastando o mouse pela mesa."
 
@@ -211,8 +211,8 @@ msgstr "Sensibilidade do Zoom"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
-"Sets how fast the camera zooms in and out of the table when using the "
-"scroll wheel."
+"Sets how fast the camera zooms in and out of the table when using the scroll "
+"wheel."
 msgstr ""
 "Define o quão rápido a câmera se aproxima ou afasta da mesa quando a roda do "
 "mouse é usada."
@@ -239,8 +239,7 @@ msgstr "Inverter o Levantamento da Peça"
 
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
-"Used to invert the direction a piece will go when lifting it off the "
-"table."
+"Used to invert the direction a piece will go when lifting it off the table."
 msgstr "Usado para inverter a direção da peça quando levantada da mesa."
 
 #: ../Scenes/OptionsMenu.tscn:329
@@ -257,8 +256,8 @@ msgstr "Visualização na Mão Habilitada"
 
 #: ../Scenes/OptionsMenu.tscn:352
 msgid ""
-"When set, hovering over a card in your hand will display an enhanced "
-"preview of the card after a short period of time."
+"When set, hovering over a card in your hand will display an enhanced preview "
+"of the card after a short period of time."
 msgstr ""
 "Quando habilitada, passar por cima de uma carta em sua mão vai mostrar uma "
 "visualização melhorada da carta após um curto período de tempo."
@@ -269,8 +268,8 @@ msgstr "Atraso da Visualização na Mão"
 
 #: ../Scenes/OptionsMenu.tscn:368
 msgid ""
-"Used to set how long the mouse needs to be kept still before a preview of"
-" a card is displayed from the hand."
+"Used to set how long the mouse needs to be kept still before a preview of a "
+"card is displayed from the hand."
 msgstr ""
 "Usado para definir quanto tempo o mouse precisa ficar parado antes da "
 "visualização de uma carta ser mostrada pela mão."
@@ -439,7 +438,8 @@ msgid "Lock/Unlock Piece"
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:777
-msgid "Toggles the lock on the selected piece, fixing its position and rotation."
+msgid ""
+"Toggles the lock on the selected piece, fixing its position and rotation."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:787
@@ -537,7 +537,8 @@ msgid "Hide Player Cursors"
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:990
-msgid "Used to stop showing other player's cursors when in multiplayer lobbies."
+msgid ""
+"Used to stop showing other player's cursors when in multiplayer lobbies."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:998
@@ -623,8 +624,8 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1225
 msgid ""
-"Used to set the threshold of what is considered the background when using"
-" depth of field."
+"Used to set the threshold of what is considered the background when using "
+"depth of field."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1237
@@ -772,17 +773,17 @@ msgstr ""
 #: ../Scenes/Game/Game.tscn:44
 #, python-format
 msgid ""
-"The host has imported assets that your client is missing. This means that"
-" you won't be able to see these assets while in this game. There are a "
-"total of %d missing assets, and %d assets differ between your client and "
-"the host's client:"
+"The host has imported assets that your client is missing. This means that "
+"you won't be able to see these assets while in this game. There are a total "
+"of %d missing assets, and %d assets differ between your client and the "
+"host's client:"
 msgstr ""
 
 #: ../Scenes/Game/Game.tscn:58
 #, python-format
 msgid ""
-"Your client is also missing %d files, and %d files differ from that of "
-"the host's, which in total is %s of data:"
+"Your client is also missing %d files, and %d files differ from that of the "
+"host's, which in total is %s of data:"
 msgstr ""
 
 #: ../Scenes/Game/Game.tscn:86
@@ -1062,14 +1063,12 @@ msgstr ""
 
 #: ../Scripts/ImportAssets.gd:90
 msgid ""
-"Tabletop Club could not find an assets folder in any of the following "
-"places:"
+"Tabletop Club could not find an assets folder in any of the following places:"
 msgstr ""
 
 #: ../Scripts/ImportAssets.gd:96
 msgid ""
-"Please place an asset pack into one of these folders, and restart the "
-"game."
+"Please place an asset pack into one of these folders, and restart the game."
 msgstr ""
 
 #: ../Scripts/ImportAssets.gd:98
@@ -1609,8 +1608,8 @@ msgstr ""
 #: ../Scripts/Game/Game.gd:1020
 #, python-format
 msgid ""
-"Loaded table was saved with a different version of the game (Current: %s,"
-" Table: %s). Load anyway?"
+"Loaded table was saved with a different version of the game (Current: %s, "
+"Table: %s). Load anyway?"
 msgstr ""
 
 #: ../Scripts/Game/Game.gd:1022

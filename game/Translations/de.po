@@ -1079,7 +1079,8 @@ msgstr "Unbekannter Ereignistyp"
 
 #: ../Scripts/ImportAssets.gd:88
 msgid "Tabletop Club could not find any asset packs in the following folders:"
-msgstr "Tabletop Club konnte an den folgenden Orten keinen Asset-Pakete finden:"
+msgstr ""
+"Tabletop Club konnte an den folgenden Orten keinen Asset-Pakete finden:"
 
 #: ../Scripts/ImportAssets.gd:90
 msgid ""

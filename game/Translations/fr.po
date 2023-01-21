@@ -439,7 +439,8 @@ msgstr "Réinitialiser l'orientation de la pièce"
 
 #: ../Scenes/OptionsMenu.tscn:759
 msgid "Resets the selected piece to its default orientation."
-msgstr "Réinitialise l'orientation de la pièce sélectionnée à celle par défaut."
+msgstr ""
+"Réinitialise l'orientation de la pièce sélectionnée à celle par défaut."
 
 #: ../Scenes/OptionsMenu.tscn:769
 msgid "Lock/Unlock Piece"
@@ -1643,8 +1644,8 @@ msgid ""
 "Loaded table was saved with a different version of the game (Current: %s, "
 "Table: %s). Load anyway?"
 msgstr ""
-"La table chargée a été enregistrée avec une version différente du jeu ("
-"version actuelle: %s, version table: %s). Charger quand même ?"
+"La table chargée a été enregistrée avec une version différente du jeu "
+"(version actuelle: %s, version table: %s). Charger quand même ?"
 
 #: ../Scripts/Game/Game.gd:1022
 msgid "Loaded table is not in the correct format."
