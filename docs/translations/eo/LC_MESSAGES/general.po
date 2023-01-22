@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2023-01-22 15:29+0000\n"
+"PO-Revision-Date: 2023-01-23 15:51+0000\n"
 "Last-Translator: Reese Rivers <doormattion@gmail.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/eo/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -545,10 +545,14 @@ msgid ""
 "on the project's `GitHub repository`_. This page explains the steps needed "
 "to do exactly that!"
 msgstr ""
+"Se vi volas helpi per rektaj kontribuoj al la projekto, aŭ riparante cimon "
+"aŭ realigante funkcion, vi do bezonos krei **tirpeton** en la `GitHub-"
+"deponejo`_ de la projekto. Tiu ĉi paĝo klarigas la paŝojn por fari ekzakte "
+"tion!"
 
 #: ../../general/contributing/pull_request_workflow.rst:14
 msgid "Creating a fork"
-msgstr ""
+msgstr "Kreado de forko"
 
 #: ../../general/contributing/pull_request_workflow.rst:16
 msgid ""
@@ -558,6 +562,10 @@ msgid ""
 "Eventually, the side road will join back in with the main road later on (the "
 "\"merge\")."
 msgstr ""
+"Por kompreni forkojn, pensu pri forko de vojo. Vi iros en unu direkton por "
+"fari vian propran aferon (tio estas via \"forko\"), dum la ĉefa vojo (la "
+"``master``-branĉo de la deponejo) pluiras. Fine, via flanka vojo rekuniĝos "
+"kun la ĉefa vojo poste (la \"kunfando\")."
 
 #: ../../general/contributing/pull_request_workflow.rst:22
 msgid ""
@@ -566,6 +574,10 @@ msgid ""
 "right. You should now have your own copy of the repository at that point in "
 "time. You can then clone the repository to your computer with ``git clone``."
 msgstr ""
+"Por krei forkon de la Tabletop Club-deponejon en GitHub, vi povas iri al la "
+"`GitHub-deponejo`_ kaj alklaki la butonon :guilabel:`Forki` supre dekstre. "
+"Vi nun devus havi propran kopion de la deponejo je tiu tempopunkto. Vi tiam "
+"povas kloni la deponejon al via komputilo per ``git clone``."
 
 #: ../../general/contributing/pull_request_workflow.rst:27
 msgid ""
@@ -574,20 +586,26 @@ msgid ""
 "sure you can get updates from the original repository, you can add the "
 "original as a remote repository with this command:"
 msgstr ""
+"En ĉi tiu klonita deponejo, ``origin`` indikos al via forkita deponejo, kiu "
+"ne aŭtomate ĝisdatiĝos kun la originala deponejo. Por certigi, ke vi povas "
+"ricevi ĝisdatigojn de la originala deponejo, vi povas aldoni la originalan "
+"kiel foran deponejon per ĉi tiu komando:"
 
 #: ../../general/contributing/pull_request_workflow.rst:36
 msgid ""
 "Now, if you ever need to update the ``master`` branch on your local "
 "repository, you can run the following commands:"
 msgstr ""
+"Nun, se vi iam bezonas ĝisdatigi la ``master``-branĉon en via loka deponejo, "
+"vi povas ruli la jenajn komandojn:"
 
 #: ../../general/contributing/pull_request_workflow.rst:44
 msgid "You can then update your fork on GitHub with these changes:"
-msgstr ""
+msgstr "Vi tiam povas ĝisdatigi vian forkon en GitHub per ĉi tiuj ŝanĝoj:"
 
 #: ../../general/contributing/pull_request_workflow.rst:52
 msgid "Downloading and compiling Godot"
-msgstr ""
+msgstr "Elŝutado kaj kompilado de Godot"
 
 #: ../../general/contributing/pull_request_workflow.rst:54
 msgid ""
@@ -598,10 +616,16 @@ msgid ""
 "until the section where you download the game (you already did that just!) "
 "to get Godot up and running."
 msgstr ""
+"Post fari lokan kopion de la forko en via komputilo, estas unu paŝo plu "
+"bezonata por ebligi la ludadon, redaktadon kaj testadon de la ludo - vi "
+"bezonas elŝuti kaj kompili la modifitan version de Godot, per kiu la ludo "
+"plenumiĝas. Vi povas sekvi la instrukciojn en :ref:`compiling-from-source` "
+"ĝis la sekcio, kie vi elŝutas la ludon (vi jam ĵus faris tion!) por "
+"ekfunkciigi Godot."
 
 #: ../../general/contributing/pull_request_workflow.rst:63
 msgid "Making changes"
-msgstr ""
+msgstr "Farado de ŝanĝoj"
 
 #: ../../general/contributing/pull_request_workflow.rst:65
 msgid ""
@@ -609,23 +633,29 @@ msgid ""
 "that you create a branch on the local repository for the bug/feature you're "
 "going to solve:"
 msgstr ""
+"Antaŭ ol ekfari la ŝanĝojn, kiujn vi volas fari, estas alte rekomendate krei "
+"branĉon en la loka deponejo por la cimo/funckio, kiun vi solvos:"
 
 #: ../../general/contributing/pull_request_workflow.rst:74
 msgid ""
 "Now you can start working on the code! See :ref:`coding-guidelines` for "
 "guidelines as to how you should write your code."
 msgstr ""
+"Nun vi povas eklabori pri la kodo! Vidu :ref:`coding-guidelines` por "
+"gvidlinioj pri kiel vi skribu vian kodon."
 
 #: ../../general/contributing/pull_request_workflow.rst:79
 msgid ""
 "When you are done, you should commit your changes and push them to your fork "
 "with these commands:"
 msgstr ""
+"Post fini la aferon, vi devus enmeti viajn ŝanĝojn kaj puŝi ilin al via "
+"forko per ĉi tiuj komandoj:"
 
 #: ../../general/contributing/pull_request_workflow.rst:90
 #: ../../general/contributing/ways_to_contribute.rst:93
 msgid "Creating a pull request"
-msgstr ""
+msgstr "Kreado de tirpeto"
 
 #: ../../general/contributing/pull_request_workflow.rst:92
 msgid ""
