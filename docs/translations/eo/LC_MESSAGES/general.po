@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2023-01-18 22:49+0000\n"
+"PO-Revision-Date: 2023-01-22 15:29+0000\n"
 "Last-Translator: Reese Rivers <doormattion@gmail.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/eo/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.15.1\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -459,7 +459,7 @@ msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:5
 msgid "Coding guidelines"
-msgstr ""
+msgstr "Gvidlinioj de kodado"
 
 #: ../../general/contributing/coding_guidelines.rst:7
 msgid ""
@@ -467,26 +467,33 @@ msgid ""
 "`GDScript style guide`_, make sure to follow these guidelines for "
 "consistency, and to make everyone's lives easier:"
 msgstr ""
+"Se vi modifas la scenojn kaj skriptojn de la ludo, same sekvante la `stilan "
+"gvidilon de GDScript`_, nepre sekvu ĉi tiujn gvidliniojn por akordeco, kaj "
+"por plifaciligi ĉies laboron:"
 
 #: ../../general/contributing/coding_guidelines.rst:11
 msgid "Only use GDScript for scripting."
-msgstr ""
+msgstr "Nur uzu GDScript por skriptado."
 
 #: ../../general/contributing/coding_guidelines.rst:13
 msgid ""
 "When writing code, make sure your editor (whether it's Godot, or another "
 "external editor) is set to use tabs instead of spaces."
 msgstr ""
+"Dum skribado de kodo, certigu, ke via redaktilo (ĉu tio estas Godot, aŭ alia "
+"ekstera redaktilo) estas agordita por uzi tabojn anstataŭ spacetojn."
 
 #: ../../general/contributing/coding_guidelines.rst:16
 msgid ""
 "When creating a new script, use the ``Copyright Notice`` template in ``game/"
 "Scripts/Templates/CopyrightNotice.gd``."
 msgstr ""
+"Dum kreado de nova skripto, uzu la ŝablonon ``Copyright Notice`` en ``game/"
+"Scripts/Templates/CopyrightNotice.gd``."
 
 #: ../../general/contributing/coding_guidelines.rst:19
 msgid "Use typed variables, arguments, and return values where possible."
-msgstr ""
+msgstr "Uzu tipajn variablojn, argumentojn, kaj liveraĵojn kie eblas."
 
 #: ../../general/contributing/coding_guidelines.rst:21
 msgid ""
@@ -495,16 +502,22 @@ msgid ""
 "add a comment above the function describing what the function does, what "
 "it's return value is (if any), and what the arguments are. For example:"
 msgstr ""
+"Dum skribado de funkcioj en skriptoj, kiuj ne estas integritaj funkcioj ("
+"ekz. ``_ready()``) aŭ funckioj vokataj de signaloj (eks. ``_on_*``), bonvolu "
+"do aldoni komenton super la funkcio, kun klarigo pri kion ĝi faras, kio "
+"estas ĝia liveraĵo (se tiu ekzistas), kaj kiaj la argumentoj estas. Ekzemple:"
 
 #: ../../general/contributing/coding_guidelines.rst:34
 msgid "Make sure to fix any warnings Godot shows in scripts."
-msgstr ""
+msgstr "Nepre riparu iujn ajn avertojn, kiujn montras Godot en skriptoj."
 
 #: ../../general/contributing/coding_guidelines.rst:36
 msgid ""
 "If you are writing strings that will get displayed in the UI, remember to "
 "use the ``tr()`` function so the text can be translated."
 msgstr ""
+"Se vi skribas tekstĉenojn, kiuj montriĝos en la interfaco, memoru uzi la "
+"funkcion ``tr()``, por fari la tekston tradukebla."
 
 #: ../../general/contributing/coding_guidelines.rst:39
 msgid ""
@@ -512,14 +525,18 @@ msgid ""
 "explaining what the scene does. Also fill in the editor description for any "
 "nodes in the scene where it isn't obvious what they're there for."
 msgstr ""
+"Dum kreado de novaj scenoj, plenigu la redaktilan priskribon por la radika "
+"nodo, kiu klarigas kion faras la sceno. Ankaŭ plenigu la redaktilan "
+"priskribon por iuj ajn nodoj en la sceno, kiam ne evidentas por kio ili tie "
+"estas."
 
 #: ../../general/contributing/index.rst:5
 msgid "Contributing"
-msgstr ""
+msgstr "Kontribuado"
 
 #: ../../general/contributing/pull_request_workflow.rst:5
 msgid "Pull request workflow"
-msgstr ""
+msgstr "Tirpeta laborfluo"
 
 #: ../../general/contributing/pull_request_workflow.rst:7
 msgid ""
