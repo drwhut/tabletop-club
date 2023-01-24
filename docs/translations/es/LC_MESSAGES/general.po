@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2023-01-14 21:48+0000\n"
-"Last-Translator: DR Arbego <drarbego@gmail.com>\n"
+"PO-Revision-Date: 2023-01-25 02:52+0000\n"
+"Last-Translator: samsbg <samanthasofiabg@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -78,13 +78,12 @@ msgstr ""
 "visita la página :ref:`contributing`."
 
 #: ../../general/about.rst:33
-#, fuzzy
 msgid ""
 "The game is licensed under the `MIT License <https://github.com/drwhut/"
 "tabletop-club/blob/master/LICENSE>`_, which is an open, permissive license."
 msgstr ""
-"El juego está licenciado bajo la licencia `MIT License <https://github.com/"
-"drwhut/tabletop-club/blob/master/LICENSE>`_, que es una licencia abierta y "
+"El juego está licenciado bajo la `Licencia MIT <https://github.com/drwhut/"
+"tabletop-club/blob/master/LICENSE>`_, la cual es una licencia abierta y "
 "permisiva."
 
 #: ../../general/about.rst:39
@@ -112,12 +111,17 @@ msgid "Tabletop board game"
 msgstr "Juego de mesa"
 
 #: ../../general/about.rst:50
+#, fuzzy
 msgid ""
 "The game is designed to allow you to play your favourite tabletop board "
 "games by effectively giving you a box of toys to play with (which include "
 "things like cards, dice, game pieces, and more), and it's up to you what you "
 "do with what you're given!"
 msgstr ""
+"El juego está diseñado para permitirte jugar tus juegos de mesa favoritos al "
+"brindarte practicamente una caja de juguetes (que incluye elementos como "
+"cartas, dados, piezas de juegos y más) y depende de ti que hacer con lo que "
+"te es dado!"
 
 #: ../../general/about.rst:55
 msgid ""
@@ -130,7 +134,7 @@ msgstr ""
 
 #: ../../general/about.rst:61
 msgid "Simulator"
-msgstr ""
+msgstr "Simulador"
 
 #: ../../general/about.rst:63
 msgid ""
@@ -142,23 +146,24 @@ msgstr ""
 
 #: ../../general/about.rst:70
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Preguntas frecuentes"
 
 #: ../../general/about.rst:73
 msgid "What platforms can I play Tabletop Club on?"
-msgstr ""
+msgstr "¿En qué plataformas puedo jugar Tabletop Club?"
 
 #: ../../general/about.rst:75
 msgid "Tabletop Club can be played on any of these platforms:"
 msgstr ""
+"TableTop Club puede ser jugado en cualquiera de las siguientes plataformas:"
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
-msgstr ""
+msgstr "Windows 7 o posterior"
 
 #: ../../general/about.rst:78
 msgid "macOS 10.12 or later"
-msgstr ""
+msgstr "macOS 10.12 o posterior"
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
