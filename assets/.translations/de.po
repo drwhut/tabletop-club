@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:54\n"
-"PO-Revision-Date: 2022-11-30 13:48+0000\n"
-"Last-Translator: grant <grantler@mailbox.org>\n"
+"PO-Revision-Date: 2023-01-26 10:53+0000\n"
+"Last-Translator: Leona 'leo' Gottfried <s6573328@stud.uni-frankfurt.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/de/>\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/cards/52-Card_Deck:1
@@ -802,7 +802,6 @@ msgid "In Your Arms - Kevin MacLeod"
 msgstr "In Your Arms - Kevin MacLeod"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:2
-#, fuzzy
 msgid ""
 "A piece of music from a more elegant time, 1940. This is a beautiful slow "
 "piece that will make you want to pick up some champagne and go off slow "
@@ -876,7 +875,6 @@ msgid "Spy Glass - Kevin MacLeod"
 msgstr "Spy Glass - Kevin MacLeod"
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:2
-#, fuzzy
 msgid ""
 "The year is... I have no idea. Timeless. Could be now, could be in the "
 "1950s. Super cool jazz for your hardcore detectives! Also useful for beat "
