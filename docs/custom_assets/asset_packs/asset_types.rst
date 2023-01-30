@@ -45,6 +45,9 @@ front face, and one for the back face. The game registers each of the textures
 in the ``cards/`` folder as the front face of a card, but you need to tell the
 game where to find the back face in the ``config.cfg`` file.
 
+Cards also have a fixed thickness, so you only have to set the width and height
+value.
+
 Here is a simple example that will apply a back face texture (in this example,
 ``BackFace.png``) to all of the cards in the folder:
 
@@ -53,6 +56,10 @@ Here is a simple example that will apply a back face texture (in this example,
    ; cards/config.cfg
    [*]
 
+   ; Width (6.35) and height (8.89) in cm
+   scale = Vector2(6.35, 8.89)
+
+   ; Set the back_face for all cards
    back_face = "BackFace.png"
 
    [BackFace.png]
