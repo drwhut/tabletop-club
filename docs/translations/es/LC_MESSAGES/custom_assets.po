@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2023-01-25 02:52+0000\n"
-"Last-Translator: samsbg <samanthasofiabg@gmail.com>\n"
+"PO-Revision-Date: 2023-02-04 14:38+0000\n"
+"Last-Translator: wild thunder <compras_ruben@outlook.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/es/>\n"
 "Language: es\n"
@@ -93,15 +93,15 @@ msgstr "Tipo de archivo"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
 msgid "Asset Type"
-msgstr ""
+msgstr "Tipo de recurso"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
 msgid "Object Type"
-msgstr ""
+msgstr "Tipo de objeto"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
 msgid "``cards/``"
-msgstr ""
+msgstr "``cartas/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:58
