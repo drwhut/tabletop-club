@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:07+0000\n"
-"PO-Revision-Date: 2023-01-19 11:48+0000\n"
-"Last-Translator: Carlos Solís <csolisr@azkware.net>\n"
+"PO-Revision-Date: 2023-02-05 15:39+0000\n"
+"Last-Translator: wild thunder <compras_ruben@outlook.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "game/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1\n"
+"X-Generator: Weblate 4.16-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:39
@@ -819,7 +819,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:40 ../Scenes/Game/UI/GameUI.tscn:136
 msgid "Objects"
-msgstr ""
+msgstr "Objeto"
 
 #: ../Scenes/Game/UI/GameUI.tscn:46 ../Scenes/Game/UI/GameUI.tscn:151
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:236
@@ -1871,7 +1871,7 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:233
 msgid "Cards"
-msgstr ""
+msgstr "Cartas"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:234
 msgid "Containers"
