@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2023-02-04 14:38+0000\n"
+"PO-Revision-Date: 2023-02-05 15:36+0000\n"
 "Last-Translator: wild thunder <compras_ruben@outlook.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/es/>\n"
@@ -108,7 +108,7 @@ msgstr "``cartas/``"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
 msgid ":ref:`file-type-image`"
-msgstr ""
+msgstr ":ref:`fichero-tipo-imagen`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
@@ -124,15 +124,15 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
 msgid ":ref:`asset-type-object`"
-msgstr ""
+msgstr ":ref:`recurso-tipo-objeto`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
 msgid ":ref:`object-type-card`"
-msgstr ""
+msgstr ":ref:`objeto-tipo-carta`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
 msgid "``containers/``"
-msgstr ""
+msgstr "``contenedor/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
@@ -146,15 +146,15 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 msgid ":ref:`file-type-3d`"
-msgstr ""
+msgstr ":ref:`fichero-tipo-3d`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
 msgid ":ref:`object-type-container`"
-msgstr ""
+msgstr ":ref:`objeto-tipo-contenedor`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
 msgid "``dice/d4/``"
-msgstr ""
+msgstr "``dado/d4/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:42
@@ -163,68 +163,69 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:48
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:50
 msgid ":ref:`object-type-dice`"
-msgstr ""
+msgstr ":ref:`objeto-tipo-dado`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:42
 msgid "``dice/d6/``"
-msgstr ""
+msgstr "``dado/d6/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:44
 msgid "``dice/d8/``"
-msgstr ""
+msgstr "``dado/d8/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:46
 msgid "``dice/d10/``"
-msgstr ""
+msgstr "``dado/d10/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:48
 msgid "``dice/d12/``"
-msgstr ""
+msgstr "``dado/d12/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:50
 msgid "``dice/d20/``"
-msgstr ""
+msgstr "``dado/d20/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
 msgid "``games/``"
-msgstr ""
+msgstr "``juegos/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
 msgid ":ref:`file-type-save`"
-msgstr ""
+msgstr ":ref:`fichero-tipo-guardado`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
 msgid ":ref:`asset-type-game`"
-msgstr ""
+msgstr ":ref:`recurso-tipo-juego`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:58
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
+#, fuzzy
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
 msgid "``music/``"
-msgstr ""
+msgstr "``musica/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 msgid ":ref:`file-type-audio`"
-msgstr ""
+msgstr ":ref:`fichero-tipo-audio`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
 msgid ":ref:`asset-type-music`"
-msgstr ""
+msgstr ":ref:`recurso-tipo-musica`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
 msgid "``pieces/``"
-msgstr ""
+msgstr "``piezas/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
 msgid ":ref:`object-type-piece`"
-msgstr ""
+msgstr ":ref:`objecto-tipo-pieza`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:58
 msgid "``skyboxes/``"
@@ -236,70 +237,74 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 msgid "``sounds/``"
-msgstr ""
+msgstr "``sonidos/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 msgid ":ref:`asset-type-sound`"
-msgstr ""
+msgstr ":ref:`recurso-tipo-sonido`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
 msgid "``speakers/``"
-msgstr ""
+msgstr "``altavoces/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
 msgid ":ref:`object-type-speaker`"
-msgstr ""
+msgstr ":ref:`objecto-tipo-altavoz`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
 msgid "``tables/``"
-msgstr ""
+msgstr "``tableros/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
 msgid ":ref:`asset-type-table`"
-msgstr ""
+msgstr ":ref:`recurso-tipo-tablero`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 msgid "``timers/``"
-msgstr ""
+msgstr "``temporizadores/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 msgid ":ref:`object-type-timer`"
-msgstr ""
+msgstr ":ref:`objecto-tipo-temporizadores`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
 msgid "``tokens/cube/``"
-msgstr ""
+msgstr "``fichas/cubo/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
 msgid ":ref:`object-type-token`"
-msgstr ""
+msgstr ":ref:`objecto-tipo-fichas`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
 msgid "``tokens/cylinder/``"
-msgstr ""
+msgstr "``fichas/cilindro/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:75
 msgid "Configuration files"
-msgstr ""
+msgstr "Configuracion de archivos"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:80
 msgid "config.cfg"
-msgstr ""
+msgstr "config.es.cfg"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:82
 msgid ""
 "Every sub-folder can have this file, which allows you to modify the "
 "properties of assets in the subfolder."
 msgstr ""
+"Cada subcarpeta puede tener este archivo, que le permite modificar las "
+"propiedades de los recursos de la subcarpeta."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:85
 msgid "Here is an example of a ``config.cfg`` file:"
-msgstr ""
+msgstr "Aquí un ejemplo ``config.cfg`` archivo:"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:126
 msgid "Here is the full list of properties you can modify in ``config.cfg``:"
 msgstr ""
+"Esta es la lista completa de propiedades que puede modificar en ``config."
+"cfg``:"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:129
 msgid "Property Name"
@@ -307,23 +312,23 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:129
 msgid "Data Type"
-msgstr ""
+msgstr "Tipo de datos"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:129
 msgid "Used By"
-msgstr ""
+msgstr "Utilizado por"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:129
 msgid "Default Value"
-msgstr ""
+msgstr "Valor por defecto"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:129
 msgid "Description"
-msgstr ""
+msgstr "Descripcion"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:131
 msgid "``author``"
-msgstr ""
+msgstr "``autor``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:131
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
@@ -333,7 +338,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:131
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
@@ -342,7 +347,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
 msgid "All"
-msgstr ""
+msgstr "Todo"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:131
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
@@ -355,32 +360,35 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:131
 msgid "The name of the author(s) of the asset."
-msgstr ""
+msgstr "El nombre del autor/es del recurso."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
 msgid "``back_face``"
-msgstr ""
+msgstr "``cara_trasera``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
 msgid "Cards"
-msgstr ""
+msgstr "Cartas"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:133
 msgid ""
 "The file name of the back face of the card. The texture must be in the same "
 "folder. If blank, no back face texture is applied."
 msgstr ""
+"El nombre del archivo de la cara trasera de la carta. La textura debe estar "
+"en la misma carpeta. Si está en blanco, no se aplica ninguna textura a la "
+"cara trasera."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
 msgid "``bounce``"
-msgstr ""
+msgstr "``rebota``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:170
 msgid "Number"
-msgstr ""
+msgstr "Numero"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
@@ -397,14 +405,16 @@ msgid ""
 "Defines how high objects bounce off the table. Must be a value between "
 "``0.0`` (no bounce) and ``1.0`` (full bounce)."
 msgstr ""
+"Define a que altura rebotaran los objetos en la mesa. Debe ser un valor "
+"entre ``0.0`` (sin rebote) y ``1.0`` (rebote completo)."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 msgid "``collision_mode``"
-msgstr ""
+msgstr "``modo_colision``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 msgid "Objects, Tables"
-msgstr ""
+msgstr "Objetos, Mesas"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 msgid "``0``"
@@ -415,21 +425,24 @@ msgid ""
 "Determines the collision shape of the object. See :ref:`file-type-3d` for "
 "more details."
 msgstr ""
+"Determina la forma de colisión del objeto. Véase :ref:`file-type-3d` para "
+"más detalles."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+#, fuzzy
 msgid "``color``"
-msgstr ""
+msgstr "``color``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 msgid "String"
-msgstr ""
+msgstr "cadena"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 msgid "Objects"
-msgstr ""
+msgstr "Objeto"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 msgid "``#ffffff``"
@@ -437,11 +450,11 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 msgid "Multiply the color of the texture by this value."
-msgstr ""
+msgstr "Multiplica el color de la textura por este valor."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 msgid "``default``"
-msgstr ""
+msgstr "``predeterminado``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
@@ -459,7 +472,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:168
 msgid "``false``"
-msgstr ""
+msgstr "``falso``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 msgid ""
