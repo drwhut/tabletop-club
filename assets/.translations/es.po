@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-25 11:54\n"
-"PO-Revision-Date: 2022-12-14 09:47+0000\n"
-"Last-Translator: HugoPlacer <hugoplanellmoreno@gmail.com>\n"
+"PO-Revision-Date: 2023-02-05 14:39+0000\n"
+"Last-Translator: wild thunder <compras_ruben@outlook.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/es/>\n"
 "Language: es\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/cards/52-Card_Deck:1
@@ -27,7 +27,7 @@ msgstr "Baraja de 52 cartas"
 
 #: ../TabletopClub/cards/52-Card_Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr ""
+msgstr "Una baraja de tamaño póquer de naipes franceses, sin comodines."
 
 #: ../TabletopClub/cards/Ace_of_Clubs:1
 msgid "Ace of Clubs"
@@ -75,7 +75,7 @@ msgstr "As de Tréboles"
 #: ../TabletopClub/cards/Two_of_Diamonds:2
 #: ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
 msgid "A poker-sized French-suited playing card."
-msgstr "Una carta de tamaño a las de póquer con el palo francés."
+msgstr "Una carta de juego tamaño a las de póquer con estilo francés."
 
 #: ../TabletopClub/cards/Ace_of_Diamonds:1
 msgid "Ace of Diamonds"
