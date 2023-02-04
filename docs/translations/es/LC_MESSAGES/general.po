@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2023-01-25 02:52+0000\n"
-"Last-Translator: samsbg <samanthasofiabg@gmail.com>\n"
+"PO-Revision-Date: 2023-02-05 15:36+0000\n"
+"Last-Translator: wild thunder <compras_ruben@outlook.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/es/>\n"
 "Language: es\n"
@@ -298,11 +298,11 @@ msgstr ""
 
 #: ../../general/about.rst:166
 msgid ":ref:`asset-type-game`"
-msgstr ""
+msgstr ":ref:`recurso-tipo-juego`"
 
 #: ../../general/about.rst:167
 msgid ":ref:`asset-type-music`"
-msgstr ""
+msgstr ":ref:`recurso-tipo-musica`"
 
 #: ../../general/about.rst:168
 msgid ":ref:`asset-type-skybox`"
@@ -310,11 +310,11 @@ msgstr ""
 
 #: ../../general/about.rst:169
 msgid ":ref:`asset-type-sound`"
-msgstr ""
+msgstr ":ref:`recurso-tipo-sonido`"
 
 #: ../../general/about.rst:170
 msgid ":ref:`asset-type-table`"
-msgstr ""
+msgstr ":ref:`recurso-tipo-tablero`"
 
 #: ../../general/about.rst:174
 msgid "Can you add my favourite board game to Tabletop Club?"
