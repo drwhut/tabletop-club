@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-25 11:08+0000\n"
+"POT-Creation-Date: 2023-02-06 00:02+0000\n"
 "PO-Revision-Date: 2023-01-18 20:48+0000\n"
 "Last-Translator: Reese Rivers <doormattion@gmail.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/tabletop-club/"
@@ -20,11 +20,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.15.1-dev\n"
 
-#: ../../index.rst:22
+#: ../../index.rst:25
 msgid "General"
 msgstr "Ĝenerale"
 
-#: ../../index.rst:30
+#: ../../index.rst:33
 msgid "Custom Assets"
 msgstr "Propraj havaĵoj"
 
@@ -45,7 +45,11 @@ msgstr ""
 "enhavtabelon, la flankan strion, aŭ la serĉbreton por trovi tion, kion vi "
 "bezonas!"
 
-#: ../../index.rst:16
+#: ../../index.rst:None
+msgid "Screenshots from the game"
+msgstr ""
+
+#: ../../index.rst:19
 msgid ""
 "The documentation, as well as the project in general, is open to suggestions "
 "and contributions! If you feel that something is not explained well, or you "
@@ -58,18 +62,18 @@ msgstr ""
 "informoj, bonvolu ne heziti malfermi problemon aŭ tirpeton en la `GitHub-"
 "deponejo<https://github.com/drwhut/tabletop-club/issues>` de la projekto!"
 
-#: ../../index.rst:39
+#: ../../index.rst:42
 msgid "Indices and tables"
 msgstr "Indeksoj kaj tabeloj"
 
-#: ../../index.rst:41
+#: ../../index.rst:44
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../index.rst:42
+#: ../../index.rst:45
 msgid ":ref:`modindex`"
 msgstr ":ref:`modindex`"
 
-#: ../../index.rst:43
+#: ../../index.rst:46
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
