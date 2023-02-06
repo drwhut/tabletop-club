@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-02-06 00:01+0000\n"
-"PO-Revision-Date: 2022-12-02 21:47+0000\n"
+"PO-Revision-Date: 2023-02-07 11:39+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
 "nl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:39
@@ -422,34 +422,28 @@ msgid "Flip Piece Orientation"
 msgstr "Spelstuk omdraaien"
 
 #: ../Scenes/OptionsMenu.tscn:741
-#, fuzzy
-#| msgid "Flip the selected piece on the horizontal axis."
 msgid ""
 "Flip the selected piece or the piece the mouse is over on the horizontal "
 "axis."
-msgstr "Draai het gekozen spelstuk horizontaal om."
+msgstr "Draai het gekozen of door de cursor aangewezen spelstuk horizontaal om."
 
 #: ../Scenes/OptionsMenu.tscn:751
 msgid "Reset Piece Orientation"
 msgstr "Standaard spelstukkant"
 
 #: ../Scenes/OptionsMenu.tscn:759
-#, fuzzy
-#| msgid "Resets the selected piece to its default orientation."
 msgid ""
 "Resets the selected piece or the piece the mouse is over to its default "
 "orientation."
-msgstr "Herstel de standaardoriëntatie van het gekozen spelstuk."
+msgstr "Herstel de standaardoriëntatie van het gekozen of aangewezen spelstuk."
 
 #: ../Scenes/OptionsMenu.tscn:769 ../Scripts/Game/CameraController.gd:1561
-#, fuzzy
-#| msgid "Rotate selected"
 msgid "Rotate Piece"
-msgstr "Selectie draaien"
+msgstr "Spelstuk draaien"
 
 #: ../Scenes/OptionsMenu.tscn:777
 msgid "Rotates the the piece that is selected, or that the mouse is over."
-msgstr ""
+msgstr "Draait het gekozen of door de cursor aangewezen spelstuk."
 
 #: ../Scenes/OptionsMenu.tscn:787 ../Scripts/Game/CameraController.gd:1200
 #: ../Scripts/Game/CameraController.gd:1514
@@ -461,7 +455,7 @@ msgstr "Schudden"
 msgid ""
 "Shuffle stacks of cards or tokens that are selected, or that the mouse is "
 "over."
-msgstr ""
+msgstr "Schud de gekozen of door de cursor aangewezen kaarten/fiches."
 
 #: ../Scenes/OptionsMenu.tscn:805
 msgid "Lock/Unlock Piece"
@@ -718,10 +712,8 @@ msgid "Select track"
 msgstr "Kies een parcours"
 
 #: ../Scenes/Game/CameraController.tscn:146
-#, fuzzy
-#| msgid "Position:"
 msgid "Positional audio"
-msgstr "Positie:"
+msgstr "Positionele audio"
 
 #: ../Scenes/Game/CameraController.tscn:152
 msgid "Range:"
@@ -767,15 +759,13 @@ msgid "Scale:"
 msgstr "Schaal:"
 
 #: ../Scenes/Game/CameraController.tscn:429
-#, fuzzy
-#| msgid "Value"
 msgid "Value:"
-msgstr "Waarde"
+msgstr "Waarde:"
 
 #: ../Scenes/Game/CameraController.tscn:441
 #: ../Scripts/Game/CameraController.gd:1276
 msgid "Set value"
-msgstr ""
+msgstr "Waarde instellen"
 
 #: ../Scenes/Game/CameraController.tscn:472
 msgid "Strength:"
@@ -921,10 +911,8 @@ msgid "Undo"
 msgstr "Ongedaan maken"
 
 #: ../Scenes/Game/UI/GameUI.tscn:86
-#, fuzzy
-#| msgid "45"
 msgid "45°"
-msgstr "45"
+msgstr "45°"
 
 #: ../Scenes/Game/UI/GameUI.tscn:94
 msgid "Menu"
@@ -1195,7 +1183,7 @@ msgstr "Duits"
 
 #: ../Scripts/MainMenu.gd:81
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugees"
 
 #: ../Scripts/MainMenu.gd:82
 msgid "Russian"
@@ -1944,13 +1932,11 @@ msgstr "Pagina %d/%d"
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:113
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:300
 msgid "All"
-msgstr ""
+msgstr "Alles"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:280
-#, fuzzy
-#| msgid "Cards"
 msgid "Boards"
-msgstr "Kaarten"
+msgstr "Spelborden"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:281
 msgid "Cards"
