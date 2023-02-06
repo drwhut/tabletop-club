@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-25 11:07+0000\n"
+"POT-Creation-Date: 2023-02-06 00:01+0000\n"
 "PO-Revision-Date: 2022-11-29 17:05+0000\n"
 "Last-Translator: Alexander Ivanov <saiv46.dev@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
@@ -43,11 +43,11 @@ msgid "Singleplayer"
 msgstr "Одиночная игра"
 
 #: ../Scenes/MainMenu.tscn:55 ../Scenes/MainMenu.tscn:129
-#: ../Scenes/OptionsMenu.tscn:914
+#: ../Scenes/OptionsMenu.tscn:950
 msgid "Multiplayer"
 msgstr "Многопользовательская игра"
 
-#: ../Scenes/Game/UI/GameUI.tscn:217 ../Scenes/MainMenu.tscn:62
+#: ../Scenes/Game/UI/GameUI.tscn:221 ../Scenes/MainMenu.tscn:62
 msgid "Options"
 msgstr "Настройки"
 
@@ -317,7 +317,7 @@ msgstr "Интервал автосохранения"
 msgid "Used to set how often autosaves are created."
 msgstr "Используется для установки частоты создания автосохранений."
 
-#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:64
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:65
 msgid "5 minutes"
 msgstr "5 минут"
 
@@ -432,7 +432,11 @@ msgid "Flip Piece Orientation"
 msgstr "Перевернуть ориентацию детали"
 
 #: ../Scenes/OptionsMenu.tscn:741
-msgid "Flip the selected piece on the horizontal axis."
+#, fuzzy
+#| msgid "Flip the selected piece on the horizontal axis."
+msgid ""
+"Flip the selected piece or the piece the mouse is over on the horizontal "
+"axis."
 msgstr "Переворачивает выбранную деталь по горизонтальной оси."
 
 #: ../Scenes/OptionsMenu.tscn:751
@@ -440,125 +444,151 @@ msgid "Reset Piece Orientation"
 msgstr "Сбросить ориентацию детали"
 
 #: ../Scenes/OptionsMenu.tscn:759
-msgid "Resets the selected piece to its default orientation."
+#, fuzzy
+#| msgid "Resets the selected piece to its default orientation."
+msgid ""
+"Resets the selected piece or the piece the mouse is over to its default "
+"orientation."
 msgstr "Сбрасывает выбранную деталь в ориентацию по умолчанию."
 
-#: ../Scenes/OptionsMenu.tscn:769
+#: ../Scenes/OptionsMenu.tscn:769 ../Scripts/Game/CameraController.gd:1561
+#, fuzzy
+#| msgid "Rotate selected"
+msgid "Rotate Piece"
+msgstr "Повернуть выбранное"
+
+#: ../Scenes/OptionsMenu.tscn:777
+msgid "Rotates the the piece that is selected, or that the mouse is over."
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:787 ../Scripts/Game/CameraController.gd:1200
+#: ../Scripts/Game/CameraController.gd:1514
+#: ../Scripts/Game/CameraController.gd:1569
+msgid "Shuffle"
+msgstr "Перемешать"
+
+#: ../Scenes/OptionsMenu.tscn:795
+msgid ""
+"Shuffle stacks of cards or tokens that are selected, or that the mouse is "
+"over."
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:805
 msgid "Lock/Unlock Piece"
 msgstr "Заблокировать/разблокировать деталь"
 
-#: ../Scenes/OptionsMenu.tscn:777
+#: ../Scenes/OptionsMenu.tscn:813
 msgid ""
 "Toggles the lock on the selected piece, fixing its position and rotation."
 msgstr ""
 "Переключает блокировку на выбранной детали, фиксируя ее положение и вращение."
 
-#: ../Scenes/OptionsMenu.tscn:787
+#: ../Scenes/OptionsMenu.tscn:823
 msgid "Delete Piece"
 msgstr "Удалить деталь"
 
-#: ../Scenes/OptionsMenu.tscn:795
+#: ../Scenes/OptionsMenu.tscn:831
 msgid "Deletes the currently selected piece."
 msgstr "Удаляет текущую выбранную деталь."
 
-#: ../Scenes/OptionsMenu.tscn:805
+#: ../Scenes/OptionsMenu.tscn:841
 msgid "Toggle Debug Info"
 msgstr "Переключить отладочную информацию"
 
-#: ../Scenes/OptionsMenu.tscn:813
+#: ../Scenes/OptionsMenu.tscn:849
 msgid "Toggles whether debug information is displayed."
 msgstr "Переключает отображение отладочной информации."
 
-#: ../Scenes/OptionsMenu.tscn:823
+#: ../Scenes/OptionsMenu.tscn:859
 msgid "Quicksave"
 msgstr "Быстрое сохранение"
 
-#: ../Scenes/OptionsMenu.tscn:831
+#: ../Scenes/OptionsMenu.tscn:867
 msgid "Creates a quicksave file."
 msgstr "Создает файл быстрого сохранения."
 
-#: ../Scenes/OptionsMenu.tscn:841
+#: ../Scenes/OptionsMenu.tscn:877
 msgid "Quickload"
 msgstr "Быстрая загрузка"
 
-#: ../Scenes/OptionsMenu.tscn:849
+#: ../Scenes/OptionsMenu.tscn:885
 msgid "Loads the latest quicksave file."
 msgstr "Загружает последний файл быстрого сохранения."
 
-#: ../Scenes/OptionsMenu.tscn:859
+#: ../Scenes/OptionsMenu.tscn:895
 msgid "Toggle UI"
 msgstr "Переключить пользовательский интерфейс"
 
-#: ../Scenes/OptionsMenu.tscn:867
+#: ../Scenes/OptionsMenu.tscn:903
 msgid "Toggles whether the entire UI is displayed."
 msgstr "Переключает отображение всего пользовательского интерфейса."
 
-#: ../Scenes/OptionsMenu.tscn:877
+#: ../Scenes/OptionsMenu.tscn:913
 msgid "Take Screenshot"
 msgstr "Сделать скриншот"
 
-#: ../Scenes/OptionsMenu.tscn:885
+#: ../Scenes/OptionsMenu.tscn:921
 msgid "Takes a screenshot of the game in its current state."
 msgstr "Делает скриншот игры в ее текущем состоянии."
 
-#: ../Scenes/OptionsMenu.tscn:900
+#: ../Scenes/OptionsMenu.tscn:936
 msgid "Used to reset the key bindings to their default values."
 msgstr "Используется для сброса привязок клавиш к их значениям по умолчанию."
 
-#: ../Scenes/OptionsMenu.tscn:901 ../Scenes/OptionsMenu.tscn:1361
+#: ../Scenes/OptionsMenu.tscn:937 ../Scenes/OptionsMenu.tscn:1397
 msgid "Reset Bindings"
 msgstr "Сбросить привязки"
 
-#: ../Scenes/OptionsMenu.tscn:928 ../Scripts/Game/CameraController.gd:1158
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:178
+#: ../Scenes/OptionsMenu.tscn:964 ../Scripts/Game/CameraController.gd:1217
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:185
 msgid "Name"
 msgstr "Имя"
 
-#: ../Scenes/OptionsMenu.tscn:935
+#: ../Scenes/OptionsMenu.tscn:971
 msgid "The player's displayed name in multiplayer lobbies."
 msgstr "Отображаемое имя игрока в многопользовательских лобби."
 
-#: ../Scenes/OptionsMenu.tscn:937
+#: ../Scenes/OptionsMenu.tscn:973
 msgid "Player"
 msgstr "Игрок"
 
-#: ../Scenes/OptionsMenu.tscn:945 ../Scripts/Game/CameraController.gd:1241
+#: ../Scenes/OptionsMenu.tscn:981 ../Scripts/Game/CameraController.gd:1322
 msgid "Color"
 msgstr "Цвет"
 
-#: ../Scenes/OptionsMenu.tscn:953
+#: ../Scenes/OptionsMenu.tscn:989
 msgid "The player's displayed colour in multiplayer lobbies."
 msgstr "Цвет игрока отображаемый в многопользовательских лобби."
 
-#: ../Scenes/OptionsMenu.tscn:963
+#: ../Scenes/OptionsMenu.tscn:999
 msgid "Chat Font Size"
 msgstr "Размер шрифта чата"
 
-#: ../Scenes/OptionsMenu.tscn:971
+#: ../Scenes/OptionsMenu.tscn:1007
 msgid "Changes the size of the text in the chat box."
 msgstr "Изменяет размер текста в окне чата."
 
-#: ../Scenes/OptionsMenu.tscn:973 ../Scenes/OptionsMenu.tscn:1104
-#: ../Scripts/OptionsMenu.gd:74
+#: ../Scenes/OptionsMenu.tscn:1009 ../Scenes/OptionsMenu.tscn:1140
+#: ../Scripts/OptionsMenu.gd:75
 msgid "Medium"
 msgstr "Средняя"
 
-#: ../Scenes/OptionsMenu.tscn:982
+#: ../Scenes/OptionsMenu.tscn:1018
 msgid "Hide Player Cursors"
 msgstr "Скрыть курсоры игрока"
 
-#: ../Scenes/OptionsMenu.tscn:990
+#: ../Scenes/OptionsMenu.tscn:1026
 msgid ""
 "Used to stop showing other player's cursors when in multiplayer lobbies."
 msgstr ""
 "Используется для прекращения отображения курсоров других игроков в "
 "многопользовательских лобби."
 
-#: ../Scenes/OptionsMenu.tscn:998
+#: ../Scenes/OptionsMenu.tscn:1034
 msgid "Censor Profanity"
 msgstr "Цензура ненормативной лексики"
 
-#: ../Scenes/OptionsMenu.tscn:1006
+#: ../Scenes/OptionsMenu.tscn:1042
 msgid ""
 "Used to censor potentially offensive words in the chat window when in "
 "multiplayer lobbies."
@@ -566,68 +596,68 @@ msgstr ""
 "Используется для цензуры потенциально оскорбительных слов в окне чата в "
 "многопользовательских лобби."
 
-#: ../Scenes/OptionsMenu.tscn:1021
+#: ../Scenes/OptionsMenu.tscn:1057
 msgid "Video"
 msgstr "Видео"
 
-#: ../Scenes/OptionsMenu.tscn:1035
+#: ../Scenes/OptionsMenu.tscn:1071
 msgid "Window Mode"
 msgstr "Режим окна"
 
-#: ../Scenes/OptionsMenu.tscn:1042
+#: ../Scenes/OptionsMenu.tscn:1078
 msgid "Sets the mode in which the game window is displayed."
 msgstr "Устанавливает режим, в котором отображается окно игры."
 
-#: ../Scenes/OptionsMenu.tscn:1044 ../Scripts/OptionsMenu.gd:68
+#: ../Scenes/OptionsMenu.tscn:1080 ../Scripts/OptionsMenu.gd:69
 msgid "Windowed"
 msgstr "В окне"
 
-#: ../Scenes/OptionsMenu.tscn:1053
+#: ../Scenes/OptionsMenu.tscn:1089
 msgid "Field of View"
 msgstr "Поле зрения"
 
-#: ../Scenes/OptionsMenu.tscn:1061
+#: ../Scenes/OptionsMenu.tscn:1097
 msgid "Sets the field of view of the in-game camera."
 msgstr "Устанавливает поле зрения внутриигровой камеры."
 
-#: ../Scenes/OptionsMenu.tscn:1074
+#: ../Scenes/OptionsMenu.tscn:1110
 msgid "VSync"
 msgstr "Вертикальная синхронизация"
 
-#: ../Scenes/OptionsMenu.tscn:1093
+#: ../Scenes/OptionsMenu.tscn:1129
 msgid "Shadow Detail"
 msgstr "Детализация теней"
 
-#: ../Scenes/OptionsMenu.tscn:1113
+#: ../Scenes/OptionsMenu.tscn:1149
 msgid "Multisample Anti-Aliasing (MSAA)"
 msgstr "Многовыборочное сглаживание (MSAA)"
 
-#: ../Scenes/OptionsMenu.tscn:1125 ../Scenes/OptionsMenu.tscn:1147
-#: ../Scenes/OptionsMenu.tscn:1188 ../Scripts/OptionsMenu.gd:72
+#: ../Scenes/OptionsMenu.tscn:1161 ../Scenes/OptionsMenu.tscn:1183
+#: ../Scenes/OptionsMenu.tscn:1224 ../Scripts/OptionsMenu.gd:73
 msgid "None"
 msgstr "Нет"
 
-#: ../Scenes/OptionsMenu.tscn:1134
+#: ../Scenes/OptionsMenu.tscn:1170
 msgid "Screen Space Ambient Occlusion (SSAO)"
 msgstr "Screen Space Ambient Occlusion (SSAO)"
 
-#: ../Scenes/OptionsMenu.tscn:1156
+#: ../Scenes/OptionsMenu.tscn:1192
 msgid "Skybox Radiance Detail"
 msgstr "Дейтализация сияния скайбокса"
 
-#: ../Scenes/OptionsMenu.tscn:1167 ../Scripts/OptionsMenu.gd:73
+#: ../Scenes/OptionsMenu.tscn:1203 ../Scripts/OptionsMenu.gd:74
 msgid "Low"
 msgstr "Низкая"
 
-#: ../Scenes/OptionsMenu.tscn:1176
+#: ../Scenes/OptionsMenu.tscn:1212
 msgid "Depth of Field"
 msgstr "Глубина резкости"
 
-#: ../Scenes/OptionsMenu.tscn:1197
+#: ../Scenes/OptionsMenu.tscn:1233
 msgid "Depth of Field Amount"
 msgstr "Величина глубины резкости"
 
-#: ../Scenes/OptionsMenu.tscn:1205
+#: ../Scenes/OptionsMenu.tscn:1241
 msgid ""
 "Used to determine how much the background is blurred when using depth of "
 "field."
@@ -635,11 +665,11 @@ msgstr ""
 "Используется для определения степени размытия фона при использовании глубины "
 "резкости."
 
-#: ../Scenes/OptionsMenu.tscn:1217
+#: ../Scenes/OptionsMenu.tscn:1253
 msgid "Depth of Field Distance"
 msgstr "Расстояние глубины резкости"
 
-#: ../Scenes/OptionsMenu.tscn:1225
+#: ../Scenes/OptionsMenu.tscn:1261
 msgid ""
 "Used to set the threshold of what is considered the background when using "
 "depth of field."
@@ -647,44 +677,44 @@ msgstr ""
 "Используется для установки порога того, что считается фоном при "
 "использовании глубины резкости."
 
-#: ../Scenes/OptionsMenu.tscn:1237
+#: ../Scenes/OptionsMenu.tscn:1273
 msgid "Table Paint Filtering"
 msgstr "Фильтрация краски на столе"
 
-#: ../Scenes/OptionsMenu.tscn:1260
+#: ../Scenes/OptionsMenu.tscn:1296
 msgid "Back"
 msgstr "Назад"
 
-#: ../Scenes/Game/CameraController.tscn:402
+#: ../Scenes/Game/CameraController.tscn:409
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:154
-#: ../Scenes/OptionsMenu.tscn:1266
+#: ../Scenes/OptionsMenu.tscn:1302
 msgid "Apply"
 msgstr "Применить"
 
-#: ../Scenes/Game/CameraController.tscn:462
-#: ../Scenes/Game/CameraController.tscn:535
-#: ../Scenes/Game/CameraController.tscn:602
-#: ../Scenes/Game/CameraController.tscn:656 ../Scenes/OptionsMenu.tscn:1273
+#: ../Scenes/Game/CameraController.tscn:501
+#: ../Scenes/Game/CameraController.tscn:574
+#: ../Scenes/Game/CameraController.tscn:641
+#: ../Scenes/Game/CameraController.tscn:695 ../Scenes/OptionsMenu.tscn:1309
 msgid "OK"
 msgstr "ОК"
 
-#: ../Scenes/OptionsMenu.tscn:1318
+#: ../Scenes/OptionsMenu.tscn:1354
 msgid "Please press a key or button to bind it..."
 msgstr "Пожалуйста, нажмите клавишу или кнопку, чтобы привязать…"
 
-#: ../Scenes/OptionsMenu.tscn:1338
+#: ../Scenes/OptionsMenu.tscn:1374
 msgid "Cancel"
 msgstr "Отмена"
 
-#: ../Scenes/OptionsMenu.tscn:1345
+#: ../Scenes/OptionsMenu.tscn:1381
 msgid "Keep video settings?"
 msgstr "Сохранить настройки видео?"
 
-#: ../Scenes/OptionsMenu.tscn:1353
+#: ../Scenes/OptionsMenu.tscn:1389
 msgid "Reimporting Assets"
 msgstr "Реимпорт ассетов"
 
-#: ../Scenes/OptionsMenu.tscn:1371
+#: ../Scenes/OptionsMenu.tscn:1407
 msgid "Warning!"
 msgstr "Предупреждение!"
 
@@ -701,86 +731,103 @@ msgid "Select track"
 msgstr "Выбрать трек"
 
 #: ../Scenes/Game/CameraController.tscn:146
+#, fuzzy
+#| msgid "Position:"
+msgid "Positional audio"
+msgstr "Позиция:"
+
+#: ../Scenes/Game/CameraController.tscn:152
 msgid "Range:"
 msgstr "Диапазон:"
 
-#: ../Scenes/Game/CameraController.tscn:165
+#: ../Scenes/Game/CameraController.tscn:172
 msgid "Take X off top"
 msgstr "Взять X сверху"
 
-#: ../Scenes/Game/CameraController.tscn:178
+#: ../Scenes/Game/CameraController.tscn:185
 msgid "Take X out"
 msgstr "Взять Х с конца"
 
-#: ../Scenes/Game/CameraController.tscn:234
+#: ../Scenes/Game/CameraController.tscn:241
 msgid "Position:"
 msgstr "Позиция:"
 
-#: ../Scenes/Game/CameraController.tscn:245
-#: ../Scenes/Game/CameraController.tscn:303
-#: ../Scenes/Game/CameraController.tscn:355
+#: ../Scenes/Game/CameraController.tscn:252
+#: ../Scenes/Game/CameraController.tscn:310
+#: ../Scenes/Game/CameraController.tscn:362
 msgid "X:"
 msgstr "X:"
 
-#: ../Scenes/Game/CameraController.tscn:261
-#: ../Scenes/Game/CameraController.tscn:317
-#: ../Scenes/Game/CameraController.tscn:371
+#: ../Scenes/Game/CameraController.tscn:268
+#: ../Scenes/Game/CameraController.tscn:324
+#: ../Scenes/Game/CameraController.tscn:378
 msgid "Y:"
 msgstr "Y:"
 
-#: ../Scenes/Game/CameraController.tscn:277
-#: ../Scenes/Game/CameraController.tscn:331
-#: ../Scenes/Game/CameraController.tscn:387
+#: ../Scenes/Game/CameraController.tscn:284
+#: ../Scenes/Game/CameraController.tscn:338
+#: ../Scenes/Game/CameraController.tscn:394
 msgid "Z:"
 msgstr "Z:"
 
-#: ../Scenes/Game/CameraController.tscn:292
+#: ../Scenes/Game/CameraController.tscn:299
 msgid "Rotation (°):"
 msgstr "Вращение (°):"
 
-#: ../Scenes/Game/CameraController.tscn:344
-#: ../Scenes/Game/CameraController.tscn:489
+#: ../Scenes/Game/CameraController.tscn:351
+#: ../Scenes/Game/CameraController.tscn:528
 msgid "Scale:"
 msgstr "Масштаб:"
 
-#: ../Scenes/Game/CameraController.tscn:433
+#: ../Scenes/Game/CameraController.tscn:429
+#, fuzzy
+#| msgid "Value"
+msgid "Value:"
+msgstr "Значение"
+
+#: ../Scenes/Game/CameraController.tscn:441
+#: ../Scripts/Game/CameraController.gd:1276
+msgid "Set value"
+msgstr ""
+
+#: ../Scenes/Game/CameraController.tscn:472
 msgid "Strength:"
 msgstr "Сила:"
 
-#: ../Scenes/Game/CameraController.tscn:444
+#: ../Scenes/Game/CameraController.tscn:483
 msgid "1.0"
 msgstr "1.0"
 
-#: ../Scenes/Game/CameraController.tscn:521
+#: ../Scenes/Game/CameraController.tscn:560
 msgid "System:"
 msgstr "Система:"
 
-#: ../Scenes/Game/CameraController.tscn:527
+#: ../Scenes/Game/CameraController.tscn:566
 msgid "Metric"
 msgstr "Метрическая"
 
-#: ../Scenes/Game/CameraController.tscn:562
+#: ../Scenes/Game/CameraController.tscn:601
 msgid "Brush Color:"
 msgstr "Цвет кисти:"
 
-#: ../Scenes/Game/CameraController.tscn:575
+#: ../Scenes/Game/CameraController.tscn:614
 msgid "Brush Size:"
 msgstr "Размер кисти:"
 
-#: ../Scenes/Game/CameraController.tscn:586
-#: ../Scenes/Game/CameraController.tscn:640
+#: ../Scenes/Game/CameraController.tscn:625
+#: ../Scenes/Game/CameraController.tscn:679
 msgid "1"
 msgstr "1"
 
-#: ../Scenes/Game/CameraController.tscn:629
+#: ../Scenes/Game/CameraController.tscn:668
 msgid "Eraser Size:"
 msgstr "Размер ластика:"
 
-#: ../Scenes/Game/CameraController.tscn:659
+#: ../Scenes/Game/CameraController.tscn:698
 msgid "Select a track..."
 msgstr "Выберите трек…"
 
-#: ../Scenes/Game/CameraController.tscn:664
+#: ../Scenes/Game/CameraController.tscn:703
 #, python-format
 msgid "Loaded %d tracks."
 msgstr "Загружено %d треков."
@@ -854,12 +901,12 @@ msgstr "Введите сообщение здесь…"
 msgid "Send"
 msgstr "Отправить"
 
-#: ../Scenes/Game/UI/GameUI.tscn:40 ../Scenes/Game/UI/GameUI.tscn:136
+#: ../Scenes/Game/UI/GameUI.tscn:40 ../Scenes/Game/UI/GameUI.tscn:139
 msgid "Objects"
 msgstr "Объекты"
 
-#: ../Scenes/Game/UI/GameUI.tscn:46 ../Scenes/Game/UI/GameUI.tscn:151
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:236
+#: ../Scenes/Game/UI/GameUI.tscn:46 ../Scenes/Game/UI/GameUI.tscn:155
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:284
 msgid "Games"
 msgstr "Игры"
 
@@ -885,55 +932,57 @@ msgstr "Очистить стол"
 msgid "Undo"
 msgstr "Отменить"
 
-#: ../Scenes/Game/UI/GameUI.tscn:83
-msgid "45"
+#: ../Scenes/Game/UI/GameUI.tscn:86
+#, fuzzy
+#| msgid "45"
+msgid "45°"
 msgstr "45"
 
-#: ../Scenes/Game/UI/GameUI.tscn:91
+#: ../Scenes/Game/UI/GameUI.tscn:94
 msgid "Menu"
 msgstr "Меню"
 
-#: ../Scenes/Game/UI/GameUI.tscn:146
+#: ../Scenes/Game/UI/GameUI.tscn:150
 msgid "Add"
 msgstr "Добавить"
 
-#: ../Scenes/Game/UI/GameUI.tscn:147
+#: ../Scenes/Game/UI/GameUI.tscn:151
 #, python-format
 msgid "Added %s."
 msgstr "Добавлено %s."
 
-#: ../Scenes/Game/UI/GameUI.tscn:148
+#: ../Scenes/Game/UI/GameUI.tscn:152
 #, python-format
 msgid "Added %d objects."
 msgstr "Добавлено %d объектов."
 
-#: ../Scenes/Game/UI/GameUI.tscn:155
+#: ../Scenes/Game/UI/GameUI.tscn:159
 #, python-format
 msgid "Loaded %d games."
 msgstr "Загружено %d игр."
 
-#: ../Scenes/Game/UI/GameUI.tscn:199
+#: ../Scenes/Game/UI/GameUI.tscn:203
 msgid "Back to game"
 msgstr "Вернуться к игре"
 
-#: ../Scenes/Game/UI/GameUI.tscn:205
+#: ../Scenes/Game/UI/GameUI.tscn:209
 msgid "Save game"
 msgstr "Сохранить игру"
 
-#: ../Scenes/Game/UI/GameUI.tscn:211
+#: ../Scenes/Game/UI/GameUI.tscn:215
 msgid "Load game"
 msgstr "Загрузить игру"
 
-#: ../Scenes/Game/UI/GameUI.tscn:223
+#: ../Scenes/Game/UI/GameUI.tscn:227
 msgid "Quit to main menu"
 msgstr "Выйти в главное меню"
 
-#: ../Scenes/Game/UI/GameUI.tscn:229
+#: ../Scenes/Game/UI/GameUI.tscn:233
 msgid "Quit to desktop"
 msgstr "Выйти на рабочий стол"
 
-#: ../Scenes/Game/UI/GameUI.tscn:234
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:157
+#: ../Scenes/Game/UI/GameUI.tscn:238
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:164
 msgid "Load a file"
 msgstr "Загрузить файл"
 
@@ -962,8 +1011,8 @@ msgid "Move Down"
 msgstr "Вниз"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:85
-#: ../Scripts/Game/CameraController.gd:1262
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:220
+#: ../Scripts/Game/CameraController.gd:1343
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:228
 msgid "Delete"
 msgstr "Удалить"
 
@@ -1025,11 +1074,11 @@ msgstr "Выберите стол…"
 msgid "Loaded %d tables."
 msgstr "Загружено %d столов."
 
-#: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:24
+#: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:21
 msgid "Pack:"
 msgstr "Пакет:"
 
-#: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:37
+#: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:35
 msgid "Type:"
 msgstr "Тип:"
 
@@ -1037,11 +1086,11 @@ msgstr "Тип:"
 msgid "Not bound"
 msgstr "Не связано"
 
-#: ../Scripts/BindManager.gd:58 ../Scripts/Game/CameraController.gd:1343
+#: ../Scripts/BindManager.gd:58 ../Scripts/Game/CameraController.gd:1424
 msgid "Left Mouse Button"
 msgstr "Левая кнопка мыши"
 
-#: ../Scripts/BindManager.gd:60 ../Scripts/Game/CameraController.gd:1403
+#: ../Scripts/BindManager.gd:60 ../Scripts/Game/CameraController.gd:1481
 msgid "Right Mouse Button"
 msgstr "Правая кнопка мыши"
 
@@ -1160,14 +1209,18 @@ msgid "German"
 msgstr "Немецкий"
 
 #: ../Scripts/MainMenu.gd:81
+msgid "Portuguese"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:82
 msgid "Russian"
 msgstr "Русский"
 
-#: ../Scripts/MainMenu.gd:182
+#: ../Scripts/MainMenu.gd:183
 msgid "Room code must be four characters long!"
 msgstr "Код комнаты должен состоять из четырех символов!"
 
-#: ../Scripts/MainMenu.gd:187
+#: ../Scripts/MainMenu.gd:188
 msgid "Invalid room code!"
 msgstr "Неверный код комнаты!"
 
@@ -1175,51 +1228,51 @@ msgstr "Неверный код комнаты!"
 msgid "System Default"
 msgstr "Системные по умолчанию"
 
-#: ../Scripts/OptionsMenu.gd:61
+#: ../Scripts/OptionsMenu.gd:62
 msgid "Never"
 msgstr "Никогда"
 
-#: ../Scripts/OptionsMenu.gd:62
+#: ../Scripts/OptionsMenu.gd:63
 msgid "30 seconds"
 msgstr "30 секунд"
 
-#: ../Scripts/OptionsMenu.gd:63
+#: ../Scripts/OptionsMenu.gd:64
 msgid "1 minute"
 msgstr "1 минута"
 
-#: ../Scripts/OptionsMenu.gd:65
+#: ../Scripts/OptionsMenu.gd:66
 msgid "10 minutes"
 msgstr "10 минут"
 
-#: ../Scripts/OptionsMenu.gd:66
+#: ../Scripts/OptionsMenu.gd:67
 msgid "30 minutes"
 msgstr "30 минут"
 
-#: ../Scripts/OptionsMenu.gd:69
+#: ../Scripts/OptionsMenu.gd:70
 msgid "Borderless Fullscreen"
 msgstr "Полноэкранный режим без окна"
 
-#: ../Scripts/OptionsMenu.gd:70
+#: ../Scripts/OptionsMenu.gd:71
 msgid "Fullscreen"
 msgstr "Полноэкранный режим"
 
-#: ../Scripts/OptionsMenu.gd:75
+#: ../Scripts/OptionsMenu.gd:76
 msgid "High"
 msgstr "Высокая"
 
-#: ../Scripts/OptionsMenu.gd:76
+#: ../Scripts/OptionsMenu.gd:77
 msgid "Very High"
 msgstr "Очень высокая"
 
-#: ../Scripts/OptionsMenu.gd:77
+#: ../Scripts/OptionsMenu.gd:78
 msgid "Ultra"
 msgstr "Ультра"
 
-#: ../Scripts/OptionsMenu.gd:79
+#: ../Scripts/OptionsMenu.gd:80
 msgid "Small"
 msgstr "Маленький"
 
-#: ../Scripts/OptionsMenu.gd:81
+#: ../Scripts/OptionsMenu.gd:82
 msgid "Large"
 msgstr "Большой"
 
@@ -1232,389 +1285,375 @@ msgstr "Ничего"
 msgid "Now Playing: %s"
 msgstr "Сейчас играет: %s"
 
-#: ../Scripts/Game/CameraController.gd:1063
+#: ../Scripts/Game/CameraController.gd:1122
 msgid "Add selected objects..."
 msgstr "Добавить выбранные объекты…"
 
-#: ../Scripts/Game/CameraController.gd:1102
+#: ../Scripts/Game/CameraController.gd:1161
 #, python-format
 msgid "Count: %d"
 msgstr "Количество: %d"
 
-#: ../Scripts/Game/CameraController.gd:1104
+#: ../Scripts/Game/CameraController.gd:1163
 #, python-format
 msgid "Value: %d"
 msgstr "Значение: %d"
 
-#: ../Scripts/Game/CameraController.gd:1124
+#: ../Scripts/Game/CameraController.gd:1183
 msgid "Put in hand"
 msgstr "Положить в руку"
 
-#: ../Scripts/Game/CameraController.gd:1128
+#: ../Scripts/Game/CameraController.gd:1187
 msgid "Collect individuals"
 msgstr "Собрать индивидуальные"
 
-#: ../Scripts/Game/CameraController.gd:1129
+#: ../Scripts/Game/CameraController.gd:1188
 msgid "Collect all"
 msgstr "Собрать все"
 
-#: ../Scripts/Game/CameraController.gd:1133
+#: ../Scripts/Game/CameraController.gd:1192
 msgid "Deal cards"
 msgstr "Раздать карты"
 
-#: ../Scripts/Game/CameraController.gd:1136
+#: ../Scripts/Game/CameraController.gd:1195
 msgid "Take off top"
 msgstr "Снять сверху"
 
-#: ../Scripts/Game/CameraController.gd:1139
+#: ../Scripts/Game/CameraController.gd:1198
 msgid "Orient all up"
 msgstr "Сориентировать все вверх"
 
-#: ../Scripts/Game/CameraController.gd:1140
+#: ../Scripts/Game/CameraController.gd:1199
 msgid "Orient all down"
 msgstr "Сориентировать все вниз"
 
-#: ../Scripts/Game/CameraController.gd:1141
-msgid "Shuffle"
-msgstr "Перемешать"
-
-#: ../Scripts/Game/CameraController.gd:1160
+#: ../Scripts/Game/CameraController.gd:1219
 msgid "Suit"
 msgstr "Масть"
 
-#: ../Scripts/Game/CameraController.gd:1162
+#: ../Scripts/Game/CameraController.gd:1221
 msgid "Value"
 msgstr "Значение"
 
-#: ../Scripts/Game/CameraController.gd:1164
+#: ../Scripts/Game/CameraController.gd:1223
 msgid "Sort by"
 msgstr "Сортировать по"
 
-#: ../Scripts/Game/CameraController.gd:1173
+#: ../Scripts/Game/CameraController.gd:1232
 msgid "Timer"
 msgstr "Таймер"
 
-#: ../Scripts/Game/CameraController.gd:1194
+#: ../Scripts/Game/CameraController.gd:1260
 #, python-format
 msgid "Total: %d"
 msgstr "Всего: %d"
 
-#: ../Scripts/Game/CameraController.gd:1196
+#: ../Scripts/Game/CameraController.gd:1262
 #, python-format
 msgid "Total: %f"
 msgstr "Всего: %f"
 
-#: ../Scripts/Game/CameraController.gd:1200
+#: ../Scripts/Game/CameraController.gd:1280
 msgid "Collect selected"
 msgstr "Собрать выбранные"
 
-#: ../Scripts/Game/CameraController.gd:1204
+#: ../Scripts/Game/CameraController.gd:1284
 msgid "Add objects..."
 msgstr "Добавить объекты…"
 
-#: ../Scripts/Game/CameraController.gd:1205
+#: ../Scripts/Game/CameraController.gd:1285
 msgid "Peek inside"
 msgstr "Заглянуть внутрь"
 
-#: ../Scripts/Game/CameraController.gd:1207
+#: ../Scripts/Game/CameraController.gd:1287
 msgid "Take objects out"
 msgstr "Убрать объекты"
 
-#: ../Scripts/Game/CameraController.gd:1222
+#: ../Scripts/Game/CameraController.gd:1303
 msgid "Speaker"
 msgstr "Динамик"
 
-#: ../Scripts/Game/CameraController.gd:1244
+#: ../Scripts/Game/CameraController.gd:1325
 msgid "Cut"
 msgstr "Вырезать"
 
-#: ../Scripts/Game/CameraController.gd:1245
+#: ../Scripts/Game/CameraController.gd:1326
 msgid "Copy"
 msgstr "Копировать"
 
-#: ../Scripts/Game/CameraController.gd:1247
-#: ../Scripts/Game/CameraController.gd:1286
+#: ../Scripts/Game/CameraController.gd:1328
+#: ../Scripts/Game/CameraController.gd:1367
 msgid "Paste"
 msgstr "Вставить"
 
-#: ../Scripts/Game/CameraController.gd:1258
+#: ../Scripts/Game/CameraController.gd:1339
 msgid "Unlock"
 msgstr "Разблокировать"
 
-#: ../Scripts/Game/CameraController.gd:1260
+#: ../Scripts/Game/CameraController.gd:1341
 msgid "Lock"
 msgstr "Заблокировать"
 
-#: ../Scripts/Game/CameraController.gd:1264
+#: ../Scripts/Game/CameraController.gd:1345
 msgid "Transform"
 msgstr "Трансформировать"
 
-#: ../Scripts/Game/CameraController.gd:1291
+#: ../Scripts/Game/CameraController.gd:1372
 msgid "Set spawn point here"
 msgstr "Установить точку появления здесь"
 
-#: ../Scripts/Game/CameraController.gd:1292
+#: ../Scripts/Game/CameraController.gd:1373
 msgid "Spawn object here"
 msgstr "Создать объект здесь"
 
-#: ../Scripts/Game/CameraController.gd:1311
+#: ../Scripts/Game/CameraController.gd:1392
 #, python-format
 msgid "Alt + %s"
 msgstr "Alt + %s"
 
-#: ../Scripts/Game/CameraController.gd:1312
+#: ../Scripts/Game/CameraController.gd:1393
 #, python-format
 msgid "Ctrl + %s"
 msgstr "Ctrl + %s"
 
-#: ../Scripts/Game/CameraController.gd:1313
+#: ../Scripts/Game/CameraController.gd:1394
 #, python-format
 msgid "Cmd + %s"
 msgstr "Cmd + %s"
 
-#: ../Scripts/Game/CameraController.gd:1314
+#: ../Scripts/Game/CameraController.gd:1395
 #, python-format
 msgid "Hold %s"
 msgstr "Удерживать %s"
 
-#: ../Scripts/Game/CameraController.gd:1315
+#: ../Scripts/Game/CameraController.gd:1396
 #, python-format
 msgid "Release %s"
 msgstr "Отпустить %s"
 
-#: ../Scripts/Game/CameraController.gd:1322
+#: ../Scripts/Game/CameraController.gd:1403
 msgid "Scroll Wheel"
 msgstr "Прокрутить колесико"
 
-#: ../Scripts/Game/CameraController.gd:1325
+#: ../Scripts/Game/CameraController.gd:1406
 msgid "Move camera"
 msgstr "Переместить камеру"
 
-#: ../Scripts/Game/CameraController.gd:1329
+#: ../Scripts/Game/CameraController.gd:1410
 msgid "Rotate camera"
 msgstr "Повернуть камеру"
 
-#: ../Scripts/Game/CameraController.gd:1330
+#: ../Scripts/Game/CameraController.gd:1411
 #, python-format
 msgid "Hold %s + Move Mouse"
 msgstr "Удерживать %s + перемещать мышь"
 
-#: ../Scripts/Game/CameraController.gd:1338
+#: ../Scripts/Game/CameraController.gd:1419
 msgid "Zoom camera"
 msgstr "Масштабирование камеры"
 
-#: ../Scripts/Game/CameraController.gd:1348
+#: ../Scripts/Game/CameraController.gd:1429
 msgid "Release selected"
 msgstr "Отпустить выбранные"
 
-#: ../Scripts/Game/CameraController.gd:1350
-msgid "Quick grab"
-msgstr "Быстрый захват"
-
-#: ../Scripts/Game/CameraController.gd:1350
-msgid "Move Mouse"
-msgstr "Переместить мышь"
-
-#: ../Scripts/Game/CameraController.gd:1351
-msgid "Stop grabbing"
-msgstr "Перестать хватать"
-
-#: ../Scripts/Game/CameraController.gd:1353
+#: ../Scripts/Game/CameraController.gd:1431
 msgid "Stop box selecting"
 msgstr "Прекратить выделять"
 
-#: ../Scripts/Game/CameraController.gd:1356
+#: ../Scripts/Game/CameraController.gd:1434
 msgid "Select object"
 msgstr "Выбрать объект"
 
-#: ../Scripts/Game/CameraController.gd:1358
+#: ../Scripts/Game/CameraController.gd:1436
 msgid "Add to selection"
 msgstr "Добавить к выбору"
 
-#: ../Scripts/Game/CameraController.gd:1361
+#: ../Scripts/Game/CameraController.gd:1439
 msgid "Take random object"
 msgstr "Взять случайный объект"
 
-#: ../Scripts/Game/CameraController.gd:1362
-#: ../Scripts/Game/CameraController.gd:1365
+#: ../Scripts/Game/CameraController.gd:1440
+#: ../Scripts/Game/CameraController.gd:1443
 #, python-format
 msgid "%s + Move Mouse"
 msgstr "%s + Переместить мышь"
 
-#: ../Scripts/Game/CameraController.gd:1364
+#: ../Scripts/Game/CameraController.gd:1442
 msgid "Take top object"
 msgstr "Взять верхний объект"
 
-#: ../Scripts/Game/CameraController.gd:1367
+#: ../Scripts/Game/CameraController.gd:1445
 msgid "Grab selected"
 msgstr "Захватить выбранное"
 
-#: ../Scripts/Game/CameraController.gd:1367
+#: ../Scripts/Game/CameraController.gd:1445
 msgid "Grab object"
 msgstr "Захватить объект"
 
-#: ../Scripts/Game/CameraController.gd:1370
+#: ../Scripts/Game/CameraController.gd:1448
 msgid "Stop moving"
 msgstr "Прекратить перемещение"
 
-#: ../Scripts/Game/CameraController.gd:1370
+#: ../Scripts/Game/CameraController.gd:1448
 msgid "Start moving"
 msgstr "Начать перемещение"
 
-#: ../Scripts/Game/CameraController.gd:1374
+#: ../Scripts/Game/CameraController.gd:1452
 msgid "Box select"
 msgstr "Выделение"
 
-#: ../Scripts/Game/CameraController.gd:1378
+#: ../Scripts/Game/CameraController.gd:1456
 #, fuzzy
 #| msgid "Select object"
 msgid "Flick object"
 msgstr "Щёлкнуть по объекту"
 
-#: ../Scripts/Game/CameraController.gd:1380
+#: ../Scripts/Game/CameraController.gd:1458
 #, fuzzy
 msgid "Prepare to flick"
 msgstr "Приготовиться к щелчку"
 
-#: ../Scripts/Game/CameraController.gd:1384
+#: ../Scripts/Game/CameraController.gd:1462
 msgid "Stop measuring"
 msgstr "Остановить измерение"
 
-#: ../Scripts/Game/CameraController.gd:1386
+#: ../Scripts/Game/CameraController.gd:1464
 msgid "Start measuring"
 msgstr "Начать измерение"
 
-#: ../Scripts/Game/CameraController.gd:1390
+#: ../Scripts/Game/CameraController.gd:1468
 msgid "Create hidden area"
 msgstr "Создать скрытую область"
 
-#: ../Scripts/Game/CameraController.gd:1392
+#: ../Scripts/Game/CameraController.gd:1470
 msgid "Draw hidden area"
 msgstr "Нарисовать скрытую область"
 
-#: ../Scripts/Game/CameraController.gd:1395
+#: ../Scripts/Game/CameraController.gd:1473
 msgid "Paint Table"
 msgstr "Рисовать"
 
-#: ../Scripts/Game/CameraController.gd:1398
+#: ../Scripts/Game/CameraController.gd:1476
 msgid "Erase Paint"
 msgstr "Ластик"
 
-#: ../Scripts/Game/CameraController.gd:1408
+#: ../Scripts/Game/CameraController.gd:1486
 msgid "Object menu"
 msgstr "Меню объектов"
 
-#: ../Scripts/Game/CameraController.gd:1410
+#: ../Scripts/Game/CameraController.gd:1488
 msgid "Table menu"
 msgstr "Меню стола"
 
-#: ../Scripts/Game/CameraController.gd:1414
+#: ../Scripts/Game/CameraController.gd:1492
 msgid "Stop flicking"
 msgstr "Прекратить щелкать"
 
-#: ../Scripts/Game/CameraController.gd:1418
+#: ../Scripts/Game/CameraController.gd:1496
 msgid "Remove last ruler"
 msgstr "Удалить последнюю линейку"
 
-#: ../Scripts/Game/CameraController.gd:1422
+#: ../Scripts/Game/CameraController.gd:1500
 msgid "Remove hidden area"
 msgstr "Удалить скрытую область"
 
-#: ../Scripts/Game/CameraController.gd:1436
-msgid "Flip orientation"
-msgstr "Перевернуть ориентацию"
-
-#: ../Scripts/Game/CameraController.gd:1438
-msgid "Reset orientation"
-msgstr "Сбросить ориентацию"
-
-#: ../Scripts/Game/CameraController.gd:1444
+#: ../Scripts/Game/CameraController.gd:1520
 msgid "Zoom selected"
 msgstr "Масштабировать выбранное"
 
-#: ../Scripts/Game/CameraController.gd:1445
+#: ../Scripts/Game/CameraController.gd:1521
 msgid "Lift selected"
 msgstr "Поднять выбранное"
 
-#: ../Scripts/Game/CameraController.gd:1446
+#: ../Scripts/Game/CameraController.gd:1522
 msgid "Rotate selected"
 msgstr "Повернуть выбранное"
 
-#: ../Scripts/Game/CameraController.gd:1455
+#: ../Scripts/Game/CameraController.gd:1531
 msgid "Unlock selected"
 msgstr "Разблокировать выбранное"
 
-#: ../Scripts/Game/CameraController.gd:1455
+#: ../Scripts/Game/CameraController.gd:1531
 msgid "Lock selected"
 msgstr "Заблокировать выбранное"
 
-#: ../Scripts/Game/CameraController.gd:1458
+#: ../Scripts/Game/CameraController.gd:1534
 msgid "Delete selected"
 msgstr "Удалить выбранное"
 
-#: ../Scripts/Game/CameraController.gd:1464
+#: ../Scripts/Game/CameraController.gd:1546
+#: ../Scripts/Game/CameraController.gd:1563
+msgid "Reset orientation"
+msgstr "Сбросить ориентацию"
+
+#: ../Scripts/Game/CameraController.gd:1548
+#: ../Scripts/Game/CameraController.gd:1565
+msgid "Flip orientation"
+msgstr "Перевернуть ориентацию"
+
+#: ../Scripts/Game/CameraController.gd:1554
 msgid "Flip card"
 msgstr "Перевернуть карту"
 
-#: ../Scripts/Game/CameraController.gd:1466
+#: ../Scripts/Game/CameraController.gd:1556
 msgid "Face card up"
 msgstr "Перевернуть лицом вверх"
 
-#: ../Scripts/Game/CameraController.gd:1469
+#: ../Scripts/Game/CameraController.gd:1572
 msgid "Reset camera"
 msgstr "Сбросить камеру"
 
-#: ../Scripts/Game/CameraController.gd:1620
+#: ../Scripts/Game/CameraController.gd:1723
 msgid "Pause track"
 msgstr "Приостановить трек"
 
-#: ../Scripts/Game/CameraController.gd:1625
+#: ../Scripts/Game/CameraController.gd:1728
 msgid "Resume track"
 msgstr "Возобновить трек"
 
-#: ../Scripts/Game/CameraController.gd:1629
+#: ../Scripts/Game/CameraController.gd:1732
 msgid "Stop track"
 msgstr "Остановить трек"
 
-#: ../Scripts/Game/CameraController.gd:1631
+#: ../Scripts/Game/CameraController.gd:1734
 msgid "Play track"
 msgstr "Воспроизвести трек"
 
-#: ../Scripts/Game/CameraController.gd:1636
+#: ../Scripts/Game/CameraController.gd:1739
 msgid "No track loaded"
 msgstr "Трек не загружен"
 
-#: ../Scripts/Game/CameraController.gd:1638
+#: ../Scripts/Game/CameraController.gd:1741
 #, python-format
 msgid "Playing: %s"
 msgstr "Играет: %s"
 
-#: ../Scripts/Game/CameraController.gd:1640
+#: ../Scripts/Game/CameraController.gd:1743
 #, python-format
 msgid "Loaded: %s"
 msgstr "Загружено: %s"
 
-#: ../Scripts/Game/CameraController.gd:1650
+#: ../Scripts/Game/CameraController.gd:1757
 msgid "Pause timer"
 msgstr "Приостановить таймер"
 
-#: ../Scripts/Game/CameraController.gd:1655
+#: ../Scripts/Game/CameraController.gd:1762
 msgid "Resume timer"
 msgstr "Возобновить таймер"
 
-#: ../Scripts/Game/CameraController.gd:1659
+#: ../Scripts/Game/CameraController.gd:1766
 msgid "Stop countdown"
 msgstr "Остановить обратный отсчет"
 
-#: ../Scripts/Game/CameraController.gd:1661
+#: ../Scripts/Game/CameraController.gd:1768
 msgid "Start countdown"
 msgstr "Начать обратный отсчет"
 
-#: ../Scripts/Game/CameraController.gd:1665
+#: ../Scripts/Game/CameraController.gd:1772
 msgid "Stop stopwatch"
 msgstr "Остановить секундомер"
 
-#: ../Scripts/Game/CameraController.gd:1667
+#: ../Scripts/Game/CameraController.gd:1774
 msgid "Start stopwatch"
 msgstr "Запустить секундомер"
 
@@ -1762,30 +1801,30 @@ msgstr "Повторное подключение слишком быстрое.
 msgid "Too much text being sent, waiting..."
 msgstr "Отправлено слишком много текста, ожидание…"
 
-#: ../Scripts/Game/UI/GameUI.gd:227
+#: ../Scripts/Game/UI/GameUI.gd:228
 #, python-format
 msgid "Room Code: [b]%s[/b]"
 msgstr "Код комнаты: [b]%s[/b]"
 
-#: ../Scripts/Game/UI/GameUI.gd:231
+#: ../Scripts/Game/UI/GameUI.gd:232
 msgid "Hide Room Code"
 msgstr "Скрыть код комнаты"
 
-#: ../Scripts/Game/UI/GameUI.gd:233
+#: ../Scripts/Game/UI/GameUI.gd:234
 msgid "Show Room Code"
 msgstr "Показать код комнаты"
 
-#: ../Scripts/Game/UI/GameUI.gd:294
+#: ../Scripts/Game/UI/GameUI.gd:295
 #, python-format
 msgid "%s has joined the game."
 msgstr "%s присоединился(-ась) к игре."
 
-#: ../Scripts/Game/UI/GameUI.gd:301
+#: ../Scripts/Game/UI/GameUI.gd:302
 #, python-format
 msgid "%s changed their name to %s"
 msgstr "%s изменил(а) свое имя на %s"
 
-#: ../Scripts/Game/UI/GameUI.gd:306
+#: ../Scripts/Game/UI/GameUI.gd:307
 #, python-format
 msgid "%s has left the game."
 msgstr "%s покинул(а) игру."
@@ -1817,53 +1856,53 @@ msgstr "Вы уверены, что хотите удалить страницу
 msgid "New Page"
 msgstr "Новая страница"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:114
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:121
 #, python-format
 msgid "Modified: %s"
 msgstr "Изменено: %s"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:157
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:164
 msgid "Save a file"
 msgstr "Сохранить файл"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:160
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:167
 msgid "Save"
 msgstr "Сохранить"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:160
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:167
 msgid "Load"
 msgstr "Загрузить"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:173
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:180
 msgid "Sort:"
 msgstr "Сортировка:"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:177
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:184
 msgid "Last Modified"
 msgstr "Последние изменения"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:202
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:210
 msgid "Delete file?"
 msgstr "Удалить файл?"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:210
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:218
 msgid "Overwrite file?"
 msgstr "Перезаписать файл?"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:218
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:254
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:226
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:262
 msgid "Rename"
 msgstr "Переименовать"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:219
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:227
 msgid "Duplicate"
 msgstr "Дублировать"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:225
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:233
 msgid "Invalid name!"
 msgstr "Неправильное имя!"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:227
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:235
 #, python-format
 msgid ""
 "File names cannot contain any of the following characters:\n"
@@ -1872,44 +1911,44 @@ msgstr ""
 "Имена файлов не могут содержать ни одного из следующих символов:\n"
 "%s"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:233
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:241
 msgid "Rename file..."
 msgstr "Переименование файла…"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:243
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:251
 msgid "Please enter a new name for the file:"
 msgstr "Пожалуйста, введите новое имя файла:"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:363
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:371
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Вы уверены, что хотите удалить '%s'?"
 
-#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:376
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:384
 #, python-format
 msgid "The file '%s' already exists. Are you sure you want to overwrite it?"
 msgstr "Файл '%s' уже существует. Вы уверены, что хотите его перезаписать?"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:54
-#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:77
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:82
 #, python-format
 msgid "Author: %s"
 msgstr "Автор: %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:60
-#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:83
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:86
 #, python-format
 msgid "License: %s"
 msgstr "Лицензия: %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:66
-#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:89
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:90
 #, python-format
 msgid "Modified by: %s"
 msgstr "Изменено: %s"
 
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:72
-#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:95
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:94
 #, python-format
 msgid "URL: %s"
 msgstr "URL-адрес: %s"
@@ -1919,53 +1958,73 @@ msgstr "URL-адрес: %s"
 msgid "Page %d/%d"
 msgstr "Страница %d/%d"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:233
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:113
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:300
+msgid "All"
+msgstr ""
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:280
+#, fuzzy
+#| msgid "Cards"
+msgid "Boards"
+msgstr "Карты"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:281
 msgid "Cards"
 msgstr "Карты"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:234
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:282
 msgid "Containers"
 msgstr "Контейнеры"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:235
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:283
 msgid "Dice"
 msgstr "Кости"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:237
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:285
 msgid "Music"
 msgstr "Музыка"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:238
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:286
 msgid "Pieces"
 msgstr "Детали"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:239
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:287
 msgid "Skyboxes"
 msgstr "Скайбоксы"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:240
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:288
 msgid "Sounds"
 msgstr "Звуки"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:241
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:289
 msgid "Speakers"
 msgstr "Динамики"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:242
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:290
 msgid "Stacks"
 msgstr "Стопки"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:243
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:291
 msgid "Tables"
 msgstr "Столы"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:244
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:292
 msgid "Timers"
 msgstr "Таймеры"
 
-#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:245
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:293
 msgid "Tokens"
 msgstr "Жетоны"
+
+#~ msgid "Quick grab"
+#~ msgstr "Быстрый захват"
+
+#~ msgid "Move Mouse"
+#~ msgstr "Переместить мышь"
+
+#~ msgid "Stop grabbing"
+#~ msgstr "Перестать хватать"
 
 #~ msgid "Server: "
 #~ msgstr "Сервер: "
