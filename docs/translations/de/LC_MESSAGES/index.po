@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2022-03-01 17:54+0000\n"
-"Last-Translator: Leona 'leo' Gottfried <s6573328@stud.uni-frankfurt.de>\n"
+"POT-Creation-Date: 2023-02-06 00:02+0000\n"
+"PO-Revision-Date: 2022-11-30 13:47+0000\n"
+"Last-Translator: grant <grantler@mailbox.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-index/de/>\n"
 "Language: de\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
-#: ../../index.rst:22
+#: ../../index.rst:25
 msgid "General"
 msgstr "Allgemein"
 
-#: ../../index.rst:30
+#: ../../index.rst:33
 msgid "Custom Assets"
-msgstr ""
+msgstr "Assets"
 
 #: ../../index.rst:7
 msgid "Tabletop Club Documentation"
-msgstr ""
+msgstr "Tabletop Club Dokumentation"
 
 #: ../../index.rst:9
 msgid ""
@@ -38,8 +38,16 @@ msgid ""
 "check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
 "the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
+"Willkommen zur Dokumentation von Tabletop Club, einem freien Open Source "
+"Brettspiel-Simulator! Wenn du neu beim Projekt bist, besuche zuerst die :ref:"
+"`about-tabletop-club` Seite. Andernfalls kannst du entweder das "
+"Inhaltsverzeichnis oder die Suchleiste nutzen, um das Gewünschte zu finden!"
 
-#: ../../index.rst:16
+#: ../../index.rst:None
+msgid "Screenshots from the game"
+msgstr ""
+
+#: ../../index.rst:19
 msgid ""
 "The documentation, as well as the project in general, is open to suggestions "
 "and contributions! If you feel that something is not explained well, or you "
@@ -47,19 +55,24 @@ msgid ""
 "issue or a pull request on the project's `GitHub repository <https://github."
 "com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
-
-#: ../../index.rst:39
-msgid "Indices and tables"
-msgstr ""
-
-#: ../../index.rst:41
-msgid ":ref:`genindex`"
-msgstr ""
+"Die Dokumentation und das Projekt sind offen für Vorschläge und Beiträge! "
+"Wenn du meinst, dass etwas nicht gut erklärt ist, oder du findest, dass "
+"Information fehlt, dann zögere bitte nicht einen „issue“ oder einen „pull "
+"request“ auf der Github Projektseite `GitHub repository <https://github.com/"
+"drwhut/tabletop-club/issues>`zu erstellen _!"
 
 #: ../../index.rst:42
-msgid ":ref:`modindex`"
-msgstr ""
+msgid "Indices and tables"
+msgstr "Indizes und Tabellen"
 
-#: ../../index.rst:43
+#: ../../index.rst:44
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../index.rst:45
+msgid ":ref:`modindex`"
+msgstr ":ref:`modindex`"
+
+#: ../../index.rst:46
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"

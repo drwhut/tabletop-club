@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-25 11:08+0000\n"
+"POT-Creation-Date: 2023-02-06 00:02+0000\n"
 "PO-Revision-Date: 2022-11-11 18:47+0000\n"
 "Last-Translator: AllanOvelha <allan1234567@yahoo.com.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
@@ -20,11 +20,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.15-dev\n"
 
-#: ../../index.rst:22
+#: ../../index.rst:25
 msgid "General"
 msgstr "Geral"
 
-#: ../../index.rst:30
+#: ../../index.rst:33
 msgid "Custom Assets"
 msgstr "Assets Personalizadas"
 
@@ -45,7 +45,11 @@ msgstr ""
 "usar o índice, a barra de rolagem ou a barra de pesquisa para achar o que "
 "você precisa!"
 
-#: ../../index.rst:16
+#: ../../index.rst:None
+msgid "Screenshots from the game"
+msgstr ""
+
+#: ../../index.rst:19
 msgid ""
 "The documentation, as well as the project in general, is open to suggestions "
 "and contributions! If you feel that something is not explained well, or you "
@@ -59,18 +63,18 @@ msgstr ""
 "no projeto em `GitHub repository <https://github.com/drwhut/tabletop-club/"
 "issues>`_!"
 
-#: ../../index.rst:39
+#: ../../index.rst:42
 msgid "Indices and tables"
 msgstr "Índices e tabelas"
 
-#: ../../index.rst:41
+#: ../../index.rst:44
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../index.rst:42
+#: ../../index.rst:45
 msgid ":ref:`modindex`"
 msgstr ":ref:`modindex`"
 
-#: ../../index.rst:43
+#: ../../index.rst:46
 msgid ":ref:`search`"
 msgstr ":ref:`pesquisa`"

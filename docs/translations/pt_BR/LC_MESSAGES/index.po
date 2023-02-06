@@ -2,35 +2,35 @@
 # Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows.
 # Copyright (c) 2021-2022 Tabletop Club contributors (see game/CREDITS.tres).
 # This file is distributed under the same license as the Tabletop Club package.
-# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2021.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-06 00:02+0000\n"
-"PO-Revision-Date: 2022-11-14 14:47+0000\n"
-"Last-Translator: Neko Nekowazarashi <kodra@nekoweb.my.id>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/tabletop-club/"
-"docs-index/id/>\n"
-"Language: id\n"
+"PO-Revision-Date: 2023-01-01 20:49+0000\n"
+"Last-Translator: Willian Correia Vinagre <willianvinagre11@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"tabletop-club/docs-index/pt_BR/>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: ../../index.rst:25
 msgid "General"
-msgstr "Umum"
+msgstr "Geral"
 
 #: ../../index.rst:33
 msgid "Custom Assets"
-msgstr ""
+msgstr "Recursos personalizados"
 
 #: ../../index.rst:7
 msgid "Tabletop Club Documentation"
-msgstr ""
+msgstr "Documentação do Tabletop Club"
 
 #: ../../index.rst:9
 msgid ""
@@ -39,6 +39,11 @@ msgid ""
 "check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
 "the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
+"Bem-vindo à documentação para o Tabletop Club, um simulador de jogo de "
+"tabuleiro de mesa gratuito e de código-fonte aberto! Se você é novo ao "
+"projeto, fique à vontade para dar uma olhada na página :ref: `about-tabletop-"
+"club`. Caso contrário, você também pode usar a tabela de conteúdo, a barra "
+"lateral, ou a barra de pesquisa para achar o que você precisa!"
 
 #: ../../index.rst:None
 msgid "Screenshots from the game"
@@ -52,19 +57,24 @@ msgid ""
 "issue or a pull request on the project's `GitHub repository <https://github."
 "com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
+"A documentação, assim como o projeto em geral, está aberta a sugestões e "
+"contribuições! Se você sente que algo não é bem explicado, ou acha que falta "
+"alguma informação, então por favor não hesite em abrir uma “issue” ou um "
+"“pull request” no `repositório do GitHub <https://github.com/drwhut/tabletop-"
+"club/issues>` do projeto _!"
 
 #: ../../index.rst:42
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices e tabelas"
 
 #: ../../index.rst:44
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../index.rst:45
 msgid ":ref:`modindex`"
-msgstr ""
+msgstr ":ref:`modindex`"
 
 #: ../../index.rst:46
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
