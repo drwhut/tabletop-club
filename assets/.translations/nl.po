@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-02-06 00:16\n"
-"PO-Revision-Date: 2022-11-26 12:47+0000\n"
+"PO-Revision-Date: 2023-02-07 11:39+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/nl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -1013,104 +1013,84 @@ msgid "An old radio from a bygone era."
 msgstr "Een radio uit lang vervlogen tijden."
 
 #: ../TabletopClub/tokens/cube/Blue:1
-#, fuzzy
-#| msgid "d4 (Blue)"
 msgid "Blue"
-msgstr "d4 (blauw)"
+msgstr "Blauw"
 
 #: ../TabletopClub/tokens/cube/Blue:2
 msgid "A blue token."
-msgstr ""
+msgstr "Een blauwe fiche."
 
 #: ../TabletopClub/tokens/cube/Brown:1
-#, fuzzy
-#| msgid "d4 (Brown)"
 msgid "Brown"
-msgstr "d4 (bruin)"
+msgstr "Bruin"
 
 #: ../TabletopClub/tokens/cube/Brown:2
 msgid "A brown token."
-msgstr ""
+msgstr "Een bruine fiche."
 
 #: ../TabletopClub/tokens/cube/Cyan:1
-#, fuzzy
-#| msgid "d4 (Cyan)"
 msgid "Cyan"
-msgstr "d4 (groenblauw)"
+msgstr "Groenblauw"
 
 #: ../TabletopClub/tokens/cube/Cyan:2
 msgid "A cyan token."
-msgstr ""
+msgstr "Een groenblauwe fiche."
 
 #: ../TabletopClub/tokens/cube/Green:1
-#, fuzzy
-#| msgid "d4 (Green)"
 msgid "Green"
-msgstr "d4 (groen)"
+msgstr "Groen"
 
 #: ../TabletopClub/tokens/cube/Green:2
 msgid "A green token."
-msgstr ""
+msgstr "Een groene fiche."
 
 #: ../TabletopClub/tokens/cube/Orange:1
-#, fuzzy
-#| msgid "d4 (Orange)"
 msgid "Orange"
-msgstr "d4 (oranje)"
+msgstr "Oranje"
 
 #: ../TabletopClub/tokens/cube/Orange:2
 msgid "An orange token."
-msgstr ""
+msgstr "Een oranje fiche."
 
 #: ../TabletopClub/tokens/cube/Pink:1
-#, fuzzy
-#| msgid "d4 (Pink)"
 msgid "Pink"
-msgstr "d4 (roze)"
+msgstr "Roze"
 
 #: ../TabletopClub/tokens/cube/Pink:2
 msgid "A pink token."
-msgstr ""
+msgstr "Een roze fiche."
 
 #: ../TabletopClub/tokens/cube/Purple:1
-#, fuzzy
-#| msgid "d4 (Purple)"
 msgid "Purple"
-msgstr "d4 (paars)"
+msgstr "Paars"
 
 #: ../TabletopClub/tokens/cube/Purple:2
 msgid "A purple token."
-msgstr ""
+msgstr "Een paarse fiche."
 
 #: ../TabletopClub/tokens/cube/Red:1
-#, fuzzy
-#| msgid "Red Cup"
 msgid "Red"
-msgstr "Rode beker"
+msgstr "Rood"
 
 #: ../TabletopClub/tokens/cube/Red:2
 msgid "A red token."
-msgstr ""
+msgstr "Een rode fiche."
 
 #: ../TabletopClub/tokens/cube/White:1
-#, fuzzy
-#| msgid "d4 (White)"
 msgid "White"
-msgstr "d4 (wit)"
+msgstr "Wit"
 
 #: ../TabletopClub/tokens/cube/White:2
 msgid "A white token."
-msgstr ""
+msgstr "Een witte fiche."
 
 #: ../TabletopClub/tokens/cube/Yellow:1
-#, fuzzy
-#| msgid "d4 (Yellow)"
 msgid "Yellow"
-msgstr "d4 (geel)"
+msgstr "Geel"
 
 #: ../TabletopClub/tokens/cube/Yellow:2
 msgid "A yellow token."
-msgstr ""
+msgstr "Een gele fiche."
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
