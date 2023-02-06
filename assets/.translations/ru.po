@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-25 11:54\n"
-"PO-Revision-Date: 2022-07-08 13:16+0000\n"
+"POT-Creation-Date: 2023-02-06 00:16\n"
+"PO-Revision-Date: 2022-11-28 17:36+0000\n"
 "Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/ru/>\n"
@@ -19,8 +19,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: extract_pot.py\n"
+
+#: ../TabletopClub/boards/Chess_Board:1
+msgid "Chess Board"
+msgstr "Шахматная доска"
+
+#: ../TabletopClub/boards/Chess_Board:2
+msgid "An 8x8 Chess board."
+msgstr "Шахматная доска 8 на 8."
 
 #: ../TabletopClub/cards/52-Card_Deck:1
 msgid "52-Card Deck"
@@ -694,11 +702,11 @@ msgstr "Стандартные шахматы для двух игроков."
 
 #: ../TabletopClub/games/Poker:1
 msgid "Poker"
-msgstr ""
+msgstr "Покер"
 
 #: ../TabletopClub/games/Poker:2
 msgid "Each player has been given 25 chips, which sum up to a value of 500."
-msgstr ""
+msgstr "Каждому игроку было выдано 25 фишек, которые в сумме составляют 500."
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
@@ -883,14 +891,6 @@ msgstr "Чёрный слон"
 msgid "Bishop White"
 msgstr "Белый слон"
 
-#: ../TabletopClub/pieces/Chess_Board:1
-msgid "Chess Board"
-msgstr "Шахматная доска"
-
-#: ../TabletopClub/pieces/Chess_Board:2
-msgid "An 8x8 Chess board."
-msgstr "Шахматная доска 8 на 8."
-
 #: ../TabletopClub/pieces/King_Black:1
 msgid "King Black"
 msgstr "Чёрный король"
@@ -1017,10 +1017,110 @@ msgstr "Стол"
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
-msgstr ""
+msgstr "Радио"
 
 #: ../TabletopClub/timers/Radio:2
 msgid "An old radio from a bygone era."
+msgstr "Старый радиоприемник из ушедшей эпохи."
+
+#: ../TabletopClub/tokens/cube/Blue:1
+#, fuzzy
+#| msgid "d4 (Blue)"
+msgid "Blue"
+msgstr "d4 (Синий)"
+
+#: ../TabletopClub/tokens/cube/Blue:2
+msgid "A blue token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Brown:1
+#, fuzzy
+#| msgid "d4 (Brown)"
+msgid "Brown"
+msgstr "d4 (Коричневый)"
+
+#: ../TabletopClub/tokens/cube/Brown:2
+msgid "A brown token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Cyan:1
+#, fuzzy
+#| msgid "d4 (Cyan)"
+msgid "Cyan"
+msgstr "d4 (Голубой)"
+
+#: ../TabletopClub/tokens/cube/Cyan:2
+msgid "A cyan token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Green:1
+#, fuzzy
+#| msgid "d4 (Green)"
+msgid "Green"
+msgstr "d4 (Зелёный)"
+
+#: ../TabletopClub/tokens/cube/Green:2
+msgid "A green token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Orange:1
+#, fuzzy
+#| msgid "d4 (Orange)"
+msgid "Orange"
+msgstr "d4 (Оранжевый)"
+
+#: ../TabletopClub/tokens/cube/Orange:2
+msgid "An orange token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Pink:1
+#, fuzzy
+#| msgid "d4 (Pink)"
+msgid "Pink"
+msgstr "d4 (Розовый)"
+
+#: ../TabletopClub/tokens/cube/Pink:2
+msgid "A pink token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Purple:1
+#, fuzzy
+#| msgid "d4 (Purple)"
+msgid "Purple"
+msgstr "d4 (Фиолетовый)"
+
+#: ../TabletopClub/tokens/cube/Purple:2
+msgid "A purple token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Red:1
+#, fuzzy
+#| msgid "Red Cup"
+msgid "Red"
+msgstr "Красная чашка"
+
+#: ../TabletopClub/tokens/cube/Red:2
+msgid "A red token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/White:1
+#, fuzzy
+#| msgid "d4 (White)"
+msgid "White"
+msgstr "d4 (Белый)"
+
+#: ../TabletopClub/tokens/cube/White:2
+msgid "A white token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Yellow:1
+#, fuzzy
+#| msgid "d4 (Yellow)"
+msgid "Yellow"
+msgstr "d4 (Жёлтый)"
+
+#: ../TabletopClub/tokens/cube/Yellow:2
+msgid "A yellow token."
 msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/1:1

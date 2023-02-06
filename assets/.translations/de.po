@@ -8,27 +8,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-25 11:54\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2023-02-06 00:16\n"
+"PO-Revision-Date: 2023-01-26 10:53+0000\n"
+"Last-Translator: Leona 'leo' Gottfried <s6573328@stud.uni-frankfurt.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
+"default-asset-pack/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
 "Generated-By: extract_pot.py\n"
+
+#: ../TabletopClub/boards/Chess_Board:1
+msgid "Chess Board"
+msgstr "Schachbrett"
+
+#: ../TabletopClub/boards/Chess_Board:2
+msgid "An 8x8 Chess board."
+msgstr "Ein Schachbrett mit 8x8 Feldern."
 
 #: ../TabletopClub/cards/52-Card_Deck:1
 msgid "52-Card Deck"
-msgstr ""
+msgstr "52-Karten Deck"
 
 #: ../TabletopClub/cards/52-Card_Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr ""
+msgstr "Französisches Blatt für Poker, ohne Joker."
 
 #: ../TabletopClub/cards/Ace_of_Clubs:1
 msgid "Ace of Clubs"
-msgstr ""
+msgstr "Kreuz-Ass"
 
 #: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2
 #: ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2
@@ -72,231 +83,231 @@ msgstr ""
 #: ../TabletopClub/cards/Two_of_Diamonds:2
 #: ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
 msgid "A poker-sized French-suited playing card."
-msgstr ""
+msgstr "Französisches Pokerkartenset."
 
 #: ../TabletopClub/cards/Ace_of_Diamonds:1
 msgid "Ace of Diamonds"
-msgstr ""
+msgstr "Karo-Ass"
 
 #: ../TabletopClub/cards/Ace_of_Hearts:1
 msgid "Ace of Hearts"
-msgstr ""
+msgstr "Herz-Ass"
 
 #: ../TabletopClub/cards/Ace_of_Spades:1
 msgid "Ace of Spades"
-msgstr ""
+msgstr "Pik-Ass"
 
 #: ../TabletopClub/cards/Eight_of_Clubs:1
 msgid "Eight of Clubs"
-msgstr ""
+msgstr "Kreuz Acht"
 
 #: ../TabletopClub/cards/Eight_of_Diamonds:1
 msgid "Eight of Diamonds"
-msgstr ""
+msgstr "Karo Acht"
 
 #: ../TabletopClub/cards/Eight_of_Hearts:1
 msgid "Eight of Hearts"
-msgstr ""
+msgstr "Herz Acht"
 
 #: ../TabletopClub/cards/Eight_of_Spades:1
 msgid "Eight of Spades"
-msgstr ""
+msgstr "Pik Acht"
 
 #: ../TabletopClub/cards/Five_of_Clubs:1
 msgid "Five of Clubs"
-msgstr ""
+msgstr "Kreuz Fünf"
 
 #: ../TabletopClub/cards/Five_of_Diamonds:1
 msgid "Five of Diamonds"
-msgstr ""
+msgstr "Karo Fünf"
 
 #: ../TabletopClub/cards/Five_of_Hearts:1
 msgid "Five of Hearts"
-msgstr ""
+msgstr "Herz Fünf"
 
 #: ../TabletopClub/cards/Five_of_Spades:1
 msgid "Five of Spades"
-msgstr ""
+msgstr "Pik Fünf"
 
 #: ../TabletopClub/cards/Four_of_Clubs:1
 msgid "Four of Clubs"
-msgstr ""
+msgstr "Kreuz Vier"
 
 #: ../TabletopClub/cards/Four_of_Diamonds:1
 msgid "Four of Diamonds"
-msgstr ""
+msgstr "Karo Vier"
 
 #: ../TabletopClub/cards/Four_of_Hearts:1
 msgid "Four of Hearts"
-msgstr ""
+msgstr "Herz Vier"
 
 #: ../TabletopClub/cards/Four_of_Spades:1
 msgid "Four of Spades"
-msgstr ""
+msgstr "Pik Vier"
 
 #: ../TabletopClub/cards/Jack_of_Clubs:1
 msgid "Jack of Clubs"
-msgstr ""
+msgstr "Kreuzbube"
 
 #: ../TabletopClub/cards/Jack_of_Diamonds:1
 msgid "Jack of Diamonds"
-msgstr ""
+msgstr "Karobube"
 
 #: ../TabletopClub/cards/Jack_of_Hearts:1
 msgid "Jack of Hearts"
-msgstr ""
+msgstr "Herzbube"
 
 #: ../TabletopClub/cards/Jack_of_Spades:1
 msgid "Jack of Spades"
-msgstr ""
+msgstr "Pikbube"
 
 #: ../TabletopClub/cards/Joker_Black:1
 msgid "Joker Black"
-msgstr ""
+msgstr "Schwarzer Joker"
 
 #: ../TabletopClub/cards/Joker_Red:1
 msgid "Joker Red"
-msgstr ""
+msgstr "Roter Joker"
 
 #: ../TabletopClub/cards/King_of_Clubs:1
 msgid "King of Clubs"
-msgstr ""
+msgstr "Kreuzkönig"
 
 #: ../TabletopClub/cards/King_of_Diamonds:1
 msgid "King of Diamonds"
-msgstr ""
+msgstr "Karokönig"
 
 #: ../TabletopClub/cards/King_of_Hearts:1
 msgid "King of Hearts"
-msgstr ""
+msgstr "Herzkönig"
 
 #: ../TabletopClub/cards/King_of_Spades:1
 msgid "King of Spades"
-msgstr ""
+msgstr "Pikkönig"
 
 #: ../TabletopClub/cards/Nine_of_Clubs:1
 msgid "Nine of Clubs"
-msgstr ""
+msgstr "Kreuz Neun"
 
 #: ../TabletopClub/cards/Nine_of_Diamonds:1
 msgid "Nine of Diamonds"
-msgstr ""
+msgstr "Karo Neun"
 
 #: ../TabletopClub/cards/Nine_of_Hearts:1
 msgid "Nine of Hearts"
-msgstr ""
+msgstr "Herz Neun"
 
 #: ../TabletopClub/cards/Nine_of_Spades:1
 msgid "Nine of Spades"
-msgstr ""
+msgstr "Pik Neun"
 
 #: ../TabletopClub/cards/Queen_of_Clubs:1
 msgid "Queen of Clubs"
-msgstr ""
+msgstr "Kreuzdame"
 
 #: ../TabletopClub/cards/Queen_of_Diamonds:1
 msgid "Queen of Diamonds"
-msgstr ""
+msgstr "Karodame"
 
 #: ../TabletopClub/cards/Queen_of_Hearts:1
 msgid "Queen of Hearts"
-msgstr ""
+msgstr "Herzdame"
 
 #: ../TabletopClub/cards/Queen_of_Spades:1
 msgid "Queen of Spades"
-msgstr ""
+msgstr "Pikdame"
 
 #: ../TabletopClub/cards/Seven_of_Clubs:1
 msgid "Seven of Clubs"
-msgstr ""
+msgstr "Kreuz Sieben"
 
 #: ../TabletopClub/cards/Seven_of_Diamonds:1
 msgid "Seven of Diamonds"
-msgstr ""
+msgstr "Karo Sieben"
 
 #: ../TabletopClub/cards/Seven_of_Hearts:1
 msgid "Seven of Hearts"
-msgstr ""
+msgstr "Herz Sieben"
 
 #: ../TabletopClub/cards/Seven_of_Spades:1
 msgid "Seven of Spades"
-msgstr ""
+msgstr "Pik Sieben"
 
 #: ../TabletopClub/cards/Six_of_Clubs:1
 msgid "Six of Clubs"
-msgstr ""
+msgstr "Kreuz Sechs"
 
 #: ../TabletopClub/cards/Six_of_Diamonds:1
 msgid "Six of Diamonds"
-msgstr ""
+msgstr "Karo Sechs"
 
 #: ../TabletopClub/cards/Six_of_Hearts:1
 msgid "Six of Hearts"
-msgstr ""
+msgstr "Herz Sechs"
 
 #: ../TabletopClub/cards/Six_of_Spades:1
 msgid "Six of Spades"
-msgstr ""
+msgstr "Pik Sechs"
 
 #: ../TabletopClub/cards/Ten_of_Clubs:1
 msgid "Ten of Clubs"
-msgstr ""
+msgstr "Kreuz Zehn"
 
 #: ../TabletopClub/cards/Ten_of_Diamonds:1
 msgid "Ten of Diamonds"
-msgstr ""
+msgstr "Karo Zehn"
 
 #: ../TabletopClub/cards/Ten_of_Hearts:1
 msgid "Ten of Hearts"
-msgstr ""
+msgstr "Herz Zehn"
 
 #: ../TabletopClub/cards/Ten_of_Spades:1
 msgid "Ten of Spades"
-msgstr ""
+msgstr "Pik Zehn"
 
 #: ../TabletopClub/cards/Three_of_Clubs:1
 msgid "Three of Clubs"
-msgstr ""
+msgstr "Kreuz Drei"
 
 #: ../TabletopClub/cards/Three_of_Diamonds:1
 msgid "Three of Diamonds"
-msgstr ""
+msgstr "Karo Drei"
 
 #: ../TabletopClub/cards/Three_of_Hearts:1
 msgid "Three of Hearts"
-msgstr ""
+msgstr "Herz Drei"
 
 #: ../TabletopClub/cards/Three_of_Spades:1
 msgid "Three of Spades"
-msgstr ""
+msgstr "Pik Drei"
 
 #: ../TabletopClub/cards/Two_of_Clubs:1
 msgid "Two of Clubs"
-msgstr ""
+msgstr "Kreuz Zwei"
 
 #: ../TabletopClub/cards/Two_of_Diamonds:1
 msgid "Two of Diamonds"
-msgstr ""
+msgstr "Karo Zwei"
 
 #: ../TabletopClub/cards/Two_of_Hearts:1
 msgid "Two of Hearts"
-msgstr ""
+msgstr "Herz Zwei"
 
 #: ../TabletopClub/cards/Two_of_Spades:1
 msgid "Two of Spades"
-msgstr ""
+msgstr "Pik Zwei"
 
 #: ../TabletopClub/containers/Purse:1
 msgid "Purse"
-msgstr ""
+msgstr "Beutel"
 
 #: ../TabletopClub/containers/Red_Cup:1
 msgid "Red Cup"
-msgstr ""
+msgstr "Roter Becher"
 
 #: ../TabletopClub/dice/d4/d4_(Black):1
 msgid "d4 (Black)"
-msgstr ""
+msgstr "d4 (Schwarz)"
 
 #: ../TabletopClub/dice/d4/d4_(Black):2 ../TabletopClub/dice/d4/d4_(Blue):2
 #: ../TabletopClub/dice/d4/d4_(Brown):2 ../TabletopClub/dice/d4/d4_(Cyan):2
@@ -305,51 +316,51 @@ msgstr ""
 #: ../TabletopClub/dice/d4/d4_(Red):2 ../TabletopClub/dice/d4/d4_(White):2
 #: ../TabletopClub/dice/d4/d4_(Yellow):2
 msgid "A 4-sided die."
-msgstr ""
+msgstr "Ein vierseitiger Würfel."
 
 #: ../TabletopClub/dice/d4/d4_(Blue):1
 msgid "d4 (Blue)"
-msgstr ""
+msgstr "d4 (Blau)"
 
 #: ../TabletopClub/dice/d4/d4_(Brown):1
 msgid "d4 (Brown)"
-msgstr ""
+msgstr "d4 (Braun)"
 
 #: ../TabletopClub/dice/d4/d4_(Cyan):1
 msgid "d4 (Cyan)"
-msgstr ""
+msgstr "d4 (Cyanblau)"
 
 #: ../TabletopClub/dice/d4/d4_(Green):1
 msgid "d4 (Green)"
-msgstr ""
+msgstr "d4 (Grün)"
 
 #: ../TabletopClub/dice/d4/d4_(Orange):1
 msgid "d4 (Orange)"
-msgstr ""
+msgstr "d4 (Orange)"
 
 #: ../TabletopClub/dice/d4/d4_(Pink):1
 msgid "d4 (Pink)"
-msgstr ""
+msgstr "d4 (Pink)"
 
 #: ../TabletopClub/dice/d4/d4_(Purple):1
 msgid "d4 (Purple)"
-msgstr ""
+msgstr "d4 (Lila)"
 
 #: ../TabletopClub/dice/d4/d4_(Red):1
 msgid "d4 (Red)"
-msgstr ""
+msgstr "d4 (Rot)"
 
 #: ../TabletopClub/dice/d4/d4_(White):1
 msgid "d4 (White)"
-msgstr ""
+msgstr "d4 (Weiß)"
 
 #: ../TabletopClub/dice/d4/d4_(Yellow):1
 msgid "d4 (Yellow)"
-msgstr ""
+msgstr "d4 (Gelb)"
 
 #: ../TabletopClub/dice/d6/d6_(Black):1
 msgid "d6 (Black)"
-msgstr ""
+msgstr "d6 (Schwarz)"
 
 #: ../TabletopClub/dice/d6/d6_(Black):2 ../TabletopClub/dice/d6/d6_(Blue):2
 #: ../TabletopClub/dice/d6/d6_(Brown):2 ../TabletopClub/dice/d6/d6_(Cyan):2
@@ -359,55 +370,55 @@ msgstr ""
 #: ../TabletopClub/dice/d6/d6_(Traditional):2
 #: ../TabletopClub/dice/d6/d6_(White):2 ../TabletopClub/dice/d6/d6_(Yellow):2
 msgid "A 6-sided die."
-msgstr ""
+msgstr "Ein sechsseitiger Würfel."
 
 #: ../TabletopClub/dice/d6/d6_(Blue):1
 msgid "d6 (Blue)"
-msgstr ""
+msgstr "d6 (Blau)"
 
 #: ../TabletopClub/dice/d6/d6_(Brown):1
 msgid "d6 (Brown)"
-msgstr ""
+msgstr "d6 (Braun)"
 
 #: ../TabletopClub/dice/d6/d6_(Cyan):1
 msgid "d6 (Cyan)"
-msgstr ""
+msgstr "d6 (Cyanblau)"
 
 #: ../TabletopClub/dice/d6/d6_(Green):1
 msgid "d6 (Green)"
-msgstr ""
+msgstr "d6 (Grün)"
 
 #: ../TabletopClub/dice/d6/d6_(Orange):1
 msgid "d6 (Orange)"
-msgstr ""
+msgstr "d6 (Orange)"
 
 #: ../TabletopClub/dice/d6/d6_(Pink):1
 msgid "d6 (Pink)"
-msgstr ""
+msgstr "d6 (Pink)"
 
 #: ../TabletopClub/dice/d6/d6_(Purple):1
 msgid "d6 (Purple)"
-msgstr ""
+msgstr "d6 (Lila)"
 
 #: ../TabletopClub/dice/d6/d6_(Red):1
 msgid "d6 (Red)"
-msgstr ""
+msgstr "d6 (Rot)"
 
 #: ../TabletopClub/dice/d6/d6_(Traditional):1
 msgid "d6 (Traditional)"
-msgstr ""
+msgstr "d6 (Traditionell)"
 
 #: ../TabletopClub/dice/d6/d6_(White):1
 msgid "d6 (White)"
-msgstr ""
+msgstr "d6 (Weiß)"
 
 #: ../TabletopClub/dice/d6/d6_(Yellow):1
 msgid "d6 (Yellow)"
-msgstr ""
+msgstr "d6 (Gelb)"
 
 #: ../TabletopClub/dice/d8/d8_(Black):1
 msgid "d8 (Black)"
-msgstr ""
+msgstr "d8 (Schwarz)"
 
 #: ../TabletopClub/dice/d8/d8_(Black):2 ../TabletopClub/dice/d8/d8_(Blue):2
 #: ../TabletopClub/dice/d8/d8_(Brown):2 ../TabletopClub/dice/d8/d8_(Cyan):2
@@ -416,51 +427,51 @@ msgstr ""
 #: ../TabletopClub/dice/d8/d8_(Red):2 ../TabletopClub/dice/d8/d8_(White):2
 #: ../TabletopClub/dice/d8/d8_(Yellow):2
 msgid "An 8-sided die."
-msgstr ""
+msgstr "Ein achtseitiger Würfel."
 
 #: ../TabletopClub/dice/d8/d8_(Blue):1
 msgid "d8 (Blue)"
-msgstr ""
+msgstr "d8 (Blau="
 
 #: ../TabletopClub/dice/d8/d8_(Brown):1
 msgid "d8 (Brown)"
-msgstr ""
+msgstr "d8 (Braun)"
 
 #: ../TabletopClub/dice/d8/d8_(Cyan):1
 msgid "d8 (Cyan)"
-msgstr ""
+msgstr "d8 (Cyanblau)"
 
 #: ../TabletopClub/dice/d8/d8_(Green):1
 msgid "d8 (Green)"
-msgstr ""
+msgstr "d8 (Grün)"
 
 #: ../TabletopClub/dice/d8/d8_(Orange):1
 msgid "d8 (Orange)"
-msgstr ""
+msgstr "d8 (Orange)"
 
 #: ../TabletopClub/dice/d8/d8_(Pink):1
 msgid "d8 (Pink)"
-msgstr ""
+msgstr "d8 (Pink)"
 
 #: ../TabletopClub/dice/d8/d8_(Purple):1
 msgid "d8 (Purple)"
-msgstr ""
+msgstr "d8 (Lila)"
 
 #: ../TabletopClub/dice/d8/d8_(Red):1
 msgid "d8 (Red)"
-msgstr ""
+msgstr "d8 (Rot)"
 
 #: ../TabletopClub/dice/d8/d8_(White):1
 msgid "d8 (White)"
-msgstr ""
+msgstr "d8 (Weiß)"
 
 #: ../TabletopClub/dice/d8/d8_(Yellow):1
 msgid "d8 (Yellow)"
-msgstr ""
+msgstr "d8 (Gelb)"
 
 #: ../TabletopClub/dice/d10/d10_(Black):1
 msgid "d10 (Black)"
-msgstr ""
+msgstr "d10 (Schwarz)"
 
 #: ../TabletopClub/dice/d10/d10_(Black):2 ../TabletopClub/dice/d10/d10_(Blue):2
 #: ../TabletopClub/dice/d10/d10_(Brown):2 ../TabletopClub/dice/d10/d10_(Cyan):2
@@ -482,95 +493,95 @@ msgstr ""
 #: ../TabletopClub/dice/d10/d10_(White):2
 #: ../TabletopClub/dice/d10/d10_(Yellow):2
 msgid "A 10-sided die."
-msgstr ""
+msgstr "Ein zehnseitiger Würfel."
 
 #: ../TabletopClub/dice/d10/d10_(Blue):1
 msgid "d10 (Blue)"
-msgstr ""
+msgstr "d10 (Blau)"
 
 #: ../TabletopClub/dice/d10/d10_(Brown):1
 msgid "d10 (Brown)"
-msgstr ""
+msgstr "d10 (Braun)"
 
 #: ../TabletopClub/dice/d10/d10_(Cyan):1
 msgid "d10 (Cyan)"
-msgstr ""
+msgstr "d10 (Cyanblau)"
 
 #: ../TabletopClub/dice/d10/d10_(Green):1
 msgid "d10 (Green)"
-msgstr ""
+msgstr "d10 (Grün)"
 
 #: ../TabletopClub/dice/d10/d10_(Orange):1
 msgid "d10 (Orange)"
-msgstr ""
+msgstr "d10 (Orange"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Black):1
 msgid "d10 (Percent) (Black)"
-msgstr ""
+msgstr "d10 (Prozent) (Schwarz)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Blue):1
 msgid "d10 (Percent) (Blue)"
-msgstr ""
+msgstr "d10 (Prozent) (Blau)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Brown):1
 msgid "d10 (Percent) (Brown)"
-msgstr ""
+msgstr "d10 (Prozent) (Braun)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):1
 msgid "d10 (Percent) (Cyan)"
-msgstr ""
+msgstr "d10 (Prozent) (Cyanblau)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Green):1
 msgid "d10 (Percent) (Green)"
-msgstr ""
+msgstr "d10 (Prozent) (Grün)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Orange):1
 msgid "d10 (Percent) (Orange)"
-msgstr ""
+msgstr "d10 (Prozent) (Orange)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Pink):1
 msgid "d10 (Percent) (Pink)"
-msgstr ""
+msgstr "d10 (Prozent) (Pink)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Purple):1
 msgid "d10 (Percent) (Purple)"
-msgstr ""
+msgstr "d10 (Prozent) (Lila)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Red):1
 msgid "d10 (Percent) (Red)"
-msgstr ""
+msgstr "d10 (Prozent) (Rot)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(White):1
 msgid "d10 (Percent) (White)"
-msgstr ""
+msgstr "d10 (Prozent) (Weiß)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):1
 msgid "d10 (Percent) (Yellow)"
-msgstr ""
+msgstr "d10 (Prozent) (Gelb)"
 
 #: ../TabletopClub/dice/d10/d10_(Pink):1
 msgid "d10 (Pink)"
-msgstr ""
+msgstr "d10 (Pink)"
 
 #: ../TabletopClub/dice/d10/d10_(Purple):1
 msgid "d10 (Purple)"
-msgstr ""
+msgstr "d10 (Lila)"
 
 #: ../TabletopClub/dice/d10/d10_(Red):1
 msgid "d10 (Red)"
-msgstr ""
+msgstr "d10 (Rot)"
 
 #: ../TabletopClub/dice/d10/d10_(White):1
 msgid "d10 (White)"
-msgstr ""
+msgstr "d10 (Weiß)"
 
 #: ../TabletopClub/dice/d10/d10_(Yellow):1
 msgid "d10 (Yellow)"
-msgstr ""
+msgstr "d10 (Gelb)"
 
 #: ../TabletopClub/dice/d12/d12_(Black):1
 msgid "d12 (Black)"
-msgstr ""
+msgstr "d12 (Schwarz)"
 
 #: ../TabletopClub/dice/d12/d12_(Black):2 ../TabletopClub/dice/d12/d12_(Blue):2
 #: ../TabletopClub/dice/d12/d12_(Brown):2 ../TabletopClub/dice/d12/d12_(Cyan):2
@@ -581,51 +592,51 @@ msgstr ""
 #: ../TabletopClub/dice/d12/d12_(White):2
 #: ../TabletopClub/dice/d12/d12_(Yellow):2
 msgid "A 12-sided die."
-msgstr ""
+msgstr "Ein zwölfseitiger Würfel."
 
 #: ../TabletopClub/dice/d12/d12_(Blue):1
 msgid "d12 (Blue)"
-msgstr ""
+msgstr "d12 (Blau)"
 
 #: ../TabletopClub/dice/d12/d12_(Brown):1
 msgid "d12 (Brown)"
-msgstr ""
+msgstr "d12 (Braun)"
 
 #: ../TabletopClub/dice/d12/d12_(Cyan):1
 msgid "d12 (Cyan)"
-msgstr ""
+msgstr "d12 (Cyanblau)"
 
 #: ../TabletopClub/dice/d12/d12_(Green):1
 msgid "d12 (Green)"
-msgstr ""
+msgstr "d12 (Grün)"
 
 #: ../TabletopClub/dice/d12/d12_(Orange):1
 msgid "d12 (Orange)"
-msgstr ""
+msgstr "d12 (Orange)"
 
 #: ../TabletopClub/dice/d12/d12_(Pink):1
 msgid "d12 (Pink)"
-msgstr ""
+msgstr "d12 (Pink)"
 
 #: ../TabletopClub/dice/d12/d12_(Purple):1
 msgid "d12 (Purple)"
-msgstr ""
+msgstr "d12 (Lila)"
 
 #: ../TabletopClub/dice/d12/d12_(Red):1
 msgid "d12 (Red)"
-msgstr ""
+msgstr "d12 (Rot)"
 
 #: ../TabletopClub/dice/d12/d12_(White):1
 msgid "d12 (White)"
-msgstr ""
+msgstr "d12 (Weiß)"
 
 #: ../TabletopClub/dice/d12/d12_(Yellow):1
 msgid "d12 (Yellow)"
-msgstr ""
+msgstr "d12 (Gelb)"
 
 #: ../TabletopClub/dice/d20/d20_(Black):1
 msgid "d20 (Black)"
-msgstr ""
+msgstr "d20 (Schwarz)"
 
 #: ../TabletopClub/dice/d20/d20_(Black):2 ../TabletopClub/dice/d20/d20_(Blue):2
 #: ../TabletopClub/dice/d20/d20_(Brown):2 ../TabletopClub/dice/d20/d20_(Cyan):2
@@ -636,75 +647,75 @@ msgstr ""
 #: ../TabletopClub/dice/d20/d20_(White):2
 #: ../TabletopClub/dice/d20/d20_(Yellow):2
 msgid "A 20-sided die."
-msgstr ""
+msgstr "Ein 20-seitiger Würfel."
 
 #: ../TabletopClub/dice/d20/d20_(Blue):1
 msgid "d20 (Blue)"
-msgstr ""
+msgstr "d20 (Blau)"
 
 #: ../TabletopClub/dice/d20/d20_(Brown):1
 msgid "d20 (Brown)"
-msgstr ""
+msgstr "d20 (Braun)"
 
 #: ../TabletopClub/dice/d20/d20_(Cyan):1
 msgid "d20 (Cyan)"
-msgstr ""
+msgstr "d20 (Cyanblau)"
 
 #: ../TabletopClub/dice/d20/d20_(Green):1
 msgid "d20 (Green)"
-msgstr ""
+msgstr "d20 (Grün)"
 
 #: ../TabletopClub/dice/d20/d20_(Orange):1
 msgid "d20 (Orange)"
-msgstr ""
+msgstr "d20 (Orange)"
 
 #: ../TabletopClub/dice/d20/d20_(Pink):1
 msgid "d20 (Pink)"
-msgstr ""
+msgstr "d20 (Pink)"
 
 #: ../TabletopClub/dice/d20/d20_(Purple):1
 msgid "d20 (Purple)"
-msgstr ""
+msgstr "d20 (Lila)"
 
 #: ../TabletopClub/dice/d20/d20_(Red):1
 msgid "d20 (Red)"
-msgstr ""
+msgstr "d20 (Rot)"
 
 #: ../TabletopClub/dice/d20/d20_(White):1
 msgid "d20 (White)"
-msgstr ""
+msgstr "d20 (Weiß)"
 
 #: ../TabletopClub/dice/d20/d20_(Yellow):1
 msgid "d20 (Yellow)"
-msgstr ""
+msgstr "d20 (Gelb)"
 
 #: ../TabletopClub/games/Chess:1
 msgid "Chess"
-msgstr ""
+msgstr "Schach"
 
 #: ../TabletopClub/games/Chess:2
 msgid "Standard Chess for two players."
-msgstr ""
+msgstr "Standardschach für zwei Spieler."
 
 #: ../TabletopClub/games/Poker:1
 msgid "Poker"
-msgstr ""
+msgstr "Poker"
 
 #: ../TabletopClub/games/Poker:2
 msgid "Each player has been given 25 chips, which sum up to a value of 500."
-msgstr ""
+msgstr "Jeder Spieler erhielt 25 Chips mit einem Gesamtwert von 500."
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
-msgstr ""
+msgstr "Airport Lounge - Kevin MacLeod"
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:2
 msgid "Light and airy, this piece is guaranteed not to steal focus."
-msgstr ""
+msgstr "Leicht und luftig. Dieses Stück stiehlt garantiert nicht den Fokus."
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:1
 msgid "Backbay Lounge - Kevin MacLeod"
-msgstr ""
+msgstr "Backbay Lounge - Kevin MacLeod"
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:2
 msgid ""
@@ -713,10 +724,17 @@ msgid ""
 "runs out. That level of cool. Maybe you're not that cool, but if you adopt "
 "this as your personal theme tune, people will THINK you're that cool."
 msgstr ""
+"Ich sag dir mal, was cool sein bedeutet. Du gehst zu einer Dinnerparty, "
+"schnappst dir ein Glass Prosecco, küsst den Gastgeber leidenschaftlich, und "
+"dann entschärfst du ganz entspannt und nebenbei eine Bombe in allerletzter "
+"Sekunde. Das ist cool. Vielleicht bist du nicht wirklich so cool, aber wenn "
+"du es dir zur Lebensaufgabe machst, so zu tun, als ob du all das bereits "
+"kannst, dann GLAUBEN die Leute irgendwann ganz automatisch, dass du so cool "
+"bist."
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:1
 msgid "Bossa Antigua - Kevin MacLeod"
-msgstr ""
+msgstr "Bossa Antigua - Kevin MacLeod"
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:2
 msgid ""
@@ -725,10 +743,14 @@ msgid ""
 "walls. I still haven't been able to teach my Roombas to get up by the "
 "ceiling, though."
 msgstr ""
+"Oh, hallo! Ich habe dich gar nicht gesehen. Willkommen in meiner "
+"bescheidenen Behausung. Am besten gefällt mir die Aussicht auf den Strand "
+"und diese lässigen orangen Zottelteppiche an den Wänden. Allerdings habe ich "
+"meinen Roomba noch nicht dazu gebracht, die Wände hochzugehen."
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:1
 msgid "Deadly Roulette - Kevin MacLeod"
-msgstr ""
+msgstr "Deadly Roulette - Kevin MacLeod"
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:2
 msgid ""
@@ -740,20 +762,31 @@ msgid ""
 "Hah! Adverbs work perfectly fine! Woohoo! Adverbs! And before I get mail... "
 "adjectives killed my family, so I can go off on them all I want."
 msgstr ""
+"Entspannt-cool! Unvergessbar! Geheimnisumhangen! Die passenden Adjektive "
+"finden ist echt nicht meins. Aber wer braucht schon Adjektive! Ich kann auch "
+"gut ohne die Dinger leben. Und falls du dich jetzt fragst, wie gut, dann "
+"lass mich eins sagen: ich kann‘s dir nicht sagen. Aber wozu braucht man das "
+"auch! Also ich muss keine Dinge beschreiben können, nicht in meinen Texten… "
+"außer vielleicht eines … ein klitzekleines … NEIN! Was sage ich da!? Ich "
+"verweigere mich! Mir stehen die Adjektive bis hierhin! Pah! Adverben reichen "
+"mir vollkommen! Wohoo! Adverben! Genau… und bevor mir jetzt einer einen "
+"erbosten Leserbrief schickt: Adjektive haben meine gesamte Familie auf dem "
+"Gewissen, ich darf also über Adjektive herziehen, wie ich will."
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:1
 msgid "George Street Shuffle - Kevin MacLeod"
-msgstr ""
+msgstr "George Street Shuffle - Kevin MacLeod"
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:2
 msgid "Nice little non-offending light jazz piece for vibes."
-msgstr ""
+msgstr "Nettes, unaufgeregtes Light Jazz Stück für Vibes."
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:1
 msgid "Hard Boiled - Kevin MacLeod"
-msgstr ""
+msgstr "Hard Boiled - Kevin MacLeod"
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:2
+#, fuzzy
 msgid ""
 "You're looking for the low-down, huh? That's going to take lettuce. You want "
 "the dope? the scoop? the skinny? Ten bucks a day plus expenses. No "
@@ -761,10 +794,20 @@ msgid ""
 "you already knew that... Out of curiosity, what's the word for people who "
 "overuse slang?"
 msgstr ""
+"Du suchst also jemanden, der dir sagt, wo‘s langgeht? Der dir die Rute "
+"durchs Fenster wirft? Der dir die Fersen nach vorn richtet? Gehen wir ans "
+"Eingemachte! Mit einem großen Löffel für große Bissen, oder lieber einem "
+"langen dünnen, um tief zu schürfen? Nur 10 Scheine am Tag plus Aufwendungen. "
+"Und lass dir bloß nicht einfallen, mit mir zu feilschen. Ich bin kein "
+"Kaugummi, den man vollsabbert, weich kaut und dann an den Nächstbesten "
+"weitergibt. Mit mir ist nicht gut Kirschenessen, wie du bestimmt schon "
+"bemerkt hast, schreib dir das hinter die Ohren… nur mal so nebenbei, wie "
+"nennt man Leute, die dazu tendieren, eine etwas zu blumige Ausdrucksweise an "
+"den Tag zu legen?"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:1
 msgid "In Your Arms - Kevin MacLeod"
-msgstr ""
+msgstr "In Your Arms - Kevin MacLeod"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:2
 msgid ""
@@ -774,41 +817,59 @@ msgid ""
 "words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No "
 "Whammies."
 msgstr ""
+"Eine Nummer aus einer Zeit, als man noch wusste, was Stil und Eleganz "
+"bedeuten, 1940. Ein wunderschönes Versatzstück musikalischer Ausprägung, das "
+"einen geradezu verleitet, mit einem Glas Champagner in der Hand ein Tänzchen "
+"zu wagen mit der nächstbesten Person, die sich findet… oder von mir aus auch "
+"mit einem Pinguin. Ich mag Pinguine. Und jetzt noch ein paar Schlagworte zum "
+"Nachlesen: Big Band. 1940er. Die wilden Vierziger. Empfänge. Jive au "
+"Pinguine. Keine Untergriffigkeiten, bitte."
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:1
 msgid "Lobby Time - Kevin MacLeod"
-msgstr ""
+msgstr "Lobby Time - Kevin MacLeod"
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:2
+#, fuzzy
 msgid ""
 "Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern "
 "green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail "
 "from our cheerful bar staff (with a complimentary cheese and fruit plate "
 "before 5pm). We feature prime rib dinners every day that ends in a "
 msgstr ""
+"Willkommen in der ZUKUNFT…slobby… aufenthaltsraum! Vollautomatische "
+"Aschenbecher vom Feinsten, und nur die modernsten Möbelbezüge aus Plastik im "
+"gleichen eleganten Kotzgrün der umgebenden Wände. Gönn dir einen Rusty Nail "
+"an der Bar mit unserem hochengagierten Personal (und nicht zu vergessen, "
+"einem Gruß des Hauses in Form einer geschmackvoll angerichteten Käse- und "
+"Obstplatte, alles nur bis 17 Uhr). Wir bieten ein gehaltvolles Rippchenmenü, "
+"das täglich mit dem Highlight schließt, einem "
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:1
 msgid "Night on the Docks - Sax - Kevin MacLeod"
-msgstr ""
+msgstr "Night on the Docks - Sax - Kevin MacLeod"
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:2
 msgid "Sad and smooth; Think 1950's detective film."
-msgstr ""
+msgstr "Trist und geschmeidig; wie ein Detektivfilm aus den 50ern."
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:1
 msgid "Shades of Spring - Kevin MacLeod"
-msgstr ""
+msgstr "Shades of Spring - Kevin MacLeod"
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:2
+#, fuzzy
 msgid ""
 "Sort of a minor mid-tempo jazz combo with 2 pianos. Melody is doubled in "
 "octaves. Soloist goes outside more than the guy comping... but hey - what "
 "are soloists for?"
 msgstr ""
+"Fuck this shit browser crashing on every occasion and deleting my carefully-"
+"orchestrated translation. Fuck this shit Apple device with a rusty pitchfork."
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:1
 msgid "Smooth Lovin - Kevin MacLeod"
-msgstr ""
+msgstr "Smooth Lovin - Kevin MacLeod"
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:2
 msgid ""
@@ -819,7 +880,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:1
 msgid "Spy Glass - Kevin MacLeod"
-msgstr ""
+msgstr "Spy Glass - Kevin MacLeod"
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:2
 msgid ""
@@ -827,221 +888,317 @@ msgid ""
 "1950s. Super cool jazz for your hardcore detectives! Also useful for beat "
 "poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
 msgstr ""
+"Wir schreiben das Jahr… was weiß ich. Habe mein Gefühl für Zeit verloren. "
+"Könnte jetzt sein, oder in den 1950ern. Wirklich guter Jazz für euch "
+"Hardcore-Detektive! Zum Mitslammen geeignet! Bietet Abhilfe bei Kurz- und "
+"Langeweile! Interessante Art, seine Zeit zu vergeuden."
 
 #: ../TabletopClub/pieces/Bishop_Black:1
 msgid "Bishop Black"
-msgstr ""
+msgstr "Schwarzer Läufer"
 
 #: ../TabletopClub/pieces/Bishop_White:1
 msgid "Bishop White"
-msgstr ""
-
-#: ../TabletopClub/pieces/Chess_Board:1
-msgid "Chess Board"
-msgstr ""
-
-#: ../TabletopClub/pieces/Chess_Board:2
-msgid "An 8x8 Chess board."
-msgstr ""
+msgstr "Weißer Läufer"
 
 #: ../TabletopClub/pieces/King_Black:1
 msgid "King Black"
-msgstr ""
+msgstr "Schwarzer König"
 
 #: ../TabletopClub/pieces/King_White:1
 msgid "King White"
-msgstr ""
+msgstr "Weißer König"
 
 #: ../TabletopClub/pieces/Knight_Black:1
 msgid "Knight Black"
-msgstr ""
+msgstr "Schwarzer Springer"
 
 #: ../TabletopClub/pieces/Knight_White:1
 msgid "Knight White"
-msgstr ""
+msgstr "Weißer Springer"
 
 #: ../TabletopClub/pieces/Pawn_Black:1
 msgid "Pawn Black"
-msgstr ""
+msgstr "Schwarzer Bauer"
 
 #: ../TabletopClub/pieces/Pawn_White:1
 msgid "Pawn White"
-msgstr ""
+msgstr "Weißer Bauer"
 
 #: ../TabletopClub/pieces/Queen_Black:1
 msgid "Queen Black"
-msgstr ""
+msgstr "Schwarze Dame"
 
 #: ../TabletopClub/pieces/Queen_White:1
 msgid "Queen White"
-msgstr ""
+msgstr "Weiße Dame"
 
 #: ../TabletopClub/pieces/Rook_Black:1
 msgid "Rook Black"
-msgstr ""
+msgstr "Schwarzer Turm"
 
 #: ../TabletopClub/pieces/Rook_White:1
 msgid "Rook White"
-msgstr ""
+msgstr "Weißer Turm"
 
 #: ../TabletopClub/skyboxes/Clouds:1
 msgid "Clouds"
-msgstr ""
+msgstr "Wolken"
 
 #: ../TabletopClub/skyboxes/Dallas_West:1
 msgid "Dallas West"
-msgstr ""
+msgstr "West-Dallas"
 
 #: ../TabletopClub/skyboxes/Forest:1
 msgid "Forest"
-msgstr ""
+msgstr "Wald"
 
 #: ../TabletopClub/skyboxes/Hornstulls_Strand:1
 msgid "Hornstulls Strand"
-msgstr ""
+msgstr "Hornstulls-Strand"
 
 #: ../TabletopClub/skyboxes/Ice_River:1
 msgid "Ice River"
-msgstr ""
+msgstr "Gefrorener Fluss"
 
 #: ../TabletopClub/skyboxes/Marriott_Madison_West:1
 msgid "Marriott Madison West"
-msgstr ""
+msgstr "Marriott Madison West"
 
 #: ../TabletopClub/skyboxes/Maskonaive:1
 msgid "Maskonaive"
-msgstr ""
+msgstr "Måskonåive-Gletscher"
 
 #: ../TabletopClub/skyboxes/Nebula:1
 msgid "Nebula"
-msgstr ""
+msgstr "Nebula"
 
 #: ../TabletopClub/skyboxes/Niagra_Falls:1
 msgid "Niagra Falls"
-msgstr ""
+msgstr "Niagarafälle"
 
 #: ../TabletopClub/skyboxes/Park:1
 msgid "Park"
-msgstr ""
+msgstr "Park"
 
 #: ../TabletopClub/skyboxes/Park_Winter:1
 msgid "Park Winter"
-msgstr ""
+msgstr "Park Winter"
 
 #: ../TabletopClub/skyboxes/Path:1
 msgid "Path"
-msgstr ""
+msgstr "Pfad"
 
 #: ../TabletopClub/skyboxes/Space:1
 msgid "Space"
-msgstr ""
+msgstr "Weltraum"
 
 #: ../TabletopClub/skyboxes/Tantolunden:1
 msgid "Tantolunden"
-msgstr ""
+msgstr "Tantolunden"
 
 #: ../TabletopClub/skyboxes/Vasa:1
 msgid "Vasa"
-msgstr ""
+msgstr "Vasa"
 
 #: ../TabletopClub/sounds/Alarm:1
 msgid "Alarm"
-msgstr ""
+msgstr "Alarm"
 
 #: ../TabletopClub/sounds/Alarm:2
 msgid "An alarm for alarming situations."
-msgstr ""
+msgstr "Ein Alarm für alarmierende Situationen."
 
 #: ../TabletopClub/speakers/Gramophone:1
 msgid "Gramophone"
-msgstr ""
+msgstr "Grammophon"
 
 #: ../TabletopClub/speakers/Gramophone:2
 msgid "A low-poly vintage gramophone."
-msgstr ""
+msgstr "Ein altes Grammophon im Low-Poly-Stil."
 
 #: ../TabletopClub/tables/Picnic_Bench:1
 msgid "Picnic Bench"
-msgstr ""
+msgstr "Picknickbank"
 
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
-msgstr ""
+msgstr "Tisch"
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
-msgstr ""
+msgstr "Radio"
 
 #: ../TabletopClub/timers/Radio:2
 msgid "An old radio from a bygone era."
+msgstr "Ein altes Radio aus vergangenen Zeiten."
+
+#: ../TabletopClub/tokens/cube/Blue:1
+#, fuzzy
+#| msgid "d4 (Blue)"
+msgid "Blue"
+msgstr "d4 (Blau)"
+
+#: ../TabletopClub/tokens/cube/Blue:2
+msgid "A blue token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Brown:1
+#, fuzzy
+#| msgid "d4 (Brown)"
+msgid "Brown"
+msgstr "d4 (Braun)"
+
+#: ../TabletopClub/tokens/cube/Brown:2
+msgid "A brown token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Cyan:1
+#, fuzzy
+#| msgid "d4 (Cyan)"
+msgid "Cyan"
+msgstr "d4 (Cyanblau)"
+
+#: ../TabletopClub/tokens/cube/Cyan:2
+msgid "A cyan token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Green:1
+#, fuzzy
+#| msgid "d4 (Green)"
+msgid "Green"
+msgstr "d4 (Grün)"
+
+#: ../TabletopClub/tokens/cube/Green:2
+msgid "A green token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Orange:1
+#, fuzzy
+#| msgid "d4 (Orange)"
+msgid "Orange"
+msgstr "d4 (Orange)"
+
+#: ../TabletopClub/tokens/cube/Orange:2
+msgid "An orange token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Pink:1
+#, fuzzy
+#| msgid "d4 (Pink)"
+msgid "Pink"
+msgstr "d4 (Pink)"
+
+#: ../TabletopClub/tokens/cube/Pink:2
+msgid "A pink token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Purple:1
+#, fuzzy
+#| msgid "d4 (Purple)"
+msgid "Purple"
+msgstr "d4 (Lila)"
+
+#: ../TabletopClub/tokens/cube/Purple:2
+msgid "A purple token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Red:1
+#, fuzzy
+#| msgid "Red Cup"
+msgid "Red"
+msgstr "Roter Becher"
+
+#: ../TabletopClub/tokens/cube/Red:2
+msgid "A red token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/White:1
+#, fuzzy
+#| msgid "d4 (White)"
+msgid "White"
+msgstr "d4 (Weiß)"
+
+#: ../TabletopClub/tokens/cube/White:2
+msgid "A white token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Yellow:1
+#, fuzzy
+#| msgid "d4 (Yellow)"
+msgid "Yellow"
+msgstr "d4 (Gelb)"
+
+#: ../TabletopClub/tokens/cube/Yellow:2
+msgid "A yellow token."
 msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2
 #: ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2
 #: ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
 msgid "A poker chip."
-msgstr ""
+msgstr "Ein Poker-Chip."
 
 #: ../TabletopClub/tokens/cylinder/10:1
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: ../TabletopClub/tokens/cylinder/100:1
 msgid "100"
-msgstr ""
+msgstr "100"
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:1
 msgid "20 x 1 Chips"
-msgstr ""
+msgstr "20 x 1 Chips"
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:2
 msgid "A stack of 20 1-value chips."
-msgstr ""
+msgstr "Ein Stapel von 20 Chips mit 1er Wert."
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:1
 msgid "20 x 10 Chips"
-msgstr ""
+msgstr "20 x 10 Chips"
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:2
 msgid "A stack of 20 10-value chips."
-msgstr ""
+msgstr "Ein Stapel von 20 Chips mit 10er Wert."
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:1
 msgid "20 x 100 Chips"
-msgstr ""
+msgstr "20 x 100 Chips"
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:2
 msgid "A stack of 20 100-value chips."
-msgstr ""
+msgstr "Ein Stapel von 20 Chips mit 100er Wert."
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:1
 msgid "20 x 25 Chips"
-msgstr ""
+msgstr "20 x 25 Chips"
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:2
 msgid "A stack of 20 25-value chips."
-msgstr ""
+msgstr "Ein Stapel von 20 Chips mit 25er Wert."
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:1
 msgid "20 x 5 Chips"
-msgstr ""
+msgstr "20 x 5 Chips"
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:2
 msgid "A stack of 20 5-value chips."
-msgstr ""
+msgstr "Ein Stapel von 20 Chips mit 5er Wert."
 
 #: ../TabletopClub/tokens/cylinder/25:1
 msgid "25"
-msgstr ""
+msgstr "25"
 
 #: ../TabletopClub/tokens/cylinder/5:1
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../TabletopClub/tokens/cylinder/D:1
 msgid "D"
-msgstr ""
+msgstr "D"

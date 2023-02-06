@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-25 11:54\n"
-"PO-Revision-Date: 2022-07-08 13:16+0000\n"
+"POT-Creation-Date: 2023-02-06 00:16\n"
+"PO-Revision-Date: 2022-11-26 12:47+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/nl/>\n"
@@ -18,8 +18,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: extract_pot.py\n"
+
+#: ../TabletopClub/boards/Chess_Board:1
+msgid "Chess Board"
+msgstr "Schaakbord"
+
+#: ../TabletopClub/boards/Chess_Board:2
+msgid "An 8x8 Chess board."
+msgstr "Een 8x8-schaakbord."
 
 #: ../TabletopClub/cards/52-Card_Deck:1
 msgid "52-Card Deck"
@@ -691,11 +699,11 @@ msgstr "Een standaard schaakset voor twee spelers."
 
 #: ../TabletopClub/games/Poker:1
 msgid "Poker"
-msgstr ""
+msgstr "Poker"
 
 #: ../TabletopClub/games/Poker:2
 msgid "Each player has been given 25 chips, which sum up to a value of 500."
-msgstr ""
+msgstr "Elke speler krijgt 25 fiches ter waarde van 500."
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
@@ -872,14 +880,6 @@ msgstr "Zwarte loper"
 msgid "Bishop White"
 msgstr "Witte loper"
 
-#: ../TabletopClub/pieces/Chess_Board:1
-msgid "Chess Board"
-msgstr "Schaakbord"
-
-#: ../TabletopClub/pieces/Chess_Board:2
-msgid "An 8x8 Chess board."
-msgstr "Een 8x8-schaakbord."
-
 #: ../TabletopClub/pieces/King_Black:1
 msgid "King Black"
 msgstr "Zwarte koning"
@@ -1006,10 +1006,110 @@ msgstr "Tafel"
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
-msgstr ""
+msgstr "Radio"
 
 #: ../TabletopClub/timers/Radio:2
 msgid "An old radio from a bygone era."
+msgstr "Een radio uit lang vervlogen tijden."
+
+#: ../TabletopClub/tokens/cube/Blue:1
+#, fuzzy
+#| msgid "d4 (Blue)"
+msgid "Blue"
+msgstr "d4 (blauw)"
+
+#: ../TabletopClub/tokens/cube/Blue:2
+msgid "A blue token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Brown:1
+#, fuzzy
+#| msgid "d4 (Brown)"
+msgid "Brown"
+msgstr "d4 (bruin)"
+
+#: ../TabletopClub/tokens/cube/Brown:2
+msgid "A brown token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Cyan:1
+#, fuzzy
+#| msgid "d4 (Cyan)"
+msgid "Cyan"
+msgstr "d4 (groenblauw)"
+
+#: ../TabletopClub/tokens/cube/Cyan:2
+msgid "A cyan token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Green:1
+#, fuzzy
+#| msgid "d4 (Green)"
+msgid "Green"
+msgstr "d4 (groen)"
+
+#: ../TabletopClub/tokens/cube/Green:2
+msgid "A green token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Orange:1
+#, fuzzy
+#| msgid "d4 (Orange)"
+msgid "Orange"
+msgstr "d4 (oranje)"
+
+#: ../TabletopClub/tokens/cube/Orange:2
+msgid "An orange token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Pink:1
+#, fuzzy
+#| msgid "d4 (Pink)"
+msgid "Pink"
+msgstr "d4 (roze)"
+
+#: ../TabletopClub/tokens/cube/Pink:2
+msgid "A pink token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Purple:1
+#, fuzzy
+#| msgid "d4 (Purple)"
+msgid "Purple"
+msgstr "d4 (paars)"
+
+#: ../TabletopClub/tokens/cube/Purple:2
+msgid "A purple token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Red:1
+#, fuzzy
+#| msgid "Red Cup"
+msgid "Red"
+msgstr "Rode beker"
+
+#: ../TabletopClub/tokens/cube/Red:2
+msgid "A red token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/White:1
+#, fuzzy
+#| msgid "d4 (White)"
+msgid "White"
+msgstr "d4 (wit)"
+
+#: ../TabletopClub/tokens/cube/White:2
+msgid "A white token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Yellow:1
+#, fuzzy
+#| msgid "d4 (Yellow)"
+msgid "Yellow"
+msgstr "d4 (geel)"
+
+#: ../TabletopClub/tokens/cube/Yellow:2
+msgid "A yellow token."
 msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/1:1
