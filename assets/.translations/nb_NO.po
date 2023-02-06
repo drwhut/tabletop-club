@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-25 11:54\n"
+"POT-Creation-Date: 2023-02-06 00:16\n"
 "PO-Revision-Date: 2022-07-05 07:26+0000\n"
 "Last-Translator: drwhut <drwhut@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -20,6 +20,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.13.1-dev\n"
 "Generated-By: extract_pot.py\n"
+
+#: ../TabletopClub/boards/Chess_Board:1
+msgid "Chess Board"
+msgstr ""
+
+#: ../TabletopClub/boards/Chess_Board:2
+msgid "An 8x8 Chess board."
+msgstr ""
 
 #: ../TabletopClub/cards/52-Card_Deck:1
 msgid "52-Card Deck"
@@ -839,14 +847,6 @@ msgstr "Løper Svart"
 msgid "Bishop White"
 msgstr "Løper Hvit"
 
-#: ../TabletopClub/pieces/Chess_Board:1
-msgid "Chess Board"
-msgstr ""
-
-#: ../TabletopClub/pieces/Chess_Board:2
-msgid "An 8x8 Chess board."
-msgstr ""
-
 #: ../TabletopClub/pieces/King_Black:1
 msgid "King Black"
 msgstr "Konge Svart"
@@ -977,6 +977,102 @@ msgstr ""
 
 #: ../TabletopClub/timers/Radio:2
 msgid "An old radio from a bygone era."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Blue:1
+#, fuzzy
+#| msgid "d4 (Blue)"
+msgid "Blue"
+msgstr "d4 (Blå)"
+
+#: ../TabletopClub/tokens/cube/Blue:2
+msgid "A blue token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Brown:1
+#, fuzzy
+#| msgid "d4 (Brown)"
+msgid "Brown"
+msgstr "d4 (Brun)"
+
+#: ../TabletopClub/tokens/cube/Brown:2
+msgid "A brown token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Cyan:1
+msgid "Cyan"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Cyan:2
+msgid "A cyan token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Green:1
+#, fuzzy
+#| msgid "d4 (Green)"
+msgid "Green"
+msgstr "d4 (Grønn)"
+
+#: ../TabletopClub/tokens/cube/Green:2
+msgid "A green token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Orange:1
+#, fuzzy
+#| msgid "d4 (Orange)"
+msgid "Orange"
+msgstr "d4 (Oransje)"
+
+#: ../TabletopClub/tokens/cube/Orange:2
+msgid "An orange token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Pink:1
+#, fuzzy
+#| msgid "d4 (Pink)"
+msgid "Pink"
+msgstr "d4 (Rosa)"
+
+#: ../TabletopClub/tokens/cube/Pink:2
+msgid "A pink token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Purple:1
+#, fuzzy
+#| msgid "d4 (Purple)"
+msgid "Purple"
+msgstr "d4 (Lilla)"
+
+#: ../TabletopClub/tokens/cube/Purple:2
+msgid "A purple token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Red:1
+msgid "Red"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Red:2
+msgid "A red token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/White:1
+#, fuzzy
+#| msgid "d4 (White)"
+msgid "White"
+msgstr "d4 (Hvit)"
+
+#: ../TabletopClub/tokens/cube/White:2
+msgid "A white token."
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Yellow:1
+#, fuzzy
+#| msgid "d4 (Yellow)"
+msgid "Yellow"
+msgstr "d4 (Gul)"
+
+#: ../TabletopClub/tokens/cube/Yellow:2
+msgid "A yellow token."
 msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/1:1
