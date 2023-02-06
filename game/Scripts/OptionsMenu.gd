@@ -30,7 +30,9 @@ var LOCALES = [
 	{ "locale": "", "name": tr("System Default") },
 	{ "locale": "de", "name": "Deutsch" },
 	{ "locale": "en", "name": "English" },
+	{ "locale": "eo", "name": "Esperanto" },
 	{ "locale": "fr", "name": "Français" },
+	{ "locale": "it", "name": "Italiano" },
 	{ "locale": "nl", "name": "Nederlands" },
 	{ "locale": "pt", "name": "Português" },
 	{ "locale": "ru", "name": "Русский" }
