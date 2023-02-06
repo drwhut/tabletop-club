@@ -13,7 +13,7 @@ HEADER = """Tabletop Club Default Asset Pack Translation Template.
 Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows.
 Copyright (c) 2021-2023 Tabletop Club contributors (see game/CREDITS.tres).
 This file is distributed under the same license as the Tabletop Club package.
-Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2022.
+Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2023.
 """
 
 if len(sys.argv) < 2:
