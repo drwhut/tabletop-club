@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-25 11:08+0000\n"
-"PO-Revision-Date: 2022-07-22 03:09+0000\n"
+"POT-Creation-Date: 2023-02-06 00:02+0000\n"
+"PO-Revision-Date: 2022-11-28 17:25+0000\n"
 "Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/ru/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -102,6 +102,9 @@ msgid ""
 "game (which can also be found in the various ``.cfg`` files under ``assets/"
 "``)."
 msgstr ""
+"Чтобы узнать авторов и лицензии этих ассетов, вы можете проверить файл "
+"``game/LICENSES.tres``, а также наведя курсор на предметы в меню объектов в "
+"игре (которые также можно найти в различных файлах ``.cfg`` в ``assets/``)."
 
 #: ../../general/about.rst:48
 msgid "Tabletop board game"
@@ -163,11 +166,11 @@ msgstr "В Tabletop Club можно играть на любой из этих �
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
-msgstr ""
+msgstr "Windows 7 или выше"
 
 #: ../../general/about.rst:78
 msgid "macOS 10.12 or later"
-msgstr ""
+msgstr "macOS 10.12 или выше"
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
@@ -175,13 +178,15 @@ msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
-msgstr ""
+msgstr "Ваше оборудование должно поддерживать OpenGL 3.3."
 
 #: ../../general/about.rst:83
 msgid ""
 "It is recommended to have at least 1GB of available space on your drive to "
 "accommodate for the game files, as well as any generated files."
 msgstr ""
+"Рекомендуется иметь не менее 1 ГБ свободного места на диске для размещения "
+"файлов игры, а также любых сгенерированных файлов."
 
 #: ../../general/about.rst:86
 msgid ""
@@ -223,19 +228,16 @@ msgid ""
 "download it from the `itch app <https://itch.io/app>`_ and get automatic "
 "updates."
 msgstr ""
+"Игра доступна на сайте `itch.io <https://drwhut.itch.io/tabletop-club>`_! Вы "
+"можете скачать игру не только как отдельный исполняемый файл, но и загрузить "
+"ее из приложения `itch <https://itch.io/app>`_ и получать автоматические "
+"обновления."
 
 #: ../../general/about.rst:113
 msgid "What stage of development is Tabletop Club at?"
 msgstr "На какой стадии разработки находится Tabletop Club?"
 
 #: ../../general/about.rst:115
-#, fuzzy
-#| msgid ""
-#| "Tabletop Club is currently in alpha development. This means that core "
-#| "features of the game are still being implemented (you can see what needs "
-#| "to be added by going to the `issues page <https://github.com/drwhut/"
-#| "tabletop-club/issues>`_ on GitHub), and there are no publicly released "
-#| "versions of the game... yet."
 msgid ""
 "Tabletop Club is currently in beta development. This means that most of the "
 "core features have been implemented, but there will very likely be some "
@@ -243,15 +245,15 @@ msgid ""
 "done by going to the `issues page <https://github.com/drwhut/tabletop-club/"
 "issues>`_ on GitHub)."
 msgstr ""
-"Tabletop Club в настоящее время находится в стадии альфа-разработки. Это "
-"означает, что основные функции игры все еще реализуются (вы можете увидеть, "
-"что нужно добавить, перейдя на страницу `проблем <https://github.com/drwhut/"
-"tabletop-club/issues>`_ на GitHub), и нет публично выпущенных версий игры… "
-"пока."
+"Tabletop Club в настоящее время находится в стадии бета-разработки. Это "
+"означает, что большинство основных функций уже реализовано, но вполне "
+"вероятно, что будут некоторые ошибки и функции, которые еще предстоит "
+"добавить (вы можете увидеть, что необходимо сделать, перейдя на страницу "
+"`issues <https://github.com/drwhut/tabletop-club/issues>`_ на GitHub)."
 
 #: ../../general/about.rst:121
 msgid "You can help test the game by :ref:`downloading-binaries`!"
-msgstr ""
+msgstr "Вы можете помочь протестировать игру, :ref:`downloading-binaries`!"
 
 #: ../../general/about.rst:125
 msgid "What board games can I play in Tabletop Club?"
@@ -272,7 +274,6 @@ msgstr ""
 "вам понадобятся, такие как игральные карты, кости, покерные фишки и т.д."
 
 #: ../../general/about.rst:133
-#, fuzzy
 msgid ""
 "On GitHub, there is `an issue <https://github.com/drwhut/tabletop-club/"
 "issues/28>`_ listing which objects still need to be added to the default "
@@ -445,6 +446,8 @@ msgid ""
 "You can `check online <https://worldwide.espacenet.com/advancedSearch>`_ to "
 "see if there are any patents for the game's mechanics."
 msgstr ""
+"Вы можете `проверить этот сайт <https://worldwide.espacenet.com/"
+"advancedSearch>`_, чтобы узнать, есть ли патенты на механику игры."
 
 #: ../../general/about.rst:215
 msgid ""
@@ -540,7 +543,6 @@ msgid "Contributing"
 msgstr "Участие"
 
 #: ../../general/contributing/pull_request_workflow.rst:5
-#, fuzzy
 msgid "Pull request workflow"
 msgstr "Рабочий процесс запроса на слияния"
 
@@ -561,7 +563,6 @@ msgid "Creating a fork"
 msgstr "Создание форка"
 
 #: ../../general/contributing/pull_request_workflow.rst:16
-#, fuzzy
 msgid ""
 "The way to think about forks is by thinking about going down a side road on "
 "a fork in the road - you'll be doing your own think on the side road (your "
@@ -655,19 +656,15 @@ msgstr ""
 "guidelines`\" для рекомендаций о том, как вы должны писать свой код."
 
 #: ../../general/contributing/pull_request_workflow.rst:79
-#, fuzzy
-#| msgid ""
-#| "When you are done, you should commit your changes and push them to your "
-#| "fork with this command:"
 msgid ""
 "When you are done, you should commit your changes and push them to your fork "
 "with these commands:"
 msgstr ""
 "Когда вы закончите, вы должны зафиксировать свои изменения и перенести их в "
-"свой форк с помощью этой команды:"
+"свой форк с помощью этих команд:"
 
 #: ../../general/contributing/pull_request_workflow.rst:90
-#: ../../general/contributing/ways_to_contribute.rst:93
+#: ../../general/contributing/ways_to_contribute.rst:89
 msgid "Creating a pull request"
 msgstr "Создание запроса на слияние"
 
@@ -952,22 +949,11 @@ msgstr ""
 "свой собственный форк проекта, и мы хотим избежать возникновения конфликтов "
 "слияния."
 
-#: ../../general/contributing/ways_to_contribute.rst:83
-#, fuzzy
-msgid ""
-"The only exception to this is the ``README.md`` file, which is not included "
-"in Weblate - feel free to provide a translation for this file with the name "
-"``README.<locale>.md``, and send in a pull request!"
-msgstr ""
-"Единственным исключением является файл ``README.md``, который не включен в "
-"Weblate - не стесняйтесь предоставить перевод для этого файла с именем "
-"``README.<locale>.md``, и отправить его в запросе на слияние!"
-
 #: ../../general/contributing/ways_to_contribute.rst:None
 msgid "Translation status"
 msgstr "Статус перевода"
 
-#: ../../general/contributing/ways_to_contribute.rst:95
+#: ../../general/contributing/ways_to_contribute.rst:91
 msgid ""
 "If you see an issue on the `GitHub repository`_ that you think you can fix, "
 "and you want to directly contribute to the project by modifying the game "
@@ -980,11 +966,11 @@ msgstr ""
 "ваши изменения! Смотрите страницу \":ref:`pull-request-workflow`\" для "
 "получения дополнительной информации."
 
-#: ../../general/contributing/ways_to_contribute.rst:102
+#: ../../general/contributing/ways_to_contribute.rst:98
 msgid "Proposing assets"
 msgstr "Предложить ассеты"
 
-#: ../../general/contributing/ways_to_contribute.rst:104
+#: ../../general/contributing/ways_to_contribute.rst:100
 msgid ""
 "If you see an issue on the `GitHub repository`_ that needs game assets to "
 "fix (like textures, 3D models, sound effects, music, etc.), then you can "
@@ -996,7 +982,7 @@ msgstr ""
 "музыка и т.д.), то вы можете ответить на эту проблему либо ассетом, который "
 "вы нашли в сети, либо тем, который вы сделали сами!"
 
-#: ../../general/contributing/ways_to_contribute.rst:109
+#: ../../general/contributing/ways_to_contribute.rst:105
 msgid ""
 "If the asset doesn't solve an issue, but you still think Tabletop Club would "
 "benefit from having it, then you can `post an issue`_ with the asset "
@@ -1006,22 +992,22 @@ msgstr ""
 "выиграет от его наличия, то вы можете `разместить проблему`_ с помощью "
 "шаблона подачи ассета!"
 
-#: ../../general/contributing/ways_to_contribute.rst:113
+#: ../../general/contributing/ways_to_contribute.rst:109
 msgid ""
 "However you propose the asset, you need to provide the following information:"
 msgstr ""
 "Как бы вы ни предлагали ассет, вам необходимо предоставить следующую "
 "информацию:"
 
-#: ../../general/contributing/ways_to_contribute.rst:115
+#: ../../general/contributing/ways_to_contribute.rst:111
 msgid "The name of the asset."
 msgstr "Название ассета."
 
-#: ../../general/contributing/ways_to_contribute.rst:116
+#: ../../general/contributing/ways_to_contribute.rst:112
 msgid "The name of the author."
 msgstr "Имя автора."
 
-#: ../../general/contributing/ways_to_contribute.rst:117
+#: ../../general/contributing/ways_to_contribute.rst:113
 msgid ""
 "The license the asset is under - keep in mind that we will only include "
 "assets with open licenses, e.g. `CC BY-SA 3.0 <https://creativecommons.org/"
@@ -1031,7 +1017,7 @@ msgstr ""
 "только ассеты с открытыми лицензиями, например, `CC BY-SA 3.0 <https://"
 "creativecommons.org/licenses/by-sa/3.0/>`_."
 
-#: ../../general/contributing/ways_to_contribute.rst:120
+#: ../../general/contributing/ways_to_contribute.rst:116
 msgid ""
 "The URL where the asset can be downloaded from. The URL must be publically "
 "accessible, and it must lead to a trusted website."
@@ -1324,6 +1310,7 @@ msgstr ""
 "использовать шаблон, представленный в ``misc/dist/osx_tools.app``:"
 
 #: ../../general/download/compiling_from_source.rst:187
+#: ../../general/download/compiling_from_source.rst:316
 msgid ""
 "If you want to compile an export template to export a release build of the "
 "game from the editor, you can use the following commands:"
@@ -1446,19 +1433,11 @@ msgstr ""
 "Если вы хотите компилировать с помощью Clang вместо GCC, используйте эту "
 "команду:"
 
-#: ../../general/download/compiling_from_source.rst:316
-msgid ""
-"If you want to compile an export template to export a release build of the "
-"game from the editor, you can use the following command:"
-msgstr ""
-"Если вы хотите скомпилировать шаблон экспорта для экспорта релизной сборки "
-"игры из редактора, вы можете использовать следующую команду:"
-
-#: ../../general/download/compiling_from_source.rst:325
+#: ../../general/download/compiling_from_source.rst:326
 msgid "Downloading Tabletop Club"
 msgstr "Загрузка Tabletop Club"
 
-#: ../../general/download/compiling_from_source.rst:327
+#: ../../general/download/compiling_from_source.rst:328
 msgid ""
 "To download the Tabletop Club Godot project, you can either download a "
 "compressed copy of the source code for a particular version from the "
@@ -1473,11 +1452,11 @@ msgstr ""
 "если вы чувствуете себя авантюристом, вы можете загрузить последний исходный "
 "код в ветке ``master``, выполнив эту команду:"
 
-#: ../../general/download/compiling_from_source.rst:339
+#: ../../general/download/compiling_from_source.rst:340
 msgid "Downloading the WebRTC GDNative plugin"
 msgstr "Загрузка плагина WebRTC GDNative"
 
-#: ../../general/download/compiling_from_source.rst:341
+#: ../../general/download/compiling_from_source.rst:342
 msgid ""
 "Since the multiplayer for Tabletop Club uses WebRTC, you'll need to download "
 "the WebRTC plugin for Godot. You can follow these instructions to setup the "
@@ -1487,17 +1466,23 @@ msgstr ""
 "необходимо загрузить плагин WebRTC для Godot. Вы можете следовать этим "
 "инструкциям для установки плагина:"
 
-#: ../../general/download/compiling_from_source.rst:345
+#: ../../general/download/compiling_from_source.rst:346
+#, fuzzy
+#| msgid ""
+#| "Download the latest release of the plugin from `the repository <https://"
+#| "github.com/godotengine/webrtc-native/releases>`_. Make sure to download "
+#| "the ``release`` build."
 msgid ""
-"Download the latest release of the plugin from `the repository <https://"
-"github.com/godotengine/webrtc-native/releases>`_. Make sure to download the "
-"``release`` build."
+"Download the latest release (not a pre-release!) of the plugin from `the "
+"repository <https://github.com/godotengine/webrtc-native/releases>`_. Make "
+"sure to download the ``webrtc-native-release`` file rather than the ``webrtc-"
+"native-debug`` file."
 msgstr ""
 "Скачайте последнюю версию плагина из `репозитория <https://github.com/"
 "godotengine/webrtc-native/releases>`_. Убедитесь, что скачали ``release`` "
 "сборку."
 
-#: ../../general/download/compiling_from_source.rst:349
+#: ../../general/download/compiling_from_source.rst:351
 msgid ""
 "Open the compressed file, and place the ``webrtc/`` folder into ``tabletop-"
 "club/game/``. Afterwards, there should be a file at ``tabletop-club/game/"
@@ -1507,11 +1492,11 @@ msgstr ""
 "``. После этого должен появиться файл по адресу ``tabletop-club/game/webrtc/"
 "webrtc.tres``."
 
-#: ../../general/download/compiling_from_source.rst:355
+#: ../../general/download/compiling_from_source.rst:357
 msgid "Running Tabletop Club in the Godot editor"
 msgstr "Запуск Tabletop Club в редакторе Godot"
 
-#: ../../general/download/compiling_from_source.rst:357
+#: ../../general/download/compiling_from_source.rst:359
 msgid ""
 "To open Godot's project manager, run the executable you compiled in ``godot/"
 "bin/``. You can then import the project by clicking the :guilabel:`Import` "
@@ -1525,7 +1510,7 @@ msgstr ""
 "godot``. Теперь вы можете открыть проект и начать играть, нажав кнопку "
 "играть в правом верхнем углу (или нажав F5)!"
 
-#: ../../general/download/compiling_from_source.rst:363
+#: ../../general/download/compiling_from_source.rst:365
 msgid ""
 "At this point, you can modify the game to your heart's content! Have a look "
 "at the scenes and scripts, try tweaking things here and there, or maybe try "
@@ -1535,11 +1520,11 @@ msgstr ""
 "сцены и скрипты, попробуйте подправить то тут, то там, а может быть, "
 "попробуйте добавить что-то свое?"
 
-#: ../../general/download/compiling_from_source.rst:369
+#: ../../general/download/compiling_from_source.rst:371
 msgid "Exporting the game"
 msgstr "Экспорт игры"
 
-#: ../../general/download/compiling_from_source.rst:371
+#: ../../general/download/compiling_from_source.rst:373
 msgid ""
 "You can export the game with the editor to make it so you don't need to run "
 "the game through the editor to play it. Here's how you can export the "
@@ -1549,16 +1534,16 @@ msgstr ""
 "запускать игру через редактор, для того чтобы поиграть в нее. Вот как можно "
 "эксортировать проект:"
 
-#: ../../general/download/compiling_from_source.rst:374
+#: ../../general/download/compiling_from_source.rst:376
 msgid "Click on :guilabel:`Project` > :guilabel:`Export...`"
 msgstr "Нажмите на :guilabel:`Проект` > :guilabel:`Экспорт…`"
 
-#: ../../general/download/compiling_from_source.rst:375
+#: ../../general/download/compiling_from_source.rst:377
 msgid "In the pop-up, click :guilabel:`Add...`, and select your platform."
 msgstr ""
 "Во всплывающем окне нажмите :guilabel:`Добавить…`, и выберите вашу платформу."
 
-#: ../../general/download/compiling_from_source.rst:376
+#: ../../general/download/compiling_from_source.rst:378
 msgid ""
 "In the menu on the right, set the debug template to point to the editor "
 "executable, and if you made a release template, set that as well."
@@ -1566,14 +1551,17 @@ msgstr ""
 "В меню справа установите шаблон отладки, указывающий на исполняемый файл "
 "редактора, а если вы создали шаблон релиза, установите и его."
 
-#: ../../general/download/compiling_from_source.rst:381
+#: ../../general/download/compiling_from_source.rst:383
 msgid ""
 "If you are on macOS, then you will need to disable library validation as "
 "shown below. This is in order to prevent the system from checking the WebRTC "
 "library, which stops it from loading."
 msgstr ""
+"Если вы работаете на macOS, то вам необходимо отключить проверку библиотек, "
+"как показано ниже. Это делается для того, чтобы система не проверяла "
+"библиотеку WebRTC, что останавливает ее загрузку."
 
-#: ../../general/download/compiling_from_source.rst:388
+#: ../../general/download/compiling_from_source.rst:390
 msgid ""
 "Click :guilabel:`Export project`, choose where you want to export the "
 "project and whether you want to export a debug or a release binary, then "
@@ -1583,7 +1571,7 @@ msgstr ""
 "экспортировать проект и хотите ли вы экспортировать отладочный или релизный "
 "двоичный файл, затем нажмите :guilabel:`Сохранить`."
 
-#: ../../general/download/compiling_from_source.rst:391
+#: ../../general/download/compiling_from_source.rst:393
 msgid ""
 "Copy the ``tabletop-club/assets/`` folder next to the exported binary, so "
 "the game has assets to import."
@@ -1591,7 +1579,13 @@ msgstr ""
 "Скопируйте папку ``tabletop-club/assets/`` рядом с экспортированным двоичным "
 "файлом, чтобы в игре были ассеты для импорта."
 
-#: ../../general/download/compiling_from_source.rst:394
+#: ../../general/download/compiling_from_source.rst:398
+msgid ""
+"On macOS, you'll need to put this folder inside the ``.app`` package, "
+"specifically in ``Tabletop Club.app/Contents/Resources``."
+msgstr ""
+
+#: ../../general/download/compiling_from_source.rst:401
 msgid ""
 "Now, you should be able to launch the exported executable and play the game "
 "directly!"
@@ -1599,11 +1593,11 @@ msgstr ""
 "Теперь вы должны иметь возможность запустить экспортированный исполняемый "
 "файл и играть в игру напрямую!"
 
-#: ../../general/download/compiling_from_source.rst:401
+#: ../../general/download/compiling_from_source.rst:408
 msgid "Why did you fork Godot?"
 msgstr "Почему вы форкнули Godot?"
 
-#: ../../general/download/compiling_from_source.rst:403
+#: ../../general/download/compiling_from_source.rst:410
 msgid ""
 "There's actually just one reason for this: there was a feature that I knew "
 "existed in Godot, but it was not exposed to the in-built scripting language "
@@ -1614,7 +1608,7 @@ msgstr ""
 "встроенного языка сценариев GDScript, и эта функциональность не была "
 "включена в шаблоны релизов."
 
-#: ../../general/download/compiling_from_source.rst:407
+#: ../../general/download/compiling_from_source.rst:414
 msgid ""
 "When the game starts, the first thing it does is it scans certain folders "
 "for asset packs, and if it finds any, the game will then import assets from "
@@ -1634,7 +1628,7 @@ msgstr ""
 "импортировать такие ассеты, как текстуры и 3D-модели, из любого места "
 "файловой системы с помощью всего одной функции в GDScript."
 
-#: ../../general/download/compiling_from_source.rst:416
+#: ../../general/download/compiling_from_source.rst:423
 msgid ""
 "However, a problem occured when compiling Godot with this module as a "
 "release template - the compiled editor code was not included in the release "
@@ -1652,11 +1646,11 @@ msgstr ""
 "одновременно предотвращая ошибки компилятора/runtime, поскольку код был "
 "внезапно отключен от остальной части редактора."
 
-#: ../../general/download/compiling_from_source.rst:424
+#: ../../general/download/compiling_from_source.rst:431
 msgid "Footnotes"
 msgstr "Сноски"
 
-#: ../../general/download/compiling_from_source.rst:425
+#: ../../general/download/compiling_from_source.rst:432
 msgid ""
 "`The Godot documentation <https://docs.godotengine.org>`_ is from Juan "
 "Linietsky, Ariel Manzur and the Godot community, and it is licensed under "
@@ -1671,14 +1665,12 @@ msgid "Downloading the official binaries"
 msgstr "Загрузка официальных двоичных файлов"
 
 #: ../../general/download/downloading_binaries.rst:7
-#, fuzzy
-#| msgid "There are two ways to download and play Tabletop Club:"
 msgid "There are two ways to download and play the game:"
-msgstr "Существует два способа загрузить и играть в Tabletop Club:"
+msgstr "Загрузить и играть в игру можно двумя способами:"
 
 #: ../../general/download/downloading_binaries.rst:11
 msgid "From the itch app"
-msgstr ""
+msgstr "Из приложения Itch"
 
 #: ../../general/download/downloading_binaries.rst:13
 msgid ""
@@ -1687,16 +1679,22 @@ msgid ""
 "to a huge range of amazing indie games from developers far more talented "
 "than I am!"
 msgstr ""
+"Это рекомендуемый способ загрузки и игры, поскольку вы будете получать "
+"обновления автоматически, когда они выходят, а также получите доступ к "
+"огромному количеству удивительных инди-игр от разработчиков, гораздо более "
+"талантливых, чем я!"
 
 #: ../../general/download/downloading_binaries.rst:17
 msgid ""
 "You can download the itch app `here <https://itch.io/app>`_, and once you've "
 "logged in, search for \"Tabletop Club\" to download and install the game."
 msgstr ""
+"Вы можете загрузить приложение itch `здесь <https://itch.io/app>`_, а после "
+"входа найдите \"Tabletop Club\", чтобы загрузить и установить игру."
 
 #: ../../general/download/downloading_binaries.rst:22
 msgid "As a standalone executable"
-msgstr ""
+msgstr "Как отдельный исполняемый файл"
 
 #: ../../general/download/downloading_binaries.rst:24
 msgid ""
@@ -1706,6 +1704,11 @@ msgid ""
 "tabletop-club/releases>`_. Once it is downloaded, there's only a couple of "
 "steps needed to run the game (see below)!"
 msgstr ""
+"Вы также можете загрузить игру как отдельное приложение, которое можно "
+"запустить в любом месте вашей системы со страницы `itch.io <https://drwhut."
+"itch.io/tabletop-club>`_, или из репозитория `GitHub <https://github.com/"
+"drwhut/tabletop-club/releases>`_. После загрузки игры необходимо выполнить "
+"всего пару шагов для ее запуска (см. ниже)!"
 
 #: ../../general/download/downloading_binaries.rst:30
 msgid ""
@@ -1730,7 +1733,7 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:40
 msgid "Verifying the download"
-msgstr ""
+msgstr "Проверка загрузки"
 
 #: ../../general/download/downloading_binaries.rst:42
 msgid ""
@@ -1739,6 +1742,10 @@ msgid ""
 "checking the `SHA512 hash <https://en.wikipedia.org/wiki/SHA-2>`_ of the "
 "file, and seeing if the hash matches the original."
 msgstr ""
+"Этот шаг совершенно необязателен, но это хорошая идея - убедиться, что "
+"содержимое загруженного файла соответствует нашим ожиданиям. Для этого мы "
+"проверяем хэш `SHA512 <https://en.wikipedia.org/wiki/SHA-2>`_ файла и "
+"смотрим, совпадает ли хэш с оригиналом."
 
 #: ../../general/download/downloading_binaries.rst:47
 msgid ""
@@ -1746,17 +1753,23 @@ msgid ""
 "txt`` file. This text file contains the SHA512 hashes of all of the "
 "downloads."
 msgstr ""
+"Скачайте со страницы релизов на GitHub файл ``TabletopClub_vX.X.X_SHA512."
+"txt``. Этот текстовый файл содержит SHA512 хэши всех загрузок."
 
 #: ../../general/download/downloading_binaries.rst:50
 msgid ""
 "Open a command prompt or terminal, and navigate to the folder where the "
 "compressed binary lies."
 msgstr ""
+"Откройте командную строку или терминал и перейдите в папку, где лежит сжатый "
+"двоичный файл."
 
 #: ../../general/download/downloading_binaries.rst:53
 msgid ""
 "Enter the command for your platform, adjusting the file name where necessary:"
 msgstr ""
+"Введите команду для вашей платформы, при необходимости скорректировав имя "
+"файла:"
 
 #: ../../general/download/downloading_binaries.rst:66
 msgid ""
@@ -1764,6 +1777,9 @@ msgid ""
 "SHA512 text file. If the hashes do not match, then you will need to download "
 "the binary again."
 msgstr ""
+"Сравните вывод предыдущей команды с соответствующей строкой в текстовом "
+"файле SHA512. Если хэши не совпадают, то вам нужно будет загрузить двоичный "
+"файл снова."
 
 #: ../../general/download/downloading_binaries.rst:71
 msgid "What happens now depends slightly on which platform you're on:"
@@ -1838,32 +1854,30 @@ msgstr ""
 #: ../../general/download/downloading_binaries.rst:103
 #, fuzzy
 #| msgid ""
-#| "When it has downloaded, macOS should automatically extract the files in "
-#| "the Downloads folder for you. Go to your downloads folder in Finder, and "
-#| "find the extracted folder, it will be called something like "
-#| "``TabletopClub_v0``."
+#| "When it has downloaded, go to your downloads folder in Finder, and find "
+#| "the compressed file. Double-click the file to extract the folder - it "
+#| "will be called something like ``TabletopClub_vX.X.X_OSX_Universal``."
 msgid ""
 "When it has downloaded, go to your downloads folder in Finder, and find the "
-"compressed file. Double-click the file to extract the folder - it will be "
-"called something like ``TabletopClub_vX.X.X_OSX_Universal``."
+"compressed file. Double-click the file to extract the application."
 msgstr ""
-"После загрузки macOS автоматически извлечет файлы из папки \"Загрузки\". "
-"Перейдите в папку \"Загрузки\" в Finder и найдите извлеченную папку, она "
-"будет называться примерно так ``TabletopClub_v0``."
+"После загрузки перейдите в папку загрузок в Finder и найдите сжатый файл. "
+"Дважды щелкните по файлу, чтобы извлечь папку - она будет называться "
+"примерно так: ``TabletopClub_vX.X.X_OSX_Universal``."
 
-#: ../../general/download/downloading_binaries.rst:107
-msgid "Re-name the new folder to ``TabletopClub``."
-msgstr "Переименуйте новую папку в ``TabletopClub``."
-
-#: ../../general/download/downloading_binaries.rst:109
+#: ../../general/download/downloading_binaries.rst:106
+#, fuzzy
+#| msgid ""
+#| "Go into the folder, and launch the game by right-clicking "
+#| "``TabletopClub`` and clicking :guilabel:`Open`."
 msgid ""
-"Go into the folder, and launch the game by right-clicking ``TabletopClub`` "
-"and clicking :guilabel:`Open`."
+"Launch the game by right-clicking ``TabletopClub`` and clicking :guilabel:"
+"`Open`."
 msgstr ""
 "Зайдите в папку и запустите игру, щелкнув правой кнопкой мыши "
 "``TabletopClub`` и нажав :guilabel:`Открыть`."
 
-#: ../../general/download/downloading_binaries.rst:114
+#: ../../general/download/downloading_binaries.rst:111
 msgid ""
 "Currently macOS binaries of the game are not signed, so you'll get a warning "
 "saying the publisher is unknown. You can get past this warning by clicking :"
@@ -1875,23 +1889,19 @@ msgstr ""
 "это предупреждение, нажав кнопку :guilabel:`Открыть` во всплывающем окне. "
 "Эта кнопка не появится, если вы дважды щелкните приложение."
 
-#: ../../general/download/downloading_binaries.rst:120
+#: ../../general/download/downloading_binaries.rst:117
 msgid "Downloading for Linux / \\*BSD"
 msgstr "Загрузка для Linux / \\*BSD"
 
-#: ../../general/download/downloading_binaries.rst:122
-#, fuzzy
-#| msgid ""
-#| "Make sure you have downloaded the compressed file, it should be called "
-#| "something like ``TabletopClub_vX.X.X_Linux_64.tar.gz``."
+#: ../../general/download/downloading_binaries.rst:119
 msgid ""
 "Make sure you have downloaded the compressed file, it should be called "
 "something like ``TabletopClub_vX.X.X_Linux_64.zip``."
 msgstr ""
 "Убедитесь, что вы скачали сжатый файл, он должен называться примерно так "
-"``TabletopClub_vX.X.X_Linux_64.tar.gz``."
+"``TabletopClub_vX.X.X_Linux_64.zip``."
 
-#: ../../general/download/downloading_binaries.rst:125
+#: ../../general/download/downloading_binaries.rst:122
 msgid ""
 "Either use your distribution's archive manager to extract the files, or run "
 "this command in a terminal:"
@@ -1899,7 +1909,7 @@ msgstr ""
 "Либо используйте менеджер архивов вашего дистрибутива для извлечения файлов, "
 "либо выполните эту команду в терминале:"
 
-#: ../../general/download/downloading_binaries.rst:132
+#: ../../general/download/downloading_binaries.rst:129
 msgid ""
 "Either double-click the executable, or go into a terminal and run this "
 "command in the folder the executable is in:"
@@ -1907,11 +1917,11 @@ msgstr ""
 "Либо дважды щелкните исполняемый файл, либо зайдите в терминал и выполните "
 "эту команду в папке, в которой находится исполняемый файл:"
 
-#: ../../general/download/downloading_binaries.rst:143
+#: ../../general/download/downloading_binaries.rst:140
 msgid "Upgrading an existing installation"
 msgstr "Обновление существующей установки"
 
-#: ../../general/download/downloading_binaries.rst:145
+#: ../../general/download/downloading_binaries.rst:142
 msgid ""
 "If you have already downloaded the game before, and you want to overwrite "
 "the files that are already there, then before downloading and extracting the "
@@ -1921,21 +1931,21 @@ msgstr ""
 "то перед скачиванием и извлечением новой версии игры сначала удалите "
 "следующие файлы и папки:"
 
-#: ../../general/download/downloading_binaries.rst:149
+#: ../../general/download/downloading_binaries.rst:146
 msgid ""
 "``TabletopClub.exe``, or ``TabletopClub.app``, or ``TabletopClub.x86_64``"
 msgstr ""
 "``TabletopClub.exe``, или ``TabletopClub.app``, или ``TabletopClub.x86_64``"
 
-#: ../../general/download/downloading_binaries.rst:150
+#: ../../general/download/downloading_binaries.rst:147
 msgid "``TabletopClub.pck``"
 msgstr "``TabletopClub.pck``"
 
-#: ../../general/download/downloading_binaries.rst:151
+#: ../../general/download/downloading_binaries.rst:148
 msgid "``assets/TabletopClub``"
 msgstr "``assets/TabletopClub``"
 
-#: ../../general/download/downloading_binaries.rst:153
+#: ../../general/download/downloading_binaries.rst:150
 msgid ""
 "Now you can extract the new version of the game as described above. If the "
 "operating systems asks you if you want to replace any files, say yes to all "
@@ -1975,6 +1985,25 @@ msgstr ""
 "предварительно собранного двоичного файла, но вам придется сделать это, если "
 "вы планируете внести свой вклад в код игры, или вы можете попробовать это "
 "для развлечения!"
+
+#~ msgid ""
+#~ "The only exception to this is the ``README.md`` file, which is not "
+#~ "included in Weblate - feel free to provide a translation for this file "
+#~ "with the name ``README.<locale>.md``, and send in a pull request!"
+#~ msgstr ""
+#~ "Единственным исключением является файл ``README.md``, который не включен "
+#~ "в Weblate - не стесняйтесь предоставить перевод для этого файла с именем "
+#~ "``README.<locale>.md``, и отправить его в запросе на слияние!"
+
+#~ msgid ""
+#~ "If you want to compile an export template to export a release build of "
+#~ "the game from the editor, you can use the following command:"
+#~ msgstr ""
+#~ "Если вы хотите скомпилировать шаблон экспорта для экспорта релизной "
+#~ "сборки игры из редактора, вы можете использовать следующую команду:"
+
+#~ msgid "Re-name the new folder to ``TabletopClub``."
+#~ msgstr "Переименуйте новую папку в ``TabletopClub``."
 
 #~ msgid ""
 #~ "To see the details of these assets and their authors and licenses, have a "

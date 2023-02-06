@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-25 11:08+0000\n"
+"POT-Creation-Date: 2023-02-06 00:02+0000\n"
 "PO-Revision-Date: 2022-08-10 06:14+0000\n"
 "Last-Translator: Ido Dana <idodana01@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/tabletop-club/"
@@ -523,7 +523,7 @@ msgid ""
 msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:90
-#: ../../general/contributing/ways_to_contribute.rst:93
+#: ../../general/contributing/ways_to_contribute.rst:89
 msgid "Creating a pull request"
 msgstr ""
 
@@ -735,18 +735,11 @@ msgid ""
 "own fork of the project, and we want to avoid having merge conflicts occur."
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:83
-msgid ""
-"The only exception to this is the ``README.md`` file, which is not included "
-"in Weblate - feel free to provide a translation for this file with the name "
-"``README.<locale>.md``, and send in a pull request!"
-msgstr ""
-
 #: ../../general/contributing/ways_to_contribute.rst:None
 msgid "Translation status"
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:95
+#: ../../general/contributing/ways_to_contribute.rst:91
 msgid ""
 "If you see an issue on the `GitHub repository`_ that you think you can fix, "
 "and you want to directly contribute to the project by modifying the game "
@@ -754,11 +747,11 @@ msgid ""
 "the :ref:`pull-request-workflow` page for more information."
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:102
+#: ../../general/contributing/ways_to_contribute.rst:98
 msgid "Proposing assets"
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:104
+#: ../../general/contributing/ways_to_contribute.rst:100
 msgid ""
 "If you see an issue on the `GitHub repository`_ that needs game assets to "
 "fix (like textures, 3D models, sound effects, music, etc.), then you can "
@@ -766,34 +759,34 @@ msgid ""
 "you've made yourself!"
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:109
+#: ../../general/contributing/ways_to_contribute.rst:105
 msgid ""
 "If the asset doesn't solve an issue, but you still think Tabletop Club would "
 "benefit from having it, then you can `post an issue`_ with the asset "
 "submission template instead!"
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:113
+#: ../../general/contributing/ways_to_contribute.rst:109
 msgid ""
 "However you propose the asset, you need to provide the following information:"
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:115
+#: ../../general/contributing/ways_to_contribute.rst:111
 msgid "The name of the asset."
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:116
+#: ../../general/contributing/ways_to_contribute.rst:112
 msgid "The name of the author."
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:117
+#: ../../general/contributing/ways_to_contribute.rst:113
 msgid ""
 "The license the asset is under - keep in mind that we will only include "
 "assets with open licenses, e.g. `CC BY-SA 3.0 <https://creativecommons.org/"
 "licenses/by-sa/3.0/>`_."
 msgstr ""
 
-#: ../../general/contributing/ways_to_contribute.rst:120
+#: ../../general/contributing/ways_to_contribute.rst:116
 msgid ""
 "The URL where the asset can be downloaded from. The URL must be publically "
 "accessible, and it must lead to a trusted website."
@@ -1013,6 +1006,7 @@ msgid ""
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:187
+#: ../../general/download/compiling_from_source.rst:316
 msgid ""
 "If you want to compile an export template to export a release build of the "
 "game from the editor, you can use the following commands:"
@@ -1122,17 +1116,11 @@ msgstr ""
 msgid "If you want to compile using Clang instead of GCC, use this command:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:316
-msgid ""
-"If you want to compile an export template to export a release build of the "
-"game from the editor, you can use the following command:"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:325
+#: ../../general/download/compiling_from_source.rst:326
 msgid "Downloading Tabletop Club"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:327
+#: ../../general/download/compiling_from_source.rst:328
 msgid ""
 "To download the Tabletop Club Godot project, you can either download a "
 "compressed copy of the source code for a particular version from the "
@@ -1142,36 +1130,37 @@ msgid ""
 "command:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:339
+#: ../../general/download/compiling_from_source.rst:340
 msgid "Downloading the WebRTC GDNative plugin"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:341
+#: ../../general/download/compiling_from_source.rst:342
 msgid ""
 "Since the multiplayer for Tabletop Club uses WebRTC, you'll need to download "
 "the WebRTC plugin for Godot. You can follow these instructions to setup the "
 "plugin:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:345
+#: ../../general/download/compiling_from_source.rst:346
 msgid ""
-"Download the latest release of the plugin from `the repository <https://"
-"github.com/godotengine/webrtc-native/releases>`_. Make sure to download the "
-"``release`` build."
+"Download the latest release (not a pre-release!) of the plugin from `the "
+"repository <https://github.com/godotengine/webrtc-native/releases>`_. Make "
+"sure to download the ``webrtc-native-release`` file rather than the ``webrtc-"
+"native-debug`` file."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:349
+#: ../../general/download/compiling_from_source.rst:351
 msgid ""
 "Open the compressed file, and place the ``webrtc/`` folder into ``tabletop-"
 "club/game/``. Afterwards, there should be a file at ``tabletop-club/game/"
 "webrtc/webrtc.tres``."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:355
+#: ../../general/download/compiling_from_source.rst:357
 msgid "Running Tabletop Club in the Godot editor"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:357
+#: ../../general/download/compiling_from_source.rst:359
 msgid ""
 "To open Godot's project manager, run the executable you compiled in ``godot/"
 "bin/``. You can then import the project by clicking the :guilabel:`Import` "
@@ -1180,76 +1169,82 @@ msgid ""
 "top-right corner (or by pressing F5)!"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:363
+#: ../../general/download/compiling_from_source.rst:365
 msgid ""
 "At this point, you can modify the game to your heart's content! Have a look "
 "at the scenes and scripts, try tweaking things here and there, or maybe try "
 "and add some stuff of your own?"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:369
+#: ../../general/download/compiling_from_source.rst:371
 msgid "Exporting the game"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:371
+#: ../../general/download/compiling_from_source.rst:373
 msgid ""
 "You can export the game with the editor to make it so you don't need to run "
 "the game through the editor to play it. Here's how you can export the "
 "project:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:374
+#: ../../general/download/compiling_from_source.rst:376
 msgid "Click on :guilabel:`Project` > :guilabel:`Export...`"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:375
+#: ../../general/download/compiling_from_source.rst:377
 msgid "In the pop-up, click :guilabel:`Add...`, and select your platform."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:376
+#: ../../general/download/compiling_from_source.rst:378
 msgid ""
 "In the menu on the right, set the debug template to point to the editor "
 "executable, and if you made a release template, set that as well."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:381
+#: ../../general/download/compiling_from_source.rst:383
 msgid ""
 "If you are on macOS, then you will need to disable library validation as "
 "shown below. This is in order to prevent the system from checking the WebRTC "
 "library, which stops it from loading."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:388
+#: ../../general/download/compiling_from_source.rst:390
 msgid ""
 "Click :guilabel:`Export project`, choose where you want to export the "
 "project and whether you want to export a debug or a release binary, then "
 "click :guilabel:`Save`."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:391
+#: ../../general/download/compiling_from_source.rst:393
 msgid ""
 "Copy the ``tabletop-club/assets/`` folder next to the exported binary, so "
 "the game has assets to import."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:394
+#: ../../general/download/compiling_from_source.rst:398
+msgid ""
+"On macOS, you'll need to put this folder inside the ``.app`` package, "
+"specifically in ``Tabletop Club.app/Contents/Resources``."
+msgstr ""
+
+#: ../../general/download/compiling_from_source.rst:401
 msgid ""
 "Now, you should be able to launch the exported executable and play the game "
 "directly!"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:401
+#: ../../general/download/compiling_from_source.rst:408
 msgid "Why did you fork Godot?"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:403
+#: ../../general/download/compiling_from_source.rst:410
 msgid ""
 "There's actually just one reason for this: there was a feature that I knew "
 "existed in Godot, but it was not exposed to the in-built scripting language "
 "GDScript, and the functionality wasn't included in release templates."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:407
+#: ../../general/download/compiling_from_source.rst:414
 msgid ""
 "When the game starts, the first thing it does is it scans certain folders "
 "for asset packs, and if it finds any, the game will then import assets from "
@@ -1261,7 +1256,7 @@ msgid ""
 "on the filesystem using just one function in GDScript."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:416
+#: ../../general/download/compiling_from_source.rst:423
 msgid ""
 "However, a problem occured when compiling Godot with this module as a "
 "release template - the compiled editor code was not included in the release "
@@ -1272,11 +1267,11 @@ msgid ""
 "the rest of the editor."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:424
+#: ../../general/download/compiling_from_source.rst:431
 msgid "Footnotes"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:425
+#: ../../general/download/compiling_from_source.rst:432
 msgid ""
 "`The Godot documentation <https://docs.godotengine.org>`_ is from Juan "
 "Linietsky, Ariel Manzur and the Godot community, and it is licensed under "
@@ -1428,21 +1423,16 @@ msgstr ""
 #: ../../general/download/downloading_binaries.rst:103
 msgid ""
 "When it has downloaded, go to your downloads folder in Finder, and find the "
-"compressed file. Double-click the file to extract the folder - it will be "
-"called something like ``TabletopClub_vX.X.X_OSX_Universal``."
+"compressed file. Double-click the file to extract the application."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:107
-msgid "Re-name the new folder to ``TabletopClub``."
-msgstr ""
-
-#: ../../general/download/downloading_binaries.rst:109
+#: ../../general/download/downloading_binaries.rst:106
 msgid ""
-"Go into the folder, and launch the game by right-clicking ``TabletopClub`` "
-"and clicking :guilabel:`Open`."
+"Launch the game by right-clicking ``TabletopClub`` and clicking :guilabel:"
+"`Open`."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:114
+#: ../../general/download/downloading_binaries.rst:111
 msgid ""
 "Currently macOS binaries of the game are not signed, so you'll get a warning "
 "saying the publisher is unknown. You can get past this warning by clicking :"
@@ -1450,53 +1440,53 @@ msgid ""
 "the application."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:120
+#: ../../general/download/downloading_binaries.rst:117
 msgid "Downloading for Linux / \\*BSD"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:122
+#: ../../general/download/downloading_binaries.rst:119
 msgid ""
 "Make sure you have downloaded the compressed file, it should be called "
 "something like ``TabletopClub_vX.X.X_Linux_64.zip``."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:125
+#: ../../general/download/downloading_binaries.rst:122
 msgid ""
 "Either use your distribution's archive manager to extract the files, or run "
 "this command in a terminal:"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:132
+#: ../../general/download/downloading_binaries.rst:129
 msgid ""
 "Either double-click the executable, or go into a terminal and run this "
 "command in the folder the executable is in:"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:143
+#: ../../general/download/downloading_binaries.rst:140
 msgid "Upgrading an existing installation"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:145
+#: ../../general/download/downloading_binaries.rst:142
 msgid ""
 "If you have already downloaded the game before, and you want to overwrite "
 "the files that are already there, then before downloading and extracting the "
 "new version of the game, first delete the following files and folders:"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:149
+#: ../../general/download/downloading_binaries.rst:146
 msgid ""
 "``TabletopClub.exe``, or ``TabletopClub.app``, or ``TabletopClub.x86_64``"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:150
+#: ../../general/download/downloading_binaries.rst:147
 msgid "``TabletopClub.pck``"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:151
+#: ../../general/download/downloading_binaries.rst:148
 msgid "``assets/TabletopClub``"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:153
+#: ../../general/download/downloading_binaries.rst:150
 msgid ""
 "Now you can extract the new version of the game as described above. If the "
 "operating systems asks you if you want to replace any files, say yes to all "
