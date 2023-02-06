@@ -1,33 +1,32 @@
 # Tabletop Club Documentation Translation Template.
-# Copyright (C) 2020-2021 Benjamin 'drwhut' Beddows.
-# Copyright (C) 2021 Tabletop Club contributors (see game/CREDITS.tres).
+# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2022 Tabletop Club contributors (see game/CREDITS.tres).
 # This file is distributed under the same license as the Tabletop Club package.
-# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2021.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-06 00:02+0000\n"
-"PO-Revision-Date: 2022-11-28 17:37+0000\n"
-"Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
-"docs-custom-assets/ru/>\n"
-"Language: ru\n"
+"PO-Revision-Date: 2022-12-23 19:50+0000\n"
+"Last-Translator: muzzug <kadlec.ondrej@protonmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/docs-"
+"custom-assets/cs/>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
-msgstr "Структура пакета ассетов"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:6
 msgid "Locations for asset packs"
-msgstr "Местоположения для пакетов ассетов"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:8
 msgid ""
@@ -35,29 +34,26 @@ msgid ""
 "asset packs. If you want the game to import your asset pack, it needs to be "
 "put into one of the following locations:"
 msgstr ""
-"В начале игры Tabletop Club просканирует набор заданных папок на наличие "
-"пакетов ассетов. Если вы хотите, чтобы игра импортировала ваш пакет ассетов, "
-"его нужно поместить в одно из следующих мест:"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:12
 msgid "``<TABLETOPCLUB_INSTALL_FOLDER>/assets/``"
-msgstr "``<TABLETOPCLUB_INSTALL_FOLDER>/assets/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:13
 msgid "``<DOWNLOADS>/TabletopClub/assets/``"
-msgstr "``<DOWNLOADS>/TabletopClub/assets/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:14
 msgid "``<DOCUMENTS>/TabletopClub/assets/``"
-msgstr "``<DOCUMENTS>/TabletopClub/assets/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:15
 msgid "``<DESKTOP>/TabletopClub/assets/``"
-msgstr "``<DESKTOP>/TabletopClub/assets/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:19
 msgid "Creating an asset pack"
-msgstr "Создание пакета ассетов"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:21
 msgid ""
@@ -65,13 +61,10 @@ msgid ""
 "in one of the folders mentioned above, and you're done! The name of the "
 "folder will be the name of the asset pack."
 msgstr ""
-"Создать пакет ассетов очень просто! Все, что вам нужно сделать, это создать "
-"папку в одной из папок, указанных выше, и все готово! Название папки будет "
-"названием пакета ассетов."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:27
 msgid "Sub-folders"
-msgstr "Подпапки"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:29
 msgid ""
@@ -79,32 +72,26 @@ msgid ""
 "what type of asset it is, and what the file type needed for that asset type "
 "is. Note that asset packs don't need to have all of these sub-folders."
 msgstr ""
-"Каждый пакет активов делит свои ассеты на различные подпапки в зависимости "
-"от типа ассета и типа файла, необходимого для этого типа ассета. Обратите "
-"внимание, что пакеты ассетов не обязательно должны содержать все эти "
-"подпапки."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
 msgid "Sub-folder"
-msgstr "Подпапка"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
 msgid "File Type"
-msgstr "Тип файла"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
 msgid "Asset Type"
-msgstr "Тип ассета"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
 msgid "Object Type"
-msgstr "Тип объекта"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
-#, fuzzy
-#| msgid "``cards/``"
 msgid "``boards/``"
-msgstr "``cards/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
@@ -119,7 +106,7 @@ msgstr "``cards/``"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
 msgid ":ref:`file-type-3d`"
-msgstr ":ref:`file-type-3d`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
@@ -136,40 +123,38 @@ msgstr ":ref:`file-type-3d`"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:72
 msgid ":ref:`asset-type-object`"
-msgstr ":ref:`asset-type-object`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
-#, fuzzy
-#| msgid ":ref:`object-type-card`"
 msgid ":ref:`object-type-board`"
-msgstr ":ref:`object-type-card`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
 msgid "``cards/``"
-msgstr "``cards/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:72
 msgid ":ref:`file-type-image`"
-msgstr ":ref:`file-type-image`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
 msgid ":ref:`object-type-card`"
-msgstr ":ref:`object-type-card`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
 msgid "``containers/``"
-msgstr "``containers/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
 msgid ":ref:`object-type-container`"
-msgstr ":ref:`object-type-container`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:42
 msgid "``dice/d4/``"
-msgstr "``dice/d4/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:42
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:44
@@ -178,39 +163,39 @@ msgstr "``dice/d4/``"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:50
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
 msgid ":ref:`object-type-dice`"
-msgstr ":ref:`object-type-dice`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:44
 msgid "``dice/d6/``"
-msgstr "``dice/d6/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:46
 msgid "``dice/d8/``"
-msgstr "``dice/d8/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:48
 msgid "``dice/d10/``"
-msgstr "``dice/d10/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:50
 msgid "``dice/d12/``"
-msgstr "``dice/d12/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
 msgid "``dice/d20/``"
-msgstr "``dice/d20/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
 msgid "``games/``"
-msgstr "``games/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
 msgid ":ref:`file-type-save`"
-msgstr ":ref:`file-type-save`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
 msgid ":ref:`asset-type-game`"
-msgstr ":ref:`asset-type-game`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
@@ -218,130 +203,127 @@ msgstr ":ref:`asset-type-game`"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 msgid "N/A"
-msgstr "Н/Д"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
 msgid "``music/``"
-msgstr "``music/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
 msgid ":ref:`file-type-audio`"
-msgstr ":ref:`file-type-audio`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
 msgid ":ref:`asset-type-music`"
-msgstr ":ref:`asset-type-music`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:58
 msgid "``pieces/``"
-msgstr "``pieces/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:58
 msgid ":ref:`object-type-piece`"
-msgstr ":ref:`object-type-piece`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 msgid "``skyboxes/``"
-msgstr "``skyboxes/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 msgid ":ref:`asset-type-skybox`"
-msgstr ":ref:`asset-type-skybox`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
 msgid "``sounds/``"
-msgstr "``sounds/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
 msgid ":ref:`asset-type-sound`"
-msgstr ":ref:`asset-type-sound`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
 msgid "``speakers/``"
-msgstr "``speakers/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
 msgid ":ref:`object-type-speaker`"
-msgstr ":ref:`object-type-speaker`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 msgid "``tables/``"
-msgstr "``tables/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 msgid ":ref:`asset-type-table`"
-msgstr ":ref:`asset-type-table`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
 msgid "``timers/``"
-msgstr "``timers/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
 msgid ":ref:`object-type-timer`"
-msgstr ":ref:`object-type-timer`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
 msgid "``tokens/cube/``"
-msgstr "``tokens/cube/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:72
 msgid ":ref:`object-type-token`"
-msgstr ":ref:`object-type-token`"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:72
 msgid "``tokens/cylinder/``"
-msgstr "``tokens/cylinder/``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:77
 msgid "Configuration files"
-msgstr "Конфигурационные файлы"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:82
 msgid "config.cfg"
-msgstr "config.cfg"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:84
 msgid ""
 "Every sub-folder can have this file, which allows you to modify the "
 "properties of assets in the subfolder."
 msgstr ""
-"Каждая подпапка может иметь этот файл, который позволяет изменять свойства "
-"ассетов в подпапке."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:87
 msgid "Here is an example of a ``config.cfg`` file:"
-msgstr "Вот пример файла ``config.cfg``:"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:132
 msgid "Here is the full list of properties you can modify in ``config.cfg``:"
 msgstr ""
-"Вот полный список свойств, которые вы можете изменить в ``config.cfg``:"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
 msgid "Property Name"
-msgstr "Имя свойства"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
 msgid "Data Type"
-msgstr "Тип данных"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
 msgid "Used By"
-msgstr "Используется"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
 msgid "Default Value"
-msgstr "Значение по умолчанию"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:135
 msgid "Description"
-msgstr "Описание"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 msgid "``author``"
-msgstr "``author``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
@@ -352,7 +334,7 @@ msgstr "``author``"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:176
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:186
 msgid "Text"
-msgstr "Текст"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
@@ -362,7 +344,7 @@ msgstr "Текст"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:186
 msgid "All"
-msgstr "Все"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
@@ -371,243 +353,225 @@ msgstr "Все"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:186
 msgid "``\"\"``"
-msgstr "``\"\"``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 msgid "The name of the author(s) of the asset."
-msgstr "Имя автора(-ов) ассета."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 msgid "``back_face``"
-msgstr "``back_face``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:174
 msgid "Cards"
-msgstr "Карты"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 msgid ""
 "The file name of the back face of the card. The texture must be in the same "
 "folder. If blank, no back face texture is applied."
 msgstr ""
-"Имя файла обратной стороны карты. Текстура должна находиться в той же папке. "
-"Если пусто, текстура задней поверхности не применяется."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 msgid "``bounce``"
-msgstr "``bounce``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:181
 msgid "Number"
-msgstr "Число"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
 msgid "Tables"
-msgstr "Столы"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 msgid "``0.5``"
-msgstr "``0.5``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
 msgid ""
 "Defines how high objects bounce off the table. Must be a value between "
 "``0.0`` (no bounce) and ``1.0`` (full bounce)."
 msgstr ""
-"Определяет, насколько высоко объекты отскакивают от стола. Должно быть "
-"значение между ``0.0`` (без отскока) и ``1.0`` (полный отскок)."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 msgid "``collision_mode``"
-msgstr "``collision_mode``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 msgid "Objects, Tables"
-msgstr "Объекты, столы"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 msgid "``0``"
-msgstr "``0``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 msgid ""
 "Determines the collision shape of the object. See :ref:`file-type-3d` for "
 "more details."
 msgstr ""
-"Определяет форму коллизии объекта. Более подробную информацию смотрите в :"
-"ref:`file-type-3d`."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "``color``"
-msgstr "``color``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "String"
-msgstr "Строка"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:176
 msgid "Objects"
-msgstr "Объекты"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "``#ffffff``"
-msgstr "``#ffffff``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "Multiply the color of the texture by this value."
-msgstr "Умножает цвет текстуры на это значение."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 msgid "``default``"
-msgstr "``default``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:179
 msgid "Boolean"
-msgstr "Логическое"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 msgid "Skyboxes, Tables"
-msgstr "Скайбоксы, столы"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:179
 msgid "``false``"
-msgstr "``false``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 msgid ""
 "If ``true``, the asset is loaded before the game starts. If ``true`` for "
 "multiple assets, one is loaded at random."
 msgstr ""
-"Если ``true``, ассет загружается до начала игры. Если ``true`` для "
-"нескольких ассетов, один из них загружается случайным образом."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
 msgid "``desc``"
-msgstr "``desc``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
 msgid "Describes the asset in more detail."
-msgstr "Описывает ассет более подробно."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 msgid "``face_values``"
-msgstr "``face_values``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 msgid "Dictionary"
-msgstr "Словарь"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 #: ../../custom_assets/asset_packs/asset_types.rst:97
 msgid "Dice"
-msgstr "Кости"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 msgid "``{}``"
-msgstr "``{}``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 msgid ""
 "Specifies which rotations correspond to what values on the faces of the die. "
 "See :ref:`object-type-dice` for more information."
 msgstr ""
-"Указывает, какие вращения соответствуют каким значениям на гранях кубика. "
-"Дополнительную информацию см. в :ref:`object-type-dice`."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
 msgid "``hands``"
-msgstr "``hands``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
 msgid "Array"
-msgstr "Массив"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
 msgid "``[]``"
-msgstr "``[]``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
 msgid ""
 "The positions of player's hands around the table. See :ref:`asset-type-"
 "table` for more information."
 msgstr ""
-"Положение рук игрока за столом. Дополнительную информацию см. в :ref:`asset-"
-"type-table`."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 msgid "``ignore``"
-msgstr "``ignore``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 msgid ""
 "If ``true``, it tells the game to ignore this asset when importing the asset "
 "pack."
 msgstr ""
-"Если ``true``, это указывает игре игнорировать этот ассет при импорте пакета "
-"ассетов."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
 msgid "``license``"
-msgstr "``license``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
 msgid "The license the asset is distributed under."
-msgstr "Лицензия, под которой распространяется ассет."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid "``main_menu``"
-msgstr "``main_menu``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid "Music, Objects"
-msgstr "Музыка, Объекты"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid ""
 "If ``true``, objects will have a chance of spawning in the main menu, and "
 "music will have a chance of playing in the main menu."
 msgstr ""
-"Если ``true``, объекты будут иметь шанс появиться в главном меню, а музыка "
-"будет иметь шанс играть в главном меню."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 msgid "``mass``"
-msgstr "``mass``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:181
 msgid "``1.0``"
-msgstr "``1.0``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 msgid ""
 "The mass of the object in grams (g) when it is spawned in-game. It is "
 "recommended to set this value for more realistic physics collisions."
 msgstr ""
-"Масса объекта в граммах (г) при его появлении в игре. Рекомендуется "
-"установить это значение для более реалистичных физических столкновений."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 msgid "``modified_by``"
-msgstr "``modified_by``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 msgid "The name(s) of the people who have modified the asset."
-msgstr "Имена людей, которые изменили актив."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 msgid "``name``"
@@ -623,51 +587,49 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
 msgid "``paint_plane``"
-msgstr "``paint_plane``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:174
 msgid "Vector2"
-msgstr "Vector2"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
 msgid "``Vector2(100.0, 100.0)``"
-msgstr "``Vector2(100.0, 100.0)``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
 msgid ""
 "The length and width of the plane in which players can paint on the table. "
 "The centre of the plane is at the origin."
 msgstr ""
-"Длина и ширина плоскости, в которой игроки могут рисовать на столе. Центр "
-"плоскости находится в начале координат."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:169
 msgid "``rotation``"
-msgstr "``rotation``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:169
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
 msgid "Vector3"
-msgstr "Vector3"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:169
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:181
 msgid "Skyboxes"
-msgstr "Скайбоксы"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:169
 msgid "``Vector3(0.0, 0.0, 0.0)``"
-msgstr "``Vector3(0.0, 0.0, 0.0)``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:169
 msgid "Rotates the skybox a number of degrees in the X, Y and Z axes."
-msgstr "Поворачивает скайбокс на несколько градусов по осям X, Y и Z."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:174
 msgid "``scale``"
-msgstr "``scale``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
 msgid "Objects (except Cards)"
@@ -675,28 +637,18 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
 msgid "``Vector3(1.0, 1.0, 1.0)``"
-msgstr "``Vector3(1.0, 1.0, 1.0)``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
-#, fuzzy
-#| msgid ""
-#| "Scales the object in the X, Y and Z axes in centimeters (cm). Note that "
-#| "for objects that use custom 3D models, this value most likely won't "
-#| "reflect the final size of the object."
 msgid ""
 "Scales the object in the X (width), Y (height) and Z (thickness) axes in "
 "centimeters (cm). Note that for objects that use custom 3D models, this "
 "value most likely won't reflect the final size of the object."
 msgstr ""
-"Масштабирует объект по осям X, Y и Z в сантиметрах (см). Обратите внимание, "
-"что для объектов, использующих пользовательские 3D-модели, это значение, "
-"скорее всего, не будет отражать окончательный размер объекта."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:174
-#, fuzzy
-#| msgid "``Vector2(100.0, 100.0)``"
 msgid "``Vector2(1.0, 1.0)``"
-msgstr "``Vector2(100.0, 100.0)``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:174
 msgid ""
@@ -705,11 +657,11 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:176
 msgid "``sfx``"
-msgstr "``sfx``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:176
 msgid "``\"generic\"``"
-msgstr "``\"generic\"``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:176
 msgid ""
@@ -719,69 +671,61 @@ msgid ""
 "``\"soft\"``, ``\"soft_heavy\"``, ``\"tin\"``, ``\"wood\"``, ``\"wood_heavy"
 "\"``, ``\"wood_light\"``."
 msgstr ""
-"Определяет, какой звук издает объект при столкновении со столом. Возможные "
-"значения: ``\"generic\"``, ``\"glass\"``, ``\"glass_heavy\"``, ``"
-"\"glass_light\"``, ``\"metal\"``, ``\"metal_heavy\"``, ``\"metal_light\"``, "
-"``\"soft\"``, ``\"soft_heavy\"``, ``\"tin\"``, ``\"wood\"``, ``\"wood_heavy"
-"\"``, ``\"wood_light\"``."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:179
 msgid "``shakable``"
-msgstr "``shakable``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:179
 msgid "Containers"
-msgstr "Контейнеры"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:179
 msgid ""
 "If ``true``, when the container is being shaken upside down, it will "
 "randomly drop items out."
 msgstr ""
-"Если ``true``, при встряхивании контейнера вверх дном из него будут "
-"случайным образом выпадать предметы."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:181
 msgid "``strength``"
-msgstr "``strength``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:181
 msgid "The strength of the ambient light coming from the skybox."
-msgstr "Сила окружающего света, исходящего от скайбокса."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
 msgid "``suit``, ``value``"
-msgstr "``suit``, ``value``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
 msgid "Number, Text"
-msgstr "Число, Текст"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
 msgid "Cards, Tokens"
-msgstr "Карты, Жетоны"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
 msgid "``null``"
-msgstr "``null``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
 msgid ""
 "A value given to a stackable object that allows it to be sorted in a stack."
 msgstr ""
-"Значение, присваиваемое объекту , которое позволяет сортировать его в стопке."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:186
 msgid "``url``"
-msgstr "``url``"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:186
 msgid "The URL where the asset originally came from."
-msgstr "URL-адрес, с которого первоначально был получен ассет."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:193
 msgid "stacks.cfg"
-msgstr "stacks.cfg"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:195
 msgid ""
@@ -789,18 +733,14 @@ msgid ""
 "add this file to add pre-filled stacks of those objects to the asset pack. A "
 "good example of this is for adding pre-filled decks of cards to the game."
 msgstr ""
-"Для объектов :ref:`object-type-card` и :ref:`object-type-token` вы можете "
-"добавить этот файл, чтобы добавить предварительно заполненные стопки этих "
-"объектов в пакет ассетов. Хорошим примером этого является добавление "
-"предварительно заполненных колод карт в игру."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:199
 msgid "Here is an example of a ``stacks.cfg`` file:"
-msgstr "Вот пример файла ``stacks.cfg``:"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:227
 msgid "Translations"
-msgstr "Переводы"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:229
 msgid ""
@@ -810,19 +750,12 @@ msgid ""
 "``<locale>`` is the `locale code <https://docs.godotengine.org/en/stable/"
 "tutorials/i18n/locales.html>`_ for your language."
 msgstr ""
-"Вы также можете предоставить переводы для названий и описаний ассетов в "
-"пакете ассетов! Это делается с помощью отдельных конфигурационных файлов для "
-"каждого языка. Имя файла должно быть ``config.<locale>.cfg``, где "
-"``<locale>`` - `код локали <https://docs.godotengine.org/en/stable/tutorials/"
-"i18n/locales.html>`_ для вашего языка."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:238
 msgid ""
 "The list of languages supported by the game is shown in the `README <https://"
 "github.com/drwhut/tabletop-club#languages>`_ file of the project."
 msgstr ""
-"Список языков, поддерживаемых игрой, приведен в файле `README <https://"
-"github.com/drwhut/tabletop-club#languages>`_."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:241
 msgid ""
@@ -831,10 +764,6 @@ msgid ""
 "translate the project as a whole so your languages does become supported! "
 "See :ref:`translating-the-project` for more information."
 msgstr ""
-"Если языка, на который вы переводите, нет в этом списке, к сожалению, вы не "
-"сможете увидеть результаты в игре. Однако вы можете помочь перевести проект "
-"в целом, чтобы ваш язык стал поддерживаемым! Более подробную информацию "
-"смотрите в :ref:`translating-the-project`."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:248
 msgid ""
@@ -843,23 +772,19 @@ msgid ""
 "these files. You also cannot apply translations to multiple assets at the "
 "same time with wildcards."
 msgstr ""
-"Эти файлы перевода обрабатываются иначе, чем другие файлы конфигурации. В "
-"этих файлах можно редактировать только свойства ассетов ``name`` и ``desc``. "
-"Вы также не можете применять переводы к нескольким ассетам одновременно с "
-"помощью подстановочных знаков."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:253
 msgid ""
 "Here is an example of a Norwegian translation file, called ``config.nb.cfg``:"
-msgstr "Вот пример норвежского файла перевода под названием ``config.nb.cfg``:"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:3
 msgid "Asset types"
-msgstr "Типы ассетов"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:8
 msgid "Object"
-msgstr "Объект"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:10
 msgid ""
@@ -867,10 +792,6 @@ msgid ""
 "is, it is driven by the physics engine). There are many different types of "
 "objects, each with their own special functionality:"
 msgstr ""
-"Объектом в Tabletop Club называется все, что находится в игре и является "
-"динамическим (то есть управляется физическим движком). Существует множество "
-"различных типов объектов, каждый из которых обладает своей особой "
-"функциональностью:"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:18
 msgid "Board"
@@ -890,7 +811,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_types.rst:31
 #: ../../custom_assets/asset_packs/file_types.rst:33
 msgid "Card"
-msgstr "Карта"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid ""
@@ -899,10 +820,6 @@ msgid ""
 "the ace of hearts, the ace of spades, and a card that is facing down. The\n"
 "text \"player\" is shown in front of the hand."
 msgstr ""
-"Ряд из пяти карт в белом прямоугольнике, представляющий руку игрока.\n"
-"слева направо, это трефовый туз, бубновый туз,\n"
-"туз червей, туз пик и карта, лежащая лицом вниз.\n"
-"Текст \"игрок\" изображен перед рукой."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:39
 msgid ""
@@ -910,10 +827,6 @@ msgid ""
 "the unique functionality to be able to be put in a player's hand, where only "
 "the player whose hand it is can see the front face of the card."
 msgstr ""
-"Карты - это плоские объекты прямоугольной формы, которые можно складывать в "
-"стопки, и они обладают уникальной функциональностью - их можно класть в руку "
-"игрока, при этом только игрок, в чьей руке они находятся, может видеть "
-"лицевую сторону карты."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:43
 msgid ""
@@ -922,10 +835,6 @@ msgid ""
 "textures in the ``cards/`` folder as the front face of a card, but you need "
 "to tell the game where to find the back face in the ``config.cfg`` file."
 msgstr ""
-"В отличие от других объектов, для карт нужны две отдельные текстуры - одна "
-"для лицевой стороны, другая для задней. Игра регистрирует каждую из текстур "
-"в папке ``cards/`` как лицевую сторону карты, но вам нужно указать игре, где "
-"найти заднюю сторону в файле ``config.cfg``."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:48
 msgid ""
@@ -938,16 +847,14 @@ msgid ""
 "Here is a simple example that will apply a back face texture (in this "
 "example, ``BackFace.png``) to all of the cards in the folder:"
 msgstr ""
-"Вот простой пример, который применит текстуру задней стороны (в данном "
-"примере ``BackFace.png``) ко всем картам в папке:"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:75
 msgid "Container"
-msgstr "Контейнер"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "A red plastic cup is placed near the corner of a table."
-msgstr "Красный пластиковый стаканчик ставится на угол стола."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:80
 msgid ""
@@ -958,12 +865,6 @@ msgid ""
 "`Peek inside`, which will open a pop-up showing the contents of the "
 "container."
 msgstr ""
-"Контейнеры - это специальные объекты, которые могут содержать неограниченное "
-"количество других объектов внутри себя (включая другие контейнеры)! "
-"Контейнеры непрозрачны, то есть вы не можете видеть физически находящиеся в "
-"них объекты, но вы можете заглянуть внутрь контейнера, щелкнув его правой "
-"кнопкой мыши и нажав :guilabel:`Заглянуть внутрь`, что откроет всплывающее "
-"окно, показывающее содержимое контейнера."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:86
 msgid ""
@@ -971,27 +872,20 @@ msgid ""
 "object you want to add, and objects can be randomly removed from the "
 "container by quickly dragging from the container."
 msgstr ""
-"Объекты можно помещать внутрь контейнера, касаясь контейнера объектом, "
-"который вы хотите добавить, а объекты можно произвольно удалять из "
-"контейнера, быстро перетаскивая их из контейнера."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:90
 msgid ""
 "Containers can also be configured to drop items out when they are shaken "
 "upside-down by setting ``shakable = true`` in the :ref:`config-cfg` file."
 msgstr ""
-"Контейнеры также можно настроить на выпадение предметов при встряхивании "
-"вверх дном, задав ``shakable = true`` в файле :ref:`config-cfg`."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "On the table is a set of dice of varying colours and sides."
-msgstr "На столе лежит набор игральных костей разных цветов и сторон."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:102
 msgid "Dice are objects that, when shaken, randomize their orientation."
 msgstr ""
-"Кости - это объекты, которые при встряхивании случайным образом меняют свою "
-"ориентацию."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:104
 msgid ""
@@ -999,9 +893,6 @@ msgid ""
 "orientation in the :ref:`config-cfg` file, using the ``face_values`` "
 "property:"
 msgstr ""
-"Они также могут быть настроены на сообщение определенных значений в "
-"зависимости от их ориентации в файле :ref:`config-cfg`, используя свойство "
-"``face_values``:"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:132
 msgid ""
@@ -1009,37 +900,32 @@ msgid ""
 "able to check the total of a set of thrown dice by selecting, then right-"
 "clicking the dice. The total will be shown at the top of the context menu."
 msgstr ""
-"Если значения граней настроены правильно, то игрок сможет легко проверить "
-"общую сумму набора брошенных костей, выбрав, а затем щелкнув правой кнопкой "
-"мыши на костях. Сумма будет показана в верхней части контекстного меню."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:136
 msgid ""
 "If ``face_values`` is not configured, the dice will always report ``0`` as "
 "its value."
 msgstr ""
-"Если ``face_values`` не настроено, кубик всегда будет сообщать ``0`` в "
-"качестве своего значения."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:143
 msgid "Piece"
-msgstr "Деталь"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "On the table are two chess pieces, a white pawn and a black queen."
-msgstr "На столе стоят две шахматные фигуры - белая пешка и черный ферзь."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:148
 msgid "Pieces are generic objects with no special functionality."
-msgstr "Детали - это общие объекты, не обладающие особой функциональностью."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:154
 msgid "Speaker"
-msgstr "Динамик"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "By the corner of the table is a large, metallic gramophone."
-msgstr "На углу стола стоит большой металлический граммофон."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:159
 msgid ""
@@ -1047,13 +933,10 @@ msgid ""
 "positionally, so the audio will vary depending on the position of the "
 "speaker relative to the camera."
 msgstr ""
-"Динамики - это объекты, которые могут воспроизводить звуковые дорожки. Они "
-"издают звук позиционно, поэтому звук будет меняться в зависимости от "
-"положения динамика относительно камеры."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:167
 msgid "Timer"
-msgstr "Таймер"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:169
 msgid ""
@@ -1061,88 +944,68 @@ msgid ""
 "display the system time. If an audio track is loaded, it will automatically "
 "play when the countdown reaches 0."
 msgstr ""
-"Таймеры - это объекты, которые можно использовать в качестве обратного "
-"отсчета, секундомеров или для отображения системного времени. Если загружена "
-"звуковая дорожка, она будет автоматически воспроизводиться, когда обратный "
-"отсчет достигнет 0."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:177
 msgid "Token"
-msgstr "Жетон"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid ""
 "On the table are some stacks of poker chips varying in height,\n"
 "representing various values, those being 1, 5, 10, 25, and 100."
 msgstr ""
-"На столе лежат несколько стопок покерных фишек разной высоты,\n"
-"представляющие различные значения, такие как 1, 5, 10, 25 и 100."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:183
 msgid ""
 "Tokens are objects that are vertically stackable, meaning they join together "
 "when their top and bottom faces touch, similar to cards."
 msgstr ""
-"Жетоны - это объекты, которые можно складывать вертикально, то есть они "
-"соединяются, когда их верхняя и нижняя грани соприкасаются, подобно картам."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:190
 msgid "Sound"
-msgstr "Звук"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:192
 msgid ""
 "Sounds can be played through either a :ref:`object-type-speaker` or a :ref:"
 "`object-type-timer`."
 msgstr ""
-"Звуки могут воспроизводиться либо через :ref:`object-type-speaker`, либо "
-"через :ref:`object-type-timer`."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:199
 msgid "Music"
-msgstr "Музыка"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:201
 msgid ""
 "Music tracks are the same as sounds, but they can also be configured to play "
 "in the main menu. See the ``main_menu`` property in :ref:`config-cfg`."
 msgstr ""
-"Музыкальные треки - это то же самое, что и звуки, но их также можно "
-"настроить на воспроизведение в главном меню. Смотрите свойство ``main_menu`` "
-"в :ref:`config-cfg`."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:208
 msgid "Game"
-msgstr "Игра"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:210
 msgid ""
 "A game is a :ref:`file-type-save` that has been pre-made such that players "
 "can instantly setup the table to play a particular game."
 msgstr ""
-"Игра - это :ref:`file-type-save`, которая была предварительно создана таким "
-"образом, чтобы игроки могли мгновенно настроить стол для игры в определенную "
-"игру."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:215
 msgid ""
 "If there is an image next to the save file with the same name, it will be "
 "shown next to the save file in-game."
 msgstr ""
-"Если рядом с файлом сохранения есть изображение с таким же именем, оно будет "
-"показано рядом с файлом сохранения в игре."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:222
 msgid "Skybox"
-msgstr "Скайбокс"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:224
 msgid ""
 "Skyboxes are special textures that determine what the environment around the "
 "table looks like."
 msgstr ""
-"Скайбоксы - это специальные текстуры, которые определяют, как выглядит "
-"окружение вокруг стола."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:227
 msgid ""
@@ -1151,11 +1014,6 @@ msgid ""
 "github.io/GLSL-howto/cubemap_to_panorama_js/cubemap_to_panorama.html>`_ to "
 "convert cube-mapped skyboxes to equirectangular skyboxes."
 msgstr ""
-"Текстуры скайбоксов в Tabletop Club используют равностороннее отображение, в "
-"отличие от кубического отображения шести изображений. Godot рекомендует "
-"использовать `этот инструмент <https://danilw.github.io/GLSL-howto/"
-"cubemap_to_panorama_js/cubemap_to_panorama.html>`_ для преобразования "
-"кубических скайбоксов в равносторонние."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:232
 msgid ""
@@ -1163,9 +1021,6 @@ msgid ""
 "Tabletop Club supports the Radiance HDR (``.hdr``) and OpenEXR (``.exr``) "
 "formats."
 msgstr ""
-"Для наилучшего качества освещения рекомендуется использовать HDR-панораму. "
-"Tabletop Club поддерживает форматы Radiance HDR (``.hdr``) и OpenEXR (``."
-"exr``)."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:238
 msgid ""
@@ -1173,21 +1028,16 @@ msgid ""
 "strength of the ambient light generated by the skybox by setting the "
 "``strength`` value in the :ref:`config-cfg` file."
 msgstr ""
-"Если скайбокс слишком яркий или слишком тусклый, то вы можете изменить силу "
-"окружающего света, создаваемого скайбоксом, установив значение ``strength`` "
-"в файле :ref:`config-cfg`."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:246
 msgid "Table"
-msgstr "Стол"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:248
 msgid ""
 "A table is a :ref:`file-type-3d` that is placed in the centre of the game "
 "world for players to put objects on."
 msgstr ""
-"Стол - это :ref:`file-type-3d`, который размещается в центре игрового мира, "
-"чтобы игроки могли ставить на него объекты."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:251
 msgid ""
@@ -1195,22 +1045,16 @@ msgid ""
 "matters. Keep the following points in mind when you export models to be used "
 "as tables:"
 msgstr ""
-"Однако, в отличие от пользовательских объектов, положение и масштаб "
-"экспортируемой модели имеют значение. Помните о следующих моментах при "
-"экспорте моделей для использования в качестве столов:"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:255
 msgid "One unit in the exported model = one centimeter (cm) in-game."
-msgstr "Одна единица в экспортированной модели = один сантиметр (см) в игре."
+msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:256
 msgid ""
 "The lowest vertical position the camera can zoom to is ``0`` (this is either "
 "the y or z axis, depending on the program you're using)."
 msgstr ""
-"Наименьшее вертикальное положение, до которого камера может увеличить "
-"изображение, равно ``0`` (это ось y или z, в зависимости от используемой "
-"программы)."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:259
 msgid ""
@@ -1218,9 +1062,6 @@ msgid ""
 "the server when they join the game. These hand positions can be defined in "
 "the ``config.cfg`` file:"
 msgstr ""
-"Столы также имеют набор позиций рук, которые назначаются игрокам сервером, "
-"когда они присоединяются к игре. Эти позиции рук могут быть определены в "
-"файле ``config.cfg``:"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:285
 msgid ""
@@ -1228,21 +1069,18 @@ msgid ""
 "area that the players can paint on by setting the ``paint_plane`` property "
 "in the :ref:`config-cfg` file."
 msgstr ""
-"На столах также могут рисовать игроки! Вы можете установить размер области, "
-"на которой могут рисовать игроки, установив свойство ``paint_plane`` в "
-"файле :ref:`config-cfg`."
 
 #: ../../custom_assets/asset_packs/file_types.rst:3
 msgid "File types"
-msgstr "Типы файлов"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:8
 msgid "Image"
-msgstr "Изображение"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:11
 msgid "Supported formats"
-msgstr "Поддерживаемые форматы"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:13
 msgid ""
@@ -1250,14 +1088,10 @@ msgid ""
 "supports, the list of which can be found `here <https://docs.godotengine.org/"
 "en/stable/getting_started/workflow/assets/importing_images.html>`_."
 msgstr ""
-"По умолчанию Tabletop Club поддерживает все форматы изображений, которые "
-"поддерживает Godot, список которых можно найти `здесь <https://docs."
-"godotengine.org/en/stable/getting_started/workflow/assets/importing_images."
-"html>`_."
 
 #: ../../custom_assets/asset_packs/file_types.rst:19
 msgid "UV Mappings"
-msgstr "UV-преобразования"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:21
 msgid ""
@@ -1267,74 +1101,58 @@ msgid ""
 "reverse of that! Knowing these UV mappings is important if you want your "
 "object to look right in-game!"
 msgstr ""
-"Каждый объект, использующий изображение, имеет так называемое UV-"
-"преобразование - способ, с помощью которого изображение \"складывается\" на "
-"3D-объект. Помните, как в математике вам приходилось \"раскладывать\"- "
-"различные фигуры в сетки? Это, по сути, обратная операция! Знание этих UV-"
-"преобразований очень важно, если вы хотите, чтобы ваш объект выглядел "
-"правильно в игре!"
 
 #: ../../custom_assets/asset_packs/file_types.rst:29
 msgid ""
 "The width and height of the images don't matter, as long as the proportions "
 "are correct!"
 msgstr ""
-"Ширина и высота изображений не имеют значения, главное, чтобы пропорции были "
-"правильными!"
 
 #: ../../custom_assets/asset_packs/file_types.rst:39
 msgid ""
 "Unlike other objects, cards use two images, one for each face. See :ref:"
 "`object-type-card` for more information."
 msgstr ""
-"В отличие от других объектов, карты используют два изображения, по одному "
-"для каждой грани. Более подробную информацию смотрите в :ref:`object-type-"
-"card`."
 
 #: ../../custom_assets/asset_packs/file_types.rst:43
 msgid "Cube"
-msgstr "Куб"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:48
 msgid "Cylinder"
-msgstr "Цилиндр"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:56
 msgid "3D Model"
-msgstr "3D модель"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:58
 msgid ""
 "3D models can be exported from almost any 3D modelling software, including "
 "Blender and Maya."
 msgstr ""
-"3D-модели можно экспортировать практически из любой программы для 3D-"
-"моделирования, включая Blender и Maya."
 
 #: ../../custom_assets/asset_packs/file_types.rst:61
 msgid "As of right now, Tabletop Club supports the following 3D file formats:"
 msgstr ""
-"На данный момент Tabletop Club поддерживает следующие форматы 3D файлов:"
 
 #: ../../custom_assets/asset_packs/file_types.rst:63
 msgid "Collada (``.dae``)"
-msgstr "Collada (``.dae``)"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:64
 msgid "glTF 2.0 (``.glb``, ``.gltf``)"
-msgstr "glTF 2.0 (``.glb``, ``.gltf``)"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:65
 msgid "Wavefront (``.obj``)"
-msgstr "Wavefront (``.obj``)"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:67
 msgid ""
 "You can also specify how accurate the collision of the model is using the "
 "``collision_mode`` property in the :ref:`config-cfg` file."
 msgstr ""
-"Вы также можете указать, насколько точным является столкновение модели, "
-"используя свойство ``collision_mode`` в файле :ref:`config-cfg`."
 
 #: ../../custom_assets/asset_packs/file_types.rst:70
 msgid ""
@@ -1342,9 +1160,6 @@ msgid ""
 "which is the simplest, but also the least accurate. If the model is hollow, "
 "other objects will not be able to go inside the model in this mode."
 msgstr ""
-"``collision_mode = 0`` *(по умолчанию)*: Столкновение принимает *выпуклую* "
-"форму, которая является самой простой, но и наименее точной. Если модель "
-"полая, другие объекты не смогут войти внутрь модели в этом режиме."
 
 #: ../../custom_assets/asset_packs/file_types.rst:74
 msgid ""
@@ -1352,17 +1167,12 @@ msgid ""
 "shapes, which is slightly more accurate, but at the cost of performance "
 "(depending on the complexity of the model)."
 msgstr ""
-"``collision_mode = 1``: Коллизия состоит из *нескольких выпуклых* фигур, что "
-"немного более точно, но в ущерб производительности (в зависимости от "
-"сложности модели)."
 
 #: ../../custom_assets/asset_packs/file_types.rst:78
 msgid ""
 "If a model's collision is not acting in the way you expect, it is "
 "recommended to switch to this mode."
 msgstr ""
-"Если коллизия модели ведет себя не так, как вы ожидаете, рекомендуется "
-"переключиться в этот режим."
 
 #: ../../custom_assets/asset_packs/file_types.rst:81
 msgid ""
@@ -1371,18 +1181,12 @@ msgid ""
 "with the game engine, concave models will not be able to collide with each "
 "other."
 msgstr ""
-"``collision_mode = 2``: Столкновение принимает *вогнутую* форму, что "
-"является полностью точным, но и самым тяжелым для производительности. Из-за "
-"ограничений игрового движка, вогнутые модели не смогут сталкиваться друг с "
-"другом."
 
 #: ../../custom_assets/asset_packs/file_types.rst:85
 msgid ""
 "This mode is recommended for models that are designed to be locked in place, "
 "like scenery or buildings."
 msgstr ""
-"Этот режим рекомендуется для моделей, которые предназначены для фиксации на "
-"месте, например, декорации или здания."
 
 #: ../../custom_assets/asset_packs/file_types.rst:90
 msgid ""
@@ -1391,31 +1195,26 @@ msgid ""
 "the file to check that the textures are not being loaded with an absolute "
 "file path, otherwise the textures won't work when the model is imported!"
 msgstr ""
-"При экспорте 3D-моделей с текстурами убедитесь, что текстуры также находятся "
-"в той же папке, что и экспортируемая модель. Вам также может понадобиться "
-"вручную отредактировать файл, чтобы проверить, что текстуры не загружаются с "
-"абсолютным путем к файлу, иначе текстуры не будут работать при импорте "
-"модели!"
 
 #: ../../custom_assets/asset_packs/file_types.rst:99
 msgid "Audio"
-msgstr "Звук"
+msgstr "Zvuk"
 
 #: ../../custom_assets/asset_packs/file_types.rst:101
 msgid "As of right now, Tabletop Club supports the following audio formats:"
-msgstr "На данный момент Tabletop Club поддерживает следующие аудиоформаты:"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:103
 msgid "MP3 (``.mp3``)"
-msgstr "MP3 (``.mp3``)"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:104
 msgid "Vorbis (``.ogg``)"
-msgstr "Vorbis (``.ogg``)"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:105
 msgid "Waveform (``.wav``)"
-msgstr "Waveform (``.wav``)"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:107
 msgid ""
@@ -1423,21 +1222,16 @@ msgid ""
 "page <https://docs.godotengine.org/en/stable/getting_started/workflow/assets/"
 "importing_audio_samples.html>`_ in the Godot documentation."
 msgstr ""
-"Вы можете узнать, какой формат подходит вам лучше всего, на странице "
-"`импорта аудио <https://docs.godotengine.org/en/stable/getting_started/"
-"workflow/assets/importing_audio_samples.html>`_ в документации Godot."
 
 #: ../../custom_assets/asset_packs/file_types.rst:115
 msgid "Save File"
-msgstr "Файл сохранения"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:117
 msgid ""
 "Save files are used to load back a saved state within Tabletop Club. They "
 "use the ``.tc`` extension."
 msgstr ""
-"Файлы сохранения используются для загрузки сохраненного состояния в Tabletop "
-"Club. Они используют расширение ``.tc``."
 
 #: ../../custom_assets/asset_packs/file_types.rst:120
 msgid ""
@@ -1445,10 +1239,6 @@ msgid ""
 "game`, then choose a name to save the file as. You can then load the state "
 "back by clicking the :guilabel:`Load game` button in the same menu."
 msgstr ""
-"Чтобы создать файл сохранения в игре, зайдите в меню и нажмите кнопку :"
-"guilabel:`Сохранить игру`, затем выберите имя для сохранения файла. Затем вы "
-"можете загрузить его обратно, нажав на кнопку :guilabel:`Загрузить игру` в "
-"том же меню."
 
 #: ../../custom_assets/asset_packs/file_types.rst:125
 msgid ""
@@ -1456,20 +1246,16 @@ msgid ""
 "TabletopClub/saves`` folder, alongside a screenshot which is taken when the "
 "save is made."
 msgstr ""
-"При сохранении игра помещает файл сохранения в папку ``<DOCUMENTS>/"
-"TabletopClub/saves``, а также скриншот, который делается в момент сохранения."
 
 #: ../../custom_assets/asset_packs/file_types.rst:131
 msgid ""
 "If you don't want the screenshot to have the UI, you can toggle the UI "
 "before saving by pressing the :guilabel:`F9` key."
 msgstr ""
-"Если вы не хотите, чтобы на скриншоте был пользовательский интерфейс, вы "
-"можете отключить его перед сохранением, нажав клавишу :guilabel:`F9`."
 
 #: ../../custom_assets/asset_packs/index.rst:5
 msgid "Asset packs"
-msgstr "Пакеты ассетов"
+msgstr ""
 
 #: ../../custom_assets/asset_packs/index.rst:7
 msgid ""
@@ -1478,30 +1264,22 @@ msgid ""
 "made folders. This chapter describes the specification for the custom "
 "assets, and the asset packs that contain them."
 msgstr ""
-"Чтобы упростить управление и обмен пользовательскими ассетами, они "
-"помещаются в так называемые **пакеты ассетов**, которые, по сути, "
-"представляют собой специально созданные папки. В этой главе описывается "
-"спецификация пользовательских ассетов и пакетов ассетов, которые их содержат."
 
 #: ../../custom_assets/asset_packs/index.rst:12
 msgid ""
 "For reference, you can have a look at the Tabletop Club asset pack, which "
 "comes with the game by default."
 msgstr ""
-"Для справки вы можете взглянуть на пакет ассетов Tabletop Club, который "
-"поставляется с игрой по умолчанию."
 
 #: ../../custom_assets/asset_packs/index.rst:15
 msgid ""
 "For easy-to-follow tutorials on how to make assets and asset packs, see :ref:"
 "`custom-asset-tutorials`."
 msgstr ""
-"Простые и понятные руководства по созданию ассетов и пакетов ассетов "
-"смотрите на странице \":ref:`custom-asset-tutorials`\"."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:4
 msgid "Adding 3D models as objects"
-msgstr "Добавление 3D-моделей как объектов"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:6
 msgid ""
@@ -1510,14 +1288,10 @@ msgid ""
 "add stackable objects like cards or tokens to the game, see :ref:`tutorial-"
 "adding-images`."
 msgstr ""
-"В этом руководстве вы узнаете, как экспортировать 3D-модели из `Blender "
-"<https://www.blender.org/>`_ и добавить их в игру. Если вы хотите специально "
-"добавить в игру складываемые объекты, такие как карты или жетоны, смотрите :"
-"ref:`tutorial-adding-images`."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:13
 msgid "Note about Blender"
-msgstr "Примечание о Blender"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:15
 msgid ""
@@ -1527,11 +1301,6 @@ msgid ""
 "application can export the model into one of the supported formats outlined "
 "in :ref:`file-type-3d`."
 msgstr ""
-"В этом руководстве мы будем использовать Blender в качестве примера для "
-"экспорта модели, готовой к использованию в игре. Однако стоит отметить, что "
-"если вы уже используете другое приложение для 3D-моделирования, то это не "
-"страшно, если приложение может экспортировать модель в один из "
-"поддерживаемых форматов, описанных в :ref:`file-type-3d`."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:21
 msgid ""
@@ -1541,15 +1310,10 @@ msgid ""
 "applications ever made! You can download it `on their website <https://www."
 "blender.org/download/>`_."
 msgstr ""
-"Если у вас не установлено приложение для 3D-моделирования, то я очень "
-"рекомендую Blender, не только для этого руководства, но и потому что он "
-"бесплатный, и это (по моему скромному мнению) одно из лучших приложений с "
-"открытым исходным кодом, когда-либо созданных! Вы можете скачать его `на их "
-"сайте <https://www.blender.org/download/>`_."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:29
 msgid "Setting up the model"
-msgstr "Настройка модели"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:31
 msgid ""
@@ -1558,39 +1322,28 @@ msgid ""
 "can import a model from the game's ``assets`` folder by going to :guilabel:"
 "`File` > :guilabel:`Import`!"
 msgstr ""
-"В начале этого руководства мы будем считать, что у вас уже есть 3D-модель в "
-"Blender. Если это не так, вы можете либо создать ее, либо импортировать "
-"модель из папки игры ``assets``, перейдя в :guilabel:`File` > :guilabel:"
-"`Import`!"
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:38
 msgid ""
 "This is the ``assets`` folder next to the game executable, not the one under "
 "your Documents."
 msgstr ""
-"Это папка ``assets`` рядом с исполняемым файлом игры, а не та, которая "
-"находится в папке \"Документы\"."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:41
 msgid ""
 "Once you can see your model in Blender, the first thing we will do is scale "
 "it to match the in-game dimensions we want. The golden rule is as follows:"
 msgstr ""
-"Как только вы увидите свою модель в Blender, первое, что мы сделаем, это "
-"изменим ее масштаб, чтобы она соответствовала нужным нам игровым размерам. "
-"Золотое правило заключается в следующем:"
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:44
 msgid "**One unit in Blender = 1cm in Tabletop Club.**"
-msgstr "**Одна единица в Blender = 1 см в Tabletop Club.**"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:46
 msgid ""
 "Select your object in Object Mode. From here, there are two ways you can set "
 "the scale of an object in Blender:"
 msgstr ""
-"Выберите объект в режиме объекта. Отсюда вы можете задать масштаб объекта в "
-"Blender двумя способами:"
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:49
 msgid ""
@@ -1598,9 +1351,6 @@ msgid ""
 "the size. You can then also press :guilabel:`X`, :guilabel:`Y` or :guilabel:"
 "`Z` to set the scale of the object on a specific axis."
 msgstr ""
-"Нажмите :guilabel:`S`, затем переместите мышь или введите число для "
-"регулировки размера. Вы также можете нажать :guilabel:`X`, :guilabel:`Y` "
-"или :guilabel:`Z`, чтобы установить масштаб объекта по определенной оси."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:53
 msgid ""
@@ -1608,28 +1358,21 @@ msgid ""
 "gizmo to bring out the Transform menu. At the bottom there should be three "
 "numbers representing the Dimensions of the object, which you can change."
 msgstr ""
-"В главном окне просмотра перетащите стрелку справа от оси, чтобы вызвать "
-"меню трансформации. Внизу должны быть три числа, представляющие размеры "
-"объекта, которые можно изменить."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:59
 msgid ""
 "The units in the transform menu don't affect the size of the exported model."
 msgstr ""
-"Единицы измерения в меню трансформации не влияют на размер экспортируемой "
-"модели."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:64
 msgid "Further setup for tables"
-msgstr "Дальнейшая настройка для столов"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:66
 msgid ""
 "Lastly, if the model is a :ref:`asset-type-table`, we will need to adjust "
 "it's position in the scene."
 msgstr ""
-"Наконец, если модель является :ref:`asset-type-table`, нам нужно будет "
-"настроить ее положение в сцене."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:71
 msgid ""
@@ -1637,9 +1380,6 @@ msgid ""
 "scene, since the game will automatically center them when importing the "
 "model."
 msgstr ""
-"Позиционирование имеет значение только для столов. Объекты могут находиться "
-"в любом положении в сцене, так как игра автоматически центрирует их при "
-"импорте модели."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:75
 msgid ""
@@ -1648,22 +1388,18 @@ msgid ""
 "the mouse to move it in that respective axis. You'll want to position it "
 "with these points in mind:"
 msgstr ""
-"Чтобы позиционировать стол, выберите его в режиме объекта, затем "
-"используйте :guilabel:`G`, затем :guilabel:`X`, :guilabel:`Y` или :guilabel:"
-"`Z` перед перемещением мыши, чтобы переместить его по соответствующей оси. "
-"Вы захотите расположить его с учетом этих точек:"
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:80
 msgid "The table should be in the centre of the scene."
-msgstr "Стол должен находиться в центре сцены."
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:81
 msgid "The surface of the table should as close to ``z = 0`` as possible."
-msgstr "Поверхность стола должна быть максимально приближена к ``z = 0``."
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:85
 msgid "Exporting the model"
-msgstr "Экспорт модели"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:87
 msgid ""
@@ -1672,11 +1408,6 @@ msgid ""
 "glb``) and seperate (``.gltf``) formats supported. However, it is not the "
 "only supported option - see :ref:`file-type-3d` for all supported formats."
 msgstr ""
-"При экспорте моделей можно выбрать несколько различных форматов. "
-"Рекомендуемый формат для Tabletop Club - glTF 2.0, причем поддерживаются как "
-"двоичный (``.glb``), так и раздельный (``.gltf``) форматы. Однако, это не "
-"единственный поддерживаемый вариант - смотрите :ref:`file-type-3d` для всех "
-"поддерживаемых форматов."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:92
 msgid ""
@@ -1686,22 +1417,14 @@ msgid ""
 "From here, you have a choice as to what folder you can create and put the "
 "exported model in, depending on what functionality the object should have:"
 msgstr ""
-"Чтобы экспортировать модель, нажмите :guilabel:`File` > :guilabel:`Export` "
-"> :guilabel:`glTF 2.0 (.glb/.gltf)`, и в диалоге перейдите в папку asset "
-"pack (если у вас ее нет, см. :ref:`tutorial-creating-asset-pack`). Отсюда у "
-"вас есть выбор, в какую папку вы можете создать и поместить экспортированную "
-"модель, в зависимости от того, какой функциональностью должен обладать "
-"объект:"
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:98
-#, fuzzy
-#| msgid ":ref:`object-type-container`: ``MyAssetPack/containers``"
 msgid ":ref:`object-type-board`: ``MyAssetPack/boards``"
-msgstr ":ref:`object-type-container`: ``MyAssetPack/containers``"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:99
 msgid ":ref:`object-type-container`: ``MyAssetPack/containers``"
-msgstr ":ref:`object-type-container`: ``MyAssetPack/containers``"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:100
 msgid ""
@@ -1709,59 +1432,49 @@ msgid ""
 "sides the die has, a further subfolder named: ``d4``, ``d6``, ``d8``, "
 "``d10``, ``d12``, or ``d20``."
 msgstr ""
-":ref:`object-type-dice`: ``MyAssetPack/dice`` - затем, в зависимости от "
-"того, сколько сторон у кубика, еще одна подпапка с именами: ``d4``, ``d6``, "
-"``d8``, ``d10``, ``d12``, или ``d20``."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:103
 msgid ":ref:`object-type-piece`: ``MyAssetPack/pieces``"
-msgstr ":ref:`object-type-piece`: ``MyAssetPack/pieces``"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:104
 msgid ":ref:`object-type-speaker`: ``MyAssetPack/speakers``"
-msgstr ":ref:`object-type-speaker`: ``MyAssetPack/speakers``"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:105
 msgid ":ref:`asset-type-table`: ``MyAssetPack/tables``"
-msgstr ":ref:`asset-type-table`: ``MyAssetPack/tables``"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:106
 msgid ":ref:`object-type-timer`: ``MyAssetPack/timers``"
-msgstr ":ref:`object-type-timer`: ``MyAssetPack/timers``"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:108
 msgid ""
 "If you are not sure what type of object the model should be, then a safe "
 "default is :ref:`object-type-piece`, since it has no special functionality."
 msgstr ""
-"Если вы не уверены, каким типом объекта должна быть модель, то безопасным по "
-"умолчанию является :ref:`object-type-piece`, поскольку он не имеет "
-"специальной функциональности."
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:113
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:146
 msgid "See more"
-msgstr "См. подробнее"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:115
 msgid ""
 "And with that, the next time you launch the game, you should be able to "
 "spawn in your 3D model in-game through the :guilabel:`Objects` menu!"
 msgstr ""
-"И с этим, в следующий раз, когда вы запустите игру, вы сможете спаунить свою "
-"3D модель в игре через меню :guilabel:`Objects`!"
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:118
 msgid ""
 "If you want to configure your new objects, feel free to have a look at :ref:"
 "`file-type-3d` and :ref:`config-cfg`."
 msgstr ""
-"Если вы хотите сконфигурировать свои новые объекты, не стесняйтесь взглянуть "
-"на :ref:`file-type-3d` и :ref:`config-cfg`."
 
 #: ../../custom_assets/tutorials/add_audio_tracks.rst:2
 msgid "Adding audio tracks"
-msgstr "Добавление аудиотреков"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_audio_tracks.rst:4
 msgid ""
@@ -1770,10 +1483,6 @@ msgid ""
 "your audio files inside. Afterwards, your asset pack may look something like "
 "this:"
 msgstr ""
-"Добавить свои собственные аудиофайлы в пакет ассетов очень просто: "
-"достаточно создать папку с именем ``music`` или ``sounds``, и поместить в "
-"нее свои аудиофайлы. После этого ваш пакет ассетов может выглядеть примерно "
-"так:"
 
 #: ../../custom_assets/tutorials/add_audio_tracks.rst:21
 msgid ""
@@ -1781,26 +1490,20 @@ msgid ""
 "in ``music`` will repeat once the track ends, whereas ones in ``sounds`` "
 "won't."
 msgstr ""
-"Существует небольшая разница между ``music`` и ``sounds``: Треки, "
-"размещенные в ``music``, будут повторяться после окончания трека, в то время "
-"как треки в ``sounds`` не будут."
 
 #: ../../custom_assets/tutorials/add_audio_tracks.rst:25
 msgid ""
 "Once the tracks have been imported, you can then play them in-game through "
 "either a :ref:`object-type-speaker` or a :ref:`object-type-timer`."
 msgstr ""
-"После импорта треков их можно воспроизводить в игре через :ref:`object-type-"
-"speaker` или :ref:`object-type-timer`."
 
 #: ../../custom_assets/tutorials/add_audio_tracks.rst:28
 msgid "For more information, see :ref:`file-type-audio`."
 msgstr ""
-"Для получения дополнительной информации смотрите :ref:`file-type-audio`."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:4
 msgid "Adding images as cards and tokens"
-msgstr "Добавление изображений в качестве карт и жетонов"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:6
 msgid ""
@@ -1809,14 +1512,10 @@ msgid ""
 "other. If you wish to add another kind of object to the game, see :ref:"
 "`tutorial-adding-3d-models`."
 msgstr ""
-"В этом руководстве вы узнаете, как добавлять изображения в пакет ассетов для "
-"создания карт и жетонов - внутриигровых объектов, которые можно складывать "
-"друг на друга. Если вы хотите добавить в игру другой вид объектов, смотрите :"
-"ref:`tutorial-adding-3d-models`."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:13
 msgid "Cards or tokens?"
-msgstr "Карты или жетоны?"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:15
 msgid ""
@@ -1824,25 +1523,20 @@ msgid ""
 "functionality. If you're not sure which type of object you want to create, "
 "see :ref:`object-type-card` and :ref:`object-type-token`."
 msgstr ""
-"Карты и жетоны, хотя и могут складываться в стопку, немного отличаются по "
-"дополнительным функциям. Если вы не уверены, какой тип объекта вы хотите "
-"создать, смотрите :ref:`object-type-card` и :ref:`object-type-token`."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:21
 msgid "Preparing the image"
-msgstr "Подготовка изображения"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:23
 msgid ""
 "Before we add the image to the asset pack, we will first need to make sure "
 "it is set up properly so it will appear correctly in-game."
 msgstr ""
-"Прежде чем добавить изображение в пакет ассетов, сначала нужно убедиться, "
-"что оно настроено правильно, чтобы оно корректно отображалось в игре."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:28
 msgid "Preparing card images"
-msgstr "Подготовка изображений карт"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:30
 msgid ""
@@ -1850,14 +1544,10 @@ msgid ""
 "be shown as-is in-game! The only requirement is that each card will need "
 "it's own image (this includes the back face of the cards)."
 msgstr ""
-"К счастью, для создания изображений карт не требуется много усилий, "
-"поскольку изображение будет отображаться в игре как есть! Единственное "
-"требование заключается в том, что каждая карта должна иметь свое собственное "
-"изображение (это касается и обратной стороны карт)."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:36
 msgid "Preparing token images"
-msgstr "Подготовка изображений жетонов"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:38
 msgid ""
@@ -1865,39 +1555,30 @@ msgid ""
 "a cylinder), you'll need to modify the image to fit what is called a \"UV "
 "mapping\". This means your final image needs to look like this:"
 msgstr ""
-"Для жетонов, поскольку изображение будет отображено на 3D-форму (либо куб, "
-"либо цилиндр), вам нужно будет изменить изображение, чтобы оно "
-"соответствовало так называемому \"UV-отображению\". Это означает, что ваше "
-"конечное изображение должно выглядеть следующим образом:"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:42
 msgid "**Cube:**"
-msgstr "**Куб:**"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:46
 msgid "**Cylinder:**"
-msgstr "**Цилиндр:**"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:52
 msgid ""
 "The resolution of the final image does not matter, only the *proportions* "
 "do. See :ref:`file-type-image` for more information."
 msgstr ""
-"Разрешение конечного изображения не имеет значения, важны только "
-"*пропорции* . Для получения дополнительной информации смотрите :ref:`file-"
-"type-image`."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:57
 msgid "Adding the images to the asset pack"
-msgstr "Добавление изображений в пакет ассетов"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:59
 msgid ""
 "With the images set up, we can now add them to the asset pack! If you do not "
 "already have one, see :ref:`tutorial-creating-asset-pack`."
 msgstr ""
-"Теперь, когда изображения установлены, мы можем добавить их в пакет ассетов! "
-"Если у вас его еще нет, смотрите :ref:`tutorial-creating-asset-pack`."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:62
 msgid ""
@@ -1907,15 +1588,10 @@ msgid ""
 "folders are created, it's just a matter of copying the images to their "
 "respective folders, like so:"
 msgstr ""
-"В пакете ассетов создайте папку с именем ``cards`` или ``tokens``. Если вы "
-"добавляете жетоны, вам нужно будет создать подпапку с именем ``cube`` или "
-"``cylinder`` в зависимости от того, какой формы будет жетон. После создания "
-"папок нужно просто скопировать изображения в соответствующие папки, как "
-"показано ниже:"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:84
 msgid "Configuring the object size"
-msgstr "Настройка размера объекта"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:86
 msgid ""
@@ -1924,10 +1600,6 @@ msgid ""
 "This is because without telling the game otherwise, it will assume the "
 "object is 1cm x 1cm x 1cm."
 msgstr ""
-"На этом этапе вы можете запустить игру и увидеть, что теперь в игре есть "
-"объекты с вашими изображениями, только они, вероятно, неправильного размера. "
-"Это происходит потому, что если не сказать игре обратное, она будет считать, "
-"что объект имеет размер 1 см х 1 см х 1 см."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:91
 msgid ""
@@ -1936,56 +1608,42 @@ msgid ""
 "with this name in your file manager, then open it with a text editor of your "
 "choice! Here are a few examples of how to set the size of your objects:"
 msgstr ""
-"Мы можем указать игре, какого размера должен быть объект, создав файл :ref:"
-"`config-cfg` рядом с нашими изображениями в папке ассета. Создайте файл с "
-"таким именем в вашем файловом менеджере, а затем откройте его в текстовом "
-"редакторе по вашему выбору! Вот несколько примеров того, как задать размер "
-"объектов:"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:119
 msgid ""
 "Cards are always the same thickness, so the second number in the ``scale`` "
 "property can just be ``1.0`` in this case."
 msgstr ""
-"Карты всегда одинаковой толщины, поэтому второе число в свойстве ``scale`` в "
-"данном случае может быть просто ``1.0``."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:124
 msgid "Configuring card backs"
-msgstr "Настройка задней стороны карты"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:126
 msgid ""
 "Using the :ref:`config-cfg` file, you can also tell the game what image to "
 "use for the back face of cards. Using ``Back.png`` as an example:"
 msgstr ""
-"Используя файл :ref:`config-cfg`, вы также можете указать игре, какое "
-"изображение использовать для обратной стороны карт. Используя в качестве "
-"примера ``Back.png``:"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:148
 msgid "Congratulations, you now have your own cards and tokens in the game!"
-msgstr "Поздравляем, теперь у вас есть свои собственные карты и жетоны в игре!"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:150
 msgid ""
 "If you want to further configure your objects, see :ref:`object-type-card`, :"
 "ref:`object-type-token`, and :ref:`config-cfg`."
 msgstr ""
-"Если вы хотите дополнительно настроить свои объекты, смотрите :ref:`object-"
-"type-card`, :ref:`object-type-token` и :ref:`config-cfg`."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:153
 msgid ""
 "If you want to add pre-made stacks of cards and tokens to your asset pack, "
 "see :ref:`stacks-cfg`."
 msgstr ""
-"Если вы хотите добавить готовые стопки карт и жетонов в свой пакет ассетов, "
-"смотрите :ref:`stacks-cfg`."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:2
 msgid "Adding saved games"
-msgstr "Добавление сохраненных игр"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_save_files.rst:4
 msgid ""
@@ -1994,10 +1652,6 @@ msgid ""
 "get started straight away, without them having to spawn each object and "
 "place them individually."
 msgstr ""
-"Если вы создаете пакет ассетов для определенной игры, то, возможно, стоит "
-"добавить в пакет ассетов заранее созданный файл сохранения, чтобы игроки "
-"могли сразу приступить к игре, без необходимости спавнить каждый объект и "
-"размещать их по отдельности."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:9
 msgid ""
@@ -2006,10 +1660,6 @@ msgid ""
 "appropiate name, then click :guilabel:`Save`. This will create two files in "
 "your ``saves`` folder as shown:"
 msgstr ""
-"Во-первых, вам нужно настроить стол в игре так, как вы хотите, чтобы его "
-"видели игроки, затем перейдите в :guilabel:`Menu` > :guilabel:`Save game`, "
-"введите подходящее имя, затем нажмите :guilabel:`Save`. Это создаст два "
-"файла в вашей папке ``saves``, как показано на рисунке:"
 
 #: ../../custom_assets/tutorials/add_save_files.rst:22
 msgid ""
@@ -2017,26 +1667,18 @@ msgid ""
 "which is displayed alongside the save file. The ``.tc`` file is what "
 "contains the save data."
 msgstr ""
-"Файл ``.png`` - это эскиз, созданный игрой во время сохранения, который "
-"отображается рядом с файлом сохранения. Файл ``.tc`` содержит данные "
-"сохранения."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:28
 msgid ""
 "You can improve how the thumbnail looks by pre-positioning the camera before "
 "saving, as well as by hiding the UI (:guilabel:`F9` by default)."
 msgstr ""
-"Вы можете улучшить внешний вид миниатюры, предварительно расположив камеру "
-"перед сохранением, а также скрыв пользовательский интерфейс (:guilabel:`F9` "
-"по умолчанию)."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:31
 msgid ""
 "To add these files to your asset pack, it's as simple as creating a "
 "``games`` folder, and copying the thumbnail and save file inside, like so:"
 msgstr ""
-"Чтобы добавить эти файлы в свой пакет ассетов, достаточно создать папку "
-"``games`` и скопировать в нее эскиз и файл сохранения, как показано ниже:"
 
 #: ../../custom_assets/tutorials/add_save_files.rst:41
 msgid ""
@@ -2044,8 +1686,6 @@ msgid ""
 "clicking on :guilabel:`Games`, selecting it from the menu, and clicking :"
 "guilabel:`Load`."
 msgstr ""
-"После импорта файла сохранения вы можете загрузить его в игру, нажав на :"
-"guilabel:`Games`, выбрав его в меню и нажав :guilabel:`Load`."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:46
 msgid ""
@@ -2054,19 +1694,14 @@ msgid ""
 "next to the save file in-game. The only requirement is that the name of the "
 "image *must* be the same name as the save file."
 msgstr ""
-"Не обязательно использовать миниатюру, которую генерирует игра! "
-"Теоретически, вы можете использовать любое изображение рядом с сохранением, "
-"и оно будет отображаться рядом с файлом сохранения в игре. Единственное "
-"требование - имя изображения *должно* совпадать с именем файла сохранения."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:51
 msgid "For more information, see :ref:`file-type-save`."
 msgstr ""
-"Для получения дополнительной информации смотрите :ref:`file-type-save`."
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:2
 msgid "Adding skyboxes"
-msgstr "Добавление скайбоксов"
+msgstr ""
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:4
 msgid ""
@@ -2074,9 +1709,6 @@ msgid ""
 "inside your asset pack, then place your skybox image into that folder, like "
 "this:"
 msgstr ""
-"Чтобы добавить собственный скайбокс в игру, просто создайте папку "
-"``skyboxes`` в пакете ассетов, а затем поместите в нее изображение "
-"скайбокса, как показано ниже:"
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:13
 msgid ""
@@ -2084,57 +1716,40 @@ msgid ""
 "`Room` > :guilabel:`Skybox` > :guilabel:`Change skybox`, select the skybox "
 "from your asset pack, then click :guilabel:`Apply`."
 msgstr ""
-"После импорта скайбокса вы можете войти в игру и нажать :guilabel:`Room` > :"
-"guilabel:`Skybox` > :guilabel:`Change skybox`, выбрать скайбокс из вашего "
-"пакета ассетов, затем нажать :guilabel:`Apply`."
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:19
 msgid ""
 "The only format that the game accepts are equirectangular images like this "
 "one:"
 msgstr ""
-"Единственный формат, который принимает игра, - это равносторонние "
-"изображения, такие как это:"
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:None
 msgid ""
 "A 360 degree image of an urban park, projected onto a rectangular\n"
 "image."
 msgstr ""
-"360-градусное изображение городского парка, спроецированное на "
-"прямоугольное\n"
-"изображение."
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:26
 msgid ""
 "If the skybox you want to add is cube-mapped, you can find more information "
 "about how to convert it in :ref:`asset-type-skybox`."
 msgstr ""
-"Если скайбокс, который вы хотите добавить, имеет кубическую карту, вы можете "
-"найти дополнительную информацию о том, как его преобразовать в :ref:`asset-"
-"type-skybox`."
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:4
 msgid "Creating your own asset pack"
-msgstr "Создание собственного пакета ассетов"
+msgstr ""
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:6
 msgid ""
 "Before you can add anything to the game, first you'll need to create your "
 "own asset pack for the game to scan when it starts. Luckily, it's super easy!"
 msgstr ""
-"Прежде чем добавлять что-либо в игру, сначала вам нужно создать свой "
-"собственный пакет ассетов, чтобы игра сканировала его при запуске. К "
-"счастью, это очень просто!"
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:9
 msgid ""
 "If you haven't already, launch the game. The game will automatically create "
 "a folder for us to place our asset pack in your Documents, like so:"
 msgstr ""
-"Если вы еще не сделали этого, запустите игру. Игра автоматически создаст "
-"папку для размещения нашего пакета ассетов в \"Документах\", как показано "
-"ниже:"
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:18
 msgid ""
@@ -2142,18 +1757,12 @@ msgid ""
 "simply create a folder inside of it, giving it any name you want. In this "
 "example, the name of the asset pack would be ``MyAssetPack``:"
 msgstr ""
-"После того как вы нашли папку ``assets``, чтобы создать свой собственный "
-"пакет ассетов, просто создайте внутри нее папку, дав ей любое название. В "
-"данном примере название пакета ассетов будет ``MyAssetPack``:"
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:29
 msgid ""
 "And that's it! Note that everything you add will be put under this new "
 "folder, and all the following guides will assume you've created it."
 msgstr ""
-"Вот и всё! Обратите внимание, что всё, что вы добавите, будет помещено в эту "
-"новую папку, и все следующие руководства будут предполагать, что вы её "
-"создали."
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:32
 msgid ""
@@ -2162,22 +1771,16 @@ msgid ""
 "guilabel:`Reimport Assets` to have the game import everything you've added "
 "so you can use it in-game!"
 msgstr ""
-"После того, как вы добавили всё, что хотели, в свой пакет ассетов, вы можете "
-"либо перезапустить игру, либо перейти в :guilabel:`Options` > :guilabel:"
-"`General` и нажать :guilabel:`Reimport Assets`, чтобы игра импортировала "
-"всё, что вы добавили, и вы могли использовать это в игре!"
 
 #: ../../custom_assets/tutorials/index.rst:5
 msgid "Tutorials"
-msgstr "Руководства"
+msgstr ""
 
 #: ../../custom_assets/tutorials/index.rst:7
 msgid ""
 "This chapter contains easy-to-follow guides on how to add your own content "
 "to Tabletop Club!"
 msgstr ""
-"Эта глава содержит простые и понятные руководства по добавлению собственного "
-"контента в Tabletop Club!"
 
 #: ../../custom_assets/tutorials/index.rst:10
 msgid ""
@@ -2185,16 +1788,3 @@ msgid ""
 "you want to see the full specification for what you can do with this system, "
 "see :ref:`asset-packs` for more information."
 msgstr ""
-"В этих руководствах рассматриваются основы добавления различных предметов в "
-"игру - если вы хотите увидеть полную спецификацию того, что можно сделать с "
-"помощью этой системы, смотрите :ref:`asset-packs` для получения "
-"дополнительной информации."
-
-#~ msgid "Todo"
-#~ msgstr "В планах"
-
-#~ msgid "Add images of each of the different types of objects."
-#~ msgstr "Добавить изображения каждого из различных типов объектов."
-
-#~ msgid "Add tutorials for creating assets for asset packs."
-#~ msgstr "Добавить руководства по созданию ассетов для пакетов ассетов."
