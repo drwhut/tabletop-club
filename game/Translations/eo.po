@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-02-06 00:01+0000\n"
-"PO-Revision-Date: 2023-01-19 11:48+0000\n"
+"PO-Revision-Date: 2023-02-08 19:39+0000\n"
 "Last-Translator: Reese Rivers <doormattion@gmail.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/tabletop-club/"
 "game/eo/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1\n"
+"X-Generator: Weblate 4.16-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:39
@@ -420,34 +420,28 @@ msgid "Flip Piece Orientation"
 msgstr "Renversi pecan orientiĝon"
 
 #: ../Scenes/OptionsMenu.tscn:741
-#, fuzzy
-#| msgid "Flip the selected piece on the horizontal axis."
 msgid ""
 "Flip the selected piece or the piece the mouse is over on the horizontal "
 "axis."
-msgstr "Renversas la elektitan pecon laŭ la horizontala akso."
+msgstr "Renversas la elektitan aŭ musumatan pecon laŭ la horizontala akso."
 
 #: ../Scenes/OptionsMenu.tscn:751
 msgid "Reset Piece Orientation"
 msgstr "Restarigi pecan orientiĝon"
 
 #: ../Scenes/OptionsMenu.tscn:759
-#, fuzzy
-#| msgid "Resets the selected piece to its default orientation."
 msgid ""
 "Resets the selected piece or the piece the mouse is over to its default "
 "orientation."
-msgstr "Remetas la elektitan pecon en ĝian defaŭltan orientiĝon."
+msgstr "Remetas la elektitan aŭ musumatan pecon en ĝian defaŭltan orientiĝon."
 
 #: ../Scenes/OptionsMenu.tscn:769 ../Scripts/Game/CameraController.gd:1561
-#, fuzzy
-#| msgid "Rotate selected"
 msgid "Rotate Piece"
-msgstr "Turni elektaĵon"
+msgstr "Turni pecon"
 
 #: ../Scenes/OptionsMenu.tscn:777
 msgid "Rotates the the piece that is selected, or that the mouse is over."
-msgstr ""
+msgstr "Turnas la elektitan aŭ musumatan pecon."
 
 #: ../Scenes/OptionsMenu.tscn:787 ../Scripts/Game/CameraController.gd:1200
 #: ../Scripts/Game/CameraController.gd:1514
@@ -459,7 +453,7 @@ msgstr "Miksi"
 msgid ""
 "Shuffle stacks of cards or tokens that are selected, or that the mouse is "
 "over."
-msgstr ""
+msgstr "Miksas elektitajn aŭ musumatajn kartostakojn aŭ ĵetonojn."
 
 #: ../Scenes/OptionsMenu.tscn:805
 msgid "Lock/Unlock Piece"
@@ -719,10 +713,8 @@ msgid "Select track"
 msgstr "Elekti trakon"
 
 #: ../Scenes/Game/CameraController.tscn:146
-#, fuzzy
-#| msgid "Position:"
 msgid "Positional audio"
-msgstr "Pozicio:"
+msgstr "Pozicia sono"
 
 #: ../Scenes/Game/CameraController.tscn:152
 msgid "Range:"
@@ -768,15 +760,13 @@ msgid "Scale:"
 msgstr "Skalo:"
 
 #: ../Scenes/Game/CameraController.tscn:429
-#, fuzzy
-#| msgid "Value"
 msgid "Value:"
-msgstr "Valoro"
+msgstr "Valoro:"
 
 #: ../Scenes/Game/CameraController.tscn:441
 #: ../Scripts/Game/CameraController.gd:1276
 msgid "Set value"
-msgstr ""
+msgstr "Agordi valoron"
 
 #: ../Scenes/Game/CameraController.tscn:472
 msgid "Strength:"
@@ -922,10 +912,8 @@ msgid "Undo"
 msgstr "Malfari"
 
 #: ../Scenes/Game/UI/GameUI.tscn:86
-#, fuzzy
-#| msgid "45"
 msgid "45°"
-msgstr "45"
+msgstr "45°"
 
 #: ../Scenes/Game/UI/GameUI.tscn:94
 msgid "Menu"
@@ -1200,7 +1188,7 @@ msgstr "Germana"
 
 #: ../Scripts/MainMenu.gd:81
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugala"
 
 #: ../Scripts/MainMenu.gd:82
 msgid "Russian"
@@ -1950,13 +1938,11 @@ msgstr "Paĝo %d/%d"
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:113
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:300
 msgid "All"
-msgstr ""
+msgstr "Ĉiuj"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:280
-#, fuzzy
-#| msgid "Cards"
 msgid "Boards"
-msgstr "Kartoj"
+msgstr "Tabuloj"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:281
 msgid "Cards"
