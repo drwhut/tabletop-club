@@ -389,6 +389,9 @@ func _process(_delta):
 func _import_all(_userdata) -> void:
 	var catalog = _catalog_assets()
 	
+	_send_importing_file_signal(tr("Cleaning old files..."), 0, 1)
+	_remove_old_assets(catalog)
+	
 	var files_imported = 0
 	for pack in catalog["packs"]:
 		var pack_catalog = catalog["packs"][pack]
@@ -1730,6 +1733,148 @@ func _parse_tr_file(pack: String, type: String, config: ConfigFile, locale: Stri
 func _precalculate_face_value_normal(rot: Vector2) -> Vector3:
 	var quat = Quat(Vector3(deg2rad(rot.x), 0.0, deg2rad(rot.y)))
 	return quat.inverse().xform(Vector3.UP)
+
+# Remove unused asset files under the user:// directory, including caches and
+# metadata files.
+# catalog: The latest catalog of imported files, used to know which files not
+# to delete.
+func _remove_old_assets(catalog: Dictionary) -> void:
+	var asset_dir_path = ""
+	
+	var asset_dir = Directory.new()
+	var err = asset_dir.open("user://assets")
+	if err == OK:
+		asset_dir_path = asset_dir.get_current_dir()
+		
+		asset_dir.list_dir_begin(true, true)
+		var pack = asset_dir.get_next()
+		while not pack.empty():
+			if asset_dir.current_is_dir():
+				for type in ASSET_PACK_SUBFOLDERS:
+					_remove_old_assets_type(catalog, pack, type)
+			
+			pack = asset_dir.get_next()
+	else:
+		push_error("Failed to open user://assets! (error %d)" % err)
+	
+	var import_dir = Directory.new()
+	err = import_dir.open("user://.import")
+	if err == OK:
+		# We need to simulate what the import module does to the file names so
+		# we can compare them to the actual files.
+		var safe_files = {}
+		for pack in catalog["packs"]:
+			var catalog_pack: Dictionary = catalog["packs"][pack]
+			var pack_path: String = catalog_pack["path"]
+			for type in catalog_pack["types"]:
+				var catalog_type: Dictionary = catalog_pack["types"][type]
+				for file in catalog_type["files"]:
+					var original_path = "%s/%s/%s" % [pack_path, type, file]
+					var md5_name = file + "-" + original_path.md5_text()
+					safe_files[md5_name] = 0 # Dummy value.
+					
+					var copy_path = "%s/%s/%s/%s" % [asset_dir_path, pack,
+							type, file]
+					var import_name = file + "-" + copy_path.md5_text()
+					safe_files[import_name] = 0
+		
+		import_dir.list_dir_begin(true, true)
+		var file = import_dir.get_next()
+		while not file.empty():
+			var base_name = file.get_basename()
+			if not safe_files.has(base_name):
+				err = import_dir.remove(file)
+				if err == OK:
+					print("Removed: %s" % file)
+				else:
+					push_error("Failed to remove %s! (error: %d)" % [file, err])
+			
+			file = import_dir.get_next()
+	else:
+		push_error("Failed to open user://.import! (error %d)" % err)
+
+# Helper function for _remove_old_assets.
+# catalog: The latest catalog of imported files.
+# pack: The pack to clean files from.
+# type: The type within the pack to clean files from.
+func _remove_old_assets_type(catalog: Dictionary, pack: String, type: String) -> void:
+	if "/" in pack or "\\" in pack:
+		push_error("Invalid pack name!")
+		return
+	
+	if not type in ASSET_PACK_SUBFOLDERS:
+		push_error("Invalid type!")
+		return
+	
+	var safe_files: Array = []
+	var config_cfg_exists: bool = false
+	var scene_exists: bool = false
+	
+	var catalog_packs: Dictionary = catalog["packs"]
+	if catalog_packs.has(pack):
+		var catalog_types: Dictionary = catalog_packs[pack]["types"]
+		if catalog_types.has(type):
+			safe_files = catalog_types[type]["files"]
+			config_cfg_exists = catalog_types[type]["config_file"]
+			
+			for file in safe_files:
+				if file.get_extension() in VALID_SCENE_EXTENSIONS:
+					scene_exists = true
+					break
+	
+	var type_path = "user://assets/%s/%s" % [pack, type]
+	var type_dir = Directory.new()
+	if not type_dir.dir_exists(type_path):
+		return
+	
+	var err = type_dir.open(type_path)
+	if err != OK:
+		push_error("Failed to open '%s'! (error: %d)" % [type_path, err])
+		return
+	
+	var files_to_remove = []
+	
+	type_dir.list_dir_begin(true, true)
+	var file = type_dir.get_next()
+	while not file.empty():
+		if file.get_extension() in VALID_EXTENSIONS and not file in safe_files:
+			# Check for additional files, as well as the original.
+			for suffix in ["", ".box", ".import", ".src"]:
+				var full_file = file + suffix
+				if not type_dir.file_exists(full_file):
+					continue
+				
+				files_to_remove.append(full_file)
+		
+		# Cache files, including thumbnail caches.
+		elif file.get_extension() in ["scn", "tscn", "version"]:
+			if file.get_basename().ends_with("cache"):
+				var match_found = false
+				for file_check in safe_files:
+					var name_check = file_check.get_basename()
+					if file.begins_with(name_check):
+						match_found = true
+						break
+				
+				if not match_found:
+					files_to_remove.append(file)
+		
+		elif file == "config.cfg.md5" and not config_cfg_exists:
+			files_to_remove.append("config.cfg.md5")
+		
+		# We cannot easily check which materials belong to which models, so
+		# only remove materials if there are no models.
+		elif file.get_extension() == "material" and not scene_exists:
+			files_to_remove.append(file)
+		
+		file = type_dir.get_next()
+	
+	for goodbye in files_to_remove:
+		err = type_dir.remove(goodbye)
+		if err == OK:
+			print("Removed: %s/%s/%s" % [pack, type, goodbye])
+		else:
+			push_error("Failed to remove %s! (error: %d)" % [goodbye, err])
 
 # Function used to binary search an array of asset entries by name.
 func _search_assets(element: Dictionary, search: String) -> bool:
