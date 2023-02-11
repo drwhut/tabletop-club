@@ -1072,16 +1072,25 @@ master func request_collect_pieces(piece_names: Array) -> void:
 								add_from.transform, add_to.transform)
 				else:
 					if add_from is Stack:
+						var single_height = add_to.get_size().y
+						var single_transform = add_to.transform
 						rpc("add_piece_to_stack", add_to.name, add_from.name,
 								add_to.transform, add_from.transform)
 
 						# add_to (Piece) has been added to add_from (Stack), so
 						# in future, we need to add pieces to add_from.
 						add_to = add_from
+						
+						# Put the stack where the piece just was.
+						var height_adj = 0.5 * single_height * abs(single_transform.basis.y.y)
+						var new_origin = single_transform.origin + height_adj * Vector3.UP
+						var new_quat = single_transform.basis.get_rotation_quat()
+						add_to.request_set_translation(new_origin)
+						add_to.request_set_rotation_quat(new_quat)
 					else:
 						var new_stack_name = srv_get_next_piece_name()
-						rpc("add_stack", new_stack_name, add_to.name,
-								add_from.name, add_to.transform, add_from.transform)
+						rpc("add_stack", new_stack_name, add_from.name,
+								add_to.name, add_from.transform, add_to.transform)
 						add_to = _pieces.get_node(new_stack_name)
 
 				pieces.remove(i)

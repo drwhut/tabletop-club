@@ -225,6 +225,7 @@ var _send_paint_position = false
 var _spawn_point_position = Vector3()
 var _speaker_connected: SpeakerPiece = null
 var _speaker_volume_mouse_over = false
+var _stackable_piece_multi_context: StackablePiece = null
 var _target_zoom = 0.0
 var _timer_connected: TimerPiece = null
 var _timer_last_time_update = 0
@@ -328,6 +329,8 @@ func remove_piece_ref(ref: Piece) -> void:
 		_piece_mouse_is_over_last = null
 	if _speaker_connected == ref:
 		_speaker_connected = null
+	if _stackable_piece_multi_context == ref:
+		_stackable_piece_multi_context = null
 	if _timer_connected == ref:
 		_timer_connected = null
 
@@ -1239,6 +1242,8 @@ func _popup_piece_context_menu() -> void:
 	# LEVEL 1 #
 	###########
 	
+	_stackable_piece_multi_context = null
+	
 	if _piece_context_menu.get_item_count() > prev_num_items:
 		_piece_context_menu.add_separator()
 	prev_num_items = _piece_context_menu.get_item_count()
@@ -1276,6 +1281,8 @@ func _popup_piece_context_menu() -> void:
 		_piece_context_menu.add_submenu_item(tr("Set value"), "DiceValueMenu")
 	
 	elif _inheritance_has(inheritance, "StackablePiece"):
+		if _piece_mouse_is_over != null and _piece_mouse_is_over is StackablePiece:
+			_stackable_piece_multi_context = _piece_mouse_is_over
 		if _selected_pieces.size() > 1:
 			_piece_context_menu.add_item(tr("Collect selected"), CONTEXT_STACKABLE_PIECE_COLLECT_SELECTED)
 	
@@ -2423,7 +2430,13 @@ func _on_PieceContextMenu_id_pressed(id: int):
 		
 		CONTEXT_STACKABLE_PIECE_COLLECT_SELECTED:
 			if _selected_pieces.size() > 1:
-				emit_signal("collect_pieces_requested", _selected_pieces)
+				# If a particular piece was right-clicked, add every other
+				# piece onto that one by putting it at the front of the list.
+				var pieces_to_collect = _selected_pieces.duplicate()
+				if _stackable_piece_multi_context != null:
+					pieces_to_collect.erase(_stackable_piece_multi_context)
+					pieces_to_collect.push_front(_stackable_piece_multi_context)
+				emit_signal("collect_pieces_requested", pieces_to_collect)
 		
 		0: # Labels.
 			pass
