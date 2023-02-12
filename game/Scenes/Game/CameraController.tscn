@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Game/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Misc/OutlineColorRect.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-Outline-Small.tres" type="DynamicFont" id=15]
 [ext_resource path="res://Images/FlickIcon.svg" type="Texture" id=16]
 [ext_resource path="res://Scenes/Game/UI/RulerLine.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Game/UI/Dialogs/DetailsDialog.tscn" type="PackedScene" id=18]
 
 [node name="CameraController" type="Spatial"]
 script = ExtResource( 1 )
@@ -164,7 +165,7 @@ margin_bottom = 8.0
 [node name="TakeOffTopSpinBoxButton" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/TakeOffTopMenu"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 195.0
+margin_right = 196.0
 margin_bottom = 34.0
 script = ExtResource( 10 )
 max_value = 1
@@ -178,7 +179,7 @@ margin_bottom = 8.0
 [node name="TakeOutSpinBoxButton" type="HBoxContainer" parent="CanvasLayer/PieceContextMenu/TakeOutMenu"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 172.0
+margin_right = 173.0
 margin_bottom = 34.0
 script = ExtResource( 10 )
 prefix = "X ="
@@ -703,6 +704,8 @@ db_types = {
 status_text_multiple = "Loaded %d tracks."
 
 [node name="ContainerContentDialog" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="DetailsDialog" parent="CanvasLayer" instance=ExtResource( 18 )]
 
 [node name="Rulers" type="Control" parent="CanvasLayer"]
 

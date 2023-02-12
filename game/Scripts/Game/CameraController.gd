@@ -28,6 +28,7 @@ enum {
 	CONTEXT_PIECE_COPY,
 	CONTEXT_PIECE_CUT,
 	CONTEXT_PIECE_DELETE,
+	CONTEXT_PIECE_DETAILS,
 	CONTEXT_PIECE_LOCK,
 	CONTEXT_PIECE_PASTE,
 	CONTEXT_PIECE_UNLOCK,
@@ -103,6 +104,7 @@ onready var _control_hint_label = $CanvasLayer/CameraUI/ControlHintLabel
 onready var _cursors = $Cursors
 onready var _deal_cards_spin_box_button = $CanvasLayer/PieceContextMenu/DealCardsMenu/DealCardsSpinBoxButton
 onready var _debug_info_label = $CanvasLayer/CameraUI/DebugInfoLabel
+onready var _details_dialog = $CanvasLayer/DetailsDialog
 onready var _dice_value_button = $CanvasLayer/PieceContextMenu/DiceValueMenu/VBoxContainer/HBoxContainer/DiceValueButton
 onready var _erase_tool_menu = $CanvasLayer/EraseToolMenu
 onready var _eraser_size_label = $CanvasLayer/EraseToolMenu/MarginContainer/VBoxContainer/HBoxContainer/EraserSizeValueLabel
@@ -1319,6 +1321,8 @@ func _popup_piece_context_menu() -> void:
 	prev_num_items = _piece_context_menu.get_item_count()
 	
 	if _inheritance_has(inheritance, "Piece"):
+		_piece_context_menu.add_item(tr("Details…"), CONTEXT_PIECE_DETAILS)
+		
 		var all_albedo_color_exposed = true
 		for piece in _selected_pieces:
 			if not piece.is_albedo_color_exposed():
@@ -2367,6 +2371,9 @@ func _on_PieceContextMenu_id_pressed(id: int):
 		
 		CONTEXT_PIECE_DELETE:
 			_delete_selected_pieces()
+		
+		CONTEXT_PIECE_DETAILS:
+			_details_dialog.show_details(_selected_pieces)
 		
 		CONTEXT_PIECE_LOCK:
 			_lock_selected_pieces()

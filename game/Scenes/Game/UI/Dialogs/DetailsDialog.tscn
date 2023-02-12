@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Game/UI/Dialogs/DetailsDialog.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Cabin/Modified/Cabin-SemiBold-Huge.tres" type="DynamicFont" id=2]
+
+[node name="DetailsDialog" type="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -774.0
+margin_bottom = -300.0
+rect_min_size = Vector2( 250, 100 )
+window_title = "Details"
+resizable = true
+script = ExtResource( 1 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DetailsLabel" type="RichTextLabel" parent="VBox"]
+margin_right = 250.0
+margin_bottom = 256.0
+focus_mode = 2
+size_flags_vertical = 3
+custom_fonts/bold_font = ExtResource( 2 )
+bbcode_enabled = true
+selection_enabled = true
+
+[node name="AdvancedCheckButton" type="CheckButton" parent="VBox"]
+margin_top = 260.0
+margin_right = 250.0
+margin_bottom = 300.0
+hint_tooltip = "Show advanced developer information in JSON form."
+text = "Advanced view"
+clip_text = true
+align = 2
+
+[connection signal="toggled" from="VBox/AdvancedCheckButton" to="." method="_on_AdvancedCheckButton_toggled"]
