@@ -64,6 +64,20 @@ As of right now, Tabletop Club supports the following 3D file formats:
 * glTF 2.0 (``.glb``, ``.gltf``)
 * Wavefront (``.obj``)
 
+For convenience, the game will automatically set the centre-of-mass (COM) of the
+object for you when it is imported. However, you can use the :ref:`config-cfg`
+file to decide how the COM is adjusted.
+
+* ``com_adjust = "off"``: The game will not adjust the COM. The COM will be at
+  (0, 0, 0).
+
+* ``com_adjust = "volume"`` *(default)*: The game will use the mid-point of the
+  model's bounding box as the COM. The bounding box, or volume, is the smallest
+  cube that contains all the model's vertices.
+
+* ``com_adjust = "geometry"``: The game will use the average of all the model's
+  vertices as the COM.
+
 You can also specify how accurate the collision of the model is using the
 ``collision_mode`` property in the :ref:`config-cfg` file.
 

@@ -579,56 +579,80 @@ func _add_inheriting_assets(pack_path: String, pack_name: String, type: String) 
 		for child in children:
 			_add_entry_to_db(pack_name, type, child)
 
-# Calculate the bounding box of a 3D scene.
-# Returns: A 2-length array containing the min and max corners of the box.
-# scene: The scene to calculate the bounding box for.
-func _calculate_bounding_box(scene: Spatial) -> Array:
-	return _calculate_bounding_box_recursive(scene, Transform.IDENTITY)
+# A class holding useful information about geometry.
+class GeometryMetadata:
+	var box_max: Vector3
+	var box_min: Vector3
+	
+	var vertex_count: int = 0
+	var vertex_sum: Vector3 = Vector3.ZERO
 
-# A helper function for calculating the bounding box of a 3D scene.
-# Returns: A 2-length array containing the min and max corners of the box.
-# scene: The scene to calculate the bounding box for.
+# Calculate the geometry metadata of a custom 3D scene.
+# Returns: The geometry metadata for the scene.
+# scene: The scene to calculate the metadata from.
+func _calculate_geometry_metadata(scene: Spatial) -> GeometryMetadata:
+	return _calculate_geometry_metadata_recursive(scene, Transform.IDENTITY)
+
+# A helper function for calculating the geometry metadata of a 3D scene.
+# Returns: The geometry metadata for the sub-scene.
+# scene: The scene to calculate the metadata from.
 # transform: The transform of the scene up to this point.
-func _calculate_bounding_box_recursive(scene: Spatial, transform: Transform) -> Array:
-	var new_basis     = transform.basis * scene.transform.basis
-	var new_origin    = transform.origin + scene.transform.origin
+func _calculate_geometry_metadata_recursive(scene: Spatial,
+	transform: Transform) -> GeometryMetadata:
+	
+	var new_basis     = scene.transform.basis * transform.basis
+	var new_origin    = scene.transform.origin + transform.origin
 	var new_transform = Transform(new_basis, new_origin)
 	
-	var bounding_box = [Vector3.ZERO, Vector3.ZERO]
+	var metadata: GeometryMetadata = GeometryMetadata.new()
+	var set_box = true
 	
 	if scene is MeshInstance:
-		var mesh  = scene.mesh
-		# Check that the mesh actually has any vertices in it.
-		var num_verts = 0
-		for surface_id in range(mesh.get_surface_count()):
-			num_verts += mesh.surface_get_arrays(surface_id)[0].size()
-		
-		if num_verts > 0:
-			var shape = mesh.create_convex_shape()
-			for point in shape.points:
-				var adj_point = new_transform * point
+		var mesh: Mesh = scene.mesh
+		for surface in range(mesh.get_surface_count()):
+			var vert_arr: Array = mesh.surface_get_arrays(surface)[Mesh.ARRAY_VERTEX]
+			metadata.vertex_count += vert_arr.size()
+			
+			for vertex in vert_arr:
+				var adj_vertex: Vector3 = new_transform * vertex
+				metadata.vertex_sum += adj_vertex
 				
-				bounding_box[0].x = min(bounding_box[0].x, adj_point.x)
-				bounding_box[0].y = min(bounding_box[0].y, adj_point.y)
-				bounding_box[0].z = min(bounding_box[0].z, adj_point.z)
-				
-				bounding_box[1].x = max(bounding_box[1].x, adj_point.x)
-				bounding_box[1].y = max(bounding_box[1].y, adj_point.y)
-				bounding_box[1].z = max(bounding_box[1].z, adj_point.z)
+				if set_box:
+					metadata.box_max = adj_vertex
+					metadata.box_min = adj_vertex
+					set_box = false
+				else:
+					metadata.box_max.x = max(metadata.box_max.x, adj_vertex.x)
+					metadata.box_max.y = max(metadata.box_max.y, adj_vertex.y)
+					metadata.box_max.z = max(metadata.box_max.z, adj_vertex.z)
+					
+					metadata.box_min.x = min(metadata.box_min.x, adj_vertex.x)
+					metadata.box_min.y = min(metadata.box_min.y, adj_vertex.y)
+					metadata.box_min.z = min(metadata.box_min.z, adj_vertex.z)
 	
 	for child in scene.get_children():
 		if child is Spatial:
-			var child_box = _calculate_bounding_box_recursive(child, new_transform)
+			var child_meta = _calculate_geometry_metadata_recursive(child, new_transform)
+			if child_meta.vertex_count <= 0:
+				continue
 			
-			bounding_box[0].x = min(bounding_box[0].x, child_box[0].x)
-			bounding_box[0].y = min(bounding_box[0].y, child_box[0].y)
-			bounding_box[0].z = min(bounding_box[0].z, child_box[0].z)
+			metadata.vertex_count += child_meta.vertex_count
+			metadata.vertex_sum += child_meta.vertex_sum
 			
-			bounding_box[1].x = max(bounding_box[1].x, child_box[1].x)
-			bounding_box[1].y = max(bounding_box[1].y, child_box[1].y)
-			bounding_box[1].z = max(bounding_box[1].z, child_box[1].z)
+			if set_box:
+				metadata.box_max = child_meta.box_max
+				metadata.box_min = child_meta.box_min
+				set_box = false
+			else:
+				metadata.box_max.x = max(metadata.box_max.x, child_meta.box_max.x)
+				metadata.box_max.y = max(metadata.box_max.y, child_meta.box_max.y)
+				metadata.box_max.z = max(metadata.box_max.z, child_meta.box_max.z)
+				
+				metadata.box_min.x = min(metadata.box_min.x, child_meta.box_min.x)
+				metadata.box_min.y = min(metadata.box_min.y, child_meta.box_min.y)
+				metadata.box_min.z = min(metadata.box_min.z, child_meta.box_min.z)
 	
-	return bounding_box
+	return metadata
 
 # Catalog all the assets from every asset directory.
 # Returns: A catalog of all asset files.
@@ -860,61 +884,77 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				push_error("Tables do not support the concave collision mode!")
 				collision_mode = PieceBuilder.COLLISION_CONVEX
 			
+			# Determines the way in which the centre-of-mass is adjusted.
+			var com_adjust = _get_file_config_value(config, from.get_file(),
+					"com_adjust", "volume")
+			
+			match com_adjust:
+				"off":
+					com_adjust = PieceBuilder.COM_ADJUST_OFF
+				"volume":
+					com_adjust = PieceBuilder.COM_ADJUST_VOLUME
+				"geometry":
+					com_adjust = PieceBuilder.COM_ADJUST_GEOMETRY
+				_:
+					push_error("Value '%s' is invalid for property 'com_adjust'!" % str(com_adjust))
+					com_adjust = PieceBuilder.COM_ADJUST_VOLUME
+			
 			# If the file has been imported before, check that the custom scene
-			# has a cached bounding box (.box) file, so we don't have to go and
-			# calculate it again.
-			var box_file_path = to + ".box"
-			var box_file = File.new()
-			var bounding_box = []
+			# has a cached geometry data file (.geo), so we do not have to go
+			# and calculate the metadata again.
+			var geo_file_path = to + ".box"
+			var geo_file = File.new()
+			var file_was_read = false
 			
-			if import_err == ERR_ALREADY_EXISTS and box_file.file_exists(box_file_path):
-				box_file.open(box_file_path, File.READ)
-				var box = box_file.get_var()
-				box_file.close()
-				
-				if box is Array:
-					if box.size() == 2:
-						var box_min = box[0]
-						var box_max = box[1]
-						if box_min is Vector3 and box_max is Vector3:
-							bounding_box = box
-						else:
-							push_error("Elements in %s are not Vector3!" % box_file_path)
+			var avg_point: Vector3        = Vector3.ZERO
+			var bounding_box_min: Vector3 = Vector3.ZERO
+			var bounding_box_max: Vector3 = Vector3.ZERO
+			
+			if import_err == ERR_ALREADY_EXISTS and geo_file.file_exists(geo_file_path):
+				var err = geo_file.open(geo_file_path, File.READ)
+				if err == OK:
+					var data: Array = geo_file.get_var()
+					geo_file.close()
+					
+					if data.size() == 3:
+						avg_point = data[0]
+						bounding_box_min = data[1]
+						bounding_box_max = data[2]
+						
+						file_was_read = true
 					else:
-						push_error("Array in %s is not of size 2!" % box_file_path)
+						push_error("Geometry data in '%s' is not length 3!" % geo_file_path)
 				else:
-					push_error("%s does not contain an array!" % box_file_path)
+					push_error("Failed to open '%s'! (error: %d)" % [geo_file_path, err])
 			
-			# If we couldn't read it for whatever reason, we should make a new
-			# one by doing the calculation now.
-			if bounding_box.size() != 2:
+			if not file_was_read:
 				var custom_scene = load(to).instance()
-				bounding_box = _calculate_bounding_box(custom_scene)
+				var geo_data = _calculate_geometry_metadata(custom_scene)
 				custom_scene.free()
 				
-				box_file.open(box_file_path, File.WRITE)
-				box_file.store_var(bounding_box)
-				box_file.close()
-			
-			# For convenience, we'll scale the bounding box here by the
-			# configured value so we don't have to do it every time we use it
-			# later on.
-			if scale != Vector3.ONE:
-				bounding_box[0] = Vector3(
-					bounding_box[0].x * scale.x,
-					bounding_box[0].y * scale.y,
-					bounding_box[0].z * scale.z
-				)
+				bounding_box_max = geo_data.box_max
+				bounding_box_min = geo_data.box_min
+				avg_point = (1.0 / geo_data.vertex_count) * geo_data.vertex_sum
 				
-				bounding_box[1] = Vector3(
-					bounding_box[1].x * scale.x,
-					bounding_box[1].y * scale.y,
-					bounding_box[1].z * scale.z
-				)
+				var err = geo_file.open(geo_file_path, File.WRITE)
+				if err == OK:
+					geo_file.store_var([ avg_point, bounding_box_min,
+							bounding_box_max ])
+					geo_file.close()
+				else:
+					push_error("Failed to open '%s'! (error: %d)" % [geo_file_path, err])
+			
+			# For convenience, we'll scale the geometry data here by the scale
+			# value so we don't need to do it every time we use the data.
+			avg_point *= scale
+			bounding_box_min *= scale
+			bounding_box_max *= scale
 			
 			entry = {
-				"bounding_box": bounding_box,
+				"avg_point": avg_point,
+				"bounding_box": [ bounding_box_min, bounding_box_max ],
 				"collision_mode": collision_mode,
+				"com_adjust": com_adjust,
 				"scene_path": to,
 				"texture_path": null
 			}
@@ -1319,7 +1359,8 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 					"texture_path"])
 			
 			if asset_type == ASSET_SCENE:
-				expected_keys.append_array(["bounding_box", "collision_mode"])
+				expected_keys.append_array(["avg_point", "bounding_box",
+						"collision_mode", "com_adjust"])
 			
 			if type == "tables":
 				expected_keys.append_array(["bounce", "default", "hands",
@@ -1371,6 +1412,10 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 				if typeof(value) != TYPE_STRING:
 					push_error("'author' in entry is not a string!")
 					return false
+			"avg_point":
+				if typeof(value) != TYPE_VECTOR3:
+					push_error("'avg_point' in entry is not a Vector3!")
+					return false
 			"bounce":
 				if typeof(value) != TYPE_REAL:
 					push_error("'bounce' in entry is not a float!")
@@ -1410,6 +1455,14 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 				
 				if type == "tables" and value == PieceBuilder.COLLISION_CONCAVE:
 					push_error("'collision_mode' in entry is concave, but entry is for a table!")
+					return false
+			"com_adjust":
+				if typeof(value) != TYPE_INT:
+					push_error("'com_adjust' in entry is not an integer!")
+					return false
+				
+				if value < PieceBuilder.COM_ADJUST_OFF or value > PieceBuilder.COM_ADJUST_GEOMETRY:
+					push_error("'com_adjust' in entry is invalid!")
 					return false
 			"color":
 				if typeof(value) != TYPE_COLOR:
@@ -1839,7 +1892,7 @@ func _remove_old_assets_type(catalog: Dictionary, pack: String, type: String) ->
 	while not file.empty():
 		if file.get_extension() in VALID_EXTENSIONS and not file in safe_files:
 			# Check for additional files, as well as the original.
-			for suffix in ["", ".box", ".import", ".src"]:
+			for suffix in ["", ".box", ".geo", ".import", ".src"]:
 				var full_file = file + suffix
 				if not type_dir.file_exists(full_file):
 					continue

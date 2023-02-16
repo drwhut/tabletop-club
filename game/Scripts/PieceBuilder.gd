@@ -28,6 +28,12 @@ enum {
 	COLLISION_CONCAVE
 }
 
+enum {
+	COM_ADJUST_OFF,
+	COM_ADJUST_VOLUME,
+	COM_ADJUST_GEOMETRY
+}
+
 # Build a piece using an entry from the AssetDB.
 # Returns: The piece corresponding to the given entry.
 # piece_entry: The entry to create the piece with.
@@ -103,10 +109,6 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 	piece.piece_entry = piece_entry
 	
 	scale_piece(piece, piece_entry["scale"])
-	
-	# Now that the piece has been scaled, if the piece entry contains the
-	# bounding box of the piece, we should take the time to adjust the centre
-	# of mass of the object.
 	_adjust_centre_of_mass(piece, piece_entry)
 	
 	if piece_entry.has("texture_path") and piece_entry["texture_path"] is String:
@@ -250,22 +252,36 @@ func scale_piece(piece: Piece, scale: Vector3) -> void:
 func _adjust_centre_of_mass(piece: RigidBody, piece_entry: Dictionary,
 	keep_pos: bool = false) -> void:
 	
+	if not piece_entry.has("com_adjust"):
+		return
+	
+	var adjust_method: int = piece_entry["com_adjust"]
+	if adjust_method == COM_ADJUST_OFF:
+		return
+	
+	var centre_of_mass: Vector3
+	match adjust_method:
+		COM_ADJUST_VOLUME:
+			var box_min: Vector3 = piece_entry["bounding_box"][0]
+			var box_max: Vector3 = piece_entry["bounding_box"][1]
+			centre_of_mass = 0.5 * (box_min + box_max)
+		COM_ADJUST_GEOMETRY:
+			centre_of_mass = piece_entry["avg_point"]
+		_:
+			push_error("Invalid 'com_adjust' value %d!" % adjust_method)
+			return
+	
 	# NOTE: The reason we offset all the collision shapes is because the
 	# Bullet physics engine defines the centre of mass as the origin of the
 	# rigidbody, and there is currently no way to manually define the
 	# centre of mass of a rigidbody in Godot. See:
 	# https://github.com/godotengine/godot-proposals/issues/945
-	if piece_entry.has("bounding_box"):
-		
-		var bounding_box = piece_entry["bounding_box"]
-		var centre_of_mass = 0.5 * (bounding_box[0] + bounding_box[1])
-		
-		for child in piece.get_children():
-			if child is CollisionShape:
-				child.transform.origin -= centre_of_mass
-		
-		if keep_pos:
-			piece.transform.origin += centre_of_mass
+	for child in piece.get_children():
+		if child is CollisionShape:
+			child.transform.origin -= centre_of_mass
+	
+	if keep_pos:
+		piece.transform.origin += centre_of_mass
 
 # Extract mesh instances from a tree, define collision shapes for each mesh
 # instance, and add them to a node.
