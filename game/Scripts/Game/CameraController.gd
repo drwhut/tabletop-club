@@ -193,8 +193,8 @@ var _hidden_area_mouse_is_over: HiddenArea = null
 var _hidden_area_placing_point2 = false
 var _hidden_area_point1 = Vector3()
 var _hidden_area_point2 = Vector3()
-var _hover_y_offset = 0.0
-var _hover_y_pos = 7.0
+var _hover_y_pos_base = 7.0
+var _hover_y_pos_offset = 0.0
 var _initial_transform = Transform.IDENTITY
 var _initial_zoom = 0.0
 var _is_box_selecting = false
@@ -306,8 +306,8 @@ func erase_selected_pieces(piece: Piece) -> void:
 # Returns: The position that hovering pieces should hover at.
 func get_hover_position() -> Vector3:
 	var mouse_pos = get_viewport().get_mouse_position()
-	var hover_pos = _calculate_hover_position(mouse_pos, _hover_y_pos)
-	hover_pos.y += _hover_y_offset
+	var hover_pos = _calculate_hover_position(mouse_pos, _hover_y_pos_base)
+	hover_pos.y += _hover_y_pos_offset
 	return hover_pos
 
 # Get the list of selected pieces.
@@ -372,7 +372,8 @@ remotesync func set_hover_height(hover_height: float) -> void:
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
-	_hover_y_pos = max(0, hover_height)
+	_hover_y_pos_base = max(0, hover_height)
+	_hover_y_pos_offset = 0.0
 
 # Called by the server when a player changes their cursor shape.
 # id: The ID of the player.
@@ -1528,8 +1529,8 @@ func _set_control_hint_label() -> void:
 			var ctrl_mod = cmd if OS.get_name() == "OSX" else ctrl
 			var alt_mod = ctrl if OS.get_name() == "OSX" else alt
 			
-			text += _set_control_hint_label_row(tr("Zoom selected"), sw)
-			text += _set_control_hint_label_row(tr("Lift selected"), sw, ctrl_mod)
+			text += _set_control_hint_label_row(tr("Lift selected"), sw)
+			text += _set_control_hint_label_row(tr("Zoom selected"), sw, ctrl_mod)
 			text += _set_control_hint_label_row(tr("Rotate selected"), sw, alt_mod)
 		
 		var all_locked = true
@@ -1850,14 +1851,16 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 		_piece_mouse_is_over_time = 0.0
 		
 		if not selected.empty():
-			_hover_y_offset = 0
+			var old_hover_y = _hover_y_pos_base + _hover_y_pos_offset
 			
-			# We can figure out if the selected pieces are about to be
-			# obstructed with the new hover y-position, and adjust it
-			# accordingly.
+			# The old hover position might be too low, and cause pieces to
+			# collide into the table. We can prevent this by determining a
+			# minimum y-position.
+			var min_hover_y_pos = 0.0
+			var min_hover_y_pos_set = false
 			for piece in selected:
 				var from = piece.transform.origin
-				var to = Vector3(from.x, -10, from.z)
+				var to = Vector3(from.x, -10.0, from.z)
 				
 				var space_state = get_world().direct_space_state
 				var result = space_state.intersect_ray(from, to, [piece])
@@ -1868,7 +1871,18 @@ func _start_hovering_grabbed_piece(fast: bool) -> void:
 					var collision_point = result["position"]
 					var min_y_pos = collision_point.y + (piece.get_size().y / 2)
 					
-					_hover_y_pos = max(_hover_y_pos, min_y_pos)
+					if min_hover_y_pos_set:
+						min_hover_y_pos = max(min_hover_y_pos, min_y_pos)
+					else:
+						min_hover_y_pos = min_y_pos
+						min_hover_y_pos_set = true
+			
+			# Try to keep the same vertical position we had before, but if it
+			# was lower than the new minimum, we need to adjust for that.
+			old_hover_y = max(min_hover_y_pos, old_hover_y)
+			
+			_hover_y_pos_base = max(min_hover_y_pos, _hover_y_pos_base)
+			_hover_y_pos_offset = old_hover_y - _hover_y_pos_base
 			
 			var origin_piece = selected[0]
 			if _piece_mouse_is_over:
@@ -1935,7 +1949,7 @@ func _on_moving(mouse_speed_sq: float = 0.0) -> bool:
 		# Set the maximum hover y-position so the pieces don't go above and
 		# behind the camera.
 		var max_y_pos = _camera.global_transform.origin.y - HOVER_Y_MIN
-		_hover_y_pos = min(_hover_y_pos, max_y_pos)
+		_hover_y_pos_base = min(_hover_y_pos_base, max_y_pos)
 		
 		# ... then send out a signal with the new hover position.
 		if _selected_pieces.size() == 1:
@@ -1972,14 +1986,13 @@ func _on_scroll(delta: float, ctrl: bool, alt: bool) -> void:
 				piece.rpc_id(1, "request_rotate_y", amount)
 		else:
 			if ctrl:
-				var new_y_offset = _hover_y_offset + delta
-				if _hover_y_pos + new_y_offset >= HOVER_Y_MIN:
-					_hover_y_offset = new_y_offset
+				var new_y_base = _hover_y_pos_base + delta
+				_hover_y_pos_base = max(new_y_base, HOVER_Y_MIN)
 			else:
-				var new_y_pos = _hover_y_pos + delta
-				_hover_y_pos = max(new_y_pos, HOVER_Y_MIN)
-				_hover_y_offset = max(_hover_y_offset, HOVER_Y_MIN - _hover_y_pos)
+				_hover_y_pos_offset = _hover_y_pos_offset + delta
 			
+			_hover_y_pos_offset = max(_hover_y_pos_offset,
+					HOVER_Y_MIN - _hover_y_pos_base)
 			_on_moving()
 	else:
 		# Zooming the camera in and away from the controller.

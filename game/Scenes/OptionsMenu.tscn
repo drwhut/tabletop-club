@@ -576,8 +576,8 @@ section_name = "key_bindings"
 text = "Key Bindings"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings"]
-margin_right = 964.0
-margin_bottom = 566.0
+margin_right = 976.0
+margin_bottom = 596.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -694,7 +694,7 @@ margin_top = 183.0
 margin_right = 480.0
 margin_bottom = 203.0
 size_flags_horizontal = 3
-text = "Zoom In"
+text = "Zoom In / Lift Piece Down"
 align = 2
 
 [node name="ZoomCameraInButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
@@ -702,7 +702,7 @@ margin_left = 484.0
 margin_top = 180.0
 margin_right = 964.0
 margin_bottom = 206.0
-hint_tooltip = "Zoom the camera or object towards the table."
+hint_tooltip = "Zoom the camera towards the table, or lift a piece down onto the table."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_zoom_in"
@@ -712,7 +712,7 @@ margin_top = 213.0
 margin_right = 480.0
 margin_bottom = 233.0
 size_flags_horizontal = 3
-text = "Zoom Out"
+text = "Zoom Out / Lift Piece Up"
 align = 2
 
 [node name="ZoomCameraOutButton2" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Key Bindings/GridContainer"]
@@ -720,7 +720,7 @@ margin_left = 484.0
 margin_top = 210.0
 margin_right = 964.0
 margin_bottom = 236.0
-hint_tooltip = "Zoom the camera or object away from the table."
+hint_tooltip = "Zoom the camera away from the table, or lift a piece up from the table."
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 action = "game_zoom_out"
