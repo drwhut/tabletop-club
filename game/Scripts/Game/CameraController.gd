@@ -844,7 +844,8 @@ func _unhandled_input(event):
 		var ctrl = event.command if OS.get_name() == "OSX" else event.control
 		if event.pressed and ctrl:
 			if event.scancode == KEY_A:
-				emit_signal("selecting_all_pieces")
+				if not _is_hovering_selected:
+					emit_signal("selecting_all_pieces")
 			elif event.scancode == KEY_X:
 				_future_clipboard_position = _cursor_position
 				_cut_selected_pieces()
