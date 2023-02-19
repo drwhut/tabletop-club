@@ -34,13 +34,13 @@ or
 Language   | Game               | Documentation      | Default Asset Pack
 ---------- | ------------------ | ------------------ | ------------------
 English    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-Dutch      | 97%                | :x:                | 91%
-Esperanto  | 97%                | :x:                | 91%
-French     | 97%                | :x:                | 81%
-German     | 97%                | :x:                | 90%
-Italian    | 97%                | :x:                | :x:
-Portuguese | 93%                | :x:                | 86%
-Russian    | 96%                | 94%                | 91%
+Dutch      | 96%                | :x:                | :heavy_check_mark:
+Esperanto  | 96%                | :x:                | :heavy_check_mark:
+French     | 93%                | :x:                | 81%
+German     | 93%                | :x:                | 90%
+Italian    | 93%                | :x:                | :x:
+Portuguese | 90%                | :x:                | 91%
+Russian    | 93%                | 94%                | 91%
 
 If you want to help translate the project, you can go to the project's
 [Hosted Weblate](https://hosted.weblate.org/engage/tabletop-club/) page.
