@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-19 21:03+0000\n"
-"PO-Revision-Date: 2023-02-05 15:36+0000\n"
-"Last-Translator: wild thunder <compras_ruben@outlook.com>\n"
+"PO-Revision-Date: 2023-02-21 16:39+0000\n"
+"Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/es/>\n"
 "Language: es\n"
@@ -363,7 +363,7 @@ msgstr "Texto"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:188
 msgid "All"
-msgstr "Todo"
+msgstr "Todos"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
@@ -996,7 +996,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:177
 msgid "Token"
-msgstr ""
+msgstr "Jetón"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid ""
@@ -1080,7 +1080,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:246
 msgid "Table"
-msgstr ""
+msgstr "Mesa"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:248
 msgid ""
