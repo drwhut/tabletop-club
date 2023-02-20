@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-02-19 21:02+0000\n"
-"PO-Revision-Date: 2022-11-29 17:05+0000\n"
-"Last-Translator: Felix Kaechele <felix@kaechele.ca>\n"
+"PO-Revision-Date: 2023-02-20 21:51+0000\n"
+"Last-Translator: Jummit <jummit@web.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "game/de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:39
@@ -413,57 +413,55 @@ msgstr "Setzt die Kamera auf die Standardposition zurück."
 
 #: ../Scenes/OptionsMenu.tscn:697
 msgid "Zoom In / Lift Piece Down"
-msgstr ""
+msgstr "Vergrößern / Figur Senken"
 
 #: ../Scenes/OptionsMenu.tscn:705
-#, fuzzy
-#| msgid "Zoom the camera or object away from the table."
 msgid "Zoom the camera towards the table, or lift a piece down onto the table."
-msgstr "Zoomt die Kamera oder das Objekt vom Tisch weg."
+msgstr ""
+"Die Kamera an den Tisch heranzoomen, oder eine Figur herunter auf den Tisch "
+"senken."
 
 #: ../Scenes/OptionsMenu.tscn:715
 msgid "Zoom Out / Lift Piece Up"
-msgstr ""
+msgstr "Herauszoomen / Figur Anheben"
 
 #: ../Scenes/OptionsMenu.tscn:723
-#, fuzzy
-#| msgid "Zoom the camera or object away from the table."
 msgid "Zoom the camera away from the table, or lift a piece up from the table."
-msgstr "Zoomt die Kamera oder das Objekt vom Tisch weg."
+msgstr ""
+"Zoomt die Kamera oder das Objekt vom Tisch weg, oder hebt einen Spielstein "
+"vom Tisch hoch."
 
 #: ../Scenes/OptionsMenu.tscn:733
 msgid "Flip Piece Orientation"
-msgstr "Spielstein umdrehen"
+msgstr "Spielstein Umdrehen"
 
 #: ../Scenes/OptionsMenu.tscn:741
-#, fuzzy
-#| msgid "Flip the selected piece on the horizontal axis."
 msgid ""
 "Flip the selected piece or the piece the mouse is over on the horizontal "
 "axis."
-msgstr "Spiegelt den Spielstein um die horizontale Achse."
+msgstr ""
+"Spiegelt den ausgewählten Spielstein oder der über der die Maus ist um die "
+"horizontale Achse."
 
 #: ../Scenes/OptionsMenu.tscn:751
 msgid "Reset Piece Orientation"
-msgstr "Spielstein-Ausrichtung zurücksetzen"
+msgstr "Spielstein-Ausrichtung Zurücksetzen"
 
 #: ../Scenes/OptionsMenu.tscn:759
-#, fuzzy
-#| msgid "Resets the selected piece to its default orientation."
 msgid ""
 "Resets the selected piece or the piece the mouse is over to its default "
 "orientation."
-msgstr "Setzt die Ausrichtung des Spielsteins auf die Ausgangsposition zurück."
+msgstr ""
+"Setzt die Ausrichtung des ausgewählten Spielsteins oder der über der die "
+"Maus ist auf die Ausgangsposition zurück."
 
 #: ../Scenes/OptionsMenu.tscn:769 ../Scripts/Game/CameraController.gd:1574
-#, fuzzy
-#| msgid "Rotate selected"
 msgid "Rotate Piece"
-msgstr "Ausgewählte drehen"
+msgstr "Figur Drehen"
 
 #: ../Scenes/OptionsMenu.tscn:777
 msgid "Rotates the the piece that is selected, or that the mouse is over."
-msgstr ""
+msgstr "Rotiert den ausgewählten Spielstein, oder den über der die Maus ist."
 
 #: ../Scenes/OptionsMenu.tscn:787 ../Scripts/Game/CameraController.gd:1207
 #: ../Scripts/Game/CameraController.gd:1527
@@ -476,6 +474,8 @@ msgid ""
 "Shuffle stacks of cards or tokens that are selected, or that the mouse is "
 "over."
 msgstr ""
+"Ausgewählte Kartenstapel oder Spielsteine mischen, oder die über der die "
+"Maus ist."
 
 #: ../Scenes/OptionsMenu.tscn:805
 msgid "Lock/Unlock Piece"
@@ -730,10 +730,8 @@ msgid "Select track"
 msgstr "Stück auswählen"
 
 #: ../Scenes/Game/CameraController.tscn:147
-#, fuzzy
-#| msgid "Position:"
 msgid "Positional audio"
-msgstr "Position:"
+msgstr "Positionelles Audio"
 
 #: ../Scenes/Game/CameraController.tscn:153
 msgid "Range:"
@@ -779,15 +777,13 @@ msgid "Scale:"
 msgstr "Maßstab:"
 
 #: ../Scenes/Game/CameraController.tscn:430
-#, fuzzy
-#| msgid "Value"
 msgid "Value:"
-msgstr "Wert"
+msgstr "Wert:"
 
 #: ../Scenes/Game/CameraController.tscn:442
 #: ../Scripts/Game/CameraController.gd:1285
 msgid "Set value"
-msgstr ""
+msgstr "Wert setzen"
 
 #: ../Scenes/Game/CameraController.tscn:473
 msgid "Strength:"
@@ -933,10 +929,8 @@ msgid "Undo"
 msgstr "Rückgängig"
 
 #: ../Scenes/Game/UI/GameUI.tscn:86
-#, fuzzy
-#| msgid "45"
 msgid "45°"
-msgstr "45"
+msgstr "45°"
 
 #: ../Scenes/Game/UI/GameUI.tscn:94
 msgid "Menu"
@@ -995,18 +989,16 @@ msgid "Take All"
 msgstr "Alle nehmen"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:12
-#, fuzzy
-#| msgid "Shadow Detail"
 msgid "Details"
-msgstr "Schatten Detailgrad"
+msgstr "Details"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:33
 msgid "Show advanced developer information in JSON form."
-msgstr ""
+msgstr "Erweiterte Entwicklerinformationen in JSON-Format zeigen."
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:34
 msgid "Advanced view"
-msgstr ""
+msgstr "Erweiterte Ansicht"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:34
 msgid "+ New Page"
@@ -1098,7 +1090,7 @@ msgstr "Typ:"
 
 #: ../Scripts/AssetDB.gd:392
 msgid "Cleaning old files..."
-msgstr ""
+msgstr "Säubere alte Dateien..."
 
 #: ../Scripts/BindManager.gd:51
 msgid "Not bound"
@@ -1220,7 +1212,7 @@ msgstr "Niederländisch"
 
 #: ../Scripts/MainMenu.gd:79
 msgid "Esperanto"
-msgstr ""
+msgstr "Spanish"
 
 #: ../Scripts/MainMenu.gd:80
 msgid "French"
@@ -1232,11 +1224,11 @@ msgstr "Deutsch"
 
 #: ../Scripts/MainMenu.gd:82
 msgid "Italian"
-msgstr ""
+msgstr "Italienisch"
 
 #: ../Scripts/MainMenu.gd:83
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugisisch"
 
 #: ../Scripts/MainMenu.gd:84
 msgid "Russian"
@@ -1401,7 +1393,7 @@ msgstr "Lautsprecher"
 
 #: ../Scripts/Game/CameraController.gd:1326
 msgid "Details…"
-msgstr ""
+msgstr "Details…"
 
 #: ../Scripts/Game/CameraController.gd:1338
 msgid "Cut"
@@ -1868,21 +1860,21 @@ msgstr "%s is leer."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:61
 msgid "No objects have been selected."
-msgstr ""
+msgstr "Keine Objekte wurden ausgewählt."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:74
 #, python-format
 msgid "A stack of %d cards."
-msgstr ""
+msgstr "Ein Stapel von %d Karten."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:76
 #, python-format
 msgid "A stack of %d tokens."
-msgstr ""
+msgstr "Ein Stapel von %d Spielsteinen."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:83
 msgid "No description."
-msgstr ""
+msgstr "Keine Beschreibung."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:88
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:54
@@ -1915,17 +1907,17 @@ msgstr "URL: %s"
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:102
 #, python-format
 msgid "A total of %d objects were selected:"
-msgstr ""
+msgstr "Insgesamt wurden %d Objekte ausgewählt:"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:112
 #, python-format
 msgid "Stack of %d cards"
-msgstr ""
+msgstr "Stapel von %d Karten"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:114
 #, python-format
 msgid "Stack of %d tokens"
-msgstr ""
+msgstr "Stapel von %d Spielsteinen"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:37
 msgid ""
@@ -2025,13 +2017,11 @@ msgstr "Seite %d %d"
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:113
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:300
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:280
-#, fuzzy
-#| msgid "Cards"
 msgid "Boards"
-msgstr "Karten"
+msgstr "Bretter"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:281
 msgid "Cards"
