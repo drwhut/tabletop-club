@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-02-19 21:02+0000\n"
-"PO-Revision-Date: 2023-02-07 11:39+0000\n"
+"PO-Revision-Date: 2023-02-20 21:51+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
 "nl/>\n"
@@ -403,23 +403,21 @@ msgstr "Stel de camera in op de standaardpositie."
 
 #: ../Scenes/OptionsMenu.tscn:697
 msgid "Zoom In / Lift Piece Down"
-msgstr ""
+msgstr "Inzoomen/Stuk neerzetten"
 
 #: ../Scenes/OptionsMenu.tscn:705
-#, fuzzy
-#| msgid "Zoom the camera or object away from the table."
 msgid "Zoom the camera towards the table, or lift a piece down onto the table."
-msgstr "Zoom de camera of het object weg van de tafel."
+msgstr ""
+"Zoom de camera of het object weg van de tafel, of zet een stuk neer op de "
+"tafel."
 
 #: ../Scenes/OptionsMenu.tscn:715
 msgid "Zoom Out / Lift Piece Up"
-msgstr ""
+msgstr "Uitzoomen/Stuk oppakken"
 
 #: ../Scenes/OptionsMenu.tscn:723
-#, fuzzy
-#| msgid "Zoom the camera or object away from the table."
 msgid "Zoom the camera away from the table, or lift a piece up from the table."
-msgstr "Zoom de camera of het object weg van de tafel."
+msgstr "Zoom de camera of het object weg van de tafel, of pak een stuk op."
 
 #: ../Scenes/OptionsMenu.tscn:733
 msgid "Flip Piece Orientation"
@@ -976,18 +974,16 @@ msgid "Take All"
 msgstr "Alles pakken"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:12
-#, fuzzy
-#| msgid "Shadow Detail"
 msgid "Details"
-msgstr "Schaduwdetails"
+msgstr "Details"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:33
 msgid "Show advanced developer information in JSON form."
-msgstr ""
+msgstr "Toon uitgebreide ontwikkelaarsinformatie is json-opmaak."
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:34
 msgid "Advanced view"
-msgstr ""
+msgstr "Uitgebreide weergave"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:34
 msgid "+ New Page"
@@ -1079,7 +1075,7 @@ msgstr "Soort:"
 
 #: ../Scripts/AssetDB.gd:392
 msgid "Cleaning old files..."
-msgstr ""
+msgstr "Bezig met opruimen…"
 
 #: ../Scripts/BindManager.gd:51
 msgid "Not bound"
@@ -1198,7 +1194,7 @@ msgstr "Nederlands"
 
 #: ../Scripts/MainMenu.gd:79
 msgid "Esperanto"
-msgstr ""
+msgstr "Esperanto"
 
 #: ../Scripts/MainMenu.gd:80
 msgid "French"
@@ -1210,7 +1206,7 @@ msgstr "Duits"
 
 #: ../Scripts/MainMenu.gd:82
 msgid "Italian"
-msgstr ""
+msgstr "Italiaans"
 
 #: ../Scripts/MainMenu.gd:83
 msgid "Portuguese"
@@ -1379,7 +1375,7 @@ msgstr "Spreker"
 
 #: ../Scripts/Game/CameraController.gd:1326
 msgid "Details…"
-msgstr ""
+msgstr "Details…"
 
 #: ../Scripts/Game/CameraController.gd:1338
 msgid "Cut"
@@ -1848,21 +1844,21 @@ msgstr "%s is leeg."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:61
 msgid "No objects have been selected."
-msgstr ""
+msgstr "Er zijn geen objecten geselecteerd."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:74
 #, python-format
 msgid "A stack of %d cards."
-msgstr ""
+msgstr "Een stapel met %d kaarten."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:76
 #, python-format
 msgid "A stack of %d tokens."
-msgstr ""
+msgstr "Een stapel met %d fiches."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:83
 msgid "No description."
-msgstr ""
+msgstr "Geen omschrijving."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:88
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:54
@@ -1895,17 +1891,17 @@ msgstr "Url: %s"
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:102
 #, python-format
 msgid "A total of %d objects were selected:"
-msgstr ""
+msgstr "Er zijn in totaal %d objecten geselecteerd:"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:112
 #, python-format
 msgid "Stack of %d cards"
-msgstr ""
+msgstr "Een stapel met %d kaarten"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:114
 #, python-format
 msgid "Stack of %d tokens"
-msgstr ""
+msgstr "Een stapel met %d fiches"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:37
 msgid ""
