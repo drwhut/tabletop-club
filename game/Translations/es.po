@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-02-19 21:02+0000\n"
 "PO-Revision-Date: 2023-02-21 22:38+0000\n"
-"Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
+"Last-Translator: Carlos Solís <csolisr@azkware.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "game/es/>\n"
 "Language: es\n"
@@ -146,6 +146,8 @@ msgid ""
 "Sets the volume of sound effects played automatically throughout the game, "
 "for example, pieces falling on the table. "
 msgstr ""
+"Fija el volumen de los efectos de sonido reproducidos automáticamente "
+"durante el juego, por ejemplo, piezas que caen en la mesa. "
 
 #: ../Scenes/OptionsMenu.tscn:142
 msgid "Controls"
@@ -173,7 +175,7 @@ msgstr "Inversión horizontal del ratón"
 
 #: ../Scenes/OptionsMenu.tscn:202
 msgid "Used to invert the rotation of the camera horizontally."
-msgstr ""
+msgstr "Usado para invertir la rotación de la cámara horizontalmente."
 
 #: ../Scenes/OptionsMenu.tscn:209
 msgid "Mouse Vertical Invert"
@@ -181,7 +183,7 @@ msgstr "Inversión Vertical del Ratón"
 
 #: ../Scenes/OptionsMenu.tscn:217
 msgid "Used to invert the rotation of the camera vertically."
-msgstr ""
+msgstr "Usado para invertir la rotación de la cámara verticalmente."
 
 #: ../Scenes/OptionsMenu.tscn:224
 msgid "Camera Movement Speed"
@@ -189,17 +191,19 @@ msgstr "Velocidad de Movimiento de la Cámara"
 
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
-msgstr ""
+msgstr "Usado para fijar qué tan rápido se mueve la cámara a través de la mesa."
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
-msgstr ""
+msgstr "Sostener clic izquierdo para mover cámara"
 
 #: ../Scenes/OptionsMenu.tscn:252
 msgid ""
 "Used to allow the player to move the camera by dragging the mouse across the "
 "table."
 msgstr ""
+"Usado para permitir al jugador mover la cámara arrastrando el ratón a través "
+"de la mesa."
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
