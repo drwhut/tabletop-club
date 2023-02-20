@@ -45,6 +45,7 @@ margin_right = 1024.0
 margin_bottom = 34.0
 custom_fonts/font = ExtResource( 4 )
 align = 1
+clip_text = true
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 margin_top = 38.0
