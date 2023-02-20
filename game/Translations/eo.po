@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-02-19 21:02+0000\n"
-"PO-Revision-Date: 2023-02-08 19:39+0000\n"
+"PO-Revision-Date: 2023-02-20 21:51+0000\n"
 "Last-Translator: Reese Rivers <doormattion@gmail.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/tabletop-club/"
 "game/eo/>\n"
@@ -401,23 +401,20 @@ msgstr "Remetas la kameraon en la defaŭltan pozicion."
 
 #: ../Scenes/OptionsMenu.tscn:697
 msgid "Zoom In / Lift Piece Down"
-msgstr ""
+msgstr "Zomi / levi pecon malsupren"
 
 #: ../Scenes/OptionsMenu.tscn:705
-#, fuzzy
-#| msgid "Zoom the camera or object away from the table."
 msgid "Zoom the camera towards the table, or lift a piece down onto the table."
-msgstr "Malzomigas la kameraon aŭ objekton for de la tablo."
+msgstr ""
+"Zomigas la kameraon al la tablo, aŭ levas pecon malsupren sur la tablon."
 
 #: ../Scenes/OptionsMenu.tscn:715
 msgid "Zoom Out / Lift Piece Up"
-msgstr ""
+msgstr "Malzomi / levi pecon supren"
 
 #: ../Scenes/OptionsMenu.tscn:723
-#, fuzzy
-#| msgid "Zoom the camera or object away from the table."
 msgid "Zoom the camera away from the table, or lift a piece up from the table."
-msgstr "Malzomigas la kameraon aŭ objekton for de la tablo."
+msgstr "Zomigas la kameraon for de la tablo, aŭ levas pecon supren de la tablo."
 
 #: ../Scenes/OptionsMenu.tscn:733
 msgid "Flip Piece Orientation"
@@ -976,18 +973,16 @@ msgid "Take All"
 msgstr "Preni ĉiujn"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:12
-#, fuzzy
-#| msgid "Shadow Detail"
 msgid "Details"
-msgstr "Detaleco de ombroj"
+msgstr "Detaloj"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:33
 msgid "Show advanced developer information in JSON form."
-msgstr ""
+msgstr "Montras altnivelajn informojn por disvolvigistoj en formo JSON."
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:34
 msgid "Advanced view"
-msgstr ""
+msgstr "Altnivela vido"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:34
 msgid "+ New Page"
@@ -1079,7 +1074,7 @@ msgstr "Tipo:"
 
 #: ../Scripts/AssetDB.gd:392
 msgid "Cleaning old files..."
-msgstr ""
+msgstr "Purigado de malnovaj dosieroj..."
 
 #: ../Scripts/BindManager.gd:51
 msgid "Not bound"
@@ -1202,7 +1197,7 @@ msgstr "Nederlanda"
 
 #: ../Scripts/MainMenu.gd:79
 msgid "Esperanto"
-msgstr ""
+msgstr "Esperanto"
 
 #: ../Scripts/MainMenu.gd:80
 msgid "French"
@@ -1214,7 +1209,7 @@ msgstr "Germana"
 
 #: ../Scripts/MainMenu.gd:82
 msgid "Italian"
-msgstr ""
+msgstr "Itala"
 
 #: ../Scripts/MainMenu.gd:83
 msgid "Portuguese"
@@ -1383,7 +1378,7 @@ msgstr "Laŭtparolilo"
 
 #: ../Scripts/Game/CameraController.gd:1326
 msgid "Details…"
-msgstr ""
+msgstr "Detaloj…"
 
 #: ../Scripts/Game/CameraController.gd:1338
 msgid "Cut"
@@ -1851,21 +1846,21 @@ msgstr "%s estas malplena."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:61
 msgid "No objects have been selected."
-msgstr ""
+msgstr "Neniuj objektoj estas elektitaj."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:74
 #, python-format
 msgid "A stack of %d cards."
-msgstr ""
+msgstr "Stako kun %d kartoj."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:76
 #, python-format
 msgid "A stack of %d tokens."
-msgstr ""
+msgstr "Stako kun %d ĵetonoj."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:83
 msgid "No description."
-msgstr ""
+msgstr "Neniu priskribo."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:88
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:54
@@ -1898,17 +1893,17 @@ msgstr "URL: %s"
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:102
 #, python-format
 msgid "A total of %d objects were selected:"
-msgstr ""
+msgstr "Entute %d objektoj elektiĝis:"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:112
 #, python-format
 msgid "Stack of %d cards"
-msgstr ""
+msgstr "Stako kun %d kartoj"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:114
 #, python-format
 msgid "Stack of %d tokens"
-msgstr ""
+msgstr "Stako kun %d ĵetonoj"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:37
 msgid ""
