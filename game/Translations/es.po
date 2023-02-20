@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-02-19 21:02+0000\n"
-"PO-Revision-Date: 2023-02-20 21:51+0000\n"
-"Last-Translator: Carlos Solís <csolisr@azkware.net>\n"
+"PO-Revision-Date: 2023-02-21 22:38+0000\n"
+"Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "game/es/>\n"
 "Language: es\n"
@@ -220,41 +220,47 @@ msgstr "Inversión de Zoom"
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
 msgstr ""
+"Usado para invertir la dirección en que se hace el zoom al usar la rueda del "
+"ratón."
 
 #: ../Scenes/OptionsMenu.tscn:294
 msgid "Piece Lift Sensitivity"
-msgstr ""
+msgstr "Sensibilidad de Levantamiento de Ficha"
 
 #: ../Scenes/OptionsMenu.tscn:302
 msgid "Sets how fast a piece will move when lifting it off the table."
-msgstr ""
+msgstr "Fija que tan rápido se moverá una ficha al ser levantada de la mesa."
 
 #: ../Scenes/OptionsMenu.tscn:314
 msgid "Piece Lift Invert"
-msgstr ""
+msgstr "Inversión de Levantamiento de Ficha"
 
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
 "Used to invert the direction a piece will go when lifting it off the table."
 msgstr ""
+"Usado para invertir la dirección en la que irá la ficha al ser levantada de "
+"la mesa."
 
 #: ../Scenes/OptionsMenu.tscn:329
 msgid "Piece Rotation Invert"
-msgstr ""
+msgstr "Inversión de Rotación de Ficha"
 
 #: ../Scenes/OptionsMenu.tscn:337
 msgid "Used to invert the direction a piece will rotate."
-msgstr ""
+msgstr "Usado para invertir la dirección en la que girará una ficha."
 
 #: ../Scenes/OptionsMenu.tscn:344
 msgid "Hand Preview Enabled"
-msgstr ""
+msgstr "Previsualización de Mano Habilitada"
 
 #: ../Scenes/OptionsMenu.tscn:352
 msgid ""
 "When set, hovering over a card in your hand will display an enhanced preview "
 "of the card after a short period of time."
 msgstr ""
+"Cuando se habilita, al mover el ratón sobre una de sus cartas, una vista "
+"mejorada se mostrará por un corto tiempo."
 
 #: ../Scenes/OptionsMenu.tscn:360
 msgid "Hand Preview Delay"
@@ -265,22 +271,26 @@ msgid ""
 "Used to set how long the mouse needs to be kept still before a preview of a "
 "card is displayed from the hand."
 msgstr ""
+"Usado para fijar cuanto tiempo deberá permanecer quieto el ratón sobre una "
+"carta antes de mostrarla."
 
 #: ../Scenes/OptionsMenu.tscn:380
 msgid "Hand Preview Size"
-msgstr ""
+msgstr "Tamaño de Previsualización de Mano"
 
 #: ../Scenes/OptionsMenu.tscn:388
 msgid "Used to control how large the card preview is."
 msgstr ""
+"Usado para controlar el tamaño de la imagen de la carta que se previsualiza."
 
 #: ../Scenes/OptionsMenu.tscn:400
 msgid "Hide Control Hints"
-msgstr ""
+msgstr "Ocultar Pistas de los Controles"
 
 #: ../Scenes/OptionsMenu.tscn:408
 msgid "Used to hide the dynamic text displaying how to control the game."
 msgstr ""
+"Usado para ocultar el texto dinámico que muestra como controlar el juego."
 
 #: ../Scenes/OptionsMenu.tscn:421
 msgid "General"
@@ -297,6 +307,7 @@ msgstr "Intervalo de Guardado Automático"
 #: ../Scenes/OptionsMenu.tscn:463
 msgid "Used to set how often autosaves are created."
 msgstr ""
+"Utilizado para fijar con que frecuencia se guarda automáticamente el juego."
 
 #: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:67
 msgid "5 minutes"
@@ -304,19 +315,21 @@ msgstr "5 minutos"
 
 #: ../Scenes/OptionsMenu.tscn:474
 msgid "Autosave File Count"
-msgstr ""
+msgstr "Conteo de Guardados Automáticos"
 
 #: ../Scenes/OptionsMenu.tscn:482
 msgid "Used to set the maximum number of autosave files that are made."
 msgstr ""
+"Usado para fijar el número máximo de archivos que se guardan automáticamente."
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Show System Warnings"
-msgstr ""
+msgstr "Mostrar Advertencias del Sistema"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Displays system warnings in the chat box."
 msgstr ""
+"Muestra las advertencias que genera el sistema en el recuadro de discusión."
 
 #: ../Scenes/OptionsMenu.tscn:509
 msgid "Show System Errors"
@@ -325,90 +338,93 @@ msgstr "Mostrar Errores de Sistema"
 #: ../Scenes/OptionsMenu.tscn:517
 msgid "Displays system errors in the chat box."
 msgstr ""
+"Muestra los mensajes de error que genera el sistema en el recuadro de "
+"discusión."
 
 #: ../Scenes/OptionsMenu.tscn:545
 msgid "Opens the assets folder in your file explorer."
-msgstr ""
+msgstr "Abre la carpeta de artículos en su explorador de archivos."
 
 #: ../Scenes/OptionsMenu.tscn:547
 msgid "Open Assets Folder"
-msgstr ""
+msgstr "Abrir Carpeta de Artículos"
 
 #: ../Scenes/OptionsMenu.tscn:563
 msgid "Reimport Assets"
-msgstr ""
+msgstr "Reimportar Artículos"
 
 #: ../Scenes/OptionsMenu.tscn:576
 msgid "Key Bindings"
-msgstr ""
+msgstr "Asignación de Teclas"
 
 #: ../Scenes/OptionsMenu.tscn:590
 msgid "Move Forward"
-msgstr ""
+msgstr "Mover Hacia Adelante"
 
 #: ../Scenes/OptionsMenu.tscn:597
 msgid "Moves the camera forward."
-msgstr ""
+msgstr "Mueve la cámara hacia adelante."
 
 #: ../Scenes/OptionsMenu.tscn:607
 msgid "Move Back"
-msgstr ""
+msgstr "Mover Hacia Atrás"
 
 #: ../Scenes/OptionsMenu.tscn:615
 msgid "Moves the camera backwards."
-msgstr ""
+msgstr "Mueve la cámara hacia atrás."
 
 #: ../Scenes/OptionsMenu.tscn:625
 msgid "Move Left"
-msgstr ""
+msgstr "Mover Hacia la Izquierda"
 
 #: ../Scenes/OptionsMenu.tscn:633
 msgid "Moves the camera left."
-msgstr ""
+msgstr "Mueve la cámara hacia la izquierda."
 
 #: ../Scenes/OptionsMenu.tscn:643
 msgid "Move Right"
-msgstr ""
+msgstr "Mover Hacia la Derecha"
 
 #: ../Scenes/OptionsMenu.tscn:651
 msgid "Moves the camera right."
-msgstr ""
+msgstr "Mueve la cámara hacia la derecha."
 
 #: ../Scenes/OptionsMenu.tscn:661
 msgid "Rotate Camera"
-msgstr ""
+msgstr "Girar Cámara"
 
 #: ../Scenes/OptionsMenu.tscn:669
 msgid "Enable rotation of the camera when moving the mouse."
-msgstr ""
+msgstr "Habilita la rotación de la cámara al mover el ratón."
 
 #: ../Scenes/OptionsMenu.tscn:679
 msgid "Reset Camera"
-msgstr ""
+msgstr "Reiniciar Cámara"
 
 #: ../Scenes/OptionsMenu.tscn:687
 msgid "Resets the camera to the default position."
-msgstr ""
+msgstr "Regresa la cámara a su posición inicial."
 
 #: ../Scenes/OptionsMenu.tscn:697
 msgid "Zoom In / Lift Piece Down"
-msgstr ""
+msgstr "Acercar/Levantar pieza hacia abajo"
 
 #: ../Scenes/OptionsMenu.tscn:705
 msgid "Zoom the camera towards the table, or lift a piece down onto the table."
 msgstr ""
+"Haga zoom con la cámara hacia la mesa o levante una pieza sobre la mesa."
 
 #: ../Scenes/OptionsMenu.tscn:715
 msgid "Zoom Out / Lift Piece Up"
-msgstr ""
+msgstr "Alejar / Levantar pieza"
 
 #: ../Scenes/OptionsMenu.tscn:723
 msgid "Zoom the camera away from the table, or lift a piece up from the table."
-msgstr ""
+msgstr "Aleja la cámara de la mesa o levanta una pieza de la mesa."
 
 #: ../Scenes/OptionsMenu.tscn:733
 msgid "Flip Piece Orientation"
-msgstr ""
+msgstr "Cambia la orientación de la pieza"
 
 #: ../Scenes/OptionsMenu.tscn:741
 msgid ""
