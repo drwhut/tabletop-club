@@ -99,6 +99,12 @@ func apply_texture(texture: Texture, surface: int = 0) -> void:
 		
 		mesh_instance.set_surface_material(surface, material)
 
+# Force the piece to save the current transform as the latest physics state
+# transform. Use this if the latest physics state transform is required before
+# the next physics frame.
+func force_set_physics_state_transform() -> void:
+	_last_physics_state_transform = transform.orthonormalized()
+
 # Get the current albedo colour in the piece's material.
 # Returns: The current albedo colour.
 func get_albedo_color() -> Color:
