@@ -221,6 +221,7 @@ var _piece_rotation_amount = 1.0
 var _right_click_pos = Vector2()
 var _rotation = Vector2()
 var _ruler_placing_point2 = false
+var _ruler_scale_value_changed_lock = false
 var _selected_pieces = []
 var _send_erase_position = false
 var _send_paint_position = false
@@ -2490,10 +2491,22 @@ func _on_RulerOKButton_pressed():
 	_ruler_tool_menu.visible = false
 
 func _on_RulerScaleSlider_value_changed(value: float):
+	if _ruler_scale_value_changed_lock:
+		return
+	
+	# Ensure that the slider and the spin box don't keep calling each other's
+	# value_changed callbacks.
+	_ruler_scale_value_changed_lock = true
 	_ruler_scale_spin_box.value = value
+	_ruler_scale_value_changed_lock = false
 
 func _on_RulerScaleSpinBox_value_changed(value: float):
+	if _ruler_scale_value_changed_lock:
+		return
+	
+	_ruler_scale_value_changed_lock = true
 	_ruler_scale_slider.value = value
+	_ruler_scale_value_changed_lock = false
 
 func _on_RulerToolButton_pressed():
 	_set_tool(TOOL_RULER)
