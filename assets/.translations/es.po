@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-02-06 00:16\n"
-"PO-Revision-Date: 2023-02-21 22:37+0000\n"
+"PO-Revision-Date: 2023-02-22 23:41+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/es/>\n"
@@ -865,6 +865,10 @@ msgid ""
 "really started liking it, so I guess it is a pastiche now? Oh, man... I wish "
 "there was an allowance for pastiche in copyright like there is for parody."
 msgstr ""
+"Estas se va hasta el 11. Comencé a producirla como una parodia... y comenzó "
+"a gustarme, por lo que creo que ahora es una mezcla, no? Válgame... quisiera "
+"que hubiera licencia para las mezclas en los derechos de autor como la hay "
+"con las parodias."
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:1
 msgid "Spy Glass - Kevin MacLeod"
@@ -876,6 +880,10 @@ msgid ""
 "1950s. Super cool jazz for your hardcore detectives! Also useful for beat "
 "poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
 msgstr ""
+"El año es... ni idea. Sin tiempo. Podría ser ahora, podrían ser los años 50. "
+"Jazz muy en onda para sus rudos detectives!\n"
+"También es útil para los poetas del beat! También es util para los ratos "
+"aburridos! Bueno, aburridos pero interesantes."
 
 #: ../TabletopClub/pieces/Bishop_Black:1
 msgid "Bishop Black"
@@ -939,7 +947,7 @@ msgstr "Bosque"
 
 #: ../TabletopClub/skyboxes/Hornstulls_Strand:1
 msgid "Hornstulls Strand"
-msgstr ""
+msgstr "Hornstulls Strand."
 
 #: ../TabletopClub/skyboxes/Ice_River:1
 msgid "Ice River"
@@ -1023,7 +1031,7 @@ msgstr "Azul"
 
 #: ../TabletopClub/tokens/cube/Blue:2
 msgid "A blue token."
-msgstr ""
+msgstr "Un jetón azul."
 
 #: ../TabletopClub/tokens/cube/Brown:1
 msgid "Brown"
@@ -1031,47 +1039,47 @@ msgstr "Café"
 
 #: ../TabletopClub/tokens/cube/Brown:2
 msgid "A brown token."
-msgstr ""
+msgstr "Un jetón cafe."
 
 #: ../TabletopClub/tokens/cube/Cyan:1
 msgid "Cyan"
-msgstr ""
+msgstr "Cian"
 
 #: ../TabletopClub/tokens/cube/Cyan:2
 msgid "A cyan token."
-msgstr ""
+msgstr "Un jetón cian."
 
 #: ../TabletopClub/tokens/cube/Green:1
 msgid "Green"
-msgstr ""
+msgstr "Verde"
 
 #: ../TabletopClub/tokens/cube/Green:2
 msgid "A green token."
-msgstr ""
+msgstr "Un jetón verde."
 
 #: ../TabletopClub/tokens/cube/Orange:1
 msgid "Orange"
-msgstr ""
+msgstr "Naranja"
 
 #: ../TabletopClub/tokens/cube/Orange:2
 msgid "An orange token."
-msgstr ""
+msgstr "Un jetón naranja."
 
 #: ../TabletopClub/tokens/cube/Pink:1
 msgid "Pink"
-msgstr ""
+msgstr "Rosa"
 
 #: ../TabletopClub/tokens/cube/Pink:2
 msgid "A pink token."
-msgstr ""
+msgstr "Un jetón rosa."
 
 #: ../TabletopClub/tokens/cube/Purple:1
 msgid "Purple"
-msgstr ""
+msgstr "Púrpura"
 
 #: ../TabletopClub/tokens/cube/Purple:2
 msgid "A purple token."
-msgstr ""
+msgstr "Un jetón púrpura."
 
 #: ../TabletopClub/tokens/cube/Red:1
 msgid "Red"
@@ -1079,23 +1087,23 @@ msgstr "Rojo"
 
 #: ../TabletopClub/tokens/cube/Red:2
 msgid "A red token."
-msgstr ""
+msgstr "Un jetón rojo."
 
 #: ../TabletopClub/tokens/cube/White:1
 msgid "White"
-msgstr ""
+msgstr "Blanco"
 
 #: ../TabletopClub/tokens/cube/White:2
 msgid "A white token."
-msgstr ""
+msgstr "Un jetón blanco."
 
 #: ../TabletopClub/tokens/cube/Yellow:1
 msgid "Yellow"
-msgstr ""
+msgstr "Amarillo"
 
 #: ../TabletopClub/tokens/cube/Yellow:2
 msgid "A yellow token."
-msgstr ""
+msgstr "Un jetón amarillo."
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
@@ -1105,64 +1113,64 @@ msgstr "1"
 #: ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2
 #: ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
 msgid "A poker chip."
-msgstr ""
+msgstr "Una ficha de póker."
 
 #: ../TabletopClub/tokens/cylinder/10:1
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: ../TabletopClub/tokens/cylinder/100:1
 msgid "100"
-msgstr ""
+msgstr "100"
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:1
 msgid "20 x 1 Chips"
-msgstr ""
+msgstr "20 x 1 Fichas"
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:2
 msgid "A stack of 20 1-value chips."
-msgstr ""
+msgstr "Una pila de 20 fichas de valor 1."
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:1
 msgid "20 x 10 Chips"
-msgstr ""
+msgstr "20 Fichas de 10"
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:2
 msgid "A stack of 20 10-value chips."
-msgstr ""
+msgstr "Una pila de 20 fichas de valor 10."
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:1
 msgid "20 x 100 Chips"
-msgstr ""
+msgstr "20 Fichas de 100"
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:2
 msgid "A stack of 20 100-value chips."
-msgstr ""
+msgstr "Una pila de 20 fichas de valor 100."
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:1
 msgid "20 x 25 Chips"
-msgstr ""
+msgstr "20 Fichas de 25"
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:2
 msgid "A stack of 20 25-value chips."
-msgstr ""
+msgstr "Una pila de 20 fichas de valor 25."
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:1
 msgid "20 x 5 Chips"
-msgstr ""
+msgstr "20 Fichas de 5"
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:2
 msgid "A stack of 20 5-value chips."
-msgstr ""
+msgstr "Una pila de 20 fichas de valor 5."
 
 #: ../TabletopClub/tokens/cylinder/25:1
 msgid "25"
-msgstr ""
+msgstr "25"
 
 #: ../TabletopClub/tokens/cylinder/5:1
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../TabletopClub/tokens/cylinder/D:1
 msgid "D"
-msgstr ""
+msgstr "D"
