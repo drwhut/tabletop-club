@@ -81,6 +81,7 @@ var _new_velocity = Vector3()
 # before converting it into a Quat. Since the game uses frame interpolation,
 # the "main thread" transform is not 100% reliable.
 var _last_physics_state_transform: Transform = Transform.IDENTITY
+var _last_physics_state_transform_set = false
 
 var _outline_material: ShaderMaterial = null
 
@@ -98,12 +99,6 @@ func apply_texture(texture: Texture, surface: int = 0) -> void:
 		material.albedo_texture = texture
 		
 		mesh_instance.set_surface_material(surface, material)
-
-# Force the piece to save the current transform as the latest physics state
-# transform. Use this if the latest physics state transform is required before
-# the next physics frame.
-func force_set_physics_state_transform() -> void:
-	_last_physics_state_transform = transform.orthonormalized()
 
 # Get the current albedo colour in the piece's material.
 # Returns: The current albedo colour.
@@ -567,6 +562,13 @@ remotesync func start_hovering(player_id: int, init_pos: Vector3, offset_pos: Ve
 	if get_tree().get_rpc_sender_id() != 1:
 		return
 	
+	# There is a chance this function could be called immediately after the
+	# piece was added to the scene, before a physics pass could be completed.
+	# If that is the case, we need to manually orthonormalize the current
+	# transform.
+	if not _last_physics_state_transform_set:
+		_last_physics_state_transform = transform.orthonormalized()
+	
 	hover_quat = Quat(_last_physics_state_transform.basis)
 	hover_position = init_pos
 	
@@ -728,6 +730,7 @@ func _integrate_forces(state):
 				_last_server_state_invalid = true
 	
 	_last_physics_state_transform = state.transform
+	_last_physics_state_transform_set = true
 
 # Get the starting albedo colour of a given material.
 # Returns: The starting albedo of the material.

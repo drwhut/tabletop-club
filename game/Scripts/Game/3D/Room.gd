@@ -1441,9 +1441,6 @@ master func request_pop_stack(stack_name: String, n: int, hover: bool,
 		new_piece = stack
 
 	if new_piece and hover:
-		# Since this is all happening in one frame, make sure the internal
-		# physics state transform is correct before starting to hover the piece.
-		new_piece.force_set_physics_state_transform()
 		if new_piece.srv_start_hovering(player_id, new_piece.transform.origin, Vector3()):
 			rpc_id(player_id, "request_pop_stack_accepted", new_piece.name)
 
