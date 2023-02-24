@@ -27,6 +27,7 @@ class_name ObjectPreview
 onready var _camera = $CenterContainer/ViewportContainer/Viewport/Camera
 onready var _label = $LabelContainer/Label
 onready var _label_container = $LabelContainer
+onready var _stack_icon = $CenterContainer/ViewportContainer/StackIcon
 onready var _viewport = $CenterContainer/ViewportContainer/Viewport
 
 const LABEL_WAIT_TIME = 3.0
@@ -100,6 +101,8 @@ func set_piece_details(piece_entry: Dictionary) -> void:
 	_label_direction_moving = 1
 	_label_time_since_move = 0.0
 	_label_time_waiting = LABEL_WAIT_TIME
+	
+	_stack_icon.visible = piece_entry.has("entry_names")
 
 # Set the piece to be displayed in the viewport.
 # piece: The piece to display. Note that it must be an orphan node!
@@ -197,6 +200,7 @@ func _clear_gui(details: bool = true) -> void:
 	if details:
 		hint_tooltip = ""
 		_label.text = ""
+		_stack_icon.visible = false
 	
 	# If the PieceFactory is still building a piece for this preview, we don't
 	# want it to appear after we've cleared the preview, so cancel the request.

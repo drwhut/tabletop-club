@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-List.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/Game/UI/Previews/ObjectPreview.gd" type="Script" id=2]
+[ext_resource path="res://Images/StackIcon.svg" type="Texture" id=3]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -61,6 +62,14 @@ gui_disable_input = true
 
 [node name="Camera" type="Camera" parent="CenterContainer/ViewportContainer/Viewport"]
 far = 500.0
+
+[node name="StackIcon" type="TextureRect" parent="CenterContainer/ViewportContainer"]
+margin_left = 76.0
+margin_right = 100.0
+margin_bottom = 24.0
+hint_tooltip = "This item is made up of multiple objects."
+texture = ExtResource( 3 )
+expand = true
 
 [node name="LabelContainer" type="ScrollContainer" parent="."]
 margin_top = 104.0
