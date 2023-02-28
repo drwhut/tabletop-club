@@ -22,6 +22,10 @@
 
 extends Control
 
+enum {
+	PLAYER_CONTEXT_VIEW_NOTEBOOK
+}
+
 signal about_to_save_table()
 signal applying_options(config)
 signal clear_pieces()
@@ -50,6 +54,7 @@ onready var _multiplayer_container = $HideableUI/MultiplayerContainer
 onready var _notebook_dialog = $NotebookDialog
 onready var _objects_dialog = $ObjectsDialog
 onready var _options_menu = $CanvasLayer/OptionsMenu
+onready var _player_context_menu = $HideableUI/PlayerContextMenu
 onready var _player_list_container = $HideableUI/MultiplayerContainer/PlayerListContainer
 onready var _room_code_label = $HideableUI/MultiplayerContainer/RoomCodeLabel
 onready var _room_code_toggle_button = $HideableUI/MultiplayerContainer/RoomCodeVisibleContainer/RoomCodeToggleButton
@@ -67,6 +72,8 @@ var spawn_point_temp_offset: Vector3 = Vector3.ZERO
 
 var _room_code: String = ""
 var _room_code_visible: bool = true
+
+var _player_context_menu_id: int = -1
 
 func add_notification_info(message: String) -> void:
 	_chat_box.add_raw_message("[color=aqua][INFO][/color] %s" % message, true)
@@ -193,6 +200,9 @@ func _update_player_list() -> void:
 	for label in _player_list_container.get_children():
 		if label.name.is_valid_integer():
 			if not int(label.name) in player_id_list:
+				if label.is_connected("meta_clicked", self, "_on_player_label_clicked"):
+					label.disconnect("meta_clicked", self, "_on_player_label_clicked")
+				
 				_player_list_container.remove_child(label)
 				label.queue_free()
 		else:
@@ -208,16 +218,20 @@ func _update_player_list() -> void:
 			label = RichTextLabel.new()
 			label.name = player_id_str
 			label.rect_min_size.y = 20
-			label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			label.bbcode_enabled = true
 			label.scroll_active = false
+			
+			label.meta_underlined = false
+			label.connect("meta_clicked", self, "_on_player_label_clicked")
+			
 			_player_list_container.add_child(label)
 		
 		if label == null:
 			push_error("Label for player %d could not be created!" % player_id)
 			continue
 		
-		label.bbcode_text = "[right]%s[/right]" % Lobby.get_name_bb_code(player_id)
+		label.bbcode_text = "[right][url=%d]%s[/url][/right]" % [player_id,
+				Lobby.get_name_bb_code(player_id)]
 
 # Update the room code display.
 func _update_room_code_display() -> void:
@@ -306,13 +320,17 @@ func _on_Lobby_player_removed(id: int):
 	var name = Lobby.get_name_bb_code(id)
 	add_notification_info(tr("%s has left the game.") % name)
 	call_deferred("_update_player_list")
+	
+	# Hide the context menu if it was for the player that just left.
+	if _player_context_menu_id == id:
+		_player_context_menu.visible = false
 
 func _on_MainMenuButton_pressed():
 	emit_signal("leaving_room")
 	Global.start_main_menu()
 
 func _on_NotebookButton_pressed():
-	_notebook_dialog.popup_centered()
+	_notebook_dialog.popup_edit_mode()
 
 func _on_ObjectsButton_pressed():
 	spawn_point_container_name = ""
@@ -330,6 +348,36 @@ func _on_OptionsButton_pressed():
 
 func _on_OptionsMenu_applying_options(config: ConfigFile):
 	emit_signal("applying_options", config)
+
+func _on_PlayerContextMenu_id_pressed(id: int):
+	match id:
+		PLAYER_CONTEXT_VIEW_NOTEBOOK:
+			_notebook_dialog.popup_view_mode(_player_context_menu_id)
+		_:
+			push_error("Invalid ID for PlayerContextMenu (%d)!" % id)
+			return
+
+func _on_player_label_clicked(player_id_str: String) -> void:
+	if not player_id_str.is_valid_integer():
+		push_error("Invalid player ID from label!")
+		return
+	
+	_player_context_menu_id = int(player_id_str)
+	
+	if not Lobby.player_exists(_player_context_menu_id):
+		push_error("Player with ID %d does not exist!" % _player_context_menu_id)
+		return
+	
+	# For now, do not open the context menu for self.
+	if _player_context_menu_id == get_tree().get_network_unique_id():
+		return
+	
+	_player_context_menu.clear()
+	_player_context_menu.add_item(tr("View notebook"), PLAYER_CONTEXT_VIEW_NOTEBOOK)
+	
+	_player_context_menu.rect_position = get_viewport().get_mouse_position()
+	_player_context_menu.set_as_minsize()
+	_player_context_menu.popup()
 
 func _on_Room_undo_stack_empty():
 	_undo_button.disabled = true

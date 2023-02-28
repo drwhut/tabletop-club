@@ -23,9 +23,6 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TopPanel" type="HBoxContainer" parent="HideableUI"]
 anchor_right = 1.0
@@ -134,6 +131,10 @@ margin_top = 50.0
 margin_right = 200.0
 margin_bottom = 50.0
 mouse_filter = 2
+
+[node name="PlayerContextMenu" type="PopupMenu" parent="HideableUI"]
+margin_right = 20.0
+margin_bottom = 20.0
 
 [node name="ObjectsDialog" parent="." instance=ExtResource( 2 )]
 window_title = "Objects"
@@ -252,6 +253,7 @@ visible = false
 [connection signal="item_selected" from="HideableUI/TopPanel/RotationOption" to="." method="_on_RotationOption_item_selected"]
 [connection signal="pressed" from="HideableUI/TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
 [connection signal="pressed" from="HideableUI/MultiplayerContainer/RoomCodeVisibleContainer/RoomCodeToggleButton" to="." method="_on_RoomCodeToggleButton_pressed"]
+[connection signal="id_pressed" from="HideableUI/PlayerContextMenu" to="." method="_on_PlayerContextMenu_id_pressed"]
 [connection signal="entry_requested" from="ObjectsDialog" to="." method="_on_ObjectsDialog_entry_requested"]
 [connection signal="entry_requested" from="GamesDialog" to="." method="_on_GamesDialog_entry_requested"]
 [connection signal="requesting_room_details" from="RoomDialog" to="." method="_on_RoomDialog_requesting_room_details"]
