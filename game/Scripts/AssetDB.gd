@@ -30,6 +30,7 @@ enum {
 	ASSET_SCENE,
 	ASSET_SKYBOX,
 	ASSET_TABLE,
+	ASSET_TEMPLATE,
 	ASSET_TEXTURE
 }
 
@@ -59,6 +60,7 @@ const ASSET_PACK_SUBFOLDERS = {
 	"sounds": { "type": ASSET_AUDIO, "scene": "" },
 	"speakers": { "type": ASSET_SCENE, "scene": "" },
 	"tables": { "type": ASSET_SCENE, "scene": "" },
+	"templates": { "type": ASSET_TEMPLATE, "scene": "" },
 	"timers": { "type": ASSET_SCENE, "scene": "" },
 	"tokens/cube": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Tokens/Cube.tscn" },
 	"tokens/cylinder": { "type": ASSET_TEXTURE, "scene": "res://Pieces/Tokens/Cylinder.tscn" }
@@ -76,7 +78,7 @@ const VALID_TEXTURE_EXTENSIONS = ["bmp", "dds", "exr", "hdr", "jpeg", "jpg",
 # The list of extensions that require us to use the TabletopImporter.
 const EXTENSIONS_TO_IMPORT = VALID_AUDIO_EXTENSIONS + VALID_SCENE_EXTENSIONS + VALID_TEXTURE_EXTENSIONS
 
-const VALID_SUPPORT_EXTENSIONS = ["bin", "mtl"]
+const VALID_SUPPORT_EXTENSIONS = ["bin", "mtl", "txt"]
 const VALID_EXTENSIONS = EXTENSIONS_TO_IMPORT + VALID_TABLE_EXTENSIONS + VALID_SUPPORT_EXTENSIONS
 
 const SFX_AUDIO_STREAMS = {
@@ -964,6 +966,10 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 	elif asset_type == ASSET_TABLE:
 		if VALID_TABLE_EXTENSIONS.has(to.get_extension()):
 			entry = { "table_path": to }
+	elif asset_type == ASSET_TEMPLATE:
+		var extension = to.get_extension()
+		if extension == "txt" or VALID_TEXTURE_EXTENSIONS.has(extension):
+			entry = { "template_path": to }
 	elif asset_type == ASSET_TEXTURE:
 		if asset_scene and VALID_TEXTURE_EXTENSIONS.has(to.get_extension()):
 			entry = { "scene_path": asset_scene, "texture_path": to }
@@ -1048,6 +1054,8 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 		entry["default"] = default
 		entry["hands"] = hands
 		entry["paint_plane"] = paint_plane
+	elif type == "templates":
+		pass
 	else: # Objects.
 		var color_str = _get_file_config_value(config, from.get_file(), "color", "#ffffff")
 		var color = Color(color_str)
@@ -1353,6 +1361,9 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 		
 		elif asset_type == ASSET_TABLE:
 			expected_keys.append_array(["table_path", "texture_path"])
+		
+		elif asset_type == ASSET_TEMPLATE:
+			expected_keys.append_array(["template_path"])
 		
 		else: # Objects.
 			expected_keys.append_array(["color", "mass", "scale", "scene_path",
@@ -1686,6 +1697,14 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 				
 				if not _is_valid_path(value, VALID_TABLE_EXTENSIONS):
 					push_error("'table_path' in entry is not a valid path!")
+					return false
+			"template_path":
+				if typeof(value) != TYPE_STRING:
+					push_error("'template_path' in entry is not a string!")
+					return false
+				
+				if not _is_valid_path(value, VALID_TEXTURE_EXTENSIONS + ["txt"]):
+					push_error("'template_path' in entry is not a valid path!")
 					return false
 			"texture_path":
 				if asset_type == ASSET_SCENE:

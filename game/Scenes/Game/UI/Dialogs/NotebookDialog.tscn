@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Game/UI/Dialogs/NotebookDialog.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Game/UI/Dialogs/PreviewDialog.tscn" type="PackedScene" id=2]
 
 [node name="NotebookDialog" type="WindowDialog"]
 margin_right = 500.0
@@ -102,6 +103,13 @@ margin_bottom = 90.0
 window_title = "Delete page?"
 dialog_autowrap = true
 
+[node name="TemplateDialog" parent="." instance=ExtResource( 2 )]
+window_title = "Templates"
+db_types = {
+"TEMPLATES": "templates"
+}
+load_button_text = "Open"
+
 [connection signal="popup_hide" from="." to="." method="_on_NotebookDialog_popup_hide"]
 [connection signal="tree_exiting" from="." to="." method="_on_NotebookDialog_tree_exiting"]
 [connection signal="item_selected" from="HBoxContainer/ScrollContainer/PageListContainer/PageList" to="." method="_on_PageList_item_selected"]
@@ -113,3 +121,4 @@ dialog_autowrap = true
 [connection signal="pressed" from="HBoxContainer/PageContainer/ModifyContainer/MoveDownButton" to="." method="_on_MoveDownButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/PageContainer/ModifyContainer/DeleteButton" to="." method="_on_DeleteButton_pressed"]
 [connection signal="confirmed" from="ConfirmDeleteDialog" to="." method="_on_ConfirmDeleteDialog_confirmed"]
+[connection signal="entry_requested" from="TemplateDialog" to="." method="_on_TemplateDialog_entry_requested"]

@@ -30,6 +30,7 @@ onready var _move_up_button = $HBoxContainer/PageContainer/ModifyContainer/MoveU
 onready var _new_page_button = $HBoxContainer/ScrollContainer/PageListContainer/NewPageButton
 onready var _page_list = $HBoxContainer/ScrollContainer/PageListContainer/PageList
 onready var _public_check_box = $HBoxContainer/PageContainer/TitleContainer/PublicCheckBox
+onready var _template_dialog = $TemplateDialog
 onready var _text_edit = $HBoxContainer/PageContainer/TextEdit
 onready var _title_edit = $HBoxContainer/PageContainer/TitleContainer/TitleEdit
 
@@ -303,6 +304,20 @@ func _is_page_entry_valid(page_entry: Dictionary) -> bool:
 	else:
 		page_entry["public"] = false
 	
+	if page_entry.has("template"):
+		var page_template = page_entry["template"]
+		if typeof(page_template) != TYPE_STRING:
+			push_error("Page template in the page array is not a string!")
+			return false
+		
+		# Allow for blank page template entries for backwards-compatibility.
+		if not page_template.empty():
+			if AssetDB.search_path(page_template).empty():
+				push_warning("Missing template '%s' for page '%s'." % [
+						page_template, page_title])
+	else:
+		page_entry["template"] = ""
+	
 	return true
 
 # Check if the window is in read-only mode.
@@ -467,27 +482,7 @@ func _on_MoveUpButton_pressed():
 	_time_since_last_update = 0.0
 
 func _on_NewPageButton_pressed():
-	# Save the text on the previous page.
-	if not current_page_array.empty():
-		_attempt_save_page_array_to_file()
-	
-	var new_title: String = tr("New Page")
-	current_page_array.push_back({
-		"title": new_title,
-		"public": false,
-		"text": ""
-	})
-	_page_list.add_item(new_title)
-	
-	_set_read_only(false)
-	
-	var new_index = current_page_array.size() - 1
-	_page_list.select(new_index)
-	_display_page_contents(new_index)
-	_set_modifier_buttons_enabled(new_index)
-	
-	_updated_since_last_save = true
-	_time_since_last_update = 0.0
+	_template_dialog.popup_centered()
 
 func _on_NotebookDialog_popup_hide():
 	if _is_current_array_from_self():
@@ -509,6 +504,52 @@ func _on_PublicCheckBox_toggled(button_pressed: bool):
 		return
 	
 	current_page_array[_page_on_display]["public"] = button_pressed
+	
+	_updated_since_last_save = true
+	_time_since_last_update = 0.0
+
+func _on_TemplateDialog_entry_requested(_pack: String, _type: String, entry: Dictionary):
+	_template_dialog.visible = false
+	
+	# Save the text on the previous page.
+	if not current_page_array.empty():
+		_attempt_save_page_array_to_file()
+	
+	var template_file_path: String  = entry["template_path"]
+	
+	# TODO: Image templates should not be read like text files.
+	var default_text: String = ""
+	var template_file = File.new()
+	var err = template_file.open(template_file_path, File.READ)
+	if err == OK:
+		default_text = template_file.get_as_text()
+		template_file.close()
+	else:
+		push_error("Error opening file '%s'! (error: %d)" % [template_file_path, err])
+	
+	var locale = TranslationServer.get_locale()
+	var name_locale = "name_%s" % locale
+	
+	var template_name: String = entry["name"]
+	if entry.has(name_locale):
+		template_name = entry[name_locale]
+	var template_entry_path: String = entry["entry_path"]
+	
+	var new_title: String = tr("New %s") % template_name
+	current_page_array.push_back({
+		"title": new_title,
+		"public": false,
+		"template": template_entry_path,
+		"text": default_text
+	})
+	_page_list.add_item(new_title)
+	
+	_set_read_only(false)
+	
+	var new_index = current_page_array.size() - 1
+	_page_list.select(new_index)
+	_display_page_contents(new_index)
+	_set_modifier_buttons_enabled(new_index)
 	
 	_updated_since_last_save = true
 	_time_since_last_update = 0.0

@@ -40,7 +40,8 @@ const GENERIC_PREVIEW_TYPES = [
 	"games",
 	"music",
 	"skyboxes",
-	"sounds"
+	"sounds",
+	"templates"
 ]
 
 var _is_ready = false
@@ -289,6 +290,7 @@ func _set_type_options() -> void:
 			type_text = type_text.replace("SPEAKERS", tr("Speakers"))
 			type_text = type_text.replace("STACKS", tr("Stacks"))
 			type_text = type_text.replace("TABLES", tr("Tables"))
+			type_text = type_text.replace("TEMPLATES", tr("Templates"))
 			type_text = type_text.replace("TIMERS", tr("Timers"))
 			type_text = type_text.replace("TOKENS", tr("Tokens"))
 			
