@@ -9,17 +9,17 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-02-06 00:16\n"
-"PO-Revision-Date: 2022-11-28 17:36+0000\n"
-"Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
+"PO-Revision-Date: 2023-03-02 09:38+0000\n"
+"Last-Translator: Artemy Fedotov <catlovescpp@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.16\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -1024,104 +1024,84 @@ msgid "An old radio from a bygone era."
 msgstr "Старый радиоприемник из ушедшей эпохи."
 
 #: ../TabletopClub/tokens/cube/Blue:1
-#, fuzzy
-#| msgid "d4 (Blue)"
 msgid "Blue"
-msgstr "d4 (Синий)"
+msgstr "Синий"
 
 #: ../TabletopClub/tokens/cube/Blue:2
 msgid "A blue token."
-msgstr ""
+msgstr "Синий жетон."
 
 #: ../TabletopClub/tokens/cube/Brown:1
-#, fuzzy
-#| msgid "d4 (Brown)"
 msgid "Brown"
-msgstr "d4 (Коричневый)"
+msgstr "Коричневый"
 
 #: ../TabletopClub/tokens/cube/Brown:2
 msgid "A brown token."
-msgstr ""
+msgstr "Коричневый жетон."
 
 #: ../TabletopClub/tokens/cube/Cyan:1
-#, fuzzy
-#| msgid "d4 (Cyan)"
 msgid "Cyan"
-msgstr "d4 (Голубой)"
+msgstr "Голубой"
 
 #: ../TabletopClub/tokens/cube/Cyan:2
 msgid "A cyan token."
-msgstr ""
+msgstr "Голубой жетон."
 
 #: ../TabletopClub/tokens/cube/Green:1
-#, fuzzy
-#| msgid "d4 (Green)"
 msgid "Green"
-msgstr "d4 (Зелёный)"
+msgstr "Зелёный"
 
 #: ../TabletopClub/tokens/cube/Green:2
 msgid "A green token."
-msgstr ""
+msgstr "Зелёный жетон."
 
 #: ../TabletopClub/tokens/cube/Orange:1
-#, fuzzy
-#| msgid "d4 (Orange)"
 msgid "Orange"
-msgstr "d4 (Оранжевый)"
+msgstr "Оранжевый"
 
 #: ../TabletopClub/tokens/cube/Orange:2
 msgid "An orange token."
-msgstr ""
+msgstr "Оранжевый жетон."
 
 #: ../TabletopClub/tokens/cube/Pink:1
-#, fuzzy
-#| msgid "d4 (Pink)"
 msgid "Pink"
-msgstr "d4 (Розовый)"
+msgstr "Розовый"
 
 #: ../TabletopClub/tokens/cube/Pink:2
 msgid "A pink token."
-msgstr ""
+msgstr "Розовый жетон."
 
 #: ../TabletopClub/tokens/cube/Purple:1
-#, fuzzy
-#| msgid "d4 (Purple)"
 msgid "Purple"
-msgstr "d4 (Фиолетовый)"
+msgstr "Фиолетовый"
 
 #: ../TabletopClub/tokens/cube/Purple:2
 msgid "A purple token."
-msgstr ""
+msgstr "Фиолетовый жетон."
 
 #: ../TabletopClub/tokens/cube/Red:1
-#, fuzzy
-#| msgid "Red Cup"
 msgid "Red"
-msgstr "Красная чашка"
+msgstr "Красный"
 
 #: ../TabletopClub/tokens/cube/Red:2
 msgid "A red token."
-msgstr ""
+msgstr "Красный жетон."
 
 #: ../TabletopClub/tokens/cube/White:1
-#, fuzzy
-#| msgid "d4 (White)"
 msgid "White"
-msgstr "d4 (Белый)"
+msgstr "Белый"
 
 #: ../TabletopClub/tokens/cube/White:2
 msgid "A white token."
-msgstr ""
+msgstr "Белый жетон."
 
 #: ../TabletopClub/tokens/cube/Yellow:1
-#, fuzzy
-#| msgid "d4 (Yellow)"
 msgid "Yellow"
-msgstr "d4 (Жёлтый)"
+msgstr "Жёлтый"
 
 #: ../TabletopClub/tokens/cube/Yellow:2
 msgid "A yellow token."
-msgstr ""
+msgstr "Жёлтый жетон."
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
