@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-19 21:03+0000\n"
-"PO-Revision-Date: 2023-02-21 16:39+0000\n"
+"PO-Revision-Date: 2023-03-02 17:38+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -665,7 +665,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
 msgid "Skyboxes"
-msgstr ""
+msgstr "Cielo"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
 msgid "``Vector3(0.0, 0.0, 0.0)``"
@@ -727,7 +727,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:181
 msgid "Containers"
-msgstr ""
+msgstr "Contenedores"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:181
 msgid ""
@@ -970,7 +970,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:154
 msgid "Speaker"
-msgstr ""
+msgstr "Altavoz"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "By the corner of the table is a large, metallic gramophone."
@@ -985,7 +985,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:167
 msgid "Timer"
-msgstr ""
+msgstr "Temporizador"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:169
 msgid ""
