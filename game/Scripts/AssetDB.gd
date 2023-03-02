@@ -1107,6 +1107,12 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 					entry_dict["x"] = 0
 				if not entry_dict.has("y"):
 					entry_dict["y"] = 0
+				if not entry_dict.has("w"):
+					entry_dict["w"] = 300
+				if not entry_dict.has("h"):
+					entry_dict["h"] = 60
+				if not entry_dict.has("rot"):
+					entry_dict["rot"] = 0.0
 		
 		entry["textboxes"] = textbox_dict
 	else: # Objects.
@@ -1798,19 +1804,17 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 						push_error("Textbox entry in 'textboxes' is not a dictionary!")
 						return false
 					
-					if subvalue.size() != 2:
+					if subvalue.size() != 5:
 						push_error("Invalid number of elements %d for textbox entry!" % subvalue.size())
 						return false
 					
 					if not subvalue.has("x"):
 						push_error("Textbox entry does not contain element 'x'!")
 						return false
-					
 					var x = subvalue["x"]
 					if typeof(x) != TYPE_INT:
 						push_error("Textbox element 'x' is not an integer!")
 						return false
-					
 					if x < 0:
 						push_error("Invalid value %d for textbox element 'x'!" % x)
 						return false
@@ -1818,14 +1822,45 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 					if not subvalue.has("y"):
 						push_error("Textbox entry does not contain element 'y'!")
 						return false
-					
 					var y = subvalue["y"]
 					if typeof(y) != TYPE_INT:
 						push_error("Textbox element 'y' is not an integer!")
 						return false
-					
 					if y < 0:
 						push_error("Invalid value %d for textbox element 'y'!" % y)
+						return false
+					
+					if not subvalue.has("w"):
+						push_error("Textbox entry does not contain element 'w'!")
+						return false
+					var w = subvalue["w"]
+					if typeof(w) != TYPE_INT:
+						push_error("Textbox element 'w' is not an integer!")
+						return false
+					if w < 10:
+						push_error("Invalid value %d for textbox element 'w'!" % w)
+						return false
+					
+					if not subvalue.has("h"):
+						push_error("Textbox entry does not contain element 'h'!")
+						return false
+					var h = subvalue["h"]
+					if typeof(h) != TYPE_INT:
+						push_error("Textbox element 'h' is not an integer!")
+						return false
+					if h < 10:
+						push_error("Invalid value %d for textbox element 'h'!" % h)
+						return false
+					
+					if not subvalue.has("rot"):
+						push_error("Textbox entry does not contain element 'rot'!")
+						return false
+					var rot = subvalue["rot"]
+					if not (typeof(rot) == TYPE_INT or typeof(rot) == TYPE_REAL):
+						push_error("Textbox element 'rot' is not a number!")
+						return false
+					if is_nan(rot) or is_inf(rot):
+						push_error("Invalid value for textbox element 'rot'!")
 						return false
 			"texture_path":
 				if asset_type == ASSET_SCENE:

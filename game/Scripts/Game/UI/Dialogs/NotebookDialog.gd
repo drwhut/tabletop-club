@@ -290,16 +290,36 @@ func _display_page_contents(index: int) -> void:
 			else:
 				line_edit = LineEdit.new()
 				line_edit.connect("text_changed", self, "_on_LineEdit_text_changed")
+				
+				var font: DynamicFont = preload("res://Fonts/Cabin/Cabin-Regular.tres")
+				font = font.duplicate() # Allows for varying font sizes.
+				line_edit.add_font_override("font", font)
+				
 				_image_rect.add_child(line_edit)
+			
+			var font: DynamicFont = line_edit.get_font("font")
+			var style: StyleBox = line_edit.get_stylebox("normal")
+			var box_min_size: Vector2 = style.get_minimum_size()
 			
 			var textbox_id: String = textbox_id_arr[index]
 			var textbox_meta: Dictionary = textbox_dict[textbox_id]
 			
-			var x = min(textbox_meta["x"], texture.get_width())
-			var y = min(textbox_meta["y"], texture.get_height())
+			var x = min(textbox_meta["x"], texture.get_width() - box_min_size.x)
+			var y = min(textbox_meta["y"], texture.get_height() - box_min_size.y)
+			
+			var w = min(textbox_meta["w"], texture.get_width() - x)
+			var h = min(textbox_meta["h"], texture.get_height() - y)
 			
 			line_edit.name = textbox_id
 			line_edit.rect_position = Vector2(x, y)
+			
+			# Estimate how big the font can be before it starts expanding the
+			# control it is in.
+			var font_height = h - box_min_size.y
+			font.size = int(max(ceil(0.75 * font_height), 1.0))
+			line_edit.rect_size = Vector2(w, h)
+			
+			line_edit.rect_rotation = textbox_meta["rot"]
 			
 			line_edit.text = page["text"][textbox_id]
 			line_edit.editable = not _is_read_only()
@@ -417,7 +437,7 @@ func _is_page_entry_valid(page_entry: Dictionary) -> bool:
 				if remaining_keys.has(textbox_id):
 					remaining_keys.erase(textbox_id)
 				else:
-					push_warning("Textbox '%s' is missing from page.")
+					push_warning("Textbox '%s' is missing from page." % textbox_id)
 					# TODO: Use default value.
 					page_text[textbox_id] = ""
 			
