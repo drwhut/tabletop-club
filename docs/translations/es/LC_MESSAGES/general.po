@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-06 00:02+0000\n"
-"PO-Revision-Date: 2023-02-21 16:36+0000\n"
+"PO-Revision-Date: 2023-03-03 13:39+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -130,6 +130,11 @@ msgid ""
 "learn more about how to make assets for Tabletop Club, visit the :ref:`asset-"
 "packs` page."
 msgstr ""
+"Pero lo mejor del juego es que cualquiera puede crear elementos para el "
+"juego. Es tan sencillo como arrastrar archivos a una carpeta, el juego los "
+"importará y podrás utilizarlos directamente en el juego. Si quieres saber "
+"más sobre cómo crear elementos para Tabletop Club, visita la página :ref"
+":`asset-packs`."
 
 #: ../../general/about.rst:61
 msgid "Simulator"
@@ -142,6 +147,10 @@ msgid ""
 "they do in real life, and it also means you can potentially send objects "
 "flying off the edge! Did I also mention you could flip the table?"
 msgstr ""
+"El juego no solo es un simulador de juegos de mesa, sino que también cuenta "
+"con un completo motor de física 3D. Esto significa que los objetos del juego "
+"se comportan como en la vida real y que puedes hacerlos salir volando por "
+"los bordes. ¿He mencionado también que puedes darle la vuelta a la mesa?"
 
 #: ../../general/about.rst:70
 msgid "Frequently Asked Questions"
@@ -165,44 +174,53 @@ msgid "macOS 10.12 or later"
 msgstr "macOS 10.12 o posterior"
 
 #: ../../general/about.rst:79
+#, fuzzy
 msgid "Linux / \\*BSD"
-msgstr ""
+msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
-msgstr ""
+msgstr "Tu hardware también debe ser compatible con OpenGL 3.3."
 
 #: ../../general/about.rst:83
 msgid ""
 "It is recommended to have at least 1GB of available space on your drive to "
 "accommodate for the game files, as well as any generated files."
 msgstr ""
+"Se recomienda disponer de al menos 1 GB de espacio en el disco duro para "
+"alojar los archivos del juego, como también los archivos generados."
 
 #: ../../general/about.rst:86
 msgid ""
 "Currently there are no plans for the game to be supported on mobile devices "
 "or consoles."
 msgstr ""
+"Actualmente, no hay planes para que el juego sea compatible con dispositivos "
+"móviles o consolas."
 
 #: ../../general/about.rst:91
 msgid "Does Tabletop Club support multiplayer?"
-msgstr ""
+msgstr "¿Tabletop Club es compatible con el modo multijugador?"
 
 #: ../../general/about.rst:93
 msgid ""
 "Yes! You don't need to make an account to play multiplayer, you can just "
 "host a game and start playing with friends!"
 msgstr ""
+"Sí!, no necesitas crear una cuenta para jugar en modo multijugador, ¡puedes "
+"organizar una partida y empezar a jugar con tus amigos!"
 
 #: ../../general/about.rst:98
 msgid ""
 "You can change your name and colour in multiplayer by going to :guilabel:"
 "`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
 msgstr ""
+"Puedes cambiar tu nombre y color en multijugador yendo a :guilabel:`Opciones`"
+" > :guilabel:`Multijugador`, y cambiando los ajustes pertinentes."
 
 #: ../../general/about.rst:104
 msgid "Is Tabletop Club on Steam / GOG / itch.io?"
-msgstr ""
+msgstr "¿Está Tabletop Club en Steam / GOG / itch.io?"
 
 #: ../../general/about.rst:106
 msgid ""
@@ -211,10 +229,14 @@ msgid ""
 "download it from the `itch app <https://itch.io/app>`_ and get automatic "
 "updates."
 msgstr ""
+"¡El juego está disponible en `itch.io <https://drwhut.itch.io/tabletop-club>`"
+"_! No solo puedes descargar el juego como ejecutable independiente, sino que "
+"también puedes descargarlo desde la aplicación `itch <https://itch.io/app>`_ "
+"y obtener actualizaciones automáticas."
 
 #: ../../general/about.rst:113
 msgid "What stage of development is Tabletop Club at?"
-msgstr ""
+msgstr "¿En qué fase de desarrollo se encuentra Tabletop Club?"
 
 #: ../../general/about.rst:115
 msgid ""
@@ -224,18 +246,24 @@ msgid ""
 "done by going to the `issues page <https://github.com/drwhut/tabletop-club/"
 "issues>`_ on GitHub)."
 msgstr ""
+"Tabletop Club se encuentra actualmente en fase beta de desarrollo. Esto "
+"significa que la mayoría de las características principales se han "
+"implementado, pero es muy probable que haya algunos errores y "
+"características que aún no se han añadido (puedes ver lo que queda por hacer "
+"visitando la página de problemas ` <https://github.com/drwhut/tabletop-club/"
+"issues>`_ en GitHub)."
 
 #: ../../general/about.rst:121
 msgid "You can help test the game by :ref:`downloading-binaries`!"
-msgstr ""
+msgstr "¡Puedes ayudar a probar el juego :ref:'downloading-binaries'!"
 
 #: ../../general/about.rst:125
 msgid "What board games can I play in Tabletop Club?"
-msgstr ""
+msgstr "¿Qué juegos de mesa puedo jugar en Tabletop Club?"
 
 #: ../../general/about.rst:127
 msgid "Theoretically, any of them!"
-msgstr ""
+msgstr "En teoría, ¡cualquiera de ellos!"
 
 #: ../../general/about.rst:129
 msgid ""
@@ -243,6 +271,9 @@ msgid ""
 "which contains some of the most common objects you'll need, like playing "
 "cards, dice, poker chips, etc."
 msgstr ""
+"Al principio, los juegos vienen con el paquete de activos predeterminado de "
+"Tabletop Club que contiene algunos de los objetos más comunes que "
+"necesitarás, como naipes, dados, fichas de póquer, etc."
 
 #: ../../general/about.rst:133
 msgid ""
@@ -251,6 +282,10 @@ msgid ""
 "asset pack. If everything under a game is ticked, then you can play that "
 "game!"
 msgstr ""
+"En GitHub, hay 'un problema <https://github.com/drwhut/tabletop-club/issues/"
+"28>'_ que enumera qué objetos aún deben agregarse al paquete de activos "
+"predeterminado. Si todo lo que está debajo de un juego está marcado, ¡"
+"entonces puedes jugar ese juego!"
 
 #: ../../general/about.rst:138
 msgid ""
@@ -259,10 +294,14 @@ msgid ""
 "else has already made, or you can create your own! Visit the :ref:`asset-"
 "packs` page if you're interested in making your own assets."
 msgstr ""
+"Por otro lado, si las piezas que necesitas no van a estar incluidas en el "
+"paquete de recursos predeterminado, puedes descargar un paquete de recursos "
+"que ya haya creado otra persona, ¡o puedes crear el tuyo propio! Visita la "
+"página :ref:`asset-packs` si estás interesado en crear tus propios recursos."
 
 #: ../../general/about.rst:145
 msgid "How easy is it to setup a game in Tabletop Club?"
-msgstr ""
+msgstr "¿Qué tan fácil es configurar un juego en Tabletop Club?"
 
 #: ../../general/about.rst:147
 msgid ""
