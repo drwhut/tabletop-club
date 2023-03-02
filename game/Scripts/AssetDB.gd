@@ -798,14 +798,18 @@ class AssetDBSorter:
 		return false
 
 # Get an asset's config value. It will search the config file with wildcards.
-# Wildcards can be at the beginng and/or end.
+# Wildcards can be at the beginning and/or end.
 # E.g.: *Card.png, Card*, *Card*
-# Returns: The config value. If it doesn' exists, returns default.
+# Returns: The config value. If it doesn't exist, returns default.
 # config: The config file to query.
 # query: The section to query (this is the value that is wildcarded).
 # key: The key to query.
 # default: The default value to return if the value doesn't exist.
-func _get_file_config_value(config: ConfigFile, query: String, key: String, default):
+# force_type: Only return the value if it is the same type as default. An error
+# is thrown if the types differ, and default is returned instead.
+func _get_file_config_value(config: ConfigFile, query: String, key: String,
+	default, force_type: bool = true):
+	
 	var found_sections = ["*"]
 	
 	for section in config.get_sections():
@@ -821,10 +825,27 @@ func _get_file_config_value(config: ConfigFile, query: String, key: String, defa
 				found_sections.append(section)
 	
 	found_sections.sort_custom(AssetDBSorter, "sort_length")
+	
+	var value = default
 	for section in found_sections:
 		if config.has_section_key(section, key):
-			return config.get_value(section, key, default)
-	return default
+			value = config.get_value(section, key, default)
+			break
+	
+	if not force_type:
+		return value
+	
+	var type_value = typeof(value)
+	var type_default = typeof(default)
+	
+	if type_value == type_default:
+		return value
+	elif type_value == TYPE_INT and type_default == TYPE_REAL:
+		return float(value)
+	else:
+		push_error("Value of key %s for %s is incorrect type! (expected %d, got %d)" % [
+				key, query, type_default, type_value])
+		return default
 
 # Import an asset. If it has already been imported before, and it's contents
 # have not changed, it is not reimported, but the piece entry is still added to
@@ -839,7 +860,9 @@ func _get_file_config_value(config: ConfigFile, query: String, key: String, defa
 func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 	config_changed: bool) -> int:
 	
-	var ignore = _get_file_config_value(config, from.get_file(), "ignore", false)
+	var ignore: bool = _get_file_config_value(config, from.get_file(), "ignore",
+			false)
+	
 	if ignore:
 		return OK
 	
@@ -857,16 +880,20 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 	# these values for the entry initialization.
 	var scale: Vector3
 	if type == "cards":
-		var scale_config = _get_file_config_value(config, from.get_file(), "scale", Vector2.ONE)
-		if typeof(scale_config) != TYPE_VECTOR2:
-			push_warning("Scale for type cards has to be Vector2! Default thickness is used!")
-		scale = Vector3(scale_config.x, 1, scale_config.y)
+		var scale_config = _get_file_config_value(config, from.get_file(),
+				"scale", Vector2.ONE, false)
+		if typeof(scale_config) == TYPE_VECTOR2:
+			scale = Vector3(scale_config.x, 1.0, scale_config.y)
+		elif typeof(scale_config) == TYPE_VECTOR3:
+			push_warning("Scale for cards must be Vector2! Default height will be used instead.")
+			scale = scale_config
+			scale.y = 1.0
+		else:
+			push_error("Scale for cards must be Vector2!")
+			scale = Vector3.ONE
 	else:
-		var scale_config = _get_file_config_value(config, from.get_file(), "scale", Vector3.ONE)
-		if typeof(scale_config) != TYPE_VECTOR3:
-			push_error("Scale for type %s has to be Vector3! Default scale is used!" % type)
-			scale_config = Vector3.ONE
-		scale = scale_config
+		scale = _get_file_config_value(config, from.get_file(), "scale",
+				Vector3.ONE, true)
 	
 	var entry = {}
 	if asset_type == ASSET_AUDIO:
@@ -875,8 +902,9 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 	elif asset_type == ASSET_SCENE:
 		if VALID_SCENE_EXTENSIONS.has(to.get_extension()):
 			# Determines the kind of collision shape that is made.
-			var collision_mode = _get_file_config_value(config, from.get_file(),
-					"collision_mode", PieceBuilder.COLLISION_CONVEX)
+			var collision_mode: int = _get_file_config_value(config,
+					from.get_file(), "collision_mode",
+					PieceBuilder.COLLISION_CONVEX)
 			
 			if collision_mode < PieceBuilder.COLLISION_CONVEX or collision_mode > PieceBuilder.COLLISION_CONCAVE:
 				push_error("Collision mode is invalid!")
@@ -887,10 +915,11 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				collision_mode = PieceBuilder.COLLISION_CONVEX
 			
 			# Determines the way in which the centre-of-mass is adjusted.
-			var com_adjust = _get_file_config_value(config, from.get_file(),
-					"com_adjust", "volume")
+			var com_adjust_str: String = _get_file_config_value(config,
+					from.get_file(), "com_adjust", "volume")
+			var com_adjust: int = PieceBuilder.COM_ADJUST_VOLUME
 			
-			match com_adjust:
+			match com_adjust_str:
 				"off":
 					com_adjust = PieceBuilder.COM_ADJUST_OFF
 				"volume":
@@ -898,8 +927,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				"geometry":
 					com_adjust = PieceBuilder.COM_ADJUST_GEOMETRY
 				_:
-					push_error("Value '%s' is invalid for property 'com_adjust'!" % str(com_adjust))
-					com_adjust = PieceBuilder.COM_ADJUST_VOLUME
+					push_error("Value '%s' is invalid for property 'com_adjust'!" % com_adjust_str)
 			
 			# If the file has been imported before, check that the custom scene
 			# has a cached geometry data file (.geo), so we do not have to go
@@ -941,7 +969,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				var err = geo_file.open(geo_file_path, File.WRITE)
 				if err == OK:
 					geo_file.store_var([ avg_point, bounding_box_min,
-							bounding_box_max ])
+						bounding_box_max ])
 					geo_file.close()
 				else:
 					push_error("Failed to open '%s'! (error: %d)" % [geo_file_path, err])
@@ -979,7 +1007,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 		return OK
 	
 	entry["name"] = _get_file_config_value(config, from.get_file(), "name",
-			to.get_basename().get_file())
+		to.get_basename().get_file())
 	entry["desc"] = _get_file_config_value(config, from.get_file(), "desc", "")
 	
 	entry["author"] = _get_file_config_value(config, from.get_file(), "author", "")
@@ -998,11 +1026,16 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				entry["texture_path"] = to_image_path
 				break
 	elif type == "music":
-		entry["main_menu"] = _get_file_config_value(config, from.get_file(), "main_menu", false)
+		entry["main_menu"] = _get_file_config_value(config, from.get_file(),
+				"main_menu", false)
 	elif type == "skyboxes":
-		var default = _get_file_config_value(config, from.get_file(), "default", false)
-		var rotation = _get_file_config_value(config, from.get_file(), "rotation", Vector3.ZERO)
-		var strength = _get_file_config_value(config, from.get_file(), "strength", 1.0)
+		var default: bool = _get_file_config_value(config, from.get_file(),
+				"default", false)
+		var rotation: Vector3 = _get_file_config_value(config, from.get_file(),
+				"rotation", Vector3.ZERO)
+		var strength: float = _get_file_config_value(config, from.get_file(),
+				"strength", 1.0)
+		
 		if strength < 0.0:
 			push_error("Skybox ambient light strength cannot be negative!")
 			strength = 1.0
@@ -1019,13 +1052,18 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 		entry["mass"] = 1.0
 		entry["scale"] = Vector3.ONE
 		
-		var bounce = _get_file_config_value(config, from.get_file(), "bounce", 0.5)
+		var bounce: float = _get_file_config_value(config, from.get_file(),
+				"bounce", 0.5)
+		
 		if bounce < 0.0 or bounce > 1.0:
 			push_error("Table bounce value must be between 0.0 and 1.0!")
 			bounce = 0.5
 		
-		var default = _get_file_config_value(config, from.get_file(), "default", false)
-		var hands = _get_file_config_value(config, from.get_file(), "hands", [])
+		var default: bool = _get_file_config_value(config, from.get_file(),
+				"default", false)
+		var hands: Array = _get_file_config_value(config, from.get_file(),
+				"hands", [])
+		
 		if hands.empty():
 			push_warning("No hand positions have been configured!")
 		else:
@@ -1045,7 +1083,9 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				else:
 					push_error("Hand position is not a dictionary!")
 		
-		var paint_plane = _get_file_config_value(config, from.get_file(), "paint_plane", 100.0 * Vector2.ONE)
+		var paint_plane: Vector2 = _get_file_config_value(config, from.get_file(),
+				"paint_plane", 100.0 * Vector2.ONE)
+		
 		if paint_plane.x <= 0.0 or paint_plane.y <= 0.0:
 			push_error("Paint plane size must be positive!")
 			paint_plane = 100.0 * Vector2.ONE
@@ -1055,19 +1095,36 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 		entry["hands"] = hands
 		entry["paint_plane"] = paint_plane
 	elif type == "templates":
-		pass
+		# To avoid redundancy, we rely on _is_valid_entry to check the textbox
+		# dictionary for us.
+		var textbox_dict: Dictionary = _get_file_config_value(config,
+				from.get_file(), "textboxes", {})
+		
+		for textbox_id in textbox_dict:
+			var entry_dict = textbox_dict[textbox_id]
+			if entry_dict is Dictionary:
+				if not entry_dict.has("x"):
+					entry_dict["x"] = 0
+				if not entry_dict.has("y"):
+					entry_dict["y"] = 0
+		
+		entry["textboxes"] = textbox_dict
 	else: # Objects.
-		var color_str = _get_file_config_value(config, from.get_file(), "color", "#ffffff")
+		var color_str: String = _get_file_config_value(config, from.get_file(),
+				"color", "#ffffff")
+		
 		var color = Color(color_str)
 		color.a = 1.0
 		
 		# Converting from g -> kg -> (Ns^2/cm, since game units are in cm) = x10.
-		var mass = 10 * _get_file_config_value(config, from.get_file(), "mass", 1.0)
+		var mass: float = 10.0 * _get_file_config_value(config, from.get_file(),
+				"mass", 1.0)
+		
 		if mass < 0.0:
 			push_error("Mass cannot be negative!")
 			mass = 10.0
 		
-		var sfx = _get_file_config_value(config, from.get_file(), "sfx", "")
+		var sfx: String = _get_file_config_value(config, from.get_file(), "sfx", "")
 		if not sfx.empty():
 			if not sfx in SFX_AUDIO_STREAMS:
 				push_error("SFX value does not match any existing preset!")
@@ -1083,10 +1140,13 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 		entry["scale"] = scale
 		entry["sfx"] = sfx
 		
-		entry["main_menu"] = _get_file_config_value(config, from.get_file(), "main_menu", false)
+		entry["main_menu"] = _get_file_config_value(config, from.get_file(),
+				"main_menu", false)
 		
 		if type == "cards":
-			var back_path = _get_file_config_value(config, from.get_file(), "back_face", "")
+			var back_path: String = _get_file_config_value(config,
+					from.get_file(), "back_face", "")
+			
 			if not back_path.empty():
 				if "/" in back_path or "\\" in back_path:
 					push_error("'%s' is invalid - back_face cannot point to another folder!" % back_path)
@@ -1104,7 +1164,8 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				entry["texture_path_1"] = ""
 		
 		elif type.begins_with("containers"):
-			entry["shakable"] = _get_file_config_value(config, from.get_file(), "shakable", false)
+			entry["shakable"] = _get_file_config_value(config, from.get_file(),
+					"shakable", false)
 		
 		elif type.begins_with("dice"):
 			var num_faces = 0
@@ -1122,7 +1183,9 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 			elif type.ends_with("d20"):
 				num_faces = 20
 			
-			var face_values: Dictionary = _get_file_config_value(config, from.get_file(), "face_values", {})
+			var face_values: Dictionary = _get_file_config_value(config,
+					from.get_file(), "face_values", {})
+			
 			var face_values_entry = {}
 			if not face_values.empty():
 				if face_values.size() == num_faces:
@@ -1140,7 +1203,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 						face_values_entry[key] = normal_vec
 				else:
 					push_error("Number of entries for face_values (%d) does not match the number of faces (%d)!" %
-							[face_values.size(), num_faces])
+						[face_values.size(), num_faces])
 					return ERR_INVALID_DATA
 			
 			entry["face_values"] = face_values_entry
@@ -1149,20 +1212,20 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 			# If we use null as a default value, ConfigFile will throw an error
 			# if there is no value there, so use something else temporarily
 			# to represent "nothing".
-			var value = _get_file_config_value(config, from.get_file(), "value", Reference.new())
-			var suit  = _get_file_config_value(config, from.get_file(), "suit", Reference.new())
+			var value = _get_file_config_value(config, from.get_file(), "value",
+					Reference.new(), false)
+			var suit  = _get_file_config_value(config, from.get_file(), "suit",
+					Reference.new(), false)
 			
 			if value is Reference:
 				value = null
-			else:
-				if not (value is int or value is float or value is String):
+			elif not (value is int or value is float or value is String):
 					push_error("Value must be a number or a string!")
 					return ERR_INVALID_DATA
 			
 			if suit is Reference:
 				suit = null
-			else:
-				if not (suit is int or suit is float or suit is String):
+			elif not (suit is int or suit is float or suit is String):
 					push_error("Suit must be a number or a string!")
 					return ERR_INVALID_DATA
 			
@@ -1357,25 +1420,25 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 		
 		elif asset_type == ASSET_SKYBOX:
 			expected_keys.append_array(["default", "rotation", "strength",
-					"texture_path"])
+				"texture_path"])
 		
 		elif asset_type == ASSET_TABLE:
 			expected_keys.append_array(["table_path", "texture_path"])
 		
 		elif asset_type == ASSET_TEMPLATE:
-			expected_keys.append_array(["template_path"])
+			expected_keys.append_array(["template_path", "textboxes"])
 		
 		else: # Objects.
 			expected_keys.append_array(["color", "mass", "scale", "scene_path",
-					"texture_path"])
+				"texture_path"])
 			
 			if asset_type == ASSET_SCENE:
 				expected_keys.append_array(["avg_point", "bounding_box",
-						"collision_mode", "com_adjust"])
+					"collision_mode", "com_adjust"])
 			
 			if type == "tables":
 				expected_keys.append_array(["bounce", "default", "hands",
-						"paint_plane"])
+					"paint_plane"])
 			else:
 				expected_keys.append_array(["main_menu", "sfx"])
 				
@@ -1706,6 +1769,64 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 				if not _is_valid_path(value, VALID_TEXTURE_EXTENSIONS + ["txt"]):
 					push_error("'template_path' in entry is not a valid path!")
 					return false
+			"textboxes":
+				if typeof(value) != TYPE_DICTIONARY:
+					push_error("'textboxes' in entry is not a dictionary!")
+					return false
+				
+				if not value.empty():
+					var template_path = entry["template_path"]
+					if typeof(template_path) != TYPE_STRING:
+						push_error("'template_path' in entry is not a string!")
+						return false
+					
+					if template_path.get_extension() == "txt":
+						push_error("Text templates cannot have textboxes!")
+						return false
+				
+				for id in value:
+					if typeof(id) != TYPE_STRING:
+						push_error("Textbox ID is not a string!")
+						return false
+					
+					if not id.is_valid_identifier():
+						push_error("Textbox ID '%s' is not a valid ID!" % id)
+						return false
+					
+					var subvalue = value[id]
+					if typeof(subvalue) != TYPE_DICTIONARY:
+						push_error("Textbox entry in 'textboxes' is not a dictionary!")
+						return false
+					
+					if subvalue.size() != 2:
+						push_error("Invalid number of elements %d for textbox entry!" % subvalue.size())
+						return false
+					
+					if not subvalue.has("x"):
+						push_error("Textbox entry does not contain element 'x'!")
+						return false
+					
+					var x = subvalue["x"]
+					if typeof(x) != TYPE_INT:
+						push_error("Textbox element 'x' is not an integer!")
+						return false
+					
+					if x < 0:
+						push_error("Invalid value %d for textbox element 'x'!" % x)
+						return false
+					
+					if not subvalue.has("y"):
+						push_error("Textbox entry does not contain element 'y'!")
+						return false
+					
+					var y = subvalue["y"]
+					if typeof(y) != TYPE_INT:
+						push_error("Textbox element 'y' is not an integer!")
+						return false
+					
+					if y < 0:
+						push_error("Invalid value %d for textbox element 'y'!" % y)
+						return false
 			"texture_path":
 				if asset_type == ASSET_SCENE:
 					if typeof(value) != TYPE_NIL:
@@ -1846,7 +1967,7 @@ func _remove_old_assets(catalog: Dictionary) -> void:
 					safe_files[md5_name] = 0 # Dummy value.
 					
 					var copy_path = "%s/%s/%s/%s" % [asset_dir_path, pack,
-							type, file]
+						type, file]
 					var import_name = file + "-" + copy_path.md5_text()
 					safe_files[import_name] = 0
 		

@@ -77,28 +77,45 @@ func _set_entry_gui(entry: Dictionary) -> void:
 	else:
 		_name.text = entry["name"]
 	
-	if entry.has("texture_path") and (not entry["texture_path"].empty()):
-		_texture.visible = true
-		
-		if imported_texture:
-			_texture.texture = ResourceManager.load_res(entry["texture_path"])
-		else:
-			var image_file = File.new()
-			if image_file.open(entry["texture_path"], File.READ) == OK:
-				var buffer = image_file.get_buffer(image_file.get_len())
-				image_file.close()
-				
-				var image = Image.new()
-				if image.load_png_from_buffer(buffer) == OK:
-					var texture = ImageTexture.new()
-					texture.create_from_image(image)
-					_texture.texture = texture
-				else:
-					push_error("Could not load PNG data from the buffer!")
-			else:
-				push_error("Could not open '%s'!" % entry["texture_path"])
+	_texture.visible = false
+	if entry.has("texture_path"):
+		if not entry["texture_path"].empty():
+			_set_image(entry["texture_path"])
+	elif entry.has("template_path"):
+		if not entry["template_path"].empty():
+			if entry["template_path"].get_extension() != "txt":
+				_set_image(entry["template_path"])
+
+# Set the image displayed in the preview using a file path to the image.
+# image_path: The file path of the image to display.
+func _set_image(image_path: String) -> void:
+	var image_file = File.new()
+	if not image_file.file_exists(image_path):
+		push_error("Cannot use image '%s', does not exist!" % image_path)
+		return
+	
+	if imported_texture:
+		_texture.texture = ResourceManager.load_res(image_path)
 	else:
-		_texture.visible = false
+		var err = image_file.open(image_path, File.READ)
+		if err == OK:
+			var buffer = image_file.get_buffer(image_file.get_len())
+			image_file.close()
+			
+			var image = Image.new()
+			err = image.load_png_from_buffer(buffer)
+			if err == OK:
+				var texture = ImageTexture.new()
+				texture.create_from_image(image)
+				_texture.texture = texture
+			else:
+				push_error("Failed to load PNG data from buffer!")
+				return
+		else:
+			push_error("Failed to open '%s'! (error: %d)" % [image_path, err])
+			return
+	
+	_texture.visible = true
 
 # Called when the selected flag has been changed.
 # selected: If the preview is now selected.

@@ -69,6 +69,16 @@ readonly = true
 bookmark_gutter = true
 wrap_enabled = true
 
+[node name="ImageContainer" type="ScrollContainer" parent="HBoxContainer/PageContainer"]
+visible = false
+margin_top = 34.0
+margin_right = 346.0
+margin_bottom = 420.0
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="ImageRect" type="TextureRect" parent="HBoxContainer/PageContainer/ImageContainer"]
+
 [node name="ModifyContainer" type="HBoxContainer" parent="HBoxContainer/PageContainer"]
 margin_top = 424.0
 margin_right = 346.0

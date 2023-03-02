@@ -24,6 +24,8 @@ extends WindowDialog
 
 onready var _confirm_delete_dialog = $ConfirmDeleteDialog
 onready var _delete_button = $HBoxContainer/PageContainer/ModifyContainer/DeleteButton
+onready var _image_container = $HBoxContainer/PageContainer/ImageContainer
+onready var _image_rect = $HBoxContainer/PageContainer/ImageContainer/ImageRect
 onready var _modify_container = $HBoxContainer/PageContainer/ModifyContainer
 onready var _move_down_button = $HBoxContainer/PageContainer/ModifyContainer/MoveDownButton
 onready var _move_up_button = $HBoxContainer/PageContainer/ModifyContainer/MoveUpButton
@@ -242,6 +244,8 @@ func _display_help_text() -> void:
 	_title_edit.text = ""
 	_public_check_box.set_pressed_no_signal(false)
 	
+	_text_edit.visible = true
+	_image_container.visible = false
 	if is_in_edit_mode():
 		_text_edit.text = tr("You can use this notebook to write down information that will persist between sessions.")
 	else:
@@ -257,7 +261,57 @@ func _display_page_contents(index: int) -> void:
 	var page: Dictionary = current_page_array[index]
 	_title_edit.text = page["title"]
 	_public_check_box.set_pressed_no_signal(page["public"])
-	_text_edit.text = page["text"]
+	
+	var image_path: String = ""
+	var textbox_dict: Dictionary = {}
+	var template_entry_path: String = page["template"]
+	if not template_entry_path.empty():
+		var template_entry = AssetDB.search_path(template_entry_path)
+		if not template_entry.empty():
+			var template_path: String = template_entry["template_path"]
+			if template_path.get_extension() != "txt":
+				image_path = template_path
+				textbox_dict = template_entry["textboxes"]
+	
+	if image_path.empty():
+		_text_edit.text = page["text"]
+		
+		_text_edit.visible = true
+		_image_container.visible = false
+	else:
+		var texture: Texture = ResourceManager.load_res(image_path)
+		_image_rect.texture = texture
+		
+		var textbox_id_arr = textbox_dict.keys()
+		for index in range(textbox_dict.size()):
+			var line_edit: LineEdit = null
+			if index < _image_rect.get_child_count():
+				line_edit = _image_rect.get_child(index)
+			else:
+				line_edit = LineEdit.new()
+				line_edit.connect("text_changed", self, "_on_LineEdit_text_changed")
+				_image_rect.add_child(line_edit)
+			
+			var textbox_id: String = textbox_id_arr[index]
+			var textbox_meta: Dictionary = textbox_dict[textbox_id]
+			
+			var x = min(textbox_meta["x"], texture.get_width())
+			var y = min(textbox_meta["y"], texture.get_height())
+			
+			line_edit.name = textbox_id
+			line_edit.rect_position = Vector2(x, y)
+			
+			line_edit.text = page["text"][textbox_id]
+			line_edit.editable = not _is_read_only()
+		
+		for index in range(_image_rect.get_child_count()-1, textbox_dict.size()-1, -1):
+			var to_remove: Node = _image_rect.get_child(index)
+			to_remove.disconnect("text_changed", self, "_on_LineEdit_text_changed")
+			_image_rect.remove_child(to_remove)
+			to_remove.queue_free()
+		
+		_text_edit.visible = false
+		_image_container.visible = true
 	
 	_page_on_display = index
 
@@ -285,17 +339,6 @@ func _is_page_entry_valid(page_entry: Dictionary) -> bool:
 		push_error("Page title in page array is not a string!")
 		return false
 	
-	if not page_entry.has("text"):
-		push_error("Entry in page array has no text!")
-		return false
-	var page_text = page_entry["text"]
-	if typeof(page_text) == TYPE_DICTIONARY:
-		push_error("Text dictionary in entry is not supported yet!")
-		return false
-	elif typeof(page_text) != TYPE_STRING:
-		push_error("Text in page array is not a string or dictionary!")
-		return false
-	
 	if page_entry.has("public"):
 		var page_public = page_entry["public"]
 		if typeof(page_public) != TYPE_BOOL:
@@ -309,14 +352,87 @@ func _is_page_entry_valid(page_entry: Dictionary) -> bool:
 		if typeof(page_template) != TYPE_STRING:
 			push_error("Page template in the page array is not a string!")
 			return false
-		
-		# Allow for blank page template entries for backwards-compatibility.
-		if not page_template.empty():
-			if AssetDB.search_path(page_template).empty():
-				push_warning("Missing template '%s' for page '%s'." % [
-						page_template, page_title])
 	else:
 		page_entry["template"] = ""
+	
+	var page_template: String = page_entry["template"]
+	var template_entry: Dictionary = {}
+	var is_image_template: bool = false
+	
+	# Allow for blank page template entries for backwards-compatibility.
+	if not page_template.empty():
+		template_entry = AssetDB.search_path(page_template)
+		if template_entry.empty():
+			push_warning("Missing template '%s' for page '%s'." % [
+					page_template, page_title])
+		else:
+			var template_path: String = template_entry["template_path"]
+			is_image_template = (template_path.get_extension() != "txt")
+	
+	if not page_entry.has("text"):
+		push_error("Entry in page array has no text!")
+		return false
+	var page_text = page_entry["text"]
+	if typeof(page_text) == TYPE_STRING:
+		if is_image_template:
+			# We have a single string of text, but we need a dictionary of
+			# strings - we can attempt to recover the full dictionary if the
+			# string happens to be in JSON form, but otherwise we can dump all
+			# of the text into the first textbox.
+			var textbox_dict: Dictionary = template_entry["textboxes"]
+			
+			var new_text: Dictionary = {}
+			for id in textbox_dict:
+				# TODO: Use the default value here.
+				new_text[id] = ""
+			
+			var json: JSONParseResult = JSON.parse(page_text)
+			if json.error == OK and json.result is Dictionary:
+				for id in textbox_dict:
+					if not json.result.has(id):
+						continue
+					
+					var value = json.result[id]
+					if not value is String:
+						continue
+					
+					new_text[id] = value
+			
+			elif not textbox_dict.empty():
+				var first_id: String = textbox_dict.keys()[0]
+				new_text[first_id] = page_text
+			
+			page_entry["text"] = new_text
+	elif typeof(page_text) == TYPE_DICTIONARY:
+		for key in page_text:
+			if not page_text[key] is String:
+				push_error("Page text element '%s' is not a string!" % key)
+				return false
+		
+		if is_image_template:
+			var remaining_keys: Array = page_text.keys()
+			
+			var textbox_dict: Dictionary = template_entry["textboxes"]
+			for textbox_id in textbox_dict:
+				if remaining_keys.has(textbox_id):
+					remaining_keys.erase(textbox_id)
+				else:
+					push_warning("Textbox '%s' is missing from page.")
+					# TODO: Use default value.
+					page_text[textbox_id] = ""
+			
+			for key in remaining_keys:
+				push_warning("Textbox '%s' is no longer used in page, removing." % key)
+				page_text.erase(key)
+		else:
+			# The text we have is in a dictionary, but we need a single string.
+			# For this, we can convert the dictionary into a JSON string, and
+			# hope that in the future the template will be restored so the JSON
+			# can be parsed back into a dictionary.
+			page_entry["text"] = JSON.print(page_text)
+	else:
+		push_error("Page text in page array is neither a string or dictionary!")
+		return false
 	
 	return true
 
@@ -382,7 +498,22 @@ func _save_text_to_current_array(index: int) -> void:
 		push_error("Invalid page index %d!" % index)
 		return
 	
-	current_page_array[index]["text"] = _text_edit.text
+	var is_image_page: bool = false
+	var template_entry_path: String = current_page_array[index]["template"]
+	if not template_entry_path.empty():
+		var template_entry = AssetDB.search_path(template_entry_path)
+		if not template_entry.empty():
+			var template_path: String = template_entry["template_path"]
+			is_image_page = (template_path.get_extension() != "txt")
+	
+	if is_image_page:
+		var text_dict = {}
+		for text_edit in _image_rect.get_children():
+			if text_edit is LineEdit:
+				text_dict[text_edit.name] = text_edit.text
+		current_page_array[index]["text"] = text_dict
+	else:
+		current_page_array[index]["text"] = _text_edit.text
 
 # Set the modifier buttons to be enabled or not depending on the given index.
 # index: The current page index. If negative, all buttons are disabled.
@@ -405,6 +536,10 @@ func _set_read_only(read_only: bool) -> void:
 	_move_up_button.disabled = read_only
 	_move_down_button.disabled = read_only
 	_delete_button.disabled = read_only
+	
+	for text_edit in _image_rect.get_children():
+		if text_edit is LineEdit:
+			text_edit.editable = not read_only
 
 # Set the window title based on the client's name.
 # client_id: The ID of the client whose name will be in the title.
@@ -454,6 +589,10 @@ func _on_DeleteButton_pressed():
 	var text = tr("Are you sure you want to delete the page '%s'?") % page_name
 	_confirm_delete_dialog.dialog_text = text
 	_confirm_delete_dialog.popup_centered()
+
+func _on_LineEdit_text_changed(_text: String):
+	_updated_since_last_save = true
+	_time_since_last_update = 0.0
 
 func _on_MoveDownButton_pressed():
 	_page_list.move_item(_page_on_display, _page_on_display + 1)
@@ -515,34 +654,49 @@ func _on_TemplateDialog_entry_requested(_pack: String, _type: String, entry: Dic
 	if not current_page_array.empty():
 		_attempt_save_page_array_to_file()
 	
+	var template_entry_path: String = entry["entry_path"]
 	var template_file_path: String  = entry["template_path"]
 	
-	# TODO: Image templates should not be read like text files.
-	var default_text: String = ""
-	var template_file = File.new()
-	var err = template_file.open(template_file_path, File.READ)
-	if err == OK:
-		default_text = template_file.get_as_text()
-		template_file.close()
-	else:
-		push_error("Error opening file '%s'! (error: %d)" % [template_file_path, err])
-	
 	var locale = TranslationServer.get_locale()
-	var name_locale = "name_%s" % locale
+	var name_locale = "name_" + locale
 	
 	var template_name: String = entry["name"]
 	if entry.has(name_locale):
 		template_name = entry[name_locale]
-	var template_entry_path: String = entry["entry_path"]
+	var page_title = tr("New %s") % template_name
 	
-	var new_title: String = tr("New %s") % template_name
-	current_page_array.push_back({
-		"title": new_title,
+	var page_entry: Dictionary = {
+		"title": page_title,
 		"public": false,
 		"template": template_entry_path,
-		"text": default_text
-	})
-	_page_list.add_item(new_title)
+		"text": ""
+	}
+	
+	if template_file_path.get_extension() == "txt":
+		var template_file = File.new()
+		if template_file.file_exists(template_file_path):
+			var err = template_file.open(template_file_path, File.READ)
+			if err == OK:
+				var default_text: String = template_file.get_as_text()
+				template_file.close()
+				
+				page_entry["text"] = default_text
+			else:
+				push_error("Failed to open '%s' (error: %d)" % [template_file_path, err])
+		else:
+			push_error("File '%s' does not exist!" % template_file_path)
+	else:
+		var default_dict: Dictionary = {}
+		var textbox_dict: Dictionary = entry["textboxes"]
+		
+		for textbox_id in textbox_dict:
+			# TODO: Use default value.
+			default_dict[textbox_id] = ""
+		
+		page_entry["text"] = default_dict
+	
+	current_page_array.push_back(page_entry)
+	_page_list.add_item(page_title)
 	
 	_set_read_only(false)
 	
