@@ -35,13 +35,21 @@ onready var _public_check_box = $HBoxContainer/PageContainer/TitleContainer/Publ
 onready var _template_dialog = $TemplateDialog
 onready var _text_edit = $HBoxContainer/PageContainer/TextEdit
 onready var _title_edit = $HBoxContainer/PageContainer/TitleContainer/TitleEdit
+onready var _zoom_label = $HBoxContainer/PageContainer/ZoomContainer/ZoomLabel
 
 const NOTEBOOK_FILE_PATH = "user://notebook.cfg"
+
+const DEFAULT_FONT_SIZE = 16 # Text pages only.
+const ZOOM_MAX = 5.0
+const ZOOM_MIN = 0.1
 
 const REQUEST_PAGE_ARRAY_TIMEOUT_MS = 10000 # 10 seconds.
 const UPDATE_TIME_UNTIL_SAVE_SEC = 3.0 # 3 seconds.
 
 var current_page_array: Array = []
+
+var _current_zoom: float = 1.0
+var _base_image_scale: float = 1.0
 
 var _has_entered_edit_mode: bool = false
 var _page_on_display: int = -1
@@ -250,6 +258,8 @@ func _display_help_text() -> void:
 		_text_edit.text = tr("You can use this notebook to write down information that will persist between sessions.")
 	else:
 		_text_edit.text = tr("This player does not have any public pages in their notebook.")
+	
+	_set_zoom(1.0)
 
 # Display the given page contents on the UI.
 # index: The index of the page in the current page array to display.
@@ -281,6 +291,12 @@ func _display_page_contents(index: int) -> void:
 	else:
 		var texture: Texture = ResourceManager.load_res(image_path)
 		_image_rect.texture = texture
+		
+		if texture.get_width() > 0:
+			# By default, the full width of the image should be shown.
+			_base_image_scale = _image_container.rect_size.x / texture.get_width()
+		else:
+			_base_image_scale = 1.0
 		
 		var textbox_id_arr = textbox_dict.keys()
 		for index in range(textbox_dict.size()):
@@ -328,26 +344,8 @@ func _display_page_contents(index: int) -> void:
 			else:
 				textbox_edit = _image_rect.get_child(index)
 			
-			var font: DynamicFont = textbox_edit.get_font("font")
-			var style: StyleBox = textbox_edit.get_stylebox("normal")
-			var box_min_size: Vector2 = style.get_minimum_size()
-			
-			var x = min(textbox_meta["x"], texture.get_width() - box_min_size.x)
-			var y = min(textbox_meta["y"], texture.get_height() - box_min_size.y)
-			
-			var w = min(textbox_meta["w"], texture.get_width() - x)
-			var h = min(textbox_meta["h"], texture.get_height() - y)
-			
 			textbox_edit.name = textbox_id
-			textbox_edit.rect_position = Vector2(x, y)
-			
-			# Estimate how big the font can be before it starts expanding the
-			# control it is in.
-			var font_height = float(h - box_min_size.y) / num_lines
-			font.size = int(max(ceil(0.75 * font_height), 1.0))
-			textbox_edit.rect_size = Vector2(w, h)
-			
-			textbox_edit.rect_rotation = textbox_meta["rot"]
+			textbox_edit.set_meta("textbox", textbox_meta)
 			
 			var text: String = page["text"][textbox_id]
 			if textbox_edit is TextEdit:
@@ -369,6 +367,7 @@ func _display_page_contents(index: int) -> void:
 		_text_edit.visible = false
 		_image_container.visible = true
 	
+	_set_zoom(page["zoom"])
 	_page_on_display = index
 
 # Display the list of page names on the UI.
@@ -490,6 +489,18 @@ func _is_page_entry_valid(page_entry: Dictionary) -> bool:
 		push_error("Page text in page array is neither a string or dictionary!")
 		return false
 	
+	if page_entry.has("zoom"):
+		var zoom = page_entry["zoom"]
+		if typeof(zoom) != TYPE_REAL:
+			push_error("Zoom in the page array is not a float!")
+			return false
+		
+		zoom = min(max(ZOOM_MIN, zoom), ZOOM_MAX)
+		zoom = round(10.0 * zoom) / 10.0
+		page_entry["zoom"] = zoom
+	else:
+		page_entry["zoom"] = 1.0
+	
 	return true
 
 # Check if the window is in read-only mode.
@@ -571,6 +582,82 @@ func _save_text_to_current_array(index: int) -> void:
 	else:
 		current_page_array[index]["text"] = _text_edit.text
 
+# Set the scale of the image and it's children text nodes.
+# scale: The new scale relative to the original scale.
+func _set_image_scale(scale: float) -> void:
+	var texture: Texture = _image_rect.texture
+	var new_size: Vector2 = scale * texture.get_size()
+	_image_rect.rect_min_size = new_size
+	_image_rect.rect_size = new_size
+	
+	for index in range(_image_rect.get_child_count()):
+		var textbox_edit: Control = _image_rect.get_child(index)
+		
+		if not textbox_edit.has_meta("textbox"):
+			push_error("Textbox %s has no metadata assigned!" % textbox_edit.name)
+			continue
+		var textbox_meta: Dictionary = textbox_edit.get_meta("textbox")
+		
+		var font: DynamicFont = textbox_edit.get_font("font")
+		var style: StyleBox = textbox_edit.get_stylebox("normal")
+		var box_min_size: Vector2 = style.get_minimum_size()
+		
+		var rot_deg: float = textbox_meta["rot"]
+		textbox_edit.rect_rotation = rot_deg
+		
+		# Vast majority of textboxes will not be rotated, so we can try to skip
+		# some calculations.
+		var rot_transform: Transform2D = Transform2D.IDENTITY
+		if not is_zero_approx(rot_deg):
+			rot_transform = Transform2D(deg2rad(rot_deg), Vector2.ZERO)
+		
+		var max_pos = new_size - box_min_size
+		var x = max(0.0, min(scale * textbox_meta["x"], max_pos.x))
+		var y = max(0.0, min(scale * textbox_meta["y"], max_pos.y))
+		var pos = Vector2(x, y)
+		
+		var w = max(0.0, textbox_meta["w"])
+		var h = max(0.0, textbox_meta["h"])
+		var scaled_size = scale * Vector2(w, h)
+		var to_opposite: Vector2 = scaled_size
+		if not is_zero_approx(rot_deg):
+			to_opposite = rot_transform.basis_xform(scaled_size)
+		var opposite_pos = pos + to_opposite
+		
+		var will_correct_scale = false
+		var new_to_opposite = to_opposite
+		
+		if opposite_pos.x < 0.0:
+			new_to_opposite.x = -x
+			will_correct_scale = true
+		elif opposite_pos.x > new_size.x:
+			new_to_opposite.x = new_size.x - x
+			will_correct_scale = true
+		
+		if opposite_pos.y < 0.0:
+			new_to_opposite.y = -y
+			will_correct_scale = true
+		elif opposite_pos.y > new_size.y:
+			new_to_opposite.y = new_size.y - y
+			will_correct_scale = true
+		
+		if will_correct_scale:
+			if is_zero_approx(rot_deg):
+				scaled_size = new_to_opposite
+			else:
+				scaled_size = rot_transform.basis_xform_inv(new_to_opposite)
+		
+		# Estimate how big the font can be before it starts expanding the
+		# size of the textbox.
+		var num_lines: int = textbox_meta["lines"]
+		var font_height = float(scaled_size.y - box_min_size.y) / num_lines
+		if textbox_edit is TextEdit:
+			font_height -= textbox_edit.get_constant("line_spacing")
+		font.size = int(max(1.0, ceil(0.75 * font_height)))
+		
+		textbox_edit.rect_position = pos
+		textbox_edit.rect_size = scaled_size
+
 # Set the modifier buttons to be enabled or not depending on the given index.
 # index: The current page index. If negative, all buttons are disabled.
 func _set_modifier_buttons_enabled(index: int) -> void:
@@ -614,6 +701,19 @@ func _set_window_title_with_name(client_id: int) -> void:
 			client_name = Global.censor_profanity(client_name)
 	
 	window_title = tr("%s's Notebook") % client_name
+
+# Set the window's zoom scale.
+# new_zoom: The new zoom scale, e.g. 1.0 is the default view.
+func _set_zoom(new_zoom: float) -> void:
+	_current_zoom = new_zoom
+	_zoom_label.text = "%d%%" % int(round(100.0 * new_zoom))
+	
+	if _text_edit.visible:
+		var font: DynamicFont = _text_edit.get_font("font")
+		font.size = int(DEFAULT_FONT_SIZE * new_zoom)
+		_text_edit.text = _text_edit.text # Force word wrap.
+	else:
+		_set_image_scale(_base_image_scale * new_zoom)
 
 func _on_ConfirmDeleteDialog_confirmed():
 	if _page_on_display < 0 or _page_on_display >= current_page_array.size():
@@ -727,7 +827,8 @@ func _on_TemplateDialog_entry_requested(_pack: String, _type: String, entry: Dic
 		"title": page_title,
 		"public": false,
 		"template": template_entry_path,
-		"text": ""
+		"text": "",
+		"zoom": 1.0
 	}
 	
 	if template_file_path.get_extension() == "txt":
@@ -780,3 +881,23 @@ func _on_TitleEdit_text_changed(new_text: String):
 	
 	_updated_since_last_save = true
 	_time_since_last_update = 0.0
+
+func _on_ZoomInButton_pressed():
+	var new_zoom = _current_zoom + 0.1
+	new_zoom = min(round(10.0 * new_zoom) / 10.0, ZOOM_MAX)
+	_set_zoom(new_zoom)
+	
+	if _page_on_display >= 0:
+		current_page_array[_page_on_display]["zoom"] = new_zoom
+		_updated_since_last_save = true
+		_time_since_last_update = 0.0
+
+func _on_ZoomOutButton_pressed():
+	var new_zoom = _current_zoom - 0.1
+	new_zoom = max(round(10.0 * new_zoom) / 10.0, ZOOM_MIN)
+	_set_zoom(new_zoom)
+	
+	if _page_on_display >= 0:
+		current_page_array[_page_on_display]["zoom"] = new_zoom
+		_updated_since_last_save = true
+		_time_since_last_update = 0.0
