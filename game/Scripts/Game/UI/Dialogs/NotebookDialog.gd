@@ -284,25 +284,53 @@ func _display_page_contents(index: int) -> void:
 		
 		var textbox_id_arr = textbox_dict.keys()
 		for index in range(textbox_dict.size()):
-			var line_edit: LineEdit = null
+			var textbox_id: String = textbox_id_arr[index]
+			var textbox_meta: Dictionary = textbox_dict[textbox_id]
+			
+			var num_lines: int = textbox_meta["lines"]
+			var is_multiline: bool = (num_lines > 1)
+			
+			var need_new_node: bool = true
 			if index < _image_rect.get_child_count():
-				line_edit = _image_rect.get_child(index)
-			else:
-				line_edit = LineEdit.new()
-				line_edit.connect("text_changed", self, "_on_LineEdit_text_changed")
+				var node = _image_rect.get_child(index)
+				
+				if node is LineEdit and (not is_multiline):
+					need_new_node = false
+				elif node is TextEdit and is_multiline:
+					need_new_node = false
+			
+			var textbox_edit: Control = null
+			if need_new_node:
+				if index < _image_rect.get_child_count():
+					# There is a node here we need to... dispose of.
+					var node: Node = _image_rect.get_child(index)
+					if node is TextEdit:
+						node.disconnect("text_changed", self, "_on_TextEdit_text_changed")
+					elif node is LineEdit:
+						node.disconnect("text_changed", self, "_on_LineEdit_text_changed")
+					_image_rect.remove_child(node)
+					node.queue_free()
+				
+				if is_multiline:
+					textbox_edit = TextEdit.new()
+					textbox_edit.wrap_enabled = true
+					textbox_edit.connect("text_changed", self, "_on_TextEdit_text_changed")
+				else:
+					textbox_edit = LineEdit.new()
+					textbox_edit.connect("text_changed", self, "_on_LineEdit_text_changed")
 				
 				var font: DynamicFont = preload("res://Fonts/Cabin/Cabin-Regular.tres")
 				font = font.duplicate() # Allows for varying font sizes.
-				line_edit.add_font_override("font", font)
+				textbox_edit.add_font_override("font", font)
 				
-				_image_rect.add_child(line_edit)
+				_image_rect.add_child(textbox_edit)
+				_image_rect.move_child(textbox_edit, index)
+			else:
+				textbox_edit = _image_rect.get_child(index)
 			
-			var font: DynamicFont = line_edit.get_font("font")
-			var style: StyleBox = line_edit.get_stylebox("normal")
+			var font: DynamicFont = textbox_edit.get_font("font")
+			var style: StyleBox = textbox_edit.get_stylebox("normal")
 			var box_min_size: Vector2 = style.get_minimum_size()
-			
-			var textbox_id: String = textbox_id_arr[index]
-			var textbox_meta: Dictionary = textbox_dict[textbox_id]
 			
 			var x = min(textbox_meta["x"], texture.get_width() - box_min_size.x)
 			var y = min(textbox_meta["y"], texture.get_height() - box_min_size.y)
@@ -310,23 +338,31 @@ func _display_page_contents(index: int) -> void:
 			var w = min(textbox_meta["w"], texture.get_width() - x)
 			var h = min(textbox_meta["h"], texture.get_height() - y)
 			
-			line_edit.name = textbox_id
-			line_edit.rect_position = Vector2(x, y)
+			textbox_edit.name = textbox_id
+			textbox_edit.rect_position = Vector2(x, y)
 			
 			# Estimate how big the font can be before it starts expanding the
 			# control it is in.
-			var font_height = h - box_min_size.y
+			var font_height = float(h - box_min_size.y) / num_lines
 			font.size = int(max(ceil(0.75 * font_height), 1.0))
-			line_edit.rect_size = Vector2(w, h)
+			textbox_edit.rect_size = Vector2(w, h)
 			
-			line_edit.rect_rotation = textbox_meta["rot"]
+			textbox_edit.rect_rotation = textbox_meta["rot"]
 			
-			line_edit.text = page["text"][textbox_id]
-			line_edit.editable = not _is_read_only()
+			var text: String = page["text"][textbox_id]
+			if textbox_edit is TextEdit:
+				textbox_edit.text = text
+				textbox_edit.readonly = _is_read_only()
+			elif textbox_edit is LineEdit:
+				textbox_edit.text = text
+				textbox_edit.editable = not _is_read_only()
 		
 		for index in range(_image_rect.get_child_count()-1, textbox_dict.size()-1, -1):
 			var to_remove: Node = _image_rect.get_child(index)
-			to_remove.disconnect("text_changed", self, "_on_LineEdit_text_changed")
+			if to_remove is TextEdit:
+				to_remove.disconnect("text_changed", self, "_on_TextEdit_text_changed")
+			elif to_remove is LineEdit:
+				to_remove.disconnect("text_changed", self, "_on_LineEdit_text_changed")
 			_image_rect.remove_child(to_remove)
 			to_remove.queue_free()
 		
@@ -403,8 +439,8 @@ func _is_page_entry_valid(page_entry: Dictionary) -> bool:
 			
 			var new_text: Dictionary = {}
 			for id in textbox_dict:
-				# TODO: Use the default value here.
-				new_text[id] = ""
+				var default_val: String = textbox_dict[id]["text"]
+				new_text[id] = default_val
 			
 			var json: JSONParseResult = JSON.parse(page_text)
 			if json.error == OK and json.result is Dictionary:
@@ -438,8 +474,8 @@ func _is_page_entry_valid(page_entry: Dictionary) -> bool:
 					remaining_keys.erase(textbox_id)
 				else:
 					push_warning("Textbox '%s' is missing from page." % textbox_id)
-					# TODO: Use default value.
-					page_text[textbox_id] = ""
+					var default_val: String = textbox_dict[textbox_id]["text"]
+					page_text[textbox_id] = default_val
 			
 			for key in remaining_keys:
 				push_warning("Textbox '%s' is no longer used in page, removing." % key)
@@ -529,7 +565,7 @@ func _save_text_to_current_array(index: int) -> void:
 	if is_image_page:
 		var text_dict = {}
 		for text_edit in _image_rect.get_children():
-			if text_edit is LineEdit:
+			if text_edit is LineEdit or text_edit is TextEdit:
 				text_dict[text_edit.name] = text_edit.text
 		current_page_array[index]["text"] = text_dict
 	else:
@@ -560,6 +596,8 @@ func _set_read_only(read_only: bool) -> void:
 	for text_edit in _image_rect.get_children():
 		if text_edit is LineEdit:
 			text_edit.editable = not read_only
+		elif text_edit is TextEdit:
+			text_edit.readonly = read_only
 
 # Set the window title based on the client's name.
 # client_id: The ID of the client whose name will be in the title.
@@ -710,8 +748,8 @@ func _on_TemplateDialog_entry_requested(_pack: String, _type: String, entry: Dic
 		var textbox_dict: Dictionary = entry["textboxes"]
 		
 		for textbox_id in textbox_dict:
-			# TODO: Use default value.
-			default_dict[textbox_id] = ""
+			var default_val: String = textbox_dict[textbox_id]["text"]
+			default_dict[textbox_id] = default_val
 		
 		page_entry["text"] = default_dict
 	

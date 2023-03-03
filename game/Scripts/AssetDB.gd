@@ -1113,6 +1113,10 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 					entry_dict["h"] = 60
 				if not entry_dict.has("rot"):
 					entry_dict["rot"] = 0.0
+				if not entry_dict.has("text"):
+					entry_dict["text"] = ""
+				if not entry_dict.has("lines"):
+					entry_dict["lines"] = 1
 		
 		entry["textboxes"] = textbox_dict
 	else: # Objects.
@@ -1804,7 +1808,7 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 						push_error("Textbox entry in 'textboxes' is not a dictionary!")
 						return false
 					
-					if subvalue.size() != 5:
+					if subvalue.size() != 7:
 						push_error("Invalid number of elements %d for textbox entry!" % subvalue.size())
 						return false
 					
@@ -1861,6 +1865,31 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 						return false
 					if is_nan(rot) or is_inf(rot):
 						push_error("Invalid value for textbox element 'rot'!")
+						return false
+					
+					if not subvalue.has("text"):
+						push_error("Textbox entry does not contain element 'text'!")
+						return false
+					var text = subvalue["text"]
+					if typeof(text) != TYPE_STRING:
+						push_error("Textbox element 'text' is not a string!")
+						return false
+					
+					if not subvalue.has("lines"):
+						push_error("Textbox entry does not contain element 'lines'!")
+						return false
+					var lines = subvalue["lines"]
+					if typeof(lines) != TYPE_INT:
+						push_error("Textbox element 'lines' is not an integer!")
+						return false
+					if lines < 1:
+						push_error("Invalid value %d for textbox element 'lines'!" % lines)
+						return false
+					var max_lines = floor((float(h) - 9.0) / 10.0)
+					max_lines = int(max(max_lines, 1.0))
+					if lines > max_lines:
+						push_error("Invalid number of lines for textbox! (lines = %d, max = %d)" % [
+								lines, max_lines])
 						return false
 			"texture_path":
 				if asset_type == ASSET_SCENE:
