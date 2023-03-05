@@ -20,3 +20,4 @@ want to see the full specification for what you can do with this system, see
    add_audio_tracks.rst
    add_skyboxes.rst
    add_save_files.rst
+   add_notebook_templates.rst

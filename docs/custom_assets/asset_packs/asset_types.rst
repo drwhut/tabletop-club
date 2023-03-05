@@ -285,3 +285,60 @@ server when they join the game. These hand positions can be defined in the
 Tables can also be painted on by the players! You can set the size of the area
 that the players can paint on by setting the ``paint_plane`` property in the
 :ref:`config-cfg` file.
+
+
+.. _asset-type-template:
+
+Template
+--------
+
+.. image:: examples/template.webp
+   :alt: An example of a template being used by the notebook to keep track of
+      player's scores over a number of rounds.
+
+A template is a pre-made page for the in-game notebook. It can either be an
+:ref:`file-type-image` or a text file (``.txt``).
+
+If it is a text file, then the page itself will also resemble a text file.
+If it is an image, then textboxes can be configured using the ``config.cfg``
+file so the player can save text on top of the image.
+
+The template can be selected when creating a new page in the notebook.
+
+Textboxes for image templates can be configured in the following ways:
+
+.. code-block:: ini
+
+   ; templates/config.cfg
+   [Template.png]
+
+   textboxes = {
+       ; Each textbox must at the very least have an ID, which helps the game
+       ; keep track of which text belongs to which textbox.
+       "the first id": {},
+
+       ; Most of the time, you will want to adjust the position and size of the
+       ; textbox. This can be done with the "x" (horizontal position), "y"
+       ; (vertical position), "w" (width), and "h" (height) entries, which
+       ; correspond to the pixels of the image. Note that the origin (0, 0) is
+       ; at the top-left of the image, and the position defined by "x" and "y"
+       ; is where the top-left corner of the textbox will be.
+       "pos_size": { "x": 50, "y": 100, "w": 500, "h": 350 },
+
+       ; You can also rotate the textbox by setting the number of degrees
+       ; clockwise it should be rotated by using the "rot" entry. Negative
+       ; values also work, and will rotate it anti-clockwise.
+       ; Note that the textbox pivots around its top-left corner, so keep that
+       ; in mind when positioning it.
+       "rotated": { "rot": 90 },
+
+       ; You can set a default value for the textbox by using the "text" entry.
+       "default": { "text": "Default value goes here!" },
+
+       ; By default, textboxes only have one line of text. If you want, you can
+       ; make them have as many lines as you want, up to a maximum depending on
+       ; the height of the textbox. If a textbox has multiple lines, the player
+       ; can also scroll within the textbox itself. This example sets the
+       ; textbox to have three lines of text:
+       "multiline": { "x": 100, "y": 500, "w": 500, "h": 500, "lines": 3 }
+   }
