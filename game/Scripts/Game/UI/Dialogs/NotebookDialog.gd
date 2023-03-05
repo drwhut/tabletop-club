@@ -653,7 +653,7 @@ func _set_image_scale(scale: float) -> void:
 		var font_height = float(scaled_size.y - box_min_size.y) / num_lines
 		if textbox_edit is TextEdit:
 			font_height -= textbox_edit.get_constant("line_spacing")
-		font.size = int(max(1.0, ceil(0.75 * font_height)))
+		font.size = int(max(1.0, ceil(0.65 * font_height)))
 		
 		textbox_edit.rect_position = pos
 		textbox_edit.rect_size = scaled_size
