@@ -446,6 +446,11 @@ puppet func compare_server_schemas(server_schema_db: Dictionary,
 	print("Temporarily removing entries that the host does not have...")
 	for pack in db_extra:
 		for type in db_extra[pack]:
+			# Do not remove templates, since otherwise our own notebook pages
+			# may not work.
+			if type == "templates":
+				continue
+			
 			var type_arr = db_extra[pack][type]
 			for index_arr in range(type_arr.size() - 1, -1, -1):
 				var index_asset = type_arr[index_arr]
