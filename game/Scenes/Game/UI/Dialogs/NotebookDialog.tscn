@@ -5,7 +5,7 @@
 [ext_resource path="res://Fonts/Cabin/Cabin-Regular.tres" type="DynamicFont" id=3]
 
 [node name="NotebookDialog" type="WindowDialog"]
-margin_right = 500.0
+margin_right = 700.0
 margin_bottom = 450.0
 script = ExtResource( 1 )
 
@@ -37,16 +37,16 @@ clip_text = true
 
 [node name="PageContainer" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 154.0
-margin_right = 500.0
+margin_right = 700.0
 margin_bottom = 450.0
 size_flags_horizontal = 3
 
 [node name="TitleContainer" type="HBoxContainer" parent="HBoxContainer/PageContainer"]
-margin_right = 346.0
+margin_right = 546.0
 margin_bottom = 30.0
 
 [node name="TitleEdit" type="LineEdit" parent="HBoxContainer/PageContainer/TitleContainer"]
-margin_right = 272.0
+margin_right = 472.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 max_length = 100
@@ -54,8 +54,8 @@ editable = false
 placeholder_text = "Title"
 
 [node name="PublicCheckBox" type="CheckBox" parent="HBoxContainer/PageContainer/TitleContainer"]
-margin_left = 276.0
-margin_right = 346.0
+margin_left = 476.0
+margin_right = 546.0
 margin_bottom = 30.0
 hint_tooltip = "When ticked, this page will be visible to other players."
 disabled = true
@@ -63,7 +63,7 @@ text = "Public"
 
 [node name="TextEdit" type="TextEdit" parent="HBoxContainer/PageContainer"]
 margin_top = 34.0
-margin_right = 346.0
+margin_right = 546.0
 margin_bottom = 390.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 3 )
@@ -73,7 +73,7 @@ wrap_enabled = true
 [node name="ImageContainer" type="ScrollContainer" parent="HBoxContainer/PageContainer"]
 visible = false
 margin_top = 34.0
-margin_right = 346.0
+margin_right = 546.0
 margin_bottom = 390.0
 size_flags_vertical = 3
 follow_focus = true
@@ -83,20 +83,20 @@ expand = true
 
 [node name="ZoomContainer" type="HBoxContainer" parent="HBoxContainer/PageContainer"]
 margin_top = 394.0
-margin_right = 346.0
+margin_right = 546.0
 margin_bottom = 420.0
 alignment = 2
 
 [node name="ZoomOutButton" type="Button" parent="HBoxContainer/PageContainer/ZoomContainer"]
-margin_left = 220.0
-margin_right = 239.0
+margin_left = 420.0
+margin_right = 439.0
 margin_bottom = 26.0
 text = "-"
 
 [node name="ZoomLabel" type="Label" parent="HBoxContainer/PageContainer/ZoomContainer"]
-margin_left = 243.0
+margin_left = 443.0
 margin_top = 3.0
-margin_right = 323.0
+margin_right = 523.0
 margin_bottom = 23.0
 rect_min_size = Vector2( 80, 0 )
 text = "100%"
@@ -104,34 +104,34 @@ align = 1
 clip_text = true
 
 [node name="ZoomInButton" type="Button" parent="HBoxContainer/PageContainer/ZoomContainer"]
-margin_left = 327.0
-margin_right = 346.0
+margin_left = 527.0
+margin_right = 546.0
 margin_bottom = 26.0
 text = "+"
 
 [node name="ModifyContainer" type="HBoxContainer" parent="HBoxContainer/PageContainer"]
 margin_top = 424.0
-margin_right = 346.0
+margin_right = 546.0
 margin_bottom = 450.0
 
 [node name="MoveUpButton" type="Button" parent="HBoxContainer/PageContainer/ModifyContainer"]
-margin_right = 112.0
+margin_right = 179.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 disabled = true
 text = "Move Up"
 
 [node name="MoveDownButton" type="Button" parent="HBoxContainer/PageContainer/ModifyContainer"]
-margin_left = 116.0
-margin_right = 229.0
+margin_left = 183.0
+margin_right = 362.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 disabled = true
 text = "Move Down"
 
 [node name="DeleteButton" type="Button" parent="HBoxContainer/PageContainer/ModifyContainer"]
-margin_left = 233.0
-margin_right = 346.0
+margin_left = 366.0
+margin_right = 546.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 disabled = true

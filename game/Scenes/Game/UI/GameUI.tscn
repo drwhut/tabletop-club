@@ -136,7 +136,13 @@ mouse_filter = 2
 margin_right = 20.0
 margin_bottom = 20.0
 
-[node name="ObjectsDialog" parent="." instance=ExtResource( 2 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+__meta__ = {
+"_editor_description_": "Used to make sure the children controls are rendered above the CameraController UI elements."
+}
+
+[node name="ObjectsDialog" parent="CanvasLayer" instance=ExtResource( 2 )]
 window_title = "Objects"
 db_types = {
 "BOARDS": "boards",
@@ -152,29 +158,23 @@ load_button_text = "Add"
 status_text_one = "Added %s."
 status_text_multiple = "Added %d objects."
 
-[node name="GamesDialog" parent="." instance=ExtResource( 2 )]
+[node name="GamesDialog" parent="CanvasLayer" instance=ExtResource( 2 )]
 window_title = "Games"
 db_types = {
 "GAMES": "games"
 }
 status_text_multiple = "Loaded %d games."
 
-[node name="RoomDialog" parent="." instance=ExtResource( 7 )]
+[node name="RoomDialog" parent="CanvasLayer" instance=ExtResource( 7 )]
 
-[node name="NotebookDialog" parent="." instance=ExtResource( 9 )]
+[node name="NotebookDialog" parent="CanvasLayer" instance=ExtResource( 9 )]
 
-[node name="ClearTableConfirmDialog" type="ConfirmationDialog" parent="."]
-margin_right = 250.0
-margin_bottom = 93.0
+[node name="ClearTableConfirmDialog" type="ConfirmationDialog" parent="CanvasLayer"]
+margin_right = 300.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 300, 100 )
 dialog_text = "Are you sure you want to clear all objects from the table?"
 dialog_autowrap = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
-__meta__ = {
-"_editor_description_": "Used to make sure the children controls are rendered above the CameraController UI elements."
-}
 
 [node name="GameMenuBackground" type="ColorRect" parent="CanvasLayer"]
 visible = false
@@ -254,13 +254,13 @@ visible = false
 [connection signal="pressed" from="HideableUI/TopPanel/GameMenuButton" to="." method="_on_GameMenuButton_pressed"]
 [connection signal="pressed" from="HideableUI/MultiplayerContainer/RoomCodeVisibleContainer/RoomCodeToggleButton" to="." method="_on_RoomCodeToggleButton_pressed"]
 [connection signal="id_pressed" from="HideableUI/PlayerContextMenu" to="." method="_on_PlayerContextMenu_id_pressed"]
-[connection signal="entry_requested" from="ObjectsDialog" to="." method="_on_ObjectsDialog_entry_requested"]
-[connection signal="entry_requested" from="GamesDialog" to="." method="_on_GamesDialog_entry_requested"]
-[connection signal="requesting_room_details" from="RoomDialog" to="." method="_on_RoomDialog_requesting_room_details"]
-[connection signal="setting_lighting" from="RoomDialog" to="." method="_on_RoomDialog_setting_lighting"]
-[connection signal="setting_skybox" from="RoomDialog" to="." method="_on_RoomDialog_setting_skybox"]
-[connection signal="setting_table" from="RoomDialog" to="." method="_on_RoomDialog_setting_table"]
-[connection signal="confirmed" from="ClearTableConfirmDialog" to="." method="_on_ClearTableConfirmDialog_confirmed"]
+[connection signal="entry_requested" from="CanvasLayer/ObjectsDialog" to="." method="_on_ObjectsDialog_entry_requested"]
+[connection signal="entry_requested" from="CanvasLayer/GamesDialog" to="." method="_on_GamesDialog_entry_requested"]
+[connection signal="requesting_room_details" from="CanvasLayer/RoomDialog" to="." method="_on_RoomDialog_requesting_room_details"]
+[connection signal="setting_lighting" from="CanvasLayer/RoomDialog" to="." method="_on_RoomDialog_setting_lighting"]
+[connection signal="setting_skybox" from="CanvasLayer/RoomDialog" to="." method="_on_RoomDialog_setting_skybox"]
+[connection signal="setting_table" from="CanvasLayer/RoomDialog" to="." method="_on_RoomDialog_setting_table"]
+[connection signal="confirmed" from="CanvasLayer/ClearTableConfirmDialog" to="." method="_on_ClearTableConfirmDialog_confirmed"]
 [connection signal="pressed" from="CanvasLayer/GameMenuBackground/CenterContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameMenuBackground/CenterContainer/VBoxContainer/SaveGameButton" to="." method="_on_SaveGameButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameMenuBackground/CenterContainer/VBoxContainer/LoadGameButton" to="." method="_on_LoadGameButton_pressed"]

@@ -45,20 +45,20 @@ signal undo_state()
 
 onready var _chat_box = $HideableUI/ChatBox
 onready var _clear_table_button = $HideableUI/TopPanel/ClearTableButton
-onready var _clear_table_dialog = $ClearTableConfirmDialog
+onready var _clear_table_dialog = $CanvasLayer/ClearTableConfirmDialog
 onready var _flip_table_button = $HideableUI/TopPanel/FlipTableButton
 onready var _game_menu_background = $CanvasLayer/GameMenuBackground
-onready var _games_dialog = $GamesDialog
+onready var _games_dialog = $CanvasLayer/GamesDialog
 onready var _hideable_ui = $HideableUI
 onready var _multiplayer_container = $HideableUI/MultiplayerContainer
-onready var _notebook_dialog = $NotebookDialog
-onready var _objects_dialog = $ObjectsDialog
+onready var _notebook_dialog = $CanvasLayer/NotebookDialog
+onready var _objects_dialog = $CanvasLayer/ObjectsDialog
 onready var _options_menu = $CanvasLayer/OptionsMenu
 onready var _player_context_menu = $HideableUI/PlayerContextMenu
 onready var _player_list_container = $HideableUI/MultiplayerContainer/PlayerListContainer
 onready var _room_code_label = $HideableUI/MultiplayerContainer/RoomCodeLabel
 onready var _room_code_toggle_button = $HideableUI/MultiplayerContainer/RoomCodeVisibleContainer/RoomCodeToggleButton
-onready var _room_dialog = $RoomDialog
+onready var _room_dialog = $CanvasLayer/RoomDialog
 onready var _rotation_option = $HideableUI/TopPanel/RotationOption
 onready var _save_dialog = $CanvasLayer/GameMenuBackground/SaveDialog
 onready var _undo_button = $HideableUI/TopPanel/UndoButton
