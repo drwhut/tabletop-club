@@ -748,6 +748,21 @@ func _on_DeleteButton_pressed():
 	_confirm_delete_dialog.dialog_text = text
 	_confirm_delete_dialog.popup_centered()
 
+func _on_ImageContainer_gui_input(event: InputEvent):
+	if event is InputEventMouseButton:
+		var ctrl = event.command if OS.get_name() == "OSX" else event.control
+		if ctrl and event.pressed:
+			# Make sure the scroll container does not scroll the contents if we
+			# want to zoom in and out.
+			_image_container.set_enable_v_scroll(false)
+			
+			if event.button_index == BUTTON_WHEEL_UP:
+				_on_ZoomInButton_pressed()
+			elif event.button_index == BUTTON_WHEEL_DOWN:
+				_on_ZoomOutButton_pressed()
+			
+			_image_container.call_deferred("set_enable_v_scroll", true)
+
 func _on_LineEdit_text_changed(_text: String):
 	_updated_since_last_save = true
 	_time_since_last_update = 0.0

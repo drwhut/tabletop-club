@@ -157,6 +157,7 @@ load_button_text = "Open"
 [connection signal="text_changed" from="HBoxContainer/PageContainer/TitleContainer/TitleEdit" to="." method="_on_TitleEdit_text_changed"]
 [connection signal="toggled" from="HBoxContainer/PageContainer/TitleContainer/PublicCheckBox" to="." method="_on_PublicCheckBox_toggled"]
 [connection signal="text_changed" from="HBoxContainer/PageContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]
+[connection signal="gui_input" from="HBoxContainer/PageContainer/ImageContainer" to="." method="_on_ImageContainer_gui_input"]
 [connection signal="pressed" from="HBoxContainer/PageContainer/ZoomContainer/ZoomOutButton" to="." method="_on_ZoomOutButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/PageContainer/ZoomContainer/ZoomInButton" to="." method="_on_ZoomInButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/PageContainer/ModifyContainer/MoveUpButton" to="." method="_on_MoveUpButton_pressed"]
