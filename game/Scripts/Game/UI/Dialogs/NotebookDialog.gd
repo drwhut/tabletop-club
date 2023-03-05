@@ -887,7 +887,9 @@ func _on_ZoomInButton_pressed():
 	new_zoom = min(round(10.0 * new_zoom) / 10.0, ZOOM_MAX)
 	_set_zoom(new_zoom)
 	
-	if _page_on_display >= 0:
+	# Need to check if the array is ours since we can also zoom in and out when
+	# in view mode.
+	if _page_on_display >= 0 and _is_current_array_from_self():
 		current_page_array[_page_on_display]["zoom"] = new_zoom
 		_updated_since_last_save = true
 		_time_since_last_update = 0.0
@@ -897,7 +899,7 @@ func _on_ZoomOutButton_pressed():
 	new_zoom = max(round(10.0 * new_zoom) / 10.0, ZOOM_MIN)
 	_set_zoom(new_zoom)
 	
-	if _page_on_display >= 0:
+	if _page_on_display >= 0 and _is_current_array_from_self():
 		current_page_array[_page_on_display]["zoom"] = new_zoom
 		_updated_since_last_save = true
 		_time_since_last_update = 0.0
