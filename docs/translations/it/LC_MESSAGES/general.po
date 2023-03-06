@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-06 00:02+0000\n"
-"PO-Revision-Date: 2022-11-26 15:06+0000\n"
-"Last-Translator: Hairic95 <hairic95@gmail.com>\n"
+"PO-Revision-Date: 2023-02-28 11:38+0000\n"
+"Last-Translator: Giuseppe Bilotta <giuseppe.bilotta@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/it/>\n"
 "Language: it\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
-msgstr ""
+msgstr "A proposito di"
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
@@ -96,7 +96,7 @@ msgstr ""
 
 #: ../../general/about.rst:48
 msgid "Tabletop board game"
-msgstr ""
+msgstr "Gioco da tavolo"
 
 #: ../../general/about.rst:50
 msgid ""
@@ -117,7 +117,7 @@ msgstr ""
 
 #: ../../general/about.rst:61
 msgid "Simulator"
-msgstr ""
+msgstr "Simulatore"
 
 #: ../../general/about.rst:63
 msgid ""
@@ -129,31 +129,31 @@ msgstr ""
 
 #: ../../general/about.rst:70
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Domande frequenti"
 
 #: ../../general/about.rst:73
 msgid "What platforms can I play Tabletop Club on?"
-msgstr ""
+msgstr "Su quali piattaforme posso giocare a Tabletop Club?"
 
 #: ../../general/about.rst:75
 msgid "Tabletop Club can be played on any of these platforms:"
-msgstr ""
+msgstr "Tabletop Club può essere giocato sulle seguenti piattaforme:"
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
-msgstr ""
+msgstr "Windows 7 o successivo"
 
 #: ../../general/about.rst:78
 msgid "macOS 10.12 or later"
-msgstr ""
+msgstr "macOS 10.12 o successivo"
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
-msgstr ""
+msgstr "Linux/\\*BSD"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
-msgstr ""
+msgstr "L'hardware deve inoltre supportare OpenGL 3.3."
 
 #: ../../general/about.rst:83
 msgid ""
