@@ -43,7 +43,7 @@ const DEFAULT_FONT_SIZE = 16 # Text pages only.
 const ZOOM_MAX = 5.0
 const ZOOM_MIN = 0.1
 
-const MAX_PAGE_ARRAY_NETWORK_SIZE = 50000000 # 50 MB
+const MAX_PAGE_ARRAY_NETWORK_SIZE = 50000 # 50 KB.
 const REQUEST_PAGE_ARRAY_TIMEOUT_MS = 10000 # 10 seconds.
 const UPDATE_TIME_UNTIL_SAVE_SEC = 3.0 # 3 seconds.
 
