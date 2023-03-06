@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-06 00:16\n"
+"POT-Creation-Date: 2023-03-06 16:28\n"
 "PO-Revision-Date: 2023-02-07 11:39+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
@@ -1003,6 +1003,22 @@ msgstr "Picknicktafel"
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
 msgstr "Tafel"
+
+#: ../TabletopClub/templates/Blank_Page:1
+msgid "Blank Page"
+msgstr ""
+
+#: ../TabletopClub/templates/Blank_Page:2
+msgid "There's nothing here..."
+msgstr ""
+
+#: ../TabletopClub/templates/Score_Card:1
+msgid "Score Card"
+msgstr ""
+
+#: ../TabletopClub/templates/Score_Card:2
+msgid "A generic score card for up to 10 players."
+msgstr ""
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"

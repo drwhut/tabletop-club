@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-06 00:16\n"
-"PO-Revision-Date: 2023-01-26 10:53+0000\n"
-"Last-Translator: Leona 'leo' Gottfried <s6573328@stud.uni-frankfurt.de>\n"
+"POT-Creation-Date: 2023-03-06 16:28\n"
+"PO-Revision-Date: 2023-02-21 22:37+0000\n"
+"Last-Translator: Jummit <jummit@web.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/de/>\n"
 "Language: de\n"
@@ -858,14 +858,14 @@ msgid "Shades of Spring - Kevin MacLeod"
 msgstr "Shades of Spring - Kevin MacLeod"
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:2
-#, fuzzy
 msgid ""
 "Sort of a minor mid-tempo jazz combo with 2 pianos. Melody is doubled in "
 "octaves. Soloist goes outside more than the guy comping... but hey - what "
 "are soloists for?"
 msgstr ""
-"Fuck this shit browser crashing on every occasion and deleting my carefully-"
-"orchestrated translation. Fuck this shit Apple device with a rusty pitchfork."
+"Eine Art mittel-schnelle Jazz-Kombination mit 2 Klavieren. Melodie ist in "
+"zwei Oktaven. Solist geht mehr raus als der Typ der compt... aber naja - "
+"wofür sind Solisten gut?"
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:1
 msgid "Smooth Lovin - Kevin MacLeod"
@@ -877,6 +877,10 @@ msgid ""
 "really started liking it, so I guess it is a pastiche now? Oh, man... I wish "
 "there was an allowance for pastiche in copyright like there is for parody."
 msgstr ""
+"Dieser wurde auf 11 hochgedreht. Ich habe es Anfangs als Parodie "
+"produziert... Dann begann ich es wirklich zu mögen, also ist es jetzt eine "
+"Pastiche, wie es aussieht? Oh man.... Ich wünschte es gäbe bei Urheberrecht "
+"Toleranz für Pastiches wie bei Parodien."
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:1
 msgid "Spy Glass - Kevin MacLeod"
@@ -1025,6 +1029,22 @@ msgstr "Picknickbank"
 msgid "Table"
 msgstr "Tisch"
 
+#: ../TabletopClub/templates/Blank_Page:1
+msgid "Blank Page"
+msgstr ""
+
+#: ../TabletopClub/templates/Blank_Page:2
+msgid "There's nothing here..."
+msgstr ""
+
+#: ../TabletopClub/templates/Score_Card:1
+msgid "Score Card"
+msgstr ""
+
+#: ../TabletopClub/templates/Score_Card:2
+msgid "A generic score card for up to 10 players."
+msgstr ""
+
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
 msgstr "Radio"
@@ -1034,104 +1054,84 @@ msgid "An old radio from a bygone era."
 msgstr "Ein altes Radio aus vergangenen Zeiten."
 
 #: ../TabletopClub/tokens/cube/Blue:1
-#, fuzzy
-#| msgid "d4 (Blue)"
 msgid "Blue"
-msgstr "d4 (Blau)"
+msgstr "Blau"
 
 #: ../TabletopClub/tokens/cube/Blue:2
 msgid "A blue token."
-msgstr ""
+msgstr "Ein blauer Spielstein."
 
 #: ../TabletopClub/tokens/cube/Brown:1
-#, fuzzy
-#| msgid "d4 (Brown)"
 msgid "Brown"
-msgstr "d4 (Braun)"
+msgstr "Braun"
 
 #: ../TabletopClub/tokens/cube/Brown:2
 msgid "A brown token."
-msgstr ""
+msgstr "Ein brauner Spielstein."
 
 #: ../TabletopClub/tokens/cube/Cyan:1
-#, fuzzy
-#| msgid "d4 (Cyan)"
 msgid "Cyan"
-msgstr "d4 (Cyanblau)"
+msgstr "Türkis"
 
 #: ../TabletopClub/tokens/cube/Cyan:2
 msgid "A cyan token."
-msgstr ""
+msgstr "Ein türkiser Spielstein."
 
 #: ../TabletopClub/tokens/cube/Green:1
-#, fuzzy
-#| msgid "d4 (Green)"
 msgid "Green"
-msgstr "d4 (Grün)"
+msgstr "Grün"
 
 #: ../TabletopClub/tokens/cube/Green:2
 msgid "A green token."
-msgstr ""
+msgstr "Ein grüner Spielstein."
 
 #: ../TabletopClub/tokens/cube/Orange:1
-#, fuzzy
-#| msgid "d4 (Orange)"
 msgid "Orange"
-msgstr "d4 (Orange)"
+msgstr "Orange"
 
 #: ../TabletopClub/tokens/cube/Orange:2
 msgid "An orange token."
-msgstr ""
+msgstr "Ein orangener Spielstein."
 
 #: ../TabletopClub/tokens/cube/Pink:1
-#, fuzzy
-#| msgid "d4 (Pink)"
 msgid "Pink"
-msgstr "d4 (Pink)"
+msgstr "Rosa"
 
 #: ../TabletopClub/tokens/cube/Pink:2
 msgid "A pink token."
-msgstr ""
+msgstr "Ein rosafarbener Spielstein."
 
 #: ../TabletopClub/tokens/cube/Purple:1
-#, fuzzy
-#| msgid "d4 (Purple)"
 msgid "Purple"
-msgstr "d4 (Lila)"
+msgstr "Lila"
 
 #: ../TabletopClub/tokens/cube/Purple:2
 msgid "A purple token."
-msgstr ""
+msgstr "Ein lilafarbener Spielstein."
 
 #: ../TabletopClub/tokens/cube/Red:1
-#, fuzzy
-#| msgid "Red Cup"
 msgid "Red"
-msgstr "Roter Becher"
+msgstr "Rot"
 
 #: ../TabletopClub/tokens/cube/Red:2
 msgid "A red token."
-msgstr ""
+msgstr "Ein roter Spielstein."
 
 #: ../TabletopClub/tokens/cube/White:1
-#, fuzzy
-#| msgid "d4 (White)"
 msgid "White"
-msgstr "d4 (Weiß)"
+msgstr "Weiß"
 
 #: ../TabletopClub/tokens/cube/White:2
 msgid "A white token."
-msgstr ""
+msgstr "Ein weißer Spielstein."
 
 #: ../TabletopClub/tokens/cube/Yellow:1
-#, fuzzy
-#| msgid "d4 (Yellow)"
 msgid "Yellow"
-msgstr "d4 (Gelb)"
+msgstr "Gelb"
 
 #: ../TabletopClub/tokens/cube/Yellow:2
 msgid "A yellow token."
-msgstr ""
+msgstr "Ein gelber Spielstein."
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-06 00:16\n"
-"PO-Revision-Date: 2022-12-02 21:46+0000\n"
-"Last-Translator: guissou <guimichel@protonmail.com>\n"
+"POT-Creation-Date: 2023-03-06 16:28\n"
+"PO-Revision-Date: 2023-03-06 16:34+0000\n"
+"Last-Translator: Seb D <cppa_seth@yahoo.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/fr/>\n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -725,6 +725,11 @@ msgid ""
 "runs out. That level of cool. Maybe you're not that cool, but if you adopt "
 "this as your personal theme tune, people will THINK you're that cool."
 msgstr ""
+"C'est cool. Vous pouvez entrer dans un dîner, prendre un verre de Prosecco, "
+"embrasser l'hôte, puis nonchalamment désamorcer une grosse bombe une seconde "
+"avant la fin du compteur. Ce niveau de cool. Peut-être que vous n'êtes pas "
+"aussi cool, mais si vous adoptez cette chanson comme votre thème personnel, "
+"les gens PENSERONT que vous êtes aussi cool."
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:1
 msgid "Bossa Antigua - Kevin MacLeod"
@@ -756,20 +761,30 @@ msgid ""
 "Hah! Adverbs work perfectly fine! Woohoo! Adverbs! And before I get mail... "
 "adjectives killed my family, so I can go off on them all I want."
 msgstr ""
+"Jazzeux ! Détectivesque ! Mystérieuieux ! Je suis nul pour créer des "
+"adjectifs. Qui a besoin d'adjectifs de toute façon ? Je suis bien sans "
+"adjectifs. Comment ça sans adjectifs, vous vous demandez peut-être ? Je ne "
+"peux pas le dire - car cela nécessiterait une sorte de descripteur ! Et je "
+"n'ai pas besoin de descripteurs dans mes écrits... Peut-être un... tout "
+"petit... NON ! A quoi je pense ! ? Je refuse ! J'en ai complètement marre "
+"des adjectifs ! Hah ! Les adverbes fonctionnent parfaitement bien ! Woohoo ! "
+"Adverbes ! Et avant que je reçoive du courrier... les adjectifs ont tué ma "
+"famille, donc je peux m'en prendre à eux autant que je veux."
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:1
 msgid "George Street Shuffle - Kevin MacLeod"
-msgstr ""
+msgstr "George Street Shuffle - Kevin MacLeod"
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:2
 msgid "Nice little non-offending light jazz piece for vibes."
-msgstr ""
+msgstr "Joli petit morceau de jazz léger et inoffensif pour l'ambiance."
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:1
 msgid "Hard Boiled - Kevin MacLeod"
-msgstr ""
+msgstr "Hard Boiled - Kevin MacLeod"
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:2
+#, fuzzy
 msgid ""
 "You're looking for the low-down, huh? That's going to take lettuce. You want "
 "the dope? the scoop? the skinny? Ten bucks a day plus expenses. No "
@@ -777,10 +792,15 @@ msgid ""
 "you already knew that... Out of curiosity, what's the word for people who "
 "overuse slang?"
 msgstr ""
+"Vous cherchez à être au parfum, hein ? Ça va coûter de l'oseille. Vous "
+"voulez la came ? le scoop ? l'info ? Dix dollars par jour plus les frais. "
+"Pas de négociations. Je ne suis pas un détective de quatrième classe, mais "
+"un vache de baratineur comme vous le savez déjà... Par curiosité, quel est "
+"le mot pour les gens qui abusent de l'argot ?"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:1
 msgid "In Your Arms - Kevin MacLeod"
-msgstr ""
+msgstr "In Your Arms - Kevin MacLeod"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:2
 msgid ""
@@ -790,10 +810,15 @@ msgid ""
 "words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No "
 "Whammies."
 msgstr ""
+"Un morceau de musique d'une époque plus élégante, 1940. C'est un beau "
+"morceau tranquille qui vous donnera envie de prendre du champagne et d'aller "
+"danser un slow avec des gens... ou des pingouins. J'aime les pingouins. Et "
+"maintenant quelques mots à rechercher : Big Band. 1940s. Années quarante. "
+"Soirée élégante. Pingouin Danse Slow. Pas de vibrato."
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:1
 msgid "Lobby Time - Kevin MacLeod"
-msgstr ""
+msgstr "Lobby Time - Kevin MacLeod"
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:2
 msgid ""
@@ -802,18 +827,24 @@ msgid ""
 "from our cheerful bar staff (with a complimentary cheese and fruit plate "
 "before 5pm). We feature prime rib dinners every day that ends in a "
 msgstr ""
+"Bienvenue dans le hall du FUTUR ! De luxueux cendriers automatiques et un "
+"mobilier moderne en vinyle vert mettent en valeur les murs recouverts de "
+"moquette à poils longs. Savourez un Rusty Nail offert par notre joyeux "
+"personnel du bar (avec son assiette de fromage et de fruits offerte avant "
+"17h00). Tous les jours, nous proposons des dîners de côtes de bœuf qui se "
+"terminent par un... "
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:1
 msgid "Night on the Docks - Sax - Kevin MacLeod"
-msgstr ""
+msgstr "Night on the Docks - Sax - Kevin MacLeod"
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:2
 msgid "Sad and smooth; Think 1950's detective film."
-msgstr ""
+msgstr "Triste et suave ; Pensez à un film policier des années 50."
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:1
 msgid "Shades of Spring - Kevin MacLeod"
-msgstr ""
+msgstr "Shades of Spring - Kevin MacLeod"
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:2
 msgid ""
@@ -821,10 +852,13 @@ msgid ""
 "octaves. Soloist goes outside more than the guy comping... but hey - what "
 "are soloists for?"
 msgstr ""
+"Une sorte de combo de jazz mid-tempo mineur avec 2 pianos. La mélodie est "
+"doublée en octaves. Le soliste divague plus que celui qui accompagne... mais "
+"bon, à quoi servent les solistes ?"
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:1
 msgid "Smooth Lovin - Kevin MacLeod"
-msgstr ""
+msgstr "Smooth Lovin - Kevin MacLeod"
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:2
 msgid ""
@@ -832,10 +866,14 @@ msgid ""
 "really started liking it, so I guess it is a pastiche now? Oh, man... I wish "
 "there was an allowance for pastiche in copyright like there is for parody."
 msgstr ""
+"Celle-ci est montée à fond. J'ai commencé à la produire comme une parodie... "
+"puis j'ai vraiment commencé à l'aimer, donc je suppose que c'est un pastiche "
+"maintenant ? Oh, mec... J'aimerais qu'il y ait une tolérance pour le "
+"pastiche dans le droit d'auteur comme il y en a une pour la parodie."
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:1
 msgid "Spy Glass - Kevin MacLeod"
-msgstr ""
+msgstr "Spy Glass - Kevin MacLeod"
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:2
 msgid ""
@@ -843,6 +881,11 @@ msgid ""
 "1950s. Super cool jazz for your hardcore detectives! Also useful for beat "
 "poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
 msgstr ""
+"L'année est... Je n'en ai aucune idée. Intemporelle. Ça pourrait être "
+"maintenant, ça pourrait être dans les années 50. Du jazz super cool pour vos "
+"détectives hardcore ! Aussi utile pour les poètes de la beat generation ! "
+"Aussi utile pour la lassitude ou l'ennui ! Enfin, des variétés intéressantes "
+"d'ennui."
 
 #: ../TabletopClub/pieces/Bishop_Black:1
 msgid "Bishop Black"
@@ -975,6 +1018,22 @@ msgstr "Banc de pique-nique"
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
 msgstr "Table"
+
+#: ../TabletopClub/templates/Blank_Page:1
+msgid "Blank Page"
+msgstr ""
+
+#: ../TabletopClub/templates/Blank_Page:2
+msgid "There's nothing here..."
+msgstr ""
+
+#: ../TabletopClub/templates/Score_Card:1
+msgid "Score Card"
+msgstr ""
+
+#: ../TabletopClub/templates/Score_Card:2
+msgid "A generic score card for up to 10 players."
+msgstr ""
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
