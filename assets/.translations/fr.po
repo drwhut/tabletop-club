@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-06 00:16\n"
+"POT-Creation-Date: 2023-03-06 16:28\n"
 "PO-Revision-Date: 2023-03-06 16:34+0000\n"
 "Last-Translator: Seb D <cppa_seth@yahoo.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
@@ -1018,6 +1018,22 @@ msgstr "Banc de pique-nique"
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
 msgstr "Table"
+
+#: ../TabletopClub/templates/Blank_Page:1
+msgid "Blank Page"
+msgstr ""
+
+#: ../TabletopClub/templates/Blank_Page:2
+msgid "There's nothing here..."
+msgstr ""
+
+#: ../TabletopClub/templates/Score_Card:1
+msgid "Score Card"
+msgstr ""
+
+#: ../TabletopClub/templates/Score_Card:2
+msgid "A generic score card for up to 10 players."
+msgstr ""
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
