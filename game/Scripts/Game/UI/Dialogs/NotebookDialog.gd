@@ -854,6 +854,11 @@ func _on_TemplateDialog_entry_requested(_pack: String, _type: String, entry: Dic
 				var default_text: String = template_file.get_as_text()
 				template_file.close()
 				
+				# Check for invalid characters!
+				for i in range(default_text.length() - 1, -1, -1):
+					if default_text.ord_at(i) == 0:
+						default_text.erase(i, 1)
+				
 				page_entry["text"] = default_text
 			else:
 				push_error("Failed to open '%s' (error: %d)" % [template_file_path, err])
