@@ -43,6 +43,7 @@ const DEFAULT_FONT_SIZE = 16 # Text pages only.
 const ZOOM_MAX = 5.0
 const ZOOM_MIN = 0.1
 
+const MAX_PAGE_ARRAY_NETWORK_SIZE = 50000000 # 50 MB
 const REQUEST_PAGE_ARRAY_TIMEOUT_MS = 10000 # 10 seconds.
 const UPDATE_TIME_UNTIL_SAVE_SEC = 3.0 # 3 seconds.
 
@@ -192,9 +193,17 @@ remotesync func send_page_array_to_server() -> void:
 		page_array_to_use = _cache_array_for_server
 	
 	# Only send public pages to the server.
+	var size_of_data = 0
 	var page_array_to_send: Array = []
 	for page in page_array_to_use:
 		if page["public"]:
+			# There is a limit to how much data we can send over the network,
+			# so if we are about to hit that limit, stop sending any more pages.
+			var page_as_str = String(page)
+			size_of_data += page_as_str.length()
+			if size_of_data > MAX_PAGE_ARRAY_NETWORK_SIZE:
+				break
+			
 			page_array_to_send.push_back(page)
 	
 	rpc_id(1, "send_response_to_requester", page_array_to_send)
@@ -393,6 +402,7 @@ func _is_page_entry_valid(page_entry: Dictionary) -> bool:
 	if typeof(page_title) != TYPE_STRING:
 		push_error("Page title in page array is not a string!")
 		return false
+	page_title = page_title.substr(0, _title_edit.max_length)
 	
 	if page_entry.has("public"):
 		var page_public = page_entry["public"]
