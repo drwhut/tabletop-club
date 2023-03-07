@@ -217,7 +217,6 @@ func parse_translations(locale: String) -> void:
 		_import_thread.wait_to_finish()
 	
 	if _db.empty():
-		push_warning("Tried to parse translations while AssetDB is empty.")
 		return
 	
 	_tr_locales.append(locale)

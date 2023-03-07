@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/ImportAssets.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Images/LoadingScreen.jpg" type="Texture" id=3]
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-Outline.tres" type="DynamicFont" id=4]
 
@@ -21,9 +20,6 @@ anchor_bottom = 1.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 7
-
-[node name="OptionsMenu" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_top = 1.0

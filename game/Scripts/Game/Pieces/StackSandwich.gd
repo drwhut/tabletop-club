@@ -129,7 +129,7 @@ func _set_sandwich_display() -> void:
 	if not front_path.empty():
 		front_texture = ResourceManager.load_res(front_path)
 	else:
-		front_texture = preload("res://Images/BlackTexture.bmp")
+		front_texture = preload("res://Images/BlackTexture.png")
 	
 	var front_material = SpatialMaterial.new()
 	front_material.albedo_color = front_entry["color"]
@@ -148,7 +148,7 @@ func _set_sandwich_display() -> void:
 	if not back_path.empty():
 		back_texture = ResourceManager.load_res(back_path)
 	else:
-		back_texture = preload("res://Images/BlackTexture.bmp")
+		back_texture = preload("res://Images/BlackTexture.png")
 	
 	var back_material = SpatialMaterial.new()
 	back_material.albedo_color = back_entry["color"]

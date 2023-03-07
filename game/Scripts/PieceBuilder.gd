@@ -123,7 +123,7 @@ func build_piece(piece_entry: Dictionary, extra_nodes: bool = true) -> Piece:
 			if not texture_path.empty():
 				optional_texture = ResourceManager.load_res(texture_path)
 			else:
-				optional_texture = preload("res://Images/BlackTexture.bmp")
+				optional_texture = preload("res://Images/BlackTexture.png")
 			piece.apply_texture(optional_texture, surface)
 			surface += 1
 	

@@ -126,13 +126,6 @@ func get_output_subdir(subfolder: String) -> Directory:
 	
 	return dir
 
-# Restart the game.
-func restart_game() -> void:
-	call_deferred("_terminate_peer")
-	_goto_scene(ProjectSettings.get_setting("application/run/main_scene"), {
-		"mode": MODE_NONE
-	})
-
 # Set whether the game will censor profanity in player-generated text.
 # censor: If the game will censor profanity.
 func set_censoring_profanity(censor: bool) -> void:
@@ -160,6 +153,13 @@ func start_game_as_server() -> void:
 func start_game_singleplayer() -> void:
 	_goto_scene("res://Scenes/Game/Game.tscn", {
 		"mode": MODE_SINGLEPLAYER
+	})
+
+# Start the importing assets scene.
+func start_importing_assets() -> void:
+	call_deferred("_terminate_peer")
+	_goto_scene("res://Scenes/ImportAssets.tscn", {
+		"mode": MODE_NONE
 	})
 
 # Start the main menu.

@@ -645,7 +645,7 @@ func _on_ReimportConfirm_confirmed():
 	else:
 		print("Failed to open the imported assets directory (error ", err, ")")
 	
-	Global.restart_game()
+	Global.start_importing_assets()
 
 func _on_ResetBindingsButton_pressed():
 	_reset_bindings_confirm.popup_centered()
