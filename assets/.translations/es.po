@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-06 16:28\n"
-"PO-Revision-Date: 2023-02-22 23:41+0000\n"
+"PO-Revision-Date: 2023-03-08 19:14+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/es/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -1019,19 +1019,19 @@ msgstr "Mesa"
 
 #: ../TabletopClub/templates/Blank_Page:1
 msgid "Blank Page"
-msgstr ""
+msgstr "Página en blanco"
 
 #: ../TabletopClub/templates/Blank_Page:2
 msgid "There's nothing here..."
-msgstr ""
+msgstr "No hay nada aquí..."
 
 #: ../TabletopClub/templates/Score_Card:1
 msgid "Score Card"
-msgstr ""
+msgstr "Tarjeta de puntuación"
 
 #: ../TabletopClub/templates/Score_Card:2
 msgid "A generic score card for up to 10 players."
-msgstr ""
+msgstr "Una tarjeta de puntuación genérica para hasta 10 jugadores."
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
