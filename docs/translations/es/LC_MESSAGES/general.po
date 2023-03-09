@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-06 00:02+0000\n"
-"PO-Revision-Date: 2023-03-03 13:39+0000\n"
+"PO-Revision-Date: 2023-03-11 16:41+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/es/>\n"
@@ -310,6 +310,11 @@ msgid ""
 "then click on the game you want to play, then click :guilabel:`Load`) to "
 "play the game right away!"
 msgstr ""
+"Para los juegos más populares, el paquete de recursos predeterminado incluye "
+"archivos de guardado ya creados que puedes cargar al instante (cuando estés "
+"dentro del juego, haz clic en :guilabel:`Juegos`, luego en el juego que "
+"quieras jugar y, a continuación, haz clic en :guilabel:`Cargar`) para jugar "
+"inmediatamente!"
 
 #: ../../general/about.rst:152
 msgid ""
@@ -318,21 +323,31 @@ msgid ""
 "by going to the menu and clicking :guilabel:`Save file`. This way, if you "
 "want to play the game again, you can just load the save you made previously."
 msgstr ""
+"Si no hay un archivo guardado para el juego que quieres jugar, puedes crear "
+"tu propio archivo guardado configurando la tabla como quieras, yendo al menú "
+"y haciendo clic en :guilabel:`Archivo guardado`. De esta forma, si quieres "
+"volver a jugar este juego, solo tienes que cargar el archivo que guardaste "
+"anteriormente."
 
 #: ../../general/about.rst:157
 msgid ""
 "See the :ref:`asset-type-game` page for more information about pre-made save "
 "files in asset packs."
 msgstr ""
+"Consulta la página :ref:`asset-type-game` para obtener más información sobre "
+"los archivos de guardado predefinidos en los paquetes de recursos."
 
 #: ../../general/about.rst:162
 msgid "Can I add assets other than game pieces to Tabletop Club?"
 msgstr ""
+"¿Puedo añadir a Tabletop Club otros recursos que no sean piezas de juego?"
 
 #: ../../general/about.rst:164
 msgid ""
 "Yes! As well as objects, you can also import the following types of assets:"
 msgstr ""
+"¡Sí! Además de objetos, también puedes importar los siguientes tipos de "
+"elementos:"
 
 #: ../../general/about.rst:166
 msgid ":ref:`asset-type-game`"
@@ -344,7 +359,7 @@ msgstr ":ref:`recurso-tipo-musica`"
 
 #: ../../general/about.rst:168
 msgid ":ref:`asset-type-skybox`"
-msgstr ""
+msgstr ":ref:'asset-type-skybox'"
 
 #: ../../general/about.rst:169
 msgid ":ref:`asset-type-sound`"
@@ -356,7 +371,7 @@ msgstr ":ref:`recurso-tipo-tablero`"
 
 #: ../../general/about.rst:174
 msgid "Can you add my favourite board game to Tabletop Club?"
-msgstr ""
+msgstr "¿Puedes añadir mi juego de mesa favorito a Tabletop Club?"
 
 #: ../../general/about.rst:176
 msgid ""
@@ -365,22 +380,30 @@ msgid ""
 "asset pack. But that doesn't stop you from making assets for your favourite "
 "board game for private use!"
 msgstr ""
+"Por seguridad legal, Tabletop Club solo distribuirá `juegos de mesa de "
+"dominio público <https://en.wikipedia.org/wiki/Public_domain>`_ en el "
+"paquete de recursos por defecto. ¡Pero eso no te impide crear recursos para "
+"tu juego de mesa favorito para uso privado!"
 
 #: ../../general/about.rst:183
 msgid "Can I share assets I've made on the internet?"
-msgstr ""
+msgstr "¿Puedo compartir recursos que he creado en Internet?"
 
 #: ../../general/about.rst:185
 msgid ""
 "It depends on a number of factors. In general, it should be safe to share "
 "the assets you've made for the game if the following is all true:"
 msgstr ""
+"Depende de varios factores. En general, debería ser seguro compartir los "
+"recursos que has hecho para el juego. Si todo es cierto de lo siguiente:"
 
 #: ../../general/about.rst:188
 msgid ""
 "The assets you've made (textures, 3D models, etc.) are made by you, and are "
 "not derived from copyrighted material."
 msgstr ""
+"Los recursos que has creado (texturas, modelos 3D, etc.) son tuyos y no "
+"proceden de material protegido por derechos de autor."
 
 #: ../../general/about.rst:193
 msgid ""
@@ -389,33 +412,46 @@ msgid ""
 "state the license and whether the content was modified. Please read the "
 "terms of the license first."
 msgstr ""
+"Puedes distribuir las creaciones de otras personas **si** la licencia bajo "
+"la que está te lo permite. Siempre es más seguro citar al autor original e "
+"indicar la licencia y si el contenido ha sido modificado. Lee primero las "
+"condiciones de la licencia."
 
 #: ../../general/about.rst:198
 msgid ""
 "To help with this, the :ref:`config-cfg` file allows you to put the author, "
 "license, modifier, and URL with the asset, which is then shown in-game."
 msgstr ""
+"Para ayudar con esto, el archivo :ref:`config-cfg` te permite poner el "
+"autor, la licencia, el modificador y la URL con el recurso, que luego se "
+"mostrara en el juego."
 
 #: ../../general/about.rst:201
 msgid ""
 "If the assets you've made are for playing a game that already exists, then:"
 msgstr ""
+"Si los recursos que has hecho son para jugar a un juego que ya existe, "
+"entonces:"
 
 #: ../../general/about.rst:203
 msgid ""
 "You cannot use the same name of the game without the owner's explicit "
 "permission."
 msgstr ""
+"No puede utilizar el mismo nombre del juego sin el permiso explícito del "
+"propietario."
 
 #: ../../general/about.rst:206
 msgid "The mechanics of the game cannot be patented."
-msgstr ""
+msgstr "La mecánica del juego no puede ser patentada."
 
 #: ../../general/about.rst:210
 msgid ""
 "You can `check online <https://worldwide.espacenet.com/advancedSearch>`_ to "
 "see if there are any patents for the game's mechanics."
 msgstr ""
+"Puedes consultar`en línea <https://worldwide.espacenet.com/advancedSearch>`_ "
+"para ver si hay patentes de la mecánica del juego."
 
 #: ../../general/about.rst:215
 msgid ""
@@ -423,10 +459,14 @@ msgid ""
 "are worried about distributing your asset pack on the internet, as this also "
 "depends on your country's copyright laws."
 msgstr ""
+"Esto NO es un consejo legal. Por favor, pida consejo al abogado más cercano "
+"si está preocupado por la distribución de su paquete de recursos en "
+"Internet, ya que esto también depende de las leyes de derechos de autor de "
+"su país."
 
 #: ../../general/contributing/coding_guidelines.rst:5
 msgid "Coding guidelines"
-msgstr ""
+msgstr "Directrices de codificación"
 
 #: ../../general/contributing/coding_guidelines.rst:7
 msgid ""
@@ -434,26 +474,36 @@ msgid ""
 "`GDScript style guide`_, make sure to follow these guidelines for "
 "consistency, and to make everyone's lives easier:"
 msgstr ""
+"Al modificar las escenas y los guiones del juego, así como al seguir la "
+"'guía de estilo GDScript' de Godot`_, asegúrate de seguir estas pautas para "
+"mantener la coherencia y facilitar la vida de todos:"
 
 #: ../../general/contributing/coding_guidelines.rst:11
 msgid "Only use GDScript for scripting."
-msgstr ""
+msgstr "Utilice únicamente GDScript para crear scripts."
 
 #: ../../general/contributing/coding_guidelines.rst:13
 msgid ""
 "When writing code, make sure your editor (whether it's Godot, or another "
 "external editor) is set to use tabs instead of spaces."
 msgstr ""
+"Cuando escriba código, asegúrese de que su editor (ya sea Godot u otro "
+"editor externo) está configurado para utilizar tabuladores en lugar de "
+"espacios."
 
 #: ../../general/contributing/coding_guidelines.rst:16
 msgid ""
 "When creating a new script, use the ``Copyright Notice`` template in ``game/"
 "Scripts/Templates/CopyrightNotice.gd``."
 msgstr ""
+"Al crear un nuevo script, utilice la plantilla ``Copyright Notice`` en ``"
+"game/Scripts/Templates/CopyrightNotice.gd``."
 
 #: ../../general/contributing/coding_guidelines.rst:19
 msgid "Use typed variables, arguments, and return values where possible."
 msgstr ""
+"Utilice variables con tipo, argumentos y valores devueltos siempre que sea "
+"posible."
 
 #: ../../general/contributing/coding_guidelines.rst:21
 msgid ""
@@ -462,16 +512,24 @@ msgid ""
 "add a comment above the function describing what the function does, what "
 "it's return value is (if any), and what the arguments are. For example:"
 msgstr ""
+"Cuando escriba funciones en scripts que no sean funciones integradas (por "
+"ejemplo, ``_ready()``) o funciones llamadas por señales (por ejemplo, "
+"``_on_*``), añada un comentario encima de la función describiendo lo que "
+"hace la función, cuál es su valor de retorno (si lo hay) y cuáles son los "
+"argumentos. Por ejemplo:"
 
 #: ../../general/contributing/coding_guidelines.rst:34
 msgid "Make sure to fix any warnings Godot shows in scripts."
 msgstr ""
+"Asegúrese de corregir cualquier advertencia que Godot muestre en los scripts."
 
 #: ../../general/contributing/coding_guidelines.rst:36
 msgid ""
 "If you are writing strings that will get displayed in the UI, remember to "
 "use the ``tr()`` function so the text can be translated."
 msgstr ""
+"Si está escribiendo cadenas que se mostrarán en la interfaz de usuario, "
+"recuerde utilizar la función ``tr()`` para que el texto pueda traducirse."
 
 #: ../../general/contributing/coding_guidelines.rst:39
 msgid ""
@@ -479,14 +537,18 @@ msgid ""
 "explaining what the scene does. Also fill in the editor description for any "
 "nodes in the scene where it isn't obvious what they're there for."
 msgstr ""
+"Cuando crees nuevas escenas, llena la descripción del editor para el nodo "
+"raíz explicando lo que hace la escena. Llena también la descripción del "
+"editor para cualquier nodo de la escena en el que no sea obvio porque qué "
+"está ahí."
 
 #: ../../general/contributing/index.rst:5
 msgid "Contributing"
-msgstr ""
+msgstr "Contribuyendo"
 
 #: ../../general/contributing/pull_request_workflow.rst:5
 msgid "Pull request workflow"
-msgstr ""
+msgstr "Flujo de trabajo de un Pull request"
 
 #: ../../general/contributing/pull_request_workflow.rst:7
 msgid ""
@@ -495,10 +557,14 @@ msgid ""
 "on the project's `GitHub repository`_. This page explains the steps needed "
 "to do exactly that!"
 msgstr ""
+"Si quieres contribuir directamente al proyecto, ya sea corrigiendo un error "
+"o implementando una función, tendrás que crear una **pull request** en el "
+"repositorio GitHub repository`_ del proyecto. En esta página se explican los "
+"pasos necesarios para hacerlo!"
 
 #: ../../general/contributing/pull_request_workflow.rst:14
 msgid "Creating a fork"
-msgstr ""
+msgstr "Creando un fork"
 
 #: ../../general/contributing/pull_request_workflow.rst:16
 msgid ""
@@ -508,6 +574,12 @@ msgid ""
 "Eventually, the side road will join back in with the main road later on (the "
 "\"merge\")."
 msgstr ""
+"La forma de pensar acerca de las bifurcaciones es pensar en ir por un camino "
+"secundario después de tomar una bifurcación en el camino - usted estará "
+"haciendo lo suyo en el camino secundario (su \"fork\"), mientras que el "
+"camino principal (la rama del repositorio de ``master`` ) sigue adelante. "
+"Eventualmente, el camino secundario se unirá de nuevo con el camino "
+"principal más adelante (la \"merge\")."
 
 #: ../../general/contributing/pull_request_workflow.rst:22
 msgid ""
@@ -516,6 +588,10 @@ msgid ""
 "right. You should now have your own copy of the repository at that point in "
 "time. You can then clone the repository to your computer with ``git clone``."
 msgstr ""
+"Para crear un fork del repositorio de Tabletop Club en GitHub, puedes ir a `"
+"GitHub repository`_ y hacer clic en el botón :guilabel:`Fork` de la parte "
+"superior derecha. Así tendrá una copia del repositorio. A continuación, "
+"puede clonar el repositorio en su ordenador con ``git clone``."
 
 #: ../../general/contributing/pull_request_workflow.rst:27
 msgid ""
@@ -524,20 +600,27 @@ msgid ""
 "sure you can get updates from the original repository, you can add the "
 "original as a remote repository with this command:"
 msgstr ""
+"En este repositorio clonado, ``origin`` apuntará a su repositorio bifurcado, "
+"que no se actualizará automáticamente con el repositorio original. Para "
+"asegurarse de que puede obtener actualizaciones del repositorio original, "
+"puede añadir el original como repositorio remoto con este comando:"
 
 #: ../../general/contributing/pull_request_workflow.rst:36
 msgid ""
 "Now, if you ever need to update the ``master`` branch on your local "
 "repository, you can run the following commands:"
 msgstr ""
+"Ahora, si alguna vez necesita actualizar la rama ``master`` en su "
+"repositorio local, puede ejecutar los siguientes comandos:"
 
 #: ../../general/contributing/pull_request_workflow.rst:44
 msgid "You can then update your fork on GitHub with these changes:"
 msgstr ""
+"A continuación, puede actualizar su bifurcación en GitHub con estos cambios:"
 
 #: ../../general/contributing/pull_request_workflow.rst:52
 msgid "Downloading and compiling Godot"
-msgstr ""
+msgstr "Descargando y compilando Godot"
 
 #: ../../general/contributing/pull_request_workflow.rst:54
 msgid ""
@@ -548,10 +631,16 @@ msgid ""
 "until the section where you download the game (you already did that just!) "
 "to get Godot up and running."
 msgstr ""
+"Ahora que has hecho una copia local de la bifurcación en tu ordenador, hay "
+"aún un paso más que es necesario para poder jugar, editar y probar el juego -"
+" necesitarás descargar y compilar la versión modificada de Godot sobre la "
+"que corre el juego. Puedes seguir las instrucciones de :ref:`compiling-from-"
+"source` hasta la sección en la que descargas el juego (¡es lo que acabas de "
+"hacer!) para poner Godot en marcha."
 
 #: ../../general/contributing/pull_request_workflow.rst:63
 msgid "Making changes"
-msgstr ""
+msgstr "Haciendo cambios"
 
 #: ../../general/contributing/pull_request_workflow.rst:65
 msgid ""
@@ -559,23 +648,30 @@ msgid ""
 "that you create a branch on the local repository for the bug/feature you're "
 "going to solve:"
 msgstr ""
+"Antes de empezar a hacer los cambios que quieres hacer, es muy recomendable "
+"que crees una rama en el repositorio local para el fallo/función que vas a "
+"resolver:"
 
 #: ../../general/contributing/pull_request_workflow.rst:74
 msgid ""
 "Now you can start working on the code! See :ref:`coding-guidelines` for "
 "guidelines as to how you should write your code."
 msgstr ""
+"Ahora puede empezar a trabajar en el código. Consulta :ref:`coding-"
+"guidelines` para saber cómo debes escribir tu código."
 
 #: ../../general/contributing/pull_request_workflow.rst:79
 msgid ""
 "When you are done, you should commit your changes and push them to your fork "
 "with these commands:"
 msgstr ""
+"Cuando haya terminado, debe confirmar los cambios y enviarlos a tu rama con "
+"estos comandos:"
 
 #: ../../general/contributing/pull_request_workflow.rst:90
 #: ../../general/contributing/ways_to_contribute.rst:89
 msgid "Creating a pull request"
-msgstr ""
+msgstr "Creación de un pull request"
 
 #: ../../general/contributing/pull_request_workflow.rst:92
 msgid ""
@@ -583,6 +679,9 @@ msgid ""
 "tested them, you can push them to the custom branch on your forked "
 "repository and create a pull request!"
 msgstr ""
+"Una vez que hayas hecho los cambios que querías hacer, y los has probado "
+"completamente, ¡puedes empujarlos a la rama personalizada en tu repositorio "
+"bifurcado y crear un pull request!"
 
 #: ../../general/contributing/pull_request_workflow.rst:96
 msgid ""
@@ -592,6 +691,12 @@ msgid ""
 "branch. If GitHub is happy, then you can click :guilabel:`Create pull "
 "request`, and fill in the details for the pull request."
 msgstr ""
+"Para empezar, ve al repositorio original `GitHub repository`_ y haga clic en "
+":guilabel:`Pull requests` > :guilabel:`New pull request`. Asegúrate de que "
+"estás fusionando desde la rama personalizada de tu bifurcación a ``drwhut/"
+"tabletop-club`` en la rama ``master``. Si GitHub está satisfecho, puedes "
+"hacer clic en :guilabel:`Create pull request`, y llenar los detalles del "
+"pull request."
 
 #: ../../general/contributing/pull_request_workflow.rst:104
 msgid ""
@@ -599,10 +704,14 @@ msgid ""
 "the pull request! For example, if the issue fixes issue number ``69``, then "
 "say in the pull request: ``This PR fixes #69``."
 msgstr ""
+"Si el pull request es para arreglar un problema, por favor ponga el número "
+"del problema en el pull request. Por ejemplo, si el problema corrige el "
+"número de problema ``69``, entonces diga en el pull request: ``This PR fixes "
+"#69``."
 
 #: ../../general/contributing/pull_request_workflow.rst:108
 msgid "Once you're done filling in the PR, you can submit it!"
-msgstr ""
+msgstr "Una vez que hayas llenado el PR, ¡puedes enviarlo!"
 
 #: ../../general/contributing/pull_request_workflow.rst:112
 msgid ""
@@ -610,10 +719,14 @@ msgid ""
 "the changes locally on your computer and pushing the commits to your fork's "
 "custom branch. These new commits will appear automatically in the PR."
 msgstr ""
+"Si le pedimos que haga cambios en el pull request, puede hacerlo haciendo "
+"los cambios localmente en su ordenador y empujando los commits a la rama "
+"personalizada de su fork. Estos nuevos commits aparecerán automáticamente en "
+"el PR."
 
 #: ../../general/contributing/pull_request_workflow.rst:118
 msgid "Resolving merge conflicts"
-msgstr ""
+msgstr "Resolución de conflictos de merge"
 
 #: ../../general/contributing/pull_request_workflow.rst:120
 msgid ""
@@ -622,78 +735,101 @@ msgid ""
 "branch and the branch on your fork. In this case, you should take the "
 "following steps:"
 msgstr ""
+"Existe la posibilidad de que GitHub no nos permita fusionar el pull request "
+"en la rama ``master`` debido a un conflicto de merge entre la rama ``master``"
+" y la rama de su bifurcación. En este caso, debe seguir los siguientes pasos:"
 
 #: ../../general/contributing/pull_request_workflow.rst:124
 msgid ""
 "Update the fork's ``master`` branch so it is up-to-date with the original's:"
 msgstr ""
+"Actualiza la rama ``master`` del fork para que esté al día con la del "
+"original:"
 
 #: ../../general/contributing/pull_request_workflow.rst:132
 msgid ""
 "Merge the ``master`` branch on your local repository into your custom branch:"
 msgstr ""
+"Fusione la rama ``master`` de su repositorio local en su rama personalizada:"
 
 #: ../../general/contributing/pull_request_workflow.rst:141
 msgid ""
 "You can also use ``rebase`` here instead of ``merge``, but we don't mind "
 "whichever command you use. Use whichever one you're most comfortable with!"
 msgstr ""
+"También puedes utilizar aquí ``rebase`` en lugar de ``merge``, es igual el "
+"comando que utilices. Utiliza el que te resulte más cómodo!"
 
 #: ../../general/contributing/pull_request_workflow.rst:145
 msgid ""
 "At this point you'll get the same merge conflicts that stopped the pull "
 "request from being merged. You need to resolve them before continuing."
 msgstr ""
+"En este punto aparecerán los mismos conflictos de merge que impidieron el "
+"merge del pull request. Debe resolverlos antes de continuar."
 
 #: ../../general/contributing/pull_request_workflow.rst:148
 msgid "Test that the changes you've made still work after the merge."
 msgstr ""
+"Comprueba que los cambios realizados siguen funcionando después del merge."
 
 #: ../../general/contributing/pull_request_workflow.rst:150
 msgid "Push the merge commit, plus any other commits you make, to your fork."
 msgstr ""
+"Empuja la confirmación de merge, además de cualquier otra confirmación que "
+"realices, a tu bifurcación."
 
 #: ../../general/contributing/pull_request_workflow.rst:152
 msgid ""
 "Go back to the pull request on GitHub, and ensure that there are no merge "
 "merge conflicts."
 msgstr ""
+"Vuelva al pull request en GitHub y asegúrese de que no hay conflictos de "
+"fusión."
 
 #: ../../general/contributing/ways_to_contribute.rst:3
 msgid "Ways to contribute"
-msgstr ""
+msgstr "Formas de contribuir"
 
 #: ../../general/contributing/ways_to_contribute.rst:6
 msgid "Reporting a bug"
-msgstr ""
+msgstr "Informando de un error"
 
 #: ../../general/contributing/ways_to_contribute.rst:8
 msgid "Before reporting a bug on GitHub, make sure of the following:"
-msgstr ""
+msgstr "Antes de informar de un error en GitHub, asegúrate de lo siguiente:"
 
 #: ../../general/contributing/ways_to_contribute.rst:10
 msgid ""
 "The bug is reproducible. If you can't get the bug to happen again, then "
 "chances are that we won't be able to either, then we can't fix it!"
 msgstr ""
+"El fallo es reproducible. Si no consigues que el fallo se repita, lo más "
+"probable es que nosotros tampoco podamos, ¡entonces no podremos solucionarlo!"
 
 #: ../../general/contributing/ways_to_contribute.rst:13
 msgid ""
 "The bug hasn't already been reported - you can check by going to the `issues "
 "page`_ on GitHub and searching for it there."
 msgstr ""
+"El error no ha sido reportado antes - puedes comprobarlo yendo a la página `"
+"issues page`_ en GitHub y buscándolo allí."
 
 #: ../../general/contributing/ways_to_contribute.rst:16
 msgid ""
 "To report a bug, please `post an issue`_ on GitHub with the bug report "
 "template."
 msgstr ""
+"Para reportar un error, por favor `post an issue`_ en GitHub con la "
+"plantilla de reporte de errores."
 
 #: ../../general/contributing/ways_to_contribute.rst:20
 msgid ""
 "If you come across multiple bugs, please post one issue for each bug! This "
 "way, we can easily reference individual bugs."
 msgstr ""
+"Si te encuentras con varios errores, ¡publica un problema para cada error! "
+"De esta manera, podemos hacer referencia fácilmente a errores individuales."
 
 #: ../../general/contributing/ways_to_contribute.rst:23
 msgid ""
