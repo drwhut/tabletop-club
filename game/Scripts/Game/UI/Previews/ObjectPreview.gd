@@ -221,7 +221,13 @@ func _remove_piece() -> void:
 	# case one escapes the _piece reference.
 	for child in _viewport.get_children():
 		if child is RigidBody:
-			_viewport.remove_child(child)
+			# Removing the piece from the scene tree early sometimes causes
+			# errors when the _physics_process notification fires, and it is
+			# still expecting the piece to be in the scene tree.
+			# TODO: Maybe stop removing children from the scene tree before
+			# calling queue_free() on them?
+			#_viewport.remove_child(child)
+			
 			ResourceManager.queue_free_object(child)
 	
 	_piece = null

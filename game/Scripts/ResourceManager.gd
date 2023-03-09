@@ -41,6 +41,11 @@ var _stex_refs = {}
 # path: The path of the resource to load.
 func load_res(path: String) -> Resource:
 	_res_mutex.lock()
+	
+	# Workaround for this issue:
+	# https://github.com/godotengine/godot/issues/55566
+	OS.delay_msec(1)
+	
 	var res: Resource = load(path)
 	
 	# On macOS, I came across a bug in GLES3 where a StreamTexture would be
