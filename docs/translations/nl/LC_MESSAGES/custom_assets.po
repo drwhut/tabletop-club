@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-06 16:27+0000\n"
-"PO-Revision-Date: 2023-02-07 11:39+0000\n"
+"PO-Revision-Date: 2023-03-12 13:36+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/docs-"
-"custom-assets/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-custom-assets/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -770,7 +770,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:190
 msgid "Templates"
-msgstr ""
+msgstr "Sjablonen"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:190
 msgid ""
