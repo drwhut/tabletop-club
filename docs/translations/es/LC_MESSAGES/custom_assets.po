@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-06 16:27+0000\n"
-"PO-Revision-Date: 2023-03-10 03:48+0000\n"
+"PO-Revision-Date: 2023-03-13 15:41+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/es/>\n"
@@ -68,7 +68,6 @@ msgstr ""
 "está! El nombre de la carpeta será el nombre del paquete de recursos."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:27
-#, fuzzy
 msgid "Sub-folders"
 msgstr "Subcarpetas"
 
@@ -100,8 +99,6 @@ msgid "Object Type"
 msgstr "Tipo de objeto"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
-#, fuzzy
-#| msgid "``cards/``"
 msgid "``boards/``"
 msgstr "``cartas/``"
 
@@ -138,10 +135,8 @@ msgid ":ref:`asset-type-object`"
 msgstr ":ref:`recurso-tipo-objeto`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
-#, fuzzy
-#| msgid ":ref:`object-type-card`"
 msgid ":ref:`object-type-board`"
-msgstr ":ref:`objeto-tipo-carta`"
+msgstr ":ref:`objeto-tipo-tablero`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
 msgid "``cards/``"
@@ -217,7 +212,6 @@ msgstr ":ref:`recurso-tipo-juego`"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
-#, fuzzy
 msgid "N/A"
 msgstr "N/A"
 
@@ -244,7 +238,7 @@ msgstr ":ref:`objecto-tipo-pieza`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 msgid "``skyboxes/``"
-msgstr ""
+msgstr "``skyboxes/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 msgid ":ref:`asset-type-skybox`"
@@ -275,22 +269,16 @@ msgid ":ref:`asset-type-table`"
 msgstr ":ref:`recurso-tipo-tablero`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
-#, fuzzy
-#| msgid "``tables/``"
 msgid "``templates/``"
-msgstr "``tableros/``"
+msgstr "``Plantillas/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
-#, fuzzy
-#| msgid ":ref:`file-type-image`"
 msgid ":ref:`file-type-image`, Text"
-msgstr ":ref:`fichero-tipo-imagen`"
+msgstr ":ref:`fichero-tipo-imagen`, Texto"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
-#, fuzzy
-#| msgid ":ref:`asset-type-table`"
 msgid ":ref:`asset-type-template`"
-msgstr ":ref:`recurso-tipo-tablero`"
+msgstr ":ref:`recurso-tipo-plantilla`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
 msgid "``timers/``"
@@ -341,7 +329,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 msgid "Property Name"
-msgstr ""
+msgstr "Nombre de la propiedad"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
 msgid "Data Type"
@@ -390,8 +378,9 @@ msgstr "Todos"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:192
+#, fuzzy
 msgid "``\"\"``"
-msgstr ""
+msgstr "``\"\"``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 msgid "The name of the author(s) of the asset."
@@ -433,8 +422,9 @@ msgid "Tables"
 msgstr "Mesas"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+#, fuzzy
 msgid "``0.5``"
-msgstr ""
+msgstr "``0.5``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
 msgid ""
@@ -455,7 +445,7 @@ msgstr "Objetos, Mesas"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "``0``"
-msgstr ""
+msgstr "``0``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid ""
@@ -483,7 +473,7 @@ msgstr "Objeto"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 msgid "``#ffffff``"
-msgstr ""
+msgstr "``#ffffff``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
 msgid "Multiply the color of the texture by this value."
@@ -491,23 +481,19 @@ msgstr "Multiplica el color de la textura por este valor."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
 msgid "``com_adjust``"
-msgstr ""
+msgstr "``com_adjust``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
 msgid "``\"volume\"``"
-msgstr ""
+msgstr "``\"volume\"``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
-#, fuzzy
-#| msgid ""
-#| "Determines the collision shape of the object. See :ref:`file-type-3d` for "
-#| "more details."
 msgid ""
 "Defines how the centre-of-mass of the object is automatically adjusted, if "
 "at all. See :ref:`file-type-3d` for more details."
 msgstr ""
-"Determina la forma de colisión del objeto. Véase :ref:`file-type-3d` para "
-"más detalles."
+"Define cómo se ajusta automáticamente el centro de masa del objeto, si es "
+"que se ajusta. Véase :ref:`file-type-3d` para más detalles."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 msgid "``default``"
@@ -518,11 +504,11 @@ msgstr "``predeterminado``"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
 msgid "Boolean"
-msgstr ""
+msgstr "Booleano"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 msgid "Skyboxes, Tables"
-msgstr ""
+msgstr "Skyboxes, Mesas"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
@@ -536,6 +522,8 @@ msgid ""
 "If ``true``, the asset is loaded before the game starts. If ``true`` for "
 "multiple assets, one is loaded at random."
 msgstr ""
+"Si ``true``, el recurso se carga antes de que comience el juego. Si ``true`` "
+"para múltiples recursos, uno se carga al azar."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
 msgid "``desc``"
