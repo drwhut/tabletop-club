@@ -44,6 +44,18 @@ command in a terminal to download the fork of Godot:
    ``README.md`` file says. This way, you know you're compiling a compatible
    version of Godot for the Tabletop Club version you want.
 
+.. tip::
+
+   If you are struggling to compile Godot, or you simply don't want to, there
+   are pre-built binaries of the Godot fork you can download from its `GitHub
+   repository <https://github.com/drwhut/godot/releases>`_. Once it is running,
+   you can then skip straight to :ref:`downloading-tabletop-club-source`.
+
+   Please note that these builds are not officially supported, as they are
+   artifacts from the fork's GitHub Actions rather than the official pipeline.
+   Because of this, it is recommended to compile Godot from source instead if
+   at all possible.
+
 
 Compiling Godot
 ---------------
@@ -321,6 +333,8 @@ from the editor, you can use the following commands:
    scons -j8 platform=x11 target=release tools=no production=yes
    strip bin/godot.x11.opt.64
 
+
+.. _downloading-tabletop-club-source:
 
 Downloading Tabletop Club
 -------------------------
