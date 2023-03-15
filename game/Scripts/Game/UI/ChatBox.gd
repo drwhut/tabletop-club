@@ -111,11 +111,90 @@ func is_chat_visible() -> bool:
 
 # Send a message to the server if there is valid text in the text box.
 func prepare_send_message() -> void:
-	var message = _message_edit.text.strip_edges()
-	if message.length() > 0:
-		rpc_id(1, "send_message", message)
-	
+	var message: String = _message_edit.text.strip_edges()
 	_message_edit.clear()
+	
+	if message.empty():
+		return
+	
+	if message.begins_with("/"):
+		var cmd_arg_split = message.split(" ", false, 1)
+		var cmd: String = cmd_arg_split[0].substr(1)
+		var args: Array = []
+		
+		if cmd_arg_split.size() > 1:
+			var arg_str: String = cmd_arg_split[1]
+			var arg_split = arg_str.split(" ", false)
+			
+			# We may need to combine some of the strings if there are quotes.
+			var quote_arg: String = ""
+			for arg in arg_split:
+				if quote_arg.empty():
+					if arg.begins_with("\"") and not arg.ends_with("\""):
+						quote_arg = arg
+					else:
+						args.append(arg)
+				else:
+					quote_arg += " " + arg
+					if arg.ends_with("\""):
+						args.append(quote_arg)
+						quote_arg = ""
+			
+			if not quote_arg.empty():
+				push_error("Quote in arguments was not terminated!")
+				return
+		
+		if cmd == "w" or cmd == "whisper":
+			if args.size() < 2:
+				push_error("Need at least two arguments for /whisper!")
+				return
+			
+			var send_to_name: String = args[0]
+			send_to_name = send_to_name.trim_prefix("\"")
+			send_to_name = send_to_name.trim_suffix("\"")
+			
+			var send_to_id: int = -1
+			var num_candidates: int = 0
+			for player_id in Lobby.get_player_list():
+				var player_meta: Dictionary = Lobby.get_player(player_id)
+				if player_meta["name"] == send_to_name:
+					send_to_id = player_id
+					num_candidates += 1
+			
+			if send_to_id < 1:
+				push_error("Could not find player '%s'!" % send_to_name)
+				return
+			
+			if num_candidates > 1:
+				push_error("%d players with name '%s'!" % [num_candidates, send_to_name])
+				return
+			
+			if send_to_id == get_tree().get_network_unique_id():
+				push_error("Cannot send whisper to yourself!")
+				return
+			
+			var message_private: String = args[1]
+			for index in range(2, args.size()):
+				message_private += " " + args[index]
+			
+			# With a public message, the message gets sent back to us not only
+			# as a way to keep a log of it on the client, but also as a
+			# confirmation that the server received the message. With a private
+			# message, it does not get sent back to us, so we need to log it
+			# ourselves.
+			message_private = message_private.strip_edges().strip_escapes().replace("[", "[ ")
+			if message_private.empty():
+				return
+			
+			var display = "[color=#f9f]>> [/color]%s[color=#f9f]: %s[/color]" % [
+					Lobby.get_name_bb_code(send_to_id), message_private]
+			add_raw_message(display)
+			
+			rpc_id(1, "send_message_private", send_to_id, message_private)
+		else:
+			push_error("Unknown command '%s'!" % cmd)
+	else:
+		rpc_id(1, "send_message", message)
 
 # Called by the server to say a message was sent by someone.
 remotesync func receive_message(sender_id: int, message: String) -> void:
@@ -134,10 +213,39 @@ remotesync func receive_message(sender_id: int, message: String) -> void:
 	
 	add_raw_message(message)
 
+# Called by the server when a player sent a private message to us.
+remotesync func receive_message_private(sender_id: int, message: String) -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	# Security!
+	message = message.strip_edges().strip_escapes().replace("[", "[ ")
+	if message.length() == 0:
+		return
+	
+	var display = Lobby.get_name_bb_code(sender_id)
+	display += " [color=#f9f]>> %s[/color]" % message
+	
+	if Global.censoring_profanity:
+		display = Global.censor_profanity(display)
+	
+	add_raw_message(display)
+
 # Send a message to the server.
 # message: The message to send.
 master func send_message(message: String) -> void:
 	rpc("receive_message", get_tree().get_rpc_sender_id(), message)
+
+# Send a private message to the server.
+# send_to: The client ID to send the message to.
+# message: The message to send.
+master func send_message_private(send_to: int, message: String) -> void:
+	if not Lobby.player_exists(send_to):
+		push_error("Player with ID %d does not exist!" % send_to)
+		return
+	
+	rpc_id(send_to, "receive_message_private", get_tree().get_rpc_sender_id(),
+			message)
 
 # Set the chat box to be visible.
 # chat_visible: Whether the chat box should be visible or not.
