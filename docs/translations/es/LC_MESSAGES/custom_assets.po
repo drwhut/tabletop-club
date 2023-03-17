@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-06 16:27+0000\n"
-"PO-Revision-Date: 2023-03-16 16:38+0000\n"
+"PO-Revision-Date: 2023-03-18 17:40+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/es/>\n"
@@ -1019,20 +1019,27 @@ msgid ""
 "object you want to add, and objects can be randomly removed from the "
 "container by quickly dragging from the container."
 msgstr ""
+"Los objetos se pueden colocar dentro de un contenedor tocando el contenedor "
+"con el objeto que se desea añadir, y los objetos se pueden eliminar "
+"aleatoriamente del contenedor arrastrándolos rápidamente desde el contenedor."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:90
 msgid ""
 "Containers can also be configured to drop items out when they are shaken "
 "upside-down by setting ``shakable = true`` in the :ref:`config-cfg` file."
 msgstr ""
+"Los contenedores también pueden configurarse para soltar elementos cuando se "
+"sacuden boca abajo estableciendo ``shakable = true`` en el archivo :ref"
+":`config-cfg`."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "On the table is a set of dice of varying colours and sides."
-msgstr ""
+msgstr "Sobre la mesa hay un juego de dados de distintos colores y caras."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:102
 msgid "Dice are objects that, when shaken, randomize their orientation."
 msgstr ""
+"Los dados son objetos que, al agitarlos, cambian su orientación al azar."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:104
 msgid ""
@@ -1040,6 +1047,9 @@ msgid ""
 "orientation in the :ref:`config-cfg` file, using the ``face_values`` "
 "property:"
 msgstr ""
+"También pueden configurarse para que den determinados valores en función de "
+"su orientación en el archivo :ref:`config-cfg`, utilizando la propiedad "
+"``face_values``:"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:132
 msgid ""
@@ -1047,12 +1057,18 @@ msgid ""
 "able to check the total of a set of thrown dice by selecting, then right-"
 "clicking the dice. The total will be shown at the top of the context menu."
 msgstr ""
+"Si los valores de las caras están configurados correctamente, el jugador "
+"podrá comprobar fácilmente el total de un conjunto de dados lanzados "
+"seleccionando y luego haciendo clic con el botón derecho del ratón sobre los "
+"dados. El total se mostrará en la parte superior del menú contextual."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:136
 msgid ""
 "If ``face_values`` is not configured, the dice will always report ``0`` as "
 "its value."
 msgstr ""
+"Si ``face_values`` no está configurado, el dado siempre informará ``0`` como "
+"valor."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:143
 msgid "Piece"
@@ -1061,10 +1077,11 @@ msgstr "Pieza"
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "On the table are two chess pieces, a white pawn and a black queen."
 msgstr ""
+"Sobre la mesa hay dos piezas de ajedrez, un peón blanco y una dama negra."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:148
 msgid "Pieces are generic objects with no special functionality."
-msgstr ""
+msgstr "Las piezas son objetos genéricos sin una funcionalidad especial."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:154
 msgid "Speaker"
@@ -1072,7 +1089,7 @@ msgstr "Altavoz"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "By the corner of the table is a large, metallic gramophone."
-msgstr ""
+msgstr "En la esquina de la mesa hay un gramófono grande y metálico."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:159
 msgid ""
@@ -1080,6 +1097,9 @@ msgid ""
 "positionally, so the audio will vary depending on the position of the "
 "speaker relative to the camera."
 msgstr ""
+"Los altavoces son objetos que pueden reproducir pistas de audio. Emiten "
+"sonido posicionalmente, por lo que el audio variará en función de la "
+"posición del altavoz respecto a la cámara."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:167
 msgid "Timer"
@@ -1091,6 +1111,9 @@ msgid ""
 "display the system time. If an audio track is loaded, it will automatically "
 "play when the countdown reaches 0."
 msgstr ""
+"Los temporizadores son objetos que pueden utilizarse como cuentas atrás, "
+"cronómetros o para mostrar la hora del sistema. Si se carga una pista de "
+"audio, se reproducirá automáticamente cuando la cuenta atrás llegue a 0."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:177
 msgid "Token"
@@ -1101,22 +1124,28 @@ msgid ""
 "On the table are some stacks of poker chips varying in height,\n"
 "representing various values, those being 1, 5, 10, 25, and 100."
 msgstr ""
+"Sobre la mesa hay montones de fichas de póquer de altura variable,\n"
+"que representan varios valores, siendo 1, 5, 10, 25 y 100."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:183
 msgid ""
 "Tokens are objects that are vertically stackable, meaning they join together "
 "when their top and bottom faces touch, similar to cards."
 msgstr ""
+"Las fichas son objetos que se apilan verticalmente, es decir, que se unen "
+"cuando sus caras superior e inferior se tocan, de forma similar a las cartas."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:190
 msgid "Sound"
-msgstr ""
+msgstr "Sonido"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:192
 msgid ""
 "Sounds can be played through either a :ref:`object-type-speaker` or a :ref:"
 "`object-type-timer`."
 msgstr ""
+"Los sonidos pueden reproducirse a través de un :ref:`object-type-speaker` o "
+"un :ref:`object-type-timer`."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:199
 msgid "Music"
@@ -1127,32 +1156,42 @@ msgid ""
 "Music tracks are the same as sounds, but they can also be configured to play "
 "in the main menu. See the ``main_menu`` property in :ref:`config-cfg`."
 msgstr ""
+"Las pistas de música son iguales que los sonidos, pero también se pueden "
+"configurar para que se reproduzcan en el menú principal. Véase la propiedad "
+"``main_menu`` en :ref:`config-cfg`."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:208
 msgid "Game"
-msgstr ""
+msgstr "Juego"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:210
 msgid ""
 "A game is a :ref:`file-type-save` that has been pre-made such that players "
 "can instantly setup the table to play a particular game."
 msgstr ""
+"Una partida es un :ref:`file-type-save` que ha sido preconfigurado para que "
+"los jugadores puedan configurar instantáneamente la mesa para jugar una "
+"partida concreta."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:215
 msgid ""
 "If there is an image next to the save file with the same name, it will be "
 "shown next to the save file in-game."
 msgstr ""
+"Si hay una imagen junto al archivo guardado con el mismo nombre, se mostrará "
+"junto al archivo guardado en el juego."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:222
 msgid "Skybox"
-msgstr ""
+msgstr "Skybox"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:224
 msgid ""
 "Skyboxes are special textures that determine what the environment around the "
 "table looks like."
 msgstr ""
+"Los Skyboxes son texturas especiales que determinan el aspecto del entorno "
+"alrededor de la mesa."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:227
 msgid ""
@@ -1161,6 +1200,11 @@ msgid ""
 "github.io/GLSL-howto/cubemap_to_panorama_js/cubemap_to_panorama.html>`_ to "
 "convert cube-mapped skyboxes to equirectangular skyboxes."
 msgstr ""
+"Las texturas Skybox de Tabletop Club utilizan mapeados equirrectangulares, "
+"en lugar de mapeados de cubos de seis imágenes. Godot recomienda utilizar `"
+"esta herramienta <https://danilw.github.io/GLSL-howto/cubemap_to_panorama_js/"
+"cubemap_to_panorama.html>`_ para convertir los skyboxes mapeadas en cubos en "
+"skyboxes equirrectangulares."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:232
 msgid ""
@@ -1168,6 +1212,9 @@ msgid ""
 "Tabletop Club supports the Radiance HDR (``.hdr``) and OpenEXR (``.exr``) "
 "formats."
 msgstr ""
+"Para obtener la mejor calidad de iluminación, se recomienda utilizar una "
+"panorámica HDR. Tabletop Club es compatible con los formatos Radiance HDR (``"
+".hdr``) y OpenEXR (``.exr``)."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:238
 msgid ""
@@ -1175,6 +1222,9 @@ msgid ""
 "strength of the ambient light generated by the skybox by setting the "
 "``strength`` value in the :ref:`config-cfg` file."
 msgstr ""
+"Si el skybox es demasiado brillante o demasiado tenue, puedes cambiar la "
+"intensidad de la luz ambiental generada por el skybox ajustando el valor "
+"``strength`` en el archivo :ref:`config-cfg`."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:246
 msgid "Table"
@@ -1185,6 +1235,8 @@ msgid ""
 "A table is a :ref:`file-type-3d` that is placed in the centre of the game "
 "world for players to put objects on."
 msgstr ""
+"Una mesa es un :ref:`tipo-archivo-3d` que se coloca en el centro del mundo "
+"del juego para que los jugadores coloquen objetos sobre ella."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:251
 msgid ""
@@ -1192,16 +1244,21 @@ msgid ""
 "matters. Keep the following points in mind when you export models to be used "
 "as tables:"
 msgstr ""
+"Sin embargo, a diferencia de los objetos personalizados, la posición y la "
+"escala del modelo exportado son importantes. Tenga en cuenta los siguientes "
+"puntos cuando exporte modelos para usarlos como tablas:"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:255
 msgid "One unit in the exported model = one centimeter (cm) in-game."
-msgstr ""
+msgstr "Una unidad en el modelo exportado = un centímetro (cm) en el juego."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:256
 msgid ""
 "The lowest vertical position the camera can zoom to is ``0`` (this is either "
 "the y or z axis, depending on the program you're using)."
 msgstr ""
+"La posición vertical más baja a la que la cámara puede hacer zoom es ``0`` ("
+"este es el eje y o z, dependiendo del programa que esté utilizando)."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:259
 msgid ""
@@ -1209,6 +1266,9 @@ msgid ""
 "the server when they join the game. These hand positions can be defined in "
 "the ``config.cfg`` file:"
 msgstr ""
+"Las mesas también tienen un conjunto de posiciones de mano, que son "
+"asignadas a los jugadores por el servidor cuando se unen al juego. Estas "
+"posiciones de mano se pueden definir en el archivo ``config.cfg``:"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:285
 msgid ""
@@ -1216,22 +1276,30 @@ msgid ""
 "area that the players can paint on by setting the ``paint_plane`` property "
 "in the :ref:`config-cfg` file."
 msgstr ""
+"¡Las mesas también pueden ser pintadas por los jugadores! Puede establecer "
+"el tamaño del área en la que los jugadores pueden pintar estableciendo la "
+"propiedad ''paint_plane'' en el archivo :ref:'config-cfg'."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:293
 msgid "Template"
-msgstr ""
+msgstr "Plantilla"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid ""
 "An example of a template being used by the notebook to keep track of\n"
 "player's scores over a number of rounds."
 msgstr ""
+"Un ejemplo de una plantilla utilizada como cuaderno para realizar un "
+"seguimiento de\n"
+"puntuaciones de los jugadores durante varias rondas."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:299
 msgid ""
 "A template is a pre-made page for the in-game notebook. It can either be an :"
 "ref:`file-type-image` or a text file (``.txt``)."
 msgstr ""
+"Una plantilla es una página prefabricada para el cuaderno del juego. Puede "
+"ser un :ref:`tipo-archivo-imagen` o un archivo de texto (``.txt``)."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:302
 msgid ""
@@ -1239,26 +1307,33 @@ msgid ""
 "If it is an image, then textboxes can be configured using the ``config.cfg`` "
 "file so the player can save text on top of the image."
 msgstr ""
+"Si se trata de un archivo de texto, entonces la propia página también se "
+"parecerá a un archivo de texto. Si es una imagen, entonces las cajas de "
+"texto pueden ser configuradas usando el archivo ``config.cfg`` para que el "
+"jugador pueda guardar texto encima de la imagen."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:306
 msgid "The template can be selected when creating a new page in the notebook."
 msgstr ""
+"La plantilla puede seleccionarse al crear una nueva página en el cuaderno."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:308
 msgid "Textboxes for image templates can be configured in the following ways:"
 msgstr ""
+"Los cuadros de texto de las plantillas de imágenes pueden configurarse de la "
+"siguiente manera:"
 
 #: ../../custom_assets/asset_packs/file_types.rst:3
 msgid "File types"
-msgstr ""
+msgstr "Tipos de archivos"
 
 #: ../../custom_assets/asset_packs/file_types.rst:8
 msgid "Image"
-msgstr ""
+msgstr "Imagen"
 
 #: ../../custom_assets/asset_packs/file_types.rst:11
 msgid "Supported formats"
-msgstr ""
+msgstr "Formatos soportados"
 
 #: ../../custom_assets/asset_packs/file_types.rst:13
 msgid ""
@@ -1266,10 +1341,13 @@ msgid ""
 "supports, the list of which can be found `here <https://docs.godotengine.org/"
 "en/stable/getting_started/workflow/assets/importing_images.html>`_."
 msgstr ""
+"Por defecto, Tabletop Club admite todos los formatos de imagen que admite "
+"Godot, cuya lista puede consultarse en `aquí <https://docs.godotengine.org/"
+"en/stable/getting_started/workflow/assets/importing_images.html>`_."
 
 #: ../../custom_assets/asset_packs/file_types.rst:19
 msgid "UV Mappings"
-msgstr ""
+msgstr "Mapeos UV"
 
 #: ../../custom_assets/asset_packs/file_types.rst:21
 msgid ""
@@ -1279,52 +1357,64 @@ msgid ""
 "reverse of that! Knowing these UV mappings is important if you want your "
 "object to look right in-game!"
 msgstr ""
+"Cada objeto que utiliza una imagen tiene algo llamado mapeado UV, una forma "
+"en la que la imagen se \"pliega\" sobre el objeto 3D. ¿Recuerdas cuando en "
+"matemáticas tenías que \"desdoblar\" diferentes formas en redes? Esto es "
+"básicamente lo contrario. Conocer estos mapeados UV es importante si quieres "
+"que tu objeto se vea bien en el juego!"
 
 #: ../../custom_assets/asset_packs/file_types.rst:29
 msgid ""
 "The width and height of the images don't matter, as long as the proportions "
 "are correct!"
 msgstr ""
+"La anchura y la altura de las imágenes no importan, siempre que las "
+"proporciones sean correctas!"
 
 #: ../../custom_assets/asset_packs/file_types.rst:39
 msgid ""
 "Unlike other objects, cards use two images, one for each face. See :ref:"
 "`object-type-card` for more information."
 msgstr ""
+"A diferencia de otros objetos, las tarjetas usan dos imágenes, una para cada "
+"cara. Consulte :ref:'object-type-card' para obtener más información."
 
 #: ../../custom_assets/asset_packs/file_types.rst:43
 msgid "Cube"
-msgstr ""
+msgstr "Cubo"
 
 #: ../../custom_assets/asset_packs/file_types.rst:48
 msgid "Cylinder"
-msgstr ""
+msgstr "Cilindro"
 
 #: ../../custom_assets/asset_packs/file_types.rst:56
 msgid "3D Model"
-msgstr ""
+msgstr "Modelo 3D"
 
 #: ../../custom_assets/asset_packs/file_types.rst:58
 msgid ""
 "3D models can be exported from almost any 3D modelling software, including "
 "Blender and Maya."
 msgstr ""
+"Los modelos 3D pueden exportarse desde casi cualquier software de modelado "
+"3D, incluidos Blender y Maya."
 
 #: ../../custom_assets/asset_packs/file_types.rst:61
 msgid "As of right now, Tabletop Club supports the following 3D file formats:"
 msgstr ""
+"En este momento, Tabletop Club admite los siguientes formatos de archivo 3D:"
 
 #: ../../custom_assets/asset_packs/file_types.rst:63
 msgid "Collada (``.dae``)"
-msgstr ""
+msgstr "Collada (''.dae'')"
 
 #: ../../custom_assets/asset_packs/file_types.rst:64
 msgid "glTF 2.0 (``.glb``, ``.gltf``)"
-msgstr ""
+msgstr "glTF 2.0 (``.glb``, ``.gltf``)"
 
 #: ../../custom_assets/asset_packs/file_types.rst:65
 msgid "Wavefront (``.obj``)"
-msgstr ""
+msgstr "Wavefront (``.obj``)"
 
 #: ../../custom_assets/asset_packs/file_types.rst:67
 msgid ""
@@ -1332,12 +1422,17 @@ msgid ""
 "the object for you when it is imported. However, you can use the :ref:"
 "`config-cfg` file to decide how the COM is adjusted."
 msgstr ""
+"Para mayor comodidad, el juego ajustará automáticamente el centro de masa "
+"(COM) del objeto cuando se importe. Sin embargo, puedes utilizar el archivo "
+":ref:`config-cfg` para decidir cómo se ajusta el COM."
 
 #: ../../custom_assets/asset_packs/file_types.rst:71
 msgid ""
 "``com_adjust = \"off\"``: The game will not adjust the COM. The COM will be "
 "at (0, 0, 0)."
 msgstr ""
+"``com_adjust = \"off\"``: El juego no ajustará el COM. La COM estará en (0, "
+"0, 0)."
 
 #: ../../custom_assets/asset_packs/file_types.rst:74
 msgid ""
