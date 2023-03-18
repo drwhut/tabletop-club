@@ -232,6 +232,10 @@ func _process(_delta):
 # path: The file path of the scene to load.
 # args: The arguments for the scene to use after it has loaded.
 func _goto_scene(path: String, args: Dictionary) -> void:
+	# Are we already loading a scene?
+	if _loader != null:
+		return
+	
 	# Create the interactive loader for the new scene.
 	_loader = ResourceLoader.load_interactive(path)
 	if _loader == null:
