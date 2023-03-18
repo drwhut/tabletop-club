@@ -26,6 +26,9 @@ onready var _credits_dialog = $CreditsDialog
 onready var _credits_label = $CreditsDialog/CreditsLabel
 onready var _enter_code_dialog = $EnterCodeDialog
 onready var _error_dialog = $ErrorDialog
+onready var _import_error_button = $MainView/MainList/HBoxContainer/ImportErrorButton
+onready var _import_error_dialog = $ImportErrorDialog
+onready var _import_error_tree = $ImportErrorDialog/ErrorTree
 onready var _info_dialog = $InfoDialog
 onready var _license_label = $InfoDialog/ScrollContainer/VBoxContainer/LicenseLabel
 onready var _multiplayer_dialog = $MultiplayerDialog
@@ -58,6 +61,31 @@ func _ready():
 	# Focus on the singleplayer button so users can navigate the main menu with
 	# just the keyboard.
 	_singleplayer_button.grab_focus()
+	
+	# Show any errors and warnings that occured when importing.
+	var error_dict = AssetDB.get_error_dict()
+	var error_count = 0
+	
+	var tree_root = _import_error_tree.create_item()
+	
+	for source in error_dict:
+		var err_source: Array = error_dict[source]
+		error_count += err_source.size()
+		
+		var source_node = _import_error_tree.create_item(tree_root)
+		source_node.set_text(0, source)
+		
+		for err in err_source:
+			var err_node = _import_error_tree.create_item(source_node)
+			err_node.set_text(0, err)
+			
+			if err.begins_with("E"):
+				err_node.set_custom_color(0, Color.red)
+			elif err.begins_with("W"):
+				err_node.set_custom_color(0, Color.yellow)
+	
+	_import_error_button.text = str(error_count)
+	_import_error_button.visible = (error_count > 0)
 
 # Update the credits dialog text.
 func _update_credits_text() -> void:
@@ -214,6 +242,9 @@ func _on_CreditsButton_pressed():
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
+
+func _on_ImportErrorButton_pressed():
+	_import_error_dialog.popup_centered()
 
 func _on_HomeIcon_pressed():
 	OS.shell_open("https://drwhut.itch.io/tabletop-club")

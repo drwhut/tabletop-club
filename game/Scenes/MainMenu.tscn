@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/FallingWorld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/HelpIcon.svg" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Images/InfoIcon.svg" type="Texture" id=9]
 [ext_resource path="res://Images/StoreIcon.svg" type="Texture" id=10]
 [ext_resource path="res://Images/CodeIcon.svg" type="Texture" id=11]
+[ext_resource path="res://Images/ErrorIcon.svg" type="Texture" id=12]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -86,6 +87,15 @@ margin_top = 568.0
 margin_right = 256.0
 margin_bottom = 600.0
 alignment = 2
+
+[node name="ImportErrorButton" type="Button" parent="MainView/MainList/HBoxContainer"]
+visible = false
+margin_left = 63.0
+margin_right = 112.0
+margin_bottom = 32.0
+hint_tooltip = "Import Log"
+text = "0"
+icon = ExtResource( 12 )
 
 [node name="StoreButton" type="Button" parent="MainView/MainList/HBoxContainer"]
 margin_left = 116.0
@@ -304,6 +314,18 @@ margin_bottom = 150.0
 window_title = "Error"
 dialog_autowrap = true
 
+[node name="ImportErrorDialog" type="WindowDialog" parent="."]
+margin_right = 650.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 100, 100 )
+window_title = "Import Log"
+resizable = true
+
+[node name="ErrorTree" type="Tree" parent="ImportErrorDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+hide_root = true
+
 [node name="RandomMusicPlayer" parent="." instance=ExtResource( 6 )]
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
@@ -316,6 +338,7 @@ visible = false
 [connection signal="pressed" from="MainView/MainList/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/HBoxContainer/ImportErrorButton" to="." method="_on_ImportErrorButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/StoreButton" to="." method="_on_HomeIcon_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/SourceCodeButton" to="." method="_on_CodeIcon_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/HelpButton" to="." method="_on_HelpButton_pressed"]

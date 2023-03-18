@@ -156,6 +156,10 @@ var _import_send_signal = false
 var _import_stop = false
 var _import_thread = Thread.new()
 
+var _import_err_dict: Dictionary = {}
+var _import_err_source: String = ""
+var _import_err_mutex = Mutex.new()
+
 # Keep track of which locales we've translated to, so we don't re-parse them.
 var _tr_locales = []
 
@@ -200,6 +204,15 @@ func get_db() -> Dictionary:
 		return _db
 	else:
 		return _temp_db
+
+# Get the dictionary of import errors and warnings.
+# Returns: The errors and warnings generated while importing assets.
+func get_error_dict() -> Dictionary:
+	_import_err_mutex.lock()
+	var dict = _import_err_dict.duplicate(true)
+	_import_err_mutex.unlock()
+	
+	return dict
 
 # Check if the import thread is currently running.
 # Returns: If the import thread is running.
@@ -305,6 +318,17 @@ func start_importing() -> void:
 	if _import_thread.is_active():
 		_import_thread.wait_to_finish()
 	
+	_import_err_mutex.lock()
+	_import_err_dict.clear()
+	_import_err_source = ""
+	_import_err_mutex.unlock()
+	
+	if Global.error_reporter != null:
+		if not Global.error_reporter.is_connected("error_received", self, "_on_error_received"):
+			Global.error_reporter.connect("error_received", self, "_on_error_received")
+		if not Global.error_reporter.is_connected("warning_received", self, "_on_warning_received"):
+			Global.error_reporter.connect("warning_received", self, "_on_warning_received")
+	
 	_import_mutex.lock()
 	_import_stop = false
 	_import_mutex.unlock()
@@ -402,6 +426,10 @@ func _import_all(_userdata) -> void:
 			var type_catalog = pack_catalog["types"][type]
 			var type_path = pack_path + "/" + type
 			
+			_import_err_mutex.lock()
+			_import_err_source = type_path
+			_import_err_mutex.unlock()
+			
 			var config_file = ConfigFile.new()
 			var new_config_md5 = ""
 			
@@ -457,11 +485,19 @@ func _import_all(_userdata) -> void:
 				_send_importing_file_signal(file_path, files_imported,
 					catalog["file_count"])
 				
+				_import_err_mutex.lock()
+				_import_err_source = file_path
+				_import_err_mutex.unlock()
+				
 				var err = _import_asset(file_path, pack, type, config_file, config_changed)
 				if err != OK:
 					push_error("Failed to import '%s' (error %d)!" % [file_path, err])
 				
 				files_imported += 1
+			
+			_import_err_mutex.lock()
+			_import_err_source = type_path
+			_import_err_mutex.unlock()
 			
 			_add_inheriting_assets(pack_path, pack, type)
 			
@@ -679,6 +715,11 @@ func _catalog_assets() -> Dictionary:
 			while folder:
 				if dir.current_is_dir():
 					var pack_path = dir.get_current_dir() + "/" + folder
+					
+					_import_err_mutex.lock()
+					_import_err_source = pack_path
+					_import_err_mutex.unlock()
+					
 					var pack_dir = Directory.new()
 					err = pack_dir.open(pack_path)
 					if err == OK:
@@ -2168,3 +2209,23 @@ func _on_exiting_tree() -> void:
 	
 	if _import_thread.is_active():
 		_import_thread.wait_to_finish()
+
+func _on_error_received(_func: String, _file: String, _line: int, error: String,
+		_errorexp: String):
+	_import_err_mutex.lock()
+	if not _import_err_source.empty():
+		var err = "E: %s" % error
+		if not _import_err_dict.has(_import_err_source):
+			_import_err_dict[_import_err_source] = []
+		_import_err_dict[_import_err_source].push_back(err)
+	_import_err_mutex.unlock()
+
+func _on_warning_received(_func: String, _file: String, _line: int, error: String,
+		_errorexp: String):
+	_import_err_mutex.lock()
+	if not _import_err_source.empty():
+		var err = "W: %s" % error
+		if not _import_err_dict.has(_import_err_source):
+			_import_err_dict[_import_err_source] = []
+		_import_err_dict[_import_err_source].push_back(err)
+	_import_err_mutex.unlock()
