@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="600" height="800" version="1.1" viewBox="0 0 158.75 211.67" xmlns="http://www.w3.org/2000/svg">
+ <rect width="158.75" height="211.67" fill="#fff" stroke-width=".18709"/>
+ <path d="m60.015 158.75h38.72" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1.1316"/>
+ <g transform="translate(-1.9073e-6 54.025)" stroke="#000" stroke-linecap="round" stroke-width="1.8673">
+  <ellipse cx="63.418" cy="117.74" rx="3.0351" ry="3.0351"/>
+  <ellipse cx="79.375" cy="132.29" rx="3.0351" ry="3.0351"/>
+  <ellipse cx="95.332" cy="146.28" rx="3.0351" ry="3.0351"/>
+ </g>
+ <ellipse cx="79.375" cy="132.26" rx="3.0351" ry="3.0351" stroke="#000" stroke-linecap="round" stroke-width="1.8673"/>
+</svg>
