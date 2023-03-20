@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-06 16:28\n"
-"PO-Revision-Date: 2023-02-22 23:41+0000\n"
+"POT-Creation-Date: 2023-03-20 15:31\n"
+"PO-Revision-Date: 2023-03-08 19:14+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/es/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -28,6 +28,22 @@ msgstr "Tablero de Ajedrez"
 #: ../TabletopClub/boards/Chess_Board:2
 msgid "An 8x8 Chess board."
 msgstr "Un tablero de Ajedrez de 8x8."
+
+#: ../TabletopClub/boards/Go_Board_(Large):1
+msgid "Go Board (Large)"
+msgstr ""
+
+#: ../TabletopClub/boards/Go_Board_(Large):2
+msgid "A 19x19 Goban."
+msgstr ""
+
+#: ../TabletopClub/boards/Go_Board_(Small):1
+msgid "Go Board (Small)"
+msgstr ""
+
+#: ../TabletopClub/boards/Go_Board_(Small):2
+msgid "A 13x13 and 9x9 Goban."
+msgstr ""
 
 #: ../TabletopClub/cards/52-Card_Deck:1
 msgid "52-Card Deck"
@@ -217,6 +233,14 @@ msgstr "Reina de Corazoones"
 msgid "Queen of Spades"
 msgstr "Reina de Picas"
 
+#: ../TabletopClub/cards/Seer:1
+msgid "Seer"
+msgstr ""
+
+#: ../TabletopClub/cards/Seer:2
+msgid "Helps villagers by secretly inspecting someone's role every night."
+msgstr ""
+
 #: ../TabletopClub/cards/Seven_of_Clubs:1
 msgid "Seven of Clubs"
 msgstr "Siete de Tréboles"
@@ -296,6 +320,30 @@ msgstr "Dos de Corazones"
 #: ../TabletopClub/cards/Two_of_Spades:1
 msgid "Two of Spades"
 msgstr "Dos de Picas"
+
+#: ../TabletopClub/cards/Villager:1
+msgid "Villager"
+msgstr ""
+
+#: ../TabletopClub/cards/Villager:2
+msgid ""
+"Avoid being eaten by werewolves at night by voting against them during the "
+"day."
+msgstr ""
+
+#: ../TabletopClub/cards/Werewolf:1
+msgid "Werewolf"
+msgstr ""
+
+#: ../TabletopClub/cards/Werewolf:2
+msgid ""
+"Decide who to feast upon every night with your pack, avoid suspision from "
+"villagers."
+msgstr ""
+
+#: ../TabletopClub/containers/Pot:1
+msgid "Pot"
+msgstr ""
 
 #: ../TabletopClub/containers/Purse:1
 msgid "Purse"
@@ -697,6 +745,24 @@ msgstr "Ajedrez"
 msgid "Standard Chess for two players."
 msgstr "Ajedrez Reglamentario para 2 jugadores."
 
+#: ../TabletopClub/games/Dominoes:1
+msgid "Dominoes"
+msgstr ""
+
+#: ../TabletopClub/games/Dominoes:2
+msgid "A bag with 28 tiles has been provided."
+msgstr ""
+
+#: ../TabletopClub/games/Go:1
+msgid "Go"
+msgstr ""
+
+#: ../TabletopClub/games/Go:2
+msgid ""
+"Standard Go for two players.\n"
+"Can play on a 19x19, 13x13, or 9x9 board."
+msgstr ""
+
 #: ../TabletopClub/games/Poker:1
 msgid "Poker"
 msgstr "Póker"
@@ -933,6 +999,18 @@ msgstr "Torre Negra"
 msgid "Rook White"
 msgstr "Torre Blanca"
 
+#: ../TabletopClub/pieces/Stone_Black:1
+#, fuzzy
+#| msgid "Joker Black"
+msgid "Stone Black"
+msgstr "Comodín Negro"
+
+#: ../TabletopClub/pieces/Stone_White:1
+#, fuzzy
+#| msgid "King White"
+msgid "Stone White"
+msgstr "Rey Blanco"
+
 #: ../TabletopClub/skyboxes/Clouds:1
 msgid "Clouds"
 msgstr "Nubes"
@@ -1019,19 +1097,19 @@ msgstr "Mesa"
 
 #: ../TabletopClub/templates/Blank_Page:1
 msgid "Blank Page"
-msgstr ""
+msgstr "Página en blanco"
 
 #: ../TabletopClub/templates/Blank_Page:2
 msgid "There's nothing here..."
-msgstr ""
+msgstr "No hay nada aquí..."
 
 #: ../TabletopClub/templates/Score_Card:1
 msgid "Score Card"
-msgstr ""
+msgstr "Tarjeta de puntuación"
 
 #: ../TabletopClub/templates/Score_Card:2
 msgid "A generic score card for up to 10 players."
-msgstr ""
+msgstr "Una tarjeta de puntuación genérica para hasta 10 jugadores."
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
@@ -1064,6 +1142,118 @@ msgstr "Cian"
 #: ../TabletopClub/tokens/cube/Cyan:2
 msgid "A cyan token."
 msgstr "Un jetón cian."
+
+#: ../TabletopClub/tokens/cube/Domino_0-0:1
+msgid "Domino 0-0"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_0-1:1
+msgid "Domino 0-1"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_0-2:1
+msgid "Domino 0-2"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_0-3:1
+msgid "Domino 0-3"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_0-4:1
+msgid "Domino 0-4"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_0-5:1
+msgid "Domino 0-5"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_0-6:1
+msgid "Domino 0-6"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_1-1:1
+msgid "Domino 1-1"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_1-2:1
+msgid "Domino 1-2"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_1-3:1
+msgid "Domino 1-3"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_1-4:1
+msgid "Domino 1-4"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_1-5:1
+msgid "Domino 1-5"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_1-6:1
+msgid "Domino 1-6"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_2-2:1
+msgid "Domino 2-2"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_2-3:1
+msgid "Domino 2-3"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_2-4:1
+msgid "Domino 2-4"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_2-5:1
+msgid "Domino 2-5"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_2-6:1
+msgid "Domino 2-6"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_3-3:1
+msgid "Domino 3-3"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_3-4:1
+msgid "Domino 3-4"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_3-5:1
+msgid "Domino 3-5"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_3-6:1
+msgid "Domino 3-6"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_4-4:1
+msgid "Domino 4-4"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_4-5:1
+msgid "Domino 4-5"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_4-6:1
+msgid "Domino 4-6"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_5-5:1
+msgid "Domino 5-5"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_5-6:1
+msgid "Domino 5-6"
+msgstr ""
+
+#: ../TabletopClub/tokens/cube/Domino_6-6:1
+msgid "Domino 6-6"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Green:1
 msgid "Green"
