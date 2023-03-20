@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 00:02+0000\n"
-"PO-Revision-Date: 2023-03-03 13:39+0000\n"
+"POT-Creation-Date: 2023-03-20 15:29+0000\n"
+"PO-Revision-Date: 2023-03-14 12:38+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/es/>\n"
@@ -133,8 +133,8 @@ msgstr ""
 "Pero lo mejor del juego es que cualquiera puede crear elementos para el "
 "juego. Es tan sencillo como arrastrar archivos a una carpeta, el juego los "
 "importará y podrás utilizarlos directamente en el juego. Si quieres saber "
-"más sobre cómo crear elementos para Tabletop Club, visita la página :ref"
-":`asset-packs`."
+"más sobre cómo crear elementos para Tabletop Club, visita la página :ref:"
+"`asset-packs`."
 
 #: ../../general/about.rst:61
 msgid "Simulator"
@@ -174,7 +174,6 @@ msgid "macOS 10.12 or later"
 msgstr "macOS 10.12 o posterior"
 
 #: ../../general/about.rst:79
-#, fuzzy
 msgid "Linux / \\*BSD"
 msgstr "Linux / \\*BSD"
 
@@ -215,8 +214,8 @@ msgid ""
 "You can change your name and colour in multiplayer by going to :guilabel:"
 "`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
 msgstr ""
-"Puedes cambiar tu nombre y color en multijugador yendo a :guilabel:`Opciones`"
-" > :guilabel:`Multijugador`, y cambiando los ajustes pertinentes."
+"Puedes cambiar tu nombre y color en multijugador yendo a :guilabel:"
+"`Opciones` > :guilabel:`Multijugador`, y cambiando los ajustes pertinentes."
 
 #: ../../general/about.rst:104
 msgid "Is Tabletop Club on Steam / GOG / itch.io?"
@@ -229,10 +228,10 @@ msgid ""
 "download it from the `itch app <https://itch.io/app>`_ and get automatic "
 "updates."
 msgstr ""
-"¡El juego está disponible en `itch.io <https://drwhut.itch.io/tabletop-club>`"
-"_! No solo puedes descargar el juego como ejecutable independiente, sino que "
-"también puedes descargarlo desde la aplicación `itch <https://itch.io/app>`_ "
-"y obtener actualizaciones automáticas."
+"¡El juego está disponible en `itch.io <https://drwhut.itch.io/tabletop-"
+"club>`_! No solo puedes descargar el juego como ejecutable independiente, "
+"sino que también puedes descargarlo desde la aplicación `itch <https://itch."
+"io/app>`_ y obtener actualizaciones automáticas."
 
 #: ../../general/about.rst:113
 msgid "What stage of development is Tabletop Club at?"
@@ -282,10 +281,10 @@ msgid ""
 "asset pack. If everything under a game is ticked, then you can play that "
 "game!"
 msgstr ""
-"En GitHub, hay 'un problema <https://github.com/drwhut/tabletop-club/issues/"
-"28>'_ que enumera qué objetos aún deben agregarse al paquete de activos "
-"predeterminado. Si todo lo que está debajo de un juego está marcado, ¡"
-"entonces puedes jugar ese juego!"
+"En GitHub, hay 'un problema <https://github.com/drwhut/tabletop-club/"
+"issues/28>'_ que enumera qué objetos aún deben agregarse al paquete de "
+"activos predeterminado. Si todo lo que está debajo de un juego está marcado, "
+"¡entonces puedes jugar ese juego!"
 
 #: ../../general/about.rst:138
 msgid ""
@@ -310,6 +309,11 @@ msgid ""
 "then click on the game you want to play, then click :guilabel:`Load`) to "
 "play the game right away!"
 msgstr ""
+"Para los juegos más populares, el paquete de recursos predeterminado incluye "
+"archivos de guardado ya creados que puedes cargar al instante (cuando estés "
+"dentro del juego, haz clic en :guilabel:`Juegos`, luego en el juego que "
+"quieras jugar y, a continuación, haz clic en :guilabel:`Cargar`) para jugar "
+"inmediatamente!"
 
 #: ../../general/about.rst:152
 msgid ""
@@ -318,21 +322,31 @@ msgid ""
 "by going to the menu and clicking :guilabel:`Save file`. This way, if you "
 "want to play the game again, you can just load the save you made previously."
 msgstr ""
+"Si no hay un archivo guardado para el juego que quieres jugar, puedes crear "
+"tu propio archivo guardado configurando la tabla como quieras, yendo al menú "
+"y haciendo clic en :guilabel:`Archivo guardado`. De esta forma, si quieres "
+"volver a jugar este juego, solo tienes que cargar el archivo que guardaste "
+"anteriormente."
 
 #: ../../general/about.rst:157
 msgid ""
 "See the :ref:`asset-type-game` page for more information about pre-made save "
 "files in asset packs."
 msgstr ""
+"Consulta la página :ref:`asset-type-game` para obtener más información sobre "
+"los archivos de guardado predefinidos en los paquetes de recursos."
 
 #: ../../general/about.rst:162
 msgid "Can I add assets other than game pieces to Tabletop Club?"
 msgstr ""
+"¿Puedo añadir a Tabletop Club otros recursos que no sean piezas de juego?"
 
 #: ../../general/about.rst:164
 msgid ""
 "Yes! As well as objects, you can also import the following types of assets:"
 msgstr ""
+"¡Sí! Además de objetos, también puedes importar los siguientes tipos de "
+"elementos:"
 
 #: ../../general/about.rst:166
 msgid ":ref:`asset-type-game`"
@@ -344,7 +358,7 @@ msgstr ":ref:`recurso-tipo-musica`"
 
 #: ../../general/about.rst:168
 msgid ":ref:`asset-type-skybox`"
-msgstr ""
+msgstr ":ref:'asset-type-skybox'"
 
 #: ../../general/about.rst:169
 msgid ":ref:`asset-type-sound`"
@@ -356,7 +370,7 @@ msgstr ":ref:`recurso-tipo-tablero`"
 
 #: ../../general/about.rst:174
 msgid "Can you add my favourite board game to Tabletop Club?"
-msgstr ""
+msgstr "¿Puedes añadir mi juego de mesa favorito a Tabletop Club?"
 
 #: ../../general/about.rst:176
 msgid ""
@@ -365,22 +379,30 @@ msgid ""
 "asset pack. But that doesn't stop you from making assets for your favourite "
 "board game for private use!"
 msgstr ""
+"Por seguridad legal, Tabletop Club solo distribuirá `juegos de mesa de "
+"dominio público <https://en.wikipedia.org/wiki/Public_domain>`_ en el "
+"paquete de recursos por defecto. ¡Pero eso no te impide crear recursos para "
+"tu juego de mesa favorito para uso privado!"
 
 #: ../../general/about.rst:183
 msgid "Can I share assets I've made on the internet?"
-msgstr ""
+msgstr "¿Puedo compartir recursos que he creado en Internet?"
 
 #: ../../general/about.rst:185
 msgid ""
 "It depends on a number of factors. In general, it should be safe to share "
 "the assets you've made for the game if the following is all true:"
 msgstr ""
+"Depende de varios factores. En general, debería ser seguro compartir los "
+"recursos que has hecho para el juego. Si todo es cierto de lo siguiente:"
 
 #: ../../general/about.rst:188
 msgid ""
 "The assets you've made (textures, 3D models, etc.) are made by you, and are "
 "not derived from copyrighted material."
 msgstr ""
+"Los recursos que has creado (texturas, modelos 3D, etc.) son tuyos y no "
+"proceden de material protegido por derechos de autor."
 
 #: ../../general/about.rst:193
 msgid ""
@@ -389,33 +411,46 @@ msgid ""
 "state the license and whether the content was modified. Please read the "
 "terms of the license first."
 msgstr ""
+"Puedes distribuir las creaciones de otras personas **si** la licencia bajo "
+"la que está te lo permite. Siempre es más seguro citar al autor original e "
+"indicar la licencia y si el contenido ha sido modificado. Lee primero las "
+"condiciones de la licencia."
 
 #: ../../general/about.rst:198
 msgid ""
 "To help with this, the :ref:`config-cfg` file allows you to put the author, "
 "license, modifier, and URL with the asset, which is then shown in-game."
 msgstr ""
+"Para ayudar con esto, el archivo :ref:`config-cfg` te permite poner el "
+"autor, la licencia, el modificador y la URL con el recurso, que luego se "
+"mostrara en el juego."
 
 #: ../../general/about.rst:201
 msgid ""
 "If the assets you've made are for playing a game that already exists, then:"
 msgstr ""
+"Si los recursos que has hecho son para jugar a un juego que ya existe, "
+"entonces:"
 
 #: ../../general/about.rst:203
 msgid ""
 "You cannot use the same name of the game without the owner's explicit "
 "permission."
 msgstr ""
+"No puede utilizar el mismo nombre del juego sin el permiso explícito del "
+"propietario."
 
 #: ../../general/about.rst:206
 msgid "The mechanics of the game cannot be patented."
-msgstr ""
+msgstr "La mecánica del juego no puede ser patentada."
 
 #: ../../general/about.rst:210
 msgid ""
 "You can `check online <https://worldwide.espacenet.com/advancedSearch>`_ to "
 "see if there are any patents for the game's mechanics."
 msgstr ""
+"Puedes consultar`en línea <https://worldwide.espacenet.com/advancedSearch>`_ "
+"para ver si hay patentes de la mecánica del juego."
 
 #: ../../general/about.rst:215
 msgid ""
@@ -423,10 +458,14 @@ msgid ""
 "are worried about distributing your asset pack on the internet, as this also "
 "depends on your country's copyright laws."
 msgstr ""
+"Esto NO es un consejo legal. Por favor, pida consejo al abogado más cercano "
+"si está preocupado por la distribución de su paquete de recursos en "
+"Internet, ya que esto también depende de las leyes de derechos de autor de "
+"su país."
 
 #: ../../general/contributing/coding_guidelines.rst:5
 msgid "Coding guidelines"
-msgstr ""
+msgstr "Directrices de codificación"
 
 #: ../../general/contributing/coding_guidelines.rst:7
 msgid ""
@@ -434,26 +473,36 @@ msgid ""
 "`GDScript style guide`_, make sure to follow these guidelines for "
 "consistency, and to make everyone's lives easier:"
 msgstr ""
+"Al modificar las escenas y los guiones del juego, así como al seguir la "
+"'guía de estilo GDScript' de Godot`_, asegúrate de seguir estas pautas para "
+"mantener la coherencia y facilitar la vida de todos:"
 
 #: ../../general/contributing/coding_guidelines.rst:11
 msgid "Only use GDScript for scripting."
-msgstr ""
+msgstr "Utilice únicamente GDScript para crear scripts."
 
 #: ../../general/contributing/coding_guidelines.rst:13
 msgid ""
 "When writing code, make sure your editor (whether it's Godot, or another "
 "external editor) is set to use tabs instead of spaces."
 msgstr ""
+"Cuando escriba código, asegúrese de que su editor (ya sea Godot u otro "
+"editor externo) está configurado para utilizar tabuladores en lugar de "
+"espacios."
 
 #: ../../general/contributing/coding_guidelines.rst:16
 msgid ""
 "When creating a new script, use the ``Copyright Notice`` template in ``game/"
 "Scripts/Templates/CopyrightNotice.gd``."
 msgstr ""
+"Al crear un nuevo script, utilice la plantilla ``Copyright Notice`` en "
+"``game/Scripts/Templates/CopyrightNotice.gd``."
 
 #: ../../general/contributing/coding_guidelines.rst:19
 msgid "Use typed variables, arguments, and return values where possible."
 msgstr ""
+"Utilice variables con tipo, argumentos y valores devueltos siempre que sea "
+"posible."
 
 #: ../../general/contributing/coding_guidelines.rst:21
 msgid ""
@@ -462,16 +511,24 @@ msgid ""
 "add a comment above the function describing what the function does, what "
 "it's return value is (if any), and what the arguments are. For example:"
 msgstr ""
+"Cuando escriba funciones en scripts que no sean funciones integradas (por "
+"ejemplo, ``_ready()``) o funciones llamadas por señales (por ejemplo, "
+"``_on_*``), añada un comentario encima de la función describiendo lo que "
+"hace la función, cuál es su valor de retorno (si lo hay) y cuáles son los "
+"argumentos. Por ejemplo:"
 
 #: ../../general/contributing/coding_guidelines.rst:34
 msgid "Make sure to fix any warnings Godot shows in scripts."
 msgstr ""
+"Asegúrese de corregir cualquier advertencia que Godot muestre en los scripts."
 
 #: ../../general/contributing/coding_guidelines.rst:36
 msgid ""
 "If you are writing strings that will get displayed in the UI, remember to "
 "use the ``tr()`` function so the text can be translated."
 msgstr ""
+"Si está escribiendo cadenas que se mostrarán en la interfaz de usuario, "
+"recuerde utilizar la función ``tr()`` para que el texto pueda traducirse."
 
 #: ../../general/contributing/coding_guidelines.rst:39
 msgid ""
@@ -479,14 +536,18 @@ msgid ""
 "explaining what the scene does. Also fill in the editor description for any "
 "nodes in the scene where it isn't obvious what they're there for."
 msgstr ""
+"Cuando crees nuevas escenas, llena la descripción del editor para el nodo "
+"raíz explicando lo que hace la escena. Llena también la descripción del "
+"editor para cualquier nodo de la escena en el que no sea obvio porque qué "
+"está ahí."
 
 #: ../../general/contributing/index.rst:5
 msgid "Contributing"
-msgstr ""
+msgstr "Contribuyendo"
 
 #: ../../general/contributing/pull_request_workflow.rst:5
 msgid "Pull request workflow"
-msgstr ""
+msgstr "Flujo de trabajo de un Pull request"
 
 #: ../../general/contributing/pull_request_workflow.rst:7
 msgid ""
@@ -495,10 +556,14 @@ msgid ""
 "on the project's `GitHub repository`_. This page explains the steps needed "
 "to do exactly that!"
 msgstr ""
+"Si quieres contribuir directamente al proyecto, ya sea corrigiendo un error "
+"o implementando una función, tendrás que crear una **pull request** en el "
+"repositorio GitHub repository`_ del proyecto. En esta página se explican los "
+"pasos necesarios para hacerlo!"
 
 #: ../../general/contributing/pull_request_workflow.rst:14
 msgid "Creating a fork"
-msgstr ""
+msgstr "Creando un fork"
 
 #: ../../general/contributing/pull_request_workflow.rst:16
 msgid ""
@@ -508,6 +573,12 @@ msgid ""
 "Eventually, the side road will join back in with the main road later on (the "
 "\"merge\")."
 msgstr ""
+"La forma de pensar acerca de las bifurcaciones es pensar en ir por un camino "
+"secundario después de tomar una bifurcación en el camino - usted estará "
+"haciendo lo suyo en el camino secundario (su \"fork\"), mientras que el "
+"camino principal (la rama del repositorio de ``master`` ) sigue adelante. "
+"Eventualmente, el camino secundario se unirá de nuevo con el camino "
+"principal más adelante (la \"merge\")."
 
 #: ../../general/contributing/pull_request_workflow.rst:22
 msgid ""
@@ -516,6 +587,10 @@ msgid ""
 "right. You should now have your own copy of the repository at that point in "
 "time. You can then clone the repository to your computer with ``git clone``."
 msgstr ""
+"Para crear un fork del repositorio de Tabletop Club en GitHub, puedes ir a "
+"`GitHub repository`_ y hacer clic en el botón :guilabel:`Fork` de la parte "
+"superior derecha. Así tendrá una copia del repositorio. A continuación, "
+"puede clonar el repositorio en su ordenador con ``git clone``."
 
 #: ../../general/contributing/pull_request_workflow.rst:27
 msgid ""
@@ -524,20 +599,27 @@ msgid ""
 "sure you can get updates from the original repository, you can add the "
 "original as a remote repository with this command:"
 msgstr ""
+"En este repositorio clonado, ``origin`` apuntará a su repositorio bifurcado, "
+"que no se actualizará automáticamente con el repositorio original. Para "
+"asegurarse de que puede obtener actualizaciones del repositorio original, "
+"puede añadir el original como repositorio remoto con este comando:"
 
 #: ../../general/contributing/pull_request_workflow.rst:36
 msgid ""
 "Now, if you ever need to update the ``master`` branch on your local "
 "repository, you can run the following commands:"
 msgstr ""
+"Ahora, si alguna vez necesita actualizar la rama ``master`` en su "
+"repositorio local, puede ejecutar los siguientes comandos:"
 
 #: ../../general/contributing/pull_request_workflow.rst:44
 msgid "You can then update your fork on GitHub with these changes:"
 msgstr ""
+"A continuación, puede actualizar su bifurcación en GitHub con estos cambios:"
 
 #: ../../general/contributing/pull_request_workflow.rst:52
 msgid "Downloading and compiling Godot"
-msgstr ""
+msgstr "Descargando y compilando Godot"
 
 #: ../../general/contributing/pull_request_workflow.rst:54
 msgid ""
@@ -548,10 +630,16 @@ msgid ""
 "until the section where you download the game (you already did that just!) "
 "to get Godot up and running."
 msgstr ""
+"Ahora que has hecho una copia local de la bifurcación en tu ordenador, hay "
+"aún un paso más que es necesario para poder jugar, editar y probar el juego "
+"- necesitarás descargar y compilar la versión modificada de Godot sobre la "
+"que corre el juego. Puedes seguir las instrucciones de :ref:`compiling-from-"
+"source` hasta la sección en la que descargas el juego (¡es lo que acabas de "
+"hacer!) para poner Godot en marcha."
 
 #: ../../general/contributing/pull_request_workflow.rst:63
 msgid "Making changes"
-msgstr ""
+msgstr "Haciendo cambios"
 
 #: ../../general/contributing/pull_request_workflow.rst:65
 msgid ""
@@ -559,23 +647,30 @@ msgid ""
 "that you create a branch on the local repository for the bug/feature you're "
 "going to solve:"
 msgstr ""
+"Antes de empezar a hacer los cambios que quieres hacer, es muy recomendable "
+"que crees una rama en el repositorio local para el fallo/función que vas a "
+"resolver:"
 
 #: ../../general/contributing/pull_request_workflow.rst:74
 msgid ""
 "Now you can start working on the code! See :ref:`coding-guidelines` for "
 "guidelines as to how you should write your code."
 msgstr ""
+"Ahora puede empezar a trabajar en el código. Consulta :ref:`coding-"
+"guidelines` para saber cómo debes escribir tu código."
 
 #: ../../general/contributing/pull_request_workflow.rst:79
 msgid ""
 "When you are done, you should commit your changes and push them to your fork "
 "with these commands:"
 msgstr ""
+"Cuando haya terminado, debe confirmar los cambios y enviarlos a tu rama con "
+"estos comandos:"
 
 #: ../../general/contributing/pull_request_workflow.rst:90
 #: ../../general/contributing/ways_to_contribute.rst:89
 msgid "Creating a pull request"
-msgstr ""
+msgstr "Creación de un pull request"
 
 #: ../../general/contributing/pull_request_workflow.rst:92
 msgid ""
@@ -583,6 +678,9 @@ msgid ""
 "tested them, you can push them to the custom branch on your forked "
 "repository and create a pull request!"
 msgstr ""
+"Una vez que hayas hecho los cambios que querías hacer, y los has probado "
+"completamente, ¡puedes empujarlos a la rama personalizada en tu repositorio "
+"bifurcado y crear un pull request!"
 
 #: ../../general/contributing/pull_request_workflow.rst:96
 msgid ""
@@ -592,6 +690,12 @@ msgid ""
 "branch. If GitHub is happy, then you can click :guilabel:`Create pull "
 "request`, and fill in the details for the pull request."
 msgstr ""
+"Para empezar, ve al repositorio original `GitHub repository`_ y haga clic "
+"en :guilabel:`Pull requests` > :guilabel:`New pull request`. Asegúrate de "
+"que estás fusionando desde la rama personalizada de tu bifurcación a "
+"``drwhut/tabletop-club`` en la rama ``master``. Si GitHub está satisfecho, "
+"puedes hacer clic en :guilabel:`Create pull request`, y llenar los detalles "
+"del pull request."
 
 #: ../../general/contributing/pull_request_workflow.rst:104
 msgid ""
@@ -599,10 +703,14 @@ msgid ""
 "the pull request! For example, if the issue fixes issue number ``69``, then "
 "say in the pull request: ``This PR fixes #69``."
 msgstr ""
+"Si el pull request es para arreglar un problema, por favor ponga el número "
+"del problema en el pull request. Por ejemplo, si el problema corrige el "
+"número de problema ``69``, entonces diga en el pull request: ``This PR fixes "
+"#69``."
 
 #: ../../general/contributing/pull_request_workflow.rst:108
 msgid "Once you're done filling in the PR, you can submit it!"
-msgstr ""
+msgstr "Una vez que hayas llenado el PR, ¡puedes enviarlo!"
 
 #: ../../general/contributing/pull_request_workflow.rst:112
 msgid ""
@@ -610,10 +718,14 @@ msgid ""
 "the changes locally on your computer and pushing the commits to your fork's "
 "custom branch. These new commits will appear automatically in the PR."
 msgstr ""
+"Si le pedimos que haga cambios en el pull request, puede hacerlo haciendo "
+"los cambios localmente en su ordenador y empujando los commits a la rama "
+"personalizada de su fork. Estos nuevos commits aparecerán automáticamente en "
+"el PR."
 
 #: ../../general/contributing/pull_request_workflow.rst:118
 msgid "Resolving merge conflicts"
-msgstr ""
+msgstr "Resolución de conflictos de merge"
 
 #: ../../general/contributing/pull_request_workflow.rst:120
 msgid ""
@@ -622,78 +734,102 @@ msgid ""
 "branch and the branch on your fork. In this case, you should take the "
 "following steps:"
 msgstr ""
+"Existe la posibilidad de que GitHub no nos permita fusionar el pull request "
+"en la rama ``master`` debido a un conflicto de merge entre la rama "
+"``master`` y la rama de su bifurcación. En este caso, debe seguir los "
+"siguientes pasos:"
 
 #: ../../general/contributing/pull_request_workflow.rst:124
 msgid ""
 "Update the fork's ``master`` branch so it is up-to-date with the original's:"
 msgstr ""
+"Actualiza la rama ``master`` del fork para que esté al día con la del "
+"original:"
 
 #: ../../general/contributing/pull_request_workflow.rst:132
 msgid ""
 "Merge the ``master`` branch on your local repository into your custom branch:"
 msgstr ""
+"Fusione la rama ``master`` de su repositorio local en su rama personalizada:"
 
 #: ../../general/contributing/pull_request_workflow.rst:141
 msgid ""
 "You can also use ``rebase`` here instead of ``merge``, but we don't mind "
 "whichever command you use. Use whichever one you're most comfortable with!"
 msgstr ""
+"También puedes utilizar aquí ``rebase`` en lugar de ``merge``, es igual el "
+"comando que utilices. Utiliza el que te resulte más cómodo!"
 
 #: ../../general/contributing/pull_request_workflow.rst:145
 msgid ""
 "At this point you'll get the same merge conflicts that stopped the pull "
 "request from being merged. You need to resolve them before continuing."
 msgstr ""
+"En este punto aparecerán los mismos conflictos de merge que impidieron el "
+"merge del pull request. Debe resolverlos antes de continuar."
 
 #: ../../general/contributing/pull_request_workflow.rst:148
 msgid "Test that the changes you've made still work after the merge."
 msgstr ""
+"Comprueba que los cambios realizados siguen funcionando después del merge."
 
 #: ../../general/contributing/pull_request_workflow.rst:150
 msgid "Push the merge commit, plus any other commits you make, to your fork."
 msgstr ""
+"Empuja la confirmación de merge, además de cualquier otra confirmación que "
+"realices, a tu bifurcación."
 
 #: ../../general/contributing/pull_request_workflow.rst:152
 msgid ""
 "Go back to the pull request on GitHub, and ensure that there are no merge "
 "merge conflicts."
 msgstr ""
+"Vuelva al pull request en GitHub y asegúrese de que no hay conflictos de "
+"fusión."
 
 #: ../../general/contributing/ways_to_contribute.rst:3
 msgid "Ways to contribute"
-msgstr ""
+msgstr "Formas de contribuir"
 
 #: ../../general/contributing/ways_to_contribute.rst:6
 msgid "Reporting a bug"
-msgstr ""
+msgstr "Informando de un error"
 
 #: ../../general/contributing/ways_to_contribute.rst:8
 msgid "Before reporting a bug on GitHub, make sure of the following:"
-msgstr ""
+msgstr "Antes de informar de un error en GitHub, asegúrate de lo siguiente:"
 
 #: ../../general/contributing/ways_to_contribute.rst:10
 msgid ""
 "The bug is reproducible. If you can't get the bug to happen again, then "
 "chances are that we won't be able to either, then we can't fix it!"
 msgstr ""
+"El fallo es reproducible. Si no consigues que el fallo se repita, lo más "
+"probable es que nosotros tampoco podamos, ¡entonces no podremos solucionarlo!"
 
 #: ../../general/contributing/ways_to_contribute.rst:13
 msgid ""
 "The bug hasn't already been reported - you can check by going to the `issues "
 "page`_ on GitHub and searching for it there."
 msgstr ""
+"El error no ha sido reportado antes - puedes comprobarlo yendo a la página "
+"`issues page`_ en GitHub y buscándolo allí."
 
 #: ../../general/contributing/ways_to_contribute.rst:16
 msgid ""
 "To report a bug, please `post an issue`_ on GitHub with the bug report "
 "template."
 msgstr ""
+"Para reportar un error, por favor `post an issue`_ en GitHub con la "
+"plantilla de reporte de errores."
 
 #: ../../general/contributing/ways_to_contribute.rst:20
 msgid ""
 "If you come across multiple bugs, please post one issue for each bug! This "
 "way, we can easily reference individual bugs."
 msgstr ""
+"Si te encuentras con varios errores, ¡publica un problema para cada error! "
+"De esta manera, podemos hacer referencia fácilmente a errores individuales."
 
 #: ../../general/contributing/ways_to_contribute.rst:23
 msgid ""
@@ -702,18 +838,23 @@ msgid ""
 "possible, provide the latest log so we can check if there were any errors "
 "thrown. You can find the game logs in the following folders:"
 msgstr ""
+"Asegúrate de incluir tanta información como puedas en el post, incluyendo "
+"cómo reproducir el fallo, la plataforma en la que estás ejecutando el juego "
+"y, si es posible, proporciona el último registro para que podamos comprobar "
+"si se ha producido algún error. Puedes encontrar los registros del juego en "
+"las siguientes carpetas:"
 
 #: ../../general/contributing/ways_to_contribute.rst:28
 msgid "Windows: ``%APPDATA%/Tabletop Club/logs/``"
-msgstr ""
+msgstr "Windows: ``%APPDATA%/Tabletop Club/logs/``"
 
 #: ../../general/contributing/ways_to_contribute.rst:29
 msgid "macOS: ``~/Library/Application Support/Tabletop Club/logs``"
-msgstr ""
+msgstr "macOS:  ``~/Library/Application Support/Tabletop Club/logs``"
 
 #: ../../general/contributing/ways_to_contribute.rst:30
 msgid "Linux: ``~/.local/share/Tabletop Club/logs/``"
-msgstr ""
+msgstr "Linux: ``~/.local/share/Tabletop Club/logs/``"
 
 #: ../../general/contributing/ways_to_contribute.rst:34
 msgid ""
@@ -722,10 +863,15 @@ msgid ""
 "press :guilabel:`F12` to take a screenshot! Screenshots are saved to the "
 "Documents folder under ``TabletopClub/screenshots``."
 msgstr ""
+"Si quieres proporcionar una captura de pantalla del juego que muestre el "
+"error, puedes pulsar :guilabel:`F3` para mostrar información de depuración "
+"en la pantalla y, a continuación, pulsar :guilabel:`F12` para hacer una "
+"captura de pantalla. Las capturas de pantalla se guardan en la carpeta "
+"Documentos de ``TabletopClub/screenshots``."
 
 #: ../../general/contributing/ways_to_contribute.rst:41
 msgid "Suggesting a feature"
-msgstr ""
+msgstr "Sugiriendo una característica"
 
 #: ../../general/contributing/ways_to_contribute.rst:43
 msgid ""
@@ -736,10 +882,15 @@ msgid ""
 "game as good as it can possibly be, so don't hesistate to let us know your "
 "idea!"
 msgstr ""
+"¿Tienes alguna idea para mejorar el juego? Si alguien más no ha tenido la "
+"misma idea (puedes comprobarlo buscando en la página `issues`_ de GitHub), "
+"entonces puedes `post an issue`_ en GitHub explicando tu idea, qué problema "
+"resuelve y cualquier idea alternativa que se te haya ocurrido. ¡Queremos que "
+"el juego sea lo mejor posible, así que no dudes en contarnos tu idea!"
 
 #: ../../general/contributing/ways_to_contribute.rst:51
 msgid "Changing the documentation"
-msgstr ""
+msgstr "Cambiando la documentación"
 
 #: ../../general/contributing/ways_to_contribute.rst:53
 msgid ""
@@ -747,22 +898,29 @@ msgid ""
 "you think is missing, then please don't hesistate to suggest a change to the "
 "documentation:"
 msgstr ""
+"Si hay alguna parte de la documentación que no entiendes, o que crees que "
+"falta, no dudes en sugerir un cambio en la documentación:"
 
 #: ../../general/contributing/ways_to_contribute.rst:57
 msgid ""
 "You can `post an issue`_ with the documentation change template describing "
 "the edit you want."
 msgstr ""
+"Puede `post an issue`_ con la plantilla de cambio de documentación "
+"describiendo la edición que desea."
 
 #: ../../general/contributing/ways_to_contribute.rst:60
 msgid ""
 "You can click on the GitHub icon at the top of the page, click the :guilabel:"
 "`suggest edit` button, and create a pull request with the changes you give!"
 msgstr ""
+"Puedes hacer clic en el icono de GitHub de la parte superior de la página, "
+"pulsar el botón :guilabel:`suggest edit` y crear una pull request con los "
+"cambios que has hecho!"
 
 #: ../../general/contributing/ways_to_contribute.rst:68
 msgid "Translating the project"
-msgstr ""
+msgstr "Traduciendo el proyecto"
 
 #: ../../general/contributing/ways_to_contribute.rst:70
 msgid ""
@@ -771,6 +929,10 @@ msgid ""
 "<https://hosted.weblate.org/engage/tabletop-club/>`_ page and suggest "
 "translations for the project's strings in your language!"
 msgstr ""
+"Si conoces un idioma que no sea el inglés, puedes ayudar a traducir el juego "
+"y su documentación visitando la página del proyecto `Hosted Weblate <https://"
+"hosted.weblate.org/engage/tabletop-club/>`_ sugiriendo traducciones de los "
+"textos del proyecto a tu idioma!"
 
 #: ../../general/contributing/ways_to_contribute.rst:75
 msgid ""
@@ -778,16 +940,22 @@ msgid ""
 "to the bottom of the component page and pressing :guilabel:`Start new "
 "translation`."
 msgstr ""
+"Si no ve su idioma en un componente, puede añadirlo, ve hasta la parte "
+"inferior de la página del componente y pulsa :guilabel:`Start new "
+"translation`."
 
 #: ../../general/contributing/ways_to_contribute.rst:80
 msgid ""
 "Manual pull requests for translations will be closed, as Weblate keeps it's "
 "own fork of the project, and we want to avoid having merge conflicts occur."
 msgstr ""
+"Los pull requests manuales para traducciones se cerrarán, ya que Weblate "
+"mantiene su propio fork del proyecto, y queremos evitar que se produzcan "
+"conflictos de fusión."
 
 #: ../../general/contributing/ways_to_contribute.rst:None
 msgid "Translation status"
-msgstr ""
+msgstr "Estado de la traducción"
 
 #: ../../general/contributing/ways_to_contribute.rst:91
 msgid ""
@@ -796,10 +964,14 @@ msgid ""
 "code, you can create a pull request on GitHub to merge your changes in! See "
 "the :ref:`pull-request-workflow` page for more information."
 msgstr ""
+"Si ves un problema en `GitHub repository`_ que crees que puedes solucionar, "
+"y quieres contribuir directamente al proyecto modificando el código del "
+"juego, puedes crear un pull request en GitHub para integrar tus cambios. "
+"Consulta la página :ref:`pull-request-workflow` para obtener más información."
 
 #: ../../general/contributing/ways_to_contribute.rst:98
 msgid "Proposing assets"
-msgstr ""
+msgstr "Proponer recursos"
 
 #: ../../general/contributing/ways_to_contribute.rst:100
 msgid ""
@@ -808,6 +980,10 @@ msgid ""
 "reply to that issue with either an asset you've found online, or one that "
 "you've made yourself!"
 msgstr ""
+"Si ves un problema en el repositorio GitHub de `que necesita recursos de "
+"juego para solucionarse (como texturas, modelos 3D, efectos de sonido, "
+"música, etc.), puedes responder a ese problema con un recurso que hayas "
+"encontrado en Internet o con uno que hayas creado tú mismo!"
 
 #: ../../general/contributing/ways_to_contribute.rst:105
 msgid ""
@@ -815,19 +991,24 @@ msgid ""
 "benefit from having it, then you can `post an issue`_ with the asset "
 "submission template instead!"
 msgstr ""
+"Si el recurso no resuelve un problema, pero sigues pensando que Tabletop "
+"Club se beneficiaría de tenerlo, entonces puedes `post an issue`_ con la "
+"plantilla de envío de recursos!"
 
 #: ../../general/contributing/ways_to_contribute.rst:109
 msgid ""
 "However you propose the asset, you need to provide the following information:"
 msgstr ""
+"Independientemente de cómo proponga el activo, deberá facilitar la siguiente "
+"información:"
 
 #: ../../general/contributing/ways_to_contribute.rst:111
 msgid "The name of the asset."
-msgstr ""
+msgstr "Nombre del recurso."
 
 #: ../../general/contributing/ways_to_contribute.rst:112
 msgid "The name of the author."
-msgstr ""
+msgstr "Nombre del autor."
 
 #: ../../general/contributing/ways_to_contribute.rst:113
 msgid ""
@@ -835,20 +1016,25 @@ msgid ""
 "assets with open licenses, e.g. `CC BY-SA 3.0 <https://creativecommons.org/"
 "licenses/by-sa/3.0/>`_."
 msgstr ""
+"La licencia bajo la que está el recurso - ten en cuenta que solo incluiremos "
+"activos con licencias abiertas, por ejemplo `CC BY-SA 3.0 <https://"
+"creativecommons.org/licenses/by-sa/3.0/>`_."
 
 #: ../../general/contributing/ways_to_contribute.rst:116
 msgid ""
 "The URL where the asset can be downloaded from. The URL must be publically "
 "accessible, and it must lead to a trusted website."
 msgstr ""
+"La URL desde la que se puede descargar el activo. La URL debe ser de acceso "
+"público y debe llevar a un sitio web de confianza."
 
 #: ../../general/download/compiling_from_source.rst:5
 msgid "Compiling from the source code"
-msgstr ""
+msgstr "Compilación a partir del código fuente"
 
 #: ../../general/download/compiling_from_source.rst:8
 msgid "Downloading the Godot fork"
-msgstr ""
+msgstr "Descargando el fork de Godot"
 
 #: ../../general/download/compiling_from_source.rst:10
 msgid ""
@@ -857,6 +1043,10 @@ msgid ""
 "free and open-source 2D and 3D game engine, and it has all the functionality "
 "we need to make the game, except for one..."
 msgstr ""
+"El primer paso para compilar el juego desde cero es descargar y compilar el "
+"motor del juego que se ejecuta en - `Godot <https://godotengine.org/>`_. "
+"Godot es un motor de juegos 2D y 3D gratuito y de código abierto, y tiene "
+"toda la funcionalidad que necesitamos para hacer el juego, excepto una..."
 
 #: ../../general/download/compiling_from_source.rst:15
 msgid ""
@@ -868,6 +1058,14 @@ msgid ""
 "godot>`_. If you're interested as to why we've modified Godot, see :ref:`why-"
 "modify-godot`."
 msgstr ""
+"En este punto, si has utilizado Godot en el pasado, puede que te estés "
+"preguntando \"espera, si utiliza Godot, ¿no podemos simplemente descargar "
+"Godot de la página web e importar el proyecto?\". No del todo, porque hemos "
+"tenido que añadir un poco de nuestro propio código en la versión simple de "
+"Godot, por lo que para compilar el juego tenemos que descargar y compilar "
+"`una versión modificada de Godot <https://github.com/drwhut/godot>`_. Si "
+"estás interesado en saber por qué hemos modificado Godot, consulta :ref:`why-"
+"modify-godot`."
 
 #: ../../general/download/compiling_from_source.rst:22
 msgid ""
@@ -875,6 +1073,9 @@ msgid ""
 "your computer (this will come in useful later as well). Then you can use "
 "this command in a terminal to download the fork of Godot:"
 msgstr ""
+"Para descargar el Godot modificado, necesitarás tener ``git`` instalado en "
+"tu ordenador (esto también te será útil más adelante). A continuación, puede "
+"utilizar este comando en un terminal para descargar el fork de Godot:"
 
 #: ../../general/download/compiling_from_source.rst:32
 msgid ""
@@ -884,12 +1085,19 @@ msgid ""
 "Club, as different versions of Tabletop Club might use different versions of "
 "Godot."
 msgstr ""
+"El número de versión después de ``-b tabletop`` se refiere a la versión de "
+"Godot en la que se basa el código modificado. Es posible que tengas que "
+"cambiar qué versión de Godot que debes descargar. Si estás planeando "
+"descargar una versión específica de Tabletop Club, ya que diferentes "
+"versiones de Tabletop Club pueden utilizar diferentes versiones de Godot."
 
 #: ../../general/download/compiling_from_source.rst:38
 msgid ""
 "If you just plan on downloading the current ``master`` branch from Tabletop "
 "Club, then you don't need to change the above command."
 msgstr ""
+"Si solo planea descargar la rama actual ``master`` de Tabletop Club, "
+"entonces no necesita cambiar el comando anterior."
 
 #: ../../general/download/compiling_from_source.rst:41
 msgid ""
@@ -899,12 +1107,34 @@ msgid ""
 "``README.md`` file says. This way, you know you're compiling a compatible "
 "version of Godot for the Tabletop Club version you want."
 msgstr ""
+"Si sabes qué versión de Tabletop Club quieres descargar, comprueba el "
+"archivo ``README.md`` en su código fuente y busca un comando similar al "
+"anterior. Luego, reemplaza lo que viene después de ``-b`` arriba con lo que "
+"dice el archivo ``README.md``. De esta forma, sabrás que estás compilando "
+"una versión compatible de Godot para la versión del Tabletop Club que "
+"quieres."
 
 #: ../../general/download/compiling_from_source.rst:49
-msgid "Compiling Godot"
+msgid ""
+"If you are struggling to compile Godot, or you simply don't want to, there "
+"are pre-built binaries of the Godot fork you can download from its `GitHub "
+"repository <https://github.com/drwhut/godot/releases>`_. Once it is running, "
+"you can then skip straight to :ref:`downloading-tabletop-club-source`."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:51
+#: ../../general/download/compiling_from_source.rst:54
+msgid ""
+"Please note that these builds are not officially supported, as they are "
+"artifacts from the fork's GitHub Actions rather than the official pipeline. "
+"Because of this, it is recommended to compile Godot from source instead if "
+"at all possible."
+msgstr ""
+
+#: ../../general/download/compiling_from_source.rst:61
+msgid "Compiling Godot"
+msgstr "Compilando Godot"
+
+#: ../../general/download/compiling_from_source.rst:63
 msgid ""
 "The way you compile Godot's source code is exactly how you would normally "
 "compile Godot, the documentation of which can be found `here <https://docs."
@@ -912,79 +1142,102 @@ msgid ""
 "convenience, the instructions from the Godot documentation has been taken, "
 "modified slightly, and put here for each platform [#godot-doc-license]_."
 msgstr ""
+"La forma de compilar el código fuente de Godot es exactamente la misma que "
+"se utiliza normalmente para compilar Godot, cuya documentación puede "
+"encontrarse en `aquí <https://docs.godotengine.org/en/stable/development/"
+"compiling/index.html>`_. Para mayor comodidad, se han tomado las "
+"instrucciones de la documentación de Godot, se han modificado ligeramente y "
+"se han puesto aquí para cada plataforma [#godot-doc-license]_."
 
-#: ../../general/download/compiling_from_source.rst:57
+#: ../../general/download/compiling_from_source.rst:69
 msgid "For all platforms, you will need *at least* the following:"
-msgstr ""
+msgstr "Para todas las plataformas, necesitarás *al menos* lo siguiente:"
 
-#: ../../general/download/compiling_from_source.rst:59
+#: ../../general/download/compiling_from_source.rst:71
 msgid ""
 "`Python 3.5+ <https://www.python.org/downloads/>`_. Make sure Python is "
 "added to your ``PATH`` environment variable."
 msgstr ""
+"`Python 3.5+ <https://www.python.org/downloads/>`_. Asegúrese de que Python "
+"está añadido a su variable de entorno ``PATH``."
 
-#: ../../general/download/compiling_from_source.rst:62
+#: ../../general/download/compiling_from_source.rst:74
 msgid ""
 "`SCons 3.0+ <https://www.scons.org/>`_. Once you have Python installed, you "
 "can install it by opening a terminal/command prompt and running:"
 msgstr ""
+"`SCons 3.0+ <https://www.scons.org/>`_. Una vez que tenga instalado Python, "
+"puede instalarlo abriendo un terminal y ejecutando:"
 
-#: ../../general/download/compiling_from_source.rst:69
+#: ../../general/download/compiling_from_source.rst:81
 msgid ""
 "You can check to see whether you have installed Python and SCons correctly "
 "by running:"
 msgstr ""
+"Puede verificar si ha instalado Python y SCons correctamente ejecutando:"
 
-#: ../../general/download/compiling_from_source.rst:79
+#: ../../general/download/compiling_from_source.rst:91
 msgid "Compiling Godot for Windows"
-msgstr ""
+msgstr "Compilación de Godot para Windows"
 
-#: ../../general/download/compiling_from_source.rst:82
-#: ../../general/download/compiling_from_source.rst:143
-#: ../../general/download/compiling_from_source.rst:209
+#: ../../general/download/compiling_from_source.rst:94
+#: ../../general/download/compiling_from_source.rst:155
+#: ../../general/download/compiling_from_source.rst:221
 msgid "Requirements"
-msgstr ""
+msgstr "Requisitos"
 
-#: ../../general/download/compiling_from_source.rst:84
+#: ../../general/download/compiling_from_source.rst:96
 msgid "To compile Godot for Windows, you'll also need the following:"
-msgstr ""
+msgstr "Para compilar Godot para Windows, también necesitará lo siguiente:"
 
-#: ../../general/download/compiling_from_source.rst:86
+#: ../../general/download/compiling_from_source.rst:98
 msgid ""
 "`Visual Studio Community <https://visualstudio.microsoft.com/vs/community/"
 ">`_ version 2017 or later. You'll need to install it with C++ support - if "
 "you've already installed Visual Studio without C++ support, you can re-run "
 "the installer and click :guilabel:`Modify` to install the C++ tools."
 msgstr ""
+"`Visual Studio Community <https://visualstudio.microsoft.com/vs/community/"
+">`_ versión 2017 o posterior. Si ya has instalado Visual Studio sin "
+"compatibilidad con C++, puedes volver a ejecutar el instalador y hacer clic "
+"en :guilabel:`Modify` para instalar las herramientas de C++."
 
-#: ../../general/download/compiling_from_source.rst:91
+#: ../../general/download/compiling_from_source.rst:103
 msgid ""
 "`MinGW-w64 <http://mingw-w64.org/doku.php>`_ with GCC can be used as an "
 "alternative to Visual Studio. You'll need to configure it to use the "
 "``posix`` thread model."
 msgstr ""
+"`MinGW-w64 <http://mingw-w64.org/doku.php>`_ con GCC puede utilizarse como "
+"alternativa a Visual Studio. Tendrá que configurarlo para utilizar el modelo "
+"de hilos ``posix``."
 
-#: ../../general/download/compiling_from_source.rst:96
-#: ../../general/download/compiling_from_source.rst:149
-#: ../../general/download/compiling_from_source.rst:285
+#: ../../general/download/compiling_from_source.rst:108
+#: ../../general/download/compiling_from_source.rst:161
+#: ../../general/download/compiling_from_source.rst:297
 msgid "Compiling"
-msgstr ""
+msgstr "Compilando"
 
-#: ../../general/download/compiling_from_source.rst:98
+#: ../../general/download/compiling_from_source.rst:110
 msgid ""
 "To compile the engine, open a command prompt, change to the root directory "
 "of the engine code (using ``cd``), and run:"
 msgstr ""
+"Para compilar el motor, abra una terminal, cambie al directorio raíz del "
+"código del motor (utilizando ``cd``), y ejecute:"
 
-#: ../../general/download/compiling_from_source.rst:107
-#: ../../general/download/compiling_from_source.rst:296
+#: ../../general/download/compiling_from_source.rst:119
+#: ../../general/download/compiling_from_source.rst:308
 msgid ""
 "The ``-j8`` means that SCons will use eight threads to compile Godot. To "
 "make compiling faster, it's best to have this number be the same as the "
 "number of logical cores in your CPU."
 msgstr ""
+"El ``-j8`` significa que SCons utilizará ocho hilos para compilar Godot. "
+"Para que la compilación sea más rápida, es mejor que este número sea el "
+"mismo que el número de núcleos lógicos de su CPU."
 
-#: ../../general/download/compiling_from_source.rst:111
+#: ../../general/download/compiling_from_source.rst:123
 msgid ""
 "If it compiles successfully, the result binary will be put in ``godot/bin/`` "
 "with the name ``godot.windows.opt.tools.32.exe`` or ``godot.windows.opt."
@@ -992,185 +1245,216 @@ msgid ""
 "architecture, but this can be changed by adding ``bits=64`` or ``bits=32`` "
 "to the above command."
 msgstr ""
+"Si compila con éxito, el binario resultante se pondrá en ``godot/bin/`` con "
+"el nombre ``godot.windows.opt.tools.32.exe`` o ``godot.windows.opt.tools.64."
+"exe``. Por defecto, SCons construirá un binario que coincida con la "
+"arquitectura de su CPU, pero esto puede cambiarse añadiendo ``bits=64`` o "
+"``bits=32`` al comando anterior."
 
-#: ../../general/download/compiling_from_source.rst:118
+#: ../../general/download/compiling_from_source.rst:130
 msgid "Creating a Visual Studio project"
-msgstr ""
+msgstr "Creación de un proyecto de Visual Studio"
 
-#: ../../general/download/compiling_from_source.rst:120
+#: ../../general/download/compiling_from_source.rst:132
 msgid ""
 "If you want to create a Visual Studio solution for compiling Godot instead "
 "(which can come in handy if you plan to modify the Godot source code), you "
 "can run SCons with the ``vsproj=yes`` parameter added:"
 msgstr ""
+"Si desea crear una solución Visual Studio para compilar Godot (que puede ser "
+"útil si va a modificar el código fuente de Godot), puede ejecutar SCons "
+"añadiendo el parámetro ``vsproj=yes`` :"
 
-#: ../../general/download/compiling_from_source.rst:129
-#: ../../general/download/compiling_from_source.rst:185
-#: ../../general/download/compiling_from_source.rst:314
+#: ../../general/download/compiling_from_source.rst:141
+#: ../../general/download/compiling_from_source.rst:197
+#: ../../general/download/compiling_from_source.rst:326
 msgid "Building an export template"
-msgstr ""
+msgstr "Construyendo una plantilla de exportación"
 
-#: ../../general/download/compiling_from_source.rst:131
+#: ../../general/download/compiling_from_source.rst:143
 msgid ""
 "If you want to compile an export template to export a release build of the "
 "game from the editor, you can use the following comamnd:"
 msgstr ""
+"Si desea compilar una plantilla de exportación para exportar una versión del "
+"juego desde el editor, puede utilizar la siguiente comamnd:"
 
-#: ../../general/download/compiling_from_source.rst:140
+#: ../../general/download/compiling_from_source.rst:152
 msgid "Compiling Godot for macOS"
-msgstr ""
+msgstr "Compilación de Godot para macOS"
 
-#: ../../general/download/compiling_from_source.rst:145
+#: ../../general/download/compiling_from_source.rst:157
 msgid ""
 "To compile Godot for macOS, you'll also need `Xcode <https://apps.apple.com/"
 "us/app/xcode/id497799835>`_."
 msgstr ""
+"Para compilar Godot para macOS, también necesitarás `Xcode <https://apps."
+"apple.com/us/app/xcode/id497799835>`_."
 
-#: ../../general/download/compiling_from_source.rst:151
+#: ../../general/download/compiling_from_source.rst:163
 msgid "Start a terminal and go to the root directory of the engine code."
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:153
-msgid "To compile for Intel (x86_64) CPUs, use:"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:159
-msgid "To compile for Apple Silicon (ARM64) CPUs, use:"
-msgstr ""
+msgstr "Inicie una terminal y vaya al directorio raíz del código del motor."
 
 #: ../../general/download/compiling_from_source.rst:165
+msgid "To compile for Intel (x86_64) CPUs, use:"
+msgstr "Para compilar para CPUs Intel (x86_64), utilice:"
+
+#: ../../general/download/compiling_from_source.rst:171
+msgid "To compile for Apple Silicon (ARM64) CPUs, use:"
+msgstr "Para compilar para CPUs Apple Silicon (ARM64), utilize:"
+
+#: ../../general/download/compiling_from_source.rst:177
 msgid ""
 "To support both architectures in a single \"Universal 2\" binary, run the "
 "above two commands, then use ``lipo`` to bundle them together:"
 msgstr ""
+"Para soportar ambas arquitecturas en un único binario \"Universal 2\", "
+"ejecute los dos comandos anteriores y, a continuación, utilice ``lipo`` para "
+"agruparlos:"
 
-#: ../../general/download/compiling_from_source.rst:172
+#: ../../general/download/compiling_from_source.rst:184
 msgid ""
 "If it compiles successfully, the result binary will be put in ``godot/bin/``."
 msgstr ""
+"Si se compila correctamente, el binario resultante se pondrá en ``godot/bin/"
+"``."
 
-#: ../../general/download/compiling_from_source.rst:174
+#: ../../general/download/compiling_from_source.rst:186
 msgid ""
 "To create an ``.app`` bundle like in the official builds, you need to use "
 "the template provided in ``misc/dist/osx_tools.app``:"
 msgstr ""
+"Para crear un paquete ``.app`` como en las compilaciones oficiales, debe "
+"utilizar la plantilla proporcionada en ``misc/dist/osx_tools.app``:"
 
-#: ../../general/download/compiling_from_source.rst:187
-#: ../../general/download/compiling_from_source.rst:316
+#: ../../general/download/compiling_from_source.rst:199
+#: ../../general/download/compiling_from_source.rst:328
 msgid ""
 "If you want to compile an export template to export a release build of the "
 "game from the editor, you can use the following commands:"
 msgstr ""
+"Si desea compilar una plantilla de exportación para exportar una versión del "
+"juego desde el editor, puede utilizar las instrucciones siguientes:"
 
-#: ../../general/download/compiling_from_source.rst:206
+#: ../../general/download/compiling_from_source.rst:218
 msgid "Compiling Godot for Linux / \\*BSD"
-msgstr ""
+msgstr "Compilación de Godot para Linux / \\*BSD"
 
-#: ../../general/download/compiling_from_source.rst:211
+#: ../../general/download/compiling_from_source.rst:223
 msgid ""
 "To compile Godot for Linux and other Unix systems, you'll also need the "
 "following:"
 msgstr ""
+"Para compilar Godot para Linux y otros sistemas de Unix, también necesitarás "
+"el siguiente:"
 
-#: ../../general/download/compiling_from_source.rst:214
+#: ../../general/download/compiling_from_source.rst:226
 msgid "GCC 7+ or Clang 6+."
-msgstr ""
+msgstr "GCC 7+ o Clang 6+."
 
-#: ../../general/download/compiling_from_source.rst:215
+#: ../../general/download/compiling_from_source.rst:227
 msgid "pkg-config."
-msgstr ""
+msgstr "pkg-config."
 
-#: ../../general/download/compiling_from_source.rst:216
+#: ../../general/download/compiling_from_source.rst:228
 msgid "X11, Xcursor, Ximerama, Xi and XRandR development libraries."
-msgstr ""
+msgstr "Bibliotecas de desarrollo X11, Xcursor, Ximerama, Xi y XRandR."
 
-#: ../../general/download/compiling_from_source.rst:217
+#: ../../general/download/compiling_from_source.rst:229
 msgid "MesaGL development libraries."
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:218
-msgid "ALSA development libraries."
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:219
-msgid "PulseAudio development libraries."
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:222
-msgid "Distro-specific one-liners"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:225
-msgid "**Alpine Linux**"
-msgstr ""
+msgstr "Bibliotecas de desarrollo de MesaGL."
 
 #: ../../general/download/compiling_from_source.rst:230
+msgid "ALSA development libraries."
+msgstr "Bibliotecas de desarrollo ALSA."
+
+#: ../../general/download/compiling_from_source.rst:231
+msgid "PulseAudio development libraries."
+msgstr "Bibliotecas de desarrollo PulseAudio."
+
+#: ../../general/download/compiling_from_source.rst:234
+msgid "Distro-specific one-liners"
+msgstr "Expresiones específicas de cada distribución"
+
+#: ../../general/download/compiling_from_source.rst:237
+msgid "**Alpine Linux**"
+msgstr "**Alpine Linux**"
+
+#: ../../general/download/compiling_from_source.rst:242
 msgid "**Arch Linux**"
-msgstr ""
+msgstr "**Arch Linux**"
 
-#: ../../general/download/compiling_from_source.rst:235
+#: ../../general/download/compiling_from_source.rst:247
 msgid "**Debian** / **Ubuntu**"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:240
-msgid "**Fedora**"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:246
-msgid "**FreeBSD**"
-msgstr ""
+msgstr "**Debian** / **Ubuntu**"
 
 #: ../../general/download/compiling_from_source.rst:252
+msgid "**Fedora**"
+msgstr "**Fedora**"
+
+#: ../../general/download/compiling_from_source.rst:258
+msgid "**FreeBSD**"
+msgstr "**FreeBSD**"
+
+#: ../../general/download/compiling_from_source.rst:264
 msgid "**Gentoo**"
-msgstr ""
+msgstr "**Gentoo**"
 
-#: ../../general/download/compiling_from_source.rst:257
+#: ../../general/download/compiling_from_source.rst:269
 msgid "**Mageia**"
-msgstr ""
+msgstr "**Mageia**"
 
-#: ../../general/download/compiling_from_source.rst:263
+#: ../../general/download/compiling_from_source.rst:275
 msgid "**OpenBSD**"
-msgstr ""
+msgstr "**OpenBSD**"
 
-#: ../../general/download/compiling_from_source.rst:267
+#: ../../general/download/compiling_from_source.rst:279
 msgid "**openSUSE**"
-msgstr ""
+msgstr "**openSUSE**"
 
-#: ../../general/download/compiling_from_source.rst:272
+#: ../../general/download/compiling_from_source.rst:284
 msgid "**NetBSD**"
-msgstr ""
+msgstr "**NetBSD**"
 
-#: ../../general/download/compiling_from_source.rst:276
+#: ../../general/download/compiling_from_source.rst:288
 msgid "For audio support, you can optionally install ``pulseaudio``."
-msgstr ""
+msgstr "Para soporte de audio, puede instalar opcionalmente ``pulseaudio`."
 
-#: ../../general/download/compiling_from_source.rst:278
+#: ../../general/download/compiling_from_source.rst:290
 msgid "**Solus**"
-msgstr ""
+msgstr "**Solus**"
 
-#: ../../general/download/compiling_from_source.rst:287
+#: ../../general/download/compiling_from_source.rst:299
 msgid ""
 "To compile the engine, open a terminal, change to the root directory of the "
 "engine code, and run:"
 msgstr ""
+"Para compilar el motor, abra un terminal, cambie al directorio raíz del "
+"código del motor y ejecute:"
 
-#: ../../general/download/compiling_from_source.rst:300
+#: ../../general/download/compiling_from_source.rst:312
 msgid ""
 "If it compiles successfully, the result binary will be put in ``godot/bin/`` "
 "with the name ``godot.x11.opt.tools.32`` or ``godot.x11.opt.tools.64``. By "
 "default, SCons will build a binary matching your CPU architecture, but this "
 "can be changed by adding ``bits=64`` or ``bits=32`` to the above command."
 msgstr ""
+"Si compila correctamente, el binario resultante se pondrá en ``godot/bin/`` "
+"con el nombre ``godot.x11.opt.tools.32`` o ``godot.x11.opt.tools.64``. Por "
+"defecto, SCons construirá un binario que coincida con la arquitectura de su "
+"CPU, pero esto puede cambiarse añadiendo ``bits=64`` o ``bits=32`` al "
+"comando anterior."
 
-#: ../../general/download/compiling_from_source.rst:307
+#: ../../general/download/compiling_from_source.rst:319
 msgid "If you want to compile using Clang instead of GCC, use this command:"
 msgstr ""
+"Si desea compilar utilizando Clang en lugar de GCC, utilice este comando:"
 
-#: ../../general/download/compiling_from_source.rst:326
+#: ../../general/download/compiling_from_source.rst:340
 msgid "Downloading Tabletop Club"
-msgstr ""
+msgstr "Descargando Tabletop Club"
 
-#: ../../general/download/compiling_from_source.rst:328
+#: ../../general/download/compiling_from_source.rst:342
 msgid ""
 "To download the Tabletop Club Godot project, you can either download a "
 "compressed copy of the source code for a particular version from the "
@@ -1179,38 +1463,53 @@ msgid ""
 "download the latest source code on the ``master`` branch by running this "
 "command:"
 msgstr ""
+"Para descargar el proyecto Tabletop Club Godot, puedes descargar una copia "
+"comprimida del código fuente de una versión concreta de la página `releases "
+"<https://github.com/drwhut/tabletop-club/releases>`_ en GitHub y extraerla, "
+"o si te sientes muy aventurero, puedes descargar el último código fuente en "
+"la rama ``master`` ejecutando este comando:"
 
-#: ../../general/download/compiling_from_source.rst:340
+#: ../../general/download/compiling_from_source.rst:354
 msgid "Downloading the WebRTC GDNative plugin"
-msgstr ""
+msgstr "Descargando el plugin WebRTC GDNative"
 
-#: ../../general/download/compiling_from_source.rst:342
+#: ../../general/download/compiling_from_source.rst:356
 msgid ""
 "Since the multiplayer for Tabletop Club uses WebRTC, you'll need to download "
 "the WebRTC plugin for Godot. You can follow these instructions to setup the "
 "plugin:"
 msgstr ""
+"Como el multijugador de Tabletop Club utiliza WebRTC, tendrás que descargar "
+"el plugin WebRTC para Godot. Puedes seguir estas instrucciones para "
+"configurar el plugin:"
 
-#: ../../general/download/compiling_from_source.rst:346
+#: ../../general/download/compiling_from_source.rst:360
 msgid ""
 "Download the latest release (not a pre-release!) of the plugin from `the "
 "repository <https://github.com/godotengine/webrtc-native/releases>`_. Make "
 "sure to download the ``webrtc-native-release`` file rather than the ``webrtc-"
 "native-debug`` file."
 msgstr ""
+"Descargue la última versión (¡no una versión preliminar!) del complemento "
+"desde `el repositorio <https://github.com/godotengine/webrtc-native/"
+"releases>`_. Asegúrese de descargar el archivo ``webrtc-native-release`` en "
+"lugar del archivo ``webrtc-native-debug``."
 
-#: ../../general/download/compiling_from_source.rst:351
+#: ../../general/download/compiling_from_source.rst:365
 msgid ""
 "Open the compressed file, and place the ``webrtc/`` folder into ``tabletop-"
 "club/game/``. Afterwards, there should be a file at ``tabletop-club/game/"
 "webrtc/webrtc.tres``."
 msgstr ""
+"Abra el archivo comprimido y coloque la carpeta ``webrtc/`` en ``tabletop-"
+"club/game/``. Después, deberá haber un archivo en ``tabletop-club/game/"
+"webrtc/webrtc.tres``."
 
-#: ../../general/download/compiling_from_source.rst:357
+#: ../../general/download/compiling_from_source.rst:371
 msgid "Running Tabletop Club in the Godot editor"
-msgstr ""
+msgstr "Corriendo Tabletop Club en el Godot editor"
 
-#: ../../general/download/compiling_from_source.rst:359
+#: ../../general/download/compiling_from_source.rst:373
 msgid ""
 "To open Godot's project manager, run the executable you compiled in ``godot/"
 "bin/``. You can then import the project by clicking the :guilabel:`Import` "
@@ -1218,83 +1517,116 @@ msgid ""
 "can open the project and play the game by pressing the play button in the "
 "top-right corner (or by pressing F5)!"
 msgstr ""
+"Para abrir el gestor de proyectos de Godot, ejecute el ejecutable que "
+"compiló en ``godot/bin/``. A continuación, puede importar el proyecto "
+"haciendo clic en el botón :guilabel:`Import` y seleccionando el archivo "
+"``tabletop-club/game/project.godot``. Ahora puedes abrir el proyecto y jugar "
+"al juego pulsando el botón de reproducción de la esquina superior derecha (o "
+"pulsando F5)!"
 
-#: ../../general/download/compiling_from_source.rst:365
+#: ../../general/download/compiling_from_source.rst:379
 msgid ""
 "At this point, you can modify the game to your heart's content! Have a look "
 "at the scenes and scripts, try tweaking things here and there, or maybe try "
 "and add some stuff of your own?"
 msgstr ""
+"Ahora puedes modificar el juego a tu antojo. Echa un vistazo a las escenas y "
+"los scripts, prueba a retocar cosas aquí y allá, o quizá intentar añadir "
+"algunas cosas por tu cuenta?"
 
-#: ../../general/download/compiling_from_source.rst:371
+#: ../../general/download/compiling_from_source.rst:385
 msgid "Exporting the game"
-msgstr ""
+msgstr "Exportando el juego"
 
-#: ../../general/download/compiling_from_source.rst:373
+#: ../../general/download/compiling_from_source.rst:387
 msgid ""
 "You can export the game with the editor to make it so you don't need to run "
 "the game through the editor to play it. Here's how you can export the "
 "project:"
 msgstr ""
+"Puedes exportar el juego con el editor para que no necesites ejecutar el "
+"juego a través del editor para jugarlo. Así es como puedes exportar el "
+"proyecto:"
 
-#: ../../general/download/compiling_from_source.rst:376
+#: ../../general/download/compiling_from_source.rst:390
 msgid "Click on :guilabel:`Project` > :guilabel:`Export...`"
-msgstr ""
+msgstr "Haga clic en :guilabel:`Project` > :guilabel:`Export...`"
 
-#: ../../general/download/compiling_from_source.rst:377
+#: ../../general/download/compiling_from_source.rst:391
 msgid "In the pop-up, click :guilabel:`Add...`, and select your platform."
 msgstr ""
+"En la ventana emergente, haga clic en :guilabel:`Add...`, y seleccione su "
+"plataforma."
 
-#: ../../general/download/compiling_from_source.rst:378
+#: ../../general/download/compiling_from_source.rst:392
 msgid ""
 "In the menu on the right, set the debug template to point to the editor "
 "executable, and if you made a release template, set that as well."
 msgstr ""
+"En el menú de la derecha, configure la plantilla de depuración para que "
+"apunte al ejecutable del editor y, si ha creado una plantilla de "
+"lanzamiento, configúrela también."
 
-#: ../../general/download/compiling_from_source.rst:383
+#: ../../general/download/compiling_from_source.rst:397
 msgid ""
 "If you are on macOS, then you will need to disable library validation as "
 "shown below. This is in order to prevent the system from checking the WebRTC "
 "library, which stops it from loading."
 msgstr ""
+"Si utiliza macOS, tendrá que desactivar la validación de la biblioteca como "
+"se muestra a continuación. Esto es para evitar que el sistema compruebe la "
+"biblioteca WebRTC, lo que impide que se cargue."
 
-#: ../../general/download/compiling_from_source.rst:390
+#: ../../general/download/compiling_from_source.rst:404
 msgid ""
 "Click :guilabel:`Export project`, choose where you want to export the "
 "project and whether you want to export a debug or a release binary, then "
 "click :guilabel:`Save`."
 msgstr ""
+"Haga clic en :guilabel:`Export project`, elija dónde desea exportar el "
+"proyecto y si desea exportar un binario de depuración o de versión, y haga "
+"clic en :guilabel:`Save`."
 
-#: ../../general/download/compiling_from_source.rst:393
+#: ../../general/download/compiling_from_source.rst:407
 msgid ""
 "Copy the ``tabletop-club/assets/`` folder next to the exported binary, so "
 "the game has assets to import."
 msgstr ""
+"Copia la carpeta ``tabletop-club/assets/`` junto al binario exportado, para "
+"que el juego tenga recursos que importar."
 
-#: ../../general/download/compiling_from_source.rst:398
+#: ../../general/download/compiling_from_source.rst:412
 msgid ""
 "On macOS, you'll need to put this folder inside the ``.app`` package, "
 "specifically in ``Tabletop Club.app/Contents/Resources``."
 msgstr ""
+"En macOS, deberá colocar esta carpeta dentro del paquete ``.app``, "
+"concretamente en ``Tabletop Club.app/Contents/Resources``."
 
-#: ../../general/download/compiling_from_source.rst:401
+#: ../../general/download/compiling_from_source.rst:415
 msgid ""
 "Now, you should be able to launch the exported executable and play the game "
 "directly!"
 msgstr ""
+"Ahora deberías poder ejecutar el ejecutable exportado y jugar directamente "
+"al juego!"
 
-#: ../../general/download/compiling_from_source.rst:408
+#: ../../general/download/compiling_from_source.rst:422
 msgid "Why did you fork Godot?"
-msgstr ""
+msgstr "¿Por qué bifurcaste a Godot?"
 
-#: ../../general/download/compiling_from_source.rst:410
+#: ../../general/download/compiling_from_source.rst:424
 msgid ""
 "There's actually just one reason for this: there was a feature that I knew "
 "existed in Godot, but it was not exposed to the in-built scripting language "
 "GDScript, and the functionality wasn't included in release templates."
 msgstr ""
+"En realidad, sólo hay una razón para ello: había una función que yo sabía "
+"que existía en Godot, pero no estaba expuesta al lenguaje de scripting "
+"incorporado GDScript, y la funcionalidad no estaba incluida en las "
+"plantillas de la versión."
 
-#: ../../general/download/compiling_from_source.rst:414
+#: ../../general/download/compiling_from_source.rst:428
 msgid ""
 "When the game starts, the first thing it does is it scans certain folders "
 "for asset packs, and if it finds any, the game will then import assets from "
@@ -1305,8 +1637,17 @@ msgid ""
 "and it allows me to import assets like textures and 3D models from anywhere "
 "on the filesystem using just one function in GDScript."
 msgstr ""
+"Cuando el juego se inicia, lo primero que hace es escanear ciertas carpetas "
+"en busca de paquetes de recursos, y si encuentra alguno, el juego importará "
+"los recursos de esos paquetes. La forma en que el juego importa los recursos "
+"es casi idéntica a la forma en que Godot importa los recursos en el editor. "
+"Esto es posible gracias a `un módulo personalizado <https://github.com/"
+"drwhut/tabletop_club_godot_module>`_ que hice para aprovechar el código de "
+"importación que ya existe para el editor, y que me permite importar activos "
+"como texturas y modelos 3D desde cualquier parte del sistema de archivos "
+"usando solo una función en GDScript."
 
-#: ../../general/download/compiling_from_source.rst:423
+#: ../../general/download/compiling_from_source.rst:437
 msgid ""
 "However, a problem occured when compiling Godot with this module as a "
 "release template - the compiled editor code was not included in the release "
@@ -1316,29 +1657,41 @@ msgid ""
 "runtime errors from happening since the code was suddenly disconnected from "
 "the rest of the editor."
 msgstr ""
+"Sin embargo, se produjo un problema al compilar Godot con este módulo como "
+"plantilla de lanzamiento - el código compilado del editor no se incluyó en "
+"las plantillas de lanzamiento, por lo que el módulo personalizado no tenía "
+"ni idea de lo que significaba \"importar\". Esto significaba que tenía que "
+"modificar parte del código del editor y el script de compilación de SCons "
+"para incluir el código de importación en las compilaciones de lanzamiento, "
+"al tiempo que evitaba que se produjeran errores de compilador/tiempo de "
+"ejecución, ya que el código se desconectaba repentinamente del resto del "
+"editor."
 
-#: ../../general/download/compiling_from_source.rst:431
+#: ../../general/download/compiling_from_source.rst:445
 msgid "Footnotes"
-msgstr ""
+msgstr "Notas a pie de página"
 
-#: ../../general/download/compiling_from_source.rst:432
+#: ../../general/download/compiling_from_source.rst:446
 msgid ""
 "`The Godot documentation <https://docs.godotengine.org>`_ is from Juan "
 "Linietsky, Ariel Manzur and the Godot community, and it is licensed under "
 "the `CC-BY 3.0 License <https://creativecommons.org/licenses/by/3.0/>`_."
 msgstr ""
+"`La documentación de Godot <https://docs.godotengine.org>`_ es de Juan "
+"Linietsky, Ariel Manzur y la comunidad Godot, y está bajo la licencia `CC-BY "
+"3.0 License <https://creativecommons.org/licenses/by/3.0/>`_."
 
 #: ../../general/download/downloading_binaries.rst:5
 msgid "Downloading the official binaries"
-msgstr ""
+msgstr "Descargando los binarios oficiales"
 
 #: ../../general/download/downloading_binaries.rst:7
 msgid "There are two ways to download and play the game:"
-msgstr ""
+msgstr "Hay dos maneras de descargar y jugar el juego:"
 
 #: ../../general/download/downloading_binaries.rst:11
 msgid "From the itch app"
-msgstr ""
+msgstr "Desde la aplicación itch"
 
 #: ../../general/download/downloading_binaries.rst:13
 msgid ""
@@ -1347,16 +1700,23 @@ msgid ""
 "to a huge range of amazing indie games from developers far more talented "
 "than I am!"
 msgstr ""
+"Esta es la forma recomendada de descargar y jugar al juego, ya que recibirás "
+"actualizaciones automáticamente cada vez que se publiquen, y también tendrás "
+"acceso a una gran variedad de increíbles juegos independientes de "
+"desarrolladores con mucho más talento que yo!"
 
 #: ../../general/download/downloading_binaries.rst:17
 msgid ""
 "You can download the itch app `here <https://itch.io/app>`_, and once you've "
 "logged in, search for \"Tabletop Club\" to download and install the game."
 msgstr ""
+"Puedes descargar la aplicación itch `aquí <https://itch.io/app>`_, y una vez "
+"que te hayas conectado, busca \"Tabletop Club\" para descargar e instalar el "
+"juego."
 
 #: ../../general/download/downloading_binaries.rst:22
 msgid "As a standalone executable"
-msgstr ""
+msgstr "Como un ejecutable independiente"
 
 #: ../../general/download/downloading_binaries.rst:24
 msgid ""
@@ -1366,6 +1726,12 @@ msgid ""
 "tabletop-club/releases>`_. Once it is downloaded, there's only a couple of "
 "steps needed to run the game (see below)!"
 msgstr ""
+"También puedes descargar el juego como una aplicación independiente que "
+"puedes ejecutar en cualquier parte de tu sistema. Puees hacerlo desde la "
+"página `itch.io <https://drwhut.itch.io/tabletop-club>`_, o desde el "
+"repositorio `GitHub <https://github.com/drwhut/tabletop-club/releases>`_. "
+"Una vez descargado, solo hay que seguir un par de pasos para ejecutar el "
+"juego (véase más abajo)!"
 
 #: ../../general/download/downloading_binaries.rst:30
 msgid ""
@@ -1374,16 +1740,23 @@ msgid ""
 "for player feedback, they are more suseptable to bugs. But if you're feeling "
 "a little experimental, go for the latest version!"
 msgstr ""
+"En la mayoría de los casos, querrás descargar la última versión del juego "
+"*no beta*. Aunque las versiones beta del juego tienen nuevas funciones y son "
+"muy útiles para conocer la opinión de los jugadores, son más susceptibles de "
+"sufrir fallos. Pero si te apetece experimentar un poco, descarga la última "
+"versión!"
 
 #: ../../general/download/downloading_binaries.rst:35
 msgid ""
 "If you've downloaded Tabletop Club in the past and want to download a newer "
 "version, follow :ref:`upgrading-installation` before carrying on here."
 msgstr ""
+"Si has descargado Tabletop Club en el pasado y deseas descargar una versión "
+"más reciente, sigue :ref:`upgrading-installation` antes de continuar aquí."
 
 #: ../../general/download/downloading_binaries.rst:40
 msgid "Verifying the download"
-msgstr ""
+msgstr "Verificación de la descarga"
 
 #: ../../general/download/downloading_binaries.rst:42
 msgid ""
@@ -1392,6 +1765,10 @@ msgid ""
 "checking the `SHA512 hash <https://en.wikipedia.org/wiki/SHA-2>`_ of the "
 "file, and seeing if the hash matches the original."
 msgstr ""
+"Este paso es completamente opcional, pero es una buena idea asegurarse de "
+"que el contenido del archivo descargado es el que esperamos. Para ello, se "
+"comprueba el hash `SHA512 <https://en.wikipedia.org/wiki/SHA-2>`_ del "
+"archivo y se comprueba si coincide con el original."
 
 #: ../../general/download/downloading_binaries.rst:47
 msgid ""
@@ -1399,17 +1776,24 @@ msgid ""
 "txt`` file. This text file contains the SHA512 hashes of all of the "
 "downloads."
 msgstr ""
+"Descargue de la página de versiones de GitHub el archivo ``TabletopClub_vX.X."
+"X_SHA512.txt``. Este archivo de texto contiene los hashes SHA512 de todas "
+"las descargas."
 
 #: ../../general/download/downloading_binaries.rst:50
 msgid ""
 "Open a command prompt or terminal, and navigate to the folder where the "
 "compressed binary lies."
 msgstr ""
+"Abre una terminal y ve a la carpeta donde se encuentra el archivo binario "
+"comprimido."
 
 #: ../../general/download/downloading_binaries.rst:53
 msgid ""
 "Enter the command for your platform, adjusting the file name where necessary:"
 msgstr ""
+"Ingrese el comando para su plataforma, ajustando el nombre del archivo "
+"cuando sea necesario:"
 
 #: ../../general/download/downloading_binaries.rst:66
 msgid ""
@@ -1417,26 +1801,35 @@ msgid ""
 "SHA512 text file. If the hashes do not match, then you will need to download "
 "the binary again."
 msgstr ""
+"Compare la salida del comando anterior con la línea correspondiente del "
+"archivo de texto SHA512. Si los hashes no coinciden, tendrás que volver a "
+"descargar el binario."
 
 #: ../../general/download/downloading_binaries.rst:71
 msgid "What happens now depends slightly on which platform you're on:"
 msgstr ""
+"Lo que ocurra ahora dependerá ligeramente de la plataforma en la que te "
+"encuentres:"
 
 #: ../../general/download/downloading_binaries.rst:74
 msgid "Downloading for Windows"
-msgstr ""
+msgstr "Descargando para Windows"
 
 #: ../../general/download/downloading_binaries.rst:76
 msgid ""
 "Make sure you have downloaded the compressed file, it should be called "
 "something like ``TabletopClub_vX.X.X_Windows_64.zip``."
 msgstr ""
+"Asegúrate de que has descargado el archivo comprimido, debería llamarse algo "
+"así como ``TabletopClub_vX.X.X_Windows_64.zip``."
 
 #: ../../general/download/downloading_binaries.rst:79
 msgid ""
 "Right-click the downloaded file in File Explorer, and click :guilabel:"
 "`Extract all...`"
 msgstr ""
+"Haga clic con el botón derecho en el archivo descargado en el Explorador de "
+"archivos y haga clic en :guilabel:`Extract all...`"
 
 #: ../../general/download/downloading_binaries.rst:82
 msgid ""
@@ -1445,12 +1838,18 @@ msgid ""
 "TabletopClub``. You can then click :guilabel:`Extract` to extract the files "
 "to that location."
 msgstr ""
+"Debería aparecer una ventana emergente preguntándote dónde quieres extraer "
+"los archivos. Puedes poner los archivos del juego donde quieras, por ejemplo "
+"``Desktop/TabletopClub``. A continuación, puedes hacer clic en :guilabel:"
+"`Extract` para extraer los archivos a esa ubicación."
 
 #: ../../general/download/downloading_binaries.rst:87
 msgid ""
 "Go to the folder where you extracted the files, and double-click the "
 "``TabletopClub.exe`` executable to start the game!"
 msgstr ""
+"¡Ve a la carpeta donde hayas extraído los archivos y haz doble clic en el "
+"ejecutable ``TabletopClub.exe`` para iniciar el juego!"
 
 #: ../../general/download/downloading_binaries.rst:92
 msgid ""
@@ -1459,28 +1858,39 @@ msgid ""
 "be trusted. You can get past this by clicking :guilabel:`More info`, then by "
 "clicking :guilabel:`Run anyway`."
 msgstr ""
+"Actualmente, los binarios de Windows del juego no están firmados, por lo que "
+"lo más probable es que reciba una advertencia cuando intente ejecutar el "
+"juego diciendo que el editor no es de confianza. Para evitarlo, haga clic "
+"en :guilabel:`Más información` y, a continuación, en :guilabel:`Ejecutar de "
+"todos modos`."
 
 #: ../../general/download/downloading_binaries.rst:98
 msgid "Downloading for macOS"
-msgstr ""
+msgstr "Descargado para macOS"
 
 #: ../../general/download/downloading_binaries.rst:100
 msgid ""
 "Start downloading the compressed file, it should be called something like "
 "``TabletopClub_vX.X.X_OSX_Universal.zip``."
 msgstr ""
+"Comience por descargar el archivo comprimido, debería llamarse algo así como "
+"``TabletopClub_vX.X.X_OSX_Universal.zip``."
 
 #: ../../general/download/downloading_binaries.rst:103
 msgid ""
 "When it has downloaded, go to your downloads folder in Finder, and find the "
 "compressed file. Double-click the file to extract the application."
 msgstr ""
+"Cuando se haya descargado, ve a tu carpeta de descargas en Finder y busca el "
+"archivo comprimido. Haz doble clic en el archivo para extraer la aplicación."
 
 #: ../../general/download/downloading_binaries.rst:106
 msgid ""
 "Launch the game by right-clicking ``TabletopClub`` and clicking :guilabel:"
 "`Open`."
 msgstr ""
+"Inicia el juego haciendo clic con el botón derecho del ratón en "
+"``TabletopClub`` y pulsando :guilabel:`Open`."
 
 #: ../../general/download/downloading_binaries.rst:111
 msgid ""
@@ -1489,32 +1899,42 @@ msgid ""
 "guilabel:`Open` in the pop-up. This button won't appear if you double-click "
 "the application."
 msgstr ""
+"Actualmente, los binarios del juego para macOS no están firmados, por lo que "
+"aparecerá una advertencia indicando que el editor es desconocido. Puedes "
+"pasar esta advertencia haciendo clic en :guilabel:`Open` la ventana "
+"emergente. Este botón no aparecerá si haces doble clic en la aplicación."
 
 #: ../../general/download/downloading_binaries.rst:117
 msgid "Downloading for Linux / \\*BSD"
-msgstr ""
+msgstr "Descargando para Linux / \\*BSD"
 
 #: ../../general/download/downloading_binaries.rst:119
 msgid ""
 "Make sure you have downloaded the compressed file, it should be called "
 "something like ``TabletopClub_vX.X.X_Linux_64.zip``."
 msgstr ""
+"Asegúrate de que has descargado el archivo comprimido, debería llamarse algo "
+"así como ``TabletopClub_vX.X.X_Linux_64.zip``."
 
 #: ../../general/download/downloading_binaries.rst:122
 msgid ""
 "Either use your distribution's archive manager to extract the files, or run "
 "this command in a terminal:"
 msgstr ""
+"Utilice el gestor de archivos de su distribución para extraer los ficheros o "
+"ejecute este comando en un terminal:"
 
 #: ../../general/download/downloading_binaries.rst:129
 msgid ""
 "Either double-click the executable, or go into a terminal and run this "
 "command in the folder the executable is in:"
 msgstr ""
+"Haga doble clic en el ejecutable o vaya a una terminal y ejecute este "
+"comando en la carpeta en la que se encuentra el ejecutable:"
 
 #: ../../general/download/downloading_binaries.rst:140
 msgid "Upgrading an existing installation"
-msgstr ""
+msgstr "Actualización de una instalación existente"
 
 #: ../../general/download/downloading_binaries.rst:142
 msgid ""
@@ -1522,19 +1942,23 @@ msgid ""
 "the files that are already there, then before downloading and extracting the "
 "new version of the game, first delete the following files and folders:"
 msgstr ""
+"Si ya has descargado el juego anteriormente y quieres sobrescribir los "
+"archivos que ya están ahí, antes de descargar y extraer la nueva versión del "
+"juego, borra primero los siguientes archivos y carpetas:"
 
 #: ../../general/download/downloading_binaries.rst:146
 msgid ""
 "``TabletopClub.exe``, or ``TabletopClub.app``, or ``TabletopClub.x86_64``"
 msgstr ""
+"``TabletopClub.exe``, o ``TabletopClub.app``, o ``TabletopClub.x86_64``"
 
 #: ../../general/download/downloading_binaries.rst:147
 msgid "``TabletopClub.pck``"
-msgstr ""
+msgstr "``TabletopClub.pck``"
 
 #: ../../general/download/downloading_binaries.rst:148
 msgid "``assets/TabletopClub``"
-msgstr ""
+msgstr "``assets/TabletopClub``"
 
 #: ../../general/download/downloading_binaries.rst:150
 msgid ""
@@ -1542,14 +1966,17 @@ msgid ""
 "operating systems asks you if you want to replace any files, say yes to all "
 "files."
 msgstr ""
+"Ahora puedes extraer la nueva versión del juego como se ha descrito "
+"anteriormente. Si el sistema operativo te pregunta si quieres reemplazar "
+"algún archivo, di que sí a todos los archivos."
 
 #: ../../general/download/index.rst:5
 msgid "Download"
-msgstr ""
+msgstr "Descargar"
 
 #: ../../general/download/index.rst:7
 msgid "There are two ways to download and play Tabletop Club:"
-msgstr ""
+msgstr "Hay dos maneras para descargar y tocar Tabletop Club:"
 
 #: ../../general/download/index.rst:9
 msgid ""
@@ -1557,6 +1984,9 @@ msgid ""
 "executable. This is by far the simplest method, and it is all that most "
 "players need to do."
 msgstr ""
+"Descargando el binario oficial para tu plataforma y ejecutando el "
+"ejecutable. Este es, con mucha diferencia, el método más sencillo, y es todo "
+"lo que la mayoría de los jugadores necesitan hacer."
 
 #: ../../general/download/index.rst:13
 msgid ""
@@ -1565,3 +1995,7 @@ msgid ""
 "built binary, but you'll need to do this if you plan on contributing to the "
 "game code, or you could try it for fun!"
 msgstr ""
+"Descargando el código fuente del repositorio del juego y compilándolo desde "
+"cero. Esto requiere algunos pasos adicionales en comparación con la "
+"ejecución de un binario precompilado, pero tendrás que hacerlo si planeas "
+"contribuir al código del juego, ¡o podrías probarlo por diversión!"
