@@ -144,7 +144,16 @@ func prepare_send_message() -> void:
 				push_error("Quote in arguments was not terminated!")
 				return
 		
-		if cmd == "w" or cmd == "whisper":
+		if cmd == "?" or cmd == "help":
+			if args.size() > 0:
+				push_warning("Unused arguments for /help!")
+			
+			add_raw_message("/?, /help: %s" %
+					tr("Show the list of commands that can be invoked."), false)
+			add_raw_message("/w, /whisper <player> <message>: %s" %
+					tr("Privately send a message to another player."), false)
+		
+		elif cmd == "w" or cmd == "whisper":
 			if args.size() < 2:
 				push_error("Need at least two arguments for /whisper!")
 				return

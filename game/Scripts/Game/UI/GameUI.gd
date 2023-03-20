@@ -163,6 +163,9 @@ func _ready():
 	
 	# Make the save dialog point to the default "saves" folder.
 	_save_dialog.save_dir = Global.get_output_subdir("saves").get_current_dir()
+	
+	add_notification_info(tr("Welcome to Tabletop Club!"))
+	add_notification_info(tr("To view a list of commands, type /? or /help in this chat box."))
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
