@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-20 15:29+0000\n"
-"PO-Revision-Date: 2023-03-12 13:38+0000\n"
+"PO-Revision-Date: 2023-03-20 21:51+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
 "nl/>\n"
@@ -60,11 +60,11 @@ msgstr "Afsluiten"
 
 #: ../Scenes/MainMenu.tscn:96 ../Scenes/MainMenu.tscn:321
 msgid "Import Log"
-msgstr ""
+msgstr "Importlogboek"
 
 #: ../Scenes/MainMenu.tscn:97
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:105
 msgid "Tabletop Club on Itch.io"
@@ -331,11 +331,11 @@ msgstr "Geef aan hoeveel reservekopieën er maximaal mogen worden gemaakt."
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Skip Splash Screen"
-msgstr ""
+msgstr "Geen opstartscherm tonen"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Skips the Godot Engine splash screen when the game starts."
-msgstr ""
+msgstr "Verberg het Godot-opstartscherm van spellen."
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
@@ -1267,7 +1267,7 @@ msgstr "Russisch"
 
 #: ../Scripts/MainMenu.gd:113
 msgid "Spanish"
-msgstr ""
+msgstr "Spaans"
 
 #: ../Scripts/MainMenu.gd:214
 msgid "Room code must be four characters long!"
@@ -1859,19 +1859,19 @@ msgstr "Er wordt teveel tekst verstuurd…"
 
 #: ../Scripts/Game/UI/ChatBox.gd:152
 msgid "Show the list of commands that can be invoked."
-msgstr ""
+msgstr "Toont de lijst met beschikbare opdrachten."
 
 #: ../Scripts/Game/UI/ChatBox.gd:154
 msgid "Privately send a message to another player."
-msgstr ""
+msgstr "Verstuur een privébericht naar een andere speler."
 
 #: ../Scripts/Game/UI/GameUI.gd:167
 msgid "Welcome to Tabletop Club!"
-msgstr ""
+msgstr "Welkom bij Tabletop Club!"
 
 #: ../Scripts/Game/UI/GameUI.gd:168
 msgid "To view a list of commands, type /? or /help in this chat box."
-msgstr ""
+msgstr "Typ /? of /help in deze chat om een lijst met opdrachten te tonen."
 
 #: ../Scripts/Game/UI/GameUI.gd:245
 #, python-format
