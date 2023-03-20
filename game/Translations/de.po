@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-06 16:26+0000\n"
+"POT-Creation-Date: 2023-03-20 15:29+0000\n"
 "PO-Revision-Date: 2023-02-20 21:51+0000\n"
 "Last-Translator: Jummit <jummit@web.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
@@ -20,15 +20,15 @@ msgstr ""
 "X-Generator: Weblate 4.16-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
-#: ../Scenes/ImportAssets.tscn:39
+#: ../Scenes/ImportAssets.tscn:35
 msgid "Importing assets..."
 msgstr "Assets werden importiert…"
 
-#: ../Scenes/ImportAssets.tscn:60
+#: ../Scenes/ImportAssets.tscn:56
 msgid "Missing Asset Folder"
 msgstr "Fehlender Assets-Ordner"
 
-#: ../Scenes/ImportAssets.tscn:66
+#: ../Scenes/ImportAssets.tscn:62
 msgid "Missing Module"
 msgstr "Fehlendes Modul"
 
@@ -36,73 +36,81 @@ msgstr "Fehlendes Modul"
 msgid "Loading..."
 msgstr "Lade…"
 
-#: ../Scenes/MainMenu.tscn:48
+#: ../Scenes/MainMenu.tscn:49
 msgid "Singleplayer"
 msgstr "Einzelspieler"
 
-#: ../Scenes/MainMenu.tscn:55 ../Scenes/MainMenu.tscn:129
-#: ../Scenes/OptionsMenu.tscn:950
+#: ../Scenes/MainMenu.tscn:56 ../Scenes/MainMenu.tscn:139
+#: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
 msgstr "Mehrspieler"
 
-#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:62
+#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:63
 msgid "Options"
 msgstr "Optionen"
 
-#: ../Scenes/MainMenu.tscn:69 ../Scenes/MainMenu.tscn:286
+#: ../Scenes/MainMenu.tscn:70 ../Scenes/MainMenu.tscn:296
 msgid "Credits"
 msgstr "Credits"
 
-#: ../Scenes/MainMenu.tscn:76
+#: ../Scenes/MainMenu.tscn:77
 msgid "Quit"
 msgstr "Beenden"
 
-#: ../Scenes/MainMenu.tscn:95
+#: ../Scenes/MainMenu.tscn:96 ../Scenes/MainMenu.tscn:321
+msgid "Import Log"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:97
+msgid "0"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:105
 msgid "Tabletop Club on Itch.io"
 msgstr "Tabletop Club auf Itch.io"
 
-#: ../Scenes/MainMenu.tscn:104
+#: ../Scenes/MainMenu.tscn:114
 msgid "Source Code"
 msgstr "Quelltext"
 
-#: ../Scenes/MainMenu.tscn:113
+#: ../Scenes/MainMenu.tscn:123
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: ../Scenes/MainMenu.tscn:122 ../Scenes/MainMenu.tscn:217
+#: ../Scenes/MainMenu.tscn:132 ../Scenes/MainMenu.tscn:227
 msgid "Information"
 msgstr "Information"
 
-#: ../Scenes/MainMenu.tscn:147
+#: ../Scenes/MainMenu.tscn:157
 msgid "Host Game"
 msgstr "Spiel erstellen"
 
-#: ../Scenes/MainMenu.tscn:153
+#: ../Scenes/MainMenu.tscn:163
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr ""
 "Erstelle eine Lobby, der deine Freunde über das Internet beitreten können."
 
-#: ../Scenes/MainMenu.tscn:165 ../Scenes/MainMenu.tscn:212
+#: ../Scenes/MainMenu.tscn:175 ../Scenes/MainMenu.tscn:222
 msgid "Join Game"
 msgstr "Spiel beitreten"
 
-#: ../Scenes/MainMenu.tscn:171
+#: ../Scenes/MainMenu.tscn:181
 msgid "Use a room code to join your friend's lobby."
 msgstr "Verwende einen Raum-Code um der Lobby eine*r Freund*in beizutreten."
 
-#: ../Scenes/MainMenu.tscn:177
+#: ../Scenes/MainMenu.tscn:187
 msgid "Enter Room Code"
 msgstr "Raum-Code eingeben"
 
-#: ../Scenes/MainMenu.tscn:197
+#: ../Scenes/MainMenu.tscn:207
 msgid "Room Code:"
 msgstr "Raum-Code:"
 
-#: ../Scenes/MainMenu.tscn:206
+#: ../Scenes/MainMenu.tscn:216
 msgid "ABCD"
 msgstr "ABCD"
 
-#: ../Scenes/MainMenu.tscn:304
+#: ../Scenes/MainMenu.tscn:314
 msgid "Error"
 msgstr "Fehler"
 
@@ -317,7 +325,7 @@ msgstr "Autosave Intervall"
 msgid "Used to set how often autosaves are created."
 msgstr "Legt fest, wie oft automatische Speicherpunkte angelegt werden."
 
-#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:67
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:68
 msgid "5 minutes"
 msgstr "5 Minuten"
 
@@ -332,110 +340,118 @@ msgstr ""
 "werden."
 
 #: ../Scenes/OptionsMenu.tscn:492
+msgid "Skip Splash Screen"
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:500
+msgid "Skips the Godot Engine splash screen when the game starts."
+msgstr ""
+
+#: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
 msgstr "Zeige Systemwarnungen an"
 
-#: ../Scenes/OptionsMenu.tscn:500
+#: ../Scenes/OptionsMenu.tscn:516
 msgid "Displays system warnings in the chat box."
 msgstr "Zeige System-Warnungen im Chatfenster."
 
-#: ../Scenes/OptionsMenu.tscn:509
+#: ../Scenes/OptionsMenu.tscn:525
 msgid "Show System Errors"
 msgstr "Zeige Systemfehler an"
 
-#: ../Scenes/OptionsMenu.tscn:517
+#: ../Scenes/OptionsMenu.tscn:533
 msgid "Displays system errors in the chat box."
 msgstr "Zeige System-Fehler im Chatfenster."
 
-#: ../Scenes/OptionsMenu.tscn:545
+#: ../Scenes/OptionsMenu.tscn:561
 msgid "Opens the assets folder in your file explorer."
 msgstr "Öffnet den Assets-Ordner im Dateimanager."
 
-#: ../Scenes/OptionsMenu.tscn:547
+#: ../Scenes/OptionsMenu.tscn:563
 msgid "Open Assets Folder"
 msgstr "Assets-Ordner öffnen"
 
-#: ../Scenes/OptionsMenu.tscn:563
+#: ../Scenes/OptionsMenu.tscn:579
 msgid "Reimport Assets"
 msgstr "Assets neu importieren"
 
-#: ../Scenes/OptionsMenu.tscn:576
+#: ../Scenes/OptionsMenu.tscn:592
 msgid "Key Bindings"
 msgstr "Tastenbelegungen"
 
-#: ../Scenes/OptionsMenu.tscn:590
+#: ../Scenes/OptionsMenu.tscn:606
 msgid "Move Forward"
 msgstr "Vorwärts bewegen"
 
-#: ../Scenes/OptionsMenu.tscn:597
+#: ../Scenes/OptionsMenu.tscn:613
 msgid "Moves the camera forward."
 msgstr "Bewegt die Kamera vorwärts."
 
-#: ../Scenes/OptionsMenu.tscn:607
+#: ../Scenes/OptionsMenu.tscn:623
 msgid "Move Back"
 msgstr "Rückwärts bewegen"
 
-#: ../Scenes/OptionsMenu.tscn:615
+#: ../Scenes/OptionsMenu.tscn:631
 msgid "Moves the camera backwards."
 msgstr "Bewegt die Kamera rückwärts."
 
-#: ../Scenes/OptionsMenu.tscn:625
+#: ../Scenes/OptionsMenu.tscn:641
 msgid "Move Left"
 msgstr "Links"
 
-#: ../Scenes/OptionsMenu.tscn:633
+#: ../Scenes/OptionsMenu.tscn:649
 msgid "Moves the camera left."
 msgstr "Bewegt die Kamera links."
 
-#: ../Scenes/OptionsMenu.tscn:643
+#: ../Scenes/OptionsMenu.tscn:659
 msgid "Move Right"
 msgstr "Rechts"
 
-#: ../Scenes/OptionsMenu.tscn:651
+#: ../Scenes/OptionsMenu.tscn:667
 msgid "Moves the camera right."
 msgstr "Bewegt die Kamera rechts."
 
-#: ../Scenes/OptionsMenu.tscn:661
+#: ../Scenes/OptionsMenu.tscn:677
 msgid "Rotate Camera"
 msgstr "Kamera drehen"
 
-#: ../Scenes/OptionsMenu.tscn:669
+#: ../Scenes/OptionsMenu.tscn:685
 msgid "Enable rotation of the camera when moving the mouse."
 msgstr "Aktiviert die Drehung der Kamera mit der Maus."
 
-#: ../Scenes/OptionsMenu.tscn:679
+#: ../Scenes/OptionsMenu.tscn:695
 msgid "Reset Camera"
 msgstr "Kamera zurücksetzen"
 
-#: ../Scenes/OptionsMenu.tscn:687
+#: ../Scenes/OptionsMenu.tscn:703
 msgid "Resets the camera to the default position."
 msgstr "Setzt die Kamera auf die Standardposition zurück."
 
-#: ../Scenes/OptionsMenu.tscn:697
+#: ../Scenes/OptionsMenu.tscn:713
 msgid "Zoom In / Lift Piece Down"
 msgstr "Vergrößern / Figur Senken"
 
-#: ../Scenes/OptionsMenu.tscn:705
+#: ../Scenes/OptionsMenu.tscn:721
 msgid "Zoom the camera towards the table, or lift a piece down onto the table."
 msgstr ""
 "Die Kamera an den Tisch heranzoomen, oder eine Figur herunter auf den Tisch "
 "senken."
 
-#: ../Scenes/OptionsMenu.tscn:715
+#: ../Scenes/OptionsMenu.tscn:731
 msgid "Zoom Out / Lift Piece Up"
 msgstr "Herauszoomen / Figur Anheben"
 
-#: ../Scenes/OptionsMenu.tscn:723
+#: ../Scenes/OptionsMenu.tscn:739
 msgid "Zoom the camera away from the table, or lift a piece up from the table."
 msgstr ""
 "Zoomt die Kamera oder das Objekt vom Tisch weg, oder hebt einen Spielstein "
 "vom Tisch hoch."
 
-#: ../Scenes/OptionsMenu.tscn:733
+#: ../Scenes/OptionsMenu.tscn:749
 msgid "Flip Piece Orientation"
 msgstr "Spielstein Umdrehen"
 
-#: ../Scenes/OptionsMenu.tscn:741
+#: ../Scenes/OptionsMenu.tscn:757
 msgid ""
 "Flip the selected piece or the piece the mouse is over on the horizontal "
 "axis."
@@ -443,11 +459,11 @@ msgstr ""
 "Spiegelt den ausgewählten Spielstein oder der über der die Maus ist um die "
 "horizontale Achse."
 
-#: ../Scenes/OptionsMenu.tscn:751
+#: ../Scenes/OptionsMenu.tscn:767
 msgid "Reset Piece Orientation"
 msgstr "Spielstein-Ausrichtung Zurücksetzen"
 
-#: ../Scenes/OptionsMenu.tscn:759
+#: ../Scenes/OptionsMenu.tscn:775
 msgid ""
 "Resets the selected piece or the piece the mouse is over to its default "
 "orientation."
@@ -455,21 +471,21 @@ msgstr ""
 "Setzt die Ausrichtung des ausgewählten Spielsteins oder der über der die "
 "Maus ist auf die Ausgangsposition zurück."
 
-#: ../Scenes/OptionsMenu.tscn:769 ../Scripts/Game/CameraController.gd:1575
+#: ../Scenes/OptionsMenu.tscn:785 ../Scripts/Game/CameraController.gd:1575
 msgid "Rotate Piece"
 msgstr "Figur Drehen"
 
-#: ../Scenes/OptionsMenu.tscn:777
+#: ../Scenes/OptionsMenu.tscn:793
 msgid "Rotates the the piece that is selected, or that the mouse is over."
 msgstr "Rotiert den ausgewählten Spielstein, oder den über der die Maus ist."
 
-#: ../Scenes/OptionsMenu.tscn:787 ../Scripts/Game/CameraController.gd:1208
+#: ../Scenes/OptionsMenu.tscn:803 ../Scripts/Game/CameraController.gd:1208
 #: ../Scripts/Game/CameraController.gd:1528
 #: ../Scripts/Game/CameraController.gd:1583
 msgid "Shuffle"
 msgstr "Mischen"
 
-#: ../Scenes/OptionsMenu.tscn:795
+#: ../Scenes/OptionsMenu.tscn:811
 msgid ""
 "Shuffle stacks of cards or tokens that are selected, or that the mouse is "
 "over."
@@ -477,188 +493,188 @@ msgstr ""
 "Ausgewählte Kartenstapel oder Spielsteine mischen, oder die über der die "
 "Maus ist."
 
-#: ../Scenes/OptionsMenu.tscn:805
+#: ../Scenes/OptionsMenu.tscn:821
 msgid "Lock/Unlock Piece"
 msgstr "Spielstein ent-/sperren"
 
-#: ../Scenes/OptionsMenu.tscn:813
+#: ../Scenes/OptionsMenu.tscn:829
 msgid ""
 "Toggles the lock on the selected piece, fixing its position and rotation."
 msgstr "Sperrt oder Entsperrt die Position und Drehung des Spielsteins."
 
-#: ../Scenes/OptionsMenu.tscn:823
+#: ../Scenes/OptionsMenu.tscn:839
 msgid "Delete Piece"
 msgstr "Spielstein entfernen"
 
-#: ../Scenes/OptionsMenu.tscn:831
+#: ../Scenes/OptionsMenu.tscn:847
 msgid "Deletes the currently selected piece."
 msgstr "Entfernt den ausgewählten Spielstein."
 
-#: ../Scenes/OptionsMenu.tscn:841
+#: ../Scenes/OptionsMenu.tscn:857
 msgid "Toggle Debug Info"
 msgstr "Debug-Info umschalten"
 
-#: ../Scenes/OptionsMenu.tscn:849
+#: ../Scenes/OptionsMenu.tscn:865
 msgid "Toggles whether debug information is displayed."
 msgstr "Blendet Debug-Informationen ein oder aus."
 
-#: ../Scenes/OptionsMenu.tscn:859
+#: ../Scenes/OptionsMenu.tscn:875
 msgid "Quicksave"
 msgstr "Schnellspeichern"
 
-#: ../Scenes/OptionsMenu.tscn:867
+#: ../Scenes/OptionsMenu.tscn:883
 msgid "Creates a quicksave file."
 msgstr "Erstellt einen gespeicherten Spielstand."
 
-#: ../Scenes/OptionsMenu.tscn:877
+#: ../Scenes/OptionsMenu.tscn:893
 msgid "Quickload"
 msgstr "Schnellladen"
 
-#: ../Scenes/OptionsMenu.tscn:885
+#: ../Scenes/OptionsMenu.tscn:901
 msgid "Loads the latest quicksave file."
 msgstr "Lädt den letzten Spielstand."
 
-#: ../Scenes/OptionsMenu.tscn:895
+#: ../Scenes/OptionsMenu.tscn:911
 msgid "Toggle UI"
 msgstr "Bedienelemente anzeigen"
 
-#: ../Scenes/OptionsMenu.tscn:903
+#: ../Scenes/OptionsMenu.tscn:919
 msgid "Toggles whether the entire UI is displayed."
 msgstr "Blendet die gesamten Bedienelemente ein oder aus."
 
-#: ../Scenes/OptionsMenu.tscn:913
+#: ../Scenes/OptionsMenu.tscn:929
 msgid "Take Screenshot"
 msgstr "Bildschirmfoto aufnehmen"
 
-#: ../Scenes/OptionsMenu.tscn:921
+#: ../Scenes/OptionsMenu.tscn:937
 msgid "Takes a screenshot of the game in its current state."
 msgstr "Nimmt ein Bildschirmfoto des Spiels in seinem aktuellen Zustand auf."
 
-#: ../Scenes/OptionsMenu.tscn:936
+#: ../Scenes/OptionsMenu.tscn:952
 msgid "Used to reset the key bindings to their default values."
 msgstr ""
 "Wird verwendet, um die Tastenbelegungen auf ihre Standardwerte "
 "zurückzusetzen."
 
-#: ../Scenes/OptionsMenu.tscn:937 ../Scenes/OptionsMenu.tscn:1397
+#: ../Scenes/OptionsMenu.tscn:953 ../Scenes/OptionsMenu.tscn:1413
 msgid "Reset Bindings"
 msgstr "Tastenbelegungen zurücksetzen"
 
-#: ../Scenes/OptionsMenu.tscn:964 ../Scripts/Game/CameraController.gd:1225
+#: ../Scenes/OptionsMenu.tscn:980 ../Scripts/Game/CameraController.gd:1225
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:185
 msgid "Name"
 msgstr "Name"
 
-#: ../Scenes/OptionsMenu.tscn:971
+#: ../Scenes/OptionsMenu.tscn:987
 msgid "The player's displayed name in multiplayer lobbies."
 msgstr "Der angezeigte Spielername in Multiplayer-Lobbys."
 
-#: ../Scenes/OptionsMenu.tscn:973
+#: ../Scenes/OptionsMenu.tscn:989
 msgid "Player"
 msgstr "Spieler"
 
-#: ../Scenes/OptionsMenu.tscn:981 ../Scripts/Game/CameraController.gd:1336
+#: ../Scenes/OptionsMenu.tscn:997 ../Scripts/Game/CameraController.gd:1336
 msgid "Color"
 msgstr "Farbe"
 
-#: ../Scenes/OptionsMenu.tscn:989
+#: ../Scenes/OptionsMenu.tscn:1005
 msgid "The player's displayed colour in multiplayer lobbies."
 msgstr "Die angezeigte Farbe des Spielers in Multiplayer-Lobbys."
 
-#: ../Scenes/OptionsMenu.tscn:999
+#: ../Scenes/OptionsMenu.tscn:1015
 msgid "Chat Font Size"
 msgstr "Schriftgröße des Chats"
 
-#: ../Scenes/OptionsMenu.tscn:1007
+#: ../Scenes/OptionsMenu.tscn:1023
 msgid "Changes the size of the text in the chat box."
 msgstr "Ändert die Schriftgröße im Chatfenster."
 
-#: ../Scenes/OptionsMenu.tscn:1009 ../Scenes/OptionsMenu.tscn:1140
-#: ../Scripts/OptionsMenu.gd:77
+#: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
+#: ../Scripts/OptionsMenu.gd:78
 msgid "Medium"
 msgstr "Mittel"
 
-#: ../Scenes/OptionsMenu.tscn:1018
+#: ../Scenes/OptionsMenu.tscn:1034
 msgid "Hide Player Cursors"
 msgstr "Spieler-Mauszeiger ausblenden"
 
-#: ../Scenes/OptionsMenu.tscn:1026
+#: ../Scenes/OptionsMenu.tscn:1042
 msgid ""
 "Used to stop showing other player's cursors when in multiplayer lobbies."
 msgstr "Blendet die Mauszeiger der Spieler im Mehrspielermodus aus."
 
-#: ../Scenes/OptionsMenu.tscn:1034
+#: ../Scenes/OptionsMenu.tscn:1050
 msgid "Censor Profanity"
 msgstr "Vulgäre Ausdrücke zensieren"
 
-#: ../Scenes/OptionsMenu.tscn:1042
+#: ../Scenes/OptionsMenu.tscn:1058
 msgid ""
 "Used to censor potentially offensive words in the chat window when in "
 "multiplayer lobbies."
 msgstr "Zensiert vulgäre Ausdrücke im Chatfenster des Mehrspielermodus."
 
-#: ../Scenes/OptionsMenu.tscn:1057
+#: ../Scenes/OptionsMenu.tscn:1073
 msgid "Video"
 msgstr "Video"
 
-#: ../Scenes/OptionsMenu.tscn:1071
+#: ../Scenes/OptionsMenu.tscn:1087
 msgid "Window Mode"
 msgstr "Fenster-Modus"
 
-#: ../Scenes/OptionsMenu.tscn:1078
+#: ../Scenes/OptionsMenu.tscn:1094
 msgid "Sets the mode in which the game window is displayed."
 msgstr "Verändert den Modus in dem das Spielfenster angezeigt wird."
 
-#: ../Scenes/OptionsMenu.tscn:1080 ../Scripts/OptionsMenu.gd:71
+#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:72
 msgid "Windowed"
 msgstr "Fenstermodus"
 
-#: ../Scenes/OptionsMenu.tscn:1089
+#: ../Scenes/OptionsMenu.tscn:1105
 msgid "Field of View"
 msgstr "Sichtfeld"
 
-#: ../Scenes/OptionsMenu.tscn:1097
+#: ../Scenes/OptionsMenu.tscn:1113
 msgid "Sets the field of view of the in-game camera."
 msgstr "Verändert das Sichtfeld der Spielfeldkamera."
 
-#: ../Scenes/OptionsMenu.tscn:1110
+#: ../Scenes/OptionsMenu.tscn:1126
 msgid "VSync"
 msgstr "Vsync"
 
-#: ../Scenes/OptionsMenu.tscn:1129
+#: ../Scenes/OptionsMenu.tscn:1145
 msgid "Shadow Detail"
 msgstr "Schatten Detailgrad"
 
-#: ../Scenes/OptionsMenu.tscn:1149
+#: ../Scenes/OptionsMenu.tscn:1165
 msgid "Multisample Anti-Aliasing (MSAA)"
 msgstr "Multisample Anti-Aliasing (MSAA)"
 
-#: ../Scenes/OptionsMenu.tscn:1161 ../Scenes/OptionsMenu.tscn:1183
-#: ../Scenes/OptionsMenu.tscn:1224 ../Scripts/OptionsMenu.gd:75
+#: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
+#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:76
 msgid "None"
 msgstr "Keine"
 
-#: ../Scenes/OptionsMenu.tscn:1170
+#: ../Scenes/OptionsMenu.tscn:1186
 msgid "Screen Space Ambient Occlusion (SSAO)"
 msgstr "Screen Space Ambient Occlusion (SSAO)"
 
-#: ../Scenes/OptionsMenu.tscn:1192
+#: ../Scenes/OptionsMenu.tscn:1208
 msgid "Skybox Radiance Detail"
 msgstr "Detailgrad des Skybox-Leuchtens"
 
-#: ../Scenes/OptionsMenu.tscn:1203 ../Scripts/OptionsMenu.gd:76
+#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:77
 msgid "Low"
 msgstr "Niedrig"
 
-#: ../Scenes/OptionsMenu.tscn:1212
+#: ../Scenes/OptionsMenu.tscn:1228
 msgid "Depth of Field"
 msgstr "Tiefenschärfe"
 
-#: ../Scenes/OptionsMenu.tscn:1233
+#: ../Scenes/OptionsMenu.tscn:1249
 msgid "Depth of Field Amount"
 msgstr "Tiefenschärfewert"
 
-#: ../Scenes/OptionsMenu.tscn:1241
+#: ../Scenes/OptionsMenu.tscn:1257
 msgid ""
 "Used to determine how much the background is blurred when using depth of "
 "field."
@@ -666,54 +682,54 @@ msgstr ""
 "Verändert den Schärfegrad des Hintergrundes wenn der Tiefenschärfe-Modus "
 "aktiv ist."
 
-#: ../Scenes/OptionsMenu.tscn:1253
+#: ../Scenes/OptionsMenu.tscn:1269
 msgid "Depth of Field Distance"
 msgstr "Tiefenschärfedistanz"
 
-#: ../Scenes/OptionsMenu.tscn:1261
+#: ../Scenes/OptionsMenu.tscn:1277
 msgid ""
 "Used to set the threshold of what is considered the background when using "
 "depth of field."
 msgstr "Schwellwert zur Unterscheidung zwischen Vordergrund und Hintergrund."
 
-#: ../Scenes/OptionsMenu.tscn:1273
+#: ../Scenes/OptionsMenu.tscn:1289
 msgid "Table Paint Filtering"
 msgstr "Farbtabellenfilter"
 
-#: ../Scenes/OptionsMenu.tscn:1296
+#: ../Scenes/OptionsMenu.tscn:1312
 msgid "Back"
 msgstr "Zurück"
 
 #: ../Scenes/Game/CameraController.tscn:410
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:154
-#: ../Scenes/OptionsMenu.tscn:1302
+#: ../Scenes/OptionsMenu.tscn:1318
 msgid "Apply"
 msgstr "Anwenden"
 
 #: ../Scenes/Game/CameraController.tscn:502
 #: ../Scenes/Game/CameraController.tscn:575
 #: ../Scenes/Game/CameraController.tscn:642
-#: ../Scenes/Game/CameraController.tscn:696 ../Scenes/OptionsMenu.tscn:1309
+#: ../Scenes/Game/CameraController.tscn:696 ../Scenes/OptionsMenu.tscn:1325
 msgid "OK"
 msgstr "OK"
 
-#: ../Scenes/OptionsMenu.tscn:1354
+#: ../Scenes/OptionsMenu.tscn:1370
 msgid "Please press a key or button to bind it..."
 msgstr "Zum Zuordnen einen Knopf oder eine Taste betätigen…"
 
-#: ../Scenes/OptionsMenu.tscn:1374
+#: ../Scenes/OptionsMenu.tscn:1390
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: ../Scenes/OptionsMenu.tscn:1381
+#: ../Scenes/OptionsMenu.tscn:1397
 msgid "Keep video settings?"
 msgstr "Videoeinstellungen beibehalten?"
 
-#: ../Scenes/OptionsMenu.tscn:1389
+#: ../Scenes/OptionsMenu.tscn:1405
 msgid "Reimporting Assets"
 msgstr "Assets neu importieren"
 
-#: ../Scenes/OptionsMenu.tscn:1407
+#: ../Scenes/OptionsMenu.tscn:1423
 msgid "Warning!"
 msgstr "Warnung!"
 
@@ -1120,7 +1136,7 @@ msgstr "Paket:"
 msgid "Type:"
 msgstr "Typ:"
 
-#: ../Scripts/AssetDB.gd:394
+#: ../Scripts/AssetDB.gd:417
 msgid "Cleaning old files..."
 msgstr "Säubere alte Dateien..."
 
@@ -1172,25 +1188,25 @@ msgstr "Unbekannte Maustaste"
 msgid "Unknown event type"
 msgstr "Unbekannter Ereignistyp"
 
-#: ../Scripts/ImportAssets.gd:88
+#: ../Scripts/ImportAssets.gd:79
 msgid "Tabletop Club could not find any asset packs in the following folders:"
 msgstr ""
 "Tabletop Club konnte an den folgenden Orten keinen Asset-Pakete finden:"
 
-#: ../Scripts/ImportAssets.gd:90
+#: ../Scripts/ImportAssets.gd:81
 msgid ""
 "Tabletop Club could not find an assets folder in any of the following places:"
 msgstr ""
 "Tabletop Club konnte an keinem der folgenden Orte einen Assets-Ordner finden:"
 
-#: ../Scripts/ImportAssets.gd:96
+#: ../Scripts/ImportAssets.gd:87
 msgid ""
 "Please place an asset pack into one of these folders, and restart the game."
 msgstr ""
 "Bitte platziere ein Asset Paket in einen dieser Ordner und starte das Spiel "
 "neu."
 
-#: ../Scripts/ImportAssets.gd:98
+#: ../Scripts/ImportAssets.gd:89
 msgid "Please create one of these folders and restart the game."
 msgstr "Bitte erstellen Sie einen dieser Ordner und starten Sie das Spiel neu."
 
@@ -1199,79 +1215,83 @@ msgstr "Bitte erstellen Sie einen dieser Ordner und starten Sie das Spiel neu."
 msgid "<No Name>"
 msgstr "<kein Name>"
 
-#: ../Scripts/MainMenu.gd:67
+#: ../Scripts/MainMenu.gd:95
 msgid "Alpha Testers"
 msgstr "Alpha Tester*innen"
 
-#: ../Scripts/MainMenu.gd:68
+#: ../Scripts/MainMenu.gd:96
 msgid "Contributors"
 msgstr "Mitwirkende"
 
-#: ../Scripts/MainMenu.gd:69
+#: ../Scripts/MainMenu.gd:97
 msgid "Cursors"
 msgstr "Zeiger"
 
-#: ../Scripts/MainMenu.gd:70
+#: ../Scripts/MainMenu.gd:98
 msgid "Developers"
 msgstr "Entwickler*innen"
 
-#: ../Scripts/MainMenu.gd:71
+#: ../Scripts/MainMenu.gd:99
 msgid "Fonts"
 msgstr "Schriftarten"
 
-#: ../Scripts/MainMenu.gd:72
+#: ../Scripts/MainMenu.gd:100
 msgid "Images"
 msgstr "Bilder"
 
-#: ../Scripts/MainMenu.gd:73
+#: ../Scripts/MainMenu.gd:101
 msgid "Logo and Icon"
 msgstr "Logo und Icon"
 
-#: ../Scripts/MainMenu.gd:74
+#: ../Scripts/MainMenu.gd:102
 msgid "Sound Effects"
 msgstr "Geräuscheffekte"
 
-#: ../Scripts/MainMenu.gd:75
+#: ../Scripts/MainMenu.gd:103
 msgid "Tool Icons"
 msgstr "Werkzeugsymbole"
 
-#: ../Scripts/MainMenu.gd:76
+#: ../Scripts/MainMenu.gd:104
 msgid "Translators"
 msgstr "Übersetzer*innen"
 
-#: ../Scripts/MainMenu.gd:78
+#: ../Scripts/MainMenu.gd:106
 msgid "Dutch"
 msgstr "Niederländisch"
 
-#: ../Scripts/MainMenu.gd:79
+#: ../Scripts/MainMenu.gd:107
 msgid "Esperanto"
 msgstr "Spanish"
 
-#: ../Scripts/MainMenu.gd:80
+#: ../Scripts/MainMenu.gd:108
 msgid "French"
 msgstr "Französisch"
 
-#: ../Scripts/MainMenu.gd:81
+#: ../Scripts/MainMenu.gd:109
 msgid "German"
 msgstr "Deutsch"
 
-#: ../Scripts/MainMenu.gd:82
+#: ../Scripts/MainMenu.gd:110
 msgid "Italian"
 msgstr "Italienisch"
 
-#: ../Scripts/MainMenu.gd:83
+#: ../Scripts/MainMenu.gd:111
 msgid "Portuguese"
 msgstr "Portugisisch"
 
-#: ../Scripts/MainMenu.gd:84
+#: ../Scripts/MainMenu.gd:112
 msgid "Russian"
 msgstr "Russisch"
 
-#: ../Scripts/MainMenu.gd:185
+#: ../Scripts/MainMenu.gd:113
+msgid "Spanish"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:214
 msgid "Room code must be four characters long!"
 msgstr "Der Raumcode muss vier Zeichen lang sein!"
 
-#: ../Scripts/MainMenu.gd:190
+#: ../Scripts/MainMenu.gd:219
 msgid "Invalid room code!"
 msgstr "Ungültiger Raumcode!"
 
@@ -1279,51 +1299,51 @@ msgstr "Ungültiger Raumcode!"
 msgid "System Default"
 msgstr "Systemvoreinstellung"
 
-#: ../Scripts/OptionsMenu.gd:64
+#: ../Scripts/OptionsMenu.gd:65
 msgid "Never"
 msgstr "Niemals"
 
-#: ../Scripts/OptionsMenu.gd:65
+#: ../Scripts/OptionsMenu.gd:66
 msgid "30 seconds"
 msgstr "30 Sekunden"
 
-#: ../Scripts/OptionsMenu.gd:66
+#: ../Scripts/OptionsMenu.gd:67
 msgid "1 minute"
 msgstr "1 Minute"
 
-#: ../Scripts/OptionsMenu.gd:68
+#: ../Scripts/OptionsMenu.gd:69
 msgid "10 minutes"
 msgstr "10 Minuten"
 
-#: ../Scripts/OptionsMenu.gd:69
+#: ../Scripts/OptionsMenu.gd:70
 msgid "30 minutes"
 msgstr "30 Minuten"
 
-#: ../Scripts/OptionsMenu.gd:72
+#: ../Scripts/OptionsMenu.gd:73
 msgid "Borderless Fullscreen"
 msgstr "Randloser Vollbildmodus"
 
-#: ../Scripts/OptionsMenu.gd:73
+#: ../Scripts/OptionsMenu.gd:74
 msgid "Fullscreen"
 msgstr "Vollbildmodus"
 
-#: ../Scripts/OptionsMenu.gd:78
+#: ../Scripts/OptionsMenu.gd:79
 msgid "High"
 msgstr "Hoch"
 
-#: ../Scripts/OptionsMenu.gd:79
+#: ../Scripts/OptionsMenu.gd:80
 msgid "Very High"
 msgstr "Sehr Hoch"
 
-#: ../Scripts/OptionsMenu.gd:80
+#: ../Scripts/OptionsMenu.gd:81
 msgid "Ultra"
 msgstr "Ultra"
 
-#: ../Scripts/OptionsMenu.gd:82
+#: ../Scripts/OptionsMenu.gd:83
 msgid "Small"
 msgstr "Klein"
 
-#: ../Scripts/OptionsMenu.gd:84
+#: ../Scripts/OptionsMenu.gd:85
 msgid "Large"
 msgstr "Groß"
 
@@ -1853,35 +1873,51 @@ msgstr "Zu schnelle Wiederverbindung."
 msgid "Too much text being sent, waiting..."
 msgstr "Chat-Nachricht zu lang, warte..."
 
-#: ../Scripts/Game/UI/GameUI.gd:242
+#: ../Scripts/Game/UI/ChatBox.gd:152
+msgid "Show the list of commands that can be invoked."
+msgstr ""
+
+#: ../Scripts/Game/UI/ChatBox.gd:154
+msgid "Privately send a message to another player."
+msgstr ""
+
+#: ../Scripts/Game/UI/GameUI.gd:167
+msgid "Welcome to Tabletop Club!"
+msgstr ""
+
+#: ../Scripts/Game/UI/GameUI.gd:168
+msgid "To view a list of commands, type /? or /help in this chat box."
+msgstr ""
+
+#: ../Scripts/Game/UI/GameUI.gd:245
 #, python-format
 msgid "Room Code: [b]%s[/b]"
 msgstr "Raum-Code: [b]%s[/b]"
 
-#: ../Scripts/Game/UI/GameUI.gd:246
+#: ../Scripts/Game/UI/GameUI.gd:249
 msgid "Hide Room Code"
 msgstr "Raum-Code verstecken"
 
-#: ../Scripts/Game/UI/GameUI.gd:248
+#: ../Scripts/Game/UI/GameUI.gd:251
 msgid "Show Room Code"
 msgstr "Raum-Code anzeigen"
 
-#: ../Scripts/Game/UI/GameUI.gd:309
+#: ../Scripts/Game/UI/GameUI.gd:312
 #, python-format
 msgid "%s has joined the game."
 msgstr "%s ist dem Spiel beigetreten."
 
-#: ../Scripts/Game/UI/GameUI.gd:316
+#: ../Scripts/Game/UI/GameUI.gd:319
 #, python-format
 msgid "%s changed their name to %s"
 msgstr "%s änderte seinen*ihren Namen zu %s"
 
-#: ../Scripts/Game/UI/GameUI.gd:321
+#: ../Scripts/Game/UI/GameUI.gd:324
 #, python-format
 msgid "%s has left the game."
 msgstr "%s hat das Spiel verlassen."
 
-#: ../Scripts/Game/UI/GameUI.gd:376
+#: ../Scripts/Game/UI/GameUI.gd:379
 #, fuzzy
 #| msgid "Notebook"
 msgid "View notebook"
