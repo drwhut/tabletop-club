@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="424.2mm" height="454.5mm" version="1.1" viewBox="0 0 424.2 454.5" xmlns="http://www.w3.org/2000/svg">
+ <rect width="424.2" height="454.5" fill="#fca" stroke="#000" stroke-linecap="round" stroke-width="1.3229"/>
+ <g fill="none" stroke="#000" stroke-width="1.3117">
+  <path d="m80.1 13.95v426.6"/>
+  <path d="m102.1 13.95v426.6"/>
+  <path d="m124.1 13.95v426.6"/>
+  <path d="m146.1 13.95v426.6"/>
+  <path d="m168.1 13.95v426.6"/>
+  <path d="m190.1 13.95v426.6"/>
+  <path d="m212.1 13.95v426.6"/>
+  <path d="m234.1 13.95v426.6"/>
+  <path d="m256.1 13.95v426.6"/>
+  <path d="m278.1 13.95v426.6"/>
+  <path d="m300.1 13.95v426.6"/>
+  <path d="m322.1 13.95v426.6"/>
+  <path d="m344.1 13.95v426.6"/>
+  <path d="m366.1 13.95v426.6"/>
+  <path d="m388.1 13.95v426.6"/>
+  <path d="m410.1 13.95v426.6"/>
+  <path d="m14.1 13.95v426.6"/>
+  <path d="m36.1 13.95v426.6"/>
+  <path d="m58.1 13.95v426.6"/>
+ </g>
+ <g fill="none" stroke="#000">
+  <path d="m14.1 13.95 396 3e-6"/>
+  <path d="m14.1 37.65 396 3e-6"/>
+  <path d="m14.1 61.35 396 3e-6"/>
+  <path d="m14.1 85.05 396 3e-6"/>
+  <path d="m14.1 108.75 396 1e-5"/>
+  <path d="m14.1 132.45h396"/>
+  <path d="m14.1 156.15 396 1e-5"/>
+  <path d="m14.1 179.85h396"/>
+  <path d="m14.1 203.55h396"/>
+  <path d="m14.1 227.25h396"/>
+  <path d="m14.1 250.95 396 1e-5"/>
+  <path d="m14.1 274.65h396"/>
+  <path d="m14.1 298.35h396"/>
+  <path d="m14.1 322.05h396"/>
+  <path d="m14.1 345.75 396 1e-5"/>
+  <path d="m14.1 369.45h396"/>
+  <path d="m14.1 393.15h396"/>
+  <path d="m14.1 416.85h396"/>
+  <path d="m14.1 440.55 396 1e-5"/>
+ </g>
+ <g>
+  <circle cx="80.1" cy="85.05" r="2"/>
+  <circle cx="344.1" cy="85.05" r="2"/>
+  <circle cx="344.1" cy="369.45" r="2"/>
+  <circle cx="80.1" cy="369.45" r="2"/>
+  <circle cx="212.1" cy="227.25" r="2"/>
+ </g>
+</svg>

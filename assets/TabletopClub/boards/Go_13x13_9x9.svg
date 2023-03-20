@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="584mm" height="312mm" version="1.1" viewBox="0 0 584 312" xmlns="http://www.w3.org/2000/svg">
+ <rect x="-.20714" y="-.20714" width="291.75" height="311.75" fill="#fca" stroke="#000" stroke-linecap="round" stroke-width=".90864"/>
+ <rect x="291.79" y="-.20713" width="291.75" height="311.75" fill="#fca" stroke="#000" stroke-linecap="round" stroke-width=".90864"/>
+ <g transform="translate(-.43074 -.48075)" fill="none" stroke="#000" stroke-width="1.071">
+  <path d="m80.1 13.95v284.4"/>
+  <path d="m102.1 13.95v284.4"/>
+  <path d="m124.1 13.95v284.4"/>
+  <path d="m146.1 13.95v284.4"/>
+  <path d="m168.1 13.95v284.4"/>
+  <path d="m190.1 13.95v284.4"/>
+  <path d="m212.1 13.95v284.4"/>
+  <path d="m234.1 13.95v284.4"/>
+  <path d="m256.1 13.95v284.4"/>
+  <path d="m278.1 13.95v284.4"/>
+  <path d="m14.1 13.95v284.4"/>
+  <path d="m36.1 13.95v284.4"/>
+  <path d="m58.1 13.95v284.4"/>
+ </g>
+ <g transform="matrix(1 0 0 .66667 335.57 51.569)" fill="none" stroke="#000" stroke-width="1.071">
+  <path d="m80.1 13.95v284.4"/>
+  <path d="m102.1 13.95v284.4"/>
+  <path d="m124.1 13.95v284.4"/>
+  <path d="m146.1 13.95v284.4"/>
+  <path d="m168.1 13.95v284.4"/>
+  <path d="m190.1 13.95v284.4"/>
+  <path d="m14.1 13.95v284.4"/>
+  <path d="m36.1 13.95v284.4"/>
+  <path d="m58.1 13.95v284.4"/>
+ </g>
+ <g transform="translate(-.43074 -.48075)" fill="none" stroke="#000" stroke-width=".8165">
+  <path d="m14.1 13.95 264 3e-6"/>
+  <path d="m14.1 37.65 264 3e-6"/>
+  <path d="m14.1 61.35 264 3e-6"/>
+  <path d="m14.1 85.05 264 3e-6"/>
+  <path d="m14.1 108.75 264 1e-5"/>
+  <path d="m14.1 132.45h264"/>
+  <path d="m14.1 156.15 264 1e-5"/>
+  <path d="m14.1 179.85h264"/>
+  <path d="m14.1 203.55h264"/>
+  <path d="m14.1 227.25h264"/>
+  <path d="m14.1 250.95 264 1e-5"/>
+  <path d="m14.1 274.65h264"/>
+  <path d="m14.1 298.35h264"/>
+ </g>
+ <g transform="matrix(.66667 0 0 1 340.27 46.919)" fill="none" stroke="#000" stroke-width=".8165">
+  <path d="m14.1 13.95 264 3e-6"/>
+  <path d="m14.1 37.65 264 3e-6"/>
+  <path d="m14.1 61.35 264 3e-6"/>
+  <path d="m14.1 85.05 264 3e-6"/>
+  <path d="m14.1 108.75 264 1e-5"/>
+  <path d="m14.1 132.45h264"/>
+  <path d="m14.1 156.15 264 1e-5"/>
+  <path d="m14.1 179.85h264"/>
+  <path d="m14.1 203.55h264"/>
+ </g>
+ <g>
+  <circle cx="79.669" cy="84.569" r="2"/>
+  <circle cx="211.67" cy="84.569" r="2"/>
+  <circle cx="211.67" cy="226.77" r="2"/>
+  <circle cx="79.669" cy="226.77" r="2"/>
+  <circle cx="145.67" cy="155.67" r="2"/>
+  <circle cx="393.67" cy="108.27" r="2"/>
+  <circle cx="481.67" cy="108.27" r="2"/>
+  <circle cx="481.67" cy="203.07" r="2"/>
+  <circle cx="393.67" cy="203.07" r="2"/>
+  <circle cx="437.67" cy="155.67" r="2"/>
+ </g>
+</svg>
