@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 00:02+0000\n"
+"POT-Creation-Date: 2023-03-20 15:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -587,318 +587,326 @@ msgid "If you know which version of Tabletop Club you want to download, check th
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:49
+msgid "If you are struggling to compile Godot, or you simply don't want to, there are pre-built binaries of the Godot fork you can download from its `GitHub repository <https://github.com/drwhut/godot/releases>`_. Once it is running, you can then skip straight to :ref:`downloading-tabletop-club-source`."
+msgstr ""
+
+#: ../../general/download/compiling_from_source.rst:54
+msgid "Please note that these builds are not officially supported, as they are artifacts from the fork's GitHub Actions rather than the official pipeline. Because of this, it is recommended to compile Godot from source instead if at all possible."
+msgstr ""
+
+#: ../../general/download/compiling_from_source.rst:61
 msgid "Compiling Godot"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:51
+#: ../../general/download/compiling_from_source.rst:63
 msgid "The way you compile Godot's source code is exactly how you would normally compile Godot, the documentation of which can be found `here <https://docs.godotengine.org/en/stable/development/compiling/index.html>`_. For convenience, the instructions from the Godot documentation has been taken, modified slightly, and put here for each platform [#godot-doc-license]_."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:57
+#: ../../general/download/compiling_from_source.rst:69
 msgid "For all platforms, you will need *at least* the following:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:59
+#: ../../general/download/compiling_from_source.rst:71
 msgid "`Python 3.5+ <https://www.python.org/downloads/>`_. Make sure Python is added to your ``PATH`` environment variable."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:62
+#: ../../general/download/compiling_from_source.rst:74
 msgid "`SCons 3.0+ <https://www.scons.org/>`_. Once you have Python installed, you can install it by opening a terminal/command prompt and running:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:69
+#: ../../general/download/compiling_from_source.rst:81
 msgid "You can check to see whether you have installed Python and SCons correctly by running:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:79
+#: ../../general/download/compiling_from_source.rst:91
 msgid "Compiling Godot for Windows"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:82
-#: ../../general/download/compiling_from_source.rst:143
-#: ../../general/download/compiling_from_source.rst:209
+#: ../../general/download/compiling_from_source.rst:94
+#: ../../general/download/compiling_from_source.rst:155
+#: ../../general/download/compiling_from_source.rst:221
 msgid "Requirements"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:84
+#: ../../general/download/compiling_from_source.rst:96
 msgid "To compile Godot for Windows, you'll also need the following:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:86
+#: ../../general/download/compiling_from_source.rst:98
 msgid "`Visual Studio Community <https://visualstudio.microsoft.com/vs/community/>`_ version 2017 or later. You'll need to install it with C++ support - if you've already installed Visual Studio without C++ support, you can re-run the installer and click :guilabel:`Modify` to install the C++ tools."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:91
+#: ../../general/download/compiling_from_source.rst:103
 msgid "`MinGW-w64 <http://mingw-w64.org/doku.php>`_ with GCC can be used as an alternative to Visual Studio. You'll need to configure it to use the ``posix`` thread model."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:96
-#: ../../general/download/compiling_from_source.rst:149
-#: ../../general/download/compiling_from_source.rst:285
+#: ../../general/download/compiling_from_source.rst:108
+#: ../../general/download/compiling_from_source.rst:161
+#: ../../general/download/compiling_from_source.rst:297
 msgid "Compiling"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:98
+#: ../../general/download/compiling_from_source.rst:110
 msgid "To compile the engine, open a command prompt, change to the root directory of the engine code (using ``cd``), and run:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:107
-#: ../../general/download/compiling_from_source.rst:296
+#: ../../general/download/compiling_from_source.rst:119
+#: ../../general/download/compiling_from_source.rst:308
 msgid "The ``-j8`` means that SCons will use eight threads to compile Godot. To make compiling faster, it's best to have this number be the same as the number of logical cores in your CPU."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:111
+#: ../../general/download/compiling_from_source.rst:123
 msgid "If it compiles successfully, the result binary will be put in ``godot/bin/`` with the name ``godot.windows.opt.tools.32.exe`` or ``godot.windows.opt.tools.64.exe``. By default, SCons will build a binary matching your CPU architecture, but this can be changed by adding ``bits=64`` or ``bits=32`` to the above command."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:118
+#: ../../general/download/compiling_from_source.rst:130
 msgid "Creating a Visual Studio project"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:120
+#: ../../general/download/compiling_from_source.rst:132
 msgid "If you want to create a Visual Studio solution for compiling Godot instead (which can come in handy if you plan to modify the Godot source code), you can run SCons with the ``vsproj=yes`` parameter added:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:129
-#: ../../general/download/compiling_from_source.rst:185
-#: ../../general/download/compiling_from_source.rst:314
+#: ../../general/download/compiling_from_source.rst:141
+#: ../../general/download/compiling_from_source.rst:197
+#: ../../general/download/compiling_from_source.rst:326
 msgid "Building an export template"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:131
+#: ../../general/download/compiling_from_source.rst:143
 msgid "If you want to compile an export template to export a release build of the game from the editor, you can use the following comamnd:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:140
+#: ../../general/download/compiling_from_source.rst:152
 msgid "Compiling Godot for macOS"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:145
+#: ../../general/download/compiling_from_source.rst:157
 msgid "To compile Godot for macOS, you'll also need `Xcode <https://apps.apple.com/us/app/xcode/id497799835>`_."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:151
+#: ../../general/download/compiling_from_source.rst:163
 msgid "Start a terminal and go to the root directory of the engine code."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:153
+#: ../../general/download/compiling_from_source.rst:165
 msgid "To compile for Intel (x86_64) CPUs, use:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:159
+#: ../../general/download/compiling_from_source.rst:171
 msgid "To compile for Apple Silicon (ARM64) CPUs, use:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:165
+#: ../../general/download/compiling_from_source.rst:177
 msgid "To support both architectures in a single \"Universal 2\" binary, run the above two commands, then use ``lipo`` to bundle them together:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:172
+#: ../../general/download/compiling_from_source.rst:184
 msgid "If it compiles successfully, the result binary will be put in ``godot/bin/``."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:174
+#: ../../general/download/compiling_from_source.rst:186
 msgid "To create an ``.app`` bundle like in the official builds, you need to use the template provided in ``misc/dist/osx_tools.app``:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:187
-#: ../../general/download/compiling_from_source.rst:316
+#: ../../general/download/compiling_from_source.rst:199
+#: ../../general/download/compiling_from_source.rst:328
 msgid "If you want to compile an export template to export a release build of the game from the editor, you can use the following commands:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:206
+#: ../../general/download/compiling_from_source.rst:218
 msgid "Compiling Godot for Linux / \\*BSD"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:211
+#: ../../general/download/compiling_from_source.rst:223
 msgid "To compile Godot for Linux and other Unix systems, you'll also need the following:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:214
+#: ../../general/download/compiling_from_source.rst:226
 msgid "GCC 7+ or Clang 6+."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:215
+#: ../../general/download/compiling_from_source.rst:227
 msgid "pkg-config."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:216
+#: ../../general/download/compiling_from_source.rst:228
 msgid "X11, Xcursor, Ximerama, Xi and XRandR development libraries."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:217
+#: ../../general/download/compiling_from_source.rst:229
 msgid "MesaGL development libraries."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:218
+#: ../../general/download/compiling_from_source.rst:230
 msgid "ALSA development libraries."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:219
+#: ../../general/download/compiling_from_source.rst:231
 msgid "PulseAudio development libraries."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:222
+#: ../../general/download/compiling_from_source.rst:234
 msgid "Distro-specific one-liners"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:225
+#: ../../general/download/compiling_from_source.rst:237
 msgid "**Alpine Linux**"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:230
+#: ../../general/download/compiling_from_source.rst:242
 msgid "**Arch Linux**"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:235
+#: ../../general/download/compiling_from_source.rst:247
 msgid "**Debian** / **Ubuntu**"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:240
+#: ../../general/download/compiling_from_source.rst:252
 msgid "**Fedora**"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:246
+#: ../../general/download/compiling_from_source.rst:258
 msgid "**FreeBSD**"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:252
+#: ../../general/download/compiling_from_source.rst:264
 msgid "**Gentoo**"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:257
+#: ../../general/download/compiling_from_source.rst:269
 msgid "**Mageia**"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:263
+#: ../../general/download/compiling_from_source.rst:275
 msgid "**OpenBSD**"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:267
+#: ../../general/download/compiling_from_source.rst:279
 msgid "**openSUSE**"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:272
+#: ../../general/download/compiling_from_source.rst:284
 msgid "**NetBSD**"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:276
+#: ../../general/download/compiling_from_source.rst:288
 msgid "For audio support, you can optionally install ``pulseaudio``."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:278
+#: ../../general/download/compiling_from_source.rst:290
 msgid "**Solus**"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:287
+#: ../../general/download/compiling_from_source.rst:299
 msgid "To compile the engine, open a terminal, change to the root directory of the engine code, and run:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:300
+#: ../../general/download/compiling_from_source.rst:312
 msgid "If it compiles successfully, the result binary will be put in ``godot/bin/`` with the name ``godot.x11.opt.tools.32`` or ``godot.x11.opt.tools.64``. By default, SCons will build a binary matching your CPU architecture, but this can be changed by adding ``bits=64`` or ``bits=32`` to the above command."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:307
+#: ../../general/download/compiling_from_source.rst:319
 msgid "If you want to compile using Clang instead of GCC, use this command:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:326
+#: ../../general/download/compiling_from_source.rst:340
 msgid "Downloading Tabletop Club"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:328
+#: ../../general/download/compiling_from_source.rst:342
 msgid "To download the Tabletop Club Godot project, you can either download a compressed copy of the source code for a particular version from the `releases <https://github.com/drwhut/tabletop-club/releases>`_ page on GitHub and extract it, or if you're feeling very adventurous, you can download the latest source code on the ``master`` branch by running this command:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:340
+#: ../../general/download/compiling_from_source.rst:354
 msgid "Downloading the WebRTC GDNative plugin"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:342
+#: ../../general/download/compiling_from_source.rst:356
 msgid "Since the multiplayer for Tabletop Club uses WebRTC, you'll need to download the WebRTC plugin for Godot. You can follow these instructions to setup the plugin:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:346
+#: ../../general/download/compiling_from_source.rst:360
 msgid "Download the latest release (not a pre-release!) of the plugin from `the repository <https://github.com/godotengine/webrtc-native/releases>`_. Make sure to download the ``webrtc-native-release`` file rather than the ``webrtc-native-debug`` file."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:351
+#: ../../general/download/compiling_from_source.rst:365
 msgid "Open the compressed file, and place the ``webrtc/`` folder into ``tabletop-club/game/``. Afterwards, there should be a file at ``tabletop-club/game/webrtc/webrtc.tres``."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:357
+#: ../../general/download/compiling_from_source.rst:371
 msgid "Running Tabletop Club in the Godot editor"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:359
+#: ../../general/download/compiling_from_source.rst:373
 msgid "To open Godot's project manager, run the executable you compiled in ``godot/bin/``. You can then import the project by clicking the :guilabel:`Import` button and selecting the ``tabletop-club/game/project.godot`` file. Now you can open the project and play the game by pressing the play button in the top-right corner (or by pressing F5)!"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:365
+#: ../../general/download/compiling_from_source.rst:379
 msgid "At this point, you can modify the game to your heart's content! Have a look at the scenes and scripts, try tweaking things here and there, or maybe try and add some stuff of your own?"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:371
+#: ../../general/download/compiling_from_source.rst:385
 msgid "Exporting the game"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:373
+#: ../../general/download/compiling_from_source.rst:387
 msgid "You can export the game with the editor to make it so you don't need to run the game through the editor to play it. Here's how you can export the project:"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:376
+#: ../../general/download/compiling_from_source.rst:390
 msgid "Click on :guilabel:`Project` > :guilabel:`Export...`"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:377
+#: ../../general/download/compiling_from_source.rst:391
 msgid "In the pop-up, click :guilabel:`Add...`, and select your platform."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:378
+#: ../../general/download/compiling_from_source.rst:392
 msgid "In the menu on the right, set the debug template to point to the editor executable, and if you made a release template, set that as well."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:383
+#: ../../general/download/compiling_from_source.rst:397
 msgid "If you are on macOS, then you will need to disable library validation as shown below. This is in order to prevent the system from checking the WebRTC library, which stops it from loading."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:390
+#: ../../general/download/compiling_from_source.rst:404
 msgid "Click :guilabel:`Export project`, choose where you want to export the project and whether you want to export a debug or a release binary, then click :guilabel:`Save`."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:393
+#: ../../general/download/compiling_from_source.rst:407
 msgid "Copy the ``tabletop-club/assets/`` folder next to the exported binary, so the game has assets to import."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:398
+#: ../../general/download/compiling_from_source.rst:412
 msgid "On macOS, you'll need to put this folder inside the ``.app`` package, specifically in ``Tabletop Club.app/Contents/Resources``."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:401
+#: ../../general/download/compiling_from_source.rst:415
 msgid "Now, you should be able to launch the exported executable and play the game directly!"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:408
+#: ../../general/download/compiling_from_source.rst:422
 msgid "Why did you fork Godot?"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:410
+#: ../../general/download/compiling_from_source.rst:424
 msgid "There's actually just one reason for this: there was a feature that I knew existed in Godot, but it was not exposed to the in-built scripting language GDScript, and the functionality wasn't included in release templates."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:414
+#: ../../general/download/compiling_from_source.rst:428
 msgid "When the game starts, the first thing it does is it scans certain folders for asset packs, and if it finds any, the game will then import assets from those packs. The way the game imports assets is almost identical to how Godot imports assets in the editor. It's possible because of `a custom module <https://github.com/drwhut/tabletop_club_godot_module>`_ I made that takes advantage of the importing code that already exists for the editor, and it allows me to import assets like textures and 3D models from anywhere on the filesystem using just one function in GDScript."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:423
+#: ../../general/download/compiling_from_source.rst:437
 msgid "However, a problem occured when compiling Godot with this module as a release template - the compiled editor code was not included in the release templates, so the custom module had no idea what \"importing\" meant. This meant I had to tweak some of the editor code and the SCons build script to include the importing code in release builds, while stopping compiler/runtime errors from happening since the code was suddenly disconnected from the rest of the editor."
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:431
+#: ../../general/download/compiling_from_source.rst:445
 msgid "Footnotes"
 msgstr ""
 
-#: ../../general/download/compiling_from_source.rst:432
+#: ../../general/download/compiling_from_source.rst:446
 msgid "`The Godot documentation <https://docs.godotengine.org>`_ is from Juan Linietsky, Ariel Manzur and the Godot community, and it is licensed under the `CC-BY 3.0 License <https://creativecommons.org/licenses/by/3.0/>`_."
 msgstr ""
 
