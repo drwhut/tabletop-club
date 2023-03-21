@@ -506,7 +506,7 @@ remotesync func flip_table(camera_basis: Basis) -> void:
 	# get blocked.
 	for piece in _pieces.get_children():
 		if piece is Piece:
-			piece.mode = RigidBody.MODE_RIGID
+			piece.unlock()
 
 	_table_body.mode = RigidBody.MODE_RIGID
 
