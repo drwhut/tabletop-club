@@ -820,8 +820,6 @@ autowrap = true
 [connection signal="pressed" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPlayStopButton" to="." method="_on_SpeakerPlayStopButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/HBoxContainer/SpeakerPauseButton" to="." method="_on_SpeakerPauseButton_pressed"]
 [connection signal="toggled" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerPositionalButton" to="." method="_on_SpeakerPositionalButton_toggled"]
-[connection signal="mouse_entered" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_mouse_exited"]
 [connection signal="value_changed" from="CanvasLayer/PieceContextMenu/SpeakerMenu/VBoxContainer/SpeakerVolumeSlider" to="." method="_on_SpeakerVolumeSlider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/PieceContextMenu/TakeOffTopMenu/TakeOffTopSpinBoxButton" to="." method="_on_TakeOffTopSpinBoxButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/PieceContextMenu/TakeOutMenu/TakeOutSpinBoxButton" to="." method="_on_TakeOutSpinBoxButton_pressed"]

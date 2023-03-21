@@ -227,7 +227,7 @@ var _send_erase_position = false
 var _send_paint_position = false
 var _spawn_point_position = Vector3()
 var _speaker_connected: SpeakerPiece = null
-var _speaker_volume_mouse_over = false
+var _speaker_ignore_control_signals = false
 var _stackable_piece_multi_context: StackablePiece = null
 var _target_zoom = 0.0
 var _timer_connected: TimerPiece = null
@@ -1073,8 +1073,7 @@ func _on_speaker_track_resumed() -> void:
 	_set_speaker_controls()
 
 func _on_speaker_unit_size_changed(_unit_size: float) -> void:
-	if not _speaker_volume_mouse_over:
-		_set_speaker_controls()
+	_set_speaker_controls()
 
 func _on_timer_mode_changed(_new_mode: int) -> void:
 	_set_timer_controls()
@@ -1732,6 +1731,8 @@ func _set_debug_info_label() -> void:
 # Set the properties of controls relating to the selected speaker.
 func _set_speaker_controls() -> void:
 	if _speaker_connected:
+		_speaker_ignore_control_signals = true
+		
 		if _speaker_pause_button:
 			_speaker_pause_button.disabled = true
 			_speaker_pause_button.text = tr("Pause track")
@@ -1762,6 +1763,8 @@ func _set_speaker_controls() -> void:
 		if _speaker_volume_slider:
 			_speaker_volume_slider.editable = _speaker_connected.is_positional()
 			_speaker_volume_slider.value = _speaker_connected.get_unit_size()
+		
+		_speaker_ignore_control_signals = false
 
 # Set the properties of controls relating to the selected timer.
 func _set_timer_controls() -> void:
@@ -2571,6 +2574,9 @@ func _on_SortMenu_id_pressed(id: int):
 				stack.rpc_id(1, "request_sort", key)
 
 func _on_SpeakerPauseButton_pressed():
+	if _speaker_ignore_control_signals:
+		return
+	
 	if _speaker_connected:
 		if _speaker_connected.is_track_paused():
 			_speaker_connected.rpc_id(1, "request_resume_track")
@@ -2578,6 +2584,9 @@ func _on_SpeakerPauseButton_pressed():
 			_speaker_connected.rpc_id(1, "request_pause_track")
 
 func _on_SpeakerPlayStopButton_pressed():
+	if _speaker_ignore_control_signals:
+		return
+	
 	if _speaker_connected:
 		if _speaker_connected.is_playing_track():
 			_speaker_connected.rpc_id(1, "request_stop_track")
@@ -2585,19 +2594,19 @@ func _on_SpeakerPlayStopButton_pressed():
 			_speaker_connected.rpc_id(1, "request_play_track")
 
 func _on_SpeakerPositionalButton_toggled(button_pressed: bool):
+	if _speaker_ignore_control_signals:
+		return
+	
 	if _speaker_connected:
 		_speaker_connected.rpc_id(1, "request_set_positional", button_pressed)
 
 func _on_SpeakerSelectTrackButton_pressed():
 	_track_dialog.popup_centered()
 
-func _on_SpeakerVolumeSlider_mouse_entered():
-	_speaker_volume_mouse_over = true
-
-func _on_SpeakerVolumeSlider_mouse_exited():
-	_speaker_volume_mouse_over = false
-
 func _on_SpeakerVolumeSlider_value_changed(value: float):
+	if _speaker_ignore_control_signals:
+		return
+	
 	if _speaker_connected:
 		_speaker_connected.rpc_id(1, "request_set_unit_size", value)
 
