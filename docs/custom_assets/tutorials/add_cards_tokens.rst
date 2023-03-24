@@ -112,12 +112,12 @@ choice! Here are a few examples of how to set the size of your objects:
 
    ; You can also set the size of all objects in one go using a wildcard:
    [*]
-   scale = Vector3(6.0, 1.0, 8.0)
+   scale = Vector2(6.0, 8.0)
 
 .. note::
 
-   Cards are always the same thickness, so the second number in the ``scale``
-   property can just be ``1.0`` in this case.
+   Cards are always the same thickness, so the ``scale`` for cards is always a
+   ``Vector2`` containing two numbers, rather than a ``Vector3``.
 
 
 Configuring card backs
@@ -132,7 +132,7 @@ for the back face of cards. Using ``Back.png`` as an example:
    
    ; Using the scale from before...
    [*]
-   scale = Vector3(6.0, 1.0, 8.0)
+   scale = Vector2(6.0, 8.0)
 
    ; This line adds the back face for all cards, including Back.png!
    back_face = "Back.png"

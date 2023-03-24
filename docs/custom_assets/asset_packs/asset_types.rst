@@ -156,9 +156,9 @@ Speaker
 .. image:: examples/speaker.jpg
    :alt: By the corner of the table is a large, metallic gramophone.
 
-Speakers are objects that can play audio tracks. They emit sound positionally,
-so the audio will vary depending on the position of the speaker relative to the
-camera.
+Speakers are objects that can play audio tracks. They can be configured to emit
+sound positionally, so the audio will vary depending on the position of the
+speaker relative to the camera.
 
 
 .. _object-type-timer:
