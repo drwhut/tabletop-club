@@ -196,6 +196,7 @@ window/stretch/aspect="expand"
 
 [editor]
 
+main_run_args="--base-asset-dir .."
 script_templates_search_path="res://Scripts/Templates"
 
 [gdnative]

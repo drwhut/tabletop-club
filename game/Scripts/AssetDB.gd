@@ -35,8 +35,7 @@ enum {
 }
 
 const ASSET_DIR_PREFIXES = [
-	".",
-	"..",
+	"{BASE_ASSET_DIR}",
 	"{EXEC_DIR}/../Resources", # macOS workaround.
 	"{DOWNLOADS}/TabletopClub",
 	"{DOCUMENTS}/TabletopClub",
@@ -188,8 +187,31 @@ func get_asset_paths() -> Array:
 	if desktop_dir.empty():
 		desktop_dir = "."
 	
+	var args = OS.get_cmdline_args()
+	var base_asset_dir_index = -1
+	for index in range(args.size()):
+		if args[index] == "--base-asset-dir":
+			base_asset_dir_index = index
+			break
+	
+	var base_asset_dir: String = "."
+	if base_asset_dir_index >= 0:
+		if base_asset_dir_index < args.size() - 1:
+			var dir_path: String = args[base_asset_dir_index + 1]
+			
+			var dir_test = Directory.new()
+			if dir_test.dir_exists(dir_path):
+				dir_path = dir_path.trim_suffix("/")
+				dir_path = dir_path.trim_suffix("\\")
+				base_asset_dir = dir_path
+			else:
+				push_error("Directory '%s' does not exist!" % dir_path)
+		else:
+			push_error("No path given for --base-asset-dir!")
+	
 	for prefix in ASSET_DIR_PREFIXES:
 		var path = prefix + "/assets"
+		path = path.replace("{BASE_ASSET_DIR}", base_asset_dir)
 		path = path.replace("{EXEC_DIR}", exec_dir)
 		path = path.replace("{DOWNLOADS}", downloads_dir)
 		path = path.replace("{DOCUMENTS}", documents_dir)
