@@ -28,6 +28,7 @@ enum {
 
 signal about_to_save_table()
 signal applying_options(config)
+signal clear_paint()
 signal clear_pieces()
 signal flipping_table()
 signal leaving_room()
@@ -146,6 +147,8 @@ func set_flip_table_status(flip_table_status: bool) -> void:
 	_clear_table_button.disabled = flip_table_status
 
 func _ready():
+	_clear_table_dialog.add_button(tr("Clear Paint"), false, "clear_paint")
+	
 	Lobby.connect("player_added", self, "_on_Lobby_player_added")
 	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
 	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
@@ -258,6 +261,13 @@ func _on_ClearTableButton_pressed():
 
 func _on_ClearTableConfirmDialog_confirmed():
 	emit_signal("clear_pieces")
+
+func _on_ClearTableConfirmDialog_custom_action(action: String):
+	if action == "clear_paint":
+		_clear_table_dialog.visible = false
+		emit_signal("clear_paint")
+	else:
+		push_error("Unknown custom action '%s'!" % action)
 
 func _on_DesktopButton_pressed():
 	emit_signal("leaving_room")

@@ -96,6 +96,17 @@ remotesync func push_paint_queue(pos1: Vector3, pos2: Vector3, color: Color, siz
 		"size": adjusted_size
 	})
 
+# Request the server to clear the paint.
+master func request_clear_paint() -> void:
+	rpc("clear_paint_rpc")
+
+# Called by the server to clear the paint.
+remotesync func clear_paint_rpc() -> void:
+	if get_tree().get_rpc_sender_id() != 1:
+		return
+	
+	clear_paint()
+
 # Request the server to add a paint command to the paint queue.
 # pos1: The initial global position to paint from.
 # pos2: The final global position to paint to.

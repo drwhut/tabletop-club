@@ -261,6 +261,7 @@ visible = false
 [connection signal="setting_skybox" from="CanvasLayer/RoomDialog" to="." method="_on_RoomDialog_setting_skybox"]
 [connection signal="setting_table" from="CanvasLayer/RoomDialog" to="." method="_on_RoomDialog_setting_table"]
 [connection signal="confirmed" from="CanvasLayer/ClearTableConfirmDialog" to="." method="_on_ClearTableConfirmDialog_confirmed"]
+[connection signal="custom_action" from="CanvasLayer/ClearTableConfirmDialog" to="." method="_on_ClearTableConfirmDialog_custom_action"]
 [connection signal="pressed" from="CanvasLayer/GameMenuBackground/CenterContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameMenuBackground/CenterContainer/VBoxContainer/SaveGameButton" to="." method="_on_SaveGameButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameMenuBackground/CenterContainer/VBoxContainer/LoadGameButton" to="." method="_on_LoadGameButton_pressed"]

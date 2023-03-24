@@ -2756,6 +2756,12 @@ func _on_CameraController_spawning_piece_in_container(container_name: String):
 func _on_CameraController_stack_collect_all_requested(stack: Stack, collect_stacks: bool):
 	rpc_id(1, "request_stack_collect_all", stack.name, collect_stacks)
 
+func _on_GameUI_clear_paint():
+	if not _paint_plane.is_inside_tree():
+		return
+	
+	_paint_plane.rpc_id(1, "request_clear_paint")
+
 func _on_GameUI_clear_pieces():
 	var piece_names = []
 	for piece in _pieces.get_children():

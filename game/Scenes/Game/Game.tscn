@@ -205,6 +205,7 @@ script = ExtResource( 4 )
 [connection signal="undo_stack_pushed" from="Room" to="GameUI" method="_on_Room_undo_stack_pushed"]
 [connection signal="about_to_save_table" from="GameUI" to="." method="_on_GameUI_about_to_save_table"]
 [connection signal="applying_options" from="GameUI" to="." method="_on_GameUI_applying_options"]
+[connection signal="clear_paint" from="GameUI" to="Room" method="_on_GameUI_clear_paint"]
 [connection signal="clear_pieces" from="GameUI" to="Room" method="_on_GameUI_clear_pieces"]
 [connection signal="flipping_table" from="GameUI" to="." method="_on_GameUI_flipping_table"]
 [connection signal="leaving_room" from="GameUI" to="." method="_on_GameUI_leaving_room"]
