@@ -2665,10 +2665,12 @@ func _on_TimerPauseButton_pressed():
 		else:
 			_timer_connected.rpc_id(1, "request_pause_timer")
 
-func _on_TrackDialog_entry_requested(_pack: String, type: String, entry: Dictionary):
+func _on_TrackDialog_entry_requested(_pack: String, _type: String, entry: Dictionary):
 	_track_dialog.visible = false
 	if _speaker_connected:
-		var music = (type == "MUSIC")
+		var entry_path: String = entry["entry_path"]
+		var type_name: String = entry_path.split("/", false, 1)[1]
+		var music: bool = (type_name.begins_with("music"))
 		_speaker_connected.rpc_id(1, "request_set_track", entry, music)
 	else:
 		push_warning("Don't know which speaker to set track for, doing nothing.")
