@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-20 15:31\n"
-"PO-Revision-Date: 2023-02-21 22:37+0000\n"
-"Last-Translator: Jummit <jummit@web.de>\n"
+"PO-Revision-Date: 2023-03-26 15:38+0000\n"
+"Last-Translator: Piet Lu <f-gutzeit@freenet.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/de/>\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -31,19 +31,19 @@ msgstr "Ein Schachbrett mit 8x8 Feldern."
 
 #: ../TabletopClub/boards/Go_Board_(Large):1
 msgid "Go Board (Large)"
-msgstr ""
+msgstr "Go Spielbrett (Groß)"
 
 #: ../TabletopClub/boards/Go_Board_(Large):2
 msgid "A 19x19 Goban."
-msgstr ""
+msgstr "Ein 19x19 Go-Spielbrett."
 
 #: ../TabletopClub/boards/Go_Board_(Small):1
 msgid "Go Board (Small)"
-msgstr ""
+msgstr "Go Spielbrett (Klein)"
 
 #: ../TabletopClub/boards/Go_Board_(Small):2
 msgid "A 13x13 and 9x9 Goban."
-msgstr ""
+msgstr "Ein 13x13 und 9x9 Go-Spielbrett."
 
 #: ../TabletopClub/cards/52-Card_Deck:1
 msgid "52-Card Deck"
