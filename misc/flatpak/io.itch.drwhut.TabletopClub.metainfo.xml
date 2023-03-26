@@ -25,6 +25,14 @@
       You can also help contribute to the game! From submitting code and assets, to suggesting ideas, translating the project, or even finding bugs, there&apos;s a lot of ways that you can help make the game better and more accessible.
     </p>
   </description>
+
+  <url type="homepage">https://drwhut.itch.io/tabletop-club</url>
+  <url type="bugtracker">https://github.com/drwhut/tabletop-club/issues</url>
+  <url type="faq">https://tabletop-club.readthedocs.io/en/latest/general/about.html#frequently-asked-questions</url>
+  <url type="help">https://tabletop-club.readthedocs.io/en/latest/index.html</url>
+  <url type="donation">https://drwhut.itch.io/tabletop-club</url>
+  <url type="translate">https://hosted.weblate.org/engage/tabletop-club/</url>
+  <url type="contribute">https://tabletop-club.readthedocs.io/en/latest/general/contributing/ways_to_contribute.html</url>
   
   <launchable type="desktop-id">io.itch.drwhut.TabletopClub.desktop</launchable>
   <screenshots>
@@ -37,7 +45,19 @@
     <screenshot>
       <image>https://img.itch.zone/aW1hZ2UvMTYwMjM5My8xMDU0MjAxNS5wbmc=/original/GKLYCF.png</image>
     </screenshot>
+    <screenshot>
+      <image>https://img.itch.zone/aW1hZ2UvMTYwMjM5My8xMDU0MjAxNC5wbmc=/original/KI92bw.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://img.itch.zone/aW1hZ2UvMTYwMjM5My8xMDU0MjAxNy5wbmc=/original/weI%2FrN.png</image>
+    </screenshot>
   </screenshots>
+
+  <!--
+  <releases>
+    
+  </releases>
+  -->
 
   <content_rating type="oars-1.0">
     <content_attribute id="social-chat">moderate</content_attribute>
