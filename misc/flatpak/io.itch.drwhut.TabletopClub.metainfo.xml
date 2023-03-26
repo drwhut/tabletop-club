@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.itch.drwhut.TabletopClub</id>
+  
+  <name>Tabletop Club</name>
+  <summary>Play tabletop games in a physics-based 3D sandbox</summary>
+  
+  <metadata_license>CC-BY-SA-4.0</metadata_license>
+  <project_license>MIT</project_license>
+  
+  <description>
+    <p>
+      In Tabletop Club, you are given a box of toys to play with, and it&apos;s up to you what you do with them! Sure, you can play board games, but why not make a house made of dice, then frisbee it with a poker chip? Draw on the table while waiting for your opponent to make a move in chess, or flip the table into deep space after losing an all-in bet? The table is your oyster!
+    </p>
+    <p>
+      You can play online with friends in the click of a button, no login or sign-up required! Simply host a game, and share the room code with your friends. You can also play singleplayer, with no internet connection required.
+    </p>
+    <p>
+      Do you have a D&amp;D campaign in mind? Want to command an army in Warhammer? Or is there another board game you want to play? Luckily, the game uses a modular and easy-to-use asset pack system that makes it really quick to import your images, models, music, and more!
+    </p>
+    <p>
+      The game is completely free to play, and the source code is available on GitHub!
+    </p>
+    <p>
+      You can also help contribute to the game! From submitting code and assets, to suggesting ideas, translating the project, or even finding bugs, there&apos;s a lot of ways that you can help make the game better and more accessible.
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">io.itch.drwhut.TabletopClub.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://img.itch.zone/aW1hZ2UvMTYwMjM5My8xMDU0MjAxMy5wbmc=/original/vlCQUL.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://img.itch.zone/aW1hZ2UvMTYwMjM5My8xMDU0MjAxNi5wbmc=/original/NTGyyx.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://img.itch.zone/aW1hZ2UvMTYwMjM5My8xMDU0MjAxNS5wbmc=/original/GKLYCF.png</image>
+    </screenshot>
+  </screenshots>
+
+  <content_rating type="oars-1.0">
+    <content_attribute id="social-chat">moderate</content_attribute>
+    <content_attribute id="social-info">mild</content_attribute>
+  </content_rating>
+</component>

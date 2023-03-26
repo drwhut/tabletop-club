@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Tabletop Club
+Comment=Play tabletop games in a physics-based 3D sandbox
+Categories=Game;BoardGame;
+
+Icon=io.itch.drwhut.TabletopClub
+Exec=tabletop-club --main-pack /app/share/TabletopClub/TabletopClub.pck --base-asset-dir /app/share/TabletopClub
+Terminal=false
