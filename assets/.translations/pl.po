@@ -9,106 +9,110 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-20 15:31\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-03-28 02:40+0000\n"
+"Last-Translator: Arek Dymalski <arkadiusz.dymalski@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/tabletop-club/"
+"default-asset-pack/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.17-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
 msgid "Chess Board"
-msgstr ""
+msgstr "Szachownica"
 
 #: ../TabletopClub/boards/Chess_Board:2
 msgid "An 8x8 Chess board."
-msgstr ""
+msgstr "Szachownica 8x8."
 
 #: ../TabletopClub/boards/Go_Board_(Large):1
 msgid "Go Board (Large)"
-msgstr ""
+msgstr "Plansza do GO (duża)"
 
 #: ../TabletopClub/boards/Go_Board_(Large):2
 msgid "A 19x19 Goban."
-msgstr ""
+msgstr "Goban 19x19."
 
 #: ../TabletopClub/boards/Go_Board_(Small):1
 msgid "Go Board (Small)"
-msgstr ""
+msgstr "Plansza do GO (Mała)"
 
 #: ../TabletopClub/boards/Go_Board_(Small):2
 msgid "A 13x13 and 9x9 Goban."
-msgstr ""
+msgstr "Goban 13x13 i 9x9."
 
 #: ../TabletopClub/cards/52-Card_Deck:1
 msgid "52-Card Deck"
-msgstr ""
+msgstr "Talia 52 kart"
 
 #: ../TabletopClub/cards/52-Card_Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr ""
+msgstr "Talia kart rozmiaru pokerowego, o francuskich kolorach, bez jokerów."
 
 #: ../TabletopClub/cards/Ace_of_Clubs:1
 msgid "Ace of Clubs"
-msgstr ""
+msgstr "As Trefl"
 
 #: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2 ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2 ../TabletopClub/cards/Eight_of_Clubs:2 ../TabletopClub/cards/Eight_of_Diamonds:2 ../TabletopClub/cards/Eight_of_Hearts:2 ../TabletopClub/cards/Eight_of_Spades:2 ../TabletopClub/cards/Five_of_Clubs:2 ../TabletopClub/cards/Five_of_Diamonds:2 ../TabletopClub/cards/Five_of_Hearts:2 ../TabletopClub/cards/Five_of_Spades:2 ../TabletopClub/cards/Four_of_Clubs:2 ../TabletopClub/cards/Four_of_Diamonds:2 ../TabletopClub/cards/Four_of_Hearts:2 ../TabletopClub/cards/Four_of_Spades:2 ../TabletopClub/cards/Jack_of_Clubs:2 ../TabletopClub/cards/Jack_of_Diamonds:2 ../TabletopClub/cards/Jack_of_Hearts:2 ../TabletopClub/cards/Jack_of_Spades:2 ../TabletopClub/cards/Joker_Black:2 ../TabletopClub/cards/Joker_Red:2 ../TabletopClub/cards/King_of_Clubs:2 ../TabletopClub/cards/King_of_Diamonds:2 ../TabletopClub/cards/King_of_Hearts:2 ../TabletopClub/cards/King_of_Spades:2 ../TabletopClub/cards/Nine_of_Clubs:2 ../TabletopClub/cards/Nine_of_Diamonds:2 ../TabletopClub/cards/Nine_of_Hearts:2 ../TabletopClub/cards/Nine_of_Spades:2 ../TabletopClub/cards/Queen_of_Clubs:2 ../TabletopClub/cards/Queen_of_Diamonds:2 ../TabletopClub/cards/Queen_of_Hearts:2 ../TabletopClub/cards/Queen_of_Spades:2 ../TabletopClub/cards/Seven_of_Clubs:2 ../TabletopClub/cards/Seven_of_Diamonds:2 ../TabletopClub/cards/Seven_of_Hearts:2 ../TabletopClub/cards/Seven_of_Spades:2 ../TabletopClub/cards/Six_of_Clubs:2 ../TabletopClub/cards/Six_of_Diamonds:2 ../TabletopClub/cards/Six_of_Hearts:2 ../TabletopClub/cards/Six_of_Spades:2 ../TabletopClub/cards/Ten_of_Clubs:2 ../TabletopClub/cards/Ten_of_Diamonds:2 ../TabletopClub/cards/Ten_of_Hearts:2 ../TabletopClub/cards/Ten_of_Spades:2 ../TabletopClub/cards/Three_of_Clubs:2 ../TabletopClub/cards/Three_of_Diamonds:2 ../TabletopClub/cards/Three_of_Hearts:2 ../TabletopClub/cards/Three_of_Spades:2 ../TabletopClub/cards/Two_of_Clubs:2 ../TabletopClub/cards/Two_of_Diamonds:2 ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
 msgid "A poker-sized French-suited playing card."
-msgstr ""
+msgstr "Karta do gry, rozmiaru pokerowego, o francuskich kolorach."
 
 #: ../TabletopClub/cards/Ace_of_Diamonds:1
 msgid "Ace of Diamonds"
-msgstr ""
+msgstr "As Karo"
 
 #: ../TabletopClub/cards/Ace_of_Hearts:1
 msgid "Ace of Hearts"
-msgstr ""
+msgstr "As Kier"
 
 #: ../TabletopClub/cards/Ace_of_Spades:1
 msgid "Ace of Spades"
-msgstr ""
+msgstr "As Pik"
 
 #: ../TabletopClub/cards/Eight_of_Clubs:1
 msgid "Eight of Clubs"
-msgstr ""
+msgstr "Ósemka Trefl"
 
 #: ../TabletopClub/cards/Eight_of_Diamonds:1
 msgid "Eight of Diamonds"
-msgstr ""
+msgstr "Ósemka Karo"
 
 #: ../TabletopClub/cards/Eight_of_Hearts:1
 msgid "Eight of Hearts"
-msgstr ""
+msgstr "Ósemka Kier"
 
 #: ../TabletopClub/cards/Eight_of_Spades:1
 msgid "Eight of Spades"
-msgstr ""
+msgstr "Ósemka Pik"
 
 #: ../TabletopClub/cards/Five_of_Clubs:1
 msgid "Five of Clubs"
-msgstr ""
+msgstr "Piątka Trefl"
 
 #: ../TabletopClub/cards/Five_of_Diamonds:1
 msgid "Five of Diamonds"
-msgstr ""
+msgstr "Piątka Karo"
 
 #: ../TabletopClub/cards/Five_of_Hearts:1
 msgid "Five of Hearts"
-msgstr ""
+msgstr "Piątka Kier"
 
 #: ../TabletopClub/cards/Five_of_Spades:1
 msgid "Five of Spades"
-msgstr ""
+msgstr "Piątka Pik"
 
 #: ../TabletopClub/cards/Four_of_Clubs:1
 msgid "Four of Clubs"
-msgstr ""
+msgstr "Czwórka Trefl"
 
 #: ../TabletopClub/cards/Four_of_Diamonds:1
 msgid "Four of Diamonds"
-msgstr ""
+msgstr "Czwórka Karo"
 
 #: ../TabletopClub/cards/Four_of_Hearts:1
 msgid "Four of Hearts"
