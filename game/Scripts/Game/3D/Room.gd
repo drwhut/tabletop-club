@@ -277,8 +277,19 @@ remotesync func add_stack(name: String, piece1_name: String, piece2_name: String
 		return
 
 	var sandwich_stack = (piece1.piece_entry["scene_path"] == "res://Pieces/Card.tscn")
-	add_stack_empty(name, piece2_transform, sandwich_stack)
-
+	var stack = add_stack_empty(name, piece2_transform, sandwich_stack)
+	
+	var new_angular_velocity: Vector3 = piece1.angular_velocity
+	if piece2.angular_velocity.length_squared() < piece1.angular_velocity.length_squared():
+		new_angular_velocity = piece2.angular_velocity
+	
+	var new_linear_velocity: Vector3 = piece1.linear_velocity
+	if piece2.linear_velocity.length_squared() < piece1.linear_velocity.length_squared():
+		new_angular_velocity = piece2.linear_velocity
+	
+	stack.angular_velocity = new_angular_velocity
+	stack.linear_velocity = new_linear_velocity
+	
 	add_piece_to_stack(piece1.name, name, piece1_transform, piece2_transform)
 	add_piece_to_stack(piece2.name, name, piece2_transform, piece2_transform)
 
