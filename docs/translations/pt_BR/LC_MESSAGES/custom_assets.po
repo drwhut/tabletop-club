@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-06 16:27+0000\n"
+"POT-Creation-Date: 2023-03-30 11:14+0100\n"
 "PO-Revision-Date: 2023-01-01 23:49+0000\n"
 "Last-Translator: Willian Correia Vinagre <willianvinagre11@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -974,9 +974,9 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:159
 msgid ""
-"Speakers are objects that can play audio tracks. They emit sound "
-"positionally, so the audio will vary depending on the position of the "
-"speaker relative to the camera."
+"Speakers are objects that can play audio tracks. They can be configured to "
+"emit sound positionally, so the audio will vary depending on the position of "
+"the speaker relative to the camera."
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:167
@@ -1714,8 +1714,8 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:119
 msgid ""
-"Cards are always the same thickness, so the second number in the ``scale`` "
-"property can just be ``1.0`` in this case."
+"Cards are always the same thickness, so the ``scale`` for cards is always a "
+"``Vector2`` containing two numbers, rather than a ``Vector3``."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:124

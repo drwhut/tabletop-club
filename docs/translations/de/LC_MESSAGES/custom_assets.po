@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-06 16:27+0000\n"
+"POT-Creation-Date: 2023-03-30 11:14+0100\n"
 "PO-Revision-Date: 2023-03-26 15:40+0000\n"
 "Last-Translator: Piet Lu <f-gutzeit@freenet.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
@@ -1050,10 +1050,15 @@ msgid "By the corner of the table is a large, metallic gramophone."
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:159
+#, fuzzy
+#| msgid ""
+#| "Speakers are objects that can play audio tracks. They emit sound "
+#| "positionally, so the audio will vary depending on the position of the "
+#| "speaker relative to the camera."
 msgid ""
-"Speakers are objects that can play audio tracks. They emit sound "
-"positionally, so the audio will vary depending on the position of the "
-"speaker relative to the camera."
+"Speakers are objects that can play audio tracks. They can be configured to "
+"emit sound positionally, so the audio will vary depending on the position of "
+"the speaker relative to the camera."
 msgstr ""
 "Lautsprecher sind Objekte, die Tonspuren abspielen können. Sie geben den Ton "
 "positionsabhängig ab, d. h. der Ton variiert je nach Position des "
@@ -1810,8 +1815,8 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:119
 msgid ""
-"Cards are always the same thickness, so the second number in the ``scale`` "
-"property can just be ``1.0`` in this case."
+"Cards are always the same thickness, so the ``scale`` for cards is always a "
+"``Vector2`` containing two numbers, rather than a ``Vector3``."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:124
