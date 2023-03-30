@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-30 11:14+0100\n"
-"PO-Revision-Date: 2023-03-20 11:41+0000\n"
+"PO-Revision-Date: 2023-03-31 14:40+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -1092,11 +1092,6 @@ msgid "By the corner of the table is a large, metallic gramophone."
 msgstr "En la esquina de la mesa hay un gramófono grande y metálico."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:159
-#, fuzzy
-#| msgid ""
-#| "Speakers are objects that can play audio tracks. They emit sound "
-#| "positionally, so the audio will vary depending on the position of the "
-#| "speaker relative to the camera."
 msgid ""
 "Speakers are objects that can play audio tracks. They can be configured to "
 "emit sound positionally, so the audio will vary depending on the position of "
@@ -2072,16 +2067,13 @@ msgstr ""
 "tamaño de tus objetos:"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:119
-#, fuzzy
-#| msgid ""
-#| "Cards are always the same thickness, so the second number in the "
-#| "``scale`` property can just be ``1.0`` in this case."
 msgid ""
 "Cards are always the same thickness, so the ``scale`` for cards is always a "
 "``Vector2`` containing two numbers, rather than a ``Vector3``."
 msgstr ""
-"Las tarjetas son siempre el mismo grosor, por lo que el segundo número en la "
-"propiedad ``scale`` solo puede ser ``1.0`` en este caso."
+"Las tarjetas tienen siempre el mismo grosor, por lo que el ``scale`` de las "
+"tarjetas es siempre un ``Vector2`` que contiene dos números, en lugar de un "
+"``Vector3``."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:124
 msgid "Configuring card backs"
