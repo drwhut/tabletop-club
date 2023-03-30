@@ -115,13 +115,6 @@ func remove_piece(piece_name: String) -> Piece:
 		mass -= piece.mass
 		_pieces.remove_child(piece)
 		
-		# Reverse the modifications done to the piece when it was absorbed.
-		# NOTE: Rigidbodies themselves are not scaled, only their collision
-		# shapes are.
-		var distance = 0.5 * (get_size().y + piece.get_size().y) + 1.0
-		var new_origin = transform.origin + transform.basis.y * distance
-		piece.transform.origin = new_origin
-		
 		# NOTE: For some reason (my theory is the physics interpolation patch:
 		# https://github.com/drwhut/godot/commit/5d56dd72b13d261c88602d9b37ada1063c5c4b57
 		# ), the basis of the transform may drift slightly while in the
@@ -129,6 +122,16 @@ func remove_piece(piece_name: String) -> Piece:
 		# workaround to prevent that from affecting the physics state.
 		# TODO: Maybe this can be removed when using Godot 3.5?
 		piece.transform.basis = piece.transform.basis.orthonormalized()
+		
+		# Reverse the modifications done to the piece when it was absorbed.
+		# NOTE: Rigidbodies themselves are not scaled, only their collision
+		# shapes are.
+		var adj_piece_size = Global.rotate_bounding_box(piece.get_size(),
+				piece.transform.basis)
+		var piece_slice_height = abs(transform.basis.y.dot(adj_piece_size))
+		var distance = 0.5 * (get_size().y + piece_slice_height) + 1.0
+		var new_origin = transform.origin + distance * transform.basis.y
+		piece.transform.origin = new_origin
 		
 		piece.mode = MODE_RIGID
 		

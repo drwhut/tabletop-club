@@ -126,6 +126,28 @@ func get_output_subdir(subfolder: String) -> Directory:
 	
 	return dir
 
+# Rotate the volume of a bounding box to create a new bounding box.
+func rotate_bounding_box(size: Vector3, basis: Basis) -> Vector3:
+	var corner_0 = basis * size
+	var corner_x = (corner_0 - 2 * size.x * basis.x).abs()
+	var corner_y = (corner_0 - 2 * size.y * basis.y).abs()
+	var corner_z = (corner_0 - 2 * size.z * basis.z).abs()
+	corner_0 = corner_0.abs()
+	
+	var max_x = max(corner_0.x, corner_x.x)
+	max_x = max(max_x, corner_y.x)
+	max_x = max(max_x, corner_z.x)
+	
+	var max_y = max(corner_0.y, corner_x.y)
+	max_y = max(max_y, corner_y.y)
+	max_y = max(max_y, corner_z.y)
+	
+	var max_z = max(corner_0.z, corner_x.z)
+	max_z = max(max_z, corner_y.z)
+	max_z = max(max_z, corner_z.z)
+	
+	return Vector3(max_x, max_y, max_z)
+
 # Set whether the game will censor profanity in player-generated text.
 # censor: If the game will censor profanity.
 func set_censoring_profanity(censor: bool) -> void:

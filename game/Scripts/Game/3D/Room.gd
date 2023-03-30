@@ -1180,7 +1180,10 @@ master func request_container_release_these(container_name: String,
 
 	for piece_name in hover_name_arr:
 		var piece: Piece = _pieces.get_node(piece_name)
-		var piece_size = (piece.transform.basis * piece.get_size()).abs()
+		# TODO: This was already calculated by the container, ideally we should
+		# be able to use that value.
+		var piece_size = Global.rotate_bounding_box(piece.get_size(),
+				piece.transform.basis)
 		var piece_offset = calc_box_pos
 
 		if not is_init_pos_set:
