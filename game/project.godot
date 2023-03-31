@@ -34,6 +34,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/UI/Previews/GenericPreview.gd"
 }, {
+"base": "Reference",
+"class": "GutHookScript",
+"language": "GDScript",
+"path": "res://addons/gut/hook_script.gd"
+}, {
+"base": "Node",
+"class": "GutTest",
+"language": "GDScript",
+"path": "res://addons/gut/test.gd"
+}, {
 "base": "Area",
 "class": "HiddenArea",
 "language": "GDScript",
@@ -135,6 +145,8 @@ _global_script_class_icons={
 "Card": "",
 "Dice": "",
 "GenericPreview": "",
+"GutHookScript": "",
+"GutTest": "",
 "HiddenArea": "",
 "ObjectPreview": "",
 "ObjectPreviewGrid": "",
@@ -185,6 +197,10 @@ window/size/width=1920
 window/size/height=1080
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
 
 [gdnative]
 

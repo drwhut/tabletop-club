@@ -20,6 +20,16 @@ directory.
 	URL: https://files.outsidecontext.solutions/s/G6aHm9qGPbJzBBH
 
 
+- GUT
+
+	Files:
+		addons/gut/*
+	Author: Tom \"Butch\" Wesley
+	License: MIT
+	Modified By: Benjamin \"drwhut\" Beddows
+	URL: https://github.com/bitwes/Gut
+
+
 - Cabin
 
 	Files:
