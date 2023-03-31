@@ -47,10 +47,10 @@ anchor_bottom = 1.0
 
 [node name="GodotLogo" type="TextureRect" parent="CenterContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 312.0
-margin_top = 100.0
-margin_right = 712.0
-margin_bottom = 500.0
+margin_left = 760.0
+margin_top = 340.0
+margin_right = 1160.0
+margin_bottom = 740.0
 rect_min_size = Vector2( 400, 400 )
 texture = ExtResource( 1 )
 expand = true

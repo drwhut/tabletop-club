@@ -3,16 +3,16 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/FastCircleInner.png-4f36c5efec8d3b1a997b14f230374020.s3tc.stex"
-path.etc="res://.import/FastCircleInner.png-4f36c5efec8d3b1a997b14f230374020.etc.stex"
+path.etc2="res://.import/FastCircleInner.png-4f36c5efec8d3b1a997b14f230374020.etc2.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
+"imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Images/FastCircleInner.png"
-dest_files=[ "res://.import/FastCircleInner.png-4f36c5efec8d3b1a997b14f230374020.s3tc.stex", "res://.import/FastCircleInner.png-4f36c5efec8d3b1a997b14f230374020.etc.stex" ]
+dest_files=[ "res://.import/FastCircleInner.png-4f36c5efec8d3b1a997b14f230374020.s3tc.stex", "res://.import/FastCircleInner.png-4f36c5efec8d3b1a997b14f230374020.etc2.stex" ]
 
 [params]
 

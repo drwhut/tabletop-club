@@ -162,7 +162,7 @@ config/name="Tabletop Club"
 config/description="Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows.
 Copyright (c) 2021-2023 Tabletop Club contributors (see credits).
 
-An open-source platform for playing tabletop games in a 3D environment, made with the Godot Engine!"
+An open-source platform for playing tabletop games in a physics-based 3D environment."
 run/main_scene="res://Scenes/SplashScreen.tscn"
 config/use_custom_user_dir=true
 config/project_settings_override="user://override.cfg"
@@ -173,16 +173,6 @@ config/icon="res://tabletop_club_icon.png"
 config/windows_native_icon="res://tabletop_club_icon.ico"
 config/version="master"
 
-[autoload]
-
-AssetDB="*res://Scripts/AssetDB.gd"
-BindManager="*res://Scripts/BindManager.gd"
-Global="*res://Scripts/Global.gd"
-Lobby="*res://Scripts/Lobby.gd"
-PieceBuilder="*res://Scripts/PieceBuilder.gd"
-PieceFactory="*res://Scripts/PieceFactory.gd"
-ResourceManager="*res://Scripts/ResourceManager.gd"
-
 [debug]
 
 settings/crash_handler/message="Please include this when reporting the bug on https://github.com/drwhut/tabletop-club/issues"
@@ -191,13 +181,10 @@ gdscript/warnings/integer_division=false
 
 [display]
 
+window/size/width=1920
+window/size/height=1080
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
-
-[editor]
-
-main_run_args="--base-asset-dir .."
-script_templates_search_path="res://Scripts/Templates"
 
 [gdnative]
 
@@ -316,10 +303,9 @@ ssl/certificates="res://master_server.crt"
 [physics]
 
 3d/default_gravity=98.1
+common/physics_interpolation=true
 
 [rendering]
 
 threads/thread_model=2
-vram_compression/import_etc=true
-vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"
