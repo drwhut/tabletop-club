@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/diceThrow4.wav-4a3d1eff8791150c916b8501d5158878.sample"
+
+[deps]
+
+source_file="res://sounds/dice/diceThrow4.wav"
+dest_files=[ "res://.import/diceThrow4.wav-4a3d1eff8791150c916b8501d5158878.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

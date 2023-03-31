@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactMetal_heavy_001.ogg-7d8f7924ec5eac4980d762c19ecb0016.oggstr"
+
+[deps]
+
+source_file="res://sounds/metal_heavy/impactMetal_heavy_001.ogg"
+dest_files=[ "res://.import/impactMetal_heavy_001.ogg-7d8f7924ec5eac4980d762c19ecb0016.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

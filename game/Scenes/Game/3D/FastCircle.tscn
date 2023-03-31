@@ -3,7 +3,7 @@
 [ext_resource path="res://images/fast_circle_outer.png" type="Texture" id=1]
 [ext_resource path="res://images/fast_circle_inner.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Game/3D/FastCircle.gd" type="Script" id=3]
-[ext_resource path="res://Sounds/Misc/circle.ogg" type="AudioStream" id=4]
+[ext_resource path="res://sounds/misc/circle.ogg" type="AudioStream" id=4]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 1, 1 )

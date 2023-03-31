@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Game/3D/PaintPlane.gd" type="Script" id=1]
-[ext_resource path="res://Shaders/PaintShader.shader" type="Shader" id=2]
-[ext_resource path="res://Shaders/BicubicShader.shader" type="Shader" id=3]
+[ext_resource path="res://shaders/bicubic.shader" type="Shader" id=2]
+[ext_resource path="res://shaders/paint.shader" type="Shader" id=3]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -11,7 +11,7 @@ viewport_path = NodePath("Viewport")
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
-shader = ExtResource( 3 )
+shader = ExtResource( 2 )
 shader_param/FilteringEnabled = false
 shader_param/TexturePixelSize = Vector2( 1, 1 )
 shader_param/Texture = SubResource( 2 )
@@ -19,12 +19,15 @@ shader_param/Texture = SubResource( 2 )
 [sub_resource type="World" id=4]
 
 [sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 2 )
+shader = ExtResource( 3 )
 shader_param/AspectRatio = 1.0
 shader_param/BrushColor = null
 shader_param/BrushEnabled = false
 shader_param/BrushPosition = Vector2( 0, 0 )
 shader_param/BrushSize = 0.0
+shader_param/InverseQuadCol1 = null
+shader_param/InverseQuadCol2 = null
+shader_param/QuadCorner = null
 
 [node name="PaintPlane" type="Spatial"]
 script = ExtResource( 1 )

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Misc/RandomAudioStream.gd" type="Script" id=1]
+[ext_resource path="res://sounds/cards/cardSlide4.wav" type="AudioStream" id=2]
+[ext_resource path="res://sounds/cards/cardSlide7.wav" type="AudioStream" id=3]
+[ext_resource path="res://sounds/cards/cardSlide1.wav" type="AudioStream" id=4]
+[ext_resource path="res://sounds/cards/cardSlide6.wav" type="AudioStream" id=5]
+
+[resource]
+script = ExtResource( 1 )
+streams = [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ) ]

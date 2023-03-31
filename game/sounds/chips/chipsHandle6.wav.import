@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chipsHandle6.wav-0242d3efeb20b67e1279c3d4a9d2ba67.sample"
+
+[deps]
+
+source_file="res://sounds/chips/chipsHandle6.wav"
+dest_files=[ "res://.import/chipsHandle6.wav-0242d3efeb20b67e1279c3d4a9d2ba67.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

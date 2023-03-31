@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Game/Pieces/StackablePiece.gd" type="Script" id=1]
+[ext_resource path="res://sounds/chips/chip_table_slow_sounds.tres" type="Resource" id=2]
+[ext_resource path="res://sounds/chips/chip_table_fast_sounds.tres" type="Resource" id=3]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 1, 1, 1 )
+
+[node name="Cube" type="RigidBody"]
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "A stackable cube-shaped piece.
+
+The shape is based on the unit cube, i.e. the length, width and height of the cube is 1."
+}
+mesh_instance_path = NodePath("CollisionShape/MeshInstance")
+table_collide_fast_sounds = ExtResource( 3 )
+table_collide_slow_sounds = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = null
