@@ -208,7 +208,7 @@ singletons=[ "res://webrtc/webrtc.tres" ]
 
 [gui]
 
-theme/custom_font="res://Fonts/Cabin/Cabin-Medium.tres"
+theme/custom_font="res://fonts/res/default_regular.tres"
 
 [input]
 

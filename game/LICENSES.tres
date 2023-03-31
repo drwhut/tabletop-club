@@ -33,7 +33,7 @@ directory.
 - Cabin
 
 	Files:
-		Fonts/Cabin/*.ttf
+		fonts/data/Cabin-*.ttf
 	Authors: Pablo Impallari, Igino Marini
 	License: SIL OFL v1.1
 	URL: https://github.com/impallari/Cabin
@@ -42,7 +42,7 @@ directory.
 - PTSans
 
 	Files:
-		Fonts/PTSans/*.ttf
+		fonts/data/PTSans-*.ttf
 	Authors: ParaType
 	License: SIL OFL v1.1
 	URL: https://fonts.google.com/specimen/PT+Sans

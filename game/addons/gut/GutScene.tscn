@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://addons/gut/GutScene.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/Cabin/Cabin-Italic.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Fonts/Cabin/Cabin-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Fonts/Cabin/Cabin-BoldItalic.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Fonts/Cabin/Cabin-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/data/Cabin-Italic.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/data/Cabin-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/data/Cabin-BoldItalic.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/data/Cabin-Bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://addons/gut/UserFileViewer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://addons/gut/gui/GutSceneTheme.tres" type="Theme" id=7]
 

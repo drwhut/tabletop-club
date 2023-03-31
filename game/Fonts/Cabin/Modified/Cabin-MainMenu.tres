@@ -1,9 +1,0 @@
-[gd_resource type="DynamicFont" load_steps=3 format=2]
-
-[ext_resource path="res://Fonts/Cabin/Cabin-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Fonts/PTSans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
-
-[resource]
-size = 20
-font_data = ExtResource( 1 )
-fallback/0 = ExtResource( 2 )
