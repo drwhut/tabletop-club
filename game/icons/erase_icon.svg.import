@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HelpIcon.svg-1e18221c1b2bfd1c13c1467e1e9933c9.stex"
+path="res://.import/erase_icon.svg-dc285a8be9fa2672dabb76951223c45d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/HelpIcon.svg"
-dest_files=[ "res://.import/HelpIcon.svg-1e18221c1b2bfd1c13c1467e1e9933c9.stex" ]
+source_file="res://icons/erase_icon.svg"
+dest_files=[ "res://.import/erase_icon.svg-dc285a8be9fa2672dabb76951223c45d.stex" ]
 
 [params]
 

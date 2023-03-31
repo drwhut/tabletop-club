@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CodeIcon.svg-034dc8839919c155777420cc8ccaded4.stex"
+path="res://.import/flick_icon.svg-ccc5cc24f7b37c2666c6c01e865c6aaa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/CodeIcon.svg"
-dest_files=[ "res://.import/CodeIcon.svg-034dc8839919c155777420cc8ccaded4.stex" ]
+source_file="res://icons/flick_icon.svg"
+dest_files=[ "res://.import/flick_icon.svg-ccc5cc24f7b37c2666c6c01e865c6aaa.stex" ]
 
 [params]
 

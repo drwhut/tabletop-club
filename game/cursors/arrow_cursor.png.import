@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/arrow_cursor.png-dd26b684c03170b0e858ad2637273018.image"
+
+[deps]
+
+source_file="res://cursors/arrow_cursor.png"
+dest_files=[ "res://.import/arrow_cursor.png-dd26b684c03170b0e858ad2637273018.image" ]
+
+[params]
+

@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/forbidden_cursor.png-74c16909fee62044c595a1bfef0d0106.image"
+
+[deps]
+
+source_file="res://cursors/forbidden_cursor.png"
+dest_files=[ "res://.import/forbidden_cursor.png-74c16909fee62044c595a1bfef0d0106.image" ]
+
+[params]
+

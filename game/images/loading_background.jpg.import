@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StackIcon.svg-c8d48e538edae33d014109491f673754.stex"
+path="res://.import/loading_background.jpg-0d769f5aa050eda1ec114c1deb62b43a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/StackIcon.svg"
-dest_files=[ "res://.import/StackIcon.svg-c8d48e538edae33d014109491f673754.stex" ]
+source_file="res://images/loading_background.jpg"
+dest_files=[ "res://.import/loading_background.jpg-0d769f5aa050eda1ec114c1deb62b43a.stex" ]
 
 [params]
 

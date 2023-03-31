@@ -1,17 +1,17 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/FallingWorld.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Images/HelpIcon.svg" type="Texture" id=2]
+[ext_resource path="res://icons/help_icon.svg" type="Texture" id=2]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fonts/Cabin/Cabin-Italic.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Scenes/RandomMusicPlayer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://tabletop_club_logo.png" type="Texture" id=7]
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-MainMenu.tres" type="DynamicFont" id=8]
-[ext_resource path="res://Images/InfoIcon.svg" type="Texture" id=9]
-[ext_resource path="res://Images/StoreIcon.svg" type="Texture" id=10]
-[ext_resource path="res://Images/CodeIcon.svg" type="Texture" id=11]
-[ext_resource path="res://Images/ErrorIcon.svg" type="Texture" id=12]
+[ext_resource path="res://icons/info_icon.svg" type="Texture" id=9]
+[ext_resource path="res://icons/store_icon.svg" type="Texture" id=10]
+[ext_resource path="res://icons/code_icon.svg" type="Texture" id=11]
+[ext_resource path="res://icons/error_icon.svg" type="Texture" id=12]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0

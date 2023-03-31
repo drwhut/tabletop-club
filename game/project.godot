@@ -178,7 +178,7 @@ An open-source platform for playing tabletop games in a physics-based 3D environ
 run/main_scene="res://Scenes/SplashScreen.tscn"
 config/use_custom_user_dir=true
 config/project_settings_override="user://override.cfg"
-boot_splash/image="res://Images/BlackTexture.png"
+boot_splash/image="res://images/black_texture.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://tabletop_club_icon.png"

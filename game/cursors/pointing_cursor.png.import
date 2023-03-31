@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/pointing_cursor.png-9187a0bc9a4938db75d04ba848f02a86.image"
+
+[deps]
+
+source_file="res://cursors/pointing_cursor.png"
+dest_files=[ "res://.import/pointing_cursor.png-9187a0bc9a4938db75d04ba848f02a86.image" ]
+
+[params]
+

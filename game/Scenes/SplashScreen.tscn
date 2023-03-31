@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Images/GodotLogo.svg" type="Texture" id=1]
+[ext_resource path="res://images/godot_logo.svg" type="Texture" id=1]
 [ext_resource path="res://Scripts/SplashScreen.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/OptionsMenu.tscn" type="PackedScene" id=3]
 

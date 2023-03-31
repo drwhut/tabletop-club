@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EraseIcon.svg-c49ee917ed20a21b7b6d38e3ff4438fb.stex"
+path="res://.import/search_icon.svg-9f93710431c5faddeecdc58bc804339b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/EraseIcon.svg"
-dest_files=[ "res://.import/EraseIcon.svg-c49ee917ed20a21b7b6d38e3ff4438fb.stex" ]
+source_file="res://icons/search_icon.svg"
+dest_files=[ "res://.import/search_icon.svg-9f93710431c5faddeecdc58bc804339b.stex" ]
 
 [params]
 

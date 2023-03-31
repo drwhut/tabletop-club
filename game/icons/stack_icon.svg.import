@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FlickIcon.svg-55e916db2d3f65cace3fb8f4c69e8196.stex"
+path="res://.import/stack_icon.svg-1fe810ea91c10a8fecc1350095aefec7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/FlickIcon.svg"
-dest_files=[ "res://.import/FlickIcon.svg-55e916db2d3f65cace3fb8f4c69e8196.stex" ]
+source_file="res://icons/stack_icon.svg"
+dest_files=[ "res://.import/stack_icon.svg-1fe810ea91c10a8fecc1350095aefec7.stex" ]
 
 [params]
 

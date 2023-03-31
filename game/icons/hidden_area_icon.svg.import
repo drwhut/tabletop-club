@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StoreIcon.svg-aace0938478f815ab94d0c2fdd64e5bc.stex"
+path="res://.import/hidden_area_icon.svg-43346896702feaf853963d905c763fe9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/StoreIcon.svg"
-dest_files=[ "res://.import/StoreIcon.svg-aace0938478f815ab94d0c2fdd64e5bc.stex" ]
+source_file="res://icons/hidden_area_icon.svg"
+dest_files=[ "res://.import/hidden_area_icon.svg-43346896702feaf853963d905c763fe9.stex" ]
 
 [params]
 

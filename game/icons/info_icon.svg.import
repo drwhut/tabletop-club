@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RulerLine.png-83d9ab42c95ddb94d74cba1751786132.stex"
+path="res://.import/info_icon.svg-d8eecc3a1a2819fb485bf4d4922b7fe0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/RulerLine.png"
-dest_files=[ "res://.import/RulerLine.png-83d9ab42c95ddb94d74cba1751786132.stex" ]
+source_file="res://icons/info_icon.svg"
+dest_files=[ "res://.import/info_icon.svg-d8eecc3a1a2819fb485bf4d4922b7fe0.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

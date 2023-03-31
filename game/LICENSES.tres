@@ -51,12 +51,7 @@ directory.
 - Cursors
 
 	Files:
-		Images/ArrowCursor.png
-		Images/CrossCursor.png
-		Images/ForbiddenCursor.png
-		Images/GrabbingCursor.png
-		Images/HResizeCursor.png
-		Images/PointingCursor.png
+		cursors/*.png
 	Author: Jakub 'Nighted' Steiner
 	License: MIT
 	URL: https://www.deviantart.com/nighted/art/DMZ-Cursors-58429447
@@ -65,7 +60,7 @@ directory.
 - Code icon
 
 	Files:
-		Images/CodeIcon.svg
+		icons/code_icon.svg
 	Author: SVG Repo
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -75,7 +70,7 @@ directory.
 - Cursor icon
 
 	Files:
-		Images/CursorIcon.svg
+		icons/cursor_icon.svg
 	Author: SVG Repo
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -85,7 +80,7 @@ directory.
 - Erase icon
 
 	Files:
-		Images/EraseIcon.svg
+		icons/erase_icon.svg
 	Author: SVG Repo
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -95,7 +90,7 @@ directory.
 - Error icon
 
 	Files:
-		Images/ErrorIcon.svg
+		icons/error_icon.svg
 	Author: css.gg
 	License: MIT
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -105,8 +100,8 @@ directory.
 - Fast circle
 
 	Files:
-		Images/FastCircleInner.png
-		Images/FastCircleOuter.png
+		images/fast_circle_inner.png
+		images/fast_circle_outer.png
 	Author: Rebekka
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -115,7 +110,7 @@ directory.
 - Flick icon
 
 	Files:
-		Images/FlickIcon.svg
+		icons/flick_icon.svg
 	Author: SVG Repo
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -125,7 +120,7 @@ directory.
 - Godot logo
 
 	Files:
-		Images/GodotLogo.svg
+		images/godot_logo.svg
 	Author: Andrea Calabró
 	License: CC-BY-4.0 International
 	URL: https://godotengine.org/assets/press/logo_vertical_color_dark.svg
@@ -134,7 +129,7 @@ directory.
 - Help icon
 
 	Files:
-		Images/HelpIcon.svg
+		icons/help_icon.svg
 	Author: SVG Repo
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -144,7 +139,7 @@ directory.
 - Hidden area icon
 
 	Files:
-		Images/HiddenAreaIcon.svg
+		icons/hidden_area_icon.svg
 	Author: SVG Repo
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -154,7 +149,7 @@ directory.
 - Info icon
 
 	Files:
-		Images/InfoIcon.svg
+		icons/info_icon.svg
 	Author: SVG Repo
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -164,7 +159,7 @@ directory.
 - Loading background
 
 	Files:
-		Images/LoadingScreen.jpg
+		images/loading_background.jpg
 	Author: Samantha Johnson
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -173,7 +168,7 @@ directory.
 - Paint icon
 
 	Files:
-		Images/PaintIcon.svg
+		icons/paint_icon.svg
 	Author: SVG Repo
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -183,7 +178,7 @@ directory.
 - Ruler icon
 
 	Files:
-		Images/RulerIcon.svg
+		icons/ruler_icon.svg
 	Author: SVG Repo
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -193,7 +188,7 @@ directory.
 - Search icon
 
 	Files:
-		Images/SearchIcon.svg
+		icons/search_icon.svg
 	Author: SVG Repo
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -203,7 +198,7 @@ directory.
 - Stack icon
 
 	Files:
-		Images/StackIcon.svg
+		icons/stack_icon.svg
 	Author: yourtempo
 	License: MIT
 	Modified By: Benjamin \"drwhut\" Beddows
@@ -213,7 +208,7 @@ directory.
 - Store icon
 
 	Files:
-		Images/StoreIcon.svg
+		icons/store_icon.svg
 	Author: SVG Repo
 	License: CC0
 	Modified By: Benjamin \"drwhut\" Beddows

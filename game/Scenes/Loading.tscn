@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Loading.gd" type="Script" id=1]
-[ext_resource path="res://Images/LoadingScreen.jpg" type="Texture" id=2]
+[ext_resource path="res://images/loading_background.jpg" type="Texture" id=2]
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-Regular-Outline.tres" type="DynamicFont" id=3]
 
 [node name="Loading" type="Control"]

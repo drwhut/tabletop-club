@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Images/FastCircleOuter.png" type="Texture" id=1]
-[ext_resource path="res://Images/FastCircleInner.png" type="Texture" id=2]
+[ext_resource path="res://images/fast_circle_outer.png" type="Texture" id=1]
+[ext_resource path="res://images/fast_circle_inner.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Game/3D/FastCircle.gd" type="Script" id=3]
 [ext_resource path="res://Sounds/Misc/circle.ogg" type="AudioStream" id=4]
 
