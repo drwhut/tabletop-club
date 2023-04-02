@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-20 15:31\n"
-"PO-Revision-Date: 2022-11-11 01:49+0000\n"
-"Last-Translator: AllanOvelha <allan1234567@yahoo.com.br>\n"
+"PO-Revision-Date: 2023-04-03 18:39+0000\n"
+"Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/pt/>\n"
 "Language: pt\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -26,25 +26,24 @@ msgid "Chess Board"
 msgstr "Tabuleiro de Xadrez"
 
 #: ../TabletopClub/boards/Chess_Board:2
-#, fuzzy
 msgid "An 8x8 Chess board."
-msgstr "Tabuleiro 8x8 de Xadrez"
+msgstr "Tabuleiro 8x8 de Xadrez."
 
 #: ../TabletopClub/boards/Go_Board_(Large):1
 msgid "Go Board (Large)"
-msgstr ""
+msgstr "Tabuleiro de Go (Grande)"
 
 #: ../TabletopClub/boards/Go_Board_(Large):2
 msgid "A 19x19 Goban."
-msgstr ""
+msgstr "Um Goban de 19x19."
 
 #: ../TabletopClub/boards/Go_Board_(Small):1
 msgid "Go Board (Small)"
-msgstr ""
+msgstr "Tabuleiro de Go (Pequeno)"
 
 #: ../TabletopClub/boards/Go_Board_(Small):2
 msgid "A 13x13 and 9x9 Goban."
-msgstr ""
+msgstr "Um Goban de 13x13 e 9x9."
 
 #: ../TabletopClub/cards/52-Card_Deck:1
 msgid "52-Card Deck"
@@ -236,11 +235,12 @@ msgstr "Dama de Espadas"
 
 #: ../TabletopClub/cards/Seer:1
 msgid "Seer"
-msgstr ""
+msgstr "Vidente"
 
 #: ../TabletopClub/cards/Seer:2
 msgid "Helps villagers by secretly inspecting someone's role every night."
 msgstr ""
+"Ajuda os aldeões secretamente inspecionando a função de alguém toda noite."
 
 #: ../TabletopClub/cards/Seven_of_Clubs:1
 msgid "Seven of Clubs"
@@ -324,27 +324,30 @@ msgstr "Dois de Espadas"
 
 #: ../TabletopClub/cards/Villager:1
 msgid "Villager"
-msgstr ""
+msgstr "Aldeão"
 
 #: ../TabletopClub/cards/Villager:2
 msgid ""
 "Avoid being eaten by werewolves at night by voting against them during the "
 "day."
 msgstr ""
+"Evite ser comido por lobisomens à noite votando contra eles durante o dia."
 
 #: ../TabletopClub/cards/Werewolf:1
 msgid "Werewolf"
-msgstr ""
+msgstr "Lobisomem"
 
 #: ../TabletopClub/cards/Werewolf:2
 msgid ""
 "Decide who to feast upon every night with your pack, avoid suspision from "
 "villagers."
 msgstr ""
+"Decida quem irá fazer de banquete toda noite com a sua matilha, evite "
+"suspeitas de aldeões."
 
 #: ../TabletopClub/containers/Pot:1
 msgid "Pot"
-msgstr ""
+msgstr "Panela"
 
 #: ../TabletopClub/containers/Purse:1
 msgid "Purse"
@@ -748,29 +751,31 @@ msgstr "Xadrez tradicional para dois jogadores."
 
 #: ../TabletopClub/games/Dominoes:1
 msgid "Dominoes"
-msgstr ""
+msgstr "Dominó"
 
 #: ../TabletopClub/games/Dominoes:2
 msgid "A bag with 28 tiles has been provided."
-msgstr ""
+msgstr "Uma bolsa com 28 pedras foi providenciada."
 
 #: ../TabletopClub/games/Go:1
 msgid "Go"
-msgstr ""
+msgstr "Go"
 
 #: ../TabletopClub/games/Go:2
 msgid ""
 "Standard Go for two players.\n"
 "Can play on a 19x19, 13x13, or 9x9 board."
 msgstr ""
+"Go padrão para dois jogadores.\n"
+"Pode ser jogado num tabuleiro de 19x19, 13x13, ou 9x9."
 
 #: ../TabletopClub/games/Poker:1
 msgid "Poker"
-msgstr ""
+msgstr "Poker"
 
 #: ../TabletopClub/games/Poker:2
 msgid "Each player has been given 25 chips, which sum up to a value of 500."
-msgstr ""
+msgstr "Cada jogador recebeu 25 fichas, que somam ao valor de 500."
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
@@ -857,6 +862,11 @@ msgid ""
 "you already knew that... Out of curiosity, what's the word for people who "
 "overuse slang?"
 msgstr ""
+"Está à procura de detalhes, sim? Isso vai precisar de verdinhas. Quer a boa? "
+"O babado? A nova? Dez paratas por dia mais custos adicionais. Sem "
+"negociação. Não sou nenhum detetive de quarta categoria - mas um patinho "
+"quebra-canela como já sabia disso... Por curiosidade, qual é a palavra para "
+"pessoas que usam gírias demais?"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:1
 msgid "In Your Arms - Kevin MacLeod"
@@ -870,6 +880,11 @@ msgid ""
 "words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No "
 "Whammies."
 msgstr ""
+"Um pedaço de música de uma época elegante, 1940. Isto é uma linda peça lenta "
+"que vai te fazer querer beber um pouco de champanhe a ir dançar lentamente "
+"com algumas pessoas... ou pinguins. Gosto de pinguins. E agora, algumas "
+"palavras pesquisáveis: Banda Grande. Anos 40. Quarentas. Festa Formal. Dança "
+"Lenta de Pinguins. Sem Truques."
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:1
 msgid "Lobby Time - Kevin MacLeod"
@@ -882,6 +897,11 @@ msgid ""
 "from our cheerful bar staff (with a complimentary cheese and fruit plate "
 "before 5pm). We feature prime rib dinners every day that ends in a "
 msgstr ""
+"Bem-vindo ao salão do FUTURO! Cinzeiros luxuosos automáticos e modernos "
+"móveis de vinil verde que destacam as paredes de carpete felpudo. Aproveite "
+"um “Rusty Nail” da nossa alegre equipa do bar (com um prato de queijo e "
+"frutas complementar antes das 17:00). Contamos com jantares de costela nobre "
+"todos os dias que terminam numa "
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:1
 msgid "Night on the Docks - Sax - Kevin MacLeod"
@@ -901,6 +921,9 @@ msgid ""
 "octaves. Soloist goes outside more than the guy comping... but hey - what "
 "are soloists for?"
 msgstr ""
+"Uma espécie de combinação de jazz mid-tempo menor com 2 pianos. A melodia é "
+"duplicada em oitavas. O solista sai mais do que o gajo acompanhando... mas "
+"ei - para que servem os solistas?"
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:1
 msgid "Smooth Lovin - Kevin MacLeod"
@@ -912,6 +935,10 @@ msgid ""
 "really started liking it, so I guess it is a pastiche now? Oh, man... I wish "
 "there was an allowance for pastiche in copyright like there is for parody."
 msgstr ""
+"Essa foi aumentada demais. Comecei produzindo como uma paródia... depois "
+"realmente comecei a gostar dela, então acho que agora ela é uma pastiche? "
+"Ah, cara... Queria que existisse uma permissão de pastiche para direitos "
+"autorais como tem para paródia."
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:1
 msgid "Spy Glass - Kevin MacLeod"
@@ -923,6 +950,10 @@ msgid ""
 "1950s. Super cool jazz for your hardcore detectives! Also useful for beat "
 "poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
 msgstr ""
+"O ano é... não faço a mínima idéia. Sem época. Poderia ser agora, poderia "
+"ser nos anos 50. Jazz super fixe para os seus detetives hardcore! Útil "
+"também para poetas beat! Também útil para o tédio ou cansaço existencial! "
+"Bem, interessantes tipos de tédio."
 
 #: ../TabletopClub/pieces/Bishop_Black:1
 msgid "Bishop Black"
@@ -973,16 +1004,12 @@ msgid "Rook White"
 msgstr "Torre Branca"
 
 #: ../TabletopClub/pieces/Stone_Black:1
-#, fuzzy
-#| msgid "Joker Black"
 msgid "Stone Black"
-msgstr "Joker Preto"
+msgstr "Pedra Preta"
 
 #: ../TabletopClub/pieces/Stone_White:1
-#, fuzzy
-#| msgid "King White"
 msgid "Stone White"
-msgstr "Rei Branco"
+msgstr "Pedra Branca"
 
 #: ../TabletopClub/skyboxes/Clouds:1
 msgid "Clouds"
@@ -1057,9 +1084,8 @@ msgid "Gramophone"
 msgstr "Gramofone"
 
 #: ../TabletopClub/speakers/Gramophone:2
-#, fuzzy
 msgid "A low-poly vintage gramophone."
-msgstr "Um gramofone vintage com poucos poligonos."
+msgstr "Um gramofone vintage com poucos polígonos."
 
 #: ../TabletopClub/tables/Picnic_Bench:1
 msgid "Picnic Bench"
@@ -1071,239 +1097,219 @@ msgstr "Mesa"
 
 #: ../TabletopClub/templates/Blank_Page:1
 msgid "Blank Page"
-msgstr ""
+msgstr "Página em branco"
 
 #: ../TabletopClub/templates/Blank_Page:2
 msgid "There's nothing here..."
-msgstr ""
+msgstr "Não tem nada aqui..."
 
 #: ../TabletopClub/templates/Score_Card:1
 msgid "Score Card"
-msgstr ""
+msgstr "Carta de pontuação"
 
 #: ../TabletopClub/templates/Score_Card:2
 msgid "A generic score card for up to 10 players."
-msgstr ""
+msgstr "Uma carta de pontuação genérica para até 10 jogadores."
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
-msgstr ""
+msgstr "Rádio"
 
 #: ../TabletopClub/timers/Radio:2
 msgid "An old radio from a bygone era."
-msgstr ""
+msgstr "Um velho rádio de uma era passada."
 
 #: ../TabletopClub/tokens/cube/Blue:1
-#, fuzzy
-#| msgid "d4 (Blue)"
 msgid "Blue"
-msgstr "d4 (Azul)"
+msgstr "Azul"
 
 #: ../TabletopClub/tokens/cube/Blue:2
 msgid "A blue token."
-msgstr ""
+msgstr "Uma ficha azul."
 
 #: ../TabletopClub/tokens/cube/Brown:1
-#, fuzzy
-#| msgid "d4 (Brown)"
 msgid "Brown"
-msgstr "d4 (Castanho)"
+msgstr "Marrom"
 
 #: ../TabletopClub/tokens/cube/Brown:2
 msgid "A brown token."
-msgstr ""
+msgstr "Uma ficha marrom."
 
 #: ../TabletopClub/tokens/cube/Cyan:1
-#, fuzzy
-#| msgid "d4 (Cyan)"
 msgid "Cyan"
-msgstr "d4 (Ciano)"
+msgstr "Ciano"
 
 #: ../TabletopClub/tokens/cube/Cyan:2
 msgid "A cyan token."
-msgstr ""
+msgstr "Uma ficha ciano."
 
 #: ../TabletopClub/tokens/cube/Domino_0-0:1
 msgid "Domino 0-0"
-msgstr ""
+msgstr "Dominó 0-0"
 
 #: ../TabletopClub/tokens/cube/Domino_0-1:1
 msgid "Domino 0-1"
-msgstr ""
+msgstr "Dominó 0-1"
 
 #: ../TabletopClub/tokens/cube/Domino_0-2:1
 msgid "Domino 0-2"
-msgstr ""
+msgstr "Dominó 0-2"
 
 #: ../TabletopClub/tokens/cube/Domino_0-3:1
 msgid "Domino 0-3"
-msgstr ""
+msgstr "Dominó 0-3"
 
 #: ../TabletopClub/tokens/cube/Domino_0-4:1
 msgid "Domino 0-4"
-msgstr ""
+msgstr "Dominó 0-4"
 
 #: ../TabletopClub/tokens/cube/Domino_0-5:1
 msgid "Domino 0-5"
-msgstr ""
+msgstr "Dominó 0-5"
 
 #: ../TabletopClub/tokens/cube/Domino_0-6:1
 msgid "Domino 0-6"
-msgstr ""
+msgstr "Dominó 0-6"
 
 #: ../TabletopClub/tokens/cube/Domino_1-1:1
 msgid "Domino 1-1"
-msgstr ""
+msgstr "Dominó 1-1"
 
 #: ../TabletopClub/tokens/cube/Domino_1-2:1
 msgid "Domino 1-2"
-msgstr ""
+msgstr "Dominó 1-2"
 
 #: ../TabletopClub/tokens/cube/Domino_1-3:1
 msgid "Domino 1-3"
-msgstr ""
+msgstr "Dominó 1-3"
 
 #: ../TabletopClub/tokens/cube/Domino_1-4:1
 msgid "Domino 1-4"
-msgstr ""
+msgstr "Dominó 1-4"
 
 #: ../TabletopClub/tokens/cube/Domino_1-5:1
 msgid "Domino 1-5"
-msgstr ""
+msgstr "Dominó 1-5"
 
 #: ../TabletopClub/tokens/cube/Domino_1-6:1
 msgid "Domino 1-6"
-msgstr ""
+msgstr "Dominó 1-6"
 
 #: ../TabletopClub/tokens/cube/Domino_2-2:1
 msgid "Domino 2-2"
-msgstr ""
+msgstr "Dominó 2-2"
 
 #: ../TabletopClub/tokens/cube/Domino_2-3:1
 msgid "Domino 2-3"
-msgstr ""
+msgstr "Dominó 2-3"
 
 #: ../TabletopClub/tokens/cube/Domino_2-4:1
 msgid "Domino 2-4"
-msgstr ""
+msgstr "Dominó 2-4"
 
 #: ../TabletopClub/tokens/cube/Domino_2-5:1
 msgid "Domino 2-5"
-msgstr ""
+msgstr "Dominó 2-5"
 
 #: ../TabletopClub/tokens/cube/Domino_2-6:1
 msgid "Domino 2-6"
-msgstr ""
+msgstr "Dominó 2-6"
 
 #: ../TabletopClub/tokens/cube/Domino_3-3:1
 msgid "Domino 3-3"
-msgstr ""
+msgstr "Dominó 3-3"
 
 #: ../TabletopClub/tokens/cube/Domino_3-4:1
 msgid "Domino 3-4"
-msgstr ""
+msgstr "Dominó 3-4"
 
 #: ../TabletopClub/tokens/cube/Domino_3-5:1
 msgid "Domino 3-5"
-msgstr ""
+msgstr "Dominó 3-5"
 
 #: ../TabletopClub/tokens/cube/Domino_3-6:1
 msgid "Domino 3-6"
-msgstr ""
+msgstr "Dominó 3-6"
 
 #: ../TabletopClub/tokens/cube/Domino_4-4:1
 msgid "Domino 4-4"
-msgstr ""
+msgstr "Dominó 4-4"
 
 #: ../TabletopClub/tokens/cube/Domino_4-5:1
 msgid "Domino 4-5"
-msgstr ""
+msgstr "Dominó 4-5"
 
 #: ../TabletopClub/tokens/cube/Domino_4-6:1
 msgid "Domino 4-6"
-msgstr ""
+msgstr "Dominó 4-6"
 
 #: ../TabletopClub/tokens/cube/Domino_5-5:1
 msgid "Domino 5-5"
-msgstr ""
+msgstr "Dominó 5-5"
 
 #: ../TabletopClub/tokens/cube/Domino_5-6:1
 msgid "Domino 5-6"
-msgstr ""
+msgstr "Dominó 5-6"
 
 #: ../TabletopClub/tokens/cube/Domino_6-6:1
 msgid "Domino 6-6"
-msgstr ""
+msgstr "Dominó 6-6"
 
 #: ../TabletopClub/tokens/cube/Green:1
-#, fuzzy
-#| msgid "d4 (Green)"
 msgid "Green"
-msgstr "d4 (Verde)"
+msgstr "Verde"
 
 #: ../TabletopClub/tokens/cube/Green:2
 msgid "A green token."
-msgstr ""
+msgstr "Uma ficha verde."
 
 #: ../TabletopClub/tokens/cube/Orange:1
-#, fuzzy
-#| msgid "d4 (Orange)"
 msgid "Orange"
-msgstr "d4 (Cor de Laranja)"
+msgstr "Laranja"
 
 #: ../TabletopClub/tokens/cube/Orange:2
 msgid "An orange token."
-msgstr ""
+msgstr "Uma ficha laranja."
 
 #: ../TabletopClub/tokens/cube/Pink:1
-#, fuzzy
-#| msgid "d4 (Pink)"
 msgid "Pink"
-msgstr "d4 (Cor-de-rosa)"
+msgstr "Rosa"
 
 #: ../TabletopClub/tokens/cube/Pink:2
 msgid "A pink token."
-msgstr ""
+msgstr "Uma ficha rosa."
 
 #: ../TabletopClub/tokens/cube/Purple:1
-#, fuzzy
-#| msgid "d4 (Purple)"
 msgid "Purple"
-msgstr "d4 (Roxo)"
+msgstr "Roxo"
 
 #: ../TabletopClub/tokens/cube/Purple:2
 msgid "A purple token."
-msgstr ""
+msgstr "Uma ficha roxa."
 
 #: ../TabletopClub/tokens/cube/Red:1
-#, fuzzy
-#| msgid "Red Cup"
 msgid "Red"
-msgstr "Copo Vermelho"
+msgstr "Vermelho"
 
 #: ../TabletopClub/tokens/cube/Red:2
 msgid "A red token."
-msgstr ""
+msgstr "Uma ficha vermelha."
 
 #: ../TabletopClub/tokens/cube/White:1
-#, fuzzy
-#| msgid "d4 (White)"
 msgid "White"
-msgstr "d4 (Branco)"
+msgstr "Branco"
 
 #: ../TabletopClub/tokens/cube/White:2
 msgid "A white token."
-msgstr ""
+msgstr "Uma ficha branca."
 
 #: ../TabletopClub/tokens/cube/Yellow:1
-#, fuzzy
-#| msgid "d4 (Yellow)"
 msgid "Yellow"
-msgstr "d4 (Amarelo)"
+msgstr "Amarelo"
 
 #: ../TabletopClub/tokens/cube/Yellow:2
 msgid "A yellow token."
-msgstr ""
+msgstr "Uma ficha amarela."
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
