@@ -1,5 +1,6 @@
-# open-tabletop
-# Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows
+# tabletop-club
+# Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2023 Tabletop Club contributors (see game/CREDITS.tres).
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,22 +20,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Resource
+class_name AssetEntryTemplate
+extends AssetEntrySingle
 
-class_name RandomAudioStream
+## An abstract base class for notebook page templates.
+##
+## Note that this class should not be instanced, please use either
+## [AssetEntryTemplateText] or [AssetEntryTemplateImage].
 
-export(Array, AudioStream) var streams = []
 
-var _rng = RandomNumberGenerator.new()
+## A path to the template file.
+export(String, FILE, "*.jpeg,*.jpg,*.png,*.svg,*.txt") var template_path := "" \
+		setget set_template_path
 
-# Return a random audio stream.
-# Returns: A random audio stream from the 'streams' array, null if the array is
-# empty.
-func random_stream() -> AudioStream:
-	if streams.empty():
-		return null
-	
-	return streams[_rng.randi() % streams.size()]
 
-func _init():
-	_rng.randomize()
+# Will be overriden in the child classes, since each class requires a different
+# set of extensions.
+func set_template_path(_value: String) -> void:
+	pass

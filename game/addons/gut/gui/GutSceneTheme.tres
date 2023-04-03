@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=3 format=2]
 
 [sub_resource type="DynamicFontData" id=9]
-font_path = "res://Fonts/Cabin/Cabin-Regular.ttf"
+font_path = "res://fonts/data/Cabin-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=10]
 size = 14

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=6 format=2]
 
-[ext_resource path="res://Scripts/Misc/RandomAudioStream.gd" type="Script" id=1]
+[ext_resource path="res://sounds/audio_stream_list.gd" type="Script" id=1]
 [ext_resource path="res://sounds/cards/cardSlide4.wav" type="AudioStream" id=2]
 [ext_resource path="res://sounds/cards/cardSlide7.wav" type="AudioStream" id=3]
 [ext_resource path="res://sounds/cards/cardSlide1.wav" type="AudioStream" id=4]

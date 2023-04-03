@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
-[ext_resource path="res://Scripts/Misc/RandomAudioStream.gd" type="Script" id=1]
+[ext_resource path="res://sounds/audio_stream_list.gd" type="Script" id=1]
 [ext_resource path="res://sounds/metal_light/impactMetal_light_000.ogg" type="AudioStream" id=2]
 [ext_resource path="res://sounds/metal_light/impactMetal_light_002.ogg" type="AudioStream" id=3]
 [ext_resource path="res://sounds/metal_light/impactMetal_light_001.ogg" type="AudioStream" id=4]
