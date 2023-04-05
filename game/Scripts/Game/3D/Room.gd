@@ -751,6 +751,12 @@ func push_undo_state(func_name: String) -> void:
 	if _srv_undo_disable_state_creation > 0:
 		return
 	
+	if _table_body == null:
+		return
+	
+	if _table_body.mode != RigidBody.MODE_STATIC:
+		return
+	
 	if not UNDO_STATE_EVENT_TIMEOUTS_MS.has(func_name):
 		push_error("Function '%s' has no pre-set timeout!" % func_name)
 		return
