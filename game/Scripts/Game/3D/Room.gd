@@ -409,7 +409,9 @@ remotesync func add_stack_to_stack(stack1_name: String, stack2_name: String,
 
 		var piece_transform = stack1.transform
 		if flip_y:
-			piece_transform = piece_transform.rotated(Vector3.BACK, PI)
+			var new_basis: Basis = piece_transform.basis
+			new_basis = new_basis.rotated(new_basis.z, PI)
+			piece_transform.basis = new_basis
 
 		stack2.add_piece(piece_entry, piece_transform)
 
