@@ -2096,11 +2096,15 @@ remotesync func transfer_stack_contents(stack1_name: String, stack2_name: String
 		var index = stack1.pop_index()
 		contents.push_back(stack1.remove_piece(index))
 
+	var stack_facing_up = stack1.transform.basis.y.y > 0.0
+	var add_to = Stack.STACK_TOP if stack_facing_up else Stack.STACK_BOTTOM
+
 	while not contents.empty():
 		var piece_meta = contents.pop_back()
 		var piece_entry = piece_meta["piece_entry"]
 		var piece_transform = piece_meta["transform"]
-		stack2.add_piece(piece_entry, piece_transform, Stack.STACK_TOP)
+		piece_transform.basis = stack1.transform.basis * piece_transform.basis
+		stack2.add_piece(piece_entry, piece_transform, add_to)
 
 func _ready():
 	_srv_undo_state_creation_disable()
