@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Misc/ActualTextFile.gd"
 }, {
-"base": "Resource",
+"base": "ResourceWithErrors",
 "class": "AssetEntry",
 "language": "GDScript",
 "path": "res://assets/entry/asset_entry.gd"
@@ -78,6 +78,11 @@ _global_script_classes=[ {
 "class": "AssetEntryTemplateText",
 "language": "GDScript",
 "path": "res://assets/entry/entry_template_text.gd"
+}, {
+"base": "ResourceWithErrors",
+"class": "AssetPack",
+"language": "GDScript",
+"path": "res://assets/asset_pack.gd"
 }, {
 "base": "Resource",
 "class": "AudioStreamList",
@@ -174,6 +179,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/UI/Previews/Preview.gd"
 }, {
+"base": "Resource",
+"class": "ResourceWithErrors",
+"language": "GDScript",
+"path": "res://resource_with_errors.gd"
+}, {
 "base": "Reference",
 "class": "SanityCheck",
 "language": "GDScript",
@@ -244,6 +254,7 @@ _global_script_class_icons={
 "AssetEntryTemplate": "",
 "AssetEntryTemplateImage": "",
 "AssetEntryTemplateText": "",
+"AssetPack": "",
 "AudioStreamList": "",
 "BindButton": "",
 "Card": "",
@@ -263,6 +274,7 @@ _global_script_class_icons={
 "PieceCache": "",
 "PieceContainer": "",
 "Preview": "",
+"ResourceWithErrors": "",
 "SanityCheck": "",
 "SaveDialog": "",
 "SpeakerPiece": "",

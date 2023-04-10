@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 class_name AssetEntry
-extends Resource
+extends ResourceWithErrors
 
 ## Base class for all of the entries in the AssetDB.
 ##
@@ -37,23 +37,28 @@ export(String) var id := "_" setget set_id
 ## A custom description for the asset.
 export(String, MULTILINE) var desc := ""
 
+## The name of the [AssetPack] this entry belongs to, empty if the entry is not
+## in a pack.
+export(String) var pack := "TabletopClub" setget set_pack
+
+## The type of the entry within the [AssetPack], empty if the entry is not in a
+## pack.
+export(String) var type := ""
+
 ## The display name of the asset. This can differ from [member id], for example
 ## if the name has been translated to another language. If set with an empty
 ## string, [member id] is returned instead.
 var name := "" setget set_name, get_name
 
-## The name of the [AssetPack] this entry belongs to, empty if the entry is not
-## in a pack.
-var pack := "" setget set_pack
-
-## The type of the entry within the [AssetPack], empty if the entry is not in a
-## pack.
-## TODO: Use StringName instead of String in 4.x
-var type := ""
-
 ## A flag for whether the entry is temporary, for example, if it was provided
 ## by the host.
 var temp := false
+
+
+## Compare two entries using their ID, and return if the first comes before the
+## second in a sorted list.
+static func compare_entries(a: AssetEntry, b: AssetEntry) -> bool:
+	return a.id < b.id
 
 
 func get_name() -> String:
