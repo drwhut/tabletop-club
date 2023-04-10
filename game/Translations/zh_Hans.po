@@ -9,175 +9,178 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-30 11:14+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-04-11 11:54+0000\n"
+"Last-Translator: near2see <near2see@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"tabletop-club/game/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.17-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
 msgid "Importing assets..."
-msgstr ""
+msgstr "资源导入..."
 
 #: ../Scenes/ImportAssets.tscn:56
 msgid "Missing Asset Folder"
-msgstr ""
+msgstr "资源文件夹丢失"
 
 #: ../Scenes/ImportAssets.tscn:62
 msgid "Missing Module"
-msgstr ""
+msgstr "模块丢失"
 
 #: ../Scenes/Loading.tscn:41
 msgid "Loading..."
-msgstr ""
+msgstr "加载中..."
 
 #: ../Scenes/MainMenu.tscn:49
 msgid "Singleplayer"
-msgstr ""
+msgstr "单人模式"
 
 #: ../Scenes/MainMenu.tscn:56 ../Scenes/MainMenu.tscn:139
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
-msgstr ""
+msgstr "多人模式"
 
 #: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:63
 msgid "Options"
-msgstr ""
+msgstr "选项"
 
 #: ../Scenes/MainMenu.tscn:70 ../Scenes/MainMenu.tscn:296
 msgid "Credits"
-msgstr ""
+msgstr "鸣谢"
 
 #: ../Scenes/MainMenu.tscn:77
 msgid "Quit"
-msgstr ""
+msgstr "退出"
 
 #: ../Scenes/MainMenu.tscn:96 ../Scenes/MainMenu.tscn:321
 msgid "Import Log"
-msgstr ""
+msgstr "日志导入"
 
 #: ../Scenes/MainMenu.tscn:97
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:105
 msgid "Tabletop Club on Itch.io"
-msgstr ""
+msgstr "Tabletop Club on Itch.io"
 
 #: ../Scenes/MainMenu.tscn:114
 msgid "Source Code"
-msgstr ""
+msgstr "源码"
 
 #: ../Scenes/MainMenu.tscn:123
 msgid "Documentation"
-msgstr ""
+msgstr "文档"
 
 #: ../Scenes/MainMenu.tscn:132 ../Scenes/MainMenu.tscn:227
 msgid "Information"
-msgstr ""
+msgstr "信息"
 
 #: ../Scenes/MainMenu.tscn:157
 msgid "Host Game"
-msgstr ""
+msgstr "主机游戏"
 
 #: ../Scenes/MainMenu.tscn:163
 msgid "Create a new lobby for your friends to join over the Internet."
-msgstr ""
+msgstr "创建一个新的房间和线上好友一起游玩。"
 
 #: ../Scenes/MainMenu.tscn:175 ../Scenes/MainMenu.tscn:222
 msgid "Join Game"
-msgstr ""
+msgstr "加入游戏"
 
 #: ../Scenes/MainMenu.tscn:181
 msgid "Use a room code to join your friend's lobby."
-msgstr ""
+msgstr "通过房间号加入好友的房间。"
 
 #: ../Scenes/MainMenu.tscn:187
 msgid "Enter Room Code"
-msgstr ""
+msgstr "输入房间号"
 
 #: ../Scenes/MainMenu.tscn:207
 msgid "Room Code:"
-msgstr ""
+msgstr "房间号："
 
 #: ../Scenes/MainMenu.tscn:216
 msgid "ABCD"
-msgstr ""
+msgstr "ABCD"
 
 #: ../Scenes/MainMenu.tscn:314
 msgid "Error"
-msgstr ""
+msgstr "错误"
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
-msgstr ""
+msgstr "声音"
 
 #: ../Scenes/OptionsMenu.tscn:61
 msgid "Master Volume"
-msgstr ""
+msgstr "最大音量"
 
 #: ../Scenes/OptionsMenu.tscn:68
 msgid "Sets the overall volume of all sources of sound in the game."
-msgstr ""
+msgstr "设置游戏中所有音源的总音量。"
 
 #: ../Scenes/OptionsMenu.tscn:79
 msgid "Music Volume"
-msgstr ""
+msgstr "音乐音量"
 
 #: ../Scenes/OptionsMenu.tscn:87
 msgid "Sets the volume of all music sources in the game."
-msgstr ""
+msgstr "设置游戏中所有音乐源的音量。"
 
 #: ../Scenes/OptionsMenu.tscn:98
 msgid "Sounds Volume"
-msgstr ""
+msgstr "音量"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
 "Sets the volume of sound sources played manually throughout the game, for"
 " example, from speakers."
-msgstr ""
+msgstr "设置在整个游戏过程中手动播放的声源的音量，例如来自扬声器的音量。"
 
 #: ../Scenes/OptionsMenu.tscn:117
 msgid "Effects Volume"
-msgstr ""
+msgstr "效果音量"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
 "Sets the volume of sound effects played automatically throughout the "
 "game, for example, pieces falling on the table. "
-msgstr ""
+msgstr "设置在整个游戏过程中自动播放的音效音量，例如，棋子掉在桌子上。 "
 
 #: ../Scenes/OptionsMenu.tscn:142
 msgid "Controls"
-msgstr ""
+msgstr "控制"
 
 #: ../Scenes/OptionsMenu.tscn:155
 msgid "Mouse Horizontal Sensitivity"
-msgstr ""
+msgstr "鼠标水平灵敏度"
 
 #: ../Scenes/OptionsMenu.tscn:162
 msgid "Sets the horizontal sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "设置相机旋转的水平灵敏度。"
 
 #: ../Scenes/OptionsMenu.tscn:174
 msgid "Mouse Vertical Sensitivity"
-msgstr ""
+msgstr "鼠标垂直灵敏度"
 
 #: ../Scenes/OptionsMenu.tscn:182
 msgid "Sets the vertical sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "设置相机旋转的垂直灵敏度。"
 
 #: ../Scenes/OptionsMenu.tscn:194
 msgid "Mouse Horizontal Invert"
-msgstr ""
+msgstr "鼠标水平反相"
 
 #: ../Scenes/OptionsMenu.tscn:202
 msgid "Used to invert the rotation of the camera horizontally."
-msgstr ""
+msgstr "用于水平反转相机的旋转。"
 
 #: ../Scenes/OptionsMenu.tscn:209
 msgid "Mouse Vertical Invert"
@@ -261,7 +264,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:360
 msgid "Hand Preview Delay"
-msgstr ""
+msgstr "手牌预览延迟"
 
 #: ../Scenes/OptionsMenu.tscn:368
 msgid ""
