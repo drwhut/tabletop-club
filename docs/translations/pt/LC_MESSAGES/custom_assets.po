@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-30 11:14+0100\n"
-"PO-Revision-Date: 2023-04-17 18:13+0000\n"
+"PO-Revision-Date: 2023-04-18 21:48+0000\n"
 "Last-Translator: Martim Gomes Pires Paraíba <martim.paraiba@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/pt/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -79,10 +79,14 @@ msgid ""
 "what type of asset it is, and what the file type needed for that asset type "
 "is. Note that asset packs don't need to have all of these sub-folders."
 msgstr ""
+"Cada pacote de conteúdos divide os seus conteúdos em sub-pastas diferentes, "
+"dependo no tipo de conteúdo, e que tipo de ficheiro é preciso para esse tipo "
+"de conteúdo. Note que pacotes de conteúdo não precisam de ter todas estas "
+"sub-pastas."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
 msgid "Sub-folder"
-msgstr ""
+msgstr "Sub-pasta"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
 msgid "File Type"
@@ -427,10 +431,8 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
-#, fuzzy
-#| msgid "Objects"
 msgid "Objects, Tables"
-msgstr "Objetos"
+msgstr "Objetos, Tabelas"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
 msgid "``0``"
