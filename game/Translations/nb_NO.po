@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-17 17:29+0100\n"
-"PO-Revision-Date: 2023-04-17 16:34+0000\n"
+"PO-Revision-Date: 2023-04-17 18:13+0000\n"
 "Last-Translator: Blood Axe <bloodaxenor@protonmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "tabletop-club/game/nb_NO/>\n"
@@ -79,11 +79,11 @@ msgstr "Dokumentasjon"
 
 #: ../Scenes/MainMenu.tscn:134
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #: ../Scenes/MainMenu.tscn:143
 msgid "Matrix.org"
-msgstr ""
+msgstr "Matrix.org"
 
 #: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
@@ -94,8 +94,6 @@ msgid "Host Game"
 msgstr "Vertstjen spill"
 
 #: ../Scenes/MainMenu.tscn:183
-#, fuzzy
-#| msgid "Create a new lobby for your friends to join over the internet."
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr "Opprett ny lobby for venner som tar del over Internett."
 
@@ -564,20 +562,20 @@ msgstr "Farge"
 
 #: ../Scenes/OptionsMenu.tscn:1005
 msgid "The player's displayed colour in multiplayer lobbies."
-msgstr ""
+msgstr "Spillerens synlige farge i flerspillerlobbyer."
 
 #: ../Scenes/OptionsMenu.tscn:1015
 msgid "Chat Font Size"
-msgstr ""
+msgstr "Chat tekststørrelse"
 
 #: ../Scenes/OptionsMenu.tscn:1023
 msgid "Changes the size of the text in the chat box."
-msgstr ""
+msgstr "Endrer størrelsen på teksten i chatteboksen."
 
 #: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
 #: ../Scripts/OptionsMenu.gd:78
 msgid "Medium"
-msgstr ""
+msgstr "Middels"
 
 #: ../Scenes/OptionsMenu.tscn:1034
 msgid "Hide Player Cursors"
@@ -587,20 +585,24 @@ msgstr "Skjul spillerpekere"
 msgid ""
 "Used to stop showing other player's cursors when in multiplayer lobbies."
 msgstr ""
+"Brukes for å slutte å se andre spilleres markører når du er i "
+"flerspillerlobbyer."
 
 #: ../Scenes/OptionsMenu.tscn:1050
 msgid "Censor Profanity"
-msgstr ""
+msgstr "Sensurer støtende ord"
 
 #: ../Scenes/OptionsMenu.tscn:1058
 msgid ""
 "Used to censor potentially offensive words in the chat window when in "
 "multiplayer lobbies."
 msgstr ""
+"Brukes til å sensurere potensielt støtende ord i chattevinduet i "
+"flerspillerlobbyer."
 
 #: ../Scenes/OptionsMenu.tscn:1073
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: ../Scenes/OptionsMenu.tscn:1087
 msgid "Window Mode"
@@ -608,7 +610,7 @@ msgstr "Vindusmodus"
 
 #: ../Scenes/OptionsMenu.tscn:1094
 msgid "Sets the mode in which the game window is displayed."
-msgstr ""
+msgstr "Angir modusen som spillvinduet vises i."
 
 #: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:72
 msgid "Windowed"
@@ -620,7 +622,7 @@ msgstr "Synsfelt"
 
 #: ../Scenes/OptionsMenu.tscn:1113
 msgid "Sets the field of view of the in-game camera."
-msgstr ""
+msgstr "Stiller inn synsfeltet til kameraet i spillet."
 
 #: ../Scenes/OptionsMenu.tscn:1126
 msgid "VSync"
@@ -628,7 +630,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1145
 msgid "Shadow Detail"
-msgstr ""
+msgstr "Skyggedetaljer"
 
 #: ../Scenes/OptionsMenu.tscn:1165
 msgid "Multisample Anti-Aliasing (MSAA)"
@@ -649,7 +651,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:77
 msgid "Low"
-msgstr ""
+msgstr "Lav"
 
 #: ../Scenes/OptionsMenu.tscn:1228
 msgid "Depth of Field"
@@ -698,7 +700,7 @@ msgstr "OK"
 
 #: ../Scenes/OptionsMenu.tscn:1370
 msgid "Please press a key or button to bind it..."
-msgstr ""
+msgstr "Trykk på en tast eller knapp for å binde den..."
 
 #: ../Scenes/OptionsMenu.tscn:1390
 msgid "Cancel"
@@ -706,15 +708,15 @@ msgstr "Avbryt"
 
 #: ../Scenes/OptionsMenu.tscn:1397
 msgid "Keep video settings?"
-msgstr ""
+msgstr "Behold videoinnstillinger?"
 
 #: ../Scenes/OptionsMenu.tscn:1405
 msgid "Reimporting Assets"
-msgstr ""
+msgstr "Reimporterer ressurser"
 
 #: ../Scenes/OptionsMenu.tscn:1423
 msgid "Warning!"
-msgstr ""
+msgstr "Advarsel!"
 
 #: ../Scenes/RandomMusicPlayer.tscn:23
 msgid "Now Playing:"
@@ -722,93 +724,91 @@ msgstr "Nå spiller:"
 
 #: ../Scenes/Game/CameraController.tscn:99
 msgid "Deal X cards"
-msgstr ""
+msgstr "Del ut X kort"
 
 #: ../Scenes/Game/CameraController.tscn:129
 msgid "Select track"
-msgstr ""
+msgstr "Velg lydspor"
 
 #: ../Scenes/Game/CameraController.tscn:147
 msgid "Positional audio"
-msgstr ""
+msgstr "Posisjonbasert lyd"
 
 #: ../Scenes/Game/CameraController.tscn:153
 msgid "Range:"
-msgstr ""
+msgstr "Rekkevidde:"
 
 #: ../Scenes/Game/CameraController.tscn:173
 msgid "Take X off top"
-msgstr ""
+msgstr "Ta X fra toppen"
 
 #: ../Scenes/Game/CameraController.tscn:186
 msgid "Take X out"
-msgstr ""
+msgstr "Ta ut X"
 
 #: ../Scenes/Game/CameraController.tscn:242
 msgid "Position:"
-msgstr ""
+msgstr "Posisjon:"
 
 #: ../Scenes/Game/CameraController.tscn:253
 #: ../Scenes/Game/CameraController.tscn:311
 #: ../Scenes/Game/CameraController.tscn:363
 msgid "X:"
-msgstr ""
+msgstr "X:"
 
 #: ../Scenes/Game/CameraController.tscn:269
 #: ../Scenes/Game/CameraController.tscn:325
 #: ../Scenes/Game/CameraController.tscn:379
 msgid "Y:"
-msgstr ""
+msgstr "Y:"
 
 #: ../Scenes/Game/CameraController.tscn:285
 #: ../Scenes/Game/CameraController.tscn:339
 #: ../Scenes/Game/CameraController.tscn:395
 msgid "Z:"
-msgstr ""
+msgstr "Z:"
 
 #: ../Scenes/Game/CameraController.tscn:300
 msgid "Rotation (°):"
-msgstr ""
+msgstr "Rotasjon (°):"
 
 #: ../Scenes/Game/CameraController.tscn:352
 #: ../Scenes/Game/CameraController.tscn:529
 msgid "Scale:"
-msgstr ""
+msgstr "Størrelse:"
 
 #: ../Scenes/Game/CameraController.tscn:430
 msgid "Value:"
-msgstr ""
+msgstr "Verdi:"
 
 #: ../Scenes/Game/CameraController.tscn:442
 #: ../Scripts/Game/CameraController.gd:1285
 msgid "Set value"
-msgstr ""
+msgstr "Angi verdi"
 
 #: ../Scenes/Game/CameraController.tscn:473
 msgid "Strength:"
-msgstr ""
+msgstr "Styrke:"
 
 #: ../Scenes/Game/CameraController.tscn:484
-#, fuzzy
-#| msgid "10%"
 msgid "1.0"
-msgstr "10%"
+msgstr "1.0"
 
 #: ../Scenes/Game/CameraController.tscn:561
 msgid "System:"
-msgstr ""
+msgstr "System:"
 
 #: ../Scenes/Game/CameraController.tscn:567
 msgid "Metric"
-msgstr ""
+msgstr "Metrisk"
 
 #: ../Scenes/Game/CameraController.tscn:602
 msgid "Brush Color:"
-msgstr ""
+msgstr "Penselfarge:"
 
 #: ../Scenes/Game/CameraController.tscn:615
 msgid "Brush Size:"
-msgstr ""
+msgstr "Penselstørrelse:"
 
 #: ../Scenes/Game/CameraController.tscn:626
 #: ../Scenes/Game/CameraController.tscn:680
@@ -817,20 +817,20 @@ msgstr "1"
 
 #: ../Scenes/Game/CameraController.tscn:669
 msgid "Eraser Size:"
-msgstr ""
+msgstr "Viskelærstørrelse:"
 
 #: ../Scenes/Game/CameraController.tscn:699
 msgid "Select a track..."
-msgstr ""
+msgstr "Velg et lydspor..."
 
 #: ../Scenes/Game/CameraController.tscn:704
 #, python-format
 msgid "Loaded %d tracks."
-msgstr ""
+msgstr "Lastet inn %d lydspor."
 
 #: ../Scenes/Game/Game.tscn:35
 msgid "Missing Assets"
-msgstr ""
+msgstr "Mangler ressurser"
 
 #: ../Scenes/Game/Game.tscn:44
 #, python-format
