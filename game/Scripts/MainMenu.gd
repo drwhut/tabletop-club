@@ -255,6 +255,12 @@ func _on_CodeIcon_pressed():
 func _on_HelpButton_pressed():
 	OS.shell_open("https://tabletop-club.readthedocs.io/en/latest/")
 
+func _on_DiscordButton_pressed():
+	OS.shell_open("https://discord.gg/GqYkGV4WwX")
+
+func _on_MatrixButton_pressed():
+	OS.shell_open("https://matrix.to/#/!dbNhzKYPHpcgZgUkRi:matrix.org?via=matrix.org")
+
 func _on_InfoButton_pressed():
 	_info_dialog.popup_centered()
 	_license_label.grab_focus()

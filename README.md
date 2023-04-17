@@ -27,6 +27,13 @@ To download the game, you can either
 or
 [compile the game from source](https://tabletop-club.readthedocs.io/en/latest/general/download/compiling_from_source.html).
 
+## Community
+
+If you wish to join a growing community of Tabletop Club players, you are always
+welcome to the official [Discord](https://discord.gg/GqYkGV4WwX) and
+[Matrix](https://matrix.to/#/!dbNhzKYPHpcgZgUkRi:matrix.org?via=matrix.org)
+servers!
+
 ## Languages
 
 [![Translation Status](https://hosted.weblate.org/widgets/tabletop-club/-/svg-badge.svg)](https://hosted.weblate.org/engage/tabletop-club/)

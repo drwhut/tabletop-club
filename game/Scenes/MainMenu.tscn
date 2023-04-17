@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/FallingWorld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/HelpIcon.svg" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Images/StoreIcon.svg" type="Texture" id=10]
 [ext_resource path="res://Images/CodeIcon.svg" type="Texture" id=11]
 [ext_resource path="res://Images/ErrorIcon.svg" type="Texture" id=12]
+[ext_resource path="res://Images/ChatIcon.svg" type="Texture" id=13]
+[ext_resource path="res://Images/ChatIconFilled.svg" type="Texture" id=14]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -98,8 +100,8 @@ text = "0"
 icon = ExtResource( 12 )
 
 [node name="StoreButton" type="Button" parent="MainView/MainList/HBoxContainer"]
-margin_left = 116.0
-margin_right = 148.0
+margin_left = 44.0
+margin_right = 76.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 hint_tooltip = "Tabletop Club on Itch.io"
@@ -107,8 +109,8 @@ icon = ExtResource( 10 )
 expand_icon = true
 
 [node name="SourceCodeButton" type="Button" parent="MainView/MainList/HBoxContainer"]
-margin_left = 152.0
-margin_right = 184.0
+margin_left = 80.0
+margin_right = 112.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 hint_tooltip = "Source Code"
@@ -116,12 +118,30 @@ icon = ExtResource( 11 )
 expand_icon = true
 
 [node name="HelpButton" type="Button" parent="MainView/MainList/HBoxContainer"]
-margin_left = 188.0
-margin_right = 220.0
+margin_left = 116.0
+margin_right = 148.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 hint_tooltip = "Documentation"
 icon = ExtResource( 2 )
+expand_icon = true
+
+[node name="DiscordButton" type="Button" parent="MainView/MainList/HBoxContainer"]
+margin_left = 152.0
+margin_right = 184.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+hint_tooltip = "Discord"
+icon = ExtResource( 13 )
+expand_icon = true
+
+[node name="MatrixButton" type="Button" parent="MainView/MainList/HBoxContainer"]
+margin_left = 188.0
+margin_right = 220.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+hint_tooltip = "Matrix.org"
+icon = ExtResource( 14 )
 expand_icon = true
 
 [node name="InfoButton" type="Button" parent="MainView/MainList/HBoxContainer"]
@@ -342,6 +362,8 @@ visible = false
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/StoreButton" to="." method="_on_HomeIcon_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/SourceCodeButton" to="." method="_on_CodeIcon_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/HelpButton" to="." method="_on_HelpButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/HBoxContainer/DiscordButton" to="." method="_on_DiscordButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/HBoxContainer/MatrixButton" to="." method="_on_MatrixButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="MultiplayerDialog/HBoxContainer/HostGameContainer/HostGameButton" to="." method="_on_HostGameButton_pressed"]
 [connection signal="pressed" from="MultiplayerDialog/HBoxContainer/EnterCodeContainer/EnterCodeButton" to="." method="_on_EnterCodeButton_pressed"]
