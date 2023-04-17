@@ -9,611 +9,649 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-30 11:14+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-04-17 16:34+0000\n"
+"Last-Translator: kompowiec2 <diasp@o2.pl>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/tabletop-club/"
+"game/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.17\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
 msgid "Importing assets..."
-msgstr ""
+msgstr "import zasobów..."
 
 #: ../Scenes/ImportAssets.tscn:56
 msgid "Missing Asset Folder"
-msgstr ""
+msgstr "Brakujący folder zasobów"
 
 #: ../Scenes/ImportAssets.tscn:62
 msgid "Missing Module"
-msgstr ""
+msgstr "Brakujący moduł"
 
 #: ../Scenes/Loading.tscn:41
 msgid "Loading..."
-msgstr ""
+msgstr "Ładowanie..."
 
 #: ../Scenes/MainMenu.tscn:49
 msgid "Singleplayer"
-msgstr ""
+msgstr "tryb jednoosobowy"
 
 #: ../Scenes/MainMenu.tscn:56 ../Scenes/MainMenu.tscn:139
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
-msgstr ""
+msgstr "gra wieloosobowa"
 
 #: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:63
 msgid "Options"
-msgstr ""
+msgstr "Opcje"
 
 #: ../Scenes/MainMenu.tscn:70 ../Scenes/MainMenu.tscn:296
 msgid "Credits"
-msgstr ""
+msgstr "Autorzy"
 
 #: ../Scenes/MainMenu.tscn:77
 msgid "Quit"
-msgstr ""
+msgstr "Wyjście"
 
 #: ../Scenes/MainMenu.tscn:96 ../Scenes/MainMenu.tscn:321
 msgid "Import Log"
-msgstr ""
+msgstr "Importuj dziennik"
 
 #: ../Scenes/MainMenu.tscn:97
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:105
 msgid "Tabletop Club on Itch.io"
-msgstr ""
+msgstr "Tabletop Club na Itch.io"
 
 #: ../Scenes/MainMenu.tscn:114
 msgid "Source Code"
-msgstr ""
+msgstr "Kod źródłowy"
 
 #: ../Scenes/MainMenu.tscn:123
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentacja"
 
 #: ../Scenes/MainMenu.tscn:132 ../Scenes/MainMenu.tscn:227
 msgid "Information"
-msgstr ""
+msgstr "Informacja"
 
 #: ../Scenes/MainMenu.tscn:157
 msgid "Host Game"
-msgstr ""
+msgstr "Gospodarz gry"
 
 #: ../Scenes/MainMenu.tscn:163
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr ""
+"Utwórz nowe lobby, do którego Twoi znajomi będą mogli dołączyć przez "
+"Internet."
 
 #: ../Scenes/MainMenu.tscn:175 ../Scenes/MainMenu.tscn:222
 msgid "Join Game"
-msgstr ""
+msgstr "Dołącz do gry"
 
 #: ../Scenes/MainMenu.tscn:181
 msgid "Use a room code to join your friend's lobby."
-msgstr ""
+msgstr "Użyj kodu pokoju, aby dołączyć do poczekalni znajomego."
 
 #: ../Scenes/MainMenu.tscn:187
 msgid "Enter Room Code"
-msgstr ""
+msgstr "Wprowadź kod pokoju"
 
 #: ../Scenes/MainMenu.tscn:207
 msgid "Room Code:"
-msgstr ""
+msgstr "Kod pokoju:"
 
 #: ../Scenes/MainMenu.tscn:216
 msgid "ABCD"
-msgstr ""
+msgstr "ABCD"
 
 #: ../Scenes/MainMenu.tscn:314
 msgid "Error"
-msgstr ""
+msgstr "Błąd"
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: ../Scenes/OptionsMenu.tscn:61
 msgid "Master Volume"
-msgstr ""
+msgstr "Głośność"
 
 #: ../Scenes/OptionsMenu.tscn:68
 msgid "Sets the overall volume of all sources of sound in the game."
-msgstr ""
+msgstr "Ustawia ogólną głośność wszystkich źródeł dźwięku w grze."
 
 #: ../Scenes/OptionsMenu.tscn:79
 msgid "Music Volume"
-msgstr ""
+msgstr "Głośność muzyki"
 
 #: ../Scenes/OptionsMenu.tscn:87
 msgid "Sets the volume of all music sources in the game."
-msgstr ""
+msgstr "Ustawia głośność wszystkich źródeł muzyki w grze."
 
 #: ../Scenes/OptionsMenu.tscn:98
 msgid "Sounds Volume"
-msgstr ""
+msgstr "Głośność dźwięków"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
 "Sets the volume of sound sources played manually throughout the game, for "
 "example, from speakers."
 msgstr ""
+"Ustawia głośność źródeł dźwięku odtwarzanych ręcznie podczas gry, na "
+"przykład z głośników."
 
 #: ../Scenes/OptionsMenu.tscn:117
 msgid "Effects Volume"
-msgstr ""
+msgstr "Efekty dźwiękowe"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
 "Sets the volume of sound effects played automatically throughout the game, "
 "for example, pieces falling on the table. "
 msgstr ""
+"Ustawia głośność efektów dźwiękowych odtwarzanych automatycznie podczas gry, "
+"np. spadających na stół kawałków. "
 
 #: ../Scenes/OptionsMenu.tscn:142
 msgid "Controls"
-msgstr ""
+msgstr "Sterowanie"
 
 #: ../Scenes/OptionsMenu.tscn:155
 msgid "Mouse Horizontal Sensitivity"
-msgstr ""
+msgstr "Pozioma czułość myszy"
 
 #: ../Scenes/OptionsMenu.tscn:162
 msgid "Sets the horizontal sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "Ustawia poziomą czułość obrotu kamery."
 
 #: ../Scenes/OptionsMenu.tscn:174
 msgid "Mouse Vertical Sensitivity"
-msgstr ""
+msgstr "Pionowa czułość myszy"
 
 #: ../Scenes/OptionsMenu.tscn:182
 msgid "Sets the vertical sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "Ustawia pionową czułość obrotu kamery."
 
 #: ../Scenes/OptionsMenu.tscn:194
 msgid "Mouse Horizontal Invert"
-msgstr ""
+msgstr "Odwróć mysz w poziomie"
 
 #: ../Scenes/OptionsMenu.tscn:202
 msgid "Used to invert the rotation of the camera horizontally."
-msgstr ""
+msgstr "Służy do odwracania obrotu kamery w poziomie."
 
 #: ../Scenes/OptionsMenu.tscn:209
 msgid "Mouse Vertical Invert"
-msgstr ""
+msgstr "Pionowe odwrócenie myszy"
 
 #: ../Scenes/OptionsMenu.tscn:217
 msgid "Used to invert the rotation of the camera vertically."
-msgstr ""
+msgstr "Służy do odwracania obrotu kamery w pionie."
 
 #: ../Scenes/OptionsMenu.tscn:224
 msgid "Camera Movement Speed"
-msgstr ""
+msgstr "Szybkość ruchu kamery"
 
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
-msgstr ""
+msgstr "Służy do ustawiania szybkości przesuwania się kamery po stole."
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
-msgstr ""
+msgstr "Przytrzymaj lewy przycisk myszy, aby przesunąć kamerę"
 
 #: ../Scenes/OptionsMenu.tscn:252
 msgid ""
 "Used to allow the player to move the camera by dragging the mouse across the "
 "table."
 msgstr ""
+"Służy do umożliwienia graczowi poruszania kamerą poprzez przeciąganie myszy "
+"po stole."
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
-msgstr ""
+msgstr "Czułość zbliżenia"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
 "Sets how fast the camera zooms in and out of the table when using the scroll "
 "wheel."
 msgstr ""
+"Ustawia, jak szybko kamera przybliża i oddala stół podczas używania kółka "
+"przewijania."
 
 #: ../Scenes/OptionsMenu.tscn:279
 msgid "Zoom Invert"
-msgstr ""
+msgstr "Odwrócenie powiększenia"
 
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
 msgstr ""
+"Służy do odwracania kierunku powiększania podczas używania kółka przewijania."
 
 #: ../Scenes/OptionsMenu.tscn:294
 msgid "Piece Lift Sensitivity"
-msgstr ""
+msgstr "Czułość podnoszenia elementu"
 
 #: ../Scenes/OptionsMenu.tscn:302
 msgid "Sets how fast a piece will move when lifting it off the table."
 msgstr ""
+"Ustawia szybkość poruszania się elementu podczas podnoszenia go ze stołu."
 
 #: ../Scenes/OptionsMenu.tscn:314
 msgid "Piece Lift Invert"
-msgstr ""
+msgstr "Odwróć podnoszenie elementów"
 
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
 "Used to invert the direction a piece will go when lifting it off the table."
 msgstr ""
+"Służy do odwracania kierunku, w jakim ułoży się element podczas podnoszenia "
+"go ze stołu."
 
 #: ../Scenes/OptionsMenu.tscn:329
 msgid "Piece Rotation Invert"
-msgstr ""
+msgstr "Odwróć obrót elementu"
 
 #: ../Scenes/OptionsMenu.tscn:337
 msgid "Used to invert the direction a piece will rotate."
-msgstr ""
+msgstr "Służy do odwracania kierunku, w którym element będzie się obracał."
 
 #: ../Scenes/OptionsMenu.tscn:344
 msgid "Hand Preview Enabled"
-msgstr ""
+msgstr "Podgląd rozdania włączony"
 
 #: ../Scenes/OptionsMenu.tscn:352
 msgid ""
 "When set, hovering over a card in your hand will display an enhanced preview "
 "of the card after a short period of time."
 msgstr ""
+"Po ustawieniu najechanie kursorem na kartę w dłoni wyświetli po krótkim "
+"czasie ulepszony podgląd karty."
 
 #: ../Scenes/OptionsMenu.tscn:360
 msgid "Hand Preview Delay"
-msgstr ""
+msgstr "Opóźnienie podglądu rozdania"
 
 #: ../Scenes/OptionsMenu.tscn:368
 msgid ""
 "Used to set how long the mouse needs to be kept still before a preview of a "
 "card is displayed from the hand."
 msgstr ""
+"Służy do ustawienia, jak długo mysz musi być trzymana nieruchomo, zanim "
+"zostanie wyświetlony podgląd karty z ręki."
 
 #: ../Scenes/OptionsMenu.tscn:380
 msgid "Hand Preview Size"
-msgstr ""
+msgstr "Rozmiar podglądu dłoni"
 
 #: ../Scenes/OptionsMenu.tscn:388
 msgid "Used to control how large the card preview is."
-msgstr ""
+msgstr "Służy do kontrolowania wielkości podglądu karty."
 
 #: ../Scenes/OptionsMenu.tscn:400
 msgid "Hide Control Hints"
-msgstr ""
+msgstr "Ukryj wskazówki dotyczące sterowania"
 
 #: ../Scenes/OptionsMenu.tscn:408
 msgid "Used to hide the dynamic text displaying how to control the game."
 msgstr ""
+"Służy do ukrywania dynamicznego tekstu wyświetlającego sposób kontrolowania "
+"gry."
 
 #: ../Scenes/OptionsMenu.tscn:421
 msgid "General"
-msgstr ""
+msgstr "Ogólne"
 
 #: ../Scenes/OptionsMenu.tscn:435
 msgid "Language"
-msgstr ""
+msgstr "Język"
 
 #: ../Scenes/OptionsMenu.tscn:455
 msgid "Autosave Interval"
-msgstr ""
+msgstr "Interwał automatycznego zapisywania"
 
 #: ../Scenes/OptionsMenu.tscn:463
 msgid "Used to set how often autosaves are created."
-msgstr ""
+msgstr "Służy do ustawiania częstotliwości tworzenia automatycznych zapisów."
 
 #: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:68
 msgid "5 minutes"
-msgstr ""
+msgstr "5 minut"
 
 #: ../Scenes/OptionsMenu.tscn:474
 msgid "Autosave File Count"
-msgstr ""
+msgstr "Automatyczne zapisywanie liczby plików"
 
 #: ../Scenes/OptionsMenu.tscn:482
 msgid "Used to set the maximum number of autosave files that are made."
 msgstr ""
+"Służy do ustawiania maksymalnej liczby tworzonych plików automatycznego "
+"zapisywania."
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Skip Splash Screen"
-msgstr ""
+msgstr "Pomiń ekran powitalny"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Skips the Godot Engine splash screen when the game starts."
-msgstr ""
+msgstr "Pomija ekran powitalny Godot Engine podczas uruchamiania gry."
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
-msgstr ""
+msgstr "Pokaż ostrzeżenia systemowe"
 
 #: ../Scenes/OptionsMenu.tscn:516
 msgid "Displays system warnings in the chat box."
-msgstr ""
+msgstr "Wyświetla ostrzeżenia systemowe w oknie czatu."
 
 #: ../Scenes/OptionsMenu.tscn:525
 msgid "Show System Errors"
-msgstr ""
+msgstr "Pokaż błędy systemowe"
 
 #: ../Scenes/OptionsMenu.tscn:533
 msgid "Displays system errors in the chat box."
-msgstr ""
+msgstr "Wyświetla błędy systemowe w oknie czatu."
 
 #: ../Scenes/OptionsMenu.tscn:561
 msgid "Opens the assets folder in your file explorer."
-msgstr ""
+msgstr "Otwiera folder zasobów w eksploratorze plików."
 
 #: ../Scenes/OptionsMenu.tscn:563
 msgid "Open Assets Folder"
-msgstr ""
+msgstr "Otwórz folder zasobów"
 
 #: ../Scenes/OptionsMenu.tscn:579
 msgid "Reimport Assets"
-msgstr ""
+msgstr "Ponownie zaimportuj zasoby"
 
 #: ../Scenes/OptionsMenu.tscn:592
 msgid "Key Bindings"
-msgstr ""
+msgstr "Skróty klawiszowe"
 
 #: ../Scenes/OptionsMenu.tscn:606
 msgid "Move Forward"
-msgstr ""
+msgstr "Przesuń do przodu"
 
 #: ../Scenes/OptionsMenu.tscn:613
 msgid "Moves the camera forward."
-msgstr ""
+msgstr "Przesuwa kamerę do przodu."
 
 #: ../Scenes/OptionsMenu.tscn:623
 msgid "Move Back"
-msgstr ""
+msgstr "Przesuń wstecz"
 
 #: ../Scenes/OptionsMenu.tscn:631
 msgid "Moves the camera backwards."
-msgstr ""
+msgstr "Przesuwa kamerę do tyłu."
 
 #: ../Scenes/OptionsMenu.tscn:641
 msgid "Move Left"
-msgstr ""
+msgstr "Przesuń w lewo"
 
 #: ../Scenes/OptionsMenu.tscn:649
 msgid "Moves the camera left."
-msgstr ""
+msgstr "Przesuwa kamerę w lewo."
 
 #: ../Scenes/OptionsMenu.tscn:659
 msgid "Move Right"
-msgstr ""
+msgstr "Przesuń w prawo"
 
 #: ../Scenes/OptionsMenu.tscn:667
 msgid "Moves the camera right."
-msgstr ""
+msgstr "Przesuwa kamerę w prawo."
 
 #: ../Scenes/OptionsMenu.tscn:677
 msgid "Rotate Camera"
-msgstr ""
+msgstr "Obróć kamerę"
 
 #: ../Scenes/OptionsMenu.tscn:685
 msgid "Enable rotation of the camera when moving the mouse."
-msgstr ""
+msgstr "Włącz obracanie kamery podczas poruszania myszą."
 
 #: ../Scenes/OptionsMenu.tscn:695
 msgid "Reset Camera"
-msgstr ""
+msgstr "Resetuj kamerę"
 
 #: ../Scenes/OptionsMenu.tscn:703
 msgid "Resets the camera to the default position."
-msgstr ""
+msgstr "Resetuje kamerę do pozycji domyślnej."
 
 #: ../Scenes/OptionsMenu.tscn:713
 msgid "Zoom In / Lift Piece Down"
-msgstr ""
+msgstr "Powiększ / Podnieś element w dół"
 
 #: ../Scenes/OptionsMenu.tscn:721
 msgid "Zoom the camera towards the table, or lift a piece down onto the table."
-msgstr ""
+msgstr "Zbliż kamerę w stronę stołu lub podnieś element na stół."
 
 #: ../Scenes/OptionsMenu.tscn:731
 msgid "Zoom Out / Lift Piece Up"
-msgstr ""
+msgstr "Pomniejsz / Podnieś element w górę"
 
 #: ../Scenes/OptionsMenu.tscn:739
 msgid "Zoom the camera away from the table, or lift a piece up from the table."
-msgstr ""
+msgstr "Oddal kamerę od stołu lub podnieś element ze stołu."
 
 #: ../Scenes/OptionsMenu.tscn:749
 msgid "Flip Piece Orientation"
-msgstr ""
+msgstr "Odwróć orientację elementu"
 
 #: ../Scenes/OptionsMenu.tscn:757
 msgid ""
 "Flip the selected piece or the piece the mouse is over on the horizontal "
 "axis."
 msgstr ""
+"Odwróć wybrany kawałek lub element, nad którym znajduje się wskaźnik myszy "
+"na osi poziomej."
 
 #: ../Scenes/OptionsMenu.tscn:767
 msgid "Reset Piece Orientation"
-msgstr ""
+msgstr "Zresetuj orientację elementu"
 
 #: ../Scenes/OptionsMenu.tscn:775
 msgid ""
 "Resets the selected piece or the piece the mouse is over to its default "
 "orientation."
 msgstr ""
+"Resetuje wybrany kawałek lub element, nad którą znajduje się mysz, do "
+"domyślnej orientacji."
 
 #: ../Scenes/OptionsMenu.tscn:785 ../Scripts/Game/CameraController.gd:1574
 msgid "Rotate Piece"
-msgstr ""
+msgstr "Obróć element"
 
 #: ../Scenes/OptionsMenu.tscn:793
 msgid "Rotates the the piece that is selected, or that the mouse is over."
 msgstr ""
+"Obraca element, który jest wybrany lub nad którym znajduje się kursor myszy."
 
 #: ../Scenes/OptionsMenu.tscn:803 ../Scripts/Game/CameraController.gd:1207
 #: ../Scripts/Game/CameraController.gd:1527
 #: ../Scripts/Game/CameraController.gd:1582
 msgid "Shuffle"
-msgstr ""
+msgstr "przetasuj"
 
 #: ../Scenes/OptionsMenu.tscn:811
 msgid ""
 "Shuffle stacks of cards or tokens that are selected, or that the mouse is "
 "over."
 msgstr ""
+"Potasuj stosy kart lub żetonów, które są zaznaczone lub że wskaźnik myszy "
+"się skończył."
 
 #: ../Scenes/OptionsMenu.tscn:821
 msgid "Lock/Unlock Piece"
-msgstr ""
+msgstr "Zablokuj/Odblokuj element"
 
 #: ../Scenes/OptionsMenu.tscn:829
 msgid ""
 "Toggles the lock on the selected piece, fixing its position and rotation."
 msgstr ""
+"Przełącza blokadę na wybranym elemencie, ustalając jego pozycję i obrót."
 
 #: ../Scenes/OptionsMenu.tscn:839
 msgid "Delete Piece"
-msgstr ""
+msgstr "Usuń element"
 
 #: ../Scenes/OptionsMenu.tscn:847
 msgid "Deletes the currently selected piece."
-msgstr ""
+msgstr "Usuwa aktualnie wybrany element."
 
 #: ../Scenes/OptionsMenu.tscn:857
 msgid "Toggle Debug Info"
-msgstr ""
+msgstr "Przełącz informacje o debugowaniu"
 
 #: ../Scenes/OptionsMenu.tscn:865
 msgid "Toggles whether debug information is displayed."
-msgstr ""
+msgstr "Przełącza, czy wyświetlane są informacje debugowania."
 
 #: ../Scenes/OptionsMenu.tscn:875
 msgid "Quicksave"
-msgstr ""
+msgstr "Szybki zapis"
 
 #: ../Scenes/OptionsMenu.tscn:883
 msgid "Creates a quicksave file."
-msgstr ""
+msgstr "Tworzy plik szybkiego zapisu."
 
 #: ../Scenes/OptionsMenu.tscn:893
 msgid "Quickload"
-msgstr ""
+msgstr "Szybkie ładowanie"
 
 #: ../Scenes/OptionsMenu.tscn:901
 msgid "Loads the latest quicksave file."
-msgstr ""
+msgstr "Ładuje najnowszy plik szybkiego zapisu."
 
 #: ../Scenes/OptionsMenu.tscn:911
 msgid "Toggle UI"
-msgstr ""
+msgstr "Przełączanie interfejsu użytkownika"
 
 #: ../Scenes/OptionsMenu.tscn:919
 msgid "Toggles whether the entire UI is displayed."
-msgstr ""
+msgstr "Przełącza, czy wyświetlany jest cały interfejs użytkownika."
 
 #: ../Scenes/OptionsMenu.tscn:929
 msgid "Take Screenshot"
-msgstr ""
+msgstr "Wykonaj zrzut ekranu"
 
 #: ../Scenes/OptionsMenu.tscn:937
 msgid "Takes a screenshot of the game in its current state."
-msgstr ""
+msgstr "Robi zrzut ekranu gry w jej obecnym stanie."
 
 #: ../Scenes/OptionsMenu.tscn:952
 msgid "Used to reset the key bindings to their default values."
-msgstr ""
+msgstr "Służy do resetowania skrótów klawiszy do wartości domyślnych."
 
 #: ../Scenes/OptionsMenu.tscn:953 ../Scenes/OptionsMenu.tscn:1413
 msgid "Reset Bindings"
-msgstr ""
+msgstr "Zresetuj skróty klawiszy"
 
 #: ../Scenes/OptionsMenu.tscn:980 ../Scripts/Game/CameraController.gd:1224
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:185
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 #: ../Scenes/OptionsMenu.tscn:987
 msgid "The player's displayed name in multiplayer lobbies."
-msgstr ""
+msgstr "Nazwa gracza wyświetlana w poczekalniach dla wielu graczy."
 
 #: ../Scenes/OptionsMenu.tscn:989
 msgid "Player"
-msgstr ""
+msgstr "Gracz"
 
 #: ../Scenes/OptionsMenu.tscn:997 ../Scripts/Game/CameraController.gd:1335
 msgid "Color"
-msgstr ""
+msgstr "Kolor"
 
 #: ../Scenes/OptionsMenu.tscn:1005
 msgid "The player's displayed colour in multiplayer lobbies."
-msgstr ""
+msgstr "Kolor gracza wyświetlany w poczekalniach dla wielu graczy."
 
 #: ../Scenes/OptionsMenu.tscn:1015
 msgid "Chat Font Size"
-msgstr ""
+msgstr "Rozmiar czcionki czatu"
 
 #: ../Scenes/OptionsMenu.tscn:1023
 msgid "Changes the size of the text in the chat box."
-msgstr ""
+msgstr "Zmienia rozmiar tekstu w oknie czatu."
 
 #: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
 #: ../Scripts/OptionsMenu.gd:78
 msgid "Medium"
-msgstr ""
+msgstr "Średni"
 
 #: ../Scenes/OptionsMenu.tscn:1034
 msgid "Hide Player Cursors"
-msgstr ""
+msgstr "Ukryj kursory gracza"
 
 #: ../Scenes/OptionsMenu.tscn:1042
 msgid ""
 "Used to stop showing other player's cursors when in multiplayer lobbies."
 msgstr ""
+"Służy do zatrzymania wyświetlania kursorów innych graczy w poczekalniach dla "
+"wielu graczy."
 
 #: ../Scenes/OptionsMenu.tscn:1050
 msgid "Censor Profanity"
-msgstr ""
+msgstr "Cenzurowanie wulgaryzmów"
 
 #: ../Scenes/OptionsMenu.tscn:1058
 msgid ""
 "Used to censor potentially offensive words in the chat window when in "
 "multiplayer lobbies."
 msgstr ""
+"Służy do cenzurowania potencjalnie obraźliwych słów w oknie czatu w "
+"poczekalniach dla wielu graczy."
 
 #: ../Scenes/OptionsMenu.tscn:1073
 msgid "Video"
-msgstr ""
+msgstr "Wideo"
 
 #: ../Scenes/OptionsMenu.tscn:1087
 msgid "Window Mode"
-msgstr ""
+msgstr "Tryb okienkowy"
 
 #: ../Scenes/OptionsMenu.tscn:1094
 msgid "Sets the mode in which the game window is displayed."
-msgstr ""
+msgstr "Ustawia tryb, w którym wyświetlane jest okno gry."
 
 #: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:72
 msgid "Windowed"
-msgstr ""
+msgstr "Okienkowany"
 
 #: ../Scenes/OptionsMenu.tscn:1105
 msgid "Field of View"
-msgstr ""
+msgstr "Pole widzenia"
 
 #: ../Scenes/OptionsMenu.tscn:1113
 msgid "Sets the field of view of the in-game camera."
-msgstr ""
+msgstr "Ustawia pole widzenia kamery w grze."
 
 #: ../Scenes/OptionsMenu.tscn:1126
 msgid "VSync"
-msgstr ""
+msgstr "Synchronizacja pionowa"
 
 #: ../Scenes/OptionsMenu.tscn:1145
 msgid "Shadow Detail"
-msgstr ""
+msgstr "Szczegółowość cieni"
 
 #: ../Scenes/OptionsMenu.tscn:1165
 msgid "Multisample Anti-Aliasing (MSAA)"
-msgstr ""
+msgstr "Wielopróbkowe wygładzanie krawędzi wyświetlanych obiektów (MSAA)"
 
 #: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
 #: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:76
 msgid "None"
-msgstr ""
+msgstr "nic"
 
 #: ../Scenes/OptionsMenu.tscn:1186
 msgid "Screen Space Ambient Occlusion (SSAO)"
@@ -621,190 +659,192 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1208
 msgid "Skybox Radiance Detail"
-msgstr ""
+msgstr "Szczegóły blasku Skybox"
 
 #: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:77
 msgid "Low"
-msgstr ""
+msgstr "Niski"
 
 #: ../Scenes/OptionsMenu.tscn:1228
 msgid "Depth of Field"
-msgstr ""
+msgstr "głębia ostrości"
 
 #: ../Scenes/OptionsMenu.tscn:1249
 msgid "Depth of Field Amount"
-msgstr ""
+msgstr "Wartość głębi ostrości"
 
 #: ../Scenes/OptionsMenu.tscn:1257
 msgid ""
 "Used to determine how much the background is blurred when using depth of "
 "field."
-msgstr ""
+msgstr "Służy do określania stopnia rozmycia tła przy użyciu głębi ostrości."
 
 #: ../Scenes/OptionsMenu.tscn:1269
 msgid "Depth of Field Distance"
-msgstr ""
+msgstr "Odległość"
 
 #: ../Scenes/OptionsMenu.tscn:1277
 msgid ""
 "Used to set the threshold of what is considered the background when using "
 "depth of field."
 msgstr ""
+"Służy do ustawiania progu tego, co jest uważane za tło podczas używania "
+"głębi ostrości."
 
 #: ../Scenes/OptionsMenu.tscn:1289
 msgid "Table Paint Filtering"
-msgstr ""
+msgstr "Filtrowanie farby tabeli"
 
 #: ../Scenes/OptionsMenu.tscn:1312
 msgid "Back"
-msgstr ""
+msgstr "Wróć"
 
 #: ../Scenes/Game/CameraController.tscn:410
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:154
 #: ../Scenes/OptionsMenu.tscn:1318
 msgid "Apply"
-msgstr ""
+msgstr "Zatwierdź"
 
 #: ../Scenes/Game/CameraController.tscn:502
 #: ../Scenes/Game/CameraController.tscn:575
 #: ../Scenes/Game/CameraController.tscn:642
 #: ../Scenes/Game/CameraController.tscn:696 ../Scenes/OptionsMenu.tscn:1325
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: ../Scenes/OptionsMenu.tscn:1370
 msgid "Please press a key or button to bind it..."
-msgstr ""
+msgstr "Proszę nacisnąć klawisz lub przycisk, aby go ustawić..."
 
 #: ../Scenes/OptionsMenu.tscn:1390
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 #: ../Scenes/OptionsMenu.tscn:1397
 msgid "Keep video settings?"
-msgstr ""
+msgstr "Zachować ustawienia wideo?"
 
 #: ../Scenes/OptionsMenu.tscn:1405
 msgid "Reimporting Assets"
-msgstr ""
+msgstr "Ponowne importowanie zasobów"
 
 #: ../Scenes/OptionsMenu.tscn:1423
 msgid "Warning!"
-msgstr ""
+msgstr "Uwaga!"
 
 #: ../Scenes/RandomMusicPlayer.tscn:23
 msgid "Now Playing:"
-msgstr ""
+msgstr "Teraz odtwarzane:"
 
 #: ../Scenes/Game/CameraController.tscn:99
 msgid "Deal X cards"
-msgstr ""
+msgstr "Rozdaj X kart"
 
 #: ../Scenes/Game/CameraController.tscn:129
 msgid "Select track"
-msgstr ""
+msgstr "Wybierz ścieżkę"
 
 #: ../Scenes/Game/CameraController.tscn:147
 msgid "Positional audio"
-msgstr ""
+msgstr "Dźwięk pozycyjny"
 
 #: ../Scenes/Game/CameraController.tscn:153
 msgid "Range:"
-msgstr ""
+msgstr "Zakres:"
 
 #: ../Scenes/Game/CameraController.tscn:173
 msgid "Take X off top"
-msgstr ""
+msgstr "Zdejmij X z góry"
 
 #: ../Scenes/Game/CameraController.tscn:186
 msgid "Take X out"
-msgstr ""
+msgstr "Wyjmij X"
 
 #: ../Scenes/Game/CameraController.tscn:242
 msgid "Position:"
-msgstr ""
+msgstr "Pozycja:"
 
 #: ../Scenes/Game/CameraController.tscn:253
 #: ../Scenes/Game/CameraController.tscn:311
 #: ../Scenes/Game/CameraController.tscn:363
 msgid "X:"
-msgstr ""
+msgstr "X:"
 
 #: ../Scenes/Game/CameraController.tscn:269
 #: ../Scenes/Game/CameraController.tscn:325
 #: ../Scenes/Game/CameraController.tscn:379
 msgid "Y:"
-msgstr ""
+msgstr "Y:"
 
 #: ../Scenes/Game/CameraController.tscn:285
 #: ../Scenes/Game/CameraController.tscn:339
 #: ../Scenes/Game/CameraController.tscn:395
 msgid "Z:"
-msgstr ""
+msgstr "Z:"
 
 #: ../Scenes/Game/CameraController.tscn:300
 msgid "Rotation (°):"
-msgstr ""
+msgstr "Obrót (°):"
 
 #: ../Scenes/Game/CameraController.tscn:352
 #: ../Scenes/Game/CameraController.tscn:529
 msgid "Scale:"
-msgstr ""
+msgstr "Skala:"
 
 #: ../Scenes/Game/CameraController.tscn:430
 msgid "Value:"
-msgstr ""
+msgstr "Wartość:"
 
 #: ../Scenes/Game/CameraController.tscn:442
 #: ../Scripts/Game/CameraController.gd:1285
 msgid "Set value"
-msgstr ""
+msgstr "Ustaw wartość"
 
 #: ../Scenes/Game/CameraController.tscn:473
 msgid "Strength:"
-msgstr ""
+msgstr "Wytrzymałość:"
 
 #: ../Scenes/Game/CameraController.tscn:484
 msgid "1.0"
-msgstr ""
+msgstr "1.0"
 
 #: ../Scenes/Game/CameraController.tscn:561
 msgid "System:"
-msgstr ""
+msgstr "System:"
 
 #: ../Scenes/Game/CameraController.tscn:567
 msgid "Metric"
-msgstr ""
+msgstr "metryczny"
 
 #: ../Scenes/Game/CameraController.tscn:602
 msgid "Brush Color:"
-msgstr ""
+msgstr "Kolor pędzla:"
 
 #: ../Scenes/Game/CameraController.tscn:615
 msgid "Brush Size:"
-msgstr ""
+msgstr "Rozmiar pędzla:"
 
 #: ../Scenes/Game/CameraController.tscn:626
 #: ../Scenes/Game/CameraController.tscn:680
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../Scenes/Game/CameraController.tscn:669
 msgid "Eraser Size:"
-msgstr ""
+msgstr "Rozmiar gumki:"
 
 #: ../Scenes/Game/CameraController.tscn:699
 msgid "Select a track..."
-msgstr ""
+msgstr "Wybierz ścieżkę..."
 
 #: ../Scenes/Game/CameraController.tscn:704
 #, python-format
 msgid "Loaded %d tracks."
-msgstr ""
+msgstr "Załadowano %d utworów."
 
 #: ../Scenes/Game/Game.tscn:35
 msgid "Missing Assets"
-msgstr ""
+msgstr "brakujące zasoby"
 
 #: ../Scenes/Game/Game.tscn:44
 #, python-format
@@ -814,6 +854,9 @@ msgid ""
 "of %d missing assets, and %d assets differ between your client and the "
 "host's client:"
 msgstr ""
+"Host zaimportował zasoby, których brakuje Twojemu klientowi. Oznacza to, że "
+"nie będziesz mógł zobaczyć tych zasobów w tej grze. Łącznie brakuje %d "
+"zasobów, a %d zasobów różni się w zależności od klienta i klienta gospodarza:"
 
 #: ../Scenes/Game/Game.tscn:58
 #, python-format
@@ -821,10 +864,12 @@ msgid ""
 "Your client is also missing %d files, and %d files differ from that of the "
 "host's, which in total is %s of data:"
 msgstr ""
+"Twojemu klientowi brakuje także %d plików, a %d plików różni się od plików "
+"hosta, co w sumie daje %s danych:"
 
 #: ../Scenes/Game/Game.tscn:86
 msgid "Yes, download missing assets."
-msgstr ""
+msgstr "Tak, pobierz brakujące zasoby."
 
 #: ../Scenes/Game/Game.tscn:93
 msgid "No, continue without them."
