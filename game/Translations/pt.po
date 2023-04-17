@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-17 17:29+0100\n"
-"PO-Revision-Date: 2023-04-17 18:13+0000\n"
+"PO-Revision-Date: 2023-04-18 21:48+0000\n"
 "Last-Translator: Martim Gomes Pires Paraíba <martim.paraiba@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/tabletop-club/"
 "game/pt/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -64,7 +64,7 @@ msgstr "Registo de Importação"
 
 #: ../Scenes/MainMenu.tscn:99
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:107
 msgid "Tabletop Club on Itch.io"
@@ -447,12 +447,11 @@ msgid "Flip Piece Orientation"
 msgstr "Inverter Orientação da Peça"
 
 #: ../Scenes/OptionsMenu.tscn:757
-#, fuzzy
-#| msgid "Flip the selected piece on the horizontal axis."
 msgid ""
 "Flip the selected piece or the piece the mouse is over on the horizontal "
 "axis."
-msgstr "Inverte a peça selecionada no eixo horizontal."
+msgstr ""
+"Inverte a peça selecionada ou a peça por baixo do rato no eixo horizontal."
 
 #: ../Scenes/OptionsMenu.tscn:767
 msgid "Reset Piece Orientation"
