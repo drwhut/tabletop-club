@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-20 15:31\n"
-"PO-Revision-Date: 2023-03-28 02:40+0000\n"
-"Last-Translator: Arek Dymalski <arkadiusz.dymalski@gmail.com>\n"
+"PO-Revision-Date: 2023-04-17 14:51+0000\n"
+"Last-Translator: kompowiec2 <diasp@o2.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/pl/>\n"
 "Language: pl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.17\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -1134,7 +1134,7 @@ msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2 ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2 ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
 msgid "A poker chip."
