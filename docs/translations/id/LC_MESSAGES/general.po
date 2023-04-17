@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-20 15:29+0000\n"
+"POT-Creation-Date: 2023-04-17 17:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -203,21 +203,41 @@ msgid "You can help test the game by :ref:`downloading-binaries`!"
 msgstr ""
 
 #: ../../general/about.rst:125
-msgid "What board games can I play in Tabletop Club?"
+msgid "Is there an official Discord or Matrix server that I can join?"
 msgstr ""
 
 #: ../../general/about.rst:127
+msgid ""
+"Yes, you can join the official `Discord <https://discord.gg/GqYkGV4WwX>`_ "
+"and `Matrix <https://matrix.to/#/!dbNhzKYPHpcgZgUkRi:matrix.org?via=matrix."
+"org>`_ servers to chat with other players about anything from the game "
+"itself, to board games in general, or even to share asset packs that you "
+"have made!"
+msgstr ""
+
+#: ../../general/about.rst:132
+msgid ""
+"The goal is to create a safe, welcoming environment for everyone regardless "
+"of their background or personality. As long as you abide by the server "
+"rules, you are always free to come in and say hi!"
+msgstr ""
+
+#: ../../general/about.rst:138
+msgid "What board games can I play in Tabletop Club?"
+msgstr ""
+
+#: ../../general/about.rst:140
 msgid "Theoretically, any of them!"
 msgstr ""
 
-#: ../../general/about.rst:129
+#: ../../general/about.rst:142
 msgid ""
 "Out of the box, the games comes with the default Tabletop Club asset pack "
 "which contains some of the most common objects you'll need, like playing "
 "cards, dice, poker chips, etc."
 msgstr ""
 
-#: ../../general/about.rst:133
+#: ../../general/about.rst:146
 msgid ""
 "On GitHub, there is `an issue <https://github.com/drwhut/tabletop-club/"
 "issues/28>`_ listing which objects still need to be added to the default "
@@ -225,7 +245,7 @@ msgid ""
 "game!"
 msgstr ""
 
-#: ../../general/about.rst:138
+#: ../../general/about.rst:151
 msgid ""
 "On the other hand, if the pieces you need aren't going to be included in the "
 "default asset pack, then you can either download an asset pack that someone "
@@ -233,11 +253,11 @@ msgid ""
 "packs` page if you're interested in making your own assets."
 msgstr ""
 
-#: ../../general/about.rst:145
+#: ../../general/about.rst:158
 msgid "How easy is it to setup a game in Tabletop Club?"
 msgstr ""
 
-#: ../../general/about.rst:147
+#: ../../general/about.rst:160
 msgid ""
 "For the most popular games, the default asset pack comes with pre-made save "
 "files that you can load instantly (when in-game, click :guilabel:`Games`, "
@@ -245,7 +265,7 @@ msgid ""
 "play the game right away!"
 msgstr ""
 
-#: ../../general/about.rst:152
+#: ../../general/about.rst:165
 msgid ""
 "If there isn't a pre-made save file for the game you want to play, you can "
 "easily make your own save by setting up the table the way you want to, then "
@@ -253,46 +273,46 @@ msgid ""
 "want to play the game again, you can just load the save you made previously."
 msgstr ""
 
-#: ../../general/about.rst:157
+#: ../../general/about.rst:170
 msgid ""
 "See the :ref:`asset-type-game` page for more information about pre-made save "
 "files in asset packs."
 msgstr ""
 
-#: ../../general/about.rst:162
+#: ../../general/about.rst:175
 msgid "Can I add assets other than game pieces to Tabletop Club?"
 msgstr ""
 
-#: ../../general/about.rst:164
+#: ../../general/about.rst:177
 msgid ""
 "Yes! As well as objects, you can also import the following types of assets:"
 msgstr ""
 
-#: ../../general/about.rst:166
+#: ../../general/about.rst:179
 msgid ":ref:`asset-type-game`"
 msgstr ""
 
-#: ../../general/about.rst:167
+#: ../../general/about.rst:180
 msgid ":ref:`asset-type-music`"
 msgstr ""
 
-#: ../../general/about.rst:168
+#: ../../general/about.rst:181
 msgid ":ref:`asset-type-skybox`"
 msgstr ""
 
-#: ../../general/about.rst:169
+#: ../../general/about.rst:182
 msgid ":ref:`asset-type-sound`"
 msgstr ""
 
-#: ../../general/about.rst:170
+#: ../../general/about.rst:183
 msgid ":ref:`asset-type-table`"
 msgstr ""
 
-#: ../../general/about.rst:174
+#: ../../general/about.rst:187
 msgid "Can you add my favourite board game to Tabletop Club?"
 msgstr ""
 
-#: ../../general/about.rst:176
+#: ../../general/about.rst:189
 msgid ""
 "For legal safety, Tabletop Club will only ever distribute `public-domain "
 "<https://en.wikipedia.org/wiki/Public_domain>`_ board games in the default "
@@ -300,23 +320,23 @@ msgid ""
 "board game for private use!"
 msgstr ""
 
-#: ../../general/about.rst:183
+#: ../../general/about.rst:196
 msgid "Can I share assets I've made on the internet?"
 msgstr ""
 
-#: ../../general/about.rst:185
+#: ../../general/about.rst:198
 msgid ""
 "It depends on a number of factors. In general, it should be safe to share "
 "the assets you've made for the game if the following is all true:"
 msgstr ""
 
-#: ../../general/about.rst:188
+#: ../../general/about.rst:201
 msgid ""
 "The assets you've made (textures, 3D models, etc.) are made by you, and are "
 "not derived from copyrighted material."
 msgstr ""
 
-#: ../../general/about.rst:193
+#: ../../general/about.rst:206
 msgid ""
 "You can distribute other people's creations **if** the license it's under "
 "allows you to. It's always safer to attribute the original author, and to "
@@ -324,34 +344,34 @@ msgid ""
 "terms of the license first."
 msgstr ""
 
-#: ../../general/about.rst:198
+#: ../../general/about.rst:211
 msgid ""
 "To help with this, the :ref:`config-cfg` file allows you to put the author, "
 "license, modifier, and URL with the asset, which is then shown in-game."
 msgstr ""
 
-#: ../../general/about.rst:201
+#: ../../general/about.rst:214
 msgid ""
 "If the assets you've made are for playing a game that already exists, then:"
 msgstr ""
 
-#: ../../general/about.rst:203
+#: ../../general/about.rst:216
 msgid ""
 "You cannot use the same name of the game without the owner's explicit "
 "permission."
 msgstr ""
 
-#: ../../general/about.rst:206
+#: ../../general/about.rst:219
 msgid "The mechanics of the game cannot be patented."
 msgstr ""
 
-#: ../../general/about.rst:210
+#: ../../general/about.rst:223
 msgid ""
 "You can `check online <https://worldwide.espacenet.com/advancedSearch>`_ to "
 "see if there are any patents for the game's mechanics."
 msgstr ""
 
-#: ../../general/about.rst:215
+#: ../../general/about.rst:228
 msgid ""
 "This is NOT legal advice. Please go ask the nearest lawyer for advice if you "
 "are worried about distributing your asset pack on the internet, as this also "
