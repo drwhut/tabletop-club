@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-30 11:14+0100\n"
-"PO-Revision-Date: 2021-05-06 13:32+0000\n"
-"Last-Translator: drwhut <drwhut@gmail.com>\n"
+"PO-Revision-Date: 2023-04-17 16:34+0000\n"
+"Last-Translator: Blood Axe <bloodaxenor@protonmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "tabletop-club/game/nb_NO/>\n"
 "Language: nb_NO\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.17\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:35
 msgid "Importing assets..."
-msgstr ""
+msgstr "Importer ressurser..."
 
 #: ../Scenes/ImportAssets.tscn:56
 msgid "Missing Asset Folder"
-msgstr ""
+msgstr "Mangler ressursmappe"
 
 #: ../Scenes/ImportAssets.tscn:62
 msgid "Missing Module"
-msgstr ""
+msgstr "Mangler modul"
 
 #: ../Scenes/Loading.tscn:41
 msgid "Loading..."
@@ -59,27 +59,27 @@ msgstr "Avslutt"
 
 #: ../Scenes/MainMenu.tscn:96 ../Scenes/MainMenu.tscn:321
 msgid "Import Log"
-msgstr ""
+msgstr "Importlogg"
 
 #: ../Scenes/MainMenu.tscn:97
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:105
 msgid "Tabletop Club on Itch.io"
-msgstr ""
+msgstr "Tabletop Club på Itch.io"
 
 #: ../Scenes/MainMenu.tscn:114
 msgid "Source Code"
-msgstr ""
+msgstr "Kildekode"
 
 #: ../Scenes/MainMenu.tscn:123
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentasjon"
 
 #: ../Scenes/MainMenu.tscn:132 ../Scenes/MainMenu.tscn:227
 msgid "Information"
-msgstr ""
+msgstr "Informasjon"
 
 #: ../Scenes/MainMenu.tscn:157
 msgid "Host Game"
@@ -93,31 +93,31 @@ msgstr "Opprett ny lobby for venner som tar del over Internett."
 
 #: ../Scenes/MainMenu.tscn:175 ../Scenes/MainMenu.tscn:222
 msgid "Join Game"
-msgstr ""
+msgstr "Bli med i spill"
 
 #: ../Scenes/MainMenu.tscn:181
 msgid "Use a room code to join your friend's lobby."
-msgstr ""
+msgstr "Bruk en romkode for å bli med i din venns lobby."
 
 #: ../Scenes/MainMenu.tscn:187
 msgid "Enter Room Code"
-msgstr ""
+msgstr "Skriv inn romkode"
 
 #: ../Scenes/MainMenu.tscn:207
 msgid "Room Code:"
-msgstr ""
+msgstr "Romkode:"
 
 #: ../Scenes/MainMenu.tscn:216
 msgid "ABCD"
-msgstr ""
+msgstr "ABCD"
 
 #: ../Scenes/MainMenu.tscn:314
 msgid "Error"
-msgstr ""
+msgstr "Feil"
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
-msgstr ""
+msgstr "Lyd"
 
 #: ../Scenes/OptionsMenu.tscn:61
 msgid "Master Volume"
@@ -125,7 +125,7 @@ msgstr "Hovedlydstyrke"
 
 #: ../Scenes/OptionsMenu.tscn:68
 msgid "Sets the overall volume of all sources of sound in the game."
-msgstr ""
+msgstr "Endrer det generelle volumet for alle lydkilder i spillet."
 
 #: ../Scenes/OptionsMenu.tscn:79
 msgid "Music Volume"
@@ -133,49 +133,51 @@ msgstr "Musikklydstyrke"
 
 #: ../Scenes/OptionsMenu.tscn:87
 msgid "Sets the volume of all music sources in the game."
-msgstr ""
+msgstr "Endrer volumet for alle musikk-kilder i spillet."
 
 #: ../Scenes/OptionsMenu.tscn:98
 msgid "Sounds Volume"
-msgstr "Lyd-lydstyrke"
+msgstr "Aktiverte lyders styrke"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
 "Sets the volume of sound sources played manually throughout the game, for "
 "example, from speakers."
 msgstr ""
+"Stiller inn volumet på lydkilder som spilles manuelt gjennom hele spillet, "
+"for eksempel fra høyttalere."
 
 #: ../Scenes/OptionsMenu.tscn:117
-#, fuzzy
 msgid "Effects Volume"
-msgstr "Musikklydstyrke"
+msgstr "Effektlydstyrke"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
 "Sets the volume of sound effects played automatically throughout the game, "
 "for example, pieces falling on the table. "
 msgstr ""
+"Stiller inn volumet på lydeffekter som spilles automatisk gjennom hele "
+"spillet, for eksempel brikker som faller på bordet. "
 
 #: ../Scenes/OptionsMenu.tscn:142
-#, fuzzy
 msgid "Controls"
-msgstr "Beholdere"
+msgstr "Kontroller"
 
 #: ../Scenes/OptionsMenu.tscn:155
 msgid "Mouse Horizontal Sensitivity"
-msgstr ""
+msgstr "Mus horisontal følsomhet"
 
 #: ../Scenes/OptionsMenu.tscn:162
 msgid "Sets the horizontal sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "Stiller inn den horisontale følsomheten for rotasjonen av kameraet."
 
 #: ../Scenes/OptionsMenu.tscn:174
 msgid "Mouse Vertical Sensitivity"
-msgstr ""
+msgstr "Vertikal følsomhet for mus"
 
 #: ../Scenes/OptionsMenu.tscn:182
 msgid "Sets the vertical sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "Stiller inn den vertikale følsomheten for rotasjonen av kameraet."
 
 #: ../Scenes/OptionsMenu.tscn:194
 msgid "Mouse Horizontal Invert"
@@ -292,7 +294,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:421
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: ../Scenes/OptionsMenu.tscn:435
 msgid "Language"
@@ -300,232 +302,240 @@ msgstr "Språk"
 
 #: ../Scenes/OptionsMenu.tscn:455
 msgid "Autosave Interval"
-msgstr ""
+msgstr "Autolagringsintervall"
 
 #: ../Scenes/OptionsMenu.tscn:463
 msgid "Used to set how often autosaves are created."
-msgstr ""
+msgstr "Brukes til å angi hvor ofte autolagringer opprettes."
 
 #: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:68
 msgid "5 minutes"
-msgstr ""
+msgstr "5 minutter"
 
 #: ../Scenes/OptionsMenu.tscn:474
 msgid "Autosave File Count"
-msgstr ""
+msgstr "Antall autolagringsfiler"
 
 #: ../Scenes/OptionsMenu.tscn:482
 msgid "Used to set the maximum number of autosave files that are made."
-msgstr ""
+msgstr "Brukes til å angi maksimalt antall autolagringsfiler som opprettes."
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Skip Splash Screen"
-msgstr ""
+msgstr "Hopp over velkomstskjerm"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Skips the Godot Engine splash screen when the game starts."
-msgstr ""
+msgstr "Hopper over Godot Engine-velkomstskjermen når spillet starter."
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
-msgstr ""
+msgstr "Vis systemvarsler"
 
 #: ../Scenes/OptionsMenu.tscn:516
 msgid "Displays system warnings in the chat box."
-msgstr ""
+msgstr "Viser systemvarsler i chat-boksen."
 
 #: ../Scenes/OptionsMenu.tscn:525
 msgid "Show System Errors"
-msgstr ""
+msgstr "Vis systemfeil"
 
 #: ../Scenes/OptionsMenu.tscn:533
 msgid "Displays system errors in the chat box."
-msgstr ""
+msgstr "Viser systemfeil i chatte-boksen."
 
 #: ../Scenes/OptionsMenu.tscn:561
 msgid "Opens the assets folder in your file explorer."
-msgstr ""
+msgstr "Åpner ressursmappen i filutforskeren."
 
 #: ../Scenes/OptionsMenu.tscn:563
 msgid "Open Assets Folder"
-msgstr ""
+msgstr "Åpne ressursmappe"
 
 #: ../Scenes/OptionsMenu.tscn:579
 msgid "Reimport Assets"
-msgstr ""
+msgstr "Reimporter ressurser"
 
 #: ../Scenes/OptionsMenu.tscn:592
 msgid "Key Bindings"
-msgstr ""
+msgstr "Tastebindinger"
 
 #: ../Scenes/OptionsMenu.tscn:606
 msgid "Move Forward"
-msgstr ""
+msgstr "Flytt fremover"
 
 #: ../Scenes/OptionsMenu.tscn:613
 msgid "Moves the camera forward."
-msgstr ""
+msgstr "Flytter kameraet fremover."
 
 #: ../Scenes/OptionsMenu.tscn:623
 msgid "Move Back"
-msgstr ""
+msgstr "Flytt bakover"
 
 #: ../Scenes/OptionsMenu.tscn:631
 msgid "Moves the camera backwards."
-msgstr ""
+msgstr "Flytter kameraet bakover."
 
 #: ../Scenes/OptionsMenu.tscn:641
 msgid "Move Left"
-msgstr ""
+msgstr "Flytt til venstre"
 
 #: ../Scenes/OptionsMenu.tscn:649
 msgid "Moves the camera left."
-msgstr ""
+msgstr "Flytter kameraet til venstre."
 
 #: ../Scenes/OptionsMenu.tscn:659
 msgid "Move Right"
-msgstr ""
+msgstr "Flytt til høyre"
 
 #: ../Scenes/OptionsMenu.tscn:667
 msgid "Moves the camera right."
-msgstr ""
+msgstr "Flytter kameraet til høyre."
 
 #: ../Scenes/OptionsMenu.tscn:677
 msgid "Rotate Camera"
-msgstr ""
+msgstr "Roter kamera"
 
 #: ../Scenes/OptionsMenu.tscn:685
 msgid "Enable rotation of the camera when moving the mouse."
-msgstr ""
+msgstr "Aktiver rotasjon av kameraet når du beveger musen."
 
 #: ../Scenes/OptionsMenu.tscn:695
 msgid "Reset Camera"
-msgstr ""
+msgstr "Tilbakestill kamera"
 
 #: ../Scenes/OptionsMenu.tscn:703
 msgid "Resets the camera to the default position."
-msgstr ""
+msgstr "Tilbakestiller kameraet til standardposisjonen."
 
 #: ../Scenes/OptionsMenu.tscn:713
 msgid "Zoom In / Lift Piece Down"
-msgstr ""
+msgstr "Zoom inn / senk ned brikke"
 
 #: ../Scenes/OptionsMenu.tscn:721
 msgid "Zoom the camera towards the table, or lift a piece down onto the table."
-msgstr ""
+msgstr "Zoom kameraet mot bordet, eller senk en brikke ned på bordet."
 
 #: ../Scenes/OptionsMenu.tscn:731
 msgid "Zoom Out / Lift Piece Up"
-msgstr ""
+msgstr "Zoom ut / løft opp brikke"
 
 #: ../Scenes/OptionsMenu.tscn:739
 msgid "Zoom the camera away from the table, or lift a piece up from the table."
-msgstr ""
+msgstr "Zoom kameraet bort fra bordet, eller løft en brikke opp fra bordet."
 
 #: ../Scenes/OptionsMenu.tscn:749
 msgid "Flip Piece Orientation"
-msgstr ""
+msgstr "Vend brikkeretning"
 
 #: ../Scenes/OptionsMenu.tscn:757
 msgid ""
 "Flip the selected piece or the piece the mouse is over on the horizontal "
 "axis."
 msgstr ""
+"Vend den valgte brikken, eller brikken musen er over, på den horisontale "
+"aksen."
 
 #: ../Scenes/OptionsMenu.tscn:767
 msgid "Reset Piece Orientation"
-msgstr ""
+msgstr "Tilbakestill brikkeretning"
 
 #: ../Scenes/OptionsMenu.tscn:775
 msgid ""
 "Resets the selected piece or the piece the mouse is over to its default "
 "orientation."
 msgstr ""
+"Tilbakestiller den valgte brikken, eller brikken musen er over, til "
+"standardretningen."
 
 #: ../Scenes/OptionsMenu.tscn:785 ../Scripts/Game/CameraController.gd:1574
 msgid "Rotate Piece"
-msgstr ""
+msgstr "Roter brikke"
 
 #: ../Scenes/OptionsMenu.tscn:793
 msgid "Rotates the the piece that is selected, or that the mouse is over."
-msgstr ""
+msgstr "Roterer brikken som er valgt, eller den musen er over."
 
 #: ../Scenes/OptionsMenu.tscn:803 ../Scripts/Game/CameraController.gd:1207
 #: ../Scripts/Game/CameraController.gd:1527
 #: ../Scripts/Game/CameraController.gd:1582
 msgid "Shuffle"
-msgstr ""
+msgstr "Stokk"
 
 #: ../Scenes/OptionsMenu.tscn:811
 msgid ""
 "Shuffle stacks of cards or tokens that are selected, or that the mouse is "
 "over."
 msgstr ""
+"Stokker en kortstokk eller brikker, enten de som er valgt eller de som musen "
+"er over."
 
 #: ../Scenes/OptionsMenu.tscn:821
 msgid "Lock/Unlock Piece"
-msgstr ""
+msgstr "Lås/lås opp brikke"
 
 #: ../Scenes/OptionsMenu.tscn:829
 msgid ""
 "Toggles the lock on the selected piece, fixing its position and rotation."
 msgstr ""
+"Veksler låst tilstand på den valgte brikken, som låser dens posisjon og "
+"rotasjon."
 
 #: ../Scenes/OptionsMenu.tscn:839
 msgid "Delete Piece"
-msgstr ""
+msgstr "Slett brikke"
 
 #: ../Scenes/OptionsMenu.tscn:847
 msgid "Deletes the currently selected piece."
-msgstr ""
+msgstr "Sletter den valgte brikken."
 
 #: ../Scenes/OptionsMenu.tscn:857
 msgid "Toggle Debug Info"
-msgstr ""
+msgstr "Slå av eller på feilsøkingsinformasjon"
 
 #: ../Scenes/OptionsMenu.tscn:865
 msgid "Toggles whether debug information is displayed."
-msgstr ""
+msgstr "Veksler om feilsøkingsinformasjon skal vises."
 
 #: ../Scenes/OptionsMenu.tscn:875
 msgid "Quicksave"
-msgstr ""
+msgstr "Hurtiglagring"
 
 #: ../Scenes/OptionsMenu.tscn:883
 msgid "Creates a quicksave file."
-msgstr ""
+msgstr "Oppretter en hurtiglagringsfil."
 
 #: ../Scenes/OptionsMenu.tscn:893
 msgid "Quickload"
-msgstr ""
+msgstr "Hurtiglasting"
 
 #: ../Scenes/OptionsMenu.tscn:901
 msgid "Loads the latest quicksave file."
-msgstr ""
+msgstr "Laster inn den siste hurtiglagringsfilen."
 
 #: ../Scenes/OptionsMenu.tscn:911
 msgid "Toggle UI"
-msgstr ""
+msgstr "Veksle brukerflate"
 
 #: ../Scenes/OptionsMenu.tscn:919
 msgid "Toggles whether the entire UI is displayed."
-msgstr ""
+msgstr "Veksler synligheten til hele brukerflaten."
 
 #: ../Scenes/OptionsMenu.tscn:929
 msgid "Take Screenshot"
-msgstr ""
+msgstr "Ta skjermbilde"
 
 #: ../Scenes/OptionsMenu.tscn:937
 msgid "Takes a screenshot of the game in its current state."
-msgstr ""
+msgstr "Tar et skjermbilde av spillet i gjeldende tilstand."
 
 #: ../Scenes/OptionsMenu.tscn:952
 msgid "Used to reset the key bindings to their default values."
-msgstr ""
+msgstr "Brukes til å tilbakestille tastebindingene til standardverdiene."
 
 #: ../Scenes/OptionsMenu.tscn:953 ../Scenes/OptionsMenu.tscn:1413
 msgid "Reset Bindings"
-msgstr ""
+msgstr "Tilbakestill tastebindinger"
 
 #: ../Scenes/OptionsMenu.tscn:980 ../Scripts/Game/CameraController.gd:1224
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:185
@@ -534,7 +544,7 @@ msgstr "Navn"
 
 #: ../Scenes/OptionsMenu.tscn:987
 msgid "The player's displayed name in multiplayer lobbies."
-msgstr ""
+msgstr "Spillerens viste navn i flerspillerlobbyer."
 
 #: ../Scenes/OptionsMenu.tscn:989
 msgid "Player"
