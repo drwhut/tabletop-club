@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-30 11:14+0100\n"
-"PO-Revision-Date: 2022-12-23 19:50+0000\n"
+"PO-Revision-Date: 2023-04-17 16:34+0000\n"
 "Last-Translator: muzzug <kadlec.ondrej@protonmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/game/"
 "cs/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.17\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -60,11 +60,11 @@ msgstr "Ukončit"
 
 #: ../Scenes/MainMenu.tscn:96 ../Scenes/MainMenu.tscn:321
 msgid "Import Log"
-msgstr ""
+msgstr "Protokol o importu"
 
 #: ../Scenes/MainMenu.tscn:97
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:105
 msgid "Tabletop Club on Itch.io"
@@ -206,39 +206,43 @@ msgstr "Slouží k nastavení rychlosti pohybu kamery po stole."
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
-msgstr ""
+msgstr "Pro pohyb kamery drž levé tlačítko myši"
 
 #: ../Scenes/OptionsMenu.tscn:252
+#, fuzzy
 msgid ""
 "Used to allow the player to move the camera by dragging the mouse across the "
 "table."
-msgstr ""
+msgstr "Slouží k tomu, aby hráč mohl pohybovat kamerou tažením myši po stole."
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
-msgstr ""
+msgstr "Citlivost přiblížení"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
 "Sets how fast the camera zooms in and out of the table when using the scroll "
 "wheel."
 msgstr ""
+"Nastavuje, jak rychle se bude kamera přibližovat a oddalovat od stolu při "
+"použití rolovacího kolečka."
 
 #: ../Scenes/OptionsMenu.tscn:279
+#, fuzzy
 msgid "Zoom Invert"
-msgstr ""
+msgstr "Invertovat zvětšení"
 
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
-msgstr ""
+msgstr "Slouží k obrácení směru zvětšení při použití rolovacího kolečka."
 
 #: ../Scenes/OptionsMenu.tscn:294
 msgid "Piece Lift Sensitivity"
-msgstr ""
+msgstr "Citlivost zvedání dílů"
 
 #: ../Scenes/OptionsMenu.tscn:302
 msgid "Sets how fast a piece will move when lifting it off the table."
-msgstr ""
+msgstr "Nastavuje rychlost pohybu dílku při jeho zvedání ze stolu."
 
 #: ../Scenes/OptionsMenu.tscn:314
 msgid "Piece Lift Invert"
