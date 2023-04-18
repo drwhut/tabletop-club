@@ -305,6 +305,10 @@ config/icon="res://tabletop_club_icon.png"
 config/windows_native_icon="res://tabletop_club_icon.ico"
 config/version="master"
 
+[autoload]
+
+AssetDB="*res://assets/asset_db.gd"
+
 [debug]
 
 settings/crash_handler/message="Please include this when reporting the bug on https://github.com/drwhut/tabletop-club/issues"

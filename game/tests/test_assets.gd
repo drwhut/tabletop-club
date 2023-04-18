@@ -170,6 +170,7 @@ func test_asset_packs() -> void:
 	pack.add_entry("tables", b)
 	assert_eq(pack.get_entry_count(), 3)
 	assert_eq_deep(pack.get_type("tables"), [a, b, c_temp])
+	assert_eq_deep(pack.get_removed_entries(), [])
 	assert_eq_deep(pack.get_replaced_entries(), [])
 	
 	pack.clear_temp_entries()
@@ -179,11 +180,43 @@ func test_asset_packs() -> void:
 	pack.add_entry("tables", b_temp)
 	assert_eq(pack.get_entry_count(), 2)
 	assert_eq_deep(pack.get_type("tables"), [a, b_temp])
+	assert_eq_deep(pack.get_removed_entries(), [])
+	assert_eq_deep(pack.get_replaced_entries(), [b])
+	
+	# Cannot temporarily remove temporary entries.
+	pack.remove_entry("tables", 1, true)
+	assert_eq_deep(pack.get_type("tables"), [a, b_temp])
+	
+	pack.clear_temp_entries()
+	assert_eq(pack.get_entry_count(), 2)
+	assert_eq_deep(pack.get_type("tables"), [a, b])
+	assert_eq_deep(pack.get_removed_entries(), [])
+	assert_eq_deep(pack.get_replaced_entries(), [])
+	
+	pack.erase_entry("tables", "A", true)
+	assert_eq(pack.get_entry_count(), 1)
+	assert_eq_deep(pack.get_type("tables"), [b])
+	assert_eq_deep(pack.get_removed_entries(), [a])
+	assert_eq_deep(pack.get_replaced_entries(), [])
+	
+	pack.clear_temp_entries()
+	assert_eq(pack.get_entry_count(), 2)
+	assert_eq_deep(pack.get_type("tables"), [a, b])
+	assert_eq_deep(pack.get_removed_entries(), [])
+	assert_eq_deep(pack.get_replaced_entries(), [])
+	
+	pack.add_entry("tables", c_temp)
+	pack.add_entry("tables", b_temp)
+	pack.erase_entry("tables", "A", true)
+	assert_eq(pack.get_entry_count(), 2)
+	assert_eq_deep(pack.get_type("tables"), [b_temp, c_temp])
+	assert_eq_deep(pack.get_removed_entries(), [a])
 	assert_eq_deep(pack.get_replaced_entries(), [b])
 	
 	pack.clear_temp_entries()
 	assert_eq(pack.get_entry_count(), 2)
 	assert_eq_deep(pack.get_type("tables"), [a, b])
+	assert_eq_deep(pack.get_removed_entries(), [])
 	assert_eq_deep(pack.get_replaced_entries(), [])
 	
 	pack.clear_all_entries()
@@ -192,3 +225,165 @@ func test_asset_packs() -> void:
 	pack.add_entry("?????", a)
 	assert_true(pack.is_empty())
 	assert_true(pack.get_type("?????").empty())
+
+
+var _asset_db_content_changed_flag = false
+
+func test_asset_db() -> void:
+	AssetDB.connect("content_changed", self, "_on_AssetDB_content_changed")
+	
+	var a := AssetEntry.new()
+	a.id = "A"
+	var b := AssetEntry.new()
+	b.id = "B"
+	var c := AssetEntry.new()
+	c.id = "C"
+	var d := AssetEntry.new()
+	d.id = "D"
+	var e := AssetEntry.new()
+	e.id = "E"
+	
+	var pack_1 := AssetPack.new()
+	pack_1.id = "Pack1"
+	pack_1.add_entry("pieces", a)
+	pack_1.add_entry("pieces", b)
+	pack_1.add_entry("cards", c)
+	
+	var pack_2 := AssetPack.new()
+	pack_2.id = "Pack2"
+	pack_2.add_entry("pieces", d)
+	pack_2.add_entry("cards", e)
+	
+	assert_eq(AssetDB.get_entry_count(), 0)
+	assert_eq_deep(AssetDB.get_all_entries(), [])
+	assert_eq_deep(AssetDB.get_all_packs(), [])
+	
+	AssetDB.add_pack(pack_1)
+	assert_eq(AssetDB.get_entry_count(), 0) # Not commited yet.
+	assert_eq_deep(AssetDB.get_all_entries(), []) # Not commited yet.
+	assert_eq_deep(AssetDB.get_all_packs(), [pack_1])
+	assert_true(AssetDB.has_pack("Pack1"))
+	assert_eq(AssetDB.get_pack("Pack1"), pack_1)
+	assert_false(AssetDB.has_pack("Pack2"))
+	assert_eq(AssetDB.get_pack("Pack2"), null)
+	
+	AssetDB.add_pack(pack_2)
+	assert_eq_deep(AssetDB.get_all_packs(), [pack_1, pack_2])
+	assert_true(AssetDB.has_pack("Pack1"))
+	assert_eq(AssetDB.get_pack("Pack1"), pack_1)
+	assert_true(AssetDB.has_pack("Pack2"))
+	assert_eq(AssetDB.get_pack("Pack2"), pack_2)
+	
+	assert_false(AssetDB.is_path_in_cache("Pack1/pieces/A"))
+	assert_false(AssetDB.is_path_in_cache("Pack1/pieces/B"))
+	assert_false(AssetDB.is_path_in_cache("Pack1/cards/C"))
+	assert_false(AssetDB.is_path_in_cache("Pack2/pieces/D"))
+	assert_false(AssetDB.is_path_in_cache("Pack2/cards/E"))
+	assert_eq(AssetDB.get_entry("Pack1/pieces/A"), a)
+	assert_eq(AssetDB.get_entry("Pack1/pieces/B"), b)
+	assert_eq(AssetDB.get_entry("Pack1/cards/C"), c)
+	assert_eq(AssetDB.get_entry("Pack2/pieces/D"), d)
+	assert_eq(AssetDB.get_entry("Pack2/cards/E"), e)
+	
+	assert_eq(AssetDB.get_entry("Pack2/cards/C"), null)
+	assert_eq(AssetDB.get_entry("Pack1/pieces/D"), null)
+	
+	AssetDB.commit_changes()
+	assert_true(_asset_db_content_changed_flag)
+	_asset_db_content_changed_flag = false
+	
+	assert_eq(AssetDB.get_entry_count(), 5)
+	assert_eq_deep(AssetDB.get_all_entries(), [c, a, b, e, d])
+	assert_eq_deep(AssetDB.get_all_packs(), [pack_1, pack_2])
+	
+	assert_true(AssetDB.is_path_in_cache("Pack1/pieces/A"))
+	assert_true(AssetDB.is_path_in_cache("Pack1/pieces/B"))
+	assert_true(AssetDB.is_path_in_cache("Pack1/cards/C"))
+	assert_true(AssetDB.is_path_in_cache("Pack2/pieces/D"))
+	assert_true(AssetDB.is_path_in_cache("Pack2/cards/E"))
+	assert_eq(AssetDB.get_entry("Pack1/pieces/A"), a)
+	assert_eq(AssetDB.get_entry("Pack1/pieces/B"), b)
+	assert_eq(AssetDB.get_entry("Pack1/cards/C"), c)
+	assert_eq(AssetDB.get_entry("Pack2/pieces/D"), d)
+	assert_eq(AssetDB.get_entry("Pack2/cards/E"), e)
+	
+	assert_false(AssetDB.is_path_in_cache("Pack2/cards/C"))
+	assert_false(AssetDB.is_path_in_cache("Pack1/pieces/D"))
+	assert_eq(AssetDB.get_entry("Pack2/cards/C"), null)
+	assert_eq(AssetDB.get_entry("Pack1/pieces/D"), null)
+	
+	assert_eq_deep(AssetDB.get_all_entries("pieces"), [a, b, d])
+	assert_eq_deep(AssetDB.get_all_entries("cards"), [c, e])
+	assert_eq_deep(AssetDB.get_all_entries("dice"), [])
+	
+	AssetDB.remove_pack("Pack2")
+	assert_eq(AssetDB.get_entry_count(), 5) # Not commited.
+	assert_true(AssetDB.has_pack("Pack1"))
+	assert_false(AssetDB.has_pack("Pack2"))
+	assert_true(AssetDB.is_path_in_cache("Pack2/pieces/D"))
+	assert_true(AssetDB.is_path_in_cache("Pack2/cards/E"))
+	
+	AssetDB.commit_changes()
+	assert_true(_asset_db_content_changed_flag)
+	_asset_db_content_changed_flag = false
+	
+	assert_eq(AssetDB.get_entry_count(), 3)
+	assert_false(AssetDB.is_path_in_cache("Pack2/pieces/D"))
+	assert_false(AssetDB.is_path_in_cache("Pack2/cards/E"))
+	
+	var b_temp = AssetEntry.new()
+	b_temp.id = "B"
+	b_temp.temp = true
+	
+	pack_1.add_entry("pieces", b_temp)
+	pack_1.erase_entry("cards", "C", true)
+	d.temp = true
+	e.temp = true
+	
+	AssetDB.add_pack(pack_2)
+	AssetDB.commit_changes()
+	assert_true(_asset_db_content_changed_flag)
+	_asset_db_content_changed_flag = false
+	
+	assert_eq(AssetDB.get_entry_count(), 4)
+	assert_eq_deep(AssetDB.get_all_entries(), [a, b_temp, e, d])
+	assert_eq_deep(AssetDB.get_all_packs(), [pack_1, pack_2])
+	
+	assert_true(AssetDB.is_path_in_cache("Pack1/pieces/A"))
+	assert_true(AssetDB.is_path_in_cache("Pack1/pieces/B"))
+	assert_false(AssetDB.is_path_in_cache("Pack1/cards/C"))
+	assert_true(AssetDB.is_path_in_cache("Pack2/pieces/D"))
+	assert_true(AssetDB.is_path_in_cache("Pack2/cards/E"))
+	assert_eq(AssetDB.get_entry("Pack1/pieces/A"), a)
+	assert_eq(AssetDB.get_entry("Pack1/pieces/B"), b_temp)
+	assert_eq(AssetDB.get_entry("Pack1/cards/C"), null)
+	assert_eq(AssetDB.get_entry("Pack2/pieces/D"), d)
+	assert_eq(AssetDB.get_entry("Pack2/cards/E"), e)
+	
+	AssetDB.revert_temp_changes()
+	assert_true(_asset_db_content_changed_flag)
+	_asset_db_content_changed_flag = false
+	
+	assert_eq(AssetDB.get_entry_count(), 3)
+	assert_eq_deep(AssetDB.get_all_entries(), [c, a, b])
+	assert_eq_deep(AssetDB.get_all_packs(), [pack_1])
+	
+	assert_true(AssetDB.is_path_in_cache("Pack1/pieces/A"))
+	assert_true(AssetDB.is_path_in_cache("Pack1/pieces/B"))
+	assert_true(AssetDB.is_path_in_cache("Pack1/cards/C"))
+	assert_false(AssetDB.is_path_in_cache("Pack2/pieces/D"))
+	assert_false(AssetDB.is_path_in_cache("Pack2/cards/E"))
+	assert_eq(AssetDB.get_entry("Pack1/pieces/A"), a)
+	assert_eq(AssetDB.get_entry("Pack1/pieces/B"), b)
+	assert_eq(AssetDB.get_entry("Pack1/cards/C"), c)
+	assert_eq(AssetDB.get_entry("Pack2/pieces/D"), null)
+	assert_eq(AssetDB.get_entry("Pack2/cards/E"), null)
+	
+	AssetDB.revert_temp_changes()
+	assert_false(_asset_db_content_changed_flag) # No changes made.
+	
+	AssetDB.disconnect("content_changed", self, "_on_AssetDB_content_changed")
+
+
+func _on_AssetDB_content_changed():
+	_asset_db_content_changed_flag = true

@@ -65,6 +65,9 @@ var origin := "" setget set_origin
 # the name of that type.
 var _type_dict := {}
 
+# A list of entries that have been temporarily removed.
+var _removed_entries := []
+
 # A list of entries that have been replaced by temporary ones. If the temporary
 # entry is removed, the previous entry takes its place again.
 var _replaced_entries := []
@@ -110,6 +113,7 @@ func add_entry(type: String, entry: AssetEntry) -> void:
 					entry.pack = id
 					entry.type = type
 					type_arr[insert_index] = entry
+					print("%s: Temporarily replaced %s/%s" % [id, type, entry.id])
 					return
 				else:
 					push_error("Cannot replace one temporary entry with another")
@@ -129,6 +133,11 @@ func add_entry(type: String, entry: AssetEntry) -> void:
 	entry.pack = id
 	entry.type = type
 	type_arr.insert(insert_index, entry)
+	
+	if entry.temp:
+		print("%s: Temporarily added %s/%s" % [id, type, entry.id])
+	else:
+		print("%s: Added %s/%s" % [id, type, entry.id])
 
 
 ## Clear all entries from the asset pack.
@@ -136,11 +145,13 @@ func clear_all_entries() -> void:
 	for type in _type_dict:
 		var type_arr: Array = _type_dict[type]
 		type_arr.clear()
+	_removed_entries.clear()
 	_replaced_entries.clear()
 
 
 ## Only clear temporary entries from the asset pack. If any entries were
-## replaced by temporary ones, they are put back into their respective array.
+## replaced by temporary ones, or were temporarily removed themselves, they are
+## put back into their respective array.
 func clear_temp_entries() -> void:
 	for type in _type_dict:
 		var type_arr: Array = _type_dict[type]
@@ -148,11 +159,19 @@ func clear_temp_entries() -> void:
 			var test_entry: AssetEntry = type_arr[index]
 			if test_entry.temp:
 				remove_entry(type, index)
+	
+	# At this point, the _replaced_entries array should be empty.
+	
+	while not _removed_entries.empty():
+		var removed_entry: AssetEntry = _removed_entries.pop_back()
+		add_entry(removed_entry.type, removed_entry)
 
 
 ## Erase the given entry ID from the given type array. If the entry had replaced
 ## another entry, the previous entry is put back in the array.
-func erase_entry(type: String, entry_id: String) -> void:
+## If [code]temp[/code] is [code]true[/code], then the entry is kept in a
+## separate array until [method clear_temp_entries] is called.
+func erase_entry(type: String, entry_id: String, temp: bool = false) -> void:
 	var type_arr := get_type(type)
 	var test_entry := AssetEntry.new()
 	test_entry.id = entry_id
@@ -163,7 +182,7 @@ func erase_entry(type: String, entry_id: String) -> void:
 	
 	test_entry = type_arr[possible_index]
 	if test_entry.id == entry_id:
-		remove_entry(type, possible_index)
+		remove_entry(type, possible_index, temp)
 
 
 ## Get all of the entries for this asset pack under one [Dictionary], where each
@@ -200,6 +219,11 @@ func get_entry_count() -> int:
 		var type_arr: Array = _type_dict[type]
 		total += type_arr.size()
 	return total
+
+
+## Get the list of entries that were temporarily removed.
+func get_removed_entries() -> Array:
+	return _removed_entries.duplicate()
 
 
 ## Get the list of entries that were replaced by temporary ones.
@@ -249,7 +273,9 @@ func is_empty() -> bool:
 
 ## Remove the entry at the given index from the given type array. If the entry
 ## replaced another, the entry it replaced is put back in the array.
-func remove_entry(type: String, index: int) -> void:
+## If [code]temp[/code] is [code]true[/code], then the entry is kept in a
+## separate array until [method clear_temp_entries] is called.
+func remove_entry(type: String, index: int, temp: bool = false) -> void:
 	if index < 0:
 		push_error("Invalid index %d" % index)
 		return
@@ -262,11 +288,22 @@ func remove_entry(type: String, index: int) -> void:
 	var entry_to_remove: AssetEntry = type_arr[index]
 	var entry_id := entry_to_remove.id
 	
-	var replaced_entry := _find_replaced_entry(type, entry_id)
-	if replaced_entry != null:
-		type_arr[index] = replaced_entry
+	if temp:
+		if not entry_to_remove.temp:
+			_removed_entries.push_back(entry_to_remove)
+			type_arr.remove(index)
+			print("%s: Temporarily removed %s/%s" % [id, type, entry_id])
+		else:
+			push_error("Cannot temporarily remove temporary entry")
+			return
 	else:
-		type_arr.remove(index)
+		var replaced_entry := _find_replaced_entry(type, entry_id)
+		if replaced_entry != null:
+			type_arr[index] = replaced_entry
+			print("%s: Restored %s/%s" % [id, type, entry_id])
+		else:
+			type_arr.remove(index)
+			print("%s: Removed %s/%s" % [id, type, entry_id])
 
 
 func set_id(value: String) -> void:
