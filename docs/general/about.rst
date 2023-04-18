@@ -125,9 +125,9 @@ Is there an official Discord or Matrix server that I can join?
 --------------------------------------------------------------
 
 Yes, you can join the official `Discord <https://discord.gg/GqYkGV4WwX>`_ and
-`Matrix <https://matrix.to/#/!dbNhzKYPHpcgZgUkRi:matrix.org?via=matrix.org>`_
-servers to chat with other players about anything from the game itself, to board
-games in general, or even to share asset packs that you have made!
+`Matrix <https://matrix.to/#/#tabletop-club:matrix.org>`_ servers to chat with
+other players about anything from the game itself, to board games in general,
+or even to share asset packs that you have made!
 
 The goal is to create a safe, welcoming environment for everyone regardless of
 their background or personality. As long as you abide by the server rules, you

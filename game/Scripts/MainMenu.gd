@@ -259,7 +259,7 @@ func _on_DiscordButton_pressed():
 	OS.shell_open("https://discord.gg/GqYkGV4WwX")
 
 func _on_MatrixButton_pressed():
-	OS.shell_open("https://matrix.to/#/!dbNhzKYPHpcgZgUkRi:matrix.org?via=matrix.org")
+	OS.shell_open("https://matrix.to/#/#tabletop-club:matrix.org")
 
 func _on_InfoButton_pressed():
 	_info_dialog.popup_centered()

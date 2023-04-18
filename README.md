@@ -31,8 +31,7 @@ or
 
 If you wish to join a growing community of Tabletop Club players, you are always
 welcome to the official [Discord](https://discord.gg/GqYkGV4WwX) and
-[Matrix](https://matrix.to/#/!dbNhzKYPHpcgZgUkRi:matrix.org?via=matrix.org)
-servers!
+[Matrix](https://matrix.to/#/#tabletop-club:matrix.org) servers!
 
 ## Languages
 
