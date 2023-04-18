@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-18 14:35+0100\n"
-"PO-Revision-Date: 2022-06-12 10:19+0000\n"
+"PO-Revision-Date: 2023-04-19 19:49+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/docs-"
-"general/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-general/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -158,11 +158,11 @@ msgstr "Tabletop Club is beschikbaar op de volgende systemen:"
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
-msgstr ""
+msgstr "Windows 7 of nieuwer"
 
 #: ../../general/about.rst:78
 msgid "macOS 10.12 or later"
-msgstr ""
+msgstr "macOS 10.12 of nieuwer"
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
@@ -170,13 +170,13 @@ msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
-msgstr ""
+msgstr "Ook dient je hardware over OpenGL 3.3-ondersteuning te beschikken."
 
 #: ../../general/about.rst:83
 msgid ""
 "It is recommended to have at least 1GB of available space on your drive to "
 "accommodate for the game files, as well as any generated files."
-msgstr ""
+msgstr "Aanbeveling: 1 GB vrije schijfruimte voor de spel- en andere bestanden."
 
 #: ../../general/about.rst:86
 msgid ""
@@ -216,6 +216,9 @@ msgid ""
 "download it from the `itch app <https://itch.io/app>`_ and get automatic "
 "updates."
 msgstr ""
+"Het spel is beschikbaar op `itch.io <https://drwhut.itch.io/tabletop-club>`"
+"_! Tip: als je het spel downloadt via de `itch-app <https://itch.io/app>`_, "
+"dan ontvang je automatisch updates."
 
 #: ../../general/about.rst:113
 msgid "What stage of development is Tabletop Club at?"
@@ -244,11 +247,11 @@ msgstr ""
 
 #: ../../general/about.rst:121
 msgid "You can help test the game by :ref:`downloading-binaries`!"
-msgstr ""
+msgstr "Je kunt het spel testen door :ref:`downloading-binaries`!"
 
 #: ../../general/about.rst:125
 msgid "Is there an official Discord or Matrix server that I can join?"
-msgstr ""
+msgstr "Is er een officiëel Discord- of Matrixkanaal beschikbaar?"
 
 #: ../../general/about.rst:127
 msgid ""
@@ -257,6 +260,10 @@ msgid ""
 "chat with other players about anything from the game itself, to board games "
 "in general, or even to share asset packs that you have made!"
 msgstr ""
+"Ja, er zijn officiële `Discord- <https://discord.gg/GqYkGV4WwX>`_ en "
+"`Matrix<https://matrix.to/#/#tabletop-club:matrix.org>`_kanalen waarop je "
+"met andere spelers kunt chatten over het spel zelf, maar ook over "
+"bordspellen of items die je gemaakt hebt!"
 
 #: ../../general/about.rst:132
 msgid ""
@@ -264,6 +271,9 @@ msgid ""
 "of their background or personality. As long as you abide by the server "
 "rules, you are always free to come in and say hi!"
 msgstr ""
+"Ons doel is om een veilige en gezellige omgeving te creëren waar iedereen "
+"zich thuisvoelt, ongeacht afkomst en/of persoonlijkheid. Zolang je je aan de "
+"kanaalregels houdt, ben je altijd welkom. Kom snel eens langs!"
 
 #: ../../general/about.rst:138
 msgid "What board games can I play in Tabletop Club?"
@@ -328,12 +338,16 @@ msgid ""
 "by going to the menu and clicking :guilabel:`Save file`. This way, if you "
 "want to play the game again, you can just load the save you made previously."
 msgstr ""
+"Als er nog geen bewaard bestand is van het spel dat je wilt spelen, dan kun "
+"je je eigen bestand samenstellen door de tafel in te richten zoals jij dat "
+"wilt en dan in het menu op :guilabel:`Bestand opslaan` te klikken. Zo kun je "
+"iedere keer weer hetzelfde spelen."
 
 #: ../../general/about.rst:170
 msgid ""
 "See the :ref:`asset-type-game` page for more information about pre-made save "
 "files in asset packs."
-msgstr ""
+msgstr "Bekijk voor meer informatie de :ref:`asset-type-game`-pagina."
 
 #: ../../general/about.rst:175
 msgid "Can I add assets other than game pieces to Tabletop Club?"
