@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-18 14:35+0100\n"
-"PO-Revision-Date: 2023-03-22 01:48+0000\n"
+"PO-Revision-Date: 2023-04-20 06:48+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -258,7 +258,7 @@ msgstr "¡Puedes ayudar a probar el juego :ref:'downloading-binaries'!"
 
 #: ../../general/about.rst:125
 msgid "Is there an official Discord or Matrix server that I can join?"
-msgstr ""
+msgstr "¿Hay algún servidor oficial de Discord o Matrix al que pueda unirme?"
 
 #: ../../general/about.rst:127
 msgid ""
@@ -267,6 +267,11 @@ msgid ""
 "chat with other players about anything from the game itself, to board games "
 "in general, or even to share asset packs that you have made!"
 msgstr ""
+"Sí, puedes unirte a los servidores oficiales de `Discord <https://discord.gg/"
+"GqYkGV4WwX>`_ y `Matrix <https://matrix.to/#/#tabletop-club:matrix.org>`_ "
+"para charlar con otros jugadores sobre cualquier tema, desde el propio juego "
+"hasta juegos de mesa en general, ¡o incluso para compartir los paquetes de "
+"recursos que hayas creado!"
 
 #: ../../general/about.rst:132
 msgid ""
@@ -274,6 +279,9 @@ msgid ""
 "of their background or personality. As long as you abide by the server "
 "rules, you are always free to come in and say hi!"
 msgstr ""
+"El objetivo es crear un entorno seguro y acogedor para todos, "
+"independientemente de su origen o personalidad. Siempre que respetes las "
+"normas del servidor, puedes entrar y saludar."
 
 #: ../../general/about.rst:138
 msgid "What board games can I play in Tabletop Club?"
