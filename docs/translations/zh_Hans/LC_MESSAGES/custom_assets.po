@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-30 11:14+0100\n"
-"PO-Revision-Date: 2023-04-11 11:48+0000\n"
-"Last-Translator: near2see <near2see@gmail.com>\n"
+"PO-Revision-Date: 2023-04-21 07:51+0000\n"
+"Last-Translator: Stony <stonyme@vip.qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "tabletop-club/docs-custom-assets/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -851,7 +851,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:143
 msgid "Piece"
-msgstr ""
+msgstr "块"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "On the table are two chess pieces, a white pawn and a black queen."
