@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-17 17:29+0100\n"
-"PO-Revision-Date: 2023-04-11 11:54+0000\n"
-"Last-Translator: near2see <near2see@gmail.com>\n"
+"PO-Revision-Date: 2023-04-21 07:51+0000\n"
+"Last-Translator: Stony <stonyme@vip.qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "tabletop-club/game/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -80,11 +80,12 @@ msgstr "文档"
 
 #: ../Scenes/MainMenu.tscn:134
 msgid "Discord"
-msgstr ""
+msgstr "论坛"
 
 #: ../Scenes/MainMenu.tscn:143
+#, fuzzy
 msgid "Matrix.org"
-msgstr ""
+msgstr "Matrix.org"
 
 #: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
@@ -192,64 +193,64 @@ msgstr "用于水平反转相机的旋转。"
 
 #: ../Scenes/OptionsMenu.tscn:209
 msgid "Mouse Vertical Invert"
-msgstr ""
+msgstr "鼠标垂直反转"
 
 #: ../Scenes/OptionsMenu.tscn:217
 msgid "Used to invert the rotation of the camera vertically."
-msgstr ""
+msgstr "用来反转摄像机的垂直旋转。"
 
 #: ../Scenes/OptionsMenu.tscn:224
 msgid "Camera Movement Speed"
-msgstr ""
+msgstr "摄像机移动速度"
 
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
-msgstr ""
+msgstr "用来设置摄像机在桌子上移动的速度。"
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
-msgstr ""
+msgstr "按住鼠标左键来移动镜头视角"
 
 #: ../Scenes/OptionsMenu.tscn:252
 msgid ""
 "Used to allow the player to move the camera by dragging the mouse across the "
 "table."
-msgstr ""
+msgstr "用于允许玩家通过在桌子上拖动鼠标来移动摄像机。"
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
-msgstr ""
+msgstr "变焦敏感度"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
 "Sets how fast the camera zooms in and out of the table when using the scroll "
 "wheel."
-msgstr ""
+msgstr "设置使用滚轮时相机放大和缩小表格的速度。"
 
 #: ../Scenes/OptionsMenu.tscn:279
 msgid "Zoom Invert"
-msgstr ""
+msgstr "变焦反转"
 
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
-msgstr ""
+msgstr "用于在使用滚轮时反转缩放的方向。"
 
 #: ../Scenes/OptionsMenu.tscn:294
 msgid "Piece Lift Sensitivity"
-msgstr ""
+msgstr "块升降敏感度"
 
 #: ../Scenes/OptionsMenu.tscn:302
 msgid "Sets how fast a piece will move when lifting it off the table."
-msgstr ""
+msgstr "设定将棋子抬离桌面时的移动速度。"
 
 #: ../Scenes/OptionsMenu.tscn:314
 msgid "Piece Lift Invert"
-msgstr ""
+msgstr "块升降反转"
 
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
 "Used to invert the direction a piece will go when lifting it off the table."
-msgstr ""
+msgstr "用来反转块在抬离工作台时的方向。"
 
 #: ../Scenes/OptionsMenu.tscn:329
 msgid "Piece Rotation Invert"
