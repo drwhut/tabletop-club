@@ -9,676 +9,683 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-20 15:31\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-04-23 18:48+0000\n"
+"Last-Translator: Mohammad Kazemi <kazemi.me.222@gmail.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/tabletop-club/"
+"default-asset-pack/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
 msgid "Chess Board"
-msgstr ""
+msgstr "تخته شطرنج"
 
 #: ../TabletopClub/boards/Chess_Board:2
 msgid "An 8x8 Chess board."
-msgstr ""
+msgstr "یک تخته شطرنج 8 در 8."
 
 #: ../TabletopClub/boards/Go_Board_(Large):1
 msgid "Go Board (Large)"
-msgstr ""
+msgstr "تخته گو (بزرگ)"
 
 #: ../TabletopClub/boards/Go_Board_(Large):2
 msgid "A 19x19 Goban."
-msgstr ""
+msgstr "یک تخته گو 19 در 19."
 
 #: ../TabletopClub/boards/Go_Board_(Small):1
 msgid "Go Board (Small)"
-msgstr ""
+msgstr "تخته گو (کوچک)"
 
 #: ../TabletopClub/boards/Go_Board_(Small):2
 msgid "A 13x13 and 9x9 Goban."
-msgstr ""
+msgstr "یک تخته گو 13 در 13."
 
 #: ../TabletopClub/cards/52-Card_Deck:1
 msgid "52-Card Deck"
-msgstr ""
+msgstr "دسته ورق 52تایی"
 
 #: ../TabletopClub/cards/52-Card_Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr ""
+msgstr "یک دسته ورق فرانسوی پوکر بدون جوکر."
 
 #: ../TabletopClub/cards/Ace_of_Clubs:1
 msgid "Ace of Clubs"
-msgstr ""
+msgstr "تک گشنیز"
 
 #: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2 ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2 ../TabletopClub/cards/Eight_of_Clubs:2 ../TabletopClub/cards/Eight_of_Diamonds:2 ../TabletopClub/cards/Eight_of_Hearts:2 ../TabletopClub/cards/Eight_of_Spades:2 ../TabletopClub/cards/Five_of_Clubs:2 ../TabletopClub/cards/Five_of_Diamonds:2 ../TabletopClub/cards/Five_of_Hearts:2 ../TabletopClub/cards/Five_of_Spades:2 ../TabletopClub/cards/Four_of_Clubs:2 ../TabletopClub/cards/Four_of_Diamonds:2 ../TabletopClub/cards/Four_of_Hearts:2 ../TabletopClub/cards/Four_of_Spades:2 ../TabletopClub/cards/Jack_of_Clubs:2 ../TabletopClub/cards/Jack_of_Diamonds:2 ../TabletopClub/cards/Jack_of_Hearts:2 ../TabletopClub/cards/Jack_of_Spades:2 ../TabletopClub/cards/Joker_Black:2 ../TabletopClub/cards/Joker_Red:2 ../TabletopClub/cards/King_of_Clubs:2 ../TabletopClub/cards/King_of_Diamonds:2 ../TabletopClub/cards/King_of_Hearts:2 ../TabletopClub/cards/King_of_Spades:2 ../TabletopClub/cards/Nine_of_Clubs:2 ../TabletopClub/cards/Nine_of_Diamonds:2 ../TabletopClub/cards/Nine_of_Hearts:2 ../TabletopClub/cards/Nine_of_Spades:2 ../TabletopClub/cards/Queen_of_Clubs:2 ../TabletopClub/cards/Queen_of_Diamonds:2 ../TabletopClub/cards/Queen_of_Hearts:2 ../TabletopClub/cards/Queen_of_Spades:2 ../TabletopClub/cards/Seven_of_Clubs:2 ../TabletopClub/cards/Seven_of_Diamonds:2 ../TabletopClub/cards/Seven_of_Hearts:2 ../TabletopClub/cards/Seven_of_Spades:2 ../TabletopClub/cards/Six_of_Clubs:2 ../TabletopClub/cards/Six_of_Diamonds:2 ../TabletopClub/cards/Six_of_Hearts:2 ../TabletopClub/cards/Six_of_Spades:2 ../TabletopClub/cards/Ten_of_Clubs:2 ../TabletopClub/cards/Ten_of_Diamonds:2 ../TabletopClub/cards/Ten_of_Hearts:2 ../TabletopClub/cards/Ten_of_Spades:2 ../TabletopClub/cards/Three_of_Clubs:2 ../TabletopClub/cards/Three_of_Diamonds:2 ../TabletopClub/cards/Three_of_Hearts:2 ../TabletopClub/cards/Three_of_Spades:2 ../TabletopClub/cards/Two_of_Clubs:2 ../TabletopClub/cards/Two_of_Diamonds:2 ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
 msgid "A poker-sized French-suited playing card."
-msgstr ""
+msgstr "یک دسته ورق فرانسوی پوکر."
 
 #: ../TabletopClub/cards/Ace_of_Diamonds:1
 msgid "Ace of Diamonds"
-msgstr ""
+msgstr "تک خشت"
 
 #: ../TabletopClub/cards/Ace_of_Hearts:1
 msgid "Ace of Hearts"
-msgstr ""
+msgstr "تک دل"
 
 #: ../TabletopClub/cards/Ace_of_Spades:1
 msgid "Ace of Spades"
-msgstr ""
+msgstr "تک پیک"
 
 #: ../TabletopClub/cards/Eight_of_Clubs:1
 msgid "Eight of Clubs"
-msgstr ""
+msgstr "هشت گشنیز"
 
 #: ../TabletopClub/cards/Eight_of_Diamonds:1
 msgid "Eight of Diamonds"
-msgstr ""
+msgstr "هشت خشت"
 
 #: ../TabletopClub/cards/Eight_of_Hearts:1
 msgid "Eight of Hearts"
-msgstr ""
+msgstr "هشت دل"
 
 #: ../TabletopClub/cards/Eight_of_Spades:1
 msgid "Eight of Spades"
-msgstr ""
+msgstr "هشت پیک"
 
 #: ../TabletopClub/cards/Five_of_Clubs:1
 msgid "Five of Clubs"
-msgstr ""
+msgstr "پنج گشنیز"
 
 #: ../TabletopClub/cards/Five_of_Diamonds:1
 msgid "Five of Diamonds"
-msgstr ""
+msgstr "پنج خشت"
 
 #: ../TabletopClub/cards/Five_of_Hearts:1
 msgid "Five of Hearts"
-msgstr ""
+msgstr "پنج دل"
 
 #: ../TabletopClub/cards/Five_of_Spades:1
 msgid "Five of Spades"
-msgstr ""
+msgstr "پنج پیک"
 
 #: ../TabletopClub/cards/Four_of_Clubs:1
 msgid "Four of Clubs"
-msgstr ""
+msgstr "چهار گشنیز"
 
 #: ../TabletopClub/cards/Four_of_Diamonds:1
 msgid "Four of Diamonds"
-msgstr ""
+msgstr "چهار خشت"
 
 #: ../TabletopClub/cards/Four_of_Hearts:1
 msgid "Four of Hearts"
-msgstr ""
+msgstr "چهار دل"
 
 #: ../TabletopClub/cards/Four_of_Spades:1
 msgid "Four of Spades"
-msgstr ""
+msgstr "چهار پیک"
 
 #: ../TabletopClub/cards/Jack_of_Clubs:1
 msgid "Jack of Clubs"
-msgstr ""
+msgstr "سرباز گشنیز"
 
 #: ../TabletopClub/cards/Jack_of_Diamonds:1
 msgid "Jack of Diamonds"
-msgstr ""
+msgstr "سرباز خشت"
 
 #: ../TabletopClub/cards/Jack_of_Hearts:1
 msgid "Jack of Hearts"
-msgstr ""
+msgstr "سرباز دل"
 
 #: ../TabletopClub/cards/Jack_of_Spades:1
 msgid "Jack of Spades"
-msgstr ""
+msgstr "سرباز پیک"
 
 #: ../TabletopClub/cards/Joker_Black:1
 msgid "Joker Black"
-msgstr ""
+msgstr "جوکر سیاه"
 
 #: ../TabletopClub/cards/Joker_Red:1
 msgid "Joker Red"
-msgstr ""
+msgstr "جوکر قرمز"
 
 #: ../TabletopClub/cards/King_of_Clubs:1
 msgid "King of Clubs"
-msgstr ""
+msgstr "شاه گشنیز"
 
 #: ../TabletopClub/cards/King_of_Diamonds:1
 msgid "King of Diamonds"
-msgstr ""
+msgstr "شاه خشت"
 
 #: ../TabletopClub/cards/King_of_Hearts:1
 msgid "King of Hearts"
-msgstr ""
+msgstr "شاه دل"
 
 #: ../TabletopClub/cards/King_of_Spades:1
 msgid "King of Spades"
-msgstr ""
+msgstr "شاه پیک"
 
 #: ../TabletopClub/cards/Nine_of_Clubs:1
 msgid "Nine of Clubs"
-msgstr ""
+msgstr "نه گشنیز"
 
 #: ../TabletopClub/cards/Nine_of_Diamonds:1
 msgid "Nine of Diamonds"
-msgstr ""
+msgstr "نه خشت"
 
 #: ../TabletopClub/cards/Nine_of_Hearts:1
 msgid "Nine of Hearts"
-msgstr ""
+msgstr "نه دل"
 
 #: ../TabletopClub/cards/Nine_of_Spades:1
 msgid "Nine of Spades"
-msgstr ""
+msgstr "نه پیک"
 
 #: ../TabletopClub/cards/Queen_of_Clubs:1
 msgid "Queen of Clubs"
-msgstr ""
+msgstr "بیبی گشنیز"
 
 #: ../TabletopClub/cards/Queen_of_Diamonds:1
 msgid "Queen of Diamonds"
-msgstr ""
+msgstr "بیبی خشت"
 
 #: ../TabletopClub/cards/Queen_of_Hearts:1
 msgid "Queen of Hearts"
-msgstr ""
+msgstr "بیبی دل"
 
 #: ../TabletopClub/cards/Queen_of_Spades:1
 msgid "Queen of Spades"
-msgstr ""
+msgstr "بیبی پیک"
 
 #: ../TabletopClub/cards/Seer:1
 msgid "Seer"
-msgstr ""
+msgstr "پیشگو"
 
 #: ../TabletopClub/cards/Seer:2
 msgid "Helps villagers by secretly inspecting someone's role every night."
-msgstr ""
+msgstr "هر شب با دیدن پنهانی نقش یک نفر به روستاییان کمک می‌‌کند."
 
 #: ../TabletopClub/cards/Seven_of_Clubs:1
 msgid "Seven of Clubs"
-msgstr ""
+msgstr "هفت گشینز"
 
 #: ../TabletopClub/cards/Seven_of_Diamonds:1
 msgid "Seven of Diamonds"
-msgstr ""
+msgstr "هفت خشت"
 
 #: ../TabletopClub/cards/Seven_of_Hearts:1
 msgid "Seven of Hearts"
-msgstr ""
+msgstr "هفت دل"
 
 #: ../TabletopClub/cards/Seven_of_Spades:1
 msgid "Seven of Spades"
-msgstr ""
+msgstr "هفت پیک"
 
 #: ../TabletopClub/cards/Six_of_Clubs:1
 msgid "Six of Clubs"
-msgstr ""
+msgstr "شش گشنیز"
 
 #: ../TabletopClub/cards/Six_of_Diamonds:1
 msgid "Six of Diamonds"
-msgstr ""
+msgstr "شش خشت"
 
 #: ../TabletopClub/cards/Six_of_Hearts:1
 msgid "Six of Hearts"
-msgstr ""
+msgstr "شش دل"
 
 #: ../TabletopClub/cards/Six_of_Spades:1
 msgid "Six of Spades"
-msgstr ""
+msgstr "شش پیک"
 
 #: ../TabletopClub/cards/Ten_of_Clubs:1
 msgid "Ten of Clubs"
-msgstr ""
+msgstr "ده گشنیز"
 
 #: ../TabletopClub/cards/Ten_of_Diamonds:1
 msgid "Ten of Diamonds"
-msgstr ""
+msgstr "ده خشت"
 
 #: ../TabletopClub/cards/Ten_of_Hearts:1
 msgid "Ten of Hearts"
-msgstr ""
+msgstr "ده دل"
 
 #: ../TabletopClub/cards/Ten_of_Spades:1
 msgid "Ten of Spades"
-msgstr ""
+msgstr "ده پیک"
 
 #: ../TabletopClub/cards/Three_of_Clubs:1
 msgid "Three of Clubs"
-msgstr ""
+msgstr "سه گشنیز"
 
 #: ../TabletopClub/cards/Three_of_Diamonds:1
 msgid "Three of Diamonds"
-msgstr ""
+msgstr "سه خشت"
 
 #: ../TabletopClub/cards/Three_of_Hearts:1
 msgid "Three of Hearts"
-msgstr ""
+msgstr "سه دل"
 
 #: ../TabletopClub/cards/Three_of_Spades:1
 msgid "Three of Spades"
-msgstr ""
+msgstr "سه پیک"
 
 #: ../TabletopClub/cards/Two_of_Clubs:1
 msgid "Two of Clubs"
-msgstr ""
+msgstr "دو گشنیز"
 
 #: ../TabletopClub/cards/Two_of_Diamonds:1
 msgid "Two of Diamonds"
-msgstr ""
+msgstr "دو خشت"
 
 #: ../TabletopClub/cards/Two_of_Hearts:1
 msgid "Two of Hearts"
-msgstr ""
+msgstr "دو دل"
 
 #: ../TabletopClub/cards/Two_of_Spades:1
 msgid "Two of Spades"
-msgstr ""
+msgstr "دو پیک"
 
 #: ../TabletopClub/cards/Villager:1
 msgid "Villager"
-msgstr ""
+msgstr "روستایی"
 
 #: ../TabletopClub/cards/Villager:2
 msgid "Avoid being eaten by werewolves at night by voting against them during the day."
-msgstr ""
+msgstr "با رای دادن علیه گرگینه‌ها در روز سعی کنید شب خورده نشوید."
 
 #: ../TabletopClub/cards/Werewolf:1
 msgid "Werewolf"
-msgstr ""
+msgstr "گرگینه"
 
 #: ../TabletopClub/cards/Werewolf:2
 msgid "Decide who to feast upon every night with your pack, avoid suspision from villagers."
 msgstr ""
+"همراه گله خود هرشب تصمیم بگیرید چه کسی را بخورید، سعی کنید کسی به شما شک "
+"نکند."
 
 #: ../TabletopClub/containers/Pot:1
 msgid "Pot"
-msgstr ""
+msgstr "قابلمه"
 
 #: ../TabletopClub/containers/Purse:1
 msgid "Purse"
-msgstr ""
+msgstr "کیف"
 
 #: ../TabletopClub/containers/Red_Cup:1
 msgid "Red Cup"
-msgstr ""
+msgstr "جام قرمز"
 
 #: ../TabletopClub/dice/d4/d4_(Black):1
 msgid "d4 (Black)"
-msgstr ""
+msgstr "d4 (سیاه)"
 
 #: ../TabletopClub/dice/d4/d4_(Black):2 ../TabletopClub/dice/d4/d4_(Blue):2 ../TabletopClub/dice/d4/d4_(Brown):2 ../TabletopClub/dice/d4/d4_(Cyan):2 ../TabletopClub/dice/d4/d4_(Green):2 ../TabletopClub/dice/d4/d4_(Orange):2 ../TabletopClub/dice/d4/d4_(Pink):2 ../TabletopClub/dice/d4/d4_(Purple):2 ../TabletopClub/dice/d4/d4_(Red):2 ../TabletopClub/dice/d4/d4_(White):2 ../TabletopClub/dice/d4/d4_(Yellow):2
 msgid "A 4-sided die."
-msgstr ""
+msgstr "یک تاس چهاروجهی."
 
 #: ../TabletopClub/dice/d4/d4_(Blue):1
 msgid "d4 (Blue)"
-msgstr ""
+msgstr "d4 (آبی)"
 
 #: ../TabletopClub/dice/d4/d4_(Brown):1
 msgid "d4 (Brown)"
-msgstr ""
+msgstr "d4 (قهوه‌ای)"
 
 #: ../TabletopClub/dice/d4/d4_(Cyan):1
 msgid "d4 (Cyan)"
-msgstr ""
+msgstr "d4 (فیروزه‌ای)"
 
 #: ../TabletopClub/dice/d4/d4_(Green):1
 msgid "d4 (Green)"
-msgstr ""
+msgstr "d4 (سبز)"
 
 #: ../TabletopClub/dice/d4/d4_(Orange):1
 msgid "d4 (Orange)"
-msgstr ""
+msgstr "d4 (نارنجی)"
 
 #: ../TabletopClub/dice/d4/d4_(Pink):1
 msgid "d4 (Pink)"
-msgstr ""
+msgstr "d4 (صورتی)"
 
 #: ../TabletopClub/dice/d4/d4_(Purple):1
 msgid "d4 (Purple)"
-msgstr ""
+msgstr "d4 (بنفش)"
 
 #: ../TabletopClub/dice/d4/d4_(Red):1
 msgid "d4 (Red)"
-msgstr ""
+msgstr "d4 (قرمز)"
 
 #: ../TabletopClub/dice/d4/d4_(White):1
 msgid "d4 (White)"
-msgstr ""
+msgstr "d4 (سفید)"
 
 #: ../TabletopClub/dice/d4/d4_(Yellow):1
 msgid "d4 (Yellow)"
-msgstr ""
+msgstr "d4 (زرد)"
 
 #: ../TabletopClub/dice/d6/d6_(Black):1
 msgid "d6 (Black)"
-msgstr ""
+msgstr "d6 (سیاه)"
 
 #: ../TabletopClub/dice/d6/d6_(Black):2 ../TabletopClub/dice/d6/d6_(Blue):2 ../TabletopClub/dice/d6/d6_(Brown):2 ../TabletopClub/dice/d6/d6_(Cyan):2 ../TabletopClub/dice/d6/d6_(Green):2 ../TabletopClub/dice/d6/d6_(Orange):2 ../TabletopClub/dice/d6/d6_(Pink):2 ../TabletopClub/dice/d6/d6_(Purple):2 ../TabletopClub/dice/d6/d6_(Red):2 ../TabletopClub/dice/d6/d6_(Traditional):2 ../TabletopClub/dice/d6/d6_(White):2 ../TabletopClub/dice/d6/d6_(Yellow):2
 msgid "A 6-sided die."
-msgstr ""
+msgstr "یک تاس شش‌وجهی."
 
 #: ../TabletopClub/dice/d6/d6_(Blue):1
 msgid "d6 (Blue)"
-msgstr ""
+msgstr "d6 (آبی)"
 
 #: ../TabletopClub/dice/d6/d6_(Brown):1
 msgid "d6 (Brown)"
-msgstr ""
+msgstr "d6 (قهوه‌ای)"
 
 #: ../TabletopClub/dice/d6/d6_(Cyan):1
 msgid "d6 (Cyan)"
-msgstr ""
+msgstr "d6 (فیروزه‌ای)"
 
 #: ../TabletopClub/dice/d6/d6_(Green):1
 msgid "d6 (Green)"
-msgstr ""
+msgstr "d6 (سبز)"
 
 #: ../TabletopClub/dice/d6/d6_(Orange):1
 msgid "d6 (Orange)"
-msgstr ""
+msgstr "d6 (نارنجی)"
 
 #: ../TabletopClub/dice/d6/d6_(Pink):1
 msgid "d6 (Pink)"
-msgstr ""
+msgstr "d6 (صورتی)"
 
 #: ../TabletopClub/dice/d6/d6_(Purple):1
 msgid "d6 (Purple)"
-msgstr ""
+msgstr "d6 (بنفش)"
 
 #: ../TabletopClub/dice/d6/d6_(Red):1
 msgid "d6 (Red)"
-msgstr ""
+msgstr "d6 (قرمز)"
 
 #: ../TabletopClub/dice/d6/d6_(Traditional):1
 msgid "d6 (Traditional)"
-msgstr ""
+msgstr "d6 (سنتی)"
 
 #: ../TabletopClub/dice/d6/d6_(White):1
 msgid "d6 (White)"
-msgstr ""
+msgstr "d6 (سفید)"
 
 #: ../TabletopClub/dice/d6/d6_(Yellow):1
 msgid "d6 (Yellow)"
-msgstr ""
+msgstr "d6 (زرد)"
 
 #: ../TabletopClub/dice/d8/d8_(Black):1
 msgid "d8 (Black)"
-msgstr ""
+msgstr "d8 (سیاه)"
 
 #: ../TabletopClub/dice/d8/d8_(Black):2 ../TabletopClub/dice/d8/d8_(Blue):2 ../TabletopClub/dice/d8/d8_(Brown):2 ../TabletopClub/dice/d8/d8_(Cyan):2 ../TabletopClub/dice/d8/d8_(Green):2 ../TabletopClub/dice/d8/d8_(Orange):2 ../TabletopClub/dice/d8/d8_(Pink):2 ../TabletopClub/dice/d8/d8_(Purple):2 ../TabletopClub/dice/d8/d8_(Red):2 ../TabletopClub/dice/d8/d8_(White):2 ../TabletopClub/dice/d8/d8_(Yellow):2
 msgid "An 8-sided die."
-msgstr ""
+msgstr "یک تاس هشت‌وجهی."
 
 #: ../TabletopClub/dice/d8/d8_(Blue):1
 msgid "d8 (Blue)"
-msgstr ""
+msgstr "d8 (آبی)"
 
 #: ../TabletopClub/dice/d8/d8_(Brown):1
 msgid "d8 (Brown)"
-msgstr ""
+msgstr "d8 (قهوه‌ای)"
 
 #: ../TabletopClub/dice/d8/d8_(Cyan):1
 msgid "d8 (Cyan)"
-msgstr ""
+msgstr "d8 (فیروزه‌ای)"
 
 #: ../TabletopClub/dice/d8/d8_(Green):1
 msgid "d8 (Green)"
-msgstr ""
+msgstr "d8 (سبز)"
 
 #: ../TabletopClub/dice/d8/d8_(Orange):1
 msgid "d8 (Orange)"
-msgstr ""
+msgstr "d8 (نارنجی)"
 
 #: ../TabletopClub/dice/d8/d8_(Pink):1
 msgid "d8 (Pink)"
-msgstr ""
+msgstr "d8 (صورتی)"
 
 #: ../TabletopClub/dice/d8/d8_(Purple):1
 msgid "d8 (Purple)"
-msgstr ""
+msgstr "d8 (بنفش)"
 
 #: ../TabletopClub/dice/d8/d8_(Red):1
 msgid "d8 (Red)"
-msgstr ""
+msgstr "d8 (قرمز)"
 
 #: ../TabletopClub/dice/d8/d8_(White):1
 msgid "d8 (White)"
-msgstr ""
+msgstr "d8 (سفید)"
 
 #: ../TabletopClub/dice/d8/d8_(Yellow):1
 msgid "d8 (Yellow)"
-msgstr ""
+msgstr "d8 (زرد)"
 
 #: ../TabletopClub/dice/d10/d10_(Black):1
 msgid "d10 (Black)"
-msgstr ""
+msgstr "d10 (سیاه)"
 
 #: ../TabletopClub/dice/d10/d10_(Black):2 ../TabletopClub/dice/d10/d10_(Blue):2 ../TabletopClub/dice/d10/d10_(Brown):2 ../TabletopClub/dice/d10/d10_(Cyan):2 ../TabletopClub/dice/d10/d10_(Green):2 ../TabletopClub/dice/d10/d10_(Orange):2 ../TabletopClub/dice/d10/d10_(Percent)_(Black):2 ../TabletopClub/dice/d10/d10_(Percent)_(Blue):2 ../TabletopClub/dice/d10/d10_(Percent)_(Brown):2 ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):2 ../TabletopClub/dice/d10/d10_(Percent)_(Green):2 ../TabletopClub/dice/d10/d10_(Percent)_(Orange):2 ../TabletopClub/dice/d10/d10_(Percent)_(Pink):2 ../TabletopClub/dice/d10/d10_(Percent)_(Purple):2 ../TabletopClub/dice/d10/d10_(Percent)_(Red):2 ../TabletopClub/dice/d10/d10_(Percent)_(White):2 ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):2 ../TabletopClub/dice/d10/d10_(Pink):2 ../TabletopClub/dice/d10/d10_(Purple):2 ../TabletopClub/dice/d10/d10_(Red):2 ../TabletopClub/dice/d10/d10_(White):2 ../TabletopClub/dice/d10/d10_(Yellow):2
 msgid "A 10-sided die."
-msgstr ""
+msgstr "یک تاس ده‌وجهی."
 
 #: ../TabletopClub/dice/d10/d10_(Blue):1
 msgid "d10 (Blue)"
-msgstr ""
+msgstr "d10 (آبی)"
 
 #: ../TabletopClub/dice/d10/d10_(Brown):1
 msgid "d10 (Brown)"
-msgstr ""
+msgstr "d10 (قهوه‌ای)"
 
 #: ../TabletopClub/dice/d10/d10_(Cyan):1
 msgid "d10 (Cyan)"
-msgstr ""
+msgstr "d10 (فیروزه‌ای)"
 
 #: ../TabletopClub/dice/d10/d10_(Green):1
 msgid "d10 (Green)"
-msgstr ""
+msgstr "d10 (سبز)"
 
 #: ../TabletopClub/dice/d10/d10_(Orange):1
 msgid "d10 (Orange)"
-msgstr ""
+msgstr "d10 (نارنجی)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Black):1
 msgid "d10 (Percent) (Black)"
-msgstr ""
+msgstr "d10 (درصد) (سیاه)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Blue):1
 msgid "d10 (Percent) (Blue)"
-msgstr ""
+msgstr "d10 (درصد) (آبی)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Brown):1
 msgid "d10 (Percent) (Brown)"
-msgstr ""
+msgstr "d10 (درصد) (قهوه‌ای)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):1
 msgid "d10 (Percent) (Cyan)"
-msgstr ""
+msgstr "d10 (درصد) (فیروزه‌ای)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Green):1
 msgid "d10 (Percent) (Green)"
-msgstr ""
+msgstr "d10 (درصد) (سبز)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Orange):1
 msgid "d10 (Percent) (Orange)"
-msgstr ""
+msgstr "d10 (درصد) (نارنجی)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Pink):1
 msgid "d10 (Percent) (Pink)"
-msgstr ""
+msgstr "d10 (درصد) (صورتی)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Purple):1
 msgid "d10 (Percent) (Purple)"
-msgstr ""
+msgstr "d10 (درصد) (بنفش)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Red):1
 msgid "d10 (Percent) (Red)"
-msgstr ""
+msgstr "d10 (درصد) (قرمز)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(White):1
 msgid "d10 (Percent) (White)"
-msgstr ""
+msgstr "d10 (درصد) (سفید)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):1
 msgid "d10 (Percent) (Yellow)"
-msgstr ""
+msgstr "d10 (درصد) (زرد)"
 
 #: ../TabletopClub/dice/d10/d10_(Pink):1
 msgid "d10 (Pink)"
-msgstr ""
+msgstr "d10 (صورتی)"
 
 #: ../TabletopClub/dice/d10/d10_(Purple):1
 msgid "d10 (Purple)"
-msgstr ""
+msgstr "d10 (بنفش)"
 
 #: ../TabletopClub/dice/d10/d10_(Red):1
 msgid "d10 (Red)"
-msgstr ""
+msgstr "d10 (قرمز)"
 
 #: ../TabletopClub/dice/d10/d10_(White):1
 msgid "d10 (White)"
-msgstr ""
+msgstr "d10 (سفید)"
 
 #: ../TabletopClub/dice/d10/d10_(Yellow):1
 msgid "d10 (Yellow)"
-msgstr ""
+msgstr "d10 (زرد)"
 
 #: ../TabletopClub/dice/d12/d12_(Black):1
 msgid "d12 (Black)"
-msgstr ""
+msgstr "d12 (سیاه)"
 
 #: ../TabletopClub/dice/d12/d12_(Black):2 ../TabletopClub/dice/d12/d12_(Blue):2 ../TabletopClub/dice/d12/d12_(Brown):2 ../TabletopClub/dice/d12/d12_(Cyan):2 ../TabletopClub/dice/d12/d12_(Green):2 ../TabletopClub/dice/d12/d12_(Orange):2 ../TabletopClub/dice/d12/d12_(Pink):2 ../TabletopClub/dice/d12/d12_(Purple):2 ../TabletopClub/dice/d12/d12_(Red):2 ../TabletopClub/dice/d12/d12_(White):2 ../TabletopClub/dice/d12/d12_(Yellow):2
 msgid "A 12-sided die."
-msgstr ""
+msgstr "یک تاس دوازده‌وجهی."
 
 #: ../TabletopClub/dice/d12/d12_(Blue):1
 msgid "d12 (Blue)"
-msgstr ""
+msgstr "d12 (آبی)"
 
 #: ../TabletopClub/dice/d12/d12_(Brown):1
 msgid "d12 (Brown)"
-msgstr ""
+msgstr "d12 (قهوه‌ای)"
 
 #: ../TabletopClub/dice/d12/d12_(Cyan):1
 msgid "d12 (Cyan)"
-msgstr ""
+msgstr "d12 (فیروزه‌ای)"
 
 #: ../TabletopClub/dice/d12/d12_(Green):1
 msgid "d12 (Green)"
-msgstr ""
+msgstr "d12 (سبز)"
 
 #: ../TabletopClub/dice/d12/d12_(Orange):1
 msgid "d12 (Orange)"
-msgstr ""
+msgstr "d12 (نارنجی)"
 
 #: ../TabletopClub/dice/d12/d12_(Pink):1
 msgid "d12 (Pink)"
-msgstr ""
+msgstr "d12 (صورتی)"
 
 #: ../TabletopClub/dice/d12/d12_(Purple):1
 msgid "d12 (Purple)"
-msgstr ""
+msgstr "d12 (بنفش)"
 
 #: ../TabletopClub/dice/d12/d12_(Red):1
 msgid "d12 (Red)"
-msgstr ""
+msgstr "d12 (قرمز)"
 
 #: ../TabletopClub/dice/d12/d12_(White):1
 msgid "d12 (White)"
-msgstr ""
+msgstr "d12 (سفید)"
 
 #: ../TabletopClub/dice/d12/d12_(Yellow):1
 msgid "d12 (Yellow)"
-msgstr ""
+msgstr "d12 (زرد)"
 
 #: ../TabletopClub/dice/d20/d20_(Black):1
 msgid "d20 (Black)"
-msgstr ""
+msgstr "d20 (سیاه)"
 
 #: ../TabletopClub/dice/d20/d20_(Black):2 ../TabletopClub/dice/d20/d20_(Blue):2 ../TabletopClub/dice/d20/d20_(Brown):2 ../TabletopClub/dice/d20/d20_(Cyan):2 ../TabletopClub/dice/d20/d20_(Green):2 ../TabletopClub/dice/d20/d20_(Orange):2 ../TabletopClub/dice/d20/d20_(Pink):2 ../TabletopClub/dice/d20/d20_(Purple):2 ../TabletopClub/dice/d20/d20_(Red):2 ../TabletopClub/dice/d20/d20_(White):2 ../TabletopClub/dice/d20/d20_(Yellow):2
 msgid "A 20-sided die."
-msgstr ""
+msgstr "یک تاس بیست‌وجهی."
 
 #: ../TabletopClub/dice/d20/d20_(Blue):1
 msgid "d20 (Blue)"
-msgstr ""
+msgstr "d20 (آبی)"
 
 #: ../TabletopClub/dice/d20/d20_(Brown):1
 msgid "d20 (Brown)"
-msgstr ""
+msgstr "d20 (قهوه‌ای)"
 
 #: ../TabletopClub/dice/d20/d20_(Cyan):1
 msgid "d20 (Cyan)"
-msgstr ""
+msgstr "d20 (فیروزه‌ای)"
 
 #: ../TabletopClub/dice/d20/d20_(Green):1
 msgid "d20 (Green)"
-msgstr ""
+msgstr "d20 (سبز)"
 
 #: ../TabletopClub/dice/d20/d20_(Orange):1
 msgid "d20 (Orange)"
-msgstr ""
+msgstr "d20 (نارنجی)"
 
 #: ../TabletopClub/dice/d20/d20_(Pink):1
 msgid "d20 (Pink)"
-msgstr ""
+msgstr "d20 (صورتی)"
 
 #: ../TabletopClub/dice/d20/d20_(Purple):1
 msgid "d20 (Purple)"
-msgstr ""
+msgstr "d20 (بنفش)"
 
 #: ../TabletopClub/dice/d20/d20_(Red):1
 msgid "d20 (Red)"
-msgstr ""
+msgstr "d20 (قرمز)"
 
 #: ../TabletopClub/dice/d20/d20_(White):1
 msgid "d20 (White)"
-msgstr ""
+msgstr "d20 (سفید)"
 
 #: ../TabletopClub/dice/d20/d20_(Yellow):1
 msgid "d20 (Yellow)"
-msgstr ""
+msgstr "d20 (زرد)"
 
 #: ../TabletopClub/games/Chess:1
 msgid "Chess"
-msgstr ""
+msgstr "شطرنج"
 
 #: ../TabletopClub/games/Chess:2
 msgid "Standard Chess for two players."
-msgstr ""
+msgstr "شطرنج عادی برای دو بازیکن."
 
 #: ../TabletopClub/games/Dominoes:1
 msgid "Dominoes"
-msgstr ""
+msgstr "دومینو"
 
 #: ../TabletopClub/games/Dominoes:2
 msgid "A bag with 28 tiles has been provided."
-msgstr ""
+msgstr "یک کیسه با 28 مهره آماده شده."
 
 #: ../TabletopClub/games/Go:1
 msgid "Go"
-msgstr ""
+msgstr "گو"
 
 #: ../TabletopClub/games/Go:2
 msgid ""
 "Standard Go for two players.\n"
 "Can play on a 19x19, 13x13, or 9x9 board."
 msgstr ""
+"بازی گو معمولی برای دو بازیکن.\n"
+"می‌توانید با تخته‌های 19 در 19، 13 در 13 یا 9 در 9 بازی کنید."
 
 #: ../TabletopClub/games/Poker:1
 msgid "Poker"
-msgstr ""
+msgstr "پوکر"
 
 #: ../TabletopClub/games/Poker:2
 msgid "Each player has been given 25 chips, which sum up to a value of 500."
-msgstr ""
+msgstr "هر بازیکن 25 ژتون (چیپ) دارد که مجموع ارزش آن‌ها 500 است."
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
-msgstr ""
+msgstr "Airport Lounge - Kevin MacLeod"
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:2
 msgid "Light and airy, this piece is guaranteed not to steal focus."
