@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-18 14:35+0100\n"
-"PO-Revision-Date: 2023-04-20 06:48+0000\n"
-"Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
+"PO-Revision-Date: 2023-04-26 12:50+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/es/>\n"
 "Language: es\n"
@@ -280,8 +280,8 @@ msgid ""
 "rules, you are always free to come in and say hi!"
 msgstr ""
 "El objetivo es crear un entorno seguro y acogedor para todos, "
-"independientemente de su origen o personalidad. Siempre que respetes las "
-"normas del servidor, puedes entrar y saludar."
+"independientemente de su origen o personalidad. ¡Mientras cumpla con las "
+"reglas del servidor, siempre puede entrar y saludar!"
 
 #: ../../general/about.rst:138
 msgid "What board games can I play in Tabletop Club?"
@@ -877,7 +877,7 @@ msgstr "Windows: ``%APPDATA%/Tabletop Club/logs/``"
 
 #: ../../general/contributing/ways_to_contribute.rst:29
 msgid "macOS: ``~/Library/Application Support/Tabletop Club/logs``"
-msgstr "macOS:  ``~/Library/Application Support/Tabletop Club/logs``"
+msgstr "macOS: ``~/Library/Application Support/Tabletop Club/logs``"
 
 #: ../../general/contributing/ways_to_contribute.rst:30
 msgid "Linux: ``~/.local/share/Tabletop Club/logs/``"
