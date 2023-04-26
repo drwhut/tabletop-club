@@ -889,6 +889,9 @@ func _unhandled_input(event):
 # in_hand: If the piece is allowed to be modified if in hand
 # Returns true if piece can be modified by current player
 func is_piece_allowed_modify( piece: Piece, in_hand: bool = true ) -> bool:
+	if piece.is_locked():
+		return false
+	
 	var can_modify = not bool(piece is Card)
 	if piece is Card:
 		if piece.over_hands.empty():
