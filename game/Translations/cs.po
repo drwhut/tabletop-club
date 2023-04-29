@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-30 11:14+0100\n"
-"PO-Revision-Date: 2022-12-23 19:50+0000\n"
+"POT-Creation-Date: 2023-04-17 17:29+0100\n"
+"PO-Revision-Date: 2023-04-22 14:44+0000\n"
 "Last-Translator: muzzug <kadlec.ondrej@protonmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/game/"
 "cs/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -37,82 +37,90 @@ msgstr "Chybějící modul"
 msgid "Loading..."
 msgstr "Načítání..."
 
-#: ../Scenes/MainMenu.tscn:49
+#: ../Scenes/MainMenu.tscn:51
 msgid "Singleplayer"
 msgstr "Jeden hráč"
 
-#: ../Scenes/MainMenu.tscn:56 ../Scenes/MainMenu.tscn:139
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
 msgstr "Více hráčů"
 
-#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:63
+#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:65
 msgid "Options"
 msgstr "Možnosti"
 
-#: ../Scenes/MainMenu.tscn:70 ../Scenes/MainMenu.tscn:296
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
 msgstr "Titulky"
 
-#: ../Scenes/MainMenu.tscn:77
+#: ../Scenes/MainMenu.tscn:79
 msgid "Quit"
 msgstr "Ukončit"
 
-#: ../Scenes/MainMenu.tscn:96 ../Scenes/MainMenu.tscn:321
+#: ../Scenes/MainMenu.tscn:98 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
-msgstr ""
+msgstr "Protokol o importu"
 
-#: ../Scenes/MainMenu.tscn:97
+#: ../Scenes/MainMenu.tscn:99
 msgid "0"
-msgstr ""
+msgstr "0"
 
-#: ../Scenes/MainMenu.tscn:105
+#: ../Scenes/MainMenu.tscn:107
 msgid "Tabletop Club on Itch.io"
 msgstr "Tabletop Club na Itch.io"
 
-#: ../Scenes/MainMenu.tscn:114
+#: ../Scenes/MainMenu.tscn:116
 msgid "Source Code"
 msgstr "Zdrojový kód"
 
-#: ../Scenes/MainMenu.tscn:123
+#: ../Scenes/MainMenu.tscn:125
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: ../Scenes/MainMenu.tscn:132 ../Scenes/MainMenu.tscn:227
+#: ../Scenes/MainMenu.tscn:134
+msgid "Discord"
+msgstr "Discord"
+
+#: ../Scenes/MainMenu.tscn:143
+msgid "Matrix.org"
+msgstr "Matrix.org"
+
+#: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
 msgstr "Informace"
 
-#: ../Scenes/MainMenu.tscn:157
+#: ../Scenes/MainMenu.tscn:177
 msgid "Host Game"
 msgstr "Hostovat hru"
 
-#: ../Scenes/MainMenu.tscn:163
+#: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr ""
 "Vytvořte novou herní místnost, do které se můžou vaši přátelé připojit přes "
 "Internet."
 
-#: ../Scenes/MainMenu.tscn:175 ../Scenes/MainMenu.tscn:222
+#: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
 msgstr "Připojit ke hře"
 
-#: ../Scenes/MainMenu.tscn:181
+#: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
 msgstr "Připojte se do herní místnosti vašeho přítele pomocí kódu místnosti."
 
-#: ../Scenes/MainMenu.tscn:187
+#: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
 msgstr "Vložit kód místnosti"
 
-#: ../Scenes/MainMenu.tscn:207
+#: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
 msgstr "Kód místnosti:"
 
-#: ../Scenes/MainMenu.tscn:216
+#: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
 msgstr "ABCS"
 
-#: ../Scenes/MainMenu.tscn:314
+#: ../Scenes/MainMenu.tscn:334
 msgid "Error"
 msgstr "Chyba"
 
@@ -206,39 +214,43 @@ msgstr "Slouží k nastavení rychlosti pohybu kamery po stole."
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
-msgstr ""
+msgstr "Pro pohyb kamery drž levé tlačítko myši"
 
 #: ../Scenes/OptionsMenu.tscn:252
+#, fuzzy
 msgid ""
 "Used to allow the player to move the camera by dragging the mouse across the "
 "table."
-msgstr ""
+msgstr "Slouží k tomu, aby hráč mohl pohybovat kamerou tažením myši po stole."
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
-msgstr ""
+msgstr "Citlivost přiblížení"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
 "Sets how fast the camera zooms in and out of the table when using the scroll "
 "wheel."
 msgstr ""
+"Nastavuje, jak rychle se bude kamera přibližovat a oddalovat od stolu při "
+"použití rolovacího kolečka."
 
 #: ../Scenes/OptionsMenu.tscn:279
+#, fuzzy
 msgid "Zoom Invert"
-msgstr ""
+msgstr "Invertovat zvětšení"
 
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
-msgstr ""
+msgstr "Slouží k obrácení směru zvětšení při použití rolovacího kolečka."
 
 #: ../Scenes/OptionsMenu.tscn:294
 msgid "Piece Lift Sensitivity"
-msgstr ""
+msgstr "Citlivost zvedání dílů"
 
 #: ../Scenes/OptionsMenu.tscn:302
 msgid "Sets how fast a piece will move when lifting it off the table."
-msgstr ""
+msgstr "Nastavuje rychlost pohybu dílku při jeho zvedání ze stolu."
 
 #: ../Scenes/OptionsMenu.tscn:314
 msgid "Piece Lift Invert"

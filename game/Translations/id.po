@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-30 11:14+0100\n"
-"PO-Revision-Date: 2022-11-15 15:47+0000\n"
+"POT-Creation-Date: 2023-04-17 17:29+0100\n"
+"PO-Revision-Date: 2023-04-04 16:43+0000\n"
 "Last-Translator: Neko Nekowazarashi <kodra@nekoweb.my.id>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/tabletop-club/"
 "game/id/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -27,7 +27,7 @@ msgstr "Mengimpor aset..."
 
 #: ../Scenes/ImportAssets.tscn:56
 msgid "Missing Asset Folder"
-msgstr ""
+msgstr "Folder Aset Tidak Ada"
 
 #: ../Scenes/ImportAssets.tscn:62
 msgid "Missing Module"
@@ -37,80 +37,88 @@ msgstr ""
 msgid "Loading..."
 msgstr "Memuat..."
 
-#: ../Scenes/MainMenu.tscn:49
+#: ../Scenes/MainMenu.tscn:51
 msgid "Singleplayer"
 msgstr "Satu Pemain"
 
-#: ../Scenes/MainMenu.tscn:56 ../Scenes/MainMenu.tscn:139
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
 msgstr "Multi Pemain"
 
-#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:63
+#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:65
 msgid "Options"
 msgstr "Pilihan"
 
-#: ../Scenes/MainMenu.tscn:70 ../Scenes/MainMenu.tscn:296
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
 msgstr "Kredit"
 
-#: ../Scenes/MainMenu.tscn:77
+#: ../Scenes/MainMenu.tscn:79
 msgid "Quit"
 msgstr "Keluar"
 
-#: ../Scenes/MainMenu.tscn:96 ../Scenes/MainMenu.tscn:321
+#: ../Scenes/MainMenu.tscn:98 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
-msgstr ""
+msgstr "Impor Log"
 
-#: ../Scenes/MainMenu.tscn:97
+#: ../Scenes/MainMenu.tscn:99
 msgid "0"
-msgstr ""
+msgstr "0"
 
-#: ../Scenes/MainMenu.tscn:105
+#: ../Scenes/MainMenu.tscn:107
 msgid "Tabletop Club on Itch.io"
-msgstr ""
+msgstr "Tabletop Club di Itch.io"
 
-#: ../Scenes/MainMenu.tscn:114
+#: ../Scenes/MainMenu.tscn:116
 msgid "Source Code"
-msgstr ""
+msgstr "Kode Sumber"
 
-#: ../Scenes/MainMenu.tscn:123
+#: ../Scenes/MainMenu.tscn:125
 msgid "Documentation"
 msgstr "Dokumentasi"
 
-#: ../Scenes/MainMenu.tscn:132 ../Scenes/MainMenu.tscn:227
+#: ../Scenes/MainMenu.tscn:134
+msgid "Discord"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:143
+msgid "Matrix.org"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
 msgstr "Informasi"
 
-#: ../Scenes/MainMenu.tscn:157
+#: ../Scenes/MainMenu.tscn:177
 msgid "Host Game"
 msgstr "Hos Permainan"
 
-#: ../Scenes/MainMenu.tscn:163
+#: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
-msgstr "Buat ruang baru untuk teman Anda bergabung lewat internet."
+msgstr "Buat ruang baru untuk teman kamu untuk bergabung lewat internet."
 
-#: ../Scenes/MainMenu.tscn:175 ../Scenes/MainMenu.tscn:222
+#: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
 msgstr "Gabung Permainan"
 
-#: ../Scenes/MainMenu.tscn:181
+#: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
-msgstr "Gunakan kode ruang untuk bergabung ke ruang teman Anda."
+msgstr "Gunakan kode ruang untuk bergabung ke ruang teman kamu."
 
-#: ../Scenes/MainMenu.tscn:187
+#: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
 msgstr "Masukkan Kode Ruang"
 
-#: ../Scenes/MainMenu.tscn:207
+#: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
 msgstr "Kode Ruang:"
 
-#: ../Scenes/MainMenu.tscn:216
+#: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
-msgstr ""
+msgstr "ABCD"
 
-#: ../Scenes/MainMenu.tscn:314
+#: ../Scenes/MainMenu.tscn:334
 msgid "Error"
 msgstr "Galat"
 
@@ -136,23 +144,27 @@ msgstr "Atur volume semua sumber musik di permainan."
 
 #: ../Scenes/OptionsMenu.tscn:98
 msgid "Sounds Volume"
-msgstr ""
+msgstr "Volume Suara"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
 "Sets the volume of sound sources played manually throughout the game, for "
 "example, from speakers."
 msgstr ""
+"Atur volume sumber suara yang diputar secara manual sepanjang permainan, "
+"seperti dari pengeras suara."
 
 #: ../Scenes/OptionsMenu.tscn:117
 msgid "Effects Volume"
-msgstr ""
+msgstr "Volume Efek"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
 "Sets the volume of sound effects played automatically throughout the game, "
 "for example, pieces falling on the table. "
 msgstr ""
+"Atur volume efek suara yang diputar secara otomatis sepanjang permainan, "
+"seperti suara bidak yang jatuh dari meja, "
 
 #: ../Scenes/OptionsMenu.tscn:142
 msgid "Controls"
@@ -326,7 +338,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
-msgstr ""
+msgstr "Tampilkan Peringatan Sistem"
 
 #: ../Scenes/OptionsMenu.tscn:516
 msgid "Displays system warnings in the chat box."
@@ -342,7 +354,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:561
 msgid "Opens the assets folder in your file explorer."
-msgstr "Buka folder aset di penjelajah berkas Anda."
+msgstr "Buka folder aset di penjelajah berkas kamu."
 
 #: ../Scenes/OptionsMenu.tscn:563
 msgid "Open Assets Folder"
@@ -447,10 +459,8 @@ msgid ""
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:785 ../Scripts/Game/CameraController.gd:1574
-#, fuzzy
-#| msgid "Rotate camera"
 msgid "Rotate Piece"
-msgstr "Rotasi kamera"
+msgstr "Rotasi Bidak"
 
 #: ../Scenes/OptionsMenu.tscn:793
 msgid "Rotates the the piece that is selected, or that the mouse is over."
@@ -479,7 +489,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:839
 msgid "Delete Piece"
-msgstr ""
+msgstr "Hapus Bidak"
 
 #: ../Scenes/OptionsMenu.tscn:847
 msgid "Deletes the currently selected piece."
@@ -557,7 +567,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1015
 msgid "Chat Font Size"
-msgstr ""
+msgstr "Ukuran Fonta Obrolan"
 
 #: ../Scenes/OptionsMenu.tscn:1023
 msgid "Changes the size of the text in the chat box."
@@ -701,7 +711,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1405
 msgid "Reimporting Assets"
-msgstr ""
+msgstr "Mengimpor Ulang Aset"
 
 #: ../Scenes/OptionsMenu.tscn:1423
 msgid "Warning!"
@@ -709,7 +719,7 @@ msgstr "Peringatan!"
 
 #: ../Scenes/RandomMusicPlayer.tscn:23
 msgid "Now Playing:"
-msgstr ""
+msgstr "Sekarang Main:"
 
 #: ../Scenes/Game/CameraController.tscn:99
 msgid "Deal X cards"
@@ -745,19 +755,19 @@ msgstr "Posisi:"
 #: ../Scenes/Game/CameraController.tscn:311
 #: ../Scenes/Game/CameraController.tscn:363
 msgid "X:"
-msgstr ""
+msgstr "X:"
 
 #: ../Scenes/Game/CameraController.tscn:269
 #: ../Scenes/Game/CameraController.tscn:325
 #: ../Scenes/Game/CameraController.tscn:379
 msgid "Y:"
-msgstr ""
+msgstr "Y:"
 
 #: ../Scenes/Game/CameraController.tscn:285
 #: ../Scenes/Game/CameraController.tscn:339
 #: ../Scenes/Game/CameraController.tscn:395
 msgid "Z:"
-msgstr ""
+msgstr "Z:"
 
 #: ../Scenes/Game/CameraController.tscn:300
 msgid "Rotation (°):"
@@ -783,7 +793,7 @@ msgstr "Kekuatan:"
 
 #: ../Scenes/Game/CameraController.tscn:484
 msgid "1.0"
-msgstr ""
+msgstr "1.0"
 
 #: ../Scenes/Game/CameraController.tscn:561
 msgid "System:"
@@ -791,7 +801,7 @@ msgstr "Sistem:"
 
 #: ../Scenes/Game/CameraController.tscn:567
 msgid "Metric"
-msgstr ""
+msgstr "Metrik"
 
 #: ../Scenes/Game/CameraController.tscn:602
 msgid "Brush Color:"
@@ -885,7 +895,7 @@ msgstr "Kirim"
 
 #: ../Scenes/Game/UI/GameUI.tscn:37 ../Scenes/Game/UI/GameUI.tscn:146
 msgid "Objects"
-msgstr ""
+msgstr "Objek"
 
 #: ../Scenes/Game/UI/GameUI.tscn:43 ../Scenes/Game/UI/GameUI.tscn:162
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:285
@@ -895,11 +905,11 @@ msgstr "Permainan"
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:11
 #: ../Scenes/Game/UI/GameUI.tscn:49
 msgid "Room"
-msgstr ""
+msgstr "Ruangan"
 
 #: ../Scenes/Game/UI/GameUI.tscn:55
 msgid "Notebook"
-msgstr ""
+msgstr "Catatan"
 
 #: ../Scenes/Game/UI/GameUI.tscn:61
 msgid "Flip Table"
@@ -914,14 +924,13 @@ msgid "Undo"
 msgstr "Urung"
 
 #: ../Scenes/Game/UI/GameUI.tscn:83
-#, fuzzy
-#| msgid "45"
 msgid "45°"
-msgstr "45"
+msgstr "45°"
 
 #: ../Scenes/Game/UI/GameUI.tscn:91
+#, fuzzy
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: ../Scenes/Game/UI/GameUI.tscn:157
 msgid "Add"
@@ -930,17 +939,17 @@ msgstr "Tambah"
 #: ../Scenes/Game/UI/GameUI.tscn:158
 #, python-format
 msgid "Added %s."
-msgstr ""
+msgstr "Menambahkan %s."
 
 #: ../Scenes/Game/UI/GameUI.tscn:159
-#, python-format
+#, fuzzy, python-format
 msgid "Added %d objects."
-msgstr ""
+msgstr "Menambahkan %d objek."
 
 #: ../Scenes/Game/UI/GameUI.tscn:166
 #, python-format
 msgid "Loaded %d games."
-msgstr ""
+msgstr "Memuat %d permainan."
 
 #: ../Scenes/Game/UI/GameUI.tscn:204
 msgid "Back to game"
@@ -956,11 +965,11 @@ msgstr "Muat permainan"
 
 #: ../Scenes/Game/UI/GameUI.tscn:228
 msgid "Quit to main menu"
-msgstr ""
+msgstr "Keluar ke beranda"
 
 #: ../Scenes/Game/UI/GameUI.tscn:234
 msgid "Quit to desktop"
-msgstr ""
+msgstr "Keluar ke desktop"
 
 #: ../Scenes/Game/UI/GameUI.tscn:239
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:164
@@ -969,23 +978,23 @@ msgstr "Muat berkas"
 
 #: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:42
 msgid "Take"
-msgstr ""
+msgstr "Ambil"
 
 #: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:50
 msgid "Take All"
-msgstr ""
+msgstr "Ambil Semua"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:12
 msgid "Details"
-msgstr ""
+msgstr "Detail"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:33
 msgid "Show advanced developer information in JSON form."
-msgstr ""
+msgstr "Tampilkan informasi pengembangan lebih lanjut di bentuk JSON."
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:34
 msgid "Advanced view"
-msgstr ""
+msgstr "Tampilan lebih lanjut"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:35
 msgid "+ New Page"
@@ -997,23 +1006,23 @@ msgstr "Judul"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:60
 msgid "When ticked, this page will be visible to other players."
-msgstr ""
+msgstr "Ketika dicentang, halaman ini akan terlihat ke pemain lain."
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:62
 msgid "Public"
-msgstr ""
+msgstr "Publik"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:94
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:102
 msgid "100%"
-msgstr ""
+msgstr "100%"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:110
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:122
 msgid "Move Up"
@@ -1040,7 +1049,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:151
 msgid "Open"
-msgstr ""
+msgstr "Buka"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
@@ -1060,11 +1069,11 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:93
 msgid "Lamp Type"
-msgstr ""
+msgstr "Jenis Lampu"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:99
 msgid "Sunlight"
-msgstr ""
+msgstr "Cahaya Matahari"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:107
 msgid "Lamp Intensity"
@@ -1072,7 +1081,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:128
 msgid "10%"
-msgstr ""
+msgstr "10%"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:134
 msgid "Lamp Color"
@@ -1102,7 +1111,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:21
 msgid "Pack:"
-msgstr ""
+msgstr "Paket:"
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:35
 msgid "Type:"
@@ -1110,7 +1119,7 @@ msgstr "Jenis:"
 
 #: ../Scripts/AssetDB.gd:439
 msgid "Cleaning old files..."
-msgstr ""
+msgstr "Membersihkan berkas-berkas usang..."
 
 #: ../Scripts/BindManager.gd:51
 msgid "Not bound"
@@ -1138,19 +1147,19 @@ msgstr "Tombol Tetikus Ekstra 2"
 
 #: ../Scripts/BindManager.gd:68
 msgid "Mouse Wheel Up"
-msgstr ""
+msgstr "Roda Tetikus Ke Atas"
 
 #: ../Scripts/BindManager.gd:70
 msgid "Mouse Wheel Down"
-msgstr ""
+msgstr "Roda Tetikus Ke Bawah"
 
 #: ../Scripts/BindManager.gd:72
 msgid "Mouse Wheel Left"
-msgstr ""
+msgstr "Roda Tetikus Ke Kiri"
 
 #: ../Scripts/BindManager.gd:74
 msgid "Mouse Wheel Right"
-msgstr ""
+msgstr "Roda Tetikus Ke Kanan"
 
 #: ../Scripts/BindManager.gd:76
 msgid "Unknown Mouse Button"
@@ -1162,21 +1171,23 @@ msgstr ""
 
 #: ../Scripts/ImportAssets.gd:79
 msgid "Tabletop Club could not find any asset packs in the following folders:"
-msgstr ""
+msgstr "Tabletop Club tidak dapat menemukan folder aset di folder berikut:"
 
 #: ../Scripts/ImportAssets.gd:81
 msgid ""
 "Tabletop Club could not find an assets folder in any of the following places:"
 msgstr ""
+"Tabletop Club tidak dapat menemukan folder aset di tempat-tempat berikut:"
 
 #: ../Scripts/ImportAssets.gd:87
 msgid ""
 "Please place an asset pack into one of these folders, and restart the game."
 msgstr ""
+"Letakkan folder aset ke salah satu folder tersebut dan mulai ulang permainan."
 
 #: ../Scripts/ImportAssets.gd:89
 msgid "Please create one of these folders and restart the game."
-msgstr ""
+msgstr "Buat salah satu folder tersebut dan mulai ulang permainan."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:709 ../Scripts/Lobby.gd:64
 #: ../Scripts/Lobby.gd:70
@@ -1185,7 +1196,7 @@ msgstr ""
 
 #: ../Scripts/MainMenu.gd:95
 msgid "Alpha Testers"
-msgstr ""
+msgstr "Pencoba Alpha"
 
 #: ../Scripts/MainMenu.gd:96
 msgid "Contributors"
@@ -1212,8 +1223,9 @@ msgid "Logo and Icon"
 msgstr "Logo dan Ikon"
 
 #: ../Scripts/MainMenu.gd:102
+#, fuzzy
 msgid "Sound Effects"
-msgstr ""
+msgstr "Efek Suara"
 
 #: ../Scripts/MainMenu.gd:103
 msgid "Tool Icons"
@@ -1257,7 +1269,7 @@ msgstr ""
 
 #: ../Scripts/MainMenu.gd:214
 msgid "Room code must be four characters long!"
-msgstr ""
+msgstr "Kode ruang harus empat karakter!"
 
 #: ../Scripts/MainMenu.gd:219
 msgid "Invalid room code!"
@@ -1268,7 +1280,6 @@ msgid "System Default"
 msgstr "Baku Sistem"
 
 #: ../Scripts/OptionsMenu.gd:65
-#, fuzzy
 msgid "Never"
 msgstr "Tidak Pernah"
 
@@ -1306,15 +1317,15 @@ msgstr "Sangat Tinggi"
 
 #: ../Scripts/OptionsMenu.gd:81
 msgid "Ultra"
-msgstr ""
+msgstr "Ultra"
 
 #: ../Scripts/OptionsMenu.gd:83
 msgid "Small"
-msgstr ""
+msgstr "Kecil"
 
 #: ../Scripts/OptionsMenu.gd:85
 msgid "Large"
-msgstr ""
+msgstr "Besar"
 
 #: ../Scripts/RandomMusicPlayer.gd:34
 msgid "Nothing"
@@ -1377,7 +1388,7 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1230
 msgid "Sort by"
-msgstr ""
+msgstr "Urut berdasarkan"
 
 #: ../Scripts/Game/CameraController.gd:1239
 msgid "Timer"
@@ -1403,7 +1414,7 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1296
 msgid "Peek inside"
-msgstr ""
+msgstr "Intip ke dalam"
 
 #: ../Scripts/Game/CameraController.gd:1298
 msgid "Take objects out"
@@ -1415,7 +1426,7 @@ msgstr "Pengeras suara"
 
 #: ../Scripts/Game/CameraController.gd:1326
 msgid "Details…"
-msgstr ""
+msgstr "Detail…"
 
 #: ../Scripts/Game/CameraController.gd:1338
 msgid "Cut"
@@ -1453,22 +1464,22 @@ msgstr ""
 #: ../Scripts/Game/CameraController.gd:1405
 #, python-format
 msgid "Alt + %s"
-msgstr ""
+msgstr "Alt + %s"
 
 #: ../Scripts/Game/CameraController.gd:1406
 #, python-format
 msgid "Ctrl + %s"
-msgstr ""
+msgstr "Ctrl + %s"
 
 #: ../Scripts/Game/CameraController.gd:1407
 #, python-format
 msgid "Cmd + %s"
-msgstr ""
+msgstr "Cmd + %s"
 
 #: ../Scripts/Game/CameraController.gd:1408
 #, python-format
 msgid "Hold %s"
-msgstr ""
+msgstr "Tahan %s"
 
 #: ../Scripts/Game/CameraController.gd:1409
 #, python-format
@@ -1477,7 +1488,7 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1416
 msgid "Scroll Wheel"
-msgstr ""
+msgstr "Gulir Tetikus"
 
 #: ../Scripts/Game/CameraController.gd:1419
 msgid "Move camera"
@@ -1753,7 +1764,7 @@ msgstr "Menghubungkan ke peladen utama..."
 #: ../Scripts/Game/Game.gd:1718
 #, python-format
 msgid "Could not open the file at path '%s' (error %d)."
-msgstr ""
+msgstr "Tidak dapat membuka berkas di '%s' (galat: %d)."
 
 #: ../Scripts/Game/Game.gd:1884
 msgid "Establishing connection with the host..."
@@ -1786,7 +1797,7 @@ msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:46
 msgid "Too many rooms are open."
-msgstr ""
+msgstr "Terlalu banyak ruang yang terbuka."
 
 #: ../Scripts/Game/MasterServer.gd:47
 msgid "Already in a room."
@@ -1802,35 +1813,36 @@ msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:50
 msgid "Message format is invalid."
-msgstr ""
+msgstr "Format pesan tidak valid."
 
 #: ../Scripts/Game/MasterServer.gd:51
+#, fuzzy
 msgid "Message is invalid when not in a room."
-msgstr ""
+msgstr "Pesan tidak valid ketika tidak berada di ruang."
 
 #: ../Scripts/Game/MasterServer.gd:52
 msgid "Internal server error."
-msgstr ""
+msgstr "Galat internal peladen."
 
 #: ../Scripts/Game/MasterServer.gd:53
 msgid "Invalid destination."
-msgstr ""
+msgstr "Tujuan tidak valid."
 
 #: ../Scripts/Game/MasterServer.gd:54
 msgid "Invalid command."
-msgstr ""
+msgstr "Perintah tidak valid."
 
 #: ../Scripts/Game/MasterServer.gd:55
 msgid "Too many players connected."
-msgstr ""
+msgstr "Terlalu banyak yang terhubung."
 
 #: ../Scripts/Game/MasterServer.gd:56
 msgid "Transfer mode is invalid."
-msgstr ""
+msgstr "Mode transfer tidak valid."
 
 #: ../Scripts/Game/MasterServer.gd:57
 msgid "Too many connections."
-msgstr ""
+msgstr "Terlalu banyak koneksi."
 
 #: ../Scripts/Game/MasterServer.gd:58
 msgid "Reconnected too quickly."
@@ -1846,7 +1858,7 @@ msgstr ""
 
 #: ../Scripts/Game/UI/ChatBox.gd:154
 msgid "Privately send a message to another player."
-msgstr ""
+msgstr "Mengirim pesan secara privat ke pemain lain."
 
 #: ../Scripts/Game/UI/GameUI.gd:150
 msgid "Clear Paint"
@@ -1854,39 +1866,40 @@ msgstr ""
 
 #: ../Scripts/Game/UI/GameUI.gd:170
 msgid "Welcome to Tabletop Club!"
-msgstr ""
+msgstr "Selamat datang di Tabletop Club!"
 
 #: ../Scripts/Game/UI/GameUI.gd:171
 msgid "To view a list of commands, type /? or /help in this chat box."
 msgstr ""
+"Untuk melihat daftar perintah, ketik /? atau /help di bilah percakapan ini."
 
 #: ../Scripts/Game/UI/GameUI.gd:248
 #, python-format
 msgid "Room Code: [b]%s[/b]"
-msgstr ""
+msgstr "Kode Ruang: [b]%s[/b]"
 
 #: ../Scripts/Game/UI/GameUI.gd:252
 msgid "Hide Room Code"
-msgstr ""
+msgstr "Sembunyikan Kode Ruang"
 
 #: ../Scripts/Game/UI/GameUI.gd:254
 msgid "Show Room Code"
-msgstr ""
+msgstr "Tampilkan Kode Ruang"
 
 #: ../Scripts/Game/UI/GameUI.gd:322
 #, python-format
 msgid "%s has joined the game."
-msgstr ""
+msgstr "%s telah bergabung ke permainan."
 
 #: ../Scripts/Game/UI/GameUI.gd:329
 #, python-format
 msgid "%s changed their name to %s"
-msgstr ""
+msgstr "%s telah mengubah nama mereka ke %s"
 
 #: ../Scripts/Game/UI/GameUI.gd:334
 #, python-format
 msgid "%s has left the game."
-msgstr ""
+msgstr "%s telah meninggalkan permainan."
 
 #: ../Scripts/Game/UI/GameUI.gd:389
 msgid "View notebook"
@@ -1895,12 +1908,12 @@ msgstr ""
 #: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:40
 #, python-format
 msgid "Contents of %s"
-msgstr ""
+msgstr "Konten %s"
 
 #: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:45
 #, python-format
 msgid "%s is empty."
-msgstr ""
+msgstr "%s kosong."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:61
 msgid "No objects have been selected."
@@ -1918,7 +1931,7 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:83
 msgid "No description."
-msgstr ""
+msgstr "Tidak ada deskripsi."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:88
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:54
@@ -1964,23 +1977,26 @@ msgid "Stack of %d tokens"
 msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:267
+#, fuzzy
 msgid ""
 "You can use this notebook to write down information that will persist "
 "between sessions."
 msgstr ""
+"Anda bisa menggunakan buku catatan ini untuk mencatat hal-hal yang ada antar "
+"sesi."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:269
 msgid "This player does not have any public pages in their notebook."
-msgstr ""
+msgstr "Pemain ini tidak memiliki halaman publik di buku catatannya."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:702
 msgid "<Unknown>"
-msgstr ""
+msgstr "<Tidak diketahui>"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:713
 #, python-format
 msgid "%s's Notebook"
-msgstr ""
+msgstr "Buku Catatan %s"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:757
 #, python-format
@@ -2010,12 +2026,13 @@ msgid "Load"
 msgstr "Muat"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:180
+#, fuzzy
 msgid "Sort:"
-msgstr ""
+msgstr "Urut:"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:184
 msgid "Last Modified"
-msgstr ""
+msgstr "Terakhir Diubah"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:210
 msgid "Delete file?"
@@ -2044,6 +2061,8 @@ msgid ""
 "File names cannot contain any of the following characters:\n"
 "%s"
 msgstr ""
+"Nama berkas tidak bisa memiliki karakter berikut:\n"
+"%s"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:241
 msgid "Rename file..."
@@ -2051,17 +2070,17 @@ msgstr "Ubah nama berkas..."
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:251
 msgid "Please enter a new name for the file:"
-msgstr ""
+msgstr "Masukkan nama baru untuk berkas ini:"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:371
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Apakah Anda yakin ingin menghapus '%s'?"
+msgstr "Apakah kamu yakin ingin menghapus '%s'?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:384
 #, python-format
 msgid "The file '%s' already exists. Are you sure you want to overwrite it?"
-msgstr "Berkas '%s' telah ada. Apakah Anda yakin ingin menimpanya?"
+msgstr "Berkas '%s' telah ada. Apakah kamu yakin ingin menimpanya?"
 
 #: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:108
 #, python-format
@@ -2071,13 +2090,11 @@ msgstr "Halaman %d/%d"
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:114
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:302
 msgid "All"
-msgstr ""
+msgstr "Semua"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:281
-#, fuzzy
-#| msgid "Cards"
 msgid "Boards"
-msgstr "Kartu"
+msgstr "Papan"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:282
 msgid "Cards"
@@ -2097,7 +2114,7 @@ msgstr "Musik"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:287
 msgid "Pieces"
-msgstr ""
+msgstr "Bidak"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:288
 msgid "Skyboxes"

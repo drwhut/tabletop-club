@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-30 11:14+0100\n"
+"POT-Creation-Date: 2023-04-17 17:29+0100\n"
 "PO-Revision-Date: 2023-02-20 21:51+0000\n"
 "Last-Translator: Reese Rivers <doormattion@gmail.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/tabletop-club/"
@@ -37,80 +37,88 @@ msgstr "Mankanta modulo"
 msgid "Loading..."
 msgstr "Ŝargado..."
 
-#: ../Scenes/MainMenu.tscn:49
+#: ../Scenes/MainMenu.tscn:51
 msgid "Singleplayer"
 msgstr "Unu ludanto"
 
-#: ../Scenes/MainMenu.tscn:56 ../Scenes/MainMenu.tscn:139
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
 msgstr "Pluraj ludantoj"
 
-#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:63
+#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:65
 msgid "Options"
 msgstr "Agordoj"
 
-#: ../Scenes/MainMenu.tscn:70 ../Scenes/MainMenu.tscn:296
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
 msgstr "Agnoskoj"
 
-#: ../Scenes/MainMenu.tscn:77
+#: ../Scenes/MainMenu.tscn:79
 msgid "Quit"
 msgstr "Eliri"
 
-#: ../Scenes/MainMenu.tscn:96 ../Scenes/MainMenu.tscn:321
+#: ../Scenes/MainMenu.tscn:98 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
 msgstr ""
 
-#: ../Scenes/MainMenu.tscn:97
+#: ../Scenes/MainMenu.tscn:99
 msgid "0"
 msgstr ""
 
-#: ../Scenes/MainMenu.tscn:105
+#: ../Scenes/MainMenu.tscn:107
 msgid "Tabletop Club on Itch.io"
 msgstr "Tabletop Club en Itch.io"
 
-#: ../Scenes/MainMenu.tscn:114
+#: ../Scenes/MainMenu.tscn:116
 msgid "Source Code"
 msgstr "Fontokodo"
 
-#: ../Scenes/MainMenu.tscn:123
+#: ../Scenes/MainMenu.tscn:125
 msgid "Documentation"
 msgstr "Dokumentado"
 
-#: ../Scenes/MainMenu.tscn:132 ../Scenes/MainMenu.tscn:227
+#: ../Scenes/MainMenu.tscn:134
+msgid "Discord"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:143
+msgid "Matrix.org"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
 msgstr "Informoj"
 
-#: ../Scenes/MainMenu.tscn:157
+#: ../Scenes/MainMenu.tscn:177
 msgid "Host Game"
 msgstr "Gastigi ludon"
 
-#: ../Scenes/MainMenu.tscn:163
+#: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr "Kreas novan vestiblon, al kiuj viaj amikoj povas aliĝi Interrete."
 
-#: ../Scenes/MainMenu.tscn:175 ../Scenes/MainMenu.tscn:222
+#: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
 msgstr "Aliĝi al ludo"
 
-#: ../Scenes/MainMenu.tscn:181
+#: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
 msgstr "Vi povas uzi ĉambrokodon por aliĝi al vestiblo de amiko."
 
-#: ../Scenes/MainMenu.tscn:187
+#: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
 msgstr "Enigu ĉambrokodon"
 
-#: ../Scenes/MainMenu.tscn:207
+#: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
 msgstr "Ĉambrokodo:"
 
-#: ../Scenes/MainMenu.tscn:216
+#: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
 msgstr "ABCD"
 
-#: ../Scenes/MainMenu.tscn:314
+#: ../Scenes/MainMenu.tscn:334
 msgid "Error"
 msgstr "Eraro"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-30 11:14+0100\n"
+"POT-Creation-Date: 2023-04-17 17:29+0100\n"
 "PO-Revision-Date: 2022-11-28 17:28+0000\n"
 "Last-Translator: Hairic95 <hairic95@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/tabletop-club/"
@@ -36,80 +36,88 @@ msgstr "Modulo mancante"
 msgid "Loading..."
 msgstr "Caricamente in corso..."
 
-#: ../Scenes/MainMenu.tscn:49
+#: ../Scenes/MainMenu.tscn:51
 msgid "Singleplayer"
 msgstr "Giocatore Singolo"
 
-#: ../Scenes/MainMenu.tscn:56 ../Scenes/MainMenu.tscn:139
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
 msgstr "Multigiocatore"
 
-#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:63
+#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:65
 msgid "Options"
 msgstr "Opzioni"
 
-#: ../Scenes/MainMenu.tscn:70 ../Scenes/MainMenu.tscn:296
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
 msgstr "Crediti"
 
-#: ../Scenes/MainMenu.tscn:77
+#: ../Scenes/MainMenu.tscn:79
 msgid "Quit"
 msgstr "Esci"
 
-#: ../Scenes/MainMenu.tscn:96 ../Scenes/MainMenu.tscn:321
+#: ../Scenes/MainMenu.tscn:98 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
 msgstr ""
 
-#: ../Scenes/MainMenu.tscn:97
+#: ../Scenes/MainMenu.tscn:99
 msgid "0"
 msgstr ""
 
-#: ../Scenes/MainMenu.tscn:105
+#: ../Scenes/MainMenu.tscn:107
 msgid "Tabletop Club on Itch.io"
 msgstr "Tabletop Club su Itch.io"
 
-#: ../Scenes/MainMenu.tscn:114
+#: ../Scenes/MainMenu.tscn:116
 msgid "Source Code"
 msgstr "Codice Sorgente"
 
-#: ../Scenes/MainMenu.tscn:123
+#: ../Scenes/MainMenu.tscn:125
 msgid "Documentation"
 msgstr "Documentazione"
 
-#: ../Scenes/MainMenu.tscn:132 ../Scenes/MainMenu.tscn:227
+#: ../Scenes/MainMenu.tscn:134
+msgid "Discord"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:143
+msgid "Matrix.org"
+msgstr ""
+
+#: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
 msgstr "Informazioni"
 
-#: ../Scenes/MainMenu.tscn:157
+#: ../Scenes/MainMenu.tscn:177
 msgid "Host Game"
 msgstr "Ospita Partita"
 
-#: ../Scenes/MainMenu.tscn:163
+#: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr "Crea una nuova lobby per unire i tuoi amici tramite Internet."
 
-#: ../Scenes/MainMenu.tscn:175 ../Scenes/MainMenu.tscn:222
+#: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
 msgstr "Unisciti a Partita"
 
-#: ../Scenes/MainMenu.tscn:181
+#: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
 msgstr "Usa un Codice Lobby per unirti alla lobby di un amico."
 
-#: ../Scenes/MainMenu.tscn:187
+#: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
 msgstr "Inserisci Codice Lobby"
 
-#: ../Scenes/MainMenu.tscn:207
+#: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
 msgstr "Codice Lobby:"
 
-#: ../Scenes/MainMenu.tscn:216
+#: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
 msgstr "ABCD"
 
-#: ../Scenes/MainMenu.tscn:314
+#: ../Scenes/MainMenu.tscn:334
 msgid "Error"
 msgstr "Errore"
 
