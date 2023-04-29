@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-06 00:02+0000\n"
-"PO-Revision-Date: 2022-11-14 14:47+0000\n"
+"PO-Revision-Date: 2023-04-02 15:41+0000\n"
 "Last-Translator: Neko Nekowazarashi <kodra@nekoweb.my.id>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-index/id/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: ../../index.rst:25
 msgid "General"
@@ -26,11 +26,11 @@ msgstr "Umum"
 
 #: ../../index.rst:33
 msgid "Custom Assets"
-msgstr ""
+msgstr "Aset Kustom"
 
 #: ../../index.rst:7
 msgid "Tabletop Club Documentation"
-msgstr ""
+msgstr "Dokumentasi Tabletop Club"
 
 #: ../../index.rst:9
 msgid ""
@@ -39,6 +39,10 @@ msgid ""
 "check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
 "the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
+"Selamat datang di dokumentasi untuk Tabletop Club, permainan papan yang "
+"bebas dan sumber terbuka! Jika kamu baru di permainan ini, silakan lihat "
+"halaman :ref:`about-tabletop-club`. Atau, kamu bisa menggunakan daftar isi, "
+"bilah sisi, atau bilah pencarian untuk menemukan apa yang kamu perlukan!"
 
 #: ../../index.rst:None
 msgid "Screenshots from the game"
@@ -52,6 +56,10 @@ msgid ""
 "issue or a pull request on the project's `GitHub repository <https://github."
 "com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
+"Dokumentasi, dan proyek ini, terbuka terhadap saran dan kontribusi! Jika "
+"kamu merasa sesuatu tidak dijelaskan dengan baik atau ada sesuatu yang "
+"kurang, maka silakan buka isu di repositori GitHub <https://github.com/"
+"drwhut/tabletop-club/issues>`_!"
 
 #: ../../index.rst:42
 msgid "Indices and tables"
@@ -59,12 +67,12 @@ msgstr ""
 
 #: ../../index.rst:44
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../index.rst:45
 msgid ":ref:`modindex`"
-msgstr ""
+msgstr ":ref:`modindex`"
 
 #: ../../index.rst:46
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-06 00:02+0000\n"
-"PO-Revision-Date: 2023-01-01 20:49+0000\n"
+"PO-Revision-Date: 2023-03-31 23:44+0000\n"
 "Last-Translator: Willian Correia Vinagre <willianvinagre11@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "tabletop-club/docs-index/pt_BR/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: ../../index.rst:25
 msgid "General"
@@ -47,7 +47,7 @@ msgstr ""
 
 #: ../../index.rst:None
 msgid "Screenshots from the game"
-msgstr ""
+msgstr "Capturas de tela do jogo"
 
 #: ../../index.rst:19
 msgid ""
