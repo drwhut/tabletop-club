@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-20 15:29+0000\n"
-"PO-Revision-Date: 2023-03-22 01:48+0000\n"
-"Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
+"POT-Creation-Date: 2023-04-18 14:35+0100\n"
+"PO-Revision-Date: 2023-04-26 12:50+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -257,14 +257,41 @@ msgid "You can help test the game by :ref:`downloading-binaries`!"
 msgstr "¡Puedes ayudar a probar el juego :ref:'downloading-binaries'!"
 
 #: ../../general/about.rst:125
+msgid "Is there an official Discord or Matrix server that I can join?"
+msgstr "¿Hay algún servidor oficial de Discord o Matrix al que pueda unirme?"
+
+#: ../../general/about.rst:127
+msgid ""
+"Yes, you can join the official `Discord <https://discord.gg/GqYkGV4WwX>`_ "
+"and `Matrix <https://matrix.to/#/#tabletop-club:matrix.org>`_ servers to "
+"chat with other players about anything from the game itself, to board games "
+"in general, or even to share asset packs that you have made!"
+msgstr ""
+"Sí, puedes unirte a los servidores oficiales de `Discord <https://discord.gg/"
+"GqYkGV4WwX>`_ y `Matrix <https://matrix.to/#/#tabletop-club:matrix.org>`_ "
+"para charlar con otros jugadores sobre cualquier tema, desde el propio juego "
+"hasta juegos de mesa en general, ¡o incluso para compartir los paquetes de "
+"recursos que hayas creado!"
+
+#: ../../general/about.rst:132
+msgid ""
+"The goal is to create a safe, welcoming environment for everyone regardless "
+"of their background or personality. As long as you abide by the server "
+"rules, you are always free to come in and say hi!"
+msgstr ""
+"El objetivo es crear un entorno seguro y acogedor para todos, "
+"independientemente de su origen o personalidad. ¡Mientras cumpla con las "
+"reglas del servidor, siempre puede entrar y saludar!"
+
+#: ../../general/about.rst:138
 msgid "What board games can I play in Tabletop Club?"
 msgstr "¿Qué juegos de mesa puedo jugar en Tabletop Club?"
 
-#: ../../general/about.rst:127
+#: ../../general/about.rst:140
 msgid "Theoretically, any of them!"
 msgstr "En teoría, ¡cualquiera de ellos!"
 
-#: ../../general/about.rst:129
+#: ../../general/about.rst:142
 msgid ""
 "Out of the box, the games comes with the default Tabletop Club asset pack "
 "which contains some of the most common objects you'll need, like playing "
@@ -274,7 +301,7 @@ msgstr ""
 "Tabletop Club que contiene algunos de los objetos más comunes que "
 "necesitarás, como naipes, dados, fichas de póquer, etc."
 
-#: ../../general/about.rst:133
+#: ../../general/about.rst:146
 msgid ""
 "On GitHub, there is `an issue <https://github.com/drwhut/tabletop-club/"
 "issues/28>`_ listing which objects still need to be added to the default "
@@ -286,7 +313,7 @@ msgstr ""
 "activos predeterminado. Si todo lo que está debajo de un juego está marcado, "
 "¡entonces puedes jugar ese juego!"
 
-#: ../../general/about.rst:138
+#: ../../general/about.rst:151
 msgid ""
 "On the other hand, if the pieces you need aren't going to be included in the "
 "default asset pack, then you can either download an asset pack that someone "
@@ -298,11 +325,11 @@ msgstr ""
 "que ya haya creado otra persona, ¡o puedes crear el tuyo propio! Visita la "
 "página :ref:`asset-packs` si estás interesado en crear tus propios recursos."
 
-#: ../../general/about.rst:145
+#: ../../general/about.rst:158
 msgid "How easy is it to setup a game in Tabletop Club?"
 msgstr "¿Qué tan fácil es configurar un juego en Tabletop Club?"
 
-#: ../../general/about.rst:147
+#: ../../general/about.rst:160
 msgid ""
 "For the most popular games, the default asset pack comes with pre-made save "
 "files that you can load instantly (when in-game, click :guilabel:`Games`, "
@@ -315,7 +342,7 @@ msgstr ""
 "quieras jugar y, a continuación, haz clic en :guilabel:`Cargar`) para jugar "
 "inmediatamente!"
 
-#: ../../general/about.rst:152
+#: ../../general/about.rst:165
 msgid ""
 "If there isn't a pre-made save file for the game you want to play, you can "
 "easily make your own save by setting up the table the way you want to, then "
@@ -328,7 +355,7 @@ msgstr ""
 "volver a jugar este juego, solo tienes que cargar el archivo que guardaste "
 "anteriormente."
 
-#: ../../general/about.rst:157
+#: ../../general/about.rst:170
 msgid ""
 "See the :ref:`asset-type-game` page for more information about pre-made save "
 "files in asset packs."
@@ -336,43 +363,43 @@ msgstr ""
 "Consulta la página :ref:`asset-type-game` para obtener más información sobre "
 "los archivos de guardado predefinidos en los paquetes de recursos."
 
-#: ../../general/about.rst:162
+#: ../../general/about.rst:175
 msgid "Can I add assets other than game pieces to Tabletop Club?"
 msgstr ""
 "¿Puedo añadir a Tabletop Club otros recursos que no sean piezas de juego?"
 
-#: ../../general/about.rst:164
+#: ../../general/about.rst:177
 msgid ""
 "Yes! As well as objects, you can also import the following types of assets:"
 msgstr ""
 "¡Sí! Además de objetos, también puedes importar los siguientes tipos de "
 "elementos:"
 
-#: ../../general/about.rst:166
+#: ../../general/about.rst:179
 msgid ":ref:`asset-type-game`"
 msgstr ":ref:`recurso-tipo-juego`"
 
-#: ../../general/about.rst:167
+#: ../../general/about.rst:180
 msgid ":ref:`asset-type-music`"
 msgstr ":ref:`recurso-tipo-musica`"
 
-#: ../../general/about.rst:168
+#: ../../general/about.rst:181
 msgid ":ref:`asset-type-skybox`"
 msgstr ":ref:'asset-type-skybox'"
 
-#: ../../general/about.rst:169
+#: ../../general/about.rst:182
 msgid ":ref:`asset-type-sound`"
 msgstr ":ref:`recurso-tipo-sonido`"
 
-#: ../../general/about.rst:170
+#: ../../general/about.rst:183
 msgid ":ref:`asset-type-table`"
 msgstr ":ref:`recurso-tipo-tablero`"
 
-#: ../../general/about.rst:174
+#: ../../general/about.rst:187
 msgid "Can you add my favourite board game to Tabletop Club?"
 msgstr "¿Puedes añadir mi juego de mesa favorito a Tabletop Club?"
 
-#: ../../general/about.rst:176
+#: ../../general/about.rst:189
 msgid ""
 "For legal safety, Tabletop Club will only ever distribute `public-domain "
 "<https://en.wikipedia.org/wiki/Public_domain>`_ board games in the default "
@@ -384,11 +411,11 @@ msgstr ""
 "paquete de recursos por defecto. ¡Pero eso no te impide crear recursos para "
 "tu juego de mesa favorito para uso privado!"
 
-#: ../../general/about.rst:183
+#: ../../general/about.rst:196
 msgid "Can I share assets I've made on the internet?"
 msgstr "¿Puedo compartir recursos que he creado en Internet?"
 
-#: ../../general/about.rst:185
+#: ../../general/about.rst:198
 msgid ""
 "It depends on a number of factors. In general, it should be safe to share "
 "the assets you've made for the game if the following is all true:"
@@ -396,7 +423,7 @@ msgstr ""
 "Depende de varios factores. En general, debería ser seguro compartir los "
 "recursos que has hecho para el juego. Si todo es cierto de lo siguiente:"
 
-#: ../../general/about.rst:188
+#: ../../general/about.rst:201
 msgid ""
 "The assets you've made (textures, 3D models, etc.) are made by you, and are "
 "not derived from copyrighted material."
@@ -404,7 +431,7 @@ msgstr ""
 "Los recursos que has creado (texturas, modelos 3D, etc.) son tuyos y no "
 "proceden de material protegido por derechos de autor."
 
-#: ../../general/about.rst:193
+#: ../../general/about.rst:206
 msgid ""
 "You can distribute other people's creations **if** the license it's under "
 "allows you to. It's always safer to attribute the original author, and to "
@@ -416,7 +443,7 @@ msgstr ""
 "indicar la licencia y si el contenido ha sido modificado. Lee primero las "
 "condiciones de la licencia."
 
-#: ../../general/about.rst:198
+#: ../../general/about.rst:211
 msgid ""
 "To help with this, the :ref:`config-cfg` file allows you to put the author, "
 "license, modifier, and URL with the asset, which is then shown in-game."
@@ -425,14 +452,14 @@ msgstr ""
 "autor, la licencia, el modificador y la URL con el recurso, que luego se "
 "mostrara en el juego."
 
-#: ../../general/about.rst:201
+#: ../../general/about.rst:214
 msgid ""
 "If the assets you've made are for playing a game that already exists, then:"
 msgstr ""
 "Si los recursos que has hecho son para jugar a un juego que ya existe, "
 "entonces:"
 
-#: ../../general/about.rst:203
+#: ../../general/about.rst:216
 msgid ""
 "You cannot use the same name of the game without the owner's explicit "
 "permission."
@@ -440,11 +467,11 @@ msgstr ""
 "No puede utilizar el mismo nombre del juego sin el permiso explícito del "
 "propietario."
 
-#: ../../general/about.rst:206
+#: ../../general/about.rst:219
 msgid "The mechanics of the game cannot be patented."
 msgstr "La mecánica del juego no puede ser patentada."
 
-#: ../../general/about.rst:210
+#: ../../general/about.rst:223
 msgid ""
 "You can `check online <https://worldwide.espacenet.com/advancedSearch>`_ to "
 "see if there are any patents for the game's mechanics."
@@ -452,7 +479,7 @@ msgstr ""
 "Puedes consultar`en línea <https://worldwide.espacenet.com/advancedSearch>`_ "
 "para ver si hay patentes de la mecánica del juego."
 
-#: ../../general/about.rst:215
+#: ../../general/about.rst:228
 msgid ""
 "This is NOT legal advice. Please go ask the nearest lawyer for advice if you "
 "are worried about distributing your asset pack on the internet, as this also "
@@ -850,7 +877,7 @@ msgstr "Windows: ``%APPDATA%/Tabletop Club/logs/``"
 
 #: ../../general/contributing/ways_to_contribute.rst:29
 msgid "macOS: ``~/Library/Application Support/Tabletop Club/logs``"
-msgstr "macOS:  ``~/Library/Application Support/Tabletop Club/logs``"
+msgstr "macOS: ``~/Library/Application Support/Tabletop Club/logs``"
 
 #: ../../general/contributing/ways_to_contribute.rst:30
 msgid "Linux: ``~/.local/share/Tabletop Club/logs/``"
