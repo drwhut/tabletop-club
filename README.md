@@ -37,17 +37,19 @@ welcome to the official [Discord](https://discord.gg/GqYkGV4WwX) and
 
 [![Translation Status](https://hosted.weblate.org/widgets/tabletop-club/-/svg-badge.svg)](https://hosted.weblate.org/engage/tabletop-club/)
 
-Language   | Game               | Documentation      | Default Asset Pack
----------- | ------------------ | ------------------ | ------------------
-English    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-Dutch      | :heavy_check_mark: | :x:                | :heavy_check_mark:
-Esperanto  | 95%                | :x:                | 83%
-French     | 89%                | :x:                | 73%
-German     | 95%                | :x:                | 82%
-Italian    | 89%                | :x:                | :x:
-Portuguese | 86%                | :x:                | 72%
-Russian    | 95%                | 91%                | 83%
-Spanish    | 98%                | 99%                | 84%
+Language         | Game               | Documentation      | Default Asset Pack
+---------------- | ------------------ | ------------------ | ------------------
+English          | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Dutch            | :heavy_check_mark: | :x:                | :heavy_check_mark:
+Esperanto        | 94%                | :x:                | 83%
+French           | 88%                | :x:                | 73%
+German           | 95%                | :x:                | 84%
+Indonesian       | 56%                | :x:                | :x:
+Italian          | 88%                | :x:                | :x:
+Norwegian Bokmål | :heavy_check_mark: | :x:                | 89%
+Portuguese       | 86%                | :x:                | :heavy_check_mark:
+Russian          | 94%                | 90%                | 83%
+Spanish          | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 
 If you want to help translate the project, you can go to the project's
 [Hosted Weblate](https://hosted.weblate.org/engage/tabletop-club/) page.
