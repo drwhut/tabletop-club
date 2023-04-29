@@ -27,9 +27,9 @@ anywhere on your system from the `itch.io page
 <https://github.com/drwhut/tabletop-club/releases>`_. Once it is downloaded,
 there's only a couple of steps needed to run the game (see below)!
 
-In most cases, you'll want to download the latest *non-beta* version of the
-game. While beta versions of the game have new features and are very helpful
-for player feedback, they are more suseptable to bugs. But if you're feeling a
+In most cases, you'll want to download the latest *stable* version of the game.
+While beta versions of the game have new features and are very helpful for
+player feedback, they are more suseptable to bugs. But if you're feeling a
 little experimental, go for the latest version!
 
 If you've downloaded Tabletop Club in the past and want to download a newer

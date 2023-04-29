@@ -112,13 +112,11 @@ updates.
 What stage of development is Tabletop Club at?
 ----------------------------------------------
 
-Tabletop Club is currently in beta development. This means that most of the core
-features have been implemented, but there will very likely be some bugs, and
-features that have yet to be added (you can see what needs to be done by going
-to the `issues page <https://github.com/drwhut/tabletop-club/issues>`_ on
-GitHub).
-
-You can help test the game by :ref:`downloading-binaries`!
+Tabletop Club is currently in active development. The game has been released,
+but it is always being improved upon over time with help from the community.
+On GitHub there is `an issue tracker
+<https://github.com/drwhut/tabletop-club/issues>`_ for known bugs, feature
+requests, as well as quality-of-life tweaks to the game.
 
 
 Is there an official Discord or Matrix server that I can join?

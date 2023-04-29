@@ -38,11 +38,11 @@ command in a terminal to download the fork of Godot:
    If you just plan on downloading the current ``master`` branch from
    Tabletop Club, then you don't need to change the above command.
 
-   If you know which version of Tabletop Club you want to download, check the
-   ``README.md`` file in it's source code and look for a command similar to the
-   one above. Then, replace what comes after the ``-b`` above with what the
-   ``README.md`` file says. This way, you know you're compiling a compatible
-   version of Godot for the Tabletop Club version you want.
+   If you know which version of Tabletop Club you want to download, check this
+   page in it's documentation and look for a command similar to the one above.
+   Then, replace what comes after the ``-b`` above with what the documentation
+   says. This way, you know you're compiling a compatible version of Godot for
+   the Tabletop Club version you want.
 
 .. tip::
 
