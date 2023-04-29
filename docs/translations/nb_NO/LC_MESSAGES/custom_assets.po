@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-30 11:14+0100\n"
-"PO-Revision-Date: 2022-07-06 11:21+0000\n"
-"Last-Translator: drwhut <drwhut@gmail.com>\n"
+"PO-Revision-Date: 2023-04-18 21:48+0000\n"
+"Last-Translator: Blood Axe <bloodaxenor@protonmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "tabletop-club/docs-custom-assets/nb_NO/>\n"
 "Language: nb_NO\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -368,7 +368,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:169
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:192
 msgid "All"
-msgstr ""
+msgstr "Alt"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
@@ -531,7 +531,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 #: ../../custom_assets/asset_packs/asset_types.rst:97
 msgid "Dice"
-msgstr ""
+msgstr "Terninger"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:190
@@ -662,7 +662,7 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:185
 msgid "Skyboxes"
-msgstr ""
+msgstr "Skybokser"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
 msgid "``Vector3(0.0, 0.0, 0.0)``"
@@ -767,7 +767,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:190
 msgid "Templates"
-msgstr ""
+msgstr "Maler"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:190
 msgid ""
@@ -969,7 +969,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:143
 msgid "Piece"
-msgstr ""
+msgstr "Brikke"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "On the table are two chess pieces, a white pawn and a black queen."
@@ -981,7 +981,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:154
 msgid "Speaker"
-msgstr ""
+msgstr "Høytaler"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "By the corner of the table is a large, metallic gramophone."
@@ -996,7 +996,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:167
 msgid "Timer"
-msgstr ""
+msgstr "Tidsur"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:169
 msgid ""
@@ -1315,7 +1315,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:113
 msgid "Audio"
-msgstr ""
+msgstr "Lyd"
 
 #: ../../custom_assets/asset_packs/file_types.rst:115
 msgid "As of right now, Tabletop Club supports the following audio formats:"
