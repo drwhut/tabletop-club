@@ -33,7 +33,9 @@ var LOCALES = [
 	{ "locale": "eo", "name": "Esperanto" },
 	{ "locale": "es", "name": "Español" },
 	{ "locale": "fr", "name": "Français" },
+	{ "locale": "id", "name": "Bahasa Indonesia" },
 	{ "locale": "it", "name": "Italiano" },
+	{ "locale": "nb_NO", "name": "Norsk Bokmål" },
 	{ "locale": "nl", "name": "Nederlands" },
 	{ "locale": "pt", "name": "Português" },
 	{ "locale": "ru", "name": "Русский" }
