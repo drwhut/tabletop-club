@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2023-04-29
+
 ### Added 
 
 - Tabletop Club has been released! \o/
 
-[unreleased]: https://github.com/drwhut/tabletop-club/compare/HEAD...HEAD
+[unreleased]: https://github.com/drwhut/tabletop-club/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/drwhut/tabletop-club/releases/tag/v0.1.0
