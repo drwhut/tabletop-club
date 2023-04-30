@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-20 15:31\n"
-"PO-Revision-Date: 2023-04-18 22:48+0000\n"
-"Last-Translator: drwhut <drwhut@gmail.com>\n"
+"PO-Revision-Date: 2023-05-01 08:52+0000\n"
+"Last-Translator: Blood Axe <bloodaxenor@protonmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "tabletop-club/default-asset-pack/nb_NO/>\n"
 "Language: nb_NO\n"
@@ -954,11 +954,11 @@ msgstr "Dronning Hvit"
 
 #: ../TabletopClub/pieces/Rook_Black:1
 msgid "Rook Black"
-msgstr "Tørn Svart"
+msgstr "Tårn Svart"
 
 #: ../TabletopClub/pieces/Rook_White:1
 msgid "Rook White"
-msgstr "Tørn Hvit"
+msgstr "Tårn Hvit"
 
 #: ../TabletopClub/pieces/Stone_Black:1
 msgid "Stone Black"
