@@ -4,7 +4,7 @@
 Downloading the official binaries
 =================================
 
-There are two ways to download and play the game:
+There are multiple ways to download and play the game:
 
 
 From the itch app
@@ -16,6 +16,28 @@ a huge range of amazing indie games from developers far more talented than I am!
 
 You can download the itch app `here <https://itch.io/app>`_, and once you've
 logged in, search for "Tabletop Club" to download and install the game.
+
+
+From Flathub
+------------
+
+If you are on a Linux distribution that supports Flatpaks, you can download the
+latest stable version of the game directly from your software manager! Simply
+search for "Tabletop Club" to download and install the game. Alternatively, you
+can visit the project page on
+`Flathub <https://flathub.org/apps/io.itch.drwhut.TabletopClub>`_.
+
+If Flathub is not included in your list of Flatpak repositories, the game will
+not appear. You can add Flathub as a remote repository by following the
+instructions `on their website <https://flatpak.org/setup/>`_.
+
+You can also download the game via the command line instead once Flathub has
+been added as a remote repository:
+
+.. code-block:: bash
+
+   flatpak install flathub io.itch.drwhut.TabletopClub
+   flatpak run io.itch.drwhut.TabletopClub
 
 
 As a standalone executable

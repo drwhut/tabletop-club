@@ -20,6 +20,7 @@ the [Godot Engine](https://godotengine.org/).
 
 <p>
   <a href="https://drwhut.itch.io/tabletop-club"><img src="https://static.itch.io/images/badge-color.svg" alt="Available on itch.io" height="80"></a>
+  <a href="https://flathub.org/apps/io.itch.drwhut.TabletopClub"><img height="80" alt="Download on Flathub" src="https://dl.flathub.org/assets/badges/flathub-badge-en.png"/></a>
 </p>
 
 To download the game, you can either
