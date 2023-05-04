@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-17 17:29+0100\n"
-"PO-Revision-Date: 2023-05-04 18:53+0000\n"
+"PO-Revision-Date: 2023-05-06 14:52+0000\n"
 "Last-Translator: Nils Büchner <n.buechner@united-gameserver.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "game/de/>\n"
@@ -349,11 +349,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Skip Splash Screen"
-msgstr ""
+msgstr "Splash Screen überspringen"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Skips the Godot Engine splash screen when the game starts."
-msgstr ""
+msgstr "Überspringt den Godot Engine Splash Screen beim Spielstart."
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
