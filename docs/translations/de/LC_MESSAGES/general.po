@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-29 12:32+0100\n"
-"PO-Revision-Date: 2022-12-06 23:50+0000\n"
-"Last-Translator: Martyn Ranyard <ranyardm@gmail.com>\n"
+"PO-Revision-Date: 2023-05-06 14:48+0000\n"
+"Last-Translator: Nils Büchner <n.buechner@united-gameserver.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -127,6 +127,11 @@ msgid ""
 "learn more about how to make assets for Tabletop Club, visit the :ref:`asset-"
 "packs` page."
 msgstr ""
+"Aber das Beste an dem Spiel ist, dass jeder Assets für das Spiel erstellen "
+"kann! Es ist so einfach wie das Ziehen von Dateien in einen Ordner und das "
+"Spiel wird sie importieren. Dann können sie sofort im Spiel verwendet "
+"werden. Wenn du mehr darüber erfahren willst, wie man Assets für den "
+"Tabletop Club erstellt, besucht die Seite :ref:`asset-packs`."
 
 #: ../../general/about.rst:61
 msgid "Simulator"
@@ -139,6 +144,11 @@ msgid ""
 "they do in real life, and it also means you can potentially send objects "
 "flying off the edge! Did I also mention you could flip the table?"
 msgstr ""
+"Das Spiel ist nicht nur eine Simulation von Tabletop-Spielen, sondern "
+"verfügt auch über eine vollständig simulierte 3D-Physik-Engine! Das "
+"bedeutet, dass sich die Objekte im Spiel wie im wirklichen Leben verhalten, "
+"und es bedeutet auch, dass man potenziell Objekte über die Kante fliegen "
+"lassen kann! Habe ich schon erwähnt, dass man den Tisch auch umdrehen kann?"
 
 #: ../../general/about.rst:70
 msgid "Frequently Asked Questions"
@@ -232,10 +242,16 @@ msgid ""
 "tabletop-club/issues>`_ for known bugs, feature requests, as well as quality-"
 "of-life tweaks to the game."
 msgstr ""
+"Tabletop Club befindet sich derzeit in aktiver Entwicklung. Das Spiel wurde "
+"bereits veröffentlicht, wird aber mit Hilfe der Community immer weiter "
+"verbessert. Auf GitHub gibt es einen Issue Tracker <https://github.com/"
+"drwhut/tabletop-club/issues>`_ für bekannte Bugs, Feature Requests und "
+"Qualitätsverbesserungen des Spiels."
 
 #: ../../general/about.rst:123
 msgid "Is there an official Discord or Matrix server that I can join?"
 msgstr ""
+"Gibt es einen offiziellen Discord- oder Matrix-Server dem ich beitreten kann?"
 
 #: ../../general/about.rst:125
 msgid ""
@@ -244,6 +260,11 @@ msgid ""
 "chat with other players about anything from the game itself, to board games "
 "in general, or even to share asset packs that you have made!"
 msgstr ""
+"Ja, du kannst den offiziellen \"Discord <https://discord.gg/GqYkGV4WwX>`_\" "
+"und \"Matrix <https://matrix.to/#/#tabletop-club:matrix.org>`_\" Servern "
+"beitreten, um mit anderen Spielern über alles Mögliche zu plaudern. Vom "
+"Spiel selbst bis hin zu Brettspielen im Allgemeinen, oder sogar um von dir "
+"erstellte Asset-Packs zu teilen!"
 
 #: ../../general/about.rst:130
 msgid ""
@@ -251,10 +272,13 @@ msgid ""
 "of their background or personality. As long as you abide by the server "
 "rules, you are always free to come in and say hi!"
 msgstr ""
+"Das Ziel ist es, eine sichere, einladende Umgebung für alle zu schaffen, "
+"unabhängig von ihrem Hintergrund oder ihrer Persönlichkeit. Solange ihr euch "
+"an die Serverregeln haltet, könnt ihr jederzeit vorbeikommen und Hallo sagen!"
 
 #: ../../general/about.rst:136
 msgid "What board games can I play in Tabletop Club?"
-msgstr ""
+msgstr "Welche Brettspiele kann ich im Tabletop Club spielen?"
 
 #: ../../general/about.rst:138
 msgid "Theoretically, any of them!"
@@ -266,6 +290,9 @@ msgid ""
 "which contains some of the most common objects you'll need, like playing "
 "cards, dice, poker chips, etc."
 msgstr ""
+"Das Spiel wird mit dem Standard-Asset-Pack des Tabletop-Clubs geliefert, das "
+"einige der am häufigsten benötigten Gegenstände enthält, wie Spielkarten, "
+"Würfel, Pokerchips usw."
 
 #: ../../general/about.rst:144
 msgid ""
@@ -274,6 +301,10 @@ msgid ""
 "asset pack. If everything under a game is ticked, then you can play that "
 "game!"
 msgstr ""
+"Auf GitHub gibt es einen Eintrag <https://github.com/drwhut/tabletop-club/"
+"issues/28>`_, der auflistet, welche Objekte noch zum Standard-Asset-Pack "
+"hinzugefügt werden müssen. Wenn alles unter einem Spiel angekreuzt ist, dann "
+"kann man dieses Spiel spielen!"
 
 #: ../../general/about.rst:149
 msgid ""
@@ -282,6 +313,10 @@ msgid ""
 "else has already made, or you can create your own! Visit the :ref:`asset-"
 "packs` page if you're interested in making your own assets."
 msgstr ""
+"Wenn die Teile, die benötigt werden, nicht im Standard-Asset-Pack enthalten "
+"sind, kannst du entweder ein Asset-Pack herunterladen, das jemand anderes "
+"bereits erstellt hat, oder ein eigenes erstellen! Besuchen Sie die Seite :ref"
+":`Asset-packs`, wenn du daran interessiert bist eigenen Assets zu erstellen."
 
 #: ../../general/about.rst:156
 msgid "How easy is it to setup a game in Tabletop Club?"
@@ -294,6 +329,10 @@ msgid ""
 "then click on the game you want to play, then click :guilabel:`Load`) to "
 "play the game right away!"
 msgstr ""
+"Für die beliebtesten Spiele enthält das Standard-Asset-Pack vorgefertigte "
+"Speicherdateien, die du sofort laden kannst (im Spiel auf :guilabel:`Games`, "
+"dann auf das Spiel, das du spielen möchtest, und dann auf :guilabel:`Load`), "
+"um das Spiel sofort zu spielen!"
 
 #: ../../general/about.rst:163
 msgid ""
@@ -302,12 +341,19 @@ msgid ""
 "by going to the menu and clicking :guilabel:`Save file`. This way, if you "
 "want to play the game again, you can just load the save you made previously."
 msgstr ""
+"Wenn es für das Spiel, das du spielen möchtest, keine vorgefertigte "
+"Speicherdatei gibt, kannst du ganz einfach eine eigene erstellen, indem du "
+"den Tisch so einrichtest, wie du es möchtest, dann ins Menü gehst und auf "
+":guilabel:`Speicherdatei` klickst. Wenn du das Spiel dann wieder spielen "
+"willst, kannst du einfach den zuvor erstellten Spielstand laden."
 
 #: ../../general/about.rst:168
 msgid ""
 "See the :ref:`asset-type-game` page for more information about pre-made save "
 "files in asset packs."
 msgstr ""
+"Die Seite :ref:`asset-type-game` enthält weitere Informationen über "
+"vorgefertigte Speicherdateien in Asset-Packs."
 
 #: ../../general/about.rst:173
 msgid "Can I add assets other than game pieces to Tabletop Club?"
@@ -343,7 +389,7 @@ msgstr ""
 
 #: ../../general/about.rst:185
 msgid "Can you add my favourite board game to Tabletop Club?"
-msgstr ""
+msgstr "Kannst du mein Lieblingsbrettspiel in den Tabletop Club aufnehmen?"
 
 #: ../../general/about.rst:187
 msgid ""
@@ -352,6 +398,10 @@ msgid ""
 "asset pack. But that doesn't stop you from making assets for your favourite "
 "board game for private use!"
 msgstr ""
+"Aus rechtlichen Gründen wird der Tabletop Club nur <https://en.wikipedia.org/"
+"wiki/Public_domain>`_ Brettspiele mit dem Standard-Asset-Pack verbreiten. "
+"Das hält dich aber nicht davon ab, Assets für dein Lieblingsbrettspiel für "
+"den privaten Gebrauch zu erstellen!"
 
 #: ../../general/about.rst:194
 msgid "Can I share assets I've made on the internet?"
@@ -371,6 +421,8 @@ msgid ""
 "The assets you've made (textures, 3D models, etc.) are made by you, and are "
 "not derived from copyrighted material."
 msgstr ""
+"Die von Dir erstellten Objekte (Texturen, 3D-Modelle usw.) sind von Dir "
+"selbst erstellt und stammen nicht aus urheberrechtlich geschütztem Material."
 
 #: ../../general/about.rst:204
 msgid ""
@@ -379,12 +431,18 @@ msgid ""
 "state the license and whether the content was modified. Please read the "
 "terms of the license first."
 msgstr ""
+"Du kannst die Werke anderer Leute weitergeben, **wenn** die Lizenz dies "
+"erlaubt. Es ist immer sicherer, den ursprünglichen Autor zu nennen, die "
+"Lizenz anzugeben und mitzuteilen, ob der Inhalt verändert wurde. Bitte lese "
+"dazu zuerst die Lizenzbedingungen."
 
 #: ../../general/about.rst:209
 msgid ""
 "To help with this, the :ref:`config-cfg` file allows you to put the author, "
 "license, modifier, and URL with the asset, which is then shown in-game."
 msgstr ""
+"Die :ref:`config-cfg`-Datei ermöglicht es Dir den Autor, Lizenz, Modifikator "
+"und URL mit dem Asset zu verknüpfen, das dann im Spiel angezeigt wird."
 
 #: ../../general/about.rst:212
 msgid ""
@@ -398,16 +456,20 @@ msgid ""
 "You cannot use the same name of the game without the owner's explicit "
 "permission."
 msgstr ""
+"Du darfst den Namen des Spiels nicht ohne die ausdrückliche Genehmigung des "
+"Eigentümers verwenden."
 
 #: ../../general/about.rst:217
 msgid "The mechanics of the game cannot be patented."
-msgstr ""
+msgstr "Die Spielmechanik ist nicht patentierbar."
 
 #: ../../general/about.rst:221
 msgid ""
 "You can `check online <https://worldwide.espacenet.com/advancedSearch>`_ to "
 "see if there are any patents for the game's mechanics."
 msgstr ""
+"Du kannst online <https://worldwide.espacenet.com/advancedSearch>`_ "
+"nachsehen, ob es Patente für die Spielmechanik gibt."
 
 #: ../../general/about.rst:226
 msgid ""
@@ -415,6 +477,9 @@ msgid ""
 "are worried about distributing your asset pack on the internet, as this also "
 "depends on your country's copyright laws."
 msgstr ""
+"Dies ist KEINE Rechtsberatung. Bitte frage den nächsten Anwalt um Rat, wenn "
+"Du Bedenken hast dein Asset-Paket im Internet zu verbreiten, da dies auch "
+"von den Urheberrechtsgesetzen Deines Landes abhängt."
 
 #: ../../general/contributing/coding_guidelines.rst:5
 msgid "Coding guidelines"
@@ -426,6 +491,10 @@ msgid ""
 "`GDScript style guide`_, make sure to follow these guidelines for "
 "consistency, and to make everyone's lives easier:"
 msgstr ""
+"Wenn Du die Szenen und Skripte des Spiels modifizieren und Godots `GDScript "
+"style guide`_ befolgen, stellen Sie sicher, dass Sie diese Richtlinien "
+"befolgen, um Konsistenz zu gewährleisten und allen das Leben leichter zu "
+"machen:"
 
 #: ../../general/contributing/coding_guidelines.rst:11
 msgid "Only use GDScript for scripting."
@@ -436,16 +505,23 @@ msgid ""
 "When writing code, make sure your editor (whether it's Godot, or another "
 "external editor) is set to use tabs instead of spaces."
 msgstr ""
+"Stellen Sie beim Schreiben von Code sicher, dass Ihr Editor (sei es Godot "
+"oder ein anderer externer Editor) so eingestellt ist, dass Tabulatoren "
+"anstelle von Leerzeichen verwendet werden."
 
 #: ../../general/contributing/coding_guidelines.rst:16
 msgid ""
 "When creating a new script, use the ``Copyright Notice`` template in ``game/"
 "Scripts/Templates/CopyrightNotice.gd``."
 msgstr ""
+"Wenn Du ein neues Skript erstellst, verwende die Vorlage ``Copyright Notice``"
+" in ``game/Scripts/Templates/CopyrightNotice.gd``."
 
 #: ../../general/contributing/coding_guidelines.rst:19
 msgid "Use typed variables, arguments, and return values where possible."
 msgstr ""
+"Verwenden Sie nach Möglichkeit typisierte Variablen, Argumente und "
+"Rückgabewerte."
 
 #: ../../general/contributing/coding_guidelines.rst:21
 msgid ""
@@ -454,16 +530,26 @@ msgid ""
 "add a comment above the function describing what the function does, what "
 "it's return value is (if any), and what the arguments are. For example:"
 msgstr ""
+"Wenn Du Funktionen in Skripten schreibst, die keine eingebauten Funktionen "
+"sind (z.B. ``_ready()``) oder Funktionen, die durch Signale aufgerufen "
+"werden (z.B. ``_on_*``), dann füge bitte einen Kommentar über der Funktion "
+"hinzu, der beschreibt, was die Funktion tut, was ihr Rückgabewert ist (falls "
+"vorhanden) und was die Argumente sind. Zum Beispiel:"
 
 #: ../../general/contributing/coding_guidelines.rst:34
 msgid "Make sure to fix any warnings Godot shows in scripts."
 msgstr ""
+"Stelle sicher, dass alle Warnungen, die Godot in Skripten anzeigt, "
+"korrigiert werden."
 
 #: ../../general/contributing/coding_guidelines.rst:36
 msgid ""
 "If you are writing strings that will get displayed in the UI, remember to "
 "use the ``tr()`` function so the text can be translated."
 msgstr ""
+"Wenn Du Strings schreibst, die in der Benutzeroberfläche angezeigt werden "
+"sollen, denke daran, die Funktion ``tr()`` zu verwenden, damit der Text "
+"übersetzt werden kann."
 
 #: ../../general/contributing/coding_guidelines.rst:39
 msgid ""
@@ -471,10 +557,14 @@ msgid ""
 "explaining what the scene does. Also fill in the editor description for any "
 "nodes in the scene where it isn't obvious what they're there for."
 msgstr ""
+"Wenn Du neue Szenen erstellst, fülle die Editor-Beschreibung für den "
+"Stammknoten aus und erkläre, was die Szene macht. Fülle auch die Editor-"
+"Beschreibung für alle Knoten in der Szene aus, bei denen es nicht "
+"offensichtlich ist, wofür sie da sind."
 
 #: ../../general/contributing/index.rst:5
 msgid "Contributing"
-msgstr ""
+msgstr "Beitragen"
 
 #: ../../general/contributing/pull_request_workflow.rst:5
 msgid "Pull request workflow"
@@ -487,10 +577,14 @@ msgid ""
 "on the project's `GitHub repository`_. This page explains the steps needed "
 "to do exactly that!"
 msgstr ""
+"Wenn du direkt zum Projekt beitragen willst, indem Du entweder einen Fehler "
+"beheben oder eine Funktion implementieren möchtest, dann musst Sie eine "
+"**Pull-Anfrage** im `GitHub Repository`_ des Projekts erstellen. Diese Seite "
+"erklärt die notwendigen Schritte, um genau das zu tun!"
 
 #: ../../general/contributing/pull_request_workflow.rst:14
 msgid "Creating a fork"
-msgstr ""
+msgstr "Einen Fork erstellen"
 
 #: ../../general/contributing/pull_request_workflow.rst:16
 msgid ""
