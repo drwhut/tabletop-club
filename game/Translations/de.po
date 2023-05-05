@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-17 17:29+0100\n"
 "PO-Revision-Date: 2023-05-06 14:52+0000\n"
-"Last-Translator: Nils Büchner <n.buechner@united-gameserver.de>\n"
+"Last-Translator: Riesi <stefan.riesenberger@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "game/de/>\n"
 "Language: de\n"
@@ -83,7 +83,7 @@ msgstr "Discord"
 
 #: ../Scenes/MainMenu.tscn:143
 msgid "Matrix.org"
-msgstr ""
+msgstr "Matrix.org"
 
 #: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
