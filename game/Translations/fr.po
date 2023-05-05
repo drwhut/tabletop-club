@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-17 17:29+0100\n"
-"PO-Revision-Date: 2022-12-02 21:47+0000\n"
-"Last-Translator: guissou <guimichel@protonmail.com>\n"
+"PO-Revision-Date: 2023-05-06 14:52+0000\n"
+"Last-Translator: Seb D <cppa_seth@yahoo.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/tabletop-club/"
 "game/fr/>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -59,11 +59,11 @@ msgstr "Quitter"
 
 #: ../Scenes/MainMenu.tscn:98 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
-msgstr ""
+msgstr "Importer journal"
 
 #: ../Scenes/MainMenu.tscn:99
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:107
 msgid "Tabletop Club on Itch.io"
@@ -79,11 +79,11 @@ msgstr "Documentation"
 
 #: ../Scenes/MainMenu.tscn:134
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #: ../Scenes/MainMenu.tscn:143
 msgid "Matrix.org"
-msgstr ""
+msgstr "Matrix.org"
 
 #: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
@@ -347,11 +347,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Skip Splash Screen"
-msgstr ""
+msgstr "Passer l'écran de démarrage"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Skips the Godot Engine splash screen when the game starts."
-msgstr ""
+msgstr "Passer l'écran de démarrage Godot Engine quand le jeu démarre."
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
@@ -435,58 +435,52 @@ msgstr "Réinitialise la caméra à sa position par défaut."
 
 #: ../Scenes/OptionsMenu.tscn:713
 msgid "Zoom In / Lift Piece Down"
-msgstr ""
+msgstr "Zoomer / Descendre une pièce"
 
 #: ../Scenes/OptionsMenu.tscn:721
-#, fuzzy
-#| msgid "Zoom the camera or object away from the table."
 msgid "Zoom the camera towards the table, or lift a piece down onto the table."
-msgstr "Dézoome la caméra ou l'objet de la table."
+msgstr "Zoom la caméra sur la table, ou descend une pièce sur la table."
 
 #: ../Scenes/OptionsMenu.tscn:731
 msgid "Zoom Out / Lift Piece Up"
-msgstr ""
+msgstr "Dézoomer / Soulever une pièce"
 
 #: ../Scenes/OptionsMenu.tscn:739
-#, fuzzy
-#| msgid "Zoom the camera or object away from the table."
 msgid "Zoom the camera away from the table, or lift a piece up from the table."
-msgstr "Dézoome la caméra ou l'objet de la table."
+msgstr "Dézoome la caméra de la table, ou soulève une pièce de la table."
 
 #: ../Scenes/OptionsMenu.tscn:749
 msgid "Flip Piece Orientation"
 msgstr "Inverser l'orientation des pièces"
 
 #: ../Scenes/OptionsMenu.tscn:757
-#, fuzzy
-#| msgid "Flip the selected piece on the horizontal axis."
 msgid ""
 "Flip the selected piece or the piece the mouse is over on the horizontal "
 "axis."
-msgstr "Renverse la pièce sélectionnée sur l'axe horizontal."
+msgstr ""
+"Retourne la pièce sélectionnée ou la pièce sur laquelle se trouve le curseur "
+"sur l'axe horizontal."
 
 #: ../Scenes/OptionsMenu.tscn:767
 msgid "Reset Piece Orientation"
 msgstr "Réinitialiser l'orientation de la pièce"
 
 #: ../Scenes/OptionsMenu.tscn:775
-#, fuzzy
-#| msgid "Resets the selected piece to its default orientation."
 msgid ""
 "Resets the selected piece or the piece the mouse is over to its default "
 "orientation."
 msgstr ""
-"Réinitialise l'orientation de la pièce sélectionnée à celle par défaut."
+"Réinitialise la pièce sélectionnée ou la pièce sur laquelle se trouve le "
+"curseur à son orientation par défaut."
 
 #: ../Scenes/OptionsMenu.tscn:785 ../Scripts/Game/CameraController.gd:1574
-#, fuzzy
-#| msgid "Rotate selected"
 msgid "Rotate Piece"
-msgstr "Rotation séléctionnée"
+msgstr "Faire pivoter la pièce"
 
 #: ../Scenes/OptionsMenu.tscn:793
 msgid "Rotates the the piece that is selected, or that the mouse is over."
 msgstr ""
+"Tourne la pièce sélectionnée, ou sur laquelle le curseur est positionné."
 
 #: ../Scenes/OptionsMenu.tscn:803 ../Scripts/Game/CameraController.gd:1207
 #: ../Scripts/Game/CameraController.gd:1527
@@ -499,6 +493,8 @@ msgid ""
 "Shuffle stacks of cards or tokens that are selected, or that the mouse is "
 "over."
 msgstr ""
+"Mélange les tas de cartes ou les jetons sélectionnés, ou sur lesquels le "
+"curseur est positionné."
 
 #: ../Scenes/OptionsMenu.tscn:821
 msgid "Lock/Unlock Piece"
@@ -760,10 +756,8 @@ msgid "Select track"
 msgstr "Sélectionner la piste"
 
 #: ../Scenes/Game/CameraController.tscn:147
-#, fuzzy
-#| msgid "Position:"
 msgid "Positional audio"
-msgstr "Position :"
+msgstr "Position audio"
 
 #: ../Scenes/Game/CameraController.tscn:153
 msgid "Range:"
@@ -809,15 +803,13 @@ msgid "Scale:"
 msgstr "Échelle :"
 
 #: ../Scenes/Game/CameraController.tscn:430
-#, fuzzy
-#| msgid "Value"
 msgid "Value:"
-msgstr "Valeur"
+msgstr "Valeur :"
 
 #: ../Scenes/Game/CameraController.tscn:442
 #: ../Scripts/Game/CameraController.gd:1285
 msgid "Set value"
-msgstr ""
+msgstr "Définir la valeur"
 
 #: ../Scenes/Game/CameraController.tscn:473
 msgid "Strength:"
@@ -962,10 +954,8 @@ msgid "Undo"
 msgstr "Annuler"
 
 #: ../Scenes/Game/UI/GameUI.tscn:83
-#, fuzzy
-#| msgid "45"
 msgid "45°"
-msgstr "45"
+msgstr "45°"
 
 #: ../Scenes/Game/UI/GameUI.tscn:91
 msgid "Menu"
@@ -1024,18 +1014,16 @@ msgid "Take All"
 msgstr "Tout prendre"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:12
-#, fuzzy
-#| msgid "Shadow Detail"
 msgid "Details"
-msgstr "Détail des ombres"
+msgstr "Détails"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:33
 msgid "Show advanced developer information in JSON form."
-msgstr ""
+msgstr "Afficher les informations développeur avancé en format JSON."
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:34
 msgid "Advanced view"
-msgstr ""
+msgstr "Vue avancée"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:35
 msgid "+ New Page"
@@ -1047,23 +1035,23 @@ msgstr "Titre"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:60
 msgid "When ticked, this page will be visible to other players."
-msgstr ""
+msgstr "Si coché, cette page sera visible par les autres joueurs."
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:62
 msgid "Public"
-msgstr ""
+msgstr "Public"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:94
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:102
 msgid "100%"
-msgstr ""
+msgstr "100%"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:110
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:122
 msgid "Move Up"
@@ -1086,11 +1074,11 @@ msgstr "Supprimer la page ?"
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:147
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:293
 msgid "Templates"
-msgstr ""
+msgstr "Modèles"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:151
 msgid "Open"
-msgstr ""
+msgstr "Ouvert"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
@@ -1148,7 +1136,7 @@ msgstr "%d tables chargées."
 
 #: ../Scenes/Game/UI/Previews/ObjectPreview.tscn:70
 msgid "This item is made up of multiple objects."
-msgstr ""
+msgstr "Cet élément est composé de plusieurs objets."
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:21
 msgid "Pack:"
@@ -1160,7 +1148,7 @@ msgstr "Type :"
 
 #: ../Scripts/AssetDB.gd:439
 msgid "Cleaning old files..."
-msgstr ""
+msgstr "Nettoyage des anciens fichiers..."
 
 #: ../Scripts/BindManager.gd:51
 msgid "Not bound"
@@ -1285,7 +1273,7 @@ msgstr "néerlandais"
 
 #: ../Scripts/MainMenu.gd:107
 msgid "Esperanto"
-msgstr ""
+msgstr "Espéranto"
 
 #: ../Scripts/MainMenu.gd:108
 msgid "French"
@@ -1297,11 +1285,11 @@ msgstr "allemand"
 
 #: ../Scripts/MainMenu.gd:110
 msgid "Italian"
-msgstr ""
+msgstr "Italien"
 
 #: ../Scripts/MainMenu.gd:111
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugais"
 
 #: ../Scripts/MainMenu.gd:112
 msgid "Russian"
@@ -1309,7 +1297,7 @@ msgstr "Russe"
 
 #: ../Scripts/MainMenu.gd:113
 msgid "Spanish"
-msgstr ""
+msgstr "Espagnol"
 
 #: ../Scripts/MainMenu.gd:214
 msgid "Room code must be four characters long!"
@@ -1470,7 +1458,7 @@ msgstr "Haut parleur"
 
 #: ../Scripts/Game/CameraController.gd:1326
 msgid "Details…"
-msgstr ""
+msgstr "Détails…"
 
 #: ../Scripts/Game/CameraController.gd:1338
 msgid "Cut"
@@ -1900,25 +1888,25 @@ msgstr "Trop de texte en cours d'envoi, patience..."
 
 #: ../Scripts/Game/UI/ChatBox.gd:152
 msgid "Show the list of commands that can be invoked."
-msgstr ""
+msgstr "Affiche la liste des commandes qui peuvent être appelées."
 
 #: ../Scripts/Game/UI/ChatBox.gd:154
 msgid "Privately send a message to another player."
-msgstr ""
+msgstr "Envoyer un message privé à un autre joueur."
 
 #: ../Scripts/Game/UI/GameUI.gd:150
-#, fuzzy
-#| msgid "Clear Table"
 msgid "Clear Paint"
-msgstr "Vider la table"
+msgstr "Enlever la peinture"
 
 #: ../Scripts/Game/UI/GameUI.gd:170
 msgid "Welcome to Tabletop Club!"
-msgstr ""
+msgstr "Bienvenue dans Tabletop Club !"
 
 #: ../Scripts/Game/UI/GameUI.gd:171
 msgid "To view a list of commands, type /? or /help in this chat box."
 msgstr ""
+"Pour afficher une liste de commandes, tapez / ? ou /help dans cette boîte de "
+"dialogue."
 
 #: ../Scripts/Game/UI/GameUI.gd:248
 #, python-format
@@ -1949,10 +1937,8 @@ msgid "%s has left the game."
 msgstr "%s a quitté la partie."
 
 #: ../Scripts/Game/UI/GameUI.gd:389
-#, fuzzy
-#| msgid "Notebook"
 msgid "View notebook"
-msgstr "Cahier"
+msgstr "Afficher le bloc-notes"
 
 #: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:40
 #, python-format
@@ -1966,21 +1952,21 @@ msgstr "%s est vide."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:61
 msgid "No objects have been selected."
-msgstr ""
+msgstr "Aucun objet n'a été sélectionné."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:74
 #, python-format
 msgid "A stack of %d cards."
-msgstr ""
+msgstr "Un tas de %d cartes."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:76
 #, python-format
 msgid "A stack of %d tokens."
-msgstr ""
+msgstr "Une pile de %d jetons."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:83
 msgid "No description."
-msgstr ""
+msgstr "Aucune description."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:88
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:54
@@ -2013,17 +1999,17 @@ msgstr "URL : %s"
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:102
 #, python-format
 msgid "A total of %d objects were selected:"
-msgstr ""
+msgstr "Un total de %d objets ont été sélectionnés :"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:112
 #, python-format
 msgid "Stack of %d cards"
-msgstr ""
+msgstr "Tas de %d cartes"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:114
 #, python-format
 msgid "Stack of %d tokens"
-msgstr ""
+msgstr "Pile de %d jetons"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:267
 msgid ""
@@ -2035,17 +2021,16 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:269
 msgid "This player does not have any public pages in their notebook."
-msgstr ""
+msgstr "Ce joueur n'a pas de pages publiques dans son bloc-notes."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:702
 msgid "<Unknown>"
-msgstr ""
+msgstr "<Inconnu>"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:713
-#, fuzzy, python-format
-#| msgid "Notebook"
+#, python-format
 msgid "%s's Notebook"
-msgstr "Cahier"
+msgstr "Bloc-note de %s"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:757
 #, python-format
@@ -2055,7 +2040,7 @@ msgstr "Êtes-vous sûr·e de vouloir supprimer la page « %s » ?"
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:849
 #, python-format
 msgid "New %s"
-msgstr ""
+msgstr "Nouveau %s"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:121
 #, python-format
@@ -2138,13 +2123,11 @@ msgstr "Page %d/%d"
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:114
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:302
 msgid "All"
-msgstr ""
+msgstr "Tous"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:281
-#, fuzzy
-#| msgid "Cards"
 msgid "Boards"
-msgstr "Cartes"
+msgstr "Plateaux"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:282
 msgid "Cards"
