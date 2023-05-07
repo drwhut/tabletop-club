@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-30 11:14+0100\n"
-"PO-Revision-Date: 2023-04-17 16:34+0000\n"
-"Last-Translator: kompowiec2 <diasp@o2.pl>\n"
+"PO-Revision-Date: 2023-05-08 06:50+0000\n"
+"Last-Translator: PK <tar4nis+weblate@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/pl/>\n"
 "Language: pl\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
-msgstr ""
+msgstr "Struktura pakietu zasobów"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:6
 msgid "Locations for asset packs"
-msgstr ""
+msgstr "Lokalizacje pakietów zasobów"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:8
 msgid ""
@@ -35,18 +35,21 @@ msgid ""
 "asset packs. If you want the game to import your asset pack, it needs to be "
 "put into one of the following locations:"
 msgstr ""
+"Podczas uruchamiania gry, Tabletop Club przeskanuje zbiór wskazanych "
+"folderów w poszukiwaniu pakietów zasobów. Jeśli gra ma wczytać twój pakiet "
+"zasobów, musi on być umieszczony w jednej z następujących lokalizacji:"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:12
 msgid "``<TABLETOPCLUB_INSTALL_FOLDER>/assets/``"
-msgstr ""
+msgstr "``<FOLDER_INSTALACJI_TABLETOPCLUB>/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:13
 msgid "``<DOWNLOADS>/TabletopClub/assets/``"
-msgstr ""
+msgstr "``<POBRANE>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:14
 msgid "``<DOCUMENTS>/TabletopClub/assets/``"
-msgstr ""
+msgstr "``<DOKUMENTY>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:15
 msgid "``<DESKTOP>/TabletopClub/assets/``"
@@ -955,7 +958,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:143
 msgid "Piece"
-msgstr ""
+msgstr "Bierka"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:None
 msgid "On the table are two chess pieces, a white pawn and a black queen."
