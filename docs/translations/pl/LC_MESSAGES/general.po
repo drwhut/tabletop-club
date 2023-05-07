@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-29 12:32+0100\n"
-"PO-Revision-Date: 2023-03-27 22:37+0000\n"
-"Last-Translator: Arek Dymalski <arkadiusz.dymalski@gmail.com>\n"
+"PO-Revision-Date: 2023-05-08 06:49+0000\n"
+"Last-Translator: PK <tar4nis+weblate@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/pl/>\n"
 "Language: pl\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
-msgstr ""
+msgstr "O aplikacji"
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
@@ -46,6 +46,8 @@ msgid ""
 "The game is completely free to download and play! You can do so by going to "
 "the :ref:`downloading-binaries` page."
 msgstr ""
+"Pobieranie i granie w tą grę jest całkowicie darmowe! Możesz zacząć od "
+"strony :ref:`downloading-binaries`."
 
 #: ../../general/about.rst:20
 msgid "Open-source"
