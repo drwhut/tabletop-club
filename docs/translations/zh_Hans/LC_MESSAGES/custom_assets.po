@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-30 11:14+0100\n"
 "PO-Revision-Date: 2023-05-08 06:50+0000\n"
-"Last-Translator: Yao NianQing <imbearchild@outlook.com>\n"
+"Last-Translator: Luoyu <rainluoyu@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "tabletop-club/docs-custom-assets/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -944,7 +944,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:246
 msgid "Table"
-msgstr ""
+msgstr "桌游桌"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:248
 msgid "A table is a :ref:`file-type-3d` that is placed in the centre of the game world for players to put objects on."
