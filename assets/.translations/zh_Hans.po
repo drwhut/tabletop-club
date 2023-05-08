@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-20 15:31\n"
 "PO-Revision-Date: 2023-05-08 06:50+0000\n"
-"Last-Translator: Luoyu <rainluoyu@outlook.com>\n"
+"Last-Translator: Yao NianQing <imbearchild@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "tabletop-club/default-asset-pack/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -927,7 +927,7 @@ msgstr "警报"
 
 #: ../TabletopClub/sounds/Alarm:2
 msgid "An alarm for alarming situations."
-msgstr "一个用于紧急形势的警报。"
+msgstr "一个用于紧急情况的警报。"
 
 #: ../TabletopClub/speakers/Gramophone:1
 msgid "Gramophone"
