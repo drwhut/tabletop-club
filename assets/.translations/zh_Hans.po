@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-20 15:31\n"
-"PO-Revision-Date: 2023-05-08 06:50+0000\n"
+"PO-Revision-Date: 2023-05-09 08:08+0000\n"
 "Last-Translator: Yao NianQing <imbearchild@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "tabletop-club/default-asset-pack/zh_Hans/>\n"
@@ -752,7 +752,7 @@ msgid "A piece of music from a more elegant time, 1940. This is a beautiful slow
 msgstr ""
 "一首来自更优雅的时代，1940年代的音乐。这是一首美丽而慢节奏的曲子，会让你想拿"
 "起一些香槟，与人慢舞......或是与企鹅共舞。我喜欢企鹅。现在来点可搜索的关键词"
-"：大乐队，1940年代，四十年代，正式派对，企鹅慢舞，不要输。"
+"：大乐队，1940年代，四十年代，正式派对，企鹅慢舞，没有坏事发生。"
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:1
 msgid "Lobby Time - Kevin MacLeod"
