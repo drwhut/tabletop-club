@@ -9,421 +9,432 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-17 17:29+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-05-09 08:08+0000\n"
+"Last-Translator: mayukh <mayukh4321@gmail.com>\n"
+"Language-Team: Hindi <https://hosted.weblate.org/projects/tabletop-club/game/"
+"hi/>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
 msgid "Importing assets..."
-msgstr ""
+msgstr "परिसम्पत्ति इकट्ठा कर रहें है।"
 
 #: ../Scenes/ImportAssets.tscn:56
 msgid "Missing Asset Folder"
-msgstr ""
+msgstr "परिसम्पत्ति फ़ोल्डर अनुपस्थित है"
 
 #: ../Scenes/ImportAssets.tscn:62
 msgid "Missing Module"
-msgstr ""
+msgstr "माॅड्युल अनुपस्थित है"
 
 #: ../Scenes/Loading.tscn:41
 msgid "Loading..."
-msgstr ""
+msgstr "प्रतीक्षा कीजिए।"
 
 #: ../Scenes/MainMenu.tscn:51
 msgid "Singleplayer"
-msgstr ""
+msgstr "एकद्यूतक"
 
 #: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
-msgstr ""
+msgstr "बहुद्यूतक"
 
 #: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:65
 msgid "Options"
-msgstr ""
+msgstr "समायोजन"
 
 #: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
-msgstr ""
+msgstr "प्रशंंसा"
 
 #: ../Scenes/MainMenu.tscn:79
 msgid "Quit"
-msgstr ""
+msgstr "निकास"
 
 #: ../Scenes/MainMenu.tscn:98 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
-msgstr ""
+msgstr "आय खाता"
 
 #: ../Scenes/MainMenu.tscn:99
 msgid "0"
-msgstr ""
+msgstr "०"
 
 #: ../Scenes/MainMenu.tscn:107
 msgid "Tabletop Club on Itch.io"
-msgstr ""
+msgstr "टैबलटाॅप क्लब Itch.io पर"
 
 #: ../Scenes/MainMenu.tscn:116
 msgid "Source Code"
-msgstr ""
+msgstr "संगणकनिर्देश का स्रोत"
 
 #: ../Scenes/MainMenu.tscn:125
 msgid "Documentation"
-msgstr ""
+msgstr "सहायक निर्देश"
 
 #: ../Scenes/MainMenu.tscn:134
 msgid "Discord"
-msgstr ""
+msgstr "डिस्काॅर्ड"
 
 #: ../Scenes/MainMenu.tscn:143
 msgid "Matrix.org"
-msgstr ""
+msgstr "Matrix.org"
 
 #: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
-msgstr ""
+msgstr "जानकारी"
 
 #: ../Scenes/MainMenu.tscn:177
 msgid "Host Game"
-msgstr ""
+msgstr "द्यूत आयोजन"
 
 #: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
-msgstr ""
+msgstr "एक नए उपस्थल बनाइए जहाँ आपके मित्र प्रवेश कर सकते हैं।"
 
 #: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
-msgstr ""
+msgstr "द्यूत प्रवेश करें"
 
 #: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
-msgstr ""
+msgstr "मित्र की उपस्थालिक संख्या का प्रयोग कीजिए।"
 
 #: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
-msgstr ""
+msgstr "उपस्थालिक संख्या यहाँ डाल लीजिए"
 
 #: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
-msgstr ""
+msgstr "उपस्थालिक संख्या :"
 
 #: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
-msgstr ""
+msgstr "कखगघ"
 
 #: ../Scenes/MainMenu.tscn:334
 msgid "Error"
-msgstr ""
+msgstr "त्रुटि"
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
-msgstr ""
+msgstr "ध्वनि"
 
 #: ../Scenes/OptionsMenu.tscn:61
 msgid "Master Volume"
-msgstr ""
+msgstr "सर्वध्वनि मात्रा"
 
 #: ../Scenes/OptionsMenu.tscn:68
 msgid "Sets the overall volume of all sources of sound in the game."
-msgstr ""
+msgstr "पूरे द्यूत की ध्वनि को नियंत्रित करते है।"
 
 #: ../Scenes/OptionsMenu.tscn:79
 msgid "Music Volume"
-msgstr ""
+msgstr "गानध्वनि मात्रा"
 
 #: ../Scenes/OptionsMenu.tscn:87
 msgid "Sets the volume of all music sources in the game."
-msgstr ""
+msgstr "पूरे द्यूत की गानध्वनि को नियंत्रित करते है।"
 
 #: ../Scenes/OptionsMenu.tscn:98
 msgid "Sounds Volume"
-msgstr ""
+msgstr "सामान्यध्वनि मात्रा"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
 "Sets the volume of sound sources played manually throughout the game, for"
 " example, from speakers."
-msgstr ""
+msgstr "ध्वनि स्रोतों की मात्रा को नियंत्रण करते है, जैसे कि, स्पीकर से।"
 
 #: ../Scenes/OptionsMenu.tscn:117
 msgid "Effects Volume"
-msgstr ""
+msgstr "सामान्यध्वनि मात्रा"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
 "Sets the volume of sound effects played automatically throughout the "
 "game, for example, pieces falling on the table. "
 msgstr ""
+"सामान्यध्वनि मात्रा को नियंत्रित करते है जो द्यूत का समय बजाते रहते है जैसे "
+"कि पीठिका पर गिरने वाले टुकड़े। "
 
 #: ../Scenes/OptionsMenu.tscn:142
 msgid "Controls"
-msgstr ""
+msgstr "उद्याम"
 
 #: ../Scenes/OptionsMenu.tscn:155
 msgid "Mouse Horizontal Sensitivity"
-msgstr ""
+msgstr "मूषक (माउस) की दाये-बाये संवेदनशीलता"
 
 #: ../Scenes/OptionsMenu.tscn:162
 msgid "Sets the horizontal sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "दृष्टिकोणघूर्णन की दायें-बायें संवेदनशीलता नियंत्रित करते है।"
 
 #: ../Scenes/OptionsMenu.tscn:174
 msgid "Mouse Vertical Sensitivity"
-msgstr ""
+msgstr "मूषक (माउस) का उपर-नीच संवेदनशीलता"
 
 #: ../Scenes/OptionsMenu.tscn:182
 msgid "Sets the vertical sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "दृष्टिकोणघूर्णन का उपर-नीच संवेदनशीलता नियंत्रित करते है।"
 
 #: ../Scenes/OptionsMenu.tscn:194
 msgid "Mouse Horizontal Invert"
-msgstr ""
+msgstr "मूषक (माउस) की दायें-बायें विपरीत करना"
 
 #: ../Scenes/OptionsMenu.tscn:202
 msgid "Used to invert the rotation of the camera horizontally."
-msgstr ""
+msgstr "दृष्टिकोण की दायें-बायें घूर्णन को विपरीत करते है।"
 
 #: ../Scenes/OptionsMenu.tscn:209
 msgid "Mouse Vertical Invert"
-msgstr ""
+msgstr "मूषक (माउस) का उपर-नीच को विपरीत करना"
 
 #: ../Scenes/OptionsMenu.tscn:217
 msgid "Used to invert the rotation of the camera vertically."
-msgstr ""
+msgstr "दृष्टिकोण की उपर-नीच घूर्णन को विपरीत करते है।"
 
 #: ../Scenes/OptionsMenu.tscn:224
 msgid "Camera Movement Speed"
-msgstr ""
+msgstr "दृष्टिकोण की गति"
 
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
-msgstr ""
+msgstr "दृष्टिकोण की गति को नियंत्रित करते है।"
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
-msgstr ""
+msgstr "दृष्टिकोण हिलाने के लिए मूषक (माउस) पर बायें दबाए"
 
 #: ../Scenes/OptionsMenu.tscn:252
 msgid ""
 "Used to allow the player to move the camera by dragging the mouse across "
 "the table."
 msgstr ""
+"द्यूतक को पीठिका पर मूषक (माउस) को हिलाकर दृष्टिकोण को स्थानांतरित करने के लि"
+"ए प्रयोग किया जाता है।"
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
-msgstr ""
+msgstr "दृश्यवृद्धि संवेदनशीलता"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
 "Sets how fast the camera zooms in and out of the table when using the "
 "scroll wheel."
-msgstr ""
+msgstr "दृष्टिकोण की दृश्यवृद्धि की गति को नियंत्रित करते है।"
 
 #: ../Scenes/OptionsMenu.tscn:279
 msgid "Zoom Invert"
-msgstr ""
+msgstr "दृश्यवृद्धि विपरीत"
 
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
-msgstr ""
+msgstr "दृश्यवृद्धि की दिशा को विपरीत करते है।"
 
 #: ../Scenes/OptionsMenu.tscn:294
 msgid "Piece Lift Sensitivity"
-msgstr ""
+msgstr "द्यूतटुकड़ा उठाने का संवेनशीलता"
 
 #: ../Scenes/OptionsMenu.tscn:302
 msgid "Sets how fast a piece will move when lifting it off the table."
-msgstr ""
+msgstr "द्यूतटुकड़ा को उठाने की गति नियंत्रित करता है।"
 
 #: ../Scenes/OptionsMenu.tscn:314
 msgid "Piece Lift Invert"
-msgstr ""
+msgstr "द्यूतटुकड़ा उठाने विपरीत करना"
 
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
 "Used to invert the direction a piece will go when lifting it off the "
 "table."
-msgstr ""
+msgstr "द्यूतटुकड़ा को उठाने समय दिशा विपरीतित करता है।"
 
 #: ../Scenes/OptionsMenu.tscn:329
 msgid "Piece Rotation Invert"
-msgstr ""
+msgstr "द्यूतटुकड़ा का घूर्णन विपरीत करना"
 
 #: ../Scenes/OptionsMenu.tscn:337
 msgid "Used to invert the direction a piece will rotate."
-msgstr ""
+msgstr "द्यूतटुकड़ा का घूर्णन की दिशा विपरीत करता है।"
 
 #: ../Scenes/OptionsMenu.tscn:344
 msgid "Hand Preview Enabled"
-msgstr ""
+msgstr "हाथ दिखने सक्षम"
 
 #: ../Scenes/OptionsMenu.tscn:352
 msgid ""
 "When set, hovering over a card in your hand will display an enhanced "
 "preview of the card after a short period of time."
 msgstr ""
+"जब सक्षम, हाथ के पत्ते को मंडराने से पत्ते का उन्नत दर्शन प्रदर्शित होगा, "
+"थोड़ा समय पश्चात्।"
 
 #: ../Scenes/OptionsMenu.tscn:360
 msgid "Hand Preview Delay"
-msgstr ""
+msgstr "हाथ दिखने में विलंब"
 
 #: ../Scenes/OptionsMenu.tscn:368
 msgid ""
 "Used to set how long the mouse needs to be kept still before a preview of"
 " a card is displayed from the hand."
 msgstr ""
+"मूषक (माउस) की आनिवारिक देरी को नियंत्रित करते है, जिसे हाथ का पत्ता को दर्शि"
+"त होते है।"
 
 #: ../Scenes/OptionsMenu.tscn:380
 msgid "Hand Preview Size"
-msgstr ""
+msgstr "हाथ दिखने का विशालता"
 
 #: ../Scenes/OptionsMenu.tscn:388
 msgid "Used to control how large the card preview is."
-msgstr ""
+msgstr "पत्ता को दिखने का विशालता नियंत्रण करते है।"
 
 #: ../Scenes/OptionsMenu.tscn:400
 msgid "Hide Control Hints"
-msgstr ""
+msgstr "उद्याम का सहायक सूचना ओझल करना"
 
 #: ../Scenes/OptionsMenu.tscn:408
 msgid "Used to hide the dynamic text displaying how to control the game."
-msgstr ""
+msgstr "उद्याम का सहायक सूचना ओझल करता है।"
 
 #: ../Scenes/OptionsMenu.tscn:421
 msgid "General"
-msgstr ""
+msgstr "सामान्य"
 
 #: ../Scenes/OptionsMenu.tscn:435
 msgid "Language"
-msgstr ""
+msgstr "भाषा"
 
 #: ../Scenes/OptionsMenu.tscn:455
 msgid "Autosave Interval"
-msgstr ""
+msgstr "स्वत: सहेजें की देरी"
 
 #: ../Scenes/OptionsMenu.tscn:463
 msgid "Used to set how often autosaves are created."
-msgstr ""
+msgstr "स्वत: सहेजें की देरी को नियंत्रण करते है।"
 
 #: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:68
 msgid "5 minutes"
-msgstr ""
+msgstr "५ मिनट"
 
 #: ../Scenes/OptionsMenu.tscn:474
 msgid "Autosave File Count"
-msgstr ""
+msgstr "स्वत: सहेजें की गिनती"
 
 #: ../Scenes/OptionsMenu.tscn:482
 msgid "Used to set the maximum number of autosave files that are made."
-msgstr ""
+msgstr "स्वत: सहेजें की सर्वाधिक सीमा को नियंत्रित करता है।"
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Skip Splash Screen"
-msgstr ""
+msgstr "प्रवेश सूचना को अनदेखा करना"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Skips the Godot Engine splash screen when the game starts."
-msgstr ""
+msgstr "Godot Engine का प्रवेश सूचना को अनदेखा करता है।"
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
-msgstr ""
+msgstr "संगणक चेतावनियाँ दिखाना"
 
 #: ../Scenes/OptionsMenu.tscn:516
 msgid "Displays system warnings in the chat box."
-msgstr ""
+msgstr "संगणक चेतावनियाँ दिखाना वार्ता संदूक में।"
 
 #: ../Scenes/OptionsMenu.tscn:525
 msgid "Show System Errors"
-msgstr ""
+msgstr "संगणक त्रुटियाँ दिखाना"
 
 #: ../Scenes/OptionsMenu.tscn:533
 msgid "Displays system errors in the chat box."
-msgstr ""
+msgstr "संगणक त्रुटियाँ दिखाना वार्ता संदूक में।"
 
 #: ../Scenes/OptionsMenu.tscn:561
 msgid "Opens the assets folder in your file explorer."
-msgstr ""
+msgstr "इसे प्रतिसम्पत्ति की फ़ाॅल्डर खोलता है फ़ाइल एक्सप्लाॅरर में।"
 
 #: ../Scenes/OptionsMenu.tscn:563
 msgid "Open Assets Folder"
-msgstr ""
+msgstr "प्रतिसम्पत्ति की फ़ाॅल्डर खोलना"
 
 #: ../Scenes/OptionsMenu.tscn:579
 msgid "Reimport Assets"
-msgstr ""
+msgstr "प्रतिस्मपत्ति को पुनः आय करना"
 
 #: ../Scenes/OptionsMenu.tscn:592
 msgid "Key Bindings"
-msgstr ""
+msgstr "उद्याम का समायोजन"
 
 #: ../Scenes/OptionsMenu.tscn:606
 msgid "Move Forward"
-msgstr ""
+msgstr "सामने बढ़ना"
 
 #: ../Scenes/OptionsMenu.tscn:613
 msgid "Moves the camera forward."
-msgstr ""
+msgstr "दृष्टिकोण को सामने बढ़ता है।"
 
 #: ../Scenes/OptionsMenu.tscn:623
 msgid "Move Back"
-msgstr ""
+msgstr "पीछे बढ़ना"
 
 #: ../Scenes/OptionsMenu.tscn:631
 msgid "Moves the camera backwards."
-msgstr ""
+msgstr "दृष्टिकोण को पीछे बढ़ता है।"
 
 #: ../Scenes/OptionsMenu.tscn:641
 msgid "Move Left"
-msgstr ""
+msgstr "बायें बढ़ना"
 
 #: ../Scenes/OptionsMenu.tscn:649
 msgid "Moves the camera left."
-msgstr ""
+msgstr "दृष्टिकोण को बायें बढ़ता है।"
 
 #: ../Scenes/OptionsMenu.tscn:659
 msgid "Move Right"
-msgstr ""
+msgstr "दायें बढ़ना"
 
 #: ../Scenes/OptionsMenu.tscn:667
 msgid "Moves the camera right."
-msgstr ""
+msgstr "दृष्टिकोण को दायें बढ़ता है।"
 
 #: ../Scenes/OptionsMenu.tscn:677
 msgid "Rotate Camera"
-msgstr ""
+msgstr "दृष्टिकोण का घूर्णन"
 
 #: ../Scenes/OptionsMenu.tscn:685
 msgid "Enable rotation of the camera when moving the mouse."
-msgstr ""
+msgstr "दृष्टिकोण का घूर्णन सक्षम करता है जब मूषक (माउस) हिलते है।"
 
 #: ../Scenes/OptionsMenu.tscn:695
 msgid "Reset Camera"
-msgstr ""
+msgstr "दृष्टिकोण को पुनः स्थित करना"
 
 #: ../Scenes/OptionsMenu.tscn:703
 msgid "Resets the camera to the default position."
-msgstr ""
+msgstr "दृष्टिकोण को पुनः स्थित करता है।"
 
 #: ../Scenes/OptionsMenu.tscn:713
 msgid "Zoom In / Lift Piece Down"
-msgstr ""
+msgstr "दृश्यवृद्धि अथवा द्यूतटुकड़ा नीचे रखना"
 
 #: ../Scenes/OptionsMenu.tscn:721
 msgid "Zoom the camera towards the table, or lift a piece down onto the table."
-msgstr ""
+msgstr "दृष्टिकोण का दृश्यवृद्धि करता अथवा द्यूतटुकड़ा नीचे पीठिका पर रखता है।"
 
 #: ../Scenes/OptionsMenu.tscn:731
 msgid "Zoom Out / Lift Piece Up"
-msgstr ""
+msgstr "दृश्यन्यून अथवा द्यूतटुकड़ा उपर खींचना"
 
 #: ../Scenes/OptionsMenu.tscn:739
 msgid "Zoom the camera away from the table, or lift a piece up from the table."
-msgstr ""
+msgstr "दृष्टिकोण का दृश्यन्यून करता अथवा द्यूतटुकड़ा उपर पीठिका से उठाता है।"
 
 #: ../Scenes/OptionsMenu.tscn:749
 msgid "Flip Piece Orientation"
