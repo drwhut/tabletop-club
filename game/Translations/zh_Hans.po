@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-17 17:29+0100\n"
+"POT-Creation-Date: 2023-05-09 09:02+0100\n"
 "PO-Revision-Date: 2023-05-09 08:08+0000\n"
 "Last-Translator: Yao NianQing <imbearchild@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -311,7 +311,7 @@ msgstr "自动保存间隔"
 msgid "Used to set how often autosaves are created."
 msgstr "设置自动保存的频率。"
 
-#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:68
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:70
 msgid "5 minutes"
 msgstr "5 分钟"
 
@@ -447,7 +447,7 @@ msgid ""
 "orientation."
 msgstr "重置选中的或者鼠标拿取的部件的翻转情况。"
 
-#: ../Scenes/OptionsMenu.tscn:785 ../Scripts/Game/CameraController.gd:1574
+#: ../Scenes/OptionsMenu.tscn:785 ../Scripts/Game/CameraController.gd:1577
 msgid "Rotate Piece"
 msgstr "旋转部件"
 
@@ -455,9 +455,9 @@ msgstr "旋转部件"
 msgid "Rotates the the piece that is selected, or that the mouse is over."
 msgstr "旋转选中的或者鼠标拿取的部件。"
 
-#: ../Scenes/OptionsMenu.tscn:803 ../Scripts/Game/CameraController.gd:1207
-#: ../Scripts/Game/CameraController.gd:1527
-#: ../Scripts/Game/CameraController.gd:1582
+#: ../Scenes/OptionsMenu.tscn:803 ../Scripts/Game/CameraController.gd:1210
+#: ../Scripts/Game/CameraController.gd:1530
+#: ../Scripts/Game/CameraController.gd:1585
 msgid "Shuffle"
 msgstr "洗牌"
 
@@ -532,7 +532,7 @@ msgstr "将键位绑定恢复到默认。"
 msgid "Reset Bindings"
 msgstr "重置绑定"
 
-#: ../Scenes/OptionsMenu.tscn:980 ../Scripts/Game/CameraController.gd:1224
+#: ../Scenes/OptionsMenu.tscn:980 ../Scripts/Game/CameraController.gd:1227
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:185
 msgid "Name"
 msgstr "名称"
@@ -545,7 +545,7 @@ msgstr "在多人房间中显示的玩家名称。"
 msgid "Player"
 msgstr "玩家"
 
-#: ../Scenes/OptionsMenu.tscn:997 ../Scripts/Game/CameraController.gd:1335
+#: ../Scenes/OptionsMenu.tscn:997 ../Scripts/Game/CameraController.gd:1338
 msgid "Color"
 msgstr "颜色"
 
@@ -562,7 +562,7 @@ msgid "Changes the size of the text in the chat box."
 msgstr "改变聊天框的字体尺寸。"
 
 #: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
-#: ../Scripts/OptionsMenu.gd:78
+#: ../Scripts/OptionsMenu.gd:80
 msgid "Medium"
 msgstr "中号"
 
@@ -597,7 +597,7 @@ msgstr "显示模式"
 msgid "Sets the mode in which the game window is displayed."
 msgstr "设置窗口的显示模式。"
 
-#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:72
+#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:74
 msgid "Windowed"
 msgstr "窗口"
 
@@ -622,7 +622,7 @@ msgid "Multisample Anti-Aliasing (MSAA)"
 msgstr "多重采样抗锯齿（MSAA）"
 
 #: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
-#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:76
+#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:78
 msgid "None"
 msgstr "无"
 
@@ -634,7 +634,7 @@ msgstr "屏幕空间环境遮挡（SSAO）"
 msgid "Skybox Radiance Detail"
 msgstr "天空盒辐射细节"
 
-#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:77
+#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:79
 msgid "Low"
 msgstr "低"
 
@@ -767,7 +767,7 @@ msgid "Value:"
 msgstr "值："
 
 #: ../Scenes/Game/CameraController.tscn:442
-#: ../Scripts/Game/CameraController.gd:1285
+#: ../Scripts/Game/CameraController.gd:1288
 msgid "Set value"
 msgstr "设置值"
 
@@ -824,7 +824,8 @@ msgid ""
 "you won't be able to see these assets while in this game. There are a total "
 "of %d missing assets, and %d assets differ between your client and the "
 "host's client:"
-msgstr "房主使用了你的客户端缺失的资源。这意味着你不能在游戏中看到这些资源。一共有 "
+msgstr ""
+"房主使用了你的客户端缺失的资源。这意味着你不能在游戏中看到这些资源。一共有 "
 "%d 个资源缺失，你与主机有 %d 个资源差异："
 
 #: ../Scenes/Game/Game.tscn:58
@@ -832,7 +833,8 @@ msgstr "房主使用了你的客户端缺失的资源。这意味着你不能在
 msgid ""
 "Your client is also missing %d files, and %d files differ from that of the "
 "host's, which in total is %s of data:"
-msgstr "你的客户端也缺失了 %d 个文件，且有 %d 个文件与主机不同，数据总差异为 %s："
+msgstr ""
+"你的客户端也缺失了 %d 个文件，且有 %d 个文件与主机不同，数据总差异为 %s："
 
 #: ../Scenes/Game/Game.tscn:86
 msgid "Yes, download missing assets."
@@ -1017,7 +1019,7 @@ msgid "Move Down"
 msgstr "下移"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:138
-#: ../Scripts/Game/CameraController.gd:1356
+#: ../Scripts/Game/CameraController.gd:1359
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:228
 msgid "Delete"
 msgstr "删除"
@@ -1109,11 +1111,11 @@ msgstr "清理旧文件……"
 msgid "Not bound"
 msgstr "未绑定"
 
-#: ../Scripts/BindManager.gd:58 ../Scripts/Game/CameraController.gd:1437
+#: ../Scripts/BindManager.gd:58 ../Scripts/Game/CameraController.gd:1440
 msgid "Left Mouse Button"
 msgstr "鼠标左键"
 
-#: ../Scripts/BindManager.gd:60 ../Scripts/Game/CameraController.gd:1494
+#: ../Scripts/BindManager.gd:60 ../Scripts/Game/CameraController.gd:1497
 msgid "Right Mouse Button"
 msgstr "鼠标右键"
 
@@ -1233,26 +1235,34 @@ msgid "German"
 msgstr "德语 German"
 
 #: ../Scripts/MainMenu.gd:110
+msgid "Indonesian"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:111
 msgid "Italian"
 msgstr "意大利语 Italian"
 
-#: ../Scripts/MainMenu.gd:111
+#: ../Scripts/MainMenu.gd:112
+msgid "Norwegian"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:113
 msgid "Portuguese"
 msgstr "葡萄牙语 Portuguese"
 
-#: ../Scripts/MainMenu.gd:112
+#: ../Scripts/MainMenu.gd:114
 msgid "Russian"
 msgstr "俄语 Russian"
 
-#: ../Scripts/MainMenu.gd:113
+#: ../Scripts/MainMenu.gd:115
 msgid "Spanish"
 msgstr "西班牙语 Spanish"
 
-#: ../Scripts/MainMenu.gd:214
+#: ../Scripts/MainMenu.gd:216
 msgid "Room code must be four characters long!"
 msgstr "房间号必须是四个字母！"
 
-#: ../Scripts/MainMenu.gd:219
+#: ../Scripts/MainMenu.gd:221
 msgid "Invalid room code!"
 msgstr "无效房间号！"
 
@@ -1260,51 +1270,51 @@ msgstr "无效房间号！"
 msgid "System Default"
 msgstr "系统默认"
 
-#: ../Scripts/OptionsMenu.gd:65
+#: ../Scripts/OptionsMenu.gd:67
 msgid "Never"
 msgstr "从不"
 
-#: ../Scripts/OptionsMenu.gd:66
+#: ../Scripts/OptionsMenu.gd:68
 msgid "30 seconds"
 msgstr "30 秒"
 
-#: ../Scripts/OptionsMenu.gd:67
+#: ../Scripts/OptionsMenu.gd:69
 msgid "1 minute"
 msgstr "1 分钟"
 
-#: ../Scripts/OptionsMenu.gd:69
+#: ../Scripts/OptionsMenu.gd:71
 msgid "10 minutes"
 msgstr "10 分钟"
 
-#: ../Scripts/OptionsMenu.gd:70
+#: ../Scripts/OptionsMenu.gd:72
 msgid "30 minutes"
 msgstr "30 分钟"
 
-#: ../Scripts/OptionsMenu.gd:73
+#: ../Scripts/OptionsMenu.gd:75
 msgid "Borderless Fullscreen"
 msgstr "无边框窗口"
 
-#: ../Scripts/OptionsMenu.gd:74
+#: ../Scripts/OptionsMenu.gd:76
 msgid "Fullscreen"
 msgstr "全屏幕"
 
-#: ../Scripts/OptionsMenu.gd:79
+#: ../Scripts/OptionsMenu.gd:81
 msgid "High"
 msgstr "高"
 
-#: ../Scripts/OptionsMenu.gd:80
+#: ../Scripts/OptionsMenu.gd:82
 msgid "Very High"
 msgstr "非常高"
 
-#: ../Scripts/OptionsMenu.gd:81
+#: ../Scripts/OptionsMenu.gd:83
 msgid "Ultra"
 msgstr "极高"
 
-#: ../Scripts/OptionsMenu.gd:83
+#: ../Scripts/OptionsMenu.gd:85
 msgid "Small"
 msgstr "小"
 
-#: ../Scripts/OptionsMenu.gd:85
+#: ../Scripts/OptionsMenu.gd:87
 msgid "Large"
 msgstr "大"
 
@@ -1317,376 +1327,376 @@ msgstr "无"
 msgid "Now Playing: %s"
 msgstr "正在播放：%s"
 
-#: ../Scripts/Game/CameraController.gd:1129
+#: ../Scripts/Game/CameraController.gd:1132
 msgid "Add selected objects..."
 msgstr "添加选中的物件……"
 
-#: ../Scripts/Game/CameraController.gd:1168
+#: ../Scripts/Game/CameraController.gd:1171
 #, python-format
 msgid "Count: %d"
 msgstr "总计：%d"
 
-#: ../Scripts/Game/CameraController.gd:1170
+#: ../Scripts/Game/CameraController.gd:1173
 #, python-format
 msgid "Value: %d"
 msgstr "值：%d"
 
-#: ../Scripts/Game/CameraController.gd:1190
+#: ../Scripts/Game/CameraController.gd:1193
 msgid "Put in hand"
 msgstr "放入手牌堆"
 
-#: ../Scripts/Game/CameraController.gd:1194
+#: ../Scripts/Game/CameraController.gd:1197
 msgid "Collect individuals"
 msgstr "收集单个"
 
-#: ../Scripts/Game/CameraController.gd:1195
+#: ../Scripts/Game/CameraController.gd:1198
 msgid "Collect all"
 msgstr "收集全部"
 
-#: ../Scripts/Game/CameraController.gd:1199
+#: ../Scripts/Game/CameraController.gd:1202
 msgid "Deal cards"
 msgstr "发牌"
 
-#: ../Scripts/Game/CameraController.gd:1202
+#: ../Scripts/Game/CameraController.gd:1205
 msgid "Take off top"
 msgstr "自顶拿取"
 
-#: ../Scripts/Game/CameraController.gd:1205
+#: ../Scripts/Game/CameraController.gd:1208
 msgid "Orient all up"
 msgstr "全部向上"
 
-#: ../Scripts/Game/CameraController.gd:1206
+#: ../Scripts/Game/CameraController.gd:1209
 msgid "Orient all down"
 msgstr "全部向下"
 
-#: ../Scripts/Game/CameraController.gd:1226
+#: ../Scripts/Game/CameraController.gd:1229
 msgid "Suit"
 msgstr "套"
 
-#: ../Scripts/Game/CameraController.gd:1228
+#: ../Scripts/Game/CameraController.gd:1231
 msgid "Value"
 msgstr "值"
 
-#: ../Scripts/Game/CameraController.gd:1230
+#: ../Scripts/Game/CameraController.gd:1233
 msgid "Sort by"
 msgstr "排序"
 
-#: ../Scripts/Game/CameraController.gd:1239
+#: ../Scripts/Game/CameraController.gd:1242
 msgid "Timer"
 msgstr "定时器"
 
-#: ../Scripts/Game/CameraController.gd:1269
+#: ../Scripts/Game/CameraController.gd:1272
 #, python-format
 msgid "Total: %d"
 msgstr "总计：%d"
 
-#: ../Scripts/Game/CameraController.gd:1271
+#: ../Scripts/Game/CameraController.gd:1274
 #, python-format
 msgid "Total: %f"
 msgstr "总计：%f"
 
-#: ../Scripts/Game/CameraController.gd:1291
+#: ../Scripts/Game/CameraController.gd:1294
 msgid "Collect selected"
 msgstr "收集选中"
 
-#: ../Scripts/Game/CameraController.gd:1295
+#: ../Scripts/Game/CameraController.gd:1298
 msgid "Add objects..."
 msgstr "添加物件……"
 
-#: ../Scripts/Game/CameraController.gd:1296
+#: ../Scripts/Game/CameraController.gd:1299
 msgid "Peek inside"
 msgstr "查看内部"
 
-#: ../Scripts/Game/CameraController.gd:1298
+#: ../Scripts/Game/CameraController.gd:1301
 msgid "Take objects out"
 msgstr "拿出物件"
 
-#: ../Scripts/Game/CameraController.gd:1314
+#: ../Scripts/Game/CameraController.gd:1317
 msgid "Speaker"
 msgstr "音箱"
 
-#: ../Scripts/Game/CameraController.gd:1326
+#: ../Scripts/Game/CameraController.gd:1329
 msgid "Details…"
 msgstr "详情…"
 
-#: ../Scripts/Game/CameraController.gd:1338
+#: ../Scripts/Game/CameraController.gd:1341
 msgid "Cut"
 msgstr "剪切"
 
-#: ../Scripts/Game/CameraController.gd:1339
+#: ../Scripts/Game/CameraController.gd:1342
 msgid "Copy"
 msgstr "复制"
 
-#: ../Scripts/Game/CameraController.gd:1341
-#: ../Scripts/Game/CameraController.gd:1380
+#: ../Scripts/Game/CameraController.gd:1344
+#: ../Scripts/Game/CameraController.gd:1383
 msgid "Paste"
 msgstr "粘贴"
 
-#: ../Scripts/Game/CameraController.gd:1352
+#: ../Scripts/Game/CameraController.gd:1355
 msgid "Unlock"
 msgstr "解锁"
 
-#: ../Scripts/Game/CameraController.gd:1354
+#: ../Scripts/Game/CameraController.gd:1357
 msgid "Lock"
 msgstr "锁定"
 
-#: ../Scripts/Game/CameraController.gd:1358
+#: ../Scripts/Game/CameraController.gd:1361
 msgid "Transform"
 msgstr "变形"
 
-#: ../Scripts/Game/CameraController.gd:1385
+#: ../Scripts/Game/CameraController.gd:1388
 msgid "Set spawn point here"
 msgstr "此处设置生成点"
 
-#: ../Scripts/Game/CameraController.gd:1386
+#: ../Scripts/Game/CameraController.gd:1389
 msgid "Spawn object here"
 msgstr "此处生成物件"
 
-#: ../Scripts/Game/CameraController.gd:1405
+#: ../Scripts/Game/CameraController.gd:1408
 #, python-format
 msgid "Alt + %s"
 msgstr "Alt + %s"
 
-#: ../Scripts/Game/CameraController.gd:1406
+#: ../Scripts/Game/CameraController.gd:1409
 #, python-format
 msgid "Ctrl + %s"
 msgstr "Ctrl + %s"
 
-#: ../Scripts/Game/CameraController.gd:1407
+#: ../Scripts/Game/CameraController.gd:1410
 #, python-format
 msgid "Cmd + %s"
 msgstr "Cmd + %s"
 
-#: ../Scripts/Game/CameraController.gd:1408
+#: ../Scripts/Game/CameraController.gd:1411
 #, python-format
 msgid "Hold %s"
 msgstr "按住 %s"
 
-#: ../Scripts/Game/CameraController.gd:1409
+#: ../Scripts/Game/CameraController.gd:1412
 #, python-format
 msgid "Release %s"
 msgstr "释放 %s"
 
-#: ../Scripts/Game/CameraController.gd:1416
+#: ../Scripts/Game/CameraController.gd:1419
 msgid "Scroll Wheel"
 msgstr "滚动滚轮"
 
-#: ../Scripts/Game/CameraController.gd:1419
+#: ../Scripts/Game/CameraController.gd:1422
 msgid "Move camera"
 msgstr "移动视角"
 
-#: ../Scripts/Game/CameraController.gd:1423
+#: ../Scripts/Game/CameraController.gd:1426
 msgid "Rotate camera"
 msgstr "旋转视角"
 
-#: ../Scripts/Game/CameraController.gd:1424
+#: ../Scripts/Game/CameraController.gd:1427
 #, python-format
 msgid "Hold %s + Move Mouse"
 msgstr "按住 %s + 移动鼠标"
 
-#: ../Scripts/Game/CameraController.gd:1432
+#: ../Scripts/Game/CameraController.gd:1435
 msgid "Zoom camera"
 msgstr "缩放视角"
 
-#: ../Scripts/Game/CameraController.gd:1442
+#: ../Scripts/Game/CameraController.gd:1445
 msgid "Release selected"
 msgstr "释放选中"
 
-#: ../Scripts/Game/CameraController.gd:1444
+#: ../Scripts/Game/CameraController.gd:1447
 msgid "Stop box selecting"
 msgstr "停止箱选择"
 
-#: ../Scripts/Game/CameraController.gd:1447
+#: ../Scripts/Game/CameraController.gd:1450
 msgid "Select object"
 msgstr "选择物件"
 
-#: ../Scripts/Game/CameraController.gd:1449
+#: ../Scripts/Game/CameraController.gd:1452
 msgid "Add to selection"
 msgstr "添加到选择"
 
-#: ../Scripts/Game/CameraController.gd:1452
+#: ../Scripts/Game/CameraController.gd:1455
 msgid "Take random object"
 msgstr "拿取随机物件"
 
-#: ../Scripts/Game/CameraController.gd:1453
 #: ../Scripts/Game/CameraController.gd:1456
+#: ../Scripts/Game/CameraController.gd:1459
 #, python-format
 msgid "%s + Move Mouse"
 msgstr "%s + 移动鼠标"
 
-#: ../Scripts/Game/CameraController.gd:1455
+#: ../Scripts/Game/CameraController.gd:1458
 msgid "Take top object"
 msgstr "拿取顶部物件"
 
-#: ../Scripts/Game/CameraController.gd:1458
+#: ../Scripts/Game/CameraController.gd:1461
 msgid "Grab selected"
 msgstr "抓取选中"
 
-#: ../Scripts/Game/CameraController.gd:1458
+#: ../Scripts/Game/CameraController.gd:1461
 msgid "Grab object"
 msgstr "抓取物件"
 
-#: ../Scripts/Game/CameraController.gd:1461
+#: ../Scripts/Game/CameraController.gd:1464
 msgid "Stop moving"
 msgstr "停止移动"
 
-#: ../Scripts/Game/CameraController.gd:1461
+#: ../Scripts/Game/CameraController.gd:1464
 msgid "Start moving"
 msgstr "开始移动"
 
-#: ../Scripts/Game/CameraController.gd:1465
+#: ../Scripts/Game/CameraController.gd:1468
 msgid "Box select"
 msgstr "箱选择"
 
-#: ../Scripts/Game/CameraController.gd:1469
+#: ../Scripts/Game/CameraController.gd:1472
 msgid "Flick object"
 msgstr "弹动物件"
 
-#: ../Scripts/Game/CameraController.gd:1471
+#: ../Scripts/Game/CameraController.gd:1474
 msgid "Prepare to flick"
 msgstr "准备弹东"
 
-#: ../Scripts/Game/CameraController.gd:1475
+#: ../Scripts/Game/CameraController.gd:1478
 msgid "Stop measuring"
 msgstr "停止测量"
 
-#: ../Scripts/Game/CameraController.gd:1477
+#: ../Scripts/Game/CameraController.gd:1480
 msgid "Start measuring"
 msgstr "开始测量"
 
-#: ../Scripts/Game/CameraController.gd:1481
+#: ../Scripts/Game/CameraController.gd:1484
 msgid "Create hidden area"
 msgstr "创建隐藏区域"
 
-#: ../Scripts/Game/CameraController.gd:1483
+#: ../Scripts/Game/CameraController.gd:1486
 msgid "Draw hidden area"
 msgstr "划出隐藏区域"
 
-#: ../Scripts/Game/CameraController.gd:1486
+#: ../Scripts/Game/CameraController.gd:1489
 msgid "Paint Table"
 msgstr "桌面涂鸦"
 
-#: ../Scripts/Game/CameraController.gd:1489
+#: ../Scripts/Game/CameraController.gd:1492
 msgid "Erase Paint"
 msgstr "擦除笔划"
 
-#: ../Scripts/Game/CameraController.gd:1499
+#: ../Scripts/Game/CameraController.gd:1502
 msgid "Object menu"
 msgstr "物件菜单"
 
-#: ../Scripts/Game/CameraController.gd:1501
+#: ../Scripts/Game/CameraController.gd:1504
 msgid "Table menu"
 msgstr "桌面菜单"
 
-#: ../Scripts/Game/CameraController.gd:1505
+#: ../Scripts/Game/CameraController.gd:1508
 msgid "Stop flicking"
 msgstr "停止弹动"
 
-#: ../Scripts/Game/CameraController.gd:1509
+#: ../Scripts/Game/CameraController.gd:1512
 msgid "Remove last ruler"
 msgstr "移除上一个尺子"
 
-#: ../Scripts/Game/CameraController.gd:1513
+#: ../Scripts/Game/CameraController.gd:1516
 msgid "Remove hidden area"
 msgstr "移除隐藏区域"
 
-#: ../Scripts/Game/CameraController.gd:1533
+#: ../Scripts/Game/CameraController.gd:1536
 msgid "Lift selected"
 msgstr "抬升选中"
 
-#: ../Scripts/Game/CameraController.gd:1534
+#: ../Scripts/Game/CameraController.gd:1537
 msgid "Zoom selected"
 msgstr "缩放选中"
 
-#: ../Scripts/Game/CameraController.gd:1535
+#: ../Scripts/Game/CameraController.gd:1538
 msgid "Rotate selected"
 msgstr "旋转选中"
 
-#: ../Scripts/Game/CameraController.gd:1544
+#: ../Scripts/Game/CameraController.gd:1547
 msgid "Unlock selected"
 msgstr "解锁选中"
 
-#: ../Scripts/Game/CameraController.gd:1544
+#: ../Scripts/Game/CameraController.gd:1547
 msgid "Lock selected"
 msgstr "锁定选中"
 
-#: ../Scripts/Game/CameraController.gd:1547
+#: ../Scripts/Game/CameraController.gd:1550
 msgid "Delete selected"
 msgstr "删除选中"
 
-#: ../Scripts/Game/CameraController.gd:1559
-#: ../Scripts/Game/CameraController.gd:1576
+#: ../Scripts/Game/CameraController.gd:1562
+#: ../Scripts/Game/CameraController.gd:1579
 msgid "Reset orientation"
 msgstr "重置翻转"
 
-#: ../Scripts/Game/CameraController.gd:1561
-#: ../Scripts/Game/CameraController.gd:1578
+#: ../Scripts/Game/CameraController.gd:1564
+#: ../Scripts/Game/CameraController.gd:1581
 msgid "Flip orientation"
 msgstr "翻转物件"
 
-#: ../Scripts/Game/CameraController.gd:1567
+#: ../Scripts/Game/CameraController.gd:1570
 msgid "Flip card"
 msgstr "反转卡片"
 
-#: ../Scripts/Game/CameraController.gd:1569
+#: ../Scripts/Game/CameraController.gd:1572
 msgid "Face card up"
 msgstr "卡面朝上"
 
-#: ../Scripts/Game/CameraController.gd:1585
+#: ../Scripts/Game/CameraController.gd:1588
 msgid "Reset camera"
 msgstr "重置视角"
 
-#: ../Scripts/Game/CameraController.gd:1738
+#: ../Scripts/Game/CameraController.gd:1741
 msgid "Pause track"
 msgstr "暂停曲目"
 
-#: ../Scripts/Game/CameraController.gd:1743
+#: ../Scripts/Game/CameraController.gd:1746
 msgid "Resume track"
 msgstr "恢复曲目"
 
-#: ../Scripts/Game/CameraController.gd:1747
+#: ../Scripts/Game/CameraController.gd:1750
 msgid "Stop track"
 msgstr "停止曲目"
 
-#: ../Scripts/Game/CameraController.gd:1749
+#: ../Scripts/Game/CameraController.gd:1752
 msgid "Play track"
 msgstr "播放曲目"
 
-#: ../Scripts/Game/CameraController.gd:1754
+#: ../Scripts/Game/CameraController.gd:1757
 msgid "No track loaded"
 msgstr "未加载曲目"
 
-#: ../Scripts/Game/CameraController.gd:1756
+#: ../Scripts/Game/CameraController.gd:1759
 #, python-format
 msgid "Playing: %s"
 msgstr "正在播放：%s"
 
-#: ../Scripts/Game/CameraController.gd:1758
+#: ../Scripts/Game/CameraController.gd:1761
 #, python-format
 msgid "Loaded: %s"
 msgstr "已加载：%s"
 
-#: ../Scripts/Game/CameraController.gd:1774
+#: ../Scripts/Game/CameraController.gd:1777
 msgid "Pause timer"
 msgstr "暂停计时"
 
-#: ../Scripts/Game/CameraController.gd:1779
+#: ../Scripts/Game/CameraController.gd:1782
 msgid "Resume timer"
 msgstr "恢复计时"
 
-#: ../Scripts/Game/CameraController.gd:1783
+#: ../Scripts/Game/CameraController.gd:1786
 msgid "Stop countdown"
 msgstr "停止倒计时"
 
-#: ../Scripts/Game/CameraController.gd:1785
+#: ../Scripts/Game/CameraController.gd:1788
 msgid "Start countdown"
 msgstr "开始倒计时"
 
-#: ../Scripts/Game/CameraController.gd:1789
+#: ../Scripts/Game/CameraController.gd:1792
 msgid "Stop stopwatch"
 msgstr "停止计算器"
 
-#: ../Scripts/Game/CameraController.gd:1791
+#: ../Scripts/Game/CameraController.gd:1794
 msgid "Start stopwatch"
 msgstr "开始计算器"
 
