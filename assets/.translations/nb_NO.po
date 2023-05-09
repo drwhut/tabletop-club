@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-20 15:31\n"
+"POT-Creation-Date: 2023-05-09 09:03\n"
 "PO-Revision-Date: 2023-05-01 08:52+0000\n"
 "Last-Translator: Blood Axe <bloodaxenor@protonmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -332,7 +332,8 @@ msgstr "Landsbyboer"
 msgid ""
 "Avoid being eaten by werewolves at night by voting against them during the "
 "day."
-msgstr "Unngå å bli spist av varulver om natten ved å stemme mot dem på dagtid."
+msgstr ""
+"Unngå å bli spist av varulver om natten ved å stemme mot dem på dagtid."
 
 #: ../TabletopClub/cards/Werewolf:1
 msgid "Werewolf"
@@ -776,7 +777,8 @@ msgstr "Poker"
 
 #: ../TabletopClub/games/Poker:2
 msgid "Each player has been given 25 chips, which sum up to a value of 500."
-msgstr "Hver spiller har fått 25 sjetonger, som til sammen har en verdi på 500."
+msgstr ""
+"Hver spiller har fått 25 sjetonger, som til sammen har en verdi på 500."
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
@@ -868,7 +870,10 @@ msgid ""
 "Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern "
 "green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail "
 "from our cheerful bar staff (with a complimentary cheese and fruit plate "
-"before 5pm). We feature prime rib dinners every day that ends in a "
+"before 5pm). We feature prime rib dinners every day that ends in a \"y\"! "
+"Remember to tip the bellhops at least 5 cents per bag. Enjoy your stay! This "
+"was written 2 years before it was published, because I didn't have a good "
+"enough upright bass sample to make it go."
 msgstr ""
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:1
