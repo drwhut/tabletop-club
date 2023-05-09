@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 09:02+0100\n"
-"PO-Revision-Date: 2023-04-20 06:48+0000\n"
+"PO-Revision-Date: 2023-05-10 19:51+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "game/es/>\n"
@@ -1288,7 +1288,7 @@ msgstr "Alemán"
 
 #: ../Scripts/MainMenu.gd:110
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonesio"
 
 #: ../Scripts/MainMenu.gd:111
 msgid "Italian"
@@ -1296,7 +1296,7 @@ msgstr "Italiano"
 
 #: ../Scripts/MainMenu.gd:112
 msgid "Norwegian"
-msgstr ""
+msgstr "Noruego"
 
 #: ../Scripts/MainMenu.gd:113
 msgid "Portuguese"
