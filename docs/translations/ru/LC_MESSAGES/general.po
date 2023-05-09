@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-29 12:32+0100\n"
+"POT-Creation-Date: 2023-05-09 08:57+0100\n"
 "PO-Revision-Date: 2022-11-28 17:25+0000\n"
 "Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
@@ -1698,7 +1698,9 @@ msgid "Downloading the official binaries"
 msgstr "Загрузка официальных двоичных файлов"
 
 #: ../../general/download/downloading_binaries.rst:7
-msgid "There are two ways to download and play the game:"
+#, fuzzy
+#| msgid "There are two ways to download and play the game:"
+msgid "There are multiple ways to download and play the game:"
 msgstr "Загрузить и играть в игру можно двумя способами:"
 
 #: ../../general/download/downloading_binaries.rst:11
@@ -1726,10 +1728,36 @@ msgstr ""
 "входа найдите \"Tabletop Club\", чтобы загрузить и установить игру."
 
 #: ../../general/download/downloading_binaries.rst:22
+msgid "From Flathub"
+msgstr ""
+
+#: ../../general/download/downloading_binaries.rst:24
+msgid ""
+"If you are on a Linux distribution that supports Flatpaks, you can download "
+"the latest stable version of the game directly from your software manager! "
+"Simply search for \"Tabletop Club\" to download and install the game. "
+"Alternatively, you can visit the project page on `Flathub <https://flathub."
+"org/apps/io.itch.drwhut.TabletopClub>`_."
+msgstr ""
+
+#: ../../general/download/downloading_binaries.rst:30
+msgid ""
+"If Flathub is not included in your list of Flatpak repositories, the game "
+"will not appear. You can add Flathub as a remote repository by following the "
+"instructions `on their website <https://flatpak.org/setup/>`_."
+msgstr ""
+
+#: ../../general/download/downloading_binaries.rst:34
+msgid ""
+"You can also download the game via the command line instead once Flathub has "
+"been added as a remote repository:"
+msgstr ""
+
+#: ../../general/download/downloading_binaries.rst:44
 msgid "As a standalone executable"
 msgstr "Как отдельный исполняемый файл"
 
-#: ../../general/download/downloading_binaries.rst:24
+#: ../../general/download/downloading_binaries.rst:46
 msgid ""
 "You can also download the game as a standalone application that you can run "
 "anywhere on your system from the `itch.io page <https://drwhut.itch.io/"
@@ -1743,7 +1771,7 @@ msgstr ""
 "drwhut/tabletop-club/releases>`_. После загрузки игры необходимо выполнить "
 "всего пару шагов для ее запуска (см. ниже)!"
 
-#: ../../general/download/downloading_binaries.rst:30
+#: ../../general/download/downloading_binaries.rst:52
 #, fuzzy
 #| msgid ""
 #| "In most cases, you'll want to download the latest *non-beta* version of "
@@ -1761,7 +1789,7 @@ msgstr ""
 "с игроками, они более подвержены ошибкам. Но если вам хочется "
 "поэкспериментировать, выбирайте последнюю версию!"
 
-#: ../../general/download/downloading_binaries.rst:35
+#: ../../general/download/downloading_binaries.rst:57
 msgid ""
 "If you've downloaded Tabletop Club in the past and want to download a newer "
 "version, follow :ref:`upgrading-installation` before carrying on here."
@@ -1770,11 +1798,11 @@ msgstr ""
 "версию, следуйте инструкциям на странице \":ref:`upgrading-installation`\" "
 "перед тем, как продолжить здесь."
 
-#: ../../general/download/downloading_binaries.rst:40
+#: ../../general/download/downloading_binaries.rst:62
 msgid "Verifying the download"
 msgstr "Проверка загрузки"
 
-#: ../../general/download/downloading_binaries.rst:42
+#: ../../general/download/downloading_binaries.rst:64
 msgid ""
 "This step is completely optional, but it's a good idea to make sure that the "
 "downloaded file's contents are what we expect them to be. We do this by "
@@ -1786,7 +1814,7 @@ msgstr ""
 "проверяем хэш `SHA512 <https://en.wikipedia.org/wiki/SHA-2>`_ файла и "
 "смотрим, совпадает ли хэш с оригиналом."
 
-#: ../../general/download/downloading_binaries.rst:47
+#: ../../general/download/downloading_binaries.rst:69
 msgid ""
 "Download from the GitHub releases page the ``TabletopClub_vX.X.X_SHA512."
 "txt`` file. This text file contains the SHA512 hashes of all of the "
@@ -1795,7 +1823,7 @@ msgstr ""
 "Скачайте со страницы релизов на GitHub файл ``TabletopClub_vX.X.X_SHA512."
 "txt``. Этот текстовый файл содержит SHA512 хэши всех загрузок."
 
-#: ../../general/download/downloading_binaries.rst:50
+#: ../../general/download/downloading_binaries.rst:72
 msgid ""
 "Open a command prompt or terminal, and navigate to the folder where the "
 "compressed binary lies."
@@ -1803,14 +1831,14 @@ msgstr ""
 "Откройте командную строку или терминал и перейдите в папку, где лежит сжатый "
 "двоичный файл."
 
-#: ../../general/download/downloading_binaries.rst:53
+#: ../../general/download/downloading_binaries.rst:75
 msgid ""
 "Enter the command for your platform, adjusting the file name where necessary:"
 msgstr ""
 "Введите команду для вашей платформы, при необходимости скорректировав имя "
 "файла:"
 
-#: ../../general/download/downloading_binaries.rst:66
+#: ../../general/download/downloading_binaries.rst:88
 msgid ""
 "Compare the output of the previous command to the corresponding line in the "
 "SHA512 text file. If the hashes do not match, then you will need to download "
@@ -1820,16 +1848,16 @@ msgstr ""
 "файле SHA512. Если хэши не совпадают, то вам нужно будет загрузить двоичный "
 "файл снова."
 
-#: ../../general/download/downloading_binaries.rst:71
+#: ../../general/download/downloading_binaries.rst:93
 msgid "What happens now depends slightly on which platform you're on:"
 msgstr ""
 "Что произойдет теперь, зависит от того, на какой платформе вы находитесь:"
 
-#: ../../general/download/downloading_binaries.rst:74
+#: ../../general/download/downloading_binaries.rst:96
 msgid "Downloading for Windows"
 msgstr "Загрузка для Windows"
 
-#: ../../general/download/downloading_binaries.rst:76
+#: ../../general/download/downloading_binaries.rst:98
 msgid ""
 "Make sure you have downloaded the compressed file, it should be called "
 "something like ``TabletopClub_vX.X.X_Windows_64.zip``."
@@ -1837,7 +1865,7 @@ msgstr ""
 "Убедитесь, что вы скачали сжатый файл, он должен называться примерно так "
 "``TabletopClub_vX.X.X_Windows_64.zip``."
 
-#: ../../general/download/downloading_binaries.rst:79
+#: ../../general/download/downloading_binaries.rst:101
 msgid ""
 "Right-click the downloaded file in File Explorer, and click :guilabel:"
 "`Extract all...`"
@@ -1845,7 +1873,7 @@ msgstr ""
 "Щелкните правой кнопкой мыши по загруженному файлу в Проводнике и нажмите :"
 "guilabel:`Извлечь все…`"
 
-#: ../../general/download/downloading_binaries.rst:82
+#: ../../general/download/downloading_binaries.rst:104
 msgid ""
 "There should be a pop-up asking where you want to extract the files to. You "
 "can put the game files anywhere you like, for example ``Desktop/"
@@ -1857,7 +1885,7 @@ msgstr ""
 "TabletopClub``. Затем вы можете нажать :guilabel:`Извлечь`, чтобы извлечь "
 "файлы в это место."
 
-#: ../../general/download/downloading_binaries.rst:87
+#: ../../general/download/downloading_binaries.rst:109
 msgid ""
 "Go to the folder where you extracted the files, and double-click the "
 "``TabletopClub.exe`` executable to start the game!"
@@ -1865,7 +1893,7 @@ msgstr ""
 "Перейдите в папку, куда вы извлекли файлы, и дважды щелкните на исполняемом "
 "файле ``TabletopClub.exe``, чтобы запустить игру!"
 
-#: ../../general/download/downloading_binaries.rst:92
+#: ../../general/download/downloading_binaries.rst:114
 msgid ""
 "Currently Windows binaries of the game are not signed, so you'll most likely "
 "get a warning when you try to run the game saying that the publisher can't "
@@ -1878,11 +1906,11 @@ msgstr ""
 "`Дополнительная информация`, а затем нажав :guilabel:`В любом случае "
 "запустить`."
 
-#: ../../general/download/downloading_binaries.rst:98
+#: ../../general/download/downloading_binaries.rst:120
 msgid "Downloading for macOS"
 msgstr "Загрузка для macOS"
 
-#: ../../general/download/downloading_binaries.rst:100
+#: ../../general/download/downloading_binaries.rst:122
 msgid ""
 "Start downloading the compressed file, it should be called something like "
 "``TabletopClub_vX.X.X_OSX_Universal.zip``."
@@ -1890,7 +1918,7 @@ msgstr ""
 "Начните загрузку сжатого файла, он должен называться примерно так "
 "``TabletopClub_vX.X.X_OSX_Universal.zip``."
 
-#: ../../general/download/downloading_binaries.rst:103
+#: ../../general/download/downloading_binaries.rst:125
 #, fuzzy
 #| msgid ""
 #| "When it has downloaded, go to your downloads folder in Finder, and find "
@@ -1904,7 +1932,7 @@ msgstr ""
 "Дважды щелкните по файлу, чтобы извлечь папку - она будет называться "
 "примерно так: ``TabletopClub_vX.X.X_OSX_Universal``."
 
-#: ../../general/download/downloading_binaries.rst:106
+#: ../../general/download/downloading_binaries.rst:128
 #, fuzzy
 #| msgid ""
 #| "Go into the folder, and launch the game by right-clicking "
@@ -1916,7 +1944,7 @@ msgstr ""
 "Зайдите в папку и запустите игру, щелкнув правой кнопкой мыши "
 "``TabletopClub`` и нажав :guilabel:`Открыть`."
 
-#: ../../general/download/downloading_binaries.rst:111
+#: ../../general/download/downloading_binaries.rst:133
 msgid ""
 "Currently macOS binaries of the game are not signed, so you'll get a warning "
 "saying the publisher is unknown. You can get past this warning by clicking :"
@@ -1928,11 +1956,11 @@ msgstr ""
 "это предупреждение, нажав кнопку :guilabel:`Открыть` во всплывающем окне. "
 "Эта кнопка не появится, если вы дважды щелкните приложение."
 
-#: ../../general/download/downloading_binaries.rst:117
+#: ../../general/download/downloading_binaries.rst:139
 msgid "Downloading for Linux / \\*BSD"
 msgstr "Загрузка для Linux / \\*BSD"
 
-#: ../../general/download/downloading_binaries.rst:119
+#: ../../general/download/downloading_binaries.rst:141
 msgid ""
 "Make sure you have downloaded the compressed file, it should be called "
 "something like ``TabletopClub_vX.X.X_Linux_64.zip``."
@@ -1940,7 +1968,7 @@ msgstr ""
 "Убедитесь, что вы скачали сжатый файл, он должен называться примерно так "
 "``TabletopClub_vX.X.X_Linux_64.zip``."
 
-#: ../../general/download/downloading_binaries.rst:122
+#: ../../general/download/downloading_binaries.rst:144
 msgid ""
 "Either use your distribution's archive manager to extract the files, or run "
 "this command in a terminal:"
@@ -1948,7 +1976,7 @@ msgstr ""
 "Либо используйте менеджер архивов вашего дистрибутива для извлечения файлов, "
 "либо выполните эту команду в терминале:"
 
-#: ../../general/download/downloading_binaries.rst:129
+#: ../../general/download/downloading_binaries.rst:151
 msgid ""
 "Either double-click the executable, or go into a terminal and run this "
 "command in the folder the executable is in:"
@@ -1956,11 +1984,11 @@ msgstr ""
 "Либо дважды щелкните исполняемый файл, либо зайдите в терминал и выполните "
 "эту команду в папке, в которой находится исполняемый файл:"
 
-#: ../../general/download/downloading_binaries.rst:140
+#: ../../general/download/downloading_binaries.rst:162
 msgid "Upgrading an existing installation"
 msgstr "Обновление существующей установки"
 
-#: ../../general/download/downloading_binaries.rst:142
+#: ../../general/download/downloading_binaries.rst:164
 msgid ""
 "If you have already downloaded the game before, and you want to overwrite "
 "the files that are already there, then before downloading and extracting the "
@@ -1970,21 +1998,21 @@ msgstr ""
 "то перед скачиванием и извлечением новой версии игры сначала удалите "
 "следующие файлы и папки:"
 
-#: ../../general/download/downloading_binaries.rst:146
+#: ../../general/download/downloading_binaries.rst:168
 msgid ""
 "``TabletopClub.exe``, or ``TabletopClub.app``, or ``TabletopClub.x86_64``"
 msgstr ""
 "``TabletopClub.exe``, или ``TabletopClub.app``, или ``TabletopClub.x86_64``"
 
-#: ../../general/download/downloading_binaries.rst:147
+#: ../../general/download/downloading_binaries.rst:169
 msgid "``TabletopClub.pck``"
 msgstr "``TabletopClub.pck``"
 
-#: ../../general/download/downloading_binaries.rst:148
+#: ../../general/download/downloading_binaries.rst:170
 msgid "``assets/TabletopClub``"
 msgstr "``assets/TabletopClub``"
 
-#: ../../general/download/downloading_binaries.rst:150
+#: ../../general/download/downloading_binaries.rst:172
 msgid ""
 "Now you can extract the new version of the game as described above. If the "
 "operating systems asks you if you want to replace any files, say yes to all "
