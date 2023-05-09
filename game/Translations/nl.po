@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 09:02+0100\n"
-"PO-Revision-Date: 2023-04-17 18:13+0000\n"
+"PO-Revision-Date: 2023-05-10 19:51+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
 "nl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -1263,7 +1263,7 @@ msgstr "Duits"
 
 #: ../Scripts/MainMenu.gd:110
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonesisch"
 
 #: ../Scripts/MainMenu.gd:111
 msgid "Italian"
@@ -1271,7 +1271,7 @@ msgstr "Italiaans"
 
 #: ../Scripts/MainMenu.gd:112
 msgid "Norwegian"
-msgstr ""
+msgstr "Noors"
 
 #: ../Scripts/MainMenu.gd:113
 msgid "Portuguese"
