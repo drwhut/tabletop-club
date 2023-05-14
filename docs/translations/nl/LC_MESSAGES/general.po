@@ -9,10 +9,10 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-09 08:57+0100\n"
-"PO-Revision-Date: 2023-04-21 12:52+0000\n"
+"PO-Revision-Date: 2023-05-15 20:51+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/docs-"
-"general/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-general/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -416,27 +416,34 @@ msgid ""
 "To help with this, the :ref:`config-cfg` file allows you to put the author, "
 "license, modifier, and URL with the asset, which is then shown in-game."
 msgstr ""
+"Om hierbij te helpen kun je het :ref:`config-cfg`-bestand gebruiken om de "
+"maker, licentie, bewerker en objecturl op te geven. Deze worden in het spel "
+"getoond."
 
 #: ../../general/about.rst:212
 msgid ""
 "If the assets you've made are for playing a game that already exists, then:"
-msgstr ""
+msgstr "Als de objecten voor een spel reeds bestaan, dan:"
 
 #: ../../general/about.rst:214
 msgid ""
 "You cannot use the same name of the game without the owner's explicit "
 "permission."
 msgstr ""
+"Kun je niet dezelfde naam van het spel gebruiken zonder nadrukkelijke "
+"toestemming van de eigenaar;"
 
 #: ../../general/about.rst:217
 msgid "The mechanics of the game cannot be patented."
-msgstr ""
+msgstr "Kun je geen octrooi voor de spelmechaniek aanvragen."
 
 #: ../../general/about.rst:221
 msgid ""
 "You can `check online <https://worldwide.espacenet.com/advancedSearch>`_ to "
 "see if there are any patents for the game's mechanics."
 msgstr ""
+"Je kunt `online <https://worldwide.espacenet.com/advancedSearch>`_ zien of "
+"er octrooien op spelmechanieken berusten."
 
 #: ../../general/about.rst:226
 msgid ""
@@ -444,10 +451,13 @@ msgid ""
 "are worried about distributing your asset pack on the internet, as this also "
 "depends on your country's copyright laws."
 msgstr ""
+"Dit is GEEN juridisch bindend advies. Als je niet zeker bent van je zaak, "
+"vraag dan de dichtstbijzijnde jurist of advocaat om advies. Zij hebben wél "
+"verstand van de auteursrechtwetten in je land."
 
 #: ../../general/contributing/coding_guidelines.rst:5
 msgid "Coding guidelines"
-msgstr ""
+msgstr "Programmeerrichtlijnen"
 
 #: ../../general/contributing/coding_guidelines.rst:7
 msgid ""
@@ -455,6 +465,9 @@ msgid ""
 "`GDScript style guide`_, make sure to follow these guidelines for "
 "consistency, and to make everyone's lives easier:"
 msgstr ""
+"Als je scènes en scripts van een spel aanpast en daarbij Godots `GDScript-"
+"stijlgids`_ volgt, neem dan de volgende richtlijnen in acht om consistentie "
+"te garanderen en het voor iedereen makkelijker te maken:"
 
 #: ../../general/contributing/coding_guidelines.rst:11
 msgid "Only use GDScript for scripting."
