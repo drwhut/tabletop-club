@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 09:02+0100\n"
-"PO-Revision-Date: 2023-05-10 19:51+0000\n"
-"Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
+"PO-Revision-Date: 2023-05-15 18:34+0000\n"
+"Last-Translator: Carlos Solís <csolisr@azkware.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "game/es/>\n"
 "Language: es\n"
@@ -95,7 +95,7 @@ msgstr "Hospedar juego"
 
 #: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
-msgstr "Crear un nuevo lobby para que sus amigos puedan reunirse por internet."
+msgstr "Crear una nueva sala para que tus amistades reunirse por internet."
 
 #: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
@@ -103,7 +103,7 @@ msgstr "Unirse al juego"
 
 #: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
-msgstr "Utilice un código de salón para unirse al juego de su amigo/a."
+msgstr "Usar un código de sala para unirse a la sala de tu amistad."
 
 #: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
