@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 09:02+0100\n"
 "PO-Revision-Date: 2023-05-15 18:41+0000\n"
-"Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
+"Last-Translator: Carlos Solís <csolisr@azkware.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "game/es/>\n"
 "Language: es\n"
@@ -123,7 +123,7 @@ msgstr "Error"
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
-msgstr "Sonido"
+msgstr "Audio"
 
 #: ../Scenes/OptionsMenu.tscn:61
 msgid "Master Volume"
@@ -171,7 +171,7 @@ msgstr "Controles"
 
 #: ../Scenes/OptionsMenu.tscn:155
 msgid "Mouse Horizontal Sensitivity"
-msgstr "Sensibilidad Horizontal del Ratón"
+msgstr "Sensibilidad horizontal del ratón"
 
 #: ../Scenes/OptionsMenu.tscn:162
 msgid "Sets the horizontal sensitivity of the rotation of the camera."
@@ -179,7 +179,7 @@ msgstr "Fija la sensibilidad horizontal de la rotación de la cámara."
 
 #: ../Scenes/OptionsMenu.tscn:174
 msgid "Mouse Vertical Sensitivity"
-msgstr "Sensibilidad Vertical del Ratón"
+msgstr "Sensibilidad vertical del ratón"
 
 #: ../Scenes/OptionsMenu.tscn:182
 msgid "Sets the vertical sensitivity of the rotation of the camera."
@@ -195,7 +195,7 @@ msgstr "Utilizado para invertir la rotación de la cámara horizontalmente."
 
 #: ../Scenes/OptionsMenu.tscn:209
 msgid "Mouse Vertical Invert"
-msgstr "Inversión Vertical del Ratón"
+msgstr "Inversión vertical del ratón"
 
 #: ../Scenes/OptionsMenu.tscn:217
 msgid "Used to invert the rotation of the camera vertically."
@@ -203,7 +203,7 @@ msgstr "Utilizada para invertir la rotación de la cámara verticalmente."
 
 #: ../Scenes/OptionsMenu.tscn:224
 msgid "Camera Movement Speed"
-msgstr "Velocidad de Movimiento de la Cámara"
+msgstr "Velocidad de movimiento de la cámara"
 
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
@@ -230,8 +230,8 @@ msgid ""
 "Sets how fast the camera zooms in and out of the table when using the scroll "
 "wheel."
 msgstr ""
-"Fija cuán rápido hace zoom la cámara al acercarse y alejarse de la mesa al "
-"usar la rueda del ratón."
+"Fija cuán rápido hace zum la cámara al acercarse y alejarse de la mesa "
+"cuando se usa la rueda del ratón."
 
 #: ../Scenes/OptionsMenu.tscn:279
 msgid "Zoom Invert"
