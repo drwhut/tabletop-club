@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 09:03\n"
 "PO-Revision-Date: 2023-05-15 18:52+0000\n"
-"Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
+"Last-Translator: Emilio González <emi2k01@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/es/>\n"
 "Language: es\n"
@@ -51,8 +51,7 @@ msgstr "Baraja de 52 cartas"
 
 #: ../TabletopClub/cards/52-Card_Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr ""
-"Una baraja de cartas tamaño poker, de palo francés, excluyendo comodines."
+msgstr "Una baraja francesa de tamaño para poker excluyendo los comodínes."
 
 #: ../TabletopClub/cards/Ace_of_Clubs:1
 msgid "Ace of Clubs"
