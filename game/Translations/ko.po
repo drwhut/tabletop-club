@@ -9,18 +9,22 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 09:02+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-05-17 07:51+0000\n"
+"Last-Translator: Minsoo <gkm19809@gmail.com>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/tabletop-club/"
+"game/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
+#, fuzzy
 msgid "Importing assets..."
-msgstr ""
+msgstr "애셋을 가져오는 중..."
 
 #: ../Scenes/ImportAssets.tscn:56
 msgid "Missing Asset Folder"
@@ -32,7 +36,7 @@ msgstr ""
 
 #: ../Scenes/Loading.tscn:41
 msgid "Loading..."
-msgstr ""
+msgstr "불러오는 중..."
 
 #: ../Scenes/MainMenu.tscn:51
 msgid "Singleplayer"
@@ -44,8 +48,9 @@ msgid "Multiplayer"
 msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:65
+#, fuzzy
 msgid "Options"
-msgstr ""
+msgstr "설정"
 
 #: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
@@ -53,7 +58,7 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:79
 msgid "Quit"
-msgstr ""
+msgstr "종료"
 
 #: ../Scenes/MainMenu.tscn:98 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
@@ -64,8 +69,9 @@ msgid "0"
 msgstr ""
 
 #: ../Scenes/MainMenu.tscn:107
+#, fuzzy
 msgid "Tabletop Club on Itch.io"
-msgstr ""
+msgstr "itch.io에서 Tabletop Club 확인"
 
 #: ../Scenes/MainMenu.tscn:116
 msgid "Source Code"
@@ -77,7 +83,7 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:134
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #: ../Scenes/MainMenu.tscn:143
 msgid "Matrix.org"
@@ -88,28 +94,29 @@ msgid "Information"
 msgstr ""
 
 #: ../Scenes/MainMenu.tscn:177
+#, fuzzy
 msgid "Host Game"
-msgstr ""
+msgstr "게임 만들기"
 
 #: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
-msgstr ""
+msgstr "친구들이 인터넷으로 참여할 수 있도록 새 로비를 만드세요."
 
 #: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
-msgstr ""
+msgstr "게임 참여하기"
 
 #: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
-msgstr ""
+msgstr "방 코드를 입력하여 친구의 로비에 참여하세요."
 
 #: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
-msgstr ""
+msgstr "방 코드 입력"
 
 #: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
-msgstr ""
+msgstr "방 코드:"
 
 #: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
@@ -117,7 +124,7 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:334
 msgid "Error"
-msgstr ""
+msgstr "오류"
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
@@ -161,15 +168,15 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:142
 msgid "Controls"
-msgstr ""
+msgstr "조작 방법"
 
 #: ../Scenes/OptionsMenu.tscn:155
 msgid "Mouse Horizontal Sensitivity"
-msgstr ""
+msgstr "마우스 수평 민감도"
 
 #: ../Scenes/OptionsMenu.tscn:162
 msgid "Sets the horizontal sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "카메라를 회전시킬 때 수평 방향 민감도를 설정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:174
 msgid "Mouse Vertical Sensitivity"
@@ -794,7 +801,7 @@ msgstr ""
 #: ../Scenes/Game/CameraController.tscn:626
 #: ../Scenes/Game/CameraController.tscn:680
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../Scenes/Game/CameraController.tscn:669
 msgid "Eraser Size:"
@@ -2044,7 +2051,7 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:241
 msgid "Rename file..."
-msgstr ""
+msgstr "파일 이름 바꾸기..."
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:251
 msgid "Please enter a new name for the file:"
@@ -2058,7 +2065,7 @@ msgstr ""
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:384
 #, python-format
 msgid "The file '%s' already exists. Are you sure you want to overwrite it?"
-msgstr ""
+msgstr "파일 '%s'가 이미 존재합니다. 정말 덮어쓰시겠습니까?"
 
 #: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:108
 #, python-format
