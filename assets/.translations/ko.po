@@ -9,50 +9,57 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 09:03\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-05-17 06:48+0000\n"
+"Last-Translator: Minsoo <gkm19809@gmail.com>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/tabletop-club/"
+"default-asset-pack/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
+#, fuzzy
 msgid "Chess Board"
-msgstr ""
+msgstr "체스판"
 
 #: ../TabletopClub/boards/Chess_Board:2
 msgid "An 8x8 Chess board."
-msgstr ""
+msgstr "8x8 크기 체스판."
 
 #: ../TabletopClub/boards/Go_Board_(Large):1
 msgid "Go Board (Large)"
-msgstr ""
+msgstr "바둑판 (대형)"
 
 #: ../TabletopClub/boards/Go_Board_(Large):2
 msgid "A 19x19 Goban."
-msgstr ""
+msgstr "19x19 크기 바둑판."
 
 #: ../TabletopClub/boards/Go_Board_(Small):1
 msgid "Go Board (Small)"
-msgstr ""
+msgstr "바둑판 (소형)"
 
 #: ../TabletopClub/boards/Go_Board_(Small):2
 msgid "A 13x13 and 9x9 Goban."
-msgstr ""
+msgstr "13x13 또는 9x9 바둑판."
 
 #: ../TabletopClub/cards/52-Card_Deck:1
+#, fuzzy
 msgid "52-Card Deck"
-msgstr ""
+msgstr "52장 플레잉 카드 덱"
 
 #: ../TabletopClub/cards/52-Card_Deck:2
+#, fuzzy
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr ""
+msgstr "조커를 제외한 포커 사이즈의 프렌치 슈트 카드 한 벌입니다."
 
 #: ../TabletopClub/cards/Ace_of_Clubs:1
+#, fuzzy
 msgid "Ace of Clubs"
-msgstr ""
+msgstr "클로버 에이스"
 
 #: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2 ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2 ../TabletopClub/cards/Eight_of_Clubs:2 ../TabletopClub/cards/Eight_of_Diamonds:2 ../TabletopClub/cards/Eight_of_Hearts:2 ../TabletopClub/cards/Eight_of_Spades:2 ../TabletopClub/cards/Five_of_Clubs:2 ../TabletopClub/cards/Five_of_Diamonds:2 ../TabletopClub/cards/Five_of_Hearts:2 ../TabletopClub/cards/Five_of_Spades:2 ../TabletopClub/cards/Four_of_Clubs:2 ../TabletopClub/cards/Four_of_Diamonds:2 ../TabletopClub/cards/Four_of_Hearts:2 ../TabletopClub/cards/Four_of_Spades:2 ../TabletopClub/cards/Jack_of_Clubs:2 ../TabletopClub/cards/Jack_of_Diamonds:2 ../TabletopClub/cards/Jack_of_Hearts:2 ../TabletopClub/cards/Jack_of_Spades:2 ../TabletopClub/cards/Joker_Black:2 ../TabletopClub/cards/Joker_Red:2 ../TabletopClub/cards/King_of_Clubs:2 ../TabletopClub/cards/King_of_Diamonds:2 ../TabletopClub/cards/King_of_Hearts:2 ../TabletopClub/cards/King_of_Spades:2 ../TabletopClub/cards/Nine_of_Clubs:2 ../TabletopClub/cards/Nine_of_Diamonds:2 ../TabletopClub/cards/Nine_of_Hearts:2 ../TabletopClub/cards/Nine_of_Spades:2 ../TabletopClub/cards/Queen_of_Clubs:2 ../TabletopClub/cards/Queen_of_Diamonds:2 ../TabletopClub/cards/Queen_of_Hearts:2 ../TabletopClub/cards/Queen_of_Spades:2 ../TabletopClub/cards/Seven_of_Clubs:2 ../TabletopClub/cards/Seven_of_Diamonds:2 ../TabletopClub/cards/Seven_of_Hearts:2 ../TabletopClub/cards/Seven_of_Spades:2 ../TabletopClub/cards/Six_of_Clubs:2 ../TabletopClub/cards/Six_of_Diamonds:2 ../TabletopClub/cards/Six_of_Hearts:2 ../TabletopClub/cards/Six_of_Spades:2 ../TabletopClub/cards/Ten_of_Clubs:2 ../TabletopClub/cards/Ten_of_Diamonds:2 ../TabletopClub/cards/Ten_of_Hearts:2 ../TabletopClub/cards/Ten_of_Spades:2 ../TabletopClub/cards/Three_of_Clubs:2 ../TabletopClub/cards/Three_of_Diamonds:2 ../TabletopClub/cards/Three_of_Hearts:2 ../TabletopClub/cards/Three_of_Spades:2 ../TabletopClub/cards/Two_of_Clubs:2 ../TabletopClub/cards/Two_of_Diamonds:2 ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
 msgid "A poker-sized French-suited playing card."
@@ -60,23 +67,24 @@ msgstr ""
 
 #: ../TabletopClub/cards/Ace_of_Diamonds:1
 msgid "Ace of Diamonds"
-msgstr ""
+msgstr "다이아몬드 에이스"
 
 #: ../TabletopClub/cards/Ace_of_Hearts:1
 msgid "Ace of Hearts"
-msgstr ""
+msgstr "하트 에이스"
 
 #: ../TabletopClub/cards/Ace_of_Spades:1
 msgid "Ace of Spades"
-msgstr ""
+msgstr "스페이드 에이스"
 
 #: ../TabletopClub/cards/Eight_of_Clubs:1
+#, fuzzy
 msgid "Eight of Clubs"
-msgstr ""
+msgstr "클로버 8"
 
 #: ../TabletopClub/cards/Eight_of_Diamonds:1
 msgid "Eight of Diamonds"
-msgstr ""
+msgstr "다이아몬드 8"
 
 #: ../TabletopClub/cards/Eight_of_Hearts:1
 msgid "Eight of Hearts"
@@ -1130,15 +1138,16 @@ msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2 ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2 ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
+#, fuzzy
 msgid "A poker chip."
-msgstr ""
+msgstr "포커 칩 하나."
 
 #: ../TabletopClub/tokens/cylinder/10:1
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: ../TabletopClub/tokens/cylinder/100:1
 msgid "100"
@@ -1190,7 +1199,7 @@ msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/5:1
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../TabletopClub/tokens/cylinder/D:1
 msgid "D"
