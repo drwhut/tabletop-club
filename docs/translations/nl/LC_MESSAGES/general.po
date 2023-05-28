@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-09 08:57+0100\n"
-"PO-Revision-Date: 2023-05-15 20:51+0000\n"
+"PO-Revision-Date: 2023-05-29 15:50+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/nl/>\n"
@@ -499,7 +499,7 @@ msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:34
 msgid "Make sure to fix any warnings Godot shows in scripts."
-msgstr ""
+msgstr "Los waarschuwingen van Godot-scripts op."
 
 #: ../../general/contributing/coding_guidelines.rst:36
 msgid ""
