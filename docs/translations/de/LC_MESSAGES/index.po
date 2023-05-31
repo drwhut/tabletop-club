@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-06 00:02+0000\n"
-"PO-Revision-Date: 2022-11-30 13:47+0000\n"
-"Last-Translator: grant <grantler@mailbox.org>\n"
+"PO-Revision-Date: 2023-05-05 19:48+0000\n"
+"Last-Translator: Nils Büchner <n.buechner@united-gameserver.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-index/de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../../index.rst:25
 msgid "General"
@@ -45,7 +45,7 @@ msgstr ""
 
 #: ../../index.rst:None
 msgid "Screenshots from the game"
-msgstr ""
+msgstr "Screenshots aus dem Spiel"
 
 #: ../../index.rst:19
 msgid ""
