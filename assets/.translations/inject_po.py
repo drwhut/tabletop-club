@@ -34,6 +34,12 @@ if len(sys.argv) < 2:
 locale = sys.argv[1]
 po_file = polib.pofile(locale + ".po")
 
+# Since zh_Hans is not recognised by Godot as a locale code, we'll rename it to
+# one that is recognised so the game will read the config files like any other
+# locale.
+if locale == "zh_Hans":
+    locale = "zh"
+
 configs = {}
 for entry in po_file.translated_entries():
     for occurrence in entry.occurrences:
