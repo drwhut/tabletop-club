@@ -37,20 +37,21 @@ welcome to the official [Discord](https://discord.gg/GqYkGV4WwX) and
 
 [![Translation Status](https://hosted.weblate.org/widgets/tabletop-club/-/svg-badge.svg)](https://hosted.weblate.org/engage/tabletop-club/)
 
-Language         | Game               | Documentation      | Default Asset Pack
----------------- | ------------------ | ------------------ | ------------------
-English          | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-Dutch            | :heavy_check_mark: | :x:                | :heavy_check_mark:
-Esperanto        | 94%                | :x:                | 99%
-French           | 99%                | :x:                | 99%
-German           | 99%                | :x:                | 99%
-Indonesian       | 55%                | :x:                | :x:
-Italian          | 88%                | :x:                | :x:
-Norwegian Bokmål | 99%                | :x:                | 89%
-Polish           | 71%                | :x:                | :x:
-Portuguese       | 85%                | :x:                | 99%
-Russian          | 94%                | 90%                | 82%
-Spanish          | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Language             | Game               | Documentation      | Default Asset Pack
+-------------------- | ------------------ | ------------------ | ------------------
+Chinese (Simplified) | 99%                | :heavy_check_mark: | 99%
+English              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Dutch                | :heavy_check_mark: | :x:                | :heavy_check_mark:
+Esperanto            | 94%                | :x:                | 99%
+French               | 99%                | :x:                | 99%
+German               | 99%                | :x:                | 99%
+Indonesian           | 55%                | :x:                | :x:
+Italian              | 88%                | :x:                | :x:
+Norwegian Bokmål     | 99%                | :x:                | 89%
+Polish               | 71%                | :x:                | :x:
+Portuguese           | 85%                | :x:                | 99%
+Russian              | 94%                | 90%                | 82%
+Spanish              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 
 If you want to help translate the project, you can go to the project's
 [Hosted Weblate](https://hosted.weblate.org/engage/tabletop-club/) page.
