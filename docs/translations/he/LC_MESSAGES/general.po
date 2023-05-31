@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-18 14:35+0100\n"
+"POT-Creation-Date: 2023-05-09 08:57+0100\n"
 "PO-Revision-Date: 2022-08-10 06:14+0000\n"
 "Last-Translator: Ido Dana <idodana01@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/tabletop-club/"
@@ -207,22 +207,18 @@ msgstr ""
 
 #: ../../general/about.rst:115
 msgid ""
-"Tabletop Club is currently in beta development. This means that most of the "
-"core features have been implemented, but there will very likely be some "
-"bugs, and features that have yet to be added (you can see what needs to be "
-"done by going to the `issues page <https://github.com/drwhut/tabletop-club/"
-"issues>`_ on GitHub)."
+"Tabletop Club is currently in active development. The game has been "
+"released, but it is always being improved upon over time with help from the "
+"community. On GitHub there is `an issue tracker <https://github.com/drwhut/"
+"tabletop-club/issues>`_ for known bugs, feature requests, as well as quality-"
+"of-life tweaks to the game."
 msgstr ""
 
-#: ../../general/about.rst:121
-msgid "You can help test the game by :ref:`downloading-binaries`!"
-msgstr ""
-
-#: ../../general/about.rst:125
+#: ../../general/about.rst:123
 msgid "Is there an official Discord or Matrix server that I can join?"
 msgstr ""
 
-#: ../../general/about.rst:127
+#: ../../general/about.rst:125
 msgid ""
 "Yes, you can join the official `Discord <https://discord.gg/GqYkGV4WwX>`_ "
 "and `Matrix <https://matrix.to/#/#tabletop-club:matrix.org>`_ servers to "
@@ -230,29 +226,29 @@ msgid ""
 "in general, or even to share asset packs that you have made!"
 msgstr ""
 
-#: ../../general/about.rst:132
+#: ../../general/about.rst:130
 msgid ""
 "The goal is to create a safe, welcoming environment for everyone regardless "
 "of their background or personality. As long as you abide by the server "
 "rules, you are always free to come in and say hi!"
 msgstr ""
 
-#: ../../general/about.rst:138
+#: ../../general/about.rst:136
 msgid "What board games can I play in Tabletop Club?"
 msgstr ""
 
-#: ../../general/about.rst:140
+#: ../../general/about.rst:138
 msgid "Theoretically, any of them!"
 msgstr ""
 
-#: ../../general/about.rst:142
+#: ../../general/about.rst:140
 msgid ""
 "Out of the box, the games comes with the default Tabletop Club asset pack "
 "which contains some of the most common objects you'll need, like playing "
 "cards, dice, poker chips, etc."
 msgstr ""
 
-#: ../../general/about.rst:146
+#: ../../general/about.rst:144
 msgid ""
 "On GitHub, there is `an issue <https://github.com/drwhut/tabletop-club/"
 "issues/28>`_ listing which objects still need to be added to the default "
@@ -260,7 +256,7 @@ msgid ""
 "game!"
 msgstr ""
 
-#: ../../general/about.rst:151
+#: ../../general/about.rst:149
 msgid ""
 "On the other hand, if the pieces you need aren't going to be included in the "
 "default asset pack, then you can either download an asset pack that someone "
@@ -268,11 +264,11 @@ msgid ""
 "packs` page if you're interested in making your own assets."
 msgstr ""
 
-#: ../../general/about.rst:158
+#: ../../general/about.rst:156
 msgid "How easy is it to setup a game in Tabletop Club?"
 msgstr ""
 
-#: ../../general/about.rst:160
+#: ../../general/about.rst:158
 msgid ""
 "For the most popular games, the default asset pack comes with pre-made save "
 "files that you can load instantly (when in-game, click :guilabel:`Games`, "
@@ -280,7 +276,7 @@ msgid ""
 "play the game right away!"
 msgstr ""
 
-#: ../../general/about.rst:165
+#: ../../general/about.rst:163
 msgid ""
 "If there isn't a pre-made save file for the game you want to play, you can "
 "easily make your own save by setting up the table the way you want to, then "
@@ -288,46 +284,46 @@ msgid ""
 "want to play the game again, you can just load the save you made previously."
 msgstr ""
 
-#: ../../general/about.rst:170
+#: ../../general/about.rst:168
 msgid ""
 "See the :ref:`asset-type-game` page for more information about pre-made save "
 "files in asset packs."
 msgstr ""
 
-#: ../../general/about.rst:175
+#: ../../general/about.rst:173
 msgid "Can I add assets other than game pieces to Tabletop Club?"
 msgstr ""
 
-#: ../../general/about.rst:177
+#: ../../general/about.rst:175
 msgid ""
 "Yes! As well as objects, you can also import the following types of assets:"
 msgstr ""
 
-#: ../../general/about.rst:179
+#: ../../general/about.rst:177
 msgid ":ref:`asset-type-game`"
 msgstr ""
 
-#: ../../general/about.rst:180
+#: ../../general/about.rst:178
 msgid ":ref:`asset-type-music`"
 msgstr ""
 
-#: ../../general/about.rst:181
+#: ../../general/about.rst:179
 msgid ":ref:`asset-type-skybox`"
 msgstr ""
 
-#: ../../general/about.rst:182
+#: ../../general/about.rst:180
 msgid ":ref:`asset-type-sound`"
 msgstr ""
 
-#: ../../general/about.rst:183
+#: ../../general/about.rst:181
 msgid ":ref:`asset-type-table`"
 msgstr ""
 
-#: ../../general/about.rst:187
+#: ../../general/about.rst:185
 msgid "Can you add my favourite board game to Tabletop Club?"
 msgstr ""
 
-#: ../../general/about.rst:189
+#: ../../general/about.rst:187
 msgid ""
 "For legal safety, Tabletop Club will only ever distribute `public-domain "
 "<https://en.wikipedia.org/wiki/Public_domain>`_ board games in the default "
@@ -335,23 +331,23 @@ msgid ""
 "board game for private use!"
 msgstr ""
 
-#: ../../general/about.rst:196
+#: ../../general/about.rst:194
 msgid "Can I share assets I've made on the internet?"
 msgstr ""
 
-#: ../../general/about.rst:198
+#: ../../general/about.rst:196
 msgid ""
 "It depends on a number of factors. In general, it should be safe to share "
 "the assets you've made for the game if the following is all true:"
 msgstr ""
 
-#: ../../general/about.rst:201
+#: ../../general/about.rst:199
 msgid ""
 "The assets you've made (textures, 3D models, etc.) are made by you, and are "
 "not derived from copyrighted material."
 msgstr ""
 
-#: ../../general/about.rst:206
+#: ../../general/about.rst:204
 msgid ""
 "You can distribute other people's creations **if** the license it's under "
 "allows you to. It's always safer to attribute the original author, and to "
@@ -359,34 +355,34 @@ msgid ""
 "terms of the license first."
 msgstr ""
 
-#: ../../general/about.rst:211
+#: ../../general/about.rst:209
 msgid ""
 "To help with this, the :ref:`config-cfg` file allows you to put the author, "
 "license, modifier, and URL with the asset, which is then shown in-game."
 msgstr ""
 
-#: ../../general/about.rst:214
+#: ../../general/about.rst:212
 msgid ""
 "If the assets you've made are for playing a game that already exists, then:"
 msgstr ""
 
-#: ../../general/about.rst:216
+#: ../../general/about.rst:214
 msgid ""
 "You cannot use the same name of the game without the owner's explicit "
 "permission."
 msgstr ""
 
-#: ../../general/about.rst:219
+#: ../../general/about.rst:217
 msgid "The mechanics of the game cannot be patented."
 msgstr ""
 
-#: ../../general/about.rst:223
+#: ../../general/about.rst:221
 msgid ""
 "You can `check online <https://worldwide.espacenet.com/advancedSearch>`_ to "
 "see if there are any patents for the game's mechanics."
 msgstr ""
 
-#: ../../general/about.rst:228
+#: ../../general/about.rst:226
 msgid ""
 "This is NOT legal advice. Please go ask the nearest lawyer for advice if you "
 "are worried about distributing your asset pack on the internet, as this also "
@@ -862,11 +858,11 @@ msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:41
 msgid ""
-"If you know which version of Tabletop Club you want to download, check the "
-"``README.md`` file in it's source code and look for a command similar to the "
-"one above. Then, replace what comes after the ``-b`` above with what the "
-"``README.md`` file says. This way, you know you're compiling a compatible "
-"version of Godot for the Tabletop Club version you want."
+"If you know which version of Tabletop Club you want to download, check this "
+"page in it's documentation and look for a command similar to the one above. "
+"Then, replace what comes after the ``-b`` above with what the documentation "
+"says. This way, you know you're compiling a compatible version of Godot for "
+"the Tabletop Club version you want."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:49
@@ -1318,7 +1314,7 @@ msgid "Downloading the official binaries"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:7
-msgid "There are two ways to download and play the game:"
+msgid "There are multiple ways to download and play the game:"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:11
@@ -1340,10 +1336,36 @@ msgid ""
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:22
-msgid "As a standalone executable"
+msgid "From Flathub"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:24
+msgid ""
+"If you are on a Linux distribution that supports Flatpaks, you can download "
+"the latest stable version of the game directly from your software manager! "
+"Simply search for \"Tabletop Club\" to download and install the game. "
+"Alternatively, you can visit the project page on `Flathub <https://flathub."
+"org/apps/io.itch.drwhut.TabletopClub>`_."
+msgstr ""
+
+#: ../../general/download/downloading_binaries.rst:30
+msgid ""
+"If Flathub is not included in your list of Flatpak repositories, the game "
+"will not appear. You can add Flathub as a remote repository by following the "
+"instructions `on their website <https://flatpak.org/setup/>`_."
+msgstr ""
+
+#: ../../general/download/downloading_binaries.rst:34
+msgid ""
+"You can also download the game via the command line instead once Flathub has "
+"been added as a remote repository:"
+msgstr ""
+
+#: ../../general/download/downloading_binaries.rst:44
+msgid "As a standalone executable"
+msgstr ""
+
+#: ../../general/download/downloading_binaries.rst:46
 msgid ""
 "You can also download the game as a standalone application that you can run "
 "anywhere on your system from the `itch.io page <https://drwhut.itch.io/"
@@ -1352,25 +1374,25 @@ msgid ""
 "steps needed to run the game (see below)!"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:30
+#: ../../general/download/downloading_binaries.rst:52
 msgid ""
-"In most cases, you'll want to download the latest *non-beta* version of the "
+"In most cases, you'll want to download the latest *stable* version of the "
 "game. While beta versions of the game have new features and are very helpful "
 "for player feedback, they are more suseptable to bugs. But if you're feeling "
 "a little experimental, go for the latest version!"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:35
+#: ../../general/download/downloading_binaries.rst:57
 msgid ""
 "If you've downloaded Tabletop Club in the past and want to download a newer "
 "version, follow :ref:`upgrading-installation` before carrying on here."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:40
+#: ../../general/download/downloading_binaries.rst:62
 msgid "Verifying the download"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:42
+#: ../../general/download/downloading_binaries.rst:64
 msgid ""
 "This step is completely optional, but it's a good idea to make sure that the "
 "downloaded file's contents are what we expect them to be. We do this by "
@@ -1378,52 +1400,52 @@ msgid ""
 "file, and seeing if the hash matches the original."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:47
+#: ../../general/download/downloading_binaries.rst:69
 msgid ""
 "Download from the GitHub releases page the ``TabletopClub_vX.X.X_SHA512."
 "txt`` file. This text file contains the SHA512 hashes of all of the "
 "downloads."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:50
+#: ../../general/download/downloading_binaries.rst:72
 msgid ""
 "Open a command prompt or terminal, and navigate to the folder where the "
 "compressed binary lies."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:53
+#: ../../general/download/downloading_binaries.rst:75
 msgid ""
 "Enter the command for your platform, adjusting the file name where necessary:"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:66
+#: ../../general/download/downloading_binaries.rst:88
 msgid ""
 "Compare the output of the previous command to the corresponding line in the "
 "SHA512 text file. If the hashes do not match, then you will need to download "
 "the binary again."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:71
+#: ../../general/download/downloading_binaries.rst:93
 msgid "What happens now depends slightly on which platform you're on:"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:74
+#: ../../general/download/downloading_binaries.rst:96
 msgid "Downloading for Windows"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:76
+#: ../../general/download/downloading_binaries.rst:98
 msgid ""
 "Make sure you have downloaded the compressed file, it should be called "
 "something like ``TabletopClub_vX.X.X_Windows_64.zip``."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:79
+#: ../../general/download/downloading_binaries.rst:101
 msgid ""
 "Right-click the downloaded file in File Explorer, and click :guilabel:"
 "`Extract all...`"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:82
+#: ../../general/download/downloading_binaries.rst:104
 msgid ""
 "There should be a pop-up asking where you want to extract the files to. You "
 "can put the game files anywhere you like, for example ``Desktop/"
@@ -1431,13 +1453,13 @@ msgid ""
 "to that location."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:87
+#: ../../general/download/downloading_binaries.rst:109
 msgid ""
 "Go to the folder where you extracted the files, and double-click the "
 "``TabletopClub.exe`` executable to start the game!"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:92
+#: ../../general/download/downloading_binaries.rst:114
 msgid ""
 "Currently Windows binaries of the game are not signed, so you'll most likely "
 "get a warning when you try to run the game saying that the publisher can't "
@@ -1445,29 +1467,29 @@ msgid ""
 "clicking :guilabel:`Run anyway`."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:98
+#: ../../general/download/downloading_binaries.rst:120
 msgid "Downloading for macOS"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:100
+#: ../../general/download/downloading_binaries.rst:122
 msgid ""
 "Start downloading the compressed file, it should be called something like "
 "``TabletopClub_vX.X.X_OSX_Universal.zip``."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:103
+#: ../../general/download/downloading_binaries.rst:125
 msgid ""
 "When it has downloaded, go to your downloads folder in Finder, and find the "
 "compressed file. Double-click the file to extract the application."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:106
+#: ../../general/download/downloading_binaries.rst:128
 msgid ""
 "Launch the game by right-clicking ``TabletopClub`` and clicking :guilabel:"
 "`Open`."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:111
+#: ../../general/download/downloading_binaries.rst:133
 msgid ""
 "Currently macOS binaries of the game are not signed, so you'll get a warning "
 "saying the publisher is unknown. You can get past this warning by clicking :"
@@ -1475,53 +1497,53 @@ msgid ""
 "the application."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:117
+#: ../../general/download/downloading_binaries.rst:139
 msgid "Downloading for Linux / \\*BSD"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:119
+#: ../../general/download/downloading_binaries.rst:141
 msgid ""
 "Make sure you have downloaded the compressed file, it should be called "
 "something like ``TabletopClub_vX.X.X_Linux_64.zip``."
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:122
+#: ../../general/download/downloading_binaries.rst:144
 msgid ""
 "Either use your distribution's archive manager to extract the files, or run "
 "this command in a terminal:"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:129
+#: ../../general/download/downloading_binaries.rst:151
 msgid ""
 "Either double-click the executable, or go into a terminal and run this "
 "command in the folder the executable is in:"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:140
+#: ../../general/download/downloading_binaries.rst:162
 msgid "Upgrading an existing installation"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:142
+#: ../../general/download/downloading_binaries.rst:164
 msgid ""
 "If you have already downloaded the game before, and you want to overwrite "
 "the files that are already there, then before downloading and extracting the "
 "new version of the game, first delete the following files and folders:"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:146
+#: ../../general/download/downloading_binaries.rst:168
 msgid ""
 "``TabletopClub.exe``, or ``TabletopClub.app``, or ``TabletopClub.x86_64``"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:147
+#: ../../general/download/downloading_binaries.rst:169
 msgid "``TabletopClub.pck``"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:148
+#: ../../general/download/downloading_binaries.rst:170
 msgid "``assets/TabletopClub``"
 msgstr ""
 
-#: ../../general/download/downloading_binaries.rst:150
+#: ../../general/download/downloading_binaries.rst:172
 msgid ""
 "Now you can extract the new version of the game as described above. If the "
 "operating systems asks you if you want to replace any files, say yes to all "

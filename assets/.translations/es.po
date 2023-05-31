@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-20 15:31\n"
-"PO-Revision-Date: 2023-03-22 01:47+0000\n"
+"POT-Creation-Date: 2023-05-09 09:03\n"
+"PO-Revision-Date: 2023-05-17 06:48+0000\n"
 "Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/es/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -51,7 +51,7 @@ msgstr "Baraja de 52 cartas"
 
 #: ../TabletopClub/cards/52-Card_Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr "Una baraja de tamaño póquer de naipes franceses, sin comodines."
+msgstr "Una baraja de póquer francesa excluyendo los comodines."
 
 #: ../TabletopClub/cards/Ace_of_Clubs:1
 msgid "Ace of Clubs"
@@ -99,7 +99,7 @@ msgstr "As de Tréboles"
 #: ../TabletopClub/cards/Two_of_Diamonds:2
 #: ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
 msgid "A poker-sized French-suited playing card."
-msgstr "Una carta de juego tamaño a las de póquer con estilo francés."
+msgstr "Una carta de baraja de tamaño poker con palo francés."
 
 #: ../TabletopClub/cards/Ace_of_Diamonds:1
 msgid "Ace of Diamonds"
@@ -382,7 +382,7 @@ msgstr "d4 (Café)"
 
 #: ../TabletopClub/dice/d4/d4_(Cyan):1
 msgid "d4 (Cyan)"
-msgstr "d4 (Cian)"
+msgstr "d4 (Cyan)"
 
 #: ../TabletopClub/dice/d4/d4_(Green):1
 msgid "d4 (Green)"
@@ -436,7 +436,7 @@ msgstr "d6 (Café)"
 
 #: ../TabletopClub/dice/d6/d6_(Cyan):1
 msgid "d6 (Cyan)"
-msgstr "d6 (Cian)"
+msgstr "d6 (Cyan)"
 
 #: ../TabletopClub/dice/d6/d6_(Green):1
 msgid "d6 (Green)"
@@ -493,7 +493,7 @@ msgstr "d8 (Café)"
 
 #: ../TabletopClub/dice/d8/d8_(Cyan):1
 msgid "d8 (Cyan)"
-msgstr "d8 (Cian)"
+msgstr "d8 (Cyan)"
 
 #: ../TabletopClub/dice/d8/d8_(Green):1
 msgid "d8 (Green)"
@@ -782,7 +782,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
-msgstr "Sala de espera del aeropuerto - Kevin MacLeod"
+msgstr "Airport Lounge - Kevin MacLeod"
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:2
 msgid "Light and airy, this piece is guaranteed not to steal focus."
@@ -791,7 +791,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:1
 msgid "Backbay Lounge - Kevin MacLeod"
-msgstr "Sala de espera Backbay - Kevin MacLeod"
+msgstr "Backbay Lounge - Kevin MacLeod"
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:2
 msgid ""
@@ -824,7 +824,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:1
 msgid "Deadly Roulette - Kevin MacLeod"
-msgstr "Ruleta mortífera - Kevin MacLeod"
+msgstr "Deadly Roulette - Kevin MacLeod"
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:2
 msgid ""
@@ -837,18 +837,18 @@ msgid ""
 "adjectives killed my family, so I can go off on them all I want."
 msgstr ""
 "¡Jazzístico! ¡Detectivesco! ¡Mistérico! Los adjetivos no se me dan. ¡Y para "
-"qué necesitamos adjetivos! Estoy bien sin los adjetivos.\n"
-"¿Qué tan bien puedo estar sin ellos, podrás preguntar? ¡No lo puedo decir, "
-"ya que ello requeriría algún tipo de descripción! Y no necesito "
-"descripciones en mis escritos... Tal vez solo una... pequeñita... ¡No!!! ¿En "
-"qué estaba pensando? ¡Me niego! ¡Ya estoy harto de los adjetivos! ¡Los "
-"adverbios funcionan perfectamente bien! ¡Hurra! ¡Adverbios! Y antes de "
-"recibir un montón de correos... los adjetivos asesinaron a mi familia, por "
-"lo que puedo enemistarme con ellos cuanto yo quiera."
+"qué necesitamos adjetivos! Estoy bien sin los adjetivos. ¿Qué tan bien puedo "
+"estar sin ellos, podrás preguntar? ¡No lo puedo decir, ya que ello "
+"requeriría algún tipo de descripción! Y no necesito descripciones en mis "
+"escritos... Tal vez solo una... pequeñita... ¡No! ¿En qué estaba pensando? ¡"
+"Me niego! ¡Ya estoy harto de los adjetivos! ¡Los adverbios funcionan "
+"perfectamente bien! ¡Hurra! ¡Adverbios! Y antes de recibir un montón de "
+"correos... los adjetivos asesinaron a mi familia, por lo que puedo "
+"enemistarme con ellos cuanto yo quiera."
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:1
 msgid "George Street Shuffle - Kevin MacLeod"
-msgstr "George Street Shuffle - Kevin MacLeod."
+msgstr "George Street Shuffle - Kevin MacLeod"
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:2
 msgid "Nice little non-offending light jazz piece for vibes."
@@ -874,7 +874,7 @@ msgstr ""
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:1
 msgid "In Your Arms - Kevin MacLeod"
-msgstr "En tus brazos - Kevin MacLeod"
+msgstr "In Your Arms - Kevin MacLeod"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:2
 msgid ""
@@ -892,24 +892,29 @@ msgstr ""
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:1
 msgid "Lobby Time - Kevin MacLeod"
-msgstr "Lobby Time - Kevin MacLeod"
+msgstr "Tiempo de lobby - Kevin MacLeod"
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:2
 msgid ""
 "Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern "
 "green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail "
 "from our cheerful bar staff (with a complimentary cheese and fruit plate "
-"before 5pm). We feature prime rib dinners every day that ends in a "
+"before 5pm). We feature prime rib dinners every day that ends in a \"y\"! "
+"Remember to tip the bellhops at least 5 cents per bag. Enjoy your stay! This "
+"was written 2 years before it was published, because I didn't have a good "
+"enough upright bass sample to make it go."
 msgstr ""
-"Bienvenido al lobby del futuro! Lujososo ceniceros automáticos, y decoración "
+"¡Bienvenido al lobby del futuro! Lujosos ceniceros automáticos, y decoración "
 "moderna de vinilo verde acentúan las paredes alfombradas. Disfrute un clavo "
-"oxidado de nuesto alegre personal del bar (con un platillo de quesos y fruta "
-"de cortesía antes de las 5pm). Lucimos nuestras cenas con finos cortes "
-"diariamente que terminan en un "
+"oxidado de nuestro alegre personal del bar (con un platillo de quesos y "
+"fruta de cortesía antes de las 5 pm). Ofrecemos cenas con finos cortes todos "
+"los días. Recuerde dar propina a los botones al menos 5 céntimos por maleta. "
+"Disfrute de su estancia. Esto lo escribí 2 años antes de publicarlo, porque "
+"no tenía una muestra de bajo vertical, lo bastante buena para hacerlo."
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:1
 msgid "Night on the Docks - Sax - Kevin MacLeod"
-msgstr "Noche en los Muelles - Sax - Kevin MacLeod"
+msgstr "Night on the Docks - Sax - Kevin MacLeod"
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:2
 msgid "Sad and smooth; Think 1950's detective film."
@@ -917,7 +922,7 @@ msgstr "Triste y suave. Piense en una película de detectives de los años 50."
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:1
 msgid "Shades of Spring - Kevin MacLeod"
-msgstr "Matices de Primavera. Kevin MacLeod"
+msgstr "Shades of Spring - Kevin MacLeod"
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:2
 msgid ""
@@ -946,7 +951,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:1
 msgid "Spy Glass - Kevin MacLeod"
-msgstr "Vidrio de Espionaje - Kevin MacLeod"
+msgstr "Spy Glass - Kevin MacLeod"
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:2
 msgid ""
@@ -955,9 +960,9 @@ msgid ""
 "poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
 msgstr ""
 "El año es... ni idea. Sin tiempo. Podría ser ahora, podrían ser los años 50. "
-"Jazz muy en onda para sus rudos detectives!\n"
-"También es útil para los poetas del beat! También es util para los ratos "
-"aburridos! Bueno, aburridos pero interesantes."
+"Jazz muy en onda para sus rudos detectives! También es útil para los poetas "
+"del beat! ¡También es útil para los ratos aburridos! Bueno, aburridos pero "
+"interesantes."
 
 #: ../TabletopClub/pieces/Bishop_Black:1
 msgid "Bishop Black"
@@ -1029,7 +1034,7 @@ msgstr "Bosque"
 
 #: ../TabletopClub/skyboxes/Hornstulls_Strand:1
 msgid "Hornstulls Strand"
-msgstr "Hornstulls Strand."
+msgstr "Hornstulls Strand"
 
 #: ../TabletopClub/skyboxes/Ice_River:1
 msgid "Ice River"
@@ -1037,15 +1042,15 @@ msgstr "Rio de Hielo"
 
 #: ../TabletopClub/skyboxes/Marriott_Madison_West:1
 msgid "Marriott Madison West"
-msgstr "Marriott Madison Oeste"
+msgstr "Marriott Madison West"
 
 #: ../TabletopClub/skyboxes/Maskonaive:1
 msgid "Maskonaive"
-msgstr "Maskonaive."
+msgstr "Maskonaive"
 
 #: ../TabletopClub/skyboxes/Nebula:1
 msgid "Nebula"
-msgstr "Nebulosa"
+msgstr "Nebula"
 
 #: ../TabletopClub/skyboxes/Niagra_Falls:1
 msgid "Niagra Falls"
@@ -1057,7 +1062,7 @@ msgstr "Parque"
 
 #: ../TabletopClub/skyboxes/Park_Winter:1
 msgid "Park Winter"
-msgstr "Parque de Invierno"
+msgstr "Invierno en el Parque"
 
 #: ../TabletopClub/skyboxes/Path:1
 msgid "Path"
@@ -1069,11 +1074,11 @@ msgstr "Espacio"
 
 #: ../TabletopClub/skyboxes/Tantolunden:1
 msgid "Tantolunden"
-msgstr "Tantolunden."
+msgstr "Tantolunden"
 
 #: ../TabletopClub/skyboxes/Vasa:1
 msgid "Vasa"
-msgstr "Vasa."
+msgstr "Vasa"
 
 #: ../TabletopClub/sounds/Alarm:1
 msgid "Alarm"
