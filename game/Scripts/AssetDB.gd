@@ -1625,8 +1625,8 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 					_log_error("'entry_names' in entry is not an array!")
 					return false
 				
-				if value.empty():
-					_log_error("'entry_names' in entry cannot be empty!")
+				if value.size() < 2:
+					_log_error("'entry_names' in entry must have at least two items!")
 					return false
 				
 				for element in value:
