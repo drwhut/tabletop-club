@@ -1,60 +1,53 @@
 # Tabletop Club Documentation Translation Template.
-# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows.
-# Copyright (c) 2021-2022 Tabletop Club contributors (see game/CREDITS.tres).
+# Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2023 Tabletop Club contributors (see game/CREDITS.tres).
 # This file is distributed under the same license as the Tabletop Club package.
-# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2022.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-09 08:57+0100\n"
-"PO-Revision-Date: 2023-01-23 15:51+0000\n"
-"Last-Translator: Reese Rivers <doormattion@gmail.com>\n"
-"Language-Team: Esperanto <https://hosted.weblate.org/projects/tabletop-club/"
-"docs-general/eo/>\n"
-"Language: eo\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
-msgstr "Pri"
+msgstr ""
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
-msgstr "Kio estas Tabletop Club?"
+msgstr ""
 
 #: ../../general/about.rst:10
 msgid ""
 "Tabletop Club is a free and open-source tabletop board game simulator! "
 "That's a bit of a mouthful, so I'll break that sentence down a bit:"
 msgstr ""
-"Tabletop Club estas senpaga kaj malfermfonta tabulluda simulilo! Tio estas "
-"multe da vortoj, do mi iom dispecigos la frazon:"
 
 #: ../../general/about.rst:14
 msgid "Free"
-msgstr "Senpaga"
+msgstr ""
 
 #: ../../general/about.rst:16
 msgid ""
 "The game is completely free to download and play! You can do so by going to "
 "the :ref:`downloading-binaries` page."
 msgstr ""
-"La ludo estas tute senpaga por elŝuti kaj ludi! Vi povas tiel fari irante al "
-"la paĝo :ref:`downloading-binaries`."
 
 #: ../../general/about.rst:20
 msgid "Open-source"
-msgstr "Malfermfonta"
+msgstr ""
 
 #: ../../general/about.rst:22
 msgid "This means a few things:"
-msgstr "Tio signifas kelkajn aferojn:"
+msgstr ""
 
 #: ../../general/about.rst:24
 msgid ""
@@ -63,9 +56,6 @@ msgid ""
 "means you can compile the game youself from scratch (see :ref:`compiling-"
 "from-source`)."
 msgstr ""
-"La fontkodo de la ludo estas publika (vi povas vidi ĝin en la `GitHub-"
-"deponejo<https://github.com/drwhut/tabletop-club>`_). Tio ankaŭ signifas, ke "
-"vi mem povas kompili la ludon de nulo (vidu :ref:`compiling-from-source`)."
 
 #: ../../general/about.rst:29
 msgid ""
@@ -73,25 +63,18 @@ msgid ""
 "different ways! For more information about how you can help contribute to "
 "the project, visit the :ref:`contributing` page."
 msgstr ""
-"Iu ajn povas kontribui al la disvolvigado de Tabletop Club en diversaj "
-"manieroj! Por pliaj informoj pri kiel vi povas helpi kontribui al la "
-"projekto, vizitu la paĝon :ref:`contributing`."
 
 #: ../../general/about.rst:33
 msgid ""
 "The game is licensed under the `MIT License <https://github.com/drwhut/"
 "tabletop-club/blob/master/LICENSE>`_, which is an open, permissive license."
 msgstr ""
-"La ludo uzas la `permesilon MIT<https://github.com/drwhut/tabletop-club/blob/"
-"master/LICENSE>`_, kiu estas malferma kaj permesema."
 
 #: ../../general/about.rst:39
 msgid ""
 "The game's code and project files are licensed under the MIT License, but "
 "some of the assets are licensed under different open licenses."
 msgstr ""
-"La kodo kaj projektaj dosieroj de la ludo havas la permesilon MIT, sed "
-"kelkaj aliaj havaĵoj havas malsamajn malfermajn permesilojn."
 
 #: ../../general/about.rst:42
 msgid ""
@@ -100,14 +83,10 @@ msgid ""
 "game (which can also be found in the various ``.cfg`` files under ``assets/"
 "``)."
 msgstr ""
-"Por vidi la aŭtorojn kaj permesilojn de tiuj havaĵoj, vi povas kontroli la "
-"dosieron ``game/LICENSES.tres``, aŭ musumi super eroj en la objektmenuo "
-"enlude (kiu ankaŭ troveblas en la diversaj dosieroj ``.cfg`` ene de ``assets/"
-"``)."
 
 #: ../../general/about.rst:48
 msgid "Tabletop board game"
-msgstr "Tabulludo"
+msgstr ""
 
 #: ../../general/about.rst:50
 msgid ""
@@ -116,10 +95,6 @@ msgid ""
 "things like cards, dice, game pieces, and more), and it's up to you what you "
 "do with what you're given!"
 msgstr ""
-"La ludo estas desegnita por ebligi al vi ludi viajn plej ŝatatajn "
-"tabulludojn, efike donante al vi skatolon da ludiloj (kio inkluzivas ekz. "
-"kartojn, ĵetpluredrojn, ludpecoj, kaj pli), kaj estas tute via decido kion "
-"fari kun la donitaj aferoj!"
 
 #: ../../general/about.rst:55
 msgid ""
@@ -129,15 +104,10 @@ msgid ""
 "learn more about how to make assets for Tabletop Club, visit the :ref:`asset-"
 "packs` page."
 msgstr ""
-"Sed la plej mojosa afero pri la ludo, estas ke iu ajn povas krei havaĵojn "
-"por ĝi! Tiel simplas, kiel treni dosierojn en dosierujon, kaj la ludo "
-"importos ilin, kaj tiam vi povas tuj uzi ilin en la ludo! Se vi volas lerni "
-"pli pri kiel fari havaĵojn por Tabletop Club, vizitu la paĝon :ref:`asset-"
-"packs`."
 
 #: ../../general/about.rst:61
 msgid "Simulator"
-msgstr "Simulilo"
+msgstr ""
 
 #: ../../general/about.rst:63
 msgid ""
@@ -146,79 +116,66 @@ msgid ""
 "they do in real life, and it also means you can potentially send objects "
 "flying off the edge! Did I also mention you could flip the table?"
 msgstr ""
-"La ludo ne nur estas simulilo de tabulludoj, sed ankaŭ ĝi havas tridimensian "
-"motoron de plene similata fiziko! Tio signifas, ke objektoj en la ludo "
-"efikas tiel, kiel en la reala vivo, kaj tio ankaŭ signifas, ke vi povas ĵeti "
-"objektojn tien ĉien! Ĉu mi jam menciis, ke vi povas renversi la tablon?"
 
 #: ../../general/about.rst:70
 msgid "Frequently Asked Questions"
-msgstr "Oftaj demandoj"
+msgstr ""
 
 #: ../../general/about.rst:73
 msgid "What platforms can I play Tabletop Club on?"
-msgstr "Ĉe kiuj platformoj mi povas ludi Tabletop Club?"
+msgstr ""
 
 #: ../../general/about.rst:75
 msgid "Tabletop Club can be played on any of these platforms:"
-msgstr "Tabletop Club estas ludebla ĉe la ĉi-subaj platformoj:"
+msgstr ""
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
-msgstr "Windows 7 aŭ pli nova"
+msgstr ""
 
 #: ../../general/about.rst:78
 msgid "macOS 10.12 or later"
-msgstr "macOS 10.12 aŭ pli nova"
+msgstr ""
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
-msgstr "Linux / \\*BSD"
+msgstr ""
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
-msgstr "Via aparataro ankaŭ devas havi subtenon por OpenGL 3.3."
+msgstr ""
 
 #: ../../general/about.rst:83
 msgid ""
 "It is recommended to have at least 1GB of available space on your drive to "
 "accommodate for the game files, as well as any generated files."
 msgstr ""
-"Estas rekomendate, ke vi havu en via disko almenaŭ 1GB da spaco por la ludaj "
-"dosieroj kaj ajnaj generotaj dosieroj."
 
 #: ../../general/about.rst:86
 msgid ""
 "Currently there are no plans for the game to be supported on mobile devices "
 "or consoles."
 msgstr ""
-"Nuntempe ne estas planoj por subteni la ludon ĉe porteblaj aparatoj aŭ "
-"ludkonzoloj."
 
 #: ../../general/about.rst:91
 msgid "Does Tabletop Club support multiplayer?"
-msgstr "Ĉu Tabletop Club subtenas ludi kun pluraj ludantoj?"
+msgstr ""
 
 #: ../../general/about.rst:93
 msgid ""
 "Yes! You don't need to make an account to play multiplayer, you can just "
 "host a game and start playing with friends!"
 msgstr ""
-"Jes! Vi ne bezonas krei konton por ludi plurludante, vi povas simple gastigi "
-"ludon kaj ekludi kun amikoj!"
 
 #: ../../general/about.rst:98
 msgid ""
 "You can change your name and colour in multiplayer by going to :guilabel:"
 "`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
 msgstr ""
-"Vi povas ŝanĝi viajn nomon kaj koloron por plurludanta ludo. Iru al :"
-"guilabel:`Agordoj` > :guilabel:`Pluraj ludantoj`, kaj tie vi povas ŝanĝi la "
-"rilatajn agordoj."
 
 #: ../../general/about.rst:104
 msgid "Is Tabletop Club on Steam / GOG / itch.io?"
-msgstr "Ĉu Tabletop Club haveblas ĉe Steam / GOG / itch.io?"
+msgstr ""
 
 #: ../../general/about.rst:106
 msgid ""
@@ -227,14 +184,10 @@ msgid ""
 "download it from the `itch app <https://itch.io/app>`_ and get automatic "
 "updates."
 msgstr ""
-"La ludo estas havebla ĉe `itch.io <https://drwhut.itch.io/tabletop-club>`_! "
-"Vi povas ne nur elŝuti la ludon kiel memstaran ruleblan dosieron, vi povas "
-"ankaŭ elŝuti ĝin de la `apo de itch.io <https://itch.io/app>`_ kaj ricevi "
-"aŭtomatajn ĝisdatigojn."
 
 #: ../../general/about.rst:113
 msgid "What stage of development is Tabletop Club at?"
-msgstr "En kiu etapo de disvolvigado Tabletop Club estas?"
+msgstr ""
 
 #: ../../general/about.rst:115
 msgid ""
@@ -266,11 +219,11 @@ msgstr ""
 
 #: ../../general/about.rst:136
 msgid "What board games can I play in Tabletop Club?"
-msgstr "Kiujn tabulludojn mi povas ludi en Tabletop Club?"
+msgstr ""
 
 #: ../../general/about.rst:138
 msgid "Theoretically, any of them!"
-msgstr "Teorie, iujn ajn!"
+msgstr ""
 
 #: ../../general/about.rst:140
 msgid ""
@@ -278,9 +231,6 @@ msgid ""
 "which contains some of the most common objects you'll need, like playing "
 "cards, dice, poker chips, etc."
 msgstr ""
-"Elskatole, la ludo venas kun la defaŭlta havaĵa pakaĵo de Tabletop Club, kiu "
-"enhavas kelkajn plej komunajn bezonatajn objektojn, ekz. ludkartojn, "
-"ĵetpluredrojn, pokerĵetonojn, ktp."
 
 #: ../../general/about.rst:144
 msgid ""
@@ -289,10 +239,6 @@ msgid ""
 "asset pack. If everything under a game is ticked, then you can play that "
 "game!"
 msgstr ""
-"Ĉe GitHub, estas `problempaĝo <https://github.com/drwhut/tabletop-club/"
-"issues/28>`_ kiu listigas la objektojn, kiuj ankoraŭ estas aldonendaj en la "
-"defaŭlta havaĵa pakaĵo. Se ĉio sub iu ludo estas markita, vi povas ludi tiun "
-"ludon!"
 
 #: ../../general/about.rst:149
 msgid ""
@@ -301,14 +247,10 @@ msgid ""
 "else has already made, or you can create your own! Visit the :ref:`asset-"
 "packs` page if you're interested in making your own assets."
 msgstr ""
-"Aliflanke, se la pecoj, kiujn vi bezonas ne estos inkluzivitaj en la "
-"defaŭlta havaĵa pakaĵo, vi povas do aŭ elŝuti havaĵan pakaĵon kiun jam faris "
-"iu alia, aŭ vi povas krei propran! Vizitu la paĝon :ref:`asset-packs` se vi "
-"interesiĝas pri krei viajn proprajn havaĵojn."
 
 #: ../../general/about.rst:156
 msgid "How easy is it to setup a game in Tabletop Club?"
-msgstr "Kiom facile estas aranĝi ludon en Tabletop Club?"
+msgstr ""
 
 #: ../../general/about.rst:158
 msgid ""
@@ -317,10 +259,6 @@ msgid ""
 "then click on the game you want to play, then click :guilabel:`Load`) to "
 "play the game right away!"
 msgstr ""
-"Por la plej popularaj ludoj, la defaŭlta havaĵa pakaĵo venas kun "
-"antaŭkreitaj konservaĵoj, kiujn vi povas tuj ŝargi (enlude, alklaku :"
-"guilabel:`Ludoj`, kaj tiam alklaku la ludon, kiun vi volas ludi, kaj "
-"alklaku :guilabel:`Ŝargi`) por tuje ludi ilin!"
 
 #: ../../general/about.rst:163
 msgid ""
@@ -329,54 +267,45 @@ msgid ""
 "by going to the menu and clicking :guilabel:`Save file`. This way, if you "
 "want to play the game again, you can just load the save you made previously."
 msgstr ""
-"Se ne estas antaŭkreita konservaĵo por la ludo, kiun vi volas ludi, vi povas "
-"facile krei propran konservaĵon: aranĝu la tablon tia, kian vi volas, kaj "
-"tiam iru al la menuo kaj alklaku :guilabel:`Konservi dosieron`. Tiel, se vi "
-"volas denove ludi la ludon, vi povas simple ŝargi la konservaĵon, kiun vi "
-"antaŭe faris."
 
 #: ../../general/about.rst:168
 msgid ""
 "See the :ref:`asset-type-game` page for more information about pre-made save "
 "files in asset packs."
 msgstr ""
-"Vidu la paĝon :ref:`asset-type-game` por pliaj informoj pri antaŭkreitaj "
-"konservaĵoj en havaĵaj pakaĵoj."
 
 #: ../../general/about.rst:173
 msgid "Can I add assets other than game pieces to Tabletop Club?"
-msgstr "Ĉu mi povas aldoni havaĵojn krom ludpecoj al Tabletop Club?"
+msgstr ""
 
 #: ../../general/about.rst:175
 msgid ""
 "Yes! As well as objects, you can also import the following types of assets:"
 msgstr ""
-"Jes! Same kiel objektoj, vi povas ankaŭ importi la ĉi-subajn tipojn de "
-"havaĵoj:"
 
 #: ../../general/about.rst:177
 msgid ":ref:`asset-type-game`"
-msgstr ":ref:`asset-type-game`"
+msgstr ""
 
 #: ../../general/about.rst:178
 msgid ":ref:`asset-type-music`"
-msgstr ":ref:`asset-type-music`"
+msgstr ""
 
 #: ../../general/about.rst:179
 msgid ":ref:`asset-type-skybox`"
-msgstr ":ref:`asset-type-skybox`"
+msgstr ""
 
 #: ../../general/about.rst:180
 msgid ":ref:`asset-type-sound`"
-msgstr ":ref:`asset-type-sound`"
+msgstr ""
 
 #: ../../general/about.rst:181
 msgid ":ref:`asset-type-table`"
-msgstr ":ref:`asset-type-table`"
+msgstr ""
 
 #: ../../general/about.rst:185
 msgid "Can you add my favourite board game to Tabletop Club?"
-msgstr "Ĉu vi povas aldoni mian plej ŝatatan tabulludon al Tabletop Club?"
+msgstr ""
 
 #: ../../general/about.rst:187
 msgid ""
@@ -385,30 +314,22 @@ msgid ""
 "asset pack. But that doesn't stop you from making assets for your favourite "
 "board game for private use!"
 msgstr ""
-"Por leĝa sekureco, Tabletop Club ĉiam nur disdonos tabulludojn "
-"`publikhavaĵajn <https://eo.wikipedia.org/wiki/Publika_havaĵo>`_ en la "
-"defaŭlta havaĵa pakaĵo. Sed tio ne signifas, ke vi ne povas krei havaĵojn "
-"por via plej ŝatata tabulludo por privata uzado!"
 
 #: ../../general/about.rst:194
 msgid "Can I share assets I've made on the internet?"
-msgstr "Ĉu mi rajtas en Interreto disdoni havaĵojn, kiujn mi kreis?"
+msgstr ""
 
 #: ../../general/about.rst:196
 msgid ""
 "It depends on a number of factors. In general, it should be safe to share "
 "the assets you've made for the game if the following is all true:"
 msgstr ""
-"Tio dependas de kelkaj faktoroj. Ĝenerale, devus esti sekure disdoni la "
-"havaĵojn, kiujn vi kreis por la ludo, se la ĉi-subaj estas veraj:"
 
 #: ../../general/about.rst:199
 msgid ""
 "The assets you've made (textures, 3D models, etc.) are made by you, and are "
 "not derived from copyrighted material."
 msgstr ""
-"La havaĵoj, kiujn vi kreis (teksturoj, tridimensiaj modeloj, ktp.) estas "
-"faritaj de vi, kaj ne deriviĝas de kopirajtita materialo."
 
 #: ../../general/about.rst:204
 msgid ""
@@ -417,45 +338,33 @@ msgid ""
 "state the license and whether the content was modified. Please read the "
 "terms of the license first."
 msgstr ""
-"Vi povas disdoni la kreaĵojn de aliaj homoj **se** ĝia permesilo tion "
-"permesas al vi. Ĉiam estas pli sekure atribui al la originala aŭtoro, kaj "
-"deklari la permesilon kaj ĉu la enhavo estas modifita. Bonvolu unue legi la "
-"kondiĉojn de la permesilo."
 
 #: ../../general/about.rst:209
 msgid ""
 "To help with this, the :ref:`config-cfg` file allows you to put the author, "
 "license, modifier, and URL with the asset, which is then shown in-game."
 msgstr ""
-"Por helpi pri tio, la dosiero :ref:`config-cfg` ebligas al vi meti la "
-"aŭtoron, permesilon, modifinton kaj URL-on kun la havaĵo, kiuj tiam estas "
-"montrataj en la ludo."
 
 #: ../../general/about.rst:212
 msgid ""
 "If the assets you've made are for playing a game that already exists, then:"
 msgstr ""
-"Se la havaĵoj, kiujn vi kreis, estas por ludi jam ekzistantan ludon, tiam:"
 
 #: ../../general/about.rst:214
 msgid ""
 "You cannot use the same name of the game without the owner's explicit "
 "permission."
 msgstr ""
-"Vi ne rajtas uzi la saman nomon de la ludo, sen la eksplicita permeso de la "
-"posedanto."
 
 #: ../../general/about.rst:217
 msgid "The mechanics of the game cannot be patented."
-msgstr "La funckimetodoj de la ludo ne povas esti patentitaj."
+msgstr ""
 
 #: ../../general/about.rst:221
 msgid ""
 "You can `check online <https://worldwide.espacenet.com/advancedSearch>`_ to "
 "see if there are any patents for the game's mechanics."
 msgstr ""
-"Vi povas `kontroli enrete <https://worldwide.espacenet.com/advancedSearch>`_ "
-"por vidi ĉu estas ajnaj patentoj por la funkcimetodoj de la ludo."
 
 #: ../../general/about.rst:226
 msgid ""
@@ -463,13 +372,10 @@ msgid ""
 "are worried about distributing your asset pack on the internet, as this also "
 "depends on your country's copyright laws."
 msgstr ""
-"Ĉi tio NE estas leĝa konsilado. Bonvolu demandi al leĝisto se vi zorgas pri "
-"disdoni vian havaĵan pakaĵon en Interreto, ĉar tio ankaŭ dependas de la "
-"kopirajtaj leĝoj de via lando."
 
 #: ../../general/contributing/coding_guidelines.rst:5
 msgid "Coding guidelines"
-msgstr "Gvidlinioj de kodado"
+msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:7
 msgid ""
@@ -477,33 +383,26 @@ msgid ""
 "`GDScript style guide`_, make sure to follow these guidelines for "
 "consistency, and to make everyone's lives easier:"
 msgstr ""
-"Se vi modifas la scenojn kaj skriptojn de la ludo, same sekvante la `stilan "
-"gvidilon de GDScript`_, nepre sekvu ĉi tiujn gvidliniojn por akordeco, kaj "
-"por plifaciligi ĉies laboron:"
 
 #: ../../general/contributing/coding_guidelines.rst:11
 msgid "Only use GDScript for scripting."
-msgstr "Nur uzu GDScript por skriptado."
+msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:13
 msgid ""
 "When writing code, make sure your editor (whether it's Godot, or another "
 "external editor) is set to use tabs instead of spaces."
 msgstr ""
-"Dum skribado de kodo, certigu, ke via redaktilo (ĉu tio estas Godot, aŭ alia "
-"ekstera redaktilo) estas agordita por uzi tabojn anstataŭ spacetojn."
 
 #: ../../general/contributing/coding_guidelines.rst:16
 msgid ""
 "When creating a new script, use the ``Copyright Notice`` template in ``game/"
 "Scripts/Templates/CopyrightNotice.gd``."
 msgstr ""
-"Dum kreado de nova skripto, uzu la ŝablonon ``Copyright Notice`` en ``game/"
-"Scripts/Templates/CopyrightNotice.gd``."
 
 #: ../../general/contributing/coding_guidelines.rst:19
 msgid "Use typed variables, arguments, and return values where possible."
-msgstr "Uzu tipajn variablojn, argumentojn, kaj liveraĵojn kie eblas."
+msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:21
 msgid ""
@@ -512,23 +411,16 @@ msgid ""
 "add a comment above the function describing what the function does, what "
 "it's return value is (if any), and what the arguments are. For example:"
 msgstr ""
-"Dum skribado de funkcioj en skriptoj, kiuj ne estas integritaj funkcioj "
-"(ekz. ``_ready()``) aŭ funckioj vokataj de signaloj (eks. ``_on_*``), "
-"bonvolu do aldoni komenton super la funkcio, kun klarigo pri kion ĝi faras, "
-"kio estas ĝia liveraĵo (se tiu ekzistas), kaj kiaj la argumentoj estas. "
-"Ekzemple:"
 
 #: ../../general/contributing/coding_guidelines.rst:34
 msgid "Make sure to fix any warnings Godot shows in scripts."
-msgstr "Nepre riparu iujn ajn avertojn, kiujn montras Godot en skriptoj."
+msgstr ""
 
 #: ../../general/contributing/coding_guidelines.rst:36
 msgid ""
 "If you are writing strings that will get displayed in the UI, remember to "
 "use the ``tr()`` function so the text can be translated."
 msgstr ""
-"Se vi skribas tekstĉenojn, kiuj montriĝos en la interfaco, memoru uzi la "
-"funkcion ``tr()``, por fari la tekston tradukebla."
 
 #: ../../general/contributing/coding_guidelines.rst:39
 msgid ""
@@ -536,18 +428,14 @@ msgid ""
 "explaining what the scene does. Also fill in the editor description for any "
 "nodes in the scene where it isn't obvious what they're there for."
 msgstr ""
-"Dum kreado de novaj scenoj, plenigu la redaktilan priskribon por la radika "
-"nodo, kiu klarigas kion faras la sceno. Ankaŭ plenigu la redaktilan "
-"priskribon por iuj ajn nodoj en la sceno, kiam ne evidentas por kio ili tie "
-"estas."
 
 #: ../../general/contributing/index.rst:5
 msgid "Contributing"
-msgstr "Kontribuado"
+msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:5
 msgid "Pull request workflow"
-msgstr "Tirpeta laborfluo"
+msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:7
 msgid ""
@@ -556,14 +444,10 @@ msgid ""
 "on the project's `GitHub repository`_. This page explains the steps needed "
 "to do exactly that!"
 msgstr ""
-"Se vi volas helpi per rektaj kontribuoj al la projekto, aŭ riparante cimon "
-"aŭ realigante funkcion, vi do bezonos krei **tirpeton** en la `GitHub-"
-"deponejo`_ de la projekto. Tiu ĉi paĝo klarigas la paŝojn por fari ekzakte "
-"tion!"
 
 #: ../../general/contributing/pull_request_workflow.rst:14
 msgid "Creating a fork"
-msgstr "Kreado de forko"
+msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:16
 msgid ""
@@ -573,10 +457,6 @@ msgid ""
 "Eventually, the side road will join back in with the main road later on (the "
 "\"merge\")."
 msgstr ""
-"Por kompreni forkojn, pensu pri forko de vojo. Vi iros en unu direkton por "
-"fari vian propran aferon (tio estas via \"forko\"), dum la ĉefa vojo (la "
-"``master``-branĉo de la deponejo) pluiras. Fine, via flanka vojo rekuniĝos "
-"kun la ĉefa vojo poste (la \"kunfando\")."
 
 #: ../../general/contributing/pull_request_workflow.rst:22
 msgid ""
@@ -585,10 +465,6 @@ msgid ""
 "right. You should now have your own copy of the repository at that point in "
 "time. You can then clone the repository to your computer with ``git clone``."
 msgstr ""
-"Por krei forkon de la Tabletop Club-deponejon en GitHub, vi povas iri al la "
-"`GitHub-deponejo`_ kaj alklaki la butonon :guilabel:`Forki` supre dekstre. "
-"Vi nun devus havi propran kopion de la deponejo je tiu tempopunkto. Vi tiam "
-"povas kloni la deponejon al via komputilo per ``git clone``."
 
 #: ../../general/contributing/pull_request_workflow.rst:27
 msgid ""
@@ -597,26 +473,20 @@ msgid ""
 "sure you can get updates from the original repository, you can add the "
 "original as a remote repository with this command:"
 msgstr ""
-"En ĉi tiu klonita deponejo, ``origin`` indikos al via forkita deponejo, kiu "
-"ne aŭtomate ĝisdatiĝos kun la originala deponejo. Por certigi, ke vi povas "
-"ricevi ĝisdatigojn de la originala deponejo, vi povas aldoni la originalan "
-"kiel foran deponejon per ĉi tiu komando:"
 
 #: ../../general/contributing/pull_request_workflow.rst:36
 msgid ""
 "Now, if you ever need to update the ``master`` branch on your local "
 "repository, you can run the following commands:"
 msgstr ""
-"Nun, se vi iam bezonas ĝisdatigi la ``master``-branĉon en via loka deponejo, "
-"vi povas ruli la jenajn komandojn:"
 
 #: ../../general/contributing/pull_request_workflow.rst:44
 msgid "You can then update your fork on GitHub with these changes:"
-msgstr "Vi tiam povas ĝisdatigi vian forkon en GitHub per ĉi tiuj ŝanĝoj:"
+msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:52
 msgid "Downloading and compiling Godot"
-msgstr "Elŝutado kaj kompilado de Godot"
+msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:54
 msgid ""
@@ -627,16 +497,10 @@ msgid ""
 "until the section where you download the game (you already did that just!) "
 "to get Godot up and running."
 msgstr ""
-"Post fari lokan kopion de la forko en via komputilo, estas unu paŝo plu "
-"bezonata por ebligi la ludadon, redaktadon kaj testadon de la ludo - vi "
-"bezonas elŝuti kaj kompili la modifitan version de Godot, per kiu la ludo "
-"plenumiĝas. Vi povas sekvi la instrukciojn en :ref:`compiling-from-source` "
-"ĝis la sekcio, kie vi elŝutas la ludon (vi jam ĵus faris tion!) por "
-"ekfunkciigi Godot."
 
 #: ../../general/contributing/pull_request_workflow.rst:63
 msgid "Making changes"
-msgstr "Farado de ŝanĝoj"
+msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:65
 msgid ""
@@ -644,29 +508,23 @@ msgid ""
 "that you create a branch on the local repository for the bug/feature you're "
 "going to solve:"
 msgstr ""
-"Antaŭ ol ekfari la ŝanĝojn, kiujn vi volas fari, estas alte rekomendate krei "
-"branĉon en la loka deponejo por la cimo/funckio, kiun vi solvos:"
 
 #: ../../general/contributing/pull_request_workflow.rst:74
 msgid ""
 "Now you can start working on the code! See :ref:`coding-guidelines` for "
 "guidelines as to how you should write your code."
 msgstr ""
-"Nun vi povas eklabori pri la kodo! Vidu :ref:`coding-guidelines` por "
-"gvidlinioj pri kiel vi skribu vian kodon."
 
 #: ../../general/contributing/pull_request_workflow.rst:79
 msgid ""
 "When you are done, you should commit your changes and push them to your fork "
 "with these commands:"
 msgstr ""
-"Post fini la aferon, vi devus enmeti viajn ŝanĝojn kaj puŝi ilin al via "
-"forko per ĉi tiuj komandoj:"
 
 #: ../../general/contributing/pull_request_workflow.rst:90
 #: ../../general/contributing/ways_to_contribute.rst:89
 msgid "Creating a pull request"
-msgstr "Kreado de tirpeto"
+msgstr ""
 
 #: ../../general/contributing/pull_request_workflow.rst:92
 msgid ""
@@ -1698,19 +1556,3 @@ msgid ""
 "built binary, but you'll need to do this if you plan on contributing to the "
 "game code, or you could try it for fun!"
 msgstr ""
-
-#~ msgid ""
-#~ "Tabletop Club is currently in beta development. This means that most of "
-#~ "the core features have been implemented, but there will very likely be "
-#~ "some bugs, and features that have yet to be added (you can see what needs "
-#~ "to be done by going to the `issues page <https://github.com/drwhut/"
-#~ "tabletop-club/issues>`_ on GitHub)."
-#~ msgstr ""
-#~ "Tabletop Club nune estas en beta-disvolvigado. Tio signifas, ke la "
-#~ "plimulto da bazaj funkcioj estas realigitaj, sed estas tre verŝajne, ke "
-#~ "estos iuj cimoj, kaj funkcioj ne jam aldonitaj (vi povas vidi tion, kio "
-#~ "farendas en la `paĝo de problemoj <https://github.com/drwhut/tabletop-"
-#~ "club/issues>`_ ĉe GitHub)."
-
-#~ msgid "You can help test the game by :ref:`downloading-binaries`!"
-#~ msgstr "Vi povas helpi testadon de la ludo per :ref:`downloading-binaries`!"
