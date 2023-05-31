@@ -345,12 +345,6 @@ func start_importing() -> void:
 	_import_err_source = ""
 	_import_err_mutex.unlock()
 	
-	if Global.error_reporter != null:
-		if not Global.error_reporter.is_connected("error_received", self, "_on_error_received"):
-			Global.error_reporter.connect("error_received", self, "_on_error_received")
-		if not Global.error_reporter.is_connected("warning_received", self, "_on_warning_received"):
-			Global.error_reporter.connect("warning_received", self, "_on_warning_received")
-	
 	_import_mutex.lock()
 	_import_stop = false
 	_import_mutex.unlock()
@@ -463,7 +457,7 @@ func _import_all(_userdata) -> void:
 					var md5_check = File.new()
 					new_config_md5 = md5_check.get_md5(config_file_path)
 				else:
-					push_error("Failed to load '%s' (error %d)!" % [config_file_path, err])
+					_log_error("Failed to load '%s' (error %d)!" % [config_file_path, err])
 			
 			var old_config_md5 = "?" # if .md5 file does not exist, will differ from new.
 			var old_config_md5_file = File.new()
@@ -475,7 +469,7 @@ func _import_all(_userdata) -> void:
 					old_config_md5 = old_config_md5_file.get_line()
 					old_config_md5_file.close()
 				else:
-					push_error("Failed to load '%s' (error %d)!" % [md5_file_path, err])
+					_log_error("Failed to load '%s' (error %d)!" % [md5_file_path, err])
 			
 			var config_changed = (new_config_md5 != old_config_md5)
 			if config_changed:
@@ -486,14 +480,14 @@ func _import_all(_userdata) -> void:
 				if not md5_dir.dir_exists(md5_dir_path):
 					var err = md5_dir.make_dir_recursive(md5_dir_path)
 					if err != OK:
-						push_error("Failed to create directory at '%s'!" % md5_dir_path)
+						_log_error("Failed to create directory at '%s'!" % md5_dir_path)
 				
 				var err = old_config_md5_file.open(md5_file_path, File.WRITE)
 				if err == OK:
 					old_config_md5_file.store_line(new_config_md5)
 					old_config_md5_file.close()
 				else:
-					push_error("Failed to load '%s' (error %d)!" % [md5_file_path, err])
+					_log_error("Failed to load '%s' (error %d)!" % [md5_file_path, err])
 			
 			for file in type_catalog["files"]:
 				_import_mutex.lock()
@@ -513,7 +507,7 @@ func _import_all(_userdata) -> void:
 				
 				var err = _import_asset(file_path, pack, type, config_file, config_changed)
 				if err != OK:
-					push_error("Failed to import '%s' (error %d)!" % [file_path, err])
+					_log_error("Failed to import '%s' (error %d)!" % [file_path, err])
 				
 				files_imported += 1
 			
@@ -540,7 +534,7 @@ func _import_all(_userdata) -> void:
 					_import_stack_config(pack, type, stacks_config)
 					print("Loaded: %s" % stacks_file_path)
 				else:
-					push_error("Failed to load '%s' (error %d)!" % [stacks_file_path, err])
+					_log_error("Failed to load '%s' (error %d)!" % [stacks_file_path, err])
 	
 	_send_completed_signal(catalog["asset_dir_exists"])
 
@@ -553,7 +547,7 @@ func _add_entry_to_db(pack: String, type: String, entry: Dictionary) -> void:
 	entry["entry_path"] = entry_path
 	
 	if not _is_valid_entry(pack, type, entry):
-		push_error("Cannot add entry to AssetDB, entry is invalid!")
+		_log_error("Cannot add entry to AssetDB, entry is invalid!")
 		return
 	
 	_db_mutex.lock()
@@ -576,7 +570,7 @@ func _add_entry_to_db(pack: String, type: String, entry: Dictionary) -> void:
 		type_arr.insert(index, entry)
 		print("Added: %s" % entry_path)
 	else:
-		push_error("Cannot add %s/%s/%s to AssetDB, already exists!" % [pack, type, entry["name"]])
+		_log_error("Cannot add %s/%s/%s to AssetDB, already exists!" % [pack, type, entry["name"]])
 	
 	_db_mutex.unlock()
 
@@ -630,9 +624,9 @@ func _add_inheriting_assets(pack_path: String, pack_name: String, type: String) 
 						# them all after, then sort the DB again.
 						children.append(child)
 					else:
-						push_error("Parent '%s' for object '%s' does not exist!" % [parent, section])
+						_log_error("Parent '%s' for object '%s' does not exist!" % [parent, section])
 				else:
-					push_error("Unknown object '%s' has no 'parent' key!" % section)
+					_log_error("Unknown object '%s' has no 'parent' key!" % section)
 	
 	if not children.empty():
 		for child in children:
@@ -760,7 +754,7 @@ func _catalog_assets() -> Dictionary:
 						packs[pack_name] = pack_catalog
 						file_count += pack_catalog["file_count"]
 					else:
-						push_error("Failed to open '%s' (error %d)!" % [pack_path, err])
+						_log_error("Failed to open '%s' (error %d)!" % [pack_path, err])
 				
 				folder = dir.get_next()
 			
@@ -769,7 +763,7 @@ func _catalog_assets() -> Dictionary:
 			# The folder doesn't exist.
 			pass
 		else:
-			push_error("Failed to open '%s' (error %d)!" % [asset_dir, err])
+			_log_error("Failed to open '%s' (error %d)!" % [asset_dir, err])
 	
 	return {
 		"asset_dir_exists": asset_dir_exists,
@@ -795,7 +789,7 @@ func _catalog_pack_dir(pack_dir: Directory) -> Dictionary:
 				types[type] = type_catalog
 				file_count += type_catalog["file_count"]
 			else:
-				push_error("Failed to open '%s' (error %d)!" % [type_path, err])
+				_log_error("Failed to open '%s' (error %d)!" % [type_path, err])
 	
 	return {
 		"path": pack_dir.get_current_dir(),
@@ -905,7 +899,7 @@ func _get_file_config_value(config: ConfigFile, query: String, key: String,
 	elif type_value == TYPE_INT and type_default == TYPE_REAL:
 		return float(value)
 	else:
-		push_error("Value of key %s for %s is incorrect type! (expected %d, got %d)" % [
+		_log_error("Value of key %s for %s is incorrect type! (expected %d, got %d)" % [
 				key, query, type_default, type_value])
 		return default
 
@@ -947,11 +941,11 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 		if typeof(scale_config) == TYPE_VECTOR2:
 			scale = Vector3(scale_config.x, 1.0, scale_config.y)
 		elif typeof(scale_config) == TYPE_VECTOR3:
-			push_warning("Scale for cards must be Vector2! Default height will be used instead.")
+			_log_warning("Scale for cards must be Vector2! Default height will be used instead.")
 			scale = scale_config
 			scale.y = 1.0
 		else:
-			push_error("Scale for cards must be Vector2!")
+			_log_error("Scale for cards must be Vector2!")
 			scale = Vector3.ONE
 	else:
 		scale = _get_file_config_value(config, from.get_file(), "scale",
@@ -969,11 +963,11 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 					PieceBuilder.COLLISION_CONVEX)
 			
 			if collision_mode < PieceBuilder.COLLISION_CONVEX or collision_mode > PieceBuilder.COLLISION_CONCAVE:
-				push_error("Collision mode is invalid!")
+				_log_error("Collision mode is invalid!")
 				collision_mode = PieceBuilder.COLLISION_CONVEX
 			
 			if type == "tables" and collision_mode == PieceBuilder.COLLISION_CONCAVE:
-				push_error("Tables do not support the concave collision mode!")
+				_log_error("Tables do not support the concave collision mode!")
 				collision_mode = PieceBuilder.COLLISION_CONVEX
 			
 			# Determines the way in which the centre-of-mass is adjusted.
@@ -989,7 +983,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				"geometry":
 					com_adjust = PieceBuilder.COM_ADJUST_GEOMETRY
 				_:
-					push_error("Value '%s' is invalid for property 'com_adjust'!" % com_adjust_str)
+					_log_error("Value '%s' is invalid for property 'com_adjust'!" % com_adjust_str)
 			
 			# If the file has been imported before, check that the custom scene
 			# has a cached geometry data file (.geo), so we do not have to go
@@ -1015,9 +1009,9 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 						
 						file_was_read = true
 					else:
-						push_error("Geometry data in '%s' is not length 3!" % geo_file_path)
+						_log_error("Geometry data in '%s' is not length 3!" % geo_file_path)
 				else:
-					push_error("Failed to open '%s'! (error: %d)" % [geo_file_path, err])
+					_log_error("Failed to open '%s'! (error: %d)" % [geo_file_path, err])
 			
 			if not file_was_read:
 				var custom_scene = load(to).instance()
@@ -1034,7 +1028,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 						bounding_box_max ])
 					geo_file.close()
 				else:
-					push_error("Failed to open '%s'! (error: %d)" % [geo_file_path, err])
+					_log_error("Failed to open '%s'! (error: %d)" % [geo_file_path, err])
 			
 			# For convenience, we'll scale the geometry data here by the scale
 			# value so we don't need to do it every time we use the data.
@@ -1099,7 +1093,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				"strength", 1.0)
 		
 		if strength < 0.0:
-			push_error("Skybox ambient light strength cannot be negative!")
+			_log_error("Skybox ambient light strength cannot be negative!")
 			strength = 1.0
 		
 		entry["default"] = default
@@ -1118,7 +1112,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				"bounce", 0.5)
 		
 		if bounce < 0.0 or bounce > 1.0:
-			push_error("Table bounce value must be between 0.0 and 1.0!")
+			_log_error("Table bounce value must be between 0.0 and 1.0!")
 			bounce = 0.5
 		
 		var default: bool = _get_file_config_value(config, from.get_file(),
@@ -1127,29 +1121,29 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				"hands", [])
 		
 		if hands.empty():
-			push_warning("No hand positions have been configured!")
+			_log_warning("No hand positions have been configured!")
 		else:
 			for hand in hands:
 				if hand is Dictionary:
 					if hand.has("pos"):
 						if not hand["pos"] is Vector3:
-							push_error("'pos' key in hand position is not a Vector3!")
+							_log_error("'pos' key in hand position is not a Vector3!")
 					else:
-						push_error("Hand position missing 'pos' key!")
+						_log_error("Hand position missing 'pos' key!")
 						
 					if hand.has("dir"):
 						if not (hand["dir"] is float or hand["dir"] is int):
-							push_error("'dir' key in hand position is not a number!")
+							_log_error("'dir' key in hand position is not a number!")
 					else:
-						push_error("Hand position missing 'dir' key!")
+						_log_error("Hand position missing 'dir' key!")
 				else:
-					push_error("Hand position is not a dictionary!")
+					_log_error("Hand position is not a dictionary!")
 		
 		var paint_plane: Vector2 = _get_file_config_value(config, from.get_file(),
 				"paint_plane", 100.0 * Vector2.ONE)
 		
 		if paint_plane.x <= 0.0 or paint_plane.y <= 0.0:
-			push_error("Paint plane size must be positive!")
+			_log_error("Paint plane size must be positive!")
 			paint_plane = 100.0 * Vector2.ONE
 		
 		entry["bounce"] = bounce
@@ -1193,13 +1187,13 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				"mass", 1.0)
 		
 		if mass < 0.0:
-			push_error("Mass cannot be negative!")
+			_log_error("Mass cannot be negative!")
 			mass = 10.0
 		
 		var sfx: String = _get_file_config_value(config, from.get_file(), "sfx", "")
 		if not sfx.empty():
 			if not sfx in SFX_AUDIO_STREAMS:
-				push_error("SFX value does not match any existing preset!")
+				_log_error("SFX value does not match any existing preset!")
 				sfx = ""
 		if sfx.empty():
 			# Certain pieces already have their own sound effects - don't
@@ -1221,7 +1215,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 			
 			if not back_path.empty():
 				if "/" in back_path or "\\" in back_path:
-					push_error("'%s' is invalid - back_face cannot point to another folder!" % back_path)
+					_log_error("'%s' is invalid - back_face cannot point to another folder!" % back_path)
 				else:
 					back_path = from.get_base_dir() + "/" + back_path
 					var back_to = dir.get_current_dir() + "/" + back_path.get_file()
@@ -1231,7 +1225,7 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 						entry["texture_path_1"] = back_to
 						print("Loaded back face: %s" % back_path)
 					else:
-						push_error("Failed to import '%s' (error %d)!" % [back_path, back_err])
+						_log_error("Failed to import '%s' (error %d)!" % [back_path, back_err])
 			else:
 				entry["texture_path_1"] = ""
 		
@@ -1263,18 +1257,18 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 				if face_values.size() == num_faces:
 					for key in face_values:
 						if not (key is int or key is float):
-							push_error("Key in face_values entry is not a number! (%s)" % str(key))
+							_log_error("Key in face_values entry is not a number! (%s)" % str(key))
 							return ERR_INVALID_DATA
 						
 						var value = face_values[key]
 						if not value is Vector2:
-							push_error("Value in face_values entry is not a Vector2! (%s)" % str(value))
+							_log_error("Value in face_values entry is not a Vector2! (%s)" % str(value))
 							return ERR_INVALID_DATA
 						
 						var normal_vec = _precalculate_face_value_normal(value)
 						face_values_entry[key] = normal_vec
 				else:
-					push_error("Number of entries for face_values (%d) does not match the number of faces (%d)!" %
+					_log_error("Number of entries for face_values (%d) does not match the number of faces (%d)!" %
 						[face_values.size(), num_faces])
 					return ERR_INVALID_DATA
 			
@@ -1292,13 +1286,13 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 			if value is Reference:
 				value = null
 			elif not (value is int or value is float or value is String):
-					push_error("Value must be a number or a string!")
+					_log_error("Value must be a number or a string!")
 					return ERR_INVALID_DATA
 			
 			if suit is Reference:
 				suit = null
 			elif not (suit is int or suit is float or suit is String):
-					push_error("Suit must be a number or a string!")
+					_log_error("Suit must be a number or a string!")
 					return ERR_INVALID_DATA
 			
 			entry["value"] = value
@@ -1343,7 +1337,7 @@ func _import_file(from: String, to: String) -> int:
 			if src == from:
 				force_copy = false
 		else:
-			push_error("Failed to open %s (error %d)" % [to + ".src", err])
+			_log_error("Failed to open %s (error %d)" % [to + ".src", err])
 	
 	var copy_err = Global.tabletop_importer.copy_file(from, to, force_copy)
 	
@@ -1356,7 +1350,7 @@ func _import_file(from: String, to: String) -> int:
 				src_file.store_line(from)
 				src_file.close()
 			else:
-				push_error("Failed to open %s (error %d)" % [to + ".src", err])
+				_log_error("Failed to open %s (error %d)" % [to + ".src", err])
 		
 		# With Wavefront files, there's an annoying thing where it will only
 		# look for the material file relative to the current working directory.
@@ -1377,9 +1371,9 @@ func _import_file(from: String, to: String) -> int:
 					obj_file.store_string(obj_contents)
 					obj_file.close()
 				else:
-					push_error("Could not write to file at '%s'." % to)
+					_log_error("Could not write to file at '%s'." % to)
 			else:
-				push_error("Could not read file at '%s'." % to)
+				_log_error("Could not read file at '%s'." % to)
 		
 		# With .mtl material files, the "Ka" property gives a warning in Godot,
 		# saying that ambient light is ignored in PBR - so we'll comment out the
@@ -1398,9 +1392,9 @@ func _import_file(from: String, to: String) -> int:
 					mtl_file.store_string(mtl_contents)
 					mtl_file.close()
 				else:
-					push_error("Could not write to file at '%s'." % to)
+					_log_error("Could not write to file at '%s'." % to)
 			else:
-				push_error("Could not read file at '%s'." % to)
+				_log_error("Could not read file at '%s'." % to)
 	
 	if EXTENSIONS_TO_IMPORT.has(from.get_extension()):
 		return Global.tabletop_importer.import(to)
@@ -1431,11 +1425,11 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 							scale = entry["scale"]
 						else:
 							if entry["scale"] != scale:
-								push_error("'%s' has inconsistent scale in stack '%s'!" % [item, stack_name])
+								_log_error("'%s' has inconsistent scale in stack '%s'!" % [item, stack_name])
 								continue
 						entry_names.append(item)
 					else:
-						push_error("Item '%s' in stack '%s' does not exist!" % [item, stack_name])
+						_log_error("Item '%s' in stack '%s' does not exist!" % [item, stack_name])
 				
 				if scale != null:
 					var type_meta = ASSET_PACK_SUBFOLDERS[type]
@@ -1452,11 +1446,11 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 					# order, so add all of the stacks after we're done.
 					stack_entries.append(stack_entry)
 				else:
-					push_error("Could not determine the scale of stack '%s'!" % stack_name)
+					_log_error("Could not determine the scale of stack '%s'!" % stack_name)
 			else:
-				push_error("Items property of '%s' is not an array!" % stack_name)
+				_log_error("Items property of '%s' is not an array!" % stack_name)
 		else:
-			push_error("'%s' has no 'items' property!" % stack_name)
+			_log_error("'%s' has no 'items' property!" % stack_name)
 	
 	if not stack_entries.empty():
 		for stack_entry in stack_entries:
@@ -1470,7 +1464,7 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 # entry: The entry to check.
 func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 	if not type in ASSET_PACK_SUBFOLDERS:
-		push_error("Type %s is invalid!" % type)
+		_log_error("Type %s is invalid!" % type)
 		return false
 	
 	var asset_type: int     = ASSET_PACK_SUBFOLDERS[type]["type"]
@@ -1531,16 +1525,16 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 	if entry_keys.hash() != expected_keys.hash():
 		for key in expected_keys:
 			if not key in entry_keys:
-				push_error("Key '%s' not found in entry!" % key)
+				_log_error("Key '%s' not found in entry!" % key)
 		for key in entry_keys:
 			if not key in expected_keys:
-				push_error("Key '%s' was not expected!" % key)
+				_log_error("Key '%s' was not expected!" % key)
 		return false
 	
 	for key in entry:
 		# Very unlikely to ever be the case, but just in case!
 		if typeof(key) != TYPE_STRING:
-			push_error("Key in entry is not a string!")
+			_log_error("Key in entry is not a string!")
 			return false
 		
 		var value = entry[key]
@@ -1548,104 +1542,104 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 		match key:
 			"audio_path":
 				if typeof(value) != TYPE_STRING:
-					push_error("'audio_path' in entry is not a string!")
+					_log_error("'audio_path' in entry is not a string!")
 					return false
 				
 				if not _is_valid_path(value, VALID_AUDIO_EXTENSIONS):
-					push_error("'audio_path' in entry is not a valid path!")
+					_log_error("'audio_path' in entry is not a valid path!")
 					return false
 			"author":
 				if typeof(value) != TYPE_STRING:
-					push_error("'author' in entry is not a string!")
+					_log_error("'author' in entry is not a string!")
 					return false
 			"avg_point":
 				if typeof(value) != TYPE_VECTOR3:
-					push_error("'avg_point' in entry is not a Vector3!")
+					_log_error("'avg_point' in entry is not a Vector3!")
 					return false
 			"bounce":
 				if typeof(value) != TYPE_REAL:
-					push_error("'bounce' in entry is not a float!")
+					_log_error("'bounce' in entry is not a float!")
 					return false
 				
 				if value < 0.0 or value > 1.0:
-					push_error("'bounce' in entry must be between 0.0 and 1.0!")
+					_log_error("'bounce' in entry must be between 0.0 and 1.0!")
 					return false
 			"bounding_box":
 				if typeof(value) != TYPE_ARRAY:
-					push_error("'bounding_box' in entry is not an array!")
+					_log_error("'bounding_box' in entry is not an array!")
 					return false
 				
 				if value.size() != 2:
-					push_error("'bounding_box' array in entry is not of size 2!")
+					_log_error("'bounding_box' array in entry is not of size 2!")
 					return false
 				
 				if typeof(value[0]) != TYPE_VECTOR3:
-					push_error("First element of 'bounding_box' in entry is not a Vector3!")
+					_log_error("First element of 'bounding_box' in entry is not a Vector3!")
 					return false
 				
 				if typeof(value[1]) != TYPE_VECTOR3:
-					push_error("Second element of 'bounding_box' in entry is not a Vector3!")
+					_log_error("Second element of 'bounding_box' in entry is not a Vector3!")
 					return false
 				
 				if (value[1] - value[0]).sign() != Vector3.ONE:
-					push_error("'bounding_box' in entry is invalid!")
+					_log_error("'bounding_box' in entry is invalid!")
 					return false
 			"collision_mode":
 				if typeof(value) != TYPE_INT:
-					push_error("'collision_mode' in entry is not an integer!")
+					_log_error("'collision_mode' in entry is not an integer!")
 					return false
 				
 				if value < PieceBuilder.COLLISION_CONVEX or value > PieceBuilder.COLLISION_CONCAVE:
-					push_error("'collision_mode' in entry is invalid!")
+					_log_error("'collision_mode' in entry is invalid!")
 					return false
 				
 				if type == "tables" and value == PieceBuilder.COLLISION_CONCAVE:
-					push_error("'collision_mode' in entry is concave, but entry is for a table!")
+					_log_error("'collision_mode' in entry is concave, but entry is for a table!")
 					return false
 			"com_adjust":
 				if typeof(value) != TYPE_INT:
-					push_error("'com_adjust' in entry is not an integer!")
+					_log_error("'com_adjust' in entry is not an integer!")
 					return false
 				
 				if value < PieceBuilder.COM_ADJUST_OFF or value > PieceBuilder.COM_ADJUST_GEOMETRY:
-					push_error("'com_adjust' in entry is invalid!")
+					_log_error("'com_adjust' in entry is invalid!")
 					return false
 			"color":
 				if typeof(value) != TYPE_COLOR:
-					push_error("'color' in entry is not a color!")
+					_log_error("'color' in entry is not a color!")
 					return false
 			
 				if value.a != 1.0:
-					push_error("'color' in entry cannot be transparent!")
+					_log_error("'color' in entry cannot be transparent!")
 					return false
 			"default":
 				if typeof(value) != TYPE_BOOL:
-					push_error("'default' in entry is not a boolean!")
+					_log_error("'default' in entry is not a boolean!")
 					return false
 			"desc":
 				if typeof(value) != TYPE_STRING:
-					push_error("'desc' in entry is not a string!")
+					_log_error("'desc' in entry is not a string!")
 					return false
 			"entry_names":
 				if typeof(value) != TYPE_ARRAY:
-					push_error("'entry_names' in entry is not an array!")
+					_log_error("'entry_names' in entry is not an array!")
 					return false
 				
 				if value.empty():
-					push_error("'entry_names' in entry cannot be empty!")
+					_log_error("'entry_names' in entry cannot be empty!")
 					return false
 				
 				for element in value:
 					if typeof(element) != TYPE_STRING:
-						push_error("'entry_names' element in entry is not a string!")
+						_log_error("'entry_names' element in entry is not a string!")
 						return false
 					
 					var db = get_db()
 					if not db.has(pack):
-						push_error("Pack '%s' does not exist in the AssetDB!" % pack)
+						_log_error("Pack '%s' does not exist in the AssetDB!" % pack)
 						return false
 					if not db[pack].has(type):
-						push_error("Type '%s/%s' does not exist in the AssetDB!" % [pack, type])
+						_log_error("Type '%s/%s' does not exist in the AssetDB!" % [pack, type])
 						return false
 					
 					var type_arr: Array = db[pack][type]
@@ -1657,15 +1651,15 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 							element_valid = true
 					
 					if not element_valid:
-						push_error("Element '%s' in stack entry was not found in '%s/%s'!" % [element, pack, type])
+						_log_error("Element '%s' in stack entry was not found in '%s/%s'!" % [element, pack, type])
 			"entry_path":
 				if typeof(value) != TYPE_STRING:
-					push_error("'entry_path' in entry is not a string!")
+					_log_error("'entry_path' in entry is not a string!")
 					return false
 				# We'll check if it's the value we expect later!
 			"face_values":
 				if typeof(value) != TYPE_DICTIONARY:
-					push_error("'face_values' in entry is not a dictionary!")
+					_log_error("'face_values' in entry is not a dictionary!")
 					return false
 				
 				var num_faces = 0
@@ -1683,315 +1677,315 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 					num_faces = 20
 				
 				if value.size() != num_faces:
-					push_error("'face_values' dictionary in entry is not the expected size (%d)!" % num_faces)
+					_log_error("'face_values' dictionary in entry is not the expected size (%d)!" % num_faces)
 					return false
 				
 				for element_key in value:
 					if not (typeof(element_key) == TYPE_INT or typeof(element_key) == TYPE_REAL):
-						push_error("'face_values' key in entry is not a number!")
+						_log_error("'face_values' key in entry is not a number!")
 						return false
 					
 					var element_value = value[element_key]
 					if typeof(element_value) != TYPE_VECTOR3:
-						push_error("'face_values' value in entry is not a Vector3!")
+						_log_error("'face_values' value in entry is not a Vector3!")
 						return false
 					
 					if not is_equal_approx(element_value.length_squared(), 1.0):
-						push_error("'face_values' vector in entry is not unit length!")
+						_log_error("'face_values' vector in entry is not unit length!")
 						return false
 			"hands":
 				if typeof(value) != TYPE_ARRAY:
-					push_error("'hands' in entry is not an array!")
+					_log_error("'hands' in entry is not an array!")
 					return false
 				
 				for element in value:
 					if typeof(element) != TYPE_DICTIONARY:
-						push_error("'hands' element is not a dictionary!")
+						_log_error("'hands' element is not a dictionary!")
 						return false
 					
 					if element.size() != 2:
-						push_error("'hands' element must be size 2 (is %d)!" % [element.size()])
+						_log_error("'hands' element must be size 2 (is %d)!" % [element.size()])
 						return false
 					
 					if not element.has("pos"):
-						push_error("'hands' does not contain 'pos' key!")
+						_log_error("'hands' does not contain 'pos' key!")
 						return false
 					
 					if not element.has("dir"):
-						push_error("'hands' does not contain 'dir' key!")
+						_log_error("'hands' does not contain 'dir' key!")
 						return false
 					
 					var pos = element["pos"]
 					if typeof(pos) != TYPE_VECTOR3:
-						push_error("'pos' element in 'hands' is not a Vector3!")
+						_log_error("'pos' element in 'hands' is not a Vector3!")
 						return false
 					
 					var dir = element["dir"]
 					if not (typeof(dir) == TYPE_INT or typeof(dir) == TYPE_REAL):
-						push_error("'dir' element in 'hands' is not a number!")
+						_log_error("'dir' element in 'hands' is not a number!")
 						return false
 			"license":
 				if typeof(value) != TYPE_STRING:
-					push_error("'license' in entry is not a string!")
+					_log_error("'license' in entry is not a string!")
 					return false
 			"main_menu":
 				if typeof(value) != TYPE_BOOL:
-					push_error("'main_menu' in entry is not a boolean!")
+					_log_error("'main_menu' in entry is not a boolean!")
 					return false
 			"mass":
 				if not (typeof(value) == TYPE_INT or typeof(value) == TYPE_REAL):
-					push_error("'mass' in entry is not a number!")
+					_log_error("'mass' in entry is not a number!")
 					return false
 				
 				if value <= 0:
-					push_error("'mass' in entry cannot be negative or zero!")
+					_log_error("'mass' in entry cannot be negative or zero!")
 					return false
 			"modified_by":
 				if typeof(value) != TYPE_STRING:
-					push_error("'modified_by' in entry is not a string!")
+					_log_error("'modified_by' in entry is not a string!")
 					return false
 			"name":
 				if typeof(value) != TYPE_STRING:
-					push_error("'name' in entry is not a string!")
+					_log_error("'name' in entry is not a string!")
 					return false
 				
 				if value.empty():
-					push_error("'name' in entry is empty!")
+					_log_error("'name' in entry is empty!")
 					return false
 				
 				if not value.is_valid_filename():
-					push_error("'name' in entry is not a valid name!")
+					_log_error("'name' in entry is not a valid name!")
 					return false
 			"paint_plane":
 				if typeof(value) != TYPE_VECTOR2:
-					push_error("'paint_plane' is not a Vector2!")
+					_log_error("'paint_plane' is not a Vector2!")
 					return false
 				
 				if value.sign() != Vector2.ONE:
-					push_error("'paint_plane' elements cannot be negative!")
+					_log_error("'paint_plane' elements cannot be negative!")
 					return false
 			"rotation":
 				if typeof(value) != TYPE_VECTOR3:
-					push_error("'rotation' in entry is not a Vector3!")
+					_log_error("'rotation' in entry is not a Vector3!")
 					return false
 			"scale":
 				if typeof(value) != TYPE_VECTOR3:
-					push_error("'scale' in entry is not a Vector3!")
+					_log_error("'scale' in entry is not a Vector3!")
 					return false
 				
 				if value.sign() != Vector3.ONE:
-					push_error("'scale' element in entry cannot be negative!")
+					_log_error("'scale' element in entry cannot be negative!")
 					return false
 			"scene_path":
 				if typeof(value) != TYPE_STRING:
-					push_error("'scene_path' in entry is not a string!")
+					_log_error("'scene_path' in entry is not a string!")
 					return false
 				
 				if asset_type == ASSET_TEXTURE:
 					if value != asset_scene:
-						push_error("'scene_path' value in entry is not expected value!")
+						_log_error("'scene_path' value in entry is not expected value!")
 						return false
 				else:
 					if not _is_valid_path(value, VALID_SCENE_EXTENSIONS):
-						push_error("'scene_path' in entry is not a valid path!")
+						_log_error("'scene_path' in entry is not a valid path!")
 						return false
 			"sfx":
 				if typeof(value) != TYPE_STRING:
-					push_error("'sfx' in entry is not a string!")
+					_log_error("'sfx' in entry is not a string!")
 					return false
 				
 				if type == "cards" or type.begins_with("dice") or type.begins_with("tokens"):
 					if not value.empty():
-						push_error("'sfx' value in entry should be empty!")
+						_log_error("'sfx' value in entry should be empty!")
 						return false
 				else:
 					if not value in SFX_AUDIO_STREAMS:
-						push_error("'sfx' value in entry does not match any preset!")
+						_log_error("'sfx' value in entry does not match any preset!")
 						return false
 			"shakable":
 				if typeof(value) != TYPE_BOOL:
-					push_error("'shakable' in entry is not a boolean!")
+					_log_error("'shakable' in entry is not a boolean!")
 					return false
 			"strength":
 				if not (typeof(value) == TYPE_INT or typeof(value) == TYPE_REAL):
-					push_error("'strength' in entry is not a number!")
+					_log_error("'strength' in entry is not a number!")
 					return false
 				
 				if value < 0.0:
-					push_error("'strength' in entry cannot be negative!")
+					_log_error("'strength' in entry cannot be negative!")
 					return false
 			"suit":
 				var t = typeof(value)
 				if not (t == TYPE_INT or t == TYPE_REAL or t == TYPE_STRING or t == TYPE_NIL):
-					push_error("'suit' in entry is not a number or a string!")
+					_log_error("'suit' in entry is not a number or a string!")
 					return false
 			"table_path":
 				if typeof(value) != TYPE_STRING:
-					push_error("'table_path' in entry is not a string!")
+					_log_error("'table_path' in entry is not a string!")
 					return false
 				
 				if not _is_valid_path(value, VALID_TABLE_EXTENSIONS):
-					push_error("'table_path' in entry is not a valid path!")
+					_log_error("'table_path' in entry is not a valid path!")
 					return false
 			"template_path":
 				if typeof(value) != TYPE_STRING:
-					push_error("'template_path' in entry is not a string!")
+					_log_error("'template_path' in entry is not a string!")
 					return false
 				
 				if not _is_valid_path(value, VALID_TEXTURE_EXTENSIONS + ["txt"]):
-					push_error("'template_path' in entry is not a valid path!")
+					_log_error("'template_path' in entry is not a valid path!")
 					return false
 			"textboxes":
 				if typeof(value) != TYPE_DICTIONARY:
-					push_error("'textboxes' in entry is not a dictionary!")
+					_log_error("'textboxes' in entry is not a dictionary!")
 					return false
 				
 				if not value.empty():
 					var template_path = entry["template_path"]
 					if typeof(template_path) != TYPE_STRING:
-						push_error("'template_path' in entry is not a string!")
+						_log_error("'template_path' in entry is not a string!")
 						return false
 					
 					if template_path.get_extension() == "txt":
-						push_error("Text templates cannot have textboxes!")
+						_log_error("Text templates cannot have textboxes!")
 						return false
 				
 				for id in value:
 					if typeof(id) != TYPE_STRING:
-						push_error("Textbox ID is not a string!")
+						_log_error("Textbox ID is not a string!")
 						return false
 					
 					if not id.is_valid_identifier():
-						push_error("Textbox ID '%s' is not a valid ID!" % id)
+						_log_error("Textbox ID '%s' is not a valid ID!" % id)
 						return false
 					
 					var subvalue = value[id]
 					if typeof(subvalue) != TYPE_DICTIONARY:
-						push_error("Textbox entry in 'textboxes' is not a dictionary!")
+						_log_error("Textbox entry in 'textboxes' is not a dictionary!")
 						return false
 					
 					if subvalue.size() != 7:
-						push_error("Invalid number of elements %d for textbox entry!" % subvalue.size())
+						_log_error("Invalid number of elements %d for textbox entry!" % subvalue.size())
 						return false
 					
 					if not subvalue.has("x"):
-						push_error("Textbox entry does not contain element 'x'!")
+						_log_error("Textbox entry does not contain element 'x'!")
 						return false
 					var x = subvalue["x"]
 					if typeof(x) != TYPE_INT:
-						push_error("Textbox element 'x' is not an integer!")
+						_log_error("Textbox element 'x' is not an integer!")
 						return false
 					if x < 0:
-						push_error("Invalid value %d for textbox element 'x'!" % x)
+						_log_error("Invalid value %d for textbox element 'x'!" % x)
 						return false
 					
 					if not subvalue.has("y"):
-						push_error("Textbox entry does not contain element 'y'!")
+						_log_error("Textbox entry does not contain element 'y'!")
 						return false
 					var y = subvalue["y"]
 					if typeof(y) != TYPE_INT:
-						push_error("Textbox element 'y' is not an integer!")
+						_log_error("Textbox element 'y' is not an integer!")
 						return false
 					if y < 0:
-						push_error("Invalid value %d for textbox element 'y'!" % y)
+						_log_error("Invalid value %d for textbox element 'y'!" % y)
 						return false
 					
 					if not subvalue.has("w"):
-						push_error("Textbox entry does not contain element 'w'!")
+						_log_error("Textbox entry does not contain element 'w'!")
 						return false
 					var w = subvalue["w"]
 					if typeof(w) != TYPE_INT:
-						push_error("Textbox element 'w' is not an integer!")
+						_log_error("Textbox element 'w' is not an integer!")
 						return false
 					if w < 10:
-						push_error("Invalid value %d for textbox element 'w'!" % w)
+						_log_error("Invalid value %d for textbox element 'w'!" % w)
 						return false
 					
 					if not subvalue.has("h"):
-						push_error("Textbox entry does not contain element 'h'!")
+						_log_error("Textbox entry does not contain element 'h'!")
 						return false
 					var h = subvalue["h"]
 					if typeof(h) != TYPE_INT:
-						push_error("Textbox element 'h' is not an integer!")
+						_log_error("Textbox element 'h' is not an integer!")
 						return false
 					if h < 10:
-						push_error("Invalid value %d for textbox element 'h'!" % h)
+						_log_error("Invalid value %d for textbox element 'h'!" % h)
 						return false
 					
 					if not subvalue.has("rot"):
-						push_error("Textbox entry does not contain element 'rot'!")
+						_log_error("Textbox entry does not contain element 'rot'!")
 						return false
 					var rot = subvalue["rot"]
 					if not (typeof(rot) == TYPE_INT or typeof(rot) == TYPE_REAL):
-						push_error("Textbox element 'rot' is not a number!")
+						_log_error("Textbox element 'rot' is not a number!")
 						return false
 					if is_nan(rot) or is_inf(rot):
-						push_error("Invalid value for textbox element 'rot'!")
+						_log_error("Invalid value for textbox element 'rot'!")
 						return false
 					
 					if not subvalue.has("text"):
-						push_error("Textbox entry does not contain element 'text'!")
+						_log_error("Textbox entry does not contain element 'text'!")
 						return false
 					var text = subvalue["text"]
 					if typeof(text) != TYPE_STRING:
-						push_error("Textbox element 'text' is not a string!")
+						_log_error("Textbox element 'text' is not a string!")
 						return false
 					
 					if not subvalue.has("lines"):
-						push_error("Textbox entry does not contain element 'lines'!")
+						_log_error("Textbox entry does not contain element 'lines'!")
 						return false
 					var lines = subvalue["lines"]
 					if typeof(lines) != TYPE_INT:
-						push_error("Textbox element 'lines' is not an integer!")
+						_log_error("Textbox element 'lines' is not an integer!")
 						return false
 					if lines < 1:
-						push_error("Invalid value %d for textbox element 'lines'!" % lines)
+						_log_error("Invalid value %d for textbox element 'lines'!" % lines)
 						return false
 					var max_lines = floor((float(h) - 9.0) / 10.0)
 					max_lines = int(max(max_lines, 1.0))
 					if lines > max_lines:
-						push_error("Invalid number of lines for textbox! (lines = %d, max = %d)" % [
+						_log_error("Invalid number of lines for textbox! (lines = %d, max = %d)" % [
 								lines, max_lines])
 						return false
 			"texture_path":
 				if asset_type == ASSET_SCENE:
 					if typeof(value) != TYPE_NIL:
-						push_error("'texture_path' in scene entry is not null!")
+						_log_error("'texture_path' in scene entry is not null!")
 						return false
 				else:
 					if typeof(value) != TYPE_STRING:
-						push_error("'texture_path' in entry is not a string!")
+						_log_error("'texture_path' in entry is not a string!")
 						return false
 					
 					if not _is_valid_path(value, VALID_TEXTURE_EXTENSIONS):
-						push_error("'texture_path' in entry is not a valid path!")
+						_log_error("'texture_path' in entry is not a valid path!")
 						return false
 			"texture_path_1":
 				if typeof(value) != TYPE_STRING:
-					push_error("'texture_path_1' in entry is not a string!")
+					_log_error("'texture_path_1' in entry is not a string!")
 					return false
 				
 				if not (value.empty() or _is_valid_path(value, VALID_TEXTURE_EXTENSIONS)):
-					push_error("'texture_path_1' in entry is not a valid path!")
+					_log_error("'texture_path_1' in entry is not a valid path!")
 					return false
 			"url":
 				if typeof(value) != TYPE_STRING:
-					push_error("'url' in entry is not a string!")
+					_log_error("'url' in entry is not a string!")
 					return false
 			"value":
 				var t = typeof(value)
 				if not (t == TYPE_INT or t == TYPE_REAL or t == TYPE_STRING or t == TYPE_NIL):
-					push_error("'value' in entry is not a number or a string!")
+					_log_error("'value' in entry is not a number or a string!")
 					return false
 			_:
-				push_error("Unknown key '%s' in entry!" % key)
+				_log_error("Unknown key '%s' in entry!" % key)
 				return false
 	
 	var entry_name = entry["name"]
 	var entry_path = entry["entry_path"]
 	var expected_entry_path = "%s/%s/%s" % [pack, type, entry_name]
 	if entry_path != expected_entry_path:
-		push_error("Entry 'entry_path' (%s) does not match expected value (%s)!" % [
+		_log_error("Entry 'entry_path' (%s) does not match expected value (%s)!" % [
 			entry_path, expected_entry_path])
 		return false
 	
@@ -2042,7 +2036,7 @@ func _parse_tr_file(pack: String, type: String, config: ConfigFile, locale: Stri
 					else:
 						push_error("%s under %s is not text!" % [key, asset_name])
 		else:
-			push_warning("Asset %s was not found in %s/%s, ignoring." % [asset_name, pack, type])
+			push_error("Asset %s was not found in %s/%s, ignoring." % [asset_name, pack, type])
 
 # Function used to convert rotation transforms in the form of a Vector2 into
 # a Vector3 representing the normal vector of the corresponding face.
@@ -2074,7 +2068,7 @@ func _remove_old_assets(catalog: Dictionary) -> void:
 			
 			pack = asset_dir.get_next()
 	else:
-		push_error("Failed to open user://assets! (error %d)" % err)
+		_log_error("Failed to open user://assets! (error %d)" % err)
 	
 	var import_dir = Directory.new()
 	err = import_dir.open("user://.import")
@@ -2106,11 +2100,11 @@ func _remove_old_assets(catalog: Dictionary) -> void:
 				if err == OK:
 					print("Removed: %s" % file)
 				else:
-					push_error("Failed to remove %s! (error: %d)" % [file, err])
+					_log_error("Failed to remove %s! (error: %d)" % [file, err])
 			
 			file = import_dir.get_next()
 	else:
-		push_error("Failed to open user://.import! (error %d)" % err)
+		_log_error("Failed to open user://.import! (error %d)" % err)
 
 # Helper function for _remove_old_assets.
 # catalog: The latest catalog of imported files.
@@ -2118,11 +2112,11 @@ func _remove_old_assets(catalog: Dictionary) -> void:
 # type: The type within the pack to clean files from.
 func _remove_old_assets_type(catalog: Dictionary, pack: String, type: String) -> void:
 	if "/" in pack or "\\" in pack:
-		push_error("Invalid pack name!")
+		_log_error("Invalid pack name!")
 		return
 	
 	if not type in ASSET_PACK_SUBFOLDERS:
-		push_error("Invalid type!")
+		_log_error("Invalid type!")
 		return
 	
 	var safe_files: Array = []
@@ -2148,7 +2142,7 @@ func _remove_old_assets_type(catalog: Dictionary, pack: String, type: String) ->
 	
 	var err = type_dir.open(type_path)
 	if err != OK:
-		push_error("Failed to open '%s'! (error: %d)" % [type_path, err])
+		_log_error("Failed to open '%s'! (error: %d)" % [type_path, err])
 		return
 	
 	var files_to_remove = []
@@ -2193,7 +2187,7 @@ func _remove_old_assets_type(catalog: Dictionary, pack: String, type: String) ->
 		if err == OK:
 			print("Removed: %s/%s/%s" % [pack, type, goodbye])
 		else:
-			push_error("Failed to remove %s! (error: %d)" % [goodbye, err])
+			_log_error("Failed to remove %s! (error: %d)" % [goodbye, err])
 
 # Function used to binary search an array of asset entries by name.
 func _search_assets(element: Dictionary, search: String) -> bool:
@@ -2232,8 +2226,8 @@ func _on_exiting_tree() -> void:
 	if _import_thread.is_active():
 		_import_thread.wait_to_finish()
 
-func _on_error_received(_func: String, _file: String, _line: int, error: String,
-		_errorexp: String):
+func _log_error(error: String):
+	push_error(error)
 	_import_err_mutex.lock()
 	if not _import_err_source.empty():
 		var err = "E: %s" % error
@@ -2242,8 +2236,8 @@ func _on_error_received(_func: String, _file: String, _line: int, error: String,
 		_import_err_dict[_import_err_source].push_back(err)
 	_import_err_mutex.unlock()
 
-func _on_warning_received(_func: String, _file: String, _line: int, error: String,
-		_errorexp: String):
+func _log_warning(error: String):
+	push_warning(error)
 	_import_err_mutex.lock()
 	if not _import_err_source.empty():
 		var err = "W: %s" % error
