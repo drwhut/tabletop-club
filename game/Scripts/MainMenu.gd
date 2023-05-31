@@ -110,6 +110,7 @@ func _update_credits_text() -> void:
 	credits_text = credits_text.replace("INDONESIAN", tr("Indonesian"))
 	credits_text = credits_text.replace("ITALIAN", tr("Italian"))
 	credits_text = credits_text.replace("NORWEGIAN", tr("Norwegian"))
+	credits_text = credits_text.replace("POLISH", tr("Polish"))
 	credits_text = credits_text.replace("PORTUGUESE", tr("Portuguese"))
 	credits_text = credits_text.replace("RUSSIAN", tr("Russian"))
 	credits_text = credits_text.replace("SPANISH", tr("Spanish"))

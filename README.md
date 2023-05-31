@@ -41,14 +41,15 @@ Language         | Game               | Documentation      | Default Asset Pack
 ---------------- | ------------------ | ------------------ | ------------------
 English          | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Dutch            | :heavy_check_mark: | :x:                | :heavy_check_mark:
-Esperanto        | 94%                | :x:                | 83%
-French           | 88%                | :x:                | 73%
-German           | 95%                | :x:                | 84%
-Indonesian       | 56%                | :x:                | :x:
+Esperanto        | 94%                | :x:                | 99%
+French           | 99%                | :x:                | 99%
+German           | 99%                | :x:                | 99%
+Indonesian       | 55%                | :x:                | :x:
 Italian          | 88%                | :x:                | :x:
-Norwegian Bokmål | :heavy_check_mark: | :x:                | 89%
-Portuguese       | 86%                | :x:                | :heavy_check_mark:
-Russian          | 94%                | 90%                | 83%
+Norwegian Bokmål | 99%                | :x:                | 89%
+Polish           | 71%                | :x:                | :x:
+Portuguese       | 85%                | :x:                | 99%
+Russian          | 94%                | 90%                | 82%
 Spanish          | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 
 If you want to help translate the project, you can go to the project's

@@ -37,6 +37,7 @@ var LOCALES = [
 	{ "locale": "it", "name": "Italiano" },
 	{ "locale": "nb_NO", "name": "Norsk Bokmål" },
 	{ "locale": "nl", "name": "Nederlands" },
+	{ "locale": "pl", "name": "Polski" },
 	{ "locale": "pt", "name": "Português" },
 	{ "locale": "ru", "name": "Русский" }
 ]
