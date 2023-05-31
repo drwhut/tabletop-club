@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-20 15:31\n"
-"PO-Revision-Date: 2023-04-17 14:51+0000\n"
-"Last-Translator: kompowiec2 <diasp@o2.pl>\n"
+"POT-Creation-Date: 2023-05-09 09:03\n"
+"PO-Revision-Date: 2023-05-08 01:56+0000\n"
+"Last-Translator: Robert Wolniak <robert.wolniak@szkod.ovh>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/pl/>\n"
 "Language: pl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -58,7 +58,47 @@ msgstr "Talia kart rozmiaru pokerowego, o francuskich kolorach, bez jokerów."
 msgid "Ace of Clubs"
 msgstr "As Trefl"
 
-#: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2 ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2 ../TabletopClub/cards/Eight_of_Clubs:2 ../TabletopClub/cards/Eight_of_Diamonds:2 ../TabletopClub/cards/Eight_of_Hearts:2 ../TabletopClub/cards/Eight_of_Spades:2 ../TabletopClub/cards/Five_of_Clubs:2 ../TabletopClub/cards/Five_of_Diamonds:2 ../TabletopClub/cards/Five_of_Hearts:2 ../TabletopClub/cards/Five_of_Spades:2 ../TabletopClub/cards/Four_of_Clubs:2 ../TabletopClub/cards/Four_of_Diamonds:2 ../TabletopClub/cards/Four_of_Hearts:2 ../TabletopClub/cards/Four_of_Spades:2 ../TabletopClub/cards/Jack_of_Clubs:2 ../TabletopClub/cards/Jack_of_Diamonds:2 ../TabletopClub/cards/Jack_of_Hearts:2 ../TabletopClub/cards/Jack_of_Spades:2 ../TabletopClub/cards/Joker_Black:2 ../TabletopClub/cards/Joker_Red:2 ../TabletopClub/cards/King_of_Clubs:2 ../TabletopClub/cards/King_of_Diamonds:2 ../TabletopClub/cards/King_of_Hearts:2 ../TabletopClub/cards/King_of_Spades:2 ../TabletopClub/cards/Nine_of_Clubs:2 ../TabletopClub/cards/Nine_of_Diamonds:2 ../TabletopClub/cards/Nine_of_Hearts:2 ../TabletopClub/cards/Nine_of_Spades:2 ../TabletopClub/cards/Queen_of_Clubs:2 ../TabletopClub/cards/Queen_of_Diamonds:2 ../TabletopClub/cards/Queen_of_Hearts:2 ../TabletopClub/cards/Queen_of_Spades:2 ../TabletopClub/cards/Seven_of_Clubs:2 ../TabletopClub/cards/Seven_of_Diamonds:2 ../TabletopClub/cards/Seven_of_Hearts:2 ../TabletopClub/cards/Seven_of_Spades:2 ../TabletopClub/cards/Six_of_Clubs:2 ../TabletopClub/cards/Six_of_Diamonds:2 ../TabletopClub/cards/Six_of_Hearts:2 ../TabletopClub/cards/Six_of_Spades:2 ../TabletopClub/cards/Ten_of_Clubs:2 ../TabletopClub/cards/Ten_of_Diamonds:2 ../TabletopClub/cards/Ten_of_Hearts:2 ../TabletopClub/cards/Ten_of_Spades:2 ../TabletopClub/cards/Three_of_Clubs:2 ../TabletopClub/cards/Three_of_Diamonds:2 ../TabletopClub/cards/Three_of_Hearts:2 ../TabletopClub/cards/Three_of_Spades:2 ../TabletopClub/cards/Two_of_Clubs:2 ../TabletopClub/cards/Two_of_Diamonds:2 ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
+#: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2
+#: ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2
+#: ../TabletopClub/cards/Eight_of_Clubs:2
+#: ../TabletopClub/cards/Eight_of_Diamonds:2
+#: ../TabletopClub/cards/Eight_of_Hearts:2
+#: ../TabletopClub/cards/Eight_of_Spades:2
+#: ../TabletopClub/cards/Five_of_Clubs:2
+#: ../TabletopClub/cards/Five_of_Diamonds:2
+#: ../TabletopClub/cards/Five_of_Hearts:2
+#: ../TabletopClub/cards/Five_of_Spades:2 ../TabletopClub/cards/Four_of_Clubs:2
+#: ../TabletopClub/cards/Four_of_Diamonds:2
+#: ../TabletopClub/cards/Four_of_Hearts:2
+#: ../TabletopClub/cards/Four_of_Spades:2 ../TabletopClub/cards/Jack_of_Clubs:2
+#: ../TabletopClub/cards/Jack_of_Diamonds:2
+#: ../TabletopClub/cards/Jack_of_Hearts:2
+#: ../TabletopClub/cards/Jack_of_Spades:2 ../TabletopClub/cards/Joker_Black:2
+#: ../TabletopClub/cards/Joker_Red:2 ../TabletopClub/cards/King_of_Clubs:2
+#: ../TabletopClub/cards/King_of_Diamonds:2
+#: ../TabletopClub/cards/King_of_Hearts:2
+#: ../TabletopClub/cards/King_of_Spades:2 ../TabletopClub/cards/Nine_of_Clubs:2
+#: ../TabletopClub/cards/Nine_of_Diamonds:2
+#: ../TabletopClub/cards/Nine_of_Hearts:2
+#: ../TabletopClub/cards/Nine_of_Spades:2
+#: ../TabletopClub/cards/Queen_of_Clubs:2
+#: ../TabletopClub/cards/Queen_of_Diamonds:2
+#: ../TabletopClub/cards/Queen_of_Hearts:2
+#: ../TabletopClub/cards/Queen_of_Spades:2
+#: ../TabletopClub/cards/Seven_of_Clubs:2
+#: ../TabletopClub/cards/Seven_of_Diamonds:2
+#: ../TabletopClub/cards/Seven_of_Hearts:2
+#: ../TabletopClub/cards/Seven_of_Spades:2 ../TabletopClub/cards/Six_of_Clubs:2
+#: ../TabletopClub/cards/Six_of_Diamonds:2
+#: ../TabletopClub/cards/Six_of_Hearts:2 ../TabletopClub/cards/Six_of_Spades:2
+#: ../TabletopClub/cards/Ten_of_Clubs:2 ../TabletopClub/cards/Ten_of_Diamonds:2
+#: ../TabletopClub/cards/Ten_of_Hearts:2 ../TabletopClub/cards/Ten_of_Spades:2
+#: ../TabletopClub/cards/Three_of_Clubs:2
+#: ../TabletopClub/cards/Three_of_Diamonds:2
+#: ../TabletopClub/cards/Three_of_Hearts:2
+#: ../TabletopClub/cards/Three_of_Spades:2 ../TabletopClub/cards/Two_of_Clubs:2
+#: ../TabletopClub/cards/Two_of_Diamonds:2
+#: ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
 msgid "A poker-sized French-suited playing card."
 msgstr "Karta do gry, rozmiaru pokerowego, o francuskich kolorach."
 
@@ -116,11 +156,11 @@ msgstr "Czwórka Karo"
 
 #: ../TabletopClub/cards/Four_of_Hearts:1
 msgid "Four of Hearts"
-msgstr ""
+msgstr "Czwórka Kier"
 
 #: ../TabletopClub/cards/Four_of_Spades:1
 msgid "Four of Spades"
-msgstr ""
+msgstr "Czwórka Pik"
 
 #: ../TabletopClub/cards/Jack_of_Clubs:1
 msgid "Jack of Clubs"
@@ -287,7 +327,9 @@ msgid "Villager"
 msgstr ""
 
 #: ../TabletopClub/cards/Villager:2
-msgid "Avoid being eaten by werewolves at night by voting against them during the day."
+msgid ""
+"Avoid being eaten by werewolves at night by voting against them during the "
+"day."
 msgstr ""
 
 #: ../TabletopClub/cards/Werewolf:1
@@ -295,7 +337,9 @@ msgid "Werewolf"
 msgstr ""
 
 #: ../TabletopClub/cards/Werewolf:2
-msgid "Decide who to feast upon every night with your pack, avoid suspision from villagers."
+msgid ""
+"Decide who to feast upon every night with your pack, avoid suspision from "
+"villagers."
 msgstr ""
 
 #: ../TabletopClub/containers/Pot:1
@@ -314,7 +358,12 @@ msgstr ""
 msgid "d4 (Black)"
 msgstr ""
 
-#: ../TabletopClub/dice/d4/d4_(Black):2 ../TabletopClub/dice/d4/d4_(Blue):2 ../TabletopClub/dice/d4/d4_(Brown):2 ../TabletopClub/dice/d4/d4_(Cyan):2 ../TabletopClub/dice/d4/d4_(Green):2 ../TabletopClub/dice/d4/d4_(Orange):2 ../TabletopClub/dice/d4/d4_(Pink):2 ../TabletopClub/dice/d4/d4_(Purple):2 ../TabletopClub/dice/d4/d4_(Red):2 ../TabletopClub/dice/d4/d4_(White):2 ../TabletopClub/dice/d4/d4_(Yellow):2
+#: ../TabletopClub/dice/d4/d4_(Black):2 ../TabletopClub/dice/d4/d4_(Blue):2
+#: ../TabletopClub/dice/d4/d4_(Brown):2 ../TabletopClub/dice/d4/d4_(Cyan):2
+#: ../TabletopClub/dice/d4/d4_(Green):2 ../TabletopClub/dice/d4/d4_(Orange):2
+#: ../TabletopClub/dice/d4/d4_(Pink):2 ../TabletopClub/dice/d4/d4_(Purple):2
+#: ../TabletopClub/dice/d4/d4_(Red):2 ../TabletopClub/dice/d4/d4_(White):2
+#: ../TabletopClub/dice/d4/d4_(Yellow):2
 msgid "A 4-sided die."
 msgstr ""
 
@@ -362,7 +411,13 @@ msgstr ""
 msgid "d6 (Black)"
 msgstr ""
 
-#: ../TabletopClub/dice/d6/d6_(Black):2 ../TabletopClub/dice/d6/d6_(Blue):2 ../TabletopClub/dice/d6/d6_(Brown):2 ../TabletopClub/dice/d6/d6_(Cyan):2 ../TabletopClub/dice/d6/d6_(Green):2 ../TabletopClub/dice/d6/d6_(Orange):2 ../TabletopClub/dice/d6/d6_(Pink):2 ../TabletopClub/dice/d6/d6_(Purple):2 ../TabletopClub/dice/d6/d6_(Red):2 ../TabletopClub/dice/d6/d6_(Traditional):2 ../TabletopClub/dice/d6/d6_(White):2 ../TabletopClub/dice/d6/d6_(Yellow):2
+#: ../TabletopClub/dice/d6/d6_(Black):2 ../TabletopClub/dice/d6/d6_(Blue):2
+#: ../TabletopClub/dice/d6/d6_(Brown):2 ../TabletopClub/dice/d6/d6_(Cyan):2
+#: ../TabletopClub/dice/d6/d6_(Green):2 ../TabletopClub/dice/d6/d6_(Orange):2
+#: ../TabletopClub/dice/d6/d6_(Pink):2 ../TabletopClub/dice/d6/d6_(Purple):2
+#: ../TabletopClub/dice/d6/d6_(Red):2
+#: ../TabletopClub/dice/d6/d6_(Traditional):2
+#: ../TabletopClub/dice/d6/d6_(White):2 ../TabletopClub/dice/d6/d6_(Yellow):2
 msgid "A 6-sided die."
 msgstr ""
 
@@ -414,7 +469,12 @@ msgstr ""
 msgid "d8 (Black)"
 msgstr ""
 
-#: ../TabletopClub/dice/d8/d8_(Black):2 ../TabletopClub/dice/d8/d8_(Blue):2 ../TabletopClub/dice/d8/d8_(Brown):2 ../TabletopClub/dice/d8/d8_(Cyan):2 ../TabletopClub/dice/d8/d8_(Green):2 ../TabletopClub/dice/d8/d8_(Orange):2 ../TabletopClub/dice/d8/d8_(Pink):2 ../TabletopClub/dice/d8/d8_(Purple):2 ../TabletopClub/dice/d8/d8_(Red):2 ../TabletopClub/dice/d8/d8_(White):2 ../TabletopClub/dice/d8/d8_(Yellow):2
+#: ../TabletopClub/dice/d8/d8_(Black):2 ../TabletopClub/dice/d8/d8_(Blue):2
+#: ../TabletopClub/dice/d8/d8_(Brown):2 ../TabletopClub/dice/d8/d8_(Cyan):2
+#: ../TabletopClub/dice/d8/d8_(Green):2 ../TabletopClub/dice/d8/d8_(Orange):2
+#: ../TabletopClub/dice/d8/d8_(Pink):2 ../TabletopClub/dice/d8/d8_(Purple):2
+#: ../TabletopClub/dice/d8/d8_(Red):2 ../TabletopClub/dice/d8/d8_(White):2
+#: ../TabletopClub/dice/d8/d8_(Yellow):2
 msgid "An 8-sided die."
 msgstr ""
 
@@ -462,7 +522,25 @@ msgstr ""
 msgid "d10 (Black)"
 msgstr ""
 
-#: ../TabletopClub/dice/d10/d10_(Black):2 ../TabletopClub/dice/d10/d10_(Blue):2 ../TabletopClub/dice/d10/d10_(Brown):2 ../TabletopClub/dice/d10/d10_(Cyan):2 ../TabletopClub/dice/d10/d10_(Green):2 ../TabletopClub/dice/d10/d10_(Orange):2 ../TabletopClub/dice/d10/d10_(Percent)_(Black):2 ../TabletopClub/dice/d10/d10_(Percent)_(Blue):2 ../TabletopClub/dice/d10/d10_(Percent)_(Brown):2 ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):2 ../TabletopClub/dice/d10/d10_(Percent)_(Green):2 ../TabletopClub/dice/d10/d10_(Percent)_(Orange):2 ../TabletopClub/dice/d10/d10_(Percent)_(Pink):2 ../TabletopClub/dice/d10/d10_(Percent)_(Purple):2 ../TabletopClub/dice/d10/d10_(Percent)_(Red):2 ../TabletopClub/dice/d10/d10_(Percent)_(White):2 ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):2 ../TabletopClub/dice/d10/d10_(Pink):2 ../TabletopClub/dice/d10/d10_(Purple):2 ../TabletopClub/dice/d10/d10_(Red):2 ../TabletopClub/dice/d10/d10_(White):2 ../TabletopClub/dice/d10/d10_(Yellow):2
+#: ../TabletopClub/dice/d10/d10_(Black):2 ../TabletopClub/dice/d10/d10_(Blue):2
+#: ../TabletopClub/dice/d10/d10_(Brown):2 ../TabletopClub/dice/d10/d10_(Cyan):2
+#: ../TabletopClub/dice/d10/d10_(Green):2
+#: ../TabletopClub/dice/d10/d10_(Orange):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Black):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Blue):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Brown):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Green):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Orange):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Pink):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Purple):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Red):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(White):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):2
+#: ../TabletopClub/dice/d10/d10_(Pink):2
+#: ../TabletopClub/dice/d10/d10_(Purple):2 ../TabletopClub/dice/d10/d10_(Red):2
+#: ../TabletopClub/dice/d10/d10_(White):2
+#: ../TabletopClub/dice/d10/d10_(Yellow):2
 msgid "A 10-sided die."
 msgstr ""
 
@@ -554,7 +632,14 @@ msgstr ""
 msgid "d12 (Black)"
 msgstr ""
 
-#: ../TabletopClub/dice/d12/d12_(Black):2 ../TabletopClub/dice/d12/d12_(Blue):2 ../TabletopClub/dice/d12/d12_(Brown):2 ../TabletopClub/dice/d12/d12_(Cyan):2 ../TabletopClub/dice/d12/d12_(Green):2 ../TabletopClub/dice/d12/d12_(Orange):2 ../TabletopClub/dice/d12/d12_(Pink):2 ../TabletopClub/dice/d12/d12_(Purple):2 ../TabletopClub/dice/d12/d12_(Red):2 ../TabletopClub/dice/d12/d12_(White):2 ../TabletopClub/dice/d12/d12_(Yellow):2
+#: ../TabletopClub/dice/d12/d12_(Black):2 ../TabletopClub/dice/d12/d12_(Blue):2
+#: ../TabletopClub/dice/d12/d12_(Brown):2 ../TabletopClub/dice/d12/d12_(Cyan):2
+#: ../TabletopClub/dice/d12/d12_(Green):2
+#: ../TabletopClub/dice/d12/d12_(Orange):2
+#: ../TabletopClub/dice/d12/d12_(Pink):2
+#: ../TabletopClub/dice/d12/d12_(Purple):2 ../TabletopClub/dice/d12/d12_(Red):2
+#: ../TabletopClub/dice/d12/d12_(White):2
+#: ../TabletopClub/dice/d12/d12_(Yellow):2
 msgid "A 12-sided die."
 msgstr ""
 
@@ -602,7 +687,14 @@ msgstr ""
 msgid "d20 (Black)"
 msgstr ""
 
-#: ../TabletopClub/dice/d20/d20_(Black):2 ../TabletopClub/dice/d20/d20_(Blue):2 ../TabletopClub/dice/d20/d20_(Brown):2 ../TabletopClub/dice/d20/d20_(Cyan):2 ../TabletopClub/dice/d20/d20_(Green):2 ../TabletopClub/dice/d20/d20_(Orange):2 ../TabletopClub/dice/d20/d20_(Pink):2 ../TabletopClub/dice/d20/d20_(Purple):2 ../TabletopClub/dice/d20/d20_(Red):2 ../TabletopClub/dice/d20/d20_(White):2 ../TabletopClub/dice/d20/d20_(Yellow):2
+#: ../TabletopClub/dice/d20/d20_(Black):2 ../TabletopClub/dice/d20/d20_(Blue):2
+#: ../TabletopClub/dice/d20/d20_(Brown):2 ../TabletopClub/dice/d20/d20_(Cyan):2
+#: ../TabletopClub/dice/d20/d20_(Green):2
+#: ../TabletopClub/dice/d20/d20_(Orange):2
+#: ../TabletopClub/dice/d20/d20_(Pink):2
+#: ../TabletopClub/dice/d20/d20_(Purple):2 ../TabletopClub/dice/d20/d20_(Red):2
+#: ../TabletopClub/dice/d20/d20_(White):2
+#: ../TabletopClub/dice/d20/d20_(Yellow):2
 msgid "A 20-sided die."
 msgstr ""
 
@@ -693,7 +785,11 @@ msgid "Backbay Lounge - Kevin MacLeod"
 msgstr ""
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:2
-msgid "This is cool. You can walk into a dinner party, grab a glass of prosecco, kiss the host, then casually defuse a large bomb one second before the timer runs out. That level of cool. Maybe you're not that cool, but if you adopt this as your personal theme tune, people will THINK you're that cool."
+msgid ""
+"This is cool. You can walk into a dinner party, grab a glass of prosecco, "
+"kiss the host, then casually defuse a large bomb one second before the timer "
+"runs out. That level of cool. Maybe you're not that cool, but if you adopt "
+"this as your personal theme tune, people will THINK you're that cool."
 msgstr ""
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:1
@@ -701,7 +797,11 @@ msgid "Bossa Antigua - Kevin MacLeod"
 msgstr ""
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:2
-msgid "Oh hello. I didn't see you there. Welcome to my pad. My favorite parts are the view of the beach, and this very groovy orange shag-carpeting on the walls. I still haven't been able to teach my Roombas to get up by the ceiling, though."
+msgid ""
+"Oh hello. I didn't see you there. Welcome to my pad. My favorite parts are "
+"the view of the beach, and this very groovy orange shag-carpeting on the "
+"walls. I still haven't been able to teach my Roombas to get up by the "
+"ceiling, though."
 msgstr ""
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:1
@@ -709,7 +809,14 @@ msgid "Deadly Roulette - Kevin MacLeod"
 msgstr ""
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:2
-msgid "Jazzy! Gumshoe-y! Mystery-y! I suck at making adjectives. Who needs adjectives anyway! I'm fine without adjectives. How fine without adjectives, you may ask? I can't say - as that would require some sort of descriptor! And I don't need descriptors in my writings... Maybe one... tiny little... NO! What am I thinking!? I refuse! I've completely had it with adjectives! Hah! Adverbs work perfectly fine! Woohoo! Adverbs! And before I get mail... adjectives killed my family, so I can go off on them all I want."
+msgid ""
+"Jazzy! Gumshoe-y! Mystery-y! I suck at making adjectives. Who needs "
+"adjectives anyway! I'm fine without adjectives. How fine without adjectives, "
+"you may ask? I can't say - as that would require some sort of descriptor! "
+"And I don't need descriptors in my writings... Maybe one... tiny little... "
+"NO! What am I thinking!? I refuse! I've completely had it with adjectives! "
+"Hah! Adverbs work perfectly fine! Woohoo! Adverbs! And before I get mail... "
+"adjectives killed my family, so I can go off on them all I want."
 msgstr ""
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:1
@@ -725,7 +832,12 @@ msgid "Hard Boiled - Kevin MacLeod"
 msgstr ""
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:2
-msgid "You're looking for the low-down, huh? That's going to take lettuce. You want the dope? the scoop? the skinny? Ten bucks a day plus expenses. No negotiations. I ain't no fourth-rate gumshoe - but a ducky shincracker like you already knew that... Out of curiosity, what's the word for people who overuse slang?"
+msgid ""
+"You're looking for the low-down, huh? That's going to take lettuce. You want "
+"the dope? the scoop? the skinny? Ten bucks a day plus expenses. No "
+"negotiations. I ain't no fourth-rate gumshoe - but a ducky shincracker like "
+"you already knew that... Out of curiosity, what's the word for people who "
+"overuse slang?"
 msgstr ""
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:1
@@ -733,7 +845,12 @@ msgid "In Your Arms - Kevin MacLeod"
 msgstr ""
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:2
-msgid "A piece of music from a more elegant time, 1940. This is a beautiful slow piece that will make you want to pick up some champagne and go off slow dancing with people... or penguins. I like penguins. And now some searchable words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No Whammies."
+msgid ""
+"A piece of music from a more elegant time, 1940. This is a beautiful slow "
+"piece that will make you want to pick up some champagne and go off slow "
+"dancing with people... or penguins. I like penguins. And now some searchable "
+"words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No "
+"Whammies."
 msgstr ""
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:1
@@ -741,7 +858,14 @@ msgid "Lobby Time - Kevin MacLeod"
 msgstr ""
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:2
-msgid "Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail from our cheerful bar staff (with a complimentary cheese and fruit plate before 5pm). We feature prime rib dinners every day that ends in a "
+msgid ""
+"Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern "
+"green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail "
+"from our cheerful bar staff (with a complimentary cheese and fruit plate "
+"before 5pm). We feature prime rib dinners every day that ends in a \"y\"! "
+"Remember to tip the bellhops at least 5 cents per bag. Enjoy your stay! This "
+"was written 2 years before it was published, because I didn't have a good "
+"enough upright bass sample to make it go."
 msgstr ""
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:1
@@ -757,7 +881,10 @@ msgid "Shades of Spring - Kevin MacLeod"
 msgstr ""
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:2
-msgid "Sort of a minor mid-tempo jazz combo with 2 pianos. Melody is doubled in octaves. Soloist goes outside more than the guy comping... but hey - what are soloists for?"
+msgid ""
+"Sort of a minor mid-tempo jazz combo with 2 pianos. Melody is doubled in "
+"octaves. Soloist goes outside more than the guy comping... but hey - what "
+"are soloists for?"
 msgstr ""
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:1
@@ -765,7 +892,10 @@ msgid "Smooth Lovin - Kevin MacLeod"
 msgstr ""
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:2
-msgid "This one got turned up to 11. I started producing this as a parody... then I really started liking it, so I guess it is a pastiche now? Oh, man... I wish there was an allowance for pastiche in copyright like there is for parody."
+msgid ""
+"This one got turned up to 11. I started producing this as a parody... then I "
+"really started liking it, so I guess it is a pastiche now? Oh, man... I wish "
+"there was an allowance for pastiche in copyright like there is for parody."
 msgstr ""
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:1
@@ -773,7 +903,10 @@ msgid "Spy Glass - Kevin MacLeod"
 msgstr ""
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:2
-msgid "The year is... I have no idea. Timeless. Could be now, could be in the 1950s. Super cool jazz for your hardcore detectives! Also useful for beat poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
+msgid ""
+"The year is... I have no idea. Timeless. Could be now, could be in the "
+"1950s. Super cool jazz for your hardcore detectives! Also useful for beat "
+"poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
 msgstr ""
 
 #: ../TabletopClub/pieces/Bishop_Black:1
@@ -1136,7 +1269,9 @@ msgstr ""
 msgid "1"
 msgstr "1"
 
-#: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2 ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2 ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
+#: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2
+#: ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2
+#: ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
 msgid "A poker chip."
 msgstr ""
 

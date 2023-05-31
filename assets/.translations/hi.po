@@ -1,61 +1,58 @@
 # Tabletop Club Default Asset Pack Translation Template.
-# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows.
-# Copyright (c) 2021-2022 Tabletop Club contributors (see game/CREDITS.tres).
+# Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2023 Tabletop Club contributors (see game/CREDITS.tres).
 # This file is distributed under the same license as the Tabletop Club package.
-# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2022.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 09:03\n"
-"PO-Revision-Date: 2023-05-08 01:56+0000\n"
-"Last-Translator: Reese Rivers <doormattion@gmail.com>\n"
-"Language-Team: Esperanto <https://hosted.weblate.org/projects/tabletop-club/"
-"default-asset-pack/eo/>\n"
-"Language: eo\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
 msgid "Chess Board"
-msgstr "Ŝaktabulo"
+msgstr ""
 
 #: ../TabletopClub/boards/Chess_Board:2
 msgid "An 8x8 Chess board."
-msgstr "Ŝaktabulo 8x8."
+msgstr ""
 
 #: ../TabletopClub/boards/Go_Board_(Large):1
 msgid "Go Board (Large)"
-msgstr "Go-tabulo (granda)"
+msgstr ""
 
 #: ../TabletopClub/boards/Go_Board_(Large):2
 msgid "A 19x19 Goban."
-msgstr "Tabulo por goo de 19x19."
+msgstr ""
 
 #: ../TabletopClub/boards/Go_Board_(Small):1
 msgid "Go Board (Small)"
-msgstr "Go-tabulo (malgranda)"
+msgstr ""
 
 #: ../TabletopClub/boards/Go_Board_(Small):2
 msgid "A 13x13 and 9x9 Goban."
-msgstr "Tabulo por goo de 13x13 kaj 9x9."
+msgstr ""
 
 #: ../TabletopClub/cards/52-Card_Deck:1
 msgid "52-Card Deck"
-msgstr "52-karta ludkartaro"
+msgstr ""
 
 #: ../TabletopClub/cards/52-Card_Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr "Kartaro de pokergrandaj francaj ludkartoj, sen ĵokeroj."
+msgstr ""
 
 #: ../TabletopClub/cards/Ace_of_Clubs:1
 msgid "Ace of Clubs"
-msgstr "Aso trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2
 #: ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2
@@ -99,265 +96,263 @@ msgstr "Aso trefa"
 #: ../TabletopClub/cards/Two_of_Diamonds:2
 #: ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
 msgid "A poker-sized French-suited playing card."
-msgstr "Pokergranda franca ludkarto."
+msgstr ""
 
 #: ../TabletopClub/cards/Ace_of_Diamonds:1
 msgid "Ace of Diamonds"
-msgstr "Aso karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Ace_of_Hearts:1
 msgid "Ace of Hearts"
-msgstr "Aso kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Ace_of_Spades:1
 msgid "Ace of Spades"
-msgstr "Aso pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Eight_of_Clubs:1
 msgid "Eight of Clubs"
-msgstr "Oko trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Eight_of_Diamonds:1
 msgid "Eight of Diamonds"
-msgstr "Oko karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Eight_of_Hearts:1
 msgid "Eight of Hearts"
-msgstr "Oko kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Eight_of_Spades:1
 msgid "Eight of Spades"
-msgstr "Oko pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Five_of_Clubs:1
 msgid "Five of Clubs"
-msgstr "Kvino trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Five_of_Diamonds:1
 msgid "Five of Diamonds"
-msgstr "Kvino karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Five_of_Hearts:1
 msgid "Five of Hearts"
-msgstr "Kvino kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Five_of_Spades:1
 msgid "Five of Spades"
-msgstr "Kvino pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Four_of_Clubs:1
 msgid "Four of Clubs"
-msgstr "Kvaro trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Four_of_Diamonds:1
 msgid "Four of Diamonds"
-msgstr "Kvaro karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Four_of_Hearts:1
 msgid "Four of Hearts"
-msgstr "Kvaro kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Four_of_Spades:1
 msgid "Four of Spades"
-msgstr "Kvaro pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Jack_of_Clubs:1
 msgid "Jack of Clubs"
-msgstr "Bubo trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Jack_of_Diamonds:1
 msgid "Jack of Diamonds"
-msgstr "Bubo karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Jack_of_Hearts:1
 msgid "Jack of Hearts"
-msgstr "Bubo kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Jack_of_Spades:1
 msgid "Jack of Spades"
-msgstr "Bubo pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Joker_Black:1
 msgid "Joker Black"
-msgstr "Ĵokero nigra"
+msgstr ""
 
 #: ../TabletopClub/cards/Joker_Red:1
 msgid "Joker Red"
-msgstr "Ĵokero ruĝa"
+msgstr ""
 
 #: ../TabletopClub/cards/King_of_Clubs:1
 msgid "King of Clubs"
-msgstr "Reĝo trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/King_of_Diamonds:1
 msgid "King of Diamonds"
-msgstr "Reĝo karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/King_of_Hearts:1
 msgid "King of Hearts"
-msgstr "Reĝo kera"
+msgstr ""
 
 #: ../TabletopClub/cards/King_of_Spades:1
 msgid "King of Spades"
-msgstr "Reĝo pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Nine_of_Clubs:1
 msgid "Nine of Clubs"
-msgstr "Naŭo trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Nine_of_Diamonds:1
 msgid "Nine of Diamonds"
-msgstr "Naŭo karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Nine_of_Hearts:1
 msgid "Nine of Hearts"
-msgstr "Naŭo kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Nine_of_Spades:1
 msgid "Nine of Spades"
-msgstr "Naŭo pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Queen_of_Clubs:1
 msgid "Queen of Clubs"
-msgstr "Damo trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Queen_of_Diamonds:1
 msgid "Queen of Diamonds"
-msgstr "Damo karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Queen_of_Hearts:1
 msgid "Queen of Hearts"
-msgstr "Damo kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Queen_of_Spades:1
 msgid "Queen of Spades"
-msgstr "Damo pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Seer:1
 msgid "Seer"
-msgstr "Vidanto"
+msgstr ""
 
 #: ../TabletopClub/cards/Seer:2
 msgid "Helps villagers by secretly inspecting someone's role every night."
-msgstr "Helpas vilaĝanojn, sekrete kontrolante ies rolon ĉiun nokton."
+msgstr ""
 
 #: ../TabletopClub/cards/Seven_of_Clubs:1
 msgid "Seven of Clubs"
-msgstr "Sepo trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Seven_of_Diamonds:1
 msgid "Seven of Diamonds"
-msgstr "Sepo karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Seven_of_Hearts:1
 msgid "Seven of Hearts"
-msgstr "Sepo kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Seven_of_Spades:1
 msgid "Seven of Spades"
-msgstr "Sepo pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Six_of_Clubs:1
 msgid "Six of Clubs"
-msgstr "Seso trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Six_of_Diamonds:1
 msgid "Six of Diamonds"
-msgstr "Seso karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Six_of_Hearts:1
 msgid "Six of Hearts"
-msgstr "Seso kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Six_of_Spades:1
 msgid "Six of Spades"
-msgstr "Seso pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Ten_of_Clubs:1
 msgid "Ten of Clubs"
-msgstr "Deko trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Ten_of_Diamonds:1
 msgid "Ten of Diamonds"
-msgstr "Deko karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Ten_of_Hearts:1
 msgid "Ten of Hearts"
-msgstr "Deko kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Ten_of_Spades:1
 msgid "Ten of Spades"
-msgstr "Deko pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Three_of_Clubs:1
 msgid "Three of Clubs"
-msgstr "Trio trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Three_of_Diamonds:1
 msgid "Three of Diamonds"
-msgstr "Trio karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Three_of_Hearts:1
 msgid "Three of Hearts"
-msgstr "Trio kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Three_of_Spades:1
 msgid "Three of Spades"
-msgstr "Trio pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Two_of_Clubs:1
 msgid "Two of Clubs"
-msgstr "Duo trefa"
+msgstr ""
 
 #: ../TabletopClub/cards/Two_of_Diamonds:1
 msgid "Two of Diamonds"
-msgstr "Duo karoa"
+msgstr ""
 
 #: ../TabletopClub/cards/Two_of_Hearts:1
 msgid "Two of Hearts"
-msgstr "Duo kera"
+msgstr ""
 
 #: ../TabletopClub/cards/Two_of_Spades:1
 msgid "Two of Spades"
-msgstr "Duo pika"
+msgstr ""
 
 #: ../TabletopClub/cards/Villager:1
 msgid "Villager"
-msgstr "Vilaĝano"
+msgstr ""
 
 #: ../TabletopClub/cards/Villager:2
 msgid ""
 "Avoid being eaten by werewolves at night by voting against them during the "
 "day."
 msgstr ""
-"Evitu manĝiĝi de homlupoj en la nokto, balotante kontraŭ ili dum la tago."
 
 #: ../TabletopClub/cards/Werewolf:1
 msgid "Werewolf"
-msgstr "Homlupo"
+msgstr ""
 
 #: ../TabletopClub/cards/Werewolf:2
 msgid ""
 "Decide who to feast upon every night with your pack, avoid suspision from "
 "villagers."
 msgstr ""
-"Decidu kiun fari festenaĵo ĉiun nokton, evitu suspektiĝi de la vilaĝanoj."
 
 #: ../TabletopClub/containers/Pot:1
 msgid "Pot"
-msgstr "Poto"
+msgstr ""
 
 #: ../TabletopClub/containers/Purse:1
 msgid "Purse"
-msgstr "Sako"
+msgstr ""
 
 #: ../TabletopClub/containers/Red_Cup:1
 msgid "Red Cup"
-msgstr "Ruĝa taso"
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(Black):1
 msgid "d4 (Black)"
-msgstr "d4 (nigra)"
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(Black):2 ../TabletopClub/dice/d4/d4_(Blue):2
 #: ../TabletopClub/dice/d4/d4_(Brown):2 ../TabletopClub/dice/d4/d4_(Cyan):2
@@ -366,51 +361,51 @@ msgstr "d4 (nigra)"
 #: ../TabletopClub/dice/d4/d4_(Red):2 ../TabletopClub/dice/d4/d4_(White):2
 #: ../TabletopClub/dice/d4/d4_(Yellow):2
 msgid "A 4-sided die."
-msgstr "4-edra ĵetpluredro."
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(Blue):1
 msgid "d4 (Blue)"
-msgstr "d4 (blua)"
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(Brown):1
 msgid "d4 (Brown)"
-msgstr "d4 (bruna)"
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(Cyan):1
 msgid "d4 (Cyan)"
-msgstr "d4 (bluverda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(Green):1
 msgid "d4 (Green)"
-msgstr "d4 (verda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(Orange):1
 msgid "d4 (Orange)"
-msgstr "d4 (oranĝkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(Pink):1
 msgid "d4 (Pink)"
-msgstr "d4 (rozkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(Purple):1
 msgid "d4 (Purple)"
-msgstr "d4 (purpura)"
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(Red):1
 msgid "d4 (Red)"
-msgstr "d4 (ruĝa)"
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(White):1
 msgid "d4 (White)"
-msgstr "d4 (blanka)"
+msgstr ""
 
 #: ../TabletopClub/dice/d4/d4_(Yellow):1
 msgid "d4 (Yellow)"
-msgstr "d4 (flava)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Black):1
 msgid "d6 (Black)"
-msgstr "d6 (nigra)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Black):2 ../TabletopClub/dice/d6/d6_(Blue):2
 #: ../TabletopClub/dice/d6/d6_(Brown):2 ../TabletopClub/dice/d6/d6_(Cyan):2
@@ -420,55 +415,55 @@ msgstr "d6 (nigra)"
 #: ../TabletopClub/dice/d6/d6_(Traditional):2
 #: ../TabletopClub/dice/d6/d6_(White):2 ../TabletopClub/dice/d6/d6_(Yellow):2
 msgid "A 6-sided die."
-msgstr "6-edra ĵetpluredro."
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Blue):1
 msgid "d6 (Blue)"
-msgstr "d6 (blua)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Brown):1
 msgid "d6 (Brown)"
-msgstr "d6 (bruna)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Cyan):1
 msgid "d6 (Cyan)"
-msgstr "d6 (bluverda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Green):1
 msgid "d6 (Green)"
-msgstr "d6 (verda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Orange):1
 msgid "d6 (Orange)"
-msgstr "d6 (oranĝkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Pink):1
 msgid "d6 (Pink)"
-msgstr "d6 (rozkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Purple):1
 msgid "d6 (Purple)"
-msgstr "d6 (purpura)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Red):1
 msgid "d6 (Red)"
-msgstr "d6 (ruĝa)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Traditional):1
 msgid "d6 (Traditional)"
-msgstr "d6 (tradicia)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(White):1
 msgid "d6 (White)"
-msgstr "d6 (blanka)"
+msgstr ""
 
 #: ../TabletopClub/dice/d6/d6_(Yellow):1
 msgid "d6 (Yellow)"
-msgstr "d6 (flava)"
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(Black):1
 msgid "d8 (Black)"
-msgstr "d8 (nigra)"
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(Black):2 ../TabletopClub/dice/d8/d8_(Blue):2
 #: ../TabletopClub/dice/d8/d8_(Brown):2 ../TabletopClub/dice/d8/d8_(Cyan):2
@@ -477,51 +472,51 @@ msgstr "d8 (nigra)"
 #: ../TabletopClub/dice/d8/d8_(Red):2 ../TabletopClub/dice/d8/d8_(White):2
 #: ../TabletopClub/dice/d8/d8_(Yellow):2
 msgid "An 8-sided die."
-msgstr "8-edra ĵetpluredro."
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(Blue):1
 msgid "d8 (Blue)"
-msgstr "d8 (blua)"
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(Brown):1
 msgid "d8 (Brown)"
-msgstr "d8 (bruna)"
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(Cyan):1
 msgid "d8 (Cyan)"
-msgstr "d8 (bluverda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(Green):1
 msgid "d8 (Green)"
-msgstr "d8 (verda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(Orange):1
 msgid "d8 (Orange)"
-msgstr "d8 (oranĝkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(Pink):1
 msgid "d8 (Pink)"
-msgstr "d8 (rozkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(Purple):1
 msgid "d8 (Purple)"
-msgstr "d8 (purpura)"
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(Red):1
 msgid "d8 (Red)"
-msgstr "d8 (ruĝa)"
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(White):1
 msgid "d8 (White)"
-msgstr "d8 (blanka)"
+msgstr ""
 
 #: ../TabletopClub/dice/d8/d8_(Yellow):1
 msgid "d8 (Yellow)"
-msgstr "d8 (flava)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Black):1
 msgid "d10 (Black)"
-msgstr "d10 (nigra)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Black):2 ../TabletopClub/dice/d10/d10_(Blue):2
 #: ../TabletopClub/dice/d10/d10_(Brown):2 ../TabletopClub/dice/d10/d10_(Cyan):2
@@ -543,95 +538,95 @@ msgstr "d10 (nigra)"
 #: ../TabletopClub/dice/d10/d10_(White):2
 #: ../TabletopClub/dice/d10/d10_(Yellow):2
 msgid "A 10-sided die."
-msgstr "10-edra ĵetpluredro."
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Blue):1
 msgid "d10 (Blue)"
-msgstr "d10 (blua)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Brown):1
 msgid "d10 (Brown)"
-msgstr "d10 (bruna)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Cyan):1
 msgid "d10 (Cyan)"
-msgstr "d10 (bluverda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Green):1
 msgid "d10 (Green)"
-msgstr "d10 (verda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Orange):1
 msgid "d10 (Orange)"
-msgstr "d10 (oranĝkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Black):1
 msgid "d10 (Percent) (Black)"
-msgstr "d10 (procentoj) (nigra)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Blue):1
 msgid "d10 (Percent) (Blue)"
-msgstr "d10 (procentoj) (blua)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Brown):1
 msgid "d10 (Percent) (Brown)"
-msgstr "d10 (procentoj) (bruna)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):1
 msgid "d10 (Percent) (Cyan)"
-msgstr "d10 (procentoj) (bluverda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Green):1
 msgid "d10 (Percent) (Green)"
-msgstr "d10 (procentoj) (verda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Orange):1
 msgid "d10 (Percent) (Orange)"
-msgstr "d10 (procentoj) (oranĝkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Pink):1
 msgid "d10 (Percent) (Pink)"
-msgstr "d10 (procentoj) (rozkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Purple):1
 msgid "d10 (Percent) (Purple)"
-msgstr "d10 (procentoj) (purpura)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Red):1
 msgid "d10 (Percent) (Red)"
-msgstr "d10 (procentoj) (ruĝa)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(White):1
 msgid "d10 (Percent) (White)"
-msgstr "d10 (procentoj) (blanka)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):1
 msgid "d10 (Percent) (Yellow)"
-msgstr "d10 (procentoj) (flava)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Pink):1
 msgid "d10 (Pink)"
-msgstr "d10 (rozkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Purple):1
 msgid "d10 (Purple)"
-msgstr "d10 (purpura)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Red):1
 msgid "d10 (Red)"
-msgstr "d10 (ruĝa)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(White):1
 msgid "d10 (White)"
-msgstr "d10 (blanka)"
+msgstr ""
 
 #: ../TabletopClub/dice/d10/d10_(Yellow):1
 msgid "d10 (Yellow)"
-msgstr "d10 (flava)"
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(Black):1
 msgid "d12 (Black)"
-msgstr "d12 (nigra)"
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(Black):2 ../TabletopClub/dice/d12/d12_(Blue):2
 #: ../TabletopClub/dice/d12/d12_(Brown):2 ../TabletopClub/dice/d12/d12_(Cyan):2
@@ -642,51 +637,51 @@ msgstr "d12 (nigra)"
 #: ../TabletopClub/dice/d12/d12_(White):2
 #: ../TabletopClub/dice/d12/d12_(Yellow):2
 msgid "A 12-sided die."
-msgstr "12-edra ĵetpluredro."
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(Blue):1
 msgid "d12 (Blue)"
-msgstr "d12 (blua)"
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(Brown):1
 msgid "d12 (Brown)"
-msgstr "d12 (bruna)"
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(Cyan):1
 msgid "d12 (Cyan)"
-msgstr "d12 (bluverda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(Green):1
 msgid "d12 (Green)"
-msgstr "d12 (verda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(Orange):1
 msgid "d12 (Orange)"
-msgstr "d12 (oranĝkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(Pink):1
 msgid "d12 (Pink)"
-msgstr "d12 (rozkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(Purple):1
 msgid "d12 (Purple)"
-msgstr "d12 (purpura)"
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(Red):1
 msgid "d12 (Red)"
-msgstr "d12 (ruĝa)"
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(White):1
 msgid "d12 (White)"
-msgstr "d12 (blanka)"
+msgstr ""
 
 #: ../TabletopClub/dice/d12/d12_(Yellow):1
 msgid "d12 (Yellow)"
-msgstr "d12 (flava)"
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(Black):1
 msgid "d20 (Black)"
-msgstr "d20 (nigra)"
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(Black):2 ../TabletopClub/dice/d20/d20_(Blue):2
 #: ../TabletopClub/dice/d20/d20_(Brown):2 ../TabletopClub/dice/d20/d20_(Cyan):2
@@ -697,95 +692,93 @@ msgstr "d20 (nigra)"
 #: ../TabletopClub/dice/d20/d20_(White):2
 #: ../TabletopClub/dice/d20/d20_(Yellow):2
 msgid "A 20-sided die."
-msgstr "20-edra ĵetpluredro."
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(Blue):1
 msgid "d20 (Blue)"
-msgstr "d20 (blua)"
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(Brown):1
 msgid "d20 (Brown)"
-msgstr "d20 (bruna)"
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(Cyan):1
 msgid "d20 (Cyan)"
-msgstr "d20 (bluverda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(Green):1
 msgid "d20 (Green)"
-msgstr "d20 (verda)"
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(Orange):1
 msgid "d20 (Orange)"
-msgstr "d20 (oranĝkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(Pink):1
 msgid "d20 (Pink)"
-msgstr "d20 (rozkolora)"
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(Purple):1
 msgid "d20 (Purple)"
-msgstr "d20 (purpura)"
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(Red):1
 msgid "d20 (Red)"
-msgstr "d20 (ruĝa)"
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(White):1
 msgid "d20 (White)"
-msgstr "d20 (blanka)"
+msgstr ""
 
 #: ../TabletopClub/dice/d20/d20_(Yellow):1
 msgid "d20 (Yellow)"
-msgstr "d20 (flava)"
+msgstr ""
 
 #: ../TabletopClub/games/Chess:1
 msgid "Chess"
-msgstr "Ŝako"
+msgstr ""
 
 #: ../TabletopClub/games/Chess:2
 msgid "Standard Chess for two players."
-msgstr "Norma ŝako por du ludantoj."
+msgstr ""
 
 #: ../TabletopClub/games/Dominoes:1
 msgid "Dominoes"
-msgstr "Domenoŝtonoj"
+msgstr ""
 
 #: ../TabletopClub/games/Dominoes:2
 msgid "A bag with 28 tiles has been provided."
-msgstr "Sako da 28 kaheloj estas provizita."
+msgstr ""
 
 #: ../TabletopClub/games/Go:1
 msgid "Go"
-msgstr "Goo"
+msgstr ""
 
 #: ../TabletopClub/games/Go:2
 msgid ""
 "Standard Go for two players.\n"
 "Can play on a 19x19, 13x13, or 9x9 board."
 msgstr ""
-"Norma goo por du ludantoj.\n"
-"Eblas ludi sur tabulo de 19x19, 13x13 aŭ 9x9."
 
 #: ../TabletopClub/games/Poker:1
 msgid "Poker"
-msgstr "Pokero"
+msgstr ""
 
 #: ../TabletopClub/games/Poker:2
 msgid "Each player has been given 25 chips, which sum up to a value of 500."
-msgstr "Ĉiu ludanto ricevas 25 ĵetonojn, en sumo de 500."
+msgstr ""
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
-msgstr "Airport Lounge - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:2
 msgid "Light and airy, this piece is guaranteed not to steal focus."
-msgstr "Malpeza kaj maldensa, tiu ĉi peco garantiite ne deturnos la atenton."
+msgstr ""
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:1
 msgid "Backbay Lounge - Kevin MacLeod"
-msgstr "Backbay Lounge - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:2
 msgid ""
@@ -794,15 +787,10 @@ msgid ""
 "runs out. That level of cool. Maybe you're not that cool, but if you adopt "
 "this as your personal theme tune, people will THINK you're that cool."
 msgstr ""
-"Ĉi tiu mojosas. Vi povus promeni en festenon, preni glason da Proseka vino, "
-"kisi la gastiganton, kaj tiam senprajmigi bombegon senemfaze kun unu sekundo "
-"ĉe la horloĝo. Tia nivelo de mojoseco. Eble vi ne tiel mojosas, sed se vi "
-"adoptas tiun ĉi kiel vian personan distingan melodion, oni PENSOS, ke vi "
-"tiel mojosas."
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:1
 msgid "Bossa Antigua - Kevin MacLeod"
-msgstr "Bossa Antigua - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:2
 msgid ""
@@ -811,14 +799,10 @@ msgid ""
 "walls. I still haven't been able to teach my Roombas to get up by the "
 "ceiling, though."
 msgstr ""
-"Ho, saluton. Mi ne vidis vin. Bonvenon al mia humila loĝejo. Miaj plej "
-"ŝatataj partoj estas la elvido al la plaĝo, kaj tiu ĉi tre mojoseta "
-"oranĝkolora longafibra tapiŝo sur la muroj. Ankoraŭ mi ne povis instrui al "
-"miaj robotaj pulvosuĉiloj grimpi al la plafono, tamen."
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:1
 msgid "Deadly Roulette - Kevin MacLeod"
-msgstr "Deadly Roulette - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:2
 msgid ""
@@ -830,26 +814,18 @@ msgid ""
 "Hah! Adverbs work perfectly fine! Woohoo! Adverbs! And before I get mail... "
 "adjectives killed my family, so I can go off on them all I want."
 msgstr ""
-"Ĵaza! Detektiveca! Mistereca! Ho, lacas mi pri adjektivoj. Al kiu necesas "
-"adjektivoj, ĉiuokaze?! Mi tute enordas sen adjektivoj. Kiom enorde, vi eble "
-"demandas? Mi ne povas diri - ĉar tio necesigus ian specon de priskribilo! "
-"Kaj mi ne bezonas priskribilojn en miaj skribaĵoj... Eble unu... eta, "
-"malgranda... NE! Kion mi pensas?! Mi rifuzas! Tute ne utilas al mi "
-"adjektivoj! Ĥa! Adverboj tute bone funkcias! Jes ja! Adverboj! Kaj antaŭ ol "
-"mi ricevas leterojn... adjektivoj mortigis mian familion, do mi tutrajtas "
-"ilin mallaŭdi."
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:1
 msgid "George Street Shuffle - Kevin MacLeod"
-msgstr "George Street Shuffle - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:2
 msgid "Nice little non-offending light jazz piece for vibes."
-msgstr "Boneta, senofenda kaj malpeza ĵaz-peco por bonaj sentoj."
+msgstr ""
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:1
 msgid "Hard Boiled - Kevin MacLeod"
-msgstr "Hard Boiled - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:2
 msgid ""
@@ -859,14 +835,10 @@ msgid ""
 "you already knew that... Out of curiosity, what's the word for people who "
 "overuse slang?"
 msgstr ""
-"Vi serĉas la detalojn, he? Por tio kostos ja. Ĉu volas vi l' informojn, "
-"detalojn, ĉion ĉi? Dek spesojn por tago plus elspezoj. Sennegoce. Kvararanga "
-"detektivulo mi ne estas - sed anasa krurokrakanto kiel vi jam tion sciis... "
-"parenteze, ĉu vi scias, kion signifas \"anasa krurokrakanto\"? Ĉar mi ne."
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:1
 msgid "In Your Arms - Kevin MacLeod"
-msgstr "In Your Arms - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:2
 msgid ""
@@ -876,24 +848,12 @@ msgid ""
 "words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No "
 "Whammies."
 msgstr ""
-"Muzika peco de pli eleganta tempo, 1940. Tiu ĉi estas bela, malrapida peco "
-"kiu voligos vin preni iom da ĉampano kaj iri malrapide danci kun homoj... aŭ "
-"pingvenoj. Mi ŝatas pingvenojn. Kaj nun kelkaj serĉeblaj vortoj: Granda "
-"ĵazbando. 1940-aj jaroj. Formala kuniĝo. Pingvena malrapida danco. Sen "
-"trompaĵoj."
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:1
 msgid "Lobby Time - Kevin MacLeod"
-msgstr "Lobby Time - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:2
-#, fuzzy
-#| msgid ""
-#| "Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and "
-#| "modern green vinyl furnishings set off the shag carpeted walls. Enjoy a "
-#| "Rusty Nail from our cheerful bar staff (with a complimentary cheese and "
-#| "fruit plate before 5pm). We feature prime rib dinners every day that ends "
-#| "in a "
 msgid ""
 "Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern "
 "green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail "
@@ -903,23 +863,18 @@ msgid ""
 "was written 2 years before it was published, because I didn't have a good "
 "enough upright bass sample to make it go."
 msgstr ""
-"Bonvenon al la vestiblo de la ESTONTECO! Luksaj aŭtomataj cindrujoj, kaj "
-"modernaj verdaj vinilaj mebloj, kiuj prilumas la longfibra-tapiŝajn murojn. "
-"Ĝuu glason da viskio en nia trinkejo (kun senpaga plado de fromaĝo kaj "
-"frukto antaŭ 17:00). Ni prezentas ripaĵajn vespermanĝojn ĉiun tagon, kiu "
-"finiĝas per "
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:1
 msgid "Night on the Docks - Sax - Kevin MacLeod"
-msgstr "Night on the Docks - Sax - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:2
 msgid "Sad and smooth; Think 1950's detective film."
-msgstr "Malgaja kaj glata, kvazaŭ de detektiva filmo de la 1950-aj jaroj."
+msgstr ""
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:1
 msgid "Shades of Spring - Kevin MacLeod"
-msgstr "Shades of Spring - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:2
 msgid ""
@@ -927,13 +882,10 @@ msgid ""
 "octaves. Soloist goes outside more than the guy comping... but hey - what "
 "are soloists for?"
 msgstr ""
-"Ia speco de minora mezrapida ĵazgrupeto kun du pianoj. La melodio estas "
-"duobligita en oktavoj. La solisto iras eksteren pli ol la akompananto... sed "
-"hej - ĉu ne solistoj ekzistas por tio?"
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:1
 msgid "Smooth Lovin - Kevin MacLeod"
-msgstr "Smooth Lovin - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:2
 msgid ""
@@ -941,13 +893,10 @@ msgid ""
 "really started liking it, so I guess it is a pastiche now? Oh, man... I wish "
 "there was an allowance for pastiche in copyright like there is for parody."
 msgstr ""
-"Tiu ĉi trograndiĝis. Mi ekproduktis ĝin kiel parodion... tiam mi vere "
-"ekŝategis ĝin, do mi supozas, ke nun ĝi estas pastiĉo? Ho, ve... mi tre "
-"volas, ke estus permeso por pastiĉoj en kopirajto, kiel estas por parodioj."
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:1
 msgid "Spy Glass - Kevin MacLeod"
-msgstr "Spy Glass - Kevin MacLeod"
+msgstr ""
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:2
 msgid ""
@@ -955,432 +904,429 @@ msgid ""
 "1950s. Super cool jazz for your hardcore detectives! Also useful for beat "
 "poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
 msgstr ""
-"La jaro estas... mi tute ne scias. Ĝi estas sentempa. Povus esti nun, aŭ "
-"povus esti la 1950-aj jaroj. Mojosega ĵazo por viaj superaj detektivoj! "
-"Ankaŭ ĝi utilas por beat-poetoj, aŭ por enuo! Nu, interesaj specoj de enuo."
 
 #: ../TabletopClub/pieces/Bishop_Black:1
 msgid "Bishop Black"
-msgstr "Kuriero nigra"
+msgstr ""
 
 #: ../TabletopClub/pieces/Bishop_White:1
 msgid "Bishop White"
-msgstr "Kuriero blanka"
+msgstr ""
 
 #: ../TabletopClub/pieces/King_Black:1
 msgid "King Black"
-msgstr "Reĝo nigra"
+msgstr ""
 
 #: ../TabletopClub/pieces/King_White:1
 msgid "King White"
-msgstr "Reĝo blanka"
+msgstr ""
 
 #: ../TabletopClub/pieces/Knight_Black:1
 msgid "Knight Black"
-msgstr "Ĉevalo nigra"
+msgstr ""
 
 #: ../TabletopClub/pieces/Knight_White:1
 msgid "Knight White"
-msgstr "Ĉevalo blanka"
+msgstr ""
 
 #: ../TabletopClub/pieces/Pawn_Black:1
 msgid "Pawn Black"
-msgstr "Peono nigra"
+msgstr ""
 
 #: ../TabletopClub/pieces/Pawn_White:1
 msgid "Pawn White"
-msgstr "Peono blanka"
+msgstr ""
 
 #: ../TabletopClub/pieces/Queen_Black:1
 msgid "Queen Black"
-msgstr "Damo nigra"
+msgstr ""
 
 #: ../TabletopClub/pieces/Queen_White:1
 msgid "Queen White"
-msgstr "Damo blanka"
+msgstr ""
 
 #: ../TabletopClub/pieces/Rook_Black:1
 msgid "Rook Black"
-msgstr "Turo nigra"
+msgstr ""
 
 #: ../TabletopClub/pieces/Rook_White:1
 msgid "Rook White"
-msgstr "Turo blanka"
+msgstr ""
 
 #: ../TabletopClub/pieces/Stone_Black:1
 msgid "Stone Black"
-msgstr "Ŝtono nigra"
+msgstr ""
 
 #: ../TabletopClub/pieces/Stone_White:1
 msgid "Stone White"
-msgstr "Ŝtono blanka"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Clouds:1
 msgid "Clouds"
-msgstr "Nuboj"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Dallas_West:1
 msgid "Dallas West"
-msgstr "Dallas-okcidento"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Forest:1
 msgid "Forest"
-msgstr "Arbaro"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Hornstulls_Strand:1
 msgid "Hornstulls Strand"
-msgstr "Hornstulls Strand"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Ice_River:1
 msgid "Ice River"
-msgstr "Glacia rivero"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Marriott_Madison_West:1
 msgid "Marriott Madison West"
-msgstr "Marriott Madison West"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Maskonaive:1
 msgid "Maskonaive"
-msgstr "Maskonaive"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Nebula:1
 msgid "Nebula"
-msgstr "Nebulozo"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Niagra_Falls:1
 msgid "Niagra Falls"
-msgstr "Niagaraj Akvofaloj"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Park:1
 msgid "Park"
-msgstr "Parko"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Park_Winter:1
 msgid "Park Winter"
-msgstr "Parko en vintro"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Path:1
 msgid "Path"
-msgstr "Irvojeto"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Space:1
 msgid "Space"
-msgstr "Kosmo"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Tantolunden:1
 msgid "Tantolunden"
-msgstr "Tantolunden"
+msgstr ""
 
 #: ../TabletopClub/skyboxes/Vasa:1
 msgid "Vasa"
-msgstr "Vasa"
+msgstr ""
 
 #: ../TabletopClub/sounds/Alarm:1
 msgid "Alarm"
-msgstr "Alarmo"
+msgstr ""
 
 #: ../TabletopClub/sounds/Alarm:2
 msgid "An alarm for alarming situations."
-msgstr "Alarmo por alarmaj situacioj."
+msgstr ""
 
 #: ../TabletopClub/speakers/Gramophone:1
 msgid "Gramophone"
-msgstr "Gramofono"
+msgstr ""
 
 #: ../TabletopClub/speakers/Gramophone:2
 msgid "A low-poly vintage gramophone."
-msgstr "Antikva gramofono kun malmultaj pluranguloj."
+msgstr ""
 
 #: ../TabletopClub/tables/Picnic_Bench:1
 msgid "Picnic Bench"
-msgstr "Piknika benko"
+msgstr ""
 
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
-msgstr "Tablo"
+msgstr ""
 
 #: ../TabletopClub/templates/Blank_Page:1
 msgid "Blank Page"
-msgstr "Blanka paĝo"
+msgstr ""
 
 #: ../TabletopClub/templates/Blank_Page:2
 msgid "There's nothing here..."
-msgstr "Estas nenio ĉi tie..."
+msgstr ""
 
 #: ../TabletopClub/templates/Score_Card:1
 msgid "Score Card"
-msgstr "Poentara karto"
+msgstr ""
 
 #: ../TabletopClub/templates/Score_Card:2
 msgid "A generic score card for up to 10 players."
-msgstr "Ĝenerala poentara karto por ĝis 10 ludantoj."
+msgstr ""
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
-msgstr "Radioricevilo"
+msgstr ""
 
 #: ../TabletopClub/timers/Radio:2
 msgid "An old radio from a bygone era."
-msgstr "Malnova radioricevilo de pasinta epoko."
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Blue:1
 msgid "Blue"
-msgstr "Blua"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Blue:2
 msgid "A blue token."
-msgstr "Blua ĵetono."
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Brown:1
 msgid "Brown"
-msgstr "Bruna"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Brown:2
 msgid "A brown token."
-msgstr "Bruna ĵetono."
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Cyan:1
 msgid "Cyan"
-msgstr "Bluverda"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Cyan:2
 msgid "A cyan token."
-msgstr "Bluverda ĵetono."
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_0-0:1
 msgid "Domino 0-0"
-msgstr "Domenoŝtono 0-0"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_0-1:1
 msgid "Domino 0-1"
-msgstr "Domenoŝtono 0-1"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_0-2:1
 msgid "Domino 0-2"
-msgstr "Domenoŝtono 0-2"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_0-3:1
 msgid "Domino 0-3"
-msgstr "Domenoŝtono 0-3"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_0-4:1
 msgid "Domino 0-4"
-msgstr "Domenoŝtono 0-4"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_0-5:1
 msgid "Domino 0-5"
-msgstr "Domenoŝtono 0-5"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_0-6:1
 msgid "Domino 0-6"
-msgstr "Domenoŝtono 0-6"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_1-1:1
 msgid "Domino 1-1"
-msgstr "Domenoŝtono 1-1"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_1-2:1
 msgid "Domino 1-2"
-msgstr "Domenoŝtono 1-2"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_1-3:1
 msgid "Domino 1-3"
-msgstr "Domenoŝtono 1-3"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_1-4:1
 msgid "Domino 1-4"
-msgstr "Domenoŝtono 1-4"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_1-5:1
 msgid "Domino 1-5"
-msgstr "Domenoŝtono 1-5"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_1-6:1
 msgid "Domino 1-6"
-msgstr "Domenoŝtono 1-6"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_2-2:1
 msgid "Domino 2-2"
-msgstr "Domenoŝtono 2-2"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_2-3:1
 msgid "Domino 2-3"
-msgstr "Domenoŝtono 2-3"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_2-4:1
 msgid "Domino 2-4"
-msgstr "Domenoŝtono 2-4"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_2-5:1
 msgid "Domino 2-5"
-msgstr "Domenoŝtono 2-5"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_2-6:1
 msgid "Domino 2-6"
-msgstr "Domenoŝtono 2-6"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_3-3:1
 msgid "Domino 3-3"
-msgstr "Domenoŝtono 3-3"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_3-4:1
 msgid "Domino 3-4"
-msgstr "Domenoŝtono 3-4"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_3-5:1
 msgid "Domino 3-5"
-msgstr "Domenoŝtono 3-5"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_3-6:1
 msgid "Domino 3-6"
-msgstr "Domenoŝtono 3-6"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_4-4:1
 msgid "Domino 4-4"
-msgstr "Domenoŝtono 4-4"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_4-5:1
 msgid "Domino 4-5"
-msgstr "Domenoŝtono 4-5"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_4-6:1
 msgid "Domino 4-6"
-msgstr "Domenoŝtono 4-6"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_5-5:1
 msgid "Domino 5-5"
-msgstr "Domenoŝtono 5-5"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_5-6:1
 msgid "Domino 5-6"
-msgstr "Domenoŝtono 5-6"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_6-6:1
 msgid "Domino 6-6"
-msgstr "Domenoŝtono 6-6"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Green:1
 msgid "Green"
-msgstr "Verda"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Green:2
 msgid "A green token."
-msgstr "Verda ĵetono."
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Orange:1
 msgid "Orange"
-msgstr "Oranĝkolora"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Orange:2
 msgid "An orange token."
-msgstr "Oranĝkolora ĵetono."
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Pink:1
 msgid "Pink"
-msgstr "Rozkolora"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Pink:2
 msgid "A pink token."
-msgstr "Rozkolora ĵetono."
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Purple:1
 msgid "Purple"
-msgstr "Purpura"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Purple:2
 msgid "A purple token."
-msgstr "Purpura ĵetono."
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Red:1
 msgid "Red"
-msgstr "Ruĝa"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Red:2
 msgid "A red token."
-msgstr "Ruĝa ĵetono."
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/White:1
 msgid "White"
-msgstr "Blanka"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/White:2
 msgid "A white token."
-msgstr "Blanka ĵetono."
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Yellow:1
 msgid "Yellow"
-msgstr "Flava"
+msgstr ""
 
 #: ../TabletopClub/tokens/cube/Yellow:2
 msgid "A yellow token."
-msgstr "Flava ĵetono."
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
-msgstr "1"
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2
 #: ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2
 #: ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
 msgid "A poker chip."
-msgstr "Pokera ĵetono."
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/10:1
 msgid "10"
-msgstr "10"
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/100:1
 msgid "100"
-msgstr "100"
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:1
 msgid "20 x 1 Chips"
-msgstr "20 x 1-ĵetonoj"
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:2
 msgid "A stack of 20 1-value chips."
-msgstr "Stako da 20 1-valoraj ĵetonoj."
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:1
 msgid "20 x 10 Chips"
-msgstr "20 x 10-ĵetonoj"
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:2
 msgid "A stack of 20 10-value chips."
-msgstr "Stako da 20 10-valoraj ĵetonoj."
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:1
 msgid "20 x 100 Chips"
-msgstr "20 x 100-ĵetonoj"
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:2
 msgid "A stack of 20 100-value chips."
-msgstr "Stako da 20 100-valoraj ĵetonoj."
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:1
 msgid "20 x 25 Chips"
-msgstr "20 x 25-ĵetonoj"
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:2
 msgid "A stack of 20 25-value chips."
-msgstr "Stako da 20 25-valoraj ĵetonoj."
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:1
 msgid "20 x 5 Chips"
-msgstr "20 x 5-ĵetonoj"
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:2
 msgid "A stack of 20 5-value chips."
-msgstr "Stako da 20 5-valoraj ĵetonoj."
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/25:1
 msgid "25"
-msgstr "25"
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/5:1
 msgid "5"
-msgstr "5"
+msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/D:1
 msgid "D"
-msgstr "D"
+msgstr ""

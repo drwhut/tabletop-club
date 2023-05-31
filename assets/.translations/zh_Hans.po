@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-20 15:31\n"
-"PO-Revision-Date: 2023-04-11 11:48+0000\n"
-"Last-Translator: near2see <near2see@gmail.com>\n"
+"POT-Creation-Date: 2023-05-09 09:03\n"
+"PO-Revision-Date: 2023-05-09 08:08+0000\n"
+"Last-Translator: Yao NianQing <imbearchild@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "tabletop-club/default-asset-pack/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -57,7 +57,47 @@ msgstr "一副法式扑克牌，不包括大小王。"
 msgid "Ace of Clubs"
 msgstr "梅花A"
 
-#: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2 ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2 ../TabletopClub/cards/Eight_of_Clubs:2 ../TabletopClub/cards/Eight_of_Diamonds:2 ../TabletopClub/cards/Eight_of_Hearts:2 ../TabletopClub/cards/Eight_of_Spades:2 ../TabletopClub/cards/Five_of_Clubs:2 ../TabletopClub/cards/Five_of_Diamonds:2 ../TabletopClub/cards/Five_of_Hearts:2 ../TabletopClub/cards/Five_of_Spades:2 ../TabletopClub/cards/Four_of_Clubs:2 ../TabletopClub/cards/Four_of_Diamonds:2 ../TabletopClub/cards/Four_of_Hearts:2 ../TabletopClub/cards/Four_of_Spades:2 ../TabletopClub/cards/Jack_of_Clubs:2 ../TabletopClub/cards/Jack_of_Diamonds:2 ../TabletopClub/cards/Jack_of_Hearts:2 ../TabletopClub/cards/Jack_of_Spades:2 ../TabletopClub/cards/Joker_Black:2 ../TabletopClub/cards/Joker_Red:2 ../TabletopClub/cards/King_of_Clubs:2 ../TabletopClub/cards/King_of_Diamonds:2 ../TabletopClub/cards/King_of_Hearts:2 ../TabletopClub/cards/King_of_Spades:2 ../TabletopClub/cards/Nine_of_Clubs:2 ../TabletopClub/cards/Nine_of_Diamonds:2 ../TabletopClub/cards/Nine_of_Hearts:2 ../TabletopClub/cards/Nine_of_Spades:2 ../TabletopClub/cards/Queen_of_Clubs:2 ../TabletopClub/cards/Queen_of_Diamonds:2 ../TabletopClub/cards/Queen_of_Hearts:2 ../TabletopClub/cards/Queen_of_Spades:2 ../TabletopClub/cards/Seven_of_Clubs:2 ../TabletopClub/cards/Seven_of_Diamonds:2 ../TabletopClub/cards/Seven_of_Hearts:2 ../TabletopClub/cards/Seven_of_Spades:2 ../TabletopClub/cards/Six_of_Clubs:2 ../TabletopClub/cards/Six_of_Diamonds:2 ../TabletopClub/cards/Six_of_Hearts:2 ../TabletopClub/cards/Six_of_Spades:2 ../TabletopClub/cards/Ten_of_Clubs:2 ../TabletopClub/cards/Ten_of_Diamonds:2 ../TabletopClub/cards/Ten_of_Hearts:2 ../TabletopClub/cards/Ten_of_Spades:2 ../TabletopClub/cards/Three_of_Clubs:2 ../TabletopClub/cards/Three_of_Diamonds:2 ../TabletopClub/cards/Three_of_Hearts:2 ../TabletopClub/cards/Three_of_Spades:2 ../TabletopClub/cards/Two_of_Clubs:2 ../TabletopClub/cards/Two_of_Diamonds:2 ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
+#: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2
+#: ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2
+#: ../TabletopClub/cards/Eight_of_Clubs:2
+#: ../TabletopClub/cards/Eight_of_Diamonds:2
+#: ../TabletopClub/cards/Eight_of_Hearts:2
+#: ../TabletopClub/cards/Eight_of_Spades:2
+#: ../TabletopClub/cards/Five_of_Clubs:2
+#: ../TabletopClub/cards/Five_of_Diamonds:2
+#: ../TabletopClub/cards/Five_of_Hearts:2
+#: ../TabletopClub/cards/Five_of_Spades:2 ../TabletopClub/cards/Four_of_Clubs:2
+#: ../TabletopClub/cards/Four_of_Diamonds:2
+#: ../TabletopClub/cards/Four_of_Hearts:2
+#: ../TabletopClub/cards/Four_of_Spades:2 ../TabletopClub/cards/Jack_of_Clubs:2
+#: ../TabletopClub/cards/Jack_of_Diamonds:2
+#: ../TabletopClub/cards/Jack_of_Hearts:2
+#: ../TabletopClub/cards/Jack_of_Spades:2 ../TabletopClub/cards/Joker_Black:2
+#: ../TabletopClub/cards/Joker_Red:2 ../TabletopClub/cards/King_of_Clubs:2
+#: ../TabletopClub/cards/King_of_Diamonds:2
+#: ../TabletopClub/cards/King_of_Hearts:2
+#: ../TabletopClub/cards/King_of_Spades:2 ../TabletopClub/cards/Nine_of_Clubs:2
+#: ../TabletopClub/cards/Nine_of_Diamonds:2
+#: ../TabletopClub/cards/Nine_of_Hearts:2
+#: ../TabletopClub/cards/Nine_of_Spades:2
+#: ../TabletopClub/cards/Queen_of_Clubs:2
+#: ../TabletopClub/cards/Queen_of_Diamonds:2
+#: ../TabletopClub/cards/Queen_of_Hearts:2
+#: ../TabletopClub/cards/Queen_of_Spades:2
+#: ../TabletopClub/cards/Seven_of_Clubs:2
+#: ../TabletopClub/cards/Seven_of_Diamonds:2
+#: ../TabletopClub/cards/Seven_of_Hearts:2
+#: ../TabletopClub/cards/Seven_of_Spades:2 ../TabletopClub/cards/Six_of_Clubs:2
+#: ../TabletopClub/cards/Six_of_Diamonds:2
+#: ../TabletopClub/cards/Six_of_Hearts:2 ../TabletopClub/cards/Six_of_Spades:2
+#: ../TabletopClub/cards/Ten_of_Clubs:2 ../TabletopClub/cards/Ten_of_Diamonds:2
+#: ../TabletopClub/cards/Ten_of_Hearts:2 ../TabletopClub/cards/Ten_of_Spades:2
+#: ../TabletopClub/cards/Three_of_Clubs:2
+#: ../TabletopClub/cards/Three_of_Diamonds:2
+#: ../TabletopClub/cards/Three_of_Hearts:2
+#: ../TabletopClub/cards/Three_of_Spades:2 ../TabletopClub/cards/Two_of_Clubs:2
+#: ../TabletopClub/cards/Two_of_Diamonds:2
+#: ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
 msgid "A poker-sized French-suited playing card."
 msgstr "一副法式扑克牌。"
 
@@ -286,7 +326,9 @@ msgid "Villager"
 msgstr "村民"
 
 #: ../TabletopClub/cards/Villager:2
-msgid "Avoid being eaten by werewolves at night by voting against them during the day."
+msgid ""
+"Avoid being eaten by werewolves at night by voting against them during the "
+"day."
 msgstr "白天投票反对狼人，避免在晚上被狼人吃掉。"
 
 #: ../TabletopClub/cards/Werewolf:1
@@ -294,7 +336,9 @@ msgid "Werewolf"
 msgstr "狼人"
 
 #: ../TabletopClub/cards/Werewolf:2
-msgid "Decide who to feast upon every night with your pack, avoid suspision from villagers."
+msgid ""
+"Decide who to feast upon every night with your pack, avoid suspision from "
+"villagers."
 msgstr "决定每晚与你的族群一起享用谁，避免村民的怀疑。"
 
 #: ../TabletopClub/containers/Pot:1
@@ -313,7 +357,12 @@ msgstr "红杯子"
 msgid "d4 (Black)"
 msgstr "D4（黑色）"
 
-#: ../TabletopClub/dice/d4/d4_(Black):2 ../TabletopClub/dice/d4/d4_(Blue):2 ../TabletopClub/dice/d4/d4_(Brown):2 ../TabletopClub/dice/d4/d4_(Cyan):2 ../TabletopClub/dice/d4/d4_(Green):2 ../TabletopClub/dice/d4/d4_(Orange):2 ../TabletopClub/dice/d4/d4_(Pink):2 ../TabletopClub/dice/d4/d4_(Purple):2 ../TabletopClub/dice/d4/d4_(Red):2 ../TabletopClub/dice/d4/d4_(White):2 ../TabletopClub/dice/d4/d4_(Yellow):2
+#: ../TabletopClub/dice/d4/d4_(Black):2 ../TabletopClub/dice/d4/d4_(Blue):2
+#: ../TabletopClub/dice/d4/d4_(Brown):2 ../TabletopClub/dice/d4/d4_(Cyan):2
+#: ../TabletopClub/dice/d4/d4_(Green):2 ../TabletopClub/dice/d4/d4_(Orange):2
+#: ../TabletopClub/dice/d4/d4_(Pink):2 ../TabletopClub/dice/d4/d4_(Purple):2
+#: ../TabletopClub/dice/d4/d4_(Red):2 ../TabletopClub/dice/d4/d4_(White):2
+#: ../TabletopClub/dice/d4/d4_(Yellow):2
 msgid "A 4-sided die."
 msgstr "4 面骰子。"
 
@@ -361,305 +410,348 @@ msgstr "D4（黄色）"
 msgid "d6 (Black)"
 msgstr "D6（黑色）"
 
-#: ../TabletopClub/dice/d6/d6_(Black):2 ../TabletopClub/dice/d6/d6_(Blue):2 ../TabletopClub/dice/d6/d6_(Brown):2 ../TabletopClub/dice/d6/d6_(Cyan):2 ../TabletopClub/dice/d6/d6_(Green):2 ../TabletopClub/dice/d6/d6_(Orange):2 ../TabletopClub/dice/d6/d6_(Pink):2 ../TabletopClub/dice/d6/d6_(Purple):2 ../TabletopClub/dice/d6/d6_(Red):2 ../TabletopClub/dice/d6/d6_(Traditional):2 ../TabletopClub/dice/d6/d6_(White):2 ../TabletopClub/dice/d6/d6_(Yellow):2
+#: ../TabletopClub/dice/d6/d6_(Black):2 ../TabletopClub/dice/d6/d6_(Blue):2
+#: ../TabletopClub/dice/d6/d6_(Brown):2 ../TabletopClub/dice/d6/d6_(Cyan):2
+#: ../TabletopClub/dice/d6/d6_(Green):2 ../TabletopClub/dice/d6/d6_(Orange):2
+#: ../TabletopClub/dice/d6/d6_(Pink):2 ../TabletopClub/dice/d6/d6_(Purple):2
+#: ../TabletopClub/dice/d6/d6_(Red):2
+#: ../TabletopClub/dice/d6/d6_(Traditional):2
+#: ../TabletopClub/dice/d6/d6_(White):2 ../TabletopClub/dice/d6/d6_(Yellow):2
 msgid "A 6-sided die."
 msgstr "一个6面骰子。"
 
 #: ../TabletopClub/dice/d6/d6_(Blue):1
 msgid "d6 (Blue)"
-msgstr ""
+msgstr "D6（蓝色）"
 
 #: ../TabletopClub/dice/d6/d6_(Brown):1
 msgid "d6 (Brown)"
-msgstr ""
+msgstr "D6（棕色）"
 
 #: ../TabletopClub/dice/d6/d6_(Cyan):1
 msgid "d6 (Cyan)"
-msgstr ""
+msgstr "D6（青色）"
 
 #: ../TabletopClub/dice/d6/d6_(Green):1
 msgid "d6 (Green)"
-msgstr ""
+msgstr "D6（绿色）"
 
 #: ../TabletopClub/dice/d6/d6_(Orange):1
 msgid "d6 (Orange)"
-msgstr ""
+msgstr "D6（橙色）"
 
 #: ../TabletopClub/dice/d6/d6_(Pink):1
 msgid "d6 (Pink)"
-msgstr ""
+msgstr "D6（粉色）"
 
 #: ../TabletopClub/dice/d6/d6_(Purple):1
 msgid "d6 (Purple)"
-msgstr ""
+msgstr "D6（紫色）"
 
 #: ../TabletopClub/dice/d6/d6_(Red):1
 msgid "d6 (Red)"
-msgstr ""
+msgstr "D6（红色）"
 
 #: ../TabletopClub/dice/d6/d6_(Traditional):1
 msgid "d6 (Traditional)"
-msgstr ""
+msgstr "D6（经典骰子）"
 
 #: ../TabletopClub/dice/d6/d6_(White):1
 msgid "d6 (White)"
-msgstr ""
+msgstr "D6（白色）"
 
 #: ../TabletopClub/dice/d6/d6_(Yellow):1
 msgid "d6 (Yellow)"
-msgstr ""
+msgstr "D6（黄色）"
 
 #: ../TabletopClub/dice/d8/d8_(Black):1
 msgid "d8 (Black)"
-msgstr ""
+msgstr "D8（黑色）"
 
-#: ../TabletopClub/dice/d8/d8_(Black):2 ../TabletopClub/dice/d8/d8_(Blue):2 ../TabletopClub/dice/d8/d8_(Brown):2 ../TabletopClub/dice/d8/d8_(Cyan):2 ../TabletopClub/dice/d8/d8_(Green):2 ../TabletopClub/dice/d8/d8_(Orange):2 ../TabletopClub/dice/d8/d8_(Pink):2 ../TabletopClub/dice/d8/d8_(Purple):2 ../TabletopClub/dice/d8/d8_(Red):2 ../TabletopClub/dice/d8/d8_(White):2 ../TabletopClub/dice/d8/d8_(Yellow):2
+#: ../TabletopClub/dice/d8/d8_(Black):2 ../TabletopClub/dice/d8/d8_(Blue):2
+#: ../TabletopClub/dice/d8/d8_(Brown):2 ../TabletopClub/dice/d8/d8_(Cyan):2
+#: ../TabletopClub/dice/d8/d8_(Green):2 ../TabletopClub/dice/d8/d8_(Orange):2
+#: ../TabletopClub/dice/d8/d8_(Pink):2 ../TabletopClub/dice/d8/d8_(Purple):2
+#: ../TabletopClub/dice/d8/d8_(Red):2 ../TabletopClub/dice/d8/d8_(White):2
+#: ../TabletopClub/dice/d8/d8_(Yellow):2
 msgid "An 8-sided die."
-msgstr ""
+msgstr "一个8面骰子。"
 
 #: ../TabletopClub/dice/d8/d8_(Blue):1
 msgid "d8 (Blue)"
-msgstr ""
+msgstr "D8（蓝色）"
 
 #: ../TabletopClub/dice/d8/d8_(Brown):1
 msgid "d8 (Brown)"
-msgstr ""
+msgstr "D8（棕色）"
 
 #: ../TabletopClub/dice/d8/d8_(Cyan):1
 msgid "d8 (Cyan)"
-msgstr ""
+msgstr "D8（青色）"
 
 #: ../TabletopClub/dice/d8/d8_(Green):1
 msgid "d8 (Green)"
-msgstr ""
+msgstr "D8（绿色）"
 
 #: ../TabletopClub/dice/d8/d8_(Orange):1
 msgid "d8 (Orange)"
-msgstr ""
+msgstr "D8（橙色）"
 
 #: ../TabletopClub/dice/d8/d8_(Pink):1
 msgid "d8 (Pink)"
-msgstr ""
+msgstr "D8（粉色）"
 
 #: ../TabletopClub/dice/d8/d8_(Purple):1
 msgid "d8 (Purple)"
-msgstr ""
+msgstr "D8（紫色）"
 
 #: ../TabletopClub/dice/d8/d8_(Red):1
 msgid "d8 (Red)"
-msgstr ""
+msgstr "D8（红色）"
 
 #: ../TabletopClub/dice/d8/d8_(White):1
 msgid "d8 (White)"
-msgstr ""
+msgstr "D8（白色）"
 
 #: ../TabletopClub/dice/d8/d8_(Yellow):1
 msgid "d8 (Yellow)"
-msgstr ""
+msgstr "D8（黄色）"
 
 #: ../TabletopClub/dice/d10/d10_(Black):1
 msgid "d10 (Black)"
-msgstr ""
+msgstr "D10（黑色）"
 
-#: ../TabletopClub/dice/d10/d10_(Black):2 ../TabletopClub/dice/d10/d10_(Blue):2 ../TabletopClub/dice/d10/d10_(Brown):2 ../TabletopClub/dice/d10/d10_(Cyan):2 ../TabletopClub/dice/d10/d10_(Green):2 ../TabletopClub/dice/d10/d10_(Orange):2 ../TabletopClub/dice/d10/d10_(Percent)_(Black):2 ../TabletopClub/dice/d10/d10_(Percent)_(Blue):2 ../TabletopClub/dice/d10/d10_(Percent)_(Brown):2 ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):2 ../TabletopClub/dice/d10/d10_(Percent)_(Green):2 ../TabletopClub/dice/d10/d10_(Percent)_(Orange):2 ../TabletopClub/dice/d10/d10_(Percent)_(Pink):2 ../TabletopClub/dice/d10/d10_(Percent)_(Purple):2 ../TabletopClub/dice/d10/d10_(Percent)_(Red):2 ../TabletopClub/dice/d10/d10_(Percent)_(White):2 ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):2 ../TabletopClub/dice/d10/d10_(Pink):2 ../TabletopClub/dice/d10/d10_(Purple):2 ../TabletopClub/dice/d10/d10_(Red):2 ../TabletopClub/dice/d10/d10_(White):2 ../TabletopClub/dice/d10/d10_(Yellow):2
+#: ../TabletopClub/dice/d10/d10_(Black):2 ../TabletopClub/dice/d10/d10_(Blue):2
+#: ../TabletopClub/dice/d10/d10_(Brown):2 ../TabletopClub/dice/d10/d10_(Cyan):2
+#: ../TabletopClub/dice/d10/d10_(Green):2
+#: ../TabletopClub/dice/d10/d10_(Orange):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Black):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Blue):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Brown):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Green):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Orange):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Pink):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Purple):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Red):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(White):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):2
+#: ../TabletopClub/dice/d10/d10_(Pink):2
+#: ../TabletopClub/dice/d10/d10_(Purple):2 ../TabletopClub/dice/d10/d10_(Red):2
+#: ../TabletopClub/dice/d10/d10_(White):2
+#: ../TabletopClub/dice/d10/d10_(Yellow):2
 msgid "A 10-sided die."
-msgstr ""
+msgstr "一个10面骰子。"
 
 #: ../TabletopClub/dice/d10/d10_(Blue):1
 msgid "d10 (Blue)"
-msgstr ""
+msgstr "D10（蓝色）"
 
 #: ../TabletopClub/dice/d10/d10_(Brown):1
 msgid "d10 (Brown)"
-msgstr ""
+msgstr "D10（棕色）"
 
 #: ../TabletopClub/dice/d10/d10_(Cyan):1
 msgid "d10 (Cyan)"
-msgstr ""
+msgstr "D10（青色）"
 
 #: ../TabletopClub/dice/d10/d10_(Green):1
 msgid "d10 (Green)"
-msgstr ""
+msgstr "D10（绿色）"
 
 #: ../TabletopClub/dice/d10/d10_(Orange):1
 msgid "d10 (Orange)"
-msgstr ""
+msgstr "D10（橙色）"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Black):1
 msgid "d10 (Percent) (Black)"
-msgstr ""
+msgstr "D10 (十位) (黑色)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Blue):1
 msgid "d10 (Percent) (Blue)"
-msgstr ""
+msgstr "D10 (十位) (蓝色)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Brown):1
 msgid "d10 (Percent) (Brown)"
-msgstr ""
+msgstr "D10 (十位) (棕色)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):1
 msgid "d10 (Percent) (Cyan)"
-msgstr ""
+msgstr "D10 (十位) (青色)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Green):1
 msgid "d10 (Percent) (Green)"
-msgstr ""
+msgstr "D10 (十位) (绿色)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Orange):1
 msgid "d10 (Percent) (Orange)"
-msgstr ""
+msgstr "D10 (十位) (橙色)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Pink):1
 msgid "d10 (Percent) (Pink)"
-msgstr ""
+msgstr "D10 (十位) (粉色)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Purple):1
 msgid "d10 (Percent) (Purple)"
-msgstr ""
+msgstr "D10 (十位) (紫色)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Red):1
 msgid "d10 (Percent) (Red)"
-msgstr ""
+msgstr "D10 (十位) (红色)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(White):1
 msgid "d10 (Percent) (White)"
-msgstr ""
+msgstr "D10 (十位) (白色)"
 
 #: ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):1
 msgid "d10 (Percent) (Yellow)"
-msgstr ""
+msgstr "D10 (十位) (黄色)"
 
 #: ../TabletopClub/dice/d10/d10_(Pink):1
 msgid "d10 (Pink)"
-msgstr ""
+msgstr "D10（粉色）"
 
 #: ../TabletopClub/dice/d10/d10_(Purple):1
 msgid "d10 (Purple)"
-msgstr ""
+msgstr "D10（紫色）"
 
 #: ../TabletopClub/dice/d10/d10_(Red):1
 msgid "d10 (Red)"
-msgstr ""
+msgstr "D10（红色）"
 
 #: ../TabletopClub/dice/d10/d10_(White):1
 msgid "d10 (White)"
-msgstr ""
+msgstr "D10（白色）"
 
 #: ../TabletopClub/dice/d10/d10_(Yellow):1
 msgid "d10 (Yellow)"
-msgstr ""
+msgstr "D10（黄色）"
 
 #: ../TabletopClub/dice/d12/d12_(Black):1
 msgid "d12 (Black)"
-msgstr ""
+msgstr "D12（黑色）"
 
-#: ../TabletopClub/dice/d12/d12_(Black):2 ../TabletopClub/dice/d12/d12_(Blue):2 ../TabletopClub/dice/d12/d12_(Brown):2 ../TabletopClub/dice/d12/d12_(Cyan):2 ../TabletopClub/dice/d12/d12_(Green):2 ../TabletopClub/dice/d12/d12_(Orange):2 ../TabletopClub/dice/d12/d12_(Pink):2 ../TabletopClub/dice/d12/d12_(Purple):2 ../TabletopClub/dice/d12/d12_(Red):2 ../TabletopClub/dice/d12/d12_(White):2 ../TabletopClub/dice/d12/d12_(Yellow):2
+#: ../TabletopClub/dice/d12/d12_(Black):2 ../TabletopClub/dice/d12/d12_(Blue):2
+#: ../TabletopClub/dice/d12/d12_(Brown):2 ../TabletopClub/dice/d12/d12_(Cyan):2
+#: ../TabletopClub/dice/d12/d12_(Green):2
+#: ../TabletopClub/dice/d12/d12_(Orange):2
+#: ../TabletopClub/dice/d12/d12_(Pink):2
+#: ../TabletopClub/dice/d12/d12_(Purple):2 ../TabletopClub/dice/d12/d12_(Red):2
+#: ../TabletopClub/dice/d12/d12_(White):2
+#: ../TabletopClub/dice/d12/d12_(Yellow):2
 msgid "A 12-sided die."
-msgstr ""
+msgstr "一个12面骰子。"
 
 #: ../TabletopClub/dice/d12/d12_(Blue):1
 msgid "d12 (Blue)"
-msgstr ""
+msgstr "D12（蓝色）"
 
 #: ../TabletopClub/dice/d12/d12_(Brown):1
 msgid "d12 (Brown)"
-msgstr ""
+msgstr "D12（棕色）"
 
 #: ../TabletopClub/dice/d12/d12_(Cyan):1
 msgid "d12 (Cyan)"
-msgstr ""
+msgstr "D12（青色）"
 
 #: ../TabletopClub/dice/d12/d12_(Green):1
 msgid "d12 (Green)"
-msgstr ""
+msgstr "D12（绿色）"
 
 #: ../TabletopClub/dice/d12/d12_(Orange):1
 msgid "d12 (Orange)"
-msgstr ""
+msgstr "D12（橙色）"
 
 #: ../TabletopClub/dice/d12/d12_(Pink):1
 msgid "d12 (Pink)"
-msgstr ""
+msgstr "D12（粉色）"
 
 #: ../TabletopClub/dice/d12/d12_(Purple):1
 msgid "d12 (Purple)"
-msgstr ""
+msgstr "D12（紫色）"
 
 #: ../TabletopClub/dice/d12/d12_(Red):1
 msgid "d12 (Red)"
-msgstr ""
+msgstr "D12（红色）"
 
 #: ../TabletopClub/dice/d12/d12_(White):1
 msgid "d12 (White)"
-msgstr ""
+msgstr "D12（白色）"
 
 #: ../TabletopClub/dice/d12/d12_(Yellow):1
 msgid "d12 (Yellow)"
-msgstr ""
+msgstr "D12（黄色）"
 
 #: ../TabletopClub/dice/d20/d20_(Black):1
 msgid "d20 (Black)"
-msgstr ""
+msgstr "D20（黑色）"
 
-#: ../TabletopClub/dice/d20/d20_(Black):2 ../TabletopClub/dice/d20/d20_(Blue):2 ../TabletopClub/dice/d20/d20_(Brown):2 ../TabletopClub/dice/d20/d20_(Cyan):2 ../TabletopClub/dice/d20/d20_(Green):2 ../TabletopClub/dice/d20/d20_(Orange):2 ../TabletopClub/dice/d20/d20_(Pink):2 ../TabletopClub/dice/d20/d20_(Purple):2 ../TabletopClub/dice/d20/d20_(Red):2 ../TabletopClub/dice/d20/d20_(White):2 ../TabletopClub/dice/d20/d20_(Yellow):2
+#: ../TabletopClub/dice/d20/d20_(Black):2 ../TabletopClub/dice/d20/d20_(Blue):2
+#: ../TabletopClub/dice/d20/d20_(Brown):2 ../TabletopClub/dice/d20/d20_(Cyan):2
+#: ../TabletopClub/dice/d20/d20_(Green):2
+#: ../TabletopClub/dice/d20/d20_(Orange):2
+#: ../TabletopClub/dice/d20/d20_(Pink):2
+#: ../TabletopClub/dice/d20/d20_(Purple):2 ../TabletopClub/dice/d20/d20_(Red):2
+#: ../TabletopClub/dice/d20/d20_(White):2
+#: ../TabletopClub/dice/d20/d20_(Yellow):2
 msgid "A 20-sided die."
-msgstr ""
+msgstr "一个20面骰子。"
 
 #: ../TabletopClub/dice/d20/d20_(Blue):1
 msgid "d20 (Blue)"
-msgstr ""
+msgstr "D20（蓝色）"
 
 #: ../TabletopClub/dice/d20/d20_(Brown):1
 msgid "d20 (Brown)"
-msgstr ""
+msgstr "D20（棕色）"
 
 #: ../TabletopClub/dice/d20/d20_(Cyan):1
 msgid "d20 (Cyan)"
-msgstr ""
+msgstr "D20（青色）"
 
 #: ../TabletopClub/dice/d20/d20_(Green):1
 msgid "d20 (Green)"
-msgstr ""
+msgstr "D20（绿色）"
 
 #: ../TabletopClub/dice/d20/d20_(Orange):1
 msgid "d20 (Orange)"
-msgstr ""
+msgstr "D20（橙色）"
 
 #: ../TabletopClub/dice/d20/d20_(Pink):1
 msgid "d20 (Pink)"
-msgstr ""
+msgstr "D20（粉色）"
 
 #: ../TabletopClub/dice/d20/d20_(Purple):1
 msgid "d20 (Purple)"
-msgstr ""
+msgstr "D20（紫色）"
 
 #: ../TabletopClub/dice/d20/d20_(Red):1
 msgid "d20 (Red)"
-msgstr ""
+msgstr "D20（红色）"
 
 #: ../TabletopClub/dice/d20/d20_(White):1
 msgid "d20 (White)"
-msgstr ""
+msgstr "D20（白色）"
 
 #: ../TabletopClub/dice/d20/d20_(Yellow):1
 msgid "d20 (Yellow)"
-msgstr ""
+msgstr "D20（黄色）"
 
 #: ../TabletopClub/games/Chess:1
 msgid "Chess"
-msgstr ""
+msgstr "国际象棋"
 
 #: ../TabletopClub/games/Chess:2
 msgid "Standard Chess for two players."
-msgstr ""
+msgstr "标准国际象棋对局。"
 
 #: ../TabletopClub/games/Dominoes:1
 msgid "Dominoes"
-msgstr ""
+msgstr "多米诺骨牌"
 
 #: ../TabletopClub/games/Dominoes:2
 msgid "A bag with 28 tiles has been provided."
-msgstr ""
+msgstr "带一个含28块骨牌的袋子。"
 
 #: ../TabletopClub/games/Go:1
 msgid "Go"
@@ -670,7 +762,7 @@ msgid ""
 "Standard Go for two players.\n"
 "Can play on a 19x19, 13x13, or 9x9 board."
 msgstr ""
-"标准围棋对局\n"
+"标准围棋对局。\n"
 "可以选择19x19，13x13，或者9x9棋盘。"
 
 #: ../TabletopClub/games/Poker:1
@@ -683,520 +775,598 @@ msgstr "每位玩家获得 25 个筹码，总计为 500。"
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
-msgstr ""
+msgstr "Airport Lounge - Kevin MacLeod"
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:2
 msgid "Light and airy, this piece is guaranteed not to steal focus."
-msgstr ""
+msgstr "轻盈而欢快，这首歌不会偷走你的注意力。"
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:1
 msgid "Backbay Lounge - Kevin MacLeod"
-msgstr ""
+msgstr "Backbay Lounge - Kevin MacLeod"
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:2
-msgid "This is cool. You can walk into a dinner party, grab a glass of prosecco, kiss the host, then casually defuse a large bomb one second before the timer runs out. That level of cool. Maybe you're not that cool, but if you adopt this as your personal theme tune, people will THINK you're that cool."
+msgid ""
+"This is cool. You can walk into a dinner party, grab a glass of prosecco, "
+"kiss the host, then casually defuse a large bomb one second before the timer "
+"runs out. That level of cool. Maybe you're not that cool, but if you adopt "
+"this as your personal theme tune, people will THINK you're that cool."
 msgstr ""
+"酷！你走进一个晚宴，拿起一杯普罗塞克气泡酒酒，尽情亲吻东道主，然后在计时器耗"
+"尽前一秒随手拆除一个大型炸弹。就是这么酷。即使你没有那么酷，但如果你把这首歌"
+"作为你的个人主题曲，人们就会认为你是那么酷。"
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:1
 msgid "Bossa Antigua - Kevin MacLeod"
-msgstr ""
+msgstr "Bossa Antigua - Kevin MacLeod"
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:2
-msgid "Oh hello. I didn't see you there. Welcome to my pad. My favorite parts are the view of the beach, and this very groovy orange shag-carpeting on the walls. I still haven't been able to teach my Roombas to get up by the ceiling, though."
+msgid ""
+"Oh hello. I didn't see you there. Welcome to my pad. My favorite parts are "
+"the view of the beach, and this very groovy orange shag-carpeting on the "
+"walls. I still haven't been able to teach my Roombas to get up by the "
+"ceiling, though."
 msgstr ""
+"噢，你好。我刚才还没看见你呢。欢迎来到我的公寓。我最喜欢的部分是海滩的景色和"
+"这块挂在墙上的非常棒的橙色绒毛地毯。虽然我还是没能教会我的Roombas(一种扫地机"
+"器人)爬上去进行清理。"
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:1
 msgid "Deadly Roulette - Kevin MacLeod"
-msgstr ""
+msgstr "Deadly Roulette - Kevin MacLeod"
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:2
-msgid "Jazzy! Gumshoe-y! Mystery-y! I suck at making adjectives. Who needs adjectives anyway! I'm fine without adjectives. How fine without adjectives, you may ask? I can't say - as that would require some sort of descriptor! And I don't need descriptors in my writings... Maybe one... tiny little... NO! What am I thinking!? I refuse! I've completely had it with adjectives! Hah! Adverbs work perfectly fine! Woohoo! Adverbs! And before I get mail... adjectives killed my family, so I can go off on them all I want."
+msgid ""
+"Jazzy! Gumshoe-y! Mystery-y! I suck at making adjectives. Who needs "
+"adjectives anyway! I'm fine without adjectives. How fine without adjectives, "
+"you may ask? I can't say - as that would require some sort of descriptor! "
+"And I don't need descriptors in my writings... Maybe one... tiny little... "
+"NO! What am I thinking!? I refuse! I've completely had it with adjectives! "
+"Hah! Adverbs work perfectly fine! Woohoo! Adverbs! And before I get mail... "
+"adjectives killed my family, so I can go off on them all I want."
 msgstr ""
+"爵士风！侦探！神秘！我很不擅长用形容词。但谁又需要形容词！没有形容词我也能写"
+"得很好。你问我没有形容词怎么样？我无法回答——因为那需要某种描述词！而我在写这"
+"段描述时不需要描述词……也许只需要一个……微小的……不行！我在想什么！？我拒绝！我"
+"已经彻底受够形容词了！哈！副词完全可以胜任！太棒了！副词！但是在我收到某些邮"
+"件之前，形容词杀了我的家人，所以我可以无限制地抨击它们。"
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:1
 msgid "George Street Shuffle - Kevin MacLeod"
-msgstr ""
+msgstr "George Street Shuffle - Kevin MacLeod"
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:2
 msgid "Nice little non-offending light jazz piece for vibes."
-msgstr ""
+msgstr "这是一首轻柔的爵士小曲，非常适合营造温馨的氛围。"
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:1
 msgid "Hard Boiled - Kevin MacLeod"
-msgstr ""
+msgstr "Hard Boiled - Kevin MacLeod"
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:2
-msgid "You're looking for the low-down, huh? That's going to take lettuce. You want the dope? the scoop? the skinny? Ten bucks a day plus expenses. No negotiations. I ain't no fourth-rate gumshoe - but a ducky shincracker like you already knew that... Out of curiosity, what's the word for people who overuse slang?"
+msgid ""
+"You're looking for the low-down, huh? That's going to take lettuce. You want "
+"the dope? the scoop? the skinny? Ten bucks a day plus expenses. No "
+"negotiations. I ain't no fourth-rate gumshoe - but a ducky shincracker like "
+"you already knew that... Out of curiosity, what's the word for people who "
+"overuse slang?"
 msgstr ""
+"你想知道内情，是吗？那得花费一些钱。你想要情报？消息？内幕？每天十美元加开"
+"销。不接受还价。我可不是什么二流侦探，不过像你这样聪明的人早已知道了...顺便问"
+"一句，用过多俚语的人应该怎么称呼？"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:1
 msgid "In Your Arms - Kevin MacLeod"
-msgstr ""
+msgstr "In Your Arms - Kevin MacLeod"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:2
-msgid "A piece of music from a more elegant time, 1940. This is a beautiful slow piece that will make you want to pick up some champagne and go off slow dancing with people... or penguins. I like penguins. And now some searchable words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No Whammies."
+msgid ""
+"A piece of music from a more elegant time, 1940. This is a beautiful slow "
+"piece that will make you want to pick up some champagne and go off slow "
+"dancing with people... or penguins. I like penguins. And now some searchable "
+"words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No "
+"Whammies."
 msgstr ""
+"一首来自更优雅的时代，1940年代的音乐。这是一首美丽而慢节奏的曲子，会让你想拿"
+"起一些香槟，与人慢舞......或是与企鹅共舞。我喜欢企鹅。现在来点可搜索的关键"
+"词：大乐队，1940年代，四十年代，正式派对，企鹅慢舞，没有坏事发生。"
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:1
 msgid "Lobby Time - Kevin MacLeod"
-msgstr ""
+msgstr "Lobby Time - Kevin MacLeod"
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:2
-msgid "Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail from our cheerful bar staff (with a complimentary cheese and fruit plate before 5pm). We feature prime rib dinners every day that ends in a "
+#, fuzzy
+#| msgid ""
+#| "Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and "
+#| "modern green vinyl furnishings set off the shag carpeted walls. Enjoy a "
+#| "Rusty Nail from our cheerful bar staff (with a complimentary cheese and "
+#| "fruit plate before 5pm). We feature prime rib dinners every day that ends "
+#| "in a "
+msgid ""
+"Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern "
+"green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail "
+"from our cheerful bar staff (with a complimentary cheese and fruit plate "
+"before 5pm). We feature prime rib dinners every day that ends in a \"y\"! "
+"Remember to tip the bellhops at least 5 cents per bag. Enjoy your stay! This "
+"was written 2 years before it was published, because I didn't have a good "
+"enough upright bass sample to make it go."
 msgstr ""
+"欢迎来到未来大堂！奢华的自动烟灰缸和现代绿色乙烯基家具点缀着长绒地毯墙。您可"
+"以品尝我们开心的酒吧工作人员调制的Rusty Nail鸡尾酒（在下午5点之前还会赠送芝士"
+"和水果盘）。我们每天都会提供以“y”结尾的上等排骨晚餐 "
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:1
 msgid "Night on the Docks - Sax - Kevin MacLeod"
-msgstr ""
+msgstr "Night on the Docks - Sax - Kevin MacLeod"
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:2
 msgid "Sad and smooth; Think 1950's detective film."
-msgstr ""
+msgstr "悲伤而充满流畅感；像是1950年代的侦探电影。"
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:1
 msgid "Shades of Spring - Kevin MacLeod"
-msgstr ""
+msgstr "Shades of Spring - Kevin MacLeod"
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:2
-msgid "Sort of a minor mid-tempo jazz combo with 2 pianos. Melody is doubled in octaves. Soloist goes outside more than the guy comping... but hey - what are soloists for?"
+msgid ""
+"Sort of a minor mid-tempo jazz combo with 2 pianos. Melody is doubled in "
+"octaves. Soloist goes outside more than the guy comping... but hey - what "
+"are soloists for?"
 msgstr ""
+"这是一种带有两架钢琴的中等节奏爵士乐组合，旋律以八度音程加倍。独奏家比和弦伴"
+"奏者更加自由发挥……但嘿，独奏家本来就是用来这么做的吧？"
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:1
 msgid "Smooth Lovin - Kevin MacLeod"
-msgstr ""
+msgstr "Smooth Lovin - Kevin MacLeod"
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:2
-msgid "This one got turned up to 11. I started producing this as a parody... then I really started liking it, so I guess it is a pastiche now? Oh, man... I wish there was an allowance for pastiche in copyright like there is for parody."
+msgid ""
+"This one got turned up to 11. I started producing this as a parody... then I "
+"really started liking it, so I guess it is a pastiche now? Oh, man... I wish "
+"there was an allowance for pastiche in copyright like there is for parody."
 msgstr ""
+"这首歌被调到了11级。一开始我把它制作成一个恶作剧……然后我真的开始喜欢它了，所"
+"以现在我猜它算是一个拼贴作品了？哦，天啊……我希望版权法可以像恶搞那样容忍拼贴"
+"作品。"
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:1
 msgid "Spy Glass - Kevin MacLeod"
-msgstr ""
+msgstr "Spy Glass - Kevin MacLeod"
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:2
-msgid "The year is... I have no idea. Timeless. Could be now, could be in the 1950s. Super cool jazz for your hardcore detectives! Also useful for beat poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
+msgid ""
+"The year is... I have no idea. Timeless. Could be now, could be in the "
+"1950s. Super cool jazz for your hardcore detectives! Also useful for beat "
+"poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
 msgstr ""
+"这个年份......我不知道。 没有时间的概念。 可能是现在，可能是在1950年代。 超酷"
+"的爵士乐为你的硬核侦探而设！ 对垮掉派诗人也有用！ 还有对厌倦或无聊的人也有"
+"用！好吧，是一种有趣的无聊。"
 
 #: ../TabletopClub/pieces/Bishop_Black:1
 msgid "Bishop Black"
-msgstr ""
+msgstr "黑主教"
 
 #: ../TabletopClub/pieces/Bishop_White:1
 msgid "Bishop White"
-msgstr ""
+msgstr "白主教"
 
 #: ../TabletopClub/pieces/King_Black:1
 msgid "King Black"
-msgstr ""
+msgstr "黑国王"
 
 #: ../TabletopClub/pieces/King_White:1
 msgid "King White"
-msgstr ""
+msgstr "白国王"
 
 #: ../TabletopClub/pieces/Knight_Black:1
 msgid "Knight Black"
-msgstr ""
+msgstr "黑骑士"
 
 #: ../TabletopClub/pieces/Knight_White:1
 msgid "Knight White"
-msgstr ""
+msgstr "白骑士"
 
 #: ../TabletopClub/pieces/Pawn_Black:1
 msgid "Pawn Black"
-msgstr ""
+msgstr "黑士兵"
 
 #: ../TabletopClub/pieces/Pawn_White:1
 msgid "Pawn White"
-msgstr ""
+msgstr "白士兵"
 
 #: ../TabletopClub/pieces/Queen_Black:1
 msgid "Queen Black"
-msgstr ""
+msgstr "黑皇后"
 
 #: ../TabletopClub/pieces/Queen_White:1
 msgid "Queen White"
-msgstr ""
+msgstr "白皇后"
 
 #: ../TabletopClub/pieces/Rook_Black:1
 msgid "Rook Black"
-msgstr ""
+msgstr "黑战车"
 
 #: ../TabletopClub/pieces/Rook_White:1
 msgid "Rook White"
-msgstr ""
+msgstr "白战车"
 
 #: ../TabletopClub/pieces/Stone_Black:1
 msgid "Stone Black"
-msgstr ""
+msgstr "黑子"
 
 #: ../TabletopClub/pieces/Stone_White:1
 msgid "Stone White"
-msgstr ""
+msgstr "白子"
 
 #: ../TabletopClub/skyboxes/Clouds:1
 msgid "Clouds"
-msgstr ""
+msgstr "云间"
 
 #: ../TabletopClub/skyboxes/Dallas_West:1
 msgid "Dallas West"
-msgstr ""
+msgstr "达拉斯西部酒店"
 
 #: ../TabletopClub/skyboxes/Forest:1
 msgid "Forest"
-msgstr ""
+msgstr "森林"
 
 #: ../TabletopClub/skyboxes/Hornstulls_Strand:1
 msgid "Hornstulls Strand"
-msgstr ""
+msgstr "斯德哥尔摩水岸"
 
 #: ../TabletopClub/skyboxes/Ice_River:1
 msgid "Ice River"
-msgstr ""
+msgstr "冰河"
 
 #: ../TabletopClub/skyboxes/Marriott_Madison_West:1
 msgid "Marriott Madison West"
-msgstr ""
+msgstr "西麦迪逊万豪酒店"
 
 #: ../TabletopClub/skyboxes/Maskonaive:1
 msgid "Maskonaive"
-msgstr ""
+msgstr "Maskonaive"
 
 #: ../TabletopClub/skyboxes/Nebula:1
 msgid "Nebula"
-msgstr ""
+msgstr "星云"
 
 #: ../TabletopClub/skyboxes/Niagra_Falls:1
 msgid "Niagra Falls"
-msgstr ""
+msgstr "尼亚加拉大瀑布"
 
 #: ../TabletopClub/skyboxes/Park:1
 msgid "Park"
-msgstr ""
+msgstr "公园"
 
 #: ../TabletopClub/skyboxes/Park_Winter:1
 msgid "Park Winter"
-msgstr ""
+msgstr "冬季公园"
 
 #: ../TabletopClub/skyboxes/Path:1
 msgid "Path"
-msgstr ""
+msgstr "小路"
 
 #: ../TabletopClub/skyboxes/Space:1
 msgid "Space"
-msgstr ""
+msgstr "太空"
 
 #: ../TabletopClub/skyboxes/Tantolunden:1
 msgid "Tantolunden"
-msgstr ""
+msgstr "Tantolunden"
 
 #: ../TabletopClub/skyboxes/Vasa:1
 msgid "Vasa"
-msgstr ""
+msgstr "Vasa"
 
 #: ../TabletopClub/sounds/Alarm:1
 msgid "Alarm"
-msgstr ""
+msgstr "警报"
 
 #: ../TabletopClub/sounds/Alarm:2
 msgid "An alarm for alarming situations."
-msgstr ""
+msgstr "一个用于紧急情况的警报。"
 
 #: ../TabletopClub/speakers/Gramophone:1
 msgid "Gramophone"
-msgstr ""
+msgstr "留声机"
 
 #: ../TabletopClub/speakers/Gramophone:2
 msgid "A low-poly vintage gramophone."
-msgstr ""
+msgstr "低多边形老式留声机。"
 
 #: ../TabletopClub/tables/Picnic_Bench:1
 msgid "Picnic Bench"
-msgstr ""
+msgstr "野餐台"
 
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
-msgstr ""
+msgstr "桌游桌"
 
 #: ../TabletopClub/templates/Blank_Page:1
 msgid "Blank Page"
-msgstr ""
+msgstr "空白页"
 
 #: ../TabletopClub/templates/Blank_Page:2
 msgid "There's nothing here..."
-msgstr ""
+msgstr "这里什么都没有..."
 
 #: ../TabletopClub/templates/Score_Card:1
 msgid "Score Card"
-msgstr ""
+msgstr "计分卡"
 
 #: ../TabletopClub/templates/Score_Card:2
 msgid "A generic score card for up to 10 players."
-msgstr ""
+msgstr "一张最多可容纳10名玩家的通用记分卡。"
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
-msgstr ""
+msgstr "收音机"
 
 #: ../TabletopClub/timers/Radio:2
 msgid "An old radio from a bygone era."
-msgstr ""
+msgstr "一台来自旧时代的老式收音机。"
 
 #: ../TabletopClub/tokens/cube/Blue:1
 msgid "Blue"
-msgstr ""
+msgstr "蓝色小方块"
 
 #: ../TabletopClub/tokens/cube/Blue:2
 msgid "A blue token."
-msgstr ""
+msgstr "一个蓝色小方块。"
 
 #: ../TabletopClub/tokens/cube/Brown:1
 msgid "Brown"
-msgstr ""
+msgstr "棕色小方块"
 
 #: ../TabletopClub/tokens/cube/Brown:2
 msgid "A brown token."
-msgstr ""
+msgstr "一个棕色小方块。"
 
 #: ../TabletopClub/tokens/cube/Cyan:1
 msgid "Cyan"
-msgstr ""
+msgstr "青色小方块"
 
 #: ../TabletopClub/tokens/cube/Cyan:2
 msgid "A cyan token."
-msgstr ""
+msgstr "一个青色小方块。"
 
 #: ../TabletopClub/tokens/cube/Domino_0-0:1
 msgid "Domino 0-0"
-msgstr ""
+msgstr "多米诺骨牌 0-0"
 
 #: ../TabletopClub/tokens/cube/Domino_0-1:1
 msgid "Domino 0-1"
-msgstr ""
+msgstr "多米诺骨牌 0-1"
 
 #: ../TabletopClub/tokens/cube/Domino_0-2:1
 msgid "Domino 0-2"
-msgstr ""
+msgstr "多米诺骨牌 0-2"
 
 #: ../TabletopClub/tokens/cube/Domino_0-3:1
 msgid "Domino 0-3"
-msgstr ""
+msgstr "多米诺骨牌 0-3"
 
 #: ../TabletopClub/tokens/cube/Domino_0-4:1
 msgid "Domino 0-4"
-msgstr ""
+msgstr "多米诺骨牌 0-4"
 
 #: ../TabletopClub/tokens/cube/Domino_0-5:1
 msgid "Domino 0-5"
-msgstr ""
+msgstr "多米诺骨牌 0-5"
 
 #: ../TabletopClub/tokens/cube/Domino_0-6:1
 msgid "Domino 0-6"
-msgstr ""
+msgstr "多米诺骨牌 0-6"
 
 #: ../TabletopClub/tokens/cube/Domino_1-1:1
 msgid "Domino 1-1"
-msgstr ""
+msgstr "多米诺骨牌 1-1"
 
 #: ../TabletopClub/tokens/cube/Domino_1-2:1
 msgid "Domino 1-2"
-msgstr ""
+msgstr "多米诺骨牌 1-2"
 
 #: ../TabletopClub/tokens/cube/Domino_1-3:1
 msgid "Domino 1-3"
-msgstr ""
+msgstr "多米诺骨牌 1-3"
 
 #: ../TabletopClub/tokens/cube/Domino_1-4:1
 msgid "Domino 1-4"
-msgstr ""
+msgstr "多米诺骨牌 1-4"
 
 #: ../TabletopClub/tokens/cube/Domino_1-5:1
 msgid "Domino 1-5"
-msgstr ""
+msgstr "多米诺骨牌 1-5"
 
 #: ../TabletopClub/tokens/cube/Domino_1-6:1
 msgid "Domino 1-6"
-msgstr ""
+msgstr "多米诺骨牌 1-6"
 
 #: ../TabletopClub/tokens/cube/Domino_2-2:1
 msgid "Domino 2-2"
-msgstr ""
+msgstr "多米诺骨牌 2-2"
 
 #: ../TabletopClub/tokens/cube/Domino_2-3:1
 msgid "Domino 2-3"
-msgstr ""
+msgstr "多米诺骨牌 2-3"
 
 #: ../TabletopClub/tokens/cube/Domino_2-4:1
 msgid "Domino 2-4"
-msgstr ""
+msgstr "多米诺骨牌 2-4"
 
 #: ../TabletopClub/tokens/cube/Domino_2-5:1
 msgid "Domino 2-5"
-msgstr ""
+msgstr "多米诺骨牌 2-5"
 
 #: ../TabletopClub/tokens/cube/Domino_2-6:1
 msgid "Domino 2-6"
-msgstr ""
+msgstr "多米诺骨牌 2-6"
 
 #: ../TabletopClub/tokens/cube/Domino_3-3:1
 msgid "Domino 3-3"
-msgstr ""
+msgstr "多米诺骨牌 3-3"
 
 #: ../TabletopClub/tokens/cube/Domino_3-4:1
 msgid "Domino 3-4"
-msgstr ""
+msgstr "多米诺骨牌 3-4"
 
 #: ../TabletopClub/tokens/cube/Domino_3-5:1
 msgid "Domino 3-5"
-msgstr ""
+msgstr "多米诺骨牌 3-5"
 
 #: ../TabletopClub/tokens/cube/Domino_3-6:1
 msgid "Domino 3-6"
-msgstr ""
+msgstr "多米诺骨牌 3-6"
 
 #: ../TabletopClub/tokens/cube/Domino_4-4:1
 msgid "Domino 4-4"
-msgstr ""
+msgstr "多米诺骨牌 4-4"
 
 #: ../TabletopClub/tokens/cube/Domino_4-5:1
 msgid "Domino 4-5"
-msgstr ""
+msgstr "多米诺骨牌 4-5"
 
 #: ../TabletopClub/tokens/cube/Domino_4-6:1
 msgid "Domino 4-6"
-msgstr ""
+msgstr "多米诺骨牌 4-6"
 
 #: ../TabletopClub/tokens/cube/Domino_5-5:1
 msgid "Domino 5-5"
-msgstr ""
+msgstr "多米诺骨牌 5-5"
 
 #: ../TabletopClub/tokens/cube/Domino_5-6:1
 msgid "Domino 5-6"
-msgstr ""
+msgstr "多米诺骨牌 5-6"
 
 #: ../TabletopClub/tokens/cube/Domino_6-6:1
 msgid "Domino 6-6"
-msgstr ""
+msgstr "多米诺骨牌 6-6"
 
 #: ../TabletopClub/tokens/cube/Green:1
 msgid "Green"
-msgstr ""
+msgstr "绿色小方块"
 
 #: ../TabletopClub/tokens/cube/Green:2
 msgid "A green token."
-msgstr ""
+msgstr "一个绿色小方块。"
 
 #: ../TabletopClub/tokens/cube/Orange:1
 msgid "Orange"
-msgstr ""
+msgstr "橙色小方块"
 
 #: ../TabletopClub/tokens/cube/Orange:2
 msgid "An orange token."
-msgstr ""
+msgstr "一个橙色小方块。"
 
 #: ../TabletopClub/tokens/cube/Pink:1
 msgid "Pink"
-msgstr ""
+msgstr "粉色小方块"
 
 #: ../TabletopClub/tokens/cube/Pink:2
 msgid "A pink token."
-msgstr ""
+msgstr "一个粉色小方块。"
 
 #: ../TabletopClub/tokens/cube/Purple:1
 msgid "Purple"
-msgstr ""
+msgstr "紫色小方块"
 
 #: ../TabletopClub/tokens/cube/Purple:2
 msgid "A purple token."
-msgstr ""
+msgstr "一个紫色小方块。"
 
 #: ../TabletopClub/tokens/cube/Red:1
 msgid "Red"
-msgstr ""
+msgstr "红色小方块"
 
 #: ../TabletopClub/tokens/cube/Red:2
 msgid "A red token."
-msgstr ""
+msgstr "一个红色小方块。"
 
 #: ../TabletopClub/tokens/cube/White:1
 msgid "White"
-msgstr ""
+msgstr "白色小方块"
 
 #: ../TabletopClub/tokens/cube/White:2
 msgid "A white token."
-msgstr ""
+msgstr "一个白色小方块。"
 
 #: ../TabletopClub/tokens/cube/Yellow:1
 msgid "Yellow"
-msgstr ""
+msgstr "黄色小方块"
 
 #: ../TabletopClub/tokens/cube/Yellow:2
 msgid "A yellow token."
-msgstr ""
+msgstr "一个黄色小方块。"
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
-msgstr ""
+msgstr "1"
 
-#: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2 ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2 ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
+#: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2
+#: ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2
+#: ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
 msgid "A poker chip."
-msgstr ""
+msgstr "一个扑克牌筹码。"
 
 #: ../TabletopClub/tokens/cylinder/10:1
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: ../TabletopClub/tokens/cylinder/100:1
 msgid "100"
-msgstr ""
+msgstr "100"
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:1
 msgid "20 x 1 Chips"
-msgstr ""
+msgstr "20 x 1 筹码"
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:2
 msgid "A stack of 20 1-value chips."
-msgstr ""
+msgstr "一摞20个1值的筹码。"
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:1
 msgid "20 x 10 Chips"
-msgstr ""
+msgstr "20 x 10 筹码"
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:2
 msgid "A stack of 20 10-value chips."
-msgstr ""
+msgstr "一摞20个10值的筹码。"
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:1
 msgid "20 x 100 Chips"
-msgstr ""
+msgstr "20 x 100 筹码"
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:2
 msgid "A stack of 20 100-value chips."
-msgstr ""
+msgstr "一摞20个100值的筹码。"
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:1
 msgid "20 x 25 Chips"
-msgstr ""
+msgstr "20 x 25 筹码"
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:2
 msgid "A stack of 20 25-value chips."
-msgstr ""
+msgstr "一摞20个25值的筹码。"
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:1
 msgid "20 x 5 Chips"
-msgstr ""
+msgstr "20 x 5 筹码"
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:2
 msgid "A stack of 20 5-value chips."
-msgstr ""
+msgstr "一摞20个5值的筹码。"
 
 #: ../TabletopClub/tokens/cylinder/25:1
 msgid "25"
-msgstr ""
+msgstr "25"
 
 #: ../TabletopClub/tokens/cylinder/5:1
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../TabletopClub/tokens/cylinder/D:1
 msgid "D"
-msgstr ""
+msgstr "D"
