@@ -9,11 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.1] - 2023-06-06
 
-### Added
+### Added
 
 - Added Chinese (Simplified), Polish as playable languages!
 
-### Changed
+### Changed
 
 - All links to the documentation now go to the stable version by default, rather
   than the latest version.
