@@ -33,6 +33,8 @@ onready var _viewport = $CenterContainer/ViewportContainer/Viewport
 const LABEL_WAIT_TIME = 3.0
 const LABEL_MOVE_DELAY = 0.0625
 const REVOLUTIONS_PER_SECOND = 0.25
+const TOOLTIP_MAX_LENGTH = 80
+const TOOLTIP_MAX_LINES = 4
 const X_ROTATION = PI / 4
 
 var _piece: Piece = null
@@ -74,25 +76,25 @@ func set_piece_details(piece_entry: Dictionary) -> void:
 	
 	var desc_locale = "desc_%s" % locale
 	if piece_entry.has(desc_locale):
-		tooltip_text += "\n" + piece_entry[desc_locale]
+		tooltip_text += "\n" + _truncate_string(piece_entry[desc_locale])
 	elif not piece_entry["desc"].empty():
-		tooltip_text += "\n" + piece_entry["desc"]
+		tooltip_text += "\n" + _truncate_string(piece_entry["desc"])
 	
 	if piece_entry.has("author"):
 		if not piece_entry["author"].empty():
-			tooltip_text += "\n" + tr("Author: %s") % piece_entry["author"]
+			tooltip_text += "\n" + tr("Author: %s") % _truncate_string(piece_entry["author"])
 	
 	if piece_entry.has("license"):
 		if not piece_entry["license"].empty():
-			tooltip_text += "\n" + tr("License: %s") % piece_entry["license"]
+			tooltip_text += "\n" + tr("License: %s") % _truncate_string(piece_entry["license"])
 	
 	if piece_entry.has("modified_by"):
 		if not piece_entry["modified_by"].empty():
-			tooltip_text += "\n" + tr("Modified by: %s") % piece_entry["modified_by"]
+			tooltip_text += "\n" + tr("Modified by: %s") % _truncate_string(piece_entry["modified_by"])
 	
 	if piece_entry.has("url"):
 		if not piece_entry["url"].empty():
-			tooltip_text += "\n" + tr("URL: %s") % piece_entry["url"]
+			tooltip_text += "\n" + tr("URL: %s") % _truncate_string(piece_entry["url"])
 	
 	hint_tooltip = tooltip_text
 	
@@ -246,6 +248,29 @@ func _set_entry_gui(piece_entry: Dictionary) -> void:
 # selected: If the preview is now selected.
 func _set_selected_gui(selected: bool) -> void:
 	_viewport.transparent_bg = not selected
+
+# Truncate the length of a string that is displayed to the screen.
+# Returns: The truncated string.
+# string: The string to truncate to a reasonable length.
+func _truncate_string(string: String) -> String:
+	var num_lines = 1
+	var index = 0
+	
+	while index < string.length():
+		if index >= TOOLTIP_MAX_LENGTH:
+			break
+		
+		if string[index] == "\n":
+			num_lines += 1
+			if num_lines > TOOLTIP_MAX_LINES:
+				break
+		
+		index += 1
+	
+	if index >= string.length():
+		return string
+	else:
+		return string.substr(0, index) + "…"
 
 func _on_frame_post_draw():
 	_remove_piece()
