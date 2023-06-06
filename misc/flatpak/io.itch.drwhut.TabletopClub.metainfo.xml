@@ -64,8 +64,8 @@
   </supports>
 
   <releases>
-    <release version="0.1.0" date="2023-04-29" />
     <release version="0.1.1" date="2023-06-06" />
+    <release version="0.1.0" date="2023-04-29" />
   </releases>
 
   <content_rating type="oars-1.1">
