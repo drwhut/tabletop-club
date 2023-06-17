@@ -25,6 +25,10 @@ extends GutTest
 ## Test scripts related to custom assets.
 
 
+## The directory to use to test [TaggedDirectory].
+const TAGGED_DIR_TEST_LOCATION := "user://assets/__tagged_dir__"
+
+
 func test_asset_entries() -> void:
 	var entry := AssetEntry.new()
 	
@@ -383,6 +387,131 @@ func test_asset_db() -> void:
 	assert_false(_asset_db_content_changed_flag) # No changes made.
 	
 	AssetDB.disconnect("content_changed", self, "_on_AssetDB_content_changed")
+
+
+func test_tagged_directory() -> void:
+	var test_dir := Directory.new()
+	if not test_dir.dir_exists(TAGGED_DIR_TEST_LOCATION):
+		test_dir.make_dir(TAGGED_DIR_TEST_LOCATION)
+	
+	# We expect there to be no files or directories at the start of the test.
+	test_dir.open(TAGGED_DIR_TEST_LOCATION)
+	test_dir.list_dir_begin(true, false)
+	assert_eq(test_dir.get_next(), "")
+	test_dir.list_dir_end()
+	
+	var tagged_dir := TaggedDirectory.new("test") # Must be an absoute path.
+	assert_eq(tagged_dir.dir_path, "")
+	tagged_dir.dir_path = "user://logs" # Must begin with user://assets
+	assert_eq(tagged_dir.dir_path, "")
+	tagged_dir.dir_path = "user://assets/.." # Cannot contain ".."
+	assert_eq(tagged_dir.dir_path, "")
+	tagged_dir.dir_path = "user://assets/__0123456789__" # Directory must exist.
+	assert_eq(tagged_dir.dir_path, "")
+	tagged_dir.dir_path = TAGGED_DIR_TEST_LOCATION
+	assert_eq(tagged_dir.dir_path, TAGGED_DIR_TEST_LOCATION)
+	
+	assert_eq_deep(tagged_dir.get_tagged(), [])
+	
+	var file := File.new()
+	var a_path := TAGGED_DIR_TEST_LOCATION.plus_file("a.txt")
+	var b_path := TAGGED_DIR_TEST_LOCATION.plus_file("b.txt")
+	var c_path := TAGGED_DIR_TEST_LOCATION.plus_file("c.txt")
+	
+	file.open(a_path, File.WRITE)
+	file.store_string("a")
+	file.close()
+	file.open(b_path, File.WRITE)
+	file.store_string("b")
+	file.close()
+	
+	tagged_dir.tag("test.txt", false) # File must exist for it to be tagged.
+	assert_false(tagged_dir.is_tagged("test.txt"))
+	
+	tagged_dir.tag("a.txt", true)
+	assert_true(tagged_dir.is_tagged("a.txt"))
+	assert_false(tagged_dir.is_tagged("b.txt"))
+	assert_eq_deep(tagged_dir.get_tagged(), ["a.txt"])
+	
+	assert_true(tagged_dir.is_new("a.txt"))
+	assert_true(tagged_dir.is_changed("a.txt"))
+	assert_eq(tagged_dir.get_file_meta("a.txt").new_md5, "0cc175b9c0f1b6a831c399e269772661")
+	assert_eq(tagged_dir.get_file_meta("a.txt").old_md5, "")
+	
+	# Tagged files may not store metadata. This just prevents them from being
+	# deleted.
+	tagged_dir.tag("b.txt", false)
+	assert_true(tagged_dir.is_tagged("b.txt"))
+	assert_eq_deep(tagged_dir.get_tagged(), ["a.txt", "b.txt"])
+	assert_eq(tagged_dir.get_file_meta("b.txt").new_md5, "")
+	assert_eq(tagged_dir.get_file_meta("b.txt").old_md5, "")
+	
+	tagged_dir.tag("b.txt", true)
+	assert_true(tagged_dir.is_new("b.txt"))
+	assert_true(tagged_dir.is_changed("b.txt"))
+	assert_eq(tagged_dir.get_file_meta("b.txt").new_md5, "92eb5ffee6ae2fec3ad71c777531578f")
+	assert_eq(tagged_dir.get_file_meta("b.txt").old_md5, "")
+	
+	file.open(b_path, File.WRITE)
+	file.store_string("d")
+	file.close()
+	file.open(c_path, File.WRITE)
+	file.store_string("c")
+	file.close()
+	
+	tagged_dir.tag("a.txt", true)
+	tagged_dir.tag("b.txt", true)
+	tagged_dir.tag("c.txt", true)
+	assert_true(tagged_dir.is_tagged("a.txt"))
+	assert_true(tagged_dir.is_tagged("b.txt"))
+	assert_true(tagged_dir.is_tagged("c.txt"))
+	assert_eq_deep(tagged_dir.get_tagged(), ["a.txt", "b.txt", "c.txt"])
+	
+	assert_false(tagged_dir.is_new("a.txt"))
+	assert_false(tagged_dir.is_changed("a.txt"))
+	assert_eq(tagged_dir.get_file_meta("a.txt").new_md5, "0cc175b9c0f1b6a831c399e269772661")
+	assert_eq(tagged_dir.get_file_meta("a.txt").old_md5, "0cc175b9c0f1b6a831c399e269772661")
+	
+	assert_false(tagged_dir.is_new("b.txt"))
+	assert_true(tagged_dir.is_changed("b.txt"))
+	assert_eq(tagged_dir.get_file_meta("b.txt").new_md5, "8277e0910d750195b448797616e091ad")
+	assert_eq(tagged_dir.get_file_meta("b.txt").old_md5, "92eb5ffee6ae2fec3ad71c777531578f")
+	
+	assert_true(tagged_dir.is_new("c.txt"))
+	assert_true(tagged_dir.is_changed("c.txt"))
+	assert_eq(tagged_dir.get_file_meta("c.txt").new_md5, "4a8a08f09d37b73795649038408b5f33")
+	assert_eq(tagged_dir.get_file_meta("c.txt").old_md5, "")
+	
+	tagged_dir.untag("a.txt")
+	assert_false(tagged_dir.is_tagged("a.txt"))
+	assert_eq_deep(tagged_dir.get_tagged(), ["b.txt", "c.txt"])
+	
+	tagged_dir.tag("a.txt", true)
+	assert_true(tagged_dir.is_tagged("a.txt"))
+	assert_eq_deep(tagged_dir.get_tagged(), ["b.txt", "c.txt", "a.txt"])
+	
+	# Since the file was untagged, any stored metadata should have been deleted.
+	assert_true(tagged_dir.is_new("a.txt"))
+	assert_true(tagged_dir.is_changed("a.txt"))
+	assert_eq(tagged_dir.get_file_meta("a.txt").new_md5, "0cc175b9c0f1b6a831c399e269772661")
+	assert_eq(tagged_dir.get_file_meta("a.txt").old_md5, "")
+	
+	tagged_dir.untag("b.txt")
+	assert_false(tagged_dir.is_tagged("b.txt"))
+	assert_eq_deep(tagged_dir.get_tagged(), ["c.txt", "a.txt"])
+	
+	tagged_dir.remove_untagged()
+	assert_true(test_dir.file_exists(a_path))
+	assert_false(test_dir.file_exists(b_path))
+	assert_true(test_dir.file_exists(c_path))
+	
+	# Clean the test directory after we are done. Untagging the files removes
+	# the metadata files, which is required for the test to work properly.
+	tagged_dir.untag("a.txt")
+	tagged_dir.untag("c.txt")
+	tagged_dir.remove_untagged()
+	test_dir.remove(TAGGED_DIR_TEST_LOCATION)
+	assert_false(test_dir.dir_exists(TAGGED_DIR_TEST_LOCATION))
 
 
 func _on_AssetDB_content_changed():

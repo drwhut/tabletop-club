@@ -224,6 +224,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/StackablePiece.gd"
 }, {
+"base": "Reference",
+"class": "TaggedDirectory",
+"language": "GDScript",
+"path": "res://assets/tagged_directory.gd"
+}, {
 "base": "Resource",
 "class": "TemplateTextbox",
 "language": "GDScript",
@@ -283,6 +288,7 @@ _global_script_class_icons={
 "StackLasagne": "",
 "StackSandwich": "",
 "StackablePiece": "",
+"TaggedDirectory": "",
 "TemplateTextbox": "",
 "TimeEdit": "",
 "TimerPiece": ""
