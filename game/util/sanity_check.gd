@@ -38,6 +38,9 @@ const VALID_EXTENSIONS_SAVE: Array = ["tc"]
 ## A list of valid extensions for scene resources that are imported by the user.
 const VALID_EXTENSIONS_SCENE_USER: Array = ["dae", "glb", "gltf", "obj"]
 
+## A list of valid extensions for files that come with scene resources.
+const VALID_EXTENSIONS_SCENE_SUPPORT: Array = ["bin", "mtl"]
+
 ## A list of valid extensions for scene resources from both the user and from
 ## the res:// directory.
 const VALID_EXTENSIONS_SCENE: Array = ["scn", "tscn"] + VALID_EXTENSIONS_SCENE_USER
@@ -52,6 +55,10 @@ const VALID_EXTENSIONS_TEMPLATE_TEXT: Array = ["txt"]
 
 ## A list of valid extensions for image-based templates.
 const VALID_EXTENSIONS_TEMPLATE_IMAGE: Array = VALID_EXTENSIONS_TEXTURE
+
+## A list of valid extensions that are importable.
+const VALID_EXTENSIONS_IMPORT: Array = VALID_EXTENSIONS_AUDIO + \
+		VALID_EXTENSIONS_SCENE_USER + VALID_EXTENSIONS_TEXTURE
 
 
 ## Check if [code]value[/code] is a valid AABB.

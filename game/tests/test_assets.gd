@@ -514,5 +514,8 @@ func test_tagged_directory() -> void:
 	assert_false(test_dir.dir_exists(TAGGED_DIR_TEST_LOCATION))
 
 
+# TODO: Test AssetPackTypeCatalog!
+
+
 func _on_AssetDB_content_changed():
 	_asset_db_content_changed_flag = true

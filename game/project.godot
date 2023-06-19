@@ -84,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/asset_pack.gd"
 }, {
+"base": "TaggedDirectory",
+"class": "AssetPackTypeCatalog",
+"language": "GDScript",
+"path": "res://assets/asset_pack_type_catalog.gd"
+}, {
 "base": "Resource",
 "class": "AudioStreamList",
 "language": "GDScript",
@@ -260,6 +265,7 @@ _global_script_class_icons={
 "AssetEntryTemplateImage": "",
 "AssetEntryTemplateText": "",
 "AssetPack": "",
+"AssetPackTypeCatalog": "",
 "AudioStreamList": "",
 "BindButton": "",
 "Card": "",
@@ -313,6 +319,7 @@ config/version="master"
 
 [autoload]
 
+CustomModule="*res://util/custom_module.gd"
 AssetDB="*res://assets/asset_db.gd"
 
 [debug]
