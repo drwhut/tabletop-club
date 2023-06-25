@@ -28,6 +28,15 @@ extends GutTest
 ## The directory to use to test [TaggedDirectory].
 const TAGGED_DIR_TEST_LOCATION := "user://assets/__tagged_dir__"
 
+## The directory to use to test [AssetPackTypeCatalog].
+const TYPE_CATALOG_TEST_LOCATION := "user://assets/__type_catalog__"
+
+
+func before_all() -> void:
+	var asset_dir := Directory.new()
+	if not asset_dir.dir_exists("user://assets"):
+		asset_dir.make_dir("user://assets")
+
 
 func test_asset_entries() -> void:
 	var entry := AssetEntry.new()
@@ -411,6 +420,12 @@ func test_tagged_directory() -> void:
 	tagged_dir.dir_path = TAGGED_DIR_TEST_LOCATION
 	assert_eq(tagged_dir.dir_path, TAGGED_DIR_TEST_LOCATION)
 	
+	# If we failed to open the directory, then stop now to prevent the res://
+	# directory from getting cleaned.
+	if tagged_dir.dir_path.empty():
+		fail_test("Failed to open directory: '%s'" % TAGGED_DIR_TEST_LOCATION)
+		return
+	
 	assert_eq_deep(tagged_dir.get_tagged(), [])
 	
 	var file := File.new()
@@ -514,7 +529,216 @@ func test_tagged_directory() -> void:
 	assert_false(test_dir.dir_exists(TAGGED_DIR_TEST_LOCATION))
 
 
-# TODO: Test AssetPackTypeCatalog!
+func test_type_catalog() -> void:
+	var test_dir := Directory.new()
+	if not test_dir.dir_exists(TYPE_CATALOG_TEST_LOCATION):
+		test_dir.make_dir(TYPE_CATALOG_TEST_LOCATION)
+	
+	# We've already tested TaggedDirectory, so we don't need to check if the
+	# directory is empty.
+	var catalog := AssetPackTypeCatalog.new(TYPE_CATALOG_TEST_LOCATION)
+	var card_dir := "res://tests/test_pack/cards"
+	var piece_dir := "res://tests/test_pack/pieces"
+	
+	# If the directory failed to open, then stop now to prevent cleaning the
+	# res:// directory.
+	if catalog.dir_path.empty():
+		fail_test("Failed to open directory: '%s'" % TYPE_CATALOG_TEST_LOCATION)
+		return
+	
+	### COLLECTING ASSETS ###
+	
+	assert_eq_deep(catalog.collect_audio(piece_dir), [])
+	assert_eq_deep(catalog.get_tagged(), [])
+	assert_eq_deep(catalog.collect_text_templates(piece_dir), [])
+	assert_eq_deep(catalog.get_tagged(), [])
+	
+	assert_eq_deep(catalog.collect_textures(piece_dir), ["white_texture.png"])
+	assert_eq_deep(catalog.get_tagged(), ["white_texture.png"])
+	var white_tex_path := TYPE_CATALOG_TEST_LOCATION.plus_file("white_texture.png")
+	assert_file_exists(white_tex_path)
+	
+	assert_eq_deep(catalog.collect_support(piece_dir), ["piece_mat.mtl"])
+	assert_eq_deep(catalog.get_tagged(), ["white_texture.png", "piece_mat.mtl"])
+	assert_file_exists(TYPE_CATALOG_TEST_LOCATION.plus_file("piece_mat.mtl"))
+	
+	# TODO: Is the order here reliable?
+	assert_eq_deep(catalog.collect_scenes(piece_dir), ["white_piece.obj",
+			"red_piece.obj"])
+	assert_eq_deep(catalog.get_tagged(), ["white_texture.png", "piece_mat.mtl",
+			"white_piece.obj", "red_piece.obj"])
+	var red_path := TYPE_CATALOG_TEST_LOCATION.plus_file("red_piece.obj")
+	var white_path := TYPE_CATALOG_TEST_LOCATION.plus_file("white_piece.obj")
+	assert_file_exists(red_path)
+	assert_file_exists(white_path)
+	
+	# Make sure each test is consistent by ensuring that the catalog identifies
+	# the files as being new, so that we can check how importing changes when
+	# the files are either changed, or stay the same.
+	assert_true(catalog.is_new("white_texture.png"))
+	assert_true(catalog.is_new("piece_mat.mtl"))
+	assert_true(catalog.is_new("red_piece.obj"))
+	assert_true(catalog.is_new("white_piece.obj"))
+	
+	### IMPORTING ASSETS ###
+	
+	var red_scn := "user://.import/red_piece.obj-%s.scn" % red_path.md5_text()
+	var white_scn := "user://.import/white_piece.obj-%s.scn" % white_path.md5_text()
+	var white_stex := "user://.import/white_texture.png-%s.stex" % white_tex_path.md5_text()
+	
+	# To start with, forcefully import each file to ensure that the resources
+	# exist and are up-to-date for the rest of the test.
+	assert_false(catalog.is_imported("white_texture.png"))
+	assert_false(catalog.is_imported("white_piece.obj"))
+	assert_false(catalog.is_imported("red_piece.obj"))
+	assert_eq(catalog.import_file("white_texture.png"), OK)
+	assert_eq(catalog.import_file("white_piece.obj"), OK)
+	assert_eq(catalog.import_file("red_piece.obj"), OK)
+	assert_true(catalog.is_imported("white_texture.png"))
+	assert_true(catalog.is_imported("white_piece.obj"))
+	assert_true(catalog.is_imported("red_piece.obj"))
+	
+	assert_file_exists(white_stex)
+	assert_true(catalog.is_tagged("white_texture.png.import"))
+	assert_true(ResourceLoader.exists(white_tex_path))
+	_check_texture(white_tex_path, Color.white)
+	
+	assert_file_exists(white_scn)
+	assert_true(catalog.is_tagged("white_piece.obj.import"))
+	assert_true(catalog.is_tagged("white_mat.material"))
+	assert_true(catalog.is_new("white_texture.png")) # Check it was not re-tagged.
+	assert_true(ResourceLoader.exists(white_path))
+	_check_scene(white_path, white_tex_path, Color.white)
+	
+	assert_file_exists(red_scn)
+	assert_true(catalog.is_tagged("red_piece.obj.import"))
+	assert_true(catalog.is_tagged("red_mat.material"))
+	assert_true(ResourceLoader.exists(red_path))
+	_check_scene(red_path, "", Color.red)
+	
+	# Add a new file to see if it is imported automatically.
+	assert_eq_deep(catalog.collect_textures(card_dir), ["black_texture.png"])
+	assert_true(catalog.is_tagged("black_texture.png"))
+	assert_true(catalog.is_new("black_texture.png"))
+	assert_false(catalog.is_imported("black_texture.png"))
+	
+	var black_tex_path := TYPE_CATALOG_TEST_LOCATION.plus_file("black_texture.png")
+	var black_stex := "user://.import/black_texture.png-%s.stex" % black_tex_path.md5_text()
+	assert_file_exists(black_tex_path)
+	
+	# Change an existing file to see if it is imported automatically.
+	var white_file := File.new()
+	white_file.open(white_path, File.READ_WRITE)
+	white_file.seek_end()
+	white_file.store_string("\nf 3 2 1")
+	white_file.close()
+	
+	catalog.tag("white_piece.obj", true)
+	assert_true(catalog.is_changed("white_piece.obj"))
+	
+	# Keep one file the same to see if importing is skipped.
+	catalog.tag("white_texture.png", true)
+	assert_false(catalog.is_new("white_texture.png"))
+	assert_false(catalog.is_changed("white_texture.png"))
+	
+	var modified_check := File.new()
+	var white_stex_modified_old := modified_check.get_modified_time(white_stex)
+	var white_scn_modified_old := modified_check.get_modified_time(white_scn)
+	
+	gut.p("Waiting for UNIX timestamp to increment before continuing...")
+	OS.delay_msec(1000)
+	catalog.import_tagged()
+	
+	var white_stex_modified_new := modified_check.get_modified_time(white_stex)
+	var white_scn_modified_new := modified_check.get_modified_time(white_scn)
+	
+	assert_file_exists(black_stex)
+	assert_true(catalog.is_imported("black_texture.png"))
+	assert_true(catalog.is_tagged("black_texture.png.import"))
+	assert_true(ResourceLoader.exists(black_tex_path))
+	_check_texture(black_tex_path, Color.black)
+	
+	assert_ne(white_scn_modified_old, white_scn_modified_new)
+	assert_eq(white_stex_modified_old, white_stex_modified_new)
+	
+	# Make sure that assets are re-imported if generated files are missing, even
+	# if the file is tagged as unchanged.
+	catalog.tag("red_piece.obj", true)
+	assert_false(catalog.is_new("red_piece.obj"))
+	assert_false(catalog.is_changed("red_piece.obj"))
+	
+	catalog.tag("white_piece.obj", true)
+	assert_false(catalog.is_new("white_piece.obj"))
+	assert_false(catalog.is_changed("white_piece.obj"))
+	
+	assert_true(catalog.is_imported("red_piece.obj"))
+	assert_true(catalog.is_imported("white_piece.obj"))
+	test_dir.remove(red_path + ".import")
+	test_dir.remove(white_scn)
+	assert_file_does_not_exist(red_path + ".import")
+	assert_file_does_not_exist(white_scn)
+	assert_false(catalog.is_imported("red_piece.obj"))
+	assert_false(catalog.is_imported("white_piece.obj"))
+	
+	catalog.import_tagged()
+	assert_true(catalog.is_imported("red_piece.obj"))
+	assert_true(catalog.is_imported("white_piece.obj"))
+	assert_file_exists(red_path + ".import")
+	assert_file_exists(white_scn)
+	
+	# Clean up the test directory.
+	for tagged_file in catalog.get_tagged():
+		catalog.untag(tagged_file)
+	catalog.remove_untagged()
+	test_dir.remove(TYPE_CATALOG_TEST_LOCATION)
+	assert_false(test_dir.dir_exists(TYPE_CATALOG_TEST_LOCATION))
+
+
+func _check_scene(scene_path: String, texture_path: String, albedo_color: Color):
+	gut.p("Checking imported scene at '%s'..." % scene_path)
+	
+	var test_scene = load(scene_path)
+	assert_is(test_scene, PackedScene)
+	assert_true(test_scene.can_instance())
+	
+	var test_node = autofree(test_scene.instance())
+	assert_is(test_node, Spatial)
+	assert_eq(test_node.get_child_count(), 1)
+	
+	var child_node = test_node.get_child(0)
+	assert_is(child_node, MeshInstance)
+	
+	var test_mesh: Mesh = child_node.mesh
+	assert_eq(test_mesh.get_surface_count(), 1)
+	var vertex_data: PoolVector3Array = test_mesh.get_faces()
+	assert_eq(vertex_data.size(), 3)
+	assert_eq(vertex_data[0], Vector3(1.0, 0.0, 0.0))
+	assert_eq(vertex_data[1], Vector3(0.0, 0.0, 0.0))
+	assert_eq(vertex_data[2], Vector3(0.0, 0.0, 1.0))
+	
+	assert_eq(child_node.get_surface_material_count(), 1)
+	var test_mat: SpatialMaterial = test_mesh.surface_get_material(0)
+	assert_eq(test_mat.albedo_color, albedo_color)
+	var actual_texture_path := ""
+	if test_mat.albedo_texture != null:
+		actual_texture_path = test_mat.albedo_texture.resource_path
+	assert_eq(actual_texture_path, texture_path)
+
+
+func _check_texture(texture_path: String, correct_color: Color):
+	gut.p("Checking imported texture at '%s'..." % texture_path)
+	var test_texture = load(texture_path)
+	assert_is(test_texture, StreamTexture)
+	
+	var test_image: Image = test_texture.get_data()
+	assert_eq(test_image.get_width(), 1)
+	assert_eq(test_image.get_height(), 1)
+	assert_false(test_image.has_mipmaps())
+	assert_false(test_image.is_compressed())
+	
+	test_image.lock()
+	assert_eq(test_image.get_pixel(0, 0), correct_color)
+	test_image.unlock()
 
 
 func _on_AssetDB_content_changed():

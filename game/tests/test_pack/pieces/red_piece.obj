@@ -1,0 +1,7 @@
+# A test triangle using a red material.
+mtllib piece_mat.mtl
+v 0.0 0.0 0.0
+v 1.0 0.0 0.0
+v 0.0 0.0 1.0
+usemtl red_mat
+f 1 2 3

@@ -26,6 +26,10 @@ extends TaggedDirectory
 ## Used to import and catalog assets from an asset pack subdirectory.
 
 
+func _init(path: String).(path):
+	pass
+
+
 ## Collect audio assets using [method collect_assets].
 func collect_audio(from_dir: String) -> Array:
 	return collect_assets(from_dir, SanityCheck.VALID_EXTENSIONS_AUDIO)
@@ -46,10 +50,9 @@ func collect_support(from_dir: String) -> Array:
 	return collect_assets(from_dir, SanityCheck.VALID_EXTENSIONS_SCENE_SUPPORT)
 
 
-## Collect notebook templates using [method collect_assets].
-func collect_templates(from_dir: String) -> Array:
-	return collect_assets(from_dir, SanityCheck.VALID_EXTENSIONS_TEMPLATE_IMAGE +
-			SanityCheck.VALID_EXTENSIONS_TEMPLATE_TEXT)
+## Collect notebook text templates using [method collect_assets].
+func collect_text_templates(from_dir: String) -> Array:
+	return collect_assets(from_dir, SanityCheck.VALID_EXTENSIONS_TEMPLATE_TEXT)
 
 
 ## Collect texture assets using [method collect_assets].
@@ -101,10 +104,7 @@ func import_tagged() -> void:
 		if not tagged_file.get_extension() in SanityCheck.VALID_EXTENSIONS_IMPORT:
 			continue
 		
-		# TODO: Check if ResourceLoader.exists() detects if the imported file
-		# has disappaeared or not, and if it returns true before importing.
-		var tagged_path := dir_path.plus_file(tagged_file)
-		if ResourceLoader.exists(tagged_path) and not (is_new(tagged_file) or \
+		if is_imported(tagged_file) and not (is_new(tagged_file) or \
 				is_changed(tagged_file)):
 			continue
 		
@@ -135,13 +135,18 @@ func import_file(file_name: String) -> int:
 	
 	print("Importing: %s" % file_path)
 	
+	# TODO: If files are deleted from the main directory, then files generated
+	# from importing will stay in user://.import - there should be a way to
+	# clean these files, probably in a higher-order class.
+	
 	var import_basename := _get_meta_basename(file_name)
-	var err: int = CustomModule.tabletop_importer.import(file_path, import_basename, {})
+	var err: int = CustomModule.tabletop_importer.call("import", file_path,
+			import_basename, {})
 	if err != OK:
 		push_error("Error importing '%s' (error: %d)" % [file_path, err])
 		return err
 	
-	var files_to_tag := [file_path]
+	var files_to_tag := [file_path, file_path + ".import"]
 	while not files_to_tag.empty():
 		var current_path: String = files_to_tag.pop_front()
 		if not current_path.is_abs_path():
@@ -167,6 +172,48 @@ func import_file(file_name: String) -> int:
 		files_to_tag.append_array(file_deps)
 	
 	return OK
+
+
+## Check if the given file has been imported properly. This function is mainly
+## used for testing, and is slightly more robust than
+## [code]ResourceLoader.exists[/code].
+func is_imported(file_name: String) -> bool:
+	if not file_name.is_valid_filename():
+		push_warning("Cannot check if '%s' was imported, not a valid file name" % file_name)
+		return false
+	
+	var this_dir := get_dir()
+	if not this_dir.file_exists(file_name):
+		push_warning("Cannot check if '%s' was imported, file does not exist" % file_name)
+		return false
+	
+	if not this_dir.file_exists(file_name + ".import"):
+		return false
+	
+	var import_file := ConfigFile.new()
+	var import_file_path := dir_path.plus_file(file_name + ".import")
+	var err := import_file.load(import_file_path)
+	if err != OK:
+		push_error("Failed to load '%s' (error: %d)" % [import_file_path, err])
+		return false
+	
+	var remap_keys := import_file.get_section_keys("remap")
+	var num_paths := 0
+	for key in remap_keys:
+		if not key.begins_with("path"):
+			continue
+		
+		var path = import_file.get_value("remap", key, "")
+		if not path is String:
+			return false
+		if path.empty():
+			return false
+		if not this_dir.file_exists(path):
+			return false
+		
+		num_paths += 1
+	
+	return num_paths > 0
 
 
 # Copy a file from from_dir to dir_path, but only if necessary.
