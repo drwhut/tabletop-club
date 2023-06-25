@@ -562,11 +562,18 @@ func test_type_catalog() -> void:
 	assert_eq_deep(catalog.get_tagged(), ["white_texture.png", "piece_mat.mtl"])
 	assert_file_exists(TYPE_CATALOG_TEST_LOCATION.plus_file("piece_mat.mtl"))
 	
-	# TODO: Is the order here reliable?
-	assert_eq_deep(catalog.collect_scenes(piece_dir), ["white_piece.obj",
-			"red_piece.obj"])
-	assert_eq_deep(catalog.get_tagged(), ["white_texture.png", "piece_mat.mtl",
-			"white_piece.obj", "red_piece.obj"])
+	# The order that files are scanned in can vary from platform to platform,
+	# so we can't rely on the order of the arrays here.
+	var collected_files := catalog.collect_scenes(piece_dir)
+	assert_eq(collected_files.size(), 2)
+	assert_true(collected_files.has("red_piece.obj"))
+	assert_true(collected_files.has("white_piece.obj"))
+	var tagged_files := catalog.get_tagged()
+	assert_eq(tagged_files.size(), 4)
+	assert_eq(tagged_files[0], "white_texture.png")
+	assert_eq(tagged_files[1], "piece_mat.mtl")
+	assert_true(tagged_files.has("red_piece.obj"))
+	assert_true(tagged_files.has("white_piece.obj"))
 	var red_path := TYPE_CATALOG_TEST_LOCATION.plus_file("red_piece.obj")
 	var white_path := TYPE_CATALOG_TEST_LOCATION.plus_file("white_piece.obj")
 	assert_file_exists(red_path)
