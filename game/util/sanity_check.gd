@@ -61,6 +61,68 @@ const VALID_EXTENSIONS_IMPORT: Array = VALID_EXTENSIONS_AUDIO + \
 		VALID_EXTENSIONS_SCENE_USER + VALID_EXTENSIONS_TEXTURE
 
 
+## Get the name of the given data type as a string. The input is one of the
+## type constants, e.g. [constant @GlobalScope.TYPE_INT].
+static func get_type_name(type: int) -> String:
+	match type:
+		TYPE_NIL:
+			return "Null"
+		TYPE_BOOL:
+			return "Boolean"
+		TYPE_INT:
+			return "Integer"
+		TYPE_REAL:
+			return "Float"
+		TYPE_STRING:
+			return "String"
+		TYPE_VECTOR2:
+			return "Vector2"
+		TYPE_RECT2:
+			return "Rect2"
+		TYPE_VECTOR3:
+			return "Vector3"
+		TYPE_TRANSFORM2D:
+			return "Transform2D"
+		TYPE_PLANE:
+			return "Plane"
+		TYPE_QUAT:
+			return "Quat"
+		TYPE_AABB:
+			return "AABB"
+		TYPE_BASIS:
+			return "Basis"
+		TYPE_TRANSFORM:
+			return "Transform"
+		TYPE_COLOR:
+			return "Color"
+		TYPE_NODE_PATH:
+			return "NodePath"
+		TYPE_RID:
+			return "RID"
+		TYPE_OBJECT:
+			return "Object"
+		TYPE_DICTIONARY:
+			return "Dictionary"
+		TYPE_ARRAY:
+			return "Array"
+		TYPE_RAW_ARRAY:
+			return "RawArray"
+		TYPE_INT_ARRAY:
+			return "IntArray"
+		TYPE_REAL_ARRAY:
+			return "FloatArray"
+		TYPE_STRING_ARRAY:
+			return "StringArray"
+		TYPE_VECTOR2_ARRAY:
+			return "Vector2Array"
+		TYPE_VECTOR3_ARRAY:
+			return "Vector3Array"
+		TYPE_COLOR_ARRAY:
+			return "ColorArray"
+		_:
+			return "<Unknown>"
+
+
 ## Check if [code]value[/code] is a valid AABB.
 static func is_valid_aabb(value: AABB) -> bool:
 	return is_valid_vector3(value.position) and is_valid_vector3(value.size)
