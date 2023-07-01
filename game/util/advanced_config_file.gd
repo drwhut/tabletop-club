@@ -51,6 +51,30 @@ func get_value_strict(section: String, key: String, default):
 		return default
 
 
+## Searches all of the sections of the file for the given key, and returns the
+## value of the one whose section pattern is longest, given that it matches with
+## [code]full_section[/code]. If no instances of the key was found,
+## [code]default[/code] is returned. If [code]strict_type[/code] is enabled,
+## the value must be the same data type as [code]default[/code] for it to be
+## returned, otherwise an error is thrown and the default value is returned.
+func get_value_by_matching(full_section: String, key: String, default, strict_type: bool):
+	var potential_sections := []
+	for pattern in get_sections():
+		if has_section_key(pattern, key) and is_pattern_match(full_section, pattern):
+			potential_sections.push_back(pattern)
+	
+	if potential_sections.empty():
+		return default
+	
+	potential_sections.sort_custom(StringLengthSorter, "sort_custom")
+	var longest_section: String = potential_sections.pop_back()
+	
+	if strict_type:
+		return get_value_strict(longest_section, key, default)
+	else:
+		return get_value(longest_section, key, default)
+
+
 ## Check if the source string matches the given pattern. The pattern string can
 ## contain asterisks (*) to match 0 or more characters, and question marks (?)
 ## to match exactly one character.
@@ -115,3 +139,13 @@ static func _pattern_match_recursive(source: String, pattern: String) -> bool:
 	# where we checked in the source string. If not, we expect the source
 	# stirng to have ended at the same time as the pattern string.
 	return is_asterisk or source_ptr >= source.length()
+
+
+## A custom sorter that sorts a list of strings by ascending length. If two
+## strings have the same length, then they are sorted lexically.
+class StringLengthSorter:
+	static func sort_custom(a: String, b: String) -> bool:
+		if a.length() == b.length():
+			return a < b
+		else:
+			return a.length() < b.length()

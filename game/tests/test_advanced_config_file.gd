@@ -151,3 +151,76 @@ func test_pattern_match() -> void:
 	assert_false(AdvancedConfigFile.is_pattern_match("hello", "h?*el*o"))
 	assert_false(AdvancedConfigFile.is_pattern_match("hello", "h*??a"))
 	assert_false(AdvancedConfigFile.is_pattern_match("hello", "??*l*???"))
+
+
+func test_get_value_by_matching() -> void:
+	var cfg := AdvancedConfigFile.new()
+	
+	# test_image.png
+	cfg.set_value("test_image.png", "a", 1)
+	cfg.set_value("test_image.png", "b", "hello")
+	cfg.set_value("test_image.png", "c", 4.20)
+	cfg.set_value("test_image.png", "d", true)
+	cfg.set_value("test_image.png", "e", Vector2.ZERO)
+	cfg.set_value("test_image.png", "f", Vector3.ONE)
+	cfg.set_value("test_image.png", "g", 10)
+	cfg.set_value("test_image.png", "h", 3.14)
+	
+	# ????_image*
+	cfg.set_value("????_image*", "a", 2)
+	cfg.set_value("????_image*", "b", "hi")
+	cfg.set_value("????_image*", "c", 6.69)
+	cfg.set_value("????_image*", "d", false)
+	cfg.set_value("????_image*", "i", 5)
+	cfg.set_value("????_image*", "j", "yo")
+	cfg.set_value("????_image*", "k", 4.274)
+	cfg.set_value("????_image*", "l", true)
+	
+	# *.png
+	cfg.set_value("*.png", "a", 3)
+	cfg.set_value("*.png", "b", "heya")
+	cfg.set_value("*.png", "e", Vector2.ONE)
+	cfg.set_value("*.png", "f", Vector3.ZERO)
+	cfg.set_value("*.png", "i", 7)
+	cfg.set_value("*.png", "j", "oh")
+	cfg.set_value("*.png", "m", Vector2(1.0, 2.0))
+	cfg.set_value("*.png", "n", Vector3(-1.0, 2.0, 0.5))
+	
+	# *
+	cfg.set_value("*", "a", 4)
+	cfg.set_value("*", "c", 420.0)
+	cfg.set_value("*", "e", -Vector2.ONE)
+	cfg.set_value("*", "g", 20)
+	cfg.set_value("*", "i", 22)
+	cfg.set_value("*", "k", 1024.5)
+	cfg.set_value("*", "m", -2.0 * Vector2.ONE)
+	cfg.set_value("*", "o", 60)
+	
+	assert_eq(cfg.get_value_by_matching("test_image.png", "a", 0, true), 1)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "b", "", true), "hello")
+	assert_eq(cfg.get_value_by_matching("test_image.png", "c", 0.0, true), 4.2)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "d", false, true), true)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "e", Vector2.ONE, true), Vector2.ZERO)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "f", Vector3.ZERO, true), Vector3.ONE)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "g", 0, true), 10)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "h", 0.0, true), 3.14)
+	
+	assert_eq(cfg.get_value_by_matching("test_image.png", "i", 0, true), 5)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "j", "", true), "yo")
+	assert_eq(cfg.get_value_by_matching("test_image.png", "k", 0.0, true), 4.274)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "l", false, true), true)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "m", Vector2.ONE, true), Vector2(1.0, 2.0))
+	assert_eq(cfg.get_value_by_matching("test_image.png", "n", Vector3.ZERO, true), Vector3(-1.0, 2.0, 0.5))
+	assert_eq(cfg.get_value_by_matching("test_image.png", "o", 0, true), 60)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "p", 12.5, true), 12.5)
+	
+	# Testing strict and non-strict types.
+	assert_eq(cfg.get_value_by_matching("test_image.png", "a", 5, true), 1)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "a", 2.7, true), 1.0) # int -> float
+	assert_eq(cfg.get_value_by_matching("test_image.png", "a", "wat", true), "wat")
+	assert_eq(cfg.get_value_by_matching("test_image.png", "a", true, true), true)
+	
+	assert_eq(cfg.get_value_by_matching("test_image.png", "a", 10, false), 1)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "a", 2.5, false), 1)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "a", "hi", false), 1)
+	assert_eq(cfg.get_value_by_matching("test_image.png", "a", false, false), 1)
