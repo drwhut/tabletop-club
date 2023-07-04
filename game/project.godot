@@ -129,6 +129,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/dice_face_value_list.gd"
 }, {
+"base": "Reference",
+"class": "DictionaryParser",
+"language": "GDScript",
+"path": "res://util/dictionary_parser.gd"
+}, {
 "base": "Preview",
 "class": "GenericPreview",
 "language": "GDScript",
@@ -279,6 +284,7 @@ _global_script_class_icons={
 "Dice": "",
 "DiceFaceValue": "",
 "DiceFaceValueList": "",
+"DictionaryParser": "",
 "GenericPreview": "",
 "GutHookScript": "",
 "GutTest": "",

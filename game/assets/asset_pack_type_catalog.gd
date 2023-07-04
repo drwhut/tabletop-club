@@ -216,6 +216,125 @@ func is_imported(file_name: String) -> bool:
 	return num_paths > 0
 
 
+## Apply the properties of a config.cfg file to the given entry.
+## [code]full_name[/code] is used to decide which sections of the file to get
+## properties from.
+func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
+		full_name: String, scale_is_vec2: bool) -> void:
+	
+	# TODO: Make sure any errors that come up (either from the config file, or
+	# from the entry itself) are stored in the entry.
+	
+	entry.id = config.get_value_by_matching(full_name, "name",
+			full_name.get_basename(), true)
+	entry.desc = config.get_value_by_matching(full_name, "desc", "", true)
+	
+	entry.author = config.get_value_by_matching(full_name, "author", "", true)
+	entry.license = config.get_value_by_matching(full_name, "license", "", true)
+	entry.modified_by = config.get_value_by_matching(full_name, "modified_by",
+			"", true)
+	entry.url = config.get_value_by_matching(full_name, "url", "", true)
+	
+	# TODO: Ideally would use elif's here, but due to how the autocompletion
+	# works, it won't show the subclass's properties. Change once the editor
+	# has improved in this regard.
+	
+	if entry is AssetEntryAudio:
+		pass # Everything is determined by the directory the track is in.
+	
+	if entry is AssetEntryScene:
+		var color_str: String = config.get_value_by_matching(full_name, "color",
+				"#ffffff", true)
+		if color_str.is_valid_html_color():
+			entry.albedo_color = Color(color_str)
+		else:
+			push_error("'%s' is not a valid color" % color_str)
+		
+		# TODO: Throw a warning if values like these are invalid? From within
+		# the class itself or here?
+		entry.mass = config.get_value_by_matching(full_name, "mass", 1.0, true)
+		
+		if scale_is_vec2:
+			var scale_vec2: Vector2 = config.get_value_by_matching(full_name,
+					"scale", Vector2.ONE, true)
+			entry.scale = Vector3(scale_vec2.x, 1.0, scale_vec2.y)
+		else:
+			entry.scale = config.get_value_by_matching(full_name, "scale",
+					Vector3.ONE, true)
+		
+		# Now that we know the scale, we can use it to automatically adjust the
+		# meta-properties of the scene.
+		entry.avg_point *= entry.scale
+		var old_aabb: AABB = entry.bounding_box
+		entry.bounding_box = AABB(entry.scale * old_aabb.position,
+				entry.scale * old_aabb.size)
+		
+		# TODO: collision_type, com_adjust, physics_material,
+		# collision_fast_sounds, collision_slow_sounds.
+		
+		if entry is AssetEntryContainer:
+			pass
+		
+		if entry is AssetEntryDice:
+			pass
+		
+		if entry is AssetEntryStackable:
+			pass
+		
+		if entry is AssetEntryTable:
+			pass
+	
+	if entry is AssetEntrySkybox:
+		entry.energy = config.get_value_by_matching(full_name, "strength", 1.0, true)
+		
+		var rot_deg: Vector3 = config.get_value_by_matching(full_name,
+				"rotation", Vector3.ZERO, true)
+		var rot_rad := Vector3(deg2rad(rot_deg.x), deg2rad(rot_deg.y),
+				deg2rad(rot_deg.z))
+		entry.rotation = rot_rad
+	
+	if entry is AssetEntryTemplate:
+		if entry is AssetEntryTemplateImage:
+			var textbox_arr := []
+			var textbox_input = config.get_value_by_matching(full_name,
+					"textboxes", [], false)
+			
+			if textbox_input is Array:
+				textbox_arr = textbox_input
+			elif textbox_input is Dictionary:
+				push_warning("'textboxes' is now an array as of v0.2.0, ignoring keys")
+				textbox_arr = textbox_input.values()
+			else:
+				push_error("'textboxes' is invalid data type (expected: Array, got: %s)" %
+						SanityCheck.get_type_name(typeof(textbox_input)))
+			
+			entry.textbox_list = []
+			for textbox_meta in textbox_arr:
+				if not textbox_meta is Dictionary:
+					push_warning("Element of 'textboxes' array is not a dictionary, ignoring")
+					continue
+				
+				var new_textbox := TemplateTextbox.new()
+				var parser := DictionaryParser.new(textbox_meta)
+				
+				# TODO: Do we want to check the image size here, even though
+				# the textbox can be rotated?
+				var x: int = parser.get_strict_type("x", 0)
+				var y: int = parser.get_strict_type("y", 0)
+				var w: int = parser.get_strict_type("w", 100)
+				var h: int = parser.get_strict_type("h", 100)
+				new_textbox.rect = Rect2(x, y, w, h)
+				
+				new_textbox.rotation = parser.get_strict_type("rot", 0.0)
+				new_textbox.lines = parser.get_strict_type("lines", 1)
+				new_textbox.text = parser.get_strict_type("text", "")
+				
+				entry.textbox_list.push_back(new_textbox)
+		
+		if entry is AssetEntryTemplateText:
+			pass
+
+
 # Copy a file from from_dir to dir_path, but only if necessary.
 func _copy_file(from_dir: String, file_name: String) -> void:
 	var src_path := from_dir.plus_file(file_name)
