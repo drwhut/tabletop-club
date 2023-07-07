@@ -7,8 +7,55 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added 
+### Added
 
-- Tabletop Club has been released! \o/
+#### Assets
+
+- A look-up cache has been implemented into the AssetDB, which should lead to
+  increased performance when searching for specific assets.
+- A new 'tagging' system has been added for the internal `user://` directory,
+  which is more robust against missing files.
+- Can now use the `?` wildcard in section names of `config.cfg` files, which
+  will match one and only one character.
+- The value of die faces can now be text, as well as numbers. (#209)
+
+#### Project
+
+- Added unit tests for various in-game systems using Gut v7.4.1 (#153)
+
+### Changed
+
+#### Assets
+
+- The AssetDB now stores entries as resources instead of JSON-like dictionaries,
+  which allows for increased type safety and internal data validation.
+- The way temporary entries in the AssetDB (that is, entries that are provided
+  by a multiplayer host) are stored in memory has been optimised.
+- The `*` wildcard can now be used in the middle of section names in
+  `config.cfg` files, rather than just at the beginning and end.
+- The format of the `face_values` property has changed from `VALUE: ROTATION` to
+  `ROTATION: VALUE`, allowing for multiple faces of a die to have the same
+  value.
+
+#### Project
+
+- Updated the Godot Engine from 3.4.5-stable to 3.5.2-stable.
+- Updated the custom module to be more flexible in how files are imported.
+- Replaced the physics frame interpolation patch with the engine-provided
+  implementation.
+- Switched the default VRAM compression algorithm from ETC to ETC2.
+- Changed the project's directory structure in order to comply with Godot
+  conventions.
+
+#### UI
+
+- Changed the default window size from 1024x600 to 1920x1080.
+
+### Removed
+
+#### Assets
+
+- Removed the `--base-asset-dir` command-line argument, as it is no longer
+  required.
 
 [unreleased]: https://github.com/drwhut/tabletop-club/compare/HEAD...HEAD
