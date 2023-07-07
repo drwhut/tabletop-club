@@ -220,10 +220,11 @@ func is_imported(file_name: String) -> bool:
 ## [code]full_name[/code] is used to decide which sections of the file to get
 ## properties from.
 func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
-		full_name: String, scale_is_vec2: bool) -> void:
+		full_name: String, scale_is_vec2: bool, die_num_faces: int) -> void:
 	
 	# TODO: Make sure any errors that come up (either from the config file, or
 	# from the entry itself) are stored in the entry.
+	print("Configuring: %s" % full_name)
 	
 	entry.id = config.get_value_by_matching(full_name, "name",
 			full_name.get_basename(), true)
@@ -269,20 +270,233 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 		entry.bounding_box = AABB(entry.scale * old_aabb.position,
 				entry.scale * old_aabb.size)
 		
-		# TODO: collision_type, com_adjust, physics_material,
-		# collision_fast_sounds, collision_slow_sounds.
+		if entry.scene_path.begins_with("res://"):
+			# In-built scenes should already be configured with the correct
+			# collision shape and centre-of-mass, so do not allow the player
+			# to modify these.
+			entry.collision_type = AssetEntryScene.CollisionType.COLLISION_NONE
+			entry.com_adjust = AssetEntryScene.ComAdjust.COM_ADJUST_OFF
+		else:
+			var collision_cfg: int = config.get_value_by_matching(full_name,
+					"collision_mode", 0, true)
+			match collision_cfg:
+				0:
+					entry.collision_type = AssetEntryScene.CollisionType.COLLISION_CONVEX
+				1:
+					entry.collision_type = AssetEntryScene.CollisionType.COLLISION_MULTI_CONVEX
+				2:
+					entry.collision_type = AssetEntryScene.CollisionType.COLLISION_CONCAVE
+				_:
+					push_error("Invalid value (%d) for property 'collision_mode'" % collision_cfg)
+					entry.collision_type = AssetEntryScene.CollisionType.COLLISION_CONVEX
+			
+			var com_cfg: String = config.get_value_by_matching(full_name,
+					"com_adjust", "volume", true)
+			match com_cfg:
+				"off":
+					entry.com_adjust = AssetEntryScene.ComAdjust.COM_ADJUST_OFF
+				"volume":
+					entry.com_adjust = AssetEntryScene.ComAdjust.COM_ADJUST_VOLUME
+				"geometry":
+					entry.com_adjust = AssetEntryScene.ComAdjust.COM_ADJUST_GEOMETRY
+				_:
+					push_error("Invalid value ('%s') for property 'com_adjust'" % com_cfg)
+					entry.com_adjust = AssetEntryScene.ComAdjust.COM_ADJUST_VOLUME
+		
+		# TODO: Allow all properties of the physics material to be configured.
+		var default_phys_mat := preload("res://assets/default_physics_material.tres")
+		
+		# To save on memory, if the properties aren't changed, then just use the
+		# default resource. If a property is changed, the resource will need to
+		# be duplicated as to not overwrite the original resource.
+		var scene_phys_mat := default_phys_mat
+		
+		var new_bounce: float = config.get_value_by_matching(full_name,
+				"bounce", 0.0, true)
+		if new_bounce != default_phys_mat.bounce:
+			if scene_phys_mat == default_phys_mat:
+				scene_phys_mat = scene_phys_mat.duplicate()
+			scene_phys_mat.bounce = new_bounce
+		
+		entry.physics_material = scene_phys_mat
+		
+		# TODO: If sound effects have already been configured for this entry,
+		# then we do not allow the player to change them. Would it make sense
+		# for the player to be able to change the SFX of, say, cards?
+		var has_fast_sounds: bool = entry.collision_fast_sounds.has_stream()
+		var has_slow_sounds: bool = entry.collision_slow_sounds.has_stream()
+		
+		if not (has_fast_sounds or has_slow_sounds):
+			var fast_sfx: AudioStreamList
+			var slow_sfx: AudioStreamList
+			
+			var sfx_cfg: String = config.get_value_by_matching(full_name, "sfx",
+					"generic", true)
+			match sfx_cfg:
+				"generic":
+					fast_sfx = preload("res://sounds/generic/generic_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/generic/generic_slow_sounds.tres")
+				"glass":
+					fast_sfx = preload("res://sounds/glass/glass_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/glass/glass_slow_sounds.tres")
+				"glass_heavy":
+					fast_sfx = preload("res://sounds/glass_heavy/glass_heavy_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/glass_heavy/glass_heavy_slow_sounds.tres")
+				"glass_light":
+					fast_sfx = preload("res://sounds/glass_light/glass_light_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/glass_light/glass_light_slow_sounds.tres")
+				"metal":
+					fast_sfx = preload("res://sounds/metal/metal_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/metal/metal_slow_sounds.tres")
+				"metal_heavy":
+					fast_sfx = preload("res://sounds/metal_heavy/metal_heavy_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/metal_heavy/metal_heavy_slow_sounds.tres")
+				"metal_light":
+					fast_sfx = preload("res://sounds/metal_light/metal_light_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/metal_light/metal_light_slow_sounds.tres")
+				"soft":
+					fast_sfx = preload("res://sounds/soft/soft_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/soft/soft_slow_sounds.tres")
+				"soft_heavy":
+					fast_sfx = preload("res://sounds/soft_heavy/soft_heavy_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/soft_heavy/soft_heavy_slow_sounds.tres")
+				"tin":
+					fast_sfx = preload("res://sounds/tin/tin_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/tin/tin_slow_sounds.tres")
+				"wood":
+					fast_sfx = preload("res://sounds/wood/wood_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/wood/wood_slow_sounds.tres")
+				"wood_heavy":
+					fast_sfx = preload("res://sounds/wood_heavy/wood_heavy_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/wood_heavy/wood_heavy_slow_sounds.tres")
+				"wood_light":
+					fast_sfx = preload("res://sounds/wood_light/wood_light_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/wood_light/wood_light_slow_sounds.tres")
+				_:
+					push_error("Invalid value ('%s') for property 'sfx'" % sfx_cfg)
+					fast_sfx = preload("res://sounds/generic/generic_fast_sounds.tres")
+					slow_sfx = preload("res://sounds/generic/generic_slow_sounds.tres")
+			
+			entry.collision_fast_sounds = fast_sfx
+			entry.collision_slow_sounds = slow_sfx
 		
 		if entry is AssetEntryContainer:
-			pass
+			entry.shakable = config.get_value_by_matching(full_name, "shakable",
+					false, true)
 		
 		if entry is AssetEntryDice:
-			pass
+			var value_dict: Dictionary = config.get_value_by_matching(full_name,
+					"face_values", {}, true)
+			
+			var face_value_list_raw := []
+			for key in value_dict:
+				var rot_deg := Vector2.ZERO
+				var custom_value := CustomValue.new()
+				
+				if typeof(key) == TYPE_VECTOR2:
+					rot_deg = key
+					custom_value.set_value_variant(value_dict[key])
+				else:
+					# This is for backwards compatibility with v0.1.x, where the
+					# keys were the face values, and the values were the face
+					# rotations. This method forced unique face values, which
+					# is why the values have now been swapped as of v0.2.0
+					push_warning("The VALUE: ROTATION notation for 'face_values' is deprecated as of v0.2.0 - consider changing to ROTATION: VALUE")
+					custom_value.set_value_variant(key)
+					var potential_rot = value_dict[key]
+					if typeof(potential_rot) == TYPE_VECTOR2:
+						rot_deg = potential_rot
+					else:
+						push_error("Rotation value in 'face_values' is not a Vector2")
+				
+				if not SanityCheck.is_valid_vector2(rot_deg):
+					push_error("Vector2 in 'face_values' contains invalid data")
+					continue
+				
+				var face_value := DiceFaceValue.new()
+				face_value.set_normal_with_euler(deg2rad(rot_deg.x),
+						deg2rad(rot_deg.y))
+				face_value.value = custom_value
+				face_value_list_raw.push_back(face_value)
+			
+			if face_value_list_raw.size() != die_num_faces:
+				push_warning("'face_values' size was not the expected value (expected: %d, got: %d)" % [
+						die_num_faces, face_value_list_raw.size()])
+			
+			if face_value_list_raw.empty():
+				var current_list: DiceFaceValueList = entry.face_value_list
+				var current_list_raw: Array = current_list.face_value_list
+				
+				# Only replace the default resource if we need to, there's no
+				# point in making a bunch of empty instances.
+				if not current_list_raw.empty():
+					entry.face_value_list = DiceFaceValueList.new()
+			else:
+				var res_list := DiceFaceValueList.new()
+				res_list.face_value_list = face_value_list_raw
+				entry.face_value_list = res_list
 		
 		if entry is AssetEntryStackable:
-			pass
+			var suit_cfg = config.get_value_by_matching(full_name, "suit", null,
+					false)
+			var suit_custom_value := CustomValue.new()
+			suit_custom_value.set_value_variant(suit_cfg)
+			entry.user_suit = suit_custom_value
+			
+			var value_cfg = config.get_value_by_matching(full_name, "value",
+					null, false)
+			var value_custom_value := CustomValue.new()
+			value_custom_value.set_value_variant(value_cfg)
+			entry.user_value = value_custom_value
 		
 		if entry is AssetEntryTable:
-			pass
+			var hand_cfg: Array = config.get_value_by_matching(full_name,
+					"hands", [], true)
+			
+			var hand_transform_arr := []
+			for hand_dict in hand_cfg:
+				if not hand_dict is Dictionary:
+					push_error("Element of 'hands' is invalid, not a dictionary")
+					continue
+				
+				var parser := DictionaryParser.new(hand_dict)
+				var hand_pos: Vector3 = parser.get_strict_type("pos", Vector3.ZERO)
+				var hand_rot_deg: float = parser.get_strict_type("dir", 0.0)
+				
+				# TODO: Should the SanityCheck functions log errors to resources?
+				if not SanityCheck.is_valid_vector3(hand_pos):
+					push_error("Value of 'pos' is invalid")
+					continue
+				if not SanityCheck.is_valid_float(hand_rot_deg):
+					push_error("Value of 'dir' is invalid")
+					continue
+				
+				var hand_transform := Transform.IDENTITY
+				hand_transform = hand_transform.rotated(Vector3.UP,
+						deg2rad(hand_rot_deg))
+				hand_transform.origin = hand_pos
+				hand_transform_arr.push_back(hand_transform)
+			
+			if hand_transform_arr.empty():
+				push_warning("Table has no configured hand positions, consider adding at least one via the 'config.cfg' file")
+			entry.hand_transforms = hand_transform_arr
+			
+			# TODO: Make this a constant somewhere else?
+			var default_plane_size := Vector2(100.0, 100.0)
+
+			var paint_plane_size: Vector2 = config.get_value_by_matching(
+					full_name, "paint_plane", default_plane_size, true)
+			if SanityCheck.is_valid_vector2(paint_plane_size):
+				paint_plane_size = paint_plane_size.abs()
+			else:
+				push_error("'paint_plane' contains invalid data")
+				paint_plane_size = default_plane_size
+			
+			var paint_plane_transform := Transform.IDENTITY
+			paint_plane_transform = paint_plane_transform.scaled(Vector3(
+					paint_plane_size.x, 1.0, paint_plane_size.y))
+			entry.paint_plane_transform = paint_plane_transform
+	
 	
 	if entry is AssetEntrySkybox:
 		entry.energy = config.get_value_by_matching(full_name, "strength", 1.0, true)

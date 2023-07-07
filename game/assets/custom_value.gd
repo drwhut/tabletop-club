@@ -50,6 +50,23 @@ export(float) var value_float := 0.0 setget set_value_float
 export(String) var value_string := "" setget set_value_string
 
 
+## Use a variant to set the value of the corresponding type automatically.
+## An error is thrown if the variant type is not supported.
+func set_value_variant(value) -> void:
+	match typeof(value):
+		TYPE_NIL:
+			value_type = ValueType.TYPE_NULL
+		TYPE_INT:
+			set_value_int(value)
+		TYPE_REAL:
+			set_value_float(value)
+		TYPE_STRING:
+			set_value_string(value)
+		_:
+			push_error("Value '%s' cannot be used, unsupported data type" % str(value))
+			value_type = ValueType.TYPE_NULL
+
+
 func set_value_float(value: float) -> void:
 	value_type = ValueType.TYPE_FLOAT
 	value_float = value
