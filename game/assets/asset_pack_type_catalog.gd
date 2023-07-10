@@ -256,6 +256,7 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 		entry.mass = config.get_value_by_matching(full_name, "mass", 1.0, true)
 		
 		if scale_is_vec2:
+			# TODO: Should Vector3 be allowed with a warning here?
 			var scale_vec2: Vector2 = config.get_value_by_matching(full_name,
 					"scale", Vector2.ONE, true)
 			entry.scale = Vector3(scale_vec2.x, 1.0, scale_vec2.y)
@@ -316,7 +317,7 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 		if new_bounce != default_phys_mat.bounce:
 			if scene_phys_mat == default_phys_mat:
 				scene_phys_mat = scene_phys_mat.duplicate()
-			scene_phys_mat.bounce = new_bounce
+			scene_phys_mat.bounce = min(max(new_bounce, 0.0), 1.0)
 		
 		entry.physics_material = scene_phys_mat
 		
@@ -408,6 +409,7 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 						rot_deg = potential_rot
 					else:
 						push_error("Rotation value in 'face_values' is not a Vector2")
+						continue
 				
 				if not SanityCheck.is_valid_vector2(rot_deg):
 					push_error("Vector2 in 'face_values' contains invalid data")

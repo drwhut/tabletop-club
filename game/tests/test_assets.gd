@@ -693,6 +693,339 @@ func test_type_catalog() -> void:
 	assert_file_exists(red_path + ".import")
 	assert_file_exists(white_scn)
 	
+	### CONFIGURING ENTRIES ###
+	
+	var test := TestConfigureSettings.new()
+	test.catalog = catalog
+	test.entry = AssetEntrySingle.new()
+	test.section_name = "__name__.txt"
+	
+	# AssetEntrySingle.id
+	test.cfg_name = "" # Test when name is not overwritten.
+	test.prop_name = "id"
+	test.prop_value = "__name__"
+	_check_entry_configured(test)
+	
+	test.cfg_name = "name" # Test when name is overwritten.
+	test.cfg_value = "__test__"
+	test.prop_value = "__test__"
+	_check_entry_configured(test)
+	
+	for key in ["desc", "author", "license", "modified_by", "url"]:
+		for setting_value in [false, true]:
+			if setting_value:
+				test.cfg_name = key
+				test.cfg_value = "__VALUE__"
+			else:
+				test.cfg_name = ""
+			
+			test.prop_name = key
+			test.prop_value = "__VALUE__" if setting_value else ""
+			_check_entry_configured(test)
+	
+	# AssetEntryScene.albedo_color
+	test.entry = AssetEntryScene.new()
+	test.cfg_name = "" # Default colour should be #ffffff.
+	test.prop_name = "albedo_color"
+	test.prop_value = Color.white
+	_check_entry_configured(test)
+	
+	test.cfg_name = "color"
+	test.cfg_value = "#2b|!2b" # Invalid characters.
+	_check_entry_configured(test)
+	
+	test.cfg_value = "#00f" # Needs to be six characters long.
+	_check_entry_configured(test)
+	
+	test.cfg_value = "#ab0025"
+	test.prop_value = Color("#ab0025")
+	_check_entry_configured(test)
+	
+	test.cfg_value = "13bb13"
+	test.prop_value = Color("#13bb13")
+	_check_entry_configured(test)
+	
+	# AssetEntryScene.mass
+	test.cfg_name = "" # Default mass should be 1.0 grams.
+	test.prop_name = "mass"
+	test.prop_value = 1.0
+	_check_entry_configured(test)
+	
+	test.cfg_name = "mass"
+	test.cfg_value = 32.0
+	test.prop_value = 32.0
+	_check_entry_configured(test)
+	
+	test.cfg_value = -2.5 # Negative mass is not allowed.
+	test.prop_value = 0.0
+	_check_entry_configured(test)
+	
+	test.cfg_value = NAN # Invalid floating-point value.
+	_check_entry_configured(test)
+	
+	# AssetEntrySingle.scale
+	test.cfg_name = ""
+	test.prop_name = "scale"
+	test.prop_value = Vector3.ONE
+	_check_entry_configured(test)
+	
+	test.cfg_name = "scale"
+	test.cfg_value = Vector3(1.0, INF, -2.0) # Invalid float inside Vector3.
+	_check_entry_configured(test)
+	
+	test.cfg_value = Vector2(2.5, 5.0) # Using Vector2 in Vector3 mode.
+	_check_entry_configured(test)
+	
+	test.cfg_value = Vector3(1.5, 0.5, 2.5)
+	test.prop_value = Vector3(1.5, 0.5, 2.5)
+	_check_entry_configured(test)
+	
+	test.scale_is_vec2 = true
+	test.cfg_value = Vector3.ZERO # Using Vector3 in Vector2 mode.
+	test.prop_value = Vector3.ONE
+	_check_entry_configured(test)
+	
+	# Set these properties up for later so we can check how scale affects them.
+	test.entry.avg_point = Vector3(1.0, 0.25, 0.0)
+	test.entry.bounding_box = AABB(Vector3(-1.0, -2.0, -5.0),
+			Vector3(3.0, 4.0, 10.0))
+	
+	test.cfg_value = Vector2(5.0, 8.0)
+	test.prop_value = Vector3(5.0, 1.0, 8.0)
+	_check_entry_configured(test)
+	
+	assert_eq(test.entry.avg_point, Vector3(5.0, 0.25, 0.0))
+	assert_eq(test.entry.bounding_box, AABB(Vector3(-5.0, -2.0, -40.0),
+			Vector3(15.0, 4.0, 80.0)))
+	
+	# AssetEntryScene.collision_type
+	test.cfg_name = ""
+	test.prop_name = "collision_type"
+	test.prop_value = AssetEntryScene.CollisionType.COLLISION_CONVEX
+	_check_entry_configured(test)
+	
+	test.cfg_name = "collision_mode"
+	test.cfg_value = 7 # Invalid value.
+	_check_entry_configured(test)
+	
+	test.cfg_value = "1" # Integers only.
+	_check_entry_configured(test)
+	
+	test.cfg_value = 0 # Default value.
+	_check_entry_configured(test)
+	
+	test.cfg_value = 1
+	test.prop_value = AssetEntryScene.CollisionType.COLLISION_MULTI_CONVEX
+	_check_entry_configured(test)
+	
+	test.cfg_value = 2
+	test.prop_value = AssetEntryScene.CollisionType.COLLISION_CONCAVE
+	_check_entry_configured(test)
+	
+	# TODO: Test config doesn't affect collision for internal scenes.
+	#test.entry.scene_path = "res://assets/fake.tscn"
+	#test.prop_value = AssetEntryScene.CollisionType.COLLISION_NONE
+	#_check_entry_configured(test)
+	
+	# AssetEntryScene.com_adjust
+	#test.entry.scene_path = "user://assets/fake.tscn"
+	test.cfg_name = ""
+	test.prop_name = "com_adjust"
+	test.prop_value = AssetEntryScene.ComAdjust.COM_ADJUST_VOLUME
+	_check_entry_configured(test)
+	
+	test.cfg_name = "com_adjust"
+	test.cfg_value = "haha" # Invalid value.
+	_check_entry_configured(test)
+	
+	test.cfg_value = 0 # Strings only.
+	_check_entry_configured(test)
+	
+	test.cfg_value = "off"
+	test.prop_value = AssetEntryScene.ComAdjust.COM_ADJUST_OFF
+	_check_entry_configured(test)
+	
+	test.cfg_value = "volume"
+	test.prop_value = AssetEntryScene.ComAdjust.COM_ADJUST_VOLUME
+	_check_entry_configured(test)
+	
+	test.cfg_value = "geometry"
+	test.prop_value = AssetEntryScene.ComAdjust.COM_ADJUST_GEOMETRY
+	_check_entry_configured(test)
+	
+	# TODO: Test config doesn't affect COM for internal scenes.
+	#test.entry.scene_path = "res://assets/fake.tscn"
+	#test.prop_value = AssetEntryScene.ComAdjust.COM_ADJUST_OFF
+	#_check_entry_configured(test)
+	
+	var physics_mat := PhysicsMaterial.new()
+	
+	# AssetEntryScene.physics_material
+	test.cfg_name = ""
+	test.prop_name = "physics_material"
+	test.prop_value = physics_mat
+	_check_entry_configured(test)
+	
+	test.cfg_name = "bounce"
+	test.cfg_value = 0.0
+	_check_entry_configured(test)
+	
+	test.cfg_value = 0.5
+	physics_mat.bounce = 0.5
+	_check_entry_configured(test)
+	
+	test.cfg_value = NAN
+	physics_mat.bounce = 0.0
+	_check_entry_configured(test)
+	
+	test.cfg_value = 1.2
+	physics_mat.bounce = 1.0
+	_check_entry_configured(test)
+	
+	test.cfg_value = -0.1
+	physics_mat.bounce = 0.0
+	_check_entry_configured(test)
+	
+	# AssetEntryScene.collision_*_sounds
+	test.cfg_name = ""
+	test.prop_name = "collision_fast_sounds"
+	test.prop_value = preload("res://sounds/generic/generic_fast_sounds.tres")
+	_check_entry_configured(test)
+	
+	test.prop_name = "collision_slow_sounds"
+	test.prop_value = preload("res://sounds/generic/generic_slow_sounds.tres")
+	_check_entry_configured(test)
+	
+	test.cfg_name = "sfx"
+	test.cfg_value = "metal_heavy"
+	test.prop_name = "collision_fast_sounds"
+	test.prop_value = preload("res://sounds/generic/generic_fast_sounds.tres")
+	_check_entry_configured(test)
+	
+	test.prop_name = "collision_slow_sounds"
+	test.prop_value = preload("res://sounds/generic/generic_slow_sounds.tres")
+	_check_entry_configured(test)
+	
+	# The reason the previous tests don't change the entry is because the
+	# catalog sees that there are already sound effects in the entry, and
+	# assumes the developer doesn't want them to be overwritten.
+	test.entry.collision_fast_sounds = AudioStreamList.new()
+	test.entry.collision_slow_sounds = AudioStreamList.new()
+	
+	test.prop_name = "collision_fast_sounds"
+	test.prop_value = preload("res://sounds/metal_heavy/metal_heavy_fast_sounds.tres")
+	_check_entry_configured(test)
+	
+	test.prop_name = "collision_slow_sounds"
+	test.prop_value = preload("res://sounds/metal_heavy/metal_heavy_slow_sounds.tres")
+	_check_entry_configured(test)
+	
+	test.entry.collision_fast_sounds = AudioStreamList.new()
+	test.entry.collision_slow_sounds = AudioStreamList.new()
+	
+	test.cfg_value = "1337" # Invalid sound effect name.
+	test.prop_name = "collision_fast_sounds"
+	test.prop_value = preload("res://sounds/generic/generic_fast_sounds.tres")
+	_check_entry_configured(test)
+	
+	test.prop_name = "collision_slow_sounds"
+	test.prop_value = preload("res://sounds/generic/generic_slow_sounds.tres")
+	_check_entry_configured(test)
+	
+	# AssetEntryContainer.shakable
+	test.entry = AssetEntryContainer.new()
+	test.cfg_name = ""
+	test.prop_name = "shakable"
+	test.prop_value = false
+	_check_entry_configured(test)
+	
+	test.cfg_name = "shakable"
+	test.cfg_value = true
+	test.prop_value = true
+	_check_entry_configured(test)
+	
+	# AssetEntryDice.face_value_list
+	# TODO: Check if a warning was generated if the number of given values did
+	# not match the number of expected faces.
+	var expected_value_list := DiceFaceValueList.new()
+	
+	test.entry = AssetEntryDice.new()
+	test.cfg_value = ""
+	test.prop_name = "face_value_list"
+	test.prop_value = expected_value_list
+	_check_entry_configured(test)
+	
+	test.cfg_name = "face_values"
+	test.cfg_value = { Vector2.ZERO: Vector3.ONE } # Invalid custom value.
+	var null_value := CustomValue.new()
+	null_value.value_type = CustomValue.ValueType.TYPE_NULL
+	var null_face := DiceFaceValue.new()
+	null_face.normal = Vector3.UP
+	null_face.value = null_value
+	expected_value_list.face_value_list = [ null_face ]
+	_check_entry_configured(test)
+	
+	test.cfg_value = { Vector2(NAN, 90.0): 69 } # Invalid rotation Vector2.
+	expected_value_list.face_value_list = []
+	_check_entry_configured(test)
+	
+	test.cfg_value = { Vector2(90.0, 0.0): "Hello, there!" }
+	var str_value := CustomValue.new()
+	str_value.value_string = "Hello, there!"
+	var valid_face_back := DiceFaceValue.new()
+	valid_face_back.normal = Vector3.FORWARD
+	valid_face_back.value = str_value
+	expected_value_list.face_value_list = [ valid_face_back ]
+	_check_entry_configured(test)
+	
+	# For v0.1.x backwards compatibility.
+	test.cfg_value = { Transform.IDENTITY: Vector2.ZERO } # Invalid custom value.
+	expected_value_list.face_value_list = [ null_face ]
+	_check_entry_configured(test)
+	
+	test.cfg_value = { "lol": Vector3.ZERO } # Rotation is not Vector2.
+	expected_value_list.face_value_list = []
+	_check_entry_configured(test)
+	
+	test.cfg_value = { 20: Vector2(90.0, INF) } # Invalid rotation data.
+	_check_entry_configured(test)
+	
+	test.cfg_value = { 6: Vector2(0.0, 270.0), 2.5: Vector2(180.0, 0.0) }
+	var int_value := CustomValue.new()
+	int_value.value_int = 6
+	var valid_face_right := DiceFaceValue.new()
+	valid_face_right.normal = Vector3.LEFT
+	valid_face_right.value = int_value
+	var float_value := CustomValue.new()
+	float_value.value_float = 2.5
+	var valid_face_down := DiceFaceValue.new()
+	valid_face_down.normal = Vector3.DOWN
+	valid_face_down.value = float_value
+	expected_value_list.face_value_list = [ valid_face_right, valid_face_down ]
+	_check_entry_configured(test)
+	
+	
+	
+	# This should already be tested in AdvancedConfigFile, but just check to
+	# see if the pattern matching works as we expect.
+	var cfg_file := AdvancedConfigFile.new()
+	cfg_file.set_value("white_texture.jpg", "name", "NEW_NAME_0")
+	cfg_file.set_value("*_texture.???", "name", "NEW_NAME_1")
+	cfg_file.set_value("*.png", "name", "NEW_NAME_2")
+	cfg_file.set_value("*", "name", "NEW_NAME_3")
+	
+	var entry := AssetEntrySingle.new()
+	catalog.apply_config_to_entry(entry, cfg_file, "white_texture.png", false, 0)
+	assert_eq(entry.name, "NEW_NAME_1")
+	catalog.apply_config_to_entry(entry, cfg_file, "white_texture.jpg", false, 0)
+	assert_eq(entry.name, "NEW_NAME_0")
+	catalog.apply_config_to_entry(entry, cfg_file, "black_texture.png", false, 0)
+	assert_eq(entry.name, "NEW_NAME_1")
+	catalog.apply_config_to_entry(entry, cfg_file, "texture_black.png", false, 0)
+	assert_eq(entry.name, "NEW_NAME_2")
+	catalog.apply_config_to_entry(entry, cfg_file, "texture_black.jpg", false, 0)
+	assert_eq(entry.name, "NEW_NAME_3")
+	
 	# Clean up the test directory.
 	for tagged_file in catalog.get_tagged():
 		catalog.untag(tagged_file)
@@ -746,6 +1079,79 @@ func _check_texture(texture_path: String, correct_color: Color):
 	test_image.lock()
 	assert_eq(test_image.get_pixel(0, 0), correct_color)
 	test_image.unlock()
+
+
+class TestConfigureSettings:
+	extends Reference
+	
+	var catalog: AssetPackTypeCatalog
+	var entry: AssetEntrySingle
+	
+	var section_name: String
+	
+	# Emulate a property in a config file - if name is empty, then emulate the
+	# file being completely empty.
+	var cfg_name: String
+	var cfg_value
+	
+	# The property we are checking to see if the value is what we expect.
+	var prop_name: String
+	var prop_value
+	
+	var scale_is_vec2: bool = false
+	var die_num_faces: int = 0
+
+
+func _check_entry_configured(settings: TestConfigureSettings):
+	var cfg_file := AdvancedConfigFile.new()
+	if not settings.section_name.empty():
+		cfg_file.set_value(settings.section_name, settings.cfg_name,
+				settings.cfg_value)
+	
+	settings.catalog.apply_config_to_entry(settings.entry, cfg_file,
+			settings.section_name, settings.scale_is_vec2,
+			settings.die_num_faces)
+	
+	var true_value = settings.entry.get(settings.prop_name)
+	var expected_value = settings.prop_value
+	
+	if expected_value is PhysicsMaterial:
+		assert_is(true_value, PhysicsMaterial)
+		assert_eq(true_value.friction, expected_value.friction)
+		assert_eq(true_value.rough, expected_value.rough)
+		assert_eq(true_value.bounce, expected_value.bounce)
+		assert_eq(true_value.absorbent, expected_value.absorbent)
+	elif expected_value is DiceFaceValueList:
+		assert_is(true_value, DiceFaceValueList)
+		var true_list: Array = true_value.face_value_list
+		var expected_list: Array = expected_value.face_value_list
+		assert_eq(true_list.size(), expected_list.size())
+		
+		for index in range(true_list.size()):
+			var true_face_value = true_list[index]
+			var expected_face_value = expected_list[index]
+			assert_is(true_face_value, DiceFaceValue)
+			assert_is(expected_face_value, DiceFaceValue)
+			
+			# Can't use assert_eq here, there's too much floating point error
+			# that can occur when converting rotation to normal.
+			assert_true(true_face_value.normal.is_equal_approx(
+					expected_face_value.normal))
+			_check_custom_value_eq(true_face_value.value,
+					expected_face_value.value)
+	else:
+		assert_eq_deep(true_value, expected_value)
+
+
+func _check_custom_value_eq(a: CustomValue, b: CustomValue):
+	assert_eq(a.value_type, b.value_type)
+	match a.value_type:
+		CustomValue.ValueType.TYPE_INT:
+			assert_eq(a.value_int, b.value_int)
+		CustomValue.ValueType.TYPE_FLOAT:
+			assert_eq(a.value_float, b.value_float)
+		CustomValue.ValueType.TYPE_STRING:
+			assert_eq(a.value_string, b.value_string)
 
 
 func _on_AssetDB_content_changed():

@@ -166,6 +166,9 @@ func set_com_adjust(value: int) -> void:
 
 
 func set_mass(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
 	mass = max(0.0, value)
 
 
