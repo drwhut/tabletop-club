@@ -1004,7 +1004,172 @@ func test_type_catalog() -> void:
 	expected_value_list.face_value_list = [ valid_face_right, valid_face_down ]
 	_check_entry_configured(test)
 	
+	test.entry = AssetEntryStackable.new()
+	for property_name in [ "suit", "value" ]:
+		test.prop_name = "user_" + property_name
+		
+		var expected_value := CustomValue.new()
+		expected_value.value_type = CustomValue.ValueType.TYPE_NULL
+		
+		test.cfg_name = ""
+		test.prop_value = expected_value
+		_check_entry_configured(test)
+		
+		test.cfg_name = property_name
+		test.cfg_value = null
+		_check_entry_configured(test)
+		
+		test.cfg_value = 360
+		expected_value.value_int = 360
+		_check_entry_configured(test)
+		
+		test.cfg_value = 0.25
+		expected_value.value_float = 0.25
+		_check_entry_configured(test)
+		
+		test.cfg_value = INF # Invalid floats are allowed in CustomValue.
+		expected_value.value_float = INF
+		_check_entry_configured(test)
+		
+		test.cfg_value = "lmao"
+		expected_value.value_string = "lmao"
+		_check_entry_configured(test)
+		
+		test.cfg_value = [ 1, 2, 3 ] # Arrays not allowed as custom value.
+		expected_value.value_type = CustomValue.ValueType.TYPE_NULL
+		_check_entry_configured(test)
 	
+	# AssetEntryTable.hand_transforms
+	test.entry = AssetEntryTable.new()
+	test.cfg_name = ""
+	test.prop_name = "hand_transforms"
+	test.prop_value = []
+	_check_entry_configured(test)
+	
+	test.cfg_name = "hands"
+	test.cfg_value = { "pos": Vector3.ZERO, "dir": 0 } # Needs to be an array.
+	_check_entry_configured(test)
+	
+	# Skip over non-dictionary element.
+	test.cfg_value = [ Vector3.ONE, { "pos": Vector3.ZERO, "dir": 0 } ]
+	test.prop_value = [ Transform.IDENTITY ]
+	_check_entry_configured(test)
+	
+	# Invalid floating point values.
+	test.cfg_value = [
+		{ "pos": Vector3(0.0, INF, -10.0), "dir": 180 },
+		{ "pos": Vector3(-2.0, 0.5, 0.0), "dir": -NAN }
+	]
+	test.prop_value = []
+	_check_entry_configured(test)
+	
+	test.cfg_value = [ { "pos": Vector3(0.0, 0.0, 100.0), "dir": 180.0 } ]
+	var hand_transform := Transform.IDENTITY.rotated(Vector3.UP, PI)
+	hand_transform.origin = Vector3(0.0, 0.0, 100.0)
+	test.prop_value = [ hand_transform ]
+	_check_entry_configured(test)
+	
+	# AssetEntryTable.paint_plane_transform
+	test.cfg_name = ""
+	test.prop_name = "paint_plane_transform"
+	test.prop_value = Transform.IDENTITY.scaled(Vector3(100.0, 1.0, 100.0))
+	_check_entry_configured(test)
+	
+	test.cfg_name = "paint_plane"
+	test.cfg_value = Vector2(NAN, INF) # Invalid floating-point data.
+	_check_entry_configured(test)
+	
+	test.cfg_value = Vector2(20.0, 10.0)
+	test.prop_value = Transform.IDENTITY.scaled(Vector3(20.0, 1.0, 10.0))
+	_check_entry_configured(test)
+	
+	test.cfg_value = Vector2(-4.0, -32.0) # Negatives are ignored.
+	test.prop_value = Transform.IDENTITY.scaled(Vector3(4.0, 1.0, 32.0))
+	_check_entry_configured(test)
+	
+	# AssetEntrySkybox.energy
+	test.entry = AssetEntrySkybox.new()
+	test.cfg_name = ""
+	test.prop_name = "energy"
+	test.prop_value = 1.0
+	_check_entry_configured(test)
+	
+	test.cfg_name = "strength"
+	test.cfg_value = INF
+	_check_entry_configured(test)
+	
+	test.cfg_value = 128.0
+	test.prop_value = 128.0
+	_check_entry_configured(test)
+	
+	test.cfg_value = -1.0 # Minimum energy is 0.
+	test.prop_value = 0.0
+	_check_entry_configured(test)
+	
+	# AssetEntrySkybox.rotation
+	test.cfg_name = ""
+	test.prop_name = "rotation"
+	test.prop_value = Vector3.ZERO
+	_check_entry_configured(test)
+	
+	test.cfg_name = "rotation"
+	test.cfg_value = Vector3(0.0, INF, 90.0)
+	_check_entry_configured(test)
+	
+	test.cfg_value = Vector3(-90.0, 0.0, 180.0)
+	test.prop_value = Vector3(-PI / 2, 0.0, PI)
+	_check_entry_configured(test)
+	
+	# AssetEntryTemplateImage.textbox_list
+	test.entry = AssetEntryTemplateImage.new()
+	test.cfg_name = ""
+	test.prop_name = "textbox_list"
+	test.prop_value = []
+	_check_entry_configured(test)
+	
+	test.cfg_name = "textboxes"
+	test.cfg_value = Rect2(0.0, 0.0, 50.0, 25.0) # Needs to be array or dict.
+	_check_entry_configured(test)
+	
+	test.cfg_value = [ {} ] # Check default values for textbox.
+	var default_textbox := TemplateTextbox.new()
+	default_textbox.rect = Rect2(0.0, 0.0, 100.0, 100.0)
+	test.prop_value = [ default_textbox ]
+	_check_entry_configured(test)
+	
+	test.cfg_value = { "t1": {}, "t2": {} } # v0.1.x backwards compatibility.
+	test.prop_value = [ default_textbox, default_textbox ]
+	_check_entry_configured(test)
+	
+	# All valid inputs.
+	test.cfg_value = [{ "x": 10, "y": 10, "w": 205, "h": 100, "rot": 90,
+			"lines": 2, "text": "Default text!" }]
+	var valid_textbox := TemplateTextbox.new()
+	valid_textbox.rect = Rect2(10.0, 10.0, 205.0, 100.0)
+	valid_textbox.rotation = 90.0
+	valid_textbox.lines = 2
+	valid_textbox.text = "Default text!"
+	test.prop_value = [ valid_textbox ]
+	_check_entry_configured(test)
+	
+	# Floats in place of integers, invalid floating point data,
+	# minimum number of lines.
+	test.cfg_value = [{ "x": 0, "y": 0, "w": 155.25, "h": 70, "rot": NAN,
+			"lines": -1, "text": "*surprised pikachu face*" }]
+	valid_textbox.rect = Rect2(0.0, 0.0, 100.0, 70.0)
+	valid_textbox.rotation = 0.0
+	valid_textbox.lines = 1
+	valid_textbox.text = "*surprised pikachu face*"
+	_check_entry_configured(test)
+	
+	# Maximum number of lines.
+	test.cfg_value = [{ "x": 100, "y": 100, "w": 550, "h": 52, "rot": 720,
+			"lines": 100, "text": "O.O" }]
+	valid_textbox.rect = Rect2(100.0, 100.0, 550.0, 52.0)
+	valid_textbox.rotation = 720.0
+	valid_textbox.lines = 5
+	valid_textbox.text = "O.O"
+	_check_entry_configured(test)
 	
 	# This should already be tested in AdvancedConfigFile, but just check to
 	# see if the pattern matching works as we expect.
@@ -1115,6 +1280,9 @@ func _check_entry_configured(settings: TestConfigureSettings):
 	var true_value = settings.entry.get(settings.prop_name)
 	var expected_value = settings.prop_value
 	
+	# When Gut checks for the equality of objects, it checks to see if the
+	# pointers are equal, which we don't want - we want to check if all of the
+	# relevant properties are equal to each other.
 	if expected_value is PhysicsMaterial:
 		assert_is(true_value, PhysicsMaterial)
 		assert_eq(true_value.friction, expected_value.friction)
@@ -1139,6 +1307,23 @@ func _check_entry_configured(settings: TestConfigureSettings):
 					expected_face_value.normal))
 			_check_custom_value_eq(true_face_value.value,
 					expected_face_value.value)
+	elif expected_value is CustomValue:
+		assert_is(true_value, CustomValue)
+		_check_custom_value_eq(true_value, expected_value)
+	elif settings.entry is AssetEntryTemplateImage and \
+			settings.prop_name == "textbox_list":
+		assert_eq(typeof(true_value), TYPE_ARRAY)
+		assert_eq(typeof(expected_value), TYPE_ARRAY)
+		assert_eq(true_value.size(), expected_value.size())
+		for index in range(true_value.size()):
+			var true_textbox = true_value[index]
+			var expected_textbox = expected_value[index]
+			assert_is(true_textbox, TemplateTextbox)
+			assert_is(expected_textbox, TemplateTextbox)
+			assert_eq(true_textbox.rect, expected_textbox.rect)
+			assert_eq(true_textbox.rotation, expected_textbox.rotation)
+			assert_eq(true_textbox.lines, expected_textbox.lines)
+			assert_eq(true_textbox.text, expected_textbox.text)
 	else:
 		assert_eq_deep(true_value, expected_value)
 
