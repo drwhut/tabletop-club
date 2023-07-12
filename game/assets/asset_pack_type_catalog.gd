@@ -216,6 +216,124 @@ func is_imported(file_name: String) -> bool:
 	return num_paths > 0
 
 
+## Setup the given scene entry with the information needed to build it later on.
+## If [code]texture_path[/code] is not empty, it is added to the entry as the
+## only texture override.
+func setup_scene_entry(entry: AssetEntryScene, scene_path: String,
+		geo_data: GeoData, texture_path: String = "") -> void:
+	
+	entry.scene_path = scene_path
+	if not texture_path.empty():
+		entry.texture_overrides = [ texture_path ]
+	
+	entry.avg_point = geo_data.average_vertex()
+	entry.bounding_box = geo_data.bounding_box
+
+
+## Setup the given scene entry using a custom imported scene in this directory.
+## This function will automatically call [method scan_scene_geometry], and will
+## save the results to a [code].geo[/code] file next to the scene file. If this
+## file already exists when this function is called, and the original scene has
+## not changed since the last import, then the file is read directly.
+func setup_scene_entry_custom(entry: AssetEntryScene, scene_file_name: String) -> void:
+	if not scene_file_name.get_extension() in SanityCheck.VALID_EXTENSIONS_SCENE_USER:
+		push_error("Cannot setup entry for '%s', invalid extension" % scene_file_name)
+		return
+	
+	# Also proves that the file exists.
+	if not is_imported(scene_file_name):
+		push_error("Cannot setup entry for '%s', not imported" % scene_file_name)
+		return
+	
+	var scene_file_path := dir_path.plus_file(scene_file_name)
+	
+	var geo_data := GeoData.new()
+	var geo_data_use_cache := false
+	var geo_file_name := scene_file_name + ".geo"
+	var geo_file_path := dir_path.plus_file(geo_file_name)
+	
+	if not (is_new(scene_file_name) or is_changed(scene_file_name)):
+		if ResourceLoader.exists(geo_file_path):
+			print("Loading cached scan results from %s ..." % geo_file_name)
+			var cached_data := ResourceLoader.load(geo_file_path) as GeoData
+			if cached_data != null:
+				geo_data = cached_data
+				geo_data_use_cache = true
+			else:
+				push_error("Failed to load geometry data from '%s'" % geo_file_path)
+	
+	if not geo_data_use_cache:
+		var packed_scene := ResourceLoader.load(scene_file_path, "PackedScene") as PackedScene
+		if packed_scene != null:
+			var scene := packed_scene.instance()
+			
+			if scene is Spatial:
+				print("Scanning the geometry of %s ..." % scene_file_name)
+				geo_data = scan_scene_geometry(scene)
+				print("Saving scan results to %s ..." % geo_file_name)
+				var err := ResourceSaver.save(geo_file_path, geo_data)
+				if err == OK:
+					# Tag the file so it doesn't get removed as a rogue file.
+					tag(geo_file_name, false)
+				else:
+					push_error("Failed to save geometry data to '%s' (error: %d)" % [
+							geo_file_path, err])
+			else:
+				push_error("Expected root node of '%s' to be a Spatial" % scene_file_path)
+			
+			scene.free()
+		else:
+			push_error("Failed to load scene from '%s'" % scene_file_path)
+	
+	setup_scene_entry(entry, scene_file_path, geo_data)
+
+
+## Scan the given scene in its entirety (that is, recursively through the node
+## structure) to calculate the geometry metadata for that scene.
+static func scan_scene_geometry(node: Spatial,
+		parent_transform: Transform = Transform.IDENTITY) -> GeoData:
+	
+	var new_basis := node.transform.basis * parent_transform.basis
+	var new_origin := node.transform.origin + parent_transform.origin
+	var new_transform := Transform(new_basis, new_origin)
+	
+	var out := GeoData.new()
+	var set_initial_box := true
+
+	if node is MeshInstance:
+		var mesh: Mesh = node.mesh
+		for surface in range(mesh.get_surface_count()):
+			var vert_arr: Array = mesh.surface_get_arrays(surface)[Mesh.ARRAY_VERTEX]
+			out.vertex_count += vert_arr.size()
+			
+			for vertex in vert_arr:
+				var adj_vertex: Vector3 = new_transform * vertex
+				out.vertex_sum += adj_vertex
+				
+				if set_initial_box:
+					out.bounding_box = AABB(adj_vertex, Vector3.ZERO)
+					set_initial_box = false
+				else:
+					out.bounding_box = out.bounding_box.expand(adj_vertex)
+	
+	for child in node.get_children():
+		if child is Spatial:
+			var child_data := scan_scene_geometry(child, new_transform)
+			if child_data.vertex_count == 0:
+				continue
+			
+			out.vertex_count += child_data.vertex_count
+			out.vertex_sum += child_data.vertex_sum
+			
+			if set_initial_box:
+				out.bounding_box = child_data.bounding_box
+				set_initial_box = false
+			else:
+				out.bounding_box = out.bounding_box.merge(child_data.bounding_box)
+	
+	return out
+
+
 ## Apply the properties of a config.cfg file to the given entry.
 ## [code]full_name[/code] is used to decide which sections of the file to get
 ## properties from.

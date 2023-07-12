@@ -117,6 +117,8 @@ func load_texture_overrides() -> Array:
 	for texture_path in texture_overrides:
 		var texture: ImageTexture = null
 		if not texture_path.empty():
+			# TODO: Use type_hint in ResourceLoader.load, cast with "as", check
+			# if null.
 			texture = load(texture_path) as ImageTexture
 		texture_array.push_back(texture)
 	return texture_array
