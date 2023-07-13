@@ -254,8 +254,12 @@ func setup_scene_entry_custom(entry: AssetEntryScene, scene_file_name: String) -
 	
 	if not (is_new(scene_file_name) or is_changed(scene_file_name)):
 		if ResourceLoader.exists(geo_file_path):
+			# We should only load this data in once during the import process,
+			# so don't bother caching the resource in ResourceLoader.
 			print("Loading cached scan results from %s ..." % geo_file_name)
-			var cached_data := ResourceLoader.load(geo_file_path) as GeoData
+			var cached_data := ResourceLoader.load(geo_file_path, "Resource",
+					true) as GeoData
+			
 			if cached_data != null:
 				geo_data = cached_data
 				geo_data_use_cache = true
@@ -280,10 +284,12 @@ func setup_scene_entry_custom(entry: AssetEntryScene, scene_file_name: String) -
 							geo_file_path, err])
 			else:
 				push_error("Expected root node of '%s' to be a Spatial" % scene_file_path)
+				return
 			
 			scene.free()
 		else:
 			push_error("Failed to load scene from '%s'" % scene_file_path)
+			return
 	
 	setup_scene_entry(entry, scene_file_path, geo_data)
 

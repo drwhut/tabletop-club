@@ -198,6 +198,216 @@ func test_collecting_and_importing() -> void:
 	test_dir.remove(TYPE_CATALOG_TEST_LOCATION)
 	assert_false(test_dir.dir_exists(TYPE_CATALOG_TEST_LOCATION))
 
+
+func test_setup_scene_entry() -> void:
+	var test_dir := Directory.new()
+	if not test_dir.dir_exists(TYPE_CATALOG_TEST_LOCATION):
+		test_dir.make_dir_recursive(TYPE_CATALOG_TEST_LOCATION)
+	
+	var catalog := AssetPackTypeCatalog.new(TYPE_CATALOG_TEST_LOCATION)
+	if catalog.dir_path.empty():
+		fail_test("Failed to open directory: '%s'" % TYPE_CATALOG_TEST_LOCATION)
+		return
+	
+	# Move some test files into this directory so we can import them.
+	# TODO: Test using resources under res://assets/.
+	var source_dir := "res://tests/test_pack/pieces/"
+	for file_name in ["piece_mat.mtl", "red_piece.obj", "white_texture.png"]:
+		test_dir.copy(source_dir.plus_file(file_name),
+				TYPE_CATALOG_TEST_LOCATION.plus_file(file_name))
+		catalog.tag(file_name, true)
+		assert_true(catalog.is_tagged(file_name))
+		assert_true(catalog.is_new(file_name))
+		assert_false(catalog.is_imported(file_name))
+	
+	assert_eq(catalog.import_file("red_piece.obj"), OK)
+	assert_eq(catalog.import_file("white_texture.png"), OK)
+	assert_true(catalog.is_imported("red_piece.obj"))
+	assert_true(catalog.is_imported("white_texture.png"))
+	
+	var piece_mat_path := TYPE_CATALOG_TEST_LOCATION.plus_file("piece_mat.mtl")
+	var red_piece_path := TYPE_CATALOG_TEST_LOCATION.plus_file("red_piece.obj")
+	var white_texture_path := TYPE_CATALOG_TEST_LOCATION.plus_file("white_texture.png")
+	
+	var random_geo_data := GeoData.new()
+	random_geo_data.vertex_count = 10
+	random_geo_data.vertex_sum = Vector3(10.0, -20.0, 100.0)
+	random_geo_data.bounding_box = AABB(-Vector3.ONE, Vector3(2.0, 3.0, 2.0))
+	
+	var scene_entry := AssetEntryScene.new()
+	assert_eq(scene_entry.scene_path, "")
+	assert_eq(scene_entry.texture_overrides, [])
+	assert_eq(scene_entry.avg_point, Vector3.ZERO)
+	assert_eq(scene_entry.bounding_box, AABB())
+	
+	# File does not exist.
+	catalog.setup_scene_entry(scene_entry,
+			TYPE_CATALOG_TEST_LOCATION.plus_file("white_piece.obj"),
+			random_geo_data, "")
+	assert_eq(scene_entry.scene_path, "")
+	assert_eq(scene_entry.texture_overrides, [])
+	assert_eq(scene_entry.avg_point, Vector3(1.0, -2.0, 10.0))
+	assert_eq(scene_entry.bounding_box, AABB(-Vector3.ONE, Vector3(2.0, 3.0, 2.0)))
+	
+	# File path needs to be absolute for setup_scene_entry.
+	random_geo_data.vertex_count = 5
+	catalog.setup_scene_entry(scene_entry, "red_piece.obj", random_geo_data,
+			"white_texture.png")
+	assert_eq(scene_entry.scene_path, "")
+	assert_eq(scene_entry.texture_overrides, [])
+	assert_eq(scene_entry.avg_point, Vector3(2.0, -4.0, 20.0))
+	assert_eq(scene_entry.bounding_box, AABB(-Vector3.ONE, Vector3(2.0, 3.0, 2.0)))
+	
+	# Scene file has wrong extension, texture override is valid.
+	random_geo_data.bounding_box.size = Vector3.ONE
+	catalog.setup_scene_entry(scene_entry, piece_mat_path, random_geo_data,
+			white_texture_path)
+	assert_eq(scene_entry.scene_path, "")
+	assert_eq(scene_entry.texture_overrides, [ white_texture_path ])
+	assert_eq(scene_entry.avg_point, Vector3(2.0, -4.0, 20.0))
+	assert_eq(scene_entry.bounding_box, AABB(-Vector3.ONE, Vector3.ONE))
+	
+	# Valid scene path, texture override is not overwritten.
+	random_geo_data.vertex_sum = Vector3(25.0, -5.0, 10.0)
+	catalog.setup_scene_entry(scene_entry, red_piece_path, random_geo_data, "")
+	assert_eq(scene_entry.scene_path, red_piece_path)
+	assert_eq(scene_entry.texture_overrides, [ white_texture_path ])
+	assert_eq(scene_entry.avg_point, Vector3(5.0, -1.0, 2.0))
+	assert_eq(scene_entry.bounding_box, AABB(-Vector3.ONE, Vector3.ONE))
+	
+	# TODO: Test if a texture override already in the entry gets overwritten if
+	# we give a texture path that is valid.
+	
+	scene_entry = AssetEntryScene.new()
+	
+	# Invalid extension.
+	catalog.setup_scene_entry_custom(scene_entry, "white_texture.png")
+	assert_eq(scene_entry.scene_path, "")
+	
+	# File does not exist.
+	# TODO: Test if the file exists, but is not imported.
+	catalog.setup_scene_entry_custom(scene_entry, "white_piece.obj")
+	assert_eq(scene_entry.scene_path, "")
+	
+	var piece_avg_point := (1.0 / 3.0) * Vector3(1.0, 0.0, 1.0)
+	var piece_bounding_box := AABB(Vector3.ZERO, Vector3(1.0, 0.0, 1.0))
+	
+	# File is new, .geo file will be created.
+	assert_true(catalog.is_new("red_piece.obj"))
+	catalog.setup_scene_entry_custom(scene_entry, "red_piece.obj")
+	assert_eq(scene_entry.scene_path, red_piece_path)
+	assert_eq(scene_entry.texture_overrides, [])
+	assert_eq(scene_entry.avg_point, piece_avg_point)
+	assert_eq(scene_entry.bounding_box, piece_bounding_box)
+	
+	var geo_file_name := "red_piece.obj.geo"
+	var geo_file_path := TYPE_CATALOG_TEST_LOCATION.plus_file(geo_file_name)
+	assert_true(catalog.is_tagged(geo_file_name))
+	assert_true(ResourceLoader.exists(geo_file_path))
+	var file_data = ResourceLoader.load(geo_file_path)
+	assert_is(file_data, GeoData)
+	assert_eq(file_data.vertex_count, 3)
+	assert_eq(file_data.vertex_sum, Vector3(1.0, 0.0, 1.0))
+	assert_eq(file_data.bounding_box, AABB(Vector3.ZERO, Vector3(1.0, 0.0, 1.0)))
+	
+	# Remove the .geo file so we can show it gets created again.
+	catalog.untag(geo_file_name)
+	assert_false(catalog.is_tagged(geo_file_name))
+	test_dir.remove(geo_file_path)
+	assert_false(test_dir.file_exists(geo_file_path))
+	
+	# Switch the scene file to being changed, rather than being new.
+	var red_piece_file := File.new()
+	red_piece_file.open(red_piece_path, File.READ_WRITE)
+	red_piece_file.seek_end()
+	red_piece_file.store_string("\nf 3 2 1")
+	red_piece_file.close()
+	
+	catalog.tag("red_piece.obj", true)
+	assert_false(catalog.is_new("red_piece.obj"))
+	assert_true(catalog.is_changed("red_piece.obj"))
+	
+	# File is only changed, .geo file should still be created.
+	scene_entry = AssetEntryScene.new()
+	catalog.setup_scene_entry_custom(scene_entry, "red_piece.obj")
+	assert_eq(scene_entry.scene_path, red_piece_path)
+	assert_eq(scene_entry.texture_overrides, [])
+	assert_eq(scene_entry.avg_point, piece_avg_point)
+	assert_eq(scene_entry.bounding_box, piece_bounding_box)
+	
+	assert_true(catalog.is_tagged(geo_file_name))
+	assert_true(ResourceLoader.exists(geo_file_path))
+	file_data = ResourceLoader.load(geo_file_path)
+	assert_is(file_data, GeoData)
+	assert_eq(file_data.vertex_count, 3)
+	assert_eq(file_data.vertex_sum, Vector3(1.0, 0.0, 1.0))
+	assert_eq(file_data.bounding_box, AABB(Vector3.ZERO, Vector3(1.0, 0.0, 1.0)))
+	
+	# What if the file has not changed?
+	catalog.tag("red_piece.obj", true)
+	assert_false(catalog.is_new("red_piece.obj"))
+	assert_false(catalog.is_changed("red_piece.obj"))
+	
+	# Then if the file exists, we should trust it and read it.
+	var fake_geo_data := GeoData.new()
+	fake_geo_data.vertex_count = 2
+	fake_geo_data.vertex_sum = Vector3.ONE
+	fake_geo_data.bounding_box = AABB(Vector3.ONE, Vector3.ZERO)
+	assert_eq(ResourceSaver.save(geo_file_path, fake_geo_data), OK)
+	
+	# We can show the file saved correctly if the entry contents match that of
+	# the expected data.
+	scene_entry = AssetEntryScene.new()
+	catalog.setup_scene_entry_custom(scene_entry, "red_piece.obj")
+	assert_eq(scene_entry.scene_path, red_piece_path)
+	assert_eq(scene_entry.texture_overrides, [])
+	assert_eq(scene_entry.avg_point, 0.5 * Vector3.ONE)
+	assert_eq(scene_entry.bounding_box, AABB(Vector3.ONE, Vector3.ZERO))
+	
+	# Check what happens when the .geo file is missing.
+	catalog.untag(geo_file_name)
+	assert_false(catalog.is_tagged(geo_file_name))
+	test_dir.remove(geo_file_path)
+	assert_false(test_dir.file_exists(geo_file_path))
+	
+	# Check entry contents are overwritten.
+	catalog.setup_scene_entry_custom(scene_entry, "red_piece.obj")
+	assert_eq(scene_entry.scene_path, red_piece_path)
+	assert_eq(scene_entry.texture_overrides, [])
+	assert_eq(scene_entry.avg_point, piece_avg_point)
+	assert_eq(scene_entry.bounding_box, piece_bounding_box)
+	
+	# The .geo file should be re-generated, even if the file has not changed.
+	assert_true(ResourceLoader.exists(geo_file_path))
+	
+	# Check what happens when the .geo file is corrupted.
+	var geo_file := File.new()
+	assert_eq(geo_file.open(geo_file_path, File.WRITE), OK)
+	geo_file.store_string("heh")
+	geo_file.close()
+	
+	scene_entry = AssetEntryScene.new()
+	catalog.setup_scene_entry_custom(scene_entry, "red_piece.obj")
+	assert_eq(scene_entry.scene_path, red_piece_path)
+	assert_eq(scene_entry.texture_overrides, [])
+	assert_eq(scene_entry.avg_point, piece_avg_point)
+	assert_eq(scene_entry.bounding_box, piece_bounding_box)
+	
+	# File should be detected as corrupted and overwritten.
+	file_data = ResourceLoader.load(geo_file_path)
+	assert_is(file_data, GeoData)
+	assert_eq(file_data.vertex_count, 3)
+	assert_eq(file_data.vertex_sum, Vector3(1.0, 0.0, 1.0))
+	assert_eq(file_data.bounding_box, AABB(Vector3.ZERO, Vector3(1.0, 0.0, 1.0)))
+	
+	# Clean up the test directory.
+	for tagged_file in catalog.get_tagged():
+		catalog.untag(tagged_file)
+	catalog.remove_untagged()
+	test_dir.remove(TYPE_CATALOG_TEST_LOCATION)
+	assert_false(test_dir.dir_exists(TYPE_CATALOG_TEST_LOCATION))
+
+
 func test_configuring_entries() -> void:
 	# Even though it will be empty the entire time, the catalog needs an
 	# existing directory under user://assets to not throw an error.
