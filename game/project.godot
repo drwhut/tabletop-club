@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/asset_pack.gd"
 }, {
+"base": "Reference",
+"class": "AssetPackCatalog",
+"language": "GDScript",
+"path": "res://assets/asset_pack_catalog.gd"
+}, {
 "base": "TaggedDirectory",
 "class": "AssetPackTypeCatalog",
 "language": "GDScript",
@@ -291,6 +296,7 @@ _global_script_class_icons={
 "AssetEntryTemplateImage": "",
 "AssetEntryTemplateText": "",
 "AssetPack": "",
+"AssetPackCatalog": "",
 "AssetPackTypeCatalog": "",
 "AudioStreamList": "",
 "BindButton": "",
