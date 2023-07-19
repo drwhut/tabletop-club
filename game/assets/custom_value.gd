@@ -50,6 +50,20 @@ export(float) var value_float := 0.0 setget set_value_float
 export(String) var value_string := "" setget set_value_string
 
 
+## Return the value as a variant. The value that is returned depends on
+## [member value_type].
+func get_value_variant():
+	match value_type:
+		ValueType.TYPE_INT:
+			return value_int
+		ValueType.TYPE_FLOAT:
+			return value_float
+		ValueType.TYPE_STRING:
+			return value_string
+		_:
+			return null
+
+
 ## Use a variant to set the value of the corresponding type automatically.
 ## An error is thrown if the variant type is not supported.
 func set_value_variant(value) -> void:

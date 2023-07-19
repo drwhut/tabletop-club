@@ -45,6 +45,11 @@ _global_script_classes=[ {
 "path": "res://assets/entry/entry_dice.gd"
 }, {
 "base": "AssetEntrySingle",
+"class": "AssetEntrySave",
+"language": "GDScript",
+"path": "res://assets/entry/entry_save.gd"
+}, {
+"base": "AssetEntrySingle",
 "class": "AssetEntryScene",
 "language": "GDScript",
 "path": "res://assets/entry/entry_scene.gd"
@@ -287,6 +292,7 @@ _global_script_class_icons={
 "AssetEntryCollection": "",
 "AssetEntryContainer": "",
 "AssetEntryDice": "",
+"AssetEntrySave": "",
 "AssetEntryScene": "",
 "AssetEntrySingle": "",
 "AssetEntrySkybox": "",

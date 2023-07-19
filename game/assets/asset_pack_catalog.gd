@@ -184,7 +184,7 @@ func import_sub_dir(pack: AssetPack, sub_dir: String) -> void:
 			"cards": asset_entry = AssetEntryStackable.new()
 			"containers": asset_entry = AssetEntryContainer.new()
 			"dice": asset_entry = AssetEntryDice.new()
-			"games": continue # TODO: IMPLEMENT! 
+			"games": asset_entry = AssetEntrySave.new()
 			"music": asset_entry = AssetEntryAudio.new()
 			"pieces": asset_entry = AssetEntryScene.new()
 			"skyboxes": asset_entry = AssetEntrySkybox.new()
@@ -199,9 +199,227 @@ func import_sub_dir(pack: AssetPack, sub_dir: String) -> void:
 			"timers": asset_entry = AssetEntryScene.new()
 			"tokens": asset_entry = AssetEntryStackable.new()
 		
-		# TODO: Setup the entry.
-		# TODO: Configure the entry.
-		# TODO: Add the entry to the pack, without duplicating.
+		var main_path := "user://assets/%s/%s/%s" % [pack_name, sub_dir, main_file]
+		
+		if asset_entry is AssetEntryAudio:
+			asset_entry.audio_path = main_path
+			asset_entry.music = (type == "music")
+		
+		elif asset_entry is AssetEntrySave:
+			asset_entry.save_file_path = main_path
+		
+		elif asset_entry is AssetEntryScene:
+			# TODO: Fill out internal resource paths.
+			match sub_dir:
+				"cards":
+					type_env.type_catalog.setup_scene_entry(asset_entry, "",
+							GeoData.new(), main_path)
+				"tokens/cube":
+					type_env.type_catalog.setup_scene_entry(asset_entry, "",
+							GeoData.new(), main_path)
+				"tokens/cylinder":
+					type_env.type_catalog.setup_scene_entry(asset_entry, "",
+							GeoData.new(), main_path)
+				_:
+					type_env.type_catalog.setup_scene_entry_custom(asset_entry,
+							main_path)
+		
+		elif asset_entry is AssetEntrySkybox:
+			asset_entry.texture_path = main_path
+		
+		elif asset_entry is AssetEntryTemplate:
+			asset_entry.template_path = main_path
+		
+		# Cards cannot be scaled vertically (on the y-axis).
+		var scale_is_vec2 := (type == "cards")
+		
+		# The number of faces on a die depends on the subdirectory it is in.
+		var die_num_faces := _get_num_die_faces(sub_dir)
+		
+		type_env.type_catalog.apply_config_to_entry(asset_entry,
+				type_env.type_config, main_file, scale_is_vec2, die_num_faces)
+		
+		# If an entry with the same name already exists in the pack, rename the
+		# current entry so it can be added.
+		if pack.has_entry(type, asset_entry.id):
+			var extra_num := 1
+			while pack.has_entry(type, asset_entry.id + " (%d)" % extra_num):
+				extra_num += 1
+			
+			asset_entry.id += " (%d)" % extra_num
+		
+		pack.add_entry(type, asset_entry)
+
+
+## Using the [code]config.cfg[/code] files from each of the sub-directories,
+## create a list of child entries which are added to the given asset pack.
+## Child entries are created by adding the [code]parent[/code] property to a
+## section in the config file, which determines the entry that the child's
+## properties are inherited from.
+func create_child_entries(pack: AssetPack) -> void:
+	for sub_dir in _type_env_map:
+		var type: String = SUBDIRECTORY_TYPE_SCHEMA[sub_dir]
+		var type_env: DirectoryEnvironment = _type_env_map[sub_dir]
+		
+		var sub_dir_config := type_env.type_config
+		for section_name in sub_dir_config.get_sections():
+			if not sub_dir_config.has_section_key(section_name, "parent"):
+				continue
+			
+			if not section_name.is_valid_filename():
+				push_error("%s/config.cfg: Invalid section name '%s' with 'parent' property" % [
+						sub_dir, section_name])
+				continue
+			
+			if pack.has_entry(type, section_name):
+				push_error("%s/config.cfg: Entry '%s/%s/%s' already exists" % [
+						sub_dir, pack.id, type, section_name])
+				continue
+			
+			var parent_id: String = sub_dir_config.get_value_strict(
+					section_name, "parent", "")
+			if parent_id.empty():
+				push_error("%s: property 'parent' cannot be empty" % section_name)
+				continue
+			
+			if not pack.has_entry(type, parent_id):
+				push_error("%s: property 'parent' is invalid, entry '%s/%s/%s' does not exist" % [
+						section_name, pack.id, type, parent_id])
+				continue
+			
+			var parent_entry := pack.get_entry(type, parent_id)
+			var child_entry := parent_entry.duplicate()
+			
+			var scale_is_vec2 := (type == "cards")
+			var die_num_faces := _get_num_die_faces(sub_dir)
+			
+			var new_properties := AdvancedConfigFile.new()
+			type_env.type_catalog.write_entry_to_config(parent_entry,
+					new_properties, section_name, scale_is_vec2)
+			
+			# Set the name of the new child entry in the temporary config file,
+			# since apply_config_to_entry will write it into the entry anyways.
+			new_properties.set_value(section_name, "name", section_name)
+			
+			if child_entry is AssetEntryScene:
+				# The scale will have already been applied to the geometry data
+				# stored in the entry, so we need to reverse this in order to
+				# apply the new scale.
+				var scale_before: Vector3 = child_entry.scale
+				
+				if not (is_zero_approx(scale_before.x) or \
+						is_zero_approx(scale_before.y) or \
+						is_zero_approx(scale_before.z)):
+					
+					child_entry.avg_point /= scale_before
+					child_entry.bounding_box.position /= scale_before
+					child_entry.bounding_box.size /= scale_before
+				else:
+					push_warning("%s/%s: Element in property 'scale' is 0.0, cannot determine original geometry metadata" % [
+							type, parent_id])
+				
+				# If there is a valid config property for the parent's SFX, then
+				# clear the list of sounds in the entry before applying the
+				# config. This will ensure that apply_config_to_entry will read
+				# the config property and apply the new set of sound effects.
+				if new_properties.has_section_key(section_name, "sfx"):
+					child_entry.collision_fast_sounds = AudioStreamList.new()
+					child_entry.collision_slow_sounds = AudioStreamList.new()
+			
+			# Overwrite the parent entry's properties with the ones from this
+			# particular section.
+			for key in sub_dir_config.get_section_keys(section_name):
+				if key == "parent":
+					continue
+				
+				var value = sub_dir_config.get_value(section_name, key)
+				new_properties.set_value(section_name, key, value)
+			
+			type_env.type_catalog.apply_config_to_entry(child_entry,
+					new_properties, section_name, scale_is_vec2, die_num_faces)
+			pack.add_entry(type, child_entry)
+
+
+## Read the contents of a [code]stacks.cfg[/code] file and create a list of
+## [class AssetEntryCollection] entries to be added to the given asset pack.
+func read_stacks_config(pack: AssetPack, stack_config: AdvancedConfigFile,
+		stack_type: String) -> void:
+	
+	for section_name in stack_config.get_sections():
+		if not stack_config.has_section_key(section_name, "items"):
+			push_warning("Stack '%s' does not have 'items' property, ignoring" % section_name)
+			continue
+		
+		var item_names: Array = stack_config.get_value_strict(section_name,
+				"items", [])
+		
+		var item_refs := []
+		for item_name in item_names:
+			if not item_name is String:
+				push_error("Item in stack '%s' is not a string" % section_name)
+				continue
+			
+			if not pack.has_entry(stack_type, item_name):
+				push_error("Item '%s' does not exist in '%s/%s'" % [item_name,
+						pack.id, stack_type])
+				continue
+			
+			var item_entry := pack.get_entry(stack_type, item_name)
+			item_refs.push_back(item_entry)
+		
+		if item_refs.size() < 2:
+			push_error("Stack '%s' contains %d items, must have at least 2" % item_refs.size())
+			continue
+		
+		# Description is optional.
+		var description := ""
+		if stack_config.has_section_key(section_name, "desc"):
+			description = stack_config.get_value_strict(section_name, "desc", "")
+		
+		var stack_entry := AssetEntryCollection.new()
+		stack_entry.id = section_name
+		stack_entry.desc = description
+		stack_entry.entry_list = item_refs
+		
+		pack.add_entry("stacks", stack_entry)
+
+
+## Remove all of the rogue files from this pack's internal directory.
+func clean_rogue_files() -> void:
+	for sub_dir in _type_env_map:
+		var type_env: DirectoryEnvironment = _type_env_map[sub_dir]
+		type_env.type_catalog.remove_untagged()
+
+
+## Run all of the import functions after using [method scan_dir], and return the
+## [AssetPack] that is generated.
+func perform_full_import() -> AssetPack:
+	var pack := create_empty_pack()
+	
+	for sub_dir in _type_env_map:
+		import_sub_dir(pack, sub_dir)
+	
+	create_child_entries(pack)
+	
+	var check_dir := Directory.new()
+	for stack_sub_dir in [ "cards", "tokens/cube", "tokens/cylinder" ]:
+		var stack_type: String = SUBDIRECTORY_TYPE_SCHEMA[stack_sub_dir]
+		
+		var sub_dir_path := _last_scan_dir_path.plus_file(stack_sub_dir)
+		var stacks_cfg_path := sub_dir_path.plus_file("stacks.cfg")
+		if not check_dir.file_exists(stacks_cfg_path):
+			continue
+		
+		var stacks_cfg := AdvancedConfigFile.new()
+		var err := stacks_cfg.load(stacks_cfg_path)
+		if err != OK:
+			push_error("Failed to load '%s' (error: %d)" % [stacks_cfg_path, err])
+			continue
+		
+		read_stacks_config(pack, stacks_cfg, stack_type)
+	
+	clean_rogue_files()
+	return pack
 
 
 func set_pack_name(value: String) -> void:
@@ -212,6 +430,25 @@ func set_pack_name(value: String) -> void:
 	
 	pack_name = value
 	_setup_pack_dir()
+
+
+# Get the number of faces a die should have given the subdirectory it is in.
+func _get_num_die_faces(sub_dir: String) -> int:
+	match sub_dir:
+		"dice/d4":
+			return 4
+		"dice/d6":
+			return 6
+		"dice/d8":
+			return 8
+		"dice/d10":
+			return 10
+		"dice/d12":
+			return 12
+		"dice/d20":
+			return 20
+		_:
+			return 0
 
 
 # Setup the internal pack directory, and create type catalogs for any

@@ -367,6 +367,9 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 	if entry is AssetEntryAudio:
 		pass # Everything is determined by the directory the track is in.
 	
+	if entry is AssetEntrySave:
+		pass
+	
 	if entry is AssetEntryScene:
 		var color_str: String = config.get_value_by_matching(full_name, "color",
 				"#ffffff", true)
@@ -670,6 +673,155 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 				new_textbox.text = parser.get_strict_type("text", "")
 				
 				entry.textbox_list.push_back(new_textbox)
+		
+		if entry is AssetEntryTemplateText:
+			pass
+
+
+## Write the configurable properties of an entry to the given configuration
+## file. This function is essentially the reverse of [method apply_config_to_entry].
+func write_entry_to_config(entry: AssetEntrySingle, config: AdvancedConfigFile,
+		section: String, scale_is_vec2: bool) -> void:
+	
+	config.set_value(section, "name", entry.id)
+	config.set_value(section, "desc", entry.desc)
+	
+	config.set_value(section, "author", entry.author)
+	config.set_value(section, "license", entry.license)
+	config.set_value(section, "modified_by", entry.modified_by)
+	config.set_value(section, "url", entry.url)
+	
+	# TODO: Ideally would use elif's here, but due to how the autocompletion
+	# works, it won't show the subclass's properties. Change once the editor
+	# has improved in this regard.
+	
+	if entry is AssetEntryAudio:
+		pass # Everything is determined by the directory the track is in.
+	
+	if entry is AssetEntrySave:
+		pass
+	
+	if entry is AssetEntryScene:
+		config.set_value(section, "color", entry.albedo_color.to_html(false))
+		config.set_value(section, "mass", entry.mass)
+		
+		var scale_config = Vector2(entry.scale.x, entry.scale.z) \
+				if scale_is_vec2 else entry.scale
+		config.set_value(section, "scale", scale_config)
+		
+		if not entry.scene_path.begins_with("res://"):
+			var collision_config := 0
+			match entry.collision_type:
+				AssetEntryScene.CollisionType.COLLISION_CONVEX:
+					collision_config = 0
+				AssetEntryScene.CollisionType.COLLISION_MULTI_CONVEX:
+					collision_config = 1
+				AssetEntryScene.CollisionType.COLLISION_CONCAVE:
+					collision_config = 2
+			config.set_value(section, "collision_mode", collision_config)
+			
+			var com_config := "volume"
+			match entry.com_adjust:
+				AssetEntryScene.ComAdjust.COM_ADJUST_OFF:
+					com_config = "off"
+				AssetEntryScene.ComAdjust.COM_ADJUST_VOLUME:
+					com_config = "volume"
+				AssetEntryScene.ComAdjust.COM_ADJUST_GEOMETRY:
+					com_config = "geometry"
+			config.set_value(section, "com_adjust", com_config)
+		
+		config.set_value(section, "bounce", entry.physics_material.bounce)
+		
+		var sfx_config := ""
+		match entry.collision_fast_sounds.resource_path:
+			"res://sounds/generic/generic_fast_sounds.tres":
+				sfx_config = "generic"
+			"res://sounds/glass/glass_fast_sounds.tres":
+				sfx_config = "glass"
+			"res://sounds/glass_heavy/glass_heavy_fast_sounds.tres":
+				sfx_config = "glass_heavy"
+			"res://sounds/glass_light/glass_light_fast_sounds.tres":
+				sfx_config = "glass_light"
+			"res://sounds/metal/metal_fast_sounds.tres":
+				sfx_config = "metal"
+			"res://sounds/metal_heavy/metal_heavy_fast_sounds.tres":
+				sfx_config = "metal_heavy"
+			"res://sounds/metal_light/metal_light_fast_sounds.tres":
+				sfx_config = "metal_light"
+			"res://sounds/soft/soft_fast_sounds.tres":
+				sfx_config = "soft"
+			"res://sounds/soft_heavy/soft_heavy_fast_sounds.tres":
+				sfx_config = "soft_heavy"
+			"res://sounds/tin/tin_fast_sounds.tres":
+				sfx_config = "tin"
+			"res://sounds/wood/wood_fast_sounds.tres":
+				sfx_config = "wood"
+			"res://sounds/wood_heavy/wood_heavy_fast_sounds.tres":
+				sfx_config = "wood_heavy"
+			"res://sounds/wood_light/wood_light_fast_sounds.tres":
+				sfx_config = "wood_light"
+		
+		if not sfx_config.empty():
+			config.set_value(section, "sfx", sfx_config)
+		
+		if entry is AssetEntryContainer:
+			config.set_value(section, "shakable", entry.shakable)
+		
+		if entry is AssetEntryDice:
+			# TODO: Allow normal vectors to be used in the configuration.
+			var face_value_config := {}
+			var face_value_list_ref: DiceFaceValueList = entry.face_value_list
+			for face_value_pair in face_value_list_ref.face_value_list:
+				var face_normal: Vector3 = face_value_pair.normal
+				var face_value: CustomValue = face_value_pair.value
+				face_value_config[face_normal] = face_value.get_value_variant()
+			config.set_value(section, "face_values", face_value_config)
+		
+		if entry is AssetEntryStackable:
+			config.set_value(section, "suit", entry.user_suit.get_value_variant())
+			config.set_value(section, "value", entry.user_value.get_value_variant())
+		
+		if entry is AssetEntryTable:
+			var hands_config := []
+			for hand_transform in entry.hand_transforms:
+				var basis: Basis = hand_transform.basis
+				var origin: Vector3 = hand_transform.origin
+				
+				hands_config.push_back({
+					"pos": origin,
+					"dir": rad2deg(Vector3.RIGHT.angle_to(basis.x))
+				})
+			config.set_value(section, "hands", hands_config)
+			
+			var paint_plane_basis: Basis = entry.paint_plane_transform.basis
+			var scale_as_vec2 := Vector2(paint_plane_basis.x.x, paint_plane_basis.z.z)
+			config.set_value(section, "paint_plane", scale_as_vec2)
+	
+	if entry is AssetEntrySkybox:
+		config.set_value(section, "strength", entry.energy)
+		var rot_deg := Vector3(deg2rad(entry.rotation.x),
+				deg2rad(entry.rotation.y), deg2rad(entry.rotation.z))
+		config.set_value(section, "rotation", rot_deg)
+	
+	if entry is AssetEntryTemplate:
+		if entry is AssetEntryTemplateImage:
+			var textboxes_config := []
+			for textbox in entry.textbox_list:
+				var textbox_rect: Rect2 = textbox.rect
+				var textbox_rot_deg: float = textbox.rotation
+				var textbox_lines: int = textbox.lines
+				var textbox_default_text: String = textbox.text
+				
+				textboxes_config.push_back({
+					"x": int(textbox_rect.position.x),
+					"y": int(textbox_rect.position.y),
+					"w": int(textbox_rect.size.x),
+					"h": int(textbox_rect.size.y),
+					"rot": textbox_rot_deg,
+					"lines": textbox_lines,
+					"text": textbox_default_text
+				})
+			config.set_value(section, "textboxes", textboxes_config)
 		
 		if entry is AssetEntryTemplateText:
 			pass
