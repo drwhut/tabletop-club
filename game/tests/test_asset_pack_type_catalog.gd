@@ -104,22 +104,37 @@ func test_collecting_and_importing() -> void:
 	assert_true(catalog.is_imported("red_piece.obj"))
 	
 	assert_file_exists(white_stex)
-	assert_true(catalog.is_tagged("white_texture.png.import"))
+	assert_file_exists(white_tex_path + ".import")
+	# import_file does not tag generated files.
+	assert_false(catalog.is_tagged("white_texture.png.import"))
 	assert_true(ResourceLoader.exists(white_tex_path))
 	_check_texture(white_tex_path, Color.white)
 	
 	assert_file_exists(white_scn)
-	assert_true(catalog.is_tagged("white_piece.obj.import"))
-	assert_true(catalog.is_tagged("white_mat.material"))
+	assert_file_exists(white_path + ".import")
+	assert_file_exists(TYPE_CATALOG_TEST_LOCATION.plus_file("white_mat.material"))
+	assert_false(catalog.is_tagged("white_piece.obj.import"))
+	assert_false(catalog.is_tagged("white_mat.material"))
 	assert_true(catalog.is_new("white_texture.png")) # Check it was not re-tagged.
 	assert_true(ResourceLoader.exists(white_path))
 	_check_scene(white_path, white_tex_path, Color.white)
 	
 	assert_file_exists(red_scn)
-	assert_true(catalog.is_tagged("red_piece.obj.import"))
-	assert_true(catalog.is_tagged("red_mat.material"))
+	assert_file_exists(red_path + ".import")
+	assert_file_exists(TYPE_CATALOG_TEST_LOCATION.plus_file("red_mat.material"))
+	assert_false(catalog.is_tagged("red_piece.obj.import"))
+	assert_false(catalog.is_tagged("red_mat.material"))
 	assert_true(ResourceLoader.exists(red_path))
 	_check_scene(red_path, "", Color.red)
+	
+	# Test tag_dependencies to make sure it tags the one and only dependency of
+	# red_piece.obj, red_mat.material, and that it doesn't re-tag the original
+	# file. The .import file does not count as a dependency.
+	catalog.tag_dependencies("red_piece.obj")
+	assert_false(catalog.is_tagged("red_piece.obj.import"))
+	assert_true(catalog.is_tagged("red_mat.material"))
+	assert_true(catalog.is_new("red_piece.obj"))
+	catalog.untag("red_mat.material")
 	
 	# Add a new file to see if it is imported automatically.
 	assert_eq_deep(catalog.collect_textures(card_dir), ["black_texture.png"])
@@ -159,12 +174,20 @@ func test_collecting_and_importing() -> void:
 	
 	assert_file_exists(black_stex)
 	assert_true(catalog.is_imported("black_texture.png"))
-	assert_true(catalog.is_tagged("black_texture.png.import"))
 	assert_true(ResourceLoader.exists(black_tex_path))
 	_check_texture(black_tex_path, Color.black)
 	
 	assert_ne(white_scn_modified_old, white_scn_modified_new)
 	assert_eq(white_stex_modified_old, white_stex_modified_new)
+	
+	# import_tagged should always tag generated files, regardless of whether the
+	# original file had changed or not.
+	assert_true(catalog.is_tagged("black_texture.png.import"))
+	assert_true(catalog.is_tagged("red_piece.obj.import"))
+	assert_true(catalog.is_tagged("white_piece.obj.import"))
+	assert_true(catalog.is_tagged("white_texture.png.import"))
+	assert_true(catalog.is_tagged("red_mat.material"))
+	assert_true(catalog.is_tagged("white_mat.material"))
 	
 	# Make sure that assets are re-imported if generated files are missing, even
 	# if the file is tagged as unchanged.
@@ -355,10 +378,14 @@ func test_setup_scene_entry() -> void:
 	fake_geo_data.bounding_box = AABB(Vector3.ONE, Vector3.ZERO)
 	assert_eq(ResourceSaver.save(geo_file_path, fake_geo_data), OK)
 	
+	# Make sure that the .geo file is tagged, even if we just read it.
+	catalog.untag(geo_file_name)
+	
 	# We can show the file saved correctly if the entry contents match that of
 	# the expected data.
 	scene_entry = AssetEntryScene.new()
 	catalog.setup_scene_entry_custom(scene_entry, "red_piece.obj")
+	assert_true(catalog.is_tagged(geo_file_name))
 	assert_eq(scene_entry.scene_path, red_piece_path)
 	assert_eq(scene_entry.texture_overrides, [])
 	assert_eq(scene_entry.avg_point, 0.5 * Vector3.ONE)

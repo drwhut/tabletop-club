@@ -97,23 +97,31 @@ func collect_assets(from_dir: String, extension_arr: Array) -> Array:
 
 
 ## Automatically import all of the currently tagged files in the directory.
-## If a file has already been imported from before, it is skipped.
+## Any files generated from the import process are automatically tagged using
+## [method tag_dependencies]. If a file has already been imported in the past,
+## and its contents are unchanged, then it is not imported again.
 func import_tagged() -> void:
 	var tagged_arr := get_tagged()
 	for tagged_file in tagged_arr:
 		if not tagged_file.get_extension() in SanityCheck.VALID_EXTENSIONS_IMPORT:
 			continue
 		
-		if is_imported(tagged_file) and not (is_new(tagged_file) or \
-				is_changed(tagged_file)):
-			continue
+		if is_new(tagged_file) or is_changed(tagged_file) or \
+				(not is_imported(tagged_file)):
+			import_file(tagged_file)
 		
-		import_file(tagged_file)
+		# The importing process will always generate a ".import" file next to
+		# the original, so the engine knows where to look for the imported data.
+		tag(tagged_file + ".import", false)
+		
+		# The original file is already tagged, but make sure to tag any files
+		# that it depends on so they do not get removed.
+		tag_dependencies(tagged_file)
 
 
-## Import a file from [code]dir_path[/code] using the custom module. The file
-## itself, as well as any dependencies of the file (e.g. material files), are
-## automatically tagged if they are not already. Returns an error code.
+## Import a file from [code]dir_path[/code] using the custom module. Note that
+## this function does not automatically tag the file or any of its dependencies.
+## Returns an error code.
 func import_file(file_name: String) -> int:
 	if not CustomModule.is_loaded():
 		push_error("Cannot import '%s', custom module is not loaded" % file_name)
@@ -145,31 +153,6 @@ func import_file(file_name: String) -> int:
 	if err != OK:
 		push_error("Error importing '%s' (error: %d)" % [file_path, err])
 		return err
-	
-	var files_to_tag := [file_path, file_path + ".import"]
-	while not files_to_tag.empty():
-		var current_path: String = files_to_tag.pop_front()
-		if not current_path.is_abs_path():
-			push_warning("Dependency path '%s' is not absolute, ignoring" % current_path)
-			continue
-		
-		if current_path.get_base_dir() != dir_path:
-			push_warning("Dependency path '%s' is not in expected directory '%s', ignoring" % [
-					current_path, dir_path])
-			continue
-		
-		var current_name := current_path.get_file()
-		if not is_tagged(current_name):
-			# No need to store metadata about generated files, as they will
-			# change anyway if the original file changes.
-			tag(current_name, false)
-		
-		# The file needs to be a valid resource to have dependencies.
-		if not ResourceLoader.exists(current_path):
-			continue
-		
-		var file_deps := ResourceLoader.get_dependencies(current_path)
-		files_to_tag.append_array(file_deps)
 	
 	return OK
 
@@ -214,6 +197,36 @@ func is_imported(file_name: String) -> bool:
 		num_paths += 1
 	
 	return num_paths > 0
+
+
+## Recursively tag the given file and all of its dependencies, if it has not
+## already been tagged. This will prevent generated files from being deleted by
+## [method TaggedDirectory.remove_untagged]. Note that metadata is not stored
+## when these files are tagged, as they should be files generated from an
+## imported asset, which does have stored metadata.
+func tag_dependencies(file_name: String) -> void:
+	if not is_tagged(file_name):
+		tag(file_name, false)
+	
+	# The file needs to be a resource to have dependencies.
+	var file_path := dir_path.plus_file(file_name)
+	if not ResourceLoader.exists(file_path):
+		return
+	
+	var dependencies := ResourceLoader.get_dependencies(file_path)
+	for dependency_path in dependencies:
+		# We expect all of the paths to be absolute.
+		if not dependency_path.is_abs_path():
+			push_warning("Dependency path '%s' is not absolute, ignoring" % dependency_path)
+			continue
+		
+		# The dependency should be in the same directory as the original file.
+		if dependency_path.get_base_dir() != dir_path:
+			push_warning("Dependency path '%s' is not in expected directory '%s', ignoring" % [
+					dependency_path, dir_path])
+			continue
+		
+		tag_dependencies(dependency_path.get_file())
 
 
 ## Setup the given scene entry with the information needed to build it later on.
@@ -263,6 +276,9 @@ func setup_scene_entry_custom(entry: AssetEntryScene, scene_file_name: String) -
 			if cached_data != null:
 				geo_data = cached_data
 				geo_data_use_cache = true
+				
+				# Tag the file so it doesn't get removed as a rogue file.
+				tag(geo_file_name, false)
 			else:
 				push_error("Failed to load geometry data from '%s'" % geo_file_path)
 	
