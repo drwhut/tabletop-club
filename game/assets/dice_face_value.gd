@@ -39,7 +39,7 @@ func set_normal(new_normal: Vector3) -> void:
 		return
 	
 	if is_zero_approx(new_normal.length_squared()):
-		push_error("Face normal cannot be (0, 0, 0)")
+		push_error("Face normal vector length cannot be 0")
 		return
 	
 	normal = new_normal.normalized()

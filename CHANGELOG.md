@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Can now use the `?` wildcard in section names of `config.cfg` files, which
   will match one and only one character.
 - The value of die faces can now be text, as well as numbers. (#209)
+- Can now use the normal vector of a die face when setting its value, instead of
+  the X and Z rotation needed to make the face point upwards.
 
 #### Project
 

@@ -518,33 +518,56 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 			
 			var face_value_list_raw := []
 			for key in value_dict:
-				var rot_deg := Vector2.ZERO
+				var value = value_dict[key]
+				
+				var face_normal := Vector3.UP
+				var face_rot_deg := Vector2.ZERO
+				var face_use_euler := false
 				var custom_value := CustomValue.new()
 				
-				if typeof(key) == TYPE_VECTOR2:
-					rot_deg = key
-					custom_value.set_value_variant(value_dict[key])
+				if key is Vector2:
+					face_rot_deg = key
+					face_use_euler = true
+					custom_value.set_value_variant(value)
+				elif key is Vector3:
+					face_normal = key
+					custom_value.set_value_variant(value)
 				else:
 					# This is for backwards compatibility with v0.1.x, where the
 					# keys were the face values, and the values were the face
 					# rotations. This method forced unique face values, which
 					# is why the values have now been swapped as of v0.2.0
 					push_warning("The VALUE: ROTATION notation for 'face_values' is deprecated as of v0.2.0 - consider changing to ROTATION: VALUE")
+					
 					custom_value.set_value_variant(key)
-					var potential_rot = value_dict[key]
-					if typeof(potential_rot) == TYPE_VECTOR2:
-						rot_deg = potential_rot
+					if value is Vector2:
+						face_rot_deg = value
+						face_use_euler = true
 					else:
 						push_error("Rotation value in 'face_values' is not a Vector2")
 						continue
 				
-				if not SanityCheck.is_valid_vector2(rot_deg):
-					push_error("Vector2 in 'face_values' contains invalid data")
-					continue
-				
 				var face_value := DiceFaceValue.new()
-				face_value.set_normal_with_euler(deg2rad(rot_deg.x),
-						deg2rad(rot_deg.y))
+				if face_use_euler:
+					var face_rot_rad := Vector2(deg2rad(face_rot_deg.x),
+							deg2rad(face_rot_deg.y))
+					
+					if not SanityCheck.is_valid_vector2(face_rot_rad):
+						push_error("Vector2 in 'face_values' contains invalid data")
+						continue
+					
+					face_value.set_normal_with_euler(face_rot_rad.x, face_rot_rad.y)
+				else:
+					if not SanityCheck.is_valid_vector3(face_normal):
+						push_error("Vector3 in 'face_values' contains invalid data")
+						continue
+					
+					if is_zero_approx(face_normal.length_squared()):
+						push_error("Face normal vector length cannot be 0")
+						continue
+					
+					face_value.normal = face_normal
+				
 				face_value.value = custom_value
 				face_value_list_raw.push_back(face_value)
 			
@@ -768,7 +791,6 @@ func write_entry_to_config(entry: AssetEntrySingle, config: AdvancedConfigFile,
 			config.set_value(section, "shakable", entry.shakable)
 		
 		if entry is AssetEntryDice:
-			# TODO: Allow normal vectors to be used in the configuration.
 			var face_value_config := {}
 			var face_value_list_ref: DiceFaceValueList = entry.face_value_list
 			for face_value_pair in face_value_list_ref.face_value_list:

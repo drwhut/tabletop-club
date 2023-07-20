@@ -703,6 +703,23 @@ func test_configuring_entries() -> void:
 	expected_value_list.face_value_list = [ valid_face_back ]
 	_check_entry_configured(test)
 	
+	test.cfg_value = { Vector3(0.0, 1.0, INF): 420 } # Invalid normal Vector3.
+	expected_value_list.face_value_list = []
+	_check_entry_configured(test)
+	
+	test.cfg_value = { Vector3.ZERO: 420 } # Invalid normal Vector3.
+	expected_value_list.face_value_list = []
+	_check_entry_configured(test)
+	
+	test.cfg_value = { Vector3.LEFT: 2 }
+	var int_value := CustomValue.new()
+	int_value.value_int = 2
+	var valid_face_left := DiceFaceValue.new()
+	valid_face_left.normal = Vector3.LEFT
+	valid_face_left.value = int_value
+	expected_value_list.face_value_list = [ valid_face_left ]
+	_check_entry_configured(test)
+	
 	# For v0.1.x backwards compatibility.
 	test.cfg_value = { Transform.IDENTITY: Vector2.ZERO } # Invalid custom value.
 	expected_value_list.face_value_list = [ null_face ]
@@ -716,7 +733,7 @@ func test_configuring_entries() -> void:
 	_check_entry_configured(test)
 	
 	test.cfg_value = { 6: Vector2(0.0, 270.0), 2.5: Vector2(180.0, 0.0) }
-	var int_value := CustomValue.new()
+	int_value = CustomValue.new()
 	int_value.value_int = 6
 	var valid_face_right := DiceFaceValue.new()
 	valid_face_right.normal = Vector3.LEFT
