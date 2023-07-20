@@ -159,7 +159,7 @@ func is_tagged(file_name: String) -> bool:
 	return _tagged_meta.has(file_name)
 
 
-## Untag a file in the directory. Any saved metadata about the file is removed.
+## Untag a file in the directory.
 func untag(file_name: String) -> void:
 	if not _tagged_meta.has(file_name):
 		push_warning("Cannot untag '%s', has not been tagged" % file_name)
@@ -167,13 +167,6 @@ func untag(file_name: String) -> void:
 	
 	_tagged_meta.erase(file_name)
 	print("Untagged file: %s" % dir_path.plus_file(file_name))
-	
-	var meta_path := _get_meta_basename(file_name) + ".md5"
-	var meta_dir := Directory.new()
-	if meta_dir.file_exists(meta_path):
-		var err := meta_dir.remove(meta_path)
-		if err != OK:
-			push_error("Error removing '%s' (error: %d)" % [meta_path, err])
 
 
 ## Return a list of all of the tagged files in this directory.
@@ -181,7 +174,8 @@ func get_tagged() -> Array:
 	return _tagged_meta.keys()
 
 
-## Remove all untagged files from the directory.
+## Remove all untagged files from the directory. Any metadata files associated
+## with the files that are removed by this function are also removed.
 func remove_untagged() -> void:
 	var directory := get_dir()
 	if directory == null:
@@ -203,6 +197,13 @@ func remove_untagged() -> void:
 				else:
 					push_error("Error removing file '%s' from directory '%s' (error: %d)" % [
 							file_name, dir_path, err])
+				
+				var md5_path := _get_meta_basename(file_name) + ".md5"
+				if directory.file_exists(md5_path):
+					err = directory.remove(md5_path)
+					if err != OK:
+						push_error("Error removing metadata file '%s' (error: %d)" % [
+								md5_path, err])
 		
 		file_name = directory.get_next()
 

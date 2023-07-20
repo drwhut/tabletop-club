@@ -136,11 +136,11 @@ func test_tagged_directory() -> void:
 	assert_true(tagged_dir.is_tagged("a.txt"))
 	assert_eq_deep(tagged_dir.get_tagged(), ["b.txt", "c.txt", "a.txt"])
 	
-	# Since the file was untagged, any stored metadata should have been deleted.
-	assert_true(tagged_dir.is_new("a.txt"))
-	assert_true(tagged_dir.is_changed("a.txt"))
+	# Untagging a file does not remove the metadata stored about it.
+	assert_false(tagged_dir.is_new("a.txt"))
+	assert_false(tagged_dir.is_changed("a.txt"))
 	assert_eq(tagged_dir.get_file_meta("a.txt").new_md5, "0cc175b9c0f1b6a831c399e269772661")
-	assert_eq(tagged_dir.get_file_meta("a.txt").old_md5, "")
+	assert_eq(tagged_dir.get_file_meta("a.txt").old_md5, "0cc175b9c0f1b6a831c399e269772661")
 	
 	tagged_dir.untag("b.txt")
 	assert_false(tagged_dir.is_tagged("b.txt"))
@@ -151,9 +151,24 @@ func test_tagged_directory() -> void:
 	assert_false(test_dir.file_exists(b_path))
 	assert_true(test_dir.file_exists(c_path))
 	
-	# Clean the test directory after we are done. Untagging the files removes
-	# the metadata files, which is required for the test to work properly.
+	file.open(b_path, File.WRITE)
+	file.store_string("B")
+	file.close()
+	
+	tagged_dir.tag("b.txt", true)
+	assert_true(tagged_dir.is_tagged("b.txt"))
+	assert_eq_deep(tagged_dir.get_tagged(), ["c.txt", "a.txt", "b.txt"])
+	
+	# Removing all untagged files DOES remove their metadata, if it exists.
+	assert_true(tagged_dir.is_new("b.txt"))
+	assert_true(tagged_dir.is_changed("b.txt"))
+	assert_eq(tagged_dir.get_file_meta("b.txt").new_md5, "9d5ed678fe57bcca610140957afab571")
+	assert_eq(tagged_dir.get_file_meta("b.txt").old_md5, "")
+	
+	# Clean the test directory after we are done. By untagging the files and
+	# removing them, we also remove the stored metadata files as well.
 	tagged_dir.untag("a.txt")
+	tagged_dir.untag("b.txt")
 	tagged_dir.untag("c.txt")
 	tagged_dir.remove_untagged()
 	test_dir.remove(TAGGED_DIR_TEST_LOCATION)
