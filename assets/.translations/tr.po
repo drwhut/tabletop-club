@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 09:03\n"
-"PO-Revision-Date: 2023-05-29 13:49+0000\n"
-"Last-Translator: Yusuf Yavuzyigit <yusufyavuzyigit25@gmail.com>\n"
+"PO-Revision-Date: 2023-07-21 09:05+0000\n"
+"Last-Translator: Yusuf <yusufdundar92@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/tr/>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
@@ -31,7 +31,7 @@ msgstr "8x8 bir satranç tahtası."
 
 #: ../TabletopClub/boards/Go_Board_(Large):1
 msgid "Go Board (Large)"
-msgstr ""
+msgstr "Masaya Git (Geniş)"
 
 #: ../TabletopClub/boards/Go_Board_(Large):2
 msgid "A 19x19 Goban."
