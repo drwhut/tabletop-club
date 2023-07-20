@@ -42,6 +42,9 @@ export(AABB) var bounding_box := AABB()
 
 ## Calculate the average vertex position for the entire scene.
 func average_vertex() -> Vector3:
+	if vertex_count == 0:
+		return Vector3.ZERO
+	
 	return (1.0 / vertex_count) * vertex_sum
 
 

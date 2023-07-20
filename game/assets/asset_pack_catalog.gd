@@ -222,7 +222,7 @@ func import_sub_dir(pack: AssetPack, sub_dir: String) -> void:
 							GeoData.new(), main_path)
 				_:
 					type_env.type_catalog.setup_scene_entry_custom(asset_entry,
-							main_path)
+							main_file)
 		
 		elif asset_entry is AssetEntrySkybox:
 			asset_entry.texture_path = main_path
@@ -466,7 +466,7 @@ func _setup_pack_dir() -> void:
 				var env := DirectoryEnvironment.new(sub_dir_path)
 				_type_env_map[sub_dir] = env
 	else:
-		var err := pack_dir.make_dir(pack_dir_path)
+		var err := pack_dir.make_dir_recursive(pack_dir_path)
 		if err != OK:
 			push_error("Error creating pack directory at '%s' (error: %d)" % [
 					pack_dir_path, err])
