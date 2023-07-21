@@ -825,9 +825,15 @@ func write_entry_to_config(entry: AssetEntrySingle, config: AdvancedConfigFile,
 				var basis: Basis = hand_transform.basis
 				var origin: Vector3 = hand_transform.origin
 				
+				# angle_to gives a value between 0 and PI/2, but that alone does
+				# not tell us if the direction was CW or CCW.
+				var angle_to_x := Vector3.RIGHT.angle_to(basis.x)
+				if basis.x.z > 0.0:
+					angle_to_x *= -1.0
+				
 				hands_config.push_back({
 					"pos": origin,
-					"dir": rad2deg(Vector3.RIGHT.angle_to(basis.x))
+					"dir": rad2deg(angle_to_x)
 				})
 			config.set_value(section, "hands", hands_config)
 			
@@ -837,8 +843,8 @@ func write_entry_to_config(entry: AssetEntrySingle, config: AdvancedConfigFile,
 	
 	if entry is AssetEntrySkybox:
 		config.set_value(section, "strength", entry.energy)
-		var rot_deg := Vector3(deg2rad(entry.rotation.x),
-				deg2rad(entry.rotation.y), deg2rad(entry.rotation.z))
+		var rot_deg := Vector3(rad2deg(entry.rotation.x),
+				rad2deg(entry.rotation.y), rad2deg(entry.rotation.z))
 		config.set_value(section, "rotation", rot_deg)
 	
 	if entry is AssetEntryTemplate:

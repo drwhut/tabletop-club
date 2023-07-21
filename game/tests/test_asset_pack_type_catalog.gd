@@ -965,6 +965,196 @@ func test_configuring_entries() -> void:
 	assert_false(test_dir.dir_exists(TYPE_CATALOG_TEST_LOCATION))
 
 
+func test_writing_entries_to_config() -> void:
+	var test_dir := Directory.new()
+	if not test_dir.dir_exists(TYPE_CATALOG_TEST_LOCATION):
+		test_dir.make_dir_recursive(TYPE_CATALOG_TEST_LOCATION)
+	
+	var catalog := AssetPackTypeCatalog.new(TYPE_CATALOG_TEST_LOCATION)
+	if catalog.dir_path.empty():
+		fail_test("Failed to open directory: '%s'" % TYPE_CATALOG_TEST_LOCATION)
+		return
+	
+	var config := AdvancedConfigFile.new()
+	var section := "SECTION"
+	
+	var entry := AssetEntrySingle.new()
+	entry.id = "My Entry"
+	entry.desc = "This is my entry! Mine!"
+	entry.author = "drwhut"
+	entry.license = "CC0"
+	entry.modified_by = ""
+	entry.url = "https://youtu.be/Kg-HHXuOBlw"
+	
+	catalog.write_entry_to_config(entry, config, section, false)
+	assert_eq(config.get_value(section, "name"), "My Entry")
+	assert_eq(config.get_value(section, "desc"), "This is my entry! Mine!")
+	assert_eq(config.get_value(section, "author"), "drwhut")
+	assert_eq(config.get_value(section, "license"), "CC0")
+	assert_eq(config.get_value(section, "modified_by"), "")
+	assert_eq(config.get_value(section, "url"), "https://youtu.be/Kg-HHXuOBlw")
+	
+	entry = AssetEntryScene.new()
+	entry.albedo_color = Color.red
+	entry.mass = 100.0
+	entry.scale = Vector3(1.0, 2.0, 4.0)
+	entry.collision_type = AssetEntryScene.CollisionType.COLLISION_MULTI_CONVEX
+	entry.com_adjust = AssetEntryScene.ComAdjust.COM_ADJUST_VOLUME
+	entry.physics_material = PhysicsMaterial.new()
+	entry.physics_material.bounce = 0.5
+	entry.collision_fast_sounds = preload("res://sounds/soft/soft_fast_sounds.tres")
+	entry.collision_slow_sounds = preload("res://sounds/soft/soft_slow_sounds.tres")
+	
+	catalog.write_entry_to_config(entry, config, section, false)
+	assert_eq(config.get_value(section, "color"), "ff0000")
+	assert_eq(config.get_value(section, "mass"), 100.0)
+	assert_eq(config.get_value(section, "scale"), Vector3(1.0, 2.0, 4.0))
+	assert_eq(config.get_value(section, "collision_mode"), 1)
+	assert_eq(config.get_value(section, "com_adjust"), "volume")
+	assert_eq(config.get_value(section, "bounce"), 0.5)
+	assert_eq(config.get_value(section, "sfx"), "soft")
+	
+	entry.albedo_color = Color.blue
+	entry.mass = 50.0
+	entry.scale = Vector3(6.0, 1.0, 8.0)
+	entry.collision_type = AssetEntryScene.CollisionType.COLLISION_CONCAVE
+	entry.com_adjust = AssetEntryScene.ComAdjust.COM_ADJUST_GEOMETRY
+	entry.physics_material = PhysicsMaterial.new()
+	entry.physics_material.bounce = 1.0
+	entry.collision_fast_sounds = AudioStreamList.new()
+	entry.collision_slow_sounds = AudioStreamList.new()
+	
+	config.clear()
+	catalog.write_entry_to_config(entry, config, section, true) # Scale is Vector2.
+	assert_eq(config.get_value(section, "color"), "0000ff")
+	assert_eq(config.get_value(section, "mass"), 50.0)
+	assert_eq(config.get_value(section, "scale"), Vector2(6.0, 8.0))
+	assert_eq(config.get_value(section, "collision_mode"), 2)
+	assert_eq(config.get_value(section, "com_adjust"), "geometry")
+	assert_eq(config.get_value(section, "bounce"), 1.0)
+	assert_false(config.has_section_key(section, "sfx"))
+	
+	entry = AssetEntryContainer.new()
+	entry.shakable = true
+	
+	catalog.write_entry_to_config(entry, config, section, false)
+	assert_eq(config.get_value(section, "shakable"), true)
+	
+	entry = AssetEntryDice.new()
+	var int_val := CustomValue.new()
+	int_val.value_int = 20
+	var str_val := CustomValue.new()
+	str_val.value_string = "hi"
+	var face_left := DiceFaceValue.new()
+	face_left.normal = Vector3.LEFT
+	face_left.value = int_val
+	var face_right := DiceFaceValue.new()
+	face_right.set_normal_with_euler(0.0, PI / 2)
+	face_right.value = str_val
+	var face_list := DiceFaceValueList.new()
+	face_list.face_value_list = [ face_left, face_right ]
+	entry.face_value_list = face_list
+	
+	catalog.write_entry_to_config(entry, config, section, false)
+	# Due to potential floating point errors, we can't deep-equals the resulting
+	# dictionary due to the slight difference in expected float values.
+	var face_dict = config.get_value(section, "face_values")
+	assert_eq(typeof(face_dict), TYPE_DICTIONARY)
+	assert_eq(face_dict.size(), 2)
+	var key_arr: Array = face_dict.keys()
+	var key_1 = key_arr[0]
+	assert_eq(typeof(key_1), TYPE_VECTOR3)
+	assert_true(key_1.is_equal_approx(Vector3.LEFT))
+	var key_2 = key_arr[1]
+	assert_eq(typeof(key_2), TYPE_VECTOR3)
+	assert_true(key_2.is_equal_approx(Vector3.RIGHT))
+	assert_eq(face_dict[key_1], 20)
+	assert_eq(face_dict[key_2], "hi")
+	
+	entry = AssetEntryStackable.new()
+	int_val.value_int = 5
+	var float_val := CustomValue.new()
+	float_val.value_float = 128.0
+	entry.user_suit = int_val
+	entry.user_value = float_val
+	
+	catalog.write_entry_to_config(entry, config, section, false)
+	assert_eq(config.get_value(section, "suit"), 5)
+	assert_eq(config.get_value(section, "value"), 128.0)
+	
+	entry = AssetEntryTable.new()
+	var transform_1 := Transform(Basis(Vector3.UP, PI/2), Vector3(-50.0, 0.0, 0.0))
+	var transform_2 := Transform(Basis(Vector3.UP, -PI/2), Vector3(80.0, 0.0, 0.0))
+	entry.hand_transforms = [ transform_1, transform_2 ]
+	
+	catalog.write_entry_to_config(entry, config, section, false)
+	# Need to check the array manually due to potential floating point errors.
+	var hand_arr = config.get_value(section, "hands")
+	assert_eq(typeof(hand_arr), TYPE_ARRAY)
+	assert_eq(hand_arr.size(), 2)
+	var dict_1 = hand_arr[0]
+	assert_eq(typeof(dict_1), TYPE_DICTIONARY)
+	assert_eq(dict_1.size(), 2)
+	var pos_1 = dict_1["pos"]
+	assert_eq(typeof(pos_1), TYPE_VECTOR3)
+	assert_true(pos_1.is_equal_approx(Vector3(-50.0, 0.0, 0.0)))
+	var dir_1 = dict_1["dir"]
+	assert_eq(typeof(dir_1), TYPE_REAL)
+	assert_true(is_equal_approx(dir_1, 90.0))
+	var dict_2 = hand_arr[1]
+	assert_eq(typeof(dict_2), TYPE_DICTIONARY)
+	assert_eq(dict_2.size(), 2)
+	var pos_2 = dict_2["pos"]
+	assert_eq(typeof(pos_2), TYPE_VECTOR3)
+	assert_true(pos_2.is_equal_approx(Vector3(80.0, 0.0, 0.0)))
+	var dir_2 = dict_2["dir"]
+	assert_eq(typeof(dir_2), TYPE_REAL)
+	assert_true(is_equal_approx(dir_2, -90.0))
+	
+	var paint_plane_basis := Basis.IDENTITY.scaled(Vector3(250.0, 1.0, 100.0))
+	var paint_plane_transform := Transform(paint_plane_basis, Vector3.ZERO)
+	entry.paint_plane_transform = paint_plane_transform
+	
+	catalog.write_entry_to_config(entry, config, section, false)
+	assert_eq(config.get_value(section, "paint_plane"), Vector2(250.0, 100.0))
+	
+	entry = AssetEntrySkybox.new()
+	entry.energy = 9000.0
+	entry.rotation = Vector3(0.0, PI, -PI/4)
+	
+	catalog.write_entry_to_config(entry, config, section, false)
+	assert_eq(config.get_value(section, "strength"), 9000.0)
+	assert_eq(config.get_value(section, "rotation"), Vector3(0.0, 180.0, -45.0))
+	
+	entry = AssetEntryTemplateImage.new()
+	
+	var textbox_1 := TemplateTextbox.new()
+	textbox_1.rect = Rect2(100.0, 100.0, 250.0, 50.0)
+	textbox_1.rotation = 0.0
+	textbox_1.lines = 1
+	textbox_1.text = "This textbox only has one line."
+	
+	var textbox_2 := TemplateTextbox.new()
+	textbox_2.rect = Rect2(200.0, 500.75, 300.0, 200.0)
+	textbox_2.rotation = -90.0
+	textbox_2.lines = 4
+	textbox_2.text = "This textbox has four lines!"
+	
+	entry.textbox_list = [ textbox_1, textbox_2 ]
+	
+	catalog.write_entry_to_config(entry, config, section, false)
+	assert_eq_deep(config.get_value(section, "textboxes"), [
+		{ "x": 100, "y": 100, "w": 250, "h": 50, "rot": 0.0, "lines": 1,
+				"text": "This textbox only has one line." },
+		{ "x": 200, "y": 500, "w": 300, "h": 200, "rot": -90.0, "lines": 4,
+				"text": "This textbox has four lines!" }
+	])
+	
+	# Remove the directory now that we are done with this test.
+	test_dir.remove(TYPE_CATALOG_TEST_LOCATION)
+	assert_false(test_dir.dir_exists(TYPE_CATALOG_TEST_LOCATION))
+
+
 func _check_scene(scene_path: String, texture_path: String, albedo_color: Color):
 	gut.p("Checking imported scene at '%s'..." % scene_path)
 	
