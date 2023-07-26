@@ -1,0 +1,3 @@
+This file has the same name as the image, but with a different extension.
+
+... I wonder how the game is going to handle this? :3
