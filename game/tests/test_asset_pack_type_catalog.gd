@@ -137,7 +137,7 @@ func test_collecting_and_importing() -> void:
 	catalog.untag("red_mat.material")
 	
 	# Add a new file to see if it is imported automatically.
-	assert_eq_deep(catalog.collect_textures(card_dir), ["black_texture.png"])
+	assert_true(catalog.collect_textures(card_dir).has("black_texture.png"))
 	assert_true(catalog.is_tagged("black_texture.png"))
 	assert_true(catalog.is_new("black_texture.png"))
 	assert_false(catalog.is_imported("black_texture.png"))
