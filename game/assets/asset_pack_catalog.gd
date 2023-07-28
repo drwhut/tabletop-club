@@ -158,6 +158,13 @@ func scan_dir(dir_path: String) -> void:
 					type_config_path, err])
 
 
+## Get the internal [class DirectoryEnvironment] for the given sub-directory,
+## or [code]null[/code] if it does not exist. Note that this function only
+## exists for testing purposes, and shouldn't be used to modify the environment.
+func get_dir_env(sub_dir: String) -> DirectoryEnvironment:
+	return _type_env_map.get(sub_dir, null)
+
+
 ## Create a new [AssetPack] with no entries.
 func create_empty_pack() -> AssetPack:
 	var out := AssetPack.new()
@@ -181,6 +188,11 @@ func import_sub_dir(pack: AssetPack, sub_dir: String) -> void:
 	type_env.type_catalog.import_tagged()
 	
 	for main_file in type_env.main_assets:
+		var ignore: bool = type_env.type_config.get_value_by_matching(main_file,
+				"ignore", false, true)
+		if ignore:
+			continue
+		
 		var asset_entry: AssetEntrySingle
 		match type:
 			"boards": asset_entry = AssetEntryScene.new()
@@ -217,6 +229,12 @@ func import_sub_dir(pack: AssetPack, sub_dir: String) -> void:
 				"cards":
 					type_env.type_catalog.setup_scene_entry(asset_entry, "",
 						GeoData.new(), main_path)
+					
+					var back_face_name: String = \
+							type_env.type_config.get_value_by_matching(main_file,
+									"back_face", "", true)
+					_set_card_back_face(asset_entry, type_env.type_catalog,
+							back_face_name)
 				"tokens/cube":
 					type_env.type_catalog.setup_scene_entry(asset_entry, "",
 						GeoData.new(), main_path)
@@ -291,6 +309,13 @@ func create_child_entries(pack: AssetPack) -> void:
 					section_name, pack.id, type, parent_id])
 				continue
 			
+			# The 'ignore' property is not read by AssetPackTypeCatalog, so we
+			# need to deal with it here if it exists.
+			var ignore: bool = sub_dir_config.get_value_strict(section_name,
+					"ignore", false)
+			if ignore:
+				continue
+			
 			var parent_entry := pack.get_entry(type, parent_id)
 			var child_entry := parent_entry.duplicate()
 			
@@ -307,6 +332,18 @@ func create_child_entries(pack: AssetPack) -> void:
 			new_properties.set_value(section_name, "name", section_name)
 			
 			if child_entry is AssetEntryScene:
+				# The 'back_face' property of cards is not handled by
+				# AssetPackTypeCatalog, so if the property is overwritten we
+				# need to handle that here.
+				if sub_dir == "cards" and sub_dir_config.has_section_key(
+						section_name, "back_face"):
+					
+					var new_back_face_name: String = \
+							sub_dir_config.get_value_strict(section_name,
+									"back_face", "")
+					_set_card_back_face(child_entry, type_env.type_catalog,
+							new_back_face_name)
+				
 				# The scale will have already been applied to the geometry data
 				# stored in the entry, so we need to reverse this in order to
 				# apply the new scale.
@@ -354,38 +391,52 @@ func read_stacks_config(pack: AssetPack, stack_config: AdvancedConfigFile,
 		if not stack_config.has_section_key(section_name, "items"):
 			push_warning("Stack '%s' does not have 'items' property, ignoring" % section_name)
 			continue
-			
+		
+		# The items within a stack must all be the same size.
+		var scale_required := Vector3.ZERO
+		var scale_set := false
+		
 		var item_names: Array = stack_config.get_value_strict(section_name,
 			"items", [])
-			
+		
 		var item_refs := []
 		for item_name in item_names:
 			if not item_name is String:
 				push_error("Item in stack '%s' is not a string" % section_name)
 				continue
-				
+			
 			if not pack.has_entry(stack_type, item_name):
 				push_error("Item '%s' does not exist in '%s/%s'" % [item_name,
 					pack.id, stack_type])
 				continue
-				
-			var item_entry := pack.get_entry(stack_type, item_name)
-			item_refs.push_back(item_entry)
 			
+			var item_entry: AssetEntryScene = pack.get_entry(stack_type, item_name)
+			if scale_set:
+				if not item_entry.scale.is_equal_approx(scale_required):
+					push_error("Scale of '%s' %s does not match that of '%s' %s, cannot be included in '%s'" % [
+							item_name, str(item_entry.scale), item_names[0],
+							str(scale_required), section_name])
+					continue
+			else:
+				scale_required = item_entry.scale
+				scale_set = true
+			
+			item_refs.push_back(item_entry)
+		
 		if item_refs.size() < 2:
 			push_error("Stack '%s' contains %d items, must have at least 2" % item_refs.size())
 			continue
-			
-			# Description is optional.
+		
+		# Description is optional.
 		var description := ""
 		if stack_config.has_section_key(section_name, "desc"):
 			description = stack_config.get_value_strict(section_name, "desc", "")
-			
+		
 		var stack_entry := AssetEntryCollection.new()
 		stack_entry.id = section_name
 		stack_entry.desc = description
 		stack_entry.entry_list = item_refs
-			
+		
 		pack.add_entry("stacks", stack_entry)
 
 
@@ -455,6 +506,25 @@ func _get_num_die_faces(sub_dir: String) -> int:
 			return 20
 		_:
 			return 0
+
+
+# Set the second texture override of a card entry to be the path to a texture
+# within the given type directory. If the texture does not exist, or it has not
+# been imported, or the name is empty, then a fallback texture is used.
+func _set_card_back_face(card_entry: AssetEntryScene,
+		type_catalog: AssetPackTypeCatalog, back_texture_name: String) -> void:
+	
+	var back_texture_path := "" # TODO: Use a fallback texture.
+	
+	if not back_texture_name.empty():
+		if type_catalog.is_imported(back_texture_name):
+			back_texture_path = type_catalog.dir_path.plus_file(back_texture_name)
+		else:
+			push_error("Cannot use '%s' as back face for '%s', texture has not been imported" % [
+					back_texture_name, card_entry.id])
+	
+	card_entry.texture_overrides.resize(2)
+	card_entry.texture_overrides[1] = back_texture_path
 
 
 # Setup the internal pack directory, and create type catalogs for any
