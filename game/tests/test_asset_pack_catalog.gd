@@ -55,7 +55,9 @@ func test_individual_functions() -> void:
 	
 	# Scan the tests/test_pack/ directory, and see if the correct files were
 	# tagged. We'll only be checking the cards/ sub-directory for this test.
+	assert_false(pack_catalog.has_scanned_dir())
 	pack_catalog.scan_dir(PACK_PATH)
+	assert_true(pack_catalog.has_scanned_dir())
 	
 	var card_env: AssetPackCatalog.DirectoryEnvironment = \
 			pack_catalog.get_dir_env("cards")
@@ -169,7 +171,9 @@ func test_individual_functions() -> void:
 
 func test_full_import() -> void:
 	var pack_catalog := AssetPackCatalog.new(PACK_NAME)
+	assert_false(pack_catalog.has_scanned_dir())
 	pack_catalog.scan_dir(PACK_PATH) # Should already have been tested.
+	assert_true(pack_catalog.has_scanned_dir())
 	var pack := pack_catalog.perform_full_import()
 	assert_eq(pack.id, PACK_NAME)
 	assert_eq(pack.name, PACK_NAME)

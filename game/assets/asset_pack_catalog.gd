@@ -158,6 +158,12 @@ func scan_dir(dir_path: String) -> void:
 					type_config_path, err])
 
 
+## Check if this catalog has scanned a directory as an asset pack using
+## [method scan_dir].
+func has_scanned_dir() -> bool:
+	return not _last_scan_dir_path.empty()
+
+
 ## Get the internal [class DirectoryEnvironment] for the given sub-directory,
 ## or [code]null[/code] if it does not exist. Note that this function only
 ## exists for testing purposes, and shouldn't be used to modify the environment.

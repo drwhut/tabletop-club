@@ -61,5 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Removed the `--base-asset-dir` command-line argument, as it is no longer
   required.
+- The Downloads, Desktop, and installation folders are no longer scanned for
+  asset packs.
 
 [unreleased]: https://github.com/drwhut/tabletop-club/compare/HEAD...HEAD
