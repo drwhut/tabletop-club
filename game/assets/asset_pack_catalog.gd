@@ -424,7 +424,8 @@ func read_stacks_config(pack: AssetPack, stack_config: AdvancedConfigFile,
 			item_refs.push_back(item_entry)
 		
 		if item_refs.size() < 2:
-			push_error("Stack '%s' contains %d items, must have at least 2" % item_refs.size())
+			push_error("Stack '%s' contains %d items, must have at least 2" % [
+					section_name, item_refs.size()])
 			continue
 		
 		# Description is optional.
