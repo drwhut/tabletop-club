@@ -40,6 +40,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The format of the `face_values` property has changed from `VALUE: ROTATION` to
   `ROTATION: VALUE`, allowing for multiple faces of a die to have the same
   value.
+- Custom assets are now imported after the main menu has loaded, instead of
+  before. This should lead to faster and more consistent loading times,
+  regardless of the number of custom assets.
 
 #### Project
 
@@ -54,6 +57,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### UI
 
 - Changed the default window size from 1024x600 to 1920x1080.
+- The importing process is now shown as an independent panel instead of within
+  the loading screen.
 
 ### Removed
 

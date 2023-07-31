@@ -26,6 +26,10 @@ extends TaggedDirectory
 ## Used to import and catalog assets from an asset pack subdirectory.
 
 
+## Emitted when a file is about to be imported in [method import_tagged].
+signal about_to_import_file(file_name)
+
+
 func _init(path: String).(path):
 	pass
 
@@ -103,6 +107,8 @@ func collect_assets(from_dir: String, extension_arr: Array) -> Array:
 func import_tagged() -> void:
 	var tagged_arr := get_tagged()
 	for tagged_file in tagged_arr:
+		emit_signal("about_to_import_file", tagged_file)
+		
 		if not tagged_file.get_extension() in SanityCheck.VALID_EXTENSIONS_IMPORT:
 			continue
 		

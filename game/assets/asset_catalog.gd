@@ -30,6 +30,13 @@ extends Reference
 ## of the different asset packs at once.
 
 
+## Emitted when a pack is about to be imported in [method import_all].
+signal about_to_import_pack(pack_name, pack_index, pack_count)
+
+## Emitted when a file is about to be imported in [method import_all].
+signal about_to_import_file(file_path, file_index, file_count)
+
+
 # The internal list of AssetPackCatalog from which assets are imported.
 # TODO: Make typed in 4.x
 var _pack_catalogs: Array = []
@@ -105,13 +112,23 @@ func scan_dir_for_packs(dir: Directory) -> void:
 ## TODO: Make returned array typed in 4.x
 func import_all() -> Array:
 	print("Importing scanned assets...")
-	var pack_list: Array = []
 	
+	var valid_pack_catalogs := []
 	for pack_catalog in _pack_catalogs:
-		if not pack_catalog.has_scanned_dir():
-			continue
+		if pack_catalog.has_scanned_dir():
+			valid_pack_catalogs.push_back(pack_catalog)
+	
+	var pack_list: Array = []
+	for pack_index in range(valid_pack_catalogs.size()):
+		var pack_catalog: AssetPackCatalog = valid_pack_catalogs[pack_index]
+		emit_signal("about_to_import_pack", pack_catalog.pack_name, pack_index,
+				valid_pack_catalogs.size())
 		
+		pack_catalog.connect("about_to_import_file", self,
+				"_on_pack_catalog_about_to_import_file")
 		pack_list.push_back(pack_catalog.perform_full_import())
+		pack_catalog.disconnect("about_to_import_file", self,
+				"_on_pack_catalog_about_to_import_file")
 	
 	return pack_list
 
@@ -120,3 +137,9 @@ func import_all() -> Array:
 func clean_rogue_files() -> void:
 	for pack_catalog in _pack_catalogs:
 		pack_catalog.clean_rogue_files()
+
+
+func _on_pack_catalog_about_to_import_file(file_path: String, file_index: int,
+		file_count: int):
+	
+	emit_signal("about_to_import_file", file_path, file_index, file_count)

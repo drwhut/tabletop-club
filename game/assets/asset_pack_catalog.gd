@@ -35,6 +35,11 @@ extends Reference
 ## to the AssetDB to be used by the player in-game.
 
 
+## Emitted when a file is about to be imported by one of the internal
+## [AssetPackTypeCatalog] in [method perform_full_import].
+signal about_to_import_file(file_path, file_index, file_count)
+
+
 ## A dictionary containing a list of subdirectories to scan (the keys) within
 ## the asset pack, and which type the assets are allocated to within an
 ## [AssetPack] object (the values).
@@ -88,6 +93,12 @@ var _type_env_map := {}
 
 # The path of the last external directory that was scanned for this pack.
 var _last_scan_dir_path := ""
+
+# The number of files that we expect to import in the asset pack.
+var _num_files_to_import := 0
+
+# The number of files that we have imported so far.
+var _num_files_imported := 0
 
 
 func _init(new_pack_name: String):
@@ -459,8 +470,29 @@ func clean_rogue_files() -> void:
 func perform_full_import() -> AssetPack:
 	var pack := create_empty_pack()
 	
+	_num_files_imported = 0
+	_num_files_to_import = 0
 	for sub_dir in _type_env_map:
+		# Before we import the files from each sub-directory, we first need to
+		# figure out how many files are going to be imported so the file count
+		# in the emitted signal is accurate.
+		var type_env: DirectoryEnvironment = _type_env_map[sub_dir]
+		_num_files_to_import += type_env.type_catalog.get_tagged().size()
+	
+	for sub_dir in _type_env_map:
+		# Connect the 'about_to_import_file' signal here, since we only want to
+		# propagate the signal within this function.
+		# NOTE: It should be okay to connect the signal to this object, since it
+		# should only be a weak reference, and thus it should not create a
+		# cyclical reference.
+		var type_env: DirectoryEnvironment = _type_env_map[sub_dir]
+		type_env.type_catalog.connect("about_to_import_file", self,
+				"_on_type_catalog_about_to_import_file", [ sub_dir ])
+		
 		import_sub_dir(pack, sub_dir)
+		
+		type_env.type_catalog.disconnect("about_to_import_file", self,
+				"_on_type_catalog_about_to_import_file")
 	
 	create_child_entries(pack)
 	
@@ -482,7 +514,10 @@ func perform_full_import() -> AssetPack:
 		print("%s: Reading stacks from '%s' ..." % [pack.id, stacks_cfg_path])
 		read_stacks_config(pack, stacks_cfg, stack_type)
 	
-	clean_rogue_files()
+	# Rogue files should be cleaned across all packs at the end of the import
+	# process, so there's no need to clean them after each pack.
+	#clean_rogue_files()
+	
 	return pack
 
 
@@ -553,3 +588,9 @@ func _setup_pack_dir() -> void:
 		if err != OK:
 			push_error("Error creating pack directory at '%s' (error: %d)" % [
 				pack_dir_path, err])
+
+
+func _on_type_catalog_about_to_import_file(file_name: String, sub_dir: String):
+	emit_signal("about_to_import_file", sub_dir.plus_file(file_name),
+			_num_files_imported, _num_files_to_import)
+	_num_files_imported += 1
