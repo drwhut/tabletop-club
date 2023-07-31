@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/asset_catalog.gd"
 }, {
+"base": "Reference",
+"class": "AssetCatalogInteractive",
+"language": "GDScript",
+"path": "res://assets/asset_catalog_interactive.gd"
+}, {
 "base": "ResourceWithErrors",
 "class": "AssetEntry",
 "language": "GDScript",
@@ -298,6 +303,7 @@ _global_script_class_icons={
 "ActualTextFile": "",
 "AdvancedConfigFile": "",
 "AssetCatalog": "",
+"AssetCatalogInteractive": "",
 "AssetEntry": "",
 "AssetEntryAudio": "",
 "AssetEntryCollection": "",

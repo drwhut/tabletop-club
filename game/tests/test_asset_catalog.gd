@@ -59,22 +59,7 @@ func test_asset_catalog() -> void:
 	
 	# Check that the packs are imported.
 	var pack_list := catalog.import_all()
-	assert_eq(pack_list.size(), 2)
-	var num_empty_pack := 0
-	var num_test_pack := 0
-	for pack in pack_list:
-		if pack.id == "empty_pack":
-			assert_eq(pack.get_entry_count(), 0)
-			num_empty_pack += 1
-		elif pack.id == "test_pack":
-			assert_eq(pack.get_entry_count(), 33)
-			num_test_pack += 1
-		else:
-			fail_test("Unexpected pack '%s'" % pack.id)
-			return
-	
-	assert_eq(num_empty_pack, 1)
-	assert_eq(num_test_pack, 1)
+	_check_pack_list(pack_list)
 	
 	# Check that rogue files are removed.
 	var rogue_file_path := TEST_PACK_PATH.plus_file("pieces/rogue.obj")
@@ -97,3 +82,45 @@ func test_asset_catalog() -> void:
 	# or directories in there.
 	empty_pack_dir.remove(EMPTY_PACK_PATH)
 	assert_false(empty_pack_dir.dir_exists(EMPTY_PACK_PATH))
+
+
+func test_asset_catalog_interactive() -> void:
+	var interactive := AssetCatalogInteractive.new()
+	interactive.start("res://tests")
+	assert_false(interactive.is_done())
+	var pack_list := interactive.get_packs() # Blocks the main thread.
+	assert_true(interactive.is_done())
+	_check_pack_list(pack_list)
+	
+	# Clean the entire internal directory at the end of the test.
+	var test_d6_path := TEST_PACK_PATH.plus_file("dice/d6/test_d6.obj")
+	assert_file_exists(test_d6_path)
+	var catalog := AssetCatalog.new()
+	catalog.clean_rogue_files()
+	assert_file_does_not_exist(test_d6_path)
+	
+	# Remove the internal 'empty_pack' directory, since there should be no files
+	# or directories in there.
+	var empty_pack_dir := Directory.new()
+	empty_pack_dir.remove(EMPTY_PACK_PATH)
+	assert_false(empty_pack_dir.dir_exists(EMPTY_PACK_PATH))
+
+
+func _check_pack_list(pack_list: Array) -> void:
+	gut.p("Checking asset packs were imported correctly...")
+	
+	assert_eq(pack_list.size(), 2)
+	var num_empty_pack := 0
+	var num_test_pack := 0
+	for pack in pack_list:
+		if pack.id == "empty_pack":
+			assert_eq(pack.get_entry_count(), 0)
+			num_empty_pack += 1
+		elif pack.id == "test_pack":
+			assert_eq(pack.get_entry_count(), 33)
+			num_test_pack += 1
+		else:
+			fail_test("Unexpected pack '%s'" % pack.id)
+	
+	assert_eq(num_empty_pack, 1)
+	assert_eq(num_test_pack, 1)
