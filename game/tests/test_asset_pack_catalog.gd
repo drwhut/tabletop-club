@@ -34,6 +34,43 @@ const PACK_PATH := "res://tests/test_pack"
 ## The rogue file to test the catalogs ability to remove them.
 const ROGUE_FILE_PATH := "user://assets/%s/pieces/rogue_file.txt" % PACK_NAME
 
+## The list of file paths that should be emitted from
+## [signal AssetPackCatalog.about_to_import_file] when running
+## [method AssetPackCatalog.perform_full_import].
+const SIGNAL_OUTPUT_FILES_EXPECTED := [
+	"boards/test_board.obj",
+	"cards/black_texture.png",
+	"cards/test_card.png",
+	"containers/test_container.obj",
+	"dice/d10/test_d10.obj",
+	"dice/d12/test_d12.obj",
+	"dice/d20/test_d20.obj",
+	"dice/d4/test_d4.obj",
+	"dice/d6/test_d6.obj",
+	"dice/d8/test_d8.obj",
+	"games/test_game.tc",
+	"music/test_music.wav",
+	"pieces/piece_mat.mtl",
+	"pieces/red_piece.obj",
+	"pieces/white_piece.obj",
+	"pieces/white_texture.png",
+	"skyboxes/test_skybox.png",
+	"sounds/test_sound.wav",
+	"speakers/test_speaker_no_config.obj",
+	"tables/test_table.obj",
+	"templates/old_template.png",
+	"templates/test_template.png",
+	"templates/test_template.txt",
+	"timers/test_timer.obj",
+	"tokens/cube/cube_token.png",
+	"tokens/cylinder/cylinder_token.png"
+]
+
+# The output received from the 'about_to_import_file' signal.
+var _signal_output_files_received := []
+var _signal_output_indexes_received := []
+var _signal_output_counts_received := []
+
 
 func test_individual_functions() -> void:
 	# Place a rogue file in the pack's internal directory to see if it is
@@ -171,13 +208,29 @@ func test_individual_functions() -> void:
 
 func test_full_import() -> void:
 	var pack_catalog := AssetPackCatalog.new(PACK_NAME)
+	pack_catalog.connect("about_to_import_file", self, "_on_about_to_import_file")
+	
 	assert_false(pack_catalog.has_scanned_dir())
 	pack_catalog.scan_dir(PACK_PATH) # Should already have been tested.
 	assert_true(pack_catalog.has_scanned_dir())
+	
 	var pack := pack_catalog.perform_full_import()
 	assert_eq(pack.id, PACK_NAME)
 	assert_eq(pack.name, PACK_NAME)
 	assert_eq(pack.origin, PACK_PATH)
+	
+	# Check the values emitted with the 'about_to_import_file' signal are what
+	# we expect them to be.
+	var expected_indexes := []
+	var expected_counts := []
+	for index in range(SIGNAL_OUTPUT_FILES_EXPECTED.size()):
+		expected_indexes.push_back(index)
+		expected_counts.push_back(SIGNAL_OUTPUT_FILES_EXPECTED.size())
+	
+	_signal_output_files_received.sort()
+	assert_eq_deep(_signal_output_files_received, SIGNAL_OUTPUT_FILES_EXPECTED)
+	assert_eq_deep(_signal_output_indexes_received, expected_indexes)
+	assert_eq_deep(_signal_output_counts_received, expected_counts)
 	
 	assert_eq(pack.boards.size(), 1)
 	var test_board: AssetEntryScene = pack.boards[0]
@@ -697,3 +750,9 @@ func test_full_import() -> void:
 	# Clean the internal pack directory at the end of the test.
 	pack_catalog.pack_name = PACK_NAME
 	pack_catalog.clean_rogue_files()
+
+
+func _on_about_to_import_file(file_path: String, file_index: int, file_count: int):
+	_signal_output_files_received.push_back(file_path)
+	_signal_output_indexes_received.push_back(file_index)
+	_signal_output_counts_received.push_back(file_count)

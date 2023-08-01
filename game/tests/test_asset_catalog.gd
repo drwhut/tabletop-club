@@ -31,6 +31,19 @@ const EMPTY_PACK_PATH := "user://assets/empty_pack"
 ## The internal directory for the test asset pack.
 const TEST_PACK_PATH := "user://assets/test_pack"
 
+# The pack names emitted from the 'about_to_import_pack' signal.
+var _signal_output_pack_names := []
+
+# The pack indices emitted from the 'about_to_import_pack' signal.
+var _signal_output_pack_indices := []
+
+# The pack counts emitted from the 'about_to_import_pack' signal.
+var _signal_output_pack_counts := []
+
+# The number of times the 'about_to_import_file' signal has been fired.
+# NOTE: This signal is tested thoroughly in the AssetPackCatalog unit tests.
+var _signal_output_file_emissions := 0
+
 
 func test_asset_catalog() -> void:
 	var empty_pack_dir := Directory.new()
@@ -57,9 +70,19 @@ func test_asset_catalog() -> void:
 	assert_true(empty_pack_dir.dir_exists(EMPTY_PACK_PATH))
 	assert_not_null(catalog.get_pack_catalog("empty_pack"))
 	
+	catalog.connect("about_to_import_pack", self, "_on_about_to_import_pack")
+	catalog.connect("about_to_import_file", self, "_on_about_to_import_file")
+	
 	# Check that the packs are imported.
 	var pack_list := catalog.import_all()
 	_check_pack_list(pack_list)
+	
+	# Check the values the signals emitted.
+	_signal_output_pack_names.sort()
+	assert_eq_deep(_signal_output_pack_names, ["empty_pack", "test_pack"])
+	assert_eq_deep(_signal_output_pack_indices, [0, 1])
+	assert_eq_deep(_signal_output_pack_counts, [2, 2])
+	assert_eq(_signal_output_file_emissions, 26)
 	
 	# Check that rogue files are removed.
 	var rogue_file_path := TEST_PACK_PATH.plus_file("pieces/rogue.obj")
@@ -124,3 +147,13 @@ func _check_pack_list(pack_list: Array) -> void:
 	
 	assert_eq(num_empty_pack, 1)
 	assert_eq(num_test_pack, 1)
+
+
+func _on_about_to_import_pack(pack_name: String, pack_index: int, pack_count: int):
+	_signal_output_pack_names.push_back(pack_name)
+	_signal_output_pack_indices.push_back(pack_index)
+	_signal_output_pack_counts.push_back(pack_count)
+
+
+func _on_about_to_import_file(_file_pack: String, _file_index: int, _file_count: int):
+	_signal_output_file_emissions += 1

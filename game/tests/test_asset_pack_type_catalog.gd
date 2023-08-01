@@ -28,6 +28,16 @@ extends GutTest
 ## The directory to use to test [AssetPackTypeCatalog].
 const TYPE_CATALOG_TEST_LOCATION := "user://assets/__type_catalog__"
 
+## The list of file names that should be emitted from
+## [signal AssetPackTypeCatalog.about_to_import_file] when calling
+## [method AssetPackTypeCatalog.import_tagged].
+const SIGNAL_OUTPUT_EXPECTED := ["black_texture.png", "piece_mat.mtl",
+		"red_piece.obj", "test_card.png", "white_piece.obj",
+		"white_texture.png"]
+
+# The signals emitted from the type catalog.
+var _signal_output_received := []
+
 
 func test_collecting_and_importing() -> void:
 	var test_dir := Directory.new()
@@ -39,6 +49,9 @@ func test_collecting_and_importing() -> void:
 	var catalog := AssetPackTypeCatalog.new(TYPE_CATALOG_TEST_LOCATION)
 	var card_dir := "res://tests/test_pack/cards"
 	var piece_dir := "res://tests/test_pack/pieces"
+	
+	# Test the output from the 'about_to_import_file' signal.
+	catalog.connect("about_to_import_file", self, "_on_about_to_import_file")
 	
 	# If the directory failed to open, then stop now to prevent cleaning the
 	# res:// directory.
@@ -168,6 +181,11 @@ func test_collecting_and_importing() -> void:
 	gut.p("Waiting for UNIX timestamp to increment before continuing...")
 	OS.delay_msec(1000)
 	catalog.import_tagged()
+	
+	# import_tagged() fires the 'about_to_import_file' signal, so check the
+	# output to see if it is what we expected.
+	_signal_output_received.sort()
+	assert_eq_deep(_signal_output_received, SIGNAL_OUTPUT_EXPECTED)
 	
 	var white_stex_modified_new := modified_check.get_modified_time(white_stex)
 	var white_scn_modified_new := modified_check.get_modified_time(white_scn)
@@ -1293,3 +1311,7 @@ func _check_custom_value_eq(a: CustomValue, b: CustomValue):
 			assert_eq(a.value_float, b.value_float)
 		CustomValue.ValueType.TYPE_STRING:
 			assert_eq(a.value_string, b.value_string)
+
+
+func _on_about_to_import_file(file_name: String):
+	_signal_output_received.push_back(file_name)

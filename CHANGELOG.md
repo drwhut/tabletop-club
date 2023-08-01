@@ -68,5 +68,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   required.
 - The Downloads, Desktop, and installation folders are no longer scanned for
   asset packs.
+- Removed the `--export-asset-db` command-line argument.
 
 [unreleased]: https://github.com/drwhut/tabletop-club/compare/HEAD...HEAD
