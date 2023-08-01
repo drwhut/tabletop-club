@@ -107,6 +107,9 @@ func collect_assets(from_dir: String, extension_arr: Array) -> Array:
 func import_tagged() -> void:
 	var tagged_arr := get_tagged()
 	for tagged_file in tagged_arr:
+		if ImportAbortFlag.is_enabled():
+			break
+		
 		emit_signal("about_to_import_file", tagged_file)
 		
 		if not tagged_file.get_extension() in SanityCheck.VALID_EXTENSIONS_IMPORT:

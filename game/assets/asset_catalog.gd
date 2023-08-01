@@ -120,6 +120,9 @@ func import_all() -> Array:
 	
 	var pack_list: Array = []
 	for pack_index in range(valid_pack_catalogs.size()):
+		if ImportAbortFlag.is_enabled():
+			break
+		
 		var pack_catalog: AssetPackCatalog = valid_pack_catalogs[pack_index]
 		emit_signal("about_to_import_pack", pack_catalog.pack_name, pack_index,
 				valid_pack_catalogs.size())

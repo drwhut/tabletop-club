@@ -86,5 +86,8 @@ func _process(_delta):
 
 
 func _on_tree_exiting():
+	# Force the import thread to end as quickly as possible.
+	ImportAbortFlag.enable()
+	
 	# Join the import thread with the main thread before the game exits.
 	_catalog_interactive.get_packs()

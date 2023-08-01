@@ -380,6 +380,7 @@ config/version="master"
 [autoload]
 
 CustomModule="*res://util/custom_module.gd"
+ImportAbortFlag="*res://assets/import_abort_flag.gd"
 AssetDB="*res://assets/asset_db.gd"
 
 [debug]

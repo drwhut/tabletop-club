@@ -205,6 +205,9 @@ func import_sub_dir(pack: AssetPack, sub_dir: String) -> void:
 	type_env.type_catalog.import_tagged()
 	
 	for main_file in type_env.main_assets:
+		if ImportAbortFlag.is_enabled():
+			break
+		
 		var ignore: bool = type_env.type_config.get_value_by_matching(main_file,
 				"ignore", false, true)
 		if ignore:
@@ -493,6 +496,12 @@ func perform_full_import() -> AssetPack:
 		
 		type_env.type_catalog.disconnect("about_to_import_file", self,
 				"_on_type_catalog_about_to_import_file")
+	
+	if ImportAbortFlag.is_enabled():
+		# There's a high chance that if the abort flag was enabled, not every
+		# entry was scanned in, so exit now to prevent errors from occuring
+		# later in the function.
+		return pack
 	
 	create_child_entries(pack)
 	
