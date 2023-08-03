@@ -551,8 +551,8 @@ func test_configuring_entries() -> void:
 	_check_entry_configured(test)
 	
 	test.scale_is_vec2 = true
-	test.cfg_value = Vector3.ZERO # Using Vector3 in Vector2 mode.
-	test.prop_value = Vector3.ONE
+	test.cfg_value = Vector3(1.0, 2.0, 3.0) # Using Vector3 in Vector2 mode.
+	test.prop_value = Vector3(1.0, 1.0, 3.0)
 	_check_entry_configured(test)
 	
 	# Set these properties up for later so we can check how scale affects them.

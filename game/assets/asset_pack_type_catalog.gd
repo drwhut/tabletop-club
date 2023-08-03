@@ -408,10 +408,19 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 		entry.mass = config.get_value_by_matching(full_name, "mass", 1.0, true)
 		
 		if scale_is_vec2:
-			# TODO: Should Vector3 be allowed with a warning here?
-			var scale_vec2: Vector2 = config.get_value_by_matching(full_name,
-					"scale", Vector2.ONE, true)
-			entry.scale = Vector3(scale_vec2.x, 1.0, scale_vec2.y)
+			var scale = config.get_value_by_matching(full_name, "scale",
+					Vector2.ONE, false)
+			var scale_type := typeof(scale)
+			
+			if scale_type == TYPE_VECTOR2:
+				entry.scale = Vector3(scale.x, 1.0, scale.y)
+			elif scale_type == TYPE_VECTOR3:
+				push_warning("Expected a Vector2 for 'scale' property, received a Vector3 - ignoring Y-scale")
+				entry.scale = Vector3(scale.x, 1.0, scale.z)
+			else:
+				push_error("Value of 'scale' is incorrect data type (expected: Vector2, got: %s)" % \
+						SanityCheck.get_type_name(scale_type))
+				entry.scale = Vector3.ONE
 		else:
 			entry.scale = config.get_value_by_matching(full_name, "scale",
 					Vector3.ONE, true)
