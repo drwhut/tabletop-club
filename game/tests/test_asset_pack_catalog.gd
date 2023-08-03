@@ -50,6 +50,7 @@ const SIGNAL_OUTPUT_FILES_EXPECTED := [
 	"dice/d8/test_d8.obj",
 	"games/test_game.tc",
 	"music/test_music.wav",
+	"pieces/bad_file.obj",
 	"pieces/piece_mat.mtl",
 	"pieces/red_piece.obj",
 	"pieces/white_piece.obj",

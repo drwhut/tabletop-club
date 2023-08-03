@@ -82,7 +82,7 @@ func test_asset_catalog() -> void:
 	assert_eq_deep(_signal_output_pack_names, ["empty_pack", "test_pack"])
 	assert_eq_deep(_signal_output_pack_indices, [0, 1])
 	assert_eq_deep(_signal_output_pack_counts, [2, 2])
-	assert_eq(_signal_output_file_emissions, 26)
+	assert_eq(_signal_output_file_emissions, 27)
 	
 	# Check that rogue files are removed.
 	var rogue_file_path := TEST_PACK_PATH.plus_file("pieces/rogue.obj")

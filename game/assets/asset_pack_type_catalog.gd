@@ -115,13 +115,34 @@ func import_tagged() -> void:
 		if not tagged_file.get_extension() in SanityCheck.VALID_EXTENSIONS_IMPORT:
 			continue
 		
+		var import_file_name: String = tagged_file + ".import"
+		
 		if is_new(tagged_file) or is_changed(tagged_file) or \
 				(not is_imported(tagged_file)):
-			import_file(tagged_file)
+			var import_err := import_file(tagged_file)
+			if import_err != OK:
+				# The file failed to import, but there may still be a .import
+				# file from a previous import. We need to delete it in order to
+				# get is_imported() to return false.
+				var type_dir := get_dir()
+				if type_dir.file_exists(import_file_name):
+					if is_tagged(import_file_name):
+						untag(import_file_name)
+					
+					var err := type_dir.remove(import_file_name)
+					if err != OK:
+						push_error("Failed to delete '%s' (error: %d)" % [
+								import_file_name, err])
+				
+				# Untag the file so it is removed as a rogue file at the end of
+				# the import process.
+				untag(tagged_file)
+				
+				continue
 		
 		# The importing process will always generate a ".import" file next to
 		# the original, so the engine knows where to look for the imported data.
-		tag(tagged_file + ".import", false)
+		tag(import_file_name, false)
 		
 		# The original file is already tagged, but make sure to tag any files
 		# that it depends on so they do not get removed.

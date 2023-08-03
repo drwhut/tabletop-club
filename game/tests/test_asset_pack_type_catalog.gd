@@ -31,8 +31,8 @@ const TYPE_CATALOG_TEST_LOCATION := "user://assets/__type_catalog__"
 ## The list of file names that should be emitted from
 ## [signal AssetPackTypeCatalog.about_to_import_file] when calling
 ## [method AssetPackTypeCatalog.import_tagged].
-const SIGNAL_OUTPUT_EXPECTED := ["black_texture.png", "piece_mat.mtl",
-		"red_piece.obj", "test_card.png", "white_piece.obj",
+const SIGNAL_OUTPUT_EXPECTED := ["bad_file.obj", "black_texture.png",
+		"piece_mat.mtl", "red_piece.obj", "test_card.png", "white_piece.obj",
 		"white_texture.png"]
 
 # The signals emitted from the type catalog.
@@ -76,17 +76,21 @@ func test_collecting_and_importing() -> void:
 	# The order that files are scanned in can vary from platform to platform,
 	# so we can't rely on the order of the arrays here.
 	var collected_files := catalog.collect_scenes(piece_dir)
-	assert_eq(collected_files.size(), 2)
+	assert_eq(collected_files.size(), 3)
+	assert_true(collected_files.has("bad_file.obj"))
 	assert_true(collected_files.has("red_piece.obj"))
 	assert_true(collected_files.has("white_piece.obj"))
 	var tagged_files := catalog.get_tagged()
-	assert_eq(tagged_files.size(), 4)
+	assert_eq(tagged_files.size(), 5)
 	assert_eq(tagged_files[0], "white_texture.png")
 	assert_eq(tagged_files[1], "piece_mat.mtl")
+	assert_true(tagged_files.has("bad_file.obj"))
 	assert_true(tagged_files.has("red_piece.obj"))
 	assert_true(tagged_files.has("white_piece.obj"))
+	var bad_path := TYPE_CATALOG_TEST_LOCATION.plus_file("bad_file.obj")
 	var red_path := TYPE_CATALOG_TEST_LOCATION.plus_file("red_piece.obj")
 	var white_path := TYPE_CATALOG_TEST_LOCATION.plus_file("white_piece.obj")
+	assert_file_exists(bad_path)
 	assert_file_exists(red_path)
 	assert_file_exists(white_path)
 	
@@ -95,11 +99,13 @@ func test_collecting_and_importing() -> void:
 	# the files are either changed, or stay the same.
 	assert_true(catalog.is_new("white_texture.png"))
 	assert_true(catalog.is_new("piece_mat.mtl"))
+	assert_true(catalog.is_new("bad_file.obj"))
 	assert_true(catalog.is_new("red_piece.obj"))
 	assert_true(catalog.is_new("white_piece.obj"))
 	
 	### IMPORTING ASSETS ###
 	
+	var bad_scn := "user://.import/bad_file.obj-%s.scn" % bad_path.md5_text()
 	var red_scn := "user://.import/red_piece.obj-%s.scn" % red_path.md5_text()
 	var white_scn := "user://.import/white_piece.obj-%s.scn" % white_path.md5_text()
 	var white_stex := "user://.import/white_texture.png-%s.stex" % white_tex_path.md5_text()
@@ -139,6 +145,16 @@ func test_collecting_and_importing() -> void:
 	assert_false(catalog.is_tagged("red_mat.material"))
 	assert_true(ResourceLoader.exists(red_path))
 	_check_scene(red_path, "", Color.red)
+	
+	# 'bad_file.obj' should fail to import.
+	assert_false(catalog.is_imported("bad_file.obj"))
+	assert_eq(catalog.import_file("bad_file.obj"), ERR_FILE_CORRUPT)
+	assert_false(catalog.is_imported("bad_file.obj"))
+	
+	assert_file_does_not_exist(bad_path + ".import")
+	# Only import_tagged() untags files that fail to import.
+	assert_true(catalog.is_tagged("bad_file.obj"))
+	assert_false(ResourceLoader.exists(bad_path))
 	
 	# Test tag_dependencies to make sure it tags the one and only dependency of
 	# red_piece.obj, red_mat.material, and that it doesn't re-tag the original
@@ -207,6 +223,9 @@ func test_collecting_and_importing() -> void:
 	assert_true(catalog.is_tagged("red_mat.material"))
 	assert_true(catalog.is_tagged("white_mat.material"))
 	
+	# It should also untag files that failed to import.
+	assert_false(catalog.is_tagged("bad_file.obj"))
+	
 	# Make sure that assets are re-imported if generated files are missing, even
 	# if the file is tagged as unchanged.
 	catalog.tag("red_piece.obj", true)
@@ -231,6 +250,44 @@ func test_collecting_and_importing() -> void:
 	assert_true(catalog.is_imported("white_piece.obj"))
 	assert_file_exists(red_path + ".import")
 	assert_file_exists(white_scn)
+	
+	# Make 'bad_file.obj' importable, so it creates a .import file.
+	# We'll then check to see if by making it fail to import again, the catalog
+	# removes the .import file.
+	var bad_file := File.new()
+	bad_file.open(bad_path, File.WRITE)
+	bad_file.store_string("# This is a mesh with no verices!")
+	bad_file.close()
+	
+	catalog.tag("bad_file.obj", true)
+	assert_true(catalog.is_tagged("bad_file.obj"))
+	assert_true(catalog.is_changed("bad_file.obj"))
+	assert_false(catalog.is_new("bad_file.obj"))
+	assert_false(catalog.is_imported("bad_file.obj"))
+	
+	catalog.import_tagged()
+	assert_file_exists(bad_scn)
+	assert_file_exists(bad_path + ".import")
+	assert_true(catalog.is_tagged("bad_file.obj.import"))
+	assert_true(ResourceLoader.exists(bad_path))
+	assert_true(catalog.is_imported("bad_file.obj"))
+	
+	bad_file.open(bad_path, File.WRITE)
+	bad_file.store_string("f he he he")
+	bad_file.close()
+	
+	catalog.tag("bad_file.obj", true)
+	assert_false(catalog.is_new("bad_file.obj"))
+	assert_true(catalog.is_changed("bad_file.obj"))
+	assert_true(catalog.is_imported("bad_file.obj"))
+	
+	catalog.import_tagged()
+	assert_file_exists(bad_scn)
+	assert_file_does_not_exist(bad_path + ".import")
+	assert_false(catalog.is_tagged("bad_file.obj"))
+	assert_false(catalog.is_tagged("bad_file.obj.import"))
+	assert_false(ResourceLoader.exists(bad_path))
+	assert_false(catalog.is_imported("bad_file.obj"))
 	
 	# Clean up the test directory.
 	for tagged_file in catalog.get_tagged():

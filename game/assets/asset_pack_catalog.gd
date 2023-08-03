@@ -208,6 +208,12 @@ func import_sub_dir(pack: AssetPack, sub_dir: String) -> void:
 		if ImportAbortFlag.is_enabled():
 			break
 		
+		# If the file needs to be imported, and it did not successfully get
+		# imported by the type catalog, then don't make an entry out of it.
+		if main_file.get_extension() in SanityCheck.VALID_EXTENSIONS_IMPORT:
+			if not type_env.type_catalog.is_imported(main_file):
+				continue
+		
 		var ignore: bool = type_env.type_config.get_value_by_matching(main_file,
 				"ignore", false, true)
 		if ignore:
