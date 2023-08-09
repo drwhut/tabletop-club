@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/go_board_large.obj-f5d8342bcee97e535d864e728bac6d0d.mesh"
+
+[deps]
+
+files=[ "res://.import/go_board_large.obj-f5d8342bcee97e535d864e728bac6d0d.mesh" ]
+
+source_file="res://assets/default_pack/boards/go_board_large.obj"
+dest_files=[ "res://.import/go_board_large.obj-f5d8342bcee97e535d864e728bac6d0d.mesh", "res://.import/go_board_large.obj-f5d8342bcee97e535d864e728bac6d0d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

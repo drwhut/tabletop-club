@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://assets/entry/entry_scene.gd" type="Script" id=1]
+[ext_resource path="res://assets/default_physics_material.tres" type="PhysicsMaterial" id=2]
+[ext_resource path="res://sounds/wood_heavy/wood_heavy_fast_sounds.tres" type="Resource" id=3]
+[ext_resource path="res://sounds/wood_heavy/wood_heavy_slow_sounds.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+id = "Chess Board"
+desc = "An 8x8 Chess board."
+pack = "TabletopClub"
+type = "boards"
+author = "Thane 'pennomi' Brimhall, Tiziana"
+license = "CC-BY 3.0"
+modified_by = ""
+url = "https://opengameart.org/content/chess-board"
+scene_path = "res://assets/default_pack/boards/chess_board.tscn"
+texture_overrides = [  ]
+albedo_color = Color( 1, 1, 1, 1 )
+mass = 900.0
+scale = Vector3( 1, 1, 1 )
+avg_point = Vector3( 0, 0, 0 )
+bounding_box = AABB( -17.761, -0.883, -17.761, 35.522, 1.766, 35.522 )
+collision_type = 0
+com_adjust = 0
+physics_material = ExtResource( 2 )
+collision_fast_sounds = ExtResource( 3 )
+collision_slow_sounds = ExtResource( 4 )

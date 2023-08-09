@@ -1,7 +1,7 @@
 # Blender v3.4.1 OBJ File: ''
 # www.blender.org
-mtllib Go Board (Small).mtl
-o Cube_Cube.002
+mtllib go_board_small.mtl
+o Cube
 v -14.600000 -4.500000 15.600000
 v -14.600000 4.500000 15.600000
 v -14.600000 -4.500000 -15.600000

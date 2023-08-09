@@ -10,7 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd grid.png
+map_Kd 00_grid.png
 
 newmtl Wood_Frame
 Ns 225.000000
@@ -21,4 +21,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd darkwood1_0.jpg
+map_Kd 00_darkwood.jpg

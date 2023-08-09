@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/chess_board.obj-fc90d327fad428ed37c27a252888e776.mesh"
+
+[deps]
+
+files=[ "res://.import/chess_board.obj-fc90d327fad428ed37c27a252888e776.mesh" ]
+
+source_file="res://assets/default_pack/boards/chess_board.obj"
+dest_files=[ "res://.import/chess_board.obj-fc90d327fad428ed37c27a252888e776.mesh", "res://.import/chess_board.obj-fc90d327fad428ed37c27a252888e776.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
