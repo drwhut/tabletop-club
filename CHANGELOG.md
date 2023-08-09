@@ -46,6 +46,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The 'TabletopClub' asset pack that comes bundled with the game is now
   pre-imported inside the `.pck` file instead of in its own directory. The pack
   no longer has to be imported every launch.
+- All textures within the 'TabletopClub' asset pack are now bundled in a
+  compressed format, leading to less video memory usage.
 
 #### Project
 
