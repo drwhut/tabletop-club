@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.5, 0.01, 0.5 )
+
+[node name="Card" type="RigidBody"]
+contacts_reported = 1
+contact_monitor = true
+__meta__ = {
+"_editor_description_": "The base scene for all card pieces.
+
+NOTE: Due to the fact that cards can have varying meshes, the scenes MeshInstance does NOT include a mesh by default. It will be the responsibility of the PieceBuilder to insert a mesh to the scene."
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]

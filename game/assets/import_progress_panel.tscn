@@ -7,6 +7,9 @@
 margin_right = 450.0
 margin_bottom = 110.0
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "When ready, the panel will begin using AssetCatalogInteractive to import custom assets, and show the progress in real-time. Once the import process is complete, the panel will automatically hide itself."
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 7.0

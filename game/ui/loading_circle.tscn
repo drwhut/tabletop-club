@@ -7,6 +7,9 @@
 margin_right = 100.0
 margin_bottom = 100.0
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "A UI element to represent something loading."
+}
 
 [node name="ArcTexture" type="TextureRect" parent="."]
 anchor_left = 0.5

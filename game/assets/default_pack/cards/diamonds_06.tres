@@ -1,0 +1,42 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://assets/default_physics_material.tres" type="PhysicsMaterial" id=1]
+[ext_resource path="res://assets/entry/entry_stackable.gd" type="Script" id=2]
+[ext_resource path="res://assets/custom_value.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+value_type = 3
+value_int = 0
+value_float = 0.0
+value_string = "D"
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 6
+value_float = 0.0
+value_string = ""
+
+[resource]
+script = ExtResource( 2 )
+id = "Six of Diamonds"
+desc = "A poker-sized French-suited playing card."
+pack = "TabletopClub"
+type = "cards"
+author = "Front: Unknown, Back: jeffshee"
+license = "Front: CC0, Back: CC-BY 3.0"
+modified_by = "Front: Benjamin 'drwhut' Beddows"
+url = "Front: https://opengameart.org/content/playing-cards-vector-png, Back: https://opengameart.org/content/colorful-poker-card-back"
+scene_path = "res://assets/scenes/card.tscn"
+texture_overrides = [ "res://assets/default_pack/cards/diamonds_06.png", "res://assets/default_pack/cards/playing_card_back.png" ]
+albedo_color = Color( 1, 1, 1, 1 )
+mass = 1.8
+scale = Vector3( 6.35, 1, 8.89 )
+avg_point = Vector3( 0, 0, 0 )
+bounding_box = AABB( -3.175, -0.01, -4.445, 6.35, 0.02, 8.89 )
+collision_type = 0
+com_adjust = 0
+physics_material = ExtResource( 1 )
+user_suit = SubResource( 1 )
+user_value = SubResource( 2 )

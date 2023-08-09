@@ -43,6 +43,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom assets are now imported after the main menu has loaded, instead of
   before. This should lead to faster and more consistent loading times,
   regardless of the number of custom assets.
+- The 'TabletopClub' asset pack that comes bundled with the game is now
+  pre-imported inside the `.pck` file instead of in its own directory. The pack
+  no longer has to be imported every launch.
 
 #### Project
 
