@@ -6,7 +6,6 @@
 extents = Vector3( 14.6, 4.5, 15.6 )
 
 [node name="GoBoardSmall" type="RigidBody"]
-mass = 9000.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

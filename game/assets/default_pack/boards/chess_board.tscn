@@ -6,7 +6,6 @@
 points = PoolVector3Array( 16.345, 0.883, 16.345, -17.761, -0.883, -17.761, -17.761, -0.883, 17.761, 17.761, -0.883, -17.761, -16.345, 0.883, -16.345, 17.761, -0.883, 17.761, -16.345, 0.883, 16.345, 16.345, 0.883, -16.345 )
 
 [node name="ChessBoard" type="RigidBody"]
-mass = 9000.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
