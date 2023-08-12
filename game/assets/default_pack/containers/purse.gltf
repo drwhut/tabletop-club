@@ -81,12 +81,12 @@
         {
             "mimeType" : "image/png",
             "name" : "purse01N",
-            "uri" : "purse01N.png"
+            "uri" : "00_purse_01_n.png"
         },
         {
             "mimeType" : "image/png",
             "name" : "purse01D",
-            "uri" : "purse01D.png"
+            "uri" : "00_purse_01_d.png"
         }
     ],
     "accessors" : [
@@ -150,7 +150,7 @@
     "buffers" : [
         {
             "byteLength" : 15800,
-            "uri" : "Purse.bin"
+            "uri" : "purse.bin"
         }
     ]
 }

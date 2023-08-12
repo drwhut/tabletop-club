@@ -1,0 +1,30 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://assets/default_physics_material.tres" type="PhysicsMaterial" id=1]
+[ext_resource path="res://assets/entry/entry_container.gd" type="Script" id=2]
+[ext_resource path="res://sounds/metal_heavy/metal_heavy_fast_sounds.tres" type="Resource" id=3]
+[ext_resource path="res://sounds/metal_heavy/metal_heavy_slow_sounds.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 2 )
+id = "Pot"
+desc = ""
+pack = "TabletopClub"
+type = "containers"
+author = "Fabio S. Clemente"
+license = "CC0"
+modified_by = "Benjamin 'drwhut' Beddows"
+url = "https://opengameart.org/content/stylized-vases-and-pots"
+scene_path = "res://assets/default_pack/containers/pot.tscn"
+texture_overrides = [  ]
+albedo_color = Color( 1, 1, 1, 1 )
+mass = 400.0
+scale = Vector3( 1, 1, 1 )
+avg_point = Vector3( 0, 0, 0 )
+bounding_box = AABB( -7.985, -6.08, -8.092, 15.97, 12.148, 16.184 )
+collision_type = 0
+com_adjust = 0
+physics_material = ExtResource( 1 )
+collision_fast_sounds = ExtResource( 3 )
+collision_slow_sounds = ExtResource( 4 )
+shakable = true

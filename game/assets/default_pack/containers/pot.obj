@@ -1,6 +1,6 @@
 # Blender v2.76 (sub 0) OBJ File: 'StylizedVaseAndPots.blend'
 # www.blender.org
-mtllib Pot.mtl
+mtllib pot.mtl
 o StylizedPot-01_Cylinder.001
 v 0.000000 -0.000505 -0.459729
 v 0.000000 0.932456 -0.447181

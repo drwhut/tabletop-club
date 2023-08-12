@@ -1,0 +1,30 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://assets/default_physics_material.tres" type="PhysicsMaterial" id=1]
+[ext_resource path="res://assets/entry/entry_container.gd" type="Script" id=2]
+[ext_resource path="res://sounds/soft/soft_slow_sounds.tres" type="Resource" id=3]
+[ext_resource path="res://sounds/soft/soft_fast_sounds.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 2 )
+id = "Purse"
+desc = ""
+pack = "TabletopClub"
+type = "containers"
+author = "yd"
+license = "CC0"
+modified_by = "Benjamin 'drwhut' Beddows"
+url = "https://opengameart.org/content/bag-of-coins"
+scene_path = "res://assets/default_pack/containers/purse_full.tscn"
+texture_overrides = [  ]
+albedo_color = Color( 1, 1, 1, 1 )
+mass = 10.0
+scale = Vector3( 1, 1, 1 )
+avg_point = Vector3( 0, 0, 0 )
+bounding_box = AABB( -5.381, -4.754, -3.918, 10.555, 9.494, 7.949 )
+collision_type = 0
+com_adjust = 0
+physics_material = ExtResource( 1 )
+collision_fast_sounds = ExtResource( 4 )
+collision_slow_sounds = ExtResource( 3 )
+shakable = true
