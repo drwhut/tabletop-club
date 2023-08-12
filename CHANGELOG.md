@@ -48,6 +48,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   no longer has to be imported every launch.
 - All textures within the 'TabletopClub' asset pack are now bundled in a
   compressed format, leading to less video memory usage.
+- The collision shapes of the following objects have been simplified:
+  'Chess Board', 'Pot', 'Purse'.
+- The centre-of-mass of the following objects has been adjusted: 'Purse'.
 
 #### Project
 
@@ -62,8 +65,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### UI
 
 - Changed the default window size from 1024x600 to 1920x1080.
-- The importing process is now shown as an independent panel instead of within
-  the loading screen.
+- The importing process is now shown as an independent panel in the main menu
+  instead of within the loading screen.
 
 ### Removed
 
