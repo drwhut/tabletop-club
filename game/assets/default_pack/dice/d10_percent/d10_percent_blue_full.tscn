@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/default_pack/dice/d10_percent/d10_percent_blue.gltf" type="PackedScene" id=1]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( 0.317224, 0.0636681, 0.934172, 0.616756, 0.513539, 0.577182, -0.601864, 0.973704, 0, -0.317397, -0.0638588, 0.934172, 0.601692, -0.973704, 0, 0.894742, 0.420515, 0, 0.616756, 0.513539, -0.577365, 0.317224, 0.0636681, -0.934172, -0.317397, -0.0638588, -0.934172, -0.616929, -0.51373, -0.577365, -0.89474, -0.420705, 0, -0.616929, -0.51373, 0.577182 )
+
+[node name="D10PercentBlue" type="RigidBody"]
+
+[node name="D10PBlueCollisionShape" parent="." instance=ExtResource( 1 )]
+shape = SubResource( 1 )

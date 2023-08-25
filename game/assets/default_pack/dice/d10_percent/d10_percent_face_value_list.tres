@@ -1,0 +1,129 @@
+[gd_resource type="Resource" load_steps=24 format=2]
+
+[ext_resource path="res://assets/dice_face_value_list.gd" type="Script" id=1]
+[ext_resource path="res://assets/dice_face_value.gd" type="Script" id=2]
+[ext_resource path="res://assets/custom_value.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 0
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+normal = Vector3( 0.342, 0.94, 0 )
+value = SubResource( 3 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 10
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+normal = Vector3( 0.116, -0.659, -0.743 )
+value = SubResource( 4 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 20
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 2 )
+normal = Vector3( -0.86, 0.199, 0.469 )
+value = SubResource( 5 )
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 30
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 2 )
+normal = Vector3( 0.86, -0.199, 0.469 )
+value = SubResource( 7 )
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 40
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 2 )
+normal = Vector3( -0.116, 0.659, -0.743 )
+value = SubResource( 9 )
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 50
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 2 )
+normal = Vector3( 0.116, -0.659, 0.743 )
+value = SubResource( 11 )
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 60
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 2 )
+normal = Vector3( -0.86, 0.199, -0.469 )
+value = SubResource( 13 )
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 70
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 2 )
+normal = Vector3( 0.86, -0.199, -0.469 )
+value = SubResource( 15 )
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 80
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 2 )
+normal = Vector3( -0.116, 0.659, 0.743 )
+value = SubResource( 17 )
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 90
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 2 )
+normal = Vector3( -0.342, -0.94, 0 )
+value = SubResource( 19 )
+
+[resource]
+script = ExtResource( 1 )
+face_value_list = [ SubResource( 1 ), SubResource( 2 ), SubResource( 6 ), SubResource( 8 ), SubResource( 10 ), SubResource( 12 ), SubResource( 14 ), SubResource( 16 ), SubResource( 18 ), SubResource( 20 ) ]

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://assets/entry/entry_dice.gd" type="Script" id=1]
+[ext_resource path="res://assets/default_physics_material.tres" type="PhysicsMaterial" id=2]
+[ext_resource path="res://sounds/dice/dice_table_fast_sounds.tres" type="Resource" id=3]
+[ext_resource path="res://assets/default_pack/dice/d4/d4_face_value_list.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+id = "d4 (Pink)"
+desc = "A 4-sided die."
+pack = "TabletopClub"
+type = "dice"
+author = "facehunter2003"
+license = "CC0"
+modified_by = "Benjamin 'drwhut' Beddows"
+url = "https://opengameart.org/content/low-poly-3d-dice"
+scene_path = "res://assets/default_pack/dice/d4/d4_white_full.tscn"
+texture_overrides = [  ]
+albedo_color = Color( 0.921569, 0.337255, 0.952941, 1 )
+mass = 0.204
+scale = Vector3( 1, 1, 1 )
+avg_point = Vector3( 0, 0, 0 )
+bounding_box = AABB( -0.636, -0.45, -1.102, 1.909, 1.8, 2.205 )
+collision_type = 0
+com_adjust = 0
+physics_material = ExtResource( 2 )
+collision_fast_sounds = ExtResource( 3 )
+face_value_list = ExtResource( 4 )

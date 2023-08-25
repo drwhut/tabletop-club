@@ -1,0 +1,107 @@
+[gd_resource type="Resource" load_steps=20 format=2]
+
+[ext_resource path="res://assets/default_physics_material.tres" type="PhysicsMaterial" id=1]
+[ext_resource path="res://assets/entry/entry_dice.gd" type="Script" id=2]
+[ext_resource path="res://assets/custom_value.gd" type="Script" id=3]
+[ext_resource path="res://sounds/dice/dice_table_fast_sounds.tres" type="Resource" id=4]
+[ext_resource path="res://assets/dice_face_value.gd" type="Script" id=5]
+[ext_resource path="res://assets/dice_face_value_list.gd" type="Script" id=6]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 1
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 5 )
+normal = Vector3( -1, 0, 0 )
+value = SubResource( 1 )
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 2
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 5 )
+normal = Vector3( 0, 0, -1 )
+value = SubResource( 3 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 3
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 5 )
+normal = Vector3( 0, -1, 0 )
+value = SubResource( 5 )
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 4
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 5 )
+normal = Vector3( 0, 1, 0 )
+value = SubResource( 7 )
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 5
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 5 )
+normal = Vector3( 0, 0, 1 )
+value = SubResource( 9 )
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 6
+value_float = 0.0
+value_string = ""
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 5 )
+normal = Vector3( 1, 0, 0 )
+value = SubResource( 11 )
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 6 )
+face_value_list = [ SubResource( 2 ), SubResource( 4 ), SubResource( 6 ), SubResource( 8 ), SubResource( 10 ), SubResource( 12 ) ]
+
+[resource]
+script = ExtResource( 2 )
+id = "d6 (Traditional)"
+desc = "A 6-sided die."
+pack = "TabletopClub"
+type = "dice"
+author = "Arthur @ opengameart.org"
+license = "CC-BY-SA 3.0"
+modified_by = ""
+url = "https://opengameart.org/content/dice-0"
+scene_path = "res://assets/default_pack/dice/d6/d6_traditional_full.tscn"
+texture_overrides = [  ]
+albedo_color = Color( 1, 1, 1, 1 )
+mass = 0.306
+scale = Vector3( 1, 1, 1 )
+avg_point = Vector3( 0, 0, 0 )
+bounding_box = AABB( -0.8, -0.8, -0.8, 1.6, 1.6, 1.6 )
+collision_type = 0
+com_adjust = 0
+physics_material = ExtResource( 1 )
+collision_fast_sounds = ExtResource( 4 )
+face_value_list = SubResource( 13 )
