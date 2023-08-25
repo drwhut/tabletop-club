@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_audio.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "George Street Shuffle - Kevin MacLeod"
+desc = "Nice little non-offending light jazz piece for vibes."
+pack = "TabletopClub"
+type = "music"
+author = "Kevin MacLeod"
+license = "CC-BY 4.0"
+modified_by = ""
+url = "https://filmmusic.io/song/3800-george-street-shuffle"
+audio_path = "res://assets/default_pack/music/kevin_macleod_george_street_shuffle.ogg"
+music = true

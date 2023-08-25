@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_audio.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "Hard Boiled - Kevin MacLeod"
+desc = "You're looking for the low-down, huh? That's going to take lettuce. You want the dope? the scoop? the skinny? Ten bucks a day plus expenses. No negotiations. I ain't no fourth-rate gumshoe - but a ducky shincracker like you already knew that... Out of curiosity, what's the word for people who overuse slang?"
+pack = "TabletopClub"
+type = "music"
+author = "Kevin MacLeod"
+license = "CC-BY 4.0"
+modified_by = ""
+url = "https://filmmusic.io/song/3857-hard-boiled"
+audio_path = "res://assets/default_pack/music/kevin_macleod_hard_boiled.ogg"
+music = true

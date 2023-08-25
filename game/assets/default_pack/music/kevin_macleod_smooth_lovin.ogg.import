@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kevin_macleod_smooth_lovin.ogg-13c050c6d88288c8e15fe84748ff255e.oggstr"
+
+[deps]
+
+source_file="res://assets/default_pack/music/kevin_macleod_smooth_lovin.ogg"
+dest_files=[ "res://.import/kevin_macleod_smooth_lovin.ogg-13c050c6d88288c8e15fe84748ff255e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

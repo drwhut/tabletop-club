@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_skybox.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "Space"
+desc = ""
+pack = "TabletopClub"
+type = "skyboxes"
+author = "kurtk84"
+license = "CC0"
+modified_by = ""
+url = "https://opengameart.org/content/space-skybox-1"
+texture_path = "res://assets/default_pack/skyboxes/space.jpg"
+energy = 1.0
+rotation = Vector3( 0, 0, 0 )

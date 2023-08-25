@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_audio.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "Smooth Lovin - Kevin MacLeod"
+desc = "This one got turned up to 11. I started producing this as a parody... then I really started liking it, so I guess it is a pastiche now? Oh, man... I wish there was an allowance for pastiche in copyright like there is for parody."
+pack = "TabletopClub"
+type = "music"
+author = "Kevin MacLeod"
+license = "CC-BY 4.0"
+modified_by = ""
+url = "https://filmmusic.io/song/4379-smooth-lovin"
+audio_path = "res://assets/default_pack/music/kevin_macleod_smooth_lovin.ogg"
+music = true

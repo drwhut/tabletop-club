@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kevin_macleod_backbay_lounge.ogg-49de3da4b0e0670c5c6f7615caaef7c8.oggstr"
+
+[deps]
+
+source_file="res://assets/default_pack/music/kevin_macleod_backbay_lounge.ogg"
+dest_files=[ "res://.import/kevin_macleod_backbay_lounge.ogg-49de3da4b0e0670c5c6f7615caaef7c8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

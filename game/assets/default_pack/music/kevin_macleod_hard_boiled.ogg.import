@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kevin_macleod_hard_boiled.ogg-bb4140450af678086c1010daa0628065.oggstr"
+
+[deps]
+
+source_file="res://assets/default_pack/music/kevin_macleod_hard_boiled.ogg"
+dest_files=[ "res://.import/kevin_macleod_hard_boiled.ogg-bb4140450af678086c1010daa0628065.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

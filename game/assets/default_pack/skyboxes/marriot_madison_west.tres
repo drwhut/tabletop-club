@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_skybox.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "Marriott Madison West"
+desc = ""
+pack = "TabletopClub"
+type = "skyboxes"
+author = "Emil 'Humus' Persson"
+license = "CC-BY 3.0"
+modified_by = ""
+url = "https://opengameart.org/content/indoors-skyboxes"
+texture_path = "res://assets/default_pack/skyboxes/marriott_madison_west.jpg"
+energy = 1.0
+rotation = Vector3( 0, 0, 0 )

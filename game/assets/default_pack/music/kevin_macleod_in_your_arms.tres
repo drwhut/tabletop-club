@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_audio.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "In Your Arms - Kevin MacLeod"
+desc = "A piece of music from a more elegant time, 1940. This is a beautiful slow piece that will make you want to pick up some champagne and go off slow dancing with people... or penguins. I like penguins. And now some searchable words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No Whammies."
+pack = "TabletopClub"
+type = "music"
+author = "Kevin MacLeod"
+license = "CC-BY 4.0"
+modified_by = ""
+url = "https://filmmusic.io/song/3906-in-your-arms"
+audio_path = "res://assets/default_pack/music/kevin_macleod_in_your_arms.ogg"
+music = true

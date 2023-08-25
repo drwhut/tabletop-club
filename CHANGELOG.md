@@ -49,8 +49,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All textures within the 'TabletopClub' asset pack are now bundled in a
   compressed format, leading to less video memory usage.
 - The collision shapes of the following objects have been simplified:
-  'Chess Board', 'Pot', 'Purse'.
-- The centre-of-mass of the following objects has been adjusted: 'Purse'.
+  'Chess Board', 'Pot', 'Purse', 'Radio'.
+- The centre-of-mass of the following objects has been adjusted: 'Purse',
+  'Gramophone', 'Radio'.
 
 #### Project
 

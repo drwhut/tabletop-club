@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_audio.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "Alarm"
+desc = "An alarm for alarming situations."
+pack = "TabletopClub"
+type = "sounds"
+author = "Frenchyboy"
+license = "CC0"
+modified_by = ""
+url = "https://opengameart.org/content/alarm-2"
+audio_path = "res://assets/default_pack/sounds/alarm.wav"
+music = false

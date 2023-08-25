@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_audio.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "Backbay Lounge - Kevin MacLeod"
+desc = "This is cool. You can walk into a dinner party, grab a glass of prosecco, kiss the host, then casually defuse a large bomb one second before the timer runs out. That level of cool. Maybe you're not that cool, but if you adopt this as your personal theme tune, people will THINK you're that cool."
+pack = "TabletopClub"
+type = "music"
+author = "Kevin MacLeod"
+license = "CC-BY 4.0"
+modified_by = ""
+url = "https://filmmusic.io/song/3408-backbay-lounge"
+audio_path = "res://assets/default_pack/music/kevin_macleod_backbay_lounge.ogg"
+music = true

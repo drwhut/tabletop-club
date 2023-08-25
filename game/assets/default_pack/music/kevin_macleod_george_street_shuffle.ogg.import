@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kevin_macleod_george_street_shuffle.ogg-c624d57e410616f9aa839093652bfbaa.oggstr"
+
+[deps]
+
+source_file="res://assets/default_pack/music/kevin_macleod_george_street_shuffle.ogg"
+dest_files=[ "res://.import/kevin_macleod_george_street_shuffle.ogg-c624d57e410616f9aa839093652bfbaa.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

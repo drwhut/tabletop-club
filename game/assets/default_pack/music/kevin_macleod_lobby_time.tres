@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_audio.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "Lobby Time - Kevin MacLeod"
+desc = "Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail from our cheerful bar staff (with a complimentary cheese and fruit plate before 5pm). We feature prime rib dinners every day that ends in a \\\"y\\\"! Remember to tip the bellhops at least 5 cents per bag. Enjoy your stay! This was written 2 years before it was published, because I didn't have a good enough upright bass sample to make it go."
+pack = "TabletopClub"
+type = "music"
+author = "Kevin MacLeod"
+license = "CC-BY 4.0"
+modified_by = ""
+url = "https://filmmusic.io/song/3986-lobby-time"
+audio_path = "res://assets/default_pack/music/kevin_macleod_lobby_time.ogg"
+music = true

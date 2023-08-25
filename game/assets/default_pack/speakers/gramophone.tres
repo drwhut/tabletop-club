@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://assets/entry/entry_scene.gd" type="Script" id=1]
+[ext_resource path="res://assets/default_physics_material.tres" type="PhysicsMaterial" id=2]
+[ext_resource path="res://sounds/metal_heavy/metal_heavy_slow_sounds.tres" type="Resource" id=3]
+[ext_resource path="res://sounds/metal_heavy/metal_heavy_fast_sounds.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+id = "Gramophone"
+desc = "A low-poly vintage gramophone."
+pack = "TabletopClub"
+type = "speakers"
+author = "RayB2"
+license = "CC0"
+modified_by = "Benjamin 'drwhut' Beddows"
+url = "https://opengameart.org/content/vintage-devices"
+scene_path = "res://assets/default_pack/speakers/gramophone_full.tscn"
+texture_overrides = [  ]
+albedo_color = Color( 1, 1, 1, 1 )
+mass = 7000.0
+scale = Vector3( 1, 1, 1 )
+avg_point = Vector3( 0, 0, 0 )
+bounding_box = AABB( -9.693, -5.765, -10.47, 22.321, 32.779, 25.035 )
+collision_type = 0
+com_adjust = 0
+physics_material = ExtResource( 2 )
+collision_fast_sounds = ExtResource( 4 )
+collision_slow_sounds = ExtResource( 3 )

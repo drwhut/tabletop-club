@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kevin_macleod_spy_glass.ogg-8fc7a1f6064b6f9abd0e7eb13de62b20.oggstr"
+
+[deps]
+
+source_file="res://assets/default_pack/music/kevin_macleod_spy_glass.ogg"
+dest_files=[ "res://.import/kevin_macleod_spy_glass.ogg-8fc7a1f6064b6f9abd0e7eb13de62b20.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

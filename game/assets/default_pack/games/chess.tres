@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_save.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "Chess"
+desc = "Standard Chess for two players."
+pack = "TabletopClub"
+type = "games"
+author = ""
+license = ""
+modified_by = ""
+url = ""
+save_file_path = "res://assets/default_pack/games/chess.tc"

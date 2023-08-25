@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/radio.obj-f643575ad2466c42f309bcb479931939.mesh"
+
+[deps]
+
+files=[ "res://.import/radio.obj-f643575ad2466c42f309bcb479931939.mesh" ]
+
+source_file="res://assets/default_pack/timers/radio.obj"
+dest_files=[ "res://.import/radio.obj-f643575ad2466c42f309bcb479931939.mesh", "res://.import/radio.obj-f643575ad2466c42f309bcb479931939.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 3, 3, 3 )
+offset_mesh=Vector3( -0.324, -3.75, -0.095 )
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kevin_macleod_lobby_time.ogg-ba601f02de5bf6654ab2ea24a36cce5c.oggstr"
+
+[deps]
+
+source_file="res://assets/default_pack/music/kevin_macleod_lobby_time.ogg"
+dest_files=[ "res://.import/kevin_macleod_lobby_time.ogg-ba601f02de5bf6654ab2ea24a36cce5c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

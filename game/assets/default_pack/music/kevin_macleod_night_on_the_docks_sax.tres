@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_audio.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "Night on the Docks - Sax - Kevin MacLeod"
+desc = "Sad and smooth; Think 1950's detective film."
+pack = "TabletopClub"
+type = "music"
+author = "Kevin MacLeod"
+license = "CC-BY 4.0"
+modified_by = ""
+url = "https://filmmusic.io/song/4129-night-on-the-docks---sax"
+audio_path = "res://assets/default_pack/music/kevin_macleod_night_on_the_docks_sax.ogg"
+music = true
