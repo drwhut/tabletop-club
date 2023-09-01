@@ -1,0 +1,40 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://assets/entry/entry_stackable.gd" type="Script" id=1]
+[ext_resource path="res://assets/default_physics_material.tres" type="PhysicsMaterial" id=2]
+[ext_resource path="res://assets/custom_value.gd" type="Script" id=3]
+[ext_resource path="res://sounds/chips/chip_table_slow_sounds.tres" type="Resource" id=4]
+[ext_resource path="res://assets/default_pack/tokens/null_value.tres" type="Resource" id=5]
+[ext_resource path="res://sounds/chips/chip_table_fast_sounds.tres" type="Resource" id=6]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+value_type = 1
+value_int = 0
+value_float = 0.0
+value_string = ""
+
+[resource]
+script = ExtResource( 1 )
+id = "D"
+desc = "A poker chip."
+pack = "TabletopClub"
+type = "tokens"
+author = "Benjamin 'drwhut' Beddows"
+license = "CC0"
+modified_by = ""
+url = ""
+scene_path = "res://assets/scenes/token_cylinder.tscn"
+texture_overrides = [ "res://assets/default_pack/tokens/poker/poker_dealer.png" ]
+albedo_color = Color( 1, 1, 1, 1 )
+mass = 15.0
+scale = Vector3( 4, 0.2, 4 )
+avg_point = Vector3( 0, 0, 0 )
+bounding_box = AABB( -2, -0.1, -2, 4, 0.2, 4 )
+collision_type = 0
+com_adjust = 0
+physics_material = ExtResource( 2 )
+collision_fast_sounds = ExtResource( 6 )
+collision_slow_sounds = ExtResource( 4 )
+user_suit = ExtResource( 5 )
+user_value = SubResource( 1 )

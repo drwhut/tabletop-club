@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://assets/entry/entry_scene.gd" type="Script" id=1]
+[ext_resource path="res://assets/default_physics_material.tres" type="PhysicsMaterial" id=2]
+[ext_resource path="res://sounds/generic/generic_fast_sounds.tres" type="Resource" id=3]
+[ext_resource path="res://sounds/generic/generic_slow_sounds.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+id = "Rook White"
+desc = ""
+pack = "TabletopClub"
+type = "pieces"
+author = "rehcub"
+license = "CC0"
+modified_by = "Benjamin 'drwhut' Beddows"
+url = "https://opengameart.org/content/chess-set-1"
+scene_path = "res://assets/default_pack/pieces/chess_rook_full.tscn"
+texture_overrides = [  ]
+albedo_color = Color( 1, 1, 1, 1 )
+mass = 1.0
+scale = Vector3( 1, 1, 1 )
+avg_point = Vector3( 0, 0, 0 )
+bounding_box = AABB( -1.363, -2.227, -1.363, 2.727, 4.454, 2.727 )
+collision_type = 0
+com_adjust = 0
+physics_material = ExtResource( 2 )
+collision_fast_sounds = ExtResource( 3 )
+collision_slow_sounds = ExtResource( 4 )

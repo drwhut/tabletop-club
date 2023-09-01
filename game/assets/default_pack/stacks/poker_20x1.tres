@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/entry/entry_collection.gd" type="Script" id=1]
+[ext_resource path="res://assets/default_pack/tokens/poker/poker_1.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+id = "20 x 1 Chips"
+desc = "A stack of 20 1-value chips."
+pack = "TabletopClub"
+type = "stacks"
+entry_list = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]

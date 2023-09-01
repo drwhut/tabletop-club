@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/entry/entry_template_text.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "Blank Page"
+desc = "There's nothing here…"
+pack = "TabletopClub"
+type = "templates"
+author = ""
+license = ""
+modified_by = ""
+url = ""
+template_path = "res://assets/default_pack/templates/blank_page.txt"

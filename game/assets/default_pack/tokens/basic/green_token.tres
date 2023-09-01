@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://assets/entry/entry_stackable.gd" type="Script" id=1]
+[ext_resource path="res://assets/default_physics_material.tres" type="PhysicsMaterial" id=2]
+[ext_resource path="res://sounds/chips/chip_table_slow_sounds.tres" type="Resource" id=3]
+[ext_resource path="res://sounds/chips/chip_table_fast_sounds.tres" type="Resource" id=4]
+[ext_resource path="res://assets/default_pack/tokens/null_value.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 1 )
+id = "Green"
+desc = "A green token."
+pack = "TabletopClub"
+type = "tokens"
+author = ""
+license = ""
+modified_by = ""
+url = ""
+scene_path = "res://assets/scenes/token_cube.tscn"
+texture_overrides = [  ]
+albedo_color = Color( 0.105882, 0.972549, 0.101961, 1 )
+mass = 0.1
+scale = Vector3( 1.5, 0.2, 1.5 )
+avg_point = Vector3( 0, 0, 0 )
+bounding_box = AABB( -0.75, -0.1, -0.75, 1.5, 0.2, 1.5 )
+collision_type = 0
+com_adjust = 0
+physics_material = ExtResource( 2 )
+collision_fast_sounds = ExtResource( 4 )
+collision_slow_sounds = ExtResource( 3 )
+user_suit = ExtResource( 5 )
+user_value = ExtResource( 5 )
