@@ -1,6 +1,6 @@
 # Blender v2.82 (sub 7) OBJ File: ''
 # www.blender.org
-mtllib Picnic Bench.mtl
+mtllib picnic_bench.mtl
 o Base
 v 61.099442 -41.555576 57.096710
 v 68.494804 -41.555576 57.096710

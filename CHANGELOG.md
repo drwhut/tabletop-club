@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The value of die faces can now be text, as well as numbers. (#209)
 - Can now use the normal vector of a die face when setting its value, instead of
   the X and Z rotation needed to make the face point upwards.
+- Both 'Picnic Bench' and 'Table' are now textured.
 
 #### Project
 
@@ -49,8 +50,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All textures within the 'TabletopClub' asset pack are now bundled in a
   compressed format, leading to less video memory usage.
 - The collision shapes of the following objects have been simplified:
-  'Chess Board', 'Bishop', 'King', 'Knight', 'Pawn', 'Pot', 'Purse', 'Queen',
-  'Radio', 'Rook'.
+  'Chess Board', 'Bishop', 'King', 'Knight', 'Pawn', 'Picnic Bench', 'Pot',
+  'Purse', 'Queen', 'Radio', 'Rook', 'Table'.
 - The centre-of-mass of the following objects has been adjusted: 'Purse',
   'Gramophone', 'Radio'.
 

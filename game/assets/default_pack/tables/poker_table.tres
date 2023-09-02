@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/entry/entry_table.gd" type="Script" id=2]
+
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.5
+
+[resource]
+script = ExtResource( 2 )
+id = "Table"
+desc = ""
+pack = "TabletopClub"
+type = "tables"
+author = "Velvet: Keith S., Wood: rubberduck @ opengameart.org"
+license = "Velvet: CC-BY 3.0, Wood: CC0"
+modified_by = "Benjamin 'drwhut' Beddows"
+url = "Velvet: https://opengameart.org/content/fabric-velvet-red-seamless-texture-with-normalmap, Wood: https://opengameart.org/content/50-free-textures-5-with-normalmaps"
+scene_path = "res://assets/default_pack/tables/poker_table.tscn"
+texture_overrides = [  ]
+albedo_color = Color( 1, 1, 1, 1 )
+mass = 1.0
+scale = Vector3( 1, 1, 1 )
+avg_point = Vector3( 0, 0, 0 )
+bounding_box = AABB( -83.322, -70.354, -52.832, 166.644, 76.069, 105.664 )
+collision_type = 0
+com_adjust = 0
+physics_material = SubResource( 1 )
+hand_transforms = [ Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 50 ), Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 8, -50 ), Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 8, 50 ), Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, -40, 8, -50 ), Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 8, 50 ), Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 40, 8, -50 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 80, 8, -28 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 80, 8, 28 ), Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, -80, 8, -28 ), Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, -80, 8, 28 ) ]
+paint_plane_transform = Transform( 152.4, 0, 0, 0, 1, 0, 0, 0, 91.4, 0, 0, 0 )

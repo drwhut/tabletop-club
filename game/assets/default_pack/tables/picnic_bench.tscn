@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/default_pack/tables/picnic_bench.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/default_pack/tables/picnic_bench_material.tres" type="Material" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 73.525, 2.4, 37.134 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 73.526, 2.36, 17.873 )
+
+[node name="PicnicBench" type="RigidBody"]
+
+[node name="CollisionShapeMain" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShapeMain"]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 2 )
+material/2 = ExtResource( 2 )
+material/3 = ExtResource( 2 )
+
+[node name="CollisionShapeFront" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33.2741, -56.4 )
+shape = SubResource( 2 )
+
+[node name="CollisionShapeBack" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33.274, 56.634 )
+shape = SubResource( 2 )

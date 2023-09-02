@@ -1,0 +1,7 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://assets/default_pack/tables/00_velvet.jpg" type="Texture" id=2]
+
+[resource]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 6, 2, 1 )

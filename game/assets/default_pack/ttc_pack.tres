@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=243 format=2]
+[gd_resource type="Resource" load_steps=245 format=2]
 
 [ext_resource path="res://assets/asset_pack.gd" type="Script" id=1]
 [ext_resource path="res://assets/default_pack/cards/hearts_01.tres" type="Resource" id=2]
@@ -242,6 +242,8 @@
 [ext_resource path="res://assets/default_pack/tokens/poker/poker_1.tres" type="Resource" id=240]
 [ext_resource path="res://assets/default_pack/tokens/domino/domino_0_4.tres" type="Resource" id=241]
 [ext_resource path="res://assets/default_pack/tokens/poker/poker_5.tres" type="Resource" id=242]
+[ext_resource path="res://assets/default_pack/tables/picnic_bench.tres" type="Resource" id=243]
+[ext_resource path="res://assets/default_pack/tables/poker_table.tres" type="Resource" id=244]
 
 [resource]
 script = ExtResource( 1 )
@@ -258,7 +260,7 @@ skyboxes = [ ExtResource( 167 ), ExtResource( 168 ), ExtResource( 171 ), ExtReso
 sounds = [ ExtResource( 175 ) ]
 speakers = [ ExtResource( 176 ) ]
 stacks = [ ExtResource( 198 ), ExtResource( 197 ), ExtResource( 196 ), ExtResource( 194 ), ExtResource( 195 ), ExtResource( 59 ) ]
-tables = [  ]
+tables = [ ExtResource( 243 ), ExtResource( 244 ) ]
 templates = [ ExtResource( 192 ), ExtResource( 193 ) ]
 timers = [ ExtResource( 177 ) ]
 tokens = [ ExtResource( 240 ), ExtResource( 207 ), ExtResource( 210 ), ExtResource( 212 ), ExtResource( 242 ), ExtResource( 216 ), ExtResource( 237 ), ExtResource( 217 ), ExtResource( 238 ), ExtResource( 224 ), ExtResource( 218 ), ExtResource( 233 ), ExtResource( 231 ), ExtResource( 241 ), ExtResource( 211 ), ExtResource( 215 ), ExtResource( 208 ), ExtResource( 203 ), ExtResource( 220 ), ExtResource( 200 ), ExtResource( 229 ), ExtResource( 227 ), ExtResource( 239 ), ExtResource( 213 ), ExtResource( 226 ), ExtResource( 219 ), ExtResource( 201 ), ExtResource( 209 ), ExtResource( 230 ), ExtResource( 214 ), ExtResource( 228 ), ExtResource( 199 ), ExtResource( 202 ), ExtResource( 206 ), ExtResource( 235 ), ExtResource( 232 ), ExtResource( 221 ), ExtResource( 223 ), ExtResource( 225 ), ExtResource( 205 ), ExtResource( 234 ), ExtResource( 222 ), ExtResource( 204 ), ExtResource( 236 ) ]
