@@ -74,24 +74,7 @@ var _replaced_entries := []
 
 
 func _init():
-	# This works since arrays are passed by reference.
-	_type_dict = {
-		"boards": boards,
-		"cards": cards,
-		"containers": containers,
-		"dice": dice,
-		"games": games,
-		"music": music,
-		"pieces": pieces,
-		"skyboxes": skyboxes,
-		"sounds": sounds,
-		"speakers": speakers,
-		"stacks": stacks,
-		"tables": tables,
-		"templates": templates,
-		"timers": timers,
-		"tokens": tokens,
-	}
+	reset_dictionary()
 
 
 ## Add an entry to the asset pack under the given [code]type[/code].
@@ -304,6 +287,30 @@ func remove_entry(type: String, index: int, temp: bool = false) -> void:
 		else:
 			type_arr.remove(index)
 			print("%s: Removed %s/%s" % [id, type, entry_id])
+
+
+## Reset the internal type dictionary so that methods like [method get_all] work
+## as expected. This will need to be called if the type arrays are overwritten
+## manually, or if the pack was loaded from a resource file.
+func reset_dictionary() -> void:
+	# This works since arrays are passed by reference.
+	_type_dict = {
+		"boards": boards,
+		"cards": cards,
+		"containers": containers,
+		"dice": dice,
+		"games": games,
+		"music": music,
+		"pieces": pieces,
+		"skyboxes": skyboxes,
+		"sounds": sounds,
+		"speakers": speakers,
+		"stacks": stacks,
+		"tables": tables,
+		"templates": templates,
+		"timers": timers,
+		"tokens": tokens,
+	}
 
 
 func set_id(value: String) -> void:

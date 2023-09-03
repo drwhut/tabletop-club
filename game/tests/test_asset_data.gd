@@ -228,6 +228,60 @@ func test_asset_packs() -> void:
 	assert_true(pack.get_type("?????").empty())
 
 
+func test_default_asset_pack() -> void:
+	var ttc_pack := preload("res://assets/default_pack/ttc_pack.tres")
+	ttc_pack.reset_dictionary() # Loaded from a file. TODO: Test this separately.
+	
+	assert_eq(ttc_pack.id, "TabletopClub")
+	assert_true(ttc_pack.is_bundled())
+	
+	var type_dict := ttc_pack.get_all()
+	for type in type_dict:
+		var type_arr: Array = type_dict[type]
+		
+		# The default pack should contain at least one of each type of item.
+		assert_false(type_arr.empty())
+		
+		for entry_index in range(type_arr.size()):
+			var entry: AssetEntry = type_arr[entry_index]
+			
+			# Entry IDs should not be empty.
+			assert_false(entry.id.empty())
+			
+			# The entry should have the correct pack and type information.
+			assert_eq(entry.pack, "TabletopClub")
+			assert_eq(entry.type, type)
+			
+			# Entries must be in a sorted list (by ID, ascending).
+			if entry_index > 0:
+				var prev_entry: AssetEntry = type_arr[entry_index - 1]
+				assert_gt(entry.id, prev_entry.id)
+			
+			if entry is AssetEntryAudio:
+				assert_true(ResourceLoader.exists(entry.audio_path))
+			
+			if entry is AssetEntryCollection:
+				assert_false(entry.is_empty())
+				assert_false(entry.get_single_type().empty())
+			
+			if entry is AssetEntrySave:
+				# TODO: Re-enable once the save files have been converted.
+				pass #assert_true(ResourceLoader.exists(entry.save_file_path))
+			
+			if entry is AssetEntryScene:
+				assert_true(ResourceLoader.exists(entry.scene_path))
+				
+				for texture_path in entry.texture_overrides:
+					assert_true(ResourceLoader.exists(texture_path))
+			
+			if entry is AssetEntrySkybox:
+				assert_true(ResourceLoader.exists(entry.texture_path))
+			
+			if entry is AssetEntryTemplate:
+				# TODO: FIX!
+				pass #assert_file_exists(entry.template_path)
+
+
 var _asset_db_content_changed_flag = false
 
 func test_asset_db() -> void:

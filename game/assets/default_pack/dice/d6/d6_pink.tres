@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource( 2 )
-id = "d6 (Purple)"
+id = "d6 (Pink)"
 desc = "A 6-sided die."
 pack = "TabletopClub"
 type = "dice"
