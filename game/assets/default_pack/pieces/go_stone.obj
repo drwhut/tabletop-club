@@ -1,6 +1,6 @@
 # Blender v3.4.1 OBJ File: ''
 # www.blender.org
-mtllib Stone go_stone.mtl
+mtllib go_stone.mtl
 o Sphere
 v 0.000000 0.425007 -0.284701
 v 0.000000 0.113880 -1.062518
