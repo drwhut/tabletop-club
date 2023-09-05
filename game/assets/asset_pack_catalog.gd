@@ -250,11 +250,12 @@ func import_sub_dir(pack: AssetPack, sub_dir: String) -> void:
 			asset_entry.save_file_path = main_path
 		
 		elif asset_entry is AssetEntryScene:
-			# TODO: Fill out internal resource paths.
 			match sub_dir:
 				"cards":
-					type_env.type_catalog.setup_scene_entry(asset_entry, "",
-						GeoData.new(), main_path)
+					type_env.type_catalog.setup_scene_entry(asset_entry,
+							"res://assets/scenes/card.tscn",
+							preload("res://assets/scenes/card_geodata.tres"),
+							main_path)
 					
 					var back_face_name: String = \
 							type_env.type_config.get_value_by_matching(main_file,
@@ -262,11 +263,15 @@ func import_sub_dir(pack: AssetPack, sub_dir: String) -> void:
 					_set_card_back_face(asset_entry, type_env.type_catalog,
 							back_face_name)
 				"tokens/cube":
-					type_env.type_catalog.setup_scene_entry(asset_entry, "",
-						GeoData.new(), main_path)
+					type_env.type_catalog.setup_scene_entry(asset_entry,
+							"res://assets/scenes/token_cube.tscn",
+							preload("res://assets/scenes/token_geodata.tres"),
+							main_path)
 				"tokens/cylinder":
-					type_env.type_catalog.setup_scene_entry(asset_entry, "",
-						GeoData.new(), main_path)
+					type_env.type_catalog.setup_scene_entry(asset_entry,
+							"res://assets/scenes/token_cylinder.tscn",
+							preload("res://assets/scenes/token_geodata.tres"),
+							main_path)
 				_:
 					type_env.type_catalog.setup_scene_entry_custom(asset_entry,
 						main_file)

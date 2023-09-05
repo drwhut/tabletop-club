@@ -129,17 +129,17 @@ func test_individual_functions() -> void:
 	var test_card_path := "user://assets/%s/cards/test_card.png" % PACK_NAME
 	pack_catalog.import_sub_dir(pack, "cards")
 	
-	# TODO: When the card scene has actual GeoData, check the avg_point and
-	# bounding_box properties of all of the card entries (inc. children).
-	
 	assert_eq(pack.get_entry_count(), 1)
 	var test_card = pack.get_entry("cards", "Card 1")
 	assert_is(test_card, AssetEntryStackable)
 	assert_eq(test_card.id, "Card 1")
-	# TODO: Check test_card.scene_path.
+	assert_eq(test_card.scene_path, "res://assets/scenes/card.tscn")
 	assert_eq_deep(test_card.texture_overrides, [test_card_path,
 			black_texture_path])
 	assert_eq(test_card.scale, Vector3(6.0, 1.0, 8.0))
+	assert_eq(test_card.avg_point, Vector3.ZERO)
+	assert_eq(test_card.bounding_box, AABB(Vector3(-3.0, -0.01, -4.0),
+			Vector3(6.0, 0.02, 8.0)))
 	
 	var user_suit: CustomValue = test_card.user_suit
 	assert_eq(user_suit.get_value_variant(), 2.5)
@@ -152,9 +152,12 @@ func test_individual_functions() -> void:
 	
 	var card_2 = pack.get_entry("cards", "Card 2")
 	assert_is(card_2, AssetEntryStackable)
-	# TODO: Check the scene_path.
+	assert_eq(card_2.scene_path, "res://assets/scenes/card.tscn")
 	assert_eq_deep(card_2.texture_overrides, [test_card_path, black_texture_path])
 	assert_eq(card_2.scale, Vector3(6.0, 1.0, 8.0))
+	assert_eq(card_2.avg_point, Vector3.ZERO)
+	assert_eq(card_2.bounding_box, AABB(Vector3(-3.0, -0.01, -4.0),
+			Vector3(6.0, 0.02, 8.0)))
 	user_suit = card_2.user_suit
 	assert_eq(user_suit.get_value_variant(), "hey")
 	user_value = card_2.user_value
@@ -164,9 +167,12 @@ func test_individual_functions() -> void:
 	
 	var card_3 = pack.get_entry("cards", "Card 3")
 	assert_is(card_3, AssetEntryStackable)
-	# TODO: Check the scene_path.
+	assert_eq(card_3.scene_path, "res://assets/scenes/card.tscn")
 	assert_eq_deep(card_3.texture_overrides, [test_card_path, test_card_path])
 	assert_eq(card_3.scale, Vector3(6.0, 1.0, 8.0))
+	assert_eq(card_3.avg_point, Vector3.ZERO)
+	assert_eq(card_3.bounding_box, AABB(Vector3(-3.0, -0.01, -4.0),
+			Vector3(6.0, 0.02, 8.0)))
 	user_suit = card_3.user_suit
 	assert_eq(user_suit.get_value_variant(), 7)
 	user_value = card_3.user_value
@@ -176,9 +182,12 @@ func test_individual_functions() -> void:
 	
 	var card_4 = pack.get_entry("cards", "Card 4")
 	assert_is(card_4, AssetEntryStackable)
-	# TODO: Check the scene_path.
+	assert_eq(card_4.scene_path, "res://assets/scenes/card.tscn")
 	assert_eq_deep(card_4.texture_overrides, [test_card_path, black_texture_path])
 	assert_eq(card_4.scale, Vector3(5.0, 1.0, 8.0))
+	assert_eq(card_4.avg_point, Vector3.ZERO)
+	assert_eq(card_4.bounding_box, AABB(Vector3(-2.5, -0.01, -4.0),
+			Vector3(5.0, 0.02, 8.0)))
 	user_suit = card_4.user_suit
 	assert_eq(user_suit.get_value_variant(), "hey")
 	user_value = card_4.user_value
@@ -247,34 +256,49 @@ func test_full_import() -> void:
 	assert_eq(test_board.collision_slow_sounds,
 			preload("res://sounds/wood_heavy/wood_heavy_slow_sounds.tres"))
 	
-	# TODO: Check scene_path, avg_point, bounding_box, collision_sounds of
-	# 'cards' and 'tokens'.
+	# TODO: Check collision_sounds of 'cards' and 'tokens'.
 	
 	var black_texture_path := "user://assets/%s/cards/black_texture.png" % PACK_NAME
 	var test_card_path := "user://assets/%s/cards/test_card.png" % PACK_NAME
 	assert_eq(pack.cards.size(), 4)
 	var card_1: AssetEntryStackable = pack.cards[0]
 	assert_eq(card_1.id, "Card 1")
+	assert_eq(card_1.scene_path, "res://assets/scenes/card.tscn")
 	assert_eq_deep(card_1.texture_overrides, [test_card_path, black_texture_path])
 	assert_eq(card_1.scale, Vector3(6.0, 1.0, 8.0))
+	assert_eq(card_1.avg_point, Vector3.ZERO)
+	assert_eq(card_1.bounding_box, AABB(Vector3(-3.0, -0.01, -4.0),
+			Vector3(6.0, 0.02, 8.0)))
 	assert_eq(card_1.user_suit.get_value_variant(), 2.5)
 	assert_eq(card_1.user_value.get_value_variant(), 1)
 	var card_2: AssetEntryStackable = pack.cards[1]
 	assert_eq(card_2.id, "Card 2")
+	assert_eq(card_2.scene_path, "res://assets/scenes/card.tscn")
 	assert_eq_deep(card_2.texture_overrides, [test_card_path, black_texture_path])
 	assert_eq(card_2.scale, Vector3(6.0, 1.0, 8.0))
+	assert_eq(card_2.avg_point, Vector3.ZERO)
+	assert_eq(card_2.bounding_box, AABB(Vector3(-3.0, -0.01, -4.0),
+			Vector3(6.0, 0.02, 8.0)))
 	assert_eq(card_2.user_suit.get_value_variant(), "hey")
 	assert_eq(card_2.user_value.get_value_variant(), 2)
 	var card_3: AssetEntryStackable = pack.cards[2]
 	assert_eq(card_3.id, "Card 3")
+	assert_eq(card_3.scene_path, "res://assets/scenes/card.tscn")
 	assert_eq_deep(card_3.texture_overrides, [test_card_path, test_card_path])
 	assert_eq(card_3.scale, Vector3(6.0, 1.0, 8.0))
+	assert_eq(card_3.avg_point, Vector3.ZERO)
+	assert_eq(card_3.bounding_box, AABB(Vector3(-3.0, -0.01, -4.0),
+			Vector3(6.0, 0.02, 8.0)))
 	assert_eq(card_3.user_suit.get_value_variant(), 7)
 	assert_eq(card_3.user_value.get_value_variant(), 3)
 	var card_4: AssetEntryStackable = pack.cards[3]
 	assert_eq(card_4.id, "Card 4")
+	assert_eq(card_4.scene_path, "res://assets/scenes/card.tscn")
 	assert_eq_deep(card_4.texture_overrides, [test_card_path, black_texture_path])
 	assert_eq(card_4.scale, Vector3(5.0, 1.0, 8.0))
+	assert_eq(card_4.avg_point, Vector3.ZERO)
+	assert_eq(card_4.bounding_box, AABB(Vector3(-2.5, -0.01, -4.0),
+			Vector3(5.0, 0.02, 8.0)))
 	assert_eq(card_4.user_suit.get_value_variant(), "hey")
 	assert_eq(card_4.user_value.get_value_variant(), 4)
 	
@@ -700,34 +724,43 @@ func test_full_import() -> void:
 	assert_eq(pack.tokens.size(), 3)
 	var test_cube: AssetEntryStackable = pack.tokens[0]
 	assert_eq(test_cube.id, "Test Cube")
-	# TODO: Check 'scene_path'.
+	assert_eq(test_cube.scene_path, "res://assets/scenes/token_cube.tscn")
 	assert_eq_deep(test_cube.texture_overrides, [
 			"user://assets/%s/tokens/cube/cube_token.png" % PACK_NAME])
 	assert_eq(test_cube.albedo_color, Color.white)
 	assert_eq(test_cube.mass, 1.0)
 	assert_eq(test_cube.scale, Vector3.ONE)
+	assert_eq(test_cube.avg_point, Vector3.ZERO)
+	assert_eq(test_cube.bounding_box, AABB(Vector3(-0.5, -0.5, -0.5),
+			Vector3(1.0, 1.0, 1.0)))
 	assert_eq(test_cube.physics_material.bounce, 0.0)
 	assert_eq(test_cube.user_suit.get_value_variant(), "T")
 	assert_eq(test_cube.user_value.get_value_variant(), 5)
 	var test_cube_2: AssetEntryStackable = pack.tokens[1]
 	assert_eq(test_cube_2.id, "Test Cube 2")
-	# TODO: Check 'scene_path'.
+	assert_eq(test_cube_2.scene_path, "res://assets/scenes/token_cube.tscn")
 	assert_eq_deep(test_cube_2.texture_overrides, [
 			"user://assets/%s/tokens/cube/cube_token.png" % PACK_NAME])
 	assert_eq(test_cube_2.albedo_color, Color.white)
 	assert_eq(test_cube_2.mass, 1.0)
 	assert_eq(test_cube_2.scale, Vector3.ONE)
+	assert_eq(test_cube_2.avg_point, Vector3.ZERO)
+	assert_eq(test_cube_2.bounding_box, AABB(Vector3(-0.5, -0.5, -0.5),
+			Vector3(1.0, 1.0, 1.0)))
 	assert_eq(test_cube_2.physics_material.bounce, 0.0)
 	assert_eq(test_cube_2.user_suit.get_value_variant(), "T")
 	assert_eq(test_cube_2.user_value.get_value_variant(), null)
 	var cylinder_token: AssetEntryStackable = pack.tokens[2]
 	assert_eq(cylinder_token.id, "cylinder_token")
-	# TODO: Check 'scene_path'.
+	assert_eq(cylinder_token.scene_path, "res://assets/scenes/token_cylinder.tscn")
 	assert_eq_deep(cylinder_token.texture_overrides, [
 			"user://assets/%s/tokens/cylinder/cylinder_token.png" % PACK_NAME])
 	assert_eq(cylinder_token.albedo_color, Color.white)
 	assert_eq(cylinder_token.mass, 1.0)
 	assert_eq(cylinder_token.scale, Vector3.ONE)
+	assert_eq(cylinder_token.avg_point, Vector3.ZERO)
+	assert_eq(cylinder_token.bounding_box, AABB(Vector3(-0.5, -0.5, -0.5),
+			Vector3(1.0, 1.0, 1.0)))
 	assert_eq(cylinder_token.physics_material.bounce, 0.0)
 	assert_eq(cylinder_token.user_suit.get_value_variant(), null)
 	assert_eq(cylinder_token.user_value.get_value_variant(), null)

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/geo_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+vertex_count = 8
+vertex_sum = Vector3( 0, 0, 0 )
+bounding_box = AABB( -0.5, -0.01, -0.5, 1, 0.02, 1 )
