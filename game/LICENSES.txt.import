@@ -1,0 +1,13 @@
+[remap]
+
+importer="editor.text.file.plugin"
+type="Resource"
+path="res://.import/LICENSES.txt-f8fd1fbfeb303846065c7a6106b1016a.res"
+
+[deps]
+
+source_file="res://LICENSES.txt"
+dest_files=[ "res://.import/LICENSES.txt-f8fd1fbfeb303846065c7a6106b1016a.res" ]
+
+[params]
+

@@ -1,0 +1,13 @@
+[remap]
+
+importer="editor.text.file.plugin"
+type="Resource"
+path="res://.import/profanity_list.txt-f699b5c68b91151221b42bdf49bd861b.res"
+
+[deps]
+
+source_file="res://profanity_list.txt"
+dest_files=[ "res://.import/profanity_list.txt-f699b5c68b91151221b42bdf49bd861b.res" ]
+
+[params]
+

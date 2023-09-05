@@ -1,10 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://Scripts/Misc/ActualTextFile.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-text = "NOTE: The following list does NOT include assets that originate from asset
+NOTE: The following list does NOT include assets that originate from asset
 packs. To view details about such files, you can either look at the descriptions
 of the assets in-game, or examime the relevant config.cfg files in the asset pack
 directory.
@@ -286,4 +280,4 @@ directory.
 	Author: Godot Engine
 	License: MIT
 	URL: https://github.com/godotengine/webrtc-native
-"
+

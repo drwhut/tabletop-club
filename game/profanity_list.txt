@@ -1,10 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://Scripts/Misc/ActualTextFile.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-text = "2 girls 1 cup
+2 girls 1 cup
 2g1c
 4r5e
 5h1t
@@ -1706,4 +1700,4 @@ yiffy
 yobbo
 zibbi
 zoophilia
-zubb"
+zubb

@@ -288,8 +288,7 @@ func test_default_asset_pack() -> void:
 				assert_true(ResourceLoader.exists(entry.texture_path))
 			
 			if entry is AssetEntryTemplate:
-				# TODO: FIX!
-				pass #assert_file_exists(entry.template_path)
+				assert_true(ResourceLoader.exists(entry.template_path))
 
 
 var _asset_db_content_changed_flag = false

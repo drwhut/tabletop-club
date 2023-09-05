@@ -154,6 +154,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://util/dictionary_parser.gd"
 }, {
+"base": "Resource",
+"class": "EditorTextFile",
+"language": "GDScript",
+"path": "res://addons/editor_text_file/editor_text_file.gd"
+}, {
 "base": "Reference",
 "class": "ExternalDirectory",
 "language": "GDScript",
@@ -329,6 +334,7 @@ _global_script_class_icons={
 "DiceFaceValue": "",
 "DiceFaceValueList": "",
 "DictionaryParser": "",
+"EditorTextFile": "",
 "ExternalDirectory": "",
 "GenericPreview": "",
 "GeoData": "",
@@ -398,7 +404,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/editor_text_file/plugin.cfg", "res://addons/gut/plugin.cfg" )
 
 [gdnative]
 

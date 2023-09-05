@@ -1,10 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://Scripts/Misc/ActualTextFile.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-text = "Creative Commons Attribution-ShareAlike 4.0 International Public
+Creative Commons Attribution-ShareAlike 4.0 International Public
 License
 
 By exercising the Licensed Rights (defined below), You accept and agree
@@ -352,4 +346,4 @@ Section 8 -- Interpretation.
   d. Nothing in this Public License constitutes or may be interpreted
      as a limitation upon, or waiver of, any privileges and immunities
      that apply to the Licensor or You, including from the legal
-     processes of any jurisdiction or authority."
+     processes of any jurisdiction or authority.

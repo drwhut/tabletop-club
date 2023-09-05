@@ -1,0 +1,13 @@
+[remap]
+
+importer="editor.text.file.plugin"
+type="Resource"
+path="res://.import/blank_page.txt-3237e5761c3d984e237ab50ca5de7820.res"
+
+[deps]
+
+source_file="res://assets/default_pack/templates/blank_page.txt"
+dest_files=[ "res://.import/blank_page.txt-3237e5761c3d984e237ab50ca5de7820.res" ]
+
+[params]
+
