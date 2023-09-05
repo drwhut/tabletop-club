@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 class_name AssetEntry
-extends ResourceWithErrors
+extends Resource
 
 ## Base class for all of the entries in the AssetDB.
 ##

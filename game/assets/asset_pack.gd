@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 class_name AssetPack
-extends ResourceWithErrors
+extends Resource
 
 ## A collection of assets stored in the AssetDB.
 ##

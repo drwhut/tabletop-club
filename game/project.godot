@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/asset_catalog_interactive.gd"
 }, {
-"base": "ResourceWithErrors",
+"base": "Resource",
 "class": "AssetEntry",
 "language": "GDScript",
 "path": "res://assets/entry/asset_entry.gd"
@@ -99,7 +99,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/entry/entry_template_text.gd"
 }, {
-"base": "ResourceWithErrors",
+"base": "Resource",
 "class": "AssetPack",
 "language": "GDScript",
 "path": "res://assets/asset_pack.gd"
@@ -239,11 +239,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/UI/Previews/Preview.gd"
 }, {
-"base": "Resource",
-"class": "ResourceWithErrors",
-"language": "GDScript",
-"path": "res://resource_with_errors.gd"
-}, {
 "base": "Reference",
 "class": "SanityCheck",
 "language": "GDScript",
@@ -351,7 +346,6 @@ _global_script_class_icons={
 "PieceCache": "",
 "PieceContainer": "",
 "Preview": "",
-"ResourceWithErrors": "",
 "SanityCheck": "",
 "SaveDialog": "",
 "SpeakerPiece": "",
