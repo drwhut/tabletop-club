@@ -1234,43 +1234,36 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 					"shakable", false)
 		
 		elif type.begins_with("dice"):
-			var num_faces = 0
-			
-			if type.ends_with("d4"):
-				num_faces = 4
-			elif type.ends_with("d6"):
-				num_faces = 6
-			elif type.ends_with("d8"):
-				num_faces = 8
-			elif type.ends_with("d10"):
-				num_faces = 10
-			elif type.ends_with("d12"):
-				num_faces = 12
-			elif type.ends_with("d20"):
-				num_faces = 20
-			
 			var face_values: Dictionary = _get_file_config_value(config,
 					from.get_file(), "face_values", {})
 			
+			# Maps values (number) to Arrays of Vector3 (normals).
+			# Arrays will never be empty.
 			var face_values_entry = {}
 			if not face_values.empty():
-				if face_values.size() == num_faces:
-					for key in face_values:
-						if not (key is int or key is float):
-							_log_error("Key in face_values entry is not a number! (%s)" % str(key))
-							return ERR_INVALID_DATA
-						
-						var value = face_values[key]
+				for key in face_values:
+					if not (key is int or key is float):
+						_log_error("Key in face_values entry is not a number! (%s)" % str(key))
+						return ERR_INVALID_DATA
+					
+					# May be specified as a single Vector2 or an array.
+					# Auto-convert to array.
+					var values = face_values[key]
+					if not values is Array:
+						values = [values]
+					if len(values) == 0:
+						# Impossible value, remove (can't be rotated to).
+						continue
+
+					var entry_value := []
+					for value in values:
 						if not value is Vector2:
-							_log_error("Value in face_values entry is not a Vector2! (%s)" % str(value))
+							_log_error("Value in face_values entry is not a Vector2 or array of Vector2! (%s)" % str(value))
 							return ERR_INVALID_DATA
 						
 						var normal_vec = _precalculate_face_value_normal(value)
-						face_values_entry[key] = normal_vec
-				else:
-					_log_error("Number of entries for face_values (%d) does not match the number of faces (%d)!" %
-						[face_values.size(), num_faces])
-					return ERR_INVALID_DATA
+						entry_value.push_back(normal_vec)
+					face_values_entry[key] = entry_value
 			
 			entry["face_values"] = face_values_entry
 		
@@ -1662,37 +1655,24 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 					_log_error("'face_values' in entry is not a dictionary!")
 					return false
 				
-				var num_faces = 0
-				if type.ends_with("d4"):
-					num_faces = 4
-				elif type.ends_with("d6"):
-					num_faces = 6
-				elif type.ends_with("d8"):
-					num_faces = 8
-				elif type.ends_with("d10"):
-					num_faces = 10
-				elif type.ends_with("d12"):
-					num_faces = 12
-				elif type.ends_with("d20"):
-					num_faces = 20
-				
-				if value.size() != num_faces:
-					_log_error("'face_values' dictionary in entry is not the expected size (%d)!" % num_faces)
-					return false
-				
 				for element_key in value:
 					if not (typeof(element_key) == TYPE_INT or typeof(element_key) == TYPE_REAL):
 						_log_error("'face_values' key in entry is not a number!")
 						return false
 					
 					var element_value = value[element_key]
-					if typeof(element_value) != TYPE_VECTOR3:
-						_log_error("'face_values' value in entry is not a Vector3!")
+					if typeof(element_value) != TYPE_ARRAY:
+						_log_error("'face_values' value in entry is not an Array!")
 						return false
 					
-					if not is_equal_approx(element_value.length_squared(), 1.0):
-						_log_error("'face_values' vector in entry is not unit length!")
-						return false
+					for normal in element_value:
+						if typeof(normal) != TYPE_VECTOR3:
+							_log_error("'face_values' sub-value in entry is not a Vector3!")
+							return false
+						
+						if not is_equal_approx(normal.length_squared(), 1.0):
+							_log_error("'face_values' vector in entry is not unit length!")
+							return false
 			"hands":
 				if typeof(value) != TYPE_ARRAY:
 					_log_error("'hands' in entry is not an array!")

@@ -40,11 +40,12 @@ func get_face_value() -> float:
 	var max_dot = -1.0
 	var closest_value = 0
 	for value in face_values:
-		var normal = face_values[value]
-		var dot = transform.basis.xform(normal).dot(Vector3.UP)
-		if dot > max_dot:
-			max_dot = dot
-			closest_value = value
+		var normals: Array = face_values[value]
+		for normal in normals:
+			var dot = transform.basis.xform(normal).dot(Vector3.UP)
+			if dot > max_dot:
+				max_dot = dot
+				closest_value = value
 	
 	return closest_value
 

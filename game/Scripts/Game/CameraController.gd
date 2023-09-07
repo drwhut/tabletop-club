@@ -2535,7 +2535,7 @@ func _on_SetDiceValueButton_pressed():
 			if not face_value_dict.has(value_to_set):
 				continue
 			
-			var face_value_normal: Vector3 = face_value_dict[value_to_set]
+			var face_value_normal: Vector3 = face_value_dict[value_to_set][0]
 			
 			var rotation_quat: Quat
 			if face_value_normal.is_equal_approx(Vector3.UP):

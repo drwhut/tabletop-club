@@ -112,7 +112,7 @@ orientation in the :ref:`config-cfg` file, using the ``face_values`` property:
    face_values = {
 
       ; This is the format of an entry in face_values:
-      ; A number, followed by a semi-colon, followed by a Vector2, with two
+      ; A number, followed by a semi-colon, followed by a Vector2 (or list of Vector2s). Each Vector2 has two
       ; numbers inside, followed by a comma if it is not the last entry.
       1: Vector2(0.0, 0.0),
 
@@ -136,6 +136,7 @@ dice. The total will be shown at the top of the context menu.
 If ``face_values`` is not configured, the dice will always report ``0`` as its
 value.
 
+If the same value needs to be present on multiple faces, a list may be specified rather than a single Vector2, as so:  ``-1: [Vector2(0.0, 0.0), Vector2(180.0, 0.0)]``
 
 .. _object-type-piece:
 
