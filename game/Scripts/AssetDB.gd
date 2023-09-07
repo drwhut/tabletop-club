@@ -1665,6 +1665,10 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 						_log_error("'face_values' value in entry is not an Array!")
 						return false
 					
+					if len(element_value) == 0:
+						_log_error("'face_values' value in entry is empty!")
+						return false
+					
 					for normal in element_value:
 						if typeof(normal) != TYPE_VECTOR3:
 							_log_error("'face_values' sub-value in entry is not a Vector3!")
