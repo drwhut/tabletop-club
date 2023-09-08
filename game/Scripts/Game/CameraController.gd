@@ -1256,10 +1256,14 @@ func _popup_piece_context_menu() -> void:
 	prev_num_items = _piece_context_menu.get_item_count()
 	
 	if _inheritance_has(inheritance, "Dice"):
-		var total = 0.0
-		var available_values = []
+		var single_dice_value := ""
+		var total := 0.0
+		var available_values := []
 		for dice in _selected_pieces:
-			total += dice.get_face_value()
+			var value: String = dice.get_face_value()
+			single_dice_value = value
+			if value.is_valid_float():
+				total += float(value)
 			
 			var face_value_dict: Dictionary = dice.piece_entry["face_values"]
 			for possible_value in face_value_dict.keys():
@@ -1267,13 +1271,21 @@ func _popup_piece_context_menu() -> void:
 					available_values.append(possible_value)
 		available_values.sort()
 		
-		var is_int = (round(total) == total)
-		if is_int:
-			_piece_context_menu.add_item(tr("Total: %d") % total)
+		if len(_selected_pieces) == 1:
+			# If there's a single piece, we should show value text (if any).
+			# (There are various symbol dice that benefit, i.e. Zombie Dice)
+			if single_dice_value == "":
+				_piece_context_menu.add_item(tr("Value: (None)"))
+			else:
+				_piece_context_menu.add_item(tr("Value: %s") % single_dice_value)
 		else:
-			_piece_context_menu.add_item(tr("Total: %f") % total)
+			var is_int = (round(total) == total)
+			if is_int:
+				_piece_context_menu.add_item(tr("Total: %d") % total)
+			else:
+				_piece_context_menu.add_item(tr("Total: %f") % total)
 		
-		var prev_value = 1
+		var prev_value := single_dice_value
 		if _dice_value_button.selected >= 0:
 			prev_value = _dice_value_button.get_item_metadata(
 					_dice_value_button.selected)

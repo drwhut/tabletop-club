@@ -1237,34 +1237,33 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 			var face_values: Dictionary = _get_file_config_value(config,
 					from.get_file(), "face_values", {})
 			
-			# Maps values (number) to Arrays of Vector3 (normals).
+			# Maps values (strings) to Arrays of Vector3 (normals).
 			# Arrays will never be empty.
 			var face_values_entry = {}
 			if not face_values.empty():
 				for key in face_values:
-					if not (key is int or key is float):
-						_log_error("Key in face_values entry is not a number! (%s)" % str(key))
-						return ERR_INVALID_DATA
-					
-					# May be specified as a single Vector2 or an array.
-					# Auto-convert to array.
-					var values = face_values[key]
-					if not values is Array:
-						values = [values]
-					if len(values) == 0:
-						# Impossible value, remove (can't be rotated to).
-						continue
-
-					var entry_value := []
-					for value in values:
-						if not value is Vector2:
-							_log_error("Value in face_values entry is not a Vector2 or array of Vector2! (%s)" % str(value))
+					var value = face_values[key]
+					# Figure out 0.2.0 A:V versus 0.1.x V:A
+					var fv_angle: Vector2
+					var fv_value: String
+					if key is Vector2:
+						# key is known so don't check it
+						fv_angle = key
+						fv_value = str(value)
+					else:
+						if not (key is int or key is float):
+							_log_error("Old-style key in face_values entry is not a number! (%s)" % str(key))
 							return ERR_INVALID_DATA
-						
-						var normal_vec = _precalculate_face_value_normal(value)
-						entry_value.push_back(normal_vec)
-					face_values_entry[key] = entry_value
-			
+						if not value is Vector2:
+							_log_error("Old-style value in face_values entry is not a Vector2! (%s)" % str(value))
+							return ERR_INVALID_DATA
+						fv_value = str(key)
+						fv_angle = value
+
+					if not fv_value in face_values_entry:
+						face_values_entry[fv_value] = []
+					face_values_entry[fv_value].append(_precalculate_face_value_normal(fv_angle))
+
 			entry["face_values"] = face_values_entry
 		
 		if type == "cards" or type.begins_with("tokens"):
@@ -1656,8 +1655,8 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 					return false
 				
 				for element_key in value:
-					if not (typeof(element_key) == TYPE_INT or typeof(element_key) == TYPE_REAL):
-						_log_error("'face_values' key in entry is not a number!")
+					if typeof(element_key) != TYPE_STRING:
+						_log_error("'face_values' key in entry is not a string!")
 						return false
 					
 					var element_value = value[element_key]
