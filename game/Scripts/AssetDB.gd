@@ -1234,12 +1234,31 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 					"shakable", false)
 		
 		elif type.begins_with("dice"):
+			var num_faces = 0
+			
+			if type.ends_with("d4"):
+				num_faces = 4
+			elif type.ends_with("d6"):
+				num_faces = 6
+			elif type.ends_with("d8"):
+				num_faces = 8
+			elif type.ends_with("d10"):
+				num_faces = 10
+			elif type.ends_with("d12"):
+				num_faces = 12
+			elif type.ends_with("d20"):
+				num_faces = 20
+			
 			var face_values: Dictionary = _get_file_config_value(config,
 					from.get_file(), "face_values", {})
 			
 			# Maps values (strings) to Arrays of Vector3 (normals).
 			# Arrays will never be empty.
-			var face_values_entry = {}
+			var face_values_entry := {}
+
+			# Total normals to check against faces
+			var num_normals := 0
+
 			if not face_values.empty():
 				for key in face_values:
 					var value = face_values[key]
@@ -1248,6 +1267,10 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 					var fv_value: String
 					if key is Vector2:
 						# key is known so don't check it
+						if not ((value == null) or value is int or value is float or value is String):
+							# this is more about 0.2.0 compat (the data is stringified anyway)
+							_log_error("New-style value in face_values entry is not a number, string, or null! (%s)" % str(key))
+							return ERR_INVALID_DATA
 						fv_angle = key
 						fv_value = str(value)
 					else:
@@ -1259,12 +1282,16 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 							return ERR_INVALID_DATA
 						fv_value = str(key)
 						fv_angle = value
-
+					
 					if not fv_value in face_values_entry:
 						face_values_entry[fv_value] = []
 					face_values_entry[fv_value].append(_precalculate_face_value_normal(fv_angle))
-
+					num_normals += 1
+			
 			entry["face_values"] = face_values_entry
+			
+			if num_normals != num_faces:
+				_log_warning("face_values describes less normals (%d) than the dice should have faces (%d)" % [num_normals, num_faces])
 		
 		if type == "cards" or type.begins_with("tokens"):
 			# If we use null as a default value, ConfigFile will throw an error

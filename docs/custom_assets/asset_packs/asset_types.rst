@@ -112,8 +112,8 @@ orientation in the :ref:`config-cfg` file, using the ``face_values`` property:
    face_values = {
 
       ; This is the format of an entry in face_values:
-      ; A number, followed by a semi-colon, followed by a Vector2 (or list of Vector2s). Each Vector2 has two
-      ; numbers inside, followed by a comma if it is not the last entry.
+      ; A number, followed by a semi-colon, followed by a Vector2. Each Vector2
+      ; has two numbers inside, followed by a comma if it is not the last entry.
       1: Vector2(0.0, 0.0),
 
       ; The two numbers inside the Vector2 correspond to the rotation in the
@@ -126,7 +126,12 @@ orientation in the :ref:`config-cfg` file, using the ``face_values`` property:
       3: Vector2(-90.0, 0.0),
       4: Vector2(90.0, 0.0),
       5: Vector2(0.0, -90.0),
-      6: Vector2(180.0, 0.0)
+
+      ; Alternatively, the Vector2 and the number may swap places.
+      ; This allows multiple rotations with the same value.
+      ; Values given this way may be null, numbers, or strings.
+      ; Values that can't be parsed as numbers are totalled as 0.
+      Vector2(180.0, 0.0): "6"
    }
 
 If the face values are configured correctly, then the player will easily be able
@@ -135,8 +140,6 @@ dice. The total will be shown at the top of the context menu.
 
 If ``face_values`` is not configured, the dice will always report ``0`` as its
 value.
-
-If the same value needs to be present on multiple faces, a list may be specified rather than a single Vector2, as so:  ``-1: [Vector2(0.0, 0.0), Vector2(180.0, 0.0)]``
 
 .. _object-type-piece:
 
