@@ -99,10 +99,10 @@ func add_entry(type: String, entry: AssetEntry) -> void:
 					print("%s: Temporarily replaced %s/%s" % [id, type, entry.id])
 					return
 				else:
-					push_error("Cannot replace one temporary entry with another")
+					push_error("Cannot replace temporary entry '%s' with another temporary entry" % entry.id)
 					return
 			else:
-				push_error("Cannot add entry that already exists")
+				push_error("Cannot add entry '%s' to pack, ID already exists" % entry.id)
 				return
 	
 	# Exported arrays share the same reference if they are created empty, so we
@@ -184,12 +184,12 @@ func get_entry(type: String, entry_id: String) -> AssetEntry:
 	test_entry.id = entry_id
 	var index := _bsearch_index(type_arr, test_entry)
 	if index >= type_arr.size():
-		push_error("Entry does not exist in pack")
+		push_error("Entry '%s' does not exist in pack '%s'" % [entry_id, id])
 		return null
 	
 	test_entry = type_arr[index]
 	if test_entry.id != entry_id:
-		push_error("Entry does not exist in pack")
+		push_error("Entry '%s' does not exist in pack '%s'" % [entry_id, id])
 		return null
 	
 	return test_entry
@@ -260,12 +260,12 @@ func is_empty() -> bool:
 ## separate array until [method clear_temp_entries] is called.
 func remove_entry(type: String, index: int, temp: bool = false) -> void:
 	if index < 0:
-		push_error("Invalid index %d" % index)
+		push_error("Invalid index '%d'" % index)
 		return
 	
 	var type_arr := get_type(type)
 	if index >= type_arr.size():
-		push_error("Invalid index %d (size = %d)" % [index, type_arr.size()])
+		push_error("Invalid index '%d' (size = %d)" % [index, type_arr.size()])
 		return
 	
 	var entry_to_remove: AssetEntry = type_arr[index]
@@ -277,7 +277,7 @@ func remove_entry(type: String, index: int, temp: bool = false) -> void:
 			type_arr.remove(index)
 			print("%s: Temporarily removed %s/%s" % [id, type, entry_id])
 		else:
-			push_error("Cannot temporarily remove temporary entry")
+			push_error("Cannot temporarily remove temporary entry '%s'" % entry_id)
 			return
 	else:
 		var replaced_entry := _find_replaced_entry(type, entry_id)
@@ -321,7 +321,7 @@ func set_id(value: String) -> void:
 		return
 	
 	if not value.is_valid_filename():
-		push_error("Invalid pack ID")
+		push_error("Pack ID '%s' is invalid" % value)
 		return
 	
 	id = value
@@ -335,7 +335,7 @@ func set_name(value: String) -> void:
 		return
 	
 	if not value.is_valid_filename():
-		push_error("Invalid pack name")
+		push_error("Pack name '%s' is invalid" % value)
 		return
 	
 	name = value

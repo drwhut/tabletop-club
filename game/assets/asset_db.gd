@@ -90,13 +90,13 @@ func get_entry(entry_path: String) -> AssetEntry:
 	push_warning("Entry '%s' was not in the path cache, finding manually" % entry_path)
 	var pack_split := entry_path.split("/", false, 1)
 	if pack_split.size() != 2:
-		push_error("Invalid entry path")
+		push_error("Entry path '%s' is invalid" % entry_path)
 		return null
 	
 	var pack_id := pack_split[0]
 	var entry_id_split := pack_split[1].rsplit("/", false, 1)
 	if entry_id_split.size() != 2:
-		push_error("Invalid entry path")
+		push_error("Entry path '%s' is invalid" % entry_path)
 		return null
 	
 	var type := entry_id_split[0]
@@ -121,7 +121,7 @@ func get_entry_count() -> int:
 func get_pack(pack_id: String) -> AssetPack:
 	var index := _find_pack_index(pack_id)
 	if index < 0:
-		push_error("Pack '%s' does not exist in AssetDB" % pack_id)
+		push_error("Pack '%s' does not exist in the AssetDB" % pack_id)
 		return null
 	
 	return _packs[index]
@@ -143,7 +143,7 @@ func is_path_in_cache(entry_path: String) -> bool:
 func remove_pack(pack_id: String) -> void:
 	var index := _find_pack_index(pack_id)
 	if index < 0:
-		push_error("Pack '%s' does not exist in the AssetDB." % index)
+		push_error("Pack '%s' does not exist in the AssetDB" % pack_id)
 		return
 	
 	_packs.remove(index)

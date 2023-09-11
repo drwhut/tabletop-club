@@ -78,11 +78,11 @@ func set_id(value: String) -> void:
 	value = value.strip_edges().strip_escapes()
 	
 	if value.empty():
-		push_error("ID is empty")
+		push_error("Entry ID cannot be empty")
 		return
 	
 	if not value.is_valid_filename():
-		push_error("ID is invalid")
+		push_error("Entry ID '%s' is invalid" % value)
 		return
 	
 	id = value
@@ -93,7 +93,7 @@ func set_name(value: String) -> void:
 	
 	if not value.empty():
 		if not value.is_valid_filename():
-			push_error("Name is invalid")
+			push_error("Entry name '%s' is invalid" % value)
 			return
 	
 	name = value
@@ -101,7 +101,7 @@ func set_name(value: String) -> void:
 
 func set_pack(value: String) -> void:
 	if "/" in value:
-		push_error("Pack name cannot contain '/' character")
+		push_error("Pack name '%s' contains invalid character '/'" % value)
 		return
 	
 	pack = value

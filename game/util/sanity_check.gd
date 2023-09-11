@@ -150,7 +150,7 @@ static func is_valid_rect2(value: Rect2) -> bool:
 ## The file extension must be in [code]valid_ext[/code].
 static func is_valid_res_path(path: String, valid_ext: Array) -> bool:
 	if not path.is_abs_path():
-		push_error("Path is not absolute")
+		push_error("Path '%s' is not absolute" % path)
 		return false
 	
 	if path.begins_with("res://assets"):
@@ -163,15 +163,15 @@ static func is_valid_res_path(path: String, valid_ext: Array) -> bool:
 			push_error("File at '%s' does not exist" % path)
 			return false
 	else:
-		push_error("Path must begin with 'res://assets' or 'user://assets'")
+		push_error("Path '%s' must be in either 'res://assets' or 'user://assets'" % path)
 		return false
 	
 	if not path.get_extension() in valid_ext:
-		push_error("Path contains an invalid extension")
+		push_error("Path '%s' contains an invalid extension" % path)
 		return false
 	
 	if ".." in path:
-		push_error("Path cannot contain '..'")
+		push_error("Path '%s' contains invalid sequence '..'" % path)
 		return false
 	
 	return true

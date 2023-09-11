@@ -74,15 +74,15 @@ static func get_metadata_dir() -> Directory:
 
 func set_dir_path(value: String) -> void:
 	if not value.is_abs_path():
-		push_error("Directory path must be an absolute path")
+		push_error("Directory path '%s' is not absolute" % value)
 		return
 	
 	if not value.begins_with("user://assets/"):
-		push_error("Directory path must begin with 'user://assets/'")
+		push_error("Directory path '%s' does not begin with 'user://assets'" % value)
 		return
 	
 	if ".." in value:
-		push_error("Directory path cannot contain '..'")
+		push_error("Directory path '%s' contains invalid sequence '..'" % value)
 		return
 	
 	var check_dir := Directory.new()

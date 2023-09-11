@@ -422,7 +422,7 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 		if color_str.is_valid_html_color():
 			entry.albedo_color = Color(color_str)
 		else:
-			push_error("'%s' is not a valid color" % color_str)
+			push_error("%s: '%s' is not a valid color" % [full_name, color_str])
 		
 		# TODO: Throw a warning if values like these are invalid? From within
 		# the class itself or here?
@@ -436,11 +436,11 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 			if scale_type == TYPE_VECTOR2:
 				entry.scale = Vector3(scale.x, 1.0, scale.y)
 			elif scale_type == TYPE_VECTOR3:
-				push_warning("Expected a Vector2 for 'scale' property, received a Vector3 - ignoring Y-scale")
+				push_warning("%s: Expected a Vector2 for 'scale' property, received a Vector3 - ignoring Y-scale" % full_name)
 				entry.scale = Vector3(scale.x, 1.0, scale.z)
 			else:
-				push_error("Value of 'scale' is incorrect data type (expected: Vector2, got: %s)" % \
-						SanityCheck.get_type_name(scale_type))
+				push_error("%s: Value of 'scale' is incorrect data type (expected: Vector2, got: %s)" % [
+						full_name, SanityCheck.get_type_name(scale_type)])
 				entry.scale = Vector3.ONE
 		else:
 			entry.scale = config.get_value_by_matching(full_name, "scale",
@@ -470,7 +470,8 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 				2:
 					entry.collision_type = AssetEntryScene.CollisionType.COLLISION_CONCAVE
 				_:
-					push_error("Invalid value (%d) for property 'collision_mode'" % collision_cfg)
+					push_error("%s: Invalid value '%d' for property 'collision_mode'" % [
+							full_name, collision_cfg])
 					entry.collision_type = AssetEntryScene.CollisionType.COLLISION_CONVEX
 			
 			var com_cfg: String = config.get_value_by_matching(full_name,
@@ -483,7 +484,8 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 				"geometry":
 					entry.com_adjust = AssetEntryScene.ComAdjust.COM_ADJUST_GEOMETRY
 				_:
-					push_error("Invalid value ('%s') for property 'com_adjust'" % com_cfg)
+					push_error("%s: Invalid value '%s' for property 'com_adjust'" % [
+							full_name, com_cfg])
 					entry.com_adjust = AssetEntryScene.ComAdjust.COM_ADJUST_VOLUME
 		
 		# TODO: Allow all properties of the physics material to be configured.
@@ -556,7 +558,8 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 					fast_sfx = preload("res://sounds/wood_light/wood_light_fast_sounds.tres")
 					slow_sfx = preload("res://sounds/wood_light/wood_light_slow_sounds.tres")
 				_:
-					push_error("Invalid value ('%s') for property 'sfx'" % sfx_cfg)
+					push_error("%s: Invalid value '%s' for property 'sfx'" % [
+							full_name, sfx_cfg])
 					fast_sfx = preload("res://sounds/generic/generic_fast_sounds.tres")
 					slow_sfx = preload("res://sounds/generic/generic_slow_sounds.tres")
 			
@@ -592,14 +595,14 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 					# keys were the face values, and the values were the face
 					# rotations. This method forced unique face values, which
 					# is why the values have now been swapped as of v0.2.0
-					push_warning("The VALUE: ROTATION notation for 'face_values' is deprecated as of v0.2.0 - consider changing to ROTATION: VALUE")
+					push_warning("%s: The VALUE: ROTATION notation for 'face_values' is deprecated as of v0.2.0 - consider changing to ROTATION: VALUE" % full_name)
 					
 					custom_value.set_value_variant(key)
 					if value is Vector2:
 						face_rot_deg = value
 						face_use_euler = true
 					else:
-						push_error("Rotation value in 'face_values' is not a Vector2")
+						push_error("%s: Rotation value in 'face_values' is not a Vector2" % full_name)
 						continue
 				
 				var face_value := DiceFaceValue.new()
@@ -608,17 +611,17 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 							deg2rad(face_rot_deg.y))
 					
 					if not SanityCheck.is_valid_vector2(face_rot_rad):
-						push_error("Vector2 in 'face_values' contains invalid data")
+						push_error("%s: Vector2 in 'face_values' contains invalid data" % full_name)
 						continue
 					
 					face_value.set_normal_with_euler(face_rot_rad.x, face_rot_rad.y)
 				else:
 					if not SanityCheck.is_valid_vector3(face_normal):
-						push_error("Vector3 in 'face_values' contains invalid data")
+						push_error("%s: Vector3 in 'face_values' contains invalid data" % full_name)
 						continue
 					
 					if is_zero_approx(face_normal.length_squared()):
-						push_error("Face normal vector length cannot be 0")
+						push_error("%s: Face normal vector length cannot be 0" % full_name)
 						continue
 					
 					face_value.normal = face_normal
@@ -627,8 +630,8 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 				face_value_list_raw.push_back(face_value)
 			
 			if face_value_list_raw.size() != die_num_faces:
-				push_warning("'face_values' size was not the expected value (expected: %d, got: %d)" % [
-						die_num_faces, face_value_list_raw.size()])
+				push_warning("%s: 'face_values' size was not the expected value (expected: %d, got: %d)" % [
+						full_name, die_num_faces, face_value_list_raw.size()])
 			
 			if face_value_list_raw.empty():
 				var current_list: DiceFaceValueList = entry.face_value_list
@@ -663,19 +666,18 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 			var hand_transform_arr := []
 			for hand_dict in hand_cfg:
 				if not hand_dict is Dictionary:
-					push_error("Element of 'hands' is invalid, not a dictionary")
+					push_error("%s: Element of 'hands' is invalid, not a dictionary" % full_name)
 					continue
 				
 				var parser := DictionaryParser.new(hand_dict)
 				var hand_pos: Vector3 = parser.get_strict_type("pos", Vector3.ZERO)
 				var hand_rot_deg: float = parser.get_strict_type("dir", 0.0)
 				
-				# TODO: Should the SanityCheck functions log errors to resources?
 				if not SanityCheck.is_valid_vector3(hand_pos):
-					push_error("Value of 'pos' is invalid")
+					push_error("%s: Value of 'pos' is invalid" % full_name)
 					continue
 				if not SanityCheck.is_valid_float(hand_rot_deg):
-					push_error("Value of 'dir' is invalid")
+					push_error("%s: Value of 'dir' is invalid" % full_name)
 					continue
 				
 				var hand_transform := Transform.IDENTITY
@@ -685,7 +687,7 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 				hand_transform_arr.push_back(hand_transform)
 			
 			if hand_transform_arr.empty():
-				push_warning("Table has no configured hand positions, consider adding at least one via the 'config.cfg' file")
+				push_warning("%s: Table has no configured hand positions, consider adding at least one via the 'config.cfg' file" % full_name)
 			entry.hand_transforms = hand_transform_arr
 			
 			# TODO: Make this a constant somewhere else?
@@ -696,7 +698,7 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 			if SanityCheck.is_valid_vector2(paint_plane_size):
 				paint_plane_size = paint_plane_size.abs()
 			else:
-				push_error("'paint_plane' contains invalid data")
+				push_error("%s: 'paint_plane' contains invalid data" % full_name)
 				paint_plane_size = default_plane_size
 			
 			var paint_plane_transform := Transform.IDENTITY
@@ -723,16 +725,16 @@ func apply_config_to_entry(entry: AssetEntrySingle, config: AdvancedConfigFile,
 			if textbox_input is Array:
 				textbox_arr = textbox_input
 			elif textbox_input is Dictionary:
-				push_warning("'textboxes' is now an array as of v0.2.0, ignoring keys")
+				push_warning("%s: 'textboxes' is now an array as of v0.2.0, ignoring keys" % full_name)
 				textbox_arr = textbox_input.values()
 			else:
-				push_error("'textboxes' is invalid data type (expected: Array, got: %s)" %
-						SanityCheck.get_type_name(typeof(textbox_input)))
+				push_error("%s: 'textboxes' is invalid data type (expected: Array, got: %s)" % [
+						full_name, SanityCheck.get_type_name(typeof(textbox_input))])
 			
 			entry.textbox_list = []
 			for textbox_meta in textbox_arr:
 				if not textbox_meta is Dictionary:
-					push_warning("Element of 'textboxes' array is not a dictionary, ignoring")
+					push_warning("%s: Element of 'textboxes' array is not a dictionary, ignoring" % full_name)
 					continue
 				
 				var new_textbox := TemplateTextbox.new()

@@ -40,6 +40,7 @@ export(Vector3) var rotation := Vector3.ZERO setget set_rotation
 
 
 ## Apply the skybox settings to an [Environment].
+## TODO: If a custom class is made for environments, move this function over.
 func apply_environment(environment: Environment) -> void:
 	var skybox_texture := load_skybox_texture()
 	if skybox_texture != null:

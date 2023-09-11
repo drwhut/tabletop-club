@@ -98,7 +98,7 @@ func set_value_string(value: String) -> void:
 
 func set_value_type(type: int) -> void:
 	if type < 0 or type >= ValueType.TYPE_MAX:
-		push_error("Invalid value for ValueType")
+		push_error("Invalid value '%d' for ValueType" % type)
 		return
 	
 	value_type = type

@@ -153,7 +153,7 @@ func set_collision_slow_sounds(value: AudioStreamList) -> void:
 
 func set_collision_type(value: int) -> void:
 	if value < 0 or value >= CollisionType.COLLISION_MAX:
-		push_error("Invalid value for CollisionType")
+		push_error("Invalid value '%d' for CollisionType" % value)
 		return
 	
 	collision_type = value
@@ -161,7 +161,7 @@ func set_collision_type(value: int) -> void:
 
 func set_com_adjust(value: int) -> void:
 	if value < 0 or value >= ComAdjust.COM_ADJUST_MAX:
-		push_error("Invalid value for ComAdjust")
+		push_error("Invalid value '%d' for ComAdjust" % value)
 		return
 	
 	com_adjust = value
@@ -201,7 +201,7 @@ func set_scene_path(value: String) -> void:
 func set_texture_overrides(value: Array) -> void:
 	for subvalue in value:
 		if not subvalue is String:
-			push_error("Value in array is not a String")
+			push_error("Value in texture override array is not a String")
 			return
 		
 		if not SanityCheck.is_valid_res_path(subvalue,

@@ -78,7 +78,7 @@ class ProgressReport:
 	
 	func set_import_stage(value: int) -> void:
 		if value < STAGE_IDLE or value >= STAGE_MAX:
-			push_error("Invalid value for import stage (%d)" % value)
+			push_error("Invalid value '%d' for import stage" % value)
 			return
 		
 		import_stage = value

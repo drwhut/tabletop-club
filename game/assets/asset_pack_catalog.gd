@@ -109,7 +109,7 @@ func _init(new_pack_name: String):
 ## into the internal directory.
 func scan_dir(dir_path: String) -> void:
 	if pack_name.empty():
-		push_error("Cannot scan pack directory, no name given")
+		push_error("Cannot scan pack directory '%s', no name given" % dir_path)
 		return
 	
 	var external_dir := Directory.new()
@@ -320,13 +320,13 @@ func create_child_entries(pack: AssetPack) -> void:
 				continue
 			
 			if not section_name.is_valid_filename():
-				push_error("%s/config.cfg: Invalid section name '%s' with 'parent' property" % [
-					sub_dir, section_name])
+				push_error("%s/%s/config.cfg: Invalid section name '%s' with 'parent' property" % [
+						pack.id, sub_dir, section_name])
 				continue
 			
 			if pack.has_entry(type, section_name):
-				push_error("%s/config.cfg: Entry '%s/%s/%s' already exists" % [
-					sub_dir, pack.id, type, section_name])
+				push_error("%s/%s/config.cfg: Entry '%s/%s/%s' already exists" % [
+					pack.id, sub_dir, pack.id, type, section_name])
 				continue
 			
 			var parent_id: String = sub_dir_config.get_value_strict(
@@ -388,8 +388,8 @@ func create_child_entries(pack: AssetPack) -> void:
 					child_entry.bounding_box.position /= scale_before
 					child_entry.bounding_box.size /= scale_before
 				else:
-					push_warning("%s/%s: Element in property 'scale' is 0.0, cannot determine original geometry metadata" % [
-						type, parent_id])
+					push_warning("%s/%s/%s: Element in property 'scale' is 0.0, cannot determine original geometry metadata" % [
+						pack.id, type, parent_id])
 				
 				# If there is a valid config property for the parent's SFX, then
 				# clear the list of sounds in the entry before applying the
@@ -437,8 +437,8 @@ func read_stacks_config(pack: AssetPack, stack_config: AdvancedConfigFile,
 				continue
 			
 			if not pack.has_entry(stack_type, item_name):
-				push_error("Item '%s' does not exist in '%s/%s'" % [item_name,
-					pack.id, stack_type])
+				push_error("%s: Item '%s' does not exist in '%s/%s'" % [
+					section_name, item_name, pack.id, stack_type])
 				continue
 			
 			var item_entry: AssetEntryScene = pack.get_entry(stack_type, item_name)
@@ -544,7 +544,7 @@ func perform_full_import() -> AssetPack:
 func set_pack_name(value: String) -> void:
 	value = value.strip_edges().strip_escapes()
 	if not value.is_valid_filename():
-		push_error("'%s' is not a valid pack name")
+		push_error("Pack name '%s' is invalid" % value)
 		return
 	
 	pack_name = value

@@ -45,8 +45,8 @@ func get_value_strict(section: String, key: String, default):
 	elif value_type == TYPE_INT and default_type == TYPE_REAL:
 		return float(value)
 	else:
-		push_error("Value of '%s' is incorrect data type (expected: %s, got: %s)" % [
-				key, SanityCheck.get_type_name(default_type),
+		push_error("Value of property '%s' in section '%s' is incorrect data type (expected: %s, got: %s)" % [
+				key, section, SanityCheck.get_type_name(default_type),
 				SanityCheck.get_type_name(value_type)])
 		return default
 
