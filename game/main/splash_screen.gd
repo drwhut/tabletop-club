@@ -25,6 +25,10 @@ extends AnimationPlayer
 ## The splash screen for the game, which shows the Godot Engine logo.
 
 
+## The next scene to show once the splash screen is finished.
+export(PackedScene) var next_scene: PackedScene
+
+
 func _ready():
 	connect("animation_finished", self, "_on_animation_finished")
 	
@@ -42,8 +46,15 @@ func _unhandled_input(event: InputEvent):
 	if event is InputEventJoypadButton or \
 		event is InputEventScreenTouch or \
 		event is InputEventKey:
-			pass
+			_goto_next_scene()
+
+
+func _goto_next_scene() -> void:
+	var err := get_tree().change_scene_to(next_scene)
+	if err != OK:
+		push_error("Failed to change to scene at '%s' (error: %d)" % [
+				next_scene.resource_path, err])
 
 
 func _on_animation_finished(_anim_name: String):
-	pass
+	_goto_next_scene()

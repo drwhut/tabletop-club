@@ -70,6 +70,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed the default window size from 1024x600 to 1920x1080.
 - The importing process is now shown as an independent panel in the main menu
   instead of within the loading screen.
+- Increased the font size of text on the loading screen.
 
 ### Removed
 
