@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://images/black_texture.png" type="Texture" id=1]
+[ext_resource path="res://images/godot_logo.svg" type="Texture" id=2]
+[ext_resource path="res://main/splash_screen.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FadeInAndOut"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1, 2.5, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="SplashScreen" type="AnimationPlayer"]
+root_node = NodePath("CenterContainer/GodotLogo")
+anims/FadeInAndOut = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GodotLogo" type="TextureRect" parent="CenterContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 648.0
+margin_top = 183.0
+margin_right = 1271.0
+margin_bottom = 896.0
+texture = ExtResource( 2 )
