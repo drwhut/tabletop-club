@@ -27,6 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added unit tests for various in-game systems using Gut v7.4.1 (#153)
 - Added a fallback directory in `user://` in the event that the player's
   Documents folder could not be opened.
+- Optimised the look-up algorithm for certain node structures, which should lead
+  to better performance when there are many dynamic objects in play.
 
 ### Changed
 
