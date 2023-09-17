@@ -1252,27 +1252,46 @@ func _import_asset(from: String, pack: String, type: String, config: ConfigFile,
 			var face_values: Dictionary = _get_file_config_value(config,
 					from.get_file(), "face_values", {})
 			
-			var face_values_entry = {}
+			# Maps values (strings) to Arrays of Vector3 (normals).
+			# Arrays will never be empty.
+			var face_values_entry := {}
+
+			# Total normals to check against faces
+			var num_normals := 0
+
 			if not face_values.empty():
-				if face_values.size() == num_faces:
-					for key in face_values:
+				for key in face_values:
+					var value = face_values[key]
+					# Figure out 0.2.0 A:V versus 0.1.x V:A
+					var fv_angle: Vector2
+					var fv_value: String
+					if key is Vector2:
+						# key is known so don't check it
+						if not ((value == null) or value is int or value is float or value is String):
+							# this is more about 0.2.0 compat (the data is stringified anyway)
+							_log_error("New-style value in face_values entry is not a number, string, or null! (%s)" % str(key))
+							return ERR_INVALID_DATA
+						fv_angle = key
+						fv_value = str(value)
+					else:
 						if not (key is int or key is float):
-							_log_error("Key in face_values entry is not a number! (%s)" % str(key))
+							_log_error("Old-style key in face_values entry is not a number! (%s)" % str(key))
 							return ERR_INVALID_DATA
-						
-						var value = face_values[key]
 						if not value is Vector2:
-							_log_error("Value in face_values entry is not a Vector2! (%s)" % str(value))
+							_log_error("Old-style value in face_values entry is not a Vector2! (%s)" % str(value))
 							return ERR_INVALID_DATA
-						
-						var normal_vec = _precalculate_face_value_normal(value)
-						face_values_entry[key] = normal_vec
-				else:
-					_log_error("Number of entries for face_values (%d) does not match the number of faces (%d)!" %
-						[face_values.size(), num_faces])
-					return ERR_INVALID_DATA
+						fv_value = str(key)
+						fv_angle = value
+					
+					if not fv_value in face_values_entry:
+						face_values_entry[fv_value] = []
+					face_values_entry[fv_value].append(_precalculate_face_value_normal(fv_angle))
+					num_normals += 1
 			
 			entry["face_values"] = face_values_entry
+			
+			if num_normals != num_faces:
+				_log_warning("face_values describes less normals (%d) than the dice should have faces (%d)" % [num_normals, num_faces])
 		
 		if type == "cards" or type.begins_with("tokens"):
 			# If we use null as a default value, ConfigFile will throw an error
@@ -1662,37 +1681,28 @@ func _is_valid_entry(pack: String, type: String, entry: Dictionary) -> bool:
 					_log_error("'face_values' in entry is not a dictionary!")
 					return false
 				
-				var num_faces = 0
-				if type.ends_with("d4"):
-					num_faces = 4
-				elif type.ends_with("d6"):
-					num_faces = 6
-				elif type.ends_with("d8"):
-					num_faces = 8
-				elif type.ends_with("d10"):
-					num_faces = 10
-				elif type.ends_with("d12"):
-					num_faces = 12
-				elif type.ends_with("d20"):
-					num_faces = 20
-				
-				if value.size() != num_faces:
-					_log_error("'face_values' dictionary in entry is not the expected size (%d)!" % num_faces)
-					return false
-				
 				for element_key in value:
-					if not (typeof(element_key) == TYPE_INT or typeof(element_key) == TYPE_REAL):
-						_log_error("'face_values' key in entry is not a number!")
+					if typeof(element_key) != TYPE_STRING:
+						_log_error("'face_values' key in entry is not a string!")
 						return false
 					
 					var element_value = value[element_key]
-					if typeof(element_value) != TYPE_VECTOR3:
-						_log_error("'face_values' value in entry is not a Vector3!")
+					if typeof(element_value) != TYPE_ARRAY:
+						_log_error("'face_values' value in entry is not an Array!")
 						return false
 					
-					if not is_equal_approx(element_value.length_squared(), 1.0):
-						_log_error("'face_values' vector in entry is not unit length!")
+					if len(element_value) == 0:
+						_log_error("'face_values' value in entry is empty!")
 						return false
+					
+					for normal in element_value:
+						if typeof(normal) != TYPE_VECTOR3:
+							_log_error("'face_values' sub-value in entry is not a Vector3!")
+							return false
+						
+						if not is_equal_approx(normal.length_squared(), 1.0):
+							_log_error("'face_values' vector in entry is not unit length!")
+							return false
 			"hands":
 				if typeof(value) != TYPE_ARRAY:
 					_log_error("'hands' in entry is not an array!")
