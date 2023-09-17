@@ -73,6 +73,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The importing process is now shown as an independent panel in the main menu
   instead of within the loading screen.
 - Increased the font size of text on the loading screen.
+- The main menu music will now fade out gradually when entering the game,
+  instead of ending abruptly.
 
 ### Removed
 

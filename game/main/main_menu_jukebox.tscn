@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://icons/music_icon.svg" type="Texture" id=1]
+[ext_resource path="res://fonts/res/jukebox_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://main/main_menu_jukebox.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FadeOutMusic"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MusicPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -32.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MusicPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="MainMenuJukebox" type="HBoxContainer"]
+script = ExtResource( 3 )
+
+[node name="MusicIcon" type="TextureRect" parent="."]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="NowPlayingLabel" type="Label" parent="."]
+margin_left = 36.0
+margin_top = 3.0
+margin_right = 219.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 2 )
+text = "Now Playing: Nothing"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Music"
+
+[node name="FadeOutPlayer" type="AnimationPlayer" parent="."]
+anims/FadeOutMusic = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[connection signal="finished" from="MusicPlayer" to="." method="_on_MusicPlayer_finished"]
+[connection signal="animation_finished" from="FadeOutPlayer" to="." method="_on_FadeOutPlayer_animation_finished"]

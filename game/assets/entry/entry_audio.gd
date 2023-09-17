@@ -42,7 +42,20 @@ func load_audio() -> AudioStream:
 	if audio_path.empty():
 		return null
 	
-	return load(audio_path) as AudioStream
+	var audio_stream := load(audio_path) as AudioStream
+	if audio_stream == null:
+		return null
+	
+	# Prevent the track from looping, since we can just start the stream again
+	# if we want to loop it anyways.
+	if audio_stream is AudioStreamMP3:
+		audio_stream.loop = false
+	elif audio_stream is AudioStreamOGGVorbis:
+		audio_stream.loop = false
+	elif audio_stream is AudioStreamSample:
+		audio_stream.loop_mode = AudioStreamSample.LOOP_DISABLED
+	
+	return audio_stream
 
 
 func set_audio_path(value: String) -> void:

@@ -34,6 +34,7 @@ func _ready():
 	
 	# Load the default asset pack as register it as early as possible.
 	var ttc_pack := preload("res://assets/default_pack/ttc_pack.tres")
+	ttc_pack.reset_dictionary()
 	AssetDB.add_pack(ttc_pack)
 	AssetDB.commit_changes()
 	
