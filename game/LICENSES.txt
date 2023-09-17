@@ -1,7 +1,7 @@
 NOTE: The following list does NOT include assets that originate from asset
 packs. To view details about such files, you can either look at the descriptions
-of the assets in-game, or examime the relevant config.cfg files in the asset pack
-directory.
+of the assets in-game, or examime the relevant config.cfg files in the asset
+pack directory.
 
 - Tabletop Club logo
 
@@ -18,9 +18,9 @@ directory.
 
 	Files:
 		addons/gut/*
-	Author: Tom \"Butch\" Wesley
+	Author: Tom 'Butch' Wesley
 	License: MIT
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://github.com/bitwes/Gut
 
 
@@ -57,7 +57,7 @@ directory.
 		icons/code_icon.svg
 	Author: SVG Repo
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/36709/programming-code-signs
 
 
@@ -67,7 +67,7 @@ directory.
 		icons/cursor_icon.svg
 	Author: SVG Repo
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/27866/cursor
 
 
@@ -77,7 +77,7 @@ directory.
 		icons/erase_icon.svg
 	Author: SVG Repo
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/72555/eraser
 
 
@@ -87,7 +87,7 @@ directory.
 		icons/error_icon.svg
 	Author: css.gg
 	License: MIT
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/332988/danger
 
 
@@ -98,7 +98,7 @@ directory.
 		images/fast_circle_outer.png
 	Author: Rebekka
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 
 
 - Flick icon
@@ -107,7 +107,7 @@ directory.
 		icons/flick_icon.svg
 	Author: SVG Repo
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/7368/dollar-coin-in-a-hand
 
 
@@ -126,7 +126,7 @@ directory.
 		icons/help_icon.svg
 	Author: SVG Repo
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/29860/help-web-button
 
 
@@ -136,7 +136,7 @@ directory.
 		icons/hidden_area_icon.svg
 	Author: SVG Repo
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/10764/eye
 
 
@@ -146,7 +146,7 @@ directory.
 		icons/info_icon.svg
 	Author: SVG Repo
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/60892/info
 
 
@@ -156,7 +156,17 @@ directory.
 		images/loading_background.jpg
 	Author: Samantha Johnson
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
+
+
+- Music icon
+
+	Files:
+		icons/music_icon.svg
+	Author: Solar Icons
+	License: CC BY
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/526054/music-note-2
 
 
 - Paint icon
@@ -165,7 +175,7 @@ directory.
 		icons/paint_icon.svg
 	Author: SVG Repo
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/169944/paint
 
 
@@ -175,7 +185,7 @@ directory.
 		icons/ruler_icon.svg
 	Author: SVG Repo
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/48874/ruler
 
 
@@ -185,7 +195,7 @@ directory.
 		icons/search_icon.svg
 	Author: SVG Repo
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/14071/search
 
 
@@ -195,7 +205,7 @@ directory.
 		icons/stack_icon.svg
 	Author: yourtempo
 	License: MIT
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/442015/stack-alt
 
 
@@ -205,7 +215,7 @@ directory.
 		icons/store_icon.svg
 	Author: SVG Repo
 	License: CC0
-	Modified By: Benjamin \"drwhut\" Beddows
+	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/1530/city-store
 
 
