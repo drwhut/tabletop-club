@@ -30,6 +30,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optimised the look-up algorithm for certain node structures, which should lead
   to better performance when there are many dynamic objects in play.
 
+#### UI
+
+- Added a fade-in effect for the main menu when the game first loads.
+
 ### Changed
 
 #### Assets
@@ -75,6 +79,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Increased the font size of text on the loading screen.
 - The main menu music will now fade out gradually when entering the game,
   instead of ending abruptly.
+- The layout of the main menu has been updated.
 
 ### Removed
 
@@ -85,5 +90,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The Downloads, Desktop, and installation folders are no longer scanned for
   asset packs.
 - Removed the `--export-asset-db` command-line argument.
+- The following properties are no longer used in configuration files: `default`,
+  `main_menu`.
 
 [unreleased]: https://github.com/drwhut/tabletop-club/compare/HEAD...HEAD

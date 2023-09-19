@@ -61,6 +61,26 @@ pack directory.
 	URL: https://www.svgrepo.com/svg/36709/programming-code-signs
 
 
+- Collection icon
+
+	Files:
+		icons/collection_icon.svg
+	Author: Delapouite
+	License: CC BY 3.0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://game-icons.net/1x1/delapouite/cardboard-box.html
+
+
+- Credits icon
+
+	Files:
+		icons/credits_icon.svg
+	Author: Skoll
+	License: CC BY 3.0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://game-icons.net/1x1/skoll/hearts.html
+
+
 - Cursor icon
 
 	Files:
@@ -150,6 +170,16 @@ pack directory.
 	URL: https://www.svgrepo.com/svg/60892/info
 
 
+- Internet icon
+
+	Files:
+		icons/internet_icon.svg
+	Author: Icooon Mono
+	License: Public Domain
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/478288/internet
+
+
 - Loading background
 
 	Files:
@@ -157,6 +187,16 @@ pack directory.
 	Author: Samantha Johnson
 	License: CC0
 	Modified By: Benjamin 'drwhut' Beddows
+
+
+- Multiplayer icon
+
+	Files:
+		icons/multiplayer_icon.svg
+	Author: Delapouite
+	License: CC BY 3.0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://game-icons.net/1x1/delapouite/round-table.html
 
 
 - Music icon
@@ -179,6 +219,16 @@ pack directory.
 	URL: https://www.svgrepo.com/svg/169944/paint
 
 
+- Quit icon
+
+	Files:
+		icons/quit_icon.svg
+	Author: Delapouite
+	License: CC BY 3.0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://game-icons.net/1x1/delapouite/exit-door.html
+
+
 - Ruler icon
 
 	Files:
@@ -197,6 +247,26 @@ pack directory.
 	License: CC0
 	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/14071/search
+
+
+- Settings icon
+
+	Files:
+		icons/settings_icon.svg
+	Author: Lorc
+	License: CC BY 3.0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://game-icons.net/1x1/lorc/cog.html
+
+
+- Singleplayer icon
+
+	Files:
+		icons/settings_icon.svg
+	Author: Delapouite
+	License: CC BY 3.0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://game-icons.net/1x1/delapouite/player-time.html
 
 
 - Stack icon

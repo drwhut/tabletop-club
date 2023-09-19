@@ -303,6 +303,11 @@ _global_script_classes=[ {
 "class": "TimerPiece",
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/TimerPiece.gd"
+}, {
+"base": "Button",
+"class": "VerticalButton",
+"language": "GDScript",
+"path": "res://tools/vertical_button.gd"
 } ]
 _global_script_class_icons={
 "ActualTextFile": "",
@@ -363,7 +368,8 @@ _global_script_class_icons={
 "TaggedDirectory": "",
 "TemplateTextbox": "",
 "TimeEdit": "",
-"TimerPiece": ""
+"TimerPiece": "",
+"VerticalButton": ""
 }
 
 [application]

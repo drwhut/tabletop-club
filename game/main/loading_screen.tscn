@@ -11,7 +11,7 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 7
 script = ExtResource( 3 )
-scene_path = "res://assets/import_progress_panel.tscn"
+scene_path = "res://main/main_menu.tscn"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
