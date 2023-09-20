@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://tabletop_club_icon.png" type="Texture" id=1]
+[ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/game_info_panel.gd" type="Script" id=3]
+[ext_resource path="res://icons/back_icon.svg" type="Texture" id=4]
+
+[node name="GameInfoPanel" type="PopupPanel"]
+margin_right = 960.0
+margin_bottom = 540.0
+popup_exclusive = true
+script = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="SplitContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 952.0
+margin_bottom = 532.0
+
+[node name="VersionContainer" type="VBoxContainer" parent="MarginContainer/SplitContainer"]
+margin_right = 270.0
+margin_bottom = 532.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/SplitContainer/VersionContainer"]
+margin_top = 114.0
+margin_right = 270.0
+margin_bottom = 384.0
+rect_min_size = Vector2( 270, 270 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="VersionLabel" type="Label" parent="MarginContainer/SplitContainer/VersionContainer"]
+margin_top = 388.0
+margin_right = 270.0
+margin_bottom = 418.0
+custom_fonts/font = ExtResource( 2 )
+align = 1
+autowrap = true
+
+[node name="LicenseLabel" type="RichTextLabel" parent="MarginContainer/SplitContainer"]
+margin_left = 274.0
+margin_right = 952.0
+margin_bottom = 532.0
+focus_mode = 2
+size_flags_horizontal = 3
+text = "Copyright (c) 2020–2023 Benjamin 'drwhut' Beddows.
+Copyright (c) 2021–2023 Tabletop Club contributors (see credits).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE."
+
+[node name="BackButtonContainer" type="Control" parent="MarginContainer"]
+margin_right = 952.0
+margin_bottom = 532.0
+mouse_filter = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/BackButtonContainer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -36.0
+margin_right = 80.0
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+icon = ExtResource( 4 )
+expand_icon = true
+
+[connection signal="pressed" from="MarginContainer/BackButtonContainer/BackButton" to="." method="_on_BackButton_pressed"]

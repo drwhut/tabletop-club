@@ -20,32 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Control
+extends AttentionPanel
 
-## The main menu of the game.
-
-
-onready var _animation_player := $AnimationPlayer
-onready var _credits_panel := $CreditsPanel
-onready var _game_info_panel := $GameInfoPanel
-onready var _singleplayer_button := $MainContainer/PrimaryContainer/SingleplayerButton
-onready var _quit_dialog := $QuitDialog
+## A dialog asking the player if they want to quit the game or not.
 
 
-func _ready():
-	_animation_player.play("FadeInMenu")
-	
-	# For those using a keyboard or controller to navigate the menu.
-	_singleplayer_button.grab_focus()
-
-
-func _on_CreditsButton_pressed():
-	_credits_panel.popup_centered()
-
-
-func _on_InfoButton_pressed():
-	_game_info_panel.popup_centered()
+func _on_BackButton_pressed():
+	visible = false
 
 
 func _on_QuitButton_pressed():
-	_quit_dialog.popup_centered()
+	get_tree().quit()

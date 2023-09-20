@@ -20,32 +20,54 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Control
+class_name AttentionPanel
+extends PopupPanel
 
-## The main menu of the game.
-
-
-onready var _animation_player := $AnimationPlayer
-onready var _credits_panel := $CreditsPanel
-onready var _game_info_panel := $GameInfoPanel
-onready var _singleplayer_button := $MainContainer/PrimaryContainer/SingleplayerButton
-onready var _quit_dialog := $QuitDialog
+## A popup that will show and hide other controls to make itself more prominent.
 
 
-func _ready():
-	_animation_player.play("FadeInMenu")
+## Show this control when the popup is activated.
+export(NodePath) var show_on_popup: NodePath
+
+## Hide this control when the popup is activated.
+export(NodePath) var hide_on_popup: NodePath
+
+## Give focus to this control when the popup is hidden.
+export(NodePath) var focus_on_hide: NodePath
+
+
+func _init():
+	connect("about_to_show", self, "_on_about_to_show")
+	connect("popup_hide", self, "_on_popup_hide")
+
+
+func _set_control_visible(node_path: NodePath, is_visible: bool) -> void:
+	if node_path.is_empty():
+		return
 	
-	# For those using a keyboard or controller to navigate the menu.
-	_singleplayer_button.grab_focus()
+	var node := get_node(node_path)
+	if node == null:
+		return
+	
+	if node is Control:
+		node.visible = is_visible
 
 
-func _on_CreditsButton_pressed():
-	_credits_panel.popup_centered()
+func _on_about_to_show():
+	_set_control_visible(show_on_popup, true)
+	_set_control_visible(hide_on_popup, false)
 
 
-func _on_InfoButton_pressed():
-	_game_info_panel.popup_centered()
-
-
-func _on_QuitButton_pressed():
-	_quit_dialog.popup_centered()
+func _on_popup_hide():
+	_set_control_visible(show_on_popup, false)
+	_set_control_visible(hide_on_popup, true)
+	
+	if focus_on_hide.is_empty():
+		return
+	
+	var node := get_node(focus_on_hide)
+	if node == null:
+		return
+	
+	if node is Control:
+		node.grab_focus()

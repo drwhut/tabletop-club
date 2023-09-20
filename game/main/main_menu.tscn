@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://tabletop_club_logo.png" type="Texture" id=1]
 [ext_resource path="res://icons/multiplayer_icon.svg" type="Texture" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://icons/info_icon.svg" type="Texture" id=12]
 [ext_resource path="res://icons/internet_icon.svg" type="Texture" id=13]
 [ext_resource path="res://tools/vertical_button.gd" type="Script" id=14]
+[ext_resource path="res://ui/quit_dialog.tscn" type="PackedScene" id=15]
+[ext_resource path="res://ui/game_info_panel.tscn" type="PackedScene" id=16]
+[ext_resource path="res://ui/credits_panel.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeInMenu"
@@ -142,23 +145,27 @@ font_override = ExtResource( 7 )
 margin_top = 736.0
 margin_right = 600.0
 margin_bottom = 786.0
-alignment = 2
 
 [node name="WebsiteButton" type="Button" parent="MainContainer/TertiaryContainer"]
-margin_left = 342.0
-margin_right = 392.0
+margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 icon = ExtResource( 13 )
 expand_icon = true
 
 [node name="InfoButton" type="Button" parent="MainContainer/TertiaryContainer"]
-margin_left = 396.0
-margin_right = 446.0
+margin_left = 54.0
+margin_right = 104.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 icon = ExtResource( 12 )
 expand_icon = true
+
+[node name="FillGap" type="Control" parent="MainContainer/TertiaryContainer"]
+margin_left = 108.0
+margin_right = 446.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
 
 [node name="QuitButton" type="Button" parent="MainContainer/TertiaryContainer"]
 margin_left = 450.0
@@ -177,8 +184,22 @@ margin_top = 5.0
 margin_right = -10.0
 grow_horizontal = 0
 
+[node name="CreditsPanel" parent="." instance=ExtResource( 17 )]
+hide_on_popup = NodePath("../MainContainer")
+focus_on_hide = NodePath("../MainContainer/SecondaryContainer/CreditsButton")
+
+[node name="GameInfoPanel" parent="." instance=ExtResource( 16 )]
+hide_on_popup = NodePath("../MainContainer")
+focus_on_hide = NodePath("../MainContainer/TertiaryContainer/InfoButton")
+
+[node name="QuitDialog" parent="." instance=ExtResource( 15 )]
+hide_on_popup = NodePath("../MainContainer")
+focus_on_hide = NodePath("../MainContainer/TertiaryContainer/QuitButton")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeInMenu = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
+[connection signal="pressed" from="MainContainer/SecondaryContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="MainContainer/TertiaryContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="MainContainer/TertiaryContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

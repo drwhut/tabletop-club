@@ -1,7 +1,5 @@
-NOTE: The following list does NOT include assets that originate from asset
-packs. To view details about such files, you can either look at the descriptions
-of the assets in-game, or examime the relevant config.cfg files in the asset
-pack directory.
+NOTE: The following list does NOT include assets that are used in bundled asset
+packs. Licensing information for these assets can be viewed in-game.
 
 - Tabletop Club logo
 
@@ -49,6 +47,16 @@ pack directory.
 	Author: Jakub 'Nighted' Steiner
 	License: MIT
 	URL: https://www.deviantart.com/nighted/art/DMZ-Cursors-58429447
+
+
+- Back icon
+
+	Files:
+		icons/back_icon.svg
+	Author: SVG Repo
+	License: MIT
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/500472/back
 
 
 - Code icon

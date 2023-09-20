@@ -45,10 +45,10 @@ Reese Rivers
 FRENCH
 -----------
 Azelven
-\"cogk\"
+'cogk'
 Nathan Bonnemains
 Seb D
-\"guissou\"
+'guissou'
 J. Lavoie
 NeoNiNe
 SphinxKnight
@@ -65,13 +65,13 @@ Jummit
 Felix Kaechele
 J. Lavoie
 Piet Lu
-\"Meme\"
+'Meme'
 Martyn Ranyard
 Raphipod
 Reidler
 Remo
-\"tionis\"
-\"x3a\"
+'tionis'
+'x3a'
 
 ITALIAN
 ------------
@@ -82,7 +82,7 @@ PORTUGUESE
 ------------------
 Nelson Esteves
 Karina Guisini
-\"ssantos\"
+'ssantos'
 Allan de Souza
 
 RUSSIAN

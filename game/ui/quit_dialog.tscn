@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icons/back_icon.svg" type="Texture" id=1]
+[ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://icons/quit_icon.svg" type="Texture" id=3]
+[ext_resource path="res://ui/quit_dialog.gd" type="Script" id=4]
+
+[node name="QuitDialog" type="PopupPanel"]
+margin_right = 640.0
+margin_bottom = 360.0
+popup_exclusive = true
+script = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 632.0
+margin_bottom = 352.0
+
+[node name="QuestionLabel" type="Label" parent="MarginContainer/MainContainer"]
+margin_top = 135.0
+margin_right = 620.0
+margin_bottom = 165.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Are you sure you want to quit and return to the desktop?"
+align = 1
+autowrap = true
+
+[node name="OptionContainer" type="HBoxContainer" parent="MarginContainer/MainContainer"]
+margin_top = 304.0
+margin_right = 620.0
+margin_bottom = 340.0
+
+[node name="BackButton" type="Button" parent="MarginContainer/MainContainer/OptionContainer"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+icon = ExtResource( 1 )
+expand_icon = true
+
+[node name="QuitButton" type="Button" parent="MarginContainer/MainContainer/OptionContainer"]
+margin_left = 416.0
+margin_right = 516.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Quit"
+icon = ExtResource( 3 )
+expand_icon = true
+
+[connection signal="pressed" from="MarginContainer/MainContainer/OptionContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/MainContainer/OptionContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

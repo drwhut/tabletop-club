@@ -114,6 +114,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/asset_pack_type_catalog.gd"
 }, {
+"base": "PopupPanel",
+"class": "AttentionPanel",
+"language": "GDScript",
+"path": "res://ui/attention_panel.gd"
+}, {
 "base": "Resource",
 "class": "AudioStreamList",
 "language": "GDScript",
@@ -331,6 +336,7 @@ _global_script_class_icons={
 "AssetPack": "",
 "AssetPackCatalog": "",
 "AssetPackTypeCatalog": "",
+"AttentionPanel": "",
 "AudioStreamList": "",
 "BindButton": "",
 "Card": "",
