@@ -20,7 +20,11 @@ margin_right = 225.0
 margin_bottom = -40.0
 
 [node name="MainMenuCamera" type="Camera" parent="."]
+physics_interpolation_mode = 1
+far = 500.0
 script = ExtResource( 4 )
+height = 50.0
+radius = 150.0
 speed = 0.05
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]

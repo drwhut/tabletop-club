@@ -207,7 +207,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "IndexManager",
 "language": "GDScript",
-"path": "res://main/index_manager.gd"
+"path": "res://room/index_manager.gd"
 }, {
 "base": "Camera",
 "class": "MainMenuCamera",
@@ -238,6 +238,11 @@ _global_script_classes=[ {
 "class": "Piece",
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/Piece.gd"
+}, {
+"base": "Reference",
+"class": "PieceBuilder",
+"language": "GDScript",
+"path": "res://assets/piece_builder.gd"
 }, {
 "base": "Reference",
 "class": "PieceCache",
@@ -298,6 +303,11 @@ _global_script_classes=[ {
 "class": "StackablePiece",
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/StackablePiece.gd"
+}, {
+"base": "Spatial",
+"class": "TableManager",
+"language": "GDScript",
+"path": "res://room/table_manager.gd"
 }, {
 "base": "Reference",
 "class": "TaggedDirectory",
@@ -371,6 +381,7 @@ _global_script_class_icons={
 "OptionsTab": "",
 "OutlineColorRect": "",
 "Piece": "",
+"PieceBuilder": "",
 "PieceCache": "",
 "PieceContainer": "",
 "Preview": "",
@@ -383,6 +394,7 @@ _global_script_class_icons={
 "StackLasagne": "",
 "StackSandwich": "",
 "StackablePiece": "",
+"TableManager": "",
 "TaggedDirectory": "",
 "TemplateTextbox": "",
 "TimeEdit": "",
