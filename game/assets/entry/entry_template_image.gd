@@ -34,13 +34,13 @@ extends AssetEntryTemplate
 export(Array, Resource) var textbox_list := []
 
 
-## Load the [ImageTexture] that [member template_path] points to. Returns
+## Load the [Texture] that [member template_path] points to. Returns
 ## [code]null[/code] if a texture does not exist at that path.
-func load_image_template() -> ImageTexture:
+func load_image_template() -> Texture:
 	if template_path.empty():
 		return null
 	
-	return load(template_path) as ImageTexture
+	return load(template_path) as Texture
 
 
 func set_template_path(value: String) -> void:

@@ -39,28 +39,13 @@ export(float) var energy := 1.0 setget set_energy
 export(Vector3) var rotation := Vector3.ZERO setget set_rotation
 
 
-## Apply the skybox settings to an [Environment].
-## TODO: If a custom class is made for environments, move this function over.
-func apply_environment(environment: Environment) -> void:
-	var skybox_texture := load_skybox_texture()
-	if skybox_texture != null:
-		var panorama_sky := PanoramaSky.new()
-		panorama_sky.panorama = skybox_texture
-		environment.background_sky = panorama_sky
-	else:
-		environment.background_sky = ProceduralSky.new()
-	
-	environment.background_energy = energy
-	environment.background_sky_rotation = rotation
-
-
 ## Load the skybox texture at [member texture_path], or [code]null[/code] if a
 ## texture does not exist at that location.
-func load_skybox_texture() -> ImageTexture:
+func load_skybox_texture() -> Texture:
 	if texture_path.empty():
 		return null
 	
-	return load(texture_path) as ImageTexture
+	return load(texture_path) as Texture
 
 
 func set_energy(value: float) -> void:
