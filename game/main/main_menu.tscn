@@ -59,6 +59,7 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -20.0
+margin_top = 40.0
 margin_right = 20.0
 margin_bottom = 40.0
 grow_horizontal = 2
