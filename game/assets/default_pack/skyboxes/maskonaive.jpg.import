@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/maskonaive.jpg-4f9ca5c3dd06a6aa8de1eb414c9e19bb.s3tc.stex"
-path.etc2="res://.import/maskonaive.jpg-4f9ca5c3dd06a6aa8de1eb414c9e19bb.etc2.stex"
+path="res://.import/maskonaive.jpg-4f9ca5c3dd06a6aa8de1eb414c9e19bb.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/default_pack/skyboxes/maskonaive.jpg"
-dest_files=[ "res://.import/maskonaive.jpg-4f9ca5c3dd06a6aa8de1eb414c9e19bb.s3tc.stex", "res://.import/maskonaive.jpg-4f9ca5c3dd06a6aa8de1eb414c9e19bb.etc2.stex" ]
+dest_files=[ "res://.import/maskonaive.jpg-4f9ca5c3dd06a6aa8de1eb414c9e19bb.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

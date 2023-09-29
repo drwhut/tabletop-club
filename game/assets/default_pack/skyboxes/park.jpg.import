@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/park.jpg-ae45f164020c80f94b74850e6b8e8045.s3tc.stex"
-path.etc2="res://.import/park.jpg-ae45f164020c80f94b74850e6b8e8045.etc2.stex"
+path="res://.import/park.jpg-ae45f164020c80f94b74850e6b8e8045.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/default_pack/skyboxes/park.jpg"
-dest_files=[ "res://.import/park.jpg-ae45f164020c80f94b74850e6b8e8045.s3tc.stex", "res://.import/park.jpg-ae45f164020c80f94b74850e6b8e8045.etc2.stex" ]
+dest_files=[ "res://.import/park.jpg-ae45f164020c80f94b74850e6b8e8045.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

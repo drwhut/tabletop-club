@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/path.jpg-8006323010b96ef4785cc0938de688a0.s3tc.stex"
-path.etc2="res://.import/path.jpg-8006323010b96ef4785cc0938de688a0.etc2.stex"
+path="res://.import/path.jpg-8006323010b96ef4785cc0938de688a0.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/default_pack/skyboxes/path.jpg"
-dest_files=[ "res://.import/path.jpg-8006323010b96ef4785cc0938de688a0.s3tc.stex", "res://.import/path.jpg-8006323010b96ef4785cc0938de688a0.etc2.stex" ]
+dest_files=[ "res://.import/path.jpg-8006323010b96ef4785cc0938de688a0.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

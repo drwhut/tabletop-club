@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/clouds.jpg-a71968aa7e73126b1adf113b16be3a95.s3tc.stex"
-path.etc2="res://.import/clouds.jpg-a71968aa7e73126b1adf113b16be3a95.etc2.stex"
+path="res://.import/clouds.jpg-a71968aa7e73126b1adf113b16be3a95.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/default_pack/skyboxes/clouds.jpg"
-dest_files=[ "res://.import/clouds.jpg-a71968aa7e73126b1adf113b16be3a95.s3tc.stex", "res://.import/clouds.jpg-a71968aa7e73126b1adf113b16be3a95.etc2.stex" ]
+dest_files=[ "res://.import/clouds.jpg-a71968aa7e73126b1adf113b16be3a95.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

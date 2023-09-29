@@ -80,6 +80,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The main menu music will now fade out gradually when entering the game,
   instead of ending abruptly.
 - The layout of the main menu has been updated.
+- The 'Park' skybox is now the only default skybox, meaning that there is no
+  longer a chance for the 'Park Winter' skybox to appear in the main menu.
 
 ### Removed
 

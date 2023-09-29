@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/hornstulls_strand.jpg-2a9fa5be9a88e047d497e4eb3896f86a.s3tc.stex"
-path.etc2="res://.import/hornstulls_strand.jpg-2a9fa5be9a88e047d497e4eb3896f86a.etc2.stex"
+path="res://.import/hornstulls_strand.jpg-2a9fa5be9a88e047d497e4eb3896f86a.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/default_pack/skyboxes/hornstulls_strand.jpg"
-dest_files=[ "res://.import/hornstulls_strand.jpg-2a9fa5be9a88e047d497e4eb3896f86a.s3tc.stex", "res://.import/hornstulls_strand.jpg-2a9fa5be9a88e047d497e4eb3896f86a.etc2.stex" ]
+dest_files=[ "res://.import/hornstulls_strand.jpg-2a9fa5be9a88e047d497e4eb3896f86a.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
