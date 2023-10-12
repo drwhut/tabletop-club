@@ -33,6 +33,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### UI
 
 - Added a fade-in effect for the main menu when the game first loads.
+- Added full controller support. (#100)
+- Added new bindings for rotating the camera, by default these are bound to the
+  arrow keys.
 
 ### Changed
 
