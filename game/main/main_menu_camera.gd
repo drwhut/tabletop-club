@@ -126,7 +126,7 @@ func set_state(value: int) -> void:
 		
 		CameraState.STATE_PLAYER:
 			camera_transition_to.current = true
-			printt(camera_transition_to.current, current)
+			print("MainMenuCamera: Passed control to the player camera.")
 		
 		CameraState.STATE_PLAYER_TO_ORBIT:
 			current = true
