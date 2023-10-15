@@ -8,3 +8,4 @@ physics_interpolation_mode = 1
 script = ExtResource( 2 )
 
 [node name="ThirdPersonCamera" parent="." instance=ExtResource( 1 )]
+initial_zoom = 80.0

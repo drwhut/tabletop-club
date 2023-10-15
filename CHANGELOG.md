@@ -85,6 +85,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The layout of the main menu has been updated.
 - The 'Park' skybox is now the only default skybox, meaning that there is no
   longer a chance for the 'Park Winter' skybox to appear in the main menu.
+- The game room is now loaded alongside the main menu, removing the need for a
+  loading screen when entering singleplayer or multiplayer.
 
 ### Removed
 
@@ -97,5 +99,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed the `--export-asset-db` command-line argument.
 - The following properties are no longer used in configuration files: `default`,
   `main_menu`.
+
+#### UI
+
+- The randomly selected pieces that were falling in the background of the main
+  menu have been removed.
 
 [unreleased]: https://github.com/drwhut/tabletop-club/compare/HEAD...HEAD

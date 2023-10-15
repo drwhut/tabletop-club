@@ -25,6 +25,13 @@ extends Control
 ## The main menu of the game.
 
 
+## Fired when the player wants to start a singleplayer game.
+signal starting_singleplayer()
+
+
+## The jukebox that plays music while in the main menu.
+onready var jukebox := $MainMenuJukebox
+
 onready var _animation_player := $AnimationPlayer
 onready var _credits_panel := $CreditsPanel
 onready var _game_info_panel := $GameInfoPanel
@@ -37,6 +44,10 @@ func _ready():
 	
 	# For those using a keyboard or controller to navigate the menu.
 	_singleplayer_button.grab_focus()
+
+
+func _on_SingleplayerButton_pressed():
+	emit_signal("starting_singleplayer")
 
 
 func _on_CreditsButton_pressed():

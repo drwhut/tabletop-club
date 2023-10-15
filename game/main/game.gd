@@ -22,13 +22,32 @@
 
 extends Node
 
-## The player controller, which allows the player to interface with the room
-## and manipulate objects.
+## The main node, which connects all of the game components together.
 
 
-onready var _third_person_camera := $ThirdPersonCamera
+onready var _main_menu := $MainMenu
+onready var _main_menu_camera := $MainMenuCamera
+onready var _player_controller := $PlayerController
 
 
-## Get the currently active camera controller.
-func get_camera_controller() -> CameraController:
-	return _third_person_camera as CameraController
+func _ready():
+	# Only allow specific components to run while we are in the main menu.
+	get_tree().paused = true
+	
+	# Since we have access to all components of the game here, establish the
+	# necessary inter-child dependencies.
+	var camera_controller: CameraController = _player_controller.get_camera_controller()
+	var player_camera: Camera = camera_controller.get_camera()
+	_main_menu_camera.camera_transition_to = player_camera
+
+
+func _on_MainMenu_starting_singleplayer():
+	# Allow all components to run fully now we have started the game.
+	get_tree().paused = false
+	
+	# Hide the main menu, and slowly fade out the jukebox music.
+	_main_menu.visible = false
+	_main_menu.jukebox.start_fading_out()
+	
+	# Start transitioning from the main menu camera to the player camera.
+	_main_menu_camera.state = MainMenuCamera.CameraState.STATE_ORBIT_TO_PLAYER

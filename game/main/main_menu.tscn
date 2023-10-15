@@ -201,6 +201,7 @@ focus_on_hide = NodePath("../MainContainer/TertiaryContainer/QuitButton")
 anims/FadeInMenu = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
+[connection signal="pressed" from="MainContainer/PrimaryContainer/SingleplayerButton" to="." method="_on_SingleplayerButton_pressed"]
 [connection signal="pressed" from="MainContainer/SecondaryContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="MainContainer/TertiaryContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="MainContainer/TertiaryContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
