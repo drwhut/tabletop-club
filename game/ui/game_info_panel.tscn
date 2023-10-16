@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tabletop_club_icon.png" type="Texture" id=1]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/game_info_panel.gd" type="Script" id=3]
 [ext_resource path="res://icons/back_icon.svg" type="Texture" id=4]
+[ext_resource path="res://util/controller_rich_text_label.gd" type="Script" id=5]
 
 [node name="GameInfoPanel" type="PopupPanel"]
 margin_right = 960.0
@@ -71,6 +72,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
+script = ExtResource( 5 )
 
 [node name="BackButtonContainer" type="Control" parent="MarginContainer"]
 margin_right = 952.0
