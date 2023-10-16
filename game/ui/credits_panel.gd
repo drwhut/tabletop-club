@@ -39,7 +39,7 @@ func _ready():
 	credits_text = credits_text.replace("IMAGES", tr("Images"))
 	credits_text = credits_text.replace("LOGO AND ICON", tr("Logo and Icon"))
 	credits_text = credits_text.replace("SOUND EFFECTS", tr("Sound Effects"))
-	credits_text = credits_text.replace("TOOL ICONS", tr("Tool Icons"))
+	credits_text = credits_text.replace("OTHER ICONS", tr("Other Icons"))
 	credits_text = credits_text.replace("TRANSLATORS", tr("Translators"))
 	
 	credits_text = credits_text.replace("DUTCH", tr("Dutch"))

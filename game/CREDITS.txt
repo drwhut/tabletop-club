@@ -108,9 +108,16 @@ CURSORS
 ------------
 Jakub 'Nighted' Steiner
 
-TOOL ICONS
+OTHER ICONS
 -----------------
+css.gg
+Delapouite
+Icooon Mono
+Lorc
+Skoll
+Solar Icons
 SVG Repo
+yourtempo
 
 FONTS
 =====

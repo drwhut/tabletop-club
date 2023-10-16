@@ -36,6 +36,14 @@ orbit_radius = 150.0
 orbit_speed = 0.05
 transition_duration_sec = 3.0
 
+[node name="MenuBackground" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.313726 )
+
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
 
+[connection signal="exiting_to_main_menu" from="MainMenu" to="." method="_on_MainMenu_exiting_to_main_menu"]
+[connection signal="returning_to_game" from="MainMenu" to="." method="_on_MainMenu_returning_to_game"]
 [connection signal="starting_singleplayer" from="MainMenu" to="." method="_on_MainMenu_starting_singleplayer"]

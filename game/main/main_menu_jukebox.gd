@@ -47,13 +47,29 @@ func _ready():
 	
 	randomize()
 	_playlist_entry_arr.shuffle()
-	
-	play_current_track()
+
+
+## Check if the jukebox is currently playing a track.
+func is_playing_track() -> bool:
+	return _music_player.playing and (not _fade_out_player.is_playing())
 
 
 ## Play the track that is currently at the front of the queue.
 ## NOTE: Ideally, this should be called after the game volume has been set.
 func play_current_track() -> void:
+	visible = true
+	
+	# If the music is currently fading out as we are trying to play it again,
+	# stop the fade out effect.
+	if _fade_out_player.is_playing():
+		_fade_out_player.stop()
+	
+	# Reset the volume in case it was in the middle of fading out.
+	_music_player.volume_db = 0.0
+	
+	if _music_player.playing:
+		return
+	
 	_now_playing_label.text = tr("Now Playing: Nothing")
 	
 	if _playlist_entry_arr.empty():
@@ -68,7 +84,6 @@ func play_current_track() -> void:
 		return
 	
 	_music_player.stream = music_stream
-	_music_player.volume_db = 0.0
 	_music_player.play()
 	
 	_now_playing_label.text = tr("Now Playing: %s") % music_entry.name
@@ -76,6 +91,7 @@ func play_current_track() -> void:
 
 ## Start fading out the music until it stops.
 func start_fading_out() -> void:
+	visible = false
 	_fade_out_player.play("FadeOutMusic")
 
 

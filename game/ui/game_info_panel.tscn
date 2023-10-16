@@ -15,14 +15,16 @@ script = ExtResource( 3 )
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
 
 [node name="SplitContainer" type="HBoxContainer" parent="MarginContainer"]
-margin_right = 952.0
-margin_bottom = 532.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 956.0
+margin_bottom = 536.0
 
 [node name="VersionContainer" type="VBoxContainer" parent="MarginContainer/SplitContainer"]
 margin_right = 270.0
@@ -75,8 +77,10 @@ SOFTWARE."
 script = ExtResource( 5 )
 
 [node name="BackButtonContainer" type="Control" parent="MarginContainer"]
-margin_right = 952.0
-margin_bottom = 532.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 956.0
+margin_bottom = 536.0
 mouse_filter = 2
 
 [node name="BackButton" type="Button" parent="MarginContainer/BackButtonContainer"]

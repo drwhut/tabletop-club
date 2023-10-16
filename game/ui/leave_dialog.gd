@@ -20,20 +20,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Node
+extends AttentionPanel
 
-## The player controller, which allows the player to interface with the room
-## and manipulate objects.
-
-
-onready var _third_person_camera := $ThirdPersonCamera
+## A dialog asking the player if they want to leave the current session.
 
 
-## Get the currently active camera controller.
-func get_camera_controller() -> CameraController:
-	return _third_person_camera as CameraController
+## Fired if the player wishes to leave the current session.
+signal leaving_session()
 
 
-## Reset the player controller to its default state.
-func reset() -> void:
-	get_camera_controller().reset_transform()
+func _on_BackButton_pressed():
+	visible = false
+
+
+func _on_QuitButton_pressed():
+	visible = false
+	emit_signal("leaving_session")

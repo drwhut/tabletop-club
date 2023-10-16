@@ -188,6 +188,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://www.svgrepo.com/svg/478288/internet
 
 
+- Leave icon
+
+	Files:
+		icons/leave_icon.svg
+	Author: Delapouite
+	License: CC BY 3.0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://game-icons.net/1x1/delapouite/walk.html
+
+
 - Loading background
 
 	Files:
