@@ -41,6 +41,12 @@ func _init():
 	connect("popup_hide", self, "_on_popup_hide")
 
 
+func _input(event: InputEvent):
+	if visible and event.is_action_released("ui_cancel"):
+		visible = false
+		get_tree().set_input_as_handled()
+
+
 func _set_control_visible(node_path: NodePath, is_visible: bool) -> void:
 	if node_path.is_empty():
 		return
