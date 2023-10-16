@@ -24,6 +24,7 @@ margin_bottom = -4.0
 [node name="CreditsLabel" type="RichTextLabel" parent="MarginContainer"]
 margin_right = 572.0
 margin_bottom = 592.0
+focus_neighbour_left = NodePath("../BackButtonContainer/BackButton")
 focus_mode = 2
 custom_fonts/italics_font = ExtResource( 5 )
 custom_fonts/normal_font = ExtResource( 4 )
@@ -41,6 +42,7 @@ anchor_bottom = 1.0
 margin_top = -36.0
 margin_right = 60.0
 rect_min_size = Vector2( 100, 0 )
+focus_neighbour_right = NodePath("../../CreditsLabel")
 custom_fonts/font = ExtResource( 2 )
 text = "Back"
 icon = ExtResource( 3 )
