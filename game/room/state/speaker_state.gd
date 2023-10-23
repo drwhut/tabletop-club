@@ -28,9 +28,12 @@ extends PieceState
 
 ## If [code]true[/code], the speaker is currently outputting to the music bus.
 ## Otherwise, it is outputting to the sounds bus.
+## TODO: Is this necessary if we know [member track_entry] is a music track?
 export(bool) var is_using_music_bus := true
 
 ## Determines if the speaker is currently playing audio.
+## TODO: Combine this with is_paused to make an enum of values? Decide once we
+## re-write the Speaker class?
 export(bool) var is_playing := false
 
 ## Determines if the track being played is currently paused.

@@ -26,7 +26,9 @@ extends Resource
 ## Details the state of a generic piece within a [RoomState].
 
 
-## The index of the piece within the room.
+## The index of the piece within the room. If the value is negative, this is
+## seen as 'to-be-determined', and should be assigned when the piece is added
+## to the room.
 export(int) var index_id := 0
 
 ## The [AssetEntryScene] that this piece was built from.
@@ -42,10 +44,12 @@ export(Transform) var transform := Transform.IDENTITY
 ## The custom scale of the piece.
 ## NOTE: This information is not included in the transform, as the scale is
 ## applied before any rotation occurs.
+## TODO: For this and the albedo, double-check if these are the values BEFORE
+## or AFTER the entry's scale and albedo from v0.1.x!
 export(Vector3) var user_scale := Vector3.ONE
 
 ## The custom albedo colour applied to this piece.
-export(Color) var albedo_override := Color.white
+export(Color) var user_albedo := Color.white
 
 
 func set_scene_entry(entry: AssetEntryScene) -> void:
