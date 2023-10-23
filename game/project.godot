@@ -139,6 +139,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/Card.gd"
 }, {
+"base": "PieceState",
+"class": "ContainerState",
+"language": "GDScript",
+"path": "res://room/state/container_state.gd"
+}, {
 "base": "RichTextLabel",
 "class": "ControllerRichTextLabel",
 "language": "GDScript",
@@ -209,10 +214,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gut/test.gd"
 }, {
+"base": "Resource",
+"class": "HandState",
+"language": "GDScript",
+"path": "res://room/state/hand_state.gd"
+}, {
 "base": "Area",
 "class": "HiddenArea",
 "language": "GDScript",
 "path": "res://Scripts/Game/3D/HiddenArea.gd"
+}, {
+"base": "Resource",
+"class": "HiddenAreaState",
+"language": "GDScript",
+"path": "res://room/state/hidden_area_state.gd"
 }, {
 "base": "Node",
 "class": "IndexManager",
@@ -264,6 +279,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/PieceContainer.gd"
 }, {
+"base": "Resource",
+"class": "PieceState",
+"language": "GDScript",
+"path": "res://room/state/piece_state.gd"
+}, {
 "base": "Control",
 "class": "Preview",
 "language": "GDScript",
@@ -273,6 +293,16 @@ _global_script_classes=[ {
 "class": "RoomEnvironment",
 "language": "GDScript",
 "path": "res://room/room_environment.gd"
+}, {
+"base": "Resource",
+"class": "RoomState",
+"language": "GDScript",
+"path": "res://room/state/room_state.gd"
+}, {
+"base": "RoomState",
+"class": "RoomStateMultiplayer",
+"language": "GDScript",
+"path": "res://room/state/room_state_multiplayer.gd"
 }, {
 "base": "Reference",
 "class": "SanityCheck",
@@ -288,6 +318,11 @@ _global_script_classes=[ {
 "class": "SpeakerPiece",
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/SpeakerPiece.gd"
+}, {
+"base": "PieceState",
+"class": "SpeakerState",
+"language": "GDScript",
+"path": "res://room/state/speaker_state.gd"
 }, {
 "base": "HBoxContainer",
 "class": "SpinBoxButton",
@@ -339,6 +374,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/TimerPiece.gd"
 }, {
+"base": "SpeakerState",
+"class": "TimerState",
+"language": "GDScript",
+"path": "res://room/state/timer_state.gd"
+}, {
 "base": "Button",
 "class": "VerticalButton",
 "language": "GDScript",
@@ -371,6 +411,7 @@ _global_script_class_icons={
 "BindButton": "",
 "CameraController": "",
 "Card": "",
+"ContainerState": "",
 "ControllerRichTextLabel": "",
 "CustomValue": "",
 "Dice": "",
@@ -385,7 +426,9 @@ _global_script_class_icons={
 "GeoDataSaver": "",
 "GutHookScript": "",
 "GutTest": "",
+"HandState": "",
 "HiddenArea": "",
+"HiddenAreaState": "",
 "IndexManager": "",
 "MainMenuCamera": "",
 "ObjectPreview": "",
@@ -396,11 +439,15 @@ _global_script_class_icons={
 "PieceBuilder": "",
 "PieceCache": "",
 "PieceContainer": "",
+"PieceState": "",
 "Preview": "",
 "RoomEnvironment": "",
+"RoomState": "",
+"RoomStateMultiplayer": "",
 "SanityCheck": "",
 "SaveDialog": "",
 "SpeakerPiece": "",
+"SpeakerState": "",
 "SpinBoxButton": "",
 "Stack": "",
 "StackLasagne": "",
@@ -411,6 +458,7 @@ _global_script_class_icons={
 "TemplateTextbox": "",
 "TimeEdit": "",
 "TimerPiece": "",
+"TimerState": "",
 "VerticalButton": ""
 }
 
