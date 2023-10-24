@@ -354,6 +354,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://room/state/state_loader.gd"
 }, {
+"base": "Reference",
+"class": "StateSaver",
+"language": "GDScript",
+"path": "res://room/state/state_saver.gd"
+}, {
 "base": "Spatial",
 "class": "TableManager",
 "language": "GDScript",
@@ -459,6 +464,7 @@ _global_script_class_icons={
 "StackSandwich": "",
 "StackablePiece": "",
 "StateLoader": "",
+"StateSaver": "",
 "TableManager": "",
 "TaggedDirectory": "",
 "TemplateTextbox": "",
