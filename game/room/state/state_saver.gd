@@ -31,6 +31,12 @@ extends Reference
 
 ## Convert the given [RoomState] into an equivalent [Dictionary] form.
 static func state_to_dict(state: RoomState) -> Dictionary:
+	# For backwards compatibility with v0.1.x, rather than putting in an empty
+	# byte array when there is no image data to be saved, put null instead.
+	var paint_image_data = null
+	if state.table_paint_image != null:
+		paint_image_data = state.table_paint_image.get_data()
+	
 	var out := {
 		"version": ProjectSettings.get_setting("application/config/version"),
 		
@@ -48,8 +54,7 @@ static func state_to_dict(state: RoomState) -> Dictionary:
 					if state.table_entry != null else "",
 			"is_rigid": state.is_table_rigid,
 			# TODO: Make sure an image is not put in the state if it is empty.
-			"paint_image_data": state.table_paint_image.get_data() \
-					if state.table_paint_image != null else null,
+			"paint_image_data": paint_image_data,
 			"transform": state.table_transform
 		}
 	}
@@ -91,6 +96,7 @@ static func embed_piece_states(state_list: Array, out: Dictionary) -> void:
 	var containers_dict := {}
 	var pieces_dict := {}
 	var speakers_dict := {}
+	var stacks_dict := {}
 	var timers_dict := {}
 	
 	for element in state_list:
@@ -107,13 +113,34 @@ static func embed_piece_states(state_list: Array, out: Dictionary) -> void:
 		var target_dict := pieces_dict
 		
 		if piece_state is ContainerState:
-			target_dict = containers_dict
+			# Containers are represented as their own mesh, can store any type
+			# of object, and do not store them in any particular order, so we
+			# need to represent the contents in a dictionary.
+			if piece_state.scene_entry != null:
+				target_dict = containers_dict
+				
+				var content_dict := {}
+				embed_piece_states(piece_state.content_states, content_dict)
+				piece_dict["pieces"] = content_dict
 			
-			# TODO: Should this be an array instead? If so, account for v0.1.x
-			# backwards compatibility.
-			var content_dict := {}
-			embed_piece_states(piece_state.content_states, content_dict)
-			piece_dict["pieces"] = content_dict
+			# Stacks do not have their own mesh, can only store specific
+			# objects, and they store them in a particular order, so we need to
+			# represent them in a special array.
+			else:
+				target_dict = stacks_dict
+				
+				var content_arr := []
+				for subelement in piece_state.content_states:
+					var subpiece_state: PieceState = subelement
+					var subpiece_dict := {
+						"entry_path": subpiece_state.scene_entry.get_path() \
+								if subpiece_state.scene_entry != null else "",
+						"transform": subpiece_state.transform,
+						"color": subpiece_state.user_albedo
+					}
+					content_arr.push_back(subpiece_dict)
+				
+				piece_dict["pieces"] = content_arr
 		
 		if piece_state is SpeakerState:
 			target_dict = speakers_dict
@@ -139,6 +166,7 @@ static func embed_piece_states(state_list: Array, out: Dictionary) -> void:
 	out["containers"] = containers_dict
 	out["pieces"] = pieces_dict
 	out["speakers"] = speakers_dict
+	out["stacks"] = stacks_dict
 	out["timers"] = timers_dict
 
 

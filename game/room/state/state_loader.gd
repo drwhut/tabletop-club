@@ -188,10 +188,8 @@ static func extract_piece_states(dict: Dictionary, out: Array) -> void:
 	extract_piece_states_of_type(dict, out, "containers")
 	extract_piece_states_of_type(dict, out, "pieces")
 	extract_piece_states_of_type(dict, out, "speakers")
-	extract_piece_states_of_type(dict, out, "timers")
-	
-	# Backwards compatibility with v0.1.x:
 	extract_piece_states_of_type(dict, out, "stacks")
+	extract_piece_states_of_type(dict, out, "timers")
 
 
 ## A helper function for [method dict_to_state] - given a [RoomState] in
@@ -234,10 +232,10 @@ static func extract_piece_states_of_type(dict: Dictionary, out: Array,
 				pass
 			"speakers":
 				piece_state = SpeakerState.new()
+			"stacks":
+				piece_state = ContainerState.new()
 			"timers":
 				piece_state = TimerState.new()
-			"stacks": # Backwards compatibility with v0.1.x!
-				piece_state = ContainerState.new()
 			_:
 				push_warning("Unknown piece type '%s' in room state - likely loading state made with future version" %
 						type)
@@ -254,35 +252,34 @@ static func extract_piece_states_of_type(dict: Dictionary, out: Array,
 		piece_state.user_albedo = detail_parser.get_strict_type("color",
 				piece_state.user_albedo)
 		
-		# In v0.1.x, "containers" and "stacks" are seperate dictionaries. In
-		# v0.2.0 and onwards, they have both been merged into "containers", and
-		# the way to tell them apart is by checking if the entry path for the
-		# piece state is null or not. By default, the state should have it set
-		# to null.
-		if type != "stacks": # v0.1.x: Does not contain 'entry_path' data.
+		# Stacks are a special type of piece, in that they in themselves do not
+		# display a mesh - what they look like entirely depends on their
+		# contents. Therefore, we do not read the 'entry_path' value here, and
+		# leave the relevant resource property as null.
+		if type != "stacks":
 			var scene_entry_path: String = detail_parser.get_strict_type(
 					"entry_path", "")
-			if not scene_entry_path.empty(): # Empty = This is a stack.
-				var scene_entry := AssetDB.get_entry(scene_entry_path) \
-						as AssetEntryScene
-				if scene_entry != null:
-					piece_state.scene_entry = scene_entry
-				else:
-					push_error("Missing scene entry '%s' for container" %
-							scene_entry_path)
-					continue
+			var scene_entry := AssetDB.get_entry(scene_entry_path) \
+					as AssetEntryScene
+			
+			if scene_entry != null:
+				piece_state.scene_entry = scene_entry
+			else:
+				push_error("Missing scene entry '%s' for container" %
+						scene_entry_path)
+				continue
 		
 		if piece_state is ContainerState:
 			# Since this array is exported, we need to make sure it does not
 			# share a reference with its fellow arrays.
 			piece_state.content_states = []
 			
-			if type != "stacks":
+			if type == "containers":
 				var contents_dict: Dictionary = detail_parser.get_strict_type(
 						"pieces", {})
 				extract_piece_states(contents_dict, piece_state.content_states)
 			
-			else: # Backwards compatibility with v0.1.x!
+			else:
 				var contents_list: Array = detail_parser.get_strict_type(
 					"pieces", [])
 				for stack_piece_detail_dict in contents_list:
@@ -307,12 +304,22 @@ static func extract_piece_states_of_type(dict: Dictionary, out: Array,
 						continue
 					element_state.scene_entry = element_entry
 					
-					var flip_y: bool = stack_piece_parser.get_strict_type(
-						"flip_y", false)
-					if flip_y:
-						var new_basis := element_state.transform.basis.rotated(
-								Vector3.BACK, PI)
-						element_state.transform.basis = new_basis
+					var element_color: Color = stack_piece_parser.get_strict_type(
+							"color", Color.white)
+					element_state.user_albedo = element_color
+					
+					if stack_piece_detail_dict.has("transform"):
+						var transform: Transform = \
+								stack_piece_parser.get_strict_type("transform",
+								Transform.IDENTITY)
+						element_state.transform = transform
+					else: # Backwards compatibility with v0.1.x!
+						var flip_y: bool = stack_piece_parser.get_strict_type(
+								"flip_y", false)
+						var basis := element_state.transform.basis
+						if flip_y:
+							basis = basis.rotated(Vector3.BACK, PI)
+						element_state.transform.basis = basis
 					
 					piece_state.content_states.push_back(element_state)
 		
