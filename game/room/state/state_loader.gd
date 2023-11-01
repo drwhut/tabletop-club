@@ -101,7 +101,7 @@ static func dict_to_state(dict: Dictionary) -> RoomState:
 	if paint_image_data is PoolByteArray:
 		# TODO: Use values from PaintPlane class once it is made.
 		var paint_image := Image.new()
-		paint_image.create_from_data(512, 512, false, Image.FORMAT_RGB8,
+		paint_image.create_from_data(512, 512, false, Image.FORMAT_RGBA8,
 				paint_image_data)
 		state.table_paint_image = paint_image
 	else:
@@ -339,7 +339,7 @@ static func extract_piece_states_of_type(dict: Dictionary, out: Array,
 			
 			var track_entry_path: String = detail_parser.get_strict_type(
 					"track_entry", "")
-			if track_entry_path.empty():
+			if not track_entry_path.empty():
 				var track_entry := AssetDB.get_entry(track_entry_path) \
 						as AssetEntryAudio
 				if track_entry != null:
