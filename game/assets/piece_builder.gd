@@ -50,6 +50,6 @@ func build_table(table_entry: AssetEntryTable) -> RigidBody:
 	table.mode = RigidBody.MODE_STATIC
 	table.physics_material_override = table_entry.physics_material
 	
-	# TODO: Should we adjust the centre of mass for tables?
+	# TODO: Adjust the centre of mass for tables for compatibility with v0.1.x.
 	
 	return table

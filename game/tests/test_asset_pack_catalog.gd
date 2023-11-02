@@ -48,7 +48,7 @@ const SIGNAL_OUTPUT_FILES_EXPECTED := [
 	"dice/d4/test_d4.obj",
 	"dice/d6/test_d6.obj",
 	"dice/d8/test_d8.obj",
-	"games/test_game.tc",
+	"games/test_state_v0.1.2.tc",
 	"music/test_music.wav",
 	"pieces/bad_file.obj",
 	"pieces/piece_mat.mtl",
@@ -482,7 +482,8 @@ func test_full_import() -> void:
 	var test_game: AssetEntrySave = pack.games[0]
 	assert_eq(test_game.id, "Awesome Game")
 	assert_eq(test_game.desc, "This is an awesome game, you should play it.")
-	assert_eq(test_game.save_file_path, "user://assets/%s/games/test_game.tc" % PACK_NAME)
+	assert_eq(test_game.save_file_path,
+			"user://assets/%s/games/test_state_v0.1.2.tc" % PACK_NAME)
 	
 	assert_eq(pack.music.size(), 1)
 	var test_music: AssetEntryAudio = pack.music[0]

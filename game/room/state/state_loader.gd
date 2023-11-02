@@ -337,8 +337,23 @@ static func extract_piece_states_of_type(dict: Dictionary, out: Array,
 			piece_state.unit_size = detail_parser.get_strict_type(
 					"unit_size", piece_state.unit_size)
 			
-			var track_entry_path: String = detail_parser.get_strict_type(
-					"track_entry", "")
+			var track_entry_path := ""
+			if piece_detail_dict.has("track_entry"):
+				var track_entry_data = piece_detail_dict["track_entry"]
+				
+				if track_entry_data is String:
+					track_entry_path = track_entry_data
+				
+				# Backwards compatibility with v0.1.x!
+				elif track_entry_data is Dictionary:
+					var track_parser := DictionaryParser.new(track_entry_data)
+					track_entry_path = track_parser.get_strict_type(
+							"entry_path", "")
+				
+				else:
+					push_error("Track entry data type is invalid (expected: String, got: %s)" %
+							SanityCheck.get_type_name(typeof(track_entry_data)))
+			
 			if not track_entry_path.empty():
 				var track_entry := AssetDB.get_entry(track_entry_path) \
 						as AssetEntryAudio

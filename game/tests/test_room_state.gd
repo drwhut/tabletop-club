@@ -513,3 +513,276 @@ func test_saving_and_loading_state() -> void:
 	var user_dir := Directory.new()
 	user_dir.remove(STATE_FILE_PATH)
 	assert_file_does_not_exist(STATE_FILE_PATH)
+
+
+## This test ensures there is still backwards compatibility with state files
+## made with v0.1.x versions of the game.
+func test_loading_v0_1_x_state() -> void:
+	var state := StateLoader.load(
+			"res://tests/test_pack/games/test_state_v0.1.2.tc")
+	assert_not_null(state)
+	
+	assert_eq(state.lamp_color, Color(0.5, 0.5, 0.5))
+	assert_eq(state.lamp_intensity, 1.5)
+	assert_eq(state.is_lamp_sunlight, true)
+	
+	assert_eq(state.skybox_entry,
+			preload("res://assets/default_pack/skyboxes/clouds.tres"))
+	assert_eq(state.table_entry,
+			preload("res://assets/default_pack/tables/poker_table.tres"))
+	
+	var table_transform := state.table_transform
+	assert_eq(table_transform.basis, Basis.IDENTITY)
+	assert_true(table_transform.origin.is_equal_approx(
+			Vector3(0.0, -32.319653, 0.0)))
+	
+	assert_eq(state.is_table_rigid, false)
+	assert_null(state.table_paint_image)
+	
+	assert_eq(state.hidden_area_states.size(), 1)
+	
+	var hidden_area := state.hidden_area_states[0] as HiddenAreaState
+	assert_not_null(hidden_area)
+	assert_eq(hidden_area.index_id, 9)
+	assert_eq(hidden_area.player_id, 1)
+	var hidden_area_transform := hidden_area.transform
+	
+	# NOTE: The scales represented here are half the size of the actual hidden
+	# area, due to the way the scene is constructed.
+	assert_true(hidden_area_transform.basis.x.is_equal_approx(
+			Vector3(8.365574, 0.0, 0.0)))
+	assert_true(hidden_area_transform.basis.y.is_equal_approx(
+			Vector3(0.0, 1.0, 0.0)))
+	assert_true(hidden_area_transform.basis.z.is_equal_approx(
+			Vector3(0.0, 0.0, 8.300234)))
+	assert_true(hidden_area_transform.origin.is_equal_approx(
+			Vector3(30.678532, 0.0, 26.096083)))
+	
+	assert_eq(state.piece_states.size(), 7)
+	
+	var outer_container := state.piece_states[0] as ContainerState
+	assert_not_null(outer_container)
+	assert_eq(outer_container.index_id, 40)
+	assert_eq(outer_container.scene_entry,
+			preload("res://assets/default_pack/containers/red_cup.tres"))
+	assert_false(outer_container.is_stack()) # Specific to containers.
+	assert_eq(outer_container.is_locked, true)
+	var container_transform := outer_container.transform
+	assert_eq(container_transform.basis, Basis.IDENTITY)
+	assert_eq(container_transform.origin, Vector3(0.0, 10.0, 25.0))
+	assert_eq(outer_container.user_scale, Vector3(1.0, 2.0, 1.0))
+	assert_eq(outer_container.user_albedo, Color.white)
+	
+	assert_eq(outer_container.content_states.size(), 2)
+	
+	var inner_container := outer_container.content_states[0] as ContainerState
+	assert_not_null(inner_container)
+	assert_eq(inner_container.index_id, 41)
+	assert_eq(inner_container.scene_entry,
+			preload("res://assets/default_pack/containers/purse.tres"))
+	assert_false(inner_container.is_stack()) # Specific to containers.
+	assert_eq(inner_container.is_locked, true)
+	
+	# NOTE: Since the piece needed to collide with the container for it to be
+	# absorbed, the rotation will have been knocked over slightly. Therefore,
+	# we can't rely on is_equal_approx(), since the basis will have more than
+	# likely changed more than 1.0e-05.
+	assert_lt(inner_container.transform.basis.x.distance_to(Vector3.RIGHT), 0.005)
+	assert_lt(inner_container.transform.basis.y.distance_to(Vector3.UP), 0.005)
+	assert_lt(inner_container.transform.basis.z.distance_to(Vector3.BACK), 0.005)
+	
+	# Similarly, as the piece was being set to static far away from the table,
+	# it may have collided with the other pieces there before being frozen.
+	assert_lt(inner_container.transform.origin.distance_to(
+			Vector3(9999.0, 9999.0, 9999.0)), 120.0)
+	
+	assert_eq(inner_container.user_scale, Vector3.ONE)
+	assert_eq(inner_container.user_albedo, Color.white)
+	
+	assert_eq(inner_container.content_states.size(), 1)
+	
+	var dice := inner_container.content_states[0] as PieceState
+	assert_not_null(dice)
+	assert_eq(dice.index_id, 42)
+	assert_eq(dice.scene_entry,
+			preload("res://assets/default_pack/dice/d6/d6_black.tres"))
+	assert_eq(dice.is_locked, true)
+	
+	assert_lt(inner_container.transform.basis.x.distance_to(Vector3.RIGHT), 0.005)
+	assert_lt(inner_container.transform.basis.y.distance_to(Vector3.UP), 0.005)
+	assert_lt(inner_container.transform.basis.z.distance_to(Vector3.BACK), 0.005)
+	
+	assert_lt(inner_container.transform.origin.distance_to(
+			Vector3(9999.0, 9999.0, 9999.0)), 120.0)
+	
+	assert_eq(dice.user_scale, Vector3.ONE)
+	assert_eq(dice.user_albedo, Color.white)
+	
+	var card_stack := outer_container.content_states[1] as ContainerState
+	assert_not_null(card_stack)
+	assert_eq(card_stack.index_id, 43)
+	assert_eq(card_stack.scene_entry, null)
+	assert_true(card_stack.is_stack()) # Specific to containers.
+	assert_eq(card_stack.is_locked, true)
+	
+	# The stack was inserted upside-down.
+	assert_lt(card_stack.transform.basis.x.distance_to(Vector3.LEFT), 0.005)
+	assert_lt(card_stack.transform.basis.y.distance_to(Vector3.DOWN), 0.005)
+	assert_lt(card_stack.transform.basis.z.distance_to(Vector3.BACK), 0.005)
+	
+	assert_lt(card_stack.transform.origin.distance_to(
+			Vector3(9999.0, 9999.0, 9999.0)), 120.0)
+	
+	assert_eq(card_stack.user_scale, Vector3(6.35, 1.0, 8.89))
+	assert_eq(card_stack.user_albedo, Color.white)
+	
+	assert_eq(card_stack.content_states.size(), 2)
+	
+	var card_1 := card_stack.content_states[0] as PieceState
+	assert_not_null(card_1)
+	assert_eq(card_1.index_id, -1) # In a stack.
+	assert_eq(card_1.scene_entry,
+			preload("res://assets/default_pack/cards/spades_13.tres"))
+	assert_eq(card_1.is_locked, false)
+	assert_eq(card_1.transform, Transform.IDENTITY)
+	assert_eq(card_1.user_scale, Vector3.ONE) # In a stack.
+	assert_eq(card_1.user_albedo, Color.white)
+	
+	var card_2 := card_stack.content_states[1] as PieceState
+	assert_not_null(card_2)
+	assert_eq(card_2.index_id, -1) # In a stack.
+	assert_eq(card_2.scene_entry,
+			preload("res://assets/default_pack/cards/ww_werewolf.tres"))
+	assert_eq(card_2.is_locked, false)
+	assert_eq(card_2.transform, Transform.IDENTITY)
+	assert_eq(card_2.user_scale, Vector3.ONE) # In a stack.
+	assert_eq(card_2.user_albedo, Color.white)
+	
+	var board := state.piece_states[1] as PieceState
+	assert_not_null(board)
+	assert_eq(board.index_id, 44)
+	assert_eq(board.scene_entry,
+			preload("res://assets/default_pack/boards/chess_board.tres"))
+	assert_eq(board.is_locked, true)
+	assert_eq(board.transform.basis, Basis.IDENTITY)
+	assert_eq(board.transform.origin, Vector3(0.0, 5.0, -5.0))
+	assert_eq(board.user_scale, Vector3.ONE)
+	assert_eq(board.user_albedo, Color.white)
+	
+	var white_dice := state.piece_states[2] as PieceState
+	assert_not_null(white_dice)
+	assert_eq(white_dice.index_id, 45)
+	assert_eq(white_dice.scene_entry,
+			preload("res://assets/default_pack/dice/d6/d6_red.tres"))
+	assert_eq(white_dice.is_locked, true)
+	assert_eq(white_dice.transform.basis, Basis.IDENTITY)
+	assert_eq(white_dice.transform.origin, Vector3(-60.0, 1.0, 0.0))
+	assert_eq(white_dice.user_scale, Vector3.ONE)
+	assert_eq(white_dice.user_albedo, Color.white)
+	# TODO: This red dice was coloured white, but both dice have the same value
+	# for 'user_albedo'. There needs to be a way to differentiate whether to
+	# set the colour or not.
+	
+	var red_dice := state.piece_states[3] as PieceState
+	assert_not_null(red_dice)
+	assert_eq(red_dice.index_id, 46)
+	assert_eq(red_dice.scene_entry,
+			preload("res://assets/default_pack/dice/d6/d6_red.tres"))
+	assert_eq(red_dice.is_locked, true)
+	assert_true(red_dice.transform.basis.x.is_equal_approx(Vector3.LEFT))
+	assert_true(red_dice.transform.basis.y.is_equal_approx(Vector3.UP))
+	assert_true(red_dice.transform.basis.z.is_equal_approx(Vector3.FORWARD))
+	assert_eq(red_dice.transform.origin, Vector3(-50.0, 1.0, 0.0))
+	assert_eq(red_dice.user_scale, Vector3.ONE)
+	assert_eq(red_dice.user_albedo, Color.white)
+	
+	var speaker := state.piece_states[4] as SpeakerState
+	assert_not_null(speaker)
+	assert_eq(speaker.index_id, 47)
+	assert_eq(speaker.scene_entry,
+			preload("res://assets/default_pack/speakers/gramophone.tres"))
+	assert_eq(speaker.is_locked, true)
+	assert_eq(speaker.transform.basis, Basis.IDENTITY)
+	assert_eq(speaker.transform.origin, Vector3(-50.0, 30.0, -15.0))
+	assert_eq(speaker.user_scale, Vector3(0.5, 1.5, 0.5))
+	assert_eq(speaker.user_albedo, Color.white)
+	assert_eq(speaker.is_using_music_bus, true)
+	assert_eq(speaker.is_playing, true)
+	assert_eq(speaker.is_paused, false)
+	assert_eq(speaker.is_positional, false)
+	assert_true(is_equal_approx(speaker.playback_position, 108.779686))
+	assert_eq(speaker.unit_size, 50.0)
+	assert_eq(speaker.track_entry,
+			preload("res://assets/default_pack/music/kevin_macleod_smooth_lovin.tres"))
+	
+	var token_stack := state.piece_states[5] as ContainerState
+	assert_not_null(token_stack)
+	assert_eq(token_stack.index_id, 48)
+	assert_eq(token_stack.scene_entry, null)
+	assert_true(token_stack.is_stack()) # Specific to containers.
+	assert_eq(token_stack.is_locked, true)
+	var stack_transform := token_stack.transform
+	assert_true(stack_transform.basis.x.is_equal_approx(Vector3.RIGHT))
+	assert_true(stack_transform.basis.y.is_equal_approx(Vector3.BACK))
+	assert_true(stack_transform.basis.z.is_equal_approx(Vector3.DOWN))
+	assert_eq(stack_transform.origin, Vector3(-40.0, 5.0, 20.0))
+	assert_eq(token_stack.user_scale, Vector3(2.4, 1.0, 4.8))
+	assert_eq(token_stack.user_albedo, Color.white)
+	
+	assert_eq(token_stack.content_states.size(), 3)
+	
+	var token_1 := token_stack.content_states[0] as PieceState
+	assert_not_null(token_1)
+	assert_eq(token_1.index_id, -1) # Inside a stack.
+	assert_eq(token_1.scene_entry,
+			preload("res://assets/default_pack/tokens/domino/domino_2_5.tres"))
+	assert_eq(token_1.is_locked, false)
+	assert_eq(token_1.transform, Transform.IDENTITY)
+	assert_eq(token_1.user_scale, Vector3.ONE)
+	assert_eq(token_1.user_albedo, Color.white)
+	
+	var token_2 := token_stack.content_states[1] as PieceState
+	assert_not_null(token_2)
+	assert_eq(token_2.index_id, -1) # Inside a stack.
+	assert_eq(token_2.scene_entry,
+			preload("res://assets/default_pack/tokens/domino/domino_6_6.tres"))
+	assert_eq(token_2.is_locked, false)
+	assert_eq(token_2.transform, Transform.IDENTITY)
+	assert_eq(token_2.user_scale, Vector3.ONE)
+	assert_eq(token_2.user_albedo, Color.white)
+	
+	var token_3 := token_stack.content_states[2] as PieceState
+	assert_not_null(token_3)
+	assert_eq(token_3.index_id, -1) # Inside a stack.
+	assert_eq(token_3.scene_entry,
+			preload("res://assets/default_pack/tokens/domino/domino_4_5.tres"))
+	assert_eq(token_3.is_locked, false)
+	assert_eq(token_3.transform, Transform.IDENTITY)
+	assert_eq(token_3.user_scale, Vector3.ONE)
+	assert_eq(token_3.user_albedo, Color.white)
+	
+	var timer := state.piece_states[6] as TimerState
+	assert_not_null(timer)
+	assert_eq(timer.index_id, 49)
+	assert_eq(timer.scene_entry,
+			preload("res://assets/default_pack/timers/radio.tres"))
+	assert_eq(timer.is_locked, true)
+	var timer_transform := timer.transform
+	assert_true(timer_transform.basis.x.is_equal_approx(Vector3.BACK))
+	assert_true(timer_transform.basis.y.is_equal_approx(Vector3.UP))
+	assert_true(timer_transform.basis.z.is_equal_approx(Vector3.LEFT))
+	assert_eq(timer_transform.origin, Vector3(50.0, 10.0, 20.0))
+	assert_eq(timer.user_scale, Vector3(2.0, 1.0, 1.0))
+	assert_eq(timer.user_albedo, Color.white)
+	assert_eq(timer.is_using_music_bus, false)
+	assert_eq(timer.is_playing, false)
+	assert_eq(timer.is_paused, false)
+	assert_eq(timer.is_positional, true)
+	assert_eq(timer.playback_position, 0.0)
+	assert_eq(timer.unit_size, 50.0)
+	assert_eq(timer.track_entry,
+			preload("res://assets/default_pack/sounds/alarm.tres"))
+	assert_eq(timer.is_timer_paused, true)
+	assert_eq(timer.timer_mode, 1) # TODO: Replace with STOPWATCH.
+	# Apparently I managed to pause the timer so that it was .2 recurring! :O
+	assert_true(is_equal_approx(timer.timer_time, 5.222222))
