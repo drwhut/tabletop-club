@@ -20,38 +20,28 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-class_name PieceBuilder
-extends Reference
+extends Spatial
 
-## Used to build piece and table objects from their respective asset entries.
-##
-## TODO: Test this class once it is complete.
+## Handles all room logic, which mostly consists of 3D elements.
 
 
-## Build a table object from its given entry.
-## TODO: Switch to custom class instead of RigidBody.
-func build_table(table_entry: AssetEntryTable) -> RigidBody:
-	var scene := table_entry.load_scene()
-	if scene == null:
-		# TODO: Maybe instead of returning null, use an "error" object?
-		push_error("Failed to load scene for table '%s'" % table_entry.get_path())
-		return null
+onready var _light_manager := $LightManager
+onready var _room_environment := $RoomEnvironment
+onready var _table_manager := $TableManager
+
+
+func _ready():
+	var state := StateLoader.load("res://tests/test_pack/games/test_state_v0.1.2.tc")
+	set_state(state)
+
+
+## Set the state of the room with a [RoomState].
+func set_state(state: RoomState) -> void:
+	_light_manager.light_color = state.lamp_color
+	_light_manager.light_intensity = state.lamp_intensity
+	_light_manager.sun_light_enabled = state.is_lamp_sunlight
 	
-	var instance := scene.instance()
-	var table: RigidBody = null
+	_room_environment.set_skybox(state.skybox_entry)
 	
-	if instance is RigidBody:
-		table = instance
-	else:
-		# TODO: Make table objects from custom scenes.
-		pass
-	
-	table.mass = 100000 # = 10kg
-	table.mode = RigidBody.MODE_STATIC
-	table.physics_material_override = table_entry.physics_material
-	
-	# TODO: Adjust the centre of mass for tables for compatibility with v0.1.x.
-	# Remember that tables need to keep their original position, whereas pieces
-	# do not.
-	
-	return table
+	_table_manager.set_table(state.table_entry)
+	_table_manager.set_table_transform(state.table_transform)

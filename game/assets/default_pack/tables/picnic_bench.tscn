@@ -10,9 +10,10 @@ extents = Vector3( 73.525, 2.4, 37.134 )
 extents = Vector3( 73.526, 2.36, 17.873 )
 
 [node name="PicnicBench" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -38.538, 0 )
 
 [node name="CollisionShapeMain" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.138, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShapeMain"]
@@ -23,9 +24,9 @@ material/2 = ExtResource( 2 )
 material/3 = ExtResource( 2 )
 
 [node name="CollisionShapeFront" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33.2741, -56.4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.264, -56.4 )
 shape = SubResource( 2 )
 
 [node name="CollisionShapeBack" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33.274, 56.634 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.264, 56.634 )
 shape = SubResource( 2 )

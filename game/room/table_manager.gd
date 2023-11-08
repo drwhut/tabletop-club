@@ -30,6 +30,10 @@ extends Spatial
 ## TODO: Make typed in 4.x.
 export(Resource) var default_table = null
 
+## The current transform of the table.
+var table_transform := Transform.IDENTITY setget set_table_transform, \
+		get_table_transform
+
 # The root node of the current table object.
 # TODO: Change to a custom class.
 var _table_node: RigidBody = null
@@ -44,6 +48,8 @@ func _ready():
 
 ## Set the table to use with its asset entry.
 func set_table(table_entry: AssetEntryTable) -> void:
+	# TODO: Check if the table is already in the scene.
+	
 	if _table_node != null:
 		_table_node.queue_free()
 	
@@ -53,3 +59,19 @@ func set_table(table_entry: AssetEntryTable) -> void:
 		return
 	
 	add_child(_table_node)
+
+
+func get_table_transform() -> Transform:
+	if _table_node == null:
+		return Transform.IDENTITY
+	
+	return _table_node.transform
+
+
+func set_table_transform(value: Transform) -> void:
+	if _table_node == null:
+		push_error("Cannot set table transform, table node does not exist")
+		return
+	
+	_table_node.transform = value
+	_table_node.reset_physics_interpolation()

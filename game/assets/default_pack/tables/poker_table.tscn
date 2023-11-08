@@ -25,9 +25,10 @@ size = Vector3( 105.664, 11.43, 7.112 )
 size = Vector3( 7, 75.692, 7 )
 
 [node name="PokerTable" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32.32, 0 )
 
 [node name="CollisionShapeBase" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.86, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.46, 0 )
 shape = SubResource( 1 )
 
 [node name="Base" type="MeshInstance" parent="CollisionShapeBase"]
@@ -35,7 +36,7 @@ mesh = SubResource( 2 )
 material/0 = ExtResource( 2 )
 
 [node name="CollisionShapeSide1" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 49.276 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.32, 49.276 )
 shape = SubResource( 3 )
 
 [node name="Side1" type="MeshInstance" parent="CollisionShapeSide1"]
@@ -43,7 +44,7 @@ mesh = SubResource( 4 )
 material/0 = ExtResource( 1 )
 
 [node name="CollisionShapeSide2" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -49.276 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.32, -49.276 )
 shape = SubResource( 3 )
 
 [node name="Side2" type="MeshInstance" parent="CollisionShapeSide2"]
@@ -51,7 +52,7 @@ mesh = SubResource( 4 )
 material/0 = ExtResource( 1 )
 
 [node name="CollisionShapeSide3" type="CollisionShape" parent="."]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 79.756, 0, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 79.756, 32.32, 0 )
 shape = SubResource( 5 )
 
 [node name="Side3" type="MeshInstance" parent="CollisionShapeSide3"]
@@ -59,7 +60,7 @@ mesh = SubResource( 6 )
 material/0 = ExtResource( 1 )
 
 [node name="CollisionShapeSide4" type="CollisionShape" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -79.756, 0, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -79.756, 32.32, 0 )
 shape = SubResource( 5 )
 
 [node name="Side4" type="MeshInstance" parent="CollisionShapeSide4"]
@@ -67,21 +68,21 @@ mesh = SubResource( 6 )
 material/0 = ExtResource( 1 )
 
 [node name="Leg1" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 79.756, -37.846, 49.276 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 79.756, -5.526, 49.276 )
 mesh = SubResource( 7 )
 material/0 = ExtResource( 1 )
 
 [node name="Leg2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79.756, -37.846, 49.276 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79.756, -5.526, 49.276 )
 mesh = SubResource( 7 )
 material/0 = ExtResource( 1 )
 
 [node name="Leg3" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 79.756, -37.846, -49.276 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 79.756, -5.526, -49.276 )
 mesh = SubResource( 7 )
 material/0 = ExtResource( 1 )
 
 [node name="Leg4" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79.756, -37.846, -49.276 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79.756, -5.526, -49.276 )
 mesh = SubResource( 7 )
 material/0 = ExtResource( 1 )
