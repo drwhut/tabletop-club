@@ -20,35 +20,38 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Spatial
+extends Viewport
 
-## Handles all room logic, which mostly consists of 3D elements.
-
-
-onready var _light_manager := $LightManager
-onready var _room_environment := $RoomEnvironment
-onready var _table_manager := $TableManager
+## The internal viewport used by the paint plane to allow players to paint on
+## the table.
 
 
-func _ready():
-	var state := StateLoader.load("res://tests/test_pack/games/test_state_v0.1.2.tc")
-	set_state(state)
+onready var _image_overwrite := $ImageOverwrite
 
 
-## Set the state of the room with a [RoomState].
-func set_state(state: RoomState) -> void:
-	_light_manager.light_color = state.lamp_color
-	_light_manager.light_intensity = state.lamp_intensity
-	_light_manager.sun_light_enabled = state.is_lamp_sunlight
+func _process(_delta: float):
+	# Disable all canvas elements so that nothing new is drawn this frame,
+	# unless we get a command that says otherwise.
+	_image_overwrite.texture = null
+	_image_overwrite.visible = false
+
+
+func set_image(image: Image) -> void:
+	# TODO: Ensure no paint is drawn inbetween the viewport being cleared and
+	# the new image being displayed.
 	
-	_room_environment.set_skybox(state.skybox_entry)
+	var viewport_w := int(size.x)
+	var viewport_h := int(size.y)
+	if image.get_width() != viewport_w or image.get_height() != viewport_h:
+		push_error("Image size (%dx%d) does not match viewport size (%dx%d)" %
+				[image.get_width(), image.get_height(), viewport_w, viewport_h])
+		return
 	
-	_table_manager.set_table(state.table_entry)
-	_table_manager.set_table_transform(state.table_transform)
-	# TODO: Set if the table is rigid or not.
+	var texture := ImageTexture.new()
+	texture.create_from_image(image, 0) # Disable filtering and mipmaps.
+	_image_overwrite.texture = texture
+	_image_overwrite.visible = true
 	
-	# TODO: If there is no image, clear the paint viewport.
-	if state.table_paint_image != null:
-		var paint_plane = _table_manager.get_paint_plane()
-		if paint_plane != null:
-			paint_plane.paint_viewport.set_image(state.table_paint_image)
+	# Usually the viewport does not clear, but we will need it to in the event
+	# that there is transparency in the image.
+	render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME

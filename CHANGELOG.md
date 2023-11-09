@@ -88,6 +88,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The game room is now loaded alongside the main menu, removing the need for a
   loading screen when entering singleplayer or multiplayer.
 - The in-game menu screen now uses the same layout as the main menu.
+- Optimised the performance of the paint and erase tools.
 
 ### Fixed
 

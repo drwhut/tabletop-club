@@ -38,6 +38,9 @@ var table_transform := Transform.IDENTITY setget set_table_transform, \
 # TODO: Change to a custom class.
 var _table_node: RigidBody = null
 
+# The paint plane situated just above the surface of the table.
+var _paint_plane := PaintPlane.new()
+
 
 func _ready():
 	if default_table is AssetEntryTable:
@@ -46,11 +49,21 @@ func _ready():
 		push_error("'default_table' is not of type AssetEntryTable")
 
 
+## Get the paint plane sitting on top of the table. If it is currently not in
+## the scene tree, return [code]null[/code].
+func get_paint_plane() -> PaintPlane:
+	if not _paint_plane.is_inside_tree():
+		return null
+	
+	return _paint_plane
+
+
 ## Set the table to use with its asset entry.
 func set_table(table_entry: AssetEntryTable) -> void:
 	# TODO: Check if the table is already in the scene.
 	
 	if _table_node != null:
+		_table_node.remove_child(_paint_plane)
 		_table_node.queue_free()
 	
 	var builder := PieceBuilder.new()
@@ -58,7 +71,15 @@ func set_table(table_entry: AssetEntryTable) -> void:
 	if _table_node == null:
 		return
 	
+	_paint_plane.transform = table_entry.paint_plane_transform
+	_table_node.add_child(_paint_plane)
 	add_child(_table_node)
+	
+	# The table needs to be translated down since its centre-of-mass will be
+	# shifted, so make sure the plane sits just on top of the y=0 plane no
+	# matter what size the table is.
+	_paint_plane.global_transform.origin.y = 0.01
+	_paint_plane.reset_physics_interpolation()
 
 
 func get_table_transform() -> Transform:

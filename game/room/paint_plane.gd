@@ -20,35 +20,31 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Spatial
+class_name PaintPlane
+extends MeshInstance
 
-## Handles all room logic, which mostly consists of 3D elements.
+## The plane that displays the contents of the paint viewport in 3D space.
 
 
-onready var _light_manager := $LightManager
-onready var _room_environment := $RoomEnvironment
-onready var _table_manager := $TableManager
+## The viewport that displays the paint image.
+var paint_viewport: Viewport = \
+		preload("res://room/paint_viewport.tscn").instance()
+
+
+func _init():
+	add_child(paint_viewport)
+	
+	var plane_mesh := PlaneMesh.new()
+	plane_mesh.size = Vector2.ONE
+	mesh = plane_mesh
 
 
 func _ready():
-	var state := StateLoader.load("res://tests/test_pack/games/test_state_v0.1.2.tc")
-	set_state(state)
-
-
-## Set the state of the room with a [RoomState].
-func set_state(state: RoomState) -> void:
-	_light_manager.light_color = state.lamp_color
-	_light_manager.light_intensity = state.lamp_intensity
-	_light_manager.sun_light_enabled = state.is_lamp_sunlight
+	# NOTE: This section of code is why this is a class rather than a scene,
+	# because otherwise errors would be thrown when the material tries to
+	# set the viewport texture before entering the scene tree.
+	var material := SpatialMaterial.new()
+	material.flags_transparent = true
+	material.albedo_texture = paint_viewport.get_texture()
 	
-	_room_environment.set_skybox(state.skybox_entry)
-	
-	_table_manager.set_table(state.table_entry)
-	_table_manager.set_table_transform(state.table_transform)
-	# TODO: Set if the table is rigid or not.
-	
-	# TODO: If there is no image, clear the paint viewport.
-	if state.table_paint_image != null:
-		var paint_plane = _table_manager.get_paint_plane()
-		if paint_plane != null:
-			paint_plane.paint_viewport.set_image(state.table_paint_image)
+	set_surface_material(0, material)
