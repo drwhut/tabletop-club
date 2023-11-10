@@ -28,23 +28,22 @@ extends Reference
 ## TODO: Test this class once it is complete.
 
 
+## Build a piece object from the given entry.
+## TODO: Switch to custom class instead of Rigidbody.
+func build_piece(scene_entry: AssetEntryScene) -> RigidBody:
+	var piece := _load_as_physics_object(scene_entry)
+	if piece == null:
+		return null
+	
+	return piece
+
+
 ## Build a table object from its given entry.
 ## TODO: Switch to custom class instead of RigidBody.
 func build_table(table_entry: AssetEntryTable) -> RigidBody:
-	var scene := table_entry.load_scene()
-	if scene == null:
-		# TODO: Maybe instead of returning null, use an "error" object?
-		push_error("Failed to load scene for table '%s'" % table_entry.get_path())
+	var table := _load_as_physics_object(table_entry)
+	if table == null:
 		return null
-	
-	var instance := scene.instance()
-	var table: RigidBody = null
-	
-	if instance is RigidBody:
-		table = instance
-	else:
-		# TODO: Make table objects from custom scenes.
-		pass
 	
 	table.mass = 100000 # = 10kg
 	table.mode = RigidBody.MODE_STATIC
@@ -55,3 +54,21 @@ func build_table(table_entry: AssetEntryTable) -> RigidBody:
 	# do not.
 	
 	return table
+
+
+# Load the given scene as a RigidBody. If the scene is not already a RigidBody,
+# the MeshInstance nodes are extracted automatically. If the scene failed to
+# load, [code]null[/code] is returned instead.
+func _load_as_physics_object(scene_entry: AssetEntryScene) -> RigidBody:
+	var packed_scene := scene_entry.load_scene()
+	if packed_scene == null:
+		# TODO: Maybe instead of returning null, use an "error" object?
+		push_error("Failed to load scene for '%s'" % scene_entry.get_path())
+		return null
+	
+	var instance := packed_scene.instance()
+	if instance is RigidBody:
+		return instance as RigidBody
+	
+	# TODO: Extract the mesh instances.
+	return null

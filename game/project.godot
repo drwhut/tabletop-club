@@ -289,6 +289,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/Pieces/PieceContainer.gd"
 }, {
+"base": "IndexManager",
+"class": "PieceManager",
+"language": "GDScript",
+"path": "res://room/piece_manager.gd"
+}, {
 "base": "Resource",
 "class": "PieceState",
 "language": "GDScript",
@@ -461,6 +466,7 @@ _global_script_class_icons={
 "PieceBuilder": "",
 "PieceCache": "",
 "PieceContainer": "",
+"PieceManager": "",
 "PieceState": "",
 "Preview": "",
 "RoomEnvironment": "",

@@ -27,6 +27,7 @@ extends Spatial
 
 onready var _hidden_area_manager := $HiddenAreaManager
 onready var _light_manager := $LightManager
+onready var _piece_manager := $PieceManager
 onready var _room_environment := $RoomEnvironment
 onready var _table_manager := $TableManager
 
@@ -60,3 +61,12 @@ func set_state(state: RoomState) -> void:
 		_hidden_area_manager.add_hidden_area(
 				_hidden_area_manager.get_next_index(),
 				hidden_area_state.transform)
+	
+	_piece_manager.remove_all_children()
+	for element in state.piece_states:
+		var piece_state: PieceState = element
+		if piece_state.scene_entry == null:
+			continue
+		
+		_piece_manager.add_piece(_piece_manager.get_next_index(),
+				piece_state.scene_entry, piece_state.transform)
