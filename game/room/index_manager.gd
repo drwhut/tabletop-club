@@ -86,6 +86,11 @@ func get_child_with_index(index: int) -> Node:
 	return _child_arr[index - _arr_offset]
 
 
+## Get the next index along that is guaranteed to be available.
+func get_next_index() -> int:
+	return _arr_offset + _child_arr.size()
+
+
 ## Check if a node with the given index exists.
 func has_child_with_index(index: int) -> bool:
 	return get_child_with_index(index) != null
@@ -106,6 +111,15 @@ func remove_child_with_index(index: int) -> void:
 	if _num_children_in_arr <= 0:
 		_arr_offset += _child_arr.size()
 		_child_arr.clear()
+
+
+## Queue all child nodes for deletion.
+func remove_all_children() -> void:
+	for child in get_children():
+		child.queue_free()
+	
+	_arr_offset += _child_arr.size()
+	_child_arr.clear()
 
 
 ## Get the number of elements in the internal index array. This function is

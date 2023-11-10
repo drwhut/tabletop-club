@@ -552,11 +552,11 @@ func test_loading_v0_1_x_state() -> void:
 	assert_true(hidden_area_transform.basis.x.is_equal_approx(
 			Vector3(8.365574, 0.0, 0.0)))
 	assert_true(hidden_area_transform.basis.y.is_equal_approx(
-			Vector3(0.0, 1.0, 0.0)))
+			Vector3(0.0, 5.0, 0.0))) # Constant height in 0.1.x.
 	assert_true(hidden_area_transform.basis.z.is_equal_approx(
 			Vector3(0.0, 0.0, 8.300234)))
 	assert_true(hidden_area_transform.origin.is_equal_approx(
-			Vector3(30.678532, 0.0, 26.096083)))
+			Vector3(30.678532, 5.0, 26.096083)))
 	
 	assert_eq(state.piece_states.size(), 7)
 	

@@ -165,12 +165,11 @@ static func dict_to_state(dict: Dictionary) -> RoomState:
 			var avg_point = 0.5 * (min_point + max_point)
 			var point_dif = max_point - min_point
 			
-			hidden_area_transform.origin.x = avg_point.x
-			hidden_area_transform.origin.z = avg_point.y
+			hidden_area_transform.origin = Vector3(avg_point.x, 5.0, avg_point.y)
 			
 			# In v0.1.x, the player could not rotate the hidden area.
-			hidden_area_transform.basis.x.x = point_dif.x / 2
-			hidden_area_transform.basis.z.z = point_dif.y / 2
+			hidden_area_transform.basis = Basis.IDENTITY.scaled(Vector3(
+					point_dif.x / 2.0, 5.0, point_dif.y / 2.0))
 			
 			hidden_area_state.transform = hidden_area_transform
 		

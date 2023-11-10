@@ -35,11 +35,13 @@ func test_index_manager() -> void:
 	var node_e: Node = autofree(Node.new())
 	
 	assert_eq(index_manager.get_capacity(), 0)
+	assert_eq(index_manager.get_next_index(), 0)
 	
 	index_manager.add_child_with_index(0, node_a)
 	assert_eq(index_manager.get_child_with_index(0), node_a)
 	assert_true(index_manager.has_child_with_index(0))
 	assert_eq(index_manager.get_capacity(), 1)
+	assert_eq(index_manager.get_next_index(), 1)
 	
 	assert_true(index_manager.is_a_parent_of(node_a))
 	assert_eq(node_a.name, "0")
@@ -53,6 +55,7 @@ func test_index_manager() -> void:
 	assert_eq(index_manager.get_child_with_index(1), node_b)
 	assert_true(index_manager.has_child_with_index(1))
 	assert_eq(index_manager.get_capacity(), 2)
+	assert_eq(index_manager.get_next_index(), 2)
 	
 	assert_true(index_manager.is_a_parent_of(node_b))
 	assert_eq(node_b.name, "1")
@@ -61,11 +64,13 @@ func test_index_manager() -> void:
 	assert_eq(index_manager.get_child_with_index(5), node_c)
 	assert_true(index_manager.has_child_with_index(5))
 	assert_eq(index_manager.get_capacity(), 6)
+	assert_eq(index_manager.get_next_index(), 6)
 	
 	index_manager.add_child_with_index(-10, node_d)
 	assert_eq(index_manager.get_child_with_index(-10), node_d)
 	assert_true(index_manager.has_child_with_index(-10))
 	assert_eq(index_manager.get_capacity(), 16)
+	assert_eq(index_manager.get_next_index(), 6)
 	
 	index_manager.add_child_with_index(2, node_e)
 	assert_eq(index_manager.get_child_with_index(0), node_a)
@@ -77,6 +82,9 @@ func test_index_manager() -> void:
 	# Capacity should not change, as the new node is in the middle of the array.
 	assert_eq(index_manager.get_capacity(), 16)
 	
+	# The next recommended index should not change either.
+	assert_eq(index_manager.get_next_index(), 6)
+	
 	# Cannot add a node with an index that already exists.
 	var invalid_node: Node = autofree(Node.new())
 	index_manager.add_child_with_index(2, invalid_node)
@@ -87,21 +95,25 @@ func test_index_manager() -> void:
 	assert_false(index_manager.has_child_with_index(-10))
 	assert_true(node_d.is_queued_for_deletion())
 	assert_eq(index_manager.get_capacity(), 16)
+	assert_eq(index_manager.get_next_index(), 6)
 	
 	index_manager.remove_child_with_index(2)
 	assert_eq(index_manager.get_child_with_index(2), null)
 	assert_true(node_e.is_queued_for_deletion())
 	assert_eq(index_manager.get_capacity(), 16)
+	assert_eq(index_manager.get_next_index(), 6)
 	
 	index_manager.remove_child_with_index(1)
 	assert_false(index_manager.has_child_with_index(1))
 	assert_true(node_b.is_queued_for_deletion())
 	assert_eq(index_manager.get_capacity(), 16)
+	assert_eq(index_manager.get_next_index(), 6)
 	
 	index_manager.remove_child_with_index(5)
 	assert_eq(index_manager.get_child_with_index(5), null)
 	assert_true(node_c.is_queued_for_deletion())
 	assert_eq(index_manager.get_capacity(), 16)
+	assert_eq(index_manager.get_next_index(), 6)
 	
 	index_manager.remove_child_with_index(0)
 	assert_eq(index_manager.get_child_with_index(0), null)
@@ -110,6 +122,9 @@ func test_index_manager() -> void:
 	# Only when the last living node is removed, is the array cleared.
 	assert_eq(index_manager.get_capacity(), 0)
 	
+	# The next recommended index stays as is, however.
+	assert_eq(index_manager.get_next_index(), 6)
+	
 	# The array offset shouldn't reset back to 0, instead, it should start where
 	# the old array left off.
 	var node_f: Node = autofree(Node.new())
@@ -117,6 +132,25 @@ func test_index_manager() -> void:
 	assert_eq(index_manager.get_child_with_index(6), node_f)
 	assert_true(index_manager.has_child_with_index(6))
 	assert_eq(index_manager.get_capacity(), 1)
+	assert_eq(index_manager.get_next_index(), 7)
 	
 	assert_true(index_manager.is_a_parent_of(node_f))
 	assert_eq(node_f.name, "6")
+	
+	var node_g: Node = autofree(Node.new())
+	index_manager.add_child_with_index(7, node_g)
+	assert_eq(index_manager.get_child_with_index(7), node_g)
+	assert_true(index_manager.has_child_with_index(7))
+	assert_eq(index_manager.get_capacity(), 2)
+	assert_eq(index_manager.get_next_index(), 8)
+	
+	assert_true(index_manager.is_a_parent_of(node_g))
+	assert_eq(node_g.name, "7")
+	
+	index_manager.remove_all_children()
+	assert_false(index_manager.has_child_with_index(6))
+	assert_false(index_manager.has_child_with_index(7))
+	assert_true(node_f.is_queued_for_deletion())
+	assert_true(node_g.is_queued_for_deletion())
+	assert_eq(index_manager.get_capacity(), 0)
+	assert_eq(index_manager.get_next_index(), 8)

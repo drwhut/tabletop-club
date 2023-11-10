@@ -1,0 +1,20 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec4 color_1 : hint_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 color_2 : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float alpha : hint_range(0.0, 1.0) = 1.0;
+uniform vec2 uv_scalar = vec2(1.0, 1.0);
+uniform float time_scalar = 1.0;
+
+void fragment() {
+	float wave_input = (UV.x * uv_scalar.x) + (UV.y * uv_scalar.y);
+	wave_input += TIME * time_scalar;
+	float weight = 0.5 * (sin(wave_input) + 1.0);
+	ALBEDO = mix(color_1.rgb, color_2.rgb, weight);
+	ALPHA = alpha;
+}
+"

@@ -224,6 +224,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Game/3D/HiddenArea.gd"
 }, {
+"base": "IndexManager",
+"class": "HiddenAreaManager",
+"language": "GDScript",
+"path": "res://room/hidden_area_manager.gd"
+}, {
 "base": "Resource",
 "class": "HiddenAreaState",
 "language": "GDScript",
@@ -443,6 +448,7 @@ _global_script_class_icons={
 "GutTest": "",
 "HandState": "",
 "HiddenArea": "",
+"HiddenAreaManager": "",
 "HiddenAreaState": "",
 "IndexManager": "",
 "MainMenuCamera": "",

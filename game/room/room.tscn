@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://room/room_environment.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/default_pack/tables/poker_table.tres" type="Resource" id=5]
 [ext_resource path="res://room/light_manager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://room/room.gd" type="Script" id=7]
+[ext_resource path="res://room/hidden_area_manager.gd" type="Script" id=8]
 
 [node name="Room" type="Spatial"]
 script = ExtResource( 7 )
@@ -21,3 +22,6 @@ default_skybox = ExtResource( 3 )
 [node name="TableManager" type="Spatial" parent="."]
 script = ExtResource( 4 )
 default_table = ExtResource( 5 )
+
+[node name="HiddenAreaManager" type="Node" parent="."]
+script = ExtResource( 8 )

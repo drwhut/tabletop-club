@@ -25,6 +25,7 @@ extends Spatial
 ## Handles all room logic, which mostly consists of 3D elements.
 
 
+onready var _hidden_area_manager := $HiddenAreaManager
 onready var _light_manager := $LightManager
 onready var _room_environment := $RoomEnvironment
 onready var _table_manager := $TableManager
@@ -52,3 +53,10 @@ func set_state(state: RoomState) -> void:
 		var paint_plane = _table_manager.get_paint_plane()
 		if paint_plane != null:
 			paint_plane.paint_viewport.set_image(state.table_paint_image)
+	
+	_hidden_area_manager.remove_all_children()
+	for element in state.hidden_area_states:
+		var hidden_area_state: HiddenAreaState = element
+		_hidden_area_manager.add_hidden_area(
+				_hidden_area_manager.get_next_index(),
+				hidden_area_state.transform)
