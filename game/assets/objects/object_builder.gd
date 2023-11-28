@@ -1,0 +1,279 @@
+# tabletop-club
+# Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2023 Tabletop Club contributors (see game/CREDITS.tres).
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+class_name ObjectBuilder
+extends Reference
+
+## Used to build piece and table objects from their respective asset entries.
+##
+## TODO: Test this class once it is complete.
+
+
+## Build a [Table] from the given [AssetEntryTable].
+func build_table(table_entry: AssetEntryTable) -> Table:
+	var packed_scene := table_entry.load_scene()
+	if packed_scene == null:
+		# TODO: Instead of returning null, use a substitute scene.
+		push_error("Failed to load scene '%s' for table entry '%s'" % [
+				table_entry.scene_path, table_entry.get_path()])
+		return null
+	
+	var table_node: Table = null
+	
+	var instance := packed_scene.instance()
+	if instance is Table:
+		table_node = instance
+	else:
+		print("ObjectBuilder: Creating '%s' using '%s'" % [
+				table_entry.get_path(), table_entry.scene_path])
+		table_node = Table.new()
+		transfer_and_shape_mesh_instances(instance, table_node,
+				table_entry.collision_type)
+		instance.free()
+	
+	table_node.mass = 100000 # = 10kg
+	table_node.mode = RigidBody.MODE_STATIC
+	table_node.physics_material_override = table_entry.physics_material
+	
+	# NOTE: The scale property from the entry is not used here for tables,
+	# and that's on purpose. Since tables have the requirement that the surface
+	# needs to be parallel to the plane y=0, the scale property from the config
+	# file would probably invalidate that requirement unexpectedly a lot of the
+	# time, hence if the creator wishes to scale the table, it should be done
+	# in the modelling software from which the table was made.
+	
+	adjust_centre_of_mass(table_node, table_entry, true)
+	
+	return table_node
+
+
+## Given a scene of nodes, extract all of the [MeshInstance] nodes out of the
+## scene and return them in an array. The nodes are automatically removed from
+## their parents, and each local transform is adjusted to be their original
+## global transform.
+## NOTE: [code]root_node[/code] is NOT checked as a [MeshInstance].
+## TODO: Make typed in 4.x
+func extract_mesh_instances(root_node: Node) -> Array:
+	var output_arr := []
+	_extract_mesh_instances_recursive(root_node, Transform.IDENTITY, output_arr)
+	return output_arr
+
+
+## Given a [MeshInstance], set up its materials so that each instance of them is
+## unique, which allows us to modify each material separately.
+func setup_materials(mesh_instance: MeshInstance) -> void:
+	var mesh := mesh_instance.mesh
+	if mesh == null:
+		push_error("Mesh instance '%s' does not contain a mesh" % mesh_instance.name)
+		return
+	
+	var num_surfaces := mesh.get_surface_count()
+	for surface_index in range(num_surfaces):
+		var material := mesh_instance.get_active_material(surface_index)
+		if material == null:
+			continue
+		
+		var unique_material := material.duplicate()
+		
+		# There seems to be a bug in OSX where the default cull mode inverts the
+		# normals of the mesh.
+		# See: https://github.com/godotengine/godot/issues/39936
+		if OS.get_name() == "OSX":
+			if material is SpatialMaterial:
+				material.params_cull_mode = SpatialMaterial.CULL_BACK
+		
+		mesh_instance.set_surface_material(surface_index, unique_material)
+
+
+## Given a [MeshInstance], create a single [CollisionShape] representing the
+## mesh. If [code]concave[/code] is [code]true[/code], the resulting shape will
+## be concave, otherwise it will be convex.
+func create_single_shape(mesh_instance: MeshInstance,
+		concave: bool) -> CollisionShape:
+	
+	var mesh := mesh_instance.mesh
+	if mesh == null:
+		push_error("Mesh instance '%s' does not contain a mesh" % mesh_instance.name)
+		return null
+	
+	var collision_shape := CollisionShape.new()
+	if concave:
+		collision_shape.shape = mesh.create_trimesh_shape()
+	else:
+		collision_shape.shape = mesh.create_convex_shape()
+	
+	return collision_shape
+
+
+## Given a [MeshInstance], create an array of [CollisionShape] representing the
+## mesh.
+func create_multiple_shapes(mesh_instance: MeshInstance) -> Array:
+	mesh_instance.create_multiple_convex_collisions()
+	
+	# The operation above should have created a [StaticBody] with one or more
+	# [CollisionShape] nodes as children, we just need to find it.
+	var static_body_index := -1
+	for index in range(mesh_instance.get_child_count()):
+		var child := mesh_instance.get_child(index)
+		if child is StaticBody:
+			if static_body_index < 0:
+				static_body_index = index
+			else:
+				push_error("Mesh instance '%s' has multiple StaticBody children" %
+						mesh_instance.name)
+				return []
+	
+	if static_body_index < 0:
+		push_error("Mesh instance '%s' has no StaticBody child" % mesh_instance.name)
+		return []
+	
+	var static_body := mesh_instance.get_child(static_body_index)
+	var collision_shape_arr := []
+	for collision_shape in static_body.get_children():
+		if collision_shape is CollisionShape:
+			static_body.remove_child(collision_shape)
+			collision_shape_arr.push_back(collision_shape)
+	
+	static_body.free()
+	return collision_shape_arr
+
+
+## Transfer all [MeshInstance] nodes from the node structure starting with
+## [code]from_node[/code], and place them into the node structure starting with
+## [code]to_node[/code] as children of [CollisionShape] nodes.
+## [code]collision_type[/code] is one of [enum AssetEntryScene.CollisionType].
+func transfer_and_shape_mesh_instances(from_node: Node, to_node: Node,
+		collision_type: int) -> void:
+	
+	var mesh_instance_arr := extract_mesh_instances(from_node)
+	
+	# Go through the array backwards, as there is a chance that some of the mesh
+	# instances will be invalid, meaning they can't be used, and will need to be
+	# freed from memory during this function.
+	for index in range(mesh_instance_arr.size() - 1, -1, -1):
+		var mesh_instance: MeshInstance = mesh_instance_arr[index]
+		
+		# Check to see if the mesh within the instance actually contains any
+		# vertices, we should skip it if it doesn't as we won't be able to make
+		# collision shapes out of it.
+		var mesh := mesh_instance.mesh
+		if mesh == null:
+			mesh_instance.free()
+			continue
+		
+		var has_verts := false
+		for surface in range(mesh.get_surface_count()):
+			# The engine guarantees that the vertex array will always exist.
+			var vert_arr: Array = mesh.surface_get_arrays(surface)[0]
+			if not vert_arr.empty():
+				has_verts = true
+				break
+		
+		if not has_verts:
+			mesh_instance.free()
+			continue
+		
+		setup_materials(mesh_instance)
+		
+		var collision_shape_arr: Array
+		match collision_type:
+			AssetEntryScene.CollisionType.COLLISION_CONVEX:
+				collision_shape_arr = [ create_single_shape(mesh_instance, false) ]
+			AssetEntryScene.CollisionType.COLLISION_CONCAVE:
+				collision_shape_arr = [ create_single_shape(mesh_instance, true) ]
+			AssetEntryScene.CollisionType.COLLISION_MULTI_CONVEX:
+				collision_shape_arr = create_multiple_shapes(mesh_instance)
+			AssetEntryScene.CollisionType.COLLISION_NONE:
+				push_warning("No collision shape wanted for custom mesh '%s', probably not intended" %
+						mesh_instance.name)
+				collision_shape_arr = [ CollisionShape.new() ]
+			_:
+				push_warning("Unknown value '%d' for collision type" % collision_type)
+				collision_shape_arr = [ CollisionShape.new() ]
+		
+		if collision_shape_arr.empty():
+			push_error("No collision shapes generated for mesh '%s'" % mesh_instance.name)
+			mesh_instance.free()
+			continue
+		
+		for element in collision_shape_arr:
+			var collision_shape: CollisionShape = element
+			collision_shape.transform = mesh_instance.transform
+			to_node.add_child(collision_shape)
+			
+			# Add the mesh instance to the first available collision shape.
+			if mesh_instance.get_parent() == null:
+				mesh_instance.transform = Transform.IDENTITY
+				collision_shape.add_child(mesh_instance)
+
+
+## Adjust the centre-of-mass of an object using the geometric metadata in it's
+## scene entry. If [code]keep_position[/code] is [code]true[/code], then the
+## position of the object itself is counter-adjusted so that it's global
+## position remains the same.
+## NOTE: This function is needed since the centre-of-mass of a [RigidBody] in
+## Bullet Physics is defined as the centre of the rigid body, so this function
+## adjusts the positions of the [CollisionShape] children. See:
+## https://github.com/godotengine/godot-proposals/issues/945
+func adjust_centre_of_mass(object: Spatial, scene_entry: AssetEntryScene,
+		keep_position: bool) -> void:
+	
+	if scene_entry.com_adjust == AssetEntryScene.ComAdjust.COM_ADJUST_OFF:
+		return
+	
+	var centre_of_mass := Vector3.ZERO
+	match scene_entry.com_adjust:
+		AssetEntryScene.ComAdjust.COM_ADJUST_VOLUME:
+			centre_of_mass = scene_entry.bounding_box.get_center()
+		AssetEntryScene.ComAdjust.COM_ADJUST_GEOMETRY:
+			centre_of_mass = scene_entry.avg_point
+		_:
+			push_warning("Unknown value '%d' for COM adjustment of '%s'" % [
+					scene_entry.com_adjust, scene_entry.get_path()])
+	
+	for child in object.get_children():
+		if child is CollisionShape:
+			child.transform.origin -= centre_of_mass
+	
+	if keep_position:
+		object.transform.origin += centre_of_mass
+
+
+# Recursively check through the child nodes of [code]current_node[/code], with
+# [code]parent_transform[/code] being the global transform of it's parent, and
+# extract all [MeshInstance] nodes to the output array.
+func _extract_mesh_instances_recursive(current_node: Node,
+		parent_transform: Transform, output_array: Array) -> void:
+	
+	var current_transform := parent_transform
+	if current_node is Spatial:
+		current_transform = parent_transform * current_node.transform
+	
+	for child in current_node.get_children():
+		if child is MeshInstance:
+			current_node.remove_child(child)
+			child.transform = current_transform * child.transform
+			output_array.push_back(child)
+		
+		elif child.get_child_count() > 0:
+			_extract_mesh_instances_recursive(child, current_transform,
+					output_array)

@@ -20,19 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-class_name PieceManager
-extends IndexManager
+class_name Table
+extends AdvancedRigidBody3D
 
-## Manage the game pieces throughout the scene that can be added and removed.
-
-
-## Add a piece to the scene with the given index.
-func add_piece(index: int, scene_entry: AssetEntryScene, transform: Transform) -> void:
-	pass
-	"""
-	var piece_builder := PieceBuilder.new()
-	var piece := piece_builder.build_piece(scene_entry)
-	piece.transform = transform
-	piece.mode = RigidBody.MODE_STATIC
-	add_child_with_index(index, piece)
-	"""
+## The static object in the centre of the room on which pieces are placed.

@@ -66,7 +66,7 @@ func set_table(table_entry: AssetEntryTable) -> void:
 		_table_node.remove_child(_paint_plane)
 		_table_node.queue_free()
 	
-	var builder := PieceBuilder.new()
+	var builder := ObjectBuilder.new()
 	_table_node = builder.build_table(table_entry)
 	if _table_node == null:
 		return

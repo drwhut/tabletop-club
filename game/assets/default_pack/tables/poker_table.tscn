@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/default_pack/tables/table_wood_material.tres" type="Material" id=1]
 [ext_resource path="res://assets/default_pack/tables/table_cloth_material.tres" type="Material" id=2]
+[ext_resource path="res://assets/objects/table.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 76.2, 2.858, 45.72 )
@@ -26,6 +27,7 @@ size = Vector3( 7, 75.692, 7 )
 
 [node name="PokerTable" type="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32.32, 0 )
+script = ExtResource( 3 )
 
 [node name="CollisionShapeBase" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.46, 0 )
