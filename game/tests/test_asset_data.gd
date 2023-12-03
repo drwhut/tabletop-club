@@ -283,6 +283,31 @@ func test_default_asset_pack() -> void:
 				
 				for texture_path in entry.texture_overrides:
 					assert_true(ResourceLoader.exists(texture_path))
+				
+				# Check the correct scripts have been attached for each type.
+				var packed_scene: PackedScene = entry.load_scene()
+				var scene: Node = autofree(packed_scene.instance())
+				match type:
+					"boards":
+						assert_is(scene, PieceBoard)
+					"cards":
+						assert_is(scene, PieceStackable)
+					"containers":
+						assert_is(scene, PieceContainer)
+					"dice":
+						assert_is(scene, PieceDice)
+					"pieces":
+						assert_is(scene, Piece)
+					"speakers":
+						assert_is(scene, PieceSpeaker)
+					"tables":
+						assert_is(scene, Table)
+					"timers":
+						assert_is(scene, PieceTimer)
+					"tokens":
+						assert_is(scene, PieceStackable)
+					_:
+						fail_test("Type '%s' should not contain AssetEntryScene!" % type)
 			
 			if entry is AssetEntrySkybox:
 				assert_true(ResourceLoader.exists(entry.texture_path))
