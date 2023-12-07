@@ -28,6 +28,78 @@ extends Reference
 ## TODO: Test this class once it is complete.
 
 
+## Build a [Piece] from the given [AssetEntryScene].
+func build_piece(piece_entry: AssetEntryScene) -> Piece:
+	var packed_scene := piece_entry.load_scene()
+	if packed_scene == null:
+		# TODO: Instead of returning null, use a substitute scene.
+		push_error("Failed to load scene '%s' for piece entry '%s'" % [
+				piece_entry.scene_path, piece_entry.get_path()])
+		return null
+	
+	var piece_node: Piece = null
+	
+	var instance := packed_scene.instance()
+	if instance is Piece:
+		piece_node = instance
+		
+		# All materials need to be instanced individually, so that each piece
+		# can be modified separately. As far as I can tell, with the way the
+		# in-built scenes are constructed, there is no way to set the materials
+		# to be local to their scenes, so we need to duplicate them here.
+		for element in piece_node.get_mesh_instances():
+			var mesh_instance: MeshInstance = element
+			setup_materials(mesh_instance)
+	else:
+		print("ObjectBuilder: Building '%s' using '%s'" % [
+				piece_entry.get_path(), piece_entry.scene_path])
+		
+		if piece_entry is AssetEntryContainer:
+			piece_node = PieceContainer.new()
+		elif piece_entry is AssetEntryDice:
+			piece_node = PieceDice.new()
+		else:
+			# Stackable pieces like cards and tokens should always use a scene
+			# that is built-in, since it is required for them to have standard
+			# collision shapes, hence why they are not listed here.
+			match piece_entry.type:
+				"boards":
+					piece_node = PieceBoard.new()
+				"pieces":
+					piece_node = Piece.new()
+				"speakers":
+					piece_node = PieceSpeaker.new()
+				"timers":
+					piece_node = PieceTimer.new()
+				_:
+					push_warning("Unknown piece type '%s', reverting to regular piece" %
+							piece_entry.type)
+					piece_node = Piece.new()
+		
+		transfer_and_shape_mesh_instances(instance, piece_node,
+				piece_entry.collision_type)
+		instance.free()
+	
+	# Converting from g -> kg -> (Ns^2/cm, since game units are in cm) = x10.
+	piece_node.mass = 10.0 * piece_entry.mass
+	
+	# TODO: Assign the piece entry to the piece itself.
+	
+	# TODO: Scale the piece (with a custom function?)
+	
+	adjust_centre_of_mass(piece_node, piece_entry, false)
+	
+	# TODO: Assign textures.
+	
+	piece_node.set_user_albedo(piece_entry.albedo_color)
+	
+	# TODO: Setup outline materials.
+	
+	# TODO: Set up collision sound effects.
+	
+	return piece_node
+
+
 ## Build a [Table] from the given [AssetEntryTable].
 func build_table(table_entry: AssetEntryTable) -> Table:
 	var packed_scene := table_entry.load_scene()
@@ -43,7 +115,7 @@ func build_table(table_entry: AssetEntryTable) -> Table:
 	if instance is Table:
 		table_node = instance
 	else:
-		print("ObjectBuilder: Creating '%s' using '%s'" % [
+		print("ObjectBuilder: Building '%s' using '%s'" % [
 				table_entry.get_path(), table_entry.scene_path])
 		table_node = Table.new()
 		transfer_and_shape_mesh_instances(instance, table_node,

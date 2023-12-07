@@ -679,9 +679,6 @@ func test_loading_v0_1_x_state() -> void:
 	assert_eq(white_dice.transform.origin, Vector3(-60.0, 1.0, 0.0))
 	assert_eq(white_dice.user_scale, Vector3.ONE)
 	assert_eq(white_dice.user_albedo, Color.white)
-	# TODO: This red dice was coloured white, but both dice have the same value
-	# for 'user_albedo'. There needs to be a way to differentiate whether to
-	# set the colour or not.
 	
 	var red_dice := state.piece_states[3] as PieceState
 	assert_not_null(red_dice)
@@ -694,7 +691,10 @@ func test_loading_v0_1_x_state() -> void:
 	assert_true(red_dice.transform.basis.z.is_equal_approx(Vector3.FORWARD))
 	assert_eq(red_dice.transform.origin, Vector3(-50.0, 1.0, 0.0))
 	assert_eq(red_dice.user_scale, Vector3.ONE)
-	assert_eq(red_dice.user_albedo, Color.white)
+	assert_eq(red_dice.user_albedo.r8, 255)
+	assert_eq(red_dice.user_albedo.g8, 56)
+	assert_eq(red_dice.user_albedo.b8, 56)
+	assert_eq(red_dice.user_albedo.a8, 255)
 	
 	var speaker := state.piece_states[4] as SpeakerState
 	assert_not_null(speaker)

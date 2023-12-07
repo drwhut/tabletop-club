@@ -263,6 +263,11 @@ static func extract_piece_states_of_type(dict: Dictionary, out: Array,
 			
 			if scene_entry != null:
 				piece_state.scene_entry = scene_entry
+				
+				# v0.1.x: If the "color" property is missing, then it means that
+				# the user albedo was unchanged from the one in the entry.
+				piece_state.user_albedo = detail_parser.get_strict_type("color",
+						scene_entry.albedo_color)
 			else:
 				push_error("Missing scene entry '%s' for container" %
 						scene_entry_path)

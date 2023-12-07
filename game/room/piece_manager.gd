@@ -26,13 +26,14 @@ extends IndexManager
 ## Manage the game pieces throughout the scene that can be added and removed.
 
 
-## Add a piece to the scene with the given index.
-func add_piece(index: int, scene_entry: AssetEntryScene, transform: Transform) -> void:
-	pass
-	"""
-	var piece_builder := PieceBuilder.new()
-	var piece := piece_builder.build_piece(scene_entry)
+## Add a piece to the scene with the given index, and return it.
+func add_piece(index: int, scene_entry: AssetEntryScene, transform: Transform) -> Piece:
+	var builder := ObjectBuilder.new()
+	var piece := builder.build_piece(scene_entry)
+	
 	piece.transform = transform
 	piece.mode = RigidBody.MODE_STATIC
+	
 	add_child_with_index(index, piece)
-	"""
+	
+	return piece

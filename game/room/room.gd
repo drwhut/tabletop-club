@@ -27,7 +27,7 @@ extends Spatial
 
 onready var _hidden_area_manager := $HiddenAreaManager
 onready var _light_manager := $LightManager
-onready var _piece_manager := $PieceManager
+onready var _piece_manager: PieceManager = $PieceManager
 onready var _room_environment := $RoomEnvironment
 onready var _table_manager := $TableManager
 
@@ -68,5 +68,7 @@ func set_state(state: RoomState) -> void:
 		if piece_state.scene_entry == null:
 			continue
 		
-		_piece_manager.add_piece(_piece_manager.get_next_index(),
+		var piece := _piece_manager.add_piece(_piece_manager.get_next_index(),
 				piece_state.scene_entry, piece_state.transform)
+		
+		piece.set_user_albedo(piece_state.user_albedo)
