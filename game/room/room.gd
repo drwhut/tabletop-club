@@ -72,3 +72,4 @@ func set_state(state: RoomState) -> void:
 				piece_state.scene_entry, piece_state.transform)
 		
 		piece.set_user_albedo(piece_state.user_albedo)
+		piece.set_user_scale(piece_state.user_scale)

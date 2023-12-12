@@ -97,6 +97,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Objects inside of stacks will now retain their custom colour after reloading
   a previous save.
+- An object's centre-of-mass will no longer change when the object is scaled.
 
 ### Removed
 

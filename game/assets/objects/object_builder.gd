@@ -85,7 +85,11 @@ func build_piece(piece_entry: AssetEntryScene) -> Piece:
 	
 	# TODO: Assign the piece entry to the piece itself.
 	
-	# TODO: Scale the piece (with a custom function?)
+	# Scale the piece using it's collision shape children. If the player sets
+	# the user scale after, it will be relative to this new scale.
+	for child in piece_node.get_children():
+		if child is CollisionShape:
+			child.transform = child.transform.scaled(piece_entry.scale)
 	
 	adjust_centre_of_mass(piece_node, piece_entry, false)
 	
