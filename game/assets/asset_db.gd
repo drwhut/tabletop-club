@@ -87,7 +87,7 @@ func get_entry(entry_path: String) -> AssetEntry:
 	if cache_hit != null:
 		return cache_hit
 	
-	push_warning("Entry '%s' was not in the path cache, finding manually" % entry_path)
+	print("AssetDB: Cache miss on '%s', searching for entry manually..." % entry_path)
 	var pack_split := entry_path.split("/", false, 1)
 	if pack_split.size() != 2:
 		push_error("Entry path '%s' is invalid" % entry_path)
