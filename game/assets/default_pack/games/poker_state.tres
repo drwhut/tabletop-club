@@ -1,0 +1,2183 @@
+[gd_resource type="Resource" load_steps=298 format=2]
+
+[ext_resource path="res://assets/default_pack/cards/hearts_08.tres" type="Resource" id=1]
+[ext_resource path="res://assets/default_pack/cards/clubs_04.tres" type="Resource" id=2]
+[ext_resource path="res://assets/default_pack/cards/clubs_11.tres" type="Resource" id=3]
+[ext_resource path="res://assets/default_pack/cards/diamonds_01.tres" type="Resource" id=4]
+[ext_resource path="res://assets/default_pack/cards/clubs_01.tres" type="Resource" id=5]
+[ext_resource path="res://assets/default_pack/cards/spades_01.tres" type="Resource" id=6]
+[ext_resource path="res://assets/default_pack/cards/clubs_08.tres" type="Resource" id=7]
+[ext_resource path="res://assets/default_pack/cards/diamonds_08.tres" type="Resource" id=8]
+[ext_resource path="res://assets/default_pack/cards/spades_08.tres" type="Resource" id=9]
+[ext_resource path="res://assets/default_pack/cards/clubs_05.tres" type="Resource" id=10]
+[ext_resource path="res://assets/default_pack/cards/diamonds_05.tres" type="Resource" id=11]
+[ext_resource path="res://assets/default_pack/cards/hearts_05.tres" type="Resource" id=12]
+[ext_resource path="res://assets/default_pack/cards/spades_05.tres" type="Resource" id=13]
+[ext_resource path="res://assets/default_pack/cards/diamonds_04.tres" type="Resource" id=14]
+[ext_resource path="res://assets/default_pack/cards/hearts_04.tres" type="Resource" id=15]
+[ext_resource path="res://assets/default_pack/cards/spades_04.tres" type="Resource" id=16]
+[ext_resource path="res://assets/default_pack/cards/diamonds_11.tres" type="Resource" id=17]
+[ext_resource path="res://assets/default_pack/cards/hearts_11.tres" type="Resource" id=18]
+[ext_resource path="res://assets/default_pack/cards/hearts_13.tres" type="Resource" id=19]
+[ext_resource path="res://assets/default_pack/cards/spades_13.tres" type="Resource" id=20]
+[ext_resource path="res://assets/default_pack/cards/clubs_09.tres" type="Resource" id=21]
+[ext_resource path="res://assets/default_pack/cards/hearts_09.tres" type="Resource" id=22]
+[ext_resource path="res://assets/default_pack/cards/clubs_12.tres" type="Resource" id=23]
+[ext_resource path="res://assets/default_pack/cards/diamonds_12.tres" type="Resource" id=24]
+[ext_resource path="res://assets/default_pack/cards/hearts_12.tres" type="Resource" id=25]
+[ext_resource path="res://assets/default_pack/cards/diamonds_07.tres" type="Resource" id=26]
+[ext_resource path="res://assets/default_pack/cards/hearts_07.tres" type="Resource" id=27]
+[ext_resource path="res://assets/default_pack/cards/spades_07.tres" type="Resource" id=28]
+[ext_resource path="res://assets/default_pack/cards/clubs_06.tres" type="Resource" id=29]
+[ext_resource path="res://assets/default_pack/cards/diamonds_06.tres" type="Resource" id=30]
+[ext_resource path="res://assets/default_pack/cards/hearts_06.tres" type="Resource" id=31]
+[ext_resource path="res://assets/default_pack/cards/spades_06.tres" type="Resource" id=32]
+[ext_resource path="res://assets/default_pack/cards/clubs_10.tres" type="Resource" id=33]
+[ext_resource path="res://assets/default_pack/cards/diamonds_10.tres" type="Resource" id=34]
+[ext_resource path="res://assets/default_pack/cards/hearts_10.tres" type="Resource" id=35]
+[ext_resource path="res://assets/default_pack/cards/hearts_03.tres" type="Resource" id=36]
+[ext_resource path="res://assets/default_pack/cards/spades_03.tres" type="Resource" id=37]
+[ext_resource path="res://assets/default_pack/cards/diamonds_02.tres" type="Resource" id=38]
+[ext_resource path="res://assets/default_pack/cards/hearts_02.tres" type="Resource" id=39]
+[ext_resource path="res://assets/default_pack/cards/spades_02.tres" type="Resource" id=40]
+[ext_resource path="res://assets/default_pack/skyboxes/tantolunden.tres" type="Resource" id=41]
+[ext_resource path="res://assets/default_pack/tokens/poker/poker_25.tres" type="Resource" id=42]
+[ext_resource path="res://assets/default_pack/tokens/poker/poker_5.tres" type="Resource" id=43]
+[ext_resource path="res://assets/default_pack/tokens/poker/poker_100.tres" type="Resource" id=44]
+[ext_resource path="res://assets/default_pack/cards/hearts_01.tres" type="Resource" id=45]
+[ext_resource path="res://assets/default_pack/cards/spades_11.tres" type="Resource" id=46]
+[ext_resource path="res://assets/default_pack/cards/clubs_13.tres" type="Resource" id=47]
+[ext_resource path="res://assets/default_pack/cards/diamonds_13.tres" type="Resource" id=48]
+[ext_resource path="res://assets/default_pack/cards/diamonds_09.tres" type="Resource" id=49]
+[ext_resource path="res://assets/default_pack/cards/spades_09.tres" type="Resource" id=50]
+[ext_resource path="res://assets/default_pack/cards/spades_12.tres" type="Resource" id=51]
+[ext_resource path="res://assets/default_pack/cards/clubs_07.tres" type="Resource" id=52]
+[ext_resource path="res://assets/default_pack/cards/spades_10.tres" type="Resource" id=53]
+[ext_resource path="res://assets/default_pack/cards/clubs_03.tres" type="Resource" id=54]
+[ext_resource path="res://assets/default_pack/cards/diamonds_03.tres" type="Resource" id=55]
+[ext_resource path="res://assets/default_pack/cards/clubs_02.tres" type="Resource" id=56]
+[ext_resource path="res://assets/default_pack/tokens/poker/poker_10.tres" type="Resource" id=57]
+[ext_resource path="res://assets/default_pack/tokens/poker/poker_1.tres" type="Resource" id=58]
+[ext_resource path="res://assets/default_pack/tokens/poker/poker_dealer.tres" type="Resource" id=59]
+[ext_resource path="res://assets/default_pack/tables/poker_table.tres" type="Resource" id=60]
+[ext_resource path="res://room/state/room_state.gd" type="Script" id=61]
+[ext_resource path="res://room/state/piece_state.gd" type="Script" id=62]
+[ext_resource path="res://room/state/container_state.gd" type="Script" id=63]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 62 )
+index_id = 82
+scene_entry = ExtResource( 59 )
+is_locked = false
+transform = Transform( 1, -6.41943e-08, -0.000998246, 6.40659e-08, 1, -1.28671e-07, 0.000998246, 1.28607e-07, 1, -0.000926453, 0.134599, 7.99652 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 63 )
+index_id = 41
+is_locked = false
+transform = Transform( 0.999983, 2.23293e-08, 0.00582435, -2.24937e-08, 1, 2.81748e-08, -0.00582435, -2.83054e-08, 0.999983, 0.270393, 0.434595, 37.314 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ]
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 63 )
+index_id = 42
+is_locked = false
+transform = Transform( 0.996669, 7.04829e-07, 0.0815555, -6.73396e-07, 1, -4.12918e-07, -0.0815555, 3.56624e-07, 0.996669, -3.40708, 0.634595, 35.1365 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ]
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 63 )
+index_id = 43
+is_locked = false
+transform = Transform( 0.999999, -2.7012e-07, -0.00166641, 2.69869e-07, 1, -1.50559e-07, 0.00166641, 1.50109e-07, 0.999999, -3.88901, 0.534595, 30.7179 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ]
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=25]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=26]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=27]
+script = ExtResource( 63 )
+index_id = 44
+is_locked = false
+transform = Transform( 0.999994, 1.33048e-07, 0.0034727, -1.3179e-07, 1, -3.62552e-07, -0.0034727, 3.62092e-07, 0.999994, 3.67735, 0.334595, 34.4012 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ]
+
+[sub_resource type="Resource" id=28]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=29]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=30]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=31]
+script = ExtResource( 63 )
+index_id = 45
+is_locked = false
+transform = Transform( 0.999999, -1.53581e-07, 0.00102466, 1.54502e-07, 1, -8.98288e-07, -0.00102466, 8.98446e-07, 0.999999, 0.512325, 0.234595, 31.488 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ]
+
+[sub_resource type="Resource" id=32]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=33]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=34]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=35]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=36]
+script = ExtResource( 63 )
+index_id = 51
+is_locked = false
+transform = Transform( 0.999901, 2.78469e-08, 0.0140809, -2.72763e-08, 1, -4.07112e-08, -0.0140809, 4.0323e-08, 0.999901, -48.2167, 0.334595, 34.1667 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ]
+
+[sub_resource type="Resource" id=37]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=38]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=39]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=40]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=41]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=42]
+script = ExtResource( 63 )
+index_id = 52
+is_locked = false
+transform = Transform( 0.999992, 4.6786e-08, 0.00387546, -4.67793e-08, 1, -1.79959e-09, -0.00387546, 1.61829e-09, 0.999992, -51.5957, 0.434595, 37.1014 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ]
+
+[sub_resource type="Resource" id=43]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=44]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=45]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=46]
+script = ExtResource( 63 )
+index_id = 53
+is_locked = false
+transform = Transform( 0.999997, 2.80867e-08, 0.00231342, -2.80605e-08, 1, -1.13581e-08, -0.00231342, 1.12932e-08, 0.999997, -51.3689, 0.234596, 31.2711 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ) ]
+
+[sub_resource type="Resource" id=47]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=48]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=49]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=50]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=51]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=52]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=53]
+script = ExtResource( 63 )
+index_id = 54
+is_locked = false
+transform = Transform( 0.999935, -6.09976e-08, 0.0113776, 6.18535e-08, 1, -7.4868e-08, -0.0113776, 7.55669e-08, 0.999935, -55.7348, 0.534595, 30.476 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ]
+
+[sub_resource type="Resource" id=54]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=55]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=56]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=57]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=58]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=59]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=60]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=61]
+script = ExtResource( 63 )
+index_id = 55
+is_locked = false
+transform = Transform( 0.996343, 1.0113e-08, 0.0854387, -1.12963e-08, 1, 1.33666e-08, -0.0854387, -1.42829e-08, 0.996343, -55.2311, 0.634595, 34.8647 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ) ]
+
+[sub_resource type="Resource" id=62]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=63]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=64]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=65]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=66]
+script = ExtResource( 63 )
+index_id = 56
+is_locked = false
+transform = Transform( 0.999995, -4.25443e-08, 0.00324016, 4.24908e-08, 1, 1.65624e-08, -0.00324016, -1.64246e-08, 0.999995, 55.8311, 0.334595, 34.1444 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ) ]
+
+[sub_resource type="Resource" id=67]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=68]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=69]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=70]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=71]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=72]
+script = ExtResource( 63 )
+index_id = 57
+is_locked = false
+transform = Transform( 0.999995, -8.11492e-08, 0.00327633, 8.14462e-08, 1, -9.05417e-08, -0.00327633, 9.08081e-08, 0.999995, 52.4275, 0.434595, 37.0651 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ) ]
+
+[sub_resource type="Resource" id=73]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=74]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=75]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=76]
+script = ExtResource( 63 )
+index_id = 58
+is_locked = false
+transform = Transform( 1, 5.67905e-08, -0.000434941, -5.67619e-08, 1, 6.58434e-08, 0.000434941, -6.58187e-08, 1, 52.6682, 0.234596, 31.248 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 73 ), SubResource( 74 ), SubResource( 75 ) ]
+
+[sub_resource type="Resource" id=77]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=78]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=79]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=80]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=81]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=82]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=83]
+script = ExtResource( 63 )
+index_id = 59
+is_locked = false
+transform = Transform( 0.999971, 2.84513e-06, 0.00762428, -3.22258e-06, 1, 4.94944e-05, -0.00762428, -4.95176e-05, 0.999971, 48.2614, 0.534601, 30.4417 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ) ]
+
+[sub_resource type="Resource" id=84]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=85]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=86]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=87]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=88]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=89]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=90]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=91]
+script = ExtResource( 63 )
+index_id = 60
+is_locked = false
+transform = Transform( 0.996631, -5.15509e-07, 0.0820194, 6.20268e-07, 1, -1.25176e-06, -0.0820194, 1.29842e-06, 0.996631, 48.7803, 0.634593, 34.9151 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ) ]
+
+[sub_resource type="Resource" id=92]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=93]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=94]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=95]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=96]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=97]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=98]
+script = ExtResource( 63 )
+index_id = 61
+is_locked = false
+transform = Transform( -0.999949, 5.1805e-07, -0.0100724, 5.23948e-07, 1, -5.82961e-07, 0.0100724, -5.88208e-07, -0.999949, -3.52385, 0.534602, -36.0524 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ) ]
+
+[sub_resource type="Resource" id=99]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=100]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=101]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=102]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=103]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=104]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=105]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=106]
+script = ExtResource( 63 )
+index_id = 62
+is_locked = false
+transform = Transform( -0.998812, -1.56908e-07, 0.0487234, -1.49285e-07, 1, 1.60092e-07, -0.0487234, 1.52628e-07, -0.998812, -2.95419, 0.634603, -31.7565 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ) ]
+
+[sub_resource type="Resource" id=107]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=108]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=109]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=110]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=111]
+script = ExtResource( 63 )
+index_id = 63
+is_locked = false
+transform = Transform( -0.999989, 4.41596e-08, 0.00473766, 4.38229e-08, 1, -7.11783e-08, -0.00473766, -7.09699e-08, -0.999989, 4.03671, 0.334603, -32.5151 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ) ]
+
+[sub_resource type="Resource" id=112]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=113]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=114]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=115]
+script = ExtResource( 63 )
+index_id = 64
+is_locked = false
+transform = Transform( -0.999999, -3.35177e-08, -0.00172575, -3.38436e-08, 1, 1.88822e-07, 0.00172575, 1.8888e-07, -0.999999, 0.869504, 0.234603, -35.4426 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 112 ), SubResource( 113 ), SubResource( 114 ) ]
+
+[sub_resource type="Resource" id=116]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=117]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=118]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=119]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=120]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=121]
+script = ExtResource( 63 )
+index_id = 65
+is_locked = false
+transform = Transform( -0.999988, -1.74077e-07, 0.00480906, -1.75377e-07, 1, -2.69927e-07, -0.00480906, -2.70767e-07, -0.999988, 0.610936, 0.434603, -29.58 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ) ]
+
+[sub_resource type="Resource" id=122]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=123]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=124]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=125]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=126]
+script = ExtResource( 63 )
+index_id = 71
+is_locked = false
+transform = Transform( -0.999975, -7.26941e-08, 0.00706139, -7.66233e-08, 1, -5.56171e-07, -0.00706139, -5.56699e-07, -0.999975, -49.1225, 0.334603, -31.7056 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ) ]
+
+[sub_resource type="Resource" id=127]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=128]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=129]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=130]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=131]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=132]
+script = ExtResource( 63 )
+index_id = 72
+is_locked = false
+transform = Transform( -0.999975, 1.27808e-07, -0.0070366, 1.26708e-07, 1, 1.5672e-07, 0.0070366, 1.55825e-07, -0.999975, -52.4847, 0.434603, -28.7576 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ) ]
+
+[sub_resource type="Resource" id=133]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=134]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=135]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=136]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=137]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=138]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=139]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=140]
+script = ExtResource( 63 )
+index_id = 73
+is_locked = false
+transform = Transform( -0.998577, -1.20856e-06, 0.0533332, -1.25128e-06, 1, -7.67708e-07, -0.0533332, -8.33351e-07, -0.998577, -56.0839, 0.634602, -30.9426 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ) ]
+
+[sub_resource type="Resource" id=141]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=142]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=143]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=144]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=145]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=146]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=147]
+script = ExtResource( 63 )
+index_id = 74
+is_locked = false
+transform = Transform( -0.999933, -2.24428e-06, 0.0116188, -2.23331e-06, 1, 9.5775e-07, -0.0116188, 9.31737e-07, -0.999933, -56.673, 0.534601, -35.2081 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), SubResource( 144 ), SubResource( 145 ), SubResource( 146 ) ]
+
+[sub_resource type="Resource" id=148]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=149]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=150]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=151]
+script = ExtResource( 63 )
+index_id = 75
+is_locked = false
+transform = Transform( -0.999999, 1.86192e-08, 0.00110849, 1.88417e-08, 1, 2.00763e-07, -0.00110849, 2.00784e-07, -0.999999, -52.2735, 0.234602, -34.6166 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 148 ), SubResource( 149 ), SubResource( 150 ) ]
+
+[sub_resource type="Resource" id=152]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=153]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=154]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=155]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 42 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=156]
+script = ExtResource( 63 )
+index_id = 76
+is_locked = false
+transform = Transform( -0.999968, -1.00208e-07, -0.00792304, -1.00172e-07, 1, -4.91463e-09, 0.00792304, -4.1208e-09, -0.999968, 55.4384, 0.334603, -31.6365 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 152 ), SubResource( 153 ), SubResource( 154 ), SubResource( 155 ) ]
+
+[sub_resource type="Resource" id=157]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=158]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=159]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=160]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=161]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 58 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=162]
+script = ExtResource( 63 )
+index_id = 77
+is_locked = false
+transform = Transform( -0.999968, -1.46802e-07, -0.00791967, -1.46439e-07, 1, -4.64564e-08, 0.00791967, -4.52952e-08, -0.999968, 52.0873, 0.434603, -28.6744 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 157 ), SubResource( 158 ), SubResource( 159 ), SubResource( 160 ), SubResource( 161 ) ]
+
+[sub_resource type="Resource" id=163]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=164]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=165]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=166]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=167]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=168]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=169]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 43 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=170]
+script = ExtResource( 63 )
+index_id = 78
+is_locked = false
+transform = Transform( -0.999879, -9.85798e-07, 0.0155263, -1.17865e-06, 1, -1.24116e-05, -0.0155263, -1.24284e-05, -0.999879, 48.4913, 0.6346, -30.857 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 163 ), SubResource( 164 ), SubResource( 165 ), SubResource( 166 ), SubResource( 167 ), SubResource( 168 ), SubResource( 169 ) ]
+
+[sub_resource type="Resource" id=171]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=172]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=173]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=174]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=175]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=176]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 57 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=177]
+script = ExtResource( 63 )
+index_id = 79
+is_locked = false
+transform = Transform( -0.999962, -7.03039e-07, -0.00864031, -7.12391e-07, 1, 1.07936e-06, 0.00864031, 1.08547e-06, -0.999962, 47.8985, 0.534601, -35.172 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 171 ), SubResource( 172 ), SubResource( 173 ), SubResource( 174 ), SubResource( 175 ), SubResource( 176 ) ]
+
+[sub_resource type="Resource" id=178]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=179]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=180]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 44 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=181]
+script = ExtResource( 63 )
+index_id = 80
+is_locked = false
+transform = Transform( -0.999895, 5.98841e-08, -0.0144699, 5.89159e-08, 1, 6.73333e-08, 0.0144699, 6.64738e-08, -0.999895, 52.3181, 0.234603, -34.5697 )
+user_scale = Vector3( 4, 1, 4 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 178 ), SubResource( 179 ), SubResource( 180 ) ]
+
+[sub_resource type="Resource" id=182]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 47 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=183]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 23 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=184]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 3 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=185]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 33 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=186]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 21 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=187]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 7 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=188]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 52 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=189]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 29 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=190]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 10 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=191]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 2 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=192]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 54 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=193]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 56 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=194]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 5 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=195]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 48 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=196]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 24 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=197]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 17 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=198]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 34 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=199]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 49 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=200]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 8 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=201]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 26 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=202]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 30 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=203]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 11 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=204]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 14 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=205]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 55 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=206]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 38 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=207]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 4 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=208]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 19 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=209]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 25 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=210]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 18 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=211]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 35 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=212]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 22 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=213]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 1 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=214]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 27 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=215]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 31 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=216]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 12 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=217]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 15 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=218]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 36 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=219]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 39 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=220]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 45 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=221]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 20 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=222]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 51 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=223]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 46 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=224]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 53 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=225]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 50 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=226]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 9 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=227]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 28 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=228]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 32 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=229]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 13 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=230]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 16 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=231]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 37 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=232]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 40 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=233]
+script = ExtResource( 62 )
+index_id = -1
+scene_entry = ExtResource( 6 )
+is_locked = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=234]
+script = ExtResource( 63 )
+index_id = 81
+is_locked = false
+transform = Transform( 1, 4.13965e-09, 3.52385e-06, -4.13959e-09, 1, -1.8369e-08, -3.52385e-06, 1.8369e-08, 1, 2.88584e-07, 0.289599, -7.83599e-05 )
+user_scale = Vector3( 6.35, 1, 8.89 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 182 ), SubResource( 183 ), SubResource( 184 ), SubResource( 185 ), SubResource( 186 ), SubResource( 187 ), SubResource( 188 ), SubResource( 189 ), SubResource( 190 ), SubResource( 191 ), SubResource( 192 ), SubResource( 193 ), SubResource( 194 ), SubResource( 195 ), SubResource( 196 ), SubResource( 197 ), SubResource( 198 ), SubResource( 199 ), SubResource( 200 ), SubResource( 201 ), SubResource( 202 ), SubResource( 203 ), SubResource( 204 ), SubResource( 205 ), SubResource( 206 ), SubResource( 207 ), SubResource( 208 ), SubResource( 209 ), SubResource( 210 ), SubResource( 211 ), SubResource( 212 ), SubResource( 213 ), SubResource( 214 ), SubResource( 215 ), SubResource( 216 ), SubResource( 217 ), SubResource( 218 ), SubResource( 219 ), SubResource( 220 ), SubResource( 221 ), SubResource( 222 ), SubResource( 223 ), SubResource( 224 ), SubResource( 225 ), SubResource( 226 ), SubResource( 227 ), SubResource( 228 ), SubResource( 229 ), SubResource( 230 ), SubResource( 231 ), SubResource( 232 ), SubResource( 233 ) ]
+
+[resource]
+script = ExtResource( 61 )
+lamp_color = Color( 1, 1, 1, 1 )
+lamp_intensity = 0.6
+is_lamp_sunlight = true
+skybox_entry = ExtResource( 41 )
+table_entry = ExtResource( 60 )
+table_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32.3197, 0 )
+is_table_rigid = false
+hidden_area_states = [  ]
+piece_states = [ SubResource( 1 ), SubResource( 7 ), SubResource( 15 ), SubResource( 22 ), SubResource( 27 ), SubResource( 31 ), SubResource( 36 ), SubResource( 42 ), SubResource( 46 ), SubResource( 53 ), SubResource( 61 ), SubResource( 66 ), SubResource( 72 ), SubResource( 76 ), SubResource( 83 ), SubResource( 91 ), SubResource( 98 ), SubResource( 106 ), SubResource( 111 ), SubResource( 115 ), SubResource( 121 ), SubResource( 126 ), SubResource( 132 ), SubResource( 140 ), SubResource( 147 ), SubResource( 151 ), SubResource( 156 ), SubResource( 162 ), SubResource( 170 ), SubResource( 177 ), SubResource( 181 ), SubResource( 234 ) ]

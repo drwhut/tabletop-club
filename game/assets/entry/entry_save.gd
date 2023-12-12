@@ -30,11 +30,19 @@ extends AssetEntrySingle
 
 
 ## The path of the save file to load.
-export(String, FILE, "*.tc") var save_file_path := "" setget set_save_file_path
+export(String, FILE, "*.res,*.tc,*.tres") var save_file_path := "" \
+		setget set_save_file_path
 
 
 func set_save_file_path(value: String) -> void:
-	if not SanityCheck.is_valid_res_path(value, SanityCheck.VALID_EXTENSIONS_SAVE):
+	var valid_extensions := SanityCheck.VALID_EXTENSIONS_SAVE.duplicate()
+	
+	# Outside of the project folder, only trust *.tc files.
+	if value.begins_with("res://"):
+		valid_extensions.push_back("res")
+		valid_extensions.push_back("tres")
+	
+	if not SanityCheck.is_valid_res_path(value, valid_extensions):
 		return
 	
 	save_file_path = value

@@ -1,0 +1,310 @@
+[gd_resource type="Resource" load_steps=64 format=2]
+
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_1_6.tres" type="Resource" id=1]
+[ext_resource path="res://assets/default_pack/skyboxes/niagra_falls.tres" type="Resource" id=2]
+[ext_resource path="res://assets/default_pack/containers/purse.tres" type="Resource" id=3]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_1_2.tres" type="Resource" id=4]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_2_6.tres" type="Resource" id=5]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_0_0.tres" type="Resource" id=6]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_1_1.tres" type="Resource" id=7]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_3_5.tres" type="Resource" id=8]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_0_4.tres" type="Resource" id=9]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_4_4.tres" type="Resource" id=10]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_1_4.tres" type="Resource" id=11]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_4_5.tres" type="Resource" id=12]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_3_3.tres" type="Resource" id=13]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_4_6.tres" type="Resource" id=14]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_2_3.tres" type="Resource" id=15]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_0_5.tres" type="Resource" id=16]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_0_6.tres" type="Resource" id=17]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_0_1.tres" type="Resource" id=18]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_1_3.tres" type="Resource" id=19]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_2_5.tres" type="Resource" id=20]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_6_6.tres" type="Resource" id=21]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_3_6.tres" type="Resource" id=22]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_2_4.tres" type="Resource" id=23]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_1_5.tres" type="Resource" id=24]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_5_5.tres" type="Resource" id=25]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_3_4.tres" type="Resource" id=26]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_0_3.tres" type="Resource" id=27]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_5_6.tres" type="Resource" id=28]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_0_2.tres" type="Resource" id=29]
+[ext_resource path="res://assets/default_pack/tokens/domino/domino_2_2.tres" type="Resource" id=30]
+[ext_resource path="res://assets/default_pack/tables/poker_table.tres" type="Resource" id=31]
+[ext_resource path="res://room/state/room_state.gd" type="Script" id=32]
+[ext_resource path="res://room/state/piece_state.gd" type="Script" id=33]
+[ext_resource path="res://room/state/container_state.gd" type="Script" id=34]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 33 )
+index_id = 130
+scene_entry = ExtResource( 16 )
+is_locked = true
+transform = Transform( -1, -4.43439e-07, 0.000493229, 4.43598e-07, -1, 3.22623e-07, 0.000493229, 3.22842e-07, 1, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 33 )
+index_id = 131
+scene_entry = ExtResource( 11 )
+is_locked = true
+transform = Transform( -1, -8.83801e-07, 0.00100035, 8.83381e-07, -1, -4.20166e-07, 0.00100035, -4.19282e-07, 1, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 33 )
+index_id = 132
+scene_entry = ExtResource( 19 )
+is_locked = true
+transform = Transform( -1, 7.10199e-08, 0.000270436, -7.10314e-08, -1, -4.24381e-08, 0.000270436, -4.24573e-08, 1, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 33 )
+index_id = 133
+scene_entry = ExtResource( 17 )
+is_locked = true
+transform = Transform( -0.99999, 1.72548e-06, 0.00442029, -1.73531e-06, -1, -2.22064e-06, 0.00442029, -2.22829e-06, 0.99999, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 33 )
+index_id = 134
+scene_entry = ExtResource( 6 )
+is_locked = true
+transform = Transform( -1, -2.76148e-07, 0.000360401, 2.76061e-07, -1, -2.42929e-07, 0.000360401, -2.42829e-07, 1, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 33 )
+index_id = 135
+scene_entry = ExtResource( 9 )
+is_locked = true
+transform = Transform( -1, 7.42317e-07, 0.000172904, -7.42354e-07, -1, -2.19163e-07, 0.000172904, -2.19292e-07, 1, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 33 )
+index_id = 136
+scene_entry = ExtResource( 14 )
+is_locked = true
+transform = Transform( -0.999996, -9.14534e-08, 0.00271173, 9.15611e-08, -1, 3.95791e-08, 0.00271173, 3.98272e-08, 0.999996, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 33 )
+index_id = 137
+scene_entry = ExtResource( 5 )
+is_locked = true
+transform = Transform( -0.999996, 9.83632e-07, 0.00296565, -9.85782e-07, -1, -7.23426e-07, 0.00296565, -7.26346e-07, 0.999996, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 33 )
+index_id = 138
+scene_entry = ExtResource( 26 )
+is_locked = true
+transform = Transform( -0.99999, -6.31839e-08, 0.00451216, 5.69384e-08, -1, -1.38427e-06, 0.00451216, -1.384e-06, 0.99999, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 33 )
+index_id = 139
+scene_entry = ExtResource( 27 )
+is_locked = true
+transform = Transform( -0.999989, -1.72181e-07, -0.00460301, 1.91484e-07, -1, -4.19308e-06, -0.004603, -4.19391e-06, 0.99999, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 33 )
+index_id = 140
+scene_entry = ExtResource( 12 )
+is_locked = true
+transform = Transform( -0.999999, 8.54791e-07, 0.00131637, -8.55941e-07, -1, -8.72937e-07, 0.00131637, -8.74062e-07, 0.999999, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 33 )
+index_id = 141
+scene_entry = ExtResource( 24 )
+is_locked = true
+transform = Transform( -1, 8.37543e-07, 0.000226552, -8.3764e-07, -1, -4.25779e-07, 0.000226552, -4.25969e-07, 1, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 33 )
+index_id = 142
+scene_entry = ExtResource( 20 )
+is_locked = true
+transform = Transform( -0.999984, 4.79159e-08, -0.00565362, -3.69399e-08, -1, -1.94152e-06, -0.00565362, -1.94129e-06, 0.999984, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 33 )
+index_id = 143
+scene_entry = ExtResource( 8 )
+is_locked = true
+transform = Transform( -0.99999, 1.0824e-07, -0.00447972, -1.08086e-07, -1, -3.46551e-08, -0.00447972, -3.41706e-08, 0.99999, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 33 )
+index_id = 144
+scene_entry = ExtResource( 28 )
+is_locked = true
+transform = Transform( -0.999999, 2.02959e-06, -0.00139526, -2.02718e-06, -1, -1.7278e-06, -0.00139526, -1.72497e-06, 0.999999, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 33 )
+index_id = 145
+scene_entry = ExtResource( 1 )
+is_locked = true
+transform = Transform( -0.999999, -5.54636e-07, -0.00168062, 5.56212e-07, -1, -9.37244e-07, -0.00168062, -9.38178e-07, 0.999999, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 33 )
+index_id = 146
+scene_entry = ExtResource( 25 )
+is_locked = true
+transform = Transform( -1, -4.84861e-06, 0.0010314, 4.84382e-06, -1, -4.6447e-06, 0.0010314, -4.6397e-06, 0.999999, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 33 )
+index_id = 147
+scene_entry = ExtResource( 7 )
+is_locked = true
+transform = Transform( -0.99999, 3.44209e-07, 0.00440089, -3.43449e-07, -1, 1.73337e-07, 0.00440089, 1.71824e-07, 0.99999, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 33 )
+index_id = 148
+scene_entry = ExtResource( 22 )
+is_locked = true
+transform = Transform( -1, -6.39051e-07, -0.000838588, 6.39748e-07, -1, -8.30672e-07, -0.000838588, -8.31209e-07, 1, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 33 )
+index_id = 149
+scene_entry = ExtResource( 10 )
+is_locked = true
+transform = Transform( -0.999992, -9.74529e-08, 0.00399949, 9.75464e-08, -1, 2.31754e-08, 0.00399949, 2.35653e-08, 0.999992, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 33 )
+index_id = 150
+scene_entry = ExtResource( 30 )
+is_locked = true
+transform = Transform( -0.999982, -1.5416e-06, -0.00599169, 1.54262e-06, -1, -1.65995e-07, -0.00599169, -1.75235e-07, 0.999982, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 33 )
+index_id = 151
+scene_entry = ExtResource( 18 )
+is_locked = true
+transform = Transform( -1, 1.38166e-07, 0.000155691, -1.38179e-07, -1, -8.36508e-08, 0.000155691, -8.36723e-08, 1, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 33 )
+index_id = 152
+scene_entry = ExtResource( 13 )
+is_locked = true
+transform = Transform( -0.999983, -2.1386e-06, -0.00586027, 2.13942e-06, -1, -1.3448e-07, -0.00586027, -1.47015e-07, 0.999983, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 33 )
+index_id = 153
+scene_entry = ExtResource( 15 )
+is_locked = true
+transform = Transform( -0.999975, -2.00943e-06, -0.00705303, 2.02047e-06, -1, -1.55873e-06, -0.00705303, -1.57294e-06, 0.999975, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=25]
+script = ExtResource( 33 )
+index_id = 154
+scene_entry = ExtResource( 29 )
+is_locked = true
+transform = Transform( -0.999981, -1.07541e-07, 0.00620551, 1.07501e-07, -1, -6.70991e-09, 0.00620551, -6.04269e-09, 0.999981, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=26]
+script = ExtResource( 33 )
+index_id = 155
+scene_entry = ExtResource( 4 )
+is_locked = true
+transform = Transform( -0.999998, 1.78366e-06, 0.00182602, -1.78882e-06, -1, -2.8246e-06, 0.00182602, -2.82786e-06, 0.999998, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=27]
+script = ExtResource( 33 )
+index_id = 156
+scene_entry = ExtResource( 23 )
+is_locked = true
+transform = Transform( -0.999993, -1.9324e-06, -0.0036309, 1.93844e-06, -1, -1.66082e-06, -0.0036309, -1.66785e-06, 0.999994, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=28]
+script = ExtResource( 33 )
+index_id = 157
+scene_entry = ExtResource( 21 )
+is_locked = true
+transform = Transform( -0.999997, -5.6412e-07, 0.00234133, 5.63993e-07, -1, -5.51013e-08, 0.00234133, -5.37807e-08, 0.999997, 9999, 9999, 9999 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=29]
+script = ExtResource( 34 )
+index_id = 129
+scene_entry = ExtResource( 3 )
+is_locked = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 4.8, 0 )
+user_scale = Vector3( 1, 1, 1 )
+user_albedo = Color( 1, 1, 1, 1 )
+content_states = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ]
+
+[resource]
+script = ExtResource( 32 )
+lamp_color = Color( 1, 1, 1, 1 )
+lamp_intensity = 1.0
+is_lamp_sunlight = true
+skybox_entry = ExtResource( 2 )
+table_entry = ExtResource( 31 )
+table_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32.3197, 0 )
+is_table_rigid = false
+hidden_area_states = [  ]
+piece_states = [ SubResource( 29 ) ]
