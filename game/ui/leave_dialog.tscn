@@ -14,20 +14,21 @@ script = ExtResource( 4 )
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 16
-custom_constants/margin_top = 4
-custom_constants/margin_left = 16
-custom_constants/margin_bottom = 4
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_constants/margin_right = 14
+custom_constants/margin_left = 14
 
 [node name="MainContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_left = 16.0
-margin_top = 4.0
-margin_right = 624.0
-margin_bottom = 356.0
+margin_left = 14.0
+margin_right = 618.0
+margin_bottom = 352.0
 
 [node name="QuestionLabel" type="Label" parent="MarginContainer/MainContainer"]
 margin_top = 124.0
-margin_right = 608.0
+margin_right = 604.0
 margin_bottom = 187.0
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 2 )
@@ -37,12 +38,12 @@ autowrap = true
 
 [node name="OptionContainer" type="HBoxContainer" parent="MarginContainer/MainContainer"]
 margin_top = 316.0
-margin_right = 608.0
+margin_right = 604.0
 margin_bottom = 352.0
 
 [node name="BackButton" type="Button" parent="MarginContainer/MainContainer/OptionContainer"]
-margin_left = 101.0
-margin_right = 201.0
+margin_left = 100.0
+margin_right = 200.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 6
@@ -52,8 +53,8 @@ icon = ExtResource( 1 )
 expand_icon = true
 
 [node name="QuitButton" type="Button" parent="MarginContainer/MainContainer/OptionContainer"]
-margin_left = 407.0
-margin_right = 507.0
+margin_left = 404.0
+margin_right = 504.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 6

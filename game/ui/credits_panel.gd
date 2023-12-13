@@ -25,7 +25,7 @@ extends AttentionPanel
 ## A panel showing credits for those that have helped make the game.
 
 
-onready var _credits_label := $MarginContainer/CreditsLabel
+onready var _credits_label := $CreditsLabel
 
 
 func _ready():

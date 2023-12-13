@@ -25,8 +25,8 @@ extends AttentionPanel
 ## A pop-up panel showing version and licensing information about the game.
 
 
-onready var _license_label := $MarginContainer/SplitContainer/LicenseLabel
-onready var _version_label := $MarginContainer/SplitContainer/VersionContainer/VersionLabel
+onready var _license_label := $SplitContainer/LicenseLabel
+onready var _version_label := $SplitContainer/VersionContainer/VersionLabel
 
 
 func _ready():

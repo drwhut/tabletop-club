@@ -12,26 +12,20 @@ margin_bottom = 540.0
 popup_exclusive = true
 script = ExtResource( 3 )
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="SplitContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 4
-custom_constants/margin_top = 4
-custom_constants/margin_left = 4
-custom_constants/margin_bottom = 4
-
-[node name="SplitContainer" type="HBoxContainer" parent="MarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 956.0
-margin_bottom = 536.0
+margin_right = -4.0
+margin_bottom = -4.0
 
-[node name="VersionContainer" type="VBoxContainer" parent="MarginContainer/SplitContainer"]
+[node name="VersionContainer" type="VBoxContainer" parent="SplitContainer"]
 margin_right = 270.0
 margin_bottom = 532.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/SplitContainer/VersionContainer"]
+[node name="TextureRect" type="TextureRect" parent="SplitContainer/VersionContainer"]
 margin_top = 114.0
 margin_right = 270.0
 margin_bottom = 384.0
@@ -40,7 +34,7 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
-[node name="VersionLabel" type="Label" parent="MarginContainer/SplitContainer/VersionContainer"]
+[node name="VersionLabel" type="Label" parent="SplitContainer/VersionContainer"]
 margin_top = 388.0
 margin_right = 270.0
 margin_bottom = 418.0
@@ -48,7 +42,7 @@ custom_fonts/font = ExtResource( 2 )
 align = 1
 autowrap = true
 
-[node name="LicenseLabel" type="RichTextLabel" parent="MarginContainer/SplitContainer"]
+[node name="LicenseLabel" type="RichTextLabel" parent="SplitContainer"]
 margin_left = 274.0
 margin_right = 952.0
 margin_bottom = 532.0
@@ -76,14 +70,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
 script = ExtResource( 5 )
 
-[node name="BackButtonContainer" type="Control" parent="MarginContainer"]
+[node name="BackButtonContainer" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 956.0
-margin_bottom = 536.0
+margin_right = -4.0
+margin_bottom = -4.0
 mouse_filter = 2
 
-[node name="BackButton" type="Button" parent="MarginContainer/BackButtonContainer"]
+[node name="BackButton" type="Button" parent="BackButtonContainer"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -36.0
@@ -94,4 +90,4 @@ text = "Back"
 icon = ExtResource( 4 )
 expand_icon = true
 
-[connection signal="pressed" from="MarginContainer/BackButtonContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="BackButtonContainer/BackButton" to="." method="_on_BackButton_pressed"]
