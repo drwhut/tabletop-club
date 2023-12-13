@@ -84,12 +84,14 @@ func set_menu_state(value: int) -> void:
 	
 	# Show the menu if the state requires us to.
 	_main_menu.visible = (menu_state != MenuState.STATE_NO_MENU)
-	if _main_menu.visible:
-		_main_menu.take_focus()
 	
 	# If we are in-game, we'll need to show the player a different set of
 	# buttons in the menu compared to if we are in the main menu.
 	_main_menu.ingame_buttons_visible = (menu_state != MenuState.STATE_MAIN_MENU)
+	
+	# Have the main menu take the keyboard focus if it is now visible.
+	if _main_menu.visible:
+		_main_menu.take_focus()
 	
 	if menu_state == MenuState.STATE_MAIN_MENU:
 		# If the jukebox is not already playing, start it.
