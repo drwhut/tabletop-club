@@ -59,6 +59,36 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://www.svgrepo.com/svg/500472/back
 
 
+- Book icon
+
+	Files:
+		icons/book_icon.svg
+	Author: pixelbazaar
+	License: CC BY
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/513175/book-closed
+
+
+- Bug icon
+
+	Files:
+		icons/bug_icon.svg
+	Author: Denali Design
+	License: MIT
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/444966/bug-solid
+
+
+- Chat icon
+
+	Files:
+		icons/chat_icon.svg
+	Author: SVG Repo
+	License: CC0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/226716/chatting-talk
+
+
 - Code icon
 
 	Files:
@@ -77,6 +107,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	License: CC BY 3.0
 	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://game-icons.net/1x1/delapouite/cardboard-box.html
+
+
+- Construction icon
+
+	Files:
+		icons/construction_icon.svg
+	Author: SVG Repo
+	License: CC0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/392173/construction-equipment-hammer-tool-repair-tools
 
 
 - Credits icon
@@ -186,6 +226,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	License: Public Domain
 	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/478288/internet
+
+
+- Language icon
+
+	Files:
+		icons/language_icon.svg
+	Author: alex.mitov
+	License: CC BY
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/324210/language-translation
 
 
 - Leave icon

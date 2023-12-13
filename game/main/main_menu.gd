@@ -54,6 +54,7 @@ onready var _multiplayer_button := $MainContainer/PrimaryContainer/MultiplayerBu
 onready var _return_button := $MainContainer/PrimaryContainer/ReturnButton
 onready var _singleplayer_button := $MainContainer/PrimaryContainer/SingleplayerButton
 onready var _quit_dialog := $QuitDialog
+onready var _website_panel := $WebsitePanel
 
 
 func _ready():
@@ -94,6 +95,10 @@ func _on_LeaveButton_pressed():
 
 func _on_CreditsButton_pressed():
 	_credits_panel.popup_centered()
+
+
+func _on_WebsiteButton_pressed():
+	_website_panel.popup_centered()
 
 
 func _on_InfoButton_pressed():

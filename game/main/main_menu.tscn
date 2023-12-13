@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://tabletop_club_logo.png" type="Texture" id=1]
 [ext_resource path="res://icons/multiplayer_icon.svg" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://icons/back_icon.svg" type="Texture" id=18]
 [ext_resource path="res://icons/leave_icon.svg" type="Texture" id=19]
 [ext_resource path="res://ui/leave_dialog.tscn" type="PackedScene" id=20]
+[ext_resource path="res://ui/website_panel.tscn" type="PackedScene" id=21]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeInMenu"
@@ -215,6 +216,11 @@ grow_horizontal = 0
 hide_on_popup = NodePath("../MainContainer")
 focus_on_hide = NodePath("../MainContainer/SecondaryContainer/CreditsButton")
 
+[node name="WebsitePanel" parent="." instance=ExtResource( 21 )]
+visible = false
+hide_on_popup = NodePath("../MainContainer")
+focus_on_hide = NodePath("../MainContainer/TertiaryContainer/WebsiteButton")
+
 [node name="GameInfoPanel" parent="." instance=ExtResource( 16 )]
 hide_on_popup = NodePath("../MainContainer")
 focus_on_hide = NodePath("../MainContainer/TertiaryContainer/InfoButton")
@@ -235,6 +241,7 @@ anims/RESET = SubResource( 2 )
 [connection signal="pressed" from="MainContainer/PrimaryContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
 [connection signal="pressed" from="MainContainer/PrimaryContainer/LeaveButton" to="." method="_on_LeaveButton_pressed"]
 [connection signal="pressed" from="MainContainer/SecondaryContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="MainContainer/TertiaryContainer/WebsiteButton" to="." method="_on_WebsiteButton_pressed"]
 [connection signal="pressed" from="MainContainer/TertiaryContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="MainContainer/TertiaryContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="leaving_session" from="LeaveDialog" to="." method="_on_LeaveDialog_leaving_session"]
