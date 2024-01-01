@@ -532,6 +532,7 @@ config/version="master"
 CustomModule="*res://util/custom_module.gd"
 ImportAbortFlag="*res://assets/import_abort_flag.gd"
 AssetDB="*res://assets/asset_db.gd"
+GameConfig="*res://main/game_config.gd"
 
 [debug]
 

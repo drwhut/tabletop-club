@@ -32,6 +32,13 @@ export(PackedScene) var next_scene: PackedScene
 func _ready():
 	connect("animation_finished", self, "_on_animation_finished")
 	
+	# Load any saved settings now so that, for example, the game will enter
+	# fullscreen mode as soon as possible. Note that settings for scenes like
+	# the camera controller cannot be loaded yet, so we'll apply these settings
+	# again a second time once the main game scene has been loaded.
+	GameConfig.load_from_file()
+	GameConfig.apply_all()
+	
 	# Load the default asset pack as register it as early as possible.
 	var ttc_pack := preload("res://assets/default_pack/ttc_pack.tres")
 	ttc_pack.reset_dictionary()
