@@ -88,6 +88,11 @@ onready var _camera: Camera = $Camera
 
 
 func _ready():
+	# NOTE: When the first person camera is added, we will need to apply the
+	# game config on initialisation, since the switch between first and third
+	# person will be able to happen outside of the options being applied.
+	GameConfig.connect("applying_settings", self, "apply_options")
+	
 	reset_transform()
 
 
@@ -131,6 +136,24 @@ func reset_transform() -> void:
 	
 	_camera.translation.z = initial_zoom
 	_target_zoom = initial_zoom
+
+
+## Apply the options given by the [GameConfig] to this camera.
+## TODO: Determine if we should test this function.
+func apply_options() -> void:
+	rotation_sensitivity_x = -0.1 * GameConfig.control_horizontal_sensitivity
+	if GameConfig.control_horizontal_invert:
+		rotation_sensitivity_x *= -1.0
+	
+	rotation_sensitivity_y = -0.1 * GameConfig.control_vertical_sensitivity
+	if GameConfig.control_vertical_invert:
+		rotation_sensitivity_y *= -1.0
+	
+	max_speed = 10.0 + 190.0 * GameConfig.control_camera_movement_speed
+	
+	zoom_sensitivity = 1.0 + 15.0 * GameConfig.control_zoom_sensitivity
+	if GameConfig.control_zoom_invert:
+		zoom_sensitivity *= -1.0
 
 
 # Read player input and adjust the position of the camera accordingly.

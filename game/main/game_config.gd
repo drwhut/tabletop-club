@@ -24,13 +24,27 @@ extends Node
 
 ## Stores configurable properties for the game, accessed by the options menu.
 ##
-## NOTE: All floating-point properties are standardised to be between 0 and 1,
-## it is up to other sections of code to determine how to transform that number.
-## TODO: Test this class once it is complete.
+## NOTE: All floating-point properties are standardised to be between either 0
+## and 1, or 0.01 and 1, depending on if a value of 0 makes sense for that
+## property. It is up to other sections of code to determine how to transform
+## that number.
+## TODO: Test this class once it is complete (include v0.1.x file in testing).
 
 
 ## Fired when the current configuration is being applied to the entire game.
 signal applying_settings()
+
+
+## How often the game should create an autosave.
+enum {
+	AUTOSAVE_NEVER,
+	AUTOSAVE_30_SEC,
+	AUTOSAVE_1_MIN,
+	AUTOSAVE_5_MIN,
+	AUTOSAVE_10_MIN,
+	AUTOSAVE_30_MIN,
+	AUTOSAVE_MAX # Used for validation only.
+}
 
 
 ## The path to the file containing these saved properties.
@@ -58,6 +72,91 @@ var audio_sounds_volume := 1.0 setget set_audio_sounds_volume
 var audio_effects_volume := 1.0 setget set_audio_effects_volume
 
 
+## The sensitivity scalar when rotating the camera horizontally.
+var control_horizontal_sensitivity := 0.05 \
+		setget set_control_horizontal_sensitivity
+
+## The sensitivty scalar when rotating the camera vertically.
+var control_vertical_sensitivity := 0.05 \
+		setget set_control_vertical_sensitivity
+
+## Determines if the horizontal rotation of the camera should be inverted.
+var control_horizontal_invert := false
+
+## Determines if the vertical rotation of the camera should be inverted.
+var control_vertical_invert := false
+
+## The movement speed of the game camera.
+var control_camera_movement_speed := 0.25 \
+		setget set_control_camera_movement_speed
+
+## Determines if holding down the left mouse button moves the camera.
+## TODO: Implement this setting.
+var control_left_mouse_button_moves_camera := false
+
+## The sensitivity scalar when zooming the camera in and out.
+var control_zoom_sensitivity := 0.25 setget set_control_zoom_sensitivity
+
+## Determines if the zoom direction of the camera should be inverted.
+var control_zoom_invert := false
+
+## The sensitivity scalar when lifting pieces up and down.
+## TODO: Implement this setting.
+var control_piece_lift_sensitivity := 0.15 \
+		setget set_control_piece_lift_sensitivity
+
+## Determines if the direction that pieces are lifted should be inverted.
+## TODO: Implement this setting.
+var control_piece_lift_invert := false
+
+## Determines if the direction pieces are rotated should be inverted.
+## TODO: Implement this setting.
+var control_piece_rotation_invert := false
+
+## Determines if cards should be shown in the UI when hovering over them in hand.
+## TODO: Implement this setting.
+var control_hand_preview_enabled := true
+
+## How long the mouse need to hover over a card before the preview is displayed.
+## TODO: Implement this setting.
+var control_hand_preview_delay := 0.5 setget set_control_hand_preview_delay
+
+## How big the preview UI should be when hovering over cards in hand.
+## TODO: Implement this setting.
+var control_hand_preview_size := 0.5 setget set_control_hand_preview_size
+
+## Determines if the control hints shown in the UI should be hidden.
+## TODO: Implement this setting.
+var control_hide_hints := false
+
+
+## The locale code of the language the game is currently using. If empty, the
+## system's language is used if it is supported, otherwise the game will default
+## to English.
+var general_language := "" setget set_general_language
+
+## How often the game should create autosaves, using the [code]AUTOSAVE_*[/code]
+## values.
+## TODO: Implement this setting.
+var general_autosave_interval := AUTOSAVE_5_MIN \
+		setget set_general_autosave_interval
+
+## The maximum number of autosave files that should be made.
+## TODO: Implement this setting.
+var general_autosave_file_count := 10 setget set_general_autosave_file_count
+
+## Determines if the splash screen should be skipped at the start of the game.
+var general_skip_splash_screen := false
+
+## Determines if system warnings should be shown in the chat box.
+## TODO: Implement this setting.
+var general_show_warnings := true
+
+## Determines if system errors should be shown in the chat box.
+## TODO: Implement this setting.
+var general_show_errors := true
+
+
 ## Load the previously saved configuration from the disk.
 func load_from_file() -> void:
 	var dir := Directory.new()
@@ -79,6 +178,71 @@ func load_from_file() -> void:
 			"sounds_volume", audio_sounds_volume))
 	set_audio_effects_volume(config_file.get_value_strict("audio",
 			"effects_volume", audio_effects_volume))
+	
+	set_control_horizontal_sensitivity(config_file.get_value_strict("controls",
+			"mouse_horizontal_sensitivity", control_horizontal_sensitivity))
+	set_control_vertical_sensitivity(config_file.get_value_strict("controls",
+			"mouse_vertical_sensitivity", control_vertical_sensitivity))
+	
+	control_horizontal_invert = config_file.get_value_strict("controls",
+			"mouse_horizontal_invert", control_horizontal_invert)
+	control_vertical_invert = config_file.get_value_strict("controls",
+			"mouse_vertical_invert", control_vertical_invert)
+	
+	set_control_camera_movement_speed(config_file.get_value_strict("controls",
+			"camera_movement_speed", control_camera_movement_speed))
+	control_left_mouse_button_moves_camera = config_file.get_value_strict("controls",
+			"left_click_to_move", control_left_mouse_button_moves_camera)
+	
+	set_control_zoom_sensitivity(config_file.get_value_strict("controls",
+			"zoom_sensitivity", control_zoom_sensitivity))
+	control_zoom_invert = config_file.get_value("controls",
+			"zoom_invert", control_zoom_invert)
+	
+	set_control_piece_lift_sensitivity(config_file.get_value_strict("controls",
+			"piece_lift_sensitivity", control_piece_lift_sensitivity))
+	control_piece_lift_invert = config_file.get_value_strict("controls",
+			"piece_lift_invert", control_piece_lift_invert)
+	
+	control_piece_rotation_invert = config_file.get_value_strict("controls",
+			"piece_rotation_invert", control_piece_rotation_invert)
+	
+	control_hand_preview_enabled = config_file.get_value_strict("controls",
+			"hand_preview_enabled", control_hand_preview_enabled)
+	set_control_hand_preview_delay(config_file.get_value_strict("controls",
+			"hand_preview_delay", control_hand_preview_delay))
+	set_control_hand_preview_size(config_file.get_value_strict("controls",
+			"hand_preview_size", control_hand_preview_size))
+	
+	control_hide_hints = config_file.get_value_strict("controls",
+			"hide_control_hints", control_hide_hints)
+	
+	set_general_language(config_file.get_value_strict("general", "language",
+			general_language))
+	
+	set_general_autosave_interval(config_file.get_value_strict("general",
+			"autosave_interval", general_autosave_interval))
+	
+	# v0.1.x: Due to the way the options menu worked, the file count was
+	# actually a float, so we need to account for this.
+	var file_count_value = config_file.get_value("general",
+			"autosave_file_count", general_autosave_file_count)
+	match typeof(file_count_value):
+		TYPE_INT:
+			set_general_autosave_file_count(file_count_value)
+		TYPE_REAL:
+			set_general_autosave_file_count(int(file_count_value))
+		_:
+			push_error("Value of property 'autosave_file_count' in section 'general' is incorrect data type (expected: Integer, got: %s)" %
+					SanityCheck.get_type_name(typeof(file_count_value)))
+	
+	general_skip_splash_screen = config_file.get_value_strict("general",
+			"skip_splash_screen", general_skip_splash_screen)
+	
+	general_show_warnings = config_file.get_value_strict("general",
+			"show_warnings", general_show_warnings)
+	general_show_errors = config_file.get_value_strict("general",
+			"show_errors", general_show_errors)
 
 
 ## Save the current configuration to disk.
@@ -90,6 +254,55 @@ func save_to_file() -> void:
 	config_file.set_value("audio", "sounds_volume", audio_sounds_volume)
 	config_file.set_value("audio", "effects_volume", audio_effects_volume)
 	
+	config_file.set_value("controls", "mouse_horizontal_sensitivity",
+			control_horizontal_sensitivity)
+	config_file.set_value("controls", "mouse_vertical_sensitivity",
+			control_vertical_sensitivity)
+	
+	config_file.set_value("controls", "mouse_horizontal_invert",
+			control_horizontal_invert)
+	config_file.set_value("controls", "mouse_vertical_invert",
+			control_vertical_invert)
+	
+	config_file.set_value("controls", "camera_movement_speed",
+			control_camera_movement_speed)
+	config_file.set_value("controls", "left_click_to_move",
+			control_left_mouse_button_moves_camera)
+	
+	config_file.set_value("controls", "zoom_sensitivity",
+			control_zoom_sensitivity)
+	config_file.set_value("controls", "zoom_invert", control_zoom_invert)
+	
+	config_file.set_value("controls", "piece_lift_sensitivity",
+			control_piece_lift_sensitivity)
+	config_file.set_value("controls", "piece_lift_invert",
+			control_piece_lift_invert)
+	
+	config_file.set_value("controls", "piece_rotation_invert",
+			control_piece_rotation_invert)
+	
+	config_file.set_value("controls", "hand_preview_enabled",
+			control_hand_preview_enabled)
+	config_file.set_value("controls", "hand_preview_delay",
+			control_hand_preview_delay)
+	config_file.set_value("controls", "hand_preview_size",
+			control_hand_preview_size)
+	
+	config_file.set_value("controls", "hide_control_hints", control_hide_hints)
+	
+	config_file.set_value("general", "language", general_language)
+	
+	config_file.set_value("general", "autosave_interval",
+			general_autosave_interval)
+	config_file.set_value("general", "autosave_file_count",
+			general_autosave_file_count)
+	
+	config_file.set_value("general", "skip_splash_screen",
+			general_skip_splash_screen)
+	
+	config_file.set_value("general", "show_warnings", general_show_warnings)
+	config_file.set_value("general", "show_errors", general_show_errors)
+	
 	var err := config_file.save(CONFIG_FILE_PATH)
 	if err != OK:
 		push_error("Failed to save game settings to '%s' (error: %d)" % [
@@ -100,6 +313,16 @@ func save_to_file() -> void:
 ## NOTE: This will emit [signal applying_settings].
 func apply_all() -> void:
 	apply_audio()
+	
+	if general_language.empty():
+		var system_locale := OS.get_locale()
+		var closest_locale := find_closest_language(system_locale)
+		if closest_locale.empty():
+			TranslationServer.set_locale("en")
+		else:
+			TranslationServer.set_locale(closest_locale)
+	else:
+		TranslationServer.set_locale(general_language)
 	
 	emit_signal("applying_settings")
 
@@ -133,6 +356,26 @@ func convert_volume_to_db(volume: float) -> float:
 	return 8.656170245 * log(0.5 * volume)
 
 
+## Given a locale code that potentially includes a variant (e.g. de_AT), find
+## the closest language that is supported by the game (e.g. de). If none are
+## found, an empty string is returned.
+func find_closest_language(locale_code: String) -> String:
+	if locale_code.empty():
+		return ""
+	
+	var closest_locale := ""
+	
+	for element in TranslationServer.get_loaded_locales():
+		var potential_locale: String = element
+		if potential_locale.length() <= closest_locale.length():
+			continue
+		
+		if locale_code.begins_with(potential_locale):
+			closest_locale = potential_locale
+	
+	return closest_locale
+
+
 func set_audio_master_volume(value: float) -> void:
 	if not SanityCheck.is_valid_float(value):
 		return
@@ -160,3 +403,71 @@ func set_audio_effects_volume(value: float) -> void:
 		return
 	
 	audio_effects_volume = clamp(value, 0.0, 1.0)
+
+
+func set_control_horizontal_sensitivity(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	control_horizontal_sensitivity = clamp(value, 0.01, 1.0)
+
+
+func set_control_vertical_sensitivity(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	control_vertical_sensitivity = clamp(value, 0.01, 1.0)
+
+
+func set_control_camera_movement_speed(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	control_camera_movement_speed = clamp(value, 0.01, 1.0)
+
+
+func set_control_zoom_sensitivity(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	control_zoom_sensitivity = clamp(value, 0.01, 1.0)
+
+
+func set_control_piece_lift_sensitivity(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	control_piece_lift_sensitivity = clamp(value, 0.01, 1.0)
+
+
+func set_control_hand_preview_delay(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	control_hand_preview_delay = clamp(value, 0.01, 1.0)
+
+
+func set_control_hand_preview_size(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	control_hand_preview_size = clamp(value, 0.01, 1.0)
+
+
+func set_general_language(value: String) -> void:
+	value = value.strip_edges().strip_escapes()
+	general_language = find_closest_language(value)
+
+
+func set_general_autosave_interval(value: int) -> void:
+	if value < 0 or value > AUTOSAVE_MAX:
+		return
+	
+	general_autosave_interval = value
+
+
+func set_general_autosave_file_count(value: int) -> void:
+	if value < 1:
+		return
+	
+	general_autosave_file_count = value

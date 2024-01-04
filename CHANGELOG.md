@@ -36,6 +36,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added full controller support. (#100)
 - Added new bindings for rotating the camera, by default these are bound to the
   arrow keys.
+- When reading the system's language, if it is a variant of a language that is
+  already supported by the game, the game will use the supported language
+  instead of reverting to English. For example, if the system is set to Austrian
+  German (`de_AT`), the game will use German (`de`) instead of English.
 
 ### Changed
 

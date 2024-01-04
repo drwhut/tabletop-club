@@ -45,9 +45,10 @@ func _ready():
 	AssetDB.add_pack(ttc_pack)
 	AssetDB.commit_changes()
 	
-	# TODO: Check 'language' option, set locale.
-	# TODO: Check 'skip_splash_screen' option.
-	play("FadeInAndOut")
+	if GameConfig.general_skip_splash_screen:
+		_goto_next_scene()
+	else:
+		play("FadeInAndOut")
 
 
 func _unhandled_input(event: InputEvent):

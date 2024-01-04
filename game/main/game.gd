@@ -54,6 +54,11 @@ func _ready():
 	
 	# Initialize the main menu state.
 	set_menu_state(MenuState.STATE_MAIN_MENU)
+	
+	# As this is the root node for the entire game, this should be the last node
+	# to receive the ready signal. Therefore, all nodes should now be ready to
+	# receive the apply_settings signal from GameConfig.
+	GameConfig.apply_all()
 
 
 func _unhandled_input(event: InputEvent):
