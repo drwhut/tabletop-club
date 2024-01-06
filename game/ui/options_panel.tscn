@@ -194,7 +194,7 @@ margin_top = 87.0
 margin_right = 134.0
 margin_bottom = 112.0
 custom_fonts/font = ExtResource( 13 )
-text = "Effects Volume"
+text = "Object Volume"
 align = 2
 
 [node name="opt_audio_effects_volume" type="HBoxContainer" parent="VBoxContainer/MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer"]

@@ -95,6 +95,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The in-game menu screen now uses the same layout as the main menu.
 - Optimised the performance of the paint and erase tools.
 - The appearance of hidden areas is now animated.
+- The "Effects Volume" option is now called "Object Volume" to better reflect
+  its function.
 
 ### Fixed
 
