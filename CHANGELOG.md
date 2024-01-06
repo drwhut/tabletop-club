@@ -86,7 +86,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Increased the font size of text on the loading screen.
 - The main menu music will now fade out gradually when entering the game,
   instead of ending abruptly.
-- The layout of the main menu has been updated.
+- Updated the layout of the main menu and the options menu.
 - The 'Park' skybox is now the only default skybox, meaning that there is no
   longer a chance for the 'Park Winter' skybox to appear in the main menu.
 - The game room is now loaded alongside the main menu, removing the need for a

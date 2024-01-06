@@ -51,6 +51,7 @@ onready var _game_info_panel := $GameInfoPanel
 onready var _leave_button := $MainContainer/PrimaryContainer/LeaveButton
 onready var _leave_dialog := $LeaveDialog
 onready var _multiplayer_button := $MainContainer/PrimaryContainer/MultiplayerButton
+onready var _options_panel := $OptionsPanel
 onready var _return_button := $MainContainer/PrimaryContainer/ReturnButton
 onready var _singleplayer_button := $MainContainer/PrimaryContainer/SingleplayerButton
 onready var _quit_dialog := $QuitDialog
@@ -91,6 +92,10 @@ func _on_ReturnButton_pressed():
 
 func _on_LeaveButton_pressed():
 	_leave_dialog.popup_centered()
+
+
+func _on_OptionsButton_pressed():
+	_options_panel.popup_centered()
 
 
 func _on_CreditsButton_pressed():

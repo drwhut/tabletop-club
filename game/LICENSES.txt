@@ -49,6 +49,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://www.deviantart.com/nighted/art/DMZ-Cursors-58429447
 
 
+- Audio icon
+
+	Files:
+		icons/audio_icon.svg
+	Author: instructure-ui
+	License: MIT
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/501104/audio
+
+
 - Back icon
 
 	Files:
@@ -119,6 +129,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://www.svgrepo.com/svg/392173/construction-equipment-hammer-tool-repair-tools
 
 
+- Controller icon
+
+	Files:
+		icons/controller_icon.svg
+	Author: Skoll
+	License: CC BY 3.0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://game-icons.net/1x1/skoll/console-controller.html
+
+
 - Credits icon
 
 	Files:
@@ -137,6 +157,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	License: CC0
 	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/27866/cursor
+
+
+- Display icon
+
+	Files:
+		icons/display_icon.svg
+	Author: Icooon Mono
+	License: CC0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/478202/display-material-3
 
 
 - Erase icon
@@ -355,6 +385,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	License: CC0
 	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/1530/city-store
+
+
+- Tick icon
+
+	Files:
+		icons/tick_icon.svg
+	Author: Will Kelly
+	License: MIT
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/491147/tick
 
 
 - Card sounds
