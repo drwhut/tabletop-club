@@ -40,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   already supported by the game, the game will use the supported language
   instead of reverting to English. For example, if the system is set to Austrian
   German (`de_AT`), the game will use German (`de`) instead of English.
+- Sliders in the options menu now display their values.
 
 ### Changed
 
