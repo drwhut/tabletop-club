@@ -49,8 +49,8 @@ margin_bottom = 532.0
 focus_neighbour_left = NodePath("../../BackButtonContainer/BackButton")
 focus_mode = 2
 size_flags_horizontal = 3
-text = "Copyright (c) 2020–2023 Benjamin 'drwhut' Beddows.
-Copyright (c) 2021–2023 Tabletop Club contributors (see credits).
+text = "Copyright (c) 2020–2024 Benjamin 'drwhut' Beddows.
+Copyright (c) 2021–2024 Tabletop Club contributors (see credits).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \"Software\"), to deal
