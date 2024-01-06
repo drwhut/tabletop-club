@@ -261,9 +261,16 @@ text = "Apply"
 icon = ExtResource( 4 )
 expand_icon = true
 
+[connection signal="about_to_show" from="." to="." method="_on_OptionsPanel_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_OptionsPanel_popup_hide"]
 [connection signal="pressed" from="VBoxContainer/MainContainer/SectionContainer/AudioSectionButton" to="." method="_on_AudioSectionButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainContainer/SectionContainer/ControlSectionButton" to="." method="_on_ControlSectionButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainContainer/SectionContainer/GeneralSectionButton" to="." method="_on_GeneralSectionButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainContainer/SectionContainer/MultiplayerSectionButton" to="." method="_on_MultiplayerSectionButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainContainer/SectionContainer/VideoSectionButton" to="." method="_on_VideoSectionButton_pressed"]
+[connection signal="value_changed" from="VBoxContainer/MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer/opt_audio_master_volume" to="." method="_on_opt_audio_master_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer/opt_audio_music_volume" to="." method="_on_opt_audio_music_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer/opt_audio_sounds_volume" to="." method="_on_opt_audio_sounds_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer/opt_audio_effects_volume" to="." method="_on_opt_audio_effects_volume_value_changed"]
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]

@@ -39,6 +39,8 @@ onready var _section_parent := $VBoxContainer/MainContainer/OptionContainer/Scro
 onready var _audio_container := $VBoxContainer/MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer
 onready var _control_container := $VBoxContainer/MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer
 
+onready var _apply_button := $VBoxContainer/ButtonContainer/ApplyButton
+
 
 func _ready():
 	# Before we do anything, we need to populate the control property map so
@@ -51,14 +53,17 @@ func _ready():
 			
 			if GameConfig.get(property_name) != null:
 				_control_property_map[current_node] = property_name
+				
+				# If the control is updated, we want to know so we can allow the
+				# user to press the apply button.
+				if current_node is LabeledSlider:
+					current_node.connect("value_changed", self,
+							"_on_any_value_changed")
 			else:
 				push_error("Property '%s' does not exist in the GameConfig (from: '%s')" % [
 						property_name, current_node.name])
 		
 		node_stack.append_array(current_node.get_children())
-	
-	# Show the current properties when we enter the game.
-	read_config()
 
 
 ## Have the controls show the current values from the GameConfig.
@@ -74,11 +79,39 @@ func read_config() -> void:
 					property_name, control.name])
 
 
+## Use the controls to set the values of the properties in GameConfig.
+func write_config() -> void:
+	for key in _control_property_map:
+		var control: Control = key
+		var property_name: String = _control_property_map[key]
+		
+		if control is LabeledSlider:
+			GameConfig.set(property_name, control.value)
+		else:
+			push_error("Cannot set value of '%s' with control '%s', unimplemented type" % [
+					property_name, control.name])
+
+
 # Show the given section, and hide the others.
 func _show_section(section_root: Control) -> void:
 	for child in _section_parent.get_children():
 		if child is Control:
 			child.visible = (child == section_root)
+
+
+func _on_OptionsPanel_about_to_show():
+	# Update the controls to match the current values of GameConfig properties.
+	read_config()
+	
+	# Since the controls have just been updated, no changes can be applied yet.
+	_apply_button.disabled = true
+
+
+func _on_OptionsPanel_popup_hide():
+	# Since the volume levels can be adjusted before the options are applied,
+	# we need to make sure they are set back to what they should be if we exit
+	# the options menu early.
+	GameConfig.apply_audio()
 
 
 func _on_AudioSectionButton_pressed():
@@ -101,5 +134,33 @@ func _on_VideoSectionButton_pressed():
 	pass # Replace with function body.
 
 
+func _on_any_value_changed(_new_value):
+	_apply_button.disabled = false
+
+
+func _on_opt_audio_master_volume_value_changed(new_value: float):
+	GameConfig.set_audio_bus_volume("Master", new_value)
+
+
+func _on_opt_audio_music_volume_value_changed(new_value: float):
+	GameConfig.set_audio_bus_volume("Music", new_value)
+
+
+func _on_opt_audio_sounds_volume_value_changed(new_value: float):
+	GameConfig.set_audio_bus_volume("Sounds", new_value)
+
+
+func _on_opt_audio_effects_volume_value_changed(new_value: float):
+	GameConfig.set_audio_bus_volume("Effects", new_value)
+
+
 func _on_BackButton_pressed():
 	visible = false
+
+
+func _on_ApplyButton_pressed():
+	write_config()
+	GameConfig.apply_all()
+	GameConfig.save_to_file()
+	
+	_apply_button.disabled = true
