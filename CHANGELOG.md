@@ -98,6 +98,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The "Effects Volume" option is now called "Object Volume" to better reflect
   its function.
 - The "Multiplayer" tab in the options menu has been renamed to "Player".
+- Hints for properties in the options menu are now shown in a dedicated label
+  rather than in tooltips.
+- Slightly adjusted the hints for properties in the options menu.
 
 ### Fixed
 

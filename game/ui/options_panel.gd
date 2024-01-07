@@ -34,12 +34,17 @@ extends AttentionPanel
 # in the GameConfig.
 var _control_property_map := {}
 
+# The property that is currently in focus, and for which a hint should be shown.
+var _property_in_focus := ""
+
 
 onready var _section_parent := $MainContainer/OptionContainer/ScrollContainer/SectionParent/
 onready var _audio_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer
 onready var _control_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer
 
 onready var _apply_button := $MainContainer/ButtonContainer/ApplyButton
+onready var _hint_label := $MainContainer/HintLabel
+onready var _section_button_container := $MainContainer/SectionContainer
 
 
 func _ready():
@@ -59,6 +64,18 @@ func _ready():
 				if current_node is LabeledSlider:
 					current_node.connect("value_changed", self,
 							"_on_any_value_changed")
+				
+				# We also want to know if the mouse starts hovering over the
+				# control, or if it grabs focus, so that we can start showing a
+				# hint to the user about what the property does.
+				current_node.connect("focus_entered", self,
+						"_on_option_focus_entered", [property_name])
+				current_node.connect("focus_exited", self,
+						"_on_option_focus_exited", [property_name])
+				current_node.connect("mouse_entered", self,
+						"_on_option_focus_entered", [property_name])
+				current_node.connect("mouse_exited", self,
+						"_on_option_focus_exited", [property_name])
 			else:
 				push_error("Property '%s' does not exist in the GameConfig (from: '%s')" % [
 						property_name, current_node.name])
@@ -105,6 +122,24 @@ func _on_OptionsPanel_about_to_show():
 	
 	# Since the controls have just been updated, no changes can be applied yet.
 	_apply_button.disabled = true
+	
+	# If the mouse was hovering over a property when the option menu was
+	# hidden, then the hint for that property will still be there.
+	_property_in_focus = ""
+	_hint_label.text = ""
+	
+	# By default, the first control node to take focus will be the audio section
+	# button. But it's not guaranteed that when we show the options menu, that
+	# the audio section will be visible (since the user could have left the
+	# options menu while another section was shown) - so have the button of the
+	# section currently being shown grab focus at the start.
+	for section_button in _section_button_container.get_children():
+		if section_button is Button:
+			if section_button.pressed:
+				# The options menu is about to be shown, but it is not visible
+				# quite yet, so wait until the end of the frame to grab focus.
+				section_button.call_deferred("grab_focus")
+				break
 
 
 func _on_OptionsPanel_popup_hide():
@@ -136,6 +171,17 @@ func _on_VideoSectionButton_pressed():
 
 func _on_any_value_changed(_new_value):
 	_apply_button.disabled = false
+
+
+func _on_option_focus_entered(property_name: String):
+	_property_in_focus = property_name
+	_hint_label.text = GameConfig.get_description(property_name)
+
+
+func _on_option_focus_exited(property_name: String):
+	if property_name == _property_in_focus:
+		_property_in_focus = ""
+		_hint_label.text = ""
 
 
 func _on_opt_audio_master_volume_value_changed(new_value: float):

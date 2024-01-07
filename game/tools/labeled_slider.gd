@@ -66,6 +66,11 @@ var _label: Label = null
 
 
 func _init():
+	# Since the root node is just a container, have it ignore all mouse events
+	# and pass them onto the slider directly. This makes sure that only the
+	# slider is emitting the mouse_entered and mouse_exited events.
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
 	_slider = HSlider.new()
 	_slider.min_value = min_value
 	_slider.max_value = max_value
@@ -74,6 +79,12 @@ func _init():
 	_slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_slider.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_slider.connect("value_changed", self, "_on_value_changed")
+	
+	# Forward the focus and mouse signals from the slider to the outside world.
+	_slider.connect("focus_entered", self, "_on_focus_entered")
+	_slider.connect("focus_exited", self, "_on_focus_exited")
+	_slider.connect("mouse_entered", self, "_on_mouse_entered")
+	_slider.connect("mouse_exited", self, "_on_mouse_exited")
 	add_child(_slider)
 	
 	_label = Label.new()
@@ -196,3 +207,19 @@ func set_font_override(new_font: Font) -> void:
 func _on_value_changed(new_value: float) -> void:
 	update_label()
 	emit_signal("value_changed", new_value)
+
+
+func _on_focus_entered() -> void:
+	emit_signal("focus_entered")
+
+
+func _on_focus_exited() -> void:
+	emit_signal("focus_exited")
+
+
+func _on_mouse_entered() -> void:
+	emit_signal("mouse_entered")
+
+
+func _on_mouse_exited() -> void:
+	emit_signal("mouse_exited")

@@ -309,6 +309,21 @@ func save_to_file() -> void:
 				CONFIG_FILE_PATH, err])
 
 
+## Get a localised description of the given property to be shown in the UI.
+func get_description(property_name: String) -> String:
+	match property_name:
+		"audio_master_volume":
+			return tr("Sets the overall volume of the game.")
+		"audio_music_volume":
+			return tr("Sets the volume of music played in both the main menu, and in the game.")
+		"audio_sounds_volume":
+			return tr("Sets the volume of sounds played through speaker objects in the game.")
+		"audio_effects_volume":
+			return tr("Sets the volume of sound effects emitted by objects, for example, when they collide with the table.")
+		_:
+			return ""
+
+
 ## Apply the current configuration to the entire game.
 ## NOTE: This will emit [signal applying_settings].
 func apply_all() -> void:
