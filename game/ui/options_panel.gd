@@ -41,10 +41,14 @@ var _property_in_focus := ""
 onready var _section_parent := $MainContainer/OptionContainer/ScrollContainer/SectionParent/
 onready var _audio_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer
 onready var _control_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer
+onready var _general_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer
 
-onready var _apply_button := $MainContainer/ButtonContainer/ApplyButton
-onready var _hint_label := $MainContainer/HintLabel
+onready var _language_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/opt_general_language
+
 onready var _section_button_container := $MainContainer/SectionContainer
+onready var _language_warning_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageWarningLabel
+onready var _hint_label := $MainContainer/HintLabel
+onready var _apply_button := $MainContainer/ButtonContainer/ApplyButton
 
 
 func _ready():
@@ -64,6 +68,9 @@ func _ready():
 				if current_node is LabeledSlider:
 					current_node.connect("value_changed", self,
 							"_on_any_value_changed")
+				elif current_node is OptionButton:
+					current_node.connect("item_selected", self,
+							"_on_any_value_changed")
 				
 				# We also want to know if the mouse starts hovering over the
 				# control, or if it grabs focus, so that we can start showing a
@@ -81,6 +88,27 @@ func _ready():
 						property_name, current_node.name])
 		
 		node_stack.append_array(current_node.get_children())
+	
+	# We can't set the item label fonts in option buttons directly from the
+	# editor, so we need to do it in code.
+	_language_button.get_popup().add_font_override("font",
+			_language_button.get_font("font"))
+	
+	# There is a chance that the names of languages (in their own language)
+	# appear elsewhere in the game (most likely in the credits if the English
+	# name of the languge is the same), which will cause the option button to
+	# translate them automatically, which we don't want in this specific case.
+	_language_button.get_popup().set_message_translation(false)
+	
+	# Godot stores both the bbcode_text and the regular text of rich text labels
+	# in the *.tscn file, and I can't be bothered to configure the translation
+	# template extractor to filter out the regular text, so the BBCode is here.
+	_language_warning_label.bbcode_text = tr("NOTE: Translations are graciously provided by the community, however, this may mean that translations for your language are either incomplete or missing.") \
+			+ "\n" + tr("If you wish to help make the game accessible to a wider audience of players, please visit our [url]Weblate[/url] page to contribute translations for your language.")
+	
+	# Set the items for all of the OptionButton controls in the scene, with the
+	# labels of the items translated to the current locale.
+	set_option_button_items()
 
 
 ## Have the controls show the current values from the GameConfig.
@@ -88,9 +116,22 @@ func read_config() -> void:
 	for key in _control_property_map:
 		var control: Control = key
 		var property_name: String = _control_property_map[key]
+		var property_value = GameConfig.get(property_name)
 		
 		if control is LabeledSlider:
-			control.value = GameConfig.get(property_name)
+			control.value = property_value
+		elif control is OptionButton:
+			var item_found := false
+			for index in range(control.get_item_count()):
+				var metadata = control.get_item_metadata(index)
+				if metadata == property_value:
+					control.select(index)
+					item_found = true
+					break
+			
+			if not item_found:
+				push_error("Cannot show value of '%s' with option button '%s', item with value '%s' not found" % [
+						property_name, control.name, str(property_value)])
 		else:
 			push_error("Cannot show value of '%s' with control '%s', unimplemented type" % [
 					property_name, control.name])
@@ -104,9 +145,47 @@ func write_config() -> void:
 		
 		if control is LabeledSlider:
 			GameConfig.set(property_name, control.value)
+		elif control is OptionButton:
+			var metadata = control.get_selected_metadata()
+			if metadata == null:
+				push_error("Cannot set value of '%s' with option button '%s', no item selected" % [
+						property_name, control.name])
+				continue
+			
+			GameConfig.set(property_name, metadata)
 		else:
 			push_error("Cannot set value of '%s' with control '%s', unimplemented type" % [
 					property_name, control.name])
+
+
+## For each of the [OptionButton] controls in the options menu, set the required
+## items with the correct metadata for each item. The text for each item is also
+## localised, so if the locale of the project changes, this function needs to be
+## called again.
+func set_option_button_items() -> void:
+	var prev_selected := _language_button.selected
+	_language_button.clear()
+	
+	_add_option_button_item(_language_button, tr("System Default"), "")
+	_add_option_button_item(_language_button, "Deutsch", "de")
+	_add_option_button_item(_language_button, "English", "en")
+	_add_option_button_item(_language_button, "Esperanto", "eo")
+	_add_option_button_item(_language_button, "Español", "es")
+	_add_option_button_item(_language_button, "Français", "fr")
+	_add_option_button_item(_language_button, "Italiano", "it")
+	_add_option_button_item(_language_button, "Nederlands", "nl")
+	_add_option_button_item(_language_button, "Português", "pt")
+	_add_option_button_item(_language_button, "Русский", "ru")
+	
+	if prev_selected >= 0:
+		_language_button.select(prev_selected)
+
+
+# Add an item to the given option button along with some metadata.
+func _add_option_button_item(option_button: OptionButton, label: String, metadata) -> void:
+	option_button.add_item(label)
+	var item_index := option_button.get_item_count() - 1
+	option_button.set_item_metadata(item_index, metadata)
 
 
 # Show the given section, and hide the others.
@@ -143,10 +222,19 @@ func _on_OptionsPanel_about_to_show():
 
 
 func _on_OptionsPanel_popup_hide():
-	# Since the volume levels can be adjusted before the options are applied,
-	# we need to make sure they are set back to what they should be if we exit
-	# the options menu early.
+	# Some options can be adjusted before the user presses the apply button,
+	# like the language for example. However, if the user exits the options menu
+	# while these "live" changes have been made, we want to revert those changes
+	# back to what the GameConfig says.
+	if _apply_button.disabled:
+		return
+	
 	GameConfig.apply_audio()
+	GameConfig.set_locale(GameConfig.general_language)
+	
+	# The locale has potentially changed again, so we need to update the option
+	# button labels for the new locale.
+	set_option_button_items()
 
 
 func _on_AudioSectionButton_pressed():
@@ -158,7 +246,7 @@ func _on_ControlSectionButton_pressed():
 
 
 func _on_GeneralSectionButton_pressed():
-	pass # Replace with function body.
+	_show_section(_general_container)
 
 
 func _on_MultiplayerSectionButton_pressed():
@@ -198,6 +286,20 @@ func _on_opt_audio_sounds_volume_value_changed(new_value: float):
 
 func _on_opt_audio_effects_volume_value_changed(new_value: float):
 	GameConfig.set_audio_bus_volume("Effects", new_value)
+
+
+func _on_opt_general_language_item_selected(index: int):
+	var selected_locale: String = _language_button.get_item_metadata(index)
+	GameConfig.set_locale(selected_locale)
+	
+	# With the new locale having being set across the game, we need to update
+	# the option button items throughout the options menu so that their labels
+	# are from the new locale.
+	set_option_button_items()
+
+
+func _on_LanguageWarningLabel_meta_clicked(_meta):
+	OS.shell_open("https://hosted.weblate.org/engage/tabletop-club/")
 
 
 func _on_BackButton_pressed():

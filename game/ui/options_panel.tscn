@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://ui/options_panel.gd" type="Script" id=1]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://fonts/res/option_value_font.tres" type="DynamicFont" id=11]
 [ext_resource path="res://tools/labeled_slider.gd" type="Script" id=12]
 [ext_resource path="res://fonts/res/popup_font_minor.tres" type="DynamicFont" id=13]
+[ext_resource path="res://icons/language_icon.svg" type="Texture" id=14]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -219,6 +220,55 @@ margin_right = 742.0
 margin_bottom = 20.0
 text = "This is the control section!"
 
+[node name="GeneralContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent"]
+visible = false
+margin_left = 50.0
+margin_right = 792.0
+margin_bottom = 112.0
+
+[node name="LanguageContainer" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
+margin_right = 742.0
+margin_bottom = 32.0
+
+[node name="LanguageLabelContainer" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer"]
+margin_right = 369.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="LanguageIcon" type="TextureRect" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/LanguageLabelContainer"]
+margin_left = 252.0
+margin_right = 284.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="LanguageLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/LanguageLabelContainer"]
+margin_left = 288.0
+margin_top = 3.0
+margin_right = 369.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 13 )
+text = "Language"
+align = 2
+
+[node name="opt_general_language" type="OptionButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer"]
+margin_left = 373.0
+margin_right = 742.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+
+[node name="LanguageWarningLabel" type="RichTextLabel" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
+margin_top = 36.0
+margin_right = 742.0
+margin_bottom = 57.0
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+
 [node name="HintLabel" type="Label" parent="MainContainer"]
 margin_top = 382.0
 margin_right = 842.0
@@ -274,5 +324,7 @@ expand_icon = true
 [connection signal="value_changed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer/opt_audio_music_volume" to="." method="_on_opt_audio_music_volume_value_changed"]
 [connection signal="value_changed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer/opt_audio_sounds_volume" to="." method="_on_opt_audio_sounds_volume_value_changed"]
 [connection signal="value_changed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer/opt_audio_effects_volume" to="." method="_on_opt_audio_effects_volume_value_changed"]
+[connection signal="item_selected" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/opt_general_language" to="." method="_on_opt_general_language_item_selected"]
+[connection signal="meta_clicked" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageWarningLabel" to="." method="_on_LanguageWarningLabel_meta_clicked"]
 [connection signal="pressed" from="MainContainer/ButtonContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="MainContainer/ButtonContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]

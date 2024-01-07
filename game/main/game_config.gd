@@ -320,6 +320,8 @@ func get_description(property_name: String) -> String:
 			return tr("Sets the volume of sounds played through speaker objects in the game.")
 		"audio_effects_volume":
 			return tr("Sets the volume of sound effects emitted by objects, for example, when they collide with the table.")
+		"general_language":
+			return tr("Sets the language that the game displays text in.")
 		_:
 			return ""
 
@@ -329,15 +331,7 @@ func get_description(property_name: String) -> String:
 func apply_all() -> void:
 	apply_audio()
 	
-	if general_language.empty():
-		var system_locale := OS.get_locale()
-		var closest_locale := find_closest_language(system_locale)
-		if closest_locale.empty():
-			TranslationServer.set_locale("en")
-		else:
-			TranslationServer.set_locale(closest_locale)
-	else:
-		TranslationServer.set_locale(general_language)
+	set_locale(general_language)
 	
 	emit_signal("applying_settings")
 
@@ -371,10 +365,24 @@ func convert_volume_to_db(volume: float) -> float:
 	return 8.656170245 * log(0.5 * volume)
 
 
+## Set the game's current locale. If the string is empty, then the one closest
+## to the system's locale is chosen.
+func set_locale(locale: String) -> void:
+	if locale.empty():
+		var system_locale := OS.get_locale()
+		var closest_locale := find_closest_locale(system_locale)
+		if closest_locale.empty():
+			TranslationServer.set_locale("en")
+		else:
+			TranslationServer.set_locale(closest_locale)
+	else:
+		TranslationServer.set_locale(locale)
+
+
 ## Given a locale code that potentially includes a variant (e.g. de_AT), find
-## the closest language that is supported by the game (e.g. de). If none are
+## the closest locale that is supported by the game (e.g. de). If none are
 ## found, an empty string is returned.
-func find_closest_language(locale_code: String) -> String:
+func find_closest_locale(locale_code: String) -> String:
 	if locale_code.empty():
 		return ""
 	
@@ -471,7 +479,7 @@ func set_control_hand_preview_size(value: float) -> void:
 
 func set_general_language(value: String) -> void:
 	value = value.strip_edges().strip_escapes()
-	general_language = find_closest_language(value)
+	general_language = find_closest_locale(value)
 
 
 func set_general_autosave_interval(value: int) -> void:
