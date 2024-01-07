@@ -97,6 +97,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The appearance of hidden areas is now animated.
 - The "Effects Volume" option is now called "Object Volume" to better reflect
   its function.
+- The "Multiplayer" tab in the options menu has been renamed to "Player".
 
 ### Fixed
 

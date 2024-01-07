@@ -35,11 +35,11 @@ extends AttentionPanel
 var _control_property_map := {}
 
 
-onready var _section_parent := $VBoxContainer/MainContainer/OptionContainer/ScrollContainer/SectionParent/
-onready var _audio_container := $VBoxContainer/MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer
-onready var _control_container := $VBoxContainer/MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer
+onready var _section_parent := $MainContainer/OptionContainer/ScrollContainer/SectionParent/
+onready var _audio_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer
+onready var _control_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer
 
-onready var _apply_button := $VBoxContainer/ButtonContainer/ApplyButton
+onready var _apply_button := $MainContainer/ButtonContainer/ApplyButton
 
 
 func _ready():
