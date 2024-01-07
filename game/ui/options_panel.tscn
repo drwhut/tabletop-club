@@ -127,12 +127,14 @@ margin_right = 842.0
 margin_bottom = 112.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 50
+custom_constants/margin_top = 10
 custom_constants/margin_left = 50
 
 [node name="AudioContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent"]
 margin_left = 50.0
+margin_top = 10.0
 margin_right = 792.0
-margin_bottom = 112.0
+margin_bottom = 122.0
 columns = 2
 
 [node name="MasterVolumeLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer"]
@@ -212,6 +214,7 @@ font_override = ExtResource( 11 )
 [node name="ControlContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent"]
 visible = false
 margin_left = 50.0
+margin_top = 10.0
 margin_right = 792.0
 margin_bottom = 112.0
 
@@ -223,6 +226,7 @@ text = "This is the control section!"
 [node name="GeneralContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent"]
 visible = false
 margin_left = 50.0
+margin_top = 10.0
 margin_right = 792.0
 margin_bottom = 112.0
 
