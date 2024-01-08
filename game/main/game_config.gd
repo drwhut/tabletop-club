@@ -321,6 +321,37 @@ func get_description(property_name: String) -> String:
 		"audio_effects_volume":
 			return tr("Sets the volume of sound effects emitted by objects, for example, when they collide with the table.")
 		
+		"control_horizontal_sensitivity":
+			return tr("Sets how fast the camera rotates horizontally.")
+		"control_vertical_sensitivity":
+			return tr("Sets how fast the camera rotates vertically.")
+		"control_horizontal_invert":
+			return tr("If enabled, the direction the camera rotates in horizontally will be inverted.")
+		"control_vertical_invert":
+			return tr("If enabled, the direction the camera rotates in vertically will be inverted.")
+		"control_camera_movement_speed":
+			return tr("Sets how fast the camera moves across the table.")
+		"control_left_mouse_button_moves_camera":
+			return tr("If enabled, holding down the Left Mouse Button will drag the camera across the table instead of making a box selection.")
+		"control_zoom_sensitivity":
+			return tr("Sets how fast the camera zooms in and out from the table.")
+		"control_zoom_invert":
+			return tr("If enabled, the direction the camera zooms in is invereted.")
+		"control_piece_lift_sensitivity":
+			return tr("Sets how fast objects are lifted up and down from the table.")
+		"control_piece_lift_invert":
+			return tr("If enabled, the direction objects are lifted in is inverted.")
+		"control_piece_rotation_invert":
+			return tr("If enabled, the direction objects are rotated in is inverted.")
+		"control_hand_preview_enabled":
+			return tr("If enabled, hovering over a card in your hand for a short period of time will display an enhanced preview of the card.")
+		"control_hand_preview_delay":
+			return tr("Sets how long in seconds the mouse needs to be hovering over a card in your hand before a preview is displayed.")
+		"control_hand_preview_size":
+			return tr("Sets how big the preview is when hovering over a card in your hand.")
+		"control_hide_hints":
+			return tr("If enabled, the control hints shown in the corner of the screen will be hidden.")
+		
 		"general_language":
 			return tr("Sets the language that the game displays text in.")
 		"general_autosave_interval":

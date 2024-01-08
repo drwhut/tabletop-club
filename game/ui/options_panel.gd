@@ -293,6 +293,14 @@ func _on_VideoSectionButton_pressed():
 	pass # Replace with function body.
 
 
+func _on_KeyBindingsButton_pressed():
+	pass # Replace with function body.
+
+
+func _on_ControllerBindingsButton_pressed():
+	pass # Replace with function body.
+
+
 func _on_any_value_changed(_new_value):
 	_apply_button.disabled = false
 

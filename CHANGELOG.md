@@ -126,5 +126,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The randomly selected pieces that were falling in the background of the main
   menu have been removed.
+- The "Key Bindings" tab in the options menu has been removed in favour of a
+  separate menu under the "Controls" tab.
 
 [unreleased]: https://github.com/drwhut/tabletop-club/compare/HEAD...HEAD

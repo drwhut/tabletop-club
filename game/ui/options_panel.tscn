@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://ui/options_panel.gd" type="Script" id=1]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://tools/labeled_slider.gd" type="Script" id=12]
 [ext_resource path="res://fonts/res/popup_font_minor.tres" type="DynamicFont" id=13]
 [ext_resource path="res://icons/language_icon.svg" type="Texture" id=14]
+[ext_resource path="res://icons/keyboard_icon.svg" type="Texture" id=15]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -216,12 +217,340 @@ visible = false
 margin_left = 50.0
 margin_top = 10.0
 margin_right = 792.0
-margin_bottom = 122.0
+margin_bottom = 593.0
 
-[node name="Label" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
-margin_right = 742.0
-margin_bottom = 20.0
-text = "This is the control section!"
+[node name="BindingContainer" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_right = 730.0
+margin_bottom = 40.0
+
+[node name="KeyBindingsButton" type="Button" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/BindingContainer"]
+margin_right = 363.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+text = "Edit Keyboard Bindings"
+icon = ExtResource( 15 )
+clip_text = true
+expand_icon = true
+
+[node name="ControllerBindingsButton" type="Button" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/BindingContainer"]
+margin_left = 367.0
+margin_right = 730.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+text = "Edit Controller Bindings"
+icon = ExtResource( 9 )
+clip_text = true
+expand_icon = true
+
+[node name="Gap1" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 44.0
+margin_right = 730.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="RotationContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 58.0
+margin_right = 730.0
+margin_bottom = 176.0
+columns = 2
+
+[node name="HSensLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/RotationContainer"]
+margin_right = 180.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 13 )
+text = "Horizontal Sensitivity"
+
+[node name="opt_control_horizontal_sensitivity" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/RotationContainer"]
+margin_left = 184.0
+margin_right = 730.0
+margin_bottom = 25.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 0.01
+value = 0.01
+display_scalar = 10.0
+font_override = ExtResource( 11 )
+
+[node name="HInvertLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/RotationContainer"]
+margin_top = 30.0
+margin_right = 180.0
+margin_bottom = 55.0
+custom_fonts/font = ExtResource( 13 )
+text = "Horizontal Invert"
+
+[node name="opt_control_horizontal_invert" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/RotationContainer"]
+margin_left = 184.0
+margin_top = 29.0
+margin_right = 730.0
+margin_bottom = 57.0
+
+[node name="VSensLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/RotationContainer"]
+margin_top = 61.0
+margin_right = 180.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 13 )
+text = "Vertical Sensitivity"
+
+[node name="opt_control_vertical_sensitivity" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/RotationContainer"]
+margin_left = 184.0
+margin_top = 61.0
+margin_right = 730.0
+margin_bottom = 86.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 0.01
+value = 0.01
+display_scalar = 10.0
+font_override = ExtResource( 11 )
+
+[node name="VInvertLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/RotationContainer"]
+margin_top = 91.0
+margin_right = 180.0
+margin_bottom = 116.0
+custom_fonts/font = ExtResource( 13 )
+text = "Vertical Invert"
+
+[node name="opt_control_vertical_invert" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/RotationContainer"]
+margin_left = 184.0
+margin_top = 90.0
+margin_right = 730.0
+margin_bottom = 118.0
+
+[node name="Gap2" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 180.0
+margin_right = 730.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="CameraContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 194.0
+margin_right = 730.0
+margin_bottom = 251.0
+columns = 2
+
+[node name="CameraSpeedLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/CameraContainer"]
+margin_right = 270.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 13 )
+text = "Camera Movement Speed"
+
+[node name="opt_control_camera_movement_speed" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/CameraContainer"]
+margin_left = 274.0
+margin_right = 730.0
+margin_bottom = 25.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 0.01
+value = 0.01
+display_scalar = 10.0
+font_override = ExtResource( 11 )
+
+[node name="LeftClickMoveLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/CameraContainer"]
+margin_top = 30.0
+margin_right = 270.0
+margin_bottom = 55.0
+custom_fonts/font = ExtResource( 13 )
+text = "Hold Left Click to Move Camera"
+
+[node name="opt_control_left_mouse_button_moves_camera" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/CameraContainer"]
+margin_left = 274.0
+margin_top = 29.0
+margin_right = 730.0
+margin_bottom = 57.0
+
+[node name="Gap3" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 255.0
+margin_right = 730.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="ZoomContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 269.0
+margin_right = 730.0
+margin_bottom = 326.0
+columns = 2
+
+[node name="ZoomSensLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/ZoomContainer"]
+margin_right = 143.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 13 )
+text = "Zoom Sensitivity"
+
+[node name="opt_control_zoom_sensitivity" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/ZoomContainer"]
+margin_left = 147.0
+margin_right = 730.0
+margin_bottom = 25.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 0.01
+value = 0.01
+display_scalar = 10.0
+font_override = ExtResource( 11 )
+
+[node name="ZoomInvertLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/ZoomContainer"]
+margin_top = 30.0
+margin_right = 143.0
+margin_bottom = 55.0
+custom_fonts/font = ExtResource( 13 )
+text = "Zoom Invert"
+
+[node name="opt_control_zoom_invert" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/ZoomContainer"]
+margin_left = 147.0
+margin_top = 29.0
+margin_right = 730.0
+margin_bottom = 57.0
+
+[node name="Gap4" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 330.0
+margin_right = 730.0
+margin_bottom = 340.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="PieceContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 344.0
+margin_right = 730.0
+margin_bottom = 433.0
+columns = 2
+
+[node name="LiftSensLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PieceContainer"]
+margin_right = 188.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 13 )
+text = "Object Lift Sensitivity"
+
+[node name="opt_control_piece_lift_sensitivity" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PieceContainer"]
+margin_left = 192.0
+margin_right = 730.0
+margin_bottom = 25.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 0.01
+value = 0.01
+display_scalar = 10.0
+font_override = ExtResource( 11 )
+
+[node name="LiftInvertLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PieceContainer"]
+margin_top = 30.0
+margin_right = 188.0
+margin_bottom = 55.0
+custom_fonts/font = ExtResource( 13 )
+text = "Object Lift Invert"
+
+[node name="opt_control_piece_lift_invert" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PieceContainer"]
+margin_left = 192.0
+margin_top = 29.0
+margin_right = 730.0
+margin_bottom = 57.0
+
+[node name="RotationInvertLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PieceContainer"]
+margin_top = 62.0
+margin_right = 188.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 13 )
+text = "Object Rotation Invert"
+
+[node name="opt_control_piece_rotation_invert" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PieceContainer"]
+margin_left = 192.0
+margin_top = 61.0
+margin_right = 730.0
+margin_bottom = 89.0
+
+[node name="Gap5" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 437.0
+margin_right = 730.0
+margin_bottom = 447.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="PreviewContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 451.0
+margin_right = 730.0
+margin_bottom = 537.0
+columns = 2
+
+[node name="EnabledLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PreviewContainer"]
+margin_top = 1.0
+margin_right = 191.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 13 )
+text = "Hand Preview Enabled"
+
+[node name="opt_control_hand_preview_enabled" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PreviewContainer"]
+margin_left = 195.0
+margin_right = 730.0
+margin_bottom = 28.0
+
+[node name="DelayLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PreviewContainer"]
+margin_top = 32.0
+margin_right = 191.0
+margin_bottom = 57.0
+custom_fonts/font = ExtResource( 13 )
+text = "Hand Preview Delay"
+
+[node name="opt_control_hand_preview_delay" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PreviewContainer"]
+margin_left = 195.0
+margin_top = 32.0
+margin_right = 730.0
+margin_bottom = 57.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 0.1
+step = 0.1
+value = 0.1
+font_override = ExtResource( 11 )
+
+[node name="SizeLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PreviewContainer"]
+margin_top = 61.0
+margin_right = 191.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 13 )
+text = "Hand Preview Size"
+
+[node name="opt_control_hand_preview_size" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/PreviewContainer"]
+margin_left = 195.0
+margin_top = 61.0
+margin_right = 730.0
+margin_bottom = 86.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 0.01
+value = 0.01
+display_scalar = 10.0
+font_override = ExtResource( 11 )
+
+[node name="Gap6" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 541.0
+margin_right = 730.0
+margin_bottom = 551.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="HintContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
+margin_top = 555.0
+margin_right = 730.0
+margin_bottom = 583.0
+columns = 2
+
+[node name="HideLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/HintContainer"]
+margin_top = 1.0
+margin_right = 156.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 13 )
+text = "Hide Control Hints"
+
+[node name="opt_control_hide_hints" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/HintContainer"]
+margin_left = 160.0
+margin_right = 184.0
+margin_bottom = 28.0
 
 [node name="GeneralContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent"]
 visible = false
@@ -280,9 +609,9 @@ margin_bottom = 71.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="AutosaveContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
-margin_top = 85.0
+margin_top = 75.0
 margin_right = 742.0
-margin_bottom = 150.0
+margin_bottom = 140.0
 columns = 2
 
 [node name="IntervalLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer"]
@@ -321,15 +650,15 @@ value = 1.0
 align = 1
 
 [node name="Gap2" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
-margin_top = 154.0
+margin_top = 144.0
 margin_right = 742.0
-margin_bottom = 164.0
+margin_bottom = 154.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="MiscContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
-margin_top = 178.0
+margin_top = 158.0
 margin_right = 742.0
-margin_bottom = 270.0
+margin_bottom = 250.0
 columns = 2
 
 [node name="SkipSplashScreenLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
@@ -434,6 +763,8 @@ expand_icon = true
 [connection signal="value_changed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer/opt_audio_music_volume" to="." method="_on_opt_audio_music_volume_value_changed"]
 [connection signal="value_changed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer/opt_audio_sounds_volume" to="." method="_on_opt_audio_sounds_volume_value_changed"]
 [connection signal="value_changed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer/opt_audio_effects_volume" to="." method="_on_opt_audio_effects_volume_value_changed"]
+[connection signal="pressed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/BindingContainer/KeyBindingsButton" to="." method="_on_KeyBindingsButton_pressed"]
+[connection signal="pressed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/BindingContainer/ControllerBindingsButton" to="." method="_on_ControllerBindingsButton_pressed"]
 [connection signal="item_selected" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/opt_general_language" to="." method="_on_opt_general_language_item_selected"]
 [connection signal="meta_clicked" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageWarningLabel" to="." method="_on_LanguageWarningLabel_meta_clicked"]
 [connection signal="pressed" from="MainContainer/ButtonContainer/BackButton" to="." method="_on_BackButton_pressed"]
