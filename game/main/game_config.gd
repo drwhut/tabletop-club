@@ -320,8 +320,20 @@ func get_description(property_name: String) -> String:
 			return tr("Sets the volume of sounds played through speaker objects in the game.")
 		"audio_effects_volume":
 			return tr("Sets the volume of sound effects emitted by objects, for example, when they collide with the table.")
+		
 		"general_language":
 			return tr("Sets the language that the game displays text in.")
+		"general_autosave_interval":
+			return tr("Sets how often the game will automatically save.")
+		"general_autosave_file_count":
+			return tr("Sets the maximum number of autosaves that can exist at any given time.")
+		"general_skip_splash_screen":
+			return tr("If enabled, the Godot Engine splash screen at the start of the game will no longer be shown.")
+		"general_show_warnings":
+			return tr("If enabled, system warnings will be shown in the chat box.")
+		"general_show_errors":
+			return tr("If enabled, system errors will be shown in the chat box.")
+		
 		_:
 			return ""
 

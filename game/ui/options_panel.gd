@@ -44,6 +44,7 @@ onready var _control_container := $MainContainer/OptionContainer/ScrollContainer
 onready var _general_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer
 
 onready var _language_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/opt_general_language
+onready var _autosave_interval_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer/opt_general_autosave_interval
 
 onready var _section_button_container := $MainContainer/SectionContainer
 onready var _language_warning_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageWarningLabel
@@ -67,6 +68,12 @@ func _ready():
 				# user to press the apply button.
 				if current_node is LabeledSlider:
 					current_node.connect("value_changed", self,
+							"_on_any_value_changed")
+				elif current_node is SpinBox:
+					current_node.connect("value_changed", self,
+							"_on_any_value_changed")
+				elif current_node is CheckBox:
+					current_node.connect("toggled", self,
 							"_on_any_value_changed")
 				elif current_node is OptionButton:
 					current_node.connect("item_selected", self,
@@ -93,6 +100,8 @@ func _ready():
 	# editor, so we need to do it in code.
 	_language_button.get_popup().add_font_override("font",
 			_language_button.get_font("font"))
+	_autosave_interval_button.get_popup().add_font_override("font",
+			_autosave_interval_button.get_font("font"))
 	
 	# There is a chance that the names of languages (in their own language)
 	# appear elsewhere in the game (most likely in the credits if the English
@@ -120,6 +129,10 @@ func read_config() -> void:
 		
 		if control is LabeledSlider:
 			control.value = property_value
+		elif control is SpinBox:
+			control.value = property_value
+		elif control is CheckBox:
+			control.pressed = property_value
 		elif control is OptionButton:
 			var item_found := false
 			for index in range(control.get_item_count()):
@@ -145,6 +158,10 @@ func write_config() -> void:
 		
 		if control is LabeledSlider:
 			GameConfig.set(property_name, control.value)
+		elif control is SpinBox:
+			GameConfig.set(property_name, control.value)
+		elif control is CheckBox:
+			GameConfig.set(property_name, control.pressed)
 		elif control is OptionButton:
 			var metadata = control.get_selected_metadata()
 			if metadata == null:
@@ -179,6 +196,25 @@ func set_option_button_items() -> void:
 	
 	if prev_selected >= 0:
 		_language_button.select(prev_selected)
+	
+	prev_selected = _autosave_interval_button.selected
+	_autosave_interval_button.clear()
+	
+	_add_option_button_item(_autosave_interval_button, tr("Never"),
+			GameConfig.AUTOSAVE_NEVER)
+	_add_option_button_item(_autosave_interval_button, tr("30 seconds"),
+			GameConfig.AUTOSAVE_30_SEC)
+	_add_option_button_item(_autosave_interval_button, tr("1 minute"),
+			GameConfig.AUTOSAVE_1_MIN)
+	_add_option_button_item(_autosave_interval_button, tr("5 minutes"),
+			GameConfig.AUTOSAVE_5_MIN)
+	_add_option_button_item(_autosave_interval_button, tr("10 minutes"),
+			GameConfig.AUTOSAVE_10_MIN)
+	_add_option_button_item(_autosave_interval_button, tr("30 minutes"),
+			GameConfig.AUTOSAVE_30_MIN)
+	
+	if prev_selected >= 0:
+		_autosave_interval_button.select(prev_selected)
 
 
 # Add an item to the given option button along with some metadata.

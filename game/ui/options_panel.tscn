@@ -124,7 +124,7 @@ scroll_horizontal_enabled = false
 
 [node name="SectionParent" type="MarginContainer" parent="MainContainer/OptionContainer/ScrollContainer"]
 margin_right = 842.0
-margin_bottom = 112.0
+margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 50
 custom_constants/margin_top = 10
@@ -216,7 +216,7 @@ visible = false
 margin_left = 50.0
 margin_top = 10.0
 margin_right = 792.0
-margin_bottom = 112.0
+margin_bottom = 122.0
 
 [node name="Label" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer"]
 margin_right = 742.0
@@ -228,7 +228,7 @@ visible = false
 margin_left = 50.0
 margin_top = 10.0
 margin_right = 792.0
-margin_bottom = 112.0
+margin_bottom = 260.0
 
 [node name="LanguageContainer" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
 margin_right = 742.0
@@ -272,6 +272,112 @@ margin_bottom = 57.0
 bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
+
+[node name="Gap" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
+margin_top = 61.0
+margin_right = 742.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="AutosaveContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
+margin_top = 85.0
+margin_right = 742.0
+margin_bottom = 150.0
+columns = 2
+
+[node name="IntervalLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer"]
+margin_top = 3.0
+margin_right = 369.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+text = "Autosave Interval"
+align = 2
+
+[node name="opt_general_autosave_interval" type="OptionButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer"]
+margin_left = 373.0
+margin_right = 742.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+
+[node name="FileCountLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer"]
+margin_top = 37.0
+margin_right = 369.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+text = "Autosave File Count"
+align = 2
+
+[node name="opt_general_autosave_file_count" type="SpinBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer"]
+margin_left = 373.0
+margin_top = 35.0
+margin_right = 447.0
+margin_bottom = 65.0
+size_flags_horizontal = 0
+min_value = 1.0
+value = 1.0
+align = 1
+
+[node name="Gap2" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
+margin_top = 154.0
+margin_right = 742.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="MiscContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
+margin_top = 178.0
+margin_right = 742.0
+margin_bottom = 270.0
+columns = 2
+
+[node name="SkipSplashScreenLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
+margin_top = 1.0
+margin_right = 369.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+text = "Skip Splash Screen"
+align = 2
+
+[node name="opt_general_skip_splash_screen" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
+margin_left = 373.0
+margin_right = 742.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+
+[node name="ShowWarningsLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
+margin_top = 33.0
+margin_right = 369.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+text = "Show System Warnings"
+align = 2
+
+[node name="opt_general_show_warnings" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
+margin_left = 373.0
+margin_top = 32.0
+margin_right = 742.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="ShowErrorsLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
+margin_top = 65.0
+margin_right = 369.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+text = "Show System Errors"
+align = 2
+
+[node name="opt_general_show_errors" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
+margin_left = 373.0
+margin_top = 64.0
+margin_right = 742.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
 
 [node name="HintLabel" type="Label" parent="MainContainer"]
 margin_top = 382.0
