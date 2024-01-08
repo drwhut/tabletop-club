@@ -41,6 +41,10 @@ func _init():
 	connect("popup_hide", self, "_on_popup_hide")
 
 
+func _ready():
+	get_tree().connect("screen_resized", self, "_on_screen_resized")
+
+
 func _input(event: InputEvent):
 	if visible and event.is_action_released("ui_cancel"):
 		visible = false
@@ -77,3 +81,11 @@ func _on_popup_hide():
 	
 	if node is Control:
 		node.grab_focus()
+
+
+func _on_screen_resized():
+	# If the window size changes, the panel keeps its position and it will look
+	# off-centre, so we need to re-centre it if this happens.
+	if visible:
+		var viewport_size := get_viewport_rect().size
+		rect_position = (viewport_size - rect_size) / 2.0
