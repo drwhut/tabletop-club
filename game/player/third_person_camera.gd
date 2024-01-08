@@ -212,7 +212,7 @@ func _process_zoom(delta: float) -> void:
 	
 	# Go towards the target zoom level.
 	var target_offset = Vector3(0, 0, _target_zoom)
-	var zoom_accel = zoom_sensitivity * ZOOM_ACCEL_SCALAR
+	var zoom_accel = abs(zoom_sensitivity) * ZOOM_ACCEL_SCALAR
 	var zoom_delta = clamp(zoom_accel * delta, 0.0, 1.0)
 	_camera.translation = _camera.translation.linear_interpolate(target_offset,
 			zoom_delta)
