@@ -69,7 +69,7 @@ func _ready():
 				if current_node is LabeledSlider:
 					current_node.connect("value_changed", self,
 							"_on_any_value_changed")
-				elif current_node is SpinBox:
+				elif current_node is IntegerSpinBox:
 					current_node.connect("value_changed", self,
 							"_on_any_value_changed")
 				elif current_node is CheckBox:
@@ -129,7 +129,7 @@ func read_config() -> void:
 		
 		if control is LabeledSlider:
 			control.value = property_value
-		elif control is SpinBox:
+		elif control is IntegerSpinBox:
 			control.value = property_value
 		elif control is CheckBox:
 			control.pressed = property_value
@@ -158,7 +158,7 @@ func write_config() -> void:
 		
 		if control is LabeledSlider:
 			GameConfig.set(property_name, control.value)
-		elif control is SpinBox:
+		elif control is IntegerSpinBox:
 			GameConfig.set(property_name, control.value)
 		elif control is CheckBox:
 			GameConfig.set(property_name, control.pressed)

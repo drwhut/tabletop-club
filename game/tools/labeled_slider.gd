@@ -149,6 +149,9 @@ func get_font_override() -> Font:
 	if _label == null:
 		return null
 	
+	if not _label.has_font_override("font"):
+		return null
+	
 	return _label.get_font("font")
 
 

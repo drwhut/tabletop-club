@@ -240,6 +240,11 @@ _global_script_classes=[ {
 "path": "res://room/index_manager.gd"
 }, {
 "base": "HBoxContainer",
+"class": "IntegerSpinBox",
+"language": "GDScript",
+"path": "res://tools/integer_spin_box.gd"
+}, {
+"base": "HBoxContainer",
 "class": "LabeledSlider",
 "language": "GDScript",
 "path": "res://tools/labeled_slider.gd"
@@ -476,6 +481,7 @@ _global_script_class_icons={
 "HiddenAreaManager": "",
 "HiddenAreaState": "",
 "IndexManager": "",
+"IntegerSpinBox": "",
 "LabeledSlider": "",
 "MainMenuCamera": "",
 "ObjectBuilder": "",

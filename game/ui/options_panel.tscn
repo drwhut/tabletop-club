@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://ui/options_panel.gd" type="Script" id=1]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://fonts/res/popup_font_minor.tres" type="DynamicFont" id=13]
 [ext_resource path="res://icons/language_icon.svg" type="Texture" id=14]
 [ext_resource path="res://icons/keyboard_icon.svg" type="Texture" id=15]
+[ext_resource path="res://tools/integer_spin_box.gd" type="Script" id=16]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -557,7 +558,7 @@ visible = false
 margin_left = 50.0
 margin_top = 10.0
 margin_right = 792.0
-margin_bottom = 260.0
+margin_bottom = 261.0
 
 [node name="LanguageContainer" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
 margin_right = 742.0
@@ -611,7 +612,7 @@ rect_min_size = Vector2( 0, 10 )
 [node name="AutosaveContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
 margin_top = 75.0
 margin_right = 742.0
-margin_bottom = 140.0
+margin_bottom = 141.0
 columns = 2
 
 [node name="IntervalLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer"]
@@ -631,34 +632,35 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 13 )
 
 [node name="FileCountLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer"]
-margin_top = 37.0
+margin_top = 38.0
 margin_right = 369.0
-margin_bottom = 62.0
+margin_bottom = 63.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 13 )
 text = "Autosave File Count"
 align = 2
 
-[node name="opt_general_autosave_file_count" type="SpinBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer"]
+[node name="opt_general_autosave_file_count" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer"]
 margin_left = 373.0
 margin_top = 35.0
-margin_right = 447.0
-margin_bottom = 65.0
-size_flags_horizontal = 0
-min_value = 1.0
-value = 1.0
-align = 1
+margin_right = 742.0
+margin_bottom = 66.0
+mouse_filter = 2
+script = ExtResource( 16 )
+min_value = 1
+value = 1
+font_override = ExtResource( 13 )
 
 [node name="Gap2" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
-margin_top = 144.0
+margin_top = 145.0
 margin_right = 742.0
-margin_bottom = 154.0
+margin_bottom = 155.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="MiscContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
-margin_top = 158.0
+margin_top = 159.0
 margin_right = 742.0
-margin_bottom = 250.0
+margin_bottom = 251.0
 columns = 2
 
 [node name="SkipSplashScreenLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
