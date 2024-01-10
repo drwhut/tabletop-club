@@ -68,6 +68,11 @@ var _init_position := Vector3.ZERO
 var _init_rotation := Basis.IDENTITY
 
 
+func _ready():
+	# Set the initial position to be the start of the orbit.
+	transform = _get_orbit_transform(0.0)
+
+
 func _process(delta: float):
 	if state == CameraState.STATE_ORBIT or \
 		state == CameraState.STATE_PLAYER_TO_ORBIT:
