@@ -128,6 +128,39 @@ static func is_valid_aabb(value: AABB) -> bool:
 	return is_valid_vector3(value.position) and is_valid_vector3(value.size)
 
 
+## Check if [code]value[/code] is a valid [Color].
+static func is_valid_color(value: Color) -> bool:
+	if not is_valid_float(value.r):
+		return false
+	
+	if not is_valid_float(value.g):
+		return false
+	
+	if not is_valid_float(value.b):
+		return false
+	
+	if not is_valid_float(value.a):
+		return false
+	
+	if value.r < 0.0 or value.r > 1.0:
+		push_error("Invalid red component in color")
+		return false
+	
+	if value.g < 0.0 or value.g > 1.0:
+		push_error("Invalid green component in color")
+		return false
+	
+	if value.b < 0.0 or value.b > 1.0:
+		push_error("Invalid blue component in color")
+		return false
+	
+	if value.a < 0.0 or value.a > 1.0:
+		push_error("Invalid alpha component in color")
+		return false
+	
+	return true
+
+
 ## Check if [code]value[/code] is a valid floating-point number.
 static func is_valid_float(value: float) -> bool:
 	if is_inf(value):

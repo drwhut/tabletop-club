@@ -45,8 +45,12 @@ func _ready():
 	get_tree().connect("screen_resized", self, "_on_screen_resized")
 
 
-func _input(event: InputEvent):
-	if visible and event.is_action_released("ui_cancel"):
+func _unhandled_input(event: InputEvent):
+	# Most controls that have pop-up menus of their own hide their menus when
+	# "ui_cancel" is pressed, not released. We want to match that here so that
+	# we don't accidentally hide the entire panel when the user exits out of a
+	# control's menu.
+	if visible and event.is_action_pressed("ui_cancel"):
 		visible = false
 		get_tree().set_input_as_handled()
 

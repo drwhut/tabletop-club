@@ -46,6 +46,14 @@ enum {
 	AUTOSAVE_MAX # Used for validation only.
 }
 
+## The size of the font in the chat box.
+enum {
+	FONT_SIZE_SMALL,
+	FONT_SIZE_MEDIUM,
+	FONT_SIZE_LARGE,
+	FONT_SIZE_MAX # Used for validation only.
+}
+
 
 ## The path to the file containing these saved properties.
 const CONFIG_FILE_PATH := "user://options.cfg"
@@ -157,6 +165,28 @@ var general_show_warnings := true
 var general_show_errors := true
 
 
+## The name given to this client's player in multiplayer.
+## TODO: Implement this setting.
+var multiplayer_name := "Player" setget set_multiplayer_name
+
+## The self-assigned colour given to this client's player
+## TODO: Implement this setting.
+var multiplayer_color := Color.white setget set_multiplayer_color
+
+## The size of the font in the chat window.
+## TODO: Implement this setting.
+var multiplayer_chat_font_size := FONT_SIZE_MEDIUM \
+		setget set_multiplayer_chat_font_size
+
+## Determines if other player's cursors should be hidden in multiplayer.
+## TODO: Implement this setting.
+var multiplayer_hide_cursors := false
+
+## Determines if profanity should be filtered in the chat window.
+## TODO: Implement this setting.
+var multiplayer_censor_profanity := true
+
+
 ## Load the previously saved configuration from the disk.
 func load_from_file() -> void:
 	var dir := Directory.new()
@@ -243,6 +273,18 @@ func load_from_file() -> void:
 			"show_warnings", general_show_warnings)
 	general_show_errors = config_file.get_value_strict("general",
 			"show_errors", general_show_errors)
+	
+	set_multiplayer_name(config_file.get_value_strict("multiplayer",
+			"name", multiplayer_name))
+	set_multiplayer_color(config_file.get_value_strict("multiplayer",
+			"color", multiplayer_color))
+	
+	set_multiplayer_chat_font_size(config_file.get_value_strict("multiplayer",
+			"chat_font_size", multiplayer_chat_font_size))
+	multiplayer_hide_cursors = config_file.get_value_strict("multiplayer",
+			"hide_cursors", multiplayer_hide_cursors)
+	multiplayer_censor_profanity = config_file.get_value_strict("multiplayer",
+			"censor_profanity", multiplayer_censor_profanity)
 
 
 ## Save the current configuration to disk.
@@ -303,6 +345,16 @@ func save_to_file() -> void:
 	config_file.set_value("general", "show_warnings", general_show_warnings)
 	config_file.set_value("general", "show_errors", general_show_errors)
 	
+	config_file.set_value("multiplayer", "name", multiplayer_name)
+	config_file.set_value("multiplayer", "color", multiplayer_color)
+	
+	config_file.set_value("multiplayer", "chat_font_size",
+			multiplayer_chat_font_size)
+	config_file.set_value("multiplayer", "hide_cursors",
+			multiplayer_hide_cursors)
+	config_file.set_value("multiplayer", "censor_profanity",
+			multiplayer_censor_profanity)
+	
 	var err := config_file.save(CONFIG_FILE_PATH)
 	if err != OK:
 		push_error("Failed to save game settings to '%s' (error: %d)" % [
@@ -361,9 +413,20 @@ func get_description(property_name: String) -> String:
 		"general_skip_splash_screen":
 			return tr("If enabled, the Godot Engine splash screen at the start of the game will no longer be shown.")
 		"general_show_warnings":
-			return tr("If enabled, system warnings will be shown in the chat box.")
+			return tr("If enabled, system warnings will be shown in the chat window.")
 		"general_show_errors":
-			return tr("If enabled, system errors will be shown in the chat box.")
+			return tr("If enabled, system errors will be shown in the chat window.")
+		
+		"multiplayer_name":
+			return tr("Sets the name used to represent you.")
+		"multiplayer_color":
+			return tr("Sets the colour used to represent you.")
+		"multiplayer_chat_font_size":
+			return tr("Sets how big the text should be in the chat window.")
+		"multiplayer_hide_cursors":
+			return tr("If enabled, other player's cursors will no longer be visible.")
+		"multiplayer_censor_profanity":
+			return tr("If enabled, offensive words will automatically be filtered out of messages sent by you and other players.")
 		
 		_:
 			return ""
@@ -537,3 +600,28 @@ func set_general_autosave_file_count(value: int) -> void:
 		return
 	
 	general_autosave_file_count = value
+
+
+func set_multiplayer_name(value: String) -> void:
+	value = value.substr(0, 100)
+	value = value.strip_edges().strip_escapes()
+	
+	if value.empty():
+		return
+	
+	multiplayer_name = value
+
+
+func set_multiplayer_color(value: Color) -> void:
+	if not SanityCheck.is_valid_color(value):
+		return
+	
+	value.a = 1.0
+	multiplayer_color = value
+
+
+func set_multiplayer_chat_font_size(value: int) -> void:
+	if value < 0 or value >= FONT_SIZE_MAX:
+		return
+	
+	multiplayer_chat_font_size = value

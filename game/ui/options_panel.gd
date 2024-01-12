@@ -42,12 +42,15 @@ onready var _section_parent := $MainContainer/OptionContainer/ScrollContainer/Se
 onready var _audio_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer
 onready var _control_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer
 onready var _general_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer
+onready var _player_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer
 
 onready var _language_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/opt_general_language
 onready var _autosave_interval_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer/opt_general_autosave_interval
+onready var _chat_font_size_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/ChatContainer/opt_multiplayer_chat_font_size
 
 onready var _section_button_container := $MainContainer/SectionContainer
 onready var _language_warning_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageWarningLabel
+onready var _player_button := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/PreviewContainer/PlayerButton
 onready var _hint_label := $MainContainer/HintLabel
 onready var _apply_button := $MainContainer/ButtonContainer/ApplyButton
 
@@ -74,6 +77,9 @@ func _ready():
 							"_on_any_value_changed")
 				elif current_node is CheckBox:
 					current_node.connect("toggled", self,
+							"_on_any_value_changed")
+				elif current_node is LineEdit:
+					current_node.connect("text_changed", self,
 							"_on_any_value_changed")
 				elif current_node is OptionButton:
 					current_node.connect("item_selected", self,
@@ -102,6 +108,8 @@ func _ready():
 			_language_button.get_font("font"))
 	_autosave_interval_button.get_popup().add_font_override("font",
 			_autosave_interval_button.get_font("font"))
+	_chat_font_size_button.get_popup().add_font_override("font",
+			_chat_font_size_button.get_font("font"))
 	
 	# There is a chance that the names of languages (in their own language)
 	# appear elsewhere in the game (most likely in the credits if the English
@@ -133,6 +141,8 @@ func read_config() -> void:
 			control.value = property_value
 		elif control is CheckBox:
 			control.pressed = property_value
+		elif control is LineEdit:
+			control.text = property_value
 		elif control is OptionButton:
 			var item_found := false
 			for index in range(control.get_item_count()):
@@ -162,6 +172,8 @@ func write_config() -> void:
 			GameConfig.set(property_name, control.value)
 		elif control is CheckBox:
 			GameConfig.set(property_name, control.pressed)
+		elif control is LineEdit:
+			GameConfig.set(property_name, control.text)
 		elif control is OptionButton:
 			var metadata = control.get_selected_metadata()
 			if metadata == null:
@@ -215,6 +227,19 @@ func set_option_button_items() -> void:
 	
 	if prev_selected >= 0:
 		_autosave_interval_button.select(prev_selected)
+	
+	prev_selected = _chat_font_size_button.selected
+	_chat_font_size_button.clear()
+	
+	_add_option_button_item(_chat_font_size_button, tr("Small"),
+			GameConfig.FONT_SIZE_SMALL)
+	_add_option_button_item(_chat_font_size_button, tr("Medium"),
+			GameConfig.FONT_SIZE_MEDIUM)
+	_add_option_button_item(_chat_font_size_button, tr("Large"),
+			GameConfig.FONT_SIZE_LARGE)
+	
+	if prev_selected >= 0:
+		_chat_font_size_button.select(prev_selected)
 
 
 # Add an item to the given option button along with some metadata.
@@ -234,6 +259,10 @@ func _show_section(section_root: Control) -> void:
 func _on_OptionsPanel_about_to_show():
 	# Update the controls to match the current values of GameConfig properties.
 	read_config()
+	
+	# Now that they match, we can update the PlayerButton preview.
+	_player_button.text = GameConfig.multiplayer_name
+	_player_button.bg_color = GameConfig.multiplayer_color
 	
 	# Since the controls have just been updated, no changes can be applied yet.
 	_apply_button.disabled = true
@@ -286,7 +315,7 @@ func _on_GeneralSectionButton_pressed():
 
 
 func _on_MultiplayerSectionButton_pressed():
-	pass # Replace with function body.
+	_show_section(_player_container)
 
 
 func _on_VideoSectionButton_pressed():
@@ -340,6 +369,10 @@ func _on_opt_general_language_item_selected(index: int):
 	# the option button items throughout the options menu so that their labels
 	# are from the new locale.
 	set_option_button_items()
+
+
+func _on_opt_multiplayer_name_text_changed(new_text: String):
+	_player_button.text = new_text
 
 
 func _on_LanguageWarningLabel_meta_clicked(_meta):

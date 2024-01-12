@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://ui/options_panel.gd" type="Script" id=1]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://icons/language_icon.svg" type="Texture" id=14]
 [ext_resource path="res://icons/keyboard_icon.svg" type="Texture" id=15]
 [ext_resource path="res://tools/integer_spin_box.gd" type="Script" id=16]
+[ext_resource path="res://ui/player_button.tscn" type="PackedScene" id=19]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -558,7 +559,7 @@ visible = false
 margin_left = 50.0
 margin_top = 10.0
 margin_right = 792.0
-margin_bottom = 261.0
+margin_bottom = 310.0
 
 [node name="LanguageContainer" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
 margin_right = 742.0
@@ -657,13 +658,73 @@ margin_right = 742.0
 margin_bottom = 155.0
 rect_min_size = Vector2( 0, 10 )
 
-[node name="MiscContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
+[node name="ChatContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
 margin_top = 159.0
 margin_right = 742.0
-margin_bottom = 251.0
+margin_bottom = 254.0
 columns = 2
 
-[node name="SkipSplashScreenLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
+[node name="FontSizeLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/ChatContainer"]
+margin_top = 3.0
+margin_right = 369.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+text = "Chat Window Font Size"
+align = 2
+
+[node name="opt_multiplayer_chat_font_size" type="OptionButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/ChatContainer"]
+margin_left = 373.0
+margin_right = 742.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+
+[node name="ShowWarningsLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/ChatContainer"]
+margin_top = 36.0
+margin_right = 369.0
+margin_bottom = 61.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+text = "Show System Warnings"
+align = 2
+
+[node name="opt_general_show_warnings" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/ChatContainer"]
+margin_left = 373.0
+margin_top = 35.0
+margin_right = 742.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+
+[node name="ShowErrorsLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/ChatContainer"]
+margin_top = 68.0
+margin_right = 369.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+text = "Show System Errors"
+align = 2
+
+[node name="opt_general_show_errors" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/ChatContainer"]
+margin_left = 373.0
+margin_top = 67.0
+margin_right = 742.0
+margin_bottom = 95.0
+size_flags_horizontal = 3
+
+[node name="Gap3" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
+margin_top = 258.0
+margin_right = 742.0
+margin_bottom = 268.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="SplashContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer"]
+margin_top = 272.0
+margin_right = 742.0
+margin_bottom = 300.0
+columns = 2
+
+[node name="SkipSplashScreenLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/SplashContainer"]
 margin_top = 1.0
 margin_right = 369.0
 margin_bottom = 26.0
@@ -672,42 +733,122 @@ custom_fonts/font = ExtResource( 13 )
 text = "Skip Splash Screen"
 align = 2
 
-[node name="opt_general_skip_splash_screen" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
+[node name="opt_general_skip_splash_screen" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/SplashContainer"]
 margin_left = 373.0
 margin_right = 742.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="ShowWarningsLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
+[node name="PlayerContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent"]
+visible = false
+margin_left = 50.0
+margin_top = 10.0
+margin_right = 792.0
+margin_bottom = 205.0
+
+[node name="MainContainer" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer"]
+margin_right = 742.0
+margin_bottom = 93.0
+
+[node name="DetailContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer"]
+margin_right = 369.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer"]
+margin_right = 369.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 13 )
+text = "Name"
+align = 1
+
+[node name="opt_multiplayer_name" type="LineEdit" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer"]
+margin_top = 29.0
+margin_right = 369.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 13 )
+align = 1
+max_length = 100
+
+[node name="ColorLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer"]
+margin_top = 68.0
+margin_right = 369.0
+margin_bottom = 93.0
+custom_fonts/font = ExtResource( 13 )
+text = "Colour"
+align = 1
+
+[node name="PreviewContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer"]
+margin_left = 373.0
+margin_right = 742.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PreviewLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/PreviewContainer"]
+margin_top = 13.0
+margin_right = 369.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 13 )
+text = "Preview:"
+align = 1
+
+[node name="PlayerButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/PreviewContainer" instance=ExtResource( 19 )]
+margin_left = 94.0
+margin_top = 42.0
+margin_right = 274.0
+margin_bottom = 79.0
+size_flags_horizontal = 4
+disabled = true
+
+[node name="Gap" type="Control" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer"]
+margin_top = 97.0
+margin_right = 742.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="MultiplayerLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer"]
+margin_top = 111.0
+margin_right = 742.0
+margin_bottom = 131.0
+text = "Multiplayer Options"
+align = 1
+
+[node name="MultiplayerContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer"]
+margin_top = 135.0
+margin_right = 742.0
+margin_bottom = 195.0
+columns = 2
+
+[node name="HideCursorsLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MultiplayerContainer"]
+margin_top = 1.0
+margin_right = 369.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+text = "Hide Cursors"
+align = 2
+
+[node name="opt_multiplayer_hide_cursors" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MultiplayerContainer"]
+margin_left = 373.0
+margin_right = 742.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+
+[node name="CensorLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MultiplayerContainer"]
 margin_top = 33.0
 margin_right = 369.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 13 )
-text = "Show System Warnings"
+text = "Censor Profanity"
 align = 2
 
-[node name="opt_general_show_warnings" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
+[node name="opt_multiplayer_censor_profanity" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MultiplayerContainer"]
 margin_left = 373.0
 margin_top = 32.0
 margin_right = 742.0
 margin_bottom = 60.0
-size_flags_horizontal = 3
-
-[node name="ShowErrorsLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
-margin_top = 65.0
-margin_right = 369.0
-margin_bottom = 90.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 13 )
-text = "Show System Errors"
-align = 2
-
-[node name="opt_general_show_errors" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/MiscContainer"]
-margin_left = 373.0
-margin_top = 64.0
-margin_right = 742.0
-margin_bottom = 92.0
 size_flags_horizontal = 3
 
 [node name="HintLabel" type="Label" parent="MainContainer"]
@@ -769,5 +910,6 @@ expand_icon = true
 [connection signal="pressed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer/BindingContainer/ControllerBindingsButton" to="." method="_on_ControllerBindingsButton_pressed"]
 [connection signal="item_selected" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/opt_general_language" to="." method="_on_opt_general_language_item_selected"]
 [connection signal="meta_clicked" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageWarningLabel" to="." method="_on_LanguageWarningLabel_meta_clicked"]
+[connection signal="text_changed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer/opt_multiplayer_name" to="." method="_on_opt_multiplayer_name_text_changed"]
 [connection signal="pressed" from="MainContainer/ButtonContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="MainContainer/ButtonContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]

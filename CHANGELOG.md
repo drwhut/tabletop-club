@@ -41,6 +41,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   instead of reverting to English. For example, if the system is set to Austrian
   German (`de_AT`), the game will use German (`de`) instead of English.
 - Sliders in the options menu now display their values.
+- In the options menu, a preview has been added showing what the player's name
+  and colour will look like on the player list in the top-right corner.
 
 ### Changed
 
@@ -101,6 +103,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hints for properties in the options menu are now shown in a dedicated label
   rather than in tooltips.
 - Slightly adjusted the hints for properties in the options menu.
+- The "Chat Font Size" option is now called "Chat Window Font Size", and has
+  been moved to the "General" tab from the "Multiplayer" tab.
+- The appearance of the player list has been significantly improved.
 
 ### Fixed
 
