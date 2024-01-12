@@ -106,6 +106,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The "Chat Font Size" option is now called "Chat Window Font Size", and has
   been moved to the "General" tab from the "Multiplayer" tab.
 - The appearance of the player list has been significantly improved.
+- The colour pickers used throughout the UI have been replaced with colour
+  sliders, which can be switched between two modes: HSV and RGB.
 
 ### Fixed
 

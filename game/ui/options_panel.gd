@@ -75,6 +75,9 @@ func _ready():
 				elif current_node is IntegerSpinBox:
 					current_node.connect("value_changed", self,
 							"_on_any_value_changed")
+				elif current_node is ColorSlider:
+					current_node.connect("color_changed", self,
+							"_on_any_value_changed")
 				elif current_node is CheckBox:
 					current_node.connect("toggled", self,
 							"_on_any_value_changed")
@@ -139,6 +142,8 @@ func read_config() -> void:
 			control.value = property_value
 		elif control is IntegerSpinBox:
 			control.value = property_value
+		elif control is ColorSlider:
+			control.color = property_value
 		elif control is CheckBox:
 			control.pressed = property_value
 		elif control is LineEdit:
@@ -170,6 +175,8 @@ func write_config() -> void:
 			GameConfig.set(property_name, control.value)
 		elif control is IntegerSpinBox:
 			GameConfig.set(property_name, control.value)
+		elif control is ColorSlider:
+			GameConfig.set(property_name, control.color)
 		elif control is CheckBox:
 			GameConfig.set(property_name, control.pressed)
 		elif control is LineEdit:
@@ -373,6 +380,10 @@ func _on_opt_general_language_item_selected(index: int):
 
 func _on_opt_multiplayer_name_text_changed(new_text: String):
 	_player_button.text = new_text
+
+
+func _on_opt_multiplayer_color_color_changed(new_color: Color):
+	_player_button.bg_color = new_color
 
 
 func _on_LanguageWarningLabel_meta_clicked(_meta):
