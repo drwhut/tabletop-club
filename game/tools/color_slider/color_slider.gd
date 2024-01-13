@@ -130,7 +130,7 @@ func _init():
 	var button_group := ButtonGroup.new()
 	
 	_hsv_button = Button.new()
-	_hsv_button.text = tr("HSV")
+	_hsv_button.text = "HSV"
 	_hsv_button.toggle_mode = true
 	_hsv_button.pressed = true
 	_hsv_button.group = button_group
@@ -138,7 +138,7 @@ func _init():
 	button_container.add_child(_hsv_button)
 	
 	_rgb_button = Button.new()
-	_rgb_button.text = tr("RGB")
+	_rgb_button.text = "RGB"
 	_rgb_button.toggle_mode = true
 	_rgb_button.group = button_group
 	_rgb_button.connect("pressed", self, "_on_rgb_button_pressed")
