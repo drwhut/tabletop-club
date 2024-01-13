@@ -29,6 +29,13 @@ extends MenuButton
 var bg_color: Color setget set_bg_color, get_bg_color
 
 
+func _init():
+	# If the player's name is still the default "Player", then it may be
+	# automatically translated, which we don't want since we want the text to be
+	# the player's name exactly as it is written.
+	set_message_translation(false)
+
+
 func _ready():
 	# We want each button to have its own instances of styles, as it's pretty
 	# likely that each player will have their own colour associated with them.
