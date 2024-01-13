@@ -61,7 +61,7 @@ func _process(delta: float):
 	get_v_scroll().value += scroll
 
 
-func _input(event: InputEvent):
+func _unhandled_input(event: InputEvent):
 	if not visible:
 		return
 	
