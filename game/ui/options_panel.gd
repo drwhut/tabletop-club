@@ -44,12 +44,12 @@ onready var _control_container := $MainContainer/OptionContainer/ScrollContainer
 onready var _general_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer
 onready var _player_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer
 
-onready var _language_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/opt_general_language
+onready var _language_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/OptionContainer/opt_general_language
 onready var _autosave_interval_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer/opt_general_autosave_interval
 onready var _chat_font_size_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/ChatContainer/opt_multiplayer_chat_font_size
 
 onready var _section_button_container := $MainContainer/SectionContainer
-onready var _language_warning_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageWarningLabel
+onready var _language_warning_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/LanguageWarningLabel
 onready var _player_button := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/PreviewContainer/PlayerButton
 onready var _hint_label := $MainContainer/HintLabel
 onready var _apply_button := $MainContainer/ButtonContainer/ApplyButton
