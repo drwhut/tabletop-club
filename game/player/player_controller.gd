@@ -26,6 +26,10 @@ extends Node
 ## and manipulate objects.
 
 
+## Stop all processing for the player controller and the camera.
+export(bool) var disabled: bool setget set_disabled, is_disabled
+
+
 onready var _third_person_camera := $ThirdPersonCamera
 
 
@@ -37,3 +41,23 @@ func get_camera_controller() -> CameraController:
 ## Reset the player controller to its default state.
 func reset() -> void:
 	get_camera_controller().reset_transform()
+
+
+func is_disabled() -> bool:
+	return is_processing()
+
+
+func set_disabled(value: bool) -> void:
+	var enable := not value
+	
+	set_process(enable)
+	set_physics_process(enable)
+	set_process_input(enable)
+	set_process_unhandled_input(enable)
+	set_process_unhandled_key_input(enable)
+	
+	_third_person_camera.set_process(enable)
+	_third_person_camera.set_physics_process(enable)
+	_third_person_camera.set_process_input(enable)
+	_third_person_camera.set_process_unhandled_input(enable)
+	_third_person_camera.set_process_unhandled_key_input(enable)

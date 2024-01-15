@@ -94,7 +94,7 @@ func set_menu_state(value: int) -> void:
 	
 	# While the menu is visible, the player should not be able to control the
 	# camera.
-	#get_tree().paused = (menu_state != MenuState.STATE_NO_MENU)
+	_player_controller.disabled = (menu_state != MenuState.STATE_NO_MENU)
 	
 	# Only show the transparent background if we are in the in-game menu, not
 	# the main menu.

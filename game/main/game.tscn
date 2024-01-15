@@ -8,7 +8,6 @@
 [ext_resource path="res://main/game.gd" type="Script" id=6]
 
 [node name="Game" type="Node"]
-pause_mode = 2
 script = ExtResource( 6 )
 
 [node name="Room" parent="." instance=ExtResource( 2 )]
@@ -24,7 +23,6 @@ margin_right = 225.0
 margin_bottom = -40.0
 
 [node name="PlayerController" parent="." instance=ExtResource( 5 )]
-pause_mode = 1
 
 [node name="MainMenuCamera" type="Camera" parent="."]
 physics_interpolation_mode = 1
