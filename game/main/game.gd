@@ -74,6 +74,14 @@ func _unhandled_input(event: InputEvent):
 		elif menu_state == MenuState.STATE_NO_MENU:
 			set_menu_state(MenuState.STATE_GAME_MENU)
 			get_tree().set_input_as_handled()
+	
+	elif event.is_action_pressed("ui_cancel"):
+		if menu_state == MenuState.STATE_GAME_MENU:
+			# We don't need to check if any of the main menu's panels are being
+			# shown, since the "ui_cancel" input will be handled by them before
+			# it is handled by us.
+			set_menu_state(MenuState.STATE_NO_MENU)
+			get_tree().set_input_as_handled()
 
 
 func set_menu_state(value: int) -> void:
