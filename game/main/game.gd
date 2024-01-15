@@ -62,7 +62,7 @@ func _ready():
 
 
 func _unhandled_input(event: InputEvent):
-	if event.is_action_released("game_menu"):
+	if event.is_action_pressed("game_menu"):
 		if menu_state == MenuState.STATE_GAME_MENU:
 			set_menu_state(MenuState.STATE_NO_MENU)
 			get_tree().set_input_as_handled()
