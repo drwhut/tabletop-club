@@ -108,6 +108,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The appearance of the player list has been significantly improved.
 - The colour pickers used throughout the UI have been replaced with colour
   sliders, which can be switched between two modes: HSV and RGB.
+- Renamed the "Contributors" section in the credits to "Code Contributors".
 
 ### Fixed
 

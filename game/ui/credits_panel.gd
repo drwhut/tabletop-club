@@ -32,7 +32,7 @@ func _ready():
 	var credits_text = preload("res://CREDITS.txt").text
 	
 	credits_text = credits_text.replace("ALPHA TESTERS", tr("Alpha Testers"))
-	credits_text = credits_text.replace("CONTRIBUTORS", tr("Contributors"))
+	credits_text = credits_text.replace("CODE CONTRIBUTORS", tr("Code Contributors"))
 	credits_text = credits_text.replace("CURSORS", tr("Cursors"))
 	credits_text = credits_text.replace("DEVELOPERS", tr("Developers"))
 	credits_text = credits_text.replace("FONTS", tr("Fonts"))

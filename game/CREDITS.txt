@@ -3,8 +3,8 @@ DEVELOPERS
 
 Benjamin 'drwhut' Beddows
 
-CONTRIBUTORS
-=============
+CODE CONTRIBUTORS
+=================
 
 elmodor
 Sean Kuehl
