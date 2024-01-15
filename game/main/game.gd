@@ -64,6 +64,11 @@ func _ready():
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("game_menu"):
 		if menu_state == MenuState.STATE_GAME_MENU:
+			# Do not hide the main menu if one of its panels is currently being
+			# shown to the player.
+			if _main_menu.is_popup_visible():
+				return
+			
 			set_menu_state(MenuState.STATE_NO_MENU)
 			get_tree().set_input_as_handled()
 		elif menu_state == MenuState.STATE_NO_MENU:

@@ -62,6 +62,17 @@ func _ready():
 	_animation_player.play("FadeInMenu")
 
 
+## Check if one of the main menu's panels or windows (e.g. the options panel) is
+## currently visible or not.
+func is_popup_visible() -> bool:
+	for child in get_children():
+		if child is Popup:
+			if child.visible:
+				return true
+	
+	return false
+
+
 ## Take the global focus and place it on one of the main menu's buttons.
 func take_focus() -> void:
 	if _singleplayer_button.visible:
