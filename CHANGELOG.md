@@ -43,6 +43,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Sliders in the options menu now display their values.
 - In the options menu, a preview has been added showing what the player's name
   and colour will look like on the player list in the top-right corner.
+- A warning is now shown when attempting to set an invalid player name in the
+  options menu.
 
 ### Changed
 

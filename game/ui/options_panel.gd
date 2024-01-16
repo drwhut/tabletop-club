@@ -48,9 +48,12 @@ onready var _language_button: OptionButton = $MainContainer/OptionContainer/Scro
 onready var _autosave_interval_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer/opt_general_autosave_interval
 onready var _chat_font_size_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/ChatContainer/opt_multiplayer_chat_font_size
 
+onready var _player_name_edit: LineEdit = $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer/opt_multiplayer_name
+onready var _player_name_warning_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer/NameWarningLabel
+onready var _player_button := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/PreviewContainer/PlayerButton
+
 onready var _section_button_container := $MainContainer/SectionContainer
 onready var _language_warning_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/LanguageWarningLabel
-onready var _player_button := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/PreviewContainer/PlayerButton
 onready var _hint_label := $MainContainer/HintLabel
 onready var _apply_button := $MainContainer/ButtonContainer/ApplyButton
 
@@ -256,6 +259,21 @@ func _add_option_button_item(option_button: OptionButton, label: String, metadat
 	option_button.set_item_metadata(item_index, metadata)
 
 
+# If there are any invalid properties, set their values such that they are valid
+# again. This should be used before any changes are applied.
+func _fix_invalid_properties() -> void:
+	var player_name := _player_name_edit.text
+	player_name = player_name.strip_edges().strip_escapes()
+	
+	if player_name.empty():
+		# Guaranteed to be valid at all times.
+		player_name = GameConfig.multiplayer_name
+	
+	_player_name_edit.text = player_name
+	_player_button.text = player_name
+	_player_name_warning_label.visible = false
+
+
 # Show the given section, and hide the others.
 func _show_section(section_root: Control) -> void:
 	for child in _section_parent.get_children():
@@ -270,6 +288,9 @@ func _on_OptionsPanel_about_to_show():
 	# Now that they match, we can update the PlayerButton preview.
 	_player_button.text = GameConfig.multiplayer_name
 	_player_button.bg_color = GameConfig.multiplayer_color
+	
+	# The player name is guaranteed to be valid now.
+	_player_name_warning_label.visible = false
 	
 	# Since the controls have just been updated, no changes can be applied yet.
 	_apply_button.disabled = true
@@ -380,6 +401,9 @@ func _on_opt_general_language_item_selected(index: int):
 
 func _on_opt_multiplayer_name_text_changed(new_text: String):
 	_player_button.text = new_text
+	
+	var stripped_name := new_text.strip_edges().strip_escapes()
+	_player_name_warning_label.visible = stripped_name.empty()
 
 
 func _on_opt_multiplayer_color_color_changed(new_color: Color):
@@ -395,6 +419,8 @@ func _on_BackButton_pressed():
 
 
 func _on_ApplyButton_pressed():
+	_fix_invalid_properties()
+	
 	write_config()
 	GameConfig.apply_all()
 	GameConfig.save_to_file()

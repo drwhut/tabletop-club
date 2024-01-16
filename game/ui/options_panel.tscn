@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://ui/options_panel.gd" type="Script" id=1]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://icons/keyboard_icon.svg" type="Texture" id=15]
 [ext_resource path="res://tools/integer_spin_box.gd" type="Script" id=16]
 [ext_resource path="res://tools/color_slider/color_slider.gd" type="Script" id=17]
+[ext_resource path="res://fonts/res/default_italic.tres" type="DynamicFont" id=18]
 [ext_resource path="res://ui/player_button.tscn" type="PackedScene" id=19]
 
 [sub_resource type="ButtonGroup" id=1]
@@ -723,6 +724,17 @@ margin_bottom = 64.0
 custom_fonts/font = ExtResource( 13 )
 align = 1
 max_length = 100
+
+[node name="NameWarningLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer"]
+visible = false
+margin_top = 68.0
+margin_right = 363.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 18 )
+text = "Your name must contain at least one character."
+align = 1
+autowrap = true
 
 [node name="ColorLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer"]
 margin_top = 68.0

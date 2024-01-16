@@ -1,0 +1,8 @@
+[gd_resource type="DynamicFont" load_steps=3 format=2]
+
+[ext_resource path="res://fonts/data/PTSans-Italic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/data/Cabin-Italic.ttf" type="DynamicFontData" id=2]
+
+[resource]
+font_data = ExtResource( 2 )
+fallback/0 = ExtResource( 1 )
