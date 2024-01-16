@@ -44,7 +44,7 @@ func reset() -> void:
 
 
 func is_disabled() -> bool:
-	return is_processing()
+	return not is_processing()
 
 
 func set_disabled(value: bool) -> void:
