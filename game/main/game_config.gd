@@ -193,6 +193,8 @@ func load_from_file() -> void:
 	if not dir.file_exists(CONFIG_FILE_PATH):
 		return
 	
+	print("GameConfig: Loading settings from '%s' ..." % CONFIG_FILE_PATH)
+	
 	var config_file := AdvancedConfigFile.new()
 	var err := config_file.load(CONFIG_FILE_PATH)
 	if err != OK:
@@ -355,6 +357,8 @@ func save_to_file() -> void:
 	config_file.set_value("multiplayer", "censor_profanity",
 			multiplayer_censor_profanity)
 	
+	print("GameConfig: Saving settings to '%s' ..." % CONFIG_FILE_PATH)
+	
 	var err := config_file.save(CONFIG_FILE_PATH)
 	if err != OK:
 		push_error("Failed to save game settings to '%s' (error: %d)" % [
@@ -435,6 +439,8 @@ func get_description(property_name: String) -> String:
 ## Apply the current configuration to the entire game.
 ## NOTE: This will emit [signal applying_settings].
 func apply_all() -> void:
+	print("GameConfig: Applying all settings...")
+	
 	apply_audio()
 	
 	set_locale(general_language)
