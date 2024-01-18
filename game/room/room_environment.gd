@@ -126,3 +126,11 @@ func _on_GameConfig_applying_settings():
 	environment.dof_blur_near_enabled = dof_enabled
 	environment.dof_blur_near_quality = dof_quality
 	environment.dof_blur_near_transition = 1.0
+	
+	environment.adjustment_brightness = GameConfig.video_brightness
+	environment.adjustment_contrast = GameConfig.video_contrast
+	environment.adjustment_saturation = GameConfig.video_saturation
+	
+	environment.adjustment_enabled = (GameConfig.video_brightness != 1.0) or \
+			(GameConfig.video_contrast != 1.0) or \
+			(GameConfig.video_saturation != 1.0)

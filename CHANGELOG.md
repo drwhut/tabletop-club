@@ -47,6 +47,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   options menu.
 - Added a slider that can change the scale of the user interface in the options
   menu, under the "Video" section. (#290)
+- Added sliders that can change the brightness, contrast, and saturation of the
+  rendered scene in the options menu, under the "Video" section.
 
 ### Changed
 

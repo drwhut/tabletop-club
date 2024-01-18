@@ -267,7 +267,6 @@ var video_msaa := MSAA_NONE setget set_video_msaa
 ## TODO: Add setting for screen space reflections in environment?
 ## TODO: Add setting for sub-surface scattering?
 ## TODO: Enable fallback to GLES 2? Check if .pck size increases.
-## TODO: Add settings for brightness, contrast and saturation?
 
 ## Determines the quality of SSAO.
 var video_ssao := SSAO_NONE setget set_video_ssao
@@ -289,6 +288,15 @@ var video_depth_of_field_distance := 0.5 setget set_video_depth_of_field_distanc
 
 ## Determines if the table paint texture is filtered or not.
 var video_table_paint_filtering := true
+
+## Determines how bright the game is.
+var video_brightness := 1.0 setget set_video_brightness
+
+## Determines how much contrast the game has.
+var video_contrast := 1.0 setget set_video_contrast
+
+## Determines how much saturation the game has.
+var video_saturation := 1.0 setget set_video_saturation
 
 
 ## Load the previously saved configuration from the disk.
@@ -417,6 +425,13 @@ func load_from_file() -> void:
 	
 	video_table_paint_filtering = config_file.get_value_strict("video",
 			"table_paint_filtering", video_table_paint_filtering)
+	
+	set_video_brightness(config_file.get_value_strict("video", "brightness",
+			video_brightness))
+	set_video_contrast(config_file.get_value_strict("video", "contrast",
+			video_contrast))
+	set_video_saturation(config_file.get_value_strict("video", "saturation",
+			video_saturation))
 
 
 ## Save the current configuration to disk.
@@ -506,6 +521,10 @@ func save_to_file() -> void:
 	
 	config_file.set_value("video", "table_paint_filtering",
 			video_table_paint_filtering)
+	
+	config_file.set_value("video", "brightness", video_brightness)
+	config_file.set_value("video", "contrast", video_contrast)
+	config_file.set_value("video", "saturation", video_saturation)
 	
 	print("GameConfig: Saving settings to '%s' ..." % CONFIG_FILE_PATH)
 	
@@ -606,6 +625,12 @@ func get_description(property_name: String) -> String:
 			return tr("Sets how far away from the camera the threshold of what is considered the background is when using depth of field.")
 		"video_table_paint_filtering":
 			return tr("If enabled, the paint on the table is blurred slightly so as to not look pixelated.")
+		"video_brightness":
+			return tr("Sets how bright each rendered frame is.")
+		"video_contrast":
+			return tr("Sets how much contrast there is in each rendered frame.")
+		"video_saturation":
+			return tr("Sets how much colour saturation there is in each rendered frame.")
 		
 		_:
 			return ""
@@ -1003,3 +1028,24 @@ func set_video_depth_of_field_distance(value: float) -> void:
 		return
 	
 	video_depth_of_field_distance = clamp(value, 0.01, 1.0)
+
+
+func set_video_brightness(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	video_brightness = clamp(value, 0.1, 3.0)
+
+
+func set_video_contrast(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	video_contrast = clamp(value, 0.1, 3.0)
+
+
+func set_video_saturation(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	video_saturation = clamp(value, 0.1, 3.0)
