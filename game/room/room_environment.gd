@@ -46,6 +46,9 @@ func _ready():
 			set_skybox(default_skybox)
 	else:
 		push_error("'default_skybox' is not of type AssetEntrySkybox")
+	
+	GameConfig.connect("applying_settings", self,
+			"_on_GameConfig_applying_settings")
 
 
 ## Set the room's skybox using its entry.
@@ -61,3 +64,65 @@ func set_skybox(skybox_entry: AssetEntrySkybox) -> void:
 	
 	environment.background_energy = skybox_entry.energy
 	environment.background_sky_rotation = skybox_entry.rotation
+
+
+func _on_GameConfig_applying_settings():
+	var radiance_size := Sky.RADIANCE_SIZE_128
+	
+	match GameConfig.video_skybox_radiance_detail:
+		GameConfig.RADIANCE_LOW:
+			radiance_size = Sky.RADIANCE_SIZE_128
+		GameConfig.RADIANCE_MEDIUM:
+			radiance_size = Sky.RADIANCE_SIZE_256
+		GameConfig.RADIANCE_HIGH:
+			radiance_size = Sky.RADIANCE_SIZE_512
+		GameConfig.RADIANCE_VERY_HIGH:
+			radiance_size = Sky.RADIANCE_SIZE_1024
+		GameConfig.RADIANCE_ULTRA:
+			radiance_size = Sky.RADIANCE_SIZE_2048
+	
+	environment.background_sky.radiance_size = radiance_size
+	
+	var ssao_enabled := true
+	var ssao_quality := Environment.SSAO_QUALITY_LOW
+	
+	match GameConfig.video_ssao:
+		GameConfig.SSAO_NONE:
+			ssao_enabled = false
+		GameConfig.SSAO_LOW:
+			ssao_quality = Environment.SSAO_QUALITY_LOW
+		GameConfig.SSAO_MEDIUM:
+			ssao_quality = Environment.SSAO_QUALITY_MEDIUM
+		GameConfig.SSAO_HIGH:
+			ssao_quality = Environment.SSAO_QUALITY_HIGH
+	
+	environment.ssao_enabled = ssao_enabled
+	environment.ssao_quality = ssao_quality
+	
+	var dof_enabled := true
+	var dof_quality := Environment.DOF_BLUR_QUALITY_LOW
+	
+	match GameConfig.video_depth_of_field:
+		0:
+			dof_enabled = false
+		1:
+			dof_quality = Environment.DOF_BLUR_QUALITY_LOW
+		2:
+			dof_quality = Environment.DOF_BLUR_QUALITY_MEDIUM
+		3:
+			dof_quality = Environment.DOF_BLUR_QUALITY_HIGH
+	
+	var dof_amount := 0.1 * GameConfig.video_depth_of_field_amount
+	var dof_distance := 15.0 + 85.0 * GameConfig.video_depth_of_field_distance
+	
+	environment.dof_blur_far_amount = dof_amount
+	environment.dof_blur_far_distance = dof_distance
+	environment.dof_blur_far_enabled = dof_enabled
+	environment.dof_blur_far_quality = dof_quality
+	environment.dof_blur_far_transition = 10.0
+	
+	environment.dof_blur_near_amount = dof_amount
+	environment.dof_blur_near_distance = 5.0
+	environment.dof_blur_near_enabled = dof_enabled
+	environment.dof_blur_near_quality = dof_quality
+	environment.dof_blur_near_transition = 1.0

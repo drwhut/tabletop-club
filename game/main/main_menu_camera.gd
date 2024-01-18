@@ -71,6 +71,9 @@ var _init_rotation := Basis.IDENTITY
 func _ready():
 	# Set the initial position to be the start of the orbit.
 	transform = _get_orbit_transform(0.0)
+	
+	GameConfig.connect("applying_settings", self,
+			"_on_GameConfig_applying_settings")
 
 
 func _process(delta: float):
@@ -155,3 +158,7 @@ func _get_orbit_transform(time_in_orbit: float) -> Transform:
 	var basis := Basis(Vector3.UP, angle)
 	
 	return Transform(basis, position)
+
+
+func _on_GameConfig_applying_settings():
+	fov = GameConfig.video_fov

@@ -43,7 +43,7 @@ enum {
 	AUTOSAVE_5_MIN,
 	AUTOSAVE_10_MIN,
 	AUTOSAVE_30_MIN,
-	AUTOSAVE_MAX # Used for validation only.
+	AUTOSAVE_MAX ## Used for validation only.
 }
 
 ## The size of the font in the chat box.
@@ -51,7 +51,62 @@ enum {
 	FONT_SIZE_SMALL,
 	FONT_SIZE_MEDIUM,
 	FONT_SIZE_LARGE,
-	FONT_SIZE_MAX # Used for validation only.
+	FONT_SIZE_MAX ## Used for validation only.
+}
+
+## The mode in which the game window is displayed.
+enum {
+	MODE_WINDOWED,
+	MODE_BORDERLESS_FULLSCREEN,
+	MODE_FULLSCREEN,
+	MODE_MAX ## Used for validation only.
+}
+
+## How detailed shadows should be.
+enum {
+	SHADOW_DETAIL_LOW,
+	SHADOW_DETAIL_MEDIUM,
+	SHADOW_DETAIL_HIGH,
+	SHADOW_DETAIL_VERY_HIGH,
+	SHADOW_DETAIL_MAX ## Used for validation only.
+}
+
+## How many samples should be performed during anti-aliasing.
+enum {
+	MSAA_NONE,
+	MSAA_2X,
+	MSAA_4X,
+	MSAA_8X,
+	MSAA_16X,
+	MSAA_MAX ## Used for validation only.
+}
+
+## How detailed ambient occlusion should be.
+enum {
+	SSAO_NONE,
+	SSAO_LOW,
+	SSAO_MEDIUM,
+	SSAO_HIGH,
+	SSAO_MAX ## Used for validation only.
+}
+
+## How detailed the lighting from the skybox should be.
+enum {
+	RADIANCE_LOW,
+	RADIANCE_MEDIUM,
+	RADIANCE_HIGH,
+	RADIANCE_VERY_HIGH,
+	RADIANCE_ULTRA,
+	RADIANCE_MAX ## Used for validation only.
+}
+
+## The quality of the depth-of-field effect.
+enum {
+	DOF_NONE,
+	DOF_LOW,
+	DOF_MEDIUM,
+	DOF_HIGH,
+	DOF_MAX ## Used for validation only.
 }
 
 
@@ -187,6 +242,54 @@ var multiplayer_hide_cursors := false
 var multiplayer_censor_profanity := true
 
 
+## Determines how the game window should be displayed.
+var video_window_mode := MODE_WINDOWED setget set_video_window_mode
+
+## Determines the field of view of the camera in degrees.
+var video_fov := 70.0 setget set_video_fov
+
+## Determines if VSync should be enabled or not.
+var video_vsync := true
+
+## TODO: Add setting for custom FPS limit when using Godot 4.2+.
+
+## Determines how detailed shadows are.
+var video_shadow_detail := SHADOW_DETAIL_MEDIUM setget set_video_shadow_detail
+
+## Determines how many samples should be used for MSAA.
+## TODO: Increase the default value?
+var video_msaa := MSAA_NONE setget set_video_msaa
+
+## TODO: Add setting for FXAA, use Viewport.sharpen_intensity.
+## TODO: Add setting for screen space reflections in environment?
+## TODO: Add setting for sub-surface scattering?
+## TODO: Enable fallback to GLES 2? Check if .pck size increases.
+## TODO: Think shadow detail can be set at runtime now!
+## TODO: Add setting for UI scale.
+## TODO: Add settings for brightness, contrast and saturation?
+
+## Determines the quality of SSAO.
+var video_ssao := SSAO_NONE setget set_video_ssao
+
+## Determines how detailed the lighting is from the skybox.
+## TODO: Check if it is worth keeping Very High and Ultra settings, as they can
+## potentially crash the game on older hardware.
+var video_skybox_radiance_detail := RADIANCE_LOW \
+		setget set_video_skybox_radiance_detail
+
+## Determines the quality of the depth-of-field effect.
+var video_depth_of_field := DOF_NONE setget set_video_depth_of_field
+
+## Determines how much the background is blurred when using depth of field.
+var video_depth_of_field_amount := 0.5 setget set_video_depth_of_field_amount
+
+## Determines the distance to the background when using depth of field.
+var video_depth_of_field_distance := 0.5 setget set_video_depth_of_field_distance
+
+## Determines if the table paint texture is filtered or not.
+var video_table_paint_filtering := true
+
+
 ## Load the previously saved configuration from the disk.
 func load_from_file() -> void:
 	var dir := Directory.new()
@@ -287,6 +390,30 @@ func load_from_file() -> void:
 			"hide_cursors", multiplayer_hide_cursors)
 	multiplayer_censor_profanity = config_file.get_value_strict("multiplayer",
 			"censor_profanity", multiplayer_censor_profanity)
+	
+	set_video_window_mode(config_file.get_value_strict("video", "window_mode",
+			video_window_mode))
+	set_video_fov(config_file.get_value_strict("video", "fov", video_fov))
+	video_vsync = config_file.get_value_strict("video", "vsync", video_vsync)
+	
+	set_video_shadow_detail(config_file.get_value_strict("video",
+			"shadow_detail", video_shadow_detail))
+	set_video_msaa(config_file.get_value_strict("video",
+			"msaa", video_msaa))
+	set_video_ssao(config_file.get_value_strict("video",
+			"ssao", video_ssao))
+	set_video_skybox_radiance_detail(config_file.get_value_strict("video",
+			"skybox_radiance_detail", video_skybox_radiance_detail))
+	
+	set_video_depth_of_field(config_file.get_value_strict("video",
+			"depth_of_field", video_depth_of_field))
+	set_video_depth_of_field_amount(config_file.get_value_strict("video",
+			"depth_of_field_amount", video_depth_of_field_amount))
+	set_video_depth_of_field_distance(config_file.get_value_strict("video",
+			"depth_of_field_distance", video_depth_of_field_distance))
+	
+	video_table_paint_filtering = config_file.get_value_strict("video",
+			"table_paint_filtering", video_table_paint_filtering)
 
 
 ## Save the current configuration to disk.
@@ -356,6 +483,25 @@ func save_to_file() -> void:
 			multiplayer_hide_cursors)
 	config_file.set_value("multiplayer", "censor_profanity",
 			multiplayer_censor_profanity)
+	
+	config_file.set_value("video", "window_mode", video_window_mode)
+	config_file.set_value("video", "fov", video_fov)
+	config_file.set_value("video", "vsync", video_vsync)
+	
+	config_file.set_value("video", "shadow_detail", video_shadow_detail)
+	config_file.set_value("video", "msaa", video_msaa)
+	config_file.set_value("video", "ssao", video_ssao)
+	config_file.set_value("video", "skybox_radiance_detail",
+			video_skybox_radiance_detail)
+	
+	config_file.set_value("video", "depth_of_field", video_depth_of_field)
+	config_file.set_value("video", "depth_of_field_amount",
+			video_depth_of_field_amount)
+	config_file.set_value("video", "depth_of_field_distance",
+			video_depth_of_field_distance)
+	
+	config_file.set_value("video", "table_paint_filtering",
+			video_table_paint_filtering)
 	
 	print("GameConfig: Saving settings to '%s' ..." % CONFIG_FILE_PATH)
 	
@@ -432,6 +578,29 @@ func get_description(property_name: String) -> String:
 		"multiplayer_censor_profanity":
 			return tr("If enabled, offensive words will automatically be filtered out of messages sent by you and other players.")
 		
+		"video_window_mode":
+			return tr("Sets how the operating system will display the game window.")
+		"video_fov":
+			return tr("Sets how wide the camera's field of view should be in degrees.")
+		"video_vsync":
+			return tr("If enabled, the game will render new frames only when the monitor is ready to display a new frame, ensuring that the game's frame rate matches that of the monitor's refresh rate. This option eliminates screen tearing artifacts, but may introduce some input latency.")
+		"video_shadow_detail":
+			return tr("Sets the quality of shadows that are cast in the room. The more detail that shadows have, the better they look, but at the cost of performance.")
+		"video_msaa":
+			return tr("Sets how many samples should be used when performing multisample anti-aliasing. Anti-aliasing is a technique used to smooth the appearance of jagged edges. A higher sample count will result in smoother edges, at a significant cost to performance.")
+		"video_ssao":
+			return tr("Sets the quality when performing screen space ambient occlusion. Ambient occlusion is a technique used to predict how much surfaces are exposed to ambient lighting. The higher the quality, the more realistic the lighting, at a significant cost to performance.")
+		"video_skybox_radiance_detail":
+			return tr("Sets the quality of light radiating from the skybox. The higher the quality, the more detailed reflections of the skybox are, but at the cost of performance.")
+		"video_depth_of_field":
+			return tr("Sets the quality of the depth of field effect. Depth of field is a technique used to blur objects that are not in focus. The higher the quality, the better the blur looks, but at the cost of performance.")
+		"video_depth_of_field_amount":
+			return tr("Sets how much the background is blurred when using depth of field.")
+		"video_depth_of_field_distance":
+			return tr("Sets how far away from the camera the threshold of what is considered the background is when using depth of field.")
+		"video_table_paint_filtering":
+			return tr("If enabled, the paint on the table is blurred slightly so as to not look pixelated.")
+		
 		_:
 			return ""
 
@@ -442,8 +611,13 @@ func apply_all() -> void:
 	print("GameConfig: Applying all settings...")
 	
 	apply_audio()
-	
 	set_locale(general_language)
+	
+	set_window_mode(video_window_mode)
+	OS.vsync_enabled = video_vsync
+	
+	set_viewport_msaa(video_msaa)
+	save_override_config()
 	
 	emit_signal("applying_settings")
 
@@ -509,6 +683,87 @@ func find_closest_locale(locale_code: String) -> String:
 			closest_locale = potential_locale
 	
 	return closest_locale
+
+
+## Set the way in which the game window is displayed by the operating system.
+## For example, [code]MODE_WINDOWED[/code].
+func set_window_mode(window_mode: int) -> void:
+	# Settings for windowed mode.
+	var is_fullscreen := false
+	var is_borderless := false
+	var is_maximized := OS.window_maximized
+	
+	match window_mode:
+		MODE_BORDERLESS_FULLSCREEN:
+			is_borderless = true
+			is_maximized = true
+		MODE_FULLSCREEN:
+			is_fullscreen = true
+			is_borderless = true
+	
+	# TODO: Check if this works for macOS.
+	OS.window_fullscreen = is_fullscreen
+	OS.window_borderless = is_borderless
+	OS.window_maximized = is_maximized
+
+
+## Set the number of samples used by the root viewport when performing MSAA.
+## For example, [code]MSAA_4X[/code].
+func set_viewport_msaa(msaa_samples: int) -> void:
+	var viewport_samples := Viewport.MSAA_DISABLED
+	
+	match msaa_samples:
+		MSAA_2X:
+			viewport_samples = Viewport.MSAA_2X
+		MSAA_4X:
+			viewport_samples = Viewport.MSAA_4X
+		MSAA_8X:
+			viewport_samples = Viewport.MSAA_8X
+		MSAA_16X:
+			viewport_samples = Viewport.MSAA_16X
+	
+	get_viewport().msaa = viewport_samples
+
+
+## Save certain settings to a separate configuration file so that they can be
+## loaded by the engine at launch to override specific project settings.
+func save_override_config() -> void:
+	var shadow_filter: int = ProjectSettings.get_setting(
+			"rendering/quality/shadows/filter_mode")
+	var shadow_size: int = ProjectSettings.get_setting(
+			"rendering/quality/directional_shadow/size")
+	
+	match video_shadow_detail:
+		SHADOW_DETAIL_LOW:
+			shadow_filter = 1 # PCF5.
+			shadow_size = 2048
+		SHADOW_DETAIL_MEDIUM:
+			shadow_filter = 1 # PCF5.
+			shadow_size = 4096
+		SHADOW_DETAIL_HIGH:
+			shadow_filter = 2 # PCF13.
+			shadow_size = 8192
+		SHADOW_DETAIL_VERY_HIGH:
+			shadow_filter = 2 # PCF13.
+			shadow_size = 16384
+	
+	var override_file := ConfigFile.new()
+	var override_file_path: String = ProjectSettings.get_setting(
+			"application/config/project_settings_override")
+	
+	override_file.set_value("rendering", "quality/directional_shadow/size",
+			shadow_size)
+	override_file.set_value("rendering", "quality/shadow_atlas/size",
+			shadow_size)
+	override_file.set_value("rendering", "quality/shadows/filter_mode",
+			shadow_filter)
+	
+	print("GameConfig: Saving override settings to '%s' for next launch..." %
+			override_file_path)
+	var err := override_file.save(override_file_path)
+	if err != OK:
+		push_error("Failed to save override settings to '%s' (error: %d)" % [
+				override_file_path, err])
 
 
 func set_audio_master_volume(value: float) -> void:
@@ -631,3 +886,66 @@ func set_multiplayer_chat_font_size(value: int) -> void:
 		return
 	
 	multiplayer_chat_font_size = value
+
+
+func set_video_window_mode(value: int) -> void:
+	if value < 0 or value >= MODE_MAX:
+		return
+	
+	video_window_mode = value
+
+
+func set_video_fov(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	video_fov = clamp(value, 50.0, 130.0)
+
+
+func set_video_shadow_detail(value: int) -> void:
+	if value < 0 or value >= SHADOW_DETAIL_MAX:
+		return
+	
+	video_shadow_detail = value
+
+
+func set_video_msaa(value: int) -> void:
+	if value < 0 or value >= MSAA_MAX:
+		return
+	
+	video_msaa = value
+
+
+func set_video_ssao(value: int) -> void:
+	if value < 0 or value >= SSAO_MAX:
+		return
+	
+	video_ssao = value
+
+
+func set_video_skybox_radiance_detail(value: int) -> void:
+	if value < 0 or value >= RADIANCE_MAX:
+		return
+	
+	video_skybox_radiance_detail = value
+
+
+func set_video_depth_of_field(value: int) -> void:
+	if value < 0 or value >= DOF_MAX:
+		return
+	
+	video_depth_of_field = value
+
+
+func set_video_depth_of_field_amount(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	video_depth_of_field_amount = clamp(value, 0.01, 1.0)
+
+
+func set_video_depth_of_field_distance(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	video_depth_of_field_distance = clamp(value, 0.01, 1.0)

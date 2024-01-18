@@ -154,6 +154,8 @@ func apply_options() -> void:
 	zoom_sensitivity = 1.0 + 15.0 * GameConfig.control_zoom_sensitivity
 	if GameConfig.control_zoom_invert:
 		zoom_sensitivity *= -1.0
+	
+	_camera.fov = GameConfig.video_fov
 
 
 # Read player input and adjust the position of the camera accordingly.

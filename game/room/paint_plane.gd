@@ -48,3 +48,20 @@ func _ready():
 	material.albedo_texture = paint_viewport.get_texture()
 	
 	set_surface_material(0, material)
+	
+	GameConfig.connect("applying_settings", self,
+			"_on_GameConfig_applying_settings")
+
+
+func _on_GameConfig_applying_settings():
+	var material: SpatialMaterial = get_surface_material(0)
+	var viewport_texture: ViewportTexture = material.albedo_texture
+	
+	# Take the default flags, and remove the filter flag...
+	var new_flags := viewport_texture.flags & (~Texture.FLAG_FILTER)
+	
+	# ... only add it back in if the GameConfig property is true.
+	if GameConfig.video_table_paint_filtering:
+		new_flags |= Texture.FLAG_FILTER
+	
+	viewport_texture.flags = new_flags
