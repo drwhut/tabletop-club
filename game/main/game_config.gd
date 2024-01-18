@@ -253,6 +253,9 @@ var video_vsync := true
 
 ## TODO: Add setting for custom FPS limit when using Godot 4.2+.
 
+## Determines how much the UI should be scaled from it's default size.
+var video_ui_scale := 1.0 setget set_video_ui_scale
+
 ## Determines how detailed shadows are.
 var video_shadow_detail := SHADOW_DETAIL_MEDIUM setget set_video_shadow_detail
 
@@ -264,7 +267,6 @@ var video_msaa := MSAA_NONE setget set_video_msaa
 ## TODO: Add setting for screen space reflections in environment?
 ## TODO: Add setting for sub-surface scattering?
 ## TODO: Enable fallback to GLES 2? Check if .pck size increases.
-## TODO: Add setting for UI scale.
 ## TODO: Add settings for brightness, contrast and saturation?
 
 ## Determines the quality of SSAO.
@@ -394,6 +396,8 @@ func load_from_file() -> void:
 			video_window_mode))
 	set_video_fov(config_file.get_value_strict("video", "fov", video_fov))
 	video_vsync = config_file.get_value_strict("video", "vsync", video_vsync)
+	set_video_ui_scale(config_file.get_value_strict("video", "ui_scale",
+			video_ui_scale))
 	
 	set_video_shadow_detail(config_file.get_value_strict("video",
 			"shadow_detail", video_shadow_detail))
@@ -486,6 +490,7 @@ func save_to_file() -> void:
 	config_file.set_value("video", "window_mode", video_window_mode)
 	config_file.set_value("video", "fov", video_fov)
 	config_file.set_value("video", "vsync", video_vsync)
+	config_file.set_value("video", "ui_scale", video_ui_scale)
 	
 	config_file.set_value("video", "shadow_detail", video_shadow_detail)
 	config_file.set_value("video", "msaa", video_msaa)
@@ -583,6 +588,8 @@ func get_description(property_name: String) -> String:
 			return tr("Sets how wide the camera's field of view should be in degrees.")
 		"video_vsync":
 			return tr("If enabled, the game will render new frames only when the monitor is ready to display a new frame, ensuring that the game's frame rate matches that of the monitor's refresh rate. This option eliminates screen tearing artifacts, but may introduce some input latency.")
+		"video_ui_scale":
+			return tr("Sets how big the user interface should appear relative to it's default size.")
 		"video_shadow_detail":
 			return tr("Sets the quality of shadows that are cast in the room. The more detail that shadows have, the better they look, but at the cost of performance.")
 		"video_msaa":
@@ -614,6 +621,7 @@ func apply_all() -> void:
 	
 	set_window_mode(video_window_mode)
 	OS.vsync_enabled = video_vsync
+	set_ui_scale(video_ui_scale)
 	
 	set_shadow_detail(video_shadow_detail)
 	set_viewport_msaa(video_msaa)
@@ -704,6 +712,53 @@ func set_window_mode(window_mode: int) -> void:
 	OS.window_fullscreen = is_fullscreen
 	OS.window_borderless = is_borderless
 	OS.window_maximized = is_maximized
+
+
+## Sets the scale of UI elements across the game.
+func set_ui_scale(ui_scale: float) -> void:
+	var stretch_mode_str: String = ProjectSettings.get_setting(
+			"display/window/stretch/mode")
+	var stretch_mode := SceneTree.STRETCH_MODE_DISABLED
+	
+	match stretch_mode_str:
+		"disabled":
+			stretch_mode = SceneTree.STRETCH_MODE_DISABLED
+		"2d":
+			stretch_mode = SceneTree.STRETCH_MODE_2D
+		"viewport":
+			stretch_mode = SceneTree.STRETCH_MODE_VIEWPORT
+		_:
+			push_error("Unknown value '%s' for project setting 'display/window/stretch/mode'" %
+					stretch_mode_str)
+			return
+	
+	var stretch_aspect_str: String = ProjectSettings.get_setting(
+			"display/window/stretch/aspect")
+	var stretch_aspect := SceneTree.STRETCH_ASPECT_IGNORE
+	
+	match stretch_aspect_str:
+		"ignore":
+			stretch_aspect = SceneTree.STRETCH_ASPECT_IGNORE
+		"keep":
+			stretch_aspect = SceneTree.STRETCH_ASPECT_KEEP
+		"keep_width":
+			stretch_aspect = SceneTree.STRETCH_ASPECT_KEEP_WIDTH
+		"keep_height":
+			stretch_aspect = SceneTree.STRETCH_ASPECT_KEEP_HEIGHT
+		"expand":
+			stretch_aspect = SceneTree.STRETCH_ASPECT_EXPAND
+		_:
+			push_error("Unknown value '%s' for project setting 'display/window/stretch/aspect'" %
+					stretch_aspect_str)
+			return
+	
+	var min_size := Vector2(
+			ProjectSettings.get_setting("display/window/size/width"),
+			ProjectSettings.get_setting("display/window/size/height")
+	)
+	
+	get_tree().set_screen_stretch(stretch_mode, stretch_aspect, min_size,
+			ui_scale)
 
 
 ## Set the shadow filter and size at runtime. For example,
@@ -892,6 +947,13 @@ func set_video_fov(value: float) -> void:
 		return
 	
 	video_fov = clamp(value, 50.0, 130.0)
+
+
+func set_video_ui_scale(value: float) -> void:
+	if not SanityCheck.is_valid_float(value):
+		return
+	
+	video_ui_scale = clamp(value, 0.5, 1.25)
 
 
 func set_video_shadow_detail(value: int) -> void:

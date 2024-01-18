@@ -45,6 +45,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and colour will look like on the player list in the top-right corner.
 - A warning is now shown when attempting to set an invalid player name in the
   options menu.
+- Added a slider that can change the scale of the user interface in the options
+  menu, under the "Video" section. (#290)
 
 ### Changed
 
