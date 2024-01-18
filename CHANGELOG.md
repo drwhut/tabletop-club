@@ -82,6 +82,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Switched the default VRAM compression algorithm from ETC to ETC2.
 - Changed the project's directory structure in order to comply with Godot
   conventions.
+- Restarting is no longer required to see the effects of changing the "Shadow
+  Detail" level.
 
 #### UI
 

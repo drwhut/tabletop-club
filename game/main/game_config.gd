@@ -264,7 +264,6 @@ var video_msaa := MSAA_NONE setget set_video_msaa
 ## TODO: Add setting for screen space reflections in environment?
 ## TODO: Add setting for sub-surface scattering?
 ## TODO: Enable fallback to GLES 2? Check if .pck size increases.
-## TODO: Think shadow detail can be set at runtime now!
 ## TODO: Add setting for UI scale.
 ## TODO: Add settings for brightness, contrast and saturation?
 
@@ -616,8 +615,8 @@ func apply_all() -> void:
 	set_window_mode(video_window_mode)
 	OS.vsync_enabled = video_vsync
 	
+	set_shadow_detail(video_shadow_detail)
 	set_viewport_msaa(video_msaa)
-	save_override_config()
 	
 	emit_signal("applying_settings")
 
@@ -707,6 +706,40 @@ func set_window_mode(window_mode: int) -> void:
 	OS.window_maximized = is_maximized
 
 
+## Set the shadow filter and size at runtime. For example,
+## [code]SHADOW_DETAIL_MEDIUM[/code].
+func set_shadow_detail(shadow_detail: int) -> void:
+	var shadow_filter: int = ProjectSettings.get_setting(
+			"rendering/quality/shadows/filter_mode")
+	var shadow_size: int = ProjectSettings.get_setting(
+			"rendering/quality/directional_shadow/size")
+	
+	match shadow_detail:
+		SHADOW_DETAIL_LOW:
+			shadow_filter = 1 # PCF5.
+			shadow_size = 2048
+		SHADOW_DETAIL_MEDIUM:
+			shadow_filter = 1 # PCF5.
+			shadow_size = 4096
+		SHADOW_DETAIL_HIGH:
+			shadow_filter = 2 # PCF13.
+			shadow_size = 8192
+		SHADOW_DETAIL_VERY_HIGH:
+			shadow_filter = 2 # PCF13.
+			shadow_size = 16384
+	
+	# Used by shadows cast by all lights.
+	ProjectSettings.set_setting("rendering/quality/shadows/filter_mode",
+			shadow_filter)
+	
+	# Used by DirectionalLights.
+	ProjectSettings.set_setting("rendering/quality/directional_shadow/size",
+			shadow_size)
+	
+	# Used by OmniLights and SpotLights.
+	get_viewport().shadow_atlas_size = shadow_size
+
+
 ## Set the number of samples used by the root viewport when performing MSAA.
 ## For example, [code]MSAA_4X[/code].
 func set_viewport_msaa(msaa_samples: int) -> void:
@@ -723,47 +756,6 @@ func set_viewport_msaa(msaa_samples: int) -> void:
 			viewport_samples = Viewport.MSAA_16X
 	
 	get_viewport().msaa = viewport_samples
-
-
-## Save certain settings to a separate configuration file so that they can be
-## loaded by the engine at launch to override specific project settings.
-func save_override_config() -> void:
-	var shadow_filter: int = ProjectSettings.get_setting(
-			"rendering/quality/shadows/filter_mode")
-	var shadow_size: int = ProjectSettings.get_setting(
-			"rendering/quality/directional_shadow/size")
-	
-	match video_shadow_detail:
-		SHADOW_DETAIL_LOW:
-			shadow_filter = 1 # PCF5.
-			shadow_size = 2048
-		SHADOW_DETAIL_MEDIUM:
-			shadow_filter = 1 # PCF5.
-			shadow_size = 4096
-		SHADOW_DETAIL_HIGH:
-			shadow_filter = 2 # PCF13.
-			shadow_size = 8192
-		SHADOW_DETAIL_VERY_HIGH:
-			shadow_filter = 2 # PCF13.
-			shadow_size = 16384
-	
-	var override_file := ConfigFile.new()
-	var override_file_path: String = ProjectSettings.get_setting(
-			"application/config/project_settings_override")
-	
-	override_file.set_value("rendering", "quality/directional_shadow/size",
-			shadow_size)
-	override_file.set_value("rendering", "quality/shadow_atlas/size",
-			shadow_size)
-	override_file.set_value("rendering", "quality/shadows/filter_mode",
-			shadow_filter)
-	
-	print("GameConfig: Saving override settings to '%s' for next launch..." %
-			override_file_path)
-	var err := override_file.save(override_file_path)
-	if err != OK:
-		push_error("Failed to save override settings to '%s' (error: %d)" % [
-				override_file_path, err])
 
 
 func set_audio_master_volume(value: float) -> void:
