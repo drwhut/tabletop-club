@@ -51,6 +51,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   menu, under the "Video" section. (#290)
 - Added sliders that can change the brightness, contrast, and saturation of the
   rendered scene in the options menu, under the "Video" section.
+- Added graphs to the debug screen showing both the frame delta, and the physics
+  frame delta, over time.
 
 ### Changed
 
@@ -119,6 +121,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The colour pickers used throughout the UI have been replaced with colour
   sliders, which can be switched between two modes: HSV and RGB.
 - Renamed the "Contributors" section in the credits to "Code Contributors".
+- Increased the font size of the text in the debug screen.
 
 ### Fixed
 
@@ -146,5 +149,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   menu have been removed.
 - The "Key Bindings" tab in the options menu has been removed in favour of a
   separate menu under the "Controls" tab.
+- The "Video Adapter" and "Physics Objects" values have been removed from the
+  debug screen, as they currently do not work correctly in the engine.
 
 [unreleased]: https://github.com/drwhut/tabletop-club/compare/HEAD...HEAD

@@ -289,6 +289,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://room/paint_plane.gd"
 }, {
+"base": "Control",
+"class": "PerformanceGraph",
+"language": "GDScript",
+"path": "res://ui/performance_graph.gd"
+}, {
 "base": "AdvancedRigidBody3D",
 "class": "Piece",
 "language": "GDScript",
@@ -496,6 +501,7 @@ _global_script_class_icons={
 "OptionsTab": "",
 "OutlineColorRect": "",
 "PaintPlane": "",
+"PerformanceGraph": "",
 "Piece": "",
 "PieceBoard": "",
 "PieceCache": "",

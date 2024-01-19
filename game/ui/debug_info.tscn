@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/res/debug_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/debug_info.gd" type="Script" id=2]
+[ext_resource path="res://ui/performance_graph.gd" type="Script" id=3]
+
+[node name="DebugInfo" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 2 )
+
+[node name="DebugLabel" type="Label" parent="."]
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 1 )
+
+[node name="GraphContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ProcessContainer" type="VBoxContainer" parent="GraphContainer"]
+margin_right = 958.0
+margin_bottom = 529.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="ProcessGraph" type="Control" parent="GraphContainer/ProcessContainer"]
+margin_right = 958.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 0, 500 )
+mouse_filter = 2
+script = ExtResource( 3 )
+line_color = Color( 1, 0.501961, 0, 1 )
+
+[node name="ProcessTimeLabel" type="Label" parent="GraphContainer/ProcessContainer"]
+margin_top = 504.0
+margin_right = 958.0
+margin_bottom = 529.0
+custom_colors/font_color = Color( 1, 0.501961, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+
+[node name="PhysicsContainer" type="VBoxContainer" parent="GraphContainer"]
+margin_left = 962.0
+margin_right = 1920.0
+margin_bottom = 529.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="PhysicsGraph" type="Control" parent="GraphContainer/PhysicsContainer"]
+margin_right = 958.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 0, 500 )
+mouse_filter = 2
+script = ExtResource( 3 )
+physics_time = true
+line_color = Color( 0, 1, 0, 1 )
+
+[node name="PhysicsTimeLabel" type="Label" parent="GraphContainer/PhysicsContainer"]
+margin_top = 504.0
+margin_right = 958.0
+margin_bottom = 529.0
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
