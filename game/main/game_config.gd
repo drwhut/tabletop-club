@@ -71,9 +71,16 @@ enum {
 	SHADOW_DETAIL_MAX ## Used for validation only.
 }
 
-## How many samples should be performed during anti-aliasing.
+## What method should be used for anti-aliasing.
 enum {
-	MSAA_NONE,
+	AA_OFF,
+	AA_FXAA,
+	AA_MSAA,
+	AA_MAX ## Used for validation only.
+}
+
+## How many samples should be performed during MSAA.
+enum {
 	MSAA_2X,
 	MSAA_4X,
 	MSAA_8X,
@@ -259,21 +266,29 @@ var video_ui_scale := 1.0 setget set_video_ui_scale
 ## Determines how detailed shadows are.
 var video_shadow_detail := SHADOW_DETAIL_MEDIUM setget set_video_shadow_detail
 
-## Determines how many samples should be used for MSAA.
-## TODO: Increase the default value?
-var video_msaa := MSAA_NONE setget set_video_msaa
+## Determines what method should be used for anti-aliasing.
+var video_aa_method := AA_FXAA setget set_video_aa_method
 
-## TODO: Add setting for FXAA, use Viewport.sharpen_intensity.
-## TODO: Add setting for screen space reflections in environment?
-## TODO: Add setting for sub-surface scattering?
-## TODO: Enable fallback to GLES 2? Check if .pck size increases.
+## Determines how many samples should be used when using MSAA.
+var video_msaa_samples := MSAA_4X setget set_video_msaa_samples
 
 ## Determines the quality of SSAO.
 var video_ssao := SSAO_NONE setget set_video_ssao
 
+## TODO: Add a setting for sub-surface scattering once there is sufficient
+## reason to do so. Right now, it is not possible for the camera to be pointed
+## towards a light that is behind an object - maybe once we add the abiity to
+## let players place their own lights, this might become possible.
+
+## TODO: Add a setting for reflections once the game is using Godot 4.x, where
+## we can take advantage of GI. I've tried screen space reflections in Godot 3,
+## but they don't work as well as I would like.
+
 ## Determines how detailed the lighting is from the skybox.
-## TODO: Check if it is worth keeping Very High and Ultra settings, as they can
-## potentially crash the game on older hardware.
+## NOTE: It's worth pointing out that "Very High" and "Ultra" settings can
+## potentially crash the game on older hardware, but I've made the decision to
+## keep those settings as a means of future-proofing if we ever choose to
+## include higher-quality skyboxes.
 var video_skybox_radiance_detail := RADIANCE_LOW \
 		setget set_video_skybox_radiance_detail
 
@@ -409,8 +424,33 @@ func load_from_file() -> void:
 	
 	set_video_shadow_detail(config_file.get_value_strict("video",
 			"shadow_detail", video_shadow_detail))
-	set_video_msaa(config_file.get_value_strict("video",
-			"msaa", video_msaa))
+	
+	# Backwards compatibility with v0.1.x!
+	if config_file.has_section_key("video", "msaa"):
+		var msaa_id: int = config_file.get_value_strict("video", "msaa", 0)
+		match msaa_id:
+			0:
+				video_aa_method = AA_OFF
+			1:
+				video_aa_method = AA_MSAA
+				video_msaa_samples = MSAA_2X
+			2:
+				video_aa_method = AA_MSAA
+				video_msaa_samples = MSAA_4X
+			3:
+				video_aa_method = AA_MSAA
+				video_msaa_samples = MSAA_8X
+			4:
+				video_aa_method = AA_MSAA
+				video_msaa_samples = MSAA_16X
+			_:
+				push_error("Unknown value '%d' for setting 'video/msaa'" % msaa_id)
+	else:
+		set_video_aa_method(config_file.get_value_strict("video",
+				"aa_method", video_aa_method))
+		set_video_msaa_samples(config_file.get_value_strict("video",
+				"msaa_samples", video_msaa_samples))
+	
 	set_video_ssao(config_file.get_value_strict("video",
 			"ssao", video_ssao))
 	set_video_skybox_radiance_detail(config_file.get_value_strict("video",
@@ -508,7 +548,8 @@ func save_to_file() -> void:
 	config_file.set_value("video", "ui_scale", video_ui_scale)
 	
 	config_file.set_value("video", "shadow_detail", video_shadow_detail)
-	config_file.set_value("video", "msaa", video_msaa)
+	config_file.set_value("video", "aa_method", video_aa_method)
+	config_file.set_value("video", "msaa_samples", video_msaa_samples)
 	config_file.set_value("video", "ssao", video_ssao)
 	config_file.set_value("video", "skybox_radiance_detail",
 			video_skybox_radiance_detail)
@@ -611,8 +652,12 @@ func get_description(property_name: String) -> String:
 			return tr("Sets how big the user interface should appear relative to it's default size.")
 		"video_shadow_detail":
 			return tr("Sets the quality of shadows that are cast in the room. The more detail that shadows have, the better they look, but at the cost of performance.")
-		"video_msaa":
-			return tr("Sets how many samples should be used when performing multisample anti-aliasing. Anti-aliasing is a technique used to smooth the appearance of jagged edges. A higher sample count will result in smoother edges, at a significant cost to performance.")
+		"video_aa_method":
+			return tr("Anti-aliasing is a technique used to smooth the appearance of jagged edges.") \
+					+ "\n" + tr("FXAA: Uses an approximation algorithm. Better performance, but some edges may appear blurry.") \
+					+ "\n" + tr("MSAA: Uses a supersampling algorithm. More accurate, but at a significant cost to performance.")
+		"video_msaa_samples":
+			return tr("Sets how many samples should be used when performing multisample anti-aliasing (MSAA).")
 		"video_ssao":
 			return tr("Sets the quality when performing screen space ambient occlusion. Ambient occlusion is a technique used to predict how much surfaces are exposed to ambient lighting. The higher the quality, the more realistic the lighting, at a significant cost to performance.")
 		"video_skybox_radiance_detail":
@@ -649,7 +694,7 @@ func apply_all() -> void:
 	set_ui_scale(video_ui_scale)
 	
 	set_shadow_detail(video_shadow_detail)
-	set_viewport_msaa(video_msaa)
+	set_viewport_aa(video_aa_method, video_msaa_samples)
 	
 	emit_signal("applying_settings")
 
@@ -820,22 +865,32 @@ func set_shadow_detail(shadow_detail: int) -> void:
 	get_viewport().shadow_atlas_size = shadow_size
 
 
-## Set the number of samples used by the root viewport when performing MSAA.
-## For example, [code]MSAA_4X[/code].
-func set_viewport_msaa(msaa_samples: int) -> void:
-	var viewport_samples := Viewport.MSAA_DISABLED
+## Set the anti-aliasing method used by the viewport, e.g. [code]AA_FXAA[/code].
+## If using MSAA, the number of samples also needs to be provided, for example,
+## [code]MSAA_4X[/code].
+func set_viewport_aa(aa_method: int, msaa_samples: int) -> void:
+	var fxaa_enabled := false
+	var sharpening := 0.0
+	var msaa_setting := Viewport.MSAA_DISABLED
 	
-	match msaa_samples:
-		MSAA_2X:
-			viewport_samples = Viewport.MSAA_2X
-		MSAA_4X:
-			viewport_samples = Viewport.MSAA_4X
-		MSAA_8X:
-			viewport_samples = Viewport.MSAA_8X
-		MSAA_16X:
-			viewport_samples = Viewport.MSAA_16X
+	match aa_method:
+		AA_FXAA:
+			fxaa_enabled = true
+			sharpening = 0.5
+		AA_MSAA:
+			match msaa_samples:
+				MSAA_2X:
+					msaa_setting = Viewport.MSAA_2X
+				MSAA_4X:
+					msaa_setting = Viewport.MSAA_4X
+				MSAA_8X:
+					msaa_setting = Viewport.MSAA_8X
+				MSAA_16X:
+					msaa_setting = Viewport.MSAA_16X
 	
-	get_viewport().msaa = viewport_samples
+	get_viewport().fxaa = fxaa_enabled
+	get_viewport().sharpen_intensity = sharpening
+	get_viewport().msaa = msaa_setting
 
 
 func set_audio_master_volume(value: float) -> void:
@@ -988,11 +1043,18 @@ func set_video_shadow_detail(value: int) -> void:
 	video_shadow_detail = value
 
 
-func set_video_msaa(value: int) -> void:
+func set_video_aa_method(value: int) -> void:
+	if value < 0 or value >= AA_MAX:
+		return
+	
+	video_aa_method = value
+
+
+func set_video_msaa_samples(value: int) -> void:
 	if value < 0 or value >= MSAA_MAX:
 		return
 	
-	video_msaa = value
+	video_msaa_samples = value
 
 
 func set_video_ssao(value: int) -> void:

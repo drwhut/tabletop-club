@@ -29,6 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Documents folder could not be opened.
 - Optimised the look-up algorithm for certain node structures, which should lead
   to better performance when there are many dynamic objects in play.
+- Added the Fast Approximate Anti-Aliasing (FXAA) algorithm, which is now the
+  default for players launching the game for the first time.
 
 #### UI
 
