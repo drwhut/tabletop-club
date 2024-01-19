@@ -43,6 +43,15 @@ export(float) var step := 0.01 setget set_step, get_step
 ## The current value of the slider.
 export(float) var value := 0.0 setget set_value, get_value
 
+## The prefix before the value.
+export(String) var prefix := "" setget set_prefix
+
+## The suffix after the value.
+export(String) var suffix := "" setget set_suffix
+
+## Should the value be shown as an integer?
+export(bool) var display_integer := false setget set_display_integer
+
 ## Should the value be shown as a percentage?
 export(bool) var display_percentage := false setget set_display_percentage
 
@@ -103,11 +112,16 @@ func update_label() -> void:
 		return
 	
 	var current_value := display_scalar * _slider.value
+	var value_as_text := ""
 	
 	if display_percentage:
-		_label.text = "%.0f%%" % (100.0 * current_value)
+		value_as_text = "%.0f%%" % (100.0 * current_value)
+	elif display_integer:
+		value_as_text = "%.0f" % current_value
 	else:
-		_label.text = "%.1f" % current_value
+		value_as_text = "%.1f" % current_value
+	
+	_label.text = prefix + value_as_text + suffix
 
 
 func get_min_value() -> float:
@@ -181,6 +195,22 @@ func set_value(new_value: float) -> void:
 		return
 	
 	_slider.value = new_value
+	update_label()
+
+
+func set_prefix(new_value: String) -> void:
+	prefix = new_value
+	update_label()
+
+
+func set_suffix(new_value: String) -> void:
+	suffix = new_value
+	update_label()
+
+
+func set_display_integer(new_value: bool) -> void:
+	display_integer = new_value
+	update_label()
 
 
 func set_display_percentage(new_value: bool) -> void:

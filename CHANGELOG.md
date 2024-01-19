@@ -53,6 +53,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   rendered scene in the options menu, under the "Video" section.
 - Added graphs to the debug screen showing both the frame delta, and the physics
   frame delta, over time.
+- Added quality presets for advanced graphics settings in the options menu: Low,
+  Medium, High, Very High, and Ultra. The default for new players is Medium.
+- Added a toggle for showing advanced graphics settings in the options menu.
 
 ### Changed
 
@@ -122,6 +125,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   sliders, which can be switched between two modes: HSV and RGB.
 - Renamed the "Contributors" section in the credits to "Code Contributors".
 - Increased the font size of the text in the debug screen.
+- "Skybox Radiance Detail" has been renamed to "Skybox Lighting Detail" in the
+  options menu.
 
 ### Fixed
 

@@ -782,7 +782,7 @@ margin_bottom = 361.0
 [node name="MultiplayerLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MultiplayerContainer"]
 margin_right = 730.0
 margin_bottom = 20.0
-text = "Multiplayer Options"
+text = "Multiplayer Settings"
 align = 1
 
 [node name="OptionContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MultiplayerContainer"]
@@ -821,6 +821,407 @@ margin_top = 32.0
 margin_right = 730.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
+
+[node name="VideoContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent"]
+visible = false
+margin_left = 50.0
+margin_top = 10.0
+margin_right = 792.0
+margin_bottom = 435.0
+custom_constants/separation = 18
+
+[node name="WindowContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer"]
+margin_right = 730.0
+margin_bottom = 87.0
+
+[node name="WindowLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/WindowContainer"]
+margin_right = 730.0
+margin_bottom = 20.0
+text = "Window Settings"
+align = 1
+
+[node name="OptionContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/WindowContainer"]
+margin_top = 24.0
+margin_right = 730.0
+margin_bottom = 87.0
+columns = 2
+
+[node name="WindowModeLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/WindowContainer/OptionContainer"]
+margin_top = 3.0
+margin_right = 124.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 13 )
+text = "Window Mode"
+align = 2
+
+[node name="opt_video_window_mode" type="OptionButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/WindowContainer/OptionContainer"]
+margin_left = 128.0
+margin_right = 730.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+
+[node name="VSyncLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/WindowContainer/OptionContainer"]
+margin_top = 36.0
+margin_right = 124.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 13 )
+text = "Vertical Sync"
+align = 2
+
+[node name="opt_video_vsync" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/WindowContainer/OptionContainer"]
+margin_left = 128.0
+margin_top = 35.0
+margin_right = 730.0
+margin_bottom = 63.0
+
+[node name="InterfaceContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer"]
+margin_top = 105.0
+margin_right = 730.0
+margin_bottom = 183.0
+
+[node name="InterfaceLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/InterfaceContainer"]
+margin_right = 730.0
+margin_bottom = 20.0
+text = "Interface Settings"
+align = 1
+
+[node name="OptionContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/InterfaceContainer"]
+margin_top = 24.0
+margin_right = 730.0
+margin_bottom = 78.0
+columns = 2
+
+[node name="UIScaleLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/InterfaceContainer/OptionContainer"]
+margin_right = 109.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 13 )
+text = "UI Scale"
+align = 2
+
+[node name="opt_video_ui_scale" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/InterfaceContainer/OptionContainer"]
+margin_left = 113.0
+margin_right = 730.0
+margin_bottom = 25.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 0.5
+max_value = 1.25
+value = 1.0
+display_percentage = true
+font_override = ExtResource( 11 )
+
+[node name="FoVLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/InterfaceContainer/OptionContainer"]
+margin_top = 29.0
+margin_right = 109.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 13 )
+text = "Field of View"
+align = 2
+
+[node name="opt_video_fov" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/InterfaceContainer/OptionContainer"]
+margin_left = 113.0
+margin_top = 29.0
+margin_right = 730.0
+margin_bottom = 54.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 50.0
+max_value = 130.0
+step = 1.0
+value = 70.0
+suffix = "º"
+display_integer = true
+font_override = ExtResource( 11 )
+
+[node name="GraphicsContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer"]
+margin_top = 201.0
+margin_right = 730.0
+margin_bottom = 300.0
+
+[node name="GraphicsLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer"]
+margin_right = 730.0
+margin_bottom = 20.0
+text = "Graphics Settings"
+align = 1
+
+[node name="PresetContainer" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer"]
+margin_top = 24.0
+margin_right = 730.0
+margin_bottom = 55.0
+
+[node name="PresetLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/PresetContainer"]
+margin_top = 3.0
+margin_right = 138.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 13 )
+text = "Graphics Quality"
+
+[node name="QualityPresetButton" type="OptionButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/PresetContainer"]
+margin_left = 142.0
+margin_right = 730.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+
+[node name="AdvancedGraphicsButton" type="CheckButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer"]
+margin_left = 230.0
+margin_top = 59.0
+margin_right = 499.0
+margin_bottom = 99.0
+size_flags_horizontal = 4
+text = "Advanced Graphics Settings"
+
+[node name="AdvancedContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer"]
+visible = false
+margin_top = 103.0
+margin_right = 730.0
+margin_bottom = 378.0
+custom_constants/separation = 18
+
+[node name="MainContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer"]
+margin_right = 730.0
+margin_bottom = 168.0
+columns = 2
+
+[node name="ShadowLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+margin_top = 3.0
+margin_right = 228.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 13 )
+text = "Shadow Detail"
+align = 2
+
+[node name="opt_video_shadow_detail" type="OptionButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+margin_left = 232.0
+margin_right = 730.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+
+[node name="AALabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+margin_top = 38.0
+margin_right = 228.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 13 )
+text = "Anti-Aliasing"
+align = 2
+
+[node name="opt_video_aa_method" type="OptionButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+margin_left = 232.0
+margin_top = 35.0
+margin_right = 730.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+
+[node name="SamplesLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+visible = false
+margin_top = 73.0
+margin_right = 228.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 13 )
+text = "MSAA Quality"
+align = 2
+
+[node name="opt_video_msaa_samples" type="OptionButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+visible = false
+margin_top = 70.0
+margin_right = 363.0
+margin_bottom = 101.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+
+[node name="AOLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+margin_top = 73.0
+margin_right = 228.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 13 )
+text = "Ambient Occlusion (SSAO)"
+align = 2
+
+[node name="opt_video_ssao" type="OptionButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+margin_left = 232.0
+margin_top = 70.0
+margin_right = 730.0
+margin_bottom = 101.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+
+[node name="RadianceLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+margin_top = 108.0
+margin_right = 228.0
+margin_bottom = 133.0
+custom_fonts/font = ExtResource( 13 )
+text = "Skybox Lighting Detail"
+align = 2
+
+[node name="opt_video_skybox_radiance_detail" type="OptionButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+margin_left = 232.0
+margin_top = 105.0
+margin_right = 730.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+
+[node name="FilterLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+margin_top = 141.0
+margin_right = 228.0
+margin_bottom = 166.0
+custom_fonts/font = ExtResource( 13 )
+text = "Table Paint Filtering"
+align = 2
+
+[node name="opt_video_table_paint_filtering" type="CheckBox" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer"]
+margin_left = 232.0
+margin_top = 140.0
+margin_right = 730.0
+margin_bottom = 168.0
+
+[node name="DOFContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer"]
+margin_top = 186.0
+margin_right = 730.0
+margin_bottom = 275.0
+columns = 2
+
+[node name="DOFLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/DOFContainer"]
+margin_top = 3.0
+margin_right = 201.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 13 )
+text = "Depth of Field"
+
+[node name="opt_video_depth_of_field" type="OptionButton" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/DOFContainer"]
+margin_left = 205.0
+margin_right = 730.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 13 )
+
+[node name="DOFAmountLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/DOFContainer"]
+margin_top = 35.0
+margin_right = 201.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 13 )
+text = "Depth of Field Amount"
+
+[node name="opt_video_depth_of_field_amount" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/DOFContainer"]
+margin_left = 205.0
+margin_top = 35.0
+margin_right = 730.0
+margin_bottom = 60.0
+mouse_filter = 2
+script = ExtResource( 12 )
+min_value = 0.01
+value = 0.01
+display_percentage = true
+font_override = ExtResource( 11 )
+
+[node name="DOFDistanceLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/DOFContainer"]
+margin_top = 64.0
+margin_right = 201.0
+margin_bottom = 89.0
+custom_fonts/font = ExtResource( 13 )
+text = "Depth of Field Distance"
+
+[node name="opt_video_depth_of_field_distance" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/DOFContainer"]
+margin_left = 205.0
+margin_top = 64.0
+margin_right = 730.0
+margin_bottom = 89.0
+mouse_filter = 2
+script = ExtResource( 12 )
+min_value = 0.01
+value = 0.01
+display_integer = true
+display_scalar = 100.0
+font_override = ExtResource( 11 )
+
+[node name="AdjustmentContainer" type="VBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer"]
+margin_top = 318.0
+margin_right = 730.0
+margin_bottom = 425.0
+
+[node name="AdjustmentLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/AdjustmentContainer"]
+margin_right = 730.0
+margin_bottom = 20.0
+text = "Colour Adjustment Settings"
+align = 1
+
+[node name="OptionContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/AdjustmentContainer"]
+margin_top = 24.0
+margin_right = 730.0
+margin_bottom = 107.0
+columns = 2
+
+[node name="BrightnessLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/AdjustmentContainer/OptionContainer"]
+margin_right = 88.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 13 )
+text = "Brightness"
+align = 2
+
+[node name="opt_video_brightness" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/AdjustmentContainer/OptionContainer"]
+margin_left = 92.0
+margin_right = 730.0
+margin_bottom = 25.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 0.1
+max_value = 3.0
+step = 0.05
+value = 1.0
+display_percentage = true
+font_override = ExtResource( 11 )
+
+[node name="ContrastLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/AdjustmentContainer/OptionContainer"]
+margin_top = 29.0
+margin_right = 88.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 13 )
+text = "Contrast"
+align = 2
+
+[node name="opt_video_contrast" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/AdjustmentContainer/OptionContainer"]
+margin_left = 92.0
+margin_top = 29.0
+margin_right = 730.0
+margin_bottom = 54.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 0.1
+max_value = 3.0
+step = 0.05
+value = 1.0
+display_percentage = true
+font_override = ExtResource( 11 )
+
+[node name="SaturationLabel" type="Label" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/AdjustmentContainer/OptionContainer"]
+margin_top = 58.0
+margin_right = 88.0
+margin_bottom = 83.0
+custom_fonts/font = ExtResource( 13 )
+text = "Saturation"
+align = 2
+
+[node name="opt_video_saturation" type="HBoxContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/AdjustmentContainer/OptionContainer"]
+margin_left = 92.0
+margin_top = 58.0
+margin_right = 730.0
+margin_bottom = 83.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+min_value = 0.1
+max_value = 3.0
+step = 0.05
+value = 1.0
+display_percentage = true
+font_override = ExtResource( 11 )
 
 [node name="HintLabel" type="Label" parent="MainContainer"]
 margin_top = 382.0
@@ -883,5 +1284,8 @@ expand_icon = true
 [connection signal="meta_clicked" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/LanguageWarningLabel" to="." method="_on_LanguageWarningLabel_meta_clicked"]
 [connection signal="text_changed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer/opt_multiplayer_name" to="." method="_on_opt_multiplayer_name_text_changed"]
 [connection signal="color_changed" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer/opt_multiplayer_color" to="." method="_on_opt_multiplayer_color_color_changed"]
+[connection signal="item_selected" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/PresetContainer/QualityPresetButton" to="." method="_on_QualityPresetButton_item_selected"]
+[connection signal="toggled" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedGraphicsButton" to="." method="_on_AdvancedGraphicsButton_toggled"]
+[connection signal="item_selected" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer/opt_video_aa_method" to="." method="_on_opt_video_aa_method_item_selected"]
 [connection signal="pressed" from="MainContainer/ButtonContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="MainContainer/ButtonContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]

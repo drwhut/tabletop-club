@@ -829,6 +829,9 @@ func set_ui_scale(ui_scale: float) -> void:
 	
 	get_tree().set_screen_stretch(stretch_mode, stretch_aspect, min_size,
 			ui_scale)
+	
+	# Pop-ups will need to adjust their position if the scale changes.
+	get_tree().emit_signal("screen_resized")
 
 
 ## Set the shadow filter and size at runtime. For example,

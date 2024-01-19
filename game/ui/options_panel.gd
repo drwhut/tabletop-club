@@ -43,10 +43,20 @@ onready var _audio_container := $MainContainer/OptionContainer/ScrollContainer/S
 onready var _control_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/ControlContainer
 onready var _general_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer
 onready var _player_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer
+onready var _video_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer
+onready var _advanced_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer
 
 onready var _language_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/OptionContainer/opt_general_language
 onready var _autosave_interval_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/AutosaveContainer/opt_general_autosave_interval
 onready var _chat_font_size_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/ChatContainer/opt_multiplayer_chat_font_size
+onready var _window_mode_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/WindowContainer/OptionContainer/opt_video_window_mode
+onready var _quality_preset_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/PresetContainer/QualityPresetButton
+onready var _shadow_detail_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer/opt_video_shadow_detail
+onready var _aa_method_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer/opt_video_aa_method
+onready var _msaa_samples_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer/opt_video_msaa_samples
+onready var _ssao_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer/opt_video_ssao
+onready var _skybox_radiance_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer/opt_video_skybox_radiance_detail
+onready var _depth_of_field_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/DOFContainer/opt_video_depth_of_field
 
 onready var _player_name_edit: LineEdit = $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer/opt_multiplayer_name
 onready var _player_name_warning_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer/NameWarningLabel
@@ -54,6 +64,7 @@ onready var _player_button := $MainContainer/OptionContainer/ScrollContainer/Sec
 
 onready var _section_button_container := $MainContainer/SectionContainer
 onready var _language_warning_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/LanguageWarningLabel
+onready var _msaa_samples_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer/SamplesLabel
 onready var _hint_label := $MainContainer/HintLabel
 onready var _apply_button := $MainContainer/ButtonContainer/ApplyButton
 
@@ -110,12 +121,13 @@ func _ready():
 	
 	# We can't set the item label fonts in option buttons directly from the
 	# editor, so we need to do it in code.
-	_language_button.get_popup().add_font_override("font",
-			_language_button.get_font("font"))
-	_autosave_interval_button.get_popup().add_font_override("font",
-			_autosave_interval_button.get_font("font"))
-	_chat_font_size_button.get_popup().add_font_override("font",
-			_chat_font_size_button.get_font("font"))
+	for element in [ _language_button, _autosave_interval_button,
+			_chat_font_size_button, _window_mode_button, _quality_preset_button,
+			_shadow_detail_button, _aa_method_button, _msaa_samples_button,
+			_ssao_button, _skybox_radiance_button, _depth_of_field_button]:
+		
+		var button: OptionButton = element
+		button.get_popup().add_font_override("font", button.get_font("font"))
 	
 	# There is a chance that the names of languages (in their own language)
 	# appear elsewhere in the game (most likely in the credits if the English
@@ -250,6 +262,112 @@ func set_option_button_items() -> void:
 	
 	if prev_selected >= 0:
 		_chat_font_size_button.select(prev_selected)
+	
+	prev_selected = _window_mode_button.selected
+	_window_mode_button.clear()
+	
+	_add_option_button_item(_window_mode_button, tr("Windowed"),
+			GameConfig.MODE_WINDOWED)
+	_add_option_button_item(_window_mode_button, tr("Borderless Fullscreen"),
+			GameConfig.MODE_BORDERLESS_FULLSCREEN)
+	_add_option_button_item(_window_mode_button, tr("Fullscreen"),
+			GameConfig.MODE_FULLSCREEN)
+	
+	if prev_selected >= 0:
+		_window_mode_button.select(prev_selected)
+	
+	prev_selected = _quality_preset_button.selected
+	_quality_preset_button.clear()
+	
+	# The graphics preset button uses the index instead of the metadata.
+	_add_option_button_item(_quality_preset_button, tr("Low"), null)
+	_add_option_button_item(_quality_preset_button, tr("Medium"), null)
+	_add_option_button_item(_quality_preset_button, tr("High"), null)
+	_add_option_button_item(_quality_preset_button, tr("Very High"), null)
+	_add_option_button_item(_quality_preset_button, tr("Ultra"), null)
+	_add_option_button_item(_quality_preset_button, tr("Custom"), null)
+	
+	if prev_selected >= 0:
+		_quality_preset_button.select(prev_selected)
+	
+	prev_selected = _shadow_detail_button.selected
+	_shadow_detail_button.clear()
+	
+	_add_option_button_item(_shadow_detail_button, tr("Low"),
+			GameConfig.SHADOW_DETAIL_LOW)
+	_add_option_button_item(_shadow_detail_button, tr("Medium"),
+			GameConfig.SHADOW_DETAIL_MEDIUM)
+	_add_option_button_item(_shadow_detail_button, tr("High"),
+			GameConfig.SHADOW_DETAIL_HIGH)
+	_add_option_button_item(_shadow_detail_button, tr("Very High"),
+			GameConfig.SHADOW_DETAIL_VERY_HIGH)
+	
+	if prev_selected >= 0:
+		_shadow_detail_button.select(prev_selected)
+	
+	prev_selected = _aa_method_button.selected
+	_aa_method_button.clear()
+	
+	_add_option_button_item(_aa_method_button, tr("Off"), GameConfig.AA_OFF)
+	_add_option_button_item(_aa_method_button, tr("FXAA"), GameConfig.AA_FXAA)
+	_add_option_button_item(_aa_method_button, tr("MSAA"), GameConfig.AA_MSAA)
+	
+	if prev_selected >= 0:
+		_aa_method_button.select(prev_selected)
+	
+	prev_selected = _msaa_samples_button.selected
+	_msaa_samples_button.clear()
+	
+	_add_option_button_item(_msaa_samples_button, "2X", GameConfig.MSAA_2X)
+	_add_option_button_item(_msaa_samples_button, "4X", GameConfig.MSAA_4X)
+	_add_option_button_item(_msaa_samples_button, "8X", GameConfig.MSAA_8X)
+	_add_option_button_item(_msaa_samples_button, "16X", GameConfig.MSAA_16X)
+	
+	if prev_selected >= 0:
+		_msaa_samples_button.select(prev_selected)
+	
+	prev_selected = _ssao_button.selected
+	_ssao_button.clear()
+	
+	_add_option_button_item(_ssao_button, tr("None"), GameConfig.SSAO_NONE)
+	_add_option_button_item(_ssao_button, tr("Low"), GameConfig.SSAO_LOW)
+	_add_option_button_item(_ssao_button, tr("Medium"), GameConfig.SSAO_MEDIUM)
+	_add_option_button_item(_ssao_button, tr("High"), GameConfig.SSAO_HIGH)
+	
+	if prev_selected >= 0:
+		_ssao_button.select(prev_selected)
+	
+	prev_selected = _skybox_radiance_button.selected
+	_skybox_radiance_button.clear()
+	
+	_add_option_button_item(_skybox_radiance_button, tr("Low"),
+			GameConfig.RADIANCE_LOW)
+	_add_option_button_item(_skybox_radiance_button, tr("Medium"),
+			GameConfig.RADIANCE_MEDIUM)
+	_add_option_button_item(_skybox_radiance_button, tr("High"),
+			GameConfig.RADIANCE_HIGH)
+	_add_option_button_item(_skybox_radiance_button, tr("Very High"),
+			GameConfig.RADIANCE_VERY_HIGH)
+	_add_option_button_item(_skybox_radiance_button, tr("Ultra"),
+			GameConfig.RADIANCE_ULTRA)
+	
+	if prev_selected >= 0:
+		_skybox_radiance_button.select(prev_selected)
+	
+	prev_selected = _depth_of_field_button.selected
+	_depth_of_field_button.clear()
+	
+	_add_option_button_item(_depth_of_field_button, tr("None"),
+			GameConfig.DOF_NONE)
+	_add_option_button_item(_depth_of_field_button, tr("Low"),
+			GameConfig.DOF_LOW)
+	_add_option_button_item(_depth_of_field_button, tr("Medium"),
+			GameConfig.DOF_MEDIUM)
+	_add_option_button_item(_depth_of_field_button, tr("High"),
+			GameConfig.DOF_HIGH)
+	
+	if prev_selected >= 0:
+		_depth_of_field_button.select(prev_selected)
 
 
 # Add an item to the given option button along with some metadata.
@@ -291,6 +409,10 @@ func _on_OptionsPanel_about_to_show():
 	
 	# The player name is guaranteed to be valid now.
 	_player_name_warning_label.visible = false
+	
+	# We may or may not want to show the MSAA Quality setting depending on if
+	# the currently selected AA Method is MSAA.
+	_on_opt_video_aa_method_item_selected(_aa_method_button.selected)
 	
 	# Since the controls have just been updated, no changes can be applied yet.
 	_apply_button.disabled = true
@@ -347,7 +469,7 @@ func _on_MultiplayerSectionButton_pressed():
 
 
 func _on_VideoSectionButton_pressed():
-	pass # Replace with function body.
+	_show_section(_video_container)
 
 
 func _on_KeyBindingsButton_pressed():
@@ -408,6 +530,21 @@ func _on_opt_multiplayer_name_text_changed(new_text: String):
 
 func _on_opt_multiplayer_color_color_changed(new_color: Color):
 	_player_button.bg_color = new_color
+
+
+func _on_opt_video_aa_method_item_selected(index: int):
+	var selected_method: int = _aa_method_button.get_item_metadata(index)
+	var method_is_msaa := (selected_method == GameConfig.AA_MSAA)
+	_msaa_samples_label.visible = method_is_msaa
+	_msaa_samples_button.visible = method_is_msaa
+
+
+func _on_QualityPresetButton_item_selected(index: int):
+	pass # Replace with function body.
+
+
+func _on_AdvancedGraphicsButton_toggled(button_pressed: bool):
+	_advanced_container.visible = button_pressed
 
 
 func _on_LanguageWarningLabel_meta_clicked(_meta):
