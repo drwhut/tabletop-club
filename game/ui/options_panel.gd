@@ -63,6 +63,7 @@ onready var _player_name_warning_label := $MainContainer/OptionContainer/ScrollC
 onready var _player_button := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/PreviewContainer/PlayerButton
 
 onready var _section_button_container := $MainContainer/SectionContainer
+onready var _scroll_container := $MainContainer/OptionContainer/ScrollContainer
 onready var _language_warning_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/GeneralContainer/LanguageContainer/LanguageWarningLabel
 onready var _msaa_samples_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer/SamplesLabel
 onready var _hint_label := $MainContainer/HintLabel
@@ -397,6 +398,9 @@ func _show_section(section_root: Control) -> void:
 	for child in _section_parent.get_children():
 		if child is Control:
 			child.visible = (child == section_root)
+	
+	# Reset the vertical scroll to the top of the section.
+	_scroll_container.scroll_vertical = 0.0
 
 
 func _on_OptionsPanel_about_to_show():
