@@ -128,7 +128,13 @@ func _ready():
 			_ssao_button, _skybox_radiance_button, _depth_of_field_button]:
 		
 		var button: OptionButton = element
-		button.get_popup().add_font_override("font", button.get_font("font"))
+		var popup: Popup = button.get_popup()
+		popup.add_font_override("font", button.get_font("font"))
+		
+		# We want to catch when a popup is about to be shown so that we can stop
+		# the scroll container from moving to adjust for it's height.
+		popup.connect("about_to_show", self,
+				"_on_option_button_popup_about_to_show")
 	
 	# There is a chance that the names of languages (in their own language)
 	# appear elsewhere in the game (most likely in the credits if the English
@@ -497,6 +503,15 @@ func _on_option_focus_exited(property_name: String):
 	if property_name == _property_in_focus:
 		_property_in_focus = ""
 		_hint_label.text = ""
+
+
+func _on_option_button_popup_about_to_show():
+	# If a popup is about to be shown, then by default the scroll container will
+	# scroll down to fit all of the contents of the popup in, which to be honest
+	# looks jarring when it happens - so just after it does so, set the scroll
+	# back to what it just was, so the user doesn't see any scrolling.
+	_scroll_container.call_deferred("set_v_scroll",
+			_scroll_container.scroll_vertical)
 
 
 func _on_opt_audio_master_volume_value_changed(new_value: float):
