@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://ui/options_panel.gd" type="Script" id=1]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
@@ -21,6 +21,32 @@
 [ext_resource path="res://ui/player_button.tscn" type="PackedScene" id=19]
 
 [sub_resource type="ButtonGroup" id=1]
+
+[sub_resource type="GDScript" id=3]
+resource_name = "container_background"
+script/source = "extends Container
+
+export(Color) var background_color := Color.white setget set_background_color
+export(int) var background_margin := 0 setget set_background_margin
+
+func _draw():
+	var pos := Vector2(-background_margin, 0.0)
+	var size := rect_size + Vector2(2.0 * background_margin, 0.0)
+	draw_rect(Rect2(pos, size), background_color, true)
+
+
+func set_background_color(new_color: Color) -> void:
+	background_color = new_color
+	update()
+
+
+func set_background_margin(new_margin: int) -> void:
+	if new_margin < 0:
+		return
+	
+	background_margin = new_margin
+	update()
+"
 
 [sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 4.0
@@ -980,6 +1006,9 @@ margin_top = 103.0
 margin_right = 730.0
 margin_bottom = 378.0
 custom_constants/separation = 18
+script = SubResource( 3 )
+background_color = Color( 0.117647, 0.117647, 0.129412, 1 )
+background_margin = 8
 
 [node name="MainContainer" type="GridContainer" parent="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer"]
 margin_right = 730.0
