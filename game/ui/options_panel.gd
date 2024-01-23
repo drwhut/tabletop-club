@@ -490,13 +490,92 @@ func _on_ControllerBindingsButton_pressed():
 	pass # Replace with function body.
 
 
+func _on_KeyBindingsButton_focus_entered():
+	_on_option_focus_entered("%KEY_BINDINGS%")
+
+
+func _on_KeyBindingsButton_focus_exited():
+	_on_option_focus_exited("%KEY_BINDINGS%")
+
+
+func _on_KeyBindingsButton_mouse_entered():
+	_on_option_focus_entered("%KEY_BINDINGS%")
+
+
+func _on_KeyBindingsButton_mouse_exited():
+	_on_option_focus_exited("%KEY_BINDINGS%")
+
+
+func _on_ControllerBindingsButton_focus_entered():
+	_on_option_focus_entered("%CONTROLLER_BINDINGS%")
+
+
+func _on_ControllerBindingsButton_focus_exited():
+	_on_option_focus_exited("%CONTROLLER_BINDINGS%")
+
+
+func _on_ControllerBindingsButton_mouse_entered():
+	_on_option_focus_entered("%CONTROLLER_BINDINGS%")
+
+
+func _on_ControllerBindingsButton_mouse_exited():
+	_on_option_focus_exited("%CONTROLLER_BINDINGS%")
+
+
+func _on_QualityPresetButton_focus_entered():
+	_on_option_focus_entered("%QUALITY_PRESET%")
+
+
+func _on_QualityPresetButton_focus_exited():
+	_on_option_focus_exited("%QUALITY_PRESET%")
+
+
+func _on_QualityPresetButton_mouse_entered():
+	_on_option_focus_entered("%QUALITY_PRESET%")
+
+
+func _on_QualityPresetButton_mouse_exited():
+	_on_option_focus_exited("%QUALITY_PRESET%")
+
+
+func _on_AdvancedGraphicsButton_focus_entered():
+	_on_option_focus_entered("%ADVANCED_GRAPHICS%")
+
+
+func _on_AdvancedGraphicsButton_focus_exited():
+	_on_option_focus_exited("%ADVANCED_GRAPHICS%")
+
+
+func _on_AdvancedGraphicsButton_mouse_entered():
+	_on_option_focus_entered("%ADVANCED_GRAPHICS%")
+
+
+func _on_AdvancedGraphicsButton_mouse_exited():
+	_on_option_focus_exited("%ADVANCED_GRAPHICS%")
+
+
 func _on_any_value_changed(_new_value):
 	_apply_button.disabled = false
 
 
 func _on_option_focus_entered(property_name: String):
 	_property_in_focus = property_name
-	_hint_label.text = GameConfig.get_description(property_name)
+	
+	var hint_text := ""
+	if property_name.begins_with("%"):
+		match property_name:
+			"%KEY_BINDINGS%":
+				hint_text = tr("Edit which keyboard or mouse buttons are assigned to each action.")
+			"%CONTROLLER_BINDINGS%":
+				hint_text = tr("Edit which controller buttons are assigned to each action.")
+			"%QUALITY_PRESET%":
+				hint_text = tr("Sets the overall visual quality of the game. The higher the quality, the better the game will look, at the cost of performance.")
+			"%ADVANCED_GRAPHICS%":
+				hint_text = tr("If enabled, more specific graphics settings will be shown. For most players, it is advised to use the Graphics Quality setting instead, as it will automatically adjust these settings for you.")
+	else:
+		hint_text = GameConfig.get_description(property_name)
+	
+	_hint_label.text = hint_text
 
 
 func _on_option_focus_exited(property_name: String):
