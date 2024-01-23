@@ -66,6 +66,30 @@ export(float, 0.0, 1000.0) var display_width := 50.0 \
 export(Font) var font_override: Font = null \
 		setget set_font_override, get_font_override
 
+## The slider's focus neighbour to the left.
+export(NodePath) var slider_focus_left: NodePath \
+		setget set_slider_focus_left, get_slider_focus_left
+
+## The slider's focus neighbour to the top.
+export(NodePath) var slider_focus_top: NodePath \
+		setget set_slider_focus_top, get_slider_focus_top
+
+## The slider's focus neighbour to the right.
+export(NodePath) var slider_focus_right: NodePath \
+		setget set_slider_focus_right, get_slider_focus_right
+
+## The slider's focus neighbour to the bottom.
+export(NodePath) var slider_focus_bottom: NodePath \
+		setget set_slider_focus_bottom, get_slider_focus_bottom
+
+## The slider's next focus target.
+export(NodePath) var slider_focus_next: NodePath \
+		setget set_slider_focus_next, get_slider_focus_next
+
+## The slider's previous focus target.
+export(NodePath) var slider_focus_previous: NodePath \
+		setget set_slider_focus_previous, get_slider_focus_previous
+
 
 # The slider control itself.
 var _slider: HSlider = null
@@ -169,6 +193,84 @@ func get_font_override() -> Font:
 	return _label.get_font("font")
 
 
+func get_slider_focus_left() -> NodePath:
+	if _slider == null:
+		return NodePath()
+	
+	var slider_path := _slider.focus_neighbour_left
+	if slider_path.is_empty():
+		return NodePath()
+	
+	# Remove the "../" prefix.
+	var path := String(slider_path).substr(3)
+	return NodePath(path)
+
+
+func get_slider_focus_top() -> NodePath:
+	if _slider == null:
+		return NodePath()
+	
+	var slider_path := _slider.focus_neighbour_top
+	if slider_path.is_empty():
+		return NodePath()
+	
+	# Remove the "../" prefix.
+	var path := String(slider_path).substr(3)
+	return NodePath(path)
+
+
+func get_slider_focus_right() -> NodePath:
+	if _slider == null:
+		return NodePath()
+	
+	var slider_path := _slider.focus_neighbour_right
+	if slider_path.is_empty():
+		return NodePath()
+	
+	# Remove the "../" prefix.
+	var path := String(slider_path).substr(3)
+	return NodePath(path)
+
+
+func get_slider_focus_bottom() -> NodePath:
+	if _slider == null:
+		return NodePath()
+	
+	var slider_path := _slider.focus_neighbour_bottom
+	if slider_path.is_empty():
+		return NodePath()
+	
+	# Remove the "../" prefix.
+	var path := String(slider_path).substr(3)
+	return NodePath(path)
+
+
+func get_slider_focus_next() -> NodePath:
+	if _slider == null:
+		return NodePath()
+	
+	var slider_path := _slider.focus_next
+	if slider_path.is_empty():
+		return NodePath()
+	
+	# Remove the "../" prefix.
+	var path := String(slider_path).substr(3)
+	return NodePath(path)
+
+
+func get_slider_focus_previous() -> NodePath:
+	if _slider == null:
+		return NodePath()
+	
+	var slider_path := _slider.focus_previous
+	if slider_path.is_empty():
+		return NodePath()
+	
+	# Remove the "../" prefix.
+	var path := String(slider_path).substr(3)
+	return NodePath(path)
+
+
 func set_min_value(new_value: float) -> void:
 	if _slider == null:
 		return
@@ -235,6 +337,78 @@ func set_font_override(new_font: Font) -> void:
 		return
 	
 	_label.add_font_override("font", new_font)
+
+
+func set_slider_focus_left(neighbour: NodePath) -> void:
+	if _slider == null:
+		return
+	
+	if neighbour.is_empty():
+		_slider.focus_neighbour_left = NodePath()
+		return
+	
+	var path := String(neighbour)
+	_slider.focus_neighbour_left = "..".plus_file(path)
+
+
+func set_slider_focus_top(neighbour: NodePath) -> void:
+	if _slider == null:
+		return
+	
+	if neighbour.is_empty():
+		_slider.focus_neighbour_top = NodePath()
+		return
+	
+	var path := String(neighbour)
+	_slider.focus_neighbour_top = "..".plus_file(path)
+
+
+func set_slider_focus_right(neighbour: NodePath) -> void:
+	if _slider == null:
+		return
+	
+	if neighbour.is_empty():
+		_slider.focus_neighbour_right = NodePath()
+		return
+	
+	var path := String(neighbour)
+	_slider.focus_neighbour_right = "..".plus_file(path)
+
+
+func set_slider_focus_bottom(neighbour: NodePath) -> void:
+	if _slider == null:
+		return
+	
+	if neighbour.is_empty():
+		_slider.focus_neighbour_bottom = NodePath()
+		return
+	
+	var path := String(neighbour)
+	_slider.focus_neighbour_bottom = "..".plus_file(path)
+
+
+func set_slider_focus_next(next: NodePath) -> void:
+	if _slider == null:
+		return
+	
+	if next.is_empty():
+		_slider.focus_next = NodePath()
+		return
+	
+	var path := String(next)
+	_slider.focus_next = "..".plus_file(path)
+
+
+func set_slider_focus_previous(previous: NodePath) -> void:
+	if _slider == null:
+		return
+	
+	if previous.is_empty():
+		_slider.focus_previous = NodePath()
+		return
+	
+	var path := String(previous)
+	_slider.focus_previous = "..".plus_file(path)
 
 
 func _on_value_changed(new_value: float) -> void:
