@@ -36,6 +36,10 @@ export(NodePath) var hide_on_popup: NodePath
 export(NodePath) var focus_on_hide: NodePath
 
 
+## If set to [code]true[/code], the "ui_cancel" event will close the panel.
+var close_on_cancel := true
+
+
 func _init():
 	connect("about_to_show", self, "_on_about_to_show")
 	connect("popup_hide", self, "_on_popup_hide")
@@ -50,7 +54,7 @@ func _unhandled_input(event: InputEvent):
 	# "ui_cancel" is pressed, not released. We want to match that here so that
 	# we don't accidentally hide the entire panel when the user exits out of a
 	# control's menu.
-	if visible and event.is_action_pressed("ui_cancel"):
+	if close_on_cancel and visible and event.is_action_pressed("ui_cancel"):
 		visible = false
 		get_tree().set_input_as_handled()
 

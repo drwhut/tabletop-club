@@ -203,6 +203,19 @@ func _ready():
 	# Set the items for all of the OptionButton controls in the scene, with the
 	# labels of the items translated to the current locale.
 	set_option_button_items()
+	
+	# We don't necessarily want to close the panel straight away if the user
+	# presses the back button, we may want to show a confirm dialog.
+	close_on_cancel = false
+
+
+func _unhandled_input(event: InputEvent):
+	if visible and event.is_action_pressed("ui_cancel"):
+		# This will either close the window, or show a confirm dialog depending
+		# on if there are changes that have not been applied yet.
+		_on_BackButton_pressed()
+		
+		get_tree().set_input_as_handled()
 
 
 ## Have the controls show the current values from the GameConfig.
