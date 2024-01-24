@@ -69,6 +69,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://www.svgrepo.com/svg/500472/back
 
 
+- Bin icon
+
+	Files:
+		icons/bin_icon.svg
+	Author: SVG Repo
+	License: CC0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/212379/garbage-basket
+
+
 - Book icon
 
 	Files:

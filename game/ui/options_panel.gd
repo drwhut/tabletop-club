@@ -69,6 +69,8 @@ onready var _msaa_samples_label := $MainContainer/OptionContainer/ScrollContaine
 onready var _hint_label := $MainContainer/HintLabel
 onready var _apply_button := $MainContainer/ButtonContainer/ApplyButton
 
+onready var _discard_dialog := $DiscardDialog
+
 
 func _ready():
 	# Before we do anything, we need to populate the control property map so
@@ -650,7 +652,10 @@ func _on_LanguageWarningLabel_meta_clicked(_meta):
 
 
 func _on_BackButton_pressed():
-	visible = false
+	if _apply_button.disabled:
+		visible = false
+	else:
+		_discard_dialog.popup_centered()
 
 
 func _on_ApplyButton_pressed():
@@ -661,3 +666,7 @@ func _on_ApplyButton_pressed():
 	GameConfig.save_to_file()
 	
 	_apply_button.disabled = true
+
+
+func _on_DiscardDialog_discarding_changes():
+	visible = false
