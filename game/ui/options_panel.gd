@@ -58,6 +58,48 @@ onready var _ssao_button: OptionButton = $MainContainer/OptionContainer/ScrollCo
 onready var _skybox_radiance_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer/opt_video_skybox_radiance_detail
 onready var _depth_of_field_button: OptionButton = $MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/DOFContainer/opt_video_depth_of_field
 
+# The video settings configuration for each of the graphics quality presets.
+# For optimisation purposes, the keys for each preset are the option buttons
+# themselves, not the name of the property they are linked to.
+# TODO: Make array typed in 4.x
+onready var _quality_preset_settings: Array = [
+	{ # Low
+		_shadow_detail_button: GameConfig.SHADOW_DETAIL_LOW,
+		_aa_method_button: GameConfig.AA_OFF,
+		_msaa_samples_button: GameConfig.MSAA_4X,
+		_ssao_button: GameConfig.SSAO_NONE,
+		_skybox_radiance_button: GameConfig.RADIANCE_LOW
+	},
+	{ # Medium
+		_shadow_detail_button: GameConfig.SHADOW_DETAIL_MEDIUM,
+		_aa_method_button: GameConfig.AA_FXAA,
+		_msaa_samples_button: GameConfig.MSAA_4X,
+		_ssao_button: GameConfig.SSAO_NONE,
+		_skybox_radiance_button: GameConfig.RADIANCE_LOW
+	},
+	{ # High
+		_shadow_detail_button: GameConfig.SHADOW_DETAIL_HIGH,
+		_aa_method_button: GameConfig.AA_MSAA,
+		_msaa_samples_button: GameConfig.MSAA_4X,
+		_ssao_button: GameConfig.SSAO_LOW,
+		_skybox_radiance_button: GameConfig.RADIANCE_MEDIUM
+	},
+	{ # Very High
+		_shadow_detail_button: GameConfig.SHADOW_DETAIL_VERY_HIGH,
+		_aa_method_button: GameConfig.AA_MSAA,
+		_msaa_samples_button: GameConfig.MSAA_8X,
+		_ssao_button: GameConfig.SSAO_MEDIUM,
+		_skybox_radiance_button: GameConfig.RADIANCE_HIGH
+	},
+	{ # Ultra
+		_shadow_detail_button: GameConfig.SHADOW_DETAIL_VERY_HIGH,
+		_aa_method_button: GameConfig.AA_MSAA,
+		_msaa_samples_button: GameConfig.MSAA_16X,
+		_ssao_button: GameConfig.SSAO_HIGH,
+		_skybox_radiance_button: GameConfig.RADIANCE_HIGH
+	}
+]
+
 onready var _player_name_edit: LineEdit = $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer/opt_multiplayer_name
 onready var _player_name_warning_label := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/DetailContainer/NameWarningLabel
 onready var _player_button := $MainContainer/OptionContainer/ScrollContainer/SectionParent/PlayerContainer/MainContainer/PreviewContainer/PlayerButton
@@ -121,6 +163,14 @@ func _ready():
 						property_name, current_node.name])
 		
 		node_stack.append_array(current_node.get_children())
+	
+	# For the graphics settings, we need to connect them separately so that we
+	# can update the quality preset button if needed.
+	var low_quality_settings: Dictionary = _quality_preset_settings[0]
+	for key in low_quality_settings:
+		var control: Control = key
+		if control is OptionButton:
+			control.connect("item_selected", self, "_on_graphics_setting_changed")
 	
 	# We can't set the item label fonts in option buttons directly from the
 	# editor, so we need to do it in code.
@@ -386,6 +436,46 @@ func _add_option_button_item(option_button: OptionButton, label: String, metadat
 	option_button.set_item_metadata(item_index, metadata)
 
 
+# Check whether the current graphics settings correspond to one of the presets.
+# If not, then "Custom" is automatically selected.
+func _check_quality_preset() -> void:
+	for index in range(_quality_preset_settings.size()):
+		var preset_settings: Dictionary = _quality_preset_settings[index]
+		var values_match_preset := true
+		
+		for key in preset_settings:
+			var property_control: Control = key
+			var expected_value = preset_settings[key]
+			var expected_type := typeof(expected_value)
+			
+			if property_control is OptionButton:
+				var actual_value = property_control.get_selected_metadata()
+				var actual_type := typeof(actual_value)
+				
+				if actual_type != expected_type:
+					push_error("%s: Data type of metadata '%s' (%s) does not match type of check value '%s' (%s)" %
+							[property_control.name, str(actual_value),
+							SanityCheck.get_type_name(actual_type),
+							str(expected_value),
+							SanityCheck.get_type_name(expected_type)])
+					return
+				
+				if actual_value != expected_value:
+					values_match_preset = false
+					break
+			else:
+				push_error("Cannot check value of control '%s', unimplemented type" %
+						property_control.name)
+				return
+		
+		if values_match_preset:
+			_quality_preset_button.select(index)
+			return
+	
+	# None of the presets match the current values, so display "Custom".
+	_quality_preset_button.select(_quality_preset_button.get_item_count() - 1)
+
+
 # If there are any invalid properties, set their values such that they are valid
 # again. This should be used before any changes are applied.
 func _fix_invalid_properties() -> void:
@@ -421,6 +511,10 @@ func _on_OptionsPanel_about_to_show():
 	
 	# The player name is guaranteed to be valid now.
 	_player_name_warning_label.visible = false
+	
+	# We want to update the quality preset button to reflect the new graphics
+	# settings.
+	_check_quality_preset()
 	
 	# We may or may not want to show the MSAA Quality setting depending on if
 	# the currently selected AA Method is MSAA.
@@ -560,6 +654,12 @@ func _on_any_value_changed(_new_value):
 	_apply_button.disabled = false
 
 
+func _on_graphics_setting_changed(_new_value):
+	# Check if changing the graphics setting moves us out of a quality preset
+	# into "Custom", or if it moves us into one.
+	_check_quality_preset()
+
+
 func _on_option_focus_entered(property_name: String):
 	_property_in_focus = property_name
 	
@@ -640,7 +740,42 @@ func _on_opt_video_aa_method_item_selected(index: int):
 
 
 func _on_QualityPresetButton_item_selected(index: int):
-	pass # Replace with function body.
+	# If "Custom" was selected, do not do anything.
+	if index >= _quality_preset_settings.size():
+		return
+	
+	# This signal won't fire when the same item is selected again by the user.
+	_apply_button.disabled = false
+	
+	var video_settings: Dictionary = _quality_preset_settings[index]
+	for key in video_settings:
+		var property_control: Control = key
+		var target_value = video_settings[key]
+		
+		if property_control is OptionButton:
+			var metadata_found := false
+			
+			for index in range(property_control.get_item_count()):
+				var metadata_at_index = property_control.get_item_metadata(index)
+				
+				if typeof(metadata_at_index) != typeof(target_value):
+					continue
+				
+				if metadata_at_index == target_value:
+					property_control.select(index)
+					metadata_found = true
+					break
+			
+			if not metadata_found:
+				push_error("Unable to find metadata value '%s' in control '%s'" %
+						[str(target_value), property_control.name])
+		else:
+			push_error("Cannot set value of control '%s', unimplemented type" %
+					property_control.name)
+	
+	# Changing the preset can change which anti-aliasing method is used. If the
+	# new method is MSAA, we need to show the MSAA Samples setting.
+	_on_opt_video_aa_method_item_selected(_aa_method_button.selected)
 
 
 func _on_AdvancedGraphicsButton_toggled(button_pressed: bool):
