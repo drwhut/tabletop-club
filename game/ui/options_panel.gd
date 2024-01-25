@@ -37,6 +37,11 @@ var _control_property_map := {}
 # The property that is currently in focus, and for which a hint should be shown.
 var _property_in_focus := ""
 
+# The previous values for the video settings before new values were assigned.
+# The keys are set during _ready(), but the values are set every time the apply
+# button is pressed.
+var _previous_video_settings := {}
+
 
 onready var _section_parent := $MainContainer/OptionContainer/ScrollContainer/SectionParent/
 onready var _audio_container := $MainContainer/OptionContainer/ScrollContainer/SectionParent/AudioContainer
@@ -111,7 +116,8 @@ onready var _msaa_samples_label := $MainContainer/OptionContainer/ScrollContaine
 onready var _hint_label := $MainContainer/HintLabel
 onready var _apply_button := $MainContainer/ButtonContainer/ApplyButton
 
-onready var _discard_dialog := $DiscardDialog
+onready var _discard_dialog := $DialogContainer/DiscardDialog
+onready var _keep_video_dialog := $DialogContainer/KeepVideoDialog
 
 
 func _ready():
@@ -125,6 +131,12 @@ func _ready():
 			
 			if GameConfig.get(property_name) != null:
 				_control_property_map[current_node] = property_name
+				
+				# If this is a video setting, we want to save it's value before
+				# any new values are applied, just in case we want to revert
+				# them. So save the property name as a key.
+				if property_name.begins_with("video_"):
+					_previous_video_settings[property_name] = null
 				
 				# If the control is updated, we want to know so we can allow the
 				# user to press the apply button.
@@ -814,12 +826,72 @@ func _on_BackButton_pressed():
 func _on_ApplyButton_pressed():
 	_fix_invalid_properties()
 	
+	# In the event that the user wants to revert the video settings, we want to
+	# save the current values from the GameConfig before we overwrite them.
+	for key in _previous_video_settings:
+		var property_name: String = key
+		_previous_video_settings[key] = GameConfig.get(property_name)
+	
 	write_config()
+	
+	# Now that the settings have been overwritten, we can check to see if any of
+	# the video settings have changed.
+	var video_settings_changed := false
+	
+	for key in _previous_video_settings:
+		var property_name: String = key
+		var old_value = _previous_video_settings[property_name]
+		var new_value = GameConfig.get(property_name)
+		
+		if new_value != old_value:
+			video_settings_changed = true
+			break
+	
 	GameConfig.apply_all()
-	GameConfig.save_to_file()
+	
+	# If the event that the new video settings do not work on this hardware,
+	# then we DO NOT want to save them to file, otherwise the GameConfig will
+	# load them straight away on the next launch. We want to make sure that the
+	# user wants to keep them after they have been applied before saving them.
+	if video_settings_changed:
+		GameConfig.save_to_file(_previous_video_settings)
+		_keep_video_dialog.popup_centered()
+	else:
+		GameConfig.save_to_file()
 	
 	_apply_button.disabled = true
 
 
 func _on_DiscardDialog_discarding_changes():
 	visible = false
+
+
+func _on_KeepVideoDialog_discarding_changes():
+	# The user does not want to keep the new video settings, so revert back to
+	# the previous values.
+	for key in _previous_video_settings:
+		var property_name: String = key
+		var property_value = _previous_video_settings[key]
+		
+		GameConfig.set(property_name, property_value)
+	
+	# Apply the reverted settings. Note that we do not need to save these to
+	# file, as the reverted video settings should already have been saved.
+	GameConfig.apply_all()
+	
+	# Set the controls to reflect the reverted changes.
+	read_config()
+	
+	# We may need to update other controls depending on the reverted changes,
+	# see _on_OptionsPanel_about_to_show().
+	_check_quality_preset()
+	_on_opt_video_aa_method_item_selected(_aa_method_button.selected)
+	
+	# Changing the controls may cause _on_any_value_changed() to be called,
+	# which will enable the apply button.
+	_apply_button.disabled = true
+
+
+func _on_KeepVideoDialog_keeping_changes():
+	# Save all of the current settings to file, including the video settings.
+	GameConfig.save_to_file()

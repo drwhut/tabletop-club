@@ -474,8 +474,10 @@ func load_from_file() -> void:
 			video_saturation))
 
 
-## Save the current configuration to disk.
-func save_to_file() -> void:
+## Save the current configuration to disk. Optional overrides can be given,
+## where the keys are the names of the properties to override, and the values
+## are the values that should be saved instead for those properties.
+func save_to_file(overrides: Dictionary = {}) -> void:
 	var config_file := ConfigFile.new()
 	
 	config_file.set_value("audio", "master_volume", audio_master_volume)
@@ -566,6 +568,43 @@ func save_to_file() -> void:
 	config_file.set_value("video", "brightness", video_brightness)
 	config_file.set_value("video", "contrast", video_contrast)
 	config_file.set_value("video", "saturation", video_saturation)
+	
+	# Now that the ConfigFile has been filled out, we can override the values
+	# if the caller wants us to.
+	for key in overrides:
+		var override_property: String = key
+		var override_sections := override_property.split("_", false, 1)
+		if override_sections.size() != 2:
+			push_error("Invalid override name '%s'" % override_property)
+			continue
+		
+		var override_section := override_sections[0]
+		var override_key := override_sections[1]
+		
+		# NOTE: This section assumes that the names of the class' properties
+		# are the same as those that are saved to the ConfigFile.
+		if not config_file.has_section_key(override_section, override_key):
+			push_error("Override key '%s/%s' does not exist in ConfigFile" %
+					[override_section, override_key])
+			continue
+		
+		var override_value = overrides[key]
+		var override_type := typeof(override_value)
+		
+		var current_value = config_file.get_value(override_section, override_key)
+		var current_type := typeof(current_value)
+		
+		if override_type != current_type:
+			push_error("Override value for key '%s/%s' does not match existing type (expected: %s, got: %s)" %
+					[override_section, override_key,
+					SanityCheck.get_type_name(current_type),
+					SanityCheck.get_type_name(override_type)])
+			continue
+		
+		if override_value != current_value:
+			config_file.set_value(override_section, override_key, override_value)
+			print("GameConfig: Saved value for setting '%s/%s' was overwritten to '%s'." %
+					[override_section, override_key, str(override_value)])
 	
 	print("GameConfig: Saving settings to '%s' ..." % CONFIG_FILE_PATH)
 	

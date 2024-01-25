@@ -56,6 +56,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added quality presets for advanced graphics settings in the options menu: Low,
   Medium, High, Very High, and Ultra. The default for new players is Medium.
 - Added a toggle for showing advanced graphics settings in the options menu.
+- Added a new dialog for when the player is about to leave the options menu with
+  new settings that have not been applied.
+- A countdown has been added to the dialog that appears when video settings have
+  been changed, which will revert the changes automatically if it runs out.
 
 ### Changed
 

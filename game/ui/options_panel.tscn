@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://ui/options_panel.gd" type="Script" id=1]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://fonts/res/default_italic.tres" type="DynamicFont" id=18]
 [ext_resource path="res://ui/player_button.tscn" type="PackedScene" id=19]
 [ext_resource path="res://ui/options_discard_dialog.tscn" type="PackedScene" id=20]
+[ext_resource path="res://ui/options_keep_video_dialog.tscn" type="PackedScene" id=21]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -1308,8 +1309,13 @@ text = "Apply"
 icon = ExtResource( 4 )
 expand_icon = true
 
-[node name="DiscardDialog" parent="." instance=ExtResource( 20 )]
-focus_on_hide = NodePath("../MainContainer/ButtonContainer/BackButton")
+[node name="DialogContainer" type="Node" parent="."]
+
+[node name="DiscardDialog" parent="DialogContainer" instance=ExtResource( 20 )]
+focus_on_hide = NodePath("../../MainContainer/ButtonContainer/BackButton")
+
+[node name="KeepVideoDialog" parent="DialogContainer" instance=ExtResource( 21 )]
+focus_on_hide = NodePath("../../MainContainer/ButtonContainer/ApplyButton")
 
 [connection signal="about_to_show" from="." to="." method="_on_OptionsPanel_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_OptionsPanel_popup_hide"]
@@ -1349,4 +1355,6 @@ focus_on_hide = NodePath("../MainContainer/ButtonContainer/BackButton")
 [connection signal="item_selected" from="MainContainer/OptionContainer/ScrollContainer/SectionParent/VideoContainer/GraphicsContainer/AdvancedContainer/MainContainer/opt_video_aa_method" to="." method="_on_opt_video_aa_method_item_selected"]
 [connection signal="pressed" from="MainContainer/ButtonContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="MainContainer/ButtonContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]
-[connection signal="discarding_changes" from="DiscardDialog" to="." method="_on_DiscardDialog_discarding_changes"]
+[connection signal="discarding_changes" from="DialogContainer/DiscardDialog" to="." method="_on_DiscardDialog_discarding_changes"]
+[connection signal="discarding_changes" from="DialogContainer/KeepVideoDialog" to="." method="_on_KeepVideoDialog_discarding_changes"]
+[connection signal="keeping_changes" from="DialogContainer/KeepVideoDialog" to="." method="_on_KeepVideoDialog_keeping_changes"]
