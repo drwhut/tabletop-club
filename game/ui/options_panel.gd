@@ -200,6 +200,11 @@ func _ready():
 	_language_warning_label.bbcode_text = tr("NOTE: Translations are graciously provided by the community, however, this may mean that translations for your language are either incomplete or missing.") \
 			+ "\n" + tr("If you wish to help make the game accessible to a wider audience of players, please visit our [url]Weblate[/url] page to contribute translations for your language.")
 	
+	# On macOS, stop the user from being able to switch to borderless or
+	# fullscreen mode, as it causes weird issues.
+	if OS.get_name() == "OSX":
+		_window_mode_button.disabled = true
+	
 	# Set the items for all of the OptionButton controls in the scene, with the
 	# labels of the items translated to the current locale.
 	set_option_button_items()

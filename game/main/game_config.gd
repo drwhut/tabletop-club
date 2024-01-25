@@ -643,7 +643,12 @@ func get_description(property_name: String) -> String:
 			return tr("If enabled, offensive words will automatically be filtered out of messages sent by you and other players.")
 		
 		"video_window_mode":
-			return tr("Sets how the operating system will display the game window.")
+			var t := tr("Sets how the operating system will display the game window.")
+			
+			if OS.get_name() == "OSX":
+				t += "\n" + tr("NOTE: This option is not available on macOS, however, you can still toggle fullscreen mode by clicking the green maximise button.")
+			
+			return t
 		"video_fov":
 			return tr("Sets how wide the camera's field of view should be in degrees.")
 		"video_vsync":
@@ -765,6 +770,11 @@ func find_closest_locale(locale_code: String) -> String:
 ## Set the way in which the game window is displayed by the operating system.
 ## For example, [code]MODE_WINDOWED[/code].
 func set_window_mode(window_mode: int) -> void:
+	# Trying to set the window mode on macOS results in weird behaviour, and
+	# eventually leads to a permanent black screen on the next launch.
+	if OS.get_name() == "OSX":
+		return
+	
 	# Settings for windowed mode.
 	var is_fullscreen := false
 	var is_borderless := false
@@ -778,7 +788,6 @@ func set_window_mode(window_mode: int) -> void:
 			is_fullscreen = true
 			is_borderless = true
 	
-	# TODO: Check if this works for macOS.
 	OS.window_fullscreen = is_fullscreen
 	OS.window_borderless = is_borderless
 	OS.window_maximized = is_maximized
