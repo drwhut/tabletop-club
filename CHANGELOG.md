@@ -94,11 +94,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated the custom module to be more flexible in how files are imported.
 - Replaced the physics frame interpolation patch with the engine-provided
   implementation.
-- Switched the default VRAM compression algorithm from ETC to ETC2.
 - Changed the project's directory structure in order to comply with Godot
   conventions.
 - Restarting is no longer required to see the effects of changing the "Shadow
   Detail" level.
+- Up to two keyboard and mouse bindings can be set per action now, instead of
+  just one.
+- Keyboard and controller bindings are now only stored if they are changed from
+  their default values. This means that if the default value changes in a future
+  version of the game, and you have not explicitly set a binding for a specific
+  action, that action's binding will change to the new default.
 
 #### UI
 

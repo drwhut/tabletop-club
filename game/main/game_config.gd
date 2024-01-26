@@ -144,11 +144,11 @@ var audio_effects_volume := 1.0 setget set_audio_effects_volume
 
 ## The sensitivity scalar when rotating the camera horizontally.
 var control_horizontal_sensitivity := 0.05 \
-		setget set_control_horizontal_sensitivity
+	setget set_control_horizontal_sensitivity
 
 ## The sensitivty scalar when rotating the camera vertically.
 var control_vertical_sensitivity := 0.05 \
-		setget set_control_vertical_sensitivity
+	setget set_control_vertical_sensitivity
 
 ## Determines if the horizontal rotation of the camera should be inverted.
 var control_horizontal_invert := false
@@ -158,7 +158,7 @@ var control_vertical_invert := false
 
 ## The movement speed of the game camera.
 var control_camera_movement_speed := 0.25 \
-		setget set_control_camera_movement_speed
+	setget set_control_camera_movement_speed
 
 ## Determines if holding down the left mouse button moves the camera.
 ## TODO: Implement this setting.
@@ -173,7 +173,7 @@ var control_zoom_invert := false
 ## The sensitivity scalar when lifting pieces up and down.
 ## TODO: Implement this setting.
 var control_piece_lift_sensitivity := 0.15 \
-		setget set_control_piece_lift_sensitivity
+	setget set_control_piece_lift_sensitivity
 
 ## Determines if the direction that pieces are lifted should be inverted.
 ## TODO: Implement this setting.
@@ -209,7 +209,7 @@ var general_language := "" setget set_general_language
 ## values.
 ## TODO: Implement this setting.
 var general_autosave_interval := AUTOSAVE_5_MIN \
-		setget set_general_autosave_interval
+	setget set_general_autosave_interval
 
 ## The maximum number of autosave files that should be made.
 ## TODO: Implement this setting.
@@ -238,7 +238,7 @@ var multiplayer_color := Color.white setget set_multiplayer_color
 ## The size of the font in the chat window.
 ## TODO: Implement this setting.
 var multiplayer_chat_font_size := FONT_SIZE_MEDIUM \
-		setget set_multiplayer_chat_font_size
+	setget set_multiplayer_chat_font_size
 
 ## Determines if other player's cursors should be hidden in multiplayer.
 ## TODO: Implement this setting.
@@ -290,7 +290,7 @@ var video_ssao := SSAO_NONE setget set_video_ssao
 ## keep those settings as a means of future-proofing if we ever choose to
 ## include higher-quality skyboxes.
 var video_skybox_radiance_detail := RADIANCE_LOW \
-		setget set_video_skybox_radiance_detail
+	setget set_video_skybox_radiance_detail
 
 ## Determines the quality of the depth-of-field effect.
 var video_depth_of_field := DOF_NONE setget set_video_depth_of_field
@@ -314,6 +314,35 @@ var video_contrast := 1.0 setget set_video_contrast
 var video_saturation := 1.0 setget set_video_saturation
 
 
+## A flag which is set to [code]true[/code] if the configuration file uses the
+## old key binding system from v0.1.x.
+##
+## This flag is set during [method load_from_file], and is set to
+## [code]false[/code] during [method save_to_file]. This flag cannot be set
+## manually from the outside.
+##
+## v0.1.x: All bindings are stored, even if they are the same as the default.
+## v0.2.0+: Only bindings that differ from the default are stored. That way, if
+## the default binding changes in a given version, then most players will use
+## the new default, which will prevent both potential confusion between players,
+## and the possibility of bindings overlapping each other (although this can't
+## be helped if bindings are overwritten).
+var flag_using_old_binding_system := false \
+		setget set_flag_using_old_binding_system
+
+
+# The list of actions whose bindings can be configured by the player.
+var _configurable_actions := PoolStringArray()
+
+
+func _init():
+	var all_actions := InputMap.get_actions()
+	for element in all_actions:
+		var action: String = element
+		if not action.begins_with("ui"):
+			_configurable_actions.push_back(action)
+
+
 ## Load the previously saved configuration from the disk.
 func load_from_file() -> void:
 	var dir := Directory.new()
@@ -326,66 +355,66 @@ func load_from_file() -> void:
 	var err := config_file.load(CONFIG_FILE_PATH)
 	if err != OK:
 		push_error("Failed to load game settings from '%s' (error: %d)" % [
-				CONFIG_FILE_PATH, err])
+			CONFIG_FILE_PATH, err])
 		return
 	
 	set_audio_master_volume(config_file.get_value_strict("audio",
-			"master_volume", audio_master_volume))
+		"master_volume", audio_master_volume))
 	set_audio_music_volume(config_file.get_value_strict("audio",
-			"music_volume", audio_music_volume))
+		"music_volume", audio_music_volume))
 	set_audio_sounds_volume(config_file.get_value_strict("audio",
-			"sounds_volume", audio_sounds_volume))
+		"sounds_volume", audio_sounds_volume))
 	set_audio_effects_volume(config_file.get_value_strict("audio",
-			"effects_volume", audio_effects_volume))
+		"effects_volume", audio_effects_volume))
 	
 	set_control_horizontal_sensitivity(config_file.get_value_strict("controls",
-			"mouse_horizontal_sensitivity", control_horizontal_sensitivity))
+		"mouse_horizontal_sensitivity", control_horizontal_sensitivity))
 	set_control_vertical_sensitivity(config_file.get_value_strict("controls",
-			"mouse_vertical_sensitivity", control_vertical_sensitivity))
+		"mouse_vertical_sensitivity", control_vertical_sensitivity))
 	
 	control_horizontal_invert = config_file.get_value_strict("controls",
-			"mouse_horizontal_invert", control_horizontal_invert)
+		"mouse_horizontal_invert", control_horizontal_invert)
 	control_vertical_invert = config_file.get_value_strict("controls",
-			"mouse_vertical_invert", control_vertical_invert)
+		"mouse_vertical_invert", control_vertical_invert)
 	
 	set_control_camera_movement_speed(config_file.get_value_strict("controls",
-			"camera_movement_speed", control_camera_movement_speed))
+		"camera_movement_speed", control_camera_movement_speed))
 	control_left_mouse_button_moves_camera = config_file.get_value_strict("controls",
-			"left_click_to_move", control_left_mouse_button_moves_camera)
+		"left_click_to_move", control_left_mouse_button_moves_camera)
 	
 	set_control_zoom_sensitivity(config_file.get_value_strict("controls",
-			"zoom_sensitivity", control_zoom_sensitivity))
+		"zoom_sensitivity", control_zoom_sensitivity))
 	control_zoom_invert = config_file.get_value("controls",
-			"zoom_invert", control_zoom_invert)
+		"zoom_invert", control_zoom_invert)
 	
 	set_control_piece_lift_sensitivity(config_file.get_value_strict("controls",
-			"piece_lift_sensitivity", control_piece_lift_sensitivity))
+		"piece_lift_sensitivity", control_piece_lift_sensitivity))
 	control_piece_lift_invert = config_file.get_value_strict("controls",
-			"piece_lift_invert", control_piece_lift_invert)
+		"piece_lift_invert", control_piece_lift_invert)
 	
 	control_piece_rotation_invert = config_file.get_value_strict("controls",
-			"piece_rotation_invert", control_piece_rotation_invert)
+		"piece_rotation_invert", control_piece_rotation_invert)
 	
 	control_hand_preview_enabled = config_file.get_value_strict("controls",
-			"hand_preview_enabled", control_hand_preview_enabled)
+		"hand_preview_enabled", control_hand_preview_enabled)
 	set_control_hand_preview_delay(config_file.get_value_strict("controls",
-			"hand_preview_delay", control_hand_preview_delay))
+		"hand_preview_delay", control_hand_preview_delay))
 	set_control_hand_preview_size(config_file.get_value_strict("controls",
-			"hand_preview_size", control_hand_preview_size))
+		"hand_preview_size", control_hand_preview_size))
 	
 	control_hide_hints = config_file.get_value_strict("controls",
-			"hide_control_hints", control_hide_hints)
+		"hide_control_hints", control_hide_hints)
 	
 	set_general_language(config_file.get_value_strict("general", "language",
-			general_language))
+		general_language))
 	
 	set_general_autosave_interval(config_file.get_value_strict("general",
-			"autosave_interval", general_autosave_interval))
+		"autosave_interval", general_autosave_interval))
 	
 	# v0.1.x: Due to the way the options menu worked, the file count was
 	# actually a float, so we need to account for this.
 	var file_count_value = config_file.get_value("general",
-			"autosave_file_count", general_autosave_file_count)
+		"autosave_file_count", general_autosave_file_count)
 	match typeof(file_count_value):
 		TYPE_INT:
 			set_general_autosave_file_count(file_count_value)
@@ -393,37 +422,37 @@ func load_from_file() -> void:
 			set_general_autosave_file_count(int(file_count_value))
 		_:
 			push_error("Value of property 'autosave_file_count' in section 'general' is incorrect data type (expected: Integer, got: %s)" %
-					SanityCheck.get_type_name(typeof(file_count_value)))
+				SanityCheck.get_type_name(typeof(file_count_value)))
 	
 	general_skip_splash_screen = config_file.get_value_strict("general",
-			"skip_splash_screen", general_skip_splash_screen)
+		"skip_splash_screen", general_skip_splash_screen)
 	
 	general_show_warnings = config_file.get_value_strict("general",
-			"show_warnings", general_show_warnings)
+		"show_warnings", general_show_warnings)
 	general_show_errors = config_file.get_value_strict("general",
-			"show_errors", general_show_errors)
+		"show_errors", general_show_errors)
 	
 	set_multiplayer_name(config_file.get_value_strict("multiplayer",
-			"name", multiplayer_name))
+		"name", multiplayer_name))
 	set_multiplayer_color(config_file.get_value_strict("multiplayer",
-			"color", multiplayer_color))
+		"color", multiplayer_color))
 	
 	set_multiplayer_chat_font_size(config_file.get_value_strict("multiplayer",
-			"chat_font_size", multiplayer_chat_font_size))
+		"chat_font_size", multiplayer_chat_font_size))
 	multiplayer_hide_cursors = config_file.get_value_strict("multiplayer",
-			"hide_cursors", multiplayer_hide_cursors)
+		"hide_cursors", multiplayer_hide_cursors)
 	multiplayer_censor_profanity = config_file.get_value_strict("multiplayer",
-			"censor_profanity", multiplayer_censor_profanity)
+		"censor_profanity", multiplayer_censor_profanity)
 	
 	set_video_window_mode(config_file.get_value_strict("video", "window_mode",
-			video_window_mode))
+		video_window_mode))
 	set_video_fov(config_file.get_value_strict("video", "fov", video_fov))
 	video_vsync = config_file.get_value_strict("video", "vsync", video_vsync)
 	set_video_ui_scale(config_file.get_value_strict("video", "ui_scale",
-			video_ui_scale))
+		video_ui_scale))
 	
 	set_video_shadow_detail(config_file.get_value_strict("video",
-			"shadow_detail", video_shadow_detail))
+		"shadow_detail", video_shadow_detail))
 	
 	# Backwards compatibility with v0.1.x!
 	if config_file.has_section_key("video", "msaa"):
@@ -447,31 +476,71 @@ func load_from_file() -> void:
 				push_error("Unknown value '%d' for setting 'video/msaa'" % msaa_id)
 	else:
 		set_video_aa_method(config_file.get_value_strict("video",
-				"aa_method", video_aa_method))
+			"aa_method", video_aa_method))
 		set_video_msaa_samples(config_file.get_value_strict("video",
-				"msaa_samples", video_msaa_samples))
+			"msaa_samples", video_msaa_samples))
 	
 	set_video_ssao(config_file.get_value_strict("video",
-			"ssao", video_ssao))
+		"ssao", video_ssao))
 	set_video_skybox_radiance_detail(config_file.get_value_strict("video",
-			"skybox_radiance_detail", video_skybox_radiance_detail))
+		"skybox_radiance_detail", video_skybox_radiance_detail))
 	
 	set_video_depth_of_field(config_file.get_value_strict("video",
-			"depth_of_field", video_depth_of_field))
+		"depth_of_field", video_depth_of_field))
 	set_video_depth_of_field_amount(config_file.get_value_strict("video",
-			"depth_of_field_amount", video_depth_of_field_amount))
+		"depth_of_field_amount", video_depth_of_field_amount))
 	set_video_depth_of_field_distance(config_file.get_value_strict("video",
-			"depth_of_field_distance", video_depth_of_field_distance))
+		"depth_of_field_distance", video_depth_of_field_distance))
 	
 	video_table_paint_filtering = config_file.get_value_strict("video",
-			"table_paint_filtering", video_table_paint_filtering)
+		"table_paint_filtering", video_table_paint_filtering)
 	
 	set_video_brightness(config_file.get_value_strict("video", "brightness",
-			video_brightness))
+		video_brightness))
 	set_video_contrast(config_file.get_value_strict("video", "contrast",
-			video_contrast))
+		video_contrast))
 	set_video_saturation(config_file.get_value_strict("video", "saturation",
-			video_saturation))
+		video_saturation))
+	
+	# The file may also contain keyboard or controller bindings - but only if
+	# they differ from the default bindings.
+	var binding_manager := BindingManager.new()
+	
+	# Backwards compatibility with v0.1.x!
+	# NOTE: In v0.1.x, bindings were saved regardless of whether they were
+	# changed from the default or not.
+	flag_using_old_binding_system = config_file.has_section("key_bindings")
+	
+	var keyboard_0_section := "keyboard_bindings_0"
+	if flag_using_old_binding_system:
+		keyboard_0_section = "key_bindings"
+	
+	for action in _configurable_actions:
+		var keyboard_bindings := []
+		var controller_bindings := []
+		var section_list := [ keyboard_0_section, "keyboard_bindings_1",
+			"controller_bindings_0" ]
+		
+		for element in section_list:
+			var section: String = element
+			if not config_file.has_section_key(section, action):
+				continue
+			
+			var event = config_file.get_value(section, action)
+			if event is InputEvent:
+				if section == "controller_bindings_0":
+					controller_bindings.push_back(event)
+				else:
+					keyboard_bindings.push_back(event)
+			else:
+				push_error("Invalid value for '%s/%s' in '%s', not an InputEvent" % [
+						section, action, CONFIG_FILE_PATH])
+				continue
+		
+		if not keyboard_bindings.empty():
+			binding_manager.set_keyboard_bindings(action, keyboard_bindings)
+		if not controller_bindings.empty():
+			binding_manager.set_controller_bindings(action, controller_bindings)
 
 
 ## Save the current configuration to disk. Optional overrides can be given,
@@ -486,50 +555,50 @@ func save_to_file(overrides: Dictionary = {}) -> void:
 	config_file.set_value("audio", "effects_volume", audio_effects_volume)
 	
 	config_file.set_value("controls", "mouse_horizontal_sensitivity",
-			control_horizontal_sensitivity)
+		control_horizontal_sensitivity)
 	config_file.set_value("controls", "mouse_vertical_sensitivity",
-			control_vertical_sensitivity)
+		control_vertical_sensitivity)
 	
 	config_file.set_value("controls", "mouse_horizontal_invert",
-			control_horizontal_invert)
+		control_horizontal_invert)
 	config_file.set_value("controls", "mouse_vertical_invert",
-			control_vertical_invert)
+		control_vertical_invert)
 	
 	config_file.set_value("controls", "camera_movement_speed",
-			control_camera_movement_speed)
+		control_camera_movement_speed)
 	config_file.set_value("controls", "left_click_to_move",
-			control_left_mouse_button_moves_camera)
+		control_left_mouse_button_moves_camera)
 	
 	config_file.set_value("controls", "zoom_sensitivity",
-			control_zoom_sensitivity)
+		control_zoom_sensitivity)
 	config_file.set_value("controls", "zoom_invert", control_zoom_invert)
 	
 	config_file.set_value("controls", "piece_lift_sensitivity",
-			control_piece_lift_sensitivity)
+		control_piece_lift_sensitivity)
 	config_file.set_value("controls", "piece_lift_invert",
-			control_piece_lift_invert)
+		control_piece_lift_invert)
 	
 	config_file.set_value("controls", "piece_rotation_invert",
-			control_piece_rotation_invert)
+		control_piece_rotation_invert)
 	
 	config_file.set_value("controls", "hand_preview_enabled",
-			control_hand_preview_enabled)
+		control_hand_preview_enabled)
 	config_file.set_value("controls", "hand_preview_delay",
-			control_hand_preview_delay)
+		control_hand_preview_delay)
 	config_file.set_value("controls", "hand_preview_size",
-			control_hand_preview_size)
+		control_hand_preview_size)
 	
 	config_file.set_value("controls", "hide_control_hints", control_hide_hints)
 	
 	config_file.set_value("general", "language", general_language)
 	
 	config_file.set_value("general", "autosave_interval",
-			general_autosave_interval)
+		general_autosave_interval)
 	config_file.set_value("general", "autosave_file_count",
-			general_autosave_file_count)
+		general_autosave_file_count)
 	
 	config_file.set_value("general", "skip_splash_screen",
-			general_skip_splash_screen)
+		general_skip_splash_screen)
 	
 	config_file.set_value("general", "show_warnings", general_show_warnings)
 	config_file.set_value("general", "show_errors", general_show_errors)
@@ -538,11 +607,11 @@ func save_to_file(overrides: Dictionary = {}) -> void:
 	config_file.set_value("multiplayer", "color", multiplayer_color)
 	
 	config_file.set_value("multiplayer", "chat_font_size",
-			multiplayer_chat_font_size)
+		multiplayer_chat_font_size)
 	config_file.set_value("multiplayer", "hide_cursors",
-			multiplayer_hide_cursors)
+		multiplayer_hide_cursors)
 	config_file.set_value("multiplayer", "censor_profanity",
-			multiplayer_censor_profanity)
+		multiplayer_censor_profanity)
 	
 	config_file.set_value("video", "window_mode", video_window_mode)
 	config_file.set_value("video", "fov", video_fov)
@@ -554,20 +623,59 @@ func save_to_file(overrides: Dictionary = {}) -> void:
 	config_file.set_value("video", "msaa_samples", video_msaa_samples)
 	config_file.set_value("video", "ssao", video_ssao)
 	config_file.set_value("video", "skybox_radiance_detail",
-			video_skybox_radiance_detail)
+		video_skybox_radiance_detail)
 	
 	config_file.set_value("video", "depth_of_field", video_depth_of_field)
 	config_file.set_value("video", "depth_of_field_amount",
-			video_depth_of_field_amount)
+		video_depth_of_field_amount)
 	config_file.set_value("video", "depth_of_field_distance",
-			video_depth_of_field_distance)
+		video_depth_of_field_distance)
 	
 	config_file.set_value("video", "table_paint_filtering",
-			video_table_paint_filtering)
+		video_table_paint_filtering)
 	
 	config_file.set_value("video", "brightness", video_brightness)
 	config_file.set_value("video", "contrast", video_contrast)
 	config_file.set_value("video", "saturation", video_saturation)
+	
+	# We also want to save the current bindings, but we only want to save them
+	# if they differ from the default!
+	var binding_manager := BindingManager.new()
+	flag_using_old_binding_system = false
+	
+	for action in _configurable_actions:
+		var keyboard_0_binding := binding_manager.get_keyboard_binding(
+			action, 0)
+		var keyboard_0_default := binding_manager.get_keyboard_binding_default(
+			action, 0)
+		if binding_manager.are_bindings_equal(keyboard_0_binding, keyboard_0_default):
+			keyboard_0_binding = null
+		
+		var keyboard_1_binding := binding_manager.get_keyboard_binding(
+			action, 1)
+		var keyboard_1_default := binding_manager.get_keyboard_binding_default(
+			action, 1)
+		if binding_manager.are_bindings_equal(keyboard_1_binding, keyboard_1_default):
+			keyboard_1_binding = null
+		
+		var controller_binding := binding_manager.get_controller_binding(
+			action, 0)
+		var controller_default := binding_manager.get_controller_binding_default(
+			action, 0)
+		if binding_manager.are_bindings_equal(controller_binding, controller_default):
+			controller_binding = null
+		
+		if keyboard_0_binding != null:
+			config_file.set_value("keyboard_bindings_0", action,
+					keyboard_0_binding)
+		
+		if keyboard_1_binding != null:
+			config_file.set_value("keyboard_bindings_1", action,
+					keyboard_1_binding)
+		
+		if controller_binding != null:
+			config_file.set_value("controller_bindings_0", action,
+					controller_binding)
 	
 	# Now that the ConfigFile has been filled out, we can override the values
 	# if the caller wants us to.
@@ -585,7 +693,7 @@ func save_to_file(overrides: Dictionary = {}) -> void:
 		# are the same as those that are saved to the ConfigFile.
 		if not config_file.has_section_key(override_section, override_key):
 			push_error("Override key '%s/%s' does not exist in ConfigFile" %
-					[override_section, override_key])
+				[override_section, override_key])
 			continue
 		
 		var override_value = overrides[key]
@@ -596,22 +704,22 @@ func save_to_file(overrides: Dictionary = {}) -> void:
 		
 		if override_type != current_type:
 			push_error("Override value for key '%s/%s' does not match existing type (expected: %s, got: %s)" %
-					[override_section, override_key,
-					SanityCheck.get_type_name(current_type),
-					SanityCheck.get_type_name(override_type)])
+				[override_section, override_key,
+				SanityCheck.get_type_name(current_type),
+				SanityCheck.get_type_name(override_type)])
 			continue
 		
 		if override_value != current_value:
 			config_file.set_value(override_section, override_key, override_value)
 			print("GameConfig: Saved value for setting '%s/%s' was overwritten to '%s'." %
-					[override_section, override_key, str(override_value)])
+				[override_section, override_key, str(override_value)])
 	
 	print("GameConfig: Saving settings to '%s' ..." % CONFIG_FILE_PATH)
 	
 	var err := config_file.save(CONFIG_FILE_PATH)
 	if err != OK:
 		push_error("Failed to save game settings to '%s' (error: %d)" % [
-				CONFIG_FILE_PATH, err])
+			CONFIG_FILE_PATH, err])
 
 
 ## Get a localised description of the given property to be shown in the UI.
@@ -698,8 +806,8 @@ func get_description(property_name: String) -> String:
 			return tr("Sets the quality of shadows that are cast in the room. The more detail that shadows have, the better they look, but at the cost of performance.")
 		"video_aa_method":
 			return tr("Anti-aliasing is a technique used to smooth the appearance of jagged edges.") \
-					+ "\n" + tr("FXAA: Uses an approximation algorithm. Better performance, but some edges may appear blurry.") \
-					+ "\n" + tr("MSAA: Uses a supersampling algorithm. More accurate, but at a significant cost to performance.")
+				+ "\n" + tr("FXAA: Uses an approximation algorithm. Better performance, but some edges may appear blurry.") \
+				+ "\n" + tr("MSAA: Uses a supersampling algorithm. More accurate, but at a significant cost to performance.")
 		"video_msaa_samples":
 			return tr("Sets how many samples should be used when performing multisample anti-aliasing (MSAA).")
 		"video_ssao":
@@ -835,7 +943,7 @@ func set_window_mode(window_mode: int) -> void:
 ## Sets the scale of UI elements across the game.
 func set_ui_scale(ui_scale: float) -> void:
 	var stretch_mode_str: String = ProjectSettings.get_setting(
-			"display/window/stretch/mode")
+		"display/window/stretch/mode")
 	var stretch_mode := SceneTree.STRETCH_MODE_DISABLED
 	
 	match stretch_mode_str:
@@ -847,11 +955,11 @@ func set_ui_scale(ui_scale: float) -> void:
 			stretch_mode = SceneTree.STRETCH_MODE_VIEWPORT
 		_:
 			push_error("Unknown value '%s' for project setting 'display/window/stretch/mode'" %
-					stretch_mode_str)
+				stretch_mode_str)
 			return
 	
 	var stretch_aspect_str: String = ProjectSettings.get_setting(
-			"display/window/stretch/aspect")
+		"display/window/stretch/aspect")
 	var stretch_aspect := SceneTree.STRETCH_ASPECT_IGNORE
 	
 	match stretch_aspect_str:
@@ -867,16 +975,16 @@ func set_ui_scale(ui_scale: float) -> void:
 			stretch_aspect = SceneTree.STRETCH_ASPECT_EXPAND
 		_:
 			push_error("Unknown value '%s' for project setting 'display/window/stretch/aspect'" %
-					stretch_aspect_str)
+				stretch_aspect_str)
 			return
 	
 	var min_size := Vector2(
-			ProjectSettings.get_setting("display/window/size/width"),
-			ProjectSettings.get_setting("display/window/size/height")
+		ProjectSettings.get_setting("display/window/size/width"),
+		ProjectSettings.get_setting("display/window/size/height")
 	)
 	
 	get_tree().set_screen_stretch(stretch_mode, stretch_aspect, min_size,
-			ui_scale)
+		ui_scale)
 	
 	# Pop-ups will need to adjust their position if the scale changes.
 	get_tree().emit_signal("screen_resized")
@@ -886,9 +994,9 @@ func set_ui_scale(ui_scale: float) -> void:
 ## [code]SHADOW_DETAIL_MEDIUM[/code].
 func set_shadow_detail(shadow_detail: int) -> void:
 	var shadow_filter: int = ProjectSettings.get_setting(
-			"rendering/quality/shadows/filter_mode")
+		"rendering/quality/shadows/filter_mode")
 	var shadow_size: int = ProjectSettings.get_setting(
-			"rendering/quality/directional_shadow/size")
+		"rendering/quality/directional_shadow/size")
 	
 	match shadow_detail:
 		SHADOW_DETAIL_LOW:
@@ -906,11 +1014,11 @@ func set_shadow_detail(shadow_detail: int) -> void:
 	
 	# Used by shadows cast by all lights.
 	ProjectSettings.set_setting("rendering/quality/shadows/filter_mode",
-			shadow_filter)
+		shadow_filter)
 	
 	# Used by DirectionalLights.
 	ProjectSettings.set_setting("rendering/quality/directional_shadow/size",
-			shadow_size)
+		shadow_size)
 	
 	# Used by OmniLights and SpotLights.
 	get_viewport().shadow_atlas_size = shadow_size
@@ -1162,3 +1270,8 @@ func set_video_saturation(value: float) -> void:
 		return
 	
 	video_saturation = clamp(value, 0.1, 3.0)
+
+
+func set_flag_using_old_binding_system(_value: bool) -> void:
+	# We do not want to change this value from the outside.
+	return

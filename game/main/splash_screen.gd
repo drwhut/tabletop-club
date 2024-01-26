@@ -39,6 +39,14 @@ func _ready():
 	GameConfig.load_from_file()
 	GameConfig.apply_all()
 	
+	# If the configuration file is using the old v0.1.x binding system, then we
+	# want to switch to using the new v0.2.0+ system as soon as possible, so
+	# that we can try to prevent the default bindings from v0.1.x from
+	# overwriting any new defaults.
+	if GameConfig.flag_using_old_binding_system:
+		print("GameConfig: Old config file format detected, saving with new format...")
+		GameConfig.save_to_file()
+	
 	# Load the default asset pack as register it as early as possible.
 	var ttc_pack := preload("res://assets/default_pack/ttc_pack.tres")
 	ttc_pack.reset_dictionary()
