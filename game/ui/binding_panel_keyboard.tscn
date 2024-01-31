@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/binding_panel.gd" type="Script" id=1]
 [ext_resource path="res://fonts/res/popup_font_minor.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://icons/reset_icon.svg" type="Texture" id=5]
 [ext_resource path="res://ui/binding_button.gd" type="Script" id=6]
+[ext_resource path="res://ui/binding_reset_dialog.tscn" type="PackedScene" id=7]
 
 [node name="BindingPanelKeyboard" type="PopupPanel"]
 margin_right = 700.0
@@ -923,3 +924,12 @@ custom_fonts/font = ExtResource( 4 )
 text = "Reset Bindings"
 icon = ExtResource( 5 )
 expand_icon = true
+
+[node name="DialogContainer" type="Node" parent="."]
+
+[node name="BindingResetDialog" parent="DialogContainer" instance=ExtResource( 7 )]
+focus_on_hide = NodePath("../../MainContainer/ActionContainer/ResetButton")
+
+[connection signal="pressed" from="MainContainer/ActionContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MainContainer/ActionContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
+[connection signal="resetting_bindings" from="DialogContainer/BindingResetDialog" to="." method="_on_BindingResetDialog_resetting_bindings"]

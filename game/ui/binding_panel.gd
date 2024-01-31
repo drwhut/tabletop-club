@@ -37,6 +37,9 @@ signal changing_binding(action, index)
 var _binding_button_list: Array = []
 
 
+onready var _binding_reset_dialog := $DialogContainer/BindingResetDialog
+
+
 func _ready():
 	# Scan the entire scene for [BindingButton] nodes.
 	var node_list: Array = get_children()
@@ -119,3 +122,42 @@ func write_bindings() -> void:
 
 func _on_binding_button_pressed(action: String, index: int):
 	emit_signal("changing_binding", action, index)
+
+
+func _on_BackButton_pressed():
+	visible = false
+
+
+func _on_ResetButton_pressed():
+	_binding_reset_dialog.popup_centered()
+
+
+func _on_BindingResetDialog_resetting_bindings():
+	var binding_manager := BindingManager.new()
+	
+	for element in _binding_button_list:
+		var binding_button: BindingButton = element
+		
+		var current_binding := binding_button.get_binding()
+		var default_binding: InputEvent = null
+		if binding_button.controller:
+			default_binding = binding_manager.get_controller_binding_default(
+					binding_button.action, binding_button.index)
+		else:
+			default_binding = binding_manager.get_keyboard_binding_default(
+					binding_button.action, binding_button.index)
+		
+		if binding_manager.are_bindings_equal(current_binding, default_binding):
+			continue
+		
+		emit_signal("changing_binding", binding_button.action,
+				binding_button.index)
+		
+		if default_binding == null:
+			# TODO: Need to remove the binding altogether, not just set it back
+			# to what is in the InputMap.
+			binding_button.clear_override()
+		else:
+			binding_button.set_override(default_binding)
+		
+		binding_button.update_display()

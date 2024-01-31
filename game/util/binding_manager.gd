@@ -108,7 +108,7 @@ func are_bindings_equal(binding_1: InputEvent, binding_2: InputEvent) -> bool:
 		if binding_2 is InputEventJoypadButton:
 			return binding_1.button_index == binding_2.button_index
 	
-	return false
+	return (binding_1 == null) and (binding_2 == null)
 
 
 ## Reset all of the current bindings to their default state.

@@ -108,6 +108,26 @@ func clear_override() -> void:
 	_binding_override = null
 
 
+## Set the current binding override. When [method update_display] is called
+## afterwrds, the button will display the override.
+## [b]NOTE:[/b] You cannot set a keyboard event as the override for a controller
+## button, and vice versa. You also cannot use [code]null[/code] as an argument.
+## If you wish to clear the override, use [method clear_override].
+func set_override(override: InputEvent) -> void:
+	if controller:
+		if not override is InputEventJoypadButton:
+			push_error("Cannot set '%s' as override for controller button '%s'" % [
+					str(override), name])
+			return
+	else:
+		if not (override is InputEventKey or override is InputEventMouseButton):
+			push_error("Cannot set '%s' as override for keyboard button '%s'" % [
+					str(override), name])
+			return
+	
+	_binding_override = override
+
+
 ## Update the display of the button to match the action's current binding. If
 ## it has been overridden by the player, the new binding is displayed instead.
 func update_display() -> void:
