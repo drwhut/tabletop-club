@@ -166,4 +166,7 @@ func _set_bindings_for_device(action: String, events: Array, controller: bool) -
 	
 	InputMap.action_erase_events(action)
 	for event in new_bindings:
+		if event == null:
+			continue
+		
 		InputMap.action_add_event(action, event)

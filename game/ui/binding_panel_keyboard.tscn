@@ -1,0 +1,925 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ui/binding_panel.gd" type="Script" id=1]
+[ext_resource path="res://fonts/res/popup_font_minor.tres" type="DynamicFont" id=2]
+[ext_resource path="res://icons/back_icon.svg" type="Texture" id=3]
+[ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://icons/reset_icon.svg" type="Texture" id=5]
+[ext_resource path="res://ui/binding_button.gd" type="Script" id=6]
+
+[node name="BindingPanelKeyboard" type="PopupPanel"]
+margin_right = 700.0
+margin_bottom = 800.0
+popup_exclusive = true
+script = ExtResource( 1 )
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="HelpLabel" type="Label" parent="MainContainer"]
+margin_right = 692.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 2 )
+text = "To edit a binding, select it, then press the button you wish to assign."
+align = 1
+autowrap = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer"]
+margin_top = 29.0
+margin_right = 692.0
+margin_bottom = 752.0
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer/ScrollContainer"]
+margin_right = 692.0
+margin_bottom = 1160.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="BindingContainer" type="GridContainer" parent="MainContainer/ScrollContainer/MarginContainer"]
+margin_left = 20.0
+margin_right = 672.0
+margin_bottom = 1160.0
+columns = 3
+
+[node name="Gap0" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_right = 173.0
+margin_bottom = 30.0
+
+[node name="MovementLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_right = 407.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+text = "Movement"
+align = 1
+valign = 2
+clip_text = true
+
+[node name="Gap1" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_right = 640.0
+margin_bottom = 30.0
+
+[node name="ForwardLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 39.0
+margin_right = 173.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 2 )
+text = "Move Forward"
+
+[node name="ForwardButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 34.0
+margin_right = 407.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_up"
+
+[node name="ForwardButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 34.0
+margin_right = 640.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_up"
+index = 1
+
+[node name="LeftLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 79.0
+margin_right = 173.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 2 )
+text = "Move Left"
+
+[node name="LeftButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 74.0
+margin_right = 407.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_left"
+
+[node name="LeftButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 74.0
+margin_right = 640.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_left"
+index = 1
+
+[node name="BackwardLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 119.0
+margin_right = 173.0
+margin_bottom = 144.0
+custom_fonts/font = ExtResource( 2 )
+text = "Move Backward"
+
+[node name="BackwardButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 114.0
+margin_right = 407.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_down"
+
+[node name="BackwardButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 114.0
+margin_right = 640.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_down"
+index = 1
+
+[node name="RightLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 159.0
+margin_right = 173.0
+margin_bottom = 184.0
+custom_fonts/font = ExtResource( 2 )
+text = "Move Right"
+
+[node name="RightButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 154.0
+margin_right = 407.0
+margin_bottom = 190.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_right"
+
+[node name="RightButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 154.0
+margin_right = 640.0
+margin_bottom = 190.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_right"
+index = 1
+
+[node name="Gap2" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 194.0
+margin_right = 173.0
+margin_bottom = 224.0
+
+[node name="RotationLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 194.0
+margin_right = 407.0
+margin_bottom = 224.0
+rect_min_size = Vector2( 0, 30 )
+text = "Rotation"
+align = 1
+valign = 2
+clip_text = true
+
+[node name="Gap3" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 194.0
+margin_right = 640.0
+margin_bottom = 224.0
+
+[node name="RotateLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 233.0
+margin_right = 173.0
+margin_bottom = 258.0
+custom_fonts/font = ExtResource( 2 )
+text = "Rotate Camera"
+
+[node name="RotateButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 228.0
+margin_right = 407.0
+margin_bottom = 264.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate"
+
+[node name="RotateButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 228.0
+margin_right = 640.0
+margin_bottom = 264.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate"
+index = 1
+
+[node name="RotateUpLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 273.0
+margin_right = 173.0
+margin_bottom = 298.0
+custom_fonts/font = ExtResource( 2 )
+text = "Rotate Up"
+
+[node name="RotateUpButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 268.0
+margin_right = 407.0
+margin_bottom = 304.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate_up"
+
+[node name="RotateUpButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 268.0
+margin_right = 640.0
+margin_bottom = 304.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate_up"
+index = 1
+
+[node name="RotateLeftLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 313.0
+margin_right = 173.0
+margin_bottom = 338.0
+custom_fonts/font = ExtResource( 2 )
+text = "Rotate Left"
+
+[node name="RotateLeftButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 308.0
+margin_right = 407.0
+margin_bottom = 344.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate_left"
+
+[node name="RotateLeftButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 308.0
+margin_right = 640.0
+margin_bottom = 344.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate_left"
+index = 1
+
+[node name="RotateDownButton" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 353.0
+margin_right = 173.0
+margin_bottom = 378.0
+custom_fonts/font = ExtResource( 2 )
+text = "Rotate Down"
+
+[node name="RotateDownButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 348.0
+margin_right = 407.0
+margin_bottom = 384.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate_down"
+
+[node name="RotateDownButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 348.0
+margin_right = 640.0
+margin_bottom = 384.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate_down"
+index = 1
+
+[node name="RotateRightLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 393.0
+margin_right = 173.0
+margin_bottom = 418.0
+custom_fonts/font = ExtResource( 2 )
+text = "Rotate Right"
+
+[node name="RotateRightButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 388.0
+margin_right = 407.0
+margin_bottom = 424.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate_right"
+
+[node name="RotateRightButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 388.0
+margin_right = 640.0
+margin_bottom = 424.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate_right"
+index = 1
+
+[node name="Gap4" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 428.0
+margin_right = 173.0
+margin_bottom = 458.0
+
+[node name="ZoomLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 428.0
+margin_right = 407.0
+margin_bottom = 458.0
+rect_min_size = Vector2( 0, 30 )
+text = "Zoom / Lift"
+align = 1
+valign = 2
+clip_text = true
+
+[node name="Gap5" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 428.0
+margin_right = 640.0
+margin_bottom = 458.0
+
+[node name="ZoomInLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 467.0
+margin_right = 173.0
+margin_bottom = 492.0
+custom_fonts/font = ExtResource( 2 )
+text = "Zoom In / Lift Down"
+
+[node name="ZoomInButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 462.0
+margin_right = 407.0
+margin_bottom = 498.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_zoom_in"
+
+[node name="ZoomInButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 462.0
+margin_right = 640.0
+margin_bottom = 498.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_zoom_in"
+index = 1
+
+[node name="ZoomOutLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 507.0
+margin_right = 173.0
+margin_bottom = 532.0
+custom_fonts/font = ExtResource( 2 )
+text = "Zoom Out / Lift Up"
+
+[node name="ZoomOutButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 502.0
+margin_right = 407.0
+margin_bottom = 538.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_zoom_out"
+
+[node name="ZoomOutButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 502.0
+margin_right = 640.0
+margin_bottom = 538.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_zoom_out"
+index = 1
+
+[node name="Gap6" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 542.0
+margin_right = 173.0
+margin_bottom = 572.0
+
+[node name="CameraLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 542.0
+margin_right = 407.0
+margin_bottom = 572.0
+rect_min_size = Vector2( 0, 30 )
+text = "Camera"
+align = 1
+valign = 2
+clip_text = true
+
+[node name="Gap7" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 542.0
+margin_right = 640.0
+margin_bottom = 572.0
+
+[node name="ResetCameraLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 581.0
+margin_right = 173.0
+margin_bottom = 606.0
+custom_fonts/font = ExtResource( 2 )
+text = "Reset Camera"
+
+[node name="ResetCameraButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 576.0
+margin_right = 407.0
+margin_bottom = 612.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_reset_camera"
+
+[node name="ResetCameraButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 576.0
+margin_right = 640.0
+margin_bottom = 612.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_reset_camera"
+index = 1
+
+[node name="Gap8" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 616.0
+margin_right = 173.0
+margin_bottom = 646.0
+
+[node name="ObjectLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 616.0
+margin_right = 407.0
+margin_bottom = 646.0
+rect_min_size = Vector2( 0, 30 )
+text = "Objects"
+align = 1
+valign = 2
+clip_text = true
+
+[node name="Gap9" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 616.0
+margin_right = 640.0
+margin_bottom = 646.0
+
+[node name="FlipObjectLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 655.0
+margin_right = 173.0
+margin_bottom = 680.0
+custom_fonts/font = ExtResource( 2 )
+text = "Flip Orientation"
+
+[node name="FlipObjectButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 650.0
+margin_right = 407.0
+margin_bottom = 686.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_flip_piece"
+
+[node name="FlipObjectButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 650.0
+margin_right = 640.0
+margin_bottom = 686.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_flip_piece"
+index = 1
+
+[node name="ResetObjectLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 695.0
+margin_right = 173.0
+margin_bottom = 720.0
+custom_fonts/font = ExtResource( 2 )
+text = "Reset Orientation"
+
+[node name="ResetObjectButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 690.0
+margin_right = 407.0
+margin_bottom = 726.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_reset_piece"
+
+[node name="ResetObjectButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 690.0
+margin_right = 640.0
+margin_bottom = 726.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_reset_piece"
+index = 1
+
+[node name="RotateObjectLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 735.0
+margin_right = 173.0
+margin_bottom = 760.0
+custom_fonts/font = ExtResource( 2 )
+text = "Rotate Object"
+
+[node name="RotateObjectButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 730.0
+margin_right = 407.0
+margin_bottom = 766.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate_piece"
+
+[node name="RotateObjectButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 730.0
+margin_right = 640.0
+margin_bottom = 766.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_rotate_piece"
+index = 1
+
+[node name="ShuffleLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 775.0
+margin_right = 173.0
+margin_bottom = 800.0
+custom_fonts/font = ExtResource( 2 )
+text = "Shuffle Deck"
+
+[node name="ShuffleButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 770.0
+margin_right = 407.0
+margin_bottom = 806.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_shuffle_stack"
+
+[node name="ShuffleButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 770.0
+margin_right = 640.0
+margin_bottom = 806.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_shuffle_stack"
+index = 1
+
+[node name="LockLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 815.0
+margin_right = 173.0
+margin_bottom = 840.0
+custom_fonts/font = ExtResource( 2 )
+text = "Toggle Lock"
+
+[node name="LockButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 810.0
+margin_right = 407.0
+margin_bottom = 846.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_lock_piece"
+
+[node name="LockButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 810.0
+margin_right = 640.0
+margin_bottom = 846.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_lock_piece"
+index = 1
+
+[node name="DeleteLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 855.0
+margin_right = 173.0
+margin_bottom = 880.0
+custom_fonts/font = ExtResource( 2 )
+text = "Delete Object"
+
+[node name="DeleteButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 850.0
+margin_right = 407.0
+margin_bottom = 886.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_delete_piece"
+
+[node name="DeleteButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 850.0
+margin_right = 640.0
+margin_bottom = 886.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_delete_piece"
+index = 1
+
+[node name="Gap10" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 890.0
+margin_right = 173.0
+margin_bottom = 920.0
+
+[node name="SystemLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 890.0
+margin_right = 407.0
+margin_bottom = 920.0
+rect_min_size = Vector2( 0, 30 )
+text = "System"
+align = 1
+valign = 2
+clip_text = true
+
+[node name="Gap11" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 890.0
+margin_right = 640.0
+margin_bottom = 920.0
+
+[node name="MenuLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 929.0
+margin_right = 173.0
+margin_bottom = 954.0
+custom_fonts/font = ExtResource( 2 )
+text = "Main Menu"
+
+[node name="MenuButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 924.0
+margin_right = 407.0
+margin_bottom = 960.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_menu"
+
+[node name="MenuButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 924.0
+margin_right = 640.0
+margin_bottom = 960.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_menu"
+index = 1
+
+[node name="DebugInfoLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 969.0
+margin_right = 173.0
+margin_bottom = 994.0
+custom_fonts/font = ExtResource( 2 )
+text = "Toggle Debug Info"
+
+[node name="DebugInfoButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 964.0
+margin_right = 407.0
+margin_bottom = 1000.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_toggle_debug_info"
+
+[node name="DebugInfoButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 964.0
+margin_right = 640.0
+margin_bottom = 1000.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_toggle_debug_info"
+index = 1
+
+[node name="QuicksaveLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 1009.0
+margin_right = 173.0
+margin_bottom = 1034.0
+custom_fonts/font = ExtResource( 2 )
+text = "Quicksave"
+
+[node name="QuicksaveButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 1004.0
+margin_right = 407.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_quicksave"
+
+[node name="QuicksaveButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 1004.0
+margin_right = 640.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_quicksave"
+index = 1
+
+[node name="QuickloadLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 1049.0
+margin_right = 173.0
+margin_bottom = 1074.0
+custom_fonts/font = ExtResource( 2 )
+text = "Quickload"
+
+[node name="QuickloadButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 1044.0
+margin_right = 407.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_quickload"
+
+[node name="QuickloadButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 1044.0
+margin_right = 640.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_quickload"
+index = 1
+
+[node name="ToggleUILabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 1089.0
+margin_right = 173.0
+margin_bottom = 1114.0
+custom_fonts/font = ExtResource( 2 )
+text = "Toggle UI"
+
+[node name="ToggleUIButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 1084.0
+margin_right = 407.0
+margin_bottom = 1120.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_toggle_ui"
+
+[node name="ToggleUIButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 1084.0
+margin_right = 640.0
+margin_bottom = 1120.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_toggle_ui"
+index = 1
+
+[node name="ScreenshotLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 1129.0
+margin_right = 173.0
+margin_bottom = 1154.0
+custom_fonts/font = ExtResource( 2 )
+text = "Take Screenshot"
+
+[node name="ScreenshotButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 1124.0
+margin_right = 407.0
+margin_bottom = 1160.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_take_screenshot"
+
+[node name="ScreenshotButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 1124.0
+margin_right = 640.0
+margin_bottom = 1160.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_take_screenshot"
+index = 1
+
+[node name="ActionContainer" type="HBoxContainer" parent="MainContainer"]
+margin_top = 756.0
+margin_right = 692.0
+margin_bottom = 792.0
+
+[node name="BackButton" type="Button" parent="MainContainer/ActionContainer"]
+margin_right = 100.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = ExtResource( 4 )
+text = "Back"
+icon = ExtResource( 3 )
+expand_icon = true
+
+[node name="ResetButton" type="Button" parent="MainContainer/ActionContainer"]
+margin_left = 492.0
+margin_right = 692.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 10
+custom_fonts/font = ExtResource( 4 )
+text = "Reset Bindings"
+icon = ExtResource( 5 )
+expand_icon = true

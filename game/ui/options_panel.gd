@@ -116,6 +116,8 @@ onready var _msaa_samples_label := $MainContainer/OptionContainer/ScrollContaine
 onready var _hint_label := $MainContainer/HintLabel
 onready var _apply_button := $MainContainer/ButtonContainer/ApplyButton
 
+onready var _binding_panel_keyboard := $DialogContainer/BindingPanelKeyboard
+# TODO: Add the controller binding panel once we've figured out the scheme.
 onready var _discard_dialog := $DialogContainer/DiscardDialog
 onready var _keep_video_dialog := $DialogContainer/KeepVideoDialog
 
@@ -296,6 +298,8 @@ func write_config() -> void:
 		else:
 			push_error("Cannot set value of '%s' with control '%s', unimplemented type" % [
 					property_name, control.name])
+	
+	_binding_panel_keyboard.write_bindings()
 
 
 ## For each of the [OptionButton] controls in the options menu, set the required
@@ -535,6 +539,10 @@ func _on_OptionsPanel_about_to_show():
 	# Update the controls to match the current values of GameConfig properties.
 	read_config()
 	
+	# Update the binding menu buttons to show the new bindings.
+	_binding_panel_keyboard.clear_overrides()
+	_binding_panel_keyboard.update_buttons()
+	
 	# Now that they match, we can update the PlayerButton preview.
 	_player_button.text = GameConfig.multiplayer_name
 	_player_button.bg_color = GameConfig.multiplayer_color
@@ -609,7 +617,7 @@ func _on_VideoSectionButton_pressed():
 
 
 func _on_KeyBindingsButton_pressed():
-	pass # Replace with function body.
+	_binding_panel_keyboard.popup_centered()
 
 
 func _on_ControllerBindingsButton_pressed():
@@ -814,6 +822,11 @@ func _on_AdvancedGraphicsButton_toggled(button_pressed: bool):
 
 func _on_LanguageWarningLabel_meta_clicked(_meta):
 	OS.shell_open("https://hosted.weblate.org/engage/tabletop-club/")
+
+
+func _on_BindingPanelKeyboard_changing_binding(_action: String, _index: int):
+	# A binding is about to be changed, and the change will need to be applied.
+	_apply_button.disabled = false
 
 
 func _on_BackButton_pressed():

@@ -347,6 +347,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://game-icons.net/1x1/delapouite/exit-door.html
 
 
+- Reset icon
+
+	Files:
+		icons/reset_icon.svg
+	Author: CoreyGinnivan
+	License: CC0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/343263/reset
+
+
 - Ruler icon
 
 	Files:

@@ -134,6 +134,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Misc/BindButton.gd"
 }, {
+"base": "Button",
+"class": "BindingButton",
+"language": "GDScript",
+"path": "res://ui/binding_button.gd"
+}, {
 "base": "Reference",
 "class": "BindingManager",
 "language": "GDScript",
@@ -475,6 +480,7 @@ _global_script_class_icons={
 "AttentionPanel": "",
 "AudioStreamList": "",
 "BindButton": "",
+"BindingButton": "",
 "BindingManager": "",
 "CameraController": "",
 "CardMeshGenerator": "",
