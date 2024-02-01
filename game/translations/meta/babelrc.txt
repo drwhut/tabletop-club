@@ -1,3 +1,6 @@
+; We don't need to translate any strings from the Gut addon.
+[ignore: addons/**]
+
 [python: **.gd]
 encoding = utf-8
 
