@@ -28,26 +28,33 @@ margin_right = 618.0
 margin_bottom = 352.0
 
 [node name="LabelContainer" type="VBoxContainer" parent="MarginContainer/MainContainer"]
-margin_top = 89.0
+margin_top = 98.0
 margin_right = 604.0
-margin_bottom = 223.0
+margin_bottom = 214.0
 size_flags_vertical = 6
 custom_constants/separation = 18
 
-[node name="QuestionLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
+[node name="StatementLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
 margin_right = 604.0
-margin_bottom = 96.0
+margin_bottom = 30.0
 custom_fonts/font = ExtResource( 2 )
-text = "New video settings have been applied.
+text = "New video settings have been applied."
+align = 1
+autowrap = true
 
-Would you like to keep these new settings?"
+[node name="QuestionLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
+margin_top = 48.0
+margin_right = 604.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 2 )
+text = "Would you like to keep these new settings?"
 align = 1
 autowrap = true
 
 [node name="CountdownLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
-margin_top = 114.0
+margin_top = 96.0
 margin_right = 604.0
-margin_bottom = 134.0
+margin_bottom = 116.0
 custom_fonts/font = ExtResource( 5 )
 align = 1
 autowrap = true

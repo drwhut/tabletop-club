@@ -26,15 +26,27 @@ margin_left = 14.0
 margin_right = 618.0
 margin_bottom = 352.0
 
-[node name="QuestionLabel" type="Label" parent="MarginContainer/MainContainer"]
-margin_top = 91.0
+[node name="LabelContainer" type="VBoxContainer" parent="MarginContainer/MainContainer"]
+margin_top = 100.0
 margin_right = 604.0
-margin_bottom = 220.0
+margin_bottom = 211.0
 size_flags_vertical = 6
-custom_fonts/font = ExtResource( 2 )
-text = "Are you sure you want to reset all bindings back to their default inputs?
+custom_constants/separation = 18
 
-You will still need to apply the new bindings afterwards."
+[node name="QuestionLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
+margin_right = 604.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 2 )
+text = "Are you sure you want to reset all bindings back to their default inputs?"
+align = 1
+autowrap = true
+
+[node name="StatementLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
+margin_top = 81.0
+margin_right = 604.0
+margin_bottom = 111.0
+custom_fonts/font = ExtResource( 2 )
+text = "You will still need to apply the new bindings afterwards."
 align = 1
 autowrap = true
 
