@@ -743,6 +743,7 @@ ssl/certificates="res://master_server.crt"
 
 3d/default_gravity=98.1
 common/physics_interpolation=true
+common/enable_object_picking=false
 
 [rendering]
 
