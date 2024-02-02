@@ -522,6 +522,21 @@ func load_from_file() -> void:
 		var section_list := [ keyboard_0_section, "keyboard_bindings_1",
 			"controller_bindings_0" ]
 		
+		# In v0.1.x, only the [,] and [.] keys were editable in the key bindings
+		# menu, as the scroll wheel was permanently bound to zoom in / out.
+		# Now that the scroll wheel bindings can be changed, if we were to go
+		# ahead as normal only the [,] and [.] keys would end up bound to the
+		# zoom actions, meaning the scroll wheel would not work.
+		if flag_using_old_binding_system:
+			if action == "game_zoom_in":
+				var scroll_up := InputEventMouseButton.new()
+				scroll_up.button_index = BUTTON_WHEEL_UP
+				keyboard_bindings.push_back(scroll_up)
+			elif action == "game_zoom_out":
+				var scroll_down := InputEventMouseButton.new()
+				scroll_down.button_index = BUTTON_WHEEL_DOWN
+				keyboard_bindings.push_back(scroll_down)
+		
 		for element in section_list:
 			var section: String = element
 			if not config_file.has_section_key(section, action):

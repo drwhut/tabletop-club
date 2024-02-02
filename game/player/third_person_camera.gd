@@ -112,11 +112,11 @@ func _unhandled_input(event: InputEvent):
 			get_tree().set_input_as_handled()
 	
 	elif event is InputEventMouseButton:
-		if event.pressed and event.button_index == BUTTON_WHEEL_DOWN:
-			_adjust_zoom(1.0)
-			get_tree().set_input_as_handled()
-		elif event.pressed and event.button_index == BUTTON_WHEEL_UP:
+		if event.is_action_pressed("game_zoom_in", false):
 			_adjust_zoom(-1.0)
+			get_tree().set_input_as_handled()
+		elif event.is_action_pressed("game_zoom_out", false):
+			_adjust_zoom(1.0)
 			get_tree().set_input_as_handled()
 	
 	elif event is InputEventPanGesture:
