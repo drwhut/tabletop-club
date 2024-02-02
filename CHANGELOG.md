@@ -22,22 +22,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   the X and Z rotation needed to make the face point upwards.
 - Both 'Picnic Bench' and 'Table' are now textured.
 
-#### Project
+#### Controls
 
-- Added unit tests for various in-game systems using Gut v7.4.1 (#153)
-- Added a fallback directory in `user://` in the event that the player's
-  Documents folder could not be opened.
-- Optimised the look-up algorithm for certain node structures, which should lead
-  to better performance when there are many dynamic objects in play.
+- Added new bindings for rotating the camera up, down, left, and right. By
+  default these are bound to the arrow keys.
+- Bindings can now be removed by holding the Escape key while they are being
+  set.
+- "Mouse Wheel Up" and "Mouse Wheel Down" are now shown as editable bindings for
+  "Zoom In / Lift Down" and "Zoom Out / Lift Up" respectively.
+
+#### Graphics
+
 - Added the Fast Approximate Anti-Aliasing (FXAA) algorithm, which is now the
   default for players launching the game for the first time.
+- Added sliders that can change the brightness, contrast, and saturation of the
+  rendered scene in the options menu, under the "Video" section.
+- Added quality presets for advanced graphics settings in the options menu: Low,
+  Medium, High, Very High, and Ultra. The default for new players is Medium.
+- Added a toggle for showing advanced graphics settings in the options menu.
 
-#### UI
+#### Options
 
-- Added a fade-in effect for the main menu when the game first loads.
-- Added full controller support. (#100)
-- Added new bindings for rotating the camera, by default these are bound to the
-  arrow keys.
 - When reading the system's language, if it is a variant of a language that is
   already supported by the game, the game will use the supported language
   instead of reverting to English. For example, if the system is set to Austrian
@@ -49,17 +54,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   options menu.
 - Added a slider that can change the scale of the user interface in the options
   menu, under the "Video" section. (#290)
-- Added sliders that can change the brightness, contrast, and saturation of the
-  rendered scene in the options menu, under the "Video" section.
-- Added graphs to the debug screen showing both the frame delta, and the physics
-  frame delta, over time.
-- Added quality presets for advanced graphics settings in the options menu: Low,
-  Medium, High, Very High, and Ultra. The default for new players is Medium.
-- Added a toggle for showing advanced graphics settings in the options menu.
 - Added a new dialog for when the player is about to leave the options menu with
   new settings that have not been applied.
 - A countdown has been added to the dialog that appears when video settings have
   been changed, which will revert the changes automatically if it runs out.
+
+#### Project
+
+- Added unit tests for various in-game systems using Gut v7.4.1 (#153)
+- Added a fallback directory in `user://` in the event that the player's
+  Documents folder could not be opened.
+- Optimised the look-up algorithm for certain node structures, which should lead
+  to better performance when there are many dynamic objects in play.
+
+#### UI
+
+- Added a fade-in effect for the main menu when the game first loads.
+- Added full controller support. (#100)
+- Added graphs to the debug screen showing both the frame delta, and the physics
+  frame delta, over time.
 
 ### Changed
 
@@ -85,8 +98,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The collision shapes of the following objects have been simplified:
   'Chess Board', 'Bishop', 'King', 'Knight', 'Pawn', 'Picnic Bench', 'Pot',
   'Purse', 'Queen', 'Radio', 'Rook', 'Table'.
-- The centre-of-mass of the following objects has been adjusted: 'Purse',
+- The centre-of-mass of the following objects have been adjusted: 'Purse',
   'Gramophone', 'Radio'.
+
+#### Controls
+
+- Up to two keyboard and mouse bindings can be set per action now, instead of
+  just one.
+- Keyboard and controller bindings are now only stored if they are changed from
+  their default values. This means that if the default value changes in a future
+  version of the game, and you have not explicitly set a binding for a specific
+  action, that action's binding will change to the new default.
+- When changing a binding, instead of a dialog pop-up being shown, the binding's
+  text simply changes to indicate it is waiting for a button press.
+
+#### Graphics
+
+- Restarting is no longer required to see the effects of changing the "Shadow
+  Detail" level.
+
+#### Options
+
+- The "Effects Volume" option is now called "Object Volume" to better reflect
+  its function.
+- The "Multiplayer" tab in the options menu has been renamed to "Player".
+- Hints for properties in the options menu are now shown in a dedicated label
+  rather than in tooltips.
+- Slightly adjusted the hints for properties in the options menu.
+- The "Chat Font Size" option is now called "Chat Window Font Size", and has
+  been moved to the "General" tab from the "Multiplayer" tab.
+- "Skybox Radiance Detail" has been renamed to "Skybox Lighting Detail" in the
+  options menu.
+- The "Key Bindings" tab in the options menu has been removed in favour of a
+  separate menu under the "Controls" tab.
 
 #### Project
 
@@ -96,14 +140,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   implementation.
 - Changed the project's directory structure in order to comply with Godot
   conventions.
-- Restarting is no longer required to see the effects of changing the "Shadow
-  Detail" level.
-- Up to two keyboard and mouse bindings can be set per action now, instead of
-  just one.
-- Keyboard and controller bindings are now only stored if they are changed from
-  their default values. This means that if the default value changes in a future
-  version of the game, and you have not explicitly set a binding for a specific
-  action, that action's binding will change to the new default.
+
+#### Tools
+
+- Optimised the performance of the paint and erase tools.
+- The appearance of hidden areas is now animated.
 
 #### UI
 
@@ -119,23 +160,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The game room is now loaded alongside the main menu, removing the need for a
   loading screen when entering singleplayer or multiplayer.
 - The in-game menu screen now uses the same layout as the main menu.
-- Optimised the performance of the paint and erase tools.
-- The appearance of hidden areas is now animated.
-- The "Effects Volume" option is now called "Object Volume" to better reflect
-  its function.
-- The "Multiplayer" tab in the options menu has been renamed to "Player".
-- Hints for properties in the options menu are now shown in a dedicated label
-  rather than in tooltips.
-- Slightly adjusted the hints for properties in the options menu.
-- The "Chat Font Size" option is now called "Chat Window Font Size", and has
-  been moved to the "General" tab from the "Multiplayer" tab.
 - The appearance of the player list has been significantly improved.
 - The colour pickers used throughout the UI have been replaced with colour
   sliders, which can be switched between two modes: HSV and RGB.
 - Renamed the "Contributors" section in the credits to "Code Contributors".
 - Increased the font size of the text in the debug screen.
-- "Skybox Radiance Detail" has been renamed to "Skybox Lighting Detail" in the
-  options menu.
 
 ### Fixed
 
@@ -144,6 +173,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Objects inside of stacks will now retain their custom colour after reloading
   a previous save.
 - An object's centre-of-mass will no longer change when the object is scaled.
+
+#### UI
+
+- Fixed some labels not being added to the translation template file, which was
+  preventing them from being able to be translated by contributors.
 
 ### Removed
 
@@ -161,8 +195,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The randomly selected pieces that were falling in the background of the main
   menu have been removed.
-- The "Key Bindings" tab in the options menu has been removed in favour of a
-  separate menu under the "Controls" tab.
 - The "Video Adapter" and "Physics Objects" values have been removed from the
   debug screen, as they currently do not work correctly in the engine.
 
