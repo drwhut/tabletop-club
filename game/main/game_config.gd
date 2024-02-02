@@ -516,6 +516,7 @@ func load_from_file() -> void:
 		keyboard_0_section = "key_bindings"
 	
 	for action in _configurable_actions:
+		var allow_empty := false
 		var keyboard_bindings := []
 		var controller_bindings := []
 		var section_list := [ keyboard_0_section, "keyboard_bindings_1",
@@ -528,6 +529,12 @@ func load_from_file() -> void:
 			
 			var event = config_file.get_value(section, action)
 			if event is InputEvent:
+				# If we see an InputEventAction, that is effectively code for
+				# "don't bind anything". See save_to_file() for more details.
+				if event is InputEventAction:
+					allow_empty = true
+					continue
+				
 				if section == "controller_bindings_0":
 					controller_bindings.push_back(event)
 				else:
@@ -537,9 +544,9 @@ func load_from_file() -> void:
 						section, action, CONFIG_FILE_PATH])
 				continue
 		
-		if not keyboard_bindings.empty():
+		if allow_empty or (not keyboard_bindings.empty()):
 			binding_manager.set_keyboard_bindings(action, keyboard_bindings)
-		if not controller_bindings.empty():
+		if allow_empty or (not controller_bindings.empty()):
 			binding_manager.set_controller_bindings(action, controller_bindings)
 
 
@@ -650,6 +657,12 @@ func save_to_file(overrides: Dictionary = {}) -> void:
 			action, 0)
 		if binding_manager.are_bindings_equal(keyboard_0_binding, keyboard_0_default):
 			keyboard_0_binding = null
+		elif keyboard_0_binding == null:
+			# If we are clearing a binding that exists by default, we can't use
+			# null as the binding will just come back once we restart the game.
+			# It is impossible for the user to input an InputEventAction, so we
+			# can use that to represent "no binding".
+			keyboard_0_binding = InputEventAction.new()
 		
 		var keyboard_1_binding := binding_manager.get_keyboard_binding(
 			action, 1)
@@ -657,6 +670,8 @@ func save_to_file(overrides: Dictionary = {}) -> void:
 			action, 1)
 		if binding_manager.are_bindings_equal(keyboard_1_binding, keyboard_1_default):
 			keyboard_1_binding = null
+		elif keyboard_1_binding == null:
+			keyboard_1_binding = InputEventAction.new()
 		
 		var controller_binding := binding_manager.get_controller_binding(
 			action, 0)
@@ -664,6 +679,8 @@ func save_to_file(overrides: Dictionary = {}) -> void:
 			action, 0)
 		if binding_manager.are_bindings_equal(controller_binding, controller_default):
 			controller_binding = null
+		elif controller_binding == null:
+			controller_binding = InputEventAction.new()
 		
 		if keyboard_0_binding != null:
 			config_file.set_value("keyboard_bindings_0", action,

@@ -43,6 +43,13 @@ export(bool) var controller := false
 # If set, this will be the new binding for the given action.
 var _binding_override: InputEvent = null
 
+# If set, any binding that was shown previously (either from the InputMap or
+# from the override) will be removed.
+var _remove_override := false
+
+# The timer that starts when the user wishes to remove the binding.
+var _unbind_timer := Timer.new()
+
 
 func _ready():
 	# When the button is pressed, we want to keep it pressed for as long as the
@@ -50,15 +57,39 @@ func _ready():
 	toggle_mode = true
 	
 	connect("toggled", self, "_on_toggled")
+	
+	_unbind_timer.wait_time = 1.0
+	_unbind_timer.one_shot = true
+	_unbind_timer.autostart = false
+	
+	_unbind_timer.connect("timeout", self, "_on_unbind_timer_timeout")
+	add_child(_unbind_timer)
 
 
 func _input(event: InputEvent):
 	if not pressed:
 		return
 	
-	# Only accept press events, as we want to try and catch the ESC key being
-	# pressed before the binding panel closes.
-	if not event.is_pressed():
+	if event.is_echo():
+		return
+	
+	if event.is_action("ui_cancel"):
+		if event.is_pressed():
+			# If Esc was just pressed, we don't want to immediately bind it.
+			# Instead, we want to see how long it takes for the user to release
+			# the button. If they wait long enough, we'll clear the binding.
+			_unbind_timer.start()
+			
+			get_tree().set_input_as_handled()
+			return
+		else:
+			# However, if they release it early enough, stop the timer and treat
+			# it like any other button press.
+			_unbind_timer.stop()
+	
+	# Only check press events, as that is typically what panels and dialogs are
+	# checking for also.
+	elif not event.is_pressed():
 		return
 	
 	var is_valid := false
@@ -72,6 +103,7 @@ func _input(event: InputEvent):
 	
 	# We have a valid binding, assign it and update the display.
 	_binding_override = event
+	_remove_override = false
 	print("BindingButton: New binding assigned for action '%s/%d': %s" % [
 			action, index, str(event)])
 	
@@ -84,6 +116,9 @@ func _input(event: InputEvent):
 ## Get the current binding for the given action and index. If the binding has
 ## been overridden by the player, the override is returned instead.
 func get_binding() -> InputEvent:
+	if _remove_override:
+		return null
+	
 	if _binding_override != null:
 		return _binding_override
 	
@@ -93,6 +128,14 @@ func get_binding() -> InputEvent:
 		return binding_manager.get_controller_binding(action, index)
 	else:
 		return binding_manager.get_keyboard_binding(action, index)
+
+
+## Remove the binding for the given action and index. The binding will be
+## removed even if it was overridden with [method set_override]. When
+## [method update_display] is called afterwards, the button will display "Not
+## Bound".
+func remove_binding() -> void:
+	_remove_override = true
 
 
 ## Get the current binding override for the given action and index. If it has
@@ -106,6 +149,7 @@ func get_override() -> InputEvent:
 ## and index.
 func clear_override() -> void:
 	_binding_override = null
+	_remove_override = false
 
 
 ## Set the current binding override. When [method update_display] is called
@@ -126,6 +170,7 @@ func set_override(override: InputEvent) -> void:
 			return
 	
 	_binding_override = override
+	_remove_override = false
 
 
 ## Update the display of the button to match the action's current binding. If
@@ -178,3 +223,16 @@ func _on_toggled(pressed: bool):
 		return
 	
 	text = tr("Press any key…")
+
+
+func _on_unbind_timer_timeout():
+	if not pressed:
+		return
+	
+	# The user has held down the ESC key for long enough that we'll clear the
+	# button's binding.
+	_remove_override = true
+	print("BindingButton: Cleared binding for action '%s/%d'" % [action, index])
+	
+	update_display()
+	pressed = false

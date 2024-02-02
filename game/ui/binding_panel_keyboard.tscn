@@ -30,8 +30,17 @@ text = "To edit a binding, select it, then press the button you wish to assign."
 align = 1
 autowrap = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer"]
+[node name="HelpLabel2" type="Label" parent="MainContainer"]
 margin_top = 29.0
+margin_right = 692.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 2 )
+text = "To unbind an action, select it, then hold the Escape key for up to one second."
+align = 1
+autowrap = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer"]
+margin_top = 58.0
 margin_right = 692.0
 margin_bottom = 752.0
 size_flags_vertical = 3

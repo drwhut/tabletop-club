@@ -154,9 +154,7 @@ func _on_BindingResetDialog_resetting_bindings():
 				binding_button.index)
 		
 		if default_binding == null:
-			# TODO: Need to remove the binding altogether, not just set it back
-			# to what is in the InputMap.
-			binding_button.clear_override()
+			binding_button.remove_binding()
 		else:
 			binding_button.set_override(default_binding)
 		
