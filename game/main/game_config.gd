@@ -516,7 +516,6 @@ func load_from_file() -> void:
 		keyboard_0_section = "key_bindings"
 	
 	for action in _configurable_actions:
-		var allow_empty := false
 		var keyboard_bindings := []
 		var controller_bindings := []
 		var section_list := [ keyboard_0_section, "keyboard_bindings_1",
@@ -539,30 +538,41 @@ func load_from_file() -> void:
 		
 		for element in section_list:
 			var section: String = element
-			if not config_file.has_section_key(section, action):
-				continue
 			
-			var event = config_file.get_value(section, action)
-			if event is InputEvent:
-				# If we see an InputEventAction, that is effectively code for
-				# "don't bind anything". See save_to_file() for more details.
-				if event is InputEventAction:
-					allow_empty = true
+			var event: InputEvent = null
+			if config_file.has_section_key(section, action):
+				var value = config_file.get_value(section, action)
+				
+				if not value is InputEvent:
+					push_error("Invalid value for '%s/%s' in '%s', not an InputEvent" % [
+							section, action, CONFIG_FILE_PATH])
 					continue
 				
+				# If we see an InputEventAction, it means the same thing as
+				# "no binding". See save_to_file() for more details.
+				if value is InputEventAction:
+					continue
+				
+				event = value
+			else:
+				if section == "controller_bindings_0":
+					event = binding_manager.get_controller_binding_default(
+							action, 0)
+				elif section == "keyboard_bindings_1":
+					event = binding_manager.get_keyboard_binding_default(
+							action, 1)
+				else: # keyboard_bindings_0, key_bindings.
+					event = binding_manager.get_keyboard_binding_default(
+							action, 0)
+			
+			if event != null:
 				if section == "controller_bindings_0":
 					controller_bindings.push_back(event)
 				else:
 					keyboard_bindings.push_back(event)
-			else:
-				push_error("Invalid value for '%s/%s' in '%s', not an InputEvent" % [
-						section, action, CONFIG_FILE_PATH])
-				continue
 		
-		if allow_empty or (not keyboard_bindings.empty()):
-			binding_manager.set_keyboard_bindings(action, keyboard_bindings)
-		if allow_empty or (not controller_bindings.empty()):
-			binding_manager.set_controller_bindings(action, controller_bindings)
+		binding_manager.set_keyboard_bindings(action, keyboard_bindings)
+		binding_manager.set_controller_bindings(action, controller_bindings)
 
 
 ## Save the current configuration to disk. Optional overrides can be given,
