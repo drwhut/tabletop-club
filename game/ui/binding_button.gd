@@ -93,19 +93,21 @@ func _input(event: InputEvent):
 		return
 	
 	var is_valid := false
-	if controller:
-		is_valid = (event is InputEventJoypadButton)
-	else:
-		is_valid = (event is InputEventKey or event is InputEventMouseButton)
 	
-	if not is_valid:
+	if event is InputEventKey:
+		is_valid = not controller
+	elif event is InputEventMouseButton:
+		is_valid = not controller
+	elif event is InputEventJoypadButton:
+		is_valid = controller
+	else:
 		return
 	
-	# We have a valid binding, assign it and update the display.
-	_binding_override = event
-	_remove_override = false
-	print("BindingButton: New binding assigned for action '%s/%d': %s" % [
-			action, index, str(event)])
+	if is_valid:
+		_binding_override = event
+		_remove_override = false
+		print("BindingButton: New binding assigned for action '%s/%d': %s" % [
+				action, index, str(event)])
 	
 	update_display()
 	pressed = false
