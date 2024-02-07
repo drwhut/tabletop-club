@@ -165,6 +165,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   sliders, which can be switched between two modes: HSV and RGB.
 - Renamed the "Contributors" section in the credits to "Code Contributors".
 - Increased the font size of the text in the debug screen.
+- Optimised certain operations on the chat log.
 
 ### Fixed
 

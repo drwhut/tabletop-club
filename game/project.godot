@@ -154,6 +154,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://util/card_mesh_generator.gd"
 }, {
+"base": "RichTextLabel",
+"class": "ChatTextLabel",
+"language": "GDScript",
+"path": "res://chat/chat_text_label.gd"
+}, {
 "base": "VBoxContainer",
 "class": "ColorSlider",
 "language": "GDScript",
@@ -268,6 +273,11 @@ _global_script_classes=[ {
 "class": "MainMenuCamera",
 "language": "GDScript",
 "path": "res://main/main_menu_camera.gd"
+}, {
+"base": "Reference",
+"class": "Message",
+"language": "GDScript",
+"path": "res://chat/message.gd"
 }, {
 "base": "Reference",
 "class": "ObjectBuilder",
@@ -484,6 +494,7 @@ _global_script_class_icons={
 "BindingManager": "",
 "CameraController": "",
 "CardMeshGenerator": "",
+"ChatTextLabel": "",
 "ColorSlider": "",
 "ContainerState": "",
 "ControllerRichTextLabel": "",
@@ -507,6 +518,7 @@ _global_script_class_icons={
 "IntegerSpinBox": "",
 "LabeledSlider": "",
 "MainMenuCamera": "",
+"Message": "",
 "ObjectBuilder": "",
 "ObjectPreview": "",
 "ObjectPreviewGrid": "",
@@ -569,6 +581,7 @@ ImportAbortFlag="*res://assets/import_abort_flag.gd"
 AssetDB="*res://assets/asset_db.gd"
 GameConfig="*res://main/game_config.gd"
 ControllerEcho="*res://util/controller_echo.gd"
+MessageHub="*res://chat/message_hub.gd"
 
 [debug]
 

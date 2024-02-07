@@ -219,11 +219,9 @@ var general_autosave_file_count := 10 setget set_general_autosave_file_count
 var general_skip_splash_screen := false
 
 ## Determines if system warnings should be shown in the chat box.
-## TODO: Implement this setting.
 var general_show_warnings := true
 
 ## Determines if system errors should be shown in the chat box.
-## TODO: Implement this setting.
 var general_show_errors := true
 
 
