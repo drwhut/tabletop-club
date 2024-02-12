@@ -34,6 +34,12 @@ func get_camera() -> Camera:
 	return null
 
 
+## Returns [code]true[/code] if the controller is currently using the mouse's
+## movement.
+func is_using_mouse() -> bool:
+	return false
+
+
 ## Reset the camera to its default position and rotation.
 func reset_transform() -> void:
 	pass

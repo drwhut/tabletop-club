@@ -30,12 +30,21 @@ extends Node
 export(bool) var disabled: bool setget set_disabled, is_disabled
 
 
-onready var _third_person_camera := $ThirdPersonCamera
+onready var _third_person_camera: CameraController = $ThirdPersonCamera
 
 
 ## Get the currently active camera controller.
 func get_camera_controller() -> CameraController:
-	return _third_person_camera as CameraController
+	return _third_person_camera
+
+
+## Returns [code]true[/code] if either the PlayerController or the currently
+## active CameraController is capturing mouse movement.
+func is_using_mouse() -> bool:
+	if is_disabled():
+		return false
+	
+	return get_camera_controller().is_using_mouse()
 
 
 ## Reset the player controller to its default state.

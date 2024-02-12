@@ -168,6 +168,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optimised certain operations on the chat log.
 - Improved the appearance of the chat window.
 - The chat window is now also shown in the main menu, as well as in-game.
+- The chat window will now become transparent when the mouse is being used
+  somewhere else in the game.
 
 ### Fixed
 

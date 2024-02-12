@@ -36,7 +36,9 @@ var minimized: bool setget set_minimized, is_minimized
 
 onready var _chat_panel := $ChatPanel
 onready var _chat_line_edit := $ChatLineEdit
+onready var _chat_text_label := $ChatPanel/MarginContainer/ChatTextLabel
 onready var _maximize_button := $MaximizeButton
+onready var _minimize_button := $ChatPanel/MinimizeButton
 
 
 func is_disabled() -> bool:
@@ -49,6 +51,14 @@ func is_minimized() -> bool:
 
 func set_disabled(value: bool) -> void:
 	modulate.a = 0.5 if value else 1.0
+	
+	var control_mouse_filter := Control.MOUSE_FILTER_IGNORE if value \
+			else Control.MOUSE_FILTER_STOP
+	
+	_chat_line_edit.mouse_filter = control_mouse_filter
+	_chat_text_label.mouse_filter = control_mouse_filter
+	_maximize_button.mouse_filter = control_mouse_filter
+	_minimize_button.mouse_filter = control_mouse_filter
 
 
 func set_minimized(value: bool) -> void:

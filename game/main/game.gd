@@ -39,6 +39,10 @@ enum MenuState {
 var menu_state: int = MenuState.STATE_MAIN_MENU setget set_menu_state
 
 
+# Last frame, was the player controller capturing mouse movement?
+var _player_controller_using_mouse_last_frame := false
+
+
 onready var _chat_window := $ChatWindow
 onready var _main_menu := $MainMenu
 onready var _main_menu_camera := $MainMenuCamera
@@ -60,6 +64,23 @@ func _ready():
 	# to receive the ready signal. Therefore, all nodes should now be ready to
 	# receive the apply_settings signal from GameConfig.
 	GameConfig.apply_all()
+
+
+func _process(_delta: float):
+	# Check if the player controller has just started, or just stopped, using
+	# mouse movement. We need to check so that we can either enable or disable
+	# the chat window to give the mouse as much screen real estate as possible.
+	var player_controller_using_mouse_this_frame: bool = \
+			_player_controller.is_using_mouse()
+	
+	if (
+		player_controller_using_mouse_this_frame !=
+		_player_controller_using_mouse_last_frame
+	):
+		_chat_window.disabled = player_controller_using_mouse_this_frame
+	
+	_player_controller_using_mouse_last_frame = \
+			player_controller_using_mouse_this_frame
 
 
 func _unhandled_input(event: InputEvent):

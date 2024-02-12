@@ -83,6 +83,9 @@ var _current_rotation := Vector2.ZERO
 # How far the camera should be from the spatial node.
 var _target_zoom := 0.0
 
+# Has the player moved the mouse since wanting to rotate the camera?
+var _has_mouse_moved_during_rotate := false
+
 
 onready var _camera: Camera = $Camera
 
@@ -102,6 +105,11 @@ func _process(delta: float):
 	_process_zoom(delta)
 
 
+func _input(event: InputEvent):
+	if event.is_action_pressed("game_rotate"):
+		_has_mouse_moved_during_rotate = false
+
+
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseMotion:
 		if Input.is_action_pressed("game_rotate"):
@@ -110,6 +118,8 @@ func _unhandled_input(event: InputEvent):
 			#     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			_adjust_rotation(event.relative)
 			get_tree().set_input_as_handled()
+			
+			_has_mouse_moved_during_rotate = true
 	
 	elif event is InputEventMouseButton:
 		if event.is_action_pressed("game_zoom_in", false):
@@ -126,6 +136,10 @@ func _unhandled_input(event: InputEvent):
 
 func get_camera() -> Camera:
 	return _camera
+
+
+func is_using_mouse() -> bool:
+	return _has_mouse_moved_during_rotate and Input.is_action_pressed("game_rotate")
 
 
 func reset_transform() -> void:
