@@ -307,6 +307,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	Modified By: Benjamin 'drwhut' Beddows
 
 
+- Minimize icon
+
+	Files:
+		icons/minimize_icon.svg
+	Author: afnizarnur
+	License: MIT
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/509381/minimize
+
+
 - Multiplayer icon
 
 	Files:

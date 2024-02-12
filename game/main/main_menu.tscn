@@ -57,6 +57,7 @@ tracks/0/keys = {
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 10 )
 
 [node name="MainContainer" type="VBoxContainer" parent="."]

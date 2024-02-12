@@ -35,6 +35,12 @@ signal returning_to_game()
 ## menu.
 signal exiting_to_main_menu()
 
+## Fired when a popup is about to be shown in the main menu.
+signal popup_about_to_show()
+
+## Fired when a popup is about to be hidden in the main menu.
+signal popup_about_to_hide()
+
 
 ## If [code]true[/code], the leave and return buttons are shown instead of the
 ## singleplayer and multiplayer ones.
@@ -59,6 +65,12 @@ onready var _website_panel := $WebsitePanel
 
 
 func _ready():
+	# We want to emit signals whenever any of the popups are shown or hidden.
+	for child in get_children():
+		if child is Popup:
+			child.connect("about_to_show", self, "_on_popup_about_to_show")
+			child.connect("popup_hide", self, "_on_popup_about_to_hide")
+	
 	_animation_player.play("FadeInMenu")
 
 
@@ -127,3 +139,11 @@ func _on_QuitButton_pressed():
 
 func _on_LeaveDialog_leaving_session():
 	emit_signal("exiting_to_main_menu")
+
+
+func _on_popup_about_to_show():
+	emit_signal("popup_about_to_show")
+
+
+func _on_popup_about_to_hide():
+	emit_signal("popup_about_to_hide")

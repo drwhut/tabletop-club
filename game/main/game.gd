@@ -39,6 +39,7 @@ enum MenuState {
 var menu_state: int = MenuState.STATE_MAIN_MENU setget set_menu_state
 
 
+onready var _chat_window := $ChatWindow
 onready var _main_menu := $MainMenu
 onready var _main_menu_camera := $MainMenuCamera
 onready var _menu_background := $MenuBackground
@@ -142,3 +143,11 @@ func _on_MainMenu_returning_to_game():
 
 func _on_MainMenu_exiting_to_main_menu():
 	set_menu_state(MenuState.STATE_MAIN_MENU)
+
+
+func _on_MainMenu_popup_about_to_show():
+	_chat_window.disabled = true
+
+
+func _on_MainMenu_popup_about_to_hide():
+	_chat_window.disabled = false

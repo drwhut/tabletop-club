@@ -1,0 +1,9 @@
+[gd_resource type="DynamicFont" load_steps=3 format=2]
+
+[ext_resource path="res://fonts/data/Cabin-BoldItalic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/data/PTSans-BoldItalic.ttf" type="DynamicFontData" id=2]
+
+[resource]
+use_filter = true
+font_data = ExtResource( 1 )
+fallback/0 = ExtResource( 2 )

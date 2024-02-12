@@ -67,17 +67,23 @@ func push_message(message: Message) -> void:
 			pass
 		Message.TYPE_INFO:
 			push_color(Color.aqua)
+			push_bold()
 			add_text("[INFO] ")
+			pop()
 			pop()
 			add_text(message.text)
 		Message.TYPE_WARNING:
 			push_color(Color.yellow)
+			push_bold()
 			add_text("[WARN] ")
+			pop()
 			add_text(message.text)
 			pop()
 		Message.TYPE_ERROR:
 			push_color(Color.red)
+			push_bold()
 			add_text("[ERROR] ")
+			pop()
 			add_text(message.text)
 			pop()
 		_:
@@ -100,6 +106,28 @@ func remove_message(line: int) -> void:
 
 
 func _on_GameConfig_applying_settings():
+	var font_size := 16
+	match GameConfig.multiplayer_chat_font_size:
+		GameConfig.FONT_SIZE_SMALL:
+			font_size = 12
+		GameConfig.FONT_SIZE_MEDIUM:
+			font_size = 16
+		GameConfig.FONT_SIZE_LARGE:
+			font_size = 20
+	
+	# NOTE: This section expects custom fonts to be set in the theme overrides.
+	var normal_font: DynamicFont = get_font("normal_font")
+	normal_font.size = font_size
+	
+	var italics_font: DynamicFont = get_font("italics_font")
+	italics_font.size = font_size
+	
+	var bold_font: DynamicFont = get_font("bold_font")
+	bold_font.size = font_size
+	
+	var bold_italics_font: DynamicFont = get_font("bold_italics_font")
+	bold_italics_font.size = font_size
+	
 	# If either of these settings was just disabled, we need to go through and
 	# prune that type of message if it has already been added.
 	if GameConfig.general_show_errors and GameConfig.general_show_warnings:
