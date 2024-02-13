@@ -154,6 +154,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://util/card_mesh_generator.gd"
 }, {
+"base": "LineEdit",
+"class": "ChatLineEdit",
+"language": "GDScript",
+"path": "res://chat/chat_line_edit.gd"
+}, {
 "base": "RichTextLabel",
 "class": "ChatTextLabel",
 "language": "GDScript",
@@ -494,6 +499,7 @@ _global_script_class_icons={
 "BindingManager": "",
 "CameraController": "",
 "CardMeshGenerator": "",
+"ChatLineEdit": "",
 "ChatTextLabel": "",
 "ColorSlider": "",
 "ContainerState": "",

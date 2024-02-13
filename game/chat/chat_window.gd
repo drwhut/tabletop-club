@@ -52,6 +52,8 @@ func is_minimized() -> bool:
 func set_disabled(value: bool) -> void:
 	modulate.a = 0.5 if value else 1.0
 	
+	_chat_line_edit.editable = not value
+	
 	var control_mouse_filter := Control.MOUSE_FILTER_IGNORE if value \
 			else Control.MOUSE_FILTER_STOP
 	

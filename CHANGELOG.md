@@ -73,6 +73,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added full controller support. (#100)
 - Added graphs to the debug screen showing both the frame delta, and the physics
   frame delta, over time.
+- When typing a message in the chat window, the up and down arrow keys will now
+  display the player's message history from that session.
 
 ### Changed
 
