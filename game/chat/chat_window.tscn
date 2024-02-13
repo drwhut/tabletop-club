@@ -89,4 +89,5 @@ icon = ExtResource( 8 )
 expand_icon = true
 
 [connection signal="pressed" from="ChatPanel/MinimizeButton" to="." method="_on_MinimizeButton_pressed"]
+[connection signal="entry_added" from="ChatLineEdit" to="." method="_on_ChatLineEdit_entry_added"]
 [connection signal="pressed" from="MaximizeButton" to="." method="_on_MaximizeButton_pressed"]

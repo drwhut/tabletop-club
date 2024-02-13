@@ -154,6 +154,11 @@ func set_menu_state(value: int) -> void:
 			_main_menu_camera.state = MainMenuCamera.CameraState.STATE_ORBIT_TO_PLAYER
 
 
+func _on_ChatWindow_text_entered(text: String):
+	var command_parser := CommandParser.new()
+	command_parser.parse_command(text)
+
+
 func _on_MainMenu_starting_singleplayer():
 	set_menu_state(MenuState.STATE_NO_MENU)
 

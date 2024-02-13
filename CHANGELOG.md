@@ -22,6 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   the X and Z rotation needed to make the face point upwards.
 - Both 'Picnic Bench' and 'Table' are now textured.
 
+#### Commands
+
+- Added the `/say` command, which sends a public message to all players in the
+  current room. This is the same behaviour as entering a normal message in the
+  chat window.
+
 #### Controls
 
 - Added new bindings for rotating the camera up, down, left, and right. By

@@ -48,6 +48,7 @@ color = Color( 0, 0, 0, 0.313726 )
 
 [node name="DebugInfo" parent="." instance=ExtResource( 7 )]
 
+[connection signal="text_entered" from="ChatWindow" to="." method="_on_ChatWindow_text_entered"]
 [connection signal="exiting_to_main_menu" from="MainMenu" to="." method="_on_MainMenu_exiting_to_main_menu"]
 [connection signal="popup_about_to_hide" from="MainMenu" to="." method="_on_MainMenu_popup_about_to_hide"]
 [connection signal="popup_about_to_show" from="MainMenu" to="." method="_on_MainMenu_popup_about_to_show"]

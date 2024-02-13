@@ -25,6 +25,10 @@ extends Container
 ## The chat window, which contains a [ChatTextLabel] and a [ChatLineEdit].
 
 
+## Fired when the player has entered text in the [ChatLineEdit].
+signal text_entered(text)
+
+
 ## Sets if the window is disabled or not. If the window is disabled, it becomes
 ## transparent, and the player cannot interact with it.
 var disabled: bool setget set_disabled, is_disabled
@@ -67,6 +71,10 @@ func set_minimized(value: bool) -> void:
 	_chat_panel.visible = not value
 	_chat_line_edit.visible = not value
 	_maximize_button.visible = value
+
+
+func _on_ChatLineEdit_entry_added(entry_text: String):
+	emit_signal("text_entered", entry_text)
 
 
 func _on_MinimizeButton_pressed():
