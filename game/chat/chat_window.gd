@@ -28,6 +28,9 @@ extends Container
 ## Fired when the player has entered text in the [ChatLineEdit].
 signal text_entered(text)
 
+## Fired when the focus is leaving the chat window.
+signal focus_leaving()
+
 
 ## Sets if the window is disabled or not. If the window is disabled, it becomes
 ## transparent, and the player cannot interact with it.
@@ -41,6 +44,7 @@ var minimized: bool setget set_minimized, is_minimized
 onready var _chat_panel := $ChatPanel
 onready var _chat_line_edit := $ChatLineEdit
 onready var _chat_text_label := $ChatPanel/MarginContainer/ChatTextLabel
+onready var _exit_focus_capture := $ExitFocusCapture
 onready var _maximize_button := $MaximizeButton
 onready var _minimize_button := $ChatPanel/MinimizeButton
 
@@ -71,6 +75,11 @@ func set_minimized(value: bool) -> void:
 	_chat_panel.visible = not value
 	_chat_line_edit.visible = not value
 	_maximize_button.visible = value
+	
+	if value:
+		_maximize_button.grab_focus()
+	else:
+		_chat_line_edit.grab_focus()
 
 
 func _on_ChatLineEdit_entry_added(entry_text: String):
@@ -83,3 +92,8 @@ func _on_MinimizeButton_pressed():
 
 func _on_MaximizeButton_pressed():
 	set_minimized(false)
+
+
+func _on_ExitFocusCapture_focus_entered():
+	_exit_focus_capture.release_focus()
+	emit_signal("focus_leaving")

@@ -49,7 +49,7 @@ scroll_horizontal_enabled = false
 
 [node name="MarginContainer" type="MarginContainer" parent="MainContainer/ScrollContainer"]
 margin_right = 692.0
-margin_bottom = 1160.0
+margin_bottom = 1240.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 20
 custom_constants/margin_left = 20
@@ -57,7 +57,7 @@ custom_constants/margin_left = 20
 [node name="BindingContainer" type="GridContainer" parent="MainContainer/ScrollContainer/MarginContainer"]
 margin_left = 20.0
 margin_right = 672.0
-margin_bottom = 1160.0
+margin_bottom = 1240.0
 columns = 3
 
 [node name="Gap0" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
@@ -759,18 +759,78 @@ script = ExtResource( 6 )
 action = "game_menu"
 index = 1
 
-[node name="DebugInfoLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+[node name="ChatLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_top = 969.0
 margin_right = 173.0
 margin_bottom = 994.0
+custom_fonts/font = ExtResource( 2 )
+text = "Start Message"
+
+[node name="ChatButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 964.0
+margin_right = 407.0
+margin_bottom = 1000.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_chat"
+
+[node name="ChatButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 964.0
+margin_right = 640.0
+margin_bottom = 1000.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_chat"
+index = 1
+
+[node name="CommandLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 1009.0
+margin_right = 173.0
+margin_bottom = 1034.0
+custom_fonts/font = ExtResource( 2 )
+text = "Start Command"
+
+[node name="CommandButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 1004.0
+margin_right = 407.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_command"
+
+[node name="CommandButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 1004.0
+margin_right = 640.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_command"
+index = 1
+
+[node name="DebugInfoLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 1049.0
+margin_right = 173.0
+margin_bottom = 1074.0
 custom_fonts/font = ExtResource( 2 )
 text = "Toggle Debug Info"
 
 [node name="DebugInfoButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 964.0
+margin_top = 1044.0
 margin_right = 407.0
-margin_bottom = 1000.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -779,9 +839,9 @@ action = "game_toggle_debug_info"
 
 [node name="DebugInfoButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 964.0
+margin_top = 1044.0
 margin_right = 640.0
-margin_bottom = 1000.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -790,17 +850,17 @@ action = "game_toggle_debug_info"
 index = 1
 
 [node name="QuicksaveLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 1009.0
+margin_top = 1089.0
 margin_right = 173.0
-margin_bottom = 1034.0
+margin_bottom = 1114.0
 custom_fonts/font = ExtResource( 2 )
 text = "Quicksave"
 
 [node name="QuicksaveButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 1004.0
+margin_top = 1084.0
 margin_right = 407.0
-margin_bottom = 1040.0
+margin_bottom = 1120.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -809,9 +869,9 @@ action = "game_quicksave"
 
 [node name="QuicksaveButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 1004.0
+margin_top = 1084.0
 margin_right = 640.0
-margin_bottom = 1040.0
+margin_bottom = 1120.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -820,17 +880,17 @@ action = "game_quicksave"
 index = 1
 
 [node name="QuickloadLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 1049.0
+margin_top = 1129.0
 margin_right = 173.0
-margin_bottom = 1074.0
+margin_bottom = 1154.0
 custom_fonts/font = ExtResource( 2 )
 text = "Quickload"
 
 [node name="QuickloadButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 1044.0
+margin_top = 1124.0
 margin_right = 407.0
-margin_bottom = 1080.0
+margin_bottom = 1160.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -839,9 +899,9 @@ action = "game_quickload"
 
 [node name="QuickloadButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 1044.0
+margin_top = 1124.0
 margin_right = 640.0
-margin_bottom = 1080.0
+margin_bottom = 1160.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -850,17 +910,17 @@ action = "game_quickload"
 index = 1
 
 [node name="ToggleUILabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 1089.0
+margin_top = 1169.0
 margin_right = 173.0
-margin_bottom = 1114.0
+margin_bottom = 1194.0
 custom_fonts/font = ExtResource( 2 )
 text = "Toggle UI"
 
 [node name="ToggleUIButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 1084.0
+margin_top = 1164.0
 margin_right = 407.0
-margin_bottom = 1120.0
+margin_bottom = 1200.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -869,9 +929,9 @@ action = "game_toggle_ui"
 
 [node name="ToggleUIButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 1084.0
+margin_top = 1164.0
 margin_right = 640.0
-margin_bottom = 1120.0
+margin_bottom = 1200.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -880,17 +940,17 @@ action = "game_toggle_ui"
 index = 1
 
 [node name="ScreenshotLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 1129.0
+margin_top = 1209.0
 margin_right = 173.0
-margin_bottom = 1154.0
+margin_bottom = 1234.0
 custom_fonts/font = ExtResource( 2 )
 text = "Take Screenshot"
 
 [node name="ScreenshotButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 1124.0
+margin_top = 1204.0
 margin_right = 407.0
-margin_bottom = 1160.0
+margin_bottom = 1240.0
 focus_neighbour_bottom = NodePath("../../../../ActionContainer/BackButton")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
@@ -900,9 +960,9 @@ action = "game_take_screenshot"
 
 [node name="ScreenshotButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 1124.0
+margin_top = 1204.0
 margin_right = 640.0
-margin_bottom = 1160.0
+margin_bottom = 1240.0
 focus_neighbour_bottom = NodePath("../../../../ActionContainer/ResetButton")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )

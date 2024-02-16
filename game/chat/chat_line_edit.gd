@@ -86,6 +86,33 @@ func _input(event: InputEvent):
 				get_tree().set_input_as_handled()
 
 
+func _unhandled_input(event: InputEvent):
+	if has_focus():
+		return
+	
+	if event.is_action_pressed("game_chat"):
+		# Since the Enter key is also used for "ui_accept", only register it if
+		# nothing currently has focus.
+		var control_with_focus := get_focus_owner()
+		if control_with_focus != null:
+			return
+		
+		grab_focus()
+		caret_position = text.length()
+		
+		get_tree().set_input_as_handled()
+	
+	elif event.is_action_pressed("game_command"):
+		# Since the '/' key is not used anywhere else, transfer the focus even
+		# if another control currently has it.
+		grab_focus()
+		
+		text = "/"
+		caret_position = text.length()
+		
+		get_tree().set_input_as_handled()
+
+
 ## Add a text entry to the end of the history list.
 func append_entry(new_text: String) -> void:
 	var text_entry := TextEntry.new()

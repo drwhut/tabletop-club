@@ -46,7 +46,7 @@ var _player_controller_using_mouse_last_frame := false
 onready var _chat_window := $ChatWindow
 onready var _main_menu := $MainMenu
 onready var _main_menu_camera := $MainMenuCamera
-onready var _menu_background := $MenuBackground
+onready var _menu_background: ColorRect = $MenuBackground
 onready var _player_controller := $PlayerController
 
 
@@ -104,6 +104,27 @@ func _unhandled_input(event: InputEvent):
 			# it is handled by us.
 			set_menu_state(MenuState.STATE_NO_MENU)
 			get_tree().set_input_as_handled()
+	
+	elif event is InputEventMouseButton:
+		# If the player clicks on a blank space on the screen, then remove the
+		# focus from any control that has it.
+		# NOTE: For some reason this only works properly with mouse inputs - for
+		# key events used on a GUI, the event is still propagated, whereas mouse
+		# inputs are not.
+		# TODO: Confirm this works as intended when there is a popup visible,
+		# for example, the Objects window.
+		if menu_state == MenuState.STATE_NO_MENU:
+			if (
+				event.pressed and (
+					event.button_index == BUTTON_LEFT or
+					event.button_index == BUTTON_RIGHT
+				)
+			):
+				var control_with_focus := _menu_background.get_focus_owner()
+				if control_with_focus != null:
+					control_with_focus.release_focus()
+				
+				get_tree().set_input_as_handled()
 
 
 func set_menu_state(value: int) -> void:
@@ -157,6 +178,13 @@ func set_menu_state(value: int) -> void:
 func _on_ChatWindow_text_entered(text: String):
 	var command_parser := CommandParser.new()
 	command_parser.parse_command(text)
+
+
+func _on_ChatWindow_focus_leaving():
+	# If the focus is leaving the chat window, we need to pass it back to one of
+	# the main menu buttons if it is visible so it doesn't get lost.
+	if _main_menu.visible:
+		_main_menu.take_focus()
 
 
 func _on_MainMenu_starting_singleplayer():

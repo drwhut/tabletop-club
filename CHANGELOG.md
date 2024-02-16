@@ -36,6 +36,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   set.
 - "Mouse Wheel Up" and "Mouse Wheel Down" are now shown as editable bindings for
   "Zoom In / Lift Down" and "Zoom Out / Lift Up" respectively.
+- Added the "Start Message" binding (bound to the Enter key by default), which
+  will bring the chat window in focus to allow the player to start typing a
+  message, as long as there are no other UI elements currently in focus.
+- Added the "Start Command" binding (bound to the forward slash key by default),
+  which will bring the chat window in focus and automatically insert a forward
+  slash character so the player can start typing in a command.
 
 #### Graphics
 
@@ -81,6 +87,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   frame delta, over time.
 - When typing a message in the chat window, the up and down arrow keys will now
   display the player's message history from that session.
+- When clicking on a blank space while in-game, the game will automatically
+  release the focus from any UI elements that have it at the time.
 
 ### Changed
 
