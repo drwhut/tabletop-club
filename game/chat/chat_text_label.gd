@@ -105,6 +105,15 @@ func remove_message(line: int) -> void:
 	_line_type_arr.remove(line)
 
 
+## Scroll to the last message that was displayed.
+func scroll_to_latest() -> void:
+	var line := get_line_count() - 1
+	if line < 0:
+		return
+	
+	scroll_to_line(line)
+
+
 func _on_GameConfig_applying_settings():
 	var font_size := 16
 	match GameConfig.multiplayer_chat_font_size:

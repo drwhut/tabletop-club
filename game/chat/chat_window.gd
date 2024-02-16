@@ -83,6 +83,10 @@ func set_minimized(value: bool) -> void:
 
 
 func _on_ChatLineEdit_entry_added(entry_text: String):
+	# Make the ChatTextLabel scroll to the very bottom, so that the player
+	# immediately sees any new messages that are pushed as a result of this.
+	_chat_text_label.scroll_to_latest()
+	
 	emit_signal("text_entered", entry_text)
 
 
