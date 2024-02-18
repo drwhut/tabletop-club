@@ -74,6 +74,8 @@ func get_description(command_id: int) -> String:
 
 ## Parse the [param text] given by the player as a potential command.
 func parse_command(text: String) -> void:
+	print("CommandParser: Parsing '%s'..." % text)
+	
 	var cmd_arg_split := text.split(" ", false, 1)
 	if cmd_arg_split.empty():
 		push_error("Invalid command, text is empty")

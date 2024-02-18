@@ -156,6 +156,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   implementation.
 - Changed the project's directory structure in order to comply with Godot
   conventions.
+- System errors and warnings are no longer shown twice in the logs.
 
 #### Tools
 

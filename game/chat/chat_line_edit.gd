@@ -180,6 +180,8 @@ func _on_text_entered(new_text: String):
 	if new_text.empty():
 		return
 	
+	print("ChatLineEdit: '%s'" % new_text)
+	
 	var is_past_entry := (_modify_index < _text_history.size() - 1)
 	
 	revert_current()

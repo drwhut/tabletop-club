@@ -54,7 +54,7 @@ func _ready():
 		CustomModule.error_reporter.connect("warning_received", self,
 				"_on_ErrorReporter_warning_received")
 	else:
-		push_warning("")
+		push_warning("Cannot receive system errors and warnings - custom module was not loaded")
 
 
 func _process(_delta: float):
@@ -72,6 +72,23 @@ func add_message(message: Message) -> void:
 	_message_mutex.lock()
 	_message_list.push_back(message)
 	_message_added_flag = true
+	
+	# Print the message to STDOUT so that it appears in the logs - we don't need
+	# to do this for errors or warnings, since they appear in the logs anyways.
+	match message.type:
+		Message.TYPE_SAY:
+			print("[SAY/%d] %s" % [message.origin, message.text])
+		Message.TYPE_WHISPER:
+			print("[WHISPER/%d] %s" % [message.origin, message.text])
+		Message.TYPE_INFO:
+			print("[INFO] %s" % message.text)
+		Message.TYPE_WARNING:
+			pass
+		Message.TYPE_ERROR:
+			pass
+		_:
+			push_error("Cannot print message, unknown type '%d'" % message.type)
+	
 	_message_mutex.unlock()
 
 
