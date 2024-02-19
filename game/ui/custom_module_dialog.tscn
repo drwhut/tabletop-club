@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icons/tick_icon.svg" type="Texture" id=1]
+[ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/custom_module_dialog.gd" type="Script" id=3]
+
+[node name="CustomModuleDialog" type="PopupPanel"]
+margin_right = 640.0
+margin_bottom = 580.0
+popup_exclusive = true
+script = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_constants/margin_right = 14
+custom_constants/margin_left = 14
+
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 14.0
+margin_right = 618.0
+margin_bottom = 572.0
+
+[node name="LabelContainer" type="VBoxContainer" parent="MarginContainer/MainContainer"]
+margin_top = 56.0
+margin_right = 604.0
+margin_bottom = 476.0
+size_flags_vertical = 6
+custom_constants/separation = 18
+
+[node name="MissingLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
+margin_right = 604.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 2 )
+text = "This version of Godot was not compiled with Tabletop Club's custom module, so certain features are not available."
+align = 1
+autowrap = true
+
+[node name="RecommendLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
+margin_top = 81.0
+margin_right = 604.0
+margin_bottom = 177.0
+custom_fonts/font = ExtResource( 2 )
+text = "In order to gain access to this missing functionality, you will need to run a build of Godot with the custom module included, which you can download from here:"
+align = 1
+autowrap = true
+
+[node name="ReleasesLinkLabel" type="RichTextLabel" parent="MarginContainer/MainContainer/LabelContainer"]
+margin_top = 195.0
+margin_right = 604.0
+margin_bottom = 226.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+
+[node name="AlternativeLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
+margin_top = 244.0
+margin_right = 604.0
+margin_bottom = 340.0
+custom_fonts/font = ExtResource( 2 )
+text = "Alternatively, you can download and compile the official fork of Godot by following the instructions in the documentation:"
+align = 1
+autowrap = true
+
+[node name="CompileLinkLabel" type="RichTextLabel" parent="MarginContainer/MainContainer/LabelContainer"]
+margin_top = 358.0
+margin_right = 604.0
+margin_bottom = 420.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+
+[node name="CloseButton" type="Button" parent="MarginContainer/MainContainer"]
+margin_left = 262.0
+margin_top = 536.0
+margin_right = 342.0
+margin_bottom = 572.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 6
+custom_fonts/font = ExtResource( 2 )
+text = "OK"
+icon = ExtResource( 1 )
+expand_icon = true
+
+[connection signal="meta_clicked" from="MarginContainer/MainContainer/LabelContainer/ReleasesLinkLabel" to="." method="_on_ReleasesLinkLabel_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/MainContainer/LabelContainer/CompileLinkLabel" to="." method="_on_CompileLinkLabel_meta_clicked"]
+[connection signal="pressed" from="MarginContainer/MainContainer/CloseButton" to="." method="_on_CloseButton_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://tabletop_club_logo.png" type="Texture" id=1]
 [ext_resource path="res://icons/multiplayer_icon.svg" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://ui/leave_dialog.tscn" type="PackedScene" id=20]
 [ext_resource path="res://ui/website_panel.tscn" type="PackedScene" id=21]
 [ext_resource path="res://ui/options_panel.tscn" type="PackedScene" id=22]
+[ext_resource path="res://ui/custom_module_dialog.tscn" type="PackedScene" id=23]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeInMenu"
@@ -237,6 +238,10 @@ focus_on_hide = NodePath("../MainContainer/TertiaryContainer/QuitButton")
 [node name="LeaveDialog" parent="." instance=ExtResource( 20 )]
 hide_on_popup = NodePath("../MainContainer")
 focus_on_hide = NodePath("../MainContainer/PrimaryContainer/LeaveButton")
+
+[node name="CustomModuleDialog" parent="." instance=ExtResource( 23 )]
+hide_on_popup = NodePath("../MainContainer")
+focus_on_hide = NodePath("../MainContainer/PrimaryContainer/SingleplayerButton")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeInMenu = SubResource( 1 )

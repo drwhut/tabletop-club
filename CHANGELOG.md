@@ -187,6 +187,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The chat window is now also shown in the main menu, as well as in-game.
 - The chat window will now become transparent when the mouse is being used
   somewhere else in the game.
+- Improved the dialog that appears when attempting to run the game with a build
+  of Godot that does not include the custom module.
 
 ### Fixed
 
