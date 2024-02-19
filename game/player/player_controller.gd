@@ -29,6 +29,12 @@ extends Node
 ## Stop all processing for the player controller and the camera.
 export(bool) var disabled: bool setget set_disabled, is_disabled
 
+## Sets whether [InputEventKey] events are ignored by the player controller.
+## This also affects the camera controller.
+## [b]NOTE:[/b] This is not the same as [member disabled], which stops all input
+## processing entirely.
+export(bool) var ignore_key_events := false setget set_ignore_key_events
+
 
 onready var _third_person_camera: CameraController = $ThirdPersonCamera
 
@@ -70,3 +76,9 @@ func set_disabled(value: bool) -> void:
 	_third_person_camera.set_process_input(enable)
 	_third_person_camera.set_process_unhandled_input(enable)
 	_third_person_camera.set_process_unhandled_key_input(enable)
+
+
+func set_ignore_key_events(value: bool) -> void:
+	ignore_key_events = value
+	
+	_third_person_camera.ignore_key_events = value

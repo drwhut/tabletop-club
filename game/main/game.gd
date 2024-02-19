@@ -67,6 +67,19 @@ func _ready():
 
 
 func _process(_delta: float):
+	# Check what type of control (if any) has focus right now. If it is one that
+	# the player can type into, then we need to stop the player and camera
+	# controllers from processing key events. We need to do this since they use
+	# the inputs regardless of whether they have been handled or not, because
+	# they are constantly checking for controller stick inputs.
+	# NOTE: This does not prevent the arrow keys from affecting the camera's
+	# rotation while the player is navigating through a window.
+	# TODO: Find a nice way to prevent the arrow keys from doing this.
+	var control_in_focus := _menu_background.get_focus_owner()
+	_player_controller.ignore_key_events = (
+		(control_in_focus is LineEdit) or (control_in_focus is TextEdit)
+	)
+	
 	# Check if the player controller has just started, or just stopped, using
 	# mouse movement. We need to check so that we can either enable or disable
 	# the chat window to give the mouse as much screen real estate as possible.

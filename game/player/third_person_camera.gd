@@ -174,8 +174,10 @@ func apply_options() -> void:
 
 # Read player input and adjust the position of the camera accordingly.
 func _process_movement(delta: float) -> void:
-	var movement_input := Input.get_vector("game_left", "game_right",
-			"game_down", "game_up")
+	var movement_input := Vector2.ZERO
+	if not ignore_key_events:
+		movement_input = Input.get_vector("game_left", "game_right",
+				"game_down", "game_up")
 	
 	# Moving left/right is trivial, since the x-basis should always be parallel
 	# to the table...
@@ -208,8 +210,10 @@ func _process_movement(delta: float) -> void:
 # Read player input and adjust the rotation of the camera accordingly.
 func _process_rotation(delta: float) -> void:
 	# TODO: Add the ability to invert directions here? Or use sensitivity?
-	var rotate_input := Input.get_vector("game_rotate_left",
-			"game_rotate_right", "game_rotate_down", "game_rotate_up")
+	var rotate_input := Vector2.ZERO
+	if not ignore_key_events:
+		rotate_input = Input.get_vector("game_rotate_left", "game_rotate_right",
+				"game_rotate_down", "game_rotate_up")
 	
 	# TODO: Replace 200.0 with a constant or consistent variable, once the way
 	# rotation input is read in has changed.
@@ -222,8 +226,9 @@ func _process_zoom(delta: float) -> void:
 	# also receive continuous inputs from both the keyboard and the controller
 	# every frame in this function.
 	var scroll_input := 0.0
-	scroll_input -= Input.get_action_strength("game_zoom_in")
-	scroll_input += Input.get_action_strength("game_zoom_out")
+	if not ignore_key_events:
+		scroll_input -= Input.get_action_strength("game_zoom_in")
+		scroll_input += Input.get_action_strength("game_zoom_out")
 	_adjust_zoom(ZOOM_SCROLL_ACTION_SCALAR * delta * scroll_input)
 	
 	# Go towards the target zoom level.

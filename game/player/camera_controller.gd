@@ -29,6 +29,11 @@ extends Spatial
 ## movement, instead of all player-related functionality.
 
 
+## Sets whether [InputEventKey] events are ignored by the camera controller.
+## This can be used when the player is currently typing into e.g. a [LineEdit].
+var ignore_key_events := false
+
+
 ## Get the [Camera] node that this controller operates.
 func get_camera() -> Camera:
 	return null
