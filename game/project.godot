@@ -594,6 +594,7 @@ AssetDB="*res://assets/asset_db.gd"
 GameConfig="*res://main/game_config.gd"
 ControllerEcho="*res://util/controller_echo.gd"
 MessageHub="*res://chat/message_hub.gd"
+MasterServer="*res://network/master_server.gd"
 
 [debug]
 
