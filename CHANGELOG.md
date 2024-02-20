@@ -198,6 +198,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   a previous save.
 - An object's centre-of-mass will no longer change when the object is scaled.
 
+#### Multiplayer
+
+- Fixed the game client not detecting when the connection to the master server
+has been lost silently.
+
 #### UI
 
 - Fixed some labels not being added to the translation template file, which was

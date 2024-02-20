@@ -84,6 +84,11 @@ var client := WebSocketClient.new()
 var last_close_code := 1000
 
 
+# A timer which counts down every time we receive a ping packet from the server.
+# NOTE: If we cannot register ping packets (as in, the relevant engine patch has
+# not been applied), the timer is never created.
+var _keep_alive_timer: Timer = null
+
 # A flag that is activated when we expect the connection to be dropped soon.
 var _expecting_disconnect_flag := false
 
@@ -96,6 +101,25 @@ func _ready():
 	client.connect("connection_established", self, "_on_client_connection_established")
 	client.connect("data_received", self, "_on_client_data_received")
 	client.connect("server_close_request", self, "_on_client_server_close_request")
+	
+	if client.has_signal("ping_received"):
+		# We have the ability to detect ping packets from the server, so we can
+		# check if the connection to the master server is still alive.
+		client.connect("ping_received", self, "_on_client_ping_received")
+		
+		# Use the same timeout duration as for other TCP connections.
+		var timeout_sec: int = ProjectSettings.get_setting(
+				"network/limits/tcp/connect_timeout_seconds")
+		print("MasterServer: Can detect ping packets, setting timeout to %d seconds..." % timeout_sec)
+		
+		_keep_alive_timer = Timer.new()
+		_keep_alive_timer.wait_time = timeout_sec
+		_keep_alive_timer.one_shot = true
+		
+		_keep_alive_timer.connect("timeout", self, "_on_keep_alive_timer_timeout")
+		add_child(_keep_alive_timer)
+	else:
+		push_warning("MasterServer: Cannot detect ping packets, engine patch required.")
 
 
 func _process(_delta: float):
@@ -143,6 +167,10 @@ func close_connection() -> void:
 		
 		# Send the code 1000 as we are disconnecting to signal that we are
 		# doing so on purpose.
+		# NOTE: If the connection has been lost, there is a chance that this
+		# call won't lead to the 'connection_closed' signal being fired.
+		# In that event, we are essentially relying on the keep-alive timer to
+		# forcefully close the connection before we can start a new one.
 		client.disconnect_from_host(1000)
 	else:
 		print("MasterServer: Cannot close connection, already disconnected.")
@@ -197,6 +225,11 @@ func _send_message(type: String, arg: String, data: String) -> void:
 
 
 func _on_client_connection_closed(was_clean_close: bool):
+	if _keep_alive_timer != null:
+		if not _keep_alive_timer.is_stopped():
+			_keep_alive_timer.stop()
+			print("MasterServer: Stopped keep-alive timer.")
+	
 	if _expecting_disconnect_flag:
 		print("MasterServer: Connection was closed as expected.")
 		emit_signal("connection_closed", 1000)
@@ -225,6 +258,10 @@ func _on_client_connection_established(_protocol: String):
 	client.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 	
 	emit_signal("connection_established")
+	
+	if _keep_alive_timer != null:
+		_keep_alive_timer.start()
+		print("MasterServer: Started keep-alive timer.")
 
 
 func _on_client_data_received():
@@ -311,9 +348,51 @@ func _on_client_data_received():
 		push_error("Invalid packet, unknown instruction")
 
 
+func _on_client_ping_received():
+	# We are still connected to the server, restart the timer.
+	if _keep_alive_timer != null:
+		_keep_alive_timer.start()
+
+
 func _on_client_server_close_request(code: int, _reason: String):
 	print("MasterServer: Received a close request with code %d." % code)
 	
 	# The connection will be closed a little bit later, so save the close code
 	# for when that happens.
 	last_close_code = code
+
+
+func _on_keep_alive_timer_timeout():
+	print("MasterServer: Keep-alive timer expired, assuming connection is lost...")
+	
+	# Using WebSocketClient.disconnect_from_host() only works properly if we are
+	# still connected to the server, so we need to do things manually.
+	
+	# Before we re-create the WebSocketClient, we need to make sure the signals
+	# remain connected afterwards.
+	var signal_list := client.get_signal_list()
+	var signal_connection_dict := {}
+	
+	for element in signal_list:
+		var signal_dict: Dictionary = element
+		var signal_name: String = signal_dict["name"]
+		
+		var signal_connection_list := client.get_signal_connection_list(
+				signal_name)
+		if signal_connection_list.empty():
+			continue
+		
+		signal_connection_dict[signal_name] = signal_connection_list
+	
+	client = WebSocketClient.new()
+	
+	for key in signal_connection_dict:
+		var signal_name: String = key
+		var connection_list: Array = signal_connection_dict[key]
+		
+		for element in connection_list:
+			var conn_data: Dictionary = element
+			client.connect(signal_name, conn_data["target"],
+					conn_data["method"], conn_data["binds"], conn_data["flags"])
+	
+	_on_client_connection_closed(false)
