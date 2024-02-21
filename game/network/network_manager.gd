@@ -36,6 +36,9 @@ signal connection_to_host_established()
 ## Fired when we, the client, failed to connect to the host.
 signal connection_to_host_failed()
 
+## Fired when we, the client, have disconnected from the host gracefully.
+signal connection_to_host_closed()
+
 ## Fired when we, the client, have lost the connection to the host.
 signal connection_to_host_lost()
 
@@ -48,9 +51,12 @@ signal connection_to_peer_closed(peer_id)
 
 
 ## Fired when there was an error setting up the network.
-signal setup_failed(code)
+## [b]NOTE:[/b] If this is fired, the NetworkManager will automatically close
+## all network connections.
+signal setup_failed(err)
 
-## Fired when the master server disconnected after setting up the network.
+## Fired when we have disconnected from the master server.
+## [b]NOTE:[/b] The network may still be healthy afterwards.
 signal lobby_server_disconnected(code)
 
 
@@ -68,6 +74,9 @@ var _peer_ids_known_before_init := PoolIntArray()
 
 
 func _ready():
+	connect("setup_failed", self, "_on_setup_failed")
+	connect("tree_exiting", self, "_on_tree_exiting")
+	
 	get_tree().connect("connected_to_server", self,
 			"_on_SceneTree_connected_to_server")
 	get_tree().connect("connection_failed", self,
@@ -108,8 +117,8 @@ func start_as_server() -> void:
 	print("NetworkManager: Starting the network as a server...")
 	
 	if get_tree().network_peer != null:
-		push_error("Failed to start network, network peer already exists")
-		emit_signal("setup_failed", MasterServer.CODE_ALREADY_IN_LOBBY)
+		push_error("Failed to start network, network already exists")
+		emit_signal("setup_failed", ERR_ALREADY_IN_USE)
 		return
 	
 	_instruction_on_connection = ""
@@ -117,7 +126,7 @@ func start_as_server() -> void:
 	var err := MasterServer.connect_to_official_server()
 	if err != OK:
 		push_error("Failed to start network, connection to master server failed")
-		emit_signal("setup_failed", MasterServer.CODE_UNREACHABLE)
+		emit_signal("setup_failed", err)
 		return
 
 
@@ -127,8 +136,8 @@ func start_as_client(room_code: String) -> void:
 	print("NetworkManager: Starting the network as a client...")
 	
 	if get_tree().network_peer != null:
-		push_error("Failed to start network, network peer already exists")
-		emit_signal("setup_failed", MasterServer.CODE_ALREADY_IN_LOBBY)
+		push_error("Failed to start network, network already exists")
+		emit_signal("setup_failed", ERR_ALREADY_IN_USE)
 		return
 	
 	_instruction_on_connection = room_code
@@ -136,13 +145,24 @@ func start_as_client(room_code: String) -> void:
 	var err := MasterServer.connect_to_official_server()
 	if err != OK:
 		push_error("Failed to start network, connection to master server failed")
-		emit_signal("setup_failed", MasterServer.CODE_UNREACHABLE)
+		emit_signal("setup_failed", err)
 		return
 
 
 ## Shut down the network, closing all network connections.
 func stop() -> void:
 	print("NetworkManager: Shutting down the network...")
+	
+	# If we are currently hosting a game, we want to seal the room before we go.
+	var master_server_status := MasterServer.get_connection_status()
+	var is_network_server := get_tree().is_network_server() \
+			if get_tree().has_network_peer() else false
+	
+	if (
+		is_network_server and
+		master_server_status == NetworkedMultiplayerPeer.CONNECTION_CONNECTED
+	):
+		MasterServer.seal_room()
 	
 	# Do this first so that no more messages come through.
 	MasterServer.close_connection()
@@ -165,6 +185,16 @@ func is_connected_to_network() -> bool:
 	return conn_status == NetworkedMultiplayerPeer.CONNECTION_CONNECTED
 
 
+func _on_setup_failed(_err: int):
+	print("NetworkManager: Setup failed, closing all network connections...")
+	stop()
+
+
+func _on_tree_exiting():
+	print("NetworkManager: Shutting down the network before leaving the scene tree...")
+	stop()
+
+
 func _on_SceneTree_connected_to_server():
 	print("NetworkManager: Connection to the host has been established.")
 	emit_signal("connection_to_host_established")
@@ -172,6 +202,10 @@ func _on_SceneTree_connected_to_server():
 
 func _on_SceneTree_connection_failed():
 	print("NetworkManager: Failed to connect to the host.")
+	
+	# There's nothing we can do to recover, so shut down the network.
+	stop()
+	
 	emit_signal("connection_to_host_failed")
 
 
@@ -187,6 +221,10 @@ func _on_SceneTree_network_peer_disconnected(peer_id: int):
 
 func _on_SceneTree_server_disconnected():
 	print("NetworkManager: Connection to the host has been lost.")
+	
+	# We might as well shut down the network now that we have disconnected.
+	stop()
+	
 	emit_signal("connection_to_host_lost")
 
 
@@ -204,23 +242,35 @@ func _on_MasterServer_connection_established():
 
 
 func _on_MasterServer_connection_closed(code: int):
-	if is_connected_to_network():
-		print("NetworkManager: Master server closed connection during network session.")
-		# TODO: Figure out what signal to fire based on the code.
-		emit_signal("lobby_server_disconnected", code)
+	# If the network has been established as the master server disconnects, we
+	# can keep the session going without it - the only downside being no one
+	# will be able to join the session until a new one is made.
+	var rtc := get_tree().network_peer
+	if rtc is WebRTCMultiplayer:
+		print("NetworkManager: WebRTC network is still ongoing, checking if any peers are connected...")
+		var at_least_one_peer_connected := false
+		var peer_conn_dict: Dictionary = rtc.get_peers()
+		
+		for value in peer_conn_dict.values():
+			var peer_dict: Dictionary = value
+			var is_connected: bool = peer_dict["connected"]
+			if is_connected:
+				at_least_one_peer_connected = true
+				break
+		
+		if at_least_one_peer_connected:
+			print("NetworkManager: At least one peer is connected, keeping network alive.")
+		else:
+			print("NetworkManager: Not connected to any peers on the network, closing network...")
+			get_tree().network_peer = null
 	
-	else:
-		# TODO: This is almost always called, since it takes time for the master
-		# server connection to close, but closing the WebRTC connections is
-		# pretty much instant. Need to re-think this section.
-		print("NetworkManager: Master server closed connection during network setup.")
-		emit_signal("setup_failed", code)
+	emit_signal("lobby_server_disconnected", code)
 
 
 func _on_MasterServer_connection_failed():
 	# NOTE: This can only be fired if we are trying to setup the network.
 	print("NetworkManager: Failed to setup network, could not connect to the master server.")
-	emit_signal("setup_failed", MasterServer.CODE_UNREACHABLE)
+	emit_signal("setup_failed", ERR_UNAVAILABLE)
 
 
 func _on_MasterServer_connection_lost():
@@ -232,9 +282,7 @@ func _on_MasterServer_room_joined(room_code: String):
 	if _last_id_from_lobby_server < 1:
 		push_error("Master server added client to room '%s' without an ID" % room_code)
 		
-		# NOTE: This will result in 'setup_failed' being fired with code 1000.
-		# TODO: Do we want to be able to send different closing codes?
-		MasterServer.close_connection()
+		emit_signal("setup_failed", ERR_CANT_CREATE)
 		return
 	
 	print("NetworkManager: Setting up the WebRTCMultiplayer network as ID '%d'..." %
@@ -245,7 +293,7 @@ func _on_MasterServer_room_joined(room_code: String):
 	if err != OK:
 		push_error("Failed to create WebRTCMultiplayer network (error: %d)" % err)
 		
-		MasterServer.close_connection()
+		emit_signal("setup_failed", err)
 		return
 	
 	get_tree().network_peer = rtc
@@ -260,8 +308,10 @@ func _on_MasterServer_room_joined(room_code: String):
 
 
 func _on_MasterServer_room_sealed():
-	# TODO: Handle the room being sealed.
-	pass
+	print("NetworkManager: Host has sealed the room, closing all network connections...")
+	stop() # TODO: Check if this fires 'server_disconnected'?
+	
+	emit_signal("connection_to_host_closed")
 
 
 func _on_MasterServer_id_assigned(self_id: int):
@@ -288,6 +338,12 @@ func _on_MasterServer_peer_arriving(peer_id: int):
 		})
 		if err != OK:
 			push_error("Failed to initialise WebRTCPeerConnection (error: %d)" % err)
+			
+			# Only close the connection if we are the client trying to connect
+			# to the host.
+			if peer_id == 1:
+				emit_signal("setup_failed", err)
+			
 			return
 		
 		peer.connect("session_description_created", self,
@@ -300,6 +356,10 @@ func _on_MasterServer_peer_arriving(peer_id: int):
 		if err != OK:
 			push_error("Failed to add peer '%d' to WebRTCMultiplayer (error: %d)" % [
 					peer_id, err])
+			
+			if peer_id == 1:
+				emit_signal("setup_failed", err)
+			
 			return
 		
 		# Only have the host initiate the connections. That way, the host will
@@ -324,8 +384,19 @@ func _on_MasterServer_peer_arriving(peer_id: int):
 
 
 func _on_MasterServer_peer_leaving(peer_id: int):
-	# TODO: Handle the master server removing a peer from the room.
-	pass
+	var rtc := get_tree().network_peer
+	if rtc is WebRTCMultiplayer:
+		if rtc.has_peer(peer_id):
+			print("NetworkManager: Removing peer '%d' from the network..." % peer_id)
+			
+			# NOTE: If they were fully connected, this should fire the
+			# 'network_peer_disconnected' signal from the scene tree.
+			rtc.remove_peer(peer_id)
+		else:
+			print("NetworkManager: Peer '%d' has already disconnected from the network." % peer_id)
+	
+	else:
+		push_error("Received 'peer_leaving' message from the master server without WebRTC network")
 
 
 func _on_MasterServer_offer_received(peer_id: int, offer: String):
@@ -341,6 +412,7 @@ func _on_MasterServer_offer_received(peer_id: int, offer: String):
 		if err != OK:
 			push_error("Failed to set offer from peer '%d' (error: %d)" % [
 					peer_id, err])
+			# Instead of calling it quits here, wait for the connection timeout.
 			return
 	
 	else:
@@ -360,6 +432,7 @@ func _on_MasterServer_answer_received(peer_id: int, answer: String):
 		if err != OK:
 			push_error("Failed to set answer from peer '%d' (error: %d)" % [
 					peer_id, err])
+			# Instead of calling it quits here, wait for the connection timeout.
 			return
 	
 	else:
@@ -381,6 +454,7 @@ func _on_MasterServer_candidate_received(peer_id: int, mid: String, index: int,
 		if err != OK:
 			push_error("Failed to add ICE candidate from peer '%d' (error: %d)" % [
 					peer_id, err])
+			# Instead of calling it quits here, wait for the connection timeout.
 			return
 	
 	else:
@@ -402,6 +476,7 @@ func _on_webrtc_offer_created(type: String, data: String, peer_id: int):
 		if err != OK:
 			push_error("Failed setting local %s for peer '%d' (error: %d)" % [
 					type, peer_id, err])
+			# Instead of calling it quits here, wait for the connection timeout.
 			return
 		
 		if type == "offer":

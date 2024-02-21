@@ -138,6 +138,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated the Godot WebRTC library from v0.5 to v1.0.5.
 - Optimised the number of connections established between peers when using
   WebRTC.
+- Lobbies will now continue if the connection to the master server is lost, but
+  players will not be able to join the lobby anymore.
 
 #### Options
 
