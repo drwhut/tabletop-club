@@ -359,8 +359,8 @@ the plugin:
 
 1. Download the latest release (not a pre-release!) of the plugin from
    `the repository <https://github.com/godotengine/webrtc-native/releases>`_.
-   Make sure to download the ``webrtc-native-release`` file rather than the
-   ``webrtc-native-debug`` file.
+   Make sure to download the ``godot-gdnative`` file rather than the
+   ``godot-extension`` file.
 
 2. Open the compressed file, and place the ``webrtc/`` folder into
    ``tabletop-club/game/``. Afterwards, there should be a file at

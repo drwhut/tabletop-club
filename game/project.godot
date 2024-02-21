@@ -595,6 +595,7 @@ GameConfig="*res://main/game_config.gd"
 ControllerEcho="*res://util/controller_echo.gd"
 MessageHub="*res://chat/message_hub.gd"
 MasterServer="*res://network/master_server.gd"
+NetworkManager="*res://network/network_manager.gd"
 
 [debug]
 

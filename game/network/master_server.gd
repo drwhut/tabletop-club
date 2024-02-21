@@ -73,6 +73,44 @@ signal answer_received(id, answer)
 signal candidate_received(id, mid, index, sdp)
 
 
+## The list of possible close codes that the master server can give.
+## [b]NOTE:[/b] As well as the custom error codes defined by the master server,
+## this list also includes standard WebSocket close codes, as can be found here:
+## [url]https://www.rfc-editor.org/rfc/rfc6455.html#section-7.4[/url]
+enum {
+	CODE_NORMAL = 1000, ## Closed normally.
+	CODE_GOING_AWAY = 1001, ## Closed due to the server going down.
+	CODE_PROTOCOL_ERROR = 1002, ## Closed due to a protocol error.
+	CODE_TYPE_NOT_ACCEPTED = 1003, ## Closed due to text/binary mis-match.
+	CODE_NO_STATUS = 1005, ## Closed, but with no code given.
+	CODE_DISCONNECTED = 1006, ## Closed due to abrupt disconnect.
+	CODE_INVALID_UTF8 = 1007, ## Closed due to invalid UTF-8 data.
+	CODE_POLICY_VIOLATION = 1008, ## Closed due to policy violation.
+	CODE_MESSAGE_TOO_BIG = 1009, ## Closed due to text being too large in size.
+	CODE_UNEXPECTED_COND = 1011, ## Closed due to unexpected condition.
+	CODE_TLS_ERROR = 1015, ## Closed due to TLS certificate error.
+	
+	CODE_GENERIC_ERROR = 4000, ## Closed due to a generic error.
+	CODE_UNREACHABLE = 4001, ## Closed due to server being unreachable.
+	CODE_NOT_IN_LOBBY = 4002, ## Closed due to client not being in a lobby.
+	CODE_HOST_DISCONNECTED = 4003, ## Closed due to the host disconnecting.
+	CODE_ONLY_HOST_CAN_SEAL = 4004, ## Closed due to attempt to seal as client.
+	CODE_TOO_MANY_LOBBIES = 4005, ## Closed due to lobby limit being reached.
+	CODE_ALREADY_IN_LOBBY = 4006, ## Closed due to already being in a lobby.
+	CODE_LOBBY_DOES_NOT_EXIST = 4007, ## Closed due to non-existant lobby.
+	CODE_LOBBY_IS_SEALED = 4008, ## Closed due to given lobby being sealed.
+	CODE_INVALID_FORMAT = 4009, ## Closed due to message having invalid format.
+	CODE_LOBBY_REQUIRED = 4010, ## Closed due to lobby not given when required.
+	CODE_SERVER_ERROR = 4011, ## Closed due to an internal server error.
+	CODE_INVALID_DESTINATION = 4012, ## Closed due to an invalid peer ID.
+	CODE_INVALID_COMMAND = 4013, ## Closed due to an invalid command.
+	CODE_TOO_MANY_PEERS = 4014, ## Closed due to client limit being reached.
+	CODE_INVALID_MODE = 4015, ## Closed due to a binary message being sent.
+	CODE_TOO_MANY_CONNECTIONS = 4016, ## Connection limit was reached.
+	CODE_RECONNECT_TOO_QUICKLY = 4017, ## Re-connected too quickly.
+}
+
+
 ## The location of the official master server.
 const OFFICIAL_URL := "wss://tabletop-club.duckdns.org:9080"
 
@@ -81,7 +119,7 @@ const OFFICIAL_URL := "wss://tabletop-club.duckdns.org:9080"
 var client := WebSocketClient.new()
 
 ## The last disconnect code that was sent by the master server.
-var last_close_code := 1000
+var last_close_code := CODE_NORMAL
 
 
 # A timer which counts down every time we receive a ping packet from the server.
@@ -154,7 +192,7 @@ func get_connection_status() -> int:
 ## Close the connection to the master server if it exists. No error is thrown if
 ## the connection is already closed.
 ## [b]NOTE:[/b] This will cause [signal connection_closed] to be fired with the
-## code [code]1000[/code].
+## code [code]CODE_NORMAL[/code].
 func close_connection() -> void:
 	var conn_status := client.get_connection_status()
 	if conn_status != NetworkedMultiplayerPeer.CONNECTION_DISCONNECTED:
@@ -171,7 +209,7 @@ func close_connection() -> void:
 		# call won't lead to the 'connection_closed' signal being fired.
 		# In that event, we are essentially relying on the keep-alive timer to
 		# forcefully close the connection before we can start a new one.
-		client.disconnect_from_host(1000)
+		client.disconnect_from_host(CODE_NORMAL)
 	else:
 		print("MasterServer: Cannot close connection, already disconnected.")
 
@@ -232,7 +270,7 @@ func _on_client_connection_closed(was_clean_close: bool):
 	
 	if _expecting_disconnect_flag:
 		print("MasterServer: Connection was closed as expected.")
-		emit_signal("connection_closed", 1000)
+		emit_signal("connection_closed", CODE_NORMAL)
 		
 		_expecting_disconnect_flag = false
 		return
@@ -265,6 +303,10 @@ func _on_client_connection_established(_protocol: String):
 
 
 func _on_client_data_received():
+	# If we started a disconnect, don't read any more messages from the server.
+	if _expecting_disconnect_flag:
+		return
+	
 	var packet_err := client.get_peer(1).get_packet_error()
 	if packet_err != OK:
 		push_error("Packet from master server contained an error (error: %d)" % packet_err)

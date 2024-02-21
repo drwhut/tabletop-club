@@ -64,6 +64,13 @@ func _ready():
 	# to receive the ready signal. Therefore, all nodes should now be ready to
 	# receive the apply_settings signal from GameConfig.
 	GameConfig.apply_all()
+	
+	# We want to interface with the Lobby rather than the NetworkManager in most
+	# cases, but before a client can join the lobby, they first need to check
+	# if their game version matches the server's, otherwise there is no point in
+	# continuing to add them since they will disconnect anyways.
+	NetworkManager.connect("connection_to_peer_established", self,
+			"_on_NetworkManager_connection_to_peer_established")
 
 
 func _process(_delta: float):
@@ -188,6 +195,30 @@ func set_menu_state(value: int) -> void:
 			_main_menu_camera.state = MainMenuCamera.CameraState.STATE_ORBIT_TO_PLAYER
 
 
+## Called by the server to verify that this client is running the same version
+## of the game.
+## [b]NOTE:[/b] The reason this function is in the main game script, rather than
+## in the NetworkManager, is for backwards compatibility. Clients running the
+## v0.1.x version of the game will be expecting this RPC within this script.
+puppet func verify_game_version(server_version: String) -> void:
+	var client_version := ""
+	if ProjectSettings.has_setting("application/config/version"):
+		client_version = ProjectSettings.get_setting("application/config/version")
+	else:
+		push_warning("Could not determine client version, verification will probably fail")
+	
+	print("Game: Verifying client version (%s) matches server version (%s)..." % [
+			client_version, server_version])
+	
+	if client_version == server_version:
+		print("Game: Client and server versions match, continuing...")
+		# TODO: Add self to the lobby.
+	else:
+		print("Game: Client and server versions do not match, aborting...")
+		NetworkManager.stop()
+		# TODO: Update the UI accordingly.
+
+
 func _on_ChatWindow_text_entered(text: String):
 	var command_parser := CommandParser.new()
 	command_parser.parse_command(text)
@@ -218,3 +249,24 @@ func _on_MainMenu_popup_about_to_show():
 
 func _on_MainMenu_popup_about_to_hide():
 	_chat_window.disabled = false
+
+
+func _on_NetworkManager_connection_to_peer_established(peer_id: int):
+	if not get_tree().is_network_server():
+		return
+	
+	# We, the server, have managed to successfuly establish a connection to the
+	# given peer. However, before we add them to the lobby, we first need to
+	# check if their client's version is the same as ours, otherwise things will
+	# probably go wrong in the future.
+	
+	if not ProjectSettings.has_setting("application/config/version"):
+		push_warning("Cannot determine server version, client will be left hanging")
+		return
+	
+	var server_version: String = ProjectSettings.get_setting(
+			"application/config/version")
+	
+	print("Game: Sending our game version (%s) to peer '%d' for them to check against..." % [
+			server_version, peer_id])
+	rpc_id(peer_id, "verify_game_version", server_version)

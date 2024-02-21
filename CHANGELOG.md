@@ -133,6 +133,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Restarting is no longer required to see the effects of changing the "Shadow
   Detail" level.
 
+#### Multiplayer
+
+- Updated the Godot WebRTC library from v0.5 to v1.0.5.
+- Optimised the number of connections established between peers when using
+  WebRTC.
+
 #### Options
 
 - The "Effects Volume" option is now called "Object Volume" to better reflect
@@ -202,6 +208,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed the game client not detecting when the connection to the master server
 has been lost silently.
+
+#### Project
+
+- Fixed a crash when attempting to run the game on macOS with a system using the
+  `arm64` architecture.
 
 #### UI
 
