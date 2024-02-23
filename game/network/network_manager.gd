@@ -172,7 +172,11 @@ func stop() -> void:
 		print("NetworkManager: Closing all WebRTC connections and channels...")
 		network_multiplayer.close()
 	
-	get_tree().network_peer = null
+	# It's very possible that this function is being called as a result of a
+	# signal being fired from the network peer. We don't want to free it while
+	# it is still in the middle of a signal, so defer freeing it until all of
+	# its signals are processed.
+	get_tree().set_deferred("network_peer", null)
 
 
 ## Check if we are currently connected to a multiplayer network.
@@ -309,7 +313,7 @@ func _on_MasterServer_room_joined(room_code: String):
 
 func _on_MasterServer_room_sealed():
 	print("NetworkManager: Host has sealed the room, closing all network connections...")
-	stop() # TODO: Check if this fires 'server_disconnected'?
+	stop()
 	
 	emit_signal("connection_to_host_closed")
 
@@ -370,7 +374,6 @@ func _on_MasterServer_peer_arriving(peer_id: int):
 		# create a connection in time (add to CHANGELOG). Needs to be done by
 		# the host so a modified client can't linger, regardless of if the
 		# master server thinks they are still connected.
-		# TODO: Check if the 'connection_failed' signal fires!!
 		if rtc.get_unique_id() == 1:
 			print("NetworkManager: Creating offer for peer '%d'..." % peer_id)
 			err = peer.create_offer()
