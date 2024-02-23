@@ -19,7 +19,7 @@ asset pack, then click :guilabel:`Apply`.
    The only format that the game accepts are equirectangular images like this
    one:
 
-   .. image:: ../../../assets/TabletopClub/skyboxes/Park.jpg
+   .. image:: example_skybox.jpg
       :alt: A 360 degree image of an urban park, projected onto a rectangular
          image.
 

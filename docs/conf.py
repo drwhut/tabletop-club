@@ -18,9 +18,15 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Tabletop Club'
+
+# TODO: Sphinx now supports multiple entries for the copyright, but the theme
+# does not display them properly. Edit once the issue has been fixed.
 copyright = "2020-2024, Benjamin 'drwhut' Beddows, Tabletop Club contributors"
 
-# The full version, including alpha/beta/rc tags
+# The major and minor version, excluding the patch number.
+version = 'master'
+
+# The full version, including the patch number, and any alpha/beta/rc tags.
 release = 'master'
 
 
@@ -41,6 +47,9 @@ templates_path = []
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+# Show warnings for all references where the target could not be found.
+nitpicky = True
+
 # Show TODOs in the documentation.
 todo_include_todos = True
 
@@ -53,11 +62,59 @@ todo_include_todos = True
 html_theme = 'sphinx_book_theme'
 
 html_theme_options = {
-    "path_to_docs": "docs/",
+    "logo": {
+        "alt_text": "Tabletop Club Documentation - Home"
+    },
+
+    "icon_links": [
+        {
+            "name": "itch.io",
+            "url": "https://drwhut.itch.io/tabletop-club",
+            "icon": "fa-brands fa-itch-io",
+            "type": "fontawesome"
+        },
+        {
+            "name": "YouTube",
+            "url": "https://www.youtube.com/channel/UCPTl-dLnUOuyKWC7y8005jA",
+            "icon": "fa-brands fa-youtube",
+            "type": "fontawesome"
+        },
+        {
+            "name": "Twitter",
+            "url": "https://twitter.com/drwhutt",
+            "icon": "fa-brands fa-x-twitter",
+            "type": "fontawesome"
+        },
+        {
+            "name": "Mastodon",
+            "url": "https://fosstodon.org/@drwhut",
+            "icon": "fa-brands fa-mastodon",
+            "type": "fontawesome"
+        },
+        {
+            "name": "Discord",
+            "url": "https://discord.gg/GqYkGV4WwX",
+            "icon": "fa-brands fa-discord",
+            "type": "fontawesome"
+        },
+        {
+            "name": "Matrix",
+            "url": "https://matrix.to/#/#tabletop-club:matrix.org",
+            "icon": "fa-solid fa-comments",
+            "type": "fontawesome"
+        }
+    ],
+
     "repository_url": "https://github.com/drwhut/tabletop-club",
+    "repository_branch": "master",
+    "path_to_docs": "docs/",
+    "use_repository_button": True,
+
     "use_edit_page_button": True,
     "use_issues_button": True,
-    "use_repository_button": True
+    "use_source_button": True,
+
+    "show_toc_level": 2
 }
 
 # Add the project logo and icon to the docs.
