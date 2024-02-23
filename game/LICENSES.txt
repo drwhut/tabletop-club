@@ -509,3 +509,51 @@ packs. Licensing information for these assets can be viewed in-game.
 	License: MIT
 	URL: https://github.com/godotengine/webrtc-native
 
+
+- json
+
+	Author: Niels Lohmann
+	License: MIT
+	URL: https://github.com/nlohmann/json
+
+
+- libdatachannel
+
+	Author: Paul-Louis Ageneau
+	License: MPL 2.0
+	URL: https://github.com/paullouisageneau/libdatachannel
+
+
+- libjuice
+
+	Author: Paul-Louis Ageneau
+	License: MPL 2.0
+	URL: https://github.com/paullouisageneau/libjuice
+
+
+- libsrtp
+
+	Author: Cisco Systems
+	License: BSD-3-Clause
+	URL: https://github.com/cisco/libsrtp
+
+
+- openssl
+
+	Author: The OpenSSL Project Authors, Eric A. Young, Tim J. Hudson
+	License: Apache 2.0
+	URL: https://github.com/openssl/openssl
+
+
+- plog
+
+	Author: Sergey Podobry
+	License: MIT
+	URL: https://github.com/SergiusTheBest/plog
+
+
+- usrsctp
+
+	Author: sctplab
+	License: BSD-3-Clause
+	URL: https://github.com/sctplab/usrsctp
