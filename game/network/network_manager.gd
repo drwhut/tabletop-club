@@ -46,6 +46,9 @@ signal connection_to_host_lost()
 ## Fired when we have established a connection to another peer.
 signal connection_to_peer_established(peer_id)
 
+## Fired when we have failed to connect to the given peer.
+signal connection_to_peer_failed(peer_id)
+
 ## Fired when the connection to the given peer has been closed.
 signal connection_to_peer_closed(peer_id)
 
@@ -153,6 +156,10 @@ func start_as_client(room_code: String) -> void:
 func stop() -> void:
 	print("NetworkManager: Shutting down the network...")
 	
+	# If there are any connection timers ongoing, stop them and remove them from
+	# the scene tree.
+	_stop_connection_timer_all()
+	
 	# If we are currently hosting a game, we want to seal the room before we go.
 	var master_server_status := MasterServer.get_connection_status()
 	var is_network_server := get_tree().is_network_server() \
@@ -189,6 +196,113 @@ func is_connected_to_network() -> bool:
 	return conn_status == NetworkedMultiplayerPeer.CONNECTION_CONNECTED
 
 
+# Start a timer for the peer with the given [param peer_id] which, if it runs
+# out, will forcefully remove the peer from the network. If the peer manages to
+# establish a connection with us, the timer should be stopped.
+func _start_connection_timer(peer_id: int) -> void:
+	var node_name := "Timeout_%d" % peer_id
+	if has_node(node_name):
+		push_error("Cannot start connection timer for peer '%d', timer already exists" % peer_id)
+		return
+	
+	# Use the same timeout duration that other connections use.
+	var timeout_sec: int = ProjectSettings.get_setting(
+			"network/limits/tcp/connect_timeout_seconds")
+	
+	var timer := Timer.new()
+	timer.name = node_name
+	timer.wait_time = timeout_sec
+	timer.one_shot = true
+	timer.autostart = true
+	
+	timer.connect("timeout", self, "_on_connection_timer_timeout", [ peer_id ])
+	
+	print("NetworkManager: Starting connection timer for peer '%d'..." % peer_id)
+	add_child(timer)
+
+
+# Stop the connection timer for the peer with the given [param peer_id], and
+# queue it to be removed from the scene tree. This will prevent the peer from
+# being removed from the network when the timer runs out.
+func _stop_connection_timer(peer_id: int) -> void:
+	var node_name := "Timeout_%d" % peer_id
+	if not has_node(node_name):
+		push_error("Cannot stop connection timer for peer '%d', timer does not exist" % peer_id)
+		return
+	
+	var timer_node := get_node(node_name)
+	if not timer_node is Timer:
+		push_error("Connection timer for peer '%d' is unexpected type" % peer_id)
+		return
+	
+	if timer_node.is_queued_for_deletion():
+		push_warning("Connection timer for peer '%d' is already queued for deletion" % peer_id)
+		return
+	
+	print("NetworkManager: Stopping connection timer for peer '%d'..." % peer_id)
+	timer_node.queue_free()
+
+
+# Stop all connection timers that are currently running, and queue them to be
+# removed from the scene tree.
+func _stop_connection_timer_all() -> void:
+	var child_count := get_child_count()
+	if child_count <= 0:
+		return
+	
+	print("NetworkManager: Stopping all connection timers (total: %d)..." % child_count)
+	
+	for element in get_children():
+		var child: Node = element
+		if child.is_queued_for_deletion():
+			continue
+		
+		if child is Timer:
+			child.queue_free()
+
+
+# Check if a connection timer is currently running for the peer with the given
+# [param peer_id].
+func _is_connection_timer_running(peer_id: int) -> bool:
+	var node_name := "Timeout_%d" % peer_id
+	return has_node(node_name)
+
+
+func _on_connection_timer_timeout(peer_id: int):
+	print("NetworkManager: Connection timer for peer '%d' has run out, removing them from the network..." % peer_id)
+	
+	var rtc := get_tree().network_peer
+	if rtc is WebRTCMultiplayer:
+		# NOTE: While this removes the peer from the WebRTC network, the master
+		# server will probably still think the peer is in the lobby.
+		# We cannot send a command to the master server to remove them from the
+		# lobby, so the peer's ID will still be sent to any new players that
+		# join.
+		# This is the reason why we rely on the Lobby system to determine the
+		# players that have joined, rather than the MasterServer. There is the
+		# possibility of a discrepancy between who has actually joined the
+		# network, and who the master server *thinks* has joined the network.
+		rtc.remove_peer(peer_id)
+	else:
+		push_error("Cannot remove peer '%d', WebRTC network does not exist" % peer_id)
+	
+	# Now that the timer has run out, we can queue it to be removed from the
+	# scene tree.
+	_stop_connection_timer(peer_id)
+	
+	# If we failed to connect to the host as a client, then we cannot recover in
+	# any way, so turn the lights off and say good night.
+	if peer_id == 1:
+		stop()
+	
+	# Since the connection was not established, the signals from the multiplayer
+	# interface won't fire, but we still need to let the outside world know that
+	# the peer has failed to connect.
+	emit_signal("connection_to_peer_failed", peer_id)
+	if peer_id == 1:
+		emit_signal("connection_to_host_failed")
+
+
 func _on_setup_failed(_err: int):
 	print("NetworkManager: Setup failed, closing all network connections...")
 	stop()
@@ -215,11 +329,23 @@ func _on_SceneTree_connection_failed():
 
 func _on_SceneTree_network_peer_connected(peer_id: int):
 	print("NetworkManager: Connection to peer with ID '%d' has been established." % peer_id)
+	
+	# A connection has been established, so we should stop the connection timer
+	# for this peer so that they do not get removed from the network.
+	_stop_connection_timer(peer_id)
+	
 	emit_signal("connection_to_peer_established", peer_id)
 
 
 func _on_SceneTree_network_peer_disconnected(peer_id: int):
 	print("NetworkManager: Connection to peer with ID '%d' has been closed." % peer_id)
+	
+	# This shouldn't happen, but just in case the connection timer was ongoing,
+	# we should stop it so that it doesn't end up firing the 'peer_closed'
+	# signal a second time.
+	if _is_connection_timer_running(peer_id):
+		_stop_connection_timer(peer_id)
+	
 	emit_signal("connection_to_peer_closed", peer_id)
 
 
@@ -267,6 +393,10 @@ func _on_MasterServer_connection_closed(code: int):
 		else:
 			print("NetworkManager: Not connected to any peers on the network, closing network...")
 			get_tree().network_peer = null
+			
+			# If there were any connection timers ongoing, we can stop them
+			# since we are no longer trying to connect to any peers.
+			_stop_connection_timer_all()
 	
 	emit_signal("lobby_server_disconnected", code)
 
@@ -366,14 +496,19 @@ func _on_MasterServer_peer_arriving(peer_id: int):
 			
 			return
 		
+		# If an attempt is about to be made to establish a connection, then we
+		# will start a timer that will effectively act as a time limit for the
+		# connection to be made. We need to make our own timers since the WebRTC
+		# library has no way of signalling that after the ICE candidates have
+		# been exchanged, no connection could be made - it just sits there...
+		# Menacingly...
+		# NOTE: Both the host and the client will create these timers.
+		if rtc.get_unique_id() == 1 or peer_id == 1:
+			_start_connection_timer(peer_id)
+		
 		# Only have the host initiate the connections. That way, the host will
 		# create connections to all of the clients, but the clients won't create
 		# connections to other clients, since they are not needed.
-		# TODO: There is a chance that these exchanges don't result in a valid
-		# connection. We need to find a way to remove the peers if they don't
-		# create a connection in time (add to CHANGELOG). Needs to be done by
-		# the host so a modified client can't linger, regardless of if the
-		# master server thinks they are still connected.
 		if rtc.get_unique_id() == 1:
 			print("NetworkManager: Creating offer for peer '%d'..." % peer_id)
 			err = peer.create_offer()
@@ -387,6 +522,11 @@ func _on_MasterServer_peer_arriving(peer_id: int):
 
 
 func _on_MasterServer_peer_leaving(peer_id: int):
+	# While unlikely, we can check if there was a connection timer for the peer
+	# that we can stop and remove from the scene tree.
+	if _is_connection_timer_running(peer_id):
+		_stop_connection_timer(peer_id)
+	
 	var rtc := get_tree().network_peer
 	if rtc is WebRTCMultiplayer:
 		if rtc.has_peer(peer_id):

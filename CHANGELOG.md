@@ -221,7 +221,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Multiplayer
 
 - Fixed the game client not detecting when the connection to the master server
-has been lost silently.
+  has been lost silently.
+- Fixed the game client not detecting when the connection to another client has
+  been lost silently.
+- Fixed the game client not detecting when a connection to the host, or to a
+  client joining the room, was not able to be established.
 
 #### Project
 
