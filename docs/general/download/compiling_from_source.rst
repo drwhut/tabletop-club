@@ -366,6 +366,19 @@ the plugin:
    ``tabletop-club/game/``. Afterwards, there should be a file at
    ``tabletop-club/game/webrtc/webrtc.tres``.
 
+.. note::
+
+   If you are on macOS, when you open the project with Godot, you will likely
+   get a warning about the library not being verified, and the system will stop
+   Godot from being able to use it.
+
+   In order to enable WebRTC functionality, you will need to override the
+   system's security. After attempting to open the project, you can go to the
+   system settings, click :guilabel:`Privacy & Security`, scroll down until you
+   see the library, then click :guilabel:`Open Anyway`. See `this issue
+   <https://github.com/godotengine/webrtc-native/issues/124>`_ for more
+   information.
+
 
 Running Tabletop Club in the Godot editor
 -----------------------------------------
