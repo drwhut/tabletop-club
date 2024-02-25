@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://tabletop_club_logo.png" type="Texture" id=1]
 [ext_resource path="res://icons/multiplayer_icon.svg" type="Texture" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://ui/website_panel.tscn" type="PackedScene" id=21]
 [ext_resource path="res://ui/options_panel.tscn" type="PackedScene" id=22]
 [ext_resource path="res://ui/custom_module_dialog.tscn" type="PackedScene" id=23]
+[ext_resource path="res://ui/multiplayer_main_panel.tscn" type="PackedScene" id=24]
+[ext_resource path="res://ui/multiplayer_setup_panel.tscn" type="PackedScene" id=25]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeInMenu"
@@ -215,6 +217,14 @@ margin_top = 5.0
 margin_right = -10.0
 grow_horizontal = 0
 
+[node name="MultiplayerMainPanel" parent="." instance=ExtResource( 24 )]
+hide_on_popup = NodePath("../MainContainer")
+focus_on_hide = NodePath("../MainContainer/PrimaryContainer/MultiplayerButton")
+
+[node name="MultiplayerSetupPanel" parent="." instance=ExtResource( 25 )]
+hide_on_popup = NodePath("../MainContainer")
+focus_on_hide = NodePath("../MainContainer/PrimaryContainer/MultiplayerButton")
+
 [node name="OptionsPanel" parent="." instance=ExtResource( 22 )]
 hide_on_popup = NodePath("../MainContainer")
 focus_on_hide = NodePath("../MainContainer/SecondaryContainer/OptionsButton")
@@ -248,6 +258,7 @@ anims/FadeInMenu = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
 [connection signal="pressed" from="MainContainer/PrimaryContainer/SingleplayerButton" to="." method="_on_SingleplayerButton_pressed"]
+[connection signal="pressed" from="MainContainer/PrimaryContainer/MultiplayerButton" to="." method="_on_MultiplayerButton_pressed"]
 [connection signal="pressed" from="MainContainer/PrimaryContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
 [connection signal="pressed" from="MainContainer/PrimaryContainer/LeaveButton" to="." method="_on_LeaveButton_pressed"]
 [connection signal="pressed" from="MainContainer/SecondaryContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
@@ -255,4 +266,6 @@ anims/RESET = SubResource( 2 )
 [connection signal="pressed" from="MainContainer/TertiaryContainer/WebsiteButton" to="." method="_on_WebsiteButton_pressed"]
 [connection signal="pressed" from="MainContainer/TertiaryContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="MainContainer/TertiaryContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="hosting_room" from="MultiplayerMainPanel" to="." method="_on_MultiplayerMainPanel_hosting_room"]
+[connection signal="joining_room" from="MultiplayerMainPanel" to="." method="_on_MultiplayerMainPanel_joining_room"]
 [connection signal="leaving_session" from="LeaveDialog" to="." method="_on_LeaveDialog_leaving_session"]

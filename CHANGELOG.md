@@ -57,6 +57,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Medium, High, Very High, and Ultra. The default for new players is Medium.
 - Added a toggle for showing advanced graphics settings in the options menu.
 
+#### Multiplayer
+
+- Can now host multiplayer lobbies in "Direct Connection" mode, which allows
+  clients to join using the host's IP address instead of a room code, removing
+  the need to connect to the master server. (#225)
+
 #### Options
 
 - When reading the system's language, if it is a variant of a language that is
@@ -93,6 +99,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   display the player's message history from that session.
 - When clicking on a blank space while in-game, the game will automatically
   release the focus from any UI elements that have it at the time.
+- Added more information about the connection process to the multiplayer window.
 
 ### Changed
 

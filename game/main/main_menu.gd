@@ -51,6 +51,12 @@ var ingame_buttons_visible := false setget set_ingame_buttons_visible, \
 ## The jukebox that plays music while in the main menu.
 onready var jukebox := $MainMenuJukebox
 
+## The main multiplayer panel, where players can choose to host or join a room.
+onready var multiplayer_main_panel := $MultiplayerMainPanel
+
+## The panel which sets up the multiplayer network in the way the player wants.
+onready var multiplayer_setup_panel := $MultiplayerSetupPanel
+
 onready var _animation_player := $AnimationPlayer
 onready var _credits_panel := $CreditsPanel
 onready var _game_info_panel := $GameInfoPanel
@@ -107,6 +113,28 @@ func get_ingame_buttons_visible() -> bool:
 
 func _on_SingleplayerButton_pressed():
 	emit_signal("starting_singleplayer")
+
+
+func _on_MultiplayerButton_pressed():
+	multiplayer_main_panel.popup_centered()
+
+
+func _on_MultiplayerMainPanel_hosting_room():
+	var setup_mode: int = multiplayer_setup_panel.SETUP_HOST_USING_IP_ADDRESS \
+			if multiplayer_main_panel.use_ip_address \
+			else multiplayer_setup_panel.SETUP_HOST_USING_ROOM_CODE
+	
+	multiplayer_setup_panel.reset(setup_mode)
+	multiplayer_setup_panel.popup_centered()
+
+
+func _on_MultiplayerMainPanel_joining_room():
+	var setup_mode: int = multiplayer_setup_panel.SETUP_JOIN_USING_IP_ADDRESS \
+			if multiplayer_main_panel.use_ip_address \
+			else multiplayer_setup_panel.SETUP_JOIN_USING_ROOM_CODE
+	
+	multiplayer_setup_panel.reset(setup_mode)
+	multiplayer_setup_panel.popup_centered()
 
 
 func _on_ReturnButton_pressed():

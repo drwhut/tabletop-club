@@ -248,6 +248,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://www.svgrepo.com/svg/10764/eye
 
 
+- Host icon
+
+	Files:
+		icons/host_icon.svg
+	Author: Lorc
+	License: CC BY 3.0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://game-icons.net/1x1/lorc/queen-crown.html
+
+
 - Info icon
 
 	Files:

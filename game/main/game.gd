@@ -44,6 +44,7 @@ var _player_controller_using_mouse_last_frame := false
 
 
 onready var _chat_window := $ChatWindow
+onready var _import_progress_panel := $ImportProgressPanel
 onready var _main_menu := $MainMenu
 onready var _main_menu_camera := $MainMenuCamera
 onready var _menu_background: ColorRect = $MenuBackground
@@ -229,6 +230,14 @@ func _on_ChatWindow_focus_leaving():
 	# the main menu buttons if it is visible so it doesn't get lost.
 	if _main_menu.visible:
 		_main_menu.take_focus()
+
+
+func _on_ImportProgressPanel_visibility_changed():
+	# If the game is currently importing assets, then we do not want the player
+	# to host or join a room yet, as this will cause problems when trying to
+	# sync assets with the other clients.
+	_main_menu.multiplayer_main_panel.waiting_for_import = \
+			_import_progress_panel.visible
 
 
 func _on_MainMenu_starting_singleplayer():
