@@ -100,6 +100,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - When clicking on a blank space while in-game, the game will automatically
   release the focus from any UI elements that have it at the time.
 - Added more information about the connection process to the multiplayer window.
+- When entering a room code, up and down arrow buttons have been added to cycle
+  through the alphabet, in addition to using the keyboard to type the code in.
 
 ### Changed
 
@@ -216,6 +218,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   somewhere else in the game.
 - Improved the dialog that appears when attempting to run the game with a build
   of Godot that does not include the custom module.
+- The game will now remember the last room code that was entered after the
+  client successfully joins a multiplayer lobby.
 
 ### Fixed
 

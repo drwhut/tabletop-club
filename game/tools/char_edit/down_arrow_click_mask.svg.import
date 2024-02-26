@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/down_arrow_click_mask.svg-5a9b2864e56c4e92798039d3897d9abe.res"
+
+[deps]
+
+source_file="res://tools/char_edit/down_arrow_click_mask.svg"
+dest_files=[ "res://.import/down_arrow_click_mask.svg-5a9b2864e56c4e92798039d3897d9abe.res" ]
+
+[params]
+
+create_from=1
+threshold=0.5

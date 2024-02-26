@@ -36,12 +36,26 @@ enum {
 }
 
 
+## Does the player want the room code to be visible on the screen?
+var show_room_code: bool setget set_show_room_code, get_show_room_code
+
+
 # Describes how we setup the multiplayer network.
 var _setup_mode := SETUP_HOST_USING_ROOM_CODE
 
 
 onready var _host_icon := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/HostIcon
 onready var _join_icon := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/JoinIcon
+onready var _code_enter_container := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer
+onready var _code_edit_0 := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit0
+onready var _code_edit_1 := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit1
+onready var _code_edit_2 := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit2
+onready var _code_edit_3 := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit3
+onready var _show_code_check_box := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/ShowCodeCheckBox
+
+# TODO: Make array typed in 4.x.
+onready var _code_edit_list: Array = [ _code_edit_0, _code_edit_1, _code_edit_2,
+		_code_edit_3 ]
 
 onready var _info_label := $MarginContainer/MainContainer/PrimaryContainer/InfoLabel
 
@@ -66,6 +80,13 @@ func reset(setup_mode: int) -> void:
 		setup_mode == SETUP_JOIN_USING_IP_ADDRESS
 	)
 	
+	_code_enter_container.visible = (setup_mode == SETUP_JOIN_USING_ROOM_CODE)
+	
+	_show_code_check_box.visible = (
+		setup_mode == SETUP_HOST_USING_ROOM_CODE or
+		setup_mode == SETUP_JOIN_USING_ROOM_CODE
+	)
+	
 	var info_text := ""
 	match setup_mode:
 		SETUP_HOST_USING_ROOM_CODE:
@@ -82,3 +103,11 @@ func reset(setup_mode: int) -> void:
 			pass
 	
 	_info_label.text = info_text
+
+
+func get_show_room_code() -> bool:
+	return _show_code_check_box.pressed
+
+
+func set_show_room_code(value: bool) -> void:
+	_show_code_check_box.pressed = value

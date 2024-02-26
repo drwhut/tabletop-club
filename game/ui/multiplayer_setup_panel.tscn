@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/multiplayer_setup_panel.gd" type="Script" id=1]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://icons/host_icon.svg" type="Texture" id=3]
 [ext_resource path="res://icons/quit_icon.svg" type="Texture" id=4]
+[ext_resource path="res://fonts/res/popup_font_minor.tres" type="DynamicFont" id=5]
+[ext_resource path="res://tools/char_edit/char_edit.gd" type="Script" id=6]
+[ext_resource path="res://fonts/res/room_code_edit_font.tres" type="DynamicFont" id=7]
 
 [node name="MultiplayerSetupPanel" type="PopupPanel"]
 margin_right = 1100.0
@@ -36,27 +39,96 @@ margin_right = 419.0
 margin_bottom = 592.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+custom_constants/separation = 20
 alignment = 1
 
 [node name="HostIcon" type="TextureRect" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
 visible = false
-margin_top = 94.0
+margin_top = 246.0
 margin_right = 419.0
-margin_bottom = 294.0
-rect_min_size = Vector2( 200, 200 )
+margin_bottom = 346.0
+rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
 [node name="JoinIcon" type="TextureRect" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
 visible = false
-margin_top = 196.0
+margin_top = 246.0
 margin_right = 419.0
-margin_bottom = 396.0
-rect_min_size = Vector2( 200, 200 )
+margin_bottom = 346.0
+rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
+
+[node name="CodeEnterContainer" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
+visible = false
+margin_top = 204.0
+margin_right = 419.0
+margin_bottom = 388.0
+
+[node name="CodeEnterLabel" type="Label" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer"]
+margin_right = 419.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 2 )
+text = "Please enter the host's room code:"
+align = 1
+autowrap = true
+
+[node name="CharEditContainer" type="HBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer"]
+margin_top = 34.0
+margin_right = 419.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 0, 150 )
+alignment = 1
+
+[node name="CodeEdit0" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer"]
+margin_left = 51.0
+margin_right = 127.0
+margin_bottom = 150.0
+script = ExtResource( 6 )
+placeholder_text = "A"
+font_override = ExtResource( 7 )
+minimum_spaces = 6
+
+[node name="CodeEdit1" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer"]
+margin_left = 131.0
+margin_right = 207.0
+margin_bottom = 150.0
+script = ExtResource( 6 )
+placeholder_text = "B"
+font_override = ExtResource( 7 )
+minimum_spaces = 6
+
+[node name="CodeEdit2" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer"]
+margin_left = 211.0
+margin_right = 287.0
+margin_bottom = 150.0
+script = ExtResource( 6 )
+placeholder_text = "C"
+font_override = ExtResource( 7 )
+minimum_spaces = 6
+
+[node name="CodeEdit3" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer"]
+margin_left = 291.0
+margin_right = 367.0
+margin_bottom = 150.0
+script = ExtResource( 6 )
+placeholder_text = "D"
+font_override = ExtResource( 7 )
+minimum_spaces = 6
+
+[node name="ShowCodeCheckBox" type="CheckBox" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
+visible = false
+margin_left = 75.0
+margin_top = 279.0
+margin_right = 344.0
+margin_bottom = 312.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 5 )
+pressed = true
+text = "Show room code on screen?"
 
 [node name="InfoLabel" type="Label" parent="MarginContainer/MainContainer/PrimaryContainer"]
 margin_left = 423.0
