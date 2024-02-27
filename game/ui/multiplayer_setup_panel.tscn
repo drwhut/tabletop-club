@@ -91,6 +91,7 @@ script = ExtResource( 6 )
 placeholder_text = "A"
 font_override = ExtResource( 7 )
 minimum_spaces = 6
+focus_right = NodePath("../CodeEdit1")
 
 [node name="CodeEdit1" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer"]
 margin_left = 131.0
@@ -100,6 +101,8 @@ script = ExtResource( 6 )
 placeholder_text = "B"
 font_override = ExtResource( 7 )
 minimum_spaces = 6
+focus_left = NodePath("../CodeEdit0")
+focus_right = NodePath("../CodeEdit2")
 
 [node name="CodeEdit2" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer"]
 margin_left = 211.0
@@ -109,6 +112,8 @@ script = ExtResource( 6 )
 placeholder_text = "C"
 font_override = ExtResource( 7 )
 minimum_spaces = 6
+focus_left = NodePath("../CodeEdit1")
+focus_right = NodePath("../CodeEdit3")
 
 [node name="CodeEdit3" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer"]
 margin_left = 291.0
@@ -118,6 +123,7 @@ script = ExtResource( 6 )
 placeholder_text = "D"
 font_override = ExtResource( 7 )
 minimum_spaces = 6
+focus_left = NodePath("../CodeEdit2")
 
 [node name="ShowCodeCheckBox" type="CheckBox" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
 visible = false

@@ -28,6 +28,40 @@ extends VBoxContainer
 ## cycle through the alphabet when pressed.
 
 
+## A modified version of [LineEdit] that allows the focus to be transferred
+## horizontally when pressing either 'ui_left' or 'ui_right' when the caret is
+## at the beginning and end of the text respectively.
+class ModifiedLineEdit:
+	extends LineEdit
+	
+	func _gui_input(event: InputEvent):
+		var focus_path := NodePath()
+		var event_is_ui_right := false
+		
+		if event.is_action_pressed("ui_left", true):
+			if caret_position == 0:
+				focus_path = focus_neighbour_left
+		
+		elif event.is_action_pressed("ui_right", true):
+			event_is_ui_right = true
+			if caret_position == text.length():
+				focus_path = focus_neighbour_right
+		
+		if focus_path.is_empty():
+			return
+		
+		accept_event()
+		
+		var to_focus: Control = get_node(focus_path)
+		# This hack is needed since the editor can't see the LineEdit within a
+		# CharEdit, so we need to use the [method CharEdit.take_focus] method.
+		# But using the class name results in a cyclical reference. Bleh.
+		if to_focus.has_method("take_focus"):
+			to_focus.take_focus(event_is_ui_right)
+		else:
+			to_focus.grab_focus()
+
+
 ## Fired when attempting to input text that is too long to fit in the [LineEdit].
 signal text_change_rejected(rejected_substring)
 
@@ -60,13 +94,19 @@ export(Font) var font_override: Font setget set_font_override, get_font_override
 ## characters could fit in before scrolling was activated.
 export(int) var minimum_spaces := 12 setget set_minimum_spaces, get_minimum_spaces
 
+## The path to a control to the left of the [LineEdit] where the focus can go.
+export(NodePath) var focus_left := NodePath() setget set_focus_left, get_focus_left
+
+## The path to a control to the right of the [LineEdit] where the focus can go.
+export(NodePath) var focus_right := NodePath() setget set_focus_right, get_focus_right
+
 
 # The button that decrements the current character, i.e. it goes backwards
 # through the alphabet.
 var _decrement_button: TextureButton = null
 
 # The line edit that contains the current character.
-var _line_edit: LineEdit = null
+var _line_edit: ModifiedLineEdit = null
 
 # The button that increments the current character, i.e. it goes forwards
 # through the alphabet.
@@ -100,7 +140,7 @@ func _init():
 	_increment_button.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_increment_button.connect("pressed", self, "_on_increment_button_pressed")
 	
-	_line_edit = LineEdit.new()
+	_line_edit = ModifiedLineEdit.new()
 	_line_edit.align = LineEdit.ALIGN_CENTER
 	_line_edit.max_length = 1
 	_line_edit.virtual_keyboard_enabled = false
@@ -115,16 +155,18 @@ func _init():
 	add_child(_increment_button)
 
 
-## Take the focus and pass it to the [LineEdit].
-func take_focus() -> void:
+## Take the focus and pass it to the [LineEdit]. If [param caret_at_beginning]
+## is [code]true[/code], the [member LineEdit.caret_position] will be placed at
+## the beginning of the text. Otherwise, it will be placed at the end, so that
+## the player can immediately press backspace to remove the character.
+func take_focus(caret_at_beginning: bool = false) -> void:
 	if _line_edit == null:
 		return
 	
 	_line_edit.grab_focus()
 	
-	# Set the caret position to after the character, so that the player has the
-	# opportunity to press Backspace straight away.
-	_line_edit.caret_position = _line_edit.text.length()
+	_line_edit.caret_position = 0 if caret_at_beginning \
+			else _line_edit.text.length()
 
 
 func get_text() -> String:
@@ -157,6 +199,32 @@ func get_minimum_spaces() -> int:
 	
 	# Return the default value if there is no override.
 	return _line_edit.get_constant("minimum_spaces")
+
+
+func get_focus_left() -> NodePath:
+	if _line_edit == null:
+		return NodePath()
+	
+	var line_edit_path := _line_edit.focus_neighbour_left
+	if line_edit_path.is_empty():
+		return NodePath()
+	
+	# Remove the "../" prefix.
+	var path := String(line_edit_path).substr(3)
+	return NodePath(path)
+
+
+func get_focus_right() -> NodePath:
+	if _line_edit == null:
+		return NodePath()
+	
+	var line_edit_path := _line_edit.focus_neighbour_right
+	if line_edit_path.is_empty():
+		return NodePath()
+	
+	# Remove the "../" prefix.
+	var path := String(line_edit_path).substr(3)
+	return NodePath(path)
 
 
 func is_secret() -> bool:
@@ -207,6 +275,30 @@ func set_minimum_spaces(value: int) -> void:
 		return
 	
 	_line_edit.add_constant_override("minimum_spaces", value)
+
+
+func set_focus_left(new_path: NodePath) -> void:
+	if _line_edit == null:
+		return
+	
+	if new_path.is_empty():
+		_line_edit.focus_neighbour_left = NodePath()
+		return
+	
+	var path_str := String(new_path)
+	_line_edit.focus_neighbour_left = "..".plus_file(path_str)
+
+
+func set_focus_right(new_path: NodePath) -> void:
+	if _line_edit == null:
+		return
+	
+	if new_path.is_empty():
+		_line_edit.focus_neighbour_right = NodePath()
+		return
+	
+	var path_str := String(new_path)
+	_line_edit.focus_neighbour_right = "..".plus_file(path_str)
 
 
 # Offset the current character by a given amount. If the [LineEdit] is currently
