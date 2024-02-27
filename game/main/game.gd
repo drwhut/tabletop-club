@@ -216,8 +216,13 @@ puppet func verify_game_version(server_version: String) -> void:
 		# TODO: Add self to the lobby.
 	else:
 		print("Game: Client and server versions do not match, aborting...")
+		
+		# Let the player know why we could not connect.
+		_main_menu.multiplayer_setup_panel.show_error(
+				tr("Client version (%s) does not match the host's (%s). Make sure that you and the host are running the most up-to-date version of the game.") %
+				[ client_version, server_version ])
+		
 		NetworkManager.stop()
-		# TODO: Update the UI accordingly.
 
 
 func _on_ChatWindow_text_entered(text: String):
@@ -241,6 +246,12 @@ func _on_ImportProgressPanel_visibility_changed():
 
 
 func _on_MainMenu_starting_singleplayer():
+	print("Game: Starting singleplayer...")
+	set_menu_state(MenuState.STATE_NO_MENU)
+
+
+func _on_MainMenu_starting_multiplayer(room_code: String):
+	print("Game: Starting multiplayer in room '%s'..." % room_code)
 	set_menu_state(MenuState.STATE_NO_MENU)
 
 

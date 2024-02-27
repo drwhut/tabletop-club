@@ -222,6 +222,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   of Godot that does not include the custom module.
 - The game will now remember the last room code that was entered after the
   client successfully joins a multiplayer lobby.
+- When attempting to host or join a multiplayer lobby, the attempt is now done
+  in the main menu instead of in-game.
+- Updated error messages related to the multiplayer network. In some cases,
+  errors are now followed up with advice on how to solve the issue.
 
 ### Fixed
 

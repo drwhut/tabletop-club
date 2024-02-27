@@ -28,6 +28,11 @@ extends Control
 ## Fired when the player wants to start a singleplayer game.
 signal starting_singleplayer()
 
+## Fired when the player has joined a multiplayer game.
+## [b]NOTE:[/b] If the network is using ENet instead of WebRTC, then the
+## [param room_code] will be empty.
+signal starting_multiplayer(room_code)
+
 ## Fired when the player wants to return to the game after looking at the menu.
 signal returning_to_game()
 
@@ -135,6 +140,10 @@ func _on_MultiplayerMainPanel_joining_room():
 	
 	multiplayer_setup_panel.reset(setup_mode)
 	multiplayer_setup_panel.popup_centered()
+
+
+func _on_MultiplayerSetupPanel_setup_completed(room_code: String):
+	emit_signal("starting_multiplayer", room_code)
 
 
 func _on_ReturnButton_pressed():

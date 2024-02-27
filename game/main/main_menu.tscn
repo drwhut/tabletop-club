@@ -268,4 +268,5 @@ anims/RESET = SubResource( 2 )
 [connection signal="pressed" from="MainContainer/TertiaryContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="hosting_room" from="MultiplayerMainPanel" to="." method="_on_MultiplayerMainPanel_hosting_room"]
 [connection signal="joining_room" from="MultiplayerMainPanel" to="." method="_on_MultiplayerMainPanel_joining_room"]
+[connection signal="setup_completed" from="MultiplayerSetupPanel" to="." method="_on_MultiplayerSetupPanel_setup_completed"]
 [connection signal="leaving_session" from="LeaveDialog" to="." method="_on_LeaveDialog_leaving_session"]

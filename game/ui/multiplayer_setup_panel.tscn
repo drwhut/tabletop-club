@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/multiplayer_setup_panel.gd" type="Script" id=1]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://fonts/res/popup_font_minor.tres" type="DynamicFont" id=5]
 [ext_resource path="res://tools/char_edit/char_edit.gd" type="Script" id=6]
 [ext_resource path="res://fonts/res/room_code_edit_font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://fonts/res/popup_font_major.tres" type="DynamicFont" id=8]
+[ext_resource path="res://ui/loading_circle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://icons/reset_icon.svg" type="Texture" id=10]
+[ext_resource path="res://fonts/res/default_italic.tres" type="DynamicFont" id=11]
 
 [node name="MultiplayerSetupPanel" type="PopupPanel"]
 margin_right = 1100.0
@@ -31,12 +35,12 @@ margin_bottom = 592.0
 
 [node name="PrimaryContainer" type="HBoxContainer" parent="MarginContainer/MainContainer"]
 margin_right = 1052.0
-margin_bottom = 592.0
+margin_bottom = 388.0
 size_flags_vertical = 3
 
 [node name="OptionContainer" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer"]
 margin_right = 419.0
-margin_bottom = 592.0
+margin_bottom = 388.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 custom_constants/separation = 20
@@ -44,9 +48,9 @@ alignment = 1
 
 [node name="HostIcon" type="TextureRect" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
 visible = false
-margin_top = 246.0
+margin_top = 144.0
 margin_right = 419.0
-margin_bottom = 346.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 3 )
 expand = true
@@ -54,9 +58,9 @@ stretch_mode = 6
 
 [node name="JoinIcon" type="TextureRect" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
 visible = false
-margin_top = 246.0
+margin_top = 144.0
 margin_right = 419.0
-margin_bottom = 346.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 4 )
 expand = true
@@ -64,9 +68,9 @@ stretch_mode = 6
 
 [node name="CodeEnterContainer" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
 visible = false
-margin_top = 204.0
+margin_top = 102.0
 margin_right = 419.0
-margin_bottom = 388.0
+margin_bottom = 286.0
 
 [node name="CodeEnterLabel" type="Label" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer"]
 margin_right = 419.0
@@ -125,12 +129,23 @@ font_override = ExtResource( 7 )
 minimum_spaces = 6
 focus_left = NodePath("../CodeEdit2")
 
+[node name="CodeErrorLabel" type="Label" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer"]
+visible = false
+margin_top = 188.0
+margin_right = 419.0
+margin_bottom = 208.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 11 )
+text = "Room code must consist of four letters!"
+align = 1
+autowrap = true
+
 [node name="ShowCodeCheckBox" type="CheckBox" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
 visible = false
 margin_left = 75.0
-margin_top = 279.0
+margin_top = 177.0
 margin_right = 344.0
-margin_bottom = 312.0
+margin_bottom = 210.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 5 )
 pressed = true
@@ -138,14 +153,87 @@ text = "Show room code on screen?"
 
 [node name="InfoLabel" type="Label" parent="MarginContainer/MainContainer/PrimaryContainer"]
 margin_left = 423.0
-margin_top = 281.0
+margin_top = 179.0
 margin_right = 1052.0
-margin_bottom = 311.0
+margin_bottom = 209.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 autowrap = true
+
+[node name="SecondaryContainer" type="VBoxContainer" parent="MarginContainer/MainContainer"]
+margin_top = 392.0
+margin_right = 1052.0
+margin_bottom = 592.0
+rect_min_size = Vector2( 0, 200 )
+alignment = 1
+
+[node name="HostButton" type="Button" parent="MarginContainer/MainContainer/SecondaryContainer"]
+visible = false
+margin_left = 449.0
+margin_top = 78.0
+margin_right = 603.0
+margin_bottom = 121.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 8 )
+text = "Host Game"
+
+[node name="JoinButton" type="Button" parent="MarginContainer/MainContainer/SecondaryContainer"]
+visible = false
+margin_left = 455.0
+margin_top = 78.0
+margin_right = 597.0
+margin_bottom = 121.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 8 )
+text = "Join Game"
+
+[node name="StatusContainer" type="VBoxContainer" parent="MarginContainer/MainContainer/SecondaryContainer"]
+visible = false
+margin_top = 30.0
+margin_right = 1052.0
+margin_bottom = 170.0
+custom_constants/separation = 10
+
+[node name="LoadingCircle" parent="MarginContainer/MainContainer/SecondaryContainer/StatusContainer" instance=ExtResource( 9 )]
+margin_right = 1052.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="StatusLabel" type="Label" parent="MarginContainer/MainContainer/SecondaryContainer/StatusContainer"]
+margin_top = 110.0
+margin_right = 1052.0
+margin_bottom = 140.0
+custom_fonts/font = ExtResource( 2 )
+align = 1
+autowrap = true
+
+[node name="ErrorContainer" type="VBoxContainer" parent="MarginContainer/MainContainer/SecondaryContainer"]
+visible = false
+margin_top = 62.0
+margin_right = 1052.0
+margin_bottom = 138.0
+custom_constants/separation = 10
+
+[node name="ErrorLabel" type="Label" parent="MarginContainer/MainContainer/SecondaryContainer/ErrorContainer"]
+margin_right = 1052.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+autowrap = true
+
+[node name="RetryButton" type="Button" parent="MarginContainer/MainContainer/SecondaryContainer/ErrorContainer"]
+margin_left = 451.0
+margin_top = 40.0
+margin_right = 601.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+text = "Try Again"
+icon = ExtResource( 10 )
+expand_icon = true
 
 [connection signal="about_to_show" from="." to="." method="_on_MultiplayerSetupPanel_about_to_show"]
 [connection signal="text_change_rejected" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit0" to="." method="_on_CodeEdit_text_change_rejected" binds= [ 0 ]]
@@ -161,3 +249,6 @@ autowrap = true
 [connection signal="text_changed" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit3" to="." method="_on_CodeEdit_text_changed" binds= [ 3 ]]
 [connection signal="text_entered" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit3" to="." method="_on_CodeEdit_text_entered" binds= [ 3 ]]
 [connection signal="toggled" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/ShowCodeCheckBox" to="." method="_on_ShowCodeCheckBox_toggled"]
+[connection signal="pressed" from="MarginContainer/MainContainer/SecondaryContainer/HostButton" to="." method="_on_HostButton_pressed"]
+[connection signal="pressed" from="MarginContainer/MainContainer/SecondaryContainer/JoinButton" to="." method="_on_JoinButton_pressed"]
+[connection signal="pressed" from="MarginContainer/MainContainer/SecondaryContainer/ErrorContainer/RetryButton" to="." method="_on_RetryButton_pressed"]

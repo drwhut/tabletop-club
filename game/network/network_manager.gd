@@ -53,6 +53,11 @@ signal connection_to_peer_failed(peer_id)
 signal connection_to_peer_closed(peer_id)
 
 
+## Fired when a [NetworkedMultiplayerPeer] has been assigned to the scene tree.
+## [b]NOTE:[/b] If [param room_code] is empty, it means the network is using the
+## ENet protocol instead of the WebRTC protocol.
+signal network_init(room_code)
+
 ## Fired when there was an error setting up the network.
 ## [b]NOTE:[/b] If this is fired, the NetworkManager will automatically close
 ## all network connections.
@@ -432,6 +437,8 @@ func _on_MasterServer_room_joined(room_code: String):
 	
 	get_tree().network_peer = rtc
 	print("NetworkManager: WebRTCMultiplayer set as network interface.")
+	
+	emit_signal("network_init", room_code)
 	
 	# Now that we have the network set up, if the master server sent us any peer
 	# IDs beforehand, we can add them to the network now.

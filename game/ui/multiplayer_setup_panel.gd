@@ -26,6 +26,12 @@ extends AttentionPanel
 ## server using a room code, or with an IP address for a direct connection.
 
 
+## Fired when the network setup has been completed, and we can enter the game.
+## [b]NOTE:[/b] If the network is using ENet instead of WebRTC, [param room_code]
+## will be empty.
+signal setup_completed(room_code)
+
+
 ## The list of possible configurations for setting up the network.
 enum {
 	SETUP_HOST_USING_ROOM_CODE,
@@ -51,6 +57,7 @@ onready var _code_edit_0 := $MarginContainer/MainContainer/PrimaryContainer/Opti
 onready var _code_edit_1 := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit1
 onready var _code_edit_2 := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit2
 onready var _code_edit_3 := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit3
+onready var _code_error_label := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CodeErrorLabel
 onready var _show_code_check_box := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/ShowCodeCheckBox
 
 # TODO: Make array typed in 4.x.
@@ -58,6 +65,23 @@ onready var _code_edit_list: Array = [ _code_edit_0, _code_edit_1, _code_edit_2,
 		_code_edit_3 ]
 
 onready var _info_label := $MarginContainer/MainContainer/PrimaryContainer/InfoLabel
+
+onready var _host_button := $MarginContainer/MainContainer/SecondaryContainer/HostButton
+onready var _join_button := $MarginContainer/MainContainer/SecondaryContainer/JoinButton
+onready var _status_container := $MarginContainer/MainContainer/SecondaryContainer/StatusContainer
+onready var _status_label := $MarginContainer/MainContainer/SecondaryContainer/StatusContainer/StatusLabel
+onready var _error_container := $MarginContainer/MainContainer/SecondaryContainer/ErrorContainer
+onready var _error_label := $MarginContainer/MainContainer/SecondaryContainer/ErrorContainer/ErrorLabel
+
+
+func _ready():
+	MasterServer.connect("connection_established", self,
+			"_on_MasterServer_connection_established")
+	
+	NetworkManager.connect("network_init", self, "_on_NetworkManager_network_init")
+	NetworkManager.connect("setup_failed", self, "_on_NetworkManager_setup_failed")
+	NetworkManager.connect("lobby_server_disconnected", self,
+			"_on_NetworkManager_lobby_server_disconnected")
 
 
 ## Reset the panel to its default state. Depending on the [code]SETUP_*[/code]
@@ -81,11 +105,27 @@ func reset(setup_mode: int) -> void:
 	)
 	
 	_code_enter_container.visible = (setup_mode == SETUP_JOIN_USING_ROOM_CODE)
+	_code_error_label.visible = false
 	
 	_show_code_check_box.visible = (
 		setup_mode == SETUP_HOST_USING_ROOM_CODE or
 		setup_mode == SETUP_JOIN_USING_ROOM_CODE
 	)
+	
+	_host_button.visible = (
+		setup_mode == SETUP_HOST_USING_ROOM_CODE or
+		setup_mode == SETUP_HOST_USING_IP_ADDRESS
+	)
+	
+	_join_button.visible = (
+		setup_mode == SETUP_JOIN_USING_ROOM_CODE or
+		setup_mode == SETUP_JOIN_USING_IP_ADDRESS
+	)
+	
+	_status_container.visible = false
+	_error_container.visible = false
+	
+	close_on_cancel = true
 	
 	var info_text := ""
 	match setup_mode:
@@ -105,6 +145,26 @@ func reset(setup_mode: int) -> void:
 	_info_label.text = info_text
 
 
+## If the panel is currently trying to set up the multiplayer network, cancel
+## the attempt and show the [param error_text] to the player.
+func show_error(error_text: String) -> void:
+	if not visible:
+		print("MultiplayerSetupPanel: Error could not be shown, panel not visible. (%s)" % error_text)
+		return
+	
+	if not _status_container.visible:
+		print("MultiplayerSetupPanel: Error is already being shown. (%s)" % error_text)
+		return
+	
+	_status_container.visible = false
+	_error_container.visible = true
+	
+	# No longer trying to connect, Esc key can close the window again.
+	close_on_cancel = true
+	
+	_error_label.text = error_text
+
+
 func get_show_room_code() -> bool:
 	return _show_code_check_box.pressed
 
@@ -118,7 +178,7 @@ func _on_MultiplayerSetupPanel_about_to_show():
 	# want to interact with at the start.
 	match _setup_mode:
 		SETUP_HOST_USING_ROOM_CODE:
-			pass
+			_host_button.call_deferred("grab_focus")
 		SETUP_JOIN_USING_ROOM_CODE:
 			_code_edit_0.call_deferred("take_focus")
 		SETUP_HOST_USING_IP_ADDRESS:
@@ -179,11 +239,149 @@ func _on_CodeEdit_text_changed(new_text: String, index: int):
 		to_focus.take_focus()
 
 
-func _on_CodeEdit_text_entered(new_text: String, index: int):
-	pass # Replace with function body.
+func _on_CodeEdit_text_entered(_new_text: String, index: int):
+	if index + 1 == _code_edit_list.size():
+		_on_JoinButton_pressed()
 
 
 func _on_ShowCodeCheckBox_toggled(button_pressed: bool):
 	for element in _code_edit_list:
 		var code_edit: CharEdit = element
 		code_edit.secret = not button_pressed
+
+
+func _on_HostButton_pressed():
+	_host_button.visible = false
+	_status_container.visible = true
+	_error_container.visible = false
+	
+	# The Esc key should not close the window while we are trying to connect.
+	close_on_cancel = false
+	
+	if _setup_mode == SETUP_HOST_USING_ROOM_CODE:
+		_status_label.text = tr("Connecting to the lobby server…")
+		NetworkManager.start_as_server()
+
+
+func _on_JoinButton_pressed():
+	# First, we need to check if the room code the player has given us is valid.
+	var room_code := ""
+	for element in _code_edit_list:
+		var code_edit: CharEdit = element
+		var code_char: String = code_edit.text
+		if code_char.empty():
+			_code_error_label.visible = true
+			return
+		
+		if not code_char in CharEdit.VALID_CHARACTERS:
+			_code_error_label.visible = true
+			return
+		
+		room_code += code_char
+	
+	_code_error_label.visible = false
+	
+	_join_button.visible = false
+	_status_container.visible = true
+	_error_container.visible = false
+	
+	# The Esc key should not close the window while we are trying to connect.
+	close_on_cancel = false
+	
+	if _setup_mode == SETUP_JOIN_USING_ROOM_CODE:
+		_status_label.text = tr("Connecting to the lobby server…")
+		NetworkManager.start_as_client(room_code)
+
+
+func _on_RetryButton_pressed():
+	if (
+		_setup_mode == SETUP_HOST_USING_ROOM_CODE or
+		_setup_mode == SETUP_HOST_USING_IP_ADDRESS
+	):
+		_on_HostButton_pressed()
+	else:
+		_on_JoinButton_pressed()
+
+
+func _on_MasterServer_connection_established():
+	if _setup_mode == SETUP_HOST_USING_ROOM_CODE:
+		_status_label.text = tr("Creating a new room…")
+	elif _setup_mode == SETUP_JOIN_USING_ROOM_CODE:
+		_status_label.text = tr("Joining the room…")
+
+
+func _on_NetworkManager_network_init(room_code: String):
+	if (
+		_setup_mode == SETUP_HOST_USING_ROOM_CODE or
+		_setup_mode == SETUP_HOST_USING_IP_ADDRESS
+	):
+		visible = false
+		emit_signal("setup_completed", room_code)
+	else:
+		_status_label.text = tr("Establishing a connection to the host…")
+
+
+func _on_NetworkManager_setup_failed(err: int):
+	var desc: String
+	match err:
+		ERR_UNAVAILABLE:
+			desc = tr("Could not connect to the lobby server. Make sure you are connected to the internet, and that the system's firewall allows the connection.")
+		ERR_CANT_CREATE:
+			desc = tr("Not enough information was given to create the network.")
+		ERR_ALREADY_IN_USE:
+			desc = tr("Network was already created, please try again.")
+		_:
+			desc = tr("<No Description>")
+	
+	var text := tr("Network setup failed. (Error %d: %s)" % [err, desc])
+	show_error(text)
+
+
+func _on_NetworkManager_lobby_server_disconnected(exit_code: int):
+	var desc: String
+	match exit_code:
+		# TODO: Add standard exit codes as well?
+		MasterServer.CODE_GENERIC_ERROR:
+			desc = tr("The connection was closed due to a generic error.")
+		MasterServer.CODE_UNREACHABLE:
+			# This particular code shouldn't be shown, as 'setup_failed' should
+			# be fired first with ERR_UNAVAILABLE.
+			desc = tr("The connection could not be established.")
+		MasterServer.CODE_NOT_IN_LOBBY:
+			desc = tr("Sent an invalid request, had not joined a lobby yet.")
+		MasterServer.CODE_HOST_DISCONNECTED:
+			desc = tr("The host has disconnected from the lobby.")
+		MasterServer.CODE_ONLY_HOST_CAN_SEAL:
+			desc = tr("Sent an invalid request, only the host can close the lobby.")
+		MasterServer.CODE_TOO_MANY_LOBBIES:
+			desc = tr("The maximum number of lobbies has been reached, please try again later.")
+		MasterServer.CODE_ALREADY_IN_LOBBY:
+			desc = tr("Sent an invalid request, had already joined a lobby.")
+		MasterServer.CODE_LOBBY_DOES_NOT_EXIST:
+			desc = tr("Lobby does not exist. Make sure you have entered the room code correctly.")
+		MasterServer.CODE_LOBBY_IS_SEALED:
+			desc = tr("Lobby has been closed by the host.")
+		MasterServer.CODE_INVALID_FORMAT:
+			desc = tr("Sent a request with an invalid format.")
+		MasterServer.CODE_LOBBY_REQUIRED:
+			desc = tr("Sent an invalid request, room code was missing.")
+		MasterServer.CODE_SERVER_ERROR:
+			desc = tr("An internal server error occured.")
+		MasterServer.CODE_INVALID_DESTINATION:
+			desc = tr("Sent an invalid request, destination was invalid.")
+		MasterServer.CODE_INVALID_COMMAND:
+			desc = tr("Sent an invalid request, unknown command.")
+		MasterServer.CODE_TOO_MANY_PEERS:
+			desc = tr("The maximum number of clients has been reached, please try again later.")
+		MasterServer.CODE_INVALID_MODE:
+			desc = tr("Sent an invalid request, used binary mode instead of text mode.")
+		MasterServer.CODE_TOO_MANY_CONNECTIONS:
+			desc = tr("Too many connections from one location.")
+		MasterServer.CODE_RECONNECT_TOO_QUICKLY:
+			desc = tr("Connection was rate limited. Please wait a few seconds before trying again.")
+		_:
+			desc = tr("<No Description>")
+	
+	var text := tr("The lobby server has disconnected. (Code %d: %s)" % [
+			exit_code, desc])
+	show_error(text)

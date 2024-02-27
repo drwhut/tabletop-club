@@ -55,4 +55,5 @@ color = Color( 0, 0, 0, 0.313726 )
 [connection signal="popup_about_to_hide" from="MainMenu" to="." method="_on_MainMenu_popup_about_to_hide"]
 [connection signal="popup_about_to_show" from="MainMenu" to="." method="_on_MainMenu_popup_about_to_show"]
 [connection signal="returning_to_game" from="MainMenu" to="." method="_on_MainMenu_returning_to_game"]
+[connection signal="starting_multiplayer" from="MainMenu" to="." method="_on_MainMenu_starting_multiplayer"]
 [connection signal="starting_singleplayer" from="MainMenu" to="." method="_on_MainMenu_starting_singleplayer"]
