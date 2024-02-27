@@ -111,3 +111,9 @@ func get_show_room_code() -> bool:
 
 func set_show_room_code(value: bool) -> void:
 	_show_code_check_box.pressed = value
+
+
+func _on_ShowCodeCheckBox_toggled(button_pressed: bool):
+	for element in _code_edit_list:
+		var code_edit: CharEdit = element
+		code_edit.secret = not button_pressed

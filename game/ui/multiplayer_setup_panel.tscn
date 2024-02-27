@@ -140,3 +140,5 @@ size_flags_stretch_ratio = 3.0
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 autowrap = true
+
+[connection signal="toggled" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/ShowCodeCheckBox" to="." method="_on_ShowCodeCheckBox_toggled"]

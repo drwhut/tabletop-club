@@ -102,6 +102,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added more information about the connection process to the multiplayer window.
 - When entering a room code, up and down arrow buttons have been added to cycle
   through the alphabet, in addition to using the keyboard to type the code in.
+- Added a checkbox to the multiplayer window that hides the room code before
+  entering the game.
 
 ### Changed
 

@@ -50,6 +50,9 @@ export(String) var text: String setget set_text, get_text
 export(String) var placeholder_text := "" setget set_placeholder_text, \
 		get_placeholder_text
 
+## Whether the text in the [LineEdit] should be secret or not.
+export(bool) var secret := false setget set_secret, is_secret
+
 ## The font used for the [LineEdit].
 export(Font) var font_override: Font setget set_font_override, get_font_override
 
@@ -156,6 +159,13 @@ func get_minimum_spaces() -> int:
 	return _line_edit.get_constant("minimum_spaces")
 
 
+func is_secret() -> bool:
+	if _line_edit == null:
+		return false
+	
+	return _line_edit.secret
+
+
 func set_text(value: String) -> void:
 	if _line_edit == null:
 		return
@@ -176,6 +186,13 @@ func set_placeholder_text(value: String) -> void:
 		return
 	
 	_line_edit.placeholder_text = value
+
+
+func set_secret(value: bool) -> void:
+	if _line_edit == null:
+		return
+	
+	_line_edit.secret = value
 
 
 func set_font_override(value: Font) -> void:
