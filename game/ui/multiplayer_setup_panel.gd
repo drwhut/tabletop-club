@@ -43,9 +43,6 @@ var show_room_code: bool setget set_show_room_code, get_show_room_code
 # Describes how we setup the multiplayer network.
 var _setup_mode := SETUP_HOST_USING_ROOM_CODE
 
-# A flag that is set when text was rejected by one of the [CharEdit] controls.
-var _text_rejected_flag := false
-
 
 onready var _host_icon := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/HostIcon
 onready var _join_icon := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/JoinIcon
@@ -120,8 +117,6 @@ func _on_CodeEdit_text_change_rejected(rejected_substring: String, index: int):
 	# This most likely means that the user wants to paste the full four-letter
 	# code all at once. We can help by taking the substring that went over the
 	# maximum length and passing each character to subsequent CharEdits.
-	_text_rejected_flag = true
-	
 	var rest_of_code := rejected_substring.to_upper()
 	var substr_index := 0
 	
@@ -136,20 +131,21 @@ func _on_CodeEdit_text_change_rejected(rejected_substring: String, index: int):
 		var code_index := index + substr_index + 1
 		var code_edit: CharEdit = _code_edit_list[code_index]
 		code_edit.text = current_char
-		code_edit.take_focus()
 		
 		substr_index += 1
+	
+	# The 'text_changed' signal will be fired just after this, which will end up
+	# setting the focus to the (index+1)th CharEdit. So afterwards, we'll re-set
+	# the focus to the CharEdit that was last affected by this callback.
+	if substr_index > 0:
+		var send_focus_to: CharEdit = _code_edit_list[index + substr_index]
+		
+		# Have the CharEdit take focus two frames in the future. This is
+		# required for take_focus() to be called after 'text_changed'.
+		send_focus_to.call_deferred("call_deferred", "take_focus")
 
 
 func _on_CodeEdit_text_changed(new_text: String, index: int):
-	# This signal is fired AFTER 'text_rejected', so if that callback ended up
-	# changing the focus (e.g. if the user pasted the room code), then we don't
-	# want to override it.
-	var do_not_set_new_focus := _text_rejected_flag
-	_text_rejected_flag = false
-	if do_not_set_new_focus:
-		return
-	
 	if new_text.empty():
 		# The character was just removed, so we want to move the focus to the
 		# previous CharEdit so that the user can immediately backspace that
