@@ -145,7 +145,7 @@ func _init():
 	_line_edit.max_length = 1
 	_line_edit.virtual_keyboard_enabled = false
 	_line_edit.placeholder_alpha = 0.1
-	_line_edit.focus_mode = Control.FOCUS_CLICK
+	#_line_edit.focus_mode = Control.FOCUS_CLICK
 	_line_edit.connect("text_change_rejected", self, "_on_text_change_rejected")
 	_line_edit.connect("text_changed", self, "_on_text_changed")
 	_line_edit.connect("text_entered", self, "_on_text_entered")

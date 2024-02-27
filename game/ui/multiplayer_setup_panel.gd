@@ -113,6 +113,20 @@ func set_show_room_code(value: bool) -> void:
 	_show_code_check_box.pressed = value
 
 
+func _on_MultiplayerSetupPanel_about_to_show():
+	# Set the focus manually to the control that the player will most likely
+	# want to interact with at the start.
+	match _setup_mode:
+		SETUP_HOST_USING_ROOM_CODE:
+			pass
+		SETUP_JOIN_USING_ROOM_CODE:
+			_code_edit_0.call_deferred("take_focus")
+		SETUP_HOST_USING_IP_ADDRESS:
+			pass
+		SETUP_JOIN_USING_IP_ADDRESS:
+			pass
+
+
 func _on_CodeEdit_text_change_rejected(rejected_substring: String, index: int):
 	# This most likely means that the user wants to paste the full four-letter
 	# code all at once. We can help by taking the substring that went over the

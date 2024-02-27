@@ -147,6 +147,7 @@ custom_fonts/font = ExtResource( 2 )
 valign = 1
 autowrap = true
 
+[connection signal="about_to_show" from="." to="." method="_on_MultiplayerSetupPanel_about_to_show"]
 [connection signal="text_change_rejected" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit0" to="." method="_on_CodeEdit_text_change_rejected" binds= [ 0 ]]
 [connection signal="text_changed" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit0" to="." method="_on_CodeEdit_text_changed" binds= [ 0 ]]
 [connection signal="text_entered" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit0" to="." method="_on_CodeEdit_text_entered" binds= [ 0 ]]
