@@ -240,6 +240,11 @@ func _on_text_changed(new_text: String):
 			return
 	
 	_line_edit.text = new_text
+	
+	# Re-setting the LineEdit's text does weird things with the caret position,
+	# so make sure it's after the character if it was just typed in.
+	_line_edit.caret_position = new_text.length()
+	
 	emit_signal("text_changed", new_text)
 
 

@@ -141,4 +141,16 @@ custom_fonts/font = ExtResource( 2 )
 valign = 1
 autowrap = true
 
+[connection signal="text_change_rejected" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit0" to="." method="_on_CodeEdit_text_change_rejected" binds= [ 0 ]]
+[connection signal="text_changed" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit0" to="." method="_on_CodeEdit_text_changed" binds= [ 0 ]]
+[connection signal="text_entered" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit0" to="." method="_on_CodeEdit_text_entered" binds= [ 0 ]]
+[connection signal="text_change_rejected" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit1" to="." method="_on_CodeEdit_text_change_rejected" binds= [ 1 ]]
+[connection signal="text_changed" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit1" to="." method="_on_CodeEdit_text_changed" binds= [ 1 ]]
+[connection signal="text_entered" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit1" to="." method="_on_CodeEdit_text_entered" binds= [ 1 ]]
+[connection signal="text_change_rejected" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit2" to="." method="_on_CodeEdit_text_change_rejected" binds= [ 2 ]]
+[connection signal="text_changed" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit2" to="." method="_on_CodeEdit_text_changed" binds= [ 2 ]]
+[connection signal="text_entered" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit2" to="." method="_on_CodeEdit_text_entered" binds= [ 2 ]]
+[connection signal="text_change_rejected" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit3" to="." method="_on_CodeEdit_text_change_rejected" binds= [ 3 ]]
+[connection signal="text_changed" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit3" to="." method="_on_CodeEdit_text_changed" binds= [ 3 ]]
+[connection signal="text_entered" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit3" to="." method="_on_CodeEdit_text_entered" binds= [ 3 ]]
 [connection signal="toggled" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/ShowCodeCheckBox" to="." method="_on_ShowCodeCheckBox_toggled"]
