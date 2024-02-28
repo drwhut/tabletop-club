@@ -335,6 +335,10 @@ func _on_NetworkManager_connection_to_host_failed():
 
 
 func _on_NetworkManager_connection_to_host_closed():
+	# Do not continue if we are no longer in setup.
+	if not visible:
+		return
+	
 	# It's likely that this was caused by us, the client, after we checked that
 	# the client versions did not match. This error message should not be shown,
 	# as the Game script should show one before us, but try to set one anyway
@@ -343,6 +347,10 @@ func _on_NetworkManager_connection_to_host_closed():
 
 
 func _on_NetworkManager_connection_to_host_lost():
+	# Do not continue if we are no longer in setup.
+	if not visible:
+		return
+	
 	# This will be very rare, but we'll deal with it in case it happens.
 	show_error(tr("Lost the connection to the host after it was established."))
 
@@ -375,6 +383,10 @@ func _on_NetworkManager_setup_failed(err: int):
 
 
 func _on_NetworkManager_lobby_server_disconnected(exit_code: int):
+	# Do not continue if we are no longer in setup.
+	if not visible:
+		return
+	
 	var desc: String
 	match exit_code:
 		# TODO: Add standard exit codes as well?
