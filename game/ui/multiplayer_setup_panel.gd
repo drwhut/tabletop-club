@@ -29,7 +29,7 @@ extends AttentionPanel
 ## Fired when the network setup has been completed, and we can enter the game.
 ## [b]NOTE:[/b] If the network is using ENet instead of WebRTC, [param room_code]
 ## will be empty.
-signal setup_completed(room_code)
+signal setup_completed(room_code, show_code)
 
 
 ## The list of possible configurations for setting up the network.
@@ -316,7 +316,7 @@ func _on_NetworkManager_network_init(room_code: String):
 		_setup_mode == SETUP_HOST_USING_IP_ADDRESS
 	):
 		visible = false
-		emit_signal("setup_completed", room_code)
+		emit_signal("setup_completed", room_code, _show_code_check_box.pressed)
 	else:
 		_status_label.text = tr("Establishing a connection to the host…")
 

@@ -250,8 +250,9 @@ func _on_MainMenu_starting_singleplayer():
 	set_menu_state(MenuState.STATE_NO_MENU)
 
 
-func _on_MainMenu_starting_multiplayer(room_code: String):
-	print("Game: Starting multiplayer in room '%s'..." % room_code)
+func _on_MainMenu_starting_multiplayer(room_code: String, show_code: bool):
+	print("Game: Starting multiplayer (Room: %s, Hidden: %s)..." % [
+			room_code, str(not show_code)])
 	set_menu_state(MenuState.STATE_NO_MENU)
 
 
