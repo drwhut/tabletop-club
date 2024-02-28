@@ -78,6 +78,15 @@ func _ready():
 	MasterServer.connect("connection_established", self,
 			"_on_MasterServer_connection_established")
 	
+	NetworkManager.connect("connection_to_host_established", self,
+			"_on_NetworkManager_connection_to_host_established")
+	NetworkManager.connect("connection_to_host_failed", self,
+			"_on_NetworkManager_connection_to_host_failed")
+	NetworkManager.connect("connection_to_host_closed", self,
+			"_on_NetworkManager_connection_to_host_closed")
+	NetworkManager.connect("connection_to_host_lost", self,
+			"_on_NetworkManager_connection_to_host_lost")
+	
 	NetworkManager.connect("network_init", self, "_on_NetworkManager_network_init")
 	NetworkManager.connect("setup_failed", self, "_on_NetworkManager_setup_failed")
 	NetworkManager.connect("lobby_server_disconnected", self,
@@ -308,6 +317,34 @@ func _on_MasterServer_connection_established():
 		_status_label.text = tr("Creating a new room…")
 	elif _setup_mode == SETUP_JOIN_USING_ROOM_CODE:
 		_status_label.text = tr("Joining the room…")
+
+
+func _on_NetworkManager_connection_to_host_established():
+	# The setup is not quite done yet - we still need to check the host's client
+	# version (in the main Game script), as well as add ourselves to the Lobby.
+	_status_label.text = tr("Sending client details to the host…")
+
+
+func _on_NetworkManager_connection_to_host_failed():
+	var text := tr("Failed to connect to the host. Make sure that your are still connected to the internet, and that the connection isn't being blocked by your system's firewall settings.")
+	if _setup_mode == SETUP_JOIN_USING_IP_ADDRESS:
+		# Internet connection isn't necessary.
+		text = tr("Failed to connect to the host. Make sure the connection isn't being blocked by your system's firewall settings.")
+	
+	show_error(text)
+
+
+func _on_NetworkManager_connection_to_host_closed():
+	# It's likely that this was caused by us, the client, after we checked that
+	# the client versions did not match. This error message should not be shown,
+	# as the Game script should show one before us, but try to set one anyway
+	# just in case something else caused the connection to be closed.
+	show_error(tr("The connection to the host was closed during setup."))
+
+
+func _on_NetworkManager_connection_to_host_lost():
+	# This will be very rare, but we'll deal with it in case it happens.
+	show_error(tr("Lost the connection to the host after it was established."))
 
 
 func _on_NetworkManager_network_init(room_code: String):
