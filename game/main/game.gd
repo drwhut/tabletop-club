@@ -261,6 +261,11 @@ func _on_MainMenu_returning_to_game():
 
 
 func _on_MainMenu_exiting_to_main_menu():
+	# If the multiplayer network is active, or if we are still connected to the
+	# master server, we need to close those connections now that we are going
+	# back to the main menu.
+	NetworkManager.stop()
+	
 	set_menu_state(MenuState.STATE_MAIN_MENU)
 
 
