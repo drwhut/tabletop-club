@@ -155,6 +155,19 @@ func _init():
 	add_child(_increment_button)
 
 
+func _gui_input(event: InputEvent):
+	if event is InputEventMouseButton:
+		if not event.pressed:
+			return
+		
+		if event.button_index == BUTTON_WHEEL_UP:
+			_offset_char(-1)
+			accept_event()
+		elif event.button_index == BUTTON_WHEEL_DOWN:
+			_offset_char(1)
+			accept_event()
+
+
 ## Take the focus and pass it to the [LineEdit]. If [param caret_at_beginning]
 ## is [code]true[/code], the [member LineEdit.caret_position] will be placed at
 ## the beginning of the text. Otherwise, it will be placed at the end, so that
