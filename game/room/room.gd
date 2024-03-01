@@ -34,7 +34,8 @@ onready var _table_manager := $TableManager
 
 func _ready():
 	var state := StateLoader.load("res://tests/test_pack/games/test_state_v0.1.2.tc")
-	set_state(state)
+	if state != null:
+		set_state(state)
 
 
 ## Set the state of the room with a [RoomState].
