@@ -163,6 +163,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   WebRTC.
 - Lobbies will now continue if the connection to the master server is lost, but
   players will not be able to join the lobby anymore.
+- If the connection to the host is lost, clients will now continue the session
+  in singleplayer mode, instead of being kicked back to the main menu.
 
 #### Options
 

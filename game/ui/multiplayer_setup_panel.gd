@@ -49,6 +49,9 @@ var show_room_code: bool setget set_show_room_code, get_show_room_code
 # Describes how we setup the multiplayer network.
 var _setup_mode := SETUP_HOST_USING_ROOM_CODE
 
+# The last room code that we received from the NetworkManager.
+var _last_room_code_received := ""
+
 
 onready var _host_icon := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/HostIcon
 onready var _join_icon := $MarginContainer/MainContainer/PrimaryContainer/OptionContainer/JoinIcon
@@ -91,6 +94,11 @@ func _ready():
 	NetworkManager.connect("setup_failed", self, "_on_NetworkManager_setup_failed")
 	NetworkManager.connect("lobby_server_disconnected", self,
 			"_on_NetworkManager_lobby_server_disconnected")
+	
+	# NetworkManager.network_init is also connected to the lobby, and if we are
+	# the host, then it will automatically add us as a player. Connect this in
+	# deferred mode so that we have time to grab the room code from network_init.
+	Lobby.connect("self_added", self, "_on_Lobby_self_added", [], CONNECT_DEFERRED)
 
 
 ## Reset the panel to its default state. Depending on the [code]SETUP_*[/code]
@@ -269,7 +277,7 @@ func _on_HostButton_pressed():
 	
 	if _setup_mode == SETUP_HOST_USING_ROOM_CODE:
 		_status_label.text = tr("Connecting to the lobby server…")
-		NetworkManager.start_as_server()
+		NetworkManager.start_server_webrtc()
 
 
 func _on_JoinButton_pressed():
@@ -299,7 +307,7 @@ func _on_JoinButton_pressed():
 	
 	if _setup_mode == SETUP_JOIN_USING_ROOM_CODE:
 		_status_label.text = tr("Connecting to the lobby server…")
-		NetworkManager.start_as_client(room_code)
+		NetworkManager.start_client_webrtc(room_code)
 
 
 func _on_RetryButton_pressed():
@@ -356,12 +364,15 @@ func _on_NetworkManager_connection_to_host_lost():
 
 
 func _on_NetworkManager_network_init(room_code: String):
+	_last_room_code_received = room_code
+	
 	if (
 		_setup_mode == SETUP_HOST_USING_ROOM_CODE or
 		_setup_mode == SETUP_HOST_USING_IP_ADDRESS
 	):
-		visible = false
-		emit_signal("setup_completed", room_code, _show_code_check_box.pressed)
+		# We're very close to being done if we are the host - we just need to
+		# wait to add ourselves to the lobby.
+		pass
 	else:
 		_status_label.text = tr("Establishing a connection to the host…")
 
@@ -434,3 +445,11 @@ func _on_NetworkManager_lobby_server_disconnected(exit_code: int):
 	var text := tr("The lobby server has disconnected. (Code %d: %s)" % [
 			exit_code, desc])
 	show_error(text)
+
+
+func _on_Lobby_self_added():
+	# Ladies and gentlemen, boys and girls, cats and dogs... it is time.
+	# Let's get this show on the road! \o/
+	visible = false
+	emit_signal("setup_completed", _last_room_code_received,
+			_show_code_check_box.pressed)

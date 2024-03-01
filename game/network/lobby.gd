@@ -85,6 +85,20 @@ var _client_player: Player = null
 var _old_details := {}
 
 
+func _ready():
+	# We don't need to connect to the 'established' and 'failed' signals, since
+	# the main Game script needs to perform checks first anyways. We also don't
+	# need to differentiate between host and peer connections, since a host
+	# connection is also a peer connection.
+	# TODO: Make sure host connection being closed also fires this.
+	NetworkManager.connect("connection_to_peer_closed", self,
+			"_on_NetworkManager_connection_to_peer_closed")
+	
+	# We also don't need to connect 'setup_failed' and 'lobby_server_disconnected'
+	# as those only affect the state of the network during setup.
+	NetworkManager.connect("network_init", self, "_on_NetworkManager_network_init")
+
+
 ## Add the [param player] to the lobby. If a player with the same ID is already
 ## in the lobby, an error is thrown.
 func add_player(player: Player) -> void:
@@ -117,6 +131,9 @@ func add_player(player: Player) -> void:
 ## Change the ID of one of the players currently in the lobby. Note that
 ## [param old_id] must already exist in the lobby, and [param new_id] cannot.
 func change_player_id(old_id: int, new_id: int) -> void:
+	if old_id == new_id:
+		return
+	
 	var player_index := _get_index_of_id(old_id)
 	if player_index < 0:
 		push_error("Cannot change ID '%d' of player that is not in the lobby" % old_id)
@@ -142,6 +159,9 @@ func change_player_id(old_id: int, new_id: int) -> void:
 ## This will fire [signal player_removing] and [signal player_removed] for each
 ## player that is removed.
 func clear(reason: int, except_self: bool = false) -> void:
+	if _player_list.empty():
+		return
+	
 	if except_self:
 		print("Lobby: Removing all players except self...")
 	else:
@@ -222,6 +242,147 @@ func remove_player(player_id: int, reason: int) -> void:
 		_remove_at_index(index_to_remove, reason)
 
 
+## As a client, request the server to add us to the lobby.
+## If the request is accepted, then the server will send our details to all of
+## the other players in the lobby via [method reverb_add_player], then it will
+## send the details of all of the other players to us via
+## [method response_add_self_accepted].
+## [b]NOTE:[/b] This is called from the main Game script soon after we have
+## established a connection to the host and have checked our client's version 
+## against the host's.
+master func request_add_self(client_name: String, client_color: Color) -> void:
+	# We know the client_id exists in the network because of this call.
+	var client_id := get_tree().get_rpc_sender_id()
+	print("Lobby: Client with ID '%d' has requested to join the lobby..." % client_id)
+	
+	if has_player(client_id):
+		push_error("Cannot add client with ID '%d' to the lobby, ID already exists" % client_id)
+		rpc_id(client_id, "response_add_self_denied")
+		return
+	
+	# NOTE: The [Player] will automatically validate the details that the client
+	# has sent us, so use the values from it afterwards.
+	var player := Player.new(client_id, client_name, client_color)
+	add_player(player)
+	
+	print("Lobby: Sending the details of the client with ID '%d' to the other players..." % client_id)
+	# We can't use an 'rpc' call here, since that would also send the details to
+	# the client that is adding themselves.
+	for element in _player_list:
+		var send_to: Player = element
+		if send_to.id == 1 or send_to.id == client_id:
+			continue
+		
+		rpc_id(send_to.id, "reverb_add_player", client_id, player.name,
+				player.color)
+	
+	print("Lobby: Sending the lobby details to the client with ID '%d'..." % client_id)
+	var lobby_dict := {}
+	for element in _player_list:
+		# NOTE: This will also include the player that was just added.
+		var lobby_player: Player = element
+		lobby_dict[lobby_player.id] = {
+			"name": lobby_player.name,
+			"color": lobby_player.color
+		}
+	
+	rpc_id(client_id, "response_add_self_accepted", lobby_dict)
+
+
+## Called by the server when our request to add ourselves to the lobby was
+## accepted.
+puppet func response_add_self_accepted(server_lobby: Dictionary) -> void:
+	print("Lobby: Received the entire lobby from the server.")
+	
+	var lobby_contains_host := false
+	var lobby_contains_client := false
+	
+	var valid_dicts := []
+	for key in server_lobby:
+		if not key is int:
+			push_error("Key received in server lobby is not an integer")
+			continue
+		
+		var player_id: int = key
+		if player_id < 1:
+			push_error("Player ID received in server lobby is invalid (%d)" % player_id)
+			continue
+		elif player_id == 1:
+			lobby_contains_host = true
+		elif player_id == get_tree().get_network_unique_id():
+			lobby_contains_client = true
+		
+		var value = server_lobby[key]
+		if not value is Dictionary:
+			push_error("Value received in server lobby is not a dictionary")
+			continue
+		
+		var player_dict: Dictionary = value
+		var dict_parse := DictionaryParser.new(player_dict)
+		
+		# If the details are invalid, then they will become valid when they are
+		# placed in a [Player].
+		var player_name: String = dict_parse.expect_strict_type("name", "")
+		var player_color: Color = dict_parse.expect_strict_type("color",
+				Color.white)
+		
+		valid_dicts.push_back({
+			"id": player_id,
+			"name": player_name,
+			"color": player_color
+		})
+	
+	# Something went wrong - at the very least, the server's lobby should have
+	# at the very least the host and our client.
+	if not (lobby_contains_host and lobby_contains_client):
+		push_error("Lobby received from the server does not include both the host and our client.")
+		
+		# Things are about to go very wrong, so close the network.
+		NetworkManager.stop()
+		return
+	
+	for element in valid_dicts:
+		var player_dict: Dictionary = element
+		var player_id: int = player_dict["id"]
+		var player_name: String = player_dict["name"]
+		var player_color: Color = player_dict["color"]
+		
+		# This provides extra checks for the player details before we add them.
+		reverb_add_player(player_id, player_name, player_color)
+
+
+## Called by the server when our request to add ourselves to the lobby was
+## denied.
+puppet func response_add_self_denied() -> void:
+	push_error("Server denied our request to be added to the lobby.")
+	
+	# There is nothing we can do now, so close the network.
+	NetworkManager.stop()
+
+
+## Called by the server when a new player has been added to the lobby.
+puppet func reverb_add_player(player_id: int, player_name: String,
+		player_color: Color) -> void:
+	
+	if player_id != get_tree().get_network_unique_id():
+		var peer_id_list := NetworkManager.get_peer_ids()
+		if not peer_id_list.has(player_id):
+			push_error("Cannot add player with ID '%d' to lobby, ID not in network" % player_id)
+			return
+	
+	# NOTE: The [Player] will automatically validate the details if the data the
+	# server sent to us is invalid, and the call will fail if the ID already
+	# exists in the lobby.
+	var player := Player.new(player_id, player_name, player_color)
+	add_player(player)
+
+
+## Called by the server when a player has been removed from the lobby.
+puppet func reverb_remove_player(player_id: int) -> void:
+	# TODO: What if the server is removing US?
+	remove_player(player_id, REASON_DISCONNECTED)
+
+
 # If a [Player] is in the lobby with the ID [param id], then return its index
 # in the list. Otherwise, return [code]-1[/code].
 func _get_index_of_id(id: int) -> int:
@@ -265,3 +426,41 @@ func _remove_at_index(index: int, reason: int) -> void:
 	if player_to_remove == _client_player:
 		_client_player = null
 		emit_signal("self_removed")
+
+
+func _on_NetworkManager_connection_to_peer_closed(peer_id: int):
+	# If we are a client that just disconnected from the host...
+	if peer_id == 1:
+		# ... then if possible, we should try to convert the lobby from
+		# multiplayer to singleplayer so the player can keep going with the
+		# current state of the room.
+		clear(REASON_DISCONNECTED, true)
+		
+		# If our client's [Player] is still in the lobby, change its ID to 1.
+		if _client_player != null:
+			change_player_id(_client_player.id, 1)
+		
+		# TODO: Setup the network in solo mode.
+	
+	# If we are a host, and a client just disconnected...
+	else:
+		# ... then we need to remove them from the lobby, and let all of the
+		# other clients know they have left, since they do no have a direct
+		# connection to them.
+		remove_player(peer_id, REASON_DISCONNECTED)
+		
+		print("Lobby: Informing the other clients of their departure...")
+		rpc("reverb_remove_player", peer_id)
+
+
+func _on_NetworkManager_network_init(_room_code: String):
+	# Don't do anything if we are a client - at this point, we'll be attempting
+	# to connect to the host.
+	if not get_tree().is_network_server():
+		return
+	
+	# But if we are the server, then there is nothing stopping us from adding
+	# ourselves to the lobby and starting the game! :D
+	var player := Player.new(1, GameConfig.multiplayer_name,
+			GameConfig.multiplayer_color)
+	add_player(player)

@@ -56,3 +56,16 @@ func get_strict_type(key, default):
 				str(key), SanityCheck.get_type_name(default_type),
 				SanityCheck.get_type_name(value_type)])
 		return default
+
+
+## Get the value from [member dictionary] that corresponds to the given
+## [param key]. If the [param key] does not exist, or the value does not match
+## the data type of [param default], then an error is thrown and [param default]
+## is returned. Integers are converted to floats if necessary, but the reverse
+## is not true.
+func expect_strict_type(key, default):
+	if not dictionary.has(key):
+		push_error("Expected key '%s' in dictionary, key does not exist" % str(key))
+		return default
+	
+	return get_strict_type(key, default)

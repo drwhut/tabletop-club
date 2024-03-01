@@ -213,7 +213,9 @@ puppet func verify_game_version(server_version: String) -> void:
 	
 	if client_version == server_version:
 		print("Game: Client and server versions match, continuing...")
-		# TODO: Add self to the lobby.
+		print("Game: Requesting to join the lobby...")
+		Lobby.rpc_id(1, "request_add_self", GameConfig.multiplayer_name,
+				GameConfig.multiplayer_color)
 	else:
 		print("Game: Client and server versions do not match, aborting...")
 		

@@ -120,9 +120,9 @@ func _ready():
 			"_on_MasterServer_candidate_received")
 
 
-## Initialise the multiplayer network as the server, or host.
-func start_as_server() -> void:
-	print("NetworkManager: Starting the network as a server...")
+## Initialise the multiplayer network as a WebRTC server, a.k.a. the host.
+func start_server_webrtc() -> void:
+	print("NetworkManager: Starting the multiplayer network as a WebRTC server...")
 	
 	if get_tree().network_peer != null:
 		push_error("Failed to start network, network already exists")
@@ -138,10 +138,10 @@ func start_as_server() -> void:
 		return
 
 
-## Initialise the multiplayer network as a client, and attempt to join the room
+## Initialise the multiplayer network as a WebRTC client, by joining the lobby
 ## with the given [param room_code].
-func start_as_client(room_code: String) -> void:
-	print("NetworkManager: Starting the network as a client...")
+func start_client_webrtc(room_code: String) -> void:
+	print("NetworkManager: Starting the multiplayer network as a WebRTC client...")
 	
 	if get_tree().network_peer != null:
 		push_error("Failed to start network, network already exists")
@@ -189,6 +189,22 @@ func stop() -> void:
 	# it is still in the middle of a signal, so defer freeing it until all of
 	# its signals are processed.
 	get_tree().set_deferred("network_peer", null)
+
+
+## Get the list of peer IDs that have been added to the network.
+## [b]NOTE:[/b] This differs from [method SceneTree.get_network_connected_peers]
+## in that not all of the peers will be connected. Clients only establish a
+## connection to the server, not to other clients.
+func get_peer_ids() -> PoolIntArray:
+	var ids := PoolIntArray()
+	
+	var network := get_tree().network_peer
+	if network is WebRTCMultiplayer:
+		for element in network.get_peers().keys():
+			var id: int = element
+			ids.push_back(id)
+	
+	return ids
 
 
 ## Check if we are currently connected to a multiplayer network.
