@@ -52,6 +52,51 @@ func _ready():
 			"_on_MessageHub_messages_received")
 
 
+## Add text to the label with game-specific substitutions, e.g.
+## [code]<player 1>[/code].
+func add_text_with_sub(text_str: String) -> void:
+	var normal_since := 0
+	var sub_since := -1
+	
+	for index in range(text_str.length()):
+		match text_str[index]:
+			"<":
+				sub_since = index
+			">":
+				if sub_since < 0:
+					continue
+				
+				var normal_length := sub_since - normal_since
+				var sub_length := index - sub_since + 1
+				# We only need what's inside the angled brackets.
+				var sub_content := text_str.substr(sub_since + 1, sub_length - 2)
+				# PoolStringArray -> Array so we can use 'match' on it.
+				var sub_parts_arr := Array(sub_content.split(" ", true))
+				
+				match sub_parts_arr:
+					["player", var arg]:
+						var player_id_str: String = arg
+						if not player_id_str.is_valid_integer():
+							continue
+						
+						var player_id: int = player_id_str.to_int()
+						var player := Lobby.get_player(player_id)
+						if player == null:
+							continue
+						
+						add_text(text_str.substr(normal_since, normal_length))
+						push_color(player.color)
+						add_text(player.name)
+						pop()
+						normal_since = index + 1
+				
+				# Need another '<' for the next substitution.
+				sub_since = -1
+	
+	if normal_since < text_str.length():
+		add_text(text_str.substr(normal_since))
+
+
 ## Add [param message] to the end of the label in a new line.
 func push_message(message: Message) -> void:
 	if not _line_type_arr.empty():
@@ -71,7 +116,7 @@ func push_message(message: Message) -> void:
 			add_text("[INFO] ")
 			pop()
 			pop()
-			add_text(message.text)
+			add_text_with_sub(message.text)
 		Message.TYPE_WARNING:
 			push_color(Color.yellow)
 			push_bold()
