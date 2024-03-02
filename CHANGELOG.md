@@ -104,6 +104,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   through the alphabet, in addition to using the keyboard to type the code in.
 - Added a checkbox to the multiplayer window that hides the room code before
   entering the game.
+- When sending messages through the chat window, special tags can now be used
+  that will be substituted. For example, `<player 1>` will be replaced with the
+  name of the host.
 
 ### Changed
 

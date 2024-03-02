@@ -89,6 +89,22 @@ func add_text_with_sub(text_str: String) -> void:
 						add_text(player.name)
 						pop()
 						normal_since = index + 1
+					
+					["player_old", var arg]:
+						var player_id_str: String = arg
+						if not player_id_str.is_valid_integer():
+							continue
+						
+						var player_id: int = player_id_str.to_int()
+						var old_player := Lobby.get_player_old(player_id)
+						if old_player == null:
+							continue
+						
+						add_text(text_str.substr(normal_since, normal_length))
+						push_color(old_player.color)
+						add_text(old_player.name)
+						pop()
+						normal_since = index + 1
 				
 				# Need another '<' for the next substitution.
 				sub_since = -1

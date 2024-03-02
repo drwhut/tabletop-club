@@ -191,6 +191,14 @@ func get_player_count() -> int:
 	return _player_list.size()
 
 
+## Get the old details of the player with the ID [param player_id]. Use this
+## instead of [method get_player] if you want to get the details of a player who
+## is no longer in the lobby, or to get their details prior to modification.
+## Return [code]null[/code] if no old details exist for the given player.
+func get_player_old(player_id: int) -> Player:
+	return _old_details.get(player_id, null)
+
+
 ## Get the [Player] representing this client. Returns [code]null[/code] if this
 ## client is not in the lobby.
 func get_self() -> Player:
