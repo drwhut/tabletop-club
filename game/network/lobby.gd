@@ -86,6 +86,11 @@ var _old_details := {}
 
 
 func _ready():
+	# Although the host will probably tell us faster than the master server, we
+	# do need to deal with the case that the master server tells us the host has
+	# sealed the room before the host's connection drops.
+	MasterServer.connect("room_sealed", self, "_on_MasterServer_room_sealed")
+	
 	# We don't need to connect to the 'established' and 'failed' signals, since
 	# the main Game script needs to perform checks first anyways. We also don't
 	# need to differentiate between host and peer connections, since a host
@@ -390,6 +395,32 @@ puppet func reverb_remove_player(player_id: int) -> void:
 	remove_player(player_id, REASON_DISCONNECTED)
 
 
+# Convert the lobby from a multiplayer instance to a singleplayer one.
+# This will remove all players from the lobby that are not this client, and it
+# will set the remaining [Player]'s ID to 1.
+# The lobby will also attempt to start the network in singleplayer mode, which
+# will throw an error if the network is still alive.
+func _try_convert_to_singleplayer(reason: int) -> void:
+	print("Lobby: Converting to a singleplayer instance...")
+	
+	# Remove all players except this client's.
+	clear(reason, true)
+	if _client_player == null:
+		print("Lobby: No players left in lobby, not converting to singleplayer.")
+		return
+	
+	# Set this client's ID to 1. If it is already 1, then we don't need to do
+	# anything else, as we should already have a network set up.
+	if _client_player.id == 1:
+		print("Lobby: Client is already ID 1, no need to convert to singleplayer.")
+		return
+	change_player_id(_client_player.id, 1)
+	
+	# Give the NetworkManager time to close the network fully, so that we can
+	# start it in singleplayer mode after.
+	NetworkManager.call_deferred("start_server_solo")
+
+
 # If a [Player] is in the lobby with the ID [param id], then return its index
 # in the list. Otherwise, return [code]-1[/code].
 func _get_index_of_id(id: int) -> int:
@@ -435,19 +466,19 @@ func _remove_at_index(index: int, reason: int) -> void:
 		emit_signal("self_removed")
 
 
+func _on_MasterServer_room_sealed():
+	# The room is being closed, so try to convert to a singleplayer instance.
+	# Defer the call so that the NetworkManager has time to close the network.
+	call_deferred("_try_convert_to_singleplayer", REASON_LOBBY_SEALED)
+
+
 func _on_NetworkManager_connection_to_peer_closed(peer_id: int):
 	# If we are a client that just disconnected from the host...
 	if peer_id == 1:
 		# ... then if possible, we should try to convert the lobby from
 		# multiplayer to singleplayer so the player can keep going with the
 		# current state of the room.
-		clear(REASON_DISCONNECTED, true)
-		
-		# If our client's [Player] is still in the lobby, change its ID to 1.
-		if _client_player != null:
-			change_player_id(_client_player.id, 1)
-		
-		NetworkManager.call_deferred("call_deferred", "start_server_solo")
+		call_deferred("_try_convert_to_singleplayer", REASON_DISCONNECTED)
 	
 	# If we are a host, and a client just disconnected...
 	else:
