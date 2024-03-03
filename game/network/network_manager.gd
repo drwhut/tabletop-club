@@ -120,6 +120,24 @@ func _ready():
 			"_on_MasterServer_candidate_received")
 
 
+## Initialise the network for singleplayer use. This is required in order for
+## RPCs to work locally, even if they won't be sent to another client.
+func start_server_solo() -> void:
+	print("NetworkManager: Starting the network in singleplayer mode...")
+	
+	if get_tree().network_peer != null:
+		push_error("Failed to start network, network already exists")
+		emit_signal("setup_failed", ERR_ALREADY_IN_USE)
+		return
+	
+	var network := NetworkedMultiplayerCustom.new()
+	network.set_connection_status(NetworkedMultiplayerPeer.CONNECTION_CONNECTING)
+	network.initialize(1) # Sets the connection status to CONNECTED.
+	get_tree().network_peer = network
+	
+	emit_signal("network_init", "") # No room code.
+
+
 ## Initialise the multiplayer network as a WebRTC server, a.k.a. the host.
 func start_server_webrtc() -> void:
 	print("NetworkManager: Starting the multiplayer network as a WebRTC server...")

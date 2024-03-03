@@ -249,6 +249,12 @@ func _on_ImportProgressPanel_visibility_changed():
 
 func _on_MainMenu_starting_singleplayer():
 	print("Game: Starting singleplayer...")
+	
+	# In order for RPCs across the game to work, we need to have a network.
+	# But since this is singleplayer only, we want to set it up such that we
+	# will be the only peer. This call will also add ourselves to the lobby.
+	NetworkManager.start_server_solo()
+	
 	set_menu_state(MenuState.STATE_NO_MENU)
 
 

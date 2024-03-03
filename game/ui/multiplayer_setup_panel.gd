@@ -364,6 +364,10 @@ func _on_NetworkManager_connection_to_host_lost():
 
 
 func _on_NetworkManager_network_init(room_code: String):
+	# This signal can be fired for singleplayer as well.
+	if not visible:
+		return
+	
 	_last_room_code_received = room_code
 	
 	if (

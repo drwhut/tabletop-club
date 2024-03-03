@@ -90,7 +90,6 @@ func _ready():
 	# the main Game script needs to perform checks first anyways. We also don't
 	# need to differentiate between host and peer connections, since a host
 	# connection is also a peer connection.
-	# TODO: Make sure host connection being closed also fires this.
 	NetworkManager.connect("connection_to_peer_closed", self,
 			"_on_NetworkManager_connection_to_peer_closed")
 	
@@ -448,7 +447,7 @@ func _on_NetworkManager_connection_to_peer_closed(peer_id: int):
 		if _client_player != null:
 			change_player_id(_client_player.id, 1)
 		
-		# TODO: Setup the network in solo mode.
+		NetworkManager.call_deferred("call_deferred", "start_server_solo")
 	
 	# If we are a host, and a client just disconnected...
 	else:
@@ -469,6 +468,12 @@ func _on_NetworkManager_network_init(_room_code: String):
 	
 	# But if we are the server, then there is nothing stopping us from adding
 	# ourselves to the lobby and starting the game! :D
+	# However, there is a chance that we are already in the lobby, for example,
+	# if we were a client and we disconnected from the host, we are now our own
+	# host in singleplayer mode.
+	if has_player(1):
+		return
+	
 	var player := Player.new(1, GameConfig.multiplayer_name,
 			GameConfig.multiplayer_color)
 	add_player(player)
