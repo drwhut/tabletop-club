@@ -364,7 +364,7 @@ func _on_NetworkManager_connection_to_host_lost():
 
 
 func _on_NetworkManager_network_init(room_code: String):
-	# This signal can be fired for singleplayer as well.
+	# This signal can be fired in singleplayer as well.
 	if not visible:
 		return
 	
@@ -452,6 +452,10 @@ func _on_NetworkManager_lobby_server_disconnected(exit_code: int):
 
 
 func _on_Lobby_self_added():
+	# This signal can be fired in singleplayer as well.
+	if not visible:
+		return
+	
 	# Ladies and gentlemen, boys and girls, cats and dogs... it is time.
 	# Let's get this show on the road! \o/
 	visible = false

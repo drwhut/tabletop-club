@@ -224,6 +224,8 @@ puppet func verify_game_version(server_version: String) -> void:
 				tr("Client version (%s) does not match the host's (%s). Make sure that you and the host are running the most up-to-date version of the game.") %
 				[ client_version, server_version ])
 		
+		# Don't need to call Lobby.close(), as no players should have been added
+		# to the Lobby at this point.
 		NetworkManager.stop()
 
 
@@ -269,10 +271,9 @@ func _on_MainMenu_returning_to_game():
 
 
 func _on_MainMenu_exiting_to_main_menu():
-	# If the multiplayer network is active, or if we are still connected to the
-	# master server, we need to close those connections now that we are going
-	# back to the main menu.
-	NetworkManager.stop()
+	# This call will remove all players from the lobby, as well as close the
+	# network and all of its connections.
+	Lobby.close()
 	
 	set_menu_state(MenuState.STATE_MAIN_MENU)
 

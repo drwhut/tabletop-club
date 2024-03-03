@@ -67,8 +67,9 @@ signal self_removed()
 
 ## The various reasons why a player might be removed from the lobby.
 enum {
-	REASON_DISCONNECTED,
-	REASON_LOBBY_SEALED,
+	REASON_DISCONNECTED, ## Connection to peer closed or lost.
+	REASON_LOBBY_SEALED, ## Received signal from the master server.
+	REASON_LOBBY_CLOSED, ## Lobby closed by the client manually.
 }
 
 
@@ -178,6 +179,14 @@ func clear(reason: int, except_self: bool = false) -> void:
 				continue
 		
 		_remove_at_index(index, reason)
+
+
+## Close the lobby. This removes all players (including this client's) from the
+## lobby, and asks the NetworkManager to shut down the network if it is active.
+func close() -> void:
+	print("Lobby: Closing the lobby...")
+	clear(REASON_LOBBY_CLOSED)
+	NetworkManager.stop()
 
 
 ## Get the details of the player with the ID [param player_id].
@@ -503,6 +512,7 @@ func _on_NetworkManager_network_init(_room_code: String):
 	# if we were a client and we disconnected from the host, we are now our own
 	# host in singleplayer mode.
 	if has_player(1):
+		print("Lobby: Client is already in the lobby with ID 1, skipped adding.")
 		return
 	
 	var player := Player.new(1, GameConfig.multiplayer_name,
