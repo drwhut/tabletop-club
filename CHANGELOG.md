@@ -89,6 +89,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Documents folder could not be opened.
 - Optimised the look-up algorithm for certain node structures, which should lead
   to better performance when there are many dynamic objects in play.
+- Enabled HiDPI on Windows, which stops the UI appearing blurry on displays with
+  a high resolution in a small form factor.
 
 #### UI
 
