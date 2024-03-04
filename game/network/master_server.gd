@@ -175,6 +175,10 @@ func connect_to_official_server() -> int:
 		push_error("Cannot connect to the master server, connection already exists or is being made")
 		return ERR_ALREADY_IN_USE
 	
+	# Reset this flag, since we do not expect a disconnect to happen now that we
+	# are connecting to the master server.
+	_expecting_disconnect_flag = false
+	
 	print("MasterServer: Connecting to the official master server at '%s'..." % OFFICIAL_URL)
 	var err := client.connect_to_url(OFFICIAL_URL)
 	if err != OK:

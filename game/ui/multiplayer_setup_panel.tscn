@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ui/multiplayer_setup_panel.gd" type="Script" id=1]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://ui/loading_circle.tscn" type="PackedScene" id=9]
 [ext_resource path="res://icons/reset_icon.svg" type="Texture" id=10]
 [ext_resource path="res://fonts/res/default_italic.tres" type="DynamicFont" id=11]
+[ext_resource path="res://icons/back_icon.svg" type="Texture" id=12]
+[ext_resource path="res://icons/cancel_icon.svg" type="Texture" id=13]
 
 [node name="MultiplayerSetupPanel" type="PopupPanel"]
 margin_right = 1100.0
@@ -35,12 +37,12 @@ margin_bottom = 592.0
 
 [node name="PrimaryContainer" type="HBoxContainer" parent="MarginContainer/MainContainer"]
 margin_right = 1052.0
-margin_bottom = 388.0
+margin_bottom = 348.0
 size_flags_vertical = 3
 
 [node name="OptionContainer" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer"]
 margin_right = 419.0
-margin_bottom = 388.0
+margin_bottom = 348.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 custom_constants/separation = 20
@@ -48,9 +50,9 @@ alignment = 1
 
 [node name="HostIcon" type="TextureRect" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
 visible = false
-margin_top = 144.0
+margin_top = 124.0
 margin_right = 419.0
-margin_bottom = 244.0
+margin_bottom = 224.0
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 3 )
 expand = true
@@ -58,9 +60,9 @@ stretch_mode = 6
 
 [node name="JoinIcon" type="TextureRect" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
 visible = false
-margin_top = 144.0
+margin_top = 124.0
 margin_right = 419.0
-margin_bottom = 244.0
+margin_bottom = 224.0
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 4 )
 expand = true
@@ -68,9 +70,9 @@ stretch_mode = 6
 
 [node name="CodeEnterContainer" type="VBoxContainer" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
 visible = false
-margin_top = 102.0
+margin_top = 82.0
 margin_right = 419.0
-margin_bottom = 286.0
+margin_bottom = 266.0
 
 [node name="CodeEnterLabel" type="Label" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer"]
 margin_right = 419.0
@@ -143,9 +145,9 @@ autowrap = true
 [node name="ShowCodeCheckBox" type="CheckBox" parent="MarginContainer/MainContainer/PrimaryContainer/OptionContainer"]
 visible = false
 margin_left = 75.0
-margin_top = 177.0
+margin_top = 157.0
 margin_right = 344.0
-margin_bottom = 210.0
+margin_bottom = 190.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 5 )
 pressed = true
@@ -153,9 +155,9 @@ text = "Show room code on screen?"
 
 [node name="InfoLabel" type="Label" parent="MarginContainer/MainContainer/PrimaryContainer"]
 margin_left = 423.0
-margin_top = 179.0
+margin_top = 159.0
 margin_right = 1052.0
-margin_bottom = 209.0
+margin_bottom = 189.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 custom_fonts/font = ExtResource( 2 )
@@ -163,9 +165,9 @@ valign = 1
 autowrap = true
 
 [node name="SecondaryContainer" type="VBoxContainer" parent="MarginContainer/MainContainer"]
-margin_top = 392.0
+margin_top = 352.0
 margin_right = 1052.0
-margin_bottom = 592.0
+margin_bottom = 552.0
 rect_min_size = Vector2( 0, 200 )
 alignment = 1
 
@@ -235,6 +237,33 @@ text = "Try Again"
 icon = ExtResource( 10 )
 expand_icon = true
 
+[node name="TertiaryContainer" type="HBoxContainer" parent="MarginContainer/MainContainer"]
+margin_top = 556.0
+margin_right = 1052.0
+margin_bottom = 592.0
+alignment = 1
+
+[node name="BackButton" type="Button" parent="MarginContainer/MainContainer/TertiaryContainer"]
+margin_left = 476.0
+margin_right = 576.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+icon = ExtResource( 12 )
+expand_icon = true
+
+[node name="CancelButton" type="Button" parent="MarginContainer/MainContainer/TertiaryContainer"]
+visible = false
+margin_left = 518.0
+margin_right = 638.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 120, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "Cancel"
+icon = ExtResource( 13 )
+expand_icon = true
+
 [connection signal="about_to_show" from="." to="." method="_on_MultiplayerSetupPanel_about_to_show"]
 [connection signal="text_change_rejected" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit0" to="." method="_on_CodeEdit_text_change_rejected" binds= [ 0 ]]
 [connection signal="text_changed" from="MarginContainer/MainContainer/PrimaryContainer/OptionContainer/CodeEnterContainer/CharEditContainer/CodeEdit0" to="." method="_on_CodeEdit_text_changed" binds= [ 0 ]]
@@ -252,3 +281,5 @@ expand_icon = true
 [connection signal="pressed" from="MarginContainer/MainContainer/SecondaryContainer/HostButton" to="." method="_on_HostButton_pressed"]
 [connection signal="pressed" from="MarginContainer/MainContainer/SecondaryContainer/JoinButton" to="." method="_on_JoinButton_pressed"]
 [connection signal="pressed" from="MarginContainer/MainContainer/SecondaryContainer/ErrorContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="pressed" from="MarginContainer/MainContainer/TertiaryContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/MainContainer/TertiaryContainer/CancelButton" to="." method="_on_CancelButton_pressed"]

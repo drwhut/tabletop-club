@@ -120,6 +120,7 @@ Icooon Mono
 instructure-ui
 Lorc
 pixelbazaar
+Siemens
 Skoll
 Solar Icons
 SVG Repo

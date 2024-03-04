@@ -62,6 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Can now host multiplayer lobbies in "Direct Connection" mode, which allows
   clients to join using the host's IP address instead of a room code, removing
   the need to connect to the master server. (#225)
+- Can now cancel attempts to host or join a multiplayer lobby.
 
 #### Options
 

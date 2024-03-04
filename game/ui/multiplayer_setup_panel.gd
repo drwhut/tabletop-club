@@ -76,6 +76,9 @@ onready var _status_label := $MarginContainer/MainContainer/SecondaryContainer/S
 onready var _error_container := $MarginContainer/MainContainer/SecondaryContainer/ErrorContainer
 onready var _error_label := $MarginContainer/MainContainer/SecondaryContainer/ErrorContainer/ErrorLabel
 
+onready var _back_button := $MarginContainer/MainContainer/TertiaryContainer/BackButton
+onready var _cancel_button := $MarginContainer/MainContainer/TertiaryContainer/CancelButton
+
 
 func _ready():
 	MasterServer.connect("connection_established", self,
@@ -142,6 +145,9 @@ func reset(setup_mode: int) -> void:
 	_status_container.visible = false
 	_error_container.visible = false
 	
+	_back_button.visible = true
+	_cancel_button.visible = false
+	
 	close_on_cancel = true
 	
 	var info_text := ""
@@ -175,6 +181,9 @@ func show_error(error_text: String) -> void:
 	
 	_status_container.visible = false
 	_error_container.visible = true
+	
+	_back_button.visible = true
+	_cancel_button.visible = false
 	
 	# No longer trying to connect, Esc key can close the window again.
 	close_on_cancel = true
@@ -272,6 +281,9 @@ func _on_HostButton_pressed():
 	_status_container.visible = true
 	_error_container.visible = false
 	
+	_back_button.visible = false
+	_cancel_button.visible = true
+	
 	# The Esc key should not close the window while we are trying to connect.
 	close_on_cancel = false
 	
@@ -302,6 +314,9 @@ func _on_JoinButton_pressed():
 	_status_container.visible = true
 	_error_container.visible = false
 	
+	_back_button.visible = false
+	_cancel_button.visible = true
+	
 	# The Esc key should not close the window while we are trying to connect.
 	close_on_cancel = false
 	
@@ -318,6 +333,16 @@ func _on_RetryButton_pressed():
 		_on_HostButton_pressed()
 	else:
 		_on_JoinButton_pressed()
+
+
+func _on_BackButton_pressed():
+	visible = false
+
+
+func _on_CancelButton_pressed():
+	# Close all connections and reset to the default UI state.
+	NetworkManager.stop()
+	reset(_setup_mode)
 
 
 func _on_MasterServer_connection_established():

@@ -99,6 +99,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://www.svgrepo.com/svg/444966/bug-solid
 
 
+- Cancel icon
+
+	Files:
+		icons/cancel_icon.svg
+	Author: Siemens
+	License: MIT
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/486564/cancel
+
+
 - Chat icon
 
 	Files:
