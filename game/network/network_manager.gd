@@ -430,8 +430,17 @@ func _on_MasterServer_connection_closed(code: int):
 		if at_least_one_peer_connected:
 			print("NetworkManager: At least one peer is connected, keeping network alive.")
 		else:
-			print("NetworkManager: Not connected to any peers on the network, closing network...")
-			get_tree().network_peer = null
+			if rtc.get_unique_id() == 1:
+				print("NetworkManager: No connected peers, continuing alone...")
+				
+				# Remove all of the peers from the network, even if they were in
+				# the middle of connecting.
+				for key in rtc.get_peers():
+					var peer_id: int = key
+					rtc.remove_peer(peer_id)
+			else:
+				print("NetworkManager: No connected peers, closing network...")
+				get_tree().network_peer = null
 			
 			# If there were any connection timers ongoing, we can stop them
 			# since we are no longer trying to connect to any peers.
