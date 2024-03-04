@@ -206,7 +206,11 @@ func _on_MultiplayerSetupPanel_about_to_show():
 		SETUP_HOST_USING_ROOM_CODE:
 			_host_button.call_deferred("grab_focus")
 		SETUP_JOIN_USING_ROOM_CODE:
-			_code_edit_0.call_deferred("take_focus")
+			for index in range(_code_edit_list.size()):
+				var code_edit: CharEdit = _code_edit_list[index]
+				if code_edit.text.empty() or index + 1 == _code_edit_list.size():
+					code_edit.call_deferred("take_focus")
+					break
 		SETUP_HOST_USING_IP_ADDRESS:
 			pass
 		SETUP_JOIN_USING_IP_ADDRESS:
