@@ -44,6 +44,7 @@ var _player_controller_using_mouse_last_frame := false
 
 
 onready var _chat_window := $ChatWindow
+onready var _disconnect_master_server_dialog := $DisconnectMasterServerDialog
 onready var _import_progress_panel := $ImportProgressPanel
 onready var _main_menu := $MainMenu
 onready var _main_menu_camera := $MainMenuCamera
@@ -72,6 +73,11 @@ func _ready():
 	# continuing to add them since they will disconnect anyways.
 	NetworkManager.connect("connection_to_peer_established", self,
 			"_on_NetworkManager_connection_to_peer_established")
+	
+	# If we disconnect from the master server while in a multiplayer game, we
+	# need to let the player know.
+	NetworkManager.connect("lobby_server_disconnected", self,
+			"_on_NetworkManager_lobby_server_disconnected")
 
 
 func _process(_delta: float):
@@ -185,6 +191,10 @@ func set_menu_state(value: int) -> void:
 		if old_state != MenuState.STATE_MAIN_MENU:
 			_main_menu_camera.state = MainMenuCamera.CameraState.STATE_PLAYER_TO_ORBIT
 			_player_controller.reset()
+		
+		# If any disconnect dialogs are currently being shown, then hide them,
+		# since they no longer apply.
+		_disconnect_master_server_dialog.visible = false
 	else:
 		# If the jukebox is playing outside of the main menu, start fading it.
 		if _main_menu.jukebox.is_playing_track():
@@ -305,3 +315,15 @@ func _on_NetworkManager_connection_to_peer_established(peer_id: int):
 	print("Game: Sending our game version (%s) to peer '%d' for them to check against..." % [
 			server_version, peer_id])
 	rpc_id(peer_id, "verify_game_version", server_version)
+
+
+func _on_NetworkManager_lobby_server_disconnected(code: int):
+	if menu_state == MenuState.STATE_MAIN_MENU:
+		return
+	
+	if not get_tree().has_network_peer():
+		return
+	
+	_disconnect_master_server_dialog.client = not get_tree().is_network_server()
+	_disconnect_master_server_dialog.close_code = code
+	_disconnect_master_server_dialog.popup_centered()
