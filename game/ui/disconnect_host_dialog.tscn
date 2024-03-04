@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icons/singleplayer_icon.svg" type="Texture" id=1]
+[ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://icons/quit_icon.svg" type="Texture" id=3]
+[ext_resource path="res://ui/disconnect_host_dialog.gd" type="Script" id=4]
+
+[node name="DisconnectHostDialog" type="PopupPanel"]
+margin_right = 720.0
+margin_bottom = 180.0
+popup_exclusive = true
+script = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_constants/margin_right = 14
+custom_constants/margin_left = 14
+
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 14.0
+margin_right = 698.0
+margin_bottom = 172.0
+
+[node name="LabelContainer" type="VBoxContainer" parent="MarginContainer/MainContainer"]
+margin_top = 10.0
+margin_right = 684.0
+margin_bottom = 121.0
+size_flags_vertical = 6
+custom_constants/separation = 18
+
+[node name="ConnectionLostLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
+margin_right = 684.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 2 )
+text = "The connection to the host has been lost."
+align = 1
+autowrap = true
+
+[node name="RoomSealedLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
+visible = false
+margin_right = 684.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 2 )
+text = "The room has been closed by the host."
+align = 1
+autowrap = true
+
+[node name="ChoiceLabel" type="Label" parent="MarginContainer/MainContainer/LabelContainer"]
+margin_top = 48.0
+margin_right = 684.0
+margin_bottom = 111.0
+custom_fonts/font = ExtResource( 2 )
+text = "You can either continue playing in singleplayer mode, or you can create a save file and return to the main menu."
+align = 1
+autowrap = true
+
+[node name="OptionContainer" type="HBoxContainer" parent="MarginContainer/MainContainer"]
+margin_top = 136.0
+margin_right = 684.0
+margin_bottom = 172.0
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/MainContainer/OptionContainer"]
+margin_left = 25.0
+margin_right = 315.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 290, 0 )
+size_flags_horizontal = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Continue in Singleplayer"
+icon = ExtResource( 1 )
+expand_icon = true
+
+[node name="ReturnButton" type="Button" parent="MarginContainer/MainContainer/OptionContainer"]
+margin_left = 349.0
+margin_right = 679.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 330, 0 )
+size_flags_horizontal = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Save & Return to Main Menu"
+icon = ExtResource( 3 )
+expand_icon = true
+
+[connection signal="pressed" from="MarginContainer/MainContainer/OptionContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="MarginContainer/MainContainer/OptionContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]

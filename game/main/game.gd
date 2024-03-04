@@ -42,8 +42,12 @@ var menu_state: int = MenuState.STATE_MAIN_MENU setget set_menu_state
 # Last frame, was the player controller capturing mouse movement?
 var _player_controller_using_mouse_last_frame := false
 
+# What was the reason for the last player that left the lobby leaving?
+var _reason_last_player_left_lobby := Lobby.REASON_DISCONNECTED
+
 
 onready var _chat_window := $ChatWindow
+onready var _disconnect_host_dialog := $DisconnectHostDialog
 onready var _disconnect_master_server_dialog := $DisconnectMasterServerDialog
 onready var _import_progress_panel := $ImportProgressPanel
 onready var _main_menu := $MainMenu
@@ -78,6 +82,13 @@ func _ready():
 	# need to let the player know.
 	NetworkManager.connect("lobby_server_disconnected", self,
 			"_on_NetworkManager_lobby_server_disconnected")
+	
+	# If we were a client, and we have just become the host, that means that we
+	# disconnected from the original host, and we are now in singleplayer mode.
+	Lobby.connect("player_id_changed", self, "_on_Lobby_player_id_changed")
+	
+	# We only need to know the reason why a player was removed from the lobby.
+	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
 
 
 func _process(_delta: float):
@@ -191,9 +202,14 @@ func set_menu_state(value: int) -> void:
 		if old_state != MenuState.STATE_MAIN_MENU:
 			_main_menu_camera.state = MainMenuCamera.CameraState.STATE_PLAYER_TO_ORBIT
 			_player_controller.reset()
+			
+			# We also need to remove all of the players from the lobby, and shut
+			# down the multiplayer network if it is still active.
+			Lobby.close()
 		
 		# If any disconnect dialogs are currently being shown, then hide them,
 		# since they no longer apply.
+		_disconnect_host_dialog.visible = false
 		_disconnect_master_server_dialog.visible = false
 	else:
 		# If the jukebox is playing outside of the main menu, start fading it.
@@ -251,6 +267,11 @@ func _on_ChatWindow_focus_leaving():
 		_main_menu.take_focus()
 
 
+func _on_DisconnectHostDialog_save_and_return_to_main_menu():
+	# TODO: Save the game.
+	set_menu_state(MenuState.STATE_MAIN_MENU)
+
+
 func _on_ImportProgressPanel_visibility_changed():
 	# If the game is currently importing assets, then we do not want the player
 	# to host or join a room yet, as this will cause problems when trying to
@@ -281,10 +302,6 @@ func _on_MainMenu_returning_to_game():
 
 
 func _on_MainMenu_exiting_to_main_menu():
-	# This call will remove all players from the lobby, as well as close the
-	# network and all of its connections.
-	Lobby.close()
-	
 	set_menu_state(MenuState.STATE_MAIN_MENU)
 
 
@@ -324,6 +341,35 @@ func _on_NetworkManager_lobby_server_disconnected(code: int):
 	if not get_tree().has_network_peer():
 		return
 	
+	# This dialog does not have priority over the host one.
+	if _disconnect_host_dialog.visible:
+		return
+	
 	_disconnect_master_server_dialog.client = not get_tree().is_network_server()
 	_disconnect_master_server_dialog.close_code = code
 	_disconnect_master_server_dialog.popup_centered()
+
+
+func _on_Lobby_player_id_changed(player: Player, _old_id: int):
+	if menu_state == MenuState.STATE_MAIN_MENU:
+		return
+	
+	if player != Lobby.get_self():
+		return
+	
+	if player.id != 1:
+		return
+	
+	# We got turned into the host, so the original host disconnected.
+	
+	# The following dialog takes priority over the master server one.
+	_disconnect_master_server_dialog.visible = false
+	
+	_disconnect_host_dialog.room_sealed = (
+		_reason_last_player_left_lobby == Lobby.REASON_LOBBY_SEALED
+	)
+	_disconnect_host_dialog.popup_centered()
+
+
+func _on_Lobby_player_removed(_player: Player, reason: int):
+	_reason_last_player_left_lobby = reason
