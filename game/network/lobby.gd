@@ -92,10 +92,15 @@ func _ready():
 	# sealed the room before the host's connection drops.
 	MasterServer.connect("room_sealed", self, "_on_MasterServer_room_sealed")
 	
-	# We don't need to connect to the 'established' and 'failed' signals, since
-	# the main Game script needs to perform checks first anyways. We also don't
-	# need to differentiate between host and peer connections, since a host
-	# connection is also a peer connection.
+	# While we don't use this signal to add the player to the lobby (the main
+	# game script needs to perform checks first), as the host we will want to
+	# start a timer for clients to add themselves to the lobby after they have
+	# connected to us.
+	NetworkManager.connect("connection_to_peer_established", self,
+			"_on_NetworkManager_connection_to_peer_established")
+	
+	# We don't need to connect the 'connection_to_host_*' signals, since host
+	# connections are also peer connections.
 	NetworkManager.connect("connection_to_peer_closed", self,
 			"_on_NetworkManager_connection_to_peer_closed")
 	
@@ -280,6 +285,10 @@ master func request_add_self(client_name: String, client_color: Color) -> void:
 		push_error("Cannot add client with ID '%d' to the lobby, ID already exists" % client_id)
 		rpc_id(client_id, "response_add_self_denied")
 		return
+	
+	# The player is now about to join the lobby, so we can stop the join timer
+	# so that they do not get kicked when it runs out.
+	_stop_join_timer(client_id)
 	
 	# NOTE: The [Player] will automatically validate the details that the client
 	# has sent us, so use the values from it afterwards.
@@ -475,10 +484,81 @@ func _remove_at_index(index: int, reason: int) -> void:
 		emit_signal("self_removed")
 
 
+# Start a timer for the player with ID [param player_id], in which that player
+# must request to be added to the lobby before the timer runs out. If they fail
+# to do so, they will be kicked from the network.
+func _start_join_timer(player_id: int) -> void:
+	var node_name := "Timeout_%d" % player_id
+	if has_node(node_name):
+		push_error("Cannot start join timer for player '%d', timer already exists" % player_id)
+		return
+	
+	# Use the same timeout duration that other connections use.
+	var timeout_sec: int = ProjectSettings.get_setting(
+			"network/limits/tcp/connect_timeout_seconds")
+	
+	var timer := Timer.new()
+	timer.name = node_name
+	timer.wait_time = timeout_sec
+	timer.one_shot = true
+	timer.autostart = true
+	
+	timer.connect("timeout", self, "_on_join_timer_timeout", [ player_id ])
+	
+	print("Lobby: Starting join timer for player '%d'..." % player_id)
+	add_child(timer)
+
+
+# Stop the join timer for the player with ID [param player_id], which will stop
+# them from being kicked.
+func _stop_join_timer(player_id: int) -> void:
+	var node_name := "Timeout_%d" % player_id
+	if not has_node(node_name):
+		push_error("Cannot stop join timer for player '%d', timer does not exist" % player_id)
+		return
+	
+	var timer_node := get_node(node_name)
+	if not timer_node is Timer:
+		push_error("Join timer for player '%d' is unexpected type" % player_id)
+		return
+	
+	if timer_node.is_queued_for_deletion():
+		push_warning("Join timer for player '%d' is already queued for deletion" % player_id)
+		return
+	
+	print("Lobby: Stopping join timer for player '%d'..." % player_id)
+	timer_node.queue_free()
+
+
+# Check if a join timer is currently running for the player with the given
+# [param player_id].
+func _is_join_timer_running(player_id: int) -> bool:
+	var node_name := "Timeout_%d" % player_id
+	return has_node(node_name)
+
+
+func _on_join_timer_timeout(player_id: int):
+	print("Lobby: Join timer for player '%d' has run out, kicking them from the network..." % player_id)
+	
+	# We don't need to free the timer from the scene tree here, as the following
+	# call will fire the NetworkManager.connection_to_peer_closed() signal,
+	# which will free the timer for us.
+	NetworkManager.kick_peer(player_id)
+
+
 func _on_MasterServer_room_sealed():
 	# The room is being closed, so try to convert to a singleplayer instance.
 	# Defer the call so that the NetworkManager has time to close the network.
 	call_deferred("_try_convert_to_singleplayer", REASON_LOBBY_SEALED)
+
+
+func _on_NetworkManager_connection_to_peer_established(peer_id: int):
+	if peer_id == 1:
+		return
+	
+	# If we are the host, give the client that has just connected a time limit
+	# for adding themselves to the lobby.
+	_start_join_timer(peer_id)
 
 
 func _on_NetworkManager_connection_to_peer_closed(peer_id: int):
@@ -491,13 +571,21 @@ func _on_NetworkManager_connection_to_peer_closed(peer_id: int):
 	
 	# If we are a host, and a client just disconnected...
 	else:
-		# ... then we need to remove them from the lobby, and let all of the
-		# other clients know they have left, since they do no have a direct
-		# connection to them.
-		remove_player(peer_id, REASON_DISCONNECTED)
+		# ...and they had added themsevles to the lobby...
+		if has_player(peer_id):
+			# ... then we need to remove them from the lobby, and let all of the
+			# other clients know that they have left, since they do not have a
+			# connection to them.
+			remove_player(peer_id, REASON_DISCONNECTED)
+			
+			print("Lobby: Informing the other clients of their departure...")
+			rpc("reverb_remove_player", peer_id)
 		
-		print("Lobby: Informing the other clients of their departure...")
-		rpc("reverb_remove_player", peer_id)
+		# ...and they had yet to add themselves to the lobby...
+		elif _is_join_timer_running(peer_id):
+			# ... then stop the join timer for them, as they can no longer be
+			# kicked from the network.
+			_stop_join_timer(peer_id)
 
 
 func _on_NetworkManager_network_init(_room_code: String):

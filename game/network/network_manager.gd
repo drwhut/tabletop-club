@@ -235,6 +235,29 @@ func is_connected_to_network() -> bool:
 	return conn_status == NetworkedMultiplayerPeer.CONNECTION_CONNECTED
 
 
+## Kick the peer with the given [param peer_id] from the network. This method
+## only works if there is an active multiplayer network, and this client is
+## acting as its server.
+func kick_peer(peer_id: int) -> void:
+	var network := get_tree().network_peer
+	if network is WebRTCMultiplayer:
+		if network.get_unique_id() != 1:
+			push_error("Cannot kick peer '%d', we are not the server" % peer_id)
+			return
+		
+		if not network.has_peer(peer_id):
+			push_error("Cannot kick peer '%d', peer does not exist" % peer_id)
+			return
+		
+		print("NetworkManager: Kicking peer '%d' from the network..." % peer_id)
+		# NOTE: If the peer was connected, this should fire the
+		# 'network_peer_disconnected' signal.
+		network.remove_peer(peer_id)
+	
+	else:
+		push_error("Cannot kick peer '%d', multiplayer network not active" % peer_id)
+
+
 # Start a timer for the peer with the given [param peer_id] which, if it runs
 # out, will forcefully remove the peer from the network. If the peer manages to
 # establish a connection with us, the timer should be stopped.
