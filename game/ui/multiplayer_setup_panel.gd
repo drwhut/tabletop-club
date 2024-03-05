@@ -75,6 +75,7 @@ onready var _status_container := $MarginContainer/MainContainer/SecondaryContain
 onready var _status_label := $MarginContainer/MainContainer/SecondaryContainer/StatusContainer/StatusLabel
 onready var _error_container := $MarginContainer/MainContainer/SecondaryContainer/ErrorContainer
 onready var _error_label := $MarginContainer/MainContainer/SecondaryContainer/ErrorContainer/ErrorLabel
+onready var _retry_button := $MarginContainer/MainContainer/SecondaryContainer/ErrorContainer/RetryButton
 
 onready var _back_button := $MarginContainer/MainContainer/TertiaryContainer/BackButton
 onready var _cancel_button := $MarginContainer/MainContainer/TertiaryContainer/CancelButton
@@ -183,6 +184,7 @@ func show_error(error_text: String) -> void:
 	
 	_status_container.visible = false
 	_error_container.visible = true
+	_retry_button.grab_focus()
 	
 	_back_button.visible = true
 	_cancel_button.visible = false
@@ -289,6 +291,7 @@ func _on_HostButton_pressed():
 	
 	_back_button.visible = false
 	_cancel_button.visible = true
+	_cancel_button.grab_focus()
 	
 	# The Esc key should not close the window while we are trying to connect.
 	close_on_cancel = false
@@ -322,6 +325,7 @@ func _on_JoinButton_pressed():
 	
 	_back_button.visible = false
 	_cancel_button.visible = true
+	_cancel_button.grab_focus()
 	
 	# The Esc key should not close the window while we are trying to connect.
 	close_on_cancel = false
@@ -349,6 +353,15 @@ func _on_CancelButton_pressed():
 	# Close all connections and reset to the default UI state.
 	NetworkManager.stop()
 	reset(_setup_mode)
+	
+	# The cancel button will be hidden, so move the focus to a button that is
+	# now visible.
+	if _host_button.visible:
+		_host_button.grab_focus()
+	elif _join_button.visible:
+		_join_button.grab_focus()
+	else:
+		_back_button.grab_focus()
 
 
 func _on_MasterServer_connection_established():
