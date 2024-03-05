@@ -74,6 +74,13 @@ html_theme_options = {
             "type": "fontawesome"
         },
         {
+            "name": "Ko-fi",
+            "url": "https://ko-fi.com/drwhut",
+            # TODO: Use brand icon when it becomes available.
+            "icon": "fa-solid fa-mug-hot",
+            "type": "fontawesome"
+        },
+        {
             "name": "YouTube",
             "url": "https://www.youtube.com/channel/UCPTl-dLnUOuyKWC7y8005jA",
             "icon": "fa-brands fa-youtube",
