@@ -98,6 +98,8 @@ func _ready():
 	NetworkManager.connect("lobby_server_disconnected", self,
 			"_on_NetworkManager_lobby_server_disconnected")
 	
+	Lobby.connect("failed_to_add_self", self, "_on_Lobby_failed_to_add_self")
+	
 	# NetworkManager.network_init is also connected to the lobby, and if we are
 	# the host, then it will automatically add us as a player. Connect this in
 	# deferred mode so that we have time to grab the room code from network_init.
@@ -477,6 +479,20 @@ func _on_NetworkManager_lobby_server_disconnected(exit_code: int):
 	
 	var text := tr("The lobby server has disconnected. (Code %d: %s)" % [
 			exit_code, desc])
+	show_error(text)
+
+
+func _on_Lobby_failed_to_add_self(err: int):
+	var desc: String
+	match err:
+		ERR_QUERY_FAILED:
+			desc = tr("The host denied our request to be added to the lobby.")
+		ERR_INVALID_DATA:
+			desc = tr("The lobby data sent to us by the host was invalid.")
+		_:
+			desc = tr("<No Description>")
+	
+	var text := tr("Failed to join the host's lobby. (Error %d: %s)" % [err, desc])
 	show_error(text)
 
 

@@ -41,6 +41,10 @@ extends Node
 ## TODO: Test this class once it is complete.
 
 
+## Fired when an error occured in trying to join the lobby as a client.
+signal failed_to_add_self(err)
+
+
 ## Fired when a [Player] has been added to the lobby.
 signal player_added(player)
 
@@ -368,6 +372,7 @@ puppet func response_add_self_accepted(server_lobby: Dictionary) -> void:
 		push_error("Lobby received from the server does not include both the host and our client.")
 		
 		# Things are about to go very wrong, so close the network.
+		emit_signal("failed_to_add_self", ERR_INVALID_DATA)
 		NetworkManager.stop()
 		return
 	
@@ -387,6 +392,7 @@ puppet func response_add_self_denied() -> void:
 	push_error("Server denied our request to be added to the lobby.")
 	
 	# There is nothing we can do now, so close the network.
+	emit_signal("failed_to_add_self", ERR_QUERY_FAILED)
 	NetworkManager.stop()
 
 
