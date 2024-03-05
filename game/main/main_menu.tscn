@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://tabletop_club_logo.png" type="Texture" id=1]
 [ext_resource path="res://icons/multiplayer_icon.svg" type="Texture" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://ui/custom_module_dialog.tscn" type="PackedScene" id=23]
 [ext_resource path="res://ui/multiplayer_main_panel.tscn" type="PackedScene" id=24]
 [ext_resource path="res://ui/multiplayer_setup_panel.tscn" type="PackedScene" id=25]
+[ext_resource path="res://icons/donate_icon.svg" type="Texture" id=26]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeInMenu"
@@ -194,17 +195,22 @@ rect_min_size = Vector2( 50, 50 )
 icon = ExtResource( 12 )
 expand_icon = true
 
-[node name="FillGap" type="Control" parent="MainContainer/TertiaryContainer"]
+[node name="DonateButton" type="Button" parent="MainContainer/TertiaryContainer"]
 margin_left = 108.0
-margin_right = 446.0
+margin_right = 258.0
 margin_bottom = 50.0
-size_flags_horizontal = 3
+rect_min_size = Vector2( 150, 50 )
+custom_fonts/font = ExtResource( 7 )
+text = "Donate"
+icon = ExtResource( 26 )
+expand_icon = true
 
 [node name="QuitButton" type="Button" parent="MainContainer/TertiaryContainer"]
 margin_left = 450.0
 margin_right = 600.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 150, 50 )
+size_flags_horizontal = 10
 custom_fonts/font = ExtResource( 7 )
 text = "Quit"
 icon = ExtResource( 11 )
@@ -265,6 +271,7 @@ anims/RESET = SubResource( 2 )
 [connection signal="pressed" from="MainContainer/SecondaryContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="MainContainer/TertiaryContainer/WebsiteButton" to="." method="_on_WebsiteButton_pressed"]
 [connection signal="pressed" from="MainContainer/TertiaryContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
+[connection signal="pressed" from="MainContainer/TertiaryContainer/DonateButton" to="." method="_on_DonateButton_pressed"]
 [connection signal="pressed" from="MainContainer/TertiaryContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="hosting_room" from="MultiplayerMainPanel" to="." method="_on_MultiplayerMainPanel_hosting_room"]
 [connection signal="joining_room" from="MultiplayerMainPanel" to="." method="_on_MultiplayerMainPanel_joining_room"]

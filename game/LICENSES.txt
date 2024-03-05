@@ -189,6 +189,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://www.svgrepo.com/svg/478202/display-material-3
 
 
+- Donate icon
+
+	Files:
+		icons/donate_icon.svg
+	Author: Delapouite
+	License: CC BY 3.0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://game-icons.net/1x1/delapouite/receive-money.html
+
+
 - Erase icon
 
 	Files:

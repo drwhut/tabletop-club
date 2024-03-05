@@ -170,6 +170,10 @@ func _on_InfoButton_pressed():
 	_game_info_panel.popup_centered()
 
 
+func _on_DonateButton_pressed():
+	OS.shell_open("https://ko-fi.com/drwhut")
+
+
 func _on_QuitButton_pressed():
 	_quit_dialog.popup_centered()
 

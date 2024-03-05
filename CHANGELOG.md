@@ -110,6 +110,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - When sending messages through the chat window, special tags can now be used
   that will be substituted. For example, `<player 1>` will be replaced with the
   name of the host.
+- Added a "Donate" button to the main menu. Implemented advanced techniques such
+  as subliminal messaging and scent dispersion in order to lure the player into
+  pressing this button.
 
 ### Changed
 
