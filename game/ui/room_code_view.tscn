@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://fonts/res/room_code_font_minor.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/res/room_code_font_major.tres" type="DynamicFont" id=2]
+[ext_resource path="res://icons/copy_icon.svg" type="Texture" id=3]
+[ext_resource path="res://icons/hidden_area_icon.svg" type="Texture" id=4]
+[ext_resource path="res://ui/room_code_view.gd" type="Script" id=5]
+
+[node name="RoomCodeView" type="GridContainer"]
+margin_right = 200.0
+margin_bottom = 78.0
+columns = 2
+script = ExtResource( 5 )
+
+[node name="HeaderLabel" type="Label" parent="."]
+margin_right = 166.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Room Code:"
+align = 1
+autowrap = true
+
+[node name="Empty" type="Control" parent="."]
+margin_left = 170.0
+margin_right = 200.0
+margin_bottom = 15.0
+
+[node name="RoomCodeLabel" type="Label" parent="."]
+margin_top = 19.0
+margin_right = 166.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 2 )
+align = 1
+autowrap = true
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+margin_left = 170.0
+margin_top = 19.0
+margin_right = 200.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 30, 0 )
+alignment = 1
+
+[node name="ClipboardButton" type="Button" parent="ButtonContainer"]
+margin_top = 1.0
+margin_right = 30.0
+margin_bottom = 27.0
+icon = ExtResource( 3 )
+icon_align = 1
+expand_icon = true
+
+[node name="ToggleSecretButton" type="Button" parent="ButtonContainer"]
+margin_top = 31.0
+margin_right = 30.0
+margin_bottom = 57.0
+icon = ExtResource( 4 )
+icon_align = 1
+expand_icon = true
+
+[node name="ClipboardTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="pressed" from="ButtonContainer/ClipboardButton" to="." method="_on_ClipboardButton_pressed"]
+[connection signal="pressed" from="ButtonContainer/ToggleSecretButton" to="." method="_on_ToggleSecretButton_pressed"]
+[connection signal="timeout" from="ClipboardTimer" to="." method="_on_ClipboardTimer_timeout"]

@@ -49,6 +49,7 @@ var _reason_last_player_left_lobby := Lobby.REASON_DISCONNECTED
 onready var _chat_window := $ChatWindow
 onready var _disconnect_host_dialog := $DisconnectHostDialog
 onready var _disconnect_master_server_dialog := $DisconnectMasterServerDialog
+onready var _game_ui := $GameUI
 onready var _import_progress_panel := $ImportProgressPanel
 onready var _main_menu := $MainMenu
 onready var _main_menu_camera := $MainMenuCamera
@@ -176,6 +177,9 @@ func set_menu_state(value: int) -> void:
 	# While the menu is visible, the player should not be able to control the
 	# camera.
 	_player_controller.disabled = (menu_state != MenuState.STATE_NO_MENU)
+	
+	# Show the in-game UI only if a menu isn't being shown.
+	_game_ui.visible = (menu_state == MenuState.STATE_NO_MENU)
 	
 	# Only show the transparent background if we are in the in-game menu, not
 	# the main menu.

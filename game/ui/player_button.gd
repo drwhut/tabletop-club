@@ -28,6 +28,9 @@ extends MenuButton
 ## The background colour of the button.
 var bg_color: Color setget set_bg_color, get_bg_color
 
+## Should the host icon be shown next to the player's name?
+var host_icon := false setget set_host_icon, get_host_icon
+
 
 func _init():
 	# If the player's name is still the default "Player", then it may be
@@ -82,3 +85,11 @@ func set_bg_color(value: Color) -> void:
 func get_bg_color() -> Color:
 	var style_normal: StyleBoxFlat = get_stylebox("normal")
 	return style_normal.bg_color
+
+
+func set_host_icon(value: bool) -> void:
+	icon = preload("res://icons/host_icon_white.svg") if value else null
+
+
+func get_host_icon() -> bool:
+	return icon != null

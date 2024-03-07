@@ -54,4 +54,5 @@ custom_styles/normal = SubResource( 1 )
 text = "Player"
 flat = false
 clip_text = true
+expand_icon = true
 script = ExtResource( 2 )

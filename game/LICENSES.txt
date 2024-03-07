@@ -159,6 +159,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://game-icons.net/1x1/skoll/console-controller.html
 
 
+- Copy icon
+
+	Files:
+		icons/copy_icon.svg
+	Author: Tienda Nube
+	License: MIT
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/500354/copy
+
+
 - Credits icon
 
 	Files:
@@ -219,6 +229,17 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://www.svgrepo.com/svg/332988/danger
 
 
+- Eye icon
+
+	Files:
+		icons/hidden_area_icon.svg
+		icons/show_icon.svg
+	Author: SVG Repo
+	License: CC0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/10764/eye
+
+
 - Fast circle
 
 	Files:
@@ -258,20 +279,12 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://www.svgrepo.com/svg/29860/help-web-button
 
 
-- Hidden area icon
-
-	Files:
-		icons/hidden_area_icon.svg
-	Author: SVG Repo
-	License: CC0
-	Modified By: Benjamin 'drwhut' Beddows
-	URL: https://www.svgrepo.com/svg/10764/eye
-
-
 - Host icon
 
 	Files:
 		icons/host_icon.svg
+		icons/host_icon_black.svg
+		icons/host_icon_white.svg
 	Author: Lorc
 	License: CC BY 3.0
 	Modified By: Benjamin 'drwhut' Beddows

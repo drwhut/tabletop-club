@@ -113,6 +113,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a "Donate" button to the main menu. Implemented advanced techniques such
   as subliminal messaging and scent dispersion in order to lure the player into
   pressing this button.
+- Added a button next to the room code that copies it to the clipboard.
+- The host of a multiplayer lobby is not indicated with an icon in the player
+  list.
 
 ### Changed
 
@@ -237,6 +240,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   in the main menu instead of in-game.
 - Updated error messages related to the multiplayer network. In some cases,
   errors are now followed up with advice on how to solve the issue.
+- The text of the "Hide Room Code" button has been replaced with an icon.
 
 ### Fixed
 

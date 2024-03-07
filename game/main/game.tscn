@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://main/main_menu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://room/room.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://chat/chat_window.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ui/disconnect_master_server_dialog.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/disconnect_host_dialog.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ui/game_ui.tscn" type="PackedScene" id=11]
 
 [node name="Game" type="Node"]
 script = ExtResource( 6 )
@@ -45,6 +46,9 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.313726 )
 
 [node name="ChatWindow" parent="." instance=ExtResource( 8 )]
+
+[node name="GameUI" parent="." instance=ExtResource( 11 )]
+visible = false
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
 
