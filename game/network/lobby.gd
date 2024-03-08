@@ -91,6 +91,10 @@ var _old_details := {}
 
 
 func _ready():
+	# Detect if the player changes their name or colour.
+	GameConfig.connect("applying_settings", self,
+			"_on_GameConfig_applying_settings")
+	
 	# Although the host will probably tell us faster than the master server, we
 	# do need to deal with the case that the master server tells us the host has
 	# sealed the room before the host's connection drops.
@@ -251,6 +255,11 @@ func modify_player(player_id: int, new_name: String, new_color: Color) -> void:
 			old_player.color.to_html(false), new_color.to_html(false)])
 	var new_player := Player.new(player_id, new_name, new_color)
 	_player_list[index] = new_player
+	
+	# Update the _client_player reference, since we are making a new [Player].
+	if _client_player != null:
+		if _client_player.id == player_id:
+			_client_player = new_player
 	
 	emit_signal("player_modified", new_player)
 	
@@ -413,6 +422,59 @@ puppet func reverb_add_player(player_id: int, player_name: String,
 	add_player(player)
 
 
+## As a client, request the server to change their details about us.
+## If the request is accepted, then the server will send an RPC of
+## [method reverb_modify_player] to all clients, including ourselves.
+## If the request is denied, then [method response_modify_self_denied] will be
+## called by the server.
+master func request_modify_self(new_name: String, new_color: Color) -> void:
+	var client_id := get_tree().get_rpc_sender_id()
+	
+	var old_player := get_player(client_id)
+	if old_player == null:
+		push_error("Cannot modify details of player '%d', player not in lobby" % client_id)
+		rpc_id(client_id, "response_modify_self_denied")
+		return
+	
+	# Use the [Player] class to validate the new details.
+	var new_player := Player.new(client_id, new_name, new_color)
+	
+	# Don't bother modifying the player if the details haven't changed.
+	if (
+		(old_player.name == new_player.name) and
+		(old_player.color.is_equal_approx(new_player.color))
+	):
+		print("Lobby: Player '%d' requested to modify their details, but their details did not change." % client_id)
+		rpc_id(client_id, "response_modify_self_denied")
+		return
+	
+	modify_player(client_id, new_player.name, new_player.color)
+	
+	print("Lobby: Sending the new details of client '%d' to all clients..." % client_id)
+	rpc("reverb_modify_player", client_id, new_player.name, new_player.color)
+
+
+## Called by the server when our request to modify our details is denied.
+## NOTE: The server can send this call to itself.
+puppetsync func response_modify_self_denied() -> void:
+	push_error("Server denied our request to modify our details.")
+
+
+## Called by the server when a player has modified their details.
+puppet func reverb_modify_player(player_id: int, new_name: String, new_color: Color) -> void:
+	if player_id == get_tree().get_network_unique_id():
+		if not (
+			(new_name == GameConfig.multiplayer_name) and
+			(new_color.is_equal_approx(GameConfig.multiplayer_color))
+		):
+			push_warning("Details received about us do not match those in GameConfig - did validation fail somewhere?")
+	
+	# NOTE: The [Player] will automatically validate the details if the data the
+	# server sent to us is invalid, and the call will fail if the ID does not
+	# exists in the lobby.
+	modify_player(player_id, new_name, new_color)
+
+
 ## Called by the server when a player has been removed from the lobby.
 puppet func reverb_remove_player(player_id: int) -> void:
 	# TODO: What if the server is removing US?
@@ -550,6 +612,23 @@ func _on_join_timer_timeout(player_id: int):
 	# call will fire the NetworkManager.connection_to_peer_closed() signal,
 	# which will free the timer for us.
 	NetworkManager.kick_peer(player_id)
+
+
+func _on_GameConfig_applying_settings():
+	if _client_player == null:
+		return
+	
+	# We need to check if the player has just changed their name or colour, so
+	# that we can inform the server of the changes and get all of the clients
+	# to update their details about us.
+	if (
+		(GameConfig.multiplayer_name == _client_player.name) and
+		(GameConfig.multiplayer_color.is_equal_approx(_client_player.color))
+	):
+		return
+	
+	rpc_id(1, "request_modify_self", GameConfig.multiplayer_name,
+			GameConfig.multiplayer_color)
 
 
 func _on_MasterServer_room_sealed():
