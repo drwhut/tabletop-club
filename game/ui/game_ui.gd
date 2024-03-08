@@ -23,3 +23,24 @@
 extends Control
 
 ## The main script for the in-game UI.
+
+
+## Should the in-game UI be visible to the player?
+var ui_visible: bool setget set_ui_visible, is_ui_visible
+
+
+## The list of players as a series of [PlayerButton].
+onready var player_list := $HideableUI/MultiplayerUI/PlayerList
+
+## The room code as displayed in the UI.
+onready var room_code_view := $HideableUI/MultiplayerUI/RoomCodeView
+
+onready var _hideable_ui := $HideableUI
+
+
+func is_ui_visible() -> bool:
+	return _hideable_ui.visible
+
+
+func set_ui_visible(value: bool) -> void:
+	_hideable_ui.visible = value

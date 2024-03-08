@@ -29,7 +29,12 @@ extends MenuButton
 var bg_color: Color setget set_bg_color, get_bg_color
 
 ## Should the host icon be shown next to the player's name?
-var host_icon := false setget set_host_icon, get_host_icon
+var host_icon := false setget set_host_icon
+
+## The ID of the player that this button represents. If the value is not zero,
+## then the button will automatically adjust it's appearance based on the lobby
+## signals. If it is zero, then no automation takes place.
+var player_id := 0 setget set_player_id
 
 
 func _init():
@@ -52,6 +57,18 @@ func _ready():
 	add_stylebox_override("disabled", style_disabled.duplicate())
 	var style_normal: StyleBoxFlat = get_stylebox("normal")
 	add_stylebox_override("normal", style_normal.duplicate())
+	
+	# If [member player_id] is not zero, we want to detect the Lobby's signals
+	# and adjust the appearance of the button if something changes with the
+	# player we are representing.
+	Lobby.connect("player_id_changed", self, "_on_Lobby_player_id_changed")
+	Lobby.connect("player_modified", self, "_on_Lobby_player_modified")
+	Lobby.connect("player_removed", self, "_on_Lobby_player_removed")
+
+
+func get_bg_color() -> Color:
+	var style_normal: StyleBoxFlat = get_stylebox("normal")
+	return style_normal.bg_color
 
 
 func set_bg_color(value: Color) -> void:
@@ -82,14 +99,68 @@ func set_bg_color(value: Color) -> void:
 	style_normal.border_color = text_color
 
 
-func get_bg_color() -> Color:
-	var style_normal: StyleBoxFlat = get_stylebox("normal")
-	return style_normal.bg_color
-
-
 func set_host_icon(value: bool) -> void:
-	icon = preload("res://icons/host_icon_white.svg") if value else null
+	host_icon = value
+	_update_host_icon()
 
 
-func get_host_icon() -> bool:
-	return icon != null
+func set_player_id(value: int) -> void:
+	if value < 0:
+		push_error("Invalid value for player ID '%d'" % value)
+		return
+	
+	player_id = value
+	if player_id == 0:
+		return
+	
+	var player := Lobby.get_player(player_id)
+	if player == null:
+		push_error("Player with ID '%d' does not exist" % player_id)
+		return
+	
+	set_text(player.name)
+	set_bg_color(player.color)
+	set_host_icon(player_id == 1)
+
+
+# Update the appearance of the host icon based on if [member host_icon] is true,
+# and the colour of [member bg_color]. Note that if the colour changes, we will
+# want to update the icon so that it is clearly visible.
+func _update_host_icon() -> void:
+	if host_icon:
+		if get_bg_color().get_luminance() > 0.5:
+			icon = preload("res://icons/host_icon_black.svg")
+		else:
+			icon = preload("res://icons/host_icon_white.svg")
+	else:
+		icon = null
+
+
+func _on_Lobby_player_id_changed(player: Player, old_id: int):
+	if old_id != player_id:
+		return
+	
+	player_id = player.id
+	
+	# The player may have either been the host, or has now become the host.
+	set_host_icon(player.id == 1)
+
+
+func _on_Lobby_player_modified(player: Player):
+	if player.id != player_id:
+		return
+	
+	# The ID has not changed, but the name and colour might have.
+	set_text(player.name)
+	set_bg_color(player.color)
+	
+	# We may need to change the host icon if the colour has changed luminance.
+	_update_host_icon()
+
+
+func _on_Lobby_player_removed(player: Player, _reason: int):
+	if player.id != player_id:
+		return
+	
+	# Remove the button from the scene tree when the player leaves.
+	queue_free()

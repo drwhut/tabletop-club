@@ -34,6 +34,9 @@ enum MenuState {
 }
 
 
+## Should the in-game UI be visible to the player?
+var game_ui_visible := true setget set_game_ui_visible
+
 ## States whether we are in the main menu, the in-game menu, or if there is no
 ## menu currently visible.
 var menu_state: int = MenuState.STATE_MAIN_MENU setget set_menu_state
@@ -144,6 +147,11 @@ func _unhandled_input(event: InputEvent):
 			set_menu_state(MenuState.STATE_NO_MENU)
 			get_tree().set_input_as_handled()
 	
+	elif event.is_action_pressed("game_toggle_ui"):
+		if menu_state == MenuState.STATE_NO_MENU:
+			# Only toggle the in-game UI if we are actually in-game.
+			set_game_ui_visible(not game_ui_visible)
+	
 	elif event is InputEventMouseButton:
 		# If the player clicks on a blank space on the screen, then remove the
 		# focus from any control that has it.
@@ -166,6 +174,13 @@ func _unhandled_input(event: InputEvent):
 				get_tree().set_input_as_handled()
 
 
+func set_game_ui_visible(value: bool) -> void:
+	game_ui_visible = value
+	
+	_game_ui.ui_visible = value
+	_chat_window.visible = value
+
+
 func set_menu_state(value: int) -> void:
 	if value < 0 or value >= MenuState.STATE_MAX:
 		push_error("Invalid value '%d' for MenuState" % value)
@@ -179,7 +194,16 @@ func set_menu_state(value: int) -> void:
 	_player_controller.disabled = (menu_state != MenuState.STATE_NO_MENU)
 	
 	# Show the in-game UI only if a menu isn't being shown.
+	# NOTE: This is independent of [member game_ui_visible], which hides a
+	# subsection of the in-game UI.
 	_game_ui.visible = (menu_state == MenuState.STATE_NO_MENU)
+	
+	# We also want to hide the chat window if we are hiding the in-game UI, but
+	# only when in-game.
+	if menu_state == MenuState.STATE_NO_MENU:
+		_chat_window.visible = game_ui_visible
+	else:
+		_chat_window.visible = true
 	
 	# Only show the transparent background if we are in the in-game menu, not
 	# the main menu.
@@ -292,12 +316,23 @@ func _on_MainMenu_starting_singleplayer():
 	# will be the only peer. This call will also add ourselves to the lobby.
 	NetworkManager.start_server_solo()
 	
+	# We do not want to show any elements of the UI related to multiplayer.
+	_game_ui.player_list.visible = false
+	_game_ui.room_code_view.visible = false
+	
 	set_menu_state(MenuState.STATE_NO_MENU)
 
 
 func _on_MainMenu_starting_multiplayer(room_code: String, show_code: bool):
 	print("Game: Starting multiplayer (Room: %s, Hidden: %s)..." % [
 			room_code, str(not show_code)])
+	
+	# Show elements of the UI related to multiplayer.
+	_game_ui.player_list.visible = true
+	_game_ui.room_code_view.visible = (not room_code.empty())
+	_game_ui.room_code_view.room_code = room_code
+	_game_ui.room_code_view.secret = not show_code
+	
 	set_menu_state(MenuState.STATE_NO_MENU)
 
 
@@ -373,6 +408,10 @@ func _on_Lobby_player_id_changed(player: Player, _old_id: int):
 		_reason_last_player_left_lobby == Lobby.REASON_LOBBY_SEALED
 	)
 	_disconnect_host_dialog.popup_centered()
+	
+	# Stop showing UI elements related to multiplayer.
+	_game_ui.player_list.visible = false
+	_game_ui.room_code_view.visible = false
 
 
 func _on_Lobby_player_removed(_player: Player, reason: int):

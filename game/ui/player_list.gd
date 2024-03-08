@@ -32,8 +32,6 @@ func _ready():
 
 func _on_Lobby_player_added(player: Player):
 	var button: MenuButton = preload("res://ui/player_button.tscn").instance()
-	button.text = player.name
-	button.bg_color = player.color
-	button.host_icon = (player.id == 1)
+	button.player_id = player.id # Automatically sets text, colour, etc.
 	
 	add_child(button)
