@@ -487,6 +487,8 @@ func _on_NetworkManager_lobby_server_disconnected(exit_code: int):
 			desc = tr("Too many connections from one location.")
 		MasterServer.CODE_RECONNECT_TOO_QUICKLY:
 			desc = tr("Connection was rate limited. Please wait a few seconds before trying again.")
+		MasterServer.CODE_JOIN_QUEUE_FULL:
+			desc = tr("Join queue is full. Please wait a few seconds before trying again.")
 		_:
 			desc = tr("<No Description>")
 	

@@ -108,6 +108,7 @@ enum {
 	CODE_INVALID_MODE = 4015, ## Closed due to a binary message being sent.
 	CODE_TOO_MANY_CONNECTIONS = 4016, ## Connection limit was reached.
 	CODE_RECONNECT_TOO_QUICKLY = 4017, ## Re-connected too quickly.
+	CODE_JOIN_QUEUE_FULL = 4018, ## Too many players joining rooms at once.
 }
 
 
