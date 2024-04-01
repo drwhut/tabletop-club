@@ -189,6 +189,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://util/controller_rich_text_label.gd"
 }, {
+"base": "PlayerTool",
+"class": "CursorTool",
+"language": "GDScript",
+"path": "res://player/tools/cursor_tool.gd"
+}, {
 "base": "Resource",
 "class": "CustomValue",
 "language": "GDScript",
@@ -404,6 +409,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ui/player_list.gd"
 }, {
+"base": "Spatial",
+"class": "PlayerTool",
+"language": "GDScript",
+"path": "res://player/tools/player_tool.gd"
+}, {
 "base": "Control",
 "class": "Preview",
 "language": "GDScript",
@@ -526,6 +536,7 @@ _global_script_class_icons={
 "CommandParser": "",
 "ContainerState": "",
 "ControllerRichTextLabel": "",
+"CursorTool": "",
 "CustomValue": "",
 "DiceFaceValue": "",
 "DiceFaceValueList": "",
@@ -569,6 +580,7 @@ _global_script_class_icons={
 "PieceTimer": "",
 "Player": "",
 "PlayerList": "",
+"PlayerTool": "",
 "Preview": "",
 "RoomEnvironment": "",
 "RoomState": "",

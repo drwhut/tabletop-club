@@ -38,10 +38,29 @@ export(bool) var ignore_key_events := false setget set_ignore_key_events
 
 onready var _third_person_camera: CameraController = $ThirdPersonCamera
 
+# NOTE: We don't need to disable all of the tools at the start, since the main
+# game script disables the entire player controller at the start of the game.
+onready var _cursor_tool: CursorTool = $CursorTool
+onready var _tool_list := [ _cursor_tool ]
+
+
+func _ready():
+	# Give each of the tools a reference to the camera, so that they can perform
+	# raycasting.
+	for element in _tool_list:
+		var player_tool: PlayerTool = element
+		player_tool.camera = _third_person_camera.get_camera()
+
 
 ## Get the currently active camera controller.
 func get_camera_controller() -> CameraController:
 	return _third_person_camera
+
+
+## Get a reference to the currently active tool.
+func get_current_tool() -> PlayerTool:
+	# TODO: Add the ability to switch tools, return null if no tool is active.
+	return _cursor_tool
 
 
 ## Returns [code]true[/code] if either the PlayerController or the currently
@@ -56,6 +75,8 @@ func is_using_mouse() -> bool:
 ## Reset the player controller to its default state.
 func reset() -> void:
 	get_camera_controller().reset_transform()
+	
+	# TODO: Reset the tools here as well?
 
 
 func is_disabled() -> bool:

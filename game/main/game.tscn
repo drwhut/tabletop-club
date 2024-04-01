@@ -57,6 +57,7 @@ visible = false
 [node name="DisconnectMasterServerDialog" parent="." instance=ExtResource( 9 )]
 
 [node name="DebugInfo" parent="." instance=ExtResource( 7 )]
+player_controller_path = NodePath("../PlayerController")
 
 [connection signal="visibility_changed" from="ImportProgressPanel" to="." method="_on_ImportProgressPanel_visibility_changed"]
 [connection signal="focus_leaving" from="ChatWindow" to="." method="_on_ChatWindow_focus_leaving"]

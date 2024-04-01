@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Can now use the normal vector of a die face when setting its value, instead of
   the X and Z rotation needed to make the face point upwards.
 - Both 'Picnic Bench' and 'Table' are now textured.
+- Objects now have a black outline when they are unselected, and a grey outline
+  when they are locked in place.
 
 #### Commands
 
@@ -116,6 +118,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a button next to the room code that copies it to the clipboard.
 - The host of a multiplayer lobby is not indicated with an icon in the player
   list.
+- The debug screen now shows more information about the state of the player
+  controller.
 
 ### Changed
 
@@ -143,6 +147,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   'Purse', 'Queen', 'Radio', 'Rook', 'Table'.
 - The centre-of-mass of the following objects have been adjusted: 'Purse',
   'Gramophone', 'Radio'.
+- The outline of selected objects is now always white, regardless of the
+  player's favourite colour.
 
 #### Controls
 

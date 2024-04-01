@@ -28,6 +28,16 @@ extends Control
 ## be changed by the player in the options menu.
 
 
+## The path to the PlayerController node.
+##
+## If set, information about it will be displayed.
+export(NodePath) var player_controller_path: NodePath
+
+
+# A reference to the PlayerController node.
+var _player_controller: Node = null
+
+
 onready var _debug_label: Label = $DebugLabel
 onready var _process_time_label: Label = $GraphContainer/ProcessContainer/ProcessTimeLabel
 onready var _physics_time_label: Label = $GraphContainer/PhysicsContainer/PhysicsTimeLabel
@@ -36,6 +46,11 @@ onready var _physics_graph: PerformanceGraph = $GraphContainer/PhysicsContainer/
 
 
 func _ready():
+	# Get the reference to the PlayerController node using the path, if it has
+	# been given.
+	if not player_controller_path.is_empty():
+		_player_controller = get_node(player_controller_path)
+	
 	# Since the info starts off hidden, we don't need to re-calculate the text
 	# every frame until it is shown.
 	set_process(false)
@@ -114,6 +129,55 @@ func _process(_delta: float):
 	
 	# TODO: Add camera position, rotation, cursor position, what the cursor is
 	# over, and if we are hovering an object.
+	if _player_controller != null:
+		text += "\nPlayer Controller: %s\n" % \
+				("Disabled" if _player_controller.disabled else "Enabled")
+		
+		text += "Ignoring Key Events: %s\n" % \
+				("Yes" if _player_controller.ignore_key_events else "No")
+		
+		var camera_controller: CameraController = \
+				_player_controller.get_camera_controller()
+		var camera := camera_controller.get_camera()
+		var camera_pos := camera.global_translation
+		var camera_rot := camera.global_rotation
+		
+		text += "Camera Position: (%.3f, %.3f, %.3f)\n" % [camera_pos.x,
+				camera_pos.y, camera_pos.z]
+		text += "Camera Rotation: (%.3f, %.3f, %.3f)\n" % [rad2deg(camera_rot.x),
+				rad2deg(camera_rot.y), rad2deg(camera_rot.z)]
+		
+		var current_tool: PlayerTool = _player_controller.get_current_tool()
+		if current_tool != null:
+			text += "Tool: %s\n" % current_tool.name
+			
+			var cursor_over := "None"
+			if current_tool.cursor_over_area != null:
+				# TODO: Display information about the hidden area.
+				pass
+			elif current_tool.cursor_over_body != null:
+				var body := current_tool.cursor_over_body
+				if body is Piece:
+					# TODO: Show the asset entry path, but only if it is not in
+					# another player's hand.
+					var entry_path := "???"
+					
+					cursor_over = "[Piece] %s (Asset: %s, Locked: %s, Selected: %s)" % [
+							body.name, entry_path,
+							"Yes" if body.locked else "No",
+							"Yes" if body.selected else "No"]
+				else:
+					cursor_over = "[Unknown] %s" % body.name
+			
+			text += "Cursor Over: %s\n" % cursor_over
+			
+			var cursor_position := "N/A"
+			if current_tool.cursor_over_plane:
+				var pos := current_tool.cursor_world_position
+				cursor_position = "(%.3f, %.3f, %.3f)" % [pos.x, pos.y, pos.z]
+			text += "Cursor Position: %s\n" % cursor_position
+	
+	# TODO: Add information specific to the current player tool.
 	
 	_debug_label.text = text
 
