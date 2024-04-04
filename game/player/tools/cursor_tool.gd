@@ -59,3 +59,14 @@ func _unhandled_input(event: InputEvent):
 	
 	elif event.is_action_released("game_select_grab"):
 		pass
+	
+	elif event.is_action_pressed("game_lock_piece"):
+		var all_locked := true
+		for element in get_tree().get_nodes_in_group(Piece.SELECTED_GROUP):
+			var piece: Piece = element
+			if not piece.locked:
+				all_locked = false
+				break
+		
+		# TODO: Send as an RPC.
+		get_tree().call_group(Piece.SELECTED_GROUP, "set_locked", not all_locked)
