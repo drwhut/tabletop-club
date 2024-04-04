@@ -49,7 +49,7 @@ scroll_horizontal_enabled = false
 
 [node name="MarginContainer" type="MarginContainer" parent="MainContainer/ScrollContainer"]
 margin_right = 692.0
-margin_bottom = 1240.0
+margin_bottom = 1280.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 20
 custom_constants/margin_left = 20
@@ -57,7 +57,7 @@ custom_constants/margin_left = 20
 [node name="BindingContainer" type="GridContainer" parent="MainContainer/ScrollContainer/MarginContainer"]
 margin_left = 20.0
 margin_right = 672.0
-margin_bottom = 1240.0
+margin_bottom = 1280.0
 columns = 3
 
 [node name="Gap0" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
@@ -527,18 +527,48 @@ margin_top = 616.0
 margin_right = 640.0
 margin_bottom = 646.0
 
-[node name="FlipObjectLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+[node name="SelectGrabLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_top = 655.0
 margin_right = 173.0
 margin_bottom = 680.0
+custom_fonts/font = ExtResource( 2 )
+text = "Select / Grab"
+
+[node name="SelectGrabButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 177.0
+margin_top = 650.0
+margin_right = 407.0
+margin_bottom = 686.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_select_grab"
+
+[node name="SelectGrabButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_left = 411.0
+margin_top = 650.0
+margin_right = 640.0
+margin_bottom = 686.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+clip_text = true
+script = ExtResource( 6 )
+action = "game_select_grab"
+index = 1
+
+[node name="FlipObjectLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
+margin_top = 695.0
+margin_right = 173.0
+margin_bottom = 720.0
 custom_fonts/font = ExtResource( 2 )
 text = "Flip Orientation"
 
 [node name="FlipObjectButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 650.0
+margin_top = 690.0
 margin_right = 407.0
-margin_bottom = 686.0
+margin_bottom = 726.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -547,9 +577,9 @@ action = "game_flip_piece"
 
 [node name="FlipObjectButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 650.0
+margin_top = 690.0
 margin_right = 640.0
-margin_bottom = 686.0
+margin_bottom = 726.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -558,17 +588,17 @@ action = "game_flip_piece"
 index = 1
 
 [node name="ResetObjectLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 695.0
+margin_top = 735.0
 margin_right = 173.0
-margin_bottom = 720.0
+margin_bottom = 760.0
 custom_fonts/font = ExtResource( 2 )
 text = "Reset Orientation"
 
 [node name="ResetObjectButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 690.0
+margin_top = 730.0
 margin_right = 407.0
-margin_bottom = 726.0
+margin_bottom = 766.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -577,9 +607,9 @@ action = "game_reset_piece"
 
 [node name="ResetObjectButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 690.0
+margin_top = 730.0
 margin_right = 640.0
-margin_bottom = 726.0
+margin_bottom = 766.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -588,17 +618,17 @@ action = "game_reset_piece"
 index = 1
 
 [node name="RotateObjectLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 735.0
+margin_top = 775.0
 margin_right = 173.0
-margin_bottom = 760.0
+margin_bottom = 800.0
 custom_fonts/font = ExtResource( 2 )
 text = "Rotate Object"
 
 [node name="RotateObjectButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 730.0
+margin_top = 770.0
 margin_right = 407.0
-margin_bottom = 766.0
+margin_bottom = 806.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -607,9 +637,9 @@ action = "game_rotate_piece"
 
 [node name="RotateObjectButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 730.0
+margin_top = 770.0
 margin_right = 640.0
-margin_bottom = 766.0
+margin_bottom = 806.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -618,17 +648,17 @@ action = "game_rotate_piece"
 index = 1
 
 [node name="ShuffleLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 775.0
+margin_top = 815.0
 margin_right = 173.0
-margin_bottom = 800.0
+margin_bottom = 840.0
 custom_fonts/font = ExtResource( 2 )
 text = "Shuffle Deck"
 
 [node name="ShuffleButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 770.0
+margin_top = 810.0
 margin_right = 407.0
-margin_bottom = 806.0
+margin_bottom = 846.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -637,9 +667,9 @@ action = "game_shuffle_stack"
 
 [node name="ShuffleButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 770.0
+margin_top = 810.0
 margin_right = 640.0
-margin_bottom = 806.0
+margin_bottom = 846.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -648,17 +678,17 @@ action = "game_shuffle_stack"
 index = 1
 
 [node name="LockLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 815.0
+margin_top = 855.0
 margin_right = 173.0
-margin_bottom = 840.0
+margin_bottom = 880.0
 custom_fonts/font = ExtResource( 2 )
 text = "Toggle Lock"
 
 [node name="LockButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 810.0
+margin_top = 850.0
 margin_right = 407.0
-margin_bottom = 846.0
+margin_bottom = 886.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -667,9 +697,9 @@ action = "game_lock_piece"
 
 [node name="LockButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 810.0
+margin_top = 850.0
 margin_right = 640.0
-margin_bottom = 846.0
+margin_bottom = 886.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -678,17 +708,17 @@ action = "game_lock_piece"
 index = 1
 
 [node name="DeleteLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 855.0
+margin_top = 895.0
 margin_right = 173.0
-margin_bottom = 880.0
+margin_bottom = 920.0
 custom_fonts/font = ExtResource( 2 )
 text = "Delete Object"
 
 [node name="DeleteButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 850.0
+margin_top = 890.0
 margin_right = 407.0
-margin_bottom = 886.0
+margin_bottom = 926.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -697,9 +727,9 @@ action = "game_delete_piece"
 
 [node name="DeleteButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 850.0
+margin_top = 890.0
 margin_right = 640.0
-margin_bottom = 886.0
+margin_bottom = 926.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -708,15 +738,15 @@ action = "game_delete_piece"
 index = 1
 
 [node name="Gap10" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 890.0
+margin_top = 930.0
 margin_right = 173.0
-margin_bottom = 920.0
+margin_bottom = 960.0
 
 [node name="SystemLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 890.0
+margin_top = 930.0
 margin_right = 407.0
-margin_bottom = 920.0
+margin_bottom = 960.0
 rect_min_size = Vector2( 0, 30 )
 text = "System"
 align = 1
@@ -725,22 +755,22 @@ clip_text = true
 
 [node name="Gap11" type="Control" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 890.0
+margin_top = 930.0
 margin_right = 640.0
-margin_bottom = 920.0
+margin_bottom = 960.0
 
 [node name="MenuLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 929.0
+margin_top = 969.0
 margin_right = 173.0
-margin_bottom = 954.0
+margin_bottom = 994.0
 custom_fonts/font = ExtResource( 2 )
 text = "Main Menu"
 
 [node name="MenuButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 924.0
+margin_top = 964.0
 margin_right = 407.0
-margin_bottom = 960.0
+margin_bottom = 1000.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -749,9 +779,9 @@ action = "game_menu"
 
 [node name="MenuButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 924.0
+margin_top = 964.0
 margin_right = 640.0
-margin_bottom = 960.0
+margin_bottom = 1000.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -760,17 +790,17 @@ action = "game_menu"
 index = 1
 
 [node name="ChatLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 969.0
+margin_top = 1009.0
 margin_right = 173.0
-margin_bottom = 994.0
+margin_bottom = 1034.0
 custom_fonts/font = ExtResource( 2 )
 text = "Start Message"
 
 [node name="ChatButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 964.0
+margin_top = 1004.0
 margin_right = 407.0
-margin_bottom = 1000.0
+margin_bottom = 1040.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -779,9 +809,9 @@ action = "game_chat"
 
 [node name="ChatButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 964.0
+margin_top = 1004.0
 margin_right = 640.0
-margin_bottom = 1000.0
+margin_bottom = 1040.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -790,17 +820,17 @@ action = "game_chat"
 index = 1
 
 [node name="CommandLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 1009.0
+margin_top = 1049.0
 margin_right = 173.0
-margin_bottom = 1034.0
+margin_bottom = 1074.0
 custom_fonts/font = ExtResource( 2 )
 text = "Start Command"
 
 [node name="CommandButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 1004.0
+margin_top = 1044.0
 margin_right = 407.0
-margin_bottom = 1040.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -809,9 +839,9 @@ action = "game_command"
 
 [node name="CommandButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 1004.0
+margin_top = 1044.0
 margin_right = 640.0
-margin_bottom = 1040.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -820,17 +850,17 @@ action = "game_command"
 index = 1
 
 [node name="DebugInfoLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 1049.0
+margin_top = 1089.0
 margin_right = 173.0
-margin_bottom = 1074.0
+margin_bottom = 1114.0
 custom_fonts/font = ExtResource( 2 )
 text = "Toggle Debug Info"
 
 [node name="DebugInfoButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 1044.0
+margin_top = 1084.0
 margin_right = 407.0
-margin_bottom = 1080.0
+margin_bottom = 1120.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -839,9 +869,9 @@ action = "game_toggle_debug_info"
 
 [node name="DebugInfoButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 1044.0
+margin_top = 1084.0
 margin_right = 640.0
-margin_bottom = 1080.0
+margin_bottom = 1120.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -850,17 +880,17 @@ action = "game_toggle_debug_info"
 index = 1
 
 [node name="QuicksaveLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 1089.0
+margin_top = 1129.0
 margin_right = 173.0
-margin_bottom = 1114.0
+margin_bottom = 1154.0
 custom_fonts/font = ExtResource( 2 )
 text = "Quicksave"
 
 [node name="QuicksaveButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 1084.0
+margin_top = 1124.0
 margin_right = 407.0
-margin_bottom = 1120.0
+margin_bottom = 1160.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -869,9 +899,9 @@ action = "game_quicksave"
 
 [node name="QuicksaveButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 1084.0
+margin_top = 1124.0
 margin_right = 640.0
-margin_bottom = 1120.0
+margin_bottom = 1160.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -880,17 +910,17 @@ action = "game_quicksave"
 index = 1
 
 [node name="QuickloadLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 1129.0
+margin_top = 1169.0
 margin_right = 173.0
-margin_bottom = 1154.0
+margin_bottom = 1194.0
 custom_fonts/font = ExtResource( 2 )
 text = "Quickload"
 
 [node name="QuickloadButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 1124.0
+margin_top = 1164.0
 margin_right = 407.0
-margin_bottom = 1160.0
+margin_bottom = 1200.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -899,9 +929,9 @@ action = "game_quickload"
 
 [node name="QuickloadButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 1124.0
+margin_top = 1164.0
 margin_right = 640.0
-margin_bottom = 1160.0
+margin_bottom = 1200.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -910,17 +940,17 @@ action = "game_quickload"
 index = 1
 
 [node name="ToggleUILabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 1169.0
+margin_top = 1209.0
 margin_right = 173.0
-margin_bottom = 1194.0
+margin_bottom = 1234.0
 custom_fonts/font = ExtResource( 2 )
 text = "Toggle UI"
 
 [node name="ToggleUIButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 1164.0
+margin_top = 1204.0
 margin_right = 407.0
-margin_bottom = 1200.0
+margin_bottom = 1240.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -929,9 +959,9 @@ action = "game_toggle_ui"
 
 [node name="ToggleUIButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 1164.0
+margin_top = 1204.0
 margin_right = 640.0
-margin_bottom = 1200.0
+margin_bottom = 1240.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 clip_text = true
@@ -940,17 +970,17 @@ action = "game_toggle_ui"
 index = 1
 
 [node name="ScreenshotLabel" type="Label" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
-margin_top = 1209.0
+margin_top = 1249.0
 margin_right = 173.0
-margin_bottom = 1234.0
+margin_bottom = 1274.0
 custom_fonts/font = ExtResource( 2 )
 text = "Take Screenshot"
 
 [node name="ScreenshotButton0" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 177.0
-margin_top = 1204.0
+margin_top = 1244.0
 margin_right = 407.0
-margin_bottom = 1240.0
+margin_bottom = 1280.0
 focus_neighbour_bottom = NodePath("../../../../ActionContainer/BackButton")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
@@ -960,9 +990,9 @@ action = "game_take_screenshot"
 
 [node name="ScreenshotButton1" type="Button" parent="MainContainer/ScrollContainer/MarginContainer/BindingContainer"]
 margin_left = 411.0
-margin_top = 1204.0
+margin_top = 1244.0
 margin_right = 640.0
-margin_bottom = 1240.0
+margin_bottom = 1280.0
 focus_neighbour_bottom = NodePath("../../../../ActionContainer/ResetButton")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )

@@ -103,3 +103,5 @@ func set_ignore_key_events(value: bool) -> void:
 	ignore_key_events = value
 	
 	_third_person_camera.ignore_key_events = value
+	
+	# TODO: Ignore key events in tools as well?

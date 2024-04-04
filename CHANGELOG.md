@@ -44,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added the "Start Command" binding (bound to the forward slash key by default),
   which will bring the chat window in focus and automatically insert a forward
   slash character so the player can start typing in a command.
+- The binding for selecting and grabbing objects is now editable.
 
 #### Documentation
 

@@ -28,3 +28,34 @@ extends PlayerTool
 
 func _physics_process(_delta: float):
 	perform_raycast(0x1, true, false)
+
+
+func _unhandled_input(event: InputEvent):
+	var is_controller := false
+	var is_ctrl := false
+	
+	if event is InputEventWithModifiers:
+		is_ctrl = event.command if OS.get_name() == "OSX" else event.control
+	elif event is InputEventJoypadButton:
+		is_controller = true
+	
+	if event.is_action_pressed("game_select_grab"):
+		if cursor_over_body is Piece:
+			if is_controller or is_ctrl:
+				cursor_over_body.selected = not cursor_over_body.selected
+			else:
+				# If this piece was not in the selection, make it the only
+				# selected piece.
+				if not cursor_over_body.selected:
+					get_tree().call_group(Piece.SELECTED_GROUP, "set_selected",
+							false)
+				
+				cursor_over_body.selected = true
+		else:
+			if not is_ctrl:
+				get_tree().call_group(Piece.SELECTED_GROUP, "set_selected", false)
+			
+			# TODO: Hold left click to move, box selection.
+	
+	elif event.is_action_released("game_select_grab"):
+		pass
