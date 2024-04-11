@@ -26,6 +26,25 @@ extends IndexManager
 ## Manage the game pieces throughout the scene that can be added and removed.
 
 
+## The name of the group of pieces that are about to be removed from the scene.
+const ABOUT_TO_REMOVE_GROUP := "rem_pcs"
+
+## The amount of time inbetween "limbo passes", which is the mechanism used to
+## remove pieces from the scene tree.
+const LIMBO_PASS_INTERVAL_SEC := 3.0
+
+
+# The amount of time that has passed since the last limbo pass.
+var _time_since_limbo_pass_sec := 0.0
+
+
+func _process(delta: float):
+	_time_since_limbo_pass_sec += delta
+	if _time_since_limbo_pass_sec > LIMBO_PASS_INTERVAL_SEC:
+		_perform_limbo_pass()
+		_time_since_limbo_pass_sec = 0.0
+
+
 ## Add a piece to the scene with the given index, and return it.
 func add_piece(index: int, scene_entry: AssetEntryScene, transform: Transform) -> Piece:
 	var builder := ObjectBuilder.new()
@@ -37,3 +56,14 @@ func add_piece(index: int, scene_entry: AssetEntryScene, transform: Transform) -
 	add_child_with_index(index, piece)
 	
 	return piece
+
+
+# Perform a "limbo pass", where all of the pieces currently in limbo are marked
+# for removal, and all of the pieces that are marked for removal are removed
+# from the scene tree.
+func _perform_limbo_pass() -> void:
+	get_tree().call_group(ABOUT_TO_REMOVE_GROUP, "queue_free")
+	
+	for element in get_tree().get_nodes_in_group(Piece.LIMBO_GROUP):
+		var piece_in_limbo: Piece = element
+		piece_in_limbo.add_to_group(ABOUT_TO_REMOVE_GROUP)

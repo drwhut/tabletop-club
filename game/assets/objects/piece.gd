@@ -30,6 +30,9 @@ extends AdvancedRigidBody3D
 ## TODO: Change to StringName in 4.x.
 const SELECTED_GROUP := "sel_pcs"
 
+## The name of the group of pieces that are in limbo. See [method put_in_limbo].
+const LIMBO_GROUP := "lmbo"
+
 
 ## The outline colour when the piece is neither selected or locked.
 const OUTLINE_COLOR_NORMAL := Color(0.0, 0.0, 0.0, 0.5)
@@ -76,6 +79,45 @@ func _ready():
 		_set_outline_color(OUTLINE_COLOR_NORMAL)
 
 
+## Check if the piece is in limbo, i.e. is it about to be freed from memory?
+func is_in_limbo() -> bool:
+	return collision_layer == 0
+
+
+## Put the piece into limbo. Once it is put into limbo, it cannot come out of
+## limbo.
+##
+## This will remove the piece from active play, but not from the scene tree.
+## Only after a certain amount of time the PieceManager will remove pieces that
+## are in limbo from the scene tree.
+##
+## The reason this is needed is because not all clients will remove the piece
+## from the scene tree at the same time - this can cause RPCs to arrive after
+## a piece has been removed from the scene tree, causing errors. By delaying
+## when the piece is freed from memory, it gives time for those RPCs to arrive
+## and be ignored.
+func put_in_limbo() -> void:
+	if not is_inside_tree():
+		push_error("Cannot put piece '%s' in limbo, not inside tree" % name)
+		return
+	
+	collision_layer = 0
+	collision_mask = 0
+	mode = MODE_STATIC
+	visible = false
+	
+	set_process(false)
+	set_process_internal(false)
+	
+	set_physics_process(false)
+	set_physics_process_internal(false)
+	
+	if is_in_group(SELECTED_GROUP):
+		remove_from_group(SELECTED_GROUP)
+	
+	add_to_group(LIMBO_GROUP)
+
+
 func is_locked() -> bool:
 	return mode == MODE_STATIC
 
@@ -88,11 +130,17 @@ func is_selected() -> bool:
 
 
 func set_locked(value: bool) -> void:
+	if is_in_limbo():
+		return
+	
 	mode = MODE_STATIC if value else MODE_RIGID
 	_update_outline_color()
 
 
 func set_selected(value: bool) -> void:
+	if is_in_limbo():
+		return
+	
 	if not is_inside_tree():
 		push_error("Cannot set 'selected' of piece '%s', not in scene tree" % name)
 		return
