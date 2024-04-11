@@ -26,6 +26,10 @@ extends PlayerTool
 ## The player tool for selecting, moving, editing, and deleting objects.
 
 
+## A reference to the [PieceManager] node in the room scene.
+var piece_manager: PieceManager = null
+
+
 func _physics_process(_delta: float):
 	perform_raycast(0x1, true, false)
 
@@ -61,8 +65,11 @@ func _unhandled_input(event: InputEvent):
 		pass
 	
 	elif event.is_action_pressed("game_delete_piece"):
-		# TODO: Send as an RPC.
-		get_tree().call_group(Piece.SELECTED_GROUP, "put_in_limbo")
+		var index_arr := get_selected_index_arr()
+		if index_arr.empty():
+			return
+		
+		piece_manager.rpc("request_remove_multiple", index_arr)
 	
 	elif event.is_action_pressed("game_lock_piece"):
 		var all_locked := true
@@ -74,3 +81,16 @@ func _unhandled_input(event: InputEvent):
 		
 		# TODO: Send as an RPC.
 		get_tree().call_group(Piece.SELECTED_GROUP, "set_locked", not all_locked)
+
+
+## From all of the pieces that are currently selected, return a list of their
+## indices. This is mostly used to send requests over the network.
+func get_selected_index_arr() -> PoolIntArray:
+	var out := PoolIntArray()
+	
+	for element in get_tree().get_nodes_in_group(Piece.SELECTED_GROUP):
+		var piece: Piece = element
+		var index := int(piece.name) # TODO: Optimise this step?
+		out.push_back(index)
+	
+	return out

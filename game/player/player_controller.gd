@@ -79,6 +79,14 @@ func reset() -> void:
 	# TODO: Reset the tools here as well?
 
 
+## Set the values of reference variables within the player controller.
+##
+## This should be called as soon as possible, and is required since there is no
+## public access to some of the controller components, e.g. the tools.
+func set_refs(piece_manager: PieceManager) -> void:
+	_cursor_tool.piece_manager = piece_manager
+
+
 func is_disabled() -> bool:
 	return not is_processing()
 

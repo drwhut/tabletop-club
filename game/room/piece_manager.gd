@@ -58,6 +58,61 @@ func add_piece(index: int, scene_entry: AssetEntryScene, transform: Transform) -
 	return piece
 
 
+## Request the server to remove one or more pieces given by their indices.
+##
+## The operation will always "succeed", but some pieces may not be removed for
+## various reasons. A list of these indices will be returned to the original
+## caller via [method response_remove_mutliple]. For the pieces that are valid
+## to be removed, [method reverb_remove_mutliple] is called on all clients.
+master func request_remove_multiple(piece_index_arr: PoolIntArray) -> void:
+	var caller_id := get_tree().get_rpc_sender_id()
+	
+	var to_remove_arr := PoolIntArray()
+	var ignore_arr := PoolIntArray()
+	
+	for index in piece_index_arr:
+		var piece: Piece = get_child_with_index(index)
+		if piece == null:
+			ignore_arr.push_back(index)
+			continue
+		
+		if piece.is_in_limbo():
+			ignore_arr.push_back(index)
+			continue
+		
+		to_remove_arr.push_back(index)
+	
+	rpc_id(caller_id, "response_remove_multiple", ignore_arr)
+	
+	if not to_remove_arr.empty():
+		rpc("reverb_remove_multiple", to_remove_arr)
+
+
+## Called by the server as a response to [method request_remove_multiple].
+##
+## If any pieces were not removed as a result of the request, they are given as
+## as the argument.
+puppetsync func response_remove_multiple(rejected_index_arr: PoolIntArray) -> void:
+	if not rejected_index_arr.empty():
+		push_warning("Server could not remove %d pieces while completing our request" % rejected_index_arr.size())
+
+
+## Called by the server on all clients to remove one or more pieces from the
+## room.
+puppetsync func reverb_remove_multiple(piece_index_arr: PoolIntArray) -> void:
+	for index in piece_index_arr:
+		var piece: Piece = get_child_with_index(index)
+		if piece == null:
+			push_error("Cannot remove piece '%d', piece does not exist" % index)
+			continue
+		
+		if piece.is_in_limbo():
+			push_warning("Cannot put piece '%d' in limbo, already in limbo" % index)
+			continue
+		
+		piece.put_in_limbo()
+
+
 # Perform a "limbo pass", where all of the pieces currently in limbo are marked
 # for removal, and all of the pieces that are marked for removal are removed
 # from the scene tree.

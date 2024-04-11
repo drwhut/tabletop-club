@@ -58,11 +58,14 @@ onready var _main_menu := $MainMenu
 onready var _main_menu_camera := $MainMenuCamera
 onready var _menu_background: ColorRect = $MenuBackground
 onready var _player_controller := $PlayerController
+onready var _room := $Room
 
 
 func _ready():
 	# Since we have access to all components of the game here, establish the
 	# necessary inter-child dependencies.
+	_player_controller.set_refs(_room.piece_manager)
+	
 	var camera_controller: CameraController = _player_controller.get_camera_controller()
 	var player_camera: Camera = camera_controller.get_camera()
 	_main_menu_camera.camera_transition_to = player_camera
