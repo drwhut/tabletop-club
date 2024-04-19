@@ -106,7 +106,11 @@ Downloading for Windows
    ``Desktop/TabletopClub``. You can then click :guilabel:`Extract` to extract
    the files to that location.
 
-4. Go to the folder where you extracted the files, and double-click the
+4. **(Windows 11 Only)** Right-click the ``TabletopClub`` executable, and go to
+   :guilabel:`Properties`. You will need to tick the :guilabel:`Unblock`
+   checkbox at the bottom of the window in order to start the game.
+
+5. Go to the folder where you extracted the files, and double-click the
    ``TabletopClub.exe`` executable to start the game!
 
    .. note::

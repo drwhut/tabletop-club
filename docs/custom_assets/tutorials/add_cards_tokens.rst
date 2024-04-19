@@ -119,6 +119,19 @@ choice! Here are a few examples of how to set the size of your objects:
    Cards are always the same thickness, so the ``scale`` for cards is always a
    ``Vector2`` containing two numbers, rather than a ``Vector3``.
 
+.. warning::
+
+   If you are on Windows, you may need to ensure that the file extension is
+   actually ``.cfg``, rather than ``.txt``, since Windows hides file extensions
+   by default.
+
+   **Windows 10:** In File Explorer, click on :guilabel:`View`, and then tick
+   the :guilabel:`File name extensions` checkbox.
+
+   **Windows 11:** In File Explorer, click on :guilabel:`View`, then click on
+   the :guilabel:`Show` dropdown, and then make sure the
+   :guilabel:`File name extensions` checkbox is ticked.
+
 
 Configuring card backs
 ----------------------
