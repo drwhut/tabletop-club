@@ -645,6 +645,7 @@ MessageHub="*res://chat/message_hub.gd"
 MasterServer="*res://network/master_server.gd"
 NetworkManager="*res://network/network_manager.gd"
 Lobby="*res://network/lobby.gd"
+StateFreeze="*res://room/state/state_freeze.gd"
 
 [debug]
 

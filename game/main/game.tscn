@@ -13,11 +13,14 @@
 [ext_resource path="res://ui/game_ui.tscn" type="PackedScene" id=11]
 
 [node name="Game" type="Node"]
+pause_mode = 2
 script = ExtResource( 6 )
 
 [node name="Room" parent="." instance=ExtResource( 2 )]
+pause_mode = 1
 
 [node name="ImportProgressPanel" parent="." instance=ExtResource( 3 )]
+pause_mode = 1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -28,6 +31,7 @@ margin_right = 225.0
 margin_bottom = -40.0
 
 [node name="PlayerController" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
 
 [node name="MainMenuCamera" type="Camera" parent="."]
 physics_interpolation_mode = 1
@@ -46,8 +50,10 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.313726 )
 
 [node name="ChatWindow" parent="." instance=ExtResource( 8 )]
+pause_mode = 1
 
 [node name="GameUI" parent="." instance=ExtResource( 11 )]
+pause_mode = 1
 visible = false
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
