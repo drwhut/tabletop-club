@@ -199,16 +199,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/custom_value.gd"
 }, {
-"base": "Node",
-"class": "DataReceiver",
-"language": "GDScript",
-"path": "res://network/data_receiver.gd"
-}, {
-"base": "Reference",
-"class": "DataRef",
-"language": "GDScript",
-"path": "res://network/data_ref.gd"
-}, {
 "base": "Resource",
 "class": "DiceFaceValue",
 "language": "GDScript",
@@ -338,6 +328,11 @@ _global_script_classes=[ {
 "class": "PaintPlane",
 "language": "GDScript",
 "path": "res://room/paint_plane.gd"
+}, {
+"base": "Reference",
+"class": "PartialData",
+"language": "GDScript",
+"path": "res://network/transfer/partial_data.gd"
 }, {
 "base": "Control",
 "class": "PerformanceGraph",
@@ -505,9 +500,14 @@ _global_script_classes=[ {
 "path": "res://room/state/timer_state.gd"
 }, {
 "base": "Reference",
+"class": "TransferPlan",
+"language": "GDScript",
+"path": "res://network/transfer/transfer_plan.gd"
+}, {
+"base": "Reference",
 "class": "TransferState",
 "language": "GDScript",
-"path": "res://network/transfer_state.gd"
+"path": "res://network/transfer/transfer_state.gd"
 }, {
 "base": "Button",
 "class": "VerticalButton",
@@ -553,8 +553,6 @@ _global_script_class_icons={
 "ControllerRichTextLabel": "",
 "CursorTool": "",
 "CustomValue": "",
-"DataReceiver": "",
-"DataRef": "",
 "DiceFaceValue": "",
 "DiceFaceValueList": "",
 "DictionaryParser": "",
@@ -581,6 +579,7 @@ _global_script_class_icons={
 "OptionsTab": "",
 "OutlineColorRect": "",
 "PaintPlane": "",
+"PartialData": "",
 "PerformanceGraph": "",
 "Piece": "",
 "PieceBoard": "",
@@ -614,6 +613,7 @@ _global_script_class_icons={
 "TemplateTextbox": "",
 "TimeEdit": "",
 "TimerState": "",
+"TransferPlan": "",
 "TransferState": "",
 "VerticalButton": ""
 }

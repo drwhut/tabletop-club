@@ -20,11 +20,34 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-class_name DataRef
+class_name TransferState
 extends Reference
 
-## A reference to generic data in the form of a byte array.
+## Describes the state of multi-chunk data transfer from one peer to another.
 
 
-## The data the reference is pointing to.
-var data := PoolByteArray()
+## The ID of the peer sending the data.
+var sender_id := 0
+
+## The ID of the peer receiving the data.
+var receiver_id := 0
+
+## Has the receiver accepted the sender's transfer offer?
+var receiver_accepted := false
+
+## Is the receiver skipping the transfer of data? That is, they already have the
+## data that is being sent.
+var receiver_skipping := false
+
+## The data that is being sent, or the data that has been received so far.
+var data: PartialData = null
+
+## The number of data packets that have been sent by the sender.
+var num_packets_sent := 0
+
+## The number of data packets that have been acknowledged by the receiver.
+var num_packets_ackd := 0
+
+## The time at which the last message from the other peer was received.
+## If a message is not received in time, then the transfer is timed out.
+var last_message_time_ms := 0

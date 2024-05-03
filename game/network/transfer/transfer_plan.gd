@@ -20,30 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-class_name TransferState
+class_name TransferPlan
 extends Reference
 
-## Describes the current state of the transfer of data between two clients.
+## A structure describing a future transfer of data to one or more clients.
 
 
-## The client that is sending, or receiving, the data.
-var other_id := 0
+## The list of peer IDs to send the data to.
+## TODO: Make array typed in 4.x
+var receiver_ids: Array = []
 
-## Has the receiving client accepted the sender's request?
-var receiver_accepted := false
-
-## The data to be sent, or the data that has been received so far.
-var data_ref: DataRef = null
-
-## The size of the data that we expect to send or receive in bytes.
-var data_size := 0
-
-## The number of data packets that the sender has sent.
-var num_packets_sent := 0
-
-## The number of data packets that the receiver has acknowledged.
-var num_packets_ackd := 0
-
-## The amount of time that has passed, in seconds, since the other client's last
-## message.
-var time_since_last_message_sec := 0.0
+## The data to send to the other peers.
+var data: PartialData = null
