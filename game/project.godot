@@ -646,6 +646,7 @@ MasterServer="*res://network/master_server.gd"
 NetworkManager="*res://network/network_manager.gd"
 Lobby="*res://network/lobby.gd"
 StateFreeze="*res://room/state/state_freeze.gd"
+DataBroadcaster="*res://network/transfer/data_broadcaster.gd"
 
 [debug]
 

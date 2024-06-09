@@ -24,6 +24,10 @@ class_name TransferPlan
 extends Reference
 
 ## A structure describing a future transfer of data to one or more clients.
+##
+## [b]NOTE:[/b] [method get_data] can be overwritten by subclasses if data
+## should be retrieved the instant before a transfer occurs, instead of when it
+## is added to a transfer queue.
 
 
 ## The list of peer IDs to send the data to.
@@ -32,3 +36,9 @@ var receiver_ids: Array = []
 
 ## The data to send to the other peers.
 var data: PartialData = null
+
+
+## Retrieve a reference to the data that should be transferred.
+## Returns [code]null[/code] if no data exists.
+func get_data() -> PartialData:
+	return data

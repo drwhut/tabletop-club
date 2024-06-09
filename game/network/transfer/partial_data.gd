@@ -57,6 +57,7 @@ var size_compressed := 0 setget set_size_compressed
 var size_uncompressed := 0 setget set_size_uncompressed
 
 ## The data itself, either in whole, or as a subsection of the data yet to be
+## received.
 var bytes := PoolByteArray()
 
 
