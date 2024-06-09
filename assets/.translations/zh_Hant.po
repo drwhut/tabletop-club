@@ -9,50 +9,53 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 09:03\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-06-10 05:09+0000\n"
+"Last-Translator: hugoalh <hugoalh@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"tabletop-club/default-asset-pack/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.6-dev\n"
 "Generated-By: extract_pot.py\n"
 
 #: ../TabletopClub/boards/Chess_Board:1
 msgid "Chess Board"
-msgstr ""
+msgstr "棋盤"
 
 #: ../TabletopClub/boards/Chess_Board:2
 msgid "An 8x8 Chess board."
-msgstr ""
+msgstr "一個 8x8 的棋盤。"
 
 #: ../TabletopClub/boards/Go_Board_(Large):1
 msgid "Go Board (Large)"
-msgstr ""
+msgstr "圍棋棋盤（大）"
 
 #: ../TabletopClub/boards/Go_Board_(Large):2
 msgid "A 19x19 Goban."
-msgstr ""
+msgstr "一個 19x19 的碁盤。"
 
 #: ../TabletopClub/boards/Go_Board_(Small):1
 msgid "Go Board (Small)"
-msgstr ""
+msgstr "圍棋棋盤（小）"
 
 #: ../TabletopClub/boards/Go_Board_(Small):2
 msgid "A 13x13 and 9x9 Goban."
-msgstr ""
+msgstr "一個 13x13 和 9x9 的碁盤。"
 
 #: ../TabletopClub/cards/52-Card_Deck:1
 msgid "52-Card Deck"
-msgstr ""
+msgstr "52 牌組"
 
 #: ../TabletopClub/cards/52-Card_Deck:2
 msgid "A deck of poker-sized French-suited playing cards excluding jokers."
-msgstr ""
+msgstr "一副撲克牌大小的法式撲克牌，不包括鬼牌。"
 
 #: ../TabletopClub/cards/Ace_of_Clubs:1
 msgid "Ace of Clubs"
-msgstr ""
+msgstr "梅花 A"
 
 #: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2
 #: ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2
@@ -96,139 +99,139 @@ msgstr ""
 #: ../TabletopClub/cards/Two_of_Diamonds:2
 #: ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
 msgid "A poker-sized French-suited playing card."
-msgstr ""
+msgstr "一副撲克牌大小的法式撲克牌。"
 
 #: ../TabletopClub/cards/Ace_of_Diamonds:1
 msgid "Ace of Diamonds"
-msgstr ""
+msgstr "方塊 A"
 
 #: ../TabletopClub/cards/Ace_of_Hearts:1
 msgid "Ace of Hearts"
-msgstr ""
+msgstr "紅心 A"
 
 #: ../TabletopClub/cards/Ace_of_Spades:1
 msgid "Ace of Spades"
-msgstr ""
+msgstr "黑桃 A"
 
 #: ../TabletopClub/cards/Eight_of_Clubs:1
 msgid "Eight of Clubs"
-msgstr ""
+msgstr "梅花 8"
 
 #: ../TabletopClub/cards/Eight_of_Diamonds:1
 msgid "Eight of Diamonds"
-msgstr ""
+msgstr "方塊 8"
 
 #: ../TabletopClub/cards/Eight_of_Hearts:1
 msgid "Eight of Hearts"
-msgstr ""
+msgstr "紅心 8"
 
 #: ../TabletopClub/cards/Eight_of_Spades:1
 msgid "Eight of Spades"
-msgstr ""
+msgstr "黑桃 8"
 
 #: ../TabletopClub/cards/Five_of_Clubs:1
 msgid "Five of Clubs"
-msgstr ""
+msgstr "梅花 5"
 
 #: ../TabletopClub/cards/Five_of_Diamonds:1
 msgid "Five of Diamonds"
-msgstr ""
+msgstr "方塊 5"
 
 #: ../TabletopClub/cards/Five_of_Hearts:1
 msgid "Five of Hearts"
-msgstr ""
+msgstr "紅心 5"
 
 #: ../TabletopClub/cards/Five_of_Spades:1
 msgid "Five of Spades"
-msgstr ""
+msgstr "黑桃 5"
 
 #: ../TabletopClub/cards/Four_of_Clubs:1
 msgid "Four of Clubs"
-msgstr ""
+msgstr "梅花 4"
 
 #: ../TabletopClub/cards/Four_of_Diamonds:1
 msgid "Four of Diamonds"
-msgstr ""
+msgstr "方塊 4"
 
 #: ../TabletopClub/cards/Four_of_Hearts:1
 msgid "Four of Hearts"
-msgstr ""
+msgstr "紅心 4"
 
 #: ../TabletopClub/cards/Four_of_Spades:1
 msgid "Four of Spades"
-msgstr ""
+msgstr "黑桃 4"
 
 #: ../TabletopClub/cards/Jack_of_Clubs:1
 msgid "Jack of Clubs"
-msgstr ""
+msgstr "梅花 J"
 
 #: ../TabletopClub/cards/Jack_of_Diamonds:1
 msgid "Jack of Diamonds"
-msgstr ""
+msgstr "方塊 J"
 
 #: ../TabletopClub/cards/Jack_of_Hearts:1
 msgid "Jack of Hearts"
-msgstr ""
+msgstr "紅心 J"
 
 #: ../TabletopClub/cards/Jack_of_Spades:1
 msgid "Jack of Spades"
-msgstr ""
+msgstr "黑桃 J"
 
 #: ../TabletopClub/cards/Joker_Black:1
 msgid "Joker Black"
-msgstr ""
+msgstr "黑色鬼牌"
 
 #: ../TabletopClub/cards/Joker_Red:1
 msgid "Joker Red"
-msgstr ""
+msgstr "紅色鬼牌"
 
 #: ../TabletopClub/cards/King_of_Clubs:1
 msgid "King of Clubs"
-msgstr ""
+msgstr "梅花 K"
 
 #: ../TabletopClub/cards/King_of_Diamonds:1
 msgid "King of Diamonds"
-msgstr ""
+msgstr "方塊 K"
 
 #: ../TabletopClub/cards/King_of_Hearts:1
 msgid "King of Hearts"
-msgstr ""
+msgstr "紅心 K"
 
 #: ../TabletopClub/cards/King_of_Spades:1
 msgid "King of Spades"
-msgstr ""
+msgstr "黑桃 K"
 
 #: ../TabletopClub/cards/Nine_of_Clubs:1
 msgid "Nine of Clubs"
-msgstr ""
+msgstr "梅花 9"
 
 #: ../TabletopClub/cards/Nine_of_Diamonds:1
 msgid "Nine of Diamonds"
-msgstr ""
+msgstr "方塊 9"
 
 #: ../TabletopClub/cards/Nine_of_Hearts:1
 msgid "Nine of Hearts"
-msgstr ""
+msgstr "紅心 9"
 
 #: ../TabletopClub/cards/Nine_of_Spades:1
 msgid "Nine of Spades"
-msgstr ""
+msgstr "黑桃 9"
 
 #: ../TabletopClub/cards/Queen_of_Clubs:1
 msgid "Queen of Clubs"
-msgstr ""
+msgstr "梅花 Q"
 
 #: ../TabletopClub/cards/Queen_of_Diamonds:1
 msgid "Queen of Diamonds"
-msgstr ""
+msgstr "方塊 Q"
 
 #: ../TabletopClub/cards/Queen_of_Hearts:1
 msgid "Queen of Hearts"
-msgstr ""
+msgstr "紅心 Q"
 
 #: ../TabletopClub/cards/Queen_of_Spades:1
 msgid "Queen of Spades"
-msgstr ""
+msgstr "黑桃 Q"
 
 #: ../TabletopClub/cards/Seer:1
 msgid "Seer"
@@ -236,101 +239,101 @@ msgstr ""
 
 #: ../TabletopClub/cards/Seer:2
 msgid "Helps villagers by secretly inspecting someone's role every night."
-msgstr ""
+msgstr "於每天晚上秘密檢查某人的角色來幫助村民。"
 
 #: ../TabletopClub/cards/Seven_of_Clubs:1
 msgid "Seven of Clubs"
-msgstr ""
+msgstr "梅花 7"
 
 #: ../TabletopClub/cards/Seven_of_Diamonds:1
 msgid "Seven of Diamonds"
-msgstr ""
+msgstr "方塊 7"
 
 #: ../TabletopClub/cards/Seven_of_Hearts:1
 msgid "Seven of Hearts"
-msgstr ""
+msgstr "紅心 7"
 
 #: ../TabletopClub/cards/Seven_of_Spades:1
 msgid "Seven of Spades"
-msgstr ""
+msgstr "黑桃 7"
 
 #: ../TabletopClub/cards/Six_of_Clubs:1
 msgid "Six of Clubs"
-msgstr ""
+msgstr "梅花 6"
 
 #: ../TabletopClub/cards/Six_of_Diamonds:1
 msgid "Six of Diamonds"
-msgstr ""
+msgstr "方塊 6"
 
 #: ../TabletopClub/cards/Six_of_Hearts:1
 msgid "Six of Hearts"
-msgstr ""
+msgstr "紅心 6"
 
 #: ../TabletopClub/cards/Six_of_Spades:1
 msgid "Six of Spades"
-msgstr ""
+msgstr "黑桃 6"
 
 #: ../TabletopClub/cards/Ten_of_Clubs:1
 msgid "Ten of Clubs"
-msgstr ""
+msgstr "梅花 10"
 
 #: ../TabletopClub/cards/Ten_of_Diamonds:1
 msgid "Ten of Diamonds"
-msgstr ""
+msgstr "方塊 10"
 
 #: ../TabletopClub/cards/Ten_of_Hearts:1
 msgid "Ten of Hearts"
-msgstr ""
+msgstr "紅心 10"
 
 #: ../TabletopClub/cards/Ten_of_Spades:1
 msgid "Ten of Spades"
-msgstr ""
+msgstr "黑桃 10"
 
 #: ../TabletopClub/cards/Three_of_Clubs:1
 msgid "Three of Clubs"
-msgstr ""
+msgstr "梅花 3"
 
 #: ../TabletopClub/cards/Three_of_Diamonds:1
 msgid "Three of Diamonds"
-msgstr ""
+msgstr "方塊 3"
 
 #: ../TabletopClub/cards/Three_of_Hearts:1
 msgid "Three of Hearts"
-msgstr ""
+msgstr "紅心 3"
 
 #: ../TabletopClub/cards/Three_of_Spades:1
 msgid "Three of Spades"
-msgstr ""
+msgstr "黑桃 3"
 
 #: ../TabletopClub/cards/Two_of_Clubs:1
 msgid "Two of Clubs"
-msgstr ""
+msgstr "梅花 2"
 
 #: ../TabletopClub/cards/Two_of_Diamonds:1
 msgid "Two of Diamonds"
-msgstr ""
+msgstr "方塊 2"
 
 #: ../TabletopClub/cards/Two_of_Hearts:1
 msgid "Two of Hearts"
-msgstr ""
+msgstr "紅心 2"
 
 #: ../TabletopClub/cards/Two_of_Spades:1
 msgid "Two of Spades"
-msgstr ""
+msgstr "黑桃 2"
 
 #: ../TabletopClub/cards/Villager:1
 msgid "Villager"
-msgstr ""
+msgstr "村民"
 
 #: ../TabletopClub/cards/Villager:2
 msgid ""
 "Avoid being eaten by werewolves at night by voting against them during the "
 "day."
-msgstr ""
+msgstr "白天投票反對狼人以避免晚上被狼人吃掉。"
 
 #: ../TabletopClub/cards/Werewolf:1
 msgid "Werewolf"
-msgstr ""
+msgstr "狼人"
 
 #: ../TabletopClub/cards/Werewolf:2
 msgid ""
@@ -361,7 +364,7 @@ msgstr ""
 #: ../TabletopClub/dice/d4/d4_(Red):2 ../TabletopClub/dice/d4/d4_(White):2
 #: ../TabletopClub/dice/d4/d4_(Yellow):2
 msgid "A 4-sided die."
-msgstr ""
+msgstr "一顆 4 面的骰子。"
 
 #: ../TabletopClub/dice/d4/d4_(Blue):1
 msgid "d4 (Blue)"
@@ -415,7 +418,7 @@ msgstr ""
 #: ../TabletopClub/dice/d6/d6_(Traditional):2
 #: ../TabletopClub/dice/d6/d6_(White):2 ../TabletopClub/dice/d6/d6_(Yellow):2
 msgid "A 6-sided die."
-msgstr ""
+msgstr "一顆 6 面的骰子。"
 
 #: ../TabletopClub/dice/d6/d6_(Blue):1
 msgid "d6 (Blue)"
@@ -472,7 +475,7 @@ msgstr ""
 #: ../TabletopClub/dice/d8/d8_(Red):2 ../TabletopClub/dice/d8/d8_(White):2
 #: ../TabletopClub/dice/d8/d8_(Yellow):2
 msgid "An 8-sided die."
-msgstr ""
+msgstr "一顆 8 面的骰子。"
 
 #: ../TabletopClub/dice/d8/d8_(Blue):1
 msgid "d8 (Blue)"
@@ -538,7 +541,7 @@ msgstr ""
 #: ../TabletopClub/dice/d10/d10_(White):2
 #: ../TabletopClub/dice/d10/d10_(Yellow):2
 msgid "A 10-sided die."
-msgstr ""
+msgstr "一顆 10 面的骰子。"
 
 #: ../TabletopClub/dice/d10/d10_(Blue):1
 msgid "d10 (Blue)"
@@ -637,7 +640,7 @@ msgstr ""
 #: ../TabletopClub/dice/d12/d12_(White):2
 #: ../TabletopClub/dice/d12/d12_(Yellow):2
 msgid "A 12-sided die."
-msgstr ""
+msgstr "一顆 12 面的骰子。"
 
 #: ../TabletopClub/dice/d12/d12_(Blue):1
 msgid "d12 (Blue)"
@@ -692,7 +695,7 @@ msgstr ""
 #: ../TabletopClub/dice/d20/d20_(White):2
 #: ../TabletopClub/dice/d20/d20_(Yellow):2
 msgid "A 20-sided die."
-msgstr ""
+msgstr "一顆 20 面的骰子。"
 
 #: ../TabletopClub/dice/d20/d20_(Blue):1
 msgid "d20 (Blue)"
@@ -744,7 +747,7 @@ msgstr ""
 
 #: ../TabletopClub/games/Dominoes:1
 msgid "Dominoes"
-msgstr ""
+msgstr "多米諾骨牌"
 
 #: ../TabletopClub/games/Dominoes:2
 msgid "A bag with 28 tiles has been provided."
@@ -752,7 +755,7 @@ msgstr ""
 
 #: ../TabletopClub/games/Go:1
 msgid "Go"
-msgstr ""
+msgstr "圍棋"
 
 #: ../TabletopClub/games/Go:2
 msgid ""
@@ -766,11 +769,11 @@ msgstr ""
 
 #: ../TabletopClub/games/Poker:2
 msgid "Each player has been given 25 chips, which sum up to a value of 500."
-msgstr ""
+msgstr "每位玩家獲得 25 個籌碼，總價值為 500。"
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
 msgid "Airport Lounge - Kevin MacLeod"
-msgstr ""
+msgstr "Airport Lounge - Kevin MacLeod"
 
 #: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:2
 msgid "Light and airy, this piece is guaranteed not to steal focus."
@@ -778,7 +781,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:1
 msgid "Backbay Lounge - Kevin MacLeod"
-msgstr ""
+msgstr "Backbay Lounge - Kevin MacLeod"
 
 #: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:2
 msgid ""
@@ -790,7 +793,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:1
 msgid "Bossa Antigua - Kevin MacLeod"
-msgstr ""
+msgstr "Bossa Antigua - Kevin MacLeod"
 
 #: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:2
 msgid ""
@@ -802,7 +805,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:1
 msgid "Deadly Roulette - Kevin MacLeod"
-msgstr ""
+msgstr "Deadly Roulette - Kevin MacLeod"
 
 #: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:2
 msgid ""
@@ -817,7 +820,7 @@ msgstr ""
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:1
 msgid "George Street Shuffle - Kevin MacLeod"
-msgstr ""
+msgstr "George Street Shuffle - Kevin MacLeod"
 
 #: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:2
 msgid "Nice little non-offending light jazz piece for vibes."
@@ -825,7 +828,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:1
 msgid "Hard Boiled - Kevin MacLeod"
-msgstr ""
+msgstr "Hard Boiled - Kevin MacLeod"
 
 #: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:2
 msgid ""
@@ -838,7 +841,7 @@ msgstr ""
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:1
 msgid "In Your Arms - Kevin MacLeod"
-msgstr ""
+msgstr "In Your Arms - Kevin MacLeod"
 
 #: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:2
 msgid ""
@@ -851,7 +854,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:1
 msgid "Lobby Time - Kevin MacLeod"
-msgstr ""
+msgstr "Lobby Time - Kevin MacLeod"
 
 #: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:2
 msgid ""
@@ -866,7 +869,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:1
 msgid "Night on the Docks - Sax - Kevin MacLeod"
-msgstr ""
+msgstr "Night on the Docks - Sax - Kevin MacLeod"
 
 #: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:2
 msgid "Sad and smooth; Think 1950's detective film."
@@ -874,7 +877,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:1
 msgid "Shades of Spring - Kevin MacLeod"
-msgstr ""
+msgstr "Shades of Spring - Kevin MacLeod"
 
 #: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:2
 msgid ""
@@ -885,7 +888,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:1
 msgid "Smooth Lovin - Kevin MacLeod"
-msgstr ""
+msgstr "Smooth Lovin - Kevin MacLeod"
 
 #: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:2
 msgid ""
@@ -896,7 +899,7 @@ msgstr ""
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:1
 msgid "Spy Glass - Kevin MacLeod"
-msgstr ""
+msgstr "Spy Glass - Kevin MacLeod"
 
 #: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:2
 msgid ""
@@ -907,71 +910,71 @@ msgstr ""
 
 #: ../TabletopClub/pieces/Bishop_Black:1
 msgid "Bishop Black"
-msgstr ""
+msgstr "黑主教"
 
 #: ../TabletopClub/pieces/Bishop_White:1
 msgid "Bishop White"
-msgstr ""
+msgstr "白主教"
 
 #: ../TabletopClub/pieces/King_Black:1
 msgid "King Black"
-msgstr ""
+msgstr "黑國王"
 
 #: ../TabletopClub/pieces/King_White:1
 msgid "King White"
-msgstr ""
+msgstr "白國王"
 
 #: ../TabletopClub/pieces/Knight_Black:1
 msgid "Knight Black"
-msgstr ""
+msgstr "黑騎士"
 
 #: ../TabletopClub/pieces/Knight_White:1
 msgid "Knight White"
-msgstr ""
+msgstr "白騎士"
 
 #: ../TabletopClub/pieces/Pawn_Black:1
 msgid "Pawn Black"
-msgstr ""
+msgstr "黑士兵"
 
 #: ../TabletopClub/pieces/Pawn_White:1
 msgid "Pawn White"
-msgstr ""
+msgstr "白士兵"
 
 #: ../TabletopClub/pieces/Queen_Black:1
 msgid "Queen Black"
-msgstr ""
+msgstr "黑皇后"
 
 #: ../TabletopClub/pieces/Queen_White:1
 msgid "Queen White"
-msgstr ""
+msgstr "白皇后"
 
 #: ../TabletopClub/pieces/Rook_Black:1
 msgid "Rook Black"
-msgstr ""
+msgstr "黑城堡"
 
 #: ../TabletopClub/pieces/Rook_White:1
 msgid "Rook White"
-msgstr ""
+msgstr "白城堡"
 
 #: ../TabletopClub/pieces/Stone_Black:1
 msgid "Stone Black"
-msgstr ""
+msgstr "黑子"
 
 #: ../TabletopClub/pieces/Stone_White:1
 msgid "Stone White"
-msgstr ""
+msgstr "白子"
 
 #: ../TabletopClub/skyboxes/Clouds:1
 msgid "Clouds"
-msgstr ""
+msgstr "雲"
 
 #: ../TabletopClub/skyboxes/Dallas_West:1
 msgid "Dallas West"
-msgstr ""
+msgstr "達拉斯西部"
 
 #: ../TabletopClub/skyboxes/Forest:1
 msgid "Forest"
-msgstr ""
+msgstr "森林"
 
 #: ../TabletopClub/skyboxes/Hornstulls_Strand:1
 msgid "Hornstulls Strand"
@@ -979,7 +982,7 @@ msgstr ""
 
 #: ../TabletopClub/skyboxes/Ice_River:1
 msgid "Ice River"
-msgstr ""
+msgstr "冰河"
 
 #: ../TabletopClub/skyboxes/Marriott_Madison_West:1
 msgid "Marriott Madison West"
@@ -1011,7 +1014,7 @@ msgstr ""
 
 #: ../TabletopClub/skyboxes/Space:1
 msgid "Space"
-msgstr ""
+msgstr "太空"
 
 #: ../TabletopClub/skyboxes/Tantolunden:1
 msgid "Tantolunden"
@@ -1031,7 +1034,7 @@ msgstr ""
 
 #: ../TabletopClub/speakers/Gramophone:1
 msgid "Gramophone"
-msgstr ""
+msgstr "留聲機"
 
 #: ../TabletopClub/speakers/Gramophone:2
 msgid "A low-poly vintage gramophone."
@@ -1039,7 +1042,7 @@ msgstr ""
 
 #: ../TabletopClub/tables/Picnic_Bench:1
 msgid "Picnic Bench"
-msgstr ""
+msgstr "野餐長椅"
 
 #: ../TabletopClub/tables/Table:1
 msgid "Table"
@@ -1047,27 +1050,27 @@ msgstr ""
 
 #: ../TabletopClub/templates/Blank_Page:1
 msgid "Blank Page"
-msgstr ""
+msgstr "空白頁"
 
 #: ../TabletopClub/templates/Blank_Page:2
 msgid "There's nothing here..."
-msgstr ""
+msgstr "這裏甚麼都沒有…"
 
 #: ../TabletopClub/templates/Score_Card:1
 msgid "Score Card"
-msgstr ""
+msgstr "記分卡"
 
 #: ../TabletopClub/templates/Score_Card:2
 msgid "A generic score card for up to 10 players."
-msgstr ""
+msgstr "最多可供 10 名玩家使用的通用記分卡。"
 
 #: ../TabletopClub/timers/Radio:1
 msgid "Radio"
-msgstr ""
+msgstr "收音機"
 
 #: ../TabletopClub/timers/Radio:2
 msgid "An old radio from a bygone era."
-msgstr ""
+msgstr "一部來自舊時代的舊收音機。"
 
 #: ../TabletopClub/tokens/cube/Blue:1
 msgid "Blue"
@@ -1095,115 +1098,115 @@ msgstr ""
 
 #: ../TabletopClub/tokens/cube/Domino_0-0:1
 msgid "Domino 0-0"
-msgstr ""
+msgstr "多米諾骨牌 0-0"
 
 #: ../TabletopClub/tokens/cube/Domino_0-1:1
 msgid "Domino 0-1"
-msgstr ""
+msgstr "多米諾骨牌 0-1"
 
 #: ../TabletopClub/tokens/cube/Domino_0-2:1
 msgid "Domino 0-2"
-msgstr ""
+msgstr "多米諾骨牌 0-2"
 
 #: ../TabletopClub/tokens/cube/Domino_0-3:1
 msgid "Domino 0-3"
-msgstr ""
+msgstr "多米諾骨牌 0-3"
 
 #: ../TabletopClub/tokens/cube/Domino_0-4:1
 msgid "Domino 0-4"
-msgstr ""
+msgstr "多米諾骨牌 0-4"
 
 #: ../TabletopClub/tokens/cube/Domino_0-5:1
 msgid "Domino 0-5"
-msgstr ""
+msgstr "多米諾骨牌 0-5"
 
 #: ../TabletopClub/tokens/cube/Domino_0-6:1
 msgid "Domino 0-6"
-msgstr ""
+msgstr "多米諾骨牌 0-6"
 
 #: ../TabletopClub/tokens/cube/Domino_1-1:1
 msgid "Domino 1-1"
-msgstr ""
+msgstr "多米諾骨牌 1-1"
 
 #: ../TabletopClub/tokens/cube/Domino_1-2:1
 msgid "Domino 1-2"
-msgstr ""
+msgstr "多米諾骨牌 1-2"
 
 #: ../TabletopClub/tokens/cube/Domino_1-3:1
 msgid "Domino 1-3"
-msgstr ""
+msgstr "多米諾骨牌 1-3"
 
 #: ../TabletopClub/tokens/cube/Domino_1-4:1
 msgid "Domino 1-4"
-msgstr ""
+msgstr "多米諾骨牌 1-4"
 
 #: ../TabletopClub/tokens/cube/Domino_1-5:1
 msgid "Domino 1-5"
-msgstr ""
+msgstr "多米諾骨牌 1-5"
 
 #: ../TabletopClub/tokens/cube/Domino_1-6:1
 msgid "Domino 1-6"
-msgstr ""
+msgstr "多米諾骨牌 1-6"
 
 #: ../TabletopClub/tokens/cube/Domino_2-2:1
 msgid "Domino 2-2"
-msgstr ""
+msgstr "多米諾骨牌 2-2"
 
 #: ../TabletopClub/tokens/cube/Domino_2-3:1
 msgid "Domino 2-3"
-msgstr ""
+msgstr "多米諾骨牌 2-3"
 
 #: ../TabletopClub/tokens/cube/Domino_2-4:1
 msgid "Domino 2-4"
-msgstr ""
+msgstr "多米諾骨牌 2-4"
 
 #: ../TabletopClub/tokens/cube/Domino_2-5:1
 msgid "Domino 2-5"
-msgstr ""
+msgstr "多米諾骨牌 2-5"
 
 #: ../TabletopClub/tokens/cube/Domino_2-6:1
 msgid "Domino 2-6"
-msgstr ""
+msgstr "多米諾骨牌 2-6"
 
 #: ../TabletopClub/tokens/cube/Domino_3-3:1
 msgid "Domino 3-3"
-msgstr ""
+msgstr "多米諾骨牌 3-3"
 
 #: ../TabletopClub/tokens/cube/Domino_3-4:1
 msgid "Domino 3-4"
-msgstr ""
+msgstr "多米諾骨牌 3-4"
 
 #: ../TabletopClub/tokens/cube/Domino_3-5:1
 msgid "Domino 3-5"
-msgstr ""
+msgstr "多米諾骨牌 3-5"
 
 #: ../TabletopClub/tokens/cube/Domino_3-6:1
 msgid "Domino 3-6"
-msgstr ""
+msgstr "多米諾骨牌 3-6"
 
 #: ../TabletopClub/tokens/cube/Domino_4-4:1
 msgid "Domino 4-4"
-msgstr ""
+msgstr "多米諾骨牌 4-4"
 
 #: ../TabletopClub/tokens/cube/Domino_4-5:1
 msgid "Domino 4-5"
-msgstr ""
+msgstr "多米諾骨牌 4-5"
 
 #: ../TabletopClub/tokens/cube/Domino_4-6:1
 msgid "Domino 4-6"
-msgstr ""
+msgstr "多米諾骨牌 4-6"
 
 #: ../TabletopClub/tokens/cube/Domino_5-5:1
 msgid "Domino 5-5"
-msgstr ""
+msgstr "多米諾骨牌 5-5"
 
 #: ../TabletopClub/tokens/cube/Domino_5-6:1
 msgid "Domino 5-6"
-msgstr ""
+msgstr "多米諾骨牌 5-6"
 
 #: ../TabletopClub/tokens/cube/Domino_6-6:1
 msgid "Domino 6-6"
-msgstr ""
+msgstr "多米諾骨牌 6-6"
 
 #: ../TabletopClub/tokens/cube/Green:1
 msgid "Green"
@@ -1263,70 +1266,70 @@ msgstr ""
 
 #: ../TabletopClub/tokens/cylinder/1:1
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2
 #: ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2
 #: ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
 msgid "A poker chip."
-msgstr ""
+msgstr "一個撲克牌籌碼。"
 
 #: ../TabletopClub/tokens/cylinder/10:1
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: ../TabletopClub/tokens/cylinder/100:1
 msgid "100"
-msgstr ""
+msgstr "100"
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:1
 msgid "20 x 1 Chips"
-msgstr ""
+msgstr "20 x 1 籌碼"
 
 #: ../TabletopClub/tokens/cylinder/20_x_1_Chips:2
 msgid "A stack of 20 1-value chips."
-msgstr ""
+msgstr "一疊 20 個 1 值的籌碼。"
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:1
 msgid "20 x 10 Chips"
-msgstr ""
+msgstr "20 x 10 籌碼"
 
 #: ../TabletopClub/tokens/cylinder/20_x_10_Chips:2
 msgid "A stack of 20 10-value chips."
-msgstr ""
+msgstr "一疊 20 個 10 值的籌碼。"
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:1
 msgid "20 x 100 Chips"
-msgstr ""
+msgstr "20 x 100 籌碼"
 
 #: ../TabletopClub/tokens/cylinder/20_x_100_Chips:2
 msgid "A stack of 20 100-value chips."
-msgstr ""
+msgstr "一疊 20 個 100 值的籌碼。"
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:1
 msgid "20 x 25 Chips"
-msgstr ""
+msgstr "20 x 25 籌碼"
 
 #: ../TabletopClub/tokens/cylinder/20_x_25_Chips:2
 msgid "A stack of 20 25-value chips."
-msgstr ""
+msgstr "一疊 20 個 25 值的籌碼。"
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:1
 msgid "20 x 5 Chips"
-msgstr ""
+msgstr "20 x 5 籌碼"
 
 #: ../TabletopClub/tokens/cylinder/20_x_5_Chips:2
 msgid "A stack of 20 5-value chips."
-msgstr ""
+msgstr "一疊 20 個 5 值的籌碼。"
 
 #: ../TabletopClub/tokens/cylinder/25:1
 msgid "25"
-msgstr ""
+msgstr "25"
 
 #: ../TabletopClub/tokens/cylinder/5:1
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../TabletopClub/tokens/cylinder/D:1
 msgid "D"
-msgstr ""
+msgstr "D"
