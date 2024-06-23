@@ -41,13 +41,17 @@ extends Node
 ## at the same time.
 ##
 ## TODO: Test this class fully once it is complete.
+## TODO: Add timeouts where applicable.
 
+
+## The number of bytes sent per chunk to clients.
+const CHUNK_SIZE := 50000 # = 50 KB
 
 ## The maximum amount of data that can be sent over the course of one transfer.
-const MAX_COMPRESSED_DATA_SIZE := 5000000 # = 5 MB
+const MAX_COMPRESSED_DATA_SIZE := 4194304 # = 4.2 MB
 
 ## The maximum allowed size of data after it is uncompressed.
-const MAX_UNCOMPRESSED_DATA_SIZE := 20000000 # = 20 MB
+const MAX_UNCOMPRESSED_DATA_SIZE := 16777216 # = 16.8 MB
 
 
 # The queue of transfers that should take place after the current transfer is
@@ -115,7 +119,7 @@ func init_transfer(plan: TransferPlan) -> void:
 	# the transfers. Note that we do not want to do this for all types of data,
 	# so ideally we have a nice solution for all cases.
 	
-	for element in plan.transfer_ids:
+	for element in plan.receiver_ids:
 		var client_id: int = element
 		
 		if client_id == 1:
@@ -175,6 +179,9 @@ puppet func request_transfer(data_name: String, data_type: int,
 				size_uncompressed, MAX_UNCOMPRESSED_DATA_SIZE])
 		return
 	
+	print("DataBroadcaster: Accepting request to receive data '%s' (T: %d, C: %d, U: %d)" % [
+			data_name, data_type, size_compressed, size_uncompressed])
+	
 	var data := PartialData.new()
 	data.name = data_name
 	data.type = data_type
@@ -191,4 +198,184 @@ puppet func request_transfer(data_name: String, data_type: int,
 	
 	_active_transfer_arr.push_back(state)
 	
-	# TODO: Send the accept signal to the server.
+	rpc("accept_transfer_request")
+
+
+## Sent by the client to accept a transfer request they have just received from
+## the server. Once all of the clients have accepted the transfer, then the data
+## will start to be transmitted one chunk at a time.
+## TODO: Add ability to skip data transfer, but still receive signals.
+master func accept_transfer_request() -> void:
+	var client_id := get_tree().get_rpc_sender_id()
+	var transfer_state: TransferState = _get_active_transfer(client_id)
+	if transfer_state == null:
+		push_error("Client '%d' accepted transfer request that did not exist" % client_id)
+		return
+	
+	if transfer_state.receiver_accepted:
+		push_warning("Client '%d' has already accepted transfer request" % client_id)
+		return
+	
+	transfer_state.receiver_accepted = true
+	print("DataBroadcaster: Client '%d' has accepted the transfer request." % client_id)
+	
+	# TODO: Make sure the last_message_ms property is updated.
+	
+	# Since the client has accepted, we'll check to see if all other clients
+	# have accepted as well. If they have, then we can start it!
+	# TODO: If we are transferring a state, then we need to wait for all client's
+	# state to be frozen before we can start. Could this be a flag? Bear in mind
+	# that the clients could freeze before they accept!
+	for element in _active_transfer_arr:
+		var other_state: TransferState = element
+		if not other_state.receiver_accepted:
+			return
+	
+	print("DataBroadcaster: All clients have accepted transfer request, starting...")
+	
+	for element in _active_transfer_arr:
+		var state: TransferState = element
+		
+		# TODO: Deal with the client potentially skipping the transfer.
+		perform_transfer_pass(state)
+
+
+## As the server, perform a pass on one of the active transfer states. If the
+## transfer is ongoing, this means that the server will send one chunk of data
+## to the corresponding client. If the transfer is finished, then nothing
+## happens.
+func perform_transfer_pass(transfer_state: TransferState) -> void:
+	if not transfer_state.receiver_accepted:
+		push_error("Cannot perform pass on transfer to client '%d', receiver has not accepted" % transfer_state.receiver_id)
+		return
+	
+	if transfer_state.receiver_skipping:
+		push_warning("No need to perform pass on transfer to client '%d', they are skipping" % transfer_state.receiver_id)
+		return
+	
+	var size_total := transfer_state.data.size_compressed
+	var chunk_start := transfer_state.num_packets_sent * CHUNK_SIZE
+	
+	if chunk_start > size_total - 1:
+		print("DataBroadcaster: Transfer to client '%d' is complete." % transfer_state.receiver_id)
+		return
+	
+	var chunk_end := chunk_start + CHUNK_SIZE - 1
+	if chunk_end > size_total - 1:
+		chunk_end = size_total - 1
+	
+	print("DataBroadcaster: Sending chunk #%d to client '%d' (bytes %d-%d)..." % [
+			transfer_state.num_packets_sent + 1, transfer_state.receiver_id,
+			chunk_start, chunk_end])
+	var chunk := transfer_state.data.bytes.subarray(chunk_start, chunk_end)
+	rpc_id(transfer_state.receiver_id, "send_chunk", chunk)
+	
+	transfer_state.num_packets_sent += 1
+	if transfer_state.num_packets_ackd != transfer_state.num_packets_sent - 1:
+		push_warning("Number of packets ack'd by client '%d' is not expected value (expected: %d, got: %d)" % [
+				transfer_state.receiver_id, transfer_state.num_packets_sent - 1,
+				transfer_state.num_packets_ackd])
+
+
+## Called by the server to send a chunk of data to the client.
+puppet func send_chunk(chunk_bytes: PoolByteArray) -> void:
+	if chunk_bytes.size() > CHUNK_SIZE:
+		push_error("Chunk of data sent by the server is too big (%d)" % chunk_bytes.size())
+		return
+	
+	if _active_transfer_arr.size() != 1:
+		push_error("Chunk of data was sent when no transfers are active")
+		return
+	
+	var transfer_state: TransferState = _active_transfer_arr[0]
+	# Don't need to check 'receiver_accepted', as it is implied by the transfer
+	# being active.
+	if transfer_state.receiver_skipping:
+		push_warning("Server sent us data when we said to skip transfer")
+		return
+	
+	var current_bytes := transfer_state.data.bytes
+	
+	var final_size := transfer_state.data.size_compressed
+	var current_size := current_bytes.size()
+	
+	var expected_chunk_size := CHUNK_SIZE
+	if current_size + CHUNK_SIZE > final_size:
+		expected_chunk_size = final_size - current_size
+	
+	if chunk_bytes.size() != expected_chunk_size:
+		push_error("Chunk sent by server is wrong size (expected: %d, got: %d)" % [
+				expected_chunk_size, chunk_bytes.size()])
+		return
+	
+	print("DataBroadcaster: Received %d bytes of data (total: %d / %d)." % [
+			expected_chunk_size, current_size + expected_chunk_size, final_size])
+	current_bytes.append_array(chunk_bytes)
+	# Since PoolByteArrays are passed by value, we need to manually assign the
+	# byte array again.
+	transfer_state.data.bytes = current_bytes
+	
+	# TEMP
+	if current_bytes.size() == final_size:
+		print(current_bytes.get_string_from_utf8())
+	
+	print("DataBroadcaster: Sending acknowledge response #%d ..." % (transfer_state.num_packets_ackd + 1))
+	rpc("acknowledge_chunk")
+	
+	transfer_state.num_packets_sent += 1
+	transfer_state.num_packets_ackd += 1
+	
+	if transfer_state.num_packets_sent != transfer_state.num_packets_ackd:
+		push_warning("Number of packets sent (%d) does not match number of packets acknowledged (%d)" % [
+				transfer_state.num_packets_sent, transfer_state.num_packets_ackd])
+
+
+## Called by the client to acknowledge a chunk that was just sent by the server.
+## This will get the server to send the next chunk, or if all of the data has
+## been sent, wait until all other clients transfers are complete.
+master func acknowledge_chunk() -> void:
+	var client_id := get_tree().get_rpc_sender_id()
+	var transfer_state: TransferState = _get_active_transfer(client_id)
+	if transfer_state == null:
+		push_error("Client '%d' acknowledged chunk for transfer that does not exist" % client_id)
+		return
+	
+	if not transfer_state.receiver_accepted:
+		push_error("Client '%d' acknowledged chunk before they accepted transfer" % client_id)
+		return
+	
+	if transfer_state.receiver_skipping:
+		push_warning("Client '%d' acknowledged chunk even though they are skipping" % client_id)
+		return
+	
+	if transfer_state.num_packets_ackd != transfer_state.num_packets_sent - 1:
+		push_error("Did not expect acknowledge signal from client '%d' (#sent: %d, #ackd: %d)" % [
+				client_id, transfer_state.num_packets_sent, transfer_state.num_packets_ackd])
+		return
+	
+	transfer_state.num_packets_ackd += 1
+	print("DataBroadcaster: Client '%d' acknowledged chunk #%d." % [client_id,
+			transfer_state.num_packets_ackd])
+	
+	# Now that the number of acknowledged packets matches the number sent, we
+	# can check to see if we need to send another chunk - if not, then the
+	# transfer is complete for this client, and we wait until all other clients
+	# are done as well before finalising the transfer.
+	var total_size := transfer_state.data.size_compressed
+	var next_chunk_start := transfer_state.num_packets_sent * CHUNK_SIZE
+	
+	if next_chunk_start > total_size - 1:
+		print("DONE!")
+	else:
+		perform_transfer_pass(transfer_state)
+
+
+# Get the [TransferState] for the receiver with the given [param client_id].
+# If none exists, [code]null[/code] is returned.
+func _get_active_transfer(client_id: int) -> TransferState:
+	for element in _active_transfer_arr:
+		var state: TransferState = element
+		if state.receiver_id == client_id:
+			return state
+	
+	return null
