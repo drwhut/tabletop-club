@@ -41,7 +41,11 @@ extends Node
 ## at the same time.
 ##
 ## TODO: Test this class fully once it is complete.
-## TODO: Add timeouts where applicable.
+
+
+## Fired on all clients when a transfer is complete. The argument passed is a
+## [PartialData] instance.
+signal transfer_complete(data)
 
 
 ## The number of bytes sent per chunk to clients.
@@ -52,6 +56,10 @@ const MAX_COMPRESSED_DATA_SIZE := 4194304 # = 4.2 MB
 
 ## The maximum allowed size of data after it is uncompressed.
 const MAX_UNCOMPRESSED_DATA_SIZE := 16777216 # = 16.8 MB
+
+## The maximum amount of time that the server and clients will wait for each
+## other's messages.
+const MESSAGE_TIMEOUT_MS := 10000 # = 10s
 
 
 # The queue of transfers that should take place after the current transfer is
@@ -66,9 +74,31 @@ var _transfer_queue: Array = []
 # TODO: Make array typed in 4.x
 var _active_transfer_arr: Array = []
 
+# A flag that is set when the server needs to wait for all clients to activate
+# the StateFreeze system before starting any transfers. For more information,
+# refer to the StateFreeze class documentation.
+var _waiting_for_state_freeze := false
+
+
+func _ready():
+	StateFreeze.connect("all_clients_frozen", self,
+			"_on_StateFreeze_all_clients_frozen")
+
 
 func _process(_delta):
-	# TODO: Check timeouts for each of the transfers.
+	# Check to see if the server/clients are taking too long to respond.
+	var current_time_ms := OS.get_ticks_msec()
+	for index in range(_active_transfer_arr.size() - 1, -1, -1):
+		var state: TransferState = _active_transfer_arr[index]
+		if current_time_ms - state.last_message_time_ms > MESSAGE_TIMEOUT_MS:
+			push_error("Data transfer from '%d' to '%d' timed out" % [
+					state.sender_id, state.receiver_id])
+			
+			_active_transfer_arr.remove(index)
+			
+			# This may have been the last client we were waiting on to send or
+			# receive a message.
+			check_if_transfers_complete()
 	
 	if not _active_transfer_arr.empty():
 		return
@@ -114,10 +144,12 @@ func init_transfer(plan: TransferPlan) -> void:
 	print("DataBroadcaster: Initialising transfer of data '%s' (T: %d, C: %d, U: %d) ..." % [
 			data.name, data.type, data.size_compressed, data.size_uncompressed])
 	
-	# TODO: Activate StateFreeze for state data. Figure out a clean way to wait
-	# for the acknowledge signal from that global script before starting any of
-	# the transfers. Note that we do not want to do this for all types of data,
-	# so ideally we have a nice solution for all cases.
+	# If we are about to transfer a game state, all clients need to freeze their
+	# current state so that the players cannot modify the state while it is
+	# being transferred, which could take multiple RPCs.
+	_waiting_for_state_freeze = (data.type == PartialData.TYPE_STATE)
+	if _waiting_for_state_freeze:
+		StateFreeze.broadcast_freeze_signal()
 	
 	for element in plan.receiver_ids:
 		var client_id: int = element
@@ -217,15 +249,21 @@ master func accept_transfer_request() -> void:
 		return
 	
 	transfer_state.receiver_accepted = true
+	transfer_state.last_message_time_ms = OS.get_ticks_msec()
 	print("DataBroadcaster: Client '%d' has accepted the transfer request." % client_id)
-	
-	# TODO: Make sure the last_message_ms property is updated.
 	
 	# Since the client has accepted, we'll check to see if all other clients
 	# have accepted as well. If they have, then we can start it!
-	# TODO: If we are transferring a state, then we need to wait for all client's
-	# state to be frozen before we can start. Could this be a flag? Bear in mind
-	# that the clients could freeze before they accept!
+	check_if_can_start_transfer()
+
+
+## As the server, check to see if all of the clients have accepted the transfer
+## request that we gave them. If we are transferring a game state, also check if
+## all of the clients have frozen their game state.
+func check_if_can_start_transfer() -> void:
+	if _waiting_for_state_freeze:
+		return
+	
 	for element in _active_transfer_arr:
 		var other_state: TransferState = element
 		if not other_state.receiver_accepted:
@@ -294,6 +332,8 @@ puppet func send_chunk(chunk_bytes: PoolByteArray) -> void:
 		push_warning("Server sent us data when we said to skip transfer")
 		return
 	
+	transfer_state.last_message_time_ms = OS.get_ticks_msec()
+	
 	var current_bytes := transfer_state.data.bytes
 	
 	var final_size := transfer_state.data.size_compressed
@@ -314,10 +354,6 @@ puppet func send_chunk(chunk_bytes: PoolByteArray) -> void:
 	# Since PoolByteArrays are passed by value, we need to manually assign the
 	# byte array again.
 	transfer_state.data.bytes = current_bytes
-	
-	# TEMP
-	if current_bytes.size() == final_size:
-		print(current_bytes.get_string_from_utf8())
 	
 	print("DataBroadcaster: Sending acknowledge response #%d ..." % (transfer_state.num_packets_ackd + 1))
 	rpc("acknowledge_chunk")
@@ -354,6 +390,7 @@ master func acknowledge_chunk() -> void:
 		return
 	
 	transfer_state.num_packets_ackd += 1
+	transfer_state.last_message_time_ms = OS.get_ticks_msec()
 	print("DataBroadcaster: Client '%d' acknowledged chunk #%d." % [client_id,
 			transfer_state.num_packets_ackd])
 	
@@ -365,9 +402,65 @@ master func acknowledge_chunk() -> void:
 	var next_chunk_start := transfer_state.num_packets_sent * CHUNK_SIZE
 	
 	if next_chunk_start > total_size - 1:
-		print("DONE!")
+		print("DataBroadcaster: Transfer to client '%d' is complete." % client_id)
+		check_if_transfers_complete()
 	else:
 		perform_transfer_pass(transfer_state)
+
+
+## As the server, check if all of the transfers are complete.
+func check_if_transfers_complete() -> void:
+	if _active_transfer_arr.empty():
+		return
+	
+	var first_state: TransferState = _active_transfer_arr[0]
+	var data: PartialData = first_state.data
+	
+	for element in _active_transfer_arr:
+		var transfer_state: TransferState = element
+		
+		# TODO: Some clients may have skipped the transfer.
+		var total_size := transfer_state.data.size_compressed
+		var next_chunk_start := transfer_state.num_packets_ackd * CHUNK_SIZE
+		
+		if next_chunk_start <= total_size - 1:
+			return
+	
+	print("DataBroadcaster: Transfer of data '%s' to all clients is complete." % data.name)
+	rpc("finalise_transfer", data.name)
+	
+	# If the data being transferred was a game state, then the clients can now
+	# unfreeze their game state, as the new state should have been loaded before
+	# this signal is sent.
+	if data.type == PartialData.TYPE_STATE:
+		StateFreeze.broadcast_unfreeze_signal()
+
+
+## Called by the server on all clients (including themselves), once all clients
+## have received all chunks of data.
+puppetsync func finalise_transfer(data_name: String) -> void:
+	var transfer_state: TransferState = null
+	
+	for element in _active_transfer_arr:
+		var possible_state: TransferState = element
+		if possible_state.data.name == data_name:
+			transfer_state = possible_state
+			break
+	
+	if transfer_state == null:
+		push_error("No transfer of data '%s' found in active transfers" % data_name)
+		return
+	
+	# TODO: Check state fully.
+	
+	print("DataBroadcaster: Finalising transfer of data '%s' ..." % data_name)
+	
+	# The transfers are no longer active, so remove all of them from the list.
+	# Next frame, if there is a TransferPlan in the queue, it will be init'd
+	# as the next active transfer.
+	_active_transfer_arr.clear()
+	
+	emit_signal("transfer_complete", transfer_state.data)
 
 
 # Get the [TransferState] for the receiver with the given [param client_id].
@@ -379,3 +472,9 @@ func _get_active_transfer(client_id: int) -> TransferState:
 			return state
 	
 	return null
+
+
+func _on_StateFreeze_all_clients_frozen():
+	# NOTE: This signal is only fired on the server.
+	_waiting_for_state_freeze = false
+	check_if_can_start_transfer()
