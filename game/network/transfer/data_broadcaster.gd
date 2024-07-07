@@ -43,8 +43,9 @@ extends Node
 ## TODO: Test this class fully once it is complete.
 
 
-## Fired on all clients when a transfer is complete. The argument passed is a
-## [PartialData] instance.
+## Fired on all clients that were involved in the transfer (including the
+## server) when it is complete.
+## [b]NOTE:[/b] This also includes if clients skipped the transfer.
 signal transfer_complete(data)
 
 
@@ -60,6 +61,15 @@ const MAX_UNCOMPRESSED_DATA_SIZE := 16777216 # = 16.8 MB
 ## The maximum amount of time that the server and clients will wait for each
 ## other's messages.
 const MESSAGE_TIMEOUT_MS := 10000 # = 10s
+
+
+## The [NodePath] that points to the game's "Room" node.
+## This is required in order to retrieve the game state when starting a transfer.
+const ROOM_NODE_PATH := @"/root/Game/Room"
+
+## The name of the function that retrieves the game state from the "Room" node.
+## This is required in order to retrieve the game state when starting a transfer.
+const ROOM_STATE_METHOD_NAME := "get_state_compressed"
 
 
 # The queue of transfers that should take place after the current transfer is
@@ -124,7 +134,19 @@ func add_to_queue(plan: TransferPlan) -> void:
 ## that the [param plan] will be initialised once all other transfers have been
 ## processed to completion.
 func init_transfer(plan: TransferPlan) -> void:
-	var data := plan.get_data()
+	var data: PartialData = null
+	
+	# If we are about to transfer a game state, we need to retrieve the data for
+	# it by accessing the Room node manually. This can't be done from within the
+	# TransferPlan, as it is a Reference, not a Node.
+	# TODO: If we don't ever override TransferPlan.get_data(), should we
+	# re-think this strategy?
+	if plan is TransferPlanState:
+		var room_node := get_node(ROOM_NODE_PATH)
+		data = room_node.call(ROOM_STATE_METHOD_NAME)
+	else:
+		data = plan.get_data()
+	
 	if data == null:
 		push_error("Cannot initialise transfer, data is null")
 		return
@@ -427,7 +449,14 @@ func check_if_transfers_complete() -> void:
 			return
 	
 	print("DataBroadcaster: Transfer of data '%s' to all clients is complete." % data.name)
-	rpc("finalise_transfer", data.name)
+	
+	# Send an RPC only to the clients that we sent data to...
+	for element in _active_transfer_arr:
+		var transfer_state: TransferState = element
+		rpc_id(transfer_state.receiver_id, "finalise_transfer", data.name)
+	
+	# ... and then call it ourselves.
+	finalise_transfer(data.name)
 	
 	# If the data being transferred was a game state, then the clients can now
 	# unfreeze their game state, as the new state should have been loaded before
@@ -438,7 +467,7 @@ func check_if_transfers_complete() -> void:
 
 ## Called by the server on all clients (including themselves), once all clients
 ## have received all chunks of data.
-puppetsync func finalise_transfer(data_name: String) -> void:
+puppet func finalise_transfer(data_name: String) -> void:
 	var transfer_state: TransferState = null
 	
 	for element in _active_transfer_arr:

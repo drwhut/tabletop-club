@@ -40,6 +40,10 @@ export(Resource) var default_skybox = null
 export(bool) var set_skybox_on_ready := false
 
 
+# Used to keep track of the last AssetEntrySkybox used to set the environment.
+var _last_skybox_entry: AssetEntrySkybox = null
+
+
 func _ready():
 	if default_skybox is AssetEntrySkybox:
 		if set_skybox_on_ready:
@@ -51,8 +55,17 @@ func _ready():
 			"_on_GameConfig_applying_settings")
 
 
+## Get the room's skybox as an [AssetEntrySkybox].
+## [b]NOTE:[/b] If [member default_skybox] is not set, then this can return
+## [code]null[/code].
+func get_skybox() -> AssetEntrySkybox:
+	return _last_skybox_entry
+
+
 ## Set the room's skybox using its entry.
 func set_skybox(skybox_entry: AssetEntrySkybox) -> void:
+	_last_skybox_entry = skybox_entry
+	
 	var skybox_texture := skybox_entry.load_skybox_texture()
 	if skybox_texture != null:
 		var panorama_sky := PanoramaSky.new()

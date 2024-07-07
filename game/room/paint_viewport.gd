@@ -36,6 +36,16 @@ func _process(_delta: float):
 	_image_overwrite.visible = false
 
 
+func get_image() -> Image:
+	var image := get_texture().get_data()
+	return image
+
+
+# TODO: For some reason, when calling this as a result of the server sending us
+# a game state, it does not work. Think we need to have a proper command queue
+# system in place so that we can guarantee that the image will be set during
+# _process no matter when set_image is called, and that the viewport clear
+# happens at the correct time.
 func set_image(image: Image) -> void:
 	# TODO: Ensure no paint is drawn inbetween the viewport being cleared and
 	# the new image being displayed.

@@ -41,6 +41,9 @@ var _table_node: RigidBody = null
 # The paint plane situated just above the surface of the table.
 var _paint_plane := PaintPlane.new()
 
+# Used to keep track of the last [AssetEntryTable] used to set the table.
+var _last_table_entry: AssetEntryTable = null
+
 
 func _ready():
 	if default_table is AssetEntryTable:
@@ -58,6 +61,13 @@ func get_paint_plane() -> PaintPlane:
 	return _paint_plane
 
 
+## Get the current table as an [AssetEntryTable].
+## [b]NOTE:[/b] If [member default_table] is not set correctly, then this may
+## return [code]null[/code].
+func get_table() -> AssetEntryTable:
+	return _last_table_entry
+
+
 ## Set the table to use with its asset entry.
 func set_table(table_entry: AssetEntryTable) -> void:
 	# TODO: Check if the table is already in the scene.
@@ -70,6 +80,8 @@ func set_table(table_entry: AssetEntryTable) -> void:
 	_table_node = builder.build_table(table_entry)
 	if _table_node == null:
 		return
+	
+	_last_table_entry = table_entry
 	
 	_paint_plane.transform = table_entry.paint_plane_transform
 	_table_node.add_child(_paint_plane)
