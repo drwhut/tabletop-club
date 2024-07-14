@@ -47,6 +47,11 @@ const OUTLINE_COLOR_SELECTED := Color(1.0, 1.0, 1.0, 0.5)
 const OUTLINE_COLOR_LOCKED_SELECTED := Color(0.75, 0.75, 0.75, 0.5)
 
 
+## The [AssetEntryScene] that was used to build this piece.
+## TODO: Provide a default value!
+var entry_built_with: AssetEntryScene = null
+
+
 ## Is the piece locked into place?
 var locked := false setget set_locked, is_locked
 

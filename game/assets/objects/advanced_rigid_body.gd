@@ -34,7 +34,7 @@ extends RigidBody
 # The list of albedo colours corresponding to each of the scene's materials.
 # NOTE: This system assumes that the node structure does not change through the
 # course of play.
-var _original_albedo_arr := PoolColorArray()
+var _original_albedo_arr := []
 
 # A flag which determines if we can safely read _original_albedo_arr.
 var _original_albedo_saved := false
@@ -105,7 +105,7 @@ func get_user_albedo() -> Color:
 	
 	# We don't want to get just the current albedo, instead we want to get the
 	# current colour in relation to the material's original colour.
-	var initial_color := initial_albedo_arr[0]
+	var initial_color: Color = initial_albedo_arr[0]
 	var current_color := first_material.albedo_color
 	
 	var r := 1.0 if is_zero_approx(initial_color.r) else \
@@ -134,7 +134,7 @@ func set_user_albedo(new_albedo: Color) -> void:
 	
 	for index in range(material_arr.size()):
 		var material: SpatialMaterial = material_arr[index]
-		var initial_albedo := initial_albedo_arr[index]
+		var initial_albedo: Color = initial_albedo_arr[index]
 		
 		material.albedo_color = initial_albedo * new_albedo
 
@@ -157,6 +157,14 @@ func get_user_scale() -> Vector3:
 	var first_initial_transform: Transform = initial_transform_arr[0]
 	var first_current_transform: Transform = first_collision_shape.transform
 	
+	# TODO: If the collision shape is rotated in a different direction to the
+	# rigid body, then get_scale() can give unexpected results... for example,
+	# this is the case with the Red Cup container.
+	# Try and find a way to make this step more consistent, whilst also
+	# respecting whatever scale was saved in v0.1.x save files.
+	# NOTE: It could be that we are scaling the transform wrong in
+	# set_user_scale()! Although, we want to make sure that the position is
+	# adjusted correctly there still.
 	var initial_scale := first_initial_transform.basis.get_scale()
 	var current_scale := first_current_transform.basis.get_scale()
 	
@@ -192,9 +200,9 @@ func set_user_scale(new_scale: Vector3) -> void:
 # Get the original albedo colours assigned to the materials that belong to this
 # rigid body. The first time this function is called, the results are saved in
 # the event that the albedo colours are changed.
-func _get_original_albedo_arr() -> PoolColorArray:
+func _get_original_albedo_arr() -> Array:
 	if not _original_albedo_saved:
-		_original_albedo_arr = PoolColorArray()
+		_original_albedo_arr = []
 		for element in get_materials():
 			var material: SpatialMaterial = element
 			_original_albedo_arr.push_back(material.albedo_color)
@@ -210,7 +218,7 @@ func _get_original_albedo_arr() -> PoolColorArray:
 # TODO: Make typed in 4.x
 func _get_original_transform_arr() -> Array:
 	if not _original_transform_saved:
-		_original_albedo_arr = []
+		_original_transform_arr = []
 		for element in get_collision_shapes():
 			var collision_shape: CollisionShape = element
 			_original_transform_arr.push_back(collision_shape.transform)

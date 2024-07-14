@@ -58,6 +58,33 @@ func add_piece(index: int, scene_entry: AssetEntryScene, transform: Transform) -
 	return piece
 
 
+## Create and return a [PieceState] resource for the given [Piece].
+func get_piece_state(piece: Piece) -> PieceState:
+	var state := PieceState.new() # TODO: Change class depending on piece.
+	state.index_id = int(piece.name)
+	state.scene_entry = piece.entry_built_with
+	state.is_locked = piece.locked
+	state.transform = piece.transform
+	state.user_scale = piece.get_user_scale()
+	state.user_albedo = piece.get_user_albedo()
+	return state
+
+
+## Get the list of all [PieceState]s for every piece in the room.
+## TODO: Make array typed in 4.x
+func get_piece_state_all() -> Array:
+	var out := []
+	for element in get_children():
+		var piece: Piece = element
+		
+		if piece.is_in_limbo() or piece.is_queued_for_deletion():
+			continue
+		
+		var state := get_piece_state(piece)
+		out.push_back(state)
+	return out
+
+
 ## Request the server to remove one or more pieces given by their indices.
 ##
 ## The operation will always "succeed", but some pieces may not be removed for

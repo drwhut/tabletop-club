@@ -38,3 +38,29 @@ func add_hidden_area(index: int, transform: Transform) -> void:
 	var hidden_area = _hidden_area_scene.instance()
 	hidden_area.transform = transform
 	add_child_with_index(index, hidden_area)
+
+
+## Get the [HiddenAreaState] resource for the given hidden area node.
+## TODO: Make HiddenArea a class - this would require converting the entire
+## scene into a script, however.
+func get_hidden_area_state(hidden_area: Area) -> HiddenAreaState:
+	var state := HiddenAreaState.new()
+	state.index_id = int(hidden_area.name)
+	state.player_id = 1 # TODO: Get player ID from hidden area.
+	state.transform = hidden_area.transform
+	return state
+
+## Get a list of all [HiddenAreaState]s for all of the hidden areas currently
+## in the room.
+## TODO: Make array typed in 4.x.
+func get_hidden_area_state_all() -> Array:
+	var out := []
+	for element in get_children():
+		var hidden_area: Area = element
+		
+		if hidden_area.is_queued_for_deletion():
+			continue
+		
+		var state := get_hidden_area_state(hidden_area)
+		out.push_back(state)
+	return out

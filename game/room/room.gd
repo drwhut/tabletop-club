@@ -74,9 +74,8 @@ func get_state() -> RoomState:
 		if not paint_image.is_invisible():
 			state.table_paint_image = paint_image
 	
-	# TODO: Save hidden area states.
-	
-	# TODO: Save piece states.
+	state.hidden_area_states = _hidden_area_manager.get_hidden_area_state_all()
+	state.piece_states = piece_manager.get_piece_state_all()
 	
 	return state
 
@@ -106,13 +105,18 @@ func set_state(state: RoomState) -> void:
 				_hidden_area_manager.get_next_index(),
 				hidden_area_state.transform)
 	
-	# TODO: Need to think about multiplayer when calling this function.
+	# TODO: Need to think about multiplayer when calling this function,
+	# we may want to provide an argument that chooses whether we queue_free()
+	# the pieces, or put them in limbo - and we will need to re-name pieces
+	# that are about to be overwritten.
 	piece_manager.remove_all_children()
 	for element in state.piece_states:
 		var piece_state: PieceState = element
 		if piece_state.scene_entry == null:
 			continue
 		
+		# TODO: Use the piece index given to us by the state. Make sure a node
+		# doesn't already exist with the same name.
 		var piece := piece_manager.add_piece(piece_manager.get_next_index(),
 				piece_state.scene_entry, piece_state.transform)
 		

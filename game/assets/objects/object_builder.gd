@@ -83,7 +83,8 @@ func build_piece(piece_entry: AssetEntryScene) -> Piece:
 	# Converting from g -> kg -> (Ns^2/cm, since game units are in cm) = x10.
 	piece_node.mass = 10.0 * piece_entry.mass
 	
-	# TODO: Assign the piece entry to the piece itself.
+	# Copy the reference to the piece entry within the piece itself.
+	piece_node.entry_built_with = piece_entry
 	
 	# Scale the piece using it's collision shape children. If the player sets
 	# the user scale after, it will be relative to this new scale.
