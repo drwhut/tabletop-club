@@ -265,6 +265,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   been lost silently.
 - Fixed the game client not detecting when a connection to the host, or to a
   client joining the room, was not able to be established.
+- Fixed the client not being able to send data packets larger than 64 KiB.
 
 #### Project
 
