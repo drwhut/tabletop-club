@@ -39,8 +39,23 @@ func _ready():
 	DataBroadcaster.connect("transfer_complete", self,
 			"_on_DataBroadcaster_transfer_complete")
 	
-	# TODO: Can make this a command-line argument!
-	var state := StateLoader.load("res://tests/test_pack/games/test_state_v0.1.2.tc")
+	# Look through the command-line arguments to see if "--preload" was passed
+	# with a path to a save file.
+	var cmdline_args := OS.get_cmdline_args()
+	var preload_index := cmdline_args.find("--preload")
+	if preload_index < 0:
+		return
+	
+	# Need at least one more string after the argument.
+	if preload_index == cmdline_args.size() - 1:
+		push_error("--preload requires a file path to a *.tc file")
+		return
+	
+	var state_file_path: String = cmdline_args[preload_index + 1]
+	# TODO: Add requirement for the extension to be *.tc?
+	
+	print("Room: Pre-loading state from '%s' ..." % state_file_path)
+	var state := StateLoader.load(state_file_path)
 	if state != null:
 		set_state(state)
 

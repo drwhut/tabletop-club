@@ -94,6 +94,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   to better performance when there are many dynamic objects in play.
 - Enabled HiDPI on Windows, which stops the UI appearing blurry on displays with
   a high resolution in a small form factor.
+- Added a new command-line argument `--preload`, which when given a path to a
+  save file, will immediately load the file's save state upon launching the
+  game. Example usage on Linux:
+  `./TabletopClub.x86_64 --preload ~/Documents/TabletopClub/saves/quicksave.tc`
 
 #### UI
 
