@@ -121,6 +121,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   list.
 - The debug screen now shows more information about the state of the player
   controller.
+- Added a "Loading..." panel when the client is receiving a new state from the
+  host in multiplayer.
 
 ### Changed
 
