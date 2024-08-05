@@ -380,6 +380,16 @@ packs. Licensing information for these assets can be viewed in-game.
 	URL: https://www.svgrepo.com/svg/526054/music-note-2
 
 
+- News icon
+
+	Files:
+		icons/news_icon.svg
+	Author: SVG Repo
+	License: CC0
+	Modified By: Benjamin 'drwhut' Beddows
+	URL: https://www.svgrepo.com/svg/134306/newspaper-folded
+
+
 - Paint icon
 
 	Files:
@@ -458,16 +468,6 @@ packs. Licensing information for these assets can be viewed in-game.
 	License: MIT
 	Modified By: Benjamin 'drwhut' Beddows
 	URL: https://www.svgrepo.com/svg/442015/stack-alt
-
-
-- Store icon
-
-	Files:
-		icons/store_icon.svg
-	Author: SVG Repo
-	License: CC0
-	Modified By: Benjamin 'drwhut' Beddows
-	URL: https://www.svgrepo.com/svg/1530/city-store
 
 
 - Tick icon

@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ui/website_panel.gd" type="Script" id=1]
 [ext_resource path="res://icons/back_icon.svg" type="Texture" id=2]
 [ext_resource path="res://fonts/res/popup_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://tools/vertical_button.gd" type="Script" id=4]
-[ext_resource path="res://icons/store_icon.svg" type="Texture" id=5]
+[ext_resource path="res://icons/internet_icon.svg" type="Texture" id=5]
 [ext_resource path="res://icons/code_icon.svg" type="Texture" id=6]
 [ext_resource path="res://icons/help_icon.svg" type="Texture" id=7]
 [ext_resource path="res://icons/book_icon.svg" type="Texture" id=8]
@@ -12,6 +12,7 @@
 [ext_resource path="res://icons/bug_icon.svg" type="Texture" id=10]
 [ext_resource path="res://icons/construction_icon.svg" type="Texture" id=11]
 [ext_resource path="res://icons/chat_icon.svg" type="Texture" id=12]
+[ext_resource path="res://icons/news_icon.svg" type="Texture" id=13]
 
 [node name="WebsitePanel" type="PopupPanel"]
 margin_right = 620.0
@@ -84,7 +85,7 @@ texture = ExtResource( 7 )
 vertical_text = "FAQ"
 font_override = ExtResource( 3 )
 
-[node name="DiscordButton" type="Button" parent="VBoxContainer/ScrollContainer/GridContainer"]
+[node name="NewsButton" type="Button" parent="VBoxContainer/ScrollContainer/GridContainer"]
 margin_left = 206.0
 margin_top = 204.0
 margin_right = 407.0
@@ -92,11 +93,11 @@ margin_bottom = 404.0
 rect_min_size = Vector2( 0, 200 )
 size_flags_horizontal = 3
 script = ExtResource( 4 )
-texture = ExtResource( 12 )
-vertical_text = "Discord"
+texture = ExtResource( 13 )
+vertical_text = "News"
 font_override = ExtResource( 3 )
 
-[node name="MatrixButton" type="Button" parent="VBoxContainer/ScrollContainer/GridContainer"]
+[node name="CommunityButton" type="Button" parent="VBoxContainer/ScrollContainer/GridContainer"]
 margin_left = 411.0
 margin_top = 204.0
 margin_right = 612.0
@@ -105,7 +106,7 @@ rect_min_size = Vector2( 0, 200 )
 size_flags_horizontal = 3
 script = ExtResource( 4 )
 texture = ExtResource( 12 )
-vertical_text = "Matrix IRC"
+vertical_text = "Community"
 font_override = ExtResource( 3 )
 
 [node name="TranslationsButton" type="Button" parent="VBoxContainer/ScrollContainer/GridContainer"]
@@ -161,8 +162,8 @@ expand_icon = true
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/SourceCodeButton" to="." method="_on_SourceCodeButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/DocumentationButton" to="." method="_on_DocumentationButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/FAQButton" to="." method="_on_FAQButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/DiscordButton" to="." method="_on_DiscordButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/MatrixButton" to="." method="_on_MatrixButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/NewsButton" to="." method="_on_NewsButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/CommunityButton" to="." method="_on_CommunityButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/TranslationsButton" to="." method="_on_TranslationsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/ReportIssueButton" to="." method="_on_ReportIssueButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/ContributeButton" to="." method="_on_ContributeButton_pressed"]

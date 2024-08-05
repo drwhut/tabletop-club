@@ -26,7 +26,7 @@ extends AttentionPanel
 
 
 func _on_WebsiteButton_pressed():
-	OS.shell_open("https://drwhut.itch.io/tabletop-club")
+	OS.shell_open("https://tabletopclub.net")
 
 
 func _on_SourceCodeButton_pressed():
@@ -34,19 +34,19 @@ func _on_SourceCodeButton_pressed():
 
 
 func _on_DocumentationButton_pressed():
-	OS.shell_open("https://tabletop-club.readthedocs.io/en/stable/index.html")
+	OS.shell_open("https://docs.tabletopclub.net")
 
 
 func _on_FAQButton_pressed():
-	OS.shell_open("https://tabletop-club.readthedocs.io/en/stable/general/about.html#frequently-asked-questions")
+	OS.shell_open("https://docs.tabletopclub.net/en/stable/general/about.html#frequently-asked-questions")
 
 
-func _on_DiscordButton_pressed():
-	OS.shell_open("https://discord.gg/GqYkGV4WwX")
+func _on_NewsButton_pressed():
+	OS.shell_open("https://tabletopclub.net/news")
 
 
-func _on_MatrixButton_pressed():
-	OS.shell_open("https://matrix.to/#/#tabletop-club:matrix.org")
+func _on_CommunityButton_pressed():
+	OS.shell_open("https://tabletopclub.net/community")
 
 
 func _on_TranslationsButton_pressed():
@@ -58,7 +58,7 @@ func _on_ReportIssueButton_pressed():
 
 
 func _on_ContributeButton_pressed():
-	OS.shell_open("https://tabletop-club.readthedocs.io/en/stable/general/contributing/ways_to_contribute.html")
+	OS.shell_open("https://docs.tabletopclub.net/en/stable/general/contributing/ways_to_contribute.html")
 
 
 func _on_BackButton_pressed():

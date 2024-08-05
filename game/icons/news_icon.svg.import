@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/store_icon.svg-d4c435ffd5cabd700978aaea6fb68100.stex"
+path="res://.import/news_icon.svg-57569440588e9afc4deaac4ddb3fda88.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/store_icon.svg"
-dest_files=[ "res://.import/store_icon.svg-d4c435ffd5cabd700978aaea6fb68100.stex" ]
+source_file="res://icons/news_icon.svg"
+dest_files=[ "res://.import/news_icon.svg-57569440588e9afc4deaac4ddb3fda88.stex" ]
 
 [params]
 
@@ -32,4 +32,4 @@ process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false
-svg/scale=1.0
+svg/scale=0.25
