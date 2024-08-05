@@ -257,7 +257,7 @@ func _on_CodeIcon_pressed():
 	OS.shell_open("https://github.com/drwhut/tabletop-club")
 
 func _on_HelpButton_pressed():
-	OS.shell_open("https://tabletop-club.readthedocs.io/en/stable/")
+	OS.shell_open("https://docs.tabletopclub.net")
 
 func _on_DiscordButton_pressed():
 	OS.shell_open("https://discord.gg/GqYkGV4WwX")
