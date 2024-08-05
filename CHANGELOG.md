@@ -17,7 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   which is more robust against missing files.
 - Can now use the `?` wildcard in section names of `config.cfg` files, which
   will match one and only one character.
-- The value of die faces can now be text, as well as numbers. (#209)
+- Added a deprecation warning when attempting to use the old `VALUE: ROTATION`
+  format for the `face_values` property.
+- Added a warning when the number of entries in the `face_values` property does
+  not match the number of faces on the die.
 - Can now use the normal vector of a die face when setting its value, instead of
   the X and Z rotation needed to make the face point upwards.
 - Both 'Picnic Bench' and 'Table' are now textured.
@@ -117,9 +120,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - When sending messages through the chat window, special tags can now be used
   that will be substituted. For example, `<player 1>` will be replaced with the
   name of the host.
-- Added a "Donate" button to the main menu. Implemented advanced techniques such
-  as subliminal messaging and scent dispersion in order to lure the player into
-  pressing this button.
 - Added a button next to the room code that copies it to the clipboard.
 - The host of a multiplayer lobby is not indicated with an icon in the player
   list.
@@ -138,9 +138,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   by a multiplayer host) are stored in memory has been optimised.
 - The `*` wildcard can now be used in the middle of section names in
   `config.cfg` files, rather than just at the beginning and end.
-- The format of the `face_values` property has changed from `VALUE: ROTATION` to
-  `ROTATION: VALUE`, allowing for multiple faces of a die to have the same
-  value.
 - Custom assets are now imported after the main menu has loaded, instead of
   before. This should lead to faster and more consistent loading times,
   regardless of the number of custom assets.
