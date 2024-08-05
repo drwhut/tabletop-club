@@ -9,10 +9,10 @@
 [ext_resource path="res://tabletop_club_logo.png" type="Texture" id=7]
 [ext_resource path="res://Fonts/Cabin/Modified/Cabin-MainMenu.tres" type="DynamicFont" id=8]
 [ext_resource path="res://Images/InfoIcon.svg" type="Texture" id=9]
-[ext_resource path="res://Images/StoreIcon.svg" type="Texture" id=10]
+[ext_resource path="res://Images/internet_icon.svg" type="Texture" id=10]
 [ext_resource path="res://Images/CodeIcon.svg" type="Texture" id=11]
 [ext_resource path="res://Images/ErrorIcon.svg" type="Texture" id=12]
-[ext_resource path="res://Images/ChatIcon.svg" type="Texture" id=13]
+[ext_resource path="res://Images/donate_icon.svg" type="Texture" id=13]
 [ext_resource path="res://Images/ChatIconFilled.svg" type="Texture" id=14]
 
 [node name="MainMenu" type="Control"]
@@ -92,19 +92,18 @@ alignment = 2
 
 [node name="ImportErrorButton" type="Button" parent="MainView/MainList/HBoxContainer"]
 visible = false
-margin_left = 63.0
-margin_right = 112.0
+margin_right = 49.0
 margin_bottom = 32.0
 hint_tooltip = "Import Log"
 text = "0"
 icon = ExtResource( 12 )
 
-[node name="StoreButton" type="Button" parent="MainView/MainList/HBoxContainer"]
+[node name="WebsiteButton" type="Button" parent="MainView/MainList/HBoxContainer"]
 margin_left = 44.0
 margin_right = 76.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
-hint_tooltip = "Tabletop Club on Itch.io"
+hint_tooltip = "Website"
 icon = ExtResource( 10 )
 expand_icon = true
 
@@ -126,22 +125,22 @@ hint_tooltip = "Documentation"
 icon = ExtResource( 2 )
 expand_icon = true
 
-[node name="DiscordButton" type="Button" parent="MainView/MainList/HBoxContainer"]
+[node name="CommunityButton" type="Button" parent="MainView/MainList/HBoxContainer"]
 margin_left = 152.0
 margin_right = 184.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
-hint_tooltip = "Discord"
-icon = ExtResource( 13 )
+hint_tooltip = "Community"
+icon = ExtResource( 14 )
 expand_icon = true
 
-[node name="MatrixButton" type="Button" parent="MainView/MainList/HBoxContainer"]
+[node name="DonateButton" type="Button" parent="MainView/MainList/HBoxContainer"]
 margin_left = 188.0
 margin_right = 220.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
-hint_tooltip = "Matrix.org"
-icon = ExtResource( 14 )
+hint_tooltip = "Donate"
+icon = ExtResource( 13 )
 expand_icon = true
 
 [node name="InfoButton" type="Button" parent="MainView/MainList/HBoxContainer"]
@@ -289,8 +288,8 @@ margin_right = 720.0
 margin_bottom = 450.0
 focus_mode = 2
 size_flags_vertical = 3
-text = "Copyright (c) 2020–2023 Benjamin 'drwhut' Beddows.
-Copyright (c) 2021–2023 Tabletop Club contributors (see credits).
+text = "Copyright (c) 2020-2024 Benjamin 'drwhut' Beddows.
+Copyright (c) 2021-2024 Tabletop Club contributors (see credits).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \"Software\"), to deal
@@ -359,11 +358,11 @@ visible = false
 [connection signal="pressed" from="MainView/MainList/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/ImportErrorButton" to="." method="_on_ImportErrorButton_pressed"]
-[connection signal="pressed" from="MainView/MainList/HBoxContainer/StoreButton" to="." method="_on_HomeIcon_pressed"]
+[connection signal="pressed" from="MainView/MainList/HBoxContainer/WebsiteButton" to="." method="_on_WebsiteButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/SourceCodeButton" to="." method="_on_CodeIcon_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/HelpButton" to="." method="_on_HelpButton_pressed"]
-[connection signal="pressed" from="MainView/MainList/HBoxContainer/DiscordButton" to="." method="_on_DiscordButton_pressed"]
-[connection signal="pressed" from="MainView/MainList/HBoxContainer/MatrixButton" to="." method="_on_MatrixButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/HBoxContainer/CommunityButton" to="." method="_on_CommunityButton_pressed"]
+[connection signal="pressed" from="MainView/MainList/HBoxContainer/DonateButton" to="." method="_on_DonateButton_pressed"]
 [connection signal="pressed" from="MainView/MainList/HBoxContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="MultiplayerDialog/HBoxContainer/HostGameContainer/HostGameButton" to="." method="_on_HostGameButton_pressed"]
 [connection signal="pressed" from="MultiplayerDialog/HBoxContainer/EnterCodeContainer/EnterCodeButton" to="." method="_on_EnterCodeButton_pressed"]

@@ -250,8 +250,8 @@ func _on_QuitButton_pressed():
 func _on_ImportErrorButton_pressed():
 	_import_error_dialog.popup_centered()
 
-func _on_HomeIcon_pressed():
-	OS.shell_open("https://drwhut.itch.io/tabletop-club")
+func _on_WebsiteButton_pressed():
+	OS.shell_open("https://tabletopclub.net")
 
 func _on_CodeIcon_pressed():
 	OS.shell_open("https://github.com/drwhut/tabletop-club")
@@ -259,11 +259,11 @@ func _on_CodeIcon_pressed():
 func _on_HelpButton_pressed():
 	OS.shell_open("https://docs.tabletopclub.net")
 
-func _on_DiscordButton_pressed():
-	OS.shell_open("https://discord.gg/GqYkGV4WwX")
+func _on_CommunityButton_pressed():
+	OS.shell_open("https://tabletopclub.net/community")
 
-func _on_MatrixButton_pressed():
-	OS.shell_open("https://matrix.to/#/#tabletop-club:matrix.org")
+func _on_DonateButton_pressed():
+	OS.shell_open("https://ko-fi.com/drwhut")
 
 func _on_InfoButton_pressed():
 	_info_dialog.popup_centered()
