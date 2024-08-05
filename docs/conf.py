@@ -66,11 +66,12 @@ html_theme_options = {
         "alt_text": "Tabletop Club Documentation - Home"
     },
 
+    # TODO: Reconsider these links, add instructions for virtual environment.
     "icon_links": [
         {
-            "name": "itch.io",
-            "url": "https://drwhut.itch.io/tabletop-club",
-            "icon": "fa-brands fa-itch-io",
+            "name": "Website",
+            "url": "https://tabletopclub.net",
+            "icon": "fa-solid fa-house",
             "type": "fontawesome"
         },
         {
