@@ -6,6 +6,6 @@ Name=Tabletop Club
 Comment=Play tabletop games in a physics-based 3D sandbox
 Categories=Game;BoardGame;
 
-Icon=io.itch.drwhut.TabletopClub
+Icon=net.tabletopclub.TabletopClub
 Exec=tabletop-club-wrapper
 Terminal=false

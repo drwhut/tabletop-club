@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>io.itch.drwhut.TabletopClub</id>
-  
+  <id>net.tabletopclub.TabletopClub</id>
+
+  <provides>
+    <id>io.itch.drwhut.TabletopClub</id>
+  </provides>
+  <replaces>
+    <id>io.itch.drwhut.TabletopClub</id>
+  </replaces>
+
   <name>Tabletop Club</name>
   <summary>Play tabletop games in a physics-based 3D sandbox</summary>
-  
+
+  <developer id="net.tabletopclub">
+    <name>Benjamin Beddows</name>
+  </developer>
+
   <metadata_license>CC-BY-SA-4.0</metadata_license>
   <project_license>MIT</project_license>
   
@@ -26,35 +37,46 @@
     </p>
   </description>
 
-  <url type="homepage">https://drwhut.itch.io/tabletop-club</url>
+  <url type="homepage">https://tabletopclub.net</url>
+  <url type="help">https://docs.tabletopclub.net</url>
   <url type="bugtracker">https://github.com/drwhut/tabletop-club/issues</url>
+  <url type="donation">https://ko-fi.com/drwhut</url>
   <url type="faq">https://tabletop-club.readthedocs.io/en/stable/general/about.html#frequently-asked-questions</url>
-  <url type="help">https://tabletop-club.readthedocs.io/en/stable/index.html</url>
-  <url type="donation">https://drwhut.itch.io/tabletop-club</url>
   <url type="translate">https://hosted.weblate.org/engage/tabletop-club/</url>
   <url type="contribute">https://tabletop-club.readthedocs.io/en/stable/general/contributing/ways_to_contribute.html</url>
-  
-  <launchable type="desktop-id">io.itch.drwhut.TabletopClub.desktop</launchable>
+  <url type="vcs-browser">https://github.com/drwhut/tabletop-club</url>
+
+  <launchable type="desktop-id">net.tabletopclub.TabletopClub.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>https://img.itch.zone/aW1hZ2UvMTYwMjM5My8xMDU0MjAxMy5wbmc=/original/vlCQUL.png</image>
+      <caption>A game of Poker being played by two players on a path in the forest.</caption>
     </screenshot>
     <screenshot>
       <image>https://img.itch.zone/aW1hZ2UvMTYwMjM5My8xMDU0MjAxNi5wbmc=/original/NTGyyx.png</image>
+      <caption>A game of Chess being played on a picnic bench in a green area within a housing estate.</caption>
     </screenshot>
     <screenshot>
       <image>https://img.itch.zone/aW1hZ2UvMTYwMjM5My8xMDU0MjAxNS5wbmc=/original/GKLYCF.png</image>
+      <caption>A fantasy map drawn onto a poker table, with pawns and dice scattered across it.</caption>
     </screenshot>
     <screenshot>
       <image>https://img.itch.zone/aW1hZ2UvMTYwMjM5My8xMDU0MjAxNC5wbmc=/original/KI92bw.png</image>
+      <caption>Playing cards are layed out on a picnic bench next to a radio in the clouds.</caption>
     </screenshot>
     <screenshot>
       <image>https://img.itch.zone/aW1hZ2UvMTYwMjM5My8xMDU0MjAxNy5wbmc=/original/weI%2FrN.png</image>
+      <caption>Multiple objects on a poker table, including dice, a cup, purse, grampohone and radio.</caption>
     </screenshot>
   </screenshots>
 
+  <branding>
+    <color type="primary" scheme_preference="light">#16966b</color>
+    <color type="primary" scheme_preference="dark">#083d2b</color>
+  </branding>
+
   <recommends>
-    <display_length compare="ge">medium</display_length>
+    <display_length compare="ge">768</display_length>
   </recommends>
 
   <supports>
@@ -64,9 +86,43 @@
   </supports>
 
   <releases>
-    <release version="0.1.2" date="2023-09-05" />
-    <release version="0.1.1" date="2023-06-06" />
-    <release version="0.1.0" date="2023-04-29" />
+    <release version="0.1.2" date="2023-09-05">
+      <url type="details">https://www.tabletopclub.net/2023/09/05/release-v0.1.2/</url>
+      <description>
+        <p>Changed:</p>
+        <ul>
+          <li>Updated the master server's SSL certificate.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.1.1" date="2023-06-06">
+      <url type="details">https://www.tabletopclub.net/2023/06/06/release-v0.1.1/</url>
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Added Chinese (Simplified), Polish as playable languages!</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>All links to the documentation now go to the stable version by default, rather than the latest version.</li>
+          <li>The game will not longer allow stacks containing only one item to be made in the <code>stacks.cfg</code> file.</li>
+          <li>Updated translations from the community.</li>
+          <li>Object metadata shown in tooltips in the objects menu is now truncated if it is too long.</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Fixed an escape character error in the description of the music track "Lobby Time - Kevin MacLeod".</li>
+          <li>Viewing the stable version of the documentation now shows the correct version instead of "master" in the title.</li>
+          <li>Fixed non-ASCII characters not displaying in error and warning messages in the import log.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.1.0" date="2023-04-29">
+      <url type="details">https://www.tabletopclub.net/2023/04/29/release-v0.1.0/</url>
+      <description>
+        <p>The first official and stable release of Tabletop Club!</p>
+      </description>
+    </release>
   </releases>
 
   <content_rating type="oars-1.1">
