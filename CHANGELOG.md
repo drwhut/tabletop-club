@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- The value of die faces can now be text, as well as numbers. (#209)
+- Added a "Donate" button to the main menu that opens `ko-fi.com/drwhut` in the
+  default browser.
+
+### Changed
+
+- The format of the `face_values` property has changed from `VALUE: ROTATION` to
+  `ROTATION: VALUE`, allowing for multiple faces of a die to have the same
+  value.
+- Updated documentation domain from `tabletop-club.readthedocs.io` to
+  `docs.tabletopclub.net`.
+- Replaced the "itch.io" button on the main menu with a "Website" button that
+  opens `tabletopclub.net` in the default browser.
+- Combined the "Discord" and "Matrix" buttons on the main menu into one
+  "Community" button that opens `tabletopclub.net/community` in the default
+  browser.
+
+### Removed
+
+- The AssetDB no longer requires that the `face_values` property has the same
+  number of elements as the number of faces on the die.
+
 ## [0.1.2] - 2023-09-05
 
 ### Changed
