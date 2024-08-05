@@ -10,7 +10,7 @@
   </replaces>
 
   <name>Tabletop Club</name>
-  <summary>Play tabletop games in a physics-based 3D sandbox</summary>
+  <summary>Play board games in a 3D sandbox</summary>
 
   <developer id="net.tabletopclub">
     <name>Benjamin Beddows</name>
