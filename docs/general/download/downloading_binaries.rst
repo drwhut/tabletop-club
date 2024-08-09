@@ -18,6 +18,28 @@ You can download the itch app `here <https://itch.io/app>`_, and once you've
 logged in, search for "Tabletop Club" to download and install the game.
 
 
+From Flathub
+------------
+
+If you are on a Linux distribution that supports Flatpaks, you can download the
+latest stable version of the game directly from your software manager! Simply
+search for "Tabletop Club" to download and install the game. Alternatively, you
+can visit the project page on
+`Flathub <https://flathub.org/apps/net.tabletopclub.TabletopClub>`_.
+
+If Flathub is not included in your list of Flatpak repositories, the game will
+not appear. You can add Flathub as a remote repository by following the
+instructions `on their website <https://flatpak.org/setup/>`_.
+
+You can also download the game via the command line instead once Flathub has
+been added as a remote repository:
+
+.. code-block:: bash
+
+   flatpak install flathub net.tabletopclub.TabletopClub
+   flatpak run net.tabletopclub.TabletopClub
+
+
 As a standalone executable
 --------------------------
 

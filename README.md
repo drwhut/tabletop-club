@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="tabletop_club_logo.svg" width="256"><br>
+  <a href="https://tabletopclub.net" target="_blank">
+    <img src="tabletop_club_logo.svg" width="256">
+  </a>
 </p>
 
 Tabletop Club is an open-source multiplayer game that allows you to play your
@@ -20,6 +22,7 @@ the [Godot Engine](https://godotengine.org/).
 
 <p>
   <a href="https://drwhut.itch.io/tabletop-club"><img src="https://static.itch.io/images/badge-color.svg" alt="Available on itch.io" height="80"></a>
+  <a href="https://flathub.org/apps/net.tabletopclub.TabletopClub"><img height="80" alt="Download on Flathub" src="https://dl.flathub.org/assets/badges/flathub-badge-en.png"/></a>
 </p>
 
 To download the game, you can either
@@ -29,9 +32,9 @@ or
 
 ## Community
 
-If you wish to join a growing community of Tabletop Club players, you are always
-welcome to the official [Discord](https://discord.gg/GqYkGV4WwX) and
-[Matrix](https://matrix.to/#/#tabletop-club:matrix.org) servers!
+If you want to ask for help, share custom assets, or simply chat with other
+players, feel free to join one of our
+[community channels](https://tabletopclub.net/community)!
 
 ## Languages
 
