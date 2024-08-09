@@ -41,9 +41,9 @@
   <url type="help">https://docs.tabletopclub.net</url>
   <url type="bugtracker">https://github.com/drwhut/tabletop-club/issues</url>
   <url type="donation">https://ko-fi.com/drwhut</url>
-  <url type="faq">https://tabletop-club.readthedocs.io/en/stable/general/about.html#frequently-asked-questions</url>
+  <url type="faq">https://docs.tabletopclub.net/en/stable/general/about.html#frequently-asked-questions</url>
   <url type="translate">https://hosted.weblate.org/engage/tabletop-club/</url>
-  <url type="contribute">https://tabletop-club.readthedocs.io/en/stable/general/contributing/ways_to_contribute.html</url>
+  <url type="contribute">https://docs.tabletopclub.net/en/stable/general/contributing/ways_to_contribute.html</url>
   <url type="vcs-browser">https://github.com/drwhut/tabletop-club</url>
 
   <launchable type="desktop-id">net.tabletopclub.TabletopClub.desktop</launchable>
