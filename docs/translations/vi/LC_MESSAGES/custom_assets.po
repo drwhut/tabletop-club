@@ -9,13 +9,16 @@ msgstr ""
 "Project-Id-Version: Tabletop Club master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-09-06 00:09+0000\n"
+"Last-Translator: goatastronaut0212 <goatastronaut0212@proton.me>\n"
+"Language-Team: Vietnamese <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-custom-assets/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -1106,7 +1109,7 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:113
 msgid "Audio"
-msgstr ""
+msgstr "Âm thanh"
 
 #: ../../custom_assets/asset_packs/file_types.rst:115
 msgid "As of right now, Tabletop Club supports the following audio formats:"
