@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2023-05-10 19:51+0000\n"
-"Last-Translator: Jose David M <jquintana202020@gmail.com>\n"
+"PO-Revision-Date: 2024-09-08 20:09+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -1105,48 +1105,45 @@ msgid ""
 "You may need to change the branch depending on which version of Tabletop "
 "Club you plan to compile:"
 msgstr ""
+"El texto después de ``-b`` se refiere a la rama de la bifurcación que se "
+"descarga. Puede que necesites cambiar la rama dependiendo de la versión de "
+"Tabletop Club que planees compilar:"
 
 #: ../../general/download/compiling_from_source.rst:37
-#, fuzzy
-#| msgid "What is Tabletop Club?"
 msgid "Tabletop Club Version"
-msgstr "¿Qué es Tabletop Club?"
+msgstr "Versión de Tabletop Club"
 
 #: ../../general/download/compiling_from_source.rst:37
 msgid "Godot Version"
-msgstr ""
+msgstr "Versión de Godot"
 
 #: ../../general/download/compiling_from_source.rst:37
 msgid "Git Branch"
-msgstr ""
+msgstr "Rama Git"
 
 #: ../../general/download/compiling_from_source.rst:39
 msgid "0.1.x"
-msgstr ""
+msgstr "0.1.x"
 
 #: ../../general/download/compiling_from_source.rst:39
 msgid "3.4.5"
-msgstr ""
+msgstr "3.4.5"
 
 #: ../../general/download/compiling_from_source.rst:39
-#, fuzzy
-#| msgid "``TabletopClub.pck``"
 msgid "``tabletop-3.4.5``"
-msgstr "``TabletopClub.pck``"
+msgstr "``tabletop-3.4.5``"
 
 #: ../../general/download/compiling_from_source.rst:41
 msgid "0.2.x"
-msgstr ""
+msgstr "0.2.x"
 
 #: ../../general/download/compiling_from_source.rst:41
 msgid "3.5.3"
-msgstr ""
+msgstr "3.5.3"
 
 #: ../../general/download/compiling_from_source.rst:41
-#, fuzzy
-#| msgid "``TabletopClub.pck``"
 msgid "``tabletop-3.5.3``"
-msgstr "``TabletopClub.pck``"
+msgstr "``tabletop-3.5.3``"
 
 #: ../../general/download/compiling_from_source.rst:46
 msgid ""
@@ -1206,7 +1203,7 @@ msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:71
 msgid "`SCons 3.0+ <https://www.scons.org/>`_."
-msgstr ""
+msgstr "`SCons 3.0+ <https://www.scons.org/>`_."
 
 #: ../../general/download/compiling_from_source.rst:73
 msgid ""
@@ -1758,13 +1755,6 @@ msgid "From Flathub"
 msgstr "Desde Flathub"
 
 #: ../../general/download/downloading_binaries.rst:24
-#, fuzzy
-#| msgid ""
-#| "If you are on a Linux distribution that supports Flatpaks, you can "
-#| "download the latest stable version of the game directly from your "
-#| "software manager! Simply search for \"Tabletop Club\" to download and "
-#| "install the game. Alternatively, you can visit the project page on "
-#| "`Flathub <https://flathub.org/apps/io.itch.drwhut.TabletopClub>`_."
 msgid ""
 "If you are on a Linux distribution that supports Flatpaks, you can download "
 "the latest stable version of the game directly from your software manager! "
@@ -1776,7 +1766,7 @@ msgstr ""
 "la última versión estable del juego directamente desde tu gestor de "
 "software!. Solo tienes que buscar \"Tabletop Club\" para descargar e "
 "instalar el juego. También puede visitar la página del proyecto en `Flathub "
-"<https://flathub.org/apps/io.itch.drwhut.TabletopClub>`_."
+"<https://flathub.org/apps/net.tabletopclub.TabletopClub>`_."
 
 #: ../../general/download/downloading_binaries.rst:30
 msgid ""
@@ -1805,24 +1795,28 @@ msgid ""
 "You can also download the game as a standalone application that you can run "
 "anywhere on your system from the following websites:"
 msgstr ""
+"También puedes descargar el juego como aplicación independiente que puedes "
+"ejecutar en cualquier parte de tu sistema desde las siguientes páginas web:"
 
 #: ../../general/download/downloading_binaries.rst:49
 msgid "`tabletopclub.net <https://tabletopclub.net/downloads>`_"
-msgstr ""
+msgstr "`tabletopclub.net <https://tabletopclub.net/downloads>`_"
 
 #: ../../general/download/downloading_binaries.rst:50
 msgid "`github.com <https://github.com/drwhut/tabletop-club/releases>`_"
-msgstr ""
+msgstr "`github.com <https://github.com/drwhut/tabletop-club/releases>`_"
 
 #: ../../general/download/downloading_binaries.rst:51
 msgid "`itch.io <https://drwhut.itch.io/tabletop-club>`_"
-msgstr ""
+msgstr "`itch.io <https://drwhut.itch.io/tabletop-club>`_"
 
 #: ../../general/download/downloading_binaries.rst:53
 msgid ""
 "Once you have downloaded the game, there's only a couple of steps left in "
 "order to play it (see below)!"
 msgstr ""
+"¡Una vez descargado el juego, solo quedan un par de pasos para poder jugar ("
+"ver a continuación)!"
 
 #: ../../general/download/downloading_binaries.rst:56
 msgid ""
@@ -1940,6 +1934,10 @@ msgid ""
 "to :guilabel:`Properties`. You will need to tick the :guilabel:`Unblock` "
 "checkbox at the bottom of the window in order to start the game."
 msgstr ""
+"**(Solo Windows 11)** Haz clic con el botón derecho en el ejecutable "
+"``TabletopClub`` y ve a :guilabel:`Propiedades`. Tendrás que marcar la "
+"casilla :guilabel:`Unblock` de la parte inferior de la ventana para poder "
+"iniciar el juego."
 
 #: ../../general/download/downloading_binaries.rst:117
 msgid ""
