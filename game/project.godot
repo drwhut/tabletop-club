@@ -1,0 +1,62 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Tabletop Club"
+config/description="Copyright (c) 2020-2025 Benjamin 'drwhut' Beddows.
+Copyright (c) 2021-2025 Tabletop Club contributors (see game/CREDITS.txt).
+
+A free and open source board game simulator, available for Windows, macOS, and Linux."
+config/version="master"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="TabletopClub"
+config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+config/icon="res://tabletop_club_icon.png"
+
+[debug]
+
+file_logging/max_log_files=10
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[editor]
+
+naming/script_name_casing=2
+
+[importer_defaults]
+
+scene={
+"animation/import": false,
+"meshes/light_baking": 3
+}
+
+[internationalization]
+
+rendering/text_driver="ICU / HarfBuzz / Graphite (Built-in)"
+
+[physics]
+
+3d/run_on_separate_thread=true
+common/physics_jitter_fix=0.0
+3d/physics_engine="GodotPhysics3D"
+common/physics_interpolation=true
+common/enable_object_picking=false
+
+[rendering]
+
+rendering_device/fallback_to_vulkan=false
