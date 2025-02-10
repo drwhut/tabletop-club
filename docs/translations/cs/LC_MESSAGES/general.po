@@ -9,31 +9,36 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-02-11 21:02+0000\n"
+"Last-Translator: Tomassci <tomsci10@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-general/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
-msgstr ""
+msgstr "O Tabletop Club"
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
-msgstr ""
+msgstr "Co je Tabletop Club?"
 
 #: ../../general/about.rst:10
 msgid ""
 "Tabletop Club is a free and open-source tabletop board game simulator! "
 "That's a bit of a mouthful, so I'll break that sentence down a bit:"
 msgstr ""
+"Stolní Clubtop je bezplatný a open-source simulátor deskových her! To je "
+"dlouhá věta, takže ji teď trochu rozeberu:"
 
 #: ../../general/about.rst:14
 msgid "Free"
-msgstr ""
+msgstr "Zdarma"
 
 #: ../../general/about.rst:16
 msgid ""
