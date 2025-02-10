@@ -9,24 +9,24 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2022-12-23 19:50+0000\n"
-"Last-Translator: muzzug <kadlec.ondrej@protonmail.com>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/docs-"
-"custom-assets/cs/>\n"
+"PO-Revision-Date: 2025-02-11 21:01+0000\n"
+"Last-Translator: Tomassci <tomsci10@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-custom-assets/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
-msgstr ""
+msgstr "Struktura balíčku assetů"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:6
 msgid "Locations for asset packs"
-msgstr ""
+msgstr "Umístění balíčků assetů"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:8
 msgid ""
@@ -34,10 +34,13 @@ msgid ""
 "asset packs. If you want the game to import your asset pack, it needs to be "
 "put into one of the following locations:"
 msgstr ""
+"Na začátku hry, Tabletop Club prohledá sadu daných složek pro balíčky "
+"assetů. Chcete-li, aby hra importovalaváš balíček assetů, je třeba ho dát do "
+"jednoho z následujících míst:"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:12
 msgid "``<TABLETOPCLUB_INSTALL_FOLDER>/assets/``"
-msgstr ""
+msgstr "`<TABLETOPCLUB_INSTALL_FOLDER>/assets/`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:13
 msgid "``<DOWNLOADS>/TabletopClub/assets/``"
