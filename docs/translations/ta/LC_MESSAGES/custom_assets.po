@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2025-03-07 05:02+0000\n"
+"PO-Revision-Date: 2025-03-09 18:37+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/ta/>\n"
@@ -1656,269 +1656,398 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:28
 msgid "Preparing card images"
-msgstr ""
+msgstr "அட்டை படங்களைத் தயாரித்தல்"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:30
 msgid "Luckily, there is not much to do to set up card images, since the image will be shown as-is in-game! The only requirement is that each card will need it's own image (this includes the back face of the cards)."
 msgstr ""
+"அதிர்ச்டவசமாக, அட்டை படங்களை அமைப்பதற்கு அதிகம் செய்ய வேண்டியதில்லை, ஏனெனில் படம் "
+"விளையாட்டில் காண்பிக்கப்படும்! ஒரே தேவை என்னவென்றால், ஒவ்வொரு அட்டைக்கும் அதன் சொந்த படம் "
+"தேவைப்படும் (இதில் அட்டைகளின் பின் முகம் அடங்கும்)."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:36
 msgid "Preparing token images"
-msgstr ""
+msgstr "கிள்ளாக்கு படங்களைத் தயாரித்தல்"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:38
 msgid "For tokens, since the image will be mapped to a 3D shape (either a cube, or a cylinder), you'll need to modify the image to fit what is called a \"UV mapping\". This means your final image needs to look like this:"
 msgstr ""
+"டோக்கன்களைப் பொறுத்தவரை, படம் ஒரு 3D வடிவத்துடன் (ஒரு கனசதுரம் அல்லது சிலிண்டர்) "
+"பொருத்தப்படும் என்பதால், \"புற ஊதா மேப்பிங்\" என்று அழைக்கப்படுவதற்கு ஏற்றவாறு படத்தை மாற்"
+"ற வேண்டும். இதன் பொருள் உங்கள் இறுதி படம் இப்படி இருக்க வேண்டும்:"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:42
 msgid "**Cube:**"
-msgstr ""
+msgstr "** கியூப்: **"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:46
 msgid "**Cylinder:**"
-msgstr ""
+msgstr "** சிலிண்டர்: **"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:52
 msgid "The resolution of the final image does not matter, only the *proportions* do. See :ref:`file-type-image` for more information."
 msgstr ""
+"இறுதிப் படத்தின் தீர்மானம் ஒரு பொருட்டல்ல, * விகிதாச்சாரங்கள் * மட்டுமே செய்கின்றன. காண்க: "
+"குறிப்பு: மேலும் தகவலுக்கு `கோப்பு-வகை-image`."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:57
 msgid "Adding the images to the asset pack"
-msgstr ""
+msgstr "படங்களை சொத்து பேக்கில் சேர்ப்பது"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:59
 msgid "With the images set up, we can now add them to the asset pack! If you do not already have one, see :ref:`tutorial-creating-asset-pack`."
 msgstr ""
+"படங்களை அமைக்கும் மூலம், இப்போது அவற்றை சொத்து பேக்கில் சேர்க்கலாம்! உங்களிடம் ஏற்கனவே ஒன்று "
+"இல்லையென்றால், காண்க: குறிப்பு: `டுடோரியல்-உருவாக்கும்-அசெட்-பேக்`."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:62
 msgid "In your asset pack, create a folder named either ``cards`` or ``tokens``. If you are adding tokens, you'll need to create a sub-folder named either ``cube`` or ``cylinder`` depending on what shape the token will be. Once the folders are created, it's just a matter of copying the images to their respective folders, like so:"
 msgstr ""
+"உங்கள் சொத்து பேக்கில், `` கார்டுகள்`` அல்லது `` டோக்கன்கள்`` என்ற கோப்புறையை உருவாக்கவும். "
+"நீங்கள் டோக்கன்களைச் சேர்த்தால், கிள்ளாக்கு எந்த வடிவமாக இருக்கும் என்பதைப் பொறுத்து `` "
+"கியூப்`` அல்லது `` சிலிண்டர்` என்ற பெயரிடப்பட்ட துணை கோப்புறையை உருவாக்க வேண்டும். "
+"கோப்புறைகள் உருவாக்கப்பட்டவுடன், படங்களை அந்தந்த கோப்புறைகளுக்கு நகலெடுப்பது ஒரு விசயம்:"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:84
 msgid "Configuring the object size"
-msgstr ""
+msgstr "பொருள் அளவை உள்ளமைத்தல்"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:86
 msgid "At this point, you can launch the game and see that there are now objects in-game with your images on them, except they they are probably the wrong size. This is because without telling the game otherwise, it will assume the object is 1cm x 1cm x 1cm."
 msgstr ""
+"இந்த கட்டத்தில், நீங்கள் விளையாட்டைத் தொடங்கலாம் மற்றும் உங்கள் படங்களுடன் இப்போது விளையாட்டில் "
+"உள்ள பொருள்கள் உள்ளன என்பதைக் காணலாம், தவிர அவை தவறான அளவு. ஏனென்றால், விளையாட்டை "
+"இல்லையெனில் சொல்லாமல், பொருள் 1cm ஃச் 1cm ஃச் 1cm என்று கருதும்."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:91
 msgid "We can tell the game what size the object should actually be by creating a :ref:`config-cfg` file next to our images in the asset folder. Create a file with this name in your file manager, then open it with a text editor of your choice! Here are a few examples of how to set the size of your objects:"
 msgstr ""
+"A: ref: `config-cfg` கோப்பு சொத்து கோப்புறையில் எங்கள் படங்களுக்கு அடுத்ததாக "
+"உருவாக்குவதன் மூலம் பொருள் உண்மையில் என்ன அளவு இருக்க வேண்டும் என்பதை நாம் விளையாட்டிற்கு "
+"சொல்ல முடியும். உங்கள் கோப்பு மேலாளரில் இந்த பெயருடன் ஒரு கோப்பை உருவாக்கவும், பின்னர் "
+"உங்கள் விருப்பப்படி உரை எடிட்டருடன் அதைத் திறக்கவும்! உங்கள் பொருள்களின் அளவை எவ்வாறு "
+"அமைப்பது என்பதற்கான சில எடுத்துக்காட்டுகள் இங்கே:"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:119
 msgid "Cards are always the same thickness, so the ``scale`` for cards is always a ``Vector2`` containing two numbers, rather than a ``Vector3``."
 msgstr ""
+"கார்டுகள் எப்போதுமே ஒரே தடிமன் கொண்டவை, எனவே கார்டுகளுக்கான `` அளவுகோல்`` எப்போதும் `` "
+"வெக்டர் 3`` ஐ விட இரண்டு எண்களைக் கொண்ட `` வெக்டர் 2`` ஆகும்."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:124
 msgid "If you are on Windows, you may need to ensure that the file extension is actually ``.cfg``, rather than ``.txt``, since Windows hides file extensions by default."
 msgstr ""
+"நீங்கள் சாளரங்களில் இருந்தால், `` .txt`` ஐ விட, கோப்பு நீட்டிப்பு உண்மையில் `` .cfg`` "
+"என்பதை உறுதிப்படுத்த வேண்டும், ஏனெனில் சாளரங்கள் முன்னிருப்பாக கோப்பு நீட்டிப்புகளை "
+"மறைப்பது."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:128
 msgid "**Windows 10:** In File Explorer, click on :guilabel:`View`, and then tick the :guilabel:`File name extensions` checkbox."
 msgstr ""
+"**Windows 10:** In கோப்பு Explorer, click on :guilabel:`View`, and then உண்ணி "
+"the :guilabel:`File பெயர் extensions` checkbox."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:131
 msgid "**Windows 11:** In File Explorer, click on :guilabel:`View`, then click on the :guilabel:`Show` dropdown, and then make sure the :guilabel:`File name extensions` checkbox is ticked."
 msgstr ""
+"**Windows 11:** In கோப்பு Explorer, click on :guilabel:`View`, then click on "
+"the :guilabel:`Show` dropdown, and then make sure the :guilabel:`File பெயர் "
+"extensions` checkbox is ticked."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:137
 msgid "Configuring card backs"
-msgstr ""
+msgstr "அட்டை முதுகில் கட்டமைத்தல்"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:139
 msgid "Using the :ref:`config-cfg` file, you can also tell the game what image to use for the back face of cards. Using ``Back.png`` as an example:"
 msgstr ""
+": Ref: `config-cfg` கோப்பைப் பயன்படுத்துதல், அட்டைகளின் பின்புற முகத்திற்கு என்ன படத்தைப் "
+"பயன்படுத்த வேண்டும் என்பதையும் நீங்கள் விளையாட்டிற்கு சொல்லலாம். `` Back.png`` ஒரு "
+"எடுத்துக்காட்டு:"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:161
 msgid "Congratulations, you now have your own cards and tokens in the game!"
 msgstr ""
+"வாழ்த்துக்கள், உங்களிடம் இப்போது உங்கள் சொந்த அட்டைகள் மற்றும் டோக்கன்கள் உள்ளன!"
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:163
 msgid "If you want to further configure your objects, see :ref:`object-type-card`, :ref:`object-type-token`, and :ref:`config-cfg`."
 msgstr ""
+"உங்கள் பொருள்களை மேலும் உள்ளமைக்க விரும்பினால், காண்க: ref: `பொருள்-வகை-அட்டை`,: "
+"குறிப்பு:` பொருள்-வகை-டோகன்`, மற்றும்: குறிப்பு: `config-cfg`."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:166
 msgid "If you want to add pre-made stacks of cards and tokens to your asset pack, see :ref:`stacks-cfg`."
 msgstr ""
+"உங்கள் சொத்து பொதிக்கு முன்பே தயாரிக்கப்பட்ட அட்டைகள் மற்றும் டோக்கன்களைச் சேர்க்க விரும்பினால்"
+", காண்க: குறிப்பு: `ச்டாக்ச்-சி.எஃப்.சி`."
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:4
 msgid "Adding notebook templates"
-msgstr ""
+msgstr "நோட்புக் வார்ப்புருக்கள் சேர்க்கிறது"
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:6
 msgid "In Tabletop Club, you can keep track of things like scores or character attributes using the in-game notebook, which is used to store persistent text (that is, text that stays there after you exit the game). Using this tutorial, you will be able to create a template that can be chosen when a new page is added to the notebook."
 msgstr ""
+"டேப்லெட் கிளப்பில், தொடர்ச்சியான உரையை சேமிக்கப் பயன்படும் (அதாவது, நீங்கள் "
+"விளையாட்டிலிருந்து வெளியேறிய பிறகு அங்கேயே இருக்கும் உரை) இல் உள்ள விளையாட்டு "
+"நோட்புக்கைப் பயன்படுத்தி மதிப்பெண்கள் அல்லது எழுத்து பண்புக்கூறுகள் போன்றவற்றைக் கண்காணிக்கலாம்"
+". இந்த டுடோரியலைப் பயன்படுத்தி, நோட்புக்கில் ஒரு புதிய பக்கம் சேர்க்கப்படும்போது "
+"தேர்ந்தெடுக்கக்கூடிய ஒரு வார்ப்புருவை நீங்கள் உருவாக்க முடியும்."
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:12
 msgid "There are two kinds of notebook templates: **text-based** and **image-based**. Text-based pages act a lot like regular text files, where the player is given an infinite amount of space to type text, but it may not be as intuitive to use. Image-based pages have an image in the background, and a number of pre-defined textboxes in the foreground that can be typed into individually."
 msgstr ""
+"இரண்டு வகையான நோட்புக் வார்ப்புருக்கள் உள்ளன: ** உரை அடிப்படையிலான ** மற்றும் ** பட "
+"அடிப்படையிலான **. உரை அடிப்படையிலான பக்கங்கள் வழக்கமான உரை கோப்புகளைப் போலவே "
+"செயல்படுகின்றன, அங்கு பிளேயருக்கு உரையைத் தட்டச்சு செய்ய எல்லையற்ற இடம் வழங்கப்படுகிறது, "
+"ஆனால் அது பயன்படுத்த உள்ளுணர்வுடன் இருக்காது. பட அடிப்படையிலான பக்கங்கள் பின்னணியில் ஒரு "
+"படத்தைக் கொண்டுள்ளன, மேலும் முன்புறத்தில் முன்பே வரையறுக்கப்பட்ட பல உரைப்பெட்டிகள் தனித்தனியா"
+"க தட்டச்சு செய்யப்படலாம்."
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:20
 msgid "Adding a text-based template"
-msgstr ""
+msgstr "உரை அடிப்படையிலான வார்ப்புருவைச் சேர்ப்பது"
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:22
 msgid "Text-based templates are very easy to set up: all you need is a text file (``.txt``) containing the text you want, which is placed in the ``templates`` folder of your asset pack, like so:"
 msgstr ""
+"உரை அடிப்படையிலான வார்ப்புருக்கள் அமைப்பது மிகவும் எளிதானது: உங்களுக்கு தேவையானது ஒரு "
+"உரை கோப்பு (`` .txt``) நீங்கள் விரும்பும் உரையைக் கொண்டுள்ளது, இது உங்கள் சொத்து பேக்கின் "
+"`` வார்ப்புருக்கள்` கோப்புறையில் வைக்கப்பட்டுள்ளது:"
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:32
 msgid "And that's it! You can then open the Notebook in-game, create a new page using the template, and you should see the contents of the text file on the page."
 msgstr ""
+"அதுதான்! நீங்கள் நோட்புக்கை விளையாட்டில் திறக்கலாம், வார்ப்புருவைப் பயன்படுத்தி புதிய பக்கத்தை"
+" உருவாக்கலாம், மேலும் உரை கோப்பின் உள்ளடக்கங்களை பக்கத்தில் பார்க்க வேண்டும்."
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:37
 msgid "Adding an image-based template"
-msgstr ""
+msgstr "பட அடிப்படையிலான வார்ப்புருவைச் சேர்ப்பது"
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:39
 msgid "There are two steps for adding an image template: the first is to take the image you want as the background, and place it inside the ``templates`` folder in your asset pack, like so:"
 msgstr ""
+"பட வார்ப்புருவைச் சேர்ப்பதற்கு இரண்டு படிகள் உள்ளன: முதலாவது, நீங்கள் விரும்பும் படத்தை "
+"பின்னணியாக எடுத்து, அதை உங்கள் சொத்து பேக்கில் `` வார்ப்புருக்கள்` கோப்புறையில் வைக்கவும்:"
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:49
 msgid "Secondly, we need to create a :ref:`config-cfg` file to define our textboxes. Open a text editor, and save a file next to the image in the asset pack as ``config.cfg``. In this file, we'll define the ``textboxes`` property for our image, like so:"
 msgstr ""
+"இரண்டாவதாக, எங்கள் உரைப்பெட்டிகளை வரையறுக்க ஒரு: ref: `config-cfg` கோப்பை உருவாக்க "
+"வேண்டும். ஒரு உரை எடிட்டரைத் திறந்து, சொத்து பேக்கில் படத்திற்கு அடுத்து ஒரு கோப்பை `` "
+"config.cfg`` என சேமிக்கவும். இந்த கோப்பில், எங்கள் படத்திற்கான `` உரைப்பெட்டிகள்` சொத்தை "
+"வரையறுப்போம்:"
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:70
 msgid "For each textbox, we can set a number of details to get the template to look exactly how we want - but for now, we'll focus on the main ones:"
 msgstr ""
+"ஒவ்வொரு உரைப்பெட்டிக்கும், வார்ப்புருவைப் பெறுவதற்கு பல விவரங்களை அமைக்கலாம் - ஆனால் "
+"இப்போதைக்கு, நாங்கள் முக்கியவற்றில் கவனம் செலுத்துவோம்:"
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:73
 msgid "``id``: The unique identifier for the textbox."
-msgstr ""
+msgstr "`` ஐடி``: உரைப்பெட்டிக்கான தனிப்பட்ட அடையாளங்காட்டி."
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:74
 msgid "``x``: The horizontal position of the top-left corner of the textbox."
-msgstr ""
+msgstr "`` x``: உரைப்பெட்டியின் மேல்-இடது மூலையின் கிடைமட்ட நிலை."
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:75
 msgid "``y``: The vertical position of the top-left corner of the textbox."
-msgstr ""
+msgstr "`` y``: உரைப்பெட்டியின் மேல்-இடது மூலையின் செங்குத்து நிலை."
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:76
 msgid "``w``: The width of the textbox."
-msgstr ""
+msgstr "`` w``: உரைப்பெட்டியின் அகலம்."
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:77
 msgid "``h``: The height of the textbox."
-msgstr ""
+msgstr "`` h``: உரைப்பெட்டியின் உயரம்."
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:81
 msgid "All of the units are in pixels, and the origin (0, 0) is at the top-left corner of the image, so increasing \"x\" moves the textbox right, and increasing \"y\" moves the textbox down."
 msgstr ""
+"அனைத்து அலகுகளும் பிக்சல்களில் உள்ளன, மேலும் தோற்றம் (0, 0) படத்தின் மேல்-இடது மூலையில் "
+"உள்ளது, எனவே \"ஃச்\" அதிகரிக்கும் உரைப்பெட்டியை வலதுபுறமாக நகர்த்துகிறது, மேலும் "
+"\"ஒய்\" அதிகரிப்பது உரைப்பெட்டியை கீழே நகர்த்துகிறது."
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:85
 msgid "As an example, a textbox may be defined like this:"
-msgstr ""
+msgstr "உதாரணமாக, ஒரு உரைப்பெட்டி இதுபோன்று வரையறுக்கப்படலாம்:"
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:91
 msgid "This would create a textbox called ``my_textbox`` that is 100 pixels right, and 100 pixels down from the top-left corner of the image, as well as 500 pixels wide and 200 pixels high."
 msgstr ""
+"இது 100 படப்புள்ளிகள் சரியானது, மற்றும் படத்தின் மேல்-இடது மூலையிலிருந்து 100 "
+"படப்புள்ளிகள் கீழே, அதே போல் 500 படப்புள்ளிகள் அகலமும் 200 படப்புள்ளிகள் உயரமும் கொண்ட ஒரு "
+"உரைப்பெட்டியை உருவாக்கும்."
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:95
 msgid "In the ``config.cfg`` file, you would have multiple of these textboxes, all of them seperated by a comma:"
 msgstr ""
+"`` Config.cfg`` கோப்பில், இந்த உரைப்பெட்டிகளில் பலவற்றை நீங்கள் வைத்திருப்பீர்கள், அவை "
+"அனைத்தும் கமாவால் பிரிக்கப்பட்டுள்ளன:"
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:113
 msgid "With that saved in ``config.cfg``, if you launch the game, open the notebook and use the template when creating a new page, not only should you see the image, but also the two textboxes in the top-left corner of the image!"
 msgstr ""
+"`` Config.cfg`` இல் சேமிக்கப்பட்டவுடன், நீங்கள் விளையாட்டைத் தொடங்கினால், நோட்புக்கைத் "
+"திறந்து, புதிய பக்கத்தை உருவாக்கும் போது வார்ப்புருவைப் பயன்படுத்துங்கள், நீங்கள் படத்தைப் "
+"பார்க்க வேண்டும் மட்டுமல்லாமல், படத்தின் மேல் இடது மூலையில் உள்ள இரண்டு உரைப்பெட்டிகளையும் "
+"பார்க்க வேண்டும்!"
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:121
 msgid "Now you know how to create templates for the notebook! If you want to know more about templates, and how to customise textboxes further, see :ref:`asset-type-template`."
 msgstr ""
+"Now you know how பெறுநர் create வார்ப்புருக்கள் க்கு the notebook! If you want "
+"பெறுநர் know more பற்றி templates, and how பெறுநர் customise textboxes further, "
+"see :ref:`asset-type-template`."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:2
 msgid "Adding saved games"
-msgstr ""
+msgstr "சேமித்த விளையாட்டுகளைச் சேர்க்கிறது"
 
 #: ../../custom_assets/tutorials/add_save_files.rst:4
 msgid "If you are creating your asset pack to be able to play a certain game, then it may be worth adding a pre-made save file to the asset pack so players can get started straight away, without them having to spawn each object and place them individually."
 msgstr ""
+"ஒரு குறிப்பிட்ட விளையாட்டை விளையாடுவதற்கு நீங்கள் உங்கள் சொத்து பேக்கை உருவாக்குகிறீர்கள் "
+"என்றால், சொத்து பேக்கில் முன்பே தயாரிக்கப்பட்ட சேமிப்பு கோப்பைச் சேர்ப்பது மதிப்புக்குரியதாக "
+"இருக்கலாம், எனவே வீரர்கள் ஒவ்வொரு பொருளையும் உருவாக்கி தனித்தனியாக வைக்காமல் நேராகத் "
+"தொடங்கலாம்."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:9
 msgid "Firstly, you'll need to setup the table in-game the way you want players to see it, then go to :guilabel:`Menu` > :guilabel:`Save game`, enter an appropiate name, then click :guilabel:`Save`. This will create two files in your ``saves`` folder as shown:"
 msgstr ""
+"முதலாவதாக, நீங்கள் வீரர்கள் பார்க்க விரும்பும் விதத்தில் அட்டவணையை அமைக்க வேண்டும், பின்னர் "
+"செல்லுங்கள்: கிலாபெல்: `மெனு`>: கிலாபெல்:` விளையாட்டைச் சேமிக்கவும்`, ஒப்புதல் பெயரை "
+"உள்ளிட்டு, பின்னர் கிளிக்: கிலாபெல்: `சேமி`. இது காட்டப்பட்டுள்ளபடி உங்கள் `` சேமிப்பு` "
+"கோப்புறையில் இரண்டு கோப்புகளை உருவாக்கும்:"
 
 #: ../../custom_assets/tutorials/add_save_files.rst:22
 msgid "The ``.png`` file is a thumbnail created by the game at the time of saving, which is displayed alongside the save file. The ``.tc`` file is what contains the save data."
 msgstr ""
+"`` .Png`` கோப்பு என்பது சேமிக்கும் நேரத்தில் விளையாட்டால் உருவாக்கப்பட்ட ஒரு சிறு "
+"உருவமாகும், இது சேமி கோப்புடன் காண்பிக்கப்படும். `` .Tc`` கோப்புதான் சேமிக்கும் தரவைக் "
+"கொண்டுள்ளது."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:28
 msgid "You can improve how the thumbnail looks by pre-positioning the camera before saving, as well as by hiding the UI (:guilabel:`F9` by default)."
 msgstr ""
+"சேமிப்பதற்கு முன் கேமராவை முன்கூட்டியே நிலைநிறுத்துவதன் மூலமும், இடைமுகம் ஐ மறைப்பதன் "
+"மூலமும் சிறுபடம் எப்படி இருக்கும் என்பதை நீங்கள் மேம்படுத்தலாம் (: கிலாபெல்: `F9` இயல்பாக)."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:31
 msgid "To add these files to your asset pack, it's as simple as creating a ``games`` folder, and copying the thumbnail and save file inside, like so:"
 msgstr ""
+"உங்கள் சொத்து பேக்கில் இந்த கோப்புகளைச் சேர்க்க, இது ஒரு `` விளையாட்டுகள்` கோப்புறையை "
+"உருவாக்குவது, சிறுபடத்தை நகலெடுத்து கோப்பை உள்ளே சேமிப்பது போன்ற எளிதானது:"
 
 #: ../../custom_assets/tutorials/add_save_files.rst:41
 msgid "Once the save file has been imported, you can then load it in-game by clicking on :guilabel:`Games`, selecting it from the menu, and clicking :guilabel:`Load`."
 msgstr ""
+"சேமி கோப்பு இறக்குமதி செய்யப்பட்டவுடன், நீங்கள் சொடுக்கு செய்வதன் மூலம் அதை விளையாட்டில் "
+"ஏற்றலாம்: கிலாபெல்: `கேம்ச்`, மெனுவிலிருந்து அதைத் தேர்ந்தெடுத்து, சொடுக்கு செய்வதன் மூலம்:"
+" கிலாபெல்:` சுமை`."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:46
 msgid "You don't necessarily have to use the thumbnail the game generates! In theory, you can have any image alongside the save, and it will be displayed next to the save file in-game. The only requirement is that the name of the image *must* be the same name as the save file."
 msgstr ""
+"விளையாட்டு உருவாக்கும் சிறுபடத்தை நீங்கள் பயன்படுத்த வேண்டிய அவசியமில்லை! கோட்பாட்டில், "
+"சேமிப்புடன் நீங்கள் எந்த படத்தையும் வைத்திருக்க முடியும், மேலும் இது விளையாட்டில் சேமிக்கும் "
+"கோப்புக்கு அடுத்ததாக காண்பிக்கப்படும். ஒரே தேவை என்னவென்றால், படத்தின் பெயர் * சேமிக்கும் "
+"கோப்பின் அதே பெயராக இருக்க வேண்டும்."
 
 #: ../../custom_assets/tutorials/add_save_files.rst:51
 msgid "For more information, see :ref:`file-type-save`."
-msgstr ""
+msgstr "மேலும் தகவலுக்கு, காண்க: ref: `கோப்பு-வகை-சேவ்`."
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:2
 msgid "Adding skyboxes"
-msgstr ""
+msgstr "ச்கை பாக்ச்களைச் சேர்ப்பது"
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:4
 msgid "To add your own skybox to the game, simply create a ``skyboxes`` folder inside your asset pack, then place your skybox image into that folder, like this:"
 msgstr ""
+"விளையாட்டில் உங்கள் சொந்த ச்கை பாக்சைச் சேர்க்க, உங்கள் சொத்து பேக்கிற்குள் `` ச்கை பாக்ச்கள்` "
+"கோப்புறையை உருவாக்கவும், பின்னர் உங்கள் ச்கை பாக்ச் படத்தை அந்த கோப்புறையில் வைக்கவும்:"
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:13
 msgid "Once the skybox has been imported, you can go in-game and press :guilabel:`Room` > :guilabel:`Skybox` > :guilabel:`Change skybox`, select the skybox from your asset pack, then click :guilabel:`Apply`."
 msgstr ""
+"ச்கை பாக்ச் இறக்குமதி செய்யப்பட்டவுடன், நீங்கள் விளையாட்டில் சென்று அழுத்தலாம்: கிலாபெல்: "
+"`அறை`>: கிலாபெல்:` ச்கை பாக்ச்`>: கிலாபெல்: `ச்கை பாக்சை மாற்றவும்`, உங்கள் சொத்து "
+"பேக்கிலிருந்து ச்கை பாக்சைத் தேர்ந்தெடுத்து, பின்னர் கிளிக்: கிலாபெல்:` விண்ணப்பிக்கவும்."
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:19
 msgid "The only format that the game accepts are equirectangular images like this one:"
-msgstr ""
+msgstr "விளையாட்டு ஏற்றுக்கொள்ளும் ஒரே வடிவம் இது போன்ற சமநிலை படங்கள்:"
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:22
 msgid "A 360 degree image of an urban park, projected onto a rectangular\n"
 "image."
 msgstr ""
+"நகர்ப்புற பூங்காவின் 360 டிகிரி படம், செவ்வகத்தில் திட்டமிடப்பட்டுள்ளது\n"
+" படம்."
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:26
 msgid "If the skybox you want to add is cube-mapped, you can find more information about how to convert it in :ref:`asset-type-skybox`."
 msgstr ""
+"நீங்கள் சேர்க்க விரும்பும் ச்கை பாக்ச் கியூப்-வரைபடமாக இருந்தால், அதை எவ்வாறு மாற்றுவது "
+"என்பது பற்றிய கூடுதல் தகவல்களை நீங்கள் காணலாம்: குறிப்பு: `சொத்து-வகை-ச்கைப்பாக்ச்`."
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:4
 msgid "Creating your own asset pack"
-msgstr ""
+msgstr "உங்கள் சொந்த சொத்து பேக்கை உருவாக்குதல்"
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:6
 msgid "Before you can add anything to the game, first you'll need to create your own asset pack for the game to scan when it starts. Luckily, it's super easy!"
 msgstr ""
+"நீங்கள் விளையாட்டில் எதையும் சேர்ப்பதற்கு முன், முதலில் விளையாட்டு தொடங்கும் போது ச்கேன் செய்"
+"ய உங்கள் சொந்த சொத்து பேக்கை உருவாக்க வேண்டும். அதிர்ச்டவசமாக, இது மிகவும் எளிதானது!"
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:9
 msgid "If you haven't already, launch the game. The game will automatically create a folder for us to place our asset pack in your Documents, like so:"
 msgstr ""
+"நீங்கள் ஏற்கனவே இல்லையென்றால், விளையாட்டைத் தொடங்கவும். உங்கள் ஆவணங்களில் எங்கள் சொத்து பேக்கை "
+"வைக்க விளையாட்டு தானாகவே ஒரு கோப்புறையை உருவாக்கும்:"
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:18
 msgid "Once you've found the ``assets`` folder, to make your own asset pack, you simply create a folder inside of it, giving it any name you want. In this example, the name of the asset pack would be ``MyAssetPack``:"
 msgstr ""
+"உங்கள் சொந்த சொத்து பொதி செய்ய, `` சொத்துக்கள்` கோப்புறையை நீங்கள் கண்டறிந்ததும், அதன் உள்ளே "
+"ஒரு கோப்புறையை உருவாக்கி, நீங்கள் விரும்பும் எந்த பெயரையும் தருகிறீர்கள். இந்த "
+"எடுத்துக்காட்டில், சொத்து பேக்கின் பெயர் `` myassetpack``:"
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:29
 msgid "And that's it! Note that everything you add will be put under this new folder, and all the following guides will assume you've created it."
 msgstr ""
+"அதுதான்! நீங்கள் சேர்க்கும் அனைத்தும் இந்த புதிய கோப்புறையின் கீழ் வைக்கப்படும் என்பதை நினைவில் "
+"கொள்க, மேலும் பின்வரும் அனைத்து வழிகாட்டிகளும் நீங்கள் அதை உருவாக்கியுள்ளீர்கள் என்று "
+"கருதுவார்கள்."
 
 #: ../../custom_assets/tutorials/create_asset_pack.rst:32
 msgid "Once you have added what you want to your asset pack, you can either restart the game, or go to :guilabel:`Options` > :guilabel:`General`, and click :guilabel:`Reimport Assets` to have the game import everything you've added so you can use it in-game!"
 msgstr ""
+"உங்கள் சொத்துப் பொதிக்கு நீங்கள் விரும்பியதைச் சேர்த்தவுடன், நீங்கள் விளையாட்டை மறுதொடக்கம் "
+"செய்யலாம் அல்லது அதற்குச் செல்லலாம்: கிலாபெல்: `விருப்பங்கள்`>: கிலாபெல்:` பொது`, மற்றும் "
+"கிளிக்: கிலாபெல்: `நீங்கள் சேர்த்த அனைத்தையும் இறக்குமதி செய்ய சொத்துக்களை மறுபரிசீலனை செய்"
+"ய வேண்டும், எனவே நீங்கள் அதை விளையாட்டில் பயன்படுத்தலாம்!"
 
 #: ../../custom_assets/tutorials/index.rst:5
 msgid "Tutorials"
-msgstr ""
+msgstr "பயிற்சிகள்"
 
 #: ../../custom_assets/tutorials/index.rst:7
 msgid "This chapter contains easy-to-follow guides on how to add your own content to Tabletop Club!"
 msgstr ""
+"இந்த அத்தியாயத்தில் டேப்லெட் கிளப்பில் உங்கள் சொந்த உள்ளடக்கத்தை எவ்வாறு சேர்ப்பது என்பது "
+"குறித்து எளிதில் பின்பற்றக்கூடிய வழிகாட்டிகள் உள்ளன!"
 
 #: ../../custom_assets/tutorials/index.rst:10
 msgid "These guides will cover the basics on adding various items to the game - if you want to see the full specification for what you can do with this system, see :ref:`asset-packs` for more information."
 msgstr ""
+"இந்த வழிகாட்டிகள் விளையாட்டில் பல்வேறு பொருட்களைச் சேர்ப்பதற்கான அடிப்படைகளை உள்ளடக்கும் - "
+"இந்த அமைப்பை நீங்கள் என்ன செய்ய முடியும் என்பதற்கான முழு விவரக்குறிப்பைக் காண விரும்பினால், "
+"மேலும் தகவலுக்கு குறிப்பு: `சொத்து -பேக்குகள்`."
