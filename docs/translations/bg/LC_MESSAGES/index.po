@@ -9,50 +9,61 @@ msgstr ""
 "Project-Id-Version: Tabletop Club master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-05-11 16:47+0000\n"
+"Last-Translator: BloodRaven0 <blood_raven@mail.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-index/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: ../../index.rst:25
 msgid "General"
-msgstr ""
+msgstr "Общи"
 
 #: ../../index.rst:33
 msgid "Custom Assets"
-msgstr ""
+msgstr "Персонализирани ресурси"
 
 #: ../../index.rst:7
 msgid "Tabletop Club Documentation"
-msgstr ""
+msgstr "Документация на Tabletop Club"
 
 #: ../../index.rst:9
 msgid "Welcome to the documentation for Tabletop Club, a free and open source tabletop board game simulator! If you're new to the project, feel free to check out the :ref:`about-tabletop-club` page. Otherwise, you can use either the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
+"Добре дошли в документацията на Tabletop Club, безплатен симулатор за "
+"настолни и бордови игри с отворен код! Ако си нов в проекта, разгледай :ref"
+":`about-tabletop-club` страницата. Иначе можеш да разгледаш съдържанието, "
+"страничната лента или полето за търсене, за да намериш каквото ти трябва!"
 
 #: ../../index.rst:14
 msgid "Screenshots from the game"
-msgstr ""
+msgstr "Снимки от играта"
 
 #: ../../index.rst:19
 msgid "The documentation, as well as the project in general, is open to suggestions and contributions! If you feel that something is not explained well, or you think that information is missing, then please don't hesitate to open an issue or a pull request on the project's `GitHub repository <https://github.com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
+"Документацията, както и проектът като цяло, са отворени за предложения и "
+"приноси! Ако мислиш, че нещо не е обяснено добре, или има липсваща "
+"информация, моля не се колебай да отвориш задача или заявка на страницата на "
+"проекта в `GitHub <https://github.com/drwhut/tabletop-club/issues>`_!"
 
 #: ../../index.rst:42
 msgid "Indices and tables"
-msgstr ""
+msgstr "Индекси и таблици"
 
 #: ../../index.rst:44
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../index.rst:45
 msgid ":ref:`modindex`"
-msgstr ""
+msgstr ":ref:`modindex`"
 
 #: ../../index.rst:46
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
