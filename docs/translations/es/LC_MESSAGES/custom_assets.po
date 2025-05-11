@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2024-09-08 20:09+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2025-05-11 16:47+0000\n"
+"Last-Translator: Artemis López <emkay.lopez@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -204,7 +204,7 @@ msgstr ":ref:`fichero-tipo-guardado`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
 msgid ":ref:`asset-type-game`"
-msgstr ":ref:`recurso-tipo-juego`"
+msgstr ":ref:`asset-type-game`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
@@ -226,7 +226,7 @@ msgstr ":ref:`fichero-tipo-audio`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
 msgid ":ref:`asset-type-music`"
-msgstr ":ref:`recurso-tipo-musica`"
+msgstr ":ref:`asset-type-music`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:58
 msgid "``pieces/``"
@@ -242,7 +242,7 @@ msgstr "``skyboxes/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
 msgid ":ref:`asset-type-skybox`"
-msgstr ":ref:'asset-type-skybox'"
+msgstr ":ref:`asset-type-skybox`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
 msgid "``sounds/``"
@@ -250,7 +250,7 @@ msgstr "``sonidos/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
 msgid ":ref:`asset-type-sound`"
-msgstr ":ref:`recurso-tipo-sonido`"
+msgstr ":ref:`asset-type-sound`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
 msgid "``speakers/``"
@@ -266,7 +266,7 @@ msgstr "``tableros/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 msgid ":ref:`asset-type-table`"
-msgstr ":ref:`recurso-tipo-tablero`"
+msgstr ":ref:`asset-type-table`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
 msgid "``templates/``"
