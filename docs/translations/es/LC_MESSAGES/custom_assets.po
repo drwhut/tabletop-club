@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenTabletop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2025-05-11 16:47+0000\n"
+"PO-Revision-Date: 2025-05-13 15:02+0000\n"
 "Last-Translator: Artemis López <emkay.lopez@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/es/>\n"
@@ -100,7 +100,7 @@ msgstr "Tipo de objeto"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
 msgid "``boards/``"
-msgstr "``cartas/``"
+msgstr "``tableros/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
@@ -262,7 +262,7 @@ msgstr ":ref:`objecto-tipo-altavoz`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 msgid "``tables/``"
-msgstr "``tableros/``"
+msgstr "``mesas/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
 msgid ":ref:`asset-type-table`"
