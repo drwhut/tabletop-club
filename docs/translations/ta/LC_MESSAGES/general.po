@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2025-03-07 05:02+0000\n"
+"PO-Revision-Date: 2025-07-18 18:02+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/ta/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.3-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -41,8 +41,8 @@ msgstr "இலவசம்"
 #: ../../general/about.rst:16
 msgid "The game is completely free to download and play! You can do so by going to the :ref:`downloading-binaries` page."
 msgstr ""
-"விளையாட்டு பதிவிறக்கம் செய்து விளையாட முற்றிலும் இலவசம்! : Ref: "
-"`பதிவிறக்குதல்-பைனரிகள்` பக்கத்திற்குச் செல்வதன் மூலம் நீங்கள் அவ்வாறு செய்யலாம்."
+"விளையாட்டு பதிவிறக்கம் செய்து விளையாட முற்றிலும் இலவசம்! :ref:`downloading-binaries`"
+" பக்கத்திற்குச் செல்வதன் மூலம் நீங்கள் அவ்வாறு செய்யலாம்."
 
 #: ../../general/about.rst:20
 msgid "Open-source"
@@ -57,7 +57,7 @@ msgid "The source code of the game is visible to the public (you can see it in t
 msgstr ""
 "விளையாட்டின் மூலக் குறியீடு பொதுமக்களுக்குத் தெரியும் (நீங்கள் அதை `கிட்அப் களஞ்சியத்தில் "
 "<https://github.com/drwhut/tabletop-club>` _) காணலாம். இதன் பொருள் என்னவென்றால், "
-"புதிதாக விளையாட்டை நீங்கள் தொகுக்கலாம் (பார்க்க: குறிப்பு: `தொகுத்தல்-மூலத்திலிருந்து`)."
+"புதிதாக விளையாட்டை நீங்கள் தொகுக்கலாம் (பார்க்க:ref:`compiling-from-source`)."
 
 #: ../../general/about.rst:29
 msgid "Anyone can contribute to the development of Tabletop Club in a number of different ways! For more information about how you can help contribute to the project, visit the :ref:`contributing` page."
@@ -141,7 +141,7 @@ msgstr "மேகோச் 10.12 அல்லது அதற்குப் ப
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
-msgstr "லினக்ச் / \\*பி.எச்.டி."
+msgstr "லினக்ச் / \\*பிஎச்டி"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
@@ -1049,7 +1049,7 @@ msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:210
 msgid "Compiling Godot for Linux / \\*BSD"
-msgstr "லினக்ச் / \\*பி.எச்.டி."
+msgstr "லினக்சுக்கு கோடோட் தொகுத்தல்/ \\*பிஎச்டி"
 
 #: ../../general/download/compiling_from_source.rst:215
 msgid "To compile Godot for Linux and other Unix systems, you'll also need the following:"
