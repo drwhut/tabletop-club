@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2025-07-18 18:02+0000\n"
+"PO-Revision-Date: 2025-08-03 11:02+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-custom-assets/ta/>\n"
@@ -559,7 +559,7 @@ msgstr "`` புறக்கணிக்கவும்``"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
 msgid "If ``true``, it tells the game to ignore this asset when importing the asset pack."
 msgstr ""
-"`` உண்மை` `என்றால், சொத்து பேக்கை இறக்குமதி செய்யும் போது இந்த சொத்தை புறக்கணிக்க "
+"``true``என்றால், சொத்து பேக்கை இறக்குமதி செய்யும்போது இந்தச் சொத்தைப் புறக்கணிக்க "
 "விளையாட்டை இது கூறுகிறது."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
@@ -581,8 +581,8 @@ msgstr "இசை, பொருள்கள்"
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
 msgid "If ``true``, objects will have a chance of spawning in the main menu, and music will have a chance of playing in the main menu."
 msgstr ""
-"`` உண்மை` `என்றால், பொருள்களுக்கு முதன்மையான பட்டியலில் முளைக்க வாய்ப்பு கிடைக்கும், மேலும்"
-" இசைக்கு முதன்மையான பட்டியலில் விளையாட வாய்ப்பு இருக்கும்."
+"``true`` என்றால், பொருள்களுக்கு முதன்மையான பட்டியலில் முளைக்க வாய்ப்பு கிடைக்கும், மேலும் "
+"இசைக்கு முதன்மையான பட்டியலில் விளையாட வாய்ப்பு இருக்கும்."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
 msgid "``mass``"
