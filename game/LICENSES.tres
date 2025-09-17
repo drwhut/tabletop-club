@@ -330,4 +330,46 @@ directory.
 	Author: Godot Engine
 	License: MIT
 	URL: https://github.com/godotengine/webrtc-native
+
+
+- libdatachannel
+
+	Author: Paul-Louis Ageneau
+	License: MPL 2.0
+	URL: https://github.com/paullouisageneau/libdatachannel
+
+
+- libjuice
+
+	Author: Paul-Louis Ageneau
+	License: MPL 2.0
+	URL: https://github.com/paullouisageneau/libjuice
+
+
+- libsrtp
+
+	Author: Cisco Systems
+	License: BSD-3-Clause
+	URL: https://github.com/cisco/libsrtp
+
+
+- mbedTLS
+
+	Author: Mbed TLS Contributors
+	License: Apache 2.0
+	URL: https://github.com/Mbed-TLS/mbedtls.git
+
+
+- plog
+
+	Author: Sergey Podobry
+	License: MIT
+	URL: https://github.com/SergiusTheBest/plog
+
+
+- usrsctp
+
+	Author: Randall Stewart and Michael Tuexen
+	License: BSD-3-Clause
+	URL: https://github.com/sctplab/usrsctp
 "
