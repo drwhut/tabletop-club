@@ -17,6 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated the lobby server's SSL certificate.
 - Updated translations from the community.
 
+### Removed
+
+- Removed the "Donate" button from the main menu, as the project is no longer
+  accepting donations.
+
 ## [0.1.3] - 2024-09-04
 
 ### Added

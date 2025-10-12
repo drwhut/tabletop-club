@@ -99,8 +99,8 @@ text = "0"
 icon = ExtResource( 12 )
 
 [node name="WebsiteButton" type="Button" parent="MainView/MainList/HBoxContainer"]
-margin_left = 44.0
-margin_right = 76.0
+margin_left = 80.0
+margin_right = 112.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 hint_tooltip = "Website"
@@ -108,8 +108,8 @@ icon = ExtResource( 10 )
 expand_icon = true
 
 [node name="SourceCodeButton" type="Button" parent="MainView/MainList/HBoxContainer"]
-margin_left = 80.0
-margin_right = 112.0
+margin_left = 116.0
+margin_right = 148.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 hint_tooltip = "Source Code"
@@ -117,8 +117,8 @@ icon = ExtResource( 11 )
 expand_icon = true
 
 [node name="HelpButton" type="Button" parent="MainView/MainList/HBoxContainer"]
-margin_left = 116.0
-margin_right = 148.0
+margin_left = 152.0
+margin_right = 184.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 hint_tooltip = "Documentation"
@@ -126,8 +126,8 @@ icon = ExtResource( 2 )
 expand_icon = true
 
 [node name="CommunityButton" type="Button" parent="MainView/MainList/HBoxContainer"]
-margin_left = 152.0
-margin_right = 184.0
+margin_left = 188.0
+margin_right = 220.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 hint_tooltip = "Community"
@@ -135,6 +135,7 @@ icon = ExtResource( 14 )
 expand_icon = true
 
 [node name="DonateButton" type="Button" parent="MainView/MainList/HBoxContainer"]
+visible = false
 margin_left = 188.0
 margin_right = 220.0
 margin_bottom = 32.0
