@@ -27,7 +27,7 @@ copyright = "2020-2025, Benjamin 'drwhut' Beddows, Tabletop Club contributors"
 version = 'v0.1'
 
 # The full version, including the patch number, and any alpha/beta/rc tags.
-release = 'v0.1.3'
+release = 'v0.1.4'
 
 
 # -- General configuration ---------------------------------------------------
