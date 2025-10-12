@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2024-01-16 02:06+0000\n"
-"Last-Translator: Alex Mauer <hawke@hawkesnest.net>\n"
+"PO-Revision-Date: 2025-05-16 01:01+0000\n"
+"Last-Translator: Reese Rivers <doormattion@gmail.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/tabletop-club/"
 "game/eo/>\n"
 "Language: eo\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -68,7 +68,7 @@ msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:106
 msgid "Website"
-msgstr ""
+msgstr "Retejo"
 
 #: ../Scenes/MainMenu.tscn:115
 msgid "Source Code"
@@ -80,11 +80,11 @@ msgstr "Dokumentado"
 
 #: ../Scenes/MainMenu.tscn:133
 msgid "Community"
-msgstr ""
+msgstr "Komunumo"
 
 #: ../Scenes/MainMenu.tscn:142
 msgid "Donate"
-msgstr ""
+msgstr "Donaci"
 
 #: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
 msgid "Information"
@@ -337,11 +337,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Skip Splash Screen"
-msgstr ""
+msgstr "Preterlasi salutekranon"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Skips the Godot Engine splash screen when the game starts."
-msgstr ""
+msgstr "Preterlasas la salutekranon de Godot Engine dum la komenco de la ludo."
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
@@ -409,11 +409,11 @@ msgstr "Movas la kameraon dekstren."
 
 #: ../Scenes/OptionsMenu.tscn:677
 msgid "Rotate Camera"
-msgstr "Turni kameraon"
+msgstr "Giri kameraon"
 
 #: ../Scenes/OptionsMenu.tscn:685
 msgid "Enable rotation of the camera when moving the mouse."
-msgstr "Ebligas turnadon de la kamerao, movante la muson."
+msgstr "Ebligas giradon de la kamerao, movante la muson."
 
 #: ../Scenes/OptionsMenu.tscn:695
 msgid "Reset Camera"
@@ -1018,23 +1018,23 @@ msgstr "Titolo"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:60
 msgid "When ticked, this page will be visible to other players."
-msgstr ""
+msgstr "Post ebligo, ĉi tiu paĝo estos videbla al aliaj ludantoj."
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:62
 msgid "Public"
-msgstr ""
+msgstr "Publika"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:94
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:102
 msgid "100%"
-msgstr ""
+msgstr "100%"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:110
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:122
 msgid "Move Up"
@@ -1057,11 +1057,11 @@ msgstr "Ĉu forigi la paĝon?"
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:147
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:293
 msgid "Templates"
-msgstr ""
+msgstr "Ŝablonoj"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:151
 msgid "Open"
-msgstr ""
+msgstr "Malferma"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
@@ -1119,7 +1119,7 @@ msgstr "Ŝargiĝis %d tabloj."
 
 #: ../Scenes/Game/UI/Previews/ObjectPreview.tscn:70
 msgid "This item is made up of multiple objects."
-msgstr ""
+msgstr "Ĉi tiu elemento estas kreita el pluraj objektoj."
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:21
 msgid "Pack:"
@@ -1251,7 +1251,7 @@ msgstr "Tradukistoj"
 
 #: ../Scripts/MainMenu.gd:106
 msgid "Chinese"
-msgstr ""
+msgstr "Ĉina"
 
 #: ../Scripts/MainMenu.gd:107
 msgid "Dutch"
@@ -1271,7 +1271,7 @@ msgstr "Germana"
 
 #: ../Scripts/MainMenu.gd:111
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonezia"
 
 #: ../Scripts/MainMenu.gd:112
 msgid "Italian"
@@ -1279,11 +1279,11 @@ msgstr "Itala"
 
 #: ../Scripts/MainMenu.gd:113
 msgid "Norwegian"
-msgstr ""
+msgstr "Norvega"
 
 #: ../Scripts/MainMenu.gd:114
 msgid "Polish"
-msgstr ""
+msgstr "Pola"
 
 #: ../Scripts/MainMenu.gd:115
 msgid "Portuguese"
@@ -1295,7 +1295,7 @@ msgstr "Rusa"
 
 #: ../Scripts/MainMenu.gd:117
 msgid "Spanish"
-msgstr ""
+msgstr "Hispana"
 
 #: ../Scripts/MainMenu.gd:218
 msgid "Room code must be four characters long!"
@@ -1425,16 +1425,13 @@ msgid "Timer"
 msgstr "Tempumilo"
 
 #: ../Scripts/Game/CameraController.gd:1278
-#, fuzzy
-#| msgid "Value: %d"
 msgid "Value: (None)"
-msgstr "Valoro: %d"
+msgstr "Valoro: (neniu)"
 
 #: ../Scripts/Game/CameraController.gd:1280
-#, fuzzy, python-format
-#| msgid "Value: %d"
+#, python-format
 msgid "Value: %s"
-msgstr "Valoro: %d"
+msgstr "Valoro: %s"
 
 #: ../Scripts/Game/CameraController.gd:1284
 #, python-format
@@ -1538,7 +1535,7 @@ msgstr "Movi kameraon"
 
 #: ../Scripts/Game/CameraController.gd:1438
 msgid "Rotate camera"
-msgstr "Turni kameraon"
+msgstr "Giri kameraon"
 
 #: ../Scripts/Game/CameraController.gd:1439
 #, python-format
@@ -1894,7 +1891,7 @@ msgstr "Rekonektiĝis tro rapide."
 
 #: ../Scripts/Game/MasterServer.gd:59
 msgid "Join queue is full."
-msgstr ""
+msgstr "La aliĝa vico estas plena."
 
 #: ../Scripts/Game/UI/ChatBox.gd:56
 msgid "Too much text being sent, waiting..."
@@ -1902,25 +1899,23 @@ msgstr "Tro da teksto estas sendata, atendu..."
 
 #: ../Scripts/Game/UI/ChatBox.gd:152
 msgid "Show the list of commands that can be invoked."
-msgstr ""
+msgstr "Montras la liston de alvokeblaj komandoj."
 
 #: ../Scripts/Game/UI/ChatBox.gd:154
 msgid "Privately send a message to another player."
-msgstr ""
+msgstr "Private sendi mesaĝon al alia ludanto."
 
 #: ../Scripts/Game/UI/GameUI.gd:150
-#, fuzzy
-#| msgid "Clear Table"
 msgid "Clear Paint"
-msgstr "Viŝi tablon"
+msgstr "Viŝi farbon"
 
 #: ../Scripts/Game/UI/GameUI.gd:170
 msgid "Welcome to Tabletop Club!"
-msgstr ""
+msgstr "Bonvenon al Tabletop Club!"
 
 #: ../Scripts/Game/UI/GameUI.gd:171
 msgid "To view a list of commands, type /? or /help in this chat box."
-msgstr ""
+msgstr "Por vidi liston de komandoj, tajpu /? aŭ /help en ĉi tiu babilujo."
 
 #: ../Scripts/Game/UI/GameUI.gd:248
 #, python-format
@@ -1951,10 +1946,8 @@ msgid "%s has left the game."
 msgstr "%s foriris de la ludo."
 
 #: ../Scripts/Game/UI/GameUI.gd:389
-#, fuzzy
-#| msgid "Notebook"
 msgid "View notebook"
-msgstr "Notlibreto"
+msgstr "Vidi notlibreton"
 
 #: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:40
 #, python-format
@@ -2037,17 +2030,16 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:269
 msgid "This player does not have any public pages in their notebook."
-msgstr ""
+msgstr "Ĉi tiu ludanto ne havas ajnajn publikajn paĝojn en sia notlibreto."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:702
 msgid "<Unknown>"
-msgstr ""
+msgstr "<Nekonata>"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:713
-#, fuzzy, python-format
-#| msgid "Notebook"
+#, python-format
 msgid "%s's Notebook"
-msgstr "Notlibreto"
+msgstr "Notlibreto de %s"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:757
 #, python-format
@@ -2057,7 +2049,7 @@ msgstr "Ĉu vi certas, ke vi volas forigi la paĝon '%s'?"
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:849
 #, python-format
 msgid "New %s"
-msgstr ""
+msgstr "Nova %s"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:121
 #, python-format

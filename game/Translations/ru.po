@@ -9,17 +9,17 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2024-02-24 13:02+0000\n"
-"Last-Translator: Alexander Ivanov <saiv46.dev@gmail.com>\n"
+"PO-Revision-Date: 2025-03-13 22:38+0000\n"
+"Last-Translator: 4g10w <hn4h5tydp@mozmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/tabletop-club/"
 "game/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.11-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -69,7 +69,7 @@ msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:106
 msgid "Website"
-msgstr ""
+msgstr "Сайт"
 
 #: ../Scenes/MainMenu.tscn:115
 msgid "Source Code"
@@ -81,11 +81,11 @@ msgstr "Документация"
 
 #: ../Scenes/MainMenu.tscn:133
 msgid "Community"
-msgstr ""
+msgstr "Сообщество"
 
 #: ../Scenes/MainMenu.tscn:142
 msgid "Donate"
-msgstr ""
+msgstr "Донат"
 
 #: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
 msgid "Information"
@@ -1135,7 +1135,7 @@ msgstr "Загружено %d столов."
 
 #: ../Scenes/Game/UI/Previews/ObjectPreview.tscn:70
 msgid "This item is made up of multiple objects."
-msgstr ""
+msgstr "Это составной объект."
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:21
 msgid "Pack:"
@@ -1266,7 +1266,7 @@ msgstr "Переводчики"
 
 #: ../Scripts/MainMenu.gd:106
 msgid "Chinese"
-msgstr ""
+msgstr "Китайский"
 
 #: ../Scripts/MainMenu.gd:107
 msgid "Dutch"
@@ -1298,7 +1298,7 @@ msgstr "Норвежский"
 
 #: ../Scripts/MainMenu.gd:114
 msgid "Polish"
-msgstr ""
+msgstr "Польский"
 
 #: ../Scripts/MainMenu.gd:115
 msgid "Portuguese"
@@ -1440,16 +1440,13 @@ msgid "Timer"
 msgstr "Таймер"
 
 #: ../Scripts/Game/CameraController.gd:1278
-#, fuzzy
-#| msgid "Value: %d"
 msgid "Value: (None)"
-msgstr "Значение: %d"
+msgstr "Значение: (None)"
 
 #: ../Scripts/Game/CameraController.gd:1280
-#, fuzzy, python-format
-#| msgid "Value: %d"
+#, python-format
 msgid "Value: %s"
-msgstr "Значение: %d"
+msgstr "Значение: %s"
 
 #: ../Scripts/Game/CameraController.gd:1284
 #, python-format
@@ -1908,7 +1905,7 @@ msgstr "Повторное подключение слишком быстрое.
 
 #: ../Scripts/Game/MasterServer.gd:59
 msgid "Join queue is full."
-msgstr ""
+msgstr "Очередь подключения заполнена."
 
 #: ../Scripts/Game/UI/ChatBox.gd:56
 msgid "Too much text being sent, waiting..."
@@ -1916,7 +1913,7 @@ msgstr "Отправлено слишком много текста, ожида�
 
 #: ../Scripts/Game/UI/ChatBox.gd:152
 msgid "Show the list of commands that can be invoked."
-msgstr ""
+msgstr "Показать список доступных команд."
 
 #: ../Scripts/Game/UI/ChatBox.gd:154
 msgid "Privately send a message to another player."
@@ -2013,7 +2010,7 @@ msgstr "Лицензия: %s"
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:93
 #, python-format
 msgid "Modified by: %s"
-msgstr "Изменено: %s"
+msgstr "Изменено на: %s"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:100
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:72

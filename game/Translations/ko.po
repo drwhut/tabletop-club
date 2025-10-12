@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2023-05-17 07:51+0000\n"
-"Last-Translator: Minsoo <gkm19809@gmail.com>\n"
+"PO-Revision-Date: 2024-12-22 18:28+0000\n"
+"Last-Translator: 강경서 <rudtj2306@ajou.ac.kr>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/tabletop-club/"
 "game/ko/>\n"
 "Language: ko\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -28,11 +28,11 @@ msgstr "애셋을 가져오는 중..."
 
 #: ../Scenes/ImportAssets.tscn:56
 msgid "Missing Asset Folder"
-msgstr ""
+msgstr "누락된 에셋 폴더"
 
 #: ../Scenes/ImportAssets.tscn:62
 msgid "Missing Module"
-msgstr ""
+msgstr "잃어버린 모듈"
 
 #: ../Scenes/Loading.tscn:41
 msgid "Loading..."
@@ -40,12 +40,12 @@ msgstr "불러오는 중..."
 
 #: ../Scenes/MainMenu.tscn:51
 msgid "Singleplayer"
-msgstr ""
+msgstr "단일플레이모드"
 
 #: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:158
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
-msgstr ""
+msgstr "멀티플레이모드"
 
 #: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:65
 #, fuzzy
@@ -54,7 +54,7 @@ msgstr "설정"
 
 #: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:315
 msgid "Credits"
-msgstr ""
+msgstr "크레딧"
 
 #: ../Scenes/MainMenu.tscn:79
 msgid "Quit"
@@ -62,15 +62,15 @@ msgstr "종료"
 
 #: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:340
 msgid "Import Log"
-msgstr ""
+msgstr "로그 가져오기"
 
 #: ../Scenes/MainMenu.tscn:98
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:106
 msgid "Website"
-msgstr ""
+msgstr "웹사이트"
 
 #: ../Scenes/MainMenu.tscn:115
 msgid "Source Code"
@@ -78,19 +78,19 @@ msgstr ""
 
 #: ../Scenes/MainMenu.tscn:124
 msgid "Documentation"
-msgstr ""
+msgstr "문서"
 
 #: ../Scenes/MainMenu.tscn:133
 msgid "Community"
-msgstr ""
+msgstr "단체"
 
 #: ../Scenes/MainMenu.tscn:142
 msgid "Donate"
-msgstr ""
+msgstr "기부하기"
 
 #: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
 msgid "Information"
-msgstr ""
+msgstr "정보"
 
 #: ../Scenes/MainMenu.tscn:176
 #, fuzzy
@@ -127,43 +127,44 @@ msgstr "오류"
 
 #: ../Scenes/OptionsMenu.tscn:48
 msgid "Audio"
-msgstr ""
+msgstr "음량"
 
 #: ../Scenes/OptionsMenu.tscn:61
 msgid "Master Volume"
-msgstr ""
+msgstr "주볼륨"
 
 #: ../Scenes/OptionsMenu.tscn:68
 msgid "Sets the overall volume of all sources of sound in the game."
-msgstr ""
+msgstr "이게임에서 모든 소리의 볼륨을 조정하세요."
 
 #: ../Scenes/OptionsMenu.tscn:79
 msgid "Music Volume"
-msgstr ""
+msgstr "음악 볼륨"
 
 #: ../Scenes/OptionsMenu.tscn:87
 msgid "Sets the volume of all music sources in the game."
-msgstr ""
+msgstr "이 게임에서 모든 음악의 볼륨크기를 조절하세요."
 
 #: ../Scenes/OptionsMenu.tscn:98
 msgid "Sounds Volume"
-msgstr ""
+msgstr "소리 볼륨"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
 "Sets the volume of sound sources played manually throughout the game, for "
 "example, from speakers."
-msgstr ""
+msgstr "스피커 등 게임 중 수동으로 재생되는 사운드의 볼륨을 설정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:117
 msgid "Effects Volume"
-msgstr ""
+msgstr "효과음 볼륨"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
 "Sets the volume of sound effects played automatically throughout the game, "
 "for example, pieces falling on the table. "
-msgstr ""
+msgstr "게임 전반에서 자동으로 재생되는 효과음(예: 조각이 테이블에 떨어지는 소리)의 "
+"볼륨을 설정합니다. "
 
 #: ../Scenes/OptionsMenu.tscn:142
 msgid "Controls"
@@ -179,438 +180,443 @@ msgstr "카메라를 회전시킬 때 수평 방향 민감도를 설정합니다
 
 #: ../Scenes/OptionsMenu.tscn:174
 msgid "Mouse Vertical Sensitivity"
-msgstr ""
+msgstr "마우스 수직 민감도"
 
 #: ../Scenes/OptionsMenu.tscn:182
 msgid "Sets the vertical sensitivity of the rotation of the camera."
-msgstr ""
+msgstr "카메라의 수직 회전 감도를 조정한다."
 
 #: ../Scenes/OptionsMenu.tscn:194
 msgid "Mouse Horizontal Invert"
-msgstr ""
+msgstr "마우스 수평 반전"
 
 #: ../Scenes/OptionsMenu.tscn:202
 msgid "Used to invert the rotation of the camera horizontally."
-msgstr ""
+msgstr "이 기능은 카메라의 수평 회전을 반전시키는 데 사용됩니다."
 
 #: ../Scenes/OptionsMenu.tscn:209
 msgid "Mouse Vertical Invert"
-msgstr ""
+msgstr "마우스 수직 반전"
 
 #: ../Scenes/OptionsMenu.tscn:217
 msgid "Used to invert the rotation of the camera vertically."
-msgstr ""
+msgstr "이 설정은 카메라의 수직 회전을 반전시키는 데 사용됩니다."
 
 #: ../Scenes/OptionsMenu.tscn:224
 msgid "Camera Movement Speed"
-msgstr ""
+msgstr "카메라 이동 속도"
 
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
-msgstr ""
+msgstr "카메라 이동 속도를 설정하여 테이블 위를 얼마나 빠르게 이동할지 조정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
-msgstr ""
+msgstr "왼쪽 클릭을 계속 누르고 카메라를 이동하세요"
 
 #: ../Scenes/OptionsMenu.tscn:252
 msgid ""
 "Used to allow the player to move the camera by dragging the mouse across the "
 "table."
-msgstr ""
+msgstr "플레이어가 마우스를 드래그하여 테이블 위에서 카메라를 이동할 수 있도록 "
+"합니다."
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
-msgstr ""
+msgstr "줌 감도"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
 "Sets how fast the camera zooms in and out of the table when using the scroll "
 "wheel."
-msgstr ""
+msgstr "스크롤 휠을 이용하여 카메라의 확대/축소를 설정한다."
 
 #: ../Scenes/OptionsMenu.tscn:279
 msgid "Zoom Invert"
-msgstr ""
+msgstr "줌 반전"
 
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
-msgstr ""
+msgstr "이 기능은 스크롤 휠을 사용할 때 확대/축소 방향을 반전시키는 데 사용됩니다."
 
 #: ../Scenes/OptionsMenu.tscn:294
 msgid "Piece Lift Sensitivity"
-msgstr ""
+msgstr "조각 들어올리기 감도"
 
 #: ../Scenes/OptionsMenu.tscn:302
 msgid "Sets how fast a piece will move when lifting it off the table."
-msgstr ""
+msgstr "테이블에서 조각을 들어 올릴 때의 이동 속도를 설정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:314
 msgid "Piece Lift Invert"
-msgstr ""
+msgstr "조각 들어올리기 반전"
 
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
 "Used to invert the direction a piece will go when lifting it off the table."
-msgstr ""
+msgstr "이 기능은 조각을 테이블에서 들어 올릴 때 이동 방향을 반전시키는 데 "
+"사용됩니다."
 
 #: ../Scenes/OptionsMenu.tscn:329
 msgid "Piece Rotation Invert"
-msgstr ""
+msgstr "조각 회전 반전"
 
 #: ../Scenes/OptionsMenu.tscn:337
 msgid "Used to invert the direction a piece will rotate."
-msgstr ""
+msgstr "이 기능은 조각이 회전하는 방향을 반전시키는 데 사용됩니다."
 
 #: ../Scenes/OptionsMenu.tscn:344
 msgid "Hand Preview Enabled"
-msgstr ""
+msgstr "손 미리보기 활성화"
 
 #: ../Scenes/OptionsMenu.tscn:352
 msgid ""
 "When set, hovering over a card in your hand will display an enhanced preview "
 "of the card after a short period of time."
-msgstr ""
+msgstr "손에 있는 카드를 위로 마우스를 올린 뒤 잠시 후 향상된 미리보기를 볼 수 "
+"있습니다."
 
 #: ../Scenes/OptionsMenu.tscn:360
 msgid "Hand Preview Delay"
-msgstr ""
+msgstr "손 미리보기 지연"
 
 #: ../Scenes/OptionsMenu.tscn:368
 msgid ""
 "Used to set how long the mouse needs to be kept still before a preview of a "
 "card is displayed from the hand."
-msgstr ""
+msgstr "카드 미리보기가 나타나기 전에 마우스를 가만히 두어야 하는 시간을 설정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:380
 msgid "Hand Preview Size"
-msgstr ""
+msgstr "손 미리보기 크기 조정"
 
 #: ../Scenes/OptionsMenu.tscn:388
 msgid "Used to control how large the card preview is."
-msgstr ""
+msgstr "카드 미리보기의 크기를 조정하는 데 사용됩니다."
 
 #: ../Scenes/OptionsMenu.tscn:400
 msgid "Hide Control Hints"
-msgstr ""
+msgstr "제어 힌트 숨기기"
 
 #: ../Scenes/OptionsMenu.tscn:408
 msgid "Used to hide the dynamic text displaying how to control the game."
-msgstr ""
+msgstr "게임을 제어하는 방법에 대한 동적 텍스트를 숨기는 기능입니다."
 
 #: ../Scenes/OptionsMenu.tscn:421
 msgid "General"
-msgstr ""
+msgstr "일반적인"
 
 #: ../Scenes/OptionsMenu.tscn:435
 msgid "Language"
-msgstr ""
+msgstr "언어"
 
 #: ../Scenes/OptionsMenu.tscn:455
 msgid "Autosave Interval"
-msgstr ""
+msgstr "자동저장 간격"
 
 #: ../Scenes/OptionsMenu.tscn:463
 msgid "Used to set how often autosaves are created."
-msgstr ""
+msgstr "자동 저장의 생성 빈도를 설정하는 기능입니다."
 
 #: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:72
 msgid "5 minutes"
-msgstr ""
+msgstr "5분"
 
 #: ../Scenes/OptionsMenu.tscn:474
 msgid "Autosave File Count"
-msgstr ""
+msgstr "자동 저장 파일 수"
 
 #: ../Scenes/OptionsMenu.tscn:482
 msgid "Used to set the maximum number of autosave files that are made."
-msgstr ""
+msgstr "자동 저장 파일의 최대 개수를 설정하는 기능입니다."
 
 #: ../Scenes/OptionsMenu.tscn:492
 msgid "Skip Splash Screen"
-msgstr ""
+msgstr "시작 화면 건너뛰기"
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Skips the Godot Engine splash screen when the game starts."
-msgstr ""
+msgstr "게임 시작 시 Godot 엔진의 시작 화면을 건너뛰도록 설정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
-msgstr ""
+msgstr "시스템 경고들을 보여줍니다"
 
 #: ../Scenes/OptionsMenu.tscn:516
 msgid "Displays system warnings in the chat box."
-msgstr ""
+msgstr "채팅창에 시스템 경고들을 보여줍니다."
 
 #: ../Scenes/OptionsMenu.tscn:525
 msgid "Show System Errors"
-msgstr ""
+msgstr "시스템 에러들을 보여줍니다"
 
 #: ../Scenes/OptionsMenu.tscn:533
 msgid "Displays system errors in the chat box."
-msgstr ""
+msgstr "채팅창에 시스템 에러들을 보여줍니다."
 
 #: ../Scenes/OptionsMenu.tscn:561
 msgid "Opens the assets folder in your file explorer."
-msgstr ""
+msgstr "파일 탐색기에서 자산 폴더를 열 수 있습니다."
 
 #: ../Scenes/OptionsMenu.tscn:563
 msgid "Open Assets Folder"
-msgstr ""
+msgstr "자산 폴더 열기"
 
 #: ../Scenes/OptionsMenu.tscn:579
 msgid "Reimport Assets"
-msgstr ""
+msgstr "자산 다시가져오기"
 
 #: ../Scenes/OptionsMenu.tscn:592
 msgid "Key Bindings"
-msgstr ""
+msgstr "키 설정"
 
 #: ../Scenes/OptionsMenu.tscn:606
 msgid "Move Forward"
-msgstr ""
+msgstr "앞으로 이동"
 
 #: ../Scenes/OptionsMenu.tscn:613
 msgid "Moves the camera forward."
-msgstr ""
+msgstr "카메라를 앞으로 이동시킵니다."
 
 #: ../Scenes/OptionsMenu.tscn:623
 msgid "Move Back"
-msgstr ""
+msgstr "뒤로 움직입니다"
 
 #: ../Scenes/OptionsMenu.tscn:631
 msgid "Moves the camera backwards."
-msgstr ""
+msgstr "카메라를 뒤로 이동시킵니다."
 
 #: ../Scenes/OptionsMenu.tscn:641
 msgid "Move Left"
-msgstr ""
+msgstr "왼쪽으로 이동합니다"
 
 #: ../Scenes/OptionsMenu.tscn:649
 msgid "Moves the camera left."
-msgstr ""
+msgstr "카메라를 왼쪽으로 이동합니다."
 
 #: ../Scenes/OptionsMenu.tscn:659
 msgid "Move Right"
-msgstr ""
+msgstr "오른쪽으로 이동합니다"
 
 #: ../Scenes/OptionsMenu.tscn:667
 msgid "Moves the camera right."
-msgstr ""
+msgstr "카메라를 오른쪽으로 이동합니다."
 
 #: ../Scenes/OptionsMenu.tscn:677
 msgid "Rotate Camera"
-msgstr ""
+msgstr "카메라를 회전합니다"
 
 #: ../Scenes/OptionsMenu.tscn:685
 msgid "Enable rotation of the camera when moving the mouse."
-msgstr ""
+msgstr "마우스를 이동할 때 카메라 회전을 활성화하세요."
 
 #: ../Scenes/OptionsMenu.tscn:695
 msgid "Reset Camera"
-msgstr ""
+msgstr "카메라를 재설정하세요"
 
 #: ../Scenes/OptionsMenu.tscn:703
 msgid "Resets the camera to the default position."
-msgstr ""
+msgstr "카메라를 기본 위치로 재설정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:713
 msgid "Zoom In / Lift Piece Down"
-msgstr ""
+msgstr "확대 / 조각 내리기"
 
 #: ../Scenes/OptionsMenu.tscn:721
 msgid "Zoom the camera towards the table, or lift a piece down onto the table."
-msgstr ""
+msgstr "카메라를 테이블쪽으로 확대하거나, 조각을 테이블에 내려놓습니다."
 
 #: ../Scenes/OptionsMenu.tscn:731
 msgid "Zoom Out / Lift Piece Up"
-msgstr ""
+msgstr "축소 / 조각 들어올리기"
 
 #: ../Scenes/OptionsMenu.tscn:739
 msgid "Zoom the camera away from the table, or lift a piece up from the table."
-msgstr ""
+msgstr "카메라를 테이블에서 멀리 축소하거나, 조각을 테이블에서 들어 올립니다."
 
 #: ../Scenes/OptionsMenu.tscn:749
 msgid "Flip Piece Orientation"
-msgstr ""
+msgstr "조각 방향 뒤집기"
 
 #: ../Scenes/OptionsMenu.tscn:757
 msgid ""
 "Flip the selected piece or the piece the mouse is over on the horizontal "
 "axis."
-msgstr ""
+msgstr "선택된 조각 또는 마우스가 있는 조각을 수평 축으로 뒤집습니다."
 
 #: ../Scenes/OptionsMenu.tscn:767
 msgid "Reset Piece Orientation"
-msgstr ""
+msgstr "조각 방향을 재설정합니다"
 
 #: ../Scenes/OptionsMenu.tscn:775
 msgid ""
 "Resets the selected piece or the piece the mouse is over to its default "
 "orientation."
-msgstr ""
+msgstr "선택된 조각 또는 마우스가 있는 조각을 기본 방향으로 재설정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:785 ../Scripts/Game/CameraController.gd:1589
 msgid "Rotate Piece"
-msgstr ""
+msgstr "조각을 회전합니다"
 
 #: ../Scenes/OptionsMenu.tscn:793
 msgid "Rotates the the piece that is selected, or that the mouse is over."
-msgstr ""
+msgstr "선택된 조각 또는 마우스가 있는 조각을 회전시킵니다."
 
 #: ../Scenes/OptionsMenu.tscn:803 ../Scripts/Game/CameraController.gd:1210
 #: ../Scripts/Game/CameraController.gd:1542
 #: ../Scripts/Game/CameraController.gd:1597
 msgid "Shuffle"
-msgstr ""
+msgstr "섞기"
 
 #: ../Scenes/OptionsMenu.tscn:811
 msgid ""
 "Shuffle stacks of cards or tokens that are selected, or that the mouse is "
 "over."
-msgstr ""
+msgstr "선택된 카드나 토큰 더미, 또는 마우스가 있는 카드나 토큰 더미를 섞습니다."
 
 #: ../Scenes/OptionsMenu.tscn:821
 msgid "Lock/Unlock Piece"
-msgstr ""
+msgstr "조각 잠금/해제"
 
 #: ../Scenes/OptionsMenu.tscn:829
 msgid ""
 "Toggles the lock on the selected piece, fixing its position and rotation."
-msgstr ""
+msgstr "선택된 조각의 잠금을 전환하여 위치와 회전을 고정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:839
 msgid "Delete Piece"
-msgstr ""
+msgstr "조각 제거"
 
 #: ../Scenes/OptionsMenu.tscn:847
 msgid "Deletes the currently selected piece."
-msgstr ""
+msgstr "현재 선택된 조각을 삭제합니다."
 
 #: ../Scenes/OptionsMenu.tscn:857
 msgid "Toggle Debug Info"
-msgstr ""
+msgstr "디버그 정보 전환"
 
 #: ../Scenes/OptionsMenu.tscn:865
 msgid "Toggles whether debug information is displayed."
-msgstr ""
+msgstr "디버그 정보가 표시될지 여부를 전환합니다."
 
 #: ../Scenes/OptionsMenu.tscn:875
 msgid "Quicksave"
-msgstr ""
+msgstr "빠른 저장"
 
 #: ../Scenes/OptionsMenu.tscn:883
 msgid "Creates a quicksave file."
-msgstr ""
+msgstr "빠른 저장 파일을 생성합니다."
 
 #: ../Scenes/OptionsMenu.tscn:893
 msgid "Quickload"
-msgstr ""
+msgstr "빠른로딩"
 
 #: ../Scenes/OptionsMenu.tscn:901
 msgid "Loads the latest quicksave file."
-msgstr ""
+msgstr "가장 최근 퀵세이브 파일을 로드합니다."
 
 #: ../Scenes/OptionsMenu.tscn:911
 msgid "Toggle UI"
-msgstr ""
+msgstr "UI 전환"
 
 #: ../Scenes/OptionsMenu.tscn:919
 msgid "Toggles whether the entire UI is displayed."
-msgstr ""
+msgstr "UI 전체 표시 여부를 전환합니다."
 
 #: ../Scenes/OptionsMenu.tscn:929
 msgid "Take Screenshot"
-msgstr ""
+msgstr "스크린샷 찍기"
 
 #: ../Scenes/OptionsMenu.tscn:937
 msgid "Takes a screenshot of the game in its current state."
-msgstr ""
+msgstr "게임의 현재상태를 스크린샷으로 찍습니다."
 
 #: ../Scenes/OptionsMenu.tscn:952
 msgid "Used to reset the key bindings to their default values."
-msgstr ""
+msgstr "키 설정을 기본값으로 초기화하는 데 사용됩니다."
 
 #: ../Scenes/OptionsMenu.tscn:953 ../Scenes/OptionsMenu.tscn:1413
 msgid "Reset Bindings"
-msgstr ""
+msgstr "설정 초기화"
 
 #: ../Scenes/OptionsMenu.tscn:980 ../Scripts/Game/CameraController.gd:1227
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:185
 msgid "Name"
-msgstr ""
+msgstr "이름"
 
 #: ../Scenes/OptionsMenu.tscn:987
 msgid "The player's displayed name in multiplayer lobbies."
-msgstr ""
+msgstr "멀티플레이 로비에서 표시되는 플레이어 이름."
 
 #: ../Scenes/OptionsMenu.tscn:989
 msgid "Player"
-msgstr ""
+msgstr "플레이어"
 
 #: ../Scenes/OptionsMenu.tscn:997 ../Scripts/Game/CameraController.gd:1350
 msgid "Color"
-msgstr ""
+msgstr "색깔"
 
 #: ../Scenes/OptionsMenu.tscn:1005
 msgid "The player's displayed colour in multiplayer lobbies."
-msgstr ""
+msgstr "멀티플레이 로비에서 표시되는 필레이어의 색상."
 
 #: ../Scenes/OptionsMenu.tscn:1015
 msgid "Chat Font Size"
-msgstr ""
+msgstr "채팅 폰트 사이즈"
 
 #: ../Scenes/OptionsMenu.tscn:1023
 msgid "Changes the size of the text in the chat box."
-msgstr ""
+msgstr "채팅창의 글자크기를 바꾸세요."
 
 #: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
 #: ../Scripts/OptionsMenu.gd:82
 msgid "Medium"
-msgstr ""
+msgstr "중간값"
 
 #: ../Scenes/OptionsMenu.tscn:1034
 msgid "Hide Player Cursors"
-msgstr ""
+msgstr "플레이어 커서를 숨기세요"
 
 #: ../Scenes/OptionsMenu.tscn:1042
 msgid ""
 "Used to stop showing other player's cursors when in multiplayer lobbies."
-msgstr ""
+msgstr "멀티플레이 로비에서 다른 플레이어의 커서를 표시하지 않도록 설정하는데 "
+"사용됩니다."
 
 #: ../Scenes/OptionsMenu.tscn:1050
 msgid "Censor Profanity"
-msgstr ""
+msgstr "욕설 필터링"
 
 #: ../Scenes/OptionsMenu.tscn:1058
 msgid ""
 "Used to censor potentially offensive words in the chat window when in "
 "multiplayer lobbies."
-msgstr ""
+msgstr "멀티플레이 로비에서 채팅 창에 잠재적으로 공격적인 단어를 필터링하는데 "
+"사용됩니다."
 
 #: ../Scenes/OptionsMenu.tscn:1073
 msgid "Video"
-msgstr ""
+msgstr "영상"
 
 #: ../Scenes/OptionsMenu.tscn:1087
 msgid "Window Mode"
-msgstr ""
+msgstr "윈도우 모드"
 
 #: ../Scenes/OptionsMenu.tscn:1094
 msgid "Sets the mode in which the game window is displayed."
-msgstr ""
+msgstr "게임 창이 표시되는 모드를 설정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:76
 msgid "Windowed"
-msgstr ""
+msgstr "창모드"
 
 #: ../Scenes/OptionsMenu.tscn:1105
 msgid "Field of View"
-msgstr ""
+msgstr "시각 범위"
 
 #: ../Scenes/OptionsMenu.tscn:1113
 msgid "Sets the field of view of the in-game camera."
-msgstr ""
+msgstr "게임안 카메라 시각뷰를 설정하세요."
 
 #: ../Scenes/OptionsMenu.tscn:1126
 msgid "VSync"
@@ -618,46 +624,46 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1145
 msgid "Shadow Detail"
-msgstr ""
+msgstr "그림자 세부사항"
 
 #: ../Scenes/OptionsMenu.tscn:1165
 msgid "Multisample Anti-Aliasing (MSAA)"
-msgstr ""
+msgstr "계단현상 줄이기"
 
 #: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
 #: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:80
 msgid "None"
-msgstr ""
+msgstr "없음"
 
 #: ../Scenes/OptionsMenu.tscn:1186
 msgid "Screen Space Ambient Occlusion (SSAO)"
-msgstr ""
+msgstr "화면 공간 주변 폐색"
 
 #: ../Scenes/OptionsMenu.tscn:1208
 msgid "Skybox Radiance Detail"
-msgstr ""
+msgstr "하늘 박스의 밝기와 세부사항 조절"
 
 #: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:81
 msgid "Low"
-msgstr ""
+msgstr "낮음"
 
 #: ../Scenes/OptionsMenu.tscn:1228
 msgid "Depth of Field"
-msgstr ""
+msgstr "영역의 깊이"
 
 #: ../Scenes/OptionsMenu.tscn:1249
 msgid "Depth of Field Amount"
-msgstr ""
+msgstr "시야 심도"
 
 #: ../Scenes/OptionsMenu.tscn:1257
 msgid ""
 "Used to determine how much the background is blurred when using depth of "
 "field."
-msgstr ""
+msgstr "깊이의 효과를 사용할 때 배경이 얼마나 흐려질지를 결정하는 설정입니다."
 
 #: ../Scenes/OptionsMenu.tscn:1269
 msgid "Depth of Field Distance"
-msgstr ""
+msgstr "깊이의 효과거리"
 
 #: ../Scenes/OptionsMenu.tscn:1277
 msgid ""
@@ -667,17 +673,17 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1289
 msgid "Table Paint Filtering"
-msgstr ""
+msgstr "테이블 페인트 필터링"
 
 #: ../Scenes/OptionsMenu.tscn:1312
 msgid "Back"
-msgstr ""
+msgstr "뒤로"
 
 #: ../Scenes/Game/CameraController.tscn:410
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:154
 #: ../Scenes/OptionsMenu.tscn:1318
 msgid "Apply"
-msgstr ""
+msgstr "적용하기"
 
 #: ../Scenes/Game/CameraController.tscn:502
 #: ../Scenes/Game/CameraController.tscn:575
@@ -688,115 +694,115 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1370
 msgid "Please press a key or button to bind it..."
-msgstr ""
+msgstr "키 또는 버튼을 눌러 바인딩하세요..."
 
 #: ../Scenes/OptionsMenu.tscn:1390
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
 #: ../Scenes/OptionsMenu.tscn:1397
 msgid "Keep video settings?"
-msgstr ""
+msgstr "비디오 설정을 유지하겠습니까?"
 
 #: ../Scenes/OptionsMenu.tscn:1405
 msgid "Reimporting Assets"
-msgstr ""
+msgstr "자산 다시 가져오기"
 
 #: ../Scenes/OptionsMenu.tscn:1423
 msgid "Warning!"
-msgstr ""
+msgstr "경고!"
 
 #: ../Scenes/RandomMusicPlayer.tscn:23
 msgid "Now Playing:"
-msgstr ""
+msgstr "현재 재생중:"
 
 #: ../Scenes/Game/CameraController.tscn:99
 msgid "Deal X cards"
-msgstr ""
+msgstr "카드 X장을 나눠줍니다"
 
 #: ../Scenes/Game/CameraController.tscn:129
 msgid "Select track"
-msgstr ""
+msgstr "트랙 선택"
 
 #: ../Scenes/Game/CameraController.tscn:147
 msgid "Positional audio"
-msgstr ""
+msgstr "위치기반 오디오"
 
 #: ../Scenes/Game/CameraController.tscn:153
 msgid "Range:"
-msgstr ""
+msgstr "범위:"
 
 #: ../Scenes/Game/CameraController.tscn:173
 msgid "Take X off top"
-msgstr ""
+msgstr "위에서 X장을 가져옵니다"
 
 #: ../Scenes/Game/CameraController.tscn:186
 msgid "Take X out"
-msgstr ""
+msgstr "X장을 뺍니다"
 
 #: ../Scenes/Game/CameraController.tscn:242
 msgid "Position:"
-msgstr ""
+msgstr "위치:"
 
 #: ../Scenes/Game/CameraController.tscn:253
 #: ../Scenes/Game/CameraController.tscn:311
 #: ../Scenes/Game/CameraController.tscn:363
 msgid "X:"
-msgstr ""
+msgstr "X:"
 
 #: ../Scenes/Game/CameraController.tscn:269
 #: ../Scenes/Game/CameraController.tscn:325
 #: ../Scenes/Game/CameraController.tscn:379
 msgid "Y:"
-msgstr ""
+msgstr "Y:"
 
 #: ../Scenes/Game/CameraController.tscn:285
 #: ../Scenes/Game/CameraController.tscn:339
 #: ../Scenes/Game/CameraController.tscn:395
 msgid "Z:"
-msgstr ""
+msgstr "Z:"
 
 #: ../Scenes/Game/CameraController.tscn:300
 msgid "Rotation (°):"
-msgstr ""
+msgstr "회전 (°):"
 
 #: ../Scenes/Game/CameraController.tscn:352
 #: ../Scenes/Game/CameraController.tscn:529
 msgid "Scale:"
-msgstr ""
+msgstr "규모:"
 
 #: ../Scenes/Game/CameraController.tscn:430
 msgid "Value:"
-msgstr ""
+msgstr "값:"
 
 #: ../Scenes/Game/CameraController.tscn:442
 #: ../Scripts/Game/CameraController.gd:1300
 msgid "Set value"
-msgstr ""
+msgstr "값 설정"
 
 #: ../Scenes/Game/CameraController.tscn:473
 msgid "Strength:"
-msgstr ""
+msgstr "강도:"
 
 #: ../Scenes/Game/CameraController.tscn:484
 msgid "1.0"
-msgstr ""
+msgstr "1.0"
 
 #: ../Scenes/Game/CameraController.tscn:561
 msgid "System:"
-msgstr ""
+msgstr "시스템:"
 
 #: ../Scenes/Game/CameraController.tscn:567
 msgid "Metric"
-msgstr ""
+msgstr "측정단위"
 
 #: ../Scenes/Game/CameraController.tscn:602
 msgid "Brush Color:"
-msgstr ""
+msgstr "브러쉬 색깔:"
 
 #: ../Scenes/Game/CameraController.tscn:615
 msgid "Brush Size:"
-msgstr ""
+msgstr "브러쉬 크기:"
 
 #: ../Scenes/Game/CameraController.tscn:626
 #: ../Scenes/Game/CameraController.tscn:680
@@ -805,20 +811,20 @@ msgstr "1"
 
 #: ../Scenes/Game/CameraController.tscn:669
 msgid "Eraser Size:"
-msgstr ""
+msgstr "지우개 크기:"
 
 #: ../Scenes/Game/CameraController.tscn:699
 msgid "Select a track..."
-msgstr ""
+msgstr "트랙을 선택하세요..."
 
 #: ../Scenes/Game/CameraController.tscn:704
 #, python-format
 msgid "Loaded %d tracks."
-msgstr ""
+msgstr "%d개의 트랙이 로드되었습니다."
 
 #: ../Scenes/Game/Game.tscn:35
 msgid "Missing Assets"
-msgstr ""
+msgstr "잃은 자산"
 
 #: ../Scenes/Game/Game.tscn:44
 #, python-format
@@ -838,405 +844,405 @@ msgstr ""
 
 #: ../Scenes/Game/Game.tscn:86
 msgid "Yes, download missing assets."
-msgstr ""
+msgstr "네, 잃어버린 자산을 다운로드하세요."
 
 #: ../Scenes/Game/Game.tscn:93
 msgid "No, continue without them."
-msgstr ""
+msgstr "아니오, 그것들 없이 계속하세요."
 
 #: ../Scenes/Game/Game.tscn:99
 msgid "Download Assets?"
-msgstr ""
+msgstr "자산을 다운로드하시겠습니까?"
 
 #: ../Scenes/Game/Game.tscn:108
 msgid "Downloading..."
-msgstr ""
+msgstr "다운로드중..."
 
 #: ../Scenes/Game/Game.tscn:123
 msgid "Waiting for download..."
-msgstr ""
+msgstr "다운로드를 기다리는중..."
 
 #: ../Scenes/Game/Game.tscn:136
 msgid "Waiting to verify integrity..."
-msgstr ""
+msgstr "무결성 검증을 기다리는 중..."
 
 #: ../Scenes/Game/Game.tscn:149
 msgid "Waiting to import assets..."
-msgstr ""
+msgstr "자산 불러오기를 기다리는 중..."
 
 #: ../Scenes/Game/Game.tscn:168 ../Scenes/Game/Game.tscn:186
 msgid "Error!"
-msgstr ""
+msgstr "에러!"
 
 #: ../Scenes/Game/Game.tscn:176
 msgid "Download Folder Locked"
-msgstr ""
+msgstr "다운로드 폴더가 잠겨 있습니다"
 
 #: ../Scenes/Game/UI/ChatBox.tscn:54
 msgid "Type a message here..."
-msgstr ""
+msgstr "메시지를 여기에 적으세요..."
 
 #: ../Scenes/Game/UI/ChatBox.tscn:60
 msgid "Send"
-msgstr ""
+msgstr "보내기"
 
 #: ../Scenes/Game/UI/GameUI.tscn:37 ../Scenes/Game/UI/GameUI.tscn:146
 msgid "Objects"
-msgstr ""
+msgstr "물체들"
 
 #: ../Scenes/Game/UI/GameUI.tscn:43 ../Scenes/Game/UI/GameUI.tscn:162
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:285
 msgid "Games"
-msgstr ""
+msgstr "게임들"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:11
 #: ../Scenes/Game/UI/GameUI.tscn:49
 msgid "Room"
-msgstr ""
+msgstr "방"
 
 #: ../Scenes/Game/UI/GameUI.tscn:55
 msgid "Notebook"
-msgstr ""
+msgstr "노트북"
 
 #: ../Scenes/Game/UI/GameUI.tscn:61
 msgid "Flip Table"
-msgstr ""
+msgstr "테이블 뒤집기"
 
 #: ../Scenes/Game/UI/GameUI.tscn:67
 msgid "Clear Table"
-msgstr ""
+msgstr "테이블 정리하기"
 
 #: ../Scenes/Game/UI/GameUI.tscn:74
 msgid "Undo"
-msgstr ""
+msgstr "원래로 되돌리기"
 
 #: ../Scenes/Game/UI/GameUI.tscn:83
 msgid "45°"
-msgstr ""
+msgstr "45°"
 
 #: ../Scenes/Game/UI/GameUI.tscn:91
 msgid "Menu"
-msgstr ""
+msgstr "메뉴"
 
 #: ../Scenes/Game/UI/GameUI.tscn:157
 msgid "Add"
-msgstr ""
+msgstr "더하기"
 
 #: ../Scenes/Game/UI/GameUI.tscn:158
 #, python-format
 msgid "Added %s."
-msgstr ""
+msgstr "%s가 추가되었습니다."
 
 #: ../Scenes/Game/UI/GameUI.tscn:159
 #, python-format
 msgid "Added %d objects."
-msgstr ""
+msgstr "%d개의 객체가 추가되었습니다."
 
 #: ../Scenes/Game/UI/GameUI.tscn:166
 #, python-format
 msgid "Loaded %d games."
-msgstr ""
+msgstr "%d개의 게임이 로드되었습니다."
 
 #: ../Scenes/Game/UI/GameUI.tscn:204
 msgid "Back to game"
-msgstr ""
+msgstr "게임으로 돌아갑니다"
 
 #: ../Scenes/Game/UI/GameUI.tscn:210
 msgid "Save game"
-msgstr ""
+msgstr "게임을 저장합니다"
 
 #: ../Scenes/Game/UI/GameUI.tscn:216
 msgid "Load game"
-msgstr ""
+msgstr "게임을 불러옵니다"
 
 #: ../Scenes/Game/UI/GameUI.tscn:228
 msgid "Quit to main menu"
-msgstr ""
+msgstr "메인 메뉴를 중지합니다"
 
 #: ../Scenes/Game/UI/GameUI.tscn:234
 msgid "Quit to desktop"
-msgstr ""
+msgstr "데스크탑 종료하기"
 
 #: ../Scenes/Game/UI/GameUI.tscn:239
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:164
 msgid "Load a file"
-msgstr ""
+msgstr "파일 불러오기"
 
 #: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:42
 msgid "Take"
-msgstr ""
+msgstr "가져오기"
 
 #: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:50
 msgid "Take All"
-msgstr ""
+msgstr "모두 가져오기"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:12
 msgid "Details"
-msgstr ""
+msgstr "세부사항들"
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:33
 msgid "Show advanced developer information in JSON form."
-msgstr ""
+msgstr "개발자 고급정보를 JSON형식으로 표시한것을 보여줍니다."
 
 #: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:34
 msgid "Advanced view"
-msgstr ""
+msgstr "향상된 시각"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:35
 msgid "+ New Page"
-msgstr ""
+msgstr "+새 페이지"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:54
 msgid "Title"
-msgstr ""
+msgstr "제목"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:60
 msgid "When ticked, this page will be visible to other players."
-msgstr ""
+msgstr "선택하면 이 페이지가 다른 플레이어에게 표시됩니다."
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:62
 msgid "Public"
-msgstr ""
+msgstr "대중"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:94
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:102
 msgid "100%"
-msgstr ""
+msgstr "100%"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:110
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:122
 msgid "Move Up"
-msgstr ""
+msgstr "위로 이동"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:130
 msgid "Move Down"
-msgstr ""
+msgstr "아래로 이동"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:138
 #: ../Scripts/Game/CameraController.gd:1371
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:228
 msgid "Delete"
-msgstr ""
+msgstr "삭제"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:143
 msgid "Delete page?"
-msgstr ""
+msgstr "페이지를 삭제하시겠습니까?"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:147
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:293
 msgid "Templates"
-msgstr ""
+msgstr "템플릿들"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:151
 msgid "Open"
-msgstr ""
+msgstr "열기"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
-msgstr ""
+msgstr "현재 테이블:"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:52
 msgid "Change table"
-msgstr ""
+msgstr "테이블 바꾸기"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:67
 msgid "Current skybox:"
-msgstr ""
+msgstr "현재 skybox:"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:79
 msgid "Change skybox"
-msgstr ""
+msgstr "skybox 바꾸기"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:93
 msgid "Lamp Type"
-msgstr ""
+msgstr "램프 종류"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:99
 msgid "Sunlight"
-msgstr ""
+msgstr "햇빛"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:107
 msgid "Lamp Intensity"
-msgstr ""
+msgstr "램프 강도"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:128
 msgid "10%"
-msgstr ""
+msgstr "10%"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:134
 msgid "Lamp Color"
-msgstr ""
+msgstr "램프 색깔"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:157
 msgid "Select a skybox..."
-msgstr ""
+msgstr "skybox 선택하기..."
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:161
 #, python-format
 msgid "Loaded %d skyboxes."
-msgstr ""
+msgstr "%d skyboxes 불러오기."
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:164
 msgid "Select a table..."
-msgstr ""
+msgstr "테이블 선택하기..."
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:168
 #, python-format
 msgid "Loaded %d tables."
-msgstr ""
+msgstr "%d tables 불러오기."
 
 #: ../Scenes/Game/UI/Previews/ObjectPreview.tscn:70
 msgid "This item is made up of multiple objects."
-msgstr ""
+msgstr "이 아이템들은 여러개의 물체들로 구성되어있습니다."
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:21
 msgid "Pack:"
-msgstr ""
+msgstr "팩:"
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:35
 msgid "Type:"
-msgstr ""
+msgstr "유형:"
 
 #: ../Scripts/AssetDB.gd:433
 msgid "Cleaning old files..."
-msgstr ""
+msgstr "오래된 파일 지우기..."
 
 #: ../Scripts/BindManager.gd:51
 msgid "Not bound"
-msgstr ""
+msgstr "바인딩되지 않음"
 
 #: ../Scripts/BindManager.gd:58 ../Scripts/Game/CameraController.gd:1452
 msgid "Left Mouse Button"
-msgstr ""
+msgstr "왼쪽 마우스 버튼"
 
 #: ../Scripts/BindManager.gd:60 ../Scripts/Game/CameraController.gd:1509
 msgid "Right Mouse Button"
-msgstr ""
+msgstr "오른쪽 마우스 버튼"
 
 #: ../Scripts/BindManager.gd:62
 msgid "Middle Mouse Button"
-msgstr ""
+msgstr "중간 마우스 버튼"
 
 #: ../Scripts/BindManager.gd:64
 msgid "Extra Mouse Button 1"
-msgstr ""
+msgstr "여분 마우스 버튼 1"
 
 #: ../Scripts/BindManager.gd:66
 msgid "Extra Mouse Button 2"
-msgstr ""
+msgstr "여분 마우스 버튼 2"
 
 #: ../Scripts/BindManager.gd:68
 msgid "Mouse Wheel Up"
-msgstr ""
+msgstr "마우스 휠 위로"
 
 #: ../Scripts/BindManager.gd:70
 msgid "Mouse Wheel Down"
-msgstr ""
+msgstr "마우스 휠 아래로"
 
 #: ../Scripts/BindManager.gd:72
 msgid "Mouse Wheel Left"
-msgstr ""
+msgstr "마우스 휠 왼쪽으로"
 
 #: ../Scripts/BindManager.gd:74
 msgid "Mouse Wheel Right"
-msgstr ""
+msgstr "마우스 휠 오른쪽으로"
 
 #: ../Scripts/BindManager.gd:76
 msgid "Unknown Mouse Button"
-msgstr ""
+msgstr "알려지지 않은 마우스 버튼"
 
 #: ../Scripts/BindManager.gd:78
 msgid "Unknown event type"
-msgstr ""
+msgstr "알려지지않은 이벤트 유형"
 
 #: ../Scripts/ImportAssets.gd:79
 msgid "Tabletop Club could not find any asset packs in the following folders:"
-msgstr ""
+msgstr "Tabletop Club에서 다음 폴더에서 자산 팩을 찾을 수 없습니다:"
 
 #: ../Scripts/ImportAssets.gd:81
 msgid ""
 "Tabletop Club could not find an assets folder in any of the following places:"
-msgstr ""
+msgstr "Tabletop Club에서 다음 위치 중 어느곳에서도 자산 폴더를 찾을 수 없습니다:"
 
 #: ../Scripts/ImportAssets.gd:87
 msgid ""
 "Please place an asset pack into one of these folders, and restart the game."
-msgstr ""
+msgstr "자산 팩을 이 폴더들 중 하나에 넣고, 게임을 다시 시작하세요."
 
 #: ../Scripts/ImportAssets.gd:89
 msgid "Please create one of these folders and restart the game."
-msgstr ""
+msgstr "이 폴더들 중 하나를 생성하고 게임을 다시 시작하세요."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:709 ../Scripts/Lobby.gd:64
 #: ../Scripts/Lobby.gd:70
 msgid "<No Name>"
-msgstr ""
+msgstr "<이름 없음>"
 
 #: ../Scripts/MainMenu.gd:95
 msgid "Alpha Testers"
-msgstr ""
+msgstr "알파 테스터들"
 
 #: ../Scripts/MainMenu.gd:96
 msgid "Contributors"
-msgstr ""
+msgstr "기여자들"
 
 #: ../Scripts/MainMenu.gd:97
 msgid "Cursors"
-msgstr ""
+msgstr "커서들"
 
 #: ../Scripts/MainMenu.gd:98
 msgid "Developers"
-msgstr ""
+msgstr "개발자들"
 
 #: ../Scripts/MainMenu.gd:99
 msgid "Fonts"
-msgstr ""
+msgstr "폰트들"
 
 #: ../Scripts/MainMenu.gd:100
 msgid "Images"
-msgstr ""
+msgstr "이미지들"
 
 #: ../Scripts/MainMenu.gd:101
 msgid "Logo and Icon"
-msgstr ""
+msgstr "로고와아이콘"
 
 #: ../Scripts/MainMenu.gd:102
 msgid "Sound Effects"
-msgstr ""
+msgstr "음향효과"
 
 #: ../Scripts/MainMenu.gd:103
 msgid "Tool Icons"
-msgstr ""
+msgstr "도구 아이콘"
 
 #: ../Scripts/MainMenu.gd:104
 msgid "Translators"
-msgstr ""
+msgstr "번역가들"
 
 #: ../Scripts/MainMenu.gd:106
 msgid "Chinese"
-msgstr ""
+msgstr "중국어"
 
 #: ../Scripts/MainMenu.gd:107
 msgid "Dutch"
-msgstr ""
+msgstr "네델란드어"
 
 #: ../Scripts/MainMenu.gd:108
 msgid "Esperanto"
-msgstr ""
+msgstr "에스페란토"
 
 #: ../Scripts/MainMenu.gd:109
 msgid "French"
-msgstr ""
+msgstr "프랑스어"
 
 #: ../Scripts/MainMenu.gd:110
 msgid "German"
-msgstr ""
+msgstr "독일어"
 
 #: ../Scripts/MainMenu.gd:111
 msgid "Indonesian"
@@ -1244,230 +1250,230 @@ msgstr ""
 
 #: ../Scripts/MainMenu.gd:112
 msgid "Italian"
-msgstr ""
+msgstr "이탈리아어"
 
 #: ../Scripts/MainMenu.gd:113
 msgid "Norwegian"
-msgstr ""
+msgstr "노르웨이어"
 
 #: ../Scripts/MainMenu.gd:114
 msgid "Polish"
-msgstr ""
+msgstr "폴란드어"
 
 #: ../Scripts/MainMenu.gd:115
 msgid "Portuguese"
-msgstr ""
+msgstr "포르투갈어"
 
 #: ../Scripts/MainMenu.gd:116
 msgid "Russian"
-msgstr ""
+msgstr "러시아어"
 
 #: ../Scripts/MainMenu.gd:117
 msgid "Spanish"
-msgstr ""
+msgstr "스페인어"
 
 #: ../Scripts/MainMenu.gd:218
 msgid "Room code must be four characters long!"
-msgstr ""
+msgstr "입력한 방 코드가 잘못되었습니다!"
 
 #: ../Scripts/MainMenu.gd:223
 msgid "Invalid room code!"
-msgstr ""
+msgstr "잘못된 방 코드!"
 
 #: ../Scripts/OptionsMenu.gd:30
 msgid "System Default"
-msgstr ""
+msgstr "시스템 초기화"
 
 #: ../Scripts/OptionsMenu.gd:69
 msgid "Never"
-msgstr ""
+msgstr "한 번도"
 
 #: ../Scripts/OptionsMenu.gd:70
 msgid "30 seconds"
-msgstr ""
+msgstr "30초"
 
 #: ../Scripts/OptionsMenu.gd:71
 msgid "1 minute"
-msgstr ""
+msgstr "1분"
 
 #: ../Scripts/OptionsMenu.gd:73
 msgid "10 minutes"
-msgstr ""
+msgstr "10분"
 
 #: ../Scripts/OptionsMenu.gd:74
 msgid "30 minutes"
-msgstr ""
+msgstr "30분"
 
 #: ../Scripts/OptionsMenu.gd:77
 msgid "Borderless Fullscreen"
-msgstr ""
+msgstr "테두리 없는 전체화면"
 
 #: ../Scripts/OptionsMenu.gd:78
 msgid "Fullscreen"
-msgstr ""
+msgstr "전체화면"
 
 #: ../Scripts/OptionsMenu.gd:83
 msgid "High"
-msgstr ""
+msgstr "높은"
 
 #: ../Scripts/OptionsMenu.gd:84
 msgid "Very High"
-msgstr ""
+msgstr "매우 높음"
 
 #: ../Scripts/OptionsMenu.gd:85
 msgid "Ultra"
-msgstr ""
+msgstr "최고의"
 
 #: ../Scripts/OptionsMenu.gd:87
 msgid "Small"
-msgstr ""
+msgstr "작은"
 
 #: ../Scripts/OptionsMenu.gd:89
 msgid "Large"
-msgstr ""
+msgstr "큰"
 
 #: ../Scripts/RandomMusicPlayer.gd:34
 msgid "Nothing"
-msgstr ""
+msgstr "없음"
 
 #: ../Scripts/RandomMusicPlayer.gd:59
 #, python-format
 msgid "Now Playing: %s"
-msgstr ""
+msgstr "현재 재생중:%s"
 
 #: ../Scripts/Game/CameraController.gd:1132
 msgid "Add selected objects..."
-msgstr ""
+msgstr "선택된 물체들 추가하기..."
 
 #: ../Scripts/Game/CameraController.gd:1171
 #, python-format
 msgid "Count: %d"
-msgstr ""
+msgstr "개수: %d"
 
 #: ../Scripts/Game/CameraController.gd:1173
 #, python-format
 msgid "Value: %d"
-msgstr ""
+msgstr "값:%d"
 
 #: ../Scripts/Game/CameraController.gd:1193
 msgid "Put in hand"
-msgstr ""
+msgstr "손에 넣기"
 
 #: ../Scripts/Game/CameraController.gd:1197
 msgid "Collect individuals"
-msgstr ""
+msgstr "개별로 모으기"
 
 #: ../Scripts/Game/CameraController.gd:1198
 msgid "Collect all"
-msgstr ""
+msgstr "모두 모으기"
 
 #: ../Scripts/Game/CameraController.gd:1202
 msgid "Deal cards"
-msgstr ""
+msgstr "카드를 나누다"
 
 #: ../Scripts/Game/CameraController.gd:1205
 msgid "Take off top"
-msgstr ""
+msgstr "위에거 빼기"
 
 #: ../Scripts/Game/CameraController.gd:1208
 msgid "Orient all up"
-msgstr ""
+msgstr "모두 위로 맞추기"
 
 #: ../Scripts/Game/CameraController.gd:1209
 msgid "Orient all down"
-msgstr ""
+msgstr "모두 아래로 맞추기"
 
 #: ../Scripts/Game/CameraController.gd:1229
 msgid "Suit"
-msgstr ""
+msgstr "무늬"
 
 #: ../Scripts/Game/CameraController.gd:1231
 msgid "Value"
-msgstr ""
+msgstr "값"
 
 #: ../Scripts/Game/CameraController.gd:1233
 msgid "Sort by"
-msgstr ""
+msgstr "정렬 기준"
 
 #: ../Scripts/Game/CameraController.gd:1242
 msgid "Timer"
-msgstr ""
+msgstr "타이머"
 
 #: ../Scripts/Game/CameraController.gd:1278
 msgid "Value: (None)"
-msgstr ""
+msgstr "값:(없음)"
 
 #: ../Scripts/Game/CameraController.gd:1280
 #, python-format
 msgid "Value: %s"
-msgstr ""
+msgstr "값:%s"
 
 #: ../Scripts/Game/CameraController.gd:1284
 #, python-format
 msgid "Total: %d"
-msgstr ""
+msgstr "전체:%d"
 
 #: ../Scripts/Game/CameraController.gd:1286
 #, python-format
 msgid "Total: %f"
-msgstr ""
+msgstr "전체:%f"
 
 #: ../Scripts/Game/CameraController.gd:1306
 msgid "Collect selected"
-msgstr ""
+msgstr "선택된거 모으기"
 
 #: ../Scripts/Game/CameraController.gd:1310
 msgid "Add objects..."
-msgstr ""
+msgstr "물체들 추가하기..."
 
 #: ../Scripts/Game/CameraController.gd:1311
 msgid "Peek inside"
-msgstr ""
+msgstr "안을 엿보다"
 
 #: ../Scripts/Game/CameraController.gd:1313
 msgid "Take objects out"
-msgstr ""
+msgstr "물건을 꺼내다"
 
 #: ../Scripts/Game/CameraController.gd:1329
 msgid "Speaker"
-msgstr ""
+msgstr "스피커"
 
 #: ../Scripts/Game/CameraController.gd:1341
 msgid "Details…"
-msgstr ""
+msgstr "세부사항…"
 
 #: ../Scripts/Game/CameraController.gd:1353
 msgid "Cut"
-msgstr ""
+msgstr "자르기"
 
 #: ../Scripts/Game/CameraController.gd:1354
 msgid "Copy"
-msgstr ""
+msgstr "복사하기"
 
 #: ../Scripts/Game/CameraController.gd:1356
 #: ../Scripts/Game/CameraController.gd:1395
 msgid "Paste"
-msgstr ""
+msgstr "복사하기"
 
 #: ../Scripts/Game/CameraController.gd:1367
 msgid "Unlock"
-msgstr ""
+msgstr "잠금해제"
 
 #: ../Scripts/Game/CameraController.gd:1369
 msgid "Lock"
-msgstr ""
+msgstr "잠금"
 
 #: ../Scripts/Game/CameraController.gd:1373
 msgid "Transform"
-msgstr ""
+msgstr "변형"
 
 #: ../Scripts/Game/CameraController.gd:1400
 msgid "Set spawn point here"
-msgstr ""
+msgstr "여기에 스폰 포인트를 설정하다"
 
 #: ../Scripts/Game/CameraController.gd:1401
 msgid "Spawn object here"
-msgstr ""
+msgstr "여기에 객체 생성"
 
 #: ../Scripts/Game/CameraController.gd:1420
 #, python-format
@@ -1492,248 +1498,248 @@ msgstr ""
 #: ../Scripts/Game/CameraController.gd:1424
 #, python-format
 msgid "Release %s"
-msgstr ""
+msgstr "풀기 %s"
 
 #: ../Scripts/Game/CameraController.gd:1431
 msgid "Scroll Wheel"
-msgstr ""
+msgstr "스크롤 휠"
 
 #: ../Scripts/Game/CameraController.gd:1434
 msgid "Move camera"
-msgstr ""
+msgstr "카메라 움직이기"
 
 #: ../Scripts/Game/CameraController.gd:1438
 msgid "Rotate camera"
-msgstr ""
+msgstr "카메라 회전하기"
 
 #: ../Scripts/Game/CameraController.gd:1439
 #, python-format
 msgid "Hold %s + Move Mouse"
-msgstr ""
+msgstr "%s 누르고 마우스 이동하기"
 
 #: ../Scripts/Game/CameraController.gd:1447
 msgid "Zoom camera"
-msgstr ""
+msgstr "카메라 확대"
 
 #: ../Scripts/Game/CameraController.gd:1457
 msgid "Release selected"
-msgstr ""
+msgstr "선택된 항목 해제"
 
 #: ../Scripts/Game/CameraController.gd:1459
 msgid "Stop box selecting"
-msgstr ""
+msgstr "박스 선택 중지"
 
 #: ../Scripts/Game/CameraController.gd:1462
 msgid "Select object"
-msgstr ""
+msgstr "물체 선택하기"
 
 #: ../Scripts/Game/CameraController.gd:1464
 msgid "Add to selection"
-msgstr ""
+msgstr "선택 항목에 추가"
 
 #: ../Scripts/Game/CameraController.gd:1467
 msgid "Take random object"
-msgstr ""
+msgstr "랜덤으로 물체 선택하기"
 
 #: ../Scripts/Game/CameraController.gd:1468
 #: ../Scripts/Game/CameraController.gd:1471
 #, python-format
 msgid "%s + Move Mouse"
-msgstr ""
+msgstr "%s를 누르고 마우스를 이동하다"
 
 #: ../Scripts/Game/CameraController.gd:1470
 msgid "Take top object"
-msgstr ""
+msgstr "맨위 객체를 가져가다"
 
 #: ../Scripts/Game/CameraController.gd:1473
 msgid "Grab selected"
-msgstr ""
+msgstr "선택된 항목을 잡다"
 
 #: ../Scripts/Game/CameraController.gd:1473
 msgid "Grab object"
-msgstr ""
+msgstr "물체를 잡다"
 
 #: ../Scripts/Game/CameraController.gd:1476
 msgid "Stop moving"
-msgstr ""
+msgstr "움직임 멈추기"
 
 #: ../Scripts/Game/CameraController.gd:1476
 msgid "Start moving"
-msgstr ""
+msgstr "움직임 시작하기"
 
 #: ../Scripts/Game/CameraController.gd:1480
 msgid "Box select"
-msgstr ""
+msgstr "박스 선택하기"
 
 #: ../Scripts/Game/CameraController.gd:1484
 msgid "Flick object"
-msgstr ""
+msgstr "객체 튕기기"
 
 #: ../Scripts/Game/CameraController.gd:1486
 msgid "Prepare to flick"
-msgstr ""
+msgstr "튕길 준비를 하다"
 
 #: ../Scripts/Game/CameraController.gd:1490
 msgid "Stop measuring"
-msgstr ""
+msgstr "측정 멈추기"
 
 #: ../Scripts/Game/CameraController.gd:1492
 msgid "Start measuring"
-msgstr ""
+msgstr "측정 시작하기"
 
 #: ../Scripts/Game/CameraController.gd:1496
 msgid "Create hidden area"
-msgstr ""
+msgstr "숨겨진 영역 만들기"
 
 #: ../Scripts/Game/CameraController.gd:1498
 msgid "Draw hidden area"
-msgstr ""
+msgstr "숨겨진 영역 그리기"
 
 #: ../Scripts/Game/CameraController.gd:1501
 msgid "Paint Table"
-msgstr ""
+msgstr "테이블 색칠하기"
 
 #: ../Scripts/Game/CameraController.gd:1504
 msgid "Erase Paint"
-msgstr ""
+msgstr "페인트 지우기"
 
 #: ../Scripts/Game/CameraController.gd:1514
 msgid "Object menu"
-msgstr ""
+msgstr "객체 메뉴"
 
 #: ../Scripts/Game/CameraController.gd:1516
 msgid "Table menu"
-msgstr ""
+msgstr "테이블 메뉴"
 
 #: ../Scripts/Game/CameraController.gd:1520
 msgid "Stop flicking"
-msgstr ""
+msgstr "튕기기 중지하기"
 
 #: ../Scripts/Game/CameraController.gd:1524
 msgid "Remove last ruler"
-msgstr ""
+msgstr "마지막 눈금 지우기"
 
 #: ../Scripts/Game/CameraController.gd:1528
 msgid "Remove hidden area"
-msgstr ""
+msgstr "숨겨진 영역 지우기"
 
 #: ../Scripts/Game/CameraController.gd:1548
 msgid "Lift selected"
-msgstr ""
+msgstr "선택된 영역 들어올리기"
 
 #: ../Scripts/Game/CameraController.gd:1549
 msgid "Zoom selected"
-msgstr ""
+msgstr "선택된 영역 확대하기"
 
 #: ../Scripts/Game/CameraController.gd:1550
 msgid "Rotate selected"
-msgstr ""
+msgstr "선택된 영역 회전하기"
 
 #: ../Scripts/Game/CameraController.gd:1559
 msgid "Unlock selected"
-msgstr ""
+msgstr "선택된영역 잠금해제"
 
 #: ../Scripts/Game/CameraController.gd:1559
 msgid "Lock selected"
-msgstr ""
+msgstr "선택된 영역 잠그기"
 
 #: ../Scripts/Game/CameraController.gd:1562
 msgid "Delete selected"
-msgstr ""
+msgstr "선택된 영역 지우기"
 
 #: ../Scripts/Game/CameraController.gd:1574
 #: ../Scripts/Game/CameraController.gd:1591
 msgid "Reset orientation"
-msgstr ""
+msgstr "방향 초기화하기"
 
 #: ../Scripts/Game/CameraController.gd:1576
 #: ../Scripts/Game/CameraController.gd:1593
 msgid "Flip orientation"
-msgstr ""
+msgstr "방향 뒤집기"
 
 #: ../Scripts/Game/CameraController.gd:1582
 msgid "Flip card"
-msgstr ""
+msgstr "카드 뒤집기"
 
 #: ../Scripts/Game/CameraController.gd:1584
 msgid "Face card up"
-msgstr ""
+msgstr "카드 앞면 위로두기"
 
 #: ../Scripts/Game/CameraController.gd:1600
 msgid "Reset camera"
-msgstr ""
+msgstr "카메라 초기화하기"
 
 #: ../Scripts/Game/CameraController.gd:1753
 msgid "Pause track"
-msgstr ""
+msgstr "트랙 중지하기"
 
 #: ../Scripts/Game/CameraController.gd:1758
 msgid "Resume track"
-msgstr ""
+msgstr "트랙 재개하기"
 
 #: ../Scripts/Game/CameraController.gd:1762
 msgid "Stop track"
-msgstr ""
+msgstr "트랙 중지하기"
 
 #: ../Scripts/Game/CameraController.gd:1764
 msgid "Play track"
-msgstr ""
+msgstr "트랙 실행시키기"
 
 #: ../Scripts/Game/CameraController.gd:1769
 msgid "No track loaded"
-msgstr ""
+msgstr "트랙이 로드되지 않음"
 
 #: ../Scripts/Game/CameraController.gd:1771
 #, python-format
 msgid "Playing: %s"
-msgstr ""
+msgstr "실행시키기:%s"
 
 #: ../Scripts/Game/CameraController.gd:1773
 #, python-format
 msgid "Loaded: %s"
-msgstr ""
+msgstr "불러오기:%s"
 
 #: ../Scripts/Game/CameraController.gd:1789
 msgid "Pause timer"
-msgstr ""
+msgstr "타이머 중지하기"
 
 #: ../Scripts/Game/CameraController.gd:1794
 msgid "Resume timer"
-msgstr ""
+msgstr "타이머 재개하기"
 
 #: ../Scripts/Game/CameraController.gd:1798
 msgid "Stop countdown"
-msgstr ""
+msgstr "카운트다운 중지하기"
 
 #: ../Scripts/Game/CameraController.gd:1800
 msgid "Start countdown"
-msgstr ""
+msgstr "카운트다운 시작하기"
 
 #: ../Scripts/Game/CameraController.gd:1804
 msgid "Stop stopwatch"
-msgstr ""
+msgstr "스탑워치 중지하기"
 
 #: ../Scripts/Game/CameraController.gd:1806
 msgid "Start stopwatch"
-msgstr ""
+msgstr "스탑워치 시작하기"
 
 #: ../Scripts/Game/Game.gd:548
 #, python-format
 msgid "Downloading %s ..."
-msgstr ""
+msgstr "다운로딩 %s..."
 
 #: ../Scripts/Game/Game.gd:707
 msgid "Download completed!"
-msgstr ""
+msgstr "다운로드 완료!"
 
 #: ../Scripts/Game/Game.gd:746
 #, python-format
 msgid "Verified %d out of %d files!"
-msgstr ""
+msgstr "%d개의 파일 중 %d개가 확인되었습니다!"
 
 #: ../Scripts/Game/Game.gd:1023
 msgid "Loaded table has no version information. Load anyway?"
-msgstr ""
+msgstr "로드된 테이블에 버전 정보가 없습니다. 그래도 로드하시겠습니까?"
 
 #: ../Scripts/Game/Game.gd:1025
 #, python-format
@@ -1744,322 +1750,322 @@ msgstr ""
 
 #: ../Scripts/Game/Game.gd:1027
 msgid "Loaded table is not in the correct format."
-msgstr ""
+msgstr "로드된 테이블이 올바른 형식이 아닙니다."
 
 #: ../Scripts/Game/Game.gd:1071
 #, python-format
 msgid "Client version (%s) does not match server version (%s)!"
-msgstr ""
+msgstr "클라이언 버전(%s)이 서버 버전(%s)과 일치하지 않습니다!"
 
 #: ../Scripts/Game/Game.gd:1214
 #, python-format
 msgid "Importing %s ..."
-msgstr ""
+msgstr "%s 불러오는중 ..."
 
 #: ../Scripts/Game/Game.gd:1232
 #, python-format
 msgid "Saved screenshot to '%s'."
-msgstr ""
+msgstr "%s로 스크린샷 저장됨."
 
 #: ../Scripts/Game/Game.gd:1246
 msgid "Quicksave file saved."
-msgstr ""
+msgstr "퀵세이브 파일이 저장되었습니다."
 
 #: ../Scripts/Game/Game.gd:1309
 msgid "Connecting to the master server..."
-msgstr ""
+msgstr "마스터 서버에 연결하는 중..."
 
 #: ../Scripts/Game/Game.gd:1718
 #, python-format
 msgid "Could not open the file at path '%s' (error %d)."
-msgstr ""
+msgstr "경로 %s에서 파일을 열 수 없습니다(오류 %d)."
 
 #: ../Scripts/Game/Game.gd:1884
 msgid "Establishing connection with the host..."
-msgstr ""
+msgstr "호스트와 연결을 설정하는 중..."
 
 #: ../Scripts/Game/Game.gd:1899
 #, python-format
 msgid "Disconnected from the server! Code: %d Reason: %s"
-msgstr ""
+msgstr "서버와 연결이 끊어졌습니다! 코드:%d 원인:%s"
 
 #: ../Scripts/Game/Game.gd:1995
 msgid "Room has been closed by the host."
-msgstr ""
+msgstr "호스트에 의해 룸이 닫혀졌습니다."
 
 #: ../Scripts/Game/MasterServer.gd:42
 msgid "Could not connect to the master server."
-msgstr ""
+msgstr "마스터 서버에게 연결되지 않았습니다."
 
 #: ../Scripts/Game/MasterServer.gd:43
 msgid "Have not joined a room yet."
-msgstr ""
+msgstr "아직 방에 참여하지 않았습니다."
 
 #: ../Scripts/Game/MasterServer.gd:44
 msgid "Host has disconnected from the room."
-msgstr ""
+msgstr "호스트는 룸으로부터 연결되지 않았습니다."
 
 #: ../Scripts/Game/MasterServer.gd:45
 msgid "Only the host can seal the room."
-msgstr ""
+msgstr "호스트만 방을 감출 수 있습니다."
 
 #: ../Scripts/Game/MasterServer.gd:46
 msgid "Too many rooms are open."
-msgstr ""
+msgstr "너무 많은 방들이 열려있습니다."
 
 #: ../Scripts/Game/MasterServer.gd:47
 msgid "Already in a room."
-msgstr ""
+msgstr "이미 방에 있습니다."
 
 #: ../Scripts/Game/MasterServer.gd:48
 msgid "Room does not exist."
-msgstr ""
+msgstr "방은 존재하지 않습니다."
 
 #: ../Scripts/Game/MasterServer.gd:49
 msgid "Room is sealed."
-msgstr ""
+msgstr "방은 감춰져있습니다."
 
 #: ../Scripts/Game/MasterServer.gd:50
 msgid "Message format is invalid."
-msgstr ""
+msgstr "메시지 형식은 일치하지 않습니다."
 
 #: ../Scripts/Game/MasterServer.gd:51
 msgid "Message is invalid when not in a room."
-msgstr ""
+msgstr "방에 있지 않으면 메시지가 유효하지 않습니다."
 
 #: ../Scripts/Game/MasterServer.gd:52
 msgid "Internal server error."
-msgstr ""
+msgstr "내부 서버 오류."
 
 #: ../Scripts/Game/MasterServer.gd:53
 msgid "Invalid destination."
-msgstr ""
+msgstr "일치하지 않은 목적지."
 
 #: ../Scripts/Game/MasterServer.gd:54
 msgid "Invalid command."
-msgstr ""
+msgstr "일치하지 않은 명령어."
 
 #: ../Scripts/Game/MasterServer.gd:55
 msgid "Too many players connected."
-msgstr ""
+msgstr "아주 많은 플레이어들이 접속중입니다."
 
 #: ../Scripts/Game/MasterServer.gd:56
 msgid "Transfer mode is invalid."
-msgstr ""
+msgstr "변환모드는 적절하지 않습니다."
 
 #: ../Scripts/Game/MasterServer.gd:57
 msgid "Too many connections."
-msgstr ""
+msgstr "접속이 너무 많습니다."
 
 #: ../Scripts/Game/MasterServer.gd:58
 msgid "Reconnected too quickly."
-msgstr ""
+msgstr "빠르게 재연결되었습니다."
 
 #: ../Scripts/Game/MasterServer.gd:59
 msgid "Join queue is full."
-msgstr ""
+msgstr "참여 대기열이 꽉 찼습니다."
 
 #: ../Scripts/Game/UI/ChatBox.gd:56
 msgid "Too much text being sent, waiting..."
-msgstr ""
+msgstr "너무 많은 메시지가 보내졌습니다, 기다리세요..."
 
 #: ../Scripts/Game/UI/ChatBox.gd:152
 msgid "Show the list of commands that can be invoked."
-msgstr ""
+msgstr "실행할 수 있는 명령어 목록을 표시합니다."
 
 #: ../Scripts/Game/UI/ChatBox.gd:154
 msgid "Privately send a message to another player."
-msgstr ""
+msgstr "다른플레이어에게 개인적으로 메시지를 보냅니다."
 
 #: ../Scripts/Game/UI/GameUI.gd:150
 msgid "Clear Paint"
-msgstr ""
+msgstr "페인트칠 지우기"
 
 #: ../Scripts/Game/UI/GameUI.gd:170
 msgid "Welcome to Tabletop Club!"
-msgstr ""
+msgstr "Tabletop Club에 오신걸 환영합니다!"
 
 #: ../Scripts/Game/UI/GameUI.gd:171
 msgid "To view a list of commands, type /? or /help in this chat box."
-msgstr ""
+msgstr "명령어 목록을 보려면 이 채팅 상자에 /? 또는 /help를 입력하세요."
 
 #: ../Scripts/Game/UI/GameUI.gd:248
 #, python-format
 msgid "Room Code: [b]%s[/b]"
-msgstr ""
+msgstr "방 코드:[b]%s[/b]"
 
 #: ../Scripts/Game/UI/GameUI.gd:252
 msgid "Hide Room Code"
-msgstr ""
+msgstr "방 코드 숨기기"
 
 #: ../Scripts/Game/UI/GameUI.gd:254
 msgid "Show Room Code"
-msgstr ""
+msgstr "방 코드 보여주기"
 
 #: ../Scripts/Game/UI/GameUI.gd:322
 #, python-format
 msgid "%s has joined the game."
-msgstr ""
+msgstr "%s가 게임에 참가했습니다."
 
 #: ../Scripts/Game/UI/GameUI.gd:329
 #, python-format
 msgid "%s changed their name to %s"
-msgstr ""
+msgstr "%s가 이름을 %s로 변경했습니다"
 
 #: ../Scripts/Game/UI/GameUI.gd:334
 #, python-format
 msgid "%s has left the game."
-msgstr ""
+msgstr "%s가 게임을 떠났습니다."
 
 #: ../Scripts/Game/UI/GameUI.gd:389
 msgid "View notebook"
-msgstr ""
+msgstr "노트북 보기"
 
 #: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:40
 #, python-format
 msgid "Contents of %s"
-msgstr ""
+msgstr "%s의 내용"
 
 #: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:45
 #, python-format
 msgid "%s is empty."
-msgstr ""
+msgstr "%s가 비었습니다."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:61
 msgid "No objects have been selected."
-msgstr ""
+msgstr "선택된 객체가 없습니다."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:74
 #, python-format
 msgid "A stack of %d cards."
-msgstr ""
+msgstr "%d장의 카드 더미."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:76
 #, python-format
 msgid "A stack of %d tokens."
-msgstr ""
+msgstr "%d개의 토큰 더미."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:83
 msgid "No description."
-msgstr ""
+msgstr "설명 없음."
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:88
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:54
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:85
 #, python-format
 msgid "Author: %s"
-msgstr ""
+msgstr "저자:%s"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:92
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:60
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:89
 #, python-format
 msgid "License: %s"
-msgstr ""
+msgstr "저작권:%s"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:96
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:66
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:93
 #, python-format
 msgid "Modified by: %s"
-msgstr ""
+msgstr "수정한 사람:%s"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:100
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:72
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:97
 #, python-format
 msgid "URL: %s"
-msgstr ""
+msgstr "URL:%s"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:102
 #, python-format
 msgid "A total of %d objects were selected:"
-msgstr ""
+msgstr "총 %d개의 객체가 선택되었습니다:"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:112
 #, python-format
 msgid "Stack of %d cards"
-msgstr ""
+msgstr "%d장의 카드 더미"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:114
 #, python-format
 msgid "Stack of %d tokens"
-msgstr ""
+msgstr "%d의 토큰 더미"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:267
 msgid ""
 "You can use this notebook to write down information that will persist "
 "between sessions."
-msgstr ""
+msgstr "이 노트북을 사용하여 세션 간에 지속되는 정보를 기록할 수 있습니다."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:269
 msgid "This player does not have any public pages in their notebook."
-msgstr ""
+msgstr "이 플레이어는 노트북에 공개된 페이지가 없습니다."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:702
 msgid "<Unknown>"
-msgstr ""
+msgstr "<알려지지 않음>"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:713
 #, python-format
 msgid "%s's Notebook"
-msgstr ""
+msgstr "%s의 노트북"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:757
 #, python-format
 msgid "Are you sure you want to delete the page '%s'?"
-msgstr ""
+msgstr "%s의 페이지를 삭제하는 것이 확실합니까?"
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:849
 #, python-format
 msgid "New %s"
-msgstr ""
+msgstr "새로운 %s"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:121
 #, python-format
 msgid "Modified: %s"
-msgstr ""
+msgstr "수정된: %s"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:164
 msgid "Save a file"
-msgstr ""
+msgstr "파일 저장하기"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:167
 msgid "Save"
-msgstr ""
+msgstr "저장하기"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:167
 msgid "Load"
-msgstr ""
+msgstr "불러오기"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:180
 msgid "Sort:"
-msgstr ""
+msgstr "종류:"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:184
 msgid "Last Modified"
-msgstr ""
+msgstr "마지막 수정본"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:210
 msgid "Delete file?"
-msgstr ""
+msgstr "파일을 삭제하시겠습니까?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:218
 msgid "Overwrite file?"
-msgstr ""
+msgstr "파일을 덮어쓸까요?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:226
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:262
 msgid "Rename"
-msgstr ""
+msgstr "이름변경"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:227
 msgid "Duplicate"
-msgstr ""
+msgstr "복제하기"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:233
 msgid "Invalid name!"
-msgstr ""
+msgstr "잘못된 이름입니다!"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:235
 #, python-format
@@ -2067,6 +2073,8 @@ msgid ""
 "File names cannot contain any of the following characters:\n"
 "%s"
 msgstr ""
+"파일 이름에 다음 무자들을 포함할 수 없습니다:\n"
+"%s"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:241
 msgid "Rename file..."
@@ -2074,12 +2082,12 @@ msgstr "파일 이름 바꾸기..."
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:251
 msgid "Please enter a new name for the file:"
-msgstr ""
+msgstr "파일의 새 이름을 작성해주세요:"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:371
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr ""
+msgstr "정말 %s를 삭제하시겠습니까?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:384
 #, python-format
@@ -2089,64 +2097,64 @@ msgstr "파일 '%s'가 이미 존재합니다. 정말 덮어쓰시겠습니까?"
 #: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:108
 #, python-format
 msgid "Page %d/%d"
-msgstr ""
+msgstr "페이지 %d/%d"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:114
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:302
 msgid "All"
-msgstr ""
+msgstr "모두"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:281
 msgid "Boards"
-msgstr ""
+msgstr "보드"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:282
 msgid "Cards"
-msgstr ""
+msgstr "카드"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:283
 msgid "Containers"
-msgstr ""
+msgstr "컨테이너들"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:284
 msgid "Dice"
-msgstr ""
+msgstr "주사위"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:286
 msgid "Music"
-msgstr ""
+msgstr "음악"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:287
 msgid "Pieces"
-msgstr ""
+msgstr "작품들"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:288
 msgid "Skyboxes"
-msgstr ""
+msgstr "스카이박스들"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:289
 msgid "Sounds"
-msgstr ""
+msgstr "음향"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:290
 msgid "Speakers"
-msgstr ""
+msgstr "화자"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:291
 msgid "Stacks"
-msgstr ""
+msgstr "더미"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:292
 msgid "Tables"
-msgstr ""
+msgstr "테이블"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:294
 msgid "Timers"
-msgstr ""
+msgstr "타이머"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:295
 msgid "Tokens"
-msgstr ""
+msgstr "토큰"
 
 #, fuzzy
 #~ msgid "Tabletop Club on Itch.io"

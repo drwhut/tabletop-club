@@ -1,0 +1,2199 @@
+# Translations template for Tabletop Club.
+# Copyright (c) 2020-2024 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2024 Tabletop Club contributors (see game/CREDITS.tres).
+# This file is distributed under the same license as the Tabletop Club project.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-09-04 13:50+0100\n"
+"PO-Revision-Date: 2025-07-04 04:01+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/tabletop-club/game/"
+"ta/>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.13-dev\n"
+"Generated-By: Babel 2.13.1\n"
+
+#: ../Scenes/ImportAssets.tscn:35
+msgid "Importing assets..."
+msgstr "சொத்துக்களை இறக்குமதி செய்தல் ..."
+
+#: ../Scenes/ImportAssets.tscn:56
+msgid "Missing Asset Folder"
+msgstr "சொத்து கோப்புறை காணவில்லை"
+
+#: ../Scenes/ImportAssets.tscn:62
+msgid "Missing Module"
+msgstr "தொகுதி இல்லை"
+
+#: ../Scenes/Loading.tscn:41
+msgid "Loading..."
+msgstr "ஏற்றுகிறது ..."
+
+#: ../Scenes/MainMenu.tscn:51
+msgid "Singleplayer"
+msgstr "ஒற்றை வீரர்"
+
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:158
+#: ../Scenes/OptionsMenu.tscn:966
+msgid "Multiplayer"
+msgstr "மல்டிபிளேயர்"
+
+#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:65
+msgid "Options"
+msgstr "விருப்பங்கள்"
+
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:315
+msgid "Credits"
+msgstr "வரவு"
+
+#: ../Scenes/MainMenu.tscn:79
+msgid "Quit"
+msgstr "வெளியேறு"
+
+#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:340
+msgid "Import Log"
+msgstr "இறக்குமதி பதிவு"
+
+#: ../Scenes/MainMenu.tscn:98
+msgid "0"
+msgstr "0"
+
+#: ../Scenes/MainMenu.tscn:106
+msgid "Website"
+msgstr "வலைத்தளம்"
+
+#: ../Scenes/MainMenu.tscn:115
+msgid "Source Code"
+msgstr "மூலக் குறியீடு"
+
+#: ../Scenes/MainMenu.tscn:124
+msgid "Documentation"
+msgstr "ஆவணப்படுத்துதல்"
+
+#: ../Scenes/MainMenu.tscn:133
+msgid "Community"
+msgstr "சமூகம்"
+
+#: ../Scenes/MainMenu.tscn:142
+msgid "Donate"
+msgstr "நன்கொடை"
+
+#: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
+msgid "Information"
+msgstr "தகவல்"
+
+#: ../Scenes/MainMenu.tscn:176
+msgid "Host Game"
+msgstr "புரவலன் விளையாட்டு"
+
+#: ../Scenes/MainMenu.tscn:182
+msgid "Create a new lobby for your friends to join over the Internet."
+msgstr "உங்கள் நண்பர்கள் இணையத்தில் சேர புதிய லாபியை உருவாக்கவும்."
+
+#: ../Scenes/MainMenu.tscn:194 ../Scenes/MainMenu.tscn:241
+msgid "Join Game"
+msgstr "விளையாட்டில் சேரவும்"
+
+#: ../Scenes/MainMenu.tscn:200
+msgid "Use a room code to join your friend's lobby."
+msgstr "உங்கள் நண்பரின் லாபியில் சேர அறை குறியீட்டைப் பயன்படுத்தவும்."
+
+#: ../Scenes/MainMenu.tscn:206
+msgid "Enter Room Code"
+msgstr "அறை குறியீட்டை உள்ளிடவும்"
+
+#: ../Scenes/MainMenu.tscn:226
+msgid "Room Code:"
+msgstr "அறை குறியீடு:"
+
+#: ../Scenes/MainMenu.tscn:235
+msgid "ABCD"
+msgstr "ஏபிசிடி"
+
+#: ../Scenes/MainMenu.tscn:333
+msgid "Error"
+msgstr "பிழை"
+
+#: ../Scenes/OptionsMenu.tscn:48
+msgid "Audio"
+msgstr "ஆடியோ"
+
+#: ../Scenes/OptionsMenu.tscn:61
+msgid "Master Volume"
+msgstr "முதன்மை தொகுதி"
+
+#: ../Scenes/OptionsMenu.tscn:68
+msgid "Sets the overall volume of all sources of sound in the game."
+msgstr "விளையாட்டில் ஒலியின் அனைத்து ஆதாரங்களின் ஒட்டுமொத்த அளவை அமைக்கிறது."
+
+#: ../Scenes/OptionsMenu.tscn:79
+msgid "Music Volume"
+msgstr "இசை தொகுதி"
+
+#: ../Scenes/OptionsMenu.tscn:87
+msgid "Sets the volume of all music sources in the game."
+msgstr "விளையாட்டில் உள்ள அனைத்து இசை மூலங்களின் அளவை அமைக்கிறது."
+
+#: ../Scenes/OptionsMenu.tscn:98
+msgid "Sounds Volume"
+msgstr "தொகுதி"
+
+#: ../Scenes/OptionsMenu.tscn:106
+msgid ""
+"Sets the volume of sound sources played manually throughout the game, for"
+" example, from speakers."
+msgstr ""
+"விளையாட்டு முழுவதும் கைமுறையாக விளையாடிய ஒலி மூலங்களின் அளவை அமைக்கிறது, "
+"எடுத்துக்காட்டாக, பேச்சாளர்களிடமிருந்து."
+
+#: ../Scenes/OptionsMenu.tscn:117
+msgid "Effects Volume"
+msgstr "விளைவுகள் தொகுதி"
+
+#: ../Scenes/OptionsMenu.tscn:125
+msgid ""
+"Sets the volume of sound effects played automatically throughout the "
+"game, for example, pieces falling on the table. "
+msgstr ""
+"விளையாட்டு முழுவதும் தானாகவே விளையாடும் ஒலி விளைவுகளின் அளவை அமைக்கிறது, "
+"எடுத்துக்காட்டாக, அட்டவணையில் விழும் துண்டுகள். "
+
+#: ../Scenes/OptionsMenu.tscn:142
+msgid "Controls"
+msgstr "கட்டுப்பாடுகள்"
+
+#: ../Scenes/OptionsMenu.tscn:155
+msgid "Mouse Horizontal Sensitivity"
+msgstr "சுட்டி கிடைமட்ட உணர்திறன்"
+
+#: ../Scenes/OptionsMenu.tscn:162
+msgid "Sets the horizontal sensitivity of the rotation of the camera."
+msgstr "கேமராவின் சுழற்சியின் கிடைமட்ட உணர்திறனை அமைக்கிறது."
+
+#: ../Scenes/OptionsMenu.tscn:174
+msgid "Mouse Vertical Sensitivity"
+msgstr "சுட்டி செங்குத்து உணர்திறன்"
+
+#: ../Scenes/OptionsMenu.tscn:182
+msgid "Sets the vertical sensitivity of the rotation of the camera."
+msgstr "கேமராவின் சுழற்சியின் செங்குத்து உணர்திறனை அமைக்கிறது."
+
+#: ../Scenes/OptionsMenu.tscn:194
+msgid "Mouse Horizontal Invert"
+msgstr "சுட்டி கிடைமட்ட தலைகீழ்"
+
+#: ../Scenes/OptionsMenu.tscn:202
+msgid "Used to invert the rotation of the camera horizontally."
+msgstr "கேமராவின் சுழற்சியை கிடைமட்டமாக மாற்ற பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:209
+msgid "Mouse Vertical Invert"
+msgstr "சுட்டி செங்குத்து தலைகீழ்"
+
+#: ../Scenes/OptionsMenu.tscn:217
+msgid "Used to invert the rotation of the camera vertically."
+msgstr "கேமராவின் சுழற்சியை செங்குத்தாக மாற்ற பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:224
+msgid "Camera Movement Speed"
+msgstr "கேமரா இயக்க விரைவு"
+
+#: ../Scenes/OptionsMenu.tscn:232
+msgid "Used to set how fast the camera moves across the table."
+msgstr "கேமரா அட்டவணையில் எவ்வளவு வேகமாக நகர்கிறது என்பதை அமைக்க பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:244
+msgid "Hold Left Click to Move Camera"
+msgstr "கேமராவை நகர்த்த இடது கிளிக்கைப் பிடித்துக் கொள்ளுங்கள்"
+
+#: ../Scenes/OptionsMenu.tscn:252
+msgid ""
+"Used to allow the player to move the camera by dragging the mouse across "
+"the table."
+msgstr ""
+"சுட்டியை மேசையின் குறுக்கே இழுத்து கேமராவை நகர்த்த பிளேயரை அனுமதிக்க பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:259
+msgid "Zoom Sensitivity"
+msgstr "பெரிதாக்க உணர்திறன்"
+
+#: ../Scenes/OptionsMenu.tscn:267
+msgid ""
+"Sets how fast the camera zooms in and out of the table when using the "
+"scroll wheel."
+msgstr ""
+"உருள் சக்கரத்தைப் பயன்படுத்தும் போது கேமரா மேசைக்கு உள்ளேயும் வெளியேயும் எவ்வளவு விரைவாக "
+"பெரிதாக்குகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:279
+msgid "Zoom Invert"
+msgstr "சூம் தலைகீழ்"
+
+#: ../Scenes/OptionsMenu.tscn:287
+msgid "Used to invert the direction of zooming when using the scroll wheel."
+msgstr ""
+"உருள் சக்கரத்தைப் பயன்படுத்தும் போது பெரிதாக்குவதற்கான திசையை மாற்ற பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:294
+msgid "Piece Lift Sensitivity"
+msgstr "துண்டு லிப்ட் உணர்திறன்"
+
+#: ../Scenes/OptionsMenu.tscn:302
+msgid "Sets how fast a piece will move when lifting it off the table."
+msgstr ""
+"அட்டவணையில் இருந்து தூக்கும்போது ஒரு துண்டு எவ்வளவு வேகமாக நகரும் என்பதை அமைக்கிறது."
+
+#: ../Scenes/OptionsMenu.tscn:314
+msgid "Piece Lift Invert"
+msgstr "துண்டு லிப்ட் தலைகீழ்"
+
+#: ../Scenes/OptionsMenu.tscn:322
+msgid ""
+"Used to invert the direction a piece will go when lifting it off the "
+"table."
+msgstr ""
+"ஒரு துண்டு அதை அட்டவணையில் இருந்து தூக்கும் போது செல்லும் திசையை மாற்ற பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:329
+msgid "Piece Rotation Invert"
+msgstr "துண்டு சுழற்சி தலைகீழ்"
+
+#: ../Scenes/OptionsMenu.tscn:337
+msgid "Used to invert the direction a piece will rotate."
+msgstr "ஒரு துண்டு சுழலும் திசையை மாற்ற பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:344
+msgid "Hand Preview Enabled"
+msgstr "கை முன்னோட்டம் இயக்கப்பட்டது"
+
+#: ../Scenes/OptionsMenu.tscn:352
+msgid ""
+"When set, hovering over a card in your hand will display an enhanced "
+"preview of the card after a short period of time."
+msgstr ""
+"அமைக்கும்போது, உங்கள் கையில் ஒரு அட்டையின் மீது வட்டமிடுவது குறுகிய காலத்திற்குப் பிறகு "
+"அட்டையின் மேம்பட்ட முன்னோட்டத்தைக் காண்பிக்கும்."
+
+#: ../Scenes/OptionsMenu.tscn:360
+msgid "Hand Preview Delay"
+msgstr "கை முன்னோட்டம் நேரந்தவறுகை"
+
+#: ../Scenes/OptionsMenu.tscn:368
+msgid ""
+"Used to set how long the mouse needs to be kept still before a preview of"
+" a card is displayed from the hand."
+msgstr ""
+"ஒரு கார்டின் முன்னோட்டம் கையிலிருந்து காண்பிக்கப்படுவதற்கு முன்பே சுட்டியை இன்னும் எவ்வளவு "
+"நேரம் வைத்திருக்க வேண்டும் என்பதை அமைக்க பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:380
+msgid "Hand Preview Size"
+msgstr "கை முன்னோட்ட அளவு"
+
+#: ../Scenes/OptionsMenu.tscn:388
+msgid "Used to control how large the card preview is."
+msgstr ""
+"அட்டை முன்னோட்டம் எவ்வளவு பெரியது என்பதைக் கட்டுப்படுத்தப் பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:400
+msgid "Hide Control Hints"
+msgstr "கட்டுப்பாட்டு குறிப்புகளை மறைக்கவும்"
+
+#: ../Scenes/OptionsMenu.tscn:408
+msgid "Used to hide the dynamic text displaying how to control the game."
+msgstr ""
+"விளையாட்டை எவ்வாறு கட்டுப்படுத்துவது என்பதைக் காட்டும் மாறும் உரையை மறைக்கப் பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:421
+msgid "General"
+msgstr "பொது"
+
+#: ../Scenes/OptionsMenu.tscn:435
+msgid "Language"
+msgstr "மொழி"
+
+#: ../Scenes/OptionsMenu.tscn:455
+msgid "Autosave Interval"
+msgstr "ஆட்டோசேவ் இடைவெளி"
+
+#: ../Scenes/OptionsMenu.tscn:463
+msgid "Used to set how often autosaves are created."
+msgstr ""
+"ஆட்டோசேவ்ச் எவ்வளவு அடிக்கடி உருவாக்கப்படுகிறது என்பதை அமைக்கப் பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:72
+msgid "5 minutes"
+msgstr "5 நிமிடங்கள்"
+
+#: ../Scenes/OptionsMenu.tscn:474
+msgid "Autosave File Count"
+msgstr "ஆட்டோசேவ் கோப்பு எண்ணிக்கை"
+
+#: ../Scenes/OptionsMenu.tscn:482
+msgid "Used to set the maximum number of autosave files that are made."
+msgstr "தயாரிக்கப்படும் அதிகபட்ச ஆட்டோசேவ் கோப்புகளை அமைக்க பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:492
+msgid "Skip Splash Screen"
+msgstr "ச்பிளாச் திரையைத் தவிர்க்கவும்"
+
+#: ../Scenes/OptionsMenu.tscn:500
+msgid "Skips the Godot Engine splash screen when the game starts."
+msgstr ""
+"விளையாட்டு தொடங்கும் போது கோடோட் என்சின் ச்பிளாச் திரையைத் தவிர்க்கவும்."
+
+#: ../Scenes/OptionsMenu.tscn:508
+msgid "Show System Warnings"
+msgstr "கணினி எச்சரிக்கைகளைக் காட்டு"
+
+#: ../Scenes/OptionsMenu.tscn:516
+msgid "Displays system warnings in the chat box."
+msgstr "அரட்டை பெட்டியில் கணினி எச்சரிக்கைகளைக் காட்டுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:525
+msgid "Show System Errors"
+msgstr "கணினி பிழைகளைக் காட்டு"
+
+#: ../Scenes/OptionsMenu.tscn:533
+msgid "Displays system errors in the chat box."
+msgstr "அரட்டை பெட்டியில் கணினி பிழைகளைக் காட்டுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:561
+msgid "Opens the assets folder in your file explorer."
+msgstr "உங்கள் கோப்பு எக்ச்ப்ளோரரில் சொத்து கோப்புறையைத் திறக்கிறது."
+
+#: ../Scenes/OptionsMenu.tscn:563
+msgid "Open Assets Folder"
+msgstr "திறந்த சொத்துக்கள் கோப்புறை"
+
+#: ../Scenes/OptionsMenu.tscn:579
+msgid "Reimport Assets"
+msgstr "சொத்துக்களை திருப்பிச் செலுத்துங்கள்"
+
+#: ../Scenes/OptionsMenu.tscn:592
+msgid "Key Bindings"
+msgstr "முக்கிய பிணைப்புகள்"
+
+#: ../Scenes/OptionsMenu.tscn:606
+msgid "Move Forward"
+msgstr "முன்னேறவும்"
+
+#: ../Scenes/OptionsMenu.tscn:613
+msgid "Moves the camera forward."
+msgstr "கேமராவை முன்னோக்கி நகர்த்துகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:623
+msgid "Move Back"
+msgstr "பின்னால் செல்லுங்கள்"
+
+#: ../Scenes/OptionsMenu.tscn:631
+msgid "Moves the camera backwards."
+msgstr "கேமராவை பின்னோக்கி நகர்த்துகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:641
+msgid "Move Left"
+msgstr "இடதுபுறம் நகர்த்தவும்"
+
+#: ../Scenes/OptionsMenu.tscn:649
+msgid "Moves the camera left."
+msgstr "மீதமுள்ள கேமராவை நகர்த்துகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:659
+msgid "Move Right"
+msgstr "வலதுபுறம் நகர்த்தவும்"
+
+#: ../Scenes/OptionsMenu.tscn:667
+msgid "Moves the camera right."
+msgstr "கேமராவை சரியாக நகர்த்துகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:677
+msgid "Rotate Camera"
+msgstr "கேமராவை சுழற்றுங்கள்"
+
+#: ../Scenes/OptionsMenu.tscn:685
+msgid "Enable rotation of the camera when moving the mouse."
+msgstr "சுட்டியை நகர்த்தும்போது கேமராவின் சுழற்சியை இயக்கவும்."
+
+#: ../Scenes/OptionsMenu.tscn:695
+msgid "Reset Camera"
+msgstr "கேமராவை மீட்டமைக்கவும்"
+
+#: ../Scenes/OptionsMenu.tscn:703
+msgid "Resets the camera to the default position."
+msgstr "கேமராவை இயல்புநிலை நிலைக்கு மீட்டமைக்கிறது."
+
+#: ../Scenes/OptionsMenu.tscn:713
+msgid "Zoom In / Lift Piece Down"
+msgstr "துண்டு கீழே / தூக்கு கீழே"
+
+#: ../Scenes/OptionsMenu.tscn:721
+msgid "Zoom the camera towards the table, or lift a piece down onto the table."
+msgstr ""
+"கேமராவை மேசையை நோக்கி பெரிதாக்கவும், அல்லது ஒரு துண்டு மேசையில் தூக்கவும்."
+
+#: ../Scenes/OptionsMenu.tscn:731
+msgid "Zoom Out / Lift Piece Up"
+msgstr "பெரிதாக்கவும் / தூக்கி தூக்கவும்"
+
+#: ../Scenes/OptionsMenu.tscn:739
+msgid "Zoom the camera away from the table, or lift a piece up from the table."
+msgstr ""
+"மேசையிலிருந்து கேமராவை பெரிதாக்கவும், அல்லது மேசையிலிருந்து ஒரு பகுதியை உயர்த்தவும்."
+
+#: ../Scenes/OptionsMenu.tscn:749
+msgid "Flip Piece Orientation"
+msgstr "துண்டு நோக்குநிலை"
+
+#: ../Scenes/OptionsMenu.tscn:757
+msgid ""
+"Flip the selected piece or the piece the mouse is over on the horizontal "
+"axis."
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட துண்டு அல்லது கிடைமட்ட அச்சில் சுட்டி முடிந்துவிட்டது."
+
+#: ../Scenes/OptionsMenu.tscn:767
+msgid "Reset Piece Orientation"
+msgstr "துண்டு நோக்குநிலையை மீட்டமைக்கவும்"
+
+#: ../Scenes/OptionsMenu.tscn:775
+msgid ""
+"Resets the selected piece or the piece the mouse is over to its default "
+"orientation."
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட துண்டு அல்லது சுட்டி அதன் இயல்புநிலை நோக்குநிலைக்கு முடிந்துவிட்டது."
+
+#: ../Scenes/OptionsMenu.tscn:785 ../Scripts/Game/CameraController.gd:1589
+msgid "Rotate Piece"
+msgstr "துண்டு சுழற்றுங்கள்"
+
+#: ../Scenes/OptionsMenu.tscn:793
+msgid "Rotates the the piece that is selected, or that the mouse is over."
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட பகுதியை அல்லது சுட்டி முடிந்துவிட்டது என்று சுழற்றுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:803 ../Scripts/Game/CameraController.gd:1210
+#: ../Scripts/Game/CameraController.gd:1542
+#: ../Scripts/Game/CameraController.gd:1597
+msgid "Shuffle"
+msgstr "கலக்கு"
+
+#: ../Scenes/OptionsMenu.tscn:811
+msgid ""
+"Shuffle stacks of cards or tokens that are selected, or that the mouse is"
+" over."
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட அட்டைகள் அல்லது டோக்கன்களின் கலக்கு அடுக்குகள், அல்லது சுட்டி "
+"முடிந்துவிட்டது."
+
+#: ../Scenes/OptionsMenu.tscn:821
+msgid "Lock/Unlock Piece"
+msgstr "துண்டு பூட்டு/திறக்க"
+
+#: ../Scenes/OptionsMenu.tscn:829
+msgid "Toggles the lock on the selected piece, fixing its position and rotation."
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட துண்டின் பூட்டை மாற்றி, அதன் நிலை மற்றும் சுழற்சியை சரிசெய்கிறது."
+
+#: ../Scenes/OptionsMenu.tscn:839
+msgid "Delete Piece"
+msgstr "துண்டு நீக்கு"
+
+#: ../Scenes/OptionsMenu.tscn:847
+msgid "Deletes the currently selected piece."
+msgstr "தற்போது தேர்ந்தெடுக்கப்பட்ட பகுதியை நீக்குகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:857
+msgid "Toggle Debug Info"
+msgstr "பிழைத்திருத்த தகவலை மாற்றவும்"
+
+#: ../Scenes/OptionsMenu.tscn:865
+msgid "Toggles whether debug information is displayed."
+msgstr "பிழைத்திருத்த செய்தி காட்டப்பட்டுள்ளதா என்பதை மாற்றுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:875
+msgid "Quicksave"
+msgstr "விரைவாக"
+
+#: ../Scenes/OptionsMenu.tscn:883
+msgid "Creates a quicksave file."
+msgstr "குவிக்சேவ் கோப்பை உருவாக்குகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:893
+msgid "Quickload"
+msgstr "குயிக்லோட்"
+
+#: ../Scenes/OptionsMenu.tscn:901
+msgid "Loads the latest quicksave file."
+msgstr "அண்மைக் கால குவிக்சேவ் கோப்பை ஏற்றுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:911
+msgid "Toggle UI"
+msgstr "இடைமுகம் ஐ மாற்றவும்"
+
+#: ../Scenes/OptionsMenu.tscn:919
+msgid "Toggles whether the entire UI is displayed."
+msgstr "முழு இடைமுகம் க்கும் காண்பிக்கப்படுகிறதா என்பதை மாற்றுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:929
+msgid "Take Screenshot"
+msgstr "திரைக்காட்சி எடுத்துக் கொள்ளுங்கள்"
+
+#: ../Scenes/OptionsMenu.tscn:937
+msgid "Takes a screenshot of the game in its current state."
+msgstr "விளையாட்டின் திரை சாட்டை அதன் தற்போதைய நிலையில் எடுக்கிறது."
+
+#: ../Scenes/OptionsMenu.tscn:952
+msgid "Used to reset the key bindings to their default values."
+msgstr ""
+"முக்கிய பிணைப்புகளை அவற்றின் இயல்புநிலை மதிப்புகளுக்கு மீட்டமைக்கப் பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:953 ../Scenes/OptionsMenu.tscn:1413
+msgid "Reset Bindings"
+msgstr "பிணைப்புகளை மீட்டமைக்கவும்"
+
+#: ../Scenes/OptionsMenu.tscn:980 ../Scripts/Game/CameraController.gd:1227
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:185
+msgid "Name"
+msgstr "பெயர்"
+
+#: ../Scenes/OptionsMenu.tscn:987
+msgid "The player's displayed name in multiplayer lobbies."
+msgstr "மல்டிபிளேயர் லாபிகளில் பிளேயரின் காட்டப்பட்ட பெயர்."
+
+#: ../Scenes/OptionsMenu.tscn:989
+msgid "Player"
+msgstr "வீரர்"
+
+#: ../Scenes/OptionsMenu.tscn:997 ../Scripts/Game/CameraController.gd:1350
+msgid "Color"
+msgstr "நிறம்"
+
+#: ../Scenes/OptionsMenu.tscn:1005
+msgid "The player's displayed colour in multiplayer lobbies."
+msgstr "மல்டிபிளேயர் லாபிகளில் பிளேயரின் வண்ணம் காட்டப்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:1015
+msgid "Chat Font Size"
+msgstr "எழுத்துரு அளவு அரட்டை"
+
+#: ../Scenes/OptionsMenu.tscn:1023
+msgid "Changes the size of the text in the chat box."
+msgstr "அரட்டை பெட்டியில் உரையின் அளவை மாற்றுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
+#: ../Scripts/OptionsMenu.gd:82
+msgid "Medium"
+msgstr "சராசரி"
+
+#: ../Scenes/OptionsMenu.tscn:1034
+msgid "Hide Player Cursors"
+msgstr "பிளேயர் கர்சர்களை மறைக்கவும்"
+
+#: ../Scenes/OptionsMenu.tscn:1042
+msgid "Used to stop showing other player's cursors when in multiplayer lobbies."
+msgstr ""
+"மல்டிபிளேயர் லாபிகளில் இருக்கும்போது மற்ற வீரர்கள் கர்சரைக் காண்பிப்பதை நிறுத்தப் "
+"பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:1050
+msgid "Censor Profanity"
+msgstr "தணிக்கை அவதூறு"
+
+#: ../Scenes/OptionsMenu.tscn:1058
+msgid ""
+"Used to censor potentially offensive words in the chat window when in "
+"multiplayer lobbies."
+msgstr ""
+"மல்டிபிளேயர் லாபிகளில் இருக்கும்போது அரட்டை சாளரத்தில் ஆபத்தான சொற்களை தணிக்கை செய்யப் "
+"பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:1073
+msgid "Video"
+msgstr "ஒளிதோற்றம்"
+
+#: ../Scenes/OptionsMenu.tscn:1087
+msgid "Window Mode"
+msgstr "சாளரம் பயன்முறை"
+
+#: ../Scenes/OptionsMenu.tscn:1094
+msgid "Sets the mode in which the game window is displayed."
+msgstr "விளையாட்டு சாளரம் காட்டப்படும் பயன்முறையை அமைக்கிறது."
+
+#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:76
+msgid "Windowed"
+msgstr "சாளரம்"
+
+#: ../Scenes/OptionsMenu.tscn:1105
+msgid "Field of View"
+msgstr "பார்வை புலம்"
+
+#: ../Scenes/OptionsMenu.tscn:1113
+msgid "Sets the field of view of the in-game camera."
+msgstr "விளையாட்டு கேமராவின் பார்வைத் துறையை அமைக்கிறது."
+
+#: ../Scenes/OptionsMenu.tscn:1126
+msgid "VSync"
+msgstr "Vsync"
+
+#: ../Scenes/OptionsMenu.tscn:1145
+msgid "Shadow Detail"
+msgstr "நிழல் விவரம்"
+
+#: ../Scenes/OptionsMenu.tscn:1165
+msgid "Multisample Anti-Aliasing (MSAA)"
+msgstr "மல்டிசாம்பிள் எதிர்ப்பு மாற்றுப்பெயர் (MSAA)"
+
+#: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
+#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:80
+msgid "None"
+msgstr "எதுவுமில்லை"
+
+#: ../Scenes/OptionsMenu.tscn:1186
+msgid "Screen Space Ambient Occlusion (SSAO)"
+msgstr "திரை விண்வெளி சுற்றுப்புற மறுப்பு (SSAO)"
+
+#: ../Scenes/OptionsMenu.tscn:1208
+msgid "Skybox Radiance Detail"
+msgstr "ச்கை பாக்ச் ரேடியன்ச் விவரம்"
+
+#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:81
+msgid "Low"
+msgstr "குறைந்த"
+
+#: ../Scenes/OptionsMenu.tscn:1228
+msgid "Depth of Field"
+msgstr "புலத்தின் ஆழம்"
+
+#: ../Scenes/OptionsMenu.tscn:1249
+msgid "Depth of Field Amount"
+msgstr "புலத்தின் ஆழம் தொகை"
+
+#: ../Scenes/OptionsMenu.tscn:1257
+msgid ""
+"Used to determine how much the background is blurred when using depth of "
+"field."
+msgstr ""
+"புலத்தின் ஆழத்தைப் பயன்படுத்தும் போது பின்னணி எவ்வளவு மங்கலாகிறது என்பதை தீர்மானிக்கப் "
+"பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:1269
+msgid "Depth of Field Distance"
+msgstr "புல தூரத்தின் ஆழம்"
+
+#: ../Scenes/OptionsMenu.tscn:1277
+msgid ""
+"Used to set the threshold of what is considered the background when using"
+" depth of field."
+msgstr ""
+"புலத்தின் ஆழத்தைப் பயன்படுத்தும் போது பின்னணியாகக் கருதப்படும் வாசலை அமைக்கப் பயன்படுகிறது."
+
+#: ../Scenes/OptionsMenu.tscn:1289
+msgid "Table Paint Filtering"
+msgstr "அட்டவணை வண்ணப்பூச்சு வடிகட்டுதல்"
+
+#: ../Scenes/OptionsMenu.tscn:1312
+msgid "Back"
+msgstr "பின்"
+
+#: ../Scenes/Game/CameraController.tscn:410
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:154
+#: ../Scenes/OptionsMenu.tscn:1318
+msgid "Apply"
+msgstr "இடு"
+
+#: ../Scenes/Game/CameraController.tscn:502
+#: ../Scenes/Game/CameraController.tscn:575
+#: ../Scenes/Game/CameraController.tscn:642
+#: ../Scenes/Game/CameraController.tscn:696 ../Scenes/OptionsMenu.tscn:1325
+msgid "OK"
+msgstr "சரி"
+
+#: ../Scenes/OptionsMenu.tscn:1370
+msgid "Please press a key or button to bind it..."
+msgstr "அதை பிணைக்க ஒரு விசை அல்லது பொத்தானை அழுத்தவும் ..."
+
+#: ../Scenes/OptionsMenu.tscn:1390
+msgid "Cancel"
+msgstr "ரத்துசெய்"
+
+#: ../Scenes/OptionsMenu.tscn:1397
+msgid "Keep video settings?"
+msgstr "வீடியோ அமைப்புகளை வைத்திருக்கவா?"
+
+#: ../Scenes/OptionsMenu.tscn:1405
+msgid "Reimporting Assets"
+msgstr "சொத்துக்களை மறுசீரமைத்தல்"
+
+#: ../Scenes/OptionsMenu.tscn:1423
+msgid "Warning!"
+msgstr "எச்சரிக்கை!"
+
+#: ../Scenes/RandomMusicPlayer.tscn:23
+msgid "Now Playing:"
+msgstr "இப்போது விளையாடுகிறது:"
+
+#: ../Scenes/Game/CameraController.tscn:99
+msgid "Deal X cards"
+msgstr "டீல் ஃச் கார்டுகள்"
+
+#: ../Scenes/Game/CameraController.tscn:129
+msgid "Select track"
+msgstr "தடத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: ../Scenes/Game/CameraController.tscn:147
+msgid "Positional audio"
+msgstr "நிலை ஆடியோ"
+
+#: ../Scenes/Game/CameraController.tscn:153
+msgid "Range:"
+msgstr "எல்லை:"
+
+#: ../Scenes/Game/CameraController.tscn:173
+msgid "Take X off top"
+msgstr "மேலே ஃச் எடுத்துக் கொள்ளுங்கள்"
+
+#: ../Scenes/Game/CameraController.tscn:186
+msgid "Take X out"
+msgstr "ஃச் வெளியே எடுக்கவும்"
+
+#: ../Scenes/Game/CameraController.tscn:242
+msgid "Position:"
+msgstr "நிலை:"
+
+#: ../Scenes/Game/CameraController.tscn:253
+#: ../Scenes/Game/CameraController.tscn:311
+#: ../Scenes/Game/CameraController.tscn:363
+msgid "X:"
+msgstr "X:"
+
+#: ../Scenes/Game/CameraController.tscn:269
+#: ../Scenes/Game/CameraController.tscn:325
+#: ../Scenes/Game/CameraController.tscn:379
+msgid "Y:"
+msgstr "ஒய்:"
+
+#: ../Scenes/Game/CameraController.tscn:285
+#: ../Scenes/Game/CameraController.tscn:339
+#: ../Scenes/Game/CameraController.tscn:395
+msgid "Z:"
+msgstr "Z:"
+
+#: ../Scenes/Game/CameraController.tscn:300
+msgid "Rotation (°):"
+msgstr "சுழற்சி (°):"
+
+#: ../Scenes/Game/CameraController.tscn:352
+#: ../Scenes/Game/CameraController.tscn:529
+msgid "Scale:"
+msgstr "அளவு:"
+
+#: ../Scenes/Game/CameraController.tscn:430
+msgid "Value:"
+msgstr "மதிப்பு:"
+
+#: ../Scenes/Game/CameraController.tscn:442
+#: ../Scripts/Game/CameraController.gd:1300
+msgid "Set value"
+msgstr "மதிப்பை அமைக்கவும்"
+
+#: ../Scenes/Game/CameraController.tscn:473
+msgid "Strength:"
+msgstr "வலிமை:"
+
+#: ../Scenes/Game/CameraController.tscn:484
+msgid "1.0"
+msgstr "1.0"
+
+#: ../Scenes/Game/CameraController.tscn:561
+msgid "System:"
+msgstr "அமைப்பு:"
+
+#: ../Scenes/Game/CameraController.tscn:567
+msgid "Metric"
+msgstr "மெட்ரிக்"
+
+#: ../Scenes/Game/CameraController.tscn:602
+msgid "Brush Color:"
+msgstr "தூரிகை நிறம்:"
+
+#: ../Scenes/Game/CameraController.tscn:615
+msgid "Brush Size:"
+msgstr "தூரிகை அளவு:"
+
+#: ../Scenes/Game/CameraController.tscn:626
+#: ../Scenes/Game/CameraController.tscn:680
+msgid "1"
+msgstr "1"
+
+#: ../Scenes/Game/CameraController.tscn:669
+msgid "Eraser Size:"
+msgstr "அழிப்பான் அளவு:"
+
+#: ../Scenes/Game/CameraController.tscn:699
+msgid "Select a track..."
+msgstr "ஒரு பாதையைத் தேர்ந்தெடுக்கவும் ..."
+
+#: ../Scenes/Game/CameraController.tscn:704
+#, python-format
+msgid "Loaded %d tracks."
+msgstr "ஏற்றப்பட்ட %d தடங்கள்."
+
+#: ../Scenes/Game/Game.tscn:35
+msgid "Missing Assets"
+msgstr "சொத்துக்கள் காணவில்லை"
+
+#: ../Scenes/Game/Game.tscn:44
+#, python-format
+msgid ""
+"The host has imported assets that your client is missing. This means that"
+" you won't be able to see these assets while in this game. There are a "
+"total of %d missing assets, and %d assets differ between your client and "
+"the host's client:"
+msgstr ""
+"உங்கள் வாடிக்கையாளர் காணாமல் போன சொத்துக்களை புரவலன் இறக்குமதி செய்துள்ளது. இந்த "
+"விளையாட்டில் இருக்கும்போது இந்த சொத்துக்களை நீங்கள் பார்க்க முடியாது என்பதே இதன் பொருள். "
+"மொத்தம் %d காணாமல் போன சொத்துக்கள் உள்ளன, மேலும் உங்கள் வாடிக்கையாளருக்கும் ஓச்டின் "
+"வாடிக்கையாளருக்கும் இடையில் %d சொத்துக்கள் வேறுபடுகின்றன:"
+
+#: ../Scenes/Game/Game.tscn:58
+#, python-format
+msgid ""
+"Your client is also missing %d files, and %d files differ from that of "
+"the host's, which in total is %s of data:"
+msgstr ""
+"உங்கள் கிளையன்ட் %d கோப்புகளையும் காணவில்லை, மற்றும் %d கோப்புகள் ஓச்டிலிருந்து வேறுபடுகின்"
+"றன, இது மொத்தத்தில் தரவின் %s ஆகும்:"
+
+#: ../Scenes/Game/Game.tscn:86
+msgid "Yes, download missing assets."
+msgstr "ஆம், காணாமல் போன சொத்துக்களைப் பதிவிறக்கவும்."
+
+#: ../Scenes/Game/Game.tscn:93
+msgid "No, continue without them."
+msgstr "இல்லை, அவர்கள் இல்லாமல் தொடரவும்."
+
+#: ../Scenes/Game/Game.tscn:99
+msgid "Download Assets?"
+msgstr "சொத்துக்களைப் பதிவிறக்கவா?"
+
+#: ../Scenes/Game/Game.tscn:108
+msgid "Downloading..."
+msgstr "பதிவிறக்கம் ..."
+
+#: ../Scenes/Game/Game.tscn:123
+msgid "Waiting for download..."
+msgstr "பதிவிறக்க காத்திருக்கிறது ..."
+
+#: ../Scenes/Game/Game.tscn:136
+msgid "Waiting to verify integrity..."
+msgstr "ஒருமைப்பாட்டை சரிபார்க்க காத்திருக்கிறது ..."
+
+#: ../Scenes/Game/Game.tscn:149
+msgid "Waiting to import assets..."
+msgstr "சொத்துக்களை இறக்குமதி செய்ய காத்திருக்கிறது ..."
+
+#: ../Scenes/Game/Game.tscn:168 ../Scenes/Game/Game.tscn:186
+msgid "Error!"
+msgstr "பிழை!"
+
+#: ../Scenes/Game/Game.tscn:176
+msgid "Download Folder Locked"
+msgstr "கோப்புறை பூட்டப்பட்டுள்ளது"
+
+#: ../Scenes/Game/UI/ChatBox.tscn:54
+msgid "Type a message here..."
+msgstr "இங்கே ஒரு செய்தியைத் தட்டச்சு செய்க ..."
+
+#: ../Scenes/Game/UI/ChatBox.tscn:60
+msgid "Send"
+msgstr "அனுப்பு"
+
+#: ../Scenes/Game/UI/GameUI.tscn:37 ../Scenes/Game/UI/GameUI.tscn:146
+msgid "Objects"
+msgstr "பொருள்கள்"
+
+#: ../Scenes/Game/UI/GameUI.tscn:43 ../Scenes/Game/UI/GameUI.tscn:162
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:285
+msgid "Games"
+msgstr "விளையாட்டுகள்"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:11
+#: ../Scenes/Game/UI/GameUI.tscn:49
+msgid "Room"
+msgstr "அறை"
+
+#: ../Scenes/Game/UI/GameUI.tscn:55
+msgid "Notebook"
+msgstr "நோட்புக்"
+
+#: ../Scenes/Game/UI/GameUI.tscn:61
+msgid "Flip Table"
+msgstr "மாற்றும் அட்டவணை"
+
+#: ../Scenes/Game/UI/GameUI.tscn:67
+msgid "Clear Table"
+msgstr "தெளிவான அட்டவணை"
+
+#: ../Scenes/Game/UI/GameUI.tscn:74
+msgid "Undo"
+msgstr "செயல்தவிர்"
+
+#: ../Scenes/Game/UI/GameUI.tscn:83
+msgid "45°"
+msgstr "45 °"
+
+#: ../Scenes/Game/UI/GameUI.tscn:91
+msgid "Menu"
+msgstr "பட்டியல்"
+
+#: ../Scenes/Game/UI/GameUI.tscn:157
+msgid "Add"
+msgstr "கூட்டு"
+
+#: ../Scenes/Game/UI/GameUI.tscn:158
+#, python-format
+msgid "Added %s."
+msgstr "சேர்க்கப்பட்டது %s."
+
+#: ../Scenes/Game/UI/GameUI.tscn:159
+#, python-format
+msgid "Added %d objects."
+msgstr "%d பொருள்கள் சேர்க்கப்பட்டன."
+
+#: ../Scenes/Game/UI/GameUI.tscn:166
+#, python-format
+msgid "Loaded %d games."
+msgstr "%d விளையாட்டுகளை ஏற்றியது."
+
+#: ../Scenes/Game/UI/GameUI.tscn:204
+msgid "Back to game"
+msgstr "விளையாட்டுக்குத் திரும்பு"
+
+#: ../Scenes/Game/UI/GameUI.tscn:210
+msgid "Save game"
+msgstr "விளையாட்டைச் சேமிக்கவும்"
+
+#: ../Scenes/Game/UI/GameUI.tscn:216
+msgid "Load game"
+msgstr "விளையாட்டு சுமை"
+
+#: ../Scenes/Game/UI/GameUI.tscn:228
+msgid "Quit to main menu"
+msgstr "முதன்மையான மெனுவுக்கு வெளியேறு"
+
+#: ../Scenes/Game/UI/GameUI.tscn:234
+msgid "Quit to desktop"
+msgstr "டெச்க்டாப்பில் இருந்து வெளியேறவும்"
+
+#: ../Scenes/Game/UI/GameUI.tscn:239
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:164
+msgid "Load a file"
+msgstr "ஒரு கோப்பை ஏற்றவும்"
+
+#: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:42
+msgid "Take"
+msgstr "எடுத்துக் கொள்ளுங்கள்"
+
+#: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:50
+msgid "Take All"
+msgstr "அனைத்தையும் எடுத்துக் கொள்ளுங்கள்"
+
+#: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:12
+msgid "Details"
+msgstr "விவரங்கள்"
+
+#: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:33
+msgid "Show advanced developer information in JSON form."
+msgstr "சாதொபொகு படிவத்தில் மேம்பட்ட உருவாக்குபவர் தகவல்களைக் காட்டு."
+
+#: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:34
+msgid "Advanced view"
+msgstr "மேம்பட்ட பார்வை"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:35
+msgid "+ New Page"
+msgstr "+ புதிய பக்கம்"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:54
+msgid "Title"
+msgstr "தலைப்பு"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:60
+msgid "When ticked, this page will be visible to other players."
+msgstr "தேர்வுசெய்யும்போது, இந்த பக்கம் மற்ற வீரர்களுக்குத் தெரியும்."
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:62
+msgid "Public"
+msgstr "பொது"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:94
+msgid "-"
+msgstr "-"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:102
+msgid "100%"
+msgstr "100%"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:110
+msgid "+"
+msgstr "+"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:122
+msgid "Move Up"
+msgstr "மேலே செல்லுங்கள்"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:130
+msgid "Move Down"
+msgstr "கீழே செல்லுங்கள்"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:138
+#: ../Scripts/Game/CameraController.gd:1371
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:228
+msgid "Delete"
+msgstr "நீக்கு"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:143
+msgid "Delete page?"
+msgstr "பக்கத்தை நீக்கவா?"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:147
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:293
+msgid "Templates"
+msgstr "வார்ப்புருக்கள்"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:151
+msgid "Open"
+msgstr "திற"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
+msgid "Current table:"
+msgstr "தற்போதைய அட்டவணை:"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:52
+msgid "Change table"
+msgstr "அட்டவணையை மாற்றவும்"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:67
+msgid "Current skybox:"
+msgstr "தற்போதைய ச்கை பாக்ச்:"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:79
+msgid "Change skybox"
+msgstr "ச்கை பாக்சை மாற்றவும்"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:93
+msgid "Lamp Type"
+msgstr "விளக்குகள் வகை"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:99
+msgid "Sunlight"
+msgstr "சூரிய ஒளி"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:107
+msgid "Lamp Intensity"
+msgstr "விளக்கு தீவிரம்"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:128
+msgid "10%"
+msgstr "10%"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:134
+msgid "Lamp Color"
+msgstr "விளக்கு நிறம்"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:157
+msgid "Select a skybox..."
+msgstr "ச்கை பாக்சைத் தேர்ந்தெடுக்கவும் ..."
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:161
+#, python-format
+msgid "Loaded %d skyboxes."
+msgstr "ஏற்றப்பட்ட %d ச்கை பாக்ச்கள்."
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:164
+msgid "Select a table..."
+msgstr "ஒரு அட்டவணையைத் தேர்ந்தெடுக்கவும் ..."
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:168
+#, python-format
+msgid "Loaded %d tables."
+msgstr "ஏற்றப்பட்ட %d அட்டவணைகள்."
+
+#: ../Scenes/Game/UI/Previews/ObjectPreview.tscn:70
+msgid "This item is made up of multiple objects."
+msgstr "இந்த உருப்படி பல பொருள்களால் ஆனது."
+
+#: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:21
+msgid "Pack:"
+msgstr "பொதி:"
+
+#: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:35
+msgid "Type:"
+msgstr "தட்டச்சு:"
+
+#: ../Scripts/AssetDB.gd:433
+msgid "Cleaning old files..."
+msgstr "பழைய கோப்புகளை தூய்மை செய்தல் ..."
+
+#: ../Scripts/BindManager.gd:51
+msgid "Not bound"
+msgstr "பிணைக்கப்படவில்லை"
+
+#: ../Scripts/BindManager.gd:58 ../Scripts/Game/CameraController.gd:1452
+msgid "Left Mouse Button"
+msgstr "இடது சுட்டி பொத்தான்"
+
+#: ../Scripts/BindManager.gd:60 ../Scripts/Game/CameraController.gd:1509
+msgid "Right Mouse Button"
+msgstr "வலது சுட்டி பொத்தான்"
+
+#: ../Scripts/BindManager.gd:62
+msgid "Middle Mouse Button"
+msgstr "நடுத்தர சுட்டி பொத்தான்"
+
+#: ../Scripts/BindManager.gd:64
+msgid "Extra Mouse Button 1"
+msgstr "கூடுதல் சுட்டி பொத்தான் 1"
+
+#: ../Scripts/BindManager.gd:66
+msgid "Extra Mouse Button 2"
+msgstr "கூடுதல் சுட்டி பொத்தான் 2"
+
+#: ../Scripts/BindManager.gd:68
+msgid "Mouse Wheel Up"
+msgstr "சுட்டி சக்கரம் மேலே"
+
+#: ../Scripts/BindManager.gd:70
+msgid "Mouse Wheel Down"
+msgstr "சுட்டி சக்கரம் கீழே"
+
+#: ../Scripts/BindManager.gd:72
+msgid "Mouse Wheel Left"
+msgstr "சுட்டி சக்கரம் இடது"
+
+#: ../Scripts/BindManager.gd:74
+msgid "Mouse Wheel Right"
+msgstr "சுட்டி சக்கரம் வலது"
+
+#: ../Scripts/BindManager.gd:76
+msgid "Unknown Mouse Button"
+msgstr "தெரியாத சுட்டி பொத்தான்"
+
+#: ../Scripts/BindManager.gd:78
+msgid "Unknown event type"
+msgstr "தெரியாத நிகழ்வு வகை"
+
+#: ../Scripts/ImportAssets.gd:79
+msgid "Tabletop Club could not find any asset packs in the following folders:"
+msgstr ""
+"டேப்லெட் கிளப்பில் பின்வரும் கோப்புறைகளில் எந்த சொத்து பொதிகளையும் கண்டுபிடிக்க "
+"முடியவில்லை:"
+
+#: ../Scripts/ImportAssets.gd:81
+msgid ""
+"Tabletop Club could not find an assets folder in any of the following "
+"places:"
+msgstr ""
+"டேப்லெட் கிளப்பில் பின்வரும் எந்த இடங்களிலும் சொத்து கோப்புறையைக் கண்டுபிடிக்க முடியவில்லை:"
+
+#: ../Scripts/ImportAssets.gd:87
+msgid ""
+"Please place an asset pack into one of these folders, and restart the "
+"game."
+msgstr ""
+"தயவுசெய்து இந்த கோப்புறைகளில் ஒன்றில் ஒரு சொத்து பேக்கை வைத்து, விளையாட்டை மறுதொடக்கம் "
+"செய்யுங்கள்."
+
+#: ../Scripts/ImportAssets.gd:89
+msgid "Please create one of these folders and restart the game."
+msgstr ""
+"தயவுசெய்து இந்த கோப்புறைகளில் ஒன்றை உருவாக்கி விளையாட்டை மறுதொடக்கம் செய்யுங்கள்."
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:709 ../Scripts/Lobby.gd:64
+#: ../Scripts/Lobby.gd:70
+msgid "<No Name>"
+msgstr "<பெயர் இல்லை>"
+
+#: ../Scripts/MainMenu.gd:95
+msgid "Alpha Testers"
+msgstr "ஆல்பா சோதனையாளர்கள்"
+
+#: ../Scripts/MainMenu.gd:96
+msgid "Contributors"
+msgstr "பங்களிப்பாளர்கள்"
+
+#: ../Scripts/MainMenu.gd:97
+msgid "Cursors"
+msgstr "கர்சர்கள்"
+
+#: ../Scripts/MainMenu.gd:98
+msgid "Developers"
+msgstr "உருவாக்குநர்கள்"
+
+#: ../Scripts/MainMenu.gd:99
+msgid "Fonts"
+msgstr "எழுத்துருக்கள்"
+
+#: ../Scripts/MainMenu.gd:100
+msgid "Images"
+msgstr "படங்கள்"
+
+#: ../Scripts/MainMenu.gd:101
+msgid "Logo and Icon"
+msgstr "லோகோ மற்றும் படவுரு"
+
+#: ../Scripts/MainMenu.gd:102
+msgid "Sound Effects"
+msgstr "ஒலி விளைவுகள்"
+
+#: ../Scripts/MainMenu.gd:103
+msgid "Tool Icons"
+msgstr "கருவி சின்னங்கள்"
+
+#: ../Scripts/MainMenu.gd:104
+msgid "Translators"
+msgstr "மொழிபெயர்ப்பாளர்கள்"
+
+#: ../Scripts/MainMenu.gd:106
+msgid "Chinese"
+msgstr "சீன"
+
+#: ../Scripts/MainMenu.gd:107
+msgid "Dutch"
+msgstr "டச்சு"
+
+#: ../Scripts/MainMenu.gd:108
+msgid "Esperanto"
+msgstr "எச்பெராண்டோ"
+
+#: ../Scripts/MainMenu.gd:109
+msgid "French"
+msgstr "பிரஞ்சு"
+
+#: ../Scripts/MainMenu.gd:110
+msgid "German"
+msgstr "செர்மன்"
+
+#: ../Scripts/MainMenu.gd:111
+msgid "Indonesian"
+msgstr "இந்தோனேசிய"
+
+#: ../Scripts/MainMenu.gd:112
+msgid "Italian"
+msgstr "இத்தாலிய"
+
+#: ../Scripts/MainMenu.gd:113
+msgid "Norwegian"
+msgstr "நோர்வே"
+
+#: ../Scripts/MainMenu.gd:114
+msgid "Polish"
+msgstr "போலீச்"
+
+#: ../Scripts/MainMenu.gd:115
+msgid "Portuguese"
+msgstr "போர்த்துகீசியம்"
+
+#: ../Scripts/MainMenu.gd:116
+msgid "Russian"
+msgstr "ரச்ய"
+
+#: ../Scripts/MainMenu.gd:117
+msgid "Spanish"
+msgstr "ச்பானிச்"
+
+#: ../Scripts/MainMenu.gd:218
+msgid "Room code must be four characters long!"
+msgstr "அறை குறியீடு நான்கு எழுத்துக்கள் நீளமாக இருக்க வேண்டும்!"
+
+#: ../Scripts/MainMenu.gd:223
+msgid "Invalid room code!"
+msgstr "தவறான அறை குறியீடு!"
+
+#: ../Scripts/OptionsMenu.gd:30
+msgid "System Default"
+msgstr "கணினி இயல்புநிலை"
+
+#: ../Scripts/OptionsMenu.gd:69
+msgid "Never"
+msgstr "ஒருபோதும்"
+
+#: ../Scripts/OptionsMenu.gd:70
+msgid "30 seconds"
+msgstr "30 வினாடிகள்"
+
+#: ../Scripts/OptionsMenu.gd:71
+msgid "1 minute"
+msgstr "1 மணித்துளி"
+
+#: ../Scripts/OptionsMenu.gd:73
+msgid "10 minutes"
+msgstr "10 நிமிடங்கள்"
+
+#: ../Scripts/OptionsMenu.gd:74
+msgid "30 minutes"
+msgstr "30 நிமிடங்கள்"
+
+#: ../Scripts/OptionsMenu.gd:77
+msgid "Borderless Fullscreen"
+msgstr "எல்லையற்ற முழுத்திரை"
+
+#: ../Scripts/OptionsMenu.gd:78
+msgid "Fullscreen"
+msgstr "முழு திரை"
+
+#: ../Scripts/OptionsMenu.gd:83
+msgid "High"
+msgstr "உயர்ந்த"
+
+#: ../Scripts/OptionsMenu.gd:84
+msgid "Very High"
+msgstr "மிக உயர்ந்த"
+
+#: ../Scripts/OptionsMenu.gd:85
+msgid "Ultra"
+msgstr "அல்ட்ரா"
+
+#: ../Scripts/OptionsMenu.gd:87
+msgid "Small"
+msgstr "சிறிய"
+
+#: ../Scripts/OptionsMenu.gd:89
+msgid "Large"
+msgstr "பெரிய"
+
+#: ../Scripts/RandomMusicPlayer.gd:34
+msgid "Nothing"
+msgstr "எதுவும்"
+
+#: ../Scripts/RandomMusicPlayer.gd:59
+#, python-format
+msgid "Now Playing: %s"
+msgstr "இப்போது விளையாடுகிறது: %s"
+
+#: ../Scripts/Game/CameraController.gd:1132
+msgid "Add selected objects..."
+msgstr "தேர்ந்தெடுக்கப்பட்ட பொருள்களைச் சேர்க்கவும் ..."
+
+#: ../Scripts/Game/CameraController.gd:1171
+#, python-format
+msgid "Count: %d"
+msgstr "எண்ணிக்கை: %d"
+
+#: ../Scripts/Game/CameraController.gd:1173
+#, python-format
+msgid "Value: %d"
+msgstr "மதிப்பு: %d"
+
+#: ../Scripts/Game/CameraController.gd:1193
+msgid "Put in hand"
+msgstr "கையில் வைக்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1197
+msgid "Collect individuals"
+msgstr "தனிநபர்களை சேகரிக்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1198
+msgid "Collect all"
+msgstr "அனைத்தையும் சேகரிக்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1202
+msgid "Deal cards"
+msgstr "ஒப்பந்த அட்டைகள்"
+
+#: ../Scripts/Game/CameraController.gd:1205
+msgid "Take off top"
+msgstr "மேலே செல்லுங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1208
+msgid "Orient all up"
+msgstr "ஓரியண்ட் ஆல் அப்"
+
+#: ../Scripts/Game/CameraController.gd:1209
+msgid "Orient all down"
+msgstr "ஓரியண்ட் ஆல் பேரூர்"
+
+#: ../Scripts/Game/CameraController.gd:1229
+msgid "Suit"
+msgstr "வழக்கு"
+
+#: ../Scripts/Game/CameraController.gd:1231
+msgid "Value"
+msgstr "மதிப்பு"
+
+#: ../Scripts/Game/CameraController.gd:1233
+msgid "Sort by"
+msgstr "வரிசைப்படுத்தவும்"
+
+#: ../Scripts/Game/CameraController.gd:1242
+msgid "Timer"
+msgstr "நேரங்குறிகருவி"
+
+#: ../Scripts/Game/CameraController.gd:1278
+msgid "Value: (None)"
+msgstr "மதிப்பு: (எதுவுமில்லை)"
+
+#: ../Scripts/Game/CameraController.gd:1280
+#, python-format
+msgid "Value: %s"
+msgstr "மதிப்பு: %s"
+
+#: ../Scripts/Game/CameraController.gd:1284
+#, python-format
+msgid "Total: %d"
+msgstr "மொத்தம்: %d"
+
+#: ../Scripts/Game/CameraController.gd:1286
+#, python-format
+msgid "Total: %f"
+msgstr "மொத்தம்: %f"
+
+#: ../Scripts/Game/CameraController.gd:1306
+msgid "Collect selected"
+msgstr "தேர்ந்தெடுக்கப்பட்ட சேகரிப்பு"
+
+#: ../Scripts/Game/CameraController.gd:1310
+msgid "Add objects..."
+msgstr "பொருள்களைச் சேர்க்கவும் ..."
+
+#: ../Scripts/Game/CameraController.gd:1311
+msgid "Peek inside"
+msgstr "உள்ளே எட்டிப் பாருங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1313
+msgid "Take objects out"
+msgstr "பொருட்களை வெளியே எடுத்துக் கொள்ளுங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1329
+msgid "Speaker"
+msgstr "ஒலிபெருக்கி, ஒலிபரப்பி"
+
+#: ../Scripts/Game/CameraController.gd:1341
+msgid "Details…"
+msgstr "விவரங்கள்…"
+
+#: ../Scripts/Game/CameraController.gd:1353
+msgid "Cut"
+msgstr "வெட்டு"
+
+#: ../Scripts/Game/CameraController.gd:1354
+msgid "Copy"
+msgstr "நகலெடு"
+
+#: ../Scripts/Game/CameraController.gd:1356
+#: ../Scripts/Game/CameraController.gd:1395
+msgid "Paste"
+msgstr "ஒட்டு"
+
+#: ../Scripts/Game/CameraController.gd:1367
+msgid "Unlock"
+msgstr "திறக்க"
+
+#: ../Scripts/Game/CameraController.gd:1369
+msgid "Lock"
+msgstr "பூட்டு"
+
+#: ../Scripts/Game/CameraController.gd:1373
+msgid "Transform"
+msgstr "உருமாற்று, உருமாற்றம்"
+
+#: ../Scripts/Game/CameraController.gd:1400
+msgid "Set spawn point here"
+msgstr "ச்பான் புள்ளியை இங்கே அமைக்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1401
+msgid "Spawn object here"
+msgstr "ச்பான் பொருள் இங்கே"
+
+#: ../Scripts/Game/CameraController.gd:1420
+#, python-format
+msgid "Alt + %s"
+msgstr "மாற்று + %s"
+
+#: ../Scripts/Game/CameraController.gd:1421
+#, python-format
+msgid "Ctrl + %s"
+msgstr "கட்டுப்பாடு + %s"
+
+#: ../Scripts/Game/CameraController.gd:1422
+#, python-format
+msgid "Cmd + %s"
+msgstr "Cmd + %s"
+
+#: ../Scripts/Game/CameraController.gd:1423
+#, python-format
+msgid "Hold %s"
+msgstr "%s வைத்திருங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1424
+#, python-format
+msgid "Release %s"
+msgstr "வெளியீடு %s"
+
+#: ../Scripts/Game/CameraController.gd:1431
+msgid "Scroll Wheel"
+msgstr "உருள் சக்கரம்"
+
+#: ../Scripts/Game/CameraController.gd:1434
+msgid "Move camera"
+msgstr "கேமராவை நகர்த்தவும்"
+
+#: ../Scripts/Game/CameraController.gd:1438
+msgid "Rotate camera"
+msgstr "கேமராவை சுழற்றுங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1439
+#, python-format
+msgid "Hold %s + Move Mouse"
+msgstr "%s + நகர்த்த சுட்டி வைத்திருங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1447
+msgid "Zoom camera"
+msgstr "சூம் கேமரா"
+
+#: ../Scripts/Game/CameraController.gd:1457
+msgid "Release selected"
+msgstr "தேர்ந்தெடுக்கப்பட்ட வெளியீடு"
+
+#: ../Scripts/Game/CameraController.gd:1459
+msgid "Stop box selecting"
+msgstr "பெட்டியைத் தேர்ந்தெடுப்பதை நிறுத்துங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1462
+msgid "Select object"
+msgstr "பொருளைத் தேர்ந்தெடுக்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1464
+msgid "Add to selection"
+msgstr "தேர்வில் சேர்க்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1467
+msgid "Take random object"
+msgstr "சீரற்ற பொருளை எடுத்துக் கொள்ளுங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1468
+#: ../Scripts/Game/CameraController.gd:1471
+#, python-format
+msgid "%s + Move Mouse"
+msgstr "%s + நகர்த்த சுட்டி"
+
+#: ../Scripts/Game/CameraController.gd:1470
+msgid "Take top object"
+msgstr "மேல் பொருளை எடுத்துக் கொள்ளுங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1473
+msgid "Grab selected"
+msgstr "தேர்ந்தெடுக்கப்பட்ட கிராப்"
+
+#: ../Scripts/Game/CameraController.gd:1473
+msgid "Grab object"
+msgstr "பிடிக்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1476
+msgid "Stop moving"
+msgstr "நகர்த்துவதை நிறுத்துங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1476
+msgid "Start moving"
+msgstr "நகர்த்தத் தொடங்குங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1480
+msgid "Box select"
+msgstr "பெட்டி தேர்ந்தெடுக்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1484
+msgid "Flick object"
+msgstr "பொருள்"
+
+#: ../Scripts/Game/CameraController.gd:1486
+msgid "Prepare to flick"
+msgstr "படத்திற்கு தயாராகுங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1490
+msgid "Stop measuring"
+msgstr "அளவிடுவதை நிறுத்துங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1492
+msgid "Start measuring"
+msgstr "அளவிடத் தொடங்குங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1496
+msgid "Create hidden area"
+msgstr "மறைக்கப்பட்ட பகுதியை உருவாக்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1498
+msgid "Draw hidden area"
+msgstr "மறைக்கப்பட்ட பகுதியை வரையவும்"
+
+#: ../Scripts/Game/CameraController.gd:1501
+msgid "Paint Table"
+msgstr "பெயிண்ட் அட்டவணை"
+
+#: ../Scripts/Game/CameraController.gd:1504
+msgid "Erase Paint"
+msgstr "வண்ணப்பூச்சு அழிக்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1514
+msgid "Object menu"
+msgstr "பொருள் பட்டியல்"
+
+#: ../Scripts/Game/CameraController.gd:1516
+msgid "Table menu"
+msgstr "அட்டவணை பட்டியல்"
+
+#: ../Scripts/Game/CameraController.gd:1520
+msgid "Stop flicking"
+msgstr "பறப்பதை நிறுத்துங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1524
+msgid "Remove last ruler"
+msgstr "கடைசி ஆட்சியாளரை அகற்று"
+
+#: ../Scripts/Game/CameraController.gd:1528
+msgid "Remove hidden area"
+msgstr "மறைக்கப்பட்ட பகுதியை அகற்று"
+
+#: ../Scripts/Game/CameraController.gd:1548
+msgid "Lift selected"
+msgstr "தேர்ந்தெடுக்கப்பட்ட லிப்ட்"
+
+#: ../Scripts/Game/CameraController.gd:1549
+msgid "Zoom selected"
+msgstr "சூம் தேர்ந்தெடுக்கப்பட்டது"
+
+#: ../Scripts/Game/CameraController.gd:1550
+msgid "Rotate selected"
+msgstr "தேர்ந்தெடுக்கப்பட்ட சுழற்சி"
+
+#: ../Scripts/Game/CameraController.gd:1559
+msgid "Unlock selected"
+msgstr "தேர்ந்தெடுக்கப்பட்ட திறத்தல்"
+
+#: ../Scripts/Game/CameraController.gd:1559
+msgid "Lock selected"
+msgstr "பூட்டு தேர்ந்தெடுக்கப்பட்டது"
+
+#: ../Scripts/Game/CameraController.gd:1562
+msgid "Delete selected"
+msgstr "தேர்ந்தெடுக்கப்பட்டதை நீக்கு"
+
+#: ../Scripts/Game/CameraController.gd:1574
+#: ../Scripts/Game/CameraController.gd:1591
+msgid "Reset orientation"
+msgstr "நோக்குநிலையை மீட்டமை"
+
+#: ../Scripts/Game/CameraController.gd:1576
+#: ../Scripts/Game/CameraController.gd:1593
+msgid "Flip orientation"
+msgstr "ஃபிளிப் நோக்குநிலை"
+
+#: ../Scripts/Game/CameraController.gd:1582
+msgid "Flip card"
+msgstr "ஃபிளிப் அட்டை"
+
+#: ../Scripts/Game/CameraController.gd:1584
+msgid "Face card up"
+msgstr "முகம் அட்டை"
+
+#: ../Scripts/Game/CameraController.gd:1600
+msgid "Reset camera"
+msgstr "கேமராவை மீட்டமைக்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1753
+msgid "Pause track"
+msgstr "இடைநிறுத்த பாதையில்"
+
+#: ../Scripts/Game/CameraController.gd:1758
+msgid "Resume track"
+msgstr "தடத்தை மீண்டும் தொடங்குங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1762
+msgid "Stop track"
+msgstr "தடத்தை நிறுத்துங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1764
+msgid "Play track"
+msgstr "டிராக் ப்ளே"
+
+#: ../Scripts/Game/CameraController.gd:1769
+msgid "No track loaded"
+msgstr "தடமில்லை"
+
+#: ../Scripts/Game/CameraController.gd:1771
+#, python-format
+msgid "Playing: %s"
+msgstr "விளையாடுவது: %s"
+
+#: ../Scripts/Game/CameraController.gd:1773
+#, python-format
+msgid "Loaded: %s"
+msgstr "ஏற்றப்பட்டது: %s"
+
+#: ../Scripts/Game/CameraController.gd:1789
+msgid "Pause timer"
+msgstr "இடைநிறுத்தம் நேரம்"
+
+#: ../Scripts/Game/CameraController.gd:1794
+msgid "Resume timer"
+msgstr "டைமரை மீண்டும் தொடங்குங்கள்"
+
+#: ../Scripts/Game/CameraController.gd:1798
+msgid "Stop countdown"
+msgstr "கவுண்ட்டவுனை நிறுத்து"
+
+#: ../Scripts/Game/CameraController.gd:1800
+msgid "Start countdown"
+msgstr "கவுண்டவுன் தொடங்கவும்"
+
+#: ../Scripts/Game/CameraController.gd:1804
+msgid "Stop stopwatch"
+msgstr "ச்டாப்வாட்சை நிறுத்து"
+
+#: ../Scripts/Game/CameraController.gd:1806
+msgid "Start stopwatch"
+msgstr "ச்டாப்ப்வாட்சைத் தொடங்குங்கள்"
+
+#: ../Scripts/Game/Game.gd:548
+#, python-format
+msgid "Downloading %s ..."
+msgstr "%s பதிவிறக்குதல் ..."
+
+#: ../Scripts/Game/Game.gd:707
+msgid "Download completed!"
+msgstr "பதிவிறக்கம் முடிந்தது!"
+
+#: ../Scripts/Game/Game.gd:746
+#, python-format
+msgid "Verified %d out of %d files!"
+msgstr "%d கோப்புகளில் சரிபார்க்கப்பட்ட %d!"
+
+#: ../Scripts/Game/Game.gd:1023
+msgid "Loaded table has no version information. Load anyway?"
+msgstr "ஏற்றப்பட்ட அட்டவணையில் பதிப்பு செய்தி இல்லை. எப்படியும் ஏற்றவா?"
+
+#: ../Scripts/Game/Game.gd:1025
+#, python-format
+msgid ""
+"Loaded table was saved with a different version of the game (Current: %s,"
+" Table: %s). Load anyway?"
+msgstr ""
+"ஏற்றப்பட்ட அட்டவணை விளையாட்டின் வேறுபட்ட பதிப்பில் சேமிக்கப்பட்டது (நடப்பு: %s, அட்டவணை: "
+"%s). எப்படியும் ஏற்றவா?"
+
+#: ../Scripts/Game/Game.gd:1027
+msgid "Loaded table is not in the correct format."
+msgstr "ஏற்றப்பட்ட அட்டவணை சரியான வடிவத்தில் இல்லை."
+
+#: ../Scripts/Game/Game.gd:1071
+#, python-format
+msgid "Client version (%s) does not match server version (%s)!"
+msgstr "கிளையன்ட் பதிப்பு (%s) சேவையக பதிப்போடு (%s) பொருந்தவில்லை!"
+
+#: ../Scripts/Game/Game.gd:1214
+#, python-format
+msgid "Importing %s ..."
+msgstr "%s இறக்குமதி ..."
+
+#: ../Scripts/Game/Game.gd:1232
+#, python-format
+msgid "Saved screenshot to '%s'."
+msgstr "திரை சாட்டை '%s' என்று சேமித்தது."
+
+#: ../Scripts/Game/Game.gd:1246
+msgid "Quicksave file saved."
+msgstr "குவிக்சேவ் கோப்பு சேமிக்கப்பட்டது."
+
+#: ../Scripts/Game/Game.gd:1309
+msgid "Connecting to the master server..."
+msgstr "முதன்மை சேவையகத்துடன் இணைக்கிறது ..."
+
+#: ../Scripts/Game/Game.gd:1718
+#, python-format
+msgid "Could not open the file at path '%s' (error %d)."
+msgstr "' %s' (பிழை %d) பாதையில் கோப்பைத் திறக்க முடியவில்லை."
+
+#: ../Scripts/Game/Game.gd:1884
+msgid "Establishing connection with the host..."
+msgstr "ஓச்டுடன் இணைப்பை நிறுவுதல் ..."
+
+#: ../Scripts/Game/Game.gd:1899
+#, python-format
+msgid "Disconnected from the server! Code: %d Reason: %s"
+msgstr "சேவையகத்திலிருந்து துண்டிக்கப்பட்டது! குறியீடு: %d காரணம்: %s"
+
+#: ../Scripts/Game/Game.gd:1995
+msgid "Room has been closed by the host."
+msgstr "அறை ஓச்டால் மூடப்பட்டுள்ளது."
+
+#: ../Scripts/Game/MasterServer.gd:42
+msgid "Could not connect to the master server."
+msgstr "முதன்மை சேவையகத்துடன் இணைக்க முடியவில்லை."
+
+#: ../Scripts/Game/MasterServer.gd:43
+msgid "Have not joined a room yet."
+msgstr "இன்னும் ஒரு அறையில் சேரவில்லை."
+
+#: ../Scripts/Game/MasterServer.gd:44
+msgid "Host has disconnected from the room."
+msgstr "அறையிலிருந்து புரவலன் துண்டிக்கப்பட்டுள்ளது."
+
+#: ../Scripts/Game/MasterServer.gd:45
+msgid "Only the host can seal the room."
+msgstr "ஓச்டால் மட்டுமே அறையை முத்திரையிட முடியும்."
+
+#: ../Scripts/Game/MasterServer.gd:46
+msgid "Too many rooms are open."
+msgstr "பல அறைகள் திறந்திருக்கும்."
+
+#: ../Scripts/Game/MasterServer.gd:47
+msgid "Already in a room."
+msgstr "ஏற்கனவே ஒரு அறையில்."
+
+#: ../Scripts/Game/MasterServer.gd:48
+msgid "Room does not exist."
+msgstr "அறை இல்லை."
+
+#: ../Scripts/Game/MasterServer.gd:49
+msgid "Room is sealed."
+msgstr "அறை சீல் வைக்கப்பட்டுள்ளது."
+
+#: ../Scripts/Game/MasterServer.gd:50
+msgid "Message format is invalid."
+msgstr "செய்தி வடிவம் தவறானது."
+
+#: ../Scripts/Game/MasterServer.gd:51
+msgid "Message is invalid when not in a room."
+msgstr "ஒரு அறையில் இல்லாதபோது செய்தி தவறானது."
+
+#: ../Scripts/Game/MasterServer.gd:52
+msgid "Internal server error."
+msgstr "உள் சேவையக பிழை."
+
+#: ../Scripts/Game/MasterServer.gd:53
+msgid "Invalid destination."
+msgstr "தவறான இலக்கு."
+
+#: ../Scripts/Game/MasterServer.gd:54
+msgid "Invalid command."
+msgstr "தவறான கட்டளை."
+
+#: ../Scripts/Game/MasterServer.gd:55
+msgid "Too many players connected."
+msgstr "பல வீரர்கள் இணைக்கப்பட்டனர்."
+
+#: ../Scripts/Game/MasterServer.gd:56
+msgid "Transfer mode is invalid."
+msgstr "பரிமாற்ற முறை தவறானது."
+
+#: ../Scripts/Game/MasterServer.gd:57
+msgid "Too many connections."
+msgstr "பல இணைப்புகள்."
+
+#: ../Scripts/Game/MasterServer.gd:58
+msgid "Reconnected too quickly."
+msgstr "மிக விரைவாக மீண்டும் இணைக்கப்பட்டது."
+
+#: ../Scripts/Game/MasterServer.gd:59
+msgid "Join queue is full."
+msgstr "இணை வரிசை நிரம்பியுள்ளது."
+
+#: ../Scripts/Game/UI/ChatBox.gd:56
+msgid "Too much text being sent, waiting..."
+msgstr "அதிக உரை அனுப்பப்படுவது, காத்திருக்கிறது ..."
+
+#: ../Scripts/Game/UI/ChatBox.gd:152
+msgid "Show the list of commands that can be invoked."
+msgstr "செயல்படுத்தக்கூடிய கட்டளைகளின் பட்டியலைக் காட்டு."
+
+#: ../Scripts/Game/UI/ChatBox.gd:154
+msgid "Privately send a message to another player."
+msgstr "தனிப்பட்ட முறையில் மற்றொரு வீரருக்கு ஒரு செய்தியை அனுப்புங்கள்."
+
+#: ../Scripts/Game/UI/GameUI.gd:150
+msgid "Clear Paint"
+msgstr "தெளிவான வண்ணப்பூச்சு"
+
+#: ../Scripts/Game/UI/GameUI.gd:170
+msgid "Welcome to Tabletop Club!"
+msgstr "டேப்லெட் கிளப்புக்கு வருக!"
+
+#: ../Scripts/Game/UI/GameUI.gd:171
+msgid "To view a list of commands, type /? or /help in this chat box."
+msgstr ""
+"கட்டளைகளின் பட்டியலைக் காண, தட்டச்சு /? அல்லது /இந்த அரட்டை பெட்டியில் உதவுங்கள்."
+
+#: ../Scripts/Game/UI/GameUI.gd:248
+#, python-format
+msgid "Room Code: [b]%s[/b]"
+msgstr "அறை குறியீடு: [b]%s [/b]"
+
+#: ../Scripts/Game/UI/GameUI.gd:252
+msgid "Hide Room Code"
+msgstr "அறை குறியீட்டை மறைக்கவும்"
+
+#: ../Scripts/Game/UI/GameUI.gd:254
+msgid "Show Room Code"
+msgstr "அறை குறியீட்டைக் காட்டு"
+
+#: ../Scripts/Game/UI/GameUI.gd:322
+#, python-format
+msgid "%s has joined the game."
+msgstr "%s விளையாட்டில் சேர்ந்துள்ளன."
+
+#: ../Scripts/Game/UI/GameUI.gd:329
+#, python-format
+msgid "%s changed their name to %s"
+msgstr "%s தங்கள் பெயரை %s ஆக மாற்றின"
+
+#: ../Scripts/Game/UI/GameUI.gd:334
+#, python-format
+msgid "%s has left the game."
+msgstr "%s விளையாட்டை விட்டு வெளியேறிவிட்டன."
+
+#: ../Scripts/Game/UI/GameUI.gd:389
+msgid "View notebook"
+msgstr "நோட்புக்கைக் காண்க"
+
+#: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:40
+#, python-format
+msgid "Contents of %s"
+msgstr "%s இன் உள்ளடக்கங்கள்"
+
+#: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:45
+#, python-format
+msgid "%s is empty."
+msgstr "%s காலியாக உள்ளன."
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:61
+msgid "No objects have been selected."
+msgstr "எந்தவொரு பொருளும் தேர்ந்தெடுக்கப்படவில்லை."
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:74
+#, python-format
+msgid "A stack of %d cards."
+msgstr "%d அட்டைகளின் அடுக்கு."
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:76
+#, python-format
+msgid "A stack of %d tokens."
+msgstr "%d டோக்கன்களின் அடுக்கு."
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:83
+msgid "No description."
+msgstr "விளக்கம் இல்லை."
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:88
+#: ../Scripts/Game/UI/Previews/GenericPreview.gd:54
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:85
+#, python-format
+msgid "Author: %s"
+msgstr "ஆசிரியர்: %s"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:92
+#: ../Scripts/Game/UI/Previews/GenericPreview.gd:60
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:89
+#, python-format
+msgid "License: %s"
+msgstr "உரிமம்: %s"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:96
+#: ../Scripts/Game/UI/Previews/GenericPreview.gd:66
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:93
+#, python-format
+msgid "Modified by: %s"
+msgstr "மாற்றியமைக்கப்பட்டது: %s"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:100
+#: ../Scripts/Game/UI/Previews/GenericPreview.gd:72
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:97
+#, python-format
+msgid "URL: %s"
+msgstr "URL: %s"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:102
+#, python-format
+msgid "A total of %d objects were selected:"
+msgstr "மொத்தம் %d பொருள்கள் தேர்ந்தெடுக்கப்பட்டன:"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:112
+#, python-format
+msgid "Stack of %d cards"
+msgstr "%d அட்டைகளின் அடுக்கு"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:114
+#, python-format
+msgid "Stack of %d tokens"
+msgstr "%d டோக்கன்களின் அடுக்கு"
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:267
+msgid ""
+"You can use this notebook to write down information that will persist "
+"between sessions."
+msgstr ""
+"அமர்வுகளுக்கு இடையில் தொடரும் தகவல்களை எழுத இந்த நோட்புக்கைப் பயன்படுத்தலாம்."
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:269
+msgid "This player does not have any public pages in their notebook."
+msgstr "இந்த வீரருக்கு அவர்களின் நோட்புக்கில் எந்த பொது பக்கங்களும் இல்லை."
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:702
+msgid "<Unknown>"
+msgstr "<அறியப்படாத>"
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:713
+#, python-format
+msgid "%s's Notebook"
+msgstr "%s இன் நோட்புக்"
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:757
+#, python-format
+msgid "Are you sure you want to delete the page '%s'?"
+msgstr "'%s' பக்கத்தை நீக்க விரும்புகிறீர்களா?"
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:849
+#, python-format
+msgid "New %s"
+msgstr "புதிய %s"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:121
+#, python-format
+msgid "Modified: %s"
+msgstr "மாற்றியமைக்கப்பட்ட: %s"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:164
+msgid "Save a file"
+msgstr "ஒரு கோப்பைச் சேமிக்கவும்"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:167
+msgid "Save"
+msgstr "சேமி"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:167
+msgid "Load"
+msgstr "சுமை"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:180
+msgid "Sort:"
+msgstr "வரிசைப்படுத்துதல்:"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:184
+msgid "Last Modified"
+msgstr "கடைசியாக மாற்றப்பட்டது"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:210
+msgid "Delete file?"
+msgstr "கோப்பை நீக்கவா?"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:218
+msgid "Overwrite file?"
+msgstr "கோப்பை மேலெழுதவா?"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:226
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:262
+msgid "Rename"
+msgstr "மறுபெயரிடுங்கள்"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:227
+msgid "Duplicate"
+msgstr "நகல்"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:233
+msgid "Invalid name!"
+msgstr "தவறான பெயர்!"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:235
+#, python-format
+msgid ""
+"File names cannot contain any of the following characters:\n"
+"%s"
+msgstr ""
+"கோப்பு பெயர்களில் பின்வரும் எழுத்துக்கள் எதுவும் இருக்க முடியாது:\n"
+" %s"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:241
+msgid "Rename file..."
+msgstr "கோப்பை மறுபெயரிடுங்கள் ..."
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:251
+msgid "Please enter a new name for the file:"
+msgstr "கோப்பிற்கு புதிய பெயரை உள்ளிடவும்:"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:371
+#, python-format
+msgid "Are you sure you want to delete '%s'?"
+msgstr "நீங்கள் நிச்சயமாக '%s' நீக்க விரும்புகிறீர்களா?"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:384
+#, python-format
+msgid "The file '%s' already exists. Are you sure you want to overwrite it?"
+msgstr "'%s' கோப்பு ஏற்கனவே உள்ளது. நீங்கள் அதை மேலெழுத விரும்புகிறீர்களா?"
+
+#: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:108
+#, python-format
+msgid "Page %d/%d"
+msgstr "பக்கம் %d/ %d"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:114
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:302
+msgid "All"
+msgstr "அனைத்தும்"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:281
+msgid "Boards"
+msgstr "பலகைகள்"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:282
+msgid "Cards"
+msgstr "அட்டைகள்"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:283
+msgid "Containers"
+msgstr "கொள்கலன்கள்"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:284
+msgid "Dice"
+msgstr "பகடை"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:286
+msgid "Music"
+msgstr "இசை"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:287
+msgid "Pieces"
+msgstr "துண்டுகள்"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:288
+msgid "Skyboxes"
+msgstr "ச்கை பாக்ச்கள்"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:289
+msgid "Sounds"
+msgstr "ஒலிகள்"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:290
+msgid "Speakers"
+msgstr "பேச்சாளர்கள்"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:291
+msgid "Stacks"
+msgstr "அடுக்குகள்"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:292
+msgid "Tables"
+msgstr "அட்டவணைகள்"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:294
+msgid "Timers"
+msgstr "டைமர்கள்"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:295
+msgid "Tokens"
+msgstr "டோக்கன்கள்"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2023-05-10 19:51+0000\n"
+"PO-Revision-Date: 2025-05-19 09:02+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
 "nl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -68,7 +68,7 @@ msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:106
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #: ../Scenes/MainMenu.tscn:115
 msgid "Source Code"
@@ -80,11 +80,11 @@ msgstr "Documentatie"
 
 #: ../Scenes/MainMenu.tscn:133
 msgid "Community"
-msgstr ""
+msgstr "Gemeenschap"
 
 #: ../Scenes/MainMenu.tscn:142
 msgid "Donate"
-msgstr ""
+msgstr "Doneren"
 
 #: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
 msgid "Information"
@@ -1247,7 +1247,7 @@ msgstr "Vertalers"
 
 #: ../Scripts/MainMenu.gd:106
 msgid "Chinese"
-msgstr ""
+msgstr "Chinees"
 
 #: ../Scripts/MainMenu.gd:107
 msgid "Dutch"
@@ -1279,7 +1279,7 @@ msgstr "Noors"
 
 #: ../Scripts/MainMenu.gd:114
 msgid "Polish"
-msgstr ""
+msgstr "Pools"
 
 #: ../Scripts/MainMenu.gd:115
 msgid "Portuguese"
@@ -1421,16 +1421,13 @@ msgid "Timer"
 msgstr "Tijdklok"
 
 #: ../Scripts/Game/CameraController.gd:1278
-#, fuzzy
-#| msgid "Value: %d"
 msgid "Value: (None)"
-msgstr "Waarde: %d"
+msgstr "Waarde: (geen)"
 
 #: ../Scripts/Game/CameraController.gd:1280
-#, fuzzy, python-format
-#| msgid "Value: %d"
+#, python-format
 msgid "Value: %s"
-msgstr "Waarde: %d"
+msgstr "Waarde: %s"
 
 #: ../Scripts/Game/CameraController.gd:1284
 #, python-format
@@ -1891,7 +1888,7 @@ msgstr "Er is te snel opnieuw verbinding gemaakt."
 
 #: ../Scripts/Game/MasterServer.gd:59
 msgid "Join queue is full."
-msgstr ""
+msgstr "De wachtrij is vol."
 
 #: ../Scripts/Game/UI/ChatBox.gd:56
 msgid "Too much text being sent, waiting..."

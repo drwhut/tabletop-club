@@ -1,0 +1,2182 @@
+# Translations template for Tabletop Club.
+# Copyright (c) 2020-2024 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2024 Tabletop Club contributors (see game/CREDITS.tres).
+# This file is distributed under the same license as the Tabletop Club project.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-09-04 13:50+0100\n"
+"PO-Revision-Date: 2025-05-11 16:01+0000\n"
+"Last-Translator: BloodRaven0 <blood_raven@mail.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/tabletop-club/"
+"game/bg/>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.12-dev\n"
+"Generated-By: Babel 2.13.1\n"
+
+#: ../Scenes/ImportAssets.tscn:35
+msgid "Importing assets..."
+msgstr "Импортиране на ресурси..."
+
+#: ../Scenes/ImportAssets.tscn:56
+msgid "Missing Asset Folder"
+msgstr "Липсваща папка с ресурси"
+
+#: ../Scenes/ImportAssets.tscn:62
+msgid "Missing Module"
+msgstr "Липсващ модул"
+
+#: ../Scenes/Loading.tscn:41
+msgid "Loading..."
+msgstr "Зареждане..."
+
+#: ../Scenes/MainMenu.tscn:51
+msgid "Singleplayer"
+msgstr "Самостоятелна игра"
+
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:158
+#: ../Scenes/OptionsMenu.tscn:966
+msgid "Multiplayer"
+msgstr "Мрежова игра"
+
+#: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:65
+msgid "Options"
+msgstr "Настройки"
+
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:315
+msgid "Credits"
+msgstr "Автори"
+
+#: ../Scenes/MainMenu.tscn:79
+msgid "Quit"
+msgstr "Изход"
+
+#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:340
+msgid "Import Log"
+msgstr "Импортиране на лог"
+
+#: ../Scenes/MainMenu.tscn:98
+msgid "0"
+msgstr "0"
+
+#: ../Scenes/MainMenu.tscn:106
+msgid "Website"
+msgstr "Уебсайт"
+
+#: ../Scenes/MainMenu.tscn:115
+msgid "Source Code"
+msgstr "Изходен код"
+
+#: ../Scenes/MainMenu.tscn:124
+msgid "Documentation"
+msgstr "Документация"
+
+#: ../Scenes/MainMenu.tscn:133
+msgid "Community"
+msgstr "Общност"
+
+#: ../Scenes/MainMenu.tscn:142
+msgid "Donate"
+msgstr "Дарение"
+
+#: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
+msgid "Information"
+msgstr "Информация"
+
+#: ../Scenes/MainMenu.tscn:176
+msgid "Host Game"
+msgstr "Създай игра"
+
+#: ../Scenes/MainMenu.tscn:182
+msgid "Create a new lobby for your friends to join over the Internet."
+msgstr "Създай ново лоби, към което приятелите ти да се свържат през интернет."
+
+#: ../Scenes/MainMenu.tscn:194 ../Scenes/MainMenu.tscn:241
+msgid "Join Game"
+msgstr "Присъедини игра"
+
+#: ../Scenes/MainMenu.tscn:200
+msgid "Use a room code to join your friend's lobby."
+msgstr "Използвай код на стаята, за да се присъединиш към лобито."
+
+#: ../Scenes/MainMenu.tscn:206
+msgid "Enter Room Code"
+msgstr "Въведи код на стая"
+
+#: ../Scenes/MainMenu.tscn:226
+msgid "Room Code:"
+msgstr "Код на стая:"
+
+#: ../Scenes/MainMenu.tscn:235
+msgid "ABCD"
+msgstr "АБВГ"
+
+#: ../Scenes/MainMenu.tscn:333
+msgid "Error"
+msgstr "Грешка"
+
+#: ../Scenes/OptionsMenu.tscn:48
+msgid "Audio"
+msgstr "Звук"
+
+#: ../Scenes/OptionsMenu.tscn:61
+msgid "Master Volume"
+msgstr "Общо ниво на звука"
+
+#: ../Scenes/OptionsMenu.tscn:68
+msgid "Sets the overall volume of all sources of sound in the game."
+msgstr "Настройва силата на звука на всичко в играта."
+
+#: ../Scenes/OptionsMenu.tscn:79
+msgid "Music Volume"
+msgstr "Сила на музиката"
+
+#: ../Scenes/OptionsMenu.tscn:87
+msgid "Sets the volume of all music sources in the game."
+msgstr "Настройва силата на всичката музика в играта."
+
+#: ../Scenes/OptionsMenu.tscn:98
+msgid "Sounds Volume"
+msgstr "Сила на звуците"
+
+#: ../Scenes/OptionsMenu.tscn:106
+msgid ""
+"Sets the volume of sound sources played manually throughout the game, for"
+" example, from speakers."
+msgstr ""
+"Настройва силата на звуците, пуснати ръчно в играта, например от колонки."
+
+#: ../Scenes/OptionsMenu.tscn:117
+msgid "Effects Volume"
+msgstr "Сила на звука на ефектите"
+
+#: ../Scenes/OptionsMenu.tscn:125
+msgid ""
+"Sets the volume of sound effects played automatically throughout the "
+"game, for example, pieces falling on the table. "
+msgstr ""
+"Настройва силата на звуковите ефекти, които се пускат автоматично по време "
+"на игра, например зарове падащи на масата. "
+
+#: ../Scenes/OptionsMenu.tscn:142
+msgid "Controls"
+msgstr "Контроли"
+
+#: ../Scenes/OptionsMenu.tscn:155
+msgid "Mouse Horizontal Sensitivity"
+msgstr "Хоризонтална чуствителност на мишката"
+
+#: ../Scenes/OptionsMenu.tscn:162
+msgid "Sets the horizontal sensitivity of the rotation of the camera."
+msgstr "Настройва хоризонталната чуствителност на завъртане на камерата."
+
+#: ../Scenes/OptionsMenu.tscn:174
+msgid "Mouse Vertical Sensitivity"
+msgstr "Вертикална чуствителност на мишката"
+
+#: ../Scenes/OptionsMenu.tscn:182
+msgid "Sets the vertical sensitivity of the rotation of the camera."
+msgstr "Настройва вертикалната чуствителност на завъртане на камерата."
+
+#: ../Scenes/OptionsMenu.tscn:194
+msgid "Mouse Horizontal Invert"
+msgstr "Обръщане на мишката хоризонтално"
+
+#: ../Scenes/OptionsMenu.tscn:202
+msgid "Used to invert the rotation of the camera horizontally."
+msgstr "Обръща хоризонталното завъртане на камерата наопаки."
+
+#: ../Scenes/OptionsMenu.tscn:209
+msgid "Mouse Vertical Invert"
+msgstr "Обръщане на мишката вертикално"
+
+#: ../Scenes/OptionsMenu.tscn:217
+msgid "Used to invert the rotation of the camera vertically."
+msgstr "Обръща вертикалното завъртане на камерата наопаки."
+
+#: ../Scenes/OptionsMenu.tscn:224
+msgid "Camera Movement Speed"
+msgstr "Скорост на местене на камерата"
+
+#: ../Scenes/OptionsMenu.tscn:232
+msgid "Used to set how fast the camera moves across the table."
+msgstr "Настройва колко бързо камерата се движи върху масата."
+
+#: ../Scenes/OptionsMenu.tscn:244
+msgid "Hold Left Click to Move Camera"
+msgstr "Задържане на ляв бутон за местене на камерата"
+
+#: ../Scenes/OptionsMenu.tscn:252
+msgid ""
+"Used to allow the player to move the camera by dragging the mouse across "
+"the table."
+msgstr ""
+"Позволява местенето на камерата при задържане на левия бутон на мишката и "
+"теглене."
+
+#: ../Scenes/OptionsMenu.tscn:259
+msgid "Zoom Sensitivity"
+msgstr "Чуствителност на увеличаване"
+
+#: ../Scenes/OptionsMenu.tscn:267
+msgid ""
+"Sets how fast the camera zooms in and out of the table when using the "
+"scroll wheel."
+msgstr ""
+"Настройва колко бързо камерата се приближава и отдалечава от масата чрез "
+"завъртане на колелцето на мишката."
+
+#: ../Scenes/OptionsMenu.tscn:279
+msgid "Zoom Invert"
+msgstr "Обръщане на увеличението"
+
+#: ../Scenes/OptionsMenu.tscn:287
+msgid "Used to invert the direction of zooming when using the scroll wheel."
+msgstr "Обръща посоката на въртене на колелцето на мишката при увеличаване."
+
+#: ../Scenes/OptionsMenu.tscn:294
+msgid "Piece Lift Sensitivity"
+msgstr "Скорост на вдигане на предмети"
+
+#: ../Scenes/OptionsMenu.tscn:302
+msgid "Sets how fast a piece will move when lifting it off the table."
+msgstr "Настройва колко бързо предметите се движат при вдигането им от масата."
+
+#: ../Scenes/OptionsMenu.tscn:314
+msgid "Piece Lift Invert"
+msgstr "Обръщане на посоката на вдигане"
+
+#: ../Scenes/OptionsMenu.tscn:322
+msgid ""
+"Used to invert the direction a piece will go when lifting it off the "
+"table."
+msgstr "Обръща посоката на движение при вдигане на предмети от масата."
+
+#: ../Scenes/OptionsMenu.tscn:329
+msgid "Piece Rotation Invert"
+msgstr "Обръщане на посоката на въртене"
+
+#: ../Scenes/OptionsMenu.tscn:337
+msgid "Used to invert the direction a piece will rotate."
+msgstr "Обръща посоката на въртене на предметите."
+
+#: ../Scenes/OptionsMenu.tscn:344
+msgid "Hand Preview Enabled"
+msgstr "Преглед на ръката"
+
+#: ../Scenes/OptionsMenu.tscn:352
+msgid ""
+"When set, hovering over a card in your hand will display an enhanced "
+"preview of the card after a short period of time."
+msgstr ""
+"Когато е включена, тази опция показва детайлен преглед на карта от ръката "
+"кратко време след поставяне на мишката върху нея."
+
+#: ../Scenes/OptionsMenu.tscn:360
+msgid "Hand Preview Delay"
+msgstr "Отлагане на прегледа"
+
+#: ../Scenes/OptionsMenu.tscn:368
+msgid ""
+"Used to set how long the mouse needs to be kept still before a preview of"
+" a card is displayed from the hand."
+msgstr ""
+"Настройва дължината на времето, което е нужно да задържите мишката върху "
+"картата от ръката, за да се покаже детйлен преглед."
+
+#: ../Scenes/OptionsMenu.tscn:380
+msgid "Hand Preview Size"
+msgstr "Размер на прегледа"
+
+#: ../Scenes/OptionsMenu.tscn:388
+msgid "Used to control how large the card preview is."
+msgstr "Настройва размера на детайлния преглед на картата."
+
+#: ../Scenes/OptionsMenu.tscn:400
+msgid "Hide Control Hints"
+msgstr "Скрий съветите за контролите"
+
+#: ../Scenes/OptionsMenu.tscn:408
+msgid "Used to hide the dynamic text displaying how to control the game."
+msgstr "Скрива динамичния текст, обясняващ как се контролира играта."
+
+#: ../Scenes/OptionsMenu.tscn:421
+msgid "General"
+msgstr "Общи"
+
+#: ../Scenes/OptionsMenu.tscn:435
+msgid "Language"
+msgstr "Език"
+
+#: ../Scenes/OptionsMenu.tscn:455
+msgid "Autosave Interval"
+msgstr "Интервал на автоматичен запис"
+
+#: ../Scenes/OptionsMenu.tscn:463
+msgid "Used to set how often autosaves are created."
+msgstr "Настройва колко често играта се запазва автоматично."
+
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:72
+msgid "5 minutes"
+msgstr "5 минути"
+
+#: ../Scenes/OptionsMenu.tscn:474
+msgid "Autosave File Count"
+msgstr "Брой на автоматичните записи"
+
+#: ../Scenes/OptionsMenu.tscn:482
+msgid "Used to set the maximum number of autosave files that are made."
+msgstr "Настройва максималния брой на файлове с автоматични запазвания."
+
+#: ../Scenes/OptionsMenu.tscn:492
+msgid "Skip Splash Screen"
+msgstr "Пропусни началния екран"
+
+#: ../Scenes/OptionsMenu.tscn:500
+msgid "Skips the Godot Engine splash screen when the game starts."
+msgstr ""
+"Пропуска показването на началния екран на Godot Engine при стартиране на "
+"играта."
+
+#: ../Scenes/OptionsMenu.tscn:508
+msgid "Show System Warnings"
+msgstr "Показвай системни предупреждения"
+
+#: ../Scenes/OptionsMenu.tscn:516
+msgid "Displays system warnings in the chat box."
+msgstr "Принтира системни предупреждения в полето за чат."
+
+#: ../Scenes/OptionsMenu.tscn:525
+msgid "Show System Errors"
+msgstr "Показвай системни грешки"
+
+#: ../Scenes/OptionsMenu.tscn:533
+msgid "Displays system errors in the chat box."
+msgstr "Принтира системни грешки в полето за чат."
+
+#: ../Scenes/OptionsMenu.tscn:561
+msgid "Opens the assets folder in your file explorer."
+msgstr "Отваря папката за ресурси във файловия мениджър."
+
+#: ../Scenes/OptionsMenu.tscn:563
+msgid "Open Assets Folder"
+msgstr "Отвори ресурсната папка"
+
+#: ../Scenes/OptionsMenu.tscn:579
+msgid "Reimport Assets"
+msgstr "Импортирай ресурсите отново"
+
+#: ../Scenes/OptionsMenu.tscn:592
+msgid "Key Bindings"
+msgstr "Клавишни команди"
+
+#: ../Scenes/OptionsMenu.tscn:606
+msgid "Move Forward"
+msgstr "Местене напред"
+
+#: ../Scenes/OptionsMenu.tscn:613
+msgid "Moves the camera forward."
+msgstr "Премества камерата напред."
+
+#: ../Scenes/OptionsMenu.tscn:623
+msgid "Move Back"
+msgstr "Мести назад"
+
+#: ../Scenes/OptionsMenu.tscn:631
+msgid "Moves the camera backwards."
+msgstr "Премества камерата назад."
+
+#: ../Scenes/OptionsMenu.tscn:641
+msgid "Move Left"
+msgstr "Мести наляво"
+
+#: ../Scenes/OptionsMenu.tscn:649
+msgid "Moves the camera left."
+msgstr "Премества камерата наляво."
+
+#: ../Scenes/OptionsMenu.tscn:659
+msgid "Move Right"
+msgstr "Мести надясно"
+
+#: ../Scenes/OptionsMenu.tscn:667
+msgid "Moves the camera right."
+msgstr "Премества камерата надясно."
+
+#: ../Scenes/OptionsMenu.tscn:677
+msgid "Rotate Camera"
+msgstr "Завърти камерата"
+
+#: ../Scenes/OptionsMenu.tscn:685
+msgid "Enable rotation of the camera when moving the mouse."
+msgstr "Включва завъртането на камерата при местене на мишката."
+
+#: ../Scenes/OptionsMenu.tscn:695
+msgid "Reset Camera"
+msgstr "Възстанови камерата"
+
+#: ../Scenes/OptionsMenu.tscn:703
+msgid "Resets the camera to the default position."
+msgstr "Връща камерата на първоначалната й позиция."
+
+#: ../Scenes/OptionsMenu.tscn:713
+msgid "Zoom In / Lift Piece Down"
+msgstr "Приближи камерата / Понижи предмет"
+
+#: ../Scenes/OptionsMenu.tscn:721
+msgid "Zoom the camera towards the table, or lift a piece down onto the table."
+msgstr "Приближава камерата към масата или понижава предмет надолу към масата."
+
+#: ../Scenes/OptionsMenu.tscn:731
+msgid "Zoom Out / Lift Piece Up"
+msgstr "Отдалечи камерата / Вдигни предмет"
+
+#: ../Scenes/OptionsMenu.tscn:739
+msgid "Zoom the camera away from the table, or lift a piece up from the table."
+msgstr "Отдалечи камерата от масата или вдигни предмет нагоре от масата."
+
+#: ../Scenes/OptionsMenu.tscn:749
+msgid "Flip Piece Orientation"
+msgstr "Обърни посоката на предмет"
+
+#: ../Scenes/OptionsMenu.tscn:757
+msgid ""
+"Flip the selected piece or the piece the mouse is over on the horizontal "
+"axis."
+msgstr "Обръща хоризонтално селектирания предмет или предмета под мишката."
+
+#: ../Scenes/OptionsMenu.tscn:767
+msgid "Reset Piece Orientation"
+msgstr "Нулирай ориентацията на предмет"
+
+#: ../Scenes/OptionsMenu.tscn:775
+msgid ""
+"Resets the selected piece or the piece the mouse is over to its default "
+"orientation."
+msgstr ""
+"Връща първоначалната посока на селектирания предмет или предмета под мишката."
+
+#: ../Scenes/OptionsMenu.tscn:785 ../Scripts/Game/CameraController.gd:1589
+msgid "Rotate Piece"
+msgstr "Завърти предмет"
+
+#: ../Scenes/OptionsMenu.tscn:793
+msgid "Rotates the the piece that is selected, or that the mouse is over."
+msgstr "Завърта селектирания предмет или предмета под мишката."
+
+#: ../Scenes/OptionsMenu.tscn:803 ../Scripts/Game/CameraController.gd:1210
+#: ../Scripts/Game/CameraController.gd:1542
+#: ../Scripts/Game/CameraController.gd:1597
+msgid "Shuffle"
+msgstr "Разбъркване"
+
+#: ../Scenes/OptionsMenu.tscn:811
+msgid ""
+"Shuffle stacks of cards or tokens that are selected, or that the mouse is"
+" over."
+msgstr ""
+"Разбърква тестета карти или купчини жетони които са селектирани или са под "
+"мишката."
+
+#: ../Scenes/OptionsMenu.tscn:821
+msgid "Lock/Unlock Piece"
+msgstr "Заключване/Отключване на предмет"
+
+#: ../Scenes/OptionsMenu.tscn:829
+msgid "Toggles the lock on the selected piece, fixing its position and rotation."
+msgstr ""
+"Заключва или отключва селектирания предмет, фиксирайки позицията и "
+"завърането му."
+
+#: ../Scenes/OptionsMenu.tscn:839
+msgid "Delete Piece"
+msgstr "Изтрий предмет"
+
+#: ../Scenes/OptionsMenu.tscn:847
+msgid "Deletes the currently selected piece."
+msgstr "Изтрива селектирания предмет."
+
+#: ../Scenes/OptionsMenu.tscn:857
+msgid "Toggle Debug Info"
+msgstr "Превключи дебъг информация"
+
+#: ../Scenes/OptionsMenu.tscn:865
+msgid "Toggles whether debug information is displayed."
+msgstr "Показва и скрива информацията за отстраняване на грешки (debug info)."
+
+#: ../Scenes/OptionsMenu.tscn:875
+msgid "Quicksave"
+msgstr "Бърз запис"
+
+#: ../Scenes/OptionsMenu.tscn:883
+msgid "Creates a quicksave file."
+msgstr "Създава файл с бърз запис."
+
+#: ../Scenes/OptionsMenu.tscn:893
+msgid "Quickload"
+msgstr "Бързо зареждане"
+
+#: ../Scenes/OptionsMenu.tscn:901
+msgid "Loads the latest quicksave file."
+msgstr "Зарежда последният файл с бърз запис."
+
+#: ../Scenes/OptionsMenu.tscn:911
+msgid "Toggle UI"
+msgstr "Превключване на интерфейса"
+
+#: ../Scenes/OptionsMenu.tscn:919
+msgid "Toggles whether the entire UI is displayed."
+msgstr "Показва или скрива целия интерфейс."
+
+#: ../Scenes/OptionsMenu.tscn:929
+msgid "Take Screenshot"
+msgstr "Направи снимка на екрана"
+
+#: ../Scenes/OptionsMenu.tscn:937
+msgid "Takes a screenshot of the game in its current state."
+msgstr "Прави снимка на екрана на играта в текущото й състояние."
+
+#: ../Scenes/OptionsMenu.tscn:952
+msgid "Used to reset the key bindings to their default values."
+msgstr "Връща клавишните команди в първоначалните им стойности по подразбиране."
+
+#: ../Scenes/OptionsMenu.tscn:953 ../Scenes/OptionsMenu.tscn:1413
+msgid "Reset Bindings"
+msgstr "Върни клавишните команди"
+
+#: ../Scenes/OptionsMenu.tscn:980 ../Scripts/Game/CameraController.gd:1227
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:185
+msgid "Name"
+msgstr "Име"
+
+#: ../Scenes/OptionsMenu.tscn:987
+msgid "The player's displayed name in multiplayer lobbies."
+msgstr "Името на играча, показано в мрежови игри."
+
+#: ../Scenes/OptionsMenu.tscn:989
+msgid "Player"
+msgstr "Играч"
+
+#: ../Scenes/OptionsMenu.tscn:997 ../Scripts/Game/CameraController.gd:1350
+msgid "Color"
+msgstr "Цвят"
+
+#: ../Scenes/OptionsMenu.tscn:1005
+msgid "The player's displayed colour in multiplayer lobbies."
+msgstr "Цвета на играча, показан в мрежови игри."
+
+#: ../Scenes/OptionsMenu.tscn:1015
+msgid "Chat Font Size"
+msgstr "Размер на шрифта на чата"
+
+#: ../Scenes/OptionsMenu.tscn:1023
+msgid "Changes the size of the text in the chat box."
+msgstr "Променя размера на шрифта на текста в полето за чат."
+
+#: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
+#: ../Scripts/OptionsMenu.gd:82
+msgid "Medium"
+msgstr "Среден"
+
+#: ../Scenes/OptionsMenu.tscn:1034
+msgid "Hide Player Cursors"
+msgstr "Скрий курсорите на играчите"
+
+#: ../Scenes/OptionsMenu.tscn:1042
+msgid "Used to stop showing other player's cursors when in multiplayer lobbies."
+msgstr "Скрива курсорите на мишките на другите играчи в мрежови игри."
+
+#: ../Scenes/OptionsMenu.tscn:1050
+msgid "Censor Profanity"
+msgstr "Чат цензура"
+
+#: ../Scenes/OptionsMenu.tscn:1058
+msgid ""
+"Used to censor potentially offensive words in the chat window when in "
+"multiplayer lobbies."
+msgstr "Цензурира потенциално обидни думи в полето за чат в мрежови игри."
+
+#: ../Scenes/OptionsMenu.tscn:1073
+msgid "Video"
+msgstr "Видео"
+
+#: ../Scenes/OptionsMenu.tscn:1087
+msgid "Window Mode"
+msgstr "Режим на прозореца"
+
+#: ../Scenes/OptionsMenu.tscn:1094
+msgid "Sets the mode in which the game window is displayed."
+msgstr "Променя режима на прозореца, в който се показва играта."
+
+#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:76
+msgid "Windowed"
+msgstr "Прозорец"
+
+#: ../Scenes/OptionsMenu.tscn:1105
+msgid "Field of View"
+msgstr "Зрително поле"
+
+#: ../Scenes/OptionsMenu.tscn:1113
+msgid "Sets the field of view of the in-game camera."
+msgstr "Настройва зрителното поле (FoV) на камерата."
+
+#: ../Scenes/OptionsMenu.tscn:1126
+msgid "VSync"
+msgstr "VSync (вертикална синхронизация)"
+
+#: ../Scenes/OptionsMenu.tscn:1145
+msgid "Shadow Detail"
+msgstr "Детайл на сенките"
+
+#: ../Scenes/OptionsMenu.tscn:1165
+msgid "Multisample Anti-Aliasing (MSAA)"
+msgstr "Изглаждане на ръбовете (MSAA)"
+
+#: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
+#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:80
+msgid "None"
+msgstr "Без"
+
+#: ../Scenes/OptionsMenu.tscn:1186
+msgid "Screen Space Ambient Occlusion (SSAO)"
+msgstr "Околно хвърляне на сенки (SSAO)"
+
+#: ../Scenes/OptionsMenu.tscn:1208
+msgid "Skybox Radiance Detail"
+msgstr "Детайл на сиянието от небето"
+
+#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:81
+msgid "Low"
+msgstr "Ниско"
+
+#: ../Scenes/OptionsMenu.tscn:1228
+msgid "Depth of Field"
+msgstr "Дълбочина на рязкост (DoF)"
+
+#: ../Scenes/OptionsMenu.tscn:1249
+msgid "Depth of Field Amount"
+msgstr "Количество дълбочина на рязкост"
+
+#: ../Scenes/OptionsMenu.tscn:1257
+msgid ""
+"Used to determine how much the background is blurred when using depth of "
+"field."
+msgstr ""
+"Настройва колко размазан е фонът при използването на дълбочина на рязкост ("
+"depth of field)."
+
+#: ../Scenes/OptionsMenu.tscn:1269
+msgid "Depth of Field Distance"
+msgstr "Дистанция на дълбочина на рязкост"
+
+#: ../Scenes/OptionsMenu.tscn:1277
+msgid ""
+"Used to set the threshold of what is considered the background when using"
+" depth of field."
+msgstr ""
+"Настройва далечината на границата, след която започва фонът при използването "
+"на дълбочина на рязкост."
+
+#: ../Scenes/OptionsMenu.tscn:1289
+msgid "Table Paint Filtering"
+msgstr "Филтриране на боята на масата"
+
+#: ../Scenes/OptionsMenu.tscn:1312
+msgid "Back"
+msgstr "Назад"
+
+#: ../Scenes/Game/CameraController.tscn:410
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:154
+#: ../Scenes/OptionsMenu.tscn:1318
+msgid "Apply"
+msgstr "Потвърди"
+
+#: ../Scenes/Game/CameraController.tscn:502
+#: ../Scenes/Game/CameraController.tscn:575
+#: ../Scenes/Game/CameraController.tscn:642
+#: ../Scenes/Game/CameraController.tscn:696 ../Scenes/OptionsMenu.tscn:1325
+msgid "OK"
+msgstr "ОК"
+
+#: ../Scenes/OptionsMenu.tscn:1370
+msgid "Please press a key or button to bind it..."
+msgstr "Натиснете бутон или клавиш, който да зададете..."
+
+#: ../Scenes/OptionsMenu.tscn:1390
+msgid "Cancel"
+msgstr "Отказ"
+
+#: ../Scenes/OptionsMenu.tscn:1397
+msgid "Keep video settings?"
+msgstr "Запазване на видео настройките?"
+
+#: ../Scenes/OptionsMenu.tscn:1405
+msgid "Reimporting Assets"
+msgstr "Импортиране на ресурси наново"
+
+#: ../Scenes/OptionsMenu.tscn:1423
+msgid "Warning!"
+msgstr "Внимание!"
+
+#: ../Scenes/RandomMusicPlayer.tscn:23
+msgid "Now Playing:"
+msgstr "Сега свири:"
+
+#: ../Scenes/Game/CameraController.tscn:99
+msgid "Deal X cards"
+msgstr "Раздай X карти"
+
+#: ../Scenes/Game/CameraController.tscn:129
+msgid "Select track"
+msgstr "Избери музика"
+
+#: ../Scenes/Game/CameraController.tscn:147
+msgid "Positional audio"
+msgstr "Пространствено аудио"
+
+#: ../Scenes/Game/CameraController.tscn:153
+msgid "Range:"
+msgstr "Диапазон:"
+
+#: ../Scenes/Game/CameraController.tscn:173
+msgid "Take X off top"
+msgstr "Вземи X от горе"
+
+#: ../Scenes/Game/CameraController.tscn:186
+msgid "Take X out"
+msgstr "Извади X"
+
+#: ../Scenes/Game/CameraController.tscn:242
+msgid "Position:"
+msgstr "Позиция:"
+
+#: ../Scenes/Game/CameraController.tscn:253
+#: ../Scenes/Game/CameraController.tscn:311
+#: ../Scenes/Game/CameraController.tscn:363
+msgid "X:"
+msgstr "X:"
+
+#: ../Scenes/Game/CameraController.tscn:269
+#: ../Scenes/Game/CameraController.tscn:325
+#: ../Scenes/Game/CameraController.tscn:379
+msgid "Y:"
+msgstr "Y:"
+
+#: ../Scenes/Game/CameraController.tscn:285
+#: ../Scenes/Game/CameraController.tscn:339
+#: ../Scenes/Game/CameraController.tscn:395
+msgid "Z:"
+msgstr "Z:"
+
+#: ../Scenes/Game/CameraController.tscn:300
+msgid "Rotation (°):"
+msgstr "Завъртане (°):"
+
+#: ../Scenes/Game/CameraController.tscn:352
+#: ../Scenes/Game/CameraController.tscn:529
+msgid "Scale:"
+msgstr "Мащаб:"
+
+#: ../Scenes/Game/CameraController.tscn:430
+msgid "Value:"
+msgstr "Стойност:"
+
+#: ../Scenes/Game/CameraController.tscn:442
+#: ../Scripts/Game/CameraController.gd:1300
+msgid "Set value"
+msgstr "Задай стойност"
+
+#: ../Scenes/Game/CameraController.tscn:473
+msgid "Strength:"
+msgstr "Сила:"
+
+#: ../Scenes/Game/CameraController.tscn:484
+msgid "1.0"
+msgstr "1.0"
+
+#: ../Scenes/Game/CameraController.tscn:561
+msgid "System:"
+msgstr "Система:"
+
+#: ../Scenes/Game/CameraController.tscn:567
+msgid "Metric"
+msgstr "Метрична"
+
+#: ../Scenes/Game/CameraController.tscn:602
+msgid "Brush Color:"
+msgstr "Цвят на четката:"
+
+#: ../Scenes/Game/CameraController.tscn:615
+msgid "Brush Size:"
+msgstr "Размер на четката:"
+
+#: ../Scenes/Game/CameraController.tscn:626
+#: ../Scenes/Game/CameraController.tscn:680
+msgid "1"
+msgstr "1"
+
+#: ../Scenes/Game/CameraController.tscn:669
+msgid "Eraser Size:"
+msgstr "Размер на гумата:"
+
+#: ../Scenes/Game/CameraController.tscn:699
+msgid "Select a track..."
+msgstr "Избери музика..."
+
+#: ../Scenes/Game/CameraController.tscn:704
+#, python-format
+msgid "Loaded %d tracks."
+msgstr "Заредени са %d парчета."
+
+#: ../Scenes/Game/Game.tscn:35
+msgid "Missing Assets"
+msgstr "Липсващи ресурси"
+
+#: ../Scenes/Game/Game.tscn:44
+#, python-format
+msgid ""
+"The host has imported assets that your client is missing. This means that"
+" you won't be able to see these assets while in this game. There are a "
+"total of %d missing assets, and %d assets differ between your client and "
+"the host's client:"
+msgstr ""
+"Домакинът е импортирал ресурси, които липсват при теб. Това означава, че "
+"няма да можеш да ги виждаш в играта. Има общо %d липсващи ресурси, а %d "
+"ресурси се различават между твоят и клиента на домакина:"
+
+#: ../Scenes/Game/Game.tscn:58
+#, python-format
+msgid ""
+"Your client is also missing %d files, and %d files differ from that of "
+"the host's, which in total is %s of data:"
+msgstr ""
+"От твоят клиент също липсват %d файлове, а %d файлове се различават от тези "
+"на домакина, което общо е %s данни:"
+
+#: ../Scenes/Game/Game.tscn:86
+msgid "Yes, download missing assets."
+msgstr "Да, изтегли липсващите ресурси."
+
+#: ../Scenes/Game/Game.tscn:93
+msgid "No, continue without them."
+msgstr "Не, продължи без тях."
+
+#: ../Scenes/Game/Game.tscn:99
+msgid "Download Assets?"
+msgstr "Изтегляне на ресурсите?"
+
+#: ../Scenes/Game/Game.tscn:108
+msgid "Downloading..."
+msgstr "Изтегляне..."
+
+#: ../Scenes/Game/Game.tscn:123
+msgid "Waiting for download..."
+msgstr "Изчакване за теглене..."
+
+#: ../Scenes/Game/Game.tscn:136
+msgid "Waiting to verify integrity..."
+msgstr "Изчакване за проверка на цялостта..."
+
+#: ../Scenes/Game/Game.tscn:149
+msgid "Waiting to import assets..."
+msgstr "Изчакване за импортиране на ресурси..."
+
+#: ../Scenes/Game/Game.tscn:168 ../Scenes/Game/Game.tscn:186
+msgid "Error!"
+msgstr "Грешка!"
+
+#: ../Scenes/Game/Game.tscn:176
+msgid "Download Folder Locked"
+msgstr "Папката за изтегляния е заключена"
+
+#: ../Scenes/Game/UI/ChatBox.tscn:54
+msgid "Type a message here..."
+msgstr "Напиши съобщение тук..."
+
+#: ../Scenes/Game/UI/ChatBox.tscn:60
+msgid "Send"
+msgstr "Изпращане"
+
+#: ../Scenes/Game/UI/GameUI.tscn:37 ../Scenes/Game/UI/GameUI.tscn:146
+msgid "Objects"
+msgstr "Предмети"
+
+#: ../Scenes/Game/UI/GameUI.tscn:43 ../Scenes/Game/UI/GameUI.tscn:162
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:285
+msgid "Games"
+msgstr "Игри"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:11
+#: ../Scenes/Game/UI/GameUI.tscn:49
+msgid "Room"
+msgstr "Стая"
+
+#: ../Scenes/Game/UI/GameUI.tscn:55
+msgid "Notebook"
+msgstr "Дневник"
+
+#: ../Scenes/Game/UI/GameUI.tscn:61
+msgid "Flip Table"
+msgstr "Обърни масата"
+
+#: ../Scenes/Game/UI/GameUI.tscn:67
+msgid "Clear Table"
+msgstr "Изчисти масата"
+
+#: ../Scenes/Game/UI/GameUI.tscn:74
+msgid "Undo"
+msgstr "Стъпка назад"
+
+#: ../Scenes/Game/UI/GameUI.tscn:83
+msgid "45°"
+msgstr "45°"
+
+#: ../Scenes/Game/UI/GameUI.tscn:91
+msgid "Menu"
+msgstr "Меню"
+
+#: ../Scenes/Game/UI/GameUI.tscn:157
+msgid "Add"
+msgstr "Добави"
+
+#: ../Scenes/Game/UI/GameUI.tscn:158
+#, python-format
+msgid "Added %s."
+msgstr "Добавено %s."
+
+#: ../Scenes/Game/UI/GameUI.tscn:159
+#, python-format
+msgid "Added %d objects."
+msgstr "Добавени %d предмети."
+
+#: ../Scenes/Game/UI/GameUI.tscn:166
+#, python-format
+msgid "Loaded %d games."
+msgstr "Заредени %d игри."
+
+#: ../Scenes/Game/UI/GameUI.tscn:204
+msgid "Back to game"
+msgstr "Обратно към играта"
+
+#: ../Scenes/Game/UI/GameUI.tscn:210
+msgid "Save game"
+msgstr "Запазване на играта"
+
+#: ../Scenes/Game/UI/GameUI.tscn:216
+msgid "Load game"
+msgstr "Зареждане на игра"
+
+#: ../Scenes/Game/UI/GameUI.tscn:228
+msgid "Quit to main menu"
+msgstr "Изход към главното меню"
+
+#: ../Scenes/Game/UI/GameUI.tscn:234
+msgid "Quit to desktop"
+msgstr "Изход към десктопа"
+
+#: ../Scenes/Game/UI/GameUI.tscn:239
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:164
+msgid "Load a file"
+msgstr "Зареди файл"
+
+#: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:42
+msgid "Take"
+msgstr "Вземи"
+
+#: ../Scenes/Game/UI/Dialogs/ContainerContentDialog.tscn:50
+msgid "Take All"
+msgstr "Вземи всички"
+
+#: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:12
+msgid "Details"
+msgstr "Детайли"
+
+#: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:33
+msgid "Show advanced developer information in JSON form."
+msgstr "Покажи разширена информация за разработчици в JSON формат."
+
+#: ../Scenes/Game/UI/Dialogs/DetailsDialog.tscn:34
+msgid "Advanced view"
+msgstr "Разширен вид"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:35
+msgid "+ New Page"
+msgstr "+ Нова страница"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:54
+msgid "Title"
+msgstr "Заглавие"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:60
+msgid "When ticked, this page will be visible to other players."
+msgstr "Когато е зачеркнато, тази страница ще е видима за останалите играчи."
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:62
+msgid "Public"
+msgstr "Публично"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:94
+msgid "-"
+msgstr "-"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:102
+msgid "100%"
+msgstr "100%"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:110
+msgid "+"
+msgstr "+"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:122
+msgid "Move Up"
+msgstr "Премеси нагоре"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:130
+msgid "Move Down"
+msgstr "Премести надолу"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:138
+#: ../Scripts/Game/CameraController.gd:1371
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:228
+msgid "Delete"
+msgstr "Изтрий"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:143
+msgid "Delete page?"
+msgstr "Изтриване на страница?"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:147
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:293
+msgid "Templates"
+msgstr "Шаблони"
+
+#: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:151
+msgid "Open"
+msgstr "Отвори"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
+msgid "Current table:"
+msgstr "Текуща маса:"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:52
+msgid "Change table"
+msgstr "Смени маса"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:67
+msgid "Current skybox:"
+msgstr "Текущо небе:"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:79
+msgid "Change skybox"
+msgstr "Смени небе"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:93
+msgid "Lamp Type"
+msgstr "Вид на лапата"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:99
+msgid "Sunlight"
+msgstr "Слънчева светлина"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:107
+msgid "Lamp Intensity"
+msgstr "Интензитет на лампата"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:128
+msgid "10%"
+msgstr "10%"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:134
+msgid "Lamp Color"
+msgstr "Цвят на лампата"
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:157
+msgid "Select a skybox..."
+msgstr "Избери небе..."
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:161
+#, python-format
+msgid "Loaded %d skyboxes."
+msgstr "Заредени %d небеса."
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:164
+msgid "Select a table..."
+msgstr "Избери маса..."
+
+#: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:168
+#, python-format
+msgid "Loaded %d tables."
+msgstr "Заредени %d маси."
+
+#: ../Scenes/Game/UI/Previews/ObjectPreview.tscn:70
+msgid "This item is made up of multiple objects."
+msgstr "Този предмет е съставен от няколко части."
+
+#: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:21
+msgid "Pack:"
+msgstr "Пакет:"
+
+#: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:35
+msgid "Type:"
+msgstr "Тип:"
+
+#: ../Scripts/AssetDB.gd:433
+msgid "Cleaning old files..."
+msgstr "Почистване на стари файлове..."
+
+#: ../Scripts/BindManager.gd:51
+msgid "Not bound"
+msgstr "Несвързано"
+
+#: ../Scripts/BindManager.gd:58 ../Scripts/Game/CameraController.gd:1452
+msgid "Left Mouse Button"
+msgstr "Ляв бутон на мишката"
+
+#: ../Scripts/BindManager.gd:60 ../Scripts/Game/CameraController.gd:1509
+msgid "Right Mouse Button"
+msgstr "Десен бутон на мишката"
+
+#: ../Scripts/BindManager.gd:62
+msgid "Middle Mouse Button"
+msgstr "Среден бутон на мишката"
+
+#: ../Scripts/BindManager.gd:64
+msgid "Extra Mouse Button 1"
+msgstr "Допълнителен бутон на мишката 1"
+
+#: ../Scripts/BindManager.gd:66
+msgid "Extra Mouse Button 2"
+msgstr "Допълнителен бутон на мишката 2"
+
+#: ../Scripts/BindManager.gd:68
+msgid "Mouse Wheel Up"
+msgstr "Колелце на мишката нагоре"
+
+#: ../Scripts/BindManager.gd:70
+msgid "Mouse Wheel Down"
+msgstr "Колелце на мишката надолу"
+
+#: ../Scripts/BindManager.gd:72
+msgid "Mouse Wheel Left"
+msgstr "Колелце на мишката наляво"
+
+#: ../Scripts/BindManager.gd:74
+msgid "Mouse Wheel Right"
+msgstr "Колелце на мишката надясно"
+
+#: ../Scripts/BindManager.gd:76
+msgid "Unknown Mouse Button"
+msgstr "Непознат бутон на мишката"
+
+#: ../Scripts/BindManager.gd:78
+msgid "Unknown event type"
+msgstr "Непознат тип събитие"
+
+#: ../Scripts/ImportAssets.gd:79
+msgid "Tabletop Club could not find any asset packs in the following folders:"
+msgstr "Tabletop Club не може да намери никакви ресурси в следните папки:"
+
+#: ../Scripts/ImportAssets.gd:81
+msgid ""
+"Tabletop Club could not find an assets folder in any of the following "
+"places:"
+msgstr ""
+"Tabletop Club не можа да намери ресурсна папка в никое от следните места:"
+
+#: ../Scripts/ImportAssets.gd:87
+msgid ""
+"Please place an asset pack into one of these folders, and restart the "
+"game."
+msgstr "Моля, постави ресурсен пакет в една от тези папки и рестартирай играта."
+
+#: ../Scripts/ImportAssets.gd:89
+msgid "Please create one of these folders and restart the game."
+msgstr "Моля, създай една от тези папки и рестартирай играта."
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:709 ../Scripts/Lobby.gd:64
+#: ../Scripts/Lobby.gd:70
+msgid "<No Name>"
+msgstr "<Без име>"
+
+#: ../Scripts/MainMenu.gd:95
+msgid "Alpha Testers"
+msgstr "Алфа тестери"
+
+#: ../Scripts/MainMenu.gd:96
+msgid "Contributors"
+msgstr "Сътрудници"
+
+#: ../Scripts/MainMenu.gd:97
+msgid "Cursors"
+msgstr "Курсори"
+
+#: ../Scripts/MainMenu.gd:98
+msgid "Developers"
+msgstr "Разработчици"
+
+#: ../Scripts/MainMenu.gd:99
+msgid "Fonts"
+msgstr "Шрифтове"
+
+#: ../Scripts/MainMenu.gd:100
+msgid "Images"
+msgstr "Картинки"
+
+#: ../Scripts/MainMenu.gd:101
+msgid "Logo and Icon"
+msgstr "Лого и иконка"
+
+#: ../Scripts/MainMenu.gd:102
+msgid "Sound Effects"
+msgstr "Звукови ефекти"
+
+#: ../Scripts/MainMenu.gd:103
+msgid "Tool Icons"
+msgstr "Иконки на инструментите"
+
+#: ../Scripts/MainMenu.gd:104
+msgid "Translators"
+msgstr "Преводачи"
+
+#: ../Scripts/MainMenu.gd:106
+msgid "Chinese"
+msgstr "Китайски"
+
+#: ../Scripts/MainMenu.gd:107
+msgid "Dutch"
+msgstr "Нидерландски"
+
+#: ../Scripts/MainMenu.gd:108
+msgid "Esperanto"
+msgstr "Есперанто"
+
+#: ../Scripts/MainMenu.gd:109
+msgid "French"
+msgstr "Френски"
+
+#: ../Scripts/MainMenu.gd:110
+msgid "German"
+msgstr "Немски"
+
+#: ../Scripts/MainMenu.gd:111
+msgid "Indonesian"
+msgstr "Индонезийски"
+
+#: ../Scripts/MainMenu.gd:112
+msgid "Italian"
+msgstr "Италиански"
+
+#: ../Scripts/MainMenu.gd:113
+msgid "Norwegian"
+msgstr "Норвежки"
+
+#: ../Scripts/MainMenu.gd:114
+msgid "Polish"
+msgstr "Полски"
+
+#: ../Scripts/MainMenu.gd:115
+msgid "Portuguese"
+msgstr "Португалски"
+
+#: ../Scripts/MainMenu.gd:116
+msgid "Russian"
+msgstr "Руски"
+
+#: ../Scripts/MainMenu.gd:117
+msgid "Spanish"
+msgstr "Испански"
+
+#: ../Scripts/MainMenu.gd:218
+msgid "Room code must be four characters long!"
+msgstr "Кода на стаята трябва да бъде дълъг 4 символа!"
+
+#: ../Scripts/MainMenu.gd:223
+msgid "Invalid room code!"
+msgstr "Невалиден код на стаята!"
+
+#: ../Scripts/OptionsMenu.gd:30
+msgid "System Default"
+msgstr "По подразбиране на системата"
+
+#: ../Scripts/OptionsMenu.gd:69
+msgid "Never"
+msgstr "Никога"
+
+#: ../Scripts/OptionsMenu.gd:70
+msgid "30 seconds"
+msgstr "30 секунди"
+
+#: ../Scripts/OptionsMenu.gd:71
+msgid "1 minute"
+msgstr "1 минута"
+
+#: ../Scripts/OptionsMenu.gd:73
+msgid "10 minutes"
+msgstr "10 минути"
+
+#: ../Scripts/OptionsMenu.gd:74
+msgid "30 minutes"
+msgstr "30 минути"
+
+#: ../Scripts/OptionsMenu.gd:77
+msgid "Borderless Fullscreen"
+msgstr "Цял екран без рамка"
+
+#: ../Scripts/OptionsMenu.gd:78
+msgid "Fullscreen"
+msgstr "Цял екран"
+
+#: ../Scripts/OptionsMenu.gd:83
+msgid "High"
+msgstr "Високо"
+
+#: ../Scripts/OptionsMenu.gd:84
+msgid "Very High"
+msgstr "Много високо"
+
+#: ../Scripts/OptionsMenu.gd:85
+msgid "Ultra"
+msgstr "Ултра"
+
+#: ../Scripts/OptionsMenu.gd:87
+msgid "Small"
+msgstr "Малко"
+
+#: ../Scripts/OptionsMenu.gd:89
+msgid "Large"
+msgstr "Голямо"
+
+#: ../Scripts/RandomMusicPlayer.gd:34
+msgid "Nothing"
+msgstr "Нищо"
+
+#: ../Scripts/RandomMusicPlayer.gd:59
+#, python-format
+msgid "Now Playing: %s"
+msgstr "Сега свири: %s"
+
+#: ../Scripts/Game/CameraController.gd:1132
+msgid "Add selected objects..."
+msgstr "Добави селектираните предмети..."
+
+#: ../Scripts/Game/CameraController.gd:1171
+#, python-format
+msgid "Count: %d"
+msgstr "Брой: %d"
+
+#: ../Scripts/Game/CameraController.gd:1173
+#, python-format
+msgid "Value: %d"
+msgstr "Стойност: %d"
+
+#: ../Scripts/Game/CameraController.gd:1193
+msgid "Put in hand"
+msgstr "Вземи в ръката"
+
+#: ../Scripts/Game/CameraController.gd:1197
+msgid "Collect individuals"
+msgstr "Събери индивидуални"
+
+#: ../Scripts/Game/CameraController.gd:1198
+msgid "Collect all"
+msgstr "Събери всички"
+
+#: ../Scripts/Game/CameraController.gd:1202
+msgid "Deal cards"
+msgstr "Раздай карти"
+
+#: ../Scripts/Game/CameraController.gd:1205
+msgid "Take off top"
+msgstr "Вземи от горе"
+
+#: ../Scripts/Game/CameraController.gd:1208
+msgid "Orient all up"
+msgstr "Ориентирай всички нагоре"
+
+#: ../Scripts/Game/CameraController.gd:1209
+msgid "Orient all down"
+msgstr "Ориентирай всички надолу"
+
+#: ../Scripts/Game/CameraController.gd:1229
+msgid "Suit"
+msgstr "Боя"
+
+#: ../Scripts/Game/CameraController.gd:1231
+msgid "Value"
+msgstr "Стойност"
+
+#: ../Scripts/Game/CameraController.gd:1233
+msgid "Sort by"
+msgstr "Подреди по"
+
+#: ../Scripts/Game/CameraController.gd:1242
+msgid "Timer"
+msgstr "Таймер"
+
+#: ../Scripts/Game/CameraController.gd:1278
+msgid "Value: (None)"
+msgstr "Стойност: (няма)"
+
+#: ../Scripts/Game/CameraController.gd:1280
+#, python-format
+msgid "Value: %s"
+msgstr "Стойност: %s"
+
+#: ../Scripts/Game/CameraController.gd:1284
+#, python-format
+msgid "Total: %d"
+msgstr "Общо: %d"
+
+#: ../Scripts/Game/CameraController.gd:1286
+#, python-format
+msgid "Total: %f"
+msgstr "Общо: %f"
+
+#: ../Scripts/Game/CameraController.gd:1306
+msgid "Collect selected"
+msgstr "Събери селектираните"
+
+#: ../Scripts/Game/CameraController.gd:1310
+msgid "Add objects..."
+msgstr "Добави предмети..."
+
+#: ../Scripts/Game/CameraController.gd:1311
+msgid "Peek inside"
+msgstr "Надникни вътре"
+
+#: ../Scripts/Game/CameraController.gd:1313
+msgid "Take objects out"
+msgstr "Извади предмети"
+
+#: ../Scripts/Game/CameraController.gd:1329
+msgid "Speaker"
+msgstr "Колонка"
+
+#: ../Scripts/Game/CameraController.gd:1341
+msgid "Details…"
+msgstr "Детайли…"
+
+#: ../Scripts/Game/CameraController.gd:1353
+msgid "Cut"
+msgstr "Изрежи"
+
+#: ../Scripts/Game/CameraController.gd:1354
+msgid "Copy"
+msgstr "Копирай"
+
+#: ../Scripts/Game/CameraController.gd:1356
+#: ../Scripts/Game/CameraController.gd:1395
+msgid "Paste"
+msgstr "Постави"
+
+#: ../Scripts/Game/CameraController.gd:1367
+msgid "Unlock"
+msgstr "Отключи"
+
+#: ../Scripts/Game/CameraController.gd:1369
+msgid "Lock"
+msgstr "Заключи"
+
+#: ../Scripts/Game/CameraController.gd:1373
+msgid "Transform"
+msgstr "Трансформирай"
+
+#: ../Scripts/Game/CameraController.gd:1400
+msgid "Set spawn point here"
+msgstr "Задай точка на създаване тук"
+
+#: ../Scripts/Game/CameraController.gd:1401
+msgid "Spawn object here"
+msgstr "Създай предмети тук"
+
+#: ../Scripts/Game/CameraController.gd:1420
+#, python-format
+msgid "Alt + %s"
+msgstr "Alt + %s"
+
+#: ../Scripts/Game/CameraController.gd:1421
+#, python-format
+msgid "Ctrl + %s"
+msgstr "Ctrl + %s"
+
+#: ../Scripts/Game/CameraController.gd:1422
+#, python-format
+msgid "Cmd + %s"
+msgstr "Cmd + %s"
+
+#: ../Scripts/Game/CameraController.gd:1423
+#, python-format
+msgid "Hold %s"
+msgstr "Задръж %s"
+
+#: ../Scripts/Game/CameraController.gd:1424
+#, python-format
+msgid "Release %s"
+msgstr "Пусни %s"
+
+#: ../Scripts/Game/CameraController.gd:1431
+msgid "Scroll Wheel"
+msgstr "Колелце на мишката"
+
+#: ../Scripts/Game/CameraController.gd:1434
+msgid "Move camera"
+msgstr "Премести камерата"
+
+#: ../Scripts/Game/CameraController.gd:1438
+msgid "Rotate camera"
+msgstr "Завърти камерата"
+
+#: ../Scripts/Game/CameraController.gd:1439
+#, python-format
+msgid "Hold %s + Move Mouse"
+msgstr "Задръж %s + премести мишката"
+
+#: ../Scripts/Game/CameraController.gd:1447
+msgid "Zoom camera"
+msgstr "Приближи камерата"
+
+#: ../Scripts/Game/CameraController.gd:1457
+msgid "Release selected"
+msgstr "Пусни селектираните"
+
+#: ../Scripts/Game/CameraController.gd:1459
+msgid "Stop box selecting"
+msgstr "Спри квадратно селектиране"
+
+#: ../Scripts/Game/CameraController.gd:1462
+msgid "Select object"
+msgstr "Селектирай предмет"
+
+#: ../Scripts/Game/CameraController.gd:1464
+msgid "Add to selection"
+msgstr "Добави към селекцията"
+
+#: ../Scripts/Game/CameraController.gd:1467
+msgid "Take random object"
+msgstr "Вземи случаен предмет"
+
+#: ../Scripts/Game/CameraController.gd:1468
+#: ../Scripts/Game/CameraController.gd:1471
+#, python-format
+msgid "%s + Move Mouse"
+msgstr "%s + премести мишката"
+
+#: ../Scripts/Game/CameraController.gd:1470
+msgid "Take top object"
+msgstr "Вземи най-горния предмет"
+
+#: ../Scripts/Game/CameraController.gd:1473
+msgid "Grab selected"
+msgstr "Хвани селектираните"
+
+#: ../Scripts/Game/CameraController.gd:1473
+msgid "Grab object"
+msgstr "Хвани предмет"
+
+#: ../Scripts/Game/CameraController.gd:1476
+msgid "Stop moving"
+msgstr "Спри да местиш"
+
+#: ../Scripts/Game/CameraController.gd:1476
+msgid "Start moving"
+msgstr "Започни да местиш"
+
+#: ../Scripts/Game/CameraController.gd:1480
+msgid "Box select"
+msgstr "Квадратно селектиране"
+
+#: ../Scripts/Game/CameraController.gd:1484
+msgid "Flick object"
+msgstr "Изстреляй предмет"
+
+#: ../Scripts/Game/CameraController.gd:1486
+msgid "Prepare to flick"
+msgstr "Приготви да изстреляш"
+
+#: ../Scripts/Game/CameraController.gd:1490
+msgid "Stop measuring"
+msgstr "Спри измерването"
+
+#: ../Scripts/Game/CameraController.gd:1492
+msgid "Start measuring"
+msgstr "Започни измерване"
+
+#: ../Scripts/Game/CameraController.gd:1496
+msgid "Create hidden area"
+msgstr "Създай скрита зона"
+
+#: ../Scripts/Game/CameraController.gd:1498
+msgid "Draw hidden area"
+msgstr "Начертай скрита зона"
+
+#: ../Scripts/Game/CameraController.gd:1501
+msgid "Paint Table"
+msgstr "Боядисай масата"
+
+#: ../Scripts/Game/CameraController.gd:1504
+msgid "Erase Paint"
+msgstr "Изтрий боята"
+
+#: ../Scripts/Game/CameraController.gd:1514
+msgid "Object menu"
+msgstr "Меню с предмети"
+
+#: ../Scripts/Game/CameraController.gd:1516
+msgid "Table menu"
+msgstr "Меню с маси"
+
+#: ../Scripts/Game/CameraController.gd:1520
+msgid "Stop flicking"
+msgstr "Спри изстрелването"
+
+#: ../Scripts/Game/CameraController.gd:1524
+msgid "Remove last ruler"
+msgstr "Премахни последното измерване"
+
+#: ../Scripts/Game/CameraController.gd:1528
+msgid "Remove hidden area"
+msgstr "Премахни скритата зона"
+
+#: ../Scripts/Game/CameraController.gd:1548
+msgid "Lift selected"
+msgstr "Вдигни селектираните"
+
+#: ../Scripts/Game/CameraController.gd:1549
+msgid "Zoom selected"
+msgstr "Приближи към селектираните"
+
+#: ../Scripts/Game/CameraController.gd:1550
+msgid "Rotate selected"
+msgstr "Завърти селектираните"
+
+#: ../Scripts/Game/CameraController.gd:1559
+msgid "Unlock selected"
+msgstr "Отключи селектираните"
+
+#: ../Scripts/Game/CameraController.gd:1559
+msgid "Lock selected"
+msgstr "Заключи селектираните"
+
+#: ../Scripts/Game/CameraController.gd:1562
+msgid "Delete selected"
+msgstr "Изтрий селектираните"
+
+#: ../Scripts/Game/CameraController.gd:1574
+#: ../Scripts/Game/CameraController.gd:1591
+msgid "Reset orientation"
+msgstr "Възстанови ориентацията"
+
+#: ../Scripts/Game/CameraController.gd:1576
+#: ../Scripts/Game/CameraController.gd:1593
+msgid "Flip orientation"
+msgstr "Обърни ориентацията"
+
+#: ../Scripts/Game/CameraController.gd:1582
+msgid "Flip card"
+msgstr "Обърни картата"
+
+#: ../Scripts/Game/CameraController.gd:1584
+msgid "Face card up"
+msgstr "Обърни картата нагоре"
+
+#: ../Scripts/Game/CameraController.gd:1600
+msgid "Reset camera"
+msgstr "Възстанови камерата"
+
+#: ../Scripts/Game/CameraController.gd:1753
+msgid "Pause track"
+msgstr "Паузирай музиката"
+
+#: ../Scripts/Game/CameraController.gd:1758
+msgid "Resume track"
+msgstr "Възобнови музиката"
+
+#: ../Scripts/Game/CameraController.gd:1762
+msgid "Stop track"
+msgstr "Спри музиката"
+
+#: ../Scripts/Game/CameraController.gd:1764
+msgid "Play track"
+msgstr "Пусни музиката"
+
+#: ../Scripts/Game/CameraController.gd:1769
+msgid "No track loaded"
+msgstr "Няма заредена музика"
+
+#: ../Scripts/Game/CameraController.gd:1771
+#, python-format
+msgid "Playing: %s"
+msgstr "Свири: %s"
+
+#: ../Scripts/Game/CameraController.gd:1773
+#, python-format
+msgid "Loaded: %s"
+msgstr "Заредено: %s"
+
+#: ../Scripts/Game/CameraController.gd:1789
+msgid "Pause timer"
+msgstr "Паузирай таймера"
+
+#: ../Scripts/Game/CameraController.gd:1794
+msgid "Resume timer"
+msgstr "Възобнови таймера"
+
+#: ../Scripts/Game/CameraController.gd:1798
+msgid "Stop countdown"
+msgstr "Спри обратното броене"
+
+#: ../Scripts/Game/CameraController.gd:1800
+msgid "Start countdown"
+msgstr "Започни обратно броене"
+
+#: ../Scripts/Game/CameraController.gd:1804
+msgid "Stop stopwatch"
+msgstr "Спри хронометъра"
+
+#: ../Scripts/Game/CameraController.gd:1806
+msgid "Start stopwatch"
+msgstr "Стартирай хронометър"
+
+#: ../Scripts/Game/Game.gd:548
+#, python-format
+msgid "Downloading %s ..."
+msgstr "Изтегляне на %s..."
+
+#: ../Scripts/Game/Game.gd:707
+msgid "Download completed!"
+msgstr "Изтеглянето завърши!"
+
+#: ../Scripts/Game/Game.gd:746
+#, python-format
+msgid "Verified %d out of %d files!"
+msgstr "Проверени %d от %d файлове!"
+
+#: ../Scripts/Game/Game.gd:1023
+msgid "Loaded table has no version information. Load anyway?"
+msgstr ""
+"Заредената маса няма информация относно версията. Зареждане въпреки това?"
+
+#: ../Scripts/Game/Game.gd:1025
+#, python-format
+msgid ""
+"Loaded table was saved with a different version of the game (Current: %s,"
+" Table: %s). Load anyway?"
+msgstr ""
+"Заредената маса е запазена с различна версия на играта (твоята версия: %s, "
+"версия на масата: %s). Зареждане въпреки това?"
+
+#: ../Scripts/Game/Game.gd:1027
+msgid "Loaded table is not in the correct format."
+msgstr "Заредената маса не е в правилния формат."
+
+#: ../Scripts/Game/Game.gd:1071
+#, python-format
+msgid "Client version (%s) does not match server version (%s)!"
+msgstr "Версията на клиента (%s) не съответства на версията на сървъра (%s)!"
+
+#: ../Scripts/Game/Game.gd:1214
+#, python-format
+msgid "Importing %s ..."
+msgstr "Импортиране на %s..."
+
+#: ../Scripts/Game/Game.gd:1232
+#, python-format
+msgid "Saved screenshot to '%s'."
+msgstr "Запазена е снимка на екрана в '%s'."
+
+#: ../Scripts/Game/Game.gd:1246
+msgid "Quicksave file saved."
+msgstr "Файлът с бърз запис е запазен."
+
+#: ../Scripts/Game/Game.gd:1309
+msgid "Connecting to the master server..."
+msgstr "Свързване с главния сървър..."
+
+#: ../Scripts/Game/Game.gd:1718
+#, python-format
+msgid "Could not open the file at path '%s' (error %d)."
+msgstr "Неуспешно отваряне на файл в '%s' (грешка %d)."
+
+#: ../Scripts/Game/Game.gd:1884
+msgid "Establishing connection with the host..."
+msgstr "Установяване на връзка с домакина..."
+
+#: ../Scripts/Game/Game.gd:1899
+#, python-format
+msgid "Disconnected from the server! Code: %d Reason: %s"
+msgstr "Връзката със сървъра бе прекъсната! Код: %d Причина: %s"
+
+#: ../Scripts/Game/Game.gd:1995
+msgid "Room has been closed by the host."
+msgstr "Стаята бе затворена от домакина."
+
+#: ../Scripts/Game/MasterServer.gd:42
+msgid "Could not connect to the master server."
+msgstr "Неуспешно свързване към главния сървър."
+
+#: ../Scripts/Game/MasterServer.gd:43
+msgid "Have not joined a room yet."
+msgstr "Все още няма присъеднияване към стая."
+
+#: ../Scripts/Game/MasterServer.gd:44
+msgid "Host has disconnected from the room."
+msgstr "Домакинът се изключи от стаята."
+
+#: ../Scripts/Game/MasterServer.gd:45
+msgid "Only the host can seal the room."
+msgstr "Само домакинът може да заключи стаята."
+
+#: ../Scripts/Game/MasterServer.gd:46
+msgid "Too many rooms are open."
+msgstr "Твърде много стаи са отворени."
+
+#: ../Scripts/Game/MasterServer.gd:47
+msgid "Already in a room."
+msgstr "Вече в стая."
+
+#: ../Scripts/Game/MasterServer.gd:48
+msgid "Room does not exist."
+msgstr "Стаята не съществува."
+
+#: ../Scripts/Game/MasterServer.gd:49
+msgid "Room is sealed."
+msgstr "Стаята е заключена."
+
+#: ../Scripts/Game/MasterServer.gd:50
+msgid "Message format is invalid."
+msgstr "Форматът на съобщението е невалидно."
+
+#: ../Scripts/Game/MasterServer.gd:51
+msgid "Message is invalid when not in a room."
+msgstr "Съобщението е невалидно извън стая."
+
+#: ../Scripts/Game/MasterServer.gd:52
+msgid "Internal server error."
+msgstr "Вътрешна сървърна грешка."
+
+#: ../Scripts/Game/MasterServer.gd:53
+msgid "Invalid destination."
+msgstr "Невалидна дестинация."
+
+#: ../Scripts/Game/MasterServer.gd:54
+msgid "Invalid command."
+msgstr "Невалидна команда."
+
+#: ../Scripts/Game/MasterServer.gd:55
+msgid "Too many players connected."
+msgstr "Твърде много играчи са свързани."
+
+#: ../Scripts/Game/MasterServer.gd:56
+msgid "Transfer mode is invalid."
+msgstr "Режимът на прехвърляне е невалиден."
+
+#: ../Scripts/Game/MasterServer.gd:57
+msgid "Too many connections."
+msgstr "Твърде много връзки."
+
+#: ../Scripts/Game/MasterServer.gd:58
+msgid "Reconnected too quickly."
+msgstr "Твърде бързо свързване отново."
+
+#: ../Scripts/Game/MasterServer.gd:59
+msgid "Join queue is full."
+msgstr "Опашката за присъединяване е пълна."
+
+#: ../Scripts/Game/UI/ChatBox.gd:56
+msgid "Too much text being sent, waiting..."
+msgstr "Изпраща се твърде много текст, изчакване..."
+
+#: ../Scripts/Game/UI/ChatBox.gd:152
+msgid "Show the list of commands that can be invoked."
+msgstr "Покажи списък с използваеми команди."
+
+#: ../Scripts/Game/UI/ChatBox.gd:154
+msgid "Privately send a message to another player."
+msgstr "Изпрати лично съобщение на друг играч."
+
+#: ../Scripts/Game/UI/GameUI.gd:150
+msgid "Clear Paint"
+msgstr "Изчисти боята"
+
+#: ../Scripts/Game/UI/GameUI.gd:170
+msgid "Welcome to Tabletop Club!"
+msgstr "Добре дошли в Tabletop Club!"
+
+#: ../Scripts/Game/UI/GameUI.gd:171
+msgid "To view a list of commands, type /? or /help in this chat box."
+msgstr "За да видите списък с команди, напишете /? или /help в това чат поле."
+
+#: ../Scripts/Game/UI/GameUI.gd:248
+#, python-format
+msgid "Room Code: [b]%s[/b]"
+msgstr "Код на стаята: [b]%s[/b]"
+
+#: ../Scripts/Game/UI/GameUI.gd:252
+msgid "Hide Room Code"
+msgstr "Скрий кода на стаята"
+
+#: ../Scripts/Game/UI/GameUI.gd:254
+msgid "Show Room Code"
+msgstr "Покажи кода на стаята"
+
+#: ../Scripts/Game/UI/GameUI.gd:322
+#, python-format
+msgid "%s has joined the game."
+msgstr "%s се присъедини към играта."
+
+#: ../Scripts/Game/UI/GameUI.gd:329
+#, python-format
+msgid "%s changed their name to %s"
+msgstr "%s смени името си на %s"
+
+#: ../Scripts/Game/UI/GameUI.gd:334
+#, python-format
+msgid "%s has left the game."
+msgstr "%s напусна играта."
+
+#: ../Scripts/Game/UI/GameUI.gd:389
+msgid "View notebook"
+msgstr "Прегледай дневника"
+
+#: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:40
+#, python-format
+msgid "Contents of %s"
+msgstr "Съдържание на %s"
+
+#: ../Scripts/Game/UI/Dialogs/ContainerContentDialog.gd:45
+#, python-format
+msgid "%s is empty."
+msgstr "%s е празно."
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:61
+msgid "No objects have been selected."
+msgstr "Няма селектирани предмети."
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:74
+#, python-format
+msgid "A stack of %d cards."
+msgstr "Тесте от %d карти."
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:76
+#, python-format
+msgid "A stack of %d tokens."
+msgstr "Куп от %d жетони."
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:83
+msgid "No description."
+msgstr "Няма описание."
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:88
+#: ../Scripts/Game/UI/Previews/GenericPreview.gd:54
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:85
+#, python-format
+msgid "Author: %s"
+msgstr "Автор: %s"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:92
+#: ../Scripts/Game/UI/Previews/GenericPreview.gd:60
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:89
+#, python-format
+msgid "License: %s"
+msgstr "Лиценз: %s"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:96
+#: ../Scripts/Game/UI/Previews/GenericPreview.gd:66
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:93
+#, python-format
+msgid "Modified by: %s"
+msgstr "Променено от: %s"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:100
+#: ../Scripts/Game/UI/Previews/GenericPreview.gd:72
+#: ../Scripts/Game/UI/Previews/ObjectPreview.gd:97
+#, python-format
+msgid "URL: %s"
+msgstr "URL-адрес: %s"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:102
+#, python-format
+msgid "A total of %d objects were selected:"
+msgstr "Общо %d предмети бяха селектирани:"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:112
+#, python-format
+msgid "Stack of %d cards"
+msgstr "Тесте от %d карти"
+
+#: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:114
+#, python-format
+msgid "Stack of %d tokens"
+msgstr "Куп от %d жетони"
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:267
+msgid ""
+"You can use this notebook to write down information that will persist "
+"between sessions."
+msgstr ""
+"Можеш да използваш този дневник, за да записваш информация, която се запазва "
+"между сесиите."
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:269
+msgid "This player does not have any public pages in their notebook."
+msgstr "Този играч няма публични страници в дневника си."
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:702
+msgid "<Unknown>"
+msgstr "<Неизвестно>"
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:713
+#, python-format
+msgid "%s's Notebook"
+msgstr "Дневник на %s"
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:757
+#, python-format
+msgid "Are you sure you want to delete the page '%s'?"
+msgstr "Сигурен ли си, че искаш да изтриеш страницата '%s'?"
+
+#: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:849
+#, python-format
+msgid "New %s"
+msgstr "Нов %s"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:121
+#, python-format
+msgid "Modified: %s"
+msgstr "Променено: %s"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:164
+msgid "Save a file"
+msgstr "Запази файл"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:167
+msgid "Save"
+msgstr "Запази"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:167
+msgid "Load"
+msgstr "Зареди"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:180
+msgid "Sort:"
+msgstr "Подреди:"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:184
+msgid "Last Modified"
+msgstr "Последна промяна"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:210
+msgid "Delete file?"
+msgstr "Изтриване на файл?"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:218
+msgid "Overwrite file?"
+msgstr "Заместване на файл?"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:226
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:262
+msgid "Rename"
+msgstr "Преименувай"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:227
+msgid "Duplicate"
+msgstr "Създай дубликат"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:233
+msgid "Invalid name!"
+msgstr "Невалидно име!"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:235
+#, python-format
+msgid ""
+"File names cannot contain any of the following characters:\n"
+"%s"
+msgstr ""
+"Имената на файловете не могат да съдържат следните символи:\n"
+"%s"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:241
+msgid "Rename file..."
+msgstr "Преименувай файл..."
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:251
+msgid "Please enter a new name for the file:"
+msgstr "Въведи ново име на файла:"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:371
+#, python-format
+msgid "Are you sure you want to delete '%s'?"
+msgstr "Сигурен ли си, че искаш да изтриеш '%s'?"
+
+#: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:384
+#, python-format
+msgid "The file '%s' already exists. Are you sure you want to overwrite it?"
+msgstr "Файлът '%s' вече съществува. Сигурен ли си, че искаш да го заместиш?"
+
+#: ../Scripts/Game/UI/Previews/ObjectPreviewGrid.gd:108
+#, python-format
+msgid "Page %d/%d"
+msgstr "Страница %d/%d"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:114
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:302
+msgid "All"
+msgstr "Всички"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:281
+msgid "Boards"
+msgstr "Дъски"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:282
+msgid "Cards"
+msgstr "Карти"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:283
+msgid "Containers"
+msgstr "Контейнери"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:284
+msgid "Dice"
+msgstr "Зарове"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:286
+msgid "Music"
+msgstr "Музика"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:287
+msgid "Pieces"
+msgstr "Фигури"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:288
+msgid "Skyboxes"
+msgstr "Небеса"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:289
+msgid "Sounds"
+msgstr "Звуци"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:290
+msgid "Speakers"
+msgstr "Колонки"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:291
+msgid "Stacks"
+msgstr "Купчини"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:292
+msgid "Tables"
+msgstr "Маси"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:294
+msgid "Timers"
+msgstr "Таймери"
+
+#: ../Scripts/Game/UI/Previews/PreviewFilter.gd:295
+msgid "Tokens"
+msgstr "Жетони"
