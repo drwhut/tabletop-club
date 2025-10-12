@@ -10,8 +10,8 @@ import polib
 import sys
 
 HEADER = """Tabletop Club Default Asset Pack Translation Template.
-Copyright (c) 2020-2024 Benjamin 'drwhut' Beddows.
-Copyright (c) 2021-2024 Tabletop Club contributors (see game/CREDITS.tres).
+Copyright (c) 2020-2025 Benjamin 'drwhut' Beddows.
+Copyright (c) 2021-2025 Tabletop Club contributors (see game/CREDITS.tres).
 This file is distributed under the same license as the Tabletop Club package.
 Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2023.
 """
