@@ -307,7 +307,7 @@ game_shuffle_stack={
 
 [locale]
 
-translations=PoolStringArray( "res://Translations/fr.po", "res://Translations/de.po", "res://Translations/nl.po", "res://Translations/ru.po", "res://Translations/pt.po", "res://Translations/eo.po", "res://Translations/it.po", "res://Translations/es.po", "res://Translations/nb_NO.po", "res://Translations/id.po", "res://Translations/pl.po", "res://Translations/zh_Hans.po", "res://Translations/pt_BR.po" )
+translations=PoolStringArray( "res://Translations/fr.po", "res://Translations/de.po", "res://Translations/nl.po", "res://Translations/ru.po", "res://Translations/pt.po", "res://Translations/eo.po", "res://Translations/it.po", "res://Translations/es.po", "res://Translations/nb_NO.po", "res://Translations/id.po", "res://Translations/pl.po", "res://Translations/zh_Hans.po", "res://Translations/pt_BR.po", "res://Translations/bg.po", "res://Translations/hu.po", "res://Translations/ko.po", "res://Translations/ta.po" )
 
 [network]
 

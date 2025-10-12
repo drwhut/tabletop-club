@@ -103,18 +103,22 @@ func _update_credits_text() -> void:
 	credits_text = credits_text.replace("TOOL ICONS", tr("Tool Icons"))
 	credits_text = credits_text.replace("TRANSLATORS", tr("Translators"))
 	
+	credits_text = credits_text.replace("BULGARIAN", tr("Bulgarian"))
 	credits_text = credits_text.replace("CHINESE", tr("Chinese"))
 	credits_text = credits_text.replace("DUTCH", tr("Dutch"))
 	credits_text = credits_text.replace("ESPERANTO", tr("Esperanto"))
 	credits_text = credits_text.replace("FRENCH", tr("French"))
 	credits_text = credits_text.replace("GERMAN", tr("German"))
+	credits_text = credits_text.replace("HUNGARIAN", tr("Hungarian"))
 	credits_text = credits_text.replace("INDONESIAN", tr("Indonesian"))
 	credits_text = credits_text.replace("ITALIAN", tr("Italian"))
+	credits_text = credits_text.replace("KOREAN", tr("Korean"))
 	credits_text = credits_text.replace("NORWEGIAN", tr("Norwegian"))
 	credits_text = credits_text.replace("POLISH", tr("Polish"))
 	credits_text = credits_text.replace("PORTUGUESE", tr("Portuguese"))
 	credits_text = credits_text.replace("RUSSIAN", tr("Russian"))
 	credits_text = credits_text.replace("SPANISH", tr("Spanish"))
+	credits_text = credits_text.replace("TAMIL", tr("Tamil"))
 	
 	var credits_lines = credits_text.split("\n")
 	

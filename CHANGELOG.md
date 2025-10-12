@@ -7,10 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added Bulgarian, Hungarian, Korean, and Tamil as playable languages!
+
 ### Changed
 
 - Updated Godot WebRTC library from v0.5 to v1.1.0.
 - Updated the lobby server's SSL certificate.
+- Updated translations from the community.
 
 ## [0.1.3] - 2024-09-04
 

@@ -28,19 +28,24 @@ signal locale_changed(locale)
 
 var LOCALES = [
 	{ "locale": "", "name": tr("System Default") },
+	{ "locale": "bg", "name": "Български" },
 	{ "locale": "de", "name": "Deutsch" },
 	{ "locale": "en", "name": "English" },
 	{ "locale": "eo", "name": "Esperanto" },
 	{ "locale": "es", "name": "Español" },
 	{ "locale": "fr", "name": "Français" },
+	{ "locale": "hu", "name": "Magyar" },
 	{ "locale": "id", "name": "Bahasa Indonesia" },
 	{ "locale": "it", "name": "Italiano" },
+	{ "locale": "ko", "name": "한국어" },
 	{ "locale": "nb_NO", "name": "Norsk Bokmål" },
 	{ "locale": "nl", "name": "Nederlands" },
 	{ "locale": "pl", "name": "Polski" },
 	{ "locale": "pt", "name": "Português" },
 	{ "locale": "pt_BR", "name": "Português (Brasil)" },
 	{ "locale": "ru", "name": "Русский" },
+	# Characters are here for Tamil, but Godot's font does not display them.
+	{ "locale": "ta", "name": "தமிழ்" },
 	{ "locale": "zh", "name": "简体中文" }
 ]
 

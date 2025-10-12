@@ -40,20 +40,24 @@ players, feel free to join one of our
 
 [![Translation Status](https://hosted.weblate.org/widgets/tabletop-club/-/svg-badge.svg)](https://hosted.weblate.org/engage/tabletop-club/)
 
+* Bulgarian
 * Chinese (Simplified)
 * English
 * Dutch
 * Esperanto
 * French
 * German
+* Hungarian
 * Indonesian
 * Italian
+* Korean
 * Norwegian Bokmål
 * Polish
 * Portuguese
 * Portuguese (Brazil)
 * Russian
 * Spanish
+* Tamil
 
 If you want to help translate the project, you can go to the project's
 [Hosted Weblate](https://hosted.weblate.org/engage/tabletop-club/) page.
