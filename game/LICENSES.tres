@@ -38,13 +38,23 @@ directory.
 	URL: https://fonts.google.com/specimen/PT+Sans
 
 
-- Droid Sans Fallback
+- Source Han Sans
 
 	Files:
-		Fonts/DroidSansFallbackFull.ttf
-	Author: Ascender Corporation
-	License: Apache-2.0
-	URL: https://github.com/aosp-mirror/platform_frameworks_base/tree/master/data/fonts
+		Fonts/SourceHanSansCN/*.otf
+		Fonts/SourceHanSansKR/*.otf
+	Authors: Adobe
+	License: SIL OFL v1.1
+	URL: https://github.com/adobe-fonts/source-han-sans
+
+
+- Noto Sans Tamil
+
+	Files:
+		Fonts/NotoSansTamil/*.ttf
+	Authors: The Noto Project Authors
+	License: SIL OFL v1.1
+	URL: https://github.com/notofonts/tamil
 
 
 - Cursors

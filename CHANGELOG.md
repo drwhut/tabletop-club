@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated Godot WebRTC library from v0.5 to v1.1.0.
 - Updated the lobby server's SSL certificate.
 - Updated translations from the community.
+- Replaced the "Droid Sans" font with "Source Han Sans" for Chinese.
 
 ### Removed
 
