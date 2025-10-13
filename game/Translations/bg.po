@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-04 13:50+0100\n"
+"POT-Creation-Date: 2025-10-12 16:36+0100\n"
 "PO-Revision-Date: 2025-05-11 16:01+0000\n"
 "Last-Translator: BloodRaven0 <blood_raven@mail.bg>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/tabletop-club/"
 "game/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.12-dev\n"
@@ -41,7 +41,7 @@ msgstr "Зареждане..."
 msgid "Singleplayer"
 msgstr "Самостоятелна игра"
 
-#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:158
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
 msgstr "Мрежова игра"
@@ -50,7 +50,7 @@ msgstr "Мрежова игра"
 msgid "Options"
 msgstr "Настройки"
 
-#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:315
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
 msgstr "Автори"
 
@@ -58,7 +58,7 @@ msgstr "Автори"
 msgid "Quit"
 msgstr "Изход"
 
-#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:340
+#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
 msgstr "Импортиране на лог"
 
@@ -82,43 +82,43 @@ msgstr "Документация"
 msgid "Community"
 msgstr "Общност"
 
-#: ../Scenes/MainMenu.tscn:142
+#: ../Scenes/MainMenu.tscn:143
 msgid "Donate"
 msgstr "Дарение"
 
-#: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
+#: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
 msgstr "Информация"
 
-#: ../Scenes/MainMenu.tscn:176
+#: ../Scenes/MainMenu.tscn:177
 msgid "Host Game"
 msgstr "Създай игра"
 
-#: ../Scenes/MainMenu.tscn:182
+#: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr "Създай ново лоби, към което приятелите ти да се свържат през интернет."
 
-#: ../Scenes/MainMenu.tscn:194 ../Scenes/MainMenu.tscn:241
+#: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
 msgstr "Присъедини игра"
 
-#: ../Scenes/MainMenu.tscn:200
+#: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
 msgstr "Използвай код на стаята, за да се присъединиш към лобито."
 
-#: ../Scenes/MainMenu.tscn:206
+#: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
 msgstr "Въведи код на стая"
 
-#: ../Scenes/MainMenu.tscn:226
+#: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
 msgstr "Код на стая:"
 
-#: ../Scenes/MainMenu.tscn:235
+#: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
 msgstr "АБВГ"
 
-#: ../Scenes/MainMenu.tscn:333
+#: ../Scenes/MainMenu.tscn:334
 msgid "Error"
 msgstr "Грешка"
 
@@ -148,8 +148,8 @@ msgstr "Сила на звуците"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
-"Sets the volume of sound sources played manually throughout the game, for"
-" example, from speakers."
+"Sets the volume of sound sources played manually throughout the game, for "
+"example, from speakers."
 msgstr ""
 "Настройва силата на звуците, пуснати ръчно в играта, например от колонки."
 
@@ -159,8 +159,8 @@ msgstr "Сила на звука на ефектите"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
-"Sets the volume of sound effects played automatically throughout the "
-"game, for example, pieces falling on the table. "
+"Sets the volume of sound effects played automatically throughout the game, "
+"for example, pieces falling on the table. "
 msgstr ""
 "Настройва силата на звуковите ефекти, които се пускат автоматично по време "
 "на игра, например зарове падащи на масата. "
@@ -215,8 +215,8 @@ msgstr "Задържане на ляв бутон за местене на ка�
 
 #: ../Scenes/OptionsMenu.tscn:252
 msgid ""
-"Used to allow the player to move the camera by dragging the mouse across "
-"the table."
+"Used to allow the player to move the camera by dragging the mouse across the "
+"table."
 msgstr ""
 "Позволява местенето на камерата при задържане на левия бутон на мишката и "
 "теглене."
@@ -227,8 +227,8 @@ msgstr "Чуствителност на увеличаване"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
-"Sets how fast the camera zooms in and out of the table when using the "
-"scroll wheel."
+"Sets how fast the camera zooms in and out of the table when using the scroll "
+"wheel."
 msgstr ""
 "Настройва колко бързо камерата се приближава и отдалечава от масата чрез "
 "завъртане на колелцето на мишката."
@@ -255,8 +255,7 @@ msgstr "Обръщане на посоката на вдигане"
 
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
-"Used to invert the direction a piece will go when lifting it off the "
-"table."
+"Used to invert the direction a piece will go when lifting it off the table."
 msgstr "Обръща посоката на движение при вдигане на предмети от масата."
 
 #: ../Scenes/OptionsMenu.tscn:329
@@ -273,8 +272,8 @@ msgstr "Преглед на ръката"
 
 #: ../Scenes/OptionsMenu.tscn:352
 msgid ""
-"When set, hovering over a card in your hand will display an enhanced "
-"preview of the card after a short period of time."
+"When set, hovering over a card in your hand will display an enhanced preview "
+"of the card after a short period of time."
 msgstr ""
 "Когато е включена, тази опция показва детайлен преглед на карта от ръката "
 "кратко време след поставяне на мишката върху нея."
@@ -285,8 +284,8 @@ msgstr "Отлагане на прегледа"
 
 #: ../Scenes/OptionsMenu.tscn:368
 msgid ""
-"Used to set how long the mouse needs to be kept still before a preview of"
-" a card is displayed from the hand."
+"Used to set how long the mouse needs to be kept still before a preview of a "
+"card is displayed from the hand."
 msgstr ""
 "Настройва дължината на времето, което е нужно да задържите мишката върху "
 "картата от ръката, за да се покаже детйлен преглед."
@@ -323,7 +322,7 @@ msgstr "Интервал на автоматичен запис"
 msgid "Used to set how often autosaves are created."
 msgstr "Настройва колко често играта се запазва автоматично."
 
-#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:72
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:78
 msgid "5 minutes"
 msgstr "5 минути"
 
@@ -478,8 +477,8 @@ msgstr "Разбъркване"
 
 #: ../Scenes/OptionsMenu.tscn:811
 msgid ""
-"Shuffle stacks of cards or tokens that are selected, or that the mouse is"
-" over."
+"Shuffle stacks of cards or tokens that are selected, or that the mouse is "
+"over."
 msgstr ""
 "Разбърква тестета карти или купчини жетони които са селектирани или са под "
 "мишката."
@@ -489,7 +488,8 @@ msgid "Lock/Unlock Piece"
 msgstr "Заключване/Отключване на предмет"
 
 #: ../Scenes/OptionsMenu.tscn:829
-msgid "Toggles the lock on the selected piece, fixing its position and rotation."
+msgid ""
+"Toggles the lock on the selected piece, fixing its position and rotation."
 msgstr ""
 "Заключва или отключва селектирания предмет, фиксирайки позицията и "
 "завърането му."
@@ -544,7 +544,8 @@ msgstr "Прави снимка на екрана на играта в теку�
 
 #: ../Scenes/OptionsMenu.tscn:952
 msgid "Used to reset the key bindings to their default values."
-msgstr "Връща клавишните команди в първоначалните им стойности по подразбиране."
+msgstr ""
+"Връща клавишните команди в първоначалните им стойности по подразбиране."
 
 #: ../Scenes/OptionsMenu.tscn:953 ../Scenes/OptionsMenu.tscn:1413
 msgid "Reset Bindings"
@@ -580,7 +581,7 @@ msgid "Changes the size of the text in the chat box."
 msgstr "Променя размера на шрифта на текста в полето за чат."
 
 #: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
-#: ../Scripts/OptionsMenu.gd:82
+#: ../Scripts/OptionsMenu.gd:88
 msgid "Medium"
 msgstr "Среден"
 
@@ -589,7 +590,8 @@ msgid "Hide Player Cursors"
 msgstr "Скрий курсорите на играчите"
 
 #: ../Scenes/OptionsMenu.tscn:1042
-msgid "Used to stop showing other player's cursors when in multiplayer lobbies."
+msgid ""
+"Used to stop showing other player's cursors when in multiplayer lobbies."
 msgstr "Скрива курсорите на мишките на другите играчи в мрежови игри."
 
 #: ../Scenes/OptionsMenu.tscn:1050
@@ -614,7 +616,7 @@ msgstr "Режим на прозореца"
 msgid "Sets the mode in which the game window is displayed."
 msgstr "Променя режима на прозореца, в който се показва играта."
 
-#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:76
+#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:82
 msgid "Windowed"
 msgstr "Прозорец"
 
@@ -639,7 +641,7 @@ msgid "Multisample Anti-Aliasing (MSAA)"
 msgstr "Изглаждане на ръбовете (MSAA)"
 
 #: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
-#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:80
+#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:86
 msgid "None"
 msgstr "Без"
 
@@ -651,7 +653,7 @@ msgstr "Околно хвърляне на сенки (SSAO)"
 msgid "Skybox Radiance Detail"
 msgstr "Детайл на сиянието от небето"
 
-#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:81
+#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:87
 msgid "Low"
 msgstr "Ниско"
 
@@ -668,8 +670,8 @@ msgid ""
 "Used to determine how much the background is blurred when using depth of "
 "field."
 msgstr ""
-"Настройва колко размазан е фонът при използването на дълбочина на рязкост ("
-"depth of field)."
+"Настройва колко размазан е фонът при използването на дълбочина на рязкост "
+"(depth of field)."
 
 #: ../Scenes/OptionsMenu.tscn:1269
 msgid "Depth of Field Distance"
@@ -677,8 +679,8 @@ msgstr "Дистанция на дълбочина на рязкост"
 
 #: ../Scenes/OptionsMenu.tscn:1277
 msgid ""
-"Used to set the threshold of what is considered the background when using"
-" depth of field."
+"Used to set the threshold of what is considered the background when using "
+"depth of field."
 msgstr ""
 "Настройва далечината на границата, след която започва фонът при използването "
 "на дълбочина на рязкост."
@@ -841,10 +843,10 @@ msgstr "Липсващи ресурси"
 #: ../Scenes/Game/Game.tscn:44
 #, python-format
 msgid ""
-"The host has imported assets that your client is missing. This means that"
-" you won't be able to see these assets while in this game. There are a "
-"total of %d missing assets, and %d assets differ between your client and "
-"the host's client:"
+"The host has imported assets that your client is missing. This means that "
+"you won't be able to see these assets while in this game. There are a total "
+"of %d missing assets, and %d assets differ between your client and the "
+"host's client:"
 msgstr ""
 "Домакинът е импортирал ресурси, които липсват при теб. Това означава, че "
 "няма да можеш да ги виждаш в играта. Има общо %d липсващи ресурси, а %d "
@@ -853,8 +855,8 @@ msgstr ""
 #: ../Scenes/Game/Game.tscn:58
 #, python-format
 msgid ""
-"Your client is also missing %d files, and %d files differ from that of "
-"the host's, which in total is %s of data:"
+"Your client is also missing %d files, and %d files differ from that of the "
+"host's, which in total is %s of data:"
 msgstr ""
 "От твоят клиент също липсват %d файлове, а %d файлове се различават от тези "
 "на домакина, което общо е %s данни:"
@@ -1184,16 +1186,15 @@ msgstr "Tabletop Club не може да намери никакви ресур�
 
 #: ../Scripts/ImportAssets.gd:81
 msgid ""
-"Tabletop Club could not find an assets folder in any of the following "
-"places:"
+"Tabletop Club could not find an assets folder in any of the following places:"
 msgstr ""
 "Tabletop Club не можа да намери ресурсна папка в никое от следните места:"
 
 #: ../Scripts/ImportAssets.gd:87
 msgid ""
-"Please place an asset pack into one of these folders, and restart the "
-"game."
-msgstr "Моля, постави ресурсен пакет в една от тези папки и рестартирай играта."
+"Please place an asset pack into one of these folders, and restart the game."
+msgstr ""
+"Моля, постави ресурсен пакет в една от тези папки и рестартирай играта."
 
 #: ../Scripts/ImportAssets.gd:89
 msgid "Please create one of these folders and restart the game."
@@ -1245,58 +1246,74 @@ msgid "Translators"
 msgstr "Преводачи"
 
 #: ../Scripts/MainMenu.gd:106
+msgid "Bulgarian"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:107
 msgid "Chinese"
 msgstr "Китайски"
 
-#: ../Scripts/MainMenu.gd:107
+#: ../Scripts/MainMenu.gd:108
 msgid "Dutch"
 msgstr "Нидерландски"
 
-#: ../Scripts/MainMenu.gd:108
+#: ../Scripts/MainMenu.gd:109
 msgid "Esperanto"
 msgstr "Есперанто"
 
-#: ../Scripts/MainMenu.gd:109
+#: ../Scripts/MainMenu.gd:110
 msgid "French"
 msgstr "Френски"
 
-#: ../Scripts/MainMenu.gd:110
+#: ../Scripts/MainMenu.gd:111
 msgid "German"
 msgstr "Немски"
 
-#: ../Scripts/MainMenu.gd:111
+#: ../Scripts/MainMenu.gd:112
+msgid "Hungarian"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:113
 msgid "Indonesian"
 msgstr "Индонезийски"
 
-#: ../Scripts/MainMenu.gd:112
+#: ../Scripts/MainMenu.gd:114
 msgid "Italian"
 msgstr "Италиански"
 
-#: ../Scripts/MainMenu.gd:113
+#: ../Scripts/MainMenu.gd:115
+msgid "Korean"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:116
 msgid "Norwegian"
 msgstr "Норвежки"
 
-#: ../Scripts/MainMenu.gd:114
+#: ../Scripts/MainMenu.gd:117
 msgid "Polish"
 msgstr "Полски"
 
-#: ../Scripts/MainMenu.gd:115
+#: ../Scripts/MainMenu.gd:118
 msgid "Portuguese"
 msgstr "Португалски"
 
-#: ../Scripts/MainMenu.gd:116
+#: ../Scripts/MainMenu.gd:119
 msgid "Russian"
 msgstr "Руски"
 
-#: ../Scripts/MainMenu.gd:117
+#: ../Scripts/MainMenu.gd:120
 msgid "Spanish"
 msgstr "Испански"
 
-#: ../Scripts/MainMenu.gd:218
+#: ../Scripts/MainMenu.gd:121
+msgid "Tamil"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:222
 msgid "Room code must be four characters long!"
 msgstr "Кода на стаята трябва да бъде дълъг 4 символа!"
 
-#: ../Scripts/MainMenu.gd:223
+#: ../Scripts/MainMenu.gd:227
 msgid "Invalid room code!"
 msgstr "Невалиден код на стаята!"
 
@@ -1304,51 +1321,51 @@ msgstr "Невалиден код на стаята!"
 msgid "System Default"
 msgstr "По подразбиране на системата"
 
-#: ../Scripts/OptionsMenu.gd:69
+#: ../Scripts/OptionsMenu.gd:75
 msgid "Never"
 msgstr "Никога"
 
-#: ../Scripts/OptionsMenu.gd:70
+#: ../Scripts/OptionsMenu.gd:76
 msgid "30 seconds"
 msgstr "30 секунди"
 
-#: ../Scripts/OptionsMenu.gd:71
+#: ../Scripts/OptionsMenu.gd:77
 msgid "1 minute"
 msgstr "1 минута"
 
-#: ../Scripts/OptionsMenu.gd:73
+#: ../Scripts/OptionsMenu.gd:79
 msgid "10 minutes"
 msgstr "10 минути"
 
-#: ../Scripts/OptionsMenu.gd:74
+#: ../Scripts/OptionsMenu.gd:80
 msgid "30 minutes"
 msgstr "30 минути"
 
-#: ../Scripts/OptionsMenu.gd:77
+#: ../Scripts/OptionsMenu.gd:83
 msgid "Borderless Fullscreen"
 msgstr "Цял екран без рамка"
 
-#: ../Scripts/OptionsMenu.gd:78
+#: ../Scripts/OptionsMenu.gd:84
 msgid "Fullscreen"
 msgstr "Цял екран"
 
-#: ../Scripts/OptionsMenu.gd:83
+#: ../Scripts/OptionsMenu.gd:89
 msgid "High"
 msgstr "Високо"
 
-#: ../Scripts/OptionsMenu.gd:84
+#: ../Scripts/OptionsMenu.gd:90
 msgid "Very High"
 msgstr "Много високо"
 
-#: ../Scripts/OptionsMenu.gd:85
+#: ../Scripts/OptionsMenu.gd:91
 msgid "Ultra"
 msgstr "Ултра"
 
-#: ../Scripts/OptionsMenu.gd:87
+#: ../Scripts/OptionsMenu.gd:93
 msgid "Small"
 msgstr "Малко"
 
-#: ../Scripts/OptionsMenu.gd:89
+#: ../Scripts/OptionsMenu.gd:95
 msgid "Large"
 msgstr "Голямо"
 
@@ -1765,8 +1782,8 @@ msgstr ""
 #: ../Scripts/Game/Game.gd:1025
 #, python-format
 msgid ""
-"Loaded table was saved with a different version of the game (Current: %s,"
-" Table: %s). Load anyway?"
+"Loaded table was saved with a different version of the game (Current: %s, "
+"Table: %s). Load anyway?"
 msgstr ""
 "Заредената маса е запазена с различна версия на играта (твоята версия: %s, "
 "версия на масата: %s). Зареждане въпреки това?"
