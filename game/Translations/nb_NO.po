@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-10-12 16:36+0100\n"
-"PO-Revision-Date: 2024-03-19 18:01+0000\n"
-"Last-Translator: corupz <small.kai@hotmail.com>\n"
+"PO-Revision-Date: 2025-10-14 15:07+0000\n"
+"Last-Translator: drwhut <drwhut@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "tabletop-club/game/nb_NO/>\n"
 "Language: nb_NO\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -69,7 +69,7 @@ msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:106
 msgid "Website"
-msgstr ""
+msgstr "Nettside"
 
 #: ../Scenes/MainMenu.tscn:115
 msgid "Source Code"
@@ -81,11 +81,11 @@ msgstr "Dokumentasjon"
 
 #: ../Scenes/MainMenu.tscn:133
 msgid "Community"
-msgstr ""
+msgstr "Fellesskap"
 
 #: ../Scenes/MainMenu.tscn:143
 msgid "Donate"
-msgstr ""
+msgstr "Doner"
 
 #: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
@@ -1255,11 +1255,11 @@ msgstr "Oversettere"
 
 #: ../Scripts/MainMenu.gd:106
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgarsk"
 
 #: ../Scripts/MainMenu.gd:107
 msgid "Chinese"
-msgstr ""
+msgstr "Kinesisk"
 
 #: ../Scripts/MainMenu.gd:108
 msgid "Dutch"
@@ -1279,11 +1279,11 @@ msgstr "Tysk"
 
 #: ../Scripts/MainMenu.gd:112
 msgid "Hungarian"
-msgstr ""
+msgstr "Ungarsk"
 
 #: ../Scripts/MainMenu.gd:113
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonesisk"
 
 #: ../Scripts/MainMenu.gd:114
 msgid "Italian"
@@ -1291,15 +1291,15 @@ msgstr "Italiensk"
 
 #: ../Scripts/MainMenu.gd:115
 msgid "Korean"
-msgstr ""
+msgstr "Koreansk"
 
 #: ../Scripts/MainMenu.gd:116
 msgid "Norwegian"
-msgstr ""
+msgstr "Norsk"
 
 #: ../Scripts/MainMenu.gd:117
 msgid "Polish"
-msgstr ""
+msgstr "Polsk"
 
 #: ../Scripts/MainMenu.gd:118
 msgid "Portuguese"
@@ -1315,7 +1315,7 @@ msgstr "Spansk"
 
 #: ../Scripts/MainMenu.gd:121
 msgid "Tamil"
-msgstr ""
+msgstr "Tamilsk"
 
 #: ../Scripts/MainMenu.gd:222
 msgid "Room code must be four characters long!"
