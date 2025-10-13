@@ -1305,8 +1305,8 @@ msgid ""
 "A template is a pre-made page for the in-game notebook. It can either be an :"
 "ref:`file-type-image` or a text file (``.txt``)."
 msgstr ""
-"Шаблон - это заготовленная страница внутриигрового блокнота. Это может быть "
-":ref:`file-type-image` или текстовый файл (``.txt``)."
+"Шаблон - это заготовленная страница внутриигрового блокнота. Это может быть :"
+"ref:`file-type-image` или текстовый файл (``.txt``)."
 
 #: ../../custom_assets/asset_packs/asset_types.rst:313
 msgid ""
@@ -2199,8 +2199,8 @@ msgid ""
 "(``.txt``) containing the text you want, which is placed in the "
 "``templates`` folder of your asset pack, like so:"
 msgstr ""
-"Создать текстовые шаблоны очень легко: вам нужен лишь текстовый файл "
-"(``.txt``) с желаемым текстом, который нужно поместить в папку ``templates`` "
+"Создать текстовые шаблоны очень легко: вам нужен лишь текстовый файл (``."
+"txt``) с желаемым текстом, который нужно поместить в папку ``templates`` "
 "вашего ассет-пака. Пример:"
 
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:32

@@ -1631,8 +1631,8 @@ msgstr ""
 "Si lo que quieres es descargar e instalar paquetes de recursos creados por "
 "la comunidad, no dudes en echar un vistazo al foro oficial <https://forum."
 "tabletopclub.net/c/asset-packs>`_. Las instrucciones para instalar paquetes "
-"de recursos se encuentran `aquí <https://forum.tabletopclub.net/t/"
-"about-the-asset-packs-category/13>`_."
+"de recursos se encuentran `aquí <https://forum.tabletopclub.net/t/about-the-"
+"asset-packs-category/13>`_."
 
 #: ../../custom_assets/asset_packs/index.rst:17
 msgid ""
@@ -2126,8 +2126,8 @@ msgid ""
 "extensions` checkbox is ticked."
 msgstr ""
 "**Windows 11:** En el Explorador de archivos, haga clic en :guilabel:`Ver`, "
-"luego en el desplegable :guilabel:`Mostrar` y asegúrese de que la casilla "
-":guilabel:`Extensiones de nombre de archivo` está marcada."
+"luego en el desplegable :guilabel:`Mostrar` y asegúrese de que la casilla :"
+"guilabel:`Extensiones de nombre de archivo` está marcada."
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:137
 msgid "Configuring card backs"
