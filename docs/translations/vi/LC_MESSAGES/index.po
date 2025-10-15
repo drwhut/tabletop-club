@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Tabletop Club master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2024-09-06 00:09+0000\n"
-"Last-Translator: goatastronaut0212 <goatastronaut0212@proton.me>\n"
+"PO-Revision-Date: 2025-10-16 07:10+0000\n"
+"Last-Translator: Theeasternfurry <theeasternfurry@outlook.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-index/vi/>\n"
 "Language: vi\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: ../../index.rst:25
 msgid "General"
-msgstr ""
+msgstr "Tổng quan"
 
 #: ../../index.rst:33
 msgid "Custom Assets"
-msgstr ""
+msgstr "Cấu hình tài nguyên"
 
 #: ../../index.rst:7
 msgid "Tabletop Club Documentation"
@@ -39,6 +39,11 @@ msgid ""
 "check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
 "the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
+"Chào mừng bạn đến với tài liệu hướng dẫn của Tabletop Club, một trình giả "
+"lập trò chơi cờ bàn (board game) miễn phí và mã nguồn mở! Nếu bạn là người "
+"mới làm quen với dự án, hãy thoải mái truy cập trang :ref:`about-tabletop-"
+"club`. Ngoài ra, bạn có thể sử dụng mục lục, thanh bên hoặc thanh tìm kiếm "
+"để tìm thông tin mình cần!"
 
 #: ../../index.rst:14
 msgid "Screenshots from the game"
@@ -52,19 +57,24 @@ msgid ""
 "issue or a pull request on the project's `GitHub repository <https://github."
 "com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
+"Tài liệu hướng dẫn, cũng như toàn bộ dự án, luôn hoan nghênh các đề xuất và "
+"đóng góp từ cộng đồng! Nếu bạn cảm thấy có điều gì đó chưa được giải thích "
+"rõ ràng, hoặc bạn nghĩ rằng tài liệu còn thiếu thông tin, đừng ngần ngại gửi "
+"một báo cáo lỗi hoặc một yêu cầu hợp nhất mã trên Github repo <https://"
+"github.com/drwhut/tabletop-club/issues>`_!"
 
 #: ../../index.rst:42
 msgid "Indices and tables"
-msgstr ""
+msgstr "Mục lục và Bảng biểu"
 
 #: ../../index.rst:44
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../index.rst:45
 msgid ":ref:`modindex`"
-msgstr ""
+msgstr ":ref:`modindex`"
 
 #: ../../index.rst:46
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
