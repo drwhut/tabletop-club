@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-10-12 16:36+0100\n"
-"PO-Revision-Date: 2025-05-11 16:01+0000\n"
+"PO-Revision-Date: 2025-10-16 06:09+0000\n"
 "Last-Translator: BloodRaven0 <blood_raven@mail.bg>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/tabletop-club/"
 "game/bg/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 "Generated-By: Babel 2.13.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -1247,7 +1247,7 @@ msgstr "Преводачи"
 
 #: ../Scripts/MainMenu.gd:106
 msgid "Bulgarian"
-msgstr ""
+msgstr "Български"
 
 #: ../Scripts/MainMenu.gd:107
 msgid "Chinese"
@@ -1271,7 +1271,7 @@ msgstr "Немски"
 
 #: ../Scripts/MainMenu.gd:112
 msgid "Hungarian"
-msgstr ""
+msgstr "Унгарски"
 
 #: ../Scripts/MainMenu.gd:113
 msgid "Indonesian"
@@ -1283,7 +1283,7 @@ msgstr "Италиански"
 
 #: ../Scripts/MainMenu.gd:115
 msgid "Korean"
-msgstr ""
+msgstr "Корейски"
 
 #: ../Scripts/MainMenu.gd:116
 msgid "Norwegian"
@@ -1307,7 +1307,7 @@ msgstr "Испански"
 
 #: ../Scripts/MainMenu.gd:121
 msgid "Tamil"
-msgstr ""
+msgstr "Тамилски"
 
 #: ../Scripts/MainMenu.gd:222
 msgid "Room code must be four characters long!"
