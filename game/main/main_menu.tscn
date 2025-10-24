@@ -198,6 +198,7 @@ icon = ExtResource( 12 )
 expand_icon = true
 
 [node name="DonateButton" type="Button" parent="MainContainer/TertiaryContainer"]
+visible = false
 margin_left = 108.0
 margin_right = 258.0
 margin_bottom = 50.0
