@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-10-12 16:36+0100\n"
-"PO-Revision-Date: 2024-09-30 10:16+0000\n"
-"Last-Translator: Salvatore <salvatore.digennaro@outlook.it>\n"
+"PO-Revision-Date: 2025-10-27 09:02+0000\n"
+"Last-Translator: Maxwell London <maxwelllondon92@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/tabletop-club/"
 "game/it/>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -2172,7 +2172,7 @@ msgstr "Pagina %d/%d"
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:114
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:302
 msgid "All"
-msgstr ""
+msgstr "Tutto"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:281
 #, fuzzy
