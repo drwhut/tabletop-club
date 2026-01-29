@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2025-02-11 21:01+0000\n"
+"PO-Revision-Date: 2026-01-30 17:01+0000\n"
 "Last-Translator: Tomassci <tomsci10@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/docs-"
 "custom-assets/cs/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
 msgid "Asset pack structure"
@@ -44,19 +44,19 @@ msgstr "`<TABLETOPCLUB_INSTALL_FOLDER>/assets/`"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:13
 msgid "``<DOWNLOADS>/TabletopClub/assets/``"
-msgstr ""
+msgstr "``<DOWNLOADS>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:14
 msgid "``<DOCUMENTS>/TabletopClub/assets/``"
-msgstr ""
+msgstr "``<DOCUMENTS>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:15
 msgid "``<DESKTOP>/TabletopClub/assets/``"
-msgstr ""
+msgstr "``<DESKTOP>/TabletopClub/assets/``"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:19
 msgid "Creating an asset pack"
-msgstr ""
+msgstr "Tvorba balíčku s assety"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:21
 msgid ""
@@ -64,10 +64,13 @@ msgid ""
 "in one of the folders mentioned above, and you're done! The name of the "
 "folder will be the name of the asset pack."
 msgstr ""
+"Tvorba balíčku assetů je velmi jednoduchá! Jediné, co je potřeba, je "
+"vytvořit složku v jedné ze složek uvedených výše, a máte hotovo! Jméno "
+"složky bude jméno balíčku s assety."
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:27
 msgid "Sub-folders"
-msgstr ""
+msgstr "Podsložky"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:29
 msgid ""
