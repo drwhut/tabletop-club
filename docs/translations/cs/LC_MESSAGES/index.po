@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2025-02-11 21:01+0000\n"
+"PO-Revision-Date: 2026-01-30 17:01+0000\n"
 "Last-Translator: Tomassci <tomsci10@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/docs-"
 "index/cs/>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: ../../index.rst:25
 msgid "General"
@@ -47,7 +47,7 @@ msgstr ""
 
 #: ../../index.rst:14
 msgid "Screenshots from the game"
-msgstr ""
+msgstr "Snímky obrazovky ze hry"
 
 #: ../../index.rst:19
 msgid ""
@@ -57,19 +57,24 @@ msgid ""
 "issue or a pull request on the project's `GitHub repository <https://github."
 "com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
+"Tato dokumentace, stejně jako tento projekt obecně, je otevřená návrhům a "
+"příspěvkům! Pokud máte pocit, že něco není dobře vysvětleno, nebo si "
+"myslíte, že nějaké informace chybí, neváhejte otevřít issue nebo pull "
+"request na `Github repozitáři projektu <https://github.com/drwhut/tabletop-"
+"club/issues>`_!"
 
 #: ../../index.rst:42
 msgid "Indices and tables"
-msgstr ""
+msgstr "Indexy a tabulky"
 
 #: ../../index.rst:44
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../index.rst:45
 msgid ":ref:`modindex`"
-msgstr ""
+msgstr ":ref:`modindex`"
 
 #: ../../index.rst:46
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
