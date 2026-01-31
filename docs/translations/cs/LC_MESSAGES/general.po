@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2026-01-30 15:01+0000\n"
+"PO-Revision-Date: 2026-01-31 18:01+0000\n"
 "Last-Translator: Tomassci <tomsci10@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/docs-"
 "general/cs/>\n"
@@ -91,6 +91,8 @@ msgid ""
 "The game's code and project files are licensed under the MIT License, but "
 "some of the assets are licensed under different open licenses."
 msgstr ""
+"Zdrojový kód hry a její projektové soubory jsou pod MIT licencí, ale některé "
+"spadají pod jiné otevřené licence."
 
 #: ../../general/about.rst:42
 msgid ""
@@ -142,66 +144,77 @@ msgid ""
 "they do in real life, and it also means you can potentially send objects "
 "flying off the edge! Did I also mention you could flip the table?"
 msgstr ""
+"Nejen je tato hra simulátorem deskových her, má také plně funkční 3D "
+"fyzikální engine! To znamená, že objekty ve hře se chovají jako ve skutečném "
+"životě, takže můžete odhazovat předměty ze stolu! Zmínil jsem, že stůl "
+"můžete převrátit?"
 
 #: ../../general/about.rst:70
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Často kladené dotazy"
 
 #: ../../general/about.rst:73
 msgid "What platforms can I play Tabletop Club on?"
-msgstr ""
+msgstr "Na jakých platformách mohu Tabletop Club hrát?"
 
 #: ../../general/about.rst:75
 msgid "Tabletop Club can be played on any of these platforms:"
-msgstr ""
+msgstr "Tabletop Club můžete hrát na jakékoliv z těchto platforem:"
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
-msgstr ""
+msgstr "Windows 7 a vyšší"
 
 #: ../../general/about.rst:78
 msgid "macOS 10.12 or later"
-msgstr ""
+msgstr "MacOS 10.12 a vyšší"
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
-msgstr ""
+msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
-msgstr ""
+msgstr "Váš hardware musí také podporovat OpenGL 3.3."
 
 #: ../../general/about.rst:83
 msgid ""
 "It is recommended to have at least 1GB of available space on your drive to "
 "accommodate for the game files, as well as any generated files."
 msgstr ""
+"Je doporučeno mít alespoň 1 GB dostupného místa na pevném disku pro všechny "
+"soubory hry."
 
 #: ../../general/about.rst:86
 msgid ""
 "Currently there are no plans for the game to be supported on mobile devices "
 "or consoles."
 msgstr ""
+"V této době není podpora mobilních zařízení a herních konzolí plánována."
 
 #: ../../general/about.rst:91
 msgid "Does Tabletop Club support multiplayer?"
-msgstr ""
+msgstr "Podporuje Tabletop Club hru více hráčů (multiplayer)?"
 
 #: ../../general/about.rst:93
 msgid ""
 "Yes! You don't need to make an account to play multiplayer, you can just "
 "host a game and start playing with friends!"
 msgstr ""
+"Ano! Nemusíte si zakládat účet pro hru více hráčů, stačí jen hostovat hru a "
+"začít hrát se svými přáteli!"
 
 #: ../../general/about.rst:98
 msgid ""
 "You can change your name and colour in multiplayer by going to :guilabel:"
 "`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
 msgstr ""
+"Můžete si změnit vaše jméno a vaši barvu ve hře více hráčů v "
+":guilabel:`Options` > :guilabel:`Multiplayer,`změnou relevantního nastavení."
 
 #: ../../general/about.rst:104
 msgid "Is Tabletop Club on Steam / GOG / itch.io?"
-msgstr ""
+msgstr "Je Tabletop Club na platformách Steam / GOG / itch.io?"
 
 #: ../../general/about.rst:106
 msgid ""
@@ -210,10 +223,14 @@ msgid ""
 "download it from the `itch app <https://itch.io/app>`_ and get automatic "
 "updates."
 msgstr ""
+"Hra je k dispozici na `itch.io <https://drwhut.itch.io/tabletop-club>`_! "
+"Nejen si tam můžete stáhnout hru jako samostatný spustitelný soubor, můžete "
+"si ji také stáhnout přes `oficiální aplikaci itch.io <https://itch.io/app>`_ "
+"a tím získávat automatické aktualizace."
 
 #: ../../general/about.rst:113
 msgid "What stage of development is Tabletop Club at?"
-msgstr ""
+msgstr "V jaké fázi vývoje je teď Tabletop Club?"
 
 #: ../../general/about.rst:115
 msgid ""
@@ -223,10 +240,15 @@ msgid ""
 "tabletop-club/issues>`_ for known bugs, feature requests, as well as quality-"
 "of-life tweaks to the game."
 msgstr ""
+"Tabletop Club je nyní v aktivním vývoji. Hra byla již vydána, ale stále je "
+"postupně vylepšována s pomocí komunity. Na platformě GitHub je `issue "
+"tracker <https://github.com/drwhut/tabletop-club/issues>`_ všech bugů a "
+"požadavků na zlepšení hry."
 
 #: ../../general/about.rst:123
 msgid "Is there an official Discord or Matrix server that I can join?"
 msgstr ""
+"Existuje oficiální Discord nebo Matrix server, na který se můžu připojit?"
 
 #: ../../general/about.rst:125
 msgid ""
@@ -235,6 +257,11 @@ msgid ""
 "chat with other players about anything from the game itself, to board games "
 "in general, or even to share asset packs that you have made!"
 msgstr ""
+"Ano, můžete se připojit na oficiální `Discord <https://discord.gg/GqYkGV4WwX>"
+"`_ a `Matrix\n"
+"<https://matrix.to/#/#tabletop-club:matrix.org>`_ servery pro konverzaci o "
+"Tabletop Club, o deskových hrách obecně, nebo o balíčcích assetů, které jste "
+"vytvořili!"
 
 #: ../../general/about.rst:130
 msgid ""
@@ -242,14 +269,17 @@ msgid ""
 "of their background or personality. As long as you abide by the server "
 "rules, you are always free to come in and say hi!"
 msgstr ""
+"Cílem je vytvořit bezpečné prostředí pro každého bez ohledu na jejich "
+"vlastnosti. Pokud dokážete dodržovat pravidla serveru, jste v nich vždy "
+"vítáni!"
 
 #: ../../general/about.rst:136
 msgid "What board games can I play in Tabletop Club?"
-msgstr ""
+msgstr "Jaké deskové hry můžu v Tabletop Club hrát?"
 
 #: ../../general/about.rst:138
 msgid "Theoretically, any of them!"
-msgstr ""
+msgstr "Teoreticky, všechny!"
 
 #: ../../general/about.rst:140
 msgid ""
@@ -311,23 +341,23 @@ msgstr ""
 
 #: ../../general/about.rst:177
 msgid ":ref:`asset-type-game`"
-msgstr ""
+msgstr ":ref:`asset-type-game`"
 
 #: ../../general/about.rst:178
 msgid ":ref:`asset-type-music`"
-msgstr ""
+msgstr ":ref:`asset-type-music`"
 
 #: ../../general/about.rst:179
 msgid ":ref:`asset-type-skybox`"
-msgstr ""
+msgstr ":ref:`asset-type-skybox`"
 
 #: ../../general/about.rst:180
 msgid ":ref:`asset-type-sound`"
-msgstr ""
+msgstr ":ref:`asset-type-sound`"
 
 #: ../../general/about.rst:181
 msgid ":ref:`asset-type-table`"
-msgstr ""
+msgstr ":ref:`asset-type-table`"
 
 #: ../../general/about.rst:185
 msgid "Can you add my favourite board game to Tabletop Club?"
