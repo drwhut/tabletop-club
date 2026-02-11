@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-10-12 16:36+0100\n"
-"PO-Revision-Date: 2026-02-01 11:01+0000\n"
+"PO-Revision-Date: 2026-02-12 13:09+0000\n"
 "Last-Translator: Tomassci <tomsci10@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/game/"
 "cs/>\n"
@@ -68,7 +68,7 @@ msgstr "0"
 
 #: ../Scenes/MainMenu.tscn:106
 msgid "Website"
-msgstr ""
+msgstr "Webová stránka"
 
 #: ../Scenes/MainMenu.tscn:115
 msgid "Source Code"
@@ -80,11 +80,11 @@ msgstr "Dokumentace"
 
 #: ../Scenes/MainMenu.tscn:133
 msgid "Community"
-msgstr ""
+msgstr "Komunita"
 
 #: ../Scenes/MainMenu.tscn:143
 msgid "Donate"
-msgstr ""
+msgstr "Darovat"
 
 #: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
