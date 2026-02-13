@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-10-12 16:36+0100\n"
-"PO-Revision-Date: 2026-02-12 13:09+0000\n"
+"PO-Revision-Date: 2026-02-14 13:09+0000\n"
 "Last-Translator: Tomassci <tomsci10@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/game/"
 "cs/>\n"
@@ -307,7 +307,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:421
 msgid "General"
-msgstr ""
+msgstr "Obecné"
 
 #: ../Scenes/OptionsMenu.tscn:435
 msgid "Language"
@@ -1038,7 +1038,7 @@ msgstr ""
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:147
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:293
 msgid "Templates"
-msgstr ""
+msgstr "Šablony"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:151
 msgid "Open"
@@ -1414,7 +1414,7 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1242
 msgid "Timer"
-msgstr ""
+msgstr "Časovač"
 
 #: ../Scripts/Game/CameraController.gd:1278
 msgid "Value: (None)"
@@ -1453,7 +1453,7 @@ msgstr ""
 
 #: ../Scripts/Game/CameraController.gd:1329
 msgid "Speaker"
-msgstr ""
+msgstr "Reproduktor"
 
 #: ../Scripts/Game/CameraController.gd:1341
 msgid "Details…"
@@ -2129,7 +2129,7 @@ msgstr "Karty"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:283
 msgid "Containers"
-msgstr ""
+msgstr "Nádoby"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:284
 msgid "Dice"
@@ -2137,7 +2137,7 @@ msgstr "Kostky"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:286
 msgid "Music"
-msgstr ""
+msgstr "Hudba"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:287
 msgid "Pieces"
