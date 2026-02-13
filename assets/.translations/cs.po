@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 09:03\n"
-"PO-Revision-Date: 2026-02-12 13:09+0000\n"
+"PO-Revision-Date: 2026-02-14 12:09+0000\n"
 "Last-Translator: Tomassci <tomsci10@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/"
 "default-asset-pack/cs/>\n"
@@ -135,31 +135,31 @@ msgstr "Křížových pět"
 
 #: ../TabletopClub/cards/Five_of_Diamonds:1
 msgid "Five of Diamonds"
-msgstr ""
+msgstr "Kárových pět"
 
 #: ../TabletopClub/cards/Five_of_Hearts:1
 msgid "Five of Hearts"
-msgstr ""
+msgstr "Srdcových pět"
 
 #: ../TabletopClub/cards/Five_of_Spades:1
 msgid "Five of Spades"
-msgstr ""
+msgstr "Pikových pět"
 
 #: ../TabletopClub/cards/Four_of_Clubs:1
 msgid "Four of Clubs"
-msgstr ""
+msgstr "Křížových čtyři"
 
 #: ../TabletopClub/cards/Four_of_Diamonds:1
 msgid "Four of Diamonds"
-msgstr ""
+msgstr "Kárových čtyři"
 
 #: ../TabletopClub/cards/Four_of_Hearts:1
 msgid "Four of Hearts"
-msgstr ""
+msgstr "Srdcových čtyři"
 
 #: ../TabletopClub/cards/Four_of_Spades:1
 msgid "Four of Spades"
-msgstr ""
+msgstr "Pikových čtyři"
 
 #: ../TabletopClub/cards/Jack_of_Clubs:1
 msgid "Jack of Clubs"
@@ -179,11 +179,11 @@ msgstr ""
 
 #: ../TabletopClub/cards/Joker_Black:1
 msgid "Joker Black"
-msgstr ""
+msgstr "Černý žolík"
 
 #: ../TabletopClub/cards/Joker_Red:1
 msgid "Joker Red"
-msgstr ""
+msgstr "Červený žolík"
 
 #: ../TabletopClub/cards/King_of_Clubs:1
 msgid "King of Clubs"
@@ -203,19 +203,19 @@ msgstr "Pikový král"
 
 #: ../TabletopClub/cards/Nine_of_Clubs:1
 msgid "Nine of Clubs"
-msgstr ""
+msgstr "Křížových devět"
 
 #: ../TabletopClub/cards/Nine_of_Diamonds:1
 msgid "Nine of Diamonds"
-msgstr ""
+msgstr "Kárových devět"
 
 #: ../TabletopClub/cards/Nine_of_Hearts:1
 msgid "Nine of Hearts"
-msgstr ""
+msgstr "Srdcových devět"
 
 #: ../TabletopClub/cards/Nine_of_Spades:1
 msgid "Nine of Spades"
-msgstr ""
+msgstr "Pikových devět"
 
 #: ../TabletopClub/cards/Queen_of_Clubs:1
 msgid "Queen of Clubs"
@@ -243,83 +243,83 @@ msgstr ""
 
 #: ../TabletopClub/cards/Seven_of_Clubs:1
 msgid "Seven of Clubs"
-msgstr ""
+msgstr "Křížová sedma"
 
 #: ../TabletopClub/cards/Seven_of_Diamonds:1
 msgid "Seven of Diamonds"
-msgstr ""
+msgstr "Kárová sedma"
 
 #: ../TabletopClub/cards/Seven_of_Hearts:1
 msgid "Seven of Hearts"
-msgstr ""
+msgstr "Srdcová sedma"
 
 #: ../TabletopClub/cards/Seven_of_Spades:1
 msgid "Seven of Spades"
-msgstr ""
+msgstr "Piková sedma"
 
 #: ../TabletopClub/cards/Six_of_Clubs:1
 msgid "Six of Clubs"
-msgstr ""
+msgstr "Křížových šest"
 
 #: ../TabletopClub/cards/Six_of_Diamonds:1
 msgid "Six of Diamonds"
-msgstr ""
+msgstr "Kárových šest"
 
 #: ../TabletopClub/cards/Six_of_Hearts:1
 msgid "Six of Hearts"
-msgstr ""
+msgstr "Srdcových šest"
 
 #: ../TabletopClub/cards/Six_of_Spades:1
 msgid "Six of Spades"
-msgstr ""
+msgstr "Pikových šest"
 
 #: ../TabletopClub/cards/Ten_of_Clubs:1
 msgid "Ten of Clubs"
-msgstr ""
+msgstr "Křížových deset"
 
 #: ../TabletopClub/cards/Ten_of_Diamonds:1
 msgid "Ten of Diamonds"
-msgstr ""
+msgstr "Kárových deset"
 
 #: ../TabletopClub/cards/Ten_of_Hearts:1
 msgid "Ten of Hearts"
-msgstr ""
+msgstr "Srdcových deset"
 
 #: ../TabletopClub/cards/Ten_of_Spades:1
 msgid "Ten of Spades"
-msgstr ""
+msgstr "Pikových deset"
 
 #: ../TabletopClub/cards/Three_of_Clubs:1
 msgid "Three of Clubs"
-msgstr ""
+msgstr "Křížových tři"
 
 #: ../TabletopClub/cards/Three_of_Diamonds:1
 msgid "Three of Diamonds"
-msgstr ""
+msgstr "Kárových tři"
 
 #: ../TabletopClub/cards/Three_of_Hearts:1
 msgid "Three of Hearts"
-msgstr ""
+msgstr "Srdcových tři"
 
 #: ../TabletopClub/cards/Three_of_Spades:1
 msgid "Three of Spades"
-msgstr ""
+msgstr "Pikových tři"
 
 #: ../TabletopClub/cards/Two_of_Clubs:1
 msgid "Two of Clubs"
-msgstr ""
+msgstr "Křížových dvě"
 
 #: ../TabletopClub/cards/Two_of_Diamonds:1
 msgid "Two of Diamonds"
-msgstr ""
+msgstr "Kárových dvě"
 
 #: ../TabletopClub/cards/Two_of_Hearts:1
 msgid "Two of Hearts"
-msgstr ""
+msgstr "Srdcových dvě"
 
 #: ../TabletopClub/cards/Two_of_Spades:1
 msgid "Two of Spades"
-msgstr ""
+msgstr "Pikových dvě"
 
 #: ../TabletopClub/cards/Villager:1
 msgid "Villager"
@@ -330,6 +330,8 @@ msgid ""
 "Avoid being eaten by werewolves at night by voting against them during the "
 "day."
 msgstr ""
+"Má za úkol se vyhnout sežrání vlkodlaky v noci tím, že proti nim bude ve dne "
+"hlasovat."
 
 #: ../TabletopClub/cards/Werewolf:1
 msgid "Werewolf"
@@ -340,6 +342,7 @@ msgid ""
 "Decide who to feast upon every night with your pack, avoid suspision from "
 "villagers."
 msgstr ""
+"Musí si vybrat, koho sežrat každou noc, zatímco se vyhne podezření ostatních."
 
 #: ../TabletopClub/containers/Pot:1
 msgid "Pot"
@@ -347,7 +350,7 @@ msgstr ""
 
 #: ../TabletopClub/containers/Purse:1
 msgid "Purse"
-msgstr ""
+msgstr "Peněženka"
 
 #: ../TabletopClub/containers/Red_Cup:1
 msgid "Red Cup"
