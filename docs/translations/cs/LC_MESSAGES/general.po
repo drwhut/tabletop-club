@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2026-01-31 18:01+0000\n"
+"PO-Revision-Date: 2026-03-09 11:09+0000\n"
 "Last-Translator: Tomassci <tomsci10@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/tabletop-club/docs-"
 "general/cs/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.16-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -287,6 +287,8 @@ msgid ""
 "which contains some of the most common objects you'll need, like playing "
 "cards, dice, poker chips, etc."
 msgstr ""
+"V základní hře se nachází základní Tabletop Club balíček assetů obsahující "
+"nejvíce používané předměty, jako hrací karty, kostky, pokerové žetony apod."
 
 #: ../../general/about.rst:144
 msgid ""
@@ -295,6 +297,10 @@ msgid ""
 "asset pack. If everything under a game is ticked, then you can play that "
 "game!"
 msgstr ""
+"Na GitHubu je ` issue <https://github.com/drwhut/tabletop-club/issues/28>`_ "
+"se seznamem předmětů, které ještě nebyly přidány do základního balíčku "
+"assetů. Pokud pro Vámi zvolenou hru je vše v jejím seznamu odškrnuto, hraní "
+"by Vám nemělo dělat žádné potíže!"
 
 #: ../../general/about.rst:149
 msgid ""
@@ -303,10 +309,14 @@ msgid ""
 "else has already made, or you can create your own! Visit the :ref:`asset-"
 "packs` page if you're interested in making your own assets."
 msgstr ""
+"Na druhou stranu, pokud herní předměty, které potřebujete, nebudou zahrnuty "
+"do výchozího balíčku assetů, můžete buď stáhnout balíček assetů, který "
+"udělal již někdo jiný, nebo si můžete vytvořit vlastní! Navštivte stránku "
+":ref:`asset-packs`, pokud máte zájem o tvoření vlastních assetů."
 
 #: ../../general/about.rst:156
 msgid "How easy is it to setup a game in Tabletop Club?"
-msgstr ""
+msgstr "Jak těžké je nastavit hru v Tabletop Club?"
 
 #: ../../general/about.rst:158
 msgid ""
@@ -315,6 +325,10 @@ msgid ""
 "then click on the game you want to play, then click :guilabel:`Load`) to "
 "play the game right away!"
 msgstr ""
+"Pro nejpopulárnější hry, základní balíček assetů přichází s předzhotovenými "
+"soubory, které můžete instantně načíst (ve hře klikněte na "
+":guilabel:`Games`, poté vyberte hru, kterou chcete hrát, klikněte na "
+":guilabel:`Load`) a tím hrát hru hned!"
 
 #: ../../general/about.rst:163
 msgid ""
@@ -329,15 +343,18 @@ msgid ""
 "See the :ref:`asset-type-game` page for more information about pre-made save "
 "files in asset packs."
 msgstr ""
+"Viz stránku :ref:`asset-type-game` pro více informací o předem vyráběných "
+"uložených souborech v sadách aktiv."
 
 #: ../../general/about.rst:173
 msgid "Can I add assets other than game pieces to Tabletop Club?"
-msgstr ""
+msgstr "Mohu přidat jiné assety než herní předměty do Tabletop Club?"
 
 #: ../../general/about.rst:175
 msgid ""
 "Yes! As well as objects, you can also import the following types of assets:"
 msgstr ""
+"Ano! Stejně jako objekty můžete také importovat následující typy assetů:"
 
 #: ../../general/about.rst:177
 msgid ":ref:`asset-type-game`"
@@ -361,7 +378,7 @@ msgstr ":ref:`asset-type-table`"
 
 #: ../../general/about.rst:185
 msgid "Can you add my favourite board game to Tabletop Club?"
-msgstr ""
+msgstr "Můžete přidat mojí oblíbenou deskovou hru do Tabletop Clubu?"
 
 #: ../../general/about.rst:187
 msgid ""
@@ -370,22 +387,30 @@ msgid ""
 "asset pack. But that doesn't stop you from making assets for your favourite "
 "board game for private use!"
 msgstr ""
+"Z právních důvodů Tabletop Club bude distribuovat pouze deskové hry `public-"
+"domain <https://en.wikipedia.org/wiki/Public_domain>`_ v základním asset "
+"packu. Ale nemůžeme vás zastavit od toho, abyste si vytvořili assety pro "
+"vaši oblíbenou deskovou hru pro soukromé použití!"
 
 #: ../../general/about.rst:194
 msgid "Can I share assets I've made on the internet?"
-msgstr ""
+msgstr "Mohu sdílet mnou vytvořené assety na internetu?"
 
 #: ../../general/about.rst:196
 msgid ""
 "It depends on a number of factors. In general, it should be safe to share "
 "the assets you've made for the game if the following is all true:"
 msgstr ""
+"Záleží na mnoho faktorech. Obecně by mělo být bezpečné sdílet assety "
+"zhotovené pro hru, pokud vše následující je pravdivé:"
 
 #: ../../general/about.rst:199
 msgid ""
 "The assets you've made (textures, 3D models, etc.) are made by you, and are "
 "not derived from copyrighted material."
 msgstr ""
+"Objekty, které jste vyrobili (texty, 3D modely, atd.) jsou vyráběny vámi, a "
+"nejsou odvozeny z materiálu pod copyrightem."
 
 #: ../../general/about.rst:204
 msgid ""
@@ -394,12 +419,18 @@ msgid ""
 "state the license and whether the content was modified. Please read the "
 "terms of the license first."
 msgstr ""
+"Můžete šířit věci vytvořené ostatními lidmi **pokud** vám to umožňuje "
+"licence. Je vždy bezpečnější citovat původního autora a uvést licenci a "
+"jestli byl obsah pozměněn. Čtěte tedy podmínky licencí."
 
 #: ../../general/about.rst:209
 msgid ""
 "To help with this, the :ref:`config-cfg` file allows you to put the author, "
 "license, modifier, and URL with the asset, which is then shown in-game."
 msgstr ""
+"Pomoci při citaci vám může soubor :ref:`config-cfg` , který umožňuje přidat "
+"do assetu autora, licenci, modifikátor a adresu URL pro asset, který se poté "
+"ukáže ve hře."
 
 #: ../../general/about.rst:212
 msgid ""
