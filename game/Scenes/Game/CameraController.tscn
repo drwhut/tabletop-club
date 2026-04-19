@@ -20,6 +20,7 @@
 [ext_resource path="res://Scenes/Game/UI/Dialogs/DetailsDialog.tscn" type="PackedScene" id=18]
 
 [node name="CameraController" type="Spatial"]
+physics_interpolation_mode = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "The camera controller allows the user the change the position, rotation and zoom of the camera, as well as allowing the user to select and hover pieces."
