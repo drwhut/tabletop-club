@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated Godot from v3.4.5 to v3.6.2.
 - Updated the lobby server's SSL certificate.
 
+### Fixed
+
+- Fixed errors appearing for missing `user://assets` and `user://.import`
+  folders when importing assets for the first time.
+
 ## [0.1.4] - 2025-10-12
 
 ### Added

@@ -2065,56 +2065,58 @@ func _remove_old_assets(catalog: Dictionary) -> void:
 	var asset_dir_path = ""
 	
 	var asset_dir = Directory.new()
-	var err = asset_dir.open("user://assets")
-	if err == OK:
-		asset_dir_path = asset_dir.get_current_dir()
-		
-		asset_dir.list_dir_begin(true, true)
-		var pack = asset_dir.get_next()
-		while not pack.empty():
-			if asset_dir.current_is_dir():
-				for type in ASSET_PACK_SUBFOLDERS:
-					_remove_old_assets_type(catalog, pack, type)
+	if asset_dir.dir_exists("user://assets"):
+		var err = asset_dir.open("user://assets")
+		if err == OK:
+			asset_dir_path = asset_dir.get_current_dir()
 			
-			pack = asset_dir.get_next()
-	else:
-		_log_error("Failed to open user://assets! (error %d)" % err)
+			asset_dir.list_dir_begin(true, true)
+			var pack = asset_dir.get_next()
+			while not pack.empty():
+				if asset_dir.current_is_dir():
+					for type in ASSET_PACK_SUBFOLDERS:
+						_remove_old_assets_type(catalog, pack, type)
+				
+				pack = asset_dir.get_next()
+		else:
+			_log_error("Failed to open user://assets! (error %d)" % err)
 	
 	var import_dir = Directory.new()
-	err = import_dir.open("user://.import")
-	if err == OK:
-		# We need to simulate what the import module does to the file names so
-		# we can compare them to the actual files.
-		var safe_files = {}
-		for pack in catalog["packs"]:
-			var catalog_pack: Dictionary = catalog["packs"][pack]
-			var pack_path: String = catalog_pack["path"]
-			for type in catalog_pack["types"]:
-				var catalog_type: Dictionary = catalog_pack["types"][type]
-				for file in catalog_type["files"]:
-					var original_path = "%s/%s/%s" % [pack_path, type, file]
-					var md5_name = file + "-" + original_path.md5_text()
-					safe_files[md5_name] = 0 # Dummy value.
-					
-					var copy_path = "%s/%s/%s/%s" % [asset_dir_path, pack,
-						type, file]
-					var import_name = file + "-" + copy_path.md5_text()
-					safe_files[import_name] = 0
-		
-		import_dir.list_dir_begin(true, true)
-		var file = import_dir.get_next()
-		while not file.empty():
-			var base_name = file.get_basename()
-			if not safe_files.has(base_name):
-				err = import_dir.remove(file)
-				if err == OK:
-					print("Removed: %s" % file)
-				else:
-					_log_error("Failed to remove %s! (error: %d)" % [file, err])
+	if import_dir.dir_exists("user://.import"):
+		var err = import_dir.open("user://.import")
+		if err == OK:
+			# We need to simulate what the import module does to the file names so
+			# we can compare them to the actual files.
+			var safe_files = {}
+			for pack in catalog["packs"]:
+				var catalog_pack: Dictionary = catalog["packs"][pack]
+				var pack_path: String = catalog_pack["path"]
+				for type in catalog_pack["types"]:
+					var catalog_type: Dictionary = catalog_pack["types"][type]
+					for file in catalog_type["files"]:
+						var original_path = "%s/%s/%s" % [pack_path, type, file]
+						var md5_name = file + "-" + original_path.md5_text()
+						safe_files[md5_name] = 0 # Dummy value.
+						
+						var copy_path = "%s/%s/%s/%s" % [asset_dir_path, pack,
+							type, file]
+						var import_name = file + "-" + copy_path.md5_text()
+						safe_files[import_name] = 0
 			
-			file = import_dir.get_next()
-	else:
-		_log_error("Failed to open user://.import! (error %d)" % err)
+			import_dir.list_dir_begin(true, true)
+			var file = import_dir.get_next()
+			while not file.empty():
+				var base_name = file.get_basename()
+				if not safe_files.has(base_name):
+					err = import_dir.remove(file)
+					if err == OK:
+						print("Removed: %s" % file)
+					else:
+						_log_error("Failed to remove %s! (error: %d)" % [file, err])
+				
+				file = import_dir.get_next()
+		else:
+			_log_error("Failed to open user://.import! (error %d)" % err)
 
 # Helper function for _remove_old_assets.
 # catalog: The latest catalog of imported files.
