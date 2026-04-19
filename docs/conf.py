@@ -21,7 +21,7 @@ project = 'Tabletop Club'
 
 # TODO: Sphinx now supports multiple entries for the copyright, but the theme
 # does not display them properly. Edit once the issue has been fixed.
-copyright = "2020-2025, Benjamin 'drwhut' Beddows, Tabletop Club contributors"
+copyright = "2020-2026, Benjamin 'drwhut' Beddows, Tabletop Club contributors"
 
 # The major and minor version, excluding the patch number.
 version = 'v0.1'
