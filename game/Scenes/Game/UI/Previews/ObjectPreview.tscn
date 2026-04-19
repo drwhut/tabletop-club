@@ -50,6 +50,7 @@ mouse_filter = 1
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="CenterContainer/ViewportContainer"]
+physics_interpolation_mode = 1
 size = Vector2( 256, 256 )
 own_world = true
 world = SubResource( 2 )
