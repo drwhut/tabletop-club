@@ -315,6 +315,7 @@ ssl/certificates="res://master_server.crt"
 [physics]
 
 3d/default_gravity=98.1
+common/physics_interpolation=true
 
 [rendering]
 
