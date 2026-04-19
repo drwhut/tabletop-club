@@ -26,7 +26,7 @@ onready var _area = $Area
 onready var _area_collision_shape = $Area/CollisionShape
 onready var _effect_player = $EffectPlayer
 onready var _mesh_instance = $Area/CollisionShape/MeshInstance
-onready var _name_label = $NamePlate/Viewport/MarginContainer/NameLabel
+onready var _name_label = $Viewport/MarginContainer/NameLabel
 
 const CARD_HEIGHT_DIFF = 0.01
 
