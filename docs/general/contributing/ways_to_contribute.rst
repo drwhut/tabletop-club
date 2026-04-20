@@ -28,6 +28,7 @@ find the game logs in the following folders:
 * Windows: ``%APPDATA%/Tabletop Club/logs/``
 * macOS: ``~/Library/Application Support/Tabletop Club/logs``
 * Linux: ``~/.local/share/Tabletop Club/logs/``
+* Linux using FlatPak: ``~/.var/app/io.itch.drwhut.TabletopClub/data/Tabletop Club/logs``
 
 .. hint::
 
