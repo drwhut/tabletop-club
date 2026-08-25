@@ -154,7 +154,7 @@ func add_piece(piece_entry: Dictionary, piece_transform: Transform,
 			outline_mesh_instance.scale.y = piece_collision_shape.scale.y
 			setup_outline_material()
 		
-		ResourceManager.free_object(piece_instance)
+		piece_instance.free()
 	else:
 		var current_height = get_total_height()
 		var new_height = _mesh_unit_height * get_piece_count()
