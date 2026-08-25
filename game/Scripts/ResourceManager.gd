@@ -87,10 +87,16 @@ func free_object(object: Object) -> void:
 # Queue an object to be freed in a thread-safe manner.
 # object: The object to be freed.
 func queue_free_object(object: Object) -> void:
-	_free_mutex.lock()
-	_free_queue.push_back(object)
-	call_deferred("_clear_free_queue")
-	_free_mutex.unlock()
+	if object is Node:
+		object.queue_free()
+	else:
+		object.free()
+	
+	# This used to work in Godot 3.4, but causes random crashes in Godot 3.6?
+	#_free_mutex.lock()
+	#_free_queue.push_back(object)
+	#call_deferred("_clear_free_queue")
+	#_free_mutex.unlock()
 
 func _notification(what):
 	match what:
