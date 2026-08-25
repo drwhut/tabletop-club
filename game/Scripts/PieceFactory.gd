@@ -37,6 +37,10 @@ var _last_accepted_order = -1
 var _finished_list = []
 var _finished_list_mutex = Mutex.new()
 
+# Pieces that were requested, but have not been accepted.
+var _neglected_list = []
+var _neglected_list_mutex = Mutex.new()
+
 # The thread that builds the pieces.
 var _build_thread = Thread.new()
 var _stop_flag = false
@@ -102,9 +106,11 @@ func _process(_delta):
 		emit_signal("finished", order, piece)
 		
 		# If the piece has not been accepted by whoever ordered it, then free
-		# it from memory.
+		# it from memory when everything else in the queue has been processed.
 		if _last_accepted_order != order:
-			ResourceManager.queue_free_object(piece)
+			_neglected_list_mutex.lock()
+			_neglected_list.push_back(piece)
+			_neglected_list_mutex.unlock()
 	_finished_list_mutex.unlock()
 
 # The function the build thread runs.
@@ -163,6 +169,15 @@ func _build(_userdata) -> void:
 		if not _order_list.empty():
 			order_item = _order_list.pop_front()
 		_order_list_mutex.unlock()
+	
+	# After the thread is done building everything in the queue, take any items
+	# that were neglected (not accepted after they were requested)... and
+	# throw them in the nearest available bin.
+	_neglected_list_mutex.lock()
+	for neglected_item in _neglected_list:
+		ResourceManager.queue_free_object(neglected_item)
+	_neglected_list.clear()
+	_neglected_list_mutex.unlock()
 
 func _on_tree_exiting():
 	_stop_flag_mutex.lock()
