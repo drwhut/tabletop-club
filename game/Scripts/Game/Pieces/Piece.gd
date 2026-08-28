@@ -578,9 +578,7 @@ remotesync func start_hovering(player_id: int, init_pos: Vector3, offset_pos: Ve
 	hover_start_time = OS.get_ticks_msec()
 	
 	sleeping = false
-	
 	collision_layer = 2
-	custom_integrator = true
 
 # Called by the server to stop hovering the piece.
 remotesync func stop_hovering() -> void:
@@ -595,11 +593,6 @@ remotesync func stop_hovering() -> void:
 	# velocity in Y would let it fly away. Tossing pieces are not using the Y
 	# axis either, so we reset it to 0
 	linear_velocity.y = 0
-	
-	# Only the server gets to turn off the custom integrator, since it is the
-	# authority for the physics simulation.
-	if get_tree().is_network_server():
-		custom_integrator = false
 	
 	# The last server state will be out of date, so reset it here.
 	_last_server_state_invalid = true
