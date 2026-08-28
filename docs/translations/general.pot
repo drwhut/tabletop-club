@@ -1,15 +1,14 @@
-# Tabletop Club Documentation Translation Template.
-# Copyright (c) 2020-2026 Benjamin 'drwhut' Beddows.
-# Copyright (c) 2021-2026 Tabletop Club contributors (see game/CREDITS.tres).
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020-2026, Benjamin 'drwhut' Beddows, Tabletop Club contributors
 # This file is distributed under the same license as the Tabletop Club package.
-# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2026.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-04 13:50+0100\n"
+"POT-Creation-Date: 2026-08-28 12:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -603,23 +602,17 @@ msgid "0.1.x"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:39
-msgid "3.4.5"
+#: ../../general/download/compiling_from_source.rst:41
+msgid "3.6.3"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:39
-msgid "``tabletop-3.4.5``"
+#: ../../general/download/compiling_from_source.rst:41
+msgid "``tabletop-3.6.3``"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:41
 msgid "0.2.x"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:41
-msgid "3.5.3"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:41
-msgid "``tabletop-3.5.3``"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:46
@@ -863,11 +856,11 @@ msgid "Since the multiplayer for Tabletop Club uses WebRTC, you'll need to downl
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:352
-msgid "Download the latest release (not a pre-release!) of the plugin from `the repository <https://github.com/godotengine/webrtc-native/releases>`_. Make sure to download the ``webrtc-native-release`` file rather than the ``webrtc-native-debug`` file."
+msgid "Download the latest release (not a pre-release!) of the plugin from `the repository <https://github.com/godotengine/webrtc-native/releases>`_. Make sure to download the ``gdnative-webrtc_native`` file rather than the ``extension-webrtc_native`` file."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:357
-msgid "Open the compressed file, and place the ``webrtc/`` folder into ``tabletop-club/game/``. Afterwards, there should be a file at ``tabletop-club/game/webrtc/webrtc.tres``."
+msgid "Open the compressed file, and place the ``addons/`` folder into ``tabletop-club/game/``. Afterwards, there should be a file at ``tabletop-club/game/addons/webrtc_native/webrtc_native.tres``."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:363
