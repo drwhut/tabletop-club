@@ -1,0 +1,2479 @@
+# Tabletop Club Documentation Translation Template.
+# Copyright (c) 2020-2024 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2024 Tabletop Club contributors (see game/CREDITS.tres).
+# This file is distributed under the same license as the Tabletop Club package.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Tabletop Club master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-04 13:50+0100\n"
+"PO-Revision-Date: 2025-08-03 11:02+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/tabletop-club/docs-"
+"custom-assets/ta/>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.13-dev\n"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:3
+msgid "Asset pack structure"
+msgstr "சொத்து பேக் அமைப்பு"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:6
+msgid "Locations for asset packs"
+msgstr "சொத்து பொதிகளுக்கான இடங்கள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:8
+msgid ""
+"At the start of the game, Tabletop Club will scan a set of given folders for "
+"asset packs. If you want the game to import your asset pack, it needs to be "
+"put into one of the following locations:"
+msgstr ""
+"விளையாட்டின் தொடக்கத்தில், டேப்லெட் கிளப் சொத்து பொதிகளுக்கு கொடுக்கப்பட்ட கோப்புறைகளின் "
+"தொகுப்பை ச்கேன் செய்யும். விளையாட்டு உங்கள் சொத்து பேக்கை இறக்குமதி செய்ய விரும்பினால், "
+"அதை பின்வரும் இடங்களில் ஒன்றில் வைக்க வேண்டும்:"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:12
+msgid "``<TABLETOPCLUB_INSTALL_FOLDER>/assets/``"
+msgstr "`` <ablebletopclub_install_folder>/சொத்துக்கள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:13
+msgid "``<DOWNLOADS>/TabletopClub/assets/``"
+msgstr "`` <பதிவிறக்கங்கள்>/டேப்லெட்ஆப் கிளப்/சொத்துக்கள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:14
+msgid "``<DOCUMENTS>/TabletopClub/assets/``"
+msgstr "`` <ஆவணங்கள்>/டேப்லெட்ஆப் கிளப்/சொத்துக்கள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:15
+msgid "``<DESKTOP>/TabletopClub/assets/``"
+msgstr "`` <sectop>/டேப்லெட்ஆப் கிளப்/சொத்துக்கள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:19
+msgid "Creating an asset pack"
+msgstr "ஒரு சொத்து பேக்கை உருவாக்குதல்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:21
+msgid ""
+"Creating an asset pack is really easy! All you need to do is create a folder "
+"in one of the folders mentioned above, and you're done! The name of the "
+"folder will be the name of the asset pack."
+msgstr ""
+"ஒரு சொத்து பேக்கை உருவாக்குவது மிகவும் எளிதானது! நீங்கள் செய்ய வேண்டியது மேலே "
+"குறிப்பிட்டுள்ள கோப்புறையில் ஒரு கோப்புறையை உருவாக்குவதுதான், நீங்கள் முடித்துவிட்டீர்கள்! "
+"கோப்புறையின் பெயர் சொத்து பேக்கின் பெயராக இருக்கும்."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:27
+msgid "Sub-folders"
+msgstr "துணை கோப்புறைகள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:29
+msgid ""
+"Every asset pack divides its assets into different sub-folders, depending on "
+"what type of asset it is, and what the file type needed for that asset type "
+"is. Note that asset packs don't need to have all of these sub-folders."
+msgstr ""
+"ஒவ்வொரு சொத்து பேக்கும் அதன் சொத்துக்களை வெவ்வேறு துணை கோப்புறைகளாகப் பிரிக்கிறது, இது "
+"எந்த வகையான சொத்து, மற்றும் அந்த சொத்து வகைக்கு என்ன கோப்பு வகை தேவை என்பதைப் பொறுத்து. "
+"சொத்து பொதிகள் இந்த துணை கோப்புறைகள் அனைத்தையும் கொண்டிருக்க தேவையில்லை என்பதை நினைவில் "
+"கொள்க."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
+msgid "Sub-folder"
+msgstr "துணை நட்பு"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
+msgid "File Type"
+msgstr "கோப்பு வகை"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
+msgid "Asset Type"
+msgstr "சொத்து வகை"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:34
+msgid "Object Type"
+msgstr "பொருள் வகை"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
+msgid "``boards/``"
+msgstr "`` பலகைகள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:42
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:44
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:46
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:48
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:50
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:58
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
+msgid ":ref:`file-type-3d`"
+msgstr ":ref:`file-type-3d`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:42
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:44
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:46
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:48
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:50
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:58
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:72
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:74
+msgid ":ref:`asset-type-object`"
+msgstr ": குறிப்பு: `சொத்து-வகை-பொருள்`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:36
+msgid ":ref:`object-type-board`"
+msgstr ": குறிப்பு: `பொருள்-வகை போர்டு`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
+msgid "``cards/``"
+msgstr "`` கார்டுகள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:72
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:74
+msgid ":ref:`file-type-image`"
+msgstr ": குறிப்பு: `கோப்பு-வகை-படம்`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:38
+msgid ":ref:`object-type-card`"
+msgstr ": குறிப்பு: `பொருள்-வகை-அட்டை`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
+msgid "``containers/``"
+msgstr "`` கொள்கலன்கள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:40
+msgid ":ref:`object-type-container`"
+msgstr ": குறிப்பு: `பொருள்-வகை-கான்டைனர்`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:42
+msgid "``dice/d4/``"
+msgstr "`` என்கிறார் / d4 / ``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:42
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:44
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:46
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:48
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:50
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
+msgid ":ref:`object-type-dice`"
+msgstr ": குறிப்பு: `பொருள்-வகை-பகல்`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:44
+msgid "``dice/d6/``"
+msgstr "`` என்கிறார்/d6/`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:46
+msgid "``dice/d8/``"
+msgstr "`` என்கிறார்/d8/`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:48
+msgid "``dice/d10/``"
+msgstr "`` என்கிறார்/d10/`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:50
+msgid "``dice/d12/``"
+msgstr "`` டைச்/டி 12/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:52
+msgid "``dice/d20/``"
+msgstr "`` டைச்/டி 20/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
+msgid "``games/``"
+msgstr "`` விளையாட்டுகள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
+msgid ":ref:`file-type-save`"
+msgstr ": குறிப்பு: `கோப்பு-வகை-சேவ்`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
+msgid ":ref:`asset-type-game`"
+msgstr ": குறிப்பு: `சொத்து-வகை-விளையாட்டு`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:54
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
+msgid "N/A"
+msgstr "இதற்கில்லை"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
+msgid "``music/``"
+msgstr "`` இசை/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
+msgid ":ref:`file-type-audio`"
+msgstr ": ref: `கோப்பு-வகை-ஆடியோ`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:56
+msgid ":ref:`asset-type-music`"
+msgstr ": குறிப்பு: `சொத்து-வகை-இசை`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:58
+msgid "``pieces/``"
+msgstr "`` துண்டுகள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:58
+msgid ":ref:`object-type-piece`"
+msgstr ": குறிப்பு: `பொருள்-வகை-துண்டு`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
+msgid "``skyboxes/``"
+msgstr "`` ச்கை பாக்ச்கள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:60
+msgid ":ref:`asset-type-skybox`"
+msgstr ": Ref: `சொத்து-வகை-ச்கைப்பாக்ச்`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
+msgid "``sounds/``"
+msgstr "`` ஒலிகள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:62
+msgid ":ref:`asset-type-sound`"
+msgstr ": குறிப்பு: `சொத்து-வகை-ஒலி`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
+msgid "``speakers/``"
+msgstr "`` பேச்சாளர்கள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:64
+msgid ":ref:`object-type-speaker`"
+msgstr ": குறிப்பு: `பொருள்-வகை-ச்பீக்கர்`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
+msgid "``tables/``"
+msgstr "`` அட்டவணைகள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:66
+msgid ":ref:`asset-type-table`"
+msgstr ": குறிப்பு: `சொத்து-வகை-அட்டவணை`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
+msgid "``templates/``"
+msgstr "`` வார்ப்புருக்கள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
+msgid ":ref:`file-type-image`, Text"
+msgstr ": ref: `கோப்பு-வகை-படம்`, உரை"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:68
+msgid ":ref:`asset-type-template`"
+msgstr ": ref: `சொத்து-வகை-டெம்ப்ளேட்`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
+msgid "``timers/``"
+msgstr "`` டைமர்கள்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:70
+msgid ":ref:`object-type-timer`"
+msgstr ": குறிப்பு: `பொருள்-வகை-டைமர்`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:72
+msgid "``tokens/cube/``"
+msgstr "`` டோக்கன்கள்/கியூப்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:72
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:74
+msgid ":ref:`object-type-token`"
+msgstr ": Ref: `பொருள்-வகை-டோக்கன்`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:74
+msgid "``tokens/cylinder/``"
+msgstr "`` டோக்கன்கள்/சிலிண்டர்/``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:79
+msgid "Configuration files"
+msgstr "உள்ளமைவு கோப்புகள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:84
+msgid "config.cfg"
+msgstr "config.cfg"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:86
+msgid ""
+"Every sub-folder can have this file, which allows you to modify the "
+"properties of assets in the subfolder."
+msgstr ""
+"ஒவ்வொரு துணை நட்பும் இந்த கோப்பைக் கொண்டிருக்கலாம், இது துணைக் கோப்புறையில் உள்ள "
+"சொத்துக்களின் பண்புகளை மாற்ற உங்களை அனுமதிக்கிறது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:89
+msgid "Here is an example of a ``config.cfg`` file:"
+msgstr "`` Config.cfg`` கோப்பின் எடுத்துக்காட்டு இங்கே:"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:134
+msgid "Here is the full list of properties you can modify in ``config.cfg``:"
+msgstr "`` Config.cfg`` இல் நீங்கள் மாற்றக்கூடிய பண்புகளின் முழு பட்டியல் இங்கே:"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
+msgid "Property Name"
+msgstr "சொத்து பெயர்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
+msgid "Data Type"
+msgstr "தரவு வகை"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
+msgid "Used By"
+msgstr "பயன்படுத்தியது"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
+msgid "Default Value"
+msgstr "இயல்புநிலை மதிப்பு"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:137
+msgid "Description"
+msgstr "விவரம்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+msgid "``author``"
+msgstr "`` ஆசிரியர்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:169
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:180
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:192
+msgid "Text"
+msgstr "உரை"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:169
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:192
+msgid "All"
+msgstr "அனைத்தும்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:192
+msgid "``\"\"``"
+msgstr "`` \"\" ``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:139
+msgid "The name of the author(s) of the asset."
+msgstr "சொத்தின் ஆசிரியரின் (கள்) பெயர்."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
+msgid "``back_face``"
+msgstr "`` back_face``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:178
+msgid "Cards"
+msgstr "அட்டைகள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:141
+msgid ""
+"The file name of the back face of the card. The texture must be in the same "
+"folder. If blank, no back face texture is applied."
+msgstr ""
+"அட்டையின் பின் முகத்தின் கோப்பு பெயர். அமைப்பு ஒரே கோப்புறையில் இருக்க வேண்டும். காலியாக "
+"இருந்தால், பின் முக அமைப்பு எதுவும் பயன்படுத்தப்படவில்லை."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+msgid "``bounce``"
+msgstr "`` பவுன்ச்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:185
+msgid "Number"
+msgstr "எண்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
+msgid "Tables"
+msgstr "அட்டவணைகள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+msgid "``0.5``"
+msgstr "`` 0.5``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:143
+msgid ""
+"Defines how high objects bounce off the table. Must be a value between "
+"``0.0`` (no bounce) and ``1.0`` (full bounce)."
+msgstr ""
+"உயர் பொருள்கள் அட்டவணையில் இருந்து எவ்வாறு குதிக்கின்றன என்பதை வரையறுக்கிறது. `` 0.0`` "
+"(பவுன்ச் இல்லை) மற்றும் `` 1.0`` (முழு பவுன்ச்) ஆகியவற்றுக்கு இடையில் ஒரு மதிப்பாக "
+"இருக்க வேண்டும்."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
+msgid "``collision_mode``"
+msgstr "`` மோதல்_மோட்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
+msgid "Objects, Tables"
+msgstr "பொருள்கள், அட்டவணைகள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
+msgid "``0``"
+msgstr "`` 0``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:145
+msgid ""
+"Determines the collision shape of the object. See :ref:`file-type-3d` for "
+"more details."
+msgstr ""
+"பொருளின் மோதல் வடிவத்தை தீர்மானிக்கிறது. காண்க: குறிப்பு: மேலும் விவரங்களுக்கு `கோப்பு-"
+"வகை -3 டி`."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
+msgid "``color``"
+msgstr "`` வண்ணம்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
+msgid "String"
+msgstr "சரம்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:180
+msgid "Objects"
+msgstr "பொருள்கள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
+msgid "``#ffffff``"
+msgstr "`` # ffffff``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:147
+msgid "Multiply the color of the texture by this value."
+msgstr "அமைப்பின் நிறத்தை இந்த மதிப்பால் பெருக்கவும்."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
+msgid "``com_adjust``"
+msgstr "`` com_adjust``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
+msgid "``\"volume\"``"
+msgstr "`` \"தொகுதி\" ``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:149
+msgid ""
+"Defines how the centre-of-mass of the object is automatically adjusted, if "
+"at all. See :ref:`file-type-3d` for more details."
+msgstr ""
+"பொருளின் மைய-வெகுசனமானது தானாகவே எவ்வாறு சரிசெய்யப்படுகிறது என்பதை வரையறுக்கிறது. "
+"காண்க: குறிப்பு: மேலும் விவரங்களுக்கு `கோப்பு-வகை -3 டி`."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
+msgid "``default``"
+msgstr "`` இயல்புநிலை``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
+msgid "Boolean"
+msgstr "பூலியன்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
+msgid "Skyboxes, Tables"
+msgstr "ச்கை பாக்ச்கள், அட்டவணைகள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
+msgid "``false``"
+msgstr "`` தவறு``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:151
+msgid ""
+"If ``true``, the asset is loaded before the game starts. If ``true`` for "
+"multiple assets, one is loaded at random."
+msgstr ""
+"`` உண்மை` `என்றால், விளையாட்டு தொடங்குவதற்கு முன்பு சொத்து ஏற்றப்படும். பல சொத்துக்களுக்கு "
+"`` உண்மை` என்றால், ஒன்று சீரற்ற முறையில் ஏற்றப்படும்."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
+msgid "``desc``"
+msgstr "`` desc``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:153
+msgid "Describes the asset in more detail."
+msgstr "சொத்தை இன்னும் விரிவாக விவரிக்கிறது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
+msgid "``face_values``"
+msgstr "`` face_values``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:190
+msgid "Dictionary"
+msgstr "அகராதி"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
+#: ../../custom_assets/asset_packs/asset_types.rst:104
+msgid "Dice"
+msgstr "பகடை"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:190
+msgid "``{}``"
+msgstr "`` {} ``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:155
+msgid ""
+"Specifies which rotations correspond to what values on the faces of the die. "
+"See :ref:`object-type-dice` for more information."
+msgstr ""
+"எந்த சுழற்சிகள் இறப்பின் முகங்களில் என்ன மதிப்புகளுக்கு ஒத்துப்போகின்றன என்பதைக் "
+"குறிப்பிடுகிறது. காண்க: குறிப்பு: மேலும் தகவலுக்கு `பொருள்-வகை-பகல்`."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+msgid "``hands``"
+msgstr "`` கைகள்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+msgid "Array"
+msgstr "வரிசை"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+msgid "``[]``"
+msgstr "`` [] ``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:157
+msgid ""
+"The positions of player's hands around the table. See :ref:`asset-type-"
+"table` for more information."
+msgstr ""
+"மேசையைச் சுற்றி வீரரின் கைகளின் நிலைகள். காண்க: குறிப்பு: மேலும் தகவலுக்கு `சொத்து-வகை-"
+"அட்டவணை`."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
+msgid "``ignore``"
+msgstr "`` புறக்கணிக்கவும்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:159
+msgid ""
+"If ``true``, it tells the game to ignore this asset when importing the asset "
+"pack."
+msgstr ""
+"``true``என்றால், சொத்து பேக்கை இறக்குமதி செய்யும்போது இந்தச் சொத்தைப் புறக்கணிக்க "
+"விளையாட்டை இது கூறுகிறது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
+msgid "``license``"
+msgstr "`` உரிமம்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:161
+msgid "The license the asset is distributed under."
+msgstr "சொத்து உரிமத்தின் கீழ் விநியோகிக்கப்படுகிறது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
+msgid "``main_menu``"
+msgstr "`` main_menu``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
+msgid "Music, Objects"
+msgstr "இசை, பொருள்கள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:163
+msgid ""
+"If ``true``, objects will have a chance of spawning in the main menu, and "
+"music will have a chance of playing in the main menu."
+msgstr ""
+"``true`` என்றால், பொருள்களுக்கு முதன்மையான பட்டியலில் முளைக்க வாய்ப்பு கிடைக்கும், மேலும் "
+"இசைக்கு முதன்மையான பட்டியலில் விளையாட வாய்ப்பு இருக்கும்."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
+msgid "``mass``"
+msgstr "`` மாச்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:185
+msgid "``1.0``"
+msgstr "`` 1.0``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:165
+msgid ""
+"The mass of the object in grams (g) when it is spawned in-game. It is "
+"recommended to set this value for more realistic physics collisions."
+msgstr ""
+"விளையாட்டில் உருவாகும் போது கிராம் (கிராம்) இல் உள்ள பொருளின் நிறை. இந்த மதிப்பை "
+"மிகவும் யதார்த்தமான இயற்பியல் மோதல்களுக்கு அமைக்க பரிந்துரைக்கப்படுகிறது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
+msgid "``modified_by``"
+msgstr "`` மாற்றியமைக்கப்பட்ட_பிபி``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:167
+msgid "The name(s) of the people who have modified the asset."
+msgstr "சொத்தை மாற்றியமைத்தவர்களின் பெயர் (கள்)."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:169
+msgid "``name``"
+msgstr "`` பெயர்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:169
+msgid "``<FILE_NAME>``"
+msgstr "`` <file_name> ``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:169
+msgid "The name of the asset. Must be unique among its type."
+msgstr "சொத்தின் பெயர். அதன் வகைகளில் தனித்துவமாக இருக்க வேண்டும்."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
+msgid "``paint_plane``"
+msgstr "`` பெயிண்ட்_பிளேன்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:178
+msgid "Vector2"
+msgstr "திசையன் 2"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
+msgid "``Vector2(100.0, 100.0)``"
+msgstr "`` வெக்டர் 2 (100.0, 100.0) ``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:171
+msgid ""
+"The length and width of the plane in which players can paint on the table. "
+"The centre of the plane is at the origin."
+msgstr ""
+"வீரர்கள் மேசையில் வண்ணம் தீட்டக்கூடிய விமானத்தின் நீளம் மற்றும் அகலம். விமானத்தின் நடுவண் "
+"தோற்றத்தில் உள்ளது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
+msgid "``rotation``"
+msgstr "`` சுழற்சி``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
+msgid "Vector3"
+msgstr "திசையன் 3"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:185
+msgid "Skyboxes"
+msgstr "ச்கை பாக்ச்கள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
+msgid "``Vector3(0.0, 0.0, 0.0)``"
+msgstr "`` வெக்டர் 3 (0.0, 0.0, 0.0) ``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:173
+msgid "Rotates the skybox a number of degrees in the X, Y and Z axes."
+msgstr "ஃச், ஒய் மற்றும் சட் அச்சுகளில் பல டிகிரிகளை ச்கை பாக்சை சுழற்றுகிறது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:178
+msgid "``scale``"
+msgstr "`` அளவுகோல்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
+msgid "Objects (except Cards)"
+msgstr "பொருள்கள் (அட்டைகளைத் தவிர)"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
+msgid "``Vector3(1.0, 1.0, 1.0)``"
+msgstr "`` வெக்டர் 3 (1.0, 1.0, 1.0) ``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:175
+msgid ""
+"Scales the object in the X (width), Y (height) and Z (thickness) axes in "
+"centimeters (cm). Note that for objects that use custom 3D models, this "
+"value most likely won't reflect the final size of the object."
+msgstr ""
+"சென்டிமீட்டர் (சி.எம்) இல் ஃச் (அகலம்), ஒய் (உயரம்) மற்றும் சட் (தடிமன்) அச்சுகளில் பொருளை "
+"அளவிடுகிறது. தனிப்பயன் 3D மாடல்களைப் பயன்படுத்தும் பொருள்களுக்கு, இந்த மதிப்பு "
+"பெரும்பாலும் பொருளின் இறுதி அளவை பிரதிபலிக்காது என்பதை நினைவில் கொள்க."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:178
+msgid "``Vector2(1.0, 1.0)``"
+msgstr "`` வெக்டர் 2 (1.0, 1.0) ``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:178
+msgid ""
+"Scales the card in the X (width) and Z (height) axes in centimeters (cm)."
+msgstr ""
+"கார்டை சென்டிமீட்டரில் (சி.எம்) ஃச் (அகலம்) மற்றும் சட் (உயரம்) அச்சுகளில் அளவிடுகிறது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:180
+msgid "``sfx``"
+msgstr "`` sfx``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:180
+msgid "``\"generic\"``"
+msgstr "`` \"பொதுவான\" ``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:180
+msgid ""
+"Determines what the object sounds like when it collides with the table. "
+"Possible values are: ``\"generic\"``, ``\"glass\"``, ``\"glass_heavy\"``, "
+"``\"glass_light\"``, ``\"metal\"``, ``\"metal_heavy\"``, "
+"``\"metal_light\"``, ``\"soft\"``, ``\"soft_heavy\"``, ``\"tin\"``, "
+"``\"wood\"``, ``\"wood_heavy\"``, ``\"wood_light\"``."
+msgstr ""
+"பொருள் அட்டவணையுடன் மோதுகையில் அது எப்படி இருக்கும் என்பதை தீர்மானிக்கிறது. சாத்தியமான "
+"மதிப்புகள்: `` \"பொதுவான\", ``, `\" கண்ணாடி \"` ``, `\" கண்ணாடி_எவி \"` `,` "
+"`கண்ணாடி_ விளக்கு\" ."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
+msgid "``shakable``"
+msgstr "`` அதிர்ந்தவர்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
+msgid "Containers"
+msgstr "கொள்கலன்கள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:183
+msgid ""
+"If ``true``, when the container is being shaken upside down, it will "
+"randomly drop items out."
+msgstr ""
+"`` உண்மை`` என்றால், கொள்கலன் தலைகீழாக அசைக்கப்படும்போது, அது தோராயமாக உருப்படிகளை "
+"வெளியேற்றும்."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:185
+msgid "``strength``"
+msgstr "`` வலிமை`"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:185
+msgid "The strength of the ambient light coming from the skybox."
+msgstr "ச்கை பாக்சிலிருந்து வரும் சுற்றுப்புற ஒளியின் வலிமை."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:187
+msgid "``suit``, ``value``"
+msgstr "`` சூட்``, `` மதிப்பு``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:187
+msgid "Number, Text"
+msgstr "எண், உரை"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:187
+msgid "Cards, Tokens"
+msgstr "அட்டைகள், டோக்கன்கள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:187
+msgid "``null``"
+msgstr "`` null``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:187
+msgid ""
+"A value given to a stackable object that allows it to be sorted in a stack."
+msgstr ""
+"அடுக்கக்கூடிய பொருளுக்கு வழங்கப்பட்ட மதிப்பு அதை ஒரு அடுக்கில் வரிசைப்படுத்த "
+"அனுமதிக்கிறது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:190
+msgid "``textboxes``"
+msgstr "`` உரைப்பெட்டிகள்``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:190
+msgid "Templates"
+msgstr "வார்ப்புருக்கள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:190
+msgid ""
+"Used to set up textboxes for image templates. See :ref:`asset-type-template` "
+"for more information."
+msgstr ""
+"பட வார்ப்புருக்களுக்கான உரைப்பெட்டிகளை அமைக்க பயன்படுகிறது. காண்க: குறிப்பு: மேலும் "
+"தகவலுக்கு `சொத்து-வகை-டெம்ப்ளேட்`."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:192
+msgid "``url``"
+msgstr "`` url``"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:192
+msgid "The URL where the asset originally came from."
+msgstr "சொத்து முதலில் வந்த முகவரி."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:199
+msgid "stacks.cfg"
+msgstr "stacks.cfg"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:201
+msgid ""
+"For :ref:`object-type-card` and :ref:`object-type-token` objects, you can "
+"add this file to add pre-filled stacks of those objects to the asset pack. A "
+"good example of this is for adding pre-filled decks of cards to the game."
+msgstr ""
+"For: ref: `பொருள்-வகை-அட்டை` மற்றும்: ref:` பொருள்-வகை-டோகன்` பொருள்கள், அந்த "
+"பொருட்களின் முன் நிரப்பப்பட்ட அடுக்குகளை சொத்து பேக்கில் சேர்க்க இந்த கோப்பைச் சேர்க்கலாம். "
+"விளையாட்டுக்கு முன்பே நிரப்பப்பட்ட அட்டைகளைச் சேர்ப்பதே இதற்கு ஒரு சிறந்த எடுத்துக்காட்டு."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:205
+msgid "Here is an example of a ``stacks.cfg`` file:"
+msgstr "`` Stacks.cfg`` கோப்பின் எடுத்துக்காட்டு இங்கே:"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:233
+msgid "Translations"
+msgstr "மொழிபெயர்ப்புகள்"
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:235
+msgid ""
+"You can also provide translations for the names and descriptions of assets "
+"in the asset pack! This is done using separate configuration files for each "
+"language. The name of the file should be ``config.<locale>.cfg``, where "
+"``<locale>`` is the `locale code <https://docs.godotengine.org/en/stable/"
+"tutorials/i18n/locales.html>`_ for your language."
+msgstr ""
+"சொத்து பேக்கில் உள்ள சொத்துக்களின் பெயர்கள் மற்றும் விளக்கங்களுக்கான மொழிபெயர்ப்புகளையும் "
+"நீங்கள் வழங்கலாம்! ஒவ்வொரு மொழிக்கும் தனி உள்ளமைவு கோப்புகளைப் பயன்படுத்தி இது "
+"செய்யப்படுகிறது. கோப்பின் பெயர் `` கட்டமைப்பாக இருக்க வேண்டும்."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:244
+msgid ""
+"The list of languages supported by the game is shown in the `README <https://"
+"github.com/drwhut/tabletop-club#languages>`_ file of the project."
+msgstr ""
+"விளையாட்டால் ஆதரிக்கப்படும் மொழிகளின் பட்டியல் `README <https://github.com/drwhut/"
+"tabletop-club#languages>` _ திட்டத்தின் கோப்பில் காட்டப்பட்டுள்ளது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:247
+msgid ""
+"If the language you are translating to is not on this list, unfortunately "
+"you will not be able to see the results in-game. However, you can help to "
+"translate the project as a whole so your languages does become supported! "
+"See :ref:`translating-the-project` for more information."
+msgstr ""
+"நீங்கள் மொழிபெயர்க்கும் மொழி இந்த பட்டியலில் இல்லை என்றால், துரதிர்ச்டவசமாக நீங்கள் முடிவுகளை "
+"விளையாட்டில் காண முடியாது. இருப்பினும், திட்டத்தை ஒட்டுமொத்தமாக மொழிபெயர்க்க நீங்கள் "
+"உதவலாம், எனவே உங்கள் மொழிகள் ஆதரிக்கப்படுகின்றன! காண்க: குறிப்பு: மேலும் தகவலுக்கு "
+"`மொழிபெயர்ப்பு-திட்டத்தை மொழிபெயர்க்கிறது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:254
+msgid ""
+"These translation files are treated differently to other configuration "
+"files. You can only edit the ``name`` and ``desc`` properties of assets in "
+"these files. You also cannot apply translations to multiple assets at the "
+"same time with wildcards."
+msgstr ""
+"இந்த மொழிபெயர்ப்பு கோப்புகள் மற்ற உள்ளமைவு கோப்புகளுக்கு வித்தியாசமாக நடத்தப்படுகின்றன. "
+"இந்த கோப்புகளில் உள்ள சொத்துக்களின் `` பெயர்`` மற்றும் `desc`` பண்புகளை மட்டுமே நீங்கள் "
+"திருத்த முடியும். வைல்டு கார்டுகளுடன் ஒரே நேரத்தில் பல சொத்துக்களுக்கு "
+"மொழிபெயர்ப்புகளையும் பயன்படுத்த முடியாது."
+
+#: ../../custom_assets/asset_packs/asset_pack_structure.rst:259
+msgid ""
+"Here is an example of a Norwegian translation file, called ``config.nb.cfg``:"
+msgstr "`` Config.nb.cfg`` எனப்படும் நோர்வே மொழிபெயர்ப்பு கோப்பின் எடுத்துக்காட்டு இங்கே:"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:3
+msgid "Asset types"
+msgstr "சொத்து வகைகள்"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:8
+msgid "Object"
+msgstr "பொருள்"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:10
+msgid ""
+"An object in Tabletop Club refers to anything in-game that is dynamic (that "
+"is, it is driven by the physics engine). There are many different types of "
+"objects, each with their own special functionality:"
+msgstr ""
+"டேப்லெட் கிளப்பில் உள்ள ஒரு பொருள் மாறும் விளையாட்டில் உள்ள எதையும் குறிக்கிறது (அதாவது, "
+"இது இயற்பியல் இயந்திரத்தால் இயக்கப்படுகிறது). பல வகையான பொருள்கள் உள்ளன, ஒவ்வொன்றும் "
+"அவற்றின் சொந்த சிறப்பு செயல்பாட்டுடன்:"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:18
+msgid "Board"
+msgstr "பலகை"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:20
+msgid "An empty chess board on a table."
+msgstr "ஒரு மேசையில் வெற்று சதுரங்க பலகை."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:23
+msgid ""
+"Boards are generic objects with no special functionality. In this way, they "
+"are equivalent to :ref:`object-type-piece`, with the exception that they are "
+"placed in a separate type in the objects menu."
+msgstr ""
+"பலகைகள் சிறப்பு செயல்பாடு இல்லாத பொதுவான பொருள்கள். இந்த வழியில், அவை சமமானவை: ref: "
+"`பொருள்-வகை-துண்டு`, அவை பொருள் பட்டியலில் ஒரு தனி வகையாக வைக்கப்படுகின்றன என்பதைத் "
+"தவிர."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:31
+#: ../../custom_assets/asset_packs/file_types.rst:33
+msgid "Card"
+msgstr "அட்டை"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:33
+msgid ""
+"A row of five cards in a white rectangle representing the player's\n"
+"hand, from left to right, they are the ace of clubs, the ace of diamonds,\n"
+"the ace of hearts, the ace of spades, and a card that is facing down. The\n"
+"text \"player\" is shown in front of the hand."
+msgstr ""
+"வீரரைக் குறிக்கும் வெள்ளை செவ்வகத்தில் ஐந்து அட்டைகளின் வரிசை\n"
+" கை, இடமிருந்து வலமாக, அவை கிளப்புகளின் ஏச், வைரங்களின் ஏச்,\n"
+" இதயங்களின் ஏச், மண்வெட்டிகளின் ஏச், மற்றும் ஒரு அட்டை. தி\n"
+" \"பிளேயர்\" உரை கைக்கு முன்னால் காட்டப்பட்டுள்ளது."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:39
+msgid ""
+"Cards are flat, rectangular-shaped objects that are stackable, and they have "
+"the unique functionality to be able to be put in a player's hand, where only "
+"the player whose hand it is can see the front face of the card."
+msgstr ""
+"கார்டுகள் தட்டையான, செவ்வக வடிவ பொருள்கள், அவை அடுக்கக்கூடியவை, மேலும் அவை ஒரு வீரரின் "
+"கையில் வைக்கக்கூடிய தனித்துவமான செயல்பாட்டைக் கொண்டுள்ளன, அங்கு அட்டையின் முன் முகத்தைக் "
+"காணக்கூடிய வீரர் மட்டுமே."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:43
+msgid ""
+"Unlike other objects, you need two separate textures for cards - one for the "
+"front face, and one for the back face. The game registers each of the "
+"textures in the ``cards/`` folder as the front face of a card, but you need "
+"to tell the game where to find the back face in the ``config.cfg`` file."
+msgstr ""
+"மற்ற பொருள்களைப் போலல்லாமல், அட்டைகளுக்கு உங்களுக்கு இரண்டு தனித்தனி அமைப்புகள் தேவை - "
+"முன் முகத்திற்கு ஒன்று, மற்றும் பின் முகத்திற்கு ஒன்று. விளையாட்டு `` கார்டுகள்/`` "
+"கோப்புறையில் உள்ள ஒவ்வொரு அமைப்புகளையும் ஒரு அட்டையின் முன் முகமாக பதிவு செய்கிறது, "
+"ஆனால் `` config.cfg`` கோப்பில் பின்புற முகத்தை எங்கே கண்டுபிடிப்பது என்று நீங்கள் "
+"விளையாட்டை சொல்ல வேண்டும்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:48
+msgid ""
+"Cards also have a fixed thickness, so you only have to set the width and "
+"height value."
+msgstr ""
+"கார்டுகளிலும் ஒரு நிலையான தடிமன் உள்ளது, எனவே நீங்கள் அகலம் மற்றும் உயர மதிப்பை மட்டுமே "
+"அமைக்க வேண்டும்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:51
+msgid ""
+"Here is a simple example that will apply a back face texture (in this "
+"example, ``BackFace.png``) to all of the cards in the folder:"
+msgstr ""
+"கோப்புறையில் உள்ள அனைத்து அட்டைகளுக்கும் பின்புற முக அமைப்பைப் பயன்படுத்தும் ஒரு எளிய "
+"எடுத்துக்காட்டு இங்கே (இந்த எடுத்துக்காட்டில், `` பேக்ஃபேச்.பேங்``):"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:73
+msgid ""
+"When cards are placed in other player's hands, the front face is covered "
+"with the colour at the top-left pixel. If your cards use different "
+"background colours, consider adding a border around the edge of the front "
+"face so that other players cannot tell the difference between the cards."
+msgstr ""
+"அட்டைகள் மற்ற வீரரின் கைகளில் வைக்கப்படும்போது, முன் முகம் மேல்-இடது பிக்சலில் வண்ணத்துடன் "
+"மூடப்பட்டிருக்கும். உங்கள் அட்டைகள் வெவ்வேறு பின்னணி வண்ணங்களைப் பயன்படுத்தினால், முன் "
+"முகத்தின் விளிம்பில் ஒரு எல்லையைச் சேர்ப்பதைக் கவனியுங்கள், இதனால் மற்ற வீரர்கள் அட்டைகளுக்கு "
+"இடையிலான வித்தியாசத்தை சொல்ல முடியாது."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:82
+msgid "Container"
+msgstr "சரக்குப் பெட்டகம்"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:84
+msgid "A red plastic cup is placed near the corner of a table."
+msgstr "ஒரு சிவப்பு பிளாச்டிக் கோப்பை ஒரு மேசையின் மூலையில் வைக்கப்பட்டுள்ளது."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:87
+msgid ""
+"Containers are special objects that can hold an unlimited amount of other "
+"objects inside themselves (including other containers)! Containers are "
+"opaque, meaning you cannot see the objects physically inside of them, but "
+"you can peek inside a container by right-clicking it and "
+"pressing :guilabel:`Peek inside`, which will open a pop-up showing the "
+"contents of the container."
+msgstr ""
+"கொள்கலன்கள் சிறப்புப் பொருள்கள், அவை வரம்பற்ற அளவிலான பிற பொருட்களைத் தங்களுக்குள் "
+"வைத்திருக்க முடியும் (பிற கொள்கலன்கள் உட்பட)! கொள்கலன்கள் ஒளிபுகா, அதாவது பொருள்களை "
+"அவற்றின் உள்ளே நீங்கள் பார்க்க முடியாது, ஆனால் ஒரு கொள்கலனை வலது சொடுக்கு செய்து "
+"அழுத்துவதன் மூலம் நீங்கள் பார்க்கலாம்:guilabel:`Peek inside`, இது கொள்கலனின் "
+"உள்ளடக்கங்களைக் காட்டும் பாப்-அப் திறக்கும்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:93
+msgid ""
+"Objects can be placed inside a container by touching the container with the "
+"object you want to add, and objects can be randomly removed from the "
+"container by quickly dragging from the container."
+msgstr ""
+"நீங்கள் சேர்க்க விரும்பும் பொருளைக் கொண்டு கொள்கலனைத் தொடுவதன் மூலம் பொருள்களை ஒரு "
+"கொள்கலனுக்குள் வைக்கலாம், மேலும் கொள்கலனில் இருந்து விரைவாக இழுப்பதன் மூலம் பொருள்களை "
+"கொள்கலனில் இருந்து தோராயமாக அகற்றலாம்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:97
+msgid ""
+"Containers can also be configured to drop items out when they are shaken "
+"upside-down by setting ``shakable = true`` in the :ref:`config-cfg` file."
+msgstr ""
+"`` கட்டியெழுப்பக்கூடிய = உண்மை`` ஐ அமைப்பதன் மூலம் தலைகீழாக அசைக்கப்படும்போது "
+"உருப்படிகளை கைவிடவும் கொள்கலன்கள் கட்டமைக்கப்படலாம்: ref: `config-cfg` கோப்பை."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:106
+msgid "On the table is a set of dice of varying colours and sides."
+msgstr "அட்டவணையில் மாறுபட்ட வண்ணங்கள் மற்றும் பக்கங்களின் பகடை உள்ளது."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:109
+msgid "Dice are objects that, when shaken, randomize their orientation."
+msgstr "டைச் என்பது அசைக்கும்போது, அவற்றின் நோக்குநிலையை சீரற்றதாக மாற்றும் பொருள்கள்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:111
+msgid ""
+"They can also be configured to report certain values depending on their "
+"orientation in the :ref:`config-cfg` file, using the ``face_values`` "
+"property:"
+msgstr ""
+"அவற்றின் நோக்குநிலையைப் பொறுத்து சில மதிப்புகளைப் புகாரளிக்க அவை கட்டமைக்கப்படலாம்: re: "
+"`config-cfg` கோப்பில்,` `face_values`` சொத்தைப் பயன்படுத்துதல்:"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:144
+msgid ""
+"If the face values are configured correctly, then the player will easily be "
+"able to check the total of a set of thrown dice by selecting, then right-"
+"clicking the dice. The total will be shown at the top of the context menu."
+msgstr ""
+"முக மதிப்புகள் சரியாக கட்டமைக்கப்பட்டிருந்தால், பிளேயர் தேர்ந்தெடுப்பதன் மூலம் எறியப்பட்ட "
+"பகடைகளின் மொத்தத்தை எளிதாக சரிபார்க்க முடியும், பின்னர் பகடைகளை வலது சொடுக்கு செய்ய "
+"முடியும். மொத்தம் சூழல் மெனுவின் மேலே காண்பிக்கப்படும்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:148
+msgid ""
+"If ``face_values`` is not configured, the dice will always report ``0`` as "
+"its value."
+msgstr ""
+"`` Face_values`` கட்டமைக்கப்படவில்லை என்றால், பகடை எப்போதும் `0`` அதன் மதிப்பாக "
+"புகாரளிக்கும்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:154
+msgid "Piece"
+msgstr "துண்டு"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:156
+msgid "On the table are two chess pieces, a white pawn and a black queen."
+msgstr ""
+"மேசையில் இரண்டு சதுரங்க துண்டுகள், ஒரு வெள்ளை சிப்பாய் மற்றும் ஒரு கருப்பு அரசி உள்ளன."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:159
+msgid "Pieces are generic objects with no special functionality."
+msgstr "துண்டுகள் சிறப்பு செயல்பாடு இல்லாத பொதுவான பொருள்கள்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:165
+msgid "Speaker"
+msgstr "ஒலிபெருக்கி, ஒலிபரப்பி"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:167
+msgid "By the corner of the table is a large, metallic gramophone."
+msgstr "அட்டவணையின் மூலையில் ஒரு பெரிய, உலோக கிராமபோன் உள்ளது."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:170
+msgid ""
+"Speakers are objects that can play audio tracks. They can be configured to "
+"emit sound positionally, so the audio will vary depending on the position of "
+"the speaker relative to the camera."
+msgstr ""
+"ச்பீக்கர்கள் ஆடியோ தடங்களை இயக்கக்கூடிய பொருள்கள். அவை ஒலியை நிலை முறையில் "
+"வெளியிடுவதற்கு கட்டமைக்க முடியும், எனவே கேமராவுடன் தொடர்புடைய பேச்சாளரின் நிலையைப் "
+"பொறுத்து ஆடியோ மாறுபடும்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:178
+msgid "Timer"
+msgstr "நேரங்குறிகருவி"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:180
+msgid ""
+"Timers are objects that can be used as countdowns, stopwatches, or to "
+"display the system time. If an audio track is loaded, it will automatically "
+"play when the countdown reaches 0."
+msgstr ""
+"டைமர்கள் என்பது கவுண்ட்டவுன்கள், ச்டாப்ப்வாட்ச்கள் அல்லது கணினி நேரத்தைக் காண்பிப்பதாகப் "
+"பயன்படுத்தக்கூடிய பொருள்கள். ஆடியோ டிராக் ஏற்றப்பட்டால், கவுண்டவுன் 0 ஐ அடையும் போது அது "
+"தானாகவே இயக்கப்படும்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:188
+msgid "Token"
+msgstr "கிள்ளாக்கு"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:190
+msgid ""
+"On the table are some stacks of poker chips varying in height,\n"
+"representing various values, those being 1, 5, 10, 25, and 100."
+msgstr ""
+"அட்டவணையில் உயரத்தில் மாறுபடும் போக்கர் சில்லுகளின் சில அடுக்குகள் உள்ளன,\n"
+" பல்வேறு மதிப்புகளைக் குறிக்கும், 1, 5, 10, 25, மற்றும் 100."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:194
+msgid ""
+"Tokens are objects that are vertically stackable, meaning they join together "
+"when their top and bottom faces touch, similar to cards."
+msgstr ""
+"டோக்கன்கள் செங்குத்தாக அடுக்கி வைக்கும் பொருள்கள், அதாவது அட்டைகளைப் போலவே அவற்றின் மேல் "
+"மற்றும் கீழ் முகங்கள் தொடும்போது அவை ஒன்றாக இணைகின்றன."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:201
+msgid "Sound"
+msgstr "ஒலி"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:203
+msgid ""
+"Sounds can be played through either a :ref:`object-type-speaker` or "
+"a :ref:`object-type-timer`."
+msgstr ""
+"A: ref: `பொருள்-வகை-ச்பீக்கர்` அல்லது ஒரு மூலம் ஒலிகளை இயக்கலாம்: ref:` பொருள்-வகை-"
+"டைமர்`."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:210
+msgid "Music"
+msgstr "இசை"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:212
+msgid ""
+"Music tracks are the same as sounds, but they can also be configured to play "
+"in the main menu. See the ``main_menu`` property in :ref:`config-cfg`."
+msgstr ""
+"இசை தடங்கள் ஒலிகளைப் போலவே இருக்கின்றன, ஆனால் அவை முதன்மையான பட்டியலில் இயக்கவும் "
+"கட்டமைக்கப்படலாம். இங்கே `` main_menu`` சொத்தை காண்க: ref: `config-cfg`."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:219
+msgid "Game"
+msgstr "விளையாட்டு"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:221
+msgid ""
+"A game is a :ref:`file-type-save` that has been pre-made such that players "
+"can instantly setup the table to play a particular game."
+msgstr ""
+"ஒரு விளையாட்டு ஒரு: குறிப்பு: `கோப்பு-வகை-சேவ்` இது முன்பே தயாரிக்கப்பட்டுள்ளது, இது "
+"ஒரு குறிப்பிட்ட விளையாட்டை விளையாட வீரர்கள் உடனடியாக அட்டவணையை அமைக்க முடியும்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:226
+msgid ""
+"If there is an image next to the save file with the same name, it will be "
+"shown next to the save file in-game."
+msgstr ""
+"அதே பெயருடன் சேமி கோப்புக்கு அடுத்ததாக ஒரு படம் இருந்தால், அது விளையாட்டில் சேமி "
+"கோப்புக்கு அடுத்ததாக காண்பிக்கப்படும்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:233
+msgid "Skybox"
+msgstr "ச்கை பாக்ச்"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:235
+msgid ""
+"Skyboxes are special textures that determine what the environment around the "
+"table looks like."
+msgstr ""
+"ச்கை பாக்ச்கள் அட்டவணையைச் சுற்றியுள்ள சூழல் எப்படி இருக்கும் என்பதை தீர்மானிக்கும் சிறப்பு "
+"அமைப்புகள்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:238
+msgid ""
+"Skybox textures in Tabletop Club use equirectangular mappings, as opposed to "
+"six-image cube mappings. Godot recommends using `this tool <https://"
+"danilw.github.io/GLSL-howto/cubemap_to_panorama_js/"
+"cubemap_to_panorama.html>`_ to convert cube-mapped skyboxes to "
+"equirectangular skyboxes."
+msgstr ""
+"டேப்லெட் கிளப்பில் உள்ள ச்கை பாக்ச் கட்டமைப்புகள் ஆறு பட கியூப் மேப்பிங்சுக்கு மாறாக, "
+"சமநிலை மேப்பிங்சைப் பயன்படுத்துகின்றன. `இந்த கருவி <https://danilw.github.io/glsl-"
+"howto/cubemap_to_panorama_js/cubemap_to_panorama.html>` _ _ _ _."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:243
+msgid ""
+"For the best lighting quality, it is recommended to use a HDR panorama. "
+"Tabletop Club supports the Radiance HDR (``.hdr``) and OpenEXR (``.exr``) "
+"formats."
+msgstr ""
+"சிறந்த லைட்டிங் தரத்திற்கு, எச்.டி.ஆர் பனோரமாவைப் பயன்படுத்த பரிந்துரைக்கப்படுகிறது. "
+"டேப்லெட் கிளப் ரேடியன்ச் எச்டிஆர் (`.எச்.டி.ஆர்``) மற்றும் ஓபன் எக்ச்ஆர் (` .எக்ச்ஆர்``) "
+"வடிவங்களை ஆதரிக்கிறது."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:249
+msgid ""
+"If the skybox is either too bright or too dim, then you can change the "
+"strength of the ambient light generated by the skybox by setting the "
+"``strength`` value in the :ref:`config-cfg` file."
+msgstr ""
+"ச்கை பாக்ச் மிகவும் பிரகாசமாகவோ அல்லது மங்கலாகவோ இருந்தால், ச்கை பாக்சால் உருவாக்கப்படும் "
+"சுற்றுப்புற ஒளியின் வலிமையை `` வலிமை`` மதிப்பை அமைப்பதன் மூலம் மாற்றலாம்: ref: "
+"`config-cfg` கோப்பில்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:257
+msgid "Table"
+msgstr "அட்டவணை"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:259
+msgid ""
+"A table is a :ref:`file-type-3d` that is placed in the centre of the game "
+"world for players to put objects on."
+msgstr ""
+"ஒரு அட்டவணை ஒரு: ref: `கோப்பு-வகை -3 டி` இது விளையாட்டு உலகின் மையத்தில் வீரர்கள் "
+"பொருட்களை வைக்க வைக்கப்படுகிறது."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:262
+msgid ""
+"However, unlike custom objects, the position and scale of the exported model "
+"matters. Keep the following points in mind when you export models to be used "
+"as tables:"
+msgstr ""
+"இருப்பினும், தனிப்பயன் பொருள்களைப் போலல்லாமல், ஏற்றுமதி செய்யப்பட்ட மாதிரியின் நிலை மற்றும் "
+"அளவு முக்கியமானது. அட்டவணைகளாகப் பயன்படுத்த மாதிரிகளை ஏற்றுமதி செய்யும் போது பின்வரும் "
+"புள்ளிகளை மனதில் கொள்ளுங்கள்:"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:266
+msgid "One unit in the exported model = one centimeter (cm) in-game."
+msgstr "ஏற்றுமதி செய்யப்பட்ட மாதிரியில் ஒரு அலகு = ஒரு சென்டிமீட்டர் (செ.மீ) விளையாட்டில்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:267
+msgid ""
+"The lowest vertical position the camera can zoom to is ``0`` (this is either "
+"the y or z axis, depending on the program you're using)."
+msgstr ""
+"கேமரா பெரிதாக்கக்கூடிய மிகக் குறைந்த செங்குத்து நிலை `` 0`` (இது நீங்கள் பயன்படுத்தும் "
+"நிரலைப் பொறுத்து ஒய் அல்லது சட் அச்சு)."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:270
+msgid ""
+"Tables also have a set of hand positions, which are assigned to players by "
+"the server when they join the game. These hand positions can be defined in "
+"the ``config.cfg`` file:"
+msgstr ""
+"அட்டவணைகள் கை நிலைகளின் தொகுப்பையும் கொண்டுள்ளன, அவை விளையாட்டில் சேரும்போது "
+"சேவையகத்தால் வீரர்களுக்கு ஒதுக்கப்படுகின்றன. இந்த கை நிலைகளை `` config.cfg`` கோப்பில் "
+"வரையறுக்கலாம்:"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:296
+msgid ""
+"Tables can also be painted on by the players! You can set the size of the "
+"area that the players can paint on by setting the ``paint_plane`` property "
+"in the :ref:`config-cfg` file."
+msgstr ""
+"அட்டவணைகள் வீரர்களால் வரையப்படலாம்! `` `பெயிண்ட்_பிளேன்`` சொத்தை அமைப்பதன் மூலம் வீரர்கள் "
+"வரைவதற்கு நீங்கள் வரைவதற்கான பகுதியின் அளவை நீங்கள் அமைக்கலாம்: ref:` config-cfg` கோப்பை."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:304
+msgid "Template"
+msgstr "வார்ப்புரு"
+
+#: ../../custom_assets/asset_packs/asset_types.rst:306
+msgid ""
+"An example of a template being used by the notebook to keep track of\n"
+"player's scores over a number of rounds."
+msgstr ""
+"கண்காணிக்க நோட்புக்கால் பயன்படுத்தப்படும் ஒரு வார்ப்புருவின் எடுத்துக்காட்டு\n"
+" பல சுற்றுகளில் வீரரின் மதிப்பெண்கள்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:310
+msgid ""
+"A template is a pre-made page for the in-game notebook. It can either be "
+"an :ref:`file-type-image` or a text file (``.txt``)."
+msgstr ""
+"ஒரு வார்ப்புரு என்பது விளையாட்டு நோட்புக்குக்கு முன்பே தயாரிக்கப்பட்ட பக்கமாகும். இது "
+"ஒரு: ref: `கோப்பு-வகை-image` அல்லது ஒரு உரை கோப்பு (` `.txt``) இருக்கலாம்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:313
+msgid ""
+"If it is a text file, then the page itself will also resemble a text file. "
+"If it is an image, then textboxes can be configured using the ``config.cfg`` "
+"file so the player can save text on top of the image."
+msgstr ""
+"இது ஒரு உரை கோப்பாக இருந்தால், பக்கமும் ஒரு உரை கோப்பையும் ஒத்திருக்கும். இது ஒரு "
+"படமாக இருந்தால், `` config.cfg`` கோப்பைப் பயன்படுத்தி உரைப்பெட்டிகளை கட்டமைக்க "
+"முடியும், எனவே பிளேயர் படத்தின் மேல் உரையைச் சேமிக்க முடியும்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:317
+msgid "The template can be selected when creating a new page in the notebook."
+msgstr "நோட்புக்கில் புதிய பக்கத்தை உருவாக்கும்போது வார்ப்புருவைத் தேர்ந்தெடுக்கலாம்."
+
+#: ../../custom_assets/asset_packs/asset_types.rst:319
+msgid "Textboxes for image templates can be configured in the following ways:"
+msgstr "பட வார்ப்புருக்களுக்கான உரைப்பெட்டிகளை பின்வரும் வழிகளில் கட்டமைக்க முடியும்:"
+
+#: ../../custom_assets/asset_packs/file_types.rst:3
+msgid "File types"
+msgstr "கோப்பு வகைகள்"
+
+#: ../../custom_assets/asset_packs/file_types.rst:8
+msgid "Image"
+msgstr "படம்"
+
+#: ../../custom_assets/asset_packs/file_types.rst:11
+msgid "Supported formats"
+msgstr "உதவி வடிவங்கள்"
+
+#: ../../custom_assets/asset_packs/file_types.rst:13
+msgid ""
+"By default, Tabletop Club supports all of the image formats that Godot "
+"supports, the list of which can be found `here <https://docs.godotengine.org/"
+"en/stable/getting_started/workflow/assets/importing_images.html>`_."
+msgstr ""
+"இயல்பாக, கோடோட் ஆதரிக்கும் அனைத்து பட வடிவங்களையும் டேப்லெட் கிளப் ஆதரிக்கிறது, இதன் "
+"பட்டியலைக் காணலாம் `இங்கே <https://docs.godotengine.org/en/stable/"
+"getting_started/workflow/assets/importing_images.html>` _."
+
+#: ../../custom_assets/asset_packs/file_types.rst:19
+msgid "UV Mappings"
+msgstr "புற ஊதா வரைபடங்கள்"
+
+#: ../../custom_assets/asset_packs/file_types.rst:21
+msgid ""
+"Every object that uses an image has something called a UV mapping, a way in "
+"which the image is \"folded\" onto the 3D object. Remember in maths when you "
+"had to \"unfold\" different shapes into nets? This is essentially the "
+"reverse of that! Knowing these UV mappings is important if you want your "
+"object to look right in-game!"
+msgstr ""
+"ஒரு படத்தைப் பயன்படுத்தும் ஒவ்வொரு பொருளிலும் புற ஊதா மேப்பிங் என்று ஒன்று உள்ளது, இது "
+"படம் 3D பொருளின் மீது \"மடிந்த\" ஒரு வழியாகும். நீங்கள் வெவ்வேறு வடிவங்களை வலைகளாக "
+"\"விரிவாக்க\" வேண்டியபோது கணிதத்தில் நினைவில் இருக்கிறதா? இது அடிப்படையில் அதன் "
+"தலைகீழ்! உங்கள் பொருள் விளையாட்டில் சரியாக இருக்க விரும்பினால் இந்த புற ஊதா வரைபடங்களை "
+"அறிவது முக்கியம்!"
+
+#: ../../custom_assets/asset_packs/file_types.rst:29
+msgid ""
+"The width and height of the images don't matter, as long as the proportions "
+"are correct!"
+msgstr "விகிதாச்சாரங்கள் சரியாக இருக்கும் வரை படங்களின் அகலமும் உயரமும் ஒரு பொருட்டல்ல!"
+
+#: ../../custom_assets/asset_packs/file_types.rst:39
+msgid ""
+"Unlike other objects, cards use two images, one for each face. "
+"See :ref:`object-type-card` for more information."
+msgstr ""
+"மற்ற பொருள்களைப் போலல்லாமல், அட்டைகள் இரண்டு படங்களைப் பயன்படுத்துகின்றன, ஒவ்வொரு "
+"முகத்திற்கும் ஒன்று. காண்க: குறிப்பு: மேலும் தகவலுக்கு `பொருள்-வகை-அட்டை`."
+
+#: ../../custom_assets/asset_packs/file_types.rst:43
+msgid "Cube"
+msgstr "கன சதுரம்"
+
+#: ../../custom_assets/asset_packs/file_types.rst:48
+msgid "Cylinder"
+msgstr "கலன்"
+
+#: ../../custom_assets/asset_packs/file_types.rst:56
+msgid "3D Model"
+msgstr "3 டி மாதிரி"
+
+#: ../../custom_assets/asset_packs/file_types.rst:58
+msgid ""
+"3D models can be exported from almost any 3D modelling software, including "
+"Blender and Maya."
+msgstr ""
+"3 டி மாடல்களை பிளெண்டர் மற்றும் மாயா உள்ளிட்ட எந்த 3 டி மாடலிங் மென்பொருளிலிருந்தும் "
+"ஏற்றுமதி செய்யலாம்."
+
+#: ../../custom_assets/asset_packs/file_types.rst:61
+msgid "As of right now, Tabletop Club supports the following 3D file formats:"
+msgstr "இப்போதைக்கு, டேப்லெட் கிளப் பின்வரும் 3D கோப்பு வடிவங்களை ஆதரிக்கிறது:"
+
+#: ../../custom_assets/asset_packs/file_types.rst:63
+msgid "Collada (``.dae``)"
+msgstr "கொலாடா (`` .டே``)"
+
+#: ../../custom_assets/asset_packs/file_types.rst:64
+msgid "glTF 2.0 (``.glb``, ``.gltf``)"
+msgstr "gltf 2.0 (`` .glb``, `` .gltf``"
+
+#: ../../custom_assets/asset_packs/file_types.rst:65
+msgid "Wavefront (``.obj``)"
+msgstr "அலைமுனை (`` .obj``)"
+
+#: ../../custom_assets/asset_packs/file_types.rst:67
+msgid ""
+"For convenience, the game will automatically set the centre-of-mass (COM) of "
+"the object for you when it is imported. However, you can use "
+"the :ref:`config-cfg` file to decide how the COM is adjusted."
+msgstr ""
+"வசதிக்காக, விளையாட்டு இறக்குமதி செய்யப்படும்போது உங்களுக்கு பொருளின் மையத்தின் (காம்) "
+"தானாகவே அமைக்கும். இருப்பினும், நீங்கள் எவ்வாறு சரிசெய்யப்படுகிறார் என்பதை தீர்மானிக்க: "
+"ref: `config-cfg` கோப்பைப் பயன்படுத்தலாம்."
+
+#: ../../custom_assets/asset_packs/file_types.rst:71
+msgid ""
+"``com_adjust = \"off\"``: The game will not adjust the COM. The COM will be "
+"at (0, 0, 0)."
+msgstr ""
+"`` com_adjust = \"off\" ``: விளையாட்டு COM ஐ சரிசெய்யாது. COM (0, 0, 0) "
+"இருக்கும்."
+
+#: ../../custom_assets/asset_packs/file_types.rst:74
+msgid ""
+"``com_adjust = \"volume\"`` *(default)*: The game will use the mid-point of "
+"the model's bounding box as the COM. The bounding box, or volume, is the "
+"smallest cube that contains all the model's vertices."
+msgstr ""
+"`` com_adjust = \"தொகுதி\" `` *(இயல்புநிலை) *: விளையாட்டு மாதிரியின் எல்லைப் "
+"பெட்டியின் நடுப்பகுதியை COM ஆகப் பயன்படுத்தும். எல்லை பெட்டி, அல்லது தொகுதி, அனைத்து "
+"மாதிரியின் செங்குத்துகளையும் கொண்ட மிகச்சிறிய கனசதுரமாகும்."
+
+#: ../../custom_assets/asset_packs/file_types.rst:78
+msgid ""
+"``com_adjust = \"geometry\"``: The game will use the average of all the "
+"model's vertices as the COM."
+msgstr ""
+"`` com_adjust = \"வடிவியல்\" ``: விளையாட்டு அனைத்து மாடலின் செங்குத்துகளின் "
+"சராசரியையும் COM ஆகப் பயன்படுத்தும்."
+
+#: ../../custom_assets/asset_packs/file_types.rst:81
+msgid ""
+"You can also specify how accurate the collision of the model is using the "
+"``collision_mode`` property in the :ref:`config-cfg` file."
+msgstr ""
+"மாதிரியின் மோதல் `` மோதல்_மோட்`` சொத்தை எவ்வளவு துல்லியமாகப் பயன்படுத்துகிறது என்பதையும் "
+"நீங்கள் குறிப்பிடலாம்: ref: `config-cfg` கோப்பில்."
+
+#: ../../custom_assets/asset_packs/file_types.rst:84
+msgid ""
+"``collision_mode = 0`` *(default)*: The collision takes a *convex* shape, "
+"which is the simplest, but also the least accurate. If the model is hollow, "
+"other objects will not be able to go inside the model in this mode."
+msgstr ""
+"`` colision_mode = 0`` *(இயல்புநிலை) *: மோதல் ஒரு *குவிந்த *வடிவத்தை எடுக்கும், "
+"இது எளிமையானது, ஆனால் குறைந்த துல்லியமானது. மாதிரி வெற்று என்றால், மற்ற பொருள்கள் இந்த "
+"பயன்முறையில் மாதிரிக்குள் செல்ல முடியாது."
+
+#: ../../custom_assets/asset_packs/file_types.rst:88
+msgid ""
+"``collision_mode = 1``: The collision is made up of *multiple convex* "
+"shapes, which is slightly more accurate, but at the cost of performance "
+"(depending on the complexity of the model)."
+msgstr ""
+"`` collision_mode = 1``: மோதல் * பல குவிந்த * வடிவங்களால் ஆனது, இது சற்று "
+"துல்லியமானது, ஆனால் செயல்திறன் செலவில் (மாதிரியின் சிக்கலைப் பொறுத்து)."
+
+#: ../../custom_assets/asset_packs/file_types.rst:92
+msgid ""
+"If a model's collision is not acting in the way you expect, it is "
+"recommended to switch to this mode."
+msgstr ""
+"ஒரு மாதிரியின் மோதல் நீங்கள் எதிர்பார்க்கும் வழியில் செயல்படவில்லை என்றால், இந்த பயன்முறைக்கு "
+"மாற பரிந்துரைக்கப்படுகிறது."
+
+#: ../../custom_assets/asset_packs/file_types.rst:95
+msgid ""
+"``collision_mode = 2``: The collision takes a *concave* shape, which is "
+"fully accurate, but also the heaviest on performance. Due to limitations "
+"with the game engine, concave models will not be able to collide with each "
+"other."
+msgstr ""
+"`` collision_mode = 2``: மோதல் ஒரு * குழிவான * வடிவத்தை எடுக்கும், இது முற்றிலும் "
+"துல்லியமானது, ஆனால் செயல்திறனில் மிகப் பெரியது. விளையாட்டு இயந்திரத்துடனான வரம்புகள் "
+"காரணமாக, குழிவான மாதிரிகள் ஒருவருக்கொருவர் மோத முடியாது."
+
+#: ../../custom_assets/asset_packs/file_types.rst:99
+msgid ""
+"This mode is recommended for models that are designed to be locked in place, "
+"like scenery or buildings."
+msgstr ""
+"இயற்கைக்காட்சி அல்லது கட்டிடங்கள் போன்ற இடத்தில் பூட்டப்பட வடிவமைக்கப்பட்ட மாதிரிகளுக்கு இந்த "
+"முறை பரிந்துரைக்கப்படுகிறது."
+
+#: ../../custom_assets/asset_packs/file_types.rst:104
+msgid ""
+"When exporting 3D models with textures, make sure that the textures are also "
+"in the same folder as the exported model. You may also need to manually edit "
+"the file to check that the textures are not being loaded with an absolute "
+"file path, otherwise the textures won't work when the model is imported!"
+msgstr ""
+"அமைப்புகளுடன் 3D மாதிரிகளை ஏற்றுமதி செய்யும் போது, ஏற்றுமதி செய்யப்பட்ட மாதிரியின் அதே "
+"கோப்புறையிலும் அமைப்புகளும் இருப்பதை உறுதிப்படுத்திக் கொள்ளுங்கள். ஒரு முழுமையான கோப்பு "
+"பாதையுடன் அமைப்புகள் ஏற்றப்படவில்லையா என்பதை சரிபார்க்க நீங்கள் கோப்பை கைமுறையாக திருத்த "
+"வேண்டியிருக்கலாம், இல்லையெனில் மாதிரி இறக்குமதி செய்யப்படும்போது கட்டமைப்புகள் இயங்காது!"
+
+#: ../../custom_assets/asset_packs/file_types.rst:113
+msgid "Audio"
+msgstr "ஆடியோ"
+
+#: ../../custom_assets/asset_packs/file_types.rst:115
+msgid "As of right now, Tabletop Club supports the following audio formats:"
+msgstr "இப்போதைக்கு, டேப்லெட் கிளப் பின்வரும் ஆடியோ வடிவங்களை ஆதரிக்கிறது:"
+
+#: ../../custom_assets/asset_packs/file_types.rst:117
+msgid "MP3 (``.mp3``)"
+msgstr "Mp3 (`` .mp3``)"
+
+#: ../../custom_assets/asset_packs/file_types.rst:118
+msgid "Vorbis (``.ogg``)"
+msgstr "`` .Oggg ``)"
+
+#: ../../custom_assets/asset_packs/file_types.rst:119
+msgid "Waveform (``.wav``)"
+msgstr "அலைவடிவம் (`` .wav``)"
+
+#: ../../custom_assets/asset_packs/file_types.rst:121
+msgid ""
+"You can find out which format works best for you in the `importing audio "
+"page <https://docs.godotengine.org/en/stable/getting_started/workflow/assets/"
+"importing_audio_samples.html>`_ in the Godot documentation."
+msgstr ""
+"`ஆடியோ பக்கத்தை இறக்குமதி செய்யும் <https://docs.godotengine.org/en/stable/"
+"getting_started/workflow/assets/importing_audio_samples.html>` _ கோடோட் "
+"ஆவணத்தில் உங்களுக்கு எந்த வடிவம் சிறப்பாக செயல்படுகிறது என்பதை நீங்கள் கண்டுபிடிக்கலாம்."
+
+#: ../../custom_assets/asset_packs/file_types.rst:129
+msgid "Save File"
+msgstr "கோப்பை சேமி"
+
+#: ../../custom_assets/asset_packs/file_types.rst:131
+msgid ""
+"Save files are used to load back a saved state within Tabletop Club. They "
+"use the ``.tc`` extension."
+msgstr ""
+"டேப்லெட் கிளப்பில் சேமித்த நிலையை மீண்டும் ஏற்றுவதற்கு சேமிப்பு கோப்புகள் "
+"பயன்படுத்தப்படுகின்றன. அவர்கள் `` .tc`` நீட்டிப்பைப் பயன்படுத்துகிறார்கள்."
+
+#: ../../custom_assets/asset_packs/file_types.rst:134
+msgid ""
+"To create a save file when in-game, go to the menu and click :guilabel:`Save "
+"game`, then choose a name to save the file as. You can then load the state "
+"back by clicking the :guilabel:`Load game` button in the same menu."
+msgstr ""
+"விளையாட்டில் சேமிக்கும் கோப்பை உருவாக்க, மெனுவுக்குச் சென்று சொடுக்கு செய்க: கிலாபெல்: "
+"`விளையாட்டைச் சேமிக்கவும்`, பின்னர் கோப்பை சேமிக்க ஒரு பெயரைத் தேர்வுசெய்க. அதே "
+"பட்டியலில் `விளையாட்டை ஏற்றவும்` பொத்தானைக் சொடுக்கு செய்வதன் மூலம் நீங்கள் நிலையை மீண்டும் "
+"ஏற்றலாம்."
+
+#: ../../custom_assets/asset_packs/file_types.rst:139
+msgid ""
+"When saving, the game puts the save file under the ``<DOCUMENTS>/"
+"TabletopClub/saves`` folder, alongside a screenshot which is taken when the "
+"save is made."
+msgstr ""
+"சேமிக்கும்போது, விளையாட்டு சேமி கோப்பை `` <ஆவணங்கள்>/டேப்லெட்ஆப் கிளப்/சேமிப்பு "
+"`கோப்புறையின் கீழ் வைக்கிறது, சேமிப்பு செய்யப்படும்போது எடுக்கப்படும் திரை சாட்டுடன்."
+
+#: ../../custom_assets/asset_packs/file_types.rst:145
+msgid ""
+"If you don't want the screenshot to have the UI, you can toggle the UI "
+"before saving by pressing the :guilabel:`F9` key."
+msgstr ""
+"திரைக்காட்சி இடைமுகம் ஐ வைத்திருக்க விரும்பவில்லை என்றால்,: கிலாபெல்: `F9` விசையை "
+"அழுத்துவதன் மூலம் சேமிப்பதற்கு முன் இடைமுகம் ஐ மாற்றலாம்."
+
+#: ../../custom_assets/asset_packs/index.rst:5
+msgid "Asset packs"
+msgstr "சொத்து பொதிகள்"
+
+#: ../../custom_assets/asset_packs/index.rst:7
+msgid ""
+"To make the management and sharing of custom assets easier, assets are put "
+"into what are called **asset packs**, which are essentially just specially-"
+"made folders. This chapter describes the specification for the custom "
+"assets, and the asset packs that contain them."
+msgstr ""
+"தனிப்பயன் சொத்துக்களின் நிர்வாகத்தையும் பகிர்வையும் எளிதாக்குவதற்கு, சொத்துக்கள் ** சொத்து "
+"பொதிகள் ** என அழைக்கப்படுகின்றன, அவை அடிப்படையில் சிறப்பாக தயாரிக்கப்பட்ட கோப்புறைகள். "
+"இந்த அத்தியாயம் தனிப்பயன் சொத்துகளுக்கான விவரக்குறிப்பு மற்றும் அவற்றைக் கொண்ட சொத்து "
+"பொதிகள் ஆகியவற்றை விவரிக்கிறது."
+
+#: ../../custom_assets/asset_packs/index.rst:12
+msgid ""
+"If you just want to download community-made asset packs and install them, "
+"feel free to have a look at the `official forum <https://"
+"forum.tabletopclub.net/c/asset-packs>`_. Instructions for installing asset "
+"packs can be found `here <https://forum.tabletopclub.net/t/about-the-asset-"
+"packs-category/13>`_."
+msgstr ""
+"சமூகத்தால் தயாரிக்கப்பட்ட சொத்து பொதிகளைப் பதிவிறக்கம் செய்து அவற்றை நிறுவ விரும்பினால், "
+"`அதிகாரப்பூர்வ மன்றம் <https://forum.tabletopclub.net/c/asset-packs>` _ ஐப் பார்க்க "
+"தயங்க. சொத்து பொதிகளை நிறுவுவதற்கான வழிமுறைகள் `இங்கே <https://"
+"forum.tabletopclub.net/t/about-the-asset-packs-category/13>` _."
+
+#: ../../custom_assets/asset_packs/index.rst:17
+msgid ""
+"For reference, you can have a look at the Tabletop Club asset pack, which "
+"comes with the game by default."
+msgstr ""
+"குறிப்புக்கு, நீங்கள் டேப்லெட் கிளப் அசெட் பேக்கைப் பார்க்கலாம், இது இயல்புநிலையாக "
+"விளையாட்டோடு வருகிறது."
+
+#: ../../custom_assets/asset_packs/index.rst:20
+msgid ""
+"For easy-to-follow tutorials on how to make assets and asset packs, "
+"see :ref:`custom-asset-tutorials`."
+msgstr ""
+"சொத்துக்கள் மற்றும் சொத்து பொதிகளை எவ்வாறு தயாரிப்பது என்பது குறித்த எளிதாகப் "
+"பின்தொடரக்கூடிய பயிற்சிகளுக்கு, காண்க: குறிப்பு: `தனிப்பயன்-சொத்து-பயிற்சிகள்`."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:4
+msgid "Adding 3D models as objects"
+msgstr "3D மாதிரிகளை பொருள்களாகச் சேர்ப்பது"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:6
+msgid ""
+"This tutorial will teach you how to export 3D models from `Blender <https://"
+"www.blender.org/>`_ and add them to the game. If you wish to specifically "
+"add stackable objects like cards or tokens to the game, see :ref:`tutorial-"
+"adding-images`."
+msgstr ""
+"`பிளெண்டர் <https://www.blender.org/> _ _ இலிருந்து 3D மாடல்களை எவ்வாறு ஏற்றுமதி "
+"செய்வது என்பதை இந்த பயிற்சி உங்களுக்குக் கற்பிக்கும், மேலும் அவற்றை விளையாட்டில் சேர்க்கவும். "
+"அட்டைகள் அல்லது டோக்கன்கள் போன்ற அடுக்கக்கூடிய பொருள்களை விளையாட்டில் குறிப்பாக சேர்க்க "
+"விரும்பினால், காண்க: குறிப்பு: `டுடோரியல்-சேர்க்கை-படங்கள்`."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:13
+msgid "Note about Blender"
+msgstr "பிளெண்டர் பற்றிய குறிப்பு"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:15
+msgid ""
+"This tutorial will be using Blender as an example to export a model ready "
+"for the game to use. It is worth noting however that if you already use "
+"another application for 3D-modelling, then it's okay as long as the "
+"application can export the model into one of the supported formats outlined "
+"in :ref:`file-type-3d`."
+msgstr ""
+"இந்த டுடோரியல் விளையாட்டைப் பயன்படுத்தத் தயாரான ஒரு மாதிரியை ஏற்றுமதி செய்ய பிளெண்டரை "
+"ஒரு எடுத்துக்காட்டு பயன்படுத்தும். இருப்பினும், நீங்கள் ஏற்கனவே 3D-மாடலிங்கிற்கு மற்றொரு "
+"பயன்பாட்டைப் பயன்படுத்தினால், பயன்பாடு மாதிரியை கோடிட்டுக் காட்டப்பட்டுள்ள உதவி வடிவங்களில் "
+"ஒன்றில் ஏற்றுமதி செய்ய முடியும் வரை பரவாயில்லை: குறிப்பு: `கோப்பு-வகை -3 டி`."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:21
+msgid ""
+"If you do not have a 3D-modelling application installed, then I very highly "
+"recommend Blender in general, not only for this tutorial, but because it is "
+"free, and it is (in my humble opinion) one of the best open-source "
+"applications ever made! You can download it `on their website <https://"
+"www.blender.org/download/>`_."
+msgstr ""
+"உங்களிடம் 3D-மாடலிங் பயன்பாடு நிறுவப்படவில்லை என்றால், இந்த டுடோரியலுக்கு மட்டுமல்லாமல், "
+"பொதுவாக பிளெண்டரை நான் மிகவும் பரிந்துரைக்கிறேன், ஆனால் அது இலவசம் என்பதால், இது (எனது "
+"தாழ்மையான கருத்தில்) இதுவரை செய்த சிறந்த திறந்த மூல பயன்பாடுகளில் ஒன்றாகும்! நீங்கள் அதை "
+"அவர்களின் வலைத்தளமான <https://www.blender.org/download/> _ _ இல் பதிவிறக்கம் "
+"செய்யலாம்."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:29
+msgid "Setting up the model"
+msgstr "மாதிரியை அமைத்தல்"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:31
+msgid ""
+"For the start of this tutorial, we're going to assume you have a 3D model in "
+"Blender already. If this is not the case, you can either create one, or you "
+"can import a model from the game's ``assets`` folder by going "
+"to :guilabel:`File` > :guilabel:`Import`!"
+msgstr ""
+"இந்த டுடோரியலின் தொடக்கத்திற்கு, உங்களிடம் ஏற்கனவே பிளெண்டரில் 3 டி மாதிரி இருப்பதாக "
+"நாங்கள் கருதப் போகிறோம். இது அவ்வாறு இல்லையென்றால், நீங்கள் ஒன்றை உருவாக்கலாம், அல்லது "
+"விளையாட்டின் `` சொத்துக்கள்` கோப்புறையிலிருந்து ஒரு மாதிரியை இறக்குமதி செய்யலாம்: "
+"கிலாபெல்: `கோப்பு`>: கிலாபெல்:` இறக்குமதி`!"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:38
+msgid ""
+"This is the ``assets`` folder next to the game executable, not the one under "
+"your Documents."
+msgstr ""
+"இது விளையாட்டுக்கு அடுத்ததாக `` சொத்துக்கள்` கோப்புறையாகும், இது உங்கள் ஆவணங்களின் கீழ் "
+"இல்லை."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:41
+msgid ""
+"Once you can see your model in Blender, the first thing we will do is scale "
+"it to match the in-game dimensions we want. The golden rule is as follows:"
+msgstr ""
+"உங்கள் மாதிரியை பிளெண்டரில் நீங்கள் காண முடிந்தவுடன், நாங்கள் விரும்பும் விளையாட்டில் "
+"பரிமாணங்களுடன் பொருந்தக்கூடிய வகையில் நாங்கள் செய்வோம். தங்க விதி பின்வருமாறு:"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:44
+msgid "**One unit in Blender = 1cm in Tabletop Club.**"
+msgstr "** பிளெண்டரில் ஒரு அலகு = டேப்லெட் கிளப்பில் 1 செ.மீ. **"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:46
+msgid ""
+"Select your object in Object Mode. From here, there are two ways you can set "
+"the scale of an object in Blender:"
+msgstr ""
+"பொருள் பயன்முறையில் உங்கள் பொருளைத் தேர்ந்தெடுக்கவும். இங்கிருந்து, ஒரு பொருளின் அளவை "
+"பிளெண்டரில் அமைக்க இரண்டு வழிகள் உள்ளன:"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:49
+msgid ""
+"Pressing :guilabel:`S`, then moving the mouse of typing a number to adjust "
+"the size. You can then also press :guilabel:`X`, :guilabel:`Y` "
+"or :guilabel:`Z` to set the scale of the object on a specific axis."
+msgstr ""
+"அழுத்துதல்: கிலாபெல்: `எச்`, பின்னர் அளவை சரிசெய்ய ஒரு எண்ணைத் தட்டச்சு செய்யும் சுட்டியை "
+"நகர்த்தவும். நீங்கள் அழுத்தலாம்: கிலாபெல்: `x`,: கிலாபெல்:` y` அல்லது: கிலாபெல்: `Z` ஒரு "
+"குறிப்பிட்ட அச்சில் பொருளின் அளவை அமைக்க."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:53
+msgid ""
+"In the main viewport, drag out the arrow on the right-hand side by the axis "
+"gizmo to bring out the Transform menu. At the bottom there should be three "
+"numbers representing the Dimensions of the object, which you can change."
+msgstr ""
+"முதன்மையான காட்சியகத்தில், உருமாற்ற மெனுவை வெளியே கொண்டு வருவதற்கு அச்சு கிச்மோவால் "
+"வலது புறத்தில் அம்புக்குறியை வெளியே இழுக்கவும். கீழே பொருளின் பரிமாணங்களைக் குறிக்கும் "
+"மூன்று எண்கள் இருக்க வேண்டும், அதை நீங்கள் மாற்றலாம்."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:59
+msgid ""
+"The units in the transform menu don't affect the size of the exported model."
+msgstr "உருமாற்ற பட்டியலில் உள்ள அலகுகள் ஏற்றுமதி செய்யப்பட்ட மாதிரியின் அளவை பாதிக்காது."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:64
+msgid "Further setup for tables"
+msgstr "அட்டவணைகளுக்கான மேலும் அமைப்பு"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:66
+msgid ""
+"Lastly, if the model is a :ref:`asset-type-table`, we will need to adjust "
+"it's position in the scene."
+msgstr ""
+"கடைசியாக, மாதிரி ஒரு: ref: `சொத்து-வகை-அட்டவணை` என்றால், காட்சியில் அதன் நிலையை நாம் "
+"சரிசெய்ய வேண்டும்."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:71
+msgid ""
+"Positioning only matters for tables. Objects can be in any position in the "
+"scene, since the game will automatically center them when importing the "
+"model."
+msgstr ""
+"அட்டவணைகளுக்கு மட்டுமே முக்கியமானது. மாதிரியை இறக்குமதி செய்யும் போது விளையாட்டு "
+"தானாகவே அவற்றை மையமாகக் கொண்டிருப்பதால், காட்சியில் எந்த நிலையிலும் பொருள்கள் இருக்க "
+"முடியும்."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:75
+msgid ""
+"To position the table, select it in object mode, then you can "
+"use :guilabel:`G`, then either :guilabel:`X`, :guilabel:`Y` or :guilabel:`Z` "
+"before moving the mouse to move it in that respective axis. You'll want to "
+"position it with these points in mind:"
+msgstr ""
+"அட்டவணையை நிலைநிறுத்த, அதை பொருள் பயன்முறையில் தேர்ந்தெடுக்கவும், பின்னர் நீங்கள் "
+"பயன்படுத்தலாம்: கிலாபெல்: `சி`, பின்னர்: கிலாபெல்:` x`,: கிலாபெல்: `y` அல்லது: அந்தந்த "
+"அச்சில் நகர்த்துவதற்கு முன் அதை நகர்த்துவதற்கு முன்` z`. இந்த புள்ளிகளை மனதில் கொண்டு அதை "
+"நிலைநிறுத்த விரும்புவீர்கள்:"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:80
+msgid "The table should be in the centre of the scene."
+msgstr "அட்டவணை காட்சியின் மையத்தில் இருக்க வேண்டும்."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:81
+msgid "The surface of the table should as close to ``z = 0`` as possible."
+msgstr "அட்டவணையின் மேற்பரப்பு முடிந்தவரை `` சட் = 0`` க்கு நெருக்கமாக இருக்க வேண்டும்."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:85
+msgid "Exporting the model"
+msgstr "மாதிரியை ஏற்றுமதி செய்கிறது"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:87
+msgid ""
+"When exporting models, there are multiple different formats to choose from. "
+"The recommended format for Tabletop Club is glTF 2.0, with both binary "
+"(``.glb``) and seperate (``.gltf``) formats supported. However, it is not "
+"the only supported option - see :ref:`file-type-3d` for all supported "
+"formats."
+msgstr ""
+"மாதிரிகளை ஏற்றுமதி செய்யும் போது, தேர்வு செய்ய பல வேறுபட்ட வடிவங்கள் உள்ளன. டேப்லெட் "
+"கிளப்பிற்கான பரிந்துரைக்கப்பட்ட வடிவம் GLTF 2.0 ஆகும், இது பைனரி (`` .GlB``) மற்றும் "
+"தனி (`.Gltf``) வடிவங்களுடன் ஆதரிக்கப்படுகிறது. இருப்பினும், இது ஆதரிக்கப்பட்ட ஒரே "
+"விருப்பம் அல்ல-காண்க: ref: `கோப்பு-வகை -3d` அனைத்து ஆதரிக்கப்பட்ட வடிவங்களுக்கும்."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:92
+msgid ""
+"To export the model, click on :guilabel:`File` > :guilabel:`Export` "
+"> :guilabel:`glTF 2.0 (.glb/.gltf)`, and in the dialog, go to your asset "
+"pack folder (if you do not have one, see :ref:`tutorial-creating-asset-"
+"pack`). From here, you have a choice as to what folder you can create and "
+"put the exported model in, depending on what functionality the object should "
+"have:"
+msgstr ""
+"மாதிரியை ஏற்றுமதி செய்ய, என்பதைக் சொடுக்கு செய்க: கிலாபெல்: `கோப்பு`>: கிலாபெல்:` "
+"ஏற்றுமதி`>: கிலாபெல்: `சி.எல்.டி.எஃப் 2.0 (.சி.எல்.பி/. இங்கிருந்து, பொருள் எந்த "
+"செயல்பாட்டைக் கொண்டிருக்க வேண்டும் என்பதைப் பொறுத்து, ஏற்றுமதி செய்யப்பட்ட மாதிரியை எந்த "
+"கோப்புறையை உருவாக்கலாம் மற்றும் வைக்கலாம் என்பதில் உங்களுக்கு ஒரு தேர்வு உள்ளது:"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:98
+msgid ":ref:`object-type-board`: ``MyAssetPack/boards``"
+msgstr ":ref:`object-type-board`: ``MyAssetPack/boards``"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:99
+msgid ":ref:`object-type-container`: ``MyAssetPack/containers``"
+msgstr ":ref:`object-type-container`: ``MyAssetPack/containers``"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:100
+msgid ""
+":ref:`object-type-dice`: ``MyAssetPack/dice`` - then depending on how many "
+"sides the die has, a further subfolder named: ``d4``, ``d6``, ``d8``, "
+"``d10``, ``d12``, or ``d20``."
+msgstr ""
+":ref:`object-type-dice`: ``MyAssetPack/dice`` - then depending on how many "
+"sides the பகடை has, a further subfolder named: ``d4``, ``d6``, ``d8``, "
+"``d10``, ``d12``, or ``d20``."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:103
+msgid ":ref:`object-type-piece`: ``MyAssetPack/pieces``"
+msgstr ":ref:`object-type-piece`: ``MyAssetPack/pieces``"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:104
+msgid ":ref:`object-type-speaker`: ``MyAssetPack/speakers``"
+msgstr ":ref:`object-type-speaker`: ``MyAssetPack/speakers``"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:105
+msgid ":ref:`asset-type-table`: ``MyAssetPack/tables``"
+msgstr ":ref:`asset-type-table`: ``MyAssetPack/tables``"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:106
+msgid ":ref:`object-type-timer`: ``MyAssetPack/timers``"
+msgstr ":ref:`object-type-timer`: ``MyAssetPack/timers``"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:108
+msgid ""
+"If you are not sure what type of object the model should be, then a safe "
+"default is :ref:`object-type-piece`, since it has no special functionality."
+msgstr ""
+"மாதிரி எந்த வகை பொருள் இருக்க வேண்டும் என்று உங்களுக்குத் தெரியாவிட்டால், பாதுகாப்பான "
+"இயல்புநிலை: குறிப்பு: `பொருள்-வகை-துண்டு`, ஏனெனில் அதற்கு சிறப்பு செயல்பாடு இல்லை."
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:113
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:159
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:119
+msgid "See more"
+msgstr "மேலும் காண்க"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:115
+msgid ""
+"And with that, the next time you launch the game, you should be able to "
+"spawn in your 3D model in-game through the :guilabel:`Objects` menu!"
+msgstr ""
+"அதனுடன், அடுத்த முறை நீங்கள் விளையாட்டைத் தொடங்கும்போது, உங்கள் 3 டி மாடலில் விளையாட்டில் "
+"நீங்கள்: கிலாபெல்: `பொருள்கள்` மெனு!"
+
+#: ../../custom_assets/tutorials/add_3d_models.rst:118
+msgid ""
+"If you want to configure your new objects, feel free to have a look "
+"at :ref:`file-type-3d` and :ref:`config-cfg`."
+msgstr ""
+"உங்கள் புதிய பொருள்களை உள்ளமைக்க விரும்பினால், அதைப் பார்க்க தயங்க: குறிப்பு: `கோப்பு-வகை "
+"-3d` மற்றும்: ref:` config-cfg`."
+
+#: ../../custom_assets/tutorials/add_audio_tracks.rst:2
+msgid "Adding audio tracks"
+msgstr "ஆடியோ தடங்களைச் சேர்ப்பது"
+
+#: ../../custom_assets/tutorials/add_audio_tracks.rst:4
+msgid ""
+"Adding your own audio files to an asset pack is really simple, all you need "
+"to do is create a folder named either ``music`` or ``sounds``, and place "
+"your audio files inside. Afterwards, your asset pack may look something like "
+"this:"
+msgstr ""
+"உங்கள் சொந்த ஆடியோ கோப்புகளை ஒரு சொத்து பொதிக்குச் சேர்ப்பது மிகவும் எளிதானது, நீங்கள் "
+"செய்ய வேண்டியது `` இசை`` அல்லது `` ஒலிக்கிறது`` என்ற கோப்புறையை உருவாக்கி, உங்கள் "
+"ஆடியோ கோப்புகளை உள்ளே வைக்கவும். பின்னர், உங்கள் சொத்து பேக் இதுபோன்றதாகத் தோன்றலாம்:"
+
+#: ../../custom_assets/tutorials/add_audio_tracks.rst:21
+msgid ""
+"There is a slight difference between ``music`` and ``sounds``: Tracks placed "
+"in ``music`` will repeat once the track ends, whereas ones in ``sounds`` "
+"won't."
+msgstr ""
+"`` இசை`` மற்றும் `` ஒலிகள்`` இடையே ஒரு சிறிய வேறுபாடு உள்ளது: `` இசையில்`` இல் "
+"வைக்கப்பட்டுள்ள தடங்கள் டிராக் முடிந்ததும் மீண்டும் நிகழும், அதேசமயம் `` `ஒலிக்காது`` "
+"செய்யாது."
+
+#: ../../custom_assets/tutorials/add_audio_tracks.rst:25
+msgid ""
+"Once the tracks have been imported, you can then play them in-game through "
+"either a :ref:`object-type-speaker` or a :ref:`object-type-timer`."
+msgstr ""
+"தடங்கள் இறக்குமதி செய்யப்பட்டவுடன், நீங்கள் அவற்றை விளையாட்டில் விளையாடலாம்: ref: `பொருள்-"
+"வகை-ச்பீக்கர்` அல்லது ஒரு: குறிப்பு:` பொருள்-வகை-டைமர்`."
+
+#: ../../custom_assets/tutorials/add_audio_tracks.rst:28
+msgid "For more information, see :ref:`file-type-audio`."
+msgstr "மேலும் தகவலுக்கு, காண்க: ref: `கோப்பு-வகை-ஆடியோ`."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:4
+msgid "Adding images as cards and tokens"
+msgstr "படங்களை அட்டைகள் மற்றும் டோக்கன்களாக சேர்ப்பது"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:6
+msgid ""
+"This tutorial will teach you how to add images to an asset pack to make "
+"cards and tokens, which are in-game objects that can stack on top of each "
+"other. If you wish to add another kind of object to the game, "
+"see :ref:`tutorial-adding-3d-models`."
+msgstr ""
+"கார்டுகள் மற்றும் டோக்கன்களை உருவாக்க ஒரு சொத்து பேக்கில் படங்களை எவ்வாறு சேர்ப்பது என்பதை "
+"இந்த பயிற்சி உங்களுக்குக் கற்பிக்கும், அவை ஒருவருக்கொருவர் மேல் அடுக்கி வைக்கக்கூடிய "
+"விளையாட்டு பொருள்களாகும். விளையாட்டில் மற்றொரு வகையான பொருளை நீங்கள் சேர்க்க "
+"விரும்பினால், காண்க: குறிப்பு: `டுடோரியல்-சேர்க்கை -3 டி-மாடல்கள்`."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:13
+msgid "Cards or tokens?"
+msgstr "அட்டைகள் அல்லது டோக்கன்கள்?"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:15
+msgid ""
+"Cards and tokens, while both are able to stack, differ slightly in extra "
+"functionality. If you're not sure which type of object you want to create, "
+"see :ref:`object-type-card` and :ref:`object-type-token`."
+msgstr ""
+"கார்டுகள் மற்றும் டோக்கன்கள், இரண்டுமே அடுக்கி வைக்க முடியும் என்றாலும், கூடுதல் "
+"செயல்பாட்டில் சற்று வேறுபடுகின்றன. நீங்கள் எந்த வகை பொருளை உருவாக்க விரும்புகிறீர்கள் "
+"என்பது உங்களுக்குத் தெரியாவிட்டால், காண்க: குறிப்பு: `பொருள்-வகை-அட்டை` மற்றும்: "
+"குறிப்பு:` பொருள்-வகை-டோக்கன்`."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:21
+msgid "Preparing the image"
+msgstr "படத்தைத் தயாரித்தல்"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:23
+msgid ""
+"Before we add the image to the asset pack, we will first need to make sure "
+"it is set up properly so it will appear correctly in-game."
+msgstr ""
+"சொத்து பேக்கில் படத்தை சேர்ப்பதற்கு முன், முதலில் அது சரியாக அமைக்கப்பட்டிருப்பதை உறுதி "
+"செய்ய வேண்டும், எனவே இது விளையாட்டில் சரியாகத் தோன்றும்."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:28
+msgid "Preparing card images"
+msgstr "அட்டை படங்களைத் தயாரித்தல்"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:30
+msgid ""
+"Luckily, there is not much to do to set up card images, since the image will "
+"be shown as-is in-game! The only requirement is that each card will need "
+"it's own image (this includes the back face of the cards)."
+msgstr ""
+"அதிர்ச்டவசமாக, அட்டை படங்களை அமைப்பதற்கு அதிகம் செய்ய வேண்டியதில்லை, ஏனெனில் படம் "
+"விளையாட்டில் காண்பிக்கப்படும்! ஒரே தேவை என்னவென்றால், ஒவ்வொரு அட்டைக்கும் அதன் சொந்த படம் "
+"தேவைப்படும் (இதில் அட்டைகளின் பின் முகம் அடங்கும்)."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:36
+msgid "Preparing token images"
+msgstr "கிள்ளாக்கு படங்களைத் தயாரித்தல்"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:38
+msgid ""
+"For tokens, since the image will be mapped to a 3D shape (either a cube, or "
+"a cylinder), you'll need to modify the image to fit what is called a \"UV "
+"mapping\". This means your final image needs to look like this:"
+msgstr ""
+"டோக்கன்களைப் பொறுத்தவரை, படம் ஒரு 3D வடிவத்துடன் (ஒரு கனசதுரம் அல்லது சிலிண்டர்) "
+"பொருத்தப்படும் என்பதால், \"புற ஊதா மேப்பிங்\" என்று அழைக்கப்படுவதற்கு ஏற்றவாறு படத்தை "
+"மாற்ற வேண்டும். இதன் பொருள் உங்கள் இறுதி படம் இப்படி இருக்க வேண்டும்:"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:42
+msgid "**Cube:**"
+msgstr "** கியூப்: **"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:46
+msgid "**Cylinder:**"
+msgstr "** சிலிண்டர்: **"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:52
+msgid ""
+"The resolution of the final image does not matter, only the *proportions* "
+"do. See :ref:`file-type-image` for more information."
+msgstr ""
+"இறுதிப் படத்தின் தீர்மானம் ஒரு பொருட்டல்ல, * விகிதாச்சாரங்கள் * மட்டுமே செய்கின்றன. காண்க: "
+"குறிப்பு: மேலும் தகவலுக்கு `கோப்பு-வகை-image`."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:57
+msgid "Adding the images to the asset pack"
+msgstr "படங்களை சொத்து பேக்கில் சேர்ப்பது"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:59
+msgid ""
+"With the images set up, we can now add them to the asset pack! If you do not "
+"already have one, see :ref:`tutorial-creating-asset-pack`."
+msgstr ""
+"படங்களை அமைக்கும் மூலம், இப்போது அவற்றை சொத்து பேக்கில் சேர்க்கலாம்! உங்களிடம் ஏற்கனவே ஒன்று "
+"இல்லையென்றால், காண்க: குறிப்பு: `டுடோரியல்-உருவாக்கும்-அசெட்-பேக்`."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:62
+msgid ""
+"In your asset pack, create a folder named either ``cards`` or ``tokens``. If "
+"you are adding tokens, you'll need to create a sub-folder named either "
+"``cube`` or ``cylinder`` depending on what shape the token will be. Once the "
+"folders are created, it's just a matter of copying the images to their "
+"respective folders, like so:"
+msgstr ""
+"உங்கள் சொத்து பேக்கில், `` கார்டுகள்`` அல்லது `` டோக்கன்கள்`` என்ற கோப்புறையை உருவாக்கவும். "
+"நீங்கள் டோக்கன்களைச் சேர்த்தால், கிள்ளாக்கு எந்த வடிவமாக இருக்கும் என்பதைப் பொறுத்து `` "
+"கியூப்`` அல்லது `` சிலிண்டர்` என்ற பெயரிடப்பட்ட துணை கோப்புறையை உருவாக்க வேண்டும். "
+"கோப்புறைகள் உருவாக்கப்பட்டவுடன், படங்களை அந்தந்த கோப்புறைகளுக்கு நகலெடுப்பது ஒரு விசயம்:"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:84
+msgid "Configuring the object size"
+msgstr "பொருள் அளவை உள்ளமைத்தல்"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:86
+msgid ""
+"At this point, you can launch the game and see that there are now objects in-"
+"game with your images on them, except they they are probably the wrong size. "
+"This is because without telling the game otherwise, it will assume the "
+"object is 1cm x 1cm x 1cm."
+msgstr ""
+"இந்த கட்டத்தில், நீங்கள் விளையாட்டைத் தொடங்கலாம் மற்றும் உங்கள் படங்களுடன் இப்போது விளையாட்டில் "
+"உள்ள பொருள்கள் உள்ளன என்பதைக் காணலாம், தவிர அவை தவறான அளவு. ஏனென்றால், விளையாட்டை "
+"இல்லையெனில் சொல்லாமல், பொருள் 1cm ஃச் 1cm ஃச் 1cm என்று கருதும்."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:91
+msgid ""
+"We can tell the game what size the object should actually be by creating "
+"a :ref:`config-cfg` file next to our images in the asset folder. Create a "
+"file with this name in your file manager, then open it with a text editor of "
+"your choice! Here are a few examples of how to set the size of your objects:"
+msgstr ""
+"A: ref: `config-cfg` கோப்பு சொத்து கோப்புறையில் எங்கள் படங்களுக்கு அடுத்ததாக "
+"உருவாக்குவதன் மூலம் பொருள் உண்மையில் என்ன அளவு இருக்க வேண்டும் என்பதை நாம் விளையாட்டிற்கு "
+"சொல்ல முடியும். உங்கள் கோப்பு மேலாளரில் இந்த பெயருடன் ஒரு கோப்பை உருவாக்கவும், பின்னர் "
+"உங்கள் விருப்பப்படி உரை எடிட்டருடன் அதைத் திறக்கவும்! உங்கள் பொருள்களின் அளவை எவ்வாறு "
+"அமைப்பது என்பதற்கான சில எடுத்துக்காட்டுகள் இங்கே:"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:119
+msgid ""
+"Cards are always the same thickness, so the ``scale`` for cards is always a "
+"``Vector2`` containing two numbers, rather than a ``Vector3``."
+msgstr ""
+"கார்டுகள் எப்போதுமே ஒரே தடிமன் கொண்டவை, எனவே கார்டுகளுக்கான `` அளவுகோல்`` எப்போதும் `` "
+"வெக்டர் 3`` ஐ விட இரண்டு எண்களைக் கொண்ட `` வெக்டர் 2`` ஆகும்."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:124
+msgid ""
+"If you are on Windows, you may need to ensure that the file extension is "
+"actually ``.cfg``, rather than ``.txt``, since Windows hides file extensions "
+"by default."
+msgstr ""
+"நீங்கள் சாளரங்களில் இருந்தால், `` .txt`` ஐ விட, கோப்பு நீட்டிப்பு உண்மையில் `` .cfg`` "
+"என்பதை உறுதிப்படுத்த வேண்டும், ஏனெனில் சாளரங்கள் முன்னிருப்பாக கோப்பு நீட்டிப்புகளை "
+"மறைப்பது."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:128
+msgid ""
+"**Windows 10:** In File Explorer, click on :guilabel:`View`, and then tick "
+"the :guilabel:`File name extensions` checkbox."
+msgstr ""
+"**Windows 10:** In கோப்பு Explorer, click on :guilabel:`View`, and then உண்ணி "
+"the :guilabel:`File பெயர் extensions` checkbox."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:131
+msgid ""
+"**Windows 11:** In File Explorer, click on :guilabel:`View`, then click on "
+"the :guilabel:`Show` dropdown, and then make sure the :guilabel:`File name "
+"extensions` checkbox is ticked."
+msgstr ""
+"**Windows 11:** In கோப்பு Explorer, click on :guilabel:`View`, then click on "
+"the :guilabel:`Show` dropdown, and then make sure the :guilabel:`File பெயர் "
+"extensions` checkbox is ticked."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:137
+msgid "Configuring card backs"
+msgstr "அட்டை முதுகில் கட்டமைத்தல்"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:139
+msgid ""
+"Using the :ref:`config-cfg` file, you can also tell the game what image to "
+"use for the back face of cards. Using ``Back.png`` as an example:"
+msgstr ""
+": Ref: `config-cfg` கோப்பைப் பயன்படுத்துதல், அட்டைகளின் பின்புற முகத்திற்கு என்ன படத்தைப் "
+"பயன்படுத்த வேண்டும் என்பதையும் நீங்கள் விளையாட்டிற்கு சொல்லலாம். `` Back.png`` ஒரு "
+"எடுத்துக்காட்டு:"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:161
+msgid "Congratulations, you now have your own cards and tokens in the game!"
+msgstr "வாழ்த்துக்கள், உங்களிடம் இப்போது உங்கள் சொந்த அட்டைகள் மற்றும் டோக்கன்கள் உள்ளன!"
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:163
+msgid ""
+"If you want to further configure your objects, see :ref:`object-type-"
+"card`, :ref:`object-type-token`, and :ref:`config-cfg`."
+msgstr ""
+"உங்கள் பொருள்களை மேலும் உள்ளமைக்க விரும்பினால், காண்க: ref: `பொருள்-வகை-அட்டை`,: "
+"குறிப்பு:` பொருள்-வகை-டோகன்`, மற்றும்: குறிப்பு: `config-cfg`."
+
+#: ../../custom_assets/tutorials/add_cards_tokens.rst:166
+msgid ""
+"If you want to add pre-made stacks of cards and tokens to your asset pack, "
+"see :ref:`stacks-cfg`."
+msgstr ""
+"உங்கள் சொத்து பொதிக்கு முன்பே தயாரிக்கப்பட்ட அட்டைகள் மற்றும் டோக்கன்களைச் சேர்க்க "
+"விரும்பினால், காண்க: குறிப்பு: `ச்டாக்ச்-சி.எஃப்.சி`."
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:4
+msgid "Adding notebook templates"
+msgstr "நோட்புக் வார்ப்புருக்கள் சேர்க்கிறது"
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:6
+msgid ""
+"In Tabletop Club, you can keep track of things like scores or character "
+"attributes using the in-game notebook, which is used to store persistent "
+"text (that is, text that stays there after you exit the game). Using this "
+"tutorial, you will be able to create a template that can be chosen when a "
+"new page is added to the notebook."
+msgstr ""
+"டேப்லெட் கிளப்பில், தொடர்ச்சியான உரையை சேமிக்கப் பயன்படும் (அதாவது, நீங்கள் "
+"விளையாட்டிலிருந்து வெளியேறிய பிறகு அங்கேயே இருக்கும் உரை) இல் உள்ள விளையாட்டு "
+"நோட்புக்கைப் பயன்படுத்தி மதிப்பெண்கள் அல்லது எழுத்து பண்புக்கூறுகள் போன்றவற்றைக் "
+"கண்காணிக்கலாம். இந்த டுடோரியலைப் பயன்படுத்தி, நோட்புக்கில் ஒரு புதிய பக்கம் "
+"சேர்க்கப்படும்போது தேர்ந்தெடுக்கக்கூடிய ஒரு வார்ப்புருவை நீங்கள் உருவாக்க முடியும்."
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:12
+msgid ""
+"There are two kinds of notebook templates: **text-based** and **image-"
+"based**. Text-based pages act a lot like regular text files, where the "
+"player is given an infinite amount of space to type text, but it may not be "
+"as intuitive to use. Image-based pages have an image in the background, and "
+"a number of pre-defined textboxes in the foreground that can be typed into "
+"individually."
+msgstr ""
+"இரண்டு வகையான நோட்புக் வார்ப்புருக்கள் உள்ளன: ** உரை அடிப்படையிலான ** மற்றும் ** பட "
+"அடிப்படையிலான **. உரை அடிப்படையிலான பக்கங்கள் வழக்கமான உரை கோப்புகளைப் போலவே "
+"செயல்படுகின்றன, அங்கு பிளேயருக்கு உரையைத் தட்டச்சு செய்ய எல்லையற்ற இடம் வழங்கப்படுகிறது, "
+"ஆனால் அது பயன்படுத்த உள்ளுணர்வுடன் இருக்காது. பட அடிப்படையிலான பக்கங்கள் பின்னணியில் ஒரு "
+"படத்தைக் கொண்டுள்ளன, மேலும் முன்புறத்தில் முன்பே வரையறுக்கப்பட்ட பல உரைப்பெட்டிகள் "
+"தனித்தனியாக தட்டச்சு செய்யப்படலாம்."
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:20
+msgid "Adding a text-based template"
+msgstr "உரை அடிப்படையிலான வார்ப்புருவைச் சேர்ப்பது"
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:22
+msgid ""
+"Text-based templates are very easy to set up: all you need is a text file "
+"(``.txt``) containing the text you want, which is placed in the "
+"``templates`` folder of your asset pack, like so:"
+msgstr ""
+"உரை அடிப்படையிலான வார்ப்புருக்கள் அமைப்பது மிகவும் எளிதானது: உங்களுக்கு தேவையானது ஒரு "
+"உரை கோப்பு (`` .txt``) நீங்கள் விரும்பும் உரையைக் கொண்டுள்ளது, இது உங்கள் சொத்து பேக்கின் "
+"`` வார்ப்புருக்கள்` கோப்புறையில் வைக்கப்பட்டுள்ளது:"
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:32
+msgid ""
+"And that's it! You can then open the Notebook in-game, create a new page "
+"using the template, and you should see the contents of the text file on the "
+"page."
+msgstr ""
+"அதுதான்! நீங்கள் நோட்புக்கை விளையாட்டில் திறக்கலாம், வார்ப்புருவைப் பயன்படுத்தி புதிய "
+"பக்கத்தை உருவாக்கலாம், மேலும் உரை கோப்பின் உள்ளடக்கங்களை பக்கத்தில் பார்க்க வேண்டும்."
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:37
+msgid "Adding an image-based template"
+msgstr "பட அடிப்படையிலான வார்ப்புருவைச் சேர்ப்பது"
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:39
+msgid ""
+"There are two steps for adding an image template: the first is to take the "
+"image you want as the background, and place it inside the ``templates`` "
+"folder in your asset pack, like so:"
+msgstr ""
+"பட வார்ப்புருவைச் சேர்ப்பதற்கு இரண்டு படிகள் உள்ளன: முதலாவது, நீங்கள் விரும்பும் படத்தை "
+"பின்னணியாக எடுத்து, அதை உங்கள் சொத்து பேக்கில் `` வார்ப்புருக்கள்` கோப்புறையில் வைக்கவும்:"
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:49
+msgid ""
+"Secondly, we need to create a :ref:`config-cfg` file to define our "
+"textboxes. Open a text editor, and save a file next to the image in the "
+"asset pack as ``config.cfg``. In this file, we'll define the ``textboxes`` "
+"property for our image, like so:"
+msgstr ""
+"இரண்டாவதாக, எங்கள் உரைப்பெட்டிகளை வரையறுக்க ஒரு: ref: `config-cfg` கோப்பை உருவாக்க "
+"வேண்டும். ஒரு உரை எடிட்டரைத் திறந்து, சொத்து பேக்கில் படத்திற்கு அடுத்து ஒரு கோப்பை `` "
+"config.cfg`` என சேமிக்கவும். இந்த கோப்பில், எங்கள் படத்திற்கான `` உரைப்பெட்டிகள்` சொத்தை "
+"வரையறுப்போம்:"
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:70
+msgid ""
+"For each textbox, we can set a number of details to get the template to look "
+"exactly how we want - but for now, we'll focus on the main ones:"
+msgstr ""
+"ஒவ்வொரு உரைப்பெட்டிக்கும், வார்ப்புருவைப் பெறுவதற்கு பல விவரங்களை அமைக்கலாம் - ஆனால் "
+"இப்போதைக்கு, நாங்கள் முக்கியவற்றில் கவனம் செலுத்துவோம்:"
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:73
+msgid "``id``: The unique identifier for the textbox."
+msgstr "`` ஐடி``: உரைப்பெட்டிக்கான தனிப்பட்ட அடையாளங்காட்டி."
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:74
+msgid "``x``: The horizontal position of the top-left corner of the textbox."
+msgstr "`` x``: உரைப்பெட்டியின் மேல்-இடது மூலையின் கிடைமட்ட நிலை."
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:75
+msgid "``y``: The vertical position of the top-left corner of the textbox."
+msgstr "`` y``: உரைப்பெட்டியின் மேல்-இடது மூலையின் செங்குத்து நிலை."
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:76
+msgid "``w``: The width of the textbox."
+msgstr "`` w``: உரைப்பெட்டியின் அகலம்."
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:77
+msgid "``h``: The height of the textbox."
+msgstr "`` h``: உரைப்பெட்டியின் உயரம்."
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:81
+msgid ""
+"All of the units are in pixels, and the origin (0, 0) is at the top-left "
+"corner of the image, so increasing \"x\" moves the textbox right, and "
+"increasing \"y\" moves the textbox down."
+msgstr ""
+"அனைத்து அலகுகளும் பிக்சல்களில் உள்ளன, மேலும் தோற்றம் (0, 0) படத்தின் மேல்-இடது மூலையில் "
+"உள்ளது, எனவே \"ஃச்\" அதிகரிக்கும் உரைப்பெட்டியை வலதுபுறமாக நகர்த்துகிறது, மேலும் "
+"\"ஒய்\" அதிகரிப்பது உரைப்பெட்டியை கீழே நகர்த்துகிறது."
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:85
+msgid "As an example, a textbox may be defined like this:"
+msgstr "உதாரணமாக, ஒரு உரைப்பெட்டி இதுபோன்று வரையறுக்கப்படலாம்:"
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:91
+msgid ""
+"This would create a textbox called ``my_textbox`` that is 100 pixels right, "
+"and 100 pixels down from the top-left corner of the image, as well as 500 "
+"pixels wide and 200 pixels high."
+msgstr ""
+"இது 100 படப்புள்ளிகள் சரியானது, மற்றும் படத்தின் மேல்-இடது மூலையிலிருந்து 100 "
+"படப்புள்ளிகள் கீழே, அதே போல் 500 படப்புள்ளிகள் அகலமும் 200 படப்புள்ளிகள் உயரமும் கொண்ட ஒரு "
+"உரைப்பெட்டியை உருவாக்கும்."
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:95
+msgid ""
+"In the ``config.cfg`` file, you would have multiple of these textboxes, all "
+"of them seperated by a comma:"
+msgstr ""
+"`` Config.cfg`` கோப்பில், இந்த உரைப்பெட்டிகளில் பலவற்றை நீங்கள் வைத்திருப்பீர்கள், அவை "
+"அனைத்தும் கமாவால் பிரிக்கப்பட்டுள்ளன:"
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:113
+msgid ""
+"With that saved in ``config.cfg``, if you launch the game, open the notebook "
+"and use the template when creating a new page, not only should you see the "
+"image, but also the two textboxes in the top-left corner of the image!"
+msgstr ""
+"`` Config.cfg`` இல் சேமிக்கப்பட்டவுடன், நீங்கள் விளையாட்டைத் தொடங்கினால், நோட்புக்கைத் "
+"திறந்து, புதிய பக்கத்தை உருவாக்கும் போது வார்ப்புருவைப் பயன்படுத்துங்கள், நீங்கள் படத்தைப் "
+"பார்க்க வேண்டும் மட்டுமல்லாமல், படத்தின் மேல் இடது மூலையில் உள்ள இரண்டு உரைப்பெட்டிகளையும் "
+"பார்க்க வேண்டும்!"
+
+#: ../../custom_assets/tutorials/add_notebook_templates.rst:121
+msgid ""
+"Now you know how to create templates for the notebook! If you want to know "
+"more about templates, and how to customise textboxes further, "
+"see :ref:`asset-type-template`."
+msgstr ""
+"Now you know how பெறுநர் create வார்ப்புருக்கள் க்கு the notebook! If you want "
+"பெறுநர் know more பற்றி templates, and how பெறுநர் customise textboxes further, "
+"see :ref:`asset-type-template`."
+
+#: ../../custom_assets/tutorials/add_save_files.rst:2
+msgid "Adding saved games"
+msgstr "சேமித்த விளையாட்டுகளைச் சேர்க்கிறது"
+
+#: ../../custom_assets/tutorials/add_save_files.rst:4
+msgid ""
+"If you are creating your asset pack to be able to play a certain game, then "
+"it may be worth adding a pre-made save file to the asset pack so players can "
+"get started straight away, without them having to spawn each object and "
+"place them individually."
+msgstr ""
+"ஒரு குறிப்பிட்ட விளையாட்டை விளையாடுவதற்கு நீங்கள் உங்கள் சொத்து பேக்கை உருவாக்குகிறீர்கள் "
+"என்றால், சொத்து பேக்கில் முன்பே தயாரிக்கப்பட்ட சேமிப்பு கோப்பைச் சேர்ப்பது மதிப்புக்குரியதாக "
+"இருக்கலாம், எனவே வீரர்கள் ஒவ்வொரு பொருளையும் உருவாக்கி தனித்தனியாக வைக்காமல் நேராகத் "
+"தொடங்கலாம்."
+
+#: ../../custom_assets/tutorials/add_save_files.rst:9
+msgid ""
+"Firstly, you'll need to setup the table in-game the way you want players to "
+"see it, then go to :guilabel:`Menu` > :guilabel:`Save game`, enter an "
+"appropiate name, then click :guilabel:`Save`. This will create two files in "
+"your ``saves`` folder as shown:"
+msgstr ""
+"முதலாவதாக, நீங்கள் வீரர்கள் பார்க்க விரும்பும் விதத்தில் அட்டவணையை அமைக்க வேண்டும், பின்னர் "
+"செல்லுங்கள்: கிலாபெல்: `மெனு`>: கிலாபெல்:` விளையாட்டைச் சேமிக்கவும்`, ஒப்புதல் பெயரை "
+"உள்ளிட்டு, பின்னர் கிளிக்: கிலாபெல்: `சேமி`. இது காட்டப்பட்டுள்ளபடி உங்கள் `` சேமிப்பு` "
+"கோப்புறையில் இரண்டு கோப்புகளை உருவாக்கும்:"
+
+#: ../../custom_assets/tutorials/add_save_files.rst:22
+msgid ""
+"The ``.png`` file is a thumbnail created by the game at the time of saving, "
+"which is displayed alongside the save file. The ``.tc`` file is what "
+"contains the save data."
+msgstr ""
+"`` .Png`` கோப்பு என்பது சேமிக்கும் நேரத்தில் விளையாட்டால் உருவாக்கப்பட்ட ஒரு சிறு "
+"உருவமாகும், இது சேமி கோப்புடன் காண்பிக்கப்படும். `` .Tc`` கோப்புதான் சேமிக்கும் தரவைக் "
+"கொண்டுள்ளது."
+
+#: ../../custom_assets/tutorials/add_save_files.rst:28
+msgid ""
+"You can improve how the thumbnail looks by pre-positioning the camera before "
+"saving, as well as by hiding the UI (:guilabel:`F9` by default)."
+msgstr ""
+"சேமிப்பதற்கு முன் கேமராவை முன்கூட்டியே நிலைநிறுத்துவதன் மூலமும், இடைமுகம் ஐ மறைப்பதன் "
+"மூலமும் சிறுபடம் எப்படி இருக்கும் என்பதை நீங்கள் மேம்படுத்தலாம் (: கிலாபெல்: `F9` இயல்பாக)."
+
+#: ../../custom_assets/tutorials/add_save_files.rst:31
+msgid ""
+"To add these files to your asset pack, it's as simple as creating a "
+"``games`` folder, and copying the thumbnail and save file inside, like so:"
+msgstr ""
+"உங்கள் சொத்து பேக்கில் இந்த கோப்புகளைச் சேர்க்க, இது ஒரு `` விளையாட்டுகள்` கோப்புறையை "
+"உருவாக்குவது, சிறுபடத்தை நகலெடுத்து கோப்பை உள்ளே சேமிப்பது போன்ற எளிதானது:"
+
+#: ../../custom_assets/tutorials/add_save_files.rst:41
+msgid ""
+"Once the save file has been imported, you can then load it in-game by "
+"clicking on :guilabel:`Games`, selecting it from the menu, and "
+"clicking :guilabel:`Load`."
+msgstr ""
+"சேமி கோப்பு இறக்குமதி செய்யப்பட்டவுடன், நீங்கள் சொடுக்கு செய்வதன் மூலம் அதை விளையாட்டில் "
+"ஏற்றலாம்: கிலாபெல்: `கேம்ச்`, மெனுவிலிருந்து அதைத் தேர்ந்தெடுத்து, சொடுக்கு செய்வதன் "
+"மூலம்: கிலாபெல்:` சுமை`."
+
+#: ../../custom_assets/tutorials/add_save_files.rst:46
+msgid ""
+"You don't necessarily have to use the thumbnail the game generates! In "
+"theory, you can have any image alongside the save, and it will be displayed "
+"next to the save file in-game. The only requirement is that the name of the "
+"image *must* be the same name as the save file."
+msgstr ""
+"விளையாட்டு உருவாக்கும் சிறுபடத்தை நீங்கள் பயன்படுத்த வேண்டிய அவசியமில்லை! கோட்பாட்டில், "
+"சேமிப்புடன் நீங்கள் எந்த படத்தையும் வைத்திருக்க முடியும், மேலும் இது விளையாட்டில் சேமிக்கும் "
+"கோப்புக்கு அடுத்ததாக காண்பிக்கப்படும். ஒரே தேவை என்னவென்றால், படத்தின் பெயர் * சேமிக்கும் "
+"கோப்பின் அதே பெயராக இருக்க வேண்டும்."
+
+#: ../../custom_assets/tutorials/add_save_files.rst:51
+msgid "For more information, see :ref:`file-type-save`."
+msgstr "மேலும் தகவலுக்கு, காண்க: ref: `கோப்பு-வகை-சேவ்`."
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:2
+msgid "Adding skyboxes"
+msgstr "ச்கை பாக்ச்களைச் சேர்ப்பது"
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:4
+msgid ""
+"To add your own skybox to the game, simply create a ``skyboxes`` folder "
+"inside your asset pack, then place your skybox image into that folder, like "
+"this:"
+msgstr ""
+"விளையாட்டில் உங்கள் சொந்த ச்கை பாக்சைச் சேர்க்க, உங்கள் சொத்து பேக்கிற்குள் `` ச்கை பாக்ச்கள்` "
+"கோப்புறையை உருவாக்கவும், பின்னர் உங்கள் ச்கை பாக்ச் படத்தை அந்த கோப்புறையில் வைக்கவும்:"
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:13
+msgid ""
+"Once the skybox has been imported, you can go in-game and "
+"press :guilabel:`Room` > :guilabel:`Skybox` > :guilabel:`Change skybox`, "
+"select the skybox from your asset pack, then click :guilabel:`Apply`."
+msgstr ""
+"ச்கை பாக்ச் இறக்குமதி செய்யப்பட்டவுடன், நீங்கள் விளையாட்டில் சென்று அழுத்தலாம்: கிலாபெல்: "
+"`அறை`>: கிலாபெல்:` ச்கை பாக்ச்`>: கிலாபெல்: `ச்கை பாக்சை மாற்றவும்`, உங்கள் சொத்து "
+"பேக்கிலிருந்து ச்கை பாக்சைத் தேர்ந்தெடுத்து, பின்னர் கிளிக்: கிலாபெல்:` விண்ணப்பிக்கவும்."
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:19
+msgid ""
+"The only format that the game accepts are equirectangular images like this "
+"one:"
+msgstr "விளையாட்டு ஏற்றுக்கொள்ளும் ஒரே வடிவம் இது போன்ற சமநிலை படங்கள்:"
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:22
+msgid ""
+"A 360 degree image of an urban park, projected onto a rectangular\n"
+"image."
+msgstr ""
+"நகர்ப்புற பூங்காவின் 360 டிகிரி படம், செவ்வகத்தில் திட்டமிடப்பட்டுள்ளது\n"
+" படம்."
+
+#: ../../custom_assets/tutorials/add_skyboxes.rst:26
+msgid ""
+"If the skybox you want to add is cube-mapped, you can find more information "
+"about how to convert it in :ref:`asset-type-skybox`."
+msgstr ""
+"நீங்கள் சேர்க்க விரும்பும் ச்கை பாக்ச் கியூப்-வரைபடமாக இருந்தால், அதை எவ்வாறு மாற்றுவது "
+"என்பது பற்றிய கூடுதல் தகவல்களை நீங்கள் காணலாம்: குறிப்பு: `சொத்து-வகை-ச்கைப்பாக்ச்`."
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:4
+msgid "Creating your own asset pack"
+msgstr "உங்கள் சொந்த சொத்து பேக்கை உருவாக்குதல்"
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:6
+msgid ""
+"Before you can add anything to the game, first you'll need to create your "
+"own asset pack for the game to scan when it starts. Luckily, it's super easy!"
+msgstr ""
+"நீங்கள் விளையாட்டில் எதையும் சேர்ப்பதற்கு முன், முதலில் விளையாட்டு தொடங்கும் போது ச்கேன் "
+"செய்ய உங்கள் சொந்த சொத்து பேக்கை உருவாக்க வேண்டும். அதிர்ச்டவசமாக, இது மிகவும் எளிதானது!"
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:9
+msgid ""
+"If you haven't already, launch the game. The game will automatically create "
+"a folder for us to place our asset pack in your Documents, like so:"
+msgstr ""
+"நீங்கள் ஏற்கனவே இல்லையென்றால், விளையாட்டைத் தொடங்கவும். உங்கள் ஆவணங்களில் எங்கள் சொத்து பேக்கை "
+"வைக்க விளையாட்டு தானாகவே ஒரு கோப்புறையை உருவாக்கும்:"
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:18
+msgid ""
+"Once you've found the ``assets`` folder, to make your own asset pack, you "
+"simply create a folder inside of it, giving it any name you want. In this "
+"example, the name of the asset pack would be ``MyAssetPack``:"
+msgstr ""
+"உங்கள் சொந்த சொத்து பொதி செய்ய, `` சொத்துக்கள்` கோப்புறையை நீங்கள் கண்டறிந்ததும், அதன் உள்ளே "
+"ஒரு கோப்புறையை உருவாக்கி, நீங்கள் விரும்பும் எந்த பெயரையும் தருகிறீர்கள். இந்த "
+"எடுத்துக்காட்டில், சொத்து பேக்கின் பெயர் `` myassetpack``:"
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:29
+msgid ""
+"And that's it! Note that everything you add will be put under this new "
+"folder, and all the following guides will assume you've created it."
+msgstr ""
+"அதுதான்! நீங்கள் சேர்க்கும் அனைத்தும் இந்த புதிய கோப்புறையின் கீழ் வைக்கப்படும் என்பதை நினைவில் "
+"கொள்க, மேலும் பின்வரும் அனைத்து வழிகாட்டிகளும் நீங்கள் அதை உருவாக்கியுள்ளீர்கள் என்று "
+"கருதுவார்கள்."
+
+#: ../../custom_assets/tutorials/create_asset_pack.rst:32
+msgid ""
+"Once you have added what you want to your asset pack, you can either restart "
+"the game, or go to :guilabel:`Options` > :guilabel:`General`, and "
+"click :guilabel:`Reimport Assets` to have the game import everything you've "
+"added so you can use it in-game!"
+msgstr ""
+"உங்கள் சொத்துப் பொதிக்கு நீங்கள் விரும்பியதைச் சேர்த்தவுடன், நீங்கள் விளையாட்டை மறுதொடக்கம் "
+"செய்யலாம் அல்லது அதற்குச் செல்லலாம்: கிலாபெல்: `விருப்பங்கள்`>: கிலாபெல்:` பொது`, மற்றும் "
+"கிளிக்: கிலாபெல்: `நீங்கள் சேர்த்த அனைத்தையும் இறக்குமதி செய்ய சொத்துக்களை மறுபரிசீலனை "
+"செய்ய வேண்டும், எனவே நீங்கள் அதை விளையாட்டில் பயன்படுத்தலாம்!"
+
+#: ../../custom_assets/tutorials/index.rst:5
+msgid "Tutorials"
+msgstr "பயிற்சிகள்"
+
+#: ../../custom_assets/tutorials/index.rst:7
+msgid ""
+"This chapter contains easy-to-follow guides on how to add your own content "
+"to Tabletop Club!"
+msgstr ""
+"இந்த அத்தியாயத்தில் டேப்லெட் கிளப்பில் உங்கள் சொந்த உள்ளடக்கத்தை எவ்வாறு சேர்ப்பது என்பது "
+"குறித்து எளிதில் பின்பற்றக்கூடிய வழிகாட்டிகள் உள்ளன!"
+
+#: ../../custom_assets/tutorials/index.rst:10
+msgid ""
+"These guides will cover the basics on adding various items to the game - if "
+"you want to see the full specification for what you can do with this system, "
+"see :ref:`asset-packs` for more information."
+msgstr ""
+"இந்த வழிகாட்டிகள் விளையாட்டில் பல்வேறு பொருட்களைச் சேர்ப்பதற்கான அடிப்படைகளை உள்ளடக்கும் - "
+"இந்த அமைப்பை நீங்கள் என்ன செய்ய முடியும் என்பதற்கான முழு விவரக்குறிப்பைக் காண விரும்பினால், "
+"மேலும் தகவலுக்கு குறிப்பு: `சொத்து -பேக்குகள்`."
