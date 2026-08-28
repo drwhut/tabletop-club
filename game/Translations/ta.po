@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2025-07-04 04:01+0000\n"
-"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"POT-Creation-Date: 2025-10-12 16:36+0100\n"
+"PO-Revision-Date: 2025-10-23 17:03+0000\n"
+"Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/tabletop-club/game/"
 "ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 "Generated-By: Babel 2.13.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -41,7 +41,7 @@ msgstr "ஏற்றுகிறது ..."
 msgid "Singleplayer"
 msgstr "ஒற்றை வீரர்"
 
-#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:158
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
 msgstr "மல்டிபிளேயர்"
@@ -50,7 +50,7 @@ msgstr "மல்டிபிளேயர்"
 msgid "Options"
 msgstr "விருப்பங்கள்"
 
-#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:315
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
 msgstr "வரவு"
 
@@ -58,7 +58,7 @@ msgstr "வரவு"
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:340
+#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
 msgstr "இறக்குமதி பதிவு"
 
@@ -82,43 +82,43 @@ msgstr "ஆவணப்படுத்துதல்"
 msgid "Community"
 msgstr "சமூகம்"
 
-#: ../Scenes/MainMenu.tscn:142
+#: ../Scenes/MainMenu.tscn:143
 msgid "Donate"
 msgstr "நன்கொடை"
 
-#: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
+#: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
 msgstr "தகவல்"
 
-#: ../Scenes/MainMenu.tscn:176
+#: ../Scenes/MainMenu.tscn:177
 msgid "Host Game"
 msgstr "புரவலன் விளையாட்டு"
 
-#: ../Scenes/MainMenu.tscn:182
+#: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr "உங்கள் நண்பர்கள் இணையத்தில் சேர புதிய லாபியை உருவாக்கவும்."
 
-#: ../Scenes/MainMenu.tscn:194 ../Scenes/MainMenu.tscn:241
+#: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
 msgstr "விளையாட்டில் சேரவும்"
 
-#: ../Scenes/MainMenu.tscn:200
+#: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
 msgstr "உங்கள் நண்பரின் லாபியில் சேர அறை குறியீட்டைப் பயன்படுத்தவும்."
 
-#: ../Scenes/MainMenu.tscn:206
+#: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
 msgstr "அறை குறியீட்டை உள்ளிடவும்"
 
-#: ../Scenes/MainMenu.tscn:226
+#: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
 msgstr "அறை குறியீடு:"
 
-#: ../Scenes/MainMenu.tscn:235
+#: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
 msgstr "ஏபிசிடி"
 
-#: ../Scenes/MainMenu.tscn:333
+#: ../Scenes/MainMenu.tscn:334
 msgid "Error"
 msgstr "பிழை"
 
@@ -148,8 +148,8 @@ msgstr "தொகுதி"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
-"Sets the volume of sound sources played manually throughout the game, for"
-" example, from speakers."
+"Sets the volume of sound sources played manually throughout the game, for "
+"example, from speakers."
 msgstr ""
 "விளையாட்டு முழுவதும் கைமுறையாக விளையாடிய ஒலி மூலங்களின் அளவை அமைக்கிறது, "
 "எடுத்துக்காட்டாக, பேச்சாளர்களிடமிருந்து."
@@ -160,8 +160,8 @@ msgstr "விளைவுகள் தொகுதி"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
-"Sets the volume of sound effects played automatically throughout the "
-"game, for example, pieces falling on the table. "
+"Sets the volume of sound effects played automatically throughout the game, "
+"for example, pieces falling on the table. "
 msgstr ""
 "விளையாட்டு முழுவதும் தானாகவே விளையாடும் ஒலி விளைவுகளின் அளவை அமைக்கிறது, "
 "எடுத்துக்காட்டாக, அட்டவணையில் விழும் துண்டுகள். "
@@ -216,8 +216,8 @@ msgstr "கேமராவை நகர்த்த இடது கிளிக
 
 #: ../Scenes/OptionsMenu.tscn:252
 msgid ""
-"Used to allow the player to move the camera by dragging the mouse across "
-"the table."
+"Used to allow the player to move the camera by dragging the mouse across the "
+"table."
 msgstr ""
 "சுட்டியை மேசையின் குறுக்கே இழுத்து கேமராவை நகர்த்த பிளேயரை அனுமதிக்க பயன்படுகிறது."
 
@@ -227,8 +227,8 @@ msgstr "பெரிதாக்க உணர்திறன்"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
-"Sets how fast the camera zooms in and out of the table when using the "
-"scroll wheel."
+"Sets how fast the camera zooms in and out of the table when using the scroll "
+"wheel."
 msgstr ""
 "உருள் சக்கரத்தைப் பயன்படுத்தும் போது கேமரா மேசைக்கு உள்ளேயும் வெளியேயும் எவ்வளவு விரைவாக "
 "பெரிதாக்குகிறது."
@@ -239,8 +239,7 @@ msgstr "சூம் தலைகீழ்"
 
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
-msgstr ""
-"உருள் சக்கரத்தைப் பயன்படுத்தும் போது பெரிதாக்குவதற்கான திசையை மாற்ற பயன்படுகிறது."
+msgstr "உருள் சக்கரத்தைப் பயன்படுத்தும் போது பெரிதாக்குவதற்கான திசையை மாற்ற பயன்படுகிறது."
 
 #: ../Scenes/OptionsMenu.tscn:294
 msgid "Piece Lift Sensitivity"
@@ -257,8 +256,7 @@ msgstr "துண்டு லிப்ட் தலைகீழ்"
 
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
-"Used to invert the direction a piece will go when lifting it off the "
-"table."
+"Used to invert the direction a piece will go when lifting it off the table."
 msgstr ""
 "ஒரு துண்டு அதை அட்டவணையில் இருந்து தூக்கும் போது செல்லும் திசையை மாற்ற பயன்படுகிறது."
 
@@ -276,8 +274,8 @@ msgstr "கை முன்னோட்டம் இயக்கப்பட்�
 
 #: ../Scenes/OptionsMenu.tscn:352
 msgid ""
-"When set, hovering over a card in your hand will display an enhanced "
-"preview of the card after a short period of time."
+"When set, hovering over a card in your hand will display an enhanced preview "
+"of the card after a short period of time."
 msgstr ""
 "அமைக்கும்போது, உங்கள் கையில் ஒரு அட்டையின் மீது வட்டமிடுவது குறுகிய காலத்திற்குப் பிறகு "
 "அட்டையின் மேம்பட்ட முன்னோட்டத்தைக் காண்பிக்கும்."
@@ -288,8 +286,8 @@ msgstr "கை முன்னோட்டம் நேரந்தவறுக�
 
 #: ../Scenes/OptionsMenu.tscn:368
 msgid ""
-"Used to set how long the mouse needs to be kept still before a preview of"
-" a card is displayed from the hand."
+"Used to set how long the mouse needs to be kept still before a preview of a "
+"card is displayed from the hand."
 msgstr ""
 "ஒரு கார்டின் முன்னோட்டம் கையிலிருந்து காண்பிக்கப்படுவதற்கு முன்பே சுட்டியை இன்னும் எவ்வளவு "
 "நேரம் வைத்திருக்க வேண்டும் என்பதை அமைக்க பயன்படுகிறது."
@@ -300,8 +298,7 @@ msgstr "கை முன்னோட்ட அளவு"
 
 #: ../Scenes/OptionsMenu.tscn:388
 msgid "Used to control how large the card preview is."
-msgstr ""
-"அட்டை முன்னோட்டம் எவ்வளவு பெரியது என்பதைக் கட்டுப்படுத்தப் பயன்படுகிறது."
+msgstr "அட்டை முன்னோட்டம் எவ்வளவு பெரியது என்பதைக் கட்டுப்படுத்தப் பயன்படுகிறது."
 
 #: ../Scenes/OptionsMenu.tscn:400
 msgid "Hide Control Hints"
@@ -326,10 +323,9 @@ msgstr "ஆட்டோசேவ் இடைவெளி"
 
 #: ../Scenes/OptionsMenu.tscn:463
 msgid "Used to set how often autosaves are created."
-msgstr ""
-"ஆட்டோசேவ்ச் எவ்வளவு அடிக்கடி உருவாக்கப்படுகிறது என்பதை அமைக்கப் பயன்படுகிறது."
+msgstr "ஆட்டோசேவ்ச் எவ்வளவு அடிக்கடி உருவாக்கப்படுகிறது என்பதை அமைக்கப் பயன்படுகிறது."
 
-#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:72
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:78
 msgid "5 minutes"
 msgstr "5 நிமிடங்கள்"
 
@@ -347,8 +343,7 @@ msgstr "ச்பிளாச் திரையைத் தவிர்க்�
 
 #: ../Scenes/OptionsMenu.tscn:500
 msgid "Skips the Godot Engine splash screen when the game starts."
-msgstr ""
-"விளையாட்டு தொடங்கும் போது கோடோட் என்சின் ச்பிளாச் திரையைத் தவிர்க்கவும்."
+msgstr "விளையாட்டு தொடங்கும் போது கோடோட் என்சின் ச்பிளாச் திரையைத் தவிர்க்கவும்."
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
@@ -436,8 +431,7 @@ msgstr "துண்டு கீழே / தூக்கு கீழே"
 
 #: ../Scenes/OptionsMenu.tscn:721
 msgid "Zoom the camera towards the table, or lift a piece down onto the table."
-msgstr ""
-"கேமராவை மேசையை நோக்கி பெரிதாக்கவும், அல்லது ஒரு துண்டு மேசையில் தூக்கவும்."
+msgstr "கேமராவை மேசையை நோக்கி பெரிதாக்கவும், அல்லது ஒரு துண்டு மேசையில் தூக்கவும்."
 
 #: ../Scenes/OptionsMenu.tscn:731
 msgid "Zoom Out / Lift Piece Up"
@@ -456,8 +450,7 @@ msgstr "துண்டு நோக்குநிலை"
 msgid ""
 "Flip the selected piece or the piece the mouse is over on the horizontal "
 "axis."
-msgstr ""
-"தேர்ந்தெடுக்கப்பட்ட துண்டு அல்லது கிடைமட்ட அச்சில் சுட்டி முடிந்துவிட்டது."
+msgstr "தேர்ந்தெடுக்கப்பட்ட துண்டு அல்லது கிடைமட்ட அச்சில் சுட்டி முடிந்துவிட்டது."
 
 #: ../Scenes/OptionsMenu.tscn:767
 msgid "Reset Piece Orientation"
@@ -476,8 +469,7 @@ msgstr "துண்டு சுழற்றுங்கள்"
 
 #: ../Scenes/OptionsMenu.tscn:793
 msgid "Rotates the the piece that is selected, or that the mouse is over."
-msgstr ""
-"தேர்ந்தெடுக்கப்பட்ட பகுதியை அல்லது சுட்டி முடிந்துவிட்டது என்று சுழற்றுகிறது."
+msgstr "தேர்ந்தெடுக்கப்பட்ட பகுதியை அல்லது சுட்டி முடிந்துவிட்டது என்று சுழற்றுகிறது."
 
 #: ../Scenes/OptionsMenu.tscn:803 ../Scripts/Game/CameraController.gd:1210
 #: ../Scripts/Game/CameraController.gd:1542
@@ -487,8 +479,8 @@ msgstr "கலக்கு"
 
 #: ../Scenes/OptionsMenu.tscn:811
 msgid ""
-"Shuffle stacks of cards or tokens that are selected, or that the mouse is"
-" over."
+"Shuffle stacks of cards or tokens that are selected, or that the mouse is "
+"over."
 msgstr ""
 "தேர்ந்தெடுக்கப்பட்ட அட்டைகள் அல்லது டோக்கன்களின் கலக்கு அடுக்குகள், அல்லது சுட்டி "
 "முடிந்துவிட்டது."
@@ -498,7 +490,8 @@ msgid "Lock/Unlock Piece"
 msgstr "துண்டு பூட்டு/திறக்க"
 
 #: ../Scenes/OptionsMenu.tscn:829
-msgid "Toggles the lock on the selected piece, fixing its position and rotation."
+msgid ""
+"Toggles the lock on the selected piece, fixing its position and rotation."
 msgstr ""
 "தேர்ந்தெடுக்கப்பட்ட துண்டின் பூட்டை மாற்றி, அதன் நிலை மற்றும் சுழற்சியை சரிசெய்கிறது."
 
@@ -552,8 +545,7 @@ msgstr "விளையாட்டின் திரை சாட்டை அ
 
 #: ../Scenes/OptionsMenu.tscn:952
 msgid "Used to reset the key bindings to their default values."
-msgstr ""
-"முக்கிய பிணைப்புகளை அவற்றின் இயல்புநிலை மதிப்புகளுக்கு மீட்டமைக்கப் பயன்படுகிறது."
+msgstr "முக்கிய பிணைப்புகளை அவற்றின் இயல்புநிலை மதிப்புகளுக்கு மீட்டமைக்கப் பயன்படுகிறது."
 
 #: ../Scenes/OptionsMenu.tscn:953 ../Scenes/OptionsMenu.tscn:1413
 msgid "Reset Bindings"
@@ -589,7 +581,7 @@ msgid "Changes the size of the text in the chat box."
 msgstr "அரட்டை பெட்டியில் உரையின் அளவை மாற்றுகிறது."
 
 #: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
-#: ../Scripts/OptionsMenu.gd:82
+#: ../Scripts/OptionsMenu.gd:88
 msgid "Medium"
 msgstr "சராசரி"
 
@@ -598,7 +590,8 @@ msgid "Hide Player Cursors"
 msgstr "பிளேயர் கர்சர்களை மறைக்கவும்"
 
 #: ../Scenes/OptionsMenu.tscn:1042
-msgid "Used to stop showing other player's cursors when in multiplayer lobbies."
+msgid ""
+"Used to stop showing other player's cursors when in multiplayer lobbies."
 msgstr ""
 "மல்டிபிளேயர் லாபிகளில் இருக்கும்போது மற்ற வீரர்கள் கர்சரைக் காண்பிப்பதை நிறுத்தப் "
 "பயன்படுகிறது."
@@ -627,7 +620,7 @@ msgstr "சாளரம் பயன்முறை"
 msgid "Sets the mode in which the game window is displayed."
 msgstr "விளையாட்டு சாளரம் காட்டப்படும் பயன்முறையை அமைக்கிறது."
 
-#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:76
+#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:82
 msgid "Windowed"
 msgstr "சாளரம்"
 
@@ -652,7 +645,7 @@ msgid "Multisample Anti-Aliasing (MSAA)"
 msgstr "மல்டிசாம்பிள் எதிர்ப்பு மாற்றுப்பெயர் (MSAA)"
 
 #: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
-#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:80
+#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:86
 msgid "None"
 msgstr "எதுவுமில்லை"
 
@@ -664,7 +657,7 @@ msgstr "திரை விண்வெளி சுற்றுப்புற 
 msgid "Skybox Radiance Detail"
 msgstr "ச்கை பாக்ச் ரேடியன்ச் விவரம்"
 
-#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:81
+#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:87
 msgid "Low"
 msgstr "குறைந்த"
 
@@ -690,8 +683,8 @@ msgstr "புல தூரத்தின் ஆழம்"
 
 #: ../Scenes/OptionsMenu.tscn:1277
 msgid ""
-"Used to set the threshold of what is considered the background when using"
-" depth of field."
+"Used to set the threshold of what is considered the background when using "
+"depth of field."
 msgstr ""
 "புலத்தின் ஆழத்தைப் பயன்படுத்தும் போது பின்னணியாகக் கருதப்படும் வாசலை அமைக்கப் பயன்படுகிறது."
 
@@ -853,10 +846,10 @@ msgstr "சொத்துக்கள் காணவில்லை"
 #: ../Scenes/Game/Game.tscn:44
 #, python-format
 msgid ""
-"The host has imported assets that your client is missing. This means that"
-" you won't be able to see these assets while in this game. There are a "
-"total of %d missing assets, and %d assets differ between your client and "
-"the host's client:"
+"The host has imported assets that your client is missing. This means that "
+"you won't be able to see these assets while in this game. There are a total "
+"of %d missing assets, and %d assets differ between your client and the "
+"host's client:"
 msgstr ""
 "உங்கள் வாடிக்கையாளர் காணாமல் போன சொத்துக்களை புரவலன் இறக்குமதி செய்துள்ளது. இந்த "
 "விளையாட்டில் இருக்கும்போது இந்த சொத்துக்களை நீங்கள் பார்க்க முடியாது என்பதே இதன் பொருள். "
@@ -866,11 +859,11 @@ msgstr ""
 #: ../Scenes/Game/Game.tscn:58
 #, python-format
 msgid ""
-"Your client is also missing %d files, and %d files differ from that of "
-"the host's, which in total is %s of data:"
+"Your client is also missing %d files, and %d files differ from that of the "
+"host's, which in total is %s of data:"
 msgstr ""
-"உங்கள் கிளையன்ட் %d கோப்புகளையும் காணவில்லை, மற்றும் %d கோப்புகள் ஓச்டிலிருந்து வேறுபடுகின்"
-"றன, இது மொத்தத்தில் தரவின் %s ஆகும்:"
+"உங்கள் கிளையன்ட் %d கோப்புகளையும் காணவில்லை, மற்றும் %d கோப்புகள் ஓச்டிலிருந்து "
+"வேறுபடுகின்றன, இது மொத்தத்தில் தரவின் %s ஆகும்:"
 
 #: ../Scenes/Game/Game.tscn:86
 msgid "Yes, download missing assets."
@@ -1199,23 +1192,20 @@ msgstr ""
 
 #: ../Scripts/ImportAssets.gd:81
 msgid ""
-"Tabletop Club could not find an assets folder in any of the following "
-"places:"
+"Tabletop Club could not find an assets folder in any of the following places:"
 msgstr ""
 "டேப்லெட் கிளப்பில் பின்வரும் எந்த இடங்களிலும் சொத்து கோப்புறையைக் கண்டுபிடிக்க முடியவில்லை:"
 
 #: ../Scripts/ImportAssets.gd:87
 msgid ""
-"Please place an asset pack into one of these folders, and restart the "
-"game."
+"Please place an asset pack into one of these folders, and restart the game."
 msgstr ""
 "தயவுசெய்து இந்த கோப்புறைகளில் ஒன்றில் ஒரு சொத்து பேக்கை வைத்து, விளையாட்டை மறுதொடக்கம் "
 "செய்யுங்கள்."
 
 #: ../Scripts/ImportAssets.gd:89
 msgid "Please create one of these folders and restart the game."
-msgstr ""
-"தயவுசெய்து இந்த கோப்புறைகளில் ஒன்றை உருவாக்கி விளையாட்டை மறுதொடக்கம் செய்யுங்கள்."
+msgstr "தயவுசெய்து இந்த கோப்புறைகளில் ஒன்றை உருவாக்கி விளையாட்டை மறுதொடக்கம் செய்யுங்கள்."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:709 ../Scripts/Lobby.gd:64
 #: ../Scripts/Lobby.gd:70
@@ -1263,58 +1253,74 @@ msgid "Translators"
 msgstr "மொழிபெயர்ப்பாளர்கள்"
 
 #: ../Scripts/MainMenu.gd:106
+msgid "Bulgarian"
+msgstr "பல்கேரியன்"
+
+#: ../Scripts/MainMenu.gd:107
 msgid "Chinese"
 msgstr "சீன"
 
-#: ../Scripts/MainMenu.gd:107
+#: ../Scripts/MainMenu.gd:108
 msgid "Dutch"
 msgstr "டச்சு"
 
-#: ../Scripts/MainMenu.gd:108
+#: ../Scripts/MainMenu.gd:109
 msgid "Esperanto"
 msgstr "எச்பெராண்டோ"
 
-#: ../Scripts/MainMenu.gd:109
+#: ../Scripts/MainMenu.gd:110
 msgid "French"
 msgstr "பிரஞ்சு"
 
-#: ../Scripts/MainMenu.gd:110
+#: ../Scripts/MainMenu.gd:111
 msgid "German"
 msgstr "செர்மன்"
 
-#: ../Scripts/MainMenu.gd:111
+#: ../Scripts/MainMenu.gd:112
+msgid "Hungarian"
+msgstr "அங்கேரியன்"
+
+#: ../Scripts/MainMenu.gd:113
 msgid "Indonesian"
 msgstr "இந்தோனேசிய"
 
-#: ../Scripts/MainMenu.gd:112
+#: ../Scripts/MainMenu.gd:114
 msgid "Italian"
 msgstr "இத்தாலிய"
 
-#: ../Scripts/MainMenu.gd:113
+#: ../Scripts/MainMenu.gd:115
+msgid "Korean"
+msgstr "கொரிய"
+
+#: ../Scripts/MainMenu.gd:116
 msgid "Norwegian"
 msgstr "நோர்வே"
 
-#: ../Scripts/MainMenu.gd:114
+#: ../Scripts/MainMenu.gd:117
 msgid "Polish"
 msgstr "போலீச்"
 
-#: ../Scripts/MainMenu.gd:115
+#: ../Scripts/MainMenu.gd:118
 msgid "Portuguese"
 msgstr "போர்த்துகீசியம்"
 
-#: ../Scripts/MainMenu.gd:116
+#: ../Scripts/MainMenu.gd:119
 msgid "Russian"
 msgstr "ரச்ய"
 
-#: ../Scripts/MainMenu.gd:117
+#: ../Scripts/MainMenu.gd:120
 msgid "Spanish"
 msgstr "ச்பானிச்"
 
-#: ../Scripts/MainMenu.gd:218
+#: ../Scripts/MainMenu.gd:121
+msgid "Tamil"
+msgstr "தமிழ்"
+
+#: ../Scripts/MainMenu.gd:222
 msgid "Room code must be four characters long!"
 msgstr "அறை குறியீடு நான்கு எழுத்துக்கள் நீளமாக இருக்க வேண்டும்!"
 
-#: ../Scripts/MainMenu.gd:223
+#: ../Scripts/MainMenu.gd:227
 msgid "Invalid room code!"
 msgstr "தவறான அறை குறியீடு!"
 
@@ -1322,51 +1328,51 @@ msgstr "தவறான அறை குறியீடு!"
 msgid "System Default"
 msgstr "கணினி இயல்புநிலை"
 
-#: ../Scripts/OptionsMenu.gd:69
+#: ../Scripts/OptionsMenu.gd:75
 msgid "Never"
 msgstr "ஒருபோதும்"
 
-#: ../Scripts/OptionsMenu.gd:70
+#: ../Scripts/OptionsMenu.gd:76
 msgid "30 seconds"
 msgstr "30 வினாடிகள்"
 
-#: ../Scripts/OptionsMenu.gd:71
+#: ../Scripts/OptionsMenu.gd:77
 msgid "1 minute"
 msgstr "1 மணித்துளி"
 
-#: ../Scripts/OptionsMenu.gd:73
+#: ../Scripts/OptionsMenu.gd:79
 msgid "10 minutes"
 msgstr "10 நிமிடங்கள்"
 
-#: ../Scripts/OptionsMenu.gd:74
+#: ../Scripts/OptionsMenu.gd:80
 msgid "30 minutes"
 msgstr "30 நிமிடங்கள்"
 
-#: ../Scripts/OptionsMenu.gd:77
+#: ../Scripts/OptionsMenu.gd:83
 msgid "Borderless Fullscreen"
 msgstr "எல்லையற்ற முழுத்திரை"
 
-#: ../Scripts/OptionsMenu.gd:78
+#: ../Scripts/OptionsMenu.gd:84
 msgid "Fullscreen"
 msgstr "முழு திரை"
 
-#: ../Scripts/OptionsMenu.gd:83
+#: ../Scripts/OptionsMenu.gd:89
 msgid "High"
 msgstr "உயர்ந்த"
 
-#: ../Scripts/OptionsMenu.gd:84
+#: ../Scripts/OptionsMenu.gd:90
 msgid "Very High"
 msgstr "மிக உயர்ந்த"
 
-#: ../Scripts/OptionsMenu.gd:85
+#: ../Scripts/OptionsMenu.gd:91
 msgid "Ultra"
 msgstr "அல்ட்ரா"
 
-#: ../Scripts/OptionsMenu.gd:87
+#: ../Scripts/OptionsMenu.gd:93
 msgid "Small"
 msgstr "சிறிய"
 
-#: ../Scripts/OptionsMenu.gd:89
+#: ../Scripts/OptionsMenu.gd:95
 msgid "Large"
 msgstr "பெரிய"
 
@@ -1782,8 +1788,8 @@ msgstr "ஏற்றப்பட்ட அட்டவணையில் பத�
 #: ../Scripts/Game/Game.gd:1025
 #, python-format
 msgid ""
-"Loaded table was saved with a different version of the game (Current: %s,"
-" Table: %s). Load anyway?"
+"Loaded table was saved with a different version of the game (Current: %s, "
+"Table: %s). Load anyway?"
 msgstr ""
 "ஏற்றப்பட்ட அட்டவணை விளையாட்டின் வேறுபட்ட பதிப்பில் சேமிக்கப்பட்டது (நடப்பு: %s, அட்டவணை: "
 "%s). எப்படியும் ஏற்றவா?"
@@ -1927,8 +1933,7 @@ msgstr "டேப்லெட் கிளப்புக்கு வருக!
 
 #: ../Scripts/Game/UI/GameUI.gd:171
 msgid "To view a list of commands, type /? or /help in this chat box."
-msgstr ""
-"கட்டளைகளின் பட்டியலைக் காண, தட்டச்சு /? அல்லது /இந்த அரட்டை பெட்டியில் உதவுங்கள்."
+msgstr "கட்டளைகளின் பட்டியலைக் காண, தட்டச்சு /? அல்லது /இந்த அரட்டை பெட்டியில் உதவுங்கள்."
 
 #: ../Scripts/Game/UI/GameUI.gd:248
 #, python-format
@@ -2037,8 +2042,7 @@ msgstr "%d டோக்கன்களின் அடுக்கு"
 msgid ""
 "You can use this notebook to write down information that will persist "
 "between sessions."
-msgstr ""
-"அமர்வுகளுக்கு இடையில் தொடரும் தகவல்களை எழுத இந்த நோட்புக்கைப் பயன்படுத்தலாம்."
+msgstr "அமர்வுகளுக்கு இடையில் தொடரும் தகவல்களை எழுத இந்த நோட்புக்கைப் பயன்படுத்தலாம்."
 
 #: ../Scripts/Game/UI/Dialogs/NotebookDialog.gd:269
 msgid "This player does not have any public pages in their notebook."
