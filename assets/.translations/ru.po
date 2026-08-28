@@ -332,7 +332,8 @@ msgstr "Мирный житель"
 msgid ""
 "Avoid being eaten by werewolves at night by voting against them during the "
 "day."
-msgstr "Постарайтесь не стать жертвой оборотней ночью, голосуя против них днём."
+msgstr ""
+"Постарайтесь не стать жертвой оборотней ночью, голосуя против них днём."
 
 #: ../TabletopClub/cards/Werewolf:1
 msgid "Werewolf"
