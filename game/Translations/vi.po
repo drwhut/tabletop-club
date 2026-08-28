@@ -1768,8 +1768,8 @@ msgstr ""
 #, python-format
 msgid "Client version (%s) does not match server version (%s)!"
 msgstr ""
-"Phiên bản của máy khách (%s) không tương thích với phiên bản của máy chủ (%s)"
-"!"
+"Phiên bản của máy khách (%s) không tương thích với phiên bản của máy chủ "
+"(%s)!"
 
 #: ../Scripts/Game/Game.gd:1214
 #, python-format
