@@ -351,12 +351,12 @@ the plugin:
 
 1. Download the latest release (not a pre-release!) of the plugin from
    `the repository <https://github.com/godotengine/webrtc-native/releases>`_.
-   Make sure to download the ``webrtc-native-release`` file rather than the
-   ``webrtc-native-debug`` file.
+   Make sure to download the ``gdnative-webrtc_native`` file rather than the
+   ``extension-webrtc_native`` file.
 
-2. Open the compressed file, and place the ``webrtc/`` folder into
+2. Open the compressed file, and place the ``addons/`` folder into
    ``tabletop-club/game/``. Afterwards, there should be a file at
-   ``tabletop-club/game/webrtc/webrtc.tres``.
+   ``tabletop-club/game/addons/webrtc_native/webrtc_native.tres``.
 
 
 Running Tabletop Club in the Godot editor

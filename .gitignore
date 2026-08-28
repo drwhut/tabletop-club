@@ -16,6 +16,7 @@ docs/_build/
 
 # GDNative ignores
 game/webrtc/
+game/addons/webrtc_native/
 
 # OSX ignores
 .DS_Store

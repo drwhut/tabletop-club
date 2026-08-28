@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated Godot from v3.4.5 to v3.6.3.
+- Updated Godot WebRTC library from v1.1.0 to v1.2.1.
 - Updated the lobby server's SSL certificate.
 
 ### Fixed
