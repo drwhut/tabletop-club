@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-04 13:50+0100\n"
+"POT-Creation-Date: 2026-08-28 12:25+0100\n"
 "PO-Revision-Date: 2023-09-06 17:51+0000\n"
 "Last-Translator: Christian Elbrianno <crse@protonmail.ch>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/tabletop-club/"
@@ -172,8 +172,9 @@ msgstr ""
 
 #: ../../general/about.rst:98
 msgid ""
-"You can change your name and colour in multiplayer by going to :guilabel:"
-"`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
+"You can change your name and colour in multiplayer by going "
+"to :guilabel:`Options` > :guilabel:`Multiplayer`, and changing the relevant "
+"settings."
 msgstr ""
 
 #: ../../general/about.rst:104
@@ -669,9 +670,9 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:34
 msgid ""
-"If you want to provide an in-game screenshot showing the bug, you can press :"
-"guilabel:`F3` to display debug information on the screen, then you can "
-"press :guilabel:`F12` to take a screenshot! Screenshots are saved to the "
+"If you want to provide an in-game screenshot showing the bug, you can "
+"press :guilabel:`F3` to display debug information on the screen, then you "
+"can press :guilabel:`F12` to take a screenshot! Screenshots are saved to the "
 "Documents folder under ``TabletopClub/screenshots``."
 msgstr ""
 
@@ -708,8 +709,9 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:60
 msgid ""
-"You can click on the GitHub icon at the top of the page, click the :guilabel:"
-"`suggest edit` button, and create a pull request with the changes you give!"
+"You can click on the GitHub icon at the top of the page, click "
+"the :guilabel:`suggest edit` button, and create a pull request with the "
+"changes you give!"
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:68
@@ -854,23 +856,17 @@ msgid "0.1.x"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:39
-msgid "3.4.5"
+#: ../../general/download/compiling_from_source.rst:41
+msgid "3.6.3"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:39
-msgid "``tabletop-3.4.5``"
+#: ../../general/download/compiling_from_source.rst:41
+msgid "``tabletop-3.6.3``"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:41
 msgid "0.2.x"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:41
-msgid "3.5.3"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:41
-msgid "``tabletop-3.5.3``"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:46
@@ -896,8 +892,8 @@ msgstr ""
 #: ../../general/download/compiling_from_source.rst:60
 msgid ""
 "The way you compile Godot's source code is exactly how you would normally "
-"compile Godot, the documentation of which can be found `here <https://docs."
-"godotengine.org/en/stable/development/compiling/index.html>`_. For "
+"compile Godot, the documentation of which can be found `here <https://"
+"docs.godotengine.org/en/stable/development/compiling/index.html>`_. For "
 "convenience, the instructions from the Godot documentation has been taken, "
 "modified slightly, and put here for each platform [#godot-doc-license]_."
 msgstr ""
@@ -974,10 +970,10 @@ msgstr ""
 #: ../../general/download/compiling_from_source.rst:115
 msgid ""
 "If it compiles successfully, the result binary will be put in ``godot/bin/`` "
-"with the name ``godot.windows.opt.tools.32.exe`` or ``godot.windows.opt."
-"tools.64.exe``. By default, SCons will build a binary matching your CPU "
-"architecture, but this can be changed by adding ``bits=64`` or ``bits=32`` "
-"to the above command."
+"with the name ``godot.windows.opt.tools.32.exe`` or "
+"``godot.windows.opt.tools.64.exe``. By default, SCons will build a binary "
+"matching your CPU architecture, but this can be changed by adding "
+"``bits=64`` or ``bits=32`` to the above command."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:122
@@ -1182,15 +1178,15 @@ msgstr ""
 msgid ""
 "Download the latest release (not a pre-release!) of the plugin from `the "
 "repository <https://github.com/godotengine/webrtc-native/releases>`_. Make "
-"sure to download the ``webrtc-native-release`` file rather than the ``webrtc-"
-"native-debug`` file."
+"sure to download the ``gdnative-webrtc_native`` file rather than the "
+"``extension-webrtc_native`` file."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:357
 msgid ""
-"Open the compressed file, and place the ``webrtc/`` folder into ``tabletop-"
+"Open the compressed file, and place the ``addons/`` folder into ``tabletop-"
 "club/game/``. Afterwards, there should be a file at ``tabletop-club/game/"
-"webrtc/webrtc.tres``."
+"addons/webrtc_native/webrtc_native.tres``."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:363
@@ -1350,8 +1346,8 @@ msgid ""
 "If you are on a Linux distribution that supports Flatpaks, you can download "
 "the latest stable version of the game directly from your software manager! "
 "Simply search for \"Tabletop Club\" to download and install the game. "
-"Alternatively, you can visit the project page on `Flathub <https://flathub."
-"org/apps/net.tabletopclub.TabletopClub>`_."
+"Alternatively, you can visit the project page on `Flathub <https://"
+"flathub.org/apps/net.tabletopclub.TabletopClub>`_."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:30
@@ -1423,9 +1419,9 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:73
 msgid ""
-"Download from the GitHub releases page the ``TabletopClub_vX.X.X_SHA512."
-"txt`` file. This text file contains the SHA512 hashes of all of the "
-"downloads."
+"Download from the GitHub releases page the "
+"``TabletopClub_vX.X.X_SHA512.txt`` file. This text file contains the SHA512 "
+"hashes of all of the downloads."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:76
@@ -1462,8 +1458,8 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:105
 msgid ""
-"Right-click the downloaded file in File Explorer, and click :guilabel:"
-"`Extract all...`"
+"Right-click the downloaded file in File Explorer, and "
+"click :guilabel:`Extract all...`"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:108
@@ -1513,16 +1509,16 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:136
 msgid ""
-"Launch the game by right-clicking ``TabletopClub`` and clicking :guilabel:"
-"`Open`."
+"Launch the game by right-clicking ``TabletopClub`` and "
+"clicking :guilabel:`Open`."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:141
 msgid ""
 "Currently macOS binaries of the game are not signed, so you'll get a warning "
-"saying the publisher is unknown. You can get past this warning by clicking :"
-"guilabel:`Open` in the pop-up. This button won't appear if you double-click "
-"the application."
+"saying the publisher is unknown. You can get past this warning by "
+"clicking :guilabel:`Open` in the pop-up. This button won't appear if you "
+"double-click the application."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:147

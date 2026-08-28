@@ -8,18 +8,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tabletop Club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2023-05-08 06:49+0000\n"
-"Last-Translator: PK <tar4nis+weblate@gmail.com>\n"
+"POT-Creation-Date: 2026-08-28 12:25+0100\n"
+"PO-Revision-Date: 2024-10-08 13:15+0000\n"
+"Last-Translator: Michał Stankiewicz <kontakt@stankiewiczm.eu>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/tabletop-club/"
 "docs-general/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -51,11 +51,11 @@ msgstr ""
 
 #: ../../general/about.rst:20
 msgid "Open-source"
-msgstr ""
+msgstr "Otwarty kod"
 
 #: ../../general/about.rst:22
 msgid "This means a few things:"
-msgstr ""
+msgstr "Oznacza to kilka rzeczy:"
 
 #: ../../general/about.rst:24
 msgid ""
@@ -64,6 +64,10 @@ msgid ""
 "means you can compile the game youself from scratch (see :ref:`compiling-"
 "from-source`)."
 msgstr ""
+"Kod źródłowy gry jest dostępny publicznie (możesz go zobaczyć w "
+"`repozytorium GitHub <https://github.com/drwhut/tabletop-club>`_). Oznacza "
+"to też, że możesz skompilować grę samodzielnie od podstaw "
+"(zobacz :ref:`compiling-from-source`)."
 
 #: ../../general/about.rst:29
 msgid ""
@@ -71,18 +75,25 @@ msgid ""
 "different ways! For more information about how you can help contribute to "
 "the project, visit the :ref:`contributing` page."
 msgstr ""
+"Każdy może przyczynić się do rozwoju Tabletop Club na wiele różnych "
+"sposobów! Aby uzyskać więcej informacji na temat tego, jak możesz przyczynić "
+"się do rozwoju projektu, odwiedź stronę :ref:`contributing`."
 
 #: ../../general/about.rst:33
 msgid ""
 "The game is licensed under the `MIT License <https://github.com/drwhut/"
 "tabletop-club/blob/master/LICENSE>`_, which is an open, permissive license."
 msgstr ""
+"Gra jest dostępna na licencji `MIT License <https://github.com/drwhut/"
+"tabletop-club/blob/master/LICENSE>`_, która jest otwartą, liberalną licencją."
 
 #: ../../general/about.rst:39
 msgid ""
 "The game's code and project files are licensed under the MIT License, but "
 "some of the assets are licensed under different open licenses."
 msgstr ""
+"Kod gry i pliki projektu są licencjonowane na licencji MIT, ale niektóre "
+"zasoby są licencjonowane na innych otwartych licencjach."
 
 #: ../../general/about.rst:42
 msgid ""
@@ -91,10 +102,14 @@ msgid ""
 "game (which can also be found in the various ``.cfg`` files under ``assets/"
 "``)."
 msgstr ""
+"Aby zobaczyć autorów i licencje tych zasobów, możesz sprawdzić plik ``game/"
+"LICENSES.tres``, a także najechać kursorem na przedmioty w menu obiektów w "
+"grze (które można również znaleźć w różnych plikach ``.cfg`` pod ``assets/"
+"``)."
 
 #: ../../general/about.rst:48
 msgid "Tabletop board game"
-msgstr ""
+msgstr "Gra planszowa"
 
 #: ../../general/about.rst:50
 msgid ""
@@ -103,6 +118,10 @@ msgid ""
 "things like cards, dice, game pieces, and more), and it's up to you what you "
 "do with what you're given!"
 msgstr ""
+"Gra została zaprojektowana tak, aby umożliwiać granie w ulubione gry "
+"planszowe, dając Ci pudełko z zabawkami do zabawy (które obejmują takie "
+"rzeczy jak karty, kości, pionki i inne), a to, co z nimi zrobisz, zależy "
+"tylko od Ciebie!"
 
 #: ../../general/about.rst:55
 msgid ""
@@ -112,10 +131,15 @@ msgid ""
 "learn more about how to make assets for Tabletop Club, visit the :ref:`asset-"
 "packs` page."
 msgstr ""
+"Jednak najfajniejsze w tej grze jest to, że każdy może tworzyć zasoby do "
+"gry! To tak proste! Wystarczy przeciągnięcie plików do folderu, a gra je "
+"zaimportuje, po czym możesz ich od razu użyć w grze! Jeśli chcesz dowiedzieć "
+"się więcej o tym, jak tworzyć zasoby dla Tabletop Club, odwiedź "
+"stronę :ref:`asset-packs`."
 
 #: ../../general/about.rst:61
 msgid "Simulator"
-msgstr ""
+msgstr "Symulator"
 
 #: ../../general/about.rst:63
 msgid ""
@@ -124,66 +148,80 @@ msgid ""
 "they do in real life, and it also means you can potentially send objects "
 "flying off the edge! Did I also mention you could flip the table?"
 msgstr ""
+"Gra nie tylko jest symulatorem gier planszowych, ale również posiada w pełni "
+"symulowany silnik fizyczny 3D! Oznacza to, że obiekty w grze zachowują się "
+"tak, jak w prawdziwym życiu, co oznacza, że możesz potencjalnie wysłać "
+"obiekty w powietrze! Czy wspomniałem również, że możesz przewrócić stół?"
 
 #: ../../general/about.rst:70
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "FAQ — Najczęściej zadawane pytania"
 
 #: ../../general/about.rst:73
 msgid "What platforms can I play Tabletop Club on?"
-msgstr ""
+msgstr "Na jakich platformach mogę grać w Tabletop Club?"
 
 #: ../../general/about.rst:75
 msgid "Tabletop Club can be played on any of these platforms:"
-msgstr ""
+msgstr "W Tabletop Club możesz grać na następujących platformach:"
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
-msgstr ""
+msgstr "Windows 7 lub nowszy"
 
 #: ../../general/about.rst:78
 msgid "macOS 10.12 or later"
-msgstr ""
+msgstr "macOS 10.12 lub nowszy"
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
-msgstr ""
+msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
-msgstr ""
+msgstr "Sprzęt musi również obsługiwać OpenGL 3.3."
 
 #: ../../general/about.rst:83
 msgid ""
 "It is recommended to have at least 1GB of available space on your drive to "
 "accommodate for the game files, as well as any generated files."
 msgstr ""
+"Zaleca się posiadanie co najmniej 1 GB wolnego miejsca na dysku, aby "
+"pomieścić pliki gry, a także wszelkie wygenerowane pliki."
 
 #: ../../general/about.rst:86
 msgid ""
 "Currently there are no plans for the game to be supported on mobile devices "
 "or consoles."
 msgstr ""
+"Aktualnie nie ma planów, aby gry były wspierane na urządzeniach mobilnych "
+"lub konsolach."
 
 #: ../../general/about.rst:91
 msgid "Does Tabletop Club support multiplayer?"
-msgstr ""
+msgstr "Czy Tabletop Club obsługuje tryb wieloosobowy?"
 
 #: ../../general/about.rst:93
 msgid ""
 "Yes! You don't need to make an account to play multiplayer, you can just "
 "host a game and start playing with friends!"
 msgstr ""
+"Tak! Nie musisz zakładać konta, aby grać w trybie wieloosobowym, możesz po "
+"prostu zorganizować grę i zacząć grać ze znajomymi!"
 
 #: ../../general/about.rst:98
 msgid ""
-"You can change your name and colour in multiplayer by going to :guilabel:"
-"`Options` > :guilabel:`Multiplayer`, and changing the relevant settings."
+"You can change your name and colour in multiplayer by going "
+"to :guilabel:`Options` > :guilabel:`Multiplayer`, and changing the relevant "
+"settings."
 msgstr ""
+"Możesz zmienić swoją nazwę i kolor w trybie wieloosobowym "
+"poprzez :guilabel:`Options` > :guilabel:'Multiplayer' oraz zmianę "
+"odpowiednich ustawień."
 
 #: ../../general/about.rst:104
 msgid "Is Tabletop Club on Steam / GOG / itch.io?"
-msgstr ""
+msgstr "Czy Tabletop Club jest dostępny na Steam / GOG / itch.io?"
 
 #: ../../general/about.rst:106
 msgid ""
@@ -192,10 +230,13 @@ msgid ""
 "download it from the `itch app <https://itch.io/app>`_ and get automatic "
 "updates."
 msgstr ""
+"Gra jest dostępna na `itch.io <https://drwhut.itch.io/tabletop-club>`_! "
+"Możesz pobrać grę jako samodzielny plik wykonywalny, a także z `aplikacji "
+"itch <https://itch.io/app>`_ i otrzymywać automatyczne aktualizacje."
 
 #: ../../general/about.rst:113
 msgid "What stage of development is Tabletop Club at?"
-msgstr ""
+msgstr "Na jakim etapie rozwoju jest Tabletop Club?"
 
 #: ../../general/about.rst:115
 msgid ""
@@ -205,10 +246,14 @@ msgid ""
 "tabletop-club/issues>`_ for known bugs, feature requests, as well as quality-"
 "of-life tweaks to the game."
 msgstr ""
+"Tabletop Club jest obecnie w aktywnym rozwoju. Gra została wydana, ale jest "
+"stale udoskonalana z pomocą społeczności. Na GitHubie znajduje się `tracker "
+"zgłoszeń <https://github.com/drwhut/tabletop-club/issues>`_ dla znanych "
+"błędów, próśb o funkcje oraz drobnych poprawek jakości gry."
 
 #: ../../general/about.rst:123
 msgid "Is there an official Discord or Matrix server that I can join?"
-msgstr ""
+msgstr "Czy mogę dołączyć do oficjalnego serwera Discord lub Matrix?"
 
 #: ../../general/about.rst:125
 msgid ""
@@ -217,6 +262,10 @@ msgid ""
 "chat with other players about anything from the game itself, to board games "
 "in general, or even to share asset packs that you have made!"
 msgstr ""
+"Tak, możesz dołączyć do oficjalnych serwerów `Discord <https://discord.gg/"
+"GqYkGV4WwX>`_ i `Matrix <https://matrix.to/#/#tabletop-club:matrix.org>`_, "
+"aby rozmawiać z innymi graczami na różne tematy, od samej gry, po gry "
+"planszowe ogólnie, lub nawet dzielić się pakietami zasobów, które stworzyłeś!"
 
 #: ../../general/about.rst:130
 msgid ""
@@ -224,14 +273,17 @@ msgid ""
 "of their background or personality. As long as you abide by the server "
 "rules, you are always free to come in and say hi!"
 msgstr ""
+"Celem jest stworzenie bezpiecznego i przyjaznego środowiska dla wszystkich, "
+"niezależnie od ich pochodzenia czy osobowości. Dopóki przestrzegasz zasad "
+"serwera, zawsze możesz przyjść i się przywitać!"
 
 #: ../../general/about.rst:136
 msgid "What board games can I play in Tabletop Club?"
-msgstr ""
+msgstr "W jakie gry planszowe mogę grać w Tabletop Club?"
 
 #: ../../general/about.rst:138
 msgid "Theoretically, any of them!"
-msgstr ""
+msgstr "Teoretycznie, w każdą!"
 
 #: ../../general/about.rst:140
 msgid ""
@@ -239,6 +291,9 @@ msgid ""
 "which contains some of the most common objects you'll need, like playing "
 "cards, dice, poker chips, etc."
 msgstr ""
+"Gra zawiera domyślny pakiet zasobów Tabletop Club, który zawiera niektóre z "
+"najczęstszych przedmiotów, których będziesz potrzebować, takich jak karty do "
+"gry, kości, żetony pokerowe itp."
 
 #: ../../general/about.rst:144
 msgid ""
@@ -674,9 +729,9 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:34
 msgid ""
-"If you want to provide an in-game screenshot showing the bug, you can press :"
-"guilabel:`F3` to display debug information on the screen, then you can "
-"press :guilabel:`F12` to take a screenshot! Screenshots are saved to the "
+"If you want to provide an in-game screenshot showing the bug, you can "
+"press :guilabel:`F3` to display debug information on the screen, then you "
+"can press :guilabel:`F12` to take a screenshot! Screenshots are saved to the "
 "Documents folder under ``TabletopClub/screenshots``."
 msgstr ""
 
@@ -713,8 +768,9 @@ msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:60
 msgid ""
-"You can click on the GitHub icon at the top of the page, click the :guilabel:"
-"`suggest edit` button, and create a pull request with the changes you give!"
+"You can click on the GitHub icon at the top of the page, click "
+"the :guilabel:`suggest edit` button, and create a pull request with the "
+"changes you give!"
 msgstr ""
 
 #: ../../general/contributing/ways_to_contribute.rst:68
@@ -859,23 +915,17 @@ msgid "0.1.x"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:39
-msgid "3.4.5"
+#: ../../general/download/compiling_from_source.rst:41
+msgid "3.6.3"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:39
-msgid "``tabletop-3.4.5``"
+#: ../../general/download/compiling_from_source.rst:41
+msgid "``tabletop-3.6.3``"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:41
 msgid "0.2.x"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:41
-msgid "3.5.3"
-msgstr ""
-
-#: ../../general/download/compiling_from_source.rst:41
-msgid "``tabletop-3.5.3``"
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:46
@@ -901,8 +951,8 @@ msgstr ""
 #: ../../general/download/compiling_from_source.rst:60
 msgid ""
 "The way you compile Godot's source code is exactly how you would normally "
-"compile Godot, the documentation of which can be found `here <https://docs."
-"godotengine.org/en/stable/development/compiling/index.html>`_. For "
+"compile Godot, the documentation of which can be found `here <https://"
+"docs.godotengine.org/en/stable/development/compiling/index.html>`_. For "
 "convenience, the instructions from the Godot documentation has been taken, "
 "modified slightly, and put here for each platform [#godot-doc-license]_."
 msgstr ""
@@ -979,10 +1029,10 @@ msgstr ""
 #: ../../general/download/compiling_from_source.rst:115
 msgid ""
 "If it compiles successfully, the result binary will be put in ``godot/bin/`` "
-"with the name ``godot.windows.opt.tools.32.exe`` or ``godot.windows.opt."
-"tools.64.exe``. By default, SCons will build a binary matching your CPU "
-"architecture, but this can be changed by adding ``bits=64`` or ``bits=32`` "
-"to the above command."
+"with the name ``godot.windows.opt.tools.32.exe`` or "
+"``godot.windows.opt.tools.64.exe``. By default, SCons will build a binary "
+"matching your CPU architecture, but this can be changed by adding "
+"``bits=64`` or ``bits=32`` to the above command."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:122
@@ -1187,15 +1237,15 @@ msgstr ""
 msgid ""
 "Download the latest release (not a pre-release!) of the plugin from `the "
 "repository <https://github.com/godotengine/webrtc-native/releases>`_. Make "
-"sure to download the ``webrtc-native-release`` file rather than the ``webrtc-"
-"native-debug`` file."
+"sure to download the ``gdnative-webrtc_native`` file rather than the "
+"``extension-webrtc_native`` file."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:357
 msgid ""
-"Open the compressed file, and place the ``webrtc/`` folder into ``tabletop-"
+"Open the compressed file, and place the ``addons/`` folder into ``tabletop-"
 "club/game/``. Afterwards, there should be a file at ``tabletop-club/game/"
-"webrtc/webrtc.tres``."
+"addons/webrtc_native/webrtc_native.tres``."
 msgstr ""
 
 #: ../../general/download/compiling_from_source.rst:363
@@ -1355,8 +1405,8 @@ msgid ""
 "If you are on a Linux distribution that supports Flatpaks, you can download "
 "the latest stable version of the game directly from your software manager! "
 "Simply search for \"Tabletop Club\" to download and install the game. "
-"Alternatively, you can visit the project page on `Flathub <https://flathub."
-"org/apps/net.tabletopclub.TabletopClub>`_."
+"Alternatively, you can visit the project page on `Flathub <https://"
+"flathub.org/apps/net.tabletopclub.TabletopClub>`_."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:30
@@ -1428,9 +1478,9 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:73
 msgid ""
-"Download from the GitHub releases page the ``TabletopClub_vX.X.X_SHA512."
-"txt`` file. This text file contains the SHA512 hashes of all of the "
-"downloads."
+"Download from the GitHub releases page the "
+"``TabletopClub_vX.X.X_SHA512.txt`` file. This text file contains the SHA512 "
+"hashes of all of the downloads."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:76
@@ -1467,8 +1517,8 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:105
 msgid ""
-"Right-click the downloaded file in File Explorer, and click :guilabel:"
-"`Extract all...`"
+"Right-click the downloaded file in File Explorer, and "
+"click :guilabel:`Extract all...`"
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:108
@@ -1518,16 +1568,16 @@ msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:136
 msgid ""
-"Launch the game by right-clicking ``TabletopClub`` and clicking :guilabel:"
-"`Open`."
+"Launch the game by right-clicking ``TabletopClub`` and "
+"clicking :guilabel:`Open`."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:141
 msgid ""
 "Currently macOS binaries of the game are not signed, so you'll get a warning "
-"saying the publisher is unknown. You can get past this warning by clicking :"
-"guilabel:`Open` in the pop-up. This button won't appear if you double-click "
-"the application."
+"saying the publisher is unknown. You can get past this warning by "
+"clicking :guilabel:`Open` in the pop-up. This button won't appear if you "
+"double-click the application."
 msgstr ""
 
 #: ../../general/download/downloading_binaries.rst:147

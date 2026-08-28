@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-04 13:50+0100\n"
+"POT-Creation-Date: 2025-10-12 16:36+0100\n"
 "PO-Revision-Date: 2023-12-07 14:04+0000\n"
 "Last-Translator: Tibor Eszes <teszes@pm.me>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/tabletop-club/"
@@ -41,7 +41,7 @@ msgstr "Betöltés..."
 msgid "Singleplayer"
 msgstr "Egy játékos"
 
-#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:158
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
 msgstr "Több játékos"
@@ -50,7 +50,7 @@ msgstr "Több játékos"
 msgid "Options"
 msgstr "Beállítások"
 
-#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:315
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
 msgstr "Készítők"
 
@@ -58,7 +58,7 @@ msgstr "Készítők"
 msgid "Quit"
 msgstr "Kilépés"
 
-#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:340
+#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
 msgstr "Betöltési napló"
 
@@ -82,45 +82,45 @@ msgstr "Dokumentáció"
 msgid "Community"
 msgstr ""
 
-#: ../Scenes/MainMenu.tscn:142
+#: ../Scenes/MainMenu.tscn:143
 msgid "Donate"
 msgstr ""
 
-#: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
+#: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
 msgstr "Információ"
 
-#: ../Scenes/MainMenu.tscn:176
+#: ../Scenes/MainMenu.tscn:177
 msgid "Host Game"
 msgstr "Új játékszoba"
 
-#: ../Scenes/MainMenu.tscn:182
+#: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr ""
 "Hozz létre egy új szobát ahol a barátaid becsatlakozhatnak a játékba az "
 "Interneten."
 
-#: ../Scenes/MainMenu.tscn:194 ../Scenes/MainMenu.tscn:241
+#: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
 msgstr "Csatlakozás egy játékszobához"
 
-#: ../Scenes/MainMenu.tscn:200
+#: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
 msgstr "Csatlakozz egy barátod játékszobájához egy kóddal."
 
-#: ../Scenes/MainMenu.tscn:206
+#: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
 msgstr "Írd be a játékszoba kódját"
 
-#: ../Scenes/MainMenu.tscn:226
+#: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
 msgstr "Játékszoba kódja:"
 
-#: ../Scenes/MainMenu.tscn:235
+#: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
 msgstr "ABCD"
 
-#: ../Scenes/MainMenu.tscn:333
+#: ../Scenes/MainMenu.tscn:334
 msgid "Error"
 msgstr "Hiba"
 
@@ -321,7 +321,7 @@ msgstr "Automatikus mentési időköz"
 msgid "Used to set how often autosaves are created."
 msgstr "Az automatikus mentések között eltelt időt állítja."
 
-#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:72
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:78
 msgid "5 minutes"
 msgstr "5 perc"
 
@@ -582,7 +582,7 @@ msgid "Changes the size of the text in the chat box."
 msgstr "A chat szöveg betűinek méretét állítja."
 
 #: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
-#: ../Scripts/OptionsMenu.gd:82
+#: ../Scripts/OptionsMenu.gd:88
 msgid "Medium"
 msgstr "Közepes"
 
@@ -619,7 +619,7 @@ msgstr "Ablak mód"
 msgid "Sets the mode in which the game window is displayed."
 msgstr "A játékablak megjelenítésének módját állítja."
 
-#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:76
+#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:82
 msgid "Windowed"
 msgstr "Ablakban"
 
@@ -644,7 +644,7 @@ msgid "Multisample Anti-Aliasing (MSAA)"
 msgstr "Többmintás élsimítás (MSAA)"
 
 #: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
-#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:80
+#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:86
 msgid "None"
 msgstr "Nincs"
 
@@ -656,7 +656,7 @@ msgstr "Screen Space Ambient Occlusion (SSAO)"
 msgid "Skybox Radiance Detail"
 msgstr "Skybox részletessége"
 
-#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:81
+#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:87
 msgid "Low"
 msgstr "Alacsony"
 
@@ -1247,58 +1247,74 @@ msgid "Translators"
 msgstr "Fordítók"
 
 #: ../Scripts/MainMenu.gd:106
-msgid "Chinese"
+msgid "Bulgarian"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:107
+msgid "Chinese"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:108
 msgid "Dutch"
 msgstr "Holland"
 
-#: ../Scripts/MainMenu.gd:108
+#: ../Scripts/MainMenu.gd:109
 msgid "Esperanto"
 msgstr "Eszperantó"
 
-#: ../Scripts/MainMenu.gd:109
+#: ../Scripts/MainMenu.gd:110
 msgid "French"
 msgstr "Francia"
 
-#: ../Scripts/MainMenu.gd:110
+#: ../Scripts/MainMenu.gd:111
 msgid "German"
 msgstr "Német"
 
-#: ../Scripts/MainMenu.gd:111
+#: ../Scripts/MainMenu.gd:112
+msgid "Hungarian"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:113
 msgid "Indonesian"
 msgstr "Indonéz"
 
-#: ../Scripts/MainMenu.gd:112
+#: ../Scripts/MainMenu.gd:114
 msgid "Italian"
 msgstr "Olasz"
 
-#: ../Scripts/MainMenu.gd:113
+#: ../Scripts/MainMenu.gd:115
+msgid "Korean"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:116
 msgid "Norwegian"
 msgstr "Norvég"
 
-#: ../Scripts/MainMenu.gd:114
+#: ../Scripts/MainMenu.gd:117
 msgid "Polish"
 msgstr ""
 
-#: ../Scripts/MainMenu.gd:115
+#: ../Scripts/MainMenu.gd:118
 msgid "Portuguese"
 msgstr "Portugál"
 
-#: ../Scripts/MainMenu.gd:116
+#: ../Scripts/MainMenu.gd:119
 msgid "Russian"
 msgstr "Orosz"
 
-#: ../Scripts/MainMenu.gd:117
+#: ../Scripts/MainMenu.gd:120
 msgid "Spanish"
 msgstr "Spanyol"
 
-#: ../Scripts/MainMenu.gd:218
+#: ../Scripts/MainMenu.gd:121
+msgid "Tamil"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:222
 msgid "Room code must be four characters long!"
 msgstr "A szobakód négy karakter kell legyen!"
 
-#: ../Scripts/MainMenu.gd:223
+#: ../Scripts/MainMenu.gd:227
 msgid "Invalid room code!"
 msgstr "Érvénytelen szobakód!"
 
@@ -1306,51 +1322,51 @@ msgstr "Érvénytelen szobakód!"
 msgid "System Default"
 msgstr "Rendszer alapbeállítása"
 
-#: ../Scripts/OptionsMenu.gd:69
+#: ../Scripts/OptionsMenu.gd:75
 msgid "Never"
 msgstr "Soha"
 
-#: ../Scripts/OptionsMenu.gd:70
+#: ../Scripts/OptionsMenu.gd:76
 msgid "30 seconds"
 msgstr "30 másodperc"
 
-#: ../Scripts/OptionsMenu.gd:71
+#: ../Scripts/OptionsMenu.gd:77
 msgid "1 minute"
 msgstr "1 perc"
 
-#: ../Scripts/OptionsMenu.gd:73
+#: ../Scripts/OptionsMenu.gd:79
 msgid "10 minutes"
 msgstr "10 perc"
 
-#: ../Scripts/OptionsMenu.gd:74
+#: ../Scripts/OptionsMenu.gd:80
 msgid "30 minutes"
 msgstr "30 perc"
 
-#: ../Scripts/OptionsMenu.gd:77
+#: ../Scripts/OptionsMenu.gd:83
 msgid "Borderless Fullscreen"
 msgstr "Keret nélküli teljes képernyő"
 
-#: ../Scripts/OptionsMenu.gd:78
+#: ../Scripts/OptionsMenu.gd:84
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
-#: ../Scripts/OptionsMenu.gd:83
+#: ../Scripts/OptionsMenu.gd:89
 msgid "High"
 msgstr "Magas"
 
-#: ../Scripts/OptionsMenu.gd:84
+#: ../Scripts/OptionsMenu.gd:90
 msgid "Very High"
 msgstr "Nagyon magas"
 
-#: ../Scripts/OptionsMenu.gd:85
+#: ../Scripts/OptionsMenu.gd:91
 msgid "Ultra"
 msgstr "Ultra"
 
-#: ../Scripts/OptionsMenu.gd:87
+#: ../Scripts/OptionsMenu.gd:93
 msgid "Small"
 msgstr "Kicsi"
 
-#: ../Scripts/OptionsMenu.gd:89
+#: ../Scripts/OptionsMenu.gd:95
 msgid "Large"
 msgstr "Nagy"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-04 13:50+0100\n"
+"POT-Creation-Date: 2025-10-12 16:36+0100\n"
 "PO-Revision-Date: 2024-12-22 18:28+0000\n"
 "Last-Translator: 강경서 <rudtj2306@ajou.ac.kr>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/tabletop-club/"
@@ -42,7 +42,7 @@ msgstr "불러오는 중..."
 msgid "Singleplayer"
 msgstr "단일플레이모드"
 
-#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:158
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
 msgstr "멀티플레이모드"
@@ -52,7 +52,7 @@ msgstr "멀티플레이모드"
 msgid "Options"
 msgstr "설정"
 
-#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:315
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
 msgstr "크레딧"
 
@@ -60,7 +60,7 @@ msgstr "크레딧"
 msgid "Quit"
 msgstr "종료"
 
-#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:340
+#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
 msgstr "로그 가져오기"
 
@@ -84,44 +84,44 @@ msgstr "문서"
 msgid "Community"
 msgstr "단체"
 
-#: ../Scenes/MainMenu.tscn:142
+#: ../Scenes/MainMenu.tscn:143
 msgid "Donate"
 msgstr "기부하기"
 
-#: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
+#: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
 msgstr "정보"
 
-#: ../Scenes/MainMenu.tscn:176
+#: ../Scenes/MainMenu.tscn:177
 #, fuzzy
 msgid "Host Game"
 msgstr "게임 만들기"
 
-#: ../Scenes/MainMenu.tscn:182
+#: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr "친구들이 인터넷으로 참여할 수 있도록 새 로비를 만드세요."
 
-#: ../Scenes/MainMenu.tscn:194 ../Scenes/MainMenu.tscn:241
+#: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
 msgstr "게임 참여하기"
 
-#: ../Scenes/MainMenu.tscn:200
+#: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
 msgstr "방 코드를 입력하여 친구의 로비에 참여하세요."
 
-#: ../Scenes/MainMenu.tscn:206
+#: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
 msgstr "방 코드 입력"
 
-#: ../Scenes/MainMenu.tscn:226
+#: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
 msgstr "방 코드:"
 
-#: ../Scenes/MainMenu.tscn:235
+#: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
 msgstr ""
 
-#: ../Scenes/MainMenu.tscn:333
+#: ../Scenes/MainMenu.tscn:334
 msgid "Error"
 msgstr "오류"
 
@@ -163,7 +163,8 @@ msgstr "효과음 볼륨"
 msgid ""
 "Sets the volume of sound effects played automatically throughout the game, "
 "for example, pieces falling on the table. "
-msgstr "게임 전반에서 자동으로 재생되는 효과음(예: 조각이 테이블에 떨어지는 소리)의 "
+msgstr ""
+"게임 전반에서 자동으로 재생되는 효과음(예: 조각이 테이블에 떨어지는 소리)의 "
 "볼륨을 설정합니다. "
 
 #: ../Scenes/OptionsMenu.tscn:142
@@ -208,7 +209,8 @@ msgstr "카메라 이동 속도"
 
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
-msgstr "카메라 이동 속도를 설정하여 테이블 위를 얼마나 빠르게 이동할지 조정합니다."
+msgstr ""
+"카메라 이동 속도를 설정하여 테이블 위를 얼마나 빠르게 이동할지 조정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
@@ -218,8 +220,9 @@ msgstr "왼쪽 클릭을 계속 누르고 카메라를 이동하세요"
 msgid ""
 "Used to allow the player to move the camera by dragging the mouse across the "
 "table."
-msgstr "플레이어가 마우스를 드래그하여 테이블 위에서 카메라를 이동할 수 있도록 "
-"합니다."
+msgstr ""
+"플레이어가 마우스를 드래그하여 테이블 위에서 카메라를 이동할 수 있도록 합니"
+"다."
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
@@ -237,7 +240,8 @@ msgstr "줌 반전"
 
 #: ../Scenes/OptionsMenu.tscn:287
 msgid "Used to invert the direction of zooming when using the scroll wheel."
-msgstr "이 기능은 스크롤 휠을 사용할 때 확대/축소 방향을 반전시키는 데 사용됩니다."
+msgstr ""
+"이 기능은 스크롤 휠을 사용할 때 확대/축소 방향을 반전시키는 데 사용됩니다."
 
 #: ../Scenes/OptionsMenu.tscn:294
 msgid "Piece Lift Sensitivity"
@@ -254,8 +258,9 @@ msgstr "조각 들어올리기 반전"
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
 "Used to invert the direction a piece will go when lifting it off the table."
-msgstr "이 기능은 조각을 테이블에서 들어 올릴 때 이동 방향을 반전시키는 데 "
-"사용됩니다."
+msgstr ""
+"이 기능은 조각을 테이블에서 들어 올릴 때 이동 방향을 반전시키는 데 사용됩니"
+"다."
 
 #: ../Scenes/OptionsMenu.tscn:329
 msgid "Piece Rotation Invert"
@@ -273,8 +278,9 @@ msgstr "손 미리보기 활성화"
 msgid ""
 "When set, hovering over a card in your hand will display an enhanced preview "
 "of the card after a short period of time."
-msgstr "손에 있는 카드를 위로 마우스를 올린 뒤 잠시 후 향상된 미리보기를 볼 수 "
-"있습니다."
+msgstr ""
+"손에 있는 카드를 위로 마우스를 올린 뒤 잠시 후 향상된 미리보기를 볼 수 있습니"
+"다."
 
 #: ../Scenes/OptionsMenu.tscn:360
 msgid "Hand Preview Delay"
@@ -284,7 +290,8 @@ msgstr "손 미리보기 지연"
 msgid ""
 "Used to set how long the mouse needs to be kept still before a preview of a "
 "card is displayed from the hand."
-msgstr "카드 미리보기가 나타나기 전에 마우스를 가만히 두어야 하는 시간을 설정합니다."
+msgstr ""
+"카드 미리보기가 나타나기 전에 마우스를 가만히 두어야 하는 시간을 설정합니다."
 
 #: ../Scenes/OptionsMenu.tscn:380
 msgid "Hand Preview Size"
@@ -318,7 +325,7 @@ msgstr "자동저장 간격"
 msgid "Used to set how often autosaves are created."
 msgstr "자동 저장의 생성 빈도를 설정하는 기능입니다."
 
-#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:72
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:78
 msgid "5 minutes"
 msgstr "5분"
 
@@ -472,7 +479,8 @@ msgstr "섞기"
 msgid ""
 "Shuffle stacks of cards or tokens that are selected, or that the mouse is "
 "over."
-msgstr "선택된 카드나 토큰 더미, 또는 마우스가 있는 카드나 토큰 더미를 섞습니다."
+msgstr ""
+"선택된 카드나 토큰 더미, 또는 마우스가 있는 카드나 토큰 더미를 섞습니다."
 
 #: ../Scenes/OptionsMenu.tscn:821
 msgid "Lock/Unlock Piece"
@@ -569,7 +577,7 @@ msgid "Changes the size of the text in the chat box."
 msgstr "채팅창의 글자크기를 바꾸세요."
 
 #: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
-#: ../Scripts/OptionsMenu.gd:82
+#: ../Scripts/OptionsMenu.gd:88
 msgid "Medium"
 msgstr "중간값"
 
@@ -580,8 +588,9 @@ msgstr "플레이어 커서를 숨기세요"
 #: ../Scenes/OptionsMenu.tscn:1042
 msgid ""
 "Used to stop showing other player's cursors when in multiplayer lobbies."
-msgstr "멀티플레이 로비에서 다른 플레이어의 커서를 표시하지 않도록 설정하는데 "
-"사용됩니다."
+msgstr ""
+"멀티플레이 로비에서 다른 플레이어의 커서를 표시하지 않도록 설정하는데 사용됩"
+"니다."
 
 #: ../Scenes/OptionsMenu.tscn:1050
 msgid "Censor Profanity"
@@ -591,8 +600,9 @@ msgstr "욕설 필터링"
 msgid ""
 "Used to censor potentially offensive words in the chat window when in "
 "multiplayer lobbies."
-msgstr "멀티플레이 로비에서 채팅 창에 잠재적으로 공격적인 단어를 필터링하는데 "
-"사용됩니다."
+msgstr ""
+"멀티플레이 로비에서 채팅 창에 잠재적으로 공격적인 단어를 필터링하는데 사용됩"
+"니다."
 
 #: ../Scenes/OptionsMenu.tscn:1073
 msgid "Video"
@@ -606,7 +616,7 @@ msgstr "윈도우 모드"
 msgid "Sets the mode in which the game window is displayed."
 msgstr "게임 창이 표시되는 모드를 설정합니다."
 
-#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:76
+#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:82
 msgid "Windowed"
 msgstr "창모드"
 
@@ -631,7 +641,7 @@ msgid "Multisample Anti-Aliasing (MSAA)"
 msgstr "계단현상 줄이기"
 
 #: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
-#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:80
+#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:86
 msgid "None"
 msgstr "없음"
 
@@ -643,7 +653,7 @@ msgstr "화면 공간 주변 폐색"
 msgid "Skybox Radiance Detail"
 msgstr "하늘 박스의 밝기와 세부사항 조절"
 
-#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:81
+#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:87
 msgid "Low"
 msgstr "낮음"
 
@@ -1168,7 +1178,8 @@ msgstr "Tabletop Club에서 다음 폴더에서 자산 팩을 찾을 수 없습�
 #: ../Scripts/ImportAssets.gd:81
 msgid ""
 "Tabletop Club could not find an assets folder in any of the following places:"
-msgstr "Tabletop Club에서 다음 위치 중 어느곳에서도 자산 폴더를 찾을 수 없습니다:"
+msgstr ""
+"Tabletop Club에서 다음 위치 중 어느곳에서도 자산 폴더를 찾을 수 없습니다:"
 
 #: ../Scripts/ImportAssets.gd:87
 msgid ""
@@ -1225,58 +1236,74 @@ msgid "Translators"
 msgstr "번역가들"
 
 #: ../Scripts/MainMenu.gd:106
+msgid "Bulgarian"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:107
 msgid "Chinese"
 msgstr "중국어"
 
-#: ../Scripts/MainMenu.gd:107
+#: ../Scripts/MainMenu.gd:108
 msgid "Dutch"
 msgstr "네델란드어"
 
-#: ../Scripts/MainMenu.gd:108
+#: ../Scripts/MainMenu.gd:109
 msgid "Esperanto"
 msgstr "에스페란토"
 
-#: ../Scripts/MainMenu.gd:109
+#: ../Scripts/MainMenu.gd:110
 msgid "French"
 msgstr "프랑스어"
 
-#: ../Scripts/MainMenu.gd:110
+#: ../Scripts/MainMenu.gd:111
 msgid "German"
 msgstr "독일어"
 
-#: ../Scripts/MainMenu.gd:111
+#: ../Scripts/MainMenu.gd:112
+msgid "Hungarian"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:113
 msgid "Indonesian"
 msgstr ""
 
-#: ../Scripts/MainMenu.gd:112
+#: ../Scripts/MainMenu.gd:114
 msgid "Italian"
 msgstr "이탈리아어"
 
-#: ../Scripts/MainMenu.gd:113
+#: ../Scripts/MainMenu.gd:115
+msgid "Korean"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:116
 msgid "Norwegian"
 msgstr "노르웨이어"
 
-#: ../Scripts/MainMenu.gd:114
+#: ../Scripts/MainMenu.gd:117
 msgid "Polish"
 msgstr "폴란드어"
 
-#: ../Scripts/MainMenu.gd:115
+#: ../Scripts/MainMenu.gd:118
 msgid "Portuguese"
 msgstr "포르투갈어"
 
-#: ../Scripts/MainMenu.gd:116
+#: ../Scripts/MainMenu.gd:119
 msgid "Russian"
 msgstr "러시아어"
 
-#: ../Scripts/MainMenu.gd:117
+#: ../Scripts/MainMenu.gd:120
 msgid "Spanish"
 msgstr "스페인어"
 
-#: ../Scripts/MainMenu.gd:218
+#: ../Scripts/MainMenu.gd:121
+msgid "Tamil"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:222
 msgid "Room code must be four characters long!"
 msgstr "입력한 방 코드가 잘못되었습니다!"
 
-#: ../Scripts/MainMenu.gd:223
+#: ../Scripts/MainMenu.gd:227
 msgid "Invalid room code!"
 msgstr "잘못된 방 코드!"
 
@@ -1284,51 +1311,51 @@ msgstr "잘못된 방 코드!"
 msgid "System Default"
 msgstr "시스템 초기화"
 
-#: ../Scripts/OptionsMenu.gd:69
+#: ../Scripts/OptionsMenu.gd:75
 msgid "Never"
 msgstr "한 번도"
 
-#: ../Scripts/OptionsMenu.gd:70
+#: ../Scripts/OptionsMenu.gd:76
 msgid "30 seconds"
 msgstr "30초"
 
-#: ../Scripts/OptionsMenu.gd:71
+#: ../Scripts/OptionsMenu.gd:77
 msgid "1 minute"
 msgstr "1분"
 
-#: ../Scripts/OptionsMenu.gd:73
+#: ../Scripts/OptionsMenu.gd:79
 msgid "10 minutes"
 msgstr "10분"
 
-#: ../Scripts/OptionsMenu.gd:74
+#: ../Scripts/OptionsMenu.gd:80
 msgid "30 minutes"
 msgstr "30분"
 
-#: ../Scripts/OptionsMenu.gd:77
+#: ../Scripts/OptionsMenu.gd:83
 msgid "Borderless Fullscreen"
 msgstr "테두리 없는 전체화면"
 
-#: ../Scripts/OptionsMenu.gd:78
+#: ../Scripts/OptionsMenu.gd:84
 msgid "Fullscreen"
 msgstr "전체화면"
 
-#: ../Scripts/OptionsMenu.gd:83
+#: ../Scripts/OptionsMenu.gd:89
 msgid "High"
 msgstr "높은"
 
-#: ../Scripts/OptionsMenu.gd:84
+#: ../Scripts/OptionsMenu.gd:90
 msgid "Very High"
 msgstr "매우 높음"
 
-#: ../Scripts/OptionsMenu.gd:85
+#: ../Scripts/OptionsMenu.gd:91
 msgid "Ultra"
 msgstr "최고의"
 
-#: ../Scripts/OptionsMenu.gd:87
+#: ../Scripts/OptionsMenu.gd:93
 msgid "Small"
 msgstr "작은"
 
-#: ../Scripts/OptionsMenu.gd:89
+#: ../Scripts/OptionsMenu.gd:95
 msgid "Large"
 msgstr "큰"
 

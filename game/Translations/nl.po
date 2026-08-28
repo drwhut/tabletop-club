@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2025-05-19 09:02+0000\n"
+"POT-Creation-Date: 2025-10-12 16:36+0100\n"
+"PO-Revision-Date: 2026-03-14 10:09+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/tabletop-club/game/"
 "nl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
@@ -41,7 +41,7 @@ msgstr "Bezig met laden…"
 msgid "Singleplayer"
 msgstr "Eén speler"
 
-#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:158
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
 msgstr "Meerdere spelers"
@@ -50,7 +50,7 @@ msgstr "Meerdere spelers"
 msgid "Options"
 msgstr "Instellingen"
 
-#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:315
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
 msgstr "Met dank aan"
 
@@ -58,7 +58,7 @@ msgstr "Met dank aan"
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:340
+#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
 msgstr "Importlogboek"
 
@@ -82,44 +82,44 @@ msgstr "Documentatie"
 msgid "Community"
 msgstr "Gemeenschap"
 
-#: ../Scenes/MainMenu.tscn:142
+#: ../Scenes/MainMenu.tscn:143
 msgid "Donate"
 msgstr "Doneren"
 
-#: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
+#: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
 msgstr "Informatie"
 
-#: ../Scenes/MainMenu.tscn:176
+#: ../Scenes/MainMenu.tscn:177
 msgid "Host Game"
 msgstr "Spel organiseren"
 
-#: ../Scenes/MainMenu.tscn:182
+#: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr ""
 "Maak een ruimte aan waar je online-spellen met je vrienden kunt spelen."
 
-#: ../Scenes/MainMenu.tscn:194 ../Scenes/MainMenu.tscn:241
+#: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
 msgstr "Deelnemen aan spel"
 
-#: ../Scenes/MainMenu.tscn:200
+#: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
 msgstr "Voer de kamercode in om mee te spelen."
 
-#: ../Scenes/MainMenu.tscn:206
+#: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
 msgstr "Kamercode invoeren"
 
-#: ../Scenes/MainMenu.tscn:226
+#: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
 msgstr "Kamercode:"
 
-#: ../Scenes/MainMenu.tscn:235
+#: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
 msgstr "ABCD"
 
-#: ../Scenes/MainMenu.tscn:333
+#: ../Scenes/MainMenu.tscn:334
 msgid "Error"
 msgstr "Foutmelding"
 
@@ -325,7 +325,7 @@ msgstr "Automatisch opslaan, elke"
 msgid "Used to set how often autosaves are created."
 msgstr "Geef aan hoe vaak een spel automatisch dient te worden opgeslagen."
 
-#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:72
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:78
 msgid "5 minutes"
 msgstr "5 minuten"
 
@@ -581,7 +581,7 @@ msgid "Changes the size of the text in the chat box."
 msgstr "Pas de tekstgrootte van het chatvenster aan."
 
 #: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
-#: ../Scripts/OptionsMenu.gd:82
+#: ../Scripts/OptionsMenu.gd:88
 msgid "Medium"
 msgstr "Gemiddeld"
 
@@ -616,7 +616,7 @@ msgstr "Venstermodus"
 msgid "Sets the mode in which the game window is displayed."
 msgstr "Stel de venstermodus van een spel in."
 
-#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:76
+#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:82
 msgid "Windowed"
 msgstr "Venster"
 
@@ -641,7 +641,7 @@ msgid "Multisample Anti-Aliasing (MSAA)"
 msgstr "Anti-kartelvorming (MSAA)"
 
 #: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
-#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:80
+#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:86
 msgid "None"
 msgstr "Geen"
 
@@ -653,7 +653,7 @@ msgstr "Screen Space Ambient Occlusion (SSAO)"
 msgid "Skybox Radiance Detail"
 msgstr "Hoekstraal van skybox"
 
-#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:81
+#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:87
 msgid "Low"
 msgstr "Laag"
 
@@ -1246,58 +1246,74 @@ msgid "Translators"
 msgstr "Vertalers"
 
 #: ../Scripts/MainMenu.gd:106
+msgid "Bulgarian"
+msgstr "Bulgaars"
+
+#: ../Scripts/MainMenu.gd:107
 msgid "Chinese"
 msgstr "Chinees"
 
-#: ../Scripts/MainMenu.gd:107
+#: ../Scripts/MainMenu.gd:108
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: ../Scripts/MainMenu.gd:108
+#: ../Scripts/MainMenu.gd:109
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: ../Scripts/MainMenu.gd:109
+#: ../Scripts/MainMenu.gd:110
 msgid "French"
 msgstr "Frans"
 
-#: ../Scripts/MainMenu.gd:110
+#: ../Scripts/MainMenu.gd:111
 msgid "German"
 msgstr "Duits"
 
-#: ../Scripts/MainMenu.gd:111
+#: ../Scripts/MainMenu.gd:112
+msgid "Hungarian"
+msgstr "Hongaars"
+
+#: ../Scripts/MainMenu.gd:113
 msgid "Indonesian"
 msgstr "Indonesisch"
 
-#: ../Scripts/MainMenu.gd:112
+#: ../Scripts/MainMenu.gd:114
 msgid "Italian"
 msgstr "Italiaans"
 
-#: ../Scripts/MainMenu.gd:113
+#: ../Scripts/MainMenu.gd:115
+msgid "Korean"
+msgstr "Koreaans"
+
+#: ../Scripts/MainMenu.gd:116
 msgid "Norwegian"
 msgstr "Noors"
 
-#: ../Scripts/MainMenu.gd:114
+#: ../Scripts/MainMenu.gd:117
 msgid "Polish"
 msgstr "Pools"
 
-#: ../Scripts/MainMenu.gd:115
+#: ../Scripts/MainMenu.gd:118
 msgid "Portuguese"
 msgstr "Portugees"
 
-#: ../Scripts/MainMenu.gd:116
+#: ../Scripts/MainMenu.gd:119
 msgid "Russian"
 msgstr "Russisch"
 
-#: ../Scripts/MainMenu.gd:117
+#: ../Scripts/MainMenu.gd:120
 msgid "Spanish"
 msgstr "Spaans"
 
-#: ../Scripts/MainMenu.gd:218
+#: ../Scripts/MainMenu.gd:121
+msgid "Tamil"
+msgstr "Tamil"
+
+#: ../Scripts/MainMenu.gd:222
 msgid "Room code must be four characters long!"
 msgstr "De kamercode dient minimaal vier tekens te bevatten!"
 
-#: ../Scripts/MainMenu.gd:223
+#: ../Scripts/MainMenu.gd:227
 msgid "Invalid room code!"
 msgstr "Ongeldige kamercode!"
 
@@ -1305,51 +1321,51 @@ msgstr "Ongeldige kamercode!"
 msgid "System Default"
 msgstr "Systeemstandaard"
 
-#: ../Scripts/OptionsMenu.gd:69
+#: ../Scripts/OptionsMenu.gd:75
 msgid "Never"
 msgstr "Nooit"
 
-#: ../Scripts/OptionsMenu.gd:70
+#: ../Scripts/OptionsMenu.gd:76
 msgid "30 seconds"
 msgstr "30 seconden"
 
-#: ../Scripts/OptionsMenu.gd:71
+#: ../Scripts/OptionsMenu.gd:77
 msgid "1 minute"
 msgstr "1 minuut"
 
-#: ../Scripts/OptionsMenu.gd:73
+#: ../Scripts/OptionsMenu.gd:79
 msgid "10 minutes"
 msgstr "10 minuten"
 
-#: ../Scripts/OptionsMenu.gd:74
+#: ../Scripts/OptionsMenu.gd:80
 msgid "30 minutes"
 msgstr "30 minuten"
 
-#: ../Scripts/OptionsMenu.gd:77
+#: ../Scripts/OptionsMenu.gd:83
 msgid "Borderless Fullscreen"
 msgstr "Naadloze schermvullende weergave"
 
-#: ../Scripts/OptionsMenu.gd:78
+#: ../Scripts/OptionsMenu.gd:84
 msgid "Fullscreen"
 msgstr "Schermvullende weergave"
 
-#: ../Scripts/OptionsMenu.gd:83
+#: ../Scripts/OptionsMenu.gd:89
 msgid "High"
 msgstr "Hoog"
 
-#: ../Scripts/OptionsMenu.gd:84
+#: ../Scripts/OptionsMenu.gd:90
 msgid "Very High"
 msgstr "Erg hoog"
 
-#: ../Scripts/OptionsMenu.gd:85
+#: ../Scripts/OptionsMenu.gd:91
 msgid "Ultra"
 msgstr "Ultra"
 
-#: ../Scripts/OptionsMenu.gd:87
+#: ../Scripts/OptionsMenu.gd:93
 msgid "Small"
 msgstr "Klein"
 
-#: ../Scripts/OptionsMenu.gd:89
+#: ../Scripts/OptionsMenu.gd:95
 msgid "Large"
 msgstr "Groot"
 

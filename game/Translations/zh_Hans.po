@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-04 13:50+0100\n"
+"POT-Creation-Date: 2025-10-12 16:36+0100\n"
 "PO-Revision-Date: 2025-04-03 11:43+0000\n"
 "Last-Translator: Luoyu <rainluoyu@outlook.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -41,7 +41,7 @@ msgstr "加载中..."
 msgid "Singleplayer"
 msgstr "单人模式"
 
-#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:158
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
 msgid "Multiplayer"
 msgstr "多人模式"
@@ -50,7 +50,7 @@ msgstr "多人模式"
 msgid "Options"
 msgstr "选项"
 
-#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:315
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
 msgstr "鸣谢"
 
@@ -58,7 +58,7 @@ msgstr "鸣谢"
 msgid "Quit"
 msgstr "退出"
 
-#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:340
+#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
 msgstr "日志导入"
 
@@ -82,43 +82,43 @@ msgstr "文档"
 msgid "Community"
 msgstr "社区"
 
-#: ../Scenes/MainMenu.tscn:142
+#: ../Scenes/MainMenu.tscn:143
 msgid "Donate"
 msgstr "捐赠"
 
-#: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
+#: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
 msgstr "信息"
 
-#: ../Scenes/MainMenu.tscn:176
+#: ../Scenes/MainMenu.tscn:177
 msgid "Host Game"
 msgstr "主机游戏"
 
-#: ../Scenes/MainMenu.tscn:182
+#: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr "创建一个新的房间和线上好友一起游玩。"
 
-#: ../Scenes/MainMenu.tscn:194 ../Scenes/MainMenu.tscn:241
+#: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
 msgstr "加入游戏"
 
-#: ../Scenes/MainMenu.tscn:200
+#: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
 msgstr "通过房间号加入好友的房间。"
 
-#: ../Scenes/MainMenu.tscn:206
+#: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
 msgstr "输入房间号"
 
-#: ../Scenes/MainMenu.tscn:226
+#: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
 msgstr "房间号："
 
-#: ../Scenes/MainMenu.tscn:235
+#: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
 msgstr "ABCD"
 
-#: ../Scenes/MainMenu.tscn:333
+#: ../Scenes/MainMenu.tscn:334
 msgid "Error"
 msgstr "错误"
 
@@ -311,7 +311,7 @@ msgstr "自动保存间隔"
 msgid "Used to set how often autosaves are created."
 msgstr "设置自动保存的频率。"
 
-#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:72
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:78
 msgid "5 minutes"
 msgstr "5 分钟"
 
@@ -562,7 +562,7 @@ msgid "Changes the size of the text in the chat box."
 msgstr "改变聊天框的字体尺寸。"
 
 #: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
-#: ../Scripts/OptionsMenu.gd:82
+#: ../Scripts/OptionsMenu.gd:88
 msgid "Medium"
 msgstr "中号"
 
@@ -597,7 +597,7 @@ msgstr "显示模式"
 msgid "Sets the mode in which the game window is displayed."
 msgstr "设置窗口的显示模式。"
 
-#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:76
+#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:82
 msgid "Windowed"
 msgstr "窗口"
 
@@ -622,7 +622,7 @@ msgid "Multisample Anti-Aliasing (MSAA)"
 msgstr "多重采样抗锯齿（MSAA）"
 
 #: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
-#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:80
+#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:86
 msgid "None"
 msgstr "无"
 
@@ -634,7 +634,7 @@ msgstr "屏幕空间环境遮挡（SSAO）"
 msgid "Skybox Radiance Detail"
 msgstr "天空盒辐射细节"
 
-#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:81
+#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:87
 msgid "Low"
 msgstr "低"
 
@@ -1219,58 +1219,74 @@ msgid "Translators"
 msgstr "译者"
 
 #: ../Scripts/MainMenu.gd:106
+msgid "Bulgarian"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:107
 msgid "Chinese"
 msgstr "中文"
 
-#: ../Scripts/MainMenu.gd:107
+#: ../Scripts/MainMenu.gd:108
 msgid "Dutch"
 msgstr "德语 Dutch"
 
-#: ../Scripts/MainMenu.gd:108
+#: ../Scripts/MainMenu.gd:109
 msgid "Esperanto"
 msgstr "世界语 Esperanto"
 
-#: ../Scripts/MainMenu.gd:109
+#: ../Scripts/MainMenu.gd:110
 msgid "French"
 msgstr "法语 French"
 
-#: ../Scripts/MainMenu.gd:110
+#: ../Scripts/MainMenu.gd:111
 msgid "German"
 msgstr "德语 German"
 
-#: ../Scripts/MainMenu.gd:111
+#: ../Scripts/MainMenu.gd:112
+msgid "Hungarian"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:113
 msgid "Indonesian"
 msgstr "印度尼西亚语"
 
-#: ../Scripts/MainMenu.gd:112
+#: ../Scripts/MainMenu.gd:114
 msgid "Italian"
 msgstr "意大利语 Italian"
 
-#: ../Scripts/MainMenu.gd:113
+#: ../Scripts/MainMenu.gd:115
+msgid "Korean"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:116
 msgid "Norwegian"
 msgstr "挪威语"
 
-#: ../Scripts/MainMenu.gd:114
+#: ../Scripts/MainMenu.gd:117
 msgid "Polish"
 msgstr "波兰语"
 
-#: ../Scripts/MainMenu.gd:115
+#: ../Scripts/MainMenu.gd:118
 msgid "Portuguese"
 msgstr "葡萄牙语 Portuguese"
 
-#: ../Scripts/MainMenu.gd:116
+#: ../Scripts/MainMenu.gd:119
 msgid "Russian"
 msgstr "俄语 Russian"
 
-#: ../Scripts/MainMenu.gd:117
+#: ../Scripts/MainMenu.gd:120
 msgid "Spanish"
 msgstr "西班牙语 Spanish"
 
-#: ../Scripts/MainMenu.gd:218
+#: ../Scripts/MainMenu.gd:121
+msgid "Tamil"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:222
 msgid "Room code must be four characters long!"
 msgstr "房间号必须是四个字母！"
 
-#: ../Scripts/MainMenu.gd:223
+#: ../Scripts/MainMenu.gd:227
 msgid "Invalid room code!"
 msgstr "无效房间号！"
 
@@ -1278,51 +1294,51 @@ msgstr "无效房间号！"
 msgid "System Default"
 msgstr "系统默认"
 
-#: ../Scripts/OptionsMenu.gd:69
+#: ../Scripts/OptionsMenu.gd:75
 msgid "Never"
 msgstr "从不"
 
-#: ../Scripts/OptionsMenu.gd:70
+#: ../Scripts/OptionsMenu.gd:76
 msgid "30 seconds"
 msgstr "30 秒"
 
-#: ../Scripts/OptionsMenu.gd:71
+#: ../Scripts/OptionsMenu.gd:77
 msgid "1 minute"
 msgstr "1 分钟"
 
-#: ../Scripts/OptionsMenu.gd:73
+#: ../Scripts/OptionsMenu.gd:79
 msgid "10 minutes"
 msgstr "10 分钟"
 
-#: ../Scripts/OptionsMenu.gd:74
+#: ../Scripts/OptionsMenu.gd:80
 msgid "30 minutes"
 msgstr "30 分钟"
 
-#: ../Scripts/OptionsMenu.gd:77
+#: ../Scripts/OptionsMenu.gd:83
 msgid "Borderless Fullscreen"
 msgstr "无边框窗口"
 
-#: ../Scripts/OptionsMenu.gd:78
+#: ../Scripts/OptionsMenu.gd:84
 msgid "Fullscreen"
 msgstr "全屏幕"
 
-#: ../Scripts/OptionsMenu.gd:83
+#: ../Scripts/OptionsMenu.gd:89
 msgid "High"
 msgstr "高"
 
-#: ../Scripts/OptionsMenu.gd:84
+#: ../Scripts/OptionsMenu.gd:90
 msgid "Very High"
 msgstr "非常高"
 
-#: ../Scripts/OptionsMenu.gd:85
+#: ../Scripts/OptionsMenu.gd:91
 msgid "Ultra"
 msgstr "极高"
 
-#: ../Scripts/OptionsMenu.gd:87
+#: ../Scripts/OptionsMenu.gd:93
 msgid "Small"
 msgstr "小"
 
-#: ../Scripts/OptionsMenu.gd:89
+#: ../Scripts/OptionsMenu.gd:95
 msgid "Large"
 msgstr "大"
 

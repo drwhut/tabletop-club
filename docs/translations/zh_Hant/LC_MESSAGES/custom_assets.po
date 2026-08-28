@@ -826,8 +826,8 @@ msgid ""
 "See :ref:`translating-the-project` for more information."
 msgstr ""
 "如果你要翻譯的語言不在這個列表中，很遺憾你將無法在遊戲中看到結果。但是，你可"
-"以幫助翻譯整個專案，以便你的語言得到支援！有關更多資訊，請參閱 :ref:"
-"`translating-the-project`。"
+"以幫助翻譯整個專案，以便你的語言得到支援！有關更多資訊，請參"
+"閱 :ref:`translating-the-project`。"
 
 #: ../../custom_assets/asset_packs/asset_pack_structure.rst:254
 msgid ""
@@ -933,9 +933,9 @@ msgid ""
 "Containers are special objects that can hold an unlimited amount of other "
 "objects inside themselves (including other containers)! Containers are "
 "opaque, meaning you cannot see the objects physically inside of them, but "
-"you can peek inside a container by right-clicking it and pressing :guilabel:"
-"`Peek inside`, which will open a pop-up showing the contents of the "
-"container."
+"you can peek inside a container by right-clicking it and "
+"pressing :guilabel:`Peek inside`, which will open a pop-up showing the "
+"contents of the container."
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:93
@@ -1039,8 +1039,8 @@ msgstr "聲音"
 
 #: ../../custom_assets/asset_packs/asset_types.rst:203
 msgid ""
-"Sounds can be played through either a :ref:`object-type-speaker` or a :ref:"
-"`object-type-timer`."
+"Sounds can be played through either a :ref:`object-type-speaker` or "
+"a :ref:`object-type-timer`."
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:210
@@ -1082,9 +1082,10 @@ msgstr ""
 #: ../../custom_assets/asset_packs/asset_types.rst:238
 msgid ""
 "Skybox textures in Tabletop Club use equirectangular mappings, as opposed to "
-"six-image cube mappings. Godot recommends using `this tool <https://danilw."
-"github.io/GLSL-howto/cubemap_to_panorama_js/cubemap_to_panorama.html>`_ to "
-"convert cube-mapped skyboxes to equirectangular skyboxes."
+"six-image cube mappings. Godot recommends using `this tool <https://"
+"danilw.github.io/GLSL-howto/cubemap_to_panorama_js/"
+"cubemap_to_panorama.html>`_ to convert cube-mapped skyboxes to "
+"equirectangular skyboxes."
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:243
@@ -1154,8 +1155,8 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:310
 msgid ""
-"A template is a pre-made page for the in-game notebook. It can either be an :"
-"ref:`file-type-image` or a text file (``.txt``)."
+"A template is a pre-made page for the in-game notebook. It can either be "
+"an :ref:`file-type-image` or a text file (``.txt``)."
 msgstr ""
 
 #: ../../custom_assets/asset_packs/asset_types.rst:313
@@ -1213,8 +1214,8 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:39
 msgid ""
-"Unlike other objects, cards use two images, one for each face. See :ref:"
-"`object-type-card` for more information."
+"Unlike other objects, cards use two images, one for each face. "
+"See :ref:`object-type-card` for more information."
 msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:43
@@ -1254,8 +1255,8 @@ msgstr ""
 #: ../../custom_assets/asset_packs/file_types.rst:67
 msgid ""
 "For convenience, the game will automatically set the centre-of-mass (COM) of "
-"the object for you when it is imported. However, you can use the :ref:"
-"`config-cfg` file to decide how the COM is adjusted."
+"the object for you when it is imported. However, you can use "
+"the :ref:`config-cfg` file to decide how the COM is adjusted."
 msgstr ""
 
 #: ../../custom_assets/asset_packs/file_types.rst:71
@@ -1397,9 +1398,10 @@ msgstr ""
 #: ../../custom_assets/asset_packs/index.rst:12
 msgid ""
 "If you just want to download community-made asset packs and install them, "
-"feel free to have a look at the `official forum <https://forum.tabletopclub."
-"net/c/asset-packs>`_. Instructions for installing asset packs can be found "
-"`here <https://forum.tabletopclub.net/t/about-the-asset-packs-category/13>`_."
+"feel free to have a look at the `official forum <https://"
+"forum.tabletopclub.net/c/asset-packs>`_. Instructions for installing asset "
+"packs can be found `here <https://forum.tabletopclub.net/t/about-the-asset-"
+"packs-category/13>`_."
 msgstr ""
 
 #: ../../custom_assets/asset_packs/index.rst:17
@@ -1410,8 +1412,8 @@ msgstr ""
 
 #: ../../custom_assets/asset_packs/index.rst:20
 msgid ""
-"For easy-to-follow tutorials on how to make assets and asset packs, see :ref:"
-"`custom-asset-tutorials`."
+"For easy-to-follow tutorials on how to make assets and asset packs, "
+"see :ref:`custom-asset-tutorials`."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:4
@@ -1444,8 +1446,8 @@ msgid ""
 "If you do not have a 3D-modelling application installed, then I very highly "
 "recommend Blender in general, not only for this tutorial, but because it is "
 "free, and it is (in my humble opinion) one of the best open-source "
-"applications ever made! You can download it `on their website <https://www."
-"blender.org/download/>`_."
+"applications ever made! You can download it `on their website <https://"
+"www.blender.org/download/>`_."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:29
@@ -1456,8 +1458,8 @@ msgstr ""
 msgid ""
 "For the start of this tutorial, we're going to assume you have a 3D model in "
 "Blender already. If this is not the case, you can either create one, or you "
-"can import a model from the game's ``assets`` folder by going to :guilabel:"
-"`File` > :guilabel:`Import`!"
+"can import a model from the game's ``assets`` folder by going "
+"to :guilabel:`File` > :guilabel:`Import`!"
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:38
@@ -1485,8 +1487,8 @@ msgstr ""
 #: ../../custom_assets/tutorials/add_3d_models.rst:49
 msgid ""
 "Pressing :guilabel:`S`, then moving the mouse of typing a number to adjust "
-"the size. You can then also press :guilabel:`X`, :guilabel:`Y` or :guilabel:"
-"`Z` to set the scale of the object on a specific axis."
+"the size. You can then also press :guilabel:`X`, :guilabel:`Y` "
+"or :guilabel:`Z` to set the scale of the object on a specific axis."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:53
@@ -1520,10 +1522,10 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:75
 msgid ""
-"To position the table, select it in object mode, then you can use :guilabel:"
-"`G`, then either :guilabel:`X`, :guilabel:`Y` or :guilabel:`Z` before moving "
-"the mouse to move it in that respective axis. You'll want to position it "
-"with these points in mind:"
+"To position the table, select it in object mode, then you can "
+"use :guilabel:`G`, then either :guilabel:`X`, :guilabel:`Y` or :guilabel:`Z` "
+"before moving the mouse to move it in that respective axis. You'll want to "
+"position it with these points in mind:"
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:80
@@ -1541,18 +1543,20 @@ msgstr "匯出模型"
 #: ../../custom_assets/tutorials/add_3d_models.rst:87
 msgid ""
 "When exporting models, there are multiple different formats to choose from. "
-"The recommended format for Tabletop Club is glTF 2.0, with both binary (``."
-"glb``) and seperate (``.gltf``) formats supported. However, it is not the "
-"only supported option - see :ref:`file-type-3d` for all supported formats."
+"The recommended format for Tabletop Club is glTF 2.0, with both binary "
+"(``.glb``) and seperate (``.gltf``) formats supported. However, it is not "
+"the only supported option - see :ref:`file-type-3d` for all supported "
+"formats."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:92
 msgid ""
-"To export the model, click on :guilabel:`File` > :guilabel:`Export` > :"
-"guilabel:`glTF 2.0 (.glb/.gltf)`, and in the dialog, go to your asset pack "
-"folder (if you do not have one, see :ref:`tutorial-creating-asset-pack`). "
-"From here, you have a choice as to what folder you can create and put the "
-"exported model in, depending on what functionality the object should have:"
+"To export the model, click on :guilabel:`File` > :guilabel:`Export` "
+"> :guilabel:`glTF 2.0 (.glb/.gltf)`, and in the dialog, go to your asset "
+"pack folder (if you do not have one, see :ref:`tutorial-creating-asset-"
+"pack`). From here, you have a choice as to what folder you can create and "
+"put the exported model in, depending on what functionality the object should "
+"have:"
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:98
@@ -1606,8 +1610,8 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_3d_models.rst:118
 msgid ""
-"If you want to configure your new objects, feel free to have a look at :ref:"
-"`file-type-3d` and :ref:`config-cfg`."
+"If you want to configure your new objects, feel free to have a look "
+"at :ref:`file-type-3d` and :ref:`config-cfg`."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_audio_tracks.rst:2
@@ -1647,8 +1651,8 @@ msgstr ""
 msgid ""
 "This tutorial will teach you how to add images to an asset pack to make "
 "cards and tokens, which are in-game objects that can stack on top of each "
-"other. If you wish to add another kind of object to the game, see :ref:"
-"`tutorial-adding-3d-models`."
+"other. If you wish to add another kind of object to the game, "
+"see :ref:`tutorial-adding-3d-models`."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:13
@@ -1741,10 +1745,10 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:91
 msgid ""
-"We can tell the game what size the object should actually be by creating a :"
-"ref:`config-cfg` file next to our images in the asset folder. Create a file "
-"with this name in your file manager, then open it with a text editor of your "
-"choice! Here are a few examples of how to set the size of your objects:"
+"We can tell the game what size the object should actually be by creating "
+"a :ref:`config-cfg` file next to our images in the asset folder. Create a "
+"file with this name in your file manager, then open it with a text editor of "
+"your choice! Here are a few examples of how to set the size of your objects:"
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:119
@@ -1789,8 +1793,8 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:163
 msgid ""
-"If you want to further configure your objects, see :ref:`object-type-card`, :"
-"ref:`object-type-token`, and :ref:`config-cfg`."
+"If you want to further configure your objects, see :ref:`object-type-"
+"card`, :ref:`object-type-token`, and :ref:`config-cfg`."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_cards_tokens.rst:166
@@ -1919,8 +1923,8 @@ msgstr ""
 #: ../../custom_assets/tutorials/add_notebook_templates.rst:121
 msgid ""
 "Now you know how to create templates for the notebook! If you want to know "
-"more about templates, and how to customise textboxes further, see :ref:"
-"`asset-type-template`."
+"more about templates, and how to customise textboxes further, "
+"see :ref:`asset-type-template`."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_save_files.rst:2
@@ -1965,8 +1969,8 @@ msgstr ""
 #: ../../custom_assets/tutorials/add_save_files.rst:41
 msgid ""
 "Once the save file has been imported, you can then load it in-game by "
-"clicking on :guilabel:`Games`, selecting it from the menu, and clicking :"
-"guilabel:`Load`."
+"clicking on :guilabel:`Games`, selecting it from the menu, and "
+"clicking :guilabel:`Load`."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_save_files.rst:46
@@ -1996,9 +2000,9 @@ msgstr ""
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:13
 msgid ""
-"Once the skybox has been imported, you can go in-game and press :guilabel:"
-"`Room` > :guilabel:`Skybox` > :guilabel:`Change skybox`, select the skybox "
-"from your asset pack, then click :guilabel:`Apply`."
+"Once the skybox has been imported, you can go in-game and "
+"press :guilabel:`Room` > :guilabel:`Skybox` > :guilabel:`Change skybox`, "
+"select the skybox from your asset pack, then click :guilabel:`Apply`."
 msgstr ""
 
 #: ../../custom_assets/tutorials/add_skyboxes.rst:19
@@ -2051,9 +2055,9 @@ msgstr ""
 #: ../../custom_assets/tutorials/create_asset_pack.rst:32
 msgid ""
 "Once you have added what you want to your asset pack, you can either restart "
-"the game, or go to :guilabel:`Options` > :guilabel:`General`, and click :"
-"guilabel:`Reimport Assets` to have the game import everything you've added "
-"so you can use it in-game!"
+"the game, or go to :guilabel:`Options` > :guilabel:`General`, and "
+"click :guilabel:`Reimport Assets` to have the game import everything you've "
+"added so you can use it in-game!"
 msgstr ""
 
 #: ../../custom_assets/tutorials/index.rst:5

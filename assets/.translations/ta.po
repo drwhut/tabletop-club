@@ -1,0 +1,1388 @@
+# Tabletop Club Default Asset Pack Translation Template.
+# Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2023 Tabletop Club contributors (see game/CREDITS.tres).
+# This file is distributed under the same license as the Tabletop Club package.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-05-09 09:03\n"
+"PO-Revision-Date: 2025-07-10 08:01+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/tabletop-club/"
+"default-asset-pack/ta/>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.13-dev\n"
+"Generated-By: extract_pot.py\n"
+
+#: ../TabletopClub/boards/Chess_Board:1
+msgid "Chess Board"
+msgstr "செச் போர்டு"
+
+#: ../TabletopClub/boards/Chess_Board:2
+msgid "An 8x8 Chess board."
+msgstr "ஒரு 8x8 செச் போர்டு."
+
+#: ../TabletopClub/boards/Go_Board_(Large):1
+msgid "Go Board (Large)"
+msgstr "கோ போர்டு (பெரியது)"
+
+#: ../TabletopClub/boards/Go_Board_(Large):2
+msgid "A 19x19 Goban."
+msgstr "ஒரு 19x19 கோபன்."
+
+#: ../TabletopClub/boards/Go_Board_(Small):1
+msgid "Go Board (Small)"
+msgstr "கோ போர்டு (சிறியது)"
+
+#: ../TabletopClub/boards/Go_Board_(Small):2
+msgid "A 13x13 and 9x9 Goban."
+msgstr "ஒரு 13x13 மற்றும் 9x9 கோபன்."
+
+#: ../TabletopClub/cards/52-Card_Deck:1
+msgid "52-Card Deck"
+msgstr "52-கார்டு டெக்"
+
+#: ../TabletopClub/cards/52-Card_Deck:2
+msgid "A deck of poker-sized French-suited playing cards excluding jokers."
+msgstr ""
+"சோக்கர்களைத் தவிர்த்து போக்கர் அளவிலான பிரஞ்சு-பொருத்தமான விளையாட்டு அட்டைகளின் ஒரு தளம்."
+
+#: ../TabletopClub/cards/Ace_of_Clubs:1
+msgid "Ace of Clubs"
+msgstr "கிளப்புகளின் ஏச்"
+
+#: ../TabletopClub/cards/Ace_of_Clubs:2 ../TabletopClub/cards/Ace_of_Diamonds:2
+#: ../TabletopClub/cards/Ace_of_Hearts:2 ../TabletopClub/cards/Ace_of_Spades:2
+#: ../TabletopClub/cards/Eight_of_Clubs:2
+#: ../TabletopClub/cards/Eight_of_Diamonds:2
+#: ../TabletopClub/cards/Eight_of_Hearts:2
+#: ../TabletopClub/cards/Eight_of_Spades:2
+#: ../TabletopClub/cards/Five_of_Clubs:2
+#: ../TabletopClub/cards/Five_of_Diamonds:2
+#: ../TabletopClub/cards/Five_of_Hearts:2
+#: ../TabletopClub/cards/Five_of_Spades:2 ../TabletopClub/cards/Four_of_Clubs:2
+#: ../TabletopClub/cards/Four_of_Diamonds:2
+#: ../TabletopClub/cards/Four_of_Hearts:2
+#: ../TabletopClub/cards/Four_of_Spades:2 ../TabletopClub/cards/Jack_of_Clubs:2
+#: ../TabletopClub/cards/Jack_of_Diamonds:2
+#: ../TabletopClub/cards/Jack_of_Hearts:2
+#: ../TabletopClub/cards/Jack_of_Spades:2 ../TabletopClub/cards/Joker_Black:2
+#: ../TabletopClub/cards/Joker_Red:2 ../TabletopClub/cards/King_of_Clubs:2
+#: ../TabletopClub/cards/King_of_Diamonds:2
+#: ../TabletopClub/cards/King_of_Hearts:2
+#: ../TabletopClub/cards/King_of_Spades:2 ../TabletopClub/cards/Nine_of_Clubs:2
+#: ../TabletopClub/cards/Nine_of_Diamonds:2
+#: ../TabletopClub/cards/Nine_of_Hearts:2
+#: ../TabletopClub/cards/Nine_of_Spades:2
+#: ../TabletopClub/cards/Queen_of_Clubs:2
+#: ../TabletopClub/cards/Queen_of_Diamonds:2
+#: ../TabletopClub/cards/Queen_of_Hearts:2
+#: ../TabletopClub/cards/Queen_of_Spades:2
+#: ../TabletopClub/cards/Seven_of_Clubs:2
+#: ../TabletopClub/cards/Seven_of_Diamonds:2
+#: ../TabletopClub/cards/Seven_of_Hearts:2
+#: ../TabletopClub/cards/Seven_of_Spades:2 ../TabletopClub/cards/Six_of_Clubs:2
+#: ../TabletopClub/cards/Six_of_Diamonds:2
+#: ../TabletopClub/cards/Six_of_Hearts:2 ../TabletopClub/cards/Six_of_Spades:2
+#: ../TabletopClub/cards/Ten_of_Clubs:2 ../TabletopClub/cards/Ten_of_Diamonds:2
+#: ../TabletopClub/cards/Ten_of_Hearts:2 ../TabletopClub/cards/Ten_of_Spades:2
+#: ../TabletopClub/cards/Three_of_Clubs:2
+#: ../TabletopClub/cards/Three_of_Diamonds:2
+#: ../TabletopClub/cards/Three_of_Hearts:2
+#: ../TabletopClub/cards/Three_of_Spades:2 ../TabletopClub/cards/Two_of_Clubs:2
+#: ../TabletopClub/cards/Two_of_Diamonds:2
+#: ../TabletopClub/cards/Two_of_Hearts:2 ../TabletopClub/cards/Two_of_Spades:2
+msgid "A poker-sized French-suited playing card."
+msgstr "ஒரு போக்கர் அளவிலான பிரஞ்சு-பொருத்தமான விளையாட்டு அட்டை."
+
+#: ../TabletopClub/cards/Ace_of_Diamonds:1
+msgid "Ace of Diamonds"
+msgstr "வைரங்களின் ஏச்"
+
+#: ../TabletopClub/cards/Ace_of_Hearts:1
+msgid "Ace of Hearts"
+msgstr "இதயங்களின் ஏச்"
+
+#: ../TabletopClub/cards/Ace_of_Spades:1
+msgid "Ace of Spades"
+msgstr "மண்வெட்டிகளின் ஏச்"
+
+#: ../TabletopClub/cards/Eight_of_Clubs:1
+msgid "Eight of Clubs"
+msgstr "எட்டு கிளப்புகள்"
+
+#: ../TabletopClub/cards/Eight_of_Diamonds:1
+msgid "Eight of Diamonds"
+msgstr "எட்டு வைரங்கள்"
+
+#: ../TabletopClub/cards/Eight_of_Hearts:1
+msgid "Eight of Hearts"
+msgstr "எட்டு இதயங்கள்"
+
+#: ../TabletopClub/cards/Eight_of_Spades:1
+msgid "Eight of Spades"
+msgstr "எட்டு மண்வெட்டி"
+
+#: ../TabletopClub/cards/Five_of_Clubs:1
+msgid "Five of Clubs"
+msgstr "ஐந்து கிளப்புகள்"
+
+#: ../TabletopClub/cards/Five_of_Diamonds:1
+msgid "Five of Diamonds"
+msgstr "ஐந்து வைரங்கள்"
+
+#: ../TabletopClub/cards/Five_of_Hearts:1
+msgid "Five of Hearts"
+msgstr "ஐந்து இதயங்கள்"
+
+#: ../TabletopClub/cards/Five_of_Spades:1
+msgid "Five of Spades"
+msgstr "ஐந்து மண்வெட்டி"
+
+#: ../TabletopClub/cards/Four_of_Clubs:1
+msgid "Four of Clubs"
+msgstr "நான்கு கிளப்புகள்"
+
+#: ../TabletopClub/cards/Four_of_Diamonds:1
+msgid "Four of Diamonds"
+msgstr "வைரங்கள் நான்கு"
+
+#: ../TabletopClub/cards/Four_of_Hearts:1
+msgid "Four of Hearts"
+msgstr "இதயங்கள் நான்கு"
+
+#: ../TabletopClub/cards/Four_of_Spades:1
+msgid "Four of Spades"
+msgstr "நான்கு மண்வெட்டி"
+
+#: ../TabletopClub/cards/Jack_of_Clubs:1
+msgid "Jack of Clubs"
+msgstr "கிளப்புகளின் சாக்"
+
+#: ../TabletopClub/cards/Jack_of_Diamonds:1
+msgid "Jack of Diamonds"
+msgstr "வைரங்களின் பலா"
+
+#: ../TabletopClub/cards/Jack_of_Hearts:1
+msgid "Jack of Hearts"
+msgstr "இதயங்களின் சாக்"
+
+#: ../TabletopClub/cards/Jack_of_Spades:1
+msgid "Jack of Spades"
+msgstr "மண்வெட்டிகளின் பலா"
+
+#: ../TabletopClub/cards/Joker_Black:1
+msgid "Joker Black"
+msgstr "சோக்கர் பிளாக்"
+
+#: ../TabletopClub/cards/Joker_Red:1
+msgid "Joker Red"
+msgstr "சோக்கர் சிவப்பு"
+
+#: ../TabletopClub/cards/King_of_Clubs:1
+msgid "King of Clubs"
+msgstr "கிளப்புகளின் கிங்"
+
+#: ../TabletopClub/cards/King_of_Diamonds:1
+msgid "King of Diamonds"
+msgstr "வைரங்களின் மன்னன்"
+
+#: ../TabletopClub/cards/King_of_Hearts:1
+msgid "King of Hearts"
+msgstr "இதயங்களின் மன்னன்"
+
+#: ../TabletopClub/cards/King_of_Spades:1
+msgid "King of Spades"
+msgstr "மண்வெட்டிகளின் மன்னன்"
+
+#: ../TabletopClub/cards/Nine_of_Clubs:1
+msgid "Nine of Clubs"
+msgstr "ஒன்பது கிளப்புகள்"
+
+#: ../TabletopClub/cards/Nine_of_Diamonds:1
+msgid "Nine of Diamonds"
+msgstr "ஒன்பது வைரங்கள்"
+
+#: ../TabletopClub/cards/Nine_of_Hearts:1
+msgid "Nine of Hearts"
+msgstr "ஒன்பது இதயங்கள்"
+
+#: ../TabletopClub/cards/Nine_of_Spades:1
+msgid "Nine of Spades"
+msgstr "மண்வெட்டிகளில் ஒன்பது"
+
+#: ../TabletopClub/cards/Queen_of_Clubs:1
+msgid "Queen of Clubs"
+msgstr "கிளப்புகளின் அரசி"
+
+#: ../TabletopClub/cards/Queen_of_Diamonds:1
+msgid "Queen of Diamonds"
+msgstr "வைரங்களின் அரசி"
+
+#: ../TabletopClub/cards/Queen_of_Hearts:1
+msgid "Queen of Hearts"
+msgstr "இதயங்களின் அரசி"
+
+#: ../TabletopClub/cards/Queen_of_Spades:1
+msgid "Queen of Spades"
+msgstr "மண்வெட்டி அரசி"
+
+#: ../TabletopClub/cards/Seer:1
+msgid "Seer"
+msgstr "பார்க்கர்"
+
+#: ../TabletopClub/cards/Seer:2
+msgid "Helps villagers by secretly inspecting someone's role every night."
+msgstr ""
+"ஒவ்வொரு இரவும் ஒருவரின் பாத்திரத்தை ரகசியமாக ஆய்வு செய்வதன் மூலம் கிராமவாசிகளுக்கு "
+"உதவுகிறது."
+
+#: ../TabletopClub/cards/Seven_of_Clubs:1
+msgid "Seven of Clubs"
+msgstr "ஏழு கிளப்புகள்"
+
+#: ../TabletopClub/cards/Seven_of_Diamonds:1
+msgid "Seven of Diamonds"
+msgstr "வைரங்களில் ஏழு"
+
+#: ../TabletopClub/cards/Seven_of_Hearts:1
+msgid "Seven of Hearts"
+msgstr "இதயங்கள் ஏழு"
+
+#: ../TabletopClub/cards/Seven_of_Spades:1
+msgid "Seven of Spades"
+msgstr "ஏழு மண்வெட்டி"
+
+#: ../TabletopClub/cards/Six_of_Clubs:1
+msgid "Six of Clubs"
+msgstr "ஆறு கிளப்புகள்"
+
+#: ../TabletopClub/cards/Six_of_Diamonds:1
+msgid "Six of Diamonds"
+msgstr "ஆறு வைரங்கள்"
+
+#: ../TabletopClub/cards/Six_of_Hearts:1
+msgid "Six of Hearts"
+msgstr "ஆறு இதயங்கள்"
+
+#: ../TabletopClub/cards/Six_of_Spades:1
+msgid "Six of Spades"
+msgstr "ஆறு மண்வெட்டி"
+
+#: ../TabletopClub/cards/Ten_of_Clubs:1
+msgid "Ten of Clubs"
+msgstr "பத்து கிளப்புகள்"
+
+#: ../TabletopClub/cards/Ten_of_Diamonds:1
+msgid "Ten of Diamonds"
+msgstr "வைரங்களின் பத்து"
+
+#: ../TabletopClub/cards/Ten_of_Hearts:1
+msgid "Ten of Hearts"
+msgstr "இதயங்களில் பத்து"
+
+#: ../TabletopClub/cards/Ten_of_Spades:1
+msgid "Ten of Spades"
+msgstr "மண்வெட்டி பத்து"
+
+#: ../TabletopClub/cards/Three_of_Clubs:1
+msgid "Three of Clubs"
+msgstr "மூன்று கிளப்புகள்"
+
+#: ../TabletopClub/cards/Three_of_Diamonds:1
+msgid "Three of Diamonds"
+msgstr "வைரங்கள் மூன்று"
+
+#: ../TabletopClub/cards/Three_of_Hearts:1
+msgid "Three of Hearts"
+msgstr "இதயங்கள் மூன்று"
+
+#: ../TabletopClub/cards/Three_of_Spades:1
+msgid "Three of Spades"
+msgstr "மூன்று மண்வெட்டி"
+
+#: ../TabletopClub/cards/Two_of_Clubs:1
+msgid "Two of Clubs"
+msgstr "இரண்டு கிளப்புகள்"
+
+#: ../TabletopClub/cards/Two_of_Diamonds:1
+msgid "Two of Diamonds"
+msgstr "வைரங்களில் இரண்டு"
+
+#: ../TabletopClub/cards/Two_of_Hearts:1
+msgid "Two of Hearts"
+msgstr "இதயங்களில் இரண்டு"
+
+#: ../TabletopClub/cards/Two_of_Spades:1
+msgid "Two of Spades"
+msgstr "இரண்டு மண்வெட்டி"
+
+#: ../TabletopClub/cards/Villager:1
+msgid "Villager"
+msgstr "கிராமவாசி"
+
+#: ../TabletopClub/cards/Villager:2
+msgid ""
+"Avoid being eaten by werewolves at night by voting against them during the "
+"day."
+msgstr ""
+"பகலில் அவர்களுக்கு எதிராக வாக்களிப்பதன் மூலம் இரவில் ஓநாய்களால் சாப்பிடுவதைத் தவிர்க்கவும்."
+
+#: ../TabletopClub/cards/Werewolf:1
+msgid "Werewolf"
+msgstr "வேர்வொல்ஃப்"
+
+#: ../TabletopClub/cards/Werewolf:2
+msgid ""
+"Decide who to feast upon every night with your pack, avoid suspision from "
+"villagers."
+msgstr ""
+"உங்கள் பேக் மூலம் ஒவ்வொரு இரவும் யார் விருந்து வைக்க வேண்டும் என்று முடிவு செய்யுங்கள், "
+"கிராமவாசிகளிடமிருந்து சந்தேகத்தை தவிர்க்கவும்."
+
+#: ../TabletopClub/containers/Pot:1
+msgid "Pot"
+msgstr "பானை"
+
+#: ../TabletopClub/containers/Purse:1
+msgid "Purse"
+msgstr "பர்ச்"
+
+#: ../TabletopClub/containers/Red_Cup:1
+msgid "Red Cup"
+msgstr "சிவப்பு கோப்பை"
+
+#: ../TabletopClub/dice/d4/d4_(Black):1
+msgid "d4 (Black)"
+msgstr "டி 4 (கருப்பு)"
+
+#: ../TabletopClub/dice/d4/d4_(Black):2 ../TabletopClub/dice/d4/d4_(Blue):2
+#: ../TabletopClub/dice/d4/d4_(Brown):2 ../TabletopClub/dice/d4/d4_(Cyan):2
+#: ../TabletopClub/dice/d4/d4_(Green):2 ../TabletopClub/dice/d4/d4_(Orange):2
+#: ../TabletopClub/dice/d4/d4_(Pink):2 ../TabletopClub/dice/d4/d4_(Purple):2
+#: ../TabletopClub/dice/d4/d4_(Red):2 ../TabletopClub/dice/d4/d4_(White):2
+#: ../TabletopClub/dice/d4/d4_(Yellow):2
+msgid "A 4-sided die."
+msgstr "4 பக்க இறப்பு."
+
+#: ../TabletopClub/dice/d4/d4_(Blue):1
+msgid "d4 (Blue)"
+msgstr "டி 4 (நீலம்)"
+
+#: ../TabletopClub/dice/d4/d4_(Brown):1
+msgid "d4 (Brown)"
+msgstr "டி 4 (பழுப்பு)"
+
+#: ../TabletopClub/dice/d4/d4_(Cyan):1
+msgid "d4 (Cyan)"
+msgstr "டி 4 (சியான்)"
+
+#: ../TabletopClub/dice/d4/d4_(Green):1
+msgid "d4 (Green)"
+msgstr "டி 4 (பச்சை)"
+
+#: ../TabletopClub/dice/d4/d4_(Orange):1
+msgid "d4 (Orange)"
+msgstr "டி 4 (ஆரஞ்சு)"
+
+#: ../TabletopClub/dice/d4/d4_(Pink):1
+msgid "d4 (Pink)"
+msgstr "டி 4 (இளஞ்சிவப்பு)"
+
+#: ../TabletopClub/dice/d4/d4_(Purple):1
+msgid "d4 (Purple)"
+msgstr "டி 4 (ஊதா)"
+
+#: ../TabletopClub/dice/d4/d4_(Red):1
+msgid "d4 (Red)"
+msgstr "டி 4 (சிவப்பு)"
+
+#: ../TabletopClub/dice/d4/d4_(White):1
+msgid "d4 (White)"
+msgstr "டி 4 (வெள்ளை)"
+
+#: ../TabletopClub/dice/d4/d4_(Yellow):1
+msgid "d4 (Yellow)"
+msgstr "டி 4 (மஞ்சள்)"
+
+#: ../TabletopClub/dice/d6/d6_(Black):1
+msgid "d6 (Black)"
+msgstr "டி 6 (கருப்பு)"
+
+#: ../TabletopClub/dice/d6/d6_(Black):2 ../TabletopClub/dice/d6/d6_(Blue):2
+#: ../TabletopClub/dice/d6/d6_(Brown):2 ../TabletopClub/dice/d6/d6_(Cyan):2
+#: ../TabletopClub/dice/d6/d6_(Green):2 ../TabletopClub/dice/d6/d6_(Orange):2
+#: ../TabletopClub/dice/d6/d6_(Pink):2 ../TabletopClub/dice/d6/d6_(Purple):2
+#: ../TabletopClub/dice/d6/d6_(Red):2
+#: ../TabletopClub/dice/d6/d6_(Traditional):2
+#: ../TabletopClub/dice/d6/d6_(White):2 ../TabletopClub/dice/d6/d6_(Yellow):2
+msgid "A 6-sided die."
+msgstr "6 பக்க இறப்பு."
+
+#: ../TabletopClub/dice/d6/d6_(Blue):1
+msgid "d6 (Blue)"
+msgstr "டி 6 (நீலம்)"
+
+#: ../TabletopClub/dice/d6/d6_(Brown):1
+msgid "d6 (Brown)"
+msgstr "டி 6 (பழுப்பு)"
+
+#: ../TabletopClub/dice/d6/d6_(Cyan):1
+msgid "d6 (Cyan)"
+msgstr "டி 6 (சியான்)"
+
+#: ../TabletopClub/dice/d6/d6_(Green):1
+msgid "d6 (Green)"
+msgstr "டி 6 (பச்சை)"
+
+#: ../TabletopClub/dice/d6/d6_(Orange):1
+msgid "d6 (Orange)"
+msgstr "டி 6 (ஆரஞ்சு)"
+
+#: ../TabletopClub/dice/d6/d6_(Pink):1
+msgid "d6 (Pink)"
+msgstr "டி 6 (இளஞ்சிவப்பு)"
+
+#: ../TabletopClub/dice/d6/d6_(Purple):1
+msgid "d6 (Purple)"
+msgstr "டி 6 (ஊதா)"
+
+#: ../TabletopClub/dice/d6/d6_(Red):1
+msgid "d6 (Red)"
+msgstr "டி 6 (சிவப்பு)"
+
+#: ../TabletopClub/dice/d6/d6_(Traditional):1
+msgid "d6 (Traditional)"
+msgstr "டி 6 (பாரம்பரிய)"
+
+#: ../TabletopClub/dice/d6/d6_(White):1
+msgid "d6 (White)"
+msgstr "டி 6 (வெள்ளை)"
+
+#: ../TabletopClub/dice/d6/d6_(Yellow):1
+msgid "d6 (Yellow)"
+msgstr "டி 6 (மஞ்சள்)"
+
+#: ../TabletopClub/dice/d8/d8_(Black):1
+msgid "d8 (Black)"
+msgstr "டி 8 (கருப்பு)"
+
+#: ../TabletopClub/dice/d8/d8_(Black):2 ../TabletopClub/dice/d8/d8_(Blue):2
+#: ../TabletopClub/dice/d8/d8_(Brown):2 ../TabletopClub/dice/d8/d8_(Cyan):2
+#: ../TabletopClub/dice/d8/d8_(Green):2 ../TabletopClub/dice/d8/d8_(Orange):2
+#: ../TabletopClub/dice/d8/d8_(Pink):2 ../TabletopClub/dice/d8/d8_(Purple):2
+#: ../TabletopClub/dice/d8/d8_(Red):2 ../TabletopClub/dice/d8/d8_(White):2
+#: ../TabletopClub/dice/d8/d8_(Yellow):2
+msgid "An 8-sided die."
+msgstr "ஒரு 8 பக்க இறப்பு."
+
+#: ../TabletopClub/dice/d8/d8_(Blue):1
+msgid "d8 (Blue)"
+msgstr "டி 8 (நீலம்)"
+
+#: ../TabletopClub/dice/d8/d8_(Brown):1
+msgid "d8 (Brown)"
+msgstr "டி 8 (பழுப்பு)"
+
+#: ../TabletopClub/dice/d8/d8_(Cyan):1
+msgid "d8 (Cyan)"
+msgstr "டி 8 (சியான்)"
+
+#: ../TabletopClub/dice/d8/d8_(Green):1
+msgid "d8 (Green)"
+msgstr "டி 8 (பச்சை)"
+
+#: ../TabletopClub/dice/d8/d8_(Orange):1
+msgid "d8 (Orange)"
+msgstr "டி 8 (ஆரஞ்சு)"
+
+#: ../TabletopClub/dice/d8/d8_(Pink):1
+msgid "d8 (Pink)"
+msgstr "டி 8 (இளஞ்சிவப்பு)"
+
+#: ../TabletopClub/dice/d8/d8_(Purple):1
+msgid "d8 (Purple)"
+msgstr "டி 8 (ஊதா)"
+
+#: ../TabletopClub/dice/d8/d8_(Red):1
+msgid "d8 (Red)"
+msgstr "டி 8 (சிவப்பு)"
+
+#: ../TabletopClub/dice/d8/d8_(White):1
+msgid "d8 (White)"
+msgstr "டி 8 (வெள்ளை)"
+
+#: ../TabletopClub/dice/d8/d8_(Yellow):1
+msgid "d8 (Yellow)"
+msgstr "டி 8 (மஞ்சள்)"
+
+#: ../TabletopClub/dice/d10/d10_(Black):1
+msgid "d10 (Black)"
+msgstr "டி 10 (கருப்பு)"
+
+#: ../TabletopClub/dice/d10/d10_(Black):2 ../TabletopClub/dice/d10/d10_(Blue):2
+#: ../TabletopClub/dice/d10/d10_(Brown):2 ../TabletopClub/dice/d10/d10_(Cyan):2
+#: ../TabletopClub/dice/d10/d10_(Green):2
+#: ../TabletopClub/dice/d10/d10_(Orange):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Black):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Blue):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Brown):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Green):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Orange):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Pink):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Purple):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Red):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(White):2
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):2
+#: ../TabletopClub/dice/d10/d10_(Pink):2
+#: ../TabletopClub/dice/d10/d10_(Purple):2 ../TabletopClub/dice/d10/d10_(Red):2
+#: ../TabletopClub/dice/d10/d10_(White):2
+#: ../TabletopClub/dice/d10/d10_(Yellow):2
+msgid "A 10-sided die."
+msgstr "ஒரு 10 பக்க இறப்பு."
+
+#: ../TabletopClub/dice/d10/d10_(Blue):1
+msgid "d10 (Blue)"
+msgstr "டி 10 (நீலம்)"
+
+#: ../TabletopClub/dice/d10/d10_(Brown):1
+msgid "d10 (Brown)"
+msgstr "டி 10 (பழுப்பு)"
+
+#: ../TabletopClub/dice/d10/d10_(Cyan):1
+msgid "d10 (Cyan)"
+msgstr "டி 10 (சியான்)"
+
+#: ../TabletopClub/dice/d10/d10_(Green):1
+msgid "d10 (Green)"
+msgstr "டி 10 (பச்சை)"
+
+#: ../TabletopClub/dice/d10/d10_(Orange):1
+msgid "d10 (Orange)"
+msgstr "டி 10 (ஆரஞ்சு)"
+
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Black):1
+msgid "d10 (Percent) (Black)"
+msgstr "டி 10 (சதவீதம்) (கருப்பு)"
+
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Blue):1
+msgid "d10 (Percent) (Blue)"
+msgstr "டி 10 (சதவீதம்) (நீலம்)"
+
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Brown):1
+msgid "d10 (Percent) (Brown)"
+msgstr "டி 10 (சதவீதம்) (பழுப்பு)"
+
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Cyan):1
+msgid "d10 (Percent) (Cyan)"
+msgstr "டி 10 (சதவீதம்) (சியான்)"
+
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Green):1
+msgid "d10 (Percent) (Green)"
+msgstr "டி 10 (சதவீதம்) (பச்சை)"
+
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Orange):1
+msgid "d10 (Percent) (Orange)"
+msgstr "டி 10 (சதவீதம்) (ஆரஞ்சு)"
+
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Pink):1
+msgid "d10 (Percent) (Pink)"
+msgstr "டி 10 (சதவீதம்) (இளஞ்சிவப்பு)"
+
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Purple):1
+msgid "d10 (Percent) (Purple)"
+msgstr "டி 10 (சதவீதம்) (ஊதா)"
+
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Red):1
+msgid "d10 (Percent) (Red)"
+msgstr "டி 10 (சதவீதம்) (சிவப்பு)"
+
+#: ../TabletopClub/dice/d10/d10_(Percent)_(White):1
+msgid "d10 (Percent) (White)"
+msgstr "டி 10 (சதவீதம்) (வெள்ளை)"
+
+#: ../TabletopClub/dice/d10/d10_(Percent)_(Yellow):1
+msgid "d10 (Percent) (Yellow)"
+msgstr "டி 10 (சதவீதம்) (மஞ்சள்)"
+
+#: ../TabletopClub/dice/d10/d10_(Pink):1
+msgid "d10 (Pink)"
+msgstr "டி 10 (இளஞ்சிவப்பு)"
+
+#: ../TabletopClub/dice/d10/d10_(Purple):1
+msgid "d10 (Purple)"
+msgstr "டி 10 (ஊதா)"
+
+#: ../TabletopClub/dice/d10/d10_(Red):1
+msgid "d10 (Red)"
+msgstr "டி 10 (சிவப்பு)"
+
+#: ../TabletopClub/dice/d10/d10_(White):1
+msgid "d10 (White)"
+msgstr "டி 10 (வெள்ளை)"
+
+#: ../TabletopClub/dice/d10/d10_(Yellow):1
+msgid "d10 (Yellow)"
+msgstr "டி 10 (மஞ்சள்)"
+
+#: ../TabletopClub/dice/d12/d12_(Black):1
+msgid "d12 (Black)"
+msgstr "டி 12 (கருப்பு)"
+
+#: ../TabletopClub/dice/d12/d12_(Black):2 ../TabletopClub/dice/d12/d12_(Blue):2
+#: ../TabletopClub/dice/d12/d12_(Brown):2 ../TabletopClub/dice/d12/d12_(Cyan):2
+#: ../TabletopClub/dice/d12/d12_(Green):2
+#: ../TabletopClub/dice/d12/d12_(Orange):2
+#: ../TabletopClub/dice/d12/d12_(Pink):2
+#: ../TabletopClub/dice/d12/d12_(Purple):2 ../TabletopClub/dice/d12/d12_(Red):2
+#: ../TabletopClub/dice/d12/d12_(White):2
+#: ../TabletopClub/dice/d12/d12_(Yellow):2
+msgid "A 12-sided die."
+msgstr "ஒரு 12 பக்க இறப்பு."
+
+#: ../TabletopClub/dice/d12/d12_(Blue):1
+msgid "d12 (Blue)"
+msgstr "டி 12 (நீலம்)"
+
+#: ../TabletopClub/dice/d12/d12_(Brown):1
+msgid "d12 (Brown)"
+msgstr "டி 12 (பழுப்பு)"
+
+#: ../TabletopClub/dice/d12/d12_(Cyan):1
+msgid "d12 (Cyan)"
+msgstr "டி 12"
+
+#: ../TabletopClub/dice/d12/d12_(Green):1
+msgid "d12 (Green)"
+msgstr "டி 12 (பச்சை)"
+
+#: ../TabletopClub/dice/d12/d12_(Orange):1
+msgid "d12 (Orange)"
+msgstr "டி 12 (ஆரஞ்சு)"
+
+#: ../TabletopClub/dice/d12/d12_(Pink):1
+msgid "d12 (Pink)"
+msgstr "டி 12 (இளஞ்சிவப்பு)"
+
+#: ../TabletopClub/dice/d12/d12_(Purple):1
+msgid "d12 (Purple)"
+msgstr "டி 12 (ஊதா)"
+
+#: ../TabletopClub/dice/d12/d12_(Red):1
+msgid "d12 (Red)"
+msgstr "டி 12 (சிவப்பு)"
+
+#: ../TabletopClub/dice/d12/d12_(White):1
+msgid "d12 (White)"
+msgstr "டி 12 (வெள்ளை)"
+
+#: ../TabletopClub/dice/d12/d12_(Yellow):1
+msgid "d12 (Yellow)"
+msgstr "டி 12 (மஞ்சள்)"
+
+#: ../TabletopClub/dice/d20/d20_(Black):1
+msgid "d20 (Black)"
+msgstr "டி 20 (கருப்பு)"
+
+#: ../TabletopClub/dice/d20/d20_(Black):2 ../TabletopClub/dice/d20/d20_(Blue):2
+#: ../TabletopClub/dice/d20/d20_(Brown):2 ../TabletopClub/dice/d20/d20_(Cyan):2
+#: ../TabletopClub/dice/d20/d20_(Green):2
+#: ../TabletopClub/dice/d20/d20_(Orange):2
+#: ../TabletopClub/dice/d20/d20_(Pink):2
+#: ../TabletopClub/dice/d20/d20_(Purple):2 ../TabletopClub/dice/d20/d20_(Red):2
+#: ../TabletopClub/dice/d20/d20_(White):2
+#: ../TabletopClub/dice/d20/d20_(Yellow):2
+msgid "A 20-sided die."
+msgstr "ஒரு 20 பக்க இறப்பு."
+
+#: ../TabletopClub/dice/d20/d20_(Blue):1
+msgid "d20 (Blue)"
+msgstr "டி 20 (நீலம்)"
+
+#: ../TabletopClub/dice/d20/d20_(Brown):1
+msgid "d20 (Brown)"
+msgstr "டி 20 (பழுப்பு)"
+
+#: ../TabletopClub/dice/d20/d20_(Cyan):1
+msgid "d20 (Cyan)"
+msgstr "டி 20 (சியான்)"
+
+#: ../TabletopClub/dice/d20/d20_(Green):1
+msgid "d20 (Green)"
+msgstr "டி 20 (பச்சை)"
+
+#: ../TabletopClub/dice/d20/d20_(Orange):1
+msgid "d20 (Orange)"
+msgstr "டி 20 (ஆரஞ்சு)"
+
+#: ../TabletopClub/dice/d20/d20_(Pink):1
+msgid "d20 (Pink)"
+msgstr "டி 20 (இளஞ்சிவப்பு)"
+
+#: ../TabletopClub/dice/d20/d20_(Purple):1
+msgid "d20 (Purple)"
+msgstr "டி 20 (ஊதா)"
+
+#: ../TabletopClub/dice/d20/d20_(Red):1
+msgid "d20 (Red)"
+msgstr "டி 20 (சிவப்பு)"
+
+#: ../TabletopClub/dice/d20/d20_(White):1
+msgid "d20 (White)"
+msgstr "டி 20 (வெள்ளை)"
+
+#: ../TabletopClub/dice/d20/d20_(Yellow):1
+msgid "d20 (Yellow)"
+msgstr "டி 20 (மஞ்சள்)"
+
+#: ../TabletopClub/games/Chess:1
+msgid "Chess"
+msgstr "சதுரங்கம்"
+
+#: ../TabletopClub/games/Chess:2
+msgid "Standard Chess for two players."
+msgstr "இரண்டு வீரர்களுக்கான நிலையான சதுரங்கம்."
+
+#: ../TabletopClub/games/Dominoes:1
+msgid "Dominoes"
+msgstr "டொமினோச்"
+
+#: ../TabletopClub/games/Dominoes:2
+msgid "A bag with 28 tiles has been provided."
+msgstr "28 ஓடுகள் கொண்ட ஒரு பை வழங்கப்பட்டுள்ளது."
+
+#: ../TabletopClub/games/Go:1
+msgid "Go"
+msgstr "போ"
+
+#: ../TabletopClub/games/Go:2
+msgid ""
+"Standard Go for two players.\n"
+"Can play on a 19x19, 13x13, or 9x9 board."
+msgstr ""
+"இரண்டு வீரர்களுக்கு தரநிலை செல்லுங்கள். \n"
+"19x19, 13x13 அல்லது 9x9 போர்டில் விளையாடலாம்."
+
+#: ../TabletopClub/games/Poker:1
+msgid "Poker"
+msgstr "போக்கர்"
+
+#: ../TabletopClub/games/Poker:2
+msgid "Each player has been given 25 chips, which sum up to a value of 500."
+msgstr "ஒவ்வொரு வீரருக்கும் 25 சில்லுகள் வழங்கப்பட்டுள்ளன, அவை 500 மதிப்பு வரை உள்ளன."
+
+#: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:1
+msgid "Airport Lounge - Kevin MacLeod"
+msgstr "விமான நிலைய லவுஞ்ச் - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/Airport_Lounge_-_Kevin_MacLeod:2
+msgid "Light and airy, this piece is guaranteed not to steal focus."
+msgstr ""
+"ஒளி மற்றும் காற்றோட்டமான, இந்த துண்டு கவனம் திருடக்கூடாது என்று பொறுப்பு "
+"அளிக்கப்படுகிறது."
+
+#: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:1
+msgid "Backbay Lounge - Kevin MacLeod"
+msgstr "பேக்கே லவுஞ்ச் - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/Backbay_Lounge_-_Kevin_MacLeod:2
+msgid ""
+"This is cool. You can walk into a dinner party, grab a glass of prosecco, "
+"kiss the host, then casually defuse a large bomb one second before the timer "
+"runs out. That level of cool. Maybe you're not that cool, but if you adopt "
+"this as your personal theme tune, people will THINK you're that cool."
+msgstr ""
+"இது குளிர்ச்சியாக இருக்கிறது. நீங்கள் ஒரு இரவு விருந்துக்குள் நுழைந்து, ஒரு கிளாச் "
+"புரோசெக்கோவைப் பிடித்து, ஓச்டை முத்தமிடலாம், பின்னர் நேரங்குறிகருவி வெளியேறுவதற்கு ஒரு "
+"நொடி ஒரு பெரிய குண்டை பொதுவாக குறைக்கலாம். அந்த நிலை குளிர். ஒருவேளை நீங்கள் அவ்வளவு "
+"அருமையாக இல்லை, ஆனால் இதை உங்கள் தனிப்பட்ட கருப்பொருள் டியூனாக ஏற்றுக்கொண்டால், நீங்கள் "
+"அவ்வளவு குளிராக இருப்பீர்கள் என்று மக்கள் நினைப்பார்கள்."
+
+#: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:1
+msgid "Bossa Antigua - Kevin MacLeod"
+msgstr "போசா ஆன்டிகுவா - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/Bossa_Antigua_-_Kevin_MacLeod:2
+msgid ""
+"Oh hello. I didn't see you there. Welcome to my pad. My favorite parts are "
+"the view of the beach, and this very groovy orange shag-carpeting on the "
+"walls. I still haven't been able to teach my Roombas to get up by the "
+"ceiling, though."
+msgstr ""
+"ஓ வணக்கம். நான் உன்னை அங்கே பார்க்கவில்லை. எனது திண்டு வருக. எனக்கு பிடித்த பாகங்கள் "
+"கடற்கரையின் பார்வை, மற்றும் சுவர்களில் இந்த மிகவும் க்ரூவி ஆரஞ்சு சாக்-கார்பேட்டிங். "
+"இருப்பினும், என் ரூம்பாக்களை உச்சவரம்பால் எழுப்ப என்னால் இன்னும் கற்பிக்க முடியவில்லை."
+
+#: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:1
+msgid "Deadly Roulette - Kevin MacLeod"
+msgstr "கொடிய சில்லி - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/Deadly_Roulette_-_Kevin_MacLeod:2
+msgid ""
+"Jazzy! Gumshoe-y! Mystery-y! I suck at making adjectives. Who needs "
+"adjectives anyway! I'm fine without adjectives. How fine without adjectives, "
+"you may ask? I can't say - as that would require some sort of descriptor! "
+"And I don't need descriptors in my writings... Maybe one... tiny little... "
+"NO! What am I thinking!? I refuse! I've completely had it with adjectives! "
+"Hah! Adverbs work perfectly fine! Woohoo! Adverbs! And before I get mail... "
+"adjectives killed my family, so I can go off on them all I want."
+msgstr ""
+"சாச்சி! கம்சோ-ஒய்! மர்மம்-ஒய்! நான் பெயரடைகளை தயாரிப்பதில் சக். எப்படியும் பெயரடைகள் "
+"தேவை! உரிச்சொற்கள் இல்லாமல் நான் நன்றாக இருக்கிறேன். பெயரடைகள் இல்லாமல் எவ்வளவு நன்றாக "
+"இருக்கிறது, நீங்கள் கேட்கலாம்? என்னால் சொல்ல முடியாது - அதற்கு ஒருவித விவரிப்பான் "
+"தேவைப்படும்! என் எழுத்துக்களில் எனக்கு விளக்கங்கள் தேவையில்லை ... ஒருவேளை ஒன்று ... "
+"சின்னஞ் சிறிய ... இல்லை! நான் என்ன நினைக்கிறேன் !? நான் மறுக்கிறேன்! நான் அதைப் "
+"பெயரடைகளுடன் முழுமையாக வைத்திருக்கிறேன்! ஆ! வினையுரிச்சொற்கள் நன்றாக வேலை செய்கின்றன! "
+"வூஊ! வினையுரிச்சொற்கள்! நான் அஞ்சலைப் பெறுவதற்கு முன்பு ... பெயரடைகள் என் "
+"குடும்பத்தினரைக் கொன்றன, அதனால் நான் விரும்பும் அனைத்தையும் நான் அவர்களிடம் செல்ல முடியும்."
+
+#: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:1
+msgid "George Street Shuffle - Kevin MacLeod"
+msgstr "சார்ச் ச்ட்ரீட் சஃபிள் - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/George_Street_Shuffle_-_Kevin_MacLeod:2
+msgid "Nice little non-offending light jazz piece for vibes."
+msgstr "அதிர்வுகளுக்கான நல்ல சிறிய புண்படுத்தாத ஒளி சாச் துண்டு."
+
+#: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:1
+msgid "Hard Boiled - Kevin MacLeod"
+msgstr "கடின வேகவைத்தது - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/Hard_Boiled_-_Kevin_MacLeod:2
+msgid ""
+"You're looking for the low-down, huh? That's going to take lettuce. You want "
+"the dope? the scoop? the skinny? Ten bucks a day plus expenses. No "
+"negotiations. I ain't no fourth-rate gumshoe - but a ducky shincracker like "
+"you already knew that... Out of curiosity, what's the word for people who "
+"overuse slang?"
+msgstr ""
+"நீங்கள் குறைந்த-கீழ் தேடுகிறீர்கள், இல்லையா? அது கீரை எடுக்கப் போகிறது. உங்களுக்கு டோப் "
+"வேண்டுமா? ச்கூப்? ஒல்லியாக இருக்கிறதா? ஒரு நாளைக்கு பத்து ரூபாய்கள் மற்றும் செலவுகள். "
+"பேச்சுவார்த்தைகள் இல்லை. நான் நான்காவது விகித கம்சோ இல்லை - ஆனால் உங்களைப் போன்ற ஒரு "
+"வாத்து சின்கிராக்கர் ஏற்கனவே அறிந்திருந்தார் ... ஆர்வத்தினால், ச்லாங்கை அதிகமாகப் "
+"பயன்படுத்துபவர்களுக்கு என்ன சொல்?"
+
+#: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:1
+msgid "In Your Arms - Kevin MacLeod"
+msgstr "உங்கள் கைகளில் - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/In_Your_Arms_-_Kevin_MacLeod:2
+msgid ""
+"A piece of music from a more elegant time, 1940. This is a beautiful slow "
+"piece that will make you want to pick up some champagne and go off slow "
+"dancing with people... or penguins. I like penguins. And now some searchable "
+"words: Big Band. 1940s. Forties. Formal Party. Penguin Slow Dance. No "
+"Whammies."
+msgstr ""
+"மிகவும் நேர்த்தியான நேரத்திலிருந்து ஒரு இசை, 1940. இது ஒரு அழகான மெதுவான துண்டு, "
+"இது நீங்கள் சில சாம்பெயின் எடுத்துக்கொண்டு மக்களுடன் மெதுவாக நடனமாட விரும்புகிறது ... "
+"அல்லது பெங்குவின். எனக்கு பெங்குவின் பிடிக்கும். இப்போது தேடக்கூடிய சில சொற்கள்: பெரிய "
+"இசைக்குழு. 1940 கள். நாற்பதுகள். முறையான கட்சி. பென்குயின் மெதுவான நடனம். இல்லை."
+
+#: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:1
+msgid "Lobby Time - Kevin MacLeod"
+msgstr "லாபி நேரம் - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/Lobby_Time_-_Kevin_MacLeod:2
+msgid ""
+"Welcome to the lobby of the FUTURE! Luxurious automatic ashtrays, and modern "
+"green vinyl furnishings set off the shag carpeted walls. Enjoy a Rusty Nail "
+"from our cheerful bar staff (with a complimentary cheese and fruit plate "
+"before 5pm). We feature prime rib dinners every day that ends in a \"y\"! "
+"Remember to tip the bellhops at least 5 cents per bag. Enjoy your stay! This "
+"was written 2 years before it was published, because I didn't have a good "
+"enough upright bass sample to make it go."
+msgstr ""
+"எதிர்கால லாபிக்கு வருக! ஆடம்பரமான தானியங்கி சாம்பல் மற்றும் நவீன பச்சை வினைல் அலங்காரங்கள் "
+"சாக் தரைவிரிப்பு சுவர்களை அமைக்கின்றன. எங்கள் மகிழ்ச்சியான பார் ஊழியர்களிடமிருந்து ஒரு "
+"துருப்பிடித்த ஆணியை அனுபவிக்கவும் (மாலை 5 மணிக்கு முன் ஒரு பாராட்டு சீச் மற்றும் பழ "
+"தட்டுடன்). ஒவ்வொரு நாளும் பிரைம் விலா இரவு உணவுகளை \"ஒய்\" இல் முடிக்கிறோம்! பெல்ஆப்சை "
+"ஒரு பைக்கு குறைந்தது 5 சென்ட் உதவியை நினைவில் வைத்துக் கொள்ளுங்கள். உங்கள் தங்குமிடத்தை "
+"அனுபவிக்கவும்! இது வெளியிடப்படுவதற்கு 2 ஆண்டுகளுக்கு முன்பு இது எழுதப்பட்டது, ஏனென்றால் "
+"அதைச் செய்ய எனக்கு போதுமான நேர்மையான பாச் மாதிரி இல்லை."
+
+#: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:1
+msgid "Night on the Docks - Sax - Kevin MacLeod"
+msgstr "இரவு கப்பல்துறைகளில் - சாக்ச் - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/Night_on_the_Docks_-_Sax_-_Kevin_MacLeod:2
+msgid "Sad and smooth; Think 1950's detective film."
+msgstr "சோகமான மற்றும் மென்மையான; 1950 களின் துப்பறியும் படம் என்று நினைக்கிறேன்."
+
+#: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:1
+msgid "Shades of Spring - Kevin MacLeod"
+msgstr "ச்பிரிங் நிழல்கள் - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/Shades_of_Spring_-_Kevin_MacLeod:2
+msgid ""
+"Sort of a minor mid-tempo jazz combo with 2 pianos. Melody is doubled in "
+"octaves. Soloist goes outside more than the guy comping... but hey - what "
+"are soloists for?"
+msgstr ""
+"2 பியானோசுடன் ஒரு சிறிய மிட்-டெம்போ சாச் காம்போ. எண்களில் மெல்லிசை இரட்டிப்பாகிறது. "
+"தனிமைப்படுத்தப்பட்ட பையனை விட தனிப்பாடல் வெளியே செல்கிறது ... ஆனால் ஏய் - "
+"தனிப்பாடலாளர்கள் எதற்காக?"
+
+#: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:1
+msgid "Smooth Lovin - Kevin MacLeod"
+msgstr "மென்மையான லோவின் - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/Smooth_Lovin_-_Kevin_MacLeod:2
+msgid ""
+"This one got turned up to 11. I started producing this as a parody... then I "
+"really started liking it, so I guess it is a pastiche now? Oh, man... I wish "
+"there was an allowance for pastiche in copyright like there is for parody."
+msgstr ""
+"இது 11 வரை மாறியது. நான் இதை ஒரு பகடியாக தயாரிக்கத் தொடங்கினேன் ... பின்னர் நான் அதை "
+"விரும்பத் தொடங்கினேன், எனவே இது இப்போது ஒரு பேச்டிக் என்று நினைக்கிறேன்? ஓ, மனிதனே ... "
+"பகடி இருப்பதைப் போல பதிப்புரிமையில் பேச்டிக்குக்கு ஒரு கொடுப்பனவு இருக்க வேண்டும் என்று "
+"நான் விரும்புகிறேன்."
+
+#: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:1
+msgid "Spy Glass - Kevin MacLeod"
+msgstr "உளவு கண்ணாடி - கெவின் மேக்லியோட்"
+
+#: ../TabletopClub/music/Spy_Glass_-_Kevin_MacLeod:2
+msgid ""
+"The year is... I have no idea. Timeless. Could be now, could be in the "
+"1950s. Super cool jazz for your hardcore detectives! Also useful for beat "
+"poets! Also useful for ennui or boredom! Well, interesting sorts of boredom."
+msgstr ""
+"ஆண்டு ... எனக்கு எதுவும் தெரியாது. காலமற்றது. இப்போது இருக்க முடியும், 1950 களில் "
+"இருக்கலாம். உங்கள் ஆர்ட்கோர் துப்பறியும் நபர்களுக்கு சூப்பர் கூல் சாச்! துடிப்பு "
+"கவிஞர்களுக்கும் பயனுள்ளதாக இருக்கும்! என்னுய் அல்லது சலிப்பிற்கும் பயனுள்ளதாக இருக்கும்! "
+"நன்றாக, சுவையான சலிப்பு."
+
+#: ../TabletopClub/pieces/Bishop_Black:1
+msgid "Bishop Black"
+msgstr "பிசப் பிளாக்"
+
+#: ../TabletopClub/pieces/Bishop_White:1
+msgid "Bishop White"
+msgstr "பிசப் வெள்ளை"
+
+#: ../TabletopClub/pieces/King_Black:1
+msgid "King Black"
+msgstr "கிங் பிளாக்"
+
+#: ../TabletopClub/pieces/King_White:1
+msgid "King White"
+msgstr "வெள்ளை மன்னன்"
+
+#: ../TabletopClub/pieces/Knight_Black:1
+msgid "Knight Black"
+msgstr "நைட் பிளாக்"
+
+#: ../TabletopClub/pieces/Knight_White:1
+msgid "Knight White"
+msgstr "நைட் வைட்"
+
+#: ../TabletopClub/pieces/Pawn_Black:1
+msgid "Pawn Black"
+msgstr "சிப்பாய் கருப்பு"
+
+#: ../TabletopClub/pieces/Pawn_White:1
+msgid "Pawn White"
+msgstr "சிப்பாய் வெள்ளை"
+
+#: ../TabletopClub/pieces/Queen_Black:1
+msgid "Queen Black"
+msgstr "அரசி கருப்பு"
+
+#: ../TabletopClub/pieces/Queen_White:1
+msgid "Queen White"
+msgstr "வெள்ளை அரசி"
+
+#: ../TabletopClub/pieces/Rook_Black:1
+msgid "Rook Black"
+msgstr "ரூக் கருப்பு"
+
+#: ../TabletopClub/pieces/Rook_White:1
+msgid "Rook White"
+msgstr "ரூக் வெள்ளை"
+
+#: ../TabletopClub/pieces/Stone_Black:1
+msgid "Stone Black"
+msgstr "கல் கருப்பு"
+
+#: ../TabletopClub/pieces/Stone_White:1
+msgid "Stone White"
+msgstr "கல் வெள்ளை"
+
+#: ../TabletopClub/skyboxes/Clouds:1
+msgid "Clouds"
+msgstr "மேகங்கள்"
+
+#: ../TabletopClub/skyboxes/Dallas_West:1
+msgid "Dallas West"
+msgstr "டல்லாச் வெச்ட்"
+
+#: ../TabletopClub/skyboxes/Forest:1
+msgid "Forest"
+msgstr "காடு"
+
+#: ../TabletopClub/skyboxes/Hornstulls_Strand:1
+msgid "Hornstulls Strand"
+msgstr "ஆர்ன்ச்டல்ச் கடற்கரை"
+
+#: ../TabletopClub/skyboxes/Ice_River:1
+msgid "Ice River"
+msgstr "பனி நதி"
+
+#: ../TabletopClub/skyboxes/Marriott_Madison_West:1
+msgid "Marriott Madison West"
+msgstr "மேரியட் மேடிசன் வெச்ட்"
+
+#: ../TabletopClub/skyboxes/Maskonaive:1
+msgid "Maskonaive"
+msgstr "முகமூடிகள்"
+
+#: ../TabletopClub/skyboxes/Nebula:1
+msgid "Nebula"
+msgstr "நெபுலா"
+
+#: ../TabletopClub/skyboxes/Niagra_Falls:1
+msgid "Niagra Falls"
+msgstr "நயாகரா நீர்வீழ்ச்சி"
+
+#: ../TabletopClub/skyboxes/Park:1
+msgid "Park"
+msgstr "பூங்கா"
+
+#: ../TabletopClub/skyboxes/Park_Winter:1
+msgid "Park Winter"
+msgstr "பூங்கா குளிர்காலம்"
+
+#: ../TabletopClub/skyboxes/Path:1
+msgid "Path"
+msgstr "பாதை"
+
+#: ../TabletopClub/skyboxes/Space:1
+msgid "Space"
+msgstr "இடைவெளி"
+
+#: ../TabletopClub/skyboxes/Tantolunden:1
+msgid "Tantolunden"
+msgstr "டான்டோலுண்டன்"
+
+#: ../TabletopClub/skyboxes/Vasa:1
+msgid "Vasa"
+msgstr "வாசா"
+
+#: ../TabletopClub/sounds/Alarm:1
+msgid "Alarm"
+msgstr "அலாரம்"
+
+#: ../TabletopClub/sounds/Alarm:2
+msgid "An alarm for alarming situations."
+msgstr "ஆபத்தான சூழ்நிலைகளுக்கான அலாரம்."
+
+#: ../TabletopClub/speakers/Gramophone:1
+msgid "Gramophone"
+msgstr "கிராமபோன்"
+
+#: ../TabletopClub/speakers/Gramophone:2
+msgid "A low-poly vintage gramophone."
+msgstr "குறைந்த பாலி விண்டேச் கிராமபோன்."
+
+#: ../TabletopClub/tables/Picnic_Bench:1
+msgid "Picnic Bench"
+msgstr "சுற்றுலா பெஞ்ச்"
+
+#: ../TabletopClub/tables/Table:1
+msgid "Table"
+msgstr "அட்டவணை"
+
+#: ../TabletopClub/templates/Blank_Page:1
+msgid "Blank Page"
+msgstr "வெற்று பக்கம்"
+
+#: ../TabletopClub/templates/Blank_Page:2
+msgid "There's nothing here..."
+msgstr "இங்கே எதுவும் இல்லை ..."
+
+#: ../TabletopClub/templates/Score_Card:1
+msgid "Score Card"
+msgstr "ச்கோர் அட்டை"
+
+#: ../TabletopClub/templates/Score_Card:2
+msgid "A generic score card for up to 10 players."
+msgstr "10 வீரர்கள் வரை பொதுவான மதிப்பெண் அட்டை."
+
+#: ../TabletopClub/timers/Radio:1
+msgid "Radio"
+msgstr "வானொலி"
+
+#: ../TabletopClub/timers/Radio:2
+msgid "An old radio from a bygone era."
+msgstr "கடந்த காலத்திலிருந்து ஒரு பழைய வானொலி."
+
+#: ../TabletopClub/tokens/cube/Blue:1
+msgid "Blue"
+msgstr "நீலம்"
+
+#: ../TabletopClub/tokens/cube/Blue:2
+msgid "A blue token."
+msgstr "ஒரு நீல கிள்ளாக்கு."
+
+#: ../TabletopClub/tokens/cube/Brown:1
+msgid "Brown"
+msgstr "பழுப்பு"
+
+#: ../TabletopClub/tokens/cube/Brown:2
+msgid "A brown token."
+msgstr "ஒரு பழுப்பு கிள்ளாக்கு."
+
+#: ../TabletopClub/tokens/cube/Cyan:1
+msgid "Cyan"
+msgstr "சியான்"
+
+#: ../TabletopClub/tokens/cube/Cyan:2
+msgid "A cyan token."
+msgstr "ஒரு சியான் கிள்ளாக்கு."
+
+#: ../TabletopClub/tokens/cube/Domino_0-0:1
+msgid "Domino 0-0"
+msgstr "டோமினோ 0-0"
+
+#: ../TabletopClub/tokens/cube/Domino_0-1:1
+msgid "Domino 0-1"
+msgstr "டோமினோ 0-1"
+
+#: ../TabletopClub/tokens/cube/Domino_0-2:1
+msgid "Domino 0-2"
+msgstr "டோமினோ 0-2"
+
+#: ../TabletopClub/tokens/cube/Domino_0-3:1
+msgid "Domino 0-3"
+msgstr "டோமினோ 0-3"
+
+#: ../TabletopClub/tokens/cube/Domino_0-4:1
+msgid "Domino 0-4"
+msgstr "டோமினோ 0-4"
+
+#: ../TabletopClub/tokens/cube/Domino_0-5:1
+msgid "Domino 0-5"
+msgstr "டோமினோ 0-5"
+
+#: ../TabletopClub/tokens/cube/Domino_0-6:1
+msgid "Domino 0-6"
+msgstr "டோமினோ 0-6"
+
+#: ../TabletopClub/tokens/cube/Domino_1-1:1
+msgid "Domino 1-1"
+msgstr "டோமினோ 1-1"
+
+#: ../TabletopClub/tokens/cube/Domino_1-2:1
+msgid "Domino 1-2"
+msgstr "டோமினோ 1-2"
+
+#: ../TabletopClub/tokens/cube/Domino_1-3:1
+msgid "Domino 1-3"
+msgstr "டோமினோ 1-3"
+
+#: ../TabletopClub/tokens/cube/Domino_1-4:1
+msgid "Domino 1-4"
+msgstr "டோமினோ 1-4"
+
+#: ../TabletopClub/tokens/cube/Domino_1-5:1
+msgid "Domino 1-5"
+msgstr "டோமினோ 1-5"
+
+#: ../TabletopClub/tokens/cube/Domino_1-6:1
+msgid "Domino 1-6"
+msgstr "டோமினோ 1-6"
+
+#: ../TabletopClub/tokens/cube/Domino_2-2:1
+msgid "Domino 2-2"
+msgstr "டோமினோ 2-2"
+
+#: ../TabletopClub/tokens/cube/Domino_2-3:1
+msgid "Domino 2-3"
+msgstr "டோமினோ 2-3"
+
+#: ../TabletopClub/tokens/cube/Domino_2-4:1
+msgid "Domino 2-4"
+msgstr "டோமினோ 2-4"
+
+#: ../TabletopClub/tokens/cube/Domino_2-5:1
+msgid "Domino 2-5"
+msgstr "டோமினோ 2-5"
+
+#: ../TabletopClub/tokens/cube/Domino_2-6:1
+msgid "Domino 2-6"
+msgstr "டோமினோ 2-6"
+
+#: ../TabletopClub/tokens/cube/Domino_3-3:1
+msgid "Domino 3-3"
+msgstr "டோமினோ 3-3"
+
+#: ../TabletopClub/tokens/cube/Domino_3-4:1
+msgid "Domino 3-4"
+msgstr "டோமினோ 3-4"
+
+#: ../TabletopClub/tokens/cube/Domino_3-5:1
+msgid "Domino 3-5"
+msgstr "டோமினோ 3-5"
+
+#: ../TabletopClub/tokens/cube/Domino_3-6:1
+msgid "Domino 3-6"
+msgstr "டோமினோ 3-6"
+
+#: ../TabletopClub/tokens/cube/Domino_4-4:1
+msgid "Domino 4-4"
+msgstr "டோமினோ 4-4"
+
+#: ../TabletopClub/tokens/cube/Domino_4-5:1
+msgid "Domino 4-5"
+msgstr "டோமினோ 4-5"
+
+#: ../TabletopClub/tokens/cube/Domino_4-6:1
+msgid "Domino 4-6"
+msgstr "டோமினோ 4-6"
+
+#: ../TabletopClub/tokens/cube/Domino_5-5:1
+msgid "Domino 5-5"
+msgstr "டோமினோ 5-5"
+
+#: ../TabletopClub/tokens/cube/Domino_5-6:1
+msgid "Domino 5-6"
+msgstr "டோமினோ 5-6"
+
+#: ../TabletopClub/tokens/cube/Domino_6-6:1
+msgid "Domino 6-6"
+msgstr "டோமினோ 6-6"
+
+#: ../TabletopClub/tokens/cube/Green:1
+msgid "Green"
+msgstr "பச்சை"
+
+#: ../TabletopClub/tokens/cube/Green:2
+msgid "A green token."
+msgstr "ஒரு பச்சை கிள்ளாக்கு."
+
+#: ../TabletopClub/tokens/cube/Orange:1
+msgid "Orange"
+msgstr "ஆரஞ்சு"
+
+#: ../TabletopClub/tokens/cube/Orange:2
+msgid "An orange token."
+msgstr "ஒரு ஆரஞ்சு கிள்ளாக்கு."
+
+#: ../TabletopClub/tokens/cube/Pink:1
+msgid "Pink"
+msgstr "இளஞ்சிவப்பு"
+
+#: ../TabletopClub/tokens/cube/Pink:2
+msgid "A pink token."
+msgstr "ஒரு இளஞ்சிவப்பு கிள்ளாக்கு."
+
+#: ../TabletopClub/tokens/cube/Purple:1
+msgid "Purple"
+msgstr "ஊதா"
+
+#: ../TabletopClub/tokens/cube/Purple:2
+msgid "A purple token."
+msgstr "ஒரு ஊதா கிள்ளாக்கு."
+
+#: ../TabletopClub/tokens/cube/Red:1
+msgid "Red"
+msgstr "சிவப்பு"
+
+#: ../TabletopClub/tokens/cube/Red:2
+msgid "A red token."
+msgstr "ஒரு சிவப்பு கிள்ளாக்கு."
+
+#: ../TabletopClub/tokens/cube/White:1
+msgid "White"
+msgstr "வெள்ளை"
+
+#: ../TabletopClub/tokens/cube/White:2
+msgid "A white token."
+msgstr "ஒரு வெள்ளை கிள்ளாக்கு."
+
+#: ../TabletopClub/tokens/cube/Yellow:1
+msgid "Yellow"
+msgstr "மஞ்சள்"
+
+#: ../TabletopClub/tokens/cube/Yellow:2
+msgid "A yellow token."
+msgstr "ஒரு மஞ்சள் கிள்ளாக்கு."
+
+#: ../TabletopClub/tokens/cylinder/1:1
+msgid "1"
+msgstr "1"
+
+#: ../TabletopClub/tokens/cylinder/1:2 ../TabletopClub/tokens/cylinder/10:2
+#: ../TabletopClub/tokens/cylinder/100:2 ../TabletopClub/tokens/cylinder/25:2
+#: ../TabletopClub/tokens/cylinder/5:2 ../TabletopClub/tokens/cylinder/D:2
+msgid "A poker chip."
+msgstr "ஒரு போக்கர் சிப்."
+
+#: ../TabletopClub/tokens/cylinder/10:1
+msgid "10"
+msgstr "10"
+
+#: ../TabletopClub/tokens/cylinder/100:1
+msgid "100"
+msgstr "100"
+
+#: ../TabletopClub/tokens/cylinder/20_x_1_Chips:1
+msgid "20 x 1 Chips"
+msgstr "20 ஃச் 1 சில்லுகள்"
+
+#: ../TabletopClub/tokens/cylinder/20_x_1_Chips:2
+msgid "A stack of 20 1-value chips."
+msgstr "20 1-மதிப்பு சில்லுகளின் அடுக்கு."
+
+#: ../TabletopClub/tokens/cylinder/20_x_10_Chips:1
+msgid "20 x 10 Chips"
+msgstr "20 ஃச் 10 சில்லுகள்"
+
+#: ../TabletopClub/tokens/cylinder/20_x_10_Chips:2
+msgid "A stack of 20 10-value chips."
+msgstr "20 10-மதிப்பு சில்லுகளின் அடுக்கு."
+
+#: ../TabletopClub/tokens/cylinder/20_x_100_Chips:1
+msgid "20 x 100 Chips"
+msgstr "20 ஃச் 100 சில்லுகள்"
+
+#: ../TabletopClub/tokens/cylinder/20_x_100_Chips:2
+msgid "A stack of 20 100-value chips."
+msgstr "20 100-மதிப்பு சில்லுகளின் அடுக்கு."
+
+#: ../TabletopClub/tokens/cylinder/20_x_25_Chips:1
+msgid "20 x 25 Chips"
+msgstr "20 ஃச் 25 சில்லுகள்"
+
+#: ../TabletopClub/tokens/cylinder/20_x_25_Chips:2
+msgid "A stack of 20 25-value chips."
+msgstr "20 25-மதிப்பு சில்லுகளின் அடுக்கு."
+
+#: ../TabletopClub/tokens/cylinder/20_x_5_Chips:1
+msgid "20 x 5 Chips"
+msgstr "20 ஃச் 5 சில்லுகள்"
+
+#: ../TabletopClub/tokens/cylinder/20_x_5_Chips:2
+msgid "A stack of 20 5-value chips."
+msgstr "20 5-மதிப்பு சில்லுகளின் அடுக்கு."
+
+#: ../TabletopClub/tokens/cylinder/25:1
+msgid "25"
+msgstr "25"
+
+#: ../TabletopClub/tokens/cylinder/5:1
+msgid "5"
+msgstr "5"
+
+#: ../TabletopClub/tokens/cylinder/D:1
+msgid "D"
+msgstr "டி"

@@ -8,51 +8,49 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2024-09-06 00:09+0000\n"
-"Last-Translator: goatastronaut0212 <goatastronaut0212@proton.me>\n"
+"POT-Creation-Date: 2025-10-12 16:36+0100\n"
+"PO-Revision-Date: 2025-10-16 06:09+0000\n"
+"Last-Translator: Theeasternfurry <theeasternfurry@outlook.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/tabletop-club/"
 "game/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 "Generated-By: Babel 2.13.1\n"
 
 #: ../Scenes/ImportAssets.tscn:35
 msgid "Importing assets..."
-msgstr ""
+msgstr "Đang tải tài nguyên..."
 
 #: ../Scenes/ImportAssets.tscn:56
 msgid "Missing Asset Folder"
-msgstr ""
+msgstr "Thiếu thư mục tài nguyên"
 
 #: ../Scenes/ImportAssets.tscn:62
 msgid "Missing Module"
-msgstr ""
+msgstr "Mô đun bị thiếu"
 
 #: ../Scenes/Loading.tscn:41
 msgid "Loading..."
 msgstr "Đang tải..."
 
 #: ../Scenes/MainMenu.tscn:51
-#, fuzzy
 msgid "Singleplayer"
 msgstr "Chơi đơn"
 
-#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:158
+#: ../Scenes/MainMenu.tscn:58 ../Scenes/MainMenu.tscn:159
 #: ../Scenes/OptionsMenu.tscn:966
-#, fuzzy
 msgid "Multiplayer"
-msgstr "Chơi với nhiều người"
+msgstr "Nhiều người chơi"
 
 #: ../Scenes/Game/UI/GameUI.tscn:222 ../Scenes/MainMenu.tscn:65
 msgid "Options"
 msgstr "Tùy chọn"
 
-#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:315
+#: ../Scenes/MainMenu.tscn:72 ../Scenes/MainMenu.tscn:316
 msgid "Credits"
 msgstr "Danh đề"
 
@@ -60,7 +58,7 @@ msgstr "Danh đề"
 msgid "Quit"
 msgstr "Thoát"
 
-#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:340
+#: ../Scenes/MainMenu.tscn:97 ../Scenes/MainMenu.tscn:341
 msgid "Import Log"
 msgstr "Nhật ký nhập dữ liệu"
 
@@ -84,43 +82,43 @@ msgstr "Tài liệu"
 msgid "Community"
 msgstr "Cộng đồng"
 
-#: ../Scenes/MainMenu.tscn:142
+#: ../Scenes/MainMenu.tscn:143
 msgid "Donate"
 msgstr "Quyên góp"
 
-#: ../Scenes/MainMenu.tscn:151 ../Scenes/MainMenu.tscn:246
+#: ../Scenes/MainMenu.tscn:152 ../Scenes/MainMenu.tscn:247
 msgid "Information"
 msgstr "Thông tin"
 
-#: ../Scenes/MainMenu.tscn:176
+#: ../Scenes/MainMenu.tscn:177
 msgid "Host Game"
-msgstr "Tạo Game"
+msgstr "Tạo trò chơi"
 
-#: ../Scenes/MainMenu.tscn:182
+#: ../Scenes/MainMenu.tscn:183
 msgid "Create a new lobby for your friends to join over the Internet."
 msgstr "Tạo một phòng chờ mới để bạn bè của bạn có thể tham gia qua Internet."
 
-#: ../Scenes/MainMenu.tscn:194 ../Scenes/MainMenu.tscn:241
+#: ../Scenes/MainMenu.tscn:195 ../Scenes/MainMenu.tscn:242
 msgid "Join Game"
-msgstr "Gia nhập Game"
+msgstr "Tham gia trò chơi"
 
-#: ../Scenes/MainMenu.tscn:200
+#: ../Scenes/MainMenu.tscn:201
 msgid "Use a room code to join your friend's lobby."
 msgstr "Sử dụng mã phòng để tham gia phòng chờ của bạn bè bạn."
 
-#: ../Scenes/MainMenu.tscn:206
+#: ../Scenes/MainMenu.tscn:207
 msgid "Enter Room Code"
 msgstr "Nhập mã phòng"
 
-#: ../Scenes/MainMenu.tscn:226
+#: ../Scenes/MainMenu.tscn:227
 msgid "Room Code:"
 msgstr "Mã phòng:"
 
-#: ../Scenes/MainMenu.tscn:235
+#: ../Scenes/MainMenu.tscn:236
 msgid "ABCD"
 msgstr "ABCD"
 
-#: ../Scenes/MainMenu.tscn:333
+#: ../Scenes/MainMenu.tscn:334
 msgid "Error"
 msgstr "Lỗi"
 
@@ -135,6 +133,7 @@ msgstr "Âm lượng chính"
 #: ../Scenes/OptionsMenu.tscn:68
 msgid "Sets the overall volume of all sources of sound in the game."
 msgstr ""
+"Thiết lập âm lượng tổng thể cho tất cả các nguồn âm thanh trong trò chơi."
 
 #: ../Scenes/OptionsMenu.tscn:79
 msgid "Music Volume"
@@ -142,7 +141,7 @@ msgstr "Âm lượng nhạc"
 
 #: ../Scenes/OptionsMenu.tscn:87
 msgid "Sets the volume of all music sources in the game."
-msgstr ""
+msgstr "Thiết lập âm lượng của tất cả các nguồn nhạc nền trong trò chơi."
 
 #: ../Scenes/OptionsMenu.tscn:98
 msgid "Sounds Volume"
@@ -150,9 +149,11 @@ msgstr "Âm lượng âm thanh"
 
 #: ../Scenes/OptionsMenu.tscn:106
 msgid ""
-"Sets the volume of sound sources played manually throughout the game, for"
-" example, from speakers."
+"Sets the volume of sound sources played manually throughout the game, for "
+"example, from speakers."
 msgstr ""
+"Thiết lập âm lượng của các nguồn âm thanh được phát thủ công trong trò chơi, "
+"ví dụ như từ loa."
 
 #: ../Scenes/OptionsMenu.tscn:117
 msgid "Effects Volume"
@@ -160,9 +161,11 @@ msgstr "Âm lượng hiệu ứng"
 
 #: ../Scenes/OptionsMenu.tscn:125
 msgid ""
-"Sets the volume of sound effects played automatically throughout the "
-"game, for example, pieces falling on the table. "
+"Sets the volume of sound effects played automatically throughout the game, "
+"for example, pieces falling on the table. "
 msgstr ""
+"Thiết lập âm lượng của các hiệu ứng âm thanh được phát tự động trong suốt "
+"trò chơi, ví dụ: tiếng quân cờ rơi trên bàn. "
 
 #: ../Scenes/OptionsMenu.tscn:142
 msgid "Controls"
@@ -170,7 +173,7 @@ msgstr "Điều khiển"
 
 #: ../Scenes/OptionsMenu.tscn:155
 msgid "Mouse Horizontal Sensitivity"
-msgstr ""
+msgstr "Độ nhạy ngang của chuột"
 
 #: ../Scenes/OptionsMenu.tscn:162
 msgid "Sets the horizontal sensitivity of the rotation of the camera."
@@ -178,7 +181,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:174
 msgid "Mouse Vertical Sensitivity"
-msgstr ""
+msgstr "Độ nhạy dọc của chuột"
 
 #: ../Scenes/OptionsMenu.tscn:182
 msgid "Sets the vertical sensitivity of the rotation of the camera."
@@ -202,7 +205,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:224
 msgid "Camera Movement Speed"
-msgstr ""
+msgstr "Tốc độ di chuyển của camera"
 
 #: ../Scenes/OptionsMenu.tscn:232
 msgid "Used to set how fast the camera moves across the table."
@@ -210,22 +213,22 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:244
 msgid "Hold Left Click to Move Camera"
-msgstr ""
+msgstr "Giữ chuột trái để di chuyển camera"
 
 #: ../Scenes/OptionsMenu.tscn:252
 msgid ""
-"Used to allow the player to move the camera by dragging the mouse across "
-"the table."
+"Used to allow the player to move the camera by dragging the mouse across the "
+"table."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:259
 msgid "Zoom Sensitivity"
-msgstr ""
+msgstr "Độ nhạy khi phóng to"
 
 #: ../Scenes/OptionsMenu.tscn:267
 msgid ""
-"Sets how fast the camera zooms in and out of the table when using the "
-"scroll wheel."
+"Sets how fast the camera zooms in and out of the table when using the scroll "
+"wheel."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:279
@@ -250,8 +253,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:322
 msgid ""
-"Used to invert the direction a piece will go when lifting it off the "
-"table."
+"Used to invert the direction a piece will go when lifting it off the table."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:329
@@ -268,8 +270,8 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:352
 msgid ""
-"When set, hovering over a card in your hand will display an enhanced "
-"preview of the card after a short period of time."
+"When set, hovering over a card in your hand will display an enhanced preview "
+"of the card after a short period of time."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:360
@@ -278,8 +280,8 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:368
 msgid ""
-"Used to set how long the mouse needs to be kept still before a preview of"
-" a card is displayed from the hand."
+"Used to set how long the mouse needs to be kept still before a preview of a "
+"card is displayed from the hand."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:380
@@ -300,11 +302,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:421
 msgid "General"
-msgstr ""
+msgstr "Tổng quan"
 
 #: ../Scenes/OptionsMenu.tscn:435
 msgid "Language"
-msgstr ""
+msgstr "Ngôn ngữ"
 
 #: ../Scenes/OptionsMenu.tscn:455
 msgid "Autosave Interval"
@@ -314,9 +316,9 @@ msgstr ""
 msgid "Used to set how often autosaves are created."
 msgstr ""
 
-#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:72
+#: ../Scenes/OptionsMenu.tscn:465 ../Scripts/OptionsMenu.gd:78
 msgid "5 minutes"
-msgstr ""
+msgstr "5 phút"
 
 #: ../Scenes/OptionsMenu.tscn:474
 msgid "Autosave File Count"
@@ -336,27 +338,27 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:508
 msgid "Show System Warnings"
-msgstr ""
+msgstr "Hiện cảnh báo hệ thống"
 
 #: ../Scenes/OptionsMenu.tscn:516
 msgid "Displays system warnings in the chat box."
-msgstr ""
+msgstr "Hiển thị cảnh báo hệ thống trong khung trò chuyện."
 
 #: ../Scenes/OptionsMenu.tscn:525
 msgid "Show System Errors"
-msgstr ""
+msgstr "Hiện lỗi hệ thống"
 
 #: ../Scenes/OptionsMenu.tscn:533
 msgid "Displays system errors in the chat box."
-msgstr ""
+msgstr "Hiển thị lỗi hệ thống trong khung trò chuyện."
 
 #: ../Scenes/OptionsMenu.tscn:561
 msgid "Opens the assets folder in your file explorer."
-msgstr ""
+msgstr "Mở thư mục tài nguyên trong trình quản lỳ tệp của bạn."
 
 #: ../Scenes/OptionsMenu.tscn:563
 msgid "Open Assets Folder"
-msgstr ""
+msgstr "Mở thư mục tài nguyên"
 
 #: ../Scenes/OptionsMenu.tscn:579
 msgid "Reimport Assets"
@@ -384,11 +386,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:641
 msgid "Move Left"
-msgstr ""
+msgstr "Di chuyển sang Trái"
 
 #: ../Scenes/OptionsMenu.tscn:649
 msgid "Moves the camera left."
-msgstr ""
+msgstr "Di chuyển camera sang trái."
 
 #: ../Scenes/OptionsMenu.tscn:659
 msgid "Move Right"
@@ -462,12 +464,12 @@ msgstr ""
 #: ../Scripts/Game/CameraController.gd:1542
 #: ../Scripts/Game/CameraController.gd:1597
 msgid "Shuffle"
-msgstr ""
+msgstr "Ngẫu nhiên"
 
 #: ../Scenes/OptionsMenu.tscn:811
 msgid ""
-"Shuffle stacks of cards or tokens that are selected, or that the mouse is"
-" over."
+"Shuffle stacks of cards or tokens that are selected, or that the mouse is "
+"over."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:821
@@ -475,7 +477,8 @@ msgid "Lock/Unlock Piece"
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:829
-msgid "Toggles the lock on the selected piece, fixing its position and rotation."
+msgid ""
+"Toggles the lock on the selected piece, fixing its position and rotation."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:839
@@ -496,11 +499,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:875
 msgid "Quicksave"
-msgstr ""
+msgstr "Lưu nhanh"
 
 #: ../Scenes/OptionsMenu.tscn:883
 msgid "Creates a quicksave file."
-msgstr ""
+msgstr "Tạo tệp lưu nhanh."
 
 #: ../Scenes/OptionsMenu.tscn:893
 msgid "Quickload"
@@ -545,11 +548,11 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:989
 msgid "Player"
-msgstr ""
+msgstr "Người chơi"
 
 #: ../Scenes/OptionsMenu.tscn:997 ../Scripts/Game/CameraController.gd:1350
 msgid "Color"
-msgstr ""
+msgstr "Màu sắc"
 
 #: ../Scenes/OptionsMenu.tscn:1005
 msgid "The player's displayed colour in multiplayer lobbies."
@@ -564,7 +567,7 @@ msgid "Changes the size of the text in the chat box."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1025 ../Scenes/OptionsMenu.tscn:1156
-#: ../Scripts/OptionsMenu.gd:82
+#: ../Scripts/OptionsMenu.gd:88
 msgid "Medium"
 msgstr ""
 
@@ -573,7 +576,8 @@ msgid "Hide Player Cursors"
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1042
-msgid "Used to stop showing other player's cursors when in multiplayer lobbies."
+msgid ""
+"Used to stop showing other player's cursors when in multiplayer lobbies."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1050
@@ -598,7 +602,7 @@ msgstr ""
 msgid "Sets the mode in which the game window is displayed."
 msgstr ""
 
-#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:76
+#: ../Scenes/OptionsMenu.tscn:1096 ../Scripts/OptionsMenu.gd:82
 msgid "Windowed"
 msgstr ""
 
@@ -612,7 +616,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1126
 msgid "VSync"
-msgstr ""
+msgstr "VSync"
 
 #: ../Scenes/OptionsMenu.tscn:1145
 msgid "Shadow Detail"
@@ -623,7 +627,7 @@ msgid "Multisample Anti-Aliasing (MSAA)"
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1177 ../Scenes/OptionsMenu.tscn:1199
-#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:80
+#: ../Scenes/OptionsMenu.tscn:1240 ../Scripts/OptionsMenu.gd:86
 msgid "None"
 msgstr ""
 
@@ -635,7 +639,7 @@ msgstr ""
 msgid "Skybox Radiance Detail"
 msgstr ""
 
-#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:81
+#: ../Scenes/OptionsMenu.tscn:1219 ../Scripts/OptionsMenu.gd:87
 msgid "Low"
 msgstr ""
 
@@ -659,8 +663,8 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1277
 msgid ""
-"Used to set the threshold of what is considered the background when using"
-" depth of field."
+"Used to set the threshold of what is considered the background when using "
+"depth of field."
 msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1289
@@ -669,7 +673,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1312
 msgid "Back"
-msgstr ""
+msgstr "Quay lại"
 
 #: ../Scenes/Game/CameraController.tscn:410
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:154
@@ -682,7 +686,7 @@ msgstr ""
 #: ../Scenes/Game/CameraController.tscn:642
 #: ../Scenes/Game/CameraController.tscn:696 ../Scenes/OptionsMenu.tscn:1325
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: ../Scenes/OptionsMenu.tscn:1370
 msgid "Please press a key or button to bind it..."
@@ -690,7 +694,7 @@ msgstr ""
 
 #: ../Scenes/OptionsMenu.tscn:1390
 msgid "Cancel"
-msgstr ""
+msgstr "Hủy"
 
 #: ../Scenes/OptionsMenu.tscn:1397
 msgid "Keep video settings?"
@@ -734,7 +738,7 @@ msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:242
 msgid "Position:"
-msgstr ""
+msgstr "Vị trí:"
 
 #: ../Scenes/Game/CameraController.tscn:253
 #: ../Scenes/Game/CameraController.tscn:311
@@ -765,12 +769,12 @@ msgstr ""
 
 #: ../Scenes/Game/CameraController.tscn:430
 msgid "Value:"
-msgstr ""
+msgstr "Giá trị:"
 
 #: ../Scenes/Game/CameraController.tscn:442
 #: ../Scripts/Game/CameraController.gd:1300
 msgid "Set value"
-msgstr ""
+msgstr "Đặt giá trị"
 
 #: ../Scenes/Game/CameraController.tscn:473
 msgid "Strength:"
@@ -821,17 +825,17 @@ msgstr ""
 #: ../Scenes/Game/Game.tscn:44
 #, python-format
 msgid ""
-"The host has imported assets that your client is missing. This means that"
-" you won't be able to see these assets while in this game. There are a "
-"total of %d missing assets, and %d assets differ between your client and "
-"the host's client:"
+"The host has imported assets that your client is missing. This means that "
+"you won't be able to see these assets while in this game. There are a total "
+"of %d missing assets, and %d assets differ between your client and the "
+"host's client:"
 msgstr ""
 
 #: ../Scenes/Game/Game.tscn:58
 #, python-format
 msgid ""
-"Your client is also missing %d files, and %d files differ from that of "
-"the host's, which in total is %s of data:"
+"Your client is also missing %d files, and %d files differ from that of the "
+"host's, which in total is %s of data:"
 msgstr ""
 
 #: ../Scenes/Game/Game.tscn:86
@@ -844,15 +848,15 @@ msgstr ""
 
 #: ../Scenes/Game/Game.tscn:99
 msgid "Download Assets?"
-msgstr ""
+msgstr "Tải Tài nguyên?"
 
 #: ../Scenes/Game/Game.tscn:108
 msgid "Downloading..."
-msgstr ""
+msgstr "Đang tải..."
 
 #: ../Scenes/Game/Game.tscn:123
 msgid "Waiting for download..."
-msgstr ""
+msgstr "Đang chờ để tải..."
 
 #: ../Scenes/Game/Game.tscn:136
 msgid "Waiting to verify integrity..."
@@ -864,7 +868,7 @@ msgstr ""
 
 #: ../Scenes/Game/Game.tscn:168 ../Scenes/Game/Game.tscn:186
 msgid "Error!"
-msgstr ""
+msgstr "Lỗi!"
 
 #: ../Scenes/Game/Game.tscn:176
 msgid "Download Folder Locked"
@@ -876,7 +880,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/ChatBox.tscn:60
 msgid "Send"
-msgstr ""
+msgstr "Gửi"
 
 #: ../Scenes/Game/UI/GameUI.tscn:37 ../Scenes/Game/UI/GameUI.tscn:146
 msgid "Objects"
@@ -890,7 +894,7 @@ msgstr ""
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:11
 #: ../Scenes/Game/UI/GameUI.tscn:49
 msgid "Room"
-msgstr ""
+msgstr "Phòng"
 
 #: ../Scenes/Game/UI/GameUI.tscn:55
 msgid "Notebook"
@@ -918,7 +922,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:157
 msgid "Add"
-msgstr ""
+msgstr "Thêm"
 
 #: ../Scenes/Game/UI/GameUI.tscn:158
 #, python-format
@@ -937,11 +941,11 @@ msgstr ""
 
 #: ../Scenes/Game/UI/GameUI.tscn:204
 msgid "Back to game"
-msgstr ""
+msgstr "Quay lại trò chơi"
 
 #: ../Scenes/Game/UI/GameUI.tscn:210
 msgid "Save game"
-msgstr ""
+msgstr "Lưu trò chơi"
 
 #: ../Scenes/Game/UI/GameUI.tscn:216
 msgid "Load game"
@@ -986,7 +990,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:54
 msgid "Title"
-msgstr ""
+msgstr "Tiêu đề"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:60
 msgid "When ticked, this page will be visible to other players."
@@ -1006,7 +1010,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:110
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:122
 msgid "Move Up"
@@ -1020,11 +1024,11 @@ msgstr ""
 #: ../Scripts/Game/CameraController.gd:1371
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:228
 msgid "Delete"
-msgstr ""
+msgstr "Xóa"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:143
 msgid "Delete page?"
-msgstr ""
+msgstr "Xóa trang?"
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:147
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:293
@@ -1033,15 +1037,15 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/NotebookDialog.tscn:151
 msgid "Open"
-msgstr ""
+msgstr "Mở"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:41
 msgid "Current table:"
-msgstr ""
+msgstr "Bàn hiện tại:"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:52
 msgid "Change table"
-msgstr ""
+msgstr "Đổi bàn"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:67
 msgid "Current skybox:"
@@ -1065,7 +1069,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:128
 msgid "10%"
-msgstr ""
+msgstr "10%"
 
 #: ../Scenes/Game/UI/Dialogs/RoomDialog.tscn:134
 msgid "Lamp Color"
@@ -1099,7 +1103,7 @@ msgstr ""
 
 #: ../Scenes/Game/UI/Previews/PreviewFilter.tscn:35
 msgid "Type:"
-msgstr ""
+msgstr "Kiểu:"
 
 #: ../Scripts/AssetDB.gd:433
 msgid "Cleaning old files..."
@@ -1159,14 +1163,12 @@ msgstr ""
 
 #: ../Scripts/ImportAssets.gd:81
 msgid ""
-"Tabletop Club could not find an assets folder in any of the following "
-"places:"
+"Tabletop Club could not find an assets folder in any of the following places:"
 msgstr ""
 
 #: ../Scripts/ImportAssets.gd:87
 msgid ""
-"Please place an asset pack into one of these folders, and restart the "
-"game."
+"Please place an asset pack into one of these folders, and restart the game."
 msgstr ""
 
 #: ../Scripts/ImportAssets.gd:89
@@ -1219,110 +1221,126 @@ msgid "Translators"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:106
-msgid "Chinese"
+msgid "Bulgarian"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:107
-msgid "Dutch"
+msgid "Chinese"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:108
-msgid "Esperanto"
+msgid "Dutch"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:109
-msgid "French"
+msgid "Esperanto"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:110
-msgid "German"
+msgid "French"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:111
-msgid "Indonesian"
-msgstr ""
+msgid "German"
+msgstr "Tiếng Đức"
 
 #: ../Scripts/MainMenu.gd:112
-msgid "Italian"
+msgid "Hungarian"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:113
-msgid "Norwegian"
+msgid "Indonesian"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:114
-msgid "Polish"
+msgid "Italian"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:115
-msgid "Portuguese"
+msgid "Korean"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:116
-msgid "Russian"
+msgid "Norwegian"
 msgstr ""
 
 #: ../Scripts/MainMenu.gd:117
+msgid "Polish"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:118
+msgid "Portuguese"
+msgstr ""
+
+#: ../Scripts/MainMenu.gd:119
+msgid "Russian"
+msgstr "Tiếng Nga"
+
+#: ../Scripts/MainMenu.gd:120
 msgid "Spanish"
 msgstr ""
 
-#: ../Scripts/MainMenu.gd:218
-msgid "Room code must be four characters long!"
+#: ../Scripts/MainMenu.gd:121
+msgid "Tamil"
 msgstr ""
 
-#: ../Scripts/MainMenu.gd:223
+#: ../Scripts/MainMenu.gd:222
+msgid "Room code must be four characters long!"
+msgstr "Mã Phòng phải dài hơn 4 ký tự!"
+
+#: ../Scripts/MainMenu.gd:227
 msgid "Invalid room code!"
-msgstr ""
+msgstr "Mã Phòng không hợp lệ!"
 
 #: ../Scripts/OptionsMenu.gd:30
 msgid "System Default"
 msgstr ""
 
-#: ../Scripts/OptionsMenu.gd:69
+#: ../Scripts/OptionsMenu.gd:75
 msgid "Never"
 msgstr ""
 
-#: ../Scripts/OptionsMenu.gd:70
+#: ../Scripts/OptionsMenu.gd:76
 msgid "30 seconds"
 msgstr ""
 
-#: ../Scripts/OptionsMenu.gd:71
-msgid "1 minute"
-msgstr ""
-
-#: ../Scripts/OptionsMenu.gd:73
-msgid "10 minutes"
-msgstr ""
-
-#: ../Scripts/OptionsMenu.gd:74
-msgid "30 minutes"
-msgstr ""
-
 #: ../Scripts/OptionsMenu.gd:77
+msgid "1 minute"
+msgstr "1 phút"
+
+#: ../Scripts/OptionsMenu.gd:79
+msgid "10 minutes"
+msgstr "10 phút"
+
+#: ../Scripts/OptionsMenu.gd:80
+msgid "30 minutes"
+msgstr "30 phút"
+
+#: ../Scripts/OptionsMenu.gd:83
 msgid "Borderless Fullscreen"
 msgstr ""
 
-#: ../Scripts/OptionsMenu.gd:78
+#: ../Scripts/OptionsMenu.gd:84
 msgid "Fullscreen"
 msgstr ""
 
-#: ../Scripts/OptionsMenu.gd:83
+#: ../Scripts/OptionsMenu.gd:89
 msgid "High"
 msgstr ""
 
-#: ../Scripts/OptionsMenu.gd:84
+#: ../Scripts/OptionsMenu.gd:90
 msgid "Very High"
 msgstr ""
 
-#: ../Scripts/OptionsMenu.gd:85
+#: ../Scripts/OptionsMenu.gd:91
 msgid "Ultra"
 msgstr ""
 
-#: ../Scripts/OptionsMenu.gd:87
+#: ../Scripts/OptionsMenu.gd:93
 msgid "Small"
 msgstr ""
 
-#: ../Scripts/OptionsMenu.gd:89
+#: ../Scripts/OptionsMenu.gd:95
 msgid "Large"
 msgstr ""
 
@@ -1738,8 +1756,8 @@ msgstr ""
 #: ../Scripts/Game/Game.gd:1025
 #, python-format
 msgid ""
-"Loaded table was saved with a different version of the game (Current: %s,"
-" Table: %s). Load anyway?"
+"Loaded table was saved with a different version of the game (Current: %s, "
+"Table: %s). Load anyway?"
 msgstr ""
 
 #: ../Scripts/Game/Game.gd:1027
@@ -1750,6 +1768,8 @@ msgstr ""
 #, python-format
 msgid "Client version (%s) does not match server version (%s)!"
 msgstr ""
+"Phiên bản của máy khách (%s) không tương thích với phiên bản của máy chủ "
+"(%s)!"
 
 #: ../Scripts/Game/Game.gd:1214
 #, python-format
@@ -1785,7 +1805,7 @@ msgstr ""
 
 #: ../Scripts/Game/Game.gd:1995
 msgid "Room has been closed by the host."
-msgstr ""
+msgstr "Phòng đã được đóng bởi Người tạo phòng."
 
 #: ../Scripts/Game/MasterServer.gd:42
 msgid "Could not connect to the master server."
@@ -1809,11 +1829,11 @@ msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:47
 msgid "Already in a room."
-msgstr ""
+msgstr "Đã ở trong phòng."
 
 #: ../Scripts/Game/MasterServer.gd:48
 msgid "Room does not exist."
-msgstr ""
+msgstr "Phòng không tồn tại."
 
 #: ../Scripts/Game/MasterServer.gd:49
 msgid "Room is sealed."
@@ -1837,7 +1857,7 @@ msgstr ""
 
 #: ../Scripts/Game/MasterServer.gd:54
 msgid "Invalid command."
-msgstr ""
+msgstr "Câu lệnh không hợp lệ."
 
 #: ../Scripts/Game/MasterServer.gd:55
 msgid "Too many players connected."
@@ -1890,26 +1910,26 @@ msgstr ""
 
 #: ../Scripts/Game/UI/GameUI.gd:252
 msgid "Hide Room Code"
-msgstr ""
+msgstr "Ản mã Phòng"
 
 #: ../Scripts/Game/UI/GameUI.gd:254
 msgid "Show Room Code"
-msgstr ""
+msgstr "Hiện mã Phòng"
 
 #: ../Scripts/Game/UI/GameUI.gd:322
 #, python-format
 msgid "%s has joined the game."
-msgstr ""
+msgstr "%s đã tham gia trò chơi."
 
 #: ../Scripts/Game/UI/GameUI.gd:329
 #, python-format
 msgid "%s changed their name to %s"
-msgstr ""
+msgstr "%s đã đổi tên thành %s"
 
 #: ../Scripts/Game/UI/GameUI.gd:334
 #, python-format
 msgid "%s has left the game."
-msgstr ""
+msgstr "%s đã rời khỏi trò chơi."
 
 #: ../Scripts/Game/UI/GameUI.gd:389
 msgid "View notebook"
@@ -1948,21 +1968,21 @@ msgstr ""
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:85
 #, python-format
 msgid "Author: %s"
-msgstr ""
+msgstr "Tác giả: %s"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:92
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:60
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:89
 #, python-format
 msgid "License: %s"
-msgstr ""
+msgstr "Giấy phép: %s"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:96
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:66
 #: ../Scripts/Game/UI/Previews/ObjectPreview.gd:93
 #, python-format
 msgid "Modified by: %s"
-msgstr ""
+msgstr "Chỉnh sửa bởi: %s"
 
 #: ../Scripts/Game/UI/Dialogs/DetailsDialog.gd:100
 #: ../Scripts/Game/UI/Previews/GenericPreview.gd:72
@@ -2042,7 +2062,7 @@ msgstr ""
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:210
 msgid "Delete file?"
-msgstr ""
+msgstr "Xóa têp?"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:218
 msgid "Overwrite file?"
@@ -2051,7 +2071,7 @@ msgstr ""
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:226
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:262
 msgid "Rename"
-msgstr ""
+msgstr "Đổi tên"
 
 #: ../Scripts/Game/UI/Dialogs/SaveDialog.gd:227
 msgid "Duplicate"
@@ -2094,7 +2114,7 @@ msgstr ""
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:114
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:302
 msgid "All"
-msgstr ""
+msgstr "Tất cả"
 
 #: ../Scripts/Game/UI/Previews/PreviewFilter.gd:281
 msgid "Boards"
