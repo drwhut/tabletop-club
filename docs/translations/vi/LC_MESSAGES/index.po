@@ -1,36 +1,36 @@
 # Tabletop Club Documentation Translation Template.
-# Copyright (c) 2020-2022 Benjamin 'drwhut' Beddows.
-# Copyright (c) 2021-2022 Tabletop Club contributors (see game/CREDITS.tres).
+# Copyright (c) 2020-2024 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2024 Tabletop Club contributors (see game/CREDITS.tres).
 # This file is distributed under the same license as the Tabletop Club package.
-# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2021.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Tabletop Club\n"
+"Project-Id-Version: Tabletop Club master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-04 13:50+0100\n"
-"PO-Revision-Date: 2023-04-02 15:41+0000\n"
-"Last-Translator: Neko Nekowazarashi <kodra@nekoweb.my.id>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/tabletop-club/"
-"docs-index/id/>\n"
-"Language: id\n"
+"PO-Revision-Date: 2025-10-16 07:10+0000\n"
+"Last-Translator: Theeasternfurry <theeasternfurry@outlook.com>\n"
+"Language-Team: Vietnamese <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-index/vi/>\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: ../../index.rst:25
 msgid "General"
-msgstr "Umum"
+msgstr "Tổng quan"
 
 #: ../../index.rst:33
 msgid "Custom Assets"
-msgstr "Aset Kustom"
+msgstr "Cấu hình tài nguyên"
 
 #: ../../index.rst:7
 msgid "Tabletop Club Documentation"
-msgstr "Dokumentasi Tabletop Club"
+msgstr "Tài liệu Tabletop Club"
 
 #: ../../index.rst:9
 msgid ""
@@ -39,14 +39,15 @@ msgid ""
 "check out the :ref:`about-tabletop-club` page. Otherwise, you can use either "
 "the table of contents, the sidebar, or the search bar to find what you need!"
 msgstr ""
-"Selamat datang di dokumentasi untuk Tabletop Club, permainan papan yang "
-"bebas dan sumber terbuka! Jika kamu baru di permainan ini, silakan lihat "
-"halaman :ref:`about-tabletop-club`. Atau, kamu bisa menggunakan daftar isi, "
-"bilah sisi, atau bilah pencarian untuk menemukan apa yang kamu perlukan!"
+"Chào mừng bạn đến với tài liệu hướng dẫn của Tabletop Club, một trình giả "
+"lập trò chơi cờ bàn (board game) miễn phí và mã nguồn mở! Nếu bạn là người "
+"mới làm quen với dự án, hãy thoải mái truy cập trang :ref:`about-tabletop-"
+"club`. Ngoài ra, bạn có thể sử dụng mục lục, thanh bên hoặc thanh tìm kiếm "
+"để tìm thông tin mình cần!"
 
 #: ../../index.rst:14
 msgid "Screenshots from the game"
-msgstr ""
+msgstr "Các ảnh chụp từ game"
 
 #: ../../index.rst:19
 msgid ""
@@ -56,14 +57,15 @@ msgid ""
 "issue or a pull request on the project's `GitHub repository <https://"
 "github.com/drwhut/tabletop-club/issues>`_!"
 msgstr ""
-"Dokumentasi, dan proyek ini, terbuka terhadap saran dan kontribusi! Jika "
-"kamu merasa sesuatu tidak dijelaskan dengan baik atau ada sesuatu yang "
-"kurang, maka silakan buka isu di repositori GitHub <https://github.com/"
-"drwhut/tabletop-club/issues>`_!"
+"Tài liệu hướng dẫn, cũng như toàn bộ dự án, luôn hoan nghênh các đề xuất và "
+"đóng góp từ cộng đồng! Nếu bạn cảm thấy có điều gì đó chưa được giải thích "
+"rõ ràng, hoặc bạn nghĩ rằng tài liệu còn thiếu thông tin, đừng ngần ngại gửi "
+"một báo cáo lỗi hoặc một yêu cầu hợp nhất mã trên Github repo <https://"
+"github.com/drwhut/tabletop-club/issues>`_!"
 
 #: ../../index.rst:42
 msgid "Indices and tables"
-msgstr ""
+msgstr "Mục lục và Bảng biểu"
 
 #: ../../index.rst:44
 msgid ":ref:`genindex`"
