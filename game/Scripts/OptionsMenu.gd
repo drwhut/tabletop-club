@@ -597,7 +597,9 @@ func _on_OpenAssetsButton_pressed():
 
 func _on_OptionsMenu_visibility_changed():
 	if visible:
-		_tab_container.grab_focus()
+		# Looks like in Godot 3.6, TabContainers can no longer grab the focus.
+		# TODO: Find a way to be able to navigate the tabs with keyboard only.
+		#_tab_container.grab_focus()
 		
 		# Prevents focus from going back to the main menu.
 		_back_button.focus_neighbour_left = NodePath(".")
