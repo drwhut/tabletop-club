@@ -200,7 +200,7 @@ script_templates_search_path="res://Scripts/Templates"
 
 [gdnative]
 
-singletons=[ "res://webrtc/webrtc.tres" ]
+singletons=[ "res://addons/webrtc_native/webrtc_native.tres" ]
 
 [gui]
 
