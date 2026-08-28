@@ -1,21 +1,24 @@
 # Tabletop Club Documentation Translation Template.
-# Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows.
-# Copyright (c) 2021-2023 Tabletop Club contributors (see game/CREDITS.tres).
+# Copyright (c) 2020-2024 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2024 Tabletop Club contributors (see game/CREDITS.tres).
 # This file is distributed under the same license as the Tabletop Club package.
-# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2023.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Tabletop Club\n"
+"Project-Id-Version: Tabletop Club master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-28 12:25+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ko\n"
+"PO-Revision-Date: 2024-09-06 00:09+0000\n"
+"Last-Translator: goatastronaut0212 <goatastronaut0212@proton.me>\n"
+"Language-Team: Vietnamese <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-general/vi/>\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
@@ -23,7 +26,7 @@ msgstr ""
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
-msgstr ""
+msgstr "Tabletop Club là gì?"
 
 #: ../../general/about.rst:10
 msgid ""
@@ -33,7 +36,7 @@ msgstr ""
 
 #: ../../general/about.rst:14
 msgid "Free"
-msgstr ""
+msgstr "Miễn phí"
 
 #: ../../general/about.rst:16
 msgid ""
@@ -43,7 +46,7 @@ msgstr ""
 
 #: ../../general/about.rst:20
 msgid "Open-source"
-msgstr ""
+msgstr "Mã nguồn mở"
 
 #: ../../general/about.rst:22
 msgid "This means a few things:"
@@ -107,7 +110,7 @@ msgstr ""
 
 #: ../../general/about.rst:61
 msgid "Simulator"
-msgstr ""
+msgstr "Giả lập"
 
 #: ../../general/about.rst:63
 msgid ""
@@ -119,11 +122,11 @@ msgstr ""
 
 #: ../../general/about.rst:70
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Các câu hỏi thường gặp"
 
 #: ../../general/about.rst:73
 msgid "What platforms can I play Tabletop Club on?"
-msgstr ""
+msgstr "Tôi có thể chơi Tabletop Club trên những nền tảng nào?"
 
 #: ../../general/about.rst:75
 msgid "Tabletop Club can be played on any of these platforms:"
@@ -131,15 +134,15 @@ msgstr ""
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
-msgstr ""
+msgstr "Windows 7 hoặc cao hơn"
 
 #: ../../general/about.rst:78
 msgid "macOS 10.12 or later"
-msgstr ""
+msgstr "macOS 10.12 hoặc cao hơn"
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
-msgstr ""
+msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
@@ -201,7 +204,7 @@ msgstr ""
 
 #: ../../general/about.rst:123
 msgid "Is there an official Discord or Matrix server that I can join?"
-msgstr ""
+msgstr "Có server chính thức của Discord hay Matrix mà tôi có thể tham gia?"
 
 #: ../../general/about.rst:125
 msgid ""

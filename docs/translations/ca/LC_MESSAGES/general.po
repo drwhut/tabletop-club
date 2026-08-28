@@ -1,45 +1,52 @@
 # Tabletop Club Documentation Translation Template.
-# Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows.
-# Copyright (c) 2021-2023 Tabletop Club contributors (see game/CREDITS.tres).
+# Copyright (c) 2020-2024 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2024 Tabletop Club contributors (see game/CREDITS.tres).
 # This file is distributed under the same license as the Tabletop Club package.
-# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2023.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Tabletop Club\n"
+"Project-Id-Version: Tabletop Club master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-28 12:25+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ko\n"
+"PO-Revision-Date: 2025-05-12 17:01+0000\n"
+"Last-Translator: Artemis López <emkay.lopez@gmail.com>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/tabletop-club/"
+"docs-general/ca/>\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: ../../general/about.rst:5
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
 #: ../../general/about.rst:8
 msgid "What is Tabletop Club?"
-msgstr ""
+msgstr "Què és Tabletop Club?"
 
 #: ../../general/about.rst:10
 msgid ""
 "Tabletop Club is a free and open-source tabletop board game simulator! "
 "That's a bit of a mouthful, so I'll break that sentence down a bit:"
 msgstr ""
+"Tabletop Club és un simulador de jocs de taula gratuït i de codi obert! Això "
+"sona una mica complicat, explico part per part:"
 
 #: ../../general/about.rst:14
 msgid "Free"
-msgstr ""
+msgstr "Gratuït"
 
 #: ../../general/about.rst:16
 msgid ""
 "The game is completely free to download and play! You can do so by going to "
 "the :ref:`downloading-binaries` page."
 msgstr ""
+"Aquest joc és completament gratuït de descargar i jugar! Pots fer-ho anant a "
+"la pàgina de :ref:`downloading-binaries`."
 
 #: ../../general/about.rst:20
 msgid "Open-source"
@@ -75,6 +82,9 @@ msgid ""
 "The game's code and project files are licensed under the MIT License, but "
 "some of the assets are licensed under different open licenses."
 msgstr ""
+"La el codi del joc i els arxius del projecte estàn llicenciats baix la "
+"llicència MIT, però alguns dels recursos són llicenciats sota altres "
+"llicències obertes."
 
 #: ../../general/about.rst:42
 msgid ""
@@ -83,6 +93,10 @@ msgid ""
 "game (which can also be found in the various ``.cfg`` files under ``assets/"
 "``)."
 msgstr ""
+"Per a consultar els autors i les llicències d'aquests recursos, pots mirar "
+"l'arxiu ``game/LICENSES.tres``, a més de passar el ratolí per sobre d'items "
+"en el menú d'objectes dins del joc(que també es pot trobar en els varis "
+"arxius ``.cfg`` sota ``assets/``)."
 
 #: ../../general/about.rst:48
 msgid "Tabletop board game"
@@ -104,10 +118,15 @@ msgid ""
 "learn more about how to make assets for Tabletop Club, visit the :ref:`asset-"
 "packs` page."
 msgstr ""
+"Però la cosa més guai sobre el joc és que tothom pot crear recursos per al "
+"joc! És tan simple com arrossegar arxius a una carpeta i el joc els "
+"importarà, i els podràs utilitzar directament dins del joc! Si vols aprendre "
+"més sobre com fer recursos per a Tabletop Club, visita la pàgina :ref:`asset-"
+"packs`."
 
 #: ../../general/about.rst:61
 msgid "Simulator"
-msgstr ""
+msgstr "Simulador"
 
 #: ../../general/about.rst:63
 msgid ""
@@ -116,56 +135,65 @@ msgid ""
 "they do in real life, and it also means you can potentially send objects "
 "flying off the edge! Did I also mention you could flip the table?"
 msgstr ""
+"No només és el joc un simulador de jocs de taula, sinó també té un motor de "
+"físiques 3D! Això significa que els objectes en el joc actuen com actuarien "
+"a la vida real, i això també significa que potencialment pots tirar objectes "
+"a fora de la taula! He mencionat que també pots tirar la taula?"
 
 #: ../../general/about.rst:70
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Preguntes Freqüents"
 
 #: ../../general/about.rst:73
 msgid "What platforms can I play Tabletop Club on?"
-msgstr ""
+msgstr "En quines plataformes puc jugar a Tabletop Club?"
 
 #: ../../general/about.rst:75
 msgid "Tabletop Club can be played on any of these platforms:"
-msgstr ""
+msgstr "Tabletop Club pot ser jugar en qualsevol de les següents plataformes:"
 
 #: ../../general/about.rst:77
 msgid "Windows 7 or later"
-msgstr ""
+msgstr "Windows 7 o posterior"
 
 #: ../../general/about.rst:78
 msgid "macOS 10.12 or later"
-msgstr ""
+msgstr "macOS 10.12 o posterior"
 
 #: ../../general/about.rst:79
 msgid "Linux / \\*BSD"
-msgstr ""
+msgstr "Linux / \\*BSD"
 
 #: ../../general/about.rst:81
 msgid "Your hardware must also have support for OpenGL 3.3."
-msgstr ""
+msgstr "El teu hardware també ha de suportar OpenGL 3.3."
 
 #: ../../general/about.rst:83
 msgid ""
 "It is recommended to have at least 1GB of available space on your drive to "
 "accommodate for the game files, as well as any generated files."
 msgstr ""
+"Es recomana tenir com a mínim 1GB de espai disponible al teu disc per a "
+"acomodar els arxius del joc, a més de qualsevol arxiu generat."
 
 #: ../../general/about.rst:86
 msgid ""
 "Currently there are no plans for the game to be supported on mobile devices "
 "or consoles."
 msgstr ""
+"Per el moment no n'hi han plans per suportar el joc en móbils o consoles."
 
 #: ../../general/about.rst:91
 msgid "Does Tabletop Club support multiplayer?"
-msgstr ""
+msgstr "Tabletop Club permet el joc multijugador?"
 
 #: ../../general/about.rst:93
 msgid ""
 "Yes! You don't need to make an account to play multiplayer, you can just "
 "host a game and start playing with friends!"
 msgstr ""
+"Sí! No necessites fer-te un compte per jugar en multijugador, pots "
+"simplement hospedar un joc i començar a jugar amb amics!"
 
 #: ../../general/about.rst:98
 msgid ""

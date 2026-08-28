@@ -1,18 +1,18 @@
 # Tabletop Club Documentation Translation Template.
-# Copyright (c) 2020-2023 Benjamin 'drwhut' Beddows.
-# Copyright (c) 2021-2023 Tabletop Club contributors (see game/CREDITS.tres).
+# Copyright (c) 2020-2024 Benjamin 'drwhut' Beddows.
+# Copyright (c) 2021-2024 Tabletop Club contributors (see game/CREDITS.tres).
 # This file is distributed under the same license as the Tabletop Club package.
-# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2023.
+# Benjamin 'drwhut' Beddows <drwhut@gmail.com>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Tabletop Club\n"
+"Project-Id-Version: Tabletop Club master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-28 12:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: ko\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
