@@ -33,3 +33,11 @@ Once you have added what you want to your asset pack, you can either restart the
 game, or go to :guilabel:`Options` > :guilabel:`General`, and click
 :guilabel:`Reimport Assets` to have the game import everything you've added so
 you can use it in-game!
+
+If your asset pack doesn't appear, try restarting the entire game.
+If that doesn't help either, an error might have occured when trying to import it.
+You can see what went wrong by checking the import log on the main-menu screen,
+click the leftmost button on the bottom of the screen, labeled with an exclamation
+point ``(!)`` to open it. If all else fails, searching for "ERROR" or your
+AssetPack's name in the latest logfile (see :ref:`ways_to_contribute`) can show
+more details of what went wrong.
