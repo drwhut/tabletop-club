@@ -86,6 +86,26 @@
   </supports>
 
   <releases>
+    <release version="0.1.5" date="2026-08-30">
+      <url type="details">https://tabletopclub.net/2026/08/30/release-v0.1.5/</url>
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Now support Linux on ARM processors.</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>Updated Godot from v3.4.5 to v3.6.3.</li>
+          <li>Updated Godot WebRTC library from v1.1.0 to v1.2.1.</li>
+          <li>Updated the lobby server’s SSL certificate.</li>
+          <li>Updated translations from the community.</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Fixed errors appearing for missing <code>user://assets</code> and <code>user://.import</code> folders when importing assets for the first time.</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.1.4" date="2025-10-12">
       <url type="details">https://tabletopclub.net/2025/10/12/release-v0.1.4/</url>
       <description>
