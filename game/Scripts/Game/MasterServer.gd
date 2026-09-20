@@ -127,6 +127,9 @@ func connect_to_server() -> void:
 	if custom_server.empty():
 		if custom_certificate_ok:
 			push_warning("SSL certificate provided with no custom master server, ignoring.")
+		var default_certificate: X509Certificate = X509Certificate.new()
+		default_certificate.load("res://master_server.crt")
+		client.trusted_ssl_certificate = default_certificate
 		var connect_err = client.connect_to_url(URL)
 		if connect_err != OK:
 			push_error("Could not connect to the master server (error %d)!" % connect_err)
@@ -136,7 +139,7 @@ func connect_to_server() -> void:
 		if custom_certificate_ok:
 			client.trusted_ssl_certificate = custom_certificate
 		else:
-			push_warning("No SSL certificate was loaded for '%s', this will not end well..." % custom_server)
+			push_warning("No SSL certificate was loaded for '%s', TODO" % custom_server)
 		var connect_err = client.connect_to_url(custom_server)
 		if connect_err != OK:
 			push_error("Could not connect to the custom master server (error %d)!" % connect_err)
