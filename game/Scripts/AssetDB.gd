@@ -592,7 +592,9 @@ func _add_inheriting_assets(pack_path: String, pack_name: String, type: String) 
 		if not "*" in section:
 			if not file.file_exists(type_path + "/" + section):
 				var parent = config_file.get_value(section, "parent", "")
-				if not parent.empty():
+				if not parent is String:
+					_log_error("'parent' for object '%s' is not a string!" % section)
+				elif not parent.empty():
 					var inherit = search_type(pack_name, type, parent)
 					if not inherit.empty():
 						var child = inherit.duplicate()
@@ -1438,6 +1440,9 @@ func _import_stack_config(pack: String, type: String, stack_config: ConfigFile) 
 				
 				var entry_names = []
 				for item in items:
+					if not item is String:
+						_log_error("Item '%s' in stack '%s' is not a string!" % [item, stack_name])
+						continue
 					var entry = search_type(pack, type, item)
 					if not entry.empty():
 						if scale == null:
